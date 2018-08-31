@@ -1,0 +1,31 @@
+#include "utils.h"
+#include "{{ handle_name }}.h"
+
+Nan::Persistent<v8::FunctionTemplate> _{{ handle_name }}::constructor;
+
+_{{ handle_name }}::_{{ handle_name }}() {
+  instance = ({{ handle_name }}*) malloc(sizeof({{ handle_name }}));
+}
+
+_{{ handle_name }}::~_{{ handle_name }}() { }
+
+void _{{ handle_name }}::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
+  Nan::HandleScope scope;
+
+  // Constructor
+  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_{{ handle_name }}::New);
+  constructor.Reset(ctor);
+  ctor->InstanceTemplate()->SetInternalFieldCount(1);
+  ctor->SetClassName(Nan::New("{{ handle_name }}").ToLocalChecked());
+
+  // Prototype
+  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+
+  Nan::Set(target, Nan::New("{{ handle_name }}").ToLocalChecked(), ctor->GetFunction());
+}
+
+NAN_METHOD(_{{ handle_name }}::New) {
+  _{{ handle_name }}* self = new _{{ handle_name }}();
+  self->Wrap(info.Holder());
+  info.GetReturnValue().Set(info.Holder());
+};

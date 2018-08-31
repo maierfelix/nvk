@@ -1,0 +1,27 @@
+#include <nan.h>
+
+#define GLFW_INCLUDE_VULKAN
+#include <GLFW/glfw3.h>
+
+#define GLM_FORCE_RADIANS
+#define GLM_FORCE_DEPTH_ZERO_TO_ONE
+
+#include <glm/vec4.hpp>
+#include <glm/mat4x4.hpp>
+
+#include "index.h"
+#include "enums.h"
+
+NAN_MODULE_INIT(InitModule) {
+  {% for incl in includes -%}
+  {%- if incl != "" -%}
+  _{{ incl }}::Initialize(target);
+  {% endif -%}
+  {% endfor %}
+  target->Set(
+    Nan::New("getVulkanEnumerations").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(getVulkanEnumerations)->GetFunction()
+  );
+}
+
+NODE_MODULE(myModule, InitModule);

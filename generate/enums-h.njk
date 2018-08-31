@@ -1,0 +1,36 @@
+#ifndef __VK_ENUMS_H__
+#define __VK_ENUMS_H__
+
+#include <nan.h>
+
+#define GLFW_INCLUDE_VULKAN
+#include <GLFW/glfw3.h>
+
+#include <map>
+#include <string>
+
+{% for enu in enums -%}
+std::map<std::string, unsigned __int8> _{{ enu.name }} = {
+  {% for child in enu.children -%}
+  { "{{ child.name }}", {{ child.value }} },
+  {% endfor %}
+};
+{% endfor %}
+void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+  v8::Local<v8::Object> out = Nan::New<v8::Object>();
+
+  std::map<std::string, unsigned __int8>::iterator it;
+  {% for enu in enums -%}
+  {
+    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    for (it = _{{ enu.name }}.begin(); it != _{{ enu.name }}.end(); it++) {
+      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
+      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
+    };
+    out->Set(Nan::New("{{ enu.name }}").ToLocalChecked(), entry);
+  }
+  {% endfor %}
+  info.GetReturnValue().Set(out);
+};
+
+#endif

@@ -1,0 +1,95 @@
+import util from "util";
+import addon from "../build/Release/addon.node";
+
+let enums = addon.getVulkanEnumerations();
+
+Object.assign(global, addon);
+Object.assign(global, enums);
+
+console.log(addon);
+console.log(global);
+
+let instance = new VkInstance();
+
+let appInfo = new VkApplicationInfo();
+appInfo.pApplicationName = "Vulkan!";
+
+let bufferInfo = new VkBufferCreateInfo();
+bufferInfo.pQueueFamilyIndices = [1];
+
+let createInfo = new VkInstanceCreateInfo();
+//createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+createInfo.pApplicationInfo = appInfo;
+
+let validationLayers = ["VK_LAYER_LUNARG_standard_validation"];
+createInfo.enabledLayerCount = validationLayers.length;
+createInfo.ppEnabledLayerNames = validationLayers;
+
+// TODO: shorten API here
+let rect = new VkRect2D();
+rect.offset = new VkOffset2D();
+rect.offset.x = 42;
+rect.offset.y = 666;
+rect.extent = new VkExtent2D();
+rect.extent.width = 1980;
+rect.extent.height = 1280;
+
+let clearRect = new VkClearRect();
+clearRect.rect = rect;
+
+let physicalDeviceFeatures = new VkPhysicalDeviceFeatures();
+
+let deviceQueueCreateInfo = new VkDeviceQueueCreateInfo();
+deviceQueueCreateInfo.pQueuePriorities = [1.0];
+
+let deviceCreateInfo = new VkDeviceCreateInfo();
+deviceCreateInfo.pQueueCreateInfos = [deviceQueueCreateInfo];
+deviceCreateInfo.pEnabledFeatures = physicalDeviceFeatures;
+deviceCreateInfo.ppEnabledExtensionNames = [];
+
+let imageMemoryBarrier = new VkImageMemoryBarrier();
+imageMemoryBarrier.image = new VkImage();
+
+console.log(instance);
+console.log(appInfo);
+console.log(bufferInfo);
+console.log(createInfo);
+console.log(rect);
+console.log(rect.offset);
+console.log(rect.extent);
+console.log(clearRect);
+console.log(deviceCreateInfo);
+console.log(physicalDeviceFeatures);
+console.log(imageMemoryBarrier);
+
+console.log(appInfo.pApplicationName);
+console.log(bufferInfo.pQueueFamilyIndices);
+console.log(createInfo.pApplicationInfo);
+console.log(createInfo.ppEnabledLayerNames);
+
+{
+
+  // app info
+  let appInfo = new VkApplicationInfo();
+  appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
+  appInfo.pApplicationName = "Hello!";
+  //appInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
+  appInfo.pEngineName = "No Engine";
+  //appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
+  appInfo.apiVersion = VK_API_VERSION_1_0;
+
+  // create info
+  let createInfo = new VkInstanceCreateInfo();
+  createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+  createInfo.pApplicationInfo = app;
+  createInfo.enabledLayerCount = 0;
+
+  if (vkCreateInstance(createInfo, null, instance) !== VK_SUCCESS) {
+    console.error("Instance creation failed!");
+  }
+
+}
+
+console.log("end");
+
+setInterval(() => { });

@@ -1,0 +1,27 @@
+#ifndef __VK_{{ handle_name.toUpperCase() }}_H__
+#define __VK_{{ handle_name.toUpperCase() }}_H__
+
+#include <nan.h>
+
+#define GLFW_INCLUDE_VULKAN
+#include <GLFW/glfw3.h>
+
+class _{{ handle_name }}: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+
+    // real instance
+    {{ handle_name }} *instance;
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+
+  private:
+    _{{ handle_name }}();
+    ~_{{ handle_name }}();
+
+};
+
+#endif

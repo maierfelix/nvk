@@ -1,0 +1,57 @@
+#include "utils.h"
+{{- processSourceIncludes(input) | safe }}
+#include "{{ struct_name }}.h"
+
+Nan::Persistent<v8::FunctionTemplate> _{{ struct_name }}::constructor;
+
+_{{ struct_name }}::_{{ struct_name }}() {
+  instance = ({{ struct_name }}*) malloc(sizeof({{ struct_name }}));
+  {%- for member in members -%}
+  {%- if ignoreableMember(member) != true -%}
+  {{- processSourceMemberInitializer(member) | safe -}}
+  {%- endif -%}
+  {% endfor %}
+}
+
+_{{ struct_name }}::~_{{ struct_name }}() { }
+
+void _{{ struct_name }}::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
+  Nan::HandleScope scope;
+
+  // Constructor
+  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_{{ struct_name }}::New);
+  constructor.Reset(ctor);
+  ctor->InstanceTemplate()->SetInternalFieldCount(1);
+  ctor->SetClassName(Nan::New("{{ struct_name }}").ToLocalChecked());
+
+  // Prototype
+  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  {% for member in members -%}
+  {%- if ignoreableMember(member) != true -%}
+  SetPrototypeAccessor(proto, Nan::New("{{ member.name }}").ToLocalChecked(), Get{{ member.name }}, Set{{ member.name }}, ctor);
+  {% endif -%}
+  {% endfor %}
+  Nan::Set(target, Nan::New("{{ struct_name }}").ToLocalChecked(), ctor->GetFunction());
+}
+
+NAN_METHOD(_{{ struct_name }}::New) {
+  _{{ struct_name }}* self = new _{{ struct_name }}();
+  self->Wrap(info.Holder());
+  info.GetReturnValue().Set(info.Holder());
+};
+
+{% for member in members -%}
+{%- if ignoreableMember(member) != true -%}
+// {{ member.name }}
+NAN_GETTER(_{{ struct_name }}::Get{{ member.name }}) {
+  _{{ struct_name }} *self = Nan::ObjectWrap::Unwrap<_{{ struct_name }}>(info.This());
+  {{ struct_name }} *instance = self->instance;
+  {{- processSourceGetter(member) | safe }}
+}
+NAN_SETTER(_{{ struct_name }}::Set{{ member.name }}) {
+  _{{ struct_name }} *self = Nan::ObjectWrap::Unwrap<_{{ struct_name }}>(info.This());
+  {{ struct_name }} *instance = self->instance;
+  {{- processSourceSetter(member) | safe }}
+}
+{%- endif -%}
+{% endfor -%}

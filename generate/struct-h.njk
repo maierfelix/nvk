@@ -1,0 +1,34 @@
+#ifndef __VK_{{ struct_name.toUpperCase() }}_H__
+#define __VK_{{ struct_name.toUpperCase() }}_H__
+
+#include <nan.h>
+
+#define GLFW_INCLUDE_VULKAN
+#include <GLFW/glfw3.h>
+
+class _{{ struct_name }}: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    // #accessors
+    {%- for member in members %}
+    {%- if ignoreableMember(member) != true -%}
+    {{- processHeaderGetter(member) | safe }}
+    {{- processHeaderSetter(member) | safe }}
+    {% endif -%}
+    {%- endfor %}
+
+    // real instance
+    {{ struct_name }} *instance;
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+
+  private:
+    _{{ struct_name }}();
+    ~_{{ struct_name }}();
+
+};
+
+#endif
