@@ -1,8 +1,8 @@
 import fs from "fs";
 import nunjucks from "nunjucks";
 
-const H_TEMPLATE = fs.readFileSync(`struct-h.njk`, "utf-8");
-const CPP_TEMPLATE = fs.readFileSync(`struct-cpp.njk`, "utf-8");
+const H_TEMPLATE = fs.readFileSync(`./templates/struct-h.njk`, "utf-8");
+const CPP_TEMPLATE = fs.readFileSync(`./templates/struct-cpp.njk`, "utf-8");
 
 nunjucks.configure({ autoescape: true });
 
@@ -34,6 +34,11 @@ function processHeaderGetter(member) {
     static NAN_GETTER(Get${member.name});`;
   }
   if (member.isArray && (member.isStructType || member.isHandleType)) {
+    return `
+    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> ${member.name};
+    static NAN_GETTER(Get${member.name});`;
+  }
+  if (member.isArray && member.isStaticArray) {
     return `
     Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> ${member.name};
     static NAN_GETTER(Get${member.name});`;
@@ -72,6 +77,7 @@ function processHeaderGetter(member) {
     case "float":
     case "size_t":
     case "int32_t":
+    case "uint8_t":
     case "uint32_t":
     case "uint64_t":
       return `

@@ -1,0 +1,21 @@
+#ifndef __VK_CALLS_H__
+#define __VK_CALLS_H__
+
+#include <nan.h>
+
+#define GLFW_INCLUDE_VULKAN
+#include <GLFW/glfw3.h>
+
+#include <map>
+#include <string>
+
+{% for call in calls -%}
+
+void _{{ call.name }}(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+  {{ getCallBody(call) | safe }}
+  {{ getCallReturn(call) | safe }}
+};
+
+{% endfor %}
+
+#endif

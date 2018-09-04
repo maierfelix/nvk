@@ -9,6 +9,31 @@
 #include <map>
 #include <string>
 
+std::map<std::string, __int32> _API_Constants = {
+  { "VK_MAX_PHYSICAL_DEVICE_NAME_SIZE", 256 },
+  { "VK_UUID_SIZE", 16 },
+  { "VK_LUID_SIZE", 8 },
+  { "VK_LUID_SIZE_KHR", (__int32)VK_LUID_SIZE },
+  { "VK_MAX_EXTENSION_NAME_SIZE", 256 },
+  { "VK_MAX_DESCRIPTION_SIZE", 256 },
+  { "VK_MAX_MEMORY_TYPES", 32 },
+  { "VK_MAX_MEMORY_HEAPS", 16 },
+  { "VK_LOD_CLAMP_NONE", (__int32)1000.0f },
+  { "VK_REMAINING_MIP_LEVELS", (__int32)(~0U) },
+  { "VK_REMAINING_ARRAY_LAYERS", (__int32)(~0U) },
+  { "VK_WHOLE_SIZE", (__int32)(~0ULL) },
+  { "VK_ATTACHMENT_UNUSED", (__int32)(~0U) },
+  { "VK_TRUE", 1 },
+  { "VK_FALSE", 0 },
+  { "VK_QUEUE_FAMILY_IGNORED", (__int32)(~0U) },
+  { "VK_QUEUE_FAMILY_EXTERNAL", (__int32)(~0U-1) },
+  { "VK_QUEUE_FAMILY_EXTERNAL_KHR", (__int32)VK_QUEUE_FAMILY_EXTERNAL },
+  { "VK_QUEUE_FAMILY_FOREIGN_EXT", (__int32)(~0U-2) },
+  { "VK_SUBPASS_EXTERNAL", (__int32)(~0U) },
+  { "VK_MAX_DEVICE_GROUP_SIZE", 32 },
+  { "VK_MAX_DEVICE_GROUP_SIZE_KHR", (__int32)VK_MAX_DEVICE_GROUP_SIZE },
+  
+};
 std::map<std::string, unsigned __int8> _VkImageLayout = {
   { "VK_IMAGE_LAYOUT_UNDEFINED", 0 },
   { "VK_IMAGE_LAYOUT_GENERAL", 1 },
@@ -574,6 +599,7 @@ std::map<std::string, unsigned __int8> _VkPresentModeKHR = {
 };
 std::map<std::string, unsigned __int8> _VkColorSpaceKHR = {
   { "VK_COLOR_SPACE_SRGB_NONLINEAR_KHR", 0 },
+  { "VK_COLORSPACE_SRGB_NONLINEAR_KHR", (__int32)VK_COLOR_SPACE_SRGB_NONLINEAR_KHR },
   
 };
 std::map<std::string, unsigned __int8> _VkDebugReportObjectTypeEXT = {
@@ -606,11 +632,13 @@ std::map<std::string, unsigned __int8> _VkDebugReportObjectTypeEXT = {
   { "VK_DEBUG_REPORT_OBJECT_TYPE_SURFACE_KHR_EXT", 26 },
   { "VK_DEBUG_REPORT_OBJECT_TYPE_SWAPCHAIN_KHR_EXT", 27 },
   { "VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT_EXT", 28 },
+  { "VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_EXT", (__int32)VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT_EXT },
   { "VK_DEBUG_REPORT_OBJECT_TYPE_DISPLAY_KHR_EXT", 29 },
   { "VK_DEBUG_REPORT_OBJECT_TYPE_DISPLAY_MODE_KHR_EXT", 30 },
   { "VK_DEBUG_REPORT_OBJECT_TYPE_OBJECT_TABLE_NVX_EXT", 31 },
   { "VK_DEBUG_REPORT_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_NVX_EXT", 32 },
   { "VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT", 33 },
+  { "VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT", (__int32)VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT },
   
 };
 std::map<std::string, unsigned __int8> _VkRasterizationOrderAMD = {
@@ -740,6 +768,12 @@ std::map<std::string, unsigned __int8> _VkConservativeRasterizationModeEXT = {
   { "VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT", 0 },
   { "VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT", 1 },
   { "VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT", 2 },
+  
+};
+std::map<std::string, unsigned __int8> _VkVendorId = {
+  { "VK_VENDOR_ID_VIV", 0x10001 },
+  { "VK_VENDOR_ID_VSI", 0x10002 },
+  { "VK_VENDOR_ID_KAZAN", 0x10003 },
   
 };
 std::map<std::string, unsigned __int8> _VkCullModeFlagBits = {
@@ -1151,12 +1185,25 @@ std::map<std::string, unsigned __int8> _VkDescriptorBindingFlagBitsEXT = {
   { "VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT_EXT", 3 },
   
 };
+std::map<std::string, unsigned __int8> _VkConditionalRenderingFlagBitsEXT = {
+  { "VK_CONDITIONAL_RENDERING_INVERTED_BIT_EXT", 0 },
+  
+};
 
 void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   v8::Local<v8::Object> out = Nan::New<v8::Object>();
 
-  std::map<std::string, unsigned __int8>::iterator it;
   {
+    std::map<std::string, __int32>::iterator it;
+    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    for (it = _API_Constants.begin(); it != _API_Constants.end(); it++) {
+      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
+      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
+    };
+    out->Set(Nan::New("API_Constants").ToLocalChecked(), entry);
+  }
+  {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkImageLayout.begin(); it != _VkImageLayout.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1165,6 +1212,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkImageLayout").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkAttachmentLoadOp.begin(); it != _VkAttachmentLoadOp.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1173,6 +1221,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkAttachmentLoadOp").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkAttachmentStoreOp.begin(); it != _VkAttachmentStoreOp.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1181,6 +1230,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkAttachmentStoreOp").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkImageType.begin(); it != _VkImageType.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1189,6 +1239,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkImageType").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkImageTiling.begin(); it != _VkImageTiling.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1197,6 +1248,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkImageTiling").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkImageViewType.begin(); it != _VkImageViewType.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1205,6 +1257,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkImageViewType").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkCommandBufferLevel.begin(); it != _VkCommandBufferLevel.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1213,6 +1266,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkCommandBufferLevel").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkComponentSwizzle.begin(); it != _VkComponentSwizzle.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1221,6 +1275,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkComponentSwizzle").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkDescriptorType.begin(); it != _VkDescriptorType.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1229,6 +1284,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkDescriptorType").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkQueryType.begin(); it != _VkQueryType.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1237,6 +1293,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkQueryType").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkBorderColor.begin(); it != _VkBorderColor.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1245,6 +1302,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkBorderColor").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkPipelineBindPoint.begin(); it != _VkPipelineBindPoint.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1253,6 +1311,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkPipelineBindPoint").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkPipelineCacheHeaderVersion.begin(); it != _VkPipelineCacheHeaderVersion.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1261,6 +1320,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkPipelineCacheHeaderVersion").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkPrimitiveTopology.begin(); it != _VkPrimitiveTopology.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1269,6 +1329,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkPrimitiveTopology").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkSharingMode.begin(); it != _VkSharingMode.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1277,6 +1338,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkSharingMode").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkIndexType.begin(); it != _VkIndexType.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1285,6 +1347,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkIndexType").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkFilter.begin(); it != _VkFilter.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1293,6 +1356,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkFilter").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkSamplerMipmapMode.begin(); it != _VkSamplerMipmapMode.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1301,6 +1365,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkSamplerMipmapMode").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkSamplerAddressMode.begin(); it != _VkSamplerAddressMode.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1309,6 +1374,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkSamplerAddressMode").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkCompareOp.begin(); it != _VkCompareOp.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1317,6 +1383,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkCompareOp").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkPolygonMode.begin(); it != _VkPolygonMode.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1325,6 +1392,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkPolygonMode").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkFrontFace.begin(); it != _VkFrontFace.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1333,6 +1401,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkFrontFace").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkBlendFactor.begin(); it != _VkBlendFactor.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1341,6 +1410,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkBlendFactor").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkBlendOp.begin(); it != _VkBlendOp.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1349,6 +1419,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkBlendOp").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkStencilOp.begin(); it != _VkStencilOp.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1357,6 +1428,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkStencilOp").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkLogicOp.begin(); it != _VkLogicOp.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1365,6 +1437,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkLogicOp").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkInternalAllocationType.begin(); it != _VkInternalAllocationType.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1373,6 +1446,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkInternalAllocationType").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkSystemAllocationScope.begin(); it != _VkSystemAllocationScope.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1381,6 +1455,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkSystemAllocationScope").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkPhysicalDeviceType.begin(); it != _VkPhysicalDeviceType.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1389,6 +1464,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkPhysicalDeviceType").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkVertexInputRate.begin(); it != _VkVertexInputRate.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1397,6 +1473,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkVertexInputRate").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkFormat.begin(); it != _VkFormat.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1405,6 +1482,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkFormat").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkStructureType.begin(); it != _VkStructureType.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1413,6 +1491,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkStructureType").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkSubpassContents.begin(); it != _VkSubpassContents.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1421,6 +1500,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkSubpassContents").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkResult.begin(); it != _VkResult.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1429,6 +1509,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkResult").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkDynamicState.begin(); it != _VkDynamicState.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1437,6 +1518,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkDynamicState").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkDescriptorUpdateTemplateType.begin(); it != _VkDescriptorUpdateTemplateType.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1445,6 +1527,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkDescriptorUpdateTemplateType").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkObjectType.begin(); it != _VkObjectType.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1453,6 +1536,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkObjectType").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkPresentModeKHR.begin(); it != _VkPresentModeKHR.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1461,6 +1545,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkPresentModeKHR").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkColorSpaceKHR.begin(); it != _VkColorSpaceKHR.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1469,6 +1554,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkColorSpaceKHR").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkDebugReportObjectTypeEXT.begin(); it != _VkDebugReportObjectTypeEXT.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1477,6 +1563,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkDebugReportObjectTypeEXT").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkRasterizationOrderAMD.begin(); it != _VkRasterizationOrderAMD.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1485,6 +1572,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkRasterizationOrderAMD").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkValidationCheckEXT.begin(); it != _VkValidationCheckEXT.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1493,6 +1581,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkValidationCheckEXT").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkIndirectCommandsTokenTypeNVX.begin(); it != _VkIndirectCommandsTokenTypeNVX.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1501,6 +1590,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkIndirectCommandsTokenTypeNVX").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkObjectEntryTypeNVX.begin(); it != _VkObjectEntryTypeNVX.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1509,6 +1599,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkObjectEntryTypeNVX").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkDisplayPowerStateEXT.begin(); it != _VkDisplayPowerStateEXT.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1517,6 +1608,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkDisplayPowerStateEXT").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkDeviceEventTypeEXT.begin(); it != _VkDeviceEventTypeEXT.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1525,6 +1617,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkDeviceEventTypeEXT").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkDisplayEventTypeEXT.begin(); it != _VkDisplayEventTypeEXT.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1533,6 +1626,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkDisplayEventTypeEXT").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkViewportCoordinateSwizzleNV.begin(); it != _VkViewportCoordinateSwizzleNV.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1541,6 +1635,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkViewportCoordinateSwizzleNV").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkDiscardRectangleModeEXT.begin(); it != _VkDiscardRectangleModeEXT.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1549,6 +1644,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkDiscardRectangleModeEXT").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkPointClippingBehavior.begin(); it != _VkPointClippingBehavior.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1557,6 +1653,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkPointClippingBehavior").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkSamplerReductionModeEXT.begin(); it != _VkSamplerReductionModeEXT.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1565,6 +1662,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkSamplerReductionModeEXT").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkTessellationDomainOrigin.begin(); it != _VkTessellationDomainOrigin.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1573,6 +1671,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkTessellationDomainOrigin").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkSamplerYcbcrModelConversion.begin(); it != _VkSamplerYcbcrModelConversion.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1581,6 +1680,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkSamplerYcbcrModelConversion").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkSamplerYcbcrRange.begin(); it != _VkSamplerYcbcrRange.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1589,6 +1689,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkSamplerYcbcrRange").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkChromaLocation.begin(); it != _VkChromaLocation.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1597,6 +1698,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkChromaLocation").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkBlendOverlapEXT.begin(); it != _VkBlendOverlapEXT.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1605,6 +1707,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkBlendOverlapEXT").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkCoverageModulationModeNV.begin(); it != _VkCoverageModulationModeNV.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1613,6 +1716,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkCoverageModulationModeNV").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkValidationCacheHeaderVersionEXT.begin(); it != _VkValidationCacheHeaderVersionEXT.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1621,6 +1725,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkValidationCacheHeaderVersionEXT").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkShaderInfoTypeAMD.begin(); it != _VkShaderInfoTypeAMD.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1629,6 +1734,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkShaderInfoTypeAMD").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkQueueGlobalPriorityEXT.begin(); it != _VkQueueGlobalPriorityEXT.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1637,6 +1743,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkQueueGlobalPriorityEXT").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkConservativeRasterizationModeEXT.begin(); it != _VkConservativeRasterizationModeEXT.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1645,6 +1752,16 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkConservativeRasterizationModeEXT").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
+    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    for (it = _VkVendorId.begin(); it != _VkVendorId.end(); it++) {
+      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
+      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
+    };
+    out->Set(Nan::New("VkVendorId").ToLocalChecked(), entry);
+  }
+  {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkCullModeFlagBits.begin(); it != _VkCullModeFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1653,6 +1770,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkCullModeFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkQueueFlagBits.begin(); it != _VkQueueFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1661,6 +1779,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkQueueFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkDeviceQueueCreateFlagBits.begin(); it != _VkDeviceQueueCreateFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1669,6 +1788,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkDeviceQueueCreateFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkMemoryPropertyFlagBits.begin(); it != _VkMemoryPropertyFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1677,6 +1797,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkMemoryPropertyFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkMemoryHeapFlagBits.begin(); it != _VkMemoryHeapFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1685,6 +1806,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkMemoryHeapFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkAccessFlagBits.begin(); it != _VkAccessFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1693,6 +1815,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkAccessFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkBufferUsageFlagBits.begin(); it != _VkBufferUsageFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1701,6 +1824,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkBufferUsageFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkBufferCreateFlagBits.begin(); it != _VkBufferCreateFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1709,6 +1833,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkBufferCreateFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkShaderStageFlagBits.begin(); it != _VkShaderStageFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1717,6 +1842,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkShaderStageFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkImageUsageFlagBits.begin(); it != _VkImageUsageFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1725,6 +1851,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkImageUsageFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkImageCreateFlagBits.begin(); it != _VkImageCreateFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1733,6 +1860,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkImageCreateFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkPipelineCreateFlagBits.begin(); it != _VkPipelineCreateFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1741,6 +1869,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkPipelineCreateFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkColorComponentFlagBits.begin(); it != _VkColorComponentFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1749,6 +1878,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkColorComponentFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkFenceCreateFlagBits.begin(); it != _VkFenceCreateFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1757,6 +1887,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkFenceCreateFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkFormatFeatureFlagBits.begin(); it != _VkFormatFeatureFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1765,6 +1896,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkFormatFeatureFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkQueryControlFlagBits.begin(); it != _VkQueryControlFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1773,6 +1905,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkQueryControlFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkQueryResultFlagBits.begin(); it != _VkQueryResultFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1781,6 +1914,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkQueryResultFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkCommandBufferUsageFlagBits.begin(); it != _VkCommandBufferUsageFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1789,6 +1923,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkCommandBufferUsageFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkQueryPipelineStatisticFlagBits.begin(); it != _VkQueryPipelineStatisticFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1797,6 +1932,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkQueryPipelineStatisticFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkImageAspectFlagBits.begin(); it != _VkImageAspectFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1805,6 +1941,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkImageAspectFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkSparseImageFormatFlagBits.begin(); it != _VkSparseImageFormatFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1813,6 +1950,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkSparseImageFormatFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkSparseMemoryBindFlagBits.begin(); it != _VkSparseMemoryBindFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1821,6 +1959,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkSparseMemoryBindFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkPipelineStageFlagBits.begin(); it != _VkPipelineStageFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1829,6 +1968,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkPipelineStageFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkCommandPoolCreateFlagBits.begin(); it != _VkCommandPoolCreateFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1837,6 +1977,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkCommandPoolCreateFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkCommandPoolResetFlagBits.begin(); it != _VkCommandPoolResetFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1845,6 +1986,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkCommandPoolResetFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkCommandBufferResetFlagBits.begin(); it != _VkCommandBufferResetFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1853,6 +1995,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkCommandBufferResetFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkSampleCountFlagBits.begin(); it != _VkSampleCountFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1861,6 +2004,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkSampleCountFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkAttachmentDescriptionFlagBits.begin(); it != _VkAttachmentDescriptionFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1869,6 +2013,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkAttachmentDescriptionFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkStencilFaceFlagBits.begin(); it != _VkStencilFaceFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1877,6 +2022,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkStencilFaceFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkDescriptorPoolCreateFlagBits.begin(); it != _VkDescriptorPoolCreateFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1885,6 +2031,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkDescriptorPoolCreateFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkDependencyFlagBits.begin(); it != _VkDependencyFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1893,6 +2040,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkDependencyFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkDisplayPlaneAlphaFlagBitsKHR.begin(); it != _VkDisplayPlaneAlphaFlagBitsKHR.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1901,6 +2049,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkDisplayPlaneAlphaFlagBitsKHR").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkCompositeAlphaFlagBitsKHR.begin(); it != _VkCompositeAlphaFlagBitsKHR.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1909,6 +2058,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkCompositeAlphaFlagBitsKHR").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkSurfaceTransformFlagBitsKHR.begin(); it != _VkSurfaceTransformFlagBitsKHR.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1917,6 +2067,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkSurfaceTransformFlagBitsKHR").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkDebugReportFlagBitsEXT.begin(); it != _VkDebugReportFlagBitsEXT.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1925,6 +2076,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkDebugReportFlagBitsEXT").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkExternalMemoryHandleTypeFlagBitsNV.begin(); it != _VkExternalMemoryHandleTypeFlagBitsNV.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1933,6 +2085,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkExternalMemoryHandleTypeFlagBitsNV").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkExternalMemoryFeatureFlagBitsNV.begin(); it != _VkExternalMemoryFeatureFlagBitsNV.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1941,6 +2094,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkExternalMemoryFeatureFlagBitsNV").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkSubgroupFeatureFlagBits.begin(); it != _VkSubgroupFeatureFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1949,6 +2103,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkSubgroupFeatureFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkIndirectCommandsLayoutUsageFlagBitsNVX.begin(); it != _VkIndirectCommandsLayoutUsageFlagBitsNVX.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1957,6 +2112,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkIndirectCommandsLayoutUsageFlagBitsNVX").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkObjectEntryUsageFlagBitsNVX.begin(); it != _VkObjectEntryUsageFlagBitsNVX.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1965,6 +2121,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkObjectEntryUsageFlagBitsNVX").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkDescriptorSetLayoutCreateFlagBits.begin(); it != _VkDescriptorSetLayoutCreateFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1973,6 +2130,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkDescriptorSetLayoutCreateFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkExternalMemoryHandleTypeFlagBits.begin(); it != _VkExternalMemoryHandleTypeFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1981,6 +2139,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkExternalMemoryHandleTypeFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkExternalMemoryFeatureFlagBits.begin(); it != _VkExternalMemoryFeatureFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1989,6 +2148,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkExternalMemoryFeatureFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkExternalSemaphoreHandleTypeFlagBits.begin(); it != _VkExternalSemaphoreHandleTypeFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -1997,6 +2157,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkExternalSemaphoreHandleTypeFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkExternalSemaphoreFeatureFlagBits.begin(); it != _VkExternalSemaphoreFeatureFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -2005,6 +2166,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkExternalSemaphoreFeatureFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkSemaphoreImportFlagBits.begin(); it != _VkSemaphoreImportFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -2013,6 +2175,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkSemaphoreImportFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkExternalFenceHandleTypeFlagBits.begin(); it != _VkExternalFenceHandleTypeFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -2021,6 +2184,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkExternalFenceHandleTypeFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkExternalFenceFeatureFlagBits.begin(); it != _VkExternalFenceFeatureFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -2029,6 +2193,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkExternalFenceFeatureFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkFenceImportFlagBits.begin(); it != _VkFenceImportFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -2037,6 +2202,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkFenceImportFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkSurfaceCounterFlagBitsEXT.begin(); it != _VkSurfaceCounterFlagBitsEXT.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -2045,6 +2211,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkSurfaceCounterFlagBitsEXT").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkPeerMemoryFeatureFlagBits.begin(); it != _VkPeerMemoryFeatureFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -2053,6 +2220,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkPeerMemoryFeatureFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkMemoryAllocateFlagBits.begin(); it != _VkMemoryAllocateFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -2061,6 +2229,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkMemoryAllocateFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkDeviceGroupPresentModeFlagBitsKHR.begin(); it != _VkDeviceGroupPresentModeFlagBitsKHR.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -2069,6 +2238,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkDeviceGroupPresentModeFlagBitsKHR").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkSwapchainCreateFlagBitsKHR.begin(); it != _VkSwapchainCreateFlagBitsKHR.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -2077,6 +2247,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkSwapchainCreateFlagBitsKHR").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkSubpassDescriptionFlagBits.begin(); it != _VkSubpassDescriptionFlagBits.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -2085,6 +2256,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkSubpassDescriptionFlagBits").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkDebugUtilsMessageSeverityFlagBitsEXT.begin(); it != _VkDebugUtilsMessageSeverityFlagBitsEXT.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -2093,6 +2265,7 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkDebugUtilsMessageSeverityFlagBitsEXT").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkDebugUtilsMessageTypeFlagBitsEXT.begin(); it != _VkDebugUtilsMessageTypeFlagBitsEXT.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
@@ -2101,12 +2274,22 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     out->Set(Nan::New("VkDebugUtilsMessageTypeFlagBitsEXT").ToLocalChecked(), entry);
   }
   {
+    std::map<std::string, unsigned __int8>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkDescriptorBindingFlagBitsEXT.begin(); it != _VkDescriptorBindingFlagBitsEXT.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
       out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
     };
     out->Set(Nan::New("VkDescriptorBindingFlagBitsEXT").ToLocalChecked(), entry);
+  }
+  {
+    std::map<std::string, unsigned __int8>::iterator it;
+    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    for (it = _VkConditionalRenderingFlagBitsEXT.begin(); it != _VkConditionalRenderingFlagBitsEXT.end(); it++) {
+      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
+      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
+    };
+    out->Set(Nan::New("VkConditionalRenderingFlagBitsEXT").ToLocalChecked(), entry);
   }
   
   info.GetReturnValue().Set(out);

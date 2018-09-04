@@ -6,9 +6,6 @@ let enums = addon.getVulkanEnumerations();
 Object.assign(global, addon);
 Object.assign(global, enums);
 
-console.log(addon);
-console.log(global);
-
 let instance = new VkInstance();
 
 let appInfo = new VkApplicationInfo();
@@ -18,7 +15,7 @@ let bufferInfo = new VkBufferCreateInfo();
 bufferInfo.pQueueFamilyIndices = [1];
 
 let createInfo = new VkInstanceCreateInfo();
-//createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
 createInfo.pApplicationInfo = appInfo;
 
 let validationLayers = ["VK_LAYER_LUNARG_standard_validation"];
@@ -33,6 +30,11 @@ rect.offset.y = 666;
 rect.extent = new VkExtent2D();
 rect.extent.width = 1980;
 rect.extent.height = 1280;
+
+/*let rect = new VkRect2D({
+  offset: new VkOffset2D({ x: 42, y: 666 }),
+  extent: new VkExtent2D({ x: 1980, y: 1280 })
+});*/
 
 let clearRect = new VkClearRect();
 clearRect.rect = rect;
@@ -73,20 +75,28 @@ console.log(createInfo.ppEnabledLayerNames);
   let appInfo = new VkApplicationInfo();
   appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
   appInfo.pApplicationName = "Hello!";
-  //appInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
+  appInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
   appInfo.pEngineName = "No Engine";
-  //appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
+  appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
   appInfo.apiVersion = VK_API_VERSION_1_0;
 
   // create info
   let createInfo = new VkInstanceCreateInfo();
   createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
-  createInfo.pApplicationInfo = app;
+  createInfo.pApplicationInfo = appInfo;
   createInfo.enabledLayerCount = 0;
+
+  console.log(appInfo);
+  console.log(createInfo);
 
   if (vkCreateInstance(createInfo, null, instance) !== VK_SUCCESS) {
     console.error("Instance creation failed!");
   }
+
+  let deviceCount = { $:0 };
+  vkEnumeratePhysicalDevices(instance, deviceCount, null);
+  //if (deviceCount.$ <= 0) console.error("No render devices available!");
+  console.log(deviceCount.$);
 
 }
 

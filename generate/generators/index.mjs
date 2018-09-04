@@ -2,8 +2,8 @@ import fs from "fs";
 import nunjucks from "nunjucks";
 import toposort from "toposort";
 
-const H_TEMPLATE = fs.readFileSync(`index-h.njk`, "utf-8");
-const CPP_TEMPLATE = fs.readFileSync(`index-cpp.njk`, "utf-8");
+const H_TEMPLATE = fs.readFileSync(`./templates/index-h.njk`, "utf-8");
+const CPP_TEMPLATE = fs.readFileSync(`./templates/index-cpp.njk`, "utf-8");
 
 nunjucks.configure({ autoescape: true });
 
@@ -26,8 +26,9 @@ function generateIncludes(includes) {
   return out;
 };
 
-export default function(includes) {
+export default function(includes, calls) {
   let vars = {
+    calls,
     includes: generateIncludes(includes)
   };
   let out = {

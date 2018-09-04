@@ -1,8 +1,8 @@
 import fs from "fs";
 import nunjucks from "nunjucks";
 
-const H_TEMPLATE = fs.readFileSync(`handle-h.njk`, "utf-8");
-const CPP_TEMPLATE = fs.readFileSync(`handle-cpp.njk`, "utf-8");
+const H_TEMPLATE = fs.readFileSync(`./templates/handle-h.njk`, "utf-8");
+const CPP_TEMPLATE = fs.readFileSync(`./templates/handle-cpp.njk`, "utf-8");
 
 nunjucks.configure({ autoescape: true });
 

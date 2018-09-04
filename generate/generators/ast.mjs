@@ -1,7 +1,4 @@
-import fs from "fs";
 import xml from "xml-js";
-
-let xmlInputFile = fs.readFileSync("./vk.xml", "utf-8");
 
 let xmlOpts = {
   ignoreComment: true,
@@ -59,103 +56,6 @@ function findXMLElements(node, cond, out) {
     });
   }
 };
-
-{
-  let obj = new xml.xml2js(xmlInputFile, xmlOpts);
-  let out = [];
-  // bitmask type links
-  if (true) {
-    let results = [];
-    findXMLElements(obj, { category: "bitmask" }, results);
-    results.map((res, i) => {
-      let attr = res.attributes;
-      if (!attr.hasOwnProperty("requires")) return;
-      res.elements.map(el => {
-        if (el.name === "name") {
-          bitmasks[el.elements[0].text] = attr.requires;
-          bitmasks[attr.requires] = el.elements[0].text;
-        }
-      });
-    });
-  }
-  // basetype definitions
-  if (true) {
-    let results = [];
-    findXMLElements(obj, { category: "basetype" }, results);
-    results.map((res, i) => {
-      let name = null;
-      let type = null;
-      res.elements.map(el => {
-        if (el.name === "type") type = el.elements[0].text;
-        else if (el.name === "name") name = el.elements[0].text;
-      });
-      basetypes[name] = type;
-    });
-  }
-  // struct definitions
-  if (true) {
-    let results = [];
-    findXMLElements(obj, { category: "struct" }, results);
-    results.map(res => {
-      registerStruct(res.attributes);
-    });
-  }
-  // handles
-  if (true) {
-    let results = [];
-    let handleList = [];
-    findXMLElements(obj, { category: "handle" }, results);
-    results.map((res, i) => {
-      let name = null;
-      let type = null;
-      let {parent} = res.attributes;
-      if (!res.elements) return;
-      res.elements.map(el => {
-        if (el.name === "type") type = el.elements[0].text;
-        else if (el.name === "name") name = el.elements[0].text;
-      });
-      handles[name] = parent || null;
-      handleList.push(name);
-    });
-    out.push({
-      kind: "HANDLES",
-      children: handleList
-    });
-  }
-  if (true) {
-    let results = [];
-    findXMLElements(obj, { type: "enum" }, results);
-    results.map(res => {
-      let ast = parseElement(res);
-      out.push(ast);
-    });
-  }
-  if (true) {
-    let results = [];
-    findXMLElements(obj, { category: "struct" }, results);
-    results.map(res => {
-      let ast = parseElement(res);
-      out.push(ast);
-    });
-  }
-  if (true) {
-    let results = [];
-    findXMLElements(obj, { type: "bitmask" }, results);
-    results.map(res => {
-      let ast = parseElement(res);
-      out.push(ast);
-    });
-  }
-  if (true) {
-    let results = [];
-    findXMLElements(obj, "commands", results);
-    results.map(res => {
-      let ast = parseElement(res);
-      out.push(ast);
-    });
-  }
-  fs.writeFileSync("vk.json", JSON.stringify(out, null, 2), "utf-8");
-}
 
 function parseElement(el) {
   let attr = el.attributes;
@@ -326,10 +226,11 @@ function parseTypeElement(child) {
     };
   });
   let text = str.join(" ");
+  let staticArrayMatch = text.match(/\[([^)]+)\]/);
   let isConstant = !!text.match("const ");
   let dereferenceCount = text.split(/\*/g).length - 1;
   let raw = text.split(" ");
-  if (raw.length > 1) raw.pop();
+  if (raw.length > 1 && !staticArrayMatch) raw.pop();
   let rawType = raw.join(" ");
   let isEnumType = enums[type] !== void 0;
   let isStructType = structs[type] !== void 0;
@@ -369,56 +270,18 @@ function parseTypeElement(child) {
     } else {
       out.isArray = true;
       out.length = len;
+      out.isDynamicArray = true;
     }
   }
+  else if (staticArrayMatch) {
+    let size = staticArrayMatch[1].trim();
+    out.isArray = true;
+    out.length = size;
+    out.isStaticArray = true;
+    out.rawType = text.replace(name + " ", "");
+    console.log(out.rawType);
+  }
   return out;
-};
-
-function parseStructMemberType(elements) {
-  /*let qualifier = (() => {
-    let texts = elements.filter(el => el.type === "text");
-    if (texts.length) {
-      let qualifier = texts[0];
-      let index = elements.indexOf(qualifier);
-      return {
-        name: qualifier.text,
-        index
-      };
-    }
-    return null;
-  })();
-  let specifier = (() => {
-    let node = elements.find(el => el.name === "type");
-    let index = elements.indexOf(node);
-    return {
-      name: node.elements[0].text,
-      index
-    };
-  })();*/
-  let str = [];
-  let type = null;
-  let name = null;
-  elements.map(el => {
-    switch (el.type) {
-      case "text": str.push(el.text.trim()); break;
-      case "element": {
-        if (el.elements.length !== 1) {
-          throw `Cannt parse struct member type with length ${el.elements.length}!`;
-        }
-        let text = el.elements[0].text.trim();
-        if (el.name === "type") type = text;
-        if (el.name === "name") name = text;
-        str.push(text);
-      } break;
-      default: throw `Unknown struct member type element ${el.type}`;
-    };
-  });
-  let text = str.join(" ");
-  return {
-    text,
-    type,
-    name
-  };
 };
 
 function registerStruct(struct) {
@@ -431,4 +294,126 @@ function registerEnum(enu) {
   let {name} = enu;
   if (enums[name]) console.warn(`Enum ${name} already registered!`);
   enums[name] = 1;
+};
+
+
+export default function(xmlInput) {
+  let obj = new xml.xml2js(xmlInput, xmlOpts);
+  let out = [];
+  // bitmask type links
+  if (true) {
+    let results = [];
+    findXMLElements(obj, { category: "bitmask" }, results);
+    results.map((res, i) => {
+      let attr = res.attributes;
+      if (!attr.hasOwnProperty("requires")) return;
+      res.elements.map(el => {
+        if (el.name === "name") {
+          bitmasks[el.elements[0].text] = attr.requires;
+          bitmasks[attr.requires] = el.elements[0].text;
+        }
+      });
+    });
+  }
+  // basetype definitions
+  if (true) {
+    let results = [];
+    findXMLElements(obj, { category: "basetype" }, results);
+    results.map((res, i) => {
+      let name = null;
+      let type = null;
+      res.elements.map(el => {
+        if (el.name === "type") type = el.elements[0].text;
+        else if (el.name === "name") name = el.elements[0].text;
+      });
+      basetypes[name] = type;
+    });
+  }
+  // struct definitions
+  if (true) {
+    let results = [];
+    findXMLElements(obj, { category: "struct" }, results);
+    results.map(res => {
+      registerStruct(res.attributes);
+    });
+  }
+  // handles
+  if (true) {
+    let results = [];
+    let handleList = [];
+    findXMLElements(obj, { category: "handle" }, results);
+    results.map((res, i) => {
+      let name = null;
+      let type = null;
+      let {parent} = res.attributes;
+      if (!res.elements) return;
+      res.elements.map(el => {
+        if (el.name === "type") type = el.elements[0].text;
+        else if (el.name === "name") name = el.elements[0].text;
+      });
+      handles[name] = parent || null;
+      handleList.push(name);
+    });
+    out.push({
+      kind: "HANDLES",
+      children: handleList
+    });
+  }
+  // api constants
+  if (true) {
+    let results = [];
+    findXMLElements(obj, { name: "API Constants" }, results);
+    let ast = parseElement(results[0]);
+    ast.name = "API_Constants";
+    out.push(ast);
+  }
+  if (true) {
+    let results = [];
+    findXMLElements(obj, { type: "enum" }, results);
+    results.map(res => {
+      let ast = parseElement(res);
+      out.push(ast);
+    });
+  }
+  if (true) {
+    let results = [];
+    findXMLElements(obj, { category: "struct" }, results);
+    results.map(res => {
+      let ast = parseElement(res);
+      out.push(ast);
+    });
+  }
+  if (true) {
+    let results = [];
+    findXMLElements(obj, { type: "bitmask" }, results);
+    results.map(res => {
+      let ast = parseElement(res);
+      out.push(ast);
+    });
+  }
+  if (true) {
+    let results = [];
+    let commands = [];
+    findXMLElements(obj, "commands", results);
+    let nodes = parseElement(results[0]).children;
+    // merge cmd protos with cmd params
+    let idx = 0;
+    let cmd = null;
+    while (true) {
+      let current = nodes[idx];
+      if (current.kind === "COMMAND_PROTO") {
+        cmd = current;
+        cmd.params = [];
+        idx++;
+        commands.push(cmd);
+        continue;
+      }
+      if (cmd && current.kind === "COMMAND_PARAM") {
+        cmd.params.push(current);
+      }
+      if (idx++ >= nodes.length - 1) break;
+    };
+    commands.map(cmd => out.push(cmd));
+  }
+  return out;
 };
