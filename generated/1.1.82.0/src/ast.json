@@ -3149,12 +3149,6 @@
         "type": "VALUE",
         "value": "0",
         "name": "VK_COLOR_SPACE_SRGB_NONLINEAR_KHR"
-      },
-      {
-        "kind": "ENUM_MEMBER",
-        "type": "ALIAS",
-        "value": "VK_COLOR_SPACE_SRGB_NONLINEAR_KHR",
-        "name": "VK_COLORSPACE_SRGB_NONLINEAR_KHR"
       }
     ]
   },
@@ -3339,12 +3333,6 @@
       },
       {
         "kind": "ENUM_MEMBER",
-        "type": "ALIAS",
-        "value": "VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT_EXT",
-        "name": "VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_EXT"
-      },
-      {
-        "kind": "ENUM_MEMBER",
         "type": "VALUE",
         "value": "29",
         "name": "VK_DEBUG_REPORT_OBJECT_TYPE_DISPLAY_KHR_EXT"
@@ -3372,12 +3360,6 @@
         "type": "VALUE",
         "value": "33",
         "name": "VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT"
-      },
-      {
-        "kind": "ENUM_MEMBER",
-        "type": "ALIAS",
-        "value": "VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT",
-        "name": "VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT"
       }
     ]
   },

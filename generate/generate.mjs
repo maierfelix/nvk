@@ -6,6 +6,7 @@ import generateEnums from "./generators/enums";
 import generateIndex from "./generators/index";
 import generateStructs from "./generators/structs";
 import generateHandles from "./generators/handles";
+import generateGyp from "./generators/gyp";
 
 // input vars
 let argsVersion = null;
@@ -28,18 +29,26 @@ for (let ii = 2; ii < args.length; ++ii) {
 // args error handling
 if (!argsVersion) throw `No specification version specified!`;
 
-const generatePath = `../generated/${argsVersion}`;
-const baseIncludePath = `${` `.repeat(9)}"./generated/${argsVersion}`;
+const baseGeneratePath = `../generated`;
+const generatePath = `${baseGeneratePath}/${argsVersion}`;
+const generateSrcPath = `${generatePath}/src`;
+const baseIncludePath = `"./generated/<(vkVersion)`;
 
+// generated/
+if (!fs.existsSync(baseGeneratePath)) fs.mkdirSync(baseGeneratePath);
+// generated/version/
 if (!fs.existsSync(generatePath)) fs.mkdirSync(generatePath);
+// generated/version/src/
+if (!fs.existsSync(generateSrcPath)) fs.mkdirSync(generateSrcPath);
 
-// generate vk.json AST
+// generate AST
 let ast = null;
 {
   console.log("Generating Vk ast..");
   let xmlInput = fs.readFileSync(`./specifications/${argsVersion}.xml`, "utf-8");
   ast = generateAST(xmlInput);
-  writeFile(`./ast.json`, JSON.stringify(ast, null, 2), "utf-8");
+  let str = JSON.stringify(ast, null, 2);
+  writeFile(`${generateSrcPath}/ast.json`, str, "utf-8");
 }
 
 let calls = ast.filter(node => node.kind === "COMMAND_PROTO");
@@ -63,8 +72,7 @@ let structWhiteList = [
   "VkOffset2D.h",
   "VkRect2D.h",
   "VkClearRect.h",
-  "VkImageMemoryBarrier.h",
-  "VkPhysicalDeviceProperties.h"
+  "VkImageMemoryBarrier.h"
 ];
 
 // bridged to only change the change data of a file if it's really necessary
@@ -89,8 +97,8 @@ function ignoreStruct(struct) {
     let result = generateStructs(struct);
     result.includes.map(incl => includes.push(incl));
     if (includes.indexOf(struct.name) <= -1) includes.push({ name: struct.name, include: "" });
-    writeFile(`${generatePath}/${struct.name}.h`, result.header, "utf-8");
-    writeFile(`${generatePath}/${struct.name}.cpp`, result.source, "utf-8");
+    writeFile(`${generateSrcPath}/${struct.name}.h`, result.header, "utf-8");
+    writeFile(`${generateSrcPath}/${struct.name}.cpp`, result.source, "utf-8");
   });
 }
 
@@ -100,8 +108,8 @@ function ignoreStruct(struct) {
   handles.map(handle => {
     let result = generateHandles(handle);
     if (includes.indexOf(handle) <= -1) includes.push({ name: handle, include: "" });
-    writeFile(`${generatePath}/${handle}.h`, result.header, "utf-8");
-    writeFile(`${generatePath}/${handle}.cpp`, result.source, "utf-8");
+    writeFile(`${generateSrcPath}/${handle}.h`, result.header, "utf-8");
+    writeFile(`${generateSrcPath}/${handle}.cpp`, result.source, "utf-8");
   });
 }
 
@@ -110,8 +118,7 @@ function ignoreStruct(struct) {
   console.log("Generating Vk enums..");
   let name = `enums`;
   let result = generateEnums(enums);
-  writeFile(`${generatePath}/${name}.h`, result.source, "utf-8");
-  //includeNames.push(`${baseIncludePath}/${name}.h"`);
+  writeFile(`${generateSrcPath}/${name}.h`, result.source, "utf-8");
 }
 
 // generate calls
@@ -119,7 +126,7 @@ function ignoreStruct(struct) {
   console.log("Generating Vk calls..");
   let name = `calls`;
   let result = generateCalls(calls);
-  writeFile(`${generatePath}/${name}.h`, result.source, "utf-8");
+  writeFile(`${generateSrcPath}/${name}.h`, result.source, "utf-8");
 }
 
 // generate includes
@@ -127,20 +134,26 @@ function ignoreStruct(struct) {
   console.log("Generating Vk includes..");
   structs.map(struct => {
     if (ignoreStruct(struct)) return;
-    includeNames.push(`${baseIncludePath}/${struct.name}.cpp"`);
+    includeNames.push(`"./src/${struct.name}.cpp"`);
   });
   handles.map(handle => {
-    includeNames.push(`${baseIncludePath}/${handle}.cpp"`);
+    includeNames.push(`"./src/${handle}.cpp"`);
   });
   // also add the index.cpp
-  includeNames.push(`${baseIncludePath}/index.cpp"`);
-  writeFile(`./includeNames.txt`, includeNames.join(",\n"), "utf-8");
+  includeNames.push(`"./src/index.cpp"`);
+}
+
+// generate binding.gyp
+{
+  console.log("Generating binding.gyp..");
+  let result = generateGyp(argsVersion, includeNames);
+  writeFile(`${generatePath}/binding.gyp`, result.gyp, "utf-8");
 }
 
 // generate index
 {
   console.log("Generating Vk index..");
   let indexFile = generateIndex(includes, calls);
-  writeFile(`${generatePath}/index.h`, indexFile.header, "utf-8");
-  writeFile(`${generatePath}/index.cpp`, indexFile.source, "utf-8");
+  writeFile(`${generateSrcPath}/index.h`, indexFile.header, "utf-8");
+  writeFile(`${generateSrcPath}/index.cpp`, indexFile.source, "utf-8");
 }

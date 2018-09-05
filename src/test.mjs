@@ -1,5 +1,5 @@
 import util from "util";
-import addon from "../build/Release/addon.node";
+import addon from "../generated/1.1.82.0/build/Release/addon.node";
 
 let enums = addon.getVulkanEnumerations();
 
@@ -90,12 +90,12 @@ console.log(createInfo.ppEnabledLayerNames);
   console.log(createInfo);
 
   if (vkCreateInstance(createInfo, null, instance) !== VK_SUCCESS) {
-    console.error("Instance creation failed!");
+    console.error("Error: Instance creation failed!");
   }
 
   let deviceCount = { $:0 };
   vkEnumeratePhysicalDevices(instance, deviceCount, null);
-  //if (deviceCount.$ <= 0) console.error("No render devices available!");
+  if (deviceCount.$ <= 0) console.error("Error: No render devices available!");
   console.log(deviceCount.$);
 
 }

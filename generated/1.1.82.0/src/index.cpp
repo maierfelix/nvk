@@ -107,9 +107,6 @@ NAN_MODULE_INIT(InitModule) {
   _VkPhysicalDeviceFeatures::Initialize(target);
   _VkDeviceQueueCreateInfo::Initialize(target);
   _VkDeviceCreateInfo::Initialize(target);
-  _VkPhysicalDeviceSparseProperties::Initialize(target);
-  _VkPhysicalDeviceLimits::Initialize(target);
-  _VkPhysicalDeviceProperties::Initialize(target);
   _VkExtent2D::Initialize(target);
   _VkOffset2D::Initialize(target);
   _VkRect2D::Initialize(target);
