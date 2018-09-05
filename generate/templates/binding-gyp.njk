@@ -1,7 +1,8 @@
 {
   "variables": {
     "platform": "<(OS)",
-    "vkVersion": "{{ VK_VERSION | safe }}"
+    "vkVersion": "{{ VK_VERSION | safe }}",
+    "root_dir": "../.."
   },
   "conditions": [
     [ "platform == 'win'", { "variables": { "platform": "windows" } } ],
@@ -18,8 +19,8 @@
             "copies": [
               {
                 "files": [
-                  "./lib/<(platform)/<(target_arch)/GLEW/glew32.dll",
-                  "./lib/<(platform)/<(target_arch)/GLFW/glfw3.dll"
+                  "<(root_dir)/lib/<(platform)/<(target_arch)/GLEW/glew32.dll",
+                  "<(root_dir)/lib/<(platform)/<(target_arch)/GLFW/glfw3.dll"
                 ],
                 "destination": "<(PRODUCT_DIR)"
               }
@@ -33,12 +34,12 @@
       "sources": [ {{ VK_INCLUDES | safe }} ],
       "include_dirs": [
         "<!(node -e \"require('nan')\")",
-        "./lib/include",
+        "<(root_dir)/lib/include",
         "C:/VulkanSDK/<(vkVersion)/Include"
       ],
       "library_dirs": [
-        "./lib/<(platform)/<(target_arch)/GLFW",
-        "./lib/<(platform)/<(target_arch)/GLEW",
+        "<(root_dir)/lib/<(platform)/<(target_arch)/GLFW",
+        "<(root_dir)/lib/<(platform)/<(target_arch)/GLEW",
         "C:/VulkanSDK/<(vkVersion)/Lib"
       ],
       "conditions": [
@@ -82,10 +83,7 @@
               },
               "VCLinkerTool": {
                 "LinkTimeCodeGeneration": 1,
-                "LinkIncremental": 1,
-                "AdditionalLibraryDirectories": [
-                  "../@PROJECT_SOURCE_DIR@/lib/<(platform)/<(target_arch)",
-                ]
+                "LinkIncremental": 1
               }
             }
           }

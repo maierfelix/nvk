@@ -7,6 +7,7 @@ import generateIndex from "./generators/index";
 import generateStructs from "./generators/structs";
 import generateHandles from "./generators/handles";
 import generateGyp from "./generators/gyp";
+import generatePackage from "./generators/package";
 
 // input vars
 let argsVersion = null;
@@ -148,6 +149,13 @@ function ignoreStruct(struct) {
   console.log("Generating binding.gyp..");
   let result = generateGyp(argsVersion, includeNames);
   writeFile(`${generatePath}/binding.gyp`, result.gyp, "utf-8");
+}
+
+// generate package.json
+{
+  console.log("Generating package.json..");
+  let result = generatePackage(argsVersion);
+  writeFile(`${generatePath}/package.json`, result.json, "utf-8");
 }
 
 // generate index
