@@ -1,5 +1,5 @@
 import util from "util";
-import addon from "../generated/1.1.82.0/build/Release/addon.node";
+import addon from "./generated/1.1.82.0/build/Release/addon.node";
 
 let enums = addon.getVulkanEnumerations();
 

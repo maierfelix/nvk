@@ -1,7 +1,8 @@
 import fs from "fs";
 import nunjucks from "nunjucks";
+import pkg from "../../package.json";
 
-const GYP_TEMPLATE = fs.readFileSync(`./templates/binding-gyp.njk`, "utf-8");
+const GYP_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/binding-gyp.njk`, "utf-8");
 
 nunjucks.configure({ autoescape: true });
 

@@ -2,22 +2,20 @@ import fs from "fs";
 import nunjucks from "nunjucks";
 import pkg from "../../package.json";
 
-const PKG_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/package-json.njk`, "utf-8");
+const H_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/utils-h.njk`, "utf-8");
 
 nunjucks.configure({ autoescape: true });
 
 export default function(VK_VERSION) {
-  let vars = {
-    VK_VERSION
-  };
+  let vars = {};
   let out = {
-    json: null
+    header: null
   };
-  // package.json
+  // utils.h
   {
-    let template = PKG_TEMPLATE;
+    let template = H_TEMPLATE;
     let output = nunjucks.renderString(template, vars);
-    out.json = output;
+    out.header = output;
   }
   return out;
 };

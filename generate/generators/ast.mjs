@@ -1,4 +1,5 @@
 import xml from "xml-js";
+import pkg from "../../package.json";
 
 let xmlOpts = {
   ignoreComment: true,

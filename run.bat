@@ -1,1 +1,1 @@
-cls && node --inspect --experimental-modules src/test.mjs
+cls && node --inspect --experimental-modules ./test.mjs

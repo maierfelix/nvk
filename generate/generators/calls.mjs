@@ -1,7 +1,8 @@
 import fs from "fs";
 import nunjucks from "nunjucks";
+import pkg from "../../package.json";
 
-const CPP_TEMPLATE = fs.readFileSync(`./templates/calls-cpp.njk`, "utf-8");
+const CPP_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/calls-cpp.njk`, "utf-8");
 
 nunjucks.configure({ autoescape: true });
 

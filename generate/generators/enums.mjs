@@ -1,7 +1,8 @@
 import fs from "fs";
 import nunjucks from "nunjucks";
+import pkg from "../../package.json";
 
-const H_TEMPLATE = fs.readFileSync(`./templates/enums-h.njk`, "utf-8");
+const H_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/enums-h.njk`, "utf-8");
 
 nunjucks.configure({ autoescape: true });
 

@@ -1,9 +1,10 @@
 import fs from "fs";
 import nunjucks from "nunjucks";
 import toposort from "toposort";
+import pkg from "../../package.json";
 
-const H_TEMPLATE = fs.readFileSync(`./templates/index-h.njk`, "utf-8");
-const CPP_TEMPLATE = fs.readFileSync(`./templates/index-cpp.njk`, "utf-8");
+const H_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/index-h.njk`, "utf-8");
+const CPP_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/index-cpp.njk`, "utf-8");
 
 nunjucks.configure({ autoescape: true });
 
