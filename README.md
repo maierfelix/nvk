@@ -17,12 +17,12 @@ Make sure you have either Visual Studio >= 15 installed or use
 npm install --global --production windows-build-tools
 ````
 
+Install the Vulkan SDK from [here](https://vulkan.lunarg.com/sdk/home#windows)
+
 Install this tool with
 ````
 npm install node-vulkan
 ````
-
-Install the Vulkan SDK from [here](https://vulkan.lunarg.com/sdk/home#windows)
 
 ## API:
 
