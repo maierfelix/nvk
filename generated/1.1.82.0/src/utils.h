@@ -44,41 +44,12 @@ inline const char** createArrayOfV8Strings(v8::Local<v8::Value> value) {
   return data.data();
 };
 
-inline int32_t* createArrayOfV8Int32(v8::Local<v8::Value> value) {
+template<typename T>
+inline const T* createArrayOfV8Numbers(v8::Local<v8::Value> value) {
   v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(value);
-  std::vector<int32_t> data;
+  std::vector<T> data;
   for (unsigned int ii = 0; ii < array->Length(); ++ii) {
-    int32_t num = static_cast<int32_t>(Nan::Get(array, ii).ToLocalChecked()->NumberValue());
-    data.push_back(num);
-  };
-  return data.data();
-};
-
-inline uint32_t* createArrayOfV8Uint32(v8::Local<v8::Value> value) {
-  v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(value);
-  std::vector<uint32_t> data;
-  for (unsigned int ii = 0; ii < array->Length(); ++ii) {
-    uint32_t num = Nan::Get(array, ii).ToLocalChecked()->Uint32Value();
-    data.push_back(num);
-  };
-  return data.data();
-};
-
-inline uint64_t* createArrayOfV8Uint64(v8::Local<v8::Value> value) {
-  v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(value);
-  std::vector<uint64_t> data;
-  for (unsigned int ii = 0; ii < array->Length(); ++ii) {
-    uint64_t num = static_cast<uint64_t>(Nan::Get(array, ii).ToLocalChecked()->NumberValue());
-    data.push_back(num);
-  };
-  return data.data();
-};
-
-inline float* createArrayOfV8Floats(v8::Local<v8::Value> value) {
-  v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(value);
-  std::vector<float> data;
-  for (unsigned int ii = 0; ii < array->Length(); ++ii) {
-    float num = static_cast<float>(Nan::Get(array, ii).ToLocalChecked()->NumberValue());
+    T num = static_cast<T>(Nan::Get(array, ii).ToLocalChecked()->NumberValue());
     data.push_back(num);
   };
   return data.data();

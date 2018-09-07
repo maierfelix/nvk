@@ -34,6 +34,18 @@ function processHeaderGetter(member) {
     return `
     static NAN_GETTER(Get${member.name});`;
   }
+  // string of chars
+  if (member.isStaticArray) {
+    if (member.type === "char") {
+      return `
+    Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> ${member.name};
+    static NAN_GETTER(Get${member.name});`;
+    } else {
+      return `
+    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> ${member.name};
+    static NAN_GETTER(Get${member.name});`;
+    }
+  }
   if (member.isArray && (member.isStructType || member.isHandleType)) {
     return `
     Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> ${member.name};
@@ -100,6 +112,10 @@ function processHeaderSetter(member) {
 function processSourceGetter(member) {
   let {rawType} = member;
   if (member.isBaseType) rawType = member.baseType;
+  if (member.isStaticArray) {
+    return `
+  info.GetReturnValue().Set(Nan::New(self->${member.name}));`;
+  }
   if (member.isArray && member.isStructType) {
     return `
   if (instance->${member.name} != nullptr) {
@@ -158,6 +174,21 @@ function processSourceGetter(member) {
 function processSourceSetter(member) {
   let {rawType} = member;
   if (member.isBaseType) rawType = member.baseType;
+  if (member.isStaticArray) {
+    if (member.type === "char") {
+      return `
+  Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> str(Nan::To<v8::String>(value).ToLocalChecked());
+  self->${member.name} = str;
+  strcpy(instance->${member.name}, copyV8String(value));`;
+    } else {
+      return `
+  ${genPersistentV8Array(member)}
+  // vulkan
+  {
+    memcpy(instance->${member.name}, createArrayOfV8Numbers<${member.type}>(value), sizeof(${member.type}) * ${member.length});
+  }`;
+    }
+  }
   if (member.isArray && (member.isStructType || member.isHandleType)) {
     return `
   ${genPersistentV8Array(member)}
@@ -188,32 +219,14 @@ function processSourceSetter(member) {
     instance->${member.name} = createArrayOfV8Strings(value);
   }`;
     case "const float *":
-      return `
-  ${genPersistentV8Array(member)}
-  // vulkan
-  {
-    instance->${member.name} = createArrayOfV8Floats(value);
-  }`;
     case "const int32_t *":
-      return `
-  ${genPersistentV8Array(member)}
-  // vulkan
-  {
-    instance->${member.name} = createArrayOfV8Int32(value);
-  }`;
     case "const uint32_t *":
-      return `
-  ${genPersistentV8Array(member)}
-  // vulkan
-  {
-    instance->${member.name} = createArrayOfV8Uint32(value);
-  }`;
     case "const uint64_t *":
       return `
   ${genPersistentV8Array(member)}
   // vulkan
   {
-    instance->${member.name} = createArrayOfV8Uint64(value);
+    instance->${member.name} = createArrayOfV8Numbers<${member.type}>(value);
   }`;
     case "const void *":
       return `
@@ -241,6 +254,8 @@ function processSourceSetter(member) {
 };
 
 function processSourceIncludes(input) {
+  let out = ``;
+  let includes = [];
   input.children.map(child => {
     if (child.isStructType) {
       globalIncludes.push({
@@ -248,8 +263,13 @@ function processSourceIncludes(input) {
         include: child.type
       });
     }
+    if (child.isStaticArray && includes.indexOf("string.h") <= -1) {
+      out += `\n#include <string.h>`;
+      includes.push("string.h");
+    }
   });
-  return `\n#include "index.h"`;
+  out += `\n#include "index.h"`;
+  return out;
 };
 
 function processSourceMemberInitializer(member) {

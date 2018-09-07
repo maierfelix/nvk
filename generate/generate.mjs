@@ -85,18 +85,21 @@ let structWhiteList = [
   "VkOffset2D.h",
   "VkRect2D.h",
   "VkClearRect.h",
-  "VkImageMemoryBarrier.h"
+  "VkImageMemoryBarrier.h",
+  "VkPhysicalDeviceProperties.h",
+  "VkPhysicalDeviceLimits.h",
+  "VkPhysicalDeviceSparseProperties.h"
 ];
 
-console.log(`Generating bindings based on ${argsVersion}.xml`);
+console.log(`Generating using ${argsVersion}.xml`);
 
 // generate AST
 {
-  console.log(`Generating Vk ast..`);
+  console.log(`Generating AST..`);
   let xmlInput = fs.readFileSync(`${pkg.config.SPEC_DIR}/${argsVersion}.xml`, "utf-8");
   ast = generateAST(xmlInput);
   let str = JSON.stringify(ast, null, 2);
-  writeFile(`${generateSrcPath}/ast.json`, str, "utf-8");
+  writeFile(`${generatePath}/ast.json`, str, "utf-8");
 }
 
 // filter out ast nodes by their types
@@ -132,17 +135,15 @@ let handles = ast.filter(node => node.kind === "HANDLES")[0].children;
 // generate enums
 {
   console.log("Generating Vk enums..");
-  let name = `enums`;
   let result = generateEnums(enums);
-  writeFile(`${generateSrcPath}/${name}.h`, result.source, "utf-8", true);
+  writeFile(`${generateSrcPath}/enums.h`, result.source, "utf-8", true);
 }
 
 // generate calls
 {
   console.log("Generating Vk calls..");
-  let name = `calls`;
   let result = generateCalls(calls);
-  writeFile(`${generateSrcPath}/${name}.h`, result.source, "utf-8", true);
+  writeFile(`${generateSrcPath}/calls.h`, result.source, "utf-8", true);
 }
 
 // generate includes

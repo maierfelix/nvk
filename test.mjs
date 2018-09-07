@@ -98,6 +98,16 @@ console.log(createInfo.ppEnabledLayerNames);
   if (deviceCount.$ <= 0) console.error("Error: No render devices available!");
   console.log(deviceCount.$);
 
+  //let deviceFeatures = new VkPhysicalDeviceFeatures();
+  //vkGetPhysicalDeviceFeatures(device, deviceFeatures);
+
+  let devices = [];
+  vkEnumeratePhysicalDevices(instance, deviceCount, devices);
+  let device = devices[0];
+
+  let deviceProperties = new VkPhysicalDeviceProperties();
+  vkGetPhysicalDeviceProperties(device, deviceProperties);
+
 }
 
 console.log("end");

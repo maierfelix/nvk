@@ -280,7 +280,6 @@ function parseTypeElement(child) {
     out.length = size;
     out.isStaticArray = true;
     out.rawType = text.replace(name + " ", "");
-    console.log(out.rawType);
   }
   return out;
 };

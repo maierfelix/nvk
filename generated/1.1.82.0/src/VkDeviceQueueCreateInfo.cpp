@@ -93,6 +93,6 @@ NAN_SETTER(_VkDeviceQueueCreateInfo::SetpQueuePriorities) {
   
   // vulkan
   {
-    instance->pQueuePriorities = createArrayOfV8Floats(value);
+    instance->pQueuePriorities = createArrayOfV8Numbers<float>(value);
   }
 }

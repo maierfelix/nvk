@@ -115,6 +115,6 @@ NAN_SETTER(_VkBufferCreateInfo::SetpQueueFamilyIndices) {
   
   // vulkan
   {
-    instance->pQueueFamilyIndices = createArrayOfV8Uint32(value);
+    instance->pQueueFamilyIndices = createArrayOfV8Numbers<uint32_t>(value);
   }
 }
