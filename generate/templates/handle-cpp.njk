@@ -3,11 +3,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _{{ handle_name }}::constructor;
 
-_{{ handle_name }}::_{{ handle_name }}() {
-  instance = ({{ handle_name }}*) malloc(sizeof({{ handle_name }}));
-}
-
-_{{ handle_name }}::~_{{ handle_name }}() { }
+_{{ handle_name }}::_{{ handle_name }}() {}
+_{{ handle_name }}::~_{{ handle_name }}() {}
 
 void _{{ handle_name }}::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

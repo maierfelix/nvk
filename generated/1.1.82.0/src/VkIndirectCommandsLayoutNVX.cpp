@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkIndirectCommandsLayoutNVX::constructor;
 
-_VkIndirectCommandsLayoutNVX::_VkIndirectCommandsLayoutNVX() {
-  instance = (VkIndirectCommandsLayoutNVX*) malloc(sizeof(VkIndirectCommandsLayoutNVX));
-}
-
-_VkIndirectCommandsLayoutNVX::~_VkIndirectCommandsLayoutNVX() { }
+_VkIndirectCommandsLayoutNVX::_VkIndirectCommandsLayoutNVX() {}
+_VkIndirectCommandsLayoutNVX::~_VkIndirectCommandsLayoutNVX() {}
 
 void _VkIndirectCommandsLayoutNVX::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

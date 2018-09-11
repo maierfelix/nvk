@@ -20,7 +20,7 @@ class _{{ struct_name }}: public Nan::ObjectWrap {
     {%- endfor %}
 
     // real instance
-    {{ struct_name }} *instance;
+    {{ struct_name }} instance = {};
 
     static Nan::Persistent<v8::FunctionTemplate> constructor;
     static void Initialize(v8::Local<v8::Object> exports);

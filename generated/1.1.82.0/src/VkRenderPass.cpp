@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkRenderPass::constructor;
 
-_VkRenderPass::_VkRenderPass() {
-  instance = (VkRenderPass*) malloc(sizeof(VkRenderPass));
-}
-
-_VkRenderPass::~_VkRenderPass() { }
+_VkRenderPass::_VkRenderPass() {}
+_VkRenderPass::~_VkRenderPass() {}
 
 void _VkRenderPass::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

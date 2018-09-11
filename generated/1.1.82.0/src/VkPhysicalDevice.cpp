@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkPhysicalDevice::constructor;
 
-_VkPhysicalDevice::_VkPhysicalDevice() {
-  instance = (VkPhysicalDevice*) malloc(sizeof(VkPhysicalDevice));
-}
-
-_VkPhysicalDevice::~_VkPhysicalDevice() { }
+_VkPhysicalDevice::_VkPhysicalDevice() {}
+_VkPhysicalDevice::~_VkPhysicalDevice() {}
 
 void _VkPhysicalDevice::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

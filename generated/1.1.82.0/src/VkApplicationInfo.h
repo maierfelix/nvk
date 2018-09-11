@@ -38,7 +38,7 @@ class _VkApplicationInfo: public Nan::ObjectWrap {
     
 
     // real instance
-    VkApplicationInfo *instance;
+    VkApplicationInfo instance = {};
 
     static Nan::Persistent<v8::FunctionTemplate> constructor;
     static void Initialize(v8::Local<v8::Object> exports);

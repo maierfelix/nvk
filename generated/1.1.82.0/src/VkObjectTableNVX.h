@@ -17,7 +17,7 @@ class _VkObjectTableNVX: public Nan::ObjectWrap {
     static NAN_METHOD(New);
 
     // real instance
-    VkObjectTableNVX *instance;
+    VkObjectTableNVX instance;
 
     static Nan::Persistent<v8::FunctionTemplate> constructor;
     static void Initialize(v8::Local<v8::Object> exports);

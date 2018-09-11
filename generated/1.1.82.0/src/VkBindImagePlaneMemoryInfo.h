@@ -24,7 +24,7 @@ class _VkBindImagePlaneMemoryInfo: public Nan::ObjectWrap {
     
 
     // real instance
-    VkBindImagePlaneMemoryInfo *instance;
+    VkBindImagePlaneMemoryInfo instance = {};
 
     static Nan::Persistent<v8::FunctionTemplate> constructor;
     static void Initialize(v8::Local<v8::Object> exports);

@@ -9,8 +9,6 @@
 Nan::Persistent<v8::FunctionTemplate> _VkBufferCreateInfo::constructor;
 
 _VkBufferCreateInfo::_VkBufferCreateInfo() {
-  instance = (VkBufferCreateInfo*) malloc(sizeof(VkBufferCreateInfo));
-  instance->pQueueFamilyIndices = nullptr;
 }
 
 _VkBufferCreateInfo::~_VkBufferCreateInfo() { }
@@ -45,66 +43,51 @@ NAN_METHOD(_VkBufferCreateInfo::New) {
 // sType
 NAN_GETTER(_VkBufferCreateInfo::GetsType) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
-  VkBufferCreateInfo *instance = self->instance;
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance->sType));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }
 NAN_SETTER(_VkBufferCreateInfo::SetsType) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
-  VkBufferCreateInfo *instance = self->instance;
-  self->instance->sType = static_cast<VkStructureType>(value->Uint32Value());
+  self->instance.sType = static_cast<VkStructureType>(value->Uint32Value());
 }// size
 NAN_GETTER(_VkBufferCreateInfo::Getsize) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
-  VkBufferCreateInfo *instance = self->instance;
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance->size));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.size));
 }
 NAN_SETTER(_VkBufferCreateInfo::Setsize) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
-  VkBufferCreateInfo *instance = self->instance;
-  self->instance->size = static_cast<uint64_t>(value->NumberValue());
+  self->instance.size = static_cast<uint64_t>(value->NumberValue());
 }// usage
 NAN_GETTER(_VkBufferCreateInfo::Getusage) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
-  VkBufferCreateInfo *instance = self->instance;
-  info.GetReturnValue().Set(Nan::New<v8::Number>(static_cast<uint8_t>(self->instance->usage)));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(static_cast<uint8_t>(self->instance.usage)));
 }
 NAN_SETTER(_VkBufferCreateInfo::Setusage) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
-  VkBufferCreateInfo *instance = self->instance;
-  self->instance->usage = static_cast<VkBufferUsageFlags>(value->Uint32Value());
+  self->instance.usage = static_cast<VkBufferUsageFlags>(value->Uint32Value());
 }// sharingMode
 NAN_GETTER(_VkBufferCreateInfo::GetsharingMode) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
-  VkBufferCreateInfo *instance = self->instance;
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance->sharingMode));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sharingMode));
 }
 NAN_SETTER(_VkBufferCreateInfo::SetsharingMode) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
-  VkBufferCreateInfo *instance = self->instance;
-  self->instance->sharingMode = static_cast<VkSharingMode>(value->Uint32Value());
+  self->instance.sharingMode = static_cast<VkSharingMode>(value->Uint32Value());
 }// queueFamilyIndexCount
 NAN_GETTER(_VkBufferCreateInfo::GetqueueFamilyIndexCount) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
-  VkBufferCreateInfo *instance = self->instance;
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance->queueFamilyIndexCount));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.queueFamilyIndexCount));
 }
 NAN_SETTER(_VkBufferCreateInfo::SetqueueFamilyIndexCount) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
-  VkBufferCreateInfo *instance = self->instance;
-  self->instance->queueFamilyIndexCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.queueFamilyIndexCount = static_cast<uint32_t>(value->NumberValue());
 }// pQueueFamilyIndices
 NAN_GETTER(_VkBufferCreateInfo::GetpQueueFamilyIndices) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
-  VkBufferCreateInfo *instance = self->instance;
-  if (instance->pQueueFamilyIndices != nullptr) {
-    info.GetReturnValue().Set(Nan::New(self->pQueueFamilyIndices));
-  } else {
-    info.GetReturnValue().SetNull();
-  }
+  v8::Local<v8::Object> obj = Nan::New(self->pQueueFamilyIndices);
+  info.GetReturnValue().Set(obj);
 }
 NAN_SETTER(_VkBufferCreateInfo::SetpQueueFamilyIndices) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
-  VkBufferCreateInfo *instance = self->instance;
   
     // js
     {
@@ -115,6 +98,6 @@ NAN_SETTER(_VkBufferCreateInfo::SetpQueueFamilyIndices) {
   
   // vulkan
   {
-    instance->pQueueFamilyIndices = createArrayOfV8Numbers<uint32_t>(value);
+    self->instance.pQueueFamilyIndices = createArrayOfV8Numbers<uint32_t>(value);
   }
 }

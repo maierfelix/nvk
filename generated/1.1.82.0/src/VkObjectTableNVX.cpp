@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkObjectTableNVX::constructor;
 
-_VkObjectTableNVX::_VkObjectTableNVX() {
-  instance = (VkObjectTableNVX*) malloc(sizeof(VkObjectTableNVX));
-}
-
-_VkObjectTableNVX::~_VkObjectTableNVX() { }
+_VkObjectTableNVX::_VkObjectTableNVX() {}
+_VkObjectTableNVX::~_VkObjectTableNVX() {}
 
 void _VkObjectTableNVX::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

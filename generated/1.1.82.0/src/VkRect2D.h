@@ -16,17 +16,17 @@ class _VkRect2D: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     // #accessors
-      _VkOffset2D *offset;
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> offset;
       static NAN_GETTER(Getoffset);
     static NAN_SETTER(Setoffset);
     
-      _VkExtent2D *extent;
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> extent;
       static NAN_GETTER(Getextent);
     static NAN_SETTER(Setextent);
     
 
     // real instance
-    VkRect2D *instance;
+    VkRect2D instance = {};
 
     static Nan::Persistent<v8::FunctionTemplate> constructor;
     static void Initialize(v8::Local<v8::Object> exports);

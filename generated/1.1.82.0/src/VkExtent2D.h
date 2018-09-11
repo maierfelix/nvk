@@ -24,7 +24,7 @@ class _VkExtent2D: public Nan::ObjectWrap {
     
 
     // real instance
-    VkExtent2D *instance;
+    VkExtent2D instance = {};
 
     static Nan::Persistent<v8::FunctionTemplate> constructor;
     static void Initialize(v8::Local<v8::Object> exports);

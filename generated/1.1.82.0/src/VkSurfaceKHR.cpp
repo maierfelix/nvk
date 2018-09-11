@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkSurfaceKHR::constructor;
 
-_VkSurfaceKHR::_VkSurfaceKHR() {
-  instance = (VkSurfaceKHR*) malloc(sizeof(VkSurfaceKHR));
-}
-
-_VkSurfaceKHR::~_VkSurfaceKHR() { }
+_VkSurfaceKHR::_VkSurfaceKHR() {}
+_VkSurfaceKHR::~_VkSurfaceKHR() {}
 
 void _VkSurfaceKHR::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

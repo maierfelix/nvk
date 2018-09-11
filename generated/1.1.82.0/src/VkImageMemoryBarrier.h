@@ -37,17 +37,17 @@ class _VkImageMemoryBarrier: public Nan::ObjectWrap {
     static NAN_GETTER(GetdstQueueFamilyIndex);
     static NAN_SETTER(SetdstQueueFamilyIndex);
     
-      _VkImage *image;
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> image;
       static NAN_GETTER(Getimage);
     static NAN_SETTER(Setimage);
     
-      _VkImageSubresourceRange *subresourceRange;
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> subresourceRange;
       static NAN_GETTER(GetsubresourceRange);
     static NAN_SETTER(SetsubresourceRange);
     
 
     // real instance
-    VkImageMemoryBarrier *instance;
+    VkImageMemoryBarrier instance = {};
 
     static Nan::Persistent<v8::FunctionTemplate> constructor;
     static void Initialize(v8::Local<v8::Object> exports);

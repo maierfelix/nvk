@@ -16,7 +16,7 @@ class _VkClearRect: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     // #accessors
-      _VkRect2D *rect;
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> rect;
       static NAN_GETTER(Getrect);
     static NAN_SETTER(Setrect);
     
@@ -28,7 +28,7 @@ class _VkClearRect: public Nan::ObjectWrap {
     
 
     // real instance
-    VkClearRect *instance;
+    VkClearRect instance = {};
 
     static Nan::Persistent<v8::FunctionTemplate> constructor;
     static void Initialize(v8::Local<v8::Object> exports);

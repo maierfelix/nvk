@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkBufferView::constructor;
 
-_VkBufferView::_VkBufferView() {
-  instance = (VkBufferView*) malloc(sizeof(VkBufferView));
-}
-
-_VkBufferView::~_VkBufferView() { }
+_VkBufferView::_VkBufferView() {}
+_VkBufferView::~_VkBufferView() {}
 
 void _VkBufferView::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

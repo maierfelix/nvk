@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkValidationCacheEXT::constructor;
 
-_VkValidationCacheEXT::_VkValidationCacheEXT() {
-  instance = (VkValidationCacheEXT*) malloc(sizeof(VkValidationCacheEXT));
-}
-
-_VkValidationCacheEXT::~_VkValidationCacheEXT() { }
+_VkValidationCacheEXT::_VkValidationCacheEXT() {}
+_VkValidationCacheEXT::~_VkValidationCacheEXT() {}
 
 void _VkValidationCacheEXT::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

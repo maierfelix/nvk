@@ -13,7 +13,7 @@ class _{{ handle_name }}: public Nan::ObjectWrap {
     static NAN_METHOD(New);
 
     // real instance
-    {{ handle_name }} *instance;
+    {{ handle_name }} instance;
 
     static Nan::Persistent<v8::FunctionTemplate> constructor;
     static void Initialize(v8::Local<v8::Object> exports);

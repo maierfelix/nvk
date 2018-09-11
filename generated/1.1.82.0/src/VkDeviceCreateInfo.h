@@ -40,13 +40,13 @@ class _VkDeviceCreateInfo: public Nan::ObjectWrap {
     static NAN_GETTER(GetppEnabledExtensionNames);
     static NAN_SETTER(SetppEnabledExtensionNames);
     
-      _VkPhysicalDeviceFeatures *pEnabledFeatures;
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pEnabledFeatures;
       static NAN_GETTER(GetpEnabledFeatures);
     static NAN_SETTER(SetpEnabledFeatures);
     
 
     // real instance
-    VkDeviceCreateInfo *instance;
+    VkDeviceCreateInfo instance = {};
 
     static Nan::Persistent<v8::FunctionTemplate> constructor;
     static void Initialize(v8::Local<v8::Object> exports);

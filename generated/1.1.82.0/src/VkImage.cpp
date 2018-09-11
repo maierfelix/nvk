@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkImage::constructor;
 
-_VkImage::_VkImage() {
-  instance = (VkImage*) malloc(sizeof(VkImage));
-}
-
-_VkImage::~_VkImage() { }
+_VkImage::_VkImage() {}
+_VkImage::~_VkImage() {}
 
 void _VkImage::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

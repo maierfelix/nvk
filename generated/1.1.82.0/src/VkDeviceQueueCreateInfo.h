@@ -31,7 +31,7 @@ class _VkDeviceQueueCreateInfo: public Nan::ObjectWrap {
     
 
     // real instance
-    VkDeviceQueueCreateInfo *instance;
+    VkDeviceQueueCreateInfo instance = {};
 
     static Nan::Persistent<v8::FunctionTemplate> constructor;
     static void Initialize(v8::Local<v8::Object> exports);

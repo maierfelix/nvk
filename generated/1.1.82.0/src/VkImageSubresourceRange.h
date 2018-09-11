@@ -33,7 +33,7 @@ class _VkImageSubresourceRange: public Nan::ObjectWrap {
     
 
     // real instance
-    VkImageSubresourceRange *instance;
+    VkImageSubresourceRange instance = {};
 
     static Nan::Persistent<v8::FunctionTemplate> constructor;
     static void Initialize(v8::Local<v8::Object> exports);

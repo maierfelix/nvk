@@ -9,7 +9,6 @@
 Nan::Persistent<v8::FunctionTemplate> _VkOffset2D::constructor;
 
 _VkOffset2D::_VkOffset2D() {
-  instance = (VkOffset2D*) malloc(sizeof(VkOffset2D));
 }
 
 _VkOffset2D::~_VkOffset2D() { }
@@ -40,21 +39,17 @@ NAN_METHOD(_VkOffset2D::New) {
 // x
 NAN_GETTER(_VkOffset2D::Getx) {
   _VkOffset2D *self = Nan::ObjectWrap::Unwrap<_VkOffset2D>(info.This());
-  VkOffset2D *instance = self->instance;
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance->x));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.x));
 }
 NAN_SETTER(_VkOffset2D::Setx) {
   _VkOffset2D *self = Nan::ObjectWrap::Unwrap<_VkOffset2D>(info.This());
-  VkOffset2D *instance = self->instance;
-  self->instance->x = static_cast<int32_t>(value->NumberValue());
+  self->instance.x = static_cast<int32_t>(value->NumberValue());
 }// y
 NAN_GETTER(_VkOffset2D::Gety) {
   _VkOffset2D *self = Nan::ObjectWrap::Unwrap<_VkOffset2D>(info.This());
-  VkOffset2D *instance = self->instance;
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance->y));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.y));
 }
 NAN_SETTER(_VkOffset2D::Sety) {
   _VkOffset2D *self = Nan::ObjectWrap::Unwrap<_VkOffset2D>(info.This());
-  VkOffset2D *instance = self->instance;
-  self->instance->y = static_cast<int32_t>(value->NumberValue());
+  self->instance.y = static_cast<int32_t>(value->NumberValue());
 }

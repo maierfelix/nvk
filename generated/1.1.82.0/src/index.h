@@ -51,6 +51,8 @@
 #include "VkImageSubresourceRange.h"
 #include "VkImageMemoryBarrier.h"
 #include "VkBufferCreateInfo.h"
+#include "VkExtent3D.h"
+#include "VkQueueFamilyProperties.h"
 #include "VkApplicationInfo.h"
 #include "VkInstanceCreateInfo.h"
 #include "VkPhysicalDeviceFeatures.h"

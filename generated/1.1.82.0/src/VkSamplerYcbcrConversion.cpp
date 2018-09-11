@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkSamplerYcbcrConversion::constructor;
 
-_VkSamplerYcbcrConversion::_VkSamplerYcbcrConversion() {
-  instance = (VkSamplerYcbcrConversion*) malloc(sizeof(VkSamplerYcbcrConversion));
-}
-
-_VkSamplerYcbcrConversion::~_VkSamplerYcbcrConversion() { }
+_VkSamplerYcbcrConversion::_VkSamplerYcbcrConversion() {}
+_VkSamplerYcbcrConversion::~_VkSamplerYcbcrConversion() {}
 
 void _VkSamplerYcbcrConversion::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

@@ -9,11 +9,6 @@
 Nan::Persistent<v8::FunctionTemplate> _VkDeviceCreateInfo::constructor;
 
 _VkDeviceCreateInfo::_VkDeviceCreateInfo() {
-  instance = (VkDeviceCreateInfo*) malloc(sizeof(VkDeviceCreateInfo));
-  instance->pQueueCreateInfos = nullptr;
-  instance->ppEnabledLayerNames = nullptr;
-  instance->ppEnabledExtensionNames = nullptr;
-  instance->pEnabledFeatures = nullptr;
 }
 
 _VkDeviceCreateInfo::~_VkDeviceCreateInfo() { }
@@ -50,36 +45,27 @@ NAN_METHOD(_VkDeviceCreateInfo::New) {
 // sType
 NAN_GETTER(_VkDeviceCreateInfo::GetsType) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
-  VkDeviceCreateInfo *instance = self->instance;
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance->sType));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }
 NAN_SETTER(_VkDeviceCreateInfo::SetsType) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
-  VkDeviceCreateInfo *instance = self->instance;
-  self->instance->sType = static_cast<VkStructureType>(value->Uint32Value());
+  self->instance.sType = static_cast<VkStructureType>(value->Uint32Value());
 }// queueCreateInfoCount
 NAN_GETTER(_VkDeviceCreateInfo::GetqueueCreateInfoCount) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
-  VkDeviceCreateInfo *instance = self->instance;
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance->queueCreateInfoCount));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.queueCreateInfoCount));
 }
 NAN_SETTER(_VkDeviceCreateInfo::SetqueueCreateInfoCount) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
-  VkDeviceCreateInfo *instance = self->instance;
-  self->instance->queueCreateInfoCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.queueCreateInfoCount = static_cast<uint32_t>(value->NumberValue());
 }// pQueueCreateInfos
 NAN_GETTER(_VkDeviceCreateInfo::GetpQueueCreateInfos) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
-  VkDeviceCreateInfo *instance = self->instance;
-  if (instance->pQueueCreateInfos != nullptr) {
-    info.GetReturnValue().Set(Nan::New(self->pQueueCreateInfos));
-  } else {
-    info.GetReturnValue().SetNull();
-  }
+  v8::Local<v8::Object> obj = Nan::New(self->pQueueCreateInfos);
+  info.GetReturnValue().Set(obj);
 }
 NAN_SETTER(_VkDeviceCreateInfo::SetpQueueCreateInfos) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
-  VkDeviceCreateInfo *instance = self->instance;
   
     // js
     {
@@ -90,31 +76,24 @@ NAN_SETTER(_VkDeviceCreateInfo::SetpQueueCreateInfos) {
   
   // vulkan
   {
-    instance->pQueueCreateInfos = createArrayOfV8Objects<VkDeviceQueueCreateInfo, _VkDeviceQueueCreateInfo>(value);
+    self->instance.pQueueCreateInfos = createArrayOfV8Objects<VkDeviceQueueCreateInfo, _VkDeviceQueueCreateInfo>(value);
   }
 }// enabledLayerCount
 NAN_GETTER(_VkDeviceCreateInfo::GetenabledLayerCount) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
-  VkDeviceCreateInfo *instance = self->instance;
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance->enabledLayerCount));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.enabledLayerCount));
 }
 NAN_SETTER(_VkDeviceCreateInfo::SetenabledLayerCount) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
-  VkDeviceCreateInfo *instance = self->instance;
-  self->instance->enabledLayerCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.enabledLayerCount = static_cast<uint32_t>(value->NumberValue());
 }// ppEnabledLayerNames
 NAN_GETTER(_VkDeviceCreateInfo::GetppEnabledLayerNames) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
-  VkDeviceCreateInfo *instance = self->instance;
-  if (instance->ppEnabledLayerNames != nullptr) {
-    info.GetReturnValue().Set(Nan::New(self->ppEnabledLayerNames));
-  } else {
-    info.GetReturnValue().SetNull();
-  }
+  v8::Local<v8::Object> obj = Nan::New(self->ppEnabledLayerNames);
+  info.GetReturnValue().Set(obj);
 }
 NAN_SETTER(_VkDeviceCreateInfo::SetppEnabledLayerNames) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
-  VkDeviceCreateInfo *instance = self->instance;
   
     // js
     {
@@ -125,31 +104,24 @@ NAN_SETTER(_VkDeviceCreateInfo::SetppEnabledLayerNames) {
   
   // vulkan
   {
-    instance->ppEnabledLayerNames = createArrayOfV8Strings(value);
+    self->instance.ppEnabledLayerNames = createArrayOfV8Strings(value);
   }
 }// enabledExtensionCount
 NAN_GETTER(_VkDeviceCreateInfo::GetenabledExtensionCount) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
-  VkDeviceCreateInfo *instance = self->instance;
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance->enabledExtensionCount));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.enabledExtensionCount));
 }
 NAN_SETTER(_VkDeviceCreateInfo::SetenabledExtensionCount) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
-  VkDeviceCreateInfo *instance = self->instance;
-  self->instance->enabledExtensionCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.enabledExtensionCount = static_cast<uint32_t>(value->NumberValue());
 }// ppEnabledExtensionNames
 NAN_GETTER(_VkDeviceCreateInfo::GetppEnabledExtensionNames) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
-  VkDeviceCreateInfo *instance = self->instance;
-  if (instance->ppEnabledExtensionNames != nullptr) {
-    info.GetReturnValue().Set(Nan::New(self->ppEnabledExtensionNames));
-  } else {
-    info.GetReturnValue().SetNull();
-  }
+  v8::Local<v8::Object> obj = Nan::New(self->ppEnabledExtensionNames);
+  info.GetReturnValue().Set(obj);
 }
 NAN_SETTER(_VkDeviceCreateInfo::SetppEnabledExtensionNames) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
-  VkDeviceCreateInfo *instance = self->instance;
   
     // js
     {
@@ -160,22 +132,24 @@ NAN_SETTER(_VkDeviceCreateInfo::SetppEnabledExtensionNames) {
   
   // vulkan
   {
-    instance->ppEnabledExtensionNames = createArrayOfV8Strings(value);
+    self->instance.ppEnabledExtensionNames = createArrayOfV8Strings(value);
   }
 }// pEnabledFeatures
 NAN_GETTER(_VkDeviceCreateInfo::GetpEnabledFeatures) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
-  VkDeviceCreateInfo *instance = self->instance;
-  if (instance->pEnabledFeatures != nullptr) {
-    info.GetReturnValue().Set(self->pEnabledFeatures->handle());
-  } else {
-    info.GetReturnValue().SetNull();
-  }
+  v8::Local<v8::Object> obj = Nan::New(self->pEnabledFeatures);
+  info.GetReturnValue().Set(obj);
 }
 NAN_SETTER(_VkDeviceCreateInfo::SetpEnabledFeatures) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
-  VkDeviceCreateInfo *instance = self->instance;
-  _VkPhysicalDeviceFeatures* obj = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(value->ToObject());
-  self->pEnabledFeatures = obj;
-  instance->pEnabledFeatures = obj->instance;
+  // js
+  {
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    self->pEnabledFeatures = obj;
+  }
+  // vulkan
+  {
+    _VkPhysicalDeviceFeatures* obj = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(value->ToObject());
+    self->instance.pEnabledFeatures = &obj->instance;
+  }
 }

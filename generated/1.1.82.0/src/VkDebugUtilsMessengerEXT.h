@@ -17,7 +17,7 @@ class _VkDebugUtilsMessengerEXT: public Nan::ObjectWrap {
     static NAN_METHOD(New);
 
     // real instance
-    VkDebugUtilsMessengerEXT *instance;
+    VkDebugUtilsMessengerEXT instance;
 
     static Nan::Persistent<v8::FunctionTemplate> constructor;
     static void Initialize(v8::Local<v8::Object> exports);

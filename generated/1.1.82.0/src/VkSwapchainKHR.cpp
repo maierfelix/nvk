@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkSwapchainKHR::constructor;
 
-_VkSwapchainKHR::_VkSwapchainKHR() {
-  instance = (VkSwapchainKHR*) malloc(sizeof(VkSwapchainKHR));
-}
-
-_VkSwapchainKHR::~_VkSwapchainKHR() { }
+_VkSwapchainKHR::_VkSwapchainKHR() {}
+_VkSwapchainKHR::~_VkSwapchainKHR() {}
 
 void _VkSwapchainKHR::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

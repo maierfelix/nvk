@@ -17,7 +17,7 @@ class _VkDisplayKHR: public Nan::ObjectWrap {
     static NAN_METHOD(New);
 
     // real instance
-    VkDisplayKHR *instance;
+    VkDisplayKHR instance;
 
     static Nan::Persistent<v8::FunctionTemplate> constructor;
     static void Initialize(v8::Local<v8::Object> exports);

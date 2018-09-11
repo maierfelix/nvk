@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkPipelineCache::constructor;
 
-_VkPipelineCache::_VkPipelineCache() {
-  instance = (VkPipelineCache*) malloc(sizeof(VkPipelineCache));
-}
-
-_VkPipelineCache::~_VkPipelineCache() { }
+_VkPipelineCache::_VkPipelineCache() {}
+_VkPipelineCache::~_VkPipelineCache() {}
 
 void _VkPipelineCache::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

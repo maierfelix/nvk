@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkFramebuffer::constructor;
 
-_VkFramebuffer::_VkFramebuffer() {
-  instance = (VkFramebuffer*) malloc(sizeof(VkFramebuffer));
-}
-
-_VkFramebuffer::~_VkFramebuffer() { }
+_VkFramebuffer::_VkFramebuffer() {}
+_VkFramebuffer::~_VkFramebuffer() {}
 
 void _VkFramebuffer::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

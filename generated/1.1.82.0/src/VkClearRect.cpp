@@ -9,7 +9,6 @@
 Nan::Persistent<v8::FunctionTemplate> _VkClearRect::constructor;
 
 _VkClearRect::_VkClearRect() {
-  instance = (VkClearRect*) malloc(sizeof(VkClearRect));
 }
 
 _VkClearRect::~_VkClearRect() { }
@@ -41,37 +40,35 @@ NAN_METHOD(_VkClearRect::New) {
 // rect
 NAN_GETTER(_VkClearRect::Getrect) {
   _VkClearRect *self = Nan::ObjectWrap::Unwrap<_VkClearRect>(info.This());
-  VkClearRect *instance = self->instance;
-  if (self->rect != nullptr) {
-    info.GetReturnValue().Set(self->rect->handle());
-  } else {
-    info.GetReturnValue().SetNull();
-  }
+  v8::Local<v8::Object> obj = Nan::New(self->rect);
+  info.GetReturnValue().Set(obj);
 }
 NAN_SETTER(_VkClearRect::Setrect) {
   _VkClearRect *self = Nan::ObjectWrap::Unwrap<_VkClearRect>(info.This());
-  VkClearRect *instance = self->instance;
-  _VkRect2D* obj = Nan::ObjectWrap::Unwrap<_VkRect2D>(value->ToObject());
-  self->rect = obj;
-  instance->rect = *obj->instance;
+  // js
+  {
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    self->rect = obj;
+  }
+  // vulkan
+  {
+    _VkRect2D* obj = Nan::ObjectWrap::Unwrap<_VkRect2D>(value->ToObject());
+    self->instance.rect = obj->instance;
+  }
 }// baseArrayLayer
 NAN_GETTER(_VkClearRect::GetbaseArrayLayer) {
   _VkClearRect *self = Nan::ObjectWrap::Unwrap<_VkClearRect>(info.This());
-  VkClearRect *instance = self->instance;
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance->baseArrayLayer));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.baseArrayLayer));
 }
 NAN_SETTER(_VkClearRect::SetbaseArrayLayer) {
   _VkClearRect *self = Nan::ObjectWrap::Unwrap<_VkClearRect>(info.This());
-  VkClearRect *instance = self->instance;
-  self->instance->baseArrayLayer = static_cast<uint32_t>(value->NumberValue());
+  self->instance.baseArrayLayer = static_cast<uint32_t>(value->NumberValue());
 }// layerCount
 NAN_GETTER(_VkClearRect::GetlayerCount) {
   _VkClearRect *self = Nan::ObjectWrap::Unwrap<_VkClearRect>(info.This());
-  VkClearRect *instance = self->instance;
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance->layerCount));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.layerCount));
 }
 NAN_SETTER(_VkClearRect::SetlayerCount) {
   _VkClearRect *self = Nan::ObjectWrap::Unwrap<_VkClearRect>(info.This());
-  VkClearRect *instance = self->instance;
-  self->instance->layerCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.layerCount = static_cast<uint32_t>(value->NumberValue());
 }

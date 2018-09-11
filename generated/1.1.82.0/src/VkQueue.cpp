@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkQueue::constructor;
 
-_VkQueue::_VkQueue() {
-  instance = (VkQueue*) malloc(sizeof(VkQueue));
-}
-
-_VkQueue::~_VkQueue() { }
+_VkQueue::_VkQueue() {}
+_VkQueue::~_VkQueue() {}
 
 void _VkQueue::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

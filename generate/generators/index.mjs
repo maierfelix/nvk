@@ -3,6 +3,8 @@ import nunjucks from "nunjucks";
 import toposort from "toposort";
 import pkg from "../../package.json";
 
+let ast = null;
+
 const H_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/index-h.njk`, "utf-8");
 const CPP_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/index-cpp.njk`, "utf-8");
 
@@ -27,7 +29,8 @@ function generateIncludes(includes) {
   return out;
 };
 
-export default function(includes, calls) {
+export default function(astReference, includes, calls) {
+  ast = astReference;
   let vars = {
     calls,
     includes: generateIncludes(includes)

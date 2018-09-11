@@ -17,7 +17,7 @@ class _VkDescriptorSetLayout: public Nan::ObjectWrap {
     static NAN_METHOD(New);
 
     // real instance
-    VkDescriptorSetLayout *instance;
+    VkDescriptorSetLayout instance;
 
     static Nan::Persistent<v8::FunctionTemplate> constructor;
     static void Initialize(v8::Local<v8::Object> exports);

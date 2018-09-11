@@ -9,7 +9,6 @@
 Nan::Persistent<v8::FunctionTemplate> _VkRect2D::constructor;
 
 _VkRect2D::_VkRect2D() {
-  instance = (VkRect2D*) malloc(sizeof(VkRect2D));
 }
 
 _VkRect2D::~_VkRect2D() { }
@@ -40,33 +39,37 @@ NAN_METHOD(_VkRect2D::New) {
 // offset
 NAN_GETTER(_VkRect2D::Getoffset) {
   _VkRect2D *self = Nan::ObjectWrap::Unwrap<_VkRect2D>(info.This());
-  VkRect2D *instance = self->instance;
-  if (self->offset != nullptr) {
-    info.GetReturnValue().Set(self->offset->handle());
-  } else {
-    info.GetReturnValue().SetNull();
-  }
+  v8::Local<v8::Object> obj = Nan::New(self->offset);
+  info.GetReturnValue().Set(obj);
 }
 NAN_SETTER(_VkRect2D::Setoffset) {
   _VkRect2D *self = Nan::ObjectWrap::Unwrap<_VkRect2D>(info.This());
-  VkRect2D *instance = self->instance;
-  _VkOffset2D* obj = Nan::ObjectWrap::Unwrap<_VkOffset2D>(value->ToObject());
-  self->offset = obj;
-  instance->offset = *obj->instance;
+  // js
+  {
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    self->offset = obj;
+  }
+  // vulkan
+  {
+    _VkOffset2D* obj = Nan::ObjectWrap::Unwrap<_VkOffset2D>(value->ToObject());
+    self->instance.offset = obj->instance;
+  }
 }// extent
 NAN_GETTER(_VkRect2D::Getextent) {
   _VkRect2D *self = Nan::ObjectWrap::Unwrap<_VkRect2D>(info.This());
-  VkRect2D *instance = self->instance;
-  if (self->extent != nullptr) {
-    info.GetReturnValue().Set(self->extent->handle());
-  } else {
-    info.GetReturnValue().SetNull();
-  }
+  v8::Local<v8::Object> obj = Nan::New(self->extent);
+  info.GetReturnValue().Set(obj);
 }
 NAN_SETTER(_VkRect2D::Setextent) {
   _VkRect2D *self = Nan::ObjectWrap::Unwrap<_VkRect2D>(info.This());
-  VkRect2D *instance = self->instance;
-  _VkExtent2D* obj = Nan::ObjectWrap::Unwrap<_VkExtent2D>(value->ToObject());
-  self->extent = obj;
-  instance->extent = *obj->instance;
+  // js
+  {
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    self->extent = obj;
+  }
+  // vulkan
+  {
+    _VkExtent2D* obj = Nan::ObjectWrap::Unwrap<_VkExtent2D>(value->ToObject());
+    self->instance.extent = obj->instance;
+  }
 }

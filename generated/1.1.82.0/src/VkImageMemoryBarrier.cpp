@@ -9,7 +9,6 @@
 Nan::Persistent<v8::FunctionTemplate> _VkImageMemoryBarrier::constructor;
 
 _VkImageMemoryBarrier::_VkImageMemoryBarrier() {
-  instance = (VkImageMemoryBarrier*) malloc(sizeof(VkImageMemoryBarrier));
 }
 
 _VkImageMemoryBarrier::~_VkImageMemoryBarrier() { }
@@ -47,103 +46,93 @@ NAN_METHOD(_VkImageMemoryBarrier::New) {
 // sType
 NAN_GETTER(_VkImageMemoryBarrier::GetsType) {
   _VkImageMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkImageMemoryBarrier>(info.This());
-  VkImageMemoryBarrier *instance = self->instance;
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance->sType));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }
 NAN_SETTER(_VkImageMemoryBarrier::SetsType) {
   _VkImageMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkImageMemoryBarrier>(info.This());
-  VkImageMemoryBarrier *instance = self->instance;
-  self->instance->sType = static_cast<VkStructureType>(value->Uint32Value());
+  self->instance.sType = static_cast<VkStructureType>(value->Uint32Value());
 }// srcAccessMask
 NAN_GETTER(_VkImageMemoryBarrier::GetsrcAccessMask) {
   _VkImageMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkImageMemoryBarrier>(info.This());
-  VkImageMemoryBarrier *instance = self->instance;
-  info.GetReturnValue().Set(Nan::New<v8::Number>(static_cast<uint8_t>(self->instance->srcAccessMask)));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(static_cast<uint8_t>(self->instance.srcAccessMask)));
 }
 NAN_SETTER(_VkImageMemoryBarrier::SetsrcAccessMask) {
   _VkImageMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkImageMemoryBarrier>(info.This());
-  VkImageMemoryBarrier *instance = self->instance;
-  self->instance->srcAccessMask = static_cast<VkAccessFlags>(value->Uint32Value());
+  self->instance.srcAccessMask = static_cast<VkAccessFlags>(value->Uint32Value());
 }// dstAccessMask
 NAN_GETTER(_VkImageMemoryBarrier::GetdstAccessMask) {
   _VkImageMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkImageMemoryBarrier>(info.This());
-  VkImageMemoryBarrier *instance = self->instance;
-  info.GetReturnValue().Set(Nan::New<v8::Number>(static_cast<uint8_t>(self->instance->dstAccessMask)));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(static_cast<uint8_t>(self->instance.dstAccessMask)));
 }
 NAN_SETTER(_VkImageMemoryBarrier::SetdstAccessMask) {
   _VkImageMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkImageMemoryBarrier>(info.This());
-  VkImageMemoryBarrier *instance = self->instance;
-  self->instance->dstAccessMask = static_cast<VkAccessFlags>(value->Uint32Value());
+  self->instance.dstAccessMask = static_cast<VkAccessFlags>(value->Uint32Value());
 }// oldLayout
 NAN_GETTER(_VkImageMemoryBarrier::GetoldLayout) {
   _VkImageMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkImageMemoryBarrier>(info.This());
-  VkImageMemoryBarrier *instance = self->instance;
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance->oldLayout));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.oldLayout));
 }
 NAN_SETTER(_VkImageMemoryBarrier::SetoldLayout) {
   _VkImageMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkImageMemoryBarrier>(info.This());
-  VkImageMemoryBarrier *instance = self->instance;
-  self->instance->oldLayout = static_cast<VkImageLayout>(value->Uint32Value());
+  self->instance.oldLayout = static_cast<VkImageLayout>(value->Uint32Value());
 }// newLayout
 NAN_GETTER(_VkImageMemoryBarrier::GetnewLayout) {
   _VkImageMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkImageMemoryBarrier>(info.This());
-  VkImageMemoryBarrier *instance = self->instance;
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance->newLayout));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.newLayout));
 }
 NAN_SETTER(_VkImageMemoryBarrier::SetnewLayout) {
   _VkImageMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkImageMemoryBarrier>(info.This());
-  VkImageMemoryBarrier *instance = self->instance;
-  self->instance->newLayout = static_cast<VkImageLayout>(value->Uint32Value());
+  self->instance.newLayout = static_cast<VkImageLayout>(value->Uint32Value());
 }// srcQueueFamilyIndex
 NAN_GETTER(_VkImageMemoryBarrier::GetsrcQueueFamilyIndex) {
   _VkImageMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkImageMemoryBarrier>(info.This());
-  VkImageMemoryBarrier *instance = self->instance;
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance->srcQueueFamilyIndex));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.srcQueueFamilyIndex));
 }
 NAN_SETTER(_VkImageMemoryBarrier::SetsrcQueueFamilyIndex) {
   _VkImageMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkImageMemoryBarrier>(info.This());
-  VkImageMemoryBarrier *instance = self->instance;
-  self->instance->srcQueueFamilyIndex = static_cast<uint32_t>(value->NumberValue());
+  self->instance.srcQueueFamilyIndex = static_cast<uint32_t>(value->NumberValue());
 }// dstQueueFamilyIndex
 NAN_GETTER(_VkImageMemoryBarrier::GetdstQueueFamilyIndex) {
   _VkImageMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkImageMemoryBarrier>(info.This());
-  VkImageMemoryBarrier *instance = self->instance;
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance->dstQueueFamilyIndex));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.dstQueueFamilyIndex));
 }
 NAN_SETTER(_VkImageMemoryBarrier::SetdstQueueFamilyIndex) {
   _VkImageMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkImageMemoryBarrier>(info.This());
-  VkImageMemoryBarrier *instance = self->instance;
-  self->instance->dstQueueFamilyIndex = static_cast<uint32_t>(value->NumberValue());
+  self->instance.dstQueueFamilyIndex = static_cast<uint32_t>(value->NumberValue());
 }// image
 NAN_GETTER(_VkImageMemoryBarrier::Getimage) {
   _VkImageMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkImageMemoryBarrier>(info.This());
-  VkImageMemoryBarrier *instance = self->instance;
-  if (self->image != nullptr) {
-    info.GetReturnValue().Set(self->image->handle());
-  } else {
-    info.GetReturnValue().SetNull();
-  }
+  v8::Local<v8::Object> obj = Nan::New(self->image);
+  info.GetReturnValue().Set(obj);
 }
 NAN_SETTER(_VkImageMemoryBarrier::Setimage) {
   _VkImageMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkImageMemoryBarrier>(info.This());
-  VkImageMemoryBarrier *instance = self->instance;
-  _VkImage* obj = Nan::ObjectWrap::Unwrap<_VkImage>(value->ToObject());
-  self->image = obj;
-  instance->image = *obj->instance;
+  // js
+  {
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    self->image = obj;
+  }
+  // vulkan
+  {
+    _VkImage* obj = Nan::ObjectWrap::Unwrap<_VkImage>(value->ToObject());
+    self->instance.image = obj->instance;
+  }
 }// subresourceRange
 NAN_GETTER(_VkImageMemoryBarrier::GetsubresourceRange) {
   _VkImageMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkImageMemoryBarrier>(info.This());
-  VkImageMemoryBarrier *instance = self->instance;
-  if (self->subresourceRange != nullptr) {
-    info.GetReturnValue().Set(self->subresourceRange->handle());
-  } else {
-    info.GetReturnValue().SetNull();
-  }
+  v8::Local<v8::Object> obj = Nan::New(self->subresourceRange);
+  info.GetReturnValue().Set(obj);
 }
 NAN_SETTER(_VkImageMemoryBarrier::SetsubresourceRange) {
   _VkImageMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkImageMemoryBarrier>(info.This());
-  VkImageMemoryBarrier *instance = self->instance;
-  _VkImageSubresourceRange* obj = Nan::ObjectWrap::Unwrap<_VkImageSubresourceRange>(value->ToObject());
-  self->subresourceRange = obj;
-  instance->subresourceRange = *obj->instance;
+  // js
+  {
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    self->subresourceRange = obj;
+  }
+  // vulkan
+  {
+    _VkImageSubresourceRange* obj = Nan::ObjectWrap::Unwrap<_VkImageSubresourceRange>(value->ToObject());
+    self->instance.subresourceRange = obj->instance;
+  }
 }

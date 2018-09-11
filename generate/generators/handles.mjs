@@ -2,12 +2,15 @@ import fs from "fs";
 import nunjucks from "nunjucks";
 import pkg from "../../package.json";
 
+let ast = null;
+
 const H_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/handle-h.njk`, "utf-8");
 const CPP_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/handle-cpp.njk`, "utf-8");
 
 nunjucks.configure({ autoescape: true });
 
-export default function(handle_name) {
+export default function(astReference, handle_name) {
+  ast = astReference;
   let vars = {
     handle_name
   };

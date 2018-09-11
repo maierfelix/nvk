@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkDebugReportCallbackEXT::constructor;
 
-_VkDebugReportCallbackEXT::_VkDebugReportCallbackEXT() {
-  instance = (VkDebugReportCallbackEXT*) malloc(sizeof(VkDebugReportCallbackEXT));
-}
-
-_VkDebugReportCallbackEXT::~_VkDebugReportCallbackEXT() { }
+_VkDebugReportCallbackEXT::_VkDebugReportCallbackEXT() {}
+_VkDebugReportCallbackEXT::~_VkDebugReportCallbackEXT() {}
 
 void _VkDebugReportCallbackEXT::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

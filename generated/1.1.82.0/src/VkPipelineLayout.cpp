@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkPipelineLayout::constructor;
 
-_VkPipelineLayout::_VkPipelineLayout() {
-  instance = (VkPipelineLayout*) malloc(sizeof(VkPipelineLayout));
-}
-
-_VkPipelineLayout::~_VkPipelineLayout() { }
+_VkPipelineLayout::_VkPipelineLayout() {}
+_VkPipelineLayout::~_VkPipelineLayout() {}
 
 void _VkPipelineLayout::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

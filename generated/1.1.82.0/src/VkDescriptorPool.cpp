@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkDescriptorPool::constructor;
 
-_VkDescriptorPool::_VkDescriptorPool() {
-  instance = (VkDescriptorPool*) malloc(sizeof(VkDescriptorPool));
-}
-
-_VkDescriptorPool::~_VkDescriptorPool() { }
+_VkDescriptorPool::_VkDescriptorPool() {}
+_VkDescriptorPool::~_VkDescriptorPool() {}
 
 void _VkDescriptorPool::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

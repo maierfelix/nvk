@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkDescriptorSetLayout::constructor;
 
-_VkDescriptorSetLayout::_VkDescriptorSetLayout() {
-  instance = (VkDescriptorSetLayout*) malloc(sizeof(VkDescriptorSetLayout));
-}
-
-_VkDescriptorSetLayout::~_VkDescriptorSetLayout() { }
+_VkDescriptorSetLayout::_VkDescriptorSetLayout() {}
+_VkDescriptorSetLayout::~_VkDescriptorSetLayout() {}
 
 void _VkDescriptorSetLayout::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

@@ -17,7 +17,7 @@ class _VkImageView: public Nan::ObjectWrap {
     static NAN_METHOD(New);
 
     // real instance
-    VkImageView *instance;
+    VkImageView instance;
 
     static Nan::Persistent<v8::FunctionTemplate> constructor;
     static void Initialize(v8::Local<v8::Object> exports);

@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkDevice::constructor;
 
-_VkDevice::_VkDevice() {
-  instance = (VkDevice*) malloc(sizeof(VkDevice));
-}
-
-_VkDevice::~_VkDevice() { }
+_VkDevice::_VkDevice() {}
+_VkDevice::~_VkDevice() {}
 
 void _VkDevice::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

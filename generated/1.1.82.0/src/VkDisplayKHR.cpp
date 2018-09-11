@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkDisplayKHR::constructor;
 
-_VkDisplayKHR::_VkDisplayKHR() {
-  instance = (VkDisplayKHR*) malloc(sizeof(VkDisplayKHR));
-}
-
-_VkDisplayKHR::~_VkDisplayKHR() { }
+_VkDisplayKHR::_VkDisplayKHR() {}
+_VkDisplayKHR::~_VkDisplayKHR() {}
 
 void _VkDisplayKHR::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkCommandPool::constructor;
 
-_VkCommandPool::_VkCommandPool() {
-  instance = (VkCommandPool*) malloc(sizeof(VkCommandPool));
-}
-
-_VkCommandPool::~_VkCommandPool() { }
+_VkCommandPool::_VkCommandPool() {}
+_VkCommandPool::~_VkCommandPool() {}
 
 void _VkCommandPool::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkSemaphore::constructor;
 
-_VkSemaphore::_VkSemaphore() {
-  instance = (VkSemaphore*) malloc(sizeof(VkSemaphore));
-}
-
-_VkSemaphore::~_VkSemaphore() { }
+_VkSemaphore::_VkSemaphore() {}
+_VkSemaphore::~_VkSemaphore() {}
 
 void _VkSemaphore::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

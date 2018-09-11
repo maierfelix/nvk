@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkCommandBuffer::constructor;
 
-_VkCommandBuffer::_VkCommandBuffer() {
-  instance = (VkCommandBuffer*) malloc(sizeof(VkCommandBuffer));
-}
-
-_VkCommandBuffer::~_VkCommandBuffer() { }
+_VkCommandBuffer::_VkCommandBuffer() {}
+_VkCommandBuffer::~_VkCommandBuffer() {}
 
 void _VkCommandBuffer::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

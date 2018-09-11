@@ -17,7 +17,7 @@ class _VkDescriptorUpdateTemplate: public Nan::ObjectWrap {
     static NAN_METHOD(New);
 
     // real instance
-    VkDescriptorUpdateTemplate *instance;
+    VkDescriptorUpdateTemplate instance;
 
     static Nan::Persistent<v8::FunctionTemplate> constructor;
     static void Initialize(v8::Local<v8::Object> exports);

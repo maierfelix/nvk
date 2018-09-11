@@ -19,7 +19,7 @@ class _VkInstanceCreateInfo: public Nan::ObjectWrap {
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
     
-      _VkApplicationInfo *pApplicationInfo;
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pApplicationInfo;
       static NAN_GETTER(GetpApplicationInfo);
     static NAN_SETTER(SetpApplicationInfo);
     
@@ -39,7 +39,7 @@ class _VkInstanceCreateInfo: public Nan::ObjectWrap {
     
 
     // real instance
-    VkInstanceCreateInfo *instance;
+    VkInstanceCreateInfo instance = {};
 
     static Nan::Persistent<v8::FunctionTemplate> constructor;
     static void Initialize(v8::Local<v8::Object> exports);

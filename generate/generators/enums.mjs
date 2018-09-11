@@ -2,6 +2,8 @@ import fs from "fs";
 import nunjucks from "nunjucks";
 import pkg from "../../package.json";
 
+let ast = null;
+
 const H_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/enums-h.njk`, "utf-8");
 
 nunjucks.configure({ autoescape: true });
@@ -20,7 +22,8 @@ function getEnumMemberValue(member) {
   return member.value;
 };
 
-export default function(enums) {
+export default function(astReference, enums) {
+  ast = astReference;
   let vars = {
     enums,
     getEnumType,

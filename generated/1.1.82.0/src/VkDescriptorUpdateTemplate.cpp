@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkDescriptorUpdateTemplate::constructor;
 
-_VkDescriptorUpdateTemplate::_VkDescriptorUpdateTemplate() {
-  instance = (VkDescriptorUpdateTemplate*) malloc(sizeof(VkDescriptorUpdateTemplate));
-}
-
-_VkDescriptorUpdateTemplate::~_VkDescriptorUpdateTemplate() { }
+_VkDescriptorUpdateTemplate::_VkDescriptorUpdateTemplate() {}
+_VkDescriptorUpdateTemplate::~_VkDescriptorUpdateTemplate() {}
 
 void _VkDescriptorUpdateTemplate::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

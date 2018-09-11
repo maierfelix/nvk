@@ -6,68 +6,9 @@ let enums = addon.getVulkanEnumerations();
 Object.assign(global, addon);
 Object.assign(global, enums);
 
+let result = null;
+
 let instance = new VkInstance();
-
-let appInfo = new VkApplicationInfo();
-appInfo.pApplicationName = "Vulkan!";
-
-let bufferInfo = new VkBufferCreateInfo();
-bufferInfo.pQueueFamilyIndices = [1];
-
-let createInfo = new VkInstanceCreateInfo();
-createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
-createInfo.pApplicationInfo = appInfo;
-
-let validationLayers = ["VK_LAYER_LUNARG_standard_validation"];
-createInfo.enabledLayerCount = validationLayers.length;
-createInfo.ppEnabledLayerNames = validationLayers;
-
-// TODO: shorten API here
-let rect = new VkRect2D();
-rect.offset = new VkOffset2D();
-rect.offset.x = 42;
-rect.offset.y = 666;
-rect.extent = new VkExtent2D();
-rect.extent.width = 1980;
-rect.extent.height = 1280;
-
-/*let rect = new VkRect2D({
-  offset: new VkOffset2D({ x: 42, y: 666 }),
-  extent: new VkExtent2D({ x: 1980, y: 1280 })
-});*/
-
-let clearRect = new VkClearRect();
-clearRect.rect = rect;
-
-let physicalDeviceFeatures = new VkPhysicalDeviceFeatures();
-
-let deviceQueueCreateInfo = new VkDeviceQueueCreateInfo();
-deviceQueueCreateInfo.pQueuePriorities = [1.0];
-
-let deviceCreateInfo = new VkDeviceCreateInfo();
-deviceCreateInfo.pQueueCreateInfos = [deviceQueueCreateInfo];
-deviceCreateInfo.pEnabledFeatures = physicalDeviceFeatures;
-deviceCreateInfo.ppEnabledExtensionNames = [];
-
-let imageMemoryBarrier = new VkImageMemoryBarrier();
-imageMemoryBarrier.image = new VkImage();
-
-console.log(instance);
-console.log(appInfo);
-console.log(bufferInfo);
-console.log(createInfo);
-console.log(rect);
-console.log(rect.offset);
-console.log(rect.extent);
-console.log(clearRect);
-console.log(deviceCreateInfo);
-console.log(physicalDeviceFeatures);
-console.log(imageMemoryBarrier);
-
-console.log(appInfo.pApplicationName);
-console.log(bufferInfo.pQueueFamilyIndices);
-console.log(createInfo.pApplicationInfo);
-console.log(createInfo.ppEnabledLayerNames);
 
 {
 
@@ -80,11 +21,17 @@ console.log(createInfo.ppEnabledLayerNames);
   appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
   appInfo.apiVersion = VK_API_VERSION_1_0;
 
+  let extensions = [
+    "VK_KHR_surface",
+    "VK_KHR_win32_surface"
+  ];
+
   // create info
   let createInfo = new VkInstanceCreateInfo();
   createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
   createInfo.pApplicationInfo = appInfo;
-  createInfo.enabledLayerCount = 0;
+  //createInfo.enabledExtensionCount = extensions.length;
+  //createInfo.ppEnabledExtensionNames = extensions;
 
   console.log(appInfo);
   console.log(createInfo);
@@ -92,21 +39,51 @@ console.log(createInfo.ppEnabledLayerNames);
   if (vkCreateInstance(createInfo, null, instance) !== VK_SUCCESS) {
     console.error("Error: Instance creation failed!");
   }
+  console.log("Created vk instance!");
 
   let deviceCount = { $:0 };
   vkEnumeratePhysicalDevices(instance, deviceCount, null);
   if (deviceCount.$ <= 0) console.error("Error: No render devices available!");
-  console.log(deviceCount.$);
+  console.log("Took physical device count!", deviceCount.$);
 
-  //let deviceFeatures = new VkPhysicalDeviceFeatures();
-  //vkGetPhysicalDeviceFeatures(device, deviceFeatures);
+  let devices = [...Array(deviceCount.$)].map(() => new VkPhysicalDevice());
+  console.log(devices);
+  result = vkEnumeratePhysicalDevices(instance, deviceCount, devices);
+  if (result !== VK_SUCCESS) console.error("Physical device enumeration failed!");
 
-  let devices = [];
-  vkEnumeratePhysicalDevices(instance, deviceCount, devices);
+  // auto pick first found device
   let device = devices[0];
-
   let deviceProperties = new VkPhysicalDeviceProperties();
+  let deviceFeatures = new VkPhysicalDeviceFeatures();
   vkGetPhysicalDeviceProperties(device, deviceProperties);
+  vkGetPhysicalDeviceFeatures(device, deviceFeatures);
+  console.log(device);
+  console.log(deviceProperties);
+  console.log(deviceFeatures);
+
+  let queueFamilyCount = { $: 0 };
+  vkGetPhysicalDeviceQueueFamilyProperties(device, queueFamilyCount, null);
+  console.log("Took queue family count!", queueFamilyCount.$);
+
+  let queueFamilies = [...Array(queueFamilyCount.$)].map(() => new VkQueueFamilyProperties());
+  vkGetPhysicalDeviceQueueFamilyProperties(device, queueFamilyCount, queueFamilies);
+
+  console.log(queueFamilies);
+
+  queueFamilies.map(props => {
+    if (props.queueFlags & VK_QUEUE_GRAPHICS_BIT) {
+      console.log("GRAPHICS");
+    }
+    if (props.queueFlags & VK_QUEUE_COMPUTE_BIT) {
+      console.log("COMPUTE");
+    }
+    if (props.queueFlags & VK_QUEUE_TRANSFER_BIT) {
+      console.log("TRANSFER");
+    }
+    if (props.queueFlags & VK_QUEUE_SPARSE_BINDING_BIT) {
+      console.log("SPARSE");
+    }
+  });
 
 }
 

@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkDebugUtilsMessengerEXT::constructor;
 
-_VkDebugUtilsMessengerEXT::_VkDebugUtilsMessengerEXT() {
-  instance = (VkDebugUtilsMessengerEXT*) malloc(sizeof(VkDebugUtilsMessengerEXT));
-}
-
-_VkDebugUtilsMessengerEXT::~_VkDebugUtilsMessengerEXT() { }
+_VkDebugUtilsMessengerEXT::_VkDebugUtilsMessengerEXT() {}
+_VkDebugUtilsMessengerEXT::~_VkDebugUtilsMessengerEXT() {}
 
 void _VkDebugUtilsMessengerEXT::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

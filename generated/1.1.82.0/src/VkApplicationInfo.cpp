@@ -9,9 +9,6 @@
 Nan::Persistent<v8::FunctionTemplate> _VkApplicationInfo::constructor;
 
 _VkApplicationInfo::_VkApplicationInfo() {
-  instance = (VkApplicationInfo*) malloc(sizeof(VkApplicationInfo));
-  instance->pApplicationName = nullptr;
-  instance->pEngineName = nullptr;
 }
 
 _VkApplicationInfo::~_VkApplicationInfo() { }
@@ -46,73 +43,55 @@ NAN_METHOD(_VkApplicationInfo::New) {
 // sType
 NAN_GETTER(_VkApplicationInfo::GetsType) {
   _VkApplicationInfo *self = Nan::ObjectWrap::Unwrap<_VkApplicationInfo>(info.This());
-  VkApplicationInfo *instance = self->instance;
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance->sType));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }
 NAN_SETTER(_VkApplicationInfo::SetsType) {
   _VkApplicationInfo *self = Nan::ObjectWrap::Unwrap<_VkApplicationInfo>(info.This());
-  VkApplicationInfo *instance = self->instance;
-  self->instance->sType = static_cast<VkStructureType>(value->Uint32Value());
+  self->instance.sType = static_cast<VkStructureType>(value->Uint32Value());
 }// pApplicationName
 NAN_GETTER(_VkApplicationInfo::GetpApplicationName) {
   _VkApplicationInfo *self = Nan::ObjectWrap::Unwrap<_VkApplicationInfo>(info.This());
-  VkApplicationInfo *instance = self->instance;
-  if (instance->pApplicationName != nullptr) {
-    info.GetReturnValue().Set(Nan::New(self->pApplicationName));
-  } else {
-    info.GetReturnValue().SetNull();
-  }
+  v8::Local<v8::String> str = Nan::New(self->pApplicationName);
+  info.GetReturnValue().Set(str);
 }
 NAN_SETTER(_VkApplicationInfo::SetpApplicationName) {
   _VkApplicationInfo *self = Nan::ObjectWrap::Unwrap<_VkApplicationInfo>(info.This());
-  VkApplicationInfo *instance = self->instance;
   Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> str(Nan::To<v8::String>(value).ToLocalChecked());
   self->pApplicationName = str;
-  instance->pApplicationName = copyV8String(value);
+  self->instance.pApplicationName = copyV8String(value);
 }// applicationVersion
 NAN_GETTER(_VkApplicationInfo::GetapplicationVersion) {
   _VkApplicationInfo *self = Nan::ObjectWrap::Unwrap<_VkApplicationInfo>(info.This());
-  VkApplicationInfo *instance = self->instance;
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance->applicationVersion));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.applicationVersion));
 }
 NAN_SETTER(_VkApplicationInfo::SetapplicationVersion) {
   _VkApplicationInfo *self = Nan::ObjectWrap::Unwrap<_VkApplicationInfo>(info.This());
-  VkApplicationInfo *instance = self->instance;
-  self->instance->applicationVersion = static_cast<uint32_t>(value->NumberValue());
+  self->instance.applicationVersion = static_cast<uint32_t>(value->NumberValue());
 }// pEngineName
 NAN_GETTER(_VkApplicationInfo::GetpEngineName) {
   _VkApplicationInfo *self = Nan::ObjectWrap::Unwrap<_VkApplicationInfo>(info.This());
-  VkApplicationInfo *instance = self->instance;
-  if (instance->pEngineName != nullptr) {
-    info.GetReturnValue().Set(Nan::New(self->pEngineName));
-  } else {
-    info.GetReturnValue().SetNull();
-  }
+  v8::Local<v8::String> str = Nan::New(self->pEngineName);
+  info.GetReturnValue().Set(str);
 }
 NAN_SETTER(_VkApplicationInfo::SetpEngineName) {
   _VkApplicationInfo *self = Nan::ObjectWrap::Unwrap<_VkApplicationInfo>(info.This());
-  VkApplicationInfo *instance = self->instance;
   Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> str(Nan::To<v8::String>(value).ToLocalChecked());
   self->pEngineName = str;
-  instance->pEngineName = copyV8String(value);
+  self->instance.pEngineName = copyV8String(value);
 }// engineVersion
 NAN_GETTER(_VkApplicationInfo::GetengineVersion) {
   _VkApplicationInfo *self = Nan::ObjectWrap::Unwrap<_VkApplicationInfo>(info.This());
-  VkApplicationInfo *instance = self->instance;
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance->engineVersion));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.engineVersion));
 }
 NAN_SETTER(_VkApplicationInfo::SetengineVersion) {
   _VkApplicationInfo *self = Nan::ObjectWrap::Unwrap<_VkApplicationInfo>(info.This());
-  VkApplicationInfo *instance = self->instance;
-  self->instance->engineVersion = static_cast<uint32_t>(value->NumberValue());
+  self->instance.engineVersion = static_cast<uint32_t>(value->NumberValue());
 }// apiVersion
 NAN_GETTER(_VkApplicationInfo::GetapiVersion) {
   _VkApplicationInfo *self = Nan::ObjectWrap::Unwrap<_VkApplicationInfo>(info.This());
-  VkApplicationInfo *instance = self->instance;
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance->apiVersion));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.apiVersion));
 }
 NAN_SETTER(_VkApplicationInfo::SetapiVersion) {
   _VkApplicationInfo *self = Nan::ObjectWrap::Unwrap<_VkApplicationInfo>(info.This());
-  VkApplicationInfo *instance = self->instance;
-  self->instance->apiVersion = static_cast<uint32_t>(value->NumberValue());
+  self->instance.apiVersion = static_cast<uint32_t>(value->NumberValue());
 }

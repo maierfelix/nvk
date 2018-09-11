@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkFence::constructor;
 
-_VkFence::_VkFence() {
-  instance = (VkFence*) malloc(sizeof(VkFence));
-}
-
-_VkFence::~_VkFence() { }
+_VkFence::_VkFence() {}
+_VkFence::~_VkFence() {}
 
 void _VkFence::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

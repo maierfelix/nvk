@@ -17,7 +17,7 @@ class _VkFence: public Nan::ObjectWrap {
     static NAN_METHOD(New);
 
     // real instance
-    VkFence *instance;
+    VkFence instance;
 
     static Nan::Persistent<v8::FunctionTemplate> constructor;
     static void Initialize(v8::Local<v8::Object> exports);

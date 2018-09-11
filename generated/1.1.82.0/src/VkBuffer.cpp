@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkBuffer::constructor;
 
-_VkBuffer::_VkBuffer() {
-  instance = (VkBuffer*) malloc(sizeof(VkBuffer));
-}
-
-_VkBuffer::~_VkBuffer() { }
+_VkBuffer::_VkBuffer() {}
+_VkBuffer::~_VkBuffer() {}
 
 void _VkBuffer::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

@@ -5,7 +5,6 @@
 Nan::Persistent<v8::FunctionTemplate> _{{ struct_name }}::constructor;
 
 _{{ struct_name }}::_{{ struct_name }}() {
-  instance = ({{ struct_name }}*) malloc(sizeof({{ struct_name }}));
   {%- for member in members -%}
   {%- if ignoreableMember(member) != true -%}
   {{- processSourceMemberInitializer(member) | safe -}}
@@ -45,12 +44,10 @@ NAN_METHOD(_{{ struct_name }}::New) {
 // {{ member.name }}
 NAN_GETTER(_{{ struct_name }}::Get{{ member.name }}) {
   _{{ struct_name }} *self = Nan::ObjectWrap::Unwrap<_{{ struct_name }}>(info.This());
-  {{ struct_name }} *instance = self->instance;
   {{- processSourceGetter(member) | safe }}
 }
 NAN_SETTER(_{{ struct_name }}::Set{{ member.name }}) {
   _{{ struct_name }} *self = Nan::ObjectWrap::Unwrap<_{{ struct_name }}>(info.This());
-  {{ struct_name }} *instance = self->instance;
   {{- processSourceSetter(member) | safe }}
 }
 {%- endif -%}

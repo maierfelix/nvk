@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkEvent::constructor;
 
-_VkEvent::_VkEvent() {
-  instance = (VkEvent*) malloc(sizeof(VkEvent));
-}
-
-_VkEvent::~_VkEvent() { }
+_VkEvent::_VkEvent() {}
+_VkEvent::~_VkEvent() {}
 
 void _VkEvent::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

@@ -2,11 +2,14 @@ import fs from "fs";
 import nunjucks from "nunjucks";
 import pkg from "../../package.json";
 
+let ast = null;
+
 const GYP_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/binding-gyp.njk`, "utf-8");
 
 nunjucks.configure({ autoescape: true });
 
-export default function(VK_VERSION, VK_INCLUDES) {
+export default function(astReference, VK_VERSION, VK_INCLUDES) {
+  ast = astReference;
   let vars = {
     VK_VERSION,
     VK_INCLUDES: VK_INCLUDES.join(`,\n`)

@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkQueryPool::constructor;
 
-_VkQueryPool::_VkQueryPool() {
-  instance = (VkQueryPool*) malloc(sizeof(VkQueryPool));
-}
-
-_VkQueryPool::~_VkQueryPool() { }
+_VkQueryPool::_VkQueryPool() {}
+_VkQueryPool::~_VkQueryPool() {}
 
 void _VkQueryPool::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

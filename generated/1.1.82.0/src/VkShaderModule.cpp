@@ -7,11 +7,8 @@
 
 Nan::Persistent<v8::FunctionTemplate> _VkShaderModule::constructor;
 
-_VkShaderModule::_VkShaderModule() {
-  instance = (VkShaderModule*) malloc(sizeof(VkShaderModule));
-}
-
-_VkShaderModule::~_VkShaderModule() { }
+_VkShaderModule::_VkShaderModule() {}
+_VkShaderModule::~_VkShaderModule() {}
 
 void _VkShaderModule::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

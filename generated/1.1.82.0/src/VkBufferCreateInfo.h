@@ -37,7 +37,7 @@ class _VkBufferCreateInfo: public Nan::ObjectWrap {
     
 
     // real instance
-    VkBufferCreateInfo *instance;
+    VkBufferCreateInfo instance = {};
 
     static Nan::Persistent<v8::FunctionTemplate> constructor;
     static void Initialize(v8::Local<v8::Object> exports);

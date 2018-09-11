@@ -2,6 +2,8 @@ import fs from "fs";
 import nunjucks from "nunjucks";
 import pkg from "../../package.json";
 
+let ast = null;
+
 const H_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/struct-h.njk`, "utf-8");
 const CPP_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/struct-cpp.njk`, "utf-8");
 
@@ -65,7 +67,7 @@ function processHeaderGetter(member) {
   ) {
     if (member.isStructType || member.isHandleType || member.dereferenceCount > 0) {
       return `
-      _${member.type} *${member.name};
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> ${member.name};
       static NAN_GETTER(Get${member.name});`;
     } else {
       return `
@@ -97,7 +99,8 @@ function processHeaderGetter(member) {
     static NAN_GETTER(Get${member.name});`;
     default: {
       console.warn(`Cannot handle member ${member.rawType} in header-getter!`);
-      return retUnknown(member);
+      return `
+    static NAN_GETTER(Get${member.name});`;
     }
   };
 };
@@ -112,17 +115,20 @@ function processHeaderSetter(member) {
 function processSourceGetter(member) {
   let {rawType} = member;
   if (member.isBaseType) rawType = member.baseType;
+  if (member.isBaseType) {
+    if (member.rawType === "VkBool32") {
+      return `
+  info.GetReturnValue().Set(Nan::New<v8::Boolean>(self->instance.${member.name}));`;
+    }
+  }
   if (member.isStaticArray) {
     return `
   info.GetReturnValue().Set(Nan::New(self->${member.name}));`;
   }
   if (member.isArray && member.isStructType) {
     return `
-  if (instance->${member.name} != nullptr) {
-    info.GetReturnValue().Set(Nan::New(self->${member.name}));
-  } else {
-    info.GetReturnValue().SetNull();
-  }`;
+  v8::Local<v8::Object> obj = Nan::New(self->${member.name});
+  info.GetReturnValue().Set(obj);`;
   }
   switch (rawType) {
     case "int":
@@ -132,38 +138,35 @@ function processSourceGetter(member) {
     case "uint32_t":
     case "uint64_t":
       return `
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance->${member.name}));`;
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.${member.name}));`;
     case "const char *":
+      return `
+  v8::Local<v8::String> str = Nan::New(self->${member.name});
+  info.GetReturnValue().Set(str);`;
     case "const char * const*":
     case "const float *":
     case "const int32_t *":
     case "const uint32_t *":
     case "const uint64_t *":
       return `
-  if (instance->${member.name} != nullptr) {
-    info.GetReturnValue().Set(Nan::New(self->${member.name}));
-  } else {
-    info.GetReturnValue().SetNull();
-  }`;
+  v8::Local<v8::Object> obj = Nan::New(self->${member.name});
+  info.GetReturnValue().Set(obj);`;
     case "const void *":
       return `
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance->${member.name}));`;
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.${member.name}));`;
     default: {
       if (member.isEnumType) {
         return `
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance->${member.name}));`;
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.${member.name}));`;
       }
       else if (member.isStructType || member.isHandleType) {
         let isReference = member.dereferenceCount > 0;
         return `
-  if (${isReference ? "instance" : "self"}->${member.name} != nullptr) {
-    info.GetReturnValue().Set(self->${member.name}->handle());
-  } else {
-    info.GetReturnValue().SetNull();
-  }`;
+  v8::Local<v8::Object> obj = Nan::New(self->${member.name});
+  info.GetReturnValue().Set(obj);`;
       } else if (member.isBitmaskType) {
         return `
-  info.GetReturnValue().Set(Nan::New<v8::Number>(static_cast<uint8_t>(self->instance->${member.name})));`;
+  info.GetReturnValue().Set(Nan::New<v8::Number>(static_cast<uint8_t>(self->instance.${member.name})));`;
       }
       console.warn(`Cannot handle member ${member.rawType} in source-getter!`);
       return retUnknown(member);
@@ -179,13 +182,13 @@ function processSourceSetter(member) {
       return `
   Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> str(Nan::To<v8::String>(value).ToLocalChecked());
   self->${member.name} = str;
-  strcpy(instance->${member.name}, copyV8String(value));`;
+  strcpy(self->instance.${member.name}, copyV8String(value));`;
     } else {
       return `
   ${genPersistentV8Array(member)}
   // vulkan
   {
-    memcpy(instance->${member.name}, createArrayOfV8Numbers<${member.type}>(value), sizeof(${member.type}) * ${member.length});
+    memcpy(self->instance.${member.name}, createArrayOfV8Numbers<${member.type}>(value), sizeof(${member.type}) * ${member.length});
   }`;
     }
   }
@@ -194,7 +197,7 @@ function processSourceSetter(member) {
   ${genPersistentV8Array(member)}
   // vulkan
   {
-    instance->${member.name} = createArrayOfV8Objects<${member.type}, _${member.type}>(value);
+    self->instance.${member.name} = createArrayOfV8Objects<${member.type}, _${member.type}>(value);
   }`;
   }
   switch (rawType) {
@@ -205,18 +208,18 @@ function processSourceSetter(member) {
     case "uint32_t":
     case "uint64_t":
       return `
-  self->instance->${member.name} = static_cast<${rawType}>(value->NumberValue());`;
+  self->instance.${member.name} = static_cast<${rawType}>(value->NumberValue());`;
     case "const char *":
       return `
   Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> str(Nan::To<v8::String>(value).ToLocalChecked());
   self->${member.name} = str;
-  instance->${member.name} = copyV8String(value);`;
+  self->instance.${member.name} = copyV8String(value);`;
     case "const char * const*":
       return `
   ${genPersistentV8Array(member)}
   // vulkan
   {
-    instance->${member.name} = createArrayOfV8Strings(value);
+    self->instance.${member.name} = createArrayOfV8Strings(value);
   }`;
     case "const float *":
     case "const int32_t *":
@@ -226,26 +229,33 @@ function processSourceSetter(member) {
   ${genPersistentV8Array(member)}
   // vulkan
   {
-    instance->${member.name} = createArrayOfV8Numbers<${member.type}>(value);
+    self->instance.${member.name} = createArrayOfV8Numbers<${member.type}>(value);
   }`;
     case "const void *":
       return `
-  self->instance->${member.name} = static_cast<uint32_t>(value->Uint32Value());`;
+  self->instance.${member.name} = static_cast<uint32_t>(value->Uint32Value());`;
     default: {
       if (member.isEnumType) {
         return `
-  self->instance->${member.name} = static_cast<${member.rawType}>(value->Uint32Value());`;
+  self->instance.${member.name} = static_cast<${member.rawType}>(value->Uint32Value());`;
       }
       else if (member.isStructType || member.isHandleType) {
         let isReference = member.dereferenceCount > 0;
         return `
-  _${member.type}* obj = Nan::ObjectWrap::Unwrap<_${member.type}>(value->ToObject());
-  self->${member.name} = obj;
-  instance->${member.name} = ${isReference ? "" : "*"}obj->instance;`;
+  // js
+  {
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    self->${member.name} = obj;
+  }
+  // vulkan
+  {
+    _${member.type}* obj = Nan::ObjectWrap::Unwrap<_${member.type}>(value->ToObject());
+    self->instance.${member.name} = ${isReference ? "&" : ""}obj->instance;
+  }`;
       }
       else if (member.isBitmaskType) {
         return `
-  self->instance->${member.name} = static_cast<${member.rawType}>(value->Uint32Value());`;
+  self->instance.${member.name} = static_cast<${member.rawType}>(value->Uint32Value());`;
       }
       console.warn(`Cannot handle member ${member.rawType} in source-setter!`);
       return retUnknown(member);
@@ -273,10 +283,14 @@ function processSourceIncludes(input) {
 };
 
 function processSourceMemberInitializer(member) {
-  if (member.dereferenceCount > 0) {
+  /*if (member.dereferenceCount > 0) {
     return `
-  instance->${member.name} = nullptr;`;
+  instance.${member.name} = nullptr;`;
   }
+  else if (member.isStructType || member.isHandleType) {
+    return `
+  ${member.name} = nullptr;`;
+  }*/
   return "";
 };
 
@@ -293,7 +307,8 @@ function ignoreableMember(member) {
   );
 };
 
-export default function(input) {
+export default function(astReference, input) {
+  ast = astReference;
   let {
     name,
     children
