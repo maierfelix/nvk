@@ -40,6 +40,7 @@ void _VkImageMemoryBarrier::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE ta
 NAN_METHOD(_VkImageMemoryBarrier::New) {
   _VkImageMemoryBarrier* self = new _VkImageMemoryBarrier();
   self->Wrap(info.Holder());
+  printf("Constructed VkImageMemoryBarrier\n");
   info.GetReturnValue().Set(info.Holder());
 };
 

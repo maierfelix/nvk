@@ -33,6 +33,7 @@ void _VkOffset2D::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
 NAN_METHOD(_VkOffset2D::New) {
   _VkOffset2D* self = new _VkOffset2D();
   self->Wrap(info.Holder());
+  printf("Constructed VkOffset2D\n");
   info.GetReturnValue().Set(info.Holder());
 };
 

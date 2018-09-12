@@ -37,6 +37,7 @@ void _VkInstanceCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE ta
 NAN_METHOD(_VkInstanceCreateInfo::New) {
   _VkInstanceCreateInfo* self = new _VkInstanceCreateInfo();
   self->Wrap(info.Holder());
+  printf("Constructed VkInstanceCreateInfo\n");
   info.GetReturnValue().Set(info.Holder());
 };
 

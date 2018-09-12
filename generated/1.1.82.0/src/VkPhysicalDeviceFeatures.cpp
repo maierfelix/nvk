@@ -86,6 +86,7 @@ void _VkPhysicalDeviceFeatures::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYP
 NAN_METHOD(_VkPhysicalDeviceFeatures::New) {
   _VkPhysicalDeviceFeatures* self = new _VkPhysicalDeviceFeatures();
   self->Wrap(info.Holder());
+  printf("Constructed VkPhysicalDeviceFeatures\n");
   info.GetReturnValue().Set(info.Holder());
 };
 

@@ -79,3 +79,27 @@ inline S* copyArrayOfV8Objects(v8::Local<v8::Value> value) {
   };
   return data.data();
 };
+
+template<typename S, typename T>
+inline S* copyArrayOfV8Objects(v8::Local<v8::Value> value) {
+  v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(value);
+  std::vector<S> data(array->Length());
+  for (unsigned int ii = 0; ii < array->Length(); ++ii) {
+    v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
+    T* result = Nan::ObjectWrap::Unwrap<T>(item->ToObject());
+    data[ii] = result->instance;
+  };
+  return data.data();
+};
+/*
+template<typename A, typename B>
+void inline reflectNumericArray(A* receiver, B vkMember) {
+  v8::Local<v8::Array> array = v8::Array::New();
+  for (unsigned int ii = 0; ii < array->Length(); ++ii) {
+    v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
+    T* result = Nan::ObjectWrap::Unwrap<T>(item->ToObject());
+    data[ii] = result->instance;
+  };
+  return data.data();
+};
+*/

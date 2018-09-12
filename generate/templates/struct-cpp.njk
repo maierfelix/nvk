@@ -36,6 +36,7 @@ void _{{ struct_name }}::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE targe
 NAN_METHOD(_{{ struct_name }}::New) {
   _{{ struct_name }}* self = new _{{ struct_name }}();
   self->Wrap(info.Holder());
+  printf("Constructed {{ struct_name }}\n");
   info.GetReturnValue().Set(info.Holder());
 };
 

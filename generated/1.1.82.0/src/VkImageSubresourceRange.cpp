@@ -36,6 +36,7 @@ void _VkImageSubresourceRange::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE
 NAN_METHOD(_VkImageSubresourceRange::New) {
   _VkImageSubresourceRange* self = new _VkImageSubresourceRange();
   self->Wrap(info.Holder());
+  printf("Constructed VkImageSubresourceRange\n");
   info.GetReturnValue().Set(info.Holder());
 };
 

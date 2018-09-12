@@ -39,6 +39,7 @@ void _VkDeviceCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE targ
 NAN_METHOD(_VkDeviceCreateInfo::New) {
   _VkDeviceCreateInfo* self = new _VkDeviceCreateInfo();
   self->Wrap(info.Holder());
+  printf("Constructed VkDeviceCreateInfo\n");
   info.GetReturnValue().Set(info.Holder());
 };
 

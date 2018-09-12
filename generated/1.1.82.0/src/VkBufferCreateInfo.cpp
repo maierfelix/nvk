@@ -37,6 +37,7 @@ void _VkBufferCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE targ
 NAN_METHOD(_VkBufferCreateInfo::New) {
   _VkBufferCreateInfo* self = new _VkBufferCreateInfo();
   self->Wrap(info.Holder());
+  printf("Constructed VkBufferCreateInfo\n");
   info.GetReturnValue().Set(info.Holder());
 };
 

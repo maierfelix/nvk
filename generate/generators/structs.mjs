@@ -263,6 +263,74 @@ function processSourceSetter(member) {
   };
 };
 
+function processSourceMemberReflection(member) {
+  let {rawType} = member;
+  if (member.isBaseType) rawType = member.baseType;
+  if (member.isEnumType) {
+    return ``; // v8::Number
+  }
+  // string of chars
+  if (member.isStaticArray) {
+    if (member.type === "char") {
+      return ``; // v8::String
+    } else {
+      switch (member.type) {
+        case "int":
+        case "float":
+        case "size_t":
+        case "int32_t":
+        case "uint8_t":
+        case "uint32_t":
+        case "uint64_t":
+          return ``; // v8::Number
+        default:
+          console.warn(`Cannot handle static array of type ${member.rawType} in member-reflection!`);
+      };
+    }
+  }
+  // array of structs or handles
+  if (member.isArray && (member.isStructType || member.isHandleType)) {
+    return ``; // v8::Array of _Objects
+  }
+  if (
+    member.isStructType ||
+    member.isHandleType ||
+    member.isBitmaskType ||
+    member.isBaseType ||
+    rawType === "float"
+  ) {
+    if (member.isStructType || member.isHandleType || member.dereferenceCount > 0) {
+      return ``; // v8::Array of _Objects
+    } else {
+      return ``; // v8::Array of _Objects
+    }
+  }
+  switch (rawType) {
+    case "const void *":
+      return ``; // ???
+    case "const char *":
+      return ``; // v8::String
+    case "const char * const*":
+    case "const uint32_t *":
+    case "const float *":
+      return ``; // v8::Array
+    case "int":
+    case "float":
+    case "size_t":
+    case "int32_t":
+    case "uint8_t":
+    case "uint32_t":
+    case "uint64_t":
+      return ``; // v8::Number
+    default: {
+      console.warn(`Cannot handle member ${member.rawType} in member-reflection!`);
+      return ``;
+    }
+  };
+  console.warn(`Cannot handle ${rawType}`);
+  return ``;
+};
+
 function processSourceIncludes(input) {
   let out = ``;
   let includes = [];
@@ -323,6 +391,7 @@ export default function(astReference, input) {
     processHeaderGetter,
     processHeaderSetter,
     processSourceIncludes,
+    processSourceMemberReflection,
     processSourceMemberInitializer
   };
   let out = {

@@ -34,6 +34,7 @@ void _VkClearRect::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
 NAN_METHOD(_VkClearRect::New) {
   _VkClearRect* self = new _VkClearRect();
   self->Wrap(info.Holder());
+  printf("Constructed VkClearRect\n");
   info.GetReturnValue().Set(info.Holder());
 };
 

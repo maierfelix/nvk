@@ -18,35 +18,7 @@ function getStructByStructName(name) {
   return null;
 };
 
-function getParamRefValue(param, index) {
-  let {rawType} = param;
-  if (param.isBaseType) rawType = param.baseType;
-  switch (rawType) {
-    case "int":
-    case "float":
-    case "size_t":
-    case "int32_t":
-    case "uint32_t":
-    case "uint64_t":
-      return `static_cast<${param.type}>(info[${index}]->NumberValue())`;
-    case "int *":
-    case "size_t *":
-    case "uint32_t *":
-    case "uint64_t *":
-    case "const int32_t *":
-    case "const uint32_t *":
-    case "const uint64_t *":
-    case "const float *":
-      return `static_cast<${param.type}>(obj${index}->Get(Nan::New("$").ToLocalChecked())->NumberValue())`;
-    /*case "const char *":
-    case "const char * const*":
-      return ``;*/
-    default:
-      console.error(`Cannot get param reference value from type ${rawType}`);
-  };
-};
-
-function getObjectParam(param, index) {
+function getObjectArrayBody(param, index) {
   let {rawType} = param;
   if (param.isBaseType) rawType = param.baseType;
   let out = ``;
@@ -69,7 +41,7 @@ function getObjectParam(param, index) {
   return out;
 };
 
-function getOuterCallParams(call) {
+function getCallBodyBefore(call) {
   let {params} = call;
   let out = params.map((param, index) => {
     let {rawType} = param;
@@ -86,7 +58,7 @@ function getOuterCallParams(call) {
       case "uint32_t":
       case "uint64_t":
         return `
-  ${param.type} $p${index} = ${getParamRefValue(param, index)};`;
+  ${param.type} $p${index} = static_cast<${param.type}>(info[${index}]->NumberValue());`;
       case "int *":
       case "size_t *":
       case "uint32_t *":
@@ -99,15 +71,14 @@ function getOuterCallParams(call) {
       case "const uint64_t *":
         return `
   v8::Local<v8::Object> obj${index} = info[${index}]->ToObject();
-  ${param.type} $p${index} = ${getParamRefValue(param, index)};
-  `;
+  ${param.type} $p${index} = static_cast<${param.type}>(obj${index}->Get(Nan::New("$").ToLocalChecked())->NumberValue());`;
       case "void *":
       case "const void *":
         console.log(`Void pointer param ${rawType}`);
         return ``;
       default: {
         if (param.isArray && (param.isStructType || param.isHandleType)) {
-          return getObjectParam(param, index);
+          return getObjectArrayBody(param, index);
         }
         if (param.isEnumType) {
           console.log(`Enum param ${rawType}`);
@@ -132,7 +103,7 @@ function getOuterCallParams(call) {
   return out.join("\n");
 };
 
-function getInnerCallParams(call) {
+function getCallBodyInner(call) {
   let out = ``;
   let {params} = call;
   params.map((param, index) => {
@@ -158,21 +129,22 @@ function getInnerCallParams(call) {
 function getCallBody(call) {
   let out = ``;
   let vari = ``;
-  let paramsOuter = getOuterCallParams(call);
-  let paramsInner = getInnerCallParams(call);
-  out += paramsOuter;
+  let before = getCallBodyBefore(call);
+  let inner = getCallBodyInner(call);
+  let outer = getCallBodyAfter(call);
+  out += before;
   if (call.rawType !== "void") {
     vari = `${call.type} out = `;
   }
   out += `
   ${vari}${call.name}(
-${paramsInner}
+${inner}
   );`;
-  out += getSubsequentCallBody(call);
+  out += outer;
   return out;
 };
 
-function getSubsequentCallBody(call) {
+function getCallBodyAfter(call) {
   let {params} = call;
   let out = params.map((param, index) => {
     let {rawType} = param;
@@ -219,6 +191,12 @@ function getSubsequentCallBody(call) {
       ${memberCopyInstructions}
     };
   }`);
+    } else if (param.isStructType) {
+      let struct = getStructByStructName(param.type);
+      console.log("#####", struct.name, "#####");
+      struct.children.map(member => {
+        console.log("#", member.rawType, member.name);
+      });
     }
   });
   return out.join("");

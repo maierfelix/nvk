@@ -33,6 +33,7 @@ void _VkExtent2D::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
 NAN_METHOD(_VkExtent2D::New) {
   _VkExtent2D* self = new _VkExtent2D();
   self->Wrap(info.Holder());
+  printf("Constructed VkExtent2D\n");
   info.GetReturnValue().Set(info.Holder());
 };
 

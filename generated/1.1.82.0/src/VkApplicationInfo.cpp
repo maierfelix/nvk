@@ -37,6 +37,7 @@ void _VkApplicationInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE targe
 NAN_METHOD(_VkApplicationInfo::New) {
   _VkApplicationInfo* self = new _VkApplicationInfo();
   self->Wrap(info.Holder());
+  printf("Constructed VkApplicationInfo\n");
   info.GetReturnValue().Set(info.Holder());
 };
 

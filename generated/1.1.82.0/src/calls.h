@@ -39,7 +39,6 @@ void _vkEnumeratePhysicalDevices(const Nan::FunctionCallbackInfo<v8::Value>& inf
 
   v8::Local<v8::Object> obj1 = info[1]->ToObject();
   uint32_t $p1 = static_cast<uint32_t>(obj1->Get(Nan::New("$").ToLocalChecked())->NumberValue());
-  
 
   VkPhysicalDevice *$p2 = nullptr;
 
@@ -80,7 +79,6 @@ void _vkGetPhysicalDeviceQueueFamilyProperties(const Nan::FunctionCallbackInfo<v
 
   v8::Local<v8::Object> obj1 = info[1]->ToObject();
   uint32_t $p1 = static_cast<uint32_t>(obj1->Get(Nan::New("$").ToLocalChecked())->NumberValue());
-  
 
   VkQueueFamilyProperties *$p2 = nullptr;
 

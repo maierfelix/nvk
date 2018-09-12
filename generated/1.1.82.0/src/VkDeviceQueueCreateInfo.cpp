@@ -35,6 +35,7 @@ void _VkDeviceQueueCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE
 NAN_METHOD(_VkDeviceQueueCreateInfo::New) {
   _VkDeviceQueueCreateInfo* self = new _VkDeviceQueueCreateInfo();
   self->Wrap(info.Holder());
+  printf("Constructed VkDeviceQueueCreateInfo\n");
   info.GetReturnValue().Set(info.Holder());
 };
 

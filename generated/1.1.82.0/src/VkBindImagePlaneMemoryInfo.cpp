@@ -33,6 +33,7 @@ void _VkBindImagePlaneMemoryInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_T
 NAN_METHOD(_VkBindImagePlaneMemoryInfo::New) {
   _VkBindImagePlaneMemoryInfo* self = new _VkBindImagePlaneMemoryInfo();
   self->Wrap(info.Holder());
+  printf("Constructed VkBindImagePlaneMemoryInfo\n");
   info.GetReturnValue().Set(info.Holder());
 };
 

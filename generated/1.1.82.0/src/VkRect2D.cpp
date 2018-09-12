@@ -33,6 +33,7 @@ void _VkRect2D::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
 NAN_METHOD(_VkRect2D::New) {
   _VkRect2D* self = new _VkRect2D();
   self->Wrap(info.Holder());
+  printf("Constructed VkRect2D\n");
   info.GetReturnValue().Set(info.Holder());
 };
 
