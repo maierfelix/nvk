@@ -135,6 +135,7 @@ function processSourceGetter(member) {
     case "float":
     case "size_t":
     case "int32_t":
+    case "uint8_t":
     case "uint32_t":
     case "uint64_t":
       return `
@@ -174,23 +175,31 @@ function processSourceGetter(member) {
   };
 };
 
-function processSourceSetter(member) {
-  let {rawType} = member;
-  if (member.isBaseType) rawType = member.baseType;
-  if (member.isStaticArray) {
-    if (member.type === "char") {
-      return `
+function processStaticArraySourceSetter(member) {
+  // char array
+  if (member.type === "char") {
+    return `
   Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> str(Nan::To<v8::String>(value).ToLocalChecked());
   self->${member.name} = str;
   strcpy(self->instance.${member.name}, copyV8String(value));`;
-    } else {
-      return `
+  }
+  // numeric array
+  else if (member.isNumericArray) {
+    return `
   ${genPersistentV8Array(member)}
   // vulkan
   {
     memcpy(self->instance.${member.name}, createArrayOfV8Numbers<${member.type}>(value), sizeof(${member.type}) * ${member.length});
   }`;
-    }
+  }
+  // struct array
+};
+
+function processSourceSetter(member) {
+  let {rawType} = member;
+  if (member.isBaseType) rawType = member.baseType;
+  if (member.isStaticArray) {
+    return processStaticArraySourceSetter(member);
   }
   if (member.isArray && (member.isStructType || member.isHandleType)) {
     return `
@@ -205,6 +214,7 @@ function processSourceSetter(member) {
     case "float":
     case "size_t":
     case "int32_t":
+    case "uint8_t":
     case "uint32_t":
     case "uint64_t":
       return `
@@ -219,7 +229,7 @@ function processSourceSetter(member) {
   ${genPersistentV8Array(member)}
   // vulkan
   {
-    self->instance.${member.name} = createArrayOfV8Strings(value);
+    self->instance.${member.name} = createArrayOfV8Strings(value).data();
   }`;
     case "const float *":
     case "const int32_t *":
@@ -362,6 +372,17 @@ function processSourceMemberInitializer(member) {
   return "";
 };
 
+function processSourceMemberAccessor(input, member) {
+  let {name} = member;
+  if (isStructReturnedOnly(input)) {
+    return `
+  SetPrototypeAccessor(proto, Nan::New("${name}").ToLocalChecked(), Get${name}, nullptr, ctor);`;
+  } else {
+    return `
+  SetPrototypeAccessor(proto, Nan::New("${name}").ToLocalChecked(), Get${name}, Set${name}, ctor);`;
+  }
+};
+
 function ignoreableMember(member) {
   return (
     member.name === "flags" ||
@@ -375,6 +396,10 @@ function ignoreableMember(member) {
   );
 };
 
+function isStructReturnedOnly(input) {
+  return input.returnedonly;
+};
+
 export default function(astReference, input) {
   ast = astReference;
   let {
@@ -385,12 +410,14 @@ export default function(astReference, input) {
     input,
     struct_name: name,
     members: children,
+    isStructReturnedOnly,
     ignoreableMember,
     processSourceGetter,
     processSourceSetter,
     processHeaderGetter,
     processHeaderSetter,
     processSourceIncludes,
+    processSourceMemberAccessor,
     processSourceMemberReflection,
     processSourceMemberInitializer
   };

@@ -16,24 +16,23 @@ _VkRect2D::~_VkRect2D() { }
 void _VkRect2D::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;
 
-  // Constructor
+  // constructor
   v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkRect2D::New);
   constructor.Reset(ctor);
   ctor->InstanceTemplate()->SetInternalFieldCount(1);
   ctor->SetClassName(Nan::New("VkRect2D").ToLocalChecked());
 
-  // Prototype
+  // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
   SetPrototypeAccessor(proto, Nan::New("offset").ToLocalChecked(), Getoffset, Setoffset, ctor);
   SetPrototypeAccessor(proto, Nan::New("extent").ToLocalChecked(), Getextent, Setextent, ctor);
-  
   Nan::Set(target, Nan::New("VkRect2D").ToLocalChecked(), ctor->GetFunction());
 }
 
 NAN_METHOD(_VkRect2D::New) {
   _VkRect2D* self = new _VkRect2D();
   self->Wrap(info.Holder());
-  printf("Constructed VkRect2D\n");
   info.GetReturnValue().Set(info.Holder());
 };
 
@@ -42,8 +41,7 @@ NAN_GETTER(_VkRect2D::Getoffset) {
   _VkRect2D *self = Nan::ObjectWrap::Unwrap<_VkRect2D>(info.This());
   v8::Local<v8::Object> obj = Nan::New(self->offset);
   info.GetReturnValue().Set(obj);
-}
-NAN_SETTER(_VkRect2D::Setoffset) {
+}NAN_SETTER(_VkRect2D::Setoffset) {
   _VkRect2D *self = Nan::ObjectWrap::Unwrap<_VkRect2D>(info.This());
   // js
   {
@@ -60,8 +58,7 @@ NAN_GETTER(_VkRect2D::Getextent) {
   _VkRect2D *self = Nan::ObjectWrap::Unwrap<_VkRect2D>(info.This());
   v8::Local<v8::Object> obj = Nan::New(self->extent);
   info.GetReturnValue().Set(obj);
-}
-NAN_SETTER(_VkRect2D::Setextent) {
+}NAN_SETTER(_VkRect2D::Setextent) {
   _VkRect2D *self = Nan::ObjectWrap::Unwrap<_VkRect2D>(info.This());
   // js
   {

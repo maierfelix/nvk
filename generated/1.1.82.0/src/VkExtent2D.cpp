@@ -16,24 +16,23 @@ _VkExtent2D::~_VkExtent2D() { }
 void _VkExtent2D::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;
 
-  // Constructor
+  // constructor
   v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkExtent2D::New);
   constructor.Reset(ctor);
   ctor->InstanceTemplate()->SetInternalFieldCount(1);
   ctor->SetClassName(Nan::New("VkExtent2D").ToLocalChecked());
 
-  // Prototype
+  // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
   SetPrototypeAccessor(proto, Nan::New("width").ToLocalChecked(), Getwidth, Setwidth, ctor);
   SetPrototypeAccessor(proto, Nan::New("height").ToLocalChecked(), Getheight, Setheight, ctor);
-  
   Nan::Set(target, Nan::New("VkExtent2D").ToLocalChecked(), ctor->GetFunction());
 }
 
 NAN_METHOD(_VkExtent2D::New) {
   _VkExtent2D* self = new _VkExtent2D();
   self->Wrap(info.Holder());
-  printf("Constructed VkExtent2D\n");
   info.GetReturnValue().Set(info.Holder());
 };
 
@@ -41,16 +40,14 @@ NAN_METHOD(_VkExtent2D::New) {
 NAN_GETTER(_VkExtent2D::Getwidth) {
   _VkExtent2D *self = Nan::ObjectWrap::Unwrap<_VkExtent2D>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.width));
-}
-NAN_SETTER(_VkExtent2D::Setwidth) {
+}NAN_SETTER(_VkExtent2D::Setwidth) {
   _VkExtent2D *self = Nan::ObjectWrap::Unwrap<_VkExtent2D>(info.This());
   self->instance.width = static_cast<uint32_t>(value->NumberValue());
 }// height
 NAN_GETTER(_VkExtent2D::Getheight) {
   _VkExtent2D *self = Nan::ObjectWrap::Unwrap<_VkExtent2D>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.height));
-}
-NAN_SETTER(_VkExtent2D::Setheight) {
+}NAN_SETTER(_VkExtent2D::Setheight) {
   _VkExtent2D *self = Nan::ObjectWrap::Unwrap<_VkExtent2D>(info.This());
   self->instance.height = static_cast<uint32_t>(value->NumberValue());
 }

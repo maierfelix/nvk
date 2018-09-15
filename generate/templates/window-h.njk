@@ -1,0 +1,129 @@
+#ifndef __VK_WINDOW_H__
+#define __VK_WINDOW_H__
+
+#include <nan.h>
+
+#define GLFW_INCLUDE_VULKAN
+#include <GLFW/glfw3.h>
+
+class VulkanWindow: public Nan::ObjectWrap {
+
+  public:
+
+    static NAN_METHOD(New);
+
+    GLFWwindow* instance;
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+
+    static NAN_METHOD(test);
+    static NAN_METHOD(createSurface);
+    static NAN_METHOD(getRequiredInstanceExtensions);
+
+  private:
+    VulkanWindow();
+    ~VulkanWindow();
+
+};
+
+Nan::Persistent<v8::FunctionTemplate> VulkanWindow::constructor;
+
+VulkanWindow::VulkanWindow() {}
+VulkanWindow::~VulkanWindow() {}
+
+void VulkanWindow::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
+  Nan::HandleScope scope;
+
+  // constructor
+  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(VulkanWindow::New);
+  constructor.Reset(ctor);
+  ctor->InstanceTemplate()->SetInternalFieldCount(1);
+  ctor->SetClassName(Nan::New("VulkanWindow").ToLocalChecked());
+
+  // prototype
+  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+
+  Nan::SetPrototypeMethod(ctor, "test", test);
+  Nan::SetPrototypeMethod(ctor, "createSurface", createSurface);
+  Nan::SetPrototypeMethod(ctor, "getRequiredInstanceExtensions", getRequiredInstanceExtensions);
+
+  Nan::Set(target, Nan::New("VulkanWindow").ToLocalChecked(), ctor->GetFunction());
+}
+
+NAN_METHOD(VulkanWindow::New) {
+  VulkanWindow* self = new VulkanWindow();
+  self->Wrap(info.Holder());
+  // create glfw window
+  if (info.IsConstructCall()) {
+    int width = static_cast<int>(info[0]->NumberValue());
+    int height = static_cast<int>(info[1]->NumberValue());
+    if (glfwInit() != GLFW_TRUE) {
+      printf("Failed to create GLFW!\n");
+    }
+    glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+    glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+    GLFWwindow* window = glfwCreateWindow(width, height, "Vulkan", nullptr, nullptr);
+    self->instance = window;
+  }
+  info.GetReturnValue().Set(info.Holder());
+}
+
+NAN_METHOD(VulkanWindow::test) {
+
+  v8::Local<v8::Object> arg0;
+  if (info[0]->IsObject()) arg0 = info[0]->ToObject();
+
+  _VkInstanceCreateInfo* instance0 = Nan::ObjectWrap::Unwrap<_VkInstanceCreateInfo>(arg0);
+
+  uint32_t glfwExtensionCount = 0;
+  instance0->instance.ppEnabledExtensionNames = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
+
+}
+
+NAN_METHOD(VulkanWindow::createSurface) {
+
+  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
+
+  v8::Local<v8::Object> arg0;
+  v8::Local<v8::Object> arg1;
+  v8::Local<v8::Object> arg2;
+
+  if (info[0]->IsObject()) arg0 = info[0]->ToObject();
+  if (info[1]->IsObject()) arg1 = info[1]->ToObject();
+  if (info[2]->IsObject()) arg2 = info[2]->ToObject();
+
+  _VkInstance* instance = Nan::ObjectWrap::Unwrap<_VkInstance>(arg0);
+  _VkSurfaceKHR* surface = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(arg2);
+
+  VkResult out = glfwCreateWindowSurface(
+    instance->instance,
+    self->instance,
+    nullptr,
+    &surface->instance
+  );
+
+  info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
+
+}
+
+NAN_METHOD(VulkanWindow::getRequiredInstanceExtensions) {
+
+  v8::Isolate *isolate = info.GetIsolate();
+
+  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
+
+  uint32_t glfwExtensionCount = 0;
+  const char** glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
+
+  v8::Local<v8::Array> out = v8::Array::New(isolate, glfwExtensionCount);
+  for (unsigned int ii = 0; ii < glfwExtensionCount; ++ii) {
+    v8::Local<v8::String> str = v8::String::NewFromUtf8(isolate, glfwExtensions[ii]);
+    out->Set(ii, str);
+  };
+
+  info.GetReturnValue().Set(out);
+
+}
+
+#endif

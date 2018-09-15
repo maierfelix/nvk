@@ -67,6 +67,92 @@ void _vkGetPhysicalDeviceProperties(const Nan::FunctionCallbackInfo<v8::Value>& 
     *$p0,
     $p1
   );
+  {
+    // back reflect string
+    v8::Local<v8::String> str1 = v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), (&obj1->instance)->deviceName);
+    obj1->deviceName = Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>>(str1);
+  }
+  {
+    // back reflect array
+    v8::Local<v8::Array> arr1 = v8::Array::New(v8::Isolate::GetCurrent(), 16);
+    // populate array
+    for (unsigned int ii = 0; ii < 16; ++ii) {
+      arr1->Set(ii, Nan::New((&obj1->instance)->pipelineCacheUUID[ii]));
+    };
+    obj1->pipelineCacheUUID = Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>>(arr1);
+  }
+  {
+    v8::Local<v8::Function> ctor = Nan::GetFunction(Nan::New(_VkPhysicalDeviceLimits::constructor)).ToLocalChecked();
+    v8::Local<v8::Object> inst = Nan::NewInstance(ctor).ToLocalChecked();
+    _VkPhysicalDeviceLimits* unwrapped6 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceLimits>(inst);
+    obj1->limits = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(inst);
+    memcpy((&unwrapped6->instance), &obj1->instance.limits, sizeof(VkPhysicalDeviceLimits));
+    
+  {
+    // back reflect array
+    v8::Local<v8::Array> arr1 = v8::Array::New(v8::Isolate::GetCurrent(), 3);
+    // populate array
+    for (unsigned int ii = 0; ii < 3; ++ii) {
+      arr1->Set(ii, Nan::New((&unwrapped6->instance)->maxComputeWorkGroupCount[ii]));
+    };
+    unwrapped6->maxComputeWorkGroupCount = Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>>(arr1);
+  }
+  {
+    // back reflect array
+    v8::Local<v8::Array> arr1 = v8::Array::New(v8::Isolate::GetCurrent(), 3);
+    // populate array
+    for (unsigned int ii = 0; ii < 3; ++ii) {
+      arr1->Set(ii, Nan::New((&unwrapped6->instance)->maxComputeWorkGroupSize[ii]));
+    };
+    unwrapped6->maxComputeWorkGroupSize = Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>>(arr1);
+  }
+  {
+    // back reflect array
+    v8::Local<v8::Array> arr1 = v8::Array::New(v8::Isolate::GetCurrent(), 2);
+    // populate array
+    for (unsigned int ii = 0; ii < 2; ++ii) {
+      arr1->Set(ii, Nan::New((&unwrapped6->instance)->maxViewportDimensions[ii]));
+    };
+    unwrapped6->maxViewportDimensions = Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>>(arr1);
+  }
+  {
+    // back reflect array
+    v8::Local<v8::Array> arr1 = v8::Array::New(v8::Isolate::GetCurrent(), 2);
+    // populate array
+    for (unsigned int ii = 0; ii < 2; ++ii) {
+      arr1->Set(ii, Nan::New((&unwrapped6->instance)->viewportBoundsRange[ii]));
+    };
+    unwrapped6->viewportBoundsRange = Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>>(arr1);
+  }
+  {
+    // back reflect array
+    v8::Local<v8::Array> arr1 = v8::Array::New(v8::Isolate::GetCurrent(), 2);
+    // populate array
+    for (unsigned int ii = 0; ii < 2; ++ii) {
+      arr1->Set(ii, Nan::New((&unwrapped6->instance)->pointSizeRange[ii]));
+    };
+    unwrapped6->pointSizeRange = Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>>(arr1);
+  }
+  {
+    // back reflect array
+    v8::Local<v8::Array> arr1 = v8::Array::New(v8::Isolate::GetCurrent(), 2);
+    // populate array
+    for (unsigned int ii = 0; ii < 2; ++ii) {
+      arr1->Set(ii, Nan::New((&unwrapped6->instance)->lineWidthRange[ii]));
+    };
+    unwrapped6->lineWidthRange = Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>>(arr1);
+  }
+  }
+      
+  {
+    v8::Local<v8::Function> ctor = Nan::GetFunction(Nan::New(_VkPhysicalDeviceSparseProperties::constructor)).ToLocalChecked();
+    v8::Local<v8::Object> inst = Nan::NewInstance(ctor).ToLocalChecked();
+    _VkPhysicalDeviceSparseProperties* unwrapped6 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceSparseProperties>(inst);
+    obj1->sparseProperties = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(inst);
+    memcpy((&unwrapped6->instance), &obj1->instance.sparseProperties, sizeof(VkPhysicalDeviceSparseProperties));
+    
+  }
+      
   
   info.GetReturnValue().SetUndefined();
   
@@ -97,7 +183,8 @@ void _vkGetPhysicalDeviceQueueFamilyProperties(const Nan::FunctionCallbackInfo<v
     v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[2]);
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
-      _VkQueueFamilyProperties* result = Nan::ObjectWrap::Unwrap<_VkQueueFamilyProperties>(item->ToObject());
+      v8::Local<v8::Object> obj = item->ToObject();
+      _VkQueueFamilyProperties* result = Nan::ObjectWrap::Unwrap<_VkQueueFamilyProperties>(obj);
       VkQueueFamilyProperties *instance = &result->instance;
       VkQueueFamilyProperties *copy = &$p2[ii];
       
@@ -105,8 +192,32 @@ void _vkGetPhysicalDeviceQueueFamilyProperties(const Nan::FunctionCallbackInfo<v
       instance->queueCount = copy->queueCount;
       instance->timestampValidBits = copy->timestampValidBits;
       instance->minImageTransferGranularity = copy->minImageTransferGranularity;
+      if (&copy->minImageTransferGranularity != nullptr) {
+        
+  v8::Local<v8::Function> ctor = Nan::GetFunction(Nan::New(_VkExtent3D::constructor)).ToLocalChecked();
+  v8::Local<v8::Object> inst = Nan::NewInstance(ctor).ToLocalChecked();
+  _VkExtent3D* unwrapped = Nan::ObjectWrap::Unwrap<_VkExtent3D>(inst);
+        result->minImageTransferGranularity = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(inst);
+        unwrapped->instance = copy->minImageTransferGranularity;
+      }
     };
   }
+  
+  info.GetReturnValue().SetUndefined();
+  
+};
+
+void _vkGetPhysicalDeviceMemoryProperties(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+  
+  _VkPhysicalDevice* obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(info[0]->ToObject());
+  VkPhysicalDevice *$p0 = &obj0->instance;
+
+  _VkPhysicalDeviceMemoryProperties* obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceMemoryProperties>(info[1]->ToObject());
+  VkPhysicalDeviceMemoryProperties *$p1 = &obj1->instance;
+  vkGetPhysicalDeviceMemoryProperties(
+    *$p0,
+    $p1
+  );
   
   info.GetReturnValue().SetUndefined();
   
@@ -126,6 +237,213 @@ void _vkGetPhysicalDeviceFeatures(const Nan::FunctionCallbackInfo<v8::Value>& in
   
   info.GetReturnValue().SetUndefined();
   
+};
+
+void _vkCreateDevice(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+  
+  _VkPhysicalDevice* obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(info[0]->ToObject());
+  VkPhysicalDevice *$p0 = &obj0->instance;
+
+  _VkDeviceCreateInfo* obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info[1]->ToObject());
+  VkDeviceCreateInfo *$p1 = &obj1->instance;
+
+
+  _VkDevice* obj3 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[3]->ToObject());
+  VkDevice *$p3 = &obj3->instance;
+  VkResult out = vkCreateDevice(
+    *$p0,
+    $p1,
+    nullptr,
+    $p3
+  );
+  info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
+};
+
+void _vkGetDeviceQueue(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+  
+  _VkDevice* obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+  VkDevice *$p0 = &obj0->instance;
+
+  uint32_t $p1 = static_cast<uint32_t>(info[1]->NumberValue());
+
+  uint32_t $p2 = static_cast<uint32_t>(info[2]->NumberValue());
+
+  _VkQueue* obj3 = Nan::ObjectWrap::Unwrap<_VkQueue>(info[3]->ToObject());
+  VkQueue *$p3 = &obj3->instance;
+  vkGetDeviceQueue(
+    *$p0,
+    $p1,
+    $p2,
+    $p3
+  );
+  
+  info.GetReturnValue().SetUndefined();
+  
+};
+
+void _vkGetPhysicalDeviceSurfaceSupportKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+  
+  _VkPhysicalDevice* obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(info[0]->ToObject());
+  VkPhysicalDevice *$p0 = &obj0->instance;
+
+  uint32_t $p1 = static_cast<uint32_t>(info[1]->NumberValue());
+
+  _VkSurfaceKHR* obj2 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(info[2]->ToObject());
+  VkSurfaceKHR *$p2 = &obj2->instance;
+
+  v8::Local<v8::Object> obj3 = info[3]->ToObject();
+  VkBool32 $p3 = static_cast<VkBool32>(obj3->Get(Nan::New("$").ToLocalChecked())->BooleanValue());
+  VkResult out = vkGetPhysicalDeviceSurfaceSupportKHR(
+    *$p0,
+    $p1,
+    *$p2,
+    &$p3
+  );
+  obj3->Set(Nan::New("$").ToLocalChecked(), Nan::New($p3));
+  info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
+};
+
+void _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+  
+  _VkPhysicalDevice* obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(info[0]->ToObject());
+  VkPhysicalDevice *$p0 = &obj0->instance;
+
+  _VkSurfaceKHR* obj1 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(info[1]->ToObject());
+  VkSurfaceKHR *$p1 = &obj1->instance;
+
+  _VkSurfaceCapabilitiesKHR* obj2 = Nan::ObjectWrap::Unwrap<_VkSurfaceCapabilitiesKHR>(info[2]->ToObject());
+  VkSurfaceCapabilitiesKHR *$p2 = &obj2->instance;
+  VkResult out = vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
+    *$p0,
+    *$p1,
+    $p2
+  );
+  {
+    v8::Local<v8::Function> ctor = Nan::GetFunction(Nan::New(_VkExtent2D::constructor)).ToLocalChecked();
+    v8::Local<v8::Object> inst = Nan::NewInstance(ctor).ToLocalChecked();
+    _VkExtent2D* unwrapped6 = Nan::ObjectWrap::Unwrap<_VkExtent2D>(inst);
+    obj2->currentExtent = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(inst);
+    memcpy((&unwrapped6->instance), &obj2->instance.currentExtent, sizeof(VkExtent2D));
+    
+  }
+      
+  {
+    v8::Local<v8::Function> ctor = Nan::GetFunction(Nan::New(_VkExtent2D::constructor)).ToLocalChecked();
+    v8::Local<v8::Object> inst = Nan::NewInstance(ctor).ToLocalChecked();
+    _VkExtent2D* unwrapped6 = Nan::ObjectWrap::Unwrap<_VkExtent2D>(inst);
+    obj2->minImageExtent = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(inst);
+    memcpy((&unwrapped6->instance), &obj2->instance.minImageExtent, sizeof(VkExtent2D));
+    
+  }
+      
+  {
+    v8::Local<v8::Function> ctor = Nan::GetFunction(Nan::New(_VkExtent2D::constructor)).ToLocalChecked();
+    v8::Local<v8::Object> inst = Nan::NewInstance(ctor).ToLocalChecked();
+    _VkExtent2D* unwrapped6 = Nan::ObjectWrap::Unwrap<_VkExtent2D>(inst);
+    obj2->maxImageExtent = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(inst);
+    memcpy((&unwrapped6->instance), &obj2->instance.maxImageExtent, sizeof(VkExtent2D));
+    
+  }
+      
+  info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
+};
+
+void _vkGetPhysicalDeviceSurfaceFormatsKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+  
+  _VkPhysicalDevice* obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(info[0]->ToObject());
+  VkPhysicalDevice *$p0 = &obj0->instance;
+
+  _VkSurfaceKHR* obj1 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(info[1]->ToObject());
+  VkSurfaceKHR *$p1 = &obj1->instance;
+
+  v8::Local<v8::Object> obj2 = info[2]->ToObject();
+  uint32_t $p2 = static_cast<uint32_t>(obj2->Get(Nan::New("$").ToLocalChecked())->NumberValue());
+
+  VkSurfaceFormatKHR *$p3 = nullptr;
+
+  if (info[3]->IsArray()) {
+
+    $p3 = copyArrayOfV8Objects<VkSurfaceFormatKHR, _VkSurfaceFormatKHR>(info[3]);
+  }
+
+  VkResult out = vkGetPhysicalDeviceSurfaceFormatsKHR(
+    *$p0,
+    *$p1,
+    &$p2,
+    $p3
+  );
+  obj2->Set(Nan::New("$").ToLocalChecked(), Nan::New($p2));
+  if (info[3]->IsArray()) {
+    v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[3]);
+    for (unsigned int ii = 0; ii < array->Length(); ++ii) {
+      v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
+      v8::Local<v8::Object> obj = item->ToObject();
+      _VkSurfaceFormatKHR* result = Nan::ObjectWrap::Unwrap<_VkSurfaceFormatKHR>(obj);
+      VkSurfaceFormatKHR *instance = &result->instance;
+      VkSurfaceFormatKHR *copy = &$p3[ii];
+      
+      instance->format = copy->format;
+      instance->colorSpace = copy->colorSpace;
+    };
+  }
+  info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
+};
+
+void _vkGetPhysicalDeviceSurfacePresentModesKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+  
+  _VkPhysicalDevice* obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(info[0]->ToObject());
+  VkPhysicalDevice *$p0 = &obj0->instance;
+
+  _VkSurfaceKHR* obj1 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(info[1]->ToObject());
+  VkSurfaceKHR *$p1 = &obj1->instance;
+
+  v8::Local<v8::Object> obj2 = info[2]->ToObject();
+  uint32_t $p2 = static_cast<uint32_t>(obj2->Get(Nan::New("$").ToLocalChecked())->NumberValue());
+
+  VkPresentModeKHR *$p3 = nullptr;
+
+  if (info[3]->IsArray()) {
+
+    v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[3]);
+    VkPresentModeKHR * arr3 = new VkPresentModeKHR[array->Length()];
+    $p3 = arr3;
+  }
+
+  VkResult out = vkGetPhysicalDeviceSurfacePresentModesKHR(
+    *$p0,
+    *$p1,
+    &$p2,
+    $p3
+  );
+  obj2->Set(Nan::New("$").ToLocalChecked(), Nan::New($p2));
+  if (info[3]->IsArray()) {
+    v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[3]);
+    for (unsigned int ii = 0; ii < array->Length(); ++ii) {
+      v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
+      array->Set(ii, Nan::New($p3[ii]));
+    };
+  }
+  info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
+};
+
+void _vkCreateSwapchainKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+  
+  _VkDevice* obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+  VkDevice *$p0 = &obj0->instance;
+
+  _VkSwapchainCreateInfoKHR* obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info[1]->ToObject());
+  VkSwapchainCreateInfoKHR *$p1 = &obj1->instance;
+
+
+  _VkSwapchainKHR* obj3 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(info[3]->ToObject());
+  VkSwapchainKHR *$p3 = &obj3->instance;
+  VkResult out = vkCreateSwapchainKHR(
+    *$p0,
+    $p1,
+    nullptr,
+    $p3
+  );
+  info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
 

@@ -16,6 +16,10 @@ function getEnumType(enu) {
 function getEnumMemberValue(member) {
   let parsed = parseInt(member.value);
   let isFloat = member.value.indexOf(".") !== -1;
+  if (member.type === "BITPOS") {
+    let pos = 1 << parseInt(member.value, 0);
+    return `0x` + pos.toString(16);
+  }
   if (Number.isNaN(parsed) || isFloat) {
     return `(__int32)${member.value}`;
   }

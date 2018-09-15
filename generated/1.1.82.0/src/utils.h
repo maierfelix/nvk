@@ -27,7 +27,7 @@ inline void SetPrototypeAccessor(
 };
 
 inline char* copyV8String(v8::Handle<v8::Value> val) {
-  v8::String::Utf8Value utf8(val->ToString());
+  Nan::Utf8String utf8(val->ToString());
   int len = utf8.length() + 1;
   char *str = (char *) calloc(sizeof(char), len);
   strncpy(str, *utf8, len);
@@ -35,23 +35,23 @@ inline char* copyV8String(v8::Handle<v8::Value> val) {
   return str;
 };
 
-inline const char** createArrayOfV8Strings(v8::Local<v8::Value> value) {
+inline std::vector<const char*> createArrayOfV8Strings(v8::Local<v8::Value> value) {
   v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(value);
-  std::vector<const char *> data;
+  std::vector<const char *> data(array->Length());
   for (unsigned int ii = 0; ii < array->Length(); ++ii) {
     char *copy = copyV8String(Nan::Get(array, ii).ToLocalChecked());
-    data.push_back(copy);
+    data[ii] = copy;
   };
-  return data.data();
+  return data;
 };
 
 template<typename T>
 inline const T* createArrayOfV8Numbers(v8::Local<v8::Value> value) {
   v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(value);
-  std::vector<T> data;
+  std::vector<T> data(array->Length());
   for (unsigned int ii = 0; ii < array->Length(); ++ii) {
     T num = static_cast<T>(Nan::Get(array, ii).ToLocalChecked()->NumberValue());
-    data.push_back(num);
+    data[ii] = num;
   };
   return data.data();
 };
@@ -59,11 +59,11 @@ inline const T* createArrayOfV8Numbers(v8::Local<v8::Value> value) {
 template<typename S, typename T>
 inline S* createArrayOfV8Objects(v8::Local<v8::Value> value) {
   v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(value);
-  std::vector<S*> data;
+  std::vector<S*> data(array->Length());
   for (unsigned int ii = 0; ii < array->Length(); ++ii) {
     v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
     T* result = Nan::ObjectWrap::Unwrap<T>(item->ToObject());
-    data.push_back(&result->instance);
+    data[ii] = &result->instance;
   };
   return *data.data();
 };
@@ -80,17 +80,6 @@ inline S* copyArrayOfV8Objects(v8::Local<v8::Value> value) {
   return data.data();
 };
 
-template<typename S, typename T>
-inline S* copyArrayOfV8Objects(v8::Local<v8::Value> value) {
-  v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(value);
-  std::vector<S> data(array->Length());
-  for (unsigned int ii = 0; ii < array->Length(); ++ii) {
-    v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
-    T* result = Nan::ObjectWrap::Unwrap<T>(item->ToObject());
-    data[ii] = result->instance;
-  };
-  return data.data();
-};
 /*
 template<typename A, typename B>
 void inline reflectNumericArray(A* receiver, B vkMember) {

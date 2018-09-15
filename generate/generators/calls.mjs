@@ -18,12 +18,12 @@ function getStructByStructName(name) {
   return null;
 };
 
-function getObjectArrayBody(param, index) {
+function getInputArrayBody(param, index) {
   let {rawType} = param;
   if (param.isBaseType) rawType = param.baseType;
   let out = ``;
   let isReference = param.dereferenceCount > 0;
-  console.log(`Array of objects param ${rawType}`);
+  //console.log(`Array of objects param ${rawType}`);
   out += `
   ${param.type} ${isReference ? "*" : ""}$p${index} = nullptr;\n`;
   out += `
@@ -36,6 +36,13 @@ function getObjectArrayBody(param, index) {
     out += `
     $p${index} = copyArrayOfV8Objects<${param.type}, _${param.type}>(info[${index}]);`;
   }
+  else if (param.isEnumType) {
+    // begin
+    out += `
+    v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[${index}]);
+    ${rawType} arr${index} = new ${param.type}[array->Length()];
+    $p${index} = arr${index};`;
+  }
   out += `
   }\n`;
   return out;
@@ -45,7 +52,7 @@ function getCallBodyBefore(call) {
   let {params} = call;
   let out = params.map((param, index) => {
     let {rawType} = param;
-    if (param.isBaseType) rawType = param.baseType;
+    if (param.isBaseType && param.type !== "VkBool32") rawType = param.baseType;
     // ignore
     if (param.name === "pAllocator") {
       return ``;
@@ -55,10 +62,15 @@ function getCallBodyBefore(call) {
       case "float":
       case "size_t":
       case "int32_t":
+      case "uint8_t":
       case "uint32_t":
       case "uint64_t":
         return `
   ${param.type} $p${index} = static_cast<${param.type}>(info[${index}]->NumberValue());`;
+      case "VkBool32 *":
+        return `
+  v8::Local<v8::Object> obj${index} = info[${index}]->ToObject();
+  ${param.type} $p${index} = static_cast<${param.type}>(obj${index}->Get(Nan::New("$").ToLocalChecked())->BooleanValue());`;
       case "int *":
       case "size_t *":
       case "uint32_t *":
@@ -77,15 +89,11 @@ function getCallBodyBefore(call) {
         console.log(`Void pointer param ${rawType}`);
         return ``;
       default: {
-        if (param.isArray && (param.isStructType || param.isHandleType)) {
-          return getObjectArrayBody(param, index);
-        }
-        if (param.isEnumType) {
-          console.log(`Enum param ${rawType}`);
-          return ``;
+        if (param.isArray && (param.isStructType || param.isHandleType || param.isEnumType)) {
+          return getInputArrayBody(param, index);
         }
         else if (param.isStructType || param.isHandleType) {
-          console.log(`Object param ${rawType}`);
+          //console.log(`Object param ${rawType}`);
           let isReference = param.dereferenceCount > 0;
           return `
   _${param.type}* obj${index} = Nan::ObjectWrap::Unwrap<_${param.type}>(info[${index}]->ToObject());
@@ -119,7 +127,7 @@ function getCallBodyInner(call) {
     ) byReference = "*";
     else if (
       param.dereferenceCount > 0 &&
-      !(param.isStructType || param.isHandleType)
+      !(param.isStructType || param.isHandleType || param.isEnumType)
     ) byReference = "&";
     out += `    ${byReference}$p${index}${addComma}`;
   });
@@ -144,6 +152,112 @@ ${inner}
   return out;
 };
 
+function instantiateMemberClass(member) {
+  return `
+  v8::Local<v8::Function> ctor = Nan::GetFunction(Nan::New(_${member.type}::constructor)).ToLocalChecked();
+  v8::Local<v8::Object> inst = Nan::NewInstance(ctor).ToLocalChecked();
+  _${member.type}* unwrapped = Nan::ObjectWrap::Unwrap<_${member.type}>(inst);`;
+};
+
+function getMemberCopyInstructions(struct) {
+  let out = ``;
+  struct.children.map(member => {
+    out += `
+      instance->${member.name} = copy->${member.name};`;
+    if (member.isStructType || member.isHandleType) {
+      out += `
+      if (&copy->${member.name} != nullptr) {
+        ${instantiateMemberClass(member)}
+        result->${member.name} = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(inst);
+        unwrapped->instance = copy->${member.name};
+      }`;
+    }
+    else if (member.isArray) {
+      // TODO
+      console.log(`Error: Member copy instruction for arrays not handled yet!`);
+    }
+    else if (member.isString) {
+      console.log(`Error: Member copy instruction for strings not handled yet!`);
+      // TODO
+    }
+  });
+  return out;
+};
+
+function getParamIndexByParamName(struct, name) {
+
+};
+
+function getMutableStructReflectInstructions(name, pIndex, basePath, out = []) {
+  let struct = getStructByStructName(name);
+  //console.log("#####", struct.name, "#####", basePath);
+  struct.children.map((member, mIndex) => {
+    if (
+      (member.isNumber) ||
+      (member.isBoolean) ||
+      (member.isEnumType) ||
+      (member.isBaseType) ||
+      (member.isBitmaskType)
+    ) return;
+    if (member.isString) {
+      //console.log(`String at ${mIndex}`);
+      out.push(`
+  {
+    // back reflect string
+    v8::Local<v8::String> str${pIndex} = v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), (&${basePath}instance)->${member.name});
+    ${basePath}${member.name} = Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>>(str${pIndex});
+  }`);
+    }
+    // static array of numbers
+    else if (member.isNumericArray && member.isStaticArray) {
+      //console.log(`${member.type} array of numbers at ${mIndex}`);
+      out.push(`
+  {
+    // back reflect array
+    v8::Local<v8::Array> arr${pIndex} = v8::Array::New(v8::Isolate::GetCurrent(), ${member.length});
+    // populate array
+    for (unsigned int ii = 0; ii < ${member.length}; ++ii) {
+      arr${pIndex}->Set(ii, Nan::New((&${basePath}instance)->${member.name}[ii]));
+    };
+    ${basePath}${member.name} = Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>>(arr${pIndex});
+  }`);
+    }
+    // static array of structs
+    else if (member.isStructType && member.isStaticArray) {
+      // TODO
+      /*out.push(`
+  {
+    // back reflect array
+    v8::Local<v8::Array> arr${pIndex} = v8::Array::New(v8::Isolate::GetCurrent(), ${member.length});
+    // populate array
+    for (unsigned int ii = 0; ii < ${member.length}; ++ii) {
+      //arr${pIndex}->Set(ii, Nan::New((&${basePath}instance)->${member.name}[ii]));
+    };
+    ${basePath}${member.name} = Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>>(arr${pIndex});
+  }`);*/
+    }
+    else if (member.isStructType) {
+      // TODO
+      //console.log(`${member.type} struct at ${mIndex}`, member.name);
+      out.push(`
+  {
+    v8::Local<v8::Function> ctor = Nan::GetFunction(Nan::New(_${member.type}::constructor)).ToLocalChecked();
+    v8::Local<v8::Object> inst = Nan::NewInstance(ctor).ToLocalChecked();
+    _${member.type}* unwrapped${basePath.length} = Nan::ObjectWrap::Unwrap<_${member.type}>(inst);
+    obj${pIndex}->${member.name} = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(inst);
+    memcpy((&unwrapped${basePath.length}->instance), &${basePath}instance.${member.name}, sizeof(${member.type}));
+    ${getMutableStructReflectInstructions(member.type, pIndex, `unwrapped${basePath.length}->`, [])}
+  }
+      `);
+      //out.push(instantiateMemberClass(member));
+    }
+    else {
+      console.log(`Error: Cannot handle param member ${member.name} of type ${member.type}`);
+    }
+  });
+  return out.join("");
+};
+
 function getCallBodyAfter(call) {
   let {params} = call;
   let out = params.map((param, index) => {
@@ -157,6 +271,7 @@ function getCallBodyAfter(call) {
       case "const uint32_t *":
       case "const uint64_t *":
       case "const float *":
+      case "VkBool32 *":
         return `
   obj${index}->Set(Nan::New("$").ToLocalChecked(), Nan::New($p${index}));`;
       /*case "const char *":
@@ -166,37 +281,69 @@ function getCallBodyAfter(call) {
         return ``;
     };
   });
-  params.map((param, index) => {
+  params.map((param, pIndex) => {
     if (param.isArray && param.isStructType) {
       let struct = getStructByStructName(param.type);
-      let memberCopyInstructions = ``;
-      struct.children.map(member => {
-        memberCopyInstructions += `
-      instance->${member.name} = copy->${member.name};`;
-        if (member.isArray || member.isStructType || member.isHandleType) {
-          // TODO
-        }
-        else if (member.isString) {
-          // TODO
-        }
-      });
+      let memberCopyInstructions = getMemberCopyInstructions(struct);
       out.push(`
-  if (info[${index}]->IsArray()) {
-    v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[${index}]);
+  if (info[${pIndex}]->IsArray()) {
+    v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[${pIndex}]);
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
-      _${param.type}* result = Nan::ObjectWrap::Unwrap<_${param.type}>(item->ToObject());
+      v8::Local<v8::Object> obj = item->ToObject();
+      _${param.type}* result = Nan::ObjectWrap::Unwrap<_${param.type}>(obj);
       ${param.type} *instance = &result->instance;
-      ${param.type} *copy = &$p${index}[ii];
+      ${param.type} *copy = &$p${pIndex}[ii];
       ${memberCopyInstructions}
     };
   }`);
-    } else if (param.isStructType) {
-      let struct = getStructByStructName(param.type);
-      console.log("#####", struct.name, "#####");
-      struct.children.map(member => {
-        console.log("#", member.rawType, member.name);
-      });
+    // passed in parameter is a struct which gets modified
+    // and which we need to back-reflect to v8 manually
+    } else if (param.isStructType && !param.isConstant && param.dereferenceCount > 0) {
+      let instr = getMutableStructReflectInstructions(param.type, pIndex, `obj${pIndex}->`);
+      out.push(instr);
+    }
+    else if (param.isStructType && !param.isConstant) {
+      console.log(`Error: Cannot handle inout struct param ${param.name}`);
+    }
+    // dynamic array of enums
+    else if (param.isDynamicArray && param.isEnumType) {
+      out.push(`
+  if (info[${pIndex}]->IsArray()) {
+    v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[${pIndex}]);
+    for (unsigned int ii = 0; ii < array->Length(); ++ii) {
+      v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
+      array->Set(ii, Nan::New($p${pIndex}[ii]));
+    };
+  }`);
+    }
+    else if (param.isStructType && param.isConstant) {
+      // can be ignored
+    }
+    else if (param.isString) {
+      // can be ignored
+    }
+    else if (param.isNumber) {
+      // can be ignored
+    }
+    else {
+      // numeric references can be ignored
+      switch (param.rawType) {
+        case "int *":
+        case "size_t *":
+        case "uint32_t *":
+        case "uint64_t *":
+        case "const float *":
+        case "const int32_t *":
+        case "const uint32_t *":
+        case "const uint64_t *":
+        case "VkBool32 *":
+          break;
+        default:
+          if (!param.isHandleType) {
+            console.log(`Error: Unhandled param ${param.name} of type ${param.type}`);
+          }
+      };
     }
   });
   return out.join("");

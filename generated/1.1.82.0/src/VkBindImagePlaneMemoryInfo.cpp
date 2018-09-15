@@ -16,24 +16,23 @@ _VkBindImagePlaneMemoryInfo::~_VkBindImagePlaneMemoryInfo() { }
 void _VkBindImagePlaneMemoryInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;
 
-  // Constructor
+  // constructor
   v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkBindImagePlaneMemoryInfo::New);
   constructor.Reset(ctor);
   ctor->InstanceTemplate()->SetInternalFieldCount(1);
   ctor->SetClassName(Nan::New("VkBindImagePlaneMemoryInfo").ToLocalChecked());
 
-  // Prototype
+  // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
   SetPrototypeAccessor(proto, Nan::New("planeAspect").ToLocalChecked(), GetplaneAspect, SetplaneAspect, ctor);
-  
   Nan::Set(target, Nan::New("VkBindImagePlaneMemoryInfo").ToLocalChecked(), ctor->GetFunction());
 }
 
 NAN_METHOD(_VkBindImagePlaneMemoryInfo::New) {
   _VkBindImagePlaneMemoryInfo* self = new _VkBindImagePlaneMemoryInfo();
   self->Wrap(info.Holder());
-  printf("Constructed VkBindImagePlaneMemoryInfo\n");
   info.GetReturnValue().Set(info.Holder());
 };
 
@@ -41,16 +40,14 @@ NAN_METHOD(_VkBindImagePlaneMemoryInfo::New) {
 NAN_GETTER(_VkBindImagePlaneMemoryInfo::GetsType) {
   _VkBindImagePlaneMemoryInfo *self = Nan::ObjectWrap::Unwrap<_VkBindImagePlaneMemoryInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
-}
-NAN_SETTER(_VkBindImagePlaneMemoryInfo::SetsType) {
+}NAN_SETTER(_VkBindImagePlaneMemoryInfo::SetsType) {
   _VkBindImagePlaneMemoryInfo *self = Nan::ObjectWrap::Unwrap<_VkBindImagePlaneMemoryInfo>(info.This());
   self->instance.sType = static_cast<VkStructureType>(value->Uint32Value());
 }// planeAspect
 NAN_GETTER(_VkBindImagePlaneMemoryInfo::GetplaneAspect) {
   _VkBindImagePlaneMemoryInfo *self = Nan::ObjectWrap::Unwrap<_VkBindImagePlaneMemoryInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(static_cast<uint8_t>(self->instance.planeAspect)));
-}
-NAN_SETTER(_VkBindImagePlaneMemoryInfo::SetplaneAspect) {
+}NAN_SETTER(_VkBindImagePlaneMemoryInfo::SetplaneAspect) {
   _VkBindImagePlaneMemoryInfo *self = Nan::ObjectWrap::Unwrap<_VkBindImagePlaneMemoryInfo>(info.This());
   self->instance.planeAspect = static_cast<VkImageAspectFlagBits>(value->Uint32Value());
 }

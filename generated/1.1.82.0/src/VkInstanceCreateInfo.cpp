@@ -16,28 +16,27 @@ _VkInstanceCreateInfo::~_VkInstanceCreateInfo() { }
 void _VkInstanceCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;
 
-  // Constructor
+  // constructor
   v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkInstanceCreateInfo::New);
   constructor.Reset(ctor);
   ctor->InstanceTemplate()->SetInternalFieldCount(1);
   ctor->SetClassName(Nan::New("VkInstanceCreateInfo").ToLocalChecked());
 
-  // Prototype
+  // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
   SetPrototypeAccessor(proto, Nan::New("pApplicationInfo").ToLocalChecked(), GetpApplicationInfo, SetpApplicationInfo, ctor);
   SetPrototypeAccessor(proto, Nan::New("enabledLayerCount").ToLocalChecked(), GetenabledLayerCount, SetenabledLayerCount, ctor);
   SetPrototypeAccessor(proto, Nan::New("ppEnabledLayerNames").ToLocalChecked(), GetppEnabledLayerNames, SetppEnabledLayerNames, ctor);
   SetPrototypeAccessor(proto, Nan::New("enabledExtensionCount").ToLocalChecked(), GetenabledExtensionCount, SetenabledExtensionCount, ctor);
   SetPrototypeAccessor(proto, Nan::New("ppEnabledExtensionNames").ToLocalChecked(), GetppEnabledExtensionNames, SetppEnabledExtensionNames, ctor);
-  
   Nan::Set(target, Nan::New("VkInstanceCreateInfo").ToLocalChecked(), ctor->GetFunction());
 }
 
 NAN_METHOD(_VkInstanceCreateInfo::New) {
   _VkInstanceCreateInfo* self = new _VkInstanceCreateInfo();
   self->Wrap(info.Holder());
-  printf("Constructed VkInstanceCreateInfo\n");
   info.GetReturnValue().Set(info.Holder());
 };
 
@@ -45,8 +44,7 @@ NAN_METHOD(_VkInstanceCreateInfo::New) {
 NAN_GETTER(_VkInstanceCreateInfo::GetsType) {
   _VkInstanceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkInstanceCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
-}
-NAN_SETTER(_VkInstanceCreateInfo::SetsType) {
+}NAN_SETTER(_VkInstanceCreateInfo::SetsType) {
   _VkInstanceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkInstanceCreateInfo>(info.This());
   self->instance.sType = static_cast<VkStructureType>(value->Uint32Value());
 }// pApplicationInfo
@@ -54,8 +52,7 @@ NAN_GETTER(_VkInstanceCreateInfo::GetpApplicationInfo) {
   _VkInstanceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkInstanceCreateInfo>(info.This());
   v8::Local<v8::Object> obj = Nan::New(self->pApplicationInfo);
   info.GetReturnValue().Set(obj);
-}
-NAN_SETTER(_VkInstanceCreateInfo::SetpApplicationInfo) {
+}NAN_SETTER(_VkInstanceCreateInfo::SetpApplicationInfo) {
   _VkInstanceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkInstanceCreateInfo>(info.This());
   // js
   {
@@ -71,8 +68,7 @@ NAN_SETTER(_VkInstanceCreateInfo::SetpApplicationInfo) {
 NAN_GETTER(_VkInstanceCreateInfo::GetenabledLayerCount) {
   _VkInstanceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkInstanceCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.enabledLayerCount));
-}
-NAN_SETTER(_VkInstanceCreateInfo::SetenabledLayerCount) {
+}NAN_SETTER(_VkInstanceCreateInfo::SetenabledLayerCount) {
   _VkInstanceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkInstanceCreateInfo>(info.This());
   self->instance.enabledLayerCount = static_cast<uint32_t>(value->NumberValue());
 }// ppEnabledLayerNames
@@ -80,8 +76,7 @@ NAN_GETTER(_VkInstanceCreateInfo::GetppEnabledLayerNames) {
   _VkInstanceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkInstanceCreateInfo>(info.This());
   v8::Local<v8::Object> obj = Nan::New(self->ppEnabledLayerNames);
   info.GetReturnValue().Set(obj);
-}
-NAN_SETTER(_VkInstanceCreateInfo::SetppEnabledLayerNames) {
+}NAN_SETTER(_VkInstanceCreateInfo::SetppEnabledLayerNames) {
   _VkInstanceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkInstanceCreateInfo>(info.This());
   
     // js
@@ -93,14 +88,13 @@ NAN_SETTER(_VkInstanceCreateInfo::SetppEnabledLayerNames) {
   
   // vulkan
   {
-    self->instance.ppEnabledLayerNames = createArrayOfV8Strings(value);
+    self->instance.ppEnabledLayerNames = createArrayOfV8Strings(value).data();
   }
 }// enabledExtensionCount
 NAN_GETTER(_VkInstanceCreateInfo::GetenabledExtensionCount) {
   _VkInstanceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkInstanceCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.enabledExtensionCount));
-}
-NAN_SETTER(_VkInstanceCreateInfo::SetenabledExtensionCount) {
+}NAN_SETTER(_VkInstanceCreateInfo::SetenabledExtensionCount) {
   _VkInstanceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkInstanceCreateInfo>(info.This());
   self->instance.enabledExtensionCount = static_cast<uint32_t>(value->NumberValue());
 }// ppEnabledExtensionNames
@@ -108,8 +102,7 @@ NAN_GETTER(_VkInstanceCreateInfo::GetppEnabledExtensionNames) {
   _VkInstanceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkInstanceCreateInfo>(info.This());
   v8::Local<v8::Object> obj = Nan::New(self->ppEnabledExtensionNames);
   info.GetReturnValue().Set(obj);
-}
-NAN_SETTER(_VkInstanceCreateInfo::SetppEnabledExtensionNames) {
+}NAN_SETTER(_VkInstanceCreateInfo::SetppEnabledExtensionNames) {
   _VkInstanceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkInstanceCreateInfo>(info.This());
   
     // js
@@ -121,6 +114,6 @@ NAN_SETTER(_VkInstanceCreateInfo::SetppEnabledExtensionNames) {
   
   // vulkan
   {
-    self->instance.ppEnabledExtensionNames = createArrayOfV8Strings(value);
+    self->instance.ppEnabledExtensionNames = createArrayOfV8Strings(value).data();
   }
 }

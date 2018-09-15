@@ -11,10 +11,11 @@ import generateHandles from "./generators/handles";
 import generateGyp from "./generators/gyp";
 import generatePackage from "./generators/package";
 import generateUtils from "./generators/utils";
+import generateWindow from "./generators/window";
 
 // bridged to only change the change data of a file if it's really necessary
 // (the compiler seems to re-compile based on file changes..)
-function writeFile(path, data, encoding, includeNotice = false) {
+function writeAddonFile(path, data, encoding, includeNotice = false) {
   let source = null;
   try {
     source = fs.readFileSync(path, encoding);
@@ -89,15 +90,32 @@ let structWhiteList = [
   "VkPhysicalDeviceProperties",
   "VkPhysicalDeviceLimits",
   "VkPhysicalDeviceSparseProperties",
-  "VkQueueFamilyProperties"
+  "VkQueueFamilyProperties",
+  "VkPhysicalDeviceMemoryProperties",
+  "VkMemoryHeap",
+  "VkMemoryType",
+  "VkQueue",
+  "VkSurfaceFormatKHR",
+  "VkSurfaceCapabilitiesKHR",
+  "VkPresentModeKHR",
+  "VkSwapchainCreateInfoKHR",
+  "VkSwapchainKHR"
 ];
 
 let callsWhiteList = [
+  "vkCreateDevice",
   "vkCreateInstance",
   "vkEnumeratePhysicalDevices",
   "vkGetPhysicalDeviceFeatures",
   "vkGetPhysicalDeviceProperties",
-  "vkGetPhysicalDeviceQueueFamilyProperties"
+  "vkGetPhysicalDeviceQueueFamilyProperties",
+  "vkGetPhysicalDeviceSurfaceSupportKHR",
+  "vkGetPhysicalDeviceMemoryProperties",
+  "vkGetDeviceQueue",
+  "vkGetPhysicalDeviceSurfaceCapabilitiesKHR",
+  "vkGetPhysicalDeviceSurfaceFormatsKHR",
+  "vkGetPhysicalDeviceSurfacePresentModesKHR",
+  "vkCreateSwapchainKHR"
 ];
 
 let handlesWhiteList = [
@@ -111,7 +129,7 @@ console.log(`Generating using ${argsVersion}.xml`);
   console.log(`Generating AST..`);
   ast = generateAST(xmlInput);
   let str = JSON.stringify(ast, null, 2);
-  writeFile(`${generatePath}/ast.json`, str, "utf-8");
+  writeAddonFile(`${generatePath}/ast.json`, str, "utf-8");
 }
 
 // filter out ast nodes by their types
@@ -139,8 +157,8 @@ structs = structs.filter(struct => structWhiteList.includes(struct.name));
     let result = generateStructs(ast, struct);
     result.includes.map(incl => includes.push(incl));
     if (includes.indexOf(struct.name) <= -1) includes.push({ name: struct.name, include: "" });
-    writeFile(`${generateSrcPath}/${struct.name}.h`, result.header, "utf-8", true);
-    writeFile(`${generateSrcPath}/${struct.name}.cpp`, result.source, "utf-8", true);
+    writeAddonFile(`${generateSrcPath}/${struct.name}.h`, result.header, "utf-8", true);
+    writeAddonFile(`${generateSrcPath}/${struct.name}.cpp`, result.source, "utf-8", true);
   });
 }
 
@@ -150,8 +168,8 @@ structs = structs.filter(struct => structWhiteList.includes(struct.name));
   handles.map(handle => {
     let result = generateHandles(ast, handle);
     if (includes.indexOf(handle) <= -1) includes.push({ name: handle, include: "" });
-    writeFile(`${generateSrcPath}/${handle}.h`, result.header, "utf-8", true);
-    writeFile(`${generateSrcPath}/${handle}.cpp`, result.source, "utf-8", true);
+    writeAddonFile(`${generateSrcPath}/${handle}.h`, result.header, "utf-8", true);
+    writeAddonFile(`${generateSrcPath}/${handle}.cpp`, result.source, "utf-8", true);
   });
 }
 
@@ -159,14 +177,21 @@ structs = structs.filter(struct => structWhiteList.includes(struct.name));
 {
   console.log("Generating Vk enums..");
   let result = generateEnums(ast, enums);
-  writeFile(`${generateSrcPath}/enums.h`, result.source, "utf-8", true);
+  writeAddonFile(`${generateSrcPath}/enums.h`, result.source, "utf-8", true);
 }
 
 // generate calls
 {
   console.log("Generating Vk calls..");
   let result = generateCalls(ast, calls);
-  writeFile(`${generateSrcPath}/calls.h`, result.source, "utf-8", true);
+  writeAddonFile(`${generateSrcPath}/calls.h`, result.source, "utf-8", true);
+}
+
+// generate window
+{
+  console.log("Generating Vk window..");
+  let result = generateWindow(ast);
+  writeAddonFile(`${generateSrcPath}/window.h`, result.header, "utf-8", true);
 }
 
 // generate includes
@@ -186,27 +211,27 @@ structs = structs.filter(struct => structWhiteList.includes(struct.name));
 {
   console.log("Generating binding.gyp..");
   let result = generateGyp(ast, argsVersion, includeNames);
-  writeFile(`${generatePath}/binding.gyp`, result.gyp, "utf-8");
+  writeAddonFile(`${generatePath}/binding.gyp`, result.gyp, "utf-8");
 }
 
 // generate package.json
 {
   console.log("Generating package.json..");
   let result = generatePackage(ast, argsVersion);
-  writeFile(`${generatePath}/package.json`, result.json, "utf-8");
+  writeAddonFile(`${generatePath}/package.json`, result.json, "utf-8");
 }
 
 // generate utils
 {
   console.log("Generating utils..");
   let utilsFile = generateUtils(includes, calls);
-  writeFile(`${generateSrcPath}/utils.h`, utilsFile.header, "utf-8", true);
+  writeAddonFile(`${generateSrcPath}/utils.h`, utilsFile.header, "utf-8", true);
 }
 
 // generate indices
 {
   console.log("Generating indices..");
   let indexFile = generateIndex(ast, includes, calls);
-  writeFile(`${generateSrcPath}/index.h`, indexFile.header, "utf-8", true);
-  writeFile(`${generateSrcPath}/index.cpp`, indexFile.source, "utf-8", true);
+  writeAddonFile(`${generateSrcPath}/index.h`, indexFile.header, "utf-8", true);
+  writeAddonFile(`${generateSrcPath}/index.cpp`, indexFile.source, "utf-8", true);
 }

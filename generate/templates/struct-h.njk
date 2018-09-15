@@ -15,7 +15,9 @@ class _{{ struct_name }}: public Nan::ObjectWrap {
     {%- for member in members %}
     {%- if ignoreableMember(member) != true -%}
     {{- processHeaderGetter(member) | safe }}
+    {%- if isStructReturnedOnly(input) != true -%}
     {{- processHeaderSetter(member) | safe }}
+    {% endif -%}
     {% endif -%}
     {%- endfor %}
 

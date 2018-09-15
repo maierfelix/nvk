@@ -16,6 +16,7 @@
 #include "index.h"
 #include "calls.h"
 #include "enums.h"
+#include "window.h"
 
 void _VK_MAKE_VERSION(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   uint32_t major = info[0]->Uint32Value();
@@ -40,6 +41,8 @@ void _VK_VERSION_PATCH(const Nan::FunctionCallbackInfo<v8::Value>& info) {
 };
 
 NAN_MODULE_INIT(InitModule) {
+  // init vulkan window
+  VulkanWindow::Initialize(target);
   // manual initializers
   target->Set(
     Nan::New("getVulkanEnumerations").ToLocalChecked(),
@@ -103,9 +106,16 @@ NAN_MODULE_INIT(InitModule) {
   _VkPhysicalDevice::Initialize(target);
   _VkInstance::Initialize(target);
   _VkBindImagePlaneMemoryInfo::Initialize(target);
+  _VkExtent2D::Initialize(target);
+  _VkSwapchainCreateInfoKHR::Initialize(target);
+  _VkSurfaceFormatKHR::Initialize(target);
+  _VkSurfaceCapabilitiesKHR::Initialize(target);
   _VkImageSubresourceRange::Initialize(target);
   _VkImageMemoryBarrier::Initialize(target);
   _VkBufferCreateInfo::Initialize(target);
+  _VkMemoryHeap::Initialize(target);
+  _VkMemoryType::Initialize(target);
+  _VkPhysicalDeviceMemoryProperties::Initialize(target);
   _VkExtent3D::Initialize(target);
   _VkQueueFamilyProperties::Initialize(target);
   _VkApplicationInfo::Initialize(target);
@@ -116,7 +126,6 @@ NAN_MODULE_INIT(InitModule) {
   _VkPhysicalDeviceSparseProperties::Initialize(target);
   _VkPhysicalDeviceLimits::Initialize(target);
   _VkPhysicalDeviceProperties::Initialize(target);
-  _VkExtent2D::Initialize(target);
   _VkOffset2D::Initialize(target);
   _VkRect2D::Initialize(target);
   _VkClearRect::Initialize(target);
@@ -138,8 +147,40 @@ NAN_MODULE_INIT(InitModule) {
     Nan::New<v8::FunctionTemplate>(_vkGetPhysicalDeviceQueueFamilyProperties)->GetFunction()
   );
   target->Set(
+    Nan::New("vkGetPhysicalDeviceMemoryProperties").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkGetPhysicalDeviceMemoryProperties)->GetFunction()
+  );
+  target->Set(
     Nan::New("vkGetPhysicalDeviceFeatures").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkGetPhysicalDeviceFeatures)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkCreateDevice").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkCreateDevice)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkGetDeviceQueue").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkGetDeviceQueue)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkGetPhysicalDeviceSurfaceSupportKHR").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkGetPhysicalDeviceSurfaceSupportKHR)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkGetPhysicalDeviceSurfaceCapabilitiesKHR").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkGetPhysicalDeviceSurfaceCapabilitiesKHR)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkGetPhysicalDeviceSurfaceFormatsKHR").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkGetPhysicalDeviceSurfaceFormatsKHR)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkGetPhysicalDeviceSurfacePresentModesKHR").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkGetPhysicalDeviceSurfacePresentModesKHR)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkCreateSwapchainKHR").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkCreateSwapchainKHR)->GetFunction()
   );
   
 }

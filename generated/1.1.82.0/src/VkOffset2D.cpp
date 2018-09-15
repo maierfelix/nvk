@@ -16,24 +16,23 @@ _VkOffset2D::~_VkOffset2D() { }
 void _VkOffset2D::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;
 
-  // Constructor
+  // constructor
   v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkOffset2D::New);
   constructor.Reset(ctor);
   ctor->InstanceTemplate()->SetInternalFieldCount(1);
   ctor->SetClassName(Nan::New("VkOffset2D").ToLocalChecked());
 
-  // Prototype
+  // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
   SetPrototypeAccessor(proto, Nan::New("x").ToLocalChecked(), Getx, Setx, ctor);
   SetPrototypeAccessor(proto, Nan::New("y").ToLocalChecked(), Gety, Sety, ctor);
-  
   Nan::Set(target, Nan::New("VkOffset2D").ToLocalChecked(), ctor->GetFunction());
 }
 
 NAN_METHOD(_VkOffset2D::New) {
   _VkOffset2D* self = new _VkOffset2D();
   self->Wrap(info.Holder());
-  printf("Constructed VkOffset2D\n");
   info.GetReturnValue().Set(info.Holder());
 };
 
@@ -41,16 +40,14 @@ NAN_METHOD(_VkOffset2D::New) {
 NAN_GETTER(_VkOffset2D::Getx) {
   _VkOffset2D *self = Nan::ObjectWrap::Unwrap<_VkOffset2D>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.x));
-}
-NAN_SETTER(_VkOffset2D::Setx) {
+}NAN_SETTER(_VkOffset2D::Setx) {
   _VkOffset2D *self = Nan::ObjectWrap::Unwrap<_VkOffset2D>(info.This());
   self->instance.x = static_cast<int32_t>(value->NumberValue());
 }// y
 NAN_GETTER(_VkOffset2D::Gety) {
   _VkOffset2D *self = Nan::ObjectWrap::Unwrap<_VkOffset2D>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.y));
-}
-NAN_SETTER(_VkOffset2D::Sety) {
+}NAN_SETTER(_VkOffset2D::Sety) {
   _VkOffset2D *self = Nan::ObjectWrap::Unwrap<_VkOffset2D>(info.This());
   self->instance.y = static_cast<int32_t>(value->NumberValue());
 }

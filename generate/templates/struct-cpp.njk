@@ -17,17 +17,17 @@ _{{ struct_name }}::~_{{ struct_name }}() { }
 void _{{ struct_name }}::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;
 
-  // Constructor
+  // constructor
   v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_{{ struct_name }}::New);
   constructor.Reset(ctor);
   ctor->InstanceTemplate()->SetInternalFieldCount(1);
   ctor->SetClassName(Nan::New("{{ struct_name }}").ToLocalChecked());
 
-  // Prototype
+  // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   {% for member in members -%}
   {%- if ignoreableMember(member) != true -%}
-  SetPrototypeAccessor(proto, Nan::New("{{ member.name }}").ToLocalChecked(), Get{{ member.name }}, Set{{ member.name }}, ctor);
+  {{- processSourceMemberAccessor(input, member) | safe -}}
   {% endif -%}
   {% endfor %}
   Nan::Set(target, Nan::New("{{ struct_name }}").ToLocalChecked(), ctor->GetFunction());
@@ -36,7 +36,6 @@ void _{{ struct_name }}::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE targe
 NAN_METHOD(_{{ struct_name }}::New) {
   _{{ struct_name }}* self = new _{{ struct_name }}();
   self->Wrap(info.Holder());
-  printf("Constructed {{ struct_name }}\n");
   info.GetReturnValue().Set(info.Holder());
 };
 
@@ -47,9 +46,11 @@ NAN_GETTER(_{{ struct_name }}::Get{{ member.name }}) {
   _{{ struct_name }} *self = Nan::ObjectWrap::Unwrap<_{{ struct_name }}>(info.This());
   {{- processSourceGetter(member) | safe }}
 }
+{%- if isStructReturnedOnly(input) != true -%}
 NAN_SETTER(_{{ struct_name }}::Set{{ member.name }}) {
   _{{ struct_name }} *self = Nan::ObjectWrap::Unwrap<_{{ struct_name }}>(info.This());
   {{- processSourceSetter(member) | safe }}
 }
+{%- endif -%}
 {%- endif -%}
 {% endfor -%}

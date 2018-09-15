@@ -16,26 +16,25 @@ _VkDeviceQueueCreateInfo::~_VkDeviceQueueCreateInfo() { }
 void _VkDeviceQueueCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;
 
-  // Constructor
+  // constructor
   v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkDeviceQueueCreateInfo::New);
   constructor.Reset(ctor);
   ctor->InstanceTemplate()->SetInternalFieldCount(1);
   ctor->SetClassName(Nan::New("VkDeviceQueueCreateInfo").ToLocalChecked());
 
-  // Prototype
+  // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
   SetPrototypeAccessor(proto, Nan::New("queueFamilyIndex").ToLocalChecked(), GetqueueFamilyIndex, SetqueueFamilyIndex, ctor);
   SetPrototypeAccessor(proto, Nan::New("queueCount").ToLocalChecked(), GetqueueCount, SetqueueCount, ctor);
   SetPrototypeAccessor(proto, Nan::New("pQueuePriorities").ToLocalChecked(), GetpQueuePriorities, SetpQueuePriorities, ctor);
-  
   Nan::Set(target, Nan::New("VkDeviceQueueCreateInfo").ToLocalChecked(), ctor->GetFunction());
 }
 
 NAN_METHOD(_VkDeviceQueueCreateInfo::New) {
   _VkDeviceQueueCreateInfo* self = new _VkDeviceQueueCreateInfo();
   self->Wrap(info.Holder());
-  printf("Constructed VkDeviceQueueCreateInfo\n");
   info.GetReturnValue().Set(info.Holder());
 };
 
@@ -43,24 +42,21 @@ NAN_METHOD(_VkDeviceQueueCreateInfo::New) {
 NAN_GETTER(_VkDeviceQueueCreateInfo::GetsType) {
   _VkDeviceQueueCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceQueueCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
-}
-NAN_SETTER(_VkDeviceQueueCreateInfo::SetsType) {
+}NAN_SETTER(_VkDeviceQueueCreateInfo::SetsType) {
   _VkDeviceQueueCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceQueueCreateInfo>(info.This());
   self->instance.sType = static_cast<VkStructureType>(value->Uint32Value());
 }// queueFamilyIndex
 NAN_GETTER(_VkDeviceQueueCreateInfo::GetqueueFamilyIndex) {
   _VkDeviceQueueCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceQueueCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.queueFamilyIndex));
-}
-NAN_SETTER(_VkDeviceQueueCreateInfo::SetqueueFamilyIndex) {
+}NAN_SETTER(_VkDeviceQueueCreateInfo::SetqueueFamilyIndex) {
   _VkDeviceQueueCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceQueueCreateInfo>(info.This());
   self->instance.queueFamilyIndex = static_cast<uint32_t>(value->NumberValue());
 }// queueCount
 NAN_GETTER(_VkDeviceQueueCreateInfo::GetqueueCount) {
   _VkDeviceQueueCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceQueueCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.queueCount));
-}
-NAN_SETTER(_VkDeviceQueueCreateInfo::SetqueueCount) {
+}NAN_SETTER(_VkDeviceQueueCreateInfo::SetqueueCount) {
   _VkDeviceQueueCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceQueueCreateInfo>(info.This());
   self->instance.queueCount = static_cast<uint32_t>(value->NumberValue());
 }// pQueuePriorities
@@ -68,8 +64,7 @@ NAN_GETTER(_VkDeviceQueueCreateInfo::GetpQueuePriorities) {
   _VkDeviceQueueCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceQueueCreateInfo>(info.This());
   v8::Local<v8::Object> obj = Nan::New(self->pQueuePriorities);
   info.GetReturnValue().Set(obj);
-}
-NAN_SETTER(_VkDeviceQueueCreateInfo::SetpQueuePriorities) {
+}NAN_SETTER(_VkDeviceQueueCreateInfo::SetpQueuePriorities) {
   _VkDeviceQueueCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceQueueCreateInfo>(info.This());
   
     // js

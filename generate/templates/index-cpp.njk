@@ -12,6 +12,7 @@
 #include "index.h"
 #include "calls.h"
 #include "enums.h"
+#include "window.h"
 
 void _VK_MAKE_VERSION(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   uint32_t major = info[0]->Uint32Value();
@@ -36,6 +37,8 @@ void _VK_VERSION_PATCH(const Nan::FunctionCallbackInfo<v8::Value>& info) {
 };
 
 NAN_MODULE_INIT(InitModule) {
+  // init vulkan window
+  VulkanWindow::Initialize(target);
   // manual initializers
   target->Set(
     Nan::New("getVulkanEnumerations").ToLocalChecked(),

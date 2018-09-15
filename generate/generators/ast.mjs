@@ -185,6 +185,7 @@ function parseStructElement(parent) {
   let out = {
     kind: TYPES.STRUCT,
     name: attr.name,
+    returnedonly: !!attr.returnedonly,
     children
   };
   //registerStruct(out);
@@ -278,9 +279,18 @@ function parseTypeElement(child) {
     let size = staticArrayMatch[1].trim();
     out.isArray = true;
     out.length = size;
+    if (enums[size]) out.length = enums[size];
     out.isStaticArray = true;
     out.rawType = text.replace(name + " ", "");
+    if (type === "char") out.isString = true;
   }
+  if (rawType === "VkBool32") {
+    out.isBoolean = true;
+  }
+  // just a number
+  if (isNumber(rawType)) out.isNumber = true;
+  // a numeric array
+  if (out.isArray && isNumber(type)) out.isNumericArray = true;
   return out;
 };
 
@@ -293,9 +303,22 @@ function registerStruct(struct) {
 function registerEnum(enu) {
   let {name} = enu;
   if (enums[name]) console.warn(`Enum ${name} already registered!`);
-  enums[name] = 1;
+  enums[name] = enu.value || 1;
 };
 
+function isNumber(type) {
+  switch (type) {
+    case "int":
+    case "float":
+    case "size_t":
+    case "int32_t":
+    case "uint8_t":
+    case "uint32_t":
+    case "uint64_t":
+      return true;
+  };
+  return false;
+};
 
 export default function(xmlInput) {
   let obj = new xml.xml2js(xmlInput, xmlOpts);
@@ -365,6 +388,15 @@ export default function(xmlInput) {
     findXMLElements(obj, { name: "API Constants" }, results);
     let ast = parseElement(results[0]);
     ast.name = "API_Constants";
+    ast.children.map(child => {
+      if (!enums[child.name]) enums[child.name] = child.value;
+    });
+    ast.children.push({
+      kind: "ENUM_MEMBER",
+      type: "VALUE",
+      value: "0",
+      name: "VK_NULL_HANDLE"
+    });
     out.push(ast);
   }
   if (true) {
