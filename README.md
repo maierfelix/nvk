@@ -4,11 +4,11 @@ Automated vulkan binding generation for node.js
 **DO NOT USE**: Don't expect anything to work yet!
 
 ### TODOs:
- - [ ] Struct generation (~80%)
+ - [ ] Struct generation (~85%)
  - [x] Handle generation (~100%)
- - [ ] Enum generation (98%)
- - [ ] Function generation (30%)
- - [ ] Reverse reflection (0%)
+ - [x] Enum generation (100%)
+ - [ ] Function generation (~70%)
+ - [ ] Reverse reflection (~60%)
 
 ## Requirements:
  - node.js >= v10.9.0
