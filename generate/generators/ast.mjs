@@ -10,12 +10,16 @@ let uidx = 0;
 let TYPES = {
   STRUCT: uidx++,
   STRUCT_MEMBER: uidx++,
+  HANDLE: uidx++,
   ENUM: uidx++,
   ENUM_MEMBER: uidx++,
+  ENUM_STRING: uidx++,
   COMMAND: uidx++,
   COMMAND_MEMBER: uidx++,
   COMMAND_PARAM: uidx++,
   COMMAND_PROTO: uidx++,
+  EXTENSION: uidx++,
+  EXTENSION_MEMBER: uidx++,
   BITMASK: uidx++,
   UNKNOWN: uidx++,
   VALUE: uidx++,
@@ -70,9 +74,116 @@ function parseElement(el) {
       return parseStructElement(el);
     case "commands":
       return parseCommandElement(el);
+    case "extensions":
+      return parseExtensionElement(el);
     default: throw `Unsupported element of type:${el.name}`;
   };
   return null;
+};
+
+function parseExtensionElement(parent) {
+  let attr = parent.attributes;
+  let {elements} = parent;
+  let out = [];
+  if (!elements) return out;
+  elements.map((child, index) => {
+    switch (child.name) {
+      case "extension": {
+        let attr = child.attributes;
+        let members = [];
+        let ext = {
+          kind: TYPES.EXTENSION,
+          name: attr.name,
+          type: attr.type,
+          author: attr.author,
+          supported: attr.supported,
+          members
+        };
+        let exts = parseExtensionMembers(parent, child);
+        exts.map(ext => {
+          members.push(ext);
+        });
+        out.push(ext);
+      } break;
+      default: throw `Unsupported extension member ${child.name}`;
+    };
+  });
+  return out;
+};
+
+function parseExtensionMembers(parent, child) {
+  let out = [];
+  let {elements} = child;
+  if (!elements) return out;
+  let baseNum = parseInt(child.attributes.number, 0);
+  elements.map(el => {
+    el.elements.map(ch => {
+      if (
+        (ch.name === "comment") ||
+        (ch.name === "command")
+      ) return;
+      //console.log(ch);
+      let attr = ch.attributes;
+      if (!attr) return;
+      let {name} = attr;
+      let member = {
+        kind: TYPES.EXTENSION_MEMBER
+      };
+      if (attr.dir) member.isNegative = true;
+      if (ch.name === "type") {
+        // ignore
+      }
+      // we only care about enum extensions
+      else if (ch.name === "enum") {
+        if (attr.value) {
+          member.name = attr.name;
+          member.value = attr.value;
+          if (attr.value[0] === `"`) member.isStringValue = true;
+          else if (Number.isInteger(parseInt(attr.value))) member.isNumericValue = true;
+          else member.isEnumValue = true;
+          // reformat string
+          if (member.isStringValue && member.value[0] === `"`) {
+            member.value = member.value.substr(1, member.value.length - 2);
+          }
+          out.push(member);
+        }
+        else if (attr.offset) {
+          member.name = attr.name;
+          member.extends = attr.extends;
+          let extBase = 1e9;
+          let extBlockSize = 1e3;
+          let offset = parseInt(attr.offset, 0);
+          let extNumber = parseInt(attr.extnumber, 0) || baseNum;
+          let numValue = extBase + (extNumber - 1) * extBlockSize + offset;
+          if (member.isNegative) numValue = -numValue;
+          member.value = numValue;
+          out.push(member);
+        }
+        else if (attr.bitpos) {
+          member.name = attr.name;
+          member.extends = attr.extends;
+          let pos = 1 << parseInt(attr.bitpos, 0);
+          member.value = `0x` + pos.toString(16);
+          out.push(member);
+        }
+        else if (attr.alias) {
+          member.name = attr.name;
+          member.value = attr.value;
+          member.extends = attr.extends;
+          member.alias = attr.alias;
+          member.isAlias = true;
+          out.push(member);
+        }
+        else {
+          // ignore
+        }
+      }
+      else {
+        throw `Unsupported extension member ${ch.name}`;
+      }
+    });
+  });
+  return out;
 };
 
 function parseCommandElement(parent) {
@@ -168,6 +279,17 @@ function parseEnumMember(parent, child) {
     (childAttr.alias) ? TYPES.ALIAS : null
   );
   if (!value) throw `Cannot resolve enum child value of parent ${parentAttr.name}`;
+
+  let parsed = parseInt(value);
+  let isFloat = value.indexOf(".") !== -1;
+  if (type === "BITPOS") {
+    let pos = 1 << parseInt(value, 0);
+    value = `0x` + pos.toString(16);
+  }
+  if (Number.isNaN(parsed) || isFloat) {
+    value = `(__int32)${value}`;
+  }
+
   let out = {
     kind: TYPES.ENUM_MEMBER,
     type,
@@ -247,8 +369,14 @@ function parseTypeElement(child) {
     isConstant,
     dereferenceCount
   };
+  // note: manual type overwrite!
   if (isEnumType) {
-    out.isEnumType = true;
+    //out.isEnumType = true;
+    out.enumType = out.type;
+    out.enumRawType = out.rawType;
+    out.rawType = out.rawType.replace(out.type, `int32_t`);
+    out.type = `int32_t`;
+    type = out.type;
   }
   if (isStructType) {
     out.isStructType = true;
@@ -257,9 +385,11 @@ function parseTypeElement(child) {
     out.isBitmaskType = true;
     out.bitmaskType = bitmasks[type];
   }
+  // note: manual type overwrite!
   if (isBaseType) {
-    out.isBaseType = true;
-    out.baseType = basetypes[type];
+    out.rawType = out.rawType.replace(out.type, basetypes[type]);
+    out.type = basetypes[type];
+    type = out.type;
   }
   if (isHandleType) {
     out.isHandleType = true;
@@ -363,23 +493,21 @@ export default function(xmlInput) {
   // handles
   if (true) {
     let results = [];
-    let handleList = [];
     findXMLElements(obj, { category: "handle" }, results);
     results.map((res, i) => {
       let name = null;
-      let type = null;
       let {parent} = res.attributes;
-      if (!res.elements) return;
+      if (!res.elements) return; // really ignore?
+      let isNonDispatchable = res.elements[0].elements[0].text === "VK_DEFINE_NON_DISPATCHABLE_HANDLE";
       res.elements.map(el => {
-        if (el.name === "type") type = el.elements[0].text;
-        else if (el.name === "name") name = el.elements[0].text;
+        if (el.name === "name") name = el.elements[0].text;
       });
       handles[name] = parent || null;
-      handleList.push(name);
-    });
-    out.push({
-      kind: "HANDLES",
-      children: handleList
+      out.push({
+        kind: TYPES.HANDLE,
+        name,
+        isNonDispatchable
+      });
     });
   }
   // api constants
@@ -405,6 +533,14 @@ export default function(xmlInput) {
     results.map(res => {
       let ast = parseElement(res);
       out.push(ast);
+    });
+  }
+  if (true) {
+    let results = [];
+    findXMLElements(obj, { comment: "Vulkan extension interface definitions" }, results);
+    let ast = parseElement(results[0]);
+    ast.map(node => {
+      out.push(node);
     });
   }
   if (true) {

@@ -9,10 +9,11 @@ const CPP_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/handle-cpp.njk`
 
 nunjucks.configure({ autoescape: true });
 
-export default function(astReference, handle_name) {
+export default function(astReference, handle) {
   ast = astReference;
   let vars = {
-    handle_name
+    handle,
+    handle_name: handle.name
   };
   let out = {
     header: null,

@@ -73,11 +73,13 @@
             "defines": [
               "WIN32_LEAN_AND_MEAN",
               "VC_EXTRALEAN",
-              "_ITERATOR_DEBUG_LEVEL=0"
+              "_ITERATOR_DEBUG_LEVEL=0",
+              "_HAS_EXCEPTIONS=1"
             ],
             "msvs_settings": {
               "VCCLCompilerTool": {
-                "AdditionalOptions": ["/MP /EHsc"]
+                "AdditionalOptions": ["/MP /EHsc"],
+                "ExceptionHandling": 1
               },
               "VCLibrarianTool": {
                 "AdditionalOptions" : ["/NODEFAULTLIB:MSVCRT"]

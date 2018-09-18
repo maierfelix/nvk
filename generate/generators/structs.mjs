@@ -22,6 +22,22 @@ function genPersistentV8Array(member) {
   `;
 };
 
+function getTypedV8Array(member) {
+  if (member.enumType) {
+    return `
+    // vulkan
+  {
+    self->instance.${member.name} = reinterpret_cast<${member.enumRawType}>(getTypedArrayData<${member.type}>(value->ToObject(), nullptr));
+  }`;
+  } else {
+    return `
+    // vulkan
+  {
+    self->instance.${member.name} = getTypedArrayData<${member.type}>(value->ToObject(), nullptr);
+  }`;
+  }
+};
+
 function retUnknown(member) {
   //console.log(member);
   return " ";
@@ -29,15 +45,14 @@ function retUnknown(member) {
 
 function processHeaderGetter(member) {
   let {rawType} = member;
+  if (member.isBaseType) rawType = member.baseType;
   if (member.name === "flags") return "";
-  if (
-    member.isEnumType
-  ) {
+  if (member.isEnumType && !member.isArray) {
     return `
     static NAN_GETTER(Get${member.name});`;
   }
-  // string of chars
   if (member.isStaticArray) {
+    // string of chars
     if (member.type === "char") {
       return `
     Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> ${member.name};
@@ -48,12 +63,7 @@ function processHeaderGetter(member) {
     static NAN_GETTER(Get${member.name});`;
     }
   }
-  if (member.isArray && (member.isStructType || member.isHandleType)) {
-    return `
-    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> ${member.name};
-    static NAN_GETTER(Get${member.name});`;
-  }
-  if (member.isArray && member.isStaticArray) {
+  if (member.isArray && (member.isStructType || member.isHandleType || member.isEnumType)) {
     return `
     Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> ${member.name};
     static NAN_GETTER(Get${member.name});`;
@@ -83,7 +93,10 @@ function processHeaderGetter(member) {
     Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> ${member.name};
     static NAN_GETTER(Get${member.name});`;
     case "const char * const*":
+    case "const int32_t *":
+    case "const uint8_t *":
     case "const uint32_t *":
+    case "const uint64_t *":
     case "const float *":
       return `
     Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> ${member.name};
@@ -125,7 +138,7 @@ function processSourceGetter(member) {
     return `
   info.GetReturnValue().Set(Nan::New(self->${member.name}));`;
   }
-  if (member.isArray && member.isStructType) {
+  if (member.isArray && (member.isStructType || member.isHandleType || member.isEnumType)) {
     return `
   v8::Local<v8::Object> obj = Nan::New(self->${member.name});
   info.GetReturnValue().Set(obj);`;
@@ -153,8 +166,7 @@ function processSourceGetter(member) {
   v8::Local<v8::Object> obj = Nan::New(self->${member.name});
   info.GetReturnValue().Set(obj);`;
     case "const void *":
-      return `
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.${member.name}));`;
+      return ``; // ???
     default: {
       if (member.isEnumType) {
         return `
@@ -202,11 +214,24 @@ function processSourceSetter(member) {
     return processStaticArraySourceSetter(member);
   }
   if (member.isArray && (member.isStructType || member.isHandleType)) {
+    // if a struct/handle is constant (never changed by the vulkan itself) and
+    // a reference, then we can just create a copy
+    let isReference = member.isConstant && member.dereferenceCount > 0;
+    let fn = isReference ? "copyArrayOfV8Objects" : "createArrayOfV8Objects";
     return `
   ${genPersistentV8Array(member)}
   // vulkan
   {
-    self->instance.${member.name} = createArrayOfV8Objects<${member.type}, _${member.type}>(value);
+    self->instance.${member.name} = ${fn}<${member.type}, _${member.type}>(value);
+  }`;
+  }
+  // array of enums
+  if (member.isArray && member.isEnumType) {
+    return `
+  ${genPersistentV8Array(member)}
+  // vulkan
+  {
+    self->instance.${member.name} = createArrayOfV8Numbers<${member.type}, _${member.type}>(value);
   }`;
   }
   switch (rawType) {
@@ -216,9 +241,14 @@ function processSourceSetter(member) {
     case "int32_t":
     case "uint8_t":
     case "uint32_t":
-    case "uint64_t":
-      return `
+    case "uint64_t": 
+      if (member.enumType) {
+        return `
+  self->instance.${member.name} = static_cast<${member.enumType}>((int32_t)value->NumberValue());`;
+      } else {
+        return `
   self->instance.${member.name} = static_cast<${rawType}>(value->NumberValue());`;
+      }
     case "const char *":
       return `
   Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> str(Nan::To<v8::String>(value).ToLocalChecked());
@@ -229,7 +259,7 @@ function processSourceSetter(member) {
   ${genPersistentV8Array(member)}
   // vulkan
   {
-    self->instance.${member.name} = createArrayOfV8Strings(value).data();
+    self->instance.${member.name} = createArrayOfV8Strings(value);
   }`;
     case "const float *":
     case "const int32_t *":
@@ -237,13 +267,9 @@ function processSourceSetter(member) {
     case "const uint64_t *":
       return `
   ${genPersistentV8Array(member)}
-  // vulkan
-  {
-    self->instance.${member.name} = createArrayOfV8Numbers<${member.type}>(value);
-  }`;
+  ${getTypedV8Array(member)}`;
     case "const void *":
-      return `
-  self->instance.${member.name} = static_cast<uint32_t>(value->Uint32Value());`;
+      return ``; // ???
     default: {
       if (member.isEnumType) {
         return `

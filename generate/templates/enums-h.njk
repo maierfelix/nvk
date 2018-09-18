@@ -24,8 +24,8 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     std::map<std::string, {{ getEnumType(enu) | safe }}>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _{{ enu.name }}.begin(); it != _{{ enu.name }}.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<int>(it->second)));
+      entry->Set(Nan::New(it->first).ToLocalChecked(), {{ getEnumV8Value(enu) | safe }});
+      out->Set(Nan::New(it->first).ToLocalChecked(), {{ getEnumV8Value(enu) | safe }});
     };
     out->Set(Nan::New("{{ enu.name }}").ToLocalChecked(), entry);
   }

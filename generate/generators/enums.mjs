@@ -9,21 +9,26 @@ const H_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/enums-h.njk`, "ut
 nunjucks.configure({ autoescape: true });
 
 function getEnumType(enu) {
-  if (enu.type === "UNKNOWN") return `__int32`;
-  return `unsigned __int8`;
+  if (enu.type === "ENUM_STRINGS") return `std::string`;
+  return `__int32`;
 };
 
 function getEnumMemberValue(member) {
-  let parsed = parseInt(member.value);
-  let isFloat = member.value.indexOf(".") !== -1;
-  if (member.type === "BITPOS") {
-    let pos = 1 << parseInt(member.value, 0);
-    return `0x` + pos.toString(16);
+  if (member.isStringValue) return `"${member.value}"`;
+  return member.value || member.alias;
+};
+
+function getEnumV8Value(enu) {
+  if (
+    enu.type === "ENUM" ||
+    enu.type === "BITMASK" ||
+    enu.type === "UNKNOWN"
+  ) {
+    return `Nan::New(static_cast<__int32>(it->second))`;
   }
-  if (Number.isNaN(parsed) || isFloat) {
-    return `(__int32)${member.value}`;
+  else if (enu.type === "ENUM_STRINGS") {
+    return `v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), it->second.c_str())`;
   }
-  return member.value;
 };
 
 export default function(astReference, enums) {
@@ -31,6 +36,7 @@ export default function(astReference, enums) {
   let vars = {
     enums,
     getEnumType,
+    getEnumV8Value,
     getEnumMemberValue
   };
   let out = {
