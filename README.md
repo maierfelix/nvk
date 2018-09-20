@@ -15,8 +15,8 @@ Preview:<br/>
  - node.js >= v10.9.0
 
 ## Structure:
- - `generate`: code for binding generation
- - `generated`: the emitted binding code
+ - `generator`: code for binding generation
+ - `generated`: the generated binding code
  - `lib`: required third party libs
 
 ## Installation:
@@ -56,5 +56,7 @@ npm run generate -- -v 1.1.82.0
 Make sure that the given specification file can be found in `generate/specifications/{v}.xml`<br/>
 The emitted bindings can then be found in `generated/{v}/`
 
+Vulkan specifications files can be found [here](https://github.com/KhronosGroup/Vulkan-Docs/releases)
+
 ### Compilation:
-Copy the root's build.bat in the given generated binding folder and run it
+Copy the root's build.bat into the given generated binding folder and run it

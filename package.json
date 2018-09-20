@@ -3,11 +3,11 @@
   "version": "0.0.1",
   "config": {
     "GEN_OUT_DIR": "./generated",
-    "SPEC_DIR": "./generate/specifications",
-    "TEMPLATE_DIR": "./generate/templates"
+    "SPEC_DIR": "./generator/specifications",
+    "TEMPLATE_DIR": "./generator/templates"
   },
   "scripts": {
-    "generate": "node --experimental-modules ./generate/index.mjs"
+    "generate": "node --experimental-modules ./generator/index.mjs"
   },
   "devDependencies": {
     "nan": "^2.11.0",
