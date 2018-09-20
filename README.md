@@ -1,23 +1,19 @@
 # node-vulkan
-Automated vulkan binding generation for node.js
+node-vulkan is a Vulkan binding generator for node.js.
+
+The bindings are machine generated and provide an API to interact from JavaScript with the low-level interface of Vulkan. The API of this project strives to be as close as possible to Vulkan's original API.
 
 Preview:<br/>
 <img src="https://i.imgur.com/P7kgOt9.png" width="380">
-
-### TODOs:
- - [ ] Struct generation (~85%)
- - [x] Handle generation (~100%)
- - [x] Enum generation (100%)
- - [ ] Function generation (~80%)
- - [ ] Reverse reflection (~85%)
-
-## Requirements:
- - node.js >= v10.9.0
 
 ## Structure:
  - `generator`: code for binding generation
  - `generated`: the generated binding code
  - `lib`: required third party libs
+ - `test`: contains a triangle rendering demo using node-vulkan
+
+## Requirements:
+ - node.js >= v10.9.0
 
 ## Installation:
  
@@ -60,3 +56,10 @@ Vulkan specifications files can be found [here](https://github.com/KhronosGroup/
 
 ### Compilation:
 Copy the root's build.bat into the given generated binding folder and run it
+
+### TODOs:
+ - [ ] Struct generation (~85%)
+ - [x] Handle generation (~100%)
+ - [x] Enum generation (100%)
+ - [ ] Function generation (~80%)
+ - [ ] Reverse reflection (~85%)
