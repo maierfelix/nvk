@@ -1,8 +1,8 @@
 # node-vulkan
 Automated vulkan binding generation for node.js
 
-Preview:
-[![Preview](https://i.imgur.com/P7kgOt9.png)](https://github.com/maierfelix/node-vulkan/blob/master/test/basic.mjs)
+Preview:<br/>
+<img src="https://i.imgur.com/P7kgOt9.png" width="380">
 
 ### TODOs:
  - [ ] Struct generation (~85%)
