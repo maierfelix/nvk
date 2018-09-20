@@ -1,23 +1,23 @@
 # node-vulkan
 Automated vulkan binding generation for node.js
 
-**DO NOT USE**: Don't expect anything to work yet!
+Preview:
+[![Preview](https://i.imgur.com/P7kgOt9.png)](https://github.com/maierfelix/node-vulkan/blob/master/test/basic.mjs)
 
 ### TODOs:
  - [ ] Struct generation (~85%)
  - [x] Handle generation (~100%)
  - [x] Enum generation (100%)
- - [ ] Function generation (~70%)
- - [ ] Reverse reflection (~60%)
+ - [ ] Function generation (~80%)
+ - [ ] Reverse reflection (~85%)
 
 ## Requirements:
  - node.js >= v10.9.0
 
 ## Structure:
- - `generator`: code for binding generation
- - `generated`: generated binding code
+ - `generate`: code for binding generation
+ - `generated`: the emitted binding code
  - `lib`: required third party libs
- - `test`: contains binding related tests
 
 ## Installation:
  
@@ -54,7 +54,6 @@ You can specify a version to generate bindings for like this:
 npm run generate -- -v 1.1.82.0
 ````
 Make sure that the given specification file can be found in `generate/specifications/{v}.xml`<br/>
-You can download vulkan specification files from [here](https://github.com/KhronosGroup/Vulkan-Docs/releases)
 The emitted bindings can then be found in `generated/{v}/`
 
 ### Compilation:
