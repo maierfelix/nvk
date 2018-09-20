@@ -106,17 +106,30 @@ NAN_MODULE_INIT(InitModule) {
   _VkDevice::Initialize(target);
   _VkPhysicalDevice::Initialize(target);
   _VkInstance::Initialize(target);
+  _VkClearColorValue::Initialize(target);
   _VkBindImagePlaneMemoryInfo::Initialize(target);
+  _VkPresentInfoKHR::Initialize(target);
   _VkExtent2D::Initialize(target);
   _VkSwapchainCreateInfoKHR::Initialize(target);
   _VkSurfaceFormatKHR::Initialize(target);
   _VkSurfaceCapabilitiesKHR::Initialize(target);
+  _VkSubmitInfo::Initialize(target);
   _VkFramebufferCreateInfo::Initialize(target);
+  _VkSemaphoreCreateInfo::Initialize(target);
   _VkSubpassDependency::Initialize(target);
   _VkAttachmentReference::Initialize(target);
   _VkSubpassDescription::Initialize(target);
   _VkAttachmentDescription::Initialize(target);
   _VkRenderPassCreateInfo::Initialize(target);
+  _VkClearDepthStencilValue::Initialize(target);
+  _VkClearValue::Initialize(target);
+  _VkOffset2D::Initialize(target);
+  _VkRect2D::Initialize(target);
+  _VkRenderPassBeginInfo::Initialize(target);
+  _VkCommandBufferInheritanceInfo::Initialize(target);
+  _VkCommandBufferBeginInfo::Initialize(target);
+  _VkCommandBufferAllocateInfo::Initialize(target);
+  _VkCommandPoolCreateInfo::Initialize(target);
   _VkPushConstantRange::Initialize(target);
   _VkPipelineLayoutCreateInfo::Initialize(target);
   _VkPipelineDynamicStateCreateInfo::Initialize(target);
@@ -126,8 +139,6 @@ NAN_MODULE_INIT(InitModule) {
   _VkPipelineDepthStencilStateCreateInfo::Initialize(target);
   _VkPipelineMultisampleStateCreateInfo::Initialize(target);
   _VkPipelineRasterizationStateCreateInfo::Initialize(target);
-  _VkOffset2D::Initialize(target);
-  _VkRect2D::Initialize(target);
   _VkViewport::Initialize(target);
   _VkPipelineViewportStateCreateInfo::Initialize(target);
   _VkPipelineTessellationStateCreateInfo::Initialize(target);
@@ -198,6 +209,14 @@ NAN_MODULE_INIT(InitModule) {
     Nan::New<v8::FunctionTemplate>(_vkGetDeviceQueue)->GetFunction()
   );
   target->Set(
+    Nan::New("vkQueueSubmit").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkQueueSubmit)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkCreateSemaphore").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkCreateSemaphore)->GetFunction()
+  );
+  target->Set(
     Nan::New("vkCreateImageView").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkCreateImageView)->GetFunction()
   );
@@ -222,6 +241,38 @@ NAN_MODULE_INIT(InitModule) {
     Nan::New<v8::FunctionTemplate>(_vkCreateRenderPass)->GetFunction()
   );
   target->Set(
+    Nan::New("vkCreateCommandPool").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkCreateCommandPool)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkAllocateCommandBuffers").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkAllocateCommandBuffers)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkBeginCommandBuffer").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkBeginCommandBuffer)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkEndCommandBuffer").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkEndCommandBuffer)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkCmdBindPipeline").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkCmdBindPipeline)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkCmdDraw").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkCmdDraw)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkCmdBeginRenderPass").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkCmdBeginRenderPass)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkCmdEndRenderPass").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkCmdEndRenderPass)->GetFunction()
+  );
+  target->Set(
     Nan::New("vkGetPhysicalDeviceSurfaceSupportKHR").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkGetPhysicalDeviceSurfaceSupportKHR)->GetFunction()
   );
@@ -244,6 +295,14 @@ NAN_MODULE_INIT(InitModule) {
   target->Set(
     Nan::New("vkGetSwapchainImagesKHR").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkGetSwapchainImagesKHR)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkAcquireNextImageKHR").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkAcquireNextImageKHR)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkQueuePresentKHR").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkQueuePresentKHR)->GetFunction()
   );
   
 }

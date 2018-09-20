@@ -41,19 +41,27 @@ NAN_METHOD(_VkClearRect::New) {
 // rect
 NAN_GETTER(_VkClearRect::Getrect) {
   _VkClearRect *self = Nan::ObjectWrap::Unwrap<_VkClearRect>(info.This());
-  v8::Local<v8::Object> obj = Nan::New(self->rect);
-  info.GetReturnValue().Set(obj);
+  if (self->rect.IsEmpty()) {
+    info.GetReturnValue().SetNull();
+  } else {
+    v8::Local<v8::Object> obj = Nan::New(self->rect);
+    info.GetReturnValue().Set(obj);
+  }
 }NAN_SETTER(_VkClearRect::Setrect) {
   _VkClearRect *self = Nan::ObjectWrap::Unwrap<_VkClearRect>(info.This());
   // js
-  {
+  if (!(value->IsNull())) {
     Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
     self->rect = obj;
+  } else {
+    //self->rect = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
-  {
+  if (!(value->IsNull())) {
     _VkRect2D* obj = Nan::ObjectWrap::Unwrap<_VkRect2D>(value->ToObject());
     self->instance.rect = obj->instance;
+  } else {
+    memset(&self->instance.rect, 0, sizeof(VkRect2D));
   }
 }// baseArrayLayer
 NAN_GETTER(_VkClearRect::GetbaseArrayLayer) {

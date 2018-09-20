@@ -43,10 +43,10 @@ NAN_METHOD(_VkImageSubresourceRange::New) {
 // aspectMask
 NAN_GETTER(_VkImageSubresourceRange::GetaspectMask) {
   _VkImageSubresourceRange *self = Nan::ObjectWrap::Unwrap<_VkImageSubresourceRange>(info.This());
-  info.GetReturnValue().Set(Nan::New<v8::Number>(static_cast<uint8_t>(self->instance.aspectMask)));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.aspectMask));
 }NAN_SETTER(_VkImageSubresourceRange::SetaspectMask) {
   _VkImageSubresourceRange *self = Nan::ObjectWrap::Unwrap<_VkImageSubresourceRange>(info.This());
-  self->instance.aspectMask = static_cast<VkImageAspectFlags>(value->Uint32Value());
+  self->instance.aspectMask = static_cast<VkImageAspectFlags>((int32_t)value->NumberValue());
 }// baseMipLevel
 NAN_GETTER(_VkImageSubresourceRange::GetbaseMipLevel) {
   _VkImageSubresourceRange *self = Nan::ObjectWrap::Unwrap<_VkImageSubresourceRange>(info.This());

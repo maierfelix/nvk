@@ -23,7 +23,7 @@ class _VkBufferCreateInfo: public Nan::ObjectWrap {
     static NAN_GETTER(Getsize);
     static NAN_SETTER(Setsize);
     
-      static NAN_GETTER(Getusage);
+    static NAN_GETTER(Getusage);
     static NAN_SETTER(Setusage);
     
     static NAN_GETTER(GetsharingMode);

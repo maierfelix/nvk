@@ -20,10 +20,10 @@ class _VkImageMemoryBarrier: public Nan::ObjectWrap {
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
     
-      static NAN_GETTER(GetsrcAccessMask);
+    static NAN_GETTER(GetsrcAccessMask);
     static NAN_SETTER(SetsrcAccessMask);
     
-      static NAN_GETTER(GetdstAccessMask);
+    static NAN_GETTER(GetdstAccessMask);
     static NAN_SETTER(SetdstAccessMask);
     
     static NAN_GETTER(GetoldLayout);

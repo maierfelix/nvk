@@ -17,7 +17,7 @@ class _VkImageSubresourceRange: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     // #accessors
-      static NAN_GETTER(GetaspectMask);
+    static NAN_GETTER(GetaspectMask);
     static NAN_SETTER(SetaspectMask);
     
     static NAN_GETTER(GetbaseMipLevel);

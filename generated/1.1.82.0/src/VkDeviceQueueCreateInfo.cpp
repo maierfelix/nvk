@@ -63,21 +63,29 @@ NAN_GETTER(_VkDeviceQueueCreateInfo::GetqueueCount) {
 }// pQueuePriorities
 NAN_GETTER(_VkDeviceQueueCreateInfo::GetpQueuePriorities) {
   _VkDeviceQueueCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceQueueCreateInfo>(info.This());
-  v8::Local<v8::Object> obj = Nan::New(self->pQueuePriorities);
-  info.GetReturnValue().Set(obj);
+  if (self->pQueuePriorities.IsEmpty()) {
+    info.GetReturnValue().SetNull();
+  } else {
+    v8::Local<v8::Object> obj = Nan::New(self->pQueuePriorities);
+    info.GetReturnValue().Set(obj);
+  }
 }NAN_SETTER(_VkDeviceQueueCreateInfo::SetpQueuePriorities) {
   _VkDeviceQueueCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceQueueCreateInfo>(info.This());
   
     // js
-    {
+    if (value->IsArray() || value->IsArrayBufferView()) {
       v8::Handle<v8::Array> arr = v8::Handle<v8::Array>::Cast(value);
       Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> obj(arr);
       self->pQueuePriorities = obj;
+    } else {
+      if (!self->pQueuePriorities.IsEmpty()) self->pQueuePriorities.Empty();
     }
   
   
-    // vulkan
-  {
+  // vulkan
+  if (value->IsArrayBufferView()) {
     self->instance.pQueuePriorities = getTypedArrayData<float>(value->ToObject(), nullptr);
+  } else {
+    self->instance.pQueuePriorities = nullptr;
   }
 }

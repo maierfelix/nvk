@@ -382,8 +382,12 @@ function parseTypeElement(child) {
     out.isStructType = true;
   }
   if (isBitmaskType) {
+    out.bitmaskType = out.rawType;
+    out.bitmaskRawType = out.bitmaskType;
+    out.rawType = out.rawType.replace(out.type, `int32_t`);
+    out.type = `int32_t`;
+    type = out.type;
     out.isBitmaskType = true;
-    out.bitmaskType = bitmasks[type];
   }
   // note: manual type overwrite!
   if (isBaseType) {
@@ -490,6 +494,14 @@ export default function(xmlInput) {
       registerStruct(res.attributes);
     });
   }
+  // union definitions
+  if (true) {
+    let results = [];
+    findXMLElements(obj, { category: "union" }, results);
+    results.map(res => {
+      registerStruct(res.attributes);
+    });
+  }
   // handles
   if (true) {
     let results = [];
@@ -546,6 +558,14 @@ export default function(xmlInput) {
   if (true) {
     let results = [];
     findXMLElements(obj, { category: "struct" }, results);
+    results.map(res => {
+      let ast = parseElement(res);
+      out.push(ast);
+    });
+  }
+  if (true) {
+    let results = [];
+    findXMLElements(obj, { category: "union" }, results);
     results.map(res => {
       let ast = parseElement(res);
       out.push(ast);

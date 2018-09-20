@@ -7,7 +7,7 @@
     "TEMPLATE_DIR": "./generate/templates"
   },
   "scripts": {
-    "generate": "node --experimental-modules ./generate/generate.mjs"
+    "generate": "node --experimental-modules ./generate/index.mjs"
   },
   "devDependencies": {
     "nan": "^2.11.0",

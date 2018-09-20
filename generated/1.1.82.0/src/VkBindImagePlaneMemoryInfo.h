@@ -20,7 +20,7 @@ class _VkBindImagePlaneMemoryInfo: public Nan::ObjectWrap {
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
     
-      static NAN_GETTER(GetplaneAspect);
+    static NAN_GETTER(GetplaneAspect);
     static NAN_SETTER(SetplaneAspect);
     
 

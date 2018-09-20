@@ -51,13 +51,21 @@ NAN_GETTER(_VkApplicationInfo::GetsType) {
 }// pApplicationName
 NAN_GETTER(_VkApplicationInfo::GetpApplicationName) {
   _VkApplicationInfo *self = Nan::ObjectWrap::Unwrap<_VkApplicationInfo>(info.This());
-  v8::Local<v8::String> str = Nan::New(self->pApplicationName);
-  info.GetReturnValue().Set(str);
+  if (self->pApplicationName.IsEmpty()) {
+    info.GetReturnValue().SetNull();
+  } else {
+    v8::Local<v8::String> str = Nan::New(self->pApplicationName);
+    info.GetReturnValue().Set(str);
+  }
 }NAN_SETTER(_VkApplicationInfo::SetpApplicationName) {
   _VkApplicationInfo *self = Nan::ObjectWrap::Unwrap<_VkApplicationInfo>(info.This());
-  Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> str(Nan::To<v8::String>(value).ToLocalChecked());
-  self->pApplicationName = str;
-  self->instance.pApplicationName = copyV8String(value);
+  if (value->IsString()) {
+    Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> str(Nan::To<v8::String>(value).ToLocalChecked());
+    self->pApplicationName = str;
+    self->instance.pApplicationName = copyV8String(value);
+  } else {
+    self->instance.pApplicationName = nullptr;
+  }
 }// applicationVersion
 NAN_GETTER(_VkApplicationInfo::GetapplicationVersion) {
   _VkApplicationInfo *self = Nan::ObjectWrap::Unwrap<_VkApplicationInfo>(info.This());
@@ -68,13 +76,21 @@ NAN_GETTER(_VkApplicationInfo::GetapplicationVersion) {
 }// pEngineName
 NAN_GETTER(_VkApplicationInfo::GetpEngineName) {
   _VkApplicationInfo *self = Nan::ObjectWrap::Unwrap<_VkApplicationInfo>(info.This());
-  v8::Local<v8::String> str = Nan::New(self->pEngineName);
-  info.GetReturnValue().Set(str);
+  if (self->pEngineName.IsEmpty()) {
+    info.GetReturnValue().SetNull();
+  } else {
+    v8::Local<v8::String> str = Nan::New(self->pEngineName);
+    info.GetReturnValue().Set(str);
+  }
 }NAN_SETTER(_VkApplicationInfo::SetpEngineName) {
   _VkApplicationInfo *self = Nan::ObjectWrap::Unwrap<_VkApplicationInfo>(info.This());
-  Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> str(Nan::To<v8::String>(value).ToLocalChecked());
-  self->pEngineName = str;
-  self->instance.pEngineName = copyV8String(value);
+  if (value->IsString()) {
+    Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> str(Nan::To<v8::String>(value).ToLocalChecked());
+    self->pEngineName = str;
+    self->instance.pEngineName = copyV8String(value);
+  } else {
+    self->instance.pEngineName = nullptr;
+  }
 }// engineVersion
 NAN_GETTER(_VkApplicationInfo::GetengineVersion) {
   _VkApplicationInfo *self = Nan::ObjectWrap::Unwrap<_VkApplicationInfo>(info.This());

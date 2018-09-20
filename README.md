@@ -14,9 +14,10 @@ Automated vulkan binding generation for node.js
  - node.js >= v10.9.0
 
 ## Structure:
- - `generate`: code for binding generation
- - `generated`: the emitted binding code
+ - `generator`: code for binding generation
+ - `generated`: generated binding code
  - `lib`: required third party libs
+ - `test`: contains binding related tests
 
 ## Installation:
  
@@ -53,6 +54,7 @@ You can specify a version to generate bindings for like this:
 npm run generate -- -v 1.1.82.0
 ````
 Make sure that the given specification file can be found in `generate/specifications/{v}.xml`<br/>
+You can download vulkan specification files from [here](https://github.com/KhronosGroup/Vulkan-Docs/releases)
 The emitted bindings can then be found in `generated/{v}/`
 
 ### Compilation:

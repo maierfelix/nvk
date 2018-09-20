@@ -47,8 +47,8 @@ NAN_GETTER(_VkBindImagePlaneMemoryInfo::GetsType) {
 }// planeAspect
 NAN_GETTER(_VkBindImagePlaneMemoryInfo::GetplaneAspect) {
   _VkBindImagePlaneMemoryInfo *self = Nan::ObjectWrap::Unwrap<_VkBindImagePlaneMemoryInfo>(info.This());
-  info.GetReturnValue().Set(Nan::New<v8::Number>(static_cast<uint8_t>(self->instance.planeAspect)));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.planeAspect));
 }NAN_SETTER(_VkBindImagePlaneMemoryInfo::SetplaneAspect) {
   _VkBindImagePlaneMemoryInfo *self = Nan::ObjectWrap::Unwrap<_VkBindImagePlaneMemoryInfo>(info.This());
-  self->instance.planeAspect = static_cast<VkImageAspectFlagBits>(value->Uint32Value());
+  self->instance.planeAspect = static_cast<VkImageAspectFlagBits>((int32_t)value->NumberValue());
 }

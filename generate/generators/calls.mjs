@@ -47,7 +47,7 @@ function instantiateMemberClass(member) {
 function getMemberCopyInstructions(struct) {
   let out = ``;
   struct.children.map(member => {
-    if (member.isStructType || member.isHandleType) {
+    if (member.isStructType) {
       out += `
       instance->${member.name} = copy->${member.name};`;
       out += `
@@ -56,6 +56,9 @@ function getMemberCopyInstructions(struct) {
         result->${member.name} = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(inst);
         unwrapped->instance = copy->${member.name};
       }`;
+    }
+    else if (member.isHandleType) {
+      // can be ignored
     }
     else if (member.isString) {
       out += `
@@ -71,10 +74,7 @@ function getMemberCopyInstructions(struct) {
       // TODO
       console.log(`Error: Member copy instruction for arrays not handled yet!`);
     }
-    else if (member.isNumber || member.isBitmaskType) {
-      // can be ignored
-    }
-    else if (member.enumType) {
+    else if (member.isNumber || member.bitmaskType || member.enumType) {
       // can be ignored
     }
     else if (member.type === "void") {
@@ -87,11 +87,15 @@ function getMemberCopyInstructions(struct) {
   return out;
 };
 
+
+
 function getInputArrayBody(param, index) {
   let {rawType} = param;
   if (param.isBaseType) rawType = param.baseType;
   let out = ``;
+  let {isConstant} = param;
   let isReference = param.dereferenceCount > 0;
+  if (!isReference) console.warn(`Cannot handle non-reference item in input-array-body!`);
   out += `
   ${param.enumType || param.type} ${isReference ? "*" : ""}$p${index} = nullptr;\n`;
   out += `
@@ -99,18 +103,30 @@ function getInputArrayBody(param, index) {
   // handle
   if (param.isHandleType) {
     let handle = getHandleByHandleName(param.type);
+    let parentHandle = getHandleByHandleName(param.handleType);
+    // handle might not be just a pointer and encodes data directly
     if (handle.isNonDispatchable) {
       out += `
     $p${index} = createArrayOfV8Handles<${param.type}, _${param.type}>(info[${index}]);`;
+    // handle pointer with reference into vulkan
+    } else if (parentHandle.isNonDispatchable) {
+      out += `
+    $p${index} = createArrayOfV8Handles<${param.type}, _${param.type}>(info[${index}]);`;
+    // parent handle is non dispatchable..is this correct ???
     } else {
       out += `
     $p${index} = createArrayOfV8Objects<${param.type}, _${param.type}>(info[${index}]);`;
     }
   }
-  // struct
-  else if (param.isStructType) {
+  // struct which gets filled by vulkan
+  else if (param.isStructType && !isConstant) {
     out += `
     $p${index} = copyArrayOfV8Objects<${param.type}, _${param.type}>(info[${index}]);`;
+  }
+  // just a struct
+  else if (param.isStructType && isConstant) {
+    out += `
+    $p${index} = createArrayOfV8Objects<${param.type}, _${param.type}>(info[${index}]);`;
   }
   // enum
   else if (param.enumType) {
@@ -143,13 +159,23 @@ function getCallBodyBefore(call) {
       case "size_t":
       case "int32_t":
       case "uint32_t":
-      case "uint64_t":
+      case "uint64_t": {
+        let type = param.enumType || param.type;
+        let val = `NumberValue`;
+        if (param.enumType) val = `Uint32Value`;
         return `
-  ${param.type} $p${index} = static_cast<${param.type}>(info[${index}]->NumberValue());`;
+  ${type} $p${index} = static_cast<${type}>(info[${index}]->${val}());`;
+      }
       case "VkBool32 *":
         return `
-  v8::Local<v8::Object> obj${index} = info[${index}]->ToObject();
-  ${param.type} $p${index} = static_cast<${param.type}>(obj${index}->Get(Nan::New("$").ToLocalChecked())->BooleanValue());`;
+  v8::Local<v8::Object> obj${index};
+  ${param.type} $p${index};
+  if (!(info[${index}]->IsNull())) {
+    obj${index} = info[${index}]->ToObject();
+    $p${index} = static_cast<${param.type}>(obj${index}->Get(Nan::New("$").ToLocalChecked())->BooleanValue());
+  } else {
+
+  }`;
       case "int *":
       case "size_t *":
       case "int32_t *":
@@ -163,8 +189,12 @@ function getCallBodyBefore(call) {
           return getInputArrayBody(param, index);
         } else {
           return `
-  v8::Local<v8::Object> obj${index} = info[${index}]->ToObject();
-  ${param.type} $p${index} = static_cast<${param.type}>(obj${index}->Get(Nan::New("$").ToLocalChecked())->NumberValue());`;
+  v8::Local<v8::Object> obj${index};
+  ${param.type} $p${index};
+  if (!(info[${index}]->IsNull())) {
+    obj${index} = info[${index}]->ToObject();
+    $p${index} = static_cast<${param.type}>(obj${index}->Get(Nan::New("$").ToLocalChecked())->NumberValue());
+  }`;
         }
       case "void *":
       case "const void *":
@@ -178,9 +208,26 @@ function getCallBodyBefore(call) {
         // struct or handle
         else if (param.isStructType || param.isHandleType) {
           let isReference = param.dereferenceCount > 0;
+          let deinitialize = ``;
+          // create deinitializer
+          if (isReference) {
+            if (param.isStructType) deinitialize = `nullptr`;
+            else if (param.isHandleType) deinitialize = `VK_NULL_HANDLE`;
+            else console.warn(`Cannot handle param reference deinitializer!`);
+          } else {
+            if (param.isHandleType) deinitialize = `VK_NULL_HANDLE`;
+            else console.warn(`Cannot handle param deinitializer!`);
+          }
+          //console.log(!!param.isStructType, !!param.isHandleType, isReference);
           return `
-  _${param.type}* obj${index} = Nan::ObjectWrap::Unwrap<_${param.type}>(info[${index}]->ToObject());
-  ${param.type} *$p${index} = &obj${index}->instance;`;
+  _${param.type}* obj${index};
+  ${param.type} *$p${index};
+  if (!(info[${index}]->IsNull())) {
+    obj${index} = Nan::ObjectWrap::Unwrap<_${param.type}>(info[${index}]->ToObject());
+    $p${index} = &obj${index}->instance;
+  } else {
+    $p${index} = ${deinitialize};
+  }`;
         }
         console.warn(`Cannot handle param ${rawType} in call-body-before!`);
         console.log(param);
@@ -201,15 +248,23 @@ function getCallBodyInner(call) {
       out += `    nullptr${addComma}`;
       return;
     }
-    if (
-      (param.isStructType || param.isHandleType) &&
+    // if handle is null then use VK_NULL_HANDLE
+    else if (
+      !param.isConstant &&
+      param.isHandleType &&
       param.dereferenceCount <= 0
-    ) byReference = "*";
+    ) out += `    info[${index}]->IsNull() ? VK_NULL_HANDLE : *$p${index}${addComma}`;
+    else if (
+      param.dereferenceCount <= 0 &&
+      (param.isStructType || param.isHandleType)
+    ) out += `    *$p${index}${addComma}`;
     else if (
       param.dereferenceCount > 0 &&
       !(param.isStructType || param.isHandleType || param.enumType)
-    ) byReference = "&";
-    out += `    ${byReference}$p${index}${addComma}`;
+    ) out += `    &$p${index}${addComma}`;
+    else {
+      out += `    $p${index}${addComma}`;
+    }
   });
   return out;
 };
@@ -242,7 +297,7 @@ function getCallBodyAfter(call) {
   }`);
     // passed in parameter is a struct which gets modified
     // and which we need to back-reflect to v8 manually
-    } else if (param.isStructType && !param.isConstant && param.dereferenceCount > 0) {
+    } else if (param.isStructType && param.dereferenceCount > 0) {
       let instr = getMutableStructReflectInstructions(param.type, pIndex, `obj${pIndex}->`);
       out.push(instr);
     }
@@ -260,7 +315,8 @@ function getCallBodyAfter(call) {
     // array of handles
     else if (param.isArray && param.isHandleType) {
       let handle = getHandleByHandleName(param.type);
-      if (handle.isNonDispatchable) {
+      let parentHandle = getHandleByHandleName(param.handleType);
+      if (handle.isNonDispatchable || parentHandle.isNonDispatchable) {
         out.push(`
   if (info[${pIndex}]->IsArray()) {
     v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[${pIndex}]);
@@ -273,13 +329,16 @@ function getCallBodyAfter(call) {
   }`);
       }
     }
-    else if (param.isStructType && param.isConstant) {
+    else if (param.isStructType) {
       // no reflection needed
     }
     else if (param.isString) {
       // no reflection needed
     }
     else if (param.isNumber) {
+      // no reflection needed
+    }
+    else if (param.enumType) {
       // no reflection needed
     }
     else if (param.isHandleType) {
@@ -337,12 +396,12 @@ function getMutableStructReflectInstructions(name, pIndex, basePath, out = []) {
   struct.children.map((member, mIndex) => {
     // these can be ignored
     if (
-      (member.isNumber) ||
-      (member.isBoolean) ||
-      (member.isEnumType) ||
-      (member.isBaseType) ||
-      (member.isBitmaskType) ||
-      (member.enumType)
+      member.isNumber ||
+      member.isBoolean ||
+      member.isEnumType ||
+      member.isBaseType ||
+      member.bitmaskType ||
+      member.enumType
     ) return;
     // raw string
     if (member.isString) {

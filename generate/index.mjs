@@ -13,6 +13,11 @@ import generatePackage from "./generators/package";
 import generateUtils from "./generators/utils";
 import generateWindow from "./generators/window";
 
+let totalFiles = 0;
+let writtenFiles = 0;
+let writtenBytes = 0;
+let writtenLines = 0;
+
 // bridged to only change the change data of a file if it's really necessary
 // (the compiler seems to re-compile based on file changes..)
 function writeAddonFile(path, data, encoding, includeNotice = false) {
@@ -22,8 +27,12 @@ function writeAddonFile(path, data, encoding, includeNotice = false) {
   } catch(e) {};
   if (includeNotice) data = GEN_FILE_NOTICE + data;
   if (source !== data) {
+    totalFiles++;
     fs.writeFileSync(path, data, encoding);
   }
+  writtenFiles++;
+  writtenBytes += data.length;
+  writtenLines += data.split(/\r\n|\r|\n/).length;
 };
 
 function getEnumByName(name) {
@@ -173,7 +182,19 @@ let structWhiteList = [
   "VkPipelineTessellationStateCreateInfo",
   "VkStencilOpState",
   "VkFramebufferCreateInfo",
-  "VkCommandPoolCreateInfo"
+  "VkCommandPoolCreateInfo",
+  "VkCommandBufferAllocateInfo",
+  "VkCommandBufferBeginInfo",
+  "VkCommandBufferInheritanceInfo",
+  "VkRenderPassBeginInfo",
+  "VkClearValue",
+  "VkClearDepthStencilValue",
+  "VkClearColorValue",
+  "VkSemaphoreCreateInfo",
+  "VkSubmitInfo",
+  "VkPipelineStageFlags",
+  "VkSubpassDependency",
+  "VkPresentInfoKHR"
 ];
 
 let callsWhiteList = [
@@ -198,11 +219,18 @@ let callsWhiteList = [
   "vkCreateRenderPass",
   "vkCreateGraphicsPipelines",
   "vkCreateFramebuffer",
-  "vkCreateCommandPool"
-];
-
-let handlesWhiteList = [
-  "VkInstance"
+  "vkCreateCommandPool",
+  "vkAllocateCommandBuffers",
+  "vkBeginCommandBuffer",
+  "vkEndCommandBuffer",
+  "vkCmdBeginRenderPass",
+  "vkCmdEndRenderPass",
+  "vkCmdBindPipeline",
+  "vkCmdDraw",
+  "vkCreateSemaphore",
+  "vkAcquireNextImageKHR",
+  "vkQueueSubmit",
+  "vkQueuePresentKHR"
 ];
 
 console.log(`Generating using ${argsVersion}.xml`);
@@ -232,7 +260,6 @@ let nodes = {
 // filter by whitelist
 calls = calls.filter(call => callsWhiteList.includes(call.name));
 structs = structs.filter(struct => structWhiteList.includes(struct.name));
-//handles = handles.filter(handle => handlesWhiteList.includes(handle));
 
 // generate structs
 {
@@ -320,3 +347,9 @@ structs = structs.filter(struct => structWhiteList.includes(struct.name));
   writeAddonFile(`${generateSrcPath}/index.h`, indexFile.header, "utf-8", true);
   writeAddonFile(`${generateSrcPath}/index.cpp`, indexFile.source, "utf-8", true);
 }
+
+console.log(``);
+console.log(`Generation stats:`);
+console.log(`Total files: ${totalFiles}/${writtenFiles}`);
+console.log(`Total size: ${writtenBytes * 1e-3}kb`);
+console.log(`Total lines: ${writtenLines}`);

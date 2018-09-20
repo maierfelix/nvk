@@ -58,10 +58,10 @@ NAN_GETTER(_VkBufferCreateInfo::Getsize) {
 }// usage
 NAN_GETTER(_VkBufferCreateInfo::Getusage) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
-  info.GetReturnValue().Set(Nan::New<v8::Number>(static_cast<uint8_t>(self->instance.usage)));
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.usage));
 }NAN_SETTER(_VkBufferCreateInfo::Setusage) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
-  self->instance.usage = static_cast<VkBufferUsageFlags>(value->Uint32Value());
+  self->instance.usage = static_cast<VkBufferUsageFlags>((int32_t)value->NumberValue());
 }// sharingMode
 NAN_GETTER(_VkBufferCreateInfo::GetsharingMode) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
@@ -79,21 +79,29 @@ NAN_GETTER(_VkBufferCreateInfo::GetqueueFamilyIndexCount) {
 }// pQueueFamilyIndices
 NAN_GETTER(_VkBufferCreateInfo::GetpQueueFamilyIndices) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
-  v8::Local<v8::Object> obj = Nan::New(self->pQueueFamilyIndices);
-  info.GetReturnValue().Set(obj);
+  if (self->pQueueFamilyIndices.IsEmpty()) {
+    info.GetReturnValue().SetNull();
+  } else {
+    v8::Local<v8::Object> obj = Nan::New(self->pQueueFamilyIndices);
+    info.GetReturnValue().Set(obj);
+  }
 }NAN_SETTER(_VkBufferCreateInfo::SetpQueueFamilyIndices) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
   
     // js
-    {
+    if (value->IsArray() || value->IsArrayBufferView()) {
       v8::Handle<v8::Array> arr = v8::Handle<v8::Array>::Cast(value);
       Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> obj(arr);
       self->pQueueFamilyIndices = obj;
+    } else {
+      if (!self->pQueueFamilyIndices.IsEmpty()) self->pQueueFamilyIndices.Empty();
     }
   
   
-    // vulkan
-  {
+  // vulkan
+  if (value->IsArrayBufferView()) {
     self->instance.pQueueFamilyIndices = getTypedArrayData<uint32_t>(value->ToObject(), nullptr);
+  } else {
+    self->instance.pQueueFamilyIndices = nullptr;
   }
 }

@@ -14,26 +14,33 @@ let globalIncludes = [];
 function genPersistentV8Array(member) {
   return `
     // js
-    {
+    if (value->IsArray() || value->IsArrayBufferView()) {
       v8::Handle<v8::Array> arr = v8::Handle<v8::Array>::Cast(value);
       Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> obj(arr);
       self->${member.name} = obj;
+    } else {
+      if (!self->${member.name}.IsEmpty()) self->${member.name}.Empty();
     }
   `;
 };
 
 function getTypedV8Array(member) {
-  if (member.enumType) {
+  if (member.enumType || member.bitmaskType) {
+    let type = member.enumRawType || member.bitmaskRawType;
     return `
-    // vulkan
-  {
-    self->instance.${member.name} = reinterpret_cast<${member.enumRawType}>(getTypedArrayData<${member.type}>(value->ToObject(), nullptr));
+  // vulkan
+  if (value->IsArrayBufferView()) {
+    self->instance.${member.name} = reinterpret_cast<${type}>(getTypedArrayData<${member.type}>(value->ToObject(), nullptr));
+  } else {
+    self->instance.${member.name} = nullptr;
   }`;
   } else {
     return `
-    // vulkan
-  {
+  // vulkan
+  if (value->IsArrayBufferView()) {
     self->instance.${member.name} = getTypedArrayData<${member.type}>(value->ToObject(), nullptr);
+  } else {
+    self->instance.${member.name} = nullptr;
   }`;
   }
 };
@@ -43,14 +50,10 @@ function retUnknown(member) {
   return " ";
 };
 
-function processHeaderGetter(member) {
+function processHeaderGetter(struct, member) {
   let {rawType} = member;
   if (member.isBaseType) rawType = member.baseType;
   if (member.name === "flags") return "";
-  if (member.isEnumType && !member.isArray) {
-    return `
-    static NAN_GETTER(Get${member.name});`;
-  }
   if (member.isStaticArray) {
     // string of chars
     if (member.type === "char") {
@@ -63,7 +66,7 @@ function processHeaderGetter(member) {
     static NAN_GETTER(Get${member.name});`;
     }
   }
-  if (member.isArray && (member.isStructType || member.isHandleType || member.isEnumType)) {
+  if (member.isArray && (member.isStructType || member.isHandleType)) {
     return `
     Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> ${member.name};
     static NAN_GETTER(Get${member.name});`;
@@ -71,7 +74,6 @@ function processHeaderGetter(member) {
   if (
     member.isStructType ||
     member.isHandleType ||
-    member.isBitmaskType ||
     member.isBaseType ||
     rawType === "float"
   ) {
@@ -118,14 +120,14 @@ function processHeaderGetter(member) {
   };
 };
 
-function processHeaderSetter(member) {
+function processHeaderSetter(struct, member) {
   let {rawType} = member;
   if (member.name === "flags") return "";
   return `
     static NAN_SETTER(Set${member.name});`;
 };
 
-function processSourceGetter(member) {
+function processSourceGetter(struct, member) {
   let {rawType} = member;
   if (member.isBaseType) rawType = member.baseType;
   if (member.isBaseType) {
@@ -136,12 +138,20 @@ function processSourceGetter(member) {
   }
   if (member.isStaticArray) {
     return `
-  info.GetReturnValue().Set(Nan::New(self->${member.name}));`;
+  if (self->${member.name}.IsEmpty()) {
+    info.GetReturnValue().SetNull();
+  } else {
+    info.GetReturnValue().Set(Nan::New(self->${member.name}));
+  }`;
   }
-  if (member.isArray && (member.isStructType || member.isHandleType || member.isEnumType)) {
+  if (member.isArray && (member.isStructType || member.isHandleType)) {
     return `
-  v8::Local<v8::Object> obj = Nan::New(self->${member.name});
-  info.GetReturnValue().Set(obj);`;
+  if (self->${member.name}.IsEmpty()) {
+    info.GetReturnValue().SetNull();
+  } else {
+    v8::Local<v8::Object> obj = Nan::New(self->${member.name});
+    info.GetReturnValue().Set(obj);
+  }`;
   }
   switch (rawType) {
     case "int":
@@ -155,31 +165,36 @@ function processSourceGetter(member) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.${member.name}));`;
     case "const char *":
       return `
-  v8::Local<v8::String> str = Nan::New(self->${member.name});
-  info.GetReturnValue().Set(str);`;
+  if (self->${member.name}.IsEmpty()) {
+    info.GetReturnValue().SetNull();
+  } else {
+    v8::Local<v8::String> str = Nan::New(self->${member.name});
+    info.GetReturnValue().Set(str);
+  }`;
     case "const char * const*":
     case "const float *":
     case "const int32_t *":
     case "const uint32_t *":
     case "const uint64_t *":
       return `
-  v8::Local<v8::Object> obj = Nan::New(self->${member.name});
-  info.GetReturnValue().Set(obj);`;
+  if (self->${member.name}.IsEmpty()) {
+    info.GetReturnValue().SetNull();
+  } else {
+    v8::Local<v8::Object> obj = Nan::New(self->${member.name});
+    info.GetReturnValue().Set(obj);
+  }`;
     case "const void *":
       return ``; // ???
     default: {
-      if (member.isEnumType) {
-        return `
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.${member.name}));`;
-      }
-      else if (member.isStructType || member.isHandleType) {
+      if (member.isStructType || member.isHandleType) {
         let isReference = member.dereferenceCount > 0;
         return `
-  v8::Local<v8::Object> obj = Nan::New(self->${member.name});
-  info.GetReturnValue().Set(obj);`;
-      } else if (member.isBitmaskType) {
-        return `
-  info.GetReturnValue().Set(Nan::New<v8::Number>(static_cast<uint8_t>(self->instance.${member.name})));`;
+  if (self->${member.name}.IsEmpty()) {
+    info.GetReturnValue().SetNull();
+  } else {
+    v8::Local<v8::Object> obj = Nan::New(self->${member.name});
+    info.GetReturnValue().Set(obj);
+  }`;
       }
       console.warn(`Cannot handle member ${member.rawType} in source-getter!`);
       return retUnknown(member);
@@ -200,14 +215,16 @@ function processStaticArraySourceSetter(member) {
     return `
   ${genPersistentV8Array(member)}
   // vulkan
-  {
+  if (!(value->IsNull())) {
     memcpy(self->instance.${member.name}, createArrayOfV8Numbers<${member.type}>(value), sizeof(${member.type}) * ${member.length});
+  } else {
+    memset(&self->instance.${member.name}, 0, sizeof(${member.type}));
   }`;
   }
   // struct array
 };
 
-function processSourceSetter(member) {
+function processSourceSetter(struct, member) {
   let {rawType} = member;
   if (member.isBaseType) rawType = member.baseType;
   if (member.isStaticArray) {
@@ -221,17 +238,10 @@ function processSourceSetter(member) {
     return `
   ${genPersistentV8Array(member)}
   // vulkan
-  {
+  if (!(value->IsNull())) {
     self->instance.${member.name} = ${fn}<${member.type}, _${member.type}>(value);
-  }`;
-  }
-  // array of enums
-  if (member.isArray && member.isEnumType) {
-    return `
-  ${genPersistentV8Array(member)}
-  // vulkan
-  {
-    self->instance.${member.name} = createArrayOfV8Numbers<${member.type}, _${member.type}>(value);
+  } else {
+    self->instance.${member.name} = ${member.isHandleType ? "VK_NULL_HANDLE" : "nullptr"};
   }`;
   }
   switch (rawType) {
@@ -242,24 +252,30 @@ function processSourceSetter(member) {
     case "uint8_t":
     case "uint32_t":
     case "uint64_t": 
-      if (member.enumType) {
+      if (member.enumType || member.bitmaskType) {
         return `
-  self->instance.${member.name} = static_cast<${member.enumType}>((int32_t)value->NumberValue());`;
+  self->instance.${member.name} = static_cast<${member.enumType || member.bitmaskType}>((int32_t)value->NumberValue());`;
       } else {
         return `
   self->instance.${member.name} = static_cast<${rawType}>(value->NumberValue());`;
       }
     case "const char *":
       return `
-  Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> str(Nan::To<v8::String>(value).ToLocalChecked());
-  self->${member.name} = str;
-  self->instance.${member.name} = copyV8String(value);`;
+  if (value->IsString()) {
+    Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> str(Nan::To<v8::String>(value).ToLocalChecked());
+    self->${member.name} = str;
+    self->instance.${member.name} = copyV8String(value);
+  } else {
+    self->instance.${member.name} = nullptr;
+  }`;
     case "const char * const*":
       return `
   ${genPersistentV8Array(member)}
   // vulkan
-  {
+  if (value->IsArray()) {
     self->instance.${member.name} = createArrayOfV8Strings(value);
+  } else {
+    self->instance.${member.name} = nullptr;
   }`;
     case "const float *":
     case "const int32_t *":
@@ -271,27 +287,33 @@ function processSourceSetter(member) {
     case "const void *":
       return ``; // ???
     default: {
-      if (member.isEnumType) {
-        return `
-  self->instance.${member.name} = static_cast<${member.rawType}>(value->Uint32Value());`;
-      }
-      else if (member.isStructType || member.isHandleType) {
+      if (member.isStructType || member.isHandleType) {
         let isReference = member.dereferenceCount > 0;
+        let deinitialize = ``;
+        if (member.isHandleType) {
+          deinitialize = `self->instance.${member.name} = VK_NULL_HANDLE;`;
+        }
+        else if (isReference) {
+          deinitialize = `self->instance.${member.name} = nullptr;`;
+        }
+        else {
+          deinitialize = `memset(&self->instance.${member.name}, 0, sizeof(${member.type}));`;
+        }
         return `
   // js
-  {
+  if (!(value->IsNull())) {
     Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
     self->${member.name} = obj;
+  } else {
+    //self->${member.name} = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
-  {
+  if (!(value->IsNull())) {
     _${member.type}* obj = Nan::ObjectWrap::Unwrap<_${member.type}>(value->ToObject());
     self->instance.${member.name} = ${isReference ? "&" : ""}obj->instance;
+  } else {
+    ${deinitialize}
   }`;
-      }
-      else if (member.isBitmaskType) {
-        return `
-  self->instance.${member.name} = static_cast<${member.rawType}>(value->Uint32Value());`;
       }
       console.warn(`Cannot handle member ${member.rawType} in source-setter!`);
       return retUnknown(member);
@@ -302,9 +324,6 @@ function processSourceSetter(member) {
 function processSourceMemberReflection(member) {
   let {rawType} = member;
   if (member.isBaseType) rawType = member.baseType;
-  if (member.isEnumType) {
-    return ``; // v8::Number
-  }
   // string of chars
   if (member.isStaticArray) {
     if (member.type === "char") {
@@ -331,7 +350,6 @@ function processSourceMemberReflection(member) {
   if (
     member.isStructType ||
     member.isHandleType ||
-    member.isBitmaskType ||
     member.isBaseType ||
     rawType === "float"
   ) {
@@ -367,13 +385,13 @@ function processSourceMemberReflection(member) {
   return ``;
 };
 
-function processSourceIncludes(input) {
+function processSourceIncludes(struct) {
   let out = ``;
   let includes = [];
-  input.children.map(child => {
+  struct.children.map(child => {
     if (child.isStructType) {
       globalIncludes.push({
-        name: input.name,
+        name: struct.name,
         include: child.type
       });
     }
@@ -386,7 +404,7 @@ function processSourceIncludes(input) {
   return out;
 };
 
-function processSourceMemberInitializer(member) {
+function processSourceMemberInitializer(struct, member) {
   /*if (member.dereferenceCount > 0) {
     return `
   instance.${member.name} = nullptr;`;
@@ -398,9 +416,9 @@ function processSourceMemberInitializer(member) {
   return "";
 };
 
-function processSourceMemberAccessor(input, member) {
+function processSourceMemberAccessor(struct, member) {
   let {name} = member;
-  if (isStructReturnedOnly(input)) {
+  if (isStructReturnedOnly(struct)) {
     return `
   SetPrototypeAccessor(proto, Nan::New("${name}").ToLocalChecked(), Get${name}, nullptr, ctor);`;
   } else {
@@ -422,18 +440,18 @@ function ignoreableMember(member) {
   );
 };
 
-function isStructReturnedOnly(input) {
-  return input.returnedonly;
+function isStructReturnedOnly(struct) {
+  return struct.returnedonly;
 };
 
-export default function(astReference, input) {
+export default function(astReference, struct) {
   ast = astReference;
   let {
     name,
     children
-  } = input;
+  } = struct;
   let vars = {
-    input,
+    struct,
     struct_name: name,
     members: children,
     isStructReturnedOnly,

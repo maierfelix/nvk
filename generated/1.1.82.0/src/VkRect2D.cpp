@@ -40,35 +40,51 @@ NAN_METHOD(_VkRect2D::New) {
 // offset
 NAN_GETTER(_VkRect2D::Getoffset) {
   _VkRect2D *self = Nan::ObjectWrap::Unwrap<_VkRect2D>(info.This());
-  v8::Local<v8::Object> obj = Nan::New(self->offset);
-  info.GetReturnValue().Set(obj);
+  if (self->offset.IsEmpty()) {
+    info.GetReturnValue().SetNull();
+  } else {
+    v8::Local<v8::Object> obj = Nan::New(self->offset);
+    info.GetReturnValue().Set(obj);
+  }
 }NAN_SETTER(_VkRect2D::Setoffset) {
   _VkRect2D *self = Nan::ObjectWrap::Unwrap<_VkRect2D>(info.This());
   // js
-  {
+  if (!(value->IsNull())) {
     Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
     self->offset = obj;
+  } else {
+    //self->offset = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
-  {
+  if (!(value->IsNull())) {
     _VkOffset2D* obj = Nan::ObjectWrap::Unwrap<_VkOffset2D>(value->ToObject());
     self->instance.offset = obj->instance;
+  } else {
+    memset(&self->instance.offset, 0, sizeof(VkOffset2D));
   }
 }// extent
 NAN_GETTER(_VkRect2D::Getextent) {
   _VkRect2D *self = Nan::ObjectWrap::Unwrap<_VkRect2D>(info.This());
-  v8::Local<v8::Object> obj = Nan::New(self->extent);
-  info.GetReturnValue().Set(obj);
+  if (self->extent.IsEmpty()) {
+    info.GetReturnValue().SetNull();
+  } else {
+    v8::Local<v8::Object> obj = Nan::New(self->extent);
+    info.GetReturnValue().Set(obj);
+  }
 }NAN_SETTER(_VkRect2D::Setextent) {
   _VkRect2D *self = Nan::ObjectWrap::Unwrap<_VkRect2D>(info.This());
   // js
-  {
+  if (!(value->IsNull())) {
     Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
     self->extent = obj;
+  } else {
+    //self->extent = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
-  {
+  if (!(value->IsNull())) {
     _VkExtent2D* obj = Nan::ObjectWrap::Unwrap<_VkExtent2D>(value->ToObject());
     self->instance.extent = obj->instance;
+  } else {
+    memset(&self->instance.extent, 0, sizeof(VkExtent2D));
   }
 }

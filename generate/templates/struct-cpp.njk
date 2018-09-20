@@ -1,5 +1,5 @@
 #include "utils.h"
-{{- processSourceIncludes(input) | safe }}
+{{- processSourceIncludes(struct) | safe }}
 #include "{{ struct_name }}.h"
 
 Nan::Persistent<v8::FunctionTemplate> _{{ struct_name }}::constructor;
@@ -7,7 +7,7 @@ Nan::Persistent<v8::FunctionTemplate> _{{ struct_name }}::constructor;
 _{{ struct_name }}::_{{ struct_name }}() {
   {%- for member in members -%}
   {%- if ignoreableMember(member) != true -%}
-  {{- processSourceMemberInitializer(member) | safe -}}
+  {{- processSourceMemberInitializer(struct, member) | safe -}}
   {%- endif -%}
   {% endfor %}
 }
@@ -27,7 +27,7 @@ void _{{ struct_name }}::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE targe
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   {% for member in members -%}
   {%- if ignoreableMember(member) != true -%}
-  {{- processSourceMemberAccessor(input, member) | safe -}}
+  {{- processSourceMemberAccessor(struct, member) | safe -}}
   {% endif -%}
   {% endfor %}
   Nan::Set(target, Nan::New("{{ struct_name }}").ToLocalChecked(), ctor->GetFunction());
@@ -44,12 +44,12 @@ NAN_METHOD(_{{ struct_name }}::New) {
 // {{ member.name }}
 NAN_GETTER(_{{ struct_name }}::Get{{ member.name }}) {
   _{{ struct_name }} *self = Nan::ObjectWrap::Unwrap<_{{ struct_name }}>(info.This());
-  {{- processSourceGetter(member) | safe }}
+  {{- processSourceGetter(struct, member) | safe }}
 }
-{%- if isStructReturnedOnly(input) != true -%}
+{%- if isStructReturnedOnly(struct) != true -%}
 NAN_SETTER(_{{ struct_name }}::Set{{ member.name }}) {
   _{{ struct_name }} *self = Nan::ObjectWrap::Unwrap<_{{ struct_name }}>(info.This());
-  {{- processSourceSetter(member) | safe }}
+  {{- processSourceSetter(struct, member) | safe }}
 }
 {%- endif -%}
 {%- endif -%}
