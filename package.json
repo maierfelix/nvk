@@ -1,5 +1,6 @@
 {
   "name": "node-vulkan",
+  "main": "index.mjs",
   "version": "0.0.1",
   "config": {
     "GEN_OUT_DIR": "./generated",

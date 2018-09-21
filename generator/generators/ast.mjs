@@ -70,8 +70,9 @@ function parseElement(el) {
   switch (el.name) {
     case "enums":
       return parseEnumElement(el);
-    case "type":
+    case "type": {
       return parseStructElement(el);
+    }
     case "commands":
       return parseCommandElement(el);
     case "extensions":
@@ -392,6 +393,7 @@ function parseTypeElement(child) {
   // note: manual type overwrite!
   if (isBaseType) {
     out.rawType = out.rawType.replace(out.type, basetypes[type]);
+    out.baseType = out.type;
     out.type = basetypes[type];
     type = out.type;
   }
@@ -422,7 +424,7 @@ function parseTypeElement(child) {
     out.isBoolean = true;
   }
   // just a number
-  if (isNumber(rawType)) out.isNumber = true;
+  if (isNumber(out.rawType)) out.isNumber = true;
   // a numeric array
   if (out.isArray && isNumber(type)) out.isNumericArray = true;
   return out;
@@ -463,13 +465,23 @@ export default function(xmlInput) {
     findXMLElements(obj, { category: "bitmask" }, results);
     results.map((res, i) => {
       let attr = res.attributes;
-      if (!attr.hasOwnProperty("requires")) return;
-      res.elements.map(el => {
-        if (el.name === "name") {
-          bitmasks[el.elements[0].text] = attr.requires;
-          bitmasks[attr.requires] = el.elements[0].text;
+      if (attr.hasOwnProperty("requires")) {
+        res.elements.map(el => {
+          if (el.name === "name") {
+            bitmasks[el.elements[0].text] = attr.requires;
+            bitmasks[attr.requires] = el.elements[0].text;
+          }
+        });
+      // future reserved
+      } else {
+        if (res.elements) {
+          res.elements.map(el => {
+            if (el.name === "name") {
+              bitmasks[el.elements[0].text] = el.elements[0].text;
+            }
+          });
         }
-      });
+      }
     });
   }
   // basetype definitions

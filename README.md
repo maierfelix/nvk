@@ -65,3 +65,4 @@ Copy the root's build.bat into the given generated binding folder and run it
  - [x] Enum generation (100%)
  - [ ] Function generation (~80%)
  - [ ] Data mutation reflection (~85%)
+ - [ ] Deallocation (~0%)

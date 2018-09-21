@@ -19,6 +19,25 @@
 #include "enums.h"
 #include "window.h"
 
+void createV8ArrayBufferFromMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+  if (!(info[0]->IsBigInt())) Nan::ThrowError("First argument must be a BigInt!");
+  if (!(info[1]->IsNumber())) Nan::ThrowError("Second argument must be a number!");
+
+  v8::Local<v8::BigInt> arg0 = v8::Local<v8::BigInt>::Cast(info[0]);
+
+  int64_t addr = arg0->Int64Value();
+  int32_t size = info[1]->Int32Value();
+
+  v8::Local<v8::ArrayBuffer> arr = v8::ArrayBuffer::New(
+    v8::Isolate::GetCurrent(),
+    reinterpret_cast<void *>(addr),
+    size,
+    v8::ArrayBufferCreationMode::kExternalized 
+  );
+  info.GetReturnValue().Set(arr);
+
+};
+
 void _VK_MAKE_VERSION(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   uint32_t major = info[0]->Uint32Value();
   uint32_t minor = info[1]->Uint32Value();
@@ -46,9 +65,14 @@ NAN_MODULE_INIT(InitModule) {
   VulkanWindow::Initialize(target);
   // manual initializers
   target->Set(
+    Nan::New("createV8ArrayBufferFromMemory").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(createV8ArrayBufferFromMemory)->GetFunction()
+  );
+  target->Set(
     Nan::New("getVulkanEnumerations").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(getVulkanEnumerations)->GetFunction()
   );
+  // vulkan stubs
   target->Set(
     Nan::New("VK_MAKE_VERSION").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_VK_MAKE_VERSION)->GetFunction()
@@ -156,6 +180,8 @@ NAN_MODULE_INIT(InitModule) {
   _VkImageViewCreateInfo::Initialize(target);
   _VkImageMemoryBarrier::Initialize(target);
   _VkBufferCreateInfo::Initialize(target);
+  _VkMemoryRequirements::Initialize(target);
+  _VkMemoryAllocateInfo::Initialize(target);
   _VkMemoryHeap::Initialize(target);
   _VkMemoryType::Initialize(target);
   _VkPhysicalDeviceMemoryProperties::Initialize(target);
@@ -213,8 +239,32 @@ NAN_MODULE_INIT(InitModule) {
     Nan::New<v8::FunctionTemplate>(_vkQueueSubmit)->GetFunction()
   );
   target->Set(
+    Nan::New("vkAllocateMemory").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkAllocateMemory)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkMapMemory").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkMapMemory)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkUnmapMemory").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkUnmapMemory)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkGetBufferMemoryRequirements").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkGetBufferMemoryRequirements)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkBindBufferMemory").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkBindBufferMemory)->GetFunction()
+  );
+  target->Set(
     Nan::New("vkCreateSemaphore").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkCreateSemaphore)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkCreateBuffer").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkCreateBuffer)->GetFunction()
   );
   target->Set(
     Nan::New("vkCreateImageView").ToLocalChecked(),
@@ -259,6 +309,10 @@ NAN_MODULE_INIT(InitModule) {
   target->Set(
     Nan::New("vkCmdBindPipeline").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkCmdBindPipeline)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkCmdBindVertexBuffers").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkCmdBindVertexBuffers)->GetFunction()
   );
   target->Set(
     Nan::New("vkCmdDraw").ToLocalChecked(),

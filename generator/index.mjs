@@ -2,6 +2,7 @@ import fs from "fs";
 
 import pkg from "../package.json";
 
+import patchAST from "./generators/ast-patch";
 import generateAST from "./generators/ast";
 import generateCalls from "./generators/calls";
 import generateEnums from "./generators/enums";
@@ -194,7 +195,9 @@ let structWhiteList = [
   "VkSubmitInfo",
   "VkPipelineStageFlags",
   "VkSubpassDependency",
-  "VkPresentInfoKHR"
+  "VkPresentInfoKHR",
+  "VkMemoryRequirements",
+  "VkMemoryAllocateInfo"
 ];
 
 let callsWhiteList = [
@@ -230,7 +233,14 @@ let callsWhiteList = [
   "vkCreateSemaphore",
   "vkAcquireNextImageKHR",
   "vkQueueSubmit",
-  "vkQueuePresentKHR"
+  "vkQueuePresentKHR",
+  "vkCreateBuffer",
+  "vkGetBufferMemoryRequirements",
+  "vkAllocateMemory",
+  "vkBindBufferMemory",
+  "vkMapMemory",
+  "vkUnmapMemory",
+  "vkCmdBindVertexBuffers"
 ];
 
 console.log(`Generating using ${argsVersion}.xml`);
@@ -239,6 +249,7 @@ console.log(`Generating using ${argsVersion}.xml`);
 {
   console.log(`Generating AST..`);
   ast = generateAST(xmlInput);
+  patchAST(ast);
   let str = JSON.stringify(ast, null, 2);
   writeAddonFile(`${generatePath}/ast.json`, str, "utf-8");
 }

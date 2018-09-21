@@ -47,6 +47,8 @@
 "./src/VkInstanceCreateInfo.cpp",
 "./src/VkQueueFamilyProperties.cpp",
 "./src/VkPhysicalDeviceMemoryProperties.cpp",
+"./src/VkMemoryAllocateInfo.cpp",
+"./src/VkMemoryRequirements.cpp",
 "./src/VkMemoryType.cpp",
 "./src/VkMemoryHeap.cpp",
 "./src/VkBufferCreateInfo.cpp",

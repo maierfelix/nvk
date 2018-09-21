@@ -98,6 +98,8 @@
 #include "VkImageViewCreateInfo.h"
 #include "VkImageMemoryBarrier.h"
 #include "VkBufferCreateInfo.h"
+#include "VkMemoryRequirements.h"
+#include "VkMemoryAllocateInfo.h"
 #include "VkMemoryHeap.h"
 #include "VkMemoryType.h"
 #include "VkPhysicalDeviceMemoryProperties.h"

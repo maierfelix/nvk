@@ -74,8 +74,7 @@ function processHeaderGetter(struct, member) {
   if (
     member.isStructType ||
     member.isHandleType ||
-    member.isBaseType ||
-    rawType === "float"
+    member.isBaseType
   ) {
     if (member.isStructType || member.isHandleType || member.dereferenceCount > 0) {
       return `
@@ -94,12 +93,20 @@ function processHeaderGetter(struct, member) {
       return `
     Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> ${member.name};
     static NAN_GETTER(Get${member.name});`;
+    case "float *":
+    case "int32_t *":
+    case "uint8_t *":
+    case "uint32_t *":
+    case "uint64_t *":
+      return `
+    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> ${member.name};
+    static NAN_GETTER(Get${member.name});`;
     case "const char * const*":
+    case "const float *":
     case "const int32_t *":
     case "const uint8_t *":
     case "const uint32_t *":
     case "const uint64_t *":
-    case "const float *":
       return `
     Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> ${member.name};
     static NAN_GETTER(Get${member.name});`;
@@ -171,9 +178,15 @@ function processSourceGetter(struct, member) {
     v8::Local<v8::String> str = Nan::New(self->${member.name});
     info.GetReturnValue().Set(str);
   }`;
+    case "float *":
+    case "int32_t *":
+    case "uint8_t *":
+    case "uint32_t *":
+    case "uint64_t *":
     case "const char * const*":
     case "const float *":
     case "const int32_t *":
+    case "const uint8_t *":
     case "const uint32_t *":
     case "const uint64_t *":
       return `
@@ -277,6 +290,14 @@ function processSourceSetter(struct, member) {
   } else {
     self->instance.${member.name} = nullptr;
   }`;
+    case "float *":
+    case "int32_t *":
+    case "uint8_t *":
+    case "uint32_t *":
+    case "uint64_t *":
+      return `
+  ${genPersistentV8Array(member)}
+  ${getTypedV8Array(member)}`;
     case "const float *":
     case "const int32_t *":
     case "const uint32_t *":
@@ -350,8 +371,7 @@ function processSourceMemberReflection(member) {
   if (
     member.isStructType ||
     member.isHandleType ||
-    member.isBaseType ||
-    rawType === "float"
+    member.isBaseType
   ) {
     if (member.isStructType || member.isHandleType || member.dereferenceCount > 0) {
       return ``; // v8::Array of _Objects

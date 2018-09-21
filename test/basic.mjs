@@ -1,13 +1,106 @@
 import fs from "fs";
-import addon from "../generated/1.1.82.0/build/Release/addon.node";
+import vk from "../index";
+
+Object.assign(global, vk);
+
+let vertices = new Float32Array([
+   0.0, -0.5,
+   0.5,  0.5,
+  -0.5,  0.5 
+]);
+let vertexBuffer = new VkBuffer();
+let vertexBufferMemory = new VkDeviceMemory();
+
+let posVertexBindingDescr = new VkVertexInputBindingDescription();
+posVertexBindingDescr.binding = 0;
+posVertexBindingDescr.stride = 2 * vertices.BYTES_PER_ELEMENT;
+posVertexBindingDescr.inputRate = VK_VERTEX_INPUT_RATE_VERTEX;
+
+let posVertexAttrDescr = new VkVertexInputAttributeDescription();
+posVertexAttrDescr.location = 0;
+posVertexAttrDescr.binding = 0;
+posVertexAttrDescr.format = VK_FORMAT_R32G32_SFLOAT;
+posVertexAttrDescr.offset = 0;
+
+function ASSERT_VK_RESULT(result) {
+  if (result !== VK_SUCCESS) throw new Error(`Vulkan assertion failed!`);
+};
+
+function getShaderFile(path) {
+  return new Uint8Array(fs.readFileSync(path, null));
+};
+
+function createShaderModule(shaderSrc, shaderModule) {
+  let shaderModuleInfo = new VkShaderModuleCreateInfo();
+  shaderModuleInfo.sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO;
+  shaderModuleInfo.pCode = shaderSrc;
+  shaderModuleInfo.codeSize = shaderSrc.byteLength;
+  result = vkCreateShaderModule(device, shaderModuleInfo, null, shaderModule);
+  ASSERT_VK_RESULT(result);
+  return shaderModule;
+};
+
+function getMemoryTypeIndex(typeFilter, propertyFlag) {
+  let memoryProperties = new VkPhysicalDeviceMemoryProperties();
+  vkGetPhysicalDeviceMemoryProperties(physicalDevice, memoryProperties);
+  for (let ii = 0; ii < memoryProperties.memoryTypeCount; ++ii) {
+    if (
+      (typeFilter & (1 << ii)) &&
+      (memoryProperties.memoryTypes[ii].propertyFlags & propertyFlag) === propertyFlag
+    ) {
+      return ii;
+    }
+  };
+  return -1;
+};
+
+function createVertexBuffer(buffer, bufferMemory, byteLength) {
+  let bufferInfo = new VkBufferCreateInfo();
+  bufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
+  bufferInfo.size = byteLength;
+  bufferInfo.usage = VK_BUFFER_USAGE_VERTEX_BUFFER_BIT;
+  bufferInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
+  bufferInfo.queueFamilyIndexCount = 0;
+  bufferInfo.pQueueFamilyIndices = null;
+  result = vkCreateBuffer(device, bufferInfo, null, buffer);
+  ASSERT_VK_RESULT(result);
+
+  let memoryRequirements = new VkMemoryRequirements();
+  vkGetBufferMemoryRequirements(device, buffer, memoryRequirements);
+
+  let propertyFlag = (
+    VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT |
+    VK_MEMORY_PROPERTY_HOST_COHERENT_BIT
+  );
+  let memAllocInfo = new VkMemoryAllocateInfo();
+  memAllocInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
+  memAllocInfo.allocationSize = memoryRequirements.size;
+  memAllocInfo.memoryTypeIndex = getMemoryTypeIndex(memoryRequirements.memoryTypeBits, propertyFlag);
+
+  result = vkAllocateMemory(device, memAllocInfo, null, bufferMemory);
+  ASSERT_VK_RESULT(result);
+
+  vkBindBufferMemory(device, buffer, bufferMemory, 0);
+
+  let dataPtr = { $: 0n }; // BigInt, be careful!
+
+  result = vkMapMemory(device, bufferMemory, 0, bufferInfo.size, 0, dataPtr);
+  ASSERT_VK_RESULT(result);
+
+  let verticesBuffer = createV8ArrayBufferFromMemory(dataPtr.$, bufferInfo.size);
+  let verticesView = new Float32Array(verticesBuffer);
+  for (let ii = 0; ii < vertices.length; ++ii) {
+    verticesView[ii] = vertices[ii];
+  };
+  vkUnmapMemory(device, bufferMemory);
+
+};
+
+const vertSrc = getShaderFile("./test/basic-vert.spv");
+const fragSrc = getShaderFile("./test/basic-frag.spv");
 
 const WIN_WIDTH = 800;
 const WIN_HEIGHT = 600;
-
-const enums = addon.getVulkanEnumerations();
-
-Object.assign(global, addon);
-Object.assign(global, enums);
 
 let result = null;
 
@@ -23,39 +116,12 @@ let queue = new VkQueue();
 let semaphoreImageAvailable = new VkSemaphore();
 let semaphoreRenderingAvailable = new VkSemaphore();
 
-function getShaderFile(path) {
-  return new Uint8Array(fs.readFileSync(path, null));
-};
-
-function createShaderModule(shaderSrc, shaderModule) {
-  let shaderModuleInfo = new VkShaderModuleCreateInfo();
-  shaderModuleInfo.sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO;
-  shaderModuleInfo.pCode = shaderSrc;
-  shaderModuleInfo.codeSize = shaderSrc.byteLength;
-  if ((result = vkCreateShaderModule(device, shaderModuleInfo, null, shaderModule)) !== VK_SUCCESS) {
-    console.error(`Failed to create shader module!`);
-  } else {
-    console.log(`Created shader module!`);
-  }
-  return shaderModule;
-};
-
-const vertSrc = getShaderFile("./test/basic-vert.spv");
-const fragSrc = getShaderFile("./test/basic-frag.spv");
-
 let amountOfLayers = { $: 0 };
 vkEnumerateInstanceLayerProperties(amountOfLayers, null);
 let layers = [...Array(amountOfLayers.$)].map(() => new VkLayerProperties());
 vkEnumerateInstanceLayerProperties(amountOfLayers, layers);
-console.log(`${amountOfLayers.$} layers available!`);
-
-layers.map(layer => {
-  console.log(layer.description, "|", layer.layerName);
-});
 
 let win = new VulkanWindow(WIN_WIDTH, WIN_HEIGHT);
-
-console.log(win);
 
 // app info
 let appInfo = new VkApplicationInfo();
@@ -65,7 +131,6 @@ appInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
 appInfo.pEngineName = "No Engine";
 appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
 appInfo.apiVersion = VK_API_VERSION_1_0;
-console.log("App info:", appInfo);
 
 // create info
 let createInfo = new VkInstanceCreateInfo();
@@ -73,7 +138,6 @@ createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
 createInfo.pApplicationInfo = appInfo;
 
 let instanceExtensions = win.getRequiredInstanceExtensions();
-console.log("Instance extensions:", instanceExtensions);
 createInfo.enabledExtensionCount = instanceExtensions.length;
 createInfo.ppEnabledExtensionNames = instanceExtensions;
 createInfo.enabledLayerCount = 0;
@@ -86,41 +150,28 @@ let validationLayers = [
 createInfo.enabledLayerCount = validationLayers.length;
 createInfo.ppEnabledLayerNames = validationLayers;
 
-console.log(appInfo);
-console.log(createInfo);
+result = vkCreateInstance(createInfo, null, instance);
+ASSERT_VK_RESULT(result);
 
-if ((result = vkCreateInstance(createInfo, null, instance)) !== VK_SUCCESS) {
-  console.error("Error: Instance creation failed!", result);
-} else {
-  console.log("Created instance!");
-}
-
-if ((result = win.createSurface(instance, null, surface)) !== VK_SUCCESS) {
-  console.error("Error: Surface creation failed!", result);
-} else {
-  console.log("Created surface!");
-}
+result = win.createSurface(instance, null, surface);
+ASSERT_VK_RESULT(result);
 
 let deviceCount = { $:0 };
 vkEnumeratePhysicalDevices(instance, deviceCount, null);
 if (deviceCount.$ <= 0) console.error("Error: No render devices available!");
-console.log("Physical device count:", deviceCount.$);
 
 let devices = [...Array(deviceCount.$)].map(() => new VkPhysicalDevice());
 result = vkEnumeratePhysicalDevices(instance, deviceCount, devices);
-if (result !== VK_SUCCESS) console.error("Error: Physical device enumeration failed!");
+ASSERT_VK_RESULT(result);
 
 // auto pick first found device
 let physicalDevice = devices[0];
-console.log("Using physical device:", physicalDevice);
 
 let deviceFeatures = new VkPhysicalDeviceFeatures();
 vkGetPhysicalDeviceFeatures(physicalDevice, deviceFeatures);
-console.log("Physical device features:", deviceFeatures);
 
 let deviceProperties = new VkPhysicalDeviceProperties();
 vkGetPhysicalDeviceProperties(physicalDevice, deviceProperties);
-console.log("Physical device properties:", deviceProperties);
 
 console.log(`Using device: ${deviceProperties.deviceName}`);
 
@@ -129,7 +180,6 @@ vkGetPhysicalDeviceMemoryProperties(physicalDevice, deviceMemoryProperties);
 
 let queueFamilyCount = { $: 0 };
 vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, queueFamilyCount, null);
-console.log("Queue family count:", queueFamilyCount.$);
 
 let queueFamilies = [...Array(queueFamilyCount.$)].map(() => new VkQueueFamilyProperties());
 vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, queueFamilyCount, queueFamilies);
@@ -146,19 +196,16 @@ vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, queueFamilyCount, queue
 
 let surfaceCapabilities = new VkSurfaceCapabilitiesKHR();
 vkGetPhysicalDeviceSurfaceCapabilitiesKHR(physicalDevice, surface, surfaceCapabilities);
-console.log("Surface capabilities:", surfaceCapabilities);
 
 let surfaceFormatCount = { $: 0 };
 vkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surface, surfaceFormatCount, null);
 let surfaceFormats = [...Array(surfaceFormatCount.$)].map(() => new VkSurfaceFormatKHR());
 vkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surface, surfaceFormatCount, surfaceFormats);
-console.log(surfaceFormats);
 
 let presentModeCount = { $: 0 };
 vkGetPhysicalDeviceSurfacePresentModesKHR(physicalDevice, surface, presentModeCount, null);
 let presentModes = [...Array(presentModeCount.$)].map(() => 0);
 vkGetPhysicalDeviceSurfacePresentModesKHR(physicalDevice, surface, presentModeCount, presentModes);
-console.log(presentModes);
 
 let deviceQueueInfo = new VkDeviceQueueCreateInfo();
 deviceQueueInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
@@ -178,21 +225,14 @@ deviceInfo.enabledExtensionCount = deviceExtensions.length;
 deviceInfo.ppEnabledExtensionNames = deviceExtensions;
 deviceInfo.pEnabledFeatures = new VkPhysicalDeviceFeatures();
 
-if ((result = vkCreateDevice(physicalDevice, deviceInfo, null, device)) !== VK_SUCCESS) {
-  console.error("Error: Failed to create logical device!");
-} else {
-  console.log("Created logical device!");
-}
+result = vkCreateDevice(physicalDevice, deviceInfo, null, device);
+ASSERT_VK_RESULT(result);
 
 vkGetDeviceQueue(device, 0, 0, queue);
 
 let surfaceSupport = { $: false };
 vkGetPhysicalDeviceSurfaceSupportKHR(physicalDevice, 0, surface, surfaceSupport);
-if (!surfaceSupport) {
-  console.error(`No surface creation support!`);
-} else {
-  console.log("Surface creation supported!");
-}
+if (!surfaceSupport) console.error(`No surface creation support!`);
 
 let imageExtent = new VkExtent2D();
 imageExtent.width = WIN_WIDTH;
@@ -215,22 +255,15 @@ swapchainInfo.presentMode = VK_PRESENT_MODE_FIFO_KHR;
 swapchainInfo.clipped = VK_TRUE;
 swapchainInfo.oldSwapchain = null;
 
-if ((result = vkCreateSwapchainKHR(device, swapchainInfo, null, swapchain))) {
-  console.error(`Swapchain creation failed!`);
-} else {
-  console.log(`Created swapchain!`);
-}
+result = vkCreateSwapchainKHR(device, swapchainInfo, null, swapchain);
+ASSERT_VK_RESULT(result);
 
 let amountOfImagesInSwapchain = { $: 0 };
 vkGetSwapchainImagesKHR(device, swapchain, amountOfImagesInSwapchain, null);
 let swapchainImages = [...Array(amountOfImagesInSwapchain.$)].map(() => new VkImage());
-if ((result = vkGetSwapchainImagesKHR(device, swapchain, amountOfImagesInSwapchain, swapchainImages)) !== VK_SUCCESS) {
-  console.log("Error creating swapchain images!");
-} else {
-  console.log("Created swapchain images!");
-}
 
-//win.test(device, swapchain, swapchainImages);
+result = vkGetSwapchainImagesKHR(device, swapchain, amountOfImagesInSwapchain, swapchainImages);
+ASSERT_VK_RESULT(result);
 
 let imageViews = [...Array(amountOfImagesInSwapchain.$)].map(() => new VkImageView());
 for (let ii = 0; ii < amountOfImagesInSwapchain.$; ++ii) {
@@ -252,11 +285,9 @@ for (let ii = 0; ii < amountOfImagesInSwapchain.$; ++ii) {
   imageViewInfo.format = VK_FORMAT_B8G8R8A8_UNORM;
   imageViewInfo.components = components;
   imageViewInfo.subresourceRange = subresourceRange;
-  if ((result = vkCreateImageView(device, imageViewInfo, null, imageViews[ii])) !== VK_SUCCESS) {
-    console.error(`Failed to create image views!`);
-  } else {
-    console.log(`Created image view ${ii} successfully!`);
-  }
+
+  result = vkCreateImageView(device, imageViewInfo, null, imageViews[ii])
+  ASSERT_VK_RESULT(result);
 };
 
 let vertShaderModule = createShaderModule(vertSrc, new VkShaderModule());
@@ -268,7 +299,6 @@ shaderStageInfoVert.stage = VK_SHADER_STAGE_VERTEX_BIT;
 shaderStageInfoVert.module = vertShaderModule;
 shaderStageInfoVert.pName = "main";
 shaderStageInfoVert.pSpecializationInfo = null;
-console.log("Shader stage vert:", shaderStageInfoVert);
 
 let shaderStageInfoFrag = new VkPipelineShaderStageCreateInfo();
 shaderStageInfoFrag.sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
@@ -276,23 +306,20 @@ shaderStageInfoFrag.stage = VK_SHADER_STAGE_FRAGMENT_BIT;
 shaderStageInfoFrag.module = fragShaderModule;
 shaderStageInfoFrag.pName = "main";
 shaderStageInfoFrag.pSpecializationInfo = null;
-console.log("Shader stage frag:", shaderStageInfoFrag);
 
 let shaderStages = [shaderStageInfoVert, shaderStageInfoFrag];
 
 let vertexInputInfo = new VkPipelineVertexInputStateCreateInfo();
 vertexInputInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
-vertexInputInfo.vertexBindingDescriptionCount = 0;
-vertexInputInfo.pVertexBindingDescriptions = null;
-vertexInputInfo.vertexAttributeDescriptionCount = 0;
-vertexInputInfo.pVertexAttributeDescriptions = null;
-console.log("Vertex input info:", vertexInputInfo);
+vertexInputInfo.vertexBindingDescriptionCount = 1;
+vertexInputInfo.pVertexBindingDescriptions = [posVertexBindingDescr];
+vertexInputInfo.vertexAttributeDescriptionCount = 1;
+vertexInputInfo.pVertexAttributeDescriptions = [posVertexAttrDescr];
 
 let inputAssemblyStateInfo = new VkPipelineInputAssemblyStateCreateInfo();
 inputAssemblyStateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
 inputAssemblyStateInfo.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;
 inputAssemblyStateInfo.primitiveRestartEnable = false;
-console.log("Input assembly state:", inputAssemblyStateInfo);
 
 let viewport = new VkViewport();
 viewport.x = 0;
@@ -301,7 +328,6 @@ viewport.width = WIN_WIDTH;
 viewport.height = WIN_HEIGHT;
 viewport.minDepth = 0.0;
 viewport.maxDepth = 1.0;
-console.log("Viewport:", viewport);
 
 let scissorOffset = new VkOffset2D();
 scissorOffset.x = 0;
@@ -312,7 +338,6 @@ scissorExtent.height = WIN_HEIGHT;
 let scissor = new VkRect2D();
 scissor.offset = scissorOffset;
 scissor.extent = scissorExtent;
-console.log("Scissor:", scissor);
 
 let viewportStateInfo = new VkPipelineViewportStateCreateInfo();
 viewportStateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;
@@ -320,7 +345,6 @@ viewportStateInfo.viewportCount = 1;
 viewportStateInfo.pViewports = [viewport];
 viewportStateInfo.scissorCount = 1;
 viewportStateInfo.pScissors = [scissor];
-console.log("Viewport state info:", viewportStateInfo);
 
 let rasterizationInfo = new VkPipelineRasterizationStateCreateInfo();
 rasterizationInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO;
@@ -334,7 +358,6 @@ rasterizationInfo.depthBiasConstantFactor = 0.0;
 rasterizationInfo.depthBiasClamp = 0.0;
 rasterizationInfo.depthBiasSlopeFactor = 0.0;
 rasterizationInfo.lineWidth = 1.0;
-console.log("Rasterization info:", rasterizationInfo);
 
 let multisampleInfo = new VkPipelineMultisampleStateCreateInfo();
 multisampleInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO;
@@ -343,7 +366,6 @@ multisampleInfo.minSampleShading = false;
 multisampleInfo.pSampleMask = null;
 multisampleInfo.alphaToCoverageEnable = false;
 multisampleInfo.alphaToOneEnable = false;
-console.log("Multisample info:", multisampleInfo);
 
 let colorBlendAttachment = new VkPipelineColorBlendAttachmentState();
 colorBlendAttachment.blendEnable = true;
@@ -359,7 +381,6 @@ colorBlendAttachment.colorWriteMask = (
   VK_COLOR_COMPONENT_B_BIT |
   VK_COLOR_COMPONENT_A_BIT
 );
-console.log("Color blend attachment:", colorBlendAttachment);
 
 let colorBlendInfo = new VkPipelineColorBlendStateCreateInfo();
 colorBlendInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO;
@@ -368,18 +389,14 @@ colorBlendInfo.logicOp = VK_LOGIC_OP_NO_OP;
 colorBlendInfo.attachmentCount = 1;
 colorBlendInfo.pAttachments = [colorBlendAttachment];
 colorBlendInfo.blendConstants = [0.0, 0.0, 0.0, 0.0];
-console.log("Color blend info:", colorBlendInfo);
 
 let pipelineLayoutInfo = new VkPipelineLayoutCreateInfo();
 pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
 pipelineLayoutInfo.setLayoutCount = 0;
 pipelineLayoutInfo.pushConstantRangeCount = 0;
 
-if ((result = vkCreatePipelineLayout(device, pipelineLayoutInfo, null, pipelineLayout)) !== VK_SUCCESS) {
-  console.error(`Failed to create pipeline layout!`);
-} else {
-  console.log("Created pipeline layout!");
-}
+result = vkCreatePipelineLayout(device, pipelineLayoutInfo, null, pipelineLayout);
+ASSERT_VK_RESULT(result);
 
 let attachmentDescription = new VkAttachmentDescription();
 attachmentDescription.flags = 0;
@@ -391,12 +408,10 @@ attachmentDescription.stencilLoadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE;
 attachmentDescription.stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
 attachmentDescription.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
 attachmentDescription.finalLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR;
-console.log("Attachment description:", attachmentDescription);
 
 let attachmentReference = new VkAttachmentReference();
 attachmentReference.attachment = 0;
 attachmentReference.layout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
-console.log("Attachment reference:", attachmentReference);
 
 let subpassDescription = new VkSubpassDescription();
 subpassDescription.pipelineBindPoint = VK_PIPELINE_BIND_POINT_GRAPHICS;
@@ -408,7 +423,6 @@ subpassDescription.pResolveAttachments = null;
 subpassDescription.pDepthStencilAttachment = null;
 subpassDescription.preserveAttachmentCount = 0;
 subpassDescription.pPreserveAttachments = null;
-console.log("Subpass description:", subpassDescription);
 
 let subpassDependency = new VkSubpassDependency();
 subpassDependency.srcSubpass = VK_SUBPASS_EXTERNAL;
@@ -430,13 +444,9 @@ renderPassInfo.subpassCount = 1;
 renderPassInfo.pSubpasses = [subpassDescription];
 renderPassInfo.dependencyCount = 1;
 renderPassInfo.pDependencies = [subpassDependency];
-console.log("Renderpass info:", renderPassInfo);
 
-if ((result = vkCreateRenderPass(device, renderPassInfo, null, renderPass)) !== VK_SUCCESS) {
-  console.error(`Failed to create render pass!`);
-} else {
-  console.log("Created render pass!");
-}
+result = vkCreateRenderPass(device, renderPassInfo, null, renderPass);
+ASSERT_VK_RESULT(result);
 
 let graphicsPipelineInfo = new VkGraphicsPipelineCreateInfo();
 graphicsPipelineInfo.sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
@@ -456,13 +466,9 @@ graphicsPipelineInfo.renderPass = renderPass;
 graphicsPipelineInfo.subpass = 0;
 graphicsPipelineInfo.basePipelineHandle = null;
 graphicsPipelineInfo.basePipelineIndex = -1;
-console.log("Graphics pipeline info:", graphicsPipelineInfo);
 
-if ((result = vkCreateGraphicsPipelines(device, null, 1, [graphicsPipelineInfo], null, [pipeline])) !== VK_SUCCESS) {
-  console.log(`Failed to create graphics pipeline!`);
-} else {
-  console.log("Created graphics pipeline!");
-}
+result = vkCreateGraphicsPipelines(device, null, 1, [graphicsPipelineInfo], null, [pipeline]);
+ASSERT_VK_RESULT(result);
 
 let framebuffers = [...Array(amountOfImagesInSwapchain.$)].map(() => new VkFramebuffer());
 for (let ii = 0; ii < amountOfImagesInSwapchain.$; ++ii) {
@@ -474,52 +480,40 @@ for (let ii = 0; ii < amountOfImagesInSwapchain.$; ++ii) {
   framebufferInfo.width = WIN_WIDTH;
   framebufferInfo.height = WIN_HEIGHT;
   framebufferInfo.layers = 1;
-  if ((result = vkCreateFramebuffer(device, framebufferInfo, null, framebuffers[ii])) !== VK_SUCCESS) {
-    console.error(`Failed to create framebuffer ${ii}!`);
-  } else {
-    console.log(`Created framebuffer ${ii}!`);
-  }
+  result = vkCreateFramebuffer(device, framebufferInfo, null, framebuffers[ii]);
+  ASSERT_VK_RESULT(result);
 };
-
-console.log("########");
 
 let cmdPoolInfo = new VkCommandPoolCreateInfo();
 cmdPoolInfo.flags = 0;
 cmdPoolInfo.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
 cmdPoolInfo.queueFamilyIndex = 0;
 
-if ((result = vkCreateCommandPool(device, cmdPoolInfo, null, cmdPool)) !== VK_SUCCESS) {
-  console.error(`Failed to create command pool!`);
-} else {
-  console.log(`Created command pool!`);
-}
+result = vkCreateCommandPool(device, cmdPoolInfo, null, cmdPool);
+ASSERT_VK_RESULT(result);
 
 let cmdBufferAllocInfo = new VkCommandBufferAllocateInfo();
 cmdBufferAllocInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
 cmdBufferAllocInfo.commandPool = cmdPool;
 cmdBufferAllocInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
 cmdBufferAllocInfo.commandBufferCount = amountOfImagesInSwapchain.$;
-console.log("cmdBufferAllocInfo:", cmdBufferAllocInfo);
 
 let cmdBuffers = [...Array(amountOfImagesInSwapchain.$)].map(() => new VkCommandBuffer());
-console.log("cmdBuffers:", cmdBuffers);
 
-if ((result = vkAllocateCommandBuffers(device, cmdBufferAllocInfo, cmdBuffers)) !== VK_SUCCESS) {
-  console.error(`Failed to allocate commandBuffers!`);
-} else {
-  console.log(`Allocated commandBuffers!`);
-}
+result = vkAllocateCommandBuffers(device, cmdBufferAllocInfo, cmdBuffers);
+ASSERT_VK_RESULT(result);
 
 let cmdBufferBeginInfo = new VkCommandBufferBeginInfo();
 cmdBufferBeginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
 cmdBufferBeginInfo.flags = VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT;
 cmdBufferBeginInfo.pInheritanceInfo = null;
-console.log("cmdBufferBeginInfo:", cmdBufferBeginInfo);
+
+createVertexBuffer(vertexBuffer, vertexBufferMemory, vertices.byteLength);
 
 for (let ii = 0; ii < cmdBuffers.length; ++ii) {
   let cmdBuffer = cmdBuffers[ii];
   result = vkBeginCommandBuffer(cmdBuffer, cmdBufferBeginInfo);
-  if (result !== VK_SUCCESS) console.error(`Failed to begin command buffer recording!`, result);
+  ASSERT_VK_RESULT(result);
 
   let offset = new VkOffset2D();
   offset.x = 0;
@@ -540,28 +534,30 @@ for (let ii = 0; ii < cmdBuffers.length; ++ii) {
   renderPassBeginInfo.renderArea = renderArea;
   renderPassBeginInfo.clearValueCount = 1;
   renderPassBeginInfo.pClearValues = [clearValue];
-
   vkCmdBeginRenderPass(cmdBuffer, renderPassBeginInfo, VK_SUBPASS_CONTENTS_INLINE);
+
   vkCmdBindPipeline(cmdBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline);
+
+  vkCmdBindVertexBuffers(cmdBuffer, 0, 1, [vertexBuffer], [0]);
+
   vkCmdDraw(cmdBuffer, 3, 1, 0, 0);
+
   vkCmdEndRenderPass(cmdBuffer);
 
   result = vkEndCommandBuffer(cmdBuffer);
-  if (result !== VK_SUCCESS) console.error(`Failed to end command buffer recording!`);
+  ASSERT_VK_RESULT(result);
 };
-
-console.log(`Finished cmd buffer recordings!`);
 
 let semaphoreInfo = new VkSemaphoreCreateInfo();
 semaphoreInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
 
 result = vkCreateSemaphore(device, semaphoreInfo, null, semaphoreImageAvailable);
-if (result !== VK_SUCCESS) console.error(`Failed to create semaphore semaphoreImageAvailable!`);
+ASSERT_VK_RESULT(result);
 result = vkCreateSemaphore(device, semaphoreInfo, null, semaphoreRenderingAvailable);
-if (result !== VK_SUCCESS) console.error(`Failed to create semaphore semaphoreRenderingAvailable!`);
+ASSERT_VK_RESULT(result);
 
 function drawFrame() {
-  win.pollEvents();
+
   let imageIndex = { $: 0 };
   vkAcquireNextImageKHR(device, swapchain, Number.MAX_SAFE_INTEGER, semaphoreImageAvailable, null, imageIndex);
 
@@ -580,7 +576,7 @@ function drawFrame() {
   submitInfo.pSignalSemaphores = [semaphoreRenderingAvailable];
 
   result = vkQueueSubmit(queue, 1, [submitInfo], null);
-  if (result !== VK_SUCCESS) console.error(`Queue submit failed!`);
+  ASSERT_VK_RESULT(result);
 
   let presentInfo = new VkPresentInfoKHR();
   presentInfo.sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
@@ -592,34 +588,14 @@ function drawFrame() {
   presentInfo.pResults = null;
 
   result = vkQueuePresentKHR(queue, presentInfo);
-  if (result !== VK_SUCCESS) console.error(`Queue present failed!`);
+  ASSERT_VK_RESULT(result);
 
 };
 
 drawFrame();
 
-/*
-let ii = 0;
-let presentFamily = 0;
-let graphicsFamily = 0;
-queueFamilies.map(queueFamily => {
-  // set queue family index
-  if (queueFamily.queueCount > 0 && queueFamily.queueFlags & VK_QUEUE_GRAPHICS_BIT) {
-    graphicsFamily = ii++;
-  }
-  let presentSupport = { $: false };
-  vkGetPhysicalDeviceSurfaceSupportKHR(physicalDevice, ii, surface, presentSupport);
-  console.log(presentSupport);
-  // set queue present index
-  if (queueFamily.queueCount > 0 && presentSupport.$) {
-    presentFamily = ii;
-    //console.log("Present support at", ii, presentSupport);
-  }
-  if (graphicsFamily >= 0 && presentFamily >= 0) return;
-});
-console.log(presentFamily, graphicsFamily);
-*/
-
 console.log("end");
 
-setInterval(() => { });
+setInterval(() => {
+  win.pollEvents();
+});

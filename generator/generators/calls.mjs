@@ -87,8 +87,6 @@ function getMemberCopyInstructions(struct) {
   return out;
 };
 
-
-
 function getInputArrayBody(param, index) {
   let {rawType} = param;
   if (param.isBaseType) rawType = param.baseType;
@@ -97,7 +95,7 @@ function getInputArrayBody(param, index) {
   let isReference = param.dereferenceCount > 0;
   if (!isReference) console.warn(`Cannot handle non-reference item in input-array-body!`);
   out += `
-  ${param.enumType || param.type} ${isReference ? "*" : ""}$p${index} = nullptr;\n`;
+  ${param.enumType || param.baseType || param.type} ${isReference ? "*" : ""}$p${index} = nullptr;\n`;
   out += `
   if (info[${index}]->IsArray()) {\n`;
   // handle
@@ -135,9 +133,13 @@ function getInputArrayBody(param, index) {
     ${param.enumRawType} arr${index} = new ${param.enumType}[array->Length()];
     $p${index} = arr${index};`;
   }
+  // numbers
+  else if (param.isNumericArray && isConstant && isReference) {
+    out += `
+    $p${index} = createArrayOfV8Numbers<${param.baseType}>(info[${index}]);`;
+  }
   else {
     console.warn(`Cannot handle param ${rawType} in input-array-body!`);
-    console.log(param);
   }
   out += `
   }\n`;
@@ -196,9 +198,13 @@ function getCallBodyBefore(call) {
     $p${index} = static_cast<${param.type}>(obj${index}->Get(Nan::New("$").ToLocalChecked())->NumberValue());
   }`;
         }
+      case "void **":
+        return `
+  v8::Local<v8::Object> obj${index} = info[${index}]->ToObject();
+  void *$p${index};`;
       case "void *":
       case "const void *":
-        console.log(`Void pointer param ${rawType}`);
+        console.log(`Cannot handle void pointer param ${rawType}`);
         return ``;
       default: {
         // array of structs or handles
@@ -230,7 +236,6 @@ function getCallBodyBefore(call) {
   }`;
         }
         console.warn(`Cannot handle param ${rawType} in call-body-before!`);
-        console.log(param);
         return ``;
       } break;
     };
@@ -260,7 +265,7 @@ function getCallBodyInner(call) {
     ) out += `    *$p${index}${addComma}`;
     else if (
       param.dereferenceCount > 0 &&
-      !(param.isStructType || param.isHandleType || param.enumType)
+      !(param.isStructType || param.isHandleType || param.enumType || param.isNumericArray)
     ) out += `    &$p${index}${addComma}`;
     else {
       out += `    $p${index}${addComma}`;
@@ -272,13 +277,12 @@ function getCallBodyInner(call) {
 /**
  * Reads back copied content
  */
-function getCallBodyAfter(call) {
-  let {params} = call;
-  // handle raw numbers and booleans
+function getCallBodyAfter(params) {
   let out = [];
-  // handle complex params
   params.map((param, pIndex) => {
-    if (param.isConstant) return;
+    let isReference = param.dereferenceCount > 0;
+    let isConstant = param.isConstant;
+    if (isConstant) return;
     // array of structs
     if (param.isArray && param.isStructType) {
       let struct = getStructByStructName(param.type);
@@ -295,9 +299,9 @@ function getCallBodyAfter(call) {
       ${memberCopyInstructions}
     };
   }`);
-    // passed in parameter is a struct which gets modified
+    // passed in parameter is a struct which gets filled by vulkan
     // and which we need to back-reflect to v8 manually
-    } else if (param.isStructType && param.dereferenceCount > 0) {
+    } else if (param.isStructType && isReference) {
       let instr = getMutableStructReflectInstructions(param.type, pIndex, `obj${pIndex}->`);
       out.push(instr);
     }
@@ -344,6 +348,18 @@ function getCallBodyAfter(call) {
     else if (param.isHandleType) {
       // no reflection needed
     }
+    else if (param.rawType === "void **") {
+      /*out.push(`
+  v8::Local<v8::ArrayBuffer> arr = v8::ArrayBuffer::New(
+    v8::Isolate::GetCurrent(),
+    $p${pIndex},
+    static_cast<size_t>($p3)
+  );
+  obj${pIndex}->Set(Nan::New("$").ToLocalChecked(), arr);`);*/
+      out.push(`
+  v8::Local<v8::BigInt> ptr${pIndex} = v8::BigInt::New(v8::Isolate::GetCurrent(), (int64_t)$p${pIndex});
+  obj${pIndex}->Set(Nan::New("$").ToLocalChecked(), ptr${pIndex});`);
+    }
     else {
       // array of numbers or bools
       switch (param.rawType) {
@@ -373,7 +389,7 @@ function getCallBody(call) {
   let vari = ``;
   let before = getCallBodyBefore(call);
   let inner = getCallBodyInner(call);
-  let outer = getCallBodyAfter(call);
+  let outer = getCallBodyAfter(call.params);
   out += before;
   if (call.rawType !== "void") {
     vari = `${call.type} out = `;
@@ -392,7 +408,7 @@ ${inner}
  */
 function getMutableStructReflectInstructions(name, pIndex, basePath, out = []) {
   let struct = getStructByStructName(name);
-  //console.log("#####", struct.name, "#####", basePath);
+  // go through each struct meber and manually back-reflect it
   struct.children.map((member, mIndex) => {
     // these can be ignored
     if (
@@ -404,7 +420,7 @@ function getMutableStructReflectInstructions(name, pIndex, basePath, out = []) {
       member.enumType
     ) return;
     // raw string
-    if (member.isString) {
+    if (member.isString && member.isStaticArray) {
       out.push(`
   {
     // back reflect string
@@ -412,8 +428,8 @@ function getMutableStructReflectInstructions(name, pIndex, basePath, out = []) {
     ${basePath}${member.name} = Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>>(str${pIndex});
   }`);
     }
-    // static array of numbers
-    else if (member.isStaticArray && member.isNumericArray) {
+    // array of numbers
+    else if (member.isNumericArray) {
       out.push(`
   {
     // back reflect array
@@ -426,7 +442,7 @@ function getMutableStructReflectInstructions(name, pIndex, basePath, out = []) {
   }`);
     }
     // raw struct
-    else if (!member.isArray && member.isStructType) {
+    else if (member.isStructType && !member.isArray) {
       out.push(`
   {
     v8::Local<v8::Function> ctor = Nan::GetFunction(Nan::New(_${member.type}::constructor)).ToLocalChecked();
@@ -438,23 +454,26 @@ function getMutableStructReflectInstructions(name, pIndex, basePath, out = []) {
   }
       `);
     }
-    // static array of structs
-    else if (member.isStaticArray && member.isStructType) {
-      console.log(`Cannot handle static array of ${member.type} structs`);
+    // array of structs
+    else if (member.isStructType && member.isArray) {
+      out.push(`
+  {
+    // back reflect array
+    unsigned int len = obj${pIndex}->instance.${member.dynamicLength};
+    v8::Local<v8::Array> arr = v8::Array::New(v8::Isolate::GetCurrent(), len);
+    // populate array
+    for (unsigned int ii = 0; ii < len; ++ii) {
+      v8::Local<v8::Function> ctor = Nan::GetFunction(Nan::New(_${member.type}::constructor)).ToLocalChecked();
+      v8::Local<v8::Object> inst = Nan::NewInstance(ctor).ToLocalChecked();
+      _${member.type}* unwrapped = Nan::ObjectWrap::Unwrap<_${member.type}>(inst);
+      memcpy(&unwrapped->instance, &obj1->instance.${member.name}[ii], sizeof(${member.type}));
+      arr->Set(ii, inst);
+    };
+    obj${pIndex}->${member.name} = Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>>(arr);
+  }`);
     }
     else {
-      // can be ignored
-      switch (member.type) {
-        case "int":
-        case "float":
-        case "size_t":
-        case "int32_t":
-        case "uint32_t":
-        case "uint64_t":
-          break;
-        default: 
-          console.log(`Error: Cannot handle param member ${member.name} of type ${member.type}`);
-      };
+      console.log(`Error: Cannot handle param member ${member.name} of type ${member.type}`);
     }
   });
   return out.join("");
