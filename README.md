@@ -1,18 +1,18 @@
 # node-vulkan
-This is a Vulkan binding generator for node.js.
+This is a Vulkan API for node.js.
 
 The bindings are machine generated and provide an API to interact from JavaScript with the low-level interface of Vulkan. The API of this project strives to be as close as possible to Vulkan's original API.
 
 **Note**: This is an early experiment, use with *honor*!
+
+## Preview:<br/>
+<img src="https://i.imgur.com/pT76hSl.gif" width="380">
 
 ## Structure:
  - `generator`: code for binding generation
  - `generated`: the generated binding code
  - `lib`: required third party libs
  - `test`: contains a triangle rendering demo using node-vulkan
-
-## Preview:<br/>
-<img src="https://i.imgur.com/P7kgOt9.png" width="380">
 
 ## Requirements:
  - node.js >= v10.9.0

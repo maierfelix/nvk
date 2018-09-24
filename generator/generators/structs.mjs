@@ -53,7 +53,6 @@ function retUnknown(member) {
 function processHeaderGetter(struct, member) {
   let {rawType} = member;
   if (member.isBaseType) rawType = member.baseType;
-  if (member.name === "flags") return "";
   if (member.isStaticArray) {
     // string of chars
     if (member.type === "char") {
@@ -129,7 +128,6 @@ function processHeaderGetter(struct, member) {
 
 function processHeaderSetter(struct, member) {
   let {rawType} = member;
-  if (member.name === "flags") return "";
   return `
     static NAN_SETTER(Set${member.name});`;
 };
@@ -449,7 +447,6 @@ function processSourceMemberAccessor(struct, member) {
 
 function ignoreableMember(member) {
   return (
-    member.name === "flags" ||
     member.name === "pNext" ||
     member.rawType === "void *" ||
     member.rawType === "HWND" ||

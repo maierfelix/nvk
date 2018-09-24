@@ -12,7 +12,9 @@ _{{ struct_name }}::_{{ struct_name }}() {
   {% endfor %}
 }
 
-_{{ struct_name }}::~_{{ struct_name }}() { }
+_{{ struct_name }}::~_{{ struct_name }}() {
+  //printf("{{ struct_name }} deconstructed!!\n");
+}
 
 void _{{ struct_name }}::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   Nan::HandleScope scope;

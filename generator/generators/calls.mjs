@@ -124,7 +124,7 @@ function getInputArrayBody(param, index) {
   // just a struct
   else if (param.isStructType && isConstant) {
     out += `
-    $p${index} = createArrayOfV8Objects<${param.type}, _${param.type}>(info[${index}]);`;
+    $p${index} = copyArrayOfV8Objects<${param.type}, _${param.type}>(info[${index}]);`;
   }
   // enum
   else if (param.enumType) {
@@ -133,10 +133,15 @@ function getInputArrayBody(param, index) {
     ${param.enumRawType} arr${index} = new ${param.enumType}[array->Length()];
     $p${index} = arr${index};`;
   }
+  // basetypes
+  else if (param.isNumericArray && param.baseType && isConstant && isReference) {
+    out += `
+    $p${index} = createArrayOfV8Numbers<${param.baseType}>(info[${index}]);`;
+  }
   // numbers
   else if (param.isNumericArray && isConstant && isReference) {
     out += `
-    $p${index} = createArrayOfV8Numbers<${param.baseType}>(info[${index}]);`;
+    $p${index} = createArrayOfV8Numbers<${param.type}>(info[${index}]);`;
   }
   else {
     console.warn(`Cannot handle param ${rawType} in input-array-body!`);
