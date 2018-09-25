@@ -9,6 +9,7 @@
 Nan::Persistent<v8::FunctionTemplate> _VkImageSubresourceRange::constructor;
 
 _VkImageSubresourceRange::_VkImageSubresourceRange() {
+  
 }
 
 _VkImageSubresourceRange::~_VkImageSubresourceRange() {
@@ -36,9 +37,13 @@ void _VkImageSubresourceRange::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE
 }
 
 NAN_METHOD(_VkImageSubresourceRange::New) {
-  _VkImageSubresourceRange* self = new _VkImageSubresourceRange();
-  self->Wrap(info.Holder());
-  info.GetReturnValue().Set(info.Holder());
+  if (info.IsConstructCall()) {
+    _VkImageSubresourceRange* self = new _VkImageSubresourceRange();
+    self->Wrap(info.Holder());
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkImageSubresourceRange constructor cannot be invoked without 'new'");
+  }
 };
 
 // aspectMask

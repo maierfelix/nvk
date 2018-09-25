@@ -9,6 +9,7 @@
 Nan::Persistent<v8::FunctionTemplate> _VkClearRect::constructor;
 
 _VkClearRect::_VkClearRect() {
+  
 }
 
 _VkClearRect::~_VkClearRect() {
@@ -34,9 +35,13 @@ void _VkClearRect::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
 }
 
 NAN_METHOD(_VkClearRect::New) {
-  _VkClearRect* self = new _VkClearRect();
-  self->Wrap(info.Holder());
-  info.GetReturnValue().Set(info.Holder());
+  if (info.IsConstructCall()) {
+    _VkClearRect* self = new _VkClearRect();
+    self->Wrap(info.Holder());
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkClearRect constructor cannot be invoked without 'new'");
+  }
 };
 
 // rect

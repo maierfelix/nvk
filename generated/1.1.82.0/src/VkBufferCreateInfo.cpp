@@ -9,6 +9,7 @@
 Nan::Persistent<v8::FunctionTemplate> _VkBufferCreateInfo::constructor;
 
 _VkBufferCreateInfo::_VkBufferCreateInfo() {
+  instance.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
 }
 
 _VkBufferCreateInfo::~_VkBufferCreateInfo() {
@@ -38,9 +39,13 @@ void _VkBufferCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE targ
 }
 
 NAN_METHOD(_VkBufferCreateInfo::New) {
-  _VkBufferCreateInfo* self = new _VkBufferCreateInfo();
-  self->Wrap(info.Holder());
-  info.GetReturnValue().Set(info.Holder());
+  if (info.IsConstructCall()) {
+    _VkBufferCreateInfo* self = new _VkBufferCreateInfo();
+    self->Wrap(info.Holder());
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkBufferCreateInfo constructor cannot be invoked without 'new'");
+  }
 };
 
 // sType

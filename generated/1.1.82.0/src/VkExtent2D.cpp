@@ -9,6 +9,7 @@
 Nan::Persistent<v8::FunctionTemplate> _VkExtent2D::constructor;
 
 _VkExtent2D::_VkExtent2D() {
+  
 }
 
 _VkExtent2D::~_VkExtent2D() {
@@ -33,9 +34,13 @@ void _VkExtent2D::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
 }
 
 NAN_METHOD(_VkExtent2D::New) {
-  _VkExtent2D* self = new _VkExtent2D();
-  self->Wrap(info.Holder());
-  info.GetReturnValue().Set(info.Holder());
+  if (info.IsConstructCall()) {
+    _VkExtent2D* self = new _VkExtent2D();
+    self->Wrap(info.Holder());
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkExtent2D constructor cannot be invoked without 'new'");
+  }
 };
 
 // width

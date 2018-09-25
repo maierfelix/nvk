@@ -422,18 +422,6 @@ function processSourceIncludes(struct) {
   return out;
 };
 
-function processSourceMemberInitializer(struct, member) {
-  /*if (member.dereferenceCount > 0) {
-    return `
-  instance.${member.name} = nullptr;`;
-  }
-  else if (member.isStructType || member.isHandleType) {
-    return `
-  ${member.name} = nullptr;`;
-  }*/
-  return "";
-};
-
 function processSourceMemberAccessor(struct, member) {
   let {name} = member;
   if (isStructReturnedOnly(struct)) {
@@ -443,6 +431,33 @@ function processSourceMemberAccessor(struct, member) {
     return `
   SetPrototypeAccessor(proto, Nan::New("${name}").ToLocalChecked(), Get${name}, Set${name}, ctor);`;
   }
+};
+
+function processMemberAutosType(struct) {
+  let sType = null;
+  let filtered = struct.children.filter(member => member.name === "sType");
+  let sTypeMember = null;
+  if (filtered.length) sTypeMember = filtered[0];
+  if (sTypeMember) sType = structNameToStructType(struct.name);
+  if (sType) {
+    return `instance.sType = ${sType};`;
+  }
+  return ``;
+};
+
+function structNameToStructType(name) {
+  let out = ``;
+  let rx = /(([A-Z][a-z]+)|([A-Z][A-Z]+))/gm;
+  let values = [];
+  let match = null;
+  while ((match = rx.exec(name)) !== null) {
+    if (match[0] === `Vk`) out += `VK_STRUCTURE_TYPE_`;
+    else {
+      values.push(match[0].toUpperCase());
+    }
+  };
+  out += values.join(`_`);
+  return out;
 };
 
 function ignoreableMember(member) {
@@ -478,9 +493,9 @@ export default function(astReference, struct) {
     processHeaderGetter,
     processHeaderSetter,
     processSourceIncludes,
+    processMemberAutosType,
     processSourceMemberAccessor,
-    processSourceMemberReflection,
-    processSourceMemberInitializer
+    processSourceMemberReflection
   };
   let out = {
     header: null,

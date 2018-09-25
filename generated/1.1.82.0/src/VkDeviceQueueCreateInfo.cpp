@@ -9,6 +9,7 @@
 Nan::Persistent<v8::FunctionTemplate> _VkDeviceQueueCreateInfo::constructor;
 
 _VkDeviceQueueCreateInfo::_VkDeviceQueueCreateInfo() {
+  instance.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
 }
 
 _VkDeviceQueueCreateInfo::~_VkDeviceQueueCreateInfo() {
@@ -36,9 +37,13 @@ void _VkDeviceQueueCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE
 }
 
 NAN_METHOD(_VkDeviceQueueCreateInfo::New) {
-  _VkDeviceQueueCreateInfo* self = new _VkDeviceQueueCreateInfo();
-  self->Wrap(info.Holder());
-  info.GetReturnValue().Set(info.Holder());
+  if (info.IsConstructCall()) {
+    _VkDeviceQueueCreateInfo* self = new _VkDeviceQueueCreateInfo();
+    self->Wrap(info.Holder());
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkDeviceQueueCreateInfo constructor cannot be invoked without 'new'");
+  }
 };
 
 // sType

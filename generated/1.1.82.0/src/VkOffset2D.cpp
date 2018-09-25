@@ -9,6 +9,7 @@
 Nan::Persistent<v8::FunctionTemplate> _VkOffset2D::constructor;
 
 _VkOffset2D::_VkOffset2D() {
+  
 }
 
 _VkOffset2D::~_VkOffset2D() {
@@ -33,9 +34,13 @@ void _VkOffset2D::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
 }
 
 NAN_METHOD(_VkOffset2D::New) {
-  _VkOffset2D* self = new _VkOffset2D();
-  self->Wrap(info.Holder());
-  info.GetReturnValue().Set(info.Holder());
+  if (info.IsConstructCall()) {
+    _VkOffset2D* self = new _VkOffset2D();
+    self->Wrap(info.Holder());
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkOffset2D constructor cannot be invoked without 'new'");
+  }
 };
 
 // x

@@ -273,7 +273,19 @@ let callsWhiteList = [
   "vkBindImageMemory",
   "vkCmdPipelineBarrier",
   "vkCmdCopyBufferToImage",
-  "vkCreateSampler"
+  "vkCreateSampler",
+  "vkDeviceWaitIdle",
+  "vkFreeCommandBuffers",
+  "vkDestroyCommandPool",
+  "vkDestroyPipeline",
+  "vkDestroyRenderPass",
+  "vkDestroyImageView",
+  "vkDestroyPipelineLayout",
+  "vkDestroyShaderModule",
+  "vkDestroySwapchainKHR",
+  "vkDestroyFramebuffer",
+  "vkCmdSetViewport",
+  "vkCmdSetScissor"
 ];
 
 console.log(`Generating using ${argsVersion}.xml`);

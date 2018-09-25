@@ -9,6 +9,7 @@
 Nan::Persistent<v8::FunctionTemplate> _VkDeviceCreateInfo::constructor;
 
 _VkDeviceCreateInfo::_VkDeviceCreateInfo() {
+  instance.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
 }
 
 _VkDeviceCreateInfo::~_VkDeviceCreateInfo() {
@@ -40,9 +41,13 @@ void _VkDeviceCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE targ
 }
 
 NAN_METHOD(_VkDeviceCreateInfo::New) {
-  _VkDeviceCreateInfo* self = new _VkDeviceCreateInfo();
-  self->Wrap(info.Holder());
-  info.GetReturnValue().Set(info.Holder());
+  if (info.IsConstructCall()) {
+    _VkDeviceCreateInfo* self = new _VkDeviceCreateInfo();
+    self->Wrap(info.Holder());
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkDeviceCreateInfo constructor cannot be invoked without 'new'");
+  }
 };
 
 // sType

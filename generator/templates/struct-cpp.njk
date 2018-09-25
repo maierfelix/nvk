@@ -5,11 +5,7 @@
 Nan::Persistent<v8::FunctionTemplate> _{{ struct_name }}::constructor;
 
 _{{ struct_name }}::_{{ struct_name }}() {
-  {%- for member in members -%}
-  {%- if ignoreableMember(member) != true -%}
-  {{- processSourceMemberInitializer(struct, member) | safe -}}
-  {%- endif -%}
-  {% endfor %}
+  {{ processMemberAutosType(struct) | safe }}
 }
 
 _{{ struct_name }}::~_{{ struct_name }}() {
@@ -36,9 +32,13 @@ void _{{ struct_name }}::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE targe
 }
 
 NAN_METHOD(_{{ struct_name }}::New) {
-  _{{ struct_name }}* self = new _{{ struct_name }}();
-  self->Wrap(info.Holder());
-  info.GetReturnValue().Set(info.Holder());
+  if (info.IsConstructCall()) {
+    _{{ struct_name }}* self = new _{{ struct_name }}();
+    self->Wrap(info.Holder());
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("{{ struct_name }} constructor cannot be invoked without 'new'");
+  }
 };
 
 {% for member in members -%}

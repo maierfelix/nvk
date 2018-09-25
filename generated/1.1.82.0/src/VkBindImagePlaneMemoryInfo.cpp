@@ -9,6 +9,7 @@
 Nan::Persistent<v8::FunctionTemplate> _VkBindImagePlaneMemoryInfo::constructor;
 
 _VkBindImagePlaneMemoryInfo::_VkBindImagePlaneMemoryInfo() {
+  instance.sType = VK_STRUCTURE_TYPE_BIND_IMAGE_PLANE_MEMORY_INFO;
 }
 
 _VkBindImagePlaneMemoryInfo::~_VkBindImagePlaneMemoryInfo() {
@@ -33,9 +34,13 @@ void _VkBindImagePlaneMemoryInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_T
 }
 
 NAN_METHOD(_VkBindImagePlaneMemoryInfo::New) {
-  _VkBindImagePlaneMemoryInfo* self = new _VkBindImagePlaneMemoryInfo();
-  self->Wrap(info.Holder());
-  info.GetReturnValue().Set(info.Holder());
+  if (info.IsConstructCall()) {
+    _VkBindImagePlaneMemoryInfo* self = new _VkBindImagePlaneMemoryInfo();
+    self->Wrap(info.Holder());
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkBindImagePlaneMemoryInfo constructor cannot be invoked without 'new'");
+  }
 };
 
 // sType

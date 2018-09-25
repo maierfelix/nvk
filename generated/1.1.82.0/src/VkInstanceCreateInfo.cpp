@@ -9,6 +9,7 @@
 Nan::Persistent<v8::FunctionTemplate> _VkInstanceCreateInfo::constructor;
 
 _VkInstanceCreateInfo::_VkInstanceCreateInfo() {
+  instance.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
 }
 
 _VkInstanceCreateInfo::~_VkInstanceCreateInfo() {
@@ -38,9 +39,13 @@ void _VkInstanceCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE ta
 }
 
 NAN_METHOD(_VkInstanceCreateInfo::New) {
-  _VkInstanceCreateInfo* self = new _VkInstanceCreateInfo();
-  self->Wrap(info.Holder());
-  info.GetReturnValue().Set(info.Holder());
+  if (info.IsConstructCall()) {
+    _VkInstanceCreateInfo* self = new _VkInstanceCreateInfo();
+    self->Wrap(info.Holder());
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkInstanceCreateInfo constructor cannot be invoked without 'new'");
+  }
 };
 
 // sType

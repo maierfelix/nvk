@@ -9,6 +9,7 @@
 Nan::Persistent<v8::FunctionTemplate> _VkImageMemoryBarrier::constructor;
 
 _VkImageMemoryBarrier::_VkImageMemoryBarrier() {
+  instance.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
 }
 
 _VkImageMemoryBarrier::~_VkImageMemoryBarrier() {
@@ -40,9 +41,13 @@ void _VkImageMemoryBarrier::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE ta
 }
 
 NAN_METHOD(_VkImageMemoryBarrier::New) {
-  _VkImageMemoryBarrier* self = new _VkImageMemoryBarrier();
-  self->Wrap(info.Holder());
-  info.GetReturnValue().Set(info.Holder());
+  if (info.IsConstructCall()) {
+    _VkImageMemoryBarrier* self = new _VkImageMemoryBarrier();
+    self->Wrap(info.Holder());
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkImageMemoryBarrier constructor cannot be invoked without 'new'");
+  }
 };
 
 // sType

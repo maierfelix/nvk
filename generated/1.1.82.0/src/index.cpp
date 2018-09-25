@@ -259,6 +259,10 @@ NAN_MODULE_INIT(InitModule) {
     Nan::New<v8::FunctionTemplate>(_vkQueueWaitIdle)->GetFunction()
   );
   target->Set(
+    Nan::New("vkDeviceWaitIdle").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDeviceWaitIdle)->GetFunction()
+  );
+  target->Set(
     Nan::New("vkAllocateMemory").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkAllocateMemory)->GetFunction()
   );
@@ -303,16 +307,32 @@ NAN_MODULE_INIT(InitModule) {
     Nan::New<v8::FunctionTemplate>(_vkCreateImageView)->GetFunction()
   );
   target->Set(
+    Nan::New("vkDestroyImageView").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDestroyImageView)->GetFunction()
+  );
+  target->Set(
     Nan::New("vkCreateShaderModule").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkCreateShaderModule)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkDestroyShaderModule").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDestroyShaderModule)->GetFunction()
   );
   target->Set(
     Nan::New("vkCreateGraphicsPipelines").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkCreateGraphicsPipelines)->GetFunction()
   );
   target->Set(
+    Nan::New("vkDestroyPipeline").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDestroyPipeline)->GetFunction()
+  );
+  target->Set(
     Nan::New("vkCreatePipelineLayout").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkCreatePipelineLayout)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkDestroyPipelineLayout").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDestroyPipelineLayout)->GetFunction()
   );
   target->Set(
     Nan::New("vkCreateSampler").ToLocalChecked(),
@@ -339,16 +359,32 @@ NAN_MODULE_INIT(InitModule) {
     Nan::New<v8::FunctionTemplate>(_vkCreateFramebuffer)->GetFunction()
   );
   target->Set(
+    Nan::New("vkDestroyFramebuffer").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDestroyFramebuffer)->GetFunction()
+  );
+  target->Set(
     Nan::New("vkCreateRenderPass").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkCreateRenderPass)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkDestroyRenderPass").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDestroyRenderPass)->GetFunction()
   );
   target->Set(
     Nan::New("vkCreateCommandPool").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkCreateCommandPool)->GetFunction()
   );
   target->Set(
+    Nan::New("vkDestroyCommandPool").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDestroyCommandPool)->GetFunction()
+  );
+  target->Set(
     Nan::New("vkAllocateCommandBuffers").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkAllocateCommandBuffers)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkFreeCommandBuffers").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkFreeCommandBuffers)->GetFunction()
   );
   target->Set(
     Nan::New("vkBeginCommandBuffer").ToLocalChecked(),
@@ -361,6 +397,14 @@ NAN_MODULE_INIT(InitModule) {
   target->Set(
     Nan::New("vkCmdBindPipeline").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkCmdBindPipeline)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkCmdSetViewport").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkCmdSetViewport)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkCmdSetScissor").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkCmdSetScissor)->GetFunction()
   );
   target->Set(
     Nan::New("vkCmdBindDescriptorSets").ToLocalChecked(),
@@ -421,6 +465,10 @@ NAN_MODULE_INIT(InitModule) {
   target->Set(
     Nan::New("vkCreateSwapchainKHR").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkCreateSwapchainKHR)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkDestroySwapchainKHR").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDestroySwapchainKHR)->GetFunction()
   );
   target->Set(
     Nan::New("vkGetSwapchainImagesKHR").ToLocalChecked(),

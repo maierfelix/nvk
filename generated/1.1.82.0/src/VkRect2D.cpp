@@ -9,6 +9,7 @@
 Nan::Persistent<v8::FunctionTemplate> _VkRect2D::constructor;
 
 _VkRect2D::_VkRect2D() {
+  
 }
 
 _VkRect2D::~_VkRect2D() {
@@ -33,9 +34,13 @@ void _VkRect2D::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
 }
 
 NAN_METHOD(_VkRect2D::New) {
-  _VkRect2D* self = new _VkRect2D();
-  self->Wrap(info.Holder());
-  info.GetReturnValue().Set(info.Holder());
+  if (info.IsConstructCall()) {
+    _VkRect2D* self = new _VkRect2D();
+    self->Wrap(info.Holder());
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkRect2D constructor cannot be invoked without 'new'");
+  }
 };
 
 // offset

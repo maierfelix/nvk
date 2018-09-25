@@ -9,6 +9,7 @@
 Nan::Persistent<v8::FunctionTemplate> _VkPhysicalDeviceFeatures::constructor;
 
 _VkPhysicalDeviceFeatures::_VkPhysicalDeviceFeatures() {
+  
 }
 
 _VkPhysicalDeviceFeatures::~_VkPhysicalDeviceFeatures() {
@@ -86,9 +87,13 @@ void _VkPhysicalDeviceFeatures::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYP
 }
 
 NAN_METHOD(_VkPhysicalDeviceFeatures::New) {
-  _VkPhysicalDeviceFeatures* self = new _VkPhysicalDeviceFeatures();
-  self->Wrap(info.Holder());
-  info.GetReturnValue().Set(info.Holder());
+  if (info.IsConstructCall()) {
+    _VkPhysicalDeviceFeatures* self = new _VkPhysicalDeviceFeatures();
+    self->Wrap(info.Holder());
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkPhysicalDeviceFeatures constructor cannot be invoked without 'new'");
+  }
 };
 
 // robustBufferAccess

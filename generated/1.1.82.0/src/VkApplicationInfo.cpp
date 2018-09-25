@@ -9,6 +9,7 @@
 Nan::Persistent<v8::FunctionTemplate> _VkApplicationInfo::constructor;
 
 _VkApplicationInfo::_VkApplicationInfo() {
+  instance.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
 }
 
 _VkApplicationInfo::~_VkApplicationInfo() {
@@ -37,9 +38,13 @@ void _VkApplicationInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE targe
 }
 
 NAN_METHOD(_VkApplicationInfo::New) {
-  _VkApplicationInfo* self = new _VkApplicationInfo();
-  self->Wrap(info.Holder());
-  info.GetReturnValue().Set(info.Holder());
+  if (info.IsConstructCall()) {
+    _VkApplicationInfo* self = new _VkApplicationInfo();
+    self->Wrap(info.Holder());
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkApplicationInfo constructor cannot be invoked without 'new'");
+  }
 };
 
 // sType
