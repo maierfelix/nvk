@@ -1,5 +1,5 @@
 import fs from "fs";
-import vk from "../index";
+import vk from "../../index";
 
 Object.assign(global, vk);
 
@@ -96,11 +96,8 @@ function createVertexBuffer(buffer, bufferMemory, byteLength) {
 
 };
 
-const vertSrc = getShaderFile("./test/basic-vert.spv");
-const fragSrc = getShaderFile("./test/basic-frag.spv");
-
-const WIN_WIDTH = 800;
-const WIN_HEIGHT = 600;
+const vertSrc = getShaderFile("./shaders/triangle-vert.spv");
+const fragSrc = getShaderFile("./shaders/triangle-frag.spv");
 
 let result = null;
 
@@ -121,7 +118,11 @@ vkEnumerateInstanceLayerProperties(amountOfLayers, null);
 let layers = [...Array(amountOfLayers.$)].map(() => new VkLayerProperties());
 vkEnumerateInstanceLayerProperties(amountOfLayers, layers);
 
-let win = new VulkanWindow(WIN_WIDTH, WIN_HEIGHT);
+let win = new VulkanWindow({
+  width: 640,
+  height: 480,
+  title: "node-vulkan triangle"
+});
 
 // app info
 let appInfo = new VkApplicationInfo();
@@ -235,8 +236,8 @@ vkGetPhysicalDeviceSurfaceSupportKHR(physicalDevice, 0, surface, surfaceSupport)
 if (!surfaceSupport) console.error(`No surface creation support!`);
 
 let imageExtent = new VkExtent2D();
-imageExtent.width = WIN_WIDTH;
-imageExtent.height = WIN_HEIGHT;
+imageExtent.width = win.width;
+imageExtent.height = win.height;
 
 let swapchainInfo = new VkSwapchainCreateInfoKHR();
 swapchainInfo.sType = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR;
@@ -324,8 +325,8 @@ inputAssemblyStateInfo.primitiveRestartEnable = false;
 let viewport = new VkViewport();
 viewport.x = 0;
 viewport.y = 0;
-viewport.width = WIN_WIDTH;
-viewport.height = WIN_HEIGHT;
+viewport.width = win.width;
+viewport.height = win.height;
 viewport.minDepth = 0.0;
 viewport.maxDepth = 1.0;
 
@@ -333,8 +334,8 @@ let scissorOffset = new VkOffset2D();
 scissorOffset.x = 0;
 scissorOffset.y = 0;
 let scissorExtent = new VkExtent2D();
-scissorExtent.width = WIN_WIDTH;
-scissorExtent.height = WIN_HEIGHT;
+scissorExtent.width = win.width;
+scissorExtent.height = win.height;
 let scissor = new VkRect2D();
 scissor.offset = scissorOffset;
 scissor.extent = scissorExtent;
@@ -477,8 +478,8 @@ for (let ii = 0; ii < amountOfImagesInSwapchain.$; ++ii) {
   framebufferInfo.renderPass = renderPass;
   framebufferInfo.attachmentCount = 1;
   framebufferInfo.pAttachments = [imageViews[ii]];
-  framebufferInfo.width = WIN_WIDTH;
-  framebufferInfo.height = WIN_HEIGHT;
+  framebufferInfo.width = win.width;
+  framebufferInfo.height = win.height;
   framebufferInfo.layers = 1;
   result = vkCreateFramebuffer(device, framebufferInfo, null, framebuffers[ii]);
   ASSERT_VK_RESULT(result);
@@ -519,8 +520,8 @@ for (let ii = 0; ii < cmdBuffers.length; ++ii) {
   offset.x = 0;
   offset.y = 0;
   let extent = new VkExtent2D();
-  extent.width = WIN_WIDTH;
-  extent.height = WIN_HEIGHT;
+  extent.width = win.width;
+  extent.height = win.height;
   let renderArea = new VkRect2D();
   renderArea.offset = offset;
   renderArea.extent = extent;
@@ -592,10 +593,9 @@ function drawFrame() {
 
 };
 
-drawFrame();
-
-console.log("end");
-
-setInterval(() => {
+console.log("drawing..");
+(function drawLoop() {
+  if (!win.shouldClose()) setTimeout(drawLoop, 0);
+  drawFrame();
   win.pollEvents();
-});
+})();

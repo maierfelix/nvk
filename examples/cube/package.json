@@ -1,0 +1,9 @@
+{
+  "name": "cube",
+  "version": "0.0.1",
+  "scripts": {},
+  "dependencies": {
+    "gl-matrix": "^2.8.1",
+    "pngjs": "^3.3.3"
+  }
+}

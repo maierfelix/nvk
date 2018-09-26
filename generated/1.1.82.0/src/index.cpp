@@ -21,12 +21,9 @@
 void createV8ArrayBufferFromMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   if (!(info[0]->IsBigInt())) Nan::ThrowError("First argument must be a BigInt!");
   if (!(info[1]->IsNumber())) Nan::ThrowError("Second argument must be a number!");
-
   v8::Local<v8::BigInt> arg0 = v8::Local<v8::BigInt>::Cast(info[0]);
-
   int64_t addr = arg0->Int64Value();
-  int32_t size = info[1]->Int32Value();
-
+  uint32_t size = info[1]->Uint32Value();
   v8::Local<v8::ArrayBuffer> arr = v8::ArrayBuffer::New(
     v8::Isolate::GetCurrent(),
     reinterpret_cast<void *>(addr),
@@ -34,7 +31,6 @@ void createV8ArrayBufferFromMemory(const Nan::FunctionCallbackInfo<v8::Value>& i
     v8::ArrayBufferCreationMode::kExternalized 
   );
   info.GetReturnValue().Set(arr);
-
 };
 
 void _VK_MAKE_VERSION(const Nan::FunctionCallbackInfo<v8::Value>& info) {

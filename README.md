@@ -18,7 +18,8 @@ The bindings are machine generated and provide an API to interact from JavaScrip
  - node.js >= v10.9.0
 
 ## Installation:
- 
+You only have to do these steps, if you want to generate the bindings yourself
+
 ### Windows:
 Make sure you have either Visual Studio >= 15 installed or use
 ````
@@ -27,9 +28,14 @@ npm install --global --production windows-build-tools
 
 Install the Vulkan SDK from [here](https://vulkan.lunarg.com/sdk/home#windows)
 
-Install this tool with
+Clone this repo
 ````
-npm install node-vulkan
+git clone git@github.com:maierfelix/node-vulkan.git
+````
+
+Install dependencies
+````
+npm install
 ````
 
 ## API:
@@ -41,7 +47,7 @@ npm run [script] [flag] [value]
 
 ### Flags:
 ````
- [-version -v] [version]: The vulkan version to generate bindings for
+ [-vkversion] [version]: The vulkan version to generate bindings for
 ````
 
 ## Usage:
@@ -49,15 +55,19 @@ npm run [script] [flag] [value]
 ### Generation:
 You can specify a version to generate bindings for like this:
 ````
-npm run generate -- -v 1.1.82.0
+npm run generate -vkversion=1.1.82.0
 ````
-Make sure that the given specification file can be found in `generate/specifications/{v}.xml`<br/>
-The emitted bindings can then be found in `generated/{v}/`
 
-Vulkan specifications files can be found [here](https://github.com/KhronosGroup/Vulkan-Docs/releases)
+The binding specification file gets downloaded automatically and can be found in `generate/specifications/{vkversion}.xml`<br/>
+The generated bindings can then be found in `generated/{vkversion}/`
 
-### Compilation:
-Copy the root's build.bat into the given generated binding folder and run it
+### Building:
+You can build the generated bindings like this:
+````
+npm run generate -vkversion=1.1.82.0
+````
+
+The compiled bindings can then be found in `generated/{vkversion}/build`
 
 ### TODOs:
  - [ ] Struct generation (~85%)

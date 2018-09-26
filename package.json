@@ -2,12 +2,16 @@
   "name": "node-vulkan",
   "main": "index.mjs",
   "version": "0.0.1",
+  "engines": {
+    "node": ">= 10.9.0"
+  },
   "config": {
     "GEN_OUT_DIR": "./generated",
     "SPEC_DIR": "./generator/specifications",
     "TEMPLATE_DIR": "./generator/templates"
   },
   "scripts": {
+    "build": "node --experimental-modules ./build.mjs",
     "generate": "node --experimental-modules ./generator/index.mjs"
   },
   "devDependencies": {
