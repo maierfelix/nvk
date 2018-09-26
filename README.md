@@ -73,6 +73,6 @@ The compiled bindings can then be found in `generated/{vkversion}/build`
  - [ ] Struct generation (~85%)
  - [x] Handle generation (~100%)
  - [x] Enum generation (100%)
- - [ ] Function generation (~80%)
- - [ ] Data mutation reflection (~85%)
+ - [ ] Function generation (~85%)
  - [ ] Deallocation (~0%)
+ - [ ] Vulkan API fill V8 reflection (~85%)
