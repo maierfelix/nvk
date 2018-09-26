@@ -88,4 +88,4 @@ www
 
 package-lock.json
 
-generated
+generated/*/build
