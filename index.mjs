@@ -1,4 +1,4 @@
-import addon from "./generated/1.1.82.0/build/Release/addon.node";
+import addon from "./generated/1.1.82/build/Release/addon.node";
 
 const enums = addon.getVulkanEnumerations();
 
