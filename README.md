@@ -11,8 +11,8 @@ The bindings are machine generated and provide an API to interact from JavaScrip
 ## Structure:
  - `generator`: code for binding generation
  - `generated`: the generated binding code
+ - `examples`: contains a triangle and cube demo
  - `lib`: required third party libs
- - `test`: contains a triangle rendering demo using node-vulkan
 
 ## Requirements:
  - node.js >= v10.9.0
