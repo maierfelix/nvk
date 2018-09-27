@@ -56,11 +56,12 @@ npm run [script] [flag] [value]
 #### Generation:
 You can specify a version to generate bindings for like this:
 ````
-npm run generate -vkversion=1.1.82.0
+npm run generate -vkversion=1.1.82
 ````
 
-The binding specification file gets downloaded automatically and can be found in `generate/specifications/{vkversion}.xml`<br/>
-The generated bindings can then be found in `generated/{vkversion}/`
+ - Make sure the specified version to generate bindings for can be found [here](https://github.com/KhronosGroup/Vulkan-Docs/releases)
+ - The binding specification file gets auto-downloaded and is stored in `generate/specifications/{vkversion}.xml`<br/>
+ - The generated bindings can then be found in `generated/{vkversion}/`
 
 #### Building:
 You can build the generated bindings like this:
