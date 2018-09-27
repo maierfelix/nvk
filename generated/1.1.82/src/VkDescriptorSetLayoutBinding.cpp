@@ -40,6 +40,36 @@ NAN_METHOD(_VkDescriptorSetLayoutBinding::New) {
   if (info.IsConstructCall()) {
     _VkDescriptorSetLayoutBinding* self = new _VkDescriptorSetLayoutBinding();
     self->Wrap(info.Holder());
+
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::String> sAccess0 = Nan::New("binding").ToLocalChecked();
+      v8::Local<v8::String> sAccess1 = Nan::New("descriptorType").ToLocalChecked();
+      v8::Local<v8::String> sAccess2 = Nan::New("descriptorCount").ToLocalChecked();
+      v8::Local<v8::String> sAccess3 = Nan::New("stageFlags").ToLocalChecked();
+      v8::Local<v8::String> sAccess4 = Nan::New("pImmutableSamplers").ToLocalChecked();
+      if (obj->Has(sAccess0)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess0);
+        info.This()->Set(sAccess0, arg);
+      }
+      if (obj->Has(sAccess1)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess1);
+        info.This()->Set(sAccess1, arg);
+      }
+      if (obj->Has(sAccess2)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess2);
+        info.This()->Set(sAccess2, arg);
+      }
+      if (obj->Has(sAccess3)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess3);
+        info.This()->Set(sAccess3, arg);
+      }
+      if (obj->Has(sAccess4)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess4);
+        info.This()->Set(sAccess4, arg);
+      }
+      }
+
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkDescriptorSetLayoutBinding constructor cannot be invoked without 'new'");

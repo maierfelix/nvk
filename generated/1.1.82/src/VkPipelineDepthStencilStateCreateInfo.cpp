@@ -46,6 +46,66 @@ NAN_METHOD(_VkPipelineDepthStencilStateCreateInfo::New) {
   if (info.IsConstructCall()) {
     _VkPipelineDepthStencilStateCreateInfo* self = new _VkPipelineDepthStencilStateCreateInfo();
     self->Wrap(info.Holder());
+
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+      v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
+      v8::Local<v8::String> sAccess3 = Nan::New("depthTestEnable").ToLocalChecked();
+      v8::Local<v8::String> sAccess4 = Nan::New("depthWriteEnable").ToLocalChecked();
+      v8::Local<v8::String> sAccess5 = Nan::New("depthCompareOp").ToLocalChecked();
+      v8::Local<v8::String> sAccess6 = Nan::New("depthBoundsTestEnable").ToLocalChecked();
+      v8::Local<v8::String> sAccess7 = Nan::New("stencilTestEnable").ToLocalChecked();
+      v8::Local<v8::String> sAccess8 = Nan::New("front").ToLocalChecked();
+      v8::Local<v8::String> sAccess9 = Nan::New("back").ToLocalChecked();
+      v8::Local<v8::String> sAccess10 = Nan::New("minDepthBounds").ToLocalChecked();
+      v8::Local<v8::String> sAccess11 = Nan::New("maxDepthBounds").ToLocalChecked();
+      if (obj->Has(sAccess0)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess0);
+        info.This()->Set(sAccess0, arg);
+      }
+      if (obj->Has(sAccess2)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess2);
+        info.This()->Set(sAccess2, arg);
+      }
+      if (obj->Has(sAccess3)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess3);
+        info.This()->Set(sAccess3, arg);
+      }
+      if (obj->Has(sAccess4)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess4);
+        info.This()->Set(sAccess4, arg);
+      }
+      if (obj->Has(sAccess5)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess5);
+        info.This()->Set(sAccess5, arg);
+      }
+      if (obj->Has(sAccess6)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess6);
+        info.This()->Set(sAccess6, arg);
+      }
+      if (obj->Has(sAccess7)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess7);
+        info.This()->Set(sAccess7, arg);
+      }
+      if (obj->Has(sAccess8)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess8);
+        info.This()->Set(sAccess8, arg);
+      }
+      if (obj->Has(sAccess9)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess9);
+        info.This()->Set(sAccess9, arg);
+      }
+      if (obj->Has(sAccess10)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess10);
+        info.This()->Set(sAccess10, arg);
+      }
+      if (obj->Has(sAccess11)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess11);
+        info.This()->Set(sAccess11, arg);
+      }
+      }
+
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkPipelineDepthStencilStateCreateInfo constructor cannot be invoked without 'new'");

@@ -39,6 +39,31 @@ NAN_METHOD(_VkDescriptorSetLayoutCreateInfo::New) {
   if (info.IsConstructCall()) {
     _VkDescriptorSetLayoutCreateInfo* self = new _VkDescriptorSetLayoutCreateInfo();
     self->Wrap(info.Holder());
+
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+      v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
+      v8::Local<v8::String> sAccess3 = Nan::New("bindingCount").ToLocalChecked();
+      v8::Local<v8::String> sAccess4 = Nan::New("pBindings").ToLocalChecked();
+      if (obj->Has(sAccess0)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess0);
+        info.This()->Set(sAccess0, arg);
+      }
+      if (obj->Has(sAccess2)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess2);
+        info.This()->Set(sAccess2, arg);
+      }
+      if (obj->Has(sAccess3)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess3);
+        info.This()->Set(sAccess3, arg);
+      }
+      if (obj->Has(sAccess4)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess4);
+        info.This()->Set(sAccess4, arg);
+      }
+      }
+
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkDescriptorSetLayoutCreateInfo constructor cannot be invoked without 'new'");

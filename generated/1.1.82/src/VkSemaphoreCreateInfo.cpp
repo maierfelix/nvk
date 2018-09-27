@@ -37,6 +37,21 @@ NAN_METHOD(_VkSemaphoreCreateInfo::New) {
   if (info.IsConstructCall()) {
     _VkSemaphoreCreateInfo* self = new _VkSemaphoreCreateInfo();
     self->Wrap(info.Holder());
+
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+      v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
+      if (obj->Has(sAccess0)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess0);
+        info.This()->Set(sAccess0, arg);
+      }
+      if (obj->Has(sAccess2)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess2);
+        info.This()->Set(sAccess2, arg);
+      }
+      }
+
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkSemaphoreCreateInfo constructor cannot be invoked without 'new'");

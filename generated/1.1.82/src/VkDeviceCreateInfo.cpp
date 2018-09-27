@@ -44,6 +44,56 @@ NAN_METHOD(_VkDeviceCreateInfo::New) {
   if (info.IsConstructCall()) {
     _VkDeviceCreateInfo* self = new _VkDeviceCreateInfo();
     self->Wrap(info.Holder());
+
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+      v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
+      v8::Local<v8::String> sAccess3 = Nan::New("queueCreateInfoCount").ToLocalChecked();
+      v8::Local<v8::String> sAccess4 = Nan::New("pQueueCreateInfos").ToLocalChecked();
+      v8::Local<v8::String> sAccess5 = Nan::New("enabledLayerCount").ToLocalChecked();
+      v8::Local<v8::String> sAccess6 = Nan::New("ppEnabledLayerNames").ToLocalChecked();
+      v8::Local<v8::String> sAccess7 = Nan::New("enabledExtensionCount").ToLocalChecked();
+      v8::Local<v8::String> sAccess8 = Nan::New("ppEnabledExtensionNames").ToLocalChecked();
+      v8::Local<v8::String> sAccess9 = Nan::New("pEnabledFeatures").ToLocalChecked();
+      if (obj->Has(sAccess0)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess0);
+        info.This()->Set(sAccess0, arg);
+      }
+      if (obj->Has(sAccess2)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess2);
+        info.This()->Set(sAccess2, arg);
+      }
+      if (obj->Has(sAccess3)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess3);
+        info.This()->Set(sAccess3, arg);
+      }
+      if (obj->Has(sAccess4)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess4);
+        info.This()->Set(sAccess4, arg);
+      }
+      if (obj->Has(sAccess5)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess5);
+        info.This()->Set(sAccess5, arg);
+      }
+      if (obj->Has(sAccess6)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess6);
+        info.This()->Set(sAccess6, arg);
+      }
+      if (obj->Has(sAccess7)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess7);
+        info.This()->Set(sAccess7, arg);
+      }
+      if (obj->Has(sAccess8)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess8);
+        info.This()->Set(sAccess8, arg);
+      }
+      if (obj->Has(sAccess9)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess9);
+        info.This()->Set(sAccess9, arg);
+      }
+      }
+
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkDeviceCreateInfo constructor cannot be invoked without 'new'");

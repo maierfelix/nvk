@@ -39,6 +39,31 @@ NAN_METHOD(_VkComponentMapping::New) {
   if (info.IsConstructCall()) {
     _VkComponentMapping* self = new _VkComponentMapping();
     self->Wrap(info.Holder());
+
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::String> sAccess0 = Nan::New("r").ToLocalChecked();
+      v8::Local<v8::String> sAccess1 = Nan::New("g").ToLocalChecked();
+      v8::Local<v8::String> sAccess2 = Nan::New("b").ToLocalChecked();
+      v8::Local<v8::String> sAccess3 = Nan::New("a").ToLocalChecked();
+      if (obj->Has(sAccess0)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess0);
+        info.This()->Set(sAccess0, arg);
+      }
+      if (obj->Has(sAccess1)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess1);
+        info.This()->Set(sAccess1, arg);
+      }
+      if (obj->Has(sAccess2)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess2);
+        info.This()->Set(sAccess2, arg);
+      }
+      if (obj->Has(sAccess3)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess3);
+        info.This()->Set(sAccess3, arg);
+      }
+      }
+
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkComponentMapping constructor cannot be invoked without 'new'");

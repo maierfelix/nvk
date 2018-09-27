@@ -38,6 +38,26 @@ NAN_METHOD(_VkVertexInputBindingDescription::New) {
   if (info.IsConstructCall()) {
     _VkVertexInputBindingDescription* self = new _VkVertexInputBindingDescription();
     self->Wrap(info.Holder());
+
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::String> sAccess0 = Nan::New("binding").ToLocalChecked();
+      v8::Local<v8::String> sAccess1 = Nan::New("stride").ToLocalChecked();
+      v8::Local<v8::String> sAccess2 = Nan::New("inputRate").ToLocalChecked();
+      if (obj->Has(sAccess0)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess0);
+        info.This()->Set(sAccess0, arg);
+      }
+      if (obj->Has(sAccess1)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess1);
+        info.This()->Set(sAccess1, arg);
+      }
+      if (obj->Has(sAccess2)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess2);
+        info.This()->Set(sAccess2, arg);
+      }
+      }
+
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkVertexInputBindingDescription constructor cannot be invoked without 'new'");

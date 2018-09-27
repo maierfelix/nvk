@@ -90,6 +90,286 @@ NAN_METHOD(_VkPhysicalDeviceFeatures::New) {
   if (info.IsConstructCall()) {
     _VkPhysicalDeviceFeatures* self = new _VkPhysicalDeviceFeatures();
     self->Wrap(info.Holder());
+
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::String> sAccess0 = Nan::New("robustBufferAccess").ToLocalChecked();
+      v8::Local<v8::String> sAccess1 = Nan::New("fullDrawIndexUint32").ToLocalChecked();
+      v8::Local<v8::String> sAccess2 = Nan::New("imageCubeArray").ToLocalChecked();
+      v8::Local<v8::String> sAccess3 = Nan::New("independentBlend").ToLocalChecked();
+      v8::Local<v8::String> sAccess4 = Nan::New("geometryShader").ToLocalChecked();
+      v8::Local<v8::String> sAccess5 = Nan::New("tessellationShader").ToLocalChecked();
+      v8::Local<v8::String> sAccess6 = Nan::New("sampleRateShading").ToLocalChecked();
+      v8::Local<v8::String> sAccess7 = Nan::New("dualSrcBlend").ToLocalChecked();
+      v8::Local<v8::String> sAccess8 = Nan::New("logicOp").ToLocalChecked();
+      v8::Local<v8::String> sAccess9 = Nan::New("multiDrawIndirect").ToLocalChecked();
+      v8::Local<v8::String> sAccess10 = Nan::New("drawIndirectFirstInstance").ToLocalChecked();
+      v8::Local<v8::String> sAccess11 = Nan::New("depthClamp").ToLocalChecked();
+      v8::Local<v8::String> sAccess12 = Nan::New("depthBiasClamp").ToLocalChecked();
+      v8::Local<v8::String> sAccess13 = Nan::New("fillModeNonSolid").ToLocalChecked();
+      v8::Local<v8::String> sAccess14 = Nan::New("depthBounds").ToLocalChecked();
+      v8::Local<v8::String> sAccess15 = Nan::New("wideLines").ToLocalChecked();
+      v8::Local<v8::String> sAccess16 = Nan::New("largePoints").ToLocalChecked();
+      v8::Local<v8::String> sAccess17 = Nan::New("alphaToOne").ToLocalChecked();
+      v8::Local<v8::String> sAccess18 = Nan::New("multiViewport").ToLocalChecked();
+      v8::Local<v8::String> sAccess19 = Nan::New("samplerAnisotropy").ToLocalChecked();
+      v8::Local<v8::String> sAccess20 = Nan::New("textureCompressionETC2").ToLocalChecked();
+      v8::Local<v8::String> sAccess21 = Nan::New("textureCompressionASTC_LDR").ToLocalChecked();
+      v8::Local<v8::String> sAccess22 = Nan::New("textureCompressionBC").ToLocalChecked();
+      v8::Local<v8::String> sAccess23 = Nan::New("occlusionQueryPrecise").ToLocalChecked();
+      v8::Local<v8::String> sAccess24 = Nan::New("pipelineStatisticsQuery").ToLocalChecked();
+      v8::Local<v8::String> sAccess25 = Nan::New("vertexPipelineStoresAndAtomics").ToLocalChecked();
+      v8::Local<v8::String> sAccess26 = Nan::New("fragmentStoresAndAtomics").ToLocalChecked();
+      v8::Local<v8::String> sAccess27 = Nan::New("shaderTessellationAndGeometryPointSize").ToLocalChecked();
+      v8::Local<v8::String> sAccess28 = Nan::New("shaderImageGatherExtended").ToLocalChecked();
+      v8::Local<v8::String> sAccess29 = Nan::New("shaderStorageImageExtendedFormats").ToLocalChecked();
+      v8::Local<v8::String> sAccess30 = Nan::New("shaderStorageImageMultisample").ToLocalChecked();
+      v8::Local<v8::String> sAccess31 = Nan::New("shaderStorageImageReadWithoutFormat").ToLocalChecked();
+      v8::Local<v8::String> sAccess32 = Nan::New("shaderStorageImageWriteWithoutFormat").ToLocalChecked();
+      v8::Local<v8::String> sAccess33 = Nan::New("shaderUniformBufferArrayDynamicIndexing").ToLocalChecked();
+      v8::Local<v8::String> sAccess34 = Nan::New("shaderSampledImageArrayDynamicIndexing").ToLocalChecked();
+      v8::Local<v8::String> sAccess35 = Nan::New("shaderStorageBufferArrayDynamicIndexing").ToLocalChecked();
+      v8::Local<v8::String> sAccess36 = Nan::New("shaderStorageImageArrayDynamicIndexing").ToLocalChecked();
+      v8::Local<v8::String> sAccess37 = Nan::New("shaderClipDistance").ToLocalChecked();
+      v8::Local<v8::String> sAccess38 = Nan::New("shaderCullDistance").ToLocalChecked();
+      v8::Local<v8::String> sAccess39 = Nan::New("shaderFloat64").ToLocalChecked();
+      v8::Local<v8::String> sAccess40 = Nan::New("shaderInt64").ToLocalChecked();
+      v8::Local<v8::String> sAccess41 = Nan::New("shaderInt16").ToLocalChecked();
+      v8::Local<v8::String> sAccess42 = Nan::New("shaderResourceResidency").ToLocalChecked();
+      v8::Local<v8::String> sAccess43 = Nan::New("shaderResourceMinLod").ToLocalChecked();
+      v8::Local<v8::String> sAccess44 = Nan::New("sparseBinding").ToLocalChecked();
+      v8::Local<v8::String> sAccess45 = Nan::New("sparseResidencyBuffer").ToLocalChecked();
+      v8::Local<v8::String> sAccess46 = Nan::New("sparseResidencyImage2D").ToLocalChecked();
+      v8::Local<v8::String> sAccess47 = Nan::New("sparseResidencyImage3D").ToLocalChecked();
+      v8::Local<v8::String> sAccess48 = Nan::New("sparseResidency2Samples").ToLocalChecked();
+      v8::Local<v8::String> sAccess49 = Nan::New("sparseResidency4Samples").ToLocalChecked();
+      v8::Local<v8::String> sAccess50 = Nan::New("sparseResidency8Samples").ToLocalChecked();
+      v8::Local<v8::String> sAccess51 = Nan::New("sparseResidency16Samples").ToLocalChecked();
+      v8::Local<v8::String> sAccess52 = Nan::New("sparseResidencyAliased").ToLocalChecked();
+      v8::Local<v8::String> sAccess53 = Nan::New("variableMultisampleRate").ToLocalChecked();
+      v8::Local<v8::String> sAccess54 = Nan::New("inheritedQueries").ToLocalChecked();
+      if (obj->Has(sAccess0)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess0);
+        info.This()->Set(sAccess0, arg);
+      }
+      if (obj->Has(sAccess1)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess1);
+        info.This()->Set(sAccess1, arg);
+      }
+      if (obj->Has(sAccess2)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess2);
+        info.This()->Set(sAccess2, arg);
+      }
+      if (obj->Has(sAccess3)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess3);
+        info.This()->Set(sAccess3, arg);
+      }
+      if (obj->Has(sAccess4)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess4);
+        info.This()->Set(sAccess4, arg);
+      }
+      if (obj->Has(sAccess5)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess5);
+        info.This()->Set(sAccess5, arg);
+      }
+      if (obj->Has(sAccess6)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess6);
+        info.This()->Set(sAccess6, arg);
+      }
+      if (obj->Has(sAccess7)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess7);
+        info.This()->Set(sAccess7, arg);
+      }
+      if (obj->Has(sAccess8)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess8);
+        info.This()->Set(sAccess8, arg);
+      }
+      if (obj->Has(sAccess9)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess9);
+        info.This()->Set(sAccess9, arg);
+      }
+      if (obj->Has(sAccess10)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess10);
+        info.This()->Set(sAccess10, arg);
+      }
+      if (obj->Has(sAccess11)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess11);
+        info.This()->Set(sAccess11, arg);
+      }
+      if (obj->Has(sAccess12)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess12);
+        info.This()->Set(sAccess12, arg);
+      }
+      if (obj->Has(sAccess13)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess13);
+        info.This()->Set(sAccess13, arg);
+      }
+      if (obj->Has(sAccess14)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess14);
+        info.This()->Set(sAccess14, arg);
+      }
+      if (obj->Has(sAccess15)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess15);
+        info.This()->Set(sAccess15, arg);
+      }
+      if (obj->Has(sAccess16)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess16);
+        info.This()->Set(sAccess16, arg);
+      }
+      if (obj->Has(sAccess17)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess17);
+        info.This()->Set(sAccess17, arg);
+      }
+      if (obj->Has(sAccess18)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess18);
+        info.This()->Set(sAccess18, arg);
+      }
+      if (obj->Has(sAccess19)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess19);
+        info.This()->Set(sAccess19, arg);
+      }
+      if (obj->Has(sAccess20)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess20);
+        info.This()->Set(sAccess20, arg);
+      }
+      if (obj->Has(sAccess21)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess21);
+        info.This()->Set(sAccess21, arg);
+      }
+      if (obj->Has(sAccess22)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess22);
+        info.This()->Set(sAccess22, arg);
+      }
+      if (obj->Has(sAccess23)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess23);
+        info.This()->Set(sAccess23, arg);
+      }
+      if (obj->Has(sAccess24)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess24);
+        info.This()->Set(sAccess24, arg);
+      }
+      if (obj->Has(sAccess25)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess25);
+        info.This()->Set(sAccess25, arg);
+      }
+      if (obj->Has(sAccess26)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess26);
+        info.This()->Set(sAccess26, arg);
+      }
+      if (obj->Has(sAccess27)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess27);
+        info.This()->Set(sAccess27, arg);
+      }
+      if (obj->Has(sAccess28)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess28);
+        info.This()->Set(sAccess28, arg);
+      }
+      if (obj->Has(sAccess29)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess29);
+        info.This()->Set(sAccess29, arg);
+      }
+      if (obj->Has(sAccess30)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess30);
+        info.This()->Set(sAccess30, arg);
+      }
+      if (obj->Has(sAccess31)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess31);
+        info.This()->Set(sAccess31, arg);
+      }
+      if (obj->Has(sAccess32)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess32);
+        info.This()->Set(sAccess32, arg);
+      }
+      if (obj->Has(sAccess33)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess33);
+        info.This()->Set(sAccess33, arg);
+      }
+      if (obj->Has(sAccess34)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess34);
+        info.This()->Set(sAccess34, arg);
+      }
+      if (obj->Has(sAccess35)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess35);
+        info.This()->Set(sAccess35, arg);
+      }
+      if (obj->Has(sAccess36)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess36);
+        info.This()->Set(sAccess36, arg);
+      }
+      if (obj->Has(sAccess37)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess37);
+        info.This()->Set(sAccess37, arg);
+      }
+      if (obj->Has(sAccess38)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess38);
+        info.This()->Set(sAccess38, arg);
+      }
+      if (obj->Has(sAccess39)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess39);
+        info.This()->Set(sAccess39, arg);
+      }
+      if (obj->Has(sAccess40)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess40);
+        info.This()->Set(sAccess40, arg);
+      }
+      if (obj->Has(sAccess41)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess41);
+        info.This()->Set(sAccess41, arg);
+      }
+      if (obj->Has(sAccess42)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess42);
+        info.This()->Set(sAccess42, arg);
+      }
+      if (obj->Has(sAccess43)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess43);
+        info.This()->Set(sAccess43, arg);
+      }
+      if (obj->Has(sAccess44)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess44);
+        info.This()->Set(sAccess44, arg);
+      }
+      if (obj->Has(sAccess45)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess45);
+        info.This()->Set(sAccess45, arg);
+      }
+      if (obj->Has(sAccess46)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess46);
+        info.This()->Set(sAccess46, arg);
+      }
+      if (obj->Has(sAccess47)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess47);
+        info.This()->Set(sAccess47, arg);
+      }
+      if (obj->Has(sAccess48)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess48);
+        info.This()->Set(sAccess48, arg);
+      }
+      if (obj->Has(sAccess49)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess49);
+        info.This()->Set(sAccess49, arg);
+      }
+      if (obj->Has(sAccess50)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess50);
+        info.This()->Set(sAccess50, arg);
+      }
+      if (obj->Has(sAccess51)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess51);
+        info.This()->Set(sAccess51, arg);
+      }
+      if (obj->Has(sAccess52)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess52);
+        info.This()->Set(sAccess52, arg);
+      }
+      if (obj->Has(sAccess53)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess53);
+        info.This()->Set(sAccess53, arg);
+      }
+      if (obj->Has(sAccess54)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess54);
+        info.This()->Set(sAccess54, arg);
+      }
+      }
+
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkPhysicalDeviceFeatures constructor cannot be invoked without 'new'");

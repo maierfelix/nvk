@@ -41,6 +41,41 @@ NAN_METHOD(_VkRenderPassBeginInfo::New) {
   if (info.IsConstructCall()) {
     _VkRenderPassBeginInfo* self = new _VkRenderPassBeginInfo();
     self->Wrap(info.Holder());
+
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+      v8::Local<v8::String> sAccess2 = Nan::New("renderPass").ToLocalChecked();
+      v8::Local<v8::String> sAccess3 = Nan::New("framebuffer").ToLocalChecked();
+      v8::Local<v8::String> sAccess4 = Nan::New("renderArea").ToLocalChecked();
+      v8::Local<v8::String> sAccess5 = Nan::New("clearValueCount").ToLocalChecked();
+      v8::Local<v8::String> sAccess6 = Nan::New("pClearValues").ToLocalChecked();
+      if (obj->Has(sAccess0)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess0);
+        info.This()->Set(sAccess0, arg);
+      }
+      if (obj->Has(sAccess2)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess2);
+        info.This()->Set(sAccess2, arg);
+      }
+      if (obj->Has(sAccess3)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess3);
+        info.This()->Set(sAccess3, arg);
+      }
+      if (obj->Has(sAccess4)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess4);
+        info.This()->Set(sAccess4, arg);
+      }
+      if (obj->Has(sAccess5)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess5);
+        info.This()->Set(sAccess5, arg);
+      }
+      if (obj->Has(sAccess6)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess6);
+        info.This()->Set(sAccess6, arg);
+      }
+      }
+
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkRenderPassBeginInfo constructor cannot be invoked without 'new'");

@@ -37,6 +37,21 @@ NAN_METHOD(_VkRect2D::New) {
   if (info.IsConstructCall()) {
     _VkRect2D* self = new _VkRect2D();
     self->Wrap(info.Holder());
+
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::String> sAccess0 = Nan::New("offset").ToLocalChecked();
+      v8::Local<v8::String> sAccess1 = Nan::New("extent").ToLocalChecked();
+      if (obj->Has(sAccess0)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess0);
+        info.This()->Set(sAccess0, arg);
+      }
+      if (obj->Has(sAccess1)) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess1);
+        info.This()->Set(sAccess1, arg);
+      }
+      }
+
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkRect2D constructor cannot be invoked without 'new'");

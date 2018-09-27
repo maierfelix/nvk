@@ -35,6 +35,25 @@ NAN_METHOD(_{{ struct_name }}::New) {
   if (info.IsConstructCall()) {
     _{{ struct_name }}* self = new _{{ struct_name }}();
     self->Wrap(info.Holder());
+
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = info[0]->ToObject();
+      {% for member in members %}
+      {%- if ignoreableMember(member) != true -%}
+      v8::Local<v8::String> sAccess{{ loop.index0 }} = Nan::New("{{ member.name }}").ToLocalChecked();
+      {% endif -%}
+      {% endfor -%}
+
+      {% for member in members %}
+      {%- if ignoreableMember(member) != true -%}
+      if (obj->Has(sAccess{{ loop.index0 }})) {
+       v8::Local<v8::Value> arg = obj->Get(sAccess{{ loop.index0 }});
+        info.This()->Set(sAccess{{ loop.index0 }}, arg);
+      }
+      {% endif -%}
+      {% endfor -%}
+    }
+
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("{{ struct_name }} constructor cannot be invoked without 'new'");
