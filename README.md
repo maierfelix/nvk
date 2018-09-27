@@ -73,10 +73,10 @@ The compiled bindings can then be found in `generated/{vkversion}/build`
 
 ## Syntactic Sugar:
 
-The API gives you some sugar to write things quicker, but still gives you the option to write everything explicitly!
+The API gives you some sugar to write things quicker, but still gives you the option to write everything explicitly
 
 ### sType auto-filling
-`sType` members get auto-filled, but you can still explicitly set them
+`sType` members get auto-filled, but you can still set them yourself
 
 ````js
 let appInfo = new VkApplicationInfo();
@@ -84,14 +84,13 @@ appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
 ````
 
 Becomes:
-
 ````js
-let appInfo = new VkApplicationInfo(); // sType got auto-filled 5u
+let appInfo = new VkApplicationInfo(); // sType auto-filled
 ````
 
 ### Object based Structure creation
 
-Instead of writing:
+Instead of:
 ````js
 let offset = new VkOffset2D();
 offset.x = 0;
