@@ -44,18 +44,9 @@ NAN_METHOD(_VkDescriptorBufferInfo::New) {
       v8::Local<v8::String> sAccess0 = Nan::New("buffer").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("offset").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("range").ToLocalChecked();
-      if (obj->Has(sAccess0)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess0);
-        info.This()->Set(sAccess0, arg);
-      }
-      if (obj->Has(sAccess1)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess1);
-        info.This()->Set(sAccess1, arg);
-      }
-      if (obj->Has(sAccess2)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess2);
-        info.This()->Set(sAccess2, arg);
-      }
+      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
+      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
+      if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       
     }
     

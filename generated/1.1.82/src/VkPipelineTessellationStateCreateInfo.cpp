@@ -44,18 +44,9 @@ NAN_METHOD(_VkPipelineTessellationStateCreateInfo::New) {
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
       v8::Local<v8::String> sAccess3 = Nan::New("patchControlPoints").ToLocalChecked();
-      if (obj->Has(sAccess0)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess0);
-        info.This()->Set(sAccess0, arg);
-      }
-      if (obj->Has(sAccess2)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess2);
-        info.This()->Set(sAccess2, arg);
-      }
-      if (obj->Has(sAccess3)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess3);
-        info.This()->Set(sAccess3, arg);
-      }
+      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
+      if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
+      if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
       
     }
     

@@ -50,30 +50,12 @@ NAN_METHOD(_VkViewport::New) {
       v8::Local<v8::String> sAccess3 = Nan::New("height").ToLocalChecked();
       v8::Local<v8::String> sAccess4 = Nan::New("minDepth").ToLocalChecked();
       v8::Local<v8::String> sAccess5 = Nan::New("maxDepth").ToLocalChecked();
-      if (obj->Has(sAccess0)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess0);
-        info.This()->Set(sAccess0, arg);
-      }
-      if (obj->Has(sAccess1)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess1);
-        info.This()->Set(sAccess1, arg);
-      }
-      if (obj->Has(sAccess2)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess2);
-        info.This()->Set(sAccess2, arg);
-      }
-      if (obj->Has(sAccess3)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess3);
-        info.This()->Set(sAccess3, arg);
-      }
-      if (obj->Has(sAccess4)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess4);
-        info.This()->Set(sAccess4, arg);
-      }
-      if (obj->Has(sAccess5)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess5);
-        info.This()->Set(sAccess5, arg);
-      }
+      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
+      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
+      if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
+      if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
+      if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
+      if (obj->Has(sAccess5)) info.This()->Set(sAccess5, obj->Get(sAccess5));
       
     }
     

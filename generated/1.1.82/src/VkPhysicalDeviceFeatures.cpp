@@ -148,226 +148,61 @@ NAN_METHOD(_VkPhysicalDeviceFeatures::New) {
       v8::Local<v8::String> sAccess52 = Nan::New("sparseResidencyAliased").ToLocalChecked();
       v8::Local<v8::String> sAccess53 = Nan::New("variableMultisampleRate").ToLocalChecked();
       v8::Local<v8::String> sAccess54 = Nan::New("inheritedQueries").ToLocalChecked();
-      if (obj->Has(sAccess0)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess0);
-        info.This()->Set(sAccess0, arg);
-      }
-      if (obj->Has(sAccess1)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess1);
-        info.This()->Set(sAccess1, arg);
-      }
-      if (obj->Has(sAccess2)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess2);
-        info.This()->Set(sAccess2, arg);
-      }
-      if (obj->Has(sAccess3)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess3);
-        info.This()->Set(sAccess3, arg);
-      }
-      if (obj->Has(sAccess4)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess4);
-        info.This()->Set(sAccess4, arg);
-      }
-      if (obj->Has(sAccess5)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess5);
-        info.This()->Set(sAccess5, arg);
-      }
-      if (obj->Has(sAccess6)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess6);
-        info.This()->Set(sAccess6, arg);
-      }
-      if (obj->Has(sAccess7)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess7);
-        info.This()->Set(sAccess7, arg);
-      }
-      if (obj->Has(sAccess8)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess8);
-        info.This()->Set(sAccess8, arg);
-      }
-      if (obj->Has(sAccess9)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess9);
-        info.This()->Set(sAccess9, arg);
-      }
-      if (obj->Has(sAccess10)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess10);
-        info.This()->Set(sAccess10, arg);
-      }
-      if (obj->Has(sAccess11)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess11);
-        info.This()->Set(sAccess11, arg);
-      }
-      if (obj->Has(sAccess12)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess12);
-        info.This()->Set(sAccess12, arg);
-      }
-      if (obj->Has(sAccess13)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess13);
-        info.This()->Set(sAccess13, arg);
-      }
-      if (obj->Has(sAccess14)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess14);
-        info.This()->Set(sAccess14, arg);
-      }
-      if (obj->Has(sAccess15)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess15);
-        info.This()->Set(sAccess15, arg);
-      }
-      if (obj->Has(sAccess16)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess16);
-        info.This()->Set(sAccess16, arg);
-      }
-      if (obj->Has(sAccess17)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess17);
-        info.This()->Set(sAccess17, arg);
-      }
-      if (obj->Has(sAccess18)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess18);
-        info.This()->Set(sAccess18, arg);
-      }
-      if (obj->Has(sAccess19)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess19);
-        info.This()->Set(sAccess19, arg);
-      }
-      if (obj->Has(sAccess20)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess20);
-        info.This()->Set(sAccess20, arg);
-      }
-      if (obj->Has(sAccess21)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess21);
-        info.This()->Set(sAccess21, arg);
-      }
-      if (obj->Has(sAccess22)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess22);
-        info.This()->Set(sAccess22, arg);
-      }
-      if (obj->Has(sAccess23)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess23);
-        info.This()->Set(sAccess23, arg);
-      }
-      if (obj->Has(sAccess24)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess24);
-        info.This()->Set(sAccess24, arg);
-      }
-      if (obj->Has(sAccess25)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess25);
-        info.This()->Set(sAccess25, arg);
-      }
-      if (obj->Has(sAccess26)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess26);
-        info.This()->Set(sAccess26, arg);
-      }
-      if (obj->Has(sAccess27)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess27);
-        info.This()->Set(sAccess27, arg);
-      }
-      if (obj->Has(sAccess28)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess28);
-        info.This()->Set(sAccess28, arg);
-      }
-      if (obj->Has(sAccess29)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess29);
-        info.This()->Set(sAccess29, arg);
-      }
-      if (obj->Has(sAccess30)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess30);
-        info.This()->Set(sAccess30, arg);
-      }
-      if (obj->Has(sAccess31)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess31);
-        info.This()->Set(sAccess31, arg);
-      }
-      if (obj->Has(sAccess32)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess32);
-        info.This()->Set(sAccess32, arg);
-      }
-      if (obj->Has(sAccess33)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess33);
-        info.This()->Set(sAccess33, arg);
-      }
-      if (obj->Has(sAccess34)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess34);
-        info.This()->Set(sAccess34, arg);
-      }
-      if (obj->Has(sAccess35)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess35);
-        info.This()->Set(sAccess35, arg);
-      }
-      if (obj->Has(sAccess36)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess36);
-        info.This()->Set(sAccess36, arg);
-      }
-      if (obj->Has(sAccess37)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess37);
-        info.This()->Set(sAccess37, arg);
-      }
-      if (obj->Has(sAccess38)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess38);
-        info.This()->Set(sAccess38, arg);
-      }
-      if (obj->Has(sAccess39)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess39);
-        info.This()->Set(sAccess39, arg);
-      }
-      if (obj->Has(sAccess40)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess40);
-        info.This()->Set(sAccess40, arg);
-      }
-      if (obj->Has(sAccess41)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess41);
-        info.This()->Set(sAccess41, arg);
-      }
-      if (obj->Has(sAccess42)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess42);
-        info.This()->Set(sAccess42, arg);
-      }
-      if (obj->Has(sAccess43)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess43);
-        info.This()->Set(sAccess43, arg);
-      }
-      if (obj->Has(sAccess44)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess44);
-        info.This()->Set(sAccess44, arg);
-      }
-      if (obj->Has(sAccess45)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess45);
-        info.This()->Set(sAccess45, arg);
-      }
-      if (obj->Has(sAccess46)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess46);
-        info.This()->Set(sAccess46, arg);
-      }
-      if (obj->Has(sAccess47)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess47);
-        info.This()->Set(sAccess47, arg);
-      }
-      if (obj->Has(sAccess48)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess48);
-        info.This()->Set(sAccess48, arg);
-      }
-      if (obj->Has(sAccess49)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess49);
-        info.This()->Set(sAccess49, arg);
-      }
-      if (obj->Has(sAccess50)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess50);
-        info.This()->Set(sAccess50, arg);
-      }
-      if (obj->Has(sAccess51)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess51);
-        info.This()->Set(sAccess51, arg);
-      }
-      if (obj->Has(sAccess52)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess52);
-        info.This()->Set(sAccess52, arg);
-      }
-      if (obj->Has(sAccess53)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess53);
-        info.This()->Set(sAccess53, arg);
-      }
-      if (obj->Has(sAccess54)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess54);
-        info.This()->Set(sAccess54, arg);
-      }
+      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
+      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
+      if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
+      if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
+      if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
+      if (obj->Has(sAccess5)) info.This()->Set(sAccess5, obj->Get(sAccess5));
+      if (obj->Has(sAccess6)) info.This()->Set(sAccess6, obj->Get(sAccess6));
+      if (obj->Has(sAccess7)) info.This()->Set(sAccess7, obj->Get(sAccess7));
+      if (obj->Has(sAccess8)) info.This()->Set(sAccess8, obj->Get(sAccess8));
+      if (obj->Has(sAccess9)) info.This()->Set(sAccess9, obj->Get(sAccess9));
+      if (obj->Has(sAccess10)) info.This()->Set(sAccess10, obj->Get(sAccess10));
+      if (obj->Has(sAccess11)) info.This()->Set(sAccess11, obj->Get(sAccess11));
+      if (obj->Has(sAccess12)) info.This()->Set(sAccess12, obj->Get(sAccess12));
+      if (obj->Has(sAccess13)) info.This()->Set(sAccess13, obj->Get(sAccess13));
+      if (obj->Has(sAccess14)) info.This()->Set(sAccess14, obj->Get(sAccess14));
+      if (obj->Has(sAccess15)) info.This()->Set(sAccess15, obj->Get(sAccess15));
+      if (obj->Has(sAccess16)) info.This()->Set(sAccess16, obj->Get(sAccess16));
+      if (obj->Has(sAccess17)) info.This()->Set(sAccess17, obj->Get(sAccess17));
+      if (obj->Has(sAccess18)) info.This()->Set(sAccess18, obj->Get(sAccess18));
+      if (obj->Has(sAccess19)) info.This()->Set(sAccess19, obj->Get(sAccess19));
+      if (obj->Has(sAccess20)) info.This()->Set(sAccess20, obj->Get(sAccess20));
+      if (obj->Has(sAccess21)) info.This()->Set(sAccess21, obj->Get(sAccess21));
+      if (obj->Has(sAccess22)) info.This()->Set(sAccess22, obj->Get(sAccess22));
+      if (obj->Has(sAccess23)) info.This()->Set(sAccess23, obj->Get(sAccess23));
+      if (obj->Has(sAccess24)) info.This()->Set(sAccess24, obj->Get(sAccess24));
+      if (obj->Has(sAccess25)) info.This()->Set(sAccess25, obj->Get(sAccess25));
+      if (obj->Has(sAccess26)) info.This()->Set(sAccess26, obj->Get(sAccess26));
+      if (obj->Has(sAccess27)) info.This()->Set(sAccess27, obj->Get(sAccess27));
+      if (obj->Has(sAccess28)) info.This()->Set(sAccess28, obj->Get(sAccess28));
+      if (obj->Has(sAccess29)) info.This()->Set(sAccess29, obj->Get(sAccess29));
+      if (obj->Has(sAccess30)) info.This()->Set(sAccess30, obj->Get(sAccess30));
+      if (obj->Has(sAccess31)) info.This()->Set(sAccess31, obj->Get(sAccess31));
+      if (obj->Has(sAccess32)) info.This()->Set(sAccess32, obj->Get(sAccess32));
+      if (obj->Has(sAccess33)) info.This()->Set(sAccess33, obj->Get(sAccess33));
+      if (obj->Has(sAccess34)) info.This()->Set(sAccess34, obj->Get(sAccess34));
+      if (obj->Has(sAccess35)) info.This()->Set(sAccess35, obj->Get(sAccess35));
+      if (obj->Has(sAccess36)) info.This()->Set(sAccess36, obj->Get(sAccess36));
+      if (obj->Has(sAccess37)) info.This()->Set(sAccess37, obj->Get(sAccess37));
+      if (obj->Has(sAccess38)) info.This()->Set(sAccess38, obj->Get(sAccess38));
+      if (obj->Has(sAccess39)) info.This()->Set(sAccess39, obj->Get(sAccess39));
+      if (obj->Has(sAccess40)) info.This()->Set(sAccess40, obj->Get(sAccess40));
+      if (obj->Has(sAccess41)) info.This()->Set(sAccess41, obj->Get(sAccess41));
+      if (obj->Has(sAccess42)) info.This()->Set(sAccess42, obj->Get(sAccess42));
+      if (obj->Has(sAccess43)) info.This()->Set(sAccess43, obj->Get(sAccess43));
+      if (obj->Has(sAccess44)) info.This()->Set(sAccess44, obj->Get(sAccess44));
+      if (obj->Has(sAccess45)) info.This()->Set(sAccess45, obj->Get(sAccess45));
+      if (obj->Has(sAccess46)) info.This()->Set(sAccess46, obj->Get(sAccess46));
+      if (obj->Has(sAccess47)) info.This()->Set(sAccess47, obj->Get(sAccess47));
+      if (obj->Has(sAccess48)) info.This()->Set(sAccess48, obj->Get(sAccess48));
+      if (obj->Has(sAccess49)) info.This()->Set(sAccess49, obj->Get(sAccess49));
+      if (obj->Has(sAccess50)) info.This()->Set(sAccess50, obj->Get(sAccess50));
+      if (obj->Has(sAccess51)) info.This()->Set(sAccess51, obj->Get(sAccess51));
+      if (obj->Has(sAccess52)) info.This()->Set(sAccess52, obj->Get(sAccess52));
+      if (obj->Has(sAccess53)) info.This()->Set(sAccess53, obj->Get(sAccess53));
+      if (obj->Has(sAccess54)) info.This()->Set(sAccess54, obj->Get(sAccess54));
       
     }
     

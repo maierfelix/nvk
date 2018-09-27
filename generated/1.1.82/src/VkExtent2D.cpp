@@ -42,14 +42,8 @@ NAN_METHOD(_VkExtent2D::New) {
       v8::Local<v8::Object> obj = info[0]->ToObject();
       v8::Local<v8::String> sAccess0 = Nan::New("width").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("height").ToLocalChecked();
-      if (obj->Has(sAccess0)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess0);
-        info.This()->Set(sAccess0, arg);
-      }
-      if (obj->Has(sAccess1)) {
-       v8::Local<v8::Value> arg = obj->Get(sAccess1);
-        info.This()->Set(sAccess1, arg);
-      }
+      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
+      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       
     }
     
