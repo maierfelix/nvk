@@ -197,6 +197,8 @@ NAN_GETTER(VulkanWindow::Getwidth) {
 NAN_SETTER(VulkanWindow::Setwidth) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
   self->width = static_cast<int>(value->NumberValue());
+  glfwSetWindowSize(self->instance, self->width, self->height);
+  VulkanWindow::onWindowResize(self->instance, self->width, self->height);
 }
 
 // height
@@ -207,6 +209,8 @@ NAN_GETTER(VulkanWindow::Getheight) {
 NAN_SETTER(VulkanWindow::Setheight) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
   self->height = static_cast<int>(value->NumberValue());
+  glfwSetWindowSize(self->instance, self->width, self->height);
+  VulkanWindow::onWindowResize(self->instance, self->width, self->height);
 }
 
 // onresize
