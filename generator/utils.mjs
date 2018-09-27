@@ -1,8 +1,7 @@
 export function formatVkVersion(version) {
   let split = version.split(".");
-  // we have to trim the last version specificer
   if (split.length > 3) {
-    // .0 at version end is ignored
+    // .0 at version end is ignored, pop it
     if (split[3] === "0") {
       split.pop();
       return split.join(".");
@@ -13,9 +12,8 @@ export function formatVkVersion(version) {
 
 export function getLunarVkVersion(version) {
   let split = version.split(".");
-  // we have to trim the last version specificer
   if (split.length === 3) {
-    // insert a .0
+    // insert a .0 at end
     split.push("0");
     return split.join(".");
   }

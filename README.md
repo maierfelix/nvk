@@ -17,10 +17,11 @@ The bindings are machine generated and provide an API to interact from JavaScrip
 ## Requirements:
  - node.js >= v10.9.0
 
-## Installation:
-You only have to do these steps, if you want to generate the bindings yourself
+## Generator:
 
-### Windows:
+### Installation:
+
+#### Windows:
 Make sure you have either Visual Studio >= 15 installed or use
 ````
 npm install --global --production windows-build-tools
@@ -38,21 +39,21 @@ Install dependencies
 npm install
 ````
 
-## API:
+### API:
 
-### Syntax:
+#### Syntax:
 ````
 npm run [script] [flag] [value]
 ````
 
-### Flags:
+#### Flags:
 ````
  [-vkversion] [version]: The vulkan version to generate bindings for
 ````
 
-## Usage:
+### Usage:
 
-### Generation:
+#### Generation:
 You can specify a version to generate bindings for like this:
 ````
 npm run generate -vkversion=1.1.82.0
@@ -61,13 +62,16 @@ npm run generate -vkversion=1.1.82.0
 The binding specification file gets downloaded automatically and can be found in `generate/specifications/{vkversion}.xml`<br/>
 The generated bindings can then be found in `generated/{vkversion}/`
 
-### Building:
+#### Building:
 You can build the generated bindings like this:
 ````
-npm run generate -vkversion=1.1.82.0
+npm run build -vkversion=1.1.82
 ````
 
 The compiled bindings can then be found in `generated/{vkversion}/build`
+
+## Syntactic Sugar:
+ - `sType` is auto-filled, but can be explicitly set
 
 ### TODOs:
  - [ ] Struct generation (~85%)
