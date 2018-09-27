@@ -1,5 +1,5 @@
 import fs from "fs";
-import { exec } from "child_process";
+import { spawn } from "child_process";
 
 import pkg from "./package.json";
 
@@ -25,9 +25,20 @@ V8: ${v8Version}
 `);
 
 if (platform === "win32") {
-  exec(`cd ${generatePath} && node-gyp configure --msvs_version 2015 && node-gyp build`, (err, stdout, stderr) => {
-    if (err) throw err;
-    if (stderr) console.warn(stderr);
-    console.log(`Successfully compiled bindings for ${vkVersion}!`);
+
+  let cmd = `cd ${generatePath} && node-gyp configure --msvs_version 2015 && node-gyp build`;
+
+  let shell = spawn(cmd, { shell: true, stdio: "inherit" }, { stdio: "pipe" });
+  shell.on("exit", function (error) {
+
+    if (error) {
+      console.log(`\x1b[31m%s\x1b[0m`, `\nFailed to compile bindings for ${vkVersion}! Code: ${error}`);
+    } else {
+      console.log(`\nSuccessfully compiled bindings for ${vkVersion}!`);
+    }
+
   });
+
+} else {
+  console.error(`Error: Your platform isn't supported!`);
 }
