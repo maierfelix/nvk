@@ -42,7 +42,7 @@ NAN_METHOD(_VkStencilOpState::New) {
   if (info.IsConstructCall()) {
     _VkStencilOpState* self = new _VkStencilOpState();
     self->Wrap(info.Holder());
-
+    
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = info[0]->ToObject();
       v8::Local<v8::String> sAccess0 = Nan::New("failOp").ToLocalChecked();
@@ -80,8 +80,9 @@ NAN_METHOD(_VkStencilOpState::New) {
        v8::Local<v8::Value> arg = obj->Get(sAccess6);
         info.This()->Set(sAccess6, arg);
       }
-      }
-
+      
+    }
+    
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkStencilOpState constructor cannot be invoked without 'new'");

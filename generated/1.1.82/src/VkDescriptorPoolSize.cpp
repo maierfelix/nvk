@@ -37,7 +37,7 @@ NAN_METHOD(_VkDescriptorPoolSize::New) {
   if (info.IsConstructCall()) {
     _VkDescriptorPoolSize* self = new _VkDescriptorPoolSize();
     self->Wrap(info.Holder());
-
+    
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = info[0]->ToObject();
       v8::Local<v8::String> sAccess0 = Nan::New("type").ToLocalChecked();
@@ -50,8 +50,9 @@ NAN_METHOD(_VkDescriptorPoolSize::New) {
        v8::Local<v8::Value> arg = obj->Get(sAccess1);
         info.This()->Set(sAccess1, arg);
       }
-      }
-
+      
+    }
+    
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkDescriptorPoolSize constructor cannot be invoked without 'new'");

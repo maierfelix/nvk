@@ -43,7 +43,7 @@ NAN_METHOD(_VkPipelineColorBlendStateCreateInfo::New) {
   if (info.IsConstructCall()) {
     _VkPipelineColorBlendStateCreateInfo* self = new _VkPipelineColorBlendStateCreateInfo();
     self->Wrap(info.Holder());
-
+    
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = info[0]->ToObject();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
@@ -81,8 +81,9 @@ NAN_METHOD(_VkPipelineColorBlendStateCreateInfo::New) {
        v8::Local<v8::Value> arg = obj->Get(sAccess7);
         info.This()->Set(sAccess7, arg);
       }
-      }
-
+      
+    }
+    
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkPipelineColorBlendStateCreateInfo constructor cannot be invoked without 'new'");

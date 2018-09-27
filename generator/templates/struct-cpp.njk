@@ -35,7 +35,7 @@ NAN_METHOD(_{{ struct_name }}::New) {
   if (info.IsConstructCall()) {
     _{{ struct_name }}* self = new _{{ struct_name }}();
     self->Wrap(info.Holder());
-
+    {% if isStructReturnedOnly(struct) != true %}
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = info[0]->ToObject();
       {% for member in members %}
@@ -51,9 +51,9 @@ NAN_METHOD(_{{ struct_name }}::New) {
         info.This()->Set(sAccess{{ loop.index0 }}, arg);
       }
       {% endif -%}
-      {% endfor -%}
+      {% endfor %}
     }
-
+    {% endif %}
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("{{ struct_name }} constructor cannot be invoked without 'new'");

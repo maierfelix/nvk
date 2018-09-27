@@ -43,7 +43,7 @@ NAN_METHOD(_VkPipelineColorBlendAttachmentState::New) {
   if (info.IsConstructCall()) {
     _VkPipelineColorBlendAttachmentState* self = new _VkPipelineColorBlendAttachmentState();
     self->Wrap(info.Holder());
-
+    
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = info[0]->ToObject();
       v8::Local<v8::String> sAccess0 = Nan::New("blendEnable").ToLocalChecked();
@@ -86,8 +86,9 @@ NAN_METHOD(_VkPipelineColorBlendAttachmentState::New) {
        v8::Local<v8::Value> arg = obj->Get(sAccess7);
         info.This()->Set(sAccess7, arg);
       }
-      }
-
+      
+    }
+    
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkPipelineColorBlendAttachmentState constructor cannot be invoked without 'new'");

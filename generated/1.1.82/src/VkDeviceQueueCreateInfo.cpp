@@ -40,7 +40,7 @@ NAN_METHOD(_VkDeviceQueueCreateInfo::New) {
   if (info.IsConstructCall()) {
     _VkDeviceQueueCreateInfo* self = new _VkDeviceQueueCreateInfo();
     self->Wrap(info.Holder());
-
+    
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = info[0]->ToObject();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
@@ -68,8 +68,9 @@ NAN_METHOD(_VkDeviceQueueCreateInfo::New) {
        v8::Local<v8::Value> arg = obj->Get(sAccess5);
         info.This()->Set(sAccess5, arg);
       }
-      }
-
+      
+    }
+    
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkDeviceQueueCreateInfo constructor cannot be invoked without 'new'");

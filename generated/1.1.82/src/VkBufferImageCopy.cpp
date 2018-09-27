@@ -41,7 +41,7 @@ NAN_METHOD(_VkBufferImageCopy::New) {
   if (info.IsConstructCall()) {
     _VkBufferImageCopy* self = new _VkBufferImageCopy();
     self->Wrap(info.Holder());
-
+    
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = info[0]->ToObject();
       v8::Local<v8::String> sAccess0 = Nan::New("bufferOffset").ToLocalChecked();
@@ -74,8 +74,9 @@ NAN_METHOD(_VkBufferImageCopy::New) {
        v8::Local<v8::Value> arg = obj->Get(sAccess5);
         info.This()->Set(sAccess5, arg);
       }
-      }
-
+      
+    }
+    
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkBufferImageCopy constructor cannot be invoked without 'new'");

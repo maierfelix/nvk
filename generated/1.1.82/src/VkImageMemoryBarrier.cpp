@@ -44,7 +44,7 @@ NAN_METHOD(_VkImageMemoryBarrier::New) {
   if (info.IsConstructCall()) {
     _VkImageMemoryBarrier* self = new _VkImageMemoryBarrier();
     self->Wrap(info.Holder());
-
+    
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = info[0]->ToObject();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
@@ -92,8 +92,9 @@ NAN_METHOD(_VkImageMemoryBarrier::New) {
        v8::Local<v8::Value> arg = obj->Get(sAccess9);
         info.This()->Set(sAccess9, arg);
       }
-      }
-
+      
+    }
+    
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkImageMemoryBarrier constructor cannot be invoked without 'new'");

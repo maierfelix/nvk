@@ -38,7 +38,7 @@ NAN_METHOD(_VkClearRect::New) {
   if (info.IsConstructCall()) {
     _VkClearRect* self = new _VkClearRect();
     self->Wrap(info.Holder());
-
+    
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = info[0]->ToObject();
       v8::Local<v8::String> sAccess0 = Nan::New("rect").ToLocalChecked();
@@ -56,8 +56,9 @@ NAN_METHOD(_VkClearRect::New) {
        v8::Local<v8::Value> arg = obj->Get(sAccess2);
         info.This()->Set(sAccess2, arg);
       }
-      }
-
+      
+    }
+    
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkClearRect constructor cannot be invoked without 'new'");

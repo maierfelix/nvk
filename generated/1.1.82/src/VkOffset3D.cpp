@@ -38,7 +38,7 @@ NAN_METHOD(_VkOffset3D::New) {
   if (info.IsConstructCall()) {
     _VkOffset3D* self = new _VkOffset3D();
     self->Wrap(info.Holder());
-
+    
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = info[0]->ToObject();
       v8::Local<v8::String> sAccess0 = Nan::New("x").ToLocalChecked();
@@ -56,8 +56,9 @@ NAN_METHOD(_VkOffset3D::New) {
        v8::Local<v8::Value> arg = obj->Get(sAccess2);
         info.This()->Set(sAccess2, arg);
       }
-      }
-
+      
+    }
+    
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkOffset3D constructor cannot be invoked without 'new'");

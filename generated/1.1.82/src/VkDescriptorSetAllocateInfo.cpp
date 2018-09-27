@@ -39,7 +39,7 @@ NAN_METHOD(_VkDescriptorSetAllocateInfo::New) {
   if (info.IsConstructCall()) {
     _VkDescriptorSetAllocateInfo* self = new _VkDescriptorSetAllocateInfo();
     self->Wrap(info.Holder());
-
+    
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = info[0]->ToObject();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
@@ -62,8 +62,9 @@ NAN_METHOD(_VkDescriptorSetAllocateInfo::New) {
        v8::Local<v8::Value> arg = obj->Get(sAccess4);
         info.This()->Set(sAccess4, arg);
       }
-      }
-
+      
+    }
+    
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkDescriptorSetAllocateInfo constructor cannot be invoked without 'new'");

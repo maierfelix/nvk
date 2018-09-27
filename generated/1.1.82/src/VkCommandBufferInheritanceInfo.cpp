@@ -42,7 +42,7 @@ NAN_METHOD(_VkCommandBufferInheritanceInfo::New) {
   if (info.IsConstructCall()) {
     _VkCommandBufferInheritanceInfo* self = new _VkCommandBufferInheritanceInfo();
     self->Wrap(info.Holder());
-
+    
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = info[0]->ToObject();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
@@ -80,8 +80,9 @@ NAN_METHOD(_VkCommandBufferInheritanceInfo::New) {
        v8::Local<v8::Value> arg = obj->Get(sAccess7);
         info.This()->Set(sAccess7, arg);
       }
-      }
-
+      
+    }
+    
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkCommandBufferInheritanceInfo constructor cannot be invoked without 'new'");

@@ -40,7 +40,7 @@ NAN_METHOD(_VkImageSubresourceRange::New) {
   if (info.IsConstructCall()) {
     _VkImageSubresourceRange* self = new _VkImageSubresourceRange();
     self->Wrap(info.Holder());
-
+    
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = info[0]->ToObject();
       v8::Local<v8::String> sAccess0 = Nan::New("aspectMask").ToLocalChecked();
@@ -68,8 +68,9 @@ NAN_METHOD(_VkImageSubresourceRange::New) {
        v8::Local<v8::Value> arg = obj->Get(sAccess4);
         info.This()->Set(sAccess4, arg);
       }
-      }
-
+      
+    }
+    
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkImageSubresourceRange constructor cannot be invoked without 'new'");

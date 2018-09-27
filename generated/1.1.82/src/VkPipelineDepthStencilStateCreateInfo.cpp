@@ -46,7 +46,7 @@ NAN_METHOD(_VkPipelineDepthStencilStateCreateInfo::New) {
   if (info.IsConstructCall()) {
     _VkPipelineDepthStencilStateCreateInfo* self = new _VkPipelineDepthStencilStateCreateInfo();
     self->Wrap(info.Holder());
-
+    
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = info[0]->ToObject();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
@@ -104,8 +104,9 @@ NAN_METHOD(_VkPipelineDepthStencilStateCreateInfo::New) {
        v8::Local<v8::Value> arg = obj->Get(sAccess11);
         info.This()->Set(sAccess11, arg);
       }
-      }
-
+      
+    }
+    
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkPipelineDepthStencilStateCreateInfo constructor cannot be invoked without 'new'");

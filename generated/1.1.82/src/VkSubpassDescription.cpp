@@ -45,7 +45,7 @@ NAN_METHOD(_VkSubpassDescription::New) {
   if (info.IsConstructCall()) {
     _VkSubpassDescription* self = new _VkSubpassDescription();
     self->Wrap(info.Holder());
-
+    
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = info[0]->ToObject();
       v8::Local<v8::String> sAccess0 = Nan::New("flags").ToLocalChecked();
@@ -98,8 +98,9 @@ NAN_METHOD(_VkSubpassDescription::New) {
        v8::Local<v8::Value> arg = obj->Get(sAccess9);
         info.This()->Set(sAccess9, arg);
       }
-      }
-
+      
+    }
+    
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkSubpassDescription constructor cannot be invoked without 'new'");

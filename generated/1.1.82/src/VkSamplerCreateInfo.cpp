@@ -52,7 +52,7 @@ NAN_METHOD(_VkSamplerCreateInfo::New) {
   if (info.IsConstructCall()) {
     _VkSamplerCreateInfo* self = new _VkSamplerCreateInfo();
     self->Wrap(info.Holder());
-
+    
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = info[0]->ToObject();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
@@ -140,8 +140,9 @@ NAN_METHOD(_VkSamplerCreateInfo::New) {
        v8::Local<v8::Value> arg = obj->Get(sAccess17);
         info.This()->Set(sAccess17, arg);
       }
-      }
-
+      
+    }
+    
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkSamplerCreateInfo constructor cannot be invoked without 'new'");

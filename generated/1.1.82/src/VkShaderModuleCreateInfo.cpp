@@ -39,7 +39,7 @@ NAN_METHOD(_VkShaderModuleCreateInfo::New) {
   if (info.IsConstructCall()) {
     _VkShaderModuleCreateInfo* self = new _VkShaderModuleCreateInfo();
     self->Wrap(info.Holder());
-
+    
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = info[0]->ToObject();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
@@ -62,8 +62,9 @@ NAN_METHOD(_VkShaderModuleCreateInfo::New) {
        v8::Local<v8::Value> arg = obj->Get(sAccess4);
         info.This()->Set(sAccess4, arg);
       }
-      }
-
+      
+    }
+    
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkShaderModuleCreateInfo constructor cannot be invoked without 'new'");

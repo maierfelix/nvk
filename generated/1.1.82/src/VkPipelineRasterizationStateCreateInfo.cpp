@@ -47,7 +47,7 @@ NAN_METHOD(_VkPipelineRasterizationStateCreateInfo::New) {
   if (info.IsConstructCall()) {
     _VkPipelineRasterizationStateCreateInfo* self = new _VkPipelineRasterizationStateCreateInfo();
     self->Wrap(info.Holder());
-
+    
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = info[0]->ToObject();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
@@ -110,8 +110,9 @@ NAN_METHOD(_VkPipelineRasterizationStateCreateInfo::New) {
        v8::Local<v8::Value> arg = obj->Get(sAccess12);
         info.This()->Set(sAccess12, arg);
       }
-      }
-
+      
+    }
+    
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkPipelineRasterizationStateCreateInfo constructor cannot be invoked without 'new'");

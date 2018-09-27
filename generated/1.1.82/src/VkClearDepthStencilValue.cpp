@@ -37,7 +37,7 @@ NAN_METHOD(_VkClearDepthStencilValue::New) {
   if (info.IsConstructCall()) {
     _VkClearDepthStencilValue* self = new _VkClearDepthStencilValue();
     self->Wrap(info.Holder());
-
+    
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = info[0]->ToObject();
       v8::Local<v8::String> sAccess0 = Nan::New("depth").ToLocalChecked();
@@ -50,8 +50,9 @@ NAN_METHOD(_VkClearDepthStencilValue::New) {
        v8::Local<v8::Value> arg = obj->Get(sAccess1);
         info.This()->Set(sAccess1, arg);
       }
-      }
-
+      
+    }
+    
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkClearDepthStencilValue constructor cannot be invoked without 'new'");

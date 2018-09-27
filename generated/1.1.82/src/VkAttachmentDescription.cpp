@@ -44,7 +44,7 @@ NAN_METHOD(_VkAttachmentDescription::New) {
   if (info.IsConstructCall()) {
     _VkAttachmentDescription* self = new _VkAttachmentDescription();
     self->Wrap(info.Holder());
-
+    
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = info[0]->ToObject();
       v8::Local<v8::String> sAccess0 = Nan::New("flags").ToLocalChecked();
@@ -92,8 +92,9 @@ NAN_METHOD(_VkAttachmentDescription::New) {
        v8::Local<v8::Value> arg = obj->Get(sAccess8);
         info.This()->Set(sAccess8, arg);
       }
-      }
-
+      
+    }
+    
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkAttachmentDescription constructor cannot be invoked without 'new'");

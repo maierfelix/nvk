@@ -53,7 +53,7 @@ NAN_METHOD(_VkGraphicsPipelineCreateInfo::New) {
   if (info.IsConstructCall()) {
     _VkGraphicsPipelineCreateInfo* self = new _VkGraphicsPipelineCreateInfo();
     self->Wrap(info.Holder());
-
+    
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = info[0]->ToObject();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
@@ -146,8 +146,9 @@ NAN_METHOD(_VkGraphicsPipelineCreateInfo::New) {
        v8::Local<v8::Value> arg = obj->Get(sAccess18);
         info.This()->Set(sAccess18, arg);
       }
-      }
-
+      
+    }
+    
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkGraphicsPipelineCreateInfo constructor cannot be invoked without 'new'");
