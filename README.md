@@ -72,7 +72,44 @@ npm run build -vkversion=1.1.82
 The compiled bindings can then be found in `generated/{vkversion}/build`
 
 ## Syntactic Sugar:
- - `sType` is auto-filled, but can be explicitly set
+
+The API gives you some sugar to write things quicker, but still gives you the option to write everything explicitly!
+
+### sType auto-filling
+`sType` members get auto-filled, but you can still explicitly set them
+
+````js
+let appInfo = new VkApplicationInfo();
+appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
+````
+
+Becomes:
+
+````js
+let appInfo = new VkApplicationInfo(); // sType got auto-filled 5u
+````
+
+### Object based Structure creation
+
+Instead of writing:
+````js
+let offset = new VkOffset2D();
+offset.x = 0;
+offset.y = 0;
+let extent = new VkExtent2D();
+extent.width = 640; extent.height = 480;
+let renderArea = new VkRect2D();
+renderArea.offset = offset;
+renderArea.extent = extent;
+````
+
+You can write:
+````js
+let renderArea = new VkRect2D({
+  offset: new VkOffset2D({ x: 0, y: 0 }),
+  extent: new VkExtent2D({ width: 640, height: 480 })
+});
+````
 
 ### TODOs:
  - [ ] Struct generation (~85%)
