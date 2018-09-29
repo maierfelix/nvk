@@ -6,7 +6,7 @@ The bindings are machine generated and provide an API to interact from JavaScrip
 **Note**: This is an early experiment, use with *honor*!
 
 ## Preview:<br/>
-<img src="https://i.imgur.com/pT76hSl.gif" width="380">
+<img src="https://i.imgur.com/HWVeSHp.gif" width="380">
 
 ## Structure:
  - `generator`: code for binding generation
