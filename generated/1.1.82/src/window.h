@@ -27,6 +27,7 @@ class VulkanWindow: public Nan::ObjectWrap {
     Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onresize;
     Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onclose;
     Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onkeydown;
+    Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onkeyup;
     Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onmousemove;
     Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onmousewheel;
     Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onmousedown;
@@ -61,6 +62,9 @@ class VulkanWindow: public Nan::ObjectWrap {
     static NAN_GETTER(Getonkeydown);
     static NAN_SETTER(Setonkeydown);
 
+    static NAN_GETTER(Getonkeyup);
+    static NAN_SETTER(Setonkeyup);
+
     static NAN_GETTER(Getonmousemove);
     static NAN_SETTER(Setonmousemove);
 
@@ -75,7 +79,7 @@ class VulkanWindow: public Nan::ObjectWrap {
 
     static void onWindowResize(GLFWwindow*, int, int);
     static void onWindowClose(GLFWwindow*);
-    static void onWindowKeyDown(GLFWwindow*, int, int, int, int);
+    static void onWindowKeyPress(GLFWwindow*, int, int, int, int);
     static void onWindowMouseMove(GLFWwindow*, double, double);
     static void onWindowMouseWheel(GLFWwindow*, double, double);
     static void onWindowMouseButton(GLFWwindow*, int, int, int);
@@ -116,6 +120,7 @@ void VulkanWindow::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   SetPrototypeAccessor(proto, Nan::New("onresize").ToLocalChecked(), Getonresize, Setonresize, ctor);
   SetPrototypeAccessor(proto, Nan::New("onclose").ToLocalChecked(), Getonclose, Setonclose, ctor);
   SetPrototypeAccessor(proto, Nan::New("onkeydown").ToLocalChecked(), Getonkeydown, Setonkeydown, ctor);
+  SetPrototypeAccessor(proto, Nan::New("onkeyup").ToLocalChecked(), Getonkeyup, Setonkeyup, ctor);
   SetPrototypeAccessor(proto, Nan::New("onmousemove").ToLocalChecked(), Getonmousemove, Setonmousemove, ctor);
   SetPrototypeAccessor(proto, Nan::New("onmousewheel").ToLocalChecked(), Getonmousewheel, Setonmousewheel, ctor);
   SetPrototypeAccessor(proto, Nan::New("onmousedown").ToLocalChecked(), Getonmousedown, Setonmousedown, ctor);
@@ -146,15 +151,25 @@ void VulkanWindow::onWindowClose(GLFWwindow* window) {
   Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->onclose), argc, argv);
 }
 
-void VulkanWindow::onWindowKeyDown(GLFWwindow* window, int key, int scancode, int action, int mods) {
+void VulkanWindow::onWindowKeyPress(GLFWwindow* window, int key, int scancode, int action, int mods) {
   v8::Isolate *isolate = v8::Isolate::GetCurrent();
   VulkanWindow* self = static_cast<VulkanWindow*>(glfwGetWindowUserPointer(window));
-  if (self->onkeydown.IsEmpty()) return;
   v8::Local<v8::Object> out = Nan::New<v8::Object>();
   out->Set(Nan::New("keyCode").ToLocalChecked(), Nan::New(key));
   const unsigned argc = 1;
   v8::Local<v8::Value> argv[argc] = { out };
-  Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->onkeydown), argc, argv);
+  // press
+  if (action == GLFW_PRESS) {
+    if (!(self->onkeydown.IsEmpty())) {
+      Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->onkeydown), argc, argv);
+    }
+  }
+  // release
+  else if (action == GLFW_RELEASE) {
+    if (!(self->onkeyup.IsEmpty())) {
+      Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->onkeyup), argc, argv);
+    }
+  }
 }
 
 void VulkanWindow::onWindowMouseMove(GLFWwindow* window, double x, double y) {
@@ -239,7 +254,7 @@ NAN_METHOD(VulkanWindow::New) {
     glfwSetWindowSizeCallback(window, VulkanWindow::onWindowResize);
     glfwSetWindowCloseCallback(window, VulkanWindow::onWindowClose);
     // keyboard events
-    glfwSetKeyCallback(window, VulkanWindow::onWindowKeyDown);
+    glfwSetKeyCallback(window, VulkanWindow::onWindowKeyPress);
     // mouse events
     glfwSetCursorPosCallback(window, VulkanWindow::onWindowMouseMove);
     glfwSetScrollCallback(window, VulkanWindow::onWindowMouseWheel);
@@ -376,6 +391,16 @@ NAN_GETTER(VulkanWindow::Getonkeydown) {
 NAN_SETTER(VulkanWindow::Setonkeydown) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
   self->onkeydown = Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>>(value.As<v8::Function>());
+}
+
+// onkeyup
+NAN_GETTER(VulkanWindow::Getonkeyup) {
+  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Function>(self->onkeyup));
+}
+NAN_SETTER(VulkanWindow::Setonkeyup) {
+  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
+  self->onkeyup = Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>>(value.As<v8::Function>());
 }
 
 // onmousemove
