@@ -87,6 +87,7 @@ function processHeaderGetter(struct, member) {
   switch (rawType) {
     case "const void *":
       return `
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> ${member.name};
     static NAN_GETTER(Get${member.name});`;
     case "const char *":
       return `
@@ -194,11 +195,10 @@ function processSourceGetter(struct, member) {
     v8::Local<v8::Object> obj = Nan::New(self->${member.name});
     info.GetReturnValue().Set(obj);
   }`;
-    case "const void *":
-      return ``; // ???
     default: {
-      if (member.isStructType || member.isHandleType) {
+      if (member.isStructType || member.isHandleType || rawType === "const void *") {
         let isReference = member.dereferenceCount > 0;
+        if (rawType === "const void *") return ``; // TODO
         return `
   if (self->${member.name}.IsEmpty()) {
     info.GetReturnValue().SetNull();
@@ -233,6 +233,27 @@ function processStaticArraySourceSetter(member) {
   }`;
   }
   // struct array
+};
+
+function genPolymorphicSourceSetter(struct, member) {
+  let out = ``;
+  let {extensions} = struct;
+  if (extensions) {
+    out += `
+    v8::Local<v8::Object> arg = value->ToObject();
+    v8::String::Utf8Value ctorUtf8(arg->GetConstructorName());
+    const char* ctor = *ctorUtf8;
+    `;
+    extensions.map((extName, index) => {
+      out += `${index <= 0 ? "if" : " else if"} (ctor == "${extName}") {
+      _${extName}* obj = Nan::ObjectWrap::Unwrap<_${extName}>(value->ToObject());
+      self->instance.${member.name} = &obj->instance;
+    }`;
+    });
+  } else {
+    out += `self->instance.${member.name} = nullptr;`;
+  }
+  return out;
 };
 
 function processSourceSetter(struct, member) {
@@ -303,12 +324,25 @@ function processSourceSetter(struct, member) {
       return `
   ${genPersistentV8Array(member)}
   ${getTypedV8Array(member)}`;
-    case "const void *":
-      return ``; // ???
     default: {
-      if (member.isStructType || member.isHandleType) {
+      if (member.isStructType || member.isHandleType || rawType === "const void *") {
         let isReference = member.dereferenceCount > 0;
         let deinitialize = ``;
+        if (rawType === "const void *") {
+          return ``; // TODO
+          return `
+  // js
+  if (!(value->IsNull())) {
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    self->${member.name} = obj;
+  }
+  // vulkan
+  if (!(value->IsNull())) {
+    ${genPolymorphicSourceSetter(struct, member)}
+  } else {
+    self->instance.${member.name} = nullptr;
+  }`;
+        }
         if (member.isHandleType) {
           deinitialize = `self->instance.${member.name} = VK_NULL_HANDLE;`;
         }
@@ -340,78 +374,28 @@ function processSourceSetter(struct, member) {
   };
 };
 
-function processSourceMemberReflection(member) {
-  let {rawType} = member;
-  if (member.isBaseType) rawType = member.baseType;
-  // string of chars
-  if (member.isStaticArray) {
-    if (member.type === "char") {
-      return ``; // v8::String
-    } else {
-      switch (member.type) {
-        case "int":
-        case "float":
-        case "size_t":
-        case "int32_t":
-        case "uint8_t":
-        case "uint32_t":
-        case "uint64_t":
-          return ``; // v8::Number
-        default:
-          console.warn(`Cannot handle static array of type ${member.rawType} in member-reflection!`);
-      };
-    }
-  }
-  // array of structs or handles
-  if (member.isArray && (member.isStructType || member.isHandleType)) {
-    return ``; // v8::Array of _Objects
-  }
-  if (
-    member.isStructType ||
-    member.isHandleType ||
-    member.isBaseType
-  ) {
-    if (member.isStructType || member.isHandleType || member.dereferenceCount > 0) {
-      return ``; // v8::Array of _Objects
-    } else {
-      return ``; // v8::Array of _Objects
-    }
-  }
-  switch (rawType) {
-    case "const void *":
-      return ``; // ???
-    case "const char *":
-      return ``; // v8::String
-    case "const char * const*":
-    case "const uint32_t *":
-    case "const float *":
-      return ``; // v8::Array
-    case "int":
-    case "float":
-    case "size_t":
-    case "int32_t":
-    case "uint8_t":
-    case "uint32_t":
-    case "uint64_t":
-      return ``; // v8::Number
-    default: {
-      console.warn(`Cannot handle member ${member.rawType} in member-reflection!`);
-      return ``;
-    }
-  };
-  console.warn(`Cannot handle ${rawType}`);
-  return ``;
-};
-
 function processSourceIncludes(struct) {
   let out = ``;
   let includes = [];
-  struct.children.map(child => {
-    if (child.isStructType) {
+  // TODO
+  /*if (struct.extensions) {
+    struct.extensions.map(ext => {
       globalIncludes.push({
         name: struct.name,
-        include: child.type
+        include: ext
       });
+    });
+  }*/
+  struct.children.map(child => {
+    if (child.isStructType) {
+      // dont do cyclic includes
+      // this happens when a struct can have a member of its own type
+      if (struct.name !== child.type) {
+        globalIncludes.push({
+          name: struct.name,
+          include: child.type
+        });
+      }
     }
     if (child.isStaticArray && includes.indexOf("string.h") <= -1) {
       out += `\n#include <string.h>`;
@@ -438,13 +422,13 @@ function processMemberAutosType(struct) {
   let filtered = struct.children.filter(member => member.name === "sType");
   let sTypeMember = null;
   if (filtered.length) sTypeMember = filtered[0];
-  if (sTypeMember) sType = structNameToStructType(struct.name);
-  if (sType) {
-    return `instance.sType = ${sType};`;
-  }
+  if (sTypeMember) sType = struct.sType || structNameToStructType(struct.name);
+  if (sType) return `instance.sType = ${sType};`;
   return ``;
 };
 
+// shouldnt be necessary, but this method
+// auto-generates the sType name by a struct name
 function structNameToStructType(name) {
   let out = ``;
   let rx = /(([A-Z][a-z]+)|([A-Z][A-Z]+))/gm;
@@ -461,9 +445,23 @@ function structNameToStructType(name) {
 };
 
 function ignoreableMember(member) {
+  // dont ignore
+  if (member.rawType === "const void *" && member.name === "pNext") return false;
+  // ignore just for now
+  if (member.rawType.substr(0, 4) === "PFN_") return true;
   return (
-    member.name === "pNext" ||
+    member.rawType === "const SECURITY_ATTRIBUTES *" ||
+    member.rawType === "struct AHardwareBuffer *" ||
     member.rawType === "void *" ||
+    member.rawType === "struct ANativeWindow *" ||
+    member.rawType === "MirSurface *" ||
+    member.rawType === "MirConnection *" ||
+    member.rawType === "struct wl_display *" ||
+    member.rawType === "struct wl_surface *" ||
+    member.rawType === "Window" ||
+    member.rawType === "xcb_connection_t *" ||
+    member.rawType === "xcb_window_t" ||
+    member.rawType === "Display *" ||
     member.rawType === "HWND" ||
     member.rawType === "HANDLE" ||
     member.rawType === "DWORD" ||
@@ -494,8 +492,7 @@ export default function(astReference, struct) {
     processHeaderSetter,
     processSourceIncludes,
     processMemberAutosType,
-    processSourceMemberAccessor,
-    processSourceMemberReflection
+    processSourceMemberAccessor
   };
   let out = {
     header: null,

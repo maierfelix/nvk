@@ -14,6 +14,7 @@ import generateGyp from "./generators/gyp";
 import generatePackage from "./generators/package";
 import generateUtils from "./generators/utils";
 import generateWindow from "./generators/window";
+import generateWebkit from "./generators/webkit";
 
 import { formatVkVersion } from "./utils";
 
@@ -33,7 +34,6 @@ const structWhiteList = [
   "VkDeviceQueueCreateInfo",
   "VkDeviceCreateInfo",
   "VkBindImagePlaneMemoryInfo",
-  "VkImageSubresourceRange",
   "VkApplicationInfo",
   "VkInstanceCreateInfo",
   "VkBufferCreateInfo",
@@ -120,8 +120,11 @@ const structWhiteList = [
   "VkMemoryBarrier",
   "VkBufferMemoryBarrier",
   "VkBufferImageCopy",
-  "VkImageSubresourceLayers",
-  "VkSamplerCreateInfo"
+  "VkSamplerCreateInfo",
+  "VkImageSubresource",
+  "VkSubresourceLayout",
+  "VkImageSubresourceRange",
+  "VkImageSubresourceLayers"
 ];
 
 const callsWhiteList = [
@@ -191,7 +194,8 @@ const callsWhiteList = [
   "vkDestroySwapchainKHR",
   "vkDestroyFramebuffer",
   "vkCmdSetViewport",
-  "vkCmdSetScissor"
+  "vkCmdSetScissor",
+  "vkGetImageSubresourceLayout"
 ];
 
 function downloadVulkanSpecificationFile(version) {
@@ -286,6 +290,12 @@ function mergeExtensionsIntoEnums(enums, exts) {
   });
 };
 
+function isWin32Struct(name) {
+  let isANDROID = name.substr(name.length - 7, name.length) === "ANDROID";
+  let isMVK = name.substr(name.length - 3, name.length) === "MVK";
+  return !isANDROID && !isMVK;
+};
+
 function generateBindings(specXML, version) {
   let ast = null;
   let includes = [];
@@ -336,6 +346,9 @@ function generateBindings(specXML, version) {
   // generate handles
   {
     console.log("Generating Vk handles..");
+    for (let ii = 0; ii < handles.length; ++ii) {
+      if (handles[ii].name === "VkAccelerationStructureNVX") handles.splice(ii, 1);
+    }
     handles.map(handle => {
       let result = generateHandles(ast, handle);
       if (includes.indexOf(handle.name) <= -1) includes.push({ name: handle.name, include: "" });
@@ -362,6 +375,12 @@ function generateBindings(specXML, version) {
     let result = generateWindow(ast);
     writeAddonFile(`${generateSrcPath}/window.h`, result.header, "utf-8", true);
   }
+  // generate webkit
+  {
+    console.log("Generating Vk webkit..");
+    let result = generateWebkit(ast);
+    writeAddonFile(`${generateSrcPath}/webkit.h`, result.header, "utf-8", true);
+  }
   // generate includes
   {
     console.log("Generating Vk includes..");
@@ -386,6 +405,12 @@ function generateBindings(specXML, version) {
     let result = generatePackage(ast, version);
     writeAddonFile(`${generatePath}/package.json`, result.json, "utf-8");
   }
+  // filter includes
+  /*{
+    includes = includes.filter(incl => {
+      return isWin32Struct(incl.name) && isWin32Struct(incl.include);
+    });
+  }*/
   // generate utils
   {
     console.log("Generating utils..");

@@ -11976,7 +11976,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_APPLICATION_INFO"
   },
   {
     "kind": "STRUCT",
@@ -12111,6 +12112,10 @@
         "isNumericArray": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO",
+    "extensions": [
+      "VkDeviceQueueGlobalPriorityCreateInfoEXT"
     ]
   },
   {
@@ -12229,6 +12234,11 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO",
+    "extensions": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceGroupDeviceCreateInfo"
     ]
   },
   {
@@ -12324,6 +12334,12 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO",
+    "extensions": [
+      "VkDebugReportCallbackCreateInfoEXT",
+      "VkValidationFlagsEXT",
+      "VkDebugUtilsMessengerCreateInfoEXT"
     ]
   },
   {
@@ -12478,6 +12494,21 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO",
+    "extensions": [
+      "VkDedicatedAllocationMemoryAllocateInfoNV",
+      "VkExportMemoryAllocateInfoNV",
+      "VkImportMemoryWin32HandleInfoNV",
+      "VkExportMemoryWin32HandleInfoNV",
+      "VkExportMemoryAllocateInfo",
+      "VkImportMemoryWin32HandleInfoKHR",
+      "VkExportMemoryWin32HandleInfoKHR",
+      "VkImportMemoryFdInfoKHR",
+      "VkMemoryAllocateFlagsInfo",
+      "VkMemoryDedicatedAllocateInfo",
+      "VkImportMemoryHostPointerInfoEXT",
+      "VkImportAndroidHardwareBufferInfoANDROID"
     ]
   },
   {
@@ -12742,7 +12773,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE"
   },
   {
     "kind": "STRUCT",
@@ -13051,7 +13083,8 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET"
   },
   {
     "kind": "STRUCT",
@@ -13151,7 +13184,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_COPY_DESCRIPTOR_SET"
   },
   {
     "kind": "STRUCT",
@@ -13251,6 +13285,11 @@
         "isNumericArray": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO",
+    "extensions": [
+      "VkDedicatedAllocationBufferCreateInfoNV",
+      "VkExternalMemoryBufferCreateInfo"
     ]
   },
   {
@@ -13337,7 +13376,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_BUFFER_VIEW_CREATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -13541,7 +13581,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_MEMORY_BARRIER"
   },
   {
     "kind": "STRUCT",
@@ -13648,7 +13689,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER"
   },
   {
     "kind": "STRUCT",
@@ -13767,6 +13809,10 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER",
+    "extensions": [
+      "VkSampleLocationsInfoEXT"
     ]
   },
   {
@@ -13947,6 +13993,14 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO",
+    "extensions": [
+      "VkDedicatedAllocationImageCreateInfoNV",
+      "VkExternalMemoryImageCreateInfoNV",
+      "VkExternalMemoryImageCreateInfo",
+      "VkImageSwapchainCreateInfoKHR",
+      "VkImageFormatListCreateInfoKHR"
     ]
   },
   {
@@ -14105,6 +14159,10 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO",
+    "extensions": [
+      "VkImageViewUsageCreateInfo"
     ]
   },
   {
@@ -14549,6 +14607,10 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_BIND_SPARSE_INFO",
+    "extensions": [
+      "VkDeviceGroupBindSparseInfo"
     ]
   },
   {
@@ -14848,6 +14910,10 @@
         "isNumericArray": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO",
+    "extensions": [
+      "VkShaderModuleValidationCacheCreateInfoEXT"
     ]
   },
   {
@@ -14978,6 +15044,10 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO",
+    "extensions": [
+      "VkDescriptorSetLayoutBindingFlagsCreateInfoEXT"
     ]
   },
   {
@@ -15081,7 +15151,8 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -15144,6 +15215,10 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO",
+    "extensions": [
+      "VkDescriptorSetVariableDescriptorCountAllocateInfoEXT"
     ]
   },
   {
@@ -15318,7 +15393,8 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -15401,7 +15477,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -15576,6 +15653,10 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO",
+    "extensions": [
+      "VkPipelineVertexInputDivisorStateCreateInfoEXT"
     ]
   },
   {
@@ -15641,7 +15722,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -15692,6 +15774,10 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO",
+    "extensions": [
+      "VkPipelineTessellationDomainOriginStateCreateInfo"
     ]
   },
   {
@@ -15779,6 +15865,11 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO",
+    "extensions": [
+      "VkPipelineViewportWScalingStateCreateInfoNV",
+      "VkPipelineViewportSwizzleStateCreateInfoNV"
     ]
   },
   {
@@ -15933,6 +16024,11 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO",
+    "extensions": [
+      "VkPipelineRasterizationStateRasterizationOrderAMD",
+      "VkPipelineRasterizationConservativeStateCreateInfoEXT"
     ]
   },
   {
@@ -16047,6 +16143,12 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO",
+    "extensions": [
+      "VkPipelineCoverageToColorStateCreateInfoNV",
+      "VkPipelineSampleLocationsStateCreateInfoEXT",
+      "VkPipelineCoverageModulationStateCreateInfoNV"
     ]
   },
   {
@@ -16252,6 +16354,10 @@
         "isNumericArray": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO",
+    "extensions": [
+      "VkPipelineColorBlendAdvancedStateCreateInfoEXT"
     ]
   },
   {
@@ -16318,7 +16424,8 @@
         "isNumericArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -16544,7 +16651,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -16751,6 +16859,10 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO",
+    "extensions": [
+      "VkPipelineDiscardRectangleStateCreateInfoEXT"
     ]
   },
   {
@@ -16814,7 +16926,8 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -16942,7 +17055,8 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -17155,6 +17269,10 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO",
+    "extensions": [
+      "VkSamplerReductionModeCreateInfoEXT"
     ]
   },
   {
@@ -17206,7 +17324,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -17267,7 +17386,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -17365,6 +17485,10 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_INFO",
+    "extensions": [
+      "VkCommandBufferInheritanceConditionalRenderingInfoEXT"
     ]
   },
   {
@@ -17416,6 +17540,10 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO",
+    "extensions": [
+      "VkDeviceGroupCommandBufferBeginInfo"
     ]
   },
   {
@@ -17499,6 +17627,11 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO",
+    "extensions": [
+      "VkDeviceGroupRenderPassBeginInfo",
+      "VkRenderPassSampleLocationsBeginInfoEXT"
     ]
   },
   {
@@ -18038,6 +18171,11 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO",
+    "extensions": [
+      "VkRenderPassMultiviewCreateInfo",
+      "VkRenderPassInputAttachmentAspectCreateInfo"
     ]
   },
   {
@@ -18079,7 +18217,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_EVENT_CREATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -18120,6 +18259,11 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_FENCE_CREATE_INFO",
+    "extensions": [
+      "VkExportFenceCreateInfo",
+      "VkExportFenceWin32HandleInfoKHR"
     ]
   },
   {
@@ -20021,6 +20165,11 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO",
+    "extensions": [
+      "VkExportSemaphoreCreateInfo",
+      "VkExportSemaphoreWin32HandleInfoKHR"
     ]
   },
   {
@@ -20097,7 +20246,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -20203,7 +20353,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -20460,6 +20611,14 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_SUBMIT_INFO",
+    "extensions": [
+      "VkWin32KeyedMutexAcquireReleaseInfoNV",
+      "VkWin32KeyedMutexAcquireReleaseInfoKHR",
+      "VkD3D12FenceSubmitInfoKHR",
+      "VkDeviceGroupSubmitInfo",
+      "VkProtectedSubmitInfo"
     ]
   },
   {
@@ -20679,7 +20838,8 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -20897,7 +21057,8 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -20957,7 +21118,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPresentInfoKHR",
+    "sType": "VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -21126,7 +21289,8 @@
         "dereferenceCount": 1,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -21185,7 +21349,8 @@
         "dereferenceCount": 1,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_MIR_SURFACE_CREATE_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -21235,7 +21400,8 @@
         "dereferenceCount": 1,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_VI_SURFACE_CREATE_INFO_NN"
   },
   {
     "kind": "STRUCT",
@@ -21294,7 +21460,8 @@
         "dereferenceCount": 1,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_WAYLAND_SURFACE_CREATE_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -21353,7 +21520,8 @@
         "dereferenceCount": 0,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -21412,7 +21580,8 @@
         "dereferenceCount": 0,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -21471,7 +21640,8 @@
         "dereferenceCount": 0,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -21717,6 +21887,11 @@
         "handleType": "VkSurfaceKHR",
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR",
+    "extensions": [
+      "VkSwapchainCounterCreateInfoEXT",
+      "VkDeviceGroupSwapchainCreateInfoKHR"
     ]
   },
   {
@@ -21821,6 +21996,13 @@
         "isNumericArray": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_PRESENT_INFO_KHR",
+    "extensions": [
+      "VkDisplayPresentInfoKHR",
+      "VkPresentRegionsKHR",
+      "VkDeviceGroupPresentInfoKHR",
+      "VkPresentTimesInfoGOOGLE"
     ]
   },
   {
@@ -21880,7 +22062,9 @@
         "dereferenceCount": 1,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkInstanceCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -21933,7 +22117,9 @@
         "isNumericArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkInstanceCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_VALIDATION_FLAGS_EXT"
   },
   {
     "kind": "STRUCT",
@@ -21973,7 +22159,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPipelineRasterizationStateCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD"
   },
   {
     "kind": "STRUCT",
@@ -22033,7 +22221,8 @@
         "isString": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_NAME_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -22115,7 +22304,8 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_TAG_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -22166,7 +22356,8 @@
         "isNumericArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DEBUG_MARKER_MARKER_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -22206,7 +22397,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkImageCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV"
   },
   {
     "kind": "STRUCT",
@@ -22246,7 +22439,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkBufferCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_BUFFER_CREATE_INFO_NV"
   },
   {
     "kind": "STRUCT",
@@ -22296,7 +22491,9 @@
         "handleType": "VkDevice",
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkMemoryAllocateInfo",
+    "sType": "VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV"
   },
   {
     "kind": "STRUCT",
@@ -22393,7 +22590,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkImageCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_NV"
   },
   {
     "kind": "STRUCT",
@@ -22434,7 +22633,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkMemoryAllocateInfo",
+    "sType": "VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_NV"
   },
   {
     "kind": "STRUCT",
@@ -22484,7 +22685,9 @@
         "dereferenceCount": 0,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkMemoryAllocateInfo",
+    "sType": "VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_NV"
   },
   {
     "kind": "STRUCT",
@@ -22530,7 +22733,9 @@
         "dereferenceCount": 0,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkMemoryAllocateInfo",
+    "sType": "VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_NV"
   },
   {
     "kind": "STRUCT",
@@ -22645,7 +22850,9 @@
         "isNumericArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkSubmitInfo",
+    "sType": "VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_NV"
   },
   {
     "kind": "STRUCT",
@@ -22685,7 +22892,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DEVICE_GENERATED_COMMANDS_FEATURES_NVX"
   },
   {
     "kind": "STRUCT",
@@ -22763,7 +22971,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DEVICE_GENERATED_COMMANDS_LIMITS_NVX"
   },
   {
     "kind": "STRUCT",
@@ -22929,7 +23138,8 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NVX"
   },
   {
     "kind": "STRUCT",
@@ -23067,7 +23277,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_CMD_PROCESS_COMMANDS_INFO_NVX"
   },
   {
     "kind": "STRUCT",
@@ -23127,7 +23338,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_CMD_RESERVE_SPACE_FOR_COMMANDS_INFO_NVX"
   },
   {
     "kind": "STRUCT",
@@ -23259,7 +23471,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_OBJECT_TABLE_CREATE_INFO_NVX"
   },
   {
     "kind": "STRUCT",
@@ -23580,6 +23793,12 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "extends": "VkDeviceCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2",
+    "extensions": [
+      "VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT",
+      "VkPhysicalDeviceShaderDrawParameterFeatures"
     ]
   },
   {
@@ -23624,6 +23843,26 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROPERTIES_2",
+    "extensions": [
+      "VkPhysicalDevicePushDescriptorPropertiesKHR",
+      "VkPhysicalDeviceIDProperties",
+      "VkPhysicalDeviceMultiviewProperties",
+      "VkPhysicalDeviceDiscardRectanglePropertiesEXT",
+      "VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX",
+      "VkPhysicalDeviceSubgroupProperties",
+      "VkPhysicalDevicePointClippingProperties",
+      "VkPhysicalDeviceProtectedMemoryProperties",
+      "VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT",
+      "VkPhysicalDeviceSampleLocationsPropertiesEXT",
+      "VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT",
+      "VkPhysicalDeviceMaintenance3Properties",
+      "VkPhysicalDeviceExternalMemoryHostPropertiesEXT",
+      "VkPhysicalDeviceConservativeRasterizationPropertiesEXT",
+      "VkPhysicalDeviceShaderCorePropertiesAMD",
+      "VkPhysicalDeviceDescriptorIndexingPropertiesEXT",
+      "VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT"
     ]
   },
   {
@@ -23668,7 +23907,8 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_2"
   },
   {
     "kind": "STRUCT",
@@ -23712,6 +23952,13 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_IMAGE_FORMAT_PROPERTIES_2",
+    "extensions": [
+      "VkExternalImageFormatProperties",
+      "VkSamplerYcbcrConversionImageFormatProperties",
+      "VkTextureLODGatherFormatPropertiesAMD",
+      "VkAndroidHardwareBufferUsageANDROID"
     ]
   },
   {
@@ -23808,6 +24055,10 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2",
+    "extensions": [
+      "VkPhysicalDeviceExternalImageFormatInfo"
     ]
   },
   {
@@ -23852,6 +24103,10 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_QUEUE_FAMILY_PROPERTIES_2",
+    "extensions": [
+      "VkQueueFamilyCheckpointPropertiesNV"
     ]
   },
   {
@@ -23896,7 +24151,8 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PROPERTIES_2"
   },
   {
     "kind": "STRUCT",
@@ -23940,7 +24196,8 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_SPARSE_IMAGE_FORMAT_PROPERTIES_2"
   },
   {
     "kind": "STRUCT",
@@ -24036,7 +24293,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SPARSE_IMAGE_FORMAT_INFO_2"
   },
   {
     "kind": "STRUCT",
@@ -24080,7 +24338,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceProperties2",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES_KHR"
   },
   {
     "kind": "STRUCT",
@@ -24131,7 +24391,9 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPresentInfoKHR",
+    "sType": "VK_STRUCTURE_TYPE_PRESENT_REGIONS_KHR"
   },
   {
     "kind": "STRUCT",
@@ -24250,7 +24512,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES"
   },
   {
     "kind": "STRUCT",
@@ -24349,7 +24613,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceImageFormatInfo2",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_IMAGE_FORMAT_INFO"
   },
   {
     "kind": "STRUCT",
@@ -24393,7 +24659,9 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkImageFormatProperties2",
+    "sType": "VK_STRUCTURE_TYPE_EXTERNAL_IMAGE_FORMAT_PROPERTIES"
   },
   {
     "kind": "STRUCT",
@@ -24466,7 +24734,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_BUFFER_INFO"
   },
   {
     "kind": "STRUCT",
@@ -24510,7 +24779,8 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_EXTERNAL_BUFFER_PROPERTIES"
   },
   {
     "kind": "STRUCT",
@@ -24605,7 +24875,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceProperties2",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ID_PROPERTIES"
   },
   {
     "kind": "STRUCT",
@@ -24652,7 +24924,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkImageCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -24699,7 +24973,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkBufferCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_BUFFER_CREATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -24746,7 +25022,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkMemoryAllocateInfo",
+    "sType": "VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -24811,7 +25089,9 @@
         "dereferenceCount": 0,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkMemoryAllocateInfo",
+    "sType": "VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -24866,7 +25146,9 @@
         "dereferenceCount": 0,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkMemoryAllocateInfo",
+    "sType": "VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -24904,7 +25186,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_MEMORY_WIN32_HANDLE_PROPERTIES_KHR"
   },
   {
     "kind": "STRUCT",
@@ -24956,7 +25239,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_MEMORY_GET_WIN32_HANDLE_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -25007,7 +25291,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkMemoryAllocateInfo",
+    "sType": "VK_STRUCTURE_TYPE_IMPORT_MEMORY_FD_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -25045,7 +25331,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_MEMORY_FD_PROPERTIES_KHR"
   },
   {
     "kind": "STRUCT",
@@ -25097,7 +25384,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_MEMORY_GET_FD_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -25212,7 +25500,9 @@
         "isNumericArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkSubmitInfo",
+    "sType": "VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -25253,7 +25543,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_SEMAPHORE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -25326,7 +25617,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_EXTERNAL_SEMAPHORE_PROPERTIES"
   },
   {
     "kind": "STRUCT",
@@ -25373,7 +25665,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkSemaphoreCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_CREATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -25462,7 +25756,8 @@
         "dereferenceCount": 0,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -25517,7 +25812,9 @@
         "dereferenceCount": 0,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkSemaphoreCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -25591,7 +25888,9 @@
         "isNumericArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkSubmitInfo",
+    "sType": "VK_STRUCTURE_TYPE_D3D12_FENCE_SUBMIT_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -25643,7 +25942,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_SEMAPHORE_GET_WIN32_HANDLE_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -25718,7 +26018,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_FD_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -25770,7 +26071,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_SEMAPHORE_GET_FD_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -25811,7 +26113,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FENCE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -25884,7 +26187,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_EXTERNAL_FENCE_PROPERTIES"
   },
   {
     "kind": "STRUCT",
@@ -25931,7 +26235,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkFenceCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_EXPORT_FENCE_CREATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -26020,7 +26326,8 @@
         "dereferenceCount": 0,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_IMPORT_FENCE_WIN32_HANDLE_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -26075,7 +26382,9 @@
         "dereferenceCount": 0,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkFenceCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_EXPORT_FENCE_WIN32_HANDLE_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -26127,7 +26436,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_FENCE_GET_WIN32_HANDLE_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -26202,7 +26512,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_IMPORT_FENCE_FD_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -26254,7 +26565,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_FENCE_GET_FD_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -26318,7 +26630,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES"
   },
   {
     "kind": "STRUCT",
@@ -26372,7 +26686,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceProperties2",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES"
   },
   {
     "kind": "STRUCT",
@@ -26475,7 +26791,9 @@
         "isNumericArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkRenderPassCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -26634,7 +26952,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT"
   },
   {
     "kind": "STRUCT",
@@ -26674,7 +26993,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DISPLAY_POWER_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -26714,7 +27034,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DEVICE_EVENT_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -26754,7 +27075,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DISPLAY_EVENT_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -26795,7 +27117,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkSwapchainCreateInfoKHR",
+    "sType": "VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -26859,7 +27183,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GROUP_PROPERTIES"
   },
   {
     "kind": "STRUCT",
@@ -26916,7 +27241,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkMemoryAllocateInfo",
+    "sType": "VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO"
   },
   {
     "kind": "STRUCT",
@@ -26983,6 +27310,10 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_INFO",
+    "extensions": [
+      "VkBindBufferMemoryDeviceGroupInfo"
     ]
   },
   {
@@ -27040,7 +27371,9 @@
         "isNumericArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkBindBufferMemoryInfo",
+    "sType": "VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO"
   },
   {
     "kind": "STRUCT",
@@ -27107,6 +27440,12 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_INFO",
+    "extensions": [
+      "VkBindImageMemoryDeviceGroupInfo",
+      "VkBindImageMemorySwapchainInfoKHR",
+      "VkBindImagePlaneMemoryInfo"
     ]
   },
   {
@@ -27187,7 +27526,9 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkBindImageMemoryInfo",
+    "sType": "VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO"
   },
   {
     "kind": "STRUCT",
@@ -27254,7 +27595,9 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkRenderPassBeginInfo",
+    "sType": "VK_STRUCTURE_TYPE_DEVICE_GROUP_RENDER_PASS_BEGIN_INFO"
   },
   {
     "kind": "STRUCT",
@@ -27298,7 +27641,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkCommandBufferBeginInfo",
+    "sType": "VK_STRUCTURE_TYPE_DEVICE_GROUP_COMMAND_BUFFER_BEGIN_INFO"
   },
   {
     "kind": "STRUCT",
@@ -27401,7 +27746,9 @@
         "isNumericArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkSubmitInfo",
+    "sType": "VK_STRUCTURE_TYPE_DEVICE_GROUP_SUBMIT_INFO"
   },
   {
     "kind": "STRUCT",
@@ -27455,7 +27802,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkBindSparseInfo",
+    "sType": "VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -27515,7 +27864,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_CAPABILITIES_KHR"
   },
   {
     "kind": "STRUCT",
@@ -27554,7 +27904,9 @@
         "handleType": "VkSurfaceKHR",
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkImageCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -27603,7 +27955,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkBindImageMemoryInfo",
+    "sType": "VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -27684,7 +28038,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -27748,7 +28103,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPresentInfoKHR",
+    "sType": "VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -27800,7 +28157,9 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkDeviceCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_DEVICE_GROUP_DEVICE_CREATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -27847,7 +28206,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkSwapchainCreateInfoKHR",
+    "sType": "VK_STRUCTURE_TYPE_DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -28042,7 +28403,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -28183,7 +28545,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_HDR_METADATA_EXT"
   },
   {
     "kind": "STRUCT",
@@ -28308,7 +28671,9 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPresentInfoKHR",
+    "sType": "VK_STRUCTURE_TYPE_PRESENT_TIMES_INFO_GOOGLE"
   },
   {
     "kind": "STRUCT",
@@ -28385,7 +28750,8 @@
         "dereferenceCount": 1,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_IOS_SURFACE_CREATE_INFO_MVK"
   },
   {
     "kind": "STRUCT",
@@ -28435,7 +28801,8 @@
         "dereferenceCount": 1,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_MACOS_SURFACE_CREATE_INFO_MVK"
   },
   {
     "kind": "STRUCT",
@@ -28525,7 +28892,9 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPipelineViewportStateCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV"
   },
   {
     "kind": "STRUCT",
@@ -28644,7 +29013,9 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPipelineViewportStateCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV"
   },
   {
     "kind": "STRUCT",
@@ -28682,7 +29053,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceProperties2",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISCARD_RECTANGLE_PROPERTIES_EXT"
   },
   {
     "kind": "STRUCT",
@@ -28758,7 +29131,9 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkGraphicsPipelineCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_PIPELINE_DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -28798,7 +29173,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceProperties2",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_ATTRIBUTES_PROPERTIES_NVX"
   },
   {
     "kind": "STRUCT",
@@ -28895,7 +29272,9 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkRenderPassCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -28940,7 +29319,8 @@
         "handleType": "VkInstance",
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SURFACE_INFO_2_KHR"
   },
   {
     "kind": "STRUCT",
@@ -28978,6 +29358,10 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_KHR",
+    "extensions": [
+      "VkSharedPresentSurfaceCapabilitiesKHR"
     ]
   },
   {
@@ -29016,7 +29400,8 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_SURFACE_FORMAT_2_KHR"
   },
   {
     "kind": "STRUCT",
@@ -29054,7 +29439,8 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DISPLAY_PROPERTIES_2_KHR"
   },
   {
     "kind": "STRUCT",
@@ -29092,7 +29478,8 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DISPLAY_PLANE_PROPERTIES_2_KHR"
   },
   {
     "kind": "STRUCT",
@@ -29130,7 +29517,8 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DISPLAY_MODE_PROPERTIES_2_KHR"
   },
   {
     "kind": "STRUCT",
@@ -29179,7 +29567,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DISPLAY_PLANE_INFO_2_KHR"
   },
   {
     "kind": "STRUCT",
@@ -29217,7 +29606,8 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DISPLAY_PLANE_CAPABILITIES_2_KHR"
   },
   {
     "kind": "STRUCT",
@@ -29258,7 +29648,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkSurfaceCapabilities2KHR",
+    "sType": "VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_KHR"
   },
   {
     "kind": "STRUCT",
@@ -29334,7 +29726,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES"
   },
   {
     "kind": "STRUCT",
@@ -29416,7 +29810,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceProperties2",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES"
   },
   {
     "kind": "STRUCT",
@@ -29455,7 +29851,8 @@
         "handleType": "VkDevice",
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_BUFFER_MEMORY_REQUIREMENTS_INFO_2"
   },
   {
     "kind": "STRUCT",
@@ -29500,6 +29897,10 @@
         "handleType": "VkDevice",
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_IMAGE_MEMORY_REQUIREMENTS_INFO_2",
+    "extensions": [
+      "VkImagePlaneMemoryRequirementsInfo"
     ]
   },
   {
@@ -29545,7 +29946,8 @@
         "handleType": "VkDevice",
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_IMAGE_SPARSE_MEMORY_REQUIREMENTS_INFO_2"
   },
   {
     "kind": "STRUCT",
@@ -29589,6 +29991,10 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_MEMORY_REQUIREMENTS_2",
+    "extensions": [
+      "VkMemoryDedicatedRequirements"
     ]
   },
   {
@@ -29633,7 +30039,8 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_SPARSE_IMAGE_MEMORY_REQUIREMENTS_2"
   },
   {
     "kind": "STRUCT",
@@ -29679,7 +30086,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceProperties2",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES"
   },
   {
     "kind": "STRUCT",
@@ -29737,7 +30146,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkMemoryRequirements2",
+    "sType": "VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS"
   },
   {
     "kind": "STRUCT",
@@ -29793,7 +30204,9 @@
         "handleType": "VkDevice",
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkMemoryAllocateInfo",
+    "sType": "VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -29840,7 +30253,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkImageViewCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_IMAGE_VIEW_USAGE_CREATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -29886,7 +30301,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPipelineTessellationStateCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -29931,7 +30348,9 @@
         "handleType": "VkDevice",
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkSamplerCreateInfo,VkImageViewCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO"
   },
   {
     "kind": "STRUCT",
@@ -30059,7 +30478,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_CREATE_INFO"
   },
   {
     "kind": "STRUCT",
@@ -30106,7 +30526,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkBindImageMemoryInfo",
+    "sType": "VK_STRUCTURE_TYPE_BIND_IMAGE_PLANE_MEMORY_INFO"
   },
   {
     "kind": "STRUCT",
@@ -30153,7 +30575,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkImageMemoryRequirementsInfo2",
+    "sType": "VK_STRUCTURE_TYPE_IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO"
   },
   {
     "kind": "STRUCT",
@@ -30199,7 +30623,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_YCBCR_CONVERSION_FEATURES"
   },
   {
     "kind": "STRUCT",
@@ -30243,7 +30669,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkImageFormatProperties2",
+    "sType": "VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES"
   },
   {
     "kind": "STRUCT",
@@ -30289,7 +30717,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkImageFormatProperties2",
+    "sType": "VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD"
   },
   {
     "kind": "STRUCT",
@@ -30352,7 +30782,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_CONDITIONAL_RENDERING_BEGIN_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -30392,7 +30823,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkSubmitInfo",
+    "sType": "VK_STRUCTURE_TYPE_PROTECTED_SUBMIT_INFO"
   },
   {
     "kind": "STRUCT",
@@ -30432,7 +30865,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES"
   },
   {
     "kind": "STRUCT",
@@ -30472,7 +30907,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceProperties2",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_PROPERTIES"
   },
   {
     "kind": "STRUCT",
@@ -30533,7 +30970,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DEVICE_QUEUE_INFO_2"
   },
   {
     "kind": "STRUCT",
@@ -30596,7 +31034,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPipelineMultisampleStateCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV"
   },
   {
     "kind": "STRUCT",
@@ -30648,7 +31088,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceProperties2",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES_EXT"
   },
   {
     "kind": "STRUCT",
@@ -30749,7 +31191,9 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkImageMemoryBarrier",
+    "sType": "VK_STRUCTURE_TYPE_SAMPLE_LOCATIONS_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -30877,7 +31321,9 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkRenderPassBeginInfo",
+    "sType": "VK_STRUCTURE_TYPE_RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -30927,7 +31373,9 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPipelineMultisampleStateCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -31013,7 +31461,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceProperties2",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT"
   },
   {
     "kind": "STRUCT",
@@ -31051,7 +31501,8 @@
         "isStructType": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_MULTISAMPLE_PROPERTIES_EXT"
   },
   {
     "kind": "STRUCT",
@@ -31091,7 +31542,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkSamplerCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_SAMPLER_REDUCTION_MODE_CREATE_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -31131,7 +31584,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceFeatures2",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_FEATURES_EXT"
   },
   {
     "kind": "STRUCT",
@@ -31229,7 +31684,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceProperties2",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT"
   },
   {
     "kind": "STRUCT",
@@ -31293,7 +31750,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPipelineColorBlendStateCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_ADVANCED_STATE_CREATE_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -31381,7 +31840,9 @@
         "isNumericArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPipelineMultisampleStateCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV"
   },
   {
     "kind": "STRUCT",
@@ -31434,7 +31895,9 @@
         "isNumericArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkImageCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -31497,7 +31960,8 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_VALIDATION_CACHE_CREATE_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -31536,7 +32000,9 @@
         "handleType": "VkDevice",
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkShaderModuleCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -31585,7 +32051,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceProperties2",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES"
   },
   {
     "kind": "STRUCT",
@@ -31631,6 +32099,10 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_SUPPORT",
+    "extensions": [
+      "VkDescriptorSetVariableDescriptorCountLayoutSupportEXT"
     ]
   },
   {
@@ -31677,7 +32149,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceFeatures2",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES"
   },
   {
     "kind": "STRUCT",
@@ -31744,7 +32218,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_NATIVE_BUFFER_ANDROID"
   },
   {
     "kind": "STRUCT",
@@ -31924,7 +32399,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkDeviceQueueCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -31984,7 +32461,8 @@
         "isString": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_NAME_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -32066,7 +32544,8 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_TAG_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -32117,7 +32596,8 @@
         "isNumericArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DEBUG_UTILS_LABEL_EXT"
   },
   {
     "kind": "STRUCT",
@@ -32202,7 +32682,9 @@
         "dereferenceCount": 1,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkInstanceCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -32342,7 +32824,8 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT"
   },
   {
     "kind": "STRUCT",
@@ -32392,7 +32875,9 @@
         "dereferenceCount": 1,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkMemoryAllocateInfo",
+    "sType": "VK_STRUCTURE_TYPE_IMPORT_MEMORY_HOST_POINTER_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -32430,7 +32915,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_MEMORY_HOST_POINTER_PROPERTIES_EXT"
   },
   {
     "kind": "STRUCT",
@@ -32469,7 +32955,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceProperties2",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT"
   },
   {
     "kind": "STRUCT",
@@ -32599,7 +33087,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceProperties2",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT"
   },
   {
     "kind": "STRUCT",
@@ -32767,7 +33257,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceProperties2",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD"
   },
   {
     "kind": "STRUCT",
@@ -32830,7 +33322,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPipelineRasterizationStateCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -33098,7 +33592,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES_EXT"
   },
   {
     "kind": "STRUCT",
@@ -33370,7 +33866,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceProperties2",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES_EXT"
   },
   {
     "kind": "STRUCT",
@@ -33424,7 +33922,9 @@
         "isNumericArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkDescriptorSetLayoutCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -33475,7 +33975,9 @@
         "isNumericArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkDescriptorSetAllocateInfo",
+    "sType": "VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -33513,7 +34015,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkDescriptorSetLayoutSupport",
+    "sType": "VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT_EXT"
   },
   {
     "kind": "STRUCT",
@@ -33651,7 +34155,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_2_KHR"
   },
   {
     "kind": "STRUCT",
@@ -33714,7 +34219,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_2_KHR"
   },
   {
     "kind": "STRUCT",
@@ -33869,7 +34375,8 @@
         "isNumericArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_2_KHR"
   },
   {
     "kind": "STRUCT",
@@ -33992,7 +34499,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_SUBPASS_DEPENDENCY_2_KHR"
   },
   {
     "kind": "STRUCT",
@@ -34125,7 +34633,8 @@
         "isNumericArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO_2_KHR"
   },
   {
     "kind": "STRUCT",
@@ -34165,7 +34674,8 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_SUBPASS_BEGIN_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -34193,7 +34703,8 @@
         "dereferenceCount": 1,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_SUBPASS_END_INFO_KHR"
   },
   {
     "kind": "STRUCT",
@@ -34271,7 +34782,9 @@
         "isDynamicArray": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPipelineVertexInputStateCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -34309,7 +34822,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceProperties2",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT"
   },
   {
     "kind": "STRUCT",
@@ -34346,7 +34861,9 @@
         "dereferenceCount": 1,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkMemoryAllocateInfo",
+    "sType": "VK_STRUCTURE_TYPE_IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID"
   },
   {
     "kind": "STRUCT",
@@ -34384,7 +34901,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkImageFormatProperties2",
+    "sType": "VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_USAGE_ANDROID"
   },
   {
     "kind": "STRUCT",
@@ -34433,6 +34952,10 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
+    ],
+    "sType": "VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_PROPERTIES_ANDROID",
+    "extensions": [
+      "VkAndroidHardwareBufferFormatPropertiesANDROID"
     ]
   },
   {
@@ -34472,7 +34995,8 @@
         "handleType": "VkDevice",
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_MEMORY_GET_ANDROID_HARDWARE_BUFFER_INFO_ANDROID"
   },
   {
     "kind": "STRUCT",
@@ -34593,7 +35117,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkAndroidHardwareBufferPropertiesANDROID",
+    "sType": "VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_ANDROID"
   },
   {
     "kind": "STRUCT",
@@ -34633,7 +35159,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkCommandBufferInheritanceInfo",
+    "sType": "VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_CONDITIONAL_RENDERING_INFO_EXT"
   },
   {
     "kind": "STRUCT",
@@ -34671,7 +35199,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkImageCreateInfo,VkSamplerYcbcrConversionCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID"
   },
   {
     "kind": "STRUCT",
@@ -34735,7 +35265,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES_KHR"
   },
   {
     "kind": "STRUCT",
@@ -34787,7 +35319,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONDITIONAL_RENDERING_FEATURES_EXT"
   },
   {
     "kind": "STRUCT",
@@ -34828,7 +35362,9 @@
         "isNumber": true,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "extends": "VkQueueFamilyProperties2",
+    "sType": "VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV"
   },
   {
     "kind": "STRUCT",
@@ -34878,7 +35414,8 @@
         "dereferenceCount": 1,
         "kind": "STRUCT_MEMBER"
       }
-    ]
+    ],
+    "sType": "VK_STRUCTURE_TYPE_CHECKPOINT_DATA_NV"
   },
   {
     "kind": "STRUCT",

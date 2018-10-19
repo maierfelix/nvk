@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body { 
+			overflow: hidden; 
+			background:rgba(30, 30, 30, 0.85);
+			font:45.0vh monospace;
+			margin:0;
+			padding:0;
+		}
+        #container { 
+			color: #f6f6f6; 
+			height:100vh;
+			margin:0 0.25em 0 0.25em;
+		}
+		#container span{ 
+			line-height:100vh;
+			margin-top:0;
+			margin-bottom:0
+		}		
+		#clock { 
+			float:right; 
+		}
+		#fps{
+			color:#16e41c;
+		}
+		#vsync{
+			color:white;
+			padding-left:0.25em;
+			padding-right:0.25em;	
+			border-radius:2px;
+		}
+		
+		.on{
+			background:#005f03;
+			border:1px solid #005f03; 
+		}
+
+		.off{
+			background:#af1717;
+			border:1px solid #af1717;
+		}	
+		
+		.label{
+			color:#888;
+		}
+		
+    </style>
+</head>
+<body>
+    <div id="container">
+		<span id="size">0x0</span>
+		<span class="label">vsync:</span><span id="vsync" class="on">ON</span>
+		<span class="label">fps:</span><span id="fps">0.00</span>		
+		<span id="clock">00:00:00.000</span>		
+	</div>
+    
+	<script>
+		window.onload = function(e){ 
+ 	
+			var fps = document.getElementById('fps');
+			var size = document.getElementById('size');
+			var clock = document.getElementById('clock');
+			var vsync = document.getElementById('vsync');
+			
+					
+			if (window.mixer) {
+				window.mixer.requestStats = function(stats){
+					size.innerText = stats.width + 'x' + stats.height;	
+					fps.innerText = format_double(stats.fps, 2);			
+					clock.innerText = format_timecode(stats.time);
+					vsync.innerText = stats.vsync ? "ON" : "OFF";
+					vsync.className = vsync.innerText.toLowerCase();
+				};
+			}
+		}
+		
+		function format_double(val, places) {
+			return parseFloat(Math.round(val * 100) / 100).toFixed(places);
+		}
+		
+		function zero_pad(num, size) {
+			var s = num + "";
+			while (s.length < size) s = "0" + s;
+			return s;
+		}
+		
+		function format_timecode(t) {
+			var h = parseInt(t / 3600.0, 10);
+			t = t - (h * 3600.0);
+			var m = parseInt(t / 60.0, 10);
+			t = t - (m * 60.0);			
+			var s = format_double(t, 3);
+			if (t < 10.0){
+				s  = '0' + s;
+			}			
+			return zero_pad(h | 0, 2) + ':' + zero_pad(m | 0, 2) + ':' + s;
+		}
+		
+    </script>
+</body>
+</html>

@@ -1,4 +1,5 @@
 import fs from "fs";
+import ncp from "ncp";
 import { spawn } from "child_process";
 
 import pkg from "./package.json";
@@ -8,37 +9,100 @@ const v8Version = process.versions.v8;
 const nodeVersion = process.versions.node;
 const architecture = process.arch;
 
+ncp.limit = 16;
+
 const vkVersion = process.env.npm_config_vkversion;
-if (!vkVersion) throw `No specification version -vkversion specified!`;
+if (!vkVersion) throw `No vulkan version --vkversion specified!`;
+
+const msvsVersion = process.env.npm_config_msvsversion || "2015";
 
 const baseGeneratePath = pkg.config.GEN_OUT_DIR;
 const generatePath = `${baseGeneratePath}/${vkVersion}`;
 
-// generated/version/
-if (!fs.existsSync(generatePath)) throw new Error(`Cannot find bindings for ${vkVersion} in ${generatePath}`);
+const unitPlatform = (
+  platform === "win32" ? "win" :
+  platform === "darwin" ? "mac" :
+  "unknown"
+);
 
-console.log(`
+// generated/version/
+if (!fs.existsSync(generatePath)) {
+  process.stderr.write(`Cannot find bindings for ${vkVersion} in ${generatePath}\n`);
+  throw `Exiting..`;
+}
+
+// build
+// build/release
+let buildDir = `./generated/${vkVersion}/build/`;
+let buildReleaseDir = buildDir + "Release/";
+if (!fs.existsSync(buildDir)) fs.mkdirSync(buildDir);
+if (!fs.existsSync(buildReleaseDir)) fs.mkdirSync(buildReleaseDir);
+
+process.stdout.write(`
 Compiling bindings for version ${vkVersion}...
 Platform: ${platform} | ${architecture}
 Node: ${nodeVersion}
 V8: ${v8Version}
 `);
 
-if (platform === "win32") {
-
-  let cmd = `cd ${generatePath} && node-gyp configure --msvs_version 2015 && node-gyp build`;
-
-  let shell = spawn(cmd, { shell: true, stdio: "inherit" }, { stdio: "pipe" });
-  shell.on("exit", function (error) {
-
-    if (error) {
-      console.log(`\x1b[31m%s\x1b[0m`, `\nFailed to compile bindings for ${vkVersion}! Code: ${error}`);
-    } else {
-      console.log(`\nSuccessfully compiled bindings for ${vkVersion}!`);
-    }
-
+function copyFiles() {
+  process.stdout.write(`\nCopying files..\n`);
+  return new Promise(resolve => {
+    // copy files into release folder
+    let baseDir = `./lib/${unitPlatform}/${architecture}`;
+    let targetDir = `./generated/${vkVersion}/build/Release`;
+    let files = [
+      `${baseDir}/GLEW/glew32.dll`,
+      `${baseDir}/GLFW/glfw3.dll`,
+      `${baseDir}/CEF/`
+    ];
+    let counter = 0;
+    files.map(path => {
+      let fileName = path.replace(/^.*[\\\/]/, "");
+      let isFile = fileName.length > 0;
+      let source = path;
+      let target = targetDir;
+      if (isFile) target += "/" + fileName;
+      ncp(source, target, error => {
+        process.stdout.write(`Copying ${source} -> ${target}\n`);
+        if (error) {
+          process.stderr.write(`Failed to copy ${source} -> ${target}\n`);
+          throw error;
+        }
+      });
+      if (counter++ >= files.length - 1) {
+        process.stdout.write("Done!\n");
+        resolve(true);
+      }
+    });
   });
+};
 
-} else {
-  console.error(`Error: Your platform isn't supported!`);
-}
+function buildFiles() {
+  process.stdout.write(`\nCompiling bindings..\n`);
+  return new Promise(resolve => {
+    // win32
+    if (platform === "win32") {
+      let cmd = `cd ${generatePath} && node-gyp configure --msvs_version ${msvsVersion} && node-gyp build`;
+      let shell = spawn(cmd, { shell: true, stdio: "inherit" }, { stdio: "pipe" });
+      shell.on("exit", error => {
+        if (!error) process.stdout.write("Done!\n");
+        resolve(!error);
+      });
+    // unknown
+    } else {
+      process.stderr.write(`Error: Your platform isn't supported!\n`);
+      resolve(false);
+    }
+  });
+};
+
+(async function run() {
+  await copyFiles();
+  let buildSuccess = await buildFiles();
+  if (buildSuccess) {
+    process.stdout.write(`\nSuccessfully compiled bindings for ${vkVersion}!\n`);
+  } else {
+    process.stderr.write(`\nFailed to compile bindings for ${vkVersion}!`);
+  }
+})();

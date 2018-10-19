@@ -311,6 +311,9 @@ function parseStructElement(parent) {
     returnedonly: !!attr.returnedonly,
     children
   };
+  if (attr.structextends) {
+    out.extends = attr.structextends;
+  }
   //registerStruct(out);
   if (!elements) return out;
   elements.map((child, index) => {
@@ -319,6 +322,12 @@ function parseStructElement(parent) {
         let ast = parseTypeElement(child);
         ast.kind = TYPES.STRUCT_MEMBER;
         children.push(ast);
+        if (child.attributes) {
+          // custom sType
+          if (child.attributes.values) {
+            out.sType = child.attributes.values;
+          }
+        }
       } break;
       // ignore the following
       case "comment": break;
@@ -573,6 +582,17 @@ export default function(xmlInput) {
     results.map(res => {
       let ast = parseElement(res);
       out.push(ast);
+    });
+    let structs = out.filter(node => node.kind === "STRUCT");
+    // add extensions
+    structs.map(struct => {
+      if (struct.extends) {
+        let extStruct = structs.filter(stru => stru.name === struct.extends)[0];
+        if (extStruct) {
+          if (!extStruct.extensions) extStruct.extensions = [];
+          if (extStruct.extensions.indexOf(struct.name) <= -1) extStruct.extensions.push(struct.name);
+        }
+      }
     });
   }
   if (true) {

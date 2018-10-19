@@ -6,57 +6,36 @@
     "vkSDK": "C:/VulkanSDK"
   },
   "conditions": [
-    [ "platform == 'win'", { "variables": { "platform": "windows" } } ],
+    [ "platform == 'win'", { "variables": { "platform": "win" } } ],
     [ "platform == 'mac'", { "variables": { "platform": "darwin" } } ]
   ],
   "targets": [
     {
       "target_name": "action_after_build",
       "type": "none",
-      "conditions": [
-        [
-          "OS=='win'",
-          {
-            "copies": [
-              {
-                "files": [
-                  "<(root)/lib/<(platform)/<(target_arch)/GLEW/glew32.dll",
-                  "<(root)/lib/<(platform)/<(target_arch)/GLFW/glfw3.dll"
-                ],
-                "destination": "<(PRODUCT_DIR)"
-              }
-            ]
-          }
-        ]
-      ]
+      "conditions": []
     },
     {
       "target_name": "addon",
-      "sources": [ {{ VK_INCLUDES | safe }} ],
+      "sources": [
+        {{ VK_INCLUDES | safe }},
+        "./src/render_handler.cpp",
+        "./src/browser_client.cpp",
+        "./src/app.cpp"
+      ],
       "include_dirs": [
         "<!(node -e \"require('nan')\")",
-        "<(root)/lib/include",
+        "<(root)/lib/include/",
+        "<(root)/lib/include/CEF",
         "<(vkSDK)/<(vkVersion)/Include"
       ],
       "library_dirs": [
         "<(root)/lib/<(platform)/<(target_arch)/GLFW",
         "<(root)/lib/<(platform)/<(target_arch)/GLEW",
+        "<(root)/lib/<(platform)/<(target_arch)/CEF",
         "<(vkSDK)/<(vkVersion)/Lib"
       ],
       "conditions": [
-        [
-          "OS=='mac'",
-          {
-            "include_dirs": [ "<!@(pkg-config glfw3 glew --cflags-only-I | sed s/-I//g)"],
-            "libraries": [ "<!@(pkg-config --libs glfw3 glew)", "-framework OpenGL"],
-            "library_dirs": [ "/usr/local/lib" ],
-            "xcode_settings": {
-              "OTHER_CPLUSPLUSFLAGS" : ["-std=c++11", "-stdlib=libc++"],
-              "OTHER_LDFLAGS": ["-stdlib=libc++"],
-              "MACOSX_DEPLOYMENT_TARGET": "10.10"
-            }
-          }
-        ],
         [
           "OS=='win'",
           {
@@ -67,7 +46,10 @@
               "libraries": [
                 "-lglfw3dll.lib",
                 "-lglew32.lib",
-                "-lvulkan-1.lib"
+                "-lvulkan-1.lib",
+                "-lopengl32.lib",
+                "-llibcef.lib",
+                "-llibcef_dll_wrapper.lib"
               ]
             },
             "defines": [
@@ -86,7 +68,62 @@
               },
               "VCLinkerTool": {
                 "LinkTimeCodeGeneration": 1,
-                "LinkIncremental": 1
+                "LinkIncremental": 1,
+                "AdditionalLibraryDirectories": [
+                  "../@PROJECT_SOURCE_DIR@/lib/<(platform)/<(target_arch)",
+                ]
+              }
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "target_name": "CEF_subprocess",
+      "type": "executable",
+      "sources": [
+        "./src/subprocess.cpp"
+      ],
+      "include_dirs": [
+        "<(root)/lib/include/CEF"
+      ],
+      "library_dirs": [
+        "<(root)/lib/<(platform)/<(target_arch)/CEF"
+      ],
+      "conditions": [
+        [
+          "OS=='win'",
+          {
+            "cflags": [
+              "-stdlib=libstdc++"
+            ],
+            "link_settings": {
+              "libraries": [
+                "-llibcef.lib",
+                "-llibcef_dll_wrapper.lib"
+              ]
+            },
+            "defines": [
+              "WIN32_LEAN_AND_MEAN",
+              "VC_EXTRALEAN",
+              "_ITERATOR_DEBUG_LEVEL=0",
+              "_HAS_EXCEPTIONS=1",
+              "USING_CEF_SHARED"
+            ],
+            "msvs_settings": {
+              "VCCLCompilerTool": {
+                "AdditionalOptions": ["/MP /EHsc"],
+                "ExceptionHandling": 1
+              },
+              "VCLibrarianTool": {
+                "AdditionalOptions" : ["/NODEFAULTLIB:MSVCRT"]
+              },
+              "VCLinkerTool": {
+                "LinkTimeCodeGeneration": 1,
+                "LinkIncremental": 1,
+                "AdditionalLibraryDirectories": [
+                  "../@PROJECT_SOURCE_DIR@/lib/<(platform)/<(target_arch)",
+                ]
               }
             }
           }

@@ -21,7 +21,9 @@
               {
                 "files": [
                   "<(root)/lib/<(platform)/<(target_arch)/GLEW/glew32.dll",
-                  "<(root)/lib/<(platform)/<(target_arch)/GLFW/glfw3.dll"
+                  "<(root)/lib/<(platform)/<(target_arch)/GLFW/glfw3.dll",
+                  "<(root)/lib/<(platform)/<(target_arch)/EAWebKit/EAWebKit.dll",
+                  "<(root)/lib/<(platform)/<(target_arch)/EAWebKit/glWebkit.dll"
                 ],
                 "destination": "<(PRODUCT_DIR)"
               }
@@ -161,22 +163,12 @@
       "library_dirs": [
         "<(root)/lib/<(platform)/<(target_arch)/GLFW",
         "<(root)/lib/<(platform)/<(target_arch)/GLEW",
+        "<(root)/lib/<(platform)/<(target_arch)/EABase",
+        "<(root)/lib/<(platform)/<(target_arch)/EAWebKit",
+        "<(root)/lib/<(platform)/<(target_arch)/glWebKit",
         "<(vkSDK)/<(vkVersion)/Lib"
       ],
       "conditions": [
-        [
-          "OS=='mac'",
-          {
-            "include_dirs": [ "<!@(pkg-config glfw3 glew --cflags-only-I | sed s/-I//g)"],
-            "libraries": [ "<!@(pkg-config --libs glfw3 glew)", "-framework OpenGL"],
-            "library_dirs": [ "/usr/local/lib" ],
-            "xcode_settings": {
-              "OTHER_CPLUSPLUSFLAGS" : ["-std=c++11", "-stdlib=libc++"],
-              "OTHER_LDFLAGS": ["-stdlib=libc++"],
-              "MACOSX_DEPLOYMENT_TARGET": "10.10"
-            }
-          }
-        ],
         [
           "OS=='win'",
           {
@@ -187,7 +179,9 @@
               "libraries": [
                 "-lglfw3dll.lib",
                 "-lglew32.lib",
-                "-lvulkan-1.lib"
+                "-lvulkan-1.lib",
+                "-lopengl32.lib",
+                "-lglWebkit.lib"
               ]
             },
             "defines": [
@@ -206,7 +200,10 @@
               },
               "VCLinkerTool": {
                 "LinkTimeCodeGeneration": 1,
-                "LinkIncremental": 1
+                "LinkIncremental": 1,
+                "AdditionalLibraryDirectories": [
+                  "../@PROJECT_SOURCE_DIR@/lib/<(platform)/<(target_arch)",
+                ]
               }
             }
           }

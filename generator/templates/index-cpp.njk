@@ -6,13 +6,11 @@
 #define GLM_FORCE_RADIANS
 #define GLM_FORCE_DEPTH_ZERO_TO_ONE
 
-#include <glm/vec4.hpp>
-#include <glm/mat4x4.hpp>
-
 #include "index.h"
 #include "calls.h"
 #include "enums.h"
 #include "window.h"
+#include "webkit.h"
 
 void createV8ArrayBufferFromMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   if (!(info[0]->IsBigInt())) Nan::ThrowError("First argument must be a BigInt!");
@@ -52,8 +50,9 @@ void _VK_VERSION_PATCH(const Nan::FunctionCallbackInfo<v8::Value>& info) {
 };
 
 NAN_MODULE_INIT(InitModule) {
-  // init vulkan window
+  // default initializers
   VulkanWindow::Initialize(target);
+  VulkanWebKit::Initialize(target);
   // manual initializers
   target->Set(
     Nan::New("createV8ArrayBufferFromMemory").ToLocalChecked(),

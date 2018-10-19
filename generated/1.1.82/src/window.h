@@ -7,8 +7,19 @@
 
 #include <nan.h>
 
+#include <GLEW/glew.h>
+#include <glWebKit\glWebKit.h>
+
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
+
+struct ShareHandles {
+  HANDLE memory { INVALID_HANDLE_VALUE };
+  HANDLE glReady { INVALID_HANDLE_VALUE };
+  HANDLE glComplete { INVALID_HANDLE_VALUE };
+};
+
+static const uint32_t SHARED_TEXTURE_DIMENSION = 512;
 
 class VulkanWindow: public Nan::ObjectWrap {
 
@@ -25,6 +36,7 @@ class VulkanWindow: public Nan::ObjectWrap {
 
     // event callbacks
     Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onresize;
+    Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onfocus;
     Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onclose;
     Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onkeydown;
     Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onkeyup;
@@ -32,13 +44,31 @@ class VulkanWindow: public Nan::ObjectWrap {
     Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onmousewheel;
     Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onmousedown;
     Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onmouseup;
+    Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> ondrop;
+    // TODO Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onscroll;
 
     GLFWwindow* instance;
+
+    // webkit related
+    GLFWwindow* winwebkit;
+    EA::WebKit::View* v;
+    ShareHandles handles;
+
+    GLuint glReady { 0 };
+    GLuint glComplete { 0 };
+    GLuint color = 0;
+    GLuint fbo = 0;
+    GLuint vao = 0;
+    GLuint program = 0;
+    GLuint mem = 0;
+
+    uint64_t memorySize = 1024 * 1024;
 
     static Nan::Persistent<v8::FunctionTemplate> constructor;
     static void Initialize(v8::Local<v8::Object> exports);
 
     static NAN_METHOD(pollEvents);
+    static NAN_METHOD(focus);
     static NAN_METHOD(close);
     static NAN_METHOD(shouldClose);
     static NAN_METHOD(createSurface);
@@ -55,6 +85,9 @@ class VulkanWindow: public Nan::ObjectWrap {
 
     static NAN_GETTER(Getonresize);
     static NAN_SETTER(Setonresize);
+
+    static NAN_GETTER(Getonfocus);
+    static NAN_SETTER(Setonfocus);
 
     static NAN_GETTER(Getonclose);
     static NAN_SETTER(Setonclose);
@@ -77,12 +110,20 @@ class VulkanWindow: public Nan::ObjectWrap {
     static NAN_GETTER(Getonmouseup);
     static NAN_SETTER(Setonmouseup);
 
+    static NAN_GETTER(Getondrop);
+    static NAN_SETTER(Setondrop);
+
+    void initOpenGL();
+    void renderOpenGL();
+
     static void onWindowResize(GLFWwindow*, int, int);
+    static void onWindowFocus(GLFWwindow*, int);
     static void onWindowClose(GLFWwindow*);
     static void onWindowKeyPress(GLFWwindow*, int, int, int, int);
     static void onWindowMouseMove(GLFWwindow*, double, double);
     static void onWindowMouseWheel(GLFWwindow*, double, double);
     static void onWindowMouseButton(GLFWwindow*, int, int, int);
+    static void onWindowDrop(GLFWwindow*, int, const char**);
 
   private:
     VulkanWindow();
@@ -108,6 +149,7 @@ void VulkanWindow::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
 
   Nan::SetPrototypeMethod(ctor, "pollEvents", pollEvents);
+  Nan::SetPrototypeMethod(ctor, "focus", focus);
   Nan::SetPrototypeMethod(ctor, "close", close);
   Nan::SetPrototypeMethod(ctor, "shouldClose", shouldClose);
   Nan::SetPrototypeMethod(ctor, "createSurface", createSurface);
@@ -118,6 +160,7 @@ void VulkanWindow::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   SetPrototypeAccessor(proto, Nan::New("height").ToLocalChecked(), Getheight, Setheight, ctor);
 
   SetPrototypeAccessor(proto, Nan::New("onresize").ToLocalChecked(), Getonresize, Setonresize, ctor);
+  SetPrototypeAccessor(proto, Nan::New("onfocus").ToLocalChecked(), Getonfocus, Setonfocus, ctor);
   SetPrototypeAccessor(proto, Nan::New("onclose").ToLocalChecked(), Getonclose, Setonclose, ctor);
   SetPrototypeAccessor(proto, Nan::New("onkeydown").ToLocalChecked(), Getonkeydown, Setonkeydown, ctor);
   SetPrototypeAccessor(proto, Nan::New("onkeyup").ToLocalChecked(), Getonkeyup, Setonkeyup, ctor);
@@ -125,6 +168,7 @@ void VulkanWindow::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
   SetPrototypeAccessor(proto, Nan::New("onmousewheel").ToLocalChecked(), Getonmousewheel, Setonmousewheel, ctor);
   SetPrototypeAccessor(proto, Nan::New("onmousedown").ToLocalChecked(), Getonmousedown, Setonmousedown, ctor);
   SetPrototypeAccessor(proto, Nan::New("onmouseup").ToLocalChecked(), Getonmouseup, Setonmouseup, ctor);
+  SetPrototypeAccessor(proto, Nan::New("ondrop").ToLocalChecked(), Getondrop, Setondrop, ctor);
 
   Nan::Set(target, Nan::New("VulkanWindow").ToLocalChecked(), ctor->GetFunction());
 }
@@ -140,6 +184,16 @@ void VulkanWindow::onWindowResize(GLFWwindow* window, int w, int h) {
   const unsigned argc = 1;
   v8::Local<v8::Value> argv[argc] = { out };
   Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->onresize), argc, argv);
+}
+
+void VulkanWindow::onWindowFocus(GLFWwindow* window, int focused) {
+  VulkanWindow* self = static_cast<VulkanWindow*>(glfwGetWindowUserPointer(window));
+  if (self->onfocus.IsEmpty()) return;
+  v8::Local<v8::Object> out = Nan::New<v8::Object>();
+  out->Set(Nan::New("focused").ToLocalChecked(), Nan::New(!!focused));
+  const unsigned argc = 1;
+  v8::Local<v8::Value> argv[argc] = { out };
+  Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->onfocus), argc, argv);
 }
 
 void VulkanWindow::onWindowClose(GLFWwindow* window) {
@@ -230,28 +284,110 @@ void VulkanWindow::onWindowMouseButton(GLFWwindow* window, int button, int actio
   }
 }
 
+void VulkanWindow::onWindowDrop(GLFWwindow* window, int count, const char** paths) {
+  v8::Isolate *isolate = v8::Isolate::GetCurrent();
+  VulkanWindow* self = static_cast<VulkanWindow*>(glfwGetWindowUserPointer(window));
+  if (self->ondrop.IsEmpty()) return;
+  v8::Local<v8::Object> out = Nan::New<v8::Object>();
+  // fill paths
+  v8::Local<v8::Array> arr = v8::Array::New(isolate, count);
+  unsigned int len = count;
+  for (unsigned int ii = 0; ii < len; ++ii) {
+    v8::Local<v8::String> str = v8::String::NewFromUtf8(isolate, paths[ii]);
+    arr->Set(ii, str);
+  };
+  // add to out obj
+  out->Set(Nan::New("paths").ToLocalChecked(), arr);
+  const unsigned argc = 1;
+  v8::Local<v8::Value> argv[argc] = { out };
+  Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->ondrop), argc, argv);
+}
+
+void VulkanWindow::initOpenGL() {
+  printf("Initialising GLFW OpenGL..\n");
+  glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_API);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
+  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+  GLFWwindow* window = glfwCreateWindow(10, 10, "opengl", nullptr, nullptr);
+  this->winwebkit = window;
+  glfwMakeContextCurrent(window);
+  glfwHideWindow(window);
+  // init glew
+  if (glewInit() != GLEW_OK) return Nan::ThrowError("Failed to init GLEW!");
+
+  glDisable(GL_DEPTH_TEST);
+
+  // https://github.com/jherico/Vulkan/tree/cpp/examples/glinterop
+  glGenSemaphoresEXT(1, &this->glReady);
+  glGenSemaphoresEXT(1, &this->glComplete);
+  glCreateTextures(GL_TEXTURE_2D, 1, &this->color);
+  glImportSemaphoreWin32HandleEXT(this->glReady, GL_HANDLE_TYPE_OPAQUE_WIN32_EXT, this->handles.glReady);
+  glImportSemaphoreWin32HandleEXT(this->glComplete, GL_HANDLE_TYPE_OPAQUE_WIN32_EXT, this->handles.glComplete);
+  glCreateMemoryObjectsEXT(1, &this->mem);
+  glImportMemoryWin32HandleEXT(this->mem, this->memorySize, GL_HANDLE_TYPE_OPAQUE_WIN32_EXT, this->handles.memory);
+  glTextureStorageMem2DEXT(this->color, 1, GL_RGBA8, SHARED_TEXTURE_DIMENSION, SHARED_TEXTURE_DIMENSION, this->mem, 0);
+  // setup
+  glCreateFramebuffers(1, &this->fbo);
+  glNamedFramebufferTexture(this->fbo, GL_COLOR_ATTACHMENT0, this->color, 0);
+  glGenVertexArrays(1, &this->vao);
+  glBindVertexArray(this->vao);
+  //glUseProgram(this->program);
+  //glProgramUniform3f(this->program, 0, (float)SHARED_TEXTURE_DIMENSION, (float)SHARED_TEXTURE_DIMENSION, 0.0f);
+  glBindFramebuffer(GL_DRAW_FRAMEBUFFER, this->fbo);
+  glViewport(0, 0, SHARED_TEXTURE_DIMENSION, SHARED_TEXTURE_DIMENSION);
+}
+
+void VulkanWindow::renderOpenGL() {
+  GLenum srcLayout = GL_LAYOUT_COLOR_ATTACHMENT_EXT;
+  glWaitSemaphoreEXT(this->glReady, 0, nullptr, 1, &this->color, &srcLayout);
+  glClearColor(1.0, 0.0, 0.0, 1.0);
+  glClear(GL_COLOR_BUFFER_BIT);
+  //glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+  GLenum dstLayout = GL_LAYOUT_SHADER_READ_ONLY_EXT;
+  glSignalSemaphoreEXT(this->glComplete, 0, nullptr, 1, &this->color, &dstLayout);
+  glFlush();
+};
+
 NAN_METHOD(VulkanWindow::New) {
   VulkanWindow* self = new VulkanWindow();
+  // webkit
+  /*{
+    if (initWebkit() != true) return Nan::ThrowError("Failed to load webkit!");
+    self->v = createView(480, 320);
+    std::string url = std::string("file:///C:/Users/User/Documents/GitHub/vulkan-game/ui.html");
+    printf("Grabbing .html file from ");
+    printf(url.c_str());
+    printf("\n");
+    setViewUrl(self->v, url.c_str());
+  }*/
   self->Wrap(info.Holder());
   // create glfw window
   if (info.IsConstructCall()) {
+    // init glfw
+    if (glfwInit() != GLFW_TRUE) return Nan::ThrowError("Failed to init GLFW!");
+    // process arguments
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = info[0]->ToObject();
       v8::Local<v8::Value> argWidth = obj->Get(Nan::New("width").ToLocalChecked());
       v8::Local<v8::Value> argHeight = obj->Get(Nan::New("height").ToLocalChecked());
       v8::Local<v8::Value> argTitle = obj->Get(Nan::New("title").ToLocalChecked());
+      v8::Local<v8::Value> enableWebkit = obj->Get(Nan::New("enableWebkit").ToLocalChecked());
       if (!argWidth->IsUndefined()) self->width = argWidth->Uint32Value();
       if (!argHeight->IsUndefined()) self->height = argHeight->Uint32Value();
       if (!argTitle->IsUndefined()) self->title = *v8::String::Utf8Value(v8::Isolate::GetCurrent(), argTitle);
+      if (enableWebkit->BooleanValue()) self->initOpenGL();
     }
-    if (glfwInit() != GLFW_TRUE) return Nan::ThrowError("Failed to create GLFW!");
+    printf("Initialising GLFW Vulkan..\n");
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
     glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
     GLFWwindow* window = glfwCreateWindow(self->width, self->height, self->title.c_str(), nullptr, nullptr);
     self->instance = window;
+    glfwMakeContextCurrent(window);
     glfwSetWindowUserPointer(window, self);
     // window events
     glfwSetWindowSizeCallback(window, VulkanWindow::onWindowResize);
+    glfwSetWindowFocusCallback(window, VulkanWindow::onWindowFocus);
     glfwSetWindowCloseCallback(window, VulkanWindow::onWindowClose);
     // keyboard events
     glfwSetKeyCallback(window, VulkanWindow::onWindowKeyPress);
@@ -259,25 +395,38 @@ NAN_METHOD(VulkanWindow::New) {
     glfwSetCursorPosCallback(window, VulkanWindow::onWindowMouseMove);
     glfwSetScrollCallback(window, VulkanWindow::onWindowMouseWheel);
     glfwSetMouseButtonCallback(window, VulkanWindow::onWindowMouseButton);
+    // file drop
+    glfwSetDropCallback(window, VulkanWindow::onWindowDrop);
   }
   info.GetReturnValue().Set(info.Holder());
 }
 
 NAN_METHOD(VulkanWindow::shouldClose) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  info.GetReturnValue().Set(Nan::New(glfwWindowShouldClose(self->instance)));
+  GLFWwindow* window = self->instance;
+  info.GetReturnValue().Set(Nan::New(glfwWindowShouldClose(window)));
+}
+
+NAN_METHOD(VulkanWindow::focus) {
+  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
+  GLFWwindow* window = self->instance;
+  glfwFocusWindow(window);
 }
 
 NAN_METHOD(VulkanWindow::close) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  glfwSetWindowShouldClose(self->instance, GLFW_TRUE);
-  VulkanWindow::onWindowClose(self->instance);
+  GLFWwindow* window = self->instance;
+  glfwSetWindowShouldClose(window, GLFW_TRUE);
+  VulkanWindow::onWindowClose(window);
 }
 
 NAN_METHOD(VulkanWindow::pollEvents) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
   GLFWwindow* window = self->instance;
   if (!glfwWindowShouldClose(window)) {
+    //updateWebkit();
+    //updateView(self->v);
+    //drawInterface(self->v);
     glfwPollEvents();
   }
 }
@@ -346,9 +495,10 @@ NAN_GETTER(VulkanWindow::Getwidth) {
 }
 NAN_SETTER(VulkanWindow::Setwidth) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
+  GLFWwindow* window = self->instance;
   self->width = static_cast<int>(value->NumberValue());
-  glfwSetWindowSize(self->instance, self->width, self->height);
-  VulkanWindow::onWindowResize(self->instance, self->width, self->height);
+  glfwSetWindowSize(window, self->width, self->height);
+  VulkanWindow::onWindowResize(window, self->width, self->height);
 }
 
 // height
@@ -358,9 +508,10 @@ NAN_GETTER(VulkanWindow::Getheight) {
 }
 NAN_SETTER(VulkanWindow::Setheight) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
+  GLFWwindow* window = self->instance;
   self->height = static_cast<int>(value->NumberValue());
-  glfwSetWindowSize(self->instance, self->width, self->height);
-  VulkanWindow::onWindowResize(self->instance, self->width, self->height);
+  glfwSetWindowSize(window, self->width, self->height);
+  VulkanWindow::onWindowResize(window, self->width, self->height);
 }
 
 // onresize
@@ -371,6 +522,16 @@ NAN_GETTER(VulkanWindow::Getonresize) {
 NAN_SETTER(VulkanWindow::Setonresize) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
   self->onresize = Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>>(value.As<v8::Function>());
+}
+
+// onfocus
+NAN_GETTER(VulkanWindow::Getonfocus) {
+  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Function>(self->onfocus));
+}
+NAN_SETTER(VulkanWindow::Setonfocus) {
+  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
+  self->onfocus = Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>>(value.As<v8::Function>());
 }
 
 // onclose
@@ -441,6 +602,16 @@ NAN_GETTER(VulkanWindow::Getonmouseup) {
 NAN_SETTER(VulkanWindow::Setonmouseup) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
   self->onmouseup = Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>>(value.As<v8::Function>());
+}
+
+// ondrop
+NAN_GETTER(VulkanWindow::Getondrop) {
+  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Function>(self->ondrop));
+}
+NAN_SETTER(VulkanWindow::Setondrop) {
+  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
+  self->ondrop = Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>>(value.As<v8::Function>());
 }
 
 #endif
