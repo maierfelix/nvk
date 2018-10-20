@@ -54,11 +54,6 @@ void RenderHandler::OnPaint(
   int width,
   int height
 ) {
-  int potw = 1 << (31 - clz(width));
-  int poth = 1 << (31 - clz(height));
-  if (potw < width) potw <<= 1;
-  if (poth < height) poth <<= 1;
-  printf("PAINT w:%i h:%i\n", potw, poth);
   glBindTexture(GL_TEXTURE_2D, tex_);
   //glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
   //glPixelStorei(GL_UNPACK_ROW_LENGTH, width);
@@ -72,18 +67,5 @@ void RenderHandler::OnPaint(
     GL_UNSIGNED_BYTE,
     (unsigned char*)buffer
   );
-  /*for (auto& rect : dirtyRects) {
-    printf("x: %i y: %i w: %i h: %i\n", rect.x, rect.y, rect.width, rect.height);
-    glTexSubImage2D(
-      GL_TEXTURE_2D,
-      0,
-      rect.x, rect.y,
-      rect.width, rect.height,
-      GL_RGBA,
-      GL_UNSIGNED_BYTE,
-      buffer
-    );
-  };*/
-  printf("-------\n");
   glBindTexture(GL_TEXTURE_2D, 0);
 }

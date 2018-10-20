@@ -91,13 +91,9 @@ struct SharedResources {
   } semaphores;
   ShareHandles handles;
 
-  void init(VulkanWindow* windowVK, const VkDevice device, const VkInstance instance) {
+  void createSemaphores(const VkDevice device, const VkInstance instance) {
     auto handleType = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT;
-    VkResult result;
-
     PFN_vkGetSemaphoreWin32HandleKHR vkGetSemaphoreWin32HandleKHR = (PFN_vkGetSemaphoreWin32HandleKHR) vkGetInstanceProcAddr(instance, "vkGetSemaphoreWin32HandleKHR");
-    PFN_vkGetMemoryWin32HandleKHR vkGetMemoryWin32HandleKHR = (PFN_vkGetMemoryWin32HandleKHR) vkGetInstanceProcAddr(instance, "vkGetMemoryWin32HandleKHR");
-
     {
       VkSemaphoreCreateInfo sci = {};
       VkExportSemaphoreCreateInfo esci = {};
@@ -122,13 +118,16 @@ struct SharedResources {
       vkGetSemaphoreWin32HandleKHR(device, &readySemaphoreInfo, &handles.glReady);
       vkGetSemaphoreWin32HandleKHR(device, &completeSemaphoreInfo, &handles.glComplete);
     }
+  }
 
+  void createTexture(const VkDevice device, const VkInstance instance, int width, int height) {
+    PFN_vkGetMemoryWin32HandleKHR vkGetMemoryWin32HandleKHR = (PFN_vkGetMemoryWin32HandleKHR) vkGetInstanceProcAddr(instance, "vkGetMemoryWin32HandleKHR");
     {
       VkImageCreateInfo imageCreateInfo = {};
       imageCreateInfo.sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO;
       imageCreateInfo.imageType = VK_IMAGE_TYPE_2D;
-      imageCreateInfo.extent.width = POT(windowVK->width);
-      imageCreateInfo.extent.height = POT(windowVK->height);
+      imageCreateInfo.extent.width = POT(width);
+      imageCreateInfo.extent.height = POT(height);
       imageCreateInfo.extent.depth = 1;
       imageCreateInfo.mipLevels = 1;
       imageCreateInfo.arrayLayers = 1;
@@ -138,12 +137,11 @@ struct SharedResources {
       imageCreateInfo.samples = VK_SAMPLE_COUNT_1_BIT;
       imageCreateInfo.tiling = VK_IMAGE_TILING_OPTIMAL;
 
-      result = vkCreateImage(device, &imageCreateInfo, nullptr, texture.image);
+      VkResult result = vkCreateImage(device, &imageCreateInfo, nullptr, texture.image);
       if (result != VK_SUCCESS) printf("Faild to create image!");
       texture.format = imageCreateInfo.format;
       texture.extent = imageCreateInfo.extent;
     }
-
     {
       VkMemoryRequirements memReqs;
       vkGetImageMemoryRequirements(device, *texture.image, &memReqs);
@@ -163,9 +161,7 @@ struct SharedResources {
       memHandleInfo.memory = *texture.memory;
       memHandleInfo.handleType = VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT;
       vkGetMemoryWin32HandleKHR(device, &memHandleInfo, &handles.memory);
-      
     }
-
     {
       // Create sampler
       VkSamplerCreateInfo samplerCreateInfo = {};
@@ -181,7 +177,6 @@ struct SharedResources {
       samplerCreateInfo.borderColor = VK_BORDER_COLOR_FLOAT_OPAQUE_WHITE;
       vkCreateSampler(device, &samplerCreateInfo, nullptr, texture.sampler);
     }
-
     {
       // Create image view
       VkImageViewCreateInfo viewCreateInfo = {};
@@ -190,18 +185,9 @@ struct SharedResources {
       viewCreateInfo.image = *texture.image;
       viewCreateInfo.format = texture.format;
       viewCreateInfo.subresourceRange = { VK_IMAGE_ASPECT_COLOR_BIT, 0, 1, 0, 1 };
-      result = vkCreateImageView(device, &viewCreateInfo, nullptr, texture.view);
+      VkResult result = vkCreateImageView(device, &viewCreateInfo, nullptr, texture.view);
       if (result != VK_SUCCESS) printf("Failed to create image view!\n");
     }
-
-    /*{
-      VkImageSubresource imgSubresource = {};
-      imgSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
-      VkSubresourceLayout subresourceLayout = {};
-      vkGetImageSubresourceLayout(device, *texture.image, &imgSubresource, &subresourceLayout);
-      //console.log(imgSubresource, subresourceLayout);
-      printf("%i\n", subresourceLayout.rowPitch);
-    }*/
   }
 
   void destroy() {}
@@ -245,8 +231,6 @@ class VulkanWebKit: public Nan::ObjectWrap {
 
     RenderHandler* renderHandler;
 
-    int rofl = 0;
-
     static Nan::Persistent<v8::FunctionTemplate> constructor;
     static void Initialize(v8::Local<v8::Object> exports);
 
@@ -255,11 +239,21 @@ class VulkanWebKit: public Nan::ObjectWrap {
 
     static NAN_METHOD(draw);
     static NAN_METHOD(init);
+    static NAN_METHOD(resize);
+    static NAN_METHOD(mouseup);
+    static NAN_METHOD(mousedown);
+    static NAN_METHOD(mousemove);
     static NAN_METHOD(linkSemaphores);
 
     void initCEF();
     void initOpenGL();
+    void resizeCEF(int, int);
     void renderOpenGL();
+
+    void createSharedSemaphores();
+    void createSharedMemory(int, int, int);
+    void createTextureObject(int, int);
+    void mouseClick(int, int, int, bool);
     GLuint createShader(const std::string, const std::string);
 
   private:
@@ -289,6 +283,10 @@ void VulkanWebKit::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
 
   Nan::SetPrototypeMethod(ctor, "draw", draw);
   Nan::SetPrototypeMethod(ctor, "init", init);
+  Nan::SetPrototypeMethod(ctor, "resize", resize);
+  Nan::SetPrototypeMethod(ctor, "mouseup", mouseup);
+  Nan::SetPrototypeMethod(ctor, "mousedown", mousedown);
+  Nan::SetPrototypeMethod(ctor, "mousemove", mousemove);
   Nan::SetPrototypeMethod(ctor, "linkSemaphores", linkSemaphores);
 
   Nan::Set(target, Nan::New("VulkanWebKit").ToLocalChecked(), ctor->GetFunction());
@@ -320,7 +318,8 @@ void VulkanWebKit::initCEF() {
   CefInitialize(args, settings, app.get(), nullptr);
 
   CefWindowInfo windowInfo;
-  windowInfo.SetAsWindowless(glfwGetWin32Window(this->windowGL));
+  windowInfo.windowless_rendering_enabled = true;
+  windowInfo.SetAsWindowless(GetConsoleWindow());
   //windowInfo.SetAsWindowless(nullptr);
   //windowInfo.shared_texture_enabled = true;
   //windowInfo.external_begin_frame_enabled = true;
@@ -338,10 +337,17 @@ void VulkanWebKit::initCEF() {
   if (!renderHandler->initialized) renderHandler->init(POT(windowVK->width), POT(windowVK->height));
   browser->GetMainFrame()->LoadURL("file:///C:/Users/User/Documents/GitHub/vulkan-ui-2/index.html");
 
-  renderHandler->reshape(windowVK->width, windowVK->height);
-  browser->GetHost()->WasResized();
+  this->resizeCEF(windowVK->width, windowVK->height);
 
   delete path;
+}
+
+void VulkanWebKit::resizeCEF(int width, int height) {
+  VulkanWindow* windowVK = Nan::ObjectWrap::Unwrap<VulkanWindow>(Nan::New(this->windowVK));
+  this->renderHandler->reshape(width, height);
+  this->browser->GetHost()->WasResized();
+  this->browser->GetHost()->SetFocus(true);
+  this->browser->GetHost()->SendFocusEvent(true);
 }
 
 void VulkanWebKit::renderOpenGL() {
@@ -371,6 +377,40 @@ void VulkanWebKit::renderOpenGL() {
 
   CefDoMessageLoopWork();
 };
+
+void VulkanWebKit::createTextureObject(int width, int height) {
+  // init
+  if (this->texture.IsEmpty()) {
+    v8::Local<v8::Object> texture = Nan::New<v8::Object>();
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> persTexture(texture);
+    this->texture = persTexture;
+  }
+  v8::Local<v8::Object> texture = Nan::New(this->texture);
+  v8::Local<v8::Function> ctorImage = Nan::GetFunction(Nan::New(_VkImage::constructor)).ToLocalChecked();
+  v8::Local<v8::Function> ctorMemory = Nan::GetFunction(Nan::New(_VkDeviceMemory::constructor)).ToLocalChecked();
+  v8::Local<v8::Function> ctorSampler = Nan::GetFunction(Nan::New(_VkSampler::constructor)).ToLocalChecked();
+  v8::Local<v8::Function> ctorView = Nan::GetFunction(Nan::New(_VkImageView::constructor)).ToLocalChecked();
+  v8::Local<v8::Object> image = Nan::NewInstance(ctorImage, static_cast<const int>(0), nullptr).ToLocalChecked();
+  v8::Local<v8::Object> memory = Nan::NewInstance(ctorMemory, static_cast<const int>(0), nullptr).ToLocalChecked();
+  v8::Local<v8::Object> sampler = Nan::NewInstance(ctorSampler, static_cast<const int>(0), nullptr).ToLocalChecked();
+  v8::Local<v8::Object> view = Nan::NewInstance(ctorView, static_cast<const int>(0), nullptr).ToLocalChecked();
+  // apply to texture
+  {
+    texture->Set(Nan::New("image").ToLocalChecked(), image);
+    texture->Set(Nan::New("memory").ToLocalChecked(), memory);
+    texture->Set(Nan::New("sampler").ToLocalChecked(), sampler);
+    texture->Set(Nan::New("view").ToLocalChecked(), view);
+    texture->Set(Nan::New("actualWidth").ToLocalChecked(), Nan::New(POT(width)));
+    texture->Set(Nan::New("actualHeight").ToLocalChecked(), Nan::New(POT(height)));
+  }
+  // apply to shared
+  {
+    this->shared.texture.image = &Nan::ObjectWrap::Unwrap<_VkImage>(image)->instance;
+    this->shared.texture.memory = &Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(memory)->instance;
+    this->shared.texture.sampler = &Nan::ObjectWrap::Unwrap<_VkSampler>(sampler)->instance;
+    this->shared.texture.view = &Nan::ObjectWrap::Unwrap<_VkImageView>(view)->instance;
+  }
+}
 
 void VulkanWebKit::initOpenGL() {
   VulkanWindow* windowVK = Nan::ObjectWrap::Unwrap<VulkanWindow>(Nan::New(this->windowVK));
@@ -426,23 +466,42 @@ void VulkanWebKit::initOpenGL() {
 
   this->vao = vao;
   this->program = program;
-  this->rofl = this->shared.texture.allocSize;
-  this->rofl = (this->rofl / 2) / 1024;
-  printf("LOL: %i %i\n", this->shared.texture.allocSize, this->rofl);
-  printf("Dimension: %i %i \n", POT(windowVK->width), POT(windowVK->height));
-  // https://github.com/jherico/Vulkan/tree/cpp/examples/glinterop
+
+  this->createSharedSemaphores();
+  this->createSharedMemory(windowVK->width, windowVK->height, this->shared.texture.allocSize);
+}
+
+void VulkanWebKit::createSharedSemaphores() {
   glGenSemaphoresEXT(1, &this->glReady);
   glGenSemaphoresEXT(1, &this->glComplete);
-  glCreateTextures(GL_TEXTURE_2D, 1, &this->tex);
   glImportSemaphoreWin32HandleEXT(this->glReady, GL_HANDLE_TYPE_OPAQUE_WIN32_EXT, this->shared.handles.glReady);
   glImportSemaphoreWin32HandleEXT(this->glComplete, GL_HANDLE_TYPE_OPAQUE_WIN32_EXT, this->shared.handles.glComplete);
+}
+
+void VulkanWebKit::createSharedMemory(int width, int height, int bytes) {
+  glCreateTextures(GL_TEXTURE_2D, 1, &this->tex);
   glCreateMemoryObjectsEXT(1, &this->mem);
-  glImportMemoryWin32HandleEXT(this->mem, this->shared.texture.allocSize, GL_HANDLE_TYPE_OPAQUE_WIN32_EXT, this->shared.handles.memory);
-  glTextureStorageMem2DEXT(this->tex, 1, GL_RGBA8, POT(windowVK->width), POT(windowVK->height), this->mem, 0);
-  // setup
+  glImportMemoryWin32HandleEXT(this->mem, bytes, GL_HANDLE_TYPE_OPAQUE_WIN32_EXT, this->shared.handles.memory);
+  glTextureStorageMem2DEXT(this->tex, 1, GL_RGBA8, POT(width), POT(height), this->mem, 0);
   glCreateFramebuffers(1, &this->fbo);
   glNamedFramebufferTexture(this->fbo, GL_COLOR_ATTACHMENT0, this->tex, 0);
   glBindFramebuffer(GL_DRAW_FRAMEBUFFER, this->fbo);
+}
+
+void VulkanWebKit::mouseClick(int x, int y, int button, bool mouseup) {
+  CefMouseEvent evt;
+  CefBrowserHost::MouseButtonType evtBtn;
+  evt.x = x;
+  evt.y = y;
+  switch (button) {
+    case GLFW_MOUSE_BUTTON_LEFT: evtBtn = MBT_LEFT; break;
+    case GLFW_MOUSE_BUTTON_RIGHT: evtBtn = MBT_RIGHT; break;
+    case GLFW_MOUSE_BUTTON_MIDDLE: evtBtn = MBT_MIDDLE; break;
+    default: Nan::ThrowError("Unsupported mouse button!");
+  };
+  if (this->browser && this->browser->GetHost()) {
+    this->browser->GetHost()->SendMouseClickEvent(evt, evtBtn, mouseup, 1);
+  }
 }
 
 GLuint VulkanWebKit::createShader(const std::string vert, const std::string frag) {
@@ -479,6 +538,38 @@ GLuint VulkanWebKit::createShader(const std::string vert, const std::string frag
   return prog;
 }
 
+NAN_METHOD(VulkanWebKit::mousemove) {
+  VulkanWebKit *self = Nan::ObjectWrap::Unwrap<VulkanWebKit>(info.This());
+  int x = info[0]->Uint32Value();
+  int y = info[1]->Uint32Value();
+  // cef pass-through
+  {
+    CefMouseEvent evt;
+    evt.x = x;
+    evt.y = y;
+    evt.modifiers = EVENTFLAG_NONE;
+    if (self->browser && self->browser->GetHost()) {
+      self->browser->GetHost()->SendMouseMoveEvent(evt, false);
+    }
+  }
+}
+
+NAN_METHOD(VulkanWebKit::mousedown) {
+  VulkanWebKit *self = Nan::ObjectWrap::Unwrap<VulkanWebKit>(info.This());
+  int x = info[0]->Uint32Value();
+  int y = info[1]->Uint32Value();
+  int button = info[2]->Uint32Value();
+  self->mouseClick(x, y, button, false);
+}
+
+NAN_METHOD(VulkanWebKit::mouseup) {
+  VulkanWebKit *self = Nan::ObjectWrap::Unwrap<VulkanWebKit>(info.This());
+  int x = info[0]->Uint32Value();
+  int y = info[1]->Uint32Value();
+  int button = info[2]->Uint32Value();
+  self->mouseClick(x, y, button, true);
+}
+
 NAN_METHOD(VulkanWebKit::New) {
   VulkanWebKit* self = new VulkanWebKit();
   self->Wrap(info.Holder());
@@ -497,6 +588,23 @@ NAN_METHOD(VulkanWebKit::New) {
     }
   }
   info.GetReturnValue().Set(info.Holder());
+}
+
+NAN_METHOD(VulkanWebKit::resize) {
+  VulkanWebKit *self = Nan::ObjectWrap::Unwrap<VulkanWebKit>(info.This());
+  VkDevice device = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::New(self->deviceVK))->instance;
+  VkInstance instance = Nan::ObjectWrap::Unwrap<_VkInstance>(Nan::New(self->instanceVK))->instance;
+  v8::Local<v8::Object> texture = Nan::New(self->texture);
+  int width = info[0]->Uint32Value();
+  int height = info[1]->Uint32Value();
+  int actualWidth = POT(width);
+  int actualHeight = POT(height);
+  texture->Set(Nan::New("actualWidth").ToLocalChecked(), Nan::New(actualWidth));
+  texture->Set(Nan::New("actualHeight").ToLocalChecked(), Nan::New(actualHeight));
+  self->createTextureObject(width, height);
+  self->shared.createTexture(device, instance, width, height);
+  self->createSharedMemory(width, height, self->shared.texture.allocSize);
+  self->resizeCEF(width, height);
 }
 
 NAN_METHOD(VulkanWebKit::init) {
@@ -518,40 +626,9 @@ NAN_METHOD(VulkanWebKit::init) {
     }
     VkDevice device = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::New(self->deviceVK))->instance;
     VkInstance instance = Nan::ObjectWrap::Unwrap<_VkInstance>(Nan::New(self->instanceVK))->instance;
-    {
-      // init
-      v8::Local<v8::Object> texture = Nan::New<v8::Object>();
-      v8::Local<v8::Function> ctorImage = Nan::GetFunction(Nan::New(_VkImage::constructor)).ToLocalChecked();
-      v8::Local<v8::Function> ctorMemory = Nan::GetFunction(Nan::New(_VkDeviceMemory::constructor)).ToLocalChecked();
-      v8::Local<v8::Function> ctorSampler = Nan::GetFunction(Nan::New(_VkSampler::constructor)).ToLocalChecked();
-      v8::Local<v8::Function> ctorView = Nan::GetFunction(Nan::New(_VkImageView::constructor)).ToLocalChecked();
-      v8::Local<v8::Object> image = Nan::NewInstance(ctorImage, static_cast<const int>(0), nullptr).ToLocalChecked();
-      v8::Local<v8::Object> memory = Nan::NewInstance(ctorMemory, static_cast<const int>(0), nullptr).ToLocalChecked();
-      v8::Local<v8::Object> sampler = Nan::NewInstance(ctorSampler, static_cast<const int>(0), nullptr).ToLocalChecked();
-      v8::Local<v8::Object> view = Nan::NewInstance(ctorView, static_cast<const int>(0), nullptr).ToLocalChecked();
-      // apply to texture
-      {
-        texture->Set(Nan::New("image").ToLocalChecked(), image);
-        texture->Set(Nan::New("memory").ToLocalChecked(), memory);
-        texture->Set(Nan::New("sampler").ToLocalChecked(), sampler);
-        texture->Set(Nan::New("view").ToLocalChecked(), view);
-        texture->Set(Nan::New("actualWidth").ToLocalChecked(), Nan::New(POT(windowVK->width)));
-        texture->Set(Nan::New("actualHeight").ToLocalChecked(), Nan::New(POT(windowVK->height)));
-      }
-      // apply to shared
-      {
-        self->shared.texture.image = &Nan::ObjectWrap::Unwrap<_VkImage>(image)->instance;
-        self->shared.texture.memory = &Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(memory)->instance;
-        self->shared.texture.sampler = &Nan::ObjectWrap::Unwrap<_VkSampler>(sampler)->instance;
-        self->shared.texture.view = &Nan::ObjectWrap::Unwrap<_VkImageView>(view)->instance;
-      }
-      // make persistent
-      {
-        Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> persTexture(texture);
-        self->texture = persTexture;
-      }
-    }
-    self->shared.init(windowVK, device, instance);
+    self->createTextureObject(windowVK->width, windowVK->height);
+    self->shared.createSemaphores(device, instance);
+    self->shared.createTexture(device, instance, windowVK->width, windowVK->height);
     self->initOpenGL();
     self->initCEF();
   } else {
@@ -562,7 +639,6 @@ NAN_METHOD(VulkanWebKit::init) {
 
 NAN_METHOD(VulkanWebKit::linkSemaphores) {
   VulkanWebKit *self = Nan::ObjectWrap::Unwrap<VulkanWebKit>(info.This());
-
   if (info[0]->IsObject()) {
     v8::Local<v8::Object> obj = info[0]->ToObject();
     v8::Local<v8::Object> argReady = obj->Get(Nan::New("ready").ToLocalChecked())->ToObject();
@@ -576,8 +652,6 @@ NAN_METHOD(VulkanWebKit::linkSemaphores) {
   } else {
     Nan::ThrowError("Argument 1 of 'linkSemaphores' has to be an Object");
   }
-
-  //info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 }
 
 NAN_METHOD(VulkanWebKit::draw) {
