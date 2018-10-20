@@ -13,8 +13,6 @@ import generateHandles from "./generators/handles";
 import generateGyp from "./generators/gyp";
 import generatePackage from "./generators/package";
 import generateUtils from "./generators/utils";
-import generateWindow from "./generators/window";
-import generateWebkit from "./generators/webkit";
 
 import { formatVkVersion } from "./utils";
 
@@ -368,18 +366,6 @@ function generateBindings(specXML, version) {
     console.log("Generating Vk calls..");
     let result = generateCalls(ast, calls);
     writeAddonFile(`${generateSrcPath}/calls.h`, result.source, "utf-8", true);
-  }
-  // generate window
-  {
-    console.log("Generating Vk window..");
-    let result = generateWindow(ast);
-    writeAddonFile(`${generateSrcPath}/window.h`, result.header, "utf-8", true);
-  }
-  // generate webkit
-  {
-    console.log("Generating Vk webkit..");
-    let result = generateWebkit(ast);
-    writeAddonFile(`${generateSrcPath}/webkit.h`, result.header, "utf-8", true);
   }
   // generate includes
   {

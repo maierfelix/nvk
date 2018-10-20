@@ -33,17 +33,6 @@ inline int POT(int x) {
   return p;
 };
 
-static int clz(int32_t x) {
-  if (!x) return 32;
-  int e = 31;
-  if (x & 0xFFFF0000) { e -= 16; x >>= 16; }
-  if (x & 0x0000FF00) { e -= 8;  x >>= 8;  }
-  if (x & 0x000000F0) { e -= 4;  x >>= 4;  }
-  if (x & 0x0000000C) { e -= 2;  x >>= 2;  }
-  if (x & 0x00000002) { e -= 1; }
-  return e;
-};
-
 const std::string VERTEX = R"SHADER(
   #version 450 core
   layout(location = 0) in vec2 aVertices;
@@ -330,6 +319,7 @@ void VulkanWebKit::initCEF() {
   //browserSettings.windowless_frame_rate = 30;
 
   renderHandler = new RenderHandler();
+  renderHandler->window = windowVK->instance;
 
   client = new BrowserClient(renderHandler);
   browser = CefBrowserHost::CreateBrowserSync(windowInfo, client.get(), "", browserSettings, nullptr);
@@ -478,10 +468,10 @@ void VulkanWebKit::createSharedSemaphores() {
   glImportSemaphoreWin32HandleEXT(this->glComplete, GL_HANDLE_TYPE_OPAQUE_WIN32_EXT, this->shared.handles.glComplete);
 }
 
-void VulkanWebKit::createSharedMemory(int width, int height, int bytes) {
+void VulkanWebKit::createSharedMemory(int width, int height, int byteLength) {
   glCreateTextures(GL_TEXTURE_2D, 1, &this->tex);
   glCreateMemoryObjectsEXT(1, &this->mem);
-  glImportMemoryWin32HandleEXT(this->mem, bytes, GL_HANDLE_TYPE_OPAQUE_WIN32_EXT, this->shared.handles.memory);
+  glImportMemoryWin32HandleEXT(this->mem, byteLength, GL_HANDLE_TYPE_OPAQUE_WIN32_EXT, this->shared.handles.memory);
   glTextureStorageMem2DEXT(this->tex, 1, GL_RGBA8, POT(width), POT(height), this->mem, 0);
   glCreateFramebuffers(1, &this->fbo);
   glNamedFramebufferTexture(this->fbo, GL_COLOR_ATTACHMENT0, this->tex, 0);
@@ -536,38 +526,6 @@ GLuint VulkanWebKit::createShader(const std::string vert, const std::string frag
   if (status != GL_TRUE) Nan::ThrowError("Invalid GL Program!");
 
   return prog;
-}
-
-NAN_METHOD(VulkanWebKit::mousemove) {
-  VulkanWebKit *self = Nan::ObjectWrap::Unwrap<VulkanWebKit>(info.This());
-  int x = info[0]->Uint32Value();
-  int y = info[1]->Uint32Value();
-  // cef pass-through
-  {
-    CefMouseEvent evt;
-    evt.x = x;
-    evt.y = y;
-    evt.modifiers = EVENTFLAG_NONE;
-    if (self->browser && self->browser->GetHost()) {
-      self->browser->GetHost()->SendMouseMoveEvent(evt, false);
-    }
-  }
-}
-
-NAN_METHOD(VulkanWebKit::mousedown) {
-  VulkanWebKit *self = Nan::ObjectWrap::Unwrap<VulkanWebKit>(info.This());
-  int x = info[0]->Uint32Value();
-  int y = info[1]->Uint32Value();
-  int button = info[2]->Uint32Value();
-  self->mouseClick(x, y, button, false);
-}
-
-NAN_METHOD(VulkanWebKit::mouseup) {
-  VulkanWebKit *self = Nan::ObjectWrap::Unwrap<VulkanWebKit>(info.This());
-  int x = info[0]->Uint32Value();
-  int y = info[1]->Uint32Value();
-  int button = info[2]->Uint32Value();
-  self->mouseClick(x, y, button, true);
 }
 
 NAN_METHOD(VulkanWebKit::New) {
@@ -666,6 +624,36 @@ NAN_GETTER(VulkanWebKit::Gettexture) {
 }
 NAN_SETTER(VulkanWebKit::Settexture) {
   Nan::ThrowError("Cannot change immutable member 'texture'!");
+}
+
+// events
+NAN_METHOD(VulkanWebKit::mouseup) {
+  VulkanWebKit *self = Nan::ObjectWrap::Unwrap<VulkanWebKit>(info.This());
+  int x = info[0]->Uint32Value();
+  int y = info[1]->Uint32Value();
+  int button = info[2]->Uint32Value();
+  self->mouseClick(x, y, button, true);
+}
+NAN_METHOD(VulkanWebKit::mousedown) {
+  VulkanWebKit *self = Nan::ObjectWrap::Unwrap<VulkanWebKit>(info.This());
+  int x = info[0]->Uint32Value();
+  int y = info[1]->Uint32Value();
+  int button = info[2]->Uint32Value();
+  self->mouseClick(x, y, button, false);
+}
+NAN_METHOD(VulkanWebKit::mousemove) {
+  VulkanWebKit *self = Nan::ObjectWrap::Unwrap<VulkanWebKit>(info.This());
+  int x = info[0]->Uint32Value();
+  int y = info[1]->Uint32Value();
+  {
+    CefMouseEvent evt;
+    evt.x = x;
+    evt.y = y;
+    evt.modifiers = EVENTFLAG_NONE;
+    if (self->browser && self->browser->GetHost()) {
+      self->browser->GetHost()->SendMouseMoveEvent(evt, false);
+    }
+  }
 }
 
 #endif

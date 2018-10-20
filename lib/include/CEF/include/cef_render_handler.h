@@ -145,6 +145,17 @@ class CefRenderHandler : public virtual CefBaseRefCounted {
                        int height) = 0;
 
   ///
+  // Called when an view has been rendered to the given shared texture handle.
+  // Currently, the shared handle represents a D3D11 Texture2D that can be
+  // accessed with the OpenSharedResource method available from a ID3D11Device
+  ///
+  /*--cef()--*/
+  virtual void OnAcceleratedPaint(CefRefPtr<CefBrowser> browser,
+                                  PaintElementType type,
+                                  const RectList& dirtyRects,
+                                  void* shared_handle) {}
+
+  ///
   // Called when the browser's cursor has changed. If |type| is CT_CUSTOM then
   // |custom_cursor_info| will be populated with the custom cursor information.
   ///

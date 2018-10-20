@@ -51,7 +51,7 @@
 #include "include/base/cef_atomic_ref_count.h"
 #include "include/base/cef_build.h"
 #include "include/base/cef_logging.h"
-#include "include/base/cef_macros.h"
+#include "include/base/cef_thread_collision_warner.h"
 
 namespace base {
 
@@ -78,6 +78,10 @@ class RefCountedBase {
   }
 
   void AddRef() const {
+// TODO(maruel): Add back once it doesn't assert 500 times/sec.
+// Current thread books the critical section "AddRelease"
+// without release it.
+// DFAKE_SCOPED_LOCK_THREAD_LOCKED(add_release_);
 #if DCHECK_IS_ON()
     DCHECK(!in_dtor_);
 #endif
@@ -86,6 +90,10 @@ class RefCountedBase {
 
   // Returns true if the object should self-delete.
   bool Release() const {
+// TODO(maruel): Add back once it doesn't assert 500 times/sec.
+// Current thread books the critical section "AddRelease"
+// without release it.
+// DFAKE_SCOPED_LOCK_THREAD_LOCKED(add_release_);
 #if DCHECK_IS_ON()
     DCHECK(!in_dtor_);
 #endif
@@ -103,6 +111,8 @@ class RefCountedBase {
 #if DCHECK_IS_ON()
   mutable bool in_dtor_;
 #endif
+
+  DFAKE_MUTEX(add_release_);
 
   DISALLOW_COPY_AND_ASSIGN(RefCountedBase);
 };

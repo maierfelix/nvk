@@ -27,6 +27,15 @@ class RenderHandler : public CefRenderHandler {
       int
     ) override;
 
+    void OnCursorChange(
+      CefRefPtr<CefBrowser>,
+      CefCursorHandle,
+      CefRenderHandler::CursorType,
+      const CefCursorInfo&
+    ) override;
+
+    GLFWwindow* window;
+
     GLuint tex_;
 
   private:

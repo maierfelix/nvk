@@ -1,16 +1,5 @@
 #include "render_handler.h"
 
-static int clz(int32_t x) {
-  if (!x) return 32;
-  int e = 31;
-  if (x & 0xFFFF0000) { e -= 16; x >>= 16; }
-  if (x & 0x0000FF00) { e -= 8;  x >>= 8;  }
-  if (x & 0x000000F0) { e -= 4;  x >>= 4;  }
-  if (x & 0x0000000C) { e -= 2;  x >>= 2;  }
-  if (x & 0x00000002) { e -= 1; }
-  return e;
-};
-
 RenderHandler::RenderHandler()
 {
   initialized = false;
@@ -68,4 +57,26 @@ void RenderHandler::OnPaint(
     (unsigned char*)buffer
   );
   glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+void RenderHandler::OnCursorChange(
+  CefRefPtr<CefBrowser> browser,
+  CefCursorHandle cursor,
+  CefRenderHandler::CursorType type,
+  const CefCursorInfo& custom_cursor_info
+) {
+  int target = GLFW_ARROW_CURSOR;
+  switch (type) {
+    case CursorType::CT_IBEAM:       target = GLFW_IBEAM_CURSOR;     break;
+    case CursorType::CT_CROSS:       target = GLFW_CROSSHAIR_CURSOR; break;
+    case CursorType::CT_HAND:        target = GLFW_HAND_CURSOR;      break;
+    case CursorType::CT_SOUTHRESIZE: target = GLFW_VRESIZE_CURSOR;   break;
+    case CursorType::CT_NORTHRESIZE: target = GLFW_VRESIZE_CURSOR;   break;
+    case CursorType::CT_EASTRESIZE:  target = GLFW_HRESIZE_CURSOR;   break;
+    case CursorType::CT_WESTRESIZE:  target = GLFW_HRESIZE_CURSOR;   break;
+  };
+  {
+    GLFWcursor* cursor = glfwCreateStandardCursor(target);
+    glfwSetCursor(window, cursor);
+  }
 }

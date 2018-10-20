@@ -85,6 +85,19 @@ typedef struct _cef_window_info_t {
   int windowless_rendering_enabled;
 
   ///
+  // Set to true (1) to enable shared textures for off-screen rendering. Only
+  // valid if windowless_rendering_enabled above is set to true.
+  // Currently Windows-only (D3D11)
+  ///
+  int shared_texture_enabled;
+
+  ///
+  // Set to true (1) to enable the ability to issue BeginFrame from the client
+  // application.
+  ///
+  int external_begin_frame_enabled;
+
+  ///
   // Handle for the new browser window. Only used with windowed rendering.
   ///
   cef_window_handle_t window;

@@ -14,7 +14,7 @@ ncp.limit = 16;
 const vkVersion = process.env.npm_config_vkversion;
 if (!vkVersion) throw `No vulkan version --vkversion specified!`;
 
-const msvsVersion = process.env.npm_config_msvsversion || "2015";
+const msvsVersion = process.env.npm_config_msvsversion || "";
 
 const baseGeneratePath = pkg.config.GEN_OUT_DIR;
 const generatePath = `${baseGeneratePath}/${vkVersion}`;
@@ -52,17 +52,20 @@ function copyFiles() {
     let baseDir = `./lib/${unitPlatform}/${architecture}`;
     let targetDir = `./generated/${vkVersion}/build/Release`;
     let files = [
-      `${baseDir}/GLEW/glew32.dll`,
-      `${baseDir}/GLFW/glfw3.dll`,
-      `${baseDir}/CEF/`
+      [`${baseDir}/GLEW/glew32.dll`, targetDir],
+      [`${baseDir}/GLFW/glfw3.dll`, targetDir],
+      [`${baseDir}/CEF/`, targetDir],
+      [`./src/`, `./generated/${vkVersion}/src`]
     ];
     let counter = 0;
-    files.map(path => {
-      let fileName = path.replace(/^.*[\\\/]/, "");
+    files.map(entry => {
+      let source = entry[0];
+      let target = entry[1];
+      // copy single files
+      let fileName = source.replace(/^.*[\\\/]/, "");
       let isFile = fileName.length > 0;
-      let source = path;
-      let target = targetDir;
       if (isFile) target += "/" + fileName;
+      // copy
       ncp(source, target, error => {
         process.stdout.write(`Copying ${source} -> ${target}\n`);
         if (error) {
