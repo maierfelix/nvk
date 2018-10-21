@@ -12,6 +12,12 @@ class RenderHandler : public CefRenderHandler {
 
     bool initialized;
 
+    int actualWidth;
+    int actualHeight;
+
+    int currentWidth;
+    int currentHeight;
+
     void init(int, int);
     void draw(void);
     void reshape(int, int);
@@ -34,9 +40,18 @@ class RenderHandler : public CefRenderHandler {
       const CefCursorInfo&
     ) override;
 
+    /*void RenderHandler::OnAcceleratedPaint(
+      CefRefPtr<CefBrowser>,
+      PaintElementType,
+      const RectList&,
+      void *shared_handle
+    ) override;*/
+
     GLFWwindow* window;
 
     GLuint tex_;
+
+    void *last_handle = INVALID_HANDLE_VALUE;
 
   private:
     int width_;

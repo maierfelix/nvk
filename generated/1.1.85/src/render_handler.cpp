@@ -13,9 +13,11 @@ void RenderHandler::init(int width, int height)
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, nullptr);
   glBindTexture(GL_TEXTURE_2D, 0);
   initialized = true;
+  actualWidth = width;
+  actualHeight = height;
 }
 
 void RenderHandler::draw(void)
@@ -43,21 +45,63 @@ void RenderHandler::OnPaint(
   int width,
   int height
 ) {
+
   glBindTexture(GL_TEXTURE_2D, tex_);
-  //glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-  //glPixelStorei(GL_UNPACK_ROW_LENGTH, width);
-  glTexImage2D(
-    GL_TEXTURE_2D,
-    0,
-    GL_RGBA,
-    width, height,
-    0,
-    GL_BGRA_EXT,
-    GL_UNSIGNED_BYTE,
-    (unsigned char*)buffer
-  );
+
+  int oldWidth = currentWidth;
+  int oldHeight = currentHeight;
+
+  currentWidth = width;
+  currentHeight = height;
+
+  glPixelStorei(GL_UNPACK_ROW_LENGTH, currentWidth);
+
+  // full
+  if (oldWidth != currentWidth || oldHeight != currentHeight) {
+    glPixelStorei(GL_UNPACK_SKIP_PIXELS, 0);
+    glPixelStorei(GL_UNPACK_SKIP_ROWS, 0);
+    glTexImage2D(
+      GL_TEXTURE_2D, 0,
+      GL_RGBA,
+      currentWidth, currentHeight,
+      0,
+      GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV,
+      buffer
+    );
+    printf("FULL RECT\n");
+  // partial
+  } else {
+    CefRenderHandler::RectList::const_iterator i = dirtyRects.begin();
+    for (; i != dirtyRects.end(); ++i) {
+      const CefRect& rect = *i;
+      glPixelStorei(GL_UNPACK_SKIP_PIXELS, rect.x);
+      glPixelStorei(GL_UNPACK_SKIP_ROWS, rect.y);
+      glTexSubImage2D(
+        GL_TEXTURE_2D, 0,
+        rect.x, rect.y,
+        rect.width, rect.height,
+        GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV,
+        buffer
+      );
+      printf("PARTIAL RECT x:%i y:%i w:%i h:%i t:%i\n", rect.x, rect.y, rect.width, rect.height, rect.width * rect.height);
+    };
+  }
+
   glBindTexture(GL_TEXTURE_2D, 0);
 }
+
+/*void RenderHandler::OnAcceleratedPaint(
+  CefRefPtr<CefBrowser> browser,
+  PaintElementType type,
+  const RectList &dirtyRects,
+  void *shared_handle
+) {
+  if (shared_handle != last_handle) {
+    printf("CHANGED!\n");
+    last_handle = shared_handle;
+  }
+  printf("ACC PAINT!\n");
+}*/
 
 void RenderHandler::OnCursorChange(
   CefRefPtr<CefBrowser> browser,

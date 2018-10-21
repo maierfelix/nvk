@@ -6,13 +6,15 @@
 #define GLM_FORCE_RADIANS
 #define GLM_FORCE_DEPTH_ZERO_TO_ONE
 
+std::string dirname;
+
 #include "index.h"
 #include "calls.h"
 #include "enums.h"
 #include "window.h"
 #include "webkit.h"
 
-void createV8ArrayBufferFromMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+static void createV8ArrayBufferFromMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   if (!(info[0]->IsBigInt())) Nan::ThrowError("First argument must be a BigInt!");
   if (!(info[1]->IsNumber())) Nan::ThrowError("Second argument must be a number!");
   v8::Local<v8::BigInt> arg0 = v8::Local<v8::BigInt>::Cast(info[0]);
@@ -27,29 +29,40 @@ void createV8ArrayBufferFromMemory(const Nan::FunctionCallbackInfo<v8::Value>& i
   info.GetReturnValue().Set(arr);
 };
 
-void _VK_MAKE_VERSION(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+static void _VK_MAKE_VERSION(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   uint32_t major = info[0]->Uint32Value();
   uint32_t minor = info[1]->Uint32Value();
   uint32_t patch = info[2]->Uint32Value();
   info.GetReturnValue().Set(VK_MAKE_VERSION(major, minor, patch));
 };
 
-void _VK_VERSION_MAJOR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+static void _VK_VERSION_MAJOR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   uint32_t version = info[0]->Uint32Value();
   info.GetReturnValue().Set((uint32_t)(version) >> 22);
 };
 
-void _VK_VERSION_MINOR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+static void _VK_VERSION_MINOR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   uint32_t version = info[0]->Uint32Value();
   info.GetReturnValue().Set(((uint32_t)(version) >> 12) & 0x3ff);
 };
 
-void _VK_VERSION_PATCH(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+static void _VK_VERSION_PATCH(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   uint32_t version = info[0]->Uint32Value();
   info.GetReturnValue().Set((uint32_t)(version) & 0xfff);
 };
 
-NAN_MODULE_INIT(InitModule) {
+static std::string resolveModulePath(v8::Handle<v8::Object> module) {
+  std::string addonPath = *v8::String::Utf8Value(
+    v8::Isolate::GetCurrent(),
+    module->Get(Nan::New("filename").ToLocalChecked()).As<v8::String>()
+  );
+  std::string path = addonPath.substr(0, addonPath.find_last_of("/\\"));
+  return path;
+};
+
+static void init(v8::Handle<v8::Object> target, v8::Handle<v8::Object> module) {
+  // path to addon
+  dirname = resolveModulePath(module);
   // default initializers
   VulkanWindow::Initialize(target);
   VulkanWebKit::Initialize(target);
@@ -97,4 +110,4 @@ NAN_MODULE_INIT(InitModule) {
   {% endfor %}
 }
 
-NODE_MODULE(myModule, InitModule);
+NODE_MODULE(myModule, init);

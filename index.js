@@ -24,7 +24,6 @@ if (!fs.existsSync(addonPath)) {
   process.stderr.write(`Make sure to generate and compile the bindings for ${vkVersion}\n`);
   throw `Exiting..`;
 }
-//path.dirname('/Users/Refsnes/demo_path.js');
 
 const addon = require(addonPath);
 const enums = addon.getVulkanEnumerations();
