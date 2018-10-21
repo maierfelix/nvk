@@ -3,7 +3,7 @@ This is a Vulkan API for node.js.
 
 The bindings are machine generated and provide an API to interact from JavaScript with the low-level interface of Vulkan. The API of this project strives to be as close as possible to Vulkan's C API.
 
-This tool also allows you to create interactive UIs with HTML and CSS. This is done using an offscreen browser, which runs in the background. The browser frame is shared with vulkan's memory, so you can easily render the browser's texture on top of your application.
+You can create interactive UIs with HTML and CSS. This is done using a [CEF](https://bitbucket.org/chromiumembedded/cef) offscreen browser, which runs in the background. The browser texture is shared with vulkan's memory, so you can easily render it on top of your application.
 
 **Note**: This is an early experiment, use with *honor*!
 
