@@ -1,7 +1,9 @@
 # node-vulkan
 This is a Vulkan API for node.js.
 
-The bindings are machine generated and provide an API to interact from JavaScript with the low-level interface of Vulkan. The API of this project strives to be as close as possible to Vulkan's original API.
+The bindings are machine generated and provide an API to interact from JavaScript with the low-level interface of Vulkan. The API of this project strives to be as close as possible to Vulkan's C API.
+
+This tool also allows you to create interactive UIs with HTML and CSS. This is done using an offscreen browser, which runs in the background. The browser frame is shared with vulkan's memory, so you can easily render the browser's texture on top of your application.
 
 **Note**: This is an early experiment, use with *honor*!
 
@@ -13,11 +15,18 @@ The bindings are machine generated and provide an API to interact from JavaScrip
  - `generated`: the generated binding code
  - `examples`: contains a triangle and cube demo
  - `lib`: required third party libs
+ - `src`: classes for e.g. window and browser creation
 
 ## Requirements:
- - node.js >= v10.9.0
+ - node.js >= v10.9.0 recommended
+
+This tool uses a new JavaScript type called [`BigInt`](https://developers.google.com/web/updates/2018/05/bigint) to represent memory addresses returned by Vulkan. The `BigInt` type was recently added, so make sure you use a recent node.js version.
 
 ## Generator:
+
+The Generator generates C++ code from a `vk.xml` file. It first converts an XML file into an AST (and adds a lot magic to it), which is then used by the code generator. Currently a total of `~80.000` lines of code get generated, where `~30.000` lines is C++ code.
+
+If you're interested in what generated files look like, checkout [`calls.h`](https://github.com/maierfelix/node-vulkan/blob/master/generated/1.1.85/src/calls.h) or [`VkGraphicsPipelineCreateInfo.cpp`](https://github.com/maierfelix/node-vulkan/blob/master/generated/1.1.85/src/VkGraphicsPipelineCreateInfo.cpp)
 
 ### Installation:
 
@@ -48,7 +57,8 @@ npm run [script] [flag] [value]
 
 #### Flags:
 ````
- [-vkversion] [version]: The vulkan version to generate bindings for
+ [-vkversion] [version]: The Vulkan version to generate bindings for
+ [-msvsversion] [msvsversion]: The Visual Studio version to build the bindings with
 ````
 
 ### Usage:
@@ -56,7 +66,7 @@ npm run [script] [flag] [value]
 #### Generation:
 You can specify a version to generate bindings for like this:
 ````
-npm run generate -vkversion=1.1.82
+npm run generate -vkversion=1.1.85
 ````
 
  - Make sure the specified version to generate bindings for can be found [here](https://github.com/KhronosGroup/Vulkan-Docs/releases)
@@ -66,7 +76,7 @@ npm run generate -vkversion=1.1.82
 #### Building:
 You can build the generated bindings like this:
 ````
-npm run build -vkversion=1.1.82
+npm run build -vkversion=1.1.85 -msvsversion=2017
 ````
 
 The compiled bindings can then be found in `generated/{vkversion}/build`
@@ -117,3 +127,4 @@ let renderArea = new VkRect2D({
  - [ ] Function generation (~85%)
  - [ ] Deallocation (~0%)
  - [ ] Vulkan API fill V8 reflection (~85%)
+ - [ ] CEF D3D11 high-performance texture sharing (~0%)
