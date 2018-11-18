@@ -16,8 +16,8 @@ This is a Vulkan API for node.js, which allows to interact from JavaScript with 
   * [Syntactic Sugar](#syntactic-sugar)
       - [sType auto-filling](#stype-auto-filling)
       - [Structure creation shortcut](#structure-creation-shortcut)
-  * [Structure](#structure)
-  * [Generator](#generator)
+  * [Project Structure](#project-structure)
+  * [Binding Code Generator](#binding-code-generator)
   * [HTML, CSS based UIs](#html-css-based-uis)
   * [TODOs](#todos)
 
@@ -148,7 +148,7 @@ let renderArea = new VkRect2D({
 });
 ````
 
-## Structure:
+## Project Structure:
  - `generator`: code for binding generation
  - `generated`: the generated binding code
  - `examples`: ready-to-run examples
@@ -157,7 +157,7 @@ let renderArea = new VkRect2D({
 
 This tool uses a new JavaScript type called [`BigInt`](https://developers.google.com/web/updates/2018/05/bigint) to represent memory addresses returned by Vulkan. The `BigInt` type was recently added, so make sure you use a recent node.js version.
 
-## Generator:
+## Binding Code Generator:
 
 The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/node-vulkan/master/generated/1.1.85/ast.json) (and adds a lot magic to it), which is then used by the code generator. Currently a total of `~80.000` lines of code get generated, where `~30.000` lines is C++ code.
 
