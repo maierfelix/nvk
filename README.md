@@ -6,7 +6,7 @@ The [chromium-ui](https://github.com/maierfelix/node-vulkan/tree/chromium-ui) br
 **Note**: This is an early experiment, use with *honor*!
 
 ## Preview:<br/>
-<img src="https://i.imgur.com/HWVeSHp.gif" width="380">
+<img src="https://i.imgur.com/cRrVc1N.gif" width="380">
 
 You can find more previews and demos in [/examples](https://github.com/maierfelix/node-vulkan/tree/master/examples)
 
