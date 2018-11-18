@@ -54,9 +54,7 @@ function copyFiles() {
     let files = [
       [`${baseDir}/GLEW/glew32.dll`, targetDir],
       [`${baseDir}/GLFW/glfw3.dll`, targetDir],
-      [`${baseDir}/CEF/`, targetDir],
-      [`./src/`, `./generated/${vkVersion}/src`],
-      [`./initial.html`, targetDir]
+      [`./src/`, `./generated/${vkVersion}/src`]
     ];
     let counter = 0;
     files.map(entry => {

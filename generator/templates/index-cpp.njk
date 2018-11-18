@@ -12,7 +12,6 @@ std::string dirname;
 #include "calls.h"
 #include "enums.h"
 #include "window.h"
-#include "webkit.h"
 
 static void createV8ArrayBufferFromMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   if (!(info[0]->IsBigInt())) Nan::ThrowError("First argument must be a BigInt!");
