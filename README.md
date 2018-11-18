@@ -1,14 +1,37 @@
 # node-vulkan
-This is a Vulkan API for node.js.
+This is a Vulkan API for node.js, which allows to interact from JavaScript with the low-level interface of Vulkan. The API of this project strives to be as close as possible to Vulkan's C API.
 
-The bindings are machine generated and provide an API to interact from JavaScript with the low-level interface of Vulkan. The API of this project strives to be as close as possible to Vulkan's C API.
-
-You can create interactive UIs with HTML and CSS. This is done using a [CEF](https://bitbucket.org/chromiumembedded/cef) offscreen browser, which runs in the background. The browser texture is shared with vulkan's memory, so you can easily render it on top of your application.
+The [chromium-ui](https://github.com/maierfelix/node-vulkan/tree/chromium-ui) branch contains an experiment about creating UIs with HTML and CSS which then get rendered in Vulkan. This is done using [Chromium-Embedded-Framework](https://bitbucket.org/chromiumembedded/cef). The browser texture is shared with vulkan's memory, so you can directly render it on top of your application. Oh yes!
 
 **Note**: This is an early experiment, use with *honor*!
 
 ## Preview:<br/>
 <img src="https://i.imgur.com/HWVeSHp.gif" width="380">
+
+You can find more previews and demos in [/examples](https://github.com/maierfelix/node-vulkan/tree/master/examples)
+
+## Example:
+
+JavaScript:
+````js
+let appInfo = new VkApplicationInfo();
+appInfo.pApplicationName = "App";
+appInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
+appInfo.pEngineName = "Engine";
+appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
+appInfo.apiVersion = VK_API_VERSION_1_0;
+````
+
+C++:
+````cpp
+VkApplicationInfo appInfo = {};
+appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
+appInfo.pApplicationName = "App";
+appInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
+appInfo.pEngineName = "Engine";
+appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
+appInfo.apiVersion = VK_API_VERSION_1_0;
+````
 
 ## Structure:
  - `generator`: code for binding generation
@@ -16,9 +39,6 @@ You can create interactive UIs with HTML and CSS. This is done using a [CEF](htt
  - `examples`: contains a triangle and cube demo
  - `lib`: required third party libs
  - `src`: classes for e.g. window and browser creation
-
-## Requirements:
- - node.js >= v10.9.0 recommended
 
 This tool uses a new JavaScript type called [`BigInt`](https://developers.google.com/web/updates/2018/05/bigint) to represent memory addresses returned by Vulkan. The `BigInt` type was recently added, so make sure you use a recent node.js version.
 
@@ -29,6 +49,9 @@ The Generator generates C++ code from a `vk.xml` specification file. It first co
 If you're interested in what a generated file look like, checkout [`calls.h`](https://github.com/maierfelix/node-vulkan/blob/master/generated/1.1.85/src/calls.h) or [`VkGraphicsPipelineCreateInfo.cpp`](https://github.com/maierfelix/node-vulkan/blob/master/generated/1.1.85/src/VkGraphicsPipelineCreateInfo.cpp)
 
 ### Installation:
+
+## Requirements:
+ - node.js >= v10.9.0 recommended
 
 #### Windows:
 Make sure you have either Visual Studio >= 15 installed or use
