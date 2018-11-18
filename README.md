@@ -39,9 +39,9 @@ appInfo.apiVersion = VK_API_VERSION_1_0;
 ## Structure:
  - `generator`: code for binding generation
  - `generated`: the generated binding code
- - `examples`: contains a triangle and cube demo
+ - `examples`: ready-to-run examples
  - `lib`: required third party libs
- - `src`: classes for e.g. window and browser creation
+ - `src`: classes for e.g. window creation
 
 This tool uses a new JavaScript type called [`BigInt`](https://developers.google.com/web/updates/2018/05/bigint) to represent memory addresses returned by Vulkan. The `BigInt` type was recently added, so make sure you use a recent node.js version.
 
