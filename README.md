@@ -1,6 +1,26 @@
 # node-vulkan
 This is a Vulkan API for node.js, which allows to interact from JavaScript with the low-level interface of Vulkan. The API of this project strives to be as close as possible to Vulkan's C API.
 
+## Table of Contents:
+  * [Preview](#preview)
+  * [Example](#example)
+  * [Structure](#structure)
+  * [Generator](#generator)
+  * [Installation](#installation)
+    + [Requirements](#requirements)
+    + [Windows](#windows)
+  * [CLI](#cli)
+      - [Syntax](#syntax)
+      - [Flags](#flags)
+    + [Usage](#usage)
+      - [Generation](#generation)
+      - [Building](#building)
+  * [Syntactic Sugar](#syntactic-sugar)
+      - [sType auto-filling](#stype-auto-filling)
+      - [Structure creation shortcut](#structure-creation-shortcut)
+  * [HTML, CSS based UIs](#html-css-based-uis)
+  * [TODOs](#todos)
+
 ## Preview:<br/>
 <img src="https://i.imgur.com/cRrVc1N.gif" width="380">
 
@@ -47,12 +67,12 @@ The Generator generates C++ code from a `vk.xml` specification file. It first co
 
 If you're interested in what a generated file look like, checkout [`calls.h`](https://github.com/maierfelix/node-vulkan/blob/master/generated/1.1.85/src/calls.h) or [`VkGraphicsPipelineCreateInfo.cpp`](https://github.com/maierfelix/node-vulkan/blob/master/generated/1.1.85/src/VkGraphicsPipelineCreateInfo.cpp)
 
-### Installation:
+## Installation:
 
-## Requirements:
+### Requirements:
  - node.js >= v10.9.0 recommended
 
-#### Windows:
+### Windows:
 Make sure you have either Visual Studio >= 15 installed or use
 ````
 npm install --global --production windows-build-tools
@@ -71,7 +91,7 @@ After installing node-vulkan, a setup will ask you, if it should automate the wh
 
 Afterwards you can `require` or `import` node-vulkan in your project!
 
-### API:
+## CLI:
 
 #### Syntax:
 ````
@@ -108,7 +128,7 @@ The compiled bindings can then be found in `generated/{vkversion}/build`
 
 The API gives you some sugar to write things quicker, but still gives you the option to write everything explicitly
 
-### sType auto-filling
+#### sType auto-filling
 `sType` members get auto-filled, but you can still set them yourself
 
 ````js
@@ -121,7 +141,7 @@ Becomes:
 let appInfo = new VkApplicationInfo(); // sType auto-filled
 ````
 
-### Object based Structure creation
+#### Structure creation shortcut
 
 Instead of:
 ````js
@@ -143,7 +163,7 @@ let renderArea = new VkRect2D({
 });
 ````
 
-### HTML, CSS based UIs
+## HTML, CSS based UIs
 
 The [chromium-ui](https://github.com/maierfelix/node-vulkan/tree/chromium-ui) branch contains an experiment about letting users create UIs with a complete HTML/CSS browser toolchain. The website (browser frame) can then be rendered inside Vulkan. This is done using [Chromium-Embedded-Framework](https://bitbucket.org/chromiumembedded/cef). The browser texture is shared with vulkan's memory, so you can directly render it on top of your application. Oh yes!
 
@@ -160,7 +180,7 @@ CEF recently got shared textures added, meaning crazy performance and no CPU wan
 
 But CEF's shared textures on Windows require D3D11 which I'm not familiar with. If you're interested in helping and solving this one last step, please make a PR!
 
-### TODOs:
+## TODOs:
  - [ ] Struct generation (~85%)
  - [x] Handle generation (~100%)
  - [x] Enum generation (100%)
