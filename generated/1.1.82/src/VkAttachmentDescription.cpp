@@ -46,7 +46,7 @@ NAN_METHOD(_VkAttachmentDescription::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("flags").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("format").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("samples").ToLocalChecked();
@@ -80,61 +80,61 @@ NAN_GETTER(_VkAttachmentDescription::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkAttachmentDescription::Setflags) {
   _VkAttachmentDescription *self = Nan::ObjectWrap::Unwrap<_VkAttachmentDescription>(info.This());
-  self->instance.flags = static_cast<VkAttachmentDescriptionFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkAttachmentDescriptionFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// format
 NAN_GETTER(_VkAttachmentDescription::Getformat) {
   _VkAttachmentDescription *self = Nan::ObjectWrap::Unwrap<_VkAttachmentDescription>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.format));
 }NAN_SETTER(_VkAttachmentDescription::Setformat) {
   _VkAttachmentDescription *self = Nan::ObjectWrap::Unwrap<_VkAttachmentDescription>(info.This());
-  self->instance.format = static_cast<VkFormat>((int32_t)value->NumberValue());
+  self->instance.format = static_cast<VkFormat>(Nan::To<int32_t>(value).FromMaybe(0));
 }// samples
 NAN_GETTER(_VkAttachmentDescription::Getsamples) {
   _VkAttachmentDescription *self = Nan::ObjectWrap::Unwrap<_VkAttachmentDescription>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.samples));
 }NAN_SETTER(_VkAttachmentDescription::Setsamples) {
   _VkAttachmentDescription *self = Nan::ObjectWrap::Unwrap<_VkAttachmentDescription>(info.This());
-  self->instance.samples = static_cast<VkSampleCountFlagBits>((int32_t)value->NumberValue());
+  self->instance.samples = static_cast<VkSampleCountFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
 }// loadOp
 NAN_GETTER(_VkAttachmentDescription::GetloadOp) {
   _VkAttachmentDescription *self = Nan::ObjectWrap::Unwrap<_VkAttachmentDescription>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.loadOp));
 }NAN_SETTER(_VkAttachmentDescription::SetloadOp) {
   _VkAttachmentDescription *self = Nan::ObjectWrap::Unwrap<_VkAttachmentDescription>(info.This());
-  self->instance.loadOp = static_cast<VkAttachmentLoadOp>((int32_t)value->NumberValue());
+  self->instance.loadOp = static_cast<VkAttachmentLoadOp>(Nan::To<int32_t>(value).FromMaybe(0));
 }// storeOp
 NAN_GETTER(_VkAttachmentDescription::GetstoreOp) {
   _VkAttachmentDescription *self = Nan::ObjectWrap::Unwrap<_VkAttachmentDescription>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.storeOp));
 }NAN_SETTER(_VkAttachmentDescription::SetstoreOp) {
   _VkAttachmentDescription *self = Nan::ObjectWrap::Unwrap<_VkAttachmentDescription>(info.This());
-  self->instance.storeOp = static_cast<VkAttachmentStoreOp>((int32_t)value->NumberValue());
+  self->instance.storeOp = static_cast<VkAttachmentStoreOp>(Nan::To<int32_t>(value).FromMaybe(0));
 }// stencilLoadOp
 NAN_GETTER(_VkAttachmentDescription::GetstencilLoadOp) {
   _VkAttachmentDescription *self = Nan::ObjectWrap::Unwrap<_VkAttachmentDescription>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.stencilLoadOp));
 }NAN_SETTER(_VkAttachmentDescription::SetstencilLoadOp) {
   _VkAttachmentDescription *self = Nan::ObjectWrap::Unwrap<_VkAttachmentDescription>(info.This());
-  self->instance.stencilLoadOp = static_cast<VkAttachmentLoadOp>((int32_t)value->NumberValue());
+  self->instance.stencilLoadOp = static_cast<VkAttachmentLoadOp>(Nan::To<int32_t>(value).FromMaybe(0));
 }// stencilStoreOp
 NAN_GETTER(_VkAttachmentDescription::GetstencilStoreOp) {
   _VkAttachmentDescription *self = Nan::ObjectWrap::Unwrap<_VkAttachmentDescription>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.stencilStoreOp));
 }NAN_SETTER(_VkAttachmentDescription::SetstencilStoreOp) {
   _VkAttachmentDescription *self = Nan::ObjectWrap::Unwrap<_VkAttachmentDescription>(info.This());
-  self->instance.stencilStoreOp = static_cast<VkAttachmentStoreOp>((int32_t)value->NumberValue());
+  self->instance.stencilStoreOp = static_cast<VkAttachmentStoreOp>(Nan::To<int32_t>(value).FromMaybe(0));
 }// initialLayout
 NAN_GETTER(_VkAttachmentDescription::GetinitialLayout) {
   _VkAttachmentDescription *self = Nan::ObjectWrap::Unwrap<_VkAttachmentDescription>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.initialLayout));
 }NAN_SETTER(_VkAttachmentDescription::SetinitialLayout) {
   _VkAttachmentDescription *self = Nan::ObjectWrap::Unwrap<_VkAttachmentDescription>(info.This());
-  self->instance.initialLayout = static_cast<VkImageLayout>((int32_t)value->NumberValue());
+  self->instance.initialLayout = static_cast<VkImageLayout>(Nan::To<int32_t>(value).FromMaybe(0));
 }// finalLayout
 NAN_GETTER(_VkAttachmentDescription::GetfinalLayout) {
   _VkAttachmentDescription *self = Nan::ObjectWrap::Unwrap<_VkAttachmentDescription>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.finalLayout));
 }NAN_SETTER(_VkAttachmentDescription::SetfinalLayout) {
   _VkAttachmentDescription *self = Nan::ObjectWrap::Unwrap<_VkAttachmentDescription>(info.This());
-  self->instance.finalLayout = static_cast<VkImageLayout>((int32_t)value->NumberValue());
+  self->instance.finalLayout = static_cast<VkImageLayout>(Nan::To<int32_t>(value).FromMaybe(0));
 }

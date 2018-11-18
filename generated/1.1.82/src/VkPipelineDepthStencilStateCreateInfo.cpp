@@ -49,7 +49,7 @@ NAN_METHOD(_VkPipelineDepthStencilStateCreateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -89,7 +89,7 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkPipelineDepthStencilStateCreateInfo::SetsType) {
   _VkPipelineDepthStencilStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetpNext) {
   _VkPipelineDepthStencilStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(info.This());
@@ -101,42 +101,42 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkPipelineDepthStencilStateCreateInfo::Setflags) {
   _VkPipelineDepthStencilStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(info.This());
-  self->instance.flags = static_cast<VkPipelineDepthStencilStateCreateFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkPipelineDepthStencilStateCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// depthTestEnable
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetdepthTestEnable) {
   _VkPipelineDepthStencilStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.depthTestEnable));
 }NAN_SETTER(_VkPipelineDepthStencilStateCreateInfo::SetdepthTestEnable) {
   _VkPipelineDepthStencilStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(info.This());
-  self->instance.depthTestEnable = static_cast<uint32_t>(value->NumberValue());
+  self->instance.depthTestEnable = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// depthWriteEnable
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetdepthWriteEnable) {
   _VkPipelineDepthStencilStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.depthWriteEnable));
 }NAN_SETTER(_VkPipelineDepthStencilStateCreateInfo::SetdepthWriteEnable) {
   _VkPipelineDepthStencilStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(info.This());
-  self->instance.depthWriteEnable = static_cast<uint32_t>(value->NumberValue());
+  self->instance.depthWriteEnable = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// depthCompareOp
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetdepthCompareOp) {
   _VkPipelineDepthStencilStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.depthCompareOp));
 }NAN_SETTER(_VkPipelineDepthStencilStateCreateInfo::SetdepthCompareOp) {
   _VkPipelineDepthStencilStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(info.This());
-  self->instance.depthCompareOp = static_cast<VkCompareOp>((int32_t)value->NumberValue());
+  self->instance.depthCompareOp = static_cast<VkCompareOp>(Nan::To<int32_t>(value).FromMaybe(0));
 }// depthBoundsTestEnable
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetdepthBoundsTestEnable) {
   _VkPipelineDepthStencilStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.depthBoundsTestEnable));
 }NAN_SETTER(_VkPipelineDepthStencilStateCreateInfo::SetdepthBoundsTestEnable) {
   _VkPipelineDepthStencilStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(info.This());
-  self->instance.depthBoundsTestEnable = static_cast<uint32_t>(value->NumberValue());
+  self->instance.depthBoundsTestEnable = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// stencilTestEnable
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetstencilTestEnable) {
   _VkPipelineDepthStencilStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.stencilTestEnable));
 }NAN_SETTER(_VkPipelineDepthStencilStateCreateInfo::SetstencilTestEnable) {
   _VkPipelineDepthStencilStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(info.This());
-  self->instance.stencilTestEnable = static_cast<uint32_t>(value->NumberValue());
+  self->instance.stencilTestEnable = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// front
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::Getfront) {
   _VkPipelineDepthStencilStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(info.This());
@@ -150,14 +150,14 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::Getfront) {
   _VkPipelineDepthStencilStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->front = obj;
   } else {
     //self->front = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkStencilOpState* obj = Nan::ObjectWrap::Unwrap<_VkStencilOpState>(value->ToObject());
+    _VkStencilOpState* obj = Nan::ObjectWrap::Unwrap<_VkStencilOpState>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.front = obj->instance;
   } else {
     memset(&self->instance.front, 0, sizeof(VkStencilOpState));
@@ -175,14 +175,14 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::Getback) {
   _VkPipelineDepthStencilStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->back = obj;
   } else {
     //self->back = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkStencilOpState* obj = Nan::ObjectWrap::Unwrap<_VkStencilOpState>(value->ToObject());
+    _VkStencilOpState* obj = Nan::ObjectWrap::Unwrap<_VkStencilOpState>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.back = obj->instance;
   } else {
     memset(&self->instance.back, 0, sizeof(VkStencilOpState));
@@ -193,12 +193,12 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetminDepthBounds) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.minDepthBounds));
 }NAN_SETTER(_VkPipelineDepthStencilStateCreateInfo::SetminDepthBounds) {
   _VkPipelineDepthStencilStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(info.This());
-  self->instance.minDepthBounds = static_cast<float>(value->NumberValue());
+  self->instance.minDepthBounds = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
 }// maxDepthBounds
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetmaxDepthBounds) {
   _VkPipelineDepthStencilStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.maxDepthBounds));
 }NAN_SETTER(_VkPipelineDepthStencilStateCreateInfo::SetmaxDepthBounds) {
   _VkPipelineDepthStencilStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(info.This());
-  self->instance.maxDepthBounds = static_cast<float>(value->NumberValue());
+  self->instance.maxDepthBounds = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
 }

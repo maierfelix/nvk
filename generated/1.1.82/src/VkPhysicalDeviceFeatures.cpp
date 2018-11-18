@@ -92,7 +92,7 @@ NAN_METHOD(_VkPhysicalDeviceFeatures::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("robustBufferAccess").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("fullDrawIndexUint32").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("imageCubeArray").ToLocalChecked();
@@ -218,383 +218,383 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetrobustBufferAccess) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.robustBufferAccess));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetrobustBufferAccess) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.robustBufferAccess = static_cast<uint32_t>(value->NumberValue());
+  self->instance.robustBufferAccess = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// fullDrawIndexUint32
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetfullDrawIndexUint32) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.fullDrawIndexUint32));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetfullDrawIndexUint32) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.fullDrawIndexUint32 = static_cast<uint32_t>(value->NumberValue());
+  self->instance.fullDrawIndexUint32 = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// imageCubeArray
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetimageCubeArray) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.imageCubeArray));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetimageCubeArray) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.imageCubeArray = static_cast<uint32_t>(value->NumberValue());
+  self->instance.imageCubeArray = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// independentBlend
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetindependentBlend) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.independentBlend));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetindependentBlend) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.independentBlend = static_cast<uint32_t>(value->NumberValue());
+  self->instance.independentBlend = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// geometryShader
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetgeometryShader) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.geometryShader));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetgeometryShader) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.geometryShader = static_cast<uint32_t>(value->NumberValue());
+  self->instance.geometryShader = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// tessellationShader
 NAN_GETTER(_VkPhysicalDeviceFeatures::GettessellationShader) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.tessellationShader));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SettessellationShader) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.tessellationShader = static_cast<uint32_t>(value->NumberValue());
+  self->instance.tessellationShader = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// sampleRateShading
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsampleRateShading) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sampleRateShading));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetsampleRateShading) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.sampleRateShading = static_cast<uint32_t>(value->NumberValue());
+  self->instance.sampleRateShading = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// dualSrcBlend
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetdualSrcBlend) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.dualSrcBlend));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetdualSrcBlend) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.dualSrcBlend = static_cast<uint32_t>(value->NumberValue());
+  self->instance.dualSrcBlend = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// logicOp
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetlogicOp) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.logicOp));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetlogicOp) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.logicOp = static_cast<uint32_t>(value->NumberValue());
+  self->instance.logicOp = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// multiDrawIndirect
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetmultiDrawIndirect) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.multiDrawIndirect));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetmultiDrawIndirect) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.multiDrawIndirect = static_cast<uint32_t>(value->NumberValue());
+  self->instance.multiDrawIndirect = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// drawIndirectFirstInstance
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetdrawIndirectFirstInstance) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.drawIndirectFirstInstance));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetdrawIndirectFirstInstance) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.drawIndirectFirstInstance = static_cast<uint32_t>(value->NumberValue());
+  self->instance.drawIndirectFirstInstance = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// depthClamp
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetdepthClamp) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.depthClamp));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetdepthClamp) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.depthClamp = static_cast<uint32_t>(value->NumberValue());
+  self->instance.depthClamp = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// depthBiasClamp
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetdepthBiasClamp) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.depthBiasClamp));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetdepthBiasClamp) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.depthBiasClamp = static_cast<uint32_t>(value->NumberValue());
+  self->instance.depthBiasClamp = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// fillModeNonSolid
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetfillModeNonSolid) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.fillModeNonSolid));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetfillModeNonSolid) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.fillModeNonSolid = static_cast<uint32_t>(value->NumberValue());
+  self->instance.fillModeNonSolid = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// depthBounds
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetdepthBounds) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.depthBounds));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetdepthBounds) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.depthBounds = static_cast<uint32_t>(value->NumberValue());
+  self->instance.depthBounds = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// wideLines
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetwideLines) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.wideLines));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetwideLines) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.wideLines = static_cast<uint32_t>(value->NumberValue());
+  self->instance.wideLines = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// largePoints
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetlargePoints) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.largePoints));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetlargePoints) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.largePoints = static_cast<uint32_t>(value->NumberValue());
+  self->instance.largePoints = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// alphaToOne
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetalphaToOne) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.alphaToOne));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetalphaToOne) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.alphaToOne = static_cast<uint32_t>(value->NumberValue());
+  self->instance.alphaToOne = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// multiViewport
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetmultiViewport) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.multiViewport));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetmultiViewport) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.multiViewport = static_cast<uint32_t>(value->NumberValue());
+  self->instance.multiViewport = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// samplerAnisotropy
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsamplerAnisotropy) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.samplerAnisotropy));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetsamplerAnisotropy) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.samplerAnisotropy = static_cast<uint32_t>(value->NumberValue());
+  self->instance.samplerAnisotropy = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// textureCompressionETC2
 NAN_GETTER(_VkPhysicalDeviceFeatures::GettextureCompressionETC2) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.textureCompressionETC2));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SettextureCompressionETC2) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.textureCompressionETC2 = static_cast<uint32_t>(value->NumberValue());
+  self->instance.textureCompressionETC2 = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// textureCompressionASTC_LDR
 NAN_GETTER(_VkPhysicalDeviceFeatures::GettextureCompressionASTC_LDR) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.textureCompressionASTC_LDR));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SettextureCompressionASTC_LDR) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.textureCompressionASTC_LDR = static_cast<uint32_t>(value->NumberValue());
+  self->instance.textureCompressionASTC_LDR = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// textureCompressionBC
 NAN_GETTER(_VkPhysicalDeviceFeatures::GettextureCompressionBC) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.textureCompressionBC));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SettextureCompressionBC) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.textureCompressionBC = static_cast<uint32_t>(value->NumberValue());
+  self->instance.textureCompressionBC = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// occlusionQueryPrecise
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetocclusionQueryPrecise) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.occlusionQueryPrecise));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetocclusionQueryPrecise) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.occlusionQueryPrecise = static_cast<uint32_t>(value->NumberValue());
+  self->instance.occlusionQueryPrecise = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pipelineStatisticsQuery
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetpipelineStatisticsQuery) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.pipelineStatisticsQuery));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetpipelineStatisticsQuery) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.pipelineStatisticsQuery = static_cast<uint32_t>(value->NumberValue());
+  self->instance.pipelineStatisticsQuery = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// vertexPipelineStoresAndAtomics
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetvertexPipelineStoresAndAtomics) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.vertexPipelineStoresAndAtomics));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetvertexPipelineStoresAndAtomics) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.vertexPipelineStoresAndAtomics = static_cast<uint32_t>(value->NumberValue());
+  self->instance.vertexPipelineStoresAndAtomics = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// fragmentStoresAndAtomics
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetfragmentStoresAndAtomics) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.fragmentStoresAndAtomics));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetfragmentStoresAndAtomics) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.fragmentStoresAndAtomics = static_cast<uint32_t>(value->NumberValue());
+  self->instance.fragmentStoresAndAtomics = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// shaderTessellationAndGeometryPointSize
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderTessellationAndGeometryPointSize) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderTessellationAndGeometryPointSize));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetshaderTessellationAndGeometryPointSize) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.shaderTessellationAndGeometryPointSize = static_cast<uint32_t>(value->NumberValue());
+  self->instance.shaderTessellationAndGeometryPointSize = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// shaderImageGatherExtended
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderImageGatherExtended) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderImageGatherExtended));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetshaderImageGatherExtended) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.shaderImageGatherExtended = static_cast<uint32_t>(value->NumberValue());
+  self->instance.shaderImageGatherExtended = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// shaderStorageImageExtendedFormats
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageExtendedFormats) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderStorageImageExtendedFormats));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetshaderStorageImageExtendedFormats) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.shaderStorageImageExtendedFormats = static_cast<uint32_t>(value->NumberValue());
+  self->instance.shaderStorageImageExtendedFormats = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// shaderStorageImageMultisample
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageMultisample) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderStorageImageMultisample));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetshaderStorageImageMultisample) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.shaderStorageImageMultisample = static_cast<uint32_t>(value->NumberValue());
+  self->instance.shaderStorageImageMultisample = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// shaderStorageImageReadWithoutFormat
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageReadWithoutFormat) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderStorageImageReadWithoutFormat));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetshaderStorageImageReadWithoutFormat) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.shaderStorageImageReadWithoutFormat = static_cast<uint32_t>(value->NumberValue());
+  self->instance.shaderStorageImageReadWithoutFormat = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// shaderStorageImageWriteWithoutFormat
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageWriteWithoutFormat) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderStorageImageWriteWithoutFormat));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetshaderStorageImageWriteWithoutFormat) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.shaderStorageImageWriteWithoutFormat = static_cast<uint32_t>(value->NumberValue());
+  self->instance.shaderStorageImageWriteWithoutFormat = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// shaderUniformBufferArrayDynamicIndexing
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderUniformBufferArrayDynamicIndexing) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderUniformBufferArrayDynamicIndexing));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetshaderUniformBufferArrayDynamicIndexing) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.shaderUniformBufferArrayDynamicIndexing = static_cast<uint32_t>(value->NumberValue());
+  self->instance.shaderUniformBufferArrayDynamicIndexing = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// shaderSampledImageArrayDynamicIndexing
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderSampledImageArrayDynamicIndexing) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderSampledImageArrayDynamicIndexing));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetshaderSampledImageArrayDynamicIndexing) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.shaderSampledImageArrayDynamicIndexing = static_cast<uint32_t>(value->NumberValue());
+  self->instance.shaderSampledImageArrayDynamicIndexing = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// shaderStorageBufferArrayDynamicIndexing
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageBufferArrayDynamicIndexing) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderStorageBufferArrayDynamicIndexing));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetshaderStorageBufferArrayDynamicIndexing) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.shaderStorageBufferArrayDynamicIndexing = static_cast<uint32_t>(value->NumberValue());
+  self->instance.shaderStorageBufferArrayDynamicIndexing = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// shaderStorageImageArrayDynamicIndexing
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageArrayDynamicIndexing) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderStorageImageArrayDynamicIndexing));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetshaderStorageImageArrayDynamicIndexing) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.shaderStorageImageArrayDynamicIndexing = static_cast<uint32_t>(value->NumberValue());
+  self->instance.shaderStorageImageArrayDynamicIndexing = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// shaderClipDistance
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderClipDistance) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderClipDistance));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetshaderClipDistance) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.shaderClipDistance = static_cast<uint32_t>(value->NumberValue());
+  self->instance.shaderClipDistance = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// shaderCullDistance
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderCullDistance) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderCullDistance));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetshaderCullDistance) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.shaderCullDistance = static_cast<uint32_t>(value->NumberValue());
+  self->instance.shaderCullDistance = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// shaderFloat64
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderFloat64) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderFloat64));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetshaderFloat64) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.shaderFloat64 = static_cast<uint32_t>(value->NumberValue());
+  self->instance.shaderFloat64 = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// shaderInt64
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderInt64) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderInt64));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetshaderInt64) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.shaderInt64 = static_cast<uint32_t>(value->NumberValue());
+  self->instance.shaderInt64 = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// shaderInt16
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderInt16) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderInt16));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetshaderInt16) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.shaderInt16 = static_cast<uint32_t>(value->NumberValue());
+  self->instance.shaderInt16 = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// shaderResourceResidency
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderResourceResidency) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderResourceResidency));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetshaderResourceResidency) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.shaderResourceResidency = static_cast<uint32_t>(value->NumberValue());
+  self->instance.shaderResourceResidency = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// shaderResourceMinLod
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderResourceMinLod) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderResourceMinLod));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetshaderResourceMinLod) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.shaderResourceMinLod = static_cast<uint32_t>(value->NumberValue());
+  self->instance.shaderResourceMinLod = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// sparseBinding
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseBinding) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sparseBinding));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetsparseBinding) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.sparseBinding = static_cast<uint32_t>(value->NumberValue());
+  self->instance.sparseBinding = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// sparseResidencyBuffer
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidencyBuffer) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sparseResidencyBuffer));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetsparseResidencyBuffer) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.sparseResidencyBuffer = static_cast<uint32_t>(value->NumberValue());
+  self->instance.sparseResidencyBuffer = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// sparseResidencyImage2D
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidencyImage2D) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sparseResidencyImage2D));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetsparseResidencyImage2D) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.sparseResidencyImage2D = static_cast<uint32_t>(value->NumberValue());
+  self->instance.sparseResidencyImage2D = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// sparseResidencyImage3D
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidencyImage3D) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sparseResidencyImage3D));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetsparseResidencyImage3D) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.sparseResidencyImage3D = static_cast<uint32_t>(value->NumberValue());
+  self->instance.sparseResidencyImage3D = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// sparseResidency2Samples
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidency2Samples) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sparseResidency2Samples));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetsparseResidency2Samples) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.sparseResidency2Samples = static_cast<uint32_t>(value->NumberValue());
+  self->instance.sparseResidency2Samples = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// sparseResidency4Samples
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidency4Samples) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sparseResidency4Samples));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetsparseResidency4Samples) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.sparseResidency4Samples = static_cast<uint32_t>(value->NumberValue());
+  self->instance.sparseResidency4Samples = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// sparseResidency8Samples
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidency8Samples) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sparseResidency8Samples));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetsparseResidency8Samples) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.sparseResidency8Samples = static_cast<uint32_t>(value->NumberValue());
+  self->instance.sparseResidency8Samples = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// sparseResidency16Samples
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidency16Samples) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sparseResidency16Samples));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetsparseResidency16Samples) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.sparseResidency16Samples = static_cast<uint32_t>(value->NumberValue());
+  self->instance.sparseResidency16Samples = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// sparseResidencyAliased
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidencyAliased) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sparseResidencyAliased));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetsparseResidencyAliased) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.sparseResidencyAliased = static_cast<uint32_t>(value->NumberValue());
+  self->instance.sparseResidencyAliased = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// variableMultisampleRate
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetvariableMultisampleRate) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.variableMultisampleRate));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetvariableMultisampleRate) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.variableMultisampleRate = static_cast<uint32_t>(value->NumberValue());
+  self->instance.variableMultisampleRate = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// inheritedQueries
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetinheritedQueries) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.inheritedQueries));
 }NAN_SETTER(_VkPhysicalDeviceFeatures::SetinheritedQueries) {
   _VkPhysicalDeviceFeatures *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info.This());
-  self->instance.inheritedQueries = static_cast<uint32_t>(value->NumberValue());
+  self->instance.inheritedQueries = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }

@@ -44,7 +44,7 @@ NAN_METHOD(_VkStencilOpState::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("failOp").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("passOp").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("depthFailOp").ToLocalChecked();
@@ -74,47 +74,47 @@ NAN_GETTER(_VkStencilOpState::GetfailOp) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.failOp));
 }NAN_SETTER(_VkStencilOpState::SetfailOp) {
   _VkStencilOpState *self = Nan::ObjectWrap::Unwrap<_VkStencilOpState>(info.This());
-  self->instance.failOp = static_cast<VkStencilOp>((int32_t)value->NumberValue());
+  self->instance.failOp = static_cast<VkStencilOp>(Nan::To<int32_t>(value).FromMaybe(0));
 }// passOp
 NAN_GETTER(_VkStencilOpState::GetpassOp) {
   _VkStencilOpState *self = Nan::ObjectWrap::Unwrap<_VkStencilOpState>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.passOp));
 }NAN_SETTER(_VkStencilOpState::SetpassOp) {
   _VkStencilOpState *self = Nan::ObjectWrap::Unwrap<_VkStencilOpState>(info.This());
-  self->instance.passOp = static_cast<VkStencilOp>((int32_t)value->NumberValue());
+  self->instance.passOp = static_cast<VkStencilOp>(Nan::To<int32_t>(value).FromMaybe(0));
 }// depthFailOp
 NAN_GETTER(_VkStencilOpState::GetdepthFailOp) {
   _VkStencilOpState *self = Nan::ObjectWrap::Unwrap<_VkStencilOpState>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.depthFailOp));
 }NAN_SETTER(_VkStencilOpState::SetdepthFailOp) {
   _VkStencilOpState *self = Nan::ObjectWrap::Unwrap<_VkStencilOpState>(info.This());
-  self->instance.depthFailOp = static_cast<VkStencilOp>((int32_t)value->NumberValue());
+  self->instance.depthFailOp = static_cast<VkStencilOp>(Nan::To<int32_t>(value).FromMaybe(0));
 }// compareOp
 NAN_GETTER(_VkStencilOpState::GetcompareOp) {
   _VkStencilOpState *self = Nan::ObjectWrap::Unwrap<_VkStencilOpState>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.compareOp));
 }NAN_SETTER(_VkStencilOpState::SetcompareOp) {
   _VkStencilOpState *self = Nan::ObjectWrap::Unwrap<_VkStencilOpState>(info.This());
-  self->instance.compareOp = static_cast<VkCompareOp>((int32_t)value->NumberValue());
+  self->instance.compareOp = static_cast<VkCompareOp>(Nan::To<int32_t>(value).FromMaybe(0));
 }// compareMask
 NAN_GETTER(_VkStencilOpState::GetcompareMask) {
   _VkStencilOpState *self = Nan::ObjectWrap::Unwrap<_VkStencilOpState>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.compareMask));
 }NAN_SETTER(_VkStencilOpState::SetcompareMask) {
   _VkStencilOpState *self = Nan::ObjectWrap::Unwrap<_VkStencilOpState>(info.This());
-  self->instance.compareMask = static_cast<uint32_t>(value->NumberValue());
+  self->instance.compareMask = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// writeMask
 NAN_GETTER(_VkStencilOpState::GetwriteMask) {
   _VkStencilOpState *self = Nan::ObjectWrap::Unwrap<_VkStencilOpState>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.writeMask));
 }NAN_SETTER(_VkStencilOpState::SetwriteMask) {
   _VkStencilOpState *self = Nan::ObjectWrap::Unwrap<_VkStencilOpState>(info.This());
-  self->instance.writeMask = static_cast<uint32_t>(value->NumberValue());
+  self->instance.writeMask = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// reference
 NAN_GETTER(_VkStencilOpState::Getreference) {
   _VkStencilOpState *self = Nan::ObjectWrap::Unwrap<_VkStencilOpState>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.reference));
 }NAN_SETTER(_VkStencilOpState::Setreference) {
   _VkStencilOpState *self = Nan::ObjectWrap::Unwrap<_VkStencilOpState>(info.This());
-  self->instance.reference = static_cast<uint32_t>(value->NumberValue());
+  self->instance.reference = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }

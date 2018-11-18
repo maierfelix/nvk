@@ -41,7 +41,7 @@ NAN_METHOD(_VkClearColorValue::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("float32").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("int32").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("uint32").ToLocalChecked();

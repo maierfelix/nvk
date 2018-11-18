@@ -30,7 +30,7 @@ function getTypedV8Array(member) {
     return `
   // vulkan
   if (value->IsArrayBufferView()) {
-    self->instance.${member.name} = reinterpret_cast<${type}>(getTypedArrayData<${member.type}>(value->ToObject(), nullptr));
+    self->instance.${member.name} = reinterpret_cast<${type}>(getTypedArrayData<${member.type}>(Nan::To<v8::Object>(value).ToLocalChecked(), nullptr));
   } else {
     self->instance.${member.name} = nullptr;
   }`;
@@ -38,7 +38,7 @@ function getTypedV8Array(member) {
     return `
   // vulkan
   if (value->IsArrayBufferView()) {
-    self->instance.${member.name} = getTypedArrayData<${member.type}>(value->ToObject(), nullptr);
+    self->instance.${member.name} = getTypedArrayData<${member.type}>(Nan::To<v8::Object>(value).ToLocalChecked(), nullptr);
   } else {
     self->instance.${member.name} = nullptr;
   }`;
@@ -240,13 +240,13 @@ function genPolymorphicSourceSetter(struct, member) {
   let {extensions} = struct;
   if (extensions) {
     out += `
-    v8::Local<v8::Object> arg = value->ToObject();
+    v8::Local<v8::Object> arg = Nan::To<v8::Object>(value).ToLocalChecked();
     v8::String::Utf8Value ctorUtf8(arg->GetConstructorName());
     const char* ctor = *ctorUtf8;
     `;
     extensions.map((extName, index) => {
       out += `${index <= 0 ? "if" : " else if"} (ctor == "${extName}") {
-      _${extName}* obj = Nan::ObjectWrap::Unwrap<_${extName}>(value->ToObject());
+      _${extName}* obj = Nan::ObjectWrap::Unwrap<_${extName}>(Nan::To<v8::Object>(value).ToLocalChecked());
       self->instance.${member.name} = &obj->instance;
     }`;
     });
@@ -286,10 +286,10 @@ function processSourceSetter(struct, member) {
     case "uint64_t": 
       if (member.enumType || member.bitmaskType) {
         return `
-  self->instance.${member.name} = static_cast<${member.enumType || member.bitmaskType}>((int32_t)value->NumberValue());`;
+  self->instance.${member.name} = static_cast<${member.enumType || member.bitmaskType}>(Nan::To<int32_t>(value).FromMaybe(0));`;
       } else {
         return `
-  self->instance.${member.name} = static_cast<${rawType}>(value->NumberValue());`;
+  self->instance.${member.name} = static_cast<${rawType}>(Nan::To<int64_t>(value).FromMaybe(0));`;
       }
     case "const char *":
       return `
@@ -333,7 +333,7 @@ function processSourceSetter(struct, member) {
           return `
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->${member.name} = obj;
   }
   // vulkan
@@ -355,14 +355,14 @@ function processSourceSetter(struct, member) {
         return `
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->${member.name} = obj;
   } else {
     //self->${member.name} = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _${member.type}* obj = Nan::ObjectWrap::Unwrap<_${member.type}>(value->ToObject());
+    _${member.type}* obj = Nan::ObjectWrap::Unwrap<_${member.type}>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.${member.name} = ${isReference ? "&" : ""}obj->instance;
   } else {
     ${deinitialize}

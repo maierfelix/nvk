@@ -43,7 +43,7 @@ NAN_METHOD(_VkDescriptorPoolCreateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -71,7 +71,7 @@ NAN_GETTER(_VkDescriptorPoolCreateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkDescriptorPoolCreateInfo::SetsType) {
   _VkDescriptorPoolCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorPoolCreateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkDescriptorPoolCreateInfo::GetpNext) {
   _VkDescriptorPoolCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorPoolCreateInfo>(info.This());
@@ -83,21 +83,21 @@ NAN_GETTER(_VkDescriptorPoolCreateInfo::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkDescriptorPoolCreateInfo::Setflags) {
   _VkDescriptorPoolCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorPoolCreateInfo>(info.This());
-  self->instance.flags = static_cast<VkDescriptorPoolCreateFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkDescriptorPoolCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// maxSets
 NAN_GETTER(_VkDescriptorPoolCreateInfo::GetmaxSets) {
   _VkDescriptorPoolCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorPoolCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.maxSets));
 }NAN_SETTER(_VkDescriptorPoolCreateInfo::SetmaxSets) {
   _VkDescriptorPoolCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorPoolCreateInfo>(info.This());
-  self->instance.maxSets = static_cast<uint32_t>(value->NumberValue());
+  self->instance.maxSets = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// poolSizeCount
 NAN_GETTER(_VkDescriptorPoolCreateInfo::GetpoolSizeCount) {
   _VkDescriptorPoolCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorPoolCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.poolSizeCount));
 }NAN_SETTER(_VkDescriptorPoolCreateInfo::SetpoolSizeCount) {
   _VkDescriptorPoolCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorPoolCreateInfo>(info.This());
-  self->instance.poolSizeCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.poolSizeCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pPoolSizes
 NAN_GETTER(_VkDescriptorPoolCreateInfo::GetpPoolSizes) {
   _VkDescriptorPoolCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorPoolCreateInfo>(info.This());

@@ -278,9 +278,9 @@ NAN_METHOD(VulkanWindow::New) {
     // init glfw
     if (glfwInit() != GLFW_TRUE) return Nan::ThrowError("Failed to init GLFW!");
     // process arguments
-    // Nan::New(VkApplicationInfo::constructor)->HasInstance(info[0]->ToObject())
+    // Nan::New(VkApplicationInfo::constructor)->HasInstance(Nan::To<v8::Object>(info[0]).ToLocalChecked()))
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::Value> argWidth = obj->Get(Nan::New("width").ToLocalChecked());
       v8::Local<v8::Value> argHeight = obj->Get(Nan::New("height").ToLocalChecked());
       v8::Local<v8::Value> argTitle = obj->Get(Nan::New("title").ToLocalChecked());
@@ -344,9 +344,9 @@ NAN_METHOD(VulkanWindow::createSurface) {
   v8::Local<v8::Object> arg1;
   v8::Local<v8::Object> arg2;
 
-  if (info[0]->IsObject()) arg0 = info[0]->ToObject();
-  if (info[1]->IsObject()) arg1 = info[1]->ToObject();
-  if (info[2]->IsObject()) arg2 = info[2]->ToObject();
+  if (info[0]->IsObject()) arg0 = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+  if (info[1]->IsObject()) arg1 = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+  if (info[2]->IsObject()) arg2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
 
   _VkInstance* instance = Nan::ObjectWrap::Unwrap<_VkInstance>(arg0);
   _VkSurfaceKHR* surface = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(arg2);

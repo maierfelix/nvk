@@ -41,7 +41,7 @@ NAN_METHOD(_VkMemoryAllocateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("allocationSize").ToLocalChecked();
@@ -65,7 +65,7 @@ NAN_GETTER(_VkMemoryAllocateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkMemoryAllocateInfo::SetsType) {
   _VkMemoryAllocateInfo *self = Nan::ObjectWrap::Unwrap<_VkMemoryAllocateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkMemoryAllocateInfo::GetpNext) {
   _VkMemoryAllocateInfo *self = Nan::ObjectWrap::Unwrap<_VkMemoryAllocateInfo>(info.This());
@@ -77,12 +77,12 @@ NAN_GETTER(_VkMemoryAllocateInfo::GetallocationSize) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.allocationSize));
 }NAN_SETTER(_VkMemoryAllocateInfo::SetallocationSize) {
   _VkMemoryAllocateInfo *self = Nan::ObjectWrap::Unwrap<_VkMemoryAllocateInfo>(info.This());
-  self->instance.allocationSize = static_cast<uint64_t>(value->NumberValue());
+  self->instance.allocationSize = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// memoryTypeIndex
 NAN_GETTER(_VkMemoryAllocateInfo::GetmemoryTypeIndex) {
   _VkMemoryAllocateInfo *self = Nan::ObjectWrap::Unwrap<_VkMemoryAllocateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.memoryTypeIndex));
 }NAN_SETTER(_VkMemoryAllocateInfo::SetmemoryTypeIndex) {
   _VkMemoryAllocateInfo *self = Nan::ObjectWrap::Unwrap<_VkMemoryAllocateInfo>(info.This());
-  self->instance.memoryTypeIndex = static_cast<uint32_t>(value->NumberValue());
+  self->instance.memoryTypeIndex = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }

@@ -41,7 +41,7 @@ NAN_METHOD(_VkImageSubresourceLayers::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("aspectMask").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("mipLevel").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("baseArrayLayer").ToLocalChecked();
@@ -65,26 +65,26 @@ NAN_GETTER(_VkImageSubresourceLayers::GetaspectMask) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.aspectMask));
 }NAN_SETTER(_VkImageSubresourceLayers::SetaspectMask) {
   _VkImageSubresourceLayers *self = Nan::ObjectWrap::Unwrap<_VkImageSubresourceLayers>(info.This());
-  self->instance.aspectMask = static_cast<VkImageAspectFlags>((int32_t)value->NumberValue());
+  self->instance.aspectMask = static_cast<VkImageAspectFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// mipLevel
 NAN_GETTER(_VkImageSubresourceLayers::GetmipLevel) {
   _VkImageSubresourceLayers *self = Nan::ObjectWrap::Unwrap<_VkImageSubresourceLayers>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.mipLevel));
 }NAN_SETTER(_VkImageSubresourceLayers::SetmipLevel) {
   _VkImageSubresourceLayers *self = Nan::ObjectWrap::Unwrap<_VkImageSubresourceLayers>(info.This());
-  self->instance.mipLevel = static_cast<uint32_t>(value->NumberValue());
+  self->instance.mipLevel = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// baseArrayLayer
 NAN_GETTER(_VkImageSubresourceLayers::GetbaseArrayLayer) {
   _VkImageSubresourceLayers *self = Nan::ObjectWrap::Unwrap<_VkImageSubresourceLayers>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.baseArrayLayer));
 }NAN_SETTER(_VkImageSubresourceLayers::SetbaseArrayLayer) {
   _VkImageSubresourceLayers *self = Nan::ObjectWrap::Unwrap<_VkImageSubresourceLayers>(info.This());
-  self->instance.baseArrayLayer = static_cast<uint32_t>(value->NumberValue());
+  self->instance.baseArrayLayer = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// layerCount
 NAN_GETTER(_VkImageSubresourceLayers::GetlayerCount) {
   _VkImageSubresourceLayers *self = Nan::ObjectWrap::Unwrap<_VkImageSubresourceLayers>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.layerCount));
 }NAN_SETTER(_VkImageSubresourceLayers::SetlayerCount) {
   _VkImageSubresourceLayers *self = Nan::ObjectWrap::Unwrap<_VkImageSubresourceLayers>(info.This());
-  self->instance.layerCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.layerCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }

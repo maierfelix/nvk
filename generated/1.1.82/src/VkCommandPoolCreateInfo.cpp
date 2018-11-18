@@ -41,7 +41,7 @@ NAN_METHOD(_VkCommandPoolCreateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -65,7 +65,7 @@ NAN_GETTER(_VkCommandPoolCreateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkCommandPoolCreateInfo::SetsType) {
   _VkCommandPoolCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandPoolCreateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkCommandPoolCreateInfo::GetpNext) {
   _VkCommandPoolCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandPoolCreateInfo>(info.This());
@@ -77,12 +77,12 @@ NAN_GETTER(_VkCommandPoolCreateInfo::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkCommandPoolCreateInfo::Setflags) {
   _VkCommandPoolCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandPoolCreateInfo>(info.This());
-  self->instance.flags = static_cast<VkCommandPoolCreateFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkCommandPoolCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// queueFamilyIndex
 NAN_GETTER(_VkCommandPoolCreateInfo::GetqueueFamilyIndex) {
   _VkCommandPoolCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandPoolCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.queueFamilyIndex));
 }NAN_SETTER(_VkCommandPoolCreateInfo::SetqueueFamilyIndex) {
   _VkCommandPoolCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandPoolCreateInfo>(info.This());
-  self->instance.queueFamilyIndex = static_cast<uint32_t>(value->NumberValue());
+  self->instance.queueFamilyIndex = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }

@@ -39,7 +39,7 @@ NAN_METHOD(_VkClearValue::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("color").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("depthStencil").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
@@ -66,14 +66,14 @@ NAN_GETTER(_VkClearValue::Getcolor) {
   _VkClearValue *self = Nan::ObjectWrap::Unwrap<_VkClearValue>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->color = obj;
   } else {
     //self->color = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkClearColorValue* obj = Nan::ObjectWrap::Unwrap<_VkClearColorValue>(value->ToObject());
+    _VkClearColorValue* obj = Nan::ObjectWrap::Unwrap<_VkClearColorValue>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.color = obj->instance;
   } else {
     memset(&self->instance.color, 0, sizeof(VkClearColorValue));
@@ -91,14 +91,14 @@ NAN_GETTER(_VkClearValue::GetdepthStencil) {
   _VkClearValue *self = Nan::ObjectWrap::Unwrap<_VkClearValue>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->depthStencil = obj;
   } else {
     //self->depthStencil = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkClearDepthStencilValue* obj = Nan::ObjectWrap::Unwrap<_VkClearDepthStencilValue>(value->ToObject());
+    _VkClearDepthStencilValue* obj = Nan::ObjectWrap::Unwrap<_VkClearDepthStencilValue>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.depthStencil = obj->instance;
   } else {
     memset(&self->instance.depthStencil, 0, sizeof(VkClearDepthStencilValue));

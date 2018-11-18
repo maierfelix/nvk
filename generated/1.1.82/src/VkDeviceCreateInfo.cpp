@@ -47,7 +47,7 @@ NAN_METHOD(_VkDeviceCreateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -83,7 +83,7 @@ NAN_GETTER(_VkDeviceCreateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkDeviceCreateInfo::SetsType) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkDeviceCreateInfo::GetpNext) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
@@ -95,14 +95,14 @@ NAN_GETTER(_VkDeviceCreateInfo::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkDeviceCreateInfo::Setflags) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
-  self->instance.flags = static_cast<VkDeviceCreateFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkDeviceCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// queueCreateInfoCount
 NAN_GETTER(_VkDeviceCreateInfo::GetqueueCreateInfoCount) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.queueCreateInfoCount));
 }NAN_SETTER(_VkDeviceCreateInfo::SetqueueCreateInfoCount) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
-  self->instance.queueCreateInfoCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.queueCreateInfoCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pQueueCreateInfos
 NAN_GETTER(_VkDeviceCreateInfo::GetpQueueCreateInfos) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
@@ -136,7 +136,7 @@ NAN_GETTER(_VkDeviceCreateInfo::GetenabledLayerCount) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.enabledLayerCount));
 }NAN_SETTER(_VkDeviceCreateInfo::SetenabledLayerCount) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
-  self->instance.enabledLayerCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.enabledLayerCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// ppEnabledLayerNames
 NAN_GETTER(_VkDeviceCreateInfo::GetppEnabledLayerNames) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
@@ -170,7 +170,7 @@ NAN_GETTER(_VkDeviceCreateInfo::GetenabledExtensionCount) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.enabledExtensionCount));
 }NAN_SETTER(_VkDeviceCreateInfo::SetenabledExtensionCount) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
-  self->instance.enabledExtensionCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.enabledExtensionCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// ppEnabledExtensionNames
 NAN_GETTER(_VkDeviceCreateInfo::GetppEnabledExtensionNames) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
@@ -211,14 +211,14 @@ NAN_GETTER(_VkDeviceCreateInfo::GetpEnabledFeatures) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->pEnabledFeatures = obj;
   } else {
     //self->pEnabledFeatures = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkPhysicalDeviceFeatures* obj = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(value->ToObject());
+    _VkPhysicalDeviceFeatures* obj = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.pEnabledFeatures = &obj->instance;
   } else {
     self->instance.pEnabledFeatures = nullptr;

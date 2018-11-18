@@ -40,7 +40,7 @@ NAN_METHOD(_VkDescriptorImageInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sampler").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("imageView").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("imageLayout").ToLocalChecked();
@@ -69,14 +69,14 @@ NAN_GETTER(_VkDescriptorImageInfo::Getsampler) {
   _VkDescriptorImageInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorImageInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->sampler = obj;
   } else {
     //self->sampler = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkSampler* obj = Nan::ObjectWrap::Unwrap<_VkSampler>(value->ToObject());
+    _VkSampler* obj = Nan::ObjectWrap::Unwrap<_VkSampler>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.sampler = obj->instance;
   } else {
     self->instance.sampler = VK_NULL_HANDLE;
@@ -94,14 +94,14 @@ NAN_GETTER(_VkDescriptorImageInfo::GetimageView) {
   _VkDescriptorImageInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorImageInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->imageView = obj;
   } else {
     //self->imageView = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkImageView* obj = Nan::ObjectWrap::Unwrap<_VkImageView>(value->ToObject());
+    _VkImageView* obj = Nan::ObjectWrap::Unwrap<_VkImageView>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.imageView = obj->instance;
   } else {
     self->instance.imageView = VK_NULL_HANDLE;
@@ -112,5 +112,5 @@ NAN_GETTER(_VkDescriptorImageInfo::GetimageLayout) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.imageLayout));
 }NAN_SETTER(_VkDescriptorImageInfo::SetimageLayout) {
   _VkDescriptorImageInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorImageInfo>(info.This());
-  self->instance.imageLayout = static_cast<VkImageLayout>((int32_t)value->NumberValue());
+  self->instance.imageLayout = static_cast<VkImageLayout>(Nan::To<int32_t>(value).FromMaybe(0));
 }

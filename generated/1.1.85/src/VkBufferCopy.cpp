@@ -40,7 +40,7 @@ NAN_METHOD(_VkBufferCopy::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("srcOffset").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("dstOffset").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("size").ToLocalChecked();
@@ -62,19 +62,19 @@ NAN_GETTER(_VkBufferCopy::GetsrcOffset) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.srcOffset));
 }NAN_SETTER(_VkBufferCopy::SetsrcOffset) {
   _VkBufferCopy *self = Nan::ObjectWrap::Unwrap<_VkBufferCopy>(info.This());
-  self->instance.srcOffset = static_cast<uint64_t>(value->NumberValue());
+  self->instance.srcOffset = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// dstOffset
 NAN_GETTER(_VkBufferCopy::GetdstOffset) {
   _VkBufferCopy *self = Nan::ObjectWrap::Unwrap<_VkBufferCopy>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.dstOffset));
 }NAN_SETTER(_VkBufferCopy::SetdstOffset) {
   _VkBufferCopy *self = Nan::ObjectWrap::Unwrap<_VkBufferCopy>(info.This());
-  self->instance.dstOffset = static_cast<uint64_t>(value->NumberValue());
+  self->instance.dstOffset = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// size
 NAN_GETTER(_VkBufferCopy::Getsize) {
   _VkBufferCopy *self = Nan::ObjectWrap::Unwrap<_VkBufferCopy>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.size));
 }NAN_SETTER(_VkBufferCopy::Setsize) {
   _VkBufferCopy *self = Nan::ObjectWrap::Unwrap<_VkBufferCopy>(info.This());
-  self->instance.size = static_cast<uint64_t>(value->NumberValue());
+  self->instance.size = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }

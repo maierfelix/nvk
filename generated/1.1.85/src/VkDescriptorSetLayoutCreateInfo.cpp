@@ -42,7 +42,7 @@ NAN_METHOD(_VkDescriptorSetLayoutCreateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -68,7 +68,7 @@ NAN_GETTER(_VkDescriptorSetLayoutCreateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkDescriptorSetLayoutCreateInfo::SetsType) {
   _VkDescriptorSetLayoutCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutCreateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkDescriptorSetLayoutCreateInfo::GetpNext) {
   _VkDescriptorSetLayoutCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutCreateInfo>(info.This());
@@ -80,14 +80,14 @@ NAN_GETTER(_VkDescriptorSetLayoutCreateInfo::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkDescriptorSetLayoutCreateInfo::Setflags) {
   _VkDescriptorSetLayoutCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutCreateInfo>(info.This());
-  self->instance.flags = static_cast<VkDescriptorSetLayoutCreateFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkDescriptorSetLayoutCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// bindingCount
 NAN_GETTER(_VkDescriptorSetLayoutCreateInfo::GetbindingCount) {
   _VkDescriptorSetLayoutCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.bindingCount));
 }NAN_SETTER(_VkDescriptorSetLayoutCreateInfo::SetbindingCount) {
   _VkDescriptorSetLayoutCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutCreateInfo>(info.This());
-  self->instance.bindingCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.bindingCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pBindings
 NAN_GETTER(_VkDescriptorSetLayoutCreateInfo::GetpBindings) {
   _VkDescriptorSetLayoutCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutCreateInfo>(info.This());

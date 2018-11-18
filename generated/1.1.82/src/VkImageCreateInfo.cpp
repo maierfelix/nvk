@@ -52,7 +52,7 @@ NAN_METHOD(_VkImageCreateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -98,7 +98,7 @@ NAN_GETTER(_VkImageCreateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkImageCreateInfo::SetsType) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkImageCreateInfo::GetpNext) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
@@ -110,21 +110,21 @@ NAN_GETTER(_VkImageCreateInfo::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkImageCreateInfo::Setflags) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
-  self->instance.flags = static_cast<VkImageCreateFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkImageCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// imageType
 NAN_GETTER(_VkImageCreateInfo::GetimageType) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.imageType));
 }NAN_SETTER(_VkImageCreateInfo::SetimageType) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
-  self->instance.imageType = static_cast<VkImageType>((int32_t)value->NumberValue());
+  self->instance.imageType = static_cast<VkImageType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// format
 NAN_GETTER(_VkImageCreateInfo::Getformat) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.format));
 }NAN_SETTER(_VkImageCreateInfo::Setformat) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
-  self->instance.format = static_cast<VkFormat>((int32_t)value->NumberValue());
+  self->instance.format = static_cast<VkFormat>(Nan::To<int32_t>(value).FromMaybe(0));
 }// extent
 NAN_GETTER(_VkImageCreateInfo::Getextent) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
@@ -138,14 +138,14 @@ NAN_GETTER(_VkImageCreateInfo::Getextent) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->extent = obj;
   } else {
     //self->extent = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkExtent3D* obj = Nan::ObjectWrap::Unwrap<_VkExtent3D>(value->ToObject());
+    _VkExtent3D* obj = Nan::ObjectWrap::Unwrap<_VkExtent3D>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.extent = obj->instance;
   } else {
     memset(&self->instance.extent, 0, sizeof(VkExtent3D));
@@ -156,49 +156,49 @@ NAN_GETTER(_VkImageCreateInfo::GetmipLevels) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.mipLevels));
 }NAN_SETTER(_VkImageCreateInfo::SetmipLevels) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
-  self->instance.mipLevels = static_cast<uint32_t>(value->NumberValue());
+  self->instance.mipLevels = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// arrayLayers
 NAN_GETTER(_VkImageCreateInfo::GetarrayLayers) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.arrayLayers));
 }NAN_SETTER(_VkImageCreateInfo::SetarrayLayers) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
-  self->instance.arrayLayers = static_cast<uint32_t>(value->NumberValue());
+  self->instance.arrayLayers = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// samples
 NAN_GETTER(_VkImageCreateInfo::Getsamples) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.samples));
 }NAN_SETTER(_VkImageCreateInfo::Setsamples) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
-  self->instance.samples = static_cast<VkSampleCountFlagBits>((int32_t)value->NumberValue());
+  self->instance.samples = static_cast<VkSampleCountFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
 }// tiling
 NAN_GETTER(_VkImageCreateInfo::Gettiling) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.tiling));
 }NAN_SETTER(_VkImageCreateInfo::Settiling) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
-  self->instance.tiling = static_cast<VkImageTiling>((int32_t)value->NumberValue());
+  self->instance.tiling = static_cast<VkImageTiling>(Nan::To<int32_t>(value).FromMaybe(0));
 }// usage
 NAN_GETTER(_VkImageCreateInfo::Getusage) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.usage));
 }NAN_SETTER(_VkImageCreateInfo::Setusage) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
-  self->instance.usage = static_cast<VkImageUsageFlags>((int32_t)value->NumberValue());
+  self->instance.usage = static_cast<VkImageUsageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// sharingMode
 NAN_GETTER(_VkImageCreateInfo::GetsharingMode) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sharingMode));
 }NAN_SETTER(_VkImageCreateInfo::SetsharingMode) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
-  self->instance.sharingMode = static_cast<VkSharingMode>((int32_t)value->NumberValue());
+  self->instance.sharingMode = static_cast<VkSharingMode>(Nan::To<int32_t>(value).FromMaybe(0));
 }// queueFamilyIndexCount
 NAN_GETTER(_VkImageCreateInfo::GetqueueFamilyIndexCount) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.queueFamilyIndexCount));
 }NAN_SETTER(_VkImageCreateInfo::SetqueueFamilyIndexCount) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
-  self->instance.queueFamilyIndexCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.queueFamilyIndexCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pQueueFamilyIndices
 NAN_GETTER(_VkImageCreateInfo::GetpQueueFamilyIndices) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
@@ -223,7 +223,7 @@ NAN_GETTER(_VkImageCreateInfo::GetpQueueFamilyIndices) {
   
   // vulkan
   if (value->IsArrayBufferView()) {
-    self->instance.pQueueFamilyIndices = getTypedArrayData<uint32_t>(value->ToObject(), nullptr);
+    self->instance.pQueueFamilyIndices = getTypedArrayData<uint32_t>(Nan::To<v8::Object>(value).ToLocalChecked(), nullptr);
   } else {
     self->instance.pQueueFamilyIndices = nullptr;
   }
@@ -233,5 +233,5 @@ NAN_GETTER(_VkImageCreateInfo::GetinitialLayout) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.initialLayout));
 }NAN_SETTER(_VkImageCreateInfo::SetinitialLayout) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
-  self->instance.initialLayout = static_cast<VkImageLayout>((int32_t)value->NumberValue());
+  self->instance.initialLayout = static_cast<VkImageLayout>(Nan::To<int32_t>(value).FromMaybe(0));
 }

@@ -41,7 +41,7 @@ NAN_METHOD(_VkPipelineTessellationStateCreateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -65,7 +65,7 @@ NAN_GETTER(_VkPipelineTessellationStateCreateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkPipelineTessellationStateCreateInfo::SetsType) {
   _VkPipelineTessellationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineTessellationStateCreateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkPipelineTessellationStateCreateInfo::GetpNext) {
   _VkPipelineTessellationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineTessellationStateCreateInfo>(info.This());
@@ -77,12 +77,12 @@ NAN_GETTER(_VkPipelineTessellationStateCreateInfo::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkPipelineTessellationStateCreateInfo::Setflags) {
   _VkPipelineTessellationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineTessellationStateCreateInfo>(info.This());
-  self->instance.flags = static_cast<VkPipelineTessellationStateCreateFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkPipelineTessellationStateCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// patchControlPoints
 NAN_GETTER(_VkPipelineTessellationStateCreateInfo::GetpatchControlPoints) {
   _VkPipelineTessellationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineTessellationStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.patchControlPoints));
 }NAN_SETTER(_VkPipelineTessellationStateCreateInfo::SetpatchControlPoints) {
   _VkPipelineTessellationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineTessellationStateCreateInfo>(info.This());
-  self->instance.patchControlPoints = static_cast<uint32_t>(value->NumberValue());
+  self->instance.patchControlPoints = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }

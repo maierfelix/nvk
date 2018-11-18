@@ -42,7 +42,7 @@ NAN_METHOD(_VkDescriptorSetLayoutBinding::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("binding").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("descriptorType").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("descriptorCount").ToLocalChecked();
@@ -68,28 +68,28 @@ NAN_GETTER(_VkDescriptorSetLayoutBinding::Getbinding) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.binding));
 }NAN_SETTER(_VkDescriptorSetLayoutBinding::Setbinding) {
   _VkDescriptorSetLayoutBinding *self = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutBinding>(info.This());
-  self->instance.binding = static_cast<uint32_t>(value->NumberValue());
+  self->instance.binding = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// descriptorType
 NAN_GETTER(_VkDescriptorSetLayoutBinding::GetdescriptorType) {
   _VkDescriptorSetLayoutBinding *self = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutBinding>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.descriptorType));
 }NAN_SETTER(_VkDescriptorSetLayoutBinding::SetdescriptorType) {
   _VkDescriptorSetLayoutBinding *self = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutBinding>(info.This());
-  self->instance.descriptorType = static_cast<VkDescriptorType>((int32_t)value->NumberValue());
+  self->instance.descriptorType = static_cast<VkDescriptorType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// descriptorCount
 NAN_GETTER(_VkDescriptorSetLayoutBinding::GetdescriptorCount) {
   _VkDescriptorSetLayoutBinding *self = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutBinding>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.descriptorCount));
 }NAN_SETTER(_VkDescriptorSetLayoutBinding::SetdescriptorCount) {
   _VkDescriptorSetLayoutBinding *self = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutBinding>(info.This());
-  self->instance.descriptorCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.descriptorCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// stageFlags
 NAN_GETTER(_VkDescriptorSetLayoutBinding::GetstageFlags) {
   _VkDescriptorSetLayoutBinding *self = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutBinding>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.stageFlags));
 }NAN_SETTER(_VkDescriptorSetLayoutBinding::SetstageFlags) {
   _VkDescriptorSetLayoutBinding *self = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutBinding>(info.This());
-  self->instance.stageFlags = static_cast<VkShaderStageFlags>((int32_t)value->NumberValue());
+  self->instance.stageFlags = static_cast<VkShaderStageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pImmutableSamplers
 NAN_GETTER(_VkDescriptorSetLayoutBinding::GetpImmutableSamplers) {
   _VkDescriptorSetLayoutBinding *self = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutBinding>(info.This());

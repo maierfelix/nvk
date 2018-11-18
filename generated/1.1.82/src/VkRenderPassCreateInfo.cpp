@@ -46,7 +46,7 @@ NAN_METHOD(_VkRenderPassCreateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -80,7 +80,7 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkRenderPassCreateInfo::SetsType) {
   _VkRenderPassCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkRenderPassCreateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkRenderPassCreateInfo::GetpNext) {
   _VkRenderPassCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkRenderPassCreateInfo>(info.This());
@@ -92,14 +92,14 @@ NAN_GETTER(_VkRenderPassCreateInfo::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkRenderPassCreateInfo::Setflags) {
   _VkRenderPassCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkRenderPassCreateInfo>(info.This());
-  self->instance.flags = static_cast<VkRenderPassCreateFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkRenderPassCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// attachmentCount
 NAN_GETTER(_VkRenderPassCreateInfo::GetattachmentCount) {
   _VkRenderPassCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkRenderPassCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.attachmentCount));
 }NAN_SETTER(_VkRenderPassCreateInfo::SetattachmentCount) {
   _VkRenderPassCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkRenderPassCreateInfo>(info.This());
-  self->instance.attachmentCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.attachmentCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pAttachments
 NAN_GETTER(_VkRenderPassCreateInfo::GetpAttachments) {
   _VkRenderPassCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkRenderPassCreateInfo>(info.This());
@@ -133,7 +133,7 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetsubpassCount) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.subpassCount));
 }NAN_SETTER(_VkRenderPassCreateInfo::SetsubpassCount) {
   _VkRenderPassCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkRenderPassCreateInfo>(info.This());
-  self->instance.subpassCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.subpassCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pSubpasses
 NAN_GETTER(_VkRenderPassCreateInfo::GetpSubpasses) {
   _VkRenderPassCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkRenderPassCreateInfo>(info.This());
@@ -167,7 +167,7 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetdependencyCount) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.dependencyCount));
 }NAN_SETTER(_VkRenderPassCreateInfo::SetdependencyCount) {
   _VkRenderPassCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkRenderPassCreateInfo>(info.This());
-  self->instance.dependencyCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.dependencyCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pDependencies
 NAN_GETTER(_VkRenderPassCreateInfo::GetpDependencies) {
   _VkRenderPassCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkRenderPassCreateInfo>(info.This());

@@ -43,7 +43,7 @@ NAN_METHOD(_VkBufferImageCopy::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("bufferOffset").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("bufferRowLength").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("bufferImageHeight").ToLocalChecked();
@@ -71,21 +71,21 @@ NAN_GETTER(_VkBufferImageCopy::GetbufferOffset) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.bufferOffset));
 }NAN_SETTER(_VkBufferImageCopy::SetbufferOffset) {
   _VkBufferImageCopy *self = Nan::ObjectWrap::Unwrap<_VkBufferImageCopy>(info.This());
-  self->instance.bufferOffset = static_cast<uint64_t>(value->NumberValue());
+  self->instance.bufferOffset = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// bufferRowLength
 NAN_GETTER(_VkBufferImageCopy::GetbufferRowLength) {
   _VkBufferImageCopy *self = Nan::ObjectWrap::Unwrap<_VkBufferImageCopy>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.bufferRowLength));
 }NAN_SETTER(_VkBufferImageCopy::SetbufferRowLength) {
   _VkBufferImageCopy *self = Nan::ObjectWrap::Unwrap<_VkBufferImageCopy>(info.This());
-  self->instance.bufferRowLength = static_cast<uint32_t>(value->NumberValue());
+  self->instance.bufferRowLength = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// bufferImageHeight
 NAN_GETTER(_VkBufferImageCopy::GetbufferImageHeight) {
   _VkBufferImageCopy *self = Nan::ObjectWrap::Unwrap<_VkBufferImageCopy>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.bufferImageHeight));
 }NAN_SETTER(_VkBufferImageCopy::SetbufferImageHeight) {
   _VkBufferImageCopy *self = Nan::ObjectWrap::Unwrap<_VkBufferImageCopy>(info.This());
-  self->instance.bufferImageHeight = static_cast<uint32_t>(value->NumberValue());
+  self->instance.bufferImageHeight = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// imageSubresource
 NAN_GETTER(_VkBufferImageCopy::GetimageSubresource) {
   _VkBufferImageCopy *self = Nan::ObjectWrap::Unwrap<_VkBufferImageCopy>(info.This());
@@ -99,14 +99,14 @@ NAN_GETTER(_VkBufferImageCopy::GetimageSubresource) {
   _VkBufferImageCopy *self = Nan::ObjectWrap::Unwrap<_VkBufferImageCopy>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->imageSubresource = obj;
   } else {
     //self->imageSubresource = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkImageSubresourceLayers* obj = Nan::ObjectWrap::Unwrap<_VkImageSubresourceLayers>(value->ToObject());
+    _VkImageSubresourceLayers* obj = Nan::ObjectWrap::Unwrap<_VkImageSubresourceLayers>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.imageSubresource = obj->instance;
   } else {
     memset(&self->instance.imageSubresource, 0, sizeof(VkImageSubresourceLayers));
@@ -124,14 +124,14 @@ NAN_GETTER(_VkBufferImageCopy::GetimageOffset) {
   _VkBufferImageCopy *self = Nan::ObjectWrap::Unwrap<_VkBufferImageCopy>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->imageOffset = obj;
   } else {
     //self->imageOffset = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkOffset3D* obj = Nan::ObjectWrap::Unwrap<_VkOffset3D>(value->ToObject());
+    _VkOffset3D* obj = Nan::ObjectWrap::Unwrap<_VkOffset3D>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.imageOffset = obj->instance;
   } else {
     memset(&self->instance.imageOffset, 0, sizeof(VkOffset3D));
@@ -149,14 +149,14 @@ NAN_GETTER(_VkBufferImageCopy::GetimageExtent) {
   _VkBufferImageCopy *self = Nan::ObjectWrap::Unwrap<_VkBufferImageCopy>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->imageExtent = obj;
   } else {
     //self->imageExtent = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkExtent3D* obj = Nan::ObjectWrap::Unwrap<_VkExtent3D>(value->ToObject());
+    _VkExtent3D* obj = Nan::ObjectWrap::Unwrap<_VkExtent3D>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.imageExtent = obj->instance;
   } else {
     memset(&self->instance.imageExtent, 0, sizeof(VkExtent3D));

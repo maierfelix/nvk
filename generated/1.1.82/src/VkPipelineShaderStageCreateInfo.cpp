@@ -44,7 +44,7 @@ NAN_METHOD(_VkPipelineShaderStageCreateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -74,7 +74,7 @@ NAN_GETTER(_VkPipelineShaderStageCreateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkPipelineShaderStageCreateInfo::SetsType) {
   _VkPipelineShaderStageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineShaderStageCreateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkPipelineShaderStageCreateInfo::GetpNext) {
   _VkPipelineShaderStageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineShaderStageCreateInfo>(info.This());
@@ -86,14 +86,14 @@ NAN_GETTER(_VkPipelineShaderStageCreateInfo::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkPipelineShaderStageCreateInfo::Setflags) {
   _VkPipelineShaderStageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineShaderStageCreateInfo>(info.This());
-  self->instance.flags = static_cast<VkPipelineShaderStageCreateFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkPipelineShaderStageCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// stage
 NAN_GETTER(_VkPipelineShaderStageCreateInfo::Getstage) {
   _VkPipelineShaderStageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineShaderStageCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.stage));
 }NAN_SETTER(_VkPipelineShaderStageCreateInfo::Setstage) {
   _VkPipelineShaderStageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineShaderStageCreateInfo>(info.This());
-  self->instance.stage = static_cast<VkShaderStageFlagBits>((int32_t)value->NumberValue());
+  self->instance.stage = static_cast<VkShaderStageFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
 }// module
 NAN_GETTER(_VkPipelineShaderStageCreateInfo::Getmodule) {
   _VkPipelineShaderStageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineShaderStageCreateInfo>(info.This());
@@ -107,14 +107,14 @@ NAN_GETTER(_VkPipelineShaderStageCreateInfo::Getmodule) {
   _VkPipelineShaderStageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineShaderStageCreateInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->module = obj;
   } else {
     //self->module = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkShaderModule* obj = Nan::ObjectWrap::Unwrap<_VkShaderModule>(value->ToObject());
+    _VkShaderModule* obj = Nan::ObjectWrap::Unwrap<_VkShaderModule>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.module = obj->instance;
   } else {
     self->instance.module = VK_NULL_HANDLE;
@@ -150,14 +150,14 @@ NAN_GETTER(_VkPipelineShaderStageCreateInfo::GetpSpecializationInfo) {
   _VkPipelineShaderStageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineShaderStageCreateInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->pSpecializationInfo = obj;
   } else {
     //self->pSpecializationInfo = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkSpecializationInfo* obj = Nan::ObjectWrap::Unwrap<_VkSpecializationInfo>(value->ToObject());
+    _VkSpecializationInfo* obj = Nan::ObjectWrap::Unwrap<_VkSpecializationInfo>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.pSpecializationInfo = &obj->instance;
   } else {
     self->instance.pSpecializationInfo = nullptr;

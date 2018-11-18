@@ -40,7 +40,7 @@ NAN_METHOD(_VkVertexInputBindingDescription::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("binding").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("stride").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("inputRate").ToLocalChecked();
@@ -62,19 +62,19 @@ NAN_GETTER(_VkVertexInputBindingDescription::Getbinding) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.binding));
 }NAN_SETTER(_VkVertexInputBindingDescription::Setbinding) {
   _VkVertexInputBindingDescription *self = Nan::ObjectWrap::Unwrap<_VkVertexInputBindingDescription>(info.This());
-  self->instance.binding = static_cast<uint32_t>(value->NumberValue());
+  self->instance.binding = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// stride
 NAN_GETTER(_VkVertexInputBindingDescription::Getstride) {
   _VkVertexInputBindingDescription *self = Nan::ObjectWrap::Unwrap<_VkVertexInputBindingDescription>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.stride));
 }NAN_SETTER(_VkVertexInputBindingDescription::Setstride) {
   _VkVertexInputBindingDescription *self = Nan::ObjectWrap::Unwrap<_VkVertexInputBindingDescription>(info.This());
-  self->instance.stride = static_cast<uint32_t>(value->NumberValue());
+  self->instance.stride = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// inputRate
 NAN_GETTER(_VkVertexInputBindingDescription::GetinputRate) {
   _VkVertexInputBindingDescription *self = Nan::ObjectWrap::Unwrap<_VkVertexInputBindingDescription>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.inputRate));
 }NAN_SETTER(_VkVertexInputBindingDescription::SetinputRate) {
   _VkVertexInputBindingDescription *self = Nan::ObjectWrap::Unwrap<_VkVertexInputBindingDescription>(info.This());
-  self->instance.inputRate = static_cast<VkVertexInputRate>((int32_t)value->NumberValue());
+  self->instance.inputRate = static_cast<VkVertexInputRate>(Nan::To<int32_t>(value).FromMaybe(0));
 }

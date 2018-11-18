@@ -45,7 +45,7 @@ NAN_METHOD(_VkCommandBufferInheritanceInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("renderPass").ToLocalChecked();
@@ -77,7 +77,7 @@ NAN_GETTER(_VkCommandBufferInheritanceInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkCommandBufferInheritanceInfo::SetsType) {
   _VkCommandBufferInheritanceInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferInheritanceInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkCommandBufferInheritanceInfo::GetpNext) {
   _VkCommandBufferInheritanceInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferInheritanceInfo>(info.This());
@@ -96,14 +96,14 @@ NAN_GETTER(_VkCommandBufferInheritanceInfo::GetrenderPass) {
   _VkCommandBufferInheritanceInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferInheritanceInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->renderPass = obj;
   } else {
     //self->renderPass = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkRenderPass* obj = Nan::ObjectWrap::Unwrap<_VkRenderPass>(value->ToObject());
+    _VkRenderPass* obj = Nan::ObjectWrap::Unwrap<_VkRenderPass>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.renderPass = obj->instance;
   } else {
     self->instance.renderPass = VK_NULL_HANDLE;
@@ -114,7 +114,7 @@ NAN_GETTER(_VkCommandBufferInheritanceInfo::Getsubpass) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.subpass));
 }NAN_SETTER(_VkCommandBufferInheritanceInfo::Setsubpass) {
   _VkCommandBufferInheritanceInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferInheritanceInfo>(info.This());
-  self->instance.subpass = static_cast<uint32_t>(value->NumberValue());
+  self->instance.subpass = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// framebuffer
 NAN_GETTER(_VkCommandBufferInheritanceInfo::Getframebuffer) {
   _VkCommandBufferInheritanceInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferInheritanceInfo>(info.This());
@@ -128,14 +128,14 @@ NAN_GETTER(_VkCommandBufferInheritanceInfo::Getframebuffer) {
   _VkCommandBufferInheritanceInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferInheritanceInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->framebuffer = obj;
   } else {
     //self->framebuffer = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkFramebuffer* obj = Nan::ObjectWrap::Unwrap<_VkFramebuffer>(value->ToObject());
+    _VkFramebuffer* obj = Nan::ObjectWrap::Unwrap<_VkFramebuffer>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.framebuffer = obj->instance;
   } else {
     self->instance.framebuffer = VK_NULL_HANDLE;
@@ -146,19 +146,19 @@ NAN_GETTER(_VkCommandBufferInheritanceInfo::GetocclusionQueryEnable) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.occlusionQueryEnable));
 }NAN_SETTER(_VkCommandBufferInheritanceInfo::SetocclusionQueryEnable) {
   _VkCommandBufferInheritanceInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferInheritanceInfo>(info.This());
-  self->instance.occlusionQueryEnable = static_cast<uint32_t>(value->NumberValue());
+  self->instance.occlusionQueryEnable = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// queryFlags
 NAN_GETTER(_VkCommandBufferInheritanceInfo::GetqueryFlags) {
   _VkCommandBufferInheritanceInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferInheritanceInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.queryFlags));
 }NAN_SETTER(_VkCommandBufferInheritanceInfo::SetqueryFlags) {
   _VkCommandBufferInheritanceInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferInheritanceInfo>(info.This());
-  self->instance.queryFlags = static_cast<VkQueryControlFlags>((int32_t)value->NumberValue());
+  self->instance.queryFlags = static_cast<VkQueryControlFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pipelineStatistics
 NAN_GETTER(_VkCommandBufferInheritanceInfo::GetpipelineStatistics) {
   _VkCommandBufferInheritanceInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferInheritanceInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.pipelineStatistics));
 }NAN_SETTER(_VkCommandBufferInheritanceInfo::SetpipelineStatistics) {
   _VkCommandBufferInheritanceInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferInheritanceInfo>(info.This());
-  self->instance.pipelineStatistics = static_cast<VkQueryPipelineStatisticFlags>((int32_t)value->NumberValue());
+  self->instance.pipelineStatistics = static_cast<VkQueryPipelineStatisticFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }

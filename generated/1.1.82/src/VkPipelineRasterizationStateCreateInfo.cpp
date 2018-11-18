@@ -50,7 +50,7 @@ NAN_METHOD(_VkPipelineRasterizationStateCreateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -92,7 +92,7 @@ NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkPipelineRasterizationStateCreateInfo::SetsType) {
   _VkPipelineRasterizationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetpNext) {
   _VkPipelineRasterizationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(info.This());
@@ -104,75 +104,75 @@ NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkPipelineRasterizationStateCreateInfo::Setflags) {
   _VkPipelineRasterizationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(info.This());
-  self->instance.flags = static_cast<VkPipelineRasterizationStateCreateFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkPipelineRasterizationStateCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// depthClampEnable
 NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetdepthClampEnable) {
   _VkPipelineRasterizationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.depthClampEnable));
 }NAN_SETTER(_VkPipelineRasterizationStateCreateInfo::SetdepthClampEnable) {
   _VkPipelineRasterizationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(info.This());
-  self->instance.depthClampEnable = static_cast<uint32_t>(value->NumberValue());
+  self->instance.depthClampEnable = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// rasterizerDiscardEnable
 NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetrasterizerDiscardEnable) {
   _VkPipelineRasterizationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.rasterizerDiscardEnable));
 }NAN_SETTER(_VkPipelineRasterizationStateCreateInfo::SetrasterizerDiscardEnable) {
   _VkPipelineRasterizationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(info.This());
-  self->instance.rasterizerDiscardEnable = static_cast<uint32_t>(value->NumberValue());
+  self->instance.rasterizerDiscardEnable = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// polygonMode
 NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetpolygonMode) {
   _VkPipelineRasterizationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.polygonMode));
 }NAN_SETTER(_VkPipelineRasterizationStateCreateInfo::SetpolygonMode) {
   _VkPipelineRasterizationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(info.This());
-  self->instance.polygonMode = static_cast<VkPolygonMode>((int32_t)value->NumberValue());
+  self->instance.polygonMode = static_cast<VkPolygonMode>(Nan::To<int32_t>(value).FromMaybe(0));
 }// cullMode
 NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetcullMode) {
   _VkPipelineRasterizationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.cullMode));
 }NAN_SETTER(_VkPipelineRasterizationStateCreateInfo::SetcullMode) {
   _VkPipelineRasterizationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(info.This());
-  self->instance.cullMode = static_cast<VkCullModeFlags>((int32_t)value->NumberValue());
+  self->instance.cullMode = static_cast<VkCullModeFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// frontFace
 NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetfrontFace) {
   _VkPipelineRasterizationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.frontFace));
 }NAN_SETTER(_VkPipelineRasterizationStateCreateInfo::SetfrontFace) {
   _VkPipelineRasterizationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(info.This());
-  self->instance.frontFace = static_cast<VkFrontFace>((int32_t)value->NumberValue());
+  self->instance.frontFace = static_cast<VkFrontFace>(Nan::To<int32_t>(value).FromMaybe(0));
 }// depthBiasEnable
 NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetdepthBiasEnable) {
   _VkPipelineRasterizationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.depthBiasEnable));
 }NAN_SETTER(_VkPipelineRasterizationStateCreateInfo::SetdepthBiasEnable) {
   _VkPipelineRasterizationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(info.This());
-  self->instance.depthBiasEnable = static_cast<uint32_t>(value->NumberValue());
+  self->instance.depthBiasEnable = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// depthBiasConstantFactor
 NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetdepthBiasConstantFactor) {
   _VkPipelineRasterizationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.depthBiasConstantFactor));
 }NAN_SETTER(_VkPipelineRasterizationStateCreateInfo::SetdepthBiasConstantFactor) {
   _VkPipelineRasterizationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(info.This());
-  self->instance.depthBiasConstantFactor = static_cast<float>(value->NumberValue());
+  self->instance.depthBiasConstantFactor = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
 }// depthBiasClamp
 NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetdepthBiasClamp) {
   _VkPipelineRasterizationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.depthBiasClamp));
 }NAN_SETTER(_VkPipelineRasterizationStateCreateInfo::SetdepthBiasClamp) {
   _VkPipelineRasterizationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(info.This());
-  self->instance.depthBiasClamp = static_cast<float>(value->NumberValue());
+  self->instance.depthBiasClamp = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
 }// depthBiasSlopeFactor
 NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetdepthBiasSlopeFactor) {
   _VkPipelineRasterizationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.depthBiasSlopeFactor));
 }NAN_SETTER(_VkPipelineRasterizationStateCreateInfo::SetdepthBiasSlopeFactor) {
   _VkPipelineRasterizationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(info.This());
-  self->instance.depthBiasSlopeFactor = static_cast<float>(value->NumberValue());
+  self->instance.depthBiasSlopeFactor = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
 }// lineWidth
 NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetlineWidth) {
   _VkPipelineRasterizationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.lineWidth));
 }NAN_SETTER(_VkPipelineRasterizationStateCreateInfo::SetlineWidth) {
   _VkPipelineRasterizationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(info.This());
-  self->instance.lineWidth = static_cast<float>(value->NumberValue());
+  self->instance.lineWidth = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
 }

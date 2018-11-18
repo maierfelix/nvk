@@ -46,7 +46,7 @@ NAN_METHOD(_VkCopyDescriptorSet::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("srcSet").ToLocalChecked();
@@ -80,7 +80,7 @@ NAN_GETTER(_VkCopyDescriptorSet::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkCopyDescriptorSet::SetsType) {
   _VkCopyDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkCopyDescriptorSet>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkCopyDescriptorSet::GetpNext) {
   _VkCopyDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkCopyDescriptorSet>(info.This());
@@ -99,14 +99,14 @@ NAN_GETTER(_VkCopyDescriptorSet::GetsrcSet) {
   _VkCopyDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkCopyDescriptorSet>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->srcSet = obj;
   } else {
     //self->srcSet = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkDescriptorSet* obj = Nan::ObjectWrap::Unwrap<_VkDescriptorSet>(value->ToObject());
+    _VkDescriptorSet* obj = Nan::ObjectWrap::Unwrap<_VkDescriptorSet>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.srcSet = obj->instance;
   } else {
     self->instance.srcSet = VK_NULL_HANDLE;
@@ -117,14 +117,14 @@ NAN_GETTER(_VkCopyDescriptorSet::GetsrcBinding) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.srcBinding));
 }NAN_SETTER(_VkCopyDescriptorSet::SetsrcBinding) {
   _VkCopyDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkCopyDescriptorSet>(info.This());
-  self->instance.srcBinding = static_cast<uint32_t>(value->NumberValue());
+  self->instance.srcBinding = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// srcArrayElement
 NAN_GETTER(_VkCopyDescriptorSet::GetsrcArrayElement) {
   _VkCopyDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkCopyDescriptorSet>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.srcArrayElement));
 }NAN_SETTER(_VkCopyDescriptorSet::SetsrcArrayElement) {
   _VkCopyDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkCopyDescriptorSet>(info.This());
-  self->instance.srcArrayElement = static_cast<uint32_t>(value->NumberValue());
+  self->instance.srcArrayElement = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// dstSet
 NAN_GETTER(_VkCopyDescriptorSet::GetdstSet) {
   _VkCopyDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkCopyDescriptorSet>(info.This());
@@ -138,14 +138,14 @@ NAN_GETTER(_VkCopyDescriptorSet::GetdstSet) {
   _VkCopyDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkCopyDescriptorSet>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->dstSet = obj;
   } else {
     //self->dstSet = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkDescriptorSet* obj = Nan::ObjectWrap::Unwrap<_VkDescriptorSet>(value->ToObject());
+    _VkDescriptorSet* obj = Nan::ObjectWrap::Unwrap<_VkDescriptorSet>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.dstSet = obj->instance;
   } else {
     self->instance.dstSet = VK_NULL_HANDLE;
@@ -156,19 +156,19 @@ NAN_GETTER(_VkCopyDescriptorSet::GetdstBinding) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.dstBinding));
 }NAN_SETTER(_VkCopyDescriptorSet::SetdstBinding) {
   _VkCopyDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkCopyDescriptorSet>(info.This());
-  self->instance.dstBinding = static_cast<uint32_t>(value->NumberValue());
+  self->instance.dstBinding = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// dstArrayElement
 NAN_GETTER(_VkCopyDescriptorSet::GetdstArrayElement) {
   _VkCopyDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkCopyDescriptorSet>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.dstArrayElement));
 }NAN_SETTER(_VkCopyDescriptorSet::SetdstArrayElement) {
   _VkCopyDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkCopyDescriptorSet>(info.This());
-  self->instance.dstArrayElement = static_cast<uint32_t>(value->NumberValue());
+  self->instance.dstArrayElement = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// descriptorCount
 NAN_GETTER(_VkCopyDescriptorSet::GetdescriptorCount) {
   _VkCopyDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkCopyDescriptorSet>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.descriptorCount));
 }NAN_SETTER(_VkCopyDescriptorSet::SetdescriptorCount) {
   _VkCopyDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkCopyDescriptorSet>(info.This());
-  self->instance.descriptorCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.descriptorCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }

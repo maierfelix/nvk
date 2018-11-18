@@ -42,7 +42,7 @@ NAN_METHOD(_VkShaderModuleCreateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -68,7 +68,7 @@ NAN_GETTER(_VkShaderModuleCreateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkShaderModuleCreateInfo::SetsType) {
   _VkShaderModuleCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkShaderModuleCreateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkShaderModuleCreateInfo::GetpNext) {
   _VkShaderModuleCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkShaderModuleCreateInfo>(info.This());
@@ -80,14 +80,14 @@ NAN_GETTER(_VkShaderModuleCreateInfo::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkShaderModuleCreateInfo::Setflags) {
   _VkShaderModuleCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkShaderModuleCreateInfo>(info.This());
-  self->instance.flags = static_cast<VkShaderModuleCreateFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkShaderModuleCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// codeSize
 NAN_GETTER(_VkShaderModuleCreateInfo::GetcodeSize) {
   _VkShaderModuleCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkShaderModuleCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.codeSize));
 }NAN_SETTER(_VkShaderModuleCreateInfo::SetcodeSize) {
   _VkShaderModuleCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkShaderModuleCreateInfo>(info.This());
-  self->instance.codeSize = static_cast<size_t>(value->NumberValue());
+  self->instance.codeSize = static_cast<size_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pCode
 NAN_GETTER(_VkShaderModuleCreateInfo::GetpCode) {
   _VkShaderModuleCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkShaderModuleCreateInfo>(info.This());
@@ -112,7 +112,7 @@ NAN_GETTER(_VkShaderModuleCreateInfo::GetpCode) {
   
   // vulkan
   if (value->IsArrayBufferView()) {
-    self->instance.pCode = getTypedArrayData<uint32_t>(value->ToObject(), nullptr);
+    self->instance.pCode = getTypedArrayData<uint32_t>(Nan::To<v8::Object>(value).ToLocalChecked(), nullptr);
   } else {
     self->instance.pCode = nullptr;
   }

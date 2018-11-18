@@ -39,7 +39,7 @@ NAN_METHOD(_VkClearDepthStencilValue::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("depth").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("stencil").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
@@ -59,12 +59,12 @@ NAN_GETTER(_VkClearDepthStencilValue::Getdepth) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.depth));
 }NAN_SETTER(_VkClearDepthStencilValue::Setdepth) {
   _VkClearDepthStencilValue *self = Nan::ObjectWrap::Unwrap<_VkClearDepthStencilValue>(info.This());
-  self->instance.depth = static_cast<float>(value->NumberValue());
+  self->instance.depth = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
 }// stencil
 NAN_GETTER(_VkClearDepthStencilValue::Getstencil) {
   _VkClearDepthStencilValue *self = Nan::ObjectWrap::Unwrap<_VkClearDepthStencilValue>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.stencil));
 }NAN_SETTER(_VkClearDepthStencilValue::Setstencil) {
   _VkClearDepthStencilValue *self = Nan::ObjectWrap::Unwrap<_VkClearDepthStencilValue>(info.This());
-  self->instance.stencil = static_cast<uint32_t>(value->NumberValue());
+  self->instance.stencil = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }

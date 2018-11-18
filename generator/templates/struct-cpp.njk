@@ -37,7 +37,7 @@ NAN_METHOD(_{{ struct_name }}::New) {
     self->Wrap(info.Holder());
     {% if isStructReturnedOnly(struct) != true %}
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       {% for member in members %}
       {%- if ignoreableMember(member) != true -%}
       v8::Local<v8::String> sAccess{{ loop.index0 }} = Nan::New("{{ member.name }}").ToLocalChecked();

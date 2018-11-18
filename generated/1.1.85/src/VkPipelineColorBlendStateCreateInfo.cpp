@@ -46,7 +46,7 @@ NAN_METHOD(_VkPipelineColorBlendStateCreateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -78,7 +78,7 @@ NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkPipelineColorBlendStateCreateInfo::SetsType) {
   _VkPipelineColorBlendStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendStateCreateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetpNext) {
   _VkPipelineColorBlendStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendStateCreateInfo>(info.This());
@@ -90,28 +90,28 @@ NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkPipelineColorBlendStateCreateInfo::Setflags) {
   _VkPipelineColorBlendStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendStateCreateInfo>(info.This());
-  self->instance.flags = static_cast<VkPipelineColorBlendStateCreateFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkPipelineColorBlendStateCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// logicOpEnable
 NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetlogicOpEnable) {
   _VkPipelineColorBlendStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.logicOpEnable));
 }NAN_SETTER(_VkPipelineColorBlendStateCreateInfo::SetlogicOpEnable) {
   _VkPipelineColorBlendStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendStateCreateInfo>(info.This());
-  self->instance.logicOpEnable = static_cast<uint32_t>(value->NumberValue());
+  self->instance.logicOpEnable = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// logicOp
 NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetlogicOp) {
   _VkPipelineColorBlendStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.logicOp));
 }NAN_SETTER(_VkPipelineColorBlendStateCreateInfo::SetlogicOp) {
   _VkPipelineColorBlendStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendStateCreateInfo>(info.This());
-  self->instance.logicOp = static_cast<VkLogicOp>((int32_t)value->NumberValue());
+  self->instance.logicOp = static_cast<VkLogicOp>(Nan::To<int32_t>(value).FromMaybe(0));
 }// attachmentCount
 NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetattachmentCount) {
   _VkPipelineColorBlendStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.attachmentCount));
 }NAN_SETTER(_VkPipelineColorBlendStateCreateInfo::SetattachmentCount) {
   _VkPipelineColorBlendStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendStateCreateInfo>(info.This());
-  self->instance.attachmentCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.attachmentCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pAttachments
 NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetpAttachments) {
   _VkPipelineColorBlendStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendStateCreateInfo>(info.This());

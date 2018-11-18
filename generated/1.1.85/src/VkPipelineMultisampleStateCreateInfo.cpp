@@ -46,7 +46,7 @@ NAN_METHOD(_VkPipelineMultisampleStateCreateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -80,7 +80,7 @@ NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkPipelineMultisampleStateCreateInfo::SetsType) {
   _VkPipelineMultisampleStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineMultisampleStateCreateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetpNext) {
   _VkPipelineMultisampleStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineMultisampleStateCreateInfo>(info.This());
@@ -92,28 +92,28 @@ NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkPipelineMultisampleStateCreateInfo::Setflags) {
   _VkPipelineMultisampleStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineMultisampleStateCreateInfo>(info.This());
-  self->instance.flags = static_cast<VkPipelineMultisampleStateCreateFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkPipelineMultisampleStateCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// rasterizationSamples
 NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetrasterizationSamples) {
   _VkPipelineMultisampleStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineMultisampleStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.rasterizationSamples));
 }NAN_SETTER(_VkPipelineMultisampleStateCreateInfo::SetrasterizationSamples) {
   _VkPipelineMultisampleStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineMultisampleStateCreateInfo>(info.This());
-  self->instance.rasterizationSamples = static_cast<VkSampleCountFlagBits>((int32_t)value->NumberValue());
+  self->instance.rasterizationSamples = static_cast<VkSampleCountFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
 }// sampleShadingEnable
 NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetsampleShadingEnable) {
   _VkPipelineMultisampleStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineMultisampleStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sampleShadingEnable));
 }NAN_SETTER(_VkPipelineMultisampleStateCreateInfo::SetsampleShadingEnable) {
   _VkPipelineMultisampleStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineMultisampleStateCreateInfo>(info.This());
-  self->instance.sampleShadingEnable = static_cast<uint32_t>(value->NumberValue());
+  self->instance.sampleShadingEnable = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// minSampleShading
 NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetminSampleShading) {
   _VkPipelineMultisampleStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineMultisampleStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.minSampleShading));
 }NAN_SETTER(_VkPipelineMultisampleStateCreateInfo::SetminSampleShading) {
   _VkPipelineMultisampleStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineMultisampleStateCreateInfo>(info.This());
-  self->instance.minSampleShading = static_cast<float>(value->NumberValue());
+  self->instance.minSampleShading = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pSampleMask
 NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetpSampleMask) {
   _VkPipelineMultisampleStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineMultisampleStateCreateInfo>(info.This());
@@ -138,7 +138,7 @@ NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetpSampleMask) {
   
   // vulkan
   if (value->IsArrayBufferView()) {
-    self->instance.pSampleMask = getTypedArrayData<uint32_t>(value->ToObject(), nullptr);
+    self->instance.pSampleMask = getTypedArrayData<uint32_t>(Nan::To<v8::Object>(value).ToLocalChecked(), nullptr);
   } else {
     self->instance.pSampleMask = nullptr;
   }
@@ -148,12 +148,12 @@ NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetalphaToCoverageEnable) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.alphaToCoverageEnable));
 }NAN_SETTER(_VkPipelineMultisampleStateCreateInfo::SetalphaToCoverageEnable) {
   _VkPipelineMultisampleStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineMultisampleStateCreateInfo>(info.This());
-  self->instance.alphaToCoverageEnable = static_cast<uint32_t>(value->NumberValue());
+  self->instance.alphaToCoverageEnable = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// alphaToOneEnable
 NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetalphaToOneEnable) {
   _VkPipelineMultisampleStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineMultisampleStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.alphaToOneEnable));
 }NAN_SETTER(_VkPipelineMultisampleStateCreateInfo::SetalphaToOneEnable) {
   _VkPipelineMultisampleStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineMultisampleStateCreateInfo>(info.This());
-  self->instance.alphaToOneEnable = static_cast<uint32_t>(value->NumberValue());
+  self->instance.alphaToOneEnable = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }

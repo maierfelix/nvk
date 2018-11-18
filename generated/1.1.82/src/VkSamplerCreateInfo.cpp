@@ -55,7 +55,7 @@ NAN_METHOD(_VkSamplerCreateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -107,7 +107,7 @@ NAN_GETTER(_VkSamplerCreateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkSamplerCreateInfo::SetsType) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkSamplerCreateInfo::GetpNext) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
@@ -119,110 +119,110 @@ NAN_GETTER(_VkSamplerCreateInfo::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkSamplerCreateInfo::Setflags) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
-  self->instance.flags = static_cast<VkSamplerCreateFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkSamplerCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// magFilter
 NAN_GETTER(_VkSamplerCreateInfo::GetmagFilter) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.magFilter));
 }NAN_SETTER(_VkSamplerCreateInfo::SetmagFilter) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
-  self->instance.magFilter = static_cast<VkFilter>((int32_t)value->NumberValue());
+  self->instance.magFilter = static_cast<VkFilter>(Nan::To<int32_t>(value).FromMaybe(0));
 }// minFilter
 NAN_GETTER(_VkSamplerCreateInfo::GetminFilter) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.minFilter));
 }NAN_SETTER(_VkSamplerCreateInfo::SetminFilter) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
-  self->instance.minFilter = static_cast<VkFilter>((int32_t)value->NumberValue());
+  self->instance.minFilter = static_cast<VkFilter>(Nan::To<int32_t>(value).FromMaybe(0));
 }// mipmapMode
 NAN_GETTER(_VkSamplerCreateInfo::GetmipmapMode) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.mipmapMode));
 }NAN_SETTER(_VkSamplerCreateInfo::SetmipmapMode) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
-  self->instance.mipmapMode = static_cast<VkSamplerMipmapMode>((int32_t)value->NumberValue());
+  self->instance.mipmapMode = static_cast<VkSamplerMipmapMode>(Nan::To<int32_t>(value).FromMaybe(0));
 }// addressModeU
 NAN_GETTER(_VkSamplerCreateInfo::GetaddressModeU) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.addressModeU));
 }NAN_SETTER(_VkSamplerCreateInfo::SetaddressModeU) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
-  self->instance.addressModeU = static_cast<VkSamplerAddressMode>((int32_t)value->NumberValue());
+  self->instance.addressModeU = static_cast<VkSamplerAddressMode>(Nan::To<int32_t>(value).FromMaybe(0));
 }// addressModeV
 NAN_GETTER(_VkSamplerCreateInfo::GetaddressModeV) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.addressModeV));
 }NAN_SETTER(_VkSamplerCreateInfo::SetaddressModeV) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
-  self->instance.addressModeV = static_cast<VkSamplerAddressMode>((int32_t)value->NumberValue());
+  self->instance.addressModeV = static_cast<VkSamplerAddressMode>(Nan::To<int32_t>(value).FromMaybe(0));
 }// addressModeW
 NAN_GETTER(_VkSamplerCreateInfo::GetaddressModeW) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.addressModeW));
 }NAN_SETTER(_VkSamplerCreateInfo::SetaddressModeW) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
-  self->instance.addressModeW = static_cast<VkSamplerAddressMode>((int32_t)value->NumberValue());
+  self->instance.addressModeW = static_cast<VkSamplerAddressMode>(Nan::To<int32_t>(value).FromMaybe(0));
 }// mipLodBias
 NAN_GETTER(_VkSamplerCreateInfo::GetmipLodBias) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.mipLodBias));
 }NAN_SETTER(_VkSamplerCreateInfo::SetmipLodBias) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
-  self->instance.mipLodBias = static_cast<float>(value->NumberValue());
+  self->instance.mipLodBias = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
 }// anisotropyEnable
 NAN_GETTER(_VkSamplerCreateInfo::GetanisotropyEnable) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.anisotropyEnable));
 }NAN_SETTER(_VkSamplerCreateInfo::SetanisotropyEnable) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
-  self->instance.anisotropyEnable = static_cast<uint32_t>(value->NumberValue());
+  self->instance.anisotropyEnable = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// maxAnisotropy
 NAN_GETTER(_VkSamplerCreateInfo::GetmaxAnisotropy) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.maxAnisotropy));
 }NAN_SETTER(_VkSamplerCreateInfo::SetmaxAnisotropy) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
-  self->instance.maxAnisotropy = static_cast<float>(value->NumberValue());
+  self->instance.maxAnisotropy = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
 }// compareEnable
 NAN_GETTER(_VkSamplerCreateInfo::GetcompareEnable) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.compareEnable));
 }NAN_SETTER(_VkSamplerCreateInfo::SetcompareEnable) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
-  self->instance.compareEnable = static_cast<uint32_t>(value->NumberValue());
+  self->instance.compareEnable = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// compareOp
 NAN_GETTER(_VkSamplerCreateInfo::GetcompareOp) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.compareOp));
 }NAN_SETTER(_VkSamplerCreateInfo::SetcompareOp) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
-  self->instance.compareOp = static_cast<VkCompareOp>((int32_t)value->NumberValue());
+  self->instance.compareOp = static_cast<VkCompareOp>(Nan::To<int32_t>(value).FromMaybe(0));
 }// minLod
 NAN_GETTER(_VkSamplerCreateInfo::GetminLod) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.minLod));
 }NAN_SETTER(_VkSamplerCreateInfo::SetminLod) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
-  self->instance.minLod = static_cast<float>(value->NumberValue());
+  self->instance.minLod = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
 }// maxLod
 NAN_GETTER(_VkSamplerCreateInfo::GetmaxLod) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.maxLod));
 }NAN_SETTER(_VkSamplerCreateInfo::SetmaxLod) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
-  self->instance.maxLod = static_cast<float>(value->NumberValue());
+  self->instance.maxLod = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
 }// borderColor
 NAN_GETTER(_VkSamplerCreateInfo::GetborderColor) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.borderColor));
 }NAN_SETTER(_VkSamplerCreateInfo::SetborderColor) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
-  self->instance.borderColor = static_cast<VkBorderColor>((int32_t)value->NumberValue());
+  self->instance.borderColor = static_cast<VkBorderColor>(Nan::To<int32_t>(value).FromMaybe(0));
 }// unnormalizedCoordinates
 NAN_GETTER(_VkSamplerCreateInfo::GetunnormalizedCoordinates) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.unnormalizedCoordinates));
 }NAN_SETTER(_VkSamplerCreateInfo::SetunnormalizedCoordinates) {
   _VkSamplerCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info.This());
-  self->instance.unnormalizedCoordinates = static_cast<uint32_t>(value->NumberValue());
+  self->instance.unnormalizedCoordinates = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }

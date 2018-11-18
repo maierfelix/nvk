@@ -47,7 +47,7 @@ NAN_METHOD(_VkSubpassDescription::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("flags").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pipelineBindPoint").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("inputAttachmentCount").ToLocalChecked();
@@ -83,21 +83,21 @@ NAN_GETTER(_VkSubpassDescription::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkSubpassDescription::Setflags) {
   _VkSubpassDescription *self = Nan::ObjectWrap::Unwrap<_VkSubpassDescription>(info.This());
-  self->instance.flags = static_cast<VkSubpassDescriptionFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkSubpassDescriptionFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pipelineBindPoint
 NAN_GETTER(_VkSubpassDescription::GetpipelineBindPoint) {
   _VkSubpassDescription *self = Nan::ObjectWrap::Unwrap<_VkSubpassDescription>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.pipelineBindPoint));
 }NAN_SETTER(_VkSubpassDescription::SetpipelineBindPoint) {
   _VkSubpassDescription *self = Nan::ObjectWrap::Unwrap<_VkSubpassDescription>(info.This());
-  self->instance.pipelineBindPoint = static_cast<VkPipelineBindPoint>((int32_t)value->NumberValue());
+  self->instance.pipelineBindPoint = static_cast<VkPipelineBindPoint>(Nan::To<int32_t>(value).FromMaybe(0));
 }// inputAttachmentCount
 NAN_GETTER(_VkSubpassDescription::GetinputAttachmentCount) {
   _VkSubpassDescription *self = Nan::ObjectWrap::Unwrap<_VkSubpassDescription>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.inputAttachmentCount));
 }NAN_SETTER(_VkSubpassDescription::SetinputAttachmentCount) {
   _VkSubpassDescription *self = Nan::ObjectWrap::Unwrap<_VkSubpassDescription>(info.This());
-  self->instance.inputAttachmentCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.inputAttachmentCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pInputAttachments
 NAN_GETTER(_VkSubpassDescription::GetpInputAttachments) {
   _VkSubpassDescription *self = Nan::ObjectWrap::Unwrap<_VkSubpassDescription>(info.This());
@@ -131,7 +131,7 @@ NAN_GETTER(_VkSubpassDescription::GetcolorAttachmentCount) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.colorAttachmentCount));
 }NAN_SETTER(_VkSubpassDescription::SetcolorAttachmentCount) {
   _VkSubpassDescription *self = Nan::ObjectWrap::Unwrap<_VkSubpassDescription>(info.This());
-  self->instance.colorAttachmentCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.colorAttachmentCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pColorAttachments
 NAN_GETTER(_VkSubpassDescription::GetpColorAttachments) {
   _VkSubpassDescription *self = Nan::ObjectWrap::Unwrap<_VkSubpassDescription>(info.This());
@@ -199,14 +199,14 @@ NAN_GETTER(_VkSubpassDescription::GetpDepthStencilAttachment) {
   _VkSubpassDescription *self = Nan::ObjectWrap::Unwrap<_VkSubpassDescription>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->pDepthStencilAttachment = obj;
   } else {
     //self->pDepthStencilAttachment = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkAttachmentReference* obj = Nan::ObjectWrap::Unwrap<_VkAttachmentReference>(value->ToObject());
+    _VkAttachmentReference* obj = Nan::ObjectWrap::Unwrap<_VkAttachmentReference>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.pDepthStencilAttachment = &obj->instance;
   } else {
     self->instance.pDepthStencilAttachment = nullptr;
@@ -217,7 +217,7 @@ NAN_GETTER(_VkSubpassDescription::GetpreserveAttachmentCount) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.preserveAttachmentCount));
 }NAN_SETTER(_VkSubpassDescription::SetpreserveAttachmentCount) {
   _VkSubpassDescription *self = Nan::ObjectWrap::Unwrap<_VkSubpassDescription>(info.This());
-  self->instance.preserveAttachmentCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.preserveAttachmentCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pPreserveAttachments
 NAN_GETTER(_VkSubpassDescription::GetpPreserveAttachments) {
   _VkSubpassDescription *self = Nan::ObjectWrap::Unwrap<_VkSubpassDescription>(info.This());
@@ -242,7 +242,7 @@ NAN_GETTER(_VkSubpassDescription::GetpPreserveAttachments) {
   
   // vulkan
   if (value->IsArrayBufferView()) {
-    self->instance.pPreserveAttachments = getTypedArrayData<uint32_t>(value->ToObject(), nullptr);
+    self->instance.pPreserveAttachments = getTypedArrayData<uint32_t>(Nan::To<v8::Object>(value).ToLocalChecked(), nullptr);
   } else {
     self->instance.pPreserveAttachments = nullptr;
   }

@@ -56,7 +56,7 @@ NAN_METHOD(_VkGraphicsPipelineCreateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -110,7 +110,7 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkGraphicsPipelineCreateInfo::SetsType) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpNext) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
@@ -122,14 +122,14 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkGraphicsPipelineCreateInfo::Setflags) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
-  self->instance.flags = static_cast<VkPipelineCreateFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkPipelineCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// stageCount
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetstageCount) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.stageCount));
 }NAN_SETTER(_VkGraphicsPipelineCreateInfo::SetstageCount) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
-  self->instance.stageCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.stageCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pStages
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpStages) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
@@ -170,14 +170,14 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpVertexInputState) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->pVertexInputState = obj;
   } else {
     //self->pVertexInputState = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkPipelineVertexInputStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineVertexInputStateCreateInfo>(value->ToObject());
+    _VkPipelineVertexInputStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineVertexInputStateCreateInfo>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.pVertexInputState = &obj->instance;
   } else {
     self->instance.pVertexInputState = nullptr;
@@ -195,14 +195,14 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpInputAssemblyState) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->pInputAssemblyState = obj;
   } else {
     //self->pInputAssemblyState = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkPipelineInputAssemblyStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineInputAssemblyStateCreateInfo>(value->ToObject());
+    _VkPipelineInputAssemblyStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineInputAssemblyStateCreateInfo>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.pInputAssemblyState = &obj->instance;
   } else {
     self->instance.pInputAssemblyState = nullptr;
@@ -220,14 +220,14 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpTessellationState) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->pTessellationState = obj;
   } else {
     //self->pTessellationState = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkPipelineTessellationStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineTessellationStateCreateInfo>(value->ToObject());
+    _VkPipelineTessellationStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineTessellationStateCreateInfo>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.pTessellationState = &obj->instance;
   } else {
     self->instance.pTessellationState = nullptr;
@@ -245,14 +245,14 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpViewportState) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->pViewportState = obj;
   } else {
     //self->pViewportState = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkPipelineViewportStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineViewportStateCreateInfo>(value->ToObject());
+    _VkPipelineViewportStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineViewportStateCreateInfo>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.pViewportState = &obj->instance;
   } else {
     self->instance.pViewportState = nullptr;
@@ -270,14 +270,14 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpRasterizationState) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->pRasterizationState = obj;
   } else {
     //self->pRasterizationState = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkPipelineRasterizationStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(value->ToObject());
+    _VkPipelineRasterizationStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.pRasterizationState = &obj->instance;
   } else {
     self->instance.pRasterizationState = nullptr;
@@ -295,14 +295,14 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpMultisampleState) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->pMultisampleState = obj;
   } else {
     //self->pMultisampleState = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkPipelineMultisampleStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineMultisampleStateCreateInfo>(value->ToObject());
+    _VkPipelineMultisampleStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineMultisampleStateCreateInfo>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.pMultisampleState = &obj->instance;
   } else {
     self->instance.pMultisampleState = nullptr;
@@ -320,14 +320,14 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpDepthStencilState) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->pDepthStencilState = obj;
   } else {
     //self->pDepthStencilState = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkPipelineDepthStencilStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(value->ToObject());
+    _VkPipelineDepthStencilStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.pDepthStencilState = &obj->instance;
   } else {
     self->instance.pDepthStencilState = nullptr;
@@ -345,14 +345,14 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpColorBlendState) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->pColorBlendState = obj;
   } else {
     //self->pColorBlendState = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkPipelineColorBlendStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendStateCreateInfo>(value->ToObject());
+    _VkPipelineColorBlendStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendStateCreateInfo>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.pColorBlendState = &obj->instance;
   } else {
     self->instance.pColorBlendState = nullptr;
@@ -370,14 +370,14 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpDynamicState) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->pDynamicState = obj;
   } else {
     //self->pDynamicState = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkPipelineDynamicStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineDynamicStateCreateInfo>(value->ToObject());
+    _VkPipelineDynamicStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineDynamicStateCreateInfo>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.pDynamicState = &obj->instance;
   } else {
     self->instance.pDynamicState = nullptr;
@@ -395,14 +395,14 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::Getlayout) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->layout = obj;
   } else {
     //self->layout = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkPipelineLayout* obj = Nan::ObjectWrap::Unwrap<_VkPipelineLayout>(value->ToObject());
+    _VkPipelineLayout* obj = Nan::ObjectWrap::Unwrap<_VkPipelineLayout>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.layout = obj->instance;
   } else {
     self->instance.layout = VK_NULL_HANDLE;
@@ -420,14 +420,14 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetrenderPass) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->renderPass = obj;
   } else {
     //self->renderPass = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkRenderPass* obj = Nan::ObjectWrap::Unwrap<_VkRenderPass>(value->ToObject());
+    _VkRenderPass* obj = Nan::ObjectWrap::Unwrap<_VkRenderPass>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.renderPass = obj->instance;
   } else {
     self->instance.renderPass = VK_NULL_HANDLE;
@@ -438,7 +438,7 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::Getsubpass) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.subpass));
 }NAN_SETTER(_VkGraphicsPipelineCreateInfo::Setsubpass) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
-  self->instance.subpass = static_cast<uint32_t>(value->NumberValue());
+  self->instance.subpass = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// basePipelineHandle
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetbasePipelineHandle) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
@@ -452,14 +452,14 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetbasePipelineHandle) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->basePipelineHandle = obj;
   } else {
     //self->basePipelineHandle = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkPipeline* obj = Nan::ObjectWrap::Unwrap<_VkPipeline>(value->ToObject());
+    _VkPipeline* obj = Nan::ObjectWrap::Unwrap<_VkPipeline>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.basePipelineHandle = obj->instance;
   } else {
     self->instance.basePipelineHandle = VK_NULL_HANDLE;
@@ -470,5 +470,5 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetbasePipelineIndex) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.basePipelineIndex));
 }NAN_SETTER(_VkGraphicsPipelineCreateInfo::SetbasePipelineIndex) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
-  self->instance.basePipelineIndex = static_cast<int32_t>(value->NumberValue());
+  self->instance.basePipelineIndex = static_cast<int32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }

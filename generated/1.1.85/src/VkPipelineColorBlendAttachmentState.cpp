@@ -45,7 +45,7 @@ NAN_METHOD(_VkPipelineColorBlendAttachmentState::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("blendEnable").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("srcColorBlendFactor").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("dstColorBlendFactor").ToLocalChecked();
@@ -77,54 +77,54 @@ NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetblendEnable) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.blendEnable));
 }NAN_SETTER(_VkPipelineColorBlendAttachmentState::SetblendEnable) {
   _VkPipelineColorBlendAttachmentState *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendAttachmentState>(info.This());
-  self->instance.blendEnable = static_cast<uint32_t>(value->NumberValue());
+  self->instance.blendEnable = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// srcColorBlendFactor
 NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetsrcColorBlendFactor) {
   _VkPipelineColorBlendAttachmentState *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendAttachmentState>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.srcColorBlendFactor));
 }NAN_SETTER(_VkPipelineColorBlendAttachmentState::SetsrcColorBlendFactor) {
   _VkPipelineColorBlendAttachmentState *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendAttachmentState>(info.This());
-  self->instance.srcColorBlendFactor = static_cast<VkBlendFactor>((int32_t)value->NumberValue());
+  self->instance.srcColorBlendFactor = static_cast<VkBlendFactor>(Nan::To<int32_t>(value).FromMaybe(0));
 }// dstColorBlendFactor
 NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetdstColorBlendFactor) {
   _VkPipelineColorBlendAttachmentState *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendAttachmentState>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.dstColorBlendFactor));
 }NAN_SETTER(_VkPipelineColorBlendAttachmentState::SetdstColorBlendFactor) {
   _VkPipelineColorBlendAttachmentState *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendAttachmentState>(info.This());
-  self->instance.dstColorBlendFactor = static_cast<VkBlendFactor>((int32_t)value->NumberValue());
+  self->instance.dstColorBlendFactor = static_cast<VkBlendFactor>(Nan::To<int32_t>(value).FromMaybe(0));
 }// colorBlendOp
 NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetcolorBlendOp) {
   _VkPipelineColorBlendAttachmentState *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendAttachmentState>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.colorBlendOp));
 }NAN_SETTER(_VkPipelineColorBlendAttachmentState::SetcolorBlendOp) {
   _VkPipelineColorBlendAttachmentState *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendAttachmentState>(info.This());
-  self->instance.colorBlendOp = static_cast<VkBlendOp>((int32_t)value->NumberValue());
+  self->instance.colorBlendOp = static_cast<VkBlendOp>(Nan::To<int32_t>(value).FromMaybe(0));
 }// srcAlphaBlendFactor
 NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetsrcAlphaBlendFactor) {
   _VkPipelineColorBlendAttachmentState *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendAttachmentState>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.srcAlphaBlendFactor));
 }NAN_SETTER(_VkPipelineColorBlendAttachmentState::SetsrcAlphaBlendFactor) {
   _VkPipelineColorBlendAttachmentState *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendAttachmentState>(info.This());
-  self->instance.srcAlphaBlendFactor = static_cast<VkBlendFactor>((int32_t)value->NumberValue());
+  self->instance.srcAlphaBlendFactor = static_cast<VkBlendFactor>(Nan::To<int32_t>(value).FromMaybe(0));
 }// dstAlphaBlendFactor
 NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetdstAlphaBlendFactor) {
   _VkPipelineColorBlendAttachmentState *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendAttachmentState>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.dstAlphaBlendFactor));
 }NAN_SETTER(_VkPipelineColorBlendAttachmentState::SetdstAlphaBlendFactor) {
   _VkPipelineColorBlendAttachmentState *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendAttachmentState>(info.This());
-  self->instance.dstAlphaBlendFactor = static_cast<VkBlendFactor>((int32_t)value->NumberValue());
+  self->instance.dstAlphaBlendFactor = static_cast<VkBlendFactor>(Nan::To<int32_t>(value).FromMaybe(0));
 }// alphaBlendOp
 NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetalphaBlendOp) {
   _VkPipelineColorBlendAttachmentState *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendAttachmentState>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.alphaBlendOp));
 }NAN_SETTER(_VkPipelineColorBlendAttachmentState::SetalphaBlendOp) {
   _VkPipelineColorBlendAttachmentState *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendAttachmentState>(info.This());
-  self->instance.alphaBlendOp = static_cast<VkBlendOp>((int32_t)value->NumberValue());
+  self->instance.alphaBlendOp = static_cast<VkBlendOp>(Nan::To<int32_t>(value).FromMaybe(0));
 }// colorWriteMask
 NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetcolorWriteMask) {
   _VkPipelineColorBlendAttachmentState *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendAttachmentState>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.colorWriteMask));
 }NAN_SETTER(_VkPipelineColorBlendAttachmentState::SetcolorWriteMask) {
   _VkPipelineColorBlendAttachmentState *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendAttachmentState>(info.This());
-  self->instance.colorWriteMask = static_cast<VkColorComponentFlags>((int32_t)value->NumberValue());
+  self->instance.colorWriteMask = static_cast<VkColorComponentFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }

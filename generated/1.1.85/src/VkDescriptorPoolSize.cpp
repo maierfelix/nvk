@@ -39,7 +39,7 @@ NAN_METHOD(_VkDescriptorPoolSize::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("type").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("descriptorCount").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
@@ -59,12 +59,12 @@ NAN_GETTER(_VkDescriptorPoolSize::Gettype) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.type));
 }NAN_SETTER(_VkDescriptorPoolSize::Settype) {
   _VkDescriptorPoolSize *self = Nan::ObjectWrap::Unwrap<_VkDescriptorPoolSize>(info.This());
-  self->instance.type = static_cast<VkDescriptorType>((int32_t)value->NumberValue());
+  self->instance.type = static_cast<VkDescriptorType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// descriptorCount
 NAN_GETTER(_VkDescriptorPoolSize::GetdescriptorCount) {
   _VkDescriptorPoolSize *self = Nan::ObjectWrap::Unwrap<_VkDescriptorPoolSize>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.descriptorCount));
 }NAN_SETTER(_VkDescriptorPoolSize::SetdescriptorCount) {
   _VkDescriptorPoolSize *self = Nan::ObjectWrap::Unwrap<_VkDescriptorPoolSize>(info.This());
-  self->instance.descriptorCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.descriptorCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }

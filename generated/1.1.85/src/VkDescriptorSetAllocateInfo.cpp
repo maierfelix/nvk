@@ -42,7 +42,7 @@ NAN_METHOD(_VkDescriptorSetAllocateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("descriptorPool").ToLocalChecked();
@@ -68,7 +68,7 @@ NAN_GETTER(_VkDescriptorSetAllocateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkDescriptorSetAllocateInfo::SetsType) {
   _VkDescriptorSetAllocateInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorSetAllocateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkDescriptorSetAllocateInfo::GetpNext) {
   _VkDescriptorSetAllocateInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorSetAllocateInfo>(info.This());
@@ -87,14 +87,14 @@ NAN_GETTER(_VkDescriptorSetAllocateInfo::GetdescriptorPool) {
   _VkDescriptorSetAllocateInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorSetAllocateInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->descriptorPool = obj;
   } else {
     //self->descriptorPool = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkDescriptorPool* obj = Nan::ObjectWrap::Unwrap<_VkDescriptorPool>(value->ToObject());
+    _VkDescriptorPool* obj = Nan::ObjectWrap::Unwrap<_VkDescriptorPool>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.descriptorPool = obj->instance;
   } else {
     self->instance.descriptorPool = VK_NULL_HANDLE;
@@ -105,7 +105,7 @@ NAN_GETTER(_VkDescriptorSetAllocateInfo::GetdescriptorSetCount) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.descriptorSetCount));
 }NAN_SETTER(_VkDescriptorSetAllocateInfo::SetdescriptorSetCount) {
   _VkDescriptorSetAllocateInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorSetAllocateInfo>(info.This());
-  self->instance.descriptorSetCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.descriptorSetCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pSetLayouts
 NAN_GETTER(_VkDescriptorSetAllocateInfo::GetpSetLayouts) {
   _VkDescriptorSetAllocateInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorSetAllocateInfo>(info.This());

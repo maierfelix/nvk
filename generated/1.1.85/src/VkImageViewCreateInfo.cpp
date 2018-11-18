@@ -45,7 +45,7 @@ NAN_METHOD(_VkImageViewCreateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -77,7 +77,7 @@ NAN_GETTER(_VkImageViewCreateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkImageViewCreateInfo::SetsType) {
   _VkImageViewCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageViewCreateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkImageViewCreateInfo::GetpNext) {
   _VkImageViewCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageViewCreateInfo>(info.This());
@@ -89,7 +89,7 @@ NAN_GETTER(_VkImageViewCreateInfo::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkImageViewCreateInfo::Setflags) {
   _VkImageViewCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageViewCreateInfo>(info.This());
-  self->instance.flags = static_cast<VkImageViewCreateFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkImageViewCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// image
 NAN_GETTER(_VkImageViewCreateInfo::Getimage) {
   _VkImageViewCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageViewCreateInfo>(info.This());
@@ -103,14 +103,14 @@ NAN_GETTER(_VkImageViewCreateInfo::Getimage) {
   _VkImageViewCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageViewCreateInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->image = obj;
   } else {
     //self->image = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkImage* obj = Nan::ObjectWrap::Unwrap<_VkImage>(value->ToObject());
+    _VkImage* obj = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.image = obj->instance;
   } else {
     self->instance.image = VK_NULL_HANDLE;
@@ -121,14 +121,14 @@ NAN_GETTER(_VkImageViewCreateInfo::GetviewType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.viewType));
 }NAN_SETTER(_VkImageViewCreateInfo::SetviewType) {
   _VkImageViewCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageViewCreateInfo>(info.This());
-  self->instance.viewType = static_cast<VkImageViewType>((int32_t)value->NumberValue());
+  self->instance.viewType = static_cast<VkImageViewType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// format
 NAN_GETTER(_VkImageViewCreateInfo::Getformat) {
   _VkImageViewCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageViewCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.format));
 }NAN_SETTER(_VkImageViewCreateInfo::Setformat) {
   _VkImageViewCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageViewCreateInfo>(info.This());
-  self->instance.format = static_cast<VkFormat>((int32_t)value->NumberValue());
+  self->instance.format = static_cast<VkFormat>(Nan::To<int32_t>(value).FromMaybe(0));
 }// components
 NAN_GETTER(_VkImageViewCreateInfo::Getcomponents) {
   _VkImageViewCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageViewCreateInfo>(info.This());
@@ -142,14 +142,14 @@ NAN_GETTER(_VkImageViewCreateInfo::Getcomponents) {
   _VkImageViewCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageViewCreateInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->components = obj;
   } else {
     //self->components = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkComponentMapping* obj = Nan::ObjectWrap::Unwrap<_VkComponentMapping>(value->ToObject());
+    _VkComponentMapping* obj = Nan::ObjectWrap::Unwrap<_VkComponentMapping>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.components = obj->instance;
   } else {
     memset(&self->instance.components, 0, sizeof(VkComponentMapping));
@@ -167,14 +167,14 @@ NAN_GETTER(_VkImageViewCreateInfo::GetsubresourceRange) {
   _VkImageViewCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageViewCreateInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->subresourceRange = obj;
   } else {
     //self->subresourceRange = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkImageSubresourceRange* obj = Nan::ObjectWrap::Unwrap<_VkImageSubresourceRange>(value->ToObject());
+    _VkImageSubresourceRange* obj = Nan::ObjectWrap::Unwrap<_VkImageSubresourceRange>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.subresourceRange = obj->instance;
   } else {
     memset(&self->instance.subresourceRange, 0, sizeof(VkImageSubresourceRange));

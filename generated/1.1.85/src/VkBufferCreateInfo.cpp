@@ -45,7 +45,7 @@ NAN_METHOD(_VkBufferCreateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -77,7 +77,7 @@ NAN_GETTER(_VkBufferCreateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkBufferCreateInfo::SetsType) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkBufferCreateInfo::GetpNext) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
@@ -89,35 +89,35 @@ NAN_GETTER(_VkBufferCreateInfo::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkBufferCreateInfo::Setflags) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
-  self->instance.flags = static_cast<VkBufferCreateFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkBufferCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// size
 NAN_GETTER(_VkBufferCreateInfo::Getsize) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.size));
 }NAN_SETTER(_VkBufferCreateInfo::Setsize) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
-  self->instance.size = static_cast<uint64_t>(value->NumberValue());
+  self->instance.size = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// usage
 NAN_GETTER(_VkBufferCreateInfo::Getusage) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.usage));
 }NAN_SETTER(_VkBufferCreateInfo::Setusage) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
-  self->instance.usage = static_cast<VkBufferUsageFlags>((int32_t)value->NumberValue());
+  self->instance.usage = static_cast<VkBufferUsageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// sharingMode
 NAN_GETTER(_VkBufferCreateInfo::GetsharingMode) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sharingMode));
 }NAN_SETTER(_VkBufferCreateInfo::SetsharingMode) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
-  self->instance.sharingMode = static_cast<VkSharingMode>((int32_t)value->NumberValue());
+  self->instance.sharingMode = static_cast<VkSharingMode>(Nan::To<int32_t>(value).FromMaybe(0));
 }// queueFamilyIndexCount
 NAN_GETTER(_VkBufferCreateInfo::GetqueueFamilyIndexCount) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.queueFamilyIndexCount));
 }NAN_SETTER(_VkBufferCreateInfo::SetqueueFamilyIndexCount) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
-  self->instance.queueFamilyIndexCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.queueFamilyIndexCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pQueueFamilyIndices
 NAN_GETTER(_VkBufferCreateInfo::GetpQueueFamilyIndices) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
@@ -142,7 +142,7 @@ NAN_GETTER(_VkBufferCreateInfo::GetpQueueFamilyIndices) {
   
   // vulkan
   if (value->IsArrayBufferView()) {
-    self->instance.pQueueFamilyIndices = getTypedArrayData<uint32_t>(value->ToObject(), nullptr);
+    self->instance.pQueueFamilyIndices = getTypedArrayData<uint32_t>(Nan::To<v8::Object>(value).ToLocalChecked(), nullptr);
   } else {
     self->instance.pQueueFamilyIndices = nullptr;
   }

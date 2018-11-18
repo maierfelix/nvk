@@ -42,7 +42,7 @@ NAN_METHOD(_VkPipelineInputAssemblyStateCreateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -68,7 +68,7 @@ NAN_GETTER(_VkPipelineInputAssemblyStateCreateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkPipelineInputAssemblyStateCreateInfo::SetsType) {
   _VkPipelineInputAssemblyStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineInputAssemblyStateCreateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkPipelineInputAssemblyStateCreateInfo::GetpNext) {
   _VkPipelineInputAssemblyStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineInputAssemblyStateCreateInfo>(info.This());
@@ -80,19 +80,19 @@ NAN_GETTER(_VkPipelineInputAssemblyStateCreateInfo::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkPipelineInputAssemblyStateCreateInfo::Setflags) {
   _VkPipelineInputAssemblyStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineInputAssemblyStateCreateInfo>(info.This());
-  self->instance.flags = static_cast<VkPipelineInputAssemblyStateCreateFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkPipelineInputAssemblyStateCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// topology
 NAN_GETTER(_VkPipelineInputAssemblyStateCreateInfo::Gettopology) {
   _VkPipelineInputAssemblyStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineInputAssemblyStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.topology));
 }NAN_SETTER(_VkPipelineInputAssemblyStateCreateInfo::Settopology) {
   _VkPipelineInputAssemblyStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineInputAssemblyStateCreateInfo>(info.This());
-  self->instance.topology = static_cast<VkPrimitiveTopology>((int32_t)value->NumberValue());
+  self->instance.topology = static_cast<VkPrimitiveTopology>(Nan::To<int32_t>(value).FromMaybe(0));
 }// primitiveRestartEnable
 NAN_GETTER(_VkPipelineInputAssemblyStateCreateInfo::GetprimitiveRestartEnable) {
   _VkPipelineInputAssemblyStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineInputAssemblyStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.primitiveRestartEnable));
 }NAN_SETTER(_VkPipelineInputAssemblyStateCreateInfo::SetprimitiveRestartEnable) {
   _VkPipelineInputAssemblyStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineInputAssemblyStateCreateInfo>(info.This());
-  self->instance.primitiveRestartEnable = static_cast<uint32_t>(value->NumberValue());
+  self->instance.primitiveRestartEnable = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }

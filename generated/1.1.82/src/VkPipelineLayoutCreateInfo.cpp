@@ -44,7 +44,7 @@ NAN_METHOD(_VkPipelineLayoutCreateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -74,7 +74,7 @@ NAN_GETTER(_VkPipelineLayoutCreateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkPipelineLayoutCreateInfo::SetsType) {
   _VkPipelineLayoutCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineLayoutCreateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpNext) {
   _VkPipelineLayoutCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineLayoutCreateInfo>(info.This());
@@ -86,14 +86,14 @@ NAN_GETTER(_VkPipelineLayoutCreateInfo::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkPipelineLayoutCreateInfo::Setflags) {
   _VkPipelineLayoutCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineLayoutCreateInfo>(info.This());
-  self->instance.flags = static_cast<VkPipelineLayoutCreateFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkPipelineLayoutCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// setLayoutCount
 NAN_GETTER(_VkPipelineLayoutCreateInfo::GetsetLayoutCount) {
   _VkPipelineLayoutCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineLayoutCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.setLayoutCount));
 }NAN_SETTER(_VkPipelineLayoutCreateInfo::SetsetLayoutCount) {
   _VkPipelineLayoutCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineLayoutCreateInfo>(info.This());
-  self->instance.setLayoutCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.setLayoutCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pSetLayouts
 NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpSetLayouts) {
   _VkPipelineLayoutCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineLayoutCreateInfo>(info.This());
@@ -127,7 +127,7 @@ NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpushConstantRangeCount) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.pushConstantRangeCount));
 }NAN_SETTER(_VkPipelineLayoutCreateInfo::SetpushConstantRangeCount) {
   _VkPipelineLayoutCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineLayoutCreateInfo>(info.This());
-  self->instance.pushConstantRangeCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.pushConstantRangeCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pPushConstantRanges
 NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpPushConstantRanges) {
   _VkPipelineLayoutCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineLayoutCreateInfo>(info.This());

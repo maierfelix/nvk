@@ -46,7 +46,7 @@ NAN_METHOD(_VkSubmitInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("waitSemaphoreCount").ToLocalChecked();
@@ -80,7 +80,7 @@ NAN_GETTER(_VkSubmitInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkSubmitInfo::SetsType) {
   _VkSubmitInfo *self = Nan::ObjectWrap::Unwrap<_VkSubmitInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkSubmitInfo::GetpNext) {
   _VkSubmitInfo *self = Nan::ObjectWrap::Unwrap<_VkSubmitInfo>(info.This());
@@ -92,7 +92,7 @@ NAN_GETTER(_VkSubmitInfo::GetwaitSemaphoreCount) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.waitSemaphoreCount));
 }NAN_SETTER(_VkSubmitInfo::SetwaitSemaphoreCount) {
   _VkSubmitInfo *self = Nan::ObjectWrap::Unwrap<_VkSubmitInfo>(info.This());
-  self->instance.waitSemaphoreCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.waitSemaphoreCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pWaitSemaphores
 NAN_GETTER(_VkSubmitInfo::GetpWaitSemaphores) {
   _VkSubmitInfo *self = Nan::ObjectWrap::Unwrap<_VkSubmitInfo>(info.This());
@@ -144,7 +144,7 @@ NAN_GETTER(_VkSubmitInfo::GetpWaitDstStageMask) {
   
   // vulkan
   if (value->IsArrayBufferView()) {
-    self->instance.pWaitDstStageMask = reinterpret_cast<const VkPipelineStageFlags *>(getTypedArrayData<int32_t>(value->ToObject(), nullptr));
+    self->instance.pWaitDstStageMask = reinterpret_cast<const VkPipelineStageFlags *>(getTypedArrayData<int32_t>(Nan::To<v8::Object>(value).ToLocalChecked(), nullptr));
   } else {
     self->instance.pWaitDstStageMask = nullptr;
   }
@@ -154,7 +154,7 @@ NAN_GETTER(_VkSubmitInfo::GetcommandBufferCount) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.commandBufferCount));
 }NAN_SETTER(_VkSubmitInfo::SetcommandBufferCount) {
   _VkSubmitInfo *self = Nan::ObjectWrap::Unwrap<_VkSubmitInfo>(info.This());
-  self->instance.commandBufferCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.commandBufferCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pCommandBuffers
 NAN_GETTER(_VkSubmitInfo::GetpCommandBuffers) {
   _VkSubmitInfo *self = Nan::ObjectWrap::Unwrap<_VkSubmitInfo>(info.This());
@@ -188,7 +188,7 @@ NAN_GETTER(_VkSubmitInfo::GetsignalSemaphoreCount) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.signalSemaphoreCount));
 }NAN_SETTER(_VkSubmitInfo::SetsignalSemaphoreCount) {
   _VkSubmitInfo *self = Nan::ObjectWrap::Unwrap<_VkSubmitInfo>(info.This());
-  self->instance.signalSemaphoreCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.signalSemaphoreCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pSignalSemaphores
 NAN_GETTER(_VkSubmitInfo::GetpSignalSemaphores) {
   _VkSubmitInfo *self = Nan::ObjectWrap::Unwrap<_VkSubmitInfo>(info.This());

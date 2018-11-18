@@ -27,7 +27,7 @@ inline void SetPrototypeAccessor(
 };
 
 inline char* copyV8String(v8::Handle<v8::Value> val) {
-  Nan::Utf8String utf8(val->ToString());
+  Nan::Utf8String utf8(Nan::To<v8::String>(val).ToLocalChecked());
   int len = utf8.length() + 1;
   char *str = (char *) calloc(sizeof(char), len);
   strncpy(str, *utf8, len);

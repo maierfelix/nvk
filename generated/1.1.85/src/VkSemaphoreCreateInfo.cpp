@@ -40,7 +40,7 @@ NAN_METHOD(_VkSemaphoreCreateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -62,7 +62,7 @@ NAN_GETTER(_VkSemaphoreCreateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkSemaphoreCreateInfo::SetsType) {
   _VkSemaphoreCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSemaphoreCreateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkSemaphoreCreateInfo::GetpNext) {
   _VkSemaphoreCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSemaphoreCreateInfo>(info.This());
@@ -74,5 +74,5 @@ NAN_GETTER(_VkSemaphoreCreateInfo::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkSemaphoreCreateInfo::Setflags) {
   _VkSemaphoreCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSemaphoreCreateInfo>(info.This());
-  self->instance.flags = static_cast<VkSemaphoreCreateFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkSemaphoreCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }

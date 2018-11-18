@@ -42,7 +42,7 @@ NAN_METHOD(_VkCommandBufferAllocateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("commandPool").ToLocalChecked();
@@ -68,7 +68,7 @@ NAN_GETTER(_VkCommandBufferAllocateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkCommandBufferAllocateInfo::SetsType) {
   _VkCommandBufferAllocateInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferAllocateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkCommandBufferAllocateInfo::GetpNext) {
   _VkCommandBufferAllocateInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferAllocateInfo>(info.This());
@@ -87,14 +87,14 @@ NAN_GETTER(_VkCommandBufferAllocateInfo::GetcommandPool) {
   _VkCommandBufferAllocateInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferAllocateInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->commandPool = obj;
   } else {
     //self->commandPool = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkCommandPool* obj = Nan::ObjectWrap::Unwrap<_VkCommandPool>(value->ToObject());
+    _VkCommandPool* obj = Nan::ObjectWrap::Unwrap<_VkCommandPool>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.commandPool = obj->instance;
   } else {
     self->instance.commandPool = VK_NULL_HANDLE;
@@ -105,12 +105,12 @@ NAN_GETTER(_VkCommandBufferAllocateInfo::Getlevel) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.level));
 }NAN_SETTER(_VkCommandBufferAllocateInfo::Setlevel) {
   _VkCommandBufferAllocateInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferAllocateInfo>(info.This());
-  self->instance.level = static_cast<VkCommandBufferLevel>((int32_t)value->NumberValue());
+  self->instance.level = static_cast<VkCommandBufferLevel>(Nan::To<int32_t>(value).FromMaybe(0));
 }// commandBufferCount
 NAN_GETTER(_VkCommandBufferAllocateInfo::GetcommandBufferCount) {
   _VkCommandBufferAllocateInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferAllocateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.commandBufferCount));
 }NAN_SETTER(_VkCommandBufferAllocateInfo::SetcommandBufferCount) {
   _VkCommandBufferAllocateInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferAllocateInfo>(info.This());
-  self->instance.commandBufferCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.commandBufferCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }

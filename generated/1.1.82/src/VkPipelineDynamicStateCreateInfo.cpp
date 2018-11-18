@@ -42,7 +42,7 @@ NAN_METHOD(_VkPipelineDynamicStateCreateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -68,7 +68,7 @@ NAN_GETTER(_VkPipelineDynamicStateCreateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkPipelineDynamicStateCreateInfo::SetsType) {
   _VkPipelineDynamicStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDynamicStateCreateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkPipelineDynamicStateCreateInfo::GetpNext) {
   _VkPipelineDynamicStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDynamicStateCreateInfo>(info.This());
@@ -80,14 +80,14 @@ NAN_GETTER(_VkPipelineDynamicStateCreateInfo::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkPipelineDynamicStateCreateInfo::Setflags) {
   _VkPipelineDynamicStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDynamicStateCreateInfo>(info.This());
-  self->instance.flags = static_cast<VkPipelineDynamicStateCreateFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkPipelineDynamicStateCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// dynamicStateCount
 NAN_GETTER(_VkPipelineDynamicStateCreateInfo::GetdynamicStateCount) {
   _VkPipelineDynamicStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDynamicStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.dynamicStateCount));
 }NAN_SETTER(_VkPipelineDynamicStateCreateInfo::SetdynamicStateCount) {
   _VkPipelineDynamicStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDynamicStateCreateInfo>(info.This());
-  self->instance.dynamicStateCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.dynamicStateCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pDynamicStates
 NAN_GETTER(_VkPipelineDynamicStateCreateInfo::GetpDynamicStates) {
   _VkPipelineDynamicStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDynamicStateCreateInfo>(info.This());
@@ -112,7 +112,7 @@ NAN_GETTER(_VkPipelineDynamicStateCreateInfo::GetpDynamicStates) {
   
   // vulkan
   if (value->IsArrayBufferView()) {
-    self->instance.pDynamicStates = reinterpret_cast<const VkDynamicState *>(getTypedArrayData<int32_t>(value->ToObject(), nullptr));
+    self->instance.pDynamicStates = reinterpret_cast<const VkDynamicState *>(getTypedArrayData<int32_t>(Nan::To<v8::Object>(value).ToLocalChecked(), nullptr));
   } else {
     self->instance.pDynamicStates = nullptr;
   }

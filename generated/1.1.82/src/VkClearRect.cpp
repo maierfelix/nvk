@@ -40,7 +40,7 @@ NAN_METHOD(_VkClearRect::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("rect").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("baseArrayLayer").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("layerCount").ToLocalChecked();
@@ -69,14 +69,14 @@ NAN_GETTER(_VkClearRect::Getrect) {
   _VkClearRect *self = Nan::ObjectWrap::Unwrap<_VkClearRect>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->rect = obj;
   } else {
     //self->rect = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkRect2D* obj = Nan::ObjectWrap::Unwrap<_VkRect2D>(value->ToObject());
+    _VkRect2D* obj = Nan::ObjectWrap::Unwrap<_VkRect2D>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.rect = obj->instance;
   } else {
     memset(&self->instance.rect, 0, sizeof(VkRect2D));
@@ -87,12 +87,12 @@ NAN_GETTER(_VkClearRect::GetbaseArrayLayer) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.baseArrayLayer));
 }NAN_SETTER(_VkClearRect::SetbaseArrayLayer) {
   _VkClearRect *self = Nan::ObjectWrap::Unwrap<_VkClearRect>(info.This());
-  self->instance.baseArrayLayer = static_cast<uint32_t>(value->NumberValue());
+  self->instance.baseArrayLayer = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// layerCount
 NAN_GETTER(_VkClearRect::GetlayerCount) {
   _VkClearRect *self = Nan::ObjectWrap::Unwrap<_VkClearRect>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.layerCount));
 }NAN_SETTER(_VkClearRect::SetlayerCount) {
   _VkClearRect *self = Nan::ObjectWrap::Unwrap<_VkClearRect>(info.This());
-  self->instance.layerCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.layerCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }

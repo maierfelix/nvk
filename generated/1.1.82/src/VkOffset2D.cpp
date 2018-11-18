@@ -39,7 +39,7 @@ NAN_METHOD(_VkOffset2D::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("x").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("y").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
@@ -59,12 +59,12 @@ NAN_GETTER(_VkOffset2D::Getx) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.x));
 }NAN_SETTER(_VkOffset2D::Setx) {
   _VkOffset2D *self = Nan::ObjectWrap::Unwrap<_VkOffset2D>(info.This());
-  self->instance.x = static_cast<int32_t>(value->NumberValue());
+  self->instance.x = static_cast<int32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// y
 NAN_GETTER(_VkOffset2D::Gety) {
   _VkOffset2D *self = Nan::ObjectWrap::Unwrap<_VkOffset2D>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.y));
 }NAN_SETTER(_VkOffset2D::Sety) {
   _VkOffset2D *self = Nan::ObjectWrap::Unwrap<_VkOffset2D>(info.This());
-  self->instance.y = static_cast<int32_t>(value->NumberValue());
+  self->instance.y = static_cast<int32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }

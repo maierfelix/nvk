@@ -44,7 +44,7 @@ NAN_METHOD(_VkSubpassDependency::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("srcSubpass").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("dstSubpass").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("srcStageMask").ToLocalChecked();
@@ -74,47 +74,47 @@ NAN_GETTER(_VkSubpassDependency::GetsrcSubpass) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.srcSubpass));
 }NAN_SETTER(_VkSubpassDependency::SetsrcSubpass) {
   _VkSubpassDependency *self = Nan::ObjectWrap::Unwrap<_VkSubpassDependency>(info.This());
-  self->instance.srcSubpass = static_cast<uint32_t>(value->NumberValue());
+  self->instance.srcSubpass = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// dstSubpass
 NAN_GETTER(_VkSubpassDependency::GetdstSubpass) {
   _VkSubpassDependency *self = Nan::ObjectWrap::Unwrap<_VkSubpassDependency>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.dstSubpass));
 }NAN_SETTER(_VkSubpassDependency::SetdstSubpass) {
   _VkSubpassDependency *self = Nan::ObjectWrap::Unwrap<_VkSubpassDependency>(info.This());
-  self->instance.dstSubpass = static_cast<uint32_t>(value->NumberValue());
+  self->instance.dstSubpass = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// srcStageMask
 NAN_GETTER(_VkSubpassDependency::GetsrcStageMask) {
   _VkSubpassDependency *self = Nan::ObjectWrap::Unwrap<_VkSubpassDependency>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.srcStageMask));
 }NAN_SETTER(_VkSubpassDependency::SetsrcStageMask) {
   _VkSubpassDependency *self = Nan::ObjectWrap::Unwrap<_VkSubpassDependency>(info.This());
-  self->instance.srcStageMask = static_cast<VkPipelineStageFlags>((int32_t)value->NumberValue());
+  self->instance.srcStageMask = static_cast<VkPipelineStageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// dstStageMask
 NAN_GETTER(_VkSubpassDependency::GetdstStageMask) {
   _VkSubpassDependency *self = Nan::ObjectWrap::Unwrap<_VkSubpassDependency>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.dstStageMask));
 }NAN_SETTER(_VkSubpassDependency::SetdstStageMask) {
   _VkSubpassDependency *self = Nan::ObjectWrap::Unwrap<_VkSubpassDependency>(info.This());
-  self->instance.dstStageMask = static_cast<VkPipelineStageFlags>((int32_t)value->NumberValue());
+  self->instance.dstStageMask = static_cast<VkPipelineStageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// srcAccessMask
 NAN_GETTER(_VkSubpassDependency::GetsrcAccessMask) {
   _VkSubpassDependency *self = Nan::ObjectWrap::Unwrap<_VkSubpassDependency>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.srcAccessMask));
 }NAN_SETTER(_VkSubpassDependency::SetsrcAccessMask) {
   _VkSubpassDependency *self = Nan::ObjectWrap::Unwrap<_VkSubpassDependency>(info.This());
-  self->instance.srcAccessMask = static_cast<VkAccessFlags>((int32_t)value->NumberValue());
+  self->instance.srcAccessMask = static_cast<VkAccessFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// dstAccessMask
 NAN_GETTER(_VkSubpassDependency::GetdstAccessMask) {
   _VkSubpassDependency *self = Nan::ObjectWrap::Unwrap<_VkSubpassDependency>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.dstAccessMask));
 }NAN_SETTER(_VkSubpassDependency::SetdstAccessMask) {
   _VkSubpassDependency *self = Nan::ObjectWrap::Unwrap<_VkSubpassDependency>(info.This());
-  self->instance.dstAccessMask = static_cast<VkAccessFlags>((int32_t)value->NumberValue());
+  self->instance.dstAccessMask = static_cast<VkAccessFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// dependencyFlags
 NAN_GETTER(_VkSubpassDependency::GetdependencyFlags) {
   _VkSubpassDependency *self = Nan::ObjectWrap::Unwrap<_VkSubpassDependency>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.dependencyFlags));
 }NAN_SETTER(_VkSubpassDependency::SetdependencyFlags) {
   _VkSubpassDependency *self = Nan::ObjectWrap::Unwrap<_VkSubpassDependency>(info.This());
-  self->instance.dependencyFlags = static_cast<VkDependencyFlags>((int32_t)value->NumberValue());
+  self->instance.dependencyFlags = static_cast<VkDependencyFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }

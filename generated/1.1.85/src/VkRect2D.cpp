@@ -39,7 +39,7 @@ NAN_METHOD(_VkRect2D::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("offset").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("extent").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
@@ -66,14 +66,14 @@ NAN_GETTER(_VkRect2D::Getoffset) {
   _VkRect2D *self = Nan::ObjectWrap::Unwrap<_VkRect2D>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->offset = obj;
   } else {
     //self->offset = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkOffset2D* obj = Nan::ObjectWrap::Unwrap<_VkOffset2D>(value->ToObject());
+    _VkOffset2D* obj = Nan::ObjectWrap::Unwrap<_VkOffset2D>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.offset = obj->instance;
   } else {
     memset(&self->instance.offset, 0, sizeof(VkOffset2D));
@@ -91,14 +91,14 @@ NAN_GETTER(_VkRect2D::Getextent) {
   _VkRect2D *self = Nan::ObjectWrap::Unwrap<_VkRect2D>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->extent = obj;
   } else {
     //self->extent = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkExtent2D* obj = Nan::ObjectWrap::Unwrap<_VkExtent2D>(value->ToObject());
+    _VkExtent2D* obj = Nan::ObjectWrap::Unwrap<_VkExtent2D>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.extent = obj->instance;
   } else {
     memset(&self->instance.extent, 0, sizeof(VkExtent2D));

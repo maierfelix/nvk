@@ -41,7 +41,7 @@ NAN_METHOD(_VkComponentMapping::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("r").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("g").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("b").ToLocalChecked();
@@ -65,26 +65,26 @@ NAN_GETTER(_VkComponentMapping::Getr) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.r));
 }NAN_SETTER(_VkComponentMapping::Setr) {
   _VkComponentMapping *self = Nan::ObjectWrap::Unwrap<_VkComponentMapping>(info.This());
-  self->instance.r = static_cast<VkComponentSwizzle>((int32_t)value->NumberValue());
+  self->instance.r = static_cast<VkComponentSwizzle>(Nan::To<int32_t>(value).FromMaybe(0));
 }// g
 NAN_GETTER(_VkComponentMapping::Getg) {
   _VkComponentMapping *self = Nan::ObjectWrap::Unwrap<_VkComponentMapping>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.g));
 }NAN_SETTER(_VkComponentMapping::Setg) {
   _VkComponentMapping *self = Nan::ObjectWrap::Unwrap<_VkComponentMapping>(info.This());
-  self->instance.g = static_cast<VkComponentSwizzle>((int32_t)value->NumberValue());
+  self->instance.g = static_cast<VkComponentSwizzle>(Nan::To<int32_t>(value).FromMaybe(0));
 }// b
 NAN_GETTER(_VkComponentMapping::Getb) {
   _VkComponentMapping *self = Nan::ObjectWrap::Unwrap<_VkComponentMapping>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.b));
 }NAN_SETTER(_VkComponentMapping::Setb) {
   _VkComponentMapping *self = Nan::ObjectWrap::Unwrap<_VkComponentMapping>(info.This());
-  self->instance.b = static_cast<VkComponentSwizzle>((int32_t)value->NumberValue());
+  self->instance.b = static_cast<VkComponentSwizzle>(Nan::To<int32_t>(value).FromMaybe(0));
 }// a
 NAN_GETTER(_VkComponentMapping::Geta) {
   _VkComponentMapping *self = Nan::ObjectWrap::Unwrap<_VkComponentMapping>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.a));
 }NAN_SETTER(_VkComponentMapping::Seta) {
   _VkComponentMapping *self = Nan::ObjectWrap::Unwrap<_VkComponentMapping>(info.This());
-  self->instance.a = static_cast<VkComponentSwizzle>((int32_t)value->NumberValue());
+  self->instance.a = static_cast<VkComponentSwizzle>(Nan::To<int32_t>(value).FromMaybe(0));
 }

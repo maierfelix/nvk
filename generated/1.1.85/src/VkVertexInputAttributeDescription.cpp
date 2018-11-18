@@ -41,7 +41,7 @@ NAN_METHOD(_VkVertexInputAttributeDescription::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("location").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("binding").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("format").ToLocalChecked();
@@ -65,26 +65,26 @@ NAN_GETTER(_VkVertexInputAttributeDescription::Getlocation) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.location));
 }NAN_SETTER(_VkVertexInputAttributeDescription::Setlocation) {
   _VkVertexInputAttributeDescription *self = Nan::ObjectWrap::Unwrap<_VkVertexInputAttributeDescription>(info.This());
-  self->instance.location = static_cast<uint32_t>(value->NumberValue());
+  self->instance.location = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// binding
 NAN_GETTER(_VkVertexInputAttributeDescription::Getbinding) {
   _VkVertexInputAttributeDescription *self = Nan::ObjectWrap::Unwrap<_VkVertexInputAttributeDescription>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.binding));
 }NAN_SETTER(_VkVertexInputAttributeDescription::Setbinding) {
   _VkVertexInputAttributeDescription *self = Nan::ObjectWrap::Unwrap<_VkVertexInputAttributeDescription>(info.This());
-  self->instance.binding = static_cast<uint32_t>(value->NumberValue());
+  self->instance.binding = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// format
 NAN_GETTER(_VkVertexInputAttributeDescription::Getformat) {
   _VkVertexInputAttributeDescription *self = Nan::ObjectWrap::Unwrap<_VkVertexInputAttributeDescription>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.format));
 }NAN_SETTER(_VkVertexInputAttributeDescription::Setformat) {
   _VkVertexInputAttributeDescription *self = Nan::ObjectWrap::Unwrap<_VkVertexInputAttributeDescription>(info.This());
-  self->instance.format = static_cast<VkFormat>((int32_t)value->NumberValue());
+  self->instance.format = static_cast<VkFormat>(Nan::To<int32_t>(value).FromMaybe(0));
 }// offset
 NAN_GETTER(_VkVertexInputAttributeDescription::Getoffset) {
   _VkVertexInputAttributeDescription *self = Nan::ObjectWrap::Unwrap<_VkVertexInputAttributeDescription>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.offset));
 }NAN_SETTER(_VkVertexInputAttributeDescription::Setoffset) {
   _VkVertexInputAttributeDescription *self = Nan::ObjectWrap::Unwrap<_VkVertexInputAttributeDescription>(info.This());
-  self->instance.offset = static_cast<uint32_t>(value->NumberValue());
+  self->instance.offset = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }

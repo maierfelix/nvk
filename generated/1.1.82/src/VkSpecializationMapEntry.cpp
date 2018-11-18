@@ -40,7 +40,7 @@ NAN_METHOD(_VkSpecializationMapEntry::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("constantID").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("offset").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("size").ToLocalChecked();
@@ -62,19 +62,19 @@ NAN_GETTER(_VkSpecializationMapEntry::GetconstantID) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.constantID));
 }NAN_SETTER(_VkSpecializationMapEntry::SetconstantID) {
   _VkSpecializationMapEntry *self = Nan::ObjectWrap::Unwrap<_VkSpecializationMapEntry>(info.This());
-  self->instance.constantID = static_cast<uint32_t>(value->NumberValue());
+  self->instance.constantID = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// offset
 NAN_GETTER(_VkSpecializationMapEntry::Getoffset) {
   _VkSpecializationMapEntry *self = Nan::ObjectWrap::Unwrap<_VkSpecializationMapEntry>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.offset));
 }NAN_SETTER(_VkSpecializationMapEntry::Setoffset) {
   _VkSpecializationMapEntry *self = Nan::ObjectWrap::Unwrap<_VkSpecializationMapEntry>(info.This());
-  self->instance.offset = static_cast<uint32_t>(value->NumberValue());
+  self->instance.offset = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// size
 NAN_GETTER(_VkSpecializationMapEntry::Getsize) {
   _VkSpecializationMapEntry *self = Nan::ObjectWrap::Unwrap<_VkSpecializationMapEntry>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.size));
 }NAN_SETTER(_VkSpecializationMapEntry::Setsize) {
   _VkSpecializationMapEntry *self = Nan::ObjectWrap::Unwrap<_VkSpecializationMapEntry>(info.This());
-  self->instance.size = static_cast<size_t>(value->NumberValue());
+  self->instance.size = static_cast<size_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }

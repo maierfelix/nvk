@@ -47,7 +47,7 @@ NAN_METHOD(_VkWriteDescriptorSet::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("dstSet").ToLocalChecked();
@@ -83,7 +83,7 @@ NAN_GETTER(_VkWriteDescriptorSet::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkWriteDescriptorSet::SetsType) {
   _VkWriteDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkWriteDescriptorSet>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkWriteDescriptorSet::GetpNext) {
   _VkWriteDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkWriteDescriptorSet>(info.This());
@@ -102,14 +102,14 @@ NAN_GETTER(_VkWriteDescriptorSet::GetdstSet) {
   _VkWriteDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkWriteDescriptorSet>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->dstSet = obj;
   } else {
     //self->dstSet = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkDescriptorSet* obj = Nan::ObjectWrap::Unwrap<_VkDescriptorSet>(value->ToObject());
+    _VkDescriptorSet* obj = Nan::ObjectWrap::Unwrap<_VkDescriptorSet>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.dstSet = obj->instance;
   } else {
     self->instance.dstSet = VK_NULL_HANDLE;
@@ -120,28 +120,28 @@ NAN_GETTER(_VkWriteDescriptorSet::GetdstBinding) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.dstBinding));
 }NAN_SETTER(_VkWriteDescriptorSet::SetdstBinding) {
   _VkWriteDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkWriteDescriptorSet>(info.This());
-  self->instance.dstBinding = static_cast<uint32_t>(value->NumberValue());
+  self->instance.dstBinding = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// dstArrayElement
 NAN_GETTER(_VkWriteDescriptorSet::GetdstArrayElement) {
   _VkWriteDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkWriteDescriptorSet>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.dstArrayElement));
 }NAN_SETTER(_VkWriteDescriptorSet::SetdstArrayElement) {
   _VkWriteDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkWriteDescriptorSet>(info.This());
-  self->instance.dstArrayElement = static_cast<uint32_t>(value->NumberValue());
+  self->instance.dstArrayElement = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// descriptorCount
 NAN_GETTER(_VkWriteDescriptorSet::GetdescriptorCount) {
   _VkWriteDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkWriteDescriptorSet>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.descriptorCount));
 }NAN_SETTER(_VkWriteDescriptorSet::SetdescriptorCount) {
   _VkWriteDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkWriteDescriptorSet>(info.This());
-  self->instance.descriptorCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.descriptorCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// descriptorType
 NAN_GETTER(_VkWriteDescriptorSet::GetdescriptorType) {
   _VkWriteDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkWriteDescriptorSet>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.descriptorType));
 }NAN_SETTER(_VkWriteDescriptorSet::SetdescriptorType) {
   _VkWriteDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkWriteDescriptorSet>(info.This());
-  self->instance.descriptorType = static_cast<VkDescriptorType>((int32_t)value->NumberValue());
+  self->instance.descriptorType = static_cast<VkDescriptorType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pImageInfo
 NAN_GETTER(_VkWriteDescriptorSet::GetpImageInfo) {
   _VkWriteDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkWriteDescriptorSet>(info.This());

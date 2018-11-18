@@ -55,7 +55,7 @@ NAN_METHOD(_VkSwapchainCreateInfoKHR::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -107,7 +107,7 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkSwapchainCreateInfoKHR::SetsType) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetpNext) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
@@ -119,7 +119,7 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkSwapchainCreateInfoKHR::Setflags) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
-  self->instance.flags = static_cast<VkSwapchainCreateFlagsKHR>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkSwapchainCreateFlagsKHR>(Nan::To<int32_t>(value).FromMaybe(0));
 }// surface
 NAN_GETTER(_VkSwapchainCreateInfoKHR::Getsurface) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
@@ -133,14 +133,14 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::Getsurface) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->surface = obj;
   } else {
     //self->surface = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkSurfaceKHR* obj = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(value->ToObject());
+    _VkSurfaceKHR* obj = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.surface = obj->instance;
   } else {
     self->instance.surface = VK_NULL_HANDLE;
@@ -151,21 +151,21 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::GetminImageCount) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.minImageCount));
 }NAN_SETTER(_VkSwapchainCreateInfoKHR::SetminImageCount) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
-  self->instance.minImageCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.minImageCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// imageFormat
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetimageFormat) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.imageFormat));
 }NAN_SETTER(_VkSwapchainCreateInfoKHR::SetimageFormat) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
-  self->instance.imageFormat = static_cast<VkFormat>((int32_t)value->NumberValue());
+  self->instance.imageFormat = static_cast<VkFormat>(Nan::To<int32_t>(value).FromMaybe(0));
 }// imageColorSpace
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetimageColorSpace) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.imageColorSpace));
 }NAN_SETTER(_VkSwapchainCreateInfoKHR::SetimageColorSpace) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
-  self->instance.imageColorSpace = static_cast<VkColorSpaceKHR>((int32_t)value->NumberValue());
+  self->instance.imageColorSpace = static_cast<VkColorSpaceKHR>(Nan::To<int32_t>(value).FromMaybe(0));
 }// imageExtent
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetimageExtent) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
@@ -179,14 +179,14 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::GetimageExtent) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->imageExtent = obj;
   } else {
     //self->imageExtent = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkExtent2D* obj = Nan::ObjectWrap::Unwrap<_VkExtent2D>(value->ToObject());
+    _VkExtent2D* obj = Nan::ObjectWrap::Unwrap<_VkExtent2D>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.imageExtent = obj->instance;
   } else {
     memset(&self->instance.imageExtent, 0, sizeof(VkExtent2D));
@@ -197,28 +197,28 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::GetimageArrayLayers) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.imageArrayLayers));
 }NAN_SETTER(_VkSwapchainCreateInfoKHR::SetimageArrayLayers) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
-  self->instance.imageArrayLayers = static_cast<uint32_t>(value->NumberValue());
+  self->instance.imageArrayLayers = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// imageUsage
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetimageUsage) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.imageUsage));
 }NAN_SETTER(_VkSwapchainCreateInfoKHR::SetimageUsage) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
-  self->instance.imageUsage = static_cast<VkImageUsageFlags>((int32_t)value->NumberValue());
+  self->instance.imageUsage = static_cast<VkImageUsageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// imageSharingMode
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetimageSharingMode) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.imageSharingMode));
 }NAN_SETTER(_VkSwapchainCreateInfoKHR::SetimageSharingMode) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
-  self->instance.imageSharingMode = static_cast<VkSharingMode>((int32_t)value->NumberValue());
+  self->instance.imageSharingMode = static_cast<VkSharingMode>(Nan::To<int32_t>(value).FromMaybe(0));
 }// queueFamilyIndexCount
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetqueueFamilyIndexCount) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.queueFamilyIndexCount));
 }NAN_SETTER(_VkSwapchainCreateInfoKHR::SetqueueFamilyIndexCount) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
-  self->instance.queueFamilyIndexCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.queueFamilyIndexCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pQueueFamilyIndices
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetpQueueFamilyIndices) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
@@ -243,7 +243,7 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::GetpQueueFamilyIndices) {
   
   // vulkan
   if (value->IsArrayBufferView()) {
-    self->instance.pQueueFamilyIndices = getTypedArrayData<uint32_t>(value->ToObject(), nullptr);
+    self->instance.pQueueFamilyIndices = getTypedArrayData<uint32_t>(Nan::To<v8::Object>(value).ToLocalChecked(), nullptr);
   } else {
     self->instance.pQueueFamilyIndices = nullptr;
   }
@@ -253,28 +253,28 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::GetpreTransform) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.preTransform));
 }NAN_SETTER(_VkSwapchainCreateInfoKHR::SetpreTransform) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
-  self->instance.preTransform = static_cast<VkSurfaceTransformFlagBitsKHR>((int32_t)value->NumberValue());
+  self->instance.preTransform = static_cast<VkSurfaceTransformFlagBitsKHR>(Nan::To<int32_t>(value).FromMaybe(0));
 }// compositeAlpha
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetcompositeAlpha) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.compositeAlpha));
 }NAN_SETTER(_VkSwapchainCreateInfoKHR::SetcompositeAlpha) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
-  self->instance.compositeAlpha = static_cast<VkCompositeAlphaFlagBitsKHR>((int32_t)value->NumberValue());
+  self->instance.compositeAlpha = static_cast<VkCompositeAlphaFlagBitsKHR>(Nan::To<int32_t>(value).FromMaybe(0));
 }// presentMode
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetpresentMode) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.presentMode));
 }NAN_SETTER(_VkSwapchainCreateInfoKHR::SetpresentMode) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
-  self->instance.presentMode = static_cast<VkPresentModeKHR>((int32_t)value->NumberValue());
+  self->instance.presentMode = static_cast<VkPresentModeKHR>(Nan::To<int32_t>(value).FromMaybe(0));
 }// clipped
 NAN_GETTER(_VkSwapchainCreateInfoKHR::Getclipped) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.clipped));
 }NAN_SETTER(_VkSwapchainCreateInfoKHR::Setclipped) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
-  self->instance.clipped = static_cast<uint32_t>(value->NumberValue());
+  self->instance.clipped = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// oldSwapchain
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetoldSwapchain) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
@@ -288,14 +288,14 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::GetoldSwapchain) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->oldSwapchain = obj;
   } else {
     //self->oldSwapchain = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkSwapchainKHR* obj = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(value->ToObject());
+    _VkSwapchainKHR* obj = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.oldSwapchain = obj->instance;
   } else {
     self->instance.oldSwapchain = VK_NULL_HANDLE;

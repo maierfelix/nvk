@@ -40,7 +40,7 @@ NAN_METHOD(_VkBindImagePlaneMemoryInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("planeAspect").ToLocalChecked();
@@ -62,7 +62,7 @@ NAN_GETTER(_VkBindImagePlaneMemoryInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkBindImagePlaneMemoryInfo::SetsType) {
   _VkBindImagePlaneMemoryInfo *self = Nan::ObjectWrap::Unwrap<_VkBindImagePlaneMemoryInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkBindImagePlaneMemoryInfo::GetpNext) {
   _VkBindImagePlaneMemoryInfo *self = Nan::ObjectWrap::Unwrap<_VkBindImagePlaneMemoryInfo>(info.This());
@@ -74,5 +74,5 @@ NAN_GETTER(_VkBindImagePlaneMemoryInfo::GetplaneAspect) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.planeAspect));
 }NAN_SETTER(_VkBindImagePlaneMemoryInfo::SetplaneAspect) {
   _VkBindImagePlaneMemoryInfo *self = Nan::ObjectWrap::Unwrap<_VkBindImagePlaneMemoryInfo>(info.This());
-  self->instance.planeAspect = static_cast<VkImageAspectFlagBits>((int32_t)value->NumberValue());
+  self->instance.planeAspect = static_cast<VkImageAspectFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
 }

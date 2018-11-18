@@ -41,7 +41,7 @@ NAN_METHOD(_VkSpecializationInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("mapEntryCount").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pMapEntries").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("dataSize").ToLocalChecked();
@@ -65,7 +65,7 @@ NAN_GETTER(_VkSpecializationInfo::GetmapEntryCount) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.mapEntryCount));
 }NAN_SETTER(_VkSpecializationInfo::SetmapEntryCount) {
   _VkSpecializationInfo *self = Nan::ObjectWrap::Unwrap<_VkSpecializationInfo>(info.This());
-  self->instance.mapEntryCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.mapEntryCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pMapEntries
 NAN_GETTER(_VkSpecializationInfo::GetpMapEntries) {
   _VkSpecializationInfo *self = Nan::ObjectWrap::Unwrap<_VkSpecializationInfo>(info.This());
@@ -99,7 +99,7 @@ NAN_GETTER(_VkSpecializationInfo::GetdataSize) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.dataSize));
 }NAN_SETTER(_VkSpecializationInfo::SetdataSize) {
   _VkSpecializationInfo *self = Nan::ObjectWrap::Unwrap<_VkSpecializationInfo>(info.This());
-  self->instance.dataSize = static_cast<size_t>(value->NumberValue());
+  self->instance.dataSize = static_cast<size_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pData
 NAN_GETTER(_VkSpecializationInfo::GetpData) {
   _VkSpecializationInfo *self = Nan::ObjectWrap::Unwrap<_VkSpecializationInfo>(info.This());

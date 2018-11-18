@@ -39,7 +39,7 @@ NAN_METHOD(_VkAttachmentReference::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("attachment").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("layout").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
@@ -59,12 +59,12 @@ NAN_GETTER(_VkAttachmentReference::Getattachment) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.attachment));
 }NAN_SETTER(_VkAttachmentReference::Setattachment) {
   _VkAttachmentReference *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference>(info.This());
-  self->instance.attachment = static_cast<uint32_t>(value->NumberValue());
+  self->instance.attachment = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// layout
 NAN_GETTER(_VkAttachmentReference::Getlayout) {
   _VkAttachmentReference *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.layout));
 }NAN_SETTER(_VkAttachmentReference::Setlayout) {
   _VkAttachmentReference *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference>(info.This());
-  self->instance.layout = static_cast<VkImageLayout>((int32_t)value->NumberValue());
+  self->instance.layout = static_cast<VkImageLayout>(Nan::To<int32_t>(value).FromMaybe(0));
 }

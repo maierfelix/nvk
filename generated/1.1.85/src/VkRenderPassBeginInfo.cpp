@@ -44,7 +44,7 @@ NAN_METHOD(_VkRenderPassBeginInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("renderPass").ToLocalChecked();
@@ -74,7 +74,7 @@ NAN_GETTER(_VkRenderPassBeginInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkRenderPassBeginInfo::SetsType) {
   _VkRenderPassBeginInfo *self = Nan::ObjectWrap::Unwrap<_VkRenderPassBeginInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkRenderPassBeginInfo::GetpNext) {
   _VkRenderPassBeginInfo *self = Nan::ObjectWrap::Unwrap<_VkRenderPassBeginInfo>(info.This());
@@ -93,14 +93,14 @@ NAN_GETTER(_VkRenderPassBeginInfo::GetrenderPass) {
   _VkRenderPassBeginInfo *self = Nan::ObjectWrap::Unwrap<_VkRenderPassBeginInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->renderPass = obj;
   } else {
     //self->renderPass = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkRenderPass* obj = Nan::ObjectWrap::Unwrap<_VkRenderPass>(value->ToObject());
+    _VkRenderPass* obj = Nan::ObjectWrap::Unwrap<_VkRenderPass>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.renderPass = obj->instance;
   } else {
     self->instance.renderPass = VK_NULL_HANDLE;
@@ -118,14 +118,14 @@ NAN_GETTER(_VkRenderPassBeginInfo::Getframebuffer) {
   _VkRenderPassBeginInfo *self = Nan::ObjectWrap::Unwrap<_VkRenderPassBeginInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->framebuffer = obj;
   } else {
     //self->framebuffer = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkFramebuffer* obj = Nan::ObjectWrap::Unwrap<_VkFramebuffer>(value->ToObject());
+    _VkFramebuffer* obj = Nan::ObjectWrap::Unwrap<_VkFramebuffer>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.framebuffer = obj->instance;
   } else {
     self->instance.framebuffer = VK_NULL_HANDLE;
@@ -143,14 +143,14 @@ NAN_GETTER(_VkRenderPassBeginInfo::GetrenderArea) {
   _VkRenderPassBeginInfo *self = Nan::ObjectWrap::Unwrap<_VkRenderPassBeginInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->renderArea = obj;
   } else {
     //self->renderArea = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkRect2D* obj = Nan::ObjectWrap::Unwrap<_VkRect2D>(value->ToObject());
+    _VkRect2D* obj = Nan::ObjectWrap::Unwrap<_VkRect2D>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.renderArea = obj->instance;
   } else {
     memset(&self->instance.renderArea, 0, sizeof(VkRect2D));
@@ -161,7 +161,7 @@ NAN_GETTER(_VkRenderPassBeginInfo::GetclearValueCount) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.clearValueCount));
 }NAN_SETTER(_VkRenderPassBeginInfo::SetclearValueCount) {
   _VkRenderPassBeginInfo *self = Nan::ObjectWrap::Unwrap<_VkRenderPassBeginInfo>(info.This());
-  self->instance.clearValueCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.clearValueCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pClearValues
 NAN_GETTER(_VkRenderPassBeginInfo::GetpClearValues) {
   _VkRenderPassBeginInfo *self = Nan::ObjectWrap::Unwrap<_VkRenderPassBeginInfo>(info.This());

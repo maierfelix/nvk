@@ -21,7 +21,7 @@ void _vkCreateInstance(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkInstanceCreateInfo* obj0;
   VkInstanceCreateInfo *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkInstanceCreateInfo>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkInstanceCreateInfo>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = nullptr;
@@ -31,7 +31,7 @@ void _vkCreateInstance(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkInstance* obj2;
   VkInstance *$p2;
   if (!(info[2]->IsNull())) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkInstance>(info[2]->ToObject());
+    obj2 = Nan::ObjectWrap::Unwrap<_VkInstance>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
     $p2 = &obj2->instance;
   } else {
     $p2 = VK_NULL_HANDLE;
@@ -49,7 +49,7 @@ void _vkEnumeratePhysicalDevices(const Nan::FunctionCallbackInfo<v8::Value>& inf
   _VkInstance* obj0;
   VkInstance *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -58,8 +58,9 @@ void _vkEnumeratePhysicalDevices(const Nan::FunctionCallbackInfo<v8::Value>& inf
   v8::Local<v8::Object> obj1;
   uint32_t $p1;
   if (!(info[1]->IsNull())) {
-    obj1 = info[1]->ToObject();
-    $p1 = static_cast<uint32_t>(obj1->Get(Nan::New("$").ToLocalChecked())->NumberValue());
+    obj1 = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    v8::Local<v8::Value> val = obj1->Get(Nan::New("$").ToLocalChecked());
+    $p1 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   }
 
   VkPhysicalDevice *$p2 = nullptr;
@@ -83,7 +84,7 @@ void _vkGetPhysicalDeviceProperties(const Nan::FunctionCallbackInfo<v8::Value>& 
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -92,7 +93,7 @@ void _vkGetPhysicalDeviceProperties(const Nan::FunctionCallbackInfo<v8::Value>& 
   _VkPhysicalDeviceProperties* obj1;
   VkPhysicalDeviceProperties *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceProperties>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceProperties>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = nullptr;
@@ -197,7 +198,7 @@ void _vkGetPhysicalDeviceQueueFamilyProperties(const Nan::FunctionCallbackInfo<v
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -206,8 +207,9 @@ void _vkGetPhysicalDeviceQueueFamilyProperties(const Nan::FunctionCallbackInfo<v
   v8::Local<v8::Object> obj1;
   uint32_t $p1;
   if (!(info[1]->IsNull())) {
-    obj1 = info[1]->ToObject();
-    $p1 = static_cast<uint32_t>(obj1->Get(Nan::New("$").ToLocalChecked())->NumberValue());
+    obj1 = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    v8::Local<v8::Value> val = obj1->Get(Nan::New("$").ToLocalChecked());
+    $p1 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   }
 
   VkQueueFamilyProperties *$p2 = nullptr;
@@ -227,7 +229,7 @@ void _vkGetPhysicalDeviceQueueFamilyProperties(const Nan::FunctionCallbackInfo<v
     v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[2]);
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
-      v8::Local<v8::Object> obj = item->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(item).ToLocalChecked();
       _VkQueueFamilyProperties* result = Nan::ObjectWrap::Unwrap<_VkQueueFamilyProperties>(obj);
       VkQueueFamilyProperties *instance = &result->instance;
       VkQueueFamilyProperties *copy = &$p2[ii];
@@ -253,7 +255,7 @@ void _vkGetPhysicalDeviceMemoryProperties(const Nan::FunctionCallbackInfo<v8::Va
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -262,7 +264,7 @@ void _vkGetPhysicalDeviceMemoryProperties(const Nan::FunctionCallbackInfo<v8::Va
   _VkPhysicalDeviceMemoryProperties* obj1;
   VkPhysicalDeviceMemoryProperties *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceMemoryProperties>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceMemoryProperties>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = nullptr;
@@ -309,7 +311,7 @@ void _vkGetPhysicalDeviceFeatures(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -318,7 +320,7 @@ void _vkGetPhysicalDeviceFeatures(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkPhysicalDeviceFeatures* obj1;
   VkPhysicalDeviceFeatures *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = nullptr;
@@ -337,7 +339,7 @@ void _vkCreateDevice(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -346,7 +348,7 @@ void _vkCreateDevice(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDeviceCreateInfo* obj1;
   VkDeviceCreateInfo *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = nullptr;
@@ -356,7 +358,7 @@ void _vkCreateDevice(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj3;
   VkDevice *$p3;
   if (!(info[3]->IsNull())) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[3]->ToObject());
+    obj3 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
     $p3 = &obj3->instance;
   } else {
     $p3 = VK_NULL_HANDLE;
@@ -375,8 +377,9 @@ void _vkEnumerateInstanceLayerProperties(const Nan::FunctionCallbackInfo<v8::Val
   v8::Local<v8::Object> obj0;
   uint32_t $p0;
   if (!(info[0]->IsNull())) {
-    obj0 = info[0]->ToObject();
-    $p0 = static_cast<uint32_t>(obj0->Get(Nan::New("$").ToLocalChecked())->NumberValue());
+    obj0 = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    v8::Local<v8::Value> val = obj0->Get(Nan::New("$").ToLocalChecked());
+    $p0 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   }
 
   VkLayerProperties *$p1 = nullptr;
@@ -395,7 +398,7 @@ void _vkEnumerateInstanceLayerProperties(const Nan::FunctionCallbackInfo<v8::Val
     v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[1]);
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
-      v8::Local<v8::Object> obj = item->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(item).ToLocalChecked();
       _VkLayerProperties* result = Nan::ObjectWrap::Unwrap<_VkLayerProperties>(obj);
       VkLayerProperties *instance = &result->instance;
       VkLayerProperties *copy = &$p1[ii];
@@ -424,20 +427,20 @@ void _vkGetDeviceQueue(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
   }
 
-  uint32_t $p1 = static_cast<uint32_t>(info[1]->NumberValue());
+  uint32_t $p1 = static_cast<uint32_t>(Nan::To<int64_t>(info[1]).FromMaybe(0));
 
-  uint32_t $p2 = static_cast<uint32_t>(info[2]->NumberValue());
+  uint32_t $p2 = static_cast<uint32_t>(Nan::To<int64_t>(info[2]).FromMaybe(0));
 
   _VkQueue* obj3;
   VkQueue *$p3;
   if (!(info[3]->IsNull())) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkQueue>(info[3]->ToObject());
+    obj3 = Nan::ObjectWrap::Unwrap<_VkQueue>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
     $p3 = &obj3->instance;
   } else {
     $p3 = VK_NULL_HANDLE;
@@ -458,13 +461,13 @@ void _vkQueueSubmit(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkQueue* obj0;
   VkQueue *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkQueue>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkQueue>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
   }
 
-  uint32_t $p1 = static_cast<uint32_t>(info[1]->NumberValue());
+  uint32_t $p1 = static_cast<uint32_t>(Nan::To<int64_t>(info[1]).FromMaybe(0));
 
   VkSubmitInfo *$p2 = nullptr;
 
@@ -477,7 +480,7 @@ void _vkQueueSubmit(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkFence* obj3;
   VkFence *$p3;
   if (!(info[3]->IsNull())) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkFence>(info[3]->ToObject());
+    obj3 = Nan::ObjectWrap::Unwrap<_VkFence>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
     $p3 = &obj3->instance;
   } else {
     $p3 = VK_NULL_HANDLE;
@@ -496,7 +499,7 @@ void _vkQueueWaitIdle(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkQueue* obj0;
   VkQueue *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkQueue>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkQueue>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -512,7 +515,7 @@ void _vkDeviceWaitIdle(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -528,7 +531,7 @@ void _vkAllocateMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -537,7 +540,7 @@ void _vkAllocateMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkMemoryAllocateInfo* obj1;
   VkMemoryAllocateInfo *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkMemoryAllocateInfo>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkMemoryAllocateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = nullptr;
@@ -547,7 +550,7 @@ void _vkAllocateMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDeviceMemory* obj3;
   VkDeviceMemory *$p3;
   if (!(info[3]->IsNull())) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(info[3]->ToObject());
+    obj3 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
     $p3 = &obj3->instance;
   } else {
     $p3 = VK_NULL_HANDLE;
@@ -566,7 +569,7 @@ void _vkMapMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -575,19 +578,19 @@ void _vkMapMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDeviceMemory* obj1;
   VkDeviceMemory *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
   }
 
-  uint64_t $p2 = static_cast<uint64_t>(info[2]->NumberValue());
+  uint64_t $p2 = static_cast<uint64_t>(Nan::To<int64_t>(info[2]).FromMaybe(0));
 
-  uint64_t $p3 = static_cast<uint64_t>(info[3]->NumberValue());
+  uint64_t $p3 = static_cast<uint64_t>(Nan::To<int64_t>(info[3]).FromMaybe(0));
 
-  int32_t $p4 = static_cast<int32_t>(info[4]->NumberValue());
+  int32_t $p4 = static_cast<int32_t>(Nan::To<int64_t>(info[4]).FromMaybe(0));
 
-  v8::Local<v8::Object> obj5 = info[5]->ToObject();
+  v8::Local<v8::Object> obj5 = Nan::To<v8::Object>(info[5]).ToLocalChecked();
   void *$p5;
   int32_t out = vkMapMemory(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -607,7 +610,7 @@ void _vkUnmapMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -616,7 +619,7 @@ void _vkUnmapMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDeviceMemory* obj1;
   VkDeviceMemory *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
@@ -635,7 +638,7 @@ void _vkGetBufferMemoryRequirements(const Nan::FunctionCallbackInfo<v8::Value>& 
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -644,7 +647,7 @@ void _vkGetBufferMemoryRequirements(const Nan::FunctionCallbackInfo<v8::Value>& 
   _VkBuffer* obj1;
   VkBuffer *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
@@ -653,7 +656,7 @@ void _vkGetBufferMemoryRequirements(const Nan::FunctionCallbackInfo<v8::Value>& 
   _VkMemoryRequirements* obj2;
   VkMemoryRequirements *$p2;
   if (!(info[2]->IsNull())) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkMemoryRequirements>(info[2]->ToObject());
+    obj2 = Nan::ObjectWrap::Unwrap<_VkMemoryRequirements>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
     $p2 = &obj2->instance;
   } else {
     $p2 = nullptr;
@@ -673,7 +676,7 @@ void _vkBindBufferMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -682,7 +685,7 @@ void _vkBindBufferMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBuffer* obj1;
   VkBuffer *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
@@ -691,13 +694,13 @@ void _vkBindBufferMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDeviceMemory* obj2;
   VkDeviceMemory *$p2;
   if (!(info[2]->IsNull())) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(info[2]->ToObject());
+    obj2 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
     $p2 = &obj2->instance;
   } else {
     $p2 = VK_NULL_HANDLE;
   }
 
-  uint64_t $p3 = static_cast<uint64_t>(info[3]->NumberValue());
+  uint64_t $p3 = static_cast<uint64_t>(Nan::To<int64_t>(info[3]).FromMaybe(0));
   int32_t out = vkBindBufferMemory(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -712,7 +715,7 @@ void _vkGetImageMemoryRequirements(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -721,7 +724,7 @@ void _vkGetImageMemoryRequirements(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkImage* obj1;
   VkImage *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
@@ -730,7 +733,7 @@ void _vkGetImageMemoryRequirements(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkMemoryRequirements* obj2;
   VkMemoryRequirements *$p2;
   if (!(info[2]->IsNull())) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkMemoryRequirements>(info[2]->ToObject());
+    obj2 = Nan::ObjectWrap::Unwrap<_VkMemoryRequirements>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
     $p2 = &obj2->instance;
   } else {
     $p2 = nullptr;
@@ -750,7 +753,7 @@ void _vkBindImageMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -759,7 +762,7 @@ void _vkBindImageMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImage* obj1;
   VkImage *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
@@ -768,13 +771,13 @@ void _vkBindImageMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDeviceMemory* obj2;
   VkDeviceMemory *$p2;
   if (!(info[2]->IsNull())) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(info[2]->ToObject());
+    obj2 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
     $p2 = &obj2->instance;
   } else {
     $p2 = VK_NULL_HANDLE;
   }
 
-  uint64_t $p3 = static_cast<uint64_t>(info[3]->NumberValue());
+  uint64_t $p3 = static_cast<uint64_t>(Nan::To<int64_t>(info[3]).FromMaybe(0));
   int32_t out = vkBindImageMemory(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -789,7 +792,7 @@ void _vkCreateSemaphore(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -798,7 +801,7 @@ void _vkCreateSemaphore(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkSemaphoreCreateInfo* obj1;
   VkSemaphoreCreateInfo *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSemaphoreCreateInfo>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSemaphoreCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = nullptr;
@@ -808,7 +811,7 @@ void _vkCreateSemaphore(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkSemaphore* obj3;
   VkSemaphore *$p3;
   if (!(info[3]->IsNull())) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkSemaphore>(info[3]->ToObject());
+    obj3 = Nan::ObjectWrap::Unwrap<_VkSemaphore>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
     $p3 = &obj3->instance;
   } else {
     $p3 = VK_NULL_HANDLE;
@@ -827,7 +830,7 @@ void _vkCreateBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -836,7 +839,7 @@ void _vkCreateBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBufferCreateInfo* obj1;
   VkBufferCreateInfo *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = nullptr;
@@ -846,7 +849,7 @@ void _vkCreateBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBuffer* obj3;
   VkBuffer *$p3;
   if (!(info[3]->IsNull())) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkBuffer>(info[3]->ToObject());
+    obj3 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
     $p3 = &obj3->instance;
   } else {
     $p3 = VK_NULL_HANDLE;
@@ -865,7 +868,7 @@ void _vkCreateImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -874,7 +877,7 @@ void _vkCreateImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImageCreateInfo* obj1;
   VkImageCreateInfo *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = nullptr;
@@ -884,7 +887,7 @@ void _vkCreateImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImage* obj3;
   VkImage *$p3;
   if (!(info[3]->IsNull())) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkImage>(info[3]->ToObject());
+    obj3 = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
     $p3 = &obj3->instance;
   } else {
     $p3 = VK_NULL_HANDLE;
@@ -903,7 +906,7 @@ void _vkGetImageSubresourceLayout(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -912,7 +915,7 @@ void _vkGetImageSubresourceLayout(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkImage* obj1;
   VkImage *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
@@ -921,7 +924,7 @@ void _vkGetImageSubresourceLayout(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkImageSubresource* obj2;
   VkImageSubresource *$p2;
   if (!(info[2]->IsNull())) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkImageSubresource>(info[2]->ToObject());
+    obj2 = Nan::ObjectWrap::Unwrap<_VkImageSubresource>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
     $p2 = &obj2->instance;
   } else {
     $p2 = nullptr;
@@ -930,7 +933,7 @@ void _vkGetImageSubresourceLayout(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkSubresourceLayout* obj3;
   VkSubresourceLayout *$p3;
   if (!(info[3]->IsNull())) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkSubresourceLayout>(info[3]->ToObject());
+    obj3 = Nan::ObjectWrap::Unwrap<_VkSubresourceLayout>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
     $p3 = &obj3->instance;
   } else {
     $p3 = nullptr;
@@ -951,7 +954,7 @@ void _vkCreateImageView(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -960,7 +963,7 @@ void _vkCreateImageView(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImageViewCreateInfo* obj1;
   VkImageViewCreateInfo *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImageViewCreateInfo>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImageViewCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = nullptr;
@@ -970,7 +973,7 @@ void _vkCreateImageView(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImageView* obj3;
   VkImageView *$p3;
   if (!(info[3]->IsNull())) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkImageView>(info[3]->ToObject());
+    obj3 = Nan::ObjectWrap::Unwrap<_VkImageView>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
     $p3 = &obj3->instance;
   } else {
     $p3 = VK_NULL_HANDLE;
@@ -989,7 +992,7 @@ void _vkDestroyImageView(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -998,7 +1001,7 @@ void _vkDestroyImageView(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImageView* obj1;
   VkImageView *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImageView>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImageView>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
@@ -1019,7 +1022,7 @@ void _vkCreateShaderModule(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -1028,7 +1031,7 @@ void _vkCreateShaderModule(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkShaderModuleCreateInfo* obj1;
   VkShaderModuleCreateInfo *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkShaderModuleCreateInfo>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkShaderModuleCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = nullptr;
@@ -1038,7 +1041,7 @@ void _vkCreateShaderModule(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkShaderModule* obj3;
   VkShaderModule *$p3;
   if (!(info[3]->IsNull())) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkShaderModule>(info[3]->ToObject());
+    obj3 = Nan::ObjectWrap::Unwrap<_VkShaderModule>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
     $p3 = &obj3->instance;
   } else {
     $p3 = VK_NULL_HANDLE;
@@ -1057,7 +1060,7 @@ void _vkDestroyShaderModule(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -1066,7 +1069,7 @@ void _vkDestroyShaderModule(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkShaderModule* obj1;
   VkShaderModule *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkShaderModule>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkShaderModule>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
@@ -1087,7 +1090,7 @@ void _vkCreateGraphicsPipelines(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -1096,13 +1099,13 @@ void _vkCreateGraphicsPipelines(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkPipelineCache* obj1;
   VkPipelineCache *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineCache>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineCache>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
   }
 
-  uint32_t $p2 = static_cast<uint32_t>(info[2]->NumberValue());
+  uint32_t $p2 = static_cast<uint32_t>(Nan::To<int64_t>(info[2]).FromMaybe(0));
 
   VkGraphicsPipelineCreateInfo *$p3 = nullptr;
 
@@ -1132,7 +1135,7 @@ void _vkCreateGraphicsPipelines(const Nan::FunctionCallbackInfo<v8::Value>& info
     v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[5]);
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
-      _VkPipeline* target = Nan::ObjectWrap::Unwrap<_VkPipeline>(item->ToObject());
+      _VkPipeline* target = Nan::ObjectWrap::Unwrap<_VkPipeline>(Nan::To<v8::Object>(item).ToLocalChecked());
       target->instance = $p5[ii];
     };
     delete[] $p5;
@@ -1145,7 +1148,7 @@ void _vkDestroyPipeline(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -1154,7 +1157,7 @@ void _vkDestroyPipeline(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkPipeline* obj1;
   VkPipeline *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPipeline>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPipeline>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
@@ -1175,7 +1178,7 @@ void _vkCreatePipelineLayout(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -1184,7 +1187,7 @@ void _vkCreatePipelineLayout(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkPipelineLayoutCreateInfo* obj1;
   VkPipelineLayoutCreateInfo *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineLayoutCreateInfo>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineLayoutCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = nullptr;
@@ -1194,7 +1197,7 @@ void _vkCreatePipelineLayout(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkPipelineLayout* obj3;
   VkPipelineLayout *$p3;
   if (!(info[3]->IsNull())) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkPipelineLayout>(info[3]->ToObject());
+    obj3 = Nan::ObjectWrap::Unwrap<_VkPipelineLayout>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
     $p3 = &obj3->instance;
   } else {
     $p3 = VK_NULL_HANDLE;
@@ -1213,7 +1216,7 @@ void _vkDestroyPipelineLayout(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -1222,7 +1225,7 @@ void _vkDestroyPipelineLayout(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkPipelineLayout* obj1;
   VkPipelineLayout *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineLayout>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineLayout>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
@@ -1243,7 +1246,7 @@ void _vkCreateSampler(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -1252,7 +1255,7 @@ void _vkCreateSampler(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkSamplerCreateInfo* obj1;
   VkSamplerCreateInfo *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = nullptr;
@@ -1262,7 +1265,7 @@ void _vkCreateSampler(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkSampler* obj3;
   VkSampler *$p3;
   if (!(info[3]->IsNull())) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkSampler>(info[3]->ToObject());
+    obj3 = Nan::ObjectWrap::Unwrap<_VkSampler>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
     $p3 = &obj3->instance;
   } else {
     $p3 = VK_NULL_HANDLE;
@@ -1281,7 +1284,7 @@ void _vkCreateDescriptorSetLayout(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -1290,7 +1293,7 @@ void _vkCreateDescriptorSetLayout(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkDescriptorSetLayoutCreateInfo* obj1;
   VkDescriptorSetLayoutCreateInfo *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutCreateInfo>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = nullptr;
@@ -1300,7 +1303,7 @@ void _vkCreateDescriptorSetLayout(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkDescriptorSetLayout* obj3;
   VkDescriptorSetLayout *$p3;
   if (!(info[3]->IsNull())) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayout>(info[3]->ToObject());
+    obj3 = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayout>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
     $p3 = &obj3->instance;
   } else {
     $p3 = VK_NULL_HANDLE;
@@ -1319,7 +1322,7 @@ void _vkCreateDescriptorPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -1328,7 +1331,7 @@ void _vkCreateDescriptorPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDescriptorPoolCreateInfo* obj1;
   VkDescriptorPoolCreateInfo *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorPoolCreateInfo>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorPoolCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = nullptr;
@@ -1338,7 +1341,7 @@ void _vkCreateDescriptorPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDescriptorPool* obj3;
   VkDescriptorPool *$p3;
   if (!(info[3]->IsNull())) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkDescriptorPool>(info[3]->ToObject());
+    obj3 = Nan::ObjectWrap::Unwrap<_VkDescriptorPool>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
     $p3 = &obj3->instance;
   } else {
     $p3 = VK_NULL_HANDLE;
@@ -1357,7 +1360,7 @@ void _vkAllocateDescriptorSets(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -1366,7 +1369,7 @@ void _vkAllocateDescriptorSets(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkDescriptorSetAllocateInfo* obj1;
   VkDescriptorSetAllocateInfo *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorSetAllocateInfo>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorSetAllocateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = nullptr;
@@ -1388,7 +1391,7 @@ void _vkAllocateDescriptorSets(const Nan::FunctionCallbackInfo<v8::Value>& info)
     v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[2]);
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
-      _VkDescriptorSet* target = Nan::ObjectWrap::Unwrap<_VkDescriptorSet>(item->ToObject());
+      _VkDescriptorSet* target = Nan::ObjectWrap::Unwrap<_VkDescriptorSet>(Nan::To<v8::Object>(item).ToLocalChecked());
       target->instance = $p2[ii];
     };
     delete[] $p2;
@@ -1401,13 +1404,13 @@ void _vkUpdateDescriptorSets(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
   }
 
-  uint32_t $p1 = static_cast<uint32_t>(info[1]->NumberValue());
+  uint32_t $p1 = static_cast<uint32_t>(Nan::To<int64_t>(info[1]).FromMaybe(0));
 
   VkWriteDescriptorSet *$p2 = nullptr;
 
@@ -1417,7 +1420,7 @@ void _vkUpdateDescriptorSets(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   }
 
 
-  uint32_t $p3 = static_cast<uint32_t>(info[3]->NumberValue());
+  uint32_t $p3 = static_cast<uint32_t>(Nan::To<int64_t>(info[3]).FromMaybe(0));
 
   VkCopyDescriptorSet *$p4 = nullptr;
 
@@ -1443,7 +1446,7 @@ void _vkCreateFramebuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -1452,7 +1455,7 @@ void _vkCreateFramebuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkFramebufferCreateInfo* obj1;
   VkFramebufferCreateInfo *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkFramebufferCreateInfo>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkFramebufferCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = nullptr;
@@ -1462,7 +1465,7 @@ void _vkCreateFramebuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkFramebuffer* obj3;
   VkFramebuffer *$p3;
   if (!(info[3]->IsNull())) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkFramebuffer>(info[3]->ToObject());
+    obj3 = Nan::ObjectWrap::Unwrap<_VkFramebuffer>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
     $p3 = &obj3->instance;
   } else {
     $p3 = VK_NULL_HANDLE;
@@ -1481,7 +1484,7 @@ void _vkDestroyFramebuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -1490,7 +1493,7 @@ void _vkDestroyFramebuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkFramebuffer* obj1;
   VkFramebuffer *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkFramebuffer>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkFramebuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
@@ -1511,7 +1514,7 @@ void _vkCreateRenderPass(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -1520,7 +1523,7 @@ void _vkCreateRenderPass(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkRenderPassCreateInfo* obj1;
   VkRenderPassCreateInfo *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkRenderPassCreateInfo>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkRenderPassCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = nullptr;
@@ -1530,7 +1533,7 @@ void _vkCreateRenderPass(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkRenderPass* obj3;
   VkRenderPass *$p3;
   if (!(info[3]->IsNull())) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkRenderPass>(info[3]->ToObject());
+    obj3 = Nan::ObjectWrap::Unwrap<_VkRenderPass>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
     $p3 = &obj3->instance;
   } else {
     $p3 = VK_NULL_HANDLE;
@@ -1549,7 +1552,7 @@ void _vkDestroyRenderPass(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -1558,7 +1561,7 @@ void _vkDestroyRenderPass(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkRenderPass* obj1;
   VkRenderPass *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkRenderPass>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkRenderPass>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
@@ -1579,7 +1582,7 @@ void _vkCreateCommandPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -1588,7 +1591,7 @@ void _vkCreateCommandPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandPoolCreateInfo* obj1;
   VkCommandPoolCreateInfo *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkCommandPoolCreateInfo>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkCommandPoolCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = nullptr;
@@ -1598,7 +1601,7 @@ void _vkCreateCommandPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandPool* obj3;
   VkCommandPool *$p3;
   if (!(info[3]->IsNull())) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkCommandPool>(info[3]->ToObject());
+    obj3 = Nan::ObjectWrap::Unwrap<_VkCommandPool>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
     $p3 = &obj3->instance;
   } else {
     $p3 = VK_NULL_HANDLE;
@@ -1617,7 +1620,7 @@ void _vkDestroyCommandPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -1626,7 +1629,7 @@ void _vkDestroyCommandPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandPool* obj1;
   VkCommandPool *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkCommandPool>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkCommandPool>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
@@ -1647,7 +1650,7 @@ void _vkAllocateCommandBuffers(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -1656,7 +1659,7 @@ void _vkAllocateCommandBuffers(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkCommandBufferAllocateInfo* obj1;
   VkCommandBufferAllocateInfo *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkCommandBufferAllocateInfo>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkCommandBufferAllocateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = nullptr;
@@ -1678,7 +1681,7 @@ void _vkAllocateCommandBuffers(const Nan::FunctionCallbackInfo<v8::Value>& info)
     v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[2]);
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
-      _VkCommandBuffer* target = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(item->ToObject());
+      _VkCommandBuffer* target = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(item).ToLocalChecked());
       target->instance = $p2[ii];
     };
     delete[] $p2;
@@ -1691,7 +1694,7 @@ void _vkFreeCommandBuffers(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -1700,13 +1703,13 @@ void _vkFreeCommandBuffers(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandPool* obj1;
   VkCommandPool *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkCommandPool>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkCommandPool>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
   }
 
-  uint32_t $p2 = static_cast<uint32_t>(info[2]->NumberValue());
+  uint32_t $p2 = static_cast<uint32_t>(Nan::To<int64_t>(info[2]).FromMaybe(0));
 
   VkCommandBuffer *$p3 = nullptr;
 
@@ -1731,7 +1734,7 @@ void _vkBeginCommandBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -1740,7 +1743,7 @@ void _vkBeginCommandBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBufferBeginInfo* obj1;
   VkCommandBufferBeginInfo *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkCommandBufferBeginInfo>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkCommandBufferBeginInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = nullptr;
@@ -1757,7 +1760,7 @@ void _vkEndCommandBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -1773,18 +1776,18 @@ void _vkCmdBindPipeline(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
   }
 
-  VkPipelineBindPoint $p1 = static_cast<VkPipelineBindPoint>(info[1]->Uint32Value());
+  VkPipelineBindPoint $p1 = static_cast<VkPipelineBindPoint>(Nan::To<int64_t>(info[1]).FromMaybe(0));
 
   _VkPipeline* obj2;
   VkPipeline *$p2;
   if (!(info[2]->IsNull())) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkPipeline>(info[2]->ToObject());
+    obj2 = Nan::ObjectWrap::Unwrap<_VkPipeline>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
     $p2 = &obj2->instance;
   } else {
     $p2 = VK_NULL_HANDLE;
@@ -1804,15 +1807,15 @@ void _vkCmdSetViewport(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
   }
 
-  uint32_t $p1 = static_cast<uint32_t>(info[1]->NumberValue());
+  uint32_t $p1 = static_cast<uint32_t>(Nan::To<int64_t>(info[1]).FromMaybe(0));
 
-  uint32_t $p2 = static_cast<uint32_t>(info[2]->NumberValue());
+  uint32_t $p2 = static_cast<uint32_t>(Nan::To<int64_t>(info[2]).FromMaybe(0));
 
   VkViewport *$p3 = nullptr;
 
@@ -1837,15 +1840,15 @@ void _vkCmdSetScissor(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
   }
 
-  uint32_t $p1 = static_cast<uint32_t>(info[1]->NumberValue());
+  uint32_t $p1 = static_cast<uint32_t>(Nan::To<int64_t>(info[1]).FromMaybe(0));
 
-  uint32_t $p2 = static_cast<uint32_t>(info[2]->NumberValue());
+  uint32_t $p2 = static_cast<uint32_t>(Nan::To<int64_t>(info[2]).FromMaybe(0));
 
   VkRect2D *$p3 = nullptr;
 
@@ -1870,26 +1873,26 @@ void _vkCmdBindDescriptorSets(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
   }
 
-  VkPipelineBindPoint $p1 = static_cast<VkPipelineBindPoint>(info[1]->Uint32Value());
+  VkPipelineBindPoint $p1 = static_cast<VkPipelineBindPoint>(Nan::To<int64_t>(info[1]).FromMaybe(0));
 
   _VkPipelineLayout* obj2;
   VkPipelineLayout *$p2;
   if (!(info[2]->IsNull())) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkPipelineLayout>(info[2]->ToObject());
+    obj2 = Nan::ObjectWrap::Unwrap<_VkPipelineLayout>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
     $p2 = &obj2->instance;
   } else {
     $p2 = VK_NULL_HANDLE;
   }
 
-  uint32_t $p3 = static_cast<uint32_t>(info[3]->NumberValue());
+  uint32_t $p3 = static_cast<uint32_t>(Nan::To<int64_t>(info[3]).FromMaybe(0));
 
-  uint32_t $p4 = static_cast<uint32_t>(info[4]->NumberValue());
+  uint32_t $p4 = static_cast<uint32_t>(Nan::To<int64_t>(info[4]).FromMaybe(0));
 
   VkDescriptorSet *$p5 = nullptr;
 
@@ -1899,7 +1902,7 @@ void _vkCmdBindDescriptorSets(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   }
 
 
-  uint32_t $p6 = static_cast<uint32_t>(info[6]->NumberValue());
+  uint32_t $p6 = static_cast<uint32_t>(Nan::To<int64_t>(info[6]).FromMaybe(0));
 
   uint32_t *$p7 = nullptr;
 
@@ -1928,7 +1931,7 @@ void _vkCmdBindIndexBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -1937,15 +1940,15 @@ void _vkCmdBindIndexBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBuffer* obj1;
   VkBuffer *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
   }
 
-  uint64_t $p2 = static_cast<uint64_t>(info[2]->NumberValue());
+  uint64_t $p2 = static_cast<uint64_t>(Nan::To<int64_t>(info[2]).FromMaybe(0));
 
-  VkIndexType $p3 = static_cast<VkIndexType>(info[3]->Uint32Value());
+  VkIndexType $p3 = static_cast<VkIndexType>(Nan::To<int64_t>(info[3]).FromMaybe(0));
   vkCmdBindIndexBuffer(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -1962,15 +1965,15 @@ void _vkCmdBindVertexBuffers(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
   }
 
-  uint32_t $p1 = static_cast<uint32_t>(info[1]->NumberValue());
+  uint32_t $p1 = static_cast<uint32_t>(Nan::To<int64_t>(info[1]).FromMaybe(0));
 
-  uint32_t $p2 = static_cast<uint32_t>(info[2]->NumberValue());
+  uint32_t $p2 = static_cast<uint32_t>(Nan::To<int64_t>(info[2]).FromMaybe(0));
 
   VkBuffer *$p3 = nullptr;
 
@@ -2004,19 +2007,19 @@ void _vkCmdDraw(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
   }
 
-  uint32_t $p1 = static_cast<uint32_t>(info[1]->NumberValue());
+  uint32_t $p1 = static_cast<uint32_t>(Nan::To<int64_t>(info[1]).FromMaybe(0));
 
-  uint32_t $p2 = static_cast<uint32_t>(info[2]->NumberValue());
+  uint32_t $p2 = static_cast<uint32_t>(Nan::To<int64_t>(info[2]).FromMaybe(0));
 
-  uint32_t $p3 = static_cast<uint32_t>(info[3]->NumberValue());
+  uint32_t $p3 = static_cast<uint32_t>(Nan::To<int64_t>(info[3]).FromMaybe(0));
 
-  uint32_t $p4 = static_cast<uint32_t>(info[4]->NumberValue());
+  uint32_t $p4 = static_cast<uint32_t>(Nan::To<int64_t>(info[4]).FromMaybe(0));
   vkCmdDraw(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
@@ -2034,21 +2037,21 @@ void _vkCmdDrawIndexed(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
   }
 
-  uint32_t $p1 = static_cast<uint32_t>(info[1]->NumberValue());
+  uint32_t $p1 = static_cast<uint32_t>(Nan::To<int64_t>(info[1]).FromMaybe(0));
 
-  uint32_t $p2 = static_cast<uint32_t>(info[2]->NumberValue());
+  uint32_t $p2 = static_cast<uint32_t>(Nan::To<int64_t>(info[2]).FromMaybe(0));
 
-  uint32_t $p3 = static_cast<uint32_t>(info[3]->NumberValue());
+  uint32_t $p3 = static_cast<uint32_t>(Nan::To<int64_t>(info[3]).FromMaybe(0));
 
-  int32_t $p4 = static_cast<int32_t>(info[4]->NumberValue());
+  int32_t $p4 = static_cast<int32_t>(Nan::To<int64_t>(info[4]).FromMaybe(0));
 
-  uint32_t $p5 = static_cast<uint32_t>(info[5]->NumberValue());
+  uint32_t $p5 = static_cast<uint32_t>(Nan::To<int64_t>(info[5]).FromMaybe(0));
   vkCmdDrawIndexed(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
@@ -2067,7 +2070,7 @@ void _vkCmdCopyBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -2076,7 +2079,7 @@ void _vkCmdCopyBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBuffer* obj1;
   VkBuffer *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
@@ -2085,13 +2088,13 @@ void _vkCmdCopyBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBuffer* obj2;
   VkBuffer *$p2;
   if (!(info[2]->IsNull())) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkBuffer>(info[2]->ToObject());
+    obj2 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
     $p2 = &obj2->instance;
   } else {
     $p2 = VK_NULL_HANDLE;
   }
 
-  uint32_t $p3 = static_cast<uint32_t>(info[3]->NumberValue());
+  uint32_t $p3 = static_cast<uint32_t>(Nan::To<int64_t>(info[3]).FromMaybe(0));
 
   VkBufferCopy *$p4 = nullptr;
 
@@ -2117,7 +2120,7 @@ void _vkCmdCopyBufferToImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -2126,7 +2129,7 @@ void _vkCmdCopyBufferToImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBuffer* obj1;
   VkBuffer *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
@@ -2135,15 +2138,15 @@ void _vkCmdCopyBufferToImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImage* obj2;
   VkImage *$p2;
   if (!(info[2]->IsNull())) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkImage>(info[2]->ToObject());
+    obj2 = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
     $p2 = &obj2->instance;
   } else {
     $p2 = VK_NULL_HANDLE;
   }
 
-  VkImageLayout $p3 = static_cast<VkImageLayout>(info[3]->Uint32Value());
+  VkImageLayout $p3 = static_cast<VkImageLayout>(Nan::To<int64_t>(info[3]).FromMaybe(0));
 
-  uint32_t $p4 = static_cast<uint32_t>(info[4]->NumberValue());
+  uint32_t $p4 = static_cast<uint32_t>(Nan::To<int64_t>(info[4]).FromMaybe(0));
 
   VkBufferImageCopy *$p5 = nullptr;
 
@@ -2170,19 +2173,19 @@ void _vkCmdPipelineBarrier(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
   }
 
-  int32_t $p1 = static_cast<int32_t>(info[1]->NumberValue());
+  int32_t $p1 = static_cast<int32_t>(Nan::To<int64_t>(info[1]).FromMaybe(0));
 
-  int32_t $p2 = static_cast<int32_t>(info[2]->NumberValue());
+  int32_t $p2 = static_cast<int32_t>(Nan::To<int64_t>(info[2]).FromMaybe(0));
 
-  int32_t $p3 = static_cast<int32_t>(info[3]->NumberValue());
+  int32_t $p3 = static_cast<int32_t>(Nan::To<int64_t>(info[3]).FromMaybe(0));
 
-  uint32_t $p4 = static_cast<uint32_t>(info[4]->NumberValue());
+  uint32_t $p4 = static_cast<uint32_t>(Nan::To<int64_t>(info[4]).FromMaybe(0));
 
   VkMemoryBarrier *$p5 = nullptr;
 
@@ -2192,7 +2195,7 @@ void _vkCmdPipelineBarrier(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   }
 
 
-  uint32_t $p6 = static_cast<uint32_t>(info[6]->NumberValue());
+  uint32_t $p6 = static_cast<uint32_t>(Nan::To<int64_t>(info[6]).FromMaybe(0));
 
   VkBufferMemoryBarrier *$p7 = nullptr;
 
@@ -2202,7 +2205,7 @@ void _vkCmdPipelineBarrier(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   }
 
 
-  uint32_t $p8 = static_cast<uint32_t>(info[8]->NumberValue());
+  uint32_t $p8 = static_cast<uint32_t>(Nan::To<int64_t>(info[8]).FromMaybe(0));
 
   VkImageMemoryBarrier *$p9 = nullptr;
 
@@ -2233,7 +2236,7 @@ void _vkCmdBeginRenderPass(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -2242,13 +2245,13 @@ void _vkCmdBeginRenderPass(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkRenderPassBeginInfo* obj1;
   VkRenderPassBeginInfo *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkRenderPassBeginInfo>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkRenderPassBeginInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = nullptr;
   }
 
-  VkSubpassContents $p2 = static_cast<VkSubpassContents>(info[2]->Uint32Value());
+  VkSubpassContents $p2 = static_cast<VkSubpassContents>(Nan::To<int64_t>(info[2]).FromMaybe(0));
   vkCmdBeginRenderPass(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
@@ -2264,7 +2267,7 @@ void _vkCmdEndRenderPass(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -2282,18 +2285,18 @@ void _vkGetPhysicalDeviceSurfaceSupportKHR(const Nan::FunctionCallbackInfo<v8::V
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
   }
 
-  uint32_t $p1 = static_cast<uint32_t>(info[1]->NumberValue());
+  uint32_t $p1 = static_cast<uint32_t>(Nan::To<int64_t>(info[1]).FromMaybe(0));
 
   _VkSurfaceKHR* obj2;
   VkSurfaceKHR *$p2;
   if (!(info[2]->IsNull())) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(info[2]->ToObject());
+    obj2 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
     $p2 = &obj2->instance;
   } else {
     $p2 = VK_NULL_HANDLE;
@@ -2302,8 +2305,9 @@ void _vkGetPhysicalDeviceSurfaceSupportKHR(const Nan::FunctionCallbackInfo<v8::V
   v8::Local<v8::Object> obj3;
   uint32_t $p3;
   if (!(info[3]->IsNull())) {
-    obj3 = info[3]->ToObject();
-    $p3 = static_cast<uint32_t>(obj3->Get(Nan::New("$").ToLocalChecked())->NumberValue());
+    obj3 = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    v8::Local<v8::Value> val = obj3->Get(Nan::New("$").ToLocalChecked());
+    $p3 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   }
   int32_t out = vkGetPhysicalDeviceSurfaceSupportKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -2320,7 +2324,7 @@ void _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Nan::FunctionCallbackInfo<
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -2329,7 +2333,7 @@ void _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Nan::FunctionCallbackInfo<
   _VkSurfaceKHR* obj1;
   VkSurfaceKHR *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
@@ -2338,7 +2342,7 @@ void _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Nan::FunctionCallbackInfo<
   _VkSurfaceCapabilitiesKHR* obj2;
   VkSurfaceCapabilitiesKHR *$p2;
   if (!(info[2]->IsNull())) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkSurfaceCapabilitiesKHR>(info[2]->ToObject());
+    obj2 = Nan::ObjectWrap::Unwrap<_VkSurfaceCapabilitiesKHR>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
     $p2 = &obj2->instance;
   } else {
     $p2 = nullptr;
@@ -2383,7 +2387,7 @@ void _vkGetPhysicalDeviceSurfaceFormatsKHR(const Nan::FunctionCallbackInfo<v8::V
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -2392,7 +2396,7 @@ void _vkGetPhysicalDeviceSurfaceFormatsKHR(const Nan::FunctionCallbackInfo<v8::V
   _VkSurfaceKHR* obj1;
   VkSurfaceKHR *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
@@ -2401,8 +2405,9 @@ void _vkGetPhysicalDeviceSurfaceFormatsKHR(const Nan::FunctionCallbackInfo<v8::V
   v8::Local<v8::Object> obj2;
   uint32_t $p2;
   if (!(info[2]->IsNull())) {
-    obj2 = info[2]->ToObject();
-    $p2 = static_cast<uint32_t>(obj2->Get(Nan::New("$").ToLocalChecked())->NumberValue());
+    obj2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    v8::Local<v8::Value> val = obj2->Get(Nan::New("$").ToLocalChecked());
+    $p2 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   }
 
   VkSurfaceFormatKHR *$p3 = nullptr;
@@ -2423,7 +2428,7 @@ void _vkGetPhysicalDeviceSurfaceFormatsKHR(const Nan::FunctionCallbackInfo<v8::V
     v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[3]);
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
-      v8::Local<v8::Object> obj = item->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(item).ToLocalChecked();
       _VkSurfaceFormatKHR* result = Nan::ObjectWrap::Unwrap<_VkSurfaceFormatKHR>(obj);
       VkSurfaceFormatKHR *instance = &result->instance;
       VkSurfaceFormatKHR *copy = &$p3[ii];
@@ -2438,7 +2443,7 @@ void _vkGetPhysicalDeviceSurfacePresentModesKHR(const Nan::FunctionCallbackInfo<
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -2447,7 +2452,7 @@ void _vkGetPhysicalDeviceSurfacePresentModesKHR(const Nan::FunctionCallbackInfo<
   _VkSurfaceKHR* obj1;
   VkSurfaceKHR *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
@@ -2456,8 +2461,9 @@ void _vkGetPhysicalDeviceSurfacePresentModesKHR(const Nan::FunctionCallbackInfo<
   v8::Local<v8::Object> obj2;
   uint32_t $p2;
   if (!(info[2]->IsNull())) {
-    obj2 = info[2]->ToObject();
-    $p2 = static_cast<uint32_t>(obj2->Get(Nan::New("$").ToLocalChecked())->NumberValue());
+    obj2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    v8::Local<v8::Value> val = obj2->Get(Nan::New("$").ToLocalChecked());
+    $p2 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   }
 
   VkPresentModeKHR *$p3 = nullptr;
@@ -2491,7 +2497,7 @@ void _vkCreateSwapchainKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -2500,7 +2506,7 @@ void _vkCreateSwapchainKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkSwapchainCreateInfoKHR* obj1;
   VkSwapchainCreateInfoKHR *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = nullptr;
@@ -2510,7 +2516,7 @@ void _vkCreateSwapchainKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkSwapchainKHR* obj3;
   VkSwapchainKHR *$p3;
   if (!(info[3]->IsNull())) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(info[3]->ToObject());
+    obj3 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
     $p3 = &obj3->instance;
   } else {
     $p3 = VK_NULL_HANDLE;
@@ -2529,7 +2535,7 @@ void _vkDestroySwapchainKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -2538,7 +2544,7 @@ void _vkDestroySwapchainKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkSwapchainKHR* obj1;
   VkSwapchainKHR *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
@@ -2559,7 +2565,7 @@ void _vkGetSwapchainImagesKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -2568,7 +2574,7 @@ void _vkGetSwapchainImagesKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkSwapchainKHR* obj1;
   VkSwapchainKHR *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
@@ -2577,8 +2583,9 @@ void _vkGetSwapchainImagesKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   v8::Local<v8::Object> obj2;
   uint32_t $p2;
   if (!(info[2]->IsNull())) {
-    obj2 = info[2]->ToObject();
-    $p2 = static_cast<uint32_t>(obj2->Get(Nan::New("$").ToLocalChecked())->NumberValue());
+    obj2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    v8::Local<v8::Value> val = obj2->Get(Nan::New("$").ToLocalChecked());
+    $p2 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   }
 
   VkImage *$p3 = nullptr;
@@ -2599,7 +2606,7 @@ void _vkGetSwapchainImagesKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) 
     v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[3]);
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
-      _VkImage* target = Nan::ObjectWrap::Unwrap<_VkImage>(item->ToObject());
+      _VkImage* target = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(item).ToLocalChecked());
       target->instance = $p3[ii];
     };
     delete[] $p3;
@@ -2612,7 +2619,7 @@ void _vkAcquireNextImageKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -2621,18 +2628,18 @@ void _vkAcquireNextImageKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkSwapchainKHR* obj1;
   VkSwapchainKHR *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = VK_NULL_HANDLE;
   }
 
-  uint64_t $p2 = static_cast<uint64_t>(info[2]->NumberValue());
+  uint64_t $p2 = static_cast<uint64_t>(Nan::To<int64_t>(info[2]).FromMaybe(0));
 
   _VkSemaphore* obj3;
   VkSemaphore *$p3;
   if (!(info[3]->IsNull())) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkSemaphore>(info[3]->ToObject());
+    obj3 = Nan::ObjectWrap::Unwrap<_VkSemaphore>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
     $p3 = &obj3->instance;
   } else {
     $p3 = VK_NULL_HANDLE;
@@ -2641,7 +2648,7 @@ void _vkAcquireNextImageKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkFence* obj4;
   VkFence *$p4;
   if (!(info[4]->IsNull())) {
-    obj4 = Nan::ObjectWrap::Unwrap<_VkFence>(info[4]->ToObject());
+    obj4 = Nan::ObjectWrap::Unwrap<_VkFence>(Nan::To<v8::Object>(info[4]).ToLocalChecked());
     $p4 = &obj4->instance;
   } else {
     $p4 = VK_NULL_HANDLE;
@@ -2650,8 +2657,9 @@ void _vkAcquireNextImageKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   v8::Local<v8::Object> obj5;
   uint32_t $p5;
   if (!(info[5]->IsNull())) {
-    obj5 = info[5]->ToObject();
-    $p5 = static_cast<uint32_t>(obj5->Get(Nan::New("$").ToLocalChecked())->NumberValue());
+    obj5 = Nan::To<v8::Object>(info[5]).ToLocalChecked();
+    v8::Local<v8::Value> val = obj5->Get(Nan::New("$").ToLocalChecked());
+    $p5 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   }
   int32_t out = vkAcquireNextImageKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -2670,7 +2678,7 @@ void _vkQueuePresentKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkQueue* obj0;
   VkQueue *$p0;
   if (!(info[0]->IsNull())) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkQueue>(info[0]->ToObject());
+    obj0 = Nan::ObjectWrap::Unwrap<_VkQueue>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
     $p0 = &obj0->instance;
   } else {
     $p0 = VK_NULL_HANDLE;
@@ -2679,7 +2687,7 @@ void _vkQueuePresentKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkPresentInfoKHR* obj1;
   VkPresentInfoKHR *$p1;
   if (!(info[1]->IsNull())) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPresentInfoKHR>(info[1]->ToObject());
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPresentInfoKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
     $p1 = &obj1->instance;
   } else {
     $p1 = nullptr;

@@ -40,7 +40,7 @@ NAN_METHOD(_VkDescriptorBufferInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("buffer").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("offset").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("range").ToLocalChecked();
@@ -69,14 +69,14 @@ NAN_GETTER(_VkDescriptorBufferInfo::Getbuffer) {
   _VkDescriptorBufferInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorBufferInfo>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->buffer = obj;
   } else {
     //self->buffer = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkBuffer* obj = Nan::ObjectWrap::Unwrap<_VkBuffer>(value->ToObject());
+    _VkBuffer* obj = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.buffer = obj->instance;
   } else {
     self->instance.buffer = VK_NULL_HANDLE;
@@ -87,12 +87,12 @@ NAN_GETTER(_VkDescriptorBufferInfo::Getoffset) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.offset));
 }NAN_SETTER(_VkDescriptorBufferInfo::Setoffset) {
   _VkDescriptorBufferInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorBufferInfo>(info.This());
-  self->instance.offset = static_cast<uint64_t>(value->NumberValue());
+  self->instance.offset = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// range
 NAN_GETTER(_VkDescriptorBufferInfo::Getrange) {
   _VkDescriptorBufferInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorBufferInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.range));
 }NAN_SETTER(_VkDescriptorBufferInfo::Setrange) {
   _VkDescriptorBufferInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorBufferInfo>(info.This());
-  self->instance.range = static_cast<uint64_t>(value->NumberValue());
+  self->instance.range = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }

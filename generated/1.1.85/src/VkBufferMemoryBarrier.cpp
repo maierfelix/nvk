@@ -46,7 +46,7 @@ NAN_METHOD(_VkBufferMemoryBarrier::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("srcAccessMask").ToLocalChecked();
@@ -80,7 +80,7 @@ NAN_GETTER(_VkBufferMemoryBarrier::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkBufferMemoryBarrier::SetsType) {
   _VkBufferMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkBufferMemoryBarrier>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkBufferMemoryBarrier::GetpNext) {
   _VkBufferMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkBufferMemoryBarrier>(info.This());
@@ -92,28 +92,28 @@ NAN_GETTER(_VkBufferMemoryBarrier::GetsrcAccessMask) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.srcAccessMask));
 }NAN_SETTER(_VkBufferMemoryBarrier::SetsrcAccessMask) {
   _VkBufferMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkBufferMemoryBarrier>(info.This());
-  self->instance.srcAccessMask = static_cast<VkAccessFlags>((int32_t)value->NumberValue());
+  self->instance.srcAccessMask = static_cast<VkAccessFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// dstAccessMask
 NAN_GETTER(_VkBufferMemoryBarrier::GetdstAccessMask) {
   _VkBufferMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkBufferMemoryBarrier>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.dstAccessMask));
 }NAN_SETTER(_VkBufferMemoryBarrier::SetdstAccessMask) {
   _VkBufferMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkBufferMemoryBarrier>(info.This());
-  self->instance.dstAccessMask = static_cast<VkAccessFlags>((int32_t)value->NumberValue());
+  self->instance.dstAccessMask = static_cast<VkAccessFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// srcQueueFamilyIndex
 NAN_GETTER(_VkBufferMemoryBarrier::GetsrcQueueFamilyIndex) {
   _VkBufferMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkBufferMemoryBarrier>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.srcQueueFamilyIndex));
 }NAN_SETTER(_VkBufferMemoryBarrier::SetsrcQueueFamilyIndex) {
   _VkBufferMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkBufferMemoryBarrier>(info.This());
-  self->instance.srcQueueFamilyIndex = static_cast<uint32_t>(value->NumberValue());
+  self->instance.srcQueueFamilyIndex = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// dstQueueFamilyIndex
 NAN_GETTER(_VkBufferMemoryBarrier::GetdstQueueFamilyIndex) {
   _VkBufferMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkBufferMemoryBarrier>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.dstQueueFamilyIndex));
 }NAN_SETTER(_VkBufferMemoryBarrier::SetdstQueueFamilyIndex) {
   _VkBufferMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkBufferMemoryBarrier>(info.This());
-  self->instance.dstQueueFamilyIndex = static_cast<uint32_t>(value->NumberValue());
+  self->instance.dstQueueFamilyIndex = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// buffer
 NAN_GETTER(_VkBufferMemoryBarrier::Getbuffer) {
   _VkBufferMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkBufferMemoryBarrier>(info.This());
@@ -127,14 +127,14 @@ NAN_GETTER(_VkBufferMemoryBarrier::Getbuffer) {
   _VkBufferMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkBufferMemoryBarrier>(info.This());
   // js
   if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(value->ToObject());
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
     self->buffer = obj;
   } else {
     //self->buffer = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
   }
   // vulkan
   if (!(value->IsNull())) {
-    _VkBuffer* obj = Nan::ObjectWrap::Unwrap<_VkBuffer>(value->ToObject());
+    _VkBuffer* obj = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(value).ToLocalChecked());
     self->instance.buffer = obj->instance;
   } else {
     self->instance.buffer = VK_NULL_HANDLE;
@@ -145,12 +145,12 @@ NAN_GETTER(_VkBufferMemoryBarrier::Getoffset) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.offset));
 }NAN_SETTER(_VkBufferMemoryBarrier::Setoffset) {
   _VkBufferMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkBufferMemoryBarrier>(info.This());
-  self->instance.offset = static_cast<uint64_t>(value->NumberValue());
+  self->instance.offset = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// size
 NAN_GETTER(_VkBufferMemoryBarrier::Getsize) {
   _VkBufferMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkBufferMemoryBarrier>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.size));
 }NAN_SETTER(_VkBufferMemoryBarrier::Setsize) {
   _VkBufferMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkBufferMemoryBarrier>(info.This());
-  self->instance.size = static_cast<uint64_t>(value->NumberValue());
+  self->instance.size = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }

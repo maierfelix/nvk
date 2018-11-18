@@ -43,7 +43,7 @@ NAN_METHOD(_VkViewport::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("x").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("y").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("width").ToLocalChecked();
@@ -71,40 +71,40 @@ NAN_GETTER(_VkViewport::Getx) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.x));
 }NAN_SETTER(_VkViewport::Setx) {
   _VkViewport *self = Nan::ObjectWrap::Unwrap<_VkViewport>(info.This());
-  self->instance.x = static_cast<float>(value->NumberValue());
+  self->instance.x = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
 }// y
 NAN_GETTER(_VkViewport::Gety) {
   _VkViewport *self = Nan::ObjectWrap::Unwrap<_VkViewport>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.y));
 }NAN_SETTER(_VkViewport::Sety) {
   _VkViewport *self = Nan::ObjectWrap::Unwrap<_VkViewport>(info.This());
-  self->instance.y = static_cast<float>(value->NumberValue());
+  self->instance.y = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
 }// width
 NAN_GETTER(_VkViewport::Getwidth) {
   _VkViewport *self = Nan::ObjectWrap::Unwrap<_VkViewport>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.width));
 }NAN_SETTER(_VkViewport::Setwidth) {
   _VkViewport *self = Nan::ObjectWrap::Unwrap<_VkViewport>(info.This());
-  self->instance.width = static_cast<float>(value->NumberValue());
+  self->instance.width = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
 }// height
 NAN_GETTER(_VkViewport::Getheight) {
   _VkViewport *self = Nan::ObjectWrap::Unwrap<_VkViewport>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.height));
 }NAN_SETTER(_VkViewport::Setheight) {
   _VkViewport *self = Nan::ObjectWrap::Unwrap<_VkViewport>(info.This());
-  self->instance.height = static_cast<float>(value->NumberValue());
+  self->instance.height = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
 }// minDepth
 NAN_GETTER(_VkViewport::GetminDepth) {
   _VkViewport *self = Nan::ObjectWrap::Unwrap<_VkViewport>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.minDepth));
 }NAN_SETTER(_VkViewport::SetminDepth) {
   _VkViewport *self = Nan::ObjectWrap::Unwrap<_VkViewport>(info.This());
-  self->instance.minDepth = static_cast<float>(value->NumberValue());
+  self->instance.minDepth = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
 }// maxDepth
 NAN_GETTER(_VkViewport::GetmaxDepth) {
   _VkViewport *self = Nan::ObjectWrap::Unwrap<_VkViewport>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.maxDepth));
 }NAN_SETTER(_VkViewport::SetmaxDepth) {
   _VkViewport *self = Nan::ObjectWrap::Unwrap<_VkViewport>(info.This());
-  self->instance.maxDepth = static_cast<float>(value->NumberValue());
+  self->instance.maxDepth = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
 }

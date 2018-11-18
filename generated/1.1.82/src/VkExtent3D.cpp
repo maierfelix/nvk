@@ -40,7 +40,7 @@ NAN_METHOD(_VkExtent3D::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("width").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("height").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("depth").ToLocalChecked();
@@ -62,19 +62,19 @@ NAN_GETTER(_VkExtent3D::Getwidth) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.width));
 }NAN_SETTER(_VkExtent3D::Setwidth) {
   _VkExtent3D *self = Nan::ObjectWrap::Unwrap<_VkExtent3D>(info.This());
-  self->instance.width = static_cast<uint32_t>(value->NumberValue());
+  self->instance.width = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// height
 NAN_GETTER(_VkExtent3D::Getheight) {
   _VkExtent3D *self = Nan::ObjectWrap::Unwrap<_VkExtent3D>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.height));
 }NAN_SETTER(_VkExtent3D::Setheight) {
   _VkExtent3D *self = Nan::ObjectWrap::Unwrap<_VkExtent3D>(info.This());
-  self->instance.height = static_cast<uint32_t>(value->NumberValue());
+  self->instance.height = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// depth
 NAN_GETTER(_VkExtent3D::Getdepth) {
   _VkExtent3D *self = Nan::ObjectWrap::Unwrap<_VkExtent3D>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.depth));
 }NAN_SETTER(_VkExtent3D::Setdepth) {
   _VkExtent3D *self = Nan::ObjectWrap::Unwrap<_VkExtent3D>(info.This());
-  self->instance.depth = static_cast<uint32_t>(value->NumberValue());
+  self->instance.depth = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }

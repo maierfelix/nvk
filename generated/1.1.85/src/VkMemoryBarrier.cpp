@@ -41,7 +41,7 @@ NAN_METHOD(_VkMemoryBarrier::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("srcAccessMask").ToLocalChecked();
@@ -65,7 +65,7 @@ NAN_GETTER(_VkMemoryBarrier::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkMemoryBarrier::SetsType) {
   _VkMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkMemoryBarrier>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkMemoryBarrier::GetpNext) {
   _VkMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkMemoryBarrier>(info.This());
@@ -77,12 +77,12 @@ NAN_GETTER(_VkMemoryBarrier::GetsrcAccessMask) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.srcAccessMask));
 }NAN_SETTER(_VkMemoryBarrier::SetsrcAccessMask) {
   _VkMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkMemoryBarrier>(info.This());
-  self->instance.srcAccessMask = static_cast<VkAccessFlags>((int32_t)value->NumberValue());
+  self->instance.srcAccessMask = static_cast<VkAccessFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// dstAccessMask
 NAN_GETTER(_VkMemoryBarrier::GetdstAccessMask) {
   _VkMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkMemoryBarrier>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.dstAccessMask));
 }NAN_SETTER(_VkMemoryBarrier::SetdstAccessMask) {
   _VkMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkMemoryBarrier>(info.This());
-  self->instance.dstAccessMask = static_cast<VkAccessFlags>((int32_t)value->NumberValue());
+  self->instance.dstAccessMask = static_cast<VkAccessFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }

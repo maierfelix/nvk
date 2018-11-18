@@ -44,7 +44,7 @@ NAN_METHOD(_VkPipelineVertexInputStateCreateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -74,7 +74,7 @@ NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkPipelineVertexInputStateCreateInfo::SetsType) {
   _VkPipelineVertexInputStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineVertexInputStateCreateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetpNext) {
   _VkPipelineVertexInputStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineVertexInputStateCreateInfo>(info.This());
@@ -86,14 +86,14 @@ NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkPipelineVertexInputStateCreateInfo::Setflags) {
   _VkPipelineVertexInputStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineVertexInputStateCreateInfo>(info.This());
-  self->instance.flags = static_cast<VkPipelineVertexInputStateCreateFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkPipelineVertexInputStateCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// vertexBindingDescriptionCount
 NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetvertexBindingDescriptionCount) {
   _VkPipelineVertexInputStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineVertexInputStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.vertexBindingDescriptionCount));
 }NAN_SETTER(_VkPipelineVertexInputStateCreateInfo::SetvertexBindingDescriptionCount) {
   _VkPipelineVertexInputStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineVertexInputStateCreateInfo>(info.This());
-  self->instance.vertexBindingDescriptionCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.vertexBindingDescriptionCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pVertexBindingDescriptions
 NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetpVertexBindingDescriptions) {
   _VkPipelineVertexInputStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineVertexInputStateCreateInfo>(info.This());
@@ -127,7 +127,7 @@ NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetvertexAttributeDescriptionC
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.vertexAttributeDescriptionCount));
 }NAN_SETTER(_VkPipelineVertexInputStateCreateInfo::SetvertexAttributeDescriptionCount) {
   _VkPipelineVertexInputStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineVertexInputStateCreateInfo>(info.This());
-  self->instance.vertexAttributeDescriptionCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.vertexAttributeDescriptionCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pVertexAttributeDescriptions
 NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetpVertexAttributeDescriptions) {
   _VkPipelineVertexInputStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineVertexInputStateCreateInfo>(info.This());

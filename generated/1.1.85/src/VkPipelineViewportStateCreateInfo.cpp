@@ -44,7 +44,7 @@ NAN_METHOD(_VkPipelineViewportStateCreateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -74,7 +74,7 @@ NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkPipelineViewportStateCreateInfo::SetsType) {
   _VkPipelineViewportStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineViewportStateCreateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetpNext) {
   _VkPipelineViewportStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineViewportStateCreateInfo>(info.This());
@@ -86,14 +86,14 @@ NAN_GETTER(_VkPipelineViewportStateCreateInfo::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkPipelineViewportStateCreateInfo::Setflags) {
   _VkPipelineViewportStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineViewportStateCreateInfo>(info.This());
-  self->instance.flags = static_cast<VkPipelineViewportStateCreateFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkPipelineViewportStateCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// viewportCount
 NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetviewportCount) {
   _VkPipelineViewportStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineViewportStateCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.viewportCount));
 }NAN_SETTER(_VkPipelineViewportStateCreateInfo::SetviewportCount) {
   _VkPipelineViewportStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineViewportStateCreateInfo>(info.This());
-  self->instance.viewportCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.viewportCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pViewports
 NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetpViewports) {
   _VkPipelineViewportStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineViewportStateCreateInfo>(info.This());
@@ -127,7 +127,7 @@ NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetscissorCount) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.scissorCount));
 }NAN_SETTER(_VkPipelineViewportStateCreateInfo::SetscissorCount) {
   _VkPipelineViewportStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineViewportStateCreateInfo>(info.This());
-  self->instance.scissorCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.scissorCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pScissors
 NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetpScissors) {
   _VkPipelineViewportStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineViewportStateCreateInfo>(info.This());

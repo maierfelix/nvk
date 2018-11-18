@@ -43,7 +43,7 @@ NAN_METHOD(_VkDeviceQueueCreateInfo::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
@@ -71,7 +71,7 @@ NAN_GETTER(_VkDeviceQueueCreateInfo::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkDeviceQueueCreateInfo::SetsType) {
   _VkDeviceQueueCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceQueueCreateInfo>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkDeviceQueueCreateInfo::GetpNext) {
   _VkDeviceQueueCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceQueueCreateInfo>(info.This());
@@ -83,21 +83,21 @@ NAN_GETTER(_VkDeviceQueueCreateInfo::Getflags) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.flags));
 }NAN_SETTER(_VkDeviceQueueCreateInfo::Setflags) {
   _VkDeviceQueueCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceQueueCreateInfo>(info.This());
-  self->instance.flags = static_cast<VkDeviceQueueCreateFlags>((int32_t)value->NumberValue());
+  self->instance.flags = static_cast<VkDeviceQueueCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
 }// queueFamilyIndex
 NAN_GETTER(_VkDeviceQueueCreateInfo::GetqueueFamilyIndex) {
   _VkDeviceQueueCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceQueueCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.queueFamilyIndex));
 }NAN_SETTER(_VkDeviceQueueCreateInfo::SetqueueFamilyIndex) {
   _VkDeviceQueueCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceQueueCreateInfo>(info.This());
-  self->instance.queueFamilyIndex = static_cast<uint32_t>(value->NumberValue());
+  self->instance.queueFamilyIndex = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// queueCount
 NAN_GETTER(_VkDeviceQueueCreateInfo::GetqueueCount) {
   _VkDeviceQueueCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceQueueCreateInfo>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.queueCount));
 }NAN_SETTER(_VkDeviceQueueCreateInfo::SetqueueCount) {
   _VkDeviceQueueCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceQueueCreateInfo>(info.This());
-  self->instance.queueCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.queueCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pQueuePriorities
 NAN_GETTER(_VkDeviceQueueCreateInfo::GetpQueuePriorities) {
   _VkDeviceQueueCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceQueueCreateInfo>(info.This());
@@ -122,7 +122,7 @@ NAN_GETTER(_VkDeviceQueueCreateInfo::GetpQueuePriorities) {
   
   // vulkan
   if (value->IsArrayBufferView()) {
-    self->instance.pQueuePriorities = getTypedArrayData<float>(value->ToObject(), nullptr);
+    self->instance.pQueuePriorities = getTypedArrayData<float>(Nan::To<v8::Object>(value).ToLocalChecked(), nullptr);
   } else {
     self->instance.pQueuePriorities = nullptr;
   }

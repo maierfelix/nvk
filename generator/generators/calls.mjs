@@ -168,18 +168,17 @@ function getCallBodyBefore(call) {
       case "uint32_t":
       case "uint64_t": {
         let type = param.enumType || param.type;
-        let val = `NumberValue`;
-        if (param.enumType) val = `Uint32Value`;
         return `
-  ${type} $p${index} = static_cast<${type}>(info[${index}]->${val}());`;
+  ${type} $p${index} = static_cast<${type}>(Nan::To<int64_t>(info[${index}]).FromMaybe(0));`;
       }
       case "VkBool32 *":
         return `
   v8::Local<v8::Object> obj${index};
   ${param.type} $p${index};
   if (!(info[${index}]->IsNull())) {
-    obj${index} = info[${index}]->ToObject();
-    $p${index} = static_cast<${param.type}>(obj${index}->Get(Nan::New("$").ToLocalChecked())->BooleanValue());
+    obj${index} = Nan::To<v8::Object>(info[${index}]).ToLocalChecked();
+    v8::Local<v8::Value> val = obj${index}->Get(Nan::New("$").ToLocalChecked());
+    $p${index} = static_cast<${param.type}>(Nan::To<bool>(val).FromMaybe(false));
   } else {
 
   }`;
@@ -199,13 +198,14 @@ function getCallBodyBefore(call) {
   v8::Local<v8::Object> obj${index};
   ${param.type} $p${index};
   if (!(info[${index}]->IsNull())) {
-    obj${index} = info[${index}]->ToObject();
-    $p${index} = static_cast<${param.type}>(obj${index}->Get(Nan::New("$").ToLocalChecked())->NumberValue());
+    obj${index} = Nan::To<v8::Object>(info[${index}]).ToLocalChecked();
+    v8::Local<v8::Value> val = obj${index}->Get(Nan::New("$").ToLocalChecked());
+    $p${index} = static_cast<${param.type}>(Nan::To<int64_t>(val).FromMaybe(0));
   }`;
         }
       case "void **":
         return `
-  v8::Local<v8::Object> obj${index} = info[${index}]->ToObject();
+  v8::Local<v8::Object> obj${index} = Nan::To<v8::Object>(info[${index}]).ToLocalChecked();
   void *$p${index};`;
       case "void *":
       case "const void *":
@@ -234,7 +234,7 @@ function getCallBodyBefore(call) {
   _${param.type}* obj${index};
   ${param.type} *$p${index};
   if (!(info[${index}]->IsNull())) {
-    obj${index} = Nan::ObjectWrap::Unwrap<_${param.type}>(info[${index}]->ToObject());
+    obj${index} = Nan::ObjectWrap::Unwrap<_${param.type}>(Nan::To<v8::Object>(info[${index}]).ToLocalChecked());
     $p${index} = &obj${index}->instance;
   } else {
     $p${index} = ${deinitialize};
@@ -297,7 +297,7 @@ function getCallBodyAfter(params) {
     v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[${pIndex}]);
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
-      v8::Local<v8::Object> obj = item->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(item).ToLocalChecked();
       _${param.type}* result = Nan::ObjectWrap::Unwrap<_${param.type}>(obj);
       ${param.type} *instance = &result->instance;
       ${param.type} *copy = &$p${pIndex}[ii];
@@ -331,7 +331,7 @@ function getCallBodyAfter(params) {
     v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[${pIndex}]);
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
-      _${param.type}* target = Nan::ObjectWrap::Unwrap<_${param.type}>(item->ToObject());
+      _${param.type}* target = Nan::ObjectWrap::Unwrap<_${param.type}>(Nan::To<v8::Object>(item).ToLocalChecked());
       target->instance = $p${pIndex}[ii];
     };
     delete[] $p${pIndex};

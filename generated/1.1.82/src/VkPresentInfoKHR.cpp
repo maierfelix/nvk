@@ -45,7 +45,7 @@ NAN_METHOD(_VkPresentInfoKHR::New) {
     self->Wrap(info.Holder());
     
     if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = info[0]->ToObject();
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
       v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("waitSemaphoreCount").ToLocalChecked();
@@ -77,7 +77,7 @@ NAN_GETTER(_VkPresentInfoKHR::GetsType) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
 }NAN_SETTER(_VkPresentInfoKHR::SetsType) {
   _VkPresentInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkPresentInfoKHR>(info.This());
-  self->instance.sType = static_cast<VkStructureType>((int32_t)value->NumberValue());
+  self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
 }// pNext
 NAN_GETTER(_VkPresentInfoKHR::GetpNext) {
   _VkPresentInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkPresentInfoKHR>(info.This());
@@ -89,7 +89,7 @@ NAN_GETTER(_VkPresentInfoKHR::GetwaitSemaphoreCount) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.waitSemaphoreCount));
 }NAN_SETTER(_VkPresentInfoKHR::SetwaitSemaphoreCount) {
   _VkPresentInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkPresentInfoKHR>(info.This());
-  self->instance.waitSemaphoreCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.waitSemaphoreCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pWaitSemaphores
 NAN_GETTER(_VkPresentInfoKHR::GetpWaitSemaphores) {
   _VkPresentInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkPresentInfoKHR>(info.This());
@@ -123,7 +123,7 @@ NAN_GETTER(_VkPresentInfoKHR::GetswapchainCount) {
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.swapchainCount));
 }NAN_SETTER(_VkPresentInfoKHR::SetswapchainCount) {
   _VkPresentInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkPresentInfoKHR>(info.This());
-  self->instance.swapchainCount = static_cast<uint32_t>(value->NumberValue());
+  self->instance.swapchainCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
 }// pSwapchains
 NAN_GETTER(_VkPresentInfoKHR::GetpSwapchains) {
   _VkPresentInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkPresentInfoKHR>(info.This());
@@ -175,7 +175,7 @@ NAN_GETTER(_VkPresentInfoKHR::GetpImageIndices) {
   
   // vulkan
   if (value->IsArrayBufferView()) {
-    self->instance.pImageIndices = getTypedArrayData<uint32_t>(value->ToObject(), nullptr);
+    self->instance.pImageIndices = getTypedArrayData<uint32_t>(Nan::To<v8::Object>(value).ToLocalChecked(), nullptr);
   } else {
     self->instance.pImageIndices = nullptr;
   }
@@ -203,7 +203,7 @@ NAN_GETTER(_VkPresentInfoKHR::GetpResults) {
   
   // vulkan
   if (value->IsArrayBufferView()) {
-    self->instance.pResults = reinterpret_cast<VkResult *>(getTypedArrayData<int32_t>(value->ToObject(), nullptr));
+    self->instance.pResults = reinterpret_cast<VkResult *>(getTypedArrayData<int32_t>(Nan::To<v8::Object>(value).ToLocalChecked(), nullptr));
   } else {
     self->instance.pResults = nullptr;
   }
