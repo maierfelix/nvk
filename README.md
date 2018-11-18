@@ -1,7 +1,8 @@
 # node-vulkan
 This is a Vulkan API for node.js, which allows to interact from JavaScript with the low-level interface of Vulkan. The API of this project strives to be as close as possible to Vulkan's C API.
 
-## Table of Contents:
+---
+
   * [Preview](#preview)
   * [Example](#example)
   * [Installation](#installation)
