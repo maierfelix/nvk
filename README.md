@@ -67,7 +67,9 @@ npm install node-vulkan
 
 After installing node-vulkan, a setup will ask you, if it should automate the whole binding build process for you
 
-Now you can `require` or `import` node-vulkan in your project!
+<img src="https://i.imgur.com/CiWjods.png" width="380">
+
+Afterwards you can `require` or `import` node-vulkan in your project!
 
 ### API:
 
