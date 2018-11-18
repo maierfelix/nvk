@@ -4,8 +4,6 @@ This is a Vulkan API for node.js, which allows to interact from JavaScript with 
 ## Table of Contents:
   * [Preview](#preview)
   * [Example](#example)
-  * [Structure](#structure)
-  * [Generator](#generator)
   * [Installation](#installation)
     + [Requirements](#requirements)
     + [Windows](#windows)
@@ -18,6 +16,8 @@ This is a Vulkan API for node.js, which allows to interact from JavaScript with 
   * [Syntactic Sugar](#syntactic-sugar)
       - [sType auto-filling](#stype-auto-filling)
       - [Structure creation shortcut](#structure-creation-shortcut)
+  * [Structure](#structure)
+  * [Generator](#generator)
   * [HTML, CSS based UIs](#html-css-based-uis)
   * [TODOs](#todos)
 
@@ -52,22 +52,9 @@ appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
 appInfo.apiVersion = VK_API_VERSION_1_0;
 ````
 
-## Structure:
- - `generator`: code for binding generation
- - `generated`: the generated binding code
- - `examples`: ready-to-run examples
- - `lib`: required third party libs
- - `src`: classes for e.g. window creation
-
-This tool uses a new JavaScript type called [`BigInt`](https://developers.google.com/web/updates/2018/05/bigint) to represent memory addresses returned by Vulkan. The `BigInt` type was recently added, so make sure you use a recent node.js version.
-
-## Generator:
-
-The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/node-vulkan/master/generated/1.1.85/ast.json) (and adds a lot magic to it), which is then used by the code generator. Currently a total of `~80.000` lines of code get generated, where `~30.000` lines is C++ code.
-
-If you're interested in what a generated file look like, checkout [`calls.h`](https://github.com/maierfelix/node-vulkan/blob/master/generated/1.1.85/src/calls.h) or [`VkGraphicsPipelineCreateInfo.cpp`](https://github.com/maierfelix/node-vulkan/blob/master/generated/1.1.85/src/VkGraphicsPipelineCreateInfo.cpp)
-
 ## Installation:
+
+<img src="https://i.imgur.com/CiWjods.png" width="380">
 
 ### Requirements:
  - node.js >= v10.9.0 recommended
@@ -86,8 +73,6 @@ npm install node-vulkan
 ````
 
 After installing node-vulkan, a setup will ask you, if it should automate the whole binding build process for you
-
-<img src="https://i.imgur.com/CiWjods.png" width="380">
 
 Afterwards you can `require` or `import` node-vulkan in your project!
 
@@ -162,6 +147,21 @@ let renderArea = new VkRect2D({
   extent: new VkExtent2D({ width: 640, height: 480 })
 });
 ````
+
+## Structure:
+ - `generator`: code for binding generation
+ - `generated`: the generated binding code
+ - `examples`: ready-to-run examples
+ - `lib`: required third party libs
+ - `src`: classes for e.g. window creation
+
+This tool uses a new JavaScript type called [`BigInt`](https://developers.google.com/web/updates/2018/05/bigint) to represent memory addresses returned by Vulkan. The `BigInt` type was recently added, so make sure you use a recent node.js version.
+
+## Generator:
+
+The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/node-vulkan/master/generated/1.1.85/ast.json) (and adds a lot magic to it), which is then used by the code generator. Currently a total of `~80.000` lines of code get generated, where `~30.000` lines is C++ code.
+
+If you're interested in what a generated file look like, checkout [`calls.h`](https://github.com/maierfelix/node-vulkan/blob/master/generated/1.1.85/src/calls.h) or [`VkGraphicsPipelineCreateInfo.cpp`](https://github.com/maierfelix/node-vulkan/blob/master/generated/1.1.85/src/VkGraphicsPipelineCreateInfo.cpp)
 
 ## HTML, CSS based UIs
 
