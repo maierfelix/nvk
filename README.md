@@ -12,9 +12,12 @@ You can find more previews and demos in [/examples](https://github.com/maierfeli
 
 ## Example:
 
+In most cases the bindings match the native style of Vulkan. This allows you to follow existing C/C++ tutorials, but write the implementation itself with node-vulkan. Note that both interfaces end up with a similar amount of code. Optionally you can use some [syntactic sugar](https://github.com/maierfelix/node-vulkan#syntactic-sugar) to write things quicker.
+
 JavaScript:
 ````js
 let appInfo = new VkApplicationInfo();
+appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
 appInfo.pApplicationName = "App";
 appInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
 appInfo.pEngineName = "Engine";
