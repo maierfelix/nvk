@@ -16,7 +16,6 @@ std::string dirname;
 #include "calls.h"
 #include "enums.h"
 #include "window.h"
-#include "webkit.h"
 
 static void createV8ArrayBufferFromMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   if (!(info[0]->IsBigInt())) Nan::ThrowError("First argument must be a BigInt!");
@@ -69,7 +68,6 @@ static void init(v8::Handle<v8::Object> target, v8::Handle<v8::Object> module) {
   dirname = resolveModulePath(module);
   // default initializers
   VulkanWindow::Initialize(target);
-  VulkanWebKit::Initialize(target);
   // manual initializers
   target->Set(
     Nan::New("createV8ArrayBufferFromMemory").ToLocalChecked(),

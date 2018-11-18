@@ -140,21 +140,16 @@
 "./src/VkSwapchainKHR.cpp",
 "./src/VkDebugReportCallbackEXT.cpp",
 "./src/VkDebugUtilsMessengerEXT.cpp",
-"./src/index.cpp",
-        "./src/render_handler.cpp",
-        "./src/browser_client.cpp",
-        "./src/app.cpp"
+"./src/index.cpp"
       ],
       "include_dirs": [
         "<!(node -e \"require('nan')\")",
         "<(root)/lib/include/",
-        "<(root)/lib/include/CEF",
         "<(vkSDK)/<(vkVersion)/Include"
       ],
       "library_dirs": [
         "<(root)/lib/<(platform)/<(target_arch)/GLFW",
         "<(root)/lib/<(platform)/<(target_arch)/GLEW",
-        "<(root)/lib/<(platform)/<(target_arch)/CEF",
         "<(vkSDK)/<(vkVersion)/Lib"
       ],
       "conditions": [
@@ -169,9 +164,7 @@
                 "-lglfw3dll.lib",
                 "-lglew32.lib",
                 "-lvulkan-1.lib",
-                "-lopengl32.lib",
-                "-llibcef.lib",
-                "-llibcef_dll_wrapper.lib"
+                "-lopengl32.lib"
               ]
             },
             "defines": [
@@ -179,58 +172,6 @@
               "VC_EXTRALEAN",
               "_ITERATOR_DEBUG_LEVEL=0",
               "_HAS_EXCEPTIONS=1"
-            ],
-            "msvs_settings": {
-              "VCCLCompilerTool": {
-                "AdditionalOptions": ["/MP /EHsc"],
-                "ExceptionHandling": 1
-              },
-              "VCLibrarianTool": {
-                "AdditionalOptions" : ["/NODEFAULTLIB:MSVCRT"]
-              },
-              "VCLinkerTool": {
-                "LinkTimeCodeGeneration": 1,
-                "LinkIncremental": 1,
-                "AdditionalLibraryDirectories": [
-                  "../@PROJECT_SOURCE_DIR@/lib/<(platform)/<(target_arch)",
-                ]
-              }
-            }
-          }
-        ]
-      ]
-    },
-    {
-      "target_name": "CEF_subprocess",
-      "type": "executable",
-      "sources": [
-        "./src/subprocess.cpp"
-      ],
-      "include_dirs": [
-        "<(root)/lib/include/CEF"
-      ],
-      "library_dirs": [
-        "<(root)/lib/<(platform)/<(target_arch)/CEF"
-      ],
-      "conditions": [
-        [
-          "OS=='win'",
-          {
-            "cflags": [
-              "-stdlib=libstdc++"
-            ],
-            "link_settings": {
-              "libraries": [
-                "-llibcef.lib",
-                "-llibcef_dll_wrapper.lib"
-              ]
-            },
-            "defines": [
-              "WIN32_LEAN_AND_MEAN",
-              "VC_EXTRALEAN",
-              "_ITERATOR_DEBUG_LEVEL=0",
-              "_HAS_EXCEPTIONS=1",
-              "USING_CEF_SHARED"
             ],
             "msvs_settings": {
               "VCCLCompilerTool": {

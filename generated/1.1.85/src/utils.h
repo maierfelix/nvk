@@ -105,25 +105,3 @@ inline T* getTypedArrayData(v8::Local<v8::Object> obj, int *len = nullptr) {
   data = reinterpret_cast<T*>(arr->Buffer()->GetContents().Data());
   return data;
 };
-
-/*
-template<typename T>
-inline T* getTypedArrayData(v8::Local<v8::Value> value) {
-  v8::Local<v8::Uint32Array> arr = value.As<v8::Uint32Array>();
-  Nan::TypedArrayContents<T> dest(arr);
-  return arr;
-};
-*/
-
-/*
-template<typename A, typename B>
-void inline reflectNumericArray(A* receiver, B vkMember) {
-  v8::Local<v8::Array> array = v8::Array::New();
-  for (unsigned int ii = 0; ii < array->Length(); ++ii) {
-    v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
-    T* result = Nan::ObjectWrap::Unwrap<T>(item->ToObject());
-    data[ii] = result->instance;
-  };
-  return data.data();
-};
-*/

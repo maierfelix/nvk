@@ -64,7 +64,6 @@ static void init(v8::Handle<v8::Object> target, v8::Handle<v8::Object> module) {
   dirname = resolveModulePath(module);
   // default initializers
   VulkanWindow::Initialize(target);
-  VulkanWebKit::Initialize(target);
   // manual initializers
   target->Set(
     Nan::New("createV8ArrayBufferFromMemory").ToLocalChecked(),
