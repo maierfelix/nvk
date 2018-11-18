@@ -6,35 +6,19 @@
     "vkSDK": "C:/VulkanSDK"
   },
   "conditions": [
-    [ "platform == 'win'", { "variables": { "platform": "windows" } } ],
+    [ "platform == 'win'", { "variables": { "platform": "win" } } ],
     [ "platform == 'mac'", { "variables": { "platform": "darwin" } } ]
   ],
   "targets": [
     {
       "target_name": "action_after_build",
       "type": "none",
-      "conditions": [
-        [
-          "OS=='win'",
-          {
-            "copies": [
-              {
-                "files": [
-                  "<(root)/lib/<(platform)/<(target_arch)/GLEW/glew32.dll",
-                  "<(root)/lib/<(platform)/<(target_arch)/GLFW/glfw3.dll",
-                  "<(root)/lib/<(platform)/<(target_arch)/EAWebKit/EAWebKit.dll",
-                  "<(root)/lib/<(platform)/<(target_arch)/EAWebKit/glWebkit.dll"
-                ],
-                "destination": "<(PRODUCT_DIR)"
-              }
-            ]
-          }
-        ]
-      ]
+      "conditions": []
     },
     {
       "target_name": "addon",
-      "sources": [ "./src/VkOffset2D.cpp",
+      "sources": [
+        "./src/VkOffset2D.cpp",
 "./src/VkOffset3D.cpp",
 "./src/VkExtent2D.cpp",
 "./src/VkExtent3D.cpp",
@@ -59,12 +43,14 @@
 "./src/VkWriteDescriptorSet.cpp",
 "./src/VkCopyDescriptorSet.cpp",
 "./src/VkBufferCreateInfo.cpp",
+"./src/VkImageSubresource.cpp",
 "./src/VkImageSubresourceLayers.cpp",
 "./src/VkImageSubresourceRange.cpp",
 "./src/VkMemoryBarrier.cpp",
 "./src/VkBufferMemoryBarrier.cpp",
 "./src/VkImageMemoryBarrier.cpp",
 "./src/VkImageCreateInfo.cpp",
+"./src/VkSubresourceLayout.cpp",
 "./src/VkImageViewCreateInfo.cpp",
 "./src/VkBufferCopy.cpp",
 "./src/VkBufferImageCopy.cpp",
@@ -154,18 +140,16 @@
 "./src/VkSwapchainKHR.cpp",
 "./src/VkDebugReportCallbackEXT.cpp",
 "./src/VkDebugUtilsMessengerEXT.cpp",
-"./src/index.cpp" ],
+"./src/index.cpp"
+      ],
       "include_dirs": [
         "<!(node -e \"require('nan')\")",
-        "<(root)/lib/include",
+        "<(root)/lib/include/",
         "<(vkSDK)/<(vkVersion)/Include"
       ],
       "library_dirs": [
         "<(root)/lib/<(platform)/<(target_arch)/GLFW",
         "<(root)/lib/<(platform)/<(target_arch)/GLEW",
-        "<(root)/lib/<(platform)/<(target_arch)/EABase",
-        "<(root)/lib/<(platform)/<(target_arch)/EAWebKit",
-        "<(root)/lib/<(platform)/<(target_arch)/glWebKit",
         "<(vkSDK)/<(vkVersion)/Lib"
       ],
       "conditions": [
@@ -180,8 +164,7 @@
                 "-lglfw3dll.lib",
                 "-lglew32.lib",
                 "-lvulkan-1.lib",
-                "-lopengl32.lib",
-                "-lglWebkit.lib"
+                "-lopengl32.lib"
               ]
             },
             "defines": [

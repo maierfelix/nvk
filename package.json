@@ -1,7 +1,7 @@
 {
   "name": "node-vulkan",
   "main": "index.js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "node": ">= 10.9.0"
   },
@@ -14,18 +14,15 @@
     "build": "node --experimental-modules ./build.mjs",
     "generate": "node --experimental-modules ./generator/index.mjs"
   },
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
     "nan": "^2.11.0",
     "ncp": "^2.0.0",
     "nunjucks": "^3.1.3",
     "toposort": "^2.0.2",
     "xml-js": "^1.6.7"
   },
-  "dependencies": {},
-  "description": "This is a Vulkan API for node.js, which allows to interact from JavaScript with the low-level interface of Vulkan. The API of this project strives to be as close as possible to Vulkan's C API.",
-  "directories": {
-    "lib": "lib"
-  },
+  "description": "Vulkan rendering API for node",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/maierfelix/node-vulkan.git"
