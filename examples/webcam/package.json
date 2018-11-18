@@ -1,0 +1,11 @@
+{
+  "name": "webcam",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node --inspect --experimental-modules ./index.mjs"
+  },
+  "dependencies": {
+    "gl-matrix": "^2.8.1",
+    "tolw": "^0.1.2"
+  }
+}

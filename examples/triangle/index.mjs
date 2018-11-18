@@ -119,8 +119,8 @@ let layers = [...Array(amountOfLayers.$)].map(() => new VkLayerProperties());
 vkEnumerateInstanceLayerProperties(amountOfLayers, layers);
 
 let win = new VulkanWindow({
-  width: 640,
-  height: 480,
+  width: 480,
+  height: 320,
   title: "node-vulkan triangle"
 });
 
