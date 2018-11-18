@@ -1,7 +1,7 @@
 {
   "name": "node-vulkan",
   "main": "index.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "node": ">= 10.9.0"
   },
@@ -21,5 +21,27 @@
     "toposort": "^2.0.2",
     "xml-js": "^1.6.7"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "description": "This is a Vulkan API for node.js, which allows to interact from JavaScript with the low-level interface of Vulkan. The API of this project strives to be as close as possible to Vulkan's C API.",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maierfelix/node-vulkan.git"
+  },
+  "keywords": [
+    "vulkan",
+    "opengl",
+    "bindings",
+    "3d",
+    "2d",
+    "rendering"
+  ],
+  "author": "Felix Maier",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maierfelix/node-vulkan/issues"
+  },
+  "homepage": "https://github.com/maierfelix/node-vulkan#readme"
 }
