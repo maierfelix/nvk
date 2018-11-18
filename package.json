@@ -1,18 +1,20 @@
 {
   "name": "node-vulkan",
   "main": "index.js",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "engines": {
     "node": ">= 10.9.0"
   },
   "config": {
     "GEN_OUT_DIR": "./generated",
     "SPEC_DIR": "./generator/specifications",
-    "TEMPLATE_DIR": "./generator/templates"
+    "TEMPLATE_DIR": "./generator/templates",
+    "POST_DEFAULT_BINDING_VERSION": "1.1.85"
   },
   "scripts": {
     "build": "node --experimental-modules ./build.mjs",
-    "generate": "node --experimental-modules ./generator/index.mjs"
+    "generate": "node --experimental-modules ./generator/index.mjs",
+    "postinstall": "node ./post.js"
   },
   "devDependencies": {},
   "dependencies": {
