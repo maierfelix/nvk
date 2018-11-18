@@ -64,15 +64,14 @@ npm install --global --production windows-build-tools
 
 Install the Vulkan SDK from [here](https://vulkan.lunarg.com/sdk/home#windows)
 
-Clone this repo
+Install node-vulkan
 ````
-git clone git@github.com:maierfelix/node-vulkan.git
+npm install node-vulkan
 ````
 
-Install dependencies
-````
-npm install
-````
+After installing node-vulkan, a setup will ask you, if it should automate the whole binding build process for you
+
+Now you can `require` or `import` node-vulkan in your project!
 
 ### API:
 
