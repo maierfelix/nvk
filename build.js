@@ -1,8 +1,8 @@
-import fs from "fs";
-import ncp from "ncp";
-import { spawn } from "child_process";
+const fs = require("fs");
+const ncp = require("ncp");
+const { spawn } = require("child_process");
 
-import pkg from "./package.json";
+const pkg = require("./package.json");
 
 const platform = process.platform;
 const v8Version = process.versions.v8;

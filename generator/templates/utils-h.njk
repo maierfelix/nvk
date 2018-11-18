@@ -45,7 +45,8 @@ inline T* createArrayOfV8Numbers(v8::Local<v8::Value> value) {
   v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(value);
   std::vector<T>* data = new std::vector<T>;
   for (unsigned int ii = 0; ii < array->Length(); ++ii) {
-    T num = static_cast<T>(Nan::Get(array, ii).ToLocalChecked()->NumberValue());
+    v8::Local<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
+    T num = static_cast<T>(Nan::To<double>(item).FromMaybe(0));
     data->push_back(num);
   };
   return data->data();
@@ -56,8 +57,8 @@ inline S* createArrayOfV8Objects(v8::Local<v8::Value> value) {
   v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(value);
   std::vector<S*>* data = new std::vector<S*>;
   for (unsigned int ii = 0; ii < array->Length(); ++ii) {
-    v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
-    T* result = Nan::ObjectWrap::Unwrap<T>(item->ToObject());
+    v8::Local<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
+    T* result = Nan::ObjectWrap::Unwrap<T>(Nan::To<v8::Object>(item).ToLocalChecked());
     data->push_back(&result->instance);
   };
   return *data->data();
@@ -69,8 +70,8 @@ inline S* createArrayOfV8Handles(v8::Local<v8::Value> value) {
   v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(value);
   S *data = new S[array->Length()];
   for (unsigned int ii = 0; ii < array->Length(); ++ii) {
-    v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
-    T* result = Nan::ObjectWrap::Unwrap<T>(item->ToObject());
+    v8::Local<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
+    T* result = Nan::ObjectWrap::Unwrap<T>(Nan::To<v8::Object>(item).ToLocalChecked());
     data[ii] = result->instance;
   };
   return data;
@@ -81,8 +82,8 @@ inline S* copyArrayOfV8Objects(v8::Local<v8::Value> value) {
   v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(value);
   std::vector<S>* data = new std::vector<S>;
   for (unsigned int ii = 0; ii < array->Length(); ++ii) {
-    v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
-    T* result = Nan::ObjectWrap::Unwrap<T>(item->ToObject());
+    v8::Local<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
+    T* result = Nan::ObjectWrap::Unwrap<T>(Nan::To<v8::Object>(item).ToLocalChecked());
     data->push_back(result->instance);
   };
   return data->data();

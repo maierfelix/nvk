@@ -86,8 +86,8 @@ npm run [script] [flag] [value]
 
 #### Flags:
 ````
- [-vkversion] [version]: The Vulkan version to generate bindings for
- [-msvsversion] [msvsversion]: The Visual Studio version to build the bindings with
+ [--vkversion] [version]: The Vulkan version to generate bindings for
+ [--msvsversion] [msvsversion]: The Visual Studio version to build the bindings with
 ````
 
 ### Usage:
@@ -95,7 +95,7 @@ npm run [script] [flag] [value]
 #### Generation:
 You can specify a version to generate bindings for like this:
 ````
-npm run generate -vkversion=1.1.85
+npm run generate --vkversion=1.1.85
 ````
 
  - Make sure the specified version to generate bindings for can be found [here](https://github.com/KhronosGroup/Vulkan-Docs/releases)
@@ -105,7 +105,7 @@ npm run generate -vkversion=1.1.85
 #### Building:
 You can build the generated bindings like this:
 ````
-npm run build -vkversion=1.1.85 -msvsversion=2017
+npm run build --vkversion=1.1.85 --msvsversion=2017
 ````
 
 The compiled bindings can then be found in `generated/{vkversion}/build`

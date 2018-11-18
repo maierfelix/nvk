@@ -18,35 +18,35 @@ static void createV8ArrayBufferFromMemory(const Nan::FunctionCallbackInfo<v8::Va
   if (!(info[1]->IsNumber())) Nan::ThrowError("Second argument must be a number!");
   v8::Local<v8::BigInt> arg0 = v8::Local<v8::BigInt>::Cast(info[0]);
   int64_t addr = arg0->Int64Value();
-  uint32_t size = info[1]->Uint32Value();
+  uint32_t size = Nan::To<uint32_t>(info[1]).FromMaybe(0);
   v8::Local<v8::ArrayBuffer> arr = v8::ArrayBuffer::New(
     v8::Isolate::GetCurrent(),
     reinterpret_cast<void *>(addr),
     size,
-    v8::ArrayBufferCreationMode::kExternalized 
+    v8::ArrayBufferCreationMode::kExternalized
   );
   info.GetReturnValue().Set(arr);
 };
 
 static void _VK_MAKE_VERSION(const Nan::FunctionCallbackInfo<v8::Value>& info) {
-  uint32_t major = info[0]->Uint32Value();
-  uint32_t minor = info[1]->Uint32Value();
-  uint32_t patch = info[2]->Uint32Value();
+  uint32_t major = Nan::To<uint32_t>(info[0]).FromMaybe(0);
+  uint32_t minor = Nan::To<uint32_t>(info[1]).FromMaybe(0);
+  uint32_t patch = Nan::To<uint32_t>(info[2]).FromMaybe(0);
   info.GetReturnValue().Set(VK_MAKE_VERSION(major, minor, patch));
 };
 
 static void _VK_VERSION_MAJOR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
-  uint32_t version = info[0]->Uint32Value();
+  uint32_t version = Nan::To<uint32_t>(info[0]).FromMaybe(0);;
   info.GetReturnValue().Set((uint32_t)(version) >> 22);
 };
 
 static void _VK_VERSION_MINOR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
-  uint32_t version = info[0]->Uint32Value();
+  uint32_t version = Nan::To<uint32_t>(info[0]).FromMaybe(0);;
   info.GetReturnValue().Set(((uint32_t)(version) >> 12) & 0x3ff);
 };
 
 static void _VK_VERSION_PATCH(const Nan::FunctionCallbackInfo<v8::Value>& info) {
-  uint32_t version = info[0]->Uint32Value();
+  uint32_t version = Nan::To<uint32_t>(info[0]).FromMaybe(0);;
   info.GetReturnValue().Set((uint32_t)(version) & 0xfff);
 };
 

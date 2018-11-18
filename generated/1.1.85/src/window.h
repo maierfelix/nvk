@@ -284,8 +284,8 @@ NAN_METHOD(VulkanWindow::New) {
       v8::Local<v8::Value> argWidth = obj->Get(Nan::New("width").ToLocalChecked());
       v8::Local<v8::Value> argHeight = obj->Get(Nan::New("height").ToLocalChecked());
       v8::Local<v8::Value> argTitle = obj->Get(Nan::New("title").ToLocalChecked());
-      if (!argWidth->IsUndefined()) self->width = argWidth->Uint32Value();
-      if (!argHeight->IsUndefined()) self->height = argHeight->Uint32Value();
+      if (!argWidth->IsUndefined()) self->width = Nan::To<uint32_t>(argWidth).FromMaybe(0);
+      if (!argHeight->IsUndefined()) self->height = Nan::To<uint32_t>(argHeight).FromMaybe(0);
       if (!argTitle->IsUndefined()) self->title = *v8::String::Utf8Value(v8::Isolate::GetCurrent(), argTitle);
     }
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
@@ -402,7 +402,7 @@ NAN_GETTER(VulkanWindow::Getwidth) {
 NAN_SETTER(VulkanWindow::Setwidth) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
   GLFWwindow* window = self->instance;
-  self->width = static_cast<int>(value->NumberValue());
+  self->width = static_cast<int>(Nan::To<uint32_t>(value).FromMaybe(0));
   glfwSetWindowSize(window, self->width, self->height);
   VulkanWindow::onWindowResize(window, self->width, self->height);
 }
@@ -415,7 +415,7 @@ NAN_GETTER(VulkanWindow::Getheight) {
 NAN_SETTER(VulkanWindow::Setheight) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
   GLFWwindow* window = self->instance;
-  self->height = static_cast<int>(value->NumberValue());
+  self->height = static_cast<int>(Nan::To<uint32_t>(value).FromMaybe(0));
   glfwSetWindowSize(window, self->width, self->height);
   VulkanWindow::onWindowResize(window, self->width, self->height);
 }
