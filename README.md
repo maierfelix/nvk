@@ -1,10 +1,6 @@
 # node-vulkan
 This is a Vulkan API for node.js, which allows to interact from JavaScript with the low-level interface of Vulkan. The API of this project strives to be as close as possible to Vulkan's C API.
 
-The [chromium-ui](https://github.com/maierfelix/node-vulkan/tree/chromium-ui) branch contains an experiment about creating UIs with HTML and CSS which then get rendered in Vulkan. This is done using [Chromium-Embedded-Framework](https://bitbucket.org/chromiumembedded/cef). The browser texture is shared with vulkan's memory, so you can directly render it on top of your application. Oh yes!
-
-**Note**: This is an early experiment, use with *honor*!
-
 ## Preview:<br/>
 <img src="https://i.imgur.com/cRrVc1N.gif" width="380">
 
@@ -144,6 +140,23 @@ let renderArea = new VkRect2D({
   extent: new VkExtent2D({ width: 640, height: 480 })
 });
 ````
+
+### HTML, CSS based UIs
+
+The [chromium-ui](https://github.com/maierfelix/node-vulkan/tree/chromium-ui) branch contains an experiment about letting users create UIs with a complete HTML/CSS browser toolchain. The website (browser frame) can then be rendered inside Vulkan. This is done using [Chromium-Embedded-Framework](https://bitbucket.org/chromiumembedded/cef). The browser texture is shared with vulkan's memory, so you can directly render it on top of your application. Oh yes!
+
+There is one last thing that prevents me from merging it. At the moment, browser redraws trigger a CPU texture copying path, which is horribly slow. At the moment the pipeline is:
+
+ - **[** CEF **|->** OpenGL **<->** Vulkan **]**
+
+CEF recently got shared textures added, meaning crazy performance and no CPU wandering anymore! The above pipeline could now be:
+ - **[** CEF **<->** D3D11 **<->** Vulkan **]**
+
+---
+ - **|->** copying
+ - **<->** sharing
+
+But CEF's shared textures on Windows require D3D11 which I'm not familiar with. If you're interested in helping and solving this one last step, please make a PR!
 
 ### TODOs:
  - [ ] Struct generation (~85%)
