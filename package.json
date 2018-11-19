@@ -1,7 +1,7 @@
 {
   "name": "node-vulkan",
   "main": "index.js",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "engines": {
     "node": ">= 10.9.0"
   },
