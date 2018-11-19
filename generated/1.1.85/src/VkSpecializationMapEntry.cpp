@@ -65,7 +65,7 @@ NAN_GETTER(_VkSpecializationMapEntry::GetconstantID) {
   if (value->IsNumber()) {
     self->instance.constantID = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'constantID' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSpecializationMapEntry.constantID'");
   }
 }// offset
 NAN_GETTER(_VkSpecializationMapEntry::Getoffset) {
@@ -76,7 +76,7 @@ NAN_GETTER(_VkSpecializationMapEntry::Getoffset) {
   if (value->IsNumber()) {
     self->instance.offset = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'offset' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSpecializationMapEntry.offset'");
   }
 }// size
 NAN_GETTER(_VkSpecializationMapEntry::Getsize) {
@@ -87,6 +87,6 @@ NAN_GETTER(_VkSpecializationMapEntry::Getsize) {
   if (value->IsNumber()) {
     self->instance.size = static_cast<size_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'size' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSpecializationMapEntry.size'");
   }
 }

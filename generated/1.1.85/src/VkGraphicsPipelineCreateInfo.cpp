@@ -113,7 +113,7 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkGraphicsPipelineCreateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpNext) {
@@ -129,7 +129,7 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkPipelineCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkGraphicsPipelineCreateInfo.flags'");
   }
 }// stageCount
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetstageCount) {
@@ -140,7 +140,7 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetstageCount) {
   if (value->IsNumber()) {
     self->instance.stageCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'stageCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkGraphicsPipelineCreateInfo.stageCount'");
   }
 }// pStages
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpStages) {
@@ -160,7 +160,7 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpStages) {
     } else if (value->IsNull()) {
       self->pStages.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pStages' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkPipelineShaderStageCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pStages'");
     }
   
   // vulkan
@@ -169,7 +169,7 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpStages) {
   } else if (value->IsNull()) {
     self->instance.pStages = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pStages' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkPipelineShaderStageCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pStages'");
   }
 }// pVertexInputState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpVertexInputState) {
@@ -190,13 +190,13 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpVertexInputState) {
       _VkPipelineVertexInputStateCreateInfo* inst = Nan::ObjectWrap::Unwrap<_VkPipelineVertexInputStateCreateInfo>(obj);
       self->instance.pVertexInputState = &inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'pVertexInputState' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkPipelineVertexInputStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pVertexInputState'");
     }
   } else if (value->IsNull()) {
     self->pVertexInputState.Reset();
     self->instance.pVertexInputState = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pVertexInputState' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkPipelineVertexInputStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pVertexInputState'");
   }
 }// pInputAssemblyState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpInputAssemblyState) {
@@ -217,13 +217,13 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpInputAssemblyState) {
       _VkPipelineInputAssemblyStateCreateInfo* inst = Nan::ObjectWrap::Unwrap<_VkPipelineInputAssemblyStateCreateInfo>(obj);
       self->instance.pInputAssemblyState = &inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'pInputAssemblyState' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkPipelineInputAssemblyStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pInputAssemblyState'");
     }
   } else if (value->IsNull()) {
     self->pInputAssemblyState.Reset();
     self->instance.pInputAssemblyState = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pInputAssemblyState' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkPipelineInputAssemblyStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pInputAssemblyState'");
   }
 }// pTessellationState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpTessellationState) {
@@ -244,13 +244,13 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpTessellationState) {
       _VkPipelineTessellationStateCreateInfo* inst = Nan::ObjectWrap::Unwrap<_VkPipelineTessellationStateCreateInfo>(obj);
       self->instance.pTessellationState = &inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'pTessellationState' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkPipelineTessellationStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pTessellationState'");
     }
   } else if (value->IsNull()) {
     self->pTessellationState.Reset();
     self->instance.pTessellationState = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pTessellationState' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkPipelineTessellationStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pTessellationState'");
   }
 }// pViewportState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpViewportState) {
@@ -271,13 +271,13 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpViewportState) {
       _VkPipelineViewportStateCreateInfo* inst = Nan::ObjectWrap::Unwrap<_VkPipelineViewportStateCreateInfo>(obj);
       self->instance.pViewportState = &inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'pViewportState' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkPipelineViewportStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pViewportState'");
     }
   } else if (value->IsNull()) {
     self->pViewportState.Reset();
     self->instance.pViewportState = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pViewportState' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkPipelineViewportStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pViewportState'");
   }
 }// pRasterizationState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpRasterizationState) {
@@ -298,13 +298,13 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpRasterizationState) {
       _VkPipelineRasterizationStateCreateInfo* inst = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(obj);
       self->instance.pRasterizationState = &inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'pRasterizationState' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkPipelineRasterizationStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pRasterizationState'");
     }
   } else if (value->IsNull()) {
     self->pRasterizationState.Reset();
     self->instance.pRasterizationState = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pRasterizationState' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkPipelineRasterizationStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pRasterizationState'");
   }
 }// pMultisampleState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpMultisampleState) {
@@ -325,13 +325,13 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpMultisampleState) {
       _VkPipelineMultisampleStateCreateInfo* inst = Nan::ObjectWrap::Unwrap<_VkPipelineMultisampleStateCreateInfo>(obj);
       self->instance.pMultisampleState = &inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'pMultisampleState' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkPipelineMultisampleStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pMultisampleState'");
     }
   } else if (value->IsNull()) {
     self->pMultisampleState.Reset();
     self->instance.pMultisampleState = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pMultisampleState' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkPipelineMultisampleStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pMultisampleState'");
   }
 }// pDepthStencilState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpDepthStencilState) {
@@ -352,13 +352,13 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpDepthStencilState) {
       _VkPipelineDepthStencilStateCreateInfo* inst = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(obj);
       self->instance.pDepthStencilState = &inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'pDepthStencilState' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkPipelineDepthStencilStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pDepthStencilState'");
     }
   } else if (value->IsNull()) {
     self->pDepthStencilState.Reset();
     self->instance.pDepthStencilState = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pDepthStencilState' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkPipelineDepthStencilStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pDepthStencilState'");
   }
 }// pColorBlendState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpColorBlendState) {
@@ -379,13 +379,13 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpColorBlendState) {
       _VkPipelineColorBlendStateCreateInfo* inst = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendStateCreateInfo>(obj);
       self->instance.pColorBlendState = &inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'pColorBlendState' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkPipelineColorBlendStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pColorBlendState'");
     }
   } else if (value->IsNull()) {
     self->pColorBlendState.Reset();
     self->instance.pColorBlendState = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pColorBlendState' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkPipelineColorBlendStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pColorBlendState'");
   }
 }// pDynamicState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpDynamicState) {
@@ -406,13 +406,13 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpDynamicState) {
       _VkPipelineDynamicStateCreateInfo* inst = Nan::ObjectWrap::Unwrap<_VkPipelineDynamicStateCreateInfo>(obj);
       self->instance.pDynamicState = &inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'pDynamicState' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkPipelineDynamicStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pDynamicState'");
     }
   } else if (value->IsNull()) {
     self->pDynamicState.Reset();
     self->instance.pDynamicState = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pDynamicState' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkPipelineDynamicStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pDynamicState'");
   }
 }// layout
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::Getlayout) {
@@ -433,13 +433,13 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::Getlayout) {
       _VkPipelineLayout* inst = Nan::ObjectWrap::Unwrap<_VkPipelineLayout>(obj);
       self->instance.layout = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'layout' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkPipelineLayout]' for 'VkGraphicsPipelineCreateInfo.layout'");
     }
   } else if (value->IsNull()) {
     self->layout.Reset();
     self->instance.layout = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'layout' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkPipelineLayout]' for 'VkGraphicsPipelineCreateInfo.layout'");
   }
 }// renderPass
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetrenderPass) {
@@ -460,13 +460,13 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetrenderPass) {
       _VkRenderPass* inst = Nan::ObjectWrap::Unwrap<_VkRenderPass>(obj);
       self->instance.renderPass = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'renderPass' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkRenderPass]' for 'VkGraphicsPipelineCreateInfo.renderPass'");
     }
   } else if (value->IsNull()) {
     self->renderPass.Reset();
     self->instance.renderPass = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'renderPass' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkRenderPass]' for 'VkGraphicsPipelineCreateInfo.renderPass'");
   }
 }// subpass
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::Getsubpass) {
@@ -477,7 +477,7 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::Getsubpass) {
   if (value->IsNumber()) {
     self->instance.subpass = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'subpass' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkGraphicsPipelineCreateInfo.subpass'");
   }
 }// basePipelineHandle
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetbasePipelineHandle) {
@@ -498,13 +498,13 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetbasePipelineHandle) {
       _VkPipeline* inst = Nan::ObjectWrap::Unwrap<_VkPipeline>(obj);
       self->instance.basePipelineHandle = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'basePipelineHandle' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkPipeline]' for 'VkGraphicsPipelineCreateInfo.basePipelineHandle'");
     }
   } else if (value->IsNull()) {
     self->basePipelineHandle.Reset();
     self->instance.basePipelineHandle = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'basePipelineHandle' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkPipeline]' for 'VkGraphicsPipelineCreateInfo.basePipelineHandle'");
   }
 }// basePipelineIndex
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetbasePipelineIndex) {
@@ -515,6 +515,6 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetbasePipelineIndex) {
   if (value->IsNumber()) {
     self->instance.basePipelineIndex = static_cast<int32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'basePipelineIndex' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkGraphicsPipelineCreateInfo.basePipelineIndex'");
   }
 }

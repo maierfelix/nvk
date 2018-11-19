@@ -74,7 +74,7 @@ NAN_GETTER(_VkDeviceQueueCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDeviceQueueCreateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkDeviceQueueCreateInfo::GetpNext) {
@@ -90,7 +90,7 @@ NAN_GETTER(_VkDeviceQueueCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkDeviceQueueCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDeviceQueueCreateInfo.flags'");
   }
 }// queueFamilyIndex
 NAN_GETTER(_VkDeviceQueueCreateInfo::GetqueueFamilyIndex) {
@@ -101,7 +101,7 @@ NAN_GETTER(_VkDeviceQueueCreateInfo::GetqueueFamilyIndex) {
   if (value->IsNumber()) {
     self->instance.queueFamilyIndex = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'queueFamilyIndex' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDeviceQueueCreateInfo.queueFamilyIndex'");
   }
 }// queueCount
 NAN_GETTER(_VkDeviceQueueCreateInfo::GetqueueCount) {
@@ -112,7 +112,7 @@ NAN_GETTER(_VkDeviceQueueCreateInfo::GetqueueCount) {
   if (value->IsNumber()) {
     self->instance.queueCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'queueCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDeviceQueueCreateInfo.queueCount'");
   }
 }// pQueuePriorities
 NAN_GETTER(_VkDeviceQueueCreateInfo::GetpQueuePriorities) {
@@ -128,11 +128,15 @@ NAN_GETTER(_VkDeviceQueueCreateInfo::GetpQueuePriorities) {
   
     // js
     if (value->IsArrayBufferView()) {
-      self->pQueuePriorities.Reset<v8::Array>(value.As<v8::Array>());
+      if (value->IsFloat32Array()) {
+        self->pQueuePriorities.Reset<v8::Array>(value.As<v8::Array>());
+      } else {
+        return Nan::ThrowTypeError("Expected 'Float32Array' for 'VkDeviceQueueCreateInfo.pQueuePriorities'");
+      }
     } else if (value->IsNull()) {
       self->pQueuePriorities.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pQueuePriorities' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Float32Array' for 'VkDeviceQueueCreateInfo.pQueuePriorities'");
     }
   
   

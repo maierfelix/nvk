@@ -86,7 +86,7 @@ NAN_GETTER(_VkWriteDescriptorSet::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkWriteDescriptorSet.sType'");
   }
 }// pNext
 NAN_GETTER(_VkWriteDescriptorSet::GetpNext) {
@@ -112,13 +112,13 @@ NAN_GETTER(_VkWriteDescriptorSet::GetdstSet) {
       _VkDescriptorSet* inst = Nan::ObjectWrap::Unwrap<_VkDescriptorSet>(obj);
       self->instance.dstSet = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'dstSet' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkDescriptorSet]' for 'VkWriteDescriptorSet.dstSet'");
     }
   } else if (value->IsNull()) {
     self->dstSet.Reset();
     self->instance.dstSet = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'dstSet' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkDescriptorSet]' for 'VkWriteDescriptorSet.dstSet'");
   }
 }// dstBinding
 NAN_GETTER(_VkWriteDescriptorSet::GetdstBinding) {
@@ -129,7 +129,7 @@ NAN_GETTER(_VkWriteDescriptorSet::GetdstBinding) {
   if (value->IsNumber()) {
     self->instance.dstBinding = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'dstBinding' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkWriteDescriptorSet.dstBinding'");
   }
 }// dstArrayElement
 NAN_GETTER(_VkWriteDescriptorSet::GetdstArrayElement) {
@@ -140,7 +140,7 @@ NAN_GETTER(_VkWriteDescriptorSet::GetdstArrayElement) {
   if (value->IsNumber()) {
     self->instance.dstArrayElement = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'dstArrayElement' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkWriteDescriptorSet.dstArrayElement'");
   }
 }// descriptorCount
 NAN_GETTER(_VkWriteDescriptorSet::GetdescriptorCount) {
@@ -151,7 +151,7 @@ NAN_GETTER(_VkWriteDescriptorSet::GetdescriptorCount) {
   if (value->IsNumber()) {
     self->instance.descriptorCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'descriptorCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkWriteDescriptorSet.descriptorCount'");
   }
 }// descriptorType
 NAN_GETTER(_VkWriteDescriptorSet::GetdescriptorType) {
@@ -162,7 +162,7 @@ NAN_GETTER(_VkWriteDescriptorSet::GetdescriptorType) {
   if (value->IsNumber()) {
     self->instance.descriptorType = static_cast<VkDescriptorType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'descriptorType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkWriteDescriptorSet.descriptorType'");
   }
 }// pImageInfo
 NAN_GETTER(_VkWriteDescriptorSet::GetpImageInfo) {
@@ -182,7 +182,7 @@ NAN_GETTER(_VkWriteDescriptorSet::GetpImageInfo) {
     } else if (value->IsNull()) {
       self->pImageInfo.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pImageInfo' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkDescriptorImageInfo]' for 'VkWriteDescriptorSet.pImageInfo'");
     }
   
   // vulkan
@@ -191,7 +191,7 @@ NAN_GETTER(_VkWriteDescriptorSet::GetpImageInfo) {
   } else if (value->IsNull()) {
     self->instance.pImageInfo = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pImageInfo' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkDescriptorImageInfo]' for 'VkWriteDescriptorSet.pImageInfo'");
   }
 }// pBufferInfo
 NAN_GETTER(_VkWriteDescriptorSet::GetpBufferInfo) {
@@ -211,7 +211,7 @@ NAN_GETTER(_VkWriteDescriptorSet::GetpBufferInfo) {
     } else if (value->IsNull()) {
       self->pBufferInfo.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pBufferInfo' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkDescriptorBufferInfo]' for 'VkWriteDescriptorSet.pBufferInfo'");
     }
   
   // vulkan
@@ -220,7 +220,7 @@ NAN_GETTER(_VkWriteDescriptorSet::GetpBufferInfo) {
   } else if (value->IsNull()) {
     self->instance.pBufferInfo = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pBufferInfo' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkDescriptorBufferInfo]' for 'VkWriteDescriptorSet.pBufferInfo'");
   }
 }// pTexelBufferView
 NAN_GETTER(_VkWriteDescriptorSet::GetpTexelBufferView) {
@@ -240,7 +240,7 @@ NAN_GETTER(_VkWriteDescriptorSet::GetpTexelBufferView) {
     } else if (value->IsNull()) {
       self->pTexelBufferView.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pTexelBufferView' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkBufferView]' for 'VkWriteDescriptorSet.pTexelBufferView'");
     }
   
   // vulkan
@@ -249,6 +249,6 @@ NAN_GETTER(_VkWriteDescriptorSet::GetpTexelBufferView) {
   } else if (value->IsNull()) {
     self->instance.pTexelBufferView = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'pTexelBufferView' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkBufferView]' for 'VkWriteDescriptorSet.pTexelBufferView'");
   }
 }

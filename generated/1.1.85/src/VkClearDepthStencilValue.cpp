@@ -62,7 +62,7 @@ NAN_GETTER(_VkClearDepthStencilValue::Getdepth) {
   if (value->IsNumber()) {
     self->instance.depth = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'depth' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkClearDepthStencilValue.depth'");
   }
 }// stencil
 NAN_GETTER(_VkClearDepthStencilValue::Getstencil) {
@@ -73,6 +73,6 @@ NAN_GETTER(_VkClearDepthStencilValue::Getstencil) {
   if (value->IsNumber()) {
     self->instance.stencil = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'stencil' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkClearDepthStencilValue.stencil'");
   }
 }

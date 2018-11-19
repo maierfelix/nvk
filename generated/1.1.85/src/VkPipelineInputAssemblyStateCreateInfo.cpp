@@ -71,7 +71,7 @@ NAN_GETTER(_VkPipelineInputAssemblyStateCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineInputAssemblyStateCreateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkPipelineInputAssemblyStateCreateInfo::GetpNext) {
@@ -87,7 +87,7 @@ NAN_GETTER(_VkPipelineInputAssemblyStateCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkPipelineInputAssemblyStateCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineInputAssemblyStateCreateInfo.flags'");
   }
 }// topology
 NAN_GETTER(_VkPipelineInputAssemblyStateCreateInfo::Gettopology) {
@@ -98,7 +98,7 @@ NAN_GETTER(_VkPipelineInputAssemblyStateCreateInfo::Gettopology) {
   if (value->IsNumber()) {
     self->instance.topology = static_cast<VkPrimitiveTopology>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'topology' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineInputAssemblyStateCreateInfo.topology'");
   }
 }// primitiveRestartEnable
 NAN_GETTER(_VkPipelineInputAssemblyStateCreateInfo::GetprimitiveRestartEnable) {
@@ -109,6 +109,6 @@ NAN_GETTER(_VkPipelineInputAssemblyStateCreateInfo::GetprimitiveRestartEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.primitiveRestartEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'primitiveRestartEnable' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineInputAssemblyStateCreateInfo.primitiveRestartEnable'");
   }
 }

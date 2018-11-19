@@ -86,7 +86,7 @@ NAN_GETTER(_VkImageMemoryBarrier::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageMemoryBarrier.sType'");
   }
 }// pNext
 NAN_GETTER(_VkImageMemoryBarrier::GetpNext) {
@@ -102,7 +102,7 @@ NAN_GETTER(_VkImageMemoryBarrier::GetsrcAccessMask) {
   if (value->IsNumber()) {
     self->instance.srcAccessMask = static_cast<VkAccessFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'srcAccessMask' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageMemoryBarrier.srcAccessMask'");
   }
 }// dstAccessMask
 NAN_GETTER(_VkImageMemoryBarrier::GetdstAccessMask) {
@@ -113,7 +113,7 @@ NAN_GETTER(_VkImageMemoryBarrier::GetdstAccessMask) {
   if (value->IsNumber()) {
     self->instance.dstAccessMask = static_cast<VkAccessFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'dstAccessMask' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageMemoryBarrier.dstAccessMask'");
   }
 }// oldLayout
 NAN_GETTER(_VkImageMemoryBarrier::GetoldLayout) {
@@ -124,7 +124,7 @@ NAN_GETTER(_VkImageMemoryBarrier::GetoldLayout) {
   if (value->IsNumber()) {
     self->instance.oldLayout = static_cast<VkImageLayout>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'oldLayout' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageMemoryBarrier.oldLayout'");
   }
 }// newLayout
 NAN_GETTER(_VkImageMemoryBarrier::GetnewLayout) {
@@ -135,7 +135,7 @@ NAN_GETTER(_VkImageMemoryBarrier::GetnewLayout) {
   if (value->IsNumber()) {
     self->instance.newLayout = static_cast<VkImageLayout>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'newLayout' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageMemoryBarrier.newLayout'");
   }
 }// srcQueueFamilyIndex
 NAN_GETTER(_VkImageMemoryBarrier::GetsrcQueueFamilyIndex) {
@@ -146,7 +146,7 @@ NAN_GETTER(_VkImageMemoryBarrier::GetsrcQueueFamilyIndex) {
   if (value->IsNumber()) {
     self->instance.srcQueueFamilyIndex = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'srcQueueFamilyIndex' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageMemoryBarrier.srcQueueFamilyIndex'");
   }
 }// dstQueueFamilyIndex
 NAN_GETTER(_VkImageMemoryBarrier::GetdstQueueFamilyIndex) {
@@ -157,7 +157,7 @@ NAN_GETTER(_VkImageMemoryBarrier::GetdstQueueFamilyIndex) {
   if (value->IsNumber()) {
     self->instance.dstQueueFamilyIndex = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'dstQueueFamilyIndex' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageMemoryBarrier.dstQueueFamilyIndex'");
   }
 }// image
 NAN_GETTER(_VkImageMemoryBarrier::Getimage) {
@@ -178,13 +178,13 @@ NAN_GETTER(_VkImageMemoryBarrier::Getimage) {
       _VkImage* inst = Nan::ObjectWrap::Unwrap<_VkImage>(obj);
       self->instance.image = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'image' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkImage]' for 'VkImageMemoryBarrier.image'");
     }
   } else if (value->IsNull()) {
     self->image.Reset();
     self->instance.image = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'image' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkImage]' for 'VkImageMemoryBarrier.image'");
   }
 }// subresourceRange
 NAN_GETTER(_VkImageMemoryBarrier::GetsubresourceRange) {
@@ -205,12 +205,12 @@ NAN_GETTER(_VkImageMemoryBarrier::GetsubresourceRange) {
       _VkImageSubresourceRange* inst = Nan::ObjectWrap::Unwrap<_VkImageSubresourceRange>(obj);
       self->instance.subresourceRange = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'subresourceRange' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkImageSubresourceRange]' for 'VkImageMemoryBarrier.subresourceRange'");
     }
   } else if (value->IsNull()) {
     self->subresourceRange.Reset();
     memset(&self->instance.subresourceRange, 0, sizeof(VkImageSubresourceRange));
   } else {
-    return Nan::ThrowError("Value of member 'subresourceRange' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkImageSubresourceRange]' for 'VkImageMemoryBarrier.subresourceRange'");
   }
 }

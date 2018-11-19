@@ -72,13 +72,13 @@ NAN_GETTER(_VkClearValue::Getcolor) {
       _VkClearColorValue* inst = Nan::ObjectWrap::Unwrap<_VkClearColorValue>(obj);
       self->instance.color = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'color' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkClearColorValue]' for 'VkClearValue.color'");
     }
   } else if (value->IsNull()) {
     self->color.Reset();
     memset(&self->instance.color, 0, sizeof(VkClearColorValue));
   } else {
-    return Nan::ThrowError("Value of member 'color' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkClearColorValue]' for 'VkClearValue.color'");
   }
 }// depthStencil
 NAN_GETTER(_VkClearValue::GetdepthStencil) {
@@ -99,12 +99,12 @@ NAN_GETTER(_VkClearValue::GetdepthStencil) {
       _VkClearDepthStencilValue* inst = Nan::ObjectWrap::Unwrap<_VkClearDepthStencilValue>(obj);
       self->instance.depthStencil = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'depthStencil' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkClearDepthStencilValue]' for 'VkClearValue.depthStencil'");
     }
   } else if (value->IsNull()) {
     self->depthStencil.Reset();
     memset(&self->instance.depthStencil, 0, sizeof(VkClearDepthStencilValue));
   } else {
-    return Nan::ThrowError("Value of member 'depthStencil' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkClearDepthStencilValue]' for 'VkClearValue.depthStencil'");
   }
 }

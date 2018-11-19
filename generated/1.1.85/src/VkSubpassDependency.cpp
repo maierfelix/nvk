@@ -77,7 +77,7 @@ NAN_GETTER(_VkSubpassDependency::GetsrcSubpass) {
   if (value->IsNumber()) {
     self->instance.srcSubpass = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'srcSubpass' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubpassDependency.srcSubpass'");
   }
 }// dstSubpass
 NAN_GETTER(_VkSubpassDependency::GetdstSubpass) {
@@ -88,7 +88,7 @@ NAN_GETTER(_VkSubpassDependency::GetdstSubpass) {
   if (value->IsNumber()) {
     self->instance.dstSubpass = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'dstSubpass' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubpassDependency.dstSubpass'");
   }
 }// srcStageMask
 NAN_GETTER(_VkSubpassDependency::GetsrcStageMask) {
@@ -99,7 +99,7 @@ NAN_GETTER(_VkSubpassDependency::GetsrcStageMask) {
   if (value->IsNumber()) {
     self->instance.srcStageMask = static_cast<VkPipelineStageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'srcStageMask' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubpassDependency.srcStageMask'");
   }
 }// dstStageMask
 NAN_GETTER(_VkSubpassDependency::GetdstStageMask) {
@@ -110,7 +110,7 @@ NAN_GETTER(_VkSubpassDependency::GetdstStageMask) {
   if (value->IsNumber()) {
     self->instance.dstStageMask = static_cast<VkPipelineStageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'dstStageMask' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubpassDependency.dstStageMask'");
   }
 }// srcAccessMask
 NAN_GETTER(_VkSubpassDependency::GetsrcAccessMask) {
@@ -121,7 +121,7 @@ NAN_GETTER(_VkSubpassDependency::GetsrcAccessMask) {
   if (value->IsNumber()) {
     self->instance.srcAccessMask = static_cast<VkAccessFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'srcAccessMask' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubpassDependency.srcAccessMask'");
   }
 }// dstAccessMask
 NAN_GETTER(_VkSubpassDependency::GetdstAccessMask) {
@@ -132,7 +132,7 @@ NAN_GETTER(_VkSubpassDependency::GetdstAccessMask) {
   if (value->IsNumber()) {
     self->instance.dstAccessMask = static_cast<VkAccessFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'dstAccessMask' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubpassDependency.dstAccessMask'");
   }
 }// dependencyFlags
 NAN_GETTER(_VkSubpassDependency::GetdependencyFlags) {
@@ -143,6 +143,6 @@ NAN_GETTER(_VkSubpassDependency::GetdependencyFlags) {
   if (value->IsNumber()) {
     self->instance.dependencyFlags = static_cast<VkDependencyFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'dependencyFlags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubpassDependency.dependencyFlags'");
   }
 }

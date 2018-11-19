@@ -80,7 +80,7 @@ NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetblendEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.blendEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'blendEnable' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendAttachmentState.blendEnable'");
   }
 }// srcColorBlendFactor
 NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetsrcColorBlendFactor) {
@@ -91,7 +91,7 @@ NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetsrcColorBlendFactor) {
   if (value->IsNumber()) {
     self->instance.srcColorBlendFactor = static_cast<VkBlendFactor>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'srcColorBlendFactor' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendAttachmentState.srcColorBlendFactor'");
   }
 }// dstColorBlendFactor
 NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetdstColorBlendFactor) {
@@ -102,7 +102,7 @@ NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetdstColorBlendFactor) {
   if (value->IsNumber()) {
     self->instance.dstColorBlendFactor = static_cast<VkBlendFactor>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'dstColorBlendFactor' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendAttachmentState.dstColorBlendFactor'");
   }
 }// colorBlendOp
 NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetcolorBlendOp) {
@@ -113,7 +113,7 @@ NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetcolorBlendOp) {
   if (value->IsNumber()) {
     self->instance.colorBlendOp = static_cast<VkBlendOp>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'colorBlendOp' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendAttachmentState.colorBlendOp'");
   }
 }// srcAlphaBlendFactor
 NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetsrcAlphaBlendFactor) {
@@ -124,7 +124,7 @@ NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetsrcAlphaBlendFactor) {
   if (value->IsNumber()) {
     self->instance.srcAlphaBlendFactor = static_cast<VkBlendFactor>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'srcAlphaBlendFactor' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendAttachmentState.srcAlphaBlendFactor'");
   }
 }// dstAlphaBlendFactor
 NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetdstAlphaBlendFactor) {
@@ -135,7 +135,7 @@ NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetdstAlphaBlendFactor) {
   if (value->IsNumber()) {
     self->instance.dstAlphaBlendFactor = static_cast<VkBlendFactor>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'dstAlphaBlendFactor' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendAttachmentState.dstAlphaBlendFactor'");
   }
 }// alphaBlendOp
 NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetalphaBlendOp) {
@@ -146,7 +146,7 @@ NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetalphaBlendOp) {
   if (value->IsNumber()) {
     self->instance.alphaBlendOp = static_cast<VkBlendOp>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'alphaBlendOp' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendAttachmentState.alphaBlendOp'");
   }
 }// colorWriteMask
 NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetcolorWriteMask) {
@@ -157,6 +157,6 @@ NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetcolorWriteMask) {
   if (value->IsNumber()) {
     self->instance.colorWriteMask = static_cast<VkColorComponentFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'colorWriteMask' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendAttachmentState.colorWriteMask'");
   }
 }

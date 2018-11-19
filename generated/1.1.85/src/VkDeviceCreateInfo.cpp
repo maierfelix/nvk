@@ -86,7 +86,7 @@ NAN_GETTER(_VkDeviceCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDeviceCreateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkDeviceCreateInfo::GetpNext) {
@@ -102,7 +102,7 @@ NAN_GETTER(_VkDeviceCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkDeviceCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDeviceCreateInfo.flags'");
   }
 }// queueCreateInfoCount
 NAN_GETTER(_VkDeviceCreateInfo::GetqueueCreateInfoCount) {
@@ -113,7 +113,7 @@ NAN_GETTER(_VkDeviceCreateInfo::GetqueueCreateInfoCount) {
   if (value->IsNumber()) {
     self->instance.queueCreateInfoCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'queueCreateInfoCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDeviceCreateInfo.queueCreateInfoCount'");
   }
 }// pQueueCreateInfos
 NAN_GETTER(_VkDeviceCreateInfo::GetpQueueCreateInfos) {
@@ -133,7 +133,7 @@ NAN_GETTER(_VkDeviceCreateInfo::GetpQueueCreateInfos) {
     } else if (value->IsNull()) {
       self->pQueueCreateInfos.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pQueueCreateInfos' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkDeviceQueueCreateInfo]' for 'VkDeviceCreateInfo.pQueueCreateInfos'");
     }
   
   // vulkan
@@ -142,7 +142,7 @@ NAN_GETTER(_VkDeviceCreateInfo::GetpQueueCreateInfos) {
   } else if (value->IsNull()) {
     self->instance.pQueueCreateInfos = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pQueueCreateInfos' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkDeviceQueueCreateInfo]' for 'VkDeviceCreateInfo.pQueueCreateInfos'");
   }
 }// enabledLayerCount
 NAN_GETTER(_VkDeviceCreateInfo::GetenabledLayerCount) {
@@ -153,7 +153,7 @@ NAN_GETTER(_VkDeviceCreateInfo::GetenabledLayerCount) {
   if (value->IsNumber()) {
     self->instance.enabledLayerCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'enabledLayerCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDeviceCreateInfo.enabledLayerCount'");
   }
 }// ppEnabledLayerNames
 NAN_GETTER(_VkDeviceCreateInfo::GetppEnabledLayerNames) {
@@ -173,7 +173,7 @@ NAN_GETTER(_VkDeviceCreateInfo::GetppEnabledLayerNames) {
     } else if (value->IsNull()) {
       self->ppEnabledLayerNames.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'ppEnabledLayerNames' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Array' for 'VkDeviceCreateInfo.ppEnabledLayerNames'");
     }
   
   // vulkan
@@ -182,7 +182,7 @@ NAN_GETTER(_VkDeviceCreateInfo::GetppEnabledLayerNames) {
   } else if (value->IsNull()) {
     self->instance.ppEnabledLayerNames = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'ppEnabledLayerNames' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Array' for 'VkDeviceCreateInfo.ppEnabledLayerNames'");
   }
 }// enabledExtensionCount
 NAN_GETTER(_VkDeviceCreateInfo::GetenabledExtensionCount) {
@@ -193,7 +193,7 @@ NAN_GETTER(_VkDeviceCreateInfo::GetenabledExtensionCount) {
   if (value->IsNumber()) {
     self->instance.enabledExtensionCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'enabledExtensionCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDeviceCreateInfo.enabledExtensionCount'");
   }
 }// ppEnabledExtensionNames
 NAN_GETTER(_VkDeviceCreateInfo::GetppEnabledExtensionNames) {
@@ -213,7 +213,7 @@ NAN_GETTER(_VkDeviceCreateInfo::GetppEnabledExtensionNames) {
     } else if (value->IsNull()) {
       self->ppEnabledExtensionNames.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'ppEnabledExtensionNames' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Array' for 'VkDeviceCreateInfo.ppEnabledExtensionNames'");
     }
   
   // vulkan
@@ -222,7 +222,7 @@ NAN_GETTER(_VkDeviceCreateInfo::GetppEnabledExtensionNames) {
   } else if (value->IsNull()) {
     self->instance.ppEnabledExtensionNames = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'ppEnabledExtensionNames' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Array' for 'VkDeviceCreateInfo.ppEnabledExtensionNames'");
   }
 }// pEnabledFeatures
 NAN_GETTER(_VkDeviceCreateInfo::GetpEnabledFeatures) {
@@ -243,12 +243,12 @@ NAN_GETTER(_VkDeviceCreateInfo::GetpEnabledFeatures) {
       _VkPhysicalDeviceFeatures* inst = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(obj);
       self->instance.pEnabledFeatures = &inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'pEnabledFeatures' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkPhysicalDeviceFeatures]' for 'VkDeviceCreateInfo.pEnabledFeatures'");
     }
   } else if (value->IsNull()) {
     self->pEnabledFeatures.Reset();
     self->instance.pEnabledFeatures = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pEnabledFeatures' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkPhysicalDeviceFeatures]' for 'VkDeviceCreateInfo.pEnabledFeatures'");
   }
 }

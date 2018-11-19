@@ -72,13 +72,13 @@ NAN_GETTER(_VkRect2D::Getoffset) {
       _VkOffset2D* inst = Nan::ObjectWrap::Unwrap<_VkOffset2D>(obj);
       self->instance.offset = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'offset' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkOffset2D]' for 'VkRect2D.offset'");
     }
   } else if (value->IsNull()) {
     self->offset.Reset();
     memset(&self->instance.offset, 0, sizeof(VkOffset2D));
   } else {
-    return Nan::ThrowError("Value of member 'offset' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkOffset2D]' for 'VkRect2D.offset'");
   }
 }// extent
 NAN_GETTER(_VkRect2D::Getextent) {
@@ -99,12 +99,12 @@ NAN_GETTER(_VkRect2D::Getextent) {
       _VkExtent2D* inst = Nan::ObjectWrap::Unwrap<_VkExtent2D>(obj);
       self->instance.extent = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'extent' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkExtent2D]' for 'VkRect2D.extent'");
     }
   } else if (value->IsNull()) {
     self->extent.Reset();
     memset(&self->instance.extent, 0, sizeof(VkExtent2D));
   } else {
-    return Nan::ThrowError("Value of member 'extent' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkExtent2D]' for 'VkRect2D.extent'");
   }
 }

@@ -71,7 +71,7 @@ NAN_GETTER(_VkDescriptorSetAllocateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorSetAllocateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkDescriptorSetAllocateInfo::GetpNext) {
@@ -97,13 +97,13 @@ NAN_GETTER(_VkDescriptorSetAllocateInfo::GetdescriptorPool) {
       _VkDescriptorPool* inst = Nan::ObjectWrap::Unwrap<_VkDescriptorPool>(obj);
       self->instance.descriptorPool = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'descriptorPool' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkDescriptorPool]' for 'VkDescriptorSetAllocateInfo.descriptorPool'");
     }
   } else if (value->IsNull()) {
     self->descriptorPool.Reset();
     self->instance.descriptorPool = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'descriptorPool' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkDescriptorPool]' for 'VkDescriptorSetAllocateInfo.descriptorPool'");
   }
 }// descriptorSetCount
 NAN_GETTER(_VkDescriptorSetAllocateInfo::GetdescriptorSetCount) {
@@ -114,7 +114,7 @@ NAN_GETTER(_VkDescriptorSetAllocateInfo::GetdescriptorSetCount) {
   if (value->IsNumber()) {
     self->instance.descriptorSetCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'descriptorSetCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorSetAllocateInfo.descriptorSetCount'");
   }
 }// pSetLayouts
 NAN_GETTER(_VkDescriptorSetAllocateInfo::GetpSetLayouts) {
@@ -134,7 +134,7 @@ NAN_GETTER(_VkDescriptorSetAllocateInfo::GetpSetLayouts) {
     } else if (value->IsNull()) {
       self->pSetLayouts.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pSetLayouts' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkDescriptorSetLayout]' for 'VkDescriptorSetAllocateInfo.pSetLayouts'");
     }
   
   // vulkan
@@ -143,6 +143,6 @@ NAN_GETTER(_VkDescriptorSetAllocateInfo::GetpSetLayouts) {
   } else if (value->IsNull()) {
     self->instance.pSetLayouts = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'pSetLayouts' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkDescriptorSetLayout]' for 'VkDescriptorSetAllocateInfo.pSetLayouts'");
   }
 }

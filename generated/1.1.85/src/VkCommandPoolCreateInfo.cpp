@@ -68,7 +68,7 @@ NAN_GETTER(_VkCommandPoolCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandPoolCreateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkCommandPoolCreateInfo::GetpNext) {
@@ -84,7 +84,7 @@ NAN_GETTER(_VkCommandPoolCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkCommandPoolCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandPoolCreateInfo.flags'");
   }
 }// queueFamilyIndex
 NAN_GETTER(_VkCommandPoolCreateInfo::GetqueueFamilyIndex) {
@@ -95,6 +95,6 @@ NAN_GETTER(_VkCommandPoolCreateInfo::GetqueueFamilyIndex) {
   if (value->IsNumber()) {
     self->instance.queueFamilyIndex = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'queueFamilyIndex' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandPoolCreateInfo.queueFamilyIndex'");
   }
 }

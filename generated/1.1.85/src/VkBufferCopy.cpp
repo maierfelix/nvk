@@ -65,7 +65,7 @@ NAN_GETTER(_VkBufferCopy::GetsrcOffset) {
   if (value->IsNumber()) {
     self->instance.srcOffset = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'srcOffset' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferCopy.srcOffset'");
   }
 }// dstOffset
 NAN_GETTER(_VkBufferCopy::GetdstOffset) {
@@ -76,7 +76,7 @@ NAN_GETTER(_VkBufferCopy::GetdstOffset) {
   if (value->IsNumber()) {
     self->instance.dstOffset = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'dstOffset' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferCopy.dstOffset'");
   }
 }// size
 NAN_GETTER(_VkBufferCopy::Getsize) {
@@ -87,6 +87,6 @@ NAN_GETTER(_VkBufferCopy::Getsize) {
   if (value->IsNumber()) {
     self->instance.size = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'size' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferCopy.size'");
   }
 }

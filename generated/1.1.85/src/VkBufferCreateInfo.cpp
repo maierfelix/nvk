@@ -80,7 +80,7 @@ NAN_GETTER(_VkBufferCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferCreateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkBufferCreateInfo::GetpNext) {
@@ -96,7 +96,7 @@ NAN_GETTER(_VkBufferCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkBufferCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferCreateInfo.flags'");
   }
 }// size
 NAN_GETTER(_VkBufferCreateInfo::Getsize) {
@@ -107,7 +107,7 @@ NAN_GETTER(_VkBufferCreateInfo::Getsize) {
   if (value->IsNumber()) {
     self->instance.size = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'size' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferCreateInfo.size'");
   }
 }// usage
 NAN_GETTER(_VkBufferCreateInfo::Getusage) {
@@ -118,7 +118,7 @@ NAN_GETTER(_VkBufferCreateInfo::Getusage) {
   if (value->IsNumber()) {
     self->instance.usage = static_cast<VkBufferUsageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'usage' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferCreateInfo.usage'");
   }
 }// sharingMode
 NAN_GETTER(_VkBufferCreateInfo::GetsharingMode) {
@@ -129,7 +129,7 @@ NAN_GETTER(_VkBufferCreateInfo::GetsharingMode) {
   if (value->IsNumber()) {
     self->instance.sharingMode = static_cast<VkSharingMode>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sharingMode' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferCreateInfo.sharingMode'");
   }
 }// queueFamilyIndexCount
 NAN_GETTER(_VkBufferCreateInfo::GetqueueFamilyIndexCount) {
@@ -140,7 +140,7 @@ NAN_GETTER(_VkBufferCreateInfo::GetqueueFamilyIndexCount) {
   if (value->IsNumber()) {
     self->instance.queueFamilyIndexCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'queueFamilyIndexCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferCreateInfo.queueFamilyIndexCount'");
   }
 }// pQueueFamilyIndices
 NAN_GETTER(_VkBufferCreateInfo::GetpQueueFamilyIndices) {
@@ -156,11 +156,15 @@ NAN_GETTER(_VkBufferCreateInfo::GetpQueueFamilyIndices) {
   
     // js
     if (value->IsArrayBufferView()) {
-      self->pQueueFamilyIndices.Reset<v8::Array>(value.As<v8::Array>());
+      if (value->IsUint32Array()) {
+        self->pQueueFamilyIndices.Reset<v8::Array>(value.As<v8::Array>());
+      } else {
+        return Nan::ThrowTypeError("Expected 'Uint32Array' for 'VkBufferCreateInfo.pQueueFamilyIndices'");
+      }
     } else if (value->IsNull()) {
       self->pQueueFamilyIndices.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pQueueFamilyIndices' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Uint32Array' for 'VkBufferCreateInfo.pQueueFamilyIndices'");
     }
   
   

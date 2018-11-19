@@ -77,7 +77,7 @@ NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineVertexInputStateCreateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetpNext) {
@@ -93,7 +93,7 @@ NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkPipelineVertexInputStateCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineVertexInputStateCreateInfo.flags'");
   }
 }// vertexBindingDescriptionCount
 NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetvertexBindingDescriptionCount) {
@@ -104,7 +104,7 @@ NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetvertexBindingDescriptionCou
   if (value->IsNumber()) {
     self->instance.vertexBindingDescriptionCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'vertexBindingDescriptionCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineVertexInputStateCreateInfo.vertexBindingDescriptionCount'");
   }
 }// pVertexBindingDescriptions
 NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetpVertexBindingDescriptions) {
@@ -124,7 +124,7 @@ NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetpVertexBindingDescriptions)
     } else if (value->IsNull()) {
       self->pVertexBindingDescriptions.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pVertexBindingDescriptions' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkVertexInputBindingDescription]' for 'VkPipelineVertexInputStateCreateInfo.pVertexBindingDescriptions'");
     }
   
   // vulkan
@@ -133,7 +133,7 @@ NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetpVertexBindingDescriptions)
   } else if (value->IsNull()) {
     self->instance.pVertexBindingDescriptions = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pVertexBindingDescriptions' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkVertexInputBindingDescription]' for 'VkPipelineVertexInputStateCreateInfo.pVertexBindingDescriptions'");
   }
 }// vertexAttributeDescriptionCount
 NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetvertexAttributeDescriptionCount) {
@@ -144,7 +144,7 @@ NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetvertexAttributeDescriptionC
   if (value->IsNumber()) {
     self->instance.vertexAttributeDescriptionCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'vertexAttributeDescriptionCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineVertexInputStateCreateInfo.vertexAttributeDescriptionCount'");
   }
 }// pVertexAttributeDescriptions
 NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetpVertexAttributeDescriptions) {
@@ -164,7 +164,7 @@ NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetpVertexAttributeDescription
     } else if (value->IsNull()) {
       self->pVertexAttributeDescriptions.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pVertexAttributeDescriptions' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkVertexInputAttributeDescription]' for 'VkPipelineVertexInputStateCreateInfo.pVertexAttributeDescriptions'");
     }
   
   // vulkan
@@ -173,6 +173,6 @@ NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetpVertexAttributeDescription
   } else if (value->IsNull()) {
     self->instance.pVertexAttributeDescriptions = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pVertexAttributeDescriptions' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkVertexInputAttributeDescription]' for 'VkPipelineVertexInputStateCreateInfo.pVertexAttributeDescriptions'");
   }
 }

@@ -68,7 +68,7 @@ NAN_GETTER(_VkComponentMapping::Getr) {
   if (value->IsNumber()) {
     self->instance.r = static_cast<VkComponentSwizzle>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'r' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkComponentMapping.r'");
   }
 }// g
 NAN_GETTER(_VkComponentMapping::Getg) {
@@ -79,7 +79,7 @@ NAN_GETTER(_VkComponentMapping::Getg) {
   if (value->IsNumber()) {
     self->instance.g = static_cast<VkComponentSwizzle>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'g' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkComponentMapping.g'");
   }
 }// b
 NAN_GETTER(_VkComponentMapping::Getb) {
@@ -90,7 +90,7 @@ NAN_GETTER(_VkComponentMapping::Getb) {
   if (value->IsNumber()) {
     self->instance.b = static_cast<VkComponentSwizzle>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'b' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkComponentMapping.b'");
   }
 }// a
 NAN_GETTER(_VkComponentMapping::Geta) {
@@ -101,6 +101,6 @@ NAN_GETTER(_VkComponentMapping::Geta) {
   if (value->IsNumber()) {
     self->instance.a = static_cast<VkComponentSwizzle>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'a' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkComponentMapping.a'");
   }
 }

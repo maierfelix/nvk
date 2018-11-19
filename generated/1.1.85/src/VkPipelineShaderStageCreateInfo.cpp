@@ -77,7 +77,7 @@ NAN_GETTER(_VkPipelineShaderStageCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineShaderStageCreateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkPipelineShaderStageCreateInfo::GetpNext) {
@@ -93,7 +93,7 @@ NAN_GETTER(_VkPipelineShaderStageCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkPipelineShaderStageCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineShaderStageCreateInfo.flags'");
   }
 }// stage
 NAN_GETTER(_VkPipelineShaderStageCreateInfo::Getstage) {
@@ -104,7 +104,7 @@ NAN_GETTER(_VkPipelineShaderStageCreateInfo::Getstage) {
   if (value->IsNumber()) {
     self->instance.stage = static_cast<VkShaderStageFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'stage' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineShaderStageCreateInfo.stage'");
   }
 }// module
 NAN_GETTER(_VkPipelineShaderStageCreateInfo::Getmodule) {
@@ -125,13 +125,13 @@ NAN_GETTER(_VkPipelineShaderStageCreateInfo::Getmodule) {
       _VkShaderModule* inst = Nan::ObjectWrap::Unwrap<_VkShaderModule>(obj);
       self->instance.module = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'module' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkShaderModule]' for 'VkPipelineShaderStageCreateInfo.module'");
     }
   } else if (value->IsNull()) {
     self->module.Reset();
     self->instance.module = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'module' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkShaderModule]' for 'VkPipelineShaderStageCreateInfo.module'");
   }
 }// pName
 NAN_GETTER(_VkPipelineShaderStageCreateInfo::GetpName) {
@@ -151,7 +151,7 @@ NAN_GETTER(_VkPipelineShaderStageCreateInfo::GetpName) {
   } else if (value->IsNull()) {
     self->instance.pName = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pName' has invalid type");
+    return Nan::ThrowTypeError("Expected 'String' for 'VkPipelineShaderStageCreateInfo.pName'");
   }
 }// pSpecializationInfo
 NAN_GETTER(_VkPipelineShaderStageCreateInfo::GetpSpecializationInfo) {
@@ -172,12 +172,12 @@ NAN_GETTER(_VkPipelineShaderStageCreateInfo::GetpSpecializationInfo) {
       _VkSpecializationInfo* inst = Nan::ObjectWrap::Unwrap<_VkSpecializationInfo>(obj);
       self->instance.pSpecializationInfo = &inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'pSpecializationInfo' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkSpecializationInfo]' for 'VkPipelineShaderStageCreateInfo.pSpecializationInfo'");
     }
   } else if (value->IsNull()) {
     self->pSpecializationInfo.Reset();
     self->instance.pSpecializationInfo = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pSpecializationInfo' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkSpecializationInfo]' for 'VkPipelineShaderStageCreateInfo.pSpecializationInfo'");
   }
 }

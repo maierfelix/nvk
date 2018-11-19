@@ -3,6 +3,7 @@ import nunjucks from "nunjucks";
 import pkg from "../../package.json";
 
 let ast = null;
+let currentStruct = null;
 
 const H_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/struct-h.njk`, "utf-8");
 const CPP_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/struct-cpp.njk`, "utf-8");
@@ -12,7 +13,19 @@ nunjucks.configure({ autoescape: true });
 let globalIncludes = [];
 
 function invalidMemberTypeError(member) {
-  return `return Nan::ThrowError("Value of member '${member.name}' has invalid type");`;
+  let expected = member.jsType;
+  if (expected === "undefined") {
+    console.warn(`Cannot handle member ${member.rawType} in member-type-error`);
+  // try to give better hints
+  } else {
+    if (member.isStructType || member.isHandleType) {
+      expected = `Object [${member.type}]`;
+    }
+    else if (member.isTypedArray) {
+      expected = member.jsTypedArrayName;
+    }
+  }
+  return `return Nan::ThrowTypeError("Expected '${expected}' for '${currentStruct.name}.${member.name}'");`;
 };
 
 function genPersistentV8Array(member) {
@@ -29,10 +42,15 @@ function genPersistentV8Array(member) {
 };
 
 function genPersistentV8TypedArray(member) {
+  let expected = member.jsTypedArrayName;
   return `
     // js
     if (value->IsArrayBufferView()) {
-      self->${member.name}.Reset<v8::Array>(value.As<v8::Array>());
+      if (value->Is${member.jsTypedArrayName}()) {
+        self->${member.name}.Reset<v8::Array>(value.As<v8::Array>());
+      } else {
+        ${invalidMemberTypeError(member)}
+      }
     } else if (value->IsNull()) {
       self->${member.name}.Reset();
     } else {
@@ -539,6 +557,7 @@ export default function(astReference, struct) {
     source: null,
     includes: globalIncludes
   };
+  currentStruct = struct;
   // h
   {
     let template = H_TEMPLATE;

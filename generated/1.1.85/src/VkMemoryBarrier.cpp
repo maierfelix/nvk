@@ -68,7 +68,7 @@ NAN_GETTER(_VkMemoryBarrier::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkMemoryBarrier.sType'");
   }
 }// pNext
 NAN_GETTER(_VkMemoryBarrier::GetpNext) {
@@ -84,7 +84,7 @@ NAN_GETTER(_VkMemoryBarrier::GetsrcAccessMask) {
   if (value->IsNumber()) {
     self->instance.srcAccessMask = static_cast<VkAccessFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'srcAccessMask' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkMemoryBarrier.srcAccessMask'");
   }
 }// dstAccessMask
 NAN_GETTER(_VkMemoryBarrier::GetdstAccessMask) {
@@ -95,6 +95,6 @@ NAN_GETTER(_VkMemoryBarrier::GetdstAccessMask) {
   if (value->IsNumber()) {
     self->instance.dstAccessMask = static_cast<VkAccessFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'dstAccessMask' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkMemoryBarrier.dstAccessMask'");
   }
 }

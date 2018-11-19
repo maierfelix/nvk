@@ -95,7 +95,7 @@ NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineRasterizationStateCreateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetpNext) {
@@ -111,7 +111,7 @@ NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkPipelineRasterizationStateCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineRasterizationStateCreateInfo.flags'");
   }
 }// depthClampEnable
 NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetdepthClampEnable) {
@@ -122,7 +122,7 @@ NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetdepthClampEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.depthClampEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'depthClampEnable' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineRasterizationStateCreateInfo.depthClampEnable'");
   }
 }// rasterizerDiscardEnable
 NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetrasterizerDiscardEnable) {
@@ -133,7 +133,7 @@ NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetrasterizerDiscardEnable) 
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.rasterizerDiscardEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'rasterizerDiscardEnable' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineRasterizationStateCreateInfo.rasterizerDiscardEnable'");
   }
 }// polygonMode
 NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetpolygonMode) {
@@ -144,7 +144,7 @@ NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetpolygonMode) {
   if (value->IsNumber()) {
     self->instance.polygonMode = static_cast<VkPolygonMode>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'polygonMode' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineRasterizationStateCreateInfo.polygonMode'");
   }
 }// cullMode
 NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetcullMode) {
@@ -155,7 +155,7 @@ NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetcullMode) {
   if (value->IsNumber()) {
     self->instance.cullMode = static_cast<VkCullModeFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'cullMode' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineRasterizationStateCreateInfo.cullMode'");
   }
 }// frontFace
 NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetfrontFace) {
@@ -166,7 +166,7 @@ NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetfrontFace) {
   if (value->IsNumber()) {
     self->instance.frontFace = static_cast<VkFrontFace>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'frontFace' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineRasterizationStateCreateInfo.frontFace'");
   }
 }// depthBiasEnable
 NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetdepthBiasEnable) {
@@ -177,7 +177,7 @@ NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetdepthBiasEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.depthBiasEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'depthBiasEnable' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineRasterizationStateCreateInfo.depthBiasEnable'");
   }
 }// depthBiasConstantFactor
 NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetdepthBiasConstantFactor) {
@@ -188,7 +188,7 @@ NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetdepthBiasConstantFactor) 
   if (value->IsNumber()) {
     self->instance.depthBiasConstantFactor = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'depthBiasConstantFactor' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineRasterizationStateCreateInfo.depthBiasConstantFactor'");
   }
 }// depthBiasClamp
 NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetdepthBiasClamp) {
@@ -199,7 +199,7 @@ NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetdepthBiasClamp) {
   if (value->IsNumber()) {
     self->instance.depthBiasClamp = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'depthBiasClamp' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineRasterizationStateCreateInfo.depthBiasClamp'");
   }
 }// depthBiasSlopeFactor
 NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetdepthBiasSlopeFactor) {
@@ -210,7 +210,7 @@ NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetdepthBiasSlopeFactor) {
   if (value->IsNumber()) {
     self->instance.depthBiasSlopeFactor = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'depthBiasSlopeFactor' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineRasterizationStateCreateInfo.depthBiasSlopeFactor'");
   }
 }// lineWidth
 NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetlineWidth) {
@@ -221,6 +221,6 @@ NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetlineWidth) {
   if (value->IsNumber()) {
     self->instance.lineWidth = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'lineWidth' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineRasterizationStateCreateInfo.lineWidth'");
   }
 }

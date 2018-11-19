@@ -110,7 +110,7 @@ NAN_GETTER(_VkSamplerCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkSamplerCreateInfo::GetpNext) {
@@ -126,7 +126,7 @@ NAN_GETTER(_VkSamplerCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkSamplerCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.flags'");
   }
 }// magFilter
 NAN_GETTER(_VkSamplerCreateInfo::GetmagFilter) {
@@ -137,7 +137,7 @@ NAN_GETTER(_VkSamplerCreateInfo::GetmagFilter) {
   if (value->IsNumber()) {
     self->instance.magFilter = static_cast<VkFilter>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'magFilter' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.magFilter'");
   }
 }// minFilter
 NAN_GETTER(_VkSamplerCreateInfo::GetminFilter) {
@@ -148,7 +148,7 @@ NAN_GETTER(_VkSamplerCreateInfo::GetminFilter) {
   if (value->IsNumber()) {
     self->instance.minFilter = static_cast<VkFilter>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'minFilter' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.minFilter'");
   }
 }// mipmapMode
 NAN_GETTER(_VkSamplerCreateInfo::GetmipmapMode) {
@@ -159,7 +159,7 @@ NAN_GETTER(_VkSamplerCreateInfo::GetmipmapMode) {
   if (value->IsNumber()) {
     self->instance.mipmapMode = static_cast<VkSamplerMipmapMode>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'mipmapMode' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.mipmapMode'");
   }
 }// addressModeU
 NAN_GETTER(_VkSamplerCreateInfo::GetaddressModeU) {
@@ -170,7 +170,7 @@ NAN_GETTER(_VkSamplerCreateInfo::GetaddressModeU) {
   if (value->IsNumber()) {
     self->instance.addressModeU = static_cast<VkSamplerAddressMode>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'addressModeU' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.addressModeU'");
   }
 }// addressModeV
 NAN_GETTER(_VkSamplerCreateInfo::GetaddressModeV) {
@@ -181,7 +181,7 @@ NAN_GETTER(_VkSamplerCreateInfo::GetaddressModeV) {
   if (value->IsNumber()) {
     self->instance.addressModeV = static_cast<VkSamplerAddressMode>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'addressModeV' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.addressModeV'");
   }
 }// addressModeW
 NAN_GETTER(_VkSamplerCreateInfo::GetaddressModeW) {
@@ -192,7 +192,7 @@ NAN_GETTER(_VkSamplerCreateInfo::GetaddressModeW) {
   if (value->IsNumber()) {
     self->instance.addressModeW = static_cast<VkSamplerAddressMode>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'addressModeW' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.addressModeW'");
   }
 }// mipLodBias
 NAN_GETTER(_VkSamplerCreateInfo::GetmipLodBias) {
@@ -203,7 +203,7 @@ NAN_GETTER(_VkSamplerCreateInfo::GetmipLodBias) {
   if (value->IsNumber()) {
     self->instance.mipLodBias = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'mipLodBias' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.mipLodBias'");
   }
 }// anisotropyEnable
 NAN_GETTER(_VkSamplerCreateInfo::GetanisotropyEnable) {
@@ -214,7 +214,7 @@ NAN_GETTER(_VkSamplerCreateInfo::GetanisotropyEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.anisotropyEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'anisotropyEnable' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.anisotropyEnable'");
   }
 }// maxAnisotropy
 NAN_GETTER(_VkSamplerCreateInfo::GetmaxAnisotropy) {
@@ -225,7 +225,7 @@ NAN_GETTER(_VkSamplerCreateInfo::GetmaxAnisotropy) {
   if (value->IsNumber()) {
     self->instance.maxAnisotropy = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'maxAnisotropy' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.maxAnisotropy'");
   }
 }// compareEnable
 NAN_GETTER(_VkSamplerCreateInfo::GetcompareEnable) {
@@ -236,7 +236,7 @@ NAN_GETTER(_VkSamplerCreateInfo::GetcompareEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.compareEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'compareEnable' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.compareEnable'");
   }
 }// compareOp
 NAN_GETTER(_VkSamplerCreateInfo::GetcompareOp) {
@@ -247,7 +247,7 @@ NAN_GETTER(_VkSamplerCreateInfo::GetcompareOp) {
   if (value->IsNumber()) {
     self->instance.compareOp = static_cast<VkCompareOp>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'compareOp' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.compareOp'");
   }
 }// minLod
 NAN_GETTER(_VkSamplerCreateInfo::GetminLod) {
@@ -258,7 +258,7 @@ NAN_GETTER(_VkSamplerCreateInfo::GetminLod) {
   if (value->IsNumber()) {
     self->instance.minLod = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'minLod' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.minLod'");
   }
 }// maxLod
 NAN_GETTER(_VkSamplerCreateInfo::GetmaxLod) {
@@ -269,7 +269,7 @@ NAN_GETTER(_VkSamplerCreateInfo::GetmaxLod) {
   if (value->IsNumber()) {
     self->instance.maxLod = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'maxLod' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.maxLod'");
   }
 }// borderColor
 NAN_GETTER(_VkSamplerCreateInfo::GetborderColor) {
@@ -280,7 +280,7 @@ NAN_GETTER(_VkSamplerCreateInfo::GetborderColor) {
   if (value->IsNumber()) {
     self->instance.borderColor = static_cast<VkBorderColor>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'borderColor' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.borderColor'");
   }
 }// unnormalizedCoordinates
 NAN_GETTER(_VkSamplerCreateInfo::GetunnormalizedCoordinates) {
@@ -291,6 +291,6 @@ NAN_GETTER(_VkSamplerCreateInfo::GetunnormalizedCoordinates) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.unnormalizedCoordinates = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'unnormalizedCoordinates' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.unnormalizedCoordinates'");
   }
 }

@@ -80,7 +80,7 @@ NAN_GETTER(_VkInstanceCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkInstanceCreateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkInstanceCreateInfo::GetpNext) {
@@ -96,7 +96,7 @@ NAN_GETTER(_VkInstanceCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkInstanceCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkInstanceCreateInfo.flags'");
   }
 }// pApplicationInfo
 NAN_GETTER(_VkInstanceCreateInfo::GetpApplicationInfo) {
@@ -117,13 +117,13 @@ NAN_GETTER(_VkInstanceCreateInfo::GetpApplicationInfo) {
       _VkApplicationInfo* inst = Nan::ObjectWrap::Unwrap<_VkApplicationInfo>(obj);
       self->instance.pApplicationInfo = &inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'pApplicationInfo' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkApplicationInfo]' for 'VkInstanceCreateInfo.pApplicationInfo'");
     }
   } else if (value->IsNull()) {
     self->pApplicationInfo.Reset();
     self->instance.pApplicationInfo = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pApplicationInfo' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkApplicationInfo]' for 'VkInstanceCreateInfo.pApplicationInfo'");
   }
 }// enabledLayerCount
 NAN_GETTER(_VkInstanceCreateInfo::GetenabledLayerCount) {
@@ -134,7 +134,7 @@ NAN_GETTER(_VkInstanceCreateInfo::GetenabledLayerCount) {
   if (value->IsNumber()) {
     self->instance.enabledLayerCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'enabledLayerCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkInstanceCreateInfo.enabledLayerCount'");
   }
 }// ppEnabledLayerNames
 NAN_GETTER(_VkInstanceCreateInfo::GetppEnabledLayerNames) {
@@ -154,7 +154,7 @@ NAN_GETTER(_VkInstanceCreateInfo::GetppEnabledLayerNames) {
     } else if (value->IsNull()) {
       self->ppEnabledLayerNames.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'ppEnabledLayerNames' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Array' for 'VkInstanceCreateInfo.ppEnabledLayerNames'");
     }
   
   // vulkan
@@ -163,7 +163,7 @@ NAN_GETTER(_VkInstanceCreateInfo::GetppEnabledLayerNames) {
   } else if (value->IsNull()) {
     self->instance.ppEnabledLayerNames = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'ppEnabledLayerNames' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Array' for 'VkInstanceCreateInfo.ppEnabledLayerNames'");
   }
 }// enabledExtensionCount
 NAN_GETTER(_VkInstanceCreateInfo::GetenabledExtensionCount) {
@@ -174,7 +174,7 @@ NAN_GETTER(_VkInstanceCreateInfo::GetenabledExtensionCount) {
   if (value->IsNumber()) {
     self->instance.enabledExtensionCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'enabledExtensionCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkInstanceCreateInfo.enabledExtensionCount'");
   }
 }// ppEnabledExtensionNames
 NAN_GETTER(_VkInstanceCreateInfo::GetppEnabledExtensionNames) {
@@ -194,7 +194,7 @@ NAN_GETTER(_VkInstanceCreateInfo::GetppEnabledExtensionNames) {
     } else if (value->IsNull()) {
       self->ppEnabledExtensionNames.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'ppEnabledExtensionNames' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Array' for 'VkInstanceCreateInfo.ppEnabledExtensionNames'");
     }
   
   // vulkan
@@ -203,6 +203,6 @@ NAN_GETTER(_VkInstanceCreateInfo::GetppEnabledExtensionNames) {
   } else if (value->IsNull()) {
     self->instance.ppEnabledExtensionNames = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'ppEnabledExtensionNames' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Array' for 'VkInstanceCreateInfo.ppEnabledExtensionNames'");
   }
 }

@@ -25,6 +25,23 @@ export default function(ast) {
       }
     }
 
+    // PATCH:
+    // Allows shaders to be loaded as Uint8Array
+    {
+      let patches = 0;
+      if (struct.name === "VkShaderModuleCreateInfo") {
+        struct.children.map(member => {
+          if (member.name === "pCode") {
+            member.jsTypedArrayName = "Uint8Array";
+            patches++;
+          }
+        });
+      }
+      if (patches > 0 && patches !== 1) {
+        console.error(`Expected patch count of 1 but got ${patches}`);
+      }
+    }
+
   });
 
 };

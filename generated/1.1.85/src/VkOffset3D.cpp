@@ -65,7 +65,7 @@ NAN_GETTER(_VkOffset3D::Getx) {
   if (value->IsNumber()) {
     self->instance.x = static_cast<int32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'x' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkOffset3D.x'");
   }
 }// y
 NAN_GETTER(_VkOffset3D::Gety) {
@@ -76,7 +76,7 @@ NAN_GETTER(_VkOffset3D::Gety) {
   if (value->IsNumber()) {
     self->instance.y = static_cast<int32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'y' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkOffset3D.y'");
   }
 }// z
 NAN_GETTER(_VkOffset3D::Getz) {
@@ -87,6 +87,6 @@ NAN_GETTER(_VkOffset3D::Getz) {
   if (value->IsNumber()) {
     self->instance.z = static_cast<int32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'z' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkOffset3D.z'");
   }
 }

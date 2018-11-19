@@ -65,7 +65,7 @@ NAN_GETTER(_VkPushConstantRange::GetstageFlags) {
   if (value->IsNumber()) {
     self->instance.stageFlags = static_cast<VkShaderStageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'stageFlags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPushConstantRange.stageFlags'");
   }
 }// offset
 NAN_GETTER(_VkPushConstantRange::Getoffset) {
@@ -76,7 +76,7 @@ NAN_GETTER(_VkPushConstantRange::Getoffset) {
   if (value->IsNumber()) {
     self->instance.offset = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'offset' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPushConstantRange.offset'");
   }
 }// size
 NAN_GETTER(_VkPushConstantRange::Getsize) {
@@ -87,6 +87,6 @@ NAN_GETTER(_VkPushConstantRange::Getsize) {
   if (value->IsNumber()) {
     self->instance.size = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'size' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPushConstantRange.size'");
   }
 }

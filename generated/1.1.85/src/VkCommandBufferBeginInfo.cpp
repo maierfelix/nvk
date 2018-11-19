@@ -68,7 +68,7 @@ NAN_GETTER(_VkCommandBufferBeginInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandBufferBeginInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkCommandBufferBeginInfo::GetpNext) {
@@ -84,7 +84,7 @@ NAN_GETTER(_VkCommandBufferBeginInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkCommandBufferUsageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandBufferBeginInfo.flags'");
   }
 }// pInheritanceInfo
 NAN_GETTER(_VkCommandBufferBeginInfo::GetpInheritanceInfo) {
@@ -105,12 +105,12 @@ NAN_GETTER(_VkCommandBufferBeginInfo::GetpInheritanceInfo) {
       _VkCommandBufferInheritanceInfo* inst = Nan::ObjectWrap::Unwrap<_VkCommandBufferInheritanceInfo>(obj);
       self->instance.pInheritanceInfo = &inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'pInheritanceInfo' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkCommandBufferInheritanceInfo]' for 'VkCommandBufferBeginInfo.pInheritanceInfo'");
     }
   } else if (value->IsNull()) {
     self->pInheritanceInfo.Reset();
     self->instance.pInheritanceInfo = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pInheritanceInfo' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkCommandBufferInheritanceInfo]' for 'VkCommandBufferBeginInfo.pInheritanceInfo'");
   }
 }

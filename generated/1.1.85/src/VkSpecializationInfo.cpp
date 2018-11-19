@@ -68,7 +68,7 @@ NAN_GETTER(_VkSpecializationInfo::GetmapEntryCount) {
   if (value->IsNumber()) {
     self->instance.mapEntryCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'mapEntryCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSpecializationInfo.mapEntryCount'");
   }
 }// pMapEntries
 NAN_GETTER(_VkSpecializationInfo::GetpMapEntries) {
@@ -88,7 +88,7 @@ NAN_GETTER(_VkSpecializationInfo::GetpMapEntries) {
     } else if (value->IsNull()) {
       self->pMapEntries.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pMapEntries' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkSpecializationMapEntry]' for 'VkSpecializationInfo.pMapEntries'");
     }
   
   // vulkan
@@ -97,7 +97,7 @@ NAN_GETTER(_VkSpecializationInfo::GetpMapEntries) {
   } else if (value->IsNull()) {
     self->instance.pMapEntries = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pMapEntries' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkSpecializationMapEntry]' for 'VkSpecializationInfo.pMapEntries'");
   }
 }// dataSize
 NAN_GETTER(_VkSpecializationInfo::GetdataSize) {
@@ -108,7 +108,7 @@ NAN_GETTER(_VkSpecializationInfo::GetdataSize) {
   if (value->IsNumber()) {
     self->instance.dataSize = static_cast<size_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'dataSize' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSpecializationInfo.dataSize'");
   }
 }// pData
 NAN_GETTER(_VkSpecializationInfo::GetpData) {

@@ -77,7 +77,7 @@ NAN_GETTER(_VkStencilOpState::GetfailOp) {
   if (value->IsNumber()) {
     self->instance.failOp = static_cast<VkStencilOp>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'failOp' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkStencilOpState.failOp'");
   }
 }// passOp
 NAN_GETTER(_VkStencilOpState::GetpassOp) {
@@ -88,7 +88,7 @@ NAN_GETTER(_VkStencilOpState::GetpassOp) {
   if (value->IsNumber()) {
     self->instance.passOp = static_cast<VkStencilOp>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'passOp' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkStencilOpState.passOp'");
   }
 }// depthFailOp
 NAN_GETTER(_VkStencilOpState::GetdepthFailOp) {
@@ -99,7 +99,7 @@ NAN_GETTER(_VkStencilOpState::GetdepthFailOp) {
   if (value->IsNumber()) {
     self->instance.depthFailOp = static_cast<VkStencilOp>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'depthFailOp' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkStencilOpState.depthFailOp'");
   }
 }// compareOp
 NAN_GETTER(_VkStencilOpState::GetcompareOp) {
@@ -110,7 +110,7 @@ NAN_GETTER(_VkStencilOpState::GetcompareOp) {
   if (value->IsNumber()) {
     self->instance.compareOp = static_cast<VkCompareOp>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'compareOp' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkStencilOpState.compareOp'");
   }
 }// compareMask
 NAN_GETTER(_VkStencilOpState::GetcompareMask) {
@@ -121,7 +121,7 @@ NAN_GETTER(_VkStencilOpState::GetcompareMask) {
   if (value->IsNumber()) {
     self->instance.compareMask = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'compareMask' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkStencilOpState.compareMask'");
   }
 }// writeMask
 NAN_GETTER(_VkStencilOpState::GetwriteMask) {
@@ -132,7 +132,7 @@ NAN_GETTER(_VkStencilOpState::GetwriteMask) {
   if (value->IsNumber()) {
     self->instance.writeMask = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'writeMask' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkStencilOpState.writeMask'");
   }
 }// reference
 NAN_GETTER(_VkStencilOpState::Getreference) {
@@ -143,6 +143,6 @@ NAN_GETTER(_VkStencilOpState::Getreference) {
   if (value->IsNumber()) {
     self->instance.reference = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'reference' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkStencilOpState.reference'");
   }
 }

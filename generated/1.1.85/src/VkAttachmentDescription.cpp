@@ -83,7 +83,7 @@ NAN_GETTER(_VkAttachmentDescription::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkAttachmentDescriptionFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkAttachmentDescription.flags'");
   }
 }// format
 NAN_GETTER(_VkAttachmentDescription::Getformat) {
@@ -94,7 +94,7 @@ NAN_GETTER(_VkAttachmentDescription::Getformat) {
   if (value->IsNumber()) {
     self->instance.format = static_cast<VkFormat>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'format' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkAttachmentDescription.format'");
   }
 }// samples
 NAN_GETTER(_VkAttachmentDescription::Getsamples) {
@@ -105,7 +105,7 @@ NAN_GETTER(_VkAttachmentDescription::Getsamples) {
   if (value->IsNumber()) {
     self->instance.samples = static_cast<VkSampleCountFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'samples' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkAttachmentDescription.samples'");
   }
 }// loadOp
 NAN_GETTER(_VkAttachmentDescription::GetloadOp) {
@@ -116,7 +116,7 @@ NAN_GETTER(_VkAttachmentDescription::GetloadOp) {
   if (value->IsNumber()) {
     self->instance.loadOp = static_cast<VkAttachmentLoadOp>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'loadOp' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkAttachmentDescription.loadOp'");
   }
 }// storeOp
 NAN_GETTER(_VkAttachmentDescription::GetstoreOp) {
@@ -127,7 +127,7 @@ NAN_GETTER(_VkAttachmentDescription::GetstoreOp) {
   if (value->IsNumber()) {
     self->instance.storeOp = static_cast<VkAttachmentStoreOp>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'storeOp' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkAttachmentDescription.storeOp'");
   }
 }// stencilLoadOp
 NAN_GETTER(_VkAttachmentDescription::GetstencilLoadOp) {
@@ -138,7 +138,7 @@ NAN_GETTER(_VkAttachmentDescription::GetstencilLoadOp) {
   if (value->IsNumber()) {
     self->instance.stencilLoadOp = static_cast<VkAttachmentLoadOp>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'stencilLoadOp' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkAttachmentDescription.stencilLoadOp'");
   }
 }// stencilStoreOp
 NAN_GETTER(_VkAttachmentDescription::GetstencilStoreOp) {
@@ -149,7 +149,7 @@ NAN_GETTER(_VkAttachmentDescription::GetstencilStoreOp) {
   if (value->IsNumber()) {
     self->instance.stencilStoreOp = static_cast<VkAttachmentStoreOp>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'stencilStoreOp' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkAttachmentDescription.stencilStoreOp'");
   }
 }// initialLayout
 NAN_GETTER(_VkAttachmentDescription::GetinitialLayout) {
@@ -160,7 +160,7 @@ NAN_GETTER(_VkAttachmentDescription::GetinitialLayout) {
   if (value->IsNumber()) {
     self->instance.initialLayout = static_cast<VkImageLayout>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'initialLayout' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkAttachmentDescription.initialLayout'");
   }
 }// finalLayout
 NAN_GETTER(_VkAttachmentDescription::GetfinalLayout) {
@@ -171,6 +171,6 @@ NAN_GETTER(_VkAttachmentDescription::GetfinalLayout) {
   if (value->IsNumber()) {
     self->instance.finalLayout = static_cast<VkImageLayout>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'finalLayout' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkAttachmentDescription.finalLayout'");
   }
 }

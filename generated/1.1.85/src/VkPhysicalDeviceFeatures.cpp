@@ -221,7 +221,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetrobustBufferAccess) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.robustBufferAccess = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'robustBufferAccess' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.robustBufferAccess'");
   }
 }// fullDrawIndexUint32
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetfullDrawIndexUint32) {
@@ -232,7 +232,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetfullDrawIndexUint32) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.fullDrawIndexUint32 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'fullDrawIndexUint32' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.fullDrawIndexUint32'");
   }
 }// imageCubeArray
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetimageCubeArray) {
@@ -243,7 +243,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetimageCubeArray) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.imageCubeArray = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'imageCubeArray' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.imageCubeArray'");
   }
 }// independentBlend
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetindependentBlend) {
@@ -254,7 +254,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetindependentBlend) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.independentBlend = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'independentBlend' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.independentBlend'");
   }
 }// geometryShader
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetgeometryShader) {
@@ -265,7 +265,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetgeometryShader) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.geometryShader = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'geometryShader' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.geometryShader'");
   }
 }// tessellationShader
 NAN_GETTER(_VkPhysicalDeviceFeatures::GettessellationShader) {
@@ -276,7 +276,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GettessellationShader) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.tessellationShader = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'tessellationShader' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.tessellationShader'");
   }
 }// sampleRateShading
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsampleRateShading) {
@@ -287,7 +287,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetsampleRateShading) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.sampleRateShading = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'sampleRateShading' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.sampleRateShading'");
   }
 }// dualSrcBlend
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetdualSrcBlend) {
@@ -298,7 +298,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetdualSrcBlend) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.dualSrcBlend = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'dualSrcBlend' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.dualSrcBlend'");
   }
 }// logicOp
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetlogicOp) {
@@ -309,7 +309,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetlogicOp) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.logicOp = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'logicOp' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.logicOp'");
   }
 }// multiDrawIndirect
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetmultiDrawIndirect) {
@@ -320,7 +320,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetmultiDrawIndirect) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.multiDrawIndirect = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'multiDrawIndirect' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.multiDrawIndirect'");
   }
 }// drawIndirectFirstInstance
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetdrawIndirectFirstInstance) {
@@ -331,7 +331,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetdrawIndirectFirstInstance) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.drawIndirectFirstInstance = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'drawIndirectFirstInstance' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.drawIndirectFirstInstance'");
   }
 }// depthClamp
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetdepthClamp) {
@@ -342,7 +342,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetdepthClamp) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.depthClamp = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'depthClamp' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.depthClamp'");
   }
 }// depthBiasClamp
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetdepthBiasClamp) {
@@ -353,7 +353,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetdepthBiasClamp) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.depthBiasClamp = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'depthBiasClamp' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.depthBiasClamp'");
   }
 }// fillModeNonSolid
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetfillModeNonSolid) {
@@ -364,7 +364,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetfillModeNonSolid) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.fillModeNonSolid = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'fillModeNonSolid' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.fillModeNonSolid'");
   }
 }// depthBounds
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetdepthBounds) {
@@ -375,7 +375,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetdepthBounds) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.depthBounds = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'depthBounds' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.depthBounds'");
   }
 }// wideLines
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetwideLines) {
@@ -386,7 +386,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetwideLines) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.wideLines = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'wideLines' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.wideLines'");
   }
 }// largePoints
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetlargePoints) {
@@ -397,7 +397,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetlargePoints) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.largePoints = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'largePoints' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.largePoints'");
   }
 }// alphaToOne
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetalphaToOne) {
@@ -408,7 +408,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetalphaToOne) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.alphaToOne = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'alphaToOne' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.alphaToOne'");
   }
 }// multiViewport
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetmultiViewport) {
@@ -419,7 +419,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetmultiViewport) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.multiViewport = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'multiViewport' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.multiViewport'");
   }
 }// samplerAnisotropy
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsamplerAnisotropy) {
@@ -430,7 +430,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetsamplerAnisotropy) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.samplerAnisotropy = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'samplerAnisotropy' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.samplerAnisotropy'");
   }
 }// textureCompressionETC2
 NAN_GETTER(_VkPhysicalDeviceFeatures::GettextureCompressionETC2) {
@@ -441,7 +441,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GettextureCompressionETC2) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.textureCompressionETC2 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'textureCompressionETC2' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.textureCompressionETC2'");
   }
 }// textureCompressionASTC_LDR
 NAN_GETTER(_VkPhysicalDeviceFeatures::GettextureCompressionASTC_LDR) {
@@ -452,7 +452,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GettextureCompressionASTC_LDR) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.textureCompressionASTC_LDR = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'textureCompressionASTC_LDR' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.textureCompressionASTC_LDR'");
   }
 }// textureCompressionBC
 NAN_GETTER(_VkPhysicalDeviceFeatures::GettextureCompressionBC) {
@@ -463,7 +463,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GettextureCompressionBC) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.textureCompressionBC = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'textureCompressionBC' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.textureCompressionBC'");
   }
 }// occlusionQueryPrecise
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetocclusionQueryPrecise) {
@@ -474,7 +474,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetocclusionQueryPrecise) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.occlusionQueryPrecise = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'occlusionQueryPrecise' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.occlusionQueryPrecise'");
   }
 }// pipelineStatisticsQuery
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetpipelineStatisticsQuery) {
@@ -485,7 +485,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetpipelineStatisticsQuery) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.pipelineStatisticsQuery = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'pipelineStatisticsQuery' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.pipelineStatisticsQuery'");
   }
 }// vertexPipelineStoresAndAtomics
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetvertexPipelineStoresAndAtomics) {
@@ -496,7 +496,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetvertexPipelineStoresAndAtomics) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.vertexPipelineStoresAndAtomics = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'vertexPipelineStoresAndAtomics' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.vertexPipelineStoresAndAtomics'");
   }
 }// fragmentStoresAndAtomics
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetfragmentStoresAndAtomics) {
@@ -507,7 +507,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetfragmentStoresAndAtomics) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.fragmentStoresAndAtomics = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'fragmentStoresAndAtomics' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.fragmentStoresAndAtomics'");
   }
 }// shaderTessellationAndGeometryPointSize
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderTessellationAndGeometryPointSize) {
@@ -518,7 +518,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderTessellationAndGeometryPointSize)
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderTessellationAndGeometryPointSize = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'shaderTessellationAndGeometryPointSize' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderTessellationAndGeometryPointSize'");
   }
 }// shaderImageGatherExtended
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderImageGatherExtended) {
@@ -529,7 +529,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderImageGatherExtended) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderImageGatherExtended = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'shaderImageGatherExtended' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderImageGatherExtended'");
   }
 }// shaderStorageImageExtendedFormats
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageExtendedFormats) {
@@ -540,7 +540,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageExtendedFormats) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderStorageImageExtendedFormats = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'shaderStorageImageExtendedFormats' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderStorageImageExtendedFormats'");
   }
 }// shaderStorageImageMultisample
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageMultisample) {
@@ -551,7 +551,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageMultisample) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderStorageImageMultisample = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'shaderStorageImageMultisample' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderStorageImageMultisample'");
   }
 }// shaderStorageImageReadWithoutFormat
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageReadWithoutFormat) {
@@ -562,7 +562,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageReadWithoutFormat) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderStorageImageReadWithoutFormat = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'shaderStorageImageReadWithoutFormat' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderStorageImageReadWithoutFormat'");
   }
 }// shaderStorageImageWriteWithoutFormat
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageWriteWithoutFormat) {
@@ -573,7 +573,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageWriteWithoutFormat) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderStorageImageWriteWithoutFormat = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'shaderStorageImageWriteWithoutFormat' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderStorageImageWriteWithoutFormat'");
   }
 }// shaderUniformBufferArrayDynamicIndexing
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderUniformBufferArrayDynamicIndexing) {
@@ -584,7 +584,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderUniformBufferArrayDynamicIndexing
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderUniformBufferArrayDynamicIndexing = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'shaderUniformBufferArrayDynamicIndexing' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderUniformBufferArrayDynamicIndexing'");
   }
 }// shaderSampledImageArrayDynamicIndexing
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderSampledImageArrayDynamicIndexing) {
@@ -595,7 +595,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderSampledImageArrayDynamicIndexing)
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderSampledImageArrayDynamicIndexing = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'shaderSampledImageArrayDynamicIndexing' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderSampledImageArrayDynamicIndexing'");
   }
 }// shaderStorageBufferArrayDynamicIndexing
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageBufferArrayDynamicIndexing) {
@@ -606,7 +606,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageBufferArrayDynamicIndexing
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderStorageBufferArrayDynamicIndexing = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'shaderStorageBufferArrayDynamicIndexing' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderStorageBufferArrayDynamicIndexing'");
   }
 }// shaderStorageImageArrayDynamicIndexing
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageArrayDynamicIndexing) {
@@ -617,7 +617,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageArrayDynamicIndexing)
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderStorageImageArrayDynamicIndexing = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'shaderStorageImageArrayDynamicIndexing' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderStorageImageArrayDynamicIndexing'");
   }
 }// shaderClipDistance
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderClipDistance) {
@@ -628,7 +628,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderClipDistance) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderClipDistance = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'shaderClipDistance' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderClipDistance'");
   }
 }// shaderCullDistance
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderCullDistance) {
@@ -639,7 +639,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderCullDistance) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderCullDistance = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'shaderCullDistance' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderCullDistance'");
   }
 }// shaderFloat64
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderFloat64) {
@@ -650,7 +650,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderFloat64) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderFloat64 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'shaderFloat64' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderFloat64'");
   }
 }// shaderInt64
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderInt64) {
@@ -661,7 +661,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderInt64) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderInt64 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'shaderInt64' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderInt64'");
   }
 }// shaderInt16
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderInt16) {
@@ -672,7 +672,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderInt16) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderInt16 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'shaderInt16' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderInt16'");
   }
 }// shaderResourceResidency
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderResourceResidency) {
@@ -683,7 +683,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderResourceResidency) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderResourceResidency = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'shaderResourceResidency' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderResourceResidency'");
   }
 }// shaderResourceMinLod
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderResourceMinLod) {
@@ -694,7 +694,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderResourceMinLod) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderResourceMinLod = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'shaderResourceMinLod' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderResourceMinLod'");
   }
 }// sparseBinding
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseBinding) {
@@ -705,7 +705,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseBinding) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.sparseBinding = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'sparseBinding' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseBinding'");
   }
 }// sparseResidencyBuffer
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidencyBuffer) {
@@ -716,7 +716,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidencyBuffer) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.sparseResidencyBuffer = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'sparseResidencyBuffer' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseResidencyBuffer'");
   }
 }// sparseResidencyImage2D
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidencyImage2D) {
@@ -727,7 +727,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidencyImage2D) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.sparseResidencyImage2D = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'sparseResidencyImage2D' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseResidencyImage2D'");
   }
 }// sparseResidencyImage3D
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidencyImage3D) {
@@ -738,7 +738,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidencyImage3D) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.sparseResidencyImage3D = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'sparseResidencyImage3D' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseResidencyImage3D'");
   }
 }// sparseResidency2Samples
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidency2Samples) {
@@ -749,7 +749,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidency2Samples) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.sparseResidency2Samples = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'sparseResidency2Samples' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseResidency2Samples'");
   }
 }// sparseResidency4Samples
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidency4Samples) {
@@ -760,7 +760,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidency4Samples) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.sparseResidency4Samples = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'sparseResidency4Samples' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseResidency4Samples'");
   }
 }// sparseResidency8Samples
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidency8Samples) {
@@ -771,7 +771,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidency8Samples) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.sparseResidency8Samples = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'sparseResidency8Samples' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseResidency8Samples'");
   }
 }// sparseResidency16Samples
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidency16Samples) {
@@ -782,7 +782,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidency16Samples) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.sparseResidency16Samples = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'sparseResidency16Samples' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseResidency16Samples'");
   }
 }// sparseResidencyAliased
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidencyAliased) {
@@ -793,7 +793,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidencyAliased) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.sparseResidencyAliased = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'sparseResidencyAliased' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseResidencyAliased'");
   }
 }// variableMultisampleRate
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetvariableMultisampleRate) {
@@ -804,7 +804,7 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetvariableMultisampleRate) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.variableMultisampleRate = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'variableMultisampleRate' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.variableMultisampleRate'");
   }
 }// inheritedQueries
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetinheritedQueries) {
@@ -815,6 +815,6 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetinheritedQueries) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.inheritedQueries = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'inheritedQueries' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.inheritedQueries'");
   }
 }

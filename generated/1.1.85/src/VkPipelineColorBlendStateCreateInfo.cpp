@@ -81,7 +81,7 @@ NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendStateCreateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetpNext) {
@@ -97,7 +97,7 @@ NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkPipelineColorBlendStateCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendStateCreateInfo.flags'");
   }
 }// logicOpEnable
 NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetlogicOpEnable) {
@@ -108,7 +108,7 @@ NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetlogicOpEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.logicOpEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'logicOpEnable' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendStateCreateInfo.logicOpEnable'");
   }
 }// logicOp
 NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetlogicOp) {
@@ -119,7 +119,7 @@ NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetlogicOp) {
   if (value->IsNumber()) {
     self->instance.logicOp = static_cast<VkLogicOp>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'logicOp' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendStateCreateInfo.logicOp'");
   }
 }// attachmentCount
 NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetattachmentCount) {
@@ -130,7 +130,7 @@ NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetattachmentCount) {
   if (value->IsNumber()) {
     self->instance.attachmentCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'attachmentCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendStateCreateInfo.attachmentCount'");
   }
 }// pAttachments
 NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetpAttachments) {
@@ -150,7 +150,7 @@ NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetpAttachments) {
     } else if (value->IsNull()) {
       self->pAttachments.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pAttachments' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkPipelineColorBlendAttachmentState]' for 'VkPipelineColorBlendStateCreateInfo.pAttachments'");
     }
   
   // vulkan
@@ -159,7 +159,7 @@ NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetpAttachments) {
   } else if (value->IsNull()) {
     self->instance.pAttachments = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pAttachments' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkPipelineColorBlendAttachmentState]' for 'VkPipelineColorBlendStateCreateInfo.pAttachments'");
   }
 }// blendConstants
 NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetblendConstants) {
@@ -178,7 +178,7 @@ NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetblendConstants) {
     } else if (value->IsNull()) {
       self->blendConstants.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'blendConstants' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Array' for 'VkPipelineColorBlendStateCreateInfo.blendConstants'");
     }
   
   // vulkan
@@ -188,6 +188,6 @@ NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetblendConstants) {
   } else if (value->IsNull()) {
     memset(&self->instance.blendConstants, 0, sizeof(float));
   } else {
-    return Nan::ThrowError("Value of member 'blendConstants' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Array' for 'VkPipelineColorBlendStateCreateInfo.blendConstants'");
   }
 }

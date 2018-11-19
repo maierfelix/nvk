@@ -65,7 +65,7 @@ NAN_GETTER(_VkBindImagePlaneMemoryInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkBindImagePlaneMemoryInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkBindImagePlaneMemoryInfo::GetpNext) {
@@ -81,6 +81,6 @@ NAN_GETTER(_VkBindImagePlaneMemoryInfo::GetplaneAspect) {
   if (value->IsNumber()) {
     self->instance.planeAspect = static_cast<VkImageAspectFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'planeAspect' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkBindImagePlaneMemoryInfo.planeAspect'");
   }
 }

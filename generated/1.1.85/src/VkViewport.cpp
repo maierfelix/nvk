@@ -74,7 +74,7 @@ NAN_GETTER(_VkViewport::Getx) {
   if (value->IsNumber()) {
     self->instance.x = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'x' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkViewport.x'");
   }
 }// y
 NAN_GETTER(_VkViewport::Gety) {
@@ -85,7 +85,7 @@ NAN_GETTER(_VkViewport::Gety) {
   if (value->IsNumber()) {
     self->instance.y = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'y' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkViewport.y'");
   }
 }// width
 NAN_GETTER(_VkViewport::Getwidth) {
@@ -96,7 +96,7 @@ NAN_GETTER(_VkViewport::Getwidth) {
   if (value->IsNumber()) {
     self->instance.width = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'width' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkViewport.width'");
   }
 }// height
 NAN_GETTER(_VkViewport::Getheight) {
@@ -107,7 +107,7 @@ NAN_GETTER(_VkViewport::Getheight) {
   if (value->IsNumber()) {
     self->instance.height = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'height' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkViewport.height'");
   }
 }// minDepth
 NAN_GETTER(_VkViewport::GetminDepth) {
@@ -118,7 +118,7 @@ NAN_GETTER(_VkViewport::GetminDepth) {
   if (value->IsNumber()) {
     self->instance.minDepth = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'minDepth' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkViewport.minDepth'");
   }
 }// maxDepth
 NAN_GETTER(_VkViewport::GetmaxDepth) {
@@ -129,6 +129,6 @@ NAN_GETTER(_VkViewport::GetmaxDepth) {
   if (value->IsNumber()) {
     self->instance.maxDepth = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'maxDepth' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkViewport.maxDepth'");
   }
 }

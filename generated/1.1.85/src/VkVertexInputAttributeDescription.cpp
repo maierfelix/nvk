@@ -68,7 +68,7 @@ NAN_GETTER(_VkVertexInputAttributeDescription::Getlocation) {
   if (value->IsNumber()) {
     self->instance.location = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'location' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkVertexInputAttributeDescription.location'");
   }
 }// binding
 NAN_GETTER(_VkVertexInputAttributeDescription::Getbinding) {
@@ -79,7 +79,7 @@ NAN_GETTER(_VkVertexInputAttributeDescription::Getbinding) {
   if (value->IsNumber()) {
     self->instance.binding = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'binding' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkVertexInputAttributeDescription.binding'");
   }
 }// format
 NAN_GETTER(_VkVertexInputAttributeDescription::Getformat) {
@@ -90,7 +90,7 @@ NAN_GETTER(_VkVertexInputAttributeDescription::Getformat) {
   if (value->IsNumber()) {
     self->instance.format = static_cast<VkFormat>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'format' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkVertexInputAttributeDescription.format'");
   }
 }// offset
 NAN_GETTER(_VkVertexInputAttributeDescription::Getoffset) {
@@ -101,6 +101,6 @@ NAN_GETTER(_VkVertexInputAttributeDescription::Getoffset) {
   if (value->IsNumber()) {
     self->instance.offset = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'offset' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkVertexInputAttributeDescription.offset'");
   }
 }

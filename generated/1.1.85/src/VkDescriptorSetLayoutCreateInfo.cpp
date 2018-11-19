@@ -71,7 +71,7 @@ NAN_GETTER(_VkDescriptorSetLayoutCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorSetLayoutCreateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkDescriptorSetLayoutCreateInfo::GetpNext) {
@@ -87,7 +87,7 @@ NAN_GETTER(_VkDescriptorSetLayoutCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkDescriptorSetLayoutCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorSetLayoutCreateInfo.flags'");
   }
 }// bindingCount
 NAN_GETTER(_VkDescriptorSetLayoutCreateInfo::GetbindingCount) {
@@ -98,7 +98,7 @@ NAN_GETTER(_VkDescriptorSetLayoutCreateInfo::GetbindingCount) {
   if (value->IsNumber()) {
     self->instance.bindingCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'bindingCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorSetLayoutCreateInfo.bindingCount'");
   }
 }// pBindings
 NAN_GETTER(_VkDescriptorSetLayoutCreateInfo::GetpBindings) {
@@ -118,7 +118,7 @@ NAN_GETTER(_VkDescriptorSetLayoutCreateInfo::GetpBindings) {
     } else if (value->IsNull()) {
       self->pBindings.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pBindings' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkDescriptorSetLayoutBinding]' for 'VkDescriptorSetLayoutCreateInfo.pBindings'");
     }
   
   // vulkan
@@ -127,6 +127,6 @@ NAN_GETTER(_VkDescriptorSetLayoutCreateInfo::GetpBindings) {
   } else if (value->IsNull()) {
     self->instance.pBindings = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pBindings' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkDescriptorSetLayoutBinding]' for 'VkDescriptorSetLayoutCreateInfo.pBindings'");
   }
 }

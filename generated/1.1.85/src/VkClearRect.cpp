@@ -75,13 +75,13 @@ NAN_GETTER(_VkClearRect::Getrect) {
       _VkRect2D* inst = Nan::ObjectWrap::Unwrap<_VkRect2D>(obj);
       self->instance.rect = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'rect' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkRect2D]' for 'VkClearRect.rect'");
     }
   } else if (value->IsNull()) {
     self->rect.Reset();
     memset(&self->instance.rect, 0, sizeof(VkRect2D));
   } else {
-    return Nan::ThrowError("Value of member 'rect' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkRect2D]' for 'VkClearRect.rect'");
   }
 }// baseArrayLayer
 NAN_GETTER(_VkClearRect::GetbaseArrayLayer) {
@@ -92,7 +92,7 @@ NAN_GETTER(_VkClearRect::GetbaseArrayLayer) {
   if (value->IsNumber()) {
     self->instance.baseArrayLayer = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'baseArrayLayer' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkClearRect.baseArrayLayer'");
   }
 }// layerCount
 NAN_GETTER(_VkClearRect::GetlayerCount) {
@@ -103,6 +103,6 @@ NAN_GETTER(_VkClearRect::GetlayerCount) {
   if (value->IsNumber()) {
     self->instance.layerCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'layerCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkClearRect.layerCount'");
   }
 }

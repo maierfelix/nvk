@@ -80,7 +80,7 @@ NAN_GETTER(_VkCommandBufferInheritanceInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandBufferInheritanceInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkCommandBufferInheritanceInfo::GetpNext) {
@@ -106,13 +106,13 @@ NAN_GETTER(_VkCommandBufferInheritanceInfo::GetrenderPass) {
       _VkRenderPass* inst = Nan::ObjectWrap::Unwrap<_VkRenderPass>(obj);
       self->instance.renderPass = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'renderPass' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkRenderPass]' for 'VkCommandBufferInheritanceInfo.renderPass'");
     }
   } else if (value->IsNull()) {
     self->renderPass.Reset();
     self->instance.renderPass = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'renderPass' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkRenderPass]' for 'VkCommandBufferInheritanceInfo.renderPass'");
   }
 }// subpass
 NAN_GETTER(_VkCommandBufferInheritanceInfo::Getsubpass) {
@@ -123,7 +123,7 @@ NAN_GETTER(_VkCommandBufferInheritanceInfo::Getsubpass) {
   if (value->IsNumber()) {
     self->instance.subpass = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'subpass' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandBufferInheritanceInfo.subpass'");
   }
 }// framebuffer
 NAN_GETTER(_VkCommandBufferInheritanceInfo::Getframebuffer) {
@@ -144,13 +144,13 @@ NAN_GETTER(_VkCommandBufferInheritanceInfo::Getframebuffer) {
       _VkFramebuffer* inst = Nan::ObjectWrap::Unwrap<_VkFramebuffer>(obj);
       self->instance.framebuffer = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'framebuffer' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkFramebuffer]' for 'VkCommandBufferInheritanceInfo.framebuffer'");
     }
   } else if (value->IsNull()) {
     self->framebuffer.Reset();
     self->instance.framebuffer = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'framebuffer' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkFramebuffer]' for 'VkCommandBufferInheritanceInfo.framebuffer'");
   }
 }// occlusionQueryEnable
 NAN_GETTER(_VkCommandBufferInheritanceInfo::GetocclusionQueryEnable) {
@@ -161,7 +161,7 @@ NAN_GETTER(_VkCommandBufferInheritanceInfo::GetocclusionQueryEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.occlusionQueryEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'occlusionQueryEnable' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandBufferInheritanceInfo.occlusionQueryEnable'");
   }
 }// queryFlags
 NAN_GETTER(_VkCommandBufferInheritanceInfo::GetqueryFlags) {
@@ -172,7 +172,7 @@ NAN_GETTER(_VkCommandBufferInheritanceInfo::GetqueryFlags) {
   if (value->IsNumber()) {
     self->instance.queryFlags = static_cast<VkQueryControlFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'queryFlags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandBufferInheritanceInfo.queryFlags'");
   }
 }// pipelineStatistics
 NAN_GETTER(_VkCommandBufferInheritanceInfo::GetpipelineStatistics) {
@@ -183,6 +183,6 @@ NAN_GETTER(_VkCommandBufferInheritanceInfo::GetpipelineStatistics) {
   if (value->IsNumber()) {
     self->instance.pipelineStatistics = static_cast<VkQueryPipelineStatisticFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'pipelineStatistics' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandBufferInheritanceInfo.pipelineStatistics'");
   }
 }

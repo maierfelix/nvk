@@ -77,7 +77,7 @@ NAN_GETTER(_VkApplicationInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkApplicationInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkApplicationInfo::GetpNext) {
@@ -102,7 +102,7 @@ NAN_GETTER(_VkApplicationInfo::GetpApplicationName) {
   } else if (value->IsNull()) {
     self->instance.pApplicationName = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pApplicationName' has invalid type");
+    return Nan::ThrowTypeError("Expected 'String' for 'VkApplicationInfo.pApplicationName'");
   }
 }// applicationVersion
 NAN_GETTER(_VkApplicationInfo::GetapplicationVersion) {
@@ -113,7 +113,7 @@ NAN_GETTER(_VkApplicationInfo::GetapplicationVersion) {
   if (value->IsNumber()) {
     self->instance.applicationVersion = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'applicationVersion' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkApplicationInfo.applicationVersion'");
   }
 }// pEngineName
 NAN_GETTER(_VkApplicationInfo::GetpEngineName) {
@@ -133,7 +133,7 @@ NAN_GETTER(_VkApplicationInfo::GetpEngineName) {
   } else if (value->IsNull()) {
     self->instance.pEngineName = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pEngineName' has invalid type");
+    return Nan::ThrowTypeError("Expected 'String' for 'VkApplicationInfo.pEngineName'");
   }
 }// engineVersion
 NAN_GETTER(_VkApplicationInfo::GetengineVersion) {
@@ -144,7 +144,7 @@ NAN_GETTER(_VkApplicationInfo::GetengineVersion) {
   if (value->IsNumber()) {
     self->instance.engineVersion = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'engineVersion' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkApplicationInfo.engineVersion'");
   }
 }// apiVersion
 NAN_GETTER(_VkApplicationInfo::GetapiVersion) {
@@ -155,6 +155,6 @@ NAN_GETTER(_VkApplicationInfo::GetapiVersion) {
   if (value->IsNumber()) {
     self->instance.apiVersion = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'apiVersion' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkApplicationInfo.apiVersion'");
   }
 }

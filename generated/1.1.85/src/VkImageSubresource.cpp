@@ -65,7 +65,7 @@ NAN_GETTER(_VkImageSubresource::GetaspectMask) {
   if (value->IsNumber()) {
     self->instance.aspectMask = static_cast<VkImageAspectFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'aspectMask' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageSubresource.aspectMask'");
   }
 }// mipLevel
 NAN_GETTER(_VkImageSubresource::GetmipLevel) {
@@ -76,7 +76,7 @@ NAN_GETTER(_VkImageSubresource::GetmipLevel) {
   if (value->IsNumber()) {
     self->instance.mipLevel = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'mipLevel' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageSubresource.mipLevel'");
   }
 }// arrayLayer
 NAN_GETTER(_VkImageSubresource::GetarrayLayer) {
@@ -87,6 +87,6 @@ NAN_GETTER(_VkImageSubresource::GetarrayLayer) {
   if (value->IsNumber()) {
     self->instance.arrayLayer = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'arrayLayer' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageSubresource.arrayLayer'");
   }
 }

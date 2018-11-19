@@ -74,7 +74,7 @@ NAN_GETTER(_VkDescriptorPoolCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorPoolCreateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkDescriptorPoolCreateInfo::GetpNext) {
@@ -90,7 +90,7 @@ NAN_GETTER(_VkDescriptorPoolCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkDescriptorPoolCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorPoolCreateInfo.flags'");
   }
 }// maxSets
 NAN_GETTER(_VkDescriptorPoolCreateInfo::GetmaxSets) {
@@ -101,7 +101,7 @@ NAN_GETTER(_VkDescriptorPoolCreateInfo::GetmaxSets) {
   if (value->IsNumber()) {
     self->instance.maxSets = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'maxSets' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorPoolCreateInfo.maxSets'");
   }
 }// poolSizeCount
 NAN_GETTER(_VkDescriptorPoolCreateInfo::GetpoolSizeCount) {
@@ -112,7 +112,7 @@ NAN_GETTER(_VkDescriptorPoolCreateInfo::GetpoolSizeCount) {
   if (value->IsNumber()) {
     self->instance.poolSizeCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'poolSizeCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorPoolCreateInfo.poolSizeCount'");
   }
 }// pPoolSizes
 NAN_GETTER(_VkDescriptorPoolCreateInfo::GetpPoolSizes) {
@@ -132,7 +132,7 @@ NAN_GETTER(_VkDescriptorPoolCreateInfo::GetpPoolSizes) {
     } else if (value->IsNull()) {
       self->pPoolSizes.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pPoolSizes' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkDescriptorPoolSize]' for 'VkDescriptorPoolCreateInfo.pPoolSizes'");
     }
   
   // vulkan
@@ -141,6 +141,6 @@ NAN_GETTER(_VkDescriptorPoolCreateInfo::GetpPoolSizes) {
   } else if (value->IsNull()) {
     self->instance.pPoolSizes = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pPoolSizes' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkDescriptorPoolSize]' for 'VkDescriptorPoolCreateInfo.pPoolSizes'");
   }
 }

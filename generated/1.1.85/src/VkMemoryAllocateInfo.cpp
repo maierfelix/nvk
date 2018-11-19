@@ -68,7 +68,7 @@ NAN_GETTER(_VkMemoryAllocateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkMemoryAllocateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkMemoryAllocateInfo::GetpNext) {
@@ -84,7 +84,7 @@ NAN_GETTER(_VkMemoryAllocateInfo::GetallocationSize) {
   if (value->IsNumber()) {
     self->instance.allocationSize = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'allocationSize' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkMemoryAllocateInfo.allocationSize'");
   }
 }// memoryTypeIndex
 NAN_GETTER(_VkMemoryAllocateInfo::GetmemoryTypeIndex) {
@@ -95,6 +95,6 @@ NAN_GETTER(_VkMemoryAllocateInfo::GetmemoryTypeIndex) {
   if (value->IsNumber()) {
     self->instance.memoryTypeIndex = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'memoryTypeIndex' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkMemoryAllocateInfo.memoryTypeIndex'");
   }
 }

@@ -86,7 +86,7 @@ NAN_GETTER(_VkSubpassDescription::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkSubpassDescriptionFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubpassDescription.flags'");
   }
 }// pipelineBindPoint
 NAN_GETTER(_VkSubpassDescription::GetpipelineBindPoint) {
@@ -97,7 +97,7 @@ NAN_GETTER(_VkSubpassDescription::GetpipelineBindPoint) {
   if (value->IsNumber()) {
     self->instance.pipelineBindPoint = static_cast<VkPipelineBindPoint>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'pipelineBindPoint' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubpassDescription.pipelineBindPoint'");
   }
 }// inputAttachmentCount
 NAN_GETTER(_VkSubpassDescription::GetinputAttachmentCount) {
@@ -108,7 +108,7 @@ NAN_GETTER(_VkSubpassDescription::GetinputAttachmentCount) {
   if (value->IsNumber()) {
     self->instance.inputAttachmentCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'inputAttachmentCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubpassDescription.inputAttachmentCount'");
   }
 }// pInputAttachments
 NAN_GETTER(_VkSubpassDescription::GetpInputAttachments) {
@@ -128,7 +128,7 @@ NAN_GETTER(_VkSubpassDescription::GetpInputAttachments) {
     } else if (value->IsNull()) {
       self->pInputAttachments.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pInputAttachments' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkAttachmentReference]' for 'VkSubpassDescription.pInputAttachments'");
     }
   
   // vulkan
@@ -137,7 +137,7 @@ NAN_GETTER(_VkSubpassDescription::GetpInputAttachments) {
   } else if (value->IsNull()) {
     self->instance.pInputAttachments = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pInputAttachments' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkAttachmentReference]' for 'VkSubpassDescription.pInputAttachments'");
   }
 }// colorAttachmentCount
 NAN_GETTER(_VkSubpassDescription::GetcolorAttachmentCount) {
@@ -148,7 +148,7 @@ NAN_GETTER(_VkSubpassDescription::GetcolorAttachmentCount) {
   if (value->IsNumber()) {
     self->instance.colorAttachmentCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'colorAttachmentCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubpassDescription.colorAttachmentCount'");
   }
 }// pColorAttachments
 NAN_GETTER(_VkSubpassDescription::GetpColorAttachments) {
@@ -168,7 +168,7 @@ NAN_GETTER(_VkSubpassDescription::GetpColorAttachments) {
     } else if (value->IsNull()) {
       self->pColorAttachments.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pColorAttachments' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkAttachmentReference]' for 'VkSubpassDescription.pColorAttachments'");
     }
   
   // vulkan
@@ -177,7 +177,7 @@ NAN_GETTER(_VkSubpassDescription::GetpColorAttachments) {
   } else if (value->IsNull()) {
     self->instance.pColorAttachments = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pColorAttachments' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkAttachmentReference]' for 'VkSubpassDescription.pColorAttachments'");
   }
 }// pResolveAttachments
 NAN_GETTER(_VkSubpassDescription::GetpResolveAttachments) {
@@ -197,7 +197,7 @@ NAN_GETTER(_VkSubpassDescription::GetpResolveAttachments) {
     } else if (value->IsNull()) {
       self->pResolveAttachments.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pResolveAttachments' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkAttachmentReference]' for 'VkSubpassDescription.pResolveAttachments'");
     }
   
   // vulkan
@@ -206,7 +206,7 @@ NAN_GETTER(_VkSubpassDescription::GetpResolveAttachments) {
   } else if (value->IsNull()) {
     self->instance.pResolveAttachments = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pResolveAttachments' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkAttachmentReference]' for 'VkSubpassDescription.pResolveAttachments'");
   }
 }// pDepthStencilAttachment
 NAN_GETTER(_VkSubpassDescription::GetpDepthStencilAttachment) {
@@ -227,13 +227,13 @@ NAN_GETTER(_VkSubpassDescription::GetpDepthStencilAttachment) {
       _VkAttachmentReference* inst = Nan::ObjectWrap::Unwrap<_VkAttachmentReference>(obj);
       self->instance.pDepthStencilAttachment = &inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'pDepthStencilAttachment' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkAttachmentReference]' for 'VkSubpassDescription.pDepthStencilAttachment'");
     }
   } else if (value->IsNull()) {
     self->pDepthStencilAttachment.Reset();
     self->instance.pDepthStencilAttachment = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pDepthStencilAttachment' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkAttachmentReference]' for 'VkSubpassDescription.pDepthStencilAttachment'");
   }
 }// preserveAttachmentCount
 NAN_GETTER(_VkSubpassDescription::GetpreserveAttachmentCount) {
@@ -244,7 +244,7 @@ NAN_GETTER(_VkSubpassDescription::GetpreserveAttachmentCount) {
   if (value->IsNumber()) {
     self->instance.preserveAttachmentCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'preserveAttachmentCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubpassDescription.preserveAttachmentCount'");
   }
 }// pPreserveAttachments
 NAN_GETTER(_VkSubpassDescription::GetpPreserveAttachments) {
@@ -260,11 +260,15 @@ NAN_GETTER(_VkSubpassDescription::GetpPreserveAttachments) {
   
     // js
     if (value->IsArrayBufferView()) {
-      self->pPreserveAttachments.Reset<v8::Array>(value.As<v8::Array>());
+      if (value->IsUint32Array()) {
+        self->pPreserveAttachments.Reset<v8::Array>(value.As<v8::Array>());
+      } else {
+        return Nan::ThrowTypeError("Expected 'Uint32Array' for 'VkSubpassDescription.pPreserveAttachments'");
+      }
     } else if (value->IsNull()) {
       self->pPreserveAttachments.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pPreserveAttachments' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Uint32Array' for 'VkSubpassDescription.pPreserveAttachments'");
     }
   
   

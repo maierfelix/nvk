@@ -83,7 +83,7 @@ NAN_GETTER(_VkBufferMemoryBarrier::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferMemoryBarrier.sType'");
   }
 }// pNext
 NAN_GETTER(_VkBufferMemoryBarrier::GetpNext) {
@@ -99,7 +99,7 @@ NAN_GETTER(_VkBufferMemoryBarrier::GetsrcAccessMask) {
   if (value->IsNumber()) {
     self->instance.srcAccessMask = static_cast<VkAccessFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'srcAccessMask' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferMemoryBarrier.srcAccessMask'");
   }
 }// dstAccessMask
 NAN_GETTER(_VkBufferMemoryBarrier::GetdstAccessMask) {
@@ -110,7 +110,7 @@ NAN_GETTER(_VkBufferMemoryBarrier::GetdstAccessMask) {
   if (value->IsNumber()) {
     self->instance.dstAccessMask = static_cast<VkAccessFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'dstAccessMask' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferMemoryBarrier.dstAccessMask'");
   }
 }// srcQueueFamilyIndex
 NAN_GETTER(_VkBufferMemoryBarrier::GetsrcQueueFamilyIndex) {
@@ -121,7 +121,7 @@ NAN_GETTER(_VkBufferMemoryBarrier::GetsrcQueueFamilyIndex) {
   if (value->IsNumber()) {
     self->instance.srcQueueFamilyIndex = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'srcQueueFamilyIndex' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferMemoryBarrier.srcQueueFamilyIndex'");
   }
 }// dstQueueFamilyIndex
 NAN_GETTER(_VkBufferMemoryBarrier::GetdstQueueFamilyIndex) {
@@ -132,7 +132,7 @@ NAN_GETTER(_VkBufferMemoryBarrier::GetdstQueueFamilyIndex) {
   if (value->IsNumber()) {
     self->instance.dstQueueFamilyIndex = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'dstQueueFamilyIndex' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferMemoryBarrier.dstQueueFamilyIndex'");
   }
 }// buffer
 NAN_GETTER(_VkBufferMemoryBarrier::Getbuffer) {
@@ -153,13 +153,13 @@ NAN_GETTER(_VkBufferMemoryBarrier::Getbuffer) {
       _VkBuffer* inst = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
       self->instance.buffer = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'buffer' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkBuffer]' for 'VkBufferMemoryBarrier.buffer'");
     }
   } else if (value->IsNull()) {
     self->buffer.Reset();
     self->instance.buffer = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'buffer' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkBuffer]' for 'VkBufferMemoryBarrier.buffer'");
   }
 }// offset
 NAN_GETTER(_VkBufferMemoryBarrier::Getoffset) {
@@ -170,7 +170,7 @@ NAN_GETTER(_VkBufferMemoryBarrier::Getoffset) {
   if (value->IsNumber()) {
     self->instance.offset = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'offset' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferMemoryBarrier.offset'");
   }
 }// size
 NAN_GETTER(_VkBufferMemoryBarrier::Getsize) {
@@ -181,6 +181,6 @@ NAN_GETTER(_VkBufferMemoryBarrier::Getsize) {
   if (value->IsNumber()) {
     self->instance.size = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'size' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferMemoryBarrier.size'");
   }
 }

@@ -62,7 +62,7 @@ NAN_GETTER(_VkExtent2D::Getwidth) {
   if (value->IsNumber()) {
     self->instance.width = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'width' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkExtent2D.width'");
   }
 }// height
 NAN_GETTER(_VkExtent2D::Getheight) {
@@ -73,6 +73,6 @@ NAN_GETTER(_VkExtent2D::Getheight) {
   if (value->IsNumber()) {
     self->instance.height = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'height' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkExtent2D.height'");
   }
 }

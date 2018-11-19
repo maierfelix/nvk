@@ -77,7 +77,7 @@ NAN_GETTER(_VkPipelineLayoutCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineLayoutCreateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpNext) {
@@ -93,7 +93,7 @@ NAN_GETTER(_VkPipelineLayoutCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkPipelineLayoutCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineLayoutCreateInfo.flags'");
   }
 }// setLayoutCount
 NAN_GETTER(_VkPipelineLayoutCreateInfo::GetsetLayoutCount) {
@@ -104,7 +104,7 @@ NAN_GETTER(_VkPipelineLayoutCreateInfo::GetsetLayoutCount) {
   if (value->IsNumber()) {
     self->instance.setLayoutCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'setLayoutCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineLayoutCreateInfo.setLayoutCount'");
   }
 }// pSetLayouts
 NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpSetLayouts) {
@@ -124,7 +124,7 @@ NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpSetLayouts) {
     } else if (value->IsNull()) {
       self->pSetLayouts.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pSetLayouts' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkDescriptorSetLayout]' for 'VkPipelineLayoutCreateInfo.pSetLayouts'");
     }
   
   // vulkan
@@ -133,7 +133,7 @@ NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpSetLayouts) {
   } else if (value->IsNull()) {
     self->instance.pSetLayouts = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'pSetLayouts' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkDescriptorSetLayout]' for 'VkPipelineLayoutCreateInfo.pSetLayouts'");
   }
 }// pushConstantRangeCount
 NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpushConstantRangeCount) {
@@ -144,7 +144,7 @@ NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpushConstantRangeCount) {
   if (value->IsNumber()) {
     self->instance.pushConstantRangeCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'pushConstantRangeCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineLayoutCreateInfo.pushConstantRangeCount'");
   }
 }// pPushConstantRanges
 NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpPushConstantRanges) {
@@ -164,7 +164,7 @@ NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpPushConstantRanges) {
     } else if (value->IsNull()) {
       self->pPushConstantRanges.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pPushConstantRanges' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkPushConstantRange]' for 'VkPipelineLayoutCreateInfo.pPushConstantRanges'");
     }
   
   // vulkan
@@ -173,6 +173,6 @@ NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpPushConstantRanges) {
   } else if (value->IsNull()) {
     self->instance.pPushConstantRanges = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pPushConstantRanges' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkPushConstantRange]' for 'VkPipelineLayoutCreateInfo.pPushConstantRanges'");
   }
 }

@@ -110,7 +110,7 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSwapchainCreateInfoKHR.sType'");
   }
 }// pNext
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetpNext) {
@@ -126,7 +126,7 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkSwapchainCreateFlagsKHR>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSwapchainCreateInfoKHR.flags'");
   }
 }// surface
 NAN_GETTER(_VkSwapchainCreateInfoKHR::Getsurface) {
@@ -147,13 +147,13 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::Getsurface) {
       _VkSurfaceKHR* inst = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(obj);
       self->instance.surface = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'surface' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkSurfaceKHR]' for 'VkSwapchainCreateInfoKHR.surface'");
     }
   } else if (value->IsNull()) {
     self->surface.Reset();
     self->instance.surface = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'surface' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkSurfaceKHR]' for 'VkSwapchainCreateInfoKHR.surface'");
   }
 }// minImageCount
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetminImageCount) {
@@ -164,7 +164,7 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::GetminImageCount) {
   if (value->IsNumber()) {
     self->instance.minImageCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'minImageCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSwapchainCreateInfoKHR.minImageCount'");
   }
 }// imageFormat
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetimageFormat) {
@@ -175,7 +175,7 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::GetimageFormat) {
   if (value->IsNumber()) {
     self->instance.imageFormat = static_cast<VkFormat>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'imageFormat' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSwapchainCreateInfoKHR.imageFormat'");
   }
 }// imageColorSpace
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetimageColorSpace) {
@@ -186,7 +186,7 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::GetimageColorSpace) {
   if (value->IsNumber()) {
     self->instance.imageColorSpace = static_cast<VkColorSpaceKHR>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'imageColorSpace' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSwapchainCreateInfoKHR.imageColorSpace'");
   }
 }// imageExtent
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetimageExtent) {
@@ -207,13 +207,13 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::GetimageExtent) {
       _VkExtent2D* inst = Nan::ObjectWrap::Unwrap<_VkExtent2D>(obj);
       self->instance.imageExtent = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'imageExtent' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkExtent2D]' for 'VkSwapchainCreateInfoKHR.imageExtent'");
     }
   } else if (value->IsNull()) {
     self->imageExtent.Reset();
     memset(&self->instance.imageExtent, 0, sizeof(VkExtent2D));
   } else {
-    return Nan::ThrowError("Value of member 'imageExtent' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkExtent2D]' for 'VkSwapchainCreateInfoKHR.imageExtent'");
   }
 }// imageArrayLayers
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetimageArrayLayers) {
@@ -224,7 +224,7 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::GetimageArrayLayers) {
   if (value->IsNumber()) {
     self->instance.imageArrayLayers = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'imageArrayLayers' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSwapchainCreateInfoKHR.imageArrayLayers'");
   }
 }// imageUsage
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetimageUsage) {
@@ -235,7 +235,7 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::GetimageUsage) {
   if (value->IsNumber()) {
     self->instance.imageUsage = static_cast<VkImageUsageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'imageUsage' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSwapchainCreateInfoKHR.imageUsage'");
   }
 }// imageSharingMode
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetimageSharingMode) {
@@ -246,7 +246,7 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::GetimageSharingMode) {
   if (value->IsNumber()) {
     self->instance.imageSharingMode = static_cast<VkSharingMode>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'imageSharingMode' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSwapchainCreateInfoKHR.imageSharingMode'");
   }
 }// queueFamilyIndexCount
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetqueueFamilyIndexCount) {
@@ -257,7 +257,7 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::GetqueueFamilyIndexCount) {
   if (value->IsNumber()) {
     self->instance.queueFamilyIndexCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'queueFamilyIndexCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSwapchainCreateInfoKHR.queueFamilyIndexCount'");
   }
 }// pQueueFamilyIndices
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetpQueueFamilyIndices) {
@@ -273,11 +273,15 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::GetpQueueFamilyIndices) {
   
     // js
     if (value->IsArrayBufferView()) {
-      self->pQueueFamilyIndices.Reset<v8::Array>(value.As<v8::Array>());
+      if (value->IsUint32Array()) {
+        self->pQueueFamilyIndices.Reset<v8::Array>(value.As<v8::Array>());
+      } else {
+        return Nan::ThrowTypeError("Expected 'Uint32Array' for 'VkSwapchainCreateInfoKHR.pQueueFamilyIndices'");
+      }
     } else if (value->IsNull()) {
       self->pQueueFamilyIndices.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pQueueFamilyIndices' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Uint32Array' for 'VkSwapchainCreateInfoKHR.pQueueFamilyIndices'");
     }
   
   
@@ -296,7 +300,7 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::GetpreTransform) {
   if (value->IsNumber()) {
     self->instance.preTransform = static_cast<VkSurfaceTransformFlagBitsKHR>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'preTransform' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSwapchainCreateInfoKHR.preTransform'");
   }
 }// compositeAlpha
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetcompositeAlpha) {
@@ -307,7 +311,7 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::GetcompositeAlpha) {
   if (value->IsNumber()) {
     self->instance.compositeAlpha = static_cast<VkCompositeAlphaFlagBitsKHR>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'compositeAlpha' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSwapchainCreateInfoKHR.compositeAlpha'");
   }
 }// presentMode
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetpresentMode) {
@@ -318,7 +322,7 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::GetpresentMode) {
   if (value->IsNumber()) {
     self->instance.presentMode = static_cast<VkPresentModeKHR>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'presentMode' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSwapchainCreateInfoKHR.presentMode'");
   }
 }// clipped
 NAN_GETTER(_VkSwapchainCreateInfoKHR::Getclipped) {
@@ -329,7 +333,7 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::Getclipped) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.clipped = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'clipped' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSwapchainCreateInfoKHR.clipped'");
   }
 }// oldSwapchain
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetoldSwapchain) {
@@ -350,12 +354,12 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::GetoldSwapchain) {
       _VkSwapchainKHR* inst = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(obj);
       self->instance.oldSwapchain = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'oldSwapchain' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkSwapchainKHR]' for 'VkSwapchainCreateInfoKHR.oldSwapchain'");
     }
   } else if (value->IsNull()) {
     self->oldSwapchain.Reset();
     self->instance.oldSwapchain = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'oldSwapchain' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkSwapchainKHR]' for 'VkSwapchainCreateInfoKHR.oldSwapchain'");
   }
 }

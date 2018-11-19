@@ -75,13 +75,13 @@ NAN_GETTER(_VkDescriptorBufferInfo::Getbuffer) {
       _VkBuffer* inst = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
       self->instance.buffer = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'buffer' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkBuffer]' for 'VkDescriptorBufferInfo.buffer'");
     }
   } else if (value->IsNull()) {
     self->buffer.Reset();
     self->instance.buffer = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'buffer' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkBuffer]' for 'VkDescriptorBufferInfo.buffer'");
   }
 }// offset
 NAN_GETTER(_VkDescriptorBufferInfo::Getoffset) {
@@ -92,7 +92,7 @@ NAN_GETTER(_VkDescriptorBufferInfo::Getoffset) {
   if (value->IsNumber()) {
     self->instance.offset = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'offset' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorBufferInfo.offset'");
   }
 }// range
 NAN_GETTER(_VkDescriptorBufferInfo::Getrange) {
@@ -103,6 +103,6 @@ NAN_GETTER(_VkDescriptorBufferInfo::Getrange) {
   if (value->IsNumber()) {
     self->instance.range = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'range' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorBufferInfo.range'");
   }
 }

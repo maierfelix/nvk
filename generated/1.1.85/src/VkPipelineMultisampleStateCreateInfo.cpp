@@ -83,7 +83,7 @@ NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineMultisampleStateCreateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetpNext) {
@@ -99,7 +99,7 @@ NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkPipelineMultisampleStateCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineMultisampleStateCreateInfo.flags'");
   }
 }// rasterizationSamples
 NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetrasterizationSamples) {
@@ -110,7 +110,7 @@ NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetrasterizationSamples) {
   if (value->IsNumber()) {
     self->instance.rasterizationSamples = static_cast<VkSampleCountFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'rasterizationSamples' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineMultisampleStateCreateInfo.rasterizationSamples'");
   }
 }// sampleShadingEnable
 NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetsampleShadingEnable) {
@@ -121,7 +121,7 @@ NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetsampleShadingEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.sampleShadingEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'sampleShadingEnable' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineMultisampleStateCreateInfo.sampleShadingEnable'");
   }
 }// minSampleShading
 NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetminSampleShading) {
@@ -132,7 +132,7 @@ NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetminSampleShading) {
   if (value->IsNumber()) {
     self->instance.minSampleShading = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'minSampleShading' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineMultisampleStateCreateInfo.minSampleShading'");
   }
 }// pSampleMask
 NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetpSampleMask) {
@@ -148,11 +148,15 @@ NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetpSampleMask) {
   
     // js
     if (value->IsArrayBufferView()) {
-      self->pSampleMask.Reset<v8::Array>(value.As<v8::Array>());
+      if (value->IsUint32Array()) {
+        self->pSampleMask.Reset<v8::Array>(value.As<v8::Array>());
+      } else {
+        return Nan::ThrowTypeError("Expected 'Uint32Array' for 'VkPipelineMultisampleStateCreateInfo.pSampleMask'");
+      }
     } else if (value->IsNull()) {
       self->pSampleMask.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pSampleMask' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Uint32Array' for 'VkPipelineMultisampleStateCreateInfo.pSampleMask'");
     }
   
   
@@ -171,7 +175,7 @@ NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetalphaToCoverageEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.alphaToCoverageEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'alphaToCoverageEnable' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineMultisampleStateCreateInfo.alphaToCoverageEnable'");
   }
 }// alphaToOneEnable
 NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetalphaToOneEnable) {
@@ -182,6 +186,6 @@ NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetalphaToOneEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.alphaToOneEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'alphaToOneEnable' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineMultisampleStateCreateInfo.alphaToOneEnable'");
   }
 }

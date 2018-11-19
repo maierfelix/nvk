@@ -65,7 +65,7 @@ NAN_GETTER(_VkSemaphoreCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSemaphoreCreateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkSemaphoreCreateInfo::GetpNext) {
@@ -81,6 +81,6 @@ NAN_GETTER(_VkSemaphoreCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkSemaphoreCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSemaphoreCreateInfo.flags'");
   }
 }

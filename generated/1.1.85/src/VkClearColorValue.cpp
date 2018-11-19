@@ -74,7 +74,7 @@ NAN_GETTER(_VkClearColorValue::Getfloat32) {
     } else if (value->IsNull()) {
       self->float32.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'float32' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Array' for 'VkClearColorValue.float32'");
     }
   
   // vulkan
@@ -84,7 +84,7 @@ NAN_GETTER(_VkClearColorValue::Getfloat32) {
   } else if (value->IsNull()) {
     memset(&self->instance.float32, 0, sizeof(float));
   } else {
-    return Nan::ThrowError("Value of member 'float32' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Array' for 'VkClearColorValue.float32'");
   }
 }// int32
 NAN_GETTER(_VkClearColorValue::Getint32) {
@@ -103,7 +103,7 @@ NAN_GETTER(_VkClearColorValue::Getint32) {
     } else if (value->IsNull()) {
       self->int32.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'int32' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Array' for 'VkClearColorValue.int32'");
     }
   
   // vulkan
@@ -113,7 +113,7 @@ NAN_GETTER(_VkClearColorValue::Getint32) {
   } else if (value->IsNull()) {
     memset(&self->instance.int32, 0, sizeof(int32_t));
   } else {
-    return Nan::ThrowError("Value of member 'int32' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Array' for 'VkClearColorValue.int32'");
   }
 }// uint32
 NAN_GETTER(_VkClearColorValue::Getuint32) {
@@ -132,7 +132,7 @@ NAN_GETTER(_VkClearColorValue::Getuint32) {
     } else if (value->IsNull()) {
       self->uint32.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'uint32' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Array' for 'VkClearColorValue.uint32'");
     }
   
   // vulkan
@@ -142,6 +142,6 @@ NAN_GETTER(_VkClearColorValue::Getuint32) {
   } else if (value->IsNull()) {
     memset(&self->instance.uint32, 0, sizeof(uint32_t));
   } else {
-    return Nan::ThrowError("Value of member 'uint32' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Array' for 'VkClearColorValue.uint32'");
   }
 }

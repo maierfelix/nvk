@@ -436,6 +436,41 @@ function parseTypeElement(child) {
   if (isNumber(out.rawType)) out.isNumber = true;
   // a numeric array
   if (out.isArray && isNumber(type)) out.isNumericArray = true;
+  // a typed array
+  if (out.isNumericArray && !out.isStaticArray) {
+    switch (out.rawType) {
+      case "float *":
+      case "int8_t *":
+      case "int16_t *":
+      case "int32_t *":
+      case "uint8_t *":
+      case "uint16_t *":
+      case "uint32_t *":
+      case "const float *":
+      case "const int8_t *":
+      case "const int16_t *":
+      case "const int32_t *":
+      case "const uint8_t *":
+      case "const uint16_t *":
+      case "const uint32_t *":
+      case "const uint64_t *":
+        out.isTypedArray = true;
+        out.jsTypedArrayName = getJsTypedArrayName(out.rawType);
+      break;
+      default:
+        console.warn(`Cannot determine TypedArray validity!`);
+    };
+  }
+  // figure out js relative type
+  {
+    let jsType = "undefined";
+    if (out.isNumber) jsType = "Number";
+    else if (out.isString) jsType = "String";
+    else if (out.isTypedArray) jsType = "ArrayBufferView";
+    else if (out.isArray) jsType = "Array";
+    else if (out.isStructType || out.isHandleType) jsType = "Object";
+    out.jsType = jsType;
+  }
   return out;
 };
 
@@ -456,13 +491,49 @@ function isNumber(type) {
     case "int":
     case "float":
     case "size_t":
+    case "int8_t":
     case "int32_t":
+    case "int64_t":
     case "uint8_t":
     case "uint32_t":
     case "uint64_t":
       return true;
   };
   return false;
+};
+
+function getJsTypedArrayName(type) {
+  switch (type) {
+    case "float *":
+    case "const float *":
+      return "Float32Array";
+    case "int8_t *":
+    case "const int8_t *":
+      return "Int8Array";
+    case "int16_t *":
+    case "const int16_t *":
+      return "Int16Array";
+    case "int32_t *":
+    case "const int32_t *":
+      return "Int32Array";
+    case "int64_t *":
+    case "const int64_t *":
+      return "Int64Array";
+    case "uint8_t *":
+    case "const uint8_t *":
+      return "Uint8Array";
+    case "uint16_t *":
+    case "const uint16_t *": 
+      return "Uint16Array";
+    case "uint32_t *":
+    case "const uint32_t *":
+      return "Uint32Array";
+    case "uint64_t *":
+    case "const uint64_t *":
+      return "BigUint64Array";
+  };
+  console.warn(`Cannot resolve equivalent JS typed array name for ${type}`);
+  return null;
 };
 
 export default function(xmlInput) {

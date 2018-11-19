@@ -80,7 +80,7 @@ NAN_GETTER(_VkPresentInfoKHR::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPresentInfoKHR.sType'");
   }
 }// pNext
 NAN_GETTER(_VkPresentInfoKHR::GetpNext) {
@@ -96,7 +96,7 @@ NAN_GETTER(_VkPresentInfoKHR::GetwaitSemaphoreCount) {
   if (value->IsNumber()) {
     self->instance.waitSemaphoreCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'waitSemaphoreCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPresentInfoKHR.waitSemaphoreCount'");
   }
 }// pWaitSemaphores
 NAN_GETTER(_VkPresentInfoKHR::GetpWaitSemaphores) {
@@ -116,7 +116,7 @@ NAN_GETTER(_VkPresentInfoKHR::GetpWaitSemaphores) {
     } else if (value->IsNull()) {
       self->pWaitSemaphores.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pWaitSemaphores' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkSemaphore]' for 'VkPresentInfoKHR.pWaitSemaphores'");
     }
   
   // vulkan
@@ -125,7 +125,7 @@ NAN_GETTER(_VkPresentInfoKHR::GetpWaitSemaphores) {
   } else if (value->IsNull()) {
     self->instance.pWaitSemaphores = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'pWaitSemaphores' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkSemaphore]' for 'VkPresentInfoKHR.pWaitSemaphores'");
   }
 }// swapchainCount
 NAN_GETTER(_VkPresentInfoKHR::GetswapchainCount) {
@@ -136,7 +136,7 @@ NAN_GETTER(_VkPresentInfoKHR::GetswapchainCount) {
   if (value->IsNumber()) {
     self->instance.swapchainCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'swapchainCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPresentInfoKHR.swapchainCount'");
   }
 }// pSwapchains
 NAN_GETTER(_VkPresentInfoKHR::GetpSwapchains) {
@@ -156,7 +156,7 @@ NAN_GETTER(_VkPresentInfoKHR::GetpSwapchains) {
     } else if (value->IsNull()) {
       self->pSwapchains.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pSwapchains' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkSwapchainKHR]' for 'VkPresentInfoKHR.pSwapchains'");
     }
   
   // vulkan
@@ -165,7 +165,7 @@ NAN_GETTER(_VkPresentInfoKHR::GetpSwapchains) {
   } else if (value->IsNull()) {
     self->instance.pSwapchains = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'pSwapchains' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkSwapchainKHR]' for 'VkPresentInfoKHR.pSwapchains'");
   }
 }// pImageIndices
 NAN_GETTER(_VkPresentInfoKHR::GetpImageIndices) {
@@ -181,11 +181,15 @@ NAN_GETTER(_VkPresentInfoKHR::GetpImageIndices) {
   
     // js
     if (value->IsArrayBufferView()) {
-      self->pImageIndices.Reset<v8::Array>(value.As<v8::Array>());
+      if (value->IsUint32Array()) {
+        self->pImageIndices.Reset<v8::Array>(value.As<v8::Array>());
+      } else {
+        return Nan::ThrowTypeError("Expected 'Uint32Array' for 'VkPresentInfoKHR.pImageIndices'");
+      }
     } else if (value->IsNull()) {
       self->pImageIndices.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pImageIndices' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Uint32Array' for 'VkPresentInfoKHR.pImageIndices'");
     }
   
   
@@ -209,11 +213,15 @@ NAN_GETTER(_VkPresentInfoKHR::GetpResults) {
   
     // js
     if (value->IsArrayBufferView()) {
-      self->pResults.Reset<v8::Array>(value.As<v8::Array>());
+      if (value->IsInt32Array()) {
+        self->pResults.Reset<v8::Array>(value.As<v8::Array>());
+      } else {
+        return Nan::ThrowTypeError("Expected 'Int32Array' for 'VkPresentInfoKHR.pResults'");
+      }
     } else if (value->IsNull()) {
       self->pResults.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pResults' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Int32Array' for 'VkPresentInfoKHR.pResults'");
     }
   
   

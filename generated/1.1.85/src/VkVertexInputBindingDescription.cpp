@@ -65,7 +65,7 @@ NAN_GETTER(_VkVertexInputBindingDescription::Getbinding) {
   if (value->IsNumber()) {
     self->instance.binding = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'binding' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkVertexInputBindingDescription.binding'");
   }
 }// stride
 NAN_GETTER(_VkVertexInputBindingDescription::Getstride) {
@@ -76,7 +76,7 @@ NAN_GETTER(_VkVertexInputBindingDescription::Getstride) {
   if (value->IsNumber()) {
     self->instance.stride = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'stride' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkVertexInputBindingDescription.stride'");
   }
 }// inputRate
 NAN_GETTER(_VkVertexInputBindingDescription::GetinputRate) {
@@ -87,6 +87,6 @@ NAN_GETTER(_VkVertexInputBindingDescription::GetinputRate) {
   if (value->IsNumber()) {
     self->instance.inputRate = static_cast<VkVertexInputRate>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'inputRate' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkVertexInputBindingDescription.inputRate'");
   }
 }

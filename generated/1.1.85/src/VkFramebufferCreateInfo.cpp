@@ -83,7 +83,7 @@ NAN_GETTER(_VkFramebufferCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkFramebufferCreateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkFramebufferCreateInfo::GetpNext) {
@@ -99,7 +99,7 @@ NAN_GETTER(_VkFramebufferCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkFramebufferCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkFramebufferCreateInfo.flags'");
   }
 }// renderPass
 NAN_GETTER(_VkFramebufferCreateInfo::GetrenderPass) {
@@ -120,13 +120,13 @@ NAN_GETTER(_VkFramebufferCreateInfo::GetrenderPass) {
       _VkRenderPass* inst = Nan::ObjectWrap::Unwrap<_VkRenderPass>(obj);
       self->instance.renderPass = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'renderPass' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkRenderPass]' for 'VkFramebufferCreateInfo.renderPass'");
     }
   } else if (value->IsNull()) {
     self->renderPass.Reset();
     self->instance.renderPass = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'renderPass' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkRenderPass]' for 'VkFramebufferCreateInfo.renderPass'");
   }
 }// attachmentCount
 NAN_GETTER(_VkFramebufferCreateInfo::GetattachmentCount) {
@@ -137,7 +137,7 @@ NAN_GETTER(_VkFramebufferCreateInfo::GetattachmentCount) {
   if (value->IsNumber()) {
     self->instance.attachmentCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'attachmentCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkFramebufferCreateInfo.attachmentCount'");
   }
 }// pAttachments
 NAN_GETTER(_VkFramebufferCreateInfo::GetpAttachments) {
@@ -157,7 +157,7 @@ NAN_GETTER(_VkFramebufferCreateInfo::GetpAttachments) {
     } else if (value->IsNull()) {
       self->pAttachments.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pAttachments' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkImageView]' for 'VkFramebufferCreateInfo.pAttachments'");
     }
   
   // vulkan
@@ -166,7 +166,7 @@ NAN_GETTER(_VkFramebufferCreateInfo::GetpAttachments) {
   } else if (value->IsNull()) {
     self->instance.pAttachments = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'pAttachments' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkImageView]' for 'VkFramebufferCreateInfo.pAttachments'");
   }
 }// width
 NAN_GETTER(_VkFramebufferCreateInfo::Getwidth) {
@@ -177,7 +177,7 @@ NAN_GETTER(_VkFramebufferCreateInfo::Getwidth) {
   if (value->IsNumber()) {
     self->instance.width = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'width' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkFramebufferCreateInfo.width'");
   }
 }// height
 NAN_GETTER(_VkFramebufferCreateInfo::Getheight) {
@@ -188,7 +188,7 @@ NAN_GETTER(_VkFramebufferCreateInfo::Getheight) {
   if (value->IsNumber()) {
     self->instance.height = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'height' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkFramebufferCreateInfo.height'");
   }
 }// layers
 NAN_GETTER(_VkFramebufferCreateInfo::Getlayers) {
@@ -199,6 +199,6 @@ NAN_GETTER(_VkFramebufferCreateInfo::Getlayers) {
   if (value->IsNumber()) {
     self->instance.layers = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'layers' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkFramebufferCreateInfo.layers'");
   }
 }

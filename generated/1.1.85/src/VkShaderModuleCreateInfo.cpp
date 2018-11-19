@@ -71,7 +71,7 @@ NAN_GETTER(_VkShaderModuleCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkShaderModuleCreateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkShaderModuleCreateInfo::GetpNext) {
@@ -87,7 +87,7 @@ NAN_GETTER(_VkShaderModuleCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkShaderModuleCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkShaderModuleCreateInfo.flags'");
   }
 }// codeSize
 NAN_GETTER(_VkShaderModuleCreateInfo::GetcodeSize) {
@@ -98,7 +98,7 @@ NAN_GETTER(_VkShaderModuleCreateInfo::GetcodeSize) {
   if (value->IsNumber()) {
     self->instance.codeSize = static_cast<size_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'codeSize' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkShaderModuleCreateInfo.codeSize'");
   }
 }// pCode
 NAN_GETTER(_VkShaderModuleCreateInfo::GetpCode) {
@@ -114,11 +114,15 @@ NAN_GETTER(_VkShaderModuleCreateInfo::GetpCode) {
   
     // js
     if (value->IsArrayBufferView()) {
-      self->pCode.Reset<v8::Array>(value.As<v8::Array>());
+      if (value->IsUint8Array()) {
+        self->pCode.Reset<v8::Array>(value.As<v8::Array>());
+      } else {
+        return Nan::ThrowTypeError("Expected 'Uint8Array' for 'VkShaderModuleCreateInfo.pCode'");
+      }
     } else if (value->IsNull()) {
       self->pCode.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pCode' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Uint8Array' for 'VkShaderModuleCreateInfo.pCode'");
     }
   
   

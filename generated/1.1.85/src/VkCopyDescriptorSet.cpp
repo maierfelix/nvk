@@ -83,7 +83,7 @@ NAN_GETTER(_VkCopyDescriptorSet::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkCopyDescriptorSet.sType'");
   }
 }// pNext
 NAN_GETTER(_VkCopyDescriptorSet::GetpNext) {
@@ -109,13 +109,13 @@ NAN_GETTER(_VkCopyDescriptorSet::GetsrcSet) {
       _VkDescriptorSet* inst = Nan::ObjectWrap::Unwrap<_VkDescriptorSet>(obj);
       self->instance.srcSet = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'srcSet' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkDescriptorSet]' for 'VkCopyDescriptorSet.srcSet'");
     }
   } else if (value->IsNull()) {
     self->srcSet.Reset();
     self->instance.srcSet = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'srcSet' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkDescriptorSet]' for 'VkCopyDescriptorSet.srcSet'");
   }
 }// srcBinding
 NAN_GETTER(_VkCopyDescriptorSet::GetsrcBinding) {
@@ -126,7 +126,7 @@ NAN_GETTER(_VkCopyDescriptorSet::GetsrcBinding) {
   if (value->IsNumber()) {
     self->instance.srcBinding = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'srcBinding' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkCopyDescriptorSet.srcBinding'");
   }
 }// srcArrayElement
 NAN_GETTER(_VkCopyDescriptorSet::GetsrcArrayElement) {
@@ -137,7 +137,7 @@ NAN_GETTER(_VkCopyDescriptorSet::GetsrcArrayElement) {
   if (value->IsNumber()) {
     self->instance.srcArrayElement = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'srcArrayElement' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkCopyDescriptorSet.srcArrayElement'");
   }
 }// dstSet
 NAN_GETTER(_VkCopyDescriptorSet::GetdstSet) {
@@ -158,13 +158,13 @@ NAN_GETTER(_VkCopyDescriptorSet::GetdstSet) {
       _VkDescriptorSet* inst = Nan::ObjectWrap::Unwrap<_VkDescriptorSet>(obj);
       self->instance.dstSet = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'dstSet' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkDescriptorSet]' for 'VkCopyDescriptorSet.dstSet'");
     }
   } else if (value->IsNull()) {
     self->dstSet.Reset();
     self->instance.dstSet = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'dstSet' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkDescriptorSet]' for 'VkCopyDescriptorSet.dstSet'");
   }
 }// dstBinding
 NAN_GETTER(_VkCopyDescriptorSet::GetdstBinding) {
@@ -175,7 +175,7 @@ NAN_GETTER(_VkCopyDescriptorSet::GetdstBinding) {
   if (value->IsNumber()) {
     self->instance.dstBinding = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'dstBinding' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkCopyDescriptorSet.dstBinding'");
   }
 }// dstArrayElement
 NAN_GETTER(_VkCopyDescriptorSet::GetdstArrayElement) {
@@ -186,7 +186,7 @@ NAN_GETTER(_VkCopyDescriptorSet::GetdstArrayElement) {
   if (value->IsNumber()) {
     self->instance.dstArrayElement = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'dstArrayElement' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkCopyDescriptorSet.dstArrayElement'");
   }
 }// descriptorCount
 NAN_GETTER(_VkCopyDescriptorSet::GetdescriptorCount) {
@@ -197,6 +197,6 @@ NAN_GETTER(_VkCopyDescriptorSet::GetdescriptorCount) {
   if (value->IsNumber()) {
     self->instance.descriptorCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'descriptorCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkCopyDescriptorSet.descriptorCount'");
   }
 }

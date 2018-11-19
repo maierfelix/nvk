@@ -74,7 +74,7 @@ NAN_GETTER(_VkBufferImageCopy::GetbufferOffset) {
   if (value->IsNumber()) {
     self->instance.bufferOffset = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'bufferOffset' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferImageCopy.bufferOffset'");
   }
 }// bufferRowLength
 NAN_GETTER(_VkBufferImageCopy::GetbufferRowLength) {
@@ -85,7 +85,7 @@ NAN_GETTER(_VkBufferImageCopy::GetbufferRowLength) {
   if (value->IsNumber()) {
     self->instance.bufferRowLength = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'bufferRowLength' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferImageCopy.bufferRowLength'");
   }
 }// bufferImageHeight
 NAN_GETTER(_VkBufferImageCopy::GetbufferImageHeight) {
@@ -96,7 +96,7 @@ NAN_GETTER(_VkBufferImageCopy::GetbufferImageHeight) {
   if (value->IsNumber()) {
     self->instance.bufferImageHeight = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'bufferImageHeight' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferImageCopy.bufferImageHeight'");
   }
 }// imageSubresource
 NAN_GETTER(_VkBufferImageCopy::GetimageSubresource) {
@@ -117,13 +117,13 @@ NAN_GETTER(_VkBufferImageCopy::GetimageSubresource) {
       _VkImageSubresourceLayers* inst = Nan::ObjectWrap::Unwrap<_VkImageSubresourceLayers>(obj);
       self->instance.imageSubresource = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'imageSubresource' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkImageSubresourceLayers]' for 'VkBufferImageCopy.imageSubresource'");
     }
   } else if (value->IsNull()) {
     self->imageSubresource.Reset();
     memset(&self->instance.imageSubresource, 0, sizeof(VkImageSubresourceLayers));
   } else {
-    return Nan::ThrowError("Value of member 'imageSubresource' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkImageSubresourceLayers]' for 'VkBufferImageCopy.imageSubresource'");
   }
 }// imageOffset
 NAN_GETTER(_VkBufferImageCopy::GetimageOffset) {
@@ -144,13 +144,13 @@ NAN_GETTER(_VkBufferImageCopy::GetimageOffset) {
       _VkOffset3D* inst = Nan::ObjectWrap::Unwrap<_VkOffset3D>(obj);
       self->instance.imageOffset = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'imageOffset' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkOffset3D]' for 'VkBufferImageCopy.imageOffset'");
     }
   } else if (value->IsNull()) {
     self->imageOffset.Reset();
     memset(&self->instance.imageOffset, 0, sizeof(VkOffset3D));
   } else {
-    return Nan::ThrowError("Value of member 'imageOffset' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkOffset3D]' for 'VkBufferImageCopy.imageOffset'");
   }
 }// imageExtent
 NAN_GETTER(_VkBufferImageCopy::GetimageExtent) {
@@ -171,12 +171,12 @@ NAN_GETTER(_VkBufferImageCopy::GetimageExtent) {
       _VkExtent3D* inst = Nan::ObjectWrap::Unwrap<_VkExtent3D>(obj);
       self->instance.imageExtent = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'imageExtent' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkExtent3D]' for 'VkBufferImageCopy.imageExtent'");
     }
   } else if (value->IsNull()) {
     self->imageExtent.Reset();
     memset(&self->instance.imageExtent, 0, sizeof(VkExtent3D));
   } else {
-    return Nan::ThrowError("Value of member 'imageExtent' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkExtent3D]' for 'VkBufferImageCopy.imageExtent'");
   }
 }

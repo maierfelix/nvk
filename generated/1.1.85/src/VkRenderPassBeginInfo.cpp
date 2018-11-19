@@ -77,7 +77,7 @@ NAN_GETTER(_VkRenderPassBeginInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkRenderPassBeginInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkRenderPassBeginInfo::GetpNext) {
@@ -103,13 +103,13 @@ NAN_GETTER(_VkRenderPassBeginInfo::GetrenderPass) {
       _VkRenderPass* inst = Nan::ObjectWrap::Unwrap<_VkRenderPass>(obj);
       self->instance.renderPass = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'renderPass' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkRenderPass]' for 'VkRenderPassBeginInfo.renderPass'");
     }
   } else if (value->IsNull()) {
     self->renderPass.Reset();
     self->instance.renderPass = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'renderPass' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkRenderPass]' for 'VkRenderPassBeginInfo.renderPass'");
   }
 }// framebuffer
 NAN_GETTER(_VkRenderPassBeginInfo::Getframebuffer) {
@@ -130,13 +130,13 @@ NAN_GETTER(_VkRenderPassBeginInfo::Getframebuffer) {
       _VkFramebuffer* inst = Nan::ObjectWrap::Unwrap<_VkFramebuffer>(obj);
       self->instance.framebuffer = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'framebuffer' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkFramebuffer]' for 'VkRenderPassBeginInfo.framebuffer'");
     }
   } else if (value->IsNull()) {
     self->framebuffer.Reset();
     self->instance.framebuffer = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'framebuffer' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkFramebuffer]' for 'VkRenderPassBeginInfo.framebuffer'");
   }
 }// renderArea
 NAN_GETTER(_VkRenderPassBeginInfo::GetrenderArea) {
@@ -157,13 +157,13 @@ NAN_GETTER(_VkRenderPassBeginInfo::GetrenderArea) {
       _VkRect2D* inst = Nan::ObjectWrap::Unwrap<_VkRect2D>(obj);
       self->instance.renderArea = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'renderArea' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkRect2D]' for 'VkRenderPassBeginInfo.renderArea'");
     }
   } else if (value->IsNull()) {
     self->renderArea.Reset();
     memset(&self->instance.renderArea, 0, sizeof(VkRect2D));
   } else {
-    return Nan::ThrowError("Value of member 'renderArea' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkRect2D]' for 'VkRenderPassBeginInfo.renderArea'");
   }
 }// clearValueCount
 NAN_GETTER(_VkRenderPassBeginInfo::GetclearValueCount) {
@@ -174,7 +174,7 @@ NAN_GETTER(_VkRenderPassBeginInfo::GetclearValueCount) {
   if (value->IsNumber()) {
     self->instance.clearValueCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'clearValueCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkRenderPassBeginInfo.clearValueCount'");
   }
 }// pClearValues
 NAN_GETTER(_VkRenderPassBeginInfo::GetpClearValues) {
@@ -194,7 +194,7 @@ NAN_GETTER(_VkRenderPassBeginInfo::GetpClearValues) {
     } else if (value->IsNull()) {
       self->pClearValues.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pClearValues' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkClearValue]' for 'VkRenderPassBeginInfo.pClearValues'");
     }
   
   // vulkan
@@ -203,6 +203,6 @@ NAN_GETTER(_VkRenderPassBeginInfo::GetpClearValues) {
   } else if (value->IsNull()) {
     self->instance.pClearValues = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pClearValues' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkClearValue]' for 'VkRenderPassBeginInfo.pClearValues'");
   }
 }

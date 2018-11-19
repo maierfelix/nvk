@@ -62,7 +62,7 @@ NAN_GETTER(_VkDescriptorPoolSize::Gettype) {
   if (value->IsNumber()) {
     self->instance.type = static_cast<VkDescriptorType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'type' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorPoolSize.type'");
   }
 }// descriptorCount
 NAN_GETTER(_VkDescriptorPoolSize::GetdescriptorCount) {
@@ -73,6 +73,6 @@ NAN_GETTER(_VkDescriptorPoolSize::GetdescriptorCount) {
   if (value->IsNumber()) {
     self->instance.descriptorCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'descriptorCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorPoolSize.descriptorCount'");
   }
 }

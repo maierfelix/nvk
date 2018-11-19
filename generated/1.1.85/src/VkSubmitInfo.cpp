@@ -83,7 +83,7 @@ NAN_GETTER(_VkSubmitInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubmitInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkSubmitInfo::GetpNext) {
@@ -99,7 +99,7 @@ NAN_GETTER(_VkSubmitInfo::GetwaitSemaphoreCount) {
   if (value->IsNumber()) {
     self->instance.waitSemaphoreCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'waitSemaphoreCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubmitInfo.waitSemaphoreCount'");
   }
 }// pWaitSemaphores
 NAN_GETTER(_VkSubmitInfo::GetpWaitSemaphores) {
@@ -119,7 +119,7 @@ NAN_GETTER(_VkSubmitInfo::GetpWaitSemaphores) {
     } else if (value->IsNull()) {
       self->pWaitSemaphores.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pWaitSemaphores' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkSemaphore]' for 'VkSubmitInfo.pWaitSemaphores'");
     }
   
   // vulkan
@@ -128,7 +128,7 @@ NAN_GETTER(_VkSubmitInfo::GetpWaitSemaphores) {
   } else if (value->IsNull()) {
     self->instance.pWaitSemaphores = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'pWaitSemaphores' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkSemaphore]' for 'VkSubmitInfo.pWaitSemaphores'");
   }
 }// pWaitDstStageMask
 NAN_GETTER(_VkSubmitInfo::GetpWaitDstStageMask) {
@@ -144,11 +144,15 @@ NAN_GETTER(_VkSubmitInfo::GetpWaitDstStageMask) {
   
     // js
     if (value->IsArrayBufferView()) {
-      self->pWaitDstStageMask.Reset<v8::Array>(value.As<v8::Array>());
+      if (value->IsInt32Array()) {
+        self->pWaitDstStageMask.Reset<v8::Array>(value.As<v8::Array>());
+      } else {
+        return Nan::ThrowTypeError("Expected 'Int32Array' for 'VkSubmitInfo.pWaitDstStageMask'");
+      }
     } else if (value->IsNull()) {
       self->pWaitDstStageMask.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pWaitDstStageMask' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Int32Array' for 'VkSubmitInfo.pWaitDstStageMask'");
     }
   
   
@@ -167,7 +171,7 @@ NAN_GETTER(_VkSubmitInfo::GetcommandBufferCount) {
   if (value->IsNumber()) {
     self->instance.commandBufferCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'commandBufferCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubmitInfo.commandBufferCount'");
   }
 }// pCommandBuffers
 NAN_GETTER(_VkSubmitInfo::GetpCommandBuffers) {
@@ -187,7 +191,7 @@ NAN_GETTER(_VkSubmitInfo::GetpCommandBuffers) {
     } else if (value->IsNull()) {
       self->pCommandBuffers.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pCommandBuffers' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkCommandBuffer]' for 'VkSubmitInfo.pCommandBuffers'");
     }
   
   // vulkan
@@ -196,7 +200,7 @@ NAN_GETTER(_VkSubmitInfo::GetpCommandBuffers) {
   } else if (value->IsNull()) {
     self->instance.pCommandBuffers = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'pCommandBuffers' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkCommandBuffer]' for 'VkSubmitInfo.pCommandBuffers'");
   }
 }// signalSemaphoreCount
 NAN_GETTER(_VkSubmitInfo::GetsignalSemaphoreCount) {
@@ -207,7 +211,7 @@ NAN_GETTER(_VkSubmitInfo::GetsignalSemaphoreCount) {
   if (value->IsNumber()) {
     self->instance.signalSemaphoreCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'signalSemaphoreCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubmitInfo.signalSemaphoreCount'");
   }
 }// pSignalSemaphores
 NAN_GETTER(_VkSubmitInfo::GetpSignalSemaphores) {
@@ -227,7 +231,7 @@ NAN_GETTER(_VkSubmitInfo::GetpSignalSemaphores) {
     } else if (value->IsNull()) {
       self->pSignalSemaphores.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pSignalSemaphores' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkSemaphore]' for 'VkSubmitInfo.pSignalSemaphores'");
     }
   
   // vulkan
@@ -236,6 +240,6 @@ NAN_GETTER(_VkSubmitInfo::GetpSignalSemaphores) {
   } else if (value->IsNull()) {
     self->instance.pSignalSemaphores = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'pSignalSemaphores' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkSemaphore]' for 'VkSubmitInfo.pSignalSemaphores'");
   }
 }

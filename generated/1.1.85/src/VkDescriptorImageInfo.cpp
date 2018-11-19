@@ -75,13 +75,13 @@ NAN_GETTER(_VkDescriptorImageInfo::Getsampler) {
       _VkSampler* inst = Nan::ObjectWrap::Unwrap<_VkSampler>(obj);
       self->instance.sampler = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'sampler' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkSampler]' for 'VkDescriptorImageInfo.sampler'");
     }
   } else if (value->IsNull()) {
     self->sampler.Reset();
     self->instance.sampler = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'sampler' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkSampler]' for 'VkDescriptorImageInfo.sampler'");
   }
 }// imageView
 NAN_GETTER(_VkDescriptorImageInfo::GetimageView) {
@@ -102,13 +102,13 @@ NAN_GETTER(_VkDescriptorImageInfo::GetimageView) {
       _VkImageView* inst = Nan::ObjectWrap::Unwrap<_VkImageView>(obj);
       self->instance.imageView = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'imageView' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkImageView]' for 'VkDescriptorImageInfo.imageView'");
     }
   } else if (value->IsNull()) {
     self->imageView.Reset();
     self->instance.imageView = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'imageView' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkImageView]' for 'VkDescriptorImageInfo.imageView'");
   }
 }// imageLayout
 NAN_GETTER(_VkDescriptorImageInfo::GetimageLayout) {
@@ -119,6 +119,6 @@ NAN_GETTER(_VkDescriptorImageInfo::GetimageLayout) {
   if (value->IsNumber()) {
     self->instance.imageLayout = static_cast<VkImageLayout>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'imageLayout' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorImageInfo.imageLayout'");
   }
 }

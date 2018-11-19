@@ -71,7 +71,7 @@ NAN_GETTER(_VkPipelineDynamicStateCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineDynamicStateCreateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkPipelineDynamicStateCreateInfo::GetpNext) {
@@ -87,7 +87,7 @@ NAN_GETTER(_VkPipelineDynamicStateCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkPipelineDynamicStateCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineDynamicStateCreateInfo.flags'");
   }
 }// dynamicStateCount
 NAN_GETTER(_VkPipelineDynamicStateCreateInfo::GetdynamicStateCount) {
@@ -98,7 +98,7 @@ NAN_GETTER(_VkPipelineDynamicStateCreateInfo::GetdynamicStateCount) {
   if (value->IsNumber()) {
     self->instance.dynamicStateCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'dynamicStateCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineDynamicStateCreateInfo.dynamicStateCount'");
   }
 }// pDynamicStates
 NAN_GETTER(_VkPipelineDynamicStateCreateInfo::GetpDynamicStates) {
@@ -114,11 +114,15 @@ NAN_GETTER(_VkPipelineDynamicStateCreateInfo::GetpDynamicStates) {
   
     // js
     if (value->IsArrayBufferView()) {
-      self->pDynamicStates.Reset<v8::Array>(value.As<v8::Array>());
+      if (value->IsInt32Array()) {
+        self->pDynamicStates.Reset<v8::Array>(value.As<v8::Array>());
+      } else {
+        return Nan::ThrowTypeError("Expected 'Int32Array' for 'VkPipelineDynamicStateCreateInfo.pDynamicStates'");
+      }
     } else if (value->IsNull()) {
       self->pDynamicStates.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pDynamicStates' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Int32Array' for 'VkPipelineDynamicStateCreateInfo.pDynamicStates'");
     }
   
   

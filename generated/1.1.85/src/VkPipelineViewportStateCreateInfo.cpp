@@ -77,7 +77,7 @@ NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineViewportStateCreateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetpNext) {
@@ -93,7 +93,7 @@ NAN_GETTER(_VkPipelineViewportStateCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkPipelineViewportStateCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineViewportStateCreateInfo.flags'");
   }
 }// viewportCount
 NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetviewportCount) {
@@ -104,7 +104,7 @@ NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetviewportCount) {
   if (value->IsNumber()) {
     self->instance.viewportCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'viewportCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineViewportStateCreateInfo.viewportCount'");
   }
 }// pViewports
 NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetpViewports) {
@@ -124,7 +124,7 @@ NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetpViewports) {
     } else if (value->IsNull()) {
       self->pViewports.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pViewports' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkViewport]' for 'VkPipelineViewportStateCreateInfo.pViewports'");
     }
   
   // vulkan
@@ -133,7 +133,7 @@ NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetpViewports) {
   } else if (value->IsNull()) {
     self->instance.pViewports = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pViewports' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkViewport]' for 'VkPipelineViewportStateCreateInfo.pViewports'");
   }
 }// scissorCount
 NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetscissorCount) {
@@ -144,7 +144,7 @@ NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetscissorCount) {
   if (value->IsNumber()) {
     self->instance.scissorCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'scissorCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineViewportStateCreateInfo.scissorCount'");
   }
 }// pScissors
 NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetpScissors) {
@@ -164,7 +164,7 @@ NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetpScissors) {
     } else if (value->IsNull()) {
       self->pScissors.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pScissors' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkRect2D]' for 'VkPipelineViewportStateCreateInfo.pScissors'");
     }
   
   // vulkan
@@ -173,6 +173,6 @@ NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetpScissors) {
   } else if (value->IsNull()) {
     self->instance.pScissors = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pScissors' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkRect2D]' for 'VkPipelineViewportStateCreateInfo.pScissors'");
   }
 }

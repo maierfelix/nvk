@@ -83,7 +83,7 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkRenderPassCreateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkRenderPassCreateInfo::GetpNext) {
@@ -99,7 +99,7 @@ NAN_GETTER(_VkRenderPassCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkRenderPassCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkRenderPassCreateInfo.flags'");
   }
 }// attachmentCount
 NAN_GETTER(_VkRenderPassCreateInfo::GetattachmentCount) {
@@ -110,7 +110,7 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetattachmentCount) {
   if (value->IsNumber()) {
     self->instance.attachmentCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'attachmentCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkRenderPassCreateInfo.attachmentCount'");
   }
 }// pAttachments
 NAN_GETTER(_VkRenderPassCreateInfo::GetpAttachments) {
@@ -130,7 +130,7 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetpAttachments) {
     } else if (value->IsNull()) {
       self->pAttachments.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pAttachments' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkAttachmentDescription]' for 'VkRenderPassCreateInfo.pAttachments'");
     }
   
   // vulkan
@@ -139,7 +139,7 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetpAttachments) {
   } else if (value->IsNull()) {
     self->instance.pAttachments = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pAttachments' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkAttachmentDescription]' for 'VkRenderPassCreateInfo.pAttachments'");
   }
 }// subpassCount
 NAN_GETTER(_VkRenderPassCreateInfo::GetsubpassCount) {
@@ -150,7 +150,7 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetsubpassCount) {
   if (value->IsNumber()) {
     self->instance.subpassCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'subpassCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkRenderPassCreateInfo.subpassCount'");
   }
 }// pSubpasses
 NAN_GETTER(_VkRenderPassCreateInfo::GetpSubpasses) {
@@ -170,7 +170,7 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetpSubpasses) {
     } else if (value->IsNull()) {
       self->pSubpasses.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pSubpasses' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkSubpassDescription]' for 'VkRenderPassCreateInfo.pSubpasses'");
     }
   
   // vulkan
@@ -179,7 +179,7 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetpSubpasses) {
   } else if (value->IsNull()) {
     self->instance.pSubpasses = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pSubpasses' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkSubpassDescription]' for 'VkRenderPassCreateInfo.pSubpasses'");
   }
 }// dependencyCount
 NAN_GETTER(_VkRenderPassCreateInfo::GetdependencyCount) {
@@ -190,7 +190,7 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetdependencyCount) {
   if (value->IsNumber()) {
     self->instance.dependencyCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'dependencyCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkRenderPassCreateInfo.dependencyCount'");
   }
 }// pDependencies
 NAN_GETTER(_VkRenderPassCreateInfo::GetpDependencies) {
@@ -210,7 +210,7 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetpDependencies) {
     } else if (value->IsNull()) {
       self->pDependencies.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pDependencies' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkSubpassDependency]' for 'VkRenderPassCreateInfo.pDependencies'");
     }
   
   // vulkan
@@ -219,6 +219,6 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetpDependencies) {
   } else if (value->IsNull()) {
     self->instance.pDependencies = nullptr;
   } else {
-    return Nan::ThrowError("Value of member 'pDependencies' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkSubpassDependency]' for 'VkRenderPassCreateInfo.pDependencies'");
   }
 }

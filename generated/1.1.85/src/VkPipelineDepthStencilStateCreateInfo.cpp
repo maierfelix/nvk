@@ -92,7 +92,7 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetpNext) {
@@ -108,7 +108,7 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkPipelineDepthStencilStateCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.flags'");
   }
 }// depthTestEnable
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetdepthTestEnable) {
@@ -119,7 +119,7 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetdepthTestEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.depthTestEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'depthTestEnable' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.depthTestEnable'");
   }
 }// depthWriteEnable
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetdepthWriteEnable) {
@@ -130,7 +130,7 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetdepthWriteEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.depthWriteEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'depthWriteEnable' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.depthWriteEnable'");
   }
 }// depthCompareOp
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetdepthCompareOp) {
@@ -141,7 +141,7 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetdepthCompareOp) {
   if (value->IsNumber()) {
     self->instance.depthCompareOp = static_cast<VkCompareOp>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'depthCompareOp' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.depthCompareOp'");
   }
 }// depthBoundsTestEnable
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetdepthBoundsTestEnable) {
@@ -152,7 +152,7 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetdepthBoundsTestEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.depthBoundsTestEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'depthBoundsTestEnable' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.depthBoundsTestEnable'");
   }
 }// stencilTestEnable
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetstencilTestEnable) {
@@ -163,7 +163,7 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetstencilTestEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.stencilTestEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowError("Value of member 'stencilTestEnable' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.stencilTestEnable'");
   }
 }// front
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::Getfront) {
@@ -184,13 +184,13 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::Getfront) {
       _VkStencilOpState* inst = Nan::ObjectWrap::Unwrap<_VkStencilOpState>(obj);
       self->instance.front = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'front' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkStencilOpState]' for 'VkPipelineDepthStencilStateCreateInfo.front'");
     }
   } else if (value->IsNull()) {
     self->front.Reset();
     memset(&self->instance.front, 0, sizeof(VkStencilOpState));
   } else {
-    return Nan::ThrowError("Value of member 'front' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkStencilOpState]' for 'VkPipelineDepthStencilStateCreateInfo.front'");
   }
 }// back
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::Getback) {
@@ -211,13 +211,13 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::Getback) {
       _VkStencilOpState* inst = Nan::ObjectWrap::Unwrap<_VkStencilOpState>(obj);
       self->instance.back = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'back' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkStencilOpState]' for 'VkPipelineDepthStencilStateCreateInfo.back'");
     }
   } else if (value->IsNull()) {
     self->back.Reset();
     memset(&self->instance.back, 0, sizeof(VkStencilOpState));
   } else {
-    return Nan::ThrowError("Value of member 'back' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkStencilOpState]' for 'VkPipelineDepthStencilStateCreateInfo.back'");
   }
 }// minDepthBounds
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetminDepthBounds) {
@@ -228,7 +228,7 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetminDepthBounds) {
   if (value->IsNumber()) {
     self->instance.minDepthBounds = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'minDepthBounds' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.minDepthBounds'");
   }
 }// maxDepthBounds
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetmaxDepthBounds) {
@@ -239,6 +239,6 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetmaxDepthBounds) {
   if (value->IsNumber()) {
     self->instance.maxDepthBounds = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'maxDepthBounds' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.maxDepthBounds'");
   }
 }

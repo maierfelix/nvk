@@ -62,7 +62,7 @@ NAN_GETTER(_VkAttachmentReference::Getattachment) {
   if (value->IsNumber()) {
     self->instance.attachment = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'attachment' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkAttachmentReference.attachment'");
   }
 }// layout
 NAN_GETTER(_VkAttachmentReference::Getlayout) {
@@ -73,6 +73,6 @@ NAN_GETTER(_VkAttachmentReference::Getlayout) {
   if (value->IsNumber()) {
     self->instance.layout = static_cast<VkImageLayout>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'layout' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkAttachmentReference.layout'");
   }
 }

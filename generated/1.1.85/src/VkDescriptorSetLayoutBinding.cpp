@@ -71,7 +71,7 @@ NAN_GETTER(_VkDescriptorSetLayoutBinding::Getbinding) {
   if (value->IsNumber()) {
     self->instance.binding = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'binding' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorSetLayoutBinding.binding'");
   }
 }// descriptorType
 NAN_GETTER(_VkDescriptorSetLayoutBinding::GetdescriptorType) {
@@ -82,7 +82,7 @@ NAN_GETTER(_VkDescriptorSetLayoutBinding::GetdescriptorType) {
   if (value->IsNumber()) {
     self->instance.descriptorType = static_cast<VkDescriptorType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'descriptorType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorSetLayoutBinding.descriptorType'");
   }
 }// descriptorCount
 NAN_GETTER(_VkDescriptorSetLayoutBinding::GetdescriptorCount) {
@@ -93,7 +93,7 @@ NAN_GETTER(_VkDescriptorSetLayoutBinding::GetdescriptorCount) {
   if (value->IsNumber()) {
     self->instance.descriptorCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'descriptorCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorSetLayoutBinding.descriptorCount'");
   }
 }// stageFlags
 NAN_GETTER(_VkDescriptorSetLayoutBinding::GetstageFlags) {
@@ -104,7 +104,7 @@ NAN_GETTER(_VkDescriptorSetLayoutBinding::GetstageFlags) {
   if (value->IsNumber()) {
     self->instance.stageFlags = static_cast<VkShaderStageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'stageFlags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorSetLayoutBinding.stageFlags'");
   }
 }// pImmutableSamplers
 NAN_GETTER(_VkDescriptorSetLayoutBinding::GetpImmutableSamplers) {
@@ -124,7 +124,7 @@ NAN_GETTER(_VkDescriptorSetLayoutBinding::GetpImmutableSamplers) {
     } else if (value->IsNull()) {
       self->pImmutableSamplers.Reset();
     } else {
-      return Nan::ThrowError("Value of member 'pImmutableSamplers' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkSampler]' for 'VkDescriptorSetLayoutBinding.pImmutableSamplers'");
     }
   
   // vulkan
@@ -133,6 +133,6 @@ NAN_GETTER(_VkDescriptorSetLayoutBinding::GetpImmutableSamplers) {
   } else if (value->IsNull()) {
     self->instance.pImmutableSamplers = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'pImmutableSamplers' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkSampler]' for 'VkDescriptorSetLayoutBinding.pImmutableSamplers'");
   }
 }

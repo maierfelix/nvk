@@ -80,7 +80,7 @@ NAN_GETTER(_VkImageViewCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageViewCreateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkImageViewCreateInfo::GetpNext) {
@@ -96,7 +96,7 @@ NAN_GETTER(_VkImageViewCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkImageViewCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'flags' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageViewCreateInfo.flags'");
   }
 }// image
 NAN_GETTER(_VkImageViewCreateInfo::Getimage) {
@@ -117,13 +117,13 @@ NAN_GETTER(_VkImageViewCreateInfo::Getimage) {
       _VkImage* inst = Nan::ObjectWrap::Unwrap<_VkImage>(obj);
       self->instance.image = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'image' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkImage]' for 'VkImageViewCreateInfo.image'");
     }
   } else if (value->IsNull()) {
     self->image.Reset();
     self->instance.image = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'image' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkImage]' for 'VkImageViewCreateInfo.image'");
   }
 }// viewType
 NAN_GETTER(_VkImageViewCreateInfo::GetviewType) {
@@ -134,7 +134,7 @@ NAN_GETTER(_VkImageViewCreateInfo::GetviewType) {
   if (value->IsNumber()) {
     self->instance.viewType = static_cast<VkImageViewType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'viewType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageViewCreateInfo.viewType'");
   }
 }// format
 NAN_GETTER(_VkImageViewCreateInfo::Getformat) {
@@ -145,7 +145,7 @@ NAN_GETTER(_VkImageViewCreateInfo::Getformat) {
   if (value->IsNumber()) {
     self->instance.format = static_cast<VkFormat>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'format' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageViewCreateInfo.format'");
   }
 }// components
 NAN_GETTER(_VkImageViewCreateInfo::Getcomponents) {
@@ -166,13 +166,13 @@ NAN_GETTER(_VkImageViewCreateInfo::Getcomponents) {
       _VkComponentMapping* inst = Nan::ObjectWrap::Unwrap<_VkComponentMapping>(obj);
       self->instance.components = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'components' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkComponentMapping]' for 'VkImageViewCreateInfo.components'");
     }
   } else if (value->IsNull()) {
     self->components.Reset();
     memset(&self->instance.components, 0, sizeof(VkComponentMapping));
   } else {
-    return Nan::ThrowError("Value of member 'components' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkComponentMapping]' for 'VkImageViewCreateInfo.components'");
   }
 }// subresourceRange
 NAN_GETTER(_VkImageViewCreateInfo::GetsubresourceRange) {
@@ -193,12 +193,12 @@ NAN_GETTER(_VkImageViewCreateInfo::GetsubresourceRange) {
       _VkImageSubresourceRange* inst = Nan::ObjectWrap::Unwrap<_VkImageSubresourceRange>(obj);
       self->instance.subresourceRange = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'subresourceRange' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkImageSubresourceRange]' for 'VkImageViewCreateInfo.subresourceRange'");
     }
   } else if (value->IsNull()) {
     self->subresourceRange.Reset();
     memset(&self->instance.subresourceRange, 0, sizeof(VkImageSubresourceRange));
   } else {
-    return Nan::ThrowError("Value of member 'subresourceRange' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkImageSubresourceRange]' for 'VkImageViewCreateInfo.subresourceRange'");
   }
 }

@@ -71,7 +71,7 @@ NAN_GETTER(_VkCommandBufferAllocateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'sType' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandBufferAllocateInfo.sType'");
   }
 }// pNext
 NAN_GETTER(_VkCommandBufferAllocateInfo::GetpNext) {
@@ -97,13 +97,13 @@ NAN_GETTER(_VkCommandBufferAllocateInfo::GetcommandPool) {
       _VkCommandPool* inst = Nan::ObjectWrap::Unwrap<_VkCommandPool>(obj);
       self->instance.commandPool = inst->instance;
     } else {
-      return Nan::ThrowError("Value of member 'commandPool' has invalid type");
+      return Nan::ThrowTypeError("Expected 'Object [VkCommandPool]' for 'VkCommandBufferAllocateInfo.commandPool'");
     }
   } else if (value->IsNull()) {
     self->commandPool.Reset();
     self->instance.commandPool = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowError("Value of member 'commandPool' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Object [VkCommandPool]' for 'VkCommandBufferAllocateInfo.commandPool'");
   }
 }// level
 NAN_GETTER(_VkCommandBufferAllocateInfo::Getlevel) {
@@ -114,7 +114,7 @@ NAN_GETTER(_VkCommandBufferAllocateInfo::Getlevel) {
   if (value->IsNumber()) {
     self->instance.level = static_cast<VkCommandBufferLevel>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'level' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandBufferAllocateInfo.level'");
   }
 }// commandBufferCount
 NAN_GETTER(_VkCommandBufferAllocateInfo::GetcommandBufferCount) {
@@ -125,6 +125,6 @@ NAN_GETTER(_VkCommandBufferAllocateInfo::GetcommandBufferCount) {
   if (value->IsNumber()) {
     self->instance.commandBufferCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowError("Value of member 'commandBufferCount' has invalid type");
+    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandBufferAllocateInfo.commandBufferCount'");
   }
 }
