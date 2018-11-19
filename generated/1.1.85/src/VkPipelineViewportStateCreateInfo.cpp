@@ -128,10 +128,12 @@ NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetpViewports) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pViewports = copyArrayOfV8Objects<VkViewport, _VkViewport>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pViewports = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pViewports' has invalid type");
   }
 }// scissorCount
 NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetscissorCount) {
@@ -166,9 +168,11 @@ NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetpScissors) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pScissors = copyArrayOfV8Objects<VkRect2D, _VkRect2D>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pScissors = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pScissors' has invalid type");
   }
 }

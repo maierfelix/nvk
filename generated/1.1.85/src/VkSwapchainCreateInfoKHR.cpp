@@ -140,18 +140,20 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::Getsurface) {
 }NAN_SETTER(_VkSwapchainCreateInfoKHR::Setsurface) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->surface = obj;
-  } else {
-    //self->surface = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkSurfaceKHR* obj = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.surface = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkSurfaceKHR::constructor)->HasInstance(obj)) {
+      self->surface.Reset<v8::Object>(value.As<v8::Object>());
+      _VkSurfaceKHR* inst = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(obj);
+      self->instance.surface = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'surface' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->surface.Reset();
     self->instance.surface = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'surface' has invalid type");
   }
 }// minImageCount
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetminImageCount) {
@@ -198,18 +200,20 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::GetimageExtent) {
 }NAN_SETTER(_VkSwapchainCreateInfoKHR::SetimageExtent) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->imageExtent = obj;
-  } else {
-    //self->imageExtent = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkExtent2D* obj = Nan::ObjectWrap::Unwrap<_VkExtent2D>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.imageExtent = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkExtent2D::constructor)->HasInstance(obj)) {
+      self->imageExtent.Reset<v8::Object>(value.As<v8::Object>());
+      _VkExtent2D* inst = Nan::ObjectWrap::Unwrap<_VkExtent2D>(obj);
+      self->instance.imageExtent = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'imageExtent' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->imageExtent.Reset();
     memset(&self->instance.imageExtent, 0, sizeof(VkExtent2D));
+  } else {
+    return Nan::ThrowError("Value of member 'imageExtent' has invalid type");
   }
 }// imageArrayLayers
 NAN_GETTER(_VkSwapchainCreateInfoKHR::GetimageArrayLayers) {
@@ -339,17 +343,19 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::GetoldSwapchain) {
 }NAN_SETTER(_VkSwapchainCreateInfoKHR::SetoldSwapchain) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->oldSwapchain = obj;
-  } else {
-    //self->oldSwapchain = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkSwapchainKHR* obj = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.oldSwapchain = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkSwapchainKHR::constructor)->HasInstance(obj)) {
+      self->oldSwapchain.Reset<v8::Object>(value.As<v8::Object>());
+      _VkSwapchainKHR* inst = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(obj);
+      self->instance.oldSwapchain = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'oldSwapchain' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->oldSwapchain.Reset();
     self->instance.oldSwapchain = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'oldSwapchain' has invalid type");
   }
 }

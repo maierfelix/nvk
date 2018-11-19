@@ -128,9 +128,11 @@ NAN_GETTER(_VkDescriptorSetLayoutBinding::GetpImmutableSamplers) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pImmutableSamplers = copyArrayOfV8Objects<VkSampler, _VkSampler>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pImmutableSamplers = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'pImmutableSamplers' has invalid type");
   }
 }

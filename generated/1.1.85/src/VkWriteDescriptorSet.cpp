@@ -105,18 +105,20 @@ NAN_GETTER(_VkWriteDescriptorSet::GetdstSet) {
 }NAN_SETTER(_VkWriteDescriptorSet::SetdstSet) {
   _VkWriteDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkWriteDescriptorSet>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->dstSet = obj;
-  } else {
-    //self->dstSet = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkDescriptorSet* obj = Nan::ObjectWrap::Unwrap<_VkDescriptorSet>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.dstSet = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkDescriptorSet::constructor)->HasInstance(obj)) {
+      self->dstSet.Reset<v8::Object>(value.As<v8::Object>());
+      _VkDescriptorSet* inst = Nan::ObjectWrap::Unwrap<_VkDescriptorSet>(obj);
+      self->instance.dstSet = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'dstSet' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->dstSet.Reset();
     self->instance.dstSet = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'dstSet' has invalid type");
   }
 }// dstBinding
 NAN_GETTER(_VkWriteDescriptorSet::GetdstBinding) {
@@ -184,10 +186,12 @@ NAN_GETTER(_VkWriteDescriptorSet::GetpImageInfo) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pImageInfo = copyArrayOfV8Objects<VkDescriptorImageInfo, _VkDescriptorImageInfo>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pImageInfo = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pImageInfo' has invalid type");
   }
 }// pBufferInfo
 NAN_GETTER(_VkWriteDescriptorSet::GetpBufferInfo) {
@@ -211,10 +215,12 @@ NAN_GETTER(_VkWriteDescriptorSet::GetpBufferInfo) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pBufferInfo = copyArrayOfV8Objects<VkDescriptorBufferInfo, _VkDescriptorBufferInfo>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pBufferInfo = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pBufferInfo' has invalid type");
   }
 }// pTexelBufferView
 NAN_GETTER(_VkWriteDescriptorSet::GetpTexelBufferView) {
@@ -238,9 +244,11 @@ NAN_GETTER(_VkWriteDescriptorSet::GetpTexelBufferView) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pTexelBufferView = copyArrayOfV8Objects<VkBufferView, _VkBufferView>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pTexelBufferView = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'pTexelBufferView' has invalid type");
   }
 }

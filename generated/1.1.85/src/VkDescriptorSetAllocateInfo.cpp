@@ -90,18 +90,20 @@ NAN_GETTER(_VkDescriptorSetAllocateInfo::GetdescriptorPool) {
 }NAN_SETTER(_VkDescriptorSetAllocateInfo::SetdescriptorPool) {
   _VkDescriptorSetAllocateInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorSetAllocateInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->descriptorPool = obj;
-  } else {
-    //self->descriptorPool = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkDescriptorPool* obj = Nan::ObjectWrap::Unwrap<_VkDescriptorPool>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.descriptorPool = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkDescriptorPool::constructor)->HasInstance(obj)) {
+      self->descriptorPool.Reset<v8::Object>(value.As<v8::Object>());
+      _VkDescriptorPool* inst = Nan::ObjectWrap::Unwrap<_VkDescriptorPool>(obj);
+      self->instance.descriptorPool = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'descriptorPool' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->descriptorPool.Reset();
     self->instance.descriptorPool = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'descriptorPool' has invalid type");
   }
 }// descriptorSetCount
 NAN_GETTER(_VkDescriptorSetAllocateInfo::GetdescriptorSetCount) {
@@ -136,9 +138,11 @@ NAN_GETTER(_VkDescriptorSetAllocateInfo::GetpSetLayouts) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pSetLayouts = copyArrayOfV8Objects<VkDescriptorSetLayout, _VkDescriptorSetLayout>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pSetLayouts = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'pSetLayouts' has invalid type");
   }
 }

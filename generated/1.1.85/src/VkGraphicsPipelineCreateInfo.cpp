@@ -164,10 +164,12 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpStages) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pStages = copyArrayOfV8Objects<VkPipelineShaderStageCreateInfo, _VkPipelineShaderStageCreateInfo>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pStages = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pStages' has invalid type");
   }
 }// pVertexInputState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpVertexInputState) {
@@ -181,18 +183,20 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpVertexInputState) {
 }NAN_SETTER(_VkGraphicsPipelineCreateInfo::SetpVertexInputState) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->pVertexInputState = obj;
-  } else {
-    //self->pVertexInputState = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkPipelineVertexInputStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineVertexInputStateCreateInfo>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.pVertexInputState = &obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkPipelineVertexInputStateCreateInfo::constructor)->HasInstance(obj)) {
+      self->pVertexInputState.Reset<v8::Object>(value.As<v8::Object>());
+      _VkPipelineVertexInputStateCreateInfo* inst = Nan::ObjectWrap::Unwrap<_VkPipelineVertexInputStateCreateInfo>(obj);
+      self->instance.pVertexInputState = &inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'pVertexInputState' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->pVertexInputState.Reset();
     self->instance.pVertexInputState = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pVertexInputState' has invalid type");
   }
 }// pInputAssemblyState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpInputAssemblyState) {
@@ -206,18 +210,20 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpInputAssemblyState) {
 }NAN_SETTER(_VkGraphicsPipelineCreateInfo::SetpInputAssemblyState) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->pInputAssemblyState = obj;
-  } else {
-    //self->pInputAssemblyState = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkPipelineInputAssemblyStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineInputAssemblyStateCreateInfo>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.pInputAssemblyState = &obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkPipelineInputAssemblyStateCreateInfo::constructor)->HasInstance(obj)) {
+      self->pInputAssemblyState.Reset<v8::Object>(value.As<v8::Object>());
+      _VkPipelineInputAssemblyStateCreateInfo* inst = Nan::ObjectWrap::Unwrap<_VkPipelineInputAssemblyStateCreateInfo>(obj);
+      self->instance.pInputAssemblyState = &inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'pInputAssemblyState' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->pInputAssemblyState.Reset();
     self->instance.pInputAssemblyState = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pInputAssemblyState' has invalid type");
   }
 }// pTessellationState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpTessellationState) {
@@ -231,18 +237,20 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpTessellationState) {
 }NAN_SETTER(_VkGraphicsPipelineCreateInfo::SetpTessellationState) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->pTessellationState = obj;
-  } else {
-    //self->pTessellationState = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkPipelineTessellationStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineTessellationStateCreateInfo>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.pTessellationState = &obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkPipelineTessellationStateCreateInfo::constructor)->HasInstance(obj)) {
+      self->pTessellationState.Reset<v8::Object>(value.As<v8::Object>());
+      _VkPipelineTessellationStateCreateInfo* inst = Nan::ObjectWrap::Unwrap<_VkPipelineTessellationStateCreateInfo>(obj);
+      self->instance.pTessellationState = &inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'pTessellationState' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->pTessellationState.Reset();
     self->instance.pTessellationState = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pTessellationState' has invalid type");
   }
 }// pViewportState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpViewportState) {
@@ -256,18 +264,20 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpViewportState) {
 }NAN_SETTER(_VkGraphicsPipelineCreateInfo::SetpViewportState) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->pViewportState = obj;
-  } else {
-    //self->pViewportState = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkPipelineViewportStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineViewportStateCreateInfo>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.pViewportState = &obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkPipelineViewportStateCreateInfo::constructor)->HasInstance(obj)) {
+      self->pViewportState.Reset<v8::Object>(value.As<v8::Object>());
+      _VkPipelineViewportStateCreateInfo* inst = Nan::ObjectWrap::Unwrap<_VkPipelineViewportStateCreateInfo>(obj);
+      self->instance.pViewportState = &inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'pViewportState' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->pViewportState.Reset();
     self->instance.pViewportState = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pViewportState' has invalid type");
   }
 }// pRasterizationState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpRasterizationState) {
@@ -281,18 +291,20 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpRasterizationState) {
 }NAN_SETTER(_VkGraphicsPipelineCreateInfo::SetpRasterizationState) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->pRasterizationState = obj;
-  } else {
-    //self->pRasterizationState = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkPipelineRasterizationStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.pRasterizationState = &obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkPipelineRasterizationStateCreateInfo::constructor)->HasInstance(obj)) {
+      self->pRasterizationState.Reset<v8::Object>(value.As<v8::Object>());
+      _VkPipelineRasterizationStateCreateInfo* inst = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(obj);
+      self->instance.pRasterizationState = &inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'pRasterizationState' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->pRasterizationState.Reset();
     self->instance.pRasterizationState = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pRasterizationState' has invalid type");
   }
 }// pMultisampleState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpMultisampleState) {
@@ -306,18 +318,20 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpMultisampleState) {
 }NAN_SETTER(_VkGraphicsPipelineCreateInfo::SetpMultisampleState) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->pMultisampleState = obj;
-  } else {
-    //self->pMultisampleState = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkPipelineMultisampleStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineMultisampleStateCreateInfo>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.pMultisampleState = &obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkPipelineMultisampleStateCreateInfo::constructor)->HasInstance(obj)) {
+      self->pMultisampleState.Reset<v8::Object>(value.As<v8::Object>());
+      _VkPipelineMultisampleStateCreateInfo* inst = Nan::ObjectWrap::Unwrap<_VkPipelineMultisampleStateCreateInfo>(obj);
+      self->instance.pMultisampleState = &inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'pMultisampleState' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->pMultisampleState.Reset();
     self->instance.pMultisampleState = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pMultisampleState' has invalid type");
   }
 }// pDepthStencilState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpDepthStencilState) {
@@ -331,18 +345,20 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpDepthStencilState) {
 }NAN_SETTER(_VkGraphicsPipelineCreateInfo::SetpDepthStencilState) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->pDepthStencilState = obj;
-  } else {
-    //self->pDepthStencilState = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkPipelineDepthStencilStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.pDepthStencilState = &obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkPipelineDepthStencilStateCreateInfo::constructor)->HasInstance(obj)) {
+      self->pDepthStencilState.Reset<v8::Object>(value.As<v8::Object>());
+      _VkPipelineDepthStencilStateCreateInfo* inst = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(obj);
+      self->instance.pDepthStencilState = &inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'pDepthStencilState' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->pDepthStencilState.Reset();
     self->instance.pDepthStencilState = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pDepthStencilState' has invalid type");
   }
 }// pColorBlendState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpColorBlendState) {
@@ -356,18 +372,20 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpColorBlendState) {
 }NAN_SETTER(_VkGraphicsPipelineCreateInfo::SetpColorBlendState) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->pColorBlendState = obj;
-  } else {
-    //self->pColorBlendState = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkPipelineColorBlendStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendStateCreateInfo>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.pColorBlendState = &obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkPipelineColorBlendStateCreateInfo::constructor)->HasInstance(obj)) {
+      self->pColorBlendState.Reset<v8::Object>(value.As<v8::Object>());
+      _VkPipelineColorBlendStateCreateInfo* inst = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendStateCreateInfo>(obj);
+      self->instance.pColorBlendState = &inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'pColorBlendState' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->pColorBlendState.Reset();
     self->instance.pColorBlendState = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pColorBlendState' has invalid type");
   }
 }// pDynamicState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpDynamicState) {
@@ -381,18 +399,20 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpDynamicState) {
 }NAN_SETTER(_VkGraphicsPipelineCreateInfo::SetpDynamicState) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->pDynamicState = obj;
-  } else {
-    //self->pDynamicState = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkPipelineDynamicStateCreateInfo* obj = Nan::ObjectWrap::Unwrap<_VkPipelineDynamicStateCreateInfo>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.pDynamicState = &obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkPipelineDynamicStateCreateInfo::constructor)->HasInstance(obj)) {
+      self->pDynamicState.Reset<v8::Object>(value.As<v8::Object>());
+      _VkPipelineDynamicStateCreateInfo* inst = Nan::ObjectWrap::Unwrap<_VkPipelineDynamicStateCreateInfo>(obj);
+      self->instance.pDynamicState = &inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'pDynamicState' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->pDynamicState.Reset();
     self->instance.pDynamicState = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pDynamicState' has invalid type");
   }
 }// layout
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::Getlayout) {
@@ -406,18 +426,20 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::Getlayout) {
 }NAN_SETTER(_VkGraphicsPipelineCreateInfo::Setlayout) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->layout = obj;
-  } else {
-    //self->layout = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkPipelineLayout* obj = Nan::ObjectWrap::Unwrap<_VkPipelineLayout>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.layout = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkPipelineLayout::constructor)->HasInstance(obj)) {
+      self->layout.Reset<v8::Object>(value.As<v8::Object>());
+      _VkPipelineLayout* inst = Nan::ObjectWrap::Unwrap<_VkPipelineLayout>(obj);
+      self->instance.layout = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'layout' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->layout.Reset();
     self->instance.layout = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'layout' has invalid type");
   }
 }// renderPass
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetrenderPass) {
@@ -431,18 +453,20 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetrenderPass) {
 }NAN_SETTER(_VkGraphicsPipelineCreateInfo::SetrenderPass) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->renderPass = obj;
-  } else {
-    //self->renderPass = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkRenderPass* obj = Nan::ObjectWrap::Unwrap<_VkRenderPass>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.renderPass = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkRenderPass::constructor)->HasInstance(obj)) {
+      self->renderPass.Reset<v8::Object>(value.As<v8::Object>());
+      _VkRenderPass* inst = Nan::ObjectWrap::Unwrap<_VkRenderPass>(obj);
+      self->instance.renderPass = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'renderPass' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->renderPass.Reset();
     self->instance.renderPass = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'renderPass' has invalid type");
   }
 }// subpass
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::Getsubpass) {
@@ -467,18 +491,20 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetbasePipelineHandle) {
 }NAN_SETTER(_VkGraphicsPipelineCreateInfo::SetbasePipelineHandle) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->basePipelineHandle = obj;
-  } else {
-    //self->basePipelineHandle = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkPipeline* obj = Nan::ObjectWrap::Unwrap<_VkPipeline>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.basePipelineHandle = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkPipeline::constructor)->HasInstance(obj)) {
+      self->basePipelineHandle.Reset<v8::Object>(value.As<v8::Object>());
+      _VkPipeline* inst = Nan::ObjectWrap::Unwrap<_VkPipeline>(obj);
+      self->instance.basePipelineHandle = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'basePipelineHandle' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->basePipelineHandle.Reset();
     self->instance.basePipelineHandle = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'basePipelineHandle' has invalid type");
   }
 }// basePipelineIndex
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetbasePipelineIndex) {

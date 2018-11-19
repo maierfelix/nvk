@@ -171,18 +171,20 @@ NAN_GETTER(_VkImageMemoryBarrier::Getimage) {
 }NAN_SETTER(_VkImageMemoryBarrier::Setimage) {
   _VkImageMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkImageMemoryBarrier>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->image = obj;
-  } else {
-    //self->image = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkImage* obj = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.image = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkImage::constructor)->HasInstance(obj)) {
+      self->image.Reset<v8::Object>(value.As<v8::Object>());
+      _VkImage* inst = Nan::ObjectWrap::Unwrap<_VkImage>(obj);
+      self->instance.image = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'image' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->image.Reset();
     self->instance.image = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'image' has invalid type");
   }
 }// subresourceRange
 NAN_GETTER(_VkImageMemoryBarrier::GetsubresourceRange) {
@@ -196,17 +198,19 @@ NAN_GETTER(_VkImageMemoryBarrier::GetsubresourceRange) {
 }NAN_SETTER(_VkImageMemoryBarrier::SetsubresourceRange) {
   _VkImageMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkImageMemoryBarrier>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->subresourceRange = obj;
-  } else {
-    //self->subresourceRange = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkImageSubresourceRange* obj = Nan::ObjectWrap::Unwrap<_VkImageSubresourceRange>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.subresourceRange = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkImageSubresourceRange::constructor)->HasInstance(obj)) {
+      self->subresourceRange.Reset<v8::Object>(value.As<v8::Object>());
+      _VkImageSubresourceRange* inst = Nan::ObjectWrap::Unwrap<_VkImageSubresourceRange>(obj);
+      self->instance.subresourceRange = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'subresourceRange' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->subresourceRange.Reset();
     memset(&self->instance.subresourceRange, 0, sizeof(VkImageSubresourceRange));
+  } else {
+    return Nan::ThrowError("Value of member 'subresourceRange' has invalid type");
   }
 }

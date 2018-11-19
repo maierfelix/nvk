@@ -110,18 +110,20 @@ NAN_GETTER(_VkBufferImageCopy::GetimageSubresource) {
 }NAN_SETTER(_VkBufferImageCopy::SetimageSubresource) {
   _VkBufferImageCopy *self = Nan::ObjectWrap::Unwrap<_VkBufferImageCopy>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->imageSubresource = obj;
-  } else {
-    //self->imageSubresource = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkImageSubresourceLayers* obj = Nan::ObjectWrap::Unwrap<_VkImageSubresourceLayers>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.imageSubresource = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkImageSubresourceLayers::constructor)->HasInstance(obj)) {
+      self->imageSubresource.Reset<v8::Object>(value.As<v8::Object>());
+      _VkImageSubresourceLayers* inst = Nan::ObjectWrap::Unwrap<_VkImageSubresourceLayers>(obj);
+      self->instance.imageSubresource = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'imageSubresource' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->imageSubresource.Reset();
     memset(&self->instance.imageSubresource, 0, sizeof(VkImageSubresourceLayers));
+  } else {
+    return Nan::ThrowError("Value of member 'imageSubresource' has invalid type");
   }
 }// imageOffset
 NAN_GETTER(_VkBufferImageCopy::GetimageOffset) {
@@ -135,18 +137,20 @@ NAN_GETTER(_VkBufferImageCopy::GetimageOffset) {
 }NAN_SETTER(_VkBufferImageCopy::SetimageOffset) {
   _VkBufferImageCopy *self = Nan::ObjectWrap::Unwrap<_VkBufferImageCopy>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->imageOffset = obj;
-  } else {
-    //self->imageOffset = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkOffset3D* obj = Nan::ObjectWrap::Unwrap<_VkOffset3D>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.imageOffset = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkOffset3D::constructor)->HasInstance(obj)) {
+      self->imageOffset.Reset<v8::Object>(value.As<v8::Object>());
+      _VkOffset3D* inst = Nan::ObjectWrap::Unwrap<_VkOffset3D>(obj);
+      self->instance.imageOffset = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'imageOffset' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->imageOffset.Reset();
     memset(&self->instance.imageOffset, 0, sizeof(VkOffset3D));
+  } else {
+    return Nan::ThrowError("Value of member 'imageOffset' has invalid type");
   }
 }// imageExtent
 NAN_GETTER(_VkBufferImageCopy::GetimageExtent) {
@@ -160,17 +164,19 @@ NAN_GETTER(_VkBufferImageCopy::GetimageExtent) {
 }NAN_SETTER(_VkBufferImageCopy::SetimageExtent) {
   _VkBufferImageCopy *self = Nan::ObjectWrap::Unwrap<_VkBufferImageCopy>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->imageExtent = obj;
-  } else {
-    //self->imageExtent = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkExtent3D* obj = Nan::ObjectWrap::Unwrap<_VkExtent3D>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.imageExtent = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkExtent3D::constructor)->HasInstance(obj)) {
+      self->imageExtent.Reset<v8::Object>(value.As<v8::Object>());
+      _VkExtent3D* inst = Nan::ObjectWrap::Unwrap<_VkExtent3D>(obj);
+      self->instance.imageExtent = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'imageExtent' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->imageExtent.Reset();
     memset(&self->instance.imageExtent, 0, sizeof(VkExtent3D));
+  } else {
+    return Nan::ThrowError("Value of member 'imageExtent' has invalid type");
   }
 }

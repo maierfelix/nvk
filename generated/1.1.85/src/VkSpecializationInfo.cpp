@@ -92,10 +92,12 @@ NAN_GETTER(_VkSpecializationInfo::GetpMapEntries) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pMapEntries = copyArrayOfV8Objects<VkSpecializationMapEntry, _VkSpecializationMapEntry>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pMapEntries = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pMapEntries' has invalid type");
   }
 }// dataSize
 NAN_GETTER(_VkSpecializationInfo::GetdataSize) {

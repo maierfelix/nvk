@@ -120,10 +120,12 @@ NAN_GETTER(_VkPresentInfoKHR::GetpWaitSemaphores) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pWaitSemaphores = copyArrayOfV8Objects<VkSemaphore, _VkSemaphore>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pWaitSemaphores = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'pWaitSemaphores' has invalid type");
   }
 }// swapchainCount
 NAN_GETTER(_VkPresentInfoKHR::GetswapchainCount) {
@@ -158,10 +160,12 @@ NAN_GETTER(_VkPresentInfoKHR::GetpSwapchains) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pSwapchains = copyArrayOfV8Objects<VkSwapchainKHR, _VkSwapchainKHR>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pSwapchains = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'pSwapchains' has invalid type");
   }
 }// pImageIndices
 NAN_GETTER(_VkPresentInfoKHR::GetpImageIndices) {

@@ -136,9 +136,11 @@ NAN_GETTER(_VkDescriptorPoolCreateInfo::GetpPoolSizes) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pPoolSizes = copyArrayOfV8Objects<VkDescriptorPoolSize, _VkDescriptorPoolSize>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pPoolSizes = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pPoolSizes' has invalid type");
   }
 }

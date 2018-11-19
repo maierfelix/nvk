@@ -90,18 +90,20 @@ NAN_GETTER(_VkCommandBufferAllocateInfo::GetcommandPool) {
 }NAN_SETTER(_VkCommandBufferAllocateInfo::SetcommandPool) {
   _VkCommandBufferAllocateInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferAllocateInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->commandPool = obj;
-  } else {
-    //self->commandPool = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkCommandPool* obj = Nan::ObjectWrap::Unwrap<_VkCommandPool>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.commandPool = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkCommandPool::constructor)->HasInstance(obj)) {
+      self->commandPool.Reset<v8::Object>(value.As<v8::Object>());
+      _VkCommandPool* inst = Nan::ObjectWrap::Unwrap<_VkCommandPool>(obj);
+      self->instance.commandPool = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'commandPool' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->commandPool.Reset();
     self->instance.commandPool = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'commandPool' has invalid type");
   }
 }// level
 NAN_GETTER(_VkCommandBufferAllocateInfo::Getlevel) {

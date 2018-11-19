@@ -154,10 +154,12 @@ NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetpAttachments) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pAttachments = copyArrayOfV8Objects<VkPipelineColorBlendAttachmentState, _VkPipelineColorBlendAttachmentState>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pAttachments = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pAttachments' has invalid type");
   }
 }// blendConstants
 NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetblendConstants) {

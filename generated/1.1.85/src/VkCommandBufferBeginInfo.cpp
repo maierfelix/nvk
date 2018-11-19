@@ -98,17 +98,19 @@ NAN_GETTER(_VkCommandBufferBeginInfo::GetpInheritanceInfo) {
 }NAN_SETTER(_VkCommandBufferBeginInfo::SetpInheritanceInfo) {
   _VkCommandBufferBeginInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferBeginInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->pInheritanceInfo = obj;
-  } else {
-    //self->pInheritanceInfo = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkCommandBufferInheritanceInfo* obj = Nan::ObjectWrap::Unwrap<_VkCommandBufferInheritanceInfo>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.pInheritanceInfo = &obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkCommandBufferInheritanceInfo::constructor)->HasInstance(obj)) {
+      self->pInheritanceInfo.Reset<v8::Object>(value.As<v8::Object>());
+      _VkCommandBufferInheritanceInfo* inst = Nan::ObjectWrap::Unwrap<_VkCommandBufferInheritanceInfo>(obj);
+      self->instance.pInheritanceInfo = &inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'pInheritanceInfo' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->pInheritanceInfo.Reset();
     self->instance.pInheritanceInfo = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pInheritanceInfo' has invalid type");
   }
 }

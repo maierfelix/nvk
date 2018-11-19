@@ -68,18 +68,20 @@ NAN_GETTER(_VkDescriptorBufferInfo::Getbuffer) {
 }NAN_SETTER(_VkDescriptorBufferInfo::Setbuffer) {
   _VkDescriptorBufferInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorBufferInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->buffer = obj;
-  } else {
-    //self->buffer = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkBuffer* obj = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.buffer = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      self->buffer.Reset<v8::Object>(value.As<v8::Object>());
+      _VkBuffer* inst = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
+      self->instance.buffer = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'buffer' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->buffer.Reset();
     self->instance.buffer = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'buffer' has invalid type");
   }
 }// offset
 NAN_GETTER(_VkDescriptorBufferInfo::Getoffset) {

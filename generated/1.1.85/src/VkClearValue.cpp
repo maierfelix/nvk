@@ -65,18 +65,20 @@ NAN_GETTER(_VkClearValue::Getcolor) {
 }NAN_SETTER(_VkClearValue::Setcolor) {
   _VkClearValue *self = Nan::ObjectWrap::Unwrap<_VkClearValue>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->color = obj;
-  } else {
-    //self->color = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkClearColorValue* obj = Nan::ObjectWrap::Unwrap<_VkClearColorValue>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.color = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkClearColorValue::constructor)->HasInstance(obj)) {
+      self->color.Reset<v8::Object>(value.As<v8::Object>());
+      _VkClearColorValue* inst = Nan::ObjectWrap::Unwrap<_VkClearColorValue>(obj);
+      self->instance.color = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'color' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->color.Reset();
     memset(&self->instance.color, 0, sizeof(VkClearColorValue));
+  } else {
+    return Nan::ThrowError("Value of member 'color' has invalid type");
   }
 }// depthStencil
 NAN_GETTER(_VkClearValue::GetdepthStencil) {
@@ -90,17 +92,19 @@ NAN_GETTER(_VkClearValue::GetdepthStencil) {
 }NAN_SETTER(_VkClearValue::SetdepthStencil) {
   _VkClearValue *self = Nan::ObjectWrap::Unwrap<_VkClearValue>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->depthStencil = obj;
-  } else {
-    //self->depthStencil = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkClearDepthStencilValue* obj = Nan::ObjectWrap::Unwrap<_VkClearDepthStencilValue>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.depthStencil = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkClearDepthStencilValue::constructor)->HasInstance(obj)) {
+      self->depthStencil.Reset<v8::Object>(value.As<v8::Object>());
+      _VkClearDepthStencilValue* inst = Nan::ObjectWrap::Unwrap<_VkClearDepthStencilValue>(obj);
+      self->instance.depthStencil = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'depthStencil' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->depthStencil.Reset();
     memset(&self->instance.depthStencil, 0, sizeof(VkClearDepthStencilValue));
+  } else {
+    return Nan::ThrowError("Value of member 'depthStencil' has invalid type");
   }
 }

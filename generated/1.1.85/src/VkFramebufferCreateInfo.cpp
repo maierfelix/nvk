@@ -113,18 +113,20 @@ NAN_GETTER(_VkFramebufferCreateInfo::GetrenderPass) {
 }NAN_SETTER(_VkFramebufferCreateInfo::SetrenderPass) {
   _VkFramebufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkFramebufferCreateInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->renderPass = obj;
-  } else {
-    //self->renderPass = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkRenderPass* obj = Nan::ObjectWrap::Unwrap<_VkRenderPass>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.renderPass = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkRenderPass::constructor)->HasInstance(obj)) {
+      self->renderPass.Reset<v8::Object>(value.As<v8::Object>());
+      _VkRenderPass* inst = Nan::ObjectWrap::Unwrap<_VkRenderPass>(obj);
+      self->instance.renderPass = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'renderPass' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->renderPass.Reset();
     self->instance.renderPass = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'renderPass' has invalid type");
   }
 }// attachmentCount
 NAN_GETTER(_VkFramebufferCreateInfo::GetattachmentCount) {
@@ -159,10 +161,12 @@ NAN_GETTER(_VkFramebufferCreateInfo::GetpAttachments) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pAttachments = copyArrayOfV8Objects<VkImageView, _VkImageView>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pAttachments = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'pAttachments' has invalid type");
   }
 }// width
 NAN_GETTER(_VkFramebufferCreateInfo::Getwidth) {

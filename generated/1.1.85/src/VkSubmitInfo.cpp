@@ -123,10 +123,12 @@ NAN_GETTER(_VkSubmitInfo::GetpWaitSemaphores) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pWaitSemaphores = copyArrayOfV8Objects<VkSemaphore, _VkSemaphore>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pWaitSemaphores = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'pWaitSemaphores' has invalid type");
   }
 }// pWaitDstStageMask
 NAN_GETTER(_VkSubmitInfo::GetpWaitDstStageMask) {
@@ -189,10 +191,12 @@ NAN_GETTER(_VkSubmitInfo::GetpCommandBuffers) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pCommandBuffers = copyArrayOfV8Objects<VkCommandBuffer, _VkCommandBuffer>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pCommandBuffers = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'pCommandBuffers' has invalid type");
   }
 }// signalSemaphoreCount
 NAN_GETTER(_VkSubmitInfo::GetsignalSemaphoreCount) {
@@ -227,9 +231,11 @@ NAN_GETTER(_VkSubmitInfo::GetpSignalSemaphores) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pSignalSemaphores = copyArrayOfV8Objects<VkSemaphore, _VkSemaphore>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pSignalSemaphores = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'pSignalSemaphores' has invalid type");
   }
 }

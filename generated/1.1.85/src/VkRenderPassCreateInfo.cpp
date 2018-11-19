@@ -134,10 +134,12 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetpAttachments) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pAttachments = copyArrayOfV8Objects<VkAttachmentDescription, _VkAttachmentDescription>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pAttachments = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pAttachments' has invalid type");
   }
 }// subpassCount
 NAN_GETTER(_VkRenderPassCreateInfo::GetsubpassCount) {
@@ -172,10 +174,12 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetpSubpasses) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pSubpasses = copyArrayOfV8Objects<VkSubpassDescription, _VkSubpassDescription>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pSubpasses = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pSubpasses' has invalid type");
   }
 }// dependencyCount
 NAN_GETTER(_VkRenderPassCreateInfo::GetdependencyCount) {
@@ -210,9 +214,11 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetpDependencies) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pDependencies = copyArrayOfV8Objects<VkSubpassDependency, _VkSubpassDependency>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pDependencies = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pDependencies' has invalid type");
   }
 }

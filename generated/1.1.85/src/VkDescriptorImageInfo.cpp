@@ -68,18 +68,20 @@ NAN_GETTER(_VkDescriptorImageInfo::Getsampler) {
 }NAN_SETTER(_VkDescriptorImageInfo::Setsampler) {
   _VkDescriptorImageInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorImageInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->sampler = obj;
-  } else {
-    //self->sampler = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkSampler* obj = Nan::ObjectWrap::Unwrap<_VkSampler>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.sampler = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkSampler::constructor)->HasInstance(obj)) {
+      self->sampler.Reset<v8::Object>(value.As<v8::Object>());
+      _VkSampler* inst = Nan::ObjectWrap::Unwrap<_VkSampler>(obj);
+      self->instance.sampler = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'sampler' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->sampler.Reset();
     self->instance.sampler = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'sampler' has invalid type");
   }
 }// imageView
 NAN_GETTER(_VkDescriptorImageInfo::GetimageView) {
@@ -93,18 +95,20 @@ NAN_GETTER(_VkDescriptorImageInfo::GetimageView) {
 }NAN_SETTER(_VkDescriptorImageInfo::SetimageView) {
   _VkDescriptorImageInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorImageInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->imageView = obj;
-  } else {
-    //self->imageView = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkImageView* obj = Nan::ObjectWrap::Unwrap<_VkImageView>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.imageView = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkImageView::constructor)->HasInstance(obj)) {
+      self->imageView.Reset<v8::Object>(value.As<v8::Object>());
+      _VkImageView* inst = Nan::ObjectWrap::Unwrap<_VkImageView>(obj);
+      self->instance.imageView = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'imageView' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->imageView.Reset();
     self->instance.imageView = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'imageView' has invalid type");
   }
 }// imageLayout
 NAN_GETTER(_VkDescriptorImageInfo::GetimageLayout) {

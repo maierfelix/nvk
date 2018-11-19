@@ -68,18 +68,20 @@ NAN_GETTER(_VkClearRect::Getrect) {
 }NAN_SETTER(_VkClearRect::Setrect) {
   _VkClearRect *self = Nan::ObjectWrap::Unwrap<_VkClearRect>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->rect = obj;
-  } else {
-    //self->rect = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkRect2D* obj = Nan::ObjectWrap::Unwrap<_VkRect2D>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.rect = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkRect2D::constructor)->HasInstance(obj)) {
+      self->rect.Reset<v8::Object>(value.As<v8::Object>());
+      _VkRect2D* inst = Nan::ObjectWrap::Unwrap<_VkRect2D>(obj);
+      self->instance.rect = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'rect' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->rect.Reset();
     memset(&self->instance.rect, 0, sizeof(VkRect2D));
+  } else {
+    return Nan::ThrowError("Value of member 'rect' has invalid type");
   }
 }// baseArrayLayer
 NAN_GETTER(_VkClearRect::GetbaseArrayLayer) {

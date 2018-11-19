@@ -118,18 +118,20 @@ NAN_GETTER(_VkPipelineShaderStageCreateInfo::Getmodule) {
 }NAN_SETTER(_VkPipelineShaderStageCreateInfo::Setmodule) {
   _VkPipelineShaderStageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineShaderStageCreateInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->module = obj;
-  } else {
-    //self->module = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkShaderModule* obj = Nan::ObjectWrap::Unwrap<_VkShaderModule>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.module = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkShaderModule::constructor)->HasInstance(obj)) {
+      self->module.Reset<v8::Object>(value.As<v8::Object>());
+      _VkShaderModule* inst = Nan::ObjectWrap::Unwrap<_VkShaderModule>(obj);
+      self->instance.module = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'module' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->module.Reset();
     self->instance.module = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'module' has invalid type");
   }
 }// pName
 NAN_GETTER(_VkPipelineShaderStageCreateInfo::GetpName) {
@@ -163,17 +165,19 @@ NAN_GETTER(_VkPipelineShaderStageCreateInfo::GetpSpecializationInfo) {
 }NAN_SETTER(_VkPipelineShaderStageCreateInfo::SetpSpecializationInfo) {
   _VkPipelineShaderStageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineShaderStageCreateInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->pSpecializationInfo = obj;
-  } else {
-    //self->pSpecializationInfo = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkSpecializationInfo* obj = Nan::ObjectWrap::Unwrap<_VkSpecializationInfo>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.pSpecializationInfo = &obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkSpecializationInfo::constructor)->HasInstance(obj)) {
+      self->pSpecializationInfo.Reset<v8::Object>(value.As<v8::Object>());
+      _VkSpecializationInfo* inst = Nan::ObjectWrap::Unwrap<_VkSpecializationInfo>(obj);
+      self->instance.pSpecializationInfo = &inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'pSpecializationInfo' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->pSpecializationInfo.Reset();
     self->instance.pSpecializationInfo = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pSpecializationInfo' has invalid type");
   }
 }

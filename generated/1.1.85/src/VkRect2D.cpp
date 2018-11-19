@@ -65,18 +65,20 @@ NAN_GETTER(_VkRect2D::Getoffset) {
 }NAN_SETTER(_VkRect2D::Setoffset) {
   _VkRect2D *self = Nan::ObjectWrap::Unwrap<_VkRect2D>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->offset = obj;
-  } else {
-    //self->offset = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkOffset2D* obj = Nan::ObjectWrap::Unwrap<_VkOffset2D>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.offset = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkOffset2D::constructor)->HasInstance(obj)) {
+      self->offset.Reset<v8::Object>(value.As<v8::Object>());
+      _VkOffset2D* inst = Nan::ObjectWrap::Unwrap<_VkOffset2D>(obj);
+      self->instance.offset = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'offset' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->offset.Reset();
     memset(&self->instance.offset, 0, sizeof(VkOffset2D));
+  } else {
+    return Nan::ThrowError("Value of member 'offset' has invalid type");
   }
 }// extent
 NAN_GETTER(_VkRect2D::Getextent) {
@@ -90,17 +92,19 @@ NAN_GETTER(_VkRect2D::Getextent) {
 }NAN_SETTER(_VkRect2D::Setextent) {
   _VkRect2D *self = Nan::ObjectWrap::Unwrap<_VkRect2D>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->extent = obj;
-  } else {
-    //self->extent = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkExtent2D* obj = Nan::ObjectWrap::Unwrap<_VkExtent2D>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.extent = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkExtent2D::constructor)->HasInstance(obj)) {
+      self->extent.Reset<v8::Object>(value.As<v8::Object>());
+      _VkExtent2D* inst = Nan::ObjectWrap::Unwrap<_VkExtent2D>(obj);
+      self->instance.extent = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'extent' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->extent.Reset();
     memset(&self->instance.extent, 0, sizeof(VkExtent2D));
+  } else {
+    return Nan::ThrowError("Value of member 'extent' has invalid type");
   }
 }

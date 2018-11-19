@@ -128,10 +128,12 @@ NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetpVertexBindingDescriptions)
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pVertexBindingDescriptions = copyArrayOfV8Objects<VkVertexInputBindingDescription, _VkVertexInputBindingDescription>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pVertexBindingDescriptions = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pVertexBindingDescriptions' has invalid type");
   }
 }// vertexAttributeDescriptionCount
 NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetvertexAttributeDescriptionCount) {
@@ -166,9 +168,11 @@ NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetpVertexAttributeDescription
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pVertexAttributeDescriptions = copyArrayOfV8Objects<VkVertexInputAttributeDescription, _VkVertexInputAttributeDescription>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pVertexAttributeDescriptions = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pVertexAttributeDescriptions' has invalid type");
   }
 }

@@ -137,10 +137,12 @@ NAN_GETTER(_VkDeviceCreateInfo::GetpQueueCreateInfos) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pQueueCreateInfos = copyArrayOfV8Objects<VkDeviceQueueCreateInfo, _VkDeviceQueueCreateInfo>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pQueueCreateInfos = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pQueueCreateInfos' has invalid type");
   }
 }// enabledLayerCount
 NAN_GETTER(_VkDeviceCreateInfo::GetenabledLayerCount) {
@@ -234,17 +236,19 @@ NAN_GETTER(_VkDeviceCreateInfo::GetpEnabledFeatures) {
 }NAN_SETTER(_VkDeviceCreateInfo::SetpEnabledFeatures) {
   _VkDeviceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->pEnabledFeatures = obj;
-  } else {
-    //self->pEnabledFeatures = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkPhysicalDeviceFeatures* obj = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.pEnabledFeatures = &obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkPhysicalDeviceFeatures::constructor)->HasInstance(obj)) {
+      self->pEnabledFeatures.Reset<v8::Object>(value.As<v8::Object>());
+      _VkPhysicalDeviceFeatures* inst = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(obj);
+      self->instance.pEnabledFeatures = &inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'pEnabledFeatures' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->pEnabledFeatures.Reset();
     self->instance.pEnabledFeatures = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pEnabledFeatures' has invalid type");
   }
 }

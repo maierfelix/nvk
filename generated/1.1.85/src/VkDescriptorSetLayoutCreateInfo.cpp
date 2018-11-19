@@ -122,9 +122,11 @@ NAN_GETTER(_VkDescriptorSetLayoutCreateInfo::GetpBindings) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pBindings = copyArrayOfV8Objects<VkDescriptorSetLayoutBinding, _VkDescriptorSetLayoutBinding>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pBindings = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pBindings' has invalid type");
   }
 }

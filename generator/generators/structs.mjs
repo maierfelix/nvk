@@ -297,10 +297,12 @@ function processSourceSetter(struct, member) {
     return `
   ${genPersistentV8Array(member)}
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.${member.name} = ${fn}<${member.type}, _${member.type}>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.${member.name} = ${member.isHandleType ? "VK_NULL_HANDLE" : "nullptr"};
+  } else {
+    ${invalidMemberTypeError(member)}
   }`;
   }
   switch (rawType) {
@@ -378,18 +380,6 @@ function processSourceSetter(struct, member) {
         let deinitialize = ``;
         if (rawType === "const void *") {
           return ``; // TODO
-          return `
-  // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->${member.name} = obj;
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    ${genPolymorphicSourceSetter(struct, member)}
-  } else {
-    self->instance.${member.name} = nullptr;
-  }`;
         }
         if (member.isHandleType) {
           deinitialize = `self->instance.${member.name} = VK_NULL_HANDLE;`;
@@ -402,18 +392,20 @@ function processSourceSetter(struct, member) {
         }
         return `
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->${member.name} = obj;
-  } else {
-    //self->${member.name} = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _${member.type}* obj = Nan::ObjectWrap::Unwrap<_${member.type}>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.${member.name} = ${isReference ? "&" : ""}obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_${member.type}::constructor)->HasInstance(obj)) {
+      self->${member.name}.Reset<v8::Object>(value.As<v8::Object>());
+      _${member.type}* inst = Nan::ObjectWrap::Unwrap<_${member.type}>(obj);
+      self->instance.${member.name} = ${isReference ? "&" : ""}inst->instance;
+    } else {
+      ${invalidMemberTypeError(member)}
+    }
+  } else if (value->IsNull()) {
+    self->${member.name}.Reset();
     ${deinitialize}
+  } else {
+    ${invalidMemberTypeError(member)}
   }`;
       }
       console.warn(`Cannot handle member ${member.rawType} in source-setter!`);

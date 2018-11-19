@@ -132,10 +132,12 @@ NAN_GETTER(_VkSubpassDescription::GetpInputAttachments) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pInputAttachments = copyArrayOfV8Objects<VkAttachmentReference, _VkAttachmentReference>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pInputAttachments = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pInputAttachments' has invalid type");
   }
 }// colorAttachmentCount
 NAN_GETTER(_VkSubpassDescription::GetcolorAttachmentCount) {
@@ -170,10 +172,12 @@ NAN_GETTER(_VkSubpassDescription::GetpColorAttachments) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pColorAttachments = copyArrayOfV8Objects<VkAttachmentReference, _VkAttachmentReference>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pColorAttachments = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pColorAttachments' has invalid type");
   }
 }// pResolveAttachments
 NAN_GETTER(_VkSubpassDescription::GetpResolveAttachments) {
@@ -197,10 +201,12 @@ NAN_GETTER(_VkSubpassDescription::GetpResolveAttachments) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pResolveAttachments = copyArrayOfV8Objects<VkAttachmentReference, _VkAttachmentReference>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pResolveAttachments = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pResolveAttachments' has invalid type");
   }
 }// pDepthStencilAttachment
 NAN_GETTER(_VkSubpassDescription::GetpDepthStencilAttachment) {
@@ -214,18 +220,20 @@ NAN_GETTER(_VkSubpassDescription::GetpDepthStencilAttachment) {
 }NAN_SETTER(_VkSubpassDescription::SetpDepthStencilAttachment) {
   _VkSubpassDescription *self = Nan::ObjectWrap::Unwrap<_VkSubpassDescription>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->pDepthStencilAttachment = obj;
-  } else {
-    //self->pDepthStencilAttachment = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkAttachmentReference* obj = Nan::ObjectWrap::Unwrap<_VkAttachmentReference>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.pDepthStencilAttachment = &obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkAttachmentReference::constructor)->HasInstance(obj)) {
+      self->pDepthStencilAttachment.Reset<v8::Object>(value.As<v8::Object>());
+      _VkAttachmentReference* inst = Nan::ObjectWrap::Unwrap<_VkAttachmentReference>(obj);
+      self->instance.pDepthStencilAttachment = &inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'pDepthStencilAttachment' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->pDepthStencilAttachment.Reset();
     self->instance.pDepthStencilAttachment = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pDepthStencilAttachment' has invalid type");
   }
 }// preserveAttachmentCount
 NAN_GETTER(_VkSubpassDescription::GetpreserveAttachmentCount) {

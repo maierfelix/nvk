@@ -96,18 +96,20 @@ NAN_GETTER(_VkRenderPassBeginInfo::GetrenderPass) {
 }NAN_SETTER(_VkRenderPassBeginInfo::SetrenderPass) {
   _VkRenderPassBeginInfo *self = Nan::ObjectWrap::Unwrap<_VkRenderPassBeginInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->renderPass = obj;
-  } else {
-    //self->renderPass = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkRenderPass* obj = Nan::ObjectWrap::Unwrap<_VkRenderPass>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.renderPass = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkRenderPass::constructor)->HasInstance(obj)) {
+      self->renderPass.Reset<v8::Object>(value.As<v8::Object>());
+      _VkRenderPass* inst = Nan::ObjectWrap::Unwrap<_VkRenderPass>(obj);
+      self->instance.renderPass = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'renderPass' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->renderPass.Reset();
     self->instance.renderPass = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'renderPass' has invalid type");
   }
 }// framebuffer
 NAN_GETTER(_VkRenderPassBeginInfo::Getframebuffer) {
@@ -121,18 +123,20 @@ NAN_GETTER(_VkRenderPassBeginInfo::Getframebuffer) {
 }NAN_SETTER(_VkRenderPassBeginInfo::Setframebuffer) {
   _VkRenderPassBeginInfo *self = Nan::ObjectWrap::Unwrap<_VkRenderPassBeginInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->framebuffer = obj;
-  } else {
-    //self->framebuffer = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkFramebuffer* obj = Nan::ObjectWrap::Unwrap<_VkFramebuffer>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.framebuffer = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkFramebuffer::constructor)->HasInstance(obj)) {
+      self->framebuffer.Reset<v8::Object>(value.As<v8::Object>());
+      _VkFramebuffer* inst = Nan::ObjectWrap::Unwrap<_VkFramebuffer>(obj);
+      self->instance.framebuffer = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'framebuffer' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->framebuffer.Reset();
     self->instance.framebuffer = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'framebuffer' has invalid type");
   }
 }// renderArea
 NAN_GETTER(_VkRenderPassBeginInfo::GetrenderArea) {
@@ -146,18 +150,20 @@ NAN_GETTER(_VkRenderPassBeginInfo::GetrenderArea) {
 }NAN_SETTER(_VkRenderPassBeginInfo::SetrenderArea) {
   _VkRenderPassBeginInfo *self = Nan::ObjectWrap::Unwrap<_VkRenderPassBeginInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->renderArea = obj;
-  } else {
-    //self->renderArea = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkRect2D* obj = Nan::ObjectWrap::Unwrap<_VkRect2D>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.renderArea = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkRect2D::constructor)->HasInstance(obj)) {
+      self->renderArea.Reset<v8::Object>(value.As<v8::Object>());
+      _VkRect2D* inst = Nan::ObjectWrap::Unwrap<_VkRect2D>(obj);
+      self->instance.renderArea = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'renderArea' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->renderArea.Reset();
     memset(&self->instance.renderArea, 0, sizeof(VkRect2D));
+  } else {
+    return Nan::ThrowError("Value of member 'renderArea' has invalid type");
   }
 }// clearValueCount
 NAN_GETTER(_VkRenderPassBeginInfo::GetclearValueCount) {
@@ -192,9 +198,11 @@ NAN_GETTER(_VkRenderPassBeginInfo::GetpClearValues) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pClearValues = copyArrayOfV8Objects<VkClearValue, _VkClearValue>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pClearValues = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pClearValues' has invalid type");
   }
 }

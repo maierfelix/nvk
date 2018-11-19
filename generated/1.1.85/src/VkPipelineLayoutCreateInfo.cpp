@@ -128,10 +128,12 @@ NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpSetLayouts) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pSetLayouts = copyArrayOfV8Objects<VkDescriptorSetLayout, _VkDescriptorSetLayout>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pSetLayouts = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'pSetLayouts' has invalid type");
   }
 }// pushConstantRangeCount
 NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpushConstantRangeCount) {
@@ -166,9 +168,11 @@ NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpPushConstantRanges) {
     }
   
   // vulkan
-  if (!(value->IsNull())) {
+  if (value->IsArray()) {
     self->instance.pPushConstantRanges = copyArrayOfV8Objects<VkPushConstantRange, _VkPushConstantRange>(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.pPushConstantRanges = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pPushConstantRanges' has invalid type");
   }
 }

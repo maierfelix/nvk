@@ -153,18 +153,20 @@ NAN_GETTER(_VkImageCreateInfo::Getextent) {
 }NAN_SETTER(_VkImageCreateInfo::Setextent) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->extent = obj;
-  } else {
-    //self->extent = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkExtent3D* obj = Nan::ObjectWrap::Unwrap<_VkExtent3D>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.extent = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkExtent3D::constructor)->HasInstance(obj)) {
+      self->extent.Reset<v8::Object>(value.As<v8::Object>());
+      _VkExtent3D* inst = Nan::ObjectWrap::Unwrap<_VkExtent3D>(obj);
+      self->instance.extent = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'extent' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->extent.Reset();
     memset(&self->instance.extent, 0, sizeof(VkExtent3D));
+  } else {
+    return Nan::ThrowError("Value of member 'extent' has invalid type");
   }
 }// mipLevels
 NAN_GETTER(_VkImageCreateInfo::GetmipLevels) {

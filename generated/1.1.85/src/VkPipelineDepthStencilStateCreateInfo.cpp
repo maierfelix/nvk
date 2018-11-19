@@ -177,18 +177,20 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::Getfront) {
 }NAN_SETTER(_VkPipelineDepthStencilStateCreateInfo::Setfront) {
   _VkPipelineDepthStencilStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->front = obj;
-  } else {
-    //self->front = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkStencilOpState* obj = Nan::ObjectWrap::Unwrap<_VkStencilOpState>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.front = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkStencilOpState::constructor)->HasInstance(obj)) {
+      self->front.Reset<v8::Object>(value.As<v8::Object>());
+      _VkStencilOpState* inst = Nan::ObjectWrap::Unwrap<_VkStencilOpState>(obj);
+      self->instance.front = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'front' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->front.Reset();
     memset(&self->instance.front, 0, sizeof(VkStencilOpState));
+  } else {
+    return Nan::ThrowError("Value of member 'front' has invalid type");
   }
 }// back
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::Getback) {
@@ -202,18 +204,20 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::Getback) {
 }NAN_SETTER(_VkPipelineDepthStencilStateCreateInfo::Setback) {
   _VkPipelineDepthStencilStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineDepthStencilStateCreateInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->back = obj;
-  } else {
-    //self->back = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkStencilOpState* obj = Nan::ObjectWrap::Unwrap<_VkStencilOpState>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.back = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkStencilOpState::constructor)->HasInstance(obj)) {
+      self->back.Reset<v8::Object>(value.As<v8::Object>());
+      _VkStencilOpState* inst = Nan::ObjectWrap::Unwrap<_VkStencilOpState>(obj);
+      self->instance.back = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'back' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->back.Reset();
     memset(&self->instance.back, 0, sizeof(VkStencilOpState));
+  } else {
+    return Nan::ThrowError("Value of member 'back' has invalid type");
   }
 }// minDepthBounds
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetminDepthBounds) {

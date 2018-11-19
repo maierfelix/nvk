@@ -102,18 +102,20 @@ NAN_GETTER(_VkCopyDescriptorSet::GetsrcSet) {
 }NAN_SETTER(_VkCopyDescriptorSet::SetsrcSet) {
   _VkCopyDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkCopyDescriptorSet>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->srcSet = obj;
-  } else {
-    //self->srcSet = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkDescriptorSet* obj = Nan::ObjectWrap::Unwrap<_VkDescriptorSet>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.srcSet = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkDescriptorSet::constructor)->HasInstance(obj)) {
+      self->srcSet.Reset<v8::Object>(value.As<v8::Object>());
+      _VkDescriptorSet* inst = Nan::ObjectWrap::Unwrap<_VkDescriptorSet>(obj);
+      self->instance.srcSet = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'srcSet' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->srcSet.Reset();
     self->instance.srcSet = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'srcSet' has invalid type");
   }
 }// srcBinding
 NAN_GETTER(_VkCopyDescriptorSet::GetsrcBinding) {
@@ -149,18 +151,20 @@ NAN_GETTER(_VkCopyDescriptorSet::GetdstSet) {
 }NAN_SETTER(_VkCopyDescriptorSet::SetdstSet) {
   _VkCopyDescriptorSet *self = Nan::ObjectWrap::Unwrap<_VkCopyDescriptorSet>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->dstSet = obj;
-  } else {
-    //self->dstSet = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkDescriptorSet* obj = Nan::ObjectWrap::Unwrap<_VkDescriptorSet>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.dstSet = obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkDescriptorSet::constructor)->HasInstance(obj)) {
+      self->dstSet.Reset<v8::Object>(value.As<v8::Object>());
+      _VkDescriptorSet* inst = Nan::ObjectWrap::Unwrap<_VkDescriptorSet>(obj);
+      self->instance.dstSet = inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'dstSet' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->dstSet.Reset();
     self->instance.dstSet = VK_NULL_HANDLE;
+  } else {
+    return Nan::ThrowError("Value of member 'dstSet' has invalid type");
   }
 }// dstBinding
 NAN_GETTER(_VkCopyDescriptorSet::GetdstBinding) {

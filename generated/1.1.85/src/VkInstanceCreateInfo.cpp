@@ -110,18 +110,20 @@ NAN_GETTER(_VkInstanceCreateInfo::GetpApplicationInfo) {
 }NAN_SETTER(_VkInstanceCreateInfo::SetpApplicationInfo) {
   _VkInstanceCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkInstanceCreateInfo>(info.This());
   // js
-  if (!(value->IsNull())) {
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> obj(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->pApplicationInfo = obj;
-  } else {
-    //self->pApplicationInfo = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(Nan::Null());
-  }
-  // vulkan
-  if (!(value->IsNull())) {
-    _VkApplicationInfo* obj = Nan::ObjectWrap::Unwrap<_VkApplicationInfo>(Nan::To<v8::Object>(value).ToLocalChecked());
-    self->instance.pApplicationInfo = &obj->instance;
-  } else {
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkApplicationInfo::constructor)->HasInstance(obj)) {
+      self->pApplicationInfo.Reset<v8::Object>(value.As<v8::Object>());
+      _VkApplicationInfo* inst = Nan::ObjectWrap::Unwrap<_VkApplicationInfo>(obj);
+      self->instance.pApplicationInfo = &inst->instance;
+    } else {
+      return Nan::ThrowError("Value of member 'pApplicationInfo' has invalid type");
+    }
+  } else if (value->IsNull()) {
+    self->pApplicationInfo.Reset();
     self->instance.pApplicationInfo = nullptr;
+  } else {
+    return Nan::ThrowError("Value of member 'pApplicationInfo' has invalid type");
   }
 }// enabledLayerCount
 NAN_GETTER(_VkInstanceCreateInfo::GetenabledLayerCount) {
