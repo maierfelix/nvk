@@ -16,6 +16,7 @@ class _VkPipelineDepthStencilStateCreateInfo: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -64,6 +65,19 @@ class _VkPipelineDepthStencilStateCreateInfo: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
+    v8::Local<v8::String> sAccess3 = Nan::New("depthTestEnable").ToLocalChecked();
+    v8::Local<v8::String> sAccess4 = Nan::New("depthWriteEnable").ToLocalChecked();
+    v8::Local<v8::String> sAccess5 = Nan::New("depthCompareOp").ToLocalChecked();
+    v8::Local<v8::String> sAccess6 = Nan::New("depthBoundsTestEnable").ToLocalChecked();
+    v8::Local<v8::String> sAccess7 = Nan::New("stencilTestEnable").ToLocalChecked();
+    v8::Local<v8::String> sAccess8 = Nan::New("front").ToLocalChecked();
+    v8::Local<v8::String> sAccess9 = Nan::New("back").ToLocalChecked();
+    v8::Local<v8::String> sAccess10 = Nan::New("minDepthBounds").ToLocalChecked();
+    v8::Local<v8::String> sAccess11 = Nan::New("maxDepthBounds").ToLocalChecked();
+
     _VkPipelineDepthStencilStateCreateInfo();
     ~_VkPipelineDepthStencilStateCreateInfo();
 

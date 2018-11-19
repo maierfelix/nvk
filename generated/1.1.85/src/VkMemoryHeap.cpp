@@ -27,6 +27,7 @@ void _VkMemoryHeap::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
 
   // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  Nan::SetPrototypeMethod(ctor, "flush", flush);
   
   SetPrototypeAccessor(proto, Nan::New("size").ToLocalChecked(), Getsize, nullptr, ctor);
   SetPrototypeAccessor(proto, Nan::New("flags").ToLocalChecked(), Getflags, nullptr, ctor);
@@ -43,6 +44,11 @@ NAN_METHOD(_VkMemoryHeap::New) {
     Nan::ThrowError("VkMemoryHeap constructor cannot be invoked without 'new'");
   }
 };
+
+NAN_METHOD(_VkMemoryHeap::flush) {
+  _VkMemoryHeap *self = Nan::ObjectWrap::Unwrap<_VkMemoryHeap>(info.This());
+  
+}
 
 // size
 NAN_GETTER(_VkMemoryHeap::Getsize) {

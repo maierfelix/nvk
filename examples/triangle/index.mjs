@@ -363,7 +363,7 @@ rasterizationInfo.lineWidth = 1.0;
 let multisampleInfo = new VkPipelineMultisampleStateCreateInfo();
 multisampleInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO;
 multisampleInfo.rasterizationSamples = VK_SAMPLE_COUNT_1_BIT;
-multisampleInfo.minSampleShading = false;
+multisampleInfo.minSampleShading = 1.0;
 multisampleInfo.pSampleMask = null;
 multisampleInfo.alphaToCoverageEnable = false;
 multisampleInfo.alphaToOneEnable = false;
@@ -562,7 +562,7 @@ function drawFrame() {
   let imageIndex = { $: 0 };
   vkAcquireNextImageKHR(device, swapchain, Number.MAX_SAFE_INTEGER, semaphoreImageAvailable, null, imageIndex);
 
-  let waitStageMask = new Uint32Array([
+  let waitStageMask = new Int32Array([
     VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT
   ]);
 
@@ -585,7 +585,7 @@ function drawFrame() {
   presentInfo.pWaitSemaphores = [semaphoreRenderingAvailable];
   presentInfo.swapchainCount = 1;
   presentInfo.pSwapchains = [swapchain];
-  presentInfo.pImageIndices = new Int32Array([imageIndex.$]);
+  presentInfo.pImageIndices = new Uint32Array([imageIndex.$]);
   presentInfo.pResults = null;
 
   result = vkQueuePresentKHR(queue, presentInfo);

@@ -23,6 +23,7 @@ void _{{ struct_name }}::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE targe
 
   // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  Nan::SetPrototypeMethod(ctor, "flush", flush);
   {% for member in members -%}
   {%- if ignoreableMember(member) != true -%}
   {{- processSourceMemberAccessor(struct, member) | safe -}}
@@ -40,13 +41,7 @@ NAN_METHOD(_{{ struct_name }}::New) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       {% for member in members %}
       {%- if ignoreableMember(member) != true -%}
-      v8::Local<v8::String> sAccess{{ loop.index0 }} = Nan::New("{{ member.name }}").ToLocalChecked();
-      {% endif -%}
-      {% endfor -%}
-
-      {% for member in members %}
-      {%- if ignoreableMember(member) != true -%}
-      if (obj->Has(sAccess{{ loop.index0 }})) info.This()->Set(sAccess{{ loop.index0 }}, obj->Get(sAccess{{ loop.index0 }}));
+      if (obj->Has(self->sAccess{{ loop.index0 }})) info.This()->Set(self->sAccess{{ loop.index0 }}, obj->Get(self->sAccess{{ loop.index0 }}));
       {% endif -%}
       {% endfor %}
     }
@@ -56,6 +51,15 @@ NAN_METHOD(_{{ struct_name }}::New) {
     Nan::ThrowError("{{ struct_name }} constructor cannot be invoked without 'new'");
   }
 };
+
+NAN_METHOD(_{{ struct_name }}::flush) {
+  _{{ struct_name }} *self = Nan::ObjectWrap::Unwrap<_{{ struct_name }}>(info.This());
+  {% for member in members -%}
+  {%- if ignoreableMember(member) != true -%}
+  {{- processFlushMemberSetter(struct, member) | safe -}}
+  {%- endif -%}
+  {%- endfor %}
+}
 
 {% for member in members -%}
 {%- if ignoreableMember(member) != true -%}

@@ -16,6 +16,7 @@ class _VkSubresourceLayout: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(Getoffset);
     static NAN_GETTER(Getsize);
@@ -30,6 +31,12 @@ class _VkSubresourceLayout: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("offset").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("size").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("rowPitch").ToLocalChecked();
+    v8::Local<v8::String> sAccess3 = Nan::New("arrayPitch").ToLocalChecked();
+    v8::Local<v8::String> sAccess4 = Nan::New("depthPitch").ToLocalChecked();
+
     _VkSubresourceLayout();
     ~_VkSubresourceLayout();
 

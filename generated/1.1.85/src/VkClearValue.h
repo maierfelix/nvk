@@ -16,6 +16,7 @@ class _VkClearValue: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> color;
       static NAN_GETTER(Getcolor);
@@ -33,6 +34,9 @@ class _VkClearValue: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("color").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("depthStencil").ToLocalChecked();
+
     _VkClearValue();
     ~_VkClearValue();
 

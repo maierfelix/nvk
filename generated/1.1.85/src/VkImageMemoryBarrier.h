@@ -16,6 +16,7 @@ class _VkImageMemoryBarrier: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -58,6 +59,17 @@ class _VkImageMemoryBarrier: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("srcAccessMask").ToLocalChecked();
+    v8::Local<v8::String> sAccess3 = Nan::New("dstAccessMask").ToLocalChecked();
+    v8::Local<v8::String> sAccess4 = Nan::New("oldLayout").ToLocalChecked();
+    v8::Local<v8::String> sAccess5 = Nan::New("newLayout").ToLocalChecked();
+    v8::Local<v8::String> sAccess6 = Nan::New("srcQueueFamilyIndex").ToLocalChecked();
+    v8::Local<v8::String> sAccess7 = Nan::New("dstQueueFamilyIndex").ToLocalChecked();
+    v8::Local<v8::String> sAccess8 = Nan::New("image").ToLocalChecked();
+    v8::Local<v8::String> sAccess9 = Nan::New("subresourceRange").ToLocalChecked();
+
     _VkImageMemoryBarrier();
     ~_VkImageMemoryBarrier();
 

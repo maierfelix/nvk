@@ -16,6 +16,7 @@ class _VkPipelineViewportStateCreateInfo: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -49,6 +50,14 @@ class _VkPipelineViewportStateCreateInfo: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
+    v8::Local<v8::String> sAccess3 = Nan::New("viewportCount").ToLocalChecked();
+    v8::Local<v8::String> sAccess4 = Nan::New("pViewports").ToLocalChecked();
+    v8::Local<v8::String> sAccess5 = Nan::New("scissorCount").ToLocalChecked();
+    v8::Local<v8::String> sAccess6 = Nan::New("pScissors").ToLocalChecked();
+
     _VkPipelineViewportStateCreateInfo();
     ~_VkPipelineViewportStateCreateInfo();
 

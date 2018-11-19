@@ -16,6 +16,7 @@ class _VkSwapchainCreateInfoKHR: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -84,6 +85,25 @@ class _VkSwapchainCreateInfoKHR: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
+    v8::Local<v8::String> sAccess3 = Nan::New("surface").ToLocalChecked();
+    v8::Local<v8::String> sAccess4 = Nan::New("minImageCount").ToLocalChecked();
+    v8::Local<v8::String> sAccess5 = Nan::New("imageFormat").ToLocalChecked();
+    v8::Local<v8::String> sAccess6 = Nan::New("imageColorSpace").ToLocalChecked();
+    v8::Local<v8::String> sAccess7 = Nan::New("imageExtent").ToLocalChecked();
+    v8::Local<v8::String> sAccess8 = Nan::New("imageArrayLayers").ToLocalChecked();
+    v8::Local<v8::String> sAccess9 = Nan::New("imageUsage").ToLocalChecked();
+    v8::Local<v8::String> sAccess10 = Nan::New("imageSharingMode").ToLocalChecked();
+    v8::Local<v8::String> sAccess11 = Nan::New("queueFamilyIndexCount").ToLocalChecked();
+    v8::Local<v8::String> sAccess12 = Nan::New("pQueueFamilyIndices").ToLocalChecked();
+    v8::Local<v8::String> sAccess13 = Nan::New("preTransform").ToLocalChecked();
+    v8::Local<v8::String> sAccess14 = Nan::New("compositeAlpha").ToLocalChecked();
+    v8::Local<v8::String> sAccess15 = Nan::New("presentMode").ToLocalChecked();
+    v8::Local<v8::String> sAccess16 = Nan::New("clipped").ToLocalChecked();
+    v8::Local<v8::String> sAccess17 = Nan::New("oldSwapchain").ToLocalChecked();
+
     _VkSwapchainCreateInfoKHR();
     ~_VkSwapchainCreateInfoKHR();
 

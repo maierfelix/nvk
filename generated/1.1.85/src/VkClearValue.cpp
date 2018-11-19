@@ -27,6 +27,7 @@ void _VkClearValue::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
 
   // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  Nan::SetPrototypeMethod(ctor, "flush", flush);
   
   SetPrototypeAccessor(proto, Nan::New("color").ToLocalChecked(), Getcolor, Setcolor, ctor);
   SetPrototypeAccessor(proto, Nan::New("depthStencil").ToLocalChecked(), GetdepthStencil, SetdepthStencil, ctor);
@@ -40,10 +41,8 @@ NAN_METHOD(_VkClearValue::New) {
     
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
-      v8::Local<v8::String> sAccess0 = Nan::New("color").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("depthStencil").ToLocalChecked();
-      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
+      if (obj->Has(self->sAccess0)) info.This()->Set(self->sAccess0, obj->Get(self->sAccess0));
+      if (obj->Has(self->sAccess1)) info.This()->Set(self->sAccess1, obj->Get(self->sAccess1));
       
     }
     
@@ -52,6 +51,13 @@ NAN_METHOD(_VkClearValue::New) {
     Nan::ThrowError("VkClearValue constructor cannot be invoked without 'new'");
   }
 };
+
+NAN_METHOD(_VkClearValue::flush) {
+  _VkClearValue *self = Nan::ObjectWrap::Unwrap<_VkClearValue>(info.This());
+  
+  info.This()->Set(self->sAccess0, info.This()->Get(self->sAccess0));
+  info.This()->Set(self->sAccess1, info.This()->Get(self->sAccess1));
+}
 
 // color
 NAN_GETTER(_VkClearValue::Getcolor) {

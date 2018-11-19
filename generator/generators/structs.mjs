@@ -464,6 +464,46 @@ function processSourceIncludes(struct) {
   return out;
 };
 
+function processFlushMemberSetter(struct, member) {
+  if (struct.returnedonly) return ``;
+  let index = getMemberIndexByName(struct, member.name);
+  let out = `
+  info.This()->Set(self->sAccess${index}, info.This()->Get(self->sAccess${index}));`;
+  let {rawType} = member;
+  if (rawType === "const void *") return ``;
+  if (member.isTypedArray) return ``;
+  if (member.isBaseType) rawType = member.baseType;
+  if (member.isStaticArray && member.type !== "char") return out;
+  if (member.isArray && (member.isStructType || member.isHandleType)) return out;
+  if (member.isStructType || member.isHandleType || member.isBaseType || member.dereferenceCount > 0) return out;
+  switch (rawType) {
+    case "float *":
+    case "int32_t *":
+    case "uint8_t *":
+    case "uint32_t *":
+    case "uint64_t *":
+    case "const float *":
+    case "const int32_t *":
+    case "const uint8_t *":
+    case "const uint32_t *":
+    case "const uint64_t *":
+      return out;
+    case "int":
+    case "float":
+    case "size_t":
+    case "int32_t":
+    case "uint8_t":
+    case "uint32_t":
+    case "uint64_t":
+    case "const char *":
+    case "const char * const*":
+      return ``;
+    default:
+      console.warn(`Cannot handle member ${member.rawType} in flush-member!`);
+  };
+  return ``;
+};
+
 function processSourceMemberAccessor(struct, member) {
   let {name} = member;
   if (isStructReturnedOnly(struct)) {
@@ -473,6 +513,15 @@ function processSourceMemberAccessor(struct, member) {
     return `
   SetPrototypeAccessor(proto, Nan::New("${name}").ToLocalChecked(), Get${name}, Set${name}, ctor);`;
   }
+};
+
+function getMemberIndexByName(struct, name) {
+  for (let ii = 0; ii < struct.children.length; ++ii) {
+    let child = struct.children[ii];
+    if (child.name === name) return ii;
+  };
+  console.warn(`Failed to resolve member by name ${name}`);
+  return null;
 };
 
 function processMemberAutosType(struct) {
@@ -550,6 +599,7 @@ export default function(astReference, struct) {
     processHeaderSetter,
     processSourceIncludes,
     processMemberAutosType,
+    processFlushMemberSetter,
     processSourceMemberAccessor
   };
   let out = {

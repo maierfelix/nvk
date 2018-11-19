@@ -28,6 +28,7 @@ void _VkPhysicalDeviceProperties::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_T
 
   // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  Nan::SetPrototypeMethod(ctor, "flush", flush);
   
   SetPrototypeAccessor(proto, Nan::New("apiVersion").ToLocalChecked(), GetapiVersion, nullptr, ctor);
   SetPrototypeAccessor(proto, Nan::New("driverVersion").ToLocalChecked(), GetdriverVersion, nullptr, ctor);
@@ -51,6 +52,11 @@ NAN_METHOD(_VkPhysicalDeviceProperties::New) {
     Nan::ThrowError("VkPhysicalDeviceProperties constructor cannot be invoked without 'new'");
   }
 };
+
+NAN_METHOD(_VkPhysicalDeviceProperties::flush) {
+  _VkPhysicalDeviceProperties *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceProperties>(info.This());
+  
+}
 
 // apiVersion
 NAN_GETTER(_VkPhysicalDeviceProperties::GetapiVersion) {

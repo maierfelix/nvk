@@ -27,6 +27,7 @@ void _VkSurfaceFormatKHR::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE targ
 
   // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  Nan::SetPrototypeMethod(ctor, "flush", flush);
   
   SetPrototypeAccessor(proto, Nan::New("format").ToLocalChecked(), Getformat, nullptr, ctor);
   SetPrototypeAccessor(proto, Nan::New("colorSpace").ToLocalChecked(), GetcolorSpace, nullptr, ctor);
@@ -43,6 +44,11 @@ NAN_METHOD(_VkSurfaceFormatKHR::New) {
     Nan::ThrowError("VkSurfaceFormatKHR constructor cannot be invoked without 'new'");
   }
 };
+
+NAN_METHOD(_VkSurfaceFormatKHR::flush) {
+  _VkSurfaceFormatKHR *self = Nan::ObjectWrap::Unwrap<_VkSurfaceFormatKHR>(info.This());
+  
+}
 
 // format
 NAN_GETTER(_VkSurfaceFormatKHR::Getformat) {

@@ -16,6 +16,7 @@ class _VkSpecializationMapEntry: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(GetconstantID);
     static NAN_SETTER(SetconstantID);
@@ -34,6 +35,10 @@ class _VkSpecializationMapEntry: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("constantID").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("offset").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("size").ToLocalChecked();
+
     _VkSpecializationMapEntry();
     ~_VkSpecializationMapEntry();
 

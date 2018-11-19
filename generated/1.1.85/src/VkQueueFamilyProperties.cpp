@@ -27,6 +27,7 @@ void _VkQueueFamilyProperties::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE
 
   // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  Nan::SetPrototypeMethod(ctor, "flush", flush);
   
   SetPrototypeAccessor(proto, Nan::New("queueFlags").ToLocalChecked(), GetqueueFlags, nullptr, ctor);
   SetPrototypeAccessor(proto, Nan::New("queueCount").ToLocalChecked(), GetqueueCount, nullptr, ctor);
@@ -45,6 +46,11 @@ NAN_METHOD(_VkQueueFamilyProperties::New) {
     Nan::ThrowError("VkQueueFamilyProperties constructor cannot be invoked without 'new'");
   }
 };
+
+NAN_METHOD(_VkQueueFamilyProperties::flush) {
+  _VkQueueFamilyProperties *self = Nan::ObjectWrap::Unwrap<_VkQueueFamilyProperties>(info.This());
+  
+}
 
 // queueFlags
 NAN_GETTER(_VkQueueFamilyProperties::GetqueueFlags) {

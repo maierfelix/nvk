@@ -16,6 +16,7 @@ class _VkClearColorValue: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> float32;
     static NAN_GETTER(Getfloat32);
@@ -37,6 +38,10 @@ class _VkClearColorValue: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("float32").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("int32").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("uint32").ToLocalChecked();
+
     _VkClearColorValue();
     ~_VkClearColorValue();
 

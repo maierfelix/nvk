@@ -27,6 +27,7 @@ void _VkSubresourceLayout::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE tar
 
   // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  Nan::SetPrototypeMethod(ctor, "flush", flush);
   
   SetPrototypeAccessor(proto, Nan::New("offset").ToLocalChecked(), Getoffset, nullptr, ctor);
   SetPrototypeAccessor(proto, Nan::New("size").ToLocalChecked(), Getsize, nullptr, ctor);
@@ -46,6 +47,11 @@ NAN_METHOD(_VkSubresourceLayout::New) {
     Nan::ThrowError("VkSubresourceLayout constructor cannot be invoked without 'new'");
   }
 };
+
+NAN_METHOD(_VkSubresourceLayout::flush) {
+  _VkSubresourceLayout *self = Nan::ObjectWrap::Unwrap<_VkSubresourceLayout>(info.This());
+  
+}
 
 // offset
 NAN_GETTER(_VkSubresourceLayout::Getoffset) {

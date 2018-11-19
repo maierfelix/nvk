@@ -27,6 +27,7 @@ void _VkMemoryBarrier::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target)
 
   // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  Nan::SetPrototypeMethod(ctor, "flush", flush);
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
   SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
@@ -42,14 +43,10 @@ NAN_METHOD(_VkMemoryBarrier::New) {
     
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
-      v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
-      v8::Local<v8::String> sAccess2 = Nan::New("srcAccessMask").ToLocalChecked();
-      v8::Local<v8::String> sAccess3 = Nan::New("dstAccessMask").ToLocalChecked();
-      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
-      if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
-      if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
+      if (obj->Has(self->sAccess0)) info.This()->Set(self->sAccess0, obj->Get(self->sAccess0));
+      if (obj->Has(self->sAccess1)) info.This()->Set(self->sAccess1, obj->Get(self->sAccess1));
+      if (obj->Has(self->sAccess2)) info.This()->Set(self->sAccess2, obj->Get(self->sAccess2));
+      if (obj->Has(self->sAccess3)) info.This()->Set(self->sAccess3, obj->Get(self->sAccess3));
       
     }
     
@@ -58,6 +55,11 @@ NAN_METHOD(_VkMemoryBarrier::New) {
     Nan::ThrowError("VkMemoryBarrier constructor cannot be invoked without 'new'");
   }
 };
+
+NAN_METHOD(_VkMemoryBarrier::flush) {
+  _VkMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkMemoryBarrier>(info.This());
+  
+}
 
 // sType
 NAN_GETTER(_VkMemoryBarrier::GetsType) {

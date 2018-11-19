@@ -16,6 +16,7 @@ class _VkClearRect: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> rect;
       static NAN_GETTER(Getrect);
@@ -35,6 +36,10 @@ class _VkClearRect: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("rect").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("baseArrayLayer").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("layerCount").ToLocalChecked();
+
     _VkClearRect();
     ~_VkClearRect();
 

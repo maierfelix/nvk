@@ -16,6 +16,7 @@ class _VkAttachmentDescription: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(Getflags);
     static NAN_SETTER(Setflags);
@@ -52,6 +53,16 @@ class _VkAttachmentDescription: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("flags").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("format").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("samples").ToLocalChecked();
+    v8::Local<v8::String> sAccess3 = Nan::New("loadOp").ToLocalChecked();
+    v8::Local<v8::String> sAccess4 = Nan::New("storeOp").ToLocalChecked();
+    v8::Local<v8::String> sAccess5 = Nan::New("stencilLoadOp").ToLocalChecked();
+    v8::Local<v8::String> sAccess6 = Nan::New("stencilStoreOp").ToLocalChecked();
+    v8::Local<v8::String> sAccess7 = Nan::New("initialLayout").ToLocalChecked();
+    v8::Local<v8::String> sAccess8 = Nan::New("finalLayout").ToLocalChecked();
+
     _VkAttachmentDescription();
     ~_VkAttachmentDescription();
 

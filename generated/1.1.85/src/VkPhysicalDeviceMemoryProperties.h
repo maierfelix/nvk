@@ -16,6 +16,7 @@ class _VkPhysicalDeviceMemoryProperties: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(GetmemoryTypeCount);
     Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> memoryTypes;
@@ -31,6 +32,11 @@ class _VkPhysicalDeviceMemoryProperties: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("memoryTypeCount").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("memoryTypes").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("memoryHeapCount").ToLocalChecked();
+    v8::Local<v8::String> sAccess3 = Nan::New("memoryHeaps").ToLocalChecked();
+
     _VkPhysicalDeviceMemoryProperties();
     ~_VkPhysicalDeviceMemoryProperties();
 

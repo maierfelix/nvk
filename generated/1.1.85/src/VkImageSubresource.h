@@ -16,6 +16,7 @@ class _VkImageSubresource: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(GetaspectMask);
     static NAN_SETTER(SetaspectMask);
@@ -34,6 +35,10 @@ class _VkImageSubresource: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("aspectMask").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("mipLevel").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("arrayLayer").ToLocalChecked();
+
     _VkImageSubresource();
     ~_VkImageSubresource();
 

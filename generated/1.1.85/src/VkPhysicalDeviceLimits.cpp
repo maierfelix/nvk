@@ -28,6 +28,7 @@ void _VkPhysicalDeviceLimits::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE 
 
   // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  Nan::SetPrototypeMethod(ctor, "flush", flush);
   
   SetPrototypeAccessor(proto, Nan::New("maxImageDimension1D").ToLocalChecked(), GetmaxImageDimension1D, nullptr, ctor);
   SetPrototypeAccessor(proto, Nan::New("maxImageDimension2D").ToLocalChecked(), GetmaxImageDimension2D, nullptr, ctor);
@@ -148,6 +149,11 @@ NAN_METHOD(_VkPhysicalDeviceLimits::New) {
     Nan::ThrowError("VkPhysicalDeviceLimits constructor cannot be invoked without 'new'");
   }
 };
+
+NAN_METHOD(_VkPhysicalDeviceLimits::flush) {
+  _VkPhysicalDeviceLimits *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceLimits>(info.This());
+  
+}
 
 // maxImageDimension1D
 NAN_GETTER(_VkPhysicalDeviceLimits::GetmaxImageDimension1D) {

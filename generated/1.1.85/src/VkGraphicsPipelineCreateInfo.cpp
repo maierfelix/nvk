@@ -27,6 +27,7 @@ void _VkGraphicsPipelineCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS
 
   // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  Nan::SetPrototypeMethod(ctor, "flush", flush);
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
   SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
@@ -57,44 +58,25 @@ NAN_METHOD(_VkGraphicsPipelineCreateInfo::New) {
     
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
-      v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
-      v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
-      v8::Local<v8::String> sAccess3 = Nan::New("stageCount").ToLocalChecked();
-      v8::Local<v8::String> sAccess4 = Nan::New("pStages").ToLocalChecked();
-      v8::Local<v8::String> sAccess5 = Nan::New("pVertexInputState").ToLocalChecked();
-      v8::Local<v8::String> sAccess6 = Nan::New("pInputAssemblyState").ToLocalChecked();
-      v8::Local<v8::String> sAccess7 = Nan::New("pTessellationState").ToLocalChecked();
-      v8::Local<v8::String> sAccess8 = Nan::New("pViewportState").ToLocalChecked();
-      v8::Local<v8::String> sAccess9 = Nan::New("pRasterizationState").ToLocalChecked();
-      v8::Local<v8::String> sAccess10 = Nan::New("pMultisampleState").ToLocalChecked();
-      v8::Local<v8::String> sAccess11 = Nan::New("pDepthStencilState").ToLocalChecked();
-      v8::Local<v8::String> sAccess12 = Nan::New("pColorBlendState").ToLocalChecked();
-      v8::Local<v8::String> sAccess13 = Nan::New("pDynamicState").ToLocalChecked();
-      v8::Local<v8::String> sAccess14 = Nan::New("layout").ToLocalChecked();
-      v8::Local<v8::String> sAccess15 = Nan::New("renderPass").ToLocalChecked();
-      v8::Local<v8::String> sAccess16 = Nan::New("subpass").ToLocalChecked();
-      v8::Local<v8::String> sAccess17 = Nan::New("basePipelineHandle").ToLocalChecked();
-      v8::Local<v8::String> sAccess18 = Nan::New("basePipelineIndex").ToLocalChecked();
-      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
-      if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
-      if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
-      if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
-      if (obj->Has(sAccess5)) info.This()->Set(sAccess5, obj->Get(sAccess5));
-      if (obj->Has(sAccess6)) info.This()->Set(sAccess6, obj->Get(sAccess6));
-      if (obj->Has(sAccess7)) info.This()->Set(sAccess7, obj->Get(sAccess7));
-      if (obj->Has(sAccess8)) info.This()->Set(sAccess8, obj->Get(sAccess8));
-      if (obj->Has(sAccess9)) info.This()->Set(sAccess9, obj->Get(sAccess9));
-      if (obj->Has(sAccess10)) info.This()->Set(sAccess10, obj->Get(sAccess10));
-      if (obj->Has(sAccess11)) info.This()->Set(sAccess11, obj->Get(sAccess11));
-      if (obj->Has(sAccess12)) info.This()->Set(sAccess12, obj->Get(sAccess12));
-      if (obj->Has(sAccess13)) info.This()->Set(sAccess13, obj->Get(sAccess13));
-      if (obj->Has(sAccess14)) info.This()->Set(sAccess14, obj->Get(sAccess14));
-      if (obj->Has(sAccess15)) info.This()->Set(sAccess15, obj->Get(sAccess15));
-      if (obj->Has(sAccess16)) info.This()->Set(sAccess16, obj->Get(sAccess16));
-      if (obj->Has(sAccess17)) info.This()->Set(sAccess17, obj->Get(sAccess17));
-      if (obj->Has(sAccess18)) info.This()->Set(sAccess18, obj->Get(sAccess18));
+      if (obj->Has(self->sAccess0)) info.This()->Set(self->sAccess0, obj->Get(self->sAccess0));
+      if (obj->Has(self->sAccess1)) info.This()->Set(self->sAccess1, obj->Get(self->sAccess1));
+      if (obj->Has(self->sAccess2)) info.This()->Set(self->sAccess2, obj->Get(self->sAccess2));
+      if (obj->Has(self->sAccess3)) info.This()->Set(self->sAccess3, obj->Get(self->sAccess3));
+      if (obj->Has(self->sAccess4)) info.This()->Set(self->sAccess4, obj->Get(self->sAccess4));
+      if (obj->Has(self->sAccess5)) info.This()->Set(self->sAccess5, obj->Get(self->sAccess5));
+      if (obj->Has(self->sAccess6)) info.This()->Set(self->sAccess6, obj->Get(self->sAccess6));
+      if (obj->Has(self->sAccess7)) info.This()->Set(self->sAccess7, obj->Get(self->sAccess7));
+      if (obj->Has(self->sAccess8)) info.This()->Set(self->sAccess8, obj->Get(self->sAccess8));
+      if (obj->Has(self->sAccess9)) info.This()->Set(self->sAccess9, obj->Get(self->sAccess9));
+      if (obj->Has(self->sAccess10)) info.This()->Set(self->sAccess10, obj->Get(self->sAccess10));
+      if (obj->Has(self->sAccess11)) info.This()->Set(self->sAccess11, obj->Get(self->sAccess11));
+      if (obj->Has(self->sAccess12)) info.This()->Set(self->sAccess12, obj->Get(self->sAccess12));
+      if (obj->Has(self->sAccess13)) info.This()->Set(self->sAccess13, obj->Get(self->sAccess13));
+      if (obj->Has(self->sAccess14)) info.This()->Set(self->sAccess14, obj->Get(self->sAccess14));
+      if (obj->Has(self->sAccess15)) info.This()->Set(self->sAccess15, obj->Get(self->sAccess15));
+      if (obj->Has(self->sAccess16)) info.This()->Set(self->sAccess16, obj->Get(self->sAccess16));
+      if (obj->Has(self->sAccess17)) info.This()->Set(self->sAccess17, obj->Get(self->sAccess17));
+      if (obj->Has(self->sAccess18)) info.This()->Set(self->sAccess18, obj->Get(self->sAccess18));
       
     }
     
@@ -103,6 +85,24 @@ NAN_METHOD(_VkGraphicsPipelineCreateInfo::New) {
     Nan::ThrowError("VkGraphicsPipelineCreateInfo constructor cannot be invoked without 'new'");
   }
 };
+
+NAN_METHOD(_VkGraphicsPipelineCreateInfo::flush) {
+  _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
+  
+  info.This()->Set(self->sAccess4, info.This()->Get(self->sAccess4));
+  info.This()->Set(self->sAccess5, info.This()->Get(self->sAccess5));
+  info.This()->Set(self->sAccess6, info.This()->Get(self->sAccess6));
+  info.This()->Set(self->sAccess7, info.This()->Get(self->sAccess7));
+  info.This()->Set(self->sAccess8, info.This()->Get(self->sAccess8));
+  info.This()->Set(self->sAccess9, info.This()->Get(self->sAccess9));
+  info.This()->Set(self->sAccess10, info.This()->Get(self->sAccess10));
+  info.This()->Set(self->sAccess11, info.This()->Get(self->sAccess11));
+  info.This()->Set(self->sAccess12, info.This()->Get(self->sAccess12));
+  info.This()->Set(self->sAccess13, info.This()->Get(self->sAccess13));
+  info.This()->Set(self->sAccess14, info.This()->Get(self->sAccess14));
+  info.This()->Set(self->sAccess15, info.This()->Get(self->sAccess15));
+  info.This()->Set(self->sAccess17, info.This()->Get(self->sAccess17));
+}
 
 // sType
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetsType) {

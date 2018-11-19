@@ -32,6 +32,7 @@ export default function(ast) {
       if (struct.name === "VkShaderModuleCreateInfo") {
         struct.children.map(member => {
           if (member.name === "pCode") {
+            // haxxxxx
             member.jsTypedArrayName = "Uint8Array";
             patches++;
           }

@@ -16,6 +16,7 @@ class _VkVertexInputAttributeDescription: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(Getlocation);
     static NAN_SETTER(Setlocation);
@@ -37,6 +38,11 @@ class _VkVertexInputAttributeDescription: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("location").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("binding").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("format").ToLocalChecked();
+    v8::Local<v8::String> sAccess3 = Nan::New("offset").ToLocalChecked();
+
     _VkVertexInputAttributeDescription();
     ~_VkVertexInputAttributeDescription();
 

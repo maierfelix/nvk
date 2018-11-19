@@ -16,6 +16,7 @@ class _VkOffset3D: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(Getx);
     static NAN_SETTER(Setx);
@@ -34,6 +35,10 @@ class _VkOffset3D: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("x").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("y").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("z").ToLocalChecked();
+
     _VkOffset3D();
     ~_VkOffset3D();
 

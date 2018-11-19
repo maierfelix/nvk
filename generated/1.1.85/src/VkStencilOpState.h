@@ -16,6 +16,7 @@ class _VkStencilOpState: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(GetfailOp);
     static NAN_SETTER(SetfailOp);
@@ -46,6 +47,14 @@ class _VkStencilOpState: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("failOp").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("passOp").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("depthFailOp").ToLocalChecked();
+    v8::Local<v8::String> sAccess3 = Nan::New("compareOp").ToLocalChecked();
+    v8::Local<v8::String> sAccess4 = Nan::New("compareMask").ToLocalChecked();
+    v8::Local<v8::String> sAccess5 = Nan::New("writeMask").ToLocalChecked();
+    v8::Local<v8::String> sAccess6 = Nan::New("reference").ToLocalChecked();
+
     _VkStencilOpState();
     ~_VkStencilOpState();
 

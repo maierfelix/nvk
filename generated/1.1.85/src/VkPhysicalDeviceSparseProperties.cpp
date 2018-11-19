@@ -27,6 +27,7 @@ void _VkPhysicalDeviceSparseProperties::Initialize(Nan::ADDON_REGISTER_FUNCTION_
 
   // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  Nan::SetPrototypeMethod(ctor, "flush", flush);
   
   SetPrototypeAccessor(proto, Nan::New("residencyStandard2DBlockShape").ToLocalChecked(), GetresidencyStandard2DBlockShape, nullptr, ctor);
   SetPrototypeAccessor(proto, Nan::New("residencyStandard2DMultisampleBlockShape").ToLocalChecked(), GetresidencyStandard2DMultisampleBlockShape, nullptr, ctor);
@@ -46,6 +47,11 @@ NAN_METHOD(_VkPhysicalDeviceSparseProperties::New) {
     Nan::ThrowError("VkPhysicalDeviceSparseProperties constructor cannot be invoked without 'new'");
   }
 };
+
+NAN_METHOD(_VkPhysicalDeviceSparseProperties::flush) {
+  _VkPhysicalDeviceSparseProperties *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceSparseProperties>(info.This());
+  
+}
 
 // residencyStandard2DBlockShape
 NAN_GETTER(_VkPhysicalDeviceSparseProperties::GetresidencyStandard2DBlockShape) {

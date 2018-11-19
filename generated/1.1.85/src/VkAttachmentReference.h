@@ -16,6 +16,7 @@ class _VkAttachmentReference: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(Getattachment);
     static NAN_SETTER(Setattachment);
@@ -31,6 +32,9 @@ class _VkAttachmentReference: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("attachment").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("layout").ToLocalChecked();
+
     _VkAttachmentReference();
     ~_VkAttachmentReference();
 

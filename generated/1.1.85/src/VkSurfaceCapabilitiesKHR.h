@@ -16,6 +16,7 @@ class _VkSurfaceCapabilitiesKHR: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(GetminImageCount);
     static NAN_GETTER(GetmaxImageCount);
@@ -38,6 +39,17 @@ class _VkSurfaceCapabilitiesKHR: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("minImageCount").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("maxImageCount").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("currentExtent").ToLocalChecked();
+    v8::Local<v8::String> sAccess3 = Nan::New("minImageExtent").ToLocalChecked();
+    v8::Local<v8::String> sAccess4 = Nan::New("maxImageExtent").ToLocalChecked();
+    v8::Local<v8::String> sAccess5 = Nan::New("maxImageArrayLayers").ToLocalChecked();
+    v8::Local<v8::String> sAccess6 = Nan::New("supportedTransforms").ToLocalChecked();
+    v8::Local<v8::String> sAccess7 = Nan::New("currentTransform").ToLocalChecked();
+    v8::Local<v8::String> sAccess8 = Nan::New("supportedCompositeAlpha").ToLocalChecked();
+    v8::Local<v8::String> sAccess9 = Nan::New("supportedUsageFlags").ToLocalChecked();
+
     _VkSurfaceCapabilitiesKHR();
     ~_VkSurfaceCapabilitiesKHR();
 

@@ -16,6 +16,7 @@ class _VkSurfaceFormatKHR: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(Getformat);
     static NAN_GETTER(GetcolorSpace);
@@ -27,6 +28,9 @@ class _VkSurfaceFormatKHR: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("format").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("colorSpace").ToLocalChecked();
+
     _VkSurfaceFormatKHR();
     ~_VkSurfaceFormatKHR();
 

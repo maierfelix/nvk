@@ -27,6 +27,7 @@ void _VkMemoryType::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
 
   // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  Nan::SetPrototypeMethod(ctor, "flush", flush);
   
   SetPrototypeAccessor(proto, Nan::New("propertyFlags").ToLocalChecked(), GetpropertyFlags, nullptr, ctor);
   SetPrototypeAccessor(proto, Nan::New("heapIndex").ToLocalChecked(), GetheapIndex, nullptr, ctor);
@@ -43,6 +44,11 @@ NAN_METHOD(_VkMemoryType::New) {
     Nan::ThrowError("VkMemoryType constructor cannot be invoked without 'new'");
   }
 };
+
+NAN_METHOD(_VkMemoryType::flush) {
+  _VkMemoryType *self = Nan::ObjectWrap::Unwrap<_VkMemoryType>(info.This());
+  
+}
 
 // propertyFlags
 NAN_GETTER(_VkMemoryType::GetpropertyFlags) {

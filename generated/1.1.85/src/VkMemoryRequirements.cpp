@@ -27,6 +27,7 @@ void _VkMemoryRequirements::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE ta
 
   // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  Nan::SetPrototypeMethod(ctor, "flush", flush);
   
   SetPrototypeAccessor(proto, Nan::New("size").ToLocalChecked(), Getsize, nullptr, ctor);
   SetPrototypeAccessor(proto, Nan::New("alignment").ToLocalChecked(), Getalignment, nullptr, ctor);
@@ -44,6 +45,11 @@ NAN_METHOD(_VkMemoryRequirements::New) {
     Nan::ThrowError("VkMemoryRequirements constructor cannot be invoked without 'new'");
   }
 };
+
+NAN_METHOD(_VkMemoryRequirements::flush) {
+  _VkMemoryRequirements *self = Nan::ObjectWrap::Unwrap<_VkMemoryRequirements>(info.This());
+  
+}
 
 // size
 NAN_GETTER(_VkMemoryRequirements::Getsize) {

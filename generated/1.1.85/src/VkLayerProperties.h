@@ -16,6 +16,7 @@ class _VkLayerProperties: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> layerName;
     static NAN_GETTER(GetlayerName);
@@ -31,6 +32,11 @@ class _VkLayerProperties: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("layerName").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("specVersion").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("implementationVersion").ToLocalChecked();
+    v8::Local<v8::String> sAccess3 = Nan::New("description").ToLocalChecked();
+
     _VkLayerProperties();
     ~_VkLayerProperties();
 

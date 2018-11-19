@@ -27,6 +27,7 @@ void _VkSurfaceCapabilitiesKHR::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYP
 
   // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  Nan::SetPrototypeMethod(ctor, "flush", flush);
   
   SetPrototypeAccessor(proto, Nan::New("minImageCount").ToLocalChecked(), GetminImageCount, nullptr, ctor);
   SetPrototypeAccessor(proto, Nan::New("maxImageCount").ToLocalChecked(), GetmaxImageCount, nullptr, ctor);
@@ -51,6 +52,11 @@ NAN_METHOD(_VkSurfaceCapabilitiesKHR::New) {
     Nan::ThrowError("VkSurfaceCapabilitiesKHR constructor cannot be invoked without 'new'");
   }
 };
+
+NAN_METHOD(_VkSurfaceCapabilitiesKHR::flush) {
+  _VkSurfaceCapabilitiesKHR *self = Nan::ObjectWrap::Unwrap<_VkSurfaceCapabilitiesKHR>(info.This());
+  
+}
 
 // minImageCount
 NAN_GETTER(_VkSurfaceCapabilitiesKHR::GetminImageCount) {

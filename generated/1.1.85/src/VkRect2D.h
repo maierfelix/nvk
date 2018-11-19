@@ -16,6 +16,7 @@ class _VkRect2D: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> offset;
       static NAN_GETTER(Getoffset);
@@ -33,6 +34,9 @@ class _VkRect2D: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("offset").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("extent").ToLocalChecked();
+
     _VkRect2D();
     ~_VkRect2D();
 

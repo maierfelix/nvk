@@ -16,6 +16,7 @@ class _VkSpecializationInfo: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(GetmapEntryCount);
     static NAN_SETTER(SetmapEntryCount);
@@ -39,6 +40,11 @@ class _VkSpecializationInfo: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("mapEntryCount").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("pMapEntries").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("dataSize").ToLocalChecked();
+    v8::Local<v8::String> sAccess3 = Nan::New("pData").ToLocalChecked();
+
     _VkSpecializationInfo();
     ~_VkSpecializationInfo();
 

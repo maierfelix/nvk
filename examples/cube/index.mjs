@@ -517,7 +517,7 @@ function createGraphicsPipeline() {
 
   let multisampleInfo = new VkPipelineMultisampleStateCreateInfo();
   multisampleInfo.rasterizationSamples = VK_SAMPLE_COUNT_1_BIT;
-  multisampleInfo.minSampleShading = false;
+  multisampleInfo.minSampleShading = 1.0;
   multisampleInfo.pSampleMask = null;
   multisampleInfo.alphaToCoverageEnable = false;
   multisampleInfo.alphaToOneEnable = false;
@@ -806,7 +806,7 @@ function drawFrame() {
   result = vkAcquireNextImageKHR(device, swapchain, Number.MAX_SAFE_INTEGER, semaphoreImageAvailable, null, imageIndex);
   ASSERT_VK_RESULT(result);
 
-  let waitStageMask = new Uint32Array([
+  let waitStageMask = new Int32Array([
     VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT
   ]);
 
@@ -827,7 +827,7 @@ function drawFrame() {
   presentInfo.pWaitSemaphores = [semaphoreRenderingDone];
   presentInfo.swapchainCount = 1;
   presentInfo.pSwapchains = [swapchain];
-  presentInfo.pImageIndices = new Int32Array([imageIndex.$]);
+  presentInfo.pImageIndices = new Uint32Array([imageIndex.$]);
   presentInfo.pResults = null;
 
   result = vkQueuePresentKHR(queue, presentInfo);

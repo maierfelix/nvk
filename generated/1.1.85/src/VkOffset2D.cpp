@@ -27,6 +27,7 @@ void _VkOffset2D::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
 
   // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  Nan::SetPrototypeMethod(ctor, "flush", flush);
   
   SetPrototypeAccessor(proto, Nan::New("x").ToLocalChecked(), Getx, Setx, ctor);
   SetPrototypeAccessor(proto, Nan::New("y").ToLocalChecked(), Gety, Sety, ctor);
@@ -40,10 +41,8 @@ NAN_METHOD(_VkOffset2D::New) {
     
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
-      v8::Local<v8::String> sAccess0 = Nan::New("x").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("y").ToLocalChecked();
-      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
+      if (obj->Has(self->sAccess0)) info.This()->Set(self->sAccess0, obj->Get(self->sAccess0));
+      if (obj->Has(self->sAccess1)) info.This()->Set(self->sAccess1, obj->Get(self->sAccess1));
       
     }
     
@@ -52,6 +51,11 @@ NAN_METHOD(_VkOffset2D::New) {
     Nan::ThrowError("VkOffset2D constructor cannot be invoked without 'new'");
   }
 };
+
+NAN_METHOD(_VkOffset2D::flush) {
+  _VkOffset2D *self = Nan::ObjectWrap::Unwrap<_VkOffset2D>(info.This());
+  
+}
 
 // x
 NAN_GETTER(_VkOffset2D::Getx) {

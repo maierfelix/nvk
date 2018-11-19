@@ -16,6 +16,7 @@ class _VkPhysicalDeviceSparseProperties: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(GetresidencyStandard2DBlockShape);
     static NAN_GETTER(GetresidencyStandard2DMultisampleBlockShape);
@@ -30,6 +31,12 @@ class _VkPhysicalDeviceSparseProperties: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("residencyStandard2DBlockShape").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("residencyStandard2DMultisampleBlockShape").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("residencyStandard3DBlockShape").ToLocalChecked();
+    v8::Local<v8::String> sAccess3 = Nan::New("residencyAlignedMipSize").ToLocalChecked();
+    v8::Local<v8::String> sAccess4 = Nan::New("residencyNonResidentStrict").ToLocalChecked();
+
     _VkPhysicalDeviceSparseProperties();
     ~_VkPhysicalDeviceSparseProperties();
 

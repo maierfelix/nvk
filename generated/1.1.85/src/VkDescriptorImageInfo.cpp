@@ -27,6 +27,7 @@ void _VkDescriptorImageInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE t
 
   // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  Nan::SetPrototypeMethod(ctor, "flush", flush);
   
   SetPrototypeAccessor(proto, Nan::New("sampler").ToLocalChecked(), Getsampler, Setsampler, ctor);
   SetPrototypeAccessor(proto, Nan::New("imageView").ToLocalChecked(), GetimageView, SetimageView, ctor);
@@ -41,12 +42,9 @@ NAN_METHOD(_VkDescriptorImageInfo::New) {
     
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
-      v8::Local<v8::String> sAccess0 = Nan::New("sampler").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("imageView").ToLocalChecked();
-      v8::Local<v8::String> sAccess2 = Nan::New("imageLayout").ToLocalChecked();
-      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
-      if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
+      if (obj->Has(self->sAccess0)) info.This()->Set(self->sAccess0, obj->Get(self->sAccess0));
+      if (obj->Has(self->sAccess1)) info.This()->Set(self->sAccess1, obj->Get(self->sAccess1));
+      if (obj->Has(self->sAccess2)) info.This()->Set(self->sAccess2, obj->Get(self->sAccess2));
       
     }
     
@@ -55,6 +53,13 @@ NAN_METHOD(_VkDescriptorImageInfo::New) {
     Nan::ThrowError("VkDescriptorImageInfo constructor cannot be invoked without 'new'");
   }
 };
+
+NAN_METHOD(_VkDescriptorImageInfo::flush) {
+  _VkDescriptorImageInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorImageInfo>(info.This());
+  
+  info.This()->Set(self->sAccess0, info.This()->Get(self->sAccess0));
+  info.This()->Set(self->sAccess1, info.This()->Get(self->sAccess1));
+}
 
 // sampler
 NAN_GETTER(_VkDescriptorImageInfo::Getsampler) {

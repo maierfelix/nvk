@@ -16,6 +16,7 @@ class _VkImageCreateInfo: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -73,6 +74,22 @@ class _VkImageCreateInfo: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
+    v8::Local<v8::String> sAccess3 = Nan::New("imageType").ToLocalChecked();
+    v8::Local<v8::String> sAccess4 = Nan::New("format").ToLocalChecked();
+    v8::Local<v8::String> sAccess5 = Nan::New("extent").ToLocalChecked();
+    v8::Local<v8::String> sAccess6 = Nan::New("mipLevels").ToLocalChecked();
+    v8::Local<v8::String> sAccess7 = Nan::New("arrayLayers").ToLocalChecked();
+    v8::Local<v8::String> sAccess8 = Nan::New("samples").ToLocalChecked();
+    v8::Local<v8::String> sAccess9 = Nan::New("tiling").ToLocalChecked();
+    v8::Local<v8::String> sAccess10 = Nan::New("usage").ToLocalChecked();
+    v8::Local<v8::String> sAccess11 = Nan::New("sharingMode").ToLocalChecked();
+    v8::Local<v8::String> sAccess12 = Nan::New("queueFamilyIndexCount").ToLocalChecked();
+    v8::Local<v8::String> sAccess13 = Nan::New("pQueueFamilyIndices").ToLocalChecked();
+    v8::Local<v8::String> sAccess14 = Nan::New("initialLayout").ToLocalChecked();
+
     _VkImageCreateInfo();
     ~_VkImageCreateInfo();
 

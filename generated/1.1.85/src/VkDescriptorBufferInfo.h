@@ -16,6 +16,7 @@ class _VkDescriptorBufferInfo: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> buffer;
       static NAN_GETTER(Getbuffer);
@@ -35,6 +36,10 @@ class _VkDescriptorBufferInfo: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("buffer").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("offset").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("range").ToLocalChecked();
+
     _VkDescriptorBufferInfo();
     ~_VkDescriptorBufferInfo();
 

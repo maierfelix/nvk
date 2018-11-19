@@ -27,6 +27,7 @@ void _VkRect2D::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
 
   // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  Nan::SetPrototypeMethod(ctor, "flush", flush);
   
   SetPrototypeAccessor(proto, Nan::New("offset").ToLocalChecked(), Getoffset, Setoffset, ctor);
   SetPrototypeAccessor(proto, Nan::New("extent").ToLocalChecked(), Getextent, Setextent, ctor);
@@ -40,10 +41,8 @@ NAN_METHOD(_VkRect2D::New) {
     
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
-      v8::Local<v8::String> sAccess0 = Nan::New("offset").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("extent").ToLocalChecked();
-      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
+      if (obj->Has(self->sAccess0)) info.This()->Set(self->sAccess0, obj->Get(self->sAccess0));
+      if (obj->Has(self->sAccess1)) info.This()->Set(self->sAccess1, obj->Get(self->sAccess1));
       
     }
     
@@ -52,6 +51,13 @@ NAN_METHOD(_VkRect2D::New) {
     Nan::ThrowError("VkRect2D constructor cannot be invoked without 'new'");
   }
 };
+
+NAN_METHOD(_VkRect2D::flush) {
+  _VkRect2D *self = Nan::ObjectWrap::Unwrap<_VkRect2D>(info.This());
+  
+  info.This()->Set(self->sAccess0, info.This()->Get(self->sAccess0));
+  info.This()->Set(self->sAccess1, info.This()->Get(self->sAccess1));
+}
 
 // offset
 NAN_GETTER(_VkRect2D::Getoffset) {

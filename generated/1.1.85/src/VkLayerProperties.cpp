@@ -28,6 +28,7 @@ void _VkLayerProperties::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE targe
 
   // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  Nan::SetPrototypeMethod(ctor, "flush", flush);
   
   SetPrototypeAccessor(proto, Nan::New("layerName").ToLocalChecked(), GetlayerName, nullptr, ctor);
   SetPrototypeAccessor(proto, Nan::New("specVersion").ToLocalChecked(), GetspecVersion, nullptr, ctor);
@@ -46,6 +47,11 @@ NAN_METHOD(_VkLayerProperties::New) {
     Nan::ThrowError("VkLayerProperties constructor cannot be invoked without 'new'");
   }
 };
+
+NAN_METHOD(_VkLayerProperties::flush) {
+  _VkLayerProperties *self = Nan::ObjectWrap::Unwrap<_VkLayerProperties>(info.This());
+  
+}
 
 // layerName
 NAN_GETTER(_VkLayerProperties::GetlayerName) {

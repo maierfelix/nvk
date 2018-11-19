@@ -16,6 +16,7 @@ class _VkSubpassDescription: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(Getflags);
     static NAN_SETTER(Setflags);
@@ -60,6 +61,17 @@ class _VkSubpassDescription: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("flags").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("pipelineBindPoint").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("inputAttachmentCount").ToLocalChecked();
+    v8::Local<v8::String> sAccess3 = Nan::New("pInputAttachments").ToLocalChecked();
+    v8::Local<v8::String> sAccess4 = Nan::New("colorAttachmentCount").ToLocalChecked();
+    v8::Local<v8::String> sAccess5 = Nan::New("pColorAttachments").ToLocalChecked();
+    v8::Local<v8::String> sAccess6 = Nan::New("pResolveAttachments").ToLocalChecked();
+    v8::Local<v8::String> sAccess7 = Nan::New("pDepthStencilAttachment").ToLocalChecked();
+    v8::Local<v8::String> sAccess8 = Nan::New("preserveAttachmentCount").ToLocalChecked();
+    v8::Local<v8::String> sAccess9 = Nan::New("pPreserveAttachments").ToLocalChecked();
+
     _VkSubpassDescription();
     ~_VkSubpassDescription();
 

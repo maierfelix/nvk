@@ -16,6 +16,7 @@ class _VkQueueFamilyProperties: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(GetqueueFlags);
     static NAN_GETTER(GetqueueCount);
@@ -30,6 +31,11 @@ class _VkQueueFamilyProperties: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("queueFlags").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("queueCount").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("timestampValidBits").ToLocalChecked();
+    v8::Local<v8::String> sAccess3 = Nan::New("minImageTransferGranularity").ToLocalChecked();
+
     _VkQueueFamilyProperties();
     ~_VkQueueFamilyProperties();
 

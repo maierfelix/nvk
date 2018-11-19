@@ -16,6 +16,7 @@ class _VkPipelineRasterizationStateCreateInfo: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -65,6 +66,20 @@ class _VkPipelineRasterizationStateCreateInfo: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
+    v8::Local<v8::String> sAccess3 = Nan::New("depthClampEnable").ToLocalChecked();
+    v8::Local<v8::String> sAccess4 = Nan::New("rasterizerDiscardEnable").ToLocalChecked();
+    v8::Local<v8::String> sAccess5 = Nan::New("polygonMode").ToLocalChecked();
+    v8::Local<v8::String> sAccess6 = Nan::New("cullMode").ToLocalChecked();
+    v8::Local<v8::String> sAccess7 = Nan::New("frontFace").ToLocalChecked();
+    v8::Local<v8::String> sAccess8 = Nan::New("depthBiasEnable").ToLocalChecked();
+    v8::Local<v8::String> sAccess9 = Nan::New("depthBiasConstantFactor").ToLocalChecked();
+    v8::Local<v8::String> sAccess10 = Nan::New("depthBiasClamp").ToLocalChecked();
+    v8::Local<v8::String> sAccess11 = Nan::New("depthBiasSlopeFactor").ToLocalChecked();
+    v8::Local<v8::String> sAccess12 = Nan::New("lineWidth").ToLocalChecked();
+
     _VkPipelineRasterizationStateCreateInfo();
     ~_VkPipelineRasterizationStateCreateInfo();
 

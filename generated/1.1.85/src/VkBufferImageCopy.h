@@ -16,6 +16,7 @@ class _VkBufferImageCopy: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(GetbufferOffset);
     static NAN_SETTER(SetbufferOffset);
@@ -46,6 +47,13 @@ class _VkBufferImageCopy: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("bufferOffset").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("bufferRowLength").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("bufferImageHeight").ToLocalChecked();
+    v8::Local<v8::String> sAccess3 = Nan::New("imageSubresource").ToLocalChecked();
+    v8::Local<v8::String> sAccess4 = Nan::New("imageOffset").ToLocalChecked();
+    v8::Local<v8::String> sAccess5 = Nan::New("imageExtent").ToLocalChecked();
+
     _VkBufferImageCopy();
     ~_VkBufferImageCopy();
 

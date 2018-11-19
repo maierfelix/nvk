@@ -16,6 +16,7 @@ class _VkPhysicalDeviceProperties: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(GetapiVersion);
     static NAN_GETTER(GetdriverVersion);
@@ -38,6 +39,16 @@ class _VkPhysicalDeviceProperties: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("apiVersion").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("driverVersion").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("vendorID").ToLocalChecked();
+    v8::Local<v8::String> sAccess3 = Nan::New("deviceID").ToLocalChecked();
+    v8::Local<v8::String> sAccess4 = Nan::New("deviceType").ToLocalChecked();
+    v8::Local<v8::String> sAccess5 = Nan::New("deviceName").ToLocalChecked();
+    v8::Local<v8::String> sAccess6 = Nan::New("pipelineCacheUUID").ToLocalChecked();
+    v8::Local<v8::String> sAccess7 = Nan::New("limits").ToLocalChecked();
+    v8::Local<v8::String> sAccess8 = Nan::New("sparseProperties").ToLocalChecked();
+
     _VkPhysicalDeviceProperties();
     ~_VkPhysicalDeviceProperties();
 

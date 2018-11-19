@@ -28,6 +28,7 @@ void _VkPhysicalDeviceMemoryProperties::Initialize(Nan::ADDON_REGISTER_FUNCTION_
 
   // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  Nan::SetPrototypeMethod(ctor, "flush", flush);
   
   SetPrototypeAccessor(proto, Nan::New("memoryTypeCount").ToLocalChecked(), GetmemoryTypeCount, nullptr, ctor);
   SetPrototypeAccessor(proto, Nan::New("memoryTypes").ToLocalChecked(), GetmemoryTypes, nullptr, ctor);
@@ -46,6 +47,11 @@ NAN_METHOD(_VkPhysicalDeviceMemoryProperties::New) {
     Nan::ThrowError("VkPhysicalDeviceMemoryProperties constructor cannot be invoked without 'new'");
   }
 };
+
+NAN_METHOD(_VkPhysicalDeviceMemoryProperties::flush) {
+  _VkPhysicalDeviceMemoryProperties *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceMemoryProperties>(info.This());
+  
+}
 
 // memoryTypeCount
 NAN_GETTER(_VkPhysicalDeviceMemoryProperties::GetmemoryTypeCount) {

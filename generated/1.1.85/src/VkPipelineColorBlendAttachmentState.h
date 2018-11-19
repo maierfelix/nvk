@@ -16,6 +16,7 @@ class _VkPipelineColorBlendAttachmentState: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(GetblendEnable);
     static NAN_SETTER(SetblendEnable);
@@ -49,6 +50,15 @@ class _VkPipelineColorBlendAttachmentState: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("blendEnable").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("srcColorBlendFactor").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("dstColorBlendFactor").ToLocalChecked();
+    v8::Local<v8::String> sAccess3 = Nan::New("colorBlendOp").ToLocalChecked();
+    v8::Local<v8::String> sAccess4 = Nan::New("srcAlphaBlendFactor").ToLocalChecked();
+    v8::Local<v8::String> sAccess5 = Nan::New("dstAlphaBlendFactor").ToLocalChecked();
+    v8::Local<v8::String> sAccess6 = Nan::New("alphaBlendOp").ToLocalChecked();
+    v8::Local<v8::String> sAccess7 = Nan::New("colorWriteMask").ToLocalChecked();
+
     _VkPipelineColorBlendAttachmentState();
     ~_VkPipelineColorBlendAttachmentState();
 

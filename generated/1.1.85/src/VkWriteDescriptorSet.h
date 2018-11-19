@@ -16,6 +16,7 @@ class _VkWriteDescriptorSet: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -60,6 +61,17 @@ class _VkWriteDescriptorSet: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("dstSet").ToLocalChecked();
+    v8::Local<v8::String> sAccess3 = Nan::New("dstBinding").ToLocalChecked();
+    v8::Local<v8::String> sAccess4 = Nan::New("dstArrayElement").ToLocalChecked();
+    v8::Local<v8::String> sAccess5 = Nan::New("descriptorCount").ToLocalChecked();
+    v8::Local<v8::String> sAccess6 = Nan::New("descriptorType").ToLocalChecked();
+    v8::Local<v8::String> sAccess7 = Nan::New("pImageInfo").ToLocalChecked();
+    v8::Local<v8::String> sAccess8 = Nan::New("pBufferInfo").ToLocalChecked();
+    v8::Local<v8::String> sAccess9 = Nan::New("pTexelBufferView").ToLocalChecked();
+
     _VkWriteDescriptorSet();
     ~_VkWriteDescriptorSet();
 

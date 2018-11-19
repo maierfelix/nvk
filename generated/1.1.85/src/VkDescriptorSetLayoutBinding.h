@@ -16,6 +16,7 @@ class _VkDescriptorSetLayoutBinding: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(Getbinding);
     static NAN_SETTER(Setbinding);
@@ -41,6 +42,12 @@ class _VkDescriptorSetLayoutBinding: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("binding").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("descriptorType").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("descriptorCount").ToLocalChecked();
+    v8::Local<v8::String> sAccess3 = Nan::New("stageFlags").ToLocalChecked();
+    v8::Local<v8::String> sAccess4 = Nan::New("pImmutableSamplers").ToLocalChecked();
+
     _VkDescriptorSetLayoutBinding();
     ~_VkDescriptorSetLayoutBinding();
 

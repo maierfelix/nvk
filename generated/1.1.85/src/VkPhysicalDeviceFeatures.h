@@ -16,6 +16,7 @@ class _VkPhysicalDeviceFeatures: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
+    static NAN_METHOD(flush);
     // #accessors
     static NAN_GETTER(GetrobustBufferAccess);
     static NAN_SETTER(SetrobustBufferAccess);
@@ -190,6 +191,62 @@ class _VkPhysicalDeviceFeatures: public Nan::ObjectWrap {
     static void Initialize(v8::Local<v8::Object> exports);
 
   private:
+    v8::Local<v8::String> sAccess0 = Nan::New("robustBufferAccess").ToLocalChecked();
+    v8::Local<v8::String> sAccess1 = Nan::New("fullDrawIndexUint32").ToLocalChecked();
+    v8::Local<v8::String> sAccess2 = Nan::New("imageCubeArray").ToLocalChecked();
+    v8::Local<v8::String> sAccess3 = Nan::New("independentBlend").ToLocalChecked();
+    v8::Local<v8::String> sAccess4 = Nan::New("geometryShader").ToLocalChecked();
+    v8::Local<v8::String> sAccess5 = Nan::New("tessellationShader").ToLocalChecked();
+    v8::Local<v8::String> sAccess6 = Nan::New("sampleRateShading").ToLocalChecked();
+    v8::Local<v8::String> sAccess7 = Nan::New("dualSrcBlend").ToLocalChecked();
+    v8::Local<v8::String> sAccess8 = Nan::New("logicOp").ToLocalChecked();
+    v8::Local<v8::String> sAccess9 = Nan::New("multiDrawIndirect").ToLocalChecked();
+    v8::Local<v8::String> sAccess10 = Nan::New("drawIndirectFirstInstance").ToLocalChecked();
+    v8::Local<v8::String> sAccess11 = Nan::New("depthClamp").ToLocalChecked();
+    v8::Local<v8::String> sAccess12 = Nan::New("depthBiasClamp").ToLocalChecked();
+    v8::Local<v8::String> sAccess13 = Nan::New("fillModeNonSolid").ToLocalChecked();
+    v8::Local<v8::String> sAccess14 = Nan::New("depthBounds").ToLocalChecked();
+    v8::Local<v8::String> sAccess15 = Nan::New("wideLines").ToLocalChecked();
+    v8::Local<v8::String> sAccess16 = Nan::New("largePoints").ToLocalChecked();
+    v8::Local<v8::String> sAccess17 = Nan::New("alphaToOne").ToLocalChecked();
+    v8::Local<v8::String> sAccess18 = Nan::New("multiViewport").ToLocalChecked();
+    v8::Local<v8::String> sAccess19 = Nan::New("samplerAnisotropy").ToLocalChecked();
+    v8::Local<v8::String> sAccess20 = Nan::New("textureCompressionETC2").ToLocalChecked();
+    v8::Local<v8::String> sAccess21 = Nan::New("textureCompressionASTC_LDR").ToLocalChecked();
+    v8::Local<v8::String> sAccess22 = Nan::New("textureCompressionBC").ToLocalChecked();
+    v8::Local<v8::String> sAccess23 = Nan::New("occlusionQueryPrecise").ToLocalChecked();
+    v8::Local<v8::String> sAccess24 = Nan::New("pipelineStatisticsQuery").ToLocalChecked();
+    v8::Local<v8::String> sAccess25 = Nan::New("vertexPipelineStoresAndAtomics").ToLocalChecked();
+    v8::Local<v8::String> sAccess26 = Nan::New("fragmentStoresAndAtomics").ToLocalChecked();
+    v8::Local<v8::String> sAccess27 = Nan::New("shaderTessellationAndGeometryPointSize").ToLocalChecked();
+    v8::Local<v8::String> sAccess28 = Nan::New("shaderImageGatherExtended").ToLocalChecked();
+    v8::Local<v8::String> sAccess29 = Nan::New("shaderStorageImageExtendedFormats").ToLocalChecked();
+    v8::Local<v8::String> sAccess30 = Nan::New("shaderStorageImageMultisample").ToLocalChecked();
+    v8::Local<v8::String> sAccess31 = Nan::New("shaderStorageImageReadWithoutFormat").ToLocalChecked();
+    v8::Local<v8::String> sAccess32 = Nan::New("shaderStorageImageWriteWithoutFormat").ToLocalChecked();
+    v8::Local<v8::String> sAccess33 = Nan::New("shaderUniformBufferArrayDynamicIndexing").ToLocalChecked();
+    v8::Local<v8::String> sAccess34 = Nan::New("shaderSampledImageArrayDynamicIndexing").ToLocalChecked();
+    v8::Local<v8::String> sAccess35 = Nan::New("shaderStorageBufferArrayDynamicIndexing").ToLocalChecked();
+    v8::Local<v8::String> sAccess36 = Nan::New("shaderStorageImageArrayDynamicIndexing").ToLocalChecked();
+    v8::Local<v8::String> sAccess37 = Nan::New("shaderClipDistance").ToLocalChecked();
+    v8::Local<v8::String> sAccess38 = Nan::New("shaderCullDistance").ToLocalChecked();
+    v8::Local<v8::String> sAccess39 = Nan::New("shaderFloat64").ToLocalChecked();
+    v8::Local<v8::String> sAccess40 = Nan::New("shaderInt64").ToLocalChecked();
+    v8::Local<v8::String> sAccess41 = Nan::New("shaderInt16").ToLocalChecked();
+    v8::Local<v8::String> sAccess42 = Nan::New("shaderResourceResidency").ToLocalChecked();
+    v8::Local<v8::String> sAccess43 = Nan::New("shaderResourceMinLod").ToLocalChecked();
+    v8::Local<v8::String> sAccess44 = Nan::New("sparseBinding").ToLocalChecked();
+    v8::Local<v8::String> sAccess45 = Nan::New("sparseResidencyBuffer").ToLocalChecked();
+    v8::Local<v8::String> sAccess46 = Nan::New("sparseResidencyImage2D").ToLocalChecked();
+    v8::Local<v8::String> sAccess47 = Nan::New("sparseResidencyImage3D").ToLocalChecked();
+    v8::Local<v8::String> sAccess48 = Nan::New("sparseResidency2Samples").ToLocalChecked();
+    v8::Local<v8::String> sAccess49 = Nan::New("sparseResidency4Samples").ToLocalChecked();
+    v8::Local<v8::String> sAccess50 = Nan::New("sparseResidency8Samples").ToLocalChecked();
+    v8::Local<v8::String> sAccess51 = Nan::New("sparseResidency16Samples").ToLocalChecked();
+    v8::Local<v8::String> sAccess52 = Nan::New("sparseResidencyAliased").ToLocalChecked();
+    v8::Local<v8::String> sAccess53 = Nan::New("variableMultisampleRate").ToLocalChecked();
+    v8::Local<v8::String> sAccess54 = Nan::New("inheritedQueries").ToLocalChecked();
+
     _VkPhysicalDeviceFeatures();
     ~_VkPhysicalDeviceFeatures();
 
