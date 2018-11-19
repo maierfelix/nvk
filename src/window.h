@@ -423,101 +423,121 @@ NAN_SETTER(VulkanWindow::Setheight) {
 // onresize
 NAN_GETTER(VulkanWindow::Getonresize) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  info.GetReturnValue().Set(Nan::New<v8::Function>(self->onresize));
+  if (self->onresize.IsEmpty()) info.GetReturnValue().SetNull();
+  else info.GetReturnValue().Set(Nan::New<v8::Function>(self->onresize));
 }
 NAN_SETTER(VulkanWindow::Setonresize) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  self->onresize = Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>>(value.As<v8::Function>());
+  if (value->IsFunction()) self->onresize.Reset<v8::Function>(value.As<v8::Function>());
+  else self->onresize.Reset();
 }
 
 // onfocus
 NAN_GETTER(VulkanWindow::Getonfocus) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  info.GetReturnValue().Set(Nan::New<v8::Function>(self->onfocus));
+  if (self->onfocus.IsEmpty()) info.GetReturnValue().SetNull();
+  else info.GetReturnValue().Set(Nan::New<v8::Function>(self->onfocus));
 }
 NAN_SETTER(VulkanWindow::Setonfocus) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  self->onfocus = Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>>(value.As<v8::Function>());
+  if (value->IsFunction()) self->onfocus.Reset<v8::Function>(value.As<v8::Function>());
+  else self->onfocus.Reset();
 }
 
 // onclose
 NAN_GETTER(VulkanWindow::Getonclose) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  info.GetReturnValue().Set(Nan::New<v8::Function>(self->onclose));
+  if (self->onclose.IsEmpty()) info.GetReturnValue().SetNull();
+  else info.GetReturnValue().Set(Nan::New<v8::Function>(self->onclose));
 }
 NAN_SETTER(VulkanWindow::Setonclose) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  self->onclose = Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>>(value.As<v8::Function>());
+  if (value->IsFunction()) self->onclose.Reset<v8::Function>(value.As<v8::Function>());
+  else self->onclose.Reset();
 }
 
 // onkeydown
 NAN_GETTER(VulkanWindow::Getonkeydown) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  info.GetReturnValue().Set(Nan::New<v8::Function>(self->onkeydown));
+  if (self->onkeydown.IsEmpty()) info.GetReturnValue().SetNull();
+  else info.GetReturnValue().Set(Nan::New<v8::Function>(self->onkeydown));
 }
 NAN_SETTER(VulkanWindow::Setonkeydown) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  self->onkeydown = Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>>(value.As<v8::Function>());
+  if (value->IsFunction()) self->onkeydown.Reset<v8::Function>(value.As<v8::Function>());
+  else self->onkeydown.Reset();
 }
 
 // onkeyup
 NAN_GETTER(VulkanWindow::Getonkeyup) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  info.GetReturnValue().Set(Nan::New<v8::Function>(self->onkeyup));
+  if (self->onkeyup.IsEmpty()) info.GetReturnValue().SetNull();
+  else info.GetReturnValue().Set(Nan::New<v8::Function>(self->onkeyup));
 }
 NAN_SETTER(VulkanWindow::Setonkeyup) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  self->onkeyup = Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>>(value.As<v8::Function>());
+  if (value->IsFunction()) self->onkeyup.Reset<v8::Function>(value.As<v8::Function>());
+  else self->onkeyup.Reset();
 }
 
 // onmousemove
 NAN_GETTER(VulkanWindow::Getonmousemove) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  info.GetReturnValue().Set(Nan::New<v8::Function>(self->onmousemove));
+  if (self->onmousemove.IsEmpty()) info.GetReturnValue().SetNull();
+  else info.GetReturnValue().Set(Nan::New<v8::Function>(self->onmousemove));
 }
 NAN_SETTER(VulkanWindow::Setonmousemove) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  self->onmousemove = Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>>(value.As<v8::Function>());
+  if (value->IsFunction()) self->onmousemove.Reset<v8::Function>(value.As<v8::Function>());
+  else self->onmousemove.Reset();
 }
 
 // onmousewheel
 NAN_GETTER(VulkanWindow::Getonmousewheel) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  info.GetReturnValue().Set(Nan::New<v8::Function>(self->onmousewheel));
+  if (self->onmousewheel.IsEmpty()) info.GetReturnValue().SetNull();
+  else info.GetReturnValue().Set(Nan::New<v8::Function>(self->onmousewheel));
 }
 NAN_SETTER(VulkanWindow::Setonmousewheel) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  self->onmousewheel = Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>>(value.As<v8::Function>());
+  if (value->IsFunction()) self->onmousewheel.Reset<v8::Function>(value.As<v8::Function>());
+  else self->onmousewheel.Reset();
 }
 
 // onmousedown
 NAN_GETTER(VulkanWindow::Getonmousedown) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  info.GetReturnValue().Set(Nan::New<v8::Function>(self->onmousedown));
+  if (self->onmousedown.IsEmpty()) info.GetReturnValue().SetNull();
+  else info.GetReturnValue().Set(Nan::New<v8::Function>(self->onmousedown));
 }
 NAN_SETTER(VulkanWindow::Setonmousedown) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  self->onmousedown = Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>>(value.As<v8::Function>());
+  if (value->IsFunction()) self->onmousedown.Reset<v8::Function>(value.As<v8::Function>());
+  else self->onmousedown.Reset();
 }
 
 // onmouseup
 NAN_GETTER(VulkanWindow::Getonmouseup) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  info.GetReturnValue().Set(Nan::New<v8::Function>(self->onmouseup));
+  if (self->onmouseup.IsEmpty()) info.GetReturnValue().SetNull();
+  else info.GetReturnValue().Set(Nan::New<v8::Function>(self->onmouseup));
 }
 NAN_SETTER(VulkanWindow::Setonmouseup) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  self->onmouseup = Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>>(value.As<v8::Function>());
+  if (value->IsFunction()) self->onmouseup.Reset<v8::Function>(value.As<v8::Function>());
+  else self->onmouseup.Reset();
 }
 
 // ondrop
 NAN_GETTER(VulkanWindow::Getondrop) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  info.GetReturnValue().Set(Nan::New<v8::Function>(self->ondrop));
+  if (self->ondrop.IsEmpty()) info.GetReturnValue().SetNull();
+  else info.GetReturnValue().Set(Nan::New<v8::Function>(self->ondrop));
 }
 NAN_SETTER(VulkanWindow::Setondrop) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  self->ondrop = Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>>(value.As<v8::Function>());
+  if (value->IsFunction()) self->ondrop.Reset<v8::Function>(value.As<v8::Function>());
+  else self->ondrop.Reset();
 }
 
 #endif

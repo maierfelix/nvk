@@ -11,15 +11,32 @@ nunjucks.configure({ autoescape: true });
 
 let globalIncludes = [];
 
+function invalidMemberTypeError(member) {
+  return `return Nan::ThrowError("Value of member '${member.name}' has invalid type");`;
+};
+
 function genPersistentV8Array(member) {
   return `
     // js
-    if (value->IsArray() || value->IsArrayBufferView()) {
-      v8::Handle<v8::Array> arr = v8::Handle<v8::Array>::Cast(value);
-      Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> obj(arr);
-      self->${member.name} = obj;
+    if (value->IsArray()) {
+      self->${member.name}.Reset<v8::Array>(value.As<v8::Array>());
+    } else if (value->IsNull()) {
+      self->${member.name}.Reset();
     } else {
-      if (!self->${member.name}.IsEmpty()) self->${member.name}.Empty();
+      ${invalidMemberTypeError(member)}
+    }
+  `;
+};
+
+function genPersistentV8TypedArray(member) {
+  return `
+    // js
+    if (value->IsArrayBufferView()) {
+      self->${member.name}.Reset<v8::Array>(value.As<v8::Array>());
+    } else if (value->IsNull()) {
+      self->${member.name}.Reset();
+    } else {
+      ${invalidMemberTypeError(member)}
     }
   `;
 };
@@ -217,19 +234,29 @@ function processStaticArraySourceSetter(member) {
   // char array
   if (member.type === "char") {
     return `
-  Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> str(Nan::To<v8::String>(value).ToLocalChecked());
-  self->${member.name} = str;
-  strcpy(self->instance.${member.name}, copyV8String(value));`;
+  if (value->IsString()) {
+    self->${member.name}.Reset<v8::String>(value.As<v8::String>());
+    strcpy(self->instance.${member.name}, copyV8String(value));
+  }
+  else {
+    if (!self->${member.name}.IsEmpty()) {
+      free(self->instance.${member.name});
+    }
+    self->${member.name}.Reset();
+  }`;
   }
   // numeric array
   else if (member.isNumericArray) {
     return `
   ${genPersistentV8Array(member)}
   // vulkan
-  if (!(value->IsNull())) {
-    memcpy(self->instance.${member.name}, createArrayOfV8Numbers<${member.type}>(value), sizeof(${member.type}) * ${member.length});
-  } else {
+  if (value->IsArray()) {
+    std::vector<${member.type}> arr = createArrayOfV8Numbers<${member.type}>(value);
+    memcpy(self->instance.${member.name}, arr.data(), sizeof(${member.type}) * ${member.length});
+  } else if (value->IsNull()) {
     memset(&self->instance.${member.name}, 0, sizeof(${member.type}));
+  } else {
+    ${invalidMemberTypeError(member)}
   }`;
   }
   // struct array
@@ -286,10 +313,27 @@ function processSourceSetter(struct, member) {
     case "uint64_t": 
       if (member.enumType || member.bitmaskType) {
         return `
-  self->instance.${member.name} = static_cast<${member.enumType || member.bitmaskType}>(Nan::To<int32_t>(value).FromMaybe(0));`;
-      } else {
+  if (value->IsNumber()) {
+    self->instance.${member.name} = static_cast<${member.enumType || member.bitmaskType}>(Nan::To<int32_t>(value).FromMaybe(0));
+  } else {
+    ${invalidMemberTypeError(member)}
+  }`;
+      } else if (member.isBoolean) { 
         return `
-  self->instance.${member.name} = static_cast<${rawType}>(Nan::To<int64_t>(value).FromMaybe(0));`;
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.${member.name} = static_cast<${rawType}>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    ${invalidMemberTypeError(member)}
+  }`;
+      } else if (member.isNumber) {
+        return `
+  if (value->IsNumber()) {
+    self->instance.${member.name} = static_cast<${rawType}>(Nan::To<int64_t>(value).FromMaybe(0));
+  } else {
+    ${invalidMemberTypeError(member)}
+  }`;
+      } else {
+        console.warn(`Cannot handle member ${member.rawType} in source-setter`);
       }
     case "const char *":
       return `
@@ -297,8 +341,10 @@ function processSourceSetter(struct, member) {
     Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> str(Nan::To<v8::String>(value).ToLocalChecked());
     self->${member.name} = str;
     self->instance.${member.name} = copyV8String(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.${member.name} = nullptr;
+  } else {
+    ${invalidMemberTypeError(member)}
   }`;
     case "const char * const*":
       return `
@@ -306,8 +352,10 @@ function processSourceSetter(struct, member) {
   // vulkan
   if (value->IsArray()) {
     self->instance.${member.name} = createArrayOfV8Strings(value);
-  } else {
+  } else if (value->IsNull()) {
     self->instance.${member.name} = nullptr;
+  } else {
+    ${invalidMemberTypeError(member)}
   }`;
     case "float *":
     case "int32_t *":
@@ -315,14 +363,14 @@ function processSourceSetter(struct, member) {
     case "uint32_t *":
     case "uint64_t *":
       return `
-  ${genPersistentV8Array(member)}
+  ${genPersistentV8TypedArray(member)}
   ${getTypedV8Array(member)}`;
     case "const float *":
     case "const int32_t *":
     case "const uint32_t *":
     case "const uint64_t *":
       return `
-  ${genPersistentV8Array(member)}
+  ${genPersistentV8TypedArray(member)}
   ${getTypedV8Array(member)}`;
     default: {
       if (member.isStructType || member.isHandleType || rawType === "const void *") {

@@ -94,8 +94,18 @@ function getInputArrayBody(param, index) {
   let {isConstant} = param;
   let isReference = param.dereferenceCount > 0;
   if (!isReference) console.warn(`Cannot handle non-reference item in input-array-body!`);
-  out += `
-  ${param.enumType || param.baseType || param.type} ${isReference ? "*" : ""}$p${index} = nullptr;\n`;
+  // create variable
+  {
+    let varType = param.enumType || param.baseType || param.type;
+    if (param.isNumericArray && isConstant && isReference) {
+      out += `
+  std::shared_ptr<std::vector<${varType}>> $p${index} = nullptr;\n`;
+    } else {
+      out += `
+  ${varType} ${isReference ? "*" : ""}$p${index} = nullptr;\n`;
+    }
+  }
+  // fill variable
   out += `
   if (info[${index}]->IsArray()) {\n`;
   // handle
@@ -103,11 +113,7 @@ function getInputArrayBody(param, index) {
     let handle = getHandleByHandleName(param.type);
     let parentHandle = getHandleByHandleName(param.handleType);
     // handle might not be just a pointer and encodes data directly
-    if (handle.isNonDispatchable) {
-      out += `
-    $p${index} = createArrayOfV8Handles<${param.type}, _${param.type}>(info[${index}]);`;
-    // handle pointer with reference into vulkan
-    } else if (parentHandle.isNonDispatchable) {
+    if (handle.isNonDispatchable || parentHandle.isNonDispatchable) {
       out += `
     $p${index} = createArrayOfV8Handles<${param.type}, _${param.type}>(info[${index}]);`;
     // parent handle is non dispatchable..is this correct ???
@@ -133,20 +139,19 @@ function getInputArrayBody(param, index) {
     ${param.enumRawType} arr${index} = new ${param.enumType}[array->Length()];
     $p${index} = arr${index};`;
   }
-  // basetypes
-  else if (param.isNumericArray && param.baseType && isConstant && isReference) {
-    out += `
-    $p${index} = createArrayOfV8Numbers<${param.baseType}>(info[${index}]);`;
-  }
   // numbers
   else if (param.isNumericArray && isConstant && isReference) {
+    let type = param.baseType || param.type;
     out += `
-    $p${index} = createArrayOfV8Numbers<${param.type}>(info[${index}]);`;
+    std::vector<${type}> data = createArrayOfV8Numbers<${type}>(info[${index}]);
+    $p${index} = std::make_shared<std::vector<${type}>>(data);`;
   }
   else {
     console.warn(`Cannot handle param ${rawType} in input-array-body!`);
   }
   out += `
+  } else if (!info[${index}]->IsNull()) {
+    return Nan::ThrowError("Invalid type for argument ${index + 1} '${param.name}'");
   }\n`;
   return out;
 };
@@ -258,6 +263,13 @@ function getCallBodyInner(call) {
       out += `    nullptr${addComma}`;
       return;
     }
+    else if (
+      param.dereferenceCount > 0 &&
+      param.isNumericArray &&
+      param.isConstant
+    ) {
+      out += `    $p${index} ? $p${index}.get()->data()${addComma} : nullptr`;
+    }
     // if handle is null then use VK_NULL_HANDLE
     else if (
       !param.isConstant &&
@@ -270,7 +282,7 @@ function getCallBodyInner(call) {
     ) out += `    *$p${index}${addComma}`;
     else if (
       param.dereferenceCount > 0 &&
-      !(param.isStructType || param.isHandleType || param.enumType || param.isNumericArray)
+      !(param.isStructType || param.isHandleType || param.enumType)
     ) out += `    &$p${index}${addComma}`;
     else {
       out += `    $p${index}${addComma}`;
