@@ -12,7 +12,6 @@ class _{{ struct_name }}: public Nan::ObjectWrap {
   public:
     // #methods
     static NAN_METHOD(New);
-    static NAN_METHOD(flush);
     // #accessors
     {%- for member in members %}
     {%- if ignoreableMember(member) != true -%}
@@ -28,12 +27,9 @@ class _{{ struct_name }}: public Nan::ObjectWrap {
 
     static Nan::Persistent<v8::FunctionTemplate> constructor;
     static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
 
   private:
-
-    {%- for member in members %}
-    v8::Local<v8::String> sAccess{{ loop.index0 }} = Nan::New("{{ member.name }}").ToLocalChecked();
-    {%- endfor %}
 
     _{{ struct_name }}();
     ~_{{ struct_name }}();

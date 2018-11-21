@@ -100,7 +100,12 @@ function getInputArrayBody(param, index) {
     if (param.isNumericArray && isConstant && isReference) {
       out += `
   std::shared_ptr<std::vector<${varType}>> $p${index} = nullptr;\n`;
-    } else {
+    }
+    else if (param.isArray && (param.isHandleType || param.isStructType)) {
+      out += `
+  std::shared_ptr<std::vector<${varType}>> $p${index} = nullptr;\n`;
+    }
+    else {
       out += `
   ${varType} ${isReference ? "*" : ""}$p${index} = nullptr;\n`;
     }
@@ -108,29 +113,41 @@ function getInputArrayBody(param, index) {
   // fill variable
   out += `
   if (info[${index}]->IsArray()) {\n`;
+  // auto flush structs
+  if (param.isStructType) {
+    out += `
+  {
+    v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[${index}]);
+    for (unsigned int ii = 0; ii < array->Length(); ++ii) {
+      v8::Local<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
+      _${param.type}* result = Nan::ObjectWrap::Unwrap<_${param.type}>(Nan::To<v8::Object>(item).ToLocalChecked());
+      if (!result->flush()) return;
+    };
+  }`;
+  }
   // handle
   if (param.isHandleType) {
-    let handle = getHandleByHandleName(param.type);
-    let parentHandle = getHandleByHandleName(param.handleType);
-    // handle might not be just a pointer and encodes data directly
-    if (handle.isNonDispatchable || parentHandle.isNonDispatchable) {
-      out += `
-    $p${index} = createArrayOfV8Handles<${param.type}, _${param.type}>(info[${index}]);`;
-    // parent handle is non dispatchable..is this correct ???
-    } else {
-      out += `
-    $p${index} = createArrayOfV8Objects<${param.type}, _${param.type}>(info[${index}]);`;
-    }
-  }
-  // struct which gets filled by vulkan
-  else if (param.isStructType && !isConstant) {
     out += `
-    $p${index} = copyArrayOfV8Objects<${param.type}, _${param.type}>(info[${index}]);`;
+    v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[${index}]);
+    std::vector<${param.type}> data(array->Length());
+    for (unsigned int ii = 0; ii < array->Length(); ++ii) {
+      v8::Local<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
+      _${param.type}* result = Nan::ObjectWrap::Unwrap<_${param.type}>(Nan::To<v8::Object>(item).ToLocalChecked());
+      data[ii] = result->instance;
+    };
+    $p${index} = std::make_shared<std::vector<${param.type}>>(data);`;
   }
-  // just a struct
-  else if (param.isStructType && isConstant) {
+  // struct
+  else if (param.isStructType) {
     out += `
-    $p${index} = copyArrayOfV8Objects<${param.type}, _${param.type}>(info[${index}]);`;
+    v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[${index}]);
+    std::vector<${param.type}> data(array->Length());
+    for (unsigned int ii = 0; ii < array->Length(); ++ii) {
+      v8::Local<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
+      _${param.type}* result = Nan::ObjectWrap::Unwrap<_${param.type}>(Nan::To<v8::Object>(item).ToLocalChecked());
+      data[ii] = result->instance;
+    };
+    $p${index} = std::make_shared<std::vector<${param.type}>>(data);`;
   }
   // enum
   else if (param.enumType) {
@@ -240,6 +257,7 @@ function getCallBodyBefore(call) {
   ${param.type} *$p${index};
   if (!(info[${index}]->IsNull())) {
     obj${index} = Nan::ObjectWrap::Unwrap<_${param.type}>(Nan::To<v8::Object>(info[${index}]).ToLocalChecked());
+    ${ param.isStructType ? `if (!obj${index}->flush()) return;` : `` }
     $p${index} = &obj${index}->instance;
   } else {
     $p${index} = ${deinitialize};
@@ -268,7 +286,13 @@ function getCallBodyInner(call) {
       param.isNumericArray &&
       param.isConstant
     ) {
-      out += `    $p${index} ? $p${index}.get()->data()${addComma} : nullptr`;
+      out += `    $p${index} ? $p${index}.get()->data() : nullptr${addComma}`;
+    }
+    else if (
+      param.isArray &&
+      (param.isHandleType || param.isStructType)
+    ) {
+      out += `    $p${index} ? $p${index}.get()->data() : nullptr${addComma}`;
     }
     // if handle is null then use VK_NULL_HANDLE
     else if (
@@ -306,13 +330,14 @@ function getCallBodyAfter(params) {
       let memberCopyInstructions = getMemberCopyInstructions(struct);
       out.push(`
   if (info[${pIndex}]->IsArray()) {
+    ${param.type}* $pdata = $p${pIndex}.get()->data();
     v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[${pIndex}]);
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(item).ToLocalChecked();
       _${param.type}* result = Nan::ObjectWrap::Unwrap<_${param.type}>(obj);
       ${param.type} *instance = &result->instance;
-      ${param.type} *copy = &$p${pIndex}[ii];
+      ${param.type} *copy = &$pdata[ii];
       ${memberCopyInstructions}
     };
   }`);
@@ -335,20 +360,16 @@ function getCallBodyAfter(params) {
     }
     // array of handles
     else if (param.isArray && param.isHandleType) {
-      let handle = getHandleByHandleName(param.type);
-      let parentHandle = getHandleByHandleName(param.handleType);
-      if (handle.isNonDispatchable || parentHandle.isNonDispatchable) {
-        out.push(`
+      out.push(`
   if (info[${pIndex}]->IsArray()) {
+    ${param.type}* $pdata = $p${pIndex}.get()->data();
     v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[${pIndex}]);
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
       _${param.type}* target = Nan::ObjectWrap::Unwrap<_${param.type}>(Nan::To<v8::Object>(item).ToLocalChecked());
-      target->instance = $p${pIndex}[ii];
+      target->instance = $pdata[ii];
     };
-    delete[] $p${pIndex};
   }`);
-      }
     }
     else if (param.isStructType) {
       // no reflection needed
