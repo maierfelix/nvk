@@ -84,7 +84,11 @@ bool _VkSubmitInfo::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkSemaphore::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkSemaphore]' for 'VkSubmitInfo.pWaitSemaphores'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSemaphore]' for 'VkSubmitInfo.pWaitSemaphores' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkSemaphore* result = Nan::ObjectWrap::Unwrap<_VkSemaphore>(obj);
@@ -106,7 +110,11 @@ bool _VkSubmitInfo::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkCommandBuffer]' for 'VkSubmitInfo.pCommandBuffers'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkCommandBuffer]' for 'VkSubmitInfo.pCommandBuffers' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkCommandBuffer* result = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
@@ -128,7 +136,11 @@ bool _VkSubmitInfo::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkSemaphore::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkSemaphore]' for 'VkSubmitInfo.pSignalSemaphores'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSemaphore]' for 'VkSubmitInfo.pSignalSemaphores' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkSemaphore* result = Nan::ObjectWrap::Unwrap<_VkSemaphore>(obj);
@@ -183,7 +195,12 @@ NAN_GETTER(_VkSubmitInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubmitInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSubmitInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkSubmitInfo::GetpNext) {
@@ -199,7 +216,12 @@ NAN_GETTER(_VkSubmitInfo::GetwaitSemaphoreCount) {
   if (value->IsNumber()) {
     self->instance.waitSemaphoreCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubmitInfo.waitSemaphoreCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSubmitInfo.waitSemaphoreCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pWaitSemaphores
 NAN_GETTER(_VkSubmitInfo::GetpWaitSemaphores) {
@@ -220,7 +242,12 @@ NAN_GETTER(_VkSubmitInfo::GetpWaitSemaphores) {
       self->pWaitSemaphores.Reset();
       self->instance.pWaitSemaphores = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkSemaphore]' for 'VkSubmitInfo.pWaitSemaphores'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSemaphore]' for 'VkSubmitInfo.pWaitSemaphores' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -229,7 +256,12 @@ NAN_GETTER(_VkSubmitInfo::GetpWaitSemaphores) {
   } else if (value->IsNull()) {
     self->instance.pWaitSemaphores = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkSemaphore]' for 'VkSubmitInfo.pWaitSemaphores'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSemaphore]' for 'VkSubmitInfo.pWaitSemaphores' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pWaitDstStageMask
 NAN_GETTER(_VkSubmitInfo::GetpWaitDstStageMask) {
@@ -248,12 +280,22 @@ NAN_GETTER(_VkSubmitInfo::GetpWaitDstStageMask) {
       if (value->IsInt32Array()) {
         self->pWaitDstStageMask.Reset<v8::Array>(value.As<v8::Array>());
       } else {
-        return Nan::ThrowTypeError("Expected 'Int32Array' for 'VkSubmitInfo.pWaitDstStageMask'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Int32Array' for 'VkSubmitInfo.pWaitDstStageMask' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+        return;
       }
     } else if (value->IsNull()) {
       self->pWaitDstStageMask.Reset();
     } else {
-      return Nan::ThrowTypeError("Expected 'Int32Array' for 'VkSubmitInfo.pWaitDstStageMask'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Int32Array' for 'VkSubmitInfo.pWaitDstStageMask' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   
@@ -272,7 +314,12 @@ NAN_GETTER(_VkSubmitInfo::GetcommandBufferCount) {
   if (value->IsNumber()) {
     self->instance.commandBufferCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubmitInfo.commandBufferCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSubmitInfo.commandBufferCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pCommandBuffers
 NAN_GETTER(_VkSubmitInfo::GetpCommandBuffers) {
@@ -293,7 +340,12 @@ NAN_GETTER(_VkSubmitInfo::GetpCommandBuffers) {
       self->pCommandBuffers.Reset();
       self->instance.pCommandBuffers = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkCommandBuffer]' for 'VkSubmitInfo.pCommandBuffers'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkCommandBuffer]' for 'VkSubmitInfo.pCommandBuffers' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -302,7 +354,12 @@ NAN_GETTER(_VkSubmitInfo::GetpCommandBuffers) {
   } else if (value->IsNull()) {
     self->instance.pCommandBuffers = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkCommandBuffer]' for 'VkSubmitInfo.pCommandBuffers'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkCommandBuffer]' for 'VkSubmitInfo.pCommandBuffers' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// signalSemaphoreCount
 NAN_GETTER(_VkSubmitInfo::GetsignalSemaphoreCount) {
@@ -313,7 +370,12 @@ NAN_GETTER(_VkSubmitInfo::GetsignalSemaphoreCount) {
   if (value->IsNumber()) {
     self->instance.signalSemaphoreCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubmitInfo.signalSemaphoreCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSubmitInfo.signalSemaphoreCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pSignalSemaphores
 NAN_GETTER(_VkSubmitInfo::GetpSignalSemaphores) {
@@ -334,7 +396,12 @@ NAN_GETTER(_VkSubmitInfo::GetpSignalSemaphores) {
       self->pSignalSemaphores.Reset();
       self->instance.pSignalSemaphores = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkSemaphore]' for 'VkSubmitInfo.pSignalSemaphores'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSemaphore]' for 'VkSubmitInfo.pSignalSemaphores' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -343,6 +410,11 @@ NAN_GETTER(_VkSubmitInfo::GetpSignalSemaphores) {
   } else if (value->IsNull()) {
     self->instance.pSignalSemaphores = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkSemaphore]' for 'VkSubmitInfo.pSignalSemaphores'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSemaphore]' for 'VkSubmitInfo.pSignalSemaphores' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

@@ -109,7 +109,12 @@ NAN_GETTER(_VkImageViewCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageViewCreateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageViewCreateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkImageViewCreateInfo::GetpNext) {
@@ -125,7 +130,12 @@ NAN_GETTER(_VkImageViewCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkImageViewCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageViewCreateInfo.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageViewCreateInfo.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// image
 NAN_GETTER(_VkImageViewCreateInfo::Getimage) {
@@ -147,13 +157,23 @@ NAN_GETTER(_VkImageViewCreateInfo::Getimage) {
       ;
       self->instance.image = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkImage]' for 'VkImageViewCreateInfo.image'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkImage]' for 'VkImageViewCreateInfo.image' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->image.Reset();
     self->instance.image = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkImage]' for 'VkImageViewCreateInfo.image'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkImage]' for 'VkImageViewCreateInfo.image' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// viewType
 NAN_GETTER(_VkImageViewCreateInfo::GetviewType) {
@@ -164,7 +184,12 @@ NAN_GETTER(_VkImageViewCreateInfo::GetviewType) {
   if (value->IsNumber()) {
     self->instance.viewType = static_cast<VkImageViewType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageViewCreateInfo.viewType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageViewCreateInfo.viewType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// format
 NAN_GETTER(_VkImageViewCreateInfo::Getformat) {
@@ -175,7 +200,12 @@ NAN_GETTER(_VkImageViewCreateInfo::Getformat) {
   if (value->IsNumber()) {
     self->instance.format = static_cast<VkFormat>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageViewCreateInfo.format'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageViewCreateInfo.format' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// components
 NAN_GETTER(_VkImageViewCreateInfo::Getcomponents) {
@@ -197,13 +227,23 @@ NAN_GETTER(_VkImageViewCreateInfo::Getcomponents) {
       inst->flush();
       self->instance.components = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkComponentMapping]' for 'VkImageViewCreateInfo.components'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkComponentMapping]' for 'VkImageViewCreateInfo.components' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->components.Reset();
     memset(&self->instance.components, 0, sizeof(VkComponentMapping));
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkComponentMapping]' for 'VkImageViewCreateInfo.components'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkComponentMapping]' for 'VkImageViewCreateInfo.components' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// subresourceRange
 NAN_GETTER(_VkImageViewCreateInfo::GetsubresourceRange) {
@@ -225,12 +265,22 @@ NAN_GETTER(_VkImageViewCreateInfo::GetsubresourceRange) {
       inst->flush();
       self->instance.subresourceRange = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkImageSubresourceRange]' for 'VkImageViewCreateInfo.subresourceRange'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkImageSubresourceRange]' for 'VkImageViewCreateInfo.subresourceRange' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->subresourceRange.Reset();
     memset(&self->instance.subresourceRange, 0, sizeof(VkImageSubresourceRange));
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkImageSubresourceRange]' for 'VkImageViewCreateInfo.subresourceRange'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkImageSubresourceRange]' for 'VkImageViewCreateInfo.subresourceRange' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

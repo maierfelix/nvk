@@ -125,7 +125,12 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetpNext) {
@@ -141,7 +146,12 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkPipelineDepthStencilStateCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// depthTestEnable
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetdepthTestEnable) {
@@ -152,7 +162,12 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetdepthTestEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.depthTestEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.depthTestEnable'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.depthTestEnable' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// depthWriteEnable
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetdepthWriteEnable) {
@@ -163,7 +178,12 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetdepthWriteEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.depthWriteEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.depthWriteEnable'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.depthWriteEnable' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// depthCompareOp
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetdepthCompareOp) {
@@ -174,7 +194,12 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetdepthCompareOp) {
   if (value->IsNumber()) {
     self->instance.depthCompareOp = static_cast<VkCompareOp>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.depthCompareOp'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.depthCompareOp' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// depthBoundsTestEnable
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetdepthBoundsTestEnable) {
@@ -185,7 +210,12 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetdepthBoundsTestEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.depthBoundsTestEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.depthBoundsTestEnable'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.depthBoundsTestEnable' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// stencilTestEnable
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetstencilTestEnable) {
@@ -196,7 +226,12 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetstencilTestEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.stencilTestEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.stencilTestEnable'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.stencilTestEnable' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// front
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::Getfront) {
@@ -218,13 +253,23 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::Getfront) {
       inst->flush();
       self->instance.front = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkStencilOpState]' for 'VkPipelineDepthStencilStateCreateInfo.front'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkStencilOpState]' for 'VkPipelineDepthStencilStateCreateInfo.front' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->front.Reset();
     memset(&self->instance.front, 0, sizeof(VkStencilOpState));
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkStencilOpState]' for 'VkPipelineDepthStencilStateCreateInfo.front'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkStencilOpState]' for 'VkPipelineDepthStencilStateCreateInfo.front' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// back
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::Getback) {
@@ -246,13 +291,23 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::Getback) {
       inst->flush();
       self->instance.back = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkStencilOpState]' for 'VkPipelineDepthStencilStateCreateInfo.back'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkStencilOpState]' for 'VkPipelineDepthStencilStateCreateInfo.back' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->back.Reset();
     memset(&self->instance.back, 0, sizeof(VkStencilOpState));
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkStencilOpState]' for 'VkPipelineDepthStencilStateCreateInfo.back'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkStencilOpState]' for 'VkPipelineDepthStencilStateCreateInfo.back' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// minDepthBounds
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetminDepthBounds) {
@@ -263,7 +318,12 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetminDepthBounds) {
   if (value->IsNumber()) {
     self->instance.minDepthBounds = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.minDepthBounds'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.minDepthBounds' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// maxDepthBounds
 NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetmaxDepthBounds) {
@@ -274,6 +334,11 @@ NAN_GETTER(_VkPipelineDepthStencilStateCreateInfo::GetmaxDepthBounds) {
   if (value->IsNumber()) {
     self->instance.maxDepthBounds = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.maxDepthBounds'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineDepthStencilStateCreateInfo.maxDepthBounds' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

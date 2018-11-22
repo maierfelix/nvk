@@ -85,7 +85,12 @@ NAN_GETTER(_VkCommandBufferAllocateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandBufferAllocateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkCommandBufferAllocateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkCommandBufferAllocateInfo::GetpNext) {
@@ -112,13 +117,23 @@ NAN_GETTER(_VkCommandBufferAllocateInfo::GetcommandPool) {
       ;
       self->instance.commandPool = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkCommandPool]' for 'VkCommandBufferAllocateInfo.commandPool'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkCommandPool]' for 'VkCommandBufferAllocateInfo.commandPool' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->commandPool.Reset();
     self->instance.commandPool = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkCommandPool]' for 'VkCommandBufferAllocateInfo.commandPool'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkCommandPool]' for 'VkCommandBufferAllocateInfo.commandPool' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// level
 NAN_GETTER(_VkCommandBufferAllocateInfo::Getlevel) {
@@ -129,7 +144,12 @@ NAN_GETTER(_VkCommandBufferAllocateInfo::Getlevel) {
   if (value->IsNumber()) {
     self->instance.level = static_cast<VkCommandBufferLevel>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandBufferAllocateInfo.level'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkCommandBufferAllocateInfo.level' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// commandBufferCount
 NAN_GETTER(_VkCommandBufferAllocateInfo::GetcommandBufferCount) {
@@ -140,6 +160,11 @@ NAN_GETTER(_VkCommandBufferAllocateInfo::GetcommandBufferCount) {
   if (value->IsNumber()) {
     self->instance.commandBufferCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandBufferAllocateInfo.commandBufferCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkCommandBufferAllocateInfo.commandBufferCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

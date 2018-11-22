@@ -86,7 +86,12 @@ NAN_GETTER(_VkPipelineDynamicStateCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineDynamicStateCreateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineDynamicStateCreateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkPipelineDynamicStateCreateInfo::GetpNext) {
@@ -102,7 +107,12 @@ NAN_GETTER(_VkPipelineDynamicStateCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkPipelineDynamicStateCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineDynamicStateCreateInfo.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineDynamicStateCreateInfo.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// dynamicStateCount
 NAN_GETTER(_VkPipelineDynamicStateCreateInfo::GetdynamicStateCount) {
@@ -113,7 +123,12 @@ NAN_GETTER(_VkPipelineDynamicStateCreateInfo::GetdynamicStateCount) {
   if (value->IsNumber()) {
     self->instance.dynamicStateCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineDynamicStateCreateInfo.dynamicStateCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineDynamicStateCreateInfo.dynamicStateCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pDynamicStates
 NAN_GETTER(_VkPipelineDynamicStateCreateInfo::GetpDynamicStates) {
@@ -132,12 +147,22 @@ NAN_GETTER(_VkPipelineDynamicStateCreateInfo::GetpDynamicStates) {
       if (value->IsInt32Array()) {
         self->pDynamicStates.Reset<v8::Array>(value.As<v8::Array>());
       } else {
-        return Nan::ThrowTypeError("Expected 'Int32Array' for 'VkPipelineDynamicStateCreateInfo.pDynamicStates'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Int32Array' for 'VkPipelineDynamicStateCreateInfo.pDynamicStates' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+        return;
       }
     } else if (value->IsNull()) {
       self->pDynamicStates.Reset();
     } else {
-      return Nan::ThrowTypeError("Expected 'Int32Array' for 'VkPipelineDynamicStateCreateInfo.pDynamicStates'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Int32Array' for 'VkPipelineDynamicStateCreateInfo.pDynamicStates' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   

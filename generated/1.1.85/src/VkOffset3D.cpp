@@ -76,7 +76,12 @@ NAN_GETTER(_VkOffset3D::Getx) {
   if (value->IsNumber()) {
     self->instance.x = static_cast<int32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkOffset3D.x'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkOffset3D.x' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// y
 NAN_GETTER(_VkOffset3D::Gety) {
@@ -87,7 +92,12 @@ NAN_GETTER(_VkOffset3D::Gety) {
   if (value->IsNumber()) {
     self->instance.y = static_cast<int32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkOffset3D.y'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkOffset3D.y' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// z
 NAN_GETTER(_VkOffset3D::Getz) {
@@ -98,6 +108,11 @@ NAN_GETTER(_VkOffset3D::Getz) {
   if (value->IsNumber()) {
     self->instance.z = static_cast<int32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkOffset3D.z'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkOffset3D.z' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

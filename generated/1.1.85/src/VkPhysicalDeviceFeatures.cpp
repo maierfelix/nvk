@@ -284,7 +284,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetrobustBufferAccess) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.robustBufferAccess = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.robustBufferAccess'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.robustBufferAccess' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// fullDrawIndexUint32
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetfullDrawIndexUint32) {
@@ -295,7 +300,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetfullDrawIndexUint32) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.fullDrawIndexUint32 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.fullDrawIndexUint32'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.fullDrawIndexUint32' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// imageCubeArray
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetimageCubeArray) {
@@ -306,7 +316,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetimageCubeArray) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.imageCubeArray = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.imageCubeArray'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.imageCubeArray' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// independentBlend
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetindependentBlend) {
@@ -317,7 +332,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetindependentBlend) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.independentBlend = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.independentBlend'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.independentBlend' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// geometryShader
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetgeometryShader) {
@@ -328,7 +348,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetgeometryShader) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.geometryShader = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.geometryShader'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.geometryShader' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// tessellationShader
 NAN_GETTER(_VkPhysicalDeviceFeatures::GettessellationShader) {
@@ -339,7 +364,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GettessellationShader) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.tessellationShader = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.tessellationShader'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.tessellationShader' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// sampleRateShading
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsampleRateShading) {
@@ -350,7 +380,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetsampleRateShading) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.sampleRateShading = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.sampleRateShading'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.sampleRateShading' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// dualSrcBlend
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetdualSrcBlend) {
@@ -361,7 +396,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetdualSrcBlend) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.dualSrcBlend = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.dualSrcBlend'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.dualSrcBlend' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// logicOp
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetlogicOp) {
@@ -372,7 +412,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetlogicOp) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.logicOp = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.logicOp'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.logicOp' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// multiDrawIndirect
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetmultiDrawIndirect) {
@@ -383,7 +428,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetmultiDrawIndirect) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.multiDrawIndirect = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.multiDrawIndirect'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.multiDrawIndirect' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// drawIndirectFirstInstance
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetdrawIndirectFirstInstance) {
@@ -394,7 +444,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetdrawIndirectFirstInstance) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.drawIndirectFirstInstance = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.drawIndirectFirstInstance'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.drawIndirectFirstInstance' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// depthClamp
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetdepthClamp) {
@@ -405,7 +460,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetdepthClamp) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.depthClamp = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.depthClamp'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.depthClamp' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// depthBiasClamp
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetdepthBiasClamp) {
@@ -416,7 +476,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetdepthBiasClamp) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.depthBiasClamp = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.depthBiasClamp'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.depthBiasClamp' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// fillModeNonSolid
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetfillModeNonSolid) {
@@ -427,7 +492,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetfillModeNonSolid) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.fillModeNonSolid = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.fillModeNonSolid'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.fillModeNonSolid' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// depthBounds
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetdepthBounds) {
@@ -438,7 +508,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetdepthBounds) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.depthBounds = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.depthBounds'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.depthBounds' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// wideLines
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetwideLines) {
@@ -449,7 +524,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetwideLines) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.wideLines = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.wideLines'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.wideLines' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// largePoints
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetlargePoints) {
@@ -460,7 +540,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetlargePoints) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.largePoints = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.largePoints'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.largePoints' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// alphaToOne
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetalphaToOne) {
@@ -471,7 +556,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetalphaToOne) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.alphaToOne = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.alphaToOne'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.alphaToOne' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// multiViewport
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetmultiViewport) {
@@ -482,7 +572,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetmultiViewport) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.multiViewport = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.multiViewport'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.multiViewport' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// samplerAnisotropy
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsamplerAnisotropy) {
@@ -493,7 +588,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetsamplerAnisotropy) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.samplerAnisotropy = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.samplerAnisotropy'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.samplerAnisotropy' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// textureCompressionETC2
 NAN_GETTER(_VkPhysicalDeviceFeatures::GettextureCompressionETC2) {
@@ -504,7 +604,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GettextureCompressionETC2) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.textureCompressionETC2 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.textureCompressionETC2'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.textureCompressionETC2' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// textureCompressionASTC_LDR
 NAN_GETTER(_VkPhysicalDeviceFeatures::GettextureCompressionASTC_LDR) {
@@ -515,7 +620,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GettextureCompressionASTC_LDR) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.textureCompressionASTC_LDR = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.textureCompressionASTC_LDR'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.textureCompressionASTC_LDR' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// textureCompressionBC
 NAN_GETTER(_VkPhysicalDeviceFeatures::GettextureCompressionBC) {
@@ -526,7 +636,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GettextureCompressionBC) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.textureCompressionBC = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.textureCompressionBC'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.textureCompressionBC' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// occlusionQueryPrecise
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetocclusionQueryPrecise) {
@@ -537,7 +652,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetocclusionQueryPrecise) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.occlusionQueryPrecise = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.occlusionQueryPrecise'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.occlusionQueryPrecise' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pipelineStatisticsQuery
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetpipelineStatisticsQuery) {
@@ -548,7 +668,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetpipelineStatisticsQuery) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.pipelineStatisticsQuery = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.pipelineStatisticsQuery'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.pipelineStatisticsQuery' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// vertexPipelineStoresAndAtomics
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetvertexPipelineStoresAndAtomics) {
@@ -559,7 +684,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetvertexPipelineStoresAndAtomics) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.vertexPipelineStoresAndAtomics = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.vertexPipelineStoresAndAtomics'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.vertexPipelineStoresAndAtomics' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// fragmentStoresAndAtomics
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetfragmentStoresAndAtomics) {
@@ -570,7 +700,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetfragmentStoresAndAtomics) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.fragmentStoresAndAtomics = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.fragmentStoresAndAtomics'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.fragmentStoresAndAtomics' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// shaderTessellationAndGeometryPointSize
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderTessellationAndGeometryPointSize) {
@@ -581,7 +716,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderTessellationAndGeometryPointSize)
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderTessellationAndGeometryPointSize = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderTessellationAndGeometryPointSize'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderTessellationAndGeometryPointSize' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// shaderImageGatherExtended
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderImageGatherExtended) {
@@ -592,7 +732,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderImageGatherExtended) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderImageGatherExtended = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderImageGatherExtended'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderImageGatherExtended' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// shaderStorageImageExtendedFormats
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageExtendedFormats) {
@@ -603,7 +748,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageExtendedFormats) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderStorageImageExtendedFormats = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderStorageImageExtendedFormats'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderStorageImageExtendedFormats' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// shaderStorageImageMultisample
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageMultisample) {
@@ -614,7 +764,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageMultisample) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderStorageImageMultisample = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderStorageImageMultisample'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderStorageImageMultisample' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// shaderStorageImageReadWithoutFormat
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageReadWithoutFormat) {
@@ -625,7 +780,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageReadWithoutFormat) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderStorageImageReadWithoutFormat = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderStorageImageReadWithoutFormat'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderStorageImageReadWithoutFormat' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// shaderStorageImageWriteWithoutFormat
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageWriteWithoutFormat) {
@@ -636,7 +796,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageWriteWithoutFormat) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderStorageImageWriteWithoutFormat = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderStorageImageWriteWithoutFormat'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderStorageImageWriteWithoutFormat' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// shaderUniformBufferArrayDynamicIndexing
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderUniformBufferArrayDynamicIndexing) {
@@ -647,7 +812,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderUniformBufferArrayDynamicIndexing
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderUniformBufferArrayDynamicIndexing = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderUniformBufferArrayDynamicIndexing'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderUniformBufferArrayDynamicIndexing' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// shaderSampledImageArrayDynamicIndexing
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderSampledImageArrayDynamicIndexing) {
@@ -658,7 +828,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderSampledImageArrayDynamicIndexing)
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderSampledImageArrayDynamicIndexing = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderSampledImageArrayDynamicIndexing'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderSampledImageArrayDynamicIndexing' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// shaderStorageBufferArrayDynamicIndexing
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageBufferArrayDynamicIndexing) {
@@ -669,7 +844,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageBufferArrayDynamicIndexing
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderStorageBufferArrayDynamicIndexing = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderStorageBufferArrayDynamicIndexing'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderStorageBufferArrayDynamicIndexing' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// shaderStorageImageArrayDynamicIndexing
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageArrayDynamicIndexing) {
@@ -680,7 +860,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderStorageImageArrayDynamicIndexing)
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderStorageImageArrayDynamicIndexing = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderStorageImageArrayDynamicIndexing'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderStorageImageArrayDynamicIndexing' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// shaderClipDistance
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderClipDistance) {
@@ -691,7 +876,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderClipDistance) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderClipDistance = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderClipDistance'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderClipDistance' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// shaderCullDistance
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderCullDistance) {
@@ -702,7 +892,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderCullDistance) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderCullDistance = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderCullDistance'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderCullDistance' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// shaderFloat64
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderFloat64) {
@@ -713,7 +908,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderFloat64) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderFloat64 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderFloat64'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderFloat64' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// shaderInt64
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderInt64) {
@@ -724,7 +924,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderInt64) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderInt64 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderInt64'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderInt64' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// shaderInt16
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderInt16) {
@@ -735,7 +940,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderInt16) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderInt16 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderInt16'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderInt16' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// shaderResourceResidency
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderResourceResidency) {
@@ -746,7 +956,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderResourceResidency) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderResourceResidency = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderResourceResidency'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderResourceResidency' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// shaderResourceMinLod
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderResourceMinLod) {
@@ -757,7 +972,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetshaderResourceMinLod) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.shaderResourceMinLod = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderResourceMinLod'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.shaderResourceMinLod' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// sparseBinding
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseBinding) {
@@ -768,7 +988,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseBinding) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.sparseBinding = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseBinding'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseBinding' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// sparseResidencyBuffer
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidencyBuffer) {
@@ -779,7 +1004,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidencyBuffer) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.sparseResidencyBuffer = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseResidencyBuffer'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseResidencyBuffer' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// sparseResidencyImage2D
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidencyImage2D) {
@@ -790,7 +1020,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidencyImage2D) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.sparseResidencyImage2D = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseResidencyImage2D'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseResidencyImage2D' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// sparseResidencyImage3D
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidencyImage3D) {
@@ -801,7 +1036,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidencyImage3D) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.sparseResidencyImage3D = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseResidencyImage3D'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseResidencyImage3D' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// sparseResidency2Samples
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidency2Samples) {
@@ -812,7 +1052,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidency2Samples) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.sparseResidency2Samples = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseResidency2Samples'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseResidency2Samples' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// sparseResidency4Samples
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidency4Samples) {
@@ -823,7 +1068,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidency4Samples) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.sparseResidency4Samples = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseResidency4Samples'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseResidency4Samples' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// sparseResidency8Samples
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidency8Samples) {
@@ -834,7 +1084,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidency8Samples) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.sparseResidency8Samples = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseResidency8Samples'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseResidency8Samples' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// sparseResidency16Samples
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidency16Samples) {
@@ -845,7 +1100,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidency16Samples) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.sparseResidency16Samples = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseResidency16Samples'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseResidency16Samples' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// sparseResidencyAliased
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidencyAliased) {
@@ -856,7 +1116,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetsparseResidencyAliased) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.sparseResidencyAliased = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseResidencyAliased'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.sparseResidencyAliased' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// variableMultisampleRate
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetvariableMultisampleRate) {
@@ -867,7 +1132,12 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetvariableMultisampleRate) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.variableMultisampleRate = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.variableMultisampleRate'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.variableMultisampleRate' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// inheritedQueries
 NAN_GETTER(_VkPhysicalDeviceFeatures::GetinheritedQueries) {
@@ -878,6 +1148,11 @@ NAN_GETTER(_VkPhysicalDeviceFeatures::GetinheritedQueries) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.inheritedQueries = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPhysicalDeviceFeatures.inheritedQueries'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPhysicalDeviceFeatures.inheritedQueries' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

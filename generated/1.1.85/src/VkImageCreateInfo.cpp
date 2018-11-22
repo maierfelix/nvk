@@ -132,7 +132,12 @@ NAN_GETTER(_VkImageCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageCreateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageCreateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkImageCreateInfo::GetpNext) {
@@ -148,7 +153,12 @@ NAN_GETTER(_VkImageCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkImageCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageCreateInfo.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageCreateInfo.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// imageType
 NAN_GETTER(_VkImageCreateInfo::GetimageType) {
@@ -159,7 +169,12 @@ NAN_GETTER(_VkImageCreateInfo::GetimageType) {
   if (value->IsNumber()) {
     self->instance.imageType = static_cast<VkImageType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageCreateInfo.imageType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageCreateInfo.imageType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// format
 NAN_GETTER(_VkImageCreateInfo::Getformat) {
@@ -170,7 +185,12 @@ NAN_GETTER(_VkImageCreateInfo::Getformat) {
   if (value->IsNumber()) {
     self->instance.format = static_cast<VkFormat>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageCreateInfo.format'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageCreateInfo.format' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// extent
 NAN_GETTER(_VkImageCreateInfo::Getextent) {
@@ -192,13 +212,23 @@ NAN_GETTER(_VkImageCreateInfo::Getextent) {
       inst->flush();
       self->instance.extent = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkExtent3D]' for 'VkImageCreateInfo.extent'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkExtent3D]' for 'VkImageCreateInfo.extent' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->extent.Reset();
     memset(&self->instance.extent, 0, sizeof(VkExtent3D));
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkExtent3D]' for 'VkImageCreateInfo.extent'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkExtent3D]' for 'VkImageCreateInfo.extent' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// mipLevels
 NAN_GETTER(_VkImageCreateInfo::GetmipLevels) {
@@ -209,7 +239,12 @@ NAN_GETTER(_VkImageCreateInfo::GetmipLevels) {
   if (value->IsNumber()) {
     self->instance.mipLevels = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageCreateInfo.mipLevels'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageCreateInfo.mipLevels' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// arrayLayers
 NAN_GETTER(_VkImageCreateInfo::GetarrayLayers) {
@@ -220,7 +255,12 @@ NAN_GETTER(_VkImageCreateInfo::GetarrayLayers) {
   if (value->IsNumber()) {
     self->instance.arrayLayers = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageCreateInfo.arrayLayers'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageCreateInfo.arrayLayers' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// samples
 NAN_GETTER(_VkImageCreateInfo::Getsamples) {
@@ -231,7 +271,12 @@ NAN_GETTER(_VkImageCreateInfo::Getsamples) {
   if (value->IsNumber()) {
     self->instance.samples = static_cast<VkSampleCountFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageCreateInfo.samples'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageCreateInfo.samples' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// tiling
 NAN_GETTER(_VkImageCreateInfo::Gettiling) {
@@ -242,7 +287,12 @@ NAN_GETTER(_VkImageCreateInfo::Gettiling) {
   if (value->IsNumber()) {
     self->instance.tiling = static_cast<VkImageTiling>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageCreateInfo.tiling'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageCreateInfo.tiling' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// usage
 NAN_GETTER(_VkImageCreateInfo::Getusage) {
@@ -253,7 +303,12 @@ NAN_GETTER(_VkImageCreateInfo::Getusage) {
   if (value->IsNumber()) {
     self->instance.usage = static_cast<VkImageUsageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageCreateInfo.usage'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageCreateInfo.usage' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// sharingMode
 NAN_GETTER(_VkImageCreateInfo::GetsharingMode) {
@@ -264,7 +319,12 @@ NAN_GETTER(_VkImageCreateInfo::GetsharingMode) {
   if (value->IsNumber()) {
     self->instance.sharingMode = static_cast<VkSharingMode>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageCreateInfo.sharingMode'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageCreateInfo.sharingMode' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// queueFamilyIndexCount
 NAN_GETTER(_VkImageCreateInfo::GetqueueFamilyIndexCount) {
@@ -275,7 +335,12 @@ NAN_GETTER(_VkImageCreateInfo::GetqueueFamilyIndexCount) {
   if (value->IsNumber()) {
     self->instance.queueFamilyIndexCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageCreateInfo.queueFamilyIndexCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageCreateInfo.queueFamilyIndexCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pQueueFamilyIndices
 NAN_GETTER(_VkImageCreateInfo::GetpQueueFamilyIndices) {
@@ -294,12 +359,22 @@ NAN_GETTER(_VkImageCreateInfo::GetpQueueFamilyIndices) {
       if (value->IsUint32Array()) {
         self->pQueueFamilyIndices.Reset<v8::Array>(value.As<v8::Array>());
       } else {
-        return Nan::ThrowTypeError("Expected 'Uint32Array' for 'VkImageCreateInfo.pQueueFamilyIndices'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Uint32Array' for 'VkImageCreateInfo.pQueueFamilyIndices' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+        return;
       }
     } else if (value->IsNull()) {
       self->pQueueFamilyIndices.Reset();
     } else {
-      return Nan::ThrowTypeError("Expected 'Uint32Array' for 'VkImageCreateInfo.pQueueFamilyIndices'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Uint32Array' for 'VkImageCreateInfo.pQueueFamilyIndices' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   
@@ -318,6 +393,11 @@ NAN_GETTER(_VkImageCreateInfo::GetinitialLayout) {
   if (value->IsNumber()) {
     self->instance.initialLayout = static_cast<VkImageLayout>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageCreateInfo.initialLayout'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageCreateInfo.initialLayout' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

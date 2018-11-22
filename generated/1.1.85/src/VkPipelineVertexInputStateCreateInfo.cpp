@@ -74,7 +74,11 @@ bool _VkPipelineVertexInputStateCreateInfo::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkVertexInputBindingDescription::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkVertexInputBindingDescription]' for 'VkPipelineVertexInputStateCreateInfo.pVertexBindingDescriptions'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkVertexInputBindingDescription]' for 'VkPipelineVertexInputStateCreateInfo.pVertexBindingDescriptions' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkVertexInputBindingDescription* result = Nan::ObjectWrap::Unwrap<_VkVertexInputBindingDescription>(obj);
@@ -96,7 +100,11 @@ bool _VkPipelineVertexInputStateCreateInfo::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkVertexInputAttributeDescription::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkVertexInputAttributeDescription]' for 'VkPipelineVertexInputStateCreateInfo.pVertexAttributeDescriptions'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkVertexInputAttributeDescription]' for 'VkPipelineVertexInputStateCreateInfo.pVertexAttributeDescriptions' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkVertexInputAttributeDescription* result = Nan::ObjectWrap::Unwrap<_VkVertexInputAttributeDescription>(obj);
@@ -147,7 +155,12 @@ NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineVertexInputStateCreateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineVertexInputStateCreateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetpNext) {
@@ -163,7 +176,12 @@ NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkPipelineVertexInputStateCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineVertexInputStateCreateInfo.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineVertexInputStateCreateInfo.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// vertexBindingDescriptionCount
 NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetvertexBindingDescriptionCount) {
@@ -174,7 +192,12 @@ NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetvertexBindingDescriptionCou
   if (value->IsNumber()) {
     self->instance.vertexBindingDescriptionCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineVertexInputStateCreateInfo.vertexBindingDescriptionCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineVertexInputStateCreateInfo.vertexBindingDescriptionCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pVertexBindingDescriptions
 NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetpVertexBindingDescriptions) {
@@ -195,7 +218,12 @@ NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetpVertexBindingDescriptions)
       self->pVertexBindingDescriptions.Reset();
       self->instance.pVertexBindingDescriptions = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkVertexInputBindingDescription]' for 'VkPipelineVertexInputStateCreateInfo.pVertexBindingDescriptions'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkVertexInputBindingDescription]' for 'VkPipelineVertexInputStateCreateInfo.pVertexBindingDescriptions' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -204,7 +232,12 @@ NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetpVertexBindingDescriptions)
   } else if (value->IsNull()) {
     self->instance.pVertexBindingDescriptions = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkVertexInputBindingDescription]' for 'VkPipelineVertexInputStateCreateInfo.pVertexBindingDescriptions'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkVertexInputBindingDescription]' for 'VkPipelineVertexInputStateCreateInfo.pVertexBindingDescriptions' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// vertexAttributeDescriptionCount
 NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetvertexAttributeDescriptionCount) {
@@ -215,7 +248,12 @@ NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetvertexAttributeDescriptionC
   if (value->IsNumber()) {
     self->instance.vertexAttributeDescriptionCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineVertexInputStateCreateInfo.vertexAttributeDescriptionCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineVertexInputStateCreateInfo.vertexAttributeDescriptionCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pVertexAttributeDescriptions
 NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetpVertexAttributeDescriptions) {
@@ -236,7 +274,12 @@ NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetpVertexAttributeDescription
       self->pVertexAttributeDescriptions.Reset();
       self->instance.pVertexAttributeDescriptions = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkVertexInputAttributeDescription]' for 'VkPipelineVertexInputStateCreateInfo.pVertexAttributeDescriptions'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkVertexInputAttributeDescription]' for 'VkPipelineVertexInputStateCreateInfo.pVertexAttributeDescriptions' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -245,6 +288,11 @@ NAN_GETTER(_VkPipelineVertexInputStateCreateInfo::GetpVertexAttributeDescription
   } else if (value->IsNull()) {
     self->instance.pVertexAttributeDescriptions = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkVertexInputAttributeDescription]' for 'VkPipelineVertexInputStateCreateInfo.pVertexAttributeDescriptions'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkVertexInputAttributeDescription]' for 'VkPipelineVertexInputStateCreateInfo.pVertexAttributeDescriptions' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

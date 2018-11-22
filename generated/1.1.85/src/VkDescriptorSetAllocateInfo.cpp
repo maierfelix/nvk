@@ -65,7 +65,11 @@ bool _VkDescriptorSetAllocateInfo::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkDescriptorSetLayout::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkDescriptorSetLayout]' for 'VkDescriptorSetAllocateInfo.pSetLayouts'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorSetLayout]' for 'VkDescriptorSetAllocateInfo.pSetLayouts' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkDescriptorSetLayout* result = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayout>(obj);
@@ -112,7 +116,12 @@ NAN_GETTER(_VkDescriptorSetAllocateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorSetAllocateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDescriptorSetAllocateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkDescriptorSetAllocateInfo::GetpNext) {
@@ -139,13 +148,23 @@ NAN_GETTER(_VkDescriptorSetAllocateInfo::GetdescriptorPool) {
       ;
       self->instance.descriptorPool = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkDescriptorPool]' for 'VkDescriptorSetAllocateInfo.descriptorPool'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorPool]' for 'VkDescriptorSetAllocateInfo.descriptorPool' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->descriptorPool.Reset();
     self->instance.descriptorPool = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkDescriptorPool]' for 'VkDescriptorSetAllocateInfo.descriptorPool'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorPool]' for 'VkDescriptorSetAllocateInfo.descriptorPool' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// descriptorSetCount
 NAN_GETTER(_VkDescriptorSetAllocateInfo::GetdescriptorSetCount) {
@@ -156,7 +175,12 @@ NAN_GETTER(_VkDescriptorSetAllocateInfo::GetdescriptorSetCount) {
   if (value->IsNumber()) {
     self->instance.descriptorSetCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorSetAllocateInfo.descriptorSetCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDescriptorSetAllocateInfo.descriptorSetCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pSetLayouts
 NAN_GETTER(_VkDescriptorSetAllocateInfo::GetpSetLayouts) {
@@ -177,7 +201,12 @@ NAN_GETTER(_VkDescriptorSetAllocateInfo::GetpSetLayouts) {
       self->pSetLayouts.Reset();
       self->instance.pSetLayouts = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkDescriptorSetLayout]' for 'VkDescriptorSetAllocateInfo.pSetLayouts'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorSetLayout]' for 'VkDescriptorSetAllocateInfo.pSetLayouts' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -186,6 +215,11 @@ NAN_GETTER(_VkDescriptorSetAllocateInfo::GetpSetLayouts) {
   } else if (value->IsNull()) {
     self->instance.pSetLayouts = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkDescriptorSetLayout]' for 'VkDescriptorSetAllocateInfo.pSetLayouts'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorSetLayout]' for 'VkDescriptorSetAllocateInfo.pSetLayouts' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

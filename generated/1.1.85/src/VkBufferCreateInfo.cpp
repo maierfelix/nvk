@@ -98,7 +98,12 @@ NAN_GETTER(_VkBufferCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferCreateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkBufferCreateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkBufferCreateInfo::GetpNext) {
@@ -114,7 +119,12 @@ NAN_GETTER(_VkBufferCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkBufferCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferCreateInfo.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkBufferCreateInfo.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// size
 NAN_GETTER(_VkBufferCreateInfo::Getsize) {
@@ -125,7 +135,12 @@ NAN_GETTER(_VkBufferCreateInfo::Getsize) {
   if (value->IsNumber()) {
     self->instance.size = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferCreateInfo.size'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkBufferCreateInfo.size' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// usage
 NAN_GETTER(_VkBufferCreateInfo::Getusage) {
@@ -136,7 +151,12 @@ NAN_GETTER(_VkBufferCreateInfo::Getusage) {
   if (value->IsNumber()) {
     self->instance.usage = static_cast<VkBufferUsageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferCreateInfo.usage'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkBufferCreateInfo.usage' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// sharingMode
 NAN_GETTER(_VkBufferCreateInfo::GetsharingMode) {
@@ -147,7 +167,12 @@ NAN_GETTER(_VkBufferCreateInfo::GetsharingMode) {
   if (value->IsNumber()) {
     self->instance.sharingMode = static_cast<VkSharingMode>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferCreateInfo.sharingMode'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkBufferCreateInfo.sharingMode' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// queueFamilyIndexCount
 NAN_GETTER(_VkBufferCreateInfo::GetqueueFamilyIndexCount) {
@@ -158,7 +183,12 @@ NAN_GETTER(_VkBufferCreateInfo::GetqueueFamilyIndexCount) {
   if (value->IsNumber()) {
     self->instance.queueFamilyIndexCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferCreateInfo.queueFamilyIndexCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkBufferCreateInfo.queueFamilyIndexCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pQueueFamilyIndices
 NAN_GETTER(_VkBufferCreateInfo::GetpQueueFamilyIndices) {
@@ -177,12 +207,22 @@ NAN_GETTER(_VkBufferCreateInfo::GetpQueueFamilyIndices) {
       if (value->IsUint32Array()) {
         self->pQueueFamilyIndices.Reset<v8::Array>(value.As<v8::Array>());
       } else {
-        return Nan::ThrowTypeError("Expected 'Uint32Array' for 'VkBufferCreateInfo.pQueueFamilyIndices'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Uint32Array' for 'VkBufferCreateInfo.pQueueFamilyIndices' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+        return;
       }
     } else if (value->IsNull()) {
       self->pQueueFamilyIndices.Reset();
     } else {
-      return Nan::ThrowTypeError("Expected 'Uint32Array' for 'VkBufferCreateInfo.pQueueFamilyIndices'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Uint32Array' for 'VkBufferCreateInfo.pQueueFamilyIndices' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   

@@ -74,7 +74,11 @@ bool _VkPipelineLayoutCreateInfo::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkDescriptorSetLayout::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkDescriptorSetLayout]' for 'VkPipelineLayoutCreateInfo.pSetLayouts'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorSetLayout]' for 'VkPipelineLayoutCreateInfo.pSetLayouts' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkDescriptorSetLayout* result = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayout>(obj);
@@ -96,7 +100,11 @@ bool _VkPipelineLayoutCreateInfo::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkPushConstantRange::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkPushConstantRange]' for 'VkPipelineLayoutCreateInfo.pPushConstantRanges'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPushConstantRange]' for 'VkPipelineLayoutCreateInfo.pPushConstantRanges' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkPushConstantRange* result = Nan::ObjectWrap::Unwrap<_VkPushConstantRange>(obj);
@@ -147,7 +155,12 @@ NAN_GETTER(_VkPipelineLayoutCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineLayoutCreateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineLayoutCreateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpNext) {
@@ -163,7 +176,12 @@ NAN_GETTER(_VkPipelineLayoutCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkPipelineLayoutCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineLayoutCreateInfo.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineLayoutCreateInfo.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// setLayoutCount
 NAN_GETTER(_VkPipelineLayoutCreateInfo::GetsetLayoutCount) {
@@ -174,7 +192,12 @@ NAN_GETTER(_VkPipelineLayoutCreateInfo::GetsetLayoutCount) {
   if (value->IsNumber()) {
     self->instance.setLayoutCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineLayoutCreateInfo.setLayoutCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineLayoutCreateInfo.setLayoutCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pSetLayouts
 NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpSetLayouts) {
@@ -195,7 +218,12 @@ NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpSetLayouts) {
       self->pSetLayouts.Reset();
       self->instance.pSetLayouts = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkDescriptorSetLayout]' for 'VkPipelineLayoutCreateInfo.pSetLayouts'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorSetLayout]' for 'VkPipelineLayoutCreateInfo.pSetLayouts' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -204,7 +232,12 @@ NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpSetLayouts) {
   } else if (value->IsNull()) {
     self->instance.pSetLayouts = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkDescriptorSetLayout]' for 'VkPipelineLayoutCreateInfo.pSetLayouts'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorSetLayout]' for 'VkPipelineLayoutCreateInfo.pSetLayouts' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pushConstantRangeCount
 NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpushConstantRangeCount) {
@@ -215,7 +248,12 @@ NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpushConstantRangeCount) {
   if (value->IsNumber()) {
     self->instance.pushConstantRangeCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineLayoutCreateInfo.pushConstantRangeCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineLayoutCreateInfo.pushConstantRangeCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pPushConstantRanges
 NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpPushConstantRanges) {
@@ -236,7 +274,12 @@ NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpPushConstantRanges) {
       self->pPushConstantRanges.Reset();
       self->instance.pPushConstantRanges = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkPushConstantRange]' for 'VkPipelineLayoutCreateInfo.pPushConstantRanges'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPushConstantRange]' for 'VkPipelineLayoutCreateInfo.pPushConstantRanges' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -245,6 +288,11 @@ NAN_GETTER(_VkPipelineLayoutCreateInfo::GetpPushConstantRanges) {
   } else if (value->IsNull()) {
     self->instance.pPushConstantRanges = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkPushConstantRange]' for 'VkPipelineLayoutCreateInfo.pPushConstantRanges'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPushConstantRange]' for 'VkPipelineLayoutCreateInfo.pPushConstantRanges' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

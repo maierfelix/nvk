@@ -76,7 +76,12 @@ NAN_GETTER(_VkExtent3D::Getwidth) {
   if (value->IsNumber()) {
     self->instance.width = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkExtent3D.width'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkExtent3D.width' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// height
 NAN_GETTER(_VkExtent3D::Getheight) {
@@ -87,7 +92,12 @@ NAN_GETTER(_VkExtent3D::Getheight) {
   if (value->IsNumber()) {
     self->instance.height = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkExtent3D.height'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkExtent3D.height' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// depth
 NAN_GETTER(_VkExtent3D::Getdepth) {
@@ -98,6 +108,11 @@ NAN_GETTER(_VkExtent3D::Getdepth) {
   if (value->IsNumber()) {
     self->instance.depth = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkExtent3D.depth'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkExtent3D.depth' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

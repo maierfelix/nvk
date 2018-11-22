@@ -96,7 +96,12 @@ NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetblendEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.blendEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendAttachmentState.blendEnable'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineColorBlendAttachmentState.blendEnable' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// srcColorBlendFactor
 NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetsrcColorBlendFactor) {
@@ -107,7 +112,12 @@ NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetsrcColorBlendFactor) {
   if (value->IsNumber()) {
     self->instance.srcColorBlendFactor = static_cast<VkBlendFactor>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendAttachmentState.srcColorBlendFactor'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineColorBlendAttachmentState.srcColorBlendFactor' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// dstColorBlendFactor
 NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetdstColorBlendFactor) {
@@ -118,7 +128,12 @@ NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetdstColorBlendFactor) {
   if (value->IsNumber()) {
     self->instance.dstColorBlendFactor = static_cast<VkBlendFactor>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendAttachmentState.dstColorBlendFactor'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineColorBlendAttachmentState.dstColorBlendFactor' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// colorBlendOp
 NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetcolorBlendOp) {
@@ -129,7 +144,12 @@ NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetcolorBlendOp) {
   if (value->IsNumber()) {
     self->instance.colorBlendOp = static_cast<VkBlendOp>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendAttachmentState.colorBlendOp'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineColorBlendAttachmentState.colorBlendOp' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// srcAlphaBlendFactor
 NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetsrcAlphaBlendFactor) {
@@ -140,7 +160,12 @@ NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetsrcAlphaBlendFactor) {
   if (value->IsNumber()) {
     self->instance.srcAlphaBlendFactor = static_cast<VkBlendFactor>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendAttachmentState.srcAlphaBlendFactor'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineColorBlendAttachmentState.srcAlphaBlendFactor' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// dstAlphaBlendFactor
 NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetdstAlphaBlendFactor) {
@@ -151,7 +176,12 @@ NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetdstAlphaBlendFactor) {
   if (value->IsNumber()) {
     self->instance.dstAlphaBlendFactor = static_cast<VkBlendFactor>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendAttachmentState.dstAlphaBlendFactor'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineColorBlendAttachmentState.dstAlphaBlendFactor' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// alphaBlendOp
 NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetalphaBlendOp) {
@@ -162,7 +192,12 @@ NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetalphaBlendOp) {
   if (value->IsNumber()) {
     self->instance.alphaBlendOp = static_cast<VkBlendOp>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendAttachmentState.alphaBlendOp'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineColorBlendAttachmentState.alphaBlendOp' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// colorWriteMask
 NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetcolorWriteMask) {
@@ -173,6 +208,11 @@ NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetcolorWriteMask) {
   if (value->IsNumber()) {
     self->instance.colorWriteMask = static_cast<VkColorComponentFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendAttachmentState.colorWriteMask'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineColorBlendAttachmentState.colorWriteMask' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

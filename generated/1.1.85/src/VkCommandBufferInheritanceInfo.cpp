@@ -97,7 +97,12 @@ NAN_GETTER(_VkCommandBufferInheritanceInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandBufferInheritanceInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkCommandBufferInheritanceInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkCommandBufferInheritanceInfo::GetpNext) {
@@ -124,13 +129,23 @@ NAN_GETTER(_VkCommandBufferInheritanceInfo::GetrenderPass) {
       ;
       self->instance.renderPass = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkRenderPass]' for 'VkCommandBufferInheritanceInfo.renderPass'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkRenderPass]' for 'VkCommandBufferInheritanceInfo.renderPass' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->renderPass.Reset();
     self->instance.renderPass = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkRenderPass]' for 'VkCommandBufferInheritanceInfo.renderPass'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkRenderPass]' for 'VkCommandBufferInheritanceInfo.renderPass' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// subpass
 NAN_GETTER(_VkCommandBufferInheritanceInfo::Getsubpass) {
@@ -141,7 +156,12 @@ NAN_GETTER(_VkCommandBufferInheritanceInfo::Getsubpass) {
   if (value->IsNumber()) {
     self->instance.subpass = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandBufferInheritanceInfo.subpass'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkCommandBufferInheritanceInfo.subpass' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// framebuffer
 NAN_GETTER(_VkCommandBufferInheritanceInfo::Getframebuffer) {
@@ -163,13 +183,23 @@ NAN_GETTER(_VkCommandBufferInheritanceInfo::Getframebuffer) {
       ;
       self->instance.framebuffer = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkFramebuffer]' for 'VkCommandBufferInheritanceInfo.framebuffer'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkFramebuffer]' for 'VkCommandBufferInheritanceInfo.framebuffer' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->framebuffer.Reset();
     self->instance.framebuffer = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkFramebuffer]' for 'VkCommandBufferInheritanceInfo.framebuffer'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkFramebuffer]' for 'VkCommandBufferInheritanceInfo.framebuffer' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// occlusionQueryEnable
 NAN_GETTER(_VkCommandBufferInheritanceInfo::GetocclusionQueryEnable) {
@@ -180,7 +210,12 @@ NAN_GETTER(_VkCommandBufferInheritanceInfo::GetocclusionQueryEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.occlusionQueryEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandBufferInheritanceInfo.occlusionQueryEnable'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkCommandBufferInheritanceInfo.occlusionQueryEnable' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// queryFlags
 NAN_GETTER(_VkCommandBufferInheritanceInfo::GetqueryFlags) {
@@ -191,7 +226,12 @@ NAN_GETTER(_VkCommandBufferInheritanceInfo::GetqueryFlags) {
   if (value->IsNumber()) {
     self->instance.queryFlags = static_cast<VkQueryControlFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandBufferInheritanceInfo.queryFlags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkCommandBufferInheritanceInfo.queryFlags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pipelineStatistics
 NAN_GETTER(_VkCommandBufferInheritanceInfo::GetpipelineStatistics) {
@@ -202,6 +242,11 @@ NAN_GETTER(_VkCommandBufferInheritanceInfo::GetpipelineStatistics) {
   if (value->IsNumber()) {
     self->instance.pipelineStatistics = static_cast<VkQueryPipelineStatisticFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandBufferInheritanceInfo.pipelineStatistics'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkCommandBufferInheritanceInfo.pipelineStatistics' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

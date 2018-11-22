@@ -82,7 +82,12 @@ NAN_GETTER(_VkCommandBufferBeginInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandBufferBeginInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkCommandBufferBeginInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkCommandBufferBeginInfo::GetpNext) {
@@ -98,7 +103,12 @@ NAN_GETTER(_VkCommandBufferBeginInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkCommandBufferUsageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandBufferBeginInfo.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkCommandBufferBeginInfo.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pInheritanceInfo
 NAN_GETTER(_VkCommandBufferBeginInfo::GetpInheritanceInfo) {
@@ -120,12 +130,22 @@ NAN_GETTER(_VkCommandBufferBeginInfo::GetpInheritanceInfo) {
       inst->flush();
       self->instance.pInheritanceInfo = &inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkCommandBufferInheritanceInfo]' for 'VkCommandBufferBeginInfo.pInheritanceInfo'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkCommandBufferInheritanceInfo]' for 'VkCommandBufferBeginInfo.pInheritanceInfo' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->pInheritanceInfo.Reset();
     self->instance.pInheritanceInfo = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkCommandBufferInheritanceInfo]' for 'VkCommandBufferBeginInfo.pInheritanceInfo'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkCommandBufferInheritanceInfo]' for 'VkCommandBufferBeginInfo.pInheritanceInfo' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

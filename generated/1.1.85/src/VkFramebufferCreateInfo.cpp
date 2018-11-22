@@ -73,7 +73,11 @@ bool _VkFramebufferCreateInfo::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkImageView::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkImageView]' for 'VkFramebufferCreateInfo.pAttachments'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkImageView]' for 'VkFramebufferCreateInfo.pAttachments' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkImageView* result = Nan::ObjectWrap::Unwrap<_VkImageView>(obj);
@@ -128,7 +132,12 @@ NAN_GETTER(_VkFramebufferCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkFramebufferCreateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkFramebufferCreateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkFramebufferCreateInfo::GetpNext) {
@@ -144,7 +153,12 @@ NAN_GETTER(_VkFramebufferCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkFramebufferCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkFramebufferCreateInfo.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkFramebufferCreateInfo.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// renderPass
 NAN_GETTER(_VkFramebufferCreateInfo::GetrenderPass) {
@@ -166,13 +180,23 @@ NAN_GETTER(_VkFramebufferCreateInfo::GetrenderPass) {
       ;
       self->instance.renderPass = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkRenderPass]' for 'VkFramebufferCreateInfo.renderPass'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkRenderPass]' for 'VkFramebufferCreateInfo.renderPass' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->renderPass.Reset();
     self->instance.renderPass = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkRenderPass]' for 'VkFramebufferCreateInfo.renderPass'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkRenderPass]' for 'VkFramebufferCreateInfo.renderPass' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// attachmentCount
 NAN_GETTER(_VkFramebufferCreateInfo::GetattachmentCount) {
@@ -183,7 +207,12 @@ NAN_GETTER(_VkFramebufferCreateInfo::GetattachmentCount) {
   if (value->IsNumber()) {
     self->instance.attachmentCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkFramebufferCreateInfo.attachmentCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkFramebufferCreateInfo.attachmentCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pAttachments
 NAN_GETTER(_VkFramebufferCreateInfo::GetpAttachments) {
@@ -204,7 +233,12 @@ NAN_GETTER(_VkFramebufferCreateInfo::GetpAttachments) {
       self->pAttachments.Reset();
       self->instance.pAttachments = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkImageView]' for 'VkFramebufferCreateInfo.pAttachments'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkImageView]' for 'VkFramebufferCreateInfo.pAttachments' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -213,7 +247,12 @@ NAN_GETTER(_VkFramebufferCreateInfo::GetpAttachments) {
   } else if (value->IsNull()) {
     self->instance.pAttachments = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkImageView]' for 'VkFramebufferCreateInfo.pAttachments'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkImageView]' for 'VkFramebufferCreateInfo.pAttachments' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// width
 NAN_GETTER(_VkFramebufferCreateInfo::Getwidth) {
@@ -224,7 +263,12 @@ NAN_GETTER(_VkFramebufferCreateInfo::Getwidth) {
   if (value->IsNumber()) {
     self->instance.width = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkFramebufferCreateInfo.width'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkFramebufferCreateInfo.width' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// height
 NAN_GETTER(_VkFramebufferCreateInfo::Getheight) {
@@ -235,7 +279,12 @@ NAN_GETTER(_VkFramebufferCreateInfo::Getheight) {
   if (value->IsNumber()) {
     self->instance.height = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkFramebufferCreateInfo.height'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkFramebufferCreateInfo.height' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// layers
 NAN_GETTER(_VkFramebufferCreateInfo::Getlayers) {
@@ -246,6 +295,11 @@ NAN_GETTER(_VkFramebufferCreateInfo::Getlayers) {
   if (value->IsNumber()) {
     self->instance.layers = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkFramebufferCreateInfo.layers'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkFramebufferCreateInfo.layers' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

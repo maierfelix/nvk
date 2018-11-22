@@ -137,7 +137,12 @@ NAN_GETTER(_VkSamplerCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSamplerCreateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkSamplerCreateInfo::GetpNext) {
@@ -153,7 +158,12 @@ NAN_GETTER(_VkSamplerCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkSamplerCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSamplerCreateInfo.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// magFilter
 NAN_GETTER(_VkSamplerCreateInfo::GetmagFilter) {
@@ -164,7 +174,12 @@ NAN_GETTER(_VkSamplerCreateInfo::GetmagFilter) {
   if (value->IsNumber()) {
     self->instance.magFilter = static_cast<VkFilter>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.magFilter'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSamplerCreateInfo.magFilter' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// minFilter
 NAN_GETTER(_VkSamplerCreateInfo::GetminFilter) {
@@ -175,7 +190,12 @@ NAN_GETTER(_VkSamplerCreateInfo::GetminFilter) {
   if (value->IsNumber()) {
     self->instance.minFilter = static_cast<VkFilter>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.minFilter'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSamplerCreateInfo.minFilter' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// mipmapMode
 NAN_GETTER(_VkSamplerCreateInfo::GetmipmapMode) {
@@ -186,7 +206,12 @@ NAN_GETTER(_VkSamplerCreateInfo::GetmipmapMode) {
   if (value->IsNumber()) {
     self->instance.mipmapMode = static_cast<VkSamplerMipmapMode>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.mipmapMode'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSamplerCreateInfo.mipmapMode' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// addressModeU
 NAN_GETTER(_VkSamplerCreateInfo::GetaddressModeU) {
@@ -197,7 +222,12 @@ NAN_GETTER(_VkSamplerCreateInfo::GetaddressModeU) {
   if (value->IsNumber()) {
     self->instance.addressModeU = static_cast<VkSamplerAddressMode>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.addressModeU'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSamplerCreateInfo.addressModeU' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// addressModeV
 NAN_GETTER(_VkSamplerCreateInfo::GetaddressModeV) {
@@ -208,7 +238,12 @@ NAN_GETTER(_VkSamplerCreateInfo::GetaddressModeV) {
   if (value->IsNumber()) {
     self->instance.addressModeV = static_cast<VkSamplerAddressMode>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.addressModeV'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSamplerCreateInfo.addressModeV' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// addressModeW
 NAN_GETTER(_VkSamplerCreateInfo::GetaddressModeW) {
@@ -219,7 +254,12 @@ NAN_GETTER(_VkSamplerCreateInfo::GetaddressModeW) {
   if (value->IsNumber()) {
     self->instance.addressModeW = static_cast<VkSamplerAddressMode>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.addressModeW'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSamplerCreateInfo.addressModeW' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// mipLodBias
 NAN_GETTER(_VkSamplerCreateInfo::GetmipLodBias) {
@@ -230,7 +270,12 @@ NAN_GETTER(_VkSamplerCreateInfo::GetmipLodBias) {
   if (value->IsNumber()) {
     self->instance.mipLodBias = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.mipLodBias'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSamplerCreateInfo.mipLodBias' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// anisotropyEnable
 NAN_GETTER(_VkSamplerCreateInfo::GetanisotropyEnable) {
@@ -241,7 +286,12 @@ NAN_GETTER(_VkSamplerCreateInfo::GetanisotropyEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.anisotropyEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.anisotropyEnable'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSamplerCreateInfo.anisotropyEnable' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// maxAnisotropy
 NAN_GETTER(_VkSamplerCreateInfo::GetmaxAnisotropy) {
@@ -252,7 +302,12 @@ NAN_GETTER(_VkSamplerCreateInfo::GetmaxAnisotropy) {
   if (value->IsNumber()) {
     self->instance.maxAnisotropy = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.maxAnisotropy'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSamplerCreateInfo.maxAnisotropy' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// compareEnable
 NAN_GETTER(_VkSamplerCreateInfo::GetcompareEnable) {
@@ -263,7 +318,12 @@ NAN_GETTER(_VkSamplerCreateInfo::GetcompareEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.compareEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.compareEnable'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSamplerCreateInfo.compareEnable' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// compareOp
 NAN_GETTER(_VkSamplerCreateInfo::GetcompareOp) {
@@ -274,7 +334,12 @@ NAN_GETTER(_VkSamplerCreateInfo::GetcompareOp) {
   if (value->IsNumber()) {
     self->instance.compareOp = static_cast<VkCompareOp>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.compareOp'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSamplerCreateInfo.compareOp' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// minLod
 NAN_GETTER(_VkSamplerCreateInfo::GetminLod) {
@@ -285,7 +350,12 @@ NAN_GETTER(_VkSamplerCreateInfo::GetminLod) {
   if (value->IsNumber()) {
     self->instance.minLod = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.minLod'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSamplerCreateInfo.minLod' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// maxLod
 NAN_GETTER(_VkSamplerCreateInfo::GetmaxLod) {
@@ -296,7 +366,12 @@ NAN_GETTER(_VkSamplerCreateInfo::GetmaxLod) {
   if (value->IsNumber()) {
     self->instance.maxLod = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.maxLod'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSamplerCreateInfo.maxLod' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// borderColor
 NAN_GETTER(_VkSamplerCreateInfo::GetborderColor) {
@@ -307,7 +382,12 @@ NAN_GETTER(_VkSamplerCreateInfo::GetborderColor) {
   if (value->IsNumber()) {
     self->instance.borderColor = static_cast<VkBorderColor>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.borderColor'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSamplerCreateInfo.borderColor' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// unnormalizedCoordinates
 NAN_GETTER(_VkSamplerCreateInfo::GetunnormalizedCoordinates) {
@@ -318,6 +398,11 @@ NAN_GETTER(_VkSamplerCreateInfo::GetunnormalizedCoordinates) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.unnormalizedCoordinates = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSamplerCreateInfo.unnormalizedCoordinates'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSamplerCreateInfo.unnormalizedCoordinates' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

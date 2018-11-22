@@ -106,7 +106,12 @@ NAN_GETTER(_VkBufferImageCopy::GetbufferOffset) {
   if (value->IsNumber()) {
     self->instance.bufferOffset = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferImageCopy.bufferOffset'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkBufferImageCopy.bufferOffset' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// bufferRowLength
 NAN_GETTER(_VkBufferImageCopy::GetbufferRowLength) {
@@ -117,7 +122,12 @@ NAN_GETTER(_VkBufferImageCopy::GetbufferRowLength) {
   if (value->IsNumber()) {
     self->instance.bufferRowLength = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferImageCopy.bufferRowLength'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkBufferImageCopy.bufferRowLength' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// bufferImageHeight
 NAN_GETTER(_VkBufferImageCopy::GetbufferImageHeight) {
@@ -128,7 +138,12 @@ NAN_GETTER(_VkBufferImageCopy::GetbufferImageHeight) {
   if (value->IsNumber()) {
     self->instance.bufferImageHeight = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferImageCopy.bufferImageHeight'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkBufferImageCopy.bufferImageHeight' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// imageSubresource
 NAN_GETTER(_VkBufferImageCopy::GetimageSubresource) {
@@ -150,13 +165,23 @@ NAN_GETTER(_VkBufferImageCopy::GetimageSubresource) {
       inst->flush();
       self->instance.imageSubresource = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkImageSubresourceLayers]' for 'VkBufferImageCopy.imageSubresource'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkImageSubresourceLayers]' for 'VkBufferImageCopy.imageSubresource' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->imageSubresource.Reset();
     memset(&self->instance.imageSubresource, 0, sizeof(VkImageSubresourceLayers));
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkImageSubresourceLayers]' for 'VkBufferImageCopy.imageSubresource'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkImageSubresourceLayers]' for 'VkBufferImageCopy.imageSubresource' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// imageOffset
 NAN_GETTER(_VkBufferImageCopy::GetimageOffset) {
@@ -178,13 +203,23 @@ NAN_GETTER(_VkBufferImageCopy::GetimageOffset) {
       inst->flush();
       self->instance.imageOffset = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkOffset3D]' for 'VkBufferImageCopy.imageOffset'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkOffset3D]' for 'VkBufferImageCopy.imageOffset' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->imageOffset.Reset();
     memset(&self->instance.imageOffset, 0, sizeof(VkOffset3D));
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkOffset3D]' for 'VkBufferImageCopy.imageOffset'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkOffset3D]' for 'VkBufferImageCopy.imageOffset' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// imageExtent
 NAN_GETTER(_VkBufferImageCopy::GetimageExtent) {
@@ -206,12 +241,22 @@ NAN_GETTER(_VkBufferImageCopy::GetimageExtent) {
       inst->flush();
       self->instance.imageExtent = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkExtent3D]' for 'VkBufferImageCopy.imageExtent'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkExtent3D]' for 'VkBufferImageCopy.imageExtent' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->imageExtent.Reset();
     memset(&self->instance.imageExtent, 0, sizeof(VkExtent3D));
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkExtent3D]' for 'VkBufferImageCopy.imageExtent'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkExtent3D]' for 'VkBufferImageCopy.imageExtent' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

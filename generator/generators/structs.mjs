@@ -19,13 +19,17 @@ function invalidMemberTypeError(member) {
   // try to give better hints
   } else {
     if (member.isStructType || member.isHandleType) {
-      expected = `Object [${member.type}]`;
+      expected = `[object ${member.type}]`;
     }
     else if (member.isTypedArray) {
       expected = member.jsTypedArrayName;
     }
   }
-  return `Nan::ThrowTypeError("Expected '${expected}' for '${currentStruct.name}.${member.name}'");`;
+  return `
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '${expected}' for '${currentStruct.name}.${member.name}' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());`;
 };
 
 function invalidMemberArrayLengthError(member) {
@@ -41,7 +45,8 @@ function genPersistentV8Array(member) {
       self->${member.name}.Reset();
       self->instance.${member.name} = nullptr;
     } else {
-      return ${invalidMemberTypeError(member)}
+      ${invalidMemberTypeError(member)}
+      return;
     }
   `;
 };
@@ -54,12 +59,14 @@ function genPersistentV8TypedArray(member) {
       if (value->Is${member.jsTypedArrayName}()) {
         self->${member.name}.Reset<v8::Array>(value.As<v8::Array>());
       } else {
-        return ${invalidMemberTypeError(member)}
+        ${invalidMemberTypeError(member)}
+        return;
       }
     } else if (value->IsNull()) {
       self->${member.name}.Reset();
     } else {
-      return ${invalidMemberTypeError(member)}
+      ${invalidMemberTypeError(member)}
+      return;
     }
   `;
 };
@@ -271,7 +278,8 @@ function processStaticArraySourceSetter(member) {
     } else if (value->IsNull()) {
       self->${member.name}.Reset();
     } else {
-      return ${invalidMemberTypeError(member)}
+      ${invalidMemberTypeError(member)}
+      return;
     }
   `;
   }
@@ -317,7 +325,8 @@ function processSourceSetter(struct, member) {
   } else if (value->IsNull()) {
     self->instance.${member.name} = ${member.isHandleType ? "VK_NULL_HANDLE" : "nullptr"};
   } else {
-    return ${invalidMemberTypeError(member)}
+    ${invalidMemberTypeError(member)}
+    return;
   }`;
   }
   switch (rawType) {
@@ -333,21 +342,24 @@ function processSourceSetter(struct, member) {
   if (value->IsNumber()) {
     self->instance.${member.name} = static_cast<${member.enumType || member.bitmaskType}>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return ${invalidMemberTypeError(member)}
+    ${invalidMemberTypeError(member)}
+    return;
   }`;
       } else if (member.isBoolean) { 
         return `
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.${member.name} = static_cast<${rawType}>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return ${invalidMemberTypeError(member)}
+    ${invalidMemberTypeError(member)}
+    return;
   }`;
       } else if (member.isNumber) {
         return `
   if (value->IsNumber()) {
     self->instance.${member.name} = static_cast<${rawType}>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return ${invalidMemberTypeError(member)}
+    ${invalidMemberTypeError(member)}
+    return;
   }`;
       } else {
         console.warn(`Cannot handle member ${member.rawType} in source-setter`);
@@ -365,7 +377,8 @@ function processSourceSetter(struct, member) {
   } else if (value->IsNull()) {
     self->instance.${member.name} = nullptr;
   } else {
-    return ${invalidMemberTypeError(member)}
+    ${invalidMemberTypeError(member)}
+    return;
   }`;
     // array of strings
     case "const char * const*":
@@ -412,13 +425,15 @@ function processSourceSetter(struct, member) {
       ${member.isStructType ? `inst->flush()` : ``};
       self->instance.${member.name} = ${isReference ? "&" : ""}inst->instance;
     } else {
-      return ${invalidMemberTypeError(member)}
+      ${invalidMemberTypeError(member)}
+      return;
     }
   } else if (value->IsNull()) {
     self->${member.name}.Reset();
     ${deinitialize}
   } else {
-    return ${invalidMemberTypeError(member)}
+    ${invalidMemberTypeError(member)}
+    return;
   }`;
       }
       console.warn(`Cannot handle member ${member.rawType} in source-setter!`);

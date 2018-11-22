@@ -95,7 +95,12 @@ NAN_GETTER(_VkApplicationInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkApplicationInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkApplicationInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkApplicationInfo::GetpNext) {
@@ -124,7 +129,12 @@ NAN_GETTER(_VkApplicationInfo::GetpApplicationName) {
   } else if (value->IsNull()) {
     self->instance.pApplicationName = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'String' for 'VkApplicationInfo.pApplicationName'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'String' for 'VkApplicationInfo.pApplicationName' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// applicationVersion
 NAN_GETTER(_VkApplicationInfo::GetapplicationVersion) {
@@ -135,7 +145,12 @@ NAN_GETTER(_VkApplicationInfo::GetapplicationVersion) {
   if (value->IsNumber()) {
     self->instance.applicationVersion = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkApplicationInfo.applicationVersion'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkApplicationInfo.applicationVersion' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pEngineName
 NAN_GETTER(_VkApplicationInfo::GetpEngineName) {
@@ -159,7 +174,12 @@ NAN_GETTER(_VkApplicationInfo::GetpEngineName) {
   } else if (value->IsNull()) {
     self->instance.pEngineName = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'String' for 'VkApplicationInfo.pEngineName'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'String' for 'VkApplicationInfo.pEngineName' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// engineVersion
 NAN_GETTER(_VkApplicationInfo::GetengineVersion) {
@@ -170,7 +190,12 @@ NAN_GETTER(_VkApplicationInfo::GetengineVersion) {
   if (value->IsNumber()) {
     self->instance.engineVersion = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkApplicationInfo.engineVersion'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkApplicationInfo.engineVersion' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// apiVersion
 NAN_GETTER(_VkApplicationInfo::GetapiVersion) {
@@ -181,6 +206,11 @@ NAN_GETTER(_VkApplicationInfo::GetapiVersion) {
   if (value->IsNumber()) {
     self->instance.apiVersion = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkApplicationInfo.apiVersion'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkApplicationInfo.apiVersion' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

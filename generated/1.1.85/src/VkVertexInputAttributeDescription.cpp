@@ -80,7 +80,12 @@ NAN_GETTER(_VkVertexInputAttributeDescription::Getlocation) {
   if (value->IsNumber()) {
     self->instance.location = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkVertexInputAttributeDescription.location'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkVertexInputAttributeDescription.location' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// binding
 NAN_GETTER(_VkVertexInputAttributeDescription::Getbinding) {
@@ -91,7 +96,12 @@ NAN_GETTER(_VkVertexInputAttributeDescription::Getbinding) {
   if (value->IsNumber()) {
     self->instance.binding = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkVertexInputAttributeDescription.binding'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkVertexInputAttributeDescription.binding' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// format
 NAN_GETTER(_VkVertexInputAttributeDescription::Getformat) {
@@ -102,7 +112,12 @@ NAN_GETTER(_VkVertexInputAttributeDescription::Getformat) {
   if (value->IsNumber()) {
     self->instance.format = static_cast<VkFormat>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkVertexInputAttributeDescription.format'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkVertexInputAttributeDescription.format' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// offset
 NAN_GETTER(_VkVertexInputAttributeDescription::Getoffset) {
@@ -113,6 +128,11 @@ NAN_GETTER(_VkVertexInputAttributeDescription::Getoffset) {
   if (value->IsNumber()) {
     self->instance.offset = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkVertexInputAttributeDescription.offset'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkVertexInputAttributeDescription.offset' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

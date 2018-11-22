@@ -81,7 +81,12 @@ NAN_GETTER(_VkCommandPoolCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandPoolCreateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkCommandPoolCreateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkCommandPoolCreateInfo::GetpNext) {
@@ -97,7 +102,12 @@ NAN_GETTER(_VkCommandPoolCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkCommandPoolCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandPoolCreateInfo.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkCommandPoolCreateInfo.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// queueFamilyIndex
 NAN_GETTER(_VkCommandPoolCreateInfo::GetqueueFamilyIndex) {
@@ -108,6 +118,11 @@ NAN_GETTER(_VkCommandPoolCreateInfo::GetqueueFamilyIndex) {
   if (value->IsNumber()) {
     self->instance.queueFamilyIndex = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkCommandPoolCreateInfo.queueFamilyIndex'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkCommandPoolCreateInfo.queueFamilyIndex' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

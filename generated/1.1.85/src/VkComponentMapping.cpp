@@ -80,7 +80,12 @@ NAN_GETTER(_VkComponentMapping::Getr) {
   if (value->IsNumber()) {
     self->instance.r = static_cast<VkComponentSwizzle>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkComponentMapping.r'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkComponentMapping.r' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// g
 NAN_GETTER(_VkComponentMapping::Getg) {
@@ -91,7 +96,12 @@ NAN_GETTER(_VkComponentMapping::Getg) {
   if (value->IsNumber()) {
     self->instance.g = static_cast<VkComponentSwizzle>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkComponentMapping.g'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkComponentMapping.g' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// b
 NAN_GETTER(_VkComponentMapping::Getb) {
@@ -102,7 +112,12 @@ NAN_GETTER(_VkComponentMapping::Getb) {
   if (value->IsNumber()) {
     self->instance.b = static_cast<VkComponentSwizzle>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkComponentMapping.b'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkComponentMapping.b' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// a
 NAN_GETTER(_VkComponentMapping::Geta) {
@@ -113,6 +128,11 @@ NAN_GETTER(_VkComponentMapping::Geta) {
   if (value->IsNumber()) {
     self->instance.a = static_cast<VkComponentSwizzle>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkComponentMapping.a'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkComponentMapping.a' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

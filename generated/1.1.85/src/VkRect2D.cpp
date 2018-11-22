@@ -95,13 +95,23 @@ NAN_GETTER(_VkRect2D::Getoffset) {
       inst->flush();
       self->instance.offset = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkOffset2D]' for 'VkRect2D.offset'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkOffset2D]' for 'VkRect2D.offset' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->offset.Reset();
     memset(&self->instance.offset, 0, sizeof(VkOffset2D));
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkOffset2D]' for 'VkRect2D.offset'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkOffset2D]' for 'VkRect2D.offset' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// extent
 NAN_GETTER(_VkRect2D::Getextent) {
@@ -123,12 +133,22 @@ NAN_GETTER(_VkRect2D::Getextent) {
       inst->flush();
       self->instance.extent = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkExtent2D]' for 'VkRect2D.extent'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkExtent2D]' for 'VkRect2D.extent' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->extent.Reset();
     memset(&self->instance.extent, 0, sizeof(VkExtent2D));
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkExtent2D]' for 'VkRect2D.extent'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkExtent2D]' for 'VkRect2D.extent' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

@@ -76,7 +76,12 @@ NAN_GETTER(_VkImageSubresource::GetaspectMask) {
   if (value->IsNumber()) {
     self->instance.aspectMask = static_cast<VkImageAspectFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageSubresource.aspectMask'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageSubresource.aspectMask' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// mipLevel
 NAN_GETTER(_VkImageSubresource::GetmipLevel) {
@@ -87,7 +92,12 @@ NAN_GETTER(_VkImageSubresource::GetmipLevel) {
   if (value->IsNumber()) {
     self->instance.mipLevel = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageSubresource.mipLevel'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageSubresource.mipLevel' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// arrayLayer
 NAN_GETTER(_VkImageSubresource::GetarrayLayer) {
@@ -98,6 +108,11 @@ NAN_GETTER(_VkImageSubresource::GetarrayLayer) {
   if (value->IsNumber()) {
     self->instance.arrayLayer = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageSubresource.arrayLayer'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageSubresource.arrayLayer' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

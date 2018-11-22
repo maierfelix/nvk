@@ -76,7 +76,12 @@ NAN_GETTER(_VkVertexInputBindingDescription::Getbinding) {
   if (value->IsNumber()) {
     self->instance.binding = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkVertexInputBindingDescription.binding'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkVertexInputBindingDescription.binding' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// stride
 NAN_GETTER(_VkVertexInputBindingDescription::Getstride) {
@@ -87,7 +92,12 @@ NAN_GETTER(_VkVertexInputBindingDescription::Getstride) {
   if (value->IsNumber()) {
     self->instance.stride = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkVertexInputBindingDescription.stride'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkVertexInputBindingDescription.stride' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// inputRate
 NAN_GETTER(_VkVertexInputBindingDescription::GetinputRate) {
@@ -98,6 +108,11 @@ NAN_GETTER(_VkVertexInputBindingDescription::GetinputRate) {
   if (value->IsNumber()) {
     self->instance.inputRate = static_cast<VkVertexInputRate>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkVertexInputBindingDescription.inputRate'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkVertexInputBindingDescription.inputRate' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

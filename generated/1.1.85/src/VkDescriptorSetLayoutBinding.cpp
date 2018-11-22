@@ -64,7 +64,11 @@ bool _VkDescriptorSetLayoutBinding::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkSampler::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkSampler]' for 'VkDescriptorSetLayoutBinding.pImmutableSamplers'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSampler]' for 'VkDescriptorSetLayoutBinding.pImmutableSamplers' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkSampler* result = Nan::ObjectWrap::Unwrap<_VkSampler>(obj);
@@ -111,7 +115,12 @@ NAN_GETTER(_VkDescriptorSetLayoutBinding::Getbinding) {
   if (value->IsNumber()) {
     self->instance.binding = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorSetLayoutBinding.binding'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDescriptorSetLayoutBinding.binding' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// descriptorType
 NAN_GETTER(_VkDescriptorSetLayoutBinding::GetdescriptorType) {
@@ -122,7 +131,12 @@ NAN_GETTER(_VkDescriptorSetLayoutBinding::GetdescriptorType) {
   if (value->IsNumber()) {
     self->instance.descriptorType = static_cast<VkDescriptorType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorSetLayoutBinding.descriptorType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDescriptorSetLayoutBinding.descriptorType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// descriptorCount
 NAN_GETTER(_VkDescriptorSetLayoutBinding::GetdescriptorCount) {
@@ -133,7 +147,12 @@ NAN_GETTER(_VkDescriptorSetLayoutBinding::GetdescriptorCount) {
   if (value->IsNumber()) {
     self->instance.descriptorCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorSetLayoutBinding.descriptorCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDescriptorSetLayoutBinding.descriptorCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// stageFlags
 NAN_GETTER(_VkDescriptorSetLayoutBinding::GetstageFlags) {
@@ -144,7 +163,12 @@ NAN_GETTER(_VkDescriptorSetLayoutBinding::GetstageFlags) {
   if (value->IsNumber()) {
     self->instance.stageFlags = static_cast<VkShaderStageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorSetLayoutBinding.stageFlags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDescriptorSetLayoutBinding.stageFlags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pImmutableSamplers
 NAN_GETTER(_VkDescriptorSetLayoutBinding::GetpImmutableSamplers) {
@@ -165,7 +189,12 @@ NAN_GETTER(_VkDescriptorSetLayoutBinding::GetpImmutableSamplers) {
       self->pImmutableSamplers.Reset();
       self->instance.pImmutableSamplers = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkSampler]' for 'VkDescriptorSetLayoutBinding.pImmutableSamplers'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSampler]' for 'VkDescriptorSetLayoutBinding.pImmutableSamplers' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -174,6 +203,11 @@ NAN_GETTER(_VkDescriptorSetLayoutBinding::GetpImmutableSamplers) {
   } else if (value->IsNull()) {
     self->instance.pImmutableSamplers = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkSampler]' for 'VkDescriptorSetLayoutBinding.pImmutableSamplers'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSampler]' for 'VkDescriptorSetLayoutBinding.pImmutableSamplers' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

@@ -92,7 +92,11 @@ bool _VkDeviceCreateInfo::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkDeviceQueueCreateInfo::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkDeviceQueueCreateInfo]' for 'VkDeviceCreateInfo.pQueueCreateInfos'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDeviceQueueCreateInfo]' for 'VkDeviceCreateInfo.pQueueCreateInfos' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkDeviceQueueCreateInfo* result = Nan::ObjectWrap::Unwrap<_VkDeviceQueueCreateInfo>(obj);
@@ -175,7 +179,12 @@ NAN_GETTER(_VkDeviceCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDeviceCreateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDeviceCreateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkDeviceCreateInfo::GetpNext) {
@@ -191,7 +200,12 @@ NAN_GETTER(_VkDeviceCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkDeviceCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDeviceCreateInfo.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDeviceCreateInfo.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// queueCreateInfoCount
 NAN_GETTER(_VkDeviceCreateInfo::GetqueueCreateInfoCount) {
@@ -202,7 +216,12 @@ NAN_GETTER(_VkDeviceCreateInfo::GetqueueCreateInfoCount) {
   if (value->IsNumber()) {
     self->instance.queueCreateInfoCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDeviceCreateInfo.queueCreateInfoCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDeviceCreateInfo.queueCreateInfoCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pQueueCreateInfos
 NAN_GETTER(_VkDeviceCreateInfo::GetpQueueCreateInfos) {
@@ -223,7 +242,12 @@ NAN_GETTER(_VkDeviceCreateInfo::GetpQueueCreateInfos) {
       self->pQueueCreateInfos.Reset();
       self->instance.pQueueCreateInfos = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkDeviceQueueCreateInfo]' for 'VkDeviceCreateInfo.pQueueCreateInfos'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDeviceQueueCreateInfo]' for 'VkDeviceCreateInfo.pQueueCreateInfos' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -232,7 +256,12 @@ NAN_GETTER(_VkDeviceCreateInfo::GetpQueueCreateInfos) {
   } else if (value->IsNull()) {
     self->instance.pQueueCreateInfos = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkDeviceQueueCreateInfo]' for 'VkDeviceCreateInfo.pQueueCreateInfos'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDeviceQueueCreateInfo]' for 'VkDeviceCreateInfo.pQueueCreateInfos' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// enabledLayerCount
 NAN_GETTER(_VkDeviceCreateInfo::GetenabledLayerCount) {
@@ -243,7 +272,12 @@ NAN_GETTER(_VkDeviceCreateInfo::GetenabledLayerCount) {
   if (value->IsNumber()) {
     self->instance.enabledLayerCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDeviceCreateInfo.enabledLayerCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDeviceCreateInfo.enabledLayerCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// ppEnabledLayerNames
 NAN_GETTER(_VkDeviceCreateInfo::GetppEnabledLayerNames) {
@@ -264,7 +298,12 @@ NAN_GETTER(_VkDeviceCreateInfo::GetppEnabledLayerNames) {
       self->ppEnabledLayerNames.Reset();
       self->instance.ppEnabledLayerNames = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Array' for 'VkDeviceCreateInfo.ppEnabledLayerNames'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Array' for 'VkDeviceCreateInfo.ppEnabledLayerNames' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
 }// enabledExtensionCount
@@ -276,7 +315,12 @@ NAN_GETTER(_VkDeviceCreateInfo::GetenabledExtensionCount) {
   if (value->IsNumber()) {
     self->instance.enabledExtensionCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDeviceCreateInfo.enabledExtensionCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDeviceCreateInfo.enabledExtensionCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// ppEnabledExtensionNames
 NAN_GETTER(_VkDeviceCreateInfo::GetppEnabledExtensionNames) {
@@ -297,7 +341,12 @@ NAN_GETTER(_VkDeviceCreateInfo::GetppEnabledExtensionNames) {
       self->ppEnabledExtensionNames.Reset();
       self->instance.ppEnabledExtensionNames = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Array' for 'VkDeviceCreateInfo.ppEnabledExtensionNames'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Array' for 'VkDeviceCreateInfo.ppEnabledExtensionNames' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
 }// pEnabledFeatures
@@ -320,12 +369,22 @@ NAN_GETTER(_VkDeviceCreateInfo::GetpEnabledFeatures) {
       inst->flush();
       self->instance.pEnabledFeatures = &inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkPhysicalDeviceFeatures]' for 'VkDeviceCreateInfo.pEnabledFeatures'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPhysicalDeviceFeatures]' for 'VkDeviceCreateInfo.pEnabledFeatures' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->pEnabledFeatures.Reset();
     self->instance.pEnabledFeatures = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkPhysicalDeviceFeatures]' for 'VkDeviceCreateInfo.pEnabledFeatures'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPhysicalDeviceFeatures]' for 'VkDeviceCreateInfo.pEnabledFeatures' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

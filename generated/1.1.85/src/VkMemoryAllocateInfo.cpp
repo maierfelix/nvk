@@ -81,7 +81,12 @@ NAN_GETTER(_VkMemoryAllocateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkMemoryAllocateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkMemoryAllocateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkMemoryAllocateInfo::GetpNext) {
@@ -97,7 +102,12 @@ NAN_GETTER(_VkMemoryAllocateInfo::GetallocationSize) {
   if (value->IsNumber()) {
     self->instance.allocationSize = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkMemoryAllocateInfo.allocationSize'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkMemoryAllocateInfo.allocationSize' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// memoryTypeIndex
 NAN_GETTER(_VkMemoryAllocateInfo::GetmemoryTypeIndex) {
@@ -108,6 +118,11 @@ NAN_GETTER(_VkMemoryAllocateInfo::GetmemoryTypeIndex) {
   if (value->IsNumber()) {
     self->instance.memoryTypeIndex = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkMemoryAllocateInfo.memoryTypeIndex'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkMemoryAllocateInfo.memoryTypeIndex' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

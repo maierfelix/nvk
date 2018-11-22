@@ -92,7 +92,12 @@ NAN_GETTER(_VkStencilOpState::GetfailOp) {
   if (value->IsNumber()) {
     self->instance.failOp = static_cast<VkStencilOp>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkStencilOpState.failOp'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkStencilOpState.failOp' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// passOp
 NAN_GETTER(_VkStencilOpState::GetpassOp) {
@@ -103,7 +108,12 @@ NAN_GETTER(_VkStencilOpState::GetpassOp) {
   if (value->IsNumber()) {
     self->instance.passOp = static_cast<VkStencilOp>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkStencilOpState.passOp'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkStencilOpState.passOp' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// depthFailOp
 NAN_GETTER(_VkStencilOpState::GetdepthFailOp) {
@@ -114,7 +124,12 @@ NAN_GETTER(_VkStencilOpState::GetdepthFailOp) {
   if (value->IsNumber()) {
     self->instance.depthFailOp = static_cast<VkStencilOp>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkStencilOpState.depthFailOp'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkStencilOpState.depthFailOp' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// compareOp
 NAN_GETTER(_VkStencilOpState::GetcompareOp) {
@@ -125,7 +140,12 @@ NAN_GETTER(_VkStencilOpState::GetcompareOp) {
   if (value->IsNumber()) {
     self->instance.compareOp = static_cast<VkCompareOp>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkStencilOpState.compareOp'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkStencilOpState.compareOp' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// compareMask
 NAN_GETTER(_VkStencilOpState::GetcompareMask) {
@@ -136,7 +156,12 @@ NAN_GETTER(_VkStencilOpState::GetcompareMask) {
   if (value->IsNumber()) {
     self->instance.compareMask = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkStencilOpState.compareMask'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkStencilOpState.compareMask' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// writeMask
 NAN_GETTER(_VkStencilOpState::GetwriteMask) {
@@ -147,7 +172,12 @@ NAN_GETTER(_VkStencilOpState::GetwriteMask) {
   if (value->IsNumber()) {
     self->instance.writeMask = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkStencilOpState.writeMask'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkStencilOpState.writeMask' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// reference
 NAN_GETTER(_VkStencilOpState::Getreference) {
@@ -158,6 +188,11 @@ NAN_GETTER(_VkStencilOpState::Getreference) {
   if (value->IsNumber()) {
     self->instance.reference = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkStencilOpState.reference'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkStencilOpState.reference' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

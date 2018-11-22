@@ -26,6 +26,12 @@ inline void SetPrototypeAccessor(
   );
 };
 
+inline std::string getV8ObjectDetails(v8::Local<v8::Value> value) {
+  Nan::Utf8String utf8(value->ToDetailString(Nan::GetCurrentContext()).ToLocalChecked());
+  std::string details(*utf8);
+  return details;
+};
+
 template<typename T>
 inline std::vector<T> createArrayOfV8Numbers(v8::Local<v8::Value> value) {
   v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(value);

@@ -86,7 +86,11 @@ bool _VkSubpassDescription::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkAttachmentReference::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkAttachmentReference]' for 'VkSubpassDescription.pInputAttachments'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkAttachmentReference]' for 'VkSubpassDescription.pInputAttachments' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkAttachmentReference* result = Nan::ObjectWrap::Unwrap<_VkAttachmentReference>(obj);
@@ -108,7 +112,11 @@ bool _VkSubpassDescription::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkAttachmentReference::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkAttachmentReference]' for 'VkSubpassDescription.pColorAttachments'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkAttachmentReference]' for 'VkSubpassDescription.pColorAttachments' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkAttachmentReference* result = Nan::ObjectWrap::Unwrap<_VkAttachmentReference>(obj);
@@ -130,7 +138,11 @@ bool _VkSubpassDescription::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkAttachmentReference::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkAttachmentReference]' for 'VkSubpassDescription.pResolveAttachments'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkAttachmentReference]' for 'VkSubpassDescription.pResolveAttachments' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkAttachmentReference* result = Nan::ObjectWrap::Unwrap<_VkAttachmentReference>(obj);
@@ -187,7 +199,12 @@ NAN_GETTER(_VkSubpassDescription::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkSubpassDescriptionFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubpassDescription.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSubpassDescription.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pipelineBindPoint
 NAN_GETTER(_VkSubpassDescription::GetpipelineBindPoint) {
@@ -198,7 +215,12 @@ NAN_GETTER(_VkSubpassDescription::GetpipelineBindPoint) {
   if (value->IsNumber()) {
     self->instance.pipelineBindPoint = static_cast<VkPipelineBindPoint>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubpassDescription.pipelineBindPoint'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSubpassDescription.pipelineBindPoint' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// inputAttachmentCount
 NAN_GETTER(_VkSubpassDescription::GetinputAttachmentCount) {
@@ -209,7 +231,12 @@ NAN_GETTER(_VkSubpassDescription::GetinputAttachmentCount) {
   if (value->IsNumber()) {
     self->instance.inputAttachmentCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubpassDescription.inputAttachmentCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSubpassDescription.inputAttachmentCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pInputAttachments
 NAN_GETTER(_VkSubpassDescription::GetpInputAttachments) {
@@ -230,7 +257,12 @@ NAN_GETTER(_VkSubpassDescription::GetpInputAttachments) {
       self->pInputAttachments.Reset();
       self->instance.pInputAttachments = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkAttachmentReference]' for 'VkSubpassDescription.pInputAttachments'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkAttachmentReference]' for 'VkSubpassDescription.pInputAttachments' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -239,7 +271,12 @@ NAN_GETTER(_VkSubpassDescription::GetpInputAttachments) {
   } else if (value->IsNull()) {
     self->instance.pInputAttachments = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkAttachmentReference]' for 'VkSubpassDescription.pInputAttachments'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkAttachmentReference]' for 'VkSubpassDescription.pInputAttachments' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// colorAttachmentCount
 NAN_GETTER(_VkSubpassDescription::GetcolorAttachmentCount) {
@@ -250,7 +287,12 @@ NAN_GETTER(_VkSubpassDescription::GetcolorAttachmentCount) {
   if (value->IsNumber()) {
     self->instance.colorAttachmentCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubpassDescription.colorAttachmentCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSubpassDescription.colorAttachmentCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pColorAttachments
 NAN_GETTER(_VkSubpassDescription::GetpColorAttachments) {
@@ -271,7 +313,12 @@ NAN_GETTER(_VkSubpassDescription::GetpColorAttachments) {
       self->pColorAttachments.Reset();
       self->instance.pColorAttachments = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkAttachmentReference]' for 'VkSubpassDescription.pColorAttachments'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkAttachmentReference]' for 'VkSubpassDescription.pColorAttachments' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -280,7 +327,12 @@ NAN_GETTER(_VkSubpassDescription::GetpColorAttachments) {
   } else if (value->IsNull()) {
     self->instance.pColorAttachments = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkAttachmentReference]' for 'VkSubpassDescription.pColorAttachments'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkAttachmentReference]' for 'VkSubpassDescription.pColorAttachments' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pResolveAttachments
 NAN_GETTER(_VkSubpassDescription::GetpResolveAttachments) {
@@ -301,7 +353,12 @@ NAN_GETTER(_VkSubpassDescription::GetpResolveAttachments) {
       self->pResolveAttachments.Reset();
       self->instance.pResolveAttachments = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkAttachmentReference]' for 'VkSubpassDescription.pResolveAttachments'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkAttachmentReference]' for 'VkSubpassDescription.pResolveAttachments' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -310,7 +367,12 @@ NAN_GETTER(_VkSubpassDescription::GetpResolveAttachments) {
   } else if (value->IsNull()) {
     self->instance.pResolveAttachments = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkAttachmentReference]' for 'VkSubpassDescription.pResolveAttachments'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkAttachmentReference]' for 'VkSubpassDescription.pResolveAttachments' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pDepthStencilAttachment
 NAN_GETTER(_VkSubpassDescription::GetpDepthStencilAttachment) {
@@ -332,13 +394,23 @@ NAN_GETTER(_VkSubpassDescription::GetpDepthStencilAttachment) {
       inst->flush();
       self->instance.pDepthStencilAttachment = &inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkAttachmentReference]' for 'VkSubpassDescription.pDepthStencilAttachment'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkAttachmentReference]' for 'VkSubpassDescription.pDepthStencilAttachment' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->pDepthStencilAttachment.Reset();
     self->instance.pDepthStencilAttachment = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkAttachmentReference]' for 'VkSubpassDescription.pDepthStencilAttachment'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkAttachmentReference]' for 'VkSubpassDescription.pDepthStencilAttachment' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// preserveAttachmentCount
 NAN_GETTER(_VkSubpassDescription::GetpreserveAttachmentCount) {
@@ -349,7 +421,12 @@ NAN_GETTER(_VkSubpassDescription::GetpreserveAttachmentCount) {
   if (value->IsNumber()) {
     self->instance.preserveAttachmentCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSubpassDescription.preserveAttachmentCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSubpassDescription.preserveAttachmentCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pPreserveAttachments
 NAN_GETTER(_VkSubpassDescription::GetpPreserveAttachments) {
@@ -368,12 +445,22 @@ NAN_GETTER(_VkSubpassDescription::GetpPreserveAttachments) {
       if (value->IsUint32Array()) {
         self->pPreserveAttachments.Reset<v8::Array>(value.As<v8::Array>());
       } else {
-        return Nan::ThrowTypeError("Expected 'Uint32Array' for 'VkSubpassDescription.pPreserveAttachments'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Uint32Array' for 'VkSubpassDescription.pPreserveAttachments' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+        return;
       }
     } else if (value->IsNull()) {
       self->pPreserveAttachments.Reset();
     } else {
-      return Nan::ThrowTypeError("Expected 'Uint32Array' for 'VkSubpassDescription.pPreserveAttachments'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Uint32Array' for 'VkSubpassDescription.pPreserveAttachments' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   

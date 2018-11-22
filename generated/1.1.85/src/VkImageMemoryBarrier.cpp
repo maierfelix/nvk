@@ -111,7 +111,12 @@ NAN_GETTER(_VkImageMemoryBarrier::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageMemoryBarrier.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageMemoryBarrier.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkImageMemoryBarrier::GetpNext) {
@@ -127,7 +132,12 @@ NAN_GETTER(_VkImageMemoryBarrier::GetsrcAccessMask) {
   if (value->IsNumber()) {
     self->instance.srcAccessMask = static_cast<VkAccessFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageMemoryBarrier.srcAccessMask'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageMemoryBarrier.srcAccessMask' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// dstAccessMask
 NAN_GETTER(_VkImageMemoryBarrier::GetdstAccessMask) {
@@ -138,7 +148,12 @@ NAN_GETTER(_VkImageMemoryBarrier::GetdstAccessMask) {
   if (value->IsNumber()) {
     self->instance.dstAccessMask = static_cast<VkAccessFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageMemoryBarrier.dstAccessMask'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageMemoryBarrier.dstAccessMask' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// oldLayout
 NAN_GETTER(_VkImageMemoryBarrier::GetoldLayout) {
@@ -149,7 +164,12 @@ NAN_GETTER(_VkImageMemoryBarrier::GetoldLayout) {
   if (value->IsNumber()) {
     self->instance.oldLayout = static_cast<VkImageLayout>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageMemoryBarrier.oldLayout'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageMemoryBarrier.oldLayout' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// newLayout
 NAN_GETTER(_VkImageMemoryBarrier::GetnewLayout) {
@@ -160,7 +180,12 @@ NAN_GETTER(_VkImageMemoryBarrier::GetnewLayout) {
   if (value->IsNumber()) {
     self->instance.newLayout = static_cast<VkImageLayout>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageMemoryBarrier.newLayout'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageMemoryBarrier.newLayout' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// srcQueueFamilyIndex
 NAN_GETTER(_VkImageMemoryBarrier::GetsrcQueueFamilyIndex) {
@@ -171,7 +196,12 @@ NAN_GETTER(_VkImageMemoryBarrier::GetsrcQueueFamilyIndex) {
   if (value->IsNumber()) {
     self->instance.srcQueueFamilyIndex = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageMemoryBarrier.srcQueueFamilyIndex'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageMemoryBarrier.srcQueueFamilyIndex' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// dstQueueFamilyIndex
 NAN_GETTER(_VkImageMemoryBarrier::GetdstQueueFamilyIndex) {
@@ -182,7 +212,12 @@ NAN_GETTER(_VkImageMemoryBarrier::GetdstQueueFamilyIndex) {
   if (value->IsNumber()) {
     self->instance.dstQueueFamilyIndex = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageMemoryBarrier.dstQueueFamilyIndex'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageMemoryBarrier.dstQueueFamilyIndex' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// image
 NAN_GETTER(_VkImageMemoryBarrier::Getimage) {
@@ -204,13 +239,23 @@ NAN_GETTER(_VkImageMemoryBarrier::Getimage) {
       ;
       self->instance.image = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkImage]' for 'VkImageMemoryBarrier.image'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkImage]' for 'VkImageMemoryBarrier.image' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->image.Reset();
     self->instance.image = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkImage]' for 'VkImageMemoryBarrier.image'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkImage]' for 'VkImageMemoryBarrier.image' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// subresourceRange
 NAN_GETTER(_VkImageMemoryBarrier::GetsubresourceRange) {
@@ -232,12 +277,22 @@ NAN_GETTER(_VkImageMemoryBarrier::GetsubresourceRange) {
       inst->flush();
       self->instance.subresourceRange = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkImageSubresourceRange]' for 'VkImageMemoryBarrier.subresourceRange'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkImageSubresourceRange]' for 'VkImageMemoryBarrier.subresourceRange' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->subresourceRange.Reset();
     memset(&self->instance.subresourceRange, 0, sizeof(VkImageSubresourceRange));
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkImageSubresourceRange]' for 'VkImageMemoryBarrier.subresourceRange'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkImageSubresourceRange]' for 'VkImageMemoryBarrier.subresourceRange' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

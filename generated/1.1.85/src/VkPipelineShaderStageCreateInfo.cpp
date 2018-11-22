@@ -95,7 +95,12 @@ NAN_GETTER(_VkPipelineShaderStageCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineShaderStageCreateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineShaderStageCreateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkPipelineShaderStageCreateInfo::GetpNext) {
@@ -111,7 +116,12 @@ NAN_GETTER(_VkPipelineShaderStageCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkPipelineShaderStageCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineShaderStageCreateInfo.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineShaderStageCreateInfo.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// stage
 NAN_GETTER(_VkPipelineShaderStageCreateInfo::Getstage) {
@@ -122,7 +132,12 @@ NAN_GETTER(_VkPipelineShaderStageCreateInfo::Getstage) {
   if (value->IsNumber()) {
     self->instance.stage = static_cast<VkShaderStageFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineShaderStageCreateInfo.stage'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineShaderStageCreateInfo.stage' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// module
 NAN_GETTER(_VkPipelineShaderStageCreateInfo::Getmodule) {
@@ -144,13 +159,23 @@ NAN_GETTER(_VkPipelineShaderStageCreateInfo::Getmodule) {
       ;
       self->instance.module = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkShaderModule]' for 'VkPipelineShaderStageCreateInfo.module'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkShaderModule]' for 'VkPipelineShaderStageCreateInfo.module' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->module.Reset();
     self->instance.module = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkShaderModule]' for 'VkPipelineShaderStageCreateInfo.module'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkShaderModule]' for 'VkPipelineShaderStageCreateInfo.module' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pName
 NAN_GETTER(_VkPipelineShaderStageCreateInfo::GetpName) {
@@ -174,7 +199,12 @@ NAN_GETTER(_VkPipelineShaderStageCreateInfo::GetpName) {
   } else if (value->IsNull()) {
     self->instance.pName = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'String' for 'VkPipelineShaderStageCreateInfo.pName'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'String' for 'VkPipelineShaderStageCreateInfo.pName' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pSpecializationInfo
 NAN_GETTER(_VkPipelineShaderStageCreateInfo::GetpSpecializationInfo) {
@@ -196,12 +226,22 @@ NAN_GETTER(_VkPipelineShaderStageCreateInfo::GetpSpecializationInfo) {
       inst->flush();
       self->instance.pSpecializationInfo = &inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkSpecializationInfo]' for 'VkPipelineShaderStageCreateInfo.pSpecializationInfo'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSpecializationInfo]' for 'VkPipelineShaderStageCreateInfo.pSpecializationInfo' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->pSpecializationInfo.Reset();
     self->instance.pSpecializationInfo = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkSpecializationInfo]' for 'VkPipelineShaderStageCreateInfo.pSpecializationInfo'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSpecializationInfo]' for 'VkPipelineShaderStageCreateInfo.pSpecializationInfo' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

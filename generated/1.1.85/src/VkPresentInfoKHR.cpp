@@ -78,7 +78,11 @@ bool _VkPresentInfoKHR::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkSemaphore::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkSemaphore]' for 'VkPresentInfoKHR.pWaitSemaphores'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSemaphore]' for 'VkPresentInfoKHR.pWaitSemaphores' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkSemaphore* result = Nan::ObjectWrap::Unwrap<_VkSemaphore>(obj);
@@ -100,7 +104,11 @@ bool _VkPresentInfoKHR::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkSwapchainKHR::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkSwapchainKHR]' for 'VkPresentInfoKHR.pSwapchains'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSwapchainKHR]' for 'VkPresentInfoKHR.pSwapchains' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkSwapchainKHR* result = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(obj);
@@ -153,7 +161,12 @@ NAN_GETTER(_VkPresentInfoKHR::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPresentInfoKHR.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPresentInfoKHR.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkPresentInfoKHR::GetpNext) {
@@ -169,7 +182,12 @@ NAN_GETTER(_VkPresentInfoKHR::GetwaitSemaphoreCount) {
   if (value->IsNumber()) {
     self->instance.waitSemaphoreCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPresentInfoKHR.waitSemaphoreCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPresentInfoKHR.waitSemaphoreCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pWaitSemaphores
 NAN_GETTER(_VkPresentInfoKHR::GetpWaitSemaphores) {
@@ -190,7 +208,12 @@ NAN_GETTER(_VkPresentInfoKHR::GetpWaitSemaphores) {
       self->pWaitSemaphores.Reset();
       self->instance.pWaitSemaphores = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkSemaphore]' for 'VkPresentInfoKHR.pWaitSemaphores'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSemaphore]' for 'VkPresentInfoKHR.pWaitSemaphores' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -199,7 +222,12 @@ NAN_GETTER(_VkPresentInfoKHR::GetpWaitSemaphores) {
   } else if (value->IsNull()) {
     self->instance.pWaitSemaphores = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkSemaphore]' for 'VkPresentInfoKHR.pWaitSemaphores'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSemaphore]' for 'VkPresentInfoKHR.pWaitSemaphores' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// swapchainCount
 NAN_GETTER(_VkPresentInfoKHR::GetswapchainCount) {
@@ -210,7 +238,12 @@ NAN_GETTER(_VkPresentInfoKHR::GetswapchainCount) {
   if (value->IsNumber()) {
     self->instance.swapchainCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPresentInfoKHR.swapchainCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPresentInfoKHR.swapchainCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pSwapchains
 NAN_GETTER(_VkPresentInfoKHR::GetpSwapchains) {
@@ -231,7 +264,12 @@ NAN_GETTER(_VkPresentInfoKHR::GetpSwapchains) {
       self->pSwapchains.Reset();
       self->instance.pSwapchains = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkSwapchainKHR]' for 'VkPresentInfoKHR.pSwapchains'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSwapchainKHR]' for 'VkPresentInfoKHR.pSwapchains' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -240,7 +278,12 @@ NAN_GETTER(_VkPresentInfoKHR::GetpSwapchains) {
   } else if (value->IsNull()) {
     self->instance.pSwapchains = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkSwapchainKHR]' for 'VkPresentInfoKHR.pSwapchains'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSwapchainKHR]' for 'VkPresentInfoKHR.pSwapchains' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pImageIndices
 NAN_GETTER(_VkPresentInfoKHR::GetpImageIndices) {
@@ -259,12 +302,22 @@ NAN_GETTER(_VkPresentInfoKHR::GetpImageIndices) {
       if (value->IsUint32Array()) {
         self->pImageIndices.Reset<v8::Array>(value.As<v8::Array>());
       } else {
-        return Nan::ThrowTypeError("Expected 'Uint32Array' for 'VkPresentInfoKHR.pImageIndices'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Uint32Array' for 'VkPresentInfoKHR.pImageIndices' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+        return;
       }
     } else if (value->IsNull()) {
       self->pImageIndices.Reset();
     } else {
-      return Nan::ThrowTypeError("Expected 'Uint32Array' for 'VkPresentInfoKHR.pImageIndices'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Uint32Array' for 'VkPresentInfoKHR.pImageIndices' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   
@@ -291,12 +344,22 @@ NAN_GETTER(_VkPresentInfoKHR::GetpResults) {
       if (value->IsInt32Array()) {
         self->pResults.Reset<v8::Array>(value.As<v8::Array>());
       } else {
-        return Nan::ThrowTypeError("Expected 'Int32Array' for 'VkPresentInfoKHR.pResults'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Int32Array' for 'VkPresentInfoKHR.pResults' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+        return;
       }
     } else if (value->IsNull()) {
       self->pResults.Reset();
     } else {
-      return Nan::ThrowTypeError("Expected 'Int32Array' for 'VkPresentInfoKHR.pResults'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Int32Array' for 'VkPresentInfoKHR.pResults' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   

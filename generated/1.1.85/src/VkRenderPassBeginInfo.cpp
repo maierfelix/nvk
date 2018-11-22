@@ -75,7 +75,11 @@ bool _VkRenderPassBeginInfo::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkClearValue::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkClearValue]' for 'VkRenderPassBeginInfo.pClearValues'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkClearValue]' for 'VkRenderPassBeginInfo.pClearValues' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkClearValue* result = Nan::ObjectWrap::Unwrap<_VkClearValue>(obj);
@@ -126,7 +130,12 @@ NAN_GETTER(_VkRenderPassBeginInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkRenderPassBeginInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkRenderPassBeginInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkRenderPassBeginInfo::GetpNext) {
@@ -153,13 +162,23 @@ NAN_GETTER(_VkRenderPassBeginInfo::GetrenderPass) {
       ;
       self->instance.renderPass = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkRenderPass]' for 'VkRenderPassBeginInfo.renderPass'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkRenderPass]' for 'VkRenderPassBeginInfo.renderPass' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->renderPass.Reset();
     self->instance.renderPass = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkRenderPass]' for 'VkRenderPassBeginInfo.renderPass'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkRenderPass]' for 'VkRenderPassBeginInfo.renderPass' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// framebuffer
 NAN_GETTER(_VkRenderPassBeginInfo::Getframebuffer) {
@@ -181,13 +200,23 @@ NAN_GETTER(_VkRenderPassBeginInfo::Getframebuffer) {
       ;
       self->instance.framebuffer = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkFramebuffer]' for 'VkRenderPassBeginInfo.framebuffer'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkFramebuffer]' for 'VkRenderPassBeginInfo.framebuffer' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->framebuffer.Reset();
     self->instance.framebuffer = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkFramebuffer]' for 'VkRenderPassBeginInfo.framebuffer'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkFramebuffer]' for 'VkRenderPassBeginInfo.framebuffer' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// renderArea
 NAN_GETTER(_VkRenderPassBeginInfo::GetrenderArea) {
@@ -209,13 +238,23 @@ NAN_GETTER(_VkRenderPassBeginInfo::GetrenderArea) {
       inst->flush();
       self->instance.renderArea = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkRect2D]' for 'VkRenderPassBeginInfo.renderArea'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkRect2D]' for 'VkRenderPassBeginInfo.renderArea' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->renderArea.Reset();
     memset(&self->instance.renderArea, 0, sizeof(VkRect2D));
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkRect2D]' for 'VkRenderPassBeginInfo.renderArea'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkRect2D]' for 'VkRenderPassBeginInfo.renderArea' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// clearValueCount
 NAN_GETTER(_VkRenderPassBeginInfo::GetclearValueCount) {
@@ -226,7 +265,12 @@ NAN_GETTER(_VkRenderPassBeginInfo::GetclearValueCount) {
   if (value->IsNumber()) {
     self->instance.clearValueCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkRenderPassBeginInfo.clearValueCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkRenderPassBeginInfo.clearValueCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pClearValues
 NAN_GETTER(_VkRenderPassBeginInfo::GetpClearValues) {
@@ -247,7 +291,12 @@ NAN_GETTER(_VkRenderPassBeginInfo::GetpClearValues) {
       self->pClearValues.Reset();
       self->instance.pClearValues = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkClearValue]' for 'VkRenderPassBeginInfo.pClearValues'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkClearValue]' for 'VkRenderPassBeginInfo.pClearValues' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -256,6 +305,11 @@ NAN_GETTER(_VkRenderPassBeginInfo::GetpClearValues) {
   } else if (value->IsNull()) {
     self->instance.pClearValues = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkClearValue]' for 'VkRenderPassBeginInfo.pClearValues'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkClearValue]' for 'VkRenderPassBeginInfo.pClearValues' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

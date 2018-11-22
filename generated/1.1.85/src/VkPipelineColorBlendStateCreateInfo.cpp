@@ -76,7 +76,11 @@ bool _VkPipelineColorBlendStateCreateInfo::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkPipelineColorBlendAttachmentState::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkPipelineColorBlendAttachmentState]' for 'VkPipelineColorBlendStateCreateInfo.pAttachments'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineColorBlendAttachmentState]' for 'VkPipelineColorBlendStateCreateInfo.pAttachments' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkPipelineColorBlendAttachmentState* result = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendAttachmentState>(obj);
@@ -98,7 +102,11 @@ bool _VkPipelineColorBlendStateCreateInfo::flush() {
     } else if (value->IsNull()) {
       memset(&self->instance.blendConstants, 0, sizeof(float));
     } else {
-      Nan::ThrowTypeError("Expected 'Array' for 'VkPipelineColorBlendStateCreateInfo.blendConstants'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Array' for 'VkPipelineColorBlendStateCreateInfo.blendConstants' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
       return false;
     }
   }
@@ -146,7 +154,12 @@ NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendStateCreateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineColorBlendStateCreateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetpNext) {
@@ -162,7 +175,12 @@ NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkPipelineColorBlendStateCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendStateCreateInfo.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineColorBlendStateCreateInfo.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// logicOpEnable
 NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetlogicOpEnable) {
@@ -173,7 +191,12 @@ NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetlogicOpEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.logicOpEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendStateCreateInfo.logicOpEnable'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineColorBlendStateCreateInfo.logicOpEnable' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// logicOp
 NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetlogicOp) {
@@ -184,7 +207,12 @@ NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetlogicOp) {
   if (value->IsNumber()) {
     self->instance.logicOp = static_cast<VkLogicOp>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendStateCreateInfo.logicOp'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineColorBlendStateCreateInfo.logicOp' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// attachmentCount
 NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetattachmentCount) {
@@ -195,7 +223,12 @@ NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetattachmentCount) {
   if (value->IsNumber()) {
     self->instance.attachmentCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineColorBlendStateCreateInfo.attachmentCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineColorBlendStateCreateInfo.attachmentCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pAttachments
 NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetpAttachments) {
@@ -216,7 +249,12 @@ NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetpAttachments) {
       self->pAttachments.Reset();
       self->instance.pAttachments = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkPipelineColorBlendAttachmentState]' for 'VkPipelineColorBlendStateCreateInfo.pAttachments'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineColorBlendAttachmentState]' for 'VkPipelineColorBlendStateCreateInfo.pAttachments' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -225,7 +263,12 @@ NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetpAttachments) {
   } else if (value->IsNull()) {
     self->instance.pAttachments = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkPipelineColorBlendAttachmentState]' for 'VkPipelineColorBlendStateCreateInfo.pAttachments'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineColorBlendAttachmentState]' for 'VkPipelineColorBlendStateCreateInfo.pAttachments' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// blendConstants
 NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetblendConstants) {
@@ -243,7 +286,12 @@ NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetblendConstants) {
     } else if (value->IsNull()) {
       self->blendConstants.Reset();
     } else {
-      return Nan::ThrowTypeError("Expected 'Array' for 'VkPipelineColorBlendStateCreateInfo.blendConstants'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Array' for 'VkPipelineColorBlendStateCreateInfo.blendConstants' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
 }

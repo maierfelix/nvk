@@ -65,7 +65,11 @@ bool _VkDescriptorSetLayoutCreateInfo::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkDescriptorSetLayoutBinding::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkDescriptorSetLayoutBinding]' for 'VkDescriptorSetLayoutCreateInfo.pBindings'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorSetLayoutBinding]' for 'VkDescriptorSetLayoutCreateInfo.pBindings' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkDescriptorSetLayoutBinding* result = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutBinding>(obj);
@@ -112,7 +116,12 @@ NAN_GETTER(_VkDescriptorSetLayoutCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorSetLayoutCreateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDescriptorSetLayoutCreateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkDescriptorSetLayoutCreateInfo::GetpNext) {
@@ -128,7 +137,12 @@ NAN_GETTER(_VkDescriptorSetLayoutCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkDescriptorSetLayoutCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorSetLayoutCreateInfo.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDescriptorSetLayoutCreateInfo.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// bindingCount
 NAN_GETTER(_VkDescriptorSetLayoutCreateInfo::GetbindingCount) {
@@ -139,7 +153,12 @@ NAN_GETTER(_VkDescriptorSetLayoutCreateInfo::GetbindingCount) {
   if (value->IsNumber()) {
     self->instance.bindingCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorSetLayoutCreateInfo.bindingCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDescriptorSetLayoutCreateInfo.bindingCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pBindings
 NAN_GETTER(_VkDescriptorSetLayoutCreateInfo::GetpBindings) {
@@ -160,7 +179,12 @@ NAN_GETTER(_VkDescriptorSetLayoutCreateInfo::GetpBindings) {
       self->pBindings.Reset();
       self->instance.pBindings = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkDescriptorSetLayoutBinding]' for 'VkDescriptorSetLayoutCreateInfo.pBindings'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorSetLayoutBinding]' for 'VkDescriptorSetLayoutCreateInfo.pBindings' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -169,6 +193,11 @@ NAN_GETTER(_VkDescriptorSetLayoutCreateInfo::GetpBindings) {
   } else if (value->IsNull()) {
     self->instance.pBindings = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkDescriptorSetLayoutBinding]' for 'VkDescriptorSetLayoutCreateInfo.pBindings'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorSetLayoutBinding]' for 'VkDescriptorSetLayoutCreateInfo.pBindings' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

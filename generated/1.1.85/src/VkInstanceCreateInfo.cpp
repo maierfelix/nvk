@@ -140,7 +140,12 @@ NAN_GETTER(_VkInstanceCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkInstanceCreateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkInstanceCreateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkInstanceCreateInfo::GetpNext) {
@@ -156,7 +161,12 @@ NAN_GETTER(_VkInstanceCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkInstanceCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkInstanceCreateInfo.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkInstanceCreateInfo.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pApplicationInfo
 NAN_GETTER(_VkInstanceCreateInfo::GetpApplicationInfo) {
@@ -178,13 +188,23 @@ NAN_GETTER(_VkInstanceCreateInfo::GetpApplicationInfo) {
       inst->flush();
       self->instance.pApplicationInfo = &inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkApplicationInfo]' for 'VkInstanceCreateInfo.pApplicationInfo'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkApplicationInfo]' for 'VkInstanceCreateInfo.pApplicationInfo' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->pApplicationInfo.Reset();
     self->instance.pApplicationInfo = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkApplicationInfo]' for 'VkInstanceCreateInfo.pApplicationInfo'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkApplicationInfo]' for 'VkInstanceCreateInfo.pApplicationInfo' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// enabledLayerCount
 NAN_GETTER(_VkInstanceCreateInfo::GetenabledLayerCount) {
@@ -195,7 +215,12 @@ NAN_GETTER(_VkInstanceCreateInfo::GetenabledLayerCount) {
   if (value->IsNumber()) {
     self->instance.enabledLayerCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkInstanceCreateInfo.enabledLayerCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkInstanceCreateInfo.enabledLayerCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// ppEnabledLayerNames
 NAN_GETTER(_VkInstanceCreateInfo::GetppEnabledLayerNames) {
@@ -216,7 +241,12 @@ NAN_GETTER(_VkInstanceCreateInfo::GetppEnabledLayerNames) {
       self->ppEnabledLayerNames.Reset();
       self->instance.ppEnabledLayerNames = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Array' for 'VkInstanceCreateInfo.ppEnabledLayerNames'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Array' for 'VkInstanceCreateInfo.ppEnabledLayerNames' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
 }// enabledExtensionCount
@@ -228,7 +258,12 @@ NAN_GETTER(_VkInstanceCreateInfo::GetenabledExtensionCount) {
   if (value->IsNumber()) {
     self->instance.enabledExtensionCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkInstanceCreateInfo.enabledExtensionCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkInstanceCreateInfo.enabledExtensionCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// ppEnabledExtensionNames
 NAN_GETTER(_VkInstanceCreateInfo::GetppEnabledExtensionNames) {
@@ -249,7 +284,12 @@ NAN_GETTER(_VkInstanceCreateInfo::GetppEnabledExtensionNames) {
       self->ppEnabledExtensionNames.Reset();
       self->instance.ppEnabledExtensionNames = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Array' for 'VkInstanceCreateInfo.ppEnabledExtensionNames'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Array' for 'VkInstanceCreateInfo.ppEnabledExtensionNames' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
 }

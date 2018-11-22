@@ -84,7 +84,12 @@ NAN_GETTER(_VkImageSubresourceRange::GetaspectMask) {
   if (value->IsNumber()) {
     self->instance.aspectMask = static_cast<VkImageAspectFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageSubresourceRange.aspectMask'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageSubresourceRange.aspectMask' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// baseMipLevel
 NAN_GETTER(_VkImageSubresourceRange::GetbaseMipLevel) {
@@ -95,7 +100,12 @@ NAN_GETTER(_VkImageSubresourceRange::GetbaseMipLevel) {
   if (value->IsNumber()) {
     self->instance.baseMipLevel = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageSubresourceRange.baseMipLevel'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageSubresourceRange.baseMipLevel' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// levelCount
 NAN_GETTER(_VkImageSubresourceRange::GetlevelCount) {
@@ -106,7 +116,12 @@ NAN_GETTER(_VkImageSubresourceRange::GetlevelCount) {
   if (value->IsNumber()) {
     self->instance.levelCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageSubresourceRange.levelCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageSubresourceRange.levelCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// baseArrayLayer
 NAN_GETTER(_VkImageSubresourceRange::GetbaseArrayLayer) {
@@ -117,7 +132,12 @@ NAN_GETTER(_VkImageSubresourceRange::GetbaseArrayLayer) {
   if (value->IsNumber()) {
     self->instance.baseArrayLayer = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageSubresourceRange.baseArrayLayer'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageSubresourceRange.baseArrayLayer' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// layerCount
 NAN_GETTER(_VkImageSubresourceRange::GetlayerCount) {
@@ -128,6 +148,11 @@ NAN_GETTER(_VkImageSubresourceRange::GetlayerCount) {
   if (value->IsNumber()) {
     self->instance.layerCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkImageSubresourceRange.layerCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkImageSubresourceRange.layerCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

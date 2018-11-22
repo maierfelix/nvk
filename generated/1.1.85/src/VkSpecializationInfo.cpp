@@ -63,7 +63,11 @@ bool _VkSpecializationInfo::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkSpecializationMapEntry::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkSpecializationMapEntry]' for 'VkSpecializationInfo.pMapEntries'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSpecializationMapEntry]' for 'VkSpecializationInfo.pMapEntries' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkSpecializationMapEntry* result = Nan::ObjectWrap::Unwrap<_VkSpecializationMapEntry>(obj);
@@ -108,7 +112,12 @@ NAN_GETTER(_VkSpecializationInfo::GetmapEntryCount) {
   if (value->IsNumber()) {
     self->instance.mapEntryCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSpecializationInfo.mapEntryCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSpecializationInfo.mapEntryCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pMapEntries
 NAN_GETTER(_VkSpecializationInfo::GetpMapEntries) {
@@ -129,7 +138,12 @@ NAN_GETTER(_VkSpecializationInfo::GetpMapEntries) {
       self->pMapEntries.Reset();
       self->instance.pMapEntries = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkSpecializationMapEntry]' for 'VkSpecializationInfo.pMapEntries'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSpecializationMapEntry]' for 'VkSpecializationInfo.pMapEntries' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -138,7 +152,12 @@ NAN_GETTER(_VkSpecializationInfo::GetpMapEntries) {
   } else if (value->IsNull()) {
     self->instance.pMapEntries = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkSpecializationMapEntry]' for 'VkSpecializationInfo.pMapEntries'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSpecializationMapEntry]' for 'VkSpecializationInfo.pMapEntries' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// dataSize
 NAN_GETTER(_VkSpecializationInfo::GetdataSize) {
@@ -149,7 +168,12 @@ NAN_GETTER(_VkSpecializationInfo::GetdataSize) {
   if (value->IsNumber()) {
     self->instance.dataSize = static_cast<size_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkSpecializationInfo.dataSize'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkSpecializationInfo.dataSize' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pData
 NAN_GETTER(_VkSpecializationInfo::GetpData) {

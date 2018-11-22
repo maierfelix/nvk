@@ -93,13 +93,23 @@ NAN_GETTER(_VkClearRect::Getrect) {
       inst->flush();
       self->instance.rect = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkRect2D]' for 'VkClearRect.rect'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkRect2D]' for 'VkClearRect.rect' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->rect.Reset();
     memset(&self->instance.rect, 0, sizeof(VkRect2D));
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkRect2D]' for 'VkClearRect.rect'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkRect2D]' for 'VkClearRect.rect' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// baseArrayLayer
 NAN_GETTER(_VkClearRect::GetbaseArrayLayer) {
@@ -110,7 +120,12 @@ NAN_GETTER(_VkClearRect::GetbaseArrayLayer) {
   if (value->IsNumber()) {
     self->instance.baseArrayLayer = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkClearRect.baseArrayLayer'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkClearRect.baseArrayLayer' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// layerCount
 NAN_GETTER(_VkClearRect::GetlayerCount) {
@@ -121,6 +136,11 @@ NAN_GETTER(_VkClearRect::GetlayerCount) {
   if (value->IsNumber()) {
     self->instance.layerCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkClearRect.layerCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkClearRect.layerCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

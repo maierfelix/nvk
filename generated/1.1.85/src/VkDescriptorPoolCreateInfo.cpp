@@ -67,7 +67,11 @@ bool _VkDescriptorPoolCreateInfo::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkDescriptorPoolSize::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkDescriptorPoolSize]' for 'VkDescriptorPoolCreateInfo.pPoolSizes'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorPoolSize]' for 'VkDescriptorPoolCreateInfo.pPoolSizes' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkDescriptorPoolSize* result = Nan::ObjectWrap::Unwrap<_VkDescriptorPoolSize>(obj);
@@ -116,7 +120,12 @@ NAN_GETTER(_VkDescriptorPoolCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorPoolCreateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDescriptorPoolCreateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkDescriptorPoolCreateInfo::GetpNext) {
@@ -132,7 +141,12 @@ NAN_GETTER(_VkDescriptorPoolCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkDescriptorPoolCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorPoolCreateInfo.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDescriptorPoolCreateInfo.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// maxSets
 NAN_GETTER(_VkDescriptorPoolCreateInfo::GetmaxSets) {
@@ -143,7 +157,12 @@ NAN_GETTER(_VkDescriptorPoolCreateInfo::GetmaxSets) {
   if (value->IsNumber()) {
     self->instance.maxSets = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorPoolCreateInfo.maxSets'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDescriptorPoolCreateInfo.maxSets' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// poolSizeCount
 NAN_GETTER(_VkDescriptorPoolCreateInfo::GetpoolSizeCount) {
@@ -154,7 +173,12 @@ NAN_GETTER(_VkDescriptorPoolCreateInfo::GetpoolSizeCount) {
   if (value->IsNumber()) {
     self->instance.poolSizeCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorPoolCreateInfo.poolSizeCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDescriptorPoolCreateInfo.poolSizeCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pPoolSizes
 NAN_GETTER(_VkDescriptorPoolCreateInfo::GetpPoolSizes) {
@@ -175,7 +199,12 @@ NAN_GETTER(_VkDescriptorPoolCreateInfo::GetpPoolSizes) {
       self->pPoolSizes.Reset();
       self->instance.pPoolSizes = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkDescriptorPoolSize]' for 'VkDescriptorPoolCreateInfo.pPoolSizes'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorPoolSize]' for 'VkDescriptorPoolCreateInfo.pPoolSizes' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -184,6 +213,11 @@ NAN_GETTER(_VkDescriptorPoolCreateInfo::GetpPoolSizes) {
   } else if (value->IsNull()) {
     self->instance.pPoolSizes = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkDescriptorPoolSize]' for 'VkDescriptorPoolCreateInfo.pPoolSizes'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorPoolSize]' for 'VkDescriptorPoolCreateInfo.pPoolSizes' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

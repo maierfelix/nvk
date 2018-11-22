@@ -83,7 +83,11 @@ bool _VkRenderPassCreateInfo::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkAttachmentDescription::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkAttachmentDescription]' for 'VkRenderPassCreateInfo.pAttachments'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkAttachmentDescription]' for 'VkRenderPassCreateInfo.pAttachments' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkAttachmentDescription* result = Nan::ObjectWrap::Unwrap<_VkAttachmentDescription>(obj);
@@ -105,7 +109,11 @@ bool _VkRenderPassCreateInfo::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkSubpassDescription::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkSubpassDescription]' for 'VkRenderPassCreateInfo.pSubpasses'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSubpassDescription]' for 'VkRenderPassCreateInfo.pSubpasses' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkSubpassDescription* result = Nan::ObjectWrap::Unwrap<_VkSubpassDescription>(obj);
@@ -127,7 +135,11 @@ bool _VkRenderPassCreateInfo::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkSubpassDependency::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkSubpassDependency]' for 'VkRenderPassCreateInfo.pDependencies'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSubpassDependency]' for 'VkRenderPassCreateInfo.pDependencies' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkSubpassDependency* result = Nan::ObjectWrap::Unwrap<_VkSubpassDependency>(obj);
@@ -182,7 +194,12 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkRenderPassCreateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkRenderPassCreateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkRenderPassCreateInfo::GetpNext) {
@@ -198,7 +215,12 @@ NAN_GETTER(_VkRenderPassCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkRenderPassCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkRenderPassCreateInfo.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkRenderPassCreateInfo.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// attachmentCount
 NAN_GETTER(_VkRenderPassCreateInfo::GetattachmentCount) {
@@ -209,7 +231,12 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetattachmentCount) {
   if (value->IsNumber()) {
     self->instance.attachmentCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkRenderPassCreateInfo.attachmentCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkRenderPassCreateInfo.attachmentCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pAttachments
 NAN_GETTER(_VkRenderPassCreateInfo::GetpAttachments) {
@@ -230,7 +257,12 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetpAttachments) {
       self->pAttachments.Reset();
       self->instance.pAttachments = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkAttachmentDescription]' for 'VkRenderPassCreateInfo.pAttachments'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkAttachmentDescription]' for 'VkRenderPassCreateInfo.pAttachments' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -239,7 +271,12 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetpAttachments) {
   } else if (value->IsNull()) {
     self->instance.pAttachments = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkAttachmentDescription]' for 'VkRenderPassCreateInfo.pAttachments'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkAttachmentDescription]' for 'VkRenderPassCreateInfo.pAttachments' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// subpassCount
 NAN_GETTER(_VkRenderPassCreateInfo::GetsubpassCount) {
@@ -250,7 +287,12 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetsubpassCount) {
   if (value->IsNumber()) {
     self->instance.subpassCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkRenderPassCreateInfo.subpassCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkRenderPassCreateInfo.subpassCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pSubpasses
 NAN_GETTER(_VkRenderPassCreateInfo::GetpSubpasses) {
@@ -271,7 +313,12 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetpSubpasses) {
       self->pSubpasses.Reset();
       self->instance.pSubpasses = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkSubpassDescription]' for 'VkRenderPassCreateInfo.pSubpasses'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSubpassDescription]' for 'VkRenderPassCreateInfo.pSubpasses' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -280,7 +327,12 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetpSubpasses) {
   } else if (value->IsNull()) {
     self->instance.pSubpasses = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkSubpassDescription]' for 'VkRenderPassCreateInfo.pSubpasses'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSubpassDescription]' for 'VkRenderPassCreateInfo.pSubpasses' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// dependencyCount
 NAN_GETTER(_VkRenderPassCreateInfo::GetdependencyCount) {
@@ -291,7 +343,12 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetdependencyCount) {
   if (value->IsNumber()) {
     self->instance.dependencyCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkRenderPassCreateInfo.dependencyCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkRenderPassCreateInfo.dependencyCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pDependencies
 NAN_GETTER(_VkRenderPassCreateInfo::GetpDependencies) {
@@ -312,7 +369,12 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetpDependencies) {
       self->pDependencies.Reset();
       self->instance.pDependencies = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkSubpassDependency]' for 'VkRenderPassCreateInfo.pDependencies'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSubpassDependency]' for 'VkRenderPassCreateInfo.pDependencies' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -321,6 +383,11 @@ NAN_GETTER(_VkRenderPassCreateInfo::GetpDependencies) {
   } else if (value->IsNull()) {
     self->instance.pDependencies = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkSubpassDependency]' for 'VkRenderPassCreateInfo.pDependencies'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkSubpassDependency]' for 'VkRenderPassCreateInfo.pDependencies' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

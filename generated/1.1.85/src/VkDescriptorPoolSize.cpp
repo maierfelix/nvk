@@ -72,7 +72,12 @@ NAN_GETTER(_VkDescriptorPoolSize::Gettype) {
   if (value->IsNumber()) {
     self->instance.type = static_cast<VkDescriptorType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorPoolSize.type'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDescriptorPoolSize.type' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// descriptorCount
 NAN_GETTER(_VkDescriptorPoolSize::GetdescriptorCount) {
@@ -83,6 +88,11 @@ NAN_GETTER(_VkDescriptorPoolSize::GetdescriptorCount) {
   if (value->IsNumber()) {
     self->instance.descriptorCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorPoolSize.descriptorCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDescriptorPoolSize.descriptorCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

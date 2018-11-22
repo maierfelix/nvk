@@ -76,7 +76,12 @@ NAN_GETTER(_VkPushConstantRange::GetstageFlags) {
   if (value->IsNumber()) {
     self->instance.stageFlags = static_cast<VkShaderStageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPushConstantRange.stageFlags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPushConstantRange.stageFlags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// offset
 NAN_GETTER(_VkPushConstantRange::Getoffset) {
@@ -87,7 +92,12 @@ NAN_GETTER(_VkPushConstantRange::Getoffset) {
   if (value->IsNumber()) {
     self->instance.offset = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPushConstantRange.offset'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPushConstantRange.offset' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// size
 NAN_GETTER(_VkPushConstantRange::Getsize) {
@@ -98,6 +108,11 @@ NAN_GETTER(_VkPushConstantRange::Getsize) {
   if (value->IsNumber()) {
     self->instance.size = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPushConstantRange.size'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPushConstantRange.size' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

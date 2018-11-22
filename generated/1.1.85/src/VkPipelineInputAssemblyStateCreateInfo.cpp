@@ -85,7 +85,12 @@ NAN_GETTER(_VkPipelineInputAssemblyStateCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineInputAssemblyStateCreateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineInputAssemblyStateCreateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkPipelineInputAssemblyStateCreateInfo::GetpNext) {
@@ -101,7 +106,12 @@ NAN_GETTER(_VkPipelineInputAssemblyStateCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkPipelineInputAssemblyStateCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineInputAssemblyStateCreateInfo.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineInputAssemblyStateCreateInfo.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// topology
 NAN_GETTER(_VkPipelineInputAssemblyStateCreateInfo::Gettopology) {
@@ -112,7 +122,12 @@ NAN_GETTER(_VkPipelineInputAssemblyStateCreateInfo::Gettopology) {
   if (value->IsNumber()) {
     self->instance.topology = static_cast<VkPrimitiveTopology>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineInputAssemblyStateCreateInfo.topology'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineInputAssemblyStateCreateInfo.topology' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// primitiveRestartEnable
 NAN_GETTER(_VkPipelineInputAssemblyStateCreateInfo::GetprimitiveRestartEnable) {
@@ -123,6 +138,11 @@ NAN_GETTER(_VkPipelineInputAssemblyStateCreateInfo::GetprimitiveRestartEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.primitiveRestartEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineInputAssemblyStateCreateInfo.primitiveRestartEnable'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineInputAssemblyStateCreateInfo.primitiveRestartEnable' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

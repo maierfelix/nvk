@@ -68,7 +68,11 @@ bool _VkClearColorValue::flush() {
     } else if (value->IsNull()) {
       memset(&self->instance.float32, 0, sizeof(float));
     } else {
-      Nan::ThrowTypeError("Expected 'Array' for 'VkClearColorValue.float32'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Array' for 'VkClearColorValue.float32' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
       return false;
     }
   }if (!(self->int32.IsEmpty())) {
@@ -85,7 +89,11 @@ bool _VkClearColorValue::flush() {
     } else if (value->IsNull()) {
       memset(&self->instance.int32, 0, sizeof(int32_t));
     } else {
-      Nan::ThrowTypeError("Expected 'Array' for 'VkClearColorValue.int32'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Array' for 'VkClearColorValue.int32' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
       return false;
     }
   }if (!(self->uint32.IsEmpty())) {
@@ -102,7 +110,11 @@ bool _VkClearColorValue::flush() {
     } else if (value->IsNull()) {
       memset(&self->instance.uint32, 0, sizeof(uint32_t));
     } else {
-      Nan::ThrowTypeError("Expected 'Array' for 'VkClearColorValue.uint32'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Array' for 'VkClearColorValue.uint32' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
       return false;
     }
   }
@@ -147,7 +159,12 @@ NAN_GETTER(_VkClearColorValue::Getfloat32) {
     } else if (value->IsNull()) {
       self->float32.Reset();
     } else {
-      return Nan::ThrowTypeError("Expected 'Array' for 'VkClearColorValue.float32'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Array' for 'VkClearColorValue.float32' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
 }// int32
@@ -166,7 +183,12 @@ NAN_GETTER(_VkClearColorValue::Getint32) {
     } else if (value->IsNull()) {
       self->int32.Reset();
     } else {
-      return Nan::ThrowTypeError("Expected 'Array' for 'VkClearColorValue.int32'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Array' for 'VkClearColorValue.int32' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
 }// uint32
@@ -185,7 +207,12 @@ NAN_GETTER(_VkClearColorValue::Getuint32) {
     } else if (value->IsNull()) {
       self->uint32.Reset();
     } else {
-      return Nan::ThrowTypeError("Expected 'Array' for 'VkClearColorValue.uint32'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Array' for 'VkClearColorValue.uint32' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
 }

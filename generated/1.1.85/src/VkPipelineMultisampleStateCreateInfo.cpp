@@ -102,7 +102,12 @@ NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineMultisampleStateCreateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineMultisampleStateCreateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetpNext) {
@@ -118,7 +123,12 @@ NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkPipelineMultisampleStateCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineMultisampleStateCreateInfo.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineMultisampleStateCreateInfo.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// rasterizationSamples
 NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetrasterizationSamples) {
@@ -129,7 +139,12 @@ NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetrasterizationSamples) {
   if (value->IsNumber()) {
     self->instance.rasterizationSamples = static_cast<VkSampleCountFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineMultisampleStateCreateInfo.rasterizationSamples'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineMultisampleStateCreateInfo.rasterizationSamples' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// sampleShadingEnable
 NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetsampleShadingEnable) {
@@ -140,7 +155,12 @@ NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetsampleShadingEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.sampleShadingEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineMultisampleStateCreateInfo.sampleShadingEnable'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineMultisampleStateCreateInfo.sampleShadingEnable' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// minSampleShading
 NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetminSampleShading) {
@@ -151,7 +171,12 @@ NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetminSampleShading) {
   if (value->IsNumber()) {
     self->instance.minSampleShading = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineMultisampleStateCreateInfo.minSampleShading'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineMultisampleStateCreateInfo.minSampleShading' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pSampleMask
 NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetpSampleMask) {
@@ -170,12 +195,22 @@ NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetpSampleMask) {
       if (value->IsUint32Array()) {
         self->pSampleMask.Reset<v8::Array>(value.As<v8::Array>());
       } else {
-        return Nan::ThrowTypeError("Expected 'Uint32Array' for 'VkPipelineMultisampleStateCreateInfo.pSampleMask'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Uint32Array' for 'VkPipelineMultisampleStateCreateInfo.pSampleMask' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+        return;
       }
     } else if (value->IsNull()) {
       self->pSampleMask.Reset();
     } else {
-      return Nan::ThrowTypeError("Expected 'Uint32Array' for 'VkPipelineMultisampleStateCreateInfo.pSampleMask'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Uint32Array' for 'VkPipelineMultisampleStateCreateInfo.pSampleMask' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   
@@ -194,7 +229,12 @@ NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetalphaToCoverageEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.alphaToCoverageEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineMultisampleStateCreateInfo.alphaToCoverageEnable'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineMultisampleStateCreateInfo.alphaToCoverageEnable' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// alphaToOneEnable
 NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetalphaToOneEnable) {
@@ -205,6 +245,11 @@ NAN_GETTER(_VkPipelineMultisampleStateCreateInfo::GetalphaToOneEnable) {
   if (value->IsBoolean() || value->IsNumber()) {
     self->instance.alphaToOneEnable = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineMultisampleStateCreateInfo.alphaToOneEnable'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineMultisampleStateCreateInfo.alphaToOneEnable' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

@@ -85,7 +85,11 @@ bool _VkWriteDescriptorSet::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkDescriptorImageInfo::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkDescriptorImageInfo]' for 'VkWriteDescriptorSet.pImageInfo'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorImageInfo]' for 'VkWriteDescriptorSet.pImageInfo' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkDescriptorImageInfo* result = Nan::ObjectWrap::Unwrap<_VkDescriptorImageInfo>(obj);
@@ -107,7 +111,11 @@ bool _VkWriteDescriptorSet::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkDescriptorBufferInfo::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkDescriptorBufferInfo]' for 'VkWriteDescriptorSet.pBufferInfo'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorBufferInfo]' for 'VkWriteDescriptorSet.pBufferInfo' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkDescriptorBufferInfo* result = Nan::ObjectWrap::Unwrap<_VkDescriptorBufferInfo>(obj);
@@ -129,7 +137,11 @@ bool _VkWriteDescriptorSet::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkBufferView::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkBufferView]' for 'VkWriteDescriptorSet.pTexelBufferView'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkBufferView]' for 'VkWriteDescriptorSet.pTexelBufferView' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkBufferView* result = Nan::ObjectWrap::Unwrap<_VkBufferView>(obj);
@@ -186,7 +198,12 @@ NAN_GETTER(_VkWriteDescriptorSet::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkWriteDescriptorSet.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkWriteDescriptorSet.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkWriteDescriptorSet::GetpNext) {
@@ -213,13 +230,23 @@ NAN_GETTER(_VkWriteDescriptorSet::GetdstSet) {
       ;
       self->instance.dstSet = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkDescriptorSet]' for 'VkWriteDescriptorSet.dstSet'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorSet]' for 'VkWriteDescriptorSet.dstSet' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->dstSet.Reset();
     self->instance.dstSet = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkDescriptorSet]' for 'VkWriteDescriptorSet.dstSet'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorSet]' for 'VkWriteDescriptorSet.dstSet' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// dstBinding
 NAN_GETTER(_VkWriteDescriptorSet::GetdstBinding) {
@@ -230,7 +257,12 @@ NAN_GETTER(_VkWriteDescriptorSet::GetdstBinding) {
   if (value->IsNumber()) {
     self->instance.dstBinding = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkWriteDescriptorSet.dstBinding'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkWriteDescriptorSet.dstBinding' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// dstArrayElement
 NAN_GETTER(_VkWriteDescriptorSet::GetdstArrayElement) {
@@ -241,7 +273,12 @@ NAN_GETTER(_VkWriteDescriptorSet::GetdstArrayElement) {
   if (value->IsNumber()) {
     self->instance.dstArrayElement = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkWriteDescriptorSet.dstArrayElement'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkWriteDescriptorSet.dstArrayElement' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// descriptorCount
 NAN_GETTER(_VkWriteDescriptorSet::GetdescriptorCount) {
@@ -252,7 +289,12 @@ NAN_GETTER(_VkWriteDescriptorSet::GetdescriptorCount) {
   if (value->IsNumber()) {
     self->instance.descriptorCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkWriteDescriptorSet.descriptorCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkWriteDescriptorSet.descriptorCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// descriptorType
 NAN_GETTER(_VkWriteDescriptorSet::GetdescriptorType) {
@@ -263,7 +305,12 @@ NAN_GETTER(_VkWriteDescriptorSet::GetdescriptorType) {
   if (value->IsNumber()) {
     self->instance.descriptorType = static_cast<VkDescriptorType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkWriteDescriptorSet.descriptorType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkWriteDescriptorSet.descriptorType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pImageInfo
 NAN_GETTER(_VkWriteDescriptorSet::GetpImageInfo) {
@@ -284,7 +331,12 @@ NAN_GETTER(_VkWriteDescriptorSet::GetpImageInfo) {
       self->pImageInfo.Reset();
       self->instance.pImageInfo = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkDescriptorImageInfo]' for 'VkWriteDescriptorSet.pImageInfo'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorImageInfo]' for 'VkWriteDescriptorSet.pImageInfo' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -293,7 +345,12 @@ NAN_GETTER(_VkWriteDescriptorSet::GetpImageInfo) {
   } else if (value->IsNull()) {
     self->instance.pImageInfo = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkDescriptorImageInfo]' for 'VkWriteDescriptorSet.pImageInfo'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorImageInfo]' for 'VkWriteDescriptorSet.pImageInfo' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pBufferInfo
 NAN_GETTER(_VkWriteDescriptorSet::GetpBufferInfo) {
@@ -314,7 +371,12 @@ NAN_GETTER(_VkWriteDescriptorSet::GetpBufferInfo) {
       self->pBufferInfo.Reset();
       self->instance.pBufferInfo = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkDescriptorBufferInfo]' for 'VkWriteDescriptorSet.pBufferInfo'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorBufferInfo]' for 'VkWriteDescriptorSet.pBufferInfo' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -323,7 +385,12 @@ NAN_GETTER(_VkWriteDescriptorSet::GetpBufferInfo) {
   } else if (value->IsNull()) {
     self->instance.pBufferInfo = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkDescriptorBufferInfo]' for 'VkWriteDescriptorSet.pBufferInfo'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorBufferInfo]' for 'VkWriteDescriptorSet.pBufferInfo' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pTexelBufferView
 NAN_GETTER(_VkWriteDescriptorSet::GetpTexelBufferView) {
@@ -344,7 +411,12 @@ NAN_GETTER(_VkWriteDescriptorSet::GetpTexelBufferView) {
       self->pTexelBufferView.Reset();
       self->instance.pTexelBufferView = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkBufferView]' for 'VkWriteDescriptorSet.pTexelBufferView'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkBufferView]' for 'VkWriteDescriptorSet.pTexelBufferView' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -353,6 +425,11 @@ NAN_GETTER(_VkWriteDescriptorSet::GetpTexelBufferView) {
   } else if (value->IsNull()) {
     self->instance.pTexelBufferView = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkBufferView]' for 'VkWriteDescriptorSet.pTexelBufferView'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkBufferView]' for 'VkWriteDescriptorSet.pTexelBufferView' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

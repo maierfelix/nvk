@@ -72,7 +72,12 @@ NAN_GETTER(_VkAttachmentReference::Getattachment) {
   if (value->IsNumber()) {
     self->instance.attachment = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkAttachmentReference.attachment'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkAttachmentReference.attachment' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// layout
 NAN_GETTER(_VkAttachmentReference::Getlayout) {
@@ -83,6 +88,11 @@ NAN_GETTER(_VkAttachmentReference::Getlayout) {
   if (value->IsNumber()) {
     self->instance.layout = static_cast<VkImageLayout>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkAttachmentReference.layout'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkAttachmentReference.layout' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

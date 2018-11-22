@@ -87,13 +87,23 @@ NAN_GETTER(_VkDescriptorBufferInfo::Getbuffer) {
       ;
       self->instance.buffer = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkBuffer]' for 'VkDescriptorBufferInfo.buffer'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkBuffer]' for 'VkDescriptorBufferInfo.buffer' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->buffer.Reset();
     self->instance.buffer = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkBuffer]' for 'VkDescriptorBufferInfo.buffer'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkBuffer]' for 'VkDescriptorBufferInfo.buffer' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// offset
 NAN_GETTER(_VkDescriptorBufferInfo::Getoffset) {
@@ -104,7 +114,12 @@ NAN_GETTER(_VkDescriptorBufferInfo::Getoffset) {
   if (value->IsNumber()) {
     self->instance.offset = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorBufferInfo.offset'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDescriptorBufferInfo.offset' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// range
 NAN_GETTER(_VkDescriptorBufferInfo::Getrange) {
@@ -115,6 +130,11 @@ NAN_GETTER(_VkDescriptorBufferInfo::Getrange) {
   if (value->IsNumber()) {
     self->instance.range = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDescriptorBufferInfo.range'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDescriptorBufferInfo.range' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

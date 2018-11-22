@@ -101,7 +101,12 @@ NAN_GETTER(_VkBufferMemoryBarrier::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferMemoryBarrier.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkBufferMemoryBarrier.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkBufferMemoryBarrier::GetpNext) {
@@ -117,7 +122,12 @@ NAN_GETTER(_VkBufferMemoryBarrier::GetsrcAccessMask) {
   if (value->IsNumber()) {
     self->instance.srcAccessMask = static_cast<VkAccessFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferMemoryBarrier.srcAccessMask'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkBufferMemoryBarrier.srcAccessMask' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// dstAccessMask
 NAN_GETTER(_VkBufferMemoryBarrier::GetdstAccessMask) {
@@ -128,7 +138,12 @@ NAN_GETTER(_VkBufferMemoryBarrier::GetdstAccessMask) {
   if (value->IsNumber()) {
     self->instance.dstAccessMask = static_cast<VkAccessFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferMemoryBarrier.dstAccessMask'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkBufferMemoryBarrier.dstAccessMask' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// srcQueueFamilyIndex
 NAN_GETTER(_VkBufferMemoryBarrier::GetsrcQueueFamilyIndex) {
@@ -139,7 +154,12 @@ NAN_GETTER(_VkBufferMemoryBarrier::GetsrcQueueFamilyIndex) {
   if (value->IsNumber()) {
     self->instance.srcQueueFamilyIndex = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferMemoryBarrier.srcQueueFamilyIndex'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkBufferMemoryBarrier.srcQueueFamilyIndex' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// dstQueueFamilyIndex
 NAN_GETTER(_VkBufferMemoryBarrier::GetdstQueueFamilyIndex) {
@@ -150,7 +170,12 @@ NAN_GETTER(_VkBufferMemoryBarrier::GetdstQueueFamilyIndex) {
   if (value->IsNumber()) {
     self->instance.dstQueueFamilyIndex = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferMemoryBarrier.dstQueueFamilyIndex'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkBufferMemoryBarrier.dstQueueFamilyIndex' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// buffer
 NAN_GETTER(_VkBufferMemoryBarrier::Getbuffer) {
@@ -172,13 +197,23 @@ NAN_GETTER(_VkBufferMemoryBarrier::Getbuffer) {
       ;
       self->instance.buffer = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkBuffer]' for 'VkBufferMemoryBarrier.buffer'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkBuffer]' for 'VkBufferMemoryBarrier.buffer' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->buffer.Reset();
     self->instance.buffer = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkBuffer]' for 'VkBufferMemoryBarrier.buffer'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkBuffer]' for 'VkBufferMemoryBarrier.buffer' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// offset
 NAN_GETTER(_VkBufferMemoryBarrier::Getoffset) {
@@ -189,7 +224,12 @@ NAN_GETTER(_VkBufferMemoryBarrier::Getoffset) {
   if (value->IsNumber()) {
     self->instance.offset = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferMemoryBarrier.offset'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkBufferMemoryBarrier.offset' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// size
 NAN_GETTER(_VkBufferMemoryBarrier::Getsize) {
@@ -200,6 +240,11 @@ NAN_GETTER(_VkBufferMemoryBarrier::Getsize) {
   if (value->IsNumber()) {
     self->instance.size = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkBufferMemoryBarrier.size'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkBufferMemoryBarrier.size' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

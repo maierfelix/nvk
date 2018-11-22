@@ -88,7 +88,12 @@ NAN_GETTER(_VkViewport::Getx) {
   if (value->IsNumber()) {
     self->instance.x = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkViewport.x'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkViewport.x' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// y
 NAN_GETTER(_VkViewport::Gety) {
@@ -99,7 +104,12 @@ NAN_GETTER(_VkViewport::Gety) {
   if (value->IsNumber()) {
     self->instance.y = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkViewport.y'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkViewport.y' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// width
 NAN_GETTER(_VkViewport::Getwidth) {
@@ -110,7 +120,12 @@ NAN_GETTER(_VkViewport::Getwidth) {
   if (value->IsNumber()) {
     self->instance.width = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkViewport.width'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkViewport.width' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// height
 NAN_GETTER(_VkViewport::Getheight) {
@@ -121,7 +136,12 @@ NAN_GETTER(_VkViewport::Getheight) {
   if (value->IsNumber()) {
     self->instance.height = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkViewport.height'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkViewport.height' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// minDepth
 NAN_GETTER(_VkViewport::GetminDepth) {
@@ -132,7 +152,12 @@ NAN_GETTER(_VkViewport::GetminDepth) {
   if (value->IsNumber()) {
     self->instance.minDepth = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkViewport.minDepth'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkViewport.minDepth' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// maxDepth
 NAN_GETTER(_VkViewport::GetmaxDepth) {
@@ -143,6 +168,11 @@ NAN_GETTER(_VkViewport::GetmaxDepth) {
   if (value->IsNumber()) {
     self->instance.maxDepth = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkViewport.maxDepth'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkViewport.maxDepth' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

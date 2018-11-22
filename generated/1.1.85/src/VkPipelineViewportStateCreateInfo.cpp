@@ -74,7 +74,11 @@ bool _VkPipelineViewportStateCreateInfo::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkViewport::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkViewport]' for 'VkPipelineViewportStateCreateInfo.pViewports'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkViewport]' for 'VkPipelineViewportStateCreateInfo.pViewports' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkViewport* result = Nan::ObjectWrap::Unwrap<_VkViewport>(obj);
@@ -96,7 +100,11 @@ bool _VkPipelineViewportStateCreateInfo::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkRect2D::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkRect2D]' for 'VkPipelineViewportStateCreateInfo.pScissors'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkRect2D]' for 'VkPipelineViewportStateCreateInfo.pScissors' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkRect2D* result = Nan::ObjectWrap::Unwrap<_VkRect2D>(obj);
@@ -147,7 +155,12 @@ NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineViewportStateCreateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineViewportStateCreateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetpNext) {
@@ -163,7 +176,12 @@ NAN_GETTER(_VkPipelineViewportStateCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkPipelineViewportStateCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineViewportStateCreateInfo.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineViewportStateCreateInfo.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// viewportCount
 NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetviewportCount) {
@@ -174,7 +192,12 @@ NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetviewportCount) {
   if (value->IsNumber()) {
     self->instance.viewportCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineViewportStateCreateInfo.viewportCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineViewportStateCreateInfo.viewportCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pViewports
 NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetpViewports) {
@@ -195,7 +218,12 @@ NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetpViewports) {
       self->pViewports.Reset();
       self->instance.pViewports = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkViewport]' for 'VkPipelineViewportStateCreateInfo.pViewports'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkViewport]' for 'VkPipelineViewportStateCreateInfo.pViewports' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -204,7 +232,12 @@ NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetpViewports) {
   } else if (value->IsNull()) {
     self->instance.pViewports = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkViewport]' for 'VkPipelineViewportStateCreateInfo.pViewports'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkViewport]' for 'VkPipelineViewportStateCreateInfo.pViewports' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// scissorCount
 NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetscissorCount) {
@@ -215,7 +248,12 @@ NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetscissorCount) {
   if (value->IsNumber()) {
     self->instance.scissorCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkPipelineViewportStateCreateInfo.scissorCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkPipelineViewportStateCreateInfo.scissorCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pScissors
 NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetpScissors) {
@@ -236,7 +274,12 @@ NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetpScissors) {
       self->pScissors.Reset();
       self->instance.pScissors = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkRect2D]' for 'VkPipelineViewportStateCreateInfo.pScissors'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkRect2D]' for 'VkPipelineViewportStateCreateInfo.pScissors' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -245,6 +288,11 @@ NAN_GETTER(_VkPipelineViewportStateCreateInfo::GetpScissors) {
   } else if (value->IsNull()) {
     self->instance.pScissors = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkRect2D]' for 'VkPipelineViewportStateCreateInfo.pScissors'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkRect2D]' for 'VkPipelineViewportStateCreateInfo.pScissors' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

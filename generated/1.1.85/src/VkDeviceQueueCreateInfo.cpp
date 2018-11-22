@@ -90,7 +90,12 @@ NAN_GETTER(_VkDeviceQueueCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDeviceQueueCreateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDeviceQueueCreateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkDeviceQueueCreateInfo::GetpNext) {
@@ -106,7 +111,12 @@ NAN_GETTER(_VkDeviceQueueCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkDeviceQueueCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDeviceQueueCreateInfo.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDeviceQueueCreateInfo.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// queueFamilyIndex
 NAN_GETTER(_VkDeviceQueueCreateInfo::GetqueueFamilyIndex) {
@@ -117,7 +127,12 @@ NAN_GETTER(_VkDeviceQueueCreateInfo::GetqueueFamilyIndex) {
   if (value->IsNumber()) {
     self->instance.queueFamilyIndex = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDeviceQueueCreateInfo.queueFamilyIndex'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDeviceQueueCreateInfo.queueFamilyIndex' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// queueCount
 NAN_GETTER(_VkDeviceQueueCreateInfo::GetqueueCount) {
@@ -128,7 +143,12 @@ NAN_GETTER(_VkDeviceQueueCreateInfo::GetqueueCount) {
   if (value->IsNumber()) {
     self->instance.queueCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkDeviceQueueCreateInfo.queueCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkDeviceQueueCreateInfo.queueCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pQueuePriorities
 NAN_GETTER(_VkDeviceQueueCreateInfo::GetpQueuePriorities) {
@@ -147,12 +167,22 @@ NAN_GETTER(_VkDeviceQueueCreateInfo::GetpQueuePriorities) {
       if (value->IsFloat32Array()) {
         self->pQueuePriorities.Reset<v8::Array>(value.As<v8::Array>());
       } else {
-        return Nan::ThrowTypeError("Expected 'Float32Array' for 'VkDeviceQueueCreateInfo.pQueuePriorities'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Float32Array' for 'VkDeviceQueueCreateInfo.pQueuePriorities' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+        return;
       }
     } else if (value->IsNull()) {
       self->pQueuePriorities.Reset();
     } else {
-      return Nan::ThrowTypeError("Expected 'Float32Array' for 'VkDeviceQueueCreateInfo.pQueuePriorities'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Float32Array' for 'VkDeviceQueueCreateInfo.pQueuePriorities' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   

@@ -102,7 +102,11 @@ bool _VkGraphicsPipelineCreateInfo::flush() {
     for (unsigned int ii = 0; ii < array->Length(); ++ii) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
       if (!(Nan::New(_VkPipelineShaderStageCreateInfo::constructor)->HasInstance(obj))) {
-        Nan::ThrowTypeError("Expected 'Object [VkPipelineShaderStageCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pStages'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineShaderStageCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pStages' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
         return false;
       }
       _VkPipelineShaderStageCreateInfo* result = Nan::ObjectWrap::Unwrap<_VkPipelineShaderStageCreateInfo>(obj);
@@ -177,7 +181,12 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkGraphicsPipelineCreateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkGraphicsPipelineCreateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpNext) {
@@ -193,7 +202,12 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkPipelineCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkGraphicsPipelineCreateInfo.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkGraphicsPipelineCreateInfo.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// stageCount
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetstageCount) {
@@ -204,7 +218,12 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetstageCount) {
   if (value->IsNumber()) {
     self->instance.stageCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkGraphicsPipelineCreateInfo.stageCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkGraphicsPipelineCreateInfo.stageCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pStages
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpStages) {
@@ -225,7 +244,12 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpStages) {
       self->pStages.Reset();
       self->instance.pStages = nullptr;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkPipelineShaderStageCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pStages'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineShaderStageCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pStages' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   // vulkan
@@ -234,7 +258,12 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpStages) {
   } else if (value->IsNull()) {
     self->instance.pStages = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkPipelineShaderStageCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pStages'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineShaderStageCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pStages' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pVertexInputState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpVertexInputState) {
@@ -256,13 +285,23 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpVertexInputState) {
       inst->flush();
       self->instance.pVertexInputState = &inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkPipelineVertexInputStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pVertexInputState'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineVertexInputStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pVertexInputState' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->pVertexInputState.Reset();
     self->instance.pVertexInputState = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkPipelineVertexInputStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pVertexInputState'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineVertexInputStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pVertexInputState' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pInputAssemblyState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpInputAssemblyState) {
@@ -284,13 +323,23 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpInputAssemblyState) {
       inst->flush();
       self->instance.pInputAssemblyState = &inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkPipelineInputAssemblyStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pInputAssemblyState'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineInputAssemblyStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pInputAssemblyState' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->pInputAssemblyState.Reset();
     self->instance.pInputAssemblyState = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkPipelineInputAssemblyStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pInputAssemblyState'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineInputAssemblyStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pInputAssemblyState' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pTessellationState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpTessellationState) {
@@ -312,13 +361,23 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpTessellationState) {
       inst->flush();
       self->instance.pTessellationState = &inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkPipelineTessellationStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pTessellationState'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineTessellationStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pTessellationState' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->pTessellationState.Reset();
     self->instance.pTessellationState = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkPipelineTessellationStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pTessellationState'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineTessellationStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pTessellationState' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pViewportState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpViewportState) {
@@ -340,13 +399,23 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpViewportState) {
       inst->flush();
       self->instance.pViewportState = &inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkPipelineViewportStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pViewportState'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineViewportStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pViewportState' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->pViewportState.Reset();
     self->instance.pViewportState = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkPipelineViewportStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pViewportState'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineViewportStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pViewportState' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pRasterizationState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpRasterizationState) {
@@ -368,13 +437,23 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpRasterizationState) {
       inst->flush();
       self->instance.pRasterizationState = &inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkPipelineRasterizationStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pRasterizationState'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineRasterizationStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pRasterizationState' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->pRasterizationState.Reset();
     self->instance.pRasterizationState = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkPipelineRasterizationStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pRasterizationState'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineRasterizationStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pRasterizationState' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pMultisampleState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpMultisampleState) {
@@ -396,13 +475,23 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpMultisampleState) {
       inst->flush();
       self->instance.pMultisampleState = &inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkPipelineMultisampleStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pMultisampleState'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineMultisampleStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pMultisampleState' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->pMultisampleState.Reset();
     self->instance.pMultisampleState = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkPipelineMultisampleStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pMultisampleState'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineMultisampleStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pMultisampleState' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pDepthStencilState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpDepthStencilState) {
@@ -424,13 +513,23 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpDepthStencilState) {
       inst->flush();
       self->instance.pDepthStencilState = &inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkPipelineDepthStencilStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pDepthStencilState'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineDepthStencilStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pDepthStencilState' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->pDepthStencilState.Reset();
     self->instance.pDepthStencilState = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkPipelineDepthStencilStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pDepthStencilState'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineDepthStencilStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pDepthStencilState' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pColorBlendState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpColorBlendState) {
@@ -452,13 +551,23 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpColorBlendState) {
       inst->flush();
       self->instance.pColorBlendState = &inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkPipelineColorBlendStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pColorBlendState'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineColorBlendStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pColorBlendState' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->pColorBlendState.Reset();
     self->instance.pColorBlendState = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkPipelineColorBlendStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pColorBlendState'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineColorBlendStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pColorBlendState' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pDynamicState
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpDynamicState) {
@@ -480,13 +589,23 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetpDynamicState) {
       inst->flush();
       self->instance.pDynamicState = &inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkPipelineDynamicStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pDynamicState'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineDynamicStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pDynamicState' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->pDynamicState.Reset();
     self->instance.pDynamicState = nullptr;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkPipelineDynamicStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pDynamicState'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineDynamicStateCreateInfo]' for 'VkGraphicsPipelineCreateInfo.pDynamicState' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// layout
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::Getlayout) {
@@ -508,13 +627,23 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::Getlayout) {
       ;
       self->instance.layout = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkPipelineLayout]' for 'VkGraphicsPipelineCreateInfo.layout'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineLayout]' for 'VkGraphicsPipelineCreateInfo.layout' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->layout.Reset();
     self->instance.layout = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkPipelineLayout]' for 'VkGraphicsPipelineCreateInfo.layout'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipelineLayout]' for 'VkGraphicsPipelineCreateInfo.layout' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// renderPass
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetrenderPass) {
@@ -536,13 +665,23 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetrenderPass) {
       ;
       self->instance.renderPass = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkRenderPass]' for 'VkGraphicsPipelineCreateInfo.renderPass'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkRenderPass]' for 'VkGraphicsPipelineCreateInfo.renderPass' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->renderPass.Reset();
     self->instance.renderPass = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkRenderPass]' for 'VkGraphicsPipelineCreateInfo.renderPass'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkRenderPass]' for 'VkGraphicsPipelineCreateInfo.renderPass' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// subpass
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::Getsubpass) {
@@ -553,7 +692,12 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::Getsubpass) {
   if (value->IsNumber()) {
     self->instance.subpass = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkGraphicsPipelineCreateInfo.subpass'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkGraphicsPipelineCreateInfo.subpass' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// basePipelineHandle
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetbasePipelineHandle) {
@@ -575,13 +719,23 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetbasePipelineHandle) {
       ;
       self->instance.basePipelineHandle = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkPipeline]' for 'VkGraphicsPipelineCreateInfo.basePipelineHandle'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipeline]' for 'VkGraphicsPipelineCreateInfo.basePipelineHandle' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->basePipelineHandle.Reset();
     self->instance.basePipelineHandle = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkPipeline]' for 'VkGraphicsPipelineCreateInfo.basePipelineHandle'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkPipeline]' for 'VkGraphicsPipelineCreateInfo.basePipelineHandle' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// basePipelineIndex
 NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetbasePipelineIndex) {
@@ -592,6 +746,11 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::GetbasePipelineIndex) {
   if (value->IsNumber()) {
     self->instance.basePipelineIndex = static_cast<int32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkGraphicsPipelineCreateInfo.basePipelineIndex'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkGraphicsPipelineCreateInfo.basePipelineIndex' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

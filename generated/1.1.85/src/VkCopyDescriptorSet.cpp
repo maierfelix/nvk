@@ -101,7 +101,12 @@ NAN_GETTER(_VkCopyDescriptorSet::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkCopyDescriptorSet.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkCopyDescriptorSet.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkCopyDescriptorSet::GetpNext) {
@@ -128,13 +133,23 @@ NAN_GETTER(_VkCopyDescriptorSet::GetsrcSet) {
       ;
       self->instance.srcSet = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkDescriptorSet]' for 'VkCopyDescriptorSet.srcSet'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorSet]' for 'VkCopyDescriptorSet.srcSet' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->srcSet.Reset();
     self->instance.srcSet = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkDescriptorSet]' for 'VkCopyDescriptorSet.srcSet'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorSet]' for 'VkCopyDescriptorSet.srcSet' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// srcBinding
 NAN_GETTER(_VkCopyDescriptorSet::GetsrcBinding) {
@@ -145,7 +160,12 @@ NAN_GETTER(_VkCopyDescriptorSet::GetsrcBinding) {
   if (value->IsNumber()) {
     self->instance.srcBinding = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkCopyDescriptorSet.srcBinding'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkCopyDescriptorSet.srcBinding' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// srcArrayElement
 NAN_GETTER(_VkCopyDescriptorSet::GetsrcArrayElement) {
@@ -156,7 +176,12 @@ NAN_GETTER(_VkCopyDescriptorSet::GetsrcArrayElement) {
   if (value->IsNumber()) {
     self->instance.srcArrayElement = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkCopyDescriptorSet.srcArrayElement'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkCopyDescriptorSet.srcArrayElement' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// dstSet
 NAN_GETTER(_VkCopyDescriptorSet::GetdstSet) {
@@ -178,13 +203,23 @@ NAN_GETTER(_VkCopyDescriptorSet::GetdstSet) {
       ;
       self->instance.dstSet = inst->instance;
     } else {
-      return Nan::ThrowTypeError("Expected 'Object [VkDescriptorSet]' for 'VkCopyDescriptorSet.dstSet'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorSet]' for 'VkCopyDescriptorSet.dstSet' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   } else if (value->IsNull()) {
     self->dstSet.Reset();
     self->instance.dstSet = VK_NULL_HANDLE;
   } else {
-    return Nan::ThrowTypeError("Expected 'Object [VkDescriptorSet]' for 'VkCopyDescriptorSet.dstSet'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected '[object VkDescriptorSet]' for 'VkCopyDescriptorSet.dstSet' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// dstBinding
 NAN_GETTER(_VkCopyDescriptorSet::GetdstBinding) {
@@ -195,7 +230,12 @@ NAN_GETTER(_VkCopyDescriptorSet::GetdstBinding) {
   if (value->IsNumber()) {
     self->instance.dstBinding = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkCopyDescriptorSet.dstBinding'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkCopyDescriptorSet.dstBinding' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// dstArrayElement
 NAN_GETTER(_VkCopyDescriptorSet::GetdstArrayElement) {
@@ -206,7 +246,12 @@ NAN_GETTER(_VkCopyDescriptorSet::GetdstArrayElement) {
   if (value->IsNumber()) {
     self->instance.dstArrayElement = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkCopyDescriptorSet.dstArrayElement'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkCopyDescriptorSet.dstArrayElement' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// descriptorCount
 NAN_GETTER(_VkCopyDescriptorSet::GetdescriptorCount) {
@@ -217,6 +262,11 @@ NAN_GETTER(_VkCopyDescriptorSet::GetdescriptorCount) {
   if (value->IsNumber()) {
     self->instance.descriptorCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkCopyDescriptorSet.descriptorCount'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkCopyDescriptorSet.descriptorCount' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }

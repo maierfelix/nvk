@@ -86,7 +86,12 @@ NAN_GETTER(_VkShaderModuleCreateInfo::GetsType) {
   if (value->IsNumber()) {
     self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkShaderModuleCreateInfo.sType'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkShaderModuleCreateInfo.sType' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pNext
 NAN_GETTER(_VkShaderModuleCreateInfo::GetpNext) {
@@ -102,7 +107,12 @@ NAN_GETTER(_VkShaderModuleCreateInfo::Getflags) {
   if (value->IsNumber()) {
     self->instance.flags = static_cast<VkShaderModuleCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkShaderModuleCreateInfo.flags'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkShaderModuleCreateInfo.flags' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// codeSize
 NAN_GETTER(_VkShaderModuleCreateInfo::GetcodeSize) {
@@ -113,7 +123,12 @@ NAN_GETTER(_VkShaderModuleCreateInfo::GetcodeSize) {
   if (value->IsNumber()) {
     self->instance.codeSize = static_cast<size_t>(Nan::To<int64_t>(value).FromMaybe(0));
   } else {
-    return Nan::ThrowTypeError("Expected 'Number' for 'VkShaderModuleCreateInfo.codeSize'");
+    
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Number' for 'VkShaderModuleCreateInfo.codeSize' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+    return;
   }
 }// pCode
 NAN_GETTER(_VkShaderModuleCreateInfo::GetpCode) {
@@ -132,12 +147,22 @@ NAN_GETTER(_VkShaderModuleCreateInfo::GetpCode) {
       if (value->IsUint8Array()) {
         self->pCode.Reset<v8::Array>(value.As<v8::Array>());
       } else {
-        return Nan::ThrowTypeError("Expected 'Uint8Array' for 'VkShaderModuleCreateInfo.pCode'");
+        
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Uint8Array' for 'VkShaderModuleCreateInfo.pCode' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+        return;
       }
     } else if (value->IsNull()) {
       self->pCode.Reset();
     } else {
-      return Nan::ThrowTypeError("Expected 'Uint8Array' for 'VkShaderModuleCreateInfo.pCode'");
+      
+    std::string details = getV8ObjectDetails(value);
+    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+    std::string msg = "Expected 'Uint8Array' for 'VkShaderModuleCreateInfo.pCode' but got '" + details + "'";
+    Nan::ThrowTypeError(msg.c_str());
+      return;
     }
   
   
