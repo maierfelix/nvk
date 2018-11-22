@@ -15,6 +15,9 @@ _VkOffset2D::_VkOffset2D() {
 
 _VkOffset2D::~_VkOffset2D() {
   //printf("VkOffset2D deconstructed!!\n");
+  
+  
+  
 }
 
 void _VkOffset2D::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

@@ -16,6 +16,17 @@ _VkDescriptorSetLayoutCreateInfo::_VkDescriptorSetLayoutCreateInfo() {
 
 _VkDescriptorSetLayoutCreateInfo::~_VkDescriptorSetLayoutCreateInfo() {
   //printf("VkDescriptorSetLayoutCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  vpBindings->clear();
+  delete vpBindings;
+  
+  pBindings.Reset();
+  
 }
 
 void _VkDescriptorSetLayoutCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

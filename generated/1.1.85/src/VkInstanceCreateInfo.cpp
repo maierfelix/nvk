@@ -17,6 +17,31 @@ _VkInstanceCreateInfo::_VkInstanceCreateInfo() {
 
 _VkInstanceCreateInfo::~_VkInstanceCreateInfo() {
   //printf("VkInstanceCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  pApplicationInfo.Reset();
+  
+  
+  for (int ii = 0; ii < vppEnabledLayerNames->size(); ++ii) {
+    delete ((char*) vppEnabledLayerNames->at(ii));
+  };
+  vppEnabledLayerNames->clear();
+  delete vppEnabledLayerNames;
+  
+  ppEnabledLayerNames.Reset();
+  
+  
+  for (int ii = 0; ii < vppEnabledExtensionNames->size(); ++ii) {
+    delete ((char*) vppEnabledExtensionNames->at(ii));
+  };
+  vppEnabledExtensionNames->clear();
+  delete vppEnabledExtensionNames;
+  
+  ppEnabledExtensionNames.Reset();
+  
 }
 
 void _VkInstanceCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

@@ -15,6 +15,20 @@ _VkPipelineDepthStencilStateCreateInfo::_VkPipelineDepthStencilStateCreateInfo()
 
 _VkPipelineDepthStencilStateCreateInfo::~_VkPipelineDepthStencilStateCreateInfo() {
   //printf("VkPipelineDepthStencilStateCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }
 
 void _VkPipelineDepthStencilStateCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

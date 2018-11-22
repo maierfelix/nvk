@@ -15,6 +15,18 @@ _VkPipelineMultisampleStateCreateInfo::_VkPipelineMultisampleStateCreateInfo() {
 
 _VkPipelineMultisampleStateCreateInfo::~_VkPipelineMultisampleStateCreateInfo() {
   //printf("VkPipelineMultisampleStateCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  
+  
+  pSampleMask.Reset();
+  
+  
+  
 }
 
 void _VkPipelineMultisampleStateCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

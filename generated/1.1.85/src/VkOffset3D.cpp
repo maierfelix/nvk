@@ -15,6 +15,10 @@ _VkOffset3D::_VkOffset3D() {
 
 _VkOffset3D::~_VkOffset3D() {
   //printf("VkOffset3D deconstructed!!\n");
+  
+  
+  
+  
 }
 
 void _VkOffset3D::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

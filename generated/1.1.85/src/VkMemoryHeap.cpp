@@ -15,6 +15,9 @@ _VkMemoryHeap::_VkMemoryHeap() {
 
 _VkMemoryHeap::~_VkMemoryHeap() {
   //printf("VkMemoryHeap deconstructed!!\n");
+  
+  
+  
 }
 
 void _VkMemoryHeap::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

@@ -15,6 +15,12 @@ _VkPhysicalDeviceSparseProperties::_VkPhysicalDeviceSparseProperties() {
 
 _VkPhysicalDeviceSparseProperties::~_VkPhysicalDeviceSparseProperties() {
   //printf("VkPhysicalDeviceSparseProperties deconstructed!!\n");
+  
+  
+  
+  
+  
+  
 }
 
 void _VkPhysicalDeviceSparseProperties::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

@@ -19,6 +19,19 @@ _VkClearColorValue::_VkClearColorValue() {
 
 _VkClearColorValue::~_VkClearColorValue() {
   //printf("VkClearColorValue deconstructed!!\n");
+  
+  vfloat32->clear();
+  delete vfloat32;
+  
+  
+  vint32->clear();
+  delete vint32;
+  
+  
+  vuint32->clear();
+  delete vuint32;
+  
+  
 }
 
 void _VkClearColorValue::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

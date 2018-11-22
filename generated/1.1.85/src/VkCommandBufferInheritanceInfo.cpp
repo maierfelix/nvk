@@ -15,6 +15,16 @@ _VkCommandBufferInheritanceInfo::_VkCommandBufferInheritanceInfo() {
 
 _VkCommandBufferInheritanceInfo::~_VkCommandBufferInheritanceInfo() {
   //printf("VkCommandBufferInheritanceInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  
+  
+  
+  
 }
 
 void _VkCommandBufferInheritanceInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

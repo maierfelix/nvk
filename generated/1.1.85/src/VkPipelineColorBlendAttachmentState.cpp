@@ -15,6 +15,15 @@ _VkPipelineColorBlendAttachmentState::_VkPipelineColorBlendAttachmentState() {
 
 _VkPipelineColorBlendAttachmentState::~_VkPipelineColorBlendAttachmentState() {
   //printf("VkPipelineColorBlendAttachmentState deconstructed!!\n");
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }
 
 void _VkPipelineColorBlendAttachmentState::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

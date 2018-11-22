@@ -18,6 +18,30 @@ _VkWriteDescriptorSet::_VkWriteDescriptorSet() {
 
 _VkWriteDescriptorSet::~_VkWriteDescriptorSet() {
   //printf("VkWriteDescriptorSet deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  
+  
+  
+  vpImageInfo->clear();
+  delete vpImageInfo;
+  
+  pImageInfo.Reset();
+  
+  vpBufferInfo->clear();
+  delete vpBufferInfo;
+  
+  pBufferInfo.Reset();
+  
+  vpTexelBufferView->clear();
+  delete vpTexelBufferView;
+  
+  pTexelBufferView.Reset();
+  
 }
 
 void _VkWriteDescriptorSet::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

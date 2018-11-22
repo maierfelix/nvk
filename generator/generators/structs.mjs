@@ -555,18 +555,40 @@ function isHeaderHeapVector(member) {
   );
 };
 
-function processHeaderHeapVectorInitializer(member) {
-  let type = null;
-  if (isArrayOfObjectsMember(member)) {
-    type = member.type;
-  }
-  else if (member.rawType === "const char * const*") {
-    type = `char*`;
-  }
-  else {
-    console.warn(`Cannot process ${member.type} in heap-vector-initializer!`);
-  }
+function getHeaderHeapVectorType(member) {
+  if (isArrayOfObjectsMember(member)) return member.type;
+  else if (member.rawType === "const char * const*") return `char*`;
+  else console.warn(`Cannot process ${member.type} in heap-vector-initializer!`);
+  return null;
+};
+
+function processHeapVectorAllocator(member) {
+  let type = getHeaderHeapVectorType(member);
   return `v${ member.name } = new std::vector<${ type }>;`;
+};
+
+function processPersistentDeallocator(member) {
+  let out = ``;
+  if (member.dereferenceCount > 0) {
+    out += `
+  ${member.name}.Reset();`;
+  }
+  return out;
+};
+
+function processHeapVectorDeallocator(member) {
+  let out = ``;
+  let type = getHeaderHeapVectorType(member);
+  if (member.rawType === "const char * const*") {
+    out += `
+  for (int ii = 0; ii < v${ member.name }->size(); ++ii) {
+    delete ((char*) v${ member.name }->at(ii));
+  };`;
+  }
+  out += `
+  v${ member.name }->clear();
+  delete v${ member.name };`;
+  return out;
 };
 
 function processFlushMemberSetter(struct, member) {
@@ -712,7 +734,9 @@ export default function(astReference, struct) {
     processFlushMemberSetter,
     processFlushSourceSetter,
     processSourceMemberAccessor,
-    processHeaderHeapVectorInitializer
+    processHeapVectorAllocator,
+    processHeapVectorDeallocator,
+    processPersistentDeallocator
   };
   let out = {
     header: null,

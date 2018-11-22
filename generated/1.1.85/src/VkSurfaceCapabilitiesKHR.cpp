@@ -15,6 +15,17 @@ _VkSurfaceCapabilitiesKHR::_VkSurfaceCapabilitiesKHR() {
 
 _VkSurfaceCapabilitiesKHR::~_VkSurfaceCapabilitiesKHR() {
   //printf("VkSurfaceCapabilitiesKHR deconstructed!!\n");
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }
 
 void _VkSurfaceCapabilitiesKHR::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

@@ -15,6 +15,10 @@ _VkClearRect::_VkClearRect() {
 
 _VkClearRect::~_VkClearRect() {
   //printf("VkClearRect deconstructed!!\n");
+  
+  
+  
+  
 }
 
 void _VkClearRect::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

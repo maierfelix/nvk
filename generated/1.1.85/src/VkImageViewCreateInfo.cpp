@@ -15,6 +15,16 @@ _VkImageViewCreateInfo::_VkImageViewCreateInfo() {
 
 _VkImageViewCreateInfo::~_VkImageViewCreateInfo() {
   //printf("VkImageViewCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  
+  
+  
+  
 }
 
 void _VkImageViewCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

@@ -15,6 +15,11 @@ _VkQueueFamilyProperties::_VkQueueFamilyProperties() {
 
 _VkQueueFamilyProperties::~_VkQueueFamilyProperties() {
   //printf("VkQueueFamilyProperties deconstructed!!\n");
+  
+  
+  
+  
+  
 }
 
 void _VkQueueFamilyProperties::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

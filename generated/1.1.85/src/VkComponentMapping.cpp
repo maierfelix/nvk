@@ -15,6 +15,11 @@ _VkComponentMapping::_VkComponentMapping() {
 
 _VkComponentMapping::~_VkComponentMapping() {
   //printf("VkComponentMapping deconstructed!!\n");
+  
+  
+  
+  
+  
 }
 
 void _VkComponentMapping::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

@@ -15,6 +15,11 @@ _VkVertexInputAttributeDescription::_VkVertexInputAttributeDescription() {
 
 _VkVertexInputAttributeDescription::~_VkVertexInputAttributeDescription() {
   //printf("VkVertexInputAttributeDescription deconstructed!!\n");
+  
+  
+  
+  
+  
 }
 
 void _VkVertexInputAttributeDescription::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

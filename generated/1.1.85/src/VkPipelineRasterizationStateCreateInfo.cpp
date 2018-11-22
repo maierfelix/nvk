@@ -15,6 +15,21 @@ _VkPipelineRasterizationStateCreateInfo::_VkPipelineRasterizationStateCreateInfo
 
 _VkPipelineRasterizationStateCreateInfo::~_VkPipelineRasterizationStateCreateInfo() {
   //printf("VkPipelineRasterizationStateCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }
 
 void _VkPipelineRasterizationStateCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

@@ -15,6 +15,17 @@ _VkBufferCreateInfo::_VkBufferCreateInfo() {
 
 _VkBufferCreateInfo::~_VkBufferCreateInfo() {
   //printf("VkBufferCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  
+  
+  
+  pQueueFamilyIndices.Reset();
+  
 }
 
 void _VkBufferCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

@@ -15,6 +15,13 @@ _VkCommandBufferAllocateInfo::_VkCommandBufferAllocateInfo() {
 
 _VkCommandBufferAllocateInfo::~_VkCommandBufferAllocateInfo() {
   //printf("VkCommandBufferAllocateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  
 }
 
 void _VkCommandBufferAllocateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

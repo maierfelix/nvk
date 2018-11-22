@@ -18,6 +18,31 @@ _VkSubpassDescription::_VkSubpassDescription() {
 
 _VkSubpassDescription::~_VkSubpassDescription() {
   //printf("VkSubpassDescription deconstructed!!\n");
+  
+  
+  
+  
+  vpInputAttachments->clear();
+  delete vpInputAttachments;
+  
+  pInputAttachments.Reset();
+  
+  
+  vpColorAttachments->clear();
+  delete vpColorAttachments;
+  
+  pColorAttachments.Reset();
+  
+  vpResolveAttachments->clear();
+  delete vpResolveAttachments;
+  
+  pResolveAttachments.Reset();
+  
+  pDepthStencilAttachment.Reset();
+  
+  
+  pPreserveAttachments.Reset();
+  
 }
 
 void _VkSubpassDescription::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

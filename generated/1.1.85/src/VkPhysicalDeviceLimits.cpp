@@ -22,6 +22,131 @@ _VkPhysicalDeviceLimits::_VkPhysicalDeviceLimits() {
 
 _VkPhysicalDeviceLimits::~_VkPhysicalDeviceLimits() {
   //printf("VkPhysicalDeviceLimits deconstructed!!\n");
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  vmaxComputeWorkGroupCount->clear();
+  delete vmaxComputeWorkGroupCount;
+  
+  
+  
+  vmaxComputeWorkGroupSize->clear();
+  delete vmaxComputeWorkGroupSize;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  vmaxViewportDimensions->clear();
+  delete vmaxViewportDimensions;
+  
+  
+  vviewportBoundsRange->clear();
+  delete vviewportBoundsRange;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  vpointSizeRange->clear();
+  delete vpointSizeRange;
+  
+  
+  vlineWidthRange->clear();
+  delete vlineWidthRange;
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }
 
 void _VkPhysicalDeviceLimits::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

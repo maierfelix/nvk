@@ -17,6 +17,26 @@ _VkPresentInfoKHR::_VkPresentInfoKHR() {
 
 _VkPresentInfoKHR::~_VkPresentInfoKHR() {
   //printf("VkPresentInfoKHR deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  vpWaitSemaphores->clear();
+  delete vpWaitSemaphores;
+  
+  pWaitSemaphores.Reset();
+  
+  
+  vpSwapchains->clear();
+  delete vpSwapchains;
+  
+  pSwapchains.Reset();
+  
+  pImageIndices.Reset();
+  
+  pResults.Reset();
+  
 }
 
 void _VkPresentInfoKHR::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

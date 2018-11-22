@@ -15,6 +15,17 @@ _VkPipelineShaderStageCreateInfo::_VkPipelineShaderStageCreateInfo() {
 
 _VkPipelineShaderStageCreateInfo::~_VkPipelineShaderStageCreateInfo() {
   //printf("VkPipelineShaderStageCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  
+  pName.Reset();
+  
+  pSpecializationInfo.Reset();
+  
 }
 
 void _VkPipelineShaderStageCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

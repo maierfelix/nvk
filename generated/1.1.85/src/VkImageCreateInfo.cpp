@@ -15,6 +15,24 @@ _VkImageCreateInfo::_VkImageCreateInfo() {
 
 _VkImageCreateInfo::~_VkImageCreateInfo() {
   //printf("VkImageCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  pQueueFamilyIndices.Reset();
+  
+  
 }
 
 void _VkImageCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

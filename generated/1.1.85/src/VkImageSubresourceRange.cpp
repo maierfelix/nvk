@@ -15,6 +15,12 @@ _VkImageSubresourceRange::_VkImageSubresourceRange() {
 
 _VkImageSubresourceRange::~_VkImageSubresourceRange() {
   //printf("VkImageSubresourceRange deconstructed!!\n");
+  
+  
+  
+  
+  
+  
 }
 
 void _VkImageSubresourceRange::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

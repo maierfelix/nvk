@@ -18,6 +18,37 @@ _VkDeviceCreateInfo::_VkDeviceCreateInfo() {
 
 _VkDeviceCreateInfo::~_VkDeviceCreateInfo() {
   //printf("VkDeviceCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  vpQueueCreateInfos->clear();
+  delete vpQueueCreateInfos;
+  
+  pQueueCreateInfos.Reset();
+  
+  
+  for (int ii = 0; ii < vppEnabledLayerNames->size(); ++ii) {
+    delete ((char*) vppEnabledLayerNames->at(ii));
+  };
+  vppEnabledLayerNames->clear();
+  delete vppEnabledLayerNames;
+  
+  ppEnabledLayerNames.Reset();
+  
+  
+  for (int ii = 0; ii < vppEnabledExtensionNames->size(); ++ii) {
+    delete ((char*) vppEnabledExtensionNames->at(ii));
+  };
+  vppEnabledExtensionNames->clear();
+  delete vppEnabledExtensionNames;
+  
+  ppEnabledExtensionNames.Reset();
+  
+  pEnabledFeatures.Reset();
+  
 }
 
 void _VkDeviceCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

@@ -17,6 +17,23 @@ _VkPipelineVertexInputStateCreateInfo::_VkPipelineVertexInputStateCreateInfo() {
 
 _VkPipelineVertexInputStateCreateInfo::~_VkPipelineVertexInputStateCreateInfo() {
   //printf("VkPipelineVertexInputStateCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  vpVertexBindingDescriptions->clear();
+  delete vpVertexBindingDescriptions;
+  
+  pVertexBindingDescriptions.Reset();
+  
+  
+  vpVertexAttributeDescriptions->clear();
+  delete vpVertexAttributeDescriptions;
+  
+  pVertexAttributeDescriptions.Reset();
+  
 }
 
 void _VkPipelineVertexInputStateCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

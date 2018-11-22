@@ -15,6 +15,9 @@ _VkAttachmentReference::_VkAttachmentReference() {
 
 _VkAttachmentReference::~_VkAttachmentReference() {
   //printf("VkAttachmentReference deconstructed!!\n");
+  
+  
+  
 }
 
 void _VkAttachmentReference::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

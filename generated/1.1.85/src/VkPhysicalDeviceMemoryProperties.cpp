@@ -18,6 +18,17 @@ _VkPhysicalDeviceMemoryProperties::_VkPhysicalDeviceMemoryProperties() {
 
 _VkPhysicalDeviceMemoryProperties::~_VkPhysicalDeviceMemoryProperties() {
   //printf("VkPhysicalDeviceMemoryProperties deconstructed!!\n");
+  
+  
+  vmemoryTypes->clear();
+  delete vmemoryTypes;
+  
+  
+  
+  vmemoryHeaps->clear();
+  delete vmemoryHeaps;
+  
+  
 }
 
 void _VkPhysicalDeviceMemoryProperties::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

@@ -15,6 +15,26 @@ _VkSamplerCreateInfo::_VkSamplerCreateInfo() {
 
 _VkSamplerCreateInfo::~_VkSamplerCreateInfo() {
   //printf("VkSamplerCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }
 
 void _VkSamplerCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

@@ -15,6 +15,62 @@ _VkPhysicalDeviceFeatures::_VkPhysicalDeviceFeatures() {
 
 _VkPhysicalDeviceFeatures::~_VkPhysicalDeviceFeatures() {
   //printf("VkPhysicalDeviceFeatures deconstructed!!\n");
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }
 
 void _VkPhysicalDeviceFeatures::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

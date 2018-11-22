@@ -17,6 +17,19 @@ _VkPhysicalDeviceProperties::_VkPhysicalDeviceProperties() {
 
 _VkPhysicalDeviceProperties::~_VkPhysicalDeviceProperties() {
   //printf("VkPhysicalDeviceProperties deconstructed!!\n");
+  
+  
+  
+  
+  
+  
+  
+  vpipelineCacheUUID->clear();
+  delete vpipelineCacheUUID;
+  
+  
+  
+  
 }
 
 void _VkPhysicalDeviceProperties::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

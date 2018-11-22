@@ -15,6 +15,10 @@ _VkSpecializationMapEntry::_VkSpecializationMapEntry() {
 
 _VkSpecializationMapEntry::~_VkSpecializationMapEntry() {
   //printf("VkSpecializationMapEntry deconstructed!!\n");
+  
+  
+  
+  
 }
 
 void _VkSpecializationMapEntry::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

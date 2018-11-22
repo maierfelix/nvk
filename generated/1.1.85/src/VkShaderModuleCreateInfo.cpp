@@ -15,6 +15,14 @@ _VkShaderModuleCreateInfo::_VkShaderModuleCreateInfo() {
 
 _VkShaderModuleCreateInfo::~_VkShaderModuleCreateInfo() {
   //printf("VkShaderModuleCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  pCode.Reset();
+  
 }
 
 void _VkShaderModuleCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

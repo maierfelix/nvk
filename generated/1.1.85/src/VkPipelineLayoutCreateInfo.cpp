@@ -17,6 +17,23 @@ _VkPipelineLayoutCreateInfo::_VkPipelineLayoutCreateInfo() {
 
 _VkPipelineLayoutCreateInfo::~_VkPipelineLayoutCreateInfo() {
   //printf("VkPipelineLayoutCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  vpSetLayouts->clear();
+  delete vpSetLayouts;
+  
+  pSetLayouts.Reset();
+  
+  
+  vpPushConstantRanges->clear();
+  delete vpPushConstantRanges;
+  
+  pPushConstantRanges.Reset();
+  
 }
 
 void _VkPipelineLayoutCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

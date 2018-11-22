@@ -15,6 +15,9 @@ _VkRect2D::_VkRect2D() {
 
 _VkRect2D::~_VkRect2D() {
   //printf("VkRect2D deconstructed!!\n");
+  
+  
+  
 }
 
 void _VkRect2D::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

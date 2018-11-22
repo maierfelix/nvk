@@ -15,6 +15,14 @@ _VkPipelineDynamicStateCreateInfo::_VkPipelineDynamicStateCreateInfo() {
 
 _VkPipelineDynamicStateCreateInfo::~_VkPipelineDynamicStateCreateInfo() {
   //printf("VkPipelineDynamicStateCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  pDynamicStates.Reset();
+  
 }
 
 void _VkPipelineDynamicStateCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

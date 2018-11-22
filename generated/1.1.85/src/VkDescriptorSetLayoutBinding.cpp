@@ -16,6 +16,16 @@ _VkDescriptorSetLayoutBinding::_VkDescriptorSetLayoutBinding() {
 
 _VkDescriptorSetLayoutBinding::~_VkDescriptorSetLayoutBinding() {
   //printf("VkDescriptorSetLayoutBinding deconstructed!!\n");
+  
+  
+  
+  
+  
+  vpImmutableSamplers->clear();
+  delete vpImmutableSamplers;
+  
+  pImmutableSamplers.Reset();
+  
 }
 
 void _VkDescriptorSetLayoutBinding::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

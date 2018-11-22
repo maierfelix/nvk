@@ -15,6 +15,11 @@ _VkBindImagePlaneMemoryInfo::_VkBindImagePlaneMemoryInfo() {
 
 _VkBindImagePlaneMemoryInfo::~_VkBindImagePlaneMemoryInfo() {
   //printf("VkBindImagePlaneMemoryInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
 }
 
 void _VkBindImagePlaneMemoryInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

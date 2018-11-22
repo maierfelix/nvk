@@ -18,6 +18,29 @@ _VkRenderPassCreateInfo::_VkRenderPassCreateInfo() {
 
 _VkRenderPassCreateInfo::~_VkRenderPassCreateInfo() {
   //printf("VkRenderPassCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  vpAttachments->clear();
+  delete vpAttachments;
+  
+  pAttachments.Reset();
+  
+  
+  vpSubpasses->clear();
+  delete vpSubpasses;
+  
+  pSubpasses.Reset();
+  
+  
+  vpDependencies->clear();
+  delete vpDependencies;
+  
+  pDependencies.Reset();
+  
 }
 
 void _VkRenderPassCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

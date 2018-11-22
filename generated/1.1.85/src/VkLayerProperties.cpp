@@ -16,6 +16,11 @@ _VkLayerProperties::_VkLayerProperties() {
 
 _VkLayerProperties::~_VkLayerProperties() {
   //printf("VkLayerProperties deconstructed!!\n");
+  
+  
+  
+  
+  
 }
 
 void _VkLayerProperties::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

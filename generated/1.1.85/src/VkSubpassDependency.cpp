@@ -15,6 +15,14 @@ _VkSubpassDependency::_VkSubpassDependency() {
 
 _VkSubpassDependency::~_VkSubpassDependency() {
   //printf("VkSubpassDependency deconstructed!!\n");
+  
+  
+  
+  
+  
+  
+  
+  
 }
 
 void _VkSubpassDependency::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

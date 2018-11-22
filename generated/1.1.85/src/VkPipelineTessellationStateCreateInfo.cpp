@@ -15,6 +15,12 @@ _VkPipelineTessellationStateCreateInfo::_VkPipelineTessellationStateCreateInfo()
 
 _VkPipelineTessellationStateCreateInfo::~_VkPipelineTessellationStateCreateInfo() {
   //printf("VkPipelineTessellationStateCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
 }
 
 void _VkPipelineTessellationStateCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

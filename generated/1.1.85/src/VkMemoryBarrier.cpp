@@ -15,6 +15,12 @@ _VkMemoryBarrier::_VkMemoryBarrier() {
 
 _VkMemoryBarrier::~_VkMemoryBarrier() {
   //printf("VkMemoryBarrier deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
 }
 
 void _VkMemoryBarrier::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

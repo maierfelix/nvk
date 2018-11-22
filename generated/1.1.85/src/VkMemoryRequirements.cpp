@@ -15,6 +15,10 @@ _VkMemoryRequirements::_VkMemoryRequirements() {
 
 _VkMemoryRequirements::~_VkMemoryRequirements() {
   //printf("VkMemoryRequirements deconstructed!!\n");
+  
+  
+  
+  
 }
 
 void _VkMemoryRequirements::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

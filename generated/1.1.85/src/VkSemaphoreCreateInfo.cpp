@@ -15,6 +15,11 @@ _VkSemaphoreCreateInfo::_VkSemaphoreCreateInfo() {
 
 _VkSemaphoreCreateInfo::~_VkSemaphoreCreateInfo() {
   //printf("VkSemaphoreCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
 }
 
 void _VkSemaphoreCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

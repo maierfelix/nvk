@@ -15,6 +15,27 @@ _VkSwapchainCreateInfoKHR::_VkSwapchainCreateInfoKHR() {
 
 _VkSwapchainCreateInfoKHR::~_VkSwapchainCreateInfoKHR() {
   //printf("VkSwapchainCreateInfoKHR deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  pQueueFamilyIndices.Reset();
+  
+  
+  
+  
+  
+  
 }
 
 void _VkSwapchainCreateInfoKHR::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

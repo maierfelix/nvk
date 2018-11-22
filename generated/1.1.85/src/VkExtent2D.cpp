@@ -15,6 +15,9 @@ _VkExtent2D::_VkExtent2D() {
 
 _VkExtent2D::~_VkExtent2D() {
   //printf("VkExtent2D deconstructed!!\n");
+  
+  
+  
 }
 
 void _VkExtent2D::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

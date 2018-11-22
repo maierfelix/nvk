@@ -15,6 +15,13 @@ _VkViewport::_VkViewport() {
 
 _VkViewport::~_VkViewport() {
   //printf("VkViewport deconstructed!!\n");
+  
+  
+  
+  
+  
+  
+  
 }
 
 void _VkViewport::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

@@ -16,6 +16,16 @@ _VkSpecializationInfo::_VkSpecializationInfo() {
 
 _VkSpecializationInfo::~_VkSpecializationInfo() {
   //printf("VkSpecializationInfo deconstructed!!\n");
+  
+  
+  vpMapEntries->clear();
+  delete vpMapEntries;
+  
+  pMapEntries.Reset();
+  
+  
+  pData.Reset();
+  
 }
 
 void _VkSpecializationInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

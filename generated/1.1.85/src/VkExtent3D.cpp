@@ -15,6 +15,10 @@ _VkExtent3D::_VkExtent3D() {
 
 _VkExtent3D::~_VkExtent3D() {
   //printf("VkExtent3D deconstructed!!\n");
+  
+  
+  
+  
 }
 
 void _VkExtent3D::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

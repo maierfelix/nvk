@@ -16,6 +16,17 @@ _VkDescriptorSetAllocateInfo::_VkDescriptorSetAllocateInfo() {
 
 _VkDescriptorSetAllocateInfo::~_VkDescriptorSetAllocateInfo() {
   //printf("VkDescriptorSetAllocateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  vpSetLayouts->clear();
+  delete vpSetLayouts;
+  
+  pSetLayouts.Reset();
+  
 }
 
 void _VkDescriptorSetAllocateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

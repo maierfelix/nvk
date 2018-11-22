@@ -15,6 +15,17 @@ _VkApplicationInfo::_VkApplicationInfo() {
 
 _VkApplicationInfo::~_VkApplicationInfo() {
   //printf("VkApplicationInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  pApplicationName.Reset();
+  
+  
+  pEngineName.Reset();
+  
+  
+  
 }
 
 void _VkApplicationInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

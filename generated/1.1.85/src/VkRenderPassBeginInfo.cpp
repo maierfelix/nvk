@@ -16,6 +16,19 @@ _VkRenderPassBeginInfo::_VkRenderPassBeginInfo() {
 
 _VkRenderPassBeginInfo::~_VkRenderPassBeginInfo() {
   //printf("VkRenderPassBeginInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  
+  
+  vpClearValues->clear();
+  delete vpClearValues;
+  
+  pClearValues.Reset();
+  
 }
 
 void _VkRenderPassBeginInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

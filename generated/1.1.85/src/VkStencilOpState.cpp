@@ -15,6 +15,14 @@ _VkStencilOpState::_VkStencilOpState() {
 
 _VkStencilOpState::~_VkStencilOpState() {
   //printf("VkStencilOpState deconstructed!!\n");
+  
+  
+  
+  
+  
+  
+  
+  
 }
 
 void _VkStencilOpState::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

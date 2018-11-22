@@ -15,6 +15,9 @@ _VkSurfaceFormatKHR::_VkSurfaceFormatKHR() {
 
 _VkSurfaceFormatKHR::~_VkSurfaceFormatKHR() {
   //printf("VkSurfaceFormatKHR deconstructed!!\n");
+  
+  
+  
 }
 
 void _VkSurfaceFormatKHR::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

@@ -18,6 +18,23 @@ _VkPipelineColorBlendStateCreateInfo::_VkPipelineColorBlendStateCreateInfo() {
 
 _VkPipelineColorBlendStateCreateInfo::~_VkPipelineColorBlendStateCreateInfo() {
   //printf("VkPipelineColorBlendStateCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  
+  
+  vpAttachments->clear();
+  delete vpAttachments;
+  
+  pAttachments.Reset();
+  
+  vblendConstants->clear();
+  delete vblendConstants;
+  
+  
 }
 
 void _VkPipelineColorBlendStateCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

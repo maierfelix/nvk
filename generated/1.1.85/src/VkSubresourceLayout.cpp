@@ -15,6 +15,12 @@ _VkSubresourceLayout::_VkSubresourceLayout() {
 
 _VkSubresourceLayout::~_VkSubresourceLayout() {
   //printf("VkSubresourceLayout deconstructed!!\n");
+  
+  
+  
+  
+  
+  
 }
 
 void _VkSubresourceLayout::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

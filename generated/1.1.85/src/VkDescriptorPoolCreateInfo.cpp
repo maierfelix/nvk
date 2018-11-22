@@ -16,6 +16,18 @@ _VkDescriptorPoolCreateInfo::_VkDescriptorPoolCreateInfo() {
 
 _VkDescriptorPoolCreateInfo::~_VkDescriptorPoolCreateInfo() {
   //printf("VkDescriptorPoolCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  
+  vpPoolSizes->clear();
+  delete vpPoolSizes;
+  
+  pPoolSizes.Reset();
+  
 }
 
 void _VkDescriptorPoolCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

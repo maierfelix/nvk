@@ -15,6 +15,10 @@ _VkVertexInputBindingDescription::_VkVertexInputBindingDescription() {
 
 _VkVertexInputBindingDescription::~_VkVertexInputBindingDescription() {
   //printf("VkVertexInputBindingDescription deconstructed!!\n");
+  
+  
+  
+  
 }
 
 void _VkVertexInputBindingDescription::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

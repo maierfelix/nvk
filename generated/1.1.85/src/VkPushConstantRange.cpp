@@ -15,6 +15,10 @@ _VkPushConstantRange::_VkPushConstantRange() {
 
 _VkPushConstantRange::~_VkPushConstantRange() {
   //printf("VkPushConstantRange deconstructed!!\n");
+  
+  
+  
+  
 }
 
 void _VkPushConstantRange::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

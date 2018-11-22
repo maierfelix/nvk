@@ -15,6 +15,13 @@ _VkPipelineInputAssemblyStateCreateInfo::_VkPipelineInputAssemblyStateCreateInfo
 
 _VkPipelineInputAssemblyStateCreateInfo::~_VkPipelineInputAssemblyStateCreateInfo() {
   //printf("VkPipelineInputAssemblyStateCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  
 }
 
 void _VkPipelineInputAssemblyStateCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

@@ -17,6 +17,23 @@ _VkPipelineViewportStateCreateInfo::_VkPipelineViewportStateCreateInfo() {
 
 _VkPipelineViewportStateCreateInfo::~_VkPipelineViewportStateCreateInfo() {
   //printf("VkPipelineViewportStateCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  vpViewports->clear();
+  delete vpViewports;
+  
+  pViewports.Reset();
+  
+  
+  vpScissors->clear();
+  delete vpScissors;
+  
+  pScissors.Reset();
+  
 }
 
 void _VkPipelineViewportStateCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

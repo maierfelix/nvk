@@ -8,13 +8,19 @@ _{{ struct_name }}::_{{ struct_name }}() {
   {{ processMemberAutosType(struct) | safe }}
   {% for member in members -%}
   {%- if isHeaderHeapVector(member) == true -%}
-  {{ processHeaderHeapVectorInitializer(member) | safe }}
+  {{ processHeapVectorAllocator(member) | safe }}
   {% endif -%}
   {% endfor %}
 }
 
 _{{ struct_name }}::~_{{ struct_name }}() {
   //printf("{{ struct_name }} deconstructed!!\n");
+  {% for member in members -%}
+  {%- if isHeaderHeapVector(member) == true -%}
+  {{ processHeapVectorDeallocator(member) | safe }}
+  {% endif -%}
+  {{ processPersistentDeallocator(member) | safe }}
+  {% endfor %}
 }
 
 void _{{ struct_name }}::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

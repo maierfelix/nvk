@@ -15,6 +15,10 @@ _VkImageSubresource::_VkImageSubresource() {
 
 _VkImageSubresource::~_VkImageSubresource() {
   //printf("VkImageSubresource deconstructed!!\n");
+  
+  
+  
+  
 }
 
 void _VkImageSubresource::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

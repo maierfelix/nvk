@@ -15,6 +15,9 @@ _VkDescriptorPoolSize::_VkDescriptorPoolSize() {
 
 _VkDescriptorPoolSize::~_VkDescriptorPoolSize() {
   //printf("VkDescriptorPoolSize deconstructed!!\n");
+  
+  
+  
 }
 
 void _VkDescriptorPoolSize::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

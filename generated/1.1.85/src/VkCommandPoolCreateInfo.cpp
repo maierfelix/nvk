@@ -15,6 +15,12 @@ _VkCommandPoolCreateInfo::_VkCommandPoolCreateInfo() {
 
 _VkCommandPoolCreateInfo::~_VkCommandPoolCreateInfo() {
   //printf("VkCommandPoolCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
 }
 
 void _VkCommandPoolCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

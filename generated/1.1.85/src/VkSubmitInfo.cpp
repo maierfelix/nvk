@@ -18,6 +18,30 @@ _VkSubmitInfo::_VkSubmitInfo() {
 
 _VkSubmitInfo::~_VkSubmitInfo() {
   //printf("VkSubmitInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  vpWaitSemaphores->clear();
+  delete vpWaitSemaphores;
+  
+  pWaitSemaphores.Reset();
+  
+  pWaitDstStageMask.Reset();
+  
+  
+  vpCommandBuffers->clear();
+  delete vpCommandBuffers;
+  
+  pCommandBuffers.Reset();
+  
+  
+  vpSignalSemaphores->clear();
+  delete vpSignalSemaphores;
+  
+  pSignalSemaphores.Reset();
+  
 }
 
 void _VkSubmitInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

@@ -15,6 +15,12 @@ _VkMemoryAllocateInfo::_VkMemoryAllocateInfo() {
 
 _VkMemoryAllocateInfo::~_VkMemoryAllocateInfo() {
   //printf("VkMemoryAllocateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
 }
 
 void _VkMemoryAllocateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

@@ -16,6 +16,21 @@ _VkFramebufferCreateInfo::_VkFramebufferCreateInfo() {
 
 _VkFramebufferCreateInfo::~_VkFramebufferCreateInfo() {
   //printf("VkFramebufferCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  
+  vpAttachments->clear();
+  delete vpAttachments;
+  
+  pAttachments.Reset();
+  
+  
+  
+  
 }
 
 void _VkFramebufferCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

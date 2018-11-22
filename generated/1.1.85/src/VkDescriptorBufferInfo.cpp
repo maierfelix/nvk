@@ -15,6 +15,10 @@ _VkDescriptorBufferInfo::_VkDescriptorBufferInfo() {
 
 _VkDescriptorBufferInfo::~_VkDescriptorBufferInfo() {
   //printf("VkDescriptorBufferInfo deconstructed!!\n");
+  
+  
+  
+  
 }
 
 void _VkDescriptorBufferInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

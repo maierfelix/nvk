@@ -15,6 +15,9 @@ _VkMemoryType::_VkMemoryType() {
 
 _VkMemoryType::~_VkMemoryType() {
   //printf("VkMemoryType deconstructed!!\n");
+  
+  
+  
 }
 
 void _VkMemoryType::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

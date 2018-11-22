@@ -15,6 +15,10 @@ _VkDescriptorImageInfo::_VkDescriptorImageInfo() {
 
 _VkDescriptorImageInfo::~_VkDescriptorImageInfo() {
   //printf("VkDescriptorImageInfo deconstructed!!\n");
+  
+  
+  
+  
 }
 
 void _VkDescriptorImageInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

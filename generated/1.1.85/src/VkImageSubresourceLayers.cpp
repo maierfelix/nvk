@@ -15,6 +15,11 @@ _VkImageSubresourceLayers::_VkImageSubresourceLayers() {
 
 _VkImageSubresourceLayers::~_VkImageSubresourceLayers() {
   //printf("VkImageSubresourceLayers deconstructed!!\n");
+  
+  
+  
+  
+  
 }
 
 void _VkImageSubresourceLayers::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

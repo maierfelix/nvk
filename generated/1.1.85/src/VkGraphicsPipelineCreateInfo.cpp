@@ -16,6 +16,40 @@ _VkGraphicsPipelineCreateInfo::_VkGraphicsPipelineCreateInfo() {
 
 _VkGraphicsPipelineCreateInfo::~_VkGraphicsPipelineCreateInfo() {
   //printf("VkGraphicsPipelineCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  vpStages->clear();
+  delete vpStages;
+  
+  pStages.Reset();
+  
+  pVertexInputState.Reset();
+  
+  pInputAssemblyState.Reset();
+  
+  pTessellationState.Reset();
+  
+  pViewportState.Reset();
+  
+  pRasterizationState.Reset();
+  
+  pMultisampleState.Reset();
+  
+  pDepthStencilState.Reset();
+  
+  pColorBlendState.Reset();
+  
+  pDynamicState.Reset();
+  
+  
+  
+  
+  
+  
 }
 
 void _VkGraphicsPipelineCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

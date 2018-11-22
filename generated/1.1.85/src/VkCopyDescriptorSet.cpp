@@ -15,6 +15,17 @@ _VkCopyDescriptorSet::_VkCopyDescriptorSet() {
 
 _VkCopyDescriptorSet::~_VkCopyDescriptorSet() {
   //printf("VkCopyDescriptorSet deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  
+  
+  
+  
+  
 }
 
 void _VkCopyDescriptorSet::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

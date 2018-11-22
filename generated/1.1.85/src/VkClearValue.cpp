@@ -15,6 +15,9 @@ _VkClearValue::_VkClearValue() {
 
 _VkClearValue::~_VkClearValue() {
   //printf("VkClearValue deconstructed!!\n");
+  
+  
+  
 }
 
 void _VkClearValue::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

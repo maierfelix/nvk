@@ -15,6 +15,13 @@ _VkBufferImageCopy::_VkBufferImageCopy() {
 
 _VkBufferImageCopy::~_VkBufferImageCopy() {
   //printf("VkBufferImageCopy deconstructed!!\n");
+  
+  
+  
+  
+  
+  
+  
 }
 
 void _VkBufferImageCopy::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

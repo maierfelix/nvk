@@ -15,6 +15,16 @@ _VkAttachmentDescription::_VkAttachmentDescription() {
 
 _VkAttachmentDescription::~_VkAttachmentDescription() {
   //printf("VkAttachmentDescription deconstructed!!\n");
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }
 
 void _VkAttachmentDescription::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

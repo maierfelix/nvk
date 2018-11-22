@@ -15,6 +15,15 @@ _VkDeviceQueueCreateInfo::_VkDeviceQueueCreateInfo() {
 
 _VkDeviceQueueCreateInfo::~_VkDeviceQueueCreateInfo() {
   //printf("VkDeviceQueueCreateInfo deconstructed!!\n");
+  
+  
+  pNext.Reset();
+  
+  
+  
+  
+  pQueuePriorities.Reset();
+  
 }
 
 void _VkDeviceQueueCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {

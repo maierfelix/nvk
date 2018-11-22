@@ -15,6 +15,9 @@ _VkClearDepthStencilValue::_VkClearDepthStencilValue() {
 
 _VkClearDepthStencilValue::~_VkClearDepthStencilValue() {
   //printf("VkClearDepthStencilValue deconstructed!!\n");
+  
+  
+  
 }
 
 void _VkClearDepthStencilValue::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
