@@ -260,6 +260,17 @@ function getEnumByName(enums, name) {
   return null;
 };
 
+function insertOrReplaceEnumMember(enu, member) {
+  for (let ii = 0; ii < enu.children.length; ++ii) {
+    if (enu.children[ii].name === member.name) {
+      let child = enu.children[ii];
+      child.value = member.value;
+      return;
+    }
+  };
+  enu.children.push(member);
+};
+
 function mergeExtensionsIntoEnums(enums, exts) {
   let enuExt = {
     kind: "ENUM",
@@ -279,13 +290,16 @@ function mergeExtensionsIntoEnums(enums, exts) {
     ext.members.map(member => {
       if (member.extends) {
         let enu = getEnumByName(enums, member.extends);
-        enu.children.push(member);
+        insertOrReplaceEnumMember(enu, member);
       } else {
         if (member.isNumericValue || member.isEnumValue) {
-          enuExt.children.push(member);
+          insertOrReplaceEnumMember(enuExt, member);
         }
         else if (member.isStringValue) {
-          strExt.children.push(member);
+          insertOrReplaceEnumMember(strExt, member);
+        }
+        else {
+          console.warn(`Cannot handle enum extension ${ext.name} in merge-extensions!`);
         }
       }
     });
@@ -390,7 +404,7 @@ function generateBindings(specXML, version) {
   }
   // generate typescript definition
   {
-    let data = { structs, handles, includes: sortedIncludes };
+    let data = { structs, handles, calls, enums, includes: sortedIncludes };
     let result = generateTS(ast, data);
     console.log("Generating Typescript definition..");
     writeAddonFile(`${generatePath}/index.d.ts`, result.source, "utf-8", true);

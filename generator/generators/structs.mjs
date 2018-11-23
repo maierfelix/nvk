@@ -73,7 +73,7 @@ function genPersistentV8TypedArray(member) {
 
 function getTypedV8Array(member) {
   if (member.enumType || member.bitmaskType) {
-    let type = member.enumRawType || member.bitmaskRawType;
+    let type = member.enumRawType || member.bitmaskType;
     return `
   // vulkan
   if (value->IsArrayBufferView()) {

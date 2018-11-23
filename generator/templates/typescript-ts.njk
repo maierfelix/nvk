@@ -1,4 +1,27 @@
+// temporary esnext.bigint fix
+type BigInt = number
+declare const BigInt: typeof Number
 
+type BigUint64Array = Float32Array
+declare const BigUint64Array: typeof Float32Array
+
+declare var VkInout: { $: number; }
+export interface VkInout { $: number; }
+
+declare var VkInoutAddress: { $: BigInt; }
+export interface VkInoutAddress { $: BigInt; }
+
+/** #### ENUMS #### **/
+{% for enu in enums %}
+/** ## {{ enu.name }} ## */
+export enum {{ enu.name }} {
+  {% for child in enu.children -%}
+  {{ child.name }},
+  {% endfor %}
+}
+{% endfor %}
+
+/** #### HANDLES #### **/
 {% for name in includes -%}
 {%- if isHandleInclude(name) == true -%}
 
@@ -15,23 +38,55 @@ export interface {{ name | safe }} {}
 {% endif -%}
 {% endfor %}
 
+/** #### STRUCTS #### **/
 {% for name in includes -%}
 {%- if isStructInclude(name) == true -%}
 
 /** ## {{ name | safe }} ## */
 interface {{ name | safe }}Initializer {
-{{ processStructMembers(name, true) }}
+{{ processStructMembers(name, true) | safe }}
 }
 
 declare var {{ name | safe }}: {
   prototype: {{ name | safe }};
   new(param?: {{ name | safe }}Initializer | null): {{ name | safe }};
-{{ processStructMembers(name, false) }}
+{{ processStructMembers(name, false) | safe }}
 }
 
 export interface {{ name | safe }} {
-{{ processStructMembers(name, false) }}
+{{ processStructMembers(name, false) | safe }}
 }
 
-{% endif -%}
+{% endif %}
 {% endfor %}
+
+/** #### CALLS #### **/
+{% for call in calls -%}
+{{ processCall(call) | safe }}
+{% endfor %}
+
+/** #### HARDCODED #### **/
+declare function createV8ArrayBufferFromMemory(
+  addr: BigInt,
+  size: number
+): ArrayBuffer;
+
+declare function VK_MAKE_VERSION(
+  major: number,
+  minor: number,
+  patch: number
+): number;
+
+declare function VK_VERSION_MAJOR(
+  major: number
+): number;
+
+declare function VK_VERSION_MINOR(
+  minor: number
+): number;
+
+declare function VK_VERSION_PATCH(
+  patch: number
+): number;
+
+declare var VK_API_VERSION_1_0: number;

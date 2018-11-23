@@ -379,6 +379,14 @@ function parseTypeElement(child) {
     isConstant,
     dereferenceCount
   };
+  if (isBitmaskType) {
+    out.bitmaskType = out.rawType;
+    out.bitmaskRawType = bitmasks[type];
+    out.rawType = out.rawType.replace(out.type, `int32_t`);
+    out.type = `int32_t`;
+    type = out.type;
+    out.isBitmaskType = true;
+  }
   // note: manual type overwrite!
   if (isEnumType) {
     //out.isEnumType = true;
@@ -390,14 +398,6 @@ function parseTypeElement(child) {
   }
   if (isStructType) {
     out.isStructType = true;
-  }
-  if (isBitmaskType) {
-    out.bitmaskType = out.rawType;
-    out.bitmaskRawType = out.bitmaskType;
-    out.rawType = out.rawType.replace(out.type, `int32_t`);
-    out.type = `int32_t`;
-    type = out.type;
-    out.isBitmaskType = true;
   }
   // note: manual type overwrite!
   if (isBaseType) {

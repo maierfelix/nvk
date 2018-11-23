@@ -40,7 +40,7 @@ static void _VK_MAKE_VERSION(const Nan::FunctionCallbackInfo<v8::Value>& info) {
 };
 
 static void _VK_VERSION_MAJOR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
-  uint32_t version = Nan::To<uint32_t>(info[0]).FromMaybe(0);;
+  uint32_t version = Nan::To<uint32_t>(info[0]).FromMaybe(0);
   info.GetReturnValue().Set((uint32_t)(version) >> 22);
 };
 
@@ -50,7 +50,7 @@ static void _VK_VERSION_MINOR(const Nan::FunctionCallbackInfo<v8::Value>& info) 
 };
 
 static void _VK_VERSION_PATCH(const Nan::FunctionCallbackInfo<v8::Value>& info) {
-  uint32_t version = Nan::To<uint32_t>(info[0]).FromMaybe(0);;
+  uint32_t version = Nan::To<uint32_t>(info[0]).FromMaybe(0);
   info.GetReturnValue().Set((uint32_t)(version) & 0xfff);
 };
 
