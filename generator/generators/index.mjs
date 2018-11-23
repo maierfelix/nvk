@@ -1,7 +1,8 @@
 import fs from "fs";
 import nunjucks from "nunjucks";
-import toposort from "toposort";
 import pkg from "../../package.json";
+
+import { getSortedIncludes } from "../utils";
 
 let ast = null;
 
@@ -10,30 +11,11 @@ const CPP_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/index-cpp.njk`,
 
 nunjucks.configure({ autoescape: true });
 
-function removeDuplicates(array, condition) {
-  let out = array.filter((item, index, self) =>
-    index === self.findIndex((t) => condition(item, t))
-  );
-  array.length = 0;
-  out.map(item => { array.push(item); });
-};
-
-function generateIncludes(includes) {
-  let out = [];
-  removeDuplicates(
-    includes,
-    (item, t) => t.name === item.name && t.include === item.include
-  );
-  includes = includes.map(item => [item.name, item.include]);
-  out = toposort(includes).reverse();
-  return out;
-};
-
 export default function(astReference, includes, calls) {
   ast = astReference;
   let vars = {
     calls,
-    includes: generateIncludes(includes)
+    includes
   };
   let out = {
     header: null,

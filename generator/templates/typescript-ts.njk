@@ -1,0 +1,21 @@
+
+{% for name in includes -%}
+{%- if isStructInclude(name) == true -%}
+
+/** ## {{ name | safe }} ## */
+interface {{ name | safe }}Initializer {
+{{ processStructMembers(name, true) }}
+}
+
+declare var {{ name | safe }}: {
+  prototype: {{ name | safe }};
+  new(param?: {{ name | safe }}Initializer | null): {{ name | safe }};
+{{ processStructMembers(name, false) }}
+}
+
+export interface {{ name | safe }} {
+{{ processStructMembers(name, false) }}
+}
+
+{% endif -%}
+{% endfor %}

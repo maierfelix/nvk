@@ -13,8 +13,12 @@ import generateHandles from "./generators/handles";
 import generateGyp from "./generators/gyp";
 import generatePackage from "./generators/package";
 import generateUtils from "./generators/utils";
+import generateTS from "./generators/typescript";
 
-import { formatVkVersion } from "./utils";
+import {
+  formatVkVersion,
+  getSortedIncludes
+} from "./utils";
 
 const GEN_FILE_NOTICE = `/*
  * MACHINE GENERATED, DO NOT EDIT
@@ -298,6 +302,7 @@ function generateBindings(specXML, version) {
   let ast = null;
   let includes = [];
   let includeNames = [];
+  let sortedIncludes = [];
   // write paths
   const baseGeneratePath = pkg.config.GEN_OUT_DIR;
   const generatePath = `${baseGeneratePath}/${version}`;
@@ -354,6 +359,10 @@ function generateBindings(specXML, version) {
       writeAddonFile(`${generateSrcPath}/${handle.name}.cpp`, result.source, "utf-8", true);
     });
   }
+  // create sorted includes
+  {
+    sortedIncludes = getSortedIncludes(includes);
+  }
   // generate enums
   {
     console.log("Generating Vk enums..");
@@ -378,6 +387,13 @@ function generateBindings(specXML, version) {
     });
     // also add the index.cpp
     includeNames.push(`"./src/index.cpp"`);
+  }
+  // generate typescript definition
+  {
+    let data = { structs, handles, includes: sortedIncludes };
+    let result = generateTS(ast, data);
+    console.log("Generating Typescript definition..");
+    writeAddonFile(`${generatePath}/index.d.ts`, result.source, "utf-8", true);
   }
   // generate binding.gyp
   {
@@ -406,7 +422,7 @@ function generateBindings(specXML, version) {
   // generate indices
   {
     console.log("Generating indices..");
-    let indexFile = generateIndex(ast, includes, calls);
+    let indexFile = generateIndex(ast, sortedIncludes, calls);
     writeAddonFile(`${generateSrcPath}/index.h`, indexFile.header, "utf-8", true);
     writeAddonFile(`${generateSrcPath}/index.cpp`, indexFile.source, "utf-8", true);
   }

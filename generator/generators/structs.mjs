@@ -128,9 +128,6 @@ function processHeaderGetter(struct, member) {
       return `
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> ${member.name};
       static NAN_GETTER(Get${member.name});`;
-    } else {
-      return `
-      static NAN_GETTER(Get${member.name});`;
     }
   }
   switch (rawType) {
