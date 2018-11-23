@@ -1,5 +1,21 @@
 
 {% for name in includes -%}
+{%- if isHandleInclude(name) == true -%}
+
+/** ## {{ name | safe }} ## */
+interface {{ name | safe }} {}
+
+declare var {{ name | safe }}: {
+  prototype: {{ name | safe }};
+  new(): {{ name | safe }};
+}
+
+export interface {{ name | safe }} {}
+
+{% endif -%}
+{% endfor %}
+
+{% for name in includes -%}
 {%- if isStructInclude(name) == true -%}
 
 /** ## {{ name | safe }} ## */

@@ -11,11 +11,22 @@ const TS_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/typescript-ts.nj
 
 nunjucks.configure({ autoescape: true });
 
+function getHandleByName(name) {
+  for (let ii = 0; ii < handles.length; ++ii) {
+    if (handles[ii].name === name) return handles[ii];
+  };
+  return null;
+};
+
 function getStructByName(name) {
   for (let ii = 0; ii < structs.length; ++ii) {
     if (structs[ii].name === name) return structs[ii];
   };
   return null;
+};
+
+function isHandleInclude(name) {
+  return getHandleByName(name) !== null;
 };
 
 function isStructInclude(name) {
@@ -91,6 +102,7 @@ export default function(astReference, data) {
     handles,
     includes,
     getStructByName,
+    isHandleInclude,
     isStructInclude,
     processStructMembers
   };
