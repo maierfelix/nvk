@@ -135,7 +135,7 @@ NAN_GETTER(_VkDescriptorSetLayoutCreateInfo::Getflags) {
 }NAN_SETTER(_VkDescriptorSetLayoutCreateInfo::Setflags) {
   _VkDescriptorSetLayoutCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutCreateInfo>(info.This());
   if (value->IsNumber()) {
-    self->instance.flags = static_cast<VkDescriptorSetLayoutCreateFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.flags = static_cast<VkDescriptorSetLayoutCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);

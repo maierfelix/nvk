@@ -161,7 +161,7 @@ NAN_GETTER(_VkDescriptorSetLayoutBinding::GetstageFlags) {
 }NAN_SETTER(_VkDescriptorSetLayoutBinding::SetstageFlags) {
   _VkDescriptorSetLayoutBinding *self = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutBinding>(info.This());
   if (value->IsNumber()) {
-    self->instance.stageFlags = static_cast<VkShaderStageFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.stageFlags = static_cast<VkShaderStageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);

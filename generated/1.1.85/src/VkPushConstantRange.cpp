@@ -74,7 +74,7 @@ NAN_GETTER(_VkPushConstantRange::GetstageFlags) {
 }NAN_SETTER(_VkPushConstantRange::SetstageFlags) {
   _VkPushConstantRange *self = Nan::ObjectWrap::Unwrap<_VkPushConstantRange>(info.This());
   if (value->IsNumber()) {
-    self->instance.stageFlags = static_cast<VkShaderStageFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.stageFlags = static_cast<VkShaderStageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);

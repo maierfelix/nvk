@@ -72,8 +72,8 @@ function genPersistentV8TypedArray(member) {
 };
 
 function getTypedV8Array(member) {
-  if (member.enumType || member.bitmaskType) {
-    let type = member.enumRawType || member.bitmaskType;
+  if (member.enumType || member.bitmaskRawType) {
+    let type = member.enumRawType || member.bitmaskRawType;
     return `
   // vulkan
   if (value->IsArrayBufferView()) {
@@ -334,10 +334,10 @@ function processSourceSetter(struct, member) {
     case "uint8_t":
     case "uint32_t":
     case "uint64_t":
-      if (member.enumType || member.bitmaskType) {
+      if (member.enumType || member.bitmaskRawType) {
         return `
   if (value->IsNumber()) {
-    self->instance.${member.name} = static_cast<${member.enumType || member.bitmaskType}>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.${member.name} = static_cast<${member.enumType || member.bitmaskRawType}>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     ${invalidMemberTypeError(member)}
     return;

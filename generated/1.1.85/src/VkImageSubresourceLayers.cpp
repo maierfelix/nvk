@@ -78,7 +78,7 @@ NAN_GETTER(_VkImageSubresourceLayers::GetaspectMask) {
 }NAN_SETTER(_VkImageSubresourceLayers::SetaspectMask) {
   _VkImageSubresourceLayers *self = Nan::ObjectWrap::Unwrap<_VkImageSubresourceLayers>(info.This());
   if (value->IsNumber()) {
-    self->instance.aspectMask = static_cast<VkImageAspectFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.aspectMask = static_cast<VkImageAspectFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);

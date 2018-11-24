@@ -139,7 +139,7 @@ NAN_GETTER(_VkDescriptorPoolCreateInfo::Getflags) {
 }NAN_SETTER(_VkDescriptorPoolCreateInfo::Setflags) {
   _VkDescriptorPoolCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDescriptorPoolCreateInfo>(info.This());
   if (value->IsNumber()) {
-    self->instance.flags = static_cast<VkDescriptorPoolCreateFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.flags = static_cast<VkDescriptorPoolCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);

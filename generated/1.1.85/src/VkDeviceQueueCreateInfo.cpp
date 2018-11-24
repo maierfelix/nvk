@@ -109,7 +109,7 @@ NAN_GETTER(_VkDeviceQueueCreateInfo::Getflags) {
 }NAN_SETTER(_VkDeviceQueueCreateInfo::Setflags) {
   _VkDeviceQueueCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceQueueCreateInfo>(info.This());
   if (value->IsNumber()) {
-    self->instance.flags = static_cast<VkDeviceQueueCreateFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.flags = static_cast<VkDeviceQueueCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);

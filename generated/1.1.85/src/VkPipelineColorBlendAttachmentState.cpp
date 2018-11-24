@@ -206,7 +206,7 @@ NAN_GETTER(_VkPipelineColorBlendAttachmentState::GetcolorWriteMask) {
 }NAN_SETTER(_VkPipelineColorBlendAttachmentState::SetcolorWriteMask) {
   _VkPipelineColorBlendAttachmentState *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendAttachmentState>(info.This());
   if (value->IsNumber()) {
-    self->instance.colorWriteMask = static_cast<VkColorComponentFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.colorWriteMask = static_cast<VkColorComponentFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);

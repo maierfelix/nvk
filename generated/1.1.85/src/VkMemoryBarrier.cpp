@@ -100,7 +100,7 @@ NAN_GETTER(_VkMemoryBarrier::GetsrcAccessMask) {
 }NAN_SETTER(_VkMemoryBarrier::SetsrcAccessMask) {
   _VkMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkMemoryBarrier>(info.This());
   if (value->IsNumber()) {
-    self->instance.srcAccessMask = static_cast<VkAccessFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.srcAccessMask = static_cast<VkAccessFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);
@@ -116,7 +116,7 @@ NAN_GETTER(_VkMemoryBarrier::GetdstAccessMask) {
 }NAN_SETTER(_VkMemoryBarrier::SetdstAccessMask) {
   _VkMemoryBarrier *self = Nan::ObjectWrap::Unwrap<_VkMemoryBarrier>(info.This());
   if (value->IsNumber()) {
-    self->instance.dstAccessMask = static_cast<VkAccessFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.dstAccessMask = static_cast<VkAccessFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);

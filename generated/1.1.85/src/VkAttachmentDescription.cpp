@@ -98,7 +98,7 @@ NAN_GETTER(_VkAttachmentDescription::Getflags) {
 }NAN_SETTER(_VkAttachmentDescription::Setflags) {
   _VkAttachmentDescription *self = Nan::ObjectWrap::Unwrap<_VkAttachmentDescription>(info.This());
   if (value->IsNumber()) {
-    self->instance.flags = static_cast<VkAttachmentDescriptionFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.flags = static_cast<VkAttachmentDescriptionFlags>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);

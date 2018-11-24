@@ -383,6 +383,7 @@ function parseTypeElement(child) {
     out.bitmaskType = out.rawType;
     out.rawType = out.rawType.replace(out.type, `int32_t`);
     out.type = `int32_t`;
+    out.bitmaskRawType = out.bitmaskType;
     if (bitmasks[type].requires) {
       out.bitmaskType = bitmasks[bitmasks[type].name].name;
     } else {
