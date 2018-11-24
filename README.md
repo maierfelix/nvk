@@ -62,19 +62,19 @@ appInfo.apiVersion = VK_API_VERSION_1_0;
  - node.js >= v10.9.0 recommended
 
 ### Windows:
-Make sure you have either Visual Studio >= 15 installed or use
+Make sure you have Visual Studio >= 15 installed or use
 ````
 npm install --global --production windows-build-tools
 ````
 
-Install the Vulkan SDK from [here](https://vulkan.lunarg.com/sdk/home#windows)
+Install the corresponding Vulkan SDK version from [here](https://vulkan.lunarg.com/sdk/home#windows). The later installer will ask you to setup bindings for ``1.1.85``, so make sure you have ``Vulkan SDK 1.1.85`` installed.
 
 Install node-vulkan
 ````
 npm install node-vulkan
 ````
 
-After installing node-vulkan, a setup will ask you, if it should automate the whole binding build process for you
+After installing node-vulkan, a setup will ask you, if it should automate the whole binding build process for you.
 
 Afterwards you can `require` or `import` node-vulkan in your project!
 
