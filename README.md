@@ -1,5 +1,5 @@
 # node-vulkan
-This is a [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for node.js, which allows to interact from JavaScript with the low-level interface of Vulkan. The API of this project strives to be as close as possible to Vulkan's C/C++ API.
+This is a [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for node.js, which allows to interact from JavaScript/[TypeScript](#typescript) with the low-level interface of Vulkan. The API of this project strives to be as close as possible to Vulkan's C/C++ API.
 
 ---
 
@@ -14,6 +14,7 @@ This is a [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for node.js, 
     + [Usage](#usage)
       - [Generation](#generation)
       - [Building](#building)
+  * [TypeScript](#typescript)
   * [Syntactic Sugar](#syntactic-sugar)
       - [sType auto-filling](#stype-auto-filling)
       - [Structure creation shortcut](#structure-creation-shortcut)
@@ -29,9 +30,9 @@ You can find more previews and demos in [/examples](https://github.com/maierfeli
 
 ## Example:
 
-In most cases the bindings match the native style of Vulkan. This allows you to follow existing C/C++ tutorials, but write the implementation itself with node-vulkan. Note that both interfaces end up with a similar amount of code. Optionally you can use some [syntactic sugar](https://github.com/maierfelix/node-vulkan#syntactic-sugar) to write things quicker.
+In most cases the bindings match the native style of Vulkan. This allows you to follow existing C/C++ tutorials, but write the implementation itself with node-vulkan. Note that both interfaces end up with a similar amount of code. Optionally you can use some [syntactic sugar](#syntactic-sugar) to write things quicker.
 
-JavaScript:
+JavaScript/TypeScript:
 ````js
 let appInfo = new VkApplicationInfo();
 appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
@@ -109,6 +110,33 @@ npm run build --vkversion=1.1.85 --msvsversion=2017
 ````
 
 The compiled bindings can then be found in `generated/{vkversion}/build`
+
+## TypeScript:
+
+When generating bindings, a TypeScript definition file is auto-generated as well (see e.g. the file [here](https://github.com/maierfelix/node-vulkan/blob/master/generated/1.1.85/index.d.ts)).
+
+To use the definition file, simply follow the installation steps above. Afterwards in your `.ts` file, import and use node-vulkan as follows:
+
+````ts
+import {
+  VulkanWindow,
+  VkApplicationInfo,
+  VK_MAKE_VERSION,
+  VK_API_VERSION_1_0
+} from "node-vulkan/generated/1.1.85/index";
+
+let win = new VulkanWindow({ width: 480, height: 320 });
+
+let appInfo = new VkApplicationInfo({
+  pApplicationName: "Hello!",
+  applicationVersion: VK_MAKE_VERSION(1, 0, 0),
+  pEngineName: "No Engine",
+  engineVersion: VK_MAKE_VERSION(1, 0, 0),
+  apiVersion: VK_API_VERSION_1_0
+});
+````
+
+Also note, that it is recommended to enable the `--strict` mode in the compiler options.
 
 ## Syntactic Sugar:
 
