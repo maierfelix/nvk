@@ -92,6 +92,7 @@
 #include "VkSpecializationInfo.h"
 #include "VkPipelineShaderStageCreateInfo.h"
 #include "VkGraphicsPipelineCreateInfo.h"
+#include "VkComputePipelineCreateInfo.h"
 #include "VkDescriptorSetAllocateInfo.h"
 #include "VkDescriptorPoolSize.h"
 #include "VkDescriptorPoolCreateInfo.h"

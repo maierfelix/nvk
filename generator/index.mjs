@@ -126,7 +126,8 @@ const structWhiteList = [
   "VkImageSubresource",
   "VkSubresourceLayout",
   "VkImageSubresourceRange",
-  "VkImageSubresourceLayers"
+  "VkImageSubresourceLayers",
+  "VkComputePipelineCreateInfo"
 ];
 
 const callsWhiteList = [
@@ -187,17 +188,34 @@ const callsWhiteList = [
   "vkCreateSampler",
   "vkDeviceWaitIdle",
   "vkFreeCommandBuffers",
-  "vkDestroyCommandPool",
-  "vkDestroyPipeline",
-  "vkDestroyRenderPass",
-  "vkDestroyImageView",
-  "vkDestroyPipelineLayout",
-  "vkDestroyShaderModule",
-  "vkDestroySwapchainKHR",
-  "vkDestroyFramebuffer",
   "vkCmdSetViewport",
   "vkCmdSetScissor",
-  "vkGetImageSubresourceLayout"
+  "vkGetImageSubresourceLayout",
+  "vkCreateComputePipelines",
+  "vkDestroyInstance",
+  "vkDestroyDevice",
+  "vkDestroyFence",
+  "vkDestroySemaphore",
+  "vkDestroyEvent",
+  "vkDestroyQueryPool",
+  "vkDestroyBuffer",
+  "vkDestroyBufferView",
+  "vkDestroyImage",
+  "vkDestroyImageView",
+  "vkDestroyShaderModule",
+  "vkDestroyPipelineCache",
+  "vkDestroyPipeline",
+  "vkDestroyPipelineLayout",
+  "vkDestroySampler",
+  "vkDestroyDescriptorSetLayout",
+  "vkDestroyDescriptorPool",
+  "vkDestroyFramebuffer",
+  "vkDestroyRenderPass",
+  "vkDestroyCommandPool",
+  "vkDestroySurfaceKHR",
+  "vkDestroySwapchainKHR",
+  "vkDestroyDescriptorUpdateTemplate",
+  "vkDestroySamplerYcbcrConversion"
 ];
 
 function downloadVulkanSpecificationFile(version) {
@@ -346,7 +364,6 @@ function generateBindings(specXML, version) {
   let structs = ast.filter(node => node.kind === "STRUCT");
   let handles = ast.filter(node => node.kind === "HANDLE");
   let extensions = ast.filter(node => node.kind === "EXTENSION");
-  // filter by whitelist
   calls = calls.filter(call => callsWhiteList.includes(call.name));
   structs = structs.filter(struct => structWhiteList.includes(struct.name));
   // generate structs

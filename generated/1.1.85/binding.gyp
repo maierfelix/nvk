@@ -63,6 +63,7 @@
 "./src/VkSpecializationMapEntry.cpp",
 "./src/VkSpecializationInfo.cpp",
 "./src/VkPipelineShaderStageCreateInfo.cpp",
+"./src/VkComputePipelineCreateInfo.cpp",
 "./src/VkVertexInputBindingDescription.cpp",
 "./src/VkVertexInputAttributeDescription.cpp",
 "./src/VkPipelineVertexInputStateCreateInfo.cpp",

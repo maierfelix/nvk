@@ -180,6 +180,7 @@ static void init(v8::Handle<v8::Object> target, v8::Handle<v8::Object> module) {
   _VkSpecializationInfo::Initialize(target);
   _VkPipelineShaderStageCreateInfo::Initialize(target);
   _VkGraphicsPipelineCreateInfo::Initialize(target);
+  _VkComputePipelineCreateInfo::Initialize(target);
   _VkDescriptorSetAllocateInfo::Initialize(target);
   _VkDescriptorPoolSize::Initialize(target);
   _VkDescriptorPoolCreateInfo::Initialize(target);
@@ -227,6 +228,10 @@ static void init(v8::Handle<v8::Object> target, v8::Handle<v8::Object> module) {
     Nan::New<v8::FunctionTemplate>(_vkCreateInstance)->GetFunction()
   );
   target->Set(
+    Nan::New("vkDestroyInstance").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDestroyInstance)->GetFunction()
+  );
+  target->Set(
     Nan::New("vkEnumeratePhysicalDevices").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkEnumeratePhysicalDevices)->GetFunction()
   );
@@ -249,6 +254,10 @@ static void init(v8::Handle<v8::Object> target, v8::Handle<v8::Object> module) {
   target->Set(
     Nan::New("vkCreateDevice").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkCreateDevice)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkDestroyDevice").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDestroyDevice)->GetFunction()
   );
   target->Set(
     Nan::New("vkEnumerateInstanceLayerProperties").ToLocalChecked(),
@@ -299,16 +308,44 @@ static void init(v8::Handle<v8::Object> target, v8::Handle<v8::Object> module) {
     Nan::New<v8::FunctionTemplate>(_vkBindImageMemory)->GetFunction()
   );
   target->Set(
+    Nan::New("vkDestroyFence").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDestroyFence)->GetFunction()
+  );
+  target->Set(
     Nan::New("vkCreateSemaphore").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkCreateSemaphore)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkDestroySemaphore").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDestroySemaphore)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkDestroyEvent").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDestroyEvent)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkDestroyQueryPool").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDestroyQueryPool)->GetFunction()
   );
   target->Set(
     Nan::New("vkCreateBuffer").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkCreateBuffer)->GetFunction()
   );
   target->Set(
+    Nan::New("vkDestroyBuffer").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDestroyBuffer)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkDestroyBufferView").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDestroyBufferView)->GetFunction()
+  );
+  target->Set(
     Nan::New("vkCreateImage").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkCreateImage)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkDestroyImage").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDestroyImage)->GetFunction()
   );
   target->Set(
     Nan::New("vkGetImageSubresourceLayout").ToLocalChecked(),
@@ -331,8 +368,16 @@ static void init(v8::Handle<v8::Object> target, v8::Handle<v8::Object> module) {
     Nan::New<v8::FunctionTemplate>(_vkDestroyShaderModule)->GetFunction()
   );
   target->Set(
+    Nan::New("vkDestroyPipelineCache").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDestroyPipelineCache)->GetFunction()
+  );
+  target->Set(
     Nan::New("vkCreateGraphicsPipelines").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkCreateGraphicsPipelines)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkCreateComputePipelines").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkCreateComputePipelines)->GetFunction()
   );
   target->Set(
     Nan::New("vkDestroyPipeline").ToLocalChecked(),
@@ -351,12 +396,24 @@ static void init(v8::Handle<v8::Object> target, v8::Handle<v8::Object> module) {
     Nan::New<v8::FunctionTemplate>(_vkCreateSampler)->GetFunction()
   );
   target->Set(
+    Nan::New("vkDestroySampler").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDestroySampler)->GetFunction()
+  );
+  target->Set(
     Nan::New("vkCreateDescriptorSetLayout").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkCreateDescriptorSetLayout)->GetFunction()
   );
   target->Set(
+    Nan::New("vkDestroyDescriptorSetLayout").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDestroyDescriptorSetLayout)->GetFunction()
+  );
+  target->Set(
     Nan::New("vkCreateDescriptorPool").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkCreateDescriptorPool)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkDestroyDescriptorPool").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDestroyDescriptorPool)->GetFunction()
   );
   target->Set(
     Nan::New("vkAllocateDescriptorSets").ToLocalChecked(),
@@ -459,6 +516,10 @@ static void init(v8::Handle<v8::Object> target, v8::Handle<v8::Object> module) {
     Nan::New<v8::FunctionTemplate>(_vkCmdEndRenderPass)->GetFunction()
   );
   target->Set(
+    Nan::New("vkDestroySurfaceKHR").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDestroySurfaceKHR)->GetFunction()
+  );
+  target->Set(
     Nan::New("vkGetPhysicalDeviceSurfaceSupportKHR").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkGetPhysicalDeviceSurfaceSupportKHR)->GetFunction()
   );
@@ -493,6 +554,14 @@ static void init(v8::Handle<v8::Object> target, v8::Handle<v8::Object> module) {
   target->Set(
     Nan::New("vkQueuePresentKHR").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkQueuePresentKHR)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkDestroyDescriptorUpdateTemplate").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDestroyDescriptorUpdateTemplate)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkDestroySamplerYcbcrConversion").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkDestroySamplerYcbcrConversion)->GetFunction()
   );
   
 }
