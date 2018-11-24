@@ -215,6 +215,6 @@ But CEF's shared textures on Windows require D3D11 which I'm not familiar with. 
  - [x] Handle generation (~100%)
  - [x] Enum generation (100%)
  - [ ] Function generation (~85%)
- - [ ] Deallocation (~0%)
+ - [ ] Deallocation (~85%)
  - [ ] Vulkan API fill V8 reflection (~85%)
  - [ ] CEF D3D11 high-performance texture sharing (~0%)
