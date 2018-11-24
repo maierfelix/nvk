@@ -10,17 +10,21 @@ Note that the `vkversion` flag specifies the vulkan version you want to use. Mak
 
 ## Previews:
 
-#### Cube:
+#### [Cube](https://github.com/maierfelix/node-vulkan/tree/master/examples/cube):
 <img src="https://i.imgur.com/ey9XooY.gif" width="336">
 
  - A spinning cube, demonstrating buffer and texture upload
 
-#### Triangle:
+#### [Triangle](https://github.com/maierfelix/node-vulkan/tree/master/examples/triangle):
 <img src="https://i.imgur.com/nGGxpsQ.gif" width="336">
 
  - The most basic example - A good starting point
 
-#### Webcam:
+#### [TypeScript](https://github.com/maierfelix/node-vulkan/tree/master/examples/typescript):
+
+ - Example on how to setup and use ``node-vulkan`` in TypeScript
+
+#### [Webcam](https://github.com/maierfelix/node-vulkan/tree/master/examples/webcam):
 <img src="https://i.imgur.com/cRrVc1N.gif" width="336">
 
  - A spinning webcam model using a PBR shader
