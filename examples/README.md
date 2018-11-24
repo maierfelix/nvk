@@ -12,12 +12,16 @@ Note that the `vkversion` flag specifies the vulkan version you want to use. Mak
 
 #### Cube:
 <img src="https://i.imgur.com/ey9XooY.gif" width="336">
+
  - A spinning cube, demonstrating buffer and texture upload
 
 #### Triangle:
 <img src="https://i.imgur.com/nGGxpsQ.gif" width="336">
+
  - The most basic example - A good starting point
 
 #### Webcam:
 <img src="https://i.imgur.com/cRrVc1N.gif" width="336">
- - A spinning webcam model using a PBR shader. Demonstrates .obj file uploading, uniform buffer objects and window events
+
+ - A spinning webcam model using a PBR shader
+ - Demonstrates ``.obj`` file uploading, uniform buffer objects and window events
