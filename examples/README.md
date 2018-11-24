@@ -4,7 +4,7 @@ Some examples use libraries such as [gl-matrix](http://glmatrix.net/) or the Web
 
 1. ``npm install`` to install dependencies (if any)
 
-2. ``npm run start --vkversion=1.1.85`` to run the example
+2. ``npm run start --vkversion=1.1.85`` to run an example
 
 Note that the `vkversion` flag specifies the vulkan version you want to use. Make sure you generated and compiled the bindings for it, otherwise you will get an error
 
