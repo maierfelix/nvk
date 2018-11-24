@@ -224,7 +224,7 @@ NAN_GETTER(_VkCommandBufferInheritanceInfo::GetqueryFlags) {
 }NAN_SETTER(_VkCommandBufferInheritanceInfo::SetqueryFlags) {
   _VkCommandBufferInheritanceInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferInheritanceInfo>(info.This());
   if (value->IsNumber()) {
-    self->instance.queryFlags = static_cast<VkQueryControlFlags>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.queryFlags = static_cast<VkQueryControlFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);
@@ -240,7 +240,7 @@ NAN_GETTER(_VkCommandBufferInheritanceInfo::GetpipelineStatistics) {
 }NAN_SETTER(_VkCommandBufferInheritanceInfo::SetpipelineStatistics) {
   _VkCommandBufferInheritanceInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferInheritanceInfo>(info.This());
   if (value->IsNumber()) {
-    self->instance.pipelineStatistics = static_cast<VkQueryPipelineStatisticFlags>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.pipelineStatistics = static_cast<VkQueryPipelineStatisticFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);

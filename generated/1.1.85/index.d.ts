@@ -2885,7 +2885,7 @@ export interface VkClearColorValue {
 interface VkBindImagePlaneMemoryInfoInitializer {
   sType?: VkStructureType;
   pNext?: null;
-  planeAspect?: VkImageAspectFlags;
+  planeAspect?: VkImageAspectFlagBits;
 }
 
 declare var VkBindImagePlaneMemoryInfo: {
@@ -2893,13 +2893,13 @@ declare var VkBindImagePlaneMemoryInfo: {
   new(param?: VkBindImagePlaneMemoryInfoInitializer | null): VkBindImagePlaneMemoryInfo;
   sType: VkStructureType;
   pNext: null;
-  planeAspect: VkImageAspectFlags;
+  planeAspect: VkImageAspectFlagBits;
 }
 
 export interface VkBindImagePlaneMemoryInfo {
   sType: VkStructureType;
   pNext: null;
-  planeAspect: VkImageAspectFlags;
+  planeAspect: VkImageAspectFlagBits;
 }
 
 
@@ -2974,8 +2974,8 @@ interface VkSwapchainCreateInfoKHRInitializer {
   imageSharingMode?: VkSharingMode;
   queueFamilyIndexCount?: number;
   pQueueFamilyIndices?: Uint32Array | null;
-  preTransform?: VkSurfaceTransformFlagsKHR;
-  compositeAlpha?: VkCompositeAlphaFlagsKHR;
+  preTransform?: VkSurfaceTransformFlagBitsKHR;
+  compositeAlpha?: VkCompositeAlphaFlagBitsKHR;
   presentMode?: VkPresentModeKHR;
   clipped?: number;
   oldSwapchain?: VkSwapchainKHR | null;
@@ -2997,8 +2997,8 @@ declare var VkSwapchainCreateInfoKHR: {
   imageSharingMode: VkSharingMode;
   queueFamilyIndexCount: number;
   pQueueFamilyIndices: Uint32Array | null;
-  preTransform: VkSurfaceTransformFlagsKHR;
-  compositeAlpha: VkCompositeAlphaFlagsKHR;
+  preTransform: VkSurfaceTransformFlagBitsKHR;
+  compositeAlpha: VkCompositeAlphaFlagBitsKHR;
   presentMode: VkPresentModeKHR;
   clipped: number;
   oldSwapchain: VkSwapchainKHR | null;
@@ -3018,8 +3018,8 @@ export interface VkSwapchainCreateInfoKHR {
   imageSharingMode: VkSharingMode;
   queueFamilyIndexCount: number;
   pQueueFamilyIndices: Uint32Array | null;
-  preTransform: VkSurfaceTransformFlagsKHR;
-  compositeAlpha: VkCompositeAlphaFlagsKHR;
+  preTransform: VkSurfaceTransformFlagBitsKHR;
+  compositeAlpha: VkCompositeAlphaFlagBitsKHR;
   presentMode: VkPresentModeKHR;
   clipped: number;
   oldSwapchain: VkSwapchainKHR | null;
@@ -3054,7 +3054,7 @@ interface VkSurfaceCapabilitiesKHRInitializer {
   readonly maxImageExtent?: VkExtent2D | null;
   readonly maxImageArrayLayers?: number;
   readonly supportedTransforms?: VkSurfaceTransformFlagBitsKHR;
-  readonly currentTransform?: VkSurfaceTransformFlagsKHR;
+  readonly currentTransform?: VkSurfaceTransformFlagBitsKHR;
   readonly supportedCompositeAlpha?: VkCompositeAlphaFlagBitsKHR;
   readonly supportedUsageFlags?: VkImageUsageFlagBits;
 }
@@ -3069,7 +3069,7 @@ declare var VkSurfaceCapabilitiesKHR: {
   readonly maxImageExtent: VkExtent2D | null;
   readonly maxImageArrayLayers: number;
   readonly supportedTransforms: VkSurfaceTransformFlagBitsKHR;
-  readonly currentTransform: VkSurfaceTransformFlagsKHR;
+  readonly currentTransform: VkSurfaceTransformFlagBitsKHR;
   readonly supportedCompositeAlpha: VkCompositeAlphaFlagBitsKHR;
   readonly supportedUsageFlags: VkImageUsageFlagBits;
 }
@@ -3082,7 +3082,7 @@ export interface VkSurfaceCapabilitiesKHR {
   readonly maxImageExtent: VkExtent2D | null;
   readonly maxImageArrayLayers: number;
   readonly supportedTransforms: VkSurfaceTransformFlagBitsKHR;
-  readonly currentTransform: VkSurfaceTransformFlagsKHR;
+  readonly currentTransform: VkSurfaceTransformFlagBitsKHR;
   readonly supportedCompositeAlpha: VkCompositeAlphaFlagBitsKHR;
   readonly supportedUsageFlags: VkImageUsageFlagBits;
 }
@@ -3132,7 +3132,7 @@ export interface VkSubmitInfo {
 interface VkFramebufferCreateInfoInitializer {
   sType?: VkStructureType;
   pNext?: null;
-  flags?: VkFramebufferCreateFlags;
+  flags?: null;
   renderPass?: VkRenderPass | null;
   attachmentCount?: number;
   pAttachments?: VkImageView[] | null;
@@ -3146,7 +3146,7 @@ declare var VkFramebufferCreateInfo: {
   new(param?: VkFramebufferCreateInfoInitializer | null): VkFramebufferCreateInfo;
   sType: VkStructureType;
   pNext: null;
-  flags: VkFramebufferCreateFlags;
+  flags: null;
   renderPass: VkRenderPass | null;
   attachmentCount: number;
   pAttachments: VkImageView[] | null;
@@ -3158,7 +3158,7 @@ declare var VkFramebufferCreateInfo: {
 export interface VkFramebufferCreateInfo {
   sType: VkStructureType;
   pNext: null;
-  flags: VkFramebufferCreateFlags;
+  flags: null;
   renderPass: VkRenderPass | null;
   attachmentCount: number;
   pAttachments: VkImageView[] | null;
@@ -3172,7 +3172,7 @@ export interface VkFramebufferCreateInfo {
 interface VkSemaphoreCreateInfoInitializer {
   sType?: VkStructureType;
   pNext?: null;
-  flags?: VkSemaphoreCreateFlags;
+  flags?: null;
 }
 
 declare var VkSemaphoreCreateInfo: {
@@ -3180,13 +3180,13 @@ declare var VkSemaphoreCreateInfo: {
   new(param?: VkSemaphoreCreateInfoInitializer | null): VkSemaphoreCreateInfo;
   sType: VkStructureType;
   pNext: null;
-  flags: VkSemaphoreCreateFlags;
+  flags: null;
 }
 
 export interface VkSemaphoreCreateInfo {
   sType: VkStructureType;
   pNext: null;
-  flags: VkSemaphoreCreateFlags;
+  flags: null;
 }
 
 
@@ -3290,7 +3290,7 @@ export interface VkSubpassDescription {
 interface VkAttachmentDescriptionInitializer {
   flags?: VkAttachmentDescriptionFlagBits;
   format?: VkFormat;
-  samples?: VkSampleCountFlags;
+  samples?: VkSampleCountFlagBits;
   loadOp?: VkAttachmentLoadOp;
   storeOp?: VkAttachmentStoreOp;
   stencilLoadOp?: VkAttachmentLoadOp;
@@ -3304,7 +3304,7 @@ declare var VkAttachmentDescription: {
   new(param?: VkAttachmentDescriptionInitializer | null): VkAttachmentDescription;
   flags: VkAttachmentDescriptionFlagBits;
   format: VkFormat;
-  samples: VkSampleCountFlags;
+  samples: VkSampleCountFlagBits;
   loadOp: VkAttachmentLoadOp;
   storeOp: VkAttachmentStoreOp;
   stencilLoadOp: VkAttachmentLoadOp;
@@ -3316,7 +3316,7 @@ declare var VkAttachmentDescription: {
 export interface VkAttachmentDescription {
   flags: VkAttachmentDescriptionFlagBits;
   format: VkFormat;
-  samples: VkSampleCountFlags;
+  samples: VkSampleCountFlagBits;
   loadOp: VkAttachmentLoadOp;
   storeOp: VkAttachmentStoreOp;
   stencilLoadOp: VkAttachmentLoadOp;
@@ -3330,7 +3330,7 @@ export interface VkAttachmentDescription {
 interface VkRenderPassCreateInfoInitializer {
   sType?: VkStructureType;
   pNext?: null;
-  flags?: VkRenderPassCreateFlags;
+  flags?: null;
   attachmentCount?: number;
   pAttachments?: VkAttachmentDescription[] | null;
   subpassCount?: number;
@@ -3344,7 +3344,7 @@ declare var VkRenderPassCreateInfo: {
   new(param?: VkRenderPassCreateInfoInitializer | null): VkRenderPassCreateInfo;
   sType: VkStructureType;
   pNext: null;
-  flags: VkRenderPassCreateFlags;
+  flags: null;
   attachmentCount: number;
   pAttachments: VkAttachmentDescription[] | null;
   subpassCount: number;
@@ -3356,7 +3356,7 @@ declare var VkRenderPassCreateInfo: {
 export interface VkRenderPassCreateInfo {
   sType: VkStructureType;
   pNext: null;
-  flags: VkRenderPassCreateFlags;
+  flags: null;
   attachmentCount: number;
   pAttachments: VkAttachmentDescription[] | null;
   subpassCount: number;
@@ -3595,7 +3595,7 @@ export interface VkCommandPoolCreateInfo {
 interface VkSamplerCreateInfoInitializer {
   sType?: VkStructureType;
   pNext?: null;
-  flags?: VkSamplerCreateFlags;
+  flags?: null;
   magFilter?: VkFilter;
   minFilter?: VkFilter;
   mipmapMode?: VkSamplerMipmapMode;
@@ -3618,7 +3618,7 @@ declare var VkSamplerCreateInfo: {
   new(param?: VkSamplerCreateInfoInitializer | null): VkSamplerCreateInfo;
   sType: VkStructureType;
   pNext: null;
-  flags: VkSamplerCreateFlags;
+  flags: null;
   magFilter: VkFilter;
   minFilter: VkFilter;
   mipmapMode: VkSamplerMipmapMode;
@@ -3639,7 +3639,7 @@ declare var VkSamplerCreateInfo: {
 export interface VkSamplerCreateInfo {
   sType: VkStructureType;
   pNext: null;
-  flags: VkSamplerCreateFlags;
+  flags: null;
   magFilter: VkFilter;
   minFilter: VkFilter;
   mipmapMode: VkSamplerMipmapMode;
@@ -3684,7 +3684,7 @@ export interface VkPushConstantRange {
 interface VkPipelineLayoutCreateInfoInitializer {
   sType?: VkStructureType;
   pNext?: null;
-  flags?: VkPipelineLayoutCreateFlags;
+  flags?: null;
   setLayoutCount?: number;
   pSetLayouts?: VkDescriptorSetLayout[] | null;
   pushConstantRangeCount?: number;
@@ -3696,7 +3696,7 @@ declare var VkPipelineLayoutCreateInfo: {
   new(param?: VkPipelineLayoutCreateInfoInitializer | null): VkPipelineLayoutCreateInfo;
   sType: VkStructureType;
   pNext: null;
-  flags: VkPipelineLayoutCreateFlags;
+  flags: null;
   setLayoutCount: number;
   pSetLayouts: VkDescriptorSetLayout[] | null;
   pushConstantRangeCount: number;
@@ -3706,7 +3706,7 @@ declare var VkPipelineLayoutCreateInfo: {
 export interface VkPipelineLayoutCreateInfo {
   sType: VkStructureType;
   pNext: null;
-  flags: VkPipelineLayoutCreateFlags;
+  flags: null;
   setLayoutCount: number;
   pSetLayouts: VkDescriptorSetLayout[] | null;
   pushConstantRangeCount: number;
@@ -3718,7 +3718,7 @@ export interface VkPipelineLayoutCreateInfo {
 interface VkPipelineDynamicStateCreateInfoInitializer {
   sType?: VkStructureType;
   pNext?: null;
-  flags?: VkPipelineDynamicStateCreateFlags;
+  flags?: null;
   dynamicStateCount?: number;
   pDynamicStates?: Int32Array | null;
 }
@@ -3728,7 +3728,7 @@ declare var VkPipelineDynamicStateCreateInfo: {
   new(param?: VkPipelineDynamicStateCreateInfoInitializer | null): VkPipelineDynamicStateCreateInfo;
   sType: VkStructureType;
   pNext: null;
-  flags: VkPipelineDynamicStateCreateFlags;
+  flags: null;
   dynamicStateCount: number;
   pDynamicStates: Int32Array | null;
 }
@@ -3736,7 +3736,7 @@ declare var VkPipelineDynamicStateCreateInfo: {
 export interface VkPipelineDynamicStateCreateInfo {
   sType: VkStructureType;
   pNext: null;
-  flags: VkPipelineDynamicStateCreateFlags;
+  flags: null;
   dynamicStateCount: number;
   pDynamicStates: Int32Array | null;
 }
@@ -3783,7 +3783,7 @@ export interface VkPipelineColorBlendAttachmentState {
 interface VkPipelineColorBlendStateCreateInfoInitializer {
   sType?: VkStructureType;
   pNext?: null;
-  flags?: VkPipelineColorBlendStateCreateFlags;
+  flags?: null;
   logicOpEnable?: number;
   logicOp?: VkLogicOp;
   attachmentCount?: number;
@@ -3796,7 +3796,7 @@ declare var VkPipelineColorBlendStateCreateInfo: {
   new(param?: VkPipelineColorBlendStateCreateInfoInitializer | null): VkPipelineColorBlendStateCreateInfo;
   sType: VkStructureType;
   pNext: null;
-  flags: VkPipelineColorBlendStateCreateFlags;
+  flags: null;
   logicOpEnable: number;
   logicOp: VkLogicOp;
   attachmentCount: number;
@@ -3807,7 +3807,7 @@ declare var VkPipelineColorBlendStateCreateInfo: {
 export interface VkPipelineColorBlendStateCreateInfo {
   sType: VkStructureType;
   pNext: null;
-  flags: VkPipelineColorBlendStateCreateFlags;
+  flags: null;
   logicOpEnable: number;
   logicOp: VkLogicOp;
   attachmentCount: number;
@@ -3854,7 +3854,7 @@ export interface VkStencilOpState {
 interface VkPipelineDepthStencilStateCreateInfoInitializer {
   sType?: VkStructureType;
   pNext?: null;
-  flags?: VkPipelineDepthStencilStateCreateFlags;
+  flags?: null;
   depthTestEnable?: number;
   depthWriteEnable?: number;
   depthCompareOp?: VkCompareOp;
@@ -3871,7 +3871,7 @@ declare var VkPipelineDepthStencilStateCreateInfo: {
   new(param?: VkPipelineDepthStencilStateCreateInfoInitializer | null): VkPipelineDepthStencilStateCreateInfo;
   sType: VkStructureType;
   pNext: null;
-  flags: VkPipelineDepthStencilStateCreateFlags;
+  flags: null;
   depthTestEnable: number;
   depthWriteEnable: number;
   depthCompareOp: VkCompareOp;
@@ -3886,7 +3886,7 @@ declare var VkPipelineDepthStencilStateCreateInfo: {
 export interface VkPipelineDepthStencilStateCreateInfo {
   sType: VkStructureType;
   pNext: null;
-  flags: VkPipelineDepthStencilStateCreateFlags;
+  flags: null;
   depthTestEnable: number;
   depthWriteEnable: number;
   depthCompareOp: VkCompareOp;
@@ -3903,8 +3903,8 @@ export interface VkPipelineDepthStencilStateCreateInfo {
 interface VkPipelineMultisampleStateCreateInfoInitializer {
   sType?: VkStructureType;
   pNext?: null;
-  flags?: VkPipelineMultisampleStateCreateFlags;
-  rasterizationSamples?: VkSampleCountFlags;
+  flags?: null;
+  rasterizationSamples?: VkSampleCountFlagBits;
   sampleShadingEnable?: number;
   minSampleShading?: number;
   pSampleMask?: Uint32Array | null;
@@ -3917,8 +3917,8 @@ declare var VkPipelineMultisampleStateCreateInfo: {
   new(param?: VkPipelineMultisampleStateCreateInfoInitializer | null): VkPipelineMultisampleStateCreateInfo;
   sType: VkStructureType;
   pNext: null;
-  flags: VkPipelineMultisampleStateCreateFlags;
-  rasterizationSamples: VkSampleCountFlags;
+  flags: null;
+  rasterizationSamples: VkSampleCountFlagBits;
   sampleShadingEnable: number;
   minSampleShading: number;
   pSampleMask: Uint32Array | null;
@@ -3929,8 +3929,8 @@ declare var VkPipelineMultisampleStateCreateInfo: {
 export interface VkPipelineMultisampleStateCreateInfo {
   sType: VkStructureType;
   pNext: null;
-  flags: VkPipelineMultisampleStateCreateFlags;
-  rasterizationSamples: VkSampleCountFlags;
+  flags: null;
+  rasterizationSamples: VkSampleCountFlagBits;
   sampleShadingEnable: number;
   minSampleShading: number;
   pSampleMask: Uint32Array | null;
@@ -3943,7 +3943,7 @@ export interface VkPipelineMultisampleStateCreateInfo {
 interface VkPipelineRasterizationStateCreateInfoInitializer {
   sType?: VkStructureType;
   pNext?: null;
-  flags?: VkPipelineRasterizationStateCreateFlags;
+  flags?: null;
   depthClampEnable?: number;
   rasterizerDiscardEnable?: number;
   polygonMode?: VkPolygonMode;
@@ -3961,7 +3961,7 @@ declare var VkPipelineRasterizationStateCreateInfo: {
   new(param?: VkPipelineRasterizationStateCreateInfoInitializer | null): VkPipelineRasterizationStateCreateInfo;
   sType: VkStructureType;
   pNext: null;
-  flags: VkPipelineRasterizationStateCreateFlags;
+  flags: null;
   depthClampEnable: number;
   rasterizerDiscardEnable: number;
   polygonMode: VkPolygonMode;
@@ -3977,7 +3977,7 @@ declare var VkPipelineRasterizationStateCreateInfo: {
 export interface VkPipelineRasterizationStateCreateInfo {
   sType: VkStructureType;
   pNext: null;
-  flags: VkPipelineRasterizationStateCreateFlags;
+  flags: null;
   depthClampEnable: number;
   rasterizerDiscardEnable: number;
   polygonMode: VkPolygonMode;
@@ -4026,7 +4026,7 @@ export interface VkViewport {
 interface VkPipelineViewportStateCreateInfoInitializer {
   sType?: VkStructureType;
   pNext?: null;
-  flags?: VkPipelineViewportStateCreateFlags;
+  flags?: null;
   viewportCount?: number;
   pViewports?: VkViewport[] | null;
   scissorCount?: number;
@@ -4038,7 +4038,7 @@ declare var VkPipelineViewportStateCreateInfo: {
   new(param?: VkPipelineViewportStateCreateInfoInitializer | null): VkPipelineViewportStateCreateInfo;
   sType: VkStructureType;
   pNext: null;
-  flags: VkPipelineViewportStateCreateFlags;
+  flags: null;
   viewportCount: number;
   pViewports: VkViewport[] | null;
   scissorCount: number;
@@ -4048,7 +4048,7 @@ declare var VkPipelineViewportStateCreateInfo: {
 export interface VkPipelineViewportStateCreateInfo {
   sType: VkStructureType;
   pNext: null;
-  flags: VkPipelineViewportStateCreateFlags;
+  flags: null;
   viewportCount: number;
   pViewports: VkViewport[] | null;
   scissorCount: number;
@@ -4060,7 +4060,7 @@ export interface VkPipelineViewportStateCreateInfo {
 interface VkPipelineTessellationStateCreateInfoInitializer {
   sType?: VkStructureType;
   pNext?: null;
-  flags?: VkPipelineTessellationStateCreateFlags;
+  flags?: null;
   patchControlPoints?: number;
 }
 
@@ -4069,14 +4069,14 @@ declare var VkPipelineTessellationStateCreateInfo: {
   new(param?: VkPipelineTessellationStateCreateInfoInitializer | null): VkPipelineTessellationStateCreateInfo;
   sType: VkStructureType;
   pNext: null;
-  flags: VkPipelineTessellationStateCreateFlags;
+  flags: null;
   patchControlPoints: number;
 }
 
 export interface VkPipelineTessellationStateCreateInfo {
   sType: VkStructureType;
   pNext: null;
-  flags: VkPipelineTessellationStateCreateFlags;
+  flags: null;
   patchControlPoints: number;
 }
 
@@ -4085,7 +4085,7 @@ export interface VkPipelineTessellationStateCreateInfo {
 interface VkPipelineInputAssemblyStateCreateInfoInitializer {
   sType?: VkStructureType;
   pNext?: null;
-  flags?: VkPipelineInputAssemblyStateCreateFlags;
+  flags?: null;
   topology?: VkPrimitiveTopology;
   primitiveRestartEnable?: number;
 }
@@ -4095,7 +4095,7 @@ declare var VkPipelineInputAssemblyStateCreateInfo: {
   new(param?: VkPipelineInputAssemblyStateCreateInfoInitializer | null): VkPipelineInputAssemblyStateCreateInfo;
   sType: VkStructureType;
   pNext: null;
-  flags: VkPipelineInputAssemblyStateCreateFlags;
+  flags: null;
   topology: VkPrimitiveTopology;
   primitiveRestartEnable: number;
 }
@@ -4103,7 +4103,7 @@ declare var VkPipelineInputAssemblyStateCreateInfo: {
 export interface VkPipelineInputAssemblyStateCreateInfo {
   sType: VkStructureType;
   pNext: null;
-  flags: VkPipelineInputAssemblyStateCreateFlags;
+  flags: null;
   topology: VkPrimitiveTopology;
   primitiveRestartEnable: number;
 }
@@ -4160,7 +4160,7 @@ export interface VkVertexInputBindingDescription {
 interface VkPipelineVertexInputStateCreateInfoInitializer {
   sType?: VkStructureType;
   pNext?: null;
-  flags?: VkPipelineVertexInputStateCreateFlags;
+  flags?: null;
   vertexBindingDescriptionCount?: number;
   pVertexBindingDescriptions?: VkVertexInputBindingDescription[] | null;
   vertexAttributeDescriptionCount?: number;
@@ -4172,7 +4172,7 @@ declare var VkPipelineVertexInputStateCreateInfo: {
   new(param?: VkPipelineVertexInputStateCreateInfoInitializer | null): VkPipelineVertexInputStateCreateInfo;
   sType: VkStructureType;
   pNext: null;
-  flags: VkPipelineVertexInputStateCreateFlags;
+  flags: null;
   vertexBindingDescriptionCount: number;
   pVertexBindingDescriptions: VkVertexInputBindingDescription[] | null;
   vertexAttributeDescriptionCount: number;
@@ -4182,7 +4182,7 @@ declare var VkPipelineVertexInputStateCreateInfo: {
 export interface VkPipelineVertexInputStateCreateInfo {
   sType: VkStructureType;
   pNext: null;
-  flags: VkPipelineVertexInputStateCreateFlags;
+  flags: null;
   vertexBindingDescriptionCount: number;
   pVertexBindingDescriptions: VkVertexInputBindingDescription[] | null;
   vertexAttributeDescriptionCount: number;
@@ -4241,8 +4241,8 @@ export interface VkSpecializationInfo {
 interface VkPipelineShaderStageCreateInfoInitializer {
   sType?: VkStructureType;
   pNext?: null;
-  flags?: VkPipelineShaderStageCreateFlags;
-  stage?: VkShaderStageFlags;
+  flags?: null;
+  stage?: VkShaderStageFlagBits;
   module?: VkShaderModule | null;
   pName?: string | null;
   pSpecializationInfo?: VkSpecializationInfo | null;
@@ -4253,8 +4253,8 @@ declare var VkPipelineShaderStageCreateInfo: {
   new(param?: VkPipelineShaderStageCreateInfoInitializer | null): VkPipelineShaderStageCreateInfo;
   sType: VkStructureType;
   pNext: null;
-  flags: VkPipelineShaderStageCreateFlags;
-  stage: VkShaderStageFlags;
+  flags: null;
+  stage: VkShaderStageFlagBits;
   module: VkShaderModule | null;
   pName: string | null;
   pSpecializationInfo: VkSpecializationInfo | null;
@@ -4263,8 +4263,8 @@ declare var VkPipelineShaderStageCreateInfo: {
 export interface VkPipelineShaderStageCreateInfo {
   sType: VkStructureType;
   pNext: null;
-  flags: VkPipelineShaderStageCreateFlags;
-  stage: VkShaderStageFlags;
+  flags: null;
+  stage: VkShaderStageFlagBits;
   module: VkShaderModule | null;
   pName: string | null;
   pSpecializationInfo: VkSpecializationInfo | null;
@@ -4479,7 +4479,7 @@ export interface VkDescriptorSetLayoutCreateInfo {
 interface VkShaderModuleCreateInfoInitializer {
   sType?: VkStructureType;
   pNext?: null;
-  flags?: VkShaderModuleCreateFlags;
+  flags?: null;
   codeSize?: number;
   pCode?: Uint8Array | null;
 }
@@ -4489,7 +4489,7 @@ declare var VkShaderModuleCreateInfo: {
   new(param?: VkShaderModuleCreateInfoInitializer | null): VkShaderModuleCreateInfo;
   sType: VkStructureType;
   pNext: null;
-  flags: VkShaderModuleCreateFlags;
+  flags: null;
   codeSize: number;
   pCode: Uint8Array | null;
 }
@@ -4497,7 +4497,7 @@ declare var VkShaderModuleCreateInfo: {
 export interface VkShaderModuleCreateInfo {
   sType: VkStructureType;
   pNext: null;
-  flags: VkShaderModuleCreateFlags;
+  flags: null;
   codeSize: number;
   pCode: Uint8Array | null;
 }
@@ -4682,7 +4682,7 @@ export interface VkComponentMapping {
 interface VkImageViewCreateInfoInitializer {
   sType?: VkStructureType;
   pNext?: null;
-  flags?: VkImageViewCreateFlags;
+  flags?: null;
   image?: VkImage | null;
   viewType?: VkImageViewType;
   format?: VkFormat;
@@ -4695,7 +4695,7 @@ declare var VkImageViewCreateInfo: {
   new(param?: VkImageViewCreateInfoInitializer | null): VkImageViewCreateInfo;
   sType: VkStructureType;
   pNext: null;
-  flags: VkImageViewCreateFlags;
+  flags: null;
   image: VkImage | null;
   viewType: VkImageViewType;
   format: VkFormat;
@@ -4706,7 +4706,7 @@ declare var VkImageViewCreateInfo: {
 export interface VkImageViewCreateInfo {
   sType: VkStructureType;
   pNext: null;
-  flags: VkImageViewCreateFlags;
+  flags: null;
   image: VkImage | null;
   viewType: VkImageViewType;
   format: VkFormat;
@@ -4753,7 +4753,7 @@ interface VkImageCreateInfoInitializer {
   extent?: VkExtent3D | null;
   mipLevels?: number;
   arrayLayers?: number;
-  samples?: VkSampleCountFlags;
+  samples?: VkSampleCountFlagBits;
   tiling?: VkImageTiling;
   usage?: VkImageUsageFlagBits;
   sharingMode?: VkSharingMode;
@@ -4773,7 +4773,7 @@ declare var VkImageCreateInfo: {
   extent: VkExtent3D | null;
   mipLevels: number;
   arrayLayers: number;
-  samples: VkSampleCountFlags;
+  samples: VkSampleCountFlagBits;
   tiling: VkImageTiling;
   usage: VkImageUsageFlagBits;
   sharingMode: VkSharingMode;
@@ -4791,7 +4791,7 @@ export interface VkImageCreateInfo {
   extent: VkExtent3D | null;
   mipLevels: number;
   arrayLayers: number;
-  samples: VkSampleCountFlags;
+  samples: VkSampleCountFlagBits;
   tiling: VkImageTiling;
   usage: VkImageUsageFlagBits;
   sharingMode: VkSharingMode;
@@ -5268,7 +5268,7 @@ export interface VkApplicationInfo {
 interface VkInstanceCreateInfoInitializer {
   sType?: VkStructureType;
   pNext?: null;
-  flags?: VkInstanceCreateFlags;
+  flags?: null;
   pApplicationInfo?: VkApplicationInfo | null;
   enabledLayerCount?: number;
   ppEnabledLayerNames?: string[] | null;
@@ -5281,7 +5281,7 @@ declare var VkInstanceCreateInfo: {
   new(param?: VkInstanceCreateInfoInitializer | null): VkInstanceCreateInfo;
   sType: VkStructureType;
   pNext: null;
-  flags: VkInstanceCreateFlags;
+  flags: null;
   pApplicationInfo: VkApplicationInfo | null;
   enabledLayerCount: number;
   ppEnabledLayerNames: string[] | null;
@@ -5292,7 +5292,7 @@ declare var VkInstanceCreateInfo: {
 export interface VkInstanceCreateInfo {
   sType: VkStructureType;
   pNext: null;
-  flags: VkInstanceCreateFlags;
+  flags: null;
   pApplicationInfo: VkApplicationInfo | null;
   enabledLayerCount: number;
   ppEnabledLayerNames: string[] | null;
@@ -5514,7 +5514,7 @@ export interface VkDeviceQueueCreateInfo {
 interface VkDeviceCreateInfoInitializer {
   sType?: VkStructureType;
   pNext?: null;
-  flags?: VkDeviceCreateFlags;
+  flags?: null;
   queueCreateInfoCount?: number;
   pQueueCreateInfos?: VkDeviceQueueCreateInfo[] | null;
   enabledLayerCount?: number;
@@ -5529,7 +5529,7 @@ declare var VkDeviceCreateInfo: {
   new(param?: VkDeviceCreateInfoInitializer | null): VkDeviceCreateInfo;
   sType: VkStructureType;
   pNext: null;
-  flags: VkDeviceCreateFlags;
+  flags: null;
   queueCreateInfoCount: number;
   pQueueCreateInfos: VkDeviceQueueCreateInfo[] | null;
   enabledLayerCount: number;
@@ -5542,7 +5542,7 @@ declare var VkDeviceCreateInfo: {
 export interface VkDeviceCreateInfo {
   sType: VkStructureType;
   pNext: null;
-  flags: VkDeviceCreateFlags;
+  flags: null;
   queueCreateInfoCount: number;
   pQueueCreateInfos: VkDeviceQueueCreateInfo[] | null;
   enabledLayerCount: number;
@@ -6015,7 +6015,7 @@ declare function vkQueueSubmit(queue: VkQueue | null, submitCount: number, pSubm
 declare function vkQueueWaitIdle(queue: VkQueue | null): number;
 declare function vkDeviceWaitIdle(device: VkDevice | null): number;
 declare function vkAllocateMemory(device: VkDevice | null, pAllocateInfo: VkMemoryAllocateInfo | null, pAllocator: null, pMemory: VkDeviceMemory | null): number;
-declare function vkMapMemory(device: VkDevice | null, memory: VkDeviceMemory | null, offset: number, size: number, flags: VkMemoryMapFlags, ppData: VkInoutAddress): number;
+declare function vkMapMemory(device: VkDevice | null, memory: VkDeviceMemory | null, offset: number, size: number, flags: null, ppData: VkInoutAddress): number;
 declare function vkUnmapMemory(device: VkDevice | null, memory: VkDeviceMemory | null): void;
 declare function vkGetBufferMemoryRequirements(device: VkDevice | null, buffer: VkBuffer | null, pMemoryRequirements: VkMemoryRequirements | null): void;
 declare function vkBindBufferMemory(device: VkDevice | null, buffer: VkBuffer | null, memory: VkDeviceMemory | null, memoryOffset: number): number;
@@ -6097,3 +6097,99 @@ declare function VK_VERSION_PATCH(
 ): number;
 
 declare var VK_API_VERSION_1_0: number;
+
+/** #### VULKANWINDOW #### */
+
+declare interface ResizeEvent {
+  width: number;
+  height: number;
+}
+declare interface FocusEvent {
+  focused: boolean;
+}
+declare interface CloseEvent {
+
+}
+declare interface KeydownEvent {
+  keyCode: number;
+}
+declare interface KeyupEvent {
+  keyCode: number;
+}
+declare interface MousemoveEvent {
+  x: number;
+  y: number;
+  movementX: number;
+  movementY: number;
+}
+declare interface MousewheelEvent {
+  x: number;
+  y: number;
+  deltaX: number;
+  deltaY: number;
+}
+declare interface MousedownEvent {
+  x: number;
+  y: number;
+  button: number;
+}
+declare interface MouseupEvent {
+  x: number;
+  y: number;
+  button: number;
+}
+declare interface DropEvent {
+  paths: string[];
+}
+
+interface VulkanWindowInitializer {
+  width?: number;
+  height?: number;
+  title?: string;
+}
+
+declare var VulkanWindow: {
+  prototype: VulkanWindow;
+  new(param?: VulkanWindowInitializer | null): VulkanWindow;
+  width: number;
+  height: number;
+  title: string;
+  pollEvents(): void;
+  focus(): void;
+  close(): void;
+  shouldClose(): boolean;
+  createSurface(instance: VkInstance | null, pAllocator: null, surface: VkSurfaceKHR | null): number;
+  getRequiredInstanceExtensions(): string[];
+  onresize: ((ev: ResizeEvent) => any) | null;
+  onfocus: ((ev: FocusEvent) => any) | null;
+  onclose: ((ev: CloseEvent) => any) | null;
+  onkeydown: ((ev: KeydownEvent) => any) | null;
+  onkeyup: ((ev: KeyupEvent) => any) | null;
+  onmousemove: ((ev: MousemoveEvent) => any) | null;
+  onmousewheel: ((ev: MousewheelEvent) => any) | null;
+  onmousedown: ((ev: MousedownEvent) => any) | null;
+  onmouseup: ((ev: MouseupEvent) => any) | null;
+  ondrop: ((ev: DropEvent) => any) | null;
+}
+
+export interface VulkanWindow {
+  width: number;
+  height: number;
+  title: string;
+  pollEvents(): void;
+  focus(): void;
+  close(): void;
+  shouldClose(): boolean;
+  createSurface(instance: VkInstance | null, pAllocator: null, surface: VkSurfaceKHR | null): number;
+  getRequiredInstanceExtensions(): string[];
+  onresize: ((ev: ResizeEvent) => any) | null;
+  onfocus: ((ev: FocusEvent) => any) | null;
+  onclose: ((ev: CloseEvent) => any) | null;
+  onkeydown: ((ev: KeydownEvent) => any) | null;
+  onkeyup: ((ev: KeyupEvent) => any) | null;
+  onmousemove: ((ev: MousemoveEvent) => any) | null;
+  onmousewheel: ((ev: MousewheelEvent) => any) | null;
+  onmousedown: ((ev: MousedownEvent) => any) | null;
+  onmouseup: ((ev: MouseupEvent) => any) | null;
+  ondrop: ((ev: DropEvent) => any) | null;
+}

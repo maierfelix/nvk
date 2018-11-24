@@ -200,7 +200,7 @@ NAN_GETTER(_VkPipelineRasterizationStateCreateInfo::GetcullMode) {
 }NAN_SETTER(_VkPipelineRasterizationStateCreateInfo::SetcullMode) {
   _VkPipelineRasterizationStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineRasterizationStateCreateInfo>(info.This());
   if (value->IsNumber()) {
-    self->instance.cullMode = static_cast<VkCullModeFlags>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.cullMode = static_cast<VkCullModeFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);

@@ -30,7 +30,6 @@ class VulkanWindow: public Nan::ObjectWrap {
     Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onmousedown;
     Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onmouseup;
     Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> ondrop;
-    // TODO Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onscroll;
 
     GLFWwindow* instance;
 
@@ -313,7 +312,7 @@ NAN_METHOD(VulkanWindow::New) {
 NAN_METHOD(VulkanWindow::shouldClose) {
   VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
   GLFWwindow* window = self->instance;
-  info.GetReturnValue().Set(Nan::New(glfwWindowShouldClose(window)));
+  info.GetReturnValue().Set(Nan::New((bool)glfwWindowShouldClose(window)));
 }
 
 NAN_METHOD(VulkanWindow::focus) {

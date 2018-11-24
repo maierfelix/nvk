@@ -151,7 +151,7 @@ NAN_GETTER(_VkImageCreateInfo::Getflags) {
 }NAN_SETTER(_VkImageCreateInfo::Setflags) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
   if (value->IsNumber()) {
-    self->instance.flags = static_cast<VkImageCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.flags = static_cast<VkImageCreateFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);
@@ -301,7 +301,7 @@ NAN_GETTER(_VkImageCreateInfo::Getusage) {
 }NAN_SETTER(_VkImageCreateInfo::Setusage) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
   if (value->IsNumber()) {
-    self->instance.usage = static_cast<VkImageUsageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.usage = static_cast<VkImageUsageFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);

@@ -13,9 +13,14 @@ const TS_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/typescript-ts.nj
 
 nunjucks.configure({ autoescape: true });
 
-function getEnumMemberType(enu) {
-  if (enu.isStringValue) return `string`;
-  else return `number`;
+function getBitmaskByName(name) {
+  for (let ii = 0; ii < ast.length; ++ii) {
+    let child = ast[ii];
+    if (child.kind === "ENUM" && child.type === "BITMASK") {
+      if (child.name === name) return child;
+    }
+  };
+  return null;
 };
 
 function getHandleByName(name) {
@@ -61,7 +66,12 @@ function getTypescriptType(member) {
   if (member.isBaseType) rawType = member.baseType;
   if (member.isTypedArray) return `${member.jsTypedArrayName} | null`;
   if (member.enumType) return `${member.enumType}`;
-  if (member.isBitmaskType) return `${member.bitmaskRawType}`;
+  if (member.isBitmaskType) {
+    let bitmask = getBitmaskByName(member.bitmaskType);
+    // future reserved bitmask, or must be 0
+    if (!bitmask) return `null`;
+    return `${member.bitmaskType}`;
+  }
   if (member.isStaticArray) {
     // string of chars
     if (member.type === "char") return `string | null`;
@@ -157,7 +167,6 @@ export default function(astReference, data) {
     getStructByName,
     isHandleInclude,
     isStructInclude,
-    getEnumMemberType,
     processStructMembers
   };
   let out = {

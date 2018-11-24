@@ -301,7 +301,7 @@ NAN_GETTER(_VkSubmitInfo::GetpWaitDstStageMask) {
   
   // vulkan
   if (value->IsArrayBufferView()) {
-    self->instance.pWaitDstStageMask = reinterpret_cast<const VkPipelineStageFlags *>(getTypedArrayData<int32_t>(Nan::To<v8::Object>(value).ToLocalChecked(), nullptr));
+    self->instance.pWaitDstStageMask = reinterpret_cast<VkPipelineStageFlagBits>(getTypedArrayData<int32_t>(Nan::To<v8::Object>(value).ToLocalChecked(), nullptr));
   } else {
     self->instance.pWaitDstStageMask = nullptr;
   }

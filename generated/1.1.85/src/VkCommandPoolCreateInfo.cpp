@@ -100,7 +100,7 @@ NAN_GETTER(_VkCommandPoolCreateInfo::Getflags) {
 }NAN_SETTER(_VkCommandPoolCreateInfo::Setflags) {
   _VkCommandPoolCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandPoolCreateInfo>(info.This());
   if (value->IsNumber()) {
-    self->instance.flags = static_cast<VkCommandPoolCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.flags = static_cast<VkCommandPoolCreateFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);

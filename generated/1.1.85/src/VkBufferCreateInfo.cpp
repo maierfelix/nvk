@@ -117,7 +117,7 @@ NAN_GETTER(_VkBufferCreateInfo::Getflags) {
 }NAN_SETTER(_VkBufferCreateInfo::Setflags) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
   if (value->IsNumber()) {
-    self->instance.flags = static_cast<VkBufferCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.flags = static_cast<VkBufferCreateFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);
@@ -149,7 +149,7 @@ NAN_GETTER(_VkBufferCreateInfo::Getusage) {
 }NAN_SETTER(_VkBufferCreateInfo::Setusage) {
   _VkBufferCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(info.This());
   if (value->IsNumber()) {
-    self->instance.usage = static_cast<VkBufferUsageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.usage = static_cast<VkBufferUsageFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);

@@ -101,7 +101,7 @@ NAN_GETTER(_VkCommandBufferBeginInfo::Getflags) {
 }NAN_SETTER(_VkCommandBufferBeginInfo::Setflags) {
   _VkCommandBufferBeginInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferBeginInfo>(info.This());
   if (value->IsNumber()) {
-    self->instance.flags = static_cast<VkCommandBufferUsageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.flags = static_cast<VkCommandBufferUsageFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);

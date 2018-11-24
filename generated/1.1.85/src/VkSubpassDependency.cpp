@@ -122,7 +122,7 @@ NAN_GETTER(_VkSubpassDependency::GetsrcStageMask) {
 }NAN_SETTER(_VkSubpassDependency::SetsrcStageMask) {
   _VkSubpassDependency *self = Nan::ObjectWrap::Unwrap<_VkSubpassDependency>(info.This());
   if (value->IsNumber()) {
-    self->instance.srcStageMask = static_cast<VkPipelineStageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.srcStageMask = static_cast<VkPipelineStageFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);
@@ -138,7 +138,7 @@ NAN_GETTER(_VkSubpassDependency::GetdstStageMask) {
 }NAN_SETTER(_VkSubpassDependency::SetdstStageMask) {
   _VkSubpassDependency *self = Nan::ObjectWrap::Unwrap<_VkSubpassDependency>(info.This());
   if (value->IsNumber()) {
-    self->instance.dstStageMask = static_cast<VkPipelineStageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.dstStageMask = static_cast<VkPipelineStageFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);
@@ -154,7 +154,7 @@ NAN_GETTER(_VkSubpassDependency::GetsrcAccessMask) {
 }NAN_SETTER(_VkSubpassDependency::SetsrcAccessMask) {
   _VkSubpassDependency *self = Nan::ObjectWrap::Unwrap<_VkSubpassDependency>(info.This());
   if (value->IsNumber()) {
-    self->instance.srcAccessMask = static_cast<VkAccessFlags>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.srcAccessMask = static_cast<VkAccessFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);
@@ -170,7 +170,7 @@ NAN_GETTER(_VkSubpassDependency::GetdstAccessMask) {
 }NAN_SETTER(_VkSubpassDependency::SetdstAccessMask) {
   _VkSubpassDependency *self = Nan::ObjectWrap::Unwrap<_VkSubpassDependency>(info.This());
   if (value->IsNumber()) {
-    self->instance.dstAccessMask = static_cast<VkAccessFlags>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.dstAccessMask = static_cast<VkAccessFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);
@@ -186,7 +186,7 @@ NAN_GETTER(_VkSubpassDependency::GetdependencyFlags) {
 }NAN_SETTER(_VkSubpassDependency::SetdependencyFlags) {
   _VkSubpassDependency *self = Nan::ObjectWrap::Unwrap<_VkSubpassDependency>(info.This());
   if (value->IsNumber()) {
-    self->instance.dependencyFlags = static_cast<VkDependencyFlags>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.dependencyFlags = static_cast<VkDependencyFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);

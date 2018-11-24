@@ -200,7 +200,7 @@ NAN_GETTER(_VkGraphicsPipelineCreateInfo::Getflags) {
 }NAN_SETTER(_VkGraphicsPipelineCreateInfo::Setflags) {
   _VkGraphicsPipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkGraphicsPipelineCreateInfo>(info.This());
   if (value->IsNumber()) {
-    self->instance.flags = static_cast<VkPipelineCreateFlags>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.flags = static_cast<VkPipelineCreateFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);

@@ -163,7 +163,7 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::Getflags) {
 }NAN_SETTER(_VkSwapchainCreateInfoKHR::Setflags) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
   if (value->IsNumber()) {
-    self->instance.flags = static_cast<VkSwapchainCreateFlagsKHR>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.flags = static_cast<VkSwapchainCreateFlagBitsKHR>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);
@@ -319,7 +319,7 @@ NAN_GETTER(_VkSwapchainCreateInfoKHR::GetimageUsage) {
 }NAN_SETTER(_VkSwapchainCreateInfoKHR::SetimageUsage) {
   _VkSwapchainCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(info.This());
   if (value->IsNumber()) {
-    self->instance.imageUsage = static_cast<VkImageUsageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.imageUsage = static_cast<VkImageUsageFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);

@@ -90,3 +90,99 @@ declare function VK_VERSION_PATCH(
 ): number;
 
 declare var VK_API_VERSION_1_0: number;
+
+/** #### VULKANWINDOW #### */
+
+declare interface ResizeEvent {
+  width: number;
+  height: number;
+}
+declare interface FocusEvent {
+  focused: boolean;
+}
+declare interface CloseEvent {
+
+}
+declare interface KeydownEvent {
+  keyCode: number;
+}
+declare interface KeyupEvent {
+  keyCode: number;
+}
+declare interface MousemoveEvent {
+  x: number;
+  y: number;
+  movementX: number;
+  movementY: number;
+}
+declare interface MousewheelEvent {
+  x: number;
+  y: number;
+  deltaX: number;
+  deltaY: number;
+}
+declare interface MousedownEvent {
+  x: number;
+  y: number;
+  button: number;
+}
+declare interface MouseupEvent {
+  x: number;
+  y: number;
+  button: number;
+}
+declare interface DropEvent {
+  paths: string[];
+}
+
+interface VulkanWindowInitializer {
+  width?: number;
+  height?: number;
+  title?: string;
+}
+
+declare var VulkanWindow: {
+  prototype: VulkanWindow;
+  new(param?: VulkanWindowInitializer | null): VulkanWindow;
+  width: number;
+  height: number;
+  title: string;
+  pollEvents(): void;
+  focus(): void;
+  close(): void;
+  shouldClose(): boolean;
+  createSurface(instance: VkInstance | null, pAllocator: null, surface: VkSurfaceKHR | null): number;
+  getRequiredInstanceExtensions(): string[];
+  onresize: ((ev: ResizeEvent) => any) | null;
+  onfocus: ((ev: FocusEvent) => any) | null;
+  onclose: ((ev: CloseEvent) => any) | null;
+  onkeydown: ((ev: KeydownEvent) => any) | null;
+  onkeyup: ((ev: KeyupEvent) => any) | null;
+  onmousemove: ((ev: MousemoveEvent) => any) | null;
+  onmousewheel: ((ev: MousewheelEvent) => any) | null;
+  onmousedown: ((ev: MousedownEvent) => any) | null;
+  onmouseup: ((ev: MouseupEvent) => any) | null;
+  ondrop: ((ev: DropEvent) => any) | null;
+}
+
+export interface VulkanWindow {
+  width: number;
+  height: number;
+  title: string;
+  pollEvents(): void;
+  focus(): void;
+  close(): void;
+  shouldClose(): boolean;
+  createSurface(instance: VkInstance | null, pAllocator: null, surface: VkSurfaceKHR | null): number;
+  getRequiredInstanceExtensions(): string[];
+  onresize: ((ev: ResizeEvent) => any) | null;
+  onfocus: ((ev: FocusEvent) => any) | null;
+  onclose: ((ev: CloseEvent) => any) | null;
+  onkeydown: ((ev: KeydownEvent) => any) | null;
+  onkeyup: ((ev: KeyupEvent) => any) | null;
+  onmousemove: ((ev: MousemoveEvent) => any) | null;
+  onmousewheel: ((ev: MousewheelEvent) => any) | null;
+  onmousedown: ((ev: MousedownEvent) => any) | null;
+  onmouseup: ((ev: MouseupEvent) => any) | null;
+  ondrop: ((ev: DropEvent) => any) | null;
+}

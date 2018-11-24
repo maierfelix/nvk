@@ -381,9 +381,13 @@ function parseTypeElement(child) {
   };
   if (isBitmaskType) {
     out.bitmaskType = out.rawType;
-    out.bitmaskRawType = bitmasks[type];
     out.rawType = out.rawType.replace(out.type, `int32_t`);
     out.type = `int32_t`;
+    if (bitmasks[type].requires) {
+      out.bitmaskType = bitmasks[bitmasks[type].name].name;
+    } else {
+      out.bitmaskType = bitmasks[type];
+    }
     type = out.type;
     out.isBitmaskType = true;
   }
@@ -549,7 +553,7 @@ export default function(xmlInput) {
         res.elements.map(el => {
           if (el.name === "name") {
             bitmasks[el.elements[0].text] = attr.requires;
-            bitmasks[attr.requires] = el.elements[0].text;
+            bitmasks[attr.requires] = { requires: el.elements[0].text, name: bitmasks[el.elements[0].text] };
           }
         });
       // future reserved

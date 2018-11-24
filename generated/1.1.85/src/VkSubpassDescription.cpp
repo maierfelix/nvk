@@ -197,7 +197,7 @@ NAN_GETTER(_VkSubpassDescription::Getflags) {
 }NAN_SETTER(_VkSubpassDescription::Setflags) {
   _VkSubpassDescription *self = Nan::ObjectWrap::Unwrap<_VkSubpassDescription>(info.This());
   if (value->IsNumber()) {
-    self->instance.flags = static_cast<VkSubpassDescriptionFlags>(Nan::To<int32_t>(value).FromMaybe(0));
+    self->instance.flags = static_cast<VkSubpassDescriptionFlagBits>(Nan::To<int32_t>(value).FromMaybe(0));
   } else {
     
     std::string details = getV8ObjectDetails(value);
