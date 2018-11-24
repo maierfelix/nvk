@@ -2,7 +2,7 @@
 
 Some examples use libraries such as [gl-matrix](http://glmatrix.net/) or the WebAssembly port of [tinyobjloader](https://github.com/maierfelix/tolw)
 
-1. ``npm install`` to install dependencies (if there are any)
+1. ``npm install`` to install dependencies (if any)
 
 2. ``npm run start --vkversion=1.1.85`` to run the example
 
