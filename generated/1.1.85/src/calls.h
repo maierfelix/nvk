@@ -699,6 +699,38 @@ void _vkAllocateMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
+void _vkFreeMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+  
+  _VkDevice* obj0;
+  VkDevice *$p0;
+  if (!(info[0]->IsNull())) {
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    
+    $p0 = &obj0->instance;
+  } else {
+    $p0 = VK_NULL_HANDLE;
+  }
+
+  _VkDeviceMemory* obj1;
+  VkDeviceMemory *$p1;
+  if (!(info[1]->IsNull())) {
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    
+    $p1 = &obj1->instance;
+  } else {
+    $p1 = VK_NULL_HANDLE;
+  }
+
+  vkFreeMemory(
+    info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
+    info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
+    nullptr
+  );
+  
+  info.GetReturnValue().SetUndefined();
+  
+};
+
 void _vkMapMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   
   _VkDevice* obj0;
@@ -2870,6 +2902,34 @@ void _vkCmdDrawIndexed(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p3,
     $p4,
     $p5
+  );
+  
+  info.GetReturnValue().SetUndefined();
+  
+};
+
+void _vkCmdDispatch(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+  
+  _VkCommandBuffer* obj0;
+  VkCommandBuffer *$p0;
+  if (!(info[0]->IsNull())) {
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    
+    $p0 = &obj0->instance;
+  } else {
+    $p0 = VK_NULL_HANDLE;
+  }
+
+  uint32_t $p1 = static_cast<uint32_t>(Nan::To<int64_t>(info[1]).FromMaybe(0));
+
+  uint32_t $p2 = static_cast<uint32_t>(Nan::To<int64_t>(info[2]).FromMaybe(0));
+
+  uint32_t $p3 = static_cast<uint32_t>(Nan::To<int64_t>(info[3]).FromMaybe(0));
+  vkCmdDispatch(
+    info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
+    $p1,
+    $p2,
+    $p3
   );
   
   info.GetReturnValue().SetUndefined();

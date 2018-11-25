@@ -6051,6 +6051,7 @@ declare function vkQueueSubmit(queue: VkQueue | null, submitCount: number, pSubm
 declare function vkQueueWaitIdle(queue: VkQueue | null): number;
 declare function vkDeviceWaitIdle(device: VkDevice | null): number;
 declare function vkAllocateMemory(device: VkDevice | null, pAllocateInfo: VkMemoryAllocateInfo | null, pAllocator: null, pMemory: VkDeviceMemory | null): number;
+declare function vkFreeMemory(device: VkDevice | null, memory: VkDeviceMemory | null, pAllocator: null): void;
 declare function vkMapMemory(device: VkDevice | null, memory: VkDeviceMemory | null, offset: number, size: number, flags: null, ppData: VkInoutAddress): number;
 declare function vkUnmapMemory(device: VkDevice | null, memory: VkDeviceMemory | null): void;
 declare function vkGetBufferMemoryRequirements(device: VkDevice | null, buffer: VkBuffer | null, pMemoryRequirements: VkMemoryRequirements | null): void;
@@ -6104,6 +6105,7 @@ declare function vkCmdBindIndexBuffer(commandBuffer: VkCommandBuffer | null, buf
 declare function vkCmdBindVertexBuffers(commandBuffer: VkCommandBuffer | null, firstBinding: number, bindingCount: number, pBuffers: VkBuffer[] | null, pOffsets: VkInout): void;
 declare function vkCmdDraw(commandBuffer: VkCommandBuffer | null, vertexCount: number, instanceCount: number, firstVertex: number, firstInstance: number): void;
 declare function vkCmdDrawIndexed(commandBuffer: VkCommandBuffer | null, indexCount: number, instanceCount: number, firstIndex: number, vertexOffset: number, firstInstance: number): void;
+declare function vkCmdDispatch(commandBuffer: VkCommandBuffer | null, groupCountX: number, groupCountY: number, groupCountZ: number): void;
 declare function vkCmdCopyBuffer(commandBuffer: VkCommandBuffer | null, srcBuffer: VkBuffer | null, dstBuffer: VkBuffer | null, regionCount: number, pRegions: VkBufferCopy[] | null): void;
 declare function vkCmdCopyBufferToImage(commandBuffer: VkCommandBuffer | null, srcBuffer: VkBuffer | null, dstImage: VkImage | null, dstImageLayout: VkImageLayout, regionCount: number, pRegions: VkBufferImageCopy[] | null): void;
 declare function vkCmdPipelineBarrier(commandBuffer: VkCommandBuffer | null, srcStageMask: VkPipelineStageFlagBits, dstStageMask: VkPipelineStageFlagBits, dependencyFlags: VkDependencyFlagBits, memoryBarrierCount: number, pMemoryBarriers: VkMemoryBarrier[] | null, bufferMemoryBarrierCount: number, pBufferMemoryBarriers: VkBufferMemoryBarrier[] | null, imageMemoryBarrierCount: number, pImageMemoryBarriers: VkImageMemoryBarrier[] | null): void;

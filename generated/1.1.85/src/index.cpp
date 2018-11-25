@@ -284,6 +284,10 @@ static void init(v8::Handle<v8::Object> target, v8::Handle<v8::Object> module) {
     Nan::New<v8::FunctionTemplate>(_vkAllocateMemory)->GetFunction()
   );
   target->Set(
+    Nan::New("vkFreeMemory").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkFreeMemory)->GetFunction()
+  );
+  target->Set(
     Nan::New("vkMapMemory").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkMapMemory)->GetFunction()
   );
@@ -494,6 +498,10 @@ static void init(v8::Handle<v8::Object> target, v8::Handle<v8::Object> module) {
   target->Set(
     Nan::New("vkCmdDrawIndexed").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkCmdDrawIndexed)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkCmdDispatch").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkCmdDispatch)->GetFunction()
   );
   target->Set(
     Nan::New("vkCmdCopyBuffer").ToLocalChecked(),
