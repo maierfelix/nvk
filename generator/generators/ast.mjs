@@ -20,6 +20,9 @@ let TYPES = {
   COMMAND_PROTO: uidx++,
   EXTENSION: uidx++,
   EXTENSION_MEMBER: uidx++,
+  EXTENSION_MEMBER_ENUM: uidx++,
+  EXTENSION_MEMBER_COMMAND: uidx++,
+  EXTENSION_MEMBER_STRUCT: uidx++,
   BITMASK: uidx++,
   UNKNOWN: uidx++,
   VALUE: uidx++,
@@ -97,6 +100,7 @@ function parseExtensionElement(parent) {
           name: attr.name,
           type: attr.type,
           author: attr.author,
+          platform: attr.platform || "default",
           supported: attr.supported,
           members
         };
@@ -119,23 +123,27 @@ function parseExtensionMembers(parent, child) {
   let baseNum = parseInt(child.attributes.number, 0);
   elements.map(el => {
     el.elements.map(ch => {
-      if (
-        (ch.name === "comment") ||
-        (ch.name === "command")
-      ) return;
-      //console.log(ch);
+      if (ch.name === "comment") return;
       let attr = ch.attributes;
       if (!attr) return;
       let {name} = attr;
       let member = {
         kind: TYPES.EXTENSION_MEMBER
       };
-      if (attr.dir) member.isNegative = true;
-      if (ch.name === "type") {
-        // ignore
+      if (ch.name === "command") {
+        member.kind = TYPES.EXTENSION_MEMBER_COMMAND;
+        member.name = attr.name;
+        out.push(member);
+      }
+      else if (ch.name === "type") {
+        member.kind = TYPES.EXTENSION_MEMBER_STRUCT;
+        member.name = attr.name;
+        out.push(member);
       }
       // we only care about enum extensions
       else if (ch.name === "enum") {
+        if (attr.dir) member.isNegative = true;
+        member.kind = TYPES.EXTENSION_MEMBER_ENUM;
         if (attr.value) {
           member.name = attr.name;
           member.value = attr.value;

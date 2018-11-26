@@ -2519,6 +2519,16 @@ declare var VkDisplayKHR: {
 
 export interface VkDisplayKHR {}
 
+/** ## VkAccelerationStructureNVX ## */
+interface VkAccelerationStructureNVX {}
+
+declare var VkAccelerationStructureNVX: {
+  prototype: VkAccelerationStructureNVX;
+  new(): VkAccelerationStructureNVX;
+}
+
+export interface VkAccelerationStructureNVX {}
+
 /** ## VkValidationCacheEXT ## */
 interface VkValidationCacheEXT {}
 
@@ -2859,6 +2869,7 @@ export interface VkInstance {}
 
 
 
+
 /** ## VkClearColorValue ## */
 interface VkClearColorValueInitializer {
   float32?: number[] | null;
@@ -2881,6 +2892,3109 @@ export interface VkClearColorValue {
 }
 
 
+/** ## VkPhysicalDeviceRaytracingPropertiesNVX ## */
+interface VkPhysicalDeviceRaytracingPropertiesNVXInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  shaderHeaderSize?: number;
+  maxRecursionDepth?: number;
+  maxGeometryCount?: number;
+}
+
+declare var VkPhysicalDeviceRaytracingPropertiesNVX: {
+  prototype: VkPhysicalDeviceRaytracingPropertiesNVX;
+  new(param?: VkPhysicalDeviceRaytracingPropertiesNVXInitializer | null): VkPhysicalDeviceRaytracingPropertiesNVX;
+  sType: VkStructureType;
+  pNext: null;
+  shaderHeaderSize: number;
+  maxRecursionDepth: number;
+  maxGeometryCount: number;
+}
+
+export interface VkPhysicalDeviceRaytracingPropertiesNVX {
+  sType: VkStructureType;
+  pNext: null;
+  shaderHeaderSize: number;
+  maxRecursionDepth: number;
+  maxGeometryCount: number;
+}
+
+
+/** ## VkAccelerationStructureMemoryRequirementsInfoNVX ## */
+interface VkAccelerationStructureMemoryRequirementsInfoNVXInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  accelerationStructure?: VkAccelerationStructureNVX | null;
+}
+
+declare var VkAccelerationStructureMemoryRequirementsInfoNVX: {
+  prototype: VkAccelerationStructureMemoryRequirementsInfoNVX;
+  new(param?: VkAccelerationStructureMemoryRequirementsInfoNVXInitializer | null): VkAccelerationStructureMemoryRequirementsInfoNVX;
+  sType: VkStructureType;
+  pNext: null;
+  accelerationStructure: VkAccelerationStructureNVX | null;
+}
+
+export interface VkAccelerationStructureMemoryRequirementsInfoNVX {
+  sType: VkStructureType;
+  pNext: null;
+  accelerationStructure: VkAccelerationStructureNVX | null;
+}
+
+
+/** ## VkDescriptorAccelerationStructureInfoNVX ## */
+interface VkDescriptorAccelerationStructureInfoNVXInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  accelerationStructureCount?: number;
+  pAccelerationStructures?: VkAccelerationStructureNVX[] | null;
+}
+
+declare var VkDescriptorAccelerationStructureInfoNVX: {
+  prototype: VkDescriptorAccelerationStructureInfoNVX;
+  new(param?: VkDescriptorAccelerationStructureInfoNVXInitializer | null): VkDescriptorAccelerationStructureInfoNVX;
+  sType: VkStructureType;
+  pNext: null;
+  accelerationStructureCount: number;
+  pAccelerationStructures: VkAccelerationStructureNVX[] | null;
+}
+
+export interface VkDescriptorAccelerationStructureInfoNVX {
+  sType: VkStructureType;
+  pNext: null;
+  accelerationStructureCount: number;
+  pAccelerationStructures: VkAccelerationStructureNVX[] | null;
+}
+
+
+/** ## VkBindAccelerationStructureMemoryInfoNVX ## */
+interface VkBindAccelerationStructureMemoryInfoNVXInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  accelerationStructure?: VkAccelerationStructureNVX | null;
+  memory?: VkDeviceMemory | null;
+  memoryOffset?: number;
+  deviceIndexCount?: number;
+  pDeviceIndices?: Uint32Array | null;
+}
+
+declare var VkBindAccelerationStructureMemoryInfoNVX: {
+  prototype: VkBindAccelerationStructureMemoryInfoNVX;
+  new(param?: VkBindAccelerationStructureMemoryInfoNVXInitializer | null): VkBindAccelerationStructureMemoryInfoNVX;
+  sType: VkStructureType;
+  pNext: null;
+  accelerationStructure: VkAccelerationStructureNVX | null;
+  memory: VkDeviceMemory | null;
+  memoryOffset: number;
+  deviceIndexCount: number;
+  pDeviceIndices: Uint32Array | null;
+}
+
+export interface VkBindAccelerationStructureMemoryInfoNVX {
+  sType: VkStructureType;
+  pNext: null;
+  accelerationStructure: VkAccelerationStructureNVX | null;
+  memory: VkDeviceMemory | null;
+  memoryOffset: number;
+  deviceIndexCount: number;
+  pDeviceIndices: Uint32Array | null;
+}
+
+
+/** ## VkGeometryAABBNVX ## */
+interface VkGeometryAABBNVXInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  aabbData?: VkBuffer | null;
+  numAABBs?: number;
+  stride?: number;
+  offset?: number;
+}
+
+declare var VkGeometryAABBNVX: {
+  prototype: VkGeometryAABBNVX;
+  new(param?: VkGeometryAABBNVXInitializer | null): VkGeometryAABBNVX;
+  sType: VkStructureType;
+  pNext: null;
+  aabbData: VkBuffer | null;
+  numAABBs: number;
+  stride: number;
+  offset: number;
+}
+
+export interface VkGeometryAABBNVX {
+  sType: VkStructureType;
+  pNext: null;
+  aabbData: VkBuffer | null;
+  numAABBs: number;
+  stride: number;
+  offset: number;
+}
+
+
+/** ## VkGeometryTrianglesNVX ## */
+interface VkGeometryTrianglesNVXInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  vertexData?: VkBuffer | null;
+  vertexOffset?: number;
+  vertexCount?: number;
+  vertexStride?: number;
+  vertexFormat?: VkFormat;
+  indexData?: VkBuffer | null;
+  indexOffset?: number;
+  indexCount?: number;
+  indexType?: VkIndexType;
+  transformData?: VkBuffer | null;
+  transformOffset?: number;
+}
+
+declare var VkGeometryTrianglesNVX: {
+  prototype: VkGeometryTrianglesNVX;
+  new(param?: VkGeometryTrianglesNVXInitializer | null): VkGeometryTrianglesNVX;
+  sType: VkStructureType;
+  pNext: null;
+  vertexData: VkBuffer | null;
+  vertexOffset: number;
+  vertexCount: number;
+  vertexStride: number;
+  vertexFormat: VkFormat;
+  indexData: VkBuffer | null;
+  indexOffset: number;
+  indexCount: number;
+  indexType: VkIndexType;
+  transformData: VkBuffer | null;
+  transformOffset: number;
+}
+
+export interface VkGeometryTrianglesNVX {
+  sType: VkStructureType;
+  pNext: null;
+  vertexData: VkBuffer | null;
+  vertexOffset: number;
+  vertexCount: number;
+  vertexStride: number;
+  vertexFormat: VkFormat;
+  indexData: VkBuffer | null;
+  indexOffset: number;
+  indexCount: number;
+  indexType: VkIndexType;
+  transformData: VkBuffer | null;
+  transformOffset: number;
+}
+
+
+/** ## VkGeometryDataNVX ## */
+interface VkGeometryDataNVXInitializer {
+  triangles?: VkGeometryTrianglesNVX | null;
+  aabbs?: VkGeometryAABBNVX | null;
+}
+
+declare var VkGeometryDataNVX: {
+  prototype: VkGeometryDataNVX;
+  new(param?: VkGeometryDataNVXInitializer | null): VkGeometryDataNVX;
+  triangles: VkGeometryTrianglesNVX | null;
+  aabbs: VkGeometryAABBNVX | null;
+}
+
+export interface VkGeometryDataNVX {
+  triangles: VkGeometryTrianglesNVX | null;
+  aabbs: VkGeometryAABBNVX | null;
+}
+
+
+/** ## VkGeometryNVX ## */
+interface VkGeometryNVXInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  geometryType?: VkGeometryTypeNVX;
+  geometry?: VkGeometryDataNVX | null;
+  flags?: VkGeometryFlagBitsNVX;
+}
+
+declare var VkGeometryNVX: {
+  prototype: VkGeometryNVX;
+  new(param?: VkGeometryNVXInitializer | null): VkGeometryNVX;
+  sType: VkStructureType;
+  pNext: null;
+  geometryType: VkGeometryTypeNVX;
+  geometry: VkGeometryDataNVX | null;
+  flags: VkGeometryFlagBitsNVX;
+}
+
+export interface VkGeometryNVX {
+  sType: VkStructureType;
+  pNext: null;
+  geometryType: VkGeometryTypeNVX;
+  geometry: VkGeometryDataNVX | null;
+  flags: VkGeometryFlagBitsNVX;
+}
+
+
+/** ## VkAccelerationStructureCreateInfoNVX ## */
+interface VkAccelerationStructureCreateInfoNVXInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  type?: VkAccelerationStructureTypeNVX;
+  flags?: VkBuildAccelerationStructureFlagBitsNVX;
+  compactedSize?: number;
+  instanceCount?: number;
+  geometryCount?: number;
+  pGeometries?: VkGeometryNVX[] | null;
+}
+
+declare var VkAccelerationStructureCreateInfoNVX: {
+  prototype: VkAccelerationStructureCreateInfoNVX;
+  new(param?: VkAccelerationStructureCreateInfoNVXInitializer | null): VkAccelerationStructureCreateInfoNVX;
+  sType: VkStructureType;
+  pNext: null;
+  type: VkAccelerationStructureTypeNVX;
+  flags: VkBuildAccelerationStructureFlagBitsNVX;
+  compactedSize: number;
+  instanceCount: number;
+  geometryCount: number;
+  pGeometries: VkGeometryNVX[] | null;
+}
+
+export interface VkAccelerationStructureCreateInfoNVX {
+  sType: VkStructureType;
+  pNext: null;
+  type: VkAccelerationStructureTypeNVX;
+  flags: VkBuildAccelerationStructureFlagBitsNVX;
+  compactedSize: number;
+  instanceCount: number;
+  geometryCount: number;
+  pGeometries: VkGeometryNVX[] | null;
+}
+
+
+/** ## VkSpecializationMapEntry ## */
+interface VkSpecializationMapEntryInitializer {
+  constantID?: number;
+  offset?: number;
+  size?: number;
+}
+
+declare var VkSpecializationMapEntry: {
+  prototype: VkSpecializationMapEntry;
+  new(param?: VkSpecializationMapEntryInitializer | null): VkSpecializationMapEntry;
+  constantID: number;
+  offset: number;
+  size: number;
+}
+
+export interface VkSpecializationMapEntry {
+  constantID: number;
+  offset: number;
+  size: number;
+}
+
+
+/** ## VkSpecializationInfo ## */
+interface VkSpecializationInfoInitializer {
+  mapEntryCount?: number;
+  pMapEntries?: VkSpecializationMapEntry[] | null;
+  dataSize?: number;
+  pData?: null;
+}
+
+declare var VkSpecializationInfo: {
+  prototype: VkSpecializationInfo;
+  new(param?: VkSpecializationInfoInitializer | null): VkSpecializationInfo;
+  mapEntryCount: number;
+  pMapEntries: VkSpecializationMapEntry[] | null;
+  dataSize: number;
+  pData: null;
+}
+
+export interface VkSpecializationInfo {
+  mapEntryCount: number;
+  pMapEntries: VkSpecializationMapEntry[] | null;
+  dataSize: number;
+  pData: null;
+}
+
+
+/** ## VkPipelineShaderStageCreateInfo ## */
+interface VkPipelineShaderStageCreateInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: null;
+  stage?: VkShaderStageFlagBits;
+  module?: VkShaderModule | null;
+  pName?: string | null;
+  pSpecializationInfo?: VkSpecializationInfo | null;
+}
+
+declare var VkPipelineShaderStageCreateInfo: {
+  prototype: VkPipelineShaderStageCreateInfo;
+  new(param?: VkPipelineShaderStageCreateInfoInitializer | null): VkPipelineShaderStageCreateInfo;
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  stage: VkShaderStageFlagBits;
+  module: VkShaderModule | null;
+  pName: string | null;
+  pSpecializationInfo: VkSpecializationInfo | null;
+}
+
+export interface VkPipelineShaderStageCreateInfo {
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  stage: VkShaderStageFlagBits;
+  module: VkShaderModule | null;
+  pName: string | null;
+  pSpecializationInfo: VkSpecializationInfo | null;
+}
+
+
+/** ## VkRaytracingPipelineCreateInfoNVX ## */
+interface VkRaytracingPipelineCreateInfoNVXInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: VkPipelineCreateFlagBits;
+  stageCount?: number;
+  pStages?: VkPipelineShaderStageCreateInfo[] | null;
+  pGroupNumbers?: Uint32Array | null;
+  maxRecursionDepth?: number;
+  layout?: VkPipelineLayout | null;
+  basePipelineHandle?: VkPipeline | null;
+  basePipelineIndex?: number;
+}
+
+declare var VkRaytracingPipelineCreateInfoNVX: {
+  prototype: VkRaytracingPipelineCreateInfoNVX;
+  new(param?: VkRaytracingPipelineCreateInfoNVXInitializer | null): VkRaytracingPipelineCreateInfoNVX;
+  sType: VkStructureType;
+  pNext: null;
+  flags: VkPipelineCreateFlagBits;
+  stageCount: number;
+  pStages: VkPipelineShaderStageCreateInfo[] | null;
+  pGroupNumbers: Uint32Array | null;
+  maxRecursionDepth: number;
+  layout: VkPipelineLayout | null;
+  basePipelineHandle: VkPipeline | null;
+  basePipelineIndex: number;
+}
+
+export interface VkRaytracingPipelineCreateInfoNVX {
+  sType: VkStructureType;
+  pNext: null;
+  flags: VkPipelineCreateFlagBits;
+  stageCount: number;
+  pStages: VkPipelineShaderStageCreateInfo[] | null;
+  pGroupNumbers: Uint32Array | null;
+  maxRecursionDepth: number;
+  layout: VkPipelineLayout | null;
+  basePipelineHandle: VkPipeline | null;
+  basePipelineIndex: number;
+}
+
+
+/** ## VkDrawMeshTasksIndirectCommandNV ## */
+interface VkDrawMeshTasksIndirectCommandNVInitializer {
+  taskCount?: number;
+  firstTask?: number;
+}
+
+declare var VkDrawMeshTasksIndirectCommandNV: {
+  prototype: VkDrawMeshTasksIndirectCommandNV;
+  new(param?: VkDrawMeshTasksIndirectCommandNVInitializer | null): VkDrawMeshTasksIndirectCommandNV;
+  taskCount: number;
+  firstTask: number;
+}
+
+export interface VkDrawMeshTasksIndirectCommandNV {
+  taskCount: number;
+  firstTask: number;
+}
+
+
+/** ## VkPhysicalDeviceMeshShaderPropertiesNV ## */
+interface VkPhysicalDeviceMeshShaderPropertiesNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  maxDrawMeshTasksCount?: number;
+  maxTaskWorkGroupInvocations?: number;
+  maxTaskWorkGroupSize?: number[] | null;
+  maxTaskTotalMemorySize?: number;
+  maxTaskOutputCount?: number;
+  maxMeshWorkGroupInvocations?: number;
+  maxMeshWorkGroupSize?: number[] | null;
+  maxMeshTotalMemorySize?: number;
+  maxMeshOutputVertices?: number;
+  maxMeshOutputPrimitives?: number;
+  maxMeshMultiviewViewCount?: number;
+  meshOutputPerVertexGranularity?: number;
+  meshOutputPerPrimitiveGranularity?: number;
+}
+
+declare var VkPhysicalDeviceMeshShaderPropertiesNV: {
+  prototype: VkPhysicalDeviceMeshShaderPropertiesNV;
+  new(param?: VkPhysicalDeviceMeshShaderPropertiesNVInitializer | null): VkPhysicalDeviceMeshShaderPropertiesNV;
+  sType: VkStructureType;
+  pNext: null;
+  maxDrawMeshTasksCount: number;
+  maxTaskWorkGroupInvocations: number;
+  maxTaskWorkGroupSize: number[] | null;
+  maxTaskTotalMemorySize: number;
+  maxTaskOutputCount: number;
+  maxMeshWorkGroupInvocations: number;
+  maxMeshWorkGroupSize: number[] | null;
+  maxMeshTotalMemorySize: number;
+  maxMeshOutputVertices: number;
+  maxMeshOutputPrimitives: number;
+  maxMeshMultiviewViewCount: number;
+  meshOutputPerVertexGranularity: number;
+  meshOutputPerPrimitiveGranularity: number;
+}
+
+export interface VkPhysicalDeviceMeshShaderPropertiesNV {
+  sType: VkStructureType;
+  pNext: null;
+  maxDrawMeshTasksCount: number;
+  maxTaskWorkGroupInvocations: number;
+  maxTaskWorkGroupSize: number[] | null;
+  maxTaskTotalMemorySize: number;
+  maxTaskOutputCount: number;
+  maxMeshWorkGroupInvocations: number;
+  maxMeshWorkGroupSize: number[] | null;
+  maxMeshTotalMemorySize: number;
+  maxMeshOutputVertices: number;
+  maxMeshOutputPrimitives: number;
+  maxMeshMultiviewViewCount: number;
+  meshOutputPerVertexGranularity: number;
+  meshOutputPerPrimitiveGranularity: number;
+}
+
+
+/** ## VkPhysicalDeviceMeshShaderFeaturesNV ## */
+interface VkPhysicalDeviceMeshShaderFeaturesNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  taskShader?: number;
+  meshShader?: number;
+}
+
+declare var VkPhysicalDeviceMeshShaderFeaturesNV: {
+  prototype: VkPhysicalDeviceMeshShaderFeaturesNV;
+  new(param?: VkPhysicalDeviceMeshShaderFeaturesNVInitializer | null): VkPhysicalDeviceMeshShaderFeaturesNV;
+  sType: VkStructureType;
+  pNext: null;
+  taskShader: number;
+  meshShader: number;
+}
+
+export interface VkPhysicalDeviceMeshShaderFeaturesNV {
+  sType: VkStructureType;
+  pNext: null;
+  taskShader: number;
+  meshShader: number;
+}
+
+
+/** ## VkCoarseSampleLocationNV ## */
+interface VkCoarseSampleLocationNVInitializer {
+  pixelX?: number;
+  pixelY?: number;
+  sample?: number;
+}
+
+declare var VkCoarseSampleLocationNV: {
+  prototype: VkCoarseSampleLocationNV;
+  new(param?: VkCoarseSampleLocationNVInitializer | null): VkCoarseSampleLocationNV;
+  pixelX: number;
+  pixelY: number;
+  sample: number;
+}
+
+export interface VkCoarseSampleLocationNV {
+  pixelX: number;
+  pixelY: number;
+  sample: number;
+}
+
+
+/** ## VkCoarseSampleOrderCustomNV ## */
+interface VkCoarseSampleOrderCustomNVInitializer {
+  shadingRate?: VkShadingRatePaletteEntryNV;
+  sampleCount?: number;
+  sampleLocationCount?: number;
+  pSampleLocations?: VkCoarseSampleLocationNV[] | null;
+}
+
+declare var VkCoarseSampleOrderCustomNV: {
+  prototype: VkCoarseSampleOrderCustomNV;
+  new(param?: VkCoarseSampleOrderCustomNVInitializer | null): VkCoarseSampleOrderCustomNV;
+  shadingRate: VkShadingRatePaletteEntryNV;
+  sampleCount: number;
+  sampleLocationCount: number;
+  pSampleLocations: VkCoarseSampleLocationNV[] | null;
+}
+
+export interface VkCoarseSampleOrderCustomNV {
+  shadingRate: VkShadingRatePaletteEntryNV;
+  sampleCount: number;
+  sampleLocationCount: number;
+  pSampleLocations: VkCoarseSampleLocationNV[] | null;
+}
+
+
+/** ## VkPipelineViewportCoarseSampleOrderStateCreateInfoNV ## */
+interface VkPipelineViewportCoarseSampleOrderStateCreateInfoNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  sampleOrderType?: VkCoarseSampleOrderTypeNV;
+  customSampleOrderCount?: number;
+  pCustomSampleOrders?: VkCoarseSampleOrderCustomNV[] | null;
+}
+
+declare var VkPipelineViewportCoarseSampleOrderStateCreateInfoNV: {
+  prototype: VkPipelineViewportCoarseSampleOrderStateCreateInfoNV;
+  new(param?: VkPipelineViewportCoarseSampleOrderStateCreateInfoNVInitializer | null): VkPipelineViewportCoarseSampleOrderStateCreateInfoNV;
+  sType: VkStructureType;
+  pNext: null;
+  sampleOrderType: VkCoarseSampleOrderTypeNV;
+  customSampleOrderCount: number;
+  pCustomSampleOrders: VkCoarseSampleOrderCustomNV[] | null;
+}
+
+export interface VkPipelineViewportCoarseSampleOrderStateCreateInfoNV {
+  sType: VkStructureType;
+  pNext: null;
+  sampleOrderType: VkCoarseSampleOrderTypeNV;
+  customSampleOrderCount: number;
+  pCustomSampleOrders: VkCoarseSampleOrderCustomNV[] | null;
+}
+
+
+/** ## VkExtent2D ## */
+interface VkExtent2DInitializer {
+  width?: number;
+  height?: number;
+}
+
+declare var VkExtent2D: {
+  prototype: VkExtent2D;
+  new(param?: VkExtent2DInitializer | null): VkExtent2D;
+  width: number;
+  height: number;
+}
+
+export interface VkExtent2D {
+  width: number;
+  height: number;
+}
+
+
+/** ## VkPhysicalDeviceShadingRateImagePropertiesNV ## */
+interface VkPhysicalDeviceShadingRateImagePropertiesNVInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly shadingRateTexelSize?: VkExtent2D | null;
+  readonly shadingRatePaletteSize?: number;
+  readonly shadingRateMaxCoarseSamples?: number;
+}
+
+declare var VkPhysicalDeviceShadingRateImagePropertiesNV: {
+  prototype: VkPhysicalDeviceShadingRateImagePropertiesNV;
+  new(param?: VkPhysicalDeviceShadingRateImagePropertiesNVInitializer | null): VkPhysicalDeviceShadingRateImagePropertiesNV;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly shadingRateTexelSize: VkExtent2D | null;
+  readonly shadingRatePaletteSize: number;
+  readonly shadingRateMaxCoarseSamples: number;
+}
+
+export interface VkPhysicalDeviceShadingRateImagePropertiesNV {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly shadingRateTexelSize: VkExtent2D | null;
+  readonly shadingRatePaletteSize: number;
+  readonly shadingRateMaxCoarseSamples: number;
+}
+
+
+/** ## VkPhysicalDeviceShadingRateImageFeaturesNV ## */
+interface VkPhysicalDeviceShadingRateImageFeaturesNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  shadingRateImage?: number;
+  shadingRateCoarseSampleOrder?: number;
+}
+
+declare var VkPhysicalDeviceShadingRateImageFeaturesNV: {
+  prototype: VkPhysicalDeviceShadingRateImageFeaturesNV;
+  new(param?: VkPhysicalDeviceShadingRateImageFeaturesNVInitializer | null): VkPhysicalDeviceShadingRateImageFeaturesNV;
+  sType: VkStructureType;
+  pNext: null;
+  shadingRateImage: number;
+  shadingRateCoarseSampleOrder: number;
+}
+
+export interface VkPhysicalDeviceShadingRateImageFeaturesNV {
+  sType: VkStructureType;
+  pNext: null;
+  shadingRateImage: number;
+  shadingRateCoarseSampleOrder: number;
+}
+
+
+/** ## VkShadingRatePaletteNV ## */
+interface VkShadingRatePaletteNVInitializer {
+  shadingRatePaletteEntryCount?: number;
+  pShadingRatePaletteEntries?: Int32Array | null;
+}
+
+declare var VkShadingRatePaletteNV: {
+  prototype: VkShadingRatePaletteNV;
+  new(param?: VkShadingRatePaletteNVInitializer | null): VkShadingRatePaletteNV;
+  shadingRatePaletteEntryCount: number;
+  pShadingRatePaletteEntries: Int32Array | null;
+}
+
+export interface VkShadingRatePaletteNV {
+  shadingRatePaletteEntryCount: number;
+  pShadingRatePaletteEntries: Int32Array | null;
+}
+
+
+/** ## VkPipelineViewportShadingRateImageStateCreateInfoNV ## */
+interface VkPipelineViewportShadingRateImageStateCreateInfoNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  shadingRateImageEnable?: number;
+  viewportCount?: number;
+  pShadingRatePalettes?: VkShadingRatePaletteNV[] | null;
+}
+
+declare var VkPipelineViewportShadingRateImageStateCreateInfoNV: {
+  prototype: VkPipelineViewportShadingRateImageStateCreateInfoNV;
+  new(param?: VkPipelineViewportShadingRateImageStateCreateInfoNVInitializer | null): VkPipelineViewportShadingRateImageStateCreateInfoNV;
+  sType: VkStructureType;
+  pNext: null;
+  shadingRateImageEnable: number;
+  viewportCount: number;
+  pShadingRatePalettes: VkShadingRatePaletteNV[] | null;
+}
+
+export interface VkPipelineViewportShadingRateImageStateCreateInfoNV {
+  sType: VkStructureType;
+  pNext: null;
+  shadingRateImageEnable: number;
+  viewportCount: number;
+  pShadingRatePalettes: VkShadingRatePaletteNV[] | null;
+}
+
+
+/** ## VkPhysicalDeviceShaderImageFootprintFeaturesNV ## */
+interface VkPhysicalDeviceShaderImageFootprintFeaturesNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  imageFootprint?: number;
+}
+
+declare var VkPhysicalDeviceShaderImageFootprintFeaturesNV: {
+  prototype: VkPhysicalDeviceShaderImageFootprintFeaturesNV;
+  new(param?: VkPhysicalDeviceShaderImageFootprintFeaturesNVInitializer | null): VkPhysicalDeviceShaderImageFootprintFeaturesNV;
+  sType: VkStructureType;
+  pNext: null;
+  imageFootprint: number;
+}
+
+export interface VkPhysicalDeviceShaderImageFootprintFeaturesNV {
+  sType: VkStructureType;
+  pNext: null;
+  imageFootprint: number;
+}
+
+
+/** ## VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV ## */
+interface VkPhysicalDeviceFragmentShaderBarycentricFeaturesNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  fragmentShaderBarycentric?: number;
+}
+
+declare var VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV: {
+  prototype: VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV;
+  new(param?: VkPhysicalDeviceFragmentShaderBarycentricFeaturesNVInitializer | null): VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV;
+  sType: VkStructureType;
+  pNext: null;
+  fragmentShaderBarycentric: number;
+}
+
+export interface VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV {
+  sType: VkStructureType;
+  pNext: null;
+  fragmentShaderBarycentric: number;
+}
+
+
+/** ## VkPhysicalDeviceComputeShaderDerivativesFeaturesNV ## */
+interface VkPhysicalDeviceComputeShaderDerivativesFeaturesNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  computeDerivativeGroupQuads?: number;
+  computeDerivativeGroupLinear?: number;
+}
+
+declare var VkPhysicalDeviceComputeShaderDerivativesFeaturesNV: {
+  prototype: VkPhysicalDeviceComputeShaderDerivativesFeaturesNV;
+  new(param?: VkPhysicalDeviceComputeShaderDerivativesFeaturesNVInitializer | null): VkPhysicalDeviceComputeShaderDerivativesFeaturesNV;
+  sType: VkStructureType;
+  pNext: null;
+  computeDerivativeGroupQuads: number;
+  computeDerivativeGroupLinear: number;
+}
+
+export interface VkPhysicalDeviceComputeShaderDerivativesFeaturesNV {
+  sType: VkStructureType;
+  pNext: null;
+  computeDerivativeGroupQuads: number;
+  computeDerivativeGroupLinear: number;
+}
+
+
+/** ## VkPhysicalDeviceCornerSampledImageFeaturesNV ## */
+interface VkPhysicalDeviceCornerSampledImageFeaturesNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  cornerSampledImage?: number;
+}
+
+declare var VkPhysicalDeviceCornerSampledImageFeaturesNV: {
+  prototype: VkPhysicalDeviceCornerSampledImageFeaturesNV;
+  new(param?: VkPhysicalDeviceCornerSampledImageFeaturesNVInitializer | null): VkPhysicalDeviceCornerSampledImageFeaturesNV;
+  sType: VkStructureType;
+  pNext: null;
+  cornerSampledImage: number;
+}
+
+export interface VkPhysicalDeviceCornerSampledImageFeaturesNV {
+  sType: VkStructureType;
+  pNext: null;
+  cornerSampledImage: number;
+}
+
+
+/** ## VkOffset2D ## */
+interface VkOffset2DInitializer {
+  x?: number;
+  y?: number;
+}
+
+declare var VkOffset2D: {
+  prototype: VkOffset2D;
+  new(param?: VkOffset2DInitializer | null): VkOffset2D;
+  x: number;
+  y: number;
+}
+
+export interface VkOffset2D {
+  x: number;
+  y: number;
+}
+
+
+/** ## VkRect2D ## */
+interface VkRect2DInitializer {
+  offset?: VkOffset2D | null;
+  extent?: VkExtent2D | null;
+}
+
+declare var VkRect2D: {
+  prototype: VkRect2D;
+  new(param?: VkRect2DInitializer | null): VkRect2D;
+  offset: VkOffset2D | null;
+  extent: VkExtent2D | null;
+}
+
+export interface VkRect2D {
+  offset: VkOffset2D | null;
+  extent: VkExtent2D | null;
+}
+
+
+/** ## VkPipelineViewportExclusiveScissorStateCreateInfoNV ## */
+interface VkPipelineViewportExclusiveScissorStateCreateInfoNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  exclusiveScissorCount?: number;
+  pExclusiveScissors?: VkRect2D[] | null;
+}
+
+declare var VkPipelineViewportExclusiveScissorStateCreateInfoNV: {
+  prototype: VkPipelineViewportExclusiveScissorStateCreateInfoNV;
+  new(param?: VkPipelineViewportExclusiveScissorStateCreateInfoNVInitializer | null): VkPipelineViewportExclusiveScissorStateCreateInfoNV;
+  sType: VkStructureType;
+  pNext: null;
+  exclusiveScissorCount: number;
+  pExclusiveScissors: VkRect2D[] | null;
+}
+
+export interface VkPipelineViewportExclusiveScissorStateCreateInfoNV {
+  sType: VkStructureType;
+  pNext: null;
+  exclusiveScissorCount: number;
+  pExclusiveScissors: VkRect2D[] | null;
+}
+
+
+/** ## VkPhysicalDeviceExclusiveScissorFeaturesNV ## */
+interface VkPhysicalDeviceExclusiveScissorFeaturesNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  exclusiveScissor?: number;
+}
+
+declare var VkPhysicalDeviceExclusiveScissorFeaturesNV: {
+  prototype: VkPhysicalDeviceExclusiveScissorFeaturesNV;
+  new(param?: VkPhysicalDeviceExclusiveScissorFeaturesNVInitializer | null): VkPhysicalDeviceExclusiveScissorFeaturesNV;
+  sType: VkStructureType;
+  pNext: null;
+  exclusiveScissor: number;
+}
+
+export interface VkPhysicalDeviceExclusiveScissorFeaturesNV {
+  sType: VkStructureType;
+  pNext: null;
+  exclusiveScissor: number;
+}
+
+
+/** ## VkPipelineRepresentativeFragmentTestStateCreateInfoNV ## */
+interface VkPipelineRepresentativeFragmentTestStateCreateInfoNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  representativeFragmentTestEnable?: number;
+}
+
+declare var VkPipelineRepresentativeFragmentTestStateCreateInfoNV: {
+  prototype: VkPipelineRepresentativeFragmentTestStateCreateInfoNV;
+  new(param?: VkPipelineRepresentativeFragmentTestStateCreateInfoNVInitializer | null): VkPipelineRepresentativeFragmentTestStateCreateInfoNV;
+  sType: VkStructureType;
+  pNext: null;
+  representativeFragmentTestEnable: number;
+}
+
+export interface VkPipelineRepresentativeFragmentTestStateCreateInfoNV {
+  sType: VkStructureType;
+  pNext: null;
+  representativeFragmentTestEnable: number;
+}
+
+
+/** ## VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV ## */
+interface VkPhysicalDeviceRepresentativeFragmentTestFeaturesNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  representativeFragmentTest?: number;
+}
+
+declare var VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV: {
+  prototype: VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV;
+  new(param?: VkPhysicalDeviceRepresentativeFragmentTestFeaturesNVInitializer | null): VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV;
+  sType: VkStructureType;
+  pNext: null;
+  representativeFragmentTest: number;
+}
+
+export interface VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV {
+  sType: VkStructureType;
+  pNext: null;
+  representativeFragmentTest: number;
+}
+
+
+/** ## VkPhysicalDeviceASTCDecodeFeaturesEXT ## */
+interface VkPhysicalDeviceASTCDecodeFeaturesEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  decodeModeSharedExponent?: number;
+}
+
+declare var VkPhysicalDeviceASTCDecodeFeaturesEXT: {
+  prototype: VkPhysicalDeviceASTCDecodeFeaturesEXT;
+  new(param?: VkPhysicalDeviceASTCDecodeFeaturesEXTInitializer | null): VkPhysicalDeviceASTCDecodeFeaturesEXT;
+  sType: VkStructureType;
+  pNext: null;
+  decodeModeSharedExponent: number;
+}
+
+export interface VkPhysicalDeviceASTCDecodeFeaturesEXT {
+  sType: VkStructureType;
+  pNext: null;
+  decodeModeSharedExponent: number;
+}
+
+
+/** ## VkImageViewASTCDecodeModeEXT ## */
+interface VkImageViewASTCDecodeModeEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  decodeMode?: VkFormat;
+}
+
+declare var VkImageViewASTCDecodeModeEXT: {
+  prototype: VkImageViewASTCDecodeModeEXT;
+  new(param?: VkImageViewASTCDecodeModeEXTInitializer | null): VkImageViewASTCDecodeModeEXT;
+  sType: VkStructureType;
+  pNext: null;
+  decodeMode: VkFormat;
+}
+
+export interface VkImageViewASTCDecodeModeEXT {
+  sType: VkStructureType;
+  pNext: null;
+  decodeMode: VkFormat;
+}
+
+
+/** ## VkCheckpointDataNV ## */
+interface VkCheckpointDataNVInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly stage?: VkPipelineStageFlagBits;
+  readonly pCheckpointMarker?: null;
+}
+
+declare var VkCheckpointDataNV: {
+  prototype: VkCheckpointDataNV;
+  new(param?: VkCheckpointDataNVInitializer | null): VkCheckpointDataNV;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly stage: VkPipelineStageFlagBits;
+  readonly pCheckpointMarker: null;
+}
+
+export interface VkCheckpointDataNV {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly stage: VkPipelineStageFlagBits;
+  readonly pCheckpointMarker: null;
+}
+
+
+/** ## VkQueueFamilyCheckpointPropertiesNV ## */
+interface VkQueueFamilyCheckpointPropertiesNVInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly checkpointExecutionStageMask?: VkPipelineStageFlagBits;
+}
+
+declare var VkQueueFamilyCheckpointPropertiesNV: {
+  prototype: VkQueueFamilyCheckpointPropertiesNV;
+  new(param?: VkQueueFamilyCheckpointPropertiesNVInitializer | null): VkQueueFamilyCheckpointPropertiesNV;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly checkpointExecutionStageMask: VkPipelineStageFlagBits;
+}
+
+export interface VkQueueFamilyCheckpointPropertiesNV {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly checkpointExecutionStageMask: VkPipelineStageFlagBits;
+}
+
+
+/** ## VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT ## */
+interface VkPhysicalDeviceVertexAttributeDivisorFeaturesEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  vertexAttributeInstanceRateDivisor?: number;
+  vertexAttributeInstanceRateZeroDivisor?: number;
+}
+
+declare var VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT: {
+  prototype: VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT;
+  new(param?: VkPhysicalDeviceVertexAttributeDivisorFeaturesEXTInitializer | null): VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT;
+  sType: VkStructureType;
+  pNext: null;
+  vertexAttributeInstanceRateDivisor: number;
+  vertexAttributeInstanceRateZeroDivisor: number;
+}
+
+export interface VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT {
+  sType: VkStructureType;
+  pNext: null;
+  vertexAttributeInstanceRateDivisor: number;
+  vertexAttributeInstanceRateZeroDivisor: number;
+}
+
+
+/** ## VkPhysicalDeviceVulkanMemoryModelFeaturesKHR ## */
+interface VkPhysicalDeviceVulkanMemoryModelFeaturesKHRInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly vulkanMemoryModel?: number;
+  readonly vulkanMemoryModelDeviceScope?: number;
+}
+
+declare var VkPhysicalDeviceVulkanMemoryModelFeaturesKHR: {
+  prototype: VkPhysicalDeviceVulkanMemoryModelFeaturesKHR;
+  new(param?: VkPhysicalDeviceVulkanMemoryModelFeaturesKHRInitializer | null): VkPhysicalDeviceVulkanMemoryModelFeaturesKHR;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly vulkanMemoryModel: number;
+  readonly vulkanMemoryModelDeviceScope: number;
+}
+
+export interface VkPhysicalDeviceVulkanMemoryModelFeaturesKHR {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly vulkanMemoryModel: number;
+  readonly vulkanMemoryModelDeviceScope: number;
+}
+
+
+/** ## VkPhysicalDeviceConditionalRenderingFeaturesEXT ## */
+interface VkPhysicalDeviceConditionalRenderingFeaturesEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  conditionalRendering?: number;
+  inheritedConditionalRendering?: number;
+}
+
+declare var VkPhysicalDeviceConditionalRenderingFeaturesEXT: {
+  prototype: VkPhysicalDeviceConditionalRenderingFeaturesEXT;
+  new(param?: VkPhysicalDeviceConditionalRenderingFeaturesEXTInitializer | null): VkPhysicalDeviceConditionalRenderingFeaturesEXT;
+  sType: VkStructureType;
+  pNext: null;
+  conditionalRendering: number;
+  inheritedConditionalRendering: number;
+}
+
+export interface VkPhysicalDeviceConditionalRenderingFeaturesEXT {
+  sType: VkStructureType;
+  pNext: null;
+  conditionalRendering: number;
+  inheritedConditionalRendering: number;
+}
+
+
+/** ## VkPhysicalDevice8BitStorageFeaturesKHR ## */
+interface VkPhysicalDevice8BitStorageFeaturesKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  storageBuffer8BitAccess?: number;
+  uniformAndStorageBuffer8BitAccess?: number;
+  storagePushConstant8?: number;
+}
+
+declare var VkPhysicalDevice8BitStorageFeaturesKHR: {
+  prototype: VkPhysicalDevice8BitStorageFeaturesKHR;
+  new(param?: VkPhysicalDevice8BitStorageFeaturesKHRInitializer | null): VkPhysicalDevice8BitStorageFeaturesKHR;
+  sType: VkStructureType;
+  pNext: null;
+  storageBuffer8BitAccess: number;
+  uniformAndStorageBuffer8BitAccess: number;
+  storagePushConstant8: number;
+}
+
+export interface VkPhysicalDevice8BitStorageFeaturesKHR {
+  sType: VkStructureType;
+  pNext: null;
+  storageBuffer8BitAccess: number;
+  uniformAndStorageBuffer8BitAccess: number;
+  storagePushConstant8: number;
+}
+
+
+/** ## VkCommandBufferInheritanceConditionalRenderingInfoEXT ## */
+interface VkCommandBufferInheritanceConditionalRenderingInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  conditionalRenderingEnable?: number;
+}
+
+declare var VkCommandBufferInheritanceConditionalRenderingInfoEXT: {
+  prototype: VkCommandBufferInheritanceConditionalRenderingInfoEXT;
+  new(param?: VkCommandBufferInheritanceConditionalRenderingInfoEXTInitializer | null): VkCommandBufferInheritanceConditionalRenderingInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  conditionalRenderingEnable: number;
+}
+
+export interface VkCommandBufferInheritanceConditionalRenderingInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  conditionalRenderingEnable: number;
+}
+
+
+/** ## VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT ## */
+interface VkPhysicalDeviceVertexAttributeDivisorPropertiesEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  maxVertexAttribDivisor?: number;
+}
+
+declare var VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT: {
+  prototype: VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT;
+  new(param?: VkPhysicalDeviceVertexAttributeDivisorPropertiesEXTInitializer | null): VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT;
+  sType: VkStructureType;
+  pNext: null;
+  maxVertexAttribDivisor: number;
+}
+
+export interface VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT {
+  sType: VkStructureType;
+  pNext: null;
+  maxVertexAttribDivisor: number;
+}
+
+
+/** ## VkVertexInputBindingDivisorDescriptionEXT ## */
+interface VkVertexInputBindingDivisorDescriptionEXTInitializer {
+  binding?: number;
+  divisor?: number;
+}
+
+declare var VkVertexInputBindingDivisorDescriptionEXT: {
+  prototype: VkVertexInputBindingDivisorDescriptionEXT;
+  new(param?: VkVertexInputBindingDivisorDescriptionEXTInitializer | null): VkVertexInputBindingDivisorDescriptionEXT;
+  binding: number;
+  divisor: number;
+}
+
+export interface VkVertexInputBindingDivisorDescriptionEXT {
+  binding: number;
+  divisor: number;
+}
+
+
+/** ## VkPipelineVertexInputDivisorStateCreateInfoEXT ## */
+interface VkPipelineVertexInputDivisorStateCreateInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  vertexBindingDivisorCount?: number;
+  pVertexBindingDivisors?: VkVertexInputBindingDivisorDescriptionEXT[] | null;
+}
+
+declare var VkPipelineVertexInputDivisorStateCreateInfoEXT: {
+  prototype: VkPipelineVertexInputDivisorStateCreateInfoEXT;
+  new(param?: VkPipelineVertexInputDivisorStateCreateInfoEXTInitializer | null): VkPipelineVertexInputDivisorStateCreateInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  vertexBindingDivisorCount: number;
+  pVertexBindingDivisors: VkVertexInputBindingDivisorDescriptionEXT[] | null;
+}
+
+export interface VkPipelineVertexInputDivisorStateCreateInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  vertexBindingDivisorCount: number;
+  pVertexBindingDivisors: VkVertexInputBindingDivisorDescriptionEXT[] | null;
+}
+
+
+/** ## VkSubpassEndInfoKHR ## */
+interface VkSubpassEndInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+}
+
+declare var VkSubpassEndInfoKHR: {
+  prototype: VkSubpassEndInfoKHR;
+  new(param?: VkSubpassEndInfoKHRInitializer | null): VkSubpassEndInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+}
+
+export interface VkSubpassEndInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+}
+
+
+/** ## VkSubpassBeginInfoKHR ## */
+interface VkSubpassBeginInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  contents?: VkSubpassContents;
+}
+
+declare var VkSubpassBeginInfoKHR: {
+  prototype: VkSubpassBeginInfoKHR;
+  new(param?: VkSubpassBeginInfoKHRInitializer | null): VkSubpassBeginInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  contents: VkSubpassContents;
+}
+
+export interface VkSubpassBeginInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  contents: VkSubpassContents;
+}
+
+
+/** ## VkSubpassDependency2KHR ## */
+interface VkSubpassDependency2KHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  srcSubpass?: number;
+  dstSubpass?: number;
+  srcStageMask?: VkPipelineStageFlagBits;
+  dstStageMask?: VkPipelineStageFlagBits;
+  srcAccessMask?: VkAccessFlagBits;
+  dstAccessMask?: VkAccessFlagBits;
+  dependencyFlags?: VkDependencyFlagBits;
+  viewOffset?: number;
+}
+
+declare var VkSubpassDependency2KHR: {
+  prototype: VkSubpassDependency2KHR;
+  new(param?: VkSubpassDependency2KHRInitializer | null): VkSubpassDependency2KHR;
+  sType: VkStructureType;
+  pNext: null;
+  srcSubpass: number;
+  dstSubpass: number;
+  srcStageMask: VkPipelineStageFlagBits;
+  dstStageMask: VkPipelineStageFlagBits;
+  srcAccessMask: VkAccessFlagBits;
+  dstAccessMask: VkAccessFlagBits;
+  dependencyFlags: VkDependencyFlagBits;
+  viewOffset: number;
+}
+
+export interface VkSubpassDependency2KHR {
+  sType: VkStructureType;
+  pNext: null;
+  srcSubpass: number;
+  dstSubpass: number;
+  srcStageMask: VkPipelineStageFlagBits;
+  dstStageMask: VkPipelineStageFlagBits;
+  srcAccessMask: VkAccessFlagBits;
+  dstAccessMask: VkAccessFlagBits;
+  dependencyFlags: VkDependencyFlagBits;
+  viewOffset: number;
+}
+
+
+/** ## VkAttachmentReference2KHR ## */
+interface VkAttachmentReference2KHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  attachment?: number;
+  layout?: VkImageLayout;
+  aspectMask?: VkImageAspectFlagBits;
+}
+
+declare var VkAttachmentReference2KHR: {
+  prototype: VkAttachmentReference2KHR;
+  new(param?: VkAttachmentReference2KHRInitializer | null): VkAttachmentReference2KHR;
+  sType: VkStructureType;
+  pNext: null;
+  attachment: number;
+  layout: VkImageLayout;
+  aspectMask: VkImageAspectFlagBits;
+}
+
+export interface VkAttachmentReference2KHR {
+  sType: VkStructureType;
+  pNext: null;
+  attachment: number;
+  layout: VkImageLayout;
+  aspectMask: VkImageAspectFlagBits;
+}
+
+
+/** ## VkSubpassDescription2KHR ## */
+interface VkSubpassDescription2KHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: VkSubpassDescriptionFlagBits;
+  pipelineBindPoint?: VkPipelineBindPoint;
+  viewMask?: number;
+  inputAttachmentCount?: number;
+  pInputAttachments?: VkAttachmentReference2KHR[] | null;
+  colorAttachmentCount?: number;
+  pColorAttachments?: VkAttachmentReference2KHR[] | null;
+  pResolveAttachments?: VkAttachmentReference2KHR[] | null;
+  pDepthStencilAttachment?: VkAttachmentReference2KHR | null;
+  preserveAttachmentCount?: number;
+  pPreserveAttachments?: Uint32Array | null;
+}
+
+declare var VkSubpassDescription2KHR: {
+  prototype: VkSubpassDescription2KHR;
+  new(param?: VkSubpassDescription2KHRInitializer | null): VkSubpassDescription2KHR;
+  sType: VkStructureType;
+  pNext: null;
+  flags: VkSubpassDescriptionFlagBits;
+  pipelineBindPoint: VkPipelineBindPoint;
+  viewMask: number;
+  inputAttachmentCount: number;
+  pInputAttachments: VkAttachmentReference2KHR[] | null;
+  colorAttachmentCount: number;
+  pColorAttachments: VkAttachmentReference2KHR[] | null;
+  pResolveAttachments: VkAttachmentReference2KHR[] | null;
+  pDepthStencilAttachment: VkAttachmentReference2KHR | null;
+  preserveAttachmentCount: number;
+  pPreserveAttachments: Uint32Array | null;
+}
+
+export interface VkSubpassDescription2KHR {
+  sType: VkStructureType;
+  pNext: null;
+  flags: VkSubpassDescriptionFlagBits;
+  pipelineBindPoint: VkPipelineBindPoint;
+  viewMask: number;
+  inputAttachmentCount: number;
+  pInputAttachments: VkAttachmentReference2KHR[] | null;
+  colorAttachmentCount: number;
+  pColorAttachments: VkAttachmentReference2KHR[] | null;
+  pResolveAttachments: VkAttachmentReference2KHR[] | null;
+  pDepthStencilAttachment: VkAttachmentReference2KHR | null;
+  preserveAttachmentCount: number;
+  pPreserveAttachments: Uint32Array | null;
+}
+
+
+/** ## VkAttachmentDescription2KHR ## */
+interface VkAttachmentDescription2KHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: VkAttachmentDescriptionFlagBits;
+  format?: VkFormat;
+  samples?: VkSampleCountFlagBits;
+  loadOp?: VkAttachmentLoadOp;
+  storeOp?: VkAttachmentStoreOp;
+  stencilLoadOp?: VkAttachmentLoadOp;
+  stencilStoreOp?: VkAttachmentStoreOp;
+  initialLayout?: VkImageLayout;
+  finalLayout?: VkImageLayout;
+}
+
+declare var VkAttachmentDescription2KHR: {
+  prototype: VkAttachmentDescription2KHR;
+  new(param?: VkAttachmentDescription2KHRInitializer | null): VkAttachmentDescription2KHR;
+  sType: VkStructureType;
+  pNext: null;
+  flags: VkAttachmentDescriptionFlagBits;
+  format: VkFormat;
+  samples: VkSampleCountFlagBits;
+  loadOp: VkAttachmentLoadOp;
+  storeOp: VkAttachmentStoreOp;
+  stencilLoadOp: VkAttachmentLoadOp;
+  stencilStoreOp: VkAttachmentStoreOp;
+  initialLayout: VkImageLayout;
+  finalLayout: VkImageLayout;
+}
+
+export interface VkAttachmentDescription2KHR {
+  sType: VkStructureType;
+  pNext: null;
+  flags: VkAttachmentDescriptionFlagBits;
+  format: VkFormat;
+  samples: VkSampleCountFlagBits;
+  loadOp: VkAttachmentLoadOp;
+  storeOp: VkAttachmentStoreOp;
+  stencilLoadOp: VkAttachmentLoadOp;
+  stencilStoreOp: VkAttachmentStoreOp;
+  initialLayout: VkImageLayout;
+  finalLayout: VkImageLayout;
+}
+
+
+/** ## VkRenderPassCreateInfo2KHR ## */
+interface VkRenderPassCreateInfo2KHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: null;
+  attachmentCount?: number;
+  pAttachments?: VkAttachmentDescription2KHR[] | null;
+  subpassCount?: number;
+  pSubpasses?: VkSubpassDescription2KHR[] | null;
+  dependencyCount?: number;
+  pDependencies?: VkSubpassDependency2KHR[] | null;
+  correlatedViewMaskCount?: number;
+  pCorrelatedViewMasks?: Uint32Array | null;
+}
+
+declare var VkRenderPassCreateInfo2KHR: {
+  prototype: VkRenderPassCreateInfo2KHR;
+  new(param?: VkRenderPassCreateInfo2KHRInitializer | null): VkRenderPassCreateInfo2KHR;
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  attachmentCount: number;
+  pAttachments: VkAttachmentDescription2KHR[] | null;
+  subpassCount: number;
+  pSubpasses: VkSubpassDescription2KHR[] | null;
+  dependencyCount: number;
+  pDependencies: VkSubpassDependency2KHR[] | null;
+  correlatedViewMaskCount: number;
+  pCorrelatedViewMasks: Uint32Array | null;
+}
+
+export interface VkRenderPassCreateInfo2KHR {
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  attachmentCount: number;
+  pAttachments: VkAttachmentDescription2KHR[] | null;
+  subpassCount: number;
+  pSubpasses: VkSubpassDescription2KHR[] | null;
+  dependencyCount: number;
+  pDependencies: VkSubpassDependency2KHR[] | null;
+  correlatedViewMaskCount: number;
+  pCorrelatedViewMasks: Uint32Array | null;
+}
+
+
+/** ## VkDescriptorSetVariableDescriptorCountLayoutSupportEXT ## */
+interface VkDescriptorSetVariableDescriptorCountLayoutSupportEXTInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly maxVariableDescriptorCount?: number;
+}
+
+declare var VkDescriptorSetVariableDescriptorCountLayoutSupportEXT: {
+  prototype: VkDescriptorSetVariableDescriptorCountLayoutSupportEXT;
+  new(param?: VkDescriptorSetVariableDescriptorCountLayoutSupportEXTInitializer | null): VkDescriptorSetVariableDescriptorCountLayoutSupportEXT;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly maxVariableDescriptorCount: number;
+}
+
+export interface VkDescriptorSetVariableDescriptorCountLayoutSupportEXT {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly maxVariableDescriptorCount: number;
+}
+
+
+/** ## VkDescriptorSetVariableDescriptorCountAllocateInfoEXT ## */
+interface VkDescriptorSetVariableDescriptorCountAllocateInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  descriptorSetCount?: number;
+  pDescriptorCounts?: Uint32Array | null;
+}
+
+declare var VkDescriptorSetVariableDescriptorCountAllocateInfoEXT: {
+  prototype: VkDescriptorSetVariableDescriptorCountAllocateInfoEXT;
+  new(param?: VkDescriptorSetVariableDescriptorCountAllocateInfoEXTInitializer | null): VkDescriptorSetVariableDescriptorCountAllocateInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  descriptorSetCount: number;
+  pDescriptorCounts: Uint32Array | null;
+}
+
+export interface VkDescriptorSetVariableDescriptorCountAllocateInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  descriptorSetCount: number;
+  pDescriptorCounts: Uint32Array | null;
+}
+
+
+/** ## VkDescriptorSetLayoutBindingFlagsCreateInfoEXT ## */
+interface VkDescriptorSetLayoutBindingFlagsCreateInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  bindingCount?: number;
+  pBindingFlags?: Int32Array | null;
+}
+
+declare var VkDescriptorSetLayoutBindingFlagsCreateInfoEXT: {
+  prototype: VkDescriptorSetLayoutBindingFlagsCreateInfoEXT;
+  new(param?: VkDescriptorSetLayoutBindingFlagsCreateInfoEXTInitializer | null): VkDescriptorSetLayoutBindingFlagsCreateInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  bindingCount: number;
+  pBindingFlags: Int32Array | null;
+}
+
+export interface VkDescriptorSetLayoutBindingFlagsCreateInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  bindingCount: number;
+  pBindingFlags: Int32Array | null;
+}
+
+
+/** ## VkPhysicalDeviceDescriptorIndexingPropertiesEXT ## */
+interface VkPhysicalDeviceDescriptorIndexingPropertiesEXTInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly maxUpdateAfterBindDescriptorsInAllPools?: number;
+  readonly shaderUniformBufferArrayNonUniformIndexingNative?: number;
+  readonly shaderSampledImageArrayNonUniformIndexingNative?: number;
+  readonly shaderStorageBufferArrayNonUniformIndexingNative?: number;
+  readonly shaderStorageImageArrayNonUniformIndexingNative?: number;
+  readonly shaderInputAttachmentArrayNonUniformIndexingNative?: number;
+  readonly robustBufferAccessUpdateAfterBind?: number;
+  readonly quadDivergentImplicitLod?: number;
+  readonly maxPerStageDescriptorUpdateAfterBindSamplers?: number;
+  readonly maxPerStageDescriptorUpdateAfterBindUniformBuffers?: number;
+  readonly maxPerStageDescriptorUpdateAfterBindStorageBuffers?: number;
+  readonly maxPerStageDescriptorUpdateAfterBindSampledImages?: number;
+  readonly maxPerStageDescriptorUpdateAfterBindStorageImages?: number;
+  readonly maxPerStageDescriptorUpdateAfterBindInputAttachments?: number;
+  readonly maxPerStageUpdateAfterBindResources?: number;
+  readonly maxDescriptorSetUpdateAfterBindSamplers?: number;
+  readonly maxDescriptorSetUpdateAfterBindUniformBuffers?: number;
+  readonly maxDescriptorSetUpdateAfterBindUniformBuffersDynamic?: number;
+  readonly maxDescriptorSetUpdateAfterBindStorageBuffers?: number;
+  readonly maxDescriptorSetUpdateAfterBindStorageBuffersDynamic?: number;
+  readonly maxDescriptorSetUpdateAfterBindSampledImages?: number;
+  readonly maxDescriptorSetUpdateAfterBindStorageImages?: number;
+  readonly maxDescriptorSetUpdateAfterBindInputAttachments?: number;
+}
+
+declare var VkPhysicalDeviceDescriptorIndexingPropertiesEXT: {
+  prototype: VkPhysicalDeviceDescriptorIndexingPropertiesEXT;
+  new(param?: VkPhysicalDeviceDescriptorIndexingPropertiesEXTInitializer | null): VkPhysicalDeviceDescriptorIndexingPropertiesEXT;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly maxUpdateAfterBindDescriptorsInAllPools: number;
+  readonly shaderUniformBufferArrayNonUniformIndexingNative: number;
+  readonly shaderSampledImageArrayNonUniformIndexingNative: number;
+  readonly shaderStorageBufferArrayNonUniformIndexingNative: number;
+  readonly shaderStorageImageArrayNonUniformIndexingNative: number;
+  readonly shaderInputAttachmentArrayNonUniformIndexingNative: number;
+  readonly robustBufferAccessUpdateAfterBind: number;
+  readonly quadDivergentImplicitLod: number;
+  readonly maxPerStageDescriptorUpdateAfterBindSamplers: number;
+  readonly maxPerStageDescriptorUpdateAfterBindUniformBuffers: number;
+  readonly maxPerStageDescriptorUpdateAfterBindStorageBuffers: number;
+  readonly maxPerStageDescriptorUpdateAfterBindSampledImages: number;
+  readonly maxPerStageDescriptorUpdateAfterBindStorageImages: number;
+  readonly maxPerStageDescriptorUpdateAfterBindInputAttachments: number;
+  readonly maxPerStageUpdateAfterBindResources: number;
+  readonly maxDescriptorSetUpdateAfterBindSamplers: number;
+  readonly maxDescriptorSetUpdateAfterBindUniformBuffers: number;
+  readonly maxDescriptorSetUpdateAfterBindUniformBuffersDynamic: number;
+  readonly maxDescriptorSetUpdateAfterBindStorageBuffers: number;
+  readonly maxDescriptorSetUpdateAfterBindStorageBuffersDynamic: number;
+  readonly maxDescriptorSetUpdateAfterBindSampledImages: number;
+  readonly maxDescriptorSetUpdateAfterBindStorageImages: number;
+  readonly maxDescriptorSetUpdateAfterBindInputAttachments: number;
+}
+
+export interface VkPhysicalDeviceDescriptorIndexingPropertiesEXT {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly maxUpdateAfterBindDescriptorsInAllPools: number;
+  readonly shaderUniformBufferArrayNonUniformIndexingNative: number;
+  readonly shaderSampledImageArrayNonUniformIndexingNative: number;
+  readonly shaderStorageBufferArrayNonUniformIndexingNative: number;
+  readonly shaderStorageImageArrayNonUniformIndexingNative: number;
+  readonly shaderInputAttachmentArrayNonUniformIndexingNative: number;
+  readonly robustBufferAccessUpdateAfterBind: number;
+  readonly quadDivergentImplicitLod: number;
+  readonly maxPerStageDescriptorUpdateAfterBindSamplers: number;
+  readonly maxPerStageDescriptorUpdateAfterBindUniformBuffers: number;
+  readonly maxPerStageDescriptorUpdateAfterBindStorageBuffers: number;
+  readonly maxPerStageDescriptorUpdateAfterBindSampledImages: number;
+  readonly maxPerStageDescriptorUpdateAfterBindStorageImages: number;
+  readonly maxPerStageDescriptorUpdateAfterBindInputAttachments: number;
+  readonly maxPerStageUpdateAfterBindResources: number;
+  readonly maxDescriptorSetUpdateAfterBindSamplers: number;
+  readonly maxDescriptorSetUpdateAfterBindUniformBuffers: number;
+  readonly maxDescriptorSetUpdateAfterBindUniformBuffersDynamic: number;
+  readonly maxDescriptorSetUpdateAfterBindStorageBuffers: number;
+  readonly maxDescriptorSetUpdateAfterBindStorageBuffersDynamic: number;
+  readonly maxDescriptorSetUpdateAfterBindSampledImages: number;
+  readonly maxDescriptorSetUpdateAfterBindStorageImages: number;
+  readonly maxDescriptorSetUpdateAfterBindInputAttachments: number;
+}
+
+
+/** ## VkPhysicalDeviceDescriptorIndexingFeaturesEXT ## */
+interface VkPhysicalDeviceDescriptorIndexingFeaturesEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  shaderInputAttachmentArrayDynamicIndexing?: number;
+  shaderUniformTexelBufferArrayDynamicIndexing?: number;
+  shaderStorageTexelBufferArrayDynamicIndexing?: number;
+  shaderUniformBufferArrayNonUniformIndexing?: number;
+  shaderSampledImageArrayNonUniformIndexing?: number;
+  shaderStorageBufferArrayNonUniformIndexing?: number;
+  shaderStorageImageArrayNonUniformIndexing?: number;
+  shaderInputAttachmentArrayNonUniformIndexing?: number;
+  shaderUniformTexelBufferArrayNonUniformIndexing?: number;
+  shaderStorageTexelBufferArrayNonUniformIndexing?: number;
+  descriptorBindingUniformBufferUpdateAfterBind?: number;
+  descriptorBindingSampledImageUpdateAfterBind?: number;
+  descriptorBindingStorageImageUpdateAfterBind?: number;
+  descriptorBindingStorageBufferUpdateAfterBind?: number;
+  descriptorBindingUniformTexelBufferUpdateAfterBind?: number;
+  descriptorBindingStorageTexelBufferUpdateAfterBind?: number;
+  descriptorBindingUpdateUnusedWhilePending?: number;
+  descriptorBindingPartiallyBound?: number;
+  descriptorBindingVariableDescriptorCount?: number;
+  runtimeDescriptorArray?: number;
+}
+
+declare var VkPhysicalDeviceDescriptorIndexingFeaturesEXT: {
+  prototype: VkPhysicalDeviceDescriptorIndexingFeaturesEXT;
+  new(param?: VkPhysicalDeviceDescriptorIndexingFeaturesEXTInitializer | null): VkPhysicalDeviceDescriptorIndexingFeaturesEXT;
+  sType: VkStructureType;
+  pNext: null;
+  shaderInputAttachmentArrayDynamicIndexing: number;
+  shaderUniformTexelBufferArrayDynamicIndexing: number;
+  shaderStorageTexelBufferArrayDynamicIndexing: number;
+  shaderUniformBufferArrayNonUniformIndexing: number;
+  shaderSampledImageArrayNonUniformIndexing: number;
+  shaderStorageBufferArrayNonUniformIndexing: number;
+  shaderStorageImageArrayNonUniformIndexing: number;
+  shaderInputAttachmentArrayNonUniformIndexing: number;
+  shaderUniformTexelBufferArrayNonUniformIndexing: number;
+  shaderStorageTexelBufferArrayNonUniformIndexing: number;
+  descriptorBindingUniformBufferUpdateAfterBind: number;
+  descriptorBindingSampledImageUpdateAfterBind: number;
+  descriptorBindingStorageImageUpdateAfterBind: number;
+  descriptorBindingStorageBufferUpdateAfterBind: number;
+  descriptorBindingUniformTexelBufferUpdateAfterBind: number;
+  descriptorBindingStorageTexelBufferUpdateAfterBind: number;
+  descriptorBindingUpdateUnusedWhilePending: number;
+  descriptorBindingPartiallyBound: number;
+  descriptorBindingVariableDescriptorCount: number;
+  runtimeDescriptorArray: number;
+}
+
+export interface VkPhysicalDeviceDescriptorIndexingFeaturesEXT {
+  sType: VkStructureType;
+  pNext: null;
+  shaderInputAttachmentArrayDynamicIndexing: number;
+  shaderUniformTexelBufferArrayDynamicIndexing: number;
+  shaderStorageTexelBufferArrayDynamicIndexing: number;
+  shaderUniformBufferArrayNonUniformIndexing: number;
+  shaderSampledImageArrayNonUniformIndexing: number;
+  shaderStorageBufferArrayNonUniformIndexing: number;
+  shaderStorageImageArrayNonUniformIndexing: number;
+  shaderInputAttachmentArrayNonUniformIndexing: number;
+  shaderUniformTexelBufferArrayNonUniformIndexing: number;
+  shaderStorageTexelBufferArrayNonUniformIndexing: number;
+  descriptorBindingUniformBufferUpdateAfterBind: number;
+  descriptorBindingSampledImageUpdateAfterBind: number;
+  descriptorBindingStorageImageUpdateAfterBind: number;
+  descriptorBindingStorageBufferUpdateAfterBind: number;
+  descriptorBindingUniformTexelBufferUpdateAfterBind: number;
+  descriptorBindingStorageTexelBufferUpdateAfterBind: number;
+  descriptorBindingUpdateUnusedWhilePending: number;
+  descriptorBindingPartiallyBound: number;
+  descriptorBindingVariableDescriptorCount: number;
+  runtimeDescriptorArray: number;
+}
+
+
+/** ## VkPipelineRasterizationConservativeStateCreateInfoEXT ## */
+interface VkPipelineRasterizationConservativeStateCreateInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: null;
+  conservativeRasterizationMode?: VkConservativeRasterizationModeEXT;
+  extraPrimitiveOverestimationSize?: number;
+}
+
+declare var VkPipelineRasterizationConservativeStateCreateInfoEXT: {
+  prototype: VkPipelineRasterizationConservativeStateCreateInfoEXT;
+  new(param?: VkPipelineRasterizationConservativeStateCreateInfoEXTInitializer | null): VkPipelineRasterizationConservativeStateCreateInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  conservativeRasterizationMode: VkConservativeRasterizationModeEXT;
+  extraPrimitiveOverestimationSize: number;
+}
+
+export interface VkPipelineRasterizationConservativeStateCreateInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  conservativeRasterizationMode: VkConservativeRasterizationModeEXT;
+  extraPrimitiveOverestimationSize: number;
+}
+
+
+/** ## VkPhysicalDeviceShaderCorePropertiesAMD ## */
+interface VkPhysicalDeviceShaderCorePropertiesAMDInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly shaderEngineCount?: number;
+  readonly shaderArraysPerEngineCount?: number;
+  readonly computeUnitsPerShaderArray?: number;
+  readonly simdPerComputeUnit?: number;
+  readonly wavefrontsPerSimd?: number;
+  readonly wavefrontSize?: number;
+  readonly sgprsPerSimd?: number;
+  readonly minSgprAllocation?: number;
+  readonly maxSgprAllocation?: number;
+  readonly sgprAllocationGranularity?: number;
+  readonly vgprsPerSimd?: number;
+  readonly minVgprAllocation?: number;
+  readonly maxVgprAllocation?: number;
+  readonly vgprAllocationGranularity?: number;
+}
+
+declare var VkPhysicalDeviceShaderCorePropertiesAMD: {
+  prototype: VkPhysicalDeviceShaderCorePropertiesAMD;
+  new(param?: VkPhysicalDeviceShaderCorePropertiesAMDInitializer | null): VkPhysicalDeviceShaderCorePropertiesAMD;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly shaderEngineCount: number;
+  readonly shaderArraysPerEngineCount: number;
+  readonly computeUnitsPerShaderArray: number;
+  readonly simdPerComputeUnit: number;
+  readonly wavefrontsPerSimd: number;
+  readonly wavefrontSize: number;
+  readonly sgprsPerSimd: number;
+  readonly minSgprAllocation: number;
+  readonly maxSgprAllocation: number;
+  readonly sgprAllocationGranularity: number;
+  readonly vgprsPerSimd: number;
+  readonly minVgprAllocation: number;
+  readonly maxVgprAllocation: number;
+  readonly vgprAllocationGranularity: number;
+}
+
+export interface VkPhysicalDeviceShaderCorePropertiesAMD {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly shaderEngineCount: number;
+  readonly shaderArraysPerEngineCount: number;
+  readonly computeUnitsPerShaderArray: number;
+  readonly simdPerComputeUnit: number;
+  readonly wavefrontsPerSimd: number;
+  readonly wavefrontSize: number;
+  readonly sgprsPerSimd: number;
+  readonly minSgprAllocation: number;
+  readonly maxSgprAllocation: number;
+  readonly sgprAllocationGranularity: number;
+  readonly vgprsPerSimd: number;
+  readonly minVgprAllocation: number;
+  readonly maxVgprAllocation: number;
+  readonly vgprAllocationGranularity: number;
+}
+
+
+/** ## VkPhysicalDeviceConservativeRasterizationPropertiesEXT ## */
+interface VkPhysicalDeviceConservativeRasterizationPropertiesEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  primitiveOverestimationSize?: number;
+  maxExtraPrimitiveOverestimationSize?: number;
+  extraPrimitiveOverestimationSizeGranularity?: number;
+  primitiveUnderestimation?: number;
+  conservativePointAndLineRasterization?: number;
+  degenerateTrianglesRasterized?: number;
+  degenerateLinesRasterized?: number;
+  fullyCoveredFragmentShaderInputVariable?: number;
+  conservativeRasterizationPostDepthCoverage?: number;
+}
+
+declare var VkPhysicalDeviceConservativeRasterizationPropertiesEXT: {
+  prototype: VkPhysicalDeviceConservativeRasterizationPropertiesEXT;
+  new(param?: VkPhysicalDeviceConservativeRasterizationPropertiesEXTInitializer | null): VkPhysicalDeviceConservativeRasterizationPropertiesEXT;
+  sType: VkStructureType;
+  pNext: null;
+  primitiveOverestimationSize: number;
+  maxExtraPrimitiveOverestimationSize: number;
+  extraPrimitiveOverestimationSizeGranularity: number;
+  primitiveUnderestimation: number;
+  conservativePointAndLineRasterization: number;
+  degenerateTrianglesRasterized: number;
+  degenerateLinesRasterized: number;
+  fullyCoveredFragmentShaderInputVariable: number;
+  conservativeRasterizationPostDepthCoverage: number;
+}
+
+export interface VkPhysicalDeviceConservativeRasterizationPropertiesEXT {
+  sType: VkStructureType;
+  pNext: null;
+  primitiveOverestimationSize: number;
+  maxExtraPrimitiveOverestimationSize: number;
+  extraPrimitiveOverestimationSizeGranularity: number;
+  primitiveUnderestimation: number;
+  conservativePointAndLineRasterization: number;
+  degenerateTrianglesRasterized: number;
+  degenerateLinesRasterized: number;
+  fullyCoveredFragmentShaderInputVariable: number;
+  conservativeRasterizationPostDepthCoverage: number;
+}
+
+
+/** ## VkPhysicalDeviceExternalMemoryHostPropertiesEXT ## */
+interface VkPhysicalDeviceExternalMemoryHostPropertiesEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  minImportedHostPointerAlignment?: number;
+}
+
+declare var VkPhysicalDeviceExternalMemoryHostPropertiesEXT: {
+  prototype: VkPhysicalDeviceExternalMemoryHostPropertiesEXT;
+  new(param?: VkPhysicalDeviceExternalMemoryHostPropertiesEXTInitializer | null): VkPhysicalDeviceExternalMemoryHostPropertiesEXT;
+  sType: VkStructureType;
+  pNext: null;
+  minImportedHostPointerAlignment: number;
+}
+
+export interface VkPhysicalDeviceExternalMemoryHostPropertiesEXT {
+  sType: VkStructureType;
+  pNext: null;
+  minImportedHostPointerAlignment: number;
+}
+
+
+/** ## VkMemoryHostPointerPropertiesEXT ## */
+interface VkMemoryHostPointerPropertiesEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  memoryTypeBits?: number;
+}
+
+declare var VkMemoryHostPointerPropertiesEXT: {
+  prototype: VkMemoryHostPointerPropertiesEXT;
+  new(param?: VkMemoryHostPointerPropertiesEXTInitializer | null): VkMemoryHostPointerPropertiesEXT;
+  sType: VkStructureType;
+  pNext: null;
+  memoryTypeBits: number;
+}
+
+export interface VkMemoryHostPointerPropertiesEXT {
+  sType: VkStructureType;
+  pNext: null;
+  memoryTypeBits: number;
+}
+
+
+/** ## VkImportMemoryHostPointerInfoEXT ## */
+interface VkImportMemoryHostPointerInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  handleType?: VkExternalMemoryHandleTypeFlagBits;
+  pHostPointer?: null;
+}
+
+declare var VkImportMemoryHostPointerInfoEXT: {
+  prototype: VkImportMemoryHostPointerInfoEXT;
+  new(param?: VkImportMemoryHostPointerInfoEXTInitializer | null): VkImportMemoryHostPointerInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  handleType: VkExternalMemoryHandleTypeFlagBits;
+  pHostPointer: null;
+}
+
+export interface VkImportMemoryHostPointerInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  handleType: VkExternalMemoryHandleTypeFlagBits;
+  pHostPointer: null;
+}
+
+
+/** ## VkDebugUtilsObjectNameInfoEXT ## */
+interface VkDebugUtilsObjectNameInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  objectType?: VkObjectType;
+  objectHandle?: number;
+  pObjectName?: string | null;
+}
+
+declare var VkDebugUtilsObjectNameInfoEXT: {
+  prototype: VkDebugUtilsObjectNameInfoEXT;
+  new(param?: VkDebugUtilsObjectNameInfoEXTInitializer | null): VkDebugUtilsObjectNameInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  objectType: VkObjectType;
+  objectHandle: number;
+  pObjectName: string | null;
+}
+
+export interface VkDebugUtilsObjectNameInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  objectType: VkObjectType;
+  objectHandle: number;
+  pObjectName: string | null;
+}
+
+
+/** ## VkDebugUtilsLabelEXT ## */
+interface VkDebugUtilsLabelEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  pLabelName?: string | null;
+  color?: number[] | null;
+}
+
+declare var VkDebugUtilsLabelEXT: {
+  prototype: VkDebugUtilsLabelEXT;
+  new(param?: VkDebugUtilsLabelEXTInitializer | null): VkDebugUtilsLabelEXT;
+  sType: VkStructureType;
+  pNext: null;
+  pLabelName: string | null;
+  color: number[] | null;
+}
+
+export interface VkDebugUtilsLabelEXT {
+  sType: VkStructureType;
+  pNext: null;
+  pLabelName: string | null;
+  color: number[] | null;
+}
+
+
+/** ## VkDebugUtilsMessengerCallbackDataEXT ## */
+interface VkDebugUtilsMessengerCallbackDataEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: null;
+  pMessageIdName?: string | null;
+  messageIdNumber?: number;
+  pMessage?: string | null;
+  queueLabelCount?: number;
+  pQueueLabels?: VkDebugUtilsLabelEXT[] | null;
+  cmdBufLabelCount?: number;
+  pCmdBufLabels?: VkDebugUtilsLabelEXT[] | null;
+  objectCount?: number;
+  pObjects?: VkDebugUtilsObjectNameInfoEXT[] | null;
+}
+
+declare var VkDebugUtilsMessengerCallbackDataEXT: {
+  prototype: VkDebugUtilsMessengerCallbackDataEXT;
+  new(param?: VkDebugUtilsMessengerCallbackDataEXTInitializer | null): VkDebugUtilsMessengerCallbackDataEXT;
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  pMessageIdName: string | null;
+  messageIdNumber: number;
+  pMessage: string | null;
+  queueLabelCount: number;
+  pQueueLabels: VkDebugUtilsLabelEXT[] | null;
+  cmdBufLabelCount: number;
+  pCmdBufLabels: VkDebugUtilsLabelEXT[] | null;
+  objectCount: number;
+  pObjects: VkDebugUtilsObjectNameInfoEXT[] | null;
+}
+
+export interface VkDebugUtilsMessengerCallbackDataEXT {
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  pMessageIdName: string | null;
+  messageIdNumber: number;
+  pMessage: string | null;
+  queueLabelCount: number;
+  pQueueLabels: VkDebugUtilsLabelEXT[] | null;
+  cmdBufLabelCount: number;
+  pCmdBufLabels: VkDebugUtilsLabelEXT[] | null;
+  objectCount: number;
+  pObjects: VkDebugUtilsObjectNameInfoEXT[] | null;
+}
+
+
+/** ## VkDebugUtilsMessengerCreateInfoEXT ## */
+interface VkDebugUtilsMessengerCreateInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: null;
+  messageSeverity?: VkDebugUtilsMessageSeverityFlagBitsEXT;
+  messageType?: VkDebugUtilsMessageTypeFlagBitsEXT;
+  pfnUserCallback?: null;
+  pUserData?: null;
+}
+
+declare var VkDebugUtilsMessengerCreateInfoEXT: {
+  prototype: VkDebugUtilsMessengerCreateInfoEXT;
+  new(param?: VkDebugUtilsMessengerCreateInfoEXTInitializer | null): VkDebugUtilsMessengerCreateInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  messageSeverity: VkDebugUtilsMessageSeverityFlagBitsEXT;
+  messageType: VkDebugUtilsMessageTypeFlagBitsEXT;
+  pfnUserCallback: null;
+  pUserData: null;
+}
+
+export interface VkDebugUtilsMessengerCreateInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  messageSeverity: VkDebugUtilsMessageSeverityFlagBitsEXT;
+  messageType: VkDebugUtilsMessageTypeFlagBitsEXT;
+  pfnUserCallback: null;
+  pUserData: null;
+}
+
+
+/** ## VkDebugUtilsObjectTagInfoEXT ## */
+interface VkDebugUtilsObjectTagInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  objectType?: VkObjectType;
+  objectHandle?: number;
+  tagName?: number;
+  tagSize?: number;
+  pTag?: null;
+}
+
+declare var VkDebugUtilsObjectTagInfoEXT: {
+  prototype: VkDebugUtilsObjectTagInfoEXT;
+  new(param?: VkDebugUtilsObjectTagInfoEXTInitializer | null): VkDebugUtilsObjectTagInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  objectType: VkObjectType;
+  objectHandle: number;
+  tagName: number;
+  tagSize: number;
+  pTag: null;
+}
+
+export interface VkDebugUtilsObjectTagInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  objectType: VkObjectType;
+  objectHandle: number;
+  tagName: number;
+  tagSize: number;
+  pTag: null;
+}
+
+
+/** ## VkDeviceQueueGlobalPriorityCreateInfoEXT ## */
+interface VkDeviceQueueGlobalPriorityCreateInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  globalPriority?: VkQueueGlobalPriorityEXT;
+}
+
+declare var VkDeviceQueueGlobalPriorityCreateInfoEXT: {
+  prototype: VkDeviceQueueGlobalPriorityCreateInfoEXT;
+  new(param?: VkDeviceQueueGlobalPriorityCreateInfoEXTInitializer | null): VkDeviceQueueGlobalPriorityCreateInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  globalPriority: VkQueueGlobalPriorityEXT;
+}
+
+export interface VkDeviceQueueGlobalPriorityCreateInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  globalPriority: VkQueueGlobalPriorityEXT;
+}
+
+
+/** ## VkShaderResourceUsageAMD ## */
+interface VkShaderResourceUsageAMDInitializer {
+  readonly numUsedVgprs?: number;
+  readonly numUsedSgprs?: number;
+  readonly ldsSizePerLocalWorkGroup?: number;
+  readonly ldsUsageSizeInBytes?: number;
+  readonly scratchMemUsageInBytes?: number;
+}
+
+declare var VkShaderResourceUsageAMD: {
+  prototype: VkShaderResourceUsageAMD;
+  new(param?: VkShaderResourceUsageAMDInitializer | null): VkShaderResourceUsageAMD;
+  readonly numUsedVgprs: number;
+  readonly numUsedSgprs: number;
+  readonly ldsSizePerLocalWorkGroup: number;
+  readonly ldsUsageSizeInBytes: number;
+  readonly scratchMemUsageInBytes: number;
+}
+
+export interface VkShaderResourceUsageAMD {
+  readonly numUsedVgprs: number;
+  readonly numUsedSgprs: number;
+  readonly ldsSizePerLocalWorkGroup: number;
+  readonly ldsUsageSizeInBytes: number;
+  readonly scratchMemUsageInBytes: number;
+}
+
+
+/** ## VkShaderStatisticsInfoAMD ## */
+interface VkShaderStatisticsInfoAMDInitializer {
+  readonly shaderStageMask?: VkShaderStageFlagBits;
+  readonly resourceUsage?: VkShaderResourceUsageAMD | null;
+  readonly numPhysicalVgprs?: number;
+  readonly numPhysicalSgprs?: number;
+  readonly numAvailableVgprs?: number;
+  readonly numAvailableSgprs?: number;
+  readonly computeWorkGroupSize?: number[] | null;
+}
+
+declare var VkShaderStatisticsInfoAMD: {
+  prototype: VkShaderStatisticsInfoAMD;
+  new(param?: VkShaderStatisticsInfoAMDInitializer | null): VkShaderStatisticsInfoAMD;
+  readonly shaderStageMask: VkShaderStageFlagBits;
+  readonly resourceUsage: VkShaderResourceUsageAMD | null;
+  readonly numPhysicalVgprs: number;
+  readonly numPhysicalSgprs: number;
+  readonly numAvailableVgprs: number;
+  readonly numAvailableSgprs: number;
+  readonly computeWorkGroupSize: number[] | null;
+}
+
+export interface VkShaderStatisticsInfoAMD {
+  readonly shaderStageMask: VkShaderStageFlagBits;
+  readonly resourceUsage: VkShaderResourceUsageAMD | null;
+  readonly numPhysicalVgprs: number;
+  readonly numPhysicalSgprs: number;
+  readonly numAvailableVgprs: number;
+  readonly numAvailableSgprs: number;
+  readonly computeWorkGroupSize: number[] | null;
+}
+
+
+/** ## VkPhysicalDeviceShaderDrawParameterFeatures ## */
+interface VkPhysicalDeviceShaderDrawParameterFeaturesInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  shaderDrawParameters?: number;
+}
+
+declare var VkPhysicalDeviceShaderDrawParameterFeatures: {
+  prototype: VkPhysicalDeviceShaderDrawParameterFeatures;
+  new(param?: VkPhysicalDeviceShaderDrawParameterFeaturesInitializer | null): VkPhysicalDeviceShaderDrawParameterFeatures;
+  sType: VkStructureType;
+  pNext: null;
+  shaderDrawParameters: number;
+}
+
+export interface VkPhysicalDeviceShaderDrawParameterFeatures {
+  sType: VkStructureType;
+  pNext: null;
+  shaderDrawParameters: number;
+}
+
+
+/** ## VkDescriptorSetLayoutSupportKHR ## */
+interface VkDescriptorSetLayoutSupportKHRInitializer {
+
+}
+
+declare var VkDescriptorSetLayoutSupportKHR: {
+  prototype: VkDescriptorSetLayoutSupportKHR;
+  new(param?: VkDescriptorSetLayoutSupportKHRInitializer | null): VkDescriptorSetLayoutSupportKHR;
+
+}
+
+export interface VkDescriptorSetLayoutSupportKHR {
+
+}
+
+
+/** ## VkDescriptorSetLayoutSupport ## */
+interface VkDescriptorSetLayoutSupportInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly supported?: number;
+}
+
+declare var VkDescriptorSetLayoutSupport: {
+  prototype: VkDescriptorSetLayoutSupport;
+  new(param?: VkDescriptorSetLayoutSupportInitializer | null): VkDescriptorSetLayoutSupport;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly supported: number;
+}
+
+export interface VkDescriptorSetLayoutSupport {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly supported: number;
+}
+
+
+/** ## VkPhysicalDeviceMaintenance3PropertiesKHR ## */
+interface VkPhysicalDeviceMaintenance3PropertiesKHRInitializer {
+
+}
+
+declare var VkPhysicalDeviceMaintenance3PropertiesKHR: {
+  prototype: VkPhysicalDeviceMaintenance3PropertiesKHR;
+  new(param?: VkPhysicalDeviceMaintenance3PropertiesKHRInitializer | null): VkPhysicalDeviceMaintenance3PropertiesKHR;
+
+}
+
+export interface VkPhysicalDeviceMaintenance3PropertiesKHR {
+
+}
+
+
+/** ## VkPhysicalDeviceMaintenance3Properties ## */
+interface VkPhysicalDeviceMaintenance3PropertiesInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly maxPerSetDescriptors?: number;
+  readonly maxMemoryAllocationSize?: number;
+}
+
+declare var VkPhysicalDeviceMaintenance3Properties: {
+  prototype: VkPhysicalDeviceMaintenance3Properties;
+  new(param?: VkPhysicalDeviceMaintenance3PropertiesInitializer | null): VkPhysicalDeviceMaintenance3Properties;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly maxPerSetDescriptors: number;
+  readonly maxMemoryAllocationSize: number;
+}
+
+export interface VkPhysicalDeviceMaintenance3Properties {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly maxPerSetDescriptors: number;
+  readonly maxMemoryAllocationSize: number;
+}
+
+
+/** ## VkShaderModuleValidationCacheCreateInfoEXT ## */
+interface VkShaderModuleValidationCacheCreateInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  validationCache?: VkValidationCacheEXT | null;
+}
+
+declare var VkShaderModuleValidationCacheCreateInfoEXT: {
+  prototype: VkShaderModuleValidationCacheCreateInfoEXT;
+  new(param?: VkShaderModuleValidationCacheCreateInfoEXTInitializer | null): VkShaderModuleValidationCacheCreateInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  validationCache: VkValidationCacheEXT | null;
+}
+
+export interface VkShaderModuleValidationCacheCreateInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  validationCache: VkValidationCacheEXT | null;
+}
+
+
+/** ## VkValidationCacheCreateInfoEXT ## */
+interface VkValidationCacheCreateInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: null;
+  initialDataSize?: number;
+  pInitialData?: null;
+}
+
+declare var VkValidationCacheCreateInfoEXT: {
+  prototype: VkValidationCacheCreateInfoEXT;
+  new(param?: VkValidationCacheCreateInfoEXTInitializer | null): VkValidationCacheCreateInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  initialDataSize: number;
+  pInitialData: null;
+}
+
+export interface VkValidationCacheCreateInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  initialDataSize: number;
+  pInitialData: null;
+}
+
+
+/** ## VkImageFormatListCreateInfoKHR ## */
+interface VkImageFormatListCreateInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  viewFormatCount?: number;
+  pViewFormats?: Int32Array | null;
+}
+
+declare var VkImageFormatListCreateInfoKHR: {
+  prototype: VkImageFormatListCreateInfoKHR;
+  new(param?: VkImageFormatListCreateInfoKHRInitializer | null): VkImageFormatListCreateInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  viewFormatCount: number;
+  pViewFormats: Int32Array | null;
+}
+
+export interface VkImageFormatListCreateInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  viewFormatCount: number;
+  pViewFormats: Int32Array | null;
+}
+
+
+/** ## VkPipelineCoverageModulationStateCreateInfoNV ## */
+interface VkPipelineCoverageModulationStateCreateInfoNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: null;
+  coverageModulationMode?: VkCoverageModulationModeNV;
+  coverageModulationTableEnable?: number;
+  coverageModulationTableCount?: number;
+  pCoverageModulationTable?: Float32Array | null;
+}
+
+declare var VkPipelineCoverageModulationStateCreateInfoNV: {
+  prototype: VkPipelineCoverageModulationStateCreateInfoNV;
+  new(param?: VkPipelineCoverageModulationStateCreateInfoNVInitializer | null): VkPipelineCoverageModulationStateCreateInfoNV;
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  coverageModulationMode: VkCoverageModulationModeNV;
+  coverageModulationTableEnable: number;
+  coverageModulationTableCount: number;
+  pCoverageModulationTable: Float32Array | null;
+}
+
+export interface VkPipelineCoverageModulationStateCreateInfoNV {
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  coverageModulationMode: VkCoverageModulationModeNV;
+  coverageModulationTableEnable: number;
+  coverageModulationTableCount: number;
+  pCoverageModulationTable: Float32Array | null;
+}
+
+
+/** ## VkDescriptorPoolInlineUniformBlockCreateInfoEXT ## */
+interface VkDescriptorPoolInlineUniformBlockCreateInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  maxInlineUniformBlockBindings?: number;
+}
+
+declare var VkDescriptorPoolInlineUniformBlockCreateInfoEXT: {
+  prototype: VkDescriptorPoolInlineUniformBlockCreateInfoEXT;
+  new(param?: VkDescriptorPoolInlineUniformBlockCreateInfoEXTInitializer | null): VkDescriptorPoolInlineUniformBlockCreateInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  maxInlineUniformBlockBindings: number;
+}
+
+export interface VkDescriptorPoolInlineUniformBlockCreateInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  maxInlineUniformBlockBindings: number;
+}
+
+
+/** ## VkWriteDescriptorSetInlineUniformBlockEXT ## */
+interface VkWriteDescriptorSetInlineUniformBlockEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  dataSize?: number;
+  pData?: null;
+}
+
+declare var VkWriteDescriptorSetInlineUniformBlockEXT: {
+  prototype: VkWriteDescriptorSetInlineUniformBlockEXT;
+  new(param?: VkWriteDescriptorSetInlineUniformBlockEXTInitializer | null): VkWriteDescriptorSetInlineUniformBlockEXT;
+  sType: VkStructureType;
+  pNext: null;
+  dataSize: number;
+  pData: null;
+}
+
+export interface VkWriteDescriptorSetInlineUniformBlockEXT {
+  sType: VkStructureType;
+  pNext: null;
+  dataSize: number;
+  pData: null;
+}
+
+
+/** ## VkPhysicalDeviceInlineUniformBlockPropertiesEXT ## */
+interface VkPhysicalDeviceInlineUniformBlockPropertiesEXTInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly maxInlineUniformBlockSize?: number;
+  readonly maxPerStageDescriptorInlineUniformBlocks?: number;
+  readonly maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks?: number;
+  readonly maxDescriptorSetInlineUniformBlocks?: number;
+  readonly maxDescriptorSetUpdateAfterBindInlineUniformBlocks?: number;
+}
+
+declare var VkPhysicalDeviceInlineUniformBlockPropertiesEXT: {
+  prototype: VkPhysicalDeviceInlineUniformBlockPropertiesEXT;
+  new(param?: VkPhysicalDeviceInlineUniformBlockPropertiesEXTInitializer | null): VkPhysicalDeviceInlineUniformBlockPropertiesEXT;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly maxInlineUniformBlockSize: number;
+  readonly maxPerStageDescriptorInlineUniformBlocks: number;
+  readonly maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks: number;
+  readonly maxDescriptorSetInlineUniformBlocks: number;
+  readonly maxDescriptorSetUpdateAfterBindInlineUniformBlocks: number;
+}
+
+export interface VkPhysicalDeviceInlineUniformBlockPropertiesEXT {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly maxInlineUniformBlockSize: number;
+  readonly maxPerStageDescriptorInlineUniformBlocks: number;
+  readonly maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks: number;
+  readonly maxDescriptorSetInlineUniformBlocks: number;
+  readonly maxDescriptorSetUpdateAfterBindInlineUniformBlocks: number;
+}
+
+
+/** ## VkPhysicalDeviceInlineUniformBlockFeaturesEXT ## */
+interface VkPhysicalDeviceInlineUniformBlockFeaturesEXTInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly inlineUniformBlock?: number;
+  readonly descriptorBindingInlineUniformBlockUpdateAfterBind?: number;
+}
+
+declare var VkPhysicalDeviceInlineUniformBlockFeaturesEXT: {
+  prototype: VkPhysicalDeviceInlineUniformBlockFeaturesEXT;
+  new(param?: VkPhysicalDeviceInlineUniformBlockFeaturesEXTInitializer | null): VkPhysicalDeviceInlineUniformBlockFeaturesEXT;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly inlineUniformBlock: number;
+  readonly descriptorBindingInlineUniformBlockUpdateAfterBind: number;
+}
+
+export interface VkPhysicalDeviceInlineUniformBlockFeaturesEXT {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly inlineUniformBlock: number;
+  readonly descriptorBindingInlineUniformBlockUpdateAfterBind: number;
+}
+
+
+/** ## VkPipelineColorBlendAdvancedStateCreateInfoEXT ## */
+interface VkPipelineColorBlendAdvancedStateCreateInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  srcPremultiplied?: number;
+  dstPremultiplied?: number;
+  blendOverlap?: VkBlendOverlapEXT;
+}
+
+declare var VkPipelineColorBlendAdvancedStateCreateInfoEXT: {
+  prototype: VkPipelineColorBlendAdvancedStateCreateInfoEXT;
+  new(param?: VkPipelineColorBlendAdvancedStateCreateInfoEXTInitializer | null): VkPipelineColorBlendAdvancedStateCreateInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  srcPremultiplied: number;
+  dstPremultiplied: number;
+  blendOverlap: VkBlendOverlapEXT;
+}
+
+export interface VkPipelineColorBlendAdvancedStateCreateInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  srcPremultiplied: number;
+  dstPremultiplied: number;
+  blendOverlap: VkBlendOverlapEXT;
+}
+
+
+/** ## VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT ## */
+interface VkPhysicalDeviceBlendOperationAdvancedPropertiesEXTInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly advancedBlendMaxColorAttachments?: number;
+  readonly advancedBlendIndependentBlend?: number;
+  readonly advancedBlendNonPremultipliedSrcColor?: number;
+  readonly advancedBlendNonPremultipliedDstColor?: number;
+  readonly advancedBlendCorrelatedOverlap?: number;
+  readonly advancedBlendAllOperations?: number;
+}
+
+declare var VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT: {
+  prototype: VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT;
+  new(param?: VkPhysicalDeviceBlendOperationAdvancedPropertiesEXTInitializer | null): VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly advancedBlendMaxColorAttachments: number;
+  readonly advancedBlendIndependentBlend: number;
+  readonly advancedBlendNonPremultipliedSrcColor: number;
+  readonly advancedBlendNonPremultipliedDstColor: number;
+  readonly advancedBlendCorrelatedOverlap: number;
+  readonly advancedBlendAllOperations: number;
+}
+
+export interface VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly advancedBlendMaxColorAttachments: number;
+  readonly advancedBlendIndependentBlend: number;
+  readonly advancedBlendNonPremultipliedSrcColor: number;
+  readonly advancedBlendNonPremultipliedDstColor: number;
+  readonly advancedBlendCorrelatedOverlap: number;
+  readonly advancedBlendAllOperations: number;
+}
+
+
+/** ## VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT ## */
+interface VkPhysicalDeviceBlendOperationAdvancedFeaturesEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  advancedBlendCoherentOperations?: number;
+}
+
+declare var VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT: {
+  prototype: VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT;
+  new(param?: VkPhysicalDeviceBlendOperationAdvancedFeaturesEXTInitializer | null): VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT;
+  sType: VkStructureType;
+  pNext: null;
+  advancedBlendCoherentOperations: number;
+}
+
+export interface VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT {
+  sType: VkStructureType;
+  pNext: null;
+  advancedBlendCoherentOperations: number;
+}
+
+
+/** ## VkSamplerReductionModeCreateInfoEXT ## */
+interface VkSamplerReductionModeCreateInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  reductionMode?: VkSamplerReductionModeEXT;
+}
+
+declare var VkSamplerReductionModeCreateInfoEXT: {
+  prototype: VkSamplerReductionModeCreateInfoEXT;
+  new(param?: VkSamplerReductionModeCreateInfoEXTInitializer | null): VkSamplerReductionModeCreateInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  reductionMode: VkSamplerReductionModeEXT;
+}
+
+export interface VkSamplerReductionModeCreateInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  reductionMode: VkSamplerReductionModeEXT;
+}
+
+
+/** ## VkMultisamplePropertiesEXT ## */
+interface VkMultisamplePropertiesEXTInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly maxSampleLocationGridSize?: VkExtent2D | null;
+}
+
+declare var VkMultisamplePropertiesEXT: {
+  prototype: VkMultisamplePropertiesEXT;
+  new(param?: VkMultisamplePropertiesEXTInitializer | null): VkMultisamplePropertiesEXT;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly maxSampleLocationGridSize: VkExtent2D | null;
+}
+
+export interface VkMultisamplePropertiesEXT {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly maxSampleLocationGridSize: VkExtent2D | null;
+}
+
+
+/** ## VkPhysicalDeviceSampleLocationsPropertiesEXT ## */
+interface VkPhysicalDeviceSampleLocationsPropertiesEXTInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly sampleLocationSampleCounts?: VkSampleCountFlagBits;
+  readonly maxSampleLocationGridSize?: VkExtent2D | null;
+  readonly sampleLocationCoordinateRange?: number[] | null;
+  readonly sampleLocationSubPixelBits?: number;
+  readonly variableSampleLocations?: number;
+}
+
+declare var VkPhysicalDeviceSampleLocationsPropertiesEXT: {
+  prototype: VkPhysicalDeviceSampleLocationsPropertiesEXT;
+  new(param?: VkPhysicalDeviceSampleLocationsPropertiesEXTInitializer | null): VkPhysicalDeviceSampleLocationsPropertiesEXT;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly sampleLocationSampleCounts: VkSampleCountFlagBits;
+  readonly maxSampleLocationGridSize: VkExtent2D | null;
+  readonly sampleLocationCoordinateRange: number[] | null;
+  readonly sampleLocationSubPixelBits: number;
+  readonly variableSampleLocations: number;
+}
+
+export interface VkPhysicalDeviceSampleLocationsPropertiesEXT {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly sampleLocationSampleCounts: VkSampleCountFlagBits;
+  readonly maxSampleLocationGridSize: VkExtent2D | null;
+  readonly sampleLocationCoordinateRange: number[] | null;
+  readonly sampleLocationSubPixelBits: number;
+  readonly variableSampleLocations: number;
+}
+
+
+/** ## VkSampleLocationEXT ## */
+interface VkSampleLocationEXTInitializer {
+  x?: number;
+  y?: number;
+}
+
+declare var VkSampleLocationEXT: {
+  prototype: VkSampleLocationEXT;
+  new(param?: VkSampleLocationEXTInitializer | null): VkSampleLocationEXT;
+  x: number;
+  y: number;
+}
+
+export interface VkSampleLocationEXT {
+  x: number;
+  y: number;
+}
+
+
+/** ## VkSampleLocationsInfoEXT ## */
+interface VkSampleLocationsInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  sampleLocationsPerPixel?: VkSampleCountFlagBits;
+  sampleLocationGridSize?: VkExtent2D | null;
+  sampleLocationsCount?: number;
+  pSampleLocations?: VkSampleLocationEXT[] | null;
+}
+
+declare var VkSampleLocationsInfoEXT: {
+  prototype: VkSampleLocationsInfoEXT;
+  new(param?: VkSampleLocationsInfoEXTInitializer | null): VkSampleLocationsInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  sampleLocationsPerPixel: VkSampleCountFlagBits;
+  sampleLocationGridSize: VkExtent2D | null;
+  sampleLocationsCount: number;
+  pSampleLocations: VkSampleLocationEXT[] | null;
+}
+
+export interface VkSampleLocationsInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  sampleLocationsPerPixel: VkSampleCountFlagBits;
+  sampleLocationGridSize: VkExtent2D | null;
+  sampleLocationsCount: number;
+  pSampleLocations: VkSampleLocationEXT[] | null;
+}
+
+
+/** ## VkPipelineSampleLocationsStateCreateInfoEXT ## */
+interface VkPipelineSampleLocationsStateCreateInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  sampleLocationsEnable?: number;
+  sampleLocationsInfo?: VkSampleLocationsInfoEXT | null;
+}
+
+declare var VkPipelineSampleLocationsStateCreateInfoEXT: {
+  prototype: VkPipelineSampleLocationsStateCreateInfoEXT;
+  new(param?: VkPipelineSampleLocationsStateCreateInfoEXTInitializer | null): VkPipelineSampleLocationsStateCreateInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  sampleLocationsEnable: number;
+  sampleLocationsInfo: VkSampleLocationsInfoEXT | null;
+}
+
+export interface VkPipelineSampleLocationsStateCreateInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  sampleLocationsEnable: number;
+  sampleLocationsInfo: VkSampleLocationsInfoEXT | null;
+}
+
+
+/** ## VkSubpassSampleLocationsEXT ## */
+interface VkSubpassSampleLocationsEXTInitializer {
+  subpassIndex?: number;
+  sampleLocationsInfo?: VkSampleLocationsInfoEXT | null;
+}
+
+declare var VkSubpassSampleLocationsEXT: {
+  prototype: VkSubpassSampleLocationsEXT;
+  new(param?: VkSubpassSampleLocationsEXTInitializer | null): VkSubpassSampleLocationsEXT;
+  subpassIndex: number;
+  sampleLocationsInfo: VkSampleLocationsInfoEXT | null;
+}
+
+export interface VkSubpassSampleLocationsEXT {
+  subpassIndex: number;
+  sampleLocationsInfo: VkSampleLocationsInfoEXT | null;
+}
+
+
+/** ## VkAttachmentSampleLocationsEXT ## */
+interface VkAttachmentSampleLocationsEXTInitializer {
+  attachmentIndex?: number;
+  sampleLocationsInfo?: VkSampleLocationsInfoEXT | null;
+}
+
+declare var VkAttachmentSampleLocationsEXT: {
+  prototype: VkAttachmentSampleLocationsEXT;
+  new(param?: VkAttachmentSampleLocationsEXTInitializer | null): VkAttachmentSampleLocationsEXT;
+  attachmentIndex: number;
+  sampleLocationsInfo: VkSampleLocationsInfoEXT | null;
+}
+
+export interface VkAttachmentSampleLocationsEXT {
+  attachmentIndex: number;
+  sampleLocationsInfo: VkSampleLocationsInfoEXT | null;
+}
+
+
+/** ## VkRenderPassSampleLocationsBeginInfoEXT ## */
+interface VkRenderPassSampleLocationsBeginInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  attachmentInitialSampleLocationsCount?: number;
+  pAttachmentInitialSampleLocations?: VkAttachmentSampleLocationsEXT[] | null;
+  postSubpassSampleLocationsCount?: number;
+  pPostSubpassSampleLocations?: VkSubpassSampleLocationsEXT[] | null;
+}
+
+declare var VkRenderPassSampleLocationsBeginInfoEXT: {
+  prototype: VkRenderPassSampleLocationsBeginInfoEXT;
+  new(param?: VkRenderPassSampleLocationsBeginInfoEXTInitializer | null): VkRenderPassSampleLocationsBeginInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  attachmentInitialSampleLocationsCount: number;
+  pAttachmentInitialSampleLocations: VkAttachmentSampleLocationsEXT[] | null;
+  postSubpassSampleLocationsCount: number;
+  pPostSubpassSampleLocations: VkSubpassSampleLocationsEXT[] | null;
+}
+
+export interface VkRenderPassSampleLocationsBeginInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  attachmentInitialSampleLocationsCount: number;
+  pAttachmentInitialSampleLocations: VkAttachmentSampleLocationsEXT[] | null;
+  postSubpassSampleLocationsCount: number;
+  pPostSubpassSampleLocations: VkSubpassSampleLocationsEXT[] | null;
+}
+
+
+/** ## VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT ## */
+interface VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXTInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly filterMinmaxSingleComponentFormats?: number;
+  readonly filterMinmaxImageComponentMapping?: number;
+}
+
+declare var VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT: {
+  prototype: VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT;
+  new(param?: VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXTInitializer | null): VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly filterMinmaxSingleComponentFormats: number;
+  readonly filterMinmaxImageComponentMapping: number;
+}
+
+export interface VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly filterMinmaxSingleComponentFormats: number;
+  readonly filterMinmaxImageComponentMapping: number;
+}
+
+
+/** ## VkPipelineCoverageToColorStateCreateInfoNV ## */
+interface VkPipelineCoverageToColorStateCreateInfoNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: null;
+  coverageToColorEnable?: number;
+  coverageToColorLocation?: number;
+}
+
+declare var VkPipelineCoverageToColorStateCreateInfoNV: {
+  prototype: VkPipelineCoverageToColorStateCreateInfoNV;
+  new(param?: VkPipelineCoverageToColorStateCreateInfoNVInitializer | null): VkPipelineCoverageToColorStateCreateInfoNV;
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  coverageToColorEnable: number;
+  coverageToColorLocation: number;
+}
+
+export interface VkPipelineCoverageToColorStateCreateInfoNV {
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  coverageToColorEnable: number;
+  coverageToColorLocation: number;
+}
+
+
+/** ## VkDeviceQueueInfo2 ## */
+interface VkDeviceQueueInfo2Initializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: VkDeviceQueueCreateFlagBits;
+  queueFamilyIndex?: number;
+  queueIndex?: number;
+}
+
+declare var VkDeviceQueueInfo2: {
+  prototype: VkDeviceQueueInfo2;
+  new(param?: VkDeviceQueueInfo2Initializer | null): VkDeviceQueueInfo2;
+  sType: VkStructureType;
+  pNext: null;
+  flags: VkDeviceQueueCreateFlagBits;
+  queueFamilyIndex: number;
+  queueIndex: number;
+}
+
+export interface VkDeviceQueueInfo2 {
+  sType: VkStructureType;
+  pNext: null;
+  flags: VkDeviceQueueCreateFlagBits;
+  queueFamilyIndex: number;
+  queueIndex: number;
+}
+
+
+/** ## VkPhysicalDeviceProtectedMemoryProperties ## */
+interface VkPhysicalDeviceProtectedMemoryPropertiesInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  protectedNoFault?: number;
+}
+
+declare var VkPhysicalDeviceProtectedMemoryProperties: {
+  prototype: VkPhysicalDeviceProtectedMemoryProperties;
+  new(param?: VkPhysicalDeviceProtectedMemoryPropertiesInitializer | null): VkPhysicalDeviceProtectedMemoryProperties;
+  sType: VkStructureType;
+  pNext: null;
+  protectedNoFault: number;
+}
+
+export interface VkPhysicalDeviceProtectedMemoryProperties {
+  sType: VkStructureType;
+  pNext: null;
+  protectedNoFault: number;
+}
+
+
+/** ## VkPhysicalDeviceProtectedMemoryFeatures ## */
+interface VkPhysicalDeviceProtectedMemoryFeaturesInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  protectedMemory?: number;
+}
+
+declare var VkPhysicalDeviceProtectedMemoryFeatures: {
+  prototype: VkPhysicalDeviceProtectedMemoryFeatures;
+  new(param?: VkPhysicalDeviceProtectedMemoryFeaturesInitializer | null): VkPhysicalDeviceProtectedMemoryFeatures;
+  sType: VkStructureType;
+  pNext: null;
+  protectedMemory: number;
+}
+
+export interface VkPhysicalDeviceProtectedMemoryFeatures {
+  sType: VkStructureType;
+  pNext: null;
+  protectedMemory: number;
+}
+
+
+/** ## VkProtectedSubmitInfo ## */
+interface VkProtectedSubmitInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  protectedSubmit?: number;
+}
+
+declare var VkProtectedSubmitInfo: {
+  prototype: VkProtectedSubmitInfo;
+  new(param?: VkProtectedSubmitInfoInitializer | null): VkProtectedSubmitInfo;
+  sType: VkStructureType;
+  pNext: null;
+  protectedSubmit: number;
+}
+
+export interface VkProtectedSubmitInfo {
+  sType: VkStructureType;
+  pNext: null;
+  protectedSubmit: number;
+}
+
+
+/** ## VkConditionalRenderingBeginInfoEXT ## */
+interface VkConditionalRenderingBeginInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  buffer?: VkBuffer | null;
+  offset?: number;
+  flags?: VkConditionalRenderingFlagBitsEXT;
+}
+
+declare var VkConditionalRenderingBeginInfoEXT: {
+  prototype: VkConditionalRenderingBeginInfoEXT;
+  new(param?: VkConditionalRenderingBeginInfoEXTInitializer | null): VkConditionalRenderingBeginInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  buffer: VkBuffer | null;
+  offset: number;
+  flags: VkConditionalRenderingFlagBitsEXT;
+}
+
+export interface VkConditionalRenderingBeginInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  buffer: VkBuffer | null;
+  offset: number;
+  flags: VkConditionalRenderingFlagBitsEXT;
+}
+
+
+/** ## VkTextureLODGatherFormatPropertiesAMD ## */
+interface VkTextureLODGatherFormatPropertiesAMDInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly supportsTextureGatherLODBiasAMD?: number;
+}
+
+declare var VkTextureLODGatherFormatPropertiesAMD: {
+  prototype: VkTextureLODGatherFormatPropertiesAMD;
+  new(param?: VkTextureLODGatherFormatPropertiesAMDInitializer | null): VkTextureLODGatherFormatPropertiesAMD;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly supportsTextureGatherLODBiasAMD: number;
+}
+
+export interface VkTextureLODGatherFormatPropertiesAMD {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly supportsTextureGatherLODBiasAMD: number;
+}
+
+
+/** ## VkSamplerYcbcrConversionImageFormatPropertiesKHR ## */
+interface VkSamplerYcbcrConversionImageFormatPropertiesKHRInitializer {
+
+}
+
+declare var VkSamplerYcbcrConversionImageFormatPropertiesKHR: {
+  prototype: VkSamplerYcbcrConversionImageFormatPropertiesKHR;
+  new(param?: VkSamplerYcbcrConversionImageFormatPropertiesKHRInitializer | null): VkSamplerYcbcrConversionImageFormatPropertiesKHR;
+
+}
+
+export interface VkSamplerYcbcrConversionImageFormatPropertiesKHR {
+
+}
+
+
+/** ## VkSamplerYcbcrConversionImageFormatProperties ## */
+interface VkSamplerYcbcrConversionImageFormatPropertiesInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly combinedImageSamplerDescriptorCount?: number;
+}
+
+declare var VkSamplerYcbcrConversionImageFormatProperties: {
+  prototype: VkSamplerYcbcrConversionImageFormatProperties;
+  new(param?: VkSamplerYcbcrConversionImageFormatPropertiesInitializer | null): VkSamplerYcbcrConversionImageFormatProperties;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly combinedImageSamplerDescriptorCount: number;
+}
+
+export interface VkSamplerYcbcrConversionImageFormatProperties {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly combinedImageSamplerDescriptorCount: number;
+}
+
+
+/** ## VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR ## */
+interface VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHRInitializer {
+
+}
+
+declare var VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR: {
+  prototype: VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR;
+  new(param?: VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHRInitializer | null): VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR;
+
+}
+
+export interface VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR {
+
+}
+
+
+/** ## VkPhysicalDeviceSamplerYcbcrConversionFeatures ## */
+interface VkPhysicalDeviceSamplerYcbcrConversionFeaturesInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  samplerYcbcrConversion?: number;
+}
+
+declare var VkPhysicalDeviceSamplerYcbcrConversionFeatures: {
+  prototype: VkPhysicalDeviceSamplerYcbcrConversionFeatures;
+  new(param?: VkPhysicalDeviceSamplerYcbcrConversionFeaturesInitializer | null): VkPhysicalDeviceSamplerYcbcrConversionFeatures;
+  sType: VkStructureType;
+  pNext: null;
+  samplerYcbcrConversion: number;
+}
+
+export interface VkPhysicalDeviceSamplerYcbcrConversionFeatures {
+  sType: VkStructureType;
+  pNext: null;
+  samplerYcbcrConversion: number;
+}
+
+
+/** ## VkImagePlaneMemoryRequirementsInfoKHR ## */
+interface VkImagePlaneMemoryRequirementsInfoKHRInitializer {
+
+}
+
+declare var VkImagePlaneMemoryRequirementsInfoKHR: {
+  prototype: VkImagePlaneMemoryRequirementsInfoKHR;
+  new(param?: VkImagePlaneMemoryRequirementsInfoKHRInitializer | null): VkImagePlaneMemoryRequirementsInfoKHR;
+
+}
+
+export interface VkImagePlaneMemoryRequirementsInfoKHR {
+
+}
+
+
+/** ## VkImagePlaneMemoryRequirementsInfo ## */
+interface VkImagePlaneMemoryRequirementsInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  planeAspect?: VkImageAspectFlagBits;
+}
+
+declare var VkImagePlaneMemoryRequirementsInfo: {
+  prototype: VkImagePlaneMemoryRequirementsInfo;
+  new(param?: VkImagePlaneMemoryRequirementsInfoInitializer | null): VkImagePlaneMemoryRequirementsInfo;
+  sType: VkStructureType;
+  pNext: null;
+  planeAspect: VkImageAspectFlagBits;
+}
+
+export interface VkImagePlaneMemoryRequirementsInfo {
+  sType: VkStructureType;
+  pNext: null;
+  planeAspect: VkImageAspectFlagBits;
+}
+
+
+/** ## VkBindImagePlaneMemoryInfoKHR ## */
+interface VkBindImagePlaneMemoryInfoKHRInitializer {
+
+}
+
+declare var VkBindImagePlaneMemoryInfoKHR: {
+  prototype: VkBindImagePlaneMemoryInfoKHR;
+  new(param?: VkBindImagePlaneMemoryInfoKHRInitializer | null): VkBindImagePlaneMemoryInfoKHR;
+
+}
+
+export interface VkBindImagePlaneMemoryInfoKHR {
+
+}
+
+
 /** ## VkBindImagePlaneMemoryInfo ## */
 interface VkBindImagePlaneMemoryInfoInitializer {
   sType?: VkStructureType;
@@ -2900,6 +6014,5629 @@ export interface VkBindImagePlaneMemoryInfo {
   sType: VkStructureType;
   pNext: null;
   planeAspect: VkImageAspectFlagBits;
+}
+
+
+/** ## VkSamplerYcbcrConversionCreateInfoKHR ## */
+interface VkSamplerYcbcrConversionCreateInfoKHRInitializer {
+
+}
+
+declare var VkSamplerYcbcrConversionCreateInfoKHR: {
+  prototype: VkSamplerYcbcrConversionCreateInfoKHR;
+  new(param?: VkSamplerYcbcrConversionCreateInfoKHRInitializer | null): VkSamplerYcbcrConversionCreateInfoKHR;
+
+}
+
+export interface VkSamplerYcbcrConversionCreateInfoKHR {
+
+}
+
+
+/** ## VkComponentMapping ## */
+interface VkComponentMappingInitializer {
+  r?: VkComponentSwizzle;
+  g?: VkComponentSwizzle;
+  b?: VkComponentSwizzle;
+  a?: VkComponentSwizzle;
+}
+
+declare var VkComponentMapping: {
+  prototype: VkComponentMapping;
+  new(param?: VkComponentMappingInitializer | null): VkComponentMapping;
+  r: VkComponentSwizzle;
+  g: VkComponentSwizzle;
+  b: VkComponentSwizzle;
+  a: VkComponentSwizzle;
+}
+
+export interface VkComponentMapping {
+  r: VkComponentSwizzle;
+  g: VkComponentSwizzle;
+  b: VkComponentSwizzle;
+  a: VkComponentSwizzle;
+}
+
+
+/** ## VkSamplerYcbcrConversionCreateInfo ## */
+interface VkSamplerYcbcrConversionCreateInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  format?: VkFormat;
+  ycbcrModel?: VkSamplerYcbcrModelConversion;
+  ycbcrRange?: VkSamplerYcbcrRange;
+  components?: VkComponentMapping | null;
+  xChromaOffset?: VkChromaLocation;
+  yChromaOffset?: VkChromaLocation;
+  chromaFilter?: VkFilter;
+  forceExplicitReconstruction?: number;
+}
+
+declare var VkSamplerYcbcrConversionCreateInfo: {
+  prototype: VkSamplerYcbcrConversionCreateInfo;
+  new(param?: VkSamplerYcbcrConversionCreateInfoInitializer | null): VkSamplerYcbcrConversionCreateInfo;
+  sType: VkStructureType;
+  pNext: null;
+  format: VkFormat;
+  ycbcrModel: VkSamplerYcbcrModelConversion;
+  ycbcrRange: VkSamplerYcbcrRange;
+  components: VkComponentMapping | null;
+  xChromaOffset: VkChromaLocation;
+  yChromaOffset: VkChromaLocation;
+  chromaFilter: VkFilter;
+  forceExplicitReconstruction: number;
+}
+
+export interface VkSamplerYcbcrConversionCreateInfo {
+  sType: VkStructureType;
+  pNext: null;
+  format: VkFormat;
+  ycbcrModel: VkSamplerYcbcrModelConversion;
+  ycbcrRange: VkSamplerYcbcrRange;
+  components: VkComponentMapping | null;
+  xChromaOffset: VkChromaLocation;
+  yChromaOffset: VkChromaLocation;
+  chromaFilter: VkFilter;
+  forceExplicitReconstruction: number;
+}
+
+
+/** ## VkSamplerYcbcrConversionInfoKHR ## */
+interface VkSamplerYcbcrConversionInfoKHRInitializer {
+
+}
+
+declare var VkSamplerYcbcrConversionInfoKHR: {
+  prototype: VkSamplerYcbcrConversionInfoKHR;
+  new(param?: VkSamplerYcbcrConversionInfoKHRInitializer | null): VkSamplerYcbcrConversionInfoKHR;
+
+}
+
+export interface VkSamplerYcbcrConversionInfoKHR {
+
+}
+
+
+/** ## VkSamplerYcbcrConversionInfo ## */
+interface VkSamplerYcbcrConversionInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  conversion?: VkSamplerYcbcrConversion | null;
+}
+
+declare var VkSamplerYcbcrConversionInfo: {
+  prototype: VkSamplerYcbcrConversionInfo;
+  new(param?: VkSamplerYcbcrConversionInfoInitializer | null): VkSamplerYcbcrConversionInfo;
+  sType: VkStructureType;
+  pNext: null;
+  conversion: VkSamplerYcbcrConversion | null;
+}
+
+export interface VkSamplerYcbcrConversionInfo {
+  sType: VkStructureType;
+  pNext: null;
+  conversion: VkSamplerYcbcrConversion | null;
+}
+
+
+/** ## VkPipelineTessellationDomainOriginStateCreateInfoKHR ## */
+interface VkPipelineTessellationDomainOriginStateCreateInfoKHRInitializer {
+
+}
+
+declare var VkPipelineTessellationDomainOriginStateCreateInfoKHR: {
+  prototype: VkPipelineTessellationDomainOriginStateCreateInfoKHR;
+  new(param?: VkPipelineTessellationDomainOriginStateCreateInfoKHRInitializer | null): VkPipelineTessellationDomainOriginStateCreateInfoKHR;
+
+}
+
+export interface VkPipelineTessellationDomainOriginStateCreateInfoKHR {
+
+}
+
+
+/** ## VkPipelineTessellationDomainOriginStateCreateInfo ## */
+interface VkPipelineTessellationDomainOriginStateCreateInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  domainOrigin?: VkTessellationDomainOrigin;
+}
+
+declare var VkPipelineTessellationDomainOriginStateCreateInfo: {
+  prototype: VkPipelineTessellationDomainOriginStateCreateInfo;
+  new(param?: VkPipelineTessellationDomainOriginStateCreateInfoInitializer | null): VkPipelineTessellationDomainOriginStateCreateInfo;
+  sType: VkStructureType;
+  pNext: null;
+  domainOrigin: VkTessellationDomainOrigin;
+}
+
+export interface VkPipelineTessellationDomainOriginStateCreateInfo {
+  sType: VkStructureType;
+  pNext: null;
+  domainOrigin: VkTessellationDomainOrigin;
+}
+
+
+/** ## VkImageViewUsageCreateInfoKHR ## */
+interface VkImageViewUsageCreateInfoKHRInitializer {
+
+}
+
+declare var VkImageViewUsageCreateInfoKHR: {
+  prototype: VkImageViewUsageCreateInfoKHR;
+  new(param?: VkImageViewUsageCreateInfoKHRInitializer | null): VkImageViewUsageCreateInfoKHR;
+
+}
+
+export interface VkImageViewUsageCreateInfoKHR {
+
+}
+
+
+/** ## VkImageViewUsageCreateInfo ## */
+interface VkImageViewUsageCreateInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  usage?: VkImageUsageFlagBits;
+}
+
+declare var VkImageViewUsageCreateInfo: {
+  prototype: VkImageViewUsageCreateInfo;
+  new(param?: VkImageViewUsageCreateInfoInitializer | null): VkImageViewUsageCreateInfo;
+  sType: VkStructureType;
+  pNext: null;
+  usage: VkImageUsageFlagBits;
+}
+
+export interface VkImageViewUsageCreateInfo {
+  sType: VkStructureType;
+  pNext: null;
+  usage: VkImageUsageFlagBits;
+}
+
+
+/** ## VkMemoryDedicatedAllocateInfoKHR ## */
+interface VkMemoryDedicatedAllocateInfoKHRInitializer {
+
+}
+
+declare var VkMemoryDedicatedAllocateInfoKHR: {
+  prototype: VkMemoryDedicatedAllocateInfoKHR;
+  new(param?: VkMemoryDedicatedAllocateInfoKHRInitializer | null): VkMemoryDedicatedAllocateInfoKHR;
+
+}
+
+export interface VkMemoryDedicatedAllocateInfoKHR {
+
+}
+
+
+/** ## VkMemoryDedicatedAllocateInfo ## */
+interface VkMemoryDedicatedAllocateInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  image?: VkImage | null;
+  buffer?: VkBuffer | null;
+}
+
+declare var VkMemoryDedicatedAllocateInfo: {
+  prototype: VkMemoryDedicatedAllocateInfo;
+  new(param?: VkMemoryDedicatedAllocateInfoInitializer | null): VkMemoryDedicatedAllocateInfo;
+  sType: VkStructureType;
+  pNext: null;
+  image: VkImage | null;
+  buffer: VkBuffer | null;
+}
+
+export interface VkMemoryDedicatedAllocateInfo {
+  sType: VkStructureType;
+  pNext: null;
+  image: VkImage | null;
+  buffer: VkBuffer | null;
+}
+
+
+/** ## VkMemoryDedicatedRequirementsKHR ## */
+interface VkMemoryDedicatedRequirementsKHRInitializer {
+
+}
+
+declare var VkMemoryDedicatedRequirementsKHR: {
+  prototype: VkMemoryDedicatedRequirementsKHR;
+  new(param?: VkMemoryDedicatedRequirementsKHRInitializer | null): VkMemoryDedicatedRequirementsKHR;
+
+}
+
+export interface VkMemoryDedicatedRequirementsKHR {
+
+}
+
+
+/** ## VkMemoryDedicatedRequirements ## */
+interface VkMemoryDedicatedRequirementsInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly prefersDedicatedAllocation?: number;
+  readonly requiresDedicatedAllocation?: number;
+}
+
+declare var VkMemoryDedicatedRequirements: {
+  prototype: VkMemoryDedicatedRequirements;
+  new(param?: VkMemoryDedicatedRequirementsInitializer | null): VkMemoryDedicatedRequirements;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly prefersDedicatedAllocation: number;
+  readonly requiresDedicatedAllocation: number;
+}
+
+export interface VkMemoryDedicatedRequirements {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly prefersDedicatedAllocation: number;
+  readonly requiresDedicatedAllocation: number;
+}
+
+
+/** ## VkPhysicalDevicePointClippingPropertiesKHR ## */
+interface VkPhysicalDevicePointClippingPropertiesKHRInitializer {
+
+}
+
+declare var VkPhysicalDevicePointClippingPropertiesKHR: {
+  prototype: VkPhysicalDevicePointClippingPropertiesKHR;
+  new(param?: VkPhysicalDevicePointClippingPropertiesKHRInitializer | null): VkPhysicalDevicePointClippingPropertiesKHR;
+
+}
+
+export interface VkPhysicalDevicePointClippingPropertiesKHR {
+
+}
+
+
+/** ## VkPhysicalDevicePointClippingProperties ## */
+interface VkPhysicalDevicePointClippingPropertiesInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly pointClippingBehavior?: VkPointClippingBehavior;
+}
+
+declare var VkPhysicalDevicePointClippingProperties: {
+  prototype: VkPhysicalDevicePointClippingProperties;
+  new(param?: VkPhysicalDevicePointClippingPropertiesInitializer | null): VkPhysicalDevicePointClippingProperties;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly pointClippingBehavior: VkPointClippingBehavior;
+}
+
+export interface VkPhysicalDevicePointClippingProperties {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly pointClippingBehavior: VkPointClippingBehavior;
+}
+
+
+/** ## VkSparseImageMemoryRequirements2KHR ## */
+interface VkSparseImageMemoryRequirements2KHRInitializer {
+
+}
+
+declare var VkSparseImageMemoryRequirements2KHR: {
+  prototype: VkSparseImageMemoryRequirements2KHR;
+  new(param?: VkSparseImageMemoryRequirements2KHRInitializer | null): VkSparseImageMemoryRequirements2KHR;
+
+}
+
+export interface VkSparseImageMemoryRequirements2KHR {
+
+}
+
+
+/** ## VkExtent3D ## */
+interface VkExtent3DInitializer {
+  width?: number;
+  height?: number;
+  depth?: number;
+}
+
+declare var VkExtent3D: {
+  prototype: VkExtent3D;
+  new(param?: VkExtent3DInitializer | null): VkExtent3D;
+  width: number;
+  height: number;
+  depth: number;
+}
+
+export interface VkExtent3D {
+  width: number;
+  height: number;
+  depth: number;
+}
+
+
+/** ## VkSparseImageFormatProperties ## */
+interface VkSparseImageFormatPropertiesInitializer {
+  readonly aspectMask?: VkImageAspectFlagBits;
+  readonly imageGranularity?: VkExtent3D | null;
+  readonly flags?: VkSparseImageFormatFlagBits;
+}
+
+declare var VkSparseImageFormatProperties: {
+  prototype: VkSparseImageFormatProperties;
+  new(param?: VkSparseImageFormatPropertiesInitializer | null): VkSparseImageFormatProperties;
+  readonly aspectMask: VkImageAspectFlagBits;
+  readonly imageGranularity: VkExtent3D | null;
+  readonly flags: VkSparseImageFormatFlagBits;
+}
+
+export interface VkSparseImageFormatProperties {
+  readonly aspectMask: VkImageAspectFlagBits;
+  readonly imageGranularity: VkExtent3D | null;
+  readonly flags: VkSparseImageFormatFlagBits;
+}
+
+
+/** ## VkSparseImageMemoryRequirements ## */
+interface VkSparseImageMemoryRequirementsInitializer {
+  readonly formatProperties?: VkSparseImageFormatProperties | null;
+  readonly imageMipTailFirstLod?: number;
+  readonly imageMipTailSize?: number;
+  readonly imageMipTailOffset?: number;
+  readonly imageMipTailStride?: number;
+}
+
+declare var VkSparseImageMemoryRequirements: {
+  prototype: VkSparseImageMemoryRequirements;
+  new(param?: VkSparseImageMemoryRequirementsInitializer | null): VkSparseImageMemoryRequirements;
+  readonly formatProperties: VkSparseImageFormatProperties | null;
+  readonly imageMipTailFirstLod: number;
+  readonly imageMipTailSize: number;
+  readonly imageMipTailOffset: number;
+  readonly imageMipTailStride: number;
+}
+
+export interface VkSparseImageMemoryRequirements {
+  readonly formatProperties: VkSparseImageFormatProperties | null;
+  readonly imageMipTailFirstLod: number;
+  readonly imageMipTailSize: number;
+  readonly imageMipTailOffset: number;
+  readonly imageMipTailStride: number;
+}
+
+
+/** ## VkSparseImageMemoryRequirements2 ## */
+interface VkSparseImageMemoryRequirements2Initializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly memoryRequirements?: VkSparseImageMemoryRequirements | null;
+}
+
+declare var VkSparseImageMemoryRequirements2: {
+  prototype: VkSparseImageMemoryRequirements2;
+  new(param?: VkSparseImageMemoryRequirements2Initializer | null): VkSparseImageMemoryRequirements2;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly memoryRequirements: VkSparseImageMemoryRequirements | null;
+}
+
+export interface VkSparseImageMemoryRequirements2 {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly memoryRequirements: VkSparseImageMemoryRequirements | null;
+}
+
+
+/** ## VkMemoryRequirements2KHR ## */
+interface VkMemoryRequirements2KHRInitializer {
+
+}
+
+declare var VkMemoryRequirements2KHR: {
+  prototype: VkMemoryRequirements2KHR;
+  new(param?: VkMemoryRequirements2KHRInitializer | null): VkMemoryRequirements2KHR;
+
+}
+
+export interface VkMemoryRequirements2KHR {
+
+}
+
+
+/** ## VkMemoryRequirements ## */
+interface VkMemoryRequirementsInitializer {
+  readonly size?: number;
+  readonly alignment?: number;
+  readonly memoryTypeBits?: number;
+}
+
+declare var VkMemoryRequirements: {
+  prototype: VkMemoryRequirements;
+  new(param?: VkMemoryRequirementsInitializer | null): VkMemoryRequirements;
+  readonly size: number;
+  readonly alignment: number;
+  readonly memoryTypeBits: number;
+}
+
+export interface VkMemoryRequirements {
+  readonly size: number;
+  readonly alignment: number;
+  readonly memoryTypeBits: number;
+}
+
+
+/** ## VkMemoryRequirements2 ## */
+interface VkMemoryRequirements2Initializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly memoryRequirements?: VkMemoryRequirements | null;
+}
+
+declare var VkMemoryRequirements2: {
+  prototype: VkMemoryRequirements2;
+  new(param?: VkMemoryRequirements2Initializer | null): VkMemoryRequirements2;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly memoryRequirements: VkMemoryRequirements | null;
+}
+
+export interface VkMemoryRequirements2 {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly memoryRequirements: VkMemoryRequirements | null;
+}
+
+
+/** ## VkImageSparseMemoryRequirementsInfo2KHR ## */
+interface VkImageSparseMemoryRequirementsInfo2KHRInitializer {
+
+}
+
+declare var VkImageSparseMemoryRequirementsInfo2KHR: {
+  prototype: VkImageSparseMemoryRequirementsInfo2KHR;
+  new(param?: VkImageSparseMemoryRequirementsInfo2KHRInitializer | null): VkImageSparseMemoryRequirementsInfo2KHR;
+
+}
+
+export interface VkImageSparseMemoryRequirementsInfo2KHR {
+
+}
+
+
+/** ## VkImageSparseMemoryRequirementsInfo2 ## */
+interface VkImageSparseMemoryRequirementsInfo2Initializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  image?: VkImage | null;
+}
+
+declare var VkImageSparseMemoryRequirementsInfo2: {
+  prototype: VkImageSparseMemoryRequirementsInfo2;
+  new(param?: VkImageSparseMemoryRequirementsInfo2Initializer | null): VkImageSparseMemoryRequirementsInfo2;
+  sType: VkStructureType;
+  pNext: null;
+  image: VkImage | null;
+}
+
+export interface VkImageSparseMemoryRequirementsInfo2 {
+  sType: VkStructureType;
+  pNext: null;
+  image: VkImage | null;
+}
+
+
+/** ## VkImageMemoryRequirementsInfo2KHR ## */
+interface VkImageMemoryRequirementsInfo2KHRInitializer {
+
+}
+
+declare var VkImageMemoryRequirementsInfo2KHR: {
+  prototype: VkImageMemoryRequirementsInfo2KHR;
+  new(param?: VkImageMemoryRequirementsInfo2KHRInitializer | null): VkImageMemoryRequirementsInfo2KHR;
+
+}
+
+export interface VkImageMemoryRequirementsInfo2KHR {
+
+}
+
+
+/** ## VkImageMemoryRequirementsInfo2 ## */
+interface VkImageMemoryRequirementsInfo2Initializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  image?: VkImage | null;
+}
+
+declare var VkImageMemoryRequirementsInfo2: {
+  prototype: VkImageMemoryRequirementsInfo2;
+  new(param?: VkImageMemoryRequirementsInfo2Initializer | null): VkImageMemoryRequirementsInfo2;
+  sType: VkStructureType;
+  pNext: null;
+  image: VkImage | null;
+}
+
+export interface VkImageMemoryRequirementsInfo2 {
+  sType: VkStructureType;
+  pNext: null;
+  image: VkImage | null;
+}
+
+
+/** ## VkBufferMemoryRequirementsInfo2KHR ## */
+interface VkBufferMemoryRequirementsInfo2KHRInitializer {
+
+}
+
+declare var VkBufferMemoryRequirementsInfo2KHR: {
+  prototype: VkBufferMemoryRequirementsInfo2KHR;
+  new(param?: VkBufferMemoryRequirementsInfo2KHRInitializer | null): VkBufferMemoryRequirementsInfo2KHR;
+
+}
+
+export interface VkBufferMemoryRequirementsInfo2KHR {
+
+}
+
+
+/** ## VkBufferMemoryRequirementsInfo2 ## */
+interface VkBufferMemoryRequirementsInfo2Initializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  buffer?: VkBuffer | null;
+}
+
+declare var VkBufferMemoryRequirementsInfo2: {
+  prototype: VkBufferMemoryRequirementsInfo2;
+  new(param?: VkBufferMemoryRequirementsInfo2Initializer | null): VkBufferMemoryRequirementsInfo2;
+  sType: VkStructureType;
+  pNext: null;
+  buffer: VkBuffer | null;
+}
+
+export interface VkBufferMemoryRequirementsInfo2 {
+  sType: VkStructureType;
+  pNext: null;
+  buffer: VkBuffer | null;
+}
+
+
+/** ## VkPhysicalDeviceSubgroupProperties ## */
+interface VkPhysicalDeviceSubgroupPropertiesInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly subgroupSize?: number;
+  readonly supportedStages?: VkShaderStageFlagBits;
+  readonly supportedOperations?: VkSubgroupFeatureFlagBits;
+  readonly quadOperationsInAllStages?: number;
+}
+
+declare var VkPhysicalDeviceSubgroupProperties: {
+  prototype: VkPhysicalDeviceSubgroupProperties;
+  new(param?: VkPhysicalDeviceSubgroupPropertiesInitializer | null): VkPhysicalDeviceSubgroupProperties;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly subgroupSize: number;
+  readonly supportedStages: VkShaderStageFlagBits;
+  readonly supportedOperations: VkSubgroupFeatureFlagBits;
+  readonly quadOperationsInAllStages: number;
+}
+
+export interface VkPhysicalDeviceSubgroupProperties {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly subgroupSize: number;
+  readonly supportedStages: VkShaderStageFlagBits;
+  readonly supportedOperations: VkSubgroupFeatureFlagBits;
+  readonly quadOperationsInAllStages: number;
+}
+
+
+/** ## VkPhysicalDevice16BitStorageFeaturesKHR ## */
+interface VkPhysicalDevice16BitStorageFeaturesKHRInitializer {
+
+}
+
+declare var VkPhysicalDevice16BitStorageFeaturesKHR: {
+  prototype: VkPhysicalDevice16BitStorageFeaturesKHR;
+  new(param?: VkPhysicalDevice16BitStorageFeaturesKHRInitializer | null): VkPhysicalDevice16BitStorageFeaturesKHR;
+
+}
+
+export interface VkPhysicalDevice16BitStorageFeaturesKHR {
+
+}
+
+
+/** ## VkPhysicalDevice16BitStorageFeatures ## */
+interface VkPhysicalDevice16BitStorageFeaturesInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  storageBuffer16BitAccess?: number;
+  uniformAndStorageBuffer16BitAccess?: number;
+  storagePushConstant16?: number;
+  storageInputOutput16?: number;
+}
+
+declare var VkPhysicalDevice16BitStorageFeatures: {
+  prototype: VkPhysicalDevice16BitStorageFeatures;
+  new(param?: VkPhysicalDevice16BitStorageFeaturesInitializer | null): VkPhysicalDevice16BitStorageFeatures;
+  sType: VkStructureType;
+  pNext: null;
+  storageBuffer16BitAccess: number;
+  uniformAndStorageBuffer16BitAccess: number;
+  storagePushConstant16: number;
+  storageInputOutput16: number;
+}
+
+export interface VkPhysicalDevice16BitStorageFeatures {
+  sType: VkStructureType;
+  pNext: null;
+  storageBuffer16BitAccess: number;
+  uniformAndStorageBuffer16BitAccess: number;
+  storagePushConstant16: number;
+  storageInputOutput16: number;
+}
+
+
+/** ## VkSharedPresentSurfaceCapabilitiesKHR ## */
+interface VkSharedPresentSurfaceCapabilitiesKHRInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly sharedPresentSupportedUsageFlags?: VkImageUsageFlagBits;
+}
+
+declare var VkSharedPresentSurfaceCapabilitiesKHR: {
+  prototype: VkSharedPresentSurfaceCapabilitiesKHR;
+  new(param?: VkSharedPresentSurfaceCapabilitiesKHRInitializer | null): VkSharedPresentSurfaceCapabilitiesKHR;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly sharedPresentSupportedUsageFlags: VkImageUsageFlagBits;
+}
+
+export interface VkSharedPresentSurfaceCapabilitiesKHR {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly sharedPresentSupportedUsageFlags: VkImageUsageFlagBits;
+}
+
+
+/** ## VkDisplayPlaneCapabilitiesKHR ## */
+interface VkDisplayPlaneCapabilitiesKHRInitializer {
+  readonly supportedAlpha?: VkDisplayPlaneAlphaFlagBitsKHR;
+  readonly minSrcPosition?: VkOffset2D | null;
+  readonly maxSrcPosition?: VkOffset2D | null;
+  readonly minSrcExtent?: VkExtent2D | null;
+  readonly maxSrcExtent?: VkExtent2D | null;
+  readonly minDstPosition?: VkOffset2D | null;
+  readonly maxDstPosition?: VkOffset2D | null;
+  readonly minDstExtent?: VkExtent2D | null;
+  readonly maxDstExtent?: VkExtent2D | null;
+}
+
+declare var VkDisplayPlaneCapabilitiesKHR: {
+  prototype: VkDisplayPlaneCapabilitiesKHR;
+  new(param?: VkDisplayPlaneCapabilitiesKHRInitializer | null): VkDisplayPlaneCapabilitiesKHR;
+  readonly supportedAlpha: VkDisplayPlaneAlphaFlagBitsKHR;
+  readonly minSrcPosition: VkOffset2D | null;
+  readonly maxSrcPosition: VkOffset2D | null;
+  readonly minSrcExtent: VkExtent2D | null;
+  readonly maxSrcExtent: VkExtent2D | null;
+  readonly minDstPosition: VkOffset2D | null;
+  readonly maxDstPosition: VkOffset2D | null;
+  readonly minDstExtent: VkExtent2D | null;
+  readonly maxDstExtent: VkExtent2D | null;
+}
+
+export interface VkDisplayPlaneCapabilitiesKHR {
+  readonly supportedAlpha: VkDisplayPlaneAlphaFlagBitsKHR;
+  readonly minSrcPosition: VkOffset2D | null;
+  readonly maxSrcPosition: VkOffset2D | null;
+  readonly minSrcExtent: VkExtent2D | null;
+  readonly maxSrcExtent: VkExtent2D | null;
+  readonly minDstPosition: VkOffset2D | null;
+  readonly maxDstPosition: VkOffset2D | null;
+  readonly minDstExtent: VkExtent2D | null;
+  readonly maxDstExtent: VkExtent2D | null;
+}
+
+
+/** ## VkDisplayPlaneCapabilities2KHR ## */
+interface VkDisplayPlaneCapabilities2KHRInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly capabilities?: VkDisplayPlaneCapabilitiesKHR | null;
+}
+
+declare var VkDisplayPlaneCapabilities2KHR: {
+  prototype: VkDisplayPlaneCapabilities2KHR;
+  new(param?: VkDisplayPlaneCapabilities2KHRInitializer | null): VkDisplayPlaneCapabilities2KHR;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly capabilities: VkDisplayPlaneCapabilitiesKHR | null;
+}
+
+export interface VkDisplayPlaneCapabilities2KHR {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly capabilities: VkDisplayPlaneCapabilitiesKHR | null;
+}
+
+
+/** ## VkDisplayPlaneInfo2KHR ## */
+interface VkDisplayPlaneInfo2KHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  mode?: VkDisplayModeKHR | null;
+  planeIndex?: number;
+}
+
+declare var VkDisplayPlaneInfo2KHR: {
+  prototype: VkDisplayPlaneInfo2KHR;
+  new(param?: VkDisplayPlaneInfo2KHRInitializer | null): VkDisplayPlaneInfo2KHR;
+  sType: VkStructureType;
+  pNext: null;
+  mode: VkDisplayModeKHR | null;
+  planeIndex: number;
+}
+
+export interface VkDisplayPlaneInfo2KHR {
+  sType: VkStructureType;
+  pNext: null;
+  mode: VkDisplayModeKHR | null;
+  planeIndex: number;
+}
+
+
+/** ## VkDisplayModeParametersKHR ## */
+interface VkDisplayModeParametersKHRInitializer {
+  visibleRegion?: VkExtent2D | null;
+  refreshRate?: number;
+}
+
+declare var VkDisplayModeParametersKHR: {
+  prototype: VkDisplayModeParametersKHR;
+  new(param?: VkDisplayModeParametersKHRInitializer | null): VkDisplayModeParametersKHR;
+  visibleRegion: VkExtent2D | null;
+  refreshRate: number;
+}
+
+export interface VkDisplayModeParametersKHR {
+  visibleRegion: VkExtent2D | null;
+  refreshRate: number;
+}
+
+
+/** ## VkDisplayModePropertiesKHR ## */
+interface VkDisplayModePropertiesKHRInitializer {
+  readonly displayMode?: VkDisplayModeKHR | null;
+  readonly parameters?: VkDisplayModeParametersKHR | null;
+}
+
+declare var VkDisplayModePropertiesKHR: {
+  prototype: VkDisplayModePropertiesKHR;
+  new(param?: VkDisplayModePropertiesKHRInitializer | null): VkDisplayModePropertiesKHR;
+  readonly displayMode: VkDisplayModeKHR | null;
+  readonly parameters: VkDisplayModeParametersKHR | null;
+}
+
+export interface VkDisplayModePropertiesKHR {
+  readonly displayMode: VkDisplayModeKHR | null;
+  readonly parameters: VkDisplayModeParametersKHR | null;
+}
+
+
+/** ## VkDisplayModeProperties2KHR ## */
+interface VkDisplayModeProperties2KHRInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly displayModeProperties?: VkDisplayModePropertiesKHR | null;
+}
+
+declare var VkDisplayModeProperties2KHR: {
+  prototype: VkDisplayModeProperties2KHR;
+  new(param?: VkDisplayModeProperties2KHRInitializer | null): VkDisplayModeProperties2KHR;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly displayModeProperties: VkDisplayModePropertiesKHR | null;
+}
+
+export interface VkDisplayModeProperties2KHR {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly displayModeProperties: VkDisplayModePropertiesKHR | null;
+}
+
+
+/** ## VkDisplayPlanePropertiesKHR ## */
+interface VkDisplayPlanePropertiesKHRInitializer {
+  readonly currentDisplay?: VkDisplayKHR | null;
+  readonly currentStackIndex?: number;
+}
+
+declare var VkDisplayPlanePropertiesKHR: {
+  prototype: VkDisplayPlanePropertiesKHR;
+  new(param?: VkDisplayPlanePropertiesKHRInitializer | null): VkDisplayPlanePropertiesKHR;
+  readonly currentDisplay: VkDisplayKHR | null;
+  readonly currentStackIndex: number;
+}
+
+export interface VkDisplayPlanePropertiesKHR {
+  readonly currentDisplay: VkDisplayKHR | null;
+  readonly currentStackIndex: number;
+}
+
+
+/** ## VkDisplayPlaneProperties2KHR ## */
+interface VkDisplayPlaneProperties2KHRInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly displayPlaneProperties?: VkDisplayPlanePropertiesKHR | null;
+}
+
+declare var VkDisplayPlaneProperties2KHR: {
+  prototype: VkDisplayPlaneProperties2KHR;
+  new(param?: VkDisplayPlaneProperties2KHRInitializer | null): VkDisplayPlaneProperties2KHR;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly displayPlaneProperties: VkDisplayPlanePropertiesKHR | null;
+}
+
+export interface VkDisplayPlaneProperties2KHR {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly displayPlaneProperties: VkDisplayPlanePropertiesKHR | null;
+}
+
+
+/** ## VkDisplayPropertiesKHR ## */
+interface VkDisplayPropertiesKHRInitializer {
+  readonly display?: VkDisplayKHR | null;
+  readonly displayName?: string | null;
+  readonly physicalDimensions?: VkExtent2D | null;
+  readonly physicalResolution?: VkExtent2D | null;
+  readonly supportedTransforms?: VkSurfaceTransformFlagBitsKHR;
+  readonly planeReorderPossible?: number;
+  readonly persistentContent?: number;
+}
+
+declare var VkDisplayPropertiesKHR: {
+  prototype: VkDisplayPropertiesKHR;
+  new(param?: VkDisplayPropertiesKHRInitializer | null): VkDisplayPropertiesKHR;
+  readonly display: VkDisplayKHR | null;
+  readonly displayName: string | null;
+  readonly physicalDimensions: VkExtent2D | null;
+  readonly physicalResolution: VkExtent2D | null;
+  readonly supportedTransforms: VkSurfaceTransformFlagBitsKHR;
+  readonly planeReorderPossible: number;
+  readonly persistentContent: number;
+}
+
+export interface VkDisplayPropertiesKHR {
+  readonly display: VkDisplayKHR | null;
+  readonly displayName: string | null;
+  readonly physicalDimensions: VkExtent2D | null;
+  readonly physicalResolution: VkExtent2D | null;
+  readonly supportedTransforms: VkSurfaceTransformFlagBitsKHR;
+  readonly planeReorderPossible: number;
+  readonly persistentContent: number;
+}
+
+
+/** ## VkDisplayProperties2KHR ## */
+interface VkDisplayProperties2KHRInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly displayProperties?: VkDisplayPropertiesKHR | null;
+}
+
+declare var VkDisplayProperties2KHR: {
+  prototype: VkDisplayProperties2KHR;
+  new(param?: VkDisplayProperties2KHRInitializer | null): VkDisplayProperties2KHR;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly displayProperties: VkDisplayPropertiesKHR | null;
+}
+
+export interface VkDisplayProperties2KHR {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly displayProperties: VkDisplayPropertiesKHR | null;
+}
+
+
+/** ## VkSurfaceFormatKHR ## */
+interface VkSurfaceFormatKHRInitializer {
+  readonly format?: VkFormat;
+  readonly colorSpace?: VkColorSpaceKHR;
+}
+
+declare var VkSurfaceFormatKHR: {
+  prototype: VkSurfaceFormatKHR;
+  new(param?: VkSurfaceFormatKHRInitializer | null): VkSurfaceFormatKHR;
+  readonly format: VkFormat;
+  readonly colorSpace: VkColorSpaceKHR;
+}
+
+export interface VkSurfaceFormatKHR {
+  readonly format: VkFormat;
+  readonly colorSpace: VkColorSpaceKHR;
+}
+
+
+/** ## VkSurfaceFormat2KHR ## */
+interface VkSurfaceFormat2KHRInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly surfaceFormat?: VkSurfaceFormatKHR | null;
+}
+
+declare var VkSurfaceFormat2KHR: {
+  prototype: VkSurfaceFormat2KHR;
+  new(param?: VkSurfaceFormat2KHRInitializer | null): VkSurfaceFormat2KHR;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly surfaceFormat: VkSurfaceFormatKHR | null;
+}
+
+export interface VkSurfaceFormat2KHR {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly surfaceFormat: VkSurfaceFormatKHR | null;
+}
+
+
+/** ## VkSurfaceCapabilitiesKHR ## */
+interface VkSurfaceCapabilitiesKHRInitializer {
+  readonly minImageCount?: number;
+  readonly maxImageCount?: number;
+  readonly currentExtent?: VkExtent2D | null;
+  readonly minImageExtent?: VkExtent2D | null;
+  readonly maxImageExtent?: VkExtent2D | null;
+  readonly maxImageArrayLayers?: number;
+  readonly supportedTransforms?: VkSurfaceTransformFlagBitsKHR;
+  readonly currentTransform?: VkSurfaceTransformFlagBitsKHR;
+  readonly supportedCompositeAlpha?: VkCompositeAlphaFlagBitsKHR;
+  readonly supportedUsageFlags?: VkImageUsageFlagBits;
+}
+
+declare var VkSurfaceCapabilitiesKHR: {
+  prototype: VkSurfaceCapabilitiesKHR;
+  new(param?: VkSurfaceCapabilitiesKHRInitializer | null): VkSurfaceCapabilitiesKHR;
+  readonly minImageCount: number;
+  readonly maxImageCount: number;
+  readonly currentExtent: VkExtent2D | null;
+  readonly minImageExtent: VkExtent2D | null;
+  readonly maxImageExtent: VkExtent2D | null;
+  readonly maxImageArrayLayers: number;
+  readonly supportedTransforms: VkSurfaceTransformFlagBitsKHR;
+  readonly currentTransform: VkSurfaceTransformFlagBitsKHR;
+  readonly supportedCompositeAlpha: VkCompositeAlphaFlagBitsKHR;
+  readonly supportedUsageFlags: VkImageUsageFlagBits;
+}
+
+export interface VkSurfaceCapabilitiesKHR {
+  readonly minImageCount: number;
+  readonly maxImageCount: number;
+  readonly currentExtent: VkExtent2D | null;
+  readonly minImageExtent: VkExtent2D | null;
+  readonly maxImageExtent: VkExtent2D | null;
+  readonly maxImageArrayLayers: number;
+  readonly supportedTransforms: VkSurfaceTransformFlagBitsKHR;
+  readonly currentTransform: VkSurfaceTransformFlagBitsKHR;
+  readonly supportedCompositeAlpha: VkCompositeAlphaFlagBitsKHR;
+  readonly supportedUsageFlags: VkImageUsageFlagBits;
+}
+
+
+/** ## VkSurfaceCapabilities2KHR ## */
+interface VkSurfaceCapabilities2KHRInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly surfaceCapabilities?: VkSurfaceCapabilitiesKHR | null;
+}
+
+declare var VkSurfaceCapabilities2KHR: {
+  prototype: VkSurfaceCapabilities2KHR;
+  new(param?: VkSurfaceCapabilities2KHRInitializer | null): VkSurfaceCapabilities2KHR;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly surfaceCapabilities: VkSurfaceCapabilitiesKHR | null;
+}
+
+export interface VkSurfaceCapabilities2KHR {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly surfaceCapabilities: VkSurfaceCapabilitiesKHR | null;
+}
+
+
+/** ## VkPhysicalDeviceSurfaceInfo2KHR ## */
+interface VkPhysicalDeviceSurfaceInfo2KHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  surface?: VkSurfaceKHR | null;
+}
+
+declare var VkPhysicalDeviceSurfaceInfo2KHR: {
+  prototype: VkPhysicalDeviceSurfaceInfo2KHR;
+  new(param?: VkPhysicalDeviceSurfaceInfo2KHRInitializer | null): VkPhysicalDeviceSurfaceInfo2KHR;
+  sType: VkStructureType;
+  pNext: null;
+  surface: VkSurfaceKHR | null;
+}
+
+export interface VkPhysicalDeviceSurfaceInfo2KHR {
+  sType: VkStructureType;
+  pNext: null;
+  surface: VkSurfaceKHR | null;
+}
+
+
+/** ## VkRenderPassInputAttachmentAspectCreateInfoKHR ## */
+interface VkRenderPassInputAttachmentAspectCreateInfoKHRInitializer {
+
+}
+
+declare var VkRenderPassInputAttachmentAspectCreateInfoKHR: {
+  prototype: VkRenderPassInputAttachmentAspectCreateInfoKHR;
+  new(param?: VkRenderPassInputAttachmentAspectCreateInfoKHRInitializer | null): VkRenderPassInputAttachmentAspectCreateInfoKHR;
+
+}
+
+export interface VkRenderPassInputAttachmentAspectCreateInfoKHR {
+
+}
+
+
+/** ## VkInputAttachmentAspectReference ## */
+interface VkInputAttachmentAspectReferenceInitializer {
+  subpass?: number;
+  inputAttachmentIndex?: number;
+  aspectMask?: VkImageAspectFlagBits;
+}
+
+declare var VkInputAttachmentAspectReference: {
+  prototype: VkInputAttachmentAspectReference;
+  new(param?: VkInputAttachmentAspectReferenceInitializer | null): VkInputAttachmentAspectReference;
+  subpass: number;
+  inputAttachmentIndex: number;
+  aspectMask: VkImageAspectFlagBits;
+}
+
+export interface VkInputAttachmentAspectReference {
+  subpass: number;
+  inputAttachmentIndex: number;
+  aspectMask: VkImageAspectFlagBits;
+}
+
+
+/** ## VkRenderPassInputAttachmentAspectCreateInfo ## */
+interface VkRenderPassInputAttachmentAspectCreateInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  aspectReferenceCount?: number;
+  pAspectReferences?: VkInputAttachmentAspectReference[] | null;
+}
+
+declare var VkRenderPassInputAttachmentAspectCreateInfo: {
+  prototype: VkRenderPassInputAttachmentAspectCreateInfo;
+  new(param?: VkRenderPassInputAttachmentAspectCreateInfoInitializer | null): VkRenderPassInputAttachmentAspectCreateInfo;
+  sType: VkStructureType;
+  pNext: null;
+  aspectReferenceCount: number;
+  pAspectReferences: VkInputAttachmentAspectReference[] | null;
+}
+
+export interface VkRenderPassInputAttachmentAspectCreateInfo {
+  sType: VkStructureType;
+  pNext: null;
+  aspectReferenceCount: number;
+  pAspectReferences: VkInputAttachmentAspectReference[] | null;
+}
+
+
+/** ## VkInputAttachmentAspectReferenceKHR ## */
+interface VkInputAttachmentAspectReferenceKHRInitializer {
+
+}
+
+declare var VkInputAttachmentAspectReferenceKHR: {
+  prototype: VkInputAttachmentAspectReferenceKHR;
+  new(param?: VkInputAttachmentAspectReferenceKHRInitializer | null): VkInputAttachmentAspectReferenceKHR;
+
+}
+
+export interface VkInputAttachmentAspectReferenceKHR {
+
+}
+
+
+/** ## VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX ## */
+interface VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVXInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly perViewPositionAllComponents?: number;
+}
+
+declare var VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX: {
+  prototype: VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX;
+  new(param?: VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVXInitializer | null): VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly perViewPositionAllComponents: number;
+}
+
+export interface VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly perViewPositionAllComponents: number;
+}
+
+
+/** ## VkPipelineDiscardRectangleStateCreateInfoEXT ## */
+interface VkPipelineDiscardRectangleStateCreateInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: null;
+  discardRectangleMode?: VkDiscardRectangleModeEXT;
+  discardRectangleCount?: number;
+  pDiscardRectangles?: VkRect2D[] | null;
+}
+
+declare var VkPipelineDiscardRectangleStateCreateInfoEXT: {
+  prototype: VkPipelineDiscardRectangleStateCreateInfoEXT;
+  new(param?: VkPipelineDiscardRectangleStateCreateInfoEXTInitializer | null): VkPipelineDiscardRectangleStateCreateInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  discardRectangleMode: VkDiscardRectangleModeEXT;
+  discardRectangleCount: number;
+  pDiscardRectangles: VkRect2D[] | null;
+}
+
+export interface VkPipelineDiscardRectangleStateCreateInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  discardRectangleMode: VkDiscardRectangleModeEXT;
+  discardRectangleCount: number;
+  pDiscardRectangles: VkRect2D[] | null;
+}
+
+
+/** ## VkPhysicalDeviceDiscardRectanglePropertiesEXT ## */
+interface VkPhysicalDeviceDiscardRectanglePropertiesEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  maxDiscardRectangles?: number;
+}
+
+declare var VkPhysicalDeviceDiscardRectanglePropertiesEXT: {
+  prototype: VkPhysicalDeviceDiscardRectanglePropertiesEXT;
+  new(param?: VkPhysicalDeviceDiscardRectanglePropertiesEXTInitializer | null): VkPhysicalDeviceDiscardRectanglePropertiesEXT;
+  sType: VkStructureType;
+  pNext: null;
+  maxDiscardRectangles: number;
+}
+
+export interface VkPhysicalDeviceDiscardRectanglePropertiesEXT {
+  sType: VkStructureType;
+  pNext: null;
+  maxDiscardRectangles: number;
+}
+
+
+/** ## VkViewportSwizzleNV ## */
+interface VkViewportSwizzleNVInitializer {
+  x?: VkViewportCoordinateSwizzleNV;
+  y?: VkViewportCoordinateSwizzleNV;
+  z?: VkViewportCoordinateSwizzleNV;
+  w?: VkViewportCoordinateSwizzleNV;
+}
+
+declare var VkViewportSwizzleNV: {
+  prototype: VkViewportSwizzleNV;
+  new(param?: VkViewportSwizzleNVInitializer | null): VkViewportSwizzleNV;
+  x: VkViewportCoordinateSwizzleNV;
+  y: VkViewportCoordinateSwizzleNV;
+  z: VkViewportCoordinateSwizzleNV;
+  w: VkViewportCoordinateSwizzleNV;
+}
+
+export interface VkViewportSwizzleNV {
+  x: VkViewportCoordinateSwizzleNV;
+  y: VkViewportCoordinateSwizzleNV;
+  z: VkViewportCoordinateSwizzleNV;
+  w: VkViewportCoordinateSwizzleNV;
+}
+
+
+/** ## VkPipelineViewportSwizzleStateCreateInfoNV ## */
+interface VkPipelineViewportSwizzleStateCreateInfoNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: null;
+  viewportCount?: number;
+  pViewportSwizzles?: VkViewportSwizzleNV[] | null;
+}
+
+declare var VkPipelineViewportSwizzleStateCreateInfoNV: {
+  prototype: VkPipelineViewportSwizzleStateCreateInfoNV;
+  new(param?: VkPipelineViewportSwizzleStateCreateInfoNVInitializer | null): VkPipelineViewportSwizzleStateCreateInfoNV;
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  viewportCount: number;
+  pViewportSwizzles: VkViewportSwizzleNV[] | null;
+}
+
+export interface VkPipelineViewportSwizzleStateCreateInfoNV {
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  viewportCount: number;
+  pViewportSwizzles: VkViewportSwizzleNV[] | null;
+}
+
+
+/** ## VkViewportWScalingNV ## */
+interface VkViewportWScalingNVInitializer {
+  xcoeff?: number;
+  ycoeff?: number;
+}
+
+declare var VkViewportWScalingNV: {
+  prototype: VkViewportWScalingNV;
+  new(param?: VkViewportWScalingNVInitializer | null): VkViewportWScalingNV;
+  xcoeff: number;
+  ycoeff: number;
+}
+
+export interface VkViewportWScalingNV {
+  xcoeff: number;
+  ycoeff: number;
+}
+
+
+/** ## VkPipelineViewportWScalingStateCreateInfoNV ## */
+interface VkPipelineViewportWScalingStateCreateInfoNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  viewportWScalingEnable?: number;
+  viewportCount?: number;
+  pViewportWScalings?: VkViewportWScalingNV[] | null;
+}
+
+declare var VkPipelineViewportWScalingStateCreateInfoNV: {
+  prototype: VkPipelineViewportWScalingStateCreateInfoNV;
+  new(param?: VkPipelineViewportWScalingStateCreateInfoNVInitializer | null): VkPipelineViewportWScalingStateCreateInfoNV;
+  sType: VkStructureType;
+  pNext: null;
+  viewportWScalingEnable: number;
+  viewportCount: number;
+  pViewportWScalings: VkViewportWScalingNV[] | null;
+}
+
+export interface VkPipelineViewportWScalingStateCreateInfoNV {
+  sType: VkStructureType;
+  pNext: null;
+  viewportWScalingEnable: number;
+  viewportCount: number;
+  pViewportWScalings: VkViewportWScalingNV[] | null;
+}
+
+
+/** ## VkPresentTimeGOOGLE ## */
+interface VkPresentTimeGOOGLEInitializer {
+  presentID?: number;
+  desiredPresentTime?: number;
+}
+
+declare var VkPresentTimeGOOGLE: {
+  prototype: VkPresentTimeGOOGLE;
+  new(param?: VkPresentTimeGOOGLEInitializer | null): VkPresentTimeGOOGLE;
+  presentID: number;
+  desiredPresentTime: number;
+}
+
+export interface VkPresentTimeGOOGLE {
+  presentID: number;
+  desiredPresentTime: number;
+}
+
+
+/** ## VkPresentTimesInfoGOOGLE ## */
+interface VkPresentTimesInfoGOOGLEInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  swapchainCount?: number;
+  pTimes?: VkPresentTimeGOOGLE[] | null;
+}
+
+declare var VkPresentTimesInfoGOOGLE: {
+  prototype: VkPresentTimesInfoGOOGLE;
+  new(param?: VkPresentTimesInfoGOOGLEInitializer | null): VkPresentTimesInfoGOOGLE;
+  sType: VkStructureType;
+  pNext: null;
+  swapchainCount: number;
+  pTimes: VkPresentTimeGOOGLE[] | null;
+}
+
+export interface VkPresentTimesInfoGOOGLE {
+  sType: VkStructureType;
+  pNext: null;
+  swapchainCount: number;
+  pTimes: VkPresentTimeGOOGLE[] | null;
+}
+
+
+/** ## VkPastPresentationTimingGOOGLE ## */
+interface VkPastPresentationTimingGOOGLEInitializer {
+  readonly presentID?: number;
+  readonly desiredPresentTime?: number;
+  readonly actualPresentTime?: number;
+  readonly earliestPresentTime?: number;
+  readonly presentMargin?: number;
+}
+
+declare var VkPastPresentationTimingGOOGLE: {
+  prototype: VkPastPresentationTimingGOOGLE;
+  new(param?: VkPastPresentationTimingGOOGLEInitializer | null): VkPastPresentationTimingGOOGLE;
+  readonly presentID: number;
+  readonly desiredPresentTime: number;
+  readonly actualPresentTime: number;
+  readonly earliestPresentTime: number;
+  readonly presentMargin: number;
+}
+
+export interface VkPastPresentationTimingGOOGLE {
+  readonly presentID: number;
+  readonly desiredPresentTime: number;
+  readonly actualPresentTime: number;
+  readonly earliestPresentTime: number;
+  readonly presentMargin: number;
+}
+
+
+/** ## VkRefreshCycleDurationGOOGLE ## */
+interface VkRefreshCycleDurationGOOGLEInitializer {
+  readonly refreshDuration?: number;
+}
+
+declare var VkRefreshCycleDurationGOOGLE: {
+  prototype: VkRefreshCycleDurationGOOGLE;
+  new(param?: VkRefreshCycleDurationGOOGLEInitializer | null): VkRefreshCycleDurationGOOGLE;
+  readonly refreshDuration: number;
+}
+
+export interface VkRefreshCycleDurationGOOGLE {
+  readonly refreshDuration: number;
+}
+
+
+/** ## VkXYColorEXT ## */
+interface VkXYColorEXTInitializer {
+  x?: number;
+  y?: number;
+}
+
+declare var VkXYColorEXT: {
+  prototype: VkXYColorEXT;
+  new(param?: VkXYColorEXTInitializer | null): VkXYColorEXT;
+  x: number;
+  y: number;
+}
+
+export interface VkXYColorEXT {
+  x: number;
+  y: number;
+}
+
+
+/** ## VkHdrMetadataEXT ## */
+interface VkHdrMetadataEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  displayPrimaryRed?: VkXYColorEXT | null;
+  displayPrimaryGreen?: VkXYColorEXT | null;
+  displayPrimaryBlue?: VkXYColorEXT | null;
+  whitePoint?: VkXYColorEXT | null;
+  maxLuminance?: number;
+  minLuminance?: number;
+  maxContentLightLevel?: number;
+  maxFrameAverageLightLevel?: number;
+}
+
+declare var VkHdrMetadataEXT: {
+  prototype: VkHdrMetadataEXT;
+  new(param?: VkHdrMetadataEXTInitializer | null): VkHdrMetadataEXT;
+  sType: VkStructureType;
+  pNext: null;
+  displayPrimaryRed: VkXYColorEXT | null;
+  displayPrimaryGreen: VkXYColorEXT | null;
+  displayPrimaryBlue: VkXYColorEXT | null;
+  whitePoint: VkXYColorEXT | null;
+  maxLuminance: number;
+  minLuminance: number;
+  maxContentLightLevel: number;
+  maxFrameAverageLightLevel: number;
+}
+
+export interface VkHdrMetadataEXT {
+  sType: VkStructureType;
+  pNext: null;
+  displayPrimaryRed: VkXYColorEXT | null;
+  displayPrimaryGreen: VkXYColorEXT | null;
+  displayPrimaryBlue: VkXYColorEXT | null;
+  whitePoint: VkXYColorEXT | null;
+  maxLuminance: number;
+  minLuminance: number;
+  maxContentLightLevel: number;
+  maxFrameAverageLightLevel: number;
+}
+
+
+/** ## VkDescriptorUpdateTemplateCreateInfoKHR ## */
+interface VkDescriptorUpdateTemplateCreateInfoKHRInitializer {
+
+}
+
+declare var VkDescriptorUpdateTemplateCreateInfoKHR: {
+  prototype: VkDescriptorUpdateTemplateCreateInfoKHR;
+  new(param?: VkDescriptorUpdateTemplateCreateInfoKHRInitializer | null): VkDescriptorUpdateTemplateCreateInfoKHR;
+
+}
+
+export interface VkDescriptorUpdateTemplateCreateInfoKHR {
+
+}
+
+
+/** ## VkDescriptorUpdateTemplateEntry ## */
+interface VkDescriptorUpdateTemplateEntryInitializer {
+  dstBinding?: number;
+  dstArrayElement?: number;
+  descriptorCount?: number;
+  descriptorType?: VkDescriptorType;
+  offset?: number;
+  stride?: number;
+}
+
+declare var VkDescriptorUpdateTemplateEntry: {
+  prototype: VkDescriptorUpdateTemplateEntry;
+  new(param?: VkDescriptorUpdateTemplateEntryInitializer | null): VkDescriptorUpdateTemplateEntry;
+  dstBinding: number;
+  dstArrayElement: number;
+  descriptorCount: number;
+  descriptorType: VkDescriptorType;
+  offset: number;
+  stride: number;
+}
+
+export interface VkDescriptorUpdateTemplateEntry {
+  dstBinding: number;
+  dstArrayElement: number;
+  descriptorCount: number;
+  descriptorType: VkDescriptorType;
+  offset: number;
+  stride: number;
+}
+
+
+/** ## VkDescriptorUpdateTemplateCreateInfo ## */
+interface VkDescriptorUpdateTemplateCreateInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: null;
+  descriptorUpdateEntryCount?: number;
+  pDescriptorUpdateEntries?: VkDescriptorUpdateTemplateEntry[] | null;
+  templateType?: VkDescriptorUpdateTemplateType;
+  descriptorSetLayout?: VkDescriptorSetLayout | null;
+  pipelineBindPoint?: VkPipelineBindPoint;
+  pipelineLayout?: VkPipelineLayout | null;
+  set?: number;
+}
+
+declare var VkDescriptorUpdateTemplateCreateInfo: {
+  prototype: VkDescriptorUpdateTemplateCreateInfo;
+  new(param?: VkDescriptorUpdateTemplateCreateInfoInitializer | null): VkDescriptorUpdateTemplateCreateInfo;
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  descriptorUpdateEntryCount: number;
+  pDescriptorUpdateEntries: VkDescriptorUpdateTemplateEntry[] | null;
+  templateType: VkDescriptorUpdateTemplateType;
+  descriptorSetLayout: VkDescriptorSetLayout | null;
+  pipelineBindPoint: VkPipelineBindPoint;
+  pipelineLayout: VkPipelineLayout | null;
+  set: number;
+}
+
+export interface VkDescriptorUpdateTemplateCreateInfo {
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  descriptorUpdateEntryCount: number;
+  pDescriptorUpdateEntries: VkDescriptorUpdateTemplateEntry[] | null;
+  templateType: VkDescriptorUpdateTemplateType;
+  descriptorSetLayout: VkDescriptorSetLayout | null;
+  pipelineBindPoint: VkPipelineBindPoint;
+  pipelineLayout: VkPipelineLayout | null;
+  set: number;
+}
+
+
+/** ## VkDescriptorUpdateTemplateEntryKHR ## */
+interface VkDescriptorUpdateTemplateEntryKHRInitializer {
+
+}
+
+declare var VkDescriptorUpdateTemplateEntryKHR: {
+  prototype: VkDescriptorUpdateTemplateEntryKHR;
+  new(param?: VkDescriptorUpdateTemplateEntryKHRInitializer | null): VkDescriptorUpdateTemplateEntryKHR;
+
+}
+
+export interface VkDescriptorUpdateTemplateEntryKHR {
+
+}
+
+
+/** ## VkDeviceGroupSwapchainCreateInfoKHR ## */
+interface VkDeviceGroupSwapchainCreateInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  modes?: VkDeviceGroupPresentModeFlagBitsKHR;
+}
+
+declare var VkDeviceGroupSwapchainCreateInfoKHR: {
+  prototype: VkDeviceGroupSwapchainCreateInfoKHR;
+  new(param?: VkDeviceGroupSwapchainCreateInfoKHRInitializer | null): VkDeviceGroupSwapchainCreateInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  modes: VkDeviceGroupPresentModeFlagBitsKHR;
+}
+
+export interface VkDeviceGroupSwapchainCreateInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  modes: VkDeviceGroupPresentModeFlagBitsKHR;
+}
+
+
+/** ## VkDeviceGroupDeviceCreateInfoKHR ## */
+interface VkDeviceGroupDeviceCreateInfoKHRInitializer {
+
+}
+
+declare var VkDeviceGroupDeviceCreateInfoKHR: {
+  prototype: VkDeviceGroupDeviceCreateInfoKHR;
+  new(param?: VkDeviceGroupDeviceCreateInfoKHRInitializer | null): VkDeviceGroupDeviceCreateInfoKHR;
+
+}
+
+export interface VkDeviceGroupDeviceCreateInfoKHR {
+
+}
+
+
+/** ## VkDeviceGroupDeviceCreateInfo ## */
+interface VkDeviceGroupDeviceCreateInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  physicalDeviceCount?: number;
+  pPhysicalDevices?: VkPhysicalDevice[] | null;
+}
+
+declare var VkDeviceGroupDeviceCreateInfo: {
+  prototype: VkDeviceGroupDeviceCreateInfo;
+  new(param?: VkDeviceGroupDeviceCreateInfoInitializer | null): VkDeviceGroupDeviceCreateInfo;
+  sType: VkStructureType;
+  pNext: null;
+  physicalDeviceCount: number;
+  pPhysicalDevices: VkPhysicalDevice[] | null;
+}
+
+export interface VkDeviceGroupDeviceCreateInfo {
+  sType: VkStructureType;
+  pNext: null;
+  physicalDeviceCount: number;
+  pPhysicalDevices: VkPhysicalDevice[] | null;
+}
+
+
+/** ## VkDeviceGroupPresentInfoKHR ## */
+interface VkDeviceGroupPresentInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  swapchainCount?: number;
+  pDeviceMasks?: Uint32Array | null;
+  mode?: VkDeviceGroupPresentModeFlagBitsKHR;
+}
+
+declare var VkDeviceGroupPresentInfoKHR: {
+  prototype: VkDeviceGroupPresentInfoKHR;
+  new(param?: VkDeviceGroupPresentInfoKHRInitializer | null): VkDeviceGroupPresentInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  swapchainCount: number;
+  pDeviceMasks: Uint32Array | null;
+  mode: VkDeviceGroupPresentModeFlagBitsKHR;
+}
+
+export interface VkDeviceGroupPresentInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  swapchainCount: number;
+  pDeviceMasks: Uint32Array | null;
+  mode: VkDeviceGroupPresentModeFlagBitsKHR;
+}
+
+
+/** ## VkAcquireNextImageInfoKHR ## */
+interface VkAcquireNextImageInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  swapchain?: VkSwapchainKHR | null;
+  timeout?: number;
+  semaphore?: VkSemaphore | null;
+  fence?: VkFence | null;
+  deviceMask?: number;
+}
+
+declare var VkAcquireNextImageInfoKHR: {
+  prototype: VkAcquireNextImageInfoKHR;
+  new(param?: VkAcquireNextImageInfoKHRInitializer | null): VkAcquireNextImageInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  swapchain: VkSwapchainKHR | null;
+  timeout: number;
+  semaphore: VkSemaphore | null;
+  fence: VkFence | null;
+  deviceMask: number;
+}
+
+export interface VkAcquireNextImageInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  swapchain: VkSwapchainKHR | null;
+  timeout: number;
+  semaphore: VkSemaphore | null;
+  fence: VkFence | null;
+  deviceMask: number;
+}
+
+
+/** ## VkBindImageMemorySwapchainInfoKHR ## */
+interface VkBindImageMemorySwapchainInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  swapchain?: VkSwapchainKHR | null;
+  imageIndex?: number;
+}
+
+declare var VkBindImageMemorySwapchainInfoKHR: {
+  prototype: VkBindImageMemorySwapchainInfoKHR;
+  new(param?: VkBindImageMemorySwapchainInfoKHRInitializer | null): VkBindImageMemorySwapchainInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  swapchain: VkSwapchainKHR | null;
+  imageIndex: number;
+}
+
+export interface VkBindImageMemorySwapchainInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  swapchain: VkSwapchainKHR | null;
+  imageIndex: number;
+}
+
+
+/** ## VkImageSwapchainCreateInfoKHR ## */
+interface VkImageSwapchainCreateInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  swapchain?: VkSwapchainKHR | null;
+}
+
+declare var VkImageSwapchainCreateInfoKHR: {
+  prototype: VkImageSwapchainCreateInfoKHR;
+  new(param?: VkImageSwapchainCreateInfoKHRInitializer | null): VkImageSwapchainCreateInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  swapchain: VkSwapchainKHR | null;
+}
+
+export interface VkImageSwapchainCreateInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  swapchain: VkSwapchainKHR | null;
+}
+
+
+/** ## VkDeviceGroupPresentCapabilitiesKHR ## */
+interface VkDeviceGroupPresentCapabilitiesKHRInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly presentMask?: number[] | null;
+  readonly modes?: VkDeviceGroupPresentModeFlagBitsKHR;
+}
+
+declare var VkDeviceGroupPresentCapabilitiesKHR: {
+  prototype: VkDeviceGroupPresentCapabilitiesKHR;
+  new(param?: VkDeviceGroupPresentCapabilitiesKHRInitializer | null): VkDeviceGroupPresentCapabilitiesKHR;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly presentMask: number[] | null;
+  readonly modes: VkDeviceGroupPresentModeFlagBitsKHR;
+}
+
+export interface VkDeviceGroupPresentCapabilitiesKHR {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly presentMask: number[] | null;
+  readonly modes: VkDeviceGroupPresentModeFlagBitsKHR;
+}
+
+
+/** ## VkDeviceGroupBindSparseInfoKHR ## */
+interface VkDeviceGroupBindSparseInfoKHRInitializer {
+
+}
+
+declare var VkDeviceGroupBindSparseInfoKHR: {
+  prototype: VkDeviceGroupBindSparseInfoKHR;
+  new(param?: VkDeviceGroupBindSparseInfoKHRInitializer | null): VkDeviceGroupBindSparseInfoKHR;
+
+}
+
+export interface VkDeviceGroupBindSparseInfoKHR {
+
+}
+
+
+/** ## VkDeviceGroupBindSparseInfo ## */
+interface VkDeviceGroupBindSparseInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  resourceDeviceIndex?: number;
+  memoryDeviceIndex?: number;
+}
+
+declare var VkDeviceGroupBindSparseInfo: {
+  prototype: VkDeviceGroupBindSparseInfo;
+  new(param?: VkDeviceGroupBindSparseInfoInitializer | null): VkDeviceGroupBindSparseInfo;
+  sType: VkStructureType;
+  pNext: null;
+  resourceDeviceIndex: number;
+  memoryDeviceIndex: number;
+}
+
+export interface VkDeviceGroupBindSparseInfo {
+  sType: VkStructureType;
+  pNext: null;
+  resourceDeviceIndex: number;
+  memoryDeviceIndex: number;
+}
+
+
+/** ## VkDeviceGroupSubmitInfoKHR ## */
+interface VkDeviceGroupSubmitInfoKHRInitializer {
+
+}
+
+declare var VkDeviceGroupSubmitInfoKHR: {
+  prototype: VkDeviceGroupSubmitInfoKHR;
+  new(param?: VkDeviceGroupSubmitInfoKHRInitializer | null): VkDeviceGroupSubmitInfoKHR;
+
+}
+
+export interface VkDeviceGroupSubmitInfoKHR {
+
+}
+
+
+/** ## VkDeviceGroupSubmitInfo ## */
+interface VkDeviceGroupSubmitInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  waitSemaphoreCount?: number;
+  pWaitSemaphoreDeviceIndices?: Uint32Array | null;
+  commandBufferCount?: number;
+  pCommandBufferDeviceMasks?: Uint32Array | null;
+  signalSemaphoreCount?: number;
+  pSignalSemaphoreDeviceIndices?: Uint32Array | null;
+}
+
+declare var VkDeviceGroupSubmitInfo: {
+  prototype: VkDeviceGroupSubmitInfo;
+  new(param?: VkDeviceGroupSubmitInfoInitializer | null): VkDeviceGroupSubmitInfo;
+  sType: VkStructureType;
+  pNext: null;
+  waitSemaphoreCount: number;
+  pWaitSemaphoreDeviceIndices: Uint32Array | null;
+  commandBufferCount: number;
+  pCommandBufferDeviceMasks: Uint32Array | null;
+  signalSemaphoreCount: number;
+  pSignalSemaphoreDeviceIndices: Uint32Array | null;
+}
+
+export interface VkDeviceGroupSubmitInfo {
+  sType: VkStructureType;
+  pNext: null;
+  waitSemaphoreCount: number;
+  pWaitSemaphoreDeviceIndices: Uint32Array | null;
+  commandBufferCount: number;
+  pCommandBufferDeviceMasks: Uint32Array | null;
+  signalSemaphoreCount: number;
+  pSignalSemaphoreDeviceIndices: Uint32Array | null;
+}
+
+
+/** ## VkDeviceGroupCommandBufferBeginInfoKHR ## */
+interface VkDeviceGroupCommandBufferBeginInfoKHRInitializer {
+
+}
+
+declare var VkDeviceGroupCommandBufferBeginInfoKHR: {
+  prototype: VkDeviceGroupCommandBufferBeginInfoKHR;
+  new(param?: VkDeviceGroupCommandBufferBeginInfoKHRInitializer | null): VkDeviceGroupCommandBufferBeginInfoKHR;
+
+}
+
+export interface VkDeviceGroupCommandBufferBeginInfoKHR {
+
+}
+
+
+/** ## VkDeviceGroupCommandBufferBeginInfo ## */
+interface VkDeviceGroupCommandBufferBeginInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  deviceMask?: number;
+}
+
+declare var VkDeviceGroupCommandBufferBeginInfo: {
+  prototype: VkDeviceGroupCommandBufferBeginInfo;
+  new(param?: VkDeviceGroupCommandBufferBeginInfoInitializer | null): VkDeviceGroupCommandBufferBeginInfo;
+  sType: VkStructureType;
+  pNext: null;
+  deviceMask: number;
+}
+
+export interface VkDeviceGroupCommandBufferBeginInfo {
+  sType: VkStructureType;
+  pNext: null;
+  deviceMask: number;
+}
+
+
+/** ## VkDeviceGroupRenderPassBeginInfoKHR ## */
+interface VkDeviceGroupRenderPassBeginInfoKHRInitializer {
+
+}
+
+declare var VkDeviceGroupRenderPassBeginInfoKHR: {
+  prototype: VkDeviceGroupRenderPassBeginInfoKHR;
+  new(param?: VkDeviceGroupRenderPassBeginInfoKHRInitializer | null): VkDeviceGroupRenderPassBeginInfoKHR;
+
+}
+
+export interface VkDeviceGroupRenderPassBeginInfoKHR {
+
+}
+
+
+/** ## VkDeviceGroupRenderPassBeginInfo ## */
+interface VkDeviceGroupRenderPassBeginInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  deviceMask?: number;
+  deviceRenderAreaCount?: number;
+  pDeviceRenderAreas?: VkRect2D[] | null;
+}
+
+declare var VkDeviceGroupRenderPassBeginInfo: {
+  prototype: VkDeviceGroupRenderPassBeginInfo;
+  new(param?: VkDeviceGroupRenderPassBeginInfoInitializer | null): VkDeviceGroupRenderPassBeginInfo;
+  sType: VkStructureType;
+  pNext: null;
+  deviceMask: number;
+  deviceRenderAreaCount: number;
+  pDeviceRenderAreas: VkRect2D[] | null;
+}
+
+export interface VkDeviceGroupRenderPassBeginInfo {
+  sType: VkStructureType;
+  pNext: null;
+  deviceMask: number;
+  deviceRenderAreaCount: number;
+  pDeviceRenderAreas: VkRect2D[] | null;
+}
+
+
+/** ## VkBindImageMemoryDeviceGroupInfoKHR ## */
+interface VkBindImageMemoryDeviceGroupInfoKHRInitializer {
+
+}
+
+declare var VkBindImageMemoryDeviceGroupInfoKHR: {
+  prototype: VkBindImageMemoryDeviceGroupInfoKHR;
+  new(param?: VkBindImageMemoryDeviceGroupInfoKHRInitializer | null): VkBindImageMemoryDeviceGroupInfoKHR;
+
+}
+
+export interface VkBindImageMemoryDeviceGroupInfoKHR {
+
+}
+
+
+/** ## VkBindImageMemoryDeviceGroupInfo ## */
+interface VkBindImageMemoryDeviceGroupInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  deviceIndexCount?: number;
+  pDeviceIndices?: Uint32Array | null;
+  splitInstanceBindRegionCount?: number;
+  pSplitInstanceBindRegions?: VkRect2D[] | null;
+}
+
+declare var VkBindImageMemoryDeviceGroupInfo: {
+  prototype: VkBindImageMemoryDeviceGroupInfo;
+  new(param?: VkBindImageMemoryDeviceGroupInfoInitializer | null): VkBindImageMemoryDeviceGroupInfo;
+  sType: VkStructureType;
+  pNext: null;
+  deviceIndexCount: number;
+  pDeviceIndices: Uint32Array | null;
+  splitInstanceBindRegionCount: number;
+  pSplitInstanceBindRegions: VkRect2D[] | null;
+}
+
+export interface VkBindImageMemoryDeviceGroupInfo {
+  sType: VkStructureType;
+  pNext: null;
+  deviceIndexCount: number;
+  pDeviceIndices: Uint32Array | null;
+  splitInstanceBindRegionCount: number;
+  pSplitInstanceBindRegions: VkRect2D[] | null;
+}
+
+
+/** ## VkBindImageMemoryInfoKHR ## */
+interface VkBindImageMemoryInfoKHRInitializer {
+
+}
+
+declare var VkBindImageMemoryInfoKHR: {
+  prototype: VkBindImageMemoryInfoKHR;
+  new(param?: VkBindImageMemoryInfoKHRInitializer | null): VkBindImageMemoryInfoKHR;
+
+}
+
+export interface VkBindImageMemoryInfoKHR {
+
+}
+
+
+/** ## VkBindImageMemoryInfo ## */
+interface VkBindImageMemoryInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  image?: VkImage | null;
+  memory?: VkDeviceMemory | null;
+  memoryOffset?: number;
+}
+
+declare var VkBindImageMemoryInfo: {
+  prototype: VkBindImageMemoryInfo;
+  new(param?: VkBindImageMemoryInfoInitializer | null): VkBindImageMemoryInfo;
+  sType: VkStructureType;
+  pNext: null;
+  image: VkImage | null;
+  memory: VkDeviceMemory | null;
+  memoryOffset: number;
+}
+
+export interface VkBindImageMemoryInfo {
+  sType: VkStructureType;
+  pNext: null;
+  image: VkImage | null;
+  memory: VkDeviceMemory | null;
+  memoryOffset: number;
+}
+
+
+/** ## VkBindBufferMemoryDeviceGroupInfoKHR ## */
+interface VkBindBufferMemoryDeviceGroupInfoKHRInitializer {
+
+}
+
+declare var VkBindBufferMemoryDeviceGroupInfoKHR: {
+  prototype: VkBindBufferMemoryDeviceGroupInfoKHR;
+  new(param?: VkBindBufferMemoryDeviceGroupInfoKHRInitializer | null): VkBindBufferMemoryDeviceGroupInfoKHR;
+
+}
+
+export interface VkBindBufferMemoryDeviceGroupInfoKHR {
+
+}
+
+
+/** ## VkBindBufferMemoryDeviceGroupInfo ## */
+interface VkBindBufferMemoryDeviceGroupInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  deviceIndexCount?: number;
+  pDeviceIndices?: Uint32Array | null;
+}
+
+declare var VkBindBufferMemoryDeviceGroupInfo: {
+  prototype: VkBindBufferMemoryDeviceGroupInfo;
+  new(param?: VkBindBufferMemoryDeviceGroupInfoInitializer | null): VkBindBufferMemoryDeviceGroupInfo;
+  sType: VkStructureType;
+  pNext: null;
+  deviceIndexCount: number;
+  pDeviceIndices: Uint32Array | null;
+}
+
+export interface VkBindBufferMemoryDeviceGroupInfo {
+  sType: VkStructureType;
+  pNext: null;
+  deviceIndexCount: number;
+  pDeviceIndices: Uint32Array | null;
+}
+
+
+/** ## VkBindBufferMemoryInfoKHR ## */
+interface VkBindBufferMemoryInfoKHRInitializer {
+
+}
+
+declare var VkBindBufferMemoryInfoKHR: {
+  prototype: VkBindBufferMemoryInfoKHR;
+  new(param?: VkBindBufferMemoryInfoKHRInitializer | null): VkBindBufferMemoryInfoKHR;
+
+}
+
+export interface VkBindBufferMemoryInfoKHR {
+
+}
+
+
+/** ## VkBindBufferMemoryInfo ## */
+interface VkBindBufferMemoryInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  buffer?: VkBuffer | null;
+  memory?: VkDeviceMemory | null;
+  memoryOffset?: number;
+}
+
+declare var VkBindBufferMemoryInfo: {
+  prototype: VkBindBufferMemoryInfo;
+  new(param?: VkBindBufferMemoryInfoInitializer | null): VkBindBufferMemoryInfo;
+  sType: VkStructureType;
+  pNext: null;
+  buffer: VkBuffer | null;
+  memory: VkDeviceMemory | null;
+  memoryOffset: number;
+}
+
+export interface VkBindBufferMemoryInfo {
+  sType: VkStructureType;
+  pNext: null;
+  buffer: VkBuffer | null;
+  memory: VkDeviceMemory | null;
+  memoryOffset: number;
+}
+
+
+/** ## VkMemoryAllocateFlagsInfoKHR ## */
+interface VkMemoryAllocateFlagsInfoKHRInitializer {
+
+}
+
+declare var VkMemoryAllocateFlagsInfoKHR: {
+  prototype: VkMemoryAllocateFlagsInfoKHR;
+  new(param?: VkMemoryAllocateFlagsInfoKHRInitializer | null): VkMemoryAllocateFlagsInfoKHR;
+
+}
+
+export interface VkMemoryAllocateFlagsInfoKHR {
+
+}
+
+
+/** ## VkMemoryAllocateFlagsInfo ## */
+interface VkMemoryAllocateFlagsInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: VkMemoryAllocateFlagBits;
+  deviceMask?: number;
+}
+
+declare var VkMemoryAllocateFlagsInfo: {
+  prototype: VkMemoryAllocateFlagsInfo;
+  new(param?: VkMemoryAllocateFlagsInfoInitializer | null): VkMemoryAllocateFlagsInfo;
+  sType: VkStructureType;
+  pNext: null;
+  flags: VkMemoryAllocateFlagBits;
+  deviceMask: number;
+}
+
+export interface VkMemoryAllocateFlagsInfo {
+  sType: VkStructureType;
+  pNext: null;
+  flags: VkMemoryAllocateFlagBits;
+  deviceMask: number;
+}
+
+
+/** ## VkPhysicalDeviceGroupPropertiesKHR ## */
+interface VkPhysicalDeviceGroupPropertiesKHRInitializer {
+
+}
+
+declare var VkPhysicalDeviceGroupPropertiesKHR: {
+  prototype: VkPhysicalDeviceGroupPropertiesKHR;
+  new(param?: VkPhysicalDeviceGroupPropertiesKHRInitializer | null): VkPhysicalDeviceGroupPropertiesKHR;
+
+}
+
+export interface VkPhysicalDeviceGroupPropertiesKHR {
+
+}
+
+
+/** ## VkPhysicalDeviceGroupProperties ## */
+interface VkPhysicalDeviceGroupPropertiesInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly physicalDeviceCount?: number;
+  readonly physicalDevices?: number[] | null;
+  readonly subsetAllocation?: number;
+}
+
+declare var VkPhysicalDeviceGroupProperties: {
+  prototype: VkPhysicalDeviceGroupProperties;
+  new(param?: VkPhysicalDeviceGroupPropertiesInitializer | null): VkPhysicalDeviceGroupProperties;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly physicalDeviceCount: number;
+  readonly physicalDevices: number[] | null;
+  readonly subsetAllocation: number;
+}
+
+export interface VkPhysicalDeviceGroupProperties {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly physicalDeviceCount: number;
+  readonly physicalDevices: number[] | null;
+  readonly subsetAllocation: number;
+}
+
+
+/** ## VkSwapchainCounterCreateInfoEXT ## */
+interface VkSwapchainCounterCreateInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  surfaceCounters?: VkSurfaceCounterFlagBitsEXT;
+}
+
+declare var VkSwapchainCounterCreateInfoEXT: {
+  prototype: VkSwapchainCounterCreateInfoEXT;
+  new(param?: VkSwapchainCounterCreateInfoEXTInitializer | null): VkSwapchainCounterCreateInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  surfaceCounters: VkSurfaceCounterFlagBitsEXT;
+}
+
+export interface VkSwapchainCounterCreateInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  surfaceCounters: VkSurfaceCounterFlagBitsEXT;
+}
+
+
+/** ## VkDisplayEventInfoEXT ## */
+interface VkDisplayEventInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  displayEvent?: VkDisplayEventTypeEXT;
+}
+
+declare var VkDisplayEventInfoEXT: {
+  prototype: VkDisplayEventInfoEXT;
+  new(param?: VkDisplayEventInfoEXTInitializer | null): VkDisplayEventInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  displayEvent: VkDisplayEventTypeEXT;
+}
+
+export interface VkDisplayEventInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  displayEvent: VkDisplayEventTypeEXT;
+}
+
+
+/** ## VkDeviceEventInfoEXT ## */
+interface VkDeviceEventInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  deviceEvent?: VkDeviceEventTypeEXT;
+}
+
+declare var VkDeviceEventInfoEXT: {
+  prototype: VkDeviceEventInfoEXT;
+  new(param?: VkDeviceEventInfoEXTInitializer | null): VkDeviceEventInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  deviceEvent: VkDeviceEventTypeEXT;
+}
+
+export interface VkDeviceEventInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  deviceEvent: VkDeviceEventTypeEXT;
+}
+
+
+/** ## VkDisplayPowerInfoEXT ## */
+interface VkDisplayPowerInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  powerState?: VkDisplayPowerStateEXT;
+}
+
+declare var VkDisplayPowerInfoEXT: {
+  prototype: VkDisplayPowerInfoEXT;
+  new(param?: VkDisplayPowerInfoEXTInitializer | null): VkDisplayPowerInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  powerState: VkDisplayPowerStateEXT;
+}
+
+export interface VkDisplayPowerInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  powerState: VkDisplayPowerStateEXT;
+}
+
+
+/** ## VkSurfaceCapabilities2EXT ## */
+interface VkSurfaceCapabilities2EXTInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly minImageCount?: number;
+  readonly maxImageCount?: number;
+  readonly currentExtent?: VkExtent2D | null;
+  readonly minImageExtent?: VkExtent2D | null;
+  readonly maxImageExtent?: VkExtent2D | null;
+  readonly maxImageArrayLayers?: number;
+  readonly supportedTransforms?: VkSurfaceTransformFlagBitsKHR;
+  readonly currentTransform?: VkSurfaceTransformFlagBitsKHR;
+  readonly supportedCompositeAlpha?: VkCompositeAlphaFlagBitsKHR;
+  readonly supportedUsageFlags?: VkImageUsageFlagBits;
+  readonly supportedSurfaceCounters?: VkSurfaceCounterFlagBitsEXT;
+}
+
+declare var VkSurfaceCapabilities2EXT: {
+  prototype: VkSurfaceCapabilities2EXT;
+  new(param?: VkSurfaceCapabilities2EXTInitializer | null): VkSurfaceCapabilities2EXT;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly minImageCount: number;
+  readonly maxImageCount: number;
+  readonly currentExtent: VkExtent2D | null;
+  readonly minImageExtent: VkExtent2D | null;
+  readonly maxImageExtent: VkExtent2D | null;
+  readonly maxImageArrayLayers: number;
+  readonly supportedTransforms: VkSurfaceTransformFlagBitsKHR;
+  readonly currentTransform: VkSurfaceTransformFlagBitsKHR;
+  readonly supportedCompositeAlpha: VkCompositeAlphaFlagBitsKHR;
+  readonly supportedUsageFlags: VkImageUsageFlagBits;
+  readonly supportedSurfaceCounters: VkSurfaceCounterFlagBitsEXT;
+}
+
+export interface VkSurfaceCapabilities2EXT {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly minImageCount: number;
+  readonly maxImageCount: number;
+  readonly currentExtent: VkExtent2D | null;
+  readonly minImageExtent: VkExtent2D | null;
+  readonly maxImageExtent: VkExtent2D | null;
+  readonly maxImageArrayLayers: number;
+  readonly supportedTransforms: VkSurfaceTransformFlagBitsKHR;
+  readonly currentTransform: VkSurfaceTransformFlagBitsKHR;
+  readonly supportedCompositeAlpha: VkCompositeAlphaFlagBitsKHR;
+  readonly supportedUsageFlags: VkImageUsageFlagBits;
+  readonly supportedSurfaceCounters: VkSurfaceCounterFlagBitsEXT;
+}
+
+
+/** ## VkRenderPassMultiviewCreateInfoKHR ## */
+interface VkRenderPassMultiviewCreateInfoKHRInitializer {
+
+}
+
+declare var VkRenderPassMultiviewCreateInfoKHR: {
+  prototype: VkRenderPassMultiviewCreateInfoKHR;
+  new(param?: VkRenderPassMultiviewCreateInfoKHRInitializer | null): VkRenderPassMultiviewCreateInfoKHR;
+
+}
+
+export interface VkRenderPassMultiviewCreateInfoKHR {
+
+}
+
+
+/** ## VkRenderPassMultiviewCreateInfo ## */
+interface VkRenderPassMultiviewCreateInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  subpassCount?: number;
+  pViewMasks?: Uint32Array | null;
+  dependencyCount?: number;
+  pViewOffsets?: Int32Array | null;
+  correlationMaskCount?: number;
+  pCorrelationMasks?: Uint32Array | null;
+}
+
+declare var VkRenderPassMultiviewCreateInfo: {
+  prototype: VkRenderPassMultiviewCreateInfo;
+  new(param?: VkRenderPassMultiviewCreateInfoInitializer | null): VkRenderPassMultiviewCreateInfo;
+  sType: VkStructureType;
+  pNext: null;
+  subpassCount: number;
+  pViewMasks: Uint32Array | null;
+  dependencyCount: number;
+  pViewOffsets: Int32Array | null;
+  correlationMaskCount: number;
+  pCorrelationMasks: Uint32Array | null;
+}
+
+export interface VkRenderPassMultiviewCreateInfo {
+  sType: VkStructureType;
+  pNext: null;
+  subpassCount: number;
+  pViewMasks: Uint32Array | null;
+  dependencyCount: number;
+  pViewOffsets: Int32Array | null;
+  correlationMaskCount: number;
+  pCorrelationMasks: Uint32Array | null;
+}
+
+
+/** ## VkPhysicalDeviceMultiviewPropertiesKHR ## */
+interface VkPhysicalDeviceMultiviewPropertiesKHRInitializer {
+
+}
+
+declare var VkPhysicalDeviceMultiviewPropertiesKHR: {
+  prototype: VkPhysicalDeviceMultiviewPropertiesKHR;
+  new(param?: VkPhysicalDeviceMultiviewPropertiesKHRInitializer | null): VkPhysicalDeviceMultiviewPropertiesKHR;
+
+}
+
+export interface VkPhysicalDeviceMultiviewPropertiesKHR {
+
+}
+
+
+/** ## VkPhysicalDeviceMultiviewProperties ## */
+interface VkPhysicalDeviceMultiviewPropertiesInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly maxMultiviewViewCount?: number;
+  readonly maxMultiviewInstanceIndex?: number;
+}
+
+declare var VkPhysicalDeviceMultiviewProperties: {
+  prototype: VkPhysicalDeviceMultiviewProperties;
+  new(param?: VkPhysicalDeviceMultiviewPropertiesInitializer | null): VkPhysicalDeviceMultiviewProperties;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly maxMultiviewViewCount: number;
+  readonly maxMultiviewInstanceIndex: number;
+}
+
+export interface VkPhysicalDeviceMultiviewProperties {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly maxMultiviewViewCount: number;
+  readonly maxMultiviewInstanceIndex: number;
+}
+
+
+/** ## VkPhysicalDeviceMultiviewFeaturesKHR ## */
+interface VkPhysicalDeviceMultiviewFeaturesKHRInitializer {
+
+}
+
+declare var VkPhysicalDeviceMultiviewFeaturesKHR: {
+  prototype: VkPhysicalDeviceMultiviewFeaturesKHR;
+  new(param?: VkPhysicalDeviceMultiviewFeaturesKHRInitializer | null): VkPhysicalDeviceMultiviewFeaturesKHR;
+
+}
+
+export interface VkPhysicalDeviceMultiviewFeaturesKHR {
+
+}
+
+
+/** ## VkPhysicalDeviceMultiviewFeatures ## */
+interface VkPhysicalDeviceMultiviewFeaturesInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  multiview?: number;
+  multiviewGeometryShader?: number;
+  multiviewTessellationShader?: number;
+}
+
+declare var VkPhysicalDeviceMultiviewFeatures: {
+  prototype: VkPhysicalDeviceMultiviewFeatures;
+  new(param?: VkPhysicalDeviceMultiviewFeaturesInitializer | null): VkPhysicalDeviceMultiviewFeatures;
+  sType: VkStructureType;
+  pNext: null;
+  multiview: number;
+  multiviewGeometryShader: number;
+  multiviewTessellationShader: number;
+}
+
+export interface VkPhysicalDeviceMultiviewFeatures {
+  sType: VkStructureType;
+  pNext: null;
+  multiview: number;
+  multiviewGeometryShader: number;
+  multiviewTessellationShader: number;
+}
+
+
+/** ## VkFenceGetFdInfoKHR ## */
+interface VkFenceGetFdInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  fence?: VkFence | null;
+  handleType?: VkExternalFenceHandleTypeFlagBits;
+}
+
+declare var VkFenceGetFdInfoKHR: {
+  prototype: VkFenceGetFdInfoKHR;
+  new(param?: VkFenceGetFdInfoKHRInitializer | null): VkFenceGetFdInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  fence: VkFence | null;
+  handleType: VkExternalFenceHandleTypeFlagBits;
+}
+
+export interface VkFenceGetFdInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  fence: VkFence | null;
+  handleType: VkExternalFenceHandleTypeFlagBits;
+}
+
+
+/** ## VkImportFenceFdInfoKHR ## */
+interface VkImportFenceFdInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  fence?: VkFence | null;
+  flags?: VkFenceImportFlagBits;
+  handleType?: VkExternalFenceHandleTypeFlagBits;
+  fd?: number;
+}
+
+declare var VkImportFenceFdInfoKHR: {
+  prototype: VkImportFenceFdInfoKHR;
+  new(param?: VkImportFenceFdInfoKHRInitializer | null): VkImportFenceFdInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  fence: VkFence | null;
+  flags: VkFenceImportFlagBits;
+  handleType: VkExternalFenceHandleTypeFlagBits;
+  fd: number;
+}
+
+export interface VkImportFenceFdInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  fence: VkFence | null;
+  flags: VkFenceImportFlagBits;
+  handleType: VkExternalFenceHandleTypeFlagBits;
+  fd: number;
+}
+
+
+/** ## VkFenceGetWin32HandleInfoKHR ## */
+interface VkFenceGetWin32HandleInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  fence?: VkFence | null;
+  handleType?: VkExternalFenceHandleTypeFlagBits;
+}
+
+declare var VkFenceGetWin32HandleInfoKHR: {
+  prototype: VkFenceGetWin32HandleInfoKHR;
+  new(param?: VkFenceGetWin32HandleInfoKHRInitializer | null): VkFenceGetWin32HandleInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  fence: VkFence | null;
+  handleType: VkExternalFenceHandleTypeFlagBits;
+}
+
+export interface VkFenceGetWin32HandleInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  fence: VkFence | null;
+  handleType: VkExternalFenceHandleTypeFlagBits;
+}
+
+
+/** ## VkExportFenceWin32HandleInfoKHR ## */
+interface VkExportFenceWin32HandleInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  pAttributes?: null;
+  dwAccess?: null;
+  name?: null;
+}
+
+declare var VkExportFenceWin32HandleInfoKHR: {
+  prototype: VkExportFenceWin32HandleInfoKHR;
+  new(param?: VkExportFenceWin32HandleInfoKHRInitializer | null): VkExportFenceWin32HandleInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  pAttributes: null;
+  dwAccess: null;
+  name: null;
+}
+
+export interface VkExportFenceWin32HandleInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  pAttributes: null;
+  dwAccess: null;
+  name: null;
+}
+
+
+/** ## VkImportFenceWin32HandleInfoKHR ## */
+interface VkImportFenceWin32HandleInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  fence?: VkFence | null;
+  flags?: VkFenceImportFlagBits;
+  handleType?: VkExternalFenceHandleTypeFlagBits;
+  handle?: null;
+  name?: null;
+}
+
+declare var VkImportFenceWin32HandleInfoKHR: {
+  prototype: VkImportFenceWin32HandleInfoKHR;
+  new(param?: VkImportFenceWin32HandleInfoKHRInitializer | null): VkImportFenceWin32HandleInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  fence: VkFence | null;
+  flags: VkFenceImportFlagBits;
+  handleType: VkExternalFenceHandleTypeFlagBits;
+  handle: null;
+  name: null;
+}
+
+export interface VkImportFenceWin32HandleInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  fence: VkFence | null;
+  flags: VkFenceImportFlagBits;
+  handleType: VkExternalFenceHandleTypeFlagBits;
+  handle: null;
+  name: null;
+}
+
+
+/** ## VkExportFenceCreateInfoKHR ## */
+interface VkExportFenceCreateInfoKHRInitializer {
+
+}
+
+declare var VkExportFenceCreateInfoKHR: {
+  prototype: VkExportFenceCreateInfoKHR;
+  new(param?: VkExportFenceCreateInfoKHRInitializer | null): VkExportFenceCreateInfoKHR;
+
+}
+
+export interface VkExportFenceCreateInfoKHR {
+
+}
+
+
+/** ## VkExportFenceCreateInfo ## */
+interface VkExportFenceCreateInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  handleTypes?: VkExternalFenceHandleTypeFlagBits;
+}
+
+declare var VkExportFenceCreateInfo: {
+  prototype: VkExportFenceCreateInfo;
+  new(param?: VkExportFenceCreateInfoInitializer | null): VkExportFenceCreateInfo;
+  sType: VkStructureType;
+  pNext: null;
+  handleTypes: VkExternalFenceHandleTypeFlagBits;
+}
+
+export interface VkExportFenceCreateInfo {
+  sType: VkStructureType;
+  pNext: null;
+  handleTypes: VkExternalFenceHandleTypeFlagBits;
+}
+
+
+/** ## VkExternalFencePropertiesKHR ## */
+interface VkExternalFencePropertiesKHRInitializer {
+
+}
+
+declare var VkExternalFencePropertiesKHR: {
+  prototype: VkExternalFencePropertiesKHR;
+  new(param?: VkExternalFencePropertiesKHRInitializer | null): VkExternalFencePropertiesKHR;
+
+}
+
+export interface VkExternalFencePropertiesKHR {
+
+}
+
+
+/** ## VkExternalFenceProperties ## */
+interface VkExternalFencePropertiesInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly exportFromImportedHandleTypes?: VkExternalFenceHandleTypeFlagBits;
+  readonly compatibleHandleTypes?: VkExternalFenceHandleTypeFlagBits;
+  readonly externalFenceFeatures?: VkExternalFenceFeatureFlagBits;
+}
+
+declare var VkExternalFenceProperties: {
+  prototype: VkExternalFenceProperties;
+  new(param?: VkExternalFencePropertiesInitializer | null): VkExternalFenceProperties;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly exportFromImportedHandleTypes: VkExternalFenceHandleTypeFlagBits;
+  readonly compatibleHandleTypes: VkExternalFenceHandleTypeFlagBits;
+  readonly externalFenceFeatures: VkExternalFenceFeatureFlagBits;
+}
+
+export interface VkExternalFenceProperties {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly exportFromImportedHandleTypes: VkExternalFenceHandleTypeFlagBits;
+  readonly compatibleHandleTypes: VkExternalFenceHandleTypeFlagBits;
+  readonly externalFenceFeatures: VkExternalFenceFeatureFlagBits;
+}
+
+
+/** ## VkPhysicalDeviceExternalFenceInfoKHR ## */
+interface VkPhysicalDeviceExternalFenceInfoKHRInitializer {
+
+}
+
+declare var VkPhysicalDeviceExternalFenceInfoKHR: {
+  prototype: VkPhysicalDeviceExternalFenceInfoKHR;
+  new(param?: VkPhysicalDeviceExternalFenceInfoKHRInitializer | null): VkPhysicalDeviceExternalFenceInfoKHR;
+
+}
+
+export interface VkPhysicalDeviceExternalFenceInfoKHR {
+
+}
+
+
+/** ## VkPhysicalDeviceExternalFenceInfo ## */
+interface VkPhysicalDeviceExternalFenceInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  handleType?: VkExternalFenceHandleTypeFlagBits;
+}
+
+declare var VkPhysicalDeviceExternalFenceInfo: {
+  prototype: VkPhysicalDeviceExternalFenceInfo;
+  new(param?: VkPhysicalDeviceExternalFenceInfoInitializer | null): VkPhysicalDeviceExternalFenceInfo;
+  sType: VkStructureType;
+  pNext: null;
+  handleType: VkExternalFenceHandleTypeFlagBits;
+}
+
+export interface VkPhysicalDeviceExternalFenceInfo {
+  sType: VkStructureType;
+  pNext: null;
+  handleType: VkExternalFenceHandleTypeFlagBits;
+}
+
+
+/** ## VkSemaphoreGetFdInfoKHR ## */
+interface VkSemaphoreGetFdInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  semaphore?: VkSemaphore | null;
+  handleType?: VkExternalSemaphoreHandleTypeFlagBits;
+}
+
+declare var VkSemaphoreGetFdInfoKHR: {
+  prototype: VkSemaphoreGetFdInfoKHR;
+  new(param?: VkSemaphoreGetFdInfoKHRInitializer | null): VkSemaphoreGetFdInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  semaphore: VkSemaphore | null;
+  handleType: VkExternalSemaphoreHandleTypeFlagBits;
+}
+
+export interface VkSemaphoreGetFdInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  semaphore: VkSemaphore | null;
+  handleType: VkExternalSemaphoreHandleTypeFlagBits;
+}
+
+
+/** ## VkImportSemaphoreFdInfoKHR ## */
+interface VkImportSemaphoreFdInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  semaphore?: VkSemaphore | null;
+  flags?: VkSemaphoreImportFlagBits;
+  handleType?: VkExternalSemaphoreHandleTypeFlagBits;
+  fd?: number;
+}
+
+declare var VkImportSemaphoreFdInfoKHR: {
+  prototype: VkImportSemaphoreFdInfoKHR;
+  new(param?: VkImportSemaphoreFdInfoKHRInitializer | null): VkImportSemaphoreFdInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  semaphore: VkSemaphore | null;
+  flags: VkSemaphoreImportFlagBits;
+  handleType: VkExternalSemaphoreHandleTypeFlagBits;
+  fd: number;
+}
+
+export interface VkImportSemaphoreFdInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  semaphore: VkSemaphore | null;
+  flags: VkSemaphoreImportFlagBits;
+  handleType: VkExternalSemaphoreHandleTypeFlagBits;
+  fd: number;
+}
+
+
+/** ## VkSemaphoreGetWin32HandleInfoKHR ## */
+interface VkSemaphoreGetWin32HandleInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  semaphore?: VkSemaphore | null;
+  handleType?: VkExternalSemaphoreHandleTypeFlagBits;
+}
+
+declare var VkSemaphoreGetWin32HandleInfoKHR: {
+  prototype: VkSemaphoreGetWin32HandleInfoKHR;
+  new(param?: VkSemaphoreGetWin32HandleInfoKHRInitializer | null): VkSemaphoreGetWin32HandleInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  semaphore: VkSemaphore | null;
+  handleType: VkExternalSemaphoreHandleTypeFlagBits;
+}
+
+export interface VkSemaphoreGetWin32HandleInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  semaphore: VkSemaphore | null;
+  handleType: VkExternalSemaphoreHandleTypeFlagBits;
+}
+
+
+/** ## VkD3D12FenceSubmitInfoKHR ## */
+interface VkD3D12FenceSubmitInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  waitSemaphoreValuesCount?: number;
+  pWaitSemaphoreValues?: BigUint64Array | null;
+  signalSemaphoreValuesCount?: number;
+  pSignalSemaphoreValues?: BigUint64Array | null;
+}
+
+declare var VkD3D12FenceSubmitInfoKHR: {
+  prototype: VkD3D12FenceSubmitInfoKHR;
+  new(param?: VkD3D12FenceSubmitInfoKHRInitializer | null): VkD3D12FenceSubmitInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  waitSemaphoreValuesCount: number;
+  pWaitSemaphoreValues: BigUint64Array | null;
+  signalSemaphoreValuesCount: number;
+  pSignalSemaphoreValues: BigUint64Array | null;
+}
+
+export interface VkD3D12FenceSubmitInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  waitSemaphoreValuesCount: number;
+  pWaitSemaphoreValues: BigUint64Array | null;
+  signalSemaphoreValuesCount: number;
+  pSignalSemaphoreValues: BigUint64Array | null;
+}
+
+
+/** ## VkExportSemaphoreWin32HandleInfoKHR ## */
+interface VkExportSemaphoreWin32HandleInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  pAttributes?: null;
+  dwAccess?: null;
+  name?: null;
+}
+
+declare var VkExportSemaphoreWin32HandleInfoKHR: {
+  prototype: VkExportSemaphoreWin32HandleInfoKHR;
+  new(param?: VkExportSemaphoreWin32HandleInfoKHRInitializer | null): VkExportSemaphoreWin32HandleInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  pAttributes: null;
+  dwAccess: null;
+  name: null;
+}
+
+export interface VkExportSemaphoreWin32HandleInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  pAttributes: null;
+  dwAccess: null;
+  name: null;
+}
+
+
+/** ## VkImportSemaphoreWin32HandleInfoKHR ## */
+interface VkImportSemaphoreWin32HandleInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  semaphore?: VkSemaphore | null;
+  flags?: VkSemaphoreImportFlagBits;
+  handleType?: VkExternalSemaphoreHandleTypeFlagBits;
+  handle?: null;
+  name?: null;
+}
+
+declare var VkImportSemaphoreWin32HandleInfoKHR: {
+  prototype: VkImportSemaphoreWin32HandleInfoKHR;
+  new(param?: VkImportSemaphoreWin32HandleInfoKHRInitializer | null): VkImportSemaphoreWin32HandleInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  semaphore: VkSemaphore | null;
+  flags: VkSemaphoreImportFlagBits;
+  handleType: VkExternalSemaphoreHandleTypeFlagBits;
+  handle: null;
+  name: null;
+}
+
+export interface VkImportSemaphoreWin32HandleInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  semaphore: VkSemaphore | null;
+  flags: VkSemaphoreImportFlagBits;
+  handleType: VkExternalSemaphoreHandleTypeFlagBits;
+  handle: null;
+  name: null;
+}
+
+
+/** ## VkExportSemaphoreCreateInfoKHR ## */
+interface VkExportSemaphoreCreateInfoKHRInitializer {
+
+}
+
+declare var VkExportSemaphoreCreateInfoKHR: {
+  prototype: VkExportSemaphoreCreateInfoKHR;
+  new(param?: VkExportSemaphoreCreateInfoKHRInitializer | null): VkExportSemaphoreCreateInfoKHR;
+
+}
+
+export interface VkExportSemaphoreCreateInfoKHR {
+
+}
+
+
+/** ## VkExportSemaphoreCreateInfo ## */
+interface VkExportSemaphoreCreateInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  handleTypes?: VkExternalSemaphoreHandleTypeFlagBits;
+}
+
+declare var VkExportSemaphoreCreateInfo: {
+  prototype: VkExportSemaphoreCreateInfo;
+  new(param?: VkExportSemaphoreCreateInfoInitializer | null): VkExportSemaphoreCreateInfo;
+  sType: VkStructureType;
+  pNext: null;
+  handleTypes: VkExternalSemaphoreHandleTypeFlagBits;
+}
+
+export interface VkExportSemaphoreCreateInfo {
+  sType: VkStructureType;
+  pNext: null;
+  handleTypes: VkExternalSemaphoreHandleTypeFlagBits;
+}
+
+
+/** ## VkExternalSemaphorePropertiesKHR ## */
+interface VkExternalSemaphorePropertiesKHRInitializer {
+
+}
+
+declare var VkExternalSemaphorePropertiesKHR: {
+  prototype: VkExternalSemaphorePropertiesKHR;
+  new(param?: VkExternalSemaphorePropertiesKHRInitializer | null): VkExternalSemaphorePropertiesKHR;
+
+}
+
+export interface VkExternalSemaphorePropertiesKHR {
+
+}
+
+
+/** ## VkExternalSemaphoreProperties ## */
+interface VkExternalSemaphorePropertiesInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly exportFromImportedHandleTypes?: VkExternalSemaphoreHandleTypeFlagBits;
+  readonly compatibleHandleTypes?: VkExternalSemaphoreHandleTypeFlagBits;
+  readonly externalSemaphoreFeatures?: VkExternalSemaphoreFeatureFlagBits;
+}
+
+declare var VkExternalSemaphoreProperties: {
+  prototype: VkExternalSemaphoreProperties;
+  new(param?: VkExternalSemaphorePropertiesInitializer | null): VkExternalSemaphoreProperties;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly exportFromImportedHandleTypes: VkExternalSemaphoreHandleTypeFlagBits;
+  readonly compatibleHandleTypes: VkExternalSemaphoreHandleTypeFlagBits;
+  readonly externalSemaphoreFeatures: VkExternalSemaphoreFeatureFlagBits;
+}
+
+export interface VkExternalSemaphoreProperties {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly exportFromImportedHandleTypes: VkExternalSemaphoreHandleTypeFlagBits;
+  readonly compatibleHandleTypes: VkExternalSemaphoreHandleTypeFlagBits;
+  readonly externalSemaphoreFeatures: VkExternalSemaphoreFeatureFlagBits;
+}
+
+
+/** ## VkPhysicalDeviceExternalSemaphoreInfoKHR ## */
+interface VkPhysicalDeviceExternalSemaphoreInfoKHRInitializer {
+
+}
+
+declare var VkPhysicalDeviceExternalSemaphoreInfoKHR: {
+  prototype: VkPhysicalDeviceExternalSemaphoreInfoKHR;
+  new(param?: VkPhysicalDeviceExternalSemaphoreInfoKHRInitializer | null): VkPhysicalDeviceExternalSemaphoreInfoKHR;
+
+}
+
+export interface VkPhysicalDeviceExternalSemaphoreInfoKHR {
+
+}
+
+
+/** ## VkPhysicalDeviceExternalSemaphoreInfo ## */
+interface VkPhysicalDeviceExternalSemaphoreInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  handleType?: VkExternalSemaphoreHandleTypeFlagBits;
+}
+
+declare var VkPhysicalDeviceExternalSemaphoreInfo: {
+  prototype: VkPhysicalDeviceExternalSemaphoreInfo;
+  new(param?: VkPhysicalDeviceExternalSemaphoreInfoInitializer | null): VkPhysicalDeviceExternalSemaphoreInfo;
+  sType: VkStructureType;
+  pNext: null;
+  handleType: VkExternalSemaphoreHandleTypeFlagBits;
+}
+
+export interface VkPhysicalDeviceExternalSemaphoreInfo {
+  sType: VkStructureType;
+  pNext: null;
+  handleType: VkExternalSemaphoreHandleTypeFlagBits;
+}
+
+
+/** ## VkWin32KeyedMutexAcquireReleaseInfoKHR ## */
+interface VkWin32KeyedMutexAcquireReleaseInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  acquireCount?: number;
+  pAcquireSyncs?: VkDeviceMemory[] | null;
+  pAcquireKeys?: BigUint64Array | null;
+  pAcquireTimeouts?: Uint32Array | null;
+  releaseCount?: number;
+  pReleaseSyncs?: VkDeviceMemory[] | null;
+  pReleaseKeys?: BigUint64Array | null;
+}
+
+declare var VkWin32KeyedMutexAcquireReleaseInfoKHR: {
+  prototype: VkWin32KeyedMutexAcquireReleaseInfoKHR;
+  new(param?: VkWin32KeyedMutexAcquireReleaseInfoKHRInitializer | null): VkWin32KeyedMutexAcquireReleaseInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  acquireCount: number;
+  pAcquireSyncs: VkDeviceMemory[] | null;
+  pAcquireKeys: BigUint64Array | null;
+  pAcquireTimeouts: Uint32Array | null;
+  releaseCount: number;
+  pReleaseSyncs: VkDeviceMemory[] | null;
+  pReleaseKeys: BigUint64Array | null;
+}
+
+export interface VkWin32KeyedMutexAcquireReleaseInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  acquireCount: number;
+  pAcquireSyncs: VkDeviceMemory[] | null;
+  pAcquireKeys: BigUint64Array | null;
+  pAcquireTimeouts: Uint32Array | null;
+  releaseCount: number;
+  pReleaseSyncs: VkDeviceMemory[] | null;
+  pReleaseKeys: BigUint64Array | null;
+}
+
+
+/** ## VkMemoryGetFdInfoKHR ## */
+interface VkMemoryGetFdInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  memory?: VkDeviceMemory | null;
+  handleType?: VkExternalMemoryHandleTypeFlagBits;
+}
+
+declare var VkMemoryGetFdInfoKHR: {
+  prototype: VkMemoryGetFdInfoKHR;
+  new(param?: VkMemoryGetFdInfoKHRInitializer | null): VkMemoryGetFdInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  memory: VkDeviceMemory | null;
+  handleType: VkExternalMemoryHandleTypeFlagBits;
+}
+
+export interface VkMemoryGetFdInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  memory: VkDeviceMemory | null;
+  handleType: VkExternalMemoryHandleTypeFlagBits;
+}
+
+
+/** ## VkMemoryFdPropertiesKHR ## */
+interface VkMemoryFdPropertiesKHRInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly memoryTypeBits?: number;
+}
+
+declare var VkMemoryFdPropertiesKHR: {
+  prototype: VkMemoryFdPropertiesKHR;
+  new(param?: VkMemoryFdPropertiesKHRInitializer | null): VkMemoryFdPropertiesKHR;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly memoryTypeBits: number;
+}
+
+export interface VkMemoryFdPropertiesKHR {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly memoryTypeBits: number;
+}
+
+
+/** ## VkImportMemoryFdInfoKHR ## */
+interface VkImportMemoryFdInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  handleType?: VkExternalMemoryHandleTypeFlagBits;
+  fd?: number;
+}
+
+declare var VkImportMemoryFdInfoKHR: {
+  prototype: VkImportMemoryFdInfoKHR;
+  new(param?: VkImportMemoryFdInfoKHRInitializer | null): VkImportMemoryFdInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  handleType: VkExternalMemoryHandleTypeFlagBits;
+  fd: number;
+}
+
+export interface VkImportMemoryFdInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  handleType: VkExternalMemoryHandleTypeFlagBits;
+  fd: number;
+}
+
+
+/** ## VkMemoryGetWin32HandleInfoKHR ## */
+interface VkMemoryGetWin32HandleInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  memory?: VkDeviceMemory | null;
+  handleType?: VkExternalMemoryHandleTypeFlagBits;
+}
+
+declare var VkMemoryGetWin32HandleInfoKHR: {
+  prototype: VkMemoryGetWin32HandleInfoKHR;
+  new(param?: VkMemoryGetWin32HandleInfoKHRInitializer | null): VkMemoryGetWin32HandleInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  memory: VkDeviceMemory | null;
+  handleType: VkExternalMemoryHandleTypeFlagBits;
+}
+
+export interface VkMemoryGetWin32HandleInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  memory: VkDeviceMemory | null;
+  handleType: VkExternalMemoryHandleTypeFlagBits;
+}
+
+
+/** ## VkMemoryWin32HandlePropertiesKHR ## */
+interface VkMemoryWin32HandlePropertiesKHRInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly memoryTypeBits?: number;
+}
+
+declare var VkMemoryWin32HandlePropertiesKHR: {
+  prototype: VkMemoryWin32HandlePropertiesKHR;
+  new(param?: VkMemoryWin32HandlePropertiesKHRInitializer | null): VkMemoryWin32HandlePropertiesKHR;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly memoryTypeBits: number;
+}
+
+export interface VkMemoryWin32HandlePropertiesKHR {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly memoryTypeBits: number;
+}
+
+
+/** ## VkExportMemoryWin32HandleInfoKHR ## */
+interface VkExportMemoryWin32HandleInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  pAttributes?: null;
+  dwAccess?: null;
+  name?: null;
+}
+
+declare var VkExportMemoryWin32HandleInfoKHR: {
+  prototype: VkExportMemoryWin32HandleInfoKHR;
+  new(param?: VkExportMemoryWin32HandleInfoKHRInitializer | null): VkExportMemoryWin32HandleInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  pAttributes: null;
+  dwAccess: null;
+  name: null;
+}
+
+export interface VkExportMemoryWin32HandleInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  pAttributes: null;
+  dwAccess: null;
+  name: null;
+}
+
+
+/** ## VkImportMemoryWin32HandleInfoKHR ## */
+interface VkImportMemoryWin32HandleInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  handleType?: VkExternalMemoryHandleTypeFlagBits;
+  handle?: null;
+  name?: null;
+}
+
+declare var VkImportMemoryWin32HandleInfoKHR: {
+  prototype: VkImportMemoryWin32HandleInfoKHR;
+  new(param?: VkImportMemoryWin32HandleInfoKHRInitializer | null): VkImportMemoryWin32HandleInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  handleType: VkExternalMemoryHandleTypeFlagBits;
+  handle: null;
+  name: null;
+}
+
+export interface VkImportMemoryWin32HandleInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  handleType: VkExternalMemoryHandleTypeFlagBits;
+  handle: null;
+  name: null;
+}
+
+
+/** ## VkExportMemoryAllocateInfoKHR ## */
+interface VkExportMemoryAllocateInfoKHRInitializer {
+
+}
+
+declare var VkExportMemoryAllocateInfoKHR: {
+  prototype: VkExportMemoryAllocateInfoKHR;
+  new(param?: VkExportMemoryAllocateInfoKHRInitializer | null): VkExportMemoryAllocateInfoKHR;
+
+}
+
+export interface VkExportMemoryAllocateInfoKHR {
+
+}
+
+
+/** ## VkExportMemoryAllocateInfo ## */
+interface VkExportMemoryAllocateInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  handleTypes?: VkExternalMemoryHandleTypeFlagBits;
+}
+
+declare var VkExportMemoryAllocateInfo: {
+  prototype: VkExportMemoryAllocateInfo;
+  new(param?: VkExportMemoryAllocateInfoInitializer | null): VkExportMemoryAllocateInfo;
+  sType: VkStructureType;
+  pNext: null;
+  handleTypes: VkExternalMemoryHandleTypeFlagBits;
+}
+
+export interface VkExportMemoryAllocateInfo {
+  sType: VkStructureType;
+  pNext: null;
+  handleTypes: VkExternalMemoryHandleTypeFlagBits;
+}
+
+
+/** ## VkExternalMemoryBufferCreateInfoKHR ## */
+interface VkExternalMemoryBufferCreateInfoKHRInitializer {
+
+}
+
+declare var VkExternalMemoryBufferCreateInfoKHR: {
+  prototype: VkExternalMemoryBufferCreateInfoKHR;
+  new(param?: VkExternalMemoryBufferCreateInfoKHRInitializer | null): VkExternalMemoryBufferCreateInfoKHR;
+
+}
+
+export interface VkExternalMemoryBufferCreateInfoKHR {
+
+}
+
+
+/** ## VkExternalMemoryBufferCreateInfo ## */
+interface VkExternalMemoryBufferCreateInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  handleTypes?: VkExternalMemoryHandleTypeFlagBits;
+}
+
+declare var VkExternalMemoryBufferCreateInfo: {
+  prototype: VkExternalMemoryBufferCreateInfo;
+  new(param?: VkExternalMemoryBufferCreateInfoInitializer | null): VkExternalMemoryBufferCreateInfo;
+  sType: VkStructureType;
+  pNext: null;
+  handleTypes: VkExternalMemoryHandleTypeFlagBits;
+}
+
+export interface VkExternalMemoryBufferCreateInfo {
+  sType: VkStructureType;
+  pNext: null;
+  handleTypes: VkExternalMemoryHandleTypeFlagBits;
+}
+
+
+/** ## VkExternalMemoryImageCreateInfoKHR ## */
+interface VkExternalMemoryImageCreateInfoKHRInitializer {
+
+}
+
+declare var VkExternalMemoryImageCreateInfoKHR: {
+  prototype: VkExternalMemoryImageCreateInfoKHR;
+  new(param?: VkExternalMemoryImageCreateInfoKHRInitializer | null): VkExternalMemoryImageCreateInfoKHR;
+
+}
+
+export interface VkExternalMemoryImageCreateInfoKHR {
+
+}
+
+
+/** ## VkExternalMemoryImageCreateInfo ## */
+interface VkExternalMemoryImageCreateInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  handleTypes?: VkExternalMemoryHandleTypeFlagBits;
+}
+
+declare var VkExternalMemoryImageCreateInfo: {
+  prototype: VkExternalMemoryImageCreateInfo;
+  new(param?: VkExternalMemoryImageCreateInfoInitializer | null): VkExternalMemoryImageCreateInfo;
+  sType: VkStructureType;
+  pNext: null;
+  handleTypes: VkExternalMemoryHandleTypeFlagBits;
+}
+
+export interface VkExternalMemoryImageCreateInfo {
+  sType: VkStructureType;
+  pNext: null;
+  handleTypes: VkExternalMemoryHandleTypeFlagBits;
+}
+
+
+/** ## VkPhysicalDeviceIDPropertiesKHR ## */
+interface VkPhysicalDeviceIDPropertiesKHRInitializer {
+
+}
+
+declare var VkPhysicalDeviceIDPropertiesKHR: {
+  prototype: VkPhysicalDeviceIDPropertiesKHR;
+  new(param?: VkPhysicalDeviceIDPropertiesKHRInitializer | null): VkPhysicalDeviceIDPropertiesKHR;
+
+}
+
+export interface VkPhysicalDeviceIDPropertiesKHR {
+
+}
+
+
+/** ## VkPhysicalDeviceIDProperties ## */
+interface VkPhysicalDeviceIDPropertiesInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly deviceUUID?: number[] | null;
+  readonly driverUUID?: number[] | null;
+  readonly deviceLUID?: number[] | null;
+  readonly deviceNodeMask?: number;
+  readonly deviceLUIDValid?: number;
+}
+
+declare var VkPhysicalDeviceIDProperties: {
+  prototype: VkPhysicalDeviceIDProperties;
+  new(param?: VkPhysicalDeviceIDPropertiesInitializer | null): VkPhysicalDeviceIDProperties;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly deviceUUID: number[] | null;
+  readonly driverUUID: number[] | null;
+  readonly deviceLUID: number[] | null;
+  readonly deviceNodeMask: number;
+  readonly deviceLUIDValid: number;
+}
+
+export interface VkPhysicalDeviceIDProperties {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly deviceUUID: number[] | null;
+  readonly driverUUID: number[] | null;
+  readonly deviceLUID: number[] | null;
+  readonly deviceNodeMask: number;
+  readonly deviceLUIDValid: number;
+}
+
+
+/** ## VkExternalBufferPropertiesKHR ## */
+interface VkExternalBufferPropertiesKHRInitializer {
+
+}
+
+declare var VkExternalBufferPropertiesKHR: {
+  prototype: VkExternalBufferPropertiesKHR;
+  new(param?: VkExternalBufferPropertiesKHRInitializer | null): VkExternalBufferPropertiesKHR;
+
+}
+
+export interface VkExternalBufferPropertiesKHR {
+
+}
+
+
+/** ## VkExternalMemoryProperties ## */
+interface VkExternalMemoryPropertiesInitializer {
+  readonly externalMemoryFeatures?: VkExternalMemoryFeatureFlagBits;
+  readonly exportFromImportedHandleTypes?: VkExternalMemoryHandleTypeFlagBits;
+  readonly compatibleHandleTypes?: VkExternalMemoryHandleTypeFlagBits;
+}
+
+declare var VkExternalMemoryProperties: {
+  prototype: VkExternalMemoryProperties;
+  new(param?: VkExternalMemoryPropertiesInitializer | null): VkExternalMemoryProperties;
+  readonly externalMemoryFeatures: VkExternalMemoryFeatureFlagBits;
+  readonly exportFromImportedHandleTypes: VkExternalMemoryHandleTypeFlagBits;
+  readonly compatibleHandleTypes: VkExternalMemoryHandleTypeFlagBits;
+}
+
+export interface VkExternalMemoryProperties {
+  readonly externalMemoryFeatures: VkExternalMemoryFeatureFlagBits;
+  readonly exportFromImportedHandleTypes: VkExternalMemoryHandleTypeFlagBits;
+  readonly compatibleHandleTypes: VkExternalMemoryHandleTypeFlagBits;
+}
+
+
+/** ## VkExternalBufferProperties ## */
+interface VkExternalBufferPropertiesInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly externalMemoryProperties?: VkExternalMemoryProperties | null;
+}
+
+declare var VkExternalBufferProperties: {
+  prototype: VkExternalBufferProperties;
+  new(param?: VkExternalBufferPropertiesInitializer | null): VkExternalBufferProperties;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly externalMemoryProperties: VkExternalMemoryProperties | null;
+}
+
+export interface VkExternalBufferProperties {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly externalMemoryProperties: VkExternalMemoryProperties | null;
+}
+
+
+/** ## VkPhysicalDeviceExternalBufferInfoKHR ## */
+interface VkPhysicalDeviceExternalBufferInfoKHRInitializer {
+
+}
+
+declare var VkPhysicalDeviceExternalBufferInfoKHR: {
+  prototype: VkPhysicalDeviceExternalBufferInfoKHR;
+  new(param?: VkPhysicalDeviceExternalBufferInfoKHRInitializer | null): VkPhysicalDeviceExternalBufferInfoKHR;
+
+}
+
+export interface VkPhysicalDeviceExternalBufferInfoKHR {
+
+}
+
+
+/** ## VkPhysicalDeviceExternalBufferInfo ## */
+interface VkPhysicalDeviceExternalBufferInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: VkBufferCreateFlagBits;
+  usage?: VkBufferUsageFlagBits;
+  handleType?: VkExternalMemoryHandleTypeFlagBits;
+}
+
+declare var VkPhysicalDeviceExternalBufferInfo: {
+  prototype: VkPhysicalDeviceExternalBufferInfo;
+  new(param?: VkPhysicalDeviceExternalBufferInfoInitializer | null): VkPhysicalDeviceExternalBufferInfo;
+  sType: VkStructureType;
+  pNext: null;
+  flags: VkBufferCreateFlagBits;
+  usage: VkBufferUsageFlagBits;
+  handleType: VkExternalMemoryHandleTypeFlagBits;
+}
+
+export interface VkPhysicalDeviceExternalBufferInfo {
+  sType: VkStructureType;
+  pNext: null;
+  flags: VkBufferCreateFlagBits;
+  usage: VkBufferUsageFlagBits;
+  handleType: VkExternalMemoryHandleTypeFlagBits;
+}
+
+
+/** ## VkExternalImageFormatPropertiesKHR ## */
+interface VkExternalImageFormatPropertiesKHRInitializer {
+
+}
+
+declare var VkExternalImageFormatPropertiesKHR: {
+  prototype: VkExternalImageFormatPropertiesKHR;
+  new(param?: VkExternalImageFormatPropertiesKHRInitializer | null): VkExternalImageFormatPropertiesKHR;
+
+}
+
+export interface VkExternalImageFormatPropertiesKHR {
+
+}
+
+
+/** ## VkExternalImageFormatProperties ## */
+interface VkExternalImageFormatPropertiesInitializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly externalMemoryProperties?: VkExternalMemoryProperties | null;
+}
+
+declare var VkExternalImageFormatProperties: {
+  prototype: VkExternalImageFormatProperties;
+  new(param?: VkExternalImageFormatPropertiesInitializer | null): VkExternalImageFormatProperties;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly externalMemoryProperties: VkExternalMemoryProperties | null;
+}
+
+export interface VkExternalImageFormatProperties {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly externalMemoryProperties: VkExternalMemoryProperties | null;
+}
+
+
+/** ## VkPhysicalDeviceExternalImageFormatInfoKHR ## */
+interface VkPhysicalDeviceExternalImageFormatInfoKHRInitializer {
+
+}
+
+declare var VkPhysicalDeviceExternalImageFormatInfoKHR: {
+  prototype: VkPhysicalDeviceExternalImageFormatInfoKHR;
+  new(param?: VkPhysicalDeviceExternalImageFormatInfoKHRInitializer | null): VkPhysicalDeviceExternalImageFormatInfoKHR;
+
+}
+
+export interface VkPhysicalDeviceExternalImageFormatInfoKHR {
+
+}
+
+
+/** ## VkPhysicalDeviceExternalImageFormatInfo ## */
+interface VkPhysicalDeviceExternalImageFormatInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  handleType?: VkExternalMemoryHandleTypeFlagBits;
+}
+
+declare var VkPhysicalDeviceExternalImageFormatInfo: {
+  prototype: VkPhysicalDeviceExternalImageFormatInfo;
+  new(param?: VkPhysicalDeviceExternalImageFormatInfoInitializer | null): VkPhysicalDeviceExternalImageFormatInfo;
+  sType: VkStructureType;
+  pNext: null;
+  handleType: VkExternalMemoryHandleTypeFlagBits;
+}
+
+export interface VkPhysicalDeviceExternalImageFormatInfo {
+  sType: VkStructureType;
+  pNext: null;
+  handleType: VkExternalMemoryHandleTypeFlagBits;
+}
+
+
+/** ## VkExternalMemoryPropertiesKHR ## */
+interface VkExternalMemoryPropertiesKHRInitializer {
+
+}
+
+declare var VkExternalMemoryPropertiesKHR: {
+  prototype: VkExternalMemoryPropertiesKHR;
+  new(param?: VkExternalMemoryPropertiesKHRInitializer | null): VkExternalMemoryPropertiesKHR;
+
+}
+
+export interface VkExternalMemoryPropertiesKHR {
+
+}
+
+
+/** ## VkPhysicalDeviceVariablePointerFeaturesKHR ## */
+interface VkPhysicalDeviceVariablePointerFeaturesKHRInitializer {
+
+}
+
+declare var VkPhysicalDeviceVariablePointerFeaturesKHR: {
+  prototype: VkPhysicalDeviceVariablePointerFeaturesKHR;
+  new(param?: VkPhysicalDeviceVariablePointerFeaturesKHRInitializer | null): VkPhysicalDeviceVariablePointerFeaturesKHR;
+
+}
+
+export interface VkPhysicalDeviceVariablePointerFeaturesKHR {
+
+}
+
+
+/** ## VkPhysicalDeviceVariablePointerFeatures ## */
+interface VkPhysicalDeviceVariablePointerFeaturesInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  variablePointersStorageBuffer?: number;
+  variablePointers?: number;
+}
+
+declare var VkPhysicalDeviceVariablePointerFeatures: {
+  prototype: VkPhysicalDeviceVariablePointerFeatures;
+  new(param?: VkPhysicalDeviceVariablePointerFeaturesInitializer | null): VkPhysicalDeviceVariablePointerFeatures;
+  sType: VkStructureType;
+  pNext: null;
+  variablePointersStorageBuffer: number;
+  variablePointers: number;
+}
+
+export interface VkPhysicalDeviceVariablePointerFeatures {
+  sType: VkStructureType;
+  pNext: null;
+  variablePointersStorageBuffer: number;
+  variablePointers: number;
+}
+
+
+/** ## VkRectLayerKHR ## */
+interface VkRectLayerKHRInitializer {
+  offset?: VkOffset2D | null;
+  extent?: VkExtent2D | null;
+  layer?: number;
+}
+
+declare var VkRectLayerKHR: {
+  prototype: VkRectLayerKHR;
+  new(param?: VkRectLayerKHRInitializer | null): VkRectLayerKHR;
+  offset: VkOffset2D | null;
+  extent: VkExtent2D | null;
+  layer: number;
+}
+
+export interface VkRectLayerKHR {
+  offset: VkOffset2D | null;
+  extent: VkExtent2D | null;
+  layer: number;
+}
+
+
+/** ## VkPresentRegionKHR ## */
+interface VkPresentRegionKHRInitializer {
+  rectangleCount?: number;
+  pRectangles?: VkRectLayerKHR[] | null;
+}
+
+declare var VkPresentRegionKHR: {
+  prototype: VkPresentRegionKHR;
+  new(param?: VkPresentRegionKHRInitializer | null): VkPresentRegionKHR;
+  rectangleCount: number;
+  pRectangles: VkRectLayerKHR[] | null;
+}
+
+export interface VkPresentRegionKHR {
+  rectangleCount: number;
+  pRectangles: VkRectLayerKHR[] | null;
+}
+
+
+/** ## VkPresentRegionsKHR ## */
+interface VkPresentRegionsKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  swapchainCount?: number;
+  pRegions?: VkPresentRegionKHR[] | null;
+}
+
+declare var VkPresentRegionsKHR: {
+  prototype: VkPresentRegionsKHR;
+  new(param?: VkPresentRegionsKHRInitializer | null): VkPresentRegionsKHR;
+  sType: VkStructureType;
+  pNext: null;
+  swapchainCount: number;
+  pRegions: VkPresentRegionKHR[] | null;
+}
+
+export interface VkPresentRegionsKHR {
+  sType: VkStructureType;
+  pNext: null;
+  swapchainCount: number;
+  pRegions: VkPresentRegionKHR[] | null;
+}
+
+
+/** ## VkPhysicalDevicePushDescriptorPropertiesKHR ## */
+interface VkPhysicalDevicePushDescriptorPropertiesKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  maxPushDescriptors?: number;
+}
+
+declare var VkPhysicalDevicePushDescriptorPropertiesKHR: {
+  prototype: VkPhysicalDevicePushDescriptorPropertiesKHR;
+  new(param?: VkPhysicalDevicePushDescriptorPropertiesKHRInitializer | null): VkPhysicalDevicePushDescriptorPropertiesKHR;
+  sType: VkStructureType;
+  pNext: null;
+  maxPushDescriptors: number;
+}
+
+export interface VkPhysicalDevicePushDescriptorPropertiesKHR {
+  sType: VkStructureType;
+  pNext: null;
+  maxPushDescriptors: number;
+}
+
+
+/** ## VkPhysicalDeviceSparseImageFormatInfo2KHR ## */
+interface VkPhysicalDeviceSparseImageFormatInfo2KHRInitializer {
+
+}
+
+declare var VkPhysicalDeviceSparseImageFormatInfo2KHR: {
+  prototype: VkPhysicalDeviceSparseImageFormatInfo2KHR;
+  new(param?: VkPhysicalDeviceSparseImageFormatInfo2KHRInitializer | null): VkPhysicalDeviceSparseImageFormatInfo2KHR;
+
+}
+
+export interface VkPhysicalDeviceSparseImageFormatInfo2KHR {
+
+}
+
+
+/** ## VkPhysicalDeviceSparseImageFormatInfo2 ## */
+interface VkPhysicalDeviceSparseImageFormatInfo2Initializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  format?: VkFormat;
+  type?: VkImageType;
+  samples?: VkSampleCountFlagBits;
+  usage?: VkImageUsageFlagBits;
+  tiling?: VkImageTiling;
+}
+
+declare var VkPhysicalDeviceSparseImageFormatInfo2: {
+  prototype: VkPhysicalDeviceSparseImageFormatInfo2;
+  new(param?: VkPhysicalDeviceSparseImageFormatInfo2Initializer | null): VkPhysicalDeviceSparseImageFormatInfo2;
+  sType: VkStructureType;
+  pNext: null;
+  format: VkFormat;
+  type: VkImageType;
+  samples: VkSampleCountFlagBits;
+  usage: VkImageUsageFlagBits;
+  tiling: VkImageTiling;
+}
+
+export interface VkPhysicalDeviceSparseImageFormatInfo2 {
+  sType: VkStructureType;
+  pNext: null;
+  format: VkFormat;
+  type: VkImageType;
+  samples: VkSampleCountFlagBits;
+  usage: VkImageUsageFlagBits;
+  tiling: VkImageTiling;
+}
+
+
+/** ## VkSparseImageFormatProperties2KHR ## */
+interface VkSparseImageFormatProperties2KHRInitializer {
+
+}
+
+declare var VkSparseImageFormatProperties2KHR: {
+  prototype: VkSparseImageFormatProperties2KHR;
+  new(param?: VkSparseImageFormatProperties2KHRInitializer | null): VkSparseImageFormatProperties2KHR;
+
+}
+
+export interface VkSparseImageFormatProperties2KHR {
+
+}
+
+
+/** ## VkSparseImageFormatProperties2 ## */
+interface VkSparseImageFormatProperties2Initializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly properties?: VkSparseImageFormatProperties | null;
+}
+
+declare var VkSparseImageFormatProperties2: {
+  prototype: VkSparseImageFormatProperties2;
+  new(param?: VkSparseImageFormatProperties2Initializer | null): VkSparseImageFormatProperties2;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly properties: VkSparseImageFormatProperties | null;
+}
+
+export interface VkSparseImageFormatProperties2 {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly properties: VkSparseImageFormatProperties | null;
+}
+
+
+/** ## VkPhysicalDeviceMemoryProperties2KHR ## */
+interface VkPhysicalDeviceMemoryProperties2KHRInitializer {
+
+}
+
+declare var VkPhysicalDeviceMemoryProperties2KHR: {
+  prototype: VkPhysicalDeviceMemoryProperties2KHR;
+  new(param?: VkPhysicalDeviceMemoryProperties2KHRInitializer | null): VkPhysicalDeviceMemoryProperties2KHR;
+
+}
+
+export interface VkPhysicalDeviceMemoryProperties2KHR {
+
+}
+
+
+/** ## VkMemoryHeap ## */
+interface VkMemoryHeapInitializer {
+  readonly size?: number;
+  readonly flags?: VkMemoryHeapFlagBits;
+}
+
+declare var VkMemoryHeap: {
+  prototype: VkMemoryHeap;
+  new(param?: VkMemoryHeapInitializer | null): VkMemoryHeap;
+  readonly size: number;
+  readonly flags: VkMemoryHeapFlagBits;
+}
+
+export interface VkMemoryHeap {
+  readonly size: number;
+  readonly flags: VkMemoryHeapFlagBits;
+}
+
+
+/** ## VkMemoryType ## */
+interface VkMemoryTypeInitializer {
+  readonly propertyFlags?: VkMemoryPropertyFlagBits;
+  readonly heapIndex?: number;
+}
+
+declare var VkMemoryType: {
+  prototype: VkMemoryType;
+  new(param?: VkMemoryTypeInitializer | null): VkMemoryType;
+  readonly propertyFlags: VkMemoryPropertyFlagBits;
+  readonly heapIndex: number;
+}
+
+export interface VkMemoryType {
+  readonly propertyFlags: VkMemoryPropertyFlagBits;
+  readonly heapIndex: number;
+}
+
+
+/** ## VkPhysicalDeviceMemoryProperties ## */
+interface VkPhysicalDeviceMemoryPropertiesInitializer {
+  readonly memoryTypeCount?: number;
+  readonly memoryTypes?: number[] | null;
+  readonly memoryHeapCount?: number;
+  readonly memoryHeaps?: number[] | null;
+}
+
+declare var VkPhysicalDeviceMemoryProperties: {
+  prototype: VkPhysicalDeviceMemoryProperties;
+  new(param?: VkPhysicalDeviceMemoryPropertiesInitializer | null): VkPhysicalDeviceMemoryProperties;
+  readonly memoryTypeCount: number;
+  readonly memoryTypes: number[] | null;
+  readonly memoryHeapCount: number;
+  readonly memoryHeaps: number[] | null;
+}
+
+export interface VkPhysicalDeviceMemoryProperties {
+  readonly memoryTypeCount: number;
+  readonly memoryTypes: number[] | null;
+  readonly memoryHeapCount: number;
+  readonly memoryHeaps: number[] | null;
+}
+
+
+/** ## VkPhysicalDeviceMemoryProperties2 ## */
+interface VkPhysicalDeviceMemoryProperties2Initializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly memoryProperties?: VkPhysicalDeviceMemoryProperties | null;
+}
+
+declare var VkPhysicalDeviceMemoryProperties2: {
+  prototype: VkPhysicalDeviceMemoryProperties2;
+  new(param?: VkPhysicalDeviceMemoryProperties2Initializer | null): VkPhysicalDeviceMemoryProperties2;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly memoryProperties: VkPhysicalDeviceMemoryProperties | null;
+}
+
+export interface VkPhysicalDeviceMemoryProperties2 {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly memoryProperties: VkPhysicalDeviceMemoryProperties | null;
+}
+
+
+/** ## VkQueueFamilyProperties2KHR ## */
+interface VkQueueFamilyProperties2KHRInitializer {
+
+}
+
+declare var VkQueueFamilyProperties2KHR: {
+  prototype: VkQueueFamilyProperties2KHR;
+  new(param?: VkQueueFamilyProperties2KHRInitializer | null): VkQueueFamilyProperties2KHR;
+
+}
+
+export interface VkQueueFamilyProperties2KHR {
+
+}
+
+
+/** ## VkQueueFamilyProperties ## */
+interface VkQueueFamilyPropertiesInitializer {
+  readonly queueFlags?: VkQueueFlagBits;
+  readonly queueCount?: number;
+  readonly timestampValidBits?: number;
+  readonly minImageTransferGranularity?: VkExtent3D | null;
+}
+
+declare var VkQueueFamilyProperties: {
+  prototype: VkQueueFamilyProperties;
+  new(param?: VkQueueFamilyPropertiesInitializer | null): VkQueueFamilyProperties;
+  readonly queueFlags: VkQueueFlagBits;
+  readonly queueCount: number;
+  readonly timestampValidBits: number;
+  readonly minImageTransferGranularity: VkExtent3D | null;
+}
+
+export interface VkQueueFamilyProperties {
+  readonly queueFlags: VkQueueFlagBits;
+  readonly queueCount: number;
+  readonly timestampValidBits: number;
+  readonly minImageTransferGranularity: VkExtent3D | null;
+}
+
+
+/** ## VkQueueFamilyProperties2 ## */
+interface VkQueueFamilyProperties2Initializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly queueFamilyProperties?: VkQueueFamilyProperties | null;
+}
+
+declare var VkQueueFamilyProperties2: {
+  prototype: VkQueueFamilyProperties2;
+  new(param?: VkQueueFamilyProperties2Initializer | null): VkQueueFamilyProperties2;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly queueFamilyProperties: VkQueueFamilyProperties | null;
+}
+
+export interface VkQueueFamilyProperties2 {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly queueFamilyProperties: VkQueueFamilyProperties | null;
+}
+
+
+/** ## VkPhysicalDeviceImageFormatInfo2KHR ## */
+interface VkPhysicalDeviceImageFormatInfo2KHRInitializer {
+
+}
+
+declare var VkPhysicalDeviceImageFormatInfo2KHR: {
+  prototype: VkPhysicalDeviceImageFormatInfo2KHR;
+  new(param?: VkPhysicalDeviceImageFormatInfo2KHRInitializer | null): VkPhysicalDeviceImageFormatInfo2KHR;
+
+}
+
+export interface VkPhysicalDeviceImageFormatInfo2KHR {
+
+}
+
+
+/** ## VkPhysicalDeviceImageFormatInfo2 ## */
+interface VkPhysicalDeviceImageFormatInfo2Initializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  format?: VkFormat;
+  type?: VkImageType;
+  tiling?: VkImageTiling;
+  usage?: VkImageUsageFlagBits;
+  flags?: VkImageCreateFlagBits;
+}
+
+declare var VkPhysicalDeviceImageFormatInfo2: {
+  prototype: VkPhysicalDeviceImageFormatInfo2;
+  new(param?: VkPhysicalDeviceImageFormatInfo2Initializer | null): VkPhysicalDeviceImageFormatInfo2;
+  sType: VkStructureType;
+  pNext: null;
+  format: VkFormat;
+  type: VkImageType;
+  tiling: VkImageTiling;
+  usage: VkImageUsageFlagBits;
+  flags: VkImageCreateFlagBits;
+}
+
+export interface VkPhysicalDeviceImageFormatInfo2 {
+  sType: VkStructureType;
+  pNext: null;
+  format: VkFormat;
+  type: VkImageType;
+  tiling: VkImageTiling;
+  usage: VkImageUsageFlagBits;
+  flags: VkImageCreateFlagBits;
+}
+
+
+/** ## VkImageFormatProperties2KHR ## */
+interface VkImageFormatProperties2KHRInitializer {
+
+}
+
+declare var VkImageFormatProperties2KHR: {
+  prototype: VkImageFormatProperties2KHR;
+  new(param?: VkImageFormatProperties2KHRInitializer | null): VkImageFormatProperties2KHR;
+
+}
+
+export interface VkImageFormatProperties2KHR {
+
+}
+
+
+/** ## VkImageFormatProperties ## */
+interface VkImageFormatPropertiesInitializer {
+  readonly maxExtent?: VkExtent3D | null;
+  readonly maxMipLevels?: number;
+  readonly maxArrayLayers?: number;
+  readonly sampleCounts?: VkSampleCountFlagBits;
+  readonly maxResourceSize?: number;
+}
+
+declare var VkImageFormatProperties: {
+  prototype: VkImageFormatProperties;
+  new(param?: VkImageFormatPropertiesInitializer | null): VkImageFormatProperties;
+  readonly maxExtent: VkExtent3D | null;
+  readonly maxMipLevels: number;
+  readonly maxArrayLayers: number;
+  readonly sampleCounts: VkSampleCountFlagBits;
+  readonly maxResourceSize: number;
+}
+
+export interface VkImageFormatProperties {
+  readonly maxExtent: VkExtent3D | null;
+  readonly maxMipLevels: number;
+  readonly maxArrayLayers: number;
+  readonly sampleCounts: VkSampleCountFlagBits;
+  readonly maxResourceSize: number;
+}
+
+
+/** ## VkImageFormatProperties2 ## */
+interface VkImageFormatProperties2Initializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly imageFormatProperties?: VkImageFormatProperties | null;
+}
+
+declare var VkImageFormatProperties2: {
+  prototype: VkImageFormatProperties2;
+  new(param?: VkImageFormatProperties2Initializer | null): VkImageFormatProperties2;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly imageFormatProperties: VkImageFormatProperties | null;
+}
+
+export interface VkImageFormatProperties2 {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly imageFormatProperties: VkImageFormatProperties | null;
+}
+
+
+/** ## VkFormatProperties2KHR ## */
+interface VkFormatProperties2KHRInitializer {
+
+}
+
+declare var VkFormatProperties2KHR: {
+  prototype: VkFormatProperties2KHR;
+  new(param?: VkFormatProperties2KHRInitializer | null): VkFormatProperties2KHR;
+
+}
+
+export interface VkFormatProperties2KHR {
+
+}
+
+
+/** ## VkFormatProperties ## */
+interface VkFormatPropertiesInitializer {
+  readonly linearTilingFeatures?: VkFormatFeatureFlagBits;
+  readonly optimalTilingFeatures?: VkFormatFeatureFlagBits;
+  readonly bufferFeatures?: VkFormatFeatureFlagBits;
+}
+
+declare var VkFormatProperties: {
+  prototype: VkFormatProperties;
+  new(param?: VkFormatPropertiesInitializer | null): VkFormatProperties;
+  readonly linearTilingFeatures: VkFormatFeatureFlagBits;
+  readonly optimalTilingFeatures: VkFormatFeatureFlagBits;
+  readonly bufferFeatures: VkFormatFeatureFlagBits;
+}
+
+export interface VkFormatProperties {
+  readonly linearTilingFeatures: VkFormatFeatureFlagBits;
+  readonly optimalTilingFeatures: VkFormatFeatureFlagBits;
+  readonly bufferFeatures: VkFormatFeatureFlagBits;
+}
+
+
+/** ## VkFormatProperties2 ## */
+interface VkFormatProperties2Initializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly formatProperties?: VkFormatProperties | null;
+}
+
+declare var VkFormatProperties2: {
+  prototype: VkFormatProperties2;
+  new(param?: VkFormatProperties2Initializer | null): VkFormatProperties2;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly formatProperties: VkFormatProperties | null;
+}
+
+export interface VkFormatProperties2 {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly formatProperties: VkFormatProperties | null;
+}
+
+
+/** ## VkPhysicalDeviceProperties2KHR ## */
+interface VkPhysicalDeviceProperties2KHRInitializer {
+
+}
+
+declare var VkPhysicalDeviceProperties2KHR: {
+  prototype: VkPhysicalDeviceProperties2KHR;
+  new(param?: VkPhysicalDeviceProperties2KHRInitializer | null): VkPhysicalDeviceProperties2KHR;
+
+}
+
+export interface VkPhysicalDeviceProperties2KHR {
+
+}
+
+
+/** ## VkPhysicalDeviceSparseProperties ## */
+interface VkPhysicalDeviceSparsePropertiesInitializer {
+  readonly residencyStandard2DBlockShape?: number;
+  readonly residencyStandard2DMultisampleBlockShape?: number;
+  readonly residencyStandard3DBlockShape?: number;
+  readonly residencyAlignedMipSize?: number;
+  readonly residencyNonResidentStrict?: number;
+}
+
+declare var VkPhysicalDeviceSparseProperties: {
+  prototype: VkPhysicalDeviceSparseProperties;
+  new(param?: VkPhysicalDeviceSparsePropertiesInitializer | null): VkPhysicalDeviceSparseProperties;
+  readonly residencyStandard2DBlockShape: number;
+  readonly residencyStandard2DMultisampleBlockShape: number;
+  readonly residencyStandard3DBlockShape: number;
+  readonly residencyAlignedMipSize: number;
+  readonly residencyNonResidentStrict: number;
+}
+
+export interface VkPhysicalDeviceSparseProperties {
+  readonly residencyStandard2DBlockShape: number;
+  readonly residencyStandard2DMultisampleBlockShape: number;
+  readonly residencyStandard3DBlockShape: number;
+  readonly residencyAlignedMipSize: number;
+  readonly residencyNonResidentStrict: number;
+}
+
+
+/** ## VkPhysicalDeviceLimits ## */
+interface VkPhysicalDeviceLimitsInitializer {
+  readonly maxImageDimension1D?: number;
+  readonly maxImageDimension2D?: number;
+  readonly maxImageDimension3D?: number;
+  readonly maxImageDimensionCube?: number;
+  readonly maxImageArrayLayers?: number;
+  readonly maxTexelBufferElements?: number;
+  readonly maxUniformBufferRange?: number;
+  readonly maxStorageBufferRange?: number;
+  readonly maxPushConstantsSize?: number;
+  readonly maxMemoryAllocationCount?: number;
+  readonly maxSamplerAllocationCount?: number;
+  readonly bufferImageGranularity?: number;
+  readonly sparseAddressSpaceSize?: number;
+  readonly maxBoundDescriptorSets?: number;
+  readonly maxPerStageDescriptorSamplers?: number;
+  readonly maxPerStageDescriptorUniformBuffers?: number;
+  readonly maxPerStageDescriptorStorageBuffers?: number;
+  readonly maxPerStageDescriptorSampledImages?: number;
+  readonly maxPerStageDescriptorStorageImages?: number;
+  readonly maxPerStageDescriptorInputAttachments?: number;
+  readonly maxPerStageResources?: number;
+  readonly maxDescriptorSetSamplers?: number;
+  readonly maxDescriptorSetUniformBuffers?: number;
+  readonly maxDescriptorSetUniformBuffersDynamic?: number;
+  readonly maxDescriptorSetStorageBuffers?: number;
+  readonly maxDescriptorSetStorageBuffersDynamic?: number;
+  readonly maxDescriptorSetSampledImages?: number;
+  readonly maxDescriptorSetStorageImages?: number;
+  readonly maxDescriptorSetInputAttachments?: number;
+  readonly maxVertexInputAttributes?: number;
+  readonly maxVertexInputBindings?: number;
+  readonly maxVertexInputAttributeOffset?: number;
+  readonly maxVertexInputBindingStride?: number;
+  readonly maxVertexOutputComponents?: number;
+  readonly maxTessellationGenerationLevel?: number;
+  readonly maxTessellationPatchSize?: number;
+  readonly maxTessellationControlPerVertexInputComponents?: number;
+  readonly maxTessellationControlPerVertexOutputComponents?: number;
+  readonly maxTessellationControlPerPatchOutputComponents?: number;
+  readonly maxTessellationControlTotalOutputComponents?: number;
+  readonly maxTessellationEvaluationInputComponents?: number;
+  readonly maxTessellationEvaluationOutputComponents?: number;
+  readonly maxGeometryShaderInvocations?: number;
+  readonly maxGeometryInputComponents?: number;
+  readonly maxGeometryOutputComponents?: number;
+  readonly maxGeometryOutputVertices?: number;
+  readonly maxGeometryTotalOutputComponents?: number;
+  readonly maxFragmentInputComponents?: number;
+  readonly maxFragmentOutputAttachments?: number;
+  readonly maxFragmentDualSrcAttachments?: number;
+  readonly maxFragmentCombinedOutputResources?: number;
+  readonly maxComputeSharedMemorySize?: number;
+  readonly maxComputeWorkGroupCount?: number[] | null;
+  readonly maxComputeWorkGroupInvocations?: number;
+  readonly maxComputeWorkGroupSize?: number[] | null;
+  readonly subPixelPrecisionBits?: number;
+  readonly subTexelPrecisionBits?: number;
+  readonly mipmapPrecisionBits?: number;
+  readonly maxDrawIndexedIndexValue?: number;
+  readonly maxDrawIndirectCount?: number;
+  readonly maxSamplerLodBias?: number;
+  readonly maxSamplerAnisotropy?: number;
+  readonly maxViewports?: number;
+  readonly maxViewportDimensions?: number[] | null;
+  readonly viewportBoundsRange?: number[] | null;
+  readonly viewportSubPixelBits?: number;
+  readonly minMemoryMapAlignment?: number;
+  readonly minTexelBufferOffsetAlignment?: number;
+  readonly minUniformBufferOffsetAlignment?: number;
+  readonly minStorageBufferOffsetAlignment?: number;
+  readonly minTexelOffset?: number;
+  readonly maxTexelOffset?: number;
+  readonly minTexelGatherOffset?: number;
+  readonly maxTexelGatherOffset?: number;
+  readonly minInterpolationOffset?: number;
+  readonly maxInterpolationOffset?: number;
+  readonly subPixelInterpolationOffsetBits?: number;
+  readonly maxFramebufferWidth?: number;
+  readonly maxFramebufferHeight?: number;
+  readonly maxFramebufferLayers?: number;
+  readonly framebufferColorSampleCounts?: VkSampleCountFlagBits;
+  readonly framebufferDepthSampleCounts?: VkSampleCountFlagBits;
+  readonly framebufferStencilSampleCounts?: VkSampleCountFlagBits;
+  readonly framebufferNoAttachmentsSampleCounts?: VkSampleCountFlagBits;
+  readonly maxColorAttachments?: number;
+  readonly sampledImageColorSampleCounts?: VkSampleCountFlagBits;
+  readonly sampledImageIntegerSampleCounts?: VkSampleCountFlagBits;
+  readonly sampledImageDepthSampleCounts?: VkSampleCountFlagBits;
+  readonly sampledImageStencilSampleCounts?: VkSampleCountFlagBits;
+  readonly storageImageSampleCounts?: VkSampleCountFlagBits;
+  readonly maxSampleMaskWords?: number;
+  readonly timestampComputeAndGraphics?: number;
+  readonly timestampPeriod?: number;
+  readonly maxClipDistances?: number;
+  readonly maxCullDistances?: number;
+  readonly maxCombinedClipAndCullDistances?: number;
+  readonly discreteQueuePriorities?: number;
+  readonly pointSizeRange?: number[] | null;
+  readonly lineWidthRange?: number[] | null;
+  readonly pointSizeGranularity?: number;
+  readonly lineWidthGranularity?: number;
+  readonly strictLines?: number;
+  readonly standardSampleLocations?: number;
+  readonly optimalBufferCopyOffsetAlignment?: number;
+  readonly optimalBufferCopyRowPitchAlignment?: number;
+  readonly nonCoherentAtomSize?: number;
+}
+
+declare var VkPhysicalDeviceLimits: {
+  prototype: VkPhysicalDeviceLimits;
+  new(param?: VkPhysicalDeviceLimitsInitializer | null): VkPhysicalDeviceLimits;
+  readonly maxImageDimension1D: number;
+  readonly maxImageDimension2D: number;
+  readonly maxImageDimension3D: number;
+  readonly maxImageDimensionCube: number;
+  readonly maxImageArrayLayers: number;
+  readonly maxTexelBufferElements: number;
+  readonly maxUniformBufferRange: number;
+  readonly maxStorageBufferRange: number;
+  readonly maxPushConstantsSize: number;
+  readonly maxMemoryAllocationCount: number;
+  readonly maxSamplerAllocationCount: number;
+  readonly bufferImageGranularity: number;
+  readonly sparseAddressSpaceSize: number;
+  readonly maxBoundDescriptorSets: number;
+  readonly maxPerStageDescriptorSamplers: number;
+  readonly maxPerStageDescriptorUniformBuffers: number;
+  readonly maxPerStageDescriptorStorageBuffers: number;
+  readonly maxPerStageDescriptorSampledImages: number;
+  readonly maxPerStageDescriptorStorageImages: number;
+  readonly maxPerStageDescriptorInputAttachments: number;
+  readonly maxPerStageResources: number;
+  readonly maxDescriptorSetSamplers: number;
+  readonly maxDescriptorSetUniformBuffers: number;
+  readonly maxDescriptorSetUniformBuffersDynamic: number;
+  readonly maxDescriptorSetStorageBuffers: number;
+  readonly maxDescriptorSetStorageBuffersDynamic: number;
+  readonly maxDescriptorSetSampledImages: number;
+  readonly maxDescriptorSetStorageImages: number;
+  readonly maxDescriptorSetInputAttachments: number;
+  readonly maxVertexInputAttributes: number;
+  readonly maxVertexInputBindings: number;
+  readonly maxVertexInputAttributeOffset: number;
+  readonly maxVertexInputBindingStride: number;
+  readonly maxVertexOutputComponents: number;
+  readonly maxTessellationGenerationLevel: number;
+  readonly maxTessellationPatchSize: number;
+  readonly maxTessellationControlPerVertexInputComponents: number;
+  readonly maxTessellationControlPerVertexOutputComponents: number;
+  readonly maxTessellationControlPerPatchOutputComponents: number;
+  readonly maxTessellationControlTotalOutputComponents: number;
+  readonly maxTessellationEvaluationInputComponents: number;
+  readonly maxTessellationEvaluationOutputComponents: number;
+  readonly maxGeometryShaderInvocations: number;
+  readonly maxGeometryInputComponents: number;
+  readonly maxGeometryOutputComponents: number;
+  readonly maxGeometryOutputVertices: number;
+  readonly maxGeometryTotalOutputComponents: number;
+  readonly maxFragmentInputComponents: number;
+  readonly maxFragmentOutputAttachments: number;
+  readonly maxFragmentDualSrcAttachments: number;
+  readonly maxFragmentCombinedOutputResources: number;
+  readonly maxComputeSharedMemorySize: number;
+  readonly maxComputeWorkGroupCount: number[] | null;
+  readonly maxComputeWorkGroupInvocations: number;
+  readonly maxComputeWorkGroupSize: number[] | null;
+  readonly subPixelPrecisionBits: number;
+  readonly subTexelPrecisionBits: number;
+  readonly mipmapPrecisionBits: number;
+  readonly maxDrawIndexedIndexValue: number;
+  readonly maxDrawIndirectCount: number;
+  readonly maxSamplerLodBias: number;
+  readonly maxSamplerAnisotropy: number;
+  readonly maxViewports: number;
+  readonly maxViewportDimensions: number[] | null;
+  readonly viewportBoundsRange: number[] | null;
+  readonly viewportSubPixelBits: number;
+  readonly minMemoryMapAlignment: number;
+  readonly minTexelBufferOffsetAlignment: number;
+  readonly minUniformBufferOffsetAlignment: number;
+  readonly minStorageBufferOffsetAlignment: number;
+  readonly minTexelOffset: number;
+  readonly maxTexelOffset: number;
+  readonly minTexelGatherOffset: number;
+  readonly maxTexelGatherOffset: number;
+  readonly minInterpolationOffset: number;
+  readonly maxInterpolationOffset: number;
+  readonly subPixelInterpolationOffsetBits: number;
+  readonly maxFramebufferWidth: number;
+  readonly maxFramebufferHeight: number;
+  readonly maxFramebufferLayers: number;
+  readonly framebufferColorSampleCounts: VkSampleCountFlagBits;
+  readonly framebufferDepthSampleCounts: VkSampleCountFlagBits;
+  readonly framebufferStencilSampleCounts: VkSampleCountFlagBits;
+  readonly framebufferNoAttachmentsSampleCounts: VkSampleCountFlagBits;
+  readonly maxColorAttachments: number;
+  readonly sampledImageColorSampleCounts: VkSampleCountFlagBits;
+  readonly sampledImageIntegerSampleCounts: VkSampleCountFlagBits;
+  readonly sampledImageDepthSampleCounts: VkSampleCountFlagBits;
+  readonly sampledImageStencilSampleCounts: VkSampleCountFlagBits;
+  readonly storageImageSampleCounts: VkSampleCountFlagBits;
+  readonly maxSampleMaskWords: number;
+  readonly timestampComputeAndGraphics: number;
+  readonly timestampPeriod: number;
+  readonly maxClipDistances: number;
+  readonly maxCullDistances: number;
+  readonly maxCombinedClipAndCullDistances: number;
+  readonly discreteQueuePriorities: number;
+  readonly pointSizeRange: number[] | null;
+  readonly lineWidthRange: number[] | null;
+  readonly pointSizeGranularity: number;
+  readonly lineWidthGranularity: number;
+  readonly strictLines: number;
+  readonly standardSampleLocations: number;
+  readonly optimalBufferCopyOffsetAlignment: number;
+  readonly optimalBufferCopyRowPitchAlignment: number;
+  readonly nonCoherentAtomSize: number;
+}
+
+export interface VkPhysicalDeviceLimits {
+  readonly maxImageDimension1D: number;
+  readonly maxImageDimension2D: number;
+  readonly maxImageDimension3D: number;
+  readonly maxImageDimensionCube: number;
+  readonly maxImageArrayLayers: number;
+  readonly maxTexelBufferElements: number;
+  readonly maxUniformBufferRange: number;
+  readonly maxStorageBufferRange: number;
+  readonly maxPushConstantsSize: number;
+  readonly maxMemoryAllocationCount: number;
+  readonly maxSamplerAllocationCount: number;
+  readonly bufferImageGranularity: number;
+  readonly sparseAddressSpaceSize: number;
+  readonly maxBoundDescriptorSets: number;
+  readonly maxPerStageDescriptorSamplers: number;
+  readonly maxPerStageDescriptorUniformBuffers: number;
+  readonly maxPerStageDescriptorStorageBuffers: number;
+  readonly maxPerStageDescriptorSampledImages: number;
+  readonly maxPerStageDescriptorStorageImages: number;
+  readonly maxPerStageDescriptorInputAttachments: number;
+  readonly maxPerStageResources: number;
+  readonly maxDescriptorSetSamplers: number;
+  readonly maxDescriptorSetUniformBuffers: number;
+  readonly maxDescriptorSetUniformBuffersDynamic: number;
+  readonly maxDescriptorSetStorageBuffers: number;
+  readonly maxDescriptorSetStorageBuffersDynamic: number;
+  readonly maxDescriptorSetSampledImages: number;
+  readonly maxDescriptorSetStorageImages: number;
+  readonly maxDescriptorSetInputAttachments: number;
+  readonly maxVertexInputAttributes: number;
+  readonly maxVertexInputBindings: number;
+  readonly maxVertexInputAttributeOffset: number;
+  readonly maxVertexInputBindingStride: number;
+  readonly maxVertexOutputComponents: number;
+  readonly maxTessellationGenerationLevel: number;
+  readonly maxTessellationPatchSize: number;
+  readonly maxTessellationControlPerVertexInputComponents: number;
+  readonly maxTessellationControlPerVertexOutputComponents: number;
+  readonly maxTessellationControlPerPatchOutputComponents: number;
+  readonly maxTessellationControlTotalOutputComponents: number;
+  readonly maxTessellationEvaluationInputComponents: number;
+  readonly maxTessellationEvaluationOutputComponents: number;
+  readonly maxGeometryShaderInvocations: number;
+  readonly maxGeometryInputComponents: number;
+  readonly maxGeometryOutputComponents: number;
+  readonly maxGeometryOutputVertices: number;
+  readonly maxGeometryTotalOutputComponents: number;
+  readonly maxFragmentInputComponents: number;
+  readonly maxFragmentOutputAttachments: number;
+  readonly maxFragmentDualSrcAttachments: number;
+  readonly maxFragmentCombinedOutputResources: number;
+  readonly maxComputeSharedMemorySize: number;
+  readonly maxComputeWorkGroupCount: number[] | null;
+  readonly maxComputeWorkGroupInvocations: number;
+  readonly maxComputeWorkGroupSize: number[] | null;
+  readonly subPixelPrecisionBits: number;
+  readonly subTexelPrecisionBits: number;
+  readonly mipmapPrecisionBits: number;
+  readonly maxDrawIndexedIndexValue: number;
+  readonly maxDrawIndirectCount: number;
+  readonly maxSamplerLodBias: number;
+  readonly maxSamplerAnisotropy: number;
+  readonly maxViewports: number;
+  readonly maxViewportDimensions: number[] | null;
+  readonly viewportBoundsRange: number[] | null;
+  readonly viewportSubPixelBits: number;
+  readonly minMemoryMapAlignment: number;
+  readonly minTexelBufferOffsetAlignment: number;
+  readonly minUniformBufferOffsetAlignment: number;
+  readonly minStorageBufferOffsetAlignment: number;
+  readonly minTexelOffset: number;
+  readonly maxTexelOffset: number;
+  readonly minTexelGatherOffset: number;
+  readonly maxTexelGatherOffset: number;
+  readonly minInterpolationOffset: number;
+  readonly maxInterpolationOffset: number;
+  readonly subPixelInterpolationOffsetBits: number;
+  readonly maxFramebufferWidth: number;
+  readonly maxFramebufferHeight: number;
+  readonly maxFramebufferLayers: number;
+  readonly framebufferColorSampleCounts: VkSampleCountFlagBits;
+  readonly framebufferDepthSampleCounts: VkSampleCountFlagBits;
+  readonly framebufferStencilSampleCounts: VkSampleCountFlagBits;
+  readonly framebufferNoAttachmentsSampleCounts: VkSampleCountFlagBits;
+  readonly maxColorAttachments: number;
+  readonly sampledImageColorSampleCounts: VkSampleCountFlagBits;
+  readonly sampledImageIntegerSampleCounts: VkSampleCountFlagBits;
+  readonly sampledImageDepthSampleCounts: VkSampleCountFlagBits;
+  readonly sampledImageStencilSampleCounts: VkSampleCountFlagBits;
+  readonly storageImageSampleCounts: VkSampleCountFlagBits;
+  readonly maxSampleMaskWords: number;
+  readonly timestampComputeAndGraphics: number;
+  readonly timestampPeriod: number;
+  readonly maxClipDistances: number;
+  readonly maxCullDistances: number;
+  readonly maxCombinedClipAndCullDistances: number;
+  readonly discreteQueuePriorities: number;
+  readonly pointSizeRange: number[] | null;
+  readonly lineWidthRange: number[] | null;
+  readonly pointSizeGranularity: number;
+  readonly lineWidthGranularity: number;
+  readonly strictLines: number;
+  readonly standardSampleLocations: number;
+  readonly optimalBufferCopyOffsetAlignment: number;
+  readonly optimalBufferCopyRowPitchAlignment: number;
+  readonly nonCoherentAtomSize: number;
+}
+
+
+/** ## VkPhysicalDeviceProperties ## */
+interface VkPhysicalDevicePropertiesInitializer {
+  readonly apiVersion?: number;
+  readonly driverVersion?: number;
+  readonly vendorID?: number;
+  readonly deviceID?: number;
+  readonly deviceType?: VkPhysicalDeviceType;
+  readonly deviceName?: string | null;
+  readonly pipelineCacheUUID?: number[] | null;
+  readonly limits?: VkPhysicalDeviceLimits | null;
+  readonly sparseProperties?: VkPhysicalDeviceSparseProperties | null;
+}
+
+declare var VkPhysicalDeviceProperties: {
+  prototype: VkPhysicalDeviceProperties;
+  new(param?: VkPhysicalDevicePropertiesInitializer | null): VkPhysicalDeviceProperties;
+  readonly apiVersion: number;
+  readonly driverVersion: number;
+  readonly vendorID: number;
+  readonly deviceID: number;
+  readonly deviceType: VkPhysicalDeviceType;
+  readonly deviceName: string | null;
+  readonly pipelineCacheUUID: number[] | null;
+  readonly limits: VkPhysicalDeviceLimits | null;
+  readonly sparseProperties: VkPhysicalDeviceSparseProperties | null;
+}
+
+export interface VkPhysicalDeviceProperties {
+  readonly apiVersion: number;
+  readonly driverVersion: number;
+  readonly vendorID: number;
+  readonly deviceID: number;
+  readonly deviceType: VkPhysicalDeviceType;
+  readonly deviceName: string | null;
+  readonly pipelineCacheUUID: number[] | null;
+  readonly limits: VkPhysicalDeviceLimits | null;
+  readonly sparseProperties: VkPhysicalDeviceSparseProperties | null;
+}
+
+
+/** ## VkPhysicalDeviceProperties2 ## */
+interface VkPhysicalDeviceProperties2Initializer {
+  readonly sType?: VkStructureType;
+  readonly pNext?: null;
+  readonly properties?: VkPhysicalDeviceProperties | null;
+}
+
+declare var VkPhysicalDeviceProperties2: {
+  prototype: VkPhysicalDeviceProperties2;
+  new(param?: VkPhysicalDeviceProperties2Initializer | null): VkPhysicalDeviceProperties2;
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly properties: VkPhysicalDeviceProperties | null;
+}
+
+export interface VkPhysicalDeviceProperties2 {
+  readonly sType: VkStructureType;
+  readonly pNext: null;
+  readonly properties: VkPhysicalDeviceProperties | null;
+}
+
+
+/** ## VkPhysicalDeviceFeatures2KHR ## */
+interface VkPhysicalDeviceFeatures2KHRInitializer {
+
+}
+
+declare var VkPhysicalDeviceFeatures2KHR: {
+  prototype: VkPhysicalDeviceFeatures2KHR;
+  new(param?: VkPhysicalDeviceFeatures2KHRInitializer | null): VkPhysicalDeviceFeatures2KHR;
+
+}
+
+export interface VkPhysicalDeviceFeatures2KHR {
+
+}
+
+
+/** ## VkPhysicalDeviceFeatures ## */
+interface VkPhysicalDeviceFeaturesInitializer {
+  robustBufferAccess?: number;
+  fullDrawIndexUint32?: number;
+  imageCubeArray?: number;
+  independentBlend?: number;
+  geometryShader?: number;
+  tessellationShader?: number;
+  sampleRateShading?: number;
+  dualSrcBlend?: number;
+  logicOp?: number;
+  multiDrawIndirect?: number;
+  drawIndirectFirstInstance?: number;
+  depthClamp?: number;
+  depthBiasClamp?: number;
+  fillModeNonSolid?: number;
+  depthBounds?: number;
+  wideLines?: number;
+  largePoints?: number;
+  alphaToOne?: number;
+  multiViewport?: number;
+  samplerAnisotropy?: number;
+  textureCompressionETC2?: number;
+  textureCompressionASTC_LDR?: number;
+  textureCompressionBC?: number;
+  occlusionQueryPrecise?: number;
+  pipelineStatisticsQuery?: number;
+  vertexPipelineStoresAndAtomics?: number;
+  fragmentStoresAndAtomics?: number;
+  shaderTessellationAndGeometryPointSize?: number;
+  shaderImageGatherExtended?: number;
+  shaderStorageImageExtendedFormats?: number;
+  shaderStorageImageMultisample?: number;
+  shaderStorageImageReadWithoutFormat?: number;
+  shaderStorageImageWriteWithoutFormat?: number;
+  shaderUniformBufferArrayDynamicIndexing?: number;
+  shaderSampledImageArrayDynamicIndexing?: number;
+  shaderStorageBufferArrayDynamicIndexing?: number;
+  shaderStorageImageArrayDynamicIndexing?: number;
+  shaderClipDistance?: number;
+  shaderCullDistance?: number;
+  shaderFloat64?: number;
+  shaderInt64?: number;
+  shaderInt16?: number;
+  shaderResourceResidency?: number;
+  shaderResourceMinLod?: number;
+  sparseBinding?: number;
+  sparseResidencyBuffer?: number;
+  sparseResidencyImage2D?: number;
+  sparseResidencyImage3D?: number;
+  sparseResidency2Samples?: number;
+  sparseResidency4Samples?: number;
+  sparseResidency8Samples?: number;
+  sparseResidency16Samples?: number;
+  sparseResidencyAliased?: number;
+  variableMultisampleRate?: number;
+  inheritedQueries?: number;
+}
+
+declare var VkPhysicalDeviceFeatures: {
+  prototype: VkPhysicalDeviceFeatures;
+  new(param?: VkPhysicalDeviceFeaturesInitializer | null): VkPhysicalDeviceFeatures;
+  robustBufferAccess: number;
+  fullDrawIndexUint32: number;
+  imageCubeArray: number;
+  independentBlend: number;
+  geometryShader: number;
+  tessellationShader: number;
+  sampleRateShading: number;
+  dualSrcBlend: number;
+  logicOp: number;
+  multiDrawIndirect: number;
+  drawIndirectFirstInstance: number;
+  depthClamp: number;
+  depthBiasClamp: number;
+  fillModeNonSolid: number;
+  depthBounds: number;
+  wideLines: number;
+  largePoints: number;
+  alphaToOne: number;
+  multiViewport: number;
+  samplerAnisotropy: number;
+  textureCompressionETC2: number;
+  textureCompressionASTC_LDR: number;
+  textureCompressionBC: number;
+  occlusionQueryPrecise: number;
+  pipelineStatisticsQuery: number;
+  vertexPipelineStoresAndAtomics: number;
+  fragmentStoresAndAtomics: number;
+  shaderTessellationAndGeometryPointSize: number;
+  shaderImageGatherExtended: number;
+  shaderStorageImageExtendedFormats: number;
+  shaderStorageImageMultisample: number;
+  shaderStorageImageReadWithoutFormat: number;
+  shaderStorageImageWriteWithoutFormat: number;
+  shaderUniformBufferArrayDynamicIndexing: number;
+  shaderSampledImageArrayDynamicIndexing: number;
+  shaderStorageBufferArrayDynamicIndexing: number;
+  shaderStorageImageArrayDynamicIndexing: number;
+  shaderClipDistance: number;
+  shaderCullDistance: number;
+  shaderFloat64: number;
+  shaderInt64: number;
+  shaderInt16: number;
+  shaderResourceResidency: number;
+  shaderResourceMinLod: number;
+  sparseBinding: number;
+  sparseResidencyBuffer: number;
+  sparseResidencyImage2D: number;
+  sparseResidencyImage3D: number;
+  sparseResidency2Samples: number;
+  sparseResidency4Samples: number;
+  sparseResidency8Samples: number;
+  sparseResidency16Samples: number;
+  sparseResidencyAliased: number;
+  variableMultisampleRate: number;
+  inheritedQueries: number;
+}
+
+export interface VkPhysicalDeviceFeatures {
+  robustBufferAccess: number;
+  fullDrawIndexUint32: number;
+  imageCubeArray: number;
+  independentBlend: number;
+  geometryShader: number;
+  tessellationShader: number;
+  sampleRateShading: number;
+  dualSrcBlend: number;
+  logicOp: number;
+  multiDrawIndirect: number;
+  drawIndirectFirstInstance: number;
+  depthClamp: number;
+  depthBiasClamp: number;
+  fillModeNonSolid: number;
+  depthBounds: number;
+  wideLines: number;
+  largePoints: number;
+  alphaToOne: number;
+  multiViewport: number;
+  samplerAnisotropy: number;
+  textureCompressionETC2: number;
+  textureCompressionASTC_LDR: number;
+  textureCompressionBC: number;
+  occlusionQueryPrecise: number;
+  pipelineStatisticsQuery: number;
+  vertexPipelineStoresAndAtomics: number;
+  fragmentStoresAndAtomics: number;
+  shaderTessellationAndGeometryPointSize: number;
+  shaderImageGatherExtended: number;
+  shaderStorageImageExtendedFormats: number;
+  shaderStorageImageMultisample: number;
+  shaderStorageImageReadWithoutFormat: number;
+  shaderStorageImageWriteWithoutFormat: number;
+  shaderUniformBufferArrayDynamicIndexing: number;
+  shaderSampledImageArrayDynamicIndexing: number;
+  shaderStorageBufferArrayDynamicIndexing: number;
+  shaderStorageImageArrayDynamicIndexing: number;
+  shaderClipDistance: number;
+  shaderCullDistance: number;
+  shaderFloat64: number;
+  shaderInt64: number;
+  shaderInt16: number;
+  shaderResourceResidency: number;
+  shaderResourceMinLod: number;
+  sparseBinding: number;
+  sparseResidencyBuffer: number;
+  sparseResidencyImage2D: number;
+  sparseResidencyImage3D: number;
+  sparseResidency2Samples: number;
+  sparseResidency4Samples: number;
+  sparseResidency8Samples: number;
+  sparseResidency16Samples: number;
+  sparseResidencyAliased: number;
+  variableMultisampleRate: number;
+  inheritedQueries: number;
+}
+
+
+/** ## VkPhysicalDeviceFeatures2 ## */
+interface VkPhysicalDeviceFeatures2Initializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  features?: VkPhysicalDeviceFeatures | null;
+}
+
+declare var VkPhysicalDeviceFeatures2: {
+  prototype: VkPhysicalDeviceFeatures2;
+  new(param?: VkPhysicalDeviceFeatures2Initializer | null): VkPhysicalDeviceFeatures2;
+  sType: VkStructureType;
+  pNext: null;
+  features: VkPhysicalDeviceFeatures | null;
+}
+
+export interface VkPhysicalDeviceFeatures2 {
+  sType: VkStructureType;
+  pNext: null;
+  features: VkPhysicalDeviceFeatures | null;
+}
+
+
+/** ## VkObjectTablePushConstantEntryNVX ## */
+interface VkObjectTablePushConstantEntryNVXInitializer {
+  type?: VkObjectEntryTypeNVX;
+  flags?: VkObjectEntryUsageFlagBitsNVX;
+  pipelineLayout?: VkPipelineLayout | null;
+  stageFlags?: VkShaderStageFlagBits;
+}
+
+declare var VkObjectTablePushConstantEntryNVX: {
+  prototype: VkObjectTablePushConstantEntryNVX;
+  new(param?: VkObjectTablePushConstantEntryNVXInitializer | null): VkObjectTablePushConstantEntryNVX;
+  type: VkObjectEntryTypeNVX;
+  flags: VkObjectEntryUsageFlagBitsNVX;
+  pipelineLayout: VkPipelineLayout | null;
+  stageFlags: VkShaderStageFlagBits;
+}
+
+export interface VkObjectTablePushConstantEntryNVX {
+  type: VkObjectEntryTypeNVX;
+  flags: VkObjectEntryUsageFlagBitsNVX;
+  pipelineLayout: VkPipelineLayout | null;
+  stageFlags: VkShaderStageFlagBits;
+}
+
+
+/** ## VkObjectTableIndexBufferEntryNVX ## */
+interface VkObjectTableIndexBufferEntryNVXInitializer {
+  type?: VkObjectEntryTypeNVX;
+  flags?: VkObjectEntryUsageFlagBitsNVX;
+  buffer?: VkBuffer | null;
+  indexType?: VkIndexType;
+}
+
+declare var VkObjectTableIndexBufferEntryNVX: {
+  prototype: VkObjectTableIndexBufferEntryNVX;
+  new(param?: VkObjectTableIndexBufferEntryNVXInitializer | null): VkObjectTableIndexBufferEntryNVX;
+  type: VkObjectEntryTypeNVX;
+  flags: VkObjectEntryUsageFlagBitsNVX;
+  buffer: VkBuffer | null;
+  indexType: VkIndexType;
+}
+
+export interface VkObjectTableIndexBufferEntryNVX {
+  type: VkObjectEntryTypeNVX;
+  flags: VkObjectEntryUsageFlagBitsNVX;
+  buffer: VkBuffer | null;
+  indexType: VkIndexType;
+}
+
+
+/** ## VkObjectTableVertexBufferEntryNVX ## */
+interface VkObjectTableVertexBufferEntryNVXInitializer {
+  type?: VkObjectEntryTypeNVX;
+  flags?: VkObjectEntryUsageFlagBitsNVX;
+  buffer?: VkBuffer | null;
+}
+
+declare var VkObjectTableVertexBufferEntryNVX: {
+  prototype: VkObjectTableVertexBufferEntryNVX;
+  new(param?: VkObjectTableVertexBufferEntryNVXInitializer | null): VkObjectTableVertexBufferEntryNVX;
+  type: VkObjectEntryTypeNVX;
+  flags: VkObjectEntryUsageFlagBitsNVX;
+  buffer: VkBuffer | null;
+}
+
+export interface VkObjectTableVertexBufferEntryNVX {
+  type: VkObjectEntryTypeNVX;
+  flags: VkObjectEntryUsageFlagBitsNVX;
+  buffer: VkBuffer | null;
+}
+
+
+/** ## VkObjectTableDescriptorSetEntryNVX ## */
+interface VkObjectTableDescriptorSetEntryNVXInitializer {
+  type?: VkObjectEntryTypeNVX;
+  flags?: VkObjectEntryUsageFlagBitsNVX;
+  pipelineLayout?: VkPipelineLayout | null;
+  descriptorSet?: VkDescriptorSet | null;
+}
+
+declare var VkObjectTableDescriptorSetEntryNVX: {
+  prototype: VkObjectTableDescriptorSetEntryNVX;
+  new(param?: VkObjectTableDescriptorSetEntryNVXInitializer | null): VkObjectTableDescriptorSetEntryNVX;
+  type: VkObjectEntryTypeNVX;
+  flags: VkObjectEntryUsageFlagBitsNVX;
+  pipelineLayout: VkPipelineLayout | null;
+  descriptorSet: VkDescriptorSet | null;
+}
+
+export interface VkObjectTableDescriptorSetEntryNVX {
+  type: VkObjectEntryTypeNVX;
+  flags: VkObjectEntryUsageFlagBitsNVX;
+  pipelineLayout: VkPipelineLayout | null;
+  descriptorSet: VkDescriptorSet | null;
+}
+
+
+/** ## VkObjectTablePipelineEntryNVX ## */
+interface VkObjectTablePipelineEntryNVXInitializer {
+  type?: VkObjectEntryTypeNVX;
+  flags?: VkObjectEntryUsageFlagBitsNVX;
+  pipeline?: VkPipeline | null;
+}
+
+declare var VkObjectTablePipelineEntryNVX: {
+  prototype: VkObjectTablePipelineEntryNVX;
+  new(param?: VkObjectTablePipelineEntryNVXInitializer | null): VkObjectTablePipelineEntryNVX;
+  type: VkObjectEntryTypeNVX;
+  flags: VkObjectEntryUsageFlagBitsNVX;
+  pipeline: VkPipeline | null;
+}
+
+export interface VkObjectTablePipelineEntryNVX {
+  type: VkObjectEntryTypeNVX;
+  flags: VkObjectEntryUsageFlagBitsNVX;
+  pipeline: VkPipeline | null;
+}
+
+
+/** ## VkObjectTableEntryNVX ## */
+interface VkObjectTableEntryNVXInitializer {
+  type?: VkObjectEntryTypeNVX;
+  flags?: VkObjectEntryUsageFlagBitsNVX;
+}
+
+declare var VkObjectTableEntryNVX: {
+  prototype: VkObjectTableEntryNVX;
+  new(param?: VkObjectTableEntryNVXInitializer | null): VkObjectTableEntryNVX;
+  type: VkObjectEntryTypeNVX;
+  flags: VkObjectEntryUsageFlagBitsNVX;
+}
+
+export interface VkObjectTableEntryNVX {
+  type: VkObjectEntryTypeNVX;
+  flags: VkObjectEntryUsageFlagBitsNVX;
+}
+
+
+/** ## VkObjectTableCreateInfoNVX ## */
+interface VkObjectTableCreateInfoNVXInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  objectCount?: number;
+  pObjectEntryTypes?: Int32Array | null;
+  pObjectEntryCounts?: Uint32Array | null;
+  pObjectEntryUsageFlags?: Int32Array | null;
+  maxUniformBuffersPerDescriptor?: number;
+  maxStorageBuffersPerDescriptor?: number;
+  maxStorageImagesPerDescriptor?: number;
+  maxSampledImagesPerDescriptor?: number;
+  maxPipelineLayouts?: number;
+}
+
+declare var VkObjectTableCreateInfoNVX: {
+  prototype: VkObjectTableCreateInfoNVX;
+  new(param?: VkObjectTableCreateInfoNVXInitializer | null): VkObjectTableCreateInfoNVX;
+  sType: VkStructureType;
+  pNext: null;
+  objectCount: number;
+  pObjectEntryTypes: Int32Array | null;
+  pObjectEntryCounts: Uint32Array | null;
+  pObjectEntryUsageFlags: Int32Array | null;
+  maxUniformBuffersPerDescriptor: number;
+  maxStorageBuffersPerDescriptor: number;
+  maxStorageImagesPerDescriptor: number;
+  maxSampledImagesPerDescriptor: number;
+  maxPipelineLayouts: number;
+}
+
+export interface VkObjectTableCreateInfoNVX {
+  sType: VkStructureType;
+  pNext: null;
+  objectCount: number;
+  pObjectEntryTypes: Int32Array | null;
+  pObjectEntryCounts: Uint32Array | null;
+  pObjectEntryUsageFlags: Int32Array | null;
+  maxUniformBuffersPerDescriptor: number;
+  maxStorageBuffersPerDescriptor: number;
+  maxStorageImagesPerDescriptor: number;
+  maxSampledImagesPerDescriptor: number;
+  maxPipelineLayouts: number;
+}
+
+
+/** ## VkCmdReserveSpaceForCommandsInfoNVX ## */
+interface VkCmdReserveSpaceForCommandsInfoNVXInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  objectTable?: VkObjectTableNVX | null;
+  indirectCommandsLayout?: VkIndirectCommandsLayoutNVX | null;
+  maxSequencesCount?: number;
+}
+
+declare var VkCmdReserveSpaceForCommandsInfoNVX: {
+  prototype: VkCmdReserveSpaceForCommandsInfoNVX;
+  new(param?: VkCmdReserveSpaceForCommandsInfoNVXInitializer | null): VkCmdReserveSpaceForCommandsInfoNVX;
+  sType: VkStructureType;
+  pNext: null;
+  objectTable: VkObjectTableNVX | null;
+  indirectCommandsLayout: VkIndirectCommandsLayoutNVX | null;
+  maxSequencesCount: number;
+}
+
+export interface VkCmdReserveSpaceForCommandsInfoNVX {
+  sType: VkStructureType;
+  pNext: null;
+  objectTable: VkObjectTableNVX | null;
+  indirectCommandsLayout: VkIndirectCommandsLayoutNVX | null;
+  maxSequencesCount: number;
+}
+
+
+/** ## VkIndirectCommandsTokenNVX ## */
+interface VkIndirectCommandsTokenNVXInitializer {
+  tokenType?: VkIndirectCommandsTokenTypeNVX;
+  buffer?: VkBuffer | null;
+  offset?: number;
+}
+
+declare var VkIndirectCommandsTokenNVX: {
+  prototype: VkIndirectCommandsTokenNVX;
+  new(param?: VkIndirectCommandsTokenNVXInitializer | null): VkIndirectCommandsTokenNVX;
+  tokenType: VkIndirectCommandsTokenTypeNVX;
+  buffer: VkBuffer | null;
+  offset: number;
+}
+
+export interface VkIndirectCommandsTokenNVX {
+  tokenType: VkIndirectCommandsTokenTypeNVX;
+  buffer: VkBuffer | null;
+  offset: number;
+}
+
+
+/** ## VkCmdProcessCommandsInfoNVX ## */
+interface VkCmdProcessCommandsInfoNVXInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  objectTable?: VkObjectTableNVX | null;
+  indirectCommandsLayout?: VkIndirectCommandsLayoutNVX | null;
+  indirectCommandsTokenCount?: number;
+  pIndirectCommandsTokens?: VkIndirectCommandsTokenNVX[] | null;
+  maxSequencesCount?: number;
+  targetCommandBuffer?: VkCommandBuffer | null;
+  sequencesCountBuffer?: VkBuffer | null;
+  sequencesCountOffset?: number;
+  sequencesIndexBuffer?: VkBuffer | null;
+  sequencesIndexOffset?: number;
+}
+
+declare var VkCmdProcessCommandsInfoNVX: {
+  prototype: VkCmdProcessCommandsInfoNVX;
+  new(param?: VkCmdProcessCommandsInfoNVXInitializer | null): VkCmdProcessCommandsInfoNVX;
+  sType: VkStructureType;
+  pNext: null;
+  objectTable: VkObjectTableNVX | null;
+  indirectCommandsLayout: VkIndirectCommandsLayoutNVX | null;
+  indirectCommandsTokenCount: number;
+  pIndirectCommandsTokens: VkIndirectCommandsTokenNVX[] | null;
+  maxSequencesCount: number;
+  targetCommandBuffer: VkCommandBuffer | null;
+  sequencesCountBuffer: VkBuffer | null;
+  sequencesCountOffset: number;
+  sequencesIndexBuffer: VkBuffer | null;
+  sequencesIndexOffset: number;
+}
+
+export interface VkCmdProcessCommandsInfoNVX {
+  sType: VkStructureType;
+  pNext: null;
+  objectTable: VkObjectTableNVX | null;
+  indirectCommandsLayout: VkIndirectCommandsLayoutNVX | null;
+  indirectCommandsTokenCount: number;
+  pIndirectCommandsTokens: VkIndirectCommandsTokenNVX[] | null;
+  maxSequencesCount: number;
+  targetCommandBuffer: VkCommandBuffer | null;
+  sequencesCountBuffer: VkBuffer | null;
+  sequencesCountOffset: number;
+  sequencesIndexBuffer: VkBuffer | null;
+  sequencesIndexOffset: number;
+}
+
+
+/** ## VkIndirectCommandsLayoutTokenNVX ## */
+interface VkIndirectCommandsLayoutTokenNVXInitializer {
+  tokenType?: VkIndirectCommandsTokenTypeNVX;
+  bindingUnit?: number;
+  dynamicCount?: number;
+  divisor?: number;
+}
+
+declare var VkIndirectCommandsLayoutTokenNVX: {
+  prototype: VkIndirectCommandsLayoutTokenNVX;
+  new(param?: VkIndirectCommandsLayoutTokenNVXInitializer | null): VkIndirectCommandsLayoutTokenNVX;
+  tokenType: VkIndirectCommandsTokenTypeNVX;
+  bindingUnit: number;
+  dynamicCount: number;
+  divisor: number;
+}
+
+export interface VkIndirectCommandsLayoutTokenNVX {
+  tokenType: VkIndirectCommandsTokenTypeNVX;
+  bindingUnit: number;
+  dynamicCount: number;
+  divisor: number;
+}
+
+
+/** ## VkIndirectCommandsLayoutCreateInfoNVX ## */
+interface VkIndirectCommandsLayoutCreateInfoNVXInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  pipelineBindPoint?: VkPipelineBindPoint;
+  flags?: VkIndirectCommandsLayoutUsageFlagBitsNVX;
+  tokenCount?: number;
+  pTokens?: VkIndirectCommandsLayoutTokenNVX[] | null;
+}
+
+declare var VkIndirectCommandsLayoutCreateInfoNVX: {
+  prototype: VkIndirectCommandsLayoutCreateInfoNVX;
+  new(param?: VkIndirectCommandsLayoutCreateInfoNVXInitializer | null): VkIndirectCommandsLayoutCreateInfoNVX;
+  sType: VkStructureType;
+  pNext: null;
+  pipelineBindPoint: VkPipelineBindPoint;
+  flags: VkIndirectCommandsLayoutUsageFlagBitsNVX;
+  tokenCount: number;
+  pTokens: VkIndirectCommandsLayoutTokenNVX[] | null;
+}
+
+export interface VkIndirectCommandsLayoutCreateInfoNVX {
+  sType: VkStructureType;
+  pNext: null;
+  pipelineBindPoint: VkPipelineBindPoint;
+  flags: VkIndirectCommandsLayoutUsageFlagBitsNVX;
+  tokenCount: number;
+  pTokens: VkIndirectCommandsLayoutTokenNVX[] | null;
+}
+
+
+/** ## VkDeviceGeneratedCommandsLimitsNVX ## */
+interface VkDeviceGeneratedCommandsLimitsNVXInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  maxIndirectCommandsLayoutTokenCount?: number;
+  maxObjectEntryCounts?: number;
+  minSequenceCountBufferOffsetAlignment?: number;
+  minSequenceIndexBufferOffsetAlignment?: number;
+  minCommandsTokenBufferOffsetAlignment?: number;
+}
+
+declare var VkDeviceGeneratedCommandsLimitsNVX: {
+  prototype: VkDeviceGeneratedCommandsLimitsNVX;
+  new(param?: VkDeviceGeneratedCommandsLimitsNVXInitializer | null): VkDeviceGeneratedCommandsLimitsNVX;
+  sType: VkStructureType;
+  pNext: null;
+  maxIndirectCommandsLayoutTokenCount: number;
+  maxObjectEntryCounts: number;
+  minSequenceCountBufferOffsetAlignment: number;
+  minSequenceIndexBufferOffsetAlignment: number;
+  minCommandsTokenBufferOffsetAlignment: number;
+}
+
+export interface VkDeviceGeneratedCommandsLimitsNVX {
+  sType: VkStructureType;
+  pNext: null;
+  maxIndirectCommandsLayoutTokenCount: number;
+  maxObjectEntryCounts: number;
+  minSequenceCountBufferOffsetAlignment: number;
+  minSequenceIndexBufferOffsetAlignment: number;
+  minCommandsTokenBufferOffsetAlignment: number;
+}
+
+
+/** ## VkDeviceGeneratedCommandsFeaturesNVX ## */
+interface VkDeviceGeneratedCommandsFeaturesNVXInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  computeBindingPointSupport?: number;
+}
+
+declare var VkDeviceGeneratedCommandsFeaturesNVX: {
+  prototype: VkDeviceGeneratedCommandsFeaturesNVX;
+  new(param?: VkDeviceGeneratedCommandsFeaturesNVXInitializer | null): VkDeviceGeneratedCommandsFeaturesNVX;
+  sType: VkStructureType;
+  pNext: null;
+  computeBindingPointSupport: number;
+}
+
+export interface VkDeviceGeneratedCommandsFeaturesNVX {
+  sType: VkStructureType;
+  pNext: null;
+  computeBindingPointSupport: number;
+}
+
+
+/** ## VkWin32KeyedMutexAcquireReleaseInfoNV ## */
+interface VkWin32KeyedMutexAcquireReleaseInfoNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  acquireCount?: number;
+  pAcquireSyncs?: VkDeviceMemory[] | null;
+  pAcquireKeys?: BigUint64Array | null;
+  pAcquireTimeoutMilliseconds?: Uint32Array | null;
+  releaseCount?: number;
+  pReleaseSyncs?: VkDeviceMemory[] | null;
+  pReleaseKeys?: BigUint64Array | null;
+}
+
+declare var VkWin32KeyedMutexAcquireReleaseInfoNV: {
+  prototype: VkWin32KeyedMutexAcquireReleaseInfoNV;
+  new(param?: VkWin32KeyedMutexAcquireReleaseInfoNVInitializer | null): VkWin32KeyedMutexAcquireReleaseInfoNV;
+  sType: VkStructureType;
+  pNext: null;
+  acquireCount: number;
+  pAcquireSyncs: VkDeviceMemory[] | null;
+  pAcquireKeys: BigUint64Array | null;
+  pAcquireTimeoutMilliseconds: Uint32Array | null;
+  releaseCount: number;
+  pReleaseSyncs: VkDeviceMemory[] | null;
+  pReleaseKeys: BigUint64Array | null;
+}
+
+export interface VkWin32KeyedMutexAcquireReleaseInfoNV {
+  sType: VkStructureType;
+  pNext: null;
+  acquireCount: number;
+  pAcquireSyncs: VkDeviceMemory[] | null;
+  pAcquireKeys: BigUint64Array | null;
+  pAcquireTimeoutMilliseconds: Uint32Array | null;
+  releaseCount: number;
+  pReleaseSyncs: VkDeviceMemory[] | null;
+  pReleaseKeys: BigUint64Array | null;
+}
+
+
+/** ## VkExportMemoryWin32HandleInfoNV ## */
+interface VkExportMemoryWin32HandleInfoNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  pAttributes?: null;
+  dwAccess?: null;
+}
+
+declare var VkExportMemoryWin32HandleInfoNV: {
+  prototype: VkExportMemoryWin32HandleInfoNV;
+  new(param?: VkExportMemoryWin32HandleInfoNVInitializer | null): VkExportMemoryWin32HandleInfoNV;
+  sType: VkStructureType;
+  pNext: null;
+  pAttributes: null;
+  dwAccess: null;
+}
+
+export interface VkExportMemoryWin32HandleInfoNV {
+  sType: VkStructureType;
+  pNext: null;
+  pAttributes: null;
+  dwAccess: null;
+}
+
+
+/** ## VkImportMemoryWin32HandleInfoNV ## */
+interface VkImportMemoryWin32HandleInfoNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  handleType?: VkExternalMemoryHandleTypeFlagBitsNV;
+  handle?: null;
+}
+
+declare var VkImportMemoryWin32HandleInfoNV: {
+  prototype: VkImportMemoryWin32HandleInfoNV;
+  new(param?: VkImportMemoryWin32HandleInfoNVInitializer | null): VkImportMemoryWin32HandleInfoNV;
+  sType: VkStructureType;
+  pNext: null;
+  handleType: VkExternalMemoryHandleTypeFlagBitsNV;
+  handle: null;
+}
+
+export interface VkImportMemoryWin32HandleInfoNV {
+  sType: VkStructureType;
+  pNext: null;
+  handleType: VkExternalMemoryHandleTypeFlagBitsNV;
+  handle: null;
+}
+
+
+/** ## VkExportMemoryAllocateInfoNV ## */
+interface VkExportMemoryAllocateInfoNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  handleTypes?: VkExternalMemoryHandleTypeFlagBitsNV;
+}
+
+declare var VkExportMemoryAllocateInfoNV: {
+  prototype: VkExportMemoryAllocateInfoNV;
+  new(param?: VkExportMemoryAllocateInfoNVInitializer | null): VkExportMemoryAllocateInfoNV;
+  sType: VkStructureType;
+  pNext: null;
+  handleTypes: VkExternalMemoryHandleTypeFlagBitsNV;
+}
+
+export interface VkExportMemoryAllocateInfoNV {
+  sType: VkStructureType;
+  pNext: null;
+  handleTypes: VkExternalMemoryHandleTypeFlagBitsNV;
+}
+
+
+/** ## VkExternalMemoryImageCreateInfoNV ## */
+interface VkExternalMemoryImageCreateInfoNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  handleTypes?: VkExternalMemoryHandleTypeFlagBitsNV;
+}
+
+declare var VkExternalMemoryImageCreateInfoNV: {
+  prototype: VkExternalMemoryImageCreateInfoNV;
+  new(param?: VkExternalMemoryImageCreateInfoNVInitializer | null): VkExternalMemoryImageCreateInfoNV;
+  sType: VkStructureType;
+  pNext: null;
+  handleTypes: VkExternalMemoryHandleTypeFlagBitsNV;
+}
+
+export interface VkExternalMemoryImageCreateInfoNV {
+  sType: VkStructureType;
+  pNext: null;
+  handleTypes: VkExternalMemoryHandleTypeFlagBitsNV;
+}
+
+
+/** ## VkExternalImageFormatPropertiesNV ## */
+interface VkExternalImageFormatPropertiesNVInitializer {
+  readonly imageFormatProperties?: VkImageFormatProperties | null;
+  readonly externalMemoryFeatures?: VkExternalMemoryFeatureFlagBitsNV;
+  readonly exportFromImportedHandleTypes?: VkExternalMemoryHandleTypeFlagBitsNV;
+  readonly compatibleHandleTypes?: VkExternalMemoryHandleTypeFlagBitsNV;
+}
+
+declare var VkExternalImageFormatPropertiesNV: {
+  prototype: VkExternalImageFormatPropertiesNV;
+  new(param?: VkExternalImageFormatPropertiesNVInitializer | null): VkExternalImageFormatPropertiesNV;
+  readonly imageFormatProperties: VkImageFormatProperties | null;
+  readonly externalMemoryFeatures: VkExternalMemoryFeatureFlagBitsNV;
+  readonly exportFromImportedHandleTypes: VkExternalMemoryHandleTypeFlagBitsNV;
+  readonly compatibleHandleTypes: VkExternalMemoryHandleTypeFlagBitsNV;
+}
+
+export interface VkExternalImageFormatPropertiesNV {
+  readonly imageFormatProperties: VkImageFormatProperties | null;
+  readonly externalMemoryFeatures: VkExternalMemoryFeatureFlagBitsNV;
+  readonly exportFromImportedHandleTypes: VkExternalMemoryHandleTypeFlagBitsNV;
+  readonly compatibleHandleTypes: VkExternalMemoryHandleTypeFlagBitsNV;
+}
+
+
+/** ## VkDedicatedAllocationMemoryAllocateInfoNV ## */
+interface VkDedicatedAllocationMemoryAllocateInfoNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  image?: VkImage | null;
+  buffer?: VkBuffer | null;
+}
+
+declare var VkDedicatedAllocationMemoryAllocateInfoNV: {
+  prototype: VkDedicatedAllocationMemoryAllocateInfoNV;
+  new(param?: VkDedicatedAllocationMemoryAllocateInfoNVInitializer | null): VkDedicatedAllocationMemoryAllocateInfoNV;
+  sType: VkStructureType;
+  pNext: null;
+  image: VkImage | null;
+  buffer: VkBuffer | null;
+}
+
+export interface VkDedicatedAllocationMemoryAllocateInfoNV {
+  sType: VkStructureType;
+  pNext: null;
+  image: VkImage | null;
+  buffer: VkBuffer | null;
+}
+
+
+/** ## VkDedicatedAllocationBufferCreateInfoNV ## */
+interface VkDedicatedAllocationBufferCreateInfoNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  dedicatedAllocation?: number;
+}
+
+declare var VkDedicatedAllocationBufferCreateInfoNV: {
+  prototype: VkDedicatedAllocationBufferCreateInfoNV;
+  new(param?: VkDedicatedAllocationBufferCreateInfoNVInitializer | null): VkDedicatedAllocationBufferCreateInfoNV;
+  sType: VkStructureType;
+  pNext: null;
+  dedicatedAllocation: number;
+}
+
+export interface VkDedicatedAllocationBufferCreateInfoNV {
+  sType: VkStructureType;
+  pNext: null;
+  dedicatedAllocation: number;
+}
+
+
+/** ## VkDedicatedAllocationImageCreateInfoNV ## */
+interface VkDedicatedAllocationImageCreateInfoNVInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  dedicatedAllocation?: number;
+}
+
+declare var VkDedicatedAllocationImageCreateInfoNV: {
+  prototype: VkDedicatedAllocationImageCreateInfoNV;
+  new(param?: VkDedicatedAllocationImageCreateInfoNVInitializer | null): VkDedicatedAllocationImageCreateInfoNV;
+  sType: VkStructureType;
+  pNext: null;
+  dedicatedAllocation: number;
+}
+
+export interface VkDedicatedAllocationImageCreateInfoNV {
+  sType: VkStructureType;
+  pNext: null;
+  dedicatedAllocation: number;
+}
+
+
+/** ## VkDebugMarkerMarkerInfoEXT ## */
+interface VkDebugMarkerMarkerInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  pMarkerName?: string | null;
+  color?: number[] | null;
+}
+
+declare var VkDebugMarkerMarkerInfoEXT: {
+  prototype: VkDebugMarkerMarkerInfoEXT;
+  new(param?: VkDebugMarkerMarkerInfoEXTInitializer | null): VkDebugMarkerMarkerInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  pMarkerName: string | null;
+  color: number[] | null;
+}
+
+export interface VkDebugMarkerMarkerInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  pMarkerName: string | null;
+  color: number[] | null;
+}
+
+
+/** ## VkDebugMarkerObjectTagInfoEXT ## */
+interface VkDebugMarkerObjectTagInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  objectType?: VkDebugReportObjectTypeEXT;
+  object?: number;
+  tagName?: number;
+  tagSize?: number;
+  pTag?: null;
+}
+
+declare var VkDebugMarkerObjectTagInfoEXT: {
+  prototype: VkDebugMarkerObjectTagInfoEXT;
+  new(param?: VkDebugMarkerObjectTagInfoEXTInitializer | null): VkDebugMarkerObjectTagInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  objectType: VkDebugReportObjectTypeEXT;
+  object: number;
+  tagName: number;
+  tagSize: number;
+  pTag: null;
+}
+
+export interface VkDebugMarkerObjectTagInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  objectType: VkDebugReportObjectTypeEXT;
+  object: number;
+  tagName: number;
+  tagSize: number;
+  pTag: null;
+}
+
+
+/** ## VkDebugMarkerObjectNameInfoEXT ## */
+interface VkDebugMarkerObjectNameInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  objectType?: VkDebugReportObjectTypeEXT;
+  object?: number;
+  pObjectName?: string | null;
+}
+
+declare var VkDebugMarkerObjectNameInfoEXT: {
+  prototype: VkDebugMarkerObjectNameInfoEXT;
+  new(param?: VkDebugMarkerObjectNameInfoEXTInitializer | null): VkDebugMarkerObjectNameInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  objectType: VkDebugReportObjectTypeEXT;
+  object: number;
+  pObjectName: string | null;
+}
+
+export interface VkDebugMarkerObjectNameInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  objectType: VkDebugReportObjectTypeEXT;
+  object: number;
+  pObjectName: string | null;
+}
+
+
+/** ## VkPipelineRasterizationStateRasterizationOrderAMD ## */
+interface VkPipelineRasterizationStateRasterizationOrderAMDInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  rasterizationOrder?: VkRasterizationOrderAMD;
+}
+
+declare var VkPipelineRasterizationStateRasterizationOrderAMD: {
+  prototype: VkPipelineRasterizationStateRasterizationOrderAMD;
+  new(param?: VkPipelineRasterizationStateRasterizationOrderAMDInitializer | null): VkPipelineRasterizationStateRasterizationOrderAMD;
+  sType: VkStructureType;
+  pNext: null;
+  rasterizationOrder: VkRasterizationOrderAMD;
+}
+
+export interface VkPipelineRasterizationStateRasterizationOrderAMD {
+  sType: VkStructureType;
+  pNext: null;
+  rasterizationOrder: VkRasterizationOrderAMD;
+}
+
+
+/** ## VkValidationFlagsEXT ## */
+interface VkValidationFlagsEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  disabledValidationCheckCount?: number;
+  pDisabledValidationChecks?: Int32Array | null;
+}
+
+declare var VkValidationFlagsEXT: {
+  prototype: VkValidationFlagsEXT;
+  new(param?: VkValidationFlagsEXTInitializer | null): VkValidationFlagsEXT;
+  sType: VkStructureType;
+  pNext: null;
+  disabledValidationCheckCount: number;
+  pDisabledValidationChecks: Int32Array | null;
+}
+
+export interface VkValidationFlagsEXT {
+  sType: VkStructureType;
+  pNext: null;
+  disabledValidationCheckCount: number;
+  pDisabledValidationChecks: Int32Array | null;
+}
+
+
+/** ## VkDebugReportCallbackCreateInfoEXT ## */
+interface VkDebugReportCallbackCreateInfoEXTInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: VkDebugReportFlagBitsEXT;
+  pfnCallback?: null;
+  pUserData?: null;
+}
+
+declare var VkDebugReportCallbackCreateInfoEXT: {
+  prototype: VkDebugReportCallbackCreateInfoEXT;
+  new(param?: VkDebugReportCallbackCreateInfoEXTInitializer | null): VkDebugReportCallbackCreateInfoEXT;
+  sType: VkStructureType;
+  pNext: null;
+  flags: VkDebugReportFlagBitsEXT;
+  pfnCallback: null;
+  pUserData: null;
+}
+
+export interface VkDebugReportCallbackCreateInfoEXT {
+  sType: VkStructureType;
+  pNext: null;
+  flags: VkDebugReportFlagBitsEXT;
+  pfnCallback: null;
+  pUserData: null;
 }
 
 
@@ -2937,25 +11674,6 @@ export interface VkPresentInfoKHR {
   pSwapchains: VkSwapchainKHR[] | null;
   pImageIndices: Uint32Array | null;
   pResults: Int32Array | null;
-}
-
-
-/** ## VkExtent2D ## */
-interface VkExtent2DInitializer {
-  width?: number;
-  height?: number;
-}
-
-declare var VkExtent2D: {
-  prototype: VkExtent2D;
-  new(param?: VkExtent2DInitializer | null): VkExtent2D;
-  width: number;
-  height: number;
-}
-
-export interface VkExtent2D {
-  width: number;
-  height: number;
 }
 
 
@@ -3026,65 +11744,127 @@ export interface VkSwapchainCreateInfoKHR {
 }
 
 
-/** ## VkSurfaceFormatKHR ## */
-interface VkSurfaceFormatKHRInitializer {
-  readonly format?: VkFormat;
-  readonly colorSpace?: VkColorSpaceKHR;
+/** ## VkWin32SurfaceCreateInfoKHR ## */
+interface VkWin32SurfaceCreateInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: null;
+  hinstance?: null;
+  hwnd?: null;
 }
 
-declare var VkSurfaceFormatKHR: {
-  prototype: VkSurfaceFormatKHR;
-  new(param?: VkSurfaceFormatKHRInitializer | null): VkSurfaceFormatKHR;
-  readonly format: VkFormat;
-  readonly colorSpace: VkColorSpaceKHR;
+declare var VkWin32SurfaceCreateInfoKHR: {
+  prototype: VkWin32SurfaceCreateInfoKHR;
+  new(param?: VkWin32SurfaceCreateInfoKHRInitializer | null): VkWin32SurfaceCreateInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  hinstance: null;
+  hwnd: null;
 }
 
-export interface VkSurfaceFormatKHR {
-  readonly format: VkFormat;
-  readonly colorSpace: VkColorSpaceKHR;
+export interface VkWin32SurfaceCreateInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  hinstance: null;
+  hwnd: null;
 }
 
 
-/** ## VkSurfaceCapabilitiesKHR ## */
-interface VkSurfaceCapabilitiesKHRInitializer {
-  readonly minImageCount?: number;
-  readonly maxImageCount?: number;
-  readonly currentExtent?: VkExtent2D | null;
-  readonly minImageExtent?: VkExtent2D | null;
-  readonly maxImageExtent?: VkExtent2D | null;
-  readonly maxImageArrayLayers?: number;
-  readonly supportedTransforms?: VkSurfaceTransformFlagBitsKHR;
-  readonly currentTransform?: VkSurfaceTransformFlagBitsKHR;
-  readonly supportedCompositeAlpha?: VkCompositeAlphaFlagBitsKHR;
-  readonly supportedUsageFlags?: VkImageUsageFlagBits;
+/** ## VkDisplayPresentInfoKHR ## */
+interface VkDisplayPresentInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  srcRect?: VkRect2D | null;
+  dstRect?: VkRect2D | null;
+  persistent?: number;
 }
 
-declare var VkSurfaceCapabilitiesKHR: {
-  prototype: VkSurfaceCapabilitiesKHR;
-  new(param?: VkSurfaceCapabilitiesKHRInitializer | null): VkSurfaceCapabilitiesKHR;
-  readonly minImageCount: number;
-  readonly maxImageCount: number;
-  readonly currentExtent: VkExtent2D | null;
-  readonly minImageExtent: VkExtent2D | null;
-  readonly maxImageExtent: VkExtent2D | null;
-  readonly maxImageArrayLayers: number;
-  readonly supportedTransforms: VkSurfaceTransformFlagBitsKHR;
-  readonly currentTransform: VkSurfaceTransformFlagBitsKHR;
-  readonly supportedCompositeAlpha: VkCompositeAlphaFlagBitsKHR;
-  readonly supportedUsageFlags: VkImageUsageFlagBits;
+declare var VkDisplayPresentInfoKHR: {
+  prototype: VkDisplayPresentInfoKHR;
+  new(param?: VkDisplayPresentInfoKHRInitializer | null): VkDisplayPresentInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  srcRect: VkRect2D | null;
+  dstRect: VkRect2D | null;
+  persistent: number;
 }
 
-export interface VkSurfaceCapabilitiesKHR {
-  readonly minImageCount: number;
-  readonly maxImageCount: number;
-  readonly currentExtent: VkExtent2D | null;
-  readonly minImageExtent: VkExtent2D | null;
-  readonly maxImageExtent: VkExtent2D | null;
-  readonly maxImageArrayLayers: number;
-  readonly supportedTransforms: VkSurfaceTransformFlagBitsKHR;
-  readonly currentTransform: VkSurfaceTransformFlagBitsKHR;
-  readonly supportedCompositeAlpha: VkCompositeAlphaFlagBitsKHR;
-  readonly supportedUsageFlags: VkImageUsageFlagBits;
+export interface VkDisplayPresentInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  srcRect: VkRect2D | null;
+  dstRect: VkRect2D | null;
+  persistent: number;
+}
+
+
+/** ## VkDisplaySurfaceCreateInfoKHR ## */
+interface VkDisplaySurfaceCreateInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: null;
+  displayMode?: VkDisplayModeKHR | null;
+  planeIndex?: number;
+  planeStackIndex?: number;
+  transform?: VkSurfaceTransformFlagBitsKHR;
+  globalAlpha?: number;
+  alphaMode?: VkDisplayPlaneAlphaFlagBitsKHR;
+  imageExtent?: VkExtent2D | null;
+}
+
+declare var VkDisplaySurfaceCreateInfoKHR: {
+  prototype: VkDisplaySurfaceCreateInfoKHR;
+  new(param?: VkDisplaySurfaceCreateInfoKHRInitializer | null): VkDisplaySurfaceCreateInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  displayMode: VkDisplayModeKHR | null;
+  planeIndex: number;
+  planeStackIndex: number;
+  transform: VkSurfaceTransformFlagBitsKHR;
+  globalAlpha: number;
+  alphaMode: VkDisplayPlaneAlphaFlagBitsKHR;
+  imageExtent: VkExtent2D | null;
+}
+
+export interface VkDisplaySurfaceCreateInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  displayMode: VkDisplayModeKHR | null;
+  planeIndex: number;
+  planeStackIndex: number;
+  transform: VkSurfaceTransformFlagBitsKHR;
+  globalAlpha: number;
+  alphaMode: VkDisplayPlaneAlphaFlagBitsKHR;
+  imageExtent: VkExtent2D | null;
+}
+
+
+/** ## VkDisplayModeCreateInfoKHR ## */
+interface VkDisplayModeCreateInfoKHRInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: null;
+  parameters?: VkDisplayModeParametersKHR | null;
+}
+
+declare var VkDisplayModeCreateInfoKHR: {
+  prototype: VkDisplayModeCreateInfoKHR;
+  new(param?: VkDisplayModeCreateInfoKHRInitializer | null): VkDisplayModeCreateInfoKHR;
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  parameters: VkDisplayModeParametersKHR | null;
+}
+
+export interface VkDisplayModeCreateInfoKHR {
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  parameters: VkDisplayModeParametersKHR | null;
 }
 
 
@@ -3128,6 +11908,81 @@ export interface VkSubmitInfo {
 }
 
 
+/** ## VkDispatchIndirectCommand ## */
+interface VkDispatchIndirectCommandInitializer {
+  x?: number;
+  y?: number;
+  z?: number;
+}
+
+declare var VkDispatchIndirectCommand: {
+  prototype: VkDispatchIndirectCommand;
+  new(param?: VkDispatchIndirectCommandInitializer | null): VkDispatchIndirectCommand;
+  x: number;
+  y: number;
+  z: number;
+}
+
+export interface VkDispatchIndirectCommand {
+  x: number;
+  y: number;
+  z: number;
+}
+
+
+/** ## VkDrawIndexedIndirectCommand ## */
+interface VkDrawIndexedIndirectCommandInitializer {
+  indexCount?: number;
+  instanceCount?: number;
+  firstIndex?: number;
+  vertexOffset?: number;
+  firstInstance?: number;
+}
+
+declare var VkDrawIndexedIndirectCommand: {
+  prototype: VkDrawIndexedIndirectCommand;
+  new(param?: VkDrawIndexedIndirectCommandInitializer | null): VkDrawIndexedIndirectCommand;
+  indexCount: number;
+  instanceCount: number;
+  firstIndex: number;
+  vertexOffset: number;
+  firstInstance: number;
+}
+
+export interface VkDrawIndexedIndirectCommand {
+  indexCount: number;
+  instanceCount: number;
+  firstIndex: number;
+  vertexOffset: number;
+  firstInstance: number;
+}
+
+
+/** ## VkDrawIndirectCommand ## */
+interface VkDrawIndirectCommandInitializer {
+  vertexCount?: number;
+  instanceCount?: number;
+  firstVertex?: number;
+  firstInstance?: number;
+}
+
+declare var VkDrawIndirectCommand: {
+  prototype: VkDrawIndirectCommand;
+  new(param?: VkDrawIndirectCommandInitializer | null): VkDrawIndirectCommand;
+  vertexCount: number;
+  instanceCount: number;
+  firstVertex: number;
+  firstInstance: number;
+}
+
+export interface VkDrawIndirectCommand {
+  vertexCount: number;
+  instanceCount: number;
+  firstVertex: number;
+  firstInstance: number;
+}
+
+
 /** ## VkFramebufferCreateInfo ## */
 interface VkFramebufferCreateInfoInitializer {
   sType?: VkStructureType;
@@ -3168,6 +12023,37 @@ export interface VkFramebufferCreateInfo {
 }
 
 
+/** ## VkQueryPoolCreateInfo ## */
+interface VkQueryPoolCreateInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: null;
+  queryType?: VkQueryType;
+  queryCount?: number;
+  pipelineStatistics?: VkQueryPipelineStatisticFlagBits;
+}
+
+declare var VkQueryPoolCreateInfo: {
+  prototype: VkQueryPoolCreateInfo;
+  new(param?: VkQueryPoolCreateInfoInitializer | null): VkQueryPoolCreateInfo;
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  queryType: VkQueryType;
+  queryCount: number;
+  pipelineStatistics: VkQueryPipelineStatisticFlagBits;
+}
+
+export interface VkQueryPoolCreateInfo {
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  queryType: VkQueryType;
+  queryCount: number;
+  pipelineStatistics: VkQueryPipelineStatisticFlagBits;
+}
+
+
 /** ## VkSemaphoreCreateInfo ## */
 interface VkSemaphoreCreateInfoInitializer {
   sType?: VkStructureType;
@@ -3184,6 +12070,50 @@ declare var VkSemaphoreCreateInfo: {
 }
 
 export interface VkSemaphoreCreateInfo {
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+}
+
+
+/** ## VkFenceCreateInfo ## */
+interface VkFenceCreateInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: VkFenceCreateFlagBits;
+}
+
+declare var VkFenceCreateInfo: {
+  prototype: VkFenceCreateInfo;
+  new(param?: VkFenceCreateInfoInitializer | null): VkFenceCreateInfo;
+  sType: VkStructureType;
+  pNext: null;
+  flags: VkFenceCreateFlagBits;
+}
+
+export interface VkFenceCreateInfo {
+  sType: VkStructureType;
+  pNext: null;
+  flags: VkFenceCreateFlagBits;
+}
+
+
+/** ## VkEventCreateInfo ## */
+interface VkEventCreateInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: null;
+}
+
+declare var VkEventCreateInfo: {
+  prototype: VkEventCreateInfo;
+  new(param?: VkEventCreateInfoInitializer | null): VkEventCreateInfo;
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+}
+
+export interface VkEventCreateInfo {
   sType: VkStructureType;
   pNext: null;
   flags: null;
@@ -3404,41 +12334,25 @@ export interface VkClearValue {
 }
 
 
-/** ## VkOffset2D ## */
-interface VkOffset2DInitializer {
-  x?: number;
-  y?: number;
+/** ## VkClearAttachment ## */
+interface VkClearAttachmentInitializer {
+  aspectMask?: VkImageAspectFlagBits;
+  colorAttachment?: number;
+  clearValue?: VkClearValue | null;
 }
 
-declare var VkOffset2D: {
-  prototype: VkOffset2D;
-  new(param?: VkOffset2DInitializer | null): VkOffset2D;
-  x: number;
-  y: number;
+declare var VkClearAttachment: {
+  prototype: VkClearAttachment;
+  new(param?: VkClearAttachmentInitializer | null): VkClearAttachment;
+  aspectMask: VkImageAspectFlagBits;
+  colorAttachment: number;
+  clearValue: VkClearValue | null;
 }
 
-export interface VkOffset2D {
-  x: number;
-  y: number;
-}
-
-
-/** ## VkRect2D ## */
-interface VkRect2DInitializer {
-  offset?: VkOffset2D | null;
-  extent?: VkExtent2D | null;
-}
-
-declare var VkRect2D: {
-  prototype: VkRect2D;
-  new(param?: VkRect2DInitializer | null): VkRect2D;
-  offset: VkOffset2D | null;
-  extent: VkExtent2D | null;
-}
-
-export interface VkRect2D {
-  offset: VkOffset2D | null;
-  extent: VkExtent2D | null;
+export interface VkClearAttachment {
+  aspectMask: VkImageAspectFlagBits;
+  colorAttachment: number;
+  clearValue: VkClearValue | null;
 }
 
 
@@ -3711,6 +12625,34 @@ export interface VkPipelineLayoutCreateInfo {
   pSetLayouts: VkDescriptorSetLayout[] | null;
   pushConstantRangeCount: number;
   pPushConstantRanges: VkPushConstantRange[] | null;
+}
+
+
+/** ## VkPipelineCacheCreateInfo ## */
+interface VkPipelineCacheCreateInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: null;
+  initialDataSize?: number;
+  pInitialData?: null;
+}
+
+declare var VkPipelineCacheCreateInfo: {
+  prototype: VkPipelineCacheCreateInfo;
+  new(param?: VkPipelineCacheCreateInfoInitializer | null): VkPipelineCacheCreateInfo;
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  initialDataSize: number;
+  pInitialData: null;
+}
+
+export interface VkPipelineCacheCreateInfo {
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  initialDataSize: number;
+  pInitialData: null;
 }
 
 
@@ -4190,87 +13132,6 @@ export interface VkPipelineVertexInputStateCreateInfo {
 }
 
 
-/** ## VkSpecializationMapEntry ## */
-interface VkSpecializationMapEntryInitializer {
-  constantID?: number;
-  offset?: number;
-  size?: number;
-}
-
-declare var VkSpecializationMapEntry: {
-  prototype: VkSpecializationMapEntry;
-  new(param?: VkSpecializationMapEntryInitializer | null): VkSpecializationMapEntry;
-  constantID: number;
-  offset: number;
-  size: number;
-}
-
-export interface VkSpecializationMapEntry {
-  constantID: number;
-  offset: number;
-  size: number;
-}
-
-
-/** ## VkSpecializationInfo ## */
-interface VkSpecializationInfoInitializer {
-  mapEntryCount?: number;
-  pMapEntries?: VkSpecializationMapEntry[] | null;
-  dataSize?: number;
-  pData?: null;
-}
-
-declare var VkSpecializationInfo: {
-  prototype: VkSpecializationInfo;
-  new(param?: VkSpecializationInfoInitializer | null): VkSpecializationInfo;
-  mapEntryCount: number;
-  pMapEntries: VkSpecializationMapEntry[] | null;
-  dataSize: number;
-  pData: null;
-}
-
-export interface VkSpecializationInfo {
-  mapEntryCount: number;
-  pMapEntries: VkSpecializationMapEntry[] | null;
-  dataSize: number;
-  pData: null;
-}
-
-
-/** ## VkPipelineShaderStageCreateInfo ## */
-interface VkPipelineShaderStageCreateInfoInitializer {
-  sType?: VkStructureType;
-  pNext?: null;
-  flags?: null;
-  stage?: VkShaderStageFlagBits;
-  module?: VkShaderModule | null;
-  pName?: string | null;
-  pSpecializationInfo?: VkSpecializationInfo | null;
-}
-
-declare var VkPipelineShaderStageCreateInfo: {
-  prototype: VkPipelineShaderStageCreateInfo;
-  new(param?: VkPipelineShaderStageCreateInfoInitializer | null): VkPipelineShaderStageCreateInfo;
-  sType: VkStructureType;
-  pNext: null;
-  flags: null;
-  stage: VkShaderStageFlagBits;
-  module: VkShaderModule | null;
-  pName: string | null;
-  pSpecializationInfo: VkSpecializationInfo | null;
-}
-
-export interface VkPipelineShaderStageCreateInfo {
-  sType: VkStructureType;
-  pNext: null;
-  flags: null;
-  stage: VkShaderStageFlagBits;
-  module: VkShaderModule | null;
-  pName: string | null;
-  pSpecializationInfo: VkSpecializationInfo | null;
-}
-
-
 /** ## VkGraphicsPipelineCreateInfo ## */
 interface VkGraphicsPipelineCreateInfoInitializer {
   sType?: VkStructureType;
@@ -4537,28 +13398,6 @@ export interface VkShaderModuleCreateInfo {
 }
 
 
-/** ## VkExtent3D ## */
-interface VkExtent3DInitializer {
-  width?: number;
-  height?: number;
-  depth?: number;
-}
-
-declare var VkExtent3D: {
-  prototype: VkExtent3D;
-  new(param?: VkExtent3DInitializer | null): VkExtent3D;
-  width: number;
-  height: number;
-  depth: number;
-}
-
-export interface VkExtent3D {
-  width: number;
-  height: number;
-  depth: number;
-}
-
-
 /** ## VkOffset3D ## */
 interface VkOffset3DInitializer {
   x?: number;
@@ -4606,6 +13445,34 @@ export interface VkImageSubresourceLayers {
 }
 
 
+/** ## VkImageResolve ## */
+interface VkImageResolveInitializer {
+  srcSubresource?: VkImageSubresourceLayers | null;
+  srcOffset?: VkOffset3D | null;
+  dstSubresource?: VkImageSubresourceLayers | null;
+  dstOffset?: VkOffset3D | null;
+  extent?: VkExtent3D | null;
+}
+
+declare var VkImageResolve: {
+  prototype: VkImageResolve;
+  new(param?: VkImageResolveInitializer | null): VkImageResolve;
+  srcSubresource: VkImageSubresourceLayers | null;
+  srcOffset: VkOffset3D | null;
+  dstSubresource: VkImageSubresourceLayers | null;
+  dstOffset: VkOffset3D | null;
+  extent: VkExtent3D | null;
+}
+
+export interface VkImageResolve {
+  srcSubresource: VkImageSubresourceLayers | null;
+  srcOffset: VkOffset3D | null;
+  dstSubresource: VkImageSubresourceLayers | null;
+  dstOffset: VkOffset3D | null;
+  extent: VkExtent3D | null;
+}
+
+
 /** ## VkBufferImageCopy ## */
 interface VkBufferImageCopyInitializer {
   bufferOffset?: number;
@@ -4634,6 +13501,255 @@ export interface VkBufferImageCopy {
   imageSubresource: VkImageSubresourceLayers | null;
   imageOffset: VkOffset3D | null;
   imageExtent: VkExtent3D | null;
+}
+
+
+/** ## VkImageBlit ## */
+interface VkImageBlitInitializer {
+  srcSubresource?: VkImageSubresourceLayers | null;
+  srcOffsets?: number[] | null;
+  dstSubresource?: VkImageSubresourceLayers | null;
+  dstOffsets?: number[] | null;
+}
+
+declare var VkImageBlit: {
+  prototype: VkImageBlit;
+  new(param?: VkImageBlitInitializer | null): VkImageBlit;
+  srcSubresource: VkImageSubresourceLayers | null;
+  srcOffsets: number[] | null;
+  dstSubresource: VkImageSubresourceLayers | null;
+  dstOffsets: number[] | null;
+}
+
+export interface VkImageBlit {
+  srcSubresource: VkImageSubresourceLayers | null;
+  srcOffsets: number[] | null;
+  dstSubresource: VkImageSubresourceLayers | null;
+  dstOffsets: number[] | null;
+}
+
+
+/** ## VkImageCopy ## */
+interface VkImageCopyInitializer {
+  srcSubresource?: VkImageSubresourceLayers | null;
+  srcOffset?: VkOffset3D | null;
+  dstSubresource?: VkImageSubresourceLayers | null;
+  dstOffset?: VkOffset3D | null;
+  extent?: VkExtent3D | null;
+}
+
+declare var VkImageCopy: {
+  prototype: VkImageCopy;
+  new(param?: VkImageCopyInitializer | null): VkImageCopy;
+  srcSubresource: VkImageSubresourceLayers | null;
+  srcOffset: VkOffset3D | null;
+  dstSubresource: VkImageSubresourceLayers | null;
+  dstOffset: VkOffset3D | null;
+  extent: VkExtent3D | null;
+}
+
+export interface VkImageCopy {
+  srcSubresource: VkImageSubresourceLayers | null;
+  srcOffset: VkOffset3D | null;
+  dstSubresource: VkImageSubresourceLayers | null;
+  dstOffset: VkOffset3D | null;
+  extent: VkExtent3D | null;
+}
+
+
+/** ## VkImageSubresource ## */
+interface VkImageSubresourceInitializer {
+  aspectMask?: VkImageAspectFlagBits;
+  mipLevel?: number;
+  arrayLayer?: number;
+}
+
+declare var VkImageSubresource: {
+  prototype: VkImageSubresource;
+  new(param?: VkImageSubresourceInitializer | null): VkImageSubresource;
+  aspectMask: VkImageAspectFlagBits;
+  mipLevel: number;
+  arrayLayer: number;
+}
+
+export interface VkImageSubresource {
+  aspectMask: VkImageAspectFlagBits;
+  mipLevel: number;
+  arrayLayer: number;
+}
+
+
+/** ## VkSparseImageMemoryBind ## */
+interface VkSparseImageMemoryBindInitializer {
+  subresource?: VkImageSubresource | null;
+  offset?: VkOffset3D | null;
+  extent?: VkExtent3D | null;
+  memory?: VkDeviceMemory | null;
+  memoryOffset?: number;
+  flags?: VkSparseMemoryBindFlagBits;
+}
+
+declare var VkSparseImageMemoryBind: {
+  prototype: VkSparseImageMemoryBind;
+  new(param?: VkSparseImageMemoryBindInitializer | null): VkSparseImageMemoryBind;
+  subresource: VkImageSubresource | null;
+  offset: VkOffset3D | null;
+  extent: VkExtent3D | null;
+  memory: VkDeviceMemory | null;
+  memoryOffset: number;
+  flags: VkSparseMemoryBindFlagBits;
+}
+
+export interface VkSparseImageMemoryBind {
+  subresource: VkImageSubresource | null;
+  offset: VkOffset3D | null;
+  extent: VkExtent3D | null;
+  memory: VkDeviceMemory | null;
+  memoryOffset: number;
+  flags: VkSparseMemoryBindFlagBits;
+}
+
+
+/** ## VkSparseImageMemoryBindInfo ## */
+interface VkSparseImageMemoryBindInfoInitializer {
+  image?: VkImage | null;
+  bindCount?: number;
+  pBinds?: VkSparseImageMemoryBind[] | null;
+}
+
+declare var VkSparseImageMemoryBindInfo: {
+  prototype: VkSparseImageMemoryBindInfo;
+  new(param?: VkSparseImageMemoryBindInfoInitializer | null): VkSparseImageMemoryBindInfo;
+  image: VkImage | null;
+  bindCount: number;
+  pBinds: VkSparseImageMemoryBind[] | null;
+}
+
+export interface VkSparseImageMemoryBindInfo {
+  image: VkImage | null;
+  bindCount: number;
+  pBinds: VkSparseImageMemoryBind[] | null;
+}
+
+
+/** ## VkSparseMemoryBind ## */
+interface VkSparseMemoryBindInitializer {
+  resourceOffset?: number;
+  size?: number;
+  memory?: VkDeviceMemory | null;
+  memoryOffset?: number;
+  flags?: VkSparseMemoryBindFlagBits;
+}
+
+declare var VkSparseMemoryBind: {
+  prototype: VkSparseMemoryBind;
+  new(param?: VkSparseMemoryBindInitializer | null): VkSparseMemoryBind;
+  resourceOffset: number;
+  size: number;
+  memory: VkDeviceMemory | null;
+  memoryOffset: number;
+  flags: VkSparseMemoryBindFlagBits;
+}
+
+export interface VkSparseMemoryBind {
+  resourceOffset: number;
+  size: number;
+  memory: VkDeviceMemory | null;
+  memoryOffset: number;
+  flags: VkSparseMemoryBindFlagBits;
+}
+
+
+/** ## VkSparseImageOpaqueMemoryBindInfo ## */
+interface VkSparseImageOpaqueMemoryBindInfoInitializer {
+  image?: VkImage | null;
+  bindCount?: number;
+  pBinds?: VkSparseMemoryBind[] | null;
+}
+
+declare var VkSparseImageOpaqueMemoryBindInfo: {
+  prototype: VkSparseImageOpaqueMemoryBindInfo;
+  new(param?: VkSparseImageOpaqueMemoryBindInfoInitializer | null): VkSparseImageOpaqueMemoryBindInfo;
+  image: VkImage | null;
+  bindCount: number;
+  pBinds: VkSparseMemoryBind[] | null;
+}
+
+export interface VkSparseImageOpaqueMemoryBindInfo {
+  image: VkImage | null;
+  bindCount: number;
+  pBinds: VkSparseMemoryBind[] | null;
+}
+
+
+/** ## VkSparseBufferMemoryBindInfo ## */
+interface VkSparseBufferMemoryBindInfoInitializer {
+  buffer?: VkBuffer | null;
+  bindCount?: number;
+  pBinds?: VkSparseMemoryBind[] | null;
+}
+
+declare var VkSparseBufferMemoryBindInfo: {
+  prototype: VkSparseBufferMemoryBindInfo;
+  new(param?: VkSparseBufferMemoryBindInfoInitializer | null): VkSparseBufferMemoryBindInfo;
+  buffer: VkBuffer | null;
+  bindCount: number;
+  pBinds: VkSparseMemoryBind[] | null;
+}
+
+export interface VkSparseBufferMemoryBindInfo {
+  buffer: VkBuffer | null;
+  bindCount: number;
+  pBinds: VkSparseMemoryBind[] | null;
+}
+
+
+/** ## VkBindSparseInfo ## */
+interface VkBindSparseInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  waitSemaphoreCount?: number;
+  pWaitSemaphores?: VkSemaphore[] | null;
+  bufferBindCount?: number;
+  pBufferBinds?: VkSparseBufferMemoryBindInfo[] | null;
+  imageOpaqueBindCount?: number;
+  pImageOpaqueBinds?: VkSparseImageOpaqueMemoryBindInfo[] | null;
+  imageBindCount?: number;
+  pImageBinds?: VkSparseImageMemoryBindInfo[] | null;
+  signalSemaphoreCount?: number;
+  pSignalSemaphores?: VkSemaphore[] | null;
+}
+
+declare var VkBindSparseInfo: {
+  prototype: VkBindSparseInfo;
+  new(param?: VkBindSparseInfoInitializer | null): VkBindSparseInfo;
+  sType: VkStructureType;
+  pNext: null;
+  waitSemaphoreCount: number;
+  pWaitSemaphores: VkSemaphore[] | null;
+  bufferBindCount: number;
+  pBufferBinds: VkSparseBufferMemoryBindInfo[] | null;
+  imageOpaqueBindCount: number;
+  pImageOpaqueBinds: VkSparseImageOpaqueMemoryBindInfo[] | null;
+  imageBindCount: number;
+  pImageBinds: VkSparseImageMemoryBindInfo[] | null;
+  signalSemaphoreCount: number;
+  pSignalSemaphores: VkSemaphore[] | null;
+}
+
+export interface VkBindSparseInfo {
+  sType: VkStructureType;
+  pNext: null;
+  waitSemaphoreCount: number;
+  pWaitSemaphores: VkSemaphore[] | null;
+  bufferBindCount: number;
+  pBufferBinds: VkSparseBufferMemoryBindInfo[] | null;
+  imageOpaqueBindCount: number;
+  pImageOpaqueBinds: VkSparseImageOpaqueMemoryBindInfo[] | null;
+  imageBindCount: number;
+  pImageBinds: VkSparseImageMemoryBindInfo[] | null;
+  signalSemaphoreCount: number;
+  pSignalSemaphores: VkSemaphore[] | null;
 }
 
 
@@ -4684,31 +13800,6 @@ export interface VkImageSubresourceRange {
   levelCount: number;
   baseArrayLayer: number;
   layerCount: number;
-}
-
-
-/** ## VkComponentMapping ## */
-interface VkComponentMappingInitializer {
-  r?: VkComponentSwizzle;
-  g?: VkComponentSwizzle;
-  b?: VkComponentSwizzle;
-  a?: VkComponentSwizzle;
-}
-
-declare var VkComponentMapping: {
-  prototype: VkComponentMapping;
-  new(param?: VkComponentMappingInitializer | null): VkComponentMapping;
-  r: VkComponentSwizzle;
-  g: VkComponentSwizzle;
-  b: VkComponentSwizzle;
-  a: VkComponentSwizzle;
-}
-
-export interface VkComponentMapping {
-  r: VkComponentSwizzle;
-  g: VkComponentSwizzle;
-  b: VkComponentSwizzle;
-  a: VkComponentSwizzle;
 }
 
 
@@ -4943,25 +14034,37 @@ export interface VkMemoryBarrier {
 }
 
 
-/** ## VkImageSubresource ## */
-interface VkImageSubresourceInitializer {
-  aspectMask?: VkImageAspectFlagBits;
-  mipLevel?: number;
-  arrayLayer?: number;
+/** ## VkBufferViewCreateInfo ## */
+interface VkBufferViewCreateInfoInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  flags?: null;
+  buffer?: VkBuffer | null;
+  format?: VkFormat;
+  offset?: number;
+  range?: number;
 }
 
-declare var VkImageSubresource: {
-  prototype: VkImageSubresource;
-  new(param?: VkImageSubresourceInitializer | null): VkImageSubresource;
-  aspectMask: VkImageAspectFlagBits;
-  mipLevel: number;
-  arrayLayer: number;
+declare var VkBufferViewCreateInfo: {
+  prototype: VkBufferViewCreateInfo;
+  new(param?: VkBufferViewCreateInfoInitializer | null): VkBufferViewCreateInfo;
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  buffer: VkBuffer | null;
+  format: VkFormat;
+  offset: number;
+  range: number;
 }
 
-export interface VkImageSubresource {
-  aspectMask: VkImageAspectFlagBits;
-  mipLevel: number;
-  arrayLayer: number;
+export interface VkBufferViewCreateInfo {
+  sType: VkStructureType;
+  pNext: null;
+  flags: null;
+  buffer: VkBuffer | null;
+  format: VkFormat;
+  offset: number;
+  range: number;
 }
 
 
@@ -5129,25 +14232,31 @@ export interface VkWriteDescriptorSet {
 }
 
 
-/** ## VkMemoryRequirements ## */
-interface VkMemoryRequirementsInitializer {
-  readonly size?: number;
-  readonly alignment?: number;
-  readonly memoryTypeBits?: number;
+/** ## VkMappedMemoryRange ## */
+interface VkMappedMemoryRangeInitializer {
+  sType?: VkStructureType;
+  pNext?: null;
+  memory?: VkDeviceMemory | null;
+  offset?: number;
+  size?: number;
 }
 
-declare var VkMemoryRequirements: {
-  prototype: VkMemoryRequirements;
-  new(param?: VkMemoryRequirementsInitializer | null): VkMemoryRequirements;
-  readonly size: number;
-  readonly alignment: number;
-  readonly memoryTypeBits: number;
+declare var VkMappedMemoryRange: {
+  prototype: VkMappedMemoryRange;
+  new(param?: VkMappedMemoryRangeInitializer | null): VkMappedMemoryRange;
+  sType: VkStructureType;
+  pNext: null;
+  memory: VkDeviceMemory | null;
+  offset: number;
+  size: number;
 }
 
-export interface VkMemoryRequirements {
-  readonly size: number;
-  readonly alignment: number;
-  readonly memoryTypeBits: number;
+export interface VkMappedMemoryRange {
+  sType: VkStructureType;
+  pNext: null;
+  memory: VkDeviceMemory | null;
+  offset: number;
+  size: number;
 }
 
 
@@ -5173,94 +14282,6 @@ export interface VkMemoryAllocateInfo {
   pNext: null;
   allocationSize: number;
   memoryTypeIndex: number;
-}
-
-
-/** ## VkMemoryHeap ## */
-interface VkMemoryHeapInitializer {
-  readonly size?: number;
-  readonly flags?: VkMemoryHeapFlagBits;
-}
-
-declare var VkMemoryHeap: {
-  prototype: VkMemoryHeap;
-  new(param?: VkMemoryHeapInitializer | null): VkMemoryHeap;
-  readonly size: number;
-  readonly flags: VkMemoryHeapFlagBits;
-}
-
-export interface VkMemoryHeap {
-  readonly size: number;
-  readonly flags: VkMemoryHeapFlagBits;
-}
-
-
-/** ## VkMemoryType ## */
-interface VkMemoryTypeInitializer {
-  readonly propertyFlags?: VkMemoryPropertyFlagBits;
-  readonly heapIndex?: number;
-}
-
-declare var VkMemoryType: {
-  prototype: VkMemoryType;
-  new(param?: VkMemoryTypeInitializer | null): VkMemoryType;
-  readonly propertyFlags: VkMemoryPropertyFlagBits;
-  readonly heapIndex: number;
-}
-
-export interface VkMemoryType {
-  readonly propertyFlags: VkMemoryPropertyFlagBits;
-  readonly heapIndex: number;
-}
-
-
-/** ## VkPhysicalDeviceMemoryProperties ## */
-interface VkPhysicalDeviceMemoryPropertiesInitializer {
-  readonly memoryTypeCount?: number;
-  readonly memoryTypes?: number[] | null;
-  readonly memoryHeapCount?: number;
-  readonly memoryHeaps?: number[] | null;
-}
-
-declare var VkPhysicalDeviceMemoryProperties: {
-  prototype: VkPhysicalDeviceMemoryProperties;
-  new(param?: VkPhysicalDeviceMemoryPropertiesInitializer | null): VkPhysicalDeviceMemoryProperties;
-  readonly memoryTypeCount: number;
-  readonly memoryTypes: number[] | null;
-  readonly memoryHeapCount: number;
-  readonly memoryHeaps: number[] | null;
-}
-
-export interface VkPhysicalDeviceMemoryProperties {
-  readonly memoryTypeCount: number;
-  readonly memoryTypes: number[] | null;
-  readonly memoryHeapCount: number;
-  readonly memoryHeaps: number[] | null;
-}
-
-
-/** ## VkQueueFamilyProperties ## */
-interface VkQueueFamilyPropertiesInitializer {
-  readonly queueFlags?: VkQueueFlagBits;
-  readonly queueCount?: number;
-  readonly timestampValidBits?: number;
-  readonly minImageTransferGranularity?: VkExtent3D | null;
-}
-
-declare var VkQueueFamilyProperties: {
-  prototype: VkQueueFamilyProperties;
-  new(param?: VkQueueFamilyPropertiesInitializer | null): VkQueueFamilyProperties;
-  readonly queueFlags: VkQueueFlagBits;
-  readonly queueCount: number;
-  readonly timestampValidBits: number;
-  readonly minImageTransferGranularity: VkExtent3D | null;
-}
-
-export interface VkQueueFamilyProperties {
-  readonly queueFlags: VkQueueFlagBits;
-  readonly queueCount: number;
-  readonly timestampValidBits: number;
-  readonly minImageTransferGranularity: VkExtent3D | null;
 }
 
 
@@ -5332,184 +14353,6 @@ export interface VkInstanceCreateInfo {
   ppEnabledLayerNames: string[] | null;
   enabledExtensionCount: number;
   ppEnabledExtensionNames: string[] | null;
-}
-
-
-/** ## VkPhysicalDeviceFeatures ## */
-interface VkPhysicalDeviceFeaturesInitializer {
-  robustBufferAccess?: number;
-  fullDrawIndexUint32?: number;
-  imageCubeArray?: number;
-  independentBlend?: number;
-  geometryShader?: number;
-  tessellationShader?: number;
-  sampleRateShading?: number;
-  dualSrcBlend?: number;
-  logicOp?: number;
-  multiDrawIndirect?: number;
-  drawIndirectFirstInstance?: number;
-  depthClamp?: number;
-  depthBiasClamp?: number;
-  fillModeNonSolid?: number;
-  depthBounds?: number;
-  wideLines?: number;
-  largePoints?: number;
-  alphaToOne?: number;
-  multiViewport?: number;
-  samplerAnisotropy?: number;
-  textureCompressionETC2?: number;
-  textureCompressionASTC_LDR?: number;
-  textureCompressionBC?: number;
-  occlusionQueryPrecise?: number;
-  pipelineStatisticsQuery?: number;
-  vertexPipelineStoresAndAtomics?: number;
-  fragmentStoresAndAtomics?: number;
-  shaderTessellationAndGeometryPointSize?: number;
-  shaderImageGatherExtended?: number;
-  shaderStorageImageExtendedFormats?: number;
-  shaderStorageImageMultisample?: number;
-  shaderStorageImageReadWithoutFormat?: number;
-  shaderStorageImageWriteWithoutFormat?: number;
-  shaderUniformBufferArrayDynamicIndexing?: number;
-  shaderSampledImageArrayDynamicIndexing?: number;
-  shaderStorageBufferArrayDynamicIndexing?: number;
-  shaderStorageImageArrayDynamicIndexing?: number;
-  shaderClipDistance?: number;
-  shaderCullDistance?: number;
-  shaderFloat64?: number;
-  shaderInt64?: number;
-  shaderInt16?: number;
-  shaderResourceResidency?: number;
-  shaderResourceMinLod?: number;
-  sparseBinding?: number;
-  sparseResidencyBuffer?: number;
-  sparseResidencyImage2D?: number;
-  sparseResidencyImage3D?: number;
-  sparseResidency2Samples?: number;
-  sparseResidency4Samples?: number;
-  sparseResidency8Samples?: number;
-  sparseResidency16Samples?: number;
-  sparseResidencyAliased?: number;
-  variableMultisampleRate?: number;
-  inheritedQueries?: number;
-}
-
-declare var VkPhysicalDeviceFeatures: {
-  prototype: VkPhysicalDeviceFeatures;
-  new(param?: VkPhysicalDeviceFeaturesInitializer | null): VkPhysicalDeviceFeatures;
-  robustBufferAccess: number;
-  fullDrawIndexUint32: number;
-  imageCubeArray: number;
-  independentBlend: number;
-  geometryShader: number;
-  tessellationShader: number;
-  sampleRateShading: number;
-  dualSrcBlend: number;
-  logicOp: number;
-  multiDrawIndirect: number;
-  drawIndirectFirstInstance: number;
-  depthClamp: number;
-  depthBiasClamp: number;
-  fillModeNonSolid: number;
-  depthBounds: number;
-  wideLines: number;
-  largePoints: number;
-  alphaToOne: number;
-  multiViewport: number;
-  samplerAnisotropy: number;
-  textureCompressionETC2: number;
-  textureCompressionASTC_LDR: number;
-  textureCompressionBC: number;
-  occlusionQueryPrecise: number;
-  pipelineStatisticsQuery: number;
-  vertexPipelineStoresAndAtomics: number;
-  fragmentStoresAndAtomics: number;
-  shaderTessellationAndGeometryPointSize: number;
-  shaderImageGatherExtended: number;
-  shaderStorageImageExtendedFormats: number;
-  shaderStorageImageMultisample: number;
-  shaderStorageImageReadWithoutFormat: number;
-  shaderStorageImageWriteWithoutFormat: number;
-  shaderUniformBufferArrayDynamicIndexing: number;
-  shaderSampledImageArrayDynamicIndexing: number;
-  shaderStorageBufferArrayDynamicIndexing: number;
-  shaderStorageImageArrayDynamicIndexing: number;
-  shaderClipDistance: number;
-  shaderCullDistance: number;
-  shaderFloat64: number;
-  shaderInt64: number;
-  shaderInt16: number;
-  shaderResourceResidency: number;
-  shaderResourceMinLod: number;
-  sparseBinding: number;
-  sparseResidencyBuffer: number;
-  sparseResidencyImage2D: number;
-  sparseResidencyImage3D: number;
-  sparseResidency2Samples: number;
-  sparseResidency4Samples: number;
-  sparseResidency8Samples: number;
-  sparseResidency16Samples: number;
-  sparseResidencyAliased: number;
-  variableMultisampleRate: number;
-  inheritedQueries: number;
-}
-
-export interface VkPhysicalDeviceFeatures {
-  robustBufferAccess: number;
-  fullDrawIndexUint32: number;
-  imageCubeArray: number;
-  independentBlend: number;
-  geometryShader: number;
-  tessellationShader: number;
-  sampleRateShading: number;
-  dualSrcBlend: number;
-  logicOp: number;
-  multiDrawIndirect: number;
-  drawIndirectFirstInstance: number;
-  depthClamp: number;
-  depthBiasClamp: number;
-  fillModeNonSolid: number;
-  depthBounds: number;
-  wideLines: number;
-  largePoints: number;
-  alphaToOne: number;
-  multiViewport: number;
-  samplerAnisotropy: number;
-  textureCompressionETC2: number;
-  textureCompressionASTC_LDR: number;
-  textureCompressionBC: number;
-  occlusionQueryPrecise: number;
-  pipelineStatisticsQuery: number;
-  vertexPipelineStoresAndAtomics: number;
-  fragmentStoresAndAtomics: number;
-  shaderTessellationAndGeometryPointSize: number;
-  shaderImageGatherExtended: number;
-  shaderStorageImageExtendedFormats: number;
-  shaderStorageImageMultisample: number;
-  shaderStorageImageReadWithoutFormat: number;
-  shaderStorageImageWriteWithoutFormat: number;
-  shaderUniformBufferArrayDynamicIndexing: number;
-  shaderSampledImageArrayDynamicIndexing: number;
-  shaderStorageBufferArrayDynamicIndexing: number;
-  shaderStorageImageArrayDynamicIndexing: number;
-  shaderClipDistance: number;
-  shaderCullDistance: number;
-  shaderFloat64: number;
-  shaderInt64: number;
-  shaderInt16: number;
-  shaderResourceResidency: number;
-  shaderResourceMinLod: number;
-  sparseBinding: number;
-  sparseResidencyBuffer: number;
-  sparseResidencyImage2D: number;
-  sparseResidencyImage3D: number;
-  sparseResidency2Samples: number;
-  sparseResidency4Samples: number;
-  sparseResidency8Samples: number;
-  sparseResidency16Samples: number;
-  sparseResidencyAliased: number;
-  variableMultisampleRate: number;
-  inheritedQueries: number;
 }
 
 
@@ -5587,6 +14430,37 @@ export interface VkDeviceCreateInfo {
 }
 
 
+/** ## VkAllocationCallbacks ## */
+interface VkAllocationCallbacksInitializer {
+  pUserData?: null;
+  pfnAllocation?: null;
+  pfnReallocation?: null;
+  pfnFree?: null;
+  pfnInternalAllocation?: null;
+  pfnInternalFree?: null;
+}
+
+declare var VkAllocationCallbacks: {
+  prototype: VkAllocationCallbacks;
+  new(param?: VkAllocationCallbacksInitializer | null): VkAllocationCallbacks;
+  pUserData: null;
+  pfnAllocation: null;
+  pfnReallocation: null;
+  pfnFree: null;
+  pfnInternalAllocation: null;
+  pfnInternalFree: null;
+}
+
+export interface VkAllocationCallbacks {
+  pUserData: null;
+  pfnAllocation: null;
+  pfnReallocation: null;
+  pfnFree: null;
+  pfnInternalAllocation: null;
+  pfnInternalFree: null;
+}
+
+
 /** ## VkLayerProperties ## */
 interface VkLayerPropertiesInitializer {
   readonly layerName?: string | null;
@@ -5612,402 +14486,22 @@ export interface VkLayerProperties {
 }
 
 
-/** ## VkPhysicalDeviceSparseProperties ## */
-interface VkPhysicalDeviceSparsePropertiesInitializer {
-  readonly residencyStandard2DBlockShape?: number;
-  readonly residencyStandard2DMultisampleBlockShape?: number;
-  readonly residencyStandard3DBlockShape?: number;
-  readonly residencyAlignedMipSize?: number;
-  readonly residencyNonResidentStrict?: number;
+/** ## VkExtensionProperties ## */
+interface VkExtensionPropertiesInitializer {
+  readonly extensionName?: string | null;
+  readonly specVersion?: number;
 }
 
-declare var VkPhysicalDeviceSparseProperties: {
-  prototype: VkPhysicalDeviceSparseProperties;
-  new(param?: VkPhysicalDeviceSparsePropertiesInitializer | null): VkPhysicalDeviceSparseProperties;
-  readonly residencyStandard2DBlockShape: number;
-  readonly residencyStandard2DMultisampleBlockShape: number;
-  readonly residencyStandard3DBlockShape: number;
-  readonly residencyAlignedMipSize: number;
-  readonly residencyNonResidentStrict: number;
+declare var VkExtensionProperties: {
+  prototype: VkExtensionProperties;
+  new(param?: VkExtensionPropertiesInitializer | null): VkExtensionProperties;
+  readonly extensionName: string | null;
+  readonly specVersion: number;
 }
 
-export interface VkPhysicalDeviceSparseProperties {
-  readonly residencyStandard2DBlockShape: number;
-  readonly residencyStandard2DMultisampleBlockShape: number;
-  readonly residencyStandard3DBlockShape: number;
-  readonly residencyAlignedMipSize: number;
-  readonly residencyNonResidentStrict: number;
-}
-
-
-/** ## VkPhysicalDeviceLimits ## */
-interface VkPhysicalDeviceLimitsInitializer {
-  readonly maxImageDimension1D?: number;
-  readonly maxImageDimension2D?: number;
-  readonly maxImageDimension3D?: number;
-  readonly maxImageDimensionCube?: number;
-  readonly maxImageArrayLayers?: number;
-  readonly maxTexelBufferElements?: number;
-  readonly maxUniformBufferRange?: number;
-  readonly maxStorageBufferRange?: number;
-  readonly maxPushConstantsSize?: number;
-  readonly maxMemoryAllocationCount?: number;
-  readonly maxSamplerAllocationCount?: number;
-  readonly bufferImageGranularity?: number;
-  readonly sparseAddressSpaceSize?: number;
-  readonly maxBoundDescriptorSets?: number;
-  readonly maxPerStageDescriptorSamplers?: number;
-  readonly maxPerStageDescriptorUniformBuffers?: number;
-  readonly maxPerStageDescriptorStorageBuffers?: number;
-  readonly maxPerStageDescriptorSampledImages?: number;
-  readonly maxPerStageDescriptorStorageImages?: number;
-  readonly maxPerStageDescriptorInputAttachments?: number;
-  readonly maxPerStageResources?: number;
-  readonly maxDescriptorSetSamplers?: number;
-  readonly maxDescriptorSetUniformBuffers?: number;
-  readonly maxDescriptorSetUniformBuffersDynamic?: number;
-  readonly maxDescriptorSetStorageBuffers?: number;
-  readonly maxDescriptorSetStorageBuffersDynamic?: number;
-  readonly maxDescriptorSetSampledImages?: number;
-  readonly maxDescriptorSetStorageImages?: number;
-  readonly maxDescriptorSetInputAttachments?: number;
-  readonly maxVertexInputAttributes?: number;
-  readonly maxVertexInputBindings?: number;
-  readonly maxVertexInputAttributeOffset?: number;
-  readonly maxVertexInputBindingStride?: number;
-  readonly maxVertexOutputComponents?: number;
-  readonly maxTessellationGenerationLevel?: number;
-  readonly maxTessellationPatchSize?: number;
-  readonly maxTessellationControlPerVertexInputComponents?: number;
-  readonly maxTessellationControlPerVertexOutputComponents?: number;
-  readonly maxTessellationControlPerPatchOutputComponents?: number;
-  readonly maxTessellationControlTotalOutputComponents?: number;
-  readonly maxTessellationEvaluationInputComponents?: number;
-  readonly maxTessellationEvaluationOutputComponents?: number;
-  readonly maxGeometryShaderInvocations?: number;
-  readonly maxGeometryInputComponents?: number;
-  readonly maxGeometryOutputComponents?: number;
-  readonly maxGeometryOutputVertices?: number;
-  readonly maxGeometryTotalOutputComponents?: number;
-  readonly maxFragmentInputComponents?: number;
-  readonly maxFragmentOutputAttachments?: number;
-  readonly maxFragmentDualSrcAttachments?: number;
-  readonly maxFragmentCombinedOutputResources?: number;
-  readonly maxComputeSharedMemorySize?: number;
-  readonly maxComputeWorkGroupCount?: number[] | null;
-  readonly maxComputeWorkGroupInvocations?: number;
-  readonly maxComputeWorkGroupSize?: number[] | null;
-  readonly subPixelPrecisionBits?: number;
-  readonly subTexelPrecisionBits?: number;
-  readonly mipmapPrecisionBits?: number;
-  readonly maxDrawIndexedIndexValue?: number;
-  readonly maxDrawIndirectCount?: number;
-  readonly maxSamplerLodBias?: number;
-  readonly maxSamplerAnisotropy?: number;
-  readonly maxViewports?: number;
-  readonly maxViewportDimensions?: number[] | null;
-  readonly viewportBoundsRange?: number[] | null;
-  readonly viewportSubPixelBits?: number;
-  readonly minMemoryMapAlignment?: number;
-  readonly minTexelBufferOffsetAlignment?: number;
-  readonly minUniformBufferOffsetAlignment?: number;
-  readonly minStorageBufferOffsetAlignment?: number;
-  readonly minTexelOffset?: number;
-  readonly maxTexelOffset?: number;
-  readonly minTexelGatherOffset?: number;
-  readonly maxTexelGatherOffset?: number;
-  readonly minInterpolationOffset?: number;
-  readonly maxInterpolationOffset?: number;
-  readonly subPixelInterpolationOffsetBits?: number;
-  readonly maxFramebufferWidth?: number;
-  readonly maxFramebufferHeight?: number;
-  readonly maxFramebufferLayers?: number;
-  readonly framebufferColorSampleCounts?: VkSampleCountFlagBits;
-  readonly framebufferDepthSampleCounts?: VkSampleCountFlagBits;
-  readonly framebufferStencilSampleCounts?: VkSampleCountFlagBits;
-  readonly framebufferNoAttachmentsSampleCounts?: VkSampleCountFlagBits;
-  readonly maxColorAttachments?: number;
-  readonly sampledImageColorSampleCounts?: VkSampleCountFlagBits;
-  readonly sampledImageIntegerSampleCounts?: VkSampleCountFlagBits;
-  readonly sampledImageDepthSampleCounts?: VkSampleCountFlagBits;
-  readonly sampledImageStencilSampleCounts?: VkSampleCountFlagBits;
-  readonly storageImageSampleCounts?: VkSampleCountFlagBits;
-  readonly maxSampleMaskWords?: number;
-  readonly timestampComputeAndGraphics?: number;
-  readonly timestampPeriod?: number;
-  readonly maxClipDistances?: number;
-  readonly maxCullDistances?: number;
-  readonly maxCombinedClipAndCullDistances?: number;
-  readonly discreteQueuePriorities?: number;
-  readonly pointSizeRange?: number[] | null;
-  readonly lineWidthRange?: number[] | null;
-  readonly pointSizeGranularity?: number;
-  readonly lineWidthGranularity?: number;
-  readonly strictLines?: number;
-  readonly standardSampleLocations?: number;
-  readonly optimalBufferCopyOffsetAlignment?: number;
-  readonly optimalBufferCopyRowPitchAlignment?: number;
-  readonly nonCoherentAtomSize?: number;
-}
-
-declare var VkPhysicalDeviceLimits: {
-  prototype: VkPhysicalDeviceLimits;
-  new(param?: VkPhysicalDeviceLimitsInitializer | null): VkPhysicalDeviceLimits;
-  readonly maxImageDimension1D: number;
-  readonly maxImageDimension2D: number;
-  readonly maxImageDimension3D: number;
-  readonly maxImageDimensionCube: number;
-  readonly maxImageArrayLayers: number;
-  readonly maxTexelBufferElements: number;
-  readonly maxUniformBufferRange: number;
-  readonly maxStorageBufferRange: number;
-  readonly maxPushConstantsSize: number;
-  readonly maxMemoryAllocationCount: number;
-  readonly maxSamplerAllocationCount: number;
-  readonly bufferImageGranularity: number;
-  readonly sparseAddressSpaceSize: number;
-  readonly maxBoundDescriptorSets: number;
-  readonly maxPerStageDescriptorSamplers: number;
-  readonly maxPerStageDescriptorUniformBuffers: number;
-  readonly maxPerStageDescriptorStorageBuffers: number;
-  readonly maxPerStageDescriptorSampledImages: number;
-  readonly maxPerStageDescriptorStorageImages: number;
-  readonly maxPerStageDescriptorInputAttachments: number;
-  readonly maxPerStageResources: number;
-  readonly maxDescriptorSetSamplers: number;
-  readonly maxDescriptorSetUniformBuffers: number;
-  readonly maxDescriptorSetUniformBuffersDynamic: number;
-  readonly maxDescriptorSetStorageBuffers: number;
-  readonly maxDescriptorSetStorageBuffersDynamic: number;
-  readonly maxDescriptorSetSampledImages: number;
-  readonly maxDescriptorSetStorageImages: number;
-  readonly maxDescriptorSetInputAttachments: number;
-  readonly maxVertexInputAttributes: number;
-  readonly maxVertexInputBindings: number;
-  readonly maxVertexInputAttributeOffset: number;
-  readonly maxVertexInputBindingStride: number;
-  readonly maxVertexOutputComponents: number;
-  readonly maxTessellationGenerationLevel: number;
-  readonly maxTessellationPatchSize: number;
-  readonly maxTessellationControlPerVertexInputComponents: number;
-  readonly maxTessellationControlPerVertexOutputComponents: number;
-  readonly maxTessellationControlPerPatchOutputComponents: number;
-  readonly maxTessellationControlTotalOutputComponents: number;
-  readonly maxTessellationEvaluationInputComponents: number;
-  readonly maxTessellationEvaluationOutputComponents: number;
-  readonly maxGeometryShaderInvocations: number;
-  readonly maxGeometryInputComponents: number;
-  readonly maxGeometryOutputComponents: number;
-  readonly maxGeometryOutputVertices: number;
-  readonly maxGeometryTotalOutputComponents: number;
-  readonly maxFragmentInputComponents: number;
-  readonly maxFragmentOutputAttachments: number;
-  readonly maxFragmentDualSrcAttachments: number;
-  readonly maxFragmentCombinedOutputResources: number;
-  readonly maxComputeSharedMemorySize: number;
-  readonly maxComputeWorkGroupCount: number[] | null;
-  readonly maxComputeWorkGroupInvocations: number;
-  readonly maxComputeWorkGroupSize: number[] | null;
-  readonly subPixelPrecisionBits: number;
-  readonly subTexelPrecisionBits: number;
-  readonly mipmapPrecisionBits: number;
-  readonly maxDrawIndexedIndexValue: number;
-  readonly maxDrawIndirectCount: number;
-  readonly maxSamplerLodBias: number;
-  readonly maxSamplerAnisotropy: number;
-  readonly maxViewports: number;
-  readonly maxViewportDimensions: number[] | null;
-  readonly viewportBoundsRange: number[] | null;
-  readonly viewportSubPixelBits: number;
-  readonly minMemoryMapAlignment: number;
-  readonly minTexelBufferOffsetAlignment: number;
-  readonly minUniformBufferOffsetAlignment: number;
-  readonly minStorageBufferOffsetAlignment: number;
-  readonly minTexelOffset: number;
-  readonly maxTexelOffset: number;
-  readonly minTexelGatherOffset: number;
-  readonly maxTexelGatherOffset: number;
-  readonly minInterpolationOffset: number;
-  readonly maxInterpolationOffset: number;
-  readonly subPixelInterpolationOffsetBits: number;
-  readonly maxFramebufferWidth: number;
-  readonly maxFramebufferHeight: number;
-  readonly maxFramebufferLayers: number;
-  readonly framebufferColorSampleCounts: VkSampleCountFlagBits;
-  readonly framebufferDepthSampleCounts: VkSampleCountFlagBits;
-  readonly framebufferStencilSampleCounts: VkSampleCountFlagBits;
-  readonly framebufferNoAttachmentsSampleCounts: VkSampleCountFlagBits;
-  readonly maxColorAttachments: number;
-  readonly sampledImageColorSampleCounts: VkSampleCountFlagBits;
-  readonly sampledImageIntegerSampleCounts: VkSampleCountFlagBits;
-  readonly sampledImageDepthSampleCounts: VkSampleCountFlagBits;
-  readonly sampledImageStencilSampleCounts: VkSampleCountFlagBits;
-  readonly storageImageSampleCounts: VkSampleCountFlagBits;
-  readonly maxSampleMaskWords: number;
-  readonly timestampComputeAndGraphics: number;
-  readonly timestampPeriod: number;
-  readonly maxClipDistances: number;
-  readonly maxCullDistances: number;
-  readonly maxCombinedClipAndCullDistances: number;
-  readonly discreteQueuePriorities: number;
-  readonly pointSizeRange: number[] | null;
-  readonly lineWidthRange: number[] | null;
-  readonly pointSizeGranularity: number;
-  readonly lineWidthGranularity: number;
-  readonly strictLines: number;
-  readonly standardSampleLocations: number;
-  readonly optimalBufferCopyOffsetAlignment: number;
-  readonly optimalBufferCopyRowPitchAlignment: number;
-  readonly nonCoherentAtomSize: number;
-}
-
-export interface VkPhysicalDeviceLimits {
-  readonly maxImageDimension1D: number;
-  readonly maxImageDimension2D: number;
-  readonly maxImageDimension3D: number;
-  readonly maxImageDimensionCube: number;
-  readonly maxImageArrayLayers: number;
-  readonly maxTexelBufferElements: number;
-  readonly maxUniformBufferRange: number;
-  readonly maxStorageBufferRange: number;
-  readonly maxPushConstantsSize: number;
-  readonly maxMemoryAllocationCount: number;
-  readonly maxSamplerAllocationCount: number;
-  readonly bufferImageGranularity: number;
-  readonly sparseAddressSpaceSize: number;
-  readonly maxBoundDescriptorSets: number;
-  readonly maxPerStageDescriptorSamplers: number;
-  readonly maxPerStageDescriptorUniformBuffers: number;
-  readonly maxPerStageDescriptorStorageBuffers: number;
-  readonly maxPerStageDescriptorSampledImages: number;
-  readonly maxPerStageDescriptorStorageImages: number;
-  readonly maxPerStageDescriptorInputAttachments: number;
-  readonly maxPerStageResources: number;
-  readonly maxDescriptorSetSamplers: number;
-  readonly maxDescriptorSetUniformBuffers: number;
-  readonly maxDescriptorSetUniformBuffersDynamic: number;
-  readonly maxDescriptorSetStorageBuffers: number;
-  readonly maxDescriptorSetStorageBuffersDynamic: number;
-  readonly maxDescriptorSetSampledImages: number;
-  readonly maxDescriptorSetStorageImages: number;
-  readonly maxDescriptorSetInputAttachments: number;
-  readonly maxVertexInputAttributes: number;
-  readonly maxVertexInputBindings: number;
-  readonly maxVertexInputAttributeOffset: number;
-  readonly maxVertexInputBindingStride: number;
-  readonly maxVertexOutputComponents: number;
-  readonly maxTessellationGenerationLevel: number;
-  readonly maxTessellationPatchSize: number;
-  readonly maxTessellationControlPerVertexInputComponents: number;
-  readonly maxTessellationControlPerVertexOutputComponents: number;
-  readonly maxTessellationControlPerPatchOutputComponents: number;
-  readonly maxTessellationControlTotalOutputComponents: number;
-  readonly maxTessellationEvaluationInputComponents: number;
-  readonly maxTessellationEvaluationOutputComponents: number;
-  readonly maxGeometryShaderInvocations: number;
-  readonly maxGeometryInputComponents: number;
-  readonly maxGeometryOutputComponents: number;
-  readonly maxGeometryOutputVertices: number;
-  readonly maxGeometryTotalOutputComponents: number;
-  readonly maxFragmentInputComponents: number;
-  readonly maxFragmentOutputAttachments: number;
-  readonly maxFragmentDualSrcAttachments: number;
-  readonly maxFragmentCombinedOutputResources: number;
-  readonly maxComputeSharedMemorySize: number;
-  readonly maxComputeWorkGroupCount: number[] | null;
-  readonly maxComputeWorkGroupInvocations: number;
-  readonly maxComputeWorkGroupSize: number[] | null;
-  readonly subPixelPrecisionBits: number;
-  readonly subTexelPrecisionBits: number;
-  readonly mipmapPrecisionBits: number;
-  readonly maxDrawIndexedIndexValue: number;
-  readonly maxDrawIndirectCount: number;
-  readonly maxSamplerLodBias: number;
-  readonly maxSamplerAnisotropy: number;
-  readonly maxViewports: number;
-  readonly maxViewportDimensions: number[] | null;
-  readonly viewportBoundsRange: number[] | null;
-  readonly viewportSubPixelBits: number;
-  readonly minMemoryMapAlignment: number;
-  readonly minTexelBufferOffsetAlignment: number;
-  readonly minUniformBufferOffsetAlignment: number;
-  readonly minStorageBufferOffsetAlignment: number;
-  readonly minTexelOffset: number;
-  readonly maxTexelOffset: number;
-  readonly minTexelGatherOffset: number;
-  readonly maxTexelGatherOffset: number;
-  readonly minInterpolationOffset: number;
-  readonly maxInterpolationOffset: number;
-  readonly subPixelInterpolationOffsetBits: number;
-  readonly maxFramebufferWidth: number;
-  readonly maxFramebufferHeight: number;
-  readonly maxFramebufferLayers: number;
-  readonly framebufferColorSampleCounts: VkSampleCountFlagBits;
-  readonly framebufferDepthSampleCounts: VkSampleCountFlagBits;
-  readonly framebufferStencilSampleCounts: VkSampleCountFlagBits;
-  readonly framebufferNoAttachmentsSampleCounts: VkSampleCountFlagBits;
-  readonly maxColorAttachments: number;
-  readonly sampledImageColorSampleCounts: VkSampleCountFlagBits;
-  readonly sampledImageIntegerSampleCounts: VkSampleCountFlagBits;
-  readonly sampledImageDepthSampleCounts: VkSampleCountFlagBits;
-  readonly sampledImageStencilSampleCounts: VkSampleCountFlagBits;
-  readonly storageImageSampleCounts: VkSampleCountFlagBits;
-  readonly maxSampleMaskWords: number;
-  readonly timestampComputeAndGraphics: number;
-  readonly timestampPeriod: number;
-  readonly maxClipDistances: number;
-  readonly maxCullDistances: number;
-  readonly maxCombinedClipAndCullDistances: number;
-  readonly discreteQueuePriorities: number;
-  readonly pointSizeRange: number[] | null;
-  readonly lineWidthRange: number[] | null;
-  readonly pointSizeGranularity: number;
-  readonly lineWidthGranularity: number;
-  readonly strictLines: number;
-  readonly standardSampleLocations: number;
-  readonly optimalBufferCopyOffsetAlignment: number;
-  readonly optimalBufferCopyRowPitchAlignment: number;
-  readonly nonCoherentAtomSize: number;
-}
-
-
-/** ## VkPhysicalDeviceProperties ## */
-interface VkPhysicalDevicePropertiesInitializer {
-  readonly apiVersion?: number;
-  readonly driverVersion?: number;
-  readonly vendorID?: number;
-  readonly deviceID?: number;
-  readonly deviceType?: VkPhysicalDeviceType;
-  readonly deviceName?: string | null;
-  readonly pipelineCacheUUID?: number[] | null;
-  readonly limits?: VkPhysicalDeviceLimits | null;
-  readonly sparseProperties?: VkPhysicalDeviceSparseProperties | null;
-}
-
-declare var VkPhysicalDeviceProperties: {
-  prototype: VkPhysicalDeviceProperties;
-  new(param?: VkPhysicalDevicePropertiesInitializer | null): VkPhysicalDeviceProperties;
-  readonly apiVersion: number;
-  readonly driverVersion: number;
-  readonly vendorID: number;
-  readonly deviceID: number;
-  readonly deviceType: VkPhysicalDeviceType;
-  readonly deviceName: string | null;
-  readonly pipelineCacheUUID: number[] | null;
-  readonly limits: VkPhysicalDeviceLimits | null;
-  readonly sparseProperties: VkPhysicalDeviceSparseProperties | null;
-}
-
-export interface VkPhysicalDeviceProperties {
-  readonly apiVersion: number;
-  readonly driverVersion: number;
-  readonly vendorID: number;
-  readonly deviceID: number;
-  readonly deviceType: VkPhysicalDeviceType;
-  readonly deviceName: string | null;
-  readonly pipelineCacheUUID: number[] | null;
-  readonly limits: VkPhysicalDeviceLimits | null;
-  readonly sparseProperties: VkPhysicalDeviceSparseProperties | null;
+export interface VkExtensionProperties {
+  readonly extensionName: string | null;
+  readonly specVersion: number;
 }
 
 
@@ -6030,6 +14524,44 @@ export interface VkClearRect {
   rect: VkRect2D | null;
   baseArrayLayer: number;
   layerCount: number;
+}
+
+
+/** ## VkBaseInStructure ## */
+interface VkBaseInStructureInitializer {
+  sType?: VkStructureType;
+  pNext?: VkBaseInStructure | null;
+}
+
+declare var VkBaseInStructure: {
+  prototype: VkBaseInStructure;
+  new(param?: VkBaseInStructureInitializer | null): VkBaseInStructure;
+  sType: VkStructureType;
+  pNext: VkBaseInStructure | null;
+}
+
+export interface VkBaseInStructure {
+  sType: VkStructureType;
+  pNext: VkBaseInStructure | null;
+}
+
+
+/** ## VkBaseOutStructure ## */
+interface VkBaseOutStructureInitializer {
+  sType?: VkStructureType;
+  pNext?: VkBaseOutStructure | null;
+}
+
+declare var VkBaseOutStructure: {
+  prototype: VkBaseOutStructure;
+  new(param?: VkBaseOutStructureInitializer | null): VkBaseOutStructure;
+  sType: VkStructureType;
+  pNext: VkBaseOutStructure | null;
+}
+
+export interface VkBaseOutStructure {
+  sType: VkStructureType;
+  pNext: VkBaseOutStructure | null;
 }
 
 

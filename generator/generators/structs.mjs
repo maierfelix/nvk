@@ -2,6 +2,10 @@ import fs from "fs";
 import nunjucks from "nunjucks";
 import pkg from "../../package.json";
 
+import {
+  isIgnoreableType
+} from "../utils";
+
 let ast = null;
 let currentStruct = null;
 
@@ -263,24 +267,19 @@ function processSourceGetter(struct, member) {
 };
 
 function processStaticArraySourceSetter(member) {
-  // numeric array
-  if (member.isNumericArray) {
-    if (!member.hasOwnProperty("length")) {
-      console.warn(`Cannot process static array length ${member.length} in source-setter`);
-    }
-    return `
-    // js
-    if (value->IsArray()) {
-      self->${member.name}.Reset<v8::Array>(value.As<v8::Array>());
-    } else if (value->IsNull()) {
-      self->${member.name}.Reset();
-    } else {
-      ${invalidMemberTypeError(member)}
-      return;
-    }
-  `;
+  if (!member.hasOwnProperty("length")) {
+    console.warn(`Cannot process static array length ${member.length} in static-array source-setter!`);
   }
-  // struct array
+  return `
+  // js
+  if (value->IsArray()) {
+    self->${member.name}.Reset<v8::Array>(value.As<v8::Array>());
+  } else if (value->IsNull()) {
+    self->${member.name}.Reset();
+  } else {
+    ${invalidMemberTypeError(member)}
+    return;
+  }`;
 };
 
 function genPolymorphicSourceSetter(struct, member) {
@@ -386,9 +385,6 @@ function processSourceSetter(struct, member) {
     case "uint8_t *":
     case "uint32_t *":
     case "uint64_t *":
-      return `
-  ${genPersistentV8TypedArray(member)}
-  ${getTypedV8Array(member)}`;
     case "const float *":
     case "const int32_t *":
     case "const uint32_t *":
@@ -441,7 +437,7 @@ function processSourceSetter(struct, member) {
 
 function processFlushSourceSetter(struct, member) {
   if (struct.returnedonly) return ``;
-  if (member.isNumericArray && member.isStaticArray) {
+  if (member.isStaticArray && member.isNumericArray) {
     return `
     if (value->IsArray()) {
       // validate length
@@ -449,8 +445,8 @@ function processFlushSourceSetter(struct, member) {
         ${invalidMemberArrayLengthError(member)}
         return false;
       }
-      std::vector<${member.type}> arr = createArrayOfV8Numbers<${member.type}>(value);
-      memcpy(self->instance.${member.name}, arr.data(), sizeof(${member.type}) * ${member.length});
+      std::vector<${member.type}> array = createArrayOfV8Numbers<${member.type}>(value);
+      memcpy(self->instance.${member.name}, array.data(), sizeof(${member.type}) * ${member.length});
     } else if (value->IsNull()) {
       memset(&self->instance.${member.name}, 0, sizeof(${member.type}));
     } else {
@@ -458,7 +454,37 @@ function processFlushSourceSetter(struct, member) {
       return false;
     }`;
   }
-  else if (member.isArray && !member.isStaticArray && (member.isStructType || member.isHandleType)) {
+  else if (member.isStaticArray && (member.isStructType)) {
+    return `
+    if (value->IsArray()) {
+      v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(value);
+      // validate length
+      if (array->Length() != ${member.length}) {
+        ${invalidMemberArrayLengthError(member)}
+        return false;
+      }
+      std::vector<${member.type}>* data = self->v${member.name};
+      data->clear();
+      for (unsigned int ii = 0; ii < array->Length(); ++ii) {
+        v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
+        if (!(Nan::New(_${member.type}::constructor)->HasInstance(obj))) {
+          ${invalidMemberTypeError(member)}
+          return false;
+        }
+        _${member.type}* result = Nan::ObjectWrap::Unwrap<_${member.type}>(obj);
+        if (!result->flush()) return false;
+        data->push_back(result->instance);
+      };
+      memcpy(self->instance.${member.name}, data->data(), sizeof(${member.type}) * ${member.length});
+
+    } else if (value->IsNull()) {
+      memset(&self->instance.${member.name}, 0, sizeof(${member.type}));
+    } else {
+      ${invalidMemberTypeError(member)}
+      return false;
+    }`;
+  }
+  else if (member.isArray && (member.isStructType || member.isHandleType)) {
     let isReference = member.isConstant && member.dereferenceCount > 0;
     let flusher = member.isStructType ? `if (!result->flush()) return false;` : ``;
       return `
@@ -666,6 +692,10 @@ function getMemberIndexByName(struct, name) {
 
 function processMemberAutosType(struct) {
   let sType = null;
+  // these two are to iterate over given sType structs, ignore them
+  if (struct.name === `VkBaseInStructure` || struct.name === `VkBaseOutStructure`) {
+    return ``;
+  }
   let filtered = struct.children.filter(member => member.name === "sType");
   let sTypeMember = null;
   if (filtered.length) sTypeMember = filtered[0];
@@ -691,32 +721,6 @@ function structNameToStructType(name) {
   return out;
 };
 
-function ignoreableMember(member) {
-  // dont ignore
-  if (member.rawType === "const void *" && member.name === "pNext") return false;
-  // ignore just for now
-  if (member.rawType.substr(0, 4) === "PFN_") return true;
-  return (
-    member.rawType === "const SECURITY_ATTRIBUTES *" ||
-    member.rawType === "struct AHardwareBuffer *" ||
-    member.rawType === "void *" ||
-    member.rawType === "struct ANativeWindow *" ||
-    member.rawType === "MirSurface *" ||
-    member.rawType === "MirConnection *" ||
-    member.rawType === "struct wl_display *" ||
-    member.rawType === "struct wl_surface *" ||
-    member.rawType === "Window" ||
-    member.rawType === "xcb_connection_t *" ||
-    member.rawType === "xcb_window_t" ||
-    member.rawType === "Display *" ||
-    member.rawType === "HWND" ||
-    member.rawType === "HANDLE" ||
-    member.rawType === "DWORD" ||
-    member.rawType === "LPCWSTR" ||
-    member.rawType === "HINSTANCE"
-  );
-};
-
 function isStructReturnedOnly(struct) {
   return struct.returnedonly;
 };
@@ -736,7 +740,7 @@ export default function(astReference, struct) {
     isFlushableMember,
     isHeaderHeapVector,
     isStructReturnedOnly,
-    ignoreableMember,
+    isIgnoreableType,
     processSourceGetter,
     processSourceSetter,
     processHeaderGetter,

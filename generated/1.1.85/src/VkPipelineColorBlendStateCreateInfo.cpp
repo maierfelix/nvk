@@ -97,8 +97,8 @@ bool _VkPipelineColorBlendStateCreateInfo::flush() {
         Nan::ThrowRangeError("Invalid array length, expected array length of '4' for 'VkPipelineColorBlendStateCreateInfo.blendConstants'");
         return false;
       }
-      std::vector<float> arr = createArrayOfV8Numbers<float>(value);
-      memcpy(self->instance.blendConstants, arr.data(), sizeof(float) * 4);
+      std::vector<float> array = createArrayOfV8Numbers<float>(value);
+      memcpy(self->instance.blendConstants, array.data(), sizeof(float) * 4);
     } else if (value->IsNull()) {
       memset(&self->instance.blendConstants, 0, sizeof(float));
     } else {
@@ -280,18 +280,17 @@ NAN_GETTER(_VkPipelineColorBlendStateCreateInfo::GetblendConstants) {
   }
 }NAN_SETTER(_VkPipelineColorBlendStateCreateInfo::SetblendConstants) {
   _VkPipelineColorBlendStateCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkPipelineColorBlendStateCreateInfo>(info.This());
-    // js
-    if (value->IsArray()) {
-      self->blendConstants.Reset<v8::Array>(value.As<v8::Array>());
-    } else if (value->IsNull()) {
-      self->blendConstants.Reset();
-    } else {
-      
+  // js
+  if (value->IsArray()) {
+    self->blendConstants.Reset<v8::Array>(value.As<v8::Array>());
+  } else if (value->IsNull()) {
+    self->blendConstants.Reset();
+  } else {
+    
     std::string details = getV8ObjectDetails(value);
     if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
     std::string msg = "Expected 'Array' for 'VkPipelineColorBlendStateCreateInfo.blendConstants' but got '" + details + "'";
     Nan::ThrowTypeError(msg.c_str());
-      return;
-    }
-  
+    return;
+  }
 }

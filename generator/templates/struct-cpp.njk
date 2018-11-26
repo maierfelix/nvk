@@ -7,8 +7,10 @@ Nan::Persistent<v8::FunctionTemplate> _{{ struct_name }}::constructor;
 _{{ struct_name }}::_{{ struct_name }}() {
   {{ processMemberAutosType(struct) | safe }}
   {% for member in members -%}
+  {%- if isIgnoreableType(member) != true -%}
   {%- if isHeaderHeapVector(member) == true -%}
   {{ processHeapVectorAllocator(member) | safe }}
+  {% endif -%}
   {% endif -%}
   {% endfor %}
 }
@@ -16,10 +18,12 @@ _{{ struct_name }}::_{{ struct_name }}() {
 _{{ struct_name }}::~_{{ struct_name }}() {
   //printf("{{ struct_name }} deconstructed!!\n");
   {% for member in members -%}
+  {%- if isIgnoreableType(member) != true -%}
   {%- if isHeaderHeapVector(member) == true -%}
   {{ processHeapVectorDeallocator(member) | safe }}
   {% endif -%}
   {{ processPersistentDeallocator(member) | safe }}
+  {% endif -%}
   {% endfor %}
 }
 
@@ -35,7 +39,7 @@ void _{{ struct_name }}::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE targe
   // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   {% for member in members -%}
-  {%- if ignoreableMember(member) != true -%}
+  {%- if isIgnoreableType(member) != true -%}
   {{- processSourceMemberAccessor(struct, member) | safe -}}
   {% endif -%}
   {% endfor %}
@@ -45,11 +49,13 @@ void _{{ struct_name }}::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE targe
 bool _{{ struct_name }}::flush() {
   _{{ struct_name }} *self = this;
   {% for member in members -%}
+  {%- if isIgnoreableType(member) != true -%}
   {%- if isFlushableMember(member) == true -%}
   if (!(self->{{ member.name }}.IsEmpty())) {
     v8::Local<v8::Value> value = Nan::New(self->{{ member.name }});
     {{ processFlushSourceSetter(struct, member) | safe }}
   }
+  {%- endif -%}
   {%- endif -%}
   {%- endfor %}
   return true;
@@ -63,13 +69,13 @@ NAN_METHOD(_{{ struct_name }}::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       {% for member in members %}
-      {%- if ignoreableMember(member) != true -%}
+      {%- if isIgnoreableType(member) != true -%}
       v8::Local<v8::String> sAccess{{ loop.index0 }} = Nan::New("{{ member.name }}").ToLocalChecked();
       {% endif -%}
       {% endfor -%}
 
       {% for member in members %}
-      {%- if ignoreableMember(member) != true -%}
+      {%- if isIgnoreableType(member) != true -%}
       if (obj->Has(sAccess{{ loop.index0 }})) info.This()->Set(sAccess{{ loop.index0 }}, obj->Get(sAccess{{ loop.index0 }}));
       {% endif -%}
       {% endfor %}
@@ -82,7 +88,7 @@ NAN_METHOD(_{{ struct_name }}::New) {
 };
 
 {% for member in members -%}
-{%- if ignoreableMember(member) != true -%}
+{%- if isIgnoreableType(member) != true -%}
 // {{ member.name }}
 NAN_GETTER(_{{ struct_name }}::Get{{ member.name }}) {
   _{{ struct_name }} *self = Nan::ObjectWrap::Unwrap<_{{ struct_name }}>(info.This());

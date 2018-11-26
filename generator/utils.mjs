@@ -40,3 +40,30 @@ export function getSortedIncludes(includes) {
   out = toposort(includes).reverse();
   return out;
 };
+
+export function isIgnoreableType(obj) {
+  let type = obj.rawType;
+  // dont ignore
+  if (type === "const void *") return false;
+  // ignore just for now
+  if (type.substr(0, 4) === "PFN_") return true;
+  return (
+    type === "const SECURITY_ATTRIBUTES *" ||
+    type === "struct AHardwareBuffer *" ||
+    type === "void *" ||
+    type === "struct ANativeWindow *" ||
+    type === "MirSurface *" ||
+    type === "MirConnection *" ||
+    type === "struct wl_display *" ||
+    type === "struct wl_surface *" ||
+    type === "Window" ||
+    type === "xcb_connection_t *" ||
+    type === "xcb_window_t" ||
+    type === "Display *" ||
+    type === "HWND" ||
+    type === "HANDLE" ||
+    type === "DWORD" ||
+    type === "LPCWSTR" ||
+    type === "HINSTANCE"
+  );
+};

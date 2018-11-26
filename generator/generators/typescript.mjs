@@ -2,6 +2,10 @@ import fs from "fs";
 import nunjucks from "nunjucks";
 import pkg from "../../package.json";
 
+import {
+  isIgnoreableType
+} from "../utils";
+
 let ast = null;
 let calls = null;
 let enums = null;
@@ -47,6 +51,7 @@ function isStructInclude(name) {
 
 function getTypescriptType(member) {
   let {rawType} = member;
+  if (isIgnoreableType(member)) return `null`;
   if (member.kind === "COMMAND_PARAM") {
     // handle inout parameters
     switch (member.rawType) {
@@ -100,8 +105,11 @@ function getTypescriptType(member) {
       return `number`;
     case "void **":
       return `VkInoutAddress`;
+    case "void *":
+      return `null`;
     default: {
-      throw `Cannot handle member ${member.rawType} in member-ts-type!`;
+      console.log(member);
+      console.warn(`Cannot handle member ${member.rawType} in member-ts-type!`);
       return ``;
     }
   };

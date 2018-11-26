@@ -63,8 +63,8 @@ bool _VkClearColorValue::flush() {
         Nan::ThrowRangeError("Invalid array length, expected array length of '4' for 'VkClearColorValue.float32'");
         return false;
       }
-      std::vector<float> arr = createArrayOfV8Numbers<float>(value);
-      memcpy(self->instance.float32, arr.data(), sizeof(float) * 4);
+      std::vector<float> array = createArrayOfV8Numbers<float>(value);
+      memcpy(self->instance.float32, array.data(), sizeof(float) * 4);
     } else if (value->IsNull()) {
       memset(&self->instance.float32, 0, sizeof(float));
     } else {
@@ -84,8 +84,8 @@ bool _VkClearColorValue::flush() {
         Nan::ThrowRangeError("Invalid array length, expected array length of '4' for 'VkClearColorValue.int32'");
         return false;
       }
-      std::vector<int32_t> arr = createArrayOfV8Numbers<int32_t>(value);
-      memcpy(self->instance.int32, arr.data(), sizeof(int32_t) * 4);
+      std::vector<int32_t> array = createArrayOfV8Numbers<int32_t>(value);
+      memcpy(self->instance.int32, array.data(), sizeof(int32_t) * 4);
     } else if (value->IsNull()) {
       memset(&self->instance.int32, 0, sizeof(int32_t));
     } else {
@@ -105,8 +105,8 @@ bool _VkClearColorValue::flush() {
         Nan::ThrowRangeError("Invalid array length, expected array length of '4' for 'VkClearColorValue.uint32'");
         return false;
       }
-      std::vector<uint32_t> arr = createArrayOfV8Numbers<uint32_t>(value);
-      memcpy(self->instance.uint32, arr.data(), sizeof(uint32_t) * 4);
+      std::vector<uint32_t> array = createArrayOfV8Numbers<uint32_t>(value);
+      memcpy(self->instance.uint32, array.data(), sizeof(uint32_t) * 4);
     } else if (value->IsNull()) {
       memset(&self->instance.uint32, 0, sizeof(uint32_t));
     } else {
@@ -153,20 +153,19 @@ NAN_GETTER(_VkClearColorValue::Getfloat32) {
   }
 }NAN_SETTER(_VkClearColorValue::Setfloat32) {
   _VkClearColorValue *self = Nan::ObjectWrap::Unwrap<_VkClearColorValue>(info.This());
-    // js
-    if (value->IsArray()) {
-      self->float32.Reset<v8::Array>(value.As<v8::Array>());
-    } else if (value->IsNull()) {
-      self->float32.Reset();
-    } else {
-      
+  // js
+  if (value->IsArray()) {
+    self->float32.Reset<v8::Array>(value.As<v8::Array>());
+  } else if (value->IsNull()) {
+    self->float32.Reset();
+  } else {
+    
     std::string details = getV8ObjectDetails(value);
     if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
     std::string msg = "Expected 'Array' for 'VkClearColorValue.float32' but got '" + details + "'";
     Nan::ThrowTypeError(msg.c_str());
-      return;
-    }
-  
+    return;
+  }
 }// int32
 NAN_GETTER(_VkClearColorValue::Getint32) {
   _VkClearColorValue *self = Nan::ObjectWrap::Unwrap<_VkClearColorValue>(info.This());
@@ -177,20 +176,19 @@ NAN_GETTER(_VkClearColorValue::Getint32) {
   }
 }NAN_SETTER(_VkClearColorValue::Setint32) {
   _VkClearColorValue *self = Nan::ObjectWrap::Unwrap<_VkClearColorValue>(info.This());
-    // js
-    if (value->IsArray()) {
-      self->int32.Reset<v8::Array>(value.As<v8::Array>());
-    } else if (value->IsNull()) {
-      self->int32.Reset();
-    } else {
-      
+  // js
+  if (value->IsArray()) {
+    self->int32.Reset<v8::Array>(value.As<v8::Array>());
+  } else if (value->IsNull()) {
+    self->int32.Reset();
+  } else {
+    
     std::string details = getV8ObjectDetails(value);
     if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
     std::string msg = "Expected 'Array' for 'VkClearColorValue.int32' but got '" + details + "'";
     Nan::ThrowTypeError(msg.c_str());
-      return;
-    }
-  
+    return;
+  }
 }// uint32
 NAN_GETTER(_VkClearColorValue::Getuint32) {
   _VkClearColorValue *self = Nan::ObjectWrap::Unwrap<_VkClearColorValue>(info.This());
@@ -201,18 +199,17 @@ NAN_GETTER(_VkClearColorValue::Getuint32) {
   }
 }NAN_SETTER(_VkClearColorValue::Setuint32) {
   _VkClearColorValue *self = Nan::ObjectWrap::Unwrap<_VkClearColorValue>(info.This());
-    // js
-    if (value->IsArray()) {
-      self->uint32.Reset<v8::Array>(value.As<v8::Array>());
-    } else if (value->IsNull()) {
-      self->uint32.Reset();
-    } else {
-      
+  // js
+  if (value->IsArray()) {
+    self->uint32.Reset<v8::Array>(value.As<v8::Array>());
+  } else if (value->IsNull()) {
+    self->uint32.Reset();
+  } else {
+    
     std::string details = getV8ObjectDetails(value);
     if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
     std::string msg = "Expected 'Array' for 'VkClearColorValue.uint32' but got '" + details + "'";
     Nan::ThrowTypeError(msg.c_str());
-      return;
-    }
-  
+    return;
+  }
 }

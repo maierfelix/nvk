@@ -127,7 +127,8 @@ const structWhiteList = [
   "VkSubresourceLayout",
   "VkImageSubresourceRange",
   "VkImageSubresourceLayers",
-  "VkComputePipelineCreateInfo"
+  "VkComputePipelineCreateInfo",
+  "VkImageBlit"
 ];
 
 const callsWhiteList = [
@@ -291,7 +292,7 @@ function insertOrReplaceEnumMember(enu, member) {
   enu.children.push(member);
 };
 
-function mergeExtensionsIntoEnums(enums, exts) {
+function mergeExtensionsIntoEnums(enums, extensions) {
   let enuExt = {
     kind: "ENUM",
     type: "ENUM",
@@ -306,8 +307,9 @@ function mergeExtensionsIntoEnums(enums, exts) {
   };
   enums.unshift(enuExt);
   enums.unshift(strExt);
-  exts.map(ext => {
-    ext.members.map(member => {
+  extensions.map(extension => {
+    extension.members.map(member => {
+      if (member.kind !== "EXTENSION_MEMBER_ENUM") return;
       if (member.extends) {
         let enu = getEnumByName(enums, member.extends);
         insertOrReplaceEnumMember(enu, member);
@@ -319,7 +321,7 @@ function mergeExtensionsIntoEnums(enums, exts) {
           insertOrReplaceEnumMember(strExt, member);
         }
         else {
-          console.warn(`Cannot handle enum extension ${ext.name} in merge-extensions!`);
+          console.warn(`Cannot handle enum extension ${extension.name} in merge-extensions!`);
         }
       }
     });
@@ -366,8 +368,36 @@ function generateBindings(specXML, version) {
   let structs = ast.filter(node => node.kind === "STRUCT");
   let handles = ast.filter(node => node.kind === "HANDLE");
   let extensions = ast.filter(node => node.kind === "EXTENSION");
+  // process extensions
+  {
+    extensions.map(extension => {
+      let {platform} = extension;
+      extension.members.map(member => {
+        let isEnumExtension = member.kind === "EXTENSION_MEMBER_ENUM";
+        let isStructExtension = member.kind === "EXTENSION_MEMBER_STRUCT";
+        let isCommandExtension = member.kind === "EXTENSION_MEMBER_COMMAND";
+        if (isStructExtension) {
+          structs.map(struct => {
+            if (struct.name === member.name) struct.extension = extension;
+          });
+        }
+        else if (isCommandExtension) {
+          calls.map(call => {
+            if (call.name === member.name) call.extension = extension;
+          });
+        }
+      });
+    });
+  }
   calls = calls.filter(call => callsWhiteList.includes(call.name));
-  structs = structs.filter(struct => structWhiteList.includes(struct.name));
+  structs = structs.filter(struct => {
+    if (struct.extension) {
+      let {extension} = struct;
+      if (extension.platform !== "default" && extension.platform !== "win32") return false;
+    }
+    return true;
+  });
+  //structs = structs.filter(struct => structWhiteList.includes(struct.name));
   // generate structs
   {
     console.log("Generating Vk structs..");
@@ -382,9 +412,6 @@ function generateBindings(specXML, version) {
   // generate handles
   {
     console.log("Generating Vk handles..");
-    for (let ii = 0; ii < handles.length; ++ii) {
-      if (handles[ii].name === "VkAccelerationStructureNVX") handles.splice(ii, 1);
-    }
     handles.map(handle => {
       let result = generateHandles(ast, handle);
       if (includes.indexOf(handle.name) <= -1) includes.push({ name: handle.name, include: "" });
