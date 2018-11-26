@@ -189,7 +189,7 @@ This tool uses a new JavaScript type called [`BigInt`](https://developers.google
 
 ## Binding Code Generator:
 
-The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/node-vulkan/master/generated/1.1.85/ast.json) (and adds a lot magic to it), which is then used by the code generator. Currently a total of `~80.000` lines of code get generated, where `~30.000` lines is C++ code.
+The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/node-vulkan/master/generated/1.1.85/ast.json), which is then used by the code generator. Currently a total of `~170.000` lines of code get generated, where `~110.000` lines are C++ code.
 
 If you're interested in what a generated file look like, checkout [`calls.h`](https://github.com/maierfelix/node-vulkan/blob/master/generated/1.1.85/src/calls.h) or [`VkGraphicsPipelineCreateInfo.cpp`](https://github.com/maierfelix/node-vulkan/blob/master/generated/1.1.85/src/VkGraphicsPipelineCreateInfo.cpp)
 
