@@ -1,6 +1,6 @@
 <p align="center">
   <a href="//maierfelix.github.io/Iroh/">
-    <img src="https://i.imgur.com/I5IteUo.png" height="182">
+    <img src="https://i.imgur.com/O0bMoK1.gif" height="182">
   </a>
 </p>
 
