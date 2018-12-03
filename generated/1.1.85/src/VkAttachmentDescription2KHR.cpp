@@ -17,8 +17,6 @@ _VkAttachmentDescription2KHR::~_VkAttachmentDescription2KHR() {
   //printf("VkAttachmentDescription2KHR deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
   
   
@@ -43,7 +41,6 @@ void _VkAttachmentDescription2KHR::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("flags").ToLocalChecked(), Getflags, Setflags, ctor);
   SetPrototypeAccessor(proto, Nan::New("format").ToLocalChecked(), Getformat, Setformat, ctor);
   SetPrototypeAccessor(proto, Nan::New("samples").ToLocalChecked(), Getsamples, Setsamples, ctor);
@@ -70,7 +67,6 @@ NAN_METHOD(_VkAttachmentDescription2KHR::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
       v8::Local<v8::String> sAccess3 = Nan::New("format").ToLocalChecked();
       v8::Local<v8::String> sAccess4 = Nan::New("samples").ToLocalChecked();
@@ -81,7 +77,6 @@ NAN_METHOD(_VkAttachmentDescription2KHR::New) {
       v8::Local<v8::String> sAccess9 = Nan::New("initialLayout").ToLocalChecked();
       v8::Local<v8::String> sAccess10 = Nan::New("finalLayout").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
       if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
@@ -116,11 +111,6 @@ NAN_GETTER(_VkAttachmentDescription2KHR::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkAttachmentDescription2KHR::GetpNext) {
-  _VkAttachmentDescription2KHR *self = Nan::ObjectWrap::Unwrap<_VkAttachmentDescription2KHR>(info.This());
-}NAN_SETTER(_VkAttachmentDescription2KHR::SetpNext) {
-  _VkAttachmentDescription2KHR *self = Nan::ObjectWrap::Unwrap<_VkAttachmentDescription2KHR>(info.This());
 }// flags
 NAN_GETTER(_VkAttachmentDescription2KHR::Getflags) {
   _VkAttachmentDescription2KHR *self = Nan::ObjectWrap::Unwrap<_VkAttachmentDescription2KHR>(info.This());

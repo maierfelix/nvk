@@ -20,10 +20,6 @@ class _VkDebugUtilsLabelEXT: public Nan::ObjectWrap {
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
     
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
-    static NAN_GETTER(GetpNext);
-    static NAN_SETTER(SetpNext);
-    
     Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> pLabelName;
     static NAN_GETTER(GetpLabelName);
     static NAN_SETTER(SetpLabelName);

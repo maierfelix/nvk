@@ -17,8 +17,6 @@ _VkComputePipelineCreateInfo::~_VkComputePipelineCreateInfo() {
   //printf("VkComputePipelineCreateInfo deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
   
   
@@ -39,7 +37,6 @@ void _VkComputePipelineCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("flags").ToLocalChecked(), Getflags, Setflags, ctor);
   SetPrototypeAccessor(proto, Nan::New("stage").ToLocalChecked(), Getstage, Setstage, ctor);
   SetPrototypeAccessor(proto, Nan::New("layout").ToLocalChecked(), Getlayout, Setlayout, ctor);
@@ -68,14 +65,12 @@ NAN_METHOD(_VkComputePipelineCreateInfo::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
       v8::Local<v8::String> sAccess3 = Nan::New("stage").ToLocalChecked();
       v8::Local<v8::String> sAccess4 = Nan::New("layout").ToLocalChecked();
       v8::Local<v8::String> sAccess5 = Nan::New("basePipelineHandle").ToLocalChecked();
       v8::Local<v8::String> sAccess6 = Nan::New("basePipelineIndex").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
       if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
@@ -106,11 +101,6 @@ NAN_GETTER(_VkComputePipelineCreateInfo::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkComputePipelineCreateInfo::GetpNext) {
-  _VkComputePipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkComputePipelineCreateInfo>(info.This());
-}NAN_SETTER(_VkComputePipelineCreateInfo::SetpNext) {
-  _VkComputePipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkComputePipelineCreateInfo>(info.This());
 }// flags
 NAN_GETTER(_VkComputePipelineCreateInfo::Getflags) {
   _VkComputePipelineCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkComputePipelineCreateInfo>(info.This());

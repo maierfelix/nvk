@@ -20,8 +20,6 @@ _VkSubpassDescription2KHR::~_VkSubpassDescription2KHR() {
   //printf("VkSubpassDescription2KHR deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
   
   
@@ -62,7 +60,6 @@ void _VkSubpassDescription2KHR::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYP
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("flags").ToLocalChecked(), Getflags, Setflags, ctor);
   SetPrototypeAccessor(proto, Nan::New("pipelineBindPoint").ToLocalChecked(), GetpipelineBindPoint, SetpipelineBindPoint, ctor);
   SetPrototypeAccessor(proto, Nan::New("viewMask").ToLocalChecked(), GetviewMask, SetviewMask, ctor);
@@ -169,7 +166,6 @@ NAN_METHOD(_VkSubpassDescription2KHR::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
       v8::Local<v8::String> sAccess3 = Nan::New("pipelineBindPoint").ToLocalChecked();
       v8::Local<v8::String> sAccess4 = Nan::New("viewMask").ToLocalChecked();
@@ -182,7 +178,6 @@ NAN_METHOD(_VkSubpassDescription2KHR::New) {
       v8::Local<v8::String> sAccess11 = Nan::New("preserveAttachmentCount").ToLocalChecked();
       v8::Local<v8::String> sAccess12 = Nan::New("pPreserveAttachments").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
       if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
@@ -219,11 +214,6 @@ NAN_GETTER(_VkSubpassDescription2KHR::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkSubpassDescription2KHR::GetpNext) {
-  _VkSubpassDescription2KHR *self = Nan::ObjectWrap::Unwrap<_VkSubpassDescription2KHR>(info.This());
-}NAN_SETTER(_VkSubpassDescription2KHR::SetpNext) {
-  _VkSubpassDescription2KHR *self = Nan::ObjectWrap::Unwrap<_VkSubpassDescription2KHR>(info.This());
 }// flags
 NAN_GETTER(_VkSubpassDescription2KHR::Getflags) {
   _VkSubpassDescription2KHR *self = Nan::ObjectWrap::Unwrap<_VkSubpassDescription2KHR>(info.This());

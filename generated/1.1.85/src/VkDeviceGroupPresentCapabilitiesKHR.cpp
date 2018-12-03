@@ -19,8 +19,6 @@ _VkDeviceGroupPresentCapabilitiesKHR::~_VkDeviceGroupPresentCapabilitiesKHR() {
   //printf("VkDeviceGroupPresentCapabilitiesKHR deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   vpresentMask->clear();
   delete vpresentMask;
   
@@ -41,7 +39,6 @@ void _VkDeviceGroupPresentCapabilitiesKHR::Initialize(Nan::ADDON_REGISTER_FUNCTI
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, nullptr, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, nullptr, ctor);
   SetPrototypeAccessor(proto, Nan::New("presentMask").ToLocalChecked(), GetpresentMask, nullptr, ctor);
   SetPrototypeAccessor(proto, Nan::New("modes").ToLocalChecked(), Getmodes, nullptr, ctor);
   Nan::Set(target, Nan::New("VkDeviceGroupPresentCapabilitiesKHR").ToLocalChecked(), ctor->GetFunction());
@@ -71,9 +68,6 @@ NAN_METHOD(_VkDeviceGroupPresentCapabilitiesKHR::New) {
 NAN_GETTER(_VkDeviceGroupPresentCapabilitiesKHR::GetsType) {
   _VkDeviceGroupPresentCapabilitiesKHR *self = Nan::ObjectWrap::Unwrap<_VkDeviceGroupPresentCapabilitiesKHR>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
-}// pNext
-NAN_GETTER(_VkDeviceGroupPresentCapabilitiesKHR::GetpNext) {
-  _VkDeviceGroupPresentCapabilitiesKHR *self = Nan::ObjectWrap::Unwrap<_VkDeviceGroupPresentCapabilitiesKHR>(info.This());
 }// presentMask
 NAN_GETTER(_VkDeviceGroupPresentCapabilitiesKHR::GetpresentMask) {
   _VkDeviceGroupPresentCapabilitiesKHR *self = Nan::ObjectWrap::Unwrap<_VkDeviceGroupPresentCapabilitiesKHR>(info.This());

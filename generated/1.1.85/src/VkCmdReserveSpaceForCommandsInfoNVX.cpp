@@ -17,8 +17,6 @@ _VkCmdReserveSpaceForCommandsInfoNVX::~_VkCmdReserveSpaceForCommandsInfoNVX() {
   //printf("VkCmdReserveSpaceForCommandsInfoNVX deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
   
   
@@ -37,7 +35,6 @@ void _VkCmdReserveSpaceForCommandsInfoNVX::Initialize(Nan::ADDON_REGISTER_FUNCTI
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("objectTable").ToLocalChecked(), GetobjectTable, SetobjectTable, ctor);
   SetPrototypeAccessor(proto, Nan::New("indirectCommandsLayout").ToLocalChecked(), GetindirectCommandsLayout, SetindirectCommandsLayout, ctor);
   SetPrototypeAccessor(proto, Nan::New("maxSequencesCount").ToLocalChecked(), GetmaxSequencesCount, SetmaxSequencesCount, ctor);
@@ -58,12 +55,10 @@ NAN_METHOD(_VkCmdReserveSpaceForCommandsInfoNVX::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("objectTable").ToLocalChecked();
       v8::Local<v8::String> sAccess3 = Nan::New("indirectCommandsLayout").ToLocalChecked();
       v8::Local<v8::String> sAccess4 = Nan::New("maxSequencesCount").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
       if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
@@ -92,11 +87,6 @@ NAN_GETTER(_VkCmdReserveSpaceForCommandsInfoNVX::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkCmdReserveSpaceForCommandsInfoNVX::GetpNext) {
-  _VkCmdReserveSpaceForCommandsInfoNVX *self = Nan::ObjectWrap::Unwrap<_VkCmdReserveSpaceForCommandsInfoNVX>(info.This());
-}NAN_SETTER(_VkCmdReserveSpaceForCommandsInfoNVX::SetpNext) {
-  _VkCmdReserveSpaceForCommandsInfoNVX *self = Nan::ObjectWrap::Unwrap<_VkCmdReserveSpaceForCommandsInfoNVX>(info.This());
 }// objectTable
 NAN_GETTER(_VkCmdReserveSpaceForCommandsInfoNVX::GetobjectTable) {
   _VkCmdReserveSpaceForCommandsInfoNVX *self = Nan::ObjectWrap::Unwrap<_VkCmdReserveSpaceForCommandsInfoNVX>(info.This());

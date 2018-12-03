@@ -19,8 +19,6 @@ _VkWin32KeyedMutexAcquireReleaseInfoNV::~_VkWin32KeyedMutexAcquireReleaseInfoNV(
   //printf("VkWin32KeyedMutexAcquireReleaseInfoNV deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
   vpAcquireSyncs->clear();
   delete vpAcquireSyncs;
@@ -54,7 +52,6 @@ void _VkWin32KeyedMutexAcquireReleaseInfoNV::Initialize(Nan::ADDON_REGISTER_FUNC
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("acquireCount").ToLocalChecked(), GetacquireCount, SetacquireCount, ctor);
   SetPrototypeAccessor(proto, Nan::New("pAcquireSyncs").ToLocalChecked(), GetpAcquireSyncs, SetpAcquireSyncs, ctor);
   SetPrototypeAccessor(proto, Nan::New("pAcquireKeys").ToLocalChecked(), GetpAcquireKeys, SetpAcquireKeys, ctor);
@@ -131,7 +128,6 @@ NAN_METHOD(_VkWin32KeyedMutexAcquireReleaseInfoNV::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("acquireCount").ToLocalChecked();
       v8::Local<v8::String> sAccess3 = Nan::New("pAcquireSyncs").ToLocalChecked();
       v8::Local<v8::String> sAccess4 = Nan::New("pAcquireKeys").ToLocalChecked();
@@ -140,7 +136,6 @@ NAN_METHOD(_VkWin32KeyedMutexAcquireReleaseInfoNV::New) {
       v8::Local<v8::String> sAccess7 = Nan::New("pReleaseSyncs").ToLocalChecked();
       v8::Local<v8::String> sAccess8 = Nan::New("pReleaseKeys").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
       if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
@@ -173,11 +168,6 @@ NAN_GETTER(_VkWin32KeyedMutexAcquireReleaseInfoNV::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkWin32KeyedMutexAcquireReleaseInfoNV::GetpNext) {
-  _VkWin32KeyedMutexAcquireReleaseInfoNV *self = Nan::ObjectWrap::Unwrap<_VkWin32KeyedMutexAcquireReleaseInfoNV>(info.This());
-}NAN_SETTER(_VkWin32KeyedMutexAcquireReleaseInfoNV::SetpNext) {
-  _VkWin32KeyedMutexAcquireReleaseInfoNV *self = Nan::ObjectWrap::Unwrap<_VkWin32KeyedMutexAcquireReleaseInfoNV>(info.This());
 }// acquireCount
 NAN_GETTER(_VkWin32KeyedMutexAcquireReleaseInfoNV::GetacquireCount) {
   _VkWin32KeyedMutexAcquireReleaseInfoNV *self = Nan::ObjectWrap::Unwrap<_VkWin32KeyedMutexAcquireReleaseInfoNV>(info.This());

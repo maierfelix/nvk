@@ -18,8 +18,6 @@ _VkPresentTimesInfoGOOGLE::~_VkPresentTimesInfoGOOGLE() {
   //printf("VkPresentTimesInfoGOOGLE deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
   vpTimes->clear();
   delete vpTimes;
@@ -41,7 +39,6 @@ void _VkPresentTimesInfoGOOGLE::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYP
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("swapchainCount").ToLocalChecked(), GetswapchainCount, SetswapchainCount, ctor);
   SetPrototypeAccessor(proto, Nan::New("pTimes").ToLocalChecked(), GetpTimes, SetpTimes, ctor);
   Nan::Set(target, Nan::New("VkPresentTimesInfoGOOGLE").ToLocalChecked(), ctor->GetFunction());
@@ -87,11 +84,9 @@ NAN_METHOD(_VkPresentTimesInfoGOOGLE::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("swapchainCount").ToLocalChecked();
       v8::Local<v8::String> sAccess3 = Nan::New("pTimes").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
       
@@ -119,11 +114,6 @@ NAN_GETTER(_VkPresentTimesInfoGOOGLE::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkPresentTimesInfoGOOGLE::GetpNext) {
-  _VkPresentTimesInfoGOOGLE *self = Nan::ObjectWrap::Unwrap<_VkPresentTimesInfoGOOGLE>(info.This());
-}NAN_SETTER(_VkPresentTimesInfoGOOGLE::SetpNext) {
-  _VkPresentTimesInfoGOOGLE *self = Nan::ObjectWrap::Unwrap<_VkPresentTimesInfoGOOGLE>(info.This());
 }// swapchainCount
 NAN_GETTER(_VkPresentTimesInfoGOOGLE::GetswapchainCount) {
   _VkPresentTimesInfoGOOGLE *self = Nan::ObjectWrap::Unwrap<_VkPresentTimesInfoGOOGLE>(info.This());

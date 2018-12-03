@@ -49,14 +49,28 @@ function isStructInclude(name) {
   return getStructByName(name) !== null;
 };
 
+function getNumericTypescriptType(type) {
+  switch (type) {
+    case "int":
+    case "float":
+    case "size_t":
+    case "int32_t":
+    case "uint8_t":
+    case "uint32_t":
+    case "uint64_t":
+      return `number`;
+  };
+  return type;
+};
+
 function getTypescriptType(member) {
   let {rawType} = member;
   if (isIgnoreableType(member)) return `null`;
   if (member.kind === "COMMAND_PARAM") {
     // handle inout parameters
     switch (member.rawType) {
-      case "int *":
       case "size_t *":
+      case "int *":
       case "int32_t *":
       case "uint32_t *":
       case "uint64_t *":
@@ -70,12 +84,12 @@ function getTypescriptType(member) {
   }
   if (member.isBaseType) rawType = member.baseType;
   if (member.isTypedArray) return `${member.jsTypedArrayName} | null`;
-  if (member.enumType) return `${member.enumType}`;
+  if (member.enumType) return getNumericTypescriptType(member.enumType);
   if (member.isBitmaskType) {
     let bitmask = getBitmaskByName(member.bitmaskType);
     // future reserved bitmask, or must be 0
     if (!bitmask) return `null`;
-    return `${member.bitmaskType}`;
+    return getNumericTypescriptType(member.bitmaskType);
   }
   if (member.isStaticArray) {
     // string of chars
@@ -89,6 +103,7 @@ function getTypescriptType(member) {
     }
   }
   switch (rawType) {
+    case "void *":
     case "const void *":
       return `null`;
     case "const char *":
@@ -105,10 +120,7 @@ function getTypescriptType(member) {
       return `number`;
     case "void **":
       return `VkInoutAddress`;
-    case "void *":
-      return `null`;
     default: {
-      console.log(member);
       console.warn(`Cannot handle member ${member.rawType} in member-ts-type!`);
       return ``;
     }
@@ -145,14 +157,16 @@ function processCallReturn(call) {
     case "void":
       return `void`;
     case "int32_t":
+    case "uint32_t":
       return `number`;
     default:
-      throw `Cannot handle call param return type ${param.name} in call-return!`;
+      console.warn(`Cannot handle call param return type ${type} in ts-call-return!`);
   };
   return `void`;
 };
 
 function processCall(call) {
+  if (isIgnoreableType(call)) return ``;
   let params = processCallParameters(call);
   let ret = processCallReturn(call);
   return `declare function ${call.name}(${params}): ${ret};`;

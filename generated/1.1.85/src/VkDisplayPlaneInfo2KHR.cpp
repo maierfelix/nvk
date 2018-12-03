@@ -17,8 +17,6 @@ _VkDisplayPlaneInfo2KHR::~_VkDisplayPlaneInfo2KHR() {
   //printf("VkDisplayPlaneInfo2KHR deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
   
 }
@@ -36,7 +34,6 @@ void _VkDisplayPlaneInfo2KHR::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE 
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("mode").ToLocalChecked(), Getmode, Setmode, ctor);
   SetPrototypeAccessor(proto, Nan::New("planeIndex").ToLocalChecked(), GetplaneIndex, SetplaneIndex, ctor);
   Nan::Set(target, Nan::New("VkDisplayPlaneInfo2KHR").ToLocalChecked(), ctor->GetFunction());
@@ -56,11 +53,9 @@ NAN_METHOD(_VkDisplayPlaneInfo2KHR::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("mode").ToLocalChecked();
       v8::Local<v8::String> sAccess3 = Nan::New("planeIndex").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
       
@@ -88,11 +83,6 @@ NAN_GETTER(_VkDisplayPlaneInfo2KHR::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkDisplayPlaneInfo2KHR::GetpNext) {
-  _VkDisplayPlaneInfo2KHR *self = Nan::ObjectWrap::Unwrap<_VkDisplayPlaneInfo2KHR>(info.This());
-}NAN_SETTER(_VkDisplayPlaneInfo2KHR::SetpNext) {
-  _VkDisplayPlaneInfo2KHR *self = Nan::ObjectWrap::Unwrap<_VkDisplayPlaneInfo2KHR>(info.This());
 }// mode
 NAN_GETTER(_VkDisplayPlaneInfo2KHR::Getmode) {
   _VkDisplayPlaneInfo2KHR *self = Nan::ObjectWrap::Unwrap<_VkDisplayPlaneInfo2KHR>(info.This());

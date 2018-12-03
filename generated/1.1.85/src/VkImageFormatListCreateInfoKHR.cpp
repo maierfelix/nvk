@@ -17,8 +17,6 @@ _VkImageFormatListCreateInfoKHR::~_VkImageFormatListCreateInfoKHR() {
   //printf("VkImageFormatListCreateInfoKHR deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
   pViewFormats.Reset();
   
@@ -37,7 +35,6 @@ void _VkImageFormatListCreateInfoKHR::Initialize(Nan::ADDON_REGISTER_FUNCTION_AR
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("viewFormatCount").ToLocalChecked(), GetviewFormatCount, SetviewFormatCount, ctor);
   SetPrototypeAccessor(proto, Nan::New("pViewFormats").ToLocalChecked(), GetpViewFormats, SetpViewFormats, ctor);
   Nan::Set(target, Nan::New("VkImageFormatListCreateInfoKHR").ToLocalChecked(), ctor->GetFunction());
@@ -57,11 +54,9 @@ NAN_METHOD(_VkImageFormatListCreateInfoKHR::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("viewFormatCount").ToLocalChecked();
       v8::Local<v8::String> sAccess3 = Nan::New("pViewFormats").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
       
@@ -89,11 +84,6 @@ NAN_GETTER(_VkImageFormatListCreateInfoKHR::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkImageFormatListCreateInfoKHR::GetpNext) {
-  _VkImageFormatListCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkImageFormatListCreateInfoKHR>(info.This());
-}NAN_SETTER(_VkImageFormatListCreateInfoKHR::SetpNext) {
-  _VkImageFormatListCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkImageFormatListCreateInfoKHR>(info.This());
 }// viewFormatCount
 NAN_GETTER(_VkImageFormatListCreateInfoKHR::GetviewFormatCount) {
   _VkImageFormatListCreateInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkImageFormatListCreateInfoKHR>(info.This());

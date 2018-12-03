@@ -17,8 +17,6 @@ _VkCommandBufferInheritanceInfo::~_VkCommandBufferInheritanceInfo() {
   //printf("VkCommandBufferInheritanceInfo deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
   
   
@@ -40,7 +38,6 @@ void _VkCommandBufferInheritanceInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_AR
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("renderPass").ToLocalChecked(), GetrenderPass, SetrenderPass, ctor);
   SetPrototypeAccessor(proto, Nan::New("subpass").ToLocalChecked(), Getsubpass, Setsubpass, ctor);
   SetPrototypeAccessor(proto, Nan::New("framebuffer").ToLocalChecked(), Getframebuffer, Setframebuffer, ctor);
@@ -64,7 +61,6 @@ NAN_METHOD(_VkCommandBufferInheritanceInfo::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("renderPass").ToLocalChecked();
       v8::Local<v8::String> sAccess3 = Nan::New("subpass").ToLocalChecked();
       v8::Local<v8::String> sAccess4 = Nan::New("framebuffer").ToLocalChecked();
@@ -72,7 +68,6 @@ NAN_METHOD(_VkCommandBufferInheritanceInfo::New) {
       v8::Local<v8::String> sAccess6 = Nan::New("queryFlags").ToLocalChecked();
       v8::Local<v8::String> sAccess7 = Nan::New("pipelineStatistics").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
       if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
@@ -104,11 +99,6 @@ NAN_GETTER(_VkCommandBufferInheritanceInfo::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkCommandBufferInheritanceInfo::GetpNext) {
-  _VkCommandBufferInheritanceInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferInheritanceInfo>(info.This());
-}NAN_SETTER(_VkCommandBufferInheritanceInfo::SetpNext) {
-  _VkCommandBufferInheritanceInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferInheritanceInfo>(info.This());
 }// renderPass
 NAN_GETTER(_VkCommandBufferInheritanceInfo::GetrenderPass) {
   _VkCommandBufferInheritanceInfo *self = Nan::ObjectWrap::Unwrap<_VkCommandBufferInheritanceInfo>(info.This());

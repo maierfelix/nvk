@@ -19,8 +19,6 @@ _VkDebugUtilsLabelEXT::~_VkDebugUtilsLabelEXT() {
   //printf("VkDebugUtilsLabelEXT deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   pLabelName.Reset();
   
   vcolor->clear();
@@ -42,7 +40,6 @@ void _VkDebugUtilsLabelEXT::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE ta
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("pLabelName").ToLocalChecked(), GetpLabelName, SetpLabelName, ctor);
   SetPrototypeAccessor(proto, Nan::New("color").ToLocalChecked(), Getcolor, Setcolor, ctor);
   Nan::Set(target, Nan::New("VkDebugUtilsLabelEXT").ToLocalChecked(), ctor->GetFunction());
@@ -83,11 +80,9 @@ NAN_METHOD(_VkDebugUtilsLabelEXT::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("pLabelName").ToLocalChecked();
       v8::Local<v8::String> sAccess3 = Nan::New("color").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
       
@@ -115,11 +110,6 @@ NAN_GETTER(_VkDebugUtilsLabelEXT::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkDebugUtilsLabelEXT::GetpNext) {
-  _VkDebugUtilsLabelEXT *self = Nan::ObjectWrap::Unwrap<_VkDebugUtilsLabelEXT>(info.This());
-}NAN_SETTER(_VkDebugUtilsLabelEXT::SetpNext) {
-  _VkDebugUtilsLabelEXT *self = Nan::ObjectWrap::Unwrap<_VkDebugUtilsLabelEXT>(info.This());
 }// pLabelName
 NAN_GETTER(_VkDebugUtilsLabelEXT::GetpLabelName) {
   _VkDebugUtilsLabelEXT *self = Nan::ObjectWrap::Unwrap<_VkDebugUtilsLabelEXT>(info.This());

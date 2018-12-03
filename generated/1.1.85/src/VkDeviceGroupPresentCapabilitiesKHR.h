@@ -18,8 +18,6 @@ class _VkDeviceGroupPresentCapabilitiesKHR: public Nan::ObjectWrap {
     static NAN_METHOD(New);
     // #accessors
     static NAN_GETTER(GetsType);
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
-    static NAN_GETTER(GetpNext);
     std::vector<uint32_t>* vpresentMask;
     Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> presentMask;
     static NAN_GETTER(GetpresentMask);

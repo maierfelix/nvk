@@ -17,8 +17,6 @@ _VkDedicatedAllocationImageCreateInfoNV::~_VkDedicatedAllocationImageCreateInfoN
   //printf("VkDedicatedAllocationImageCreateInfoNV deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
 }
 
@@ -35,7 +33,6 @@ void _VkDedicatedAllocationImageCreateInfoNV::Initialize(Nan::ADDON_REGISTER_FUN
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("dedicatedAllocation").ToLocalChecked(), GetdedicatedAllocation, SetdedicatedAllocation, ctor);
   Nan::Set(target, Nan::New("VkDedicatedAllocationImageCreateInfoNV").ToLocalChecked(), ctor->GetFunction());
 }
@@ -54,10 +51,8 @@ NAN_METHOD(_VkDedicatedAllocationImageCreateInfoNV::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("dedicatedAllocation").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       
     }
@@ -84,11 +79,6 @@ NAN_GETTER(_VkDedicatedAllocationImageCreateInfoNV::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkDedicatedAllocationImageCreateInfoNV::GetpNext) {
-  _VkDedicatedAllocationImageCreateInfoNV *self = Nan::ObjectWrap::Unwrap<_VkDedicatedAllocationImageCreateInfoNV>(info.This());
-}NAN_SETTER(_VkDedicatedAllocationImageCreateInfoNV::SetpNext) {
-  _VkDedicatedAllocationImageCreateInfoNV *self = Nan::ObjectWrap::Unwrap<_VkDedicatedAllocationImageCreateInfoNV>(info.This());
 }// dedicatedAllocation
 NAN_GETTER(_VkDedicatedAllocationImageCreateInfoNV::GetdedicatedAllocation) {
   _VkDedicatedAllocationImageCreateInfoNV *self = Nan::ObjectWrap::Unwrap<_VkDedicatedAllocationImageCreateInfoNV>(info.This());

@@ -17,8 +17,6 @@ _VkDeviceGroupCommandBufferBeginInfo::~_VkDeviceGroupCommandBufferBeginInfo() {
   //printf("VkDeviceGroupCommandBufferBeginInfo deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
 }
 
@@ -35,7 +33,6 @@ void _VkDeviceGroupCommandBufferBeginInfo::Initialize(Nan::ADDON_REGISTER_FUNCTI
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("deviceMask").ToLocalChecked(), GetdeviceMask, SetdeviceMask, ctor);
   Nan::Set(target, Nan::New("VkDeviceGroupCommandBufferBeginInfo").ToLocalChecked(), ctor->GetFunction());
 }
@@ -54,10 +51,8 @@ NAN_METHOD(_VkDeviceGroupCommandBufferBeginInfo::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("deviceMask").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       
     }
@@ -84,11 +79,6 @@ NAN_GETTER(_VkDeviceGroupCommandBufferBeginInfo::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkDeviceGroupCommandBufferBeginInfo::GetpNext) {
-  _VkDeviceGroupCommandBufferBeginInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceGroupCommandBufferBeginInfo>(info.This());
-}NAN_SETTER(_VkDeviceGroupCommandBufferBeginInfo::SetpNext) {
-  _VkDeviceGroupCommandBufferBeginInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceGroupCommandBufferBeginInfo>(info.This());
 }// deviceMask
 NAN_GETTER(_VkDeviceGroupCommandBufferBeginInfo::GetdeviceMask) {
   _VkDeviceGroupCommandBufferBeginInfo *self = Nan::ObjectWrap::Unwrap<_VkDeviceGroupCommandBufferBeginInfo>(info.This());

@@ -44,12 +44,14 @@ export function getSortedIncludes(includes) {
 export function isIgnoreableType(obj) {
   let type = obj.rawType;
   // dont ignore
-  if (type === "const void *") return false;
+  if (type === "const void *" && obj.name === "pNext") return true;
   // ignore just for now
   if (type.substr(0, 4) === "PFN_") return true;
+  if (type.substr(type.length - 4, type.length) === "2KHR") return true;
   return (
     type === "const SECURITY_ATTRIBUTES *" ||
     type === "struct AHardwareBuffer *" ||
+    type === "void" ||
     type === "void *" ||
     type === "struct ANativeWindow *" ||
     type === "MirSurface *" ||
@@ -62,6 +64,7 @@ export function isIgnoreableType(obj) {
     type === "Display *" ||
     type === "HWND" ||
     type === "HANDLE" ||
+    type === "HANDLE *" ||
     type === "DWORD" ||
     type === "LPCWSTR" ||
     type === "HINSTANCE"

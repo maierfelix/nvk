@@ -20,10 +20,6 @@ class _VkCopyDescriptorSet: public Nan::ObjectWrap {
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
     
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
-    static NAN_GETTER(GetpNext);
-    static NAN_SETTER(SetpNext);
-    
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> srcSet;
       static NAN_GETTER(GetsrcSet);
     static NAN_SETTER(SetsrcSet);

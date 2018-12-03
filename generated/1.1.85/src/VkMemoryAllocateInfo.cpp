@@ -17,8 +17,6 @@ _VkMemoryAllocateInfo::~_VkMemoryAllocateInfo() {
   //printf("VkMemoryAllocateInfo deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
   
 }
@@ -36,7 +34,6 @@ void _VkMemoryAllocateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE ta
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("allocationSize").ToLocalChecked(), GetallocationSize, SetallocationSize, ctor);
   SetPrototypeAccessor(proto, Nan::New("memoryTypeIndex").ToLocalChecked(), GetmemoryTypeIndex, SetmemoryTypeIndex, ctor);
   Nan::Set(target, Nan::New("VkMemoryAllocateInfo").ToLocalChecked(), ctor->GetFunction());
@@ -56,11 +53,9 @@ NAN_METHOD(_VkMemoryAllocateInfo::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("allocationSize").ToLocalChecked();
       v8::Local<v8::String> sAccess3 = Nan::New("memoryTypeIndex").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
       
@@ -88,11 +83,6 @@ NAN_GETTER(_VkMemoryAllocateInfo::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkMemoryAllocateInfo::GetpNext) {
-  _VkMemoryAllocateInfo *self = Nan::ObjectWrap::Unwrap<_VkMemoryAllocateInfo>(info.This());
-}NAN_SETTER(_VkMemoryAllocateInfo::SetpNext) {
-  _VkMemoryAllocateInfo *self = Nan::ObjectWrap::Unwrap<_VkMemoryAllocateInfo>(info.This());
 }// allocationSize
 NAN_GETTER(_VkMemoryAllocateInfo::GetallocationSize) {
   _VkMemoryAllocateInfo *self = Nan::ObjectWrap::Unwrap<_VkMemoryAllocateInfo>(info.This());

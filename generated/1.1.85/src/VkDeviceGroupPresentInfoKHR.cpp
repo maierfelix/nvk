@@ -17,8 +17,6 @@ _VkDeviceGroupPresentInfoKHR::~_VkDeviceGroupPresentInfoKHR() {
   //printf("VkDeviceGroupPresentInfoKHR deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
   pDeviceMasks.Reset();
   
@@ -38,7 +36,6 @@ void _VkDeviceGroupPresentInfoKHR::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("swapchainCount").ToLocalChecked(), GetswapchainCount, SetswapchainCount, ctor);
   SetPrototypeAccessor(proto, Nan::New("pDeviceMasks").ToLocalChecked(), GetpDeviceMasks, SetpDeviceMasks, ctor);
   SetPrototypeAccessor(proto, Nan::New("mode").ToLocalChecked(), Getmode, Setmode, ctor);
@@ -59,12 +56,10 @@ NAN_METHOD(_VkDeviceGroupPresentInfoKHR::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("swapchainCount").ToLocalChecked();
       v8::Local<v8::String> sAccess3 = Nan::New("pDeviceMasks").ToLocalChecked();
       v8::Local<v8::String> sAccess4 = Nan::New("mode").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
       if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
@@ -93,11 +88,6 @@ NAN_GETTER(_VkDeviceGroupPresentInfoKHR::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkDeviceGroupPresentInfoKHR::GetpNext) {
-  _VkDeviceGroupPresentInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkDeviceGroupPresentInfoKHR>(info.This());
-}NAN_SETTER(_VkDeviceGroupPresentInfoKHR::SetpNext) {
-  _VkDeviceGroupPresentInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkDeviceGroupPresentInfoKHR>(info.This());
 }// swapchainCount
 NAN_GETTER(_VkDeviceGroupPresentInfoKHR::GetswapchainCount) {
   _VkDeviceGroupPresentInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkDeviceGroupPresentInfoKHR>(info.This());

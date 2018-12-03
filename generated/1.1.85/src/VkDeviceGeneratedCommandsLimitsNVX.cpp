@@ -17,8 +17,6 @@ _VkDeviceGeneratedCommandsLimitsNVX::~_VkDeviceGeneratedCommandsLimitsNVX() {
   //printf("VkDeviceGeneratedCommandsLimitsNVX deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
   
   
@@ -39,7 +37,6 @@ void _VkDeviceGeneratedCommandsLimitsNVX::Initialize(Nan::ADDON_REGISTER_FUNCTIO
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("maxIndirectCommandsLayoutTokenCount").ToLocalChecked(), GetmaxIndirectCommandsLayoutTokenCount, SetmaxIndirectCommandsLayoutTokenCount, ctor);
   SetPrototypeAccessor(proto, Nan::New("maxObjectEntryCounts").ToLocalChecked(), GetmaxObjectEntryCounts, SetmaxObjectEntryCounts, ctor);
   SetPrototypeAccessor(proto, Nan::New("minSequenceCountBufferOffsetAlignment").ToLocalChecked(), GetminSequenceCountBufferOffsetAlignment, SetminSequenceCountBufferOffsetAlignment, ctor);
@@ -62,14 +59,12 @@ NAN_METHOD(_VkDeviceGeneratedCommandsLimitsNVX::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("maxIndirectCommandsLayoutTokenCount").ToLocalChecked();
       v8::Local<v8::String> sAccess3 = Nan::New("maxObjectEntryCounts").ToLocalChecked();
       v8::Local<v8::String> sAccess4 = Nan::New("minSequenceCountBufferOffsetAlignment").ToLocalChecked();
       v8::Local<v8::String> sAccess5 = Nan::New("minSequenceIndexBufferOffsetAlignment").ToLocalChecked();
       v8::Local<v8::String> sAccess6 = Nan::New("minCommandsTokenBufferOffsetAlignment").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
       if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
@@ -100,11 +95,6 @@ NAN_GETTER(_VkDeviceGeneratedCommandsLimitsNVX::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkDeviceGeneratedCommandsLimitsNVX::GetpNext) {
-  _VkDeviceGeneratedCommandsLimitsNVX *self = Nan::ObjectWrap::Unwrap<_VkDeviceGeneratedCommandsLimitsNVX>(info.This());
-}NAN_SETTER(_VkDeviceGeneratedCommandsLimitsNVX::SetpNext) {
-  _VkDeviceGeneratedCommandsLimitsNVX *self = Nan::ObjectWrap::Unwrap<_VkDeviceGeneratedCommandsLimitsNVX>(info.This());
 }// maxIndirectCommandsLayoutTokenCount
 NAN_GETTER(_VkDeviceGeneratedCommandsLimitsNVX::GetmaxIndirectCommandsLayoutTokenCount) {
   _VkDeviceGeneratedCommandsLimitsNVX *self = Nan::ObjectWrap::Unwrap<_VkDeviceGeneratedCommandsLimitsNVX>(info.This());

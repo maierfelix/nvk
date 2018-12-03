@@ -17,8 +17,6 @@ _VkGeometryAABBNVX::~_VkGeometryAABBNVX() {
   //printf("VkGeometryAABBNVX deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
   
   
@@ -38,7 +36,6 @@ void _VkGeometryAABBNVX::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE targe
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("aabbData").ToLocalChecked(), GetaabbData, SetaabbData, ctor);
   SetPrototypeAccessor(proto, Nan::New("numAABBs").ToLocalChecked(), GetnumAABBs, SetnumAABBs, ctor);
   SetPrototypeAccessor(proto, Nan::New("stride").ToLocalChecked(), Getstride, Setstride, ctor);
@@ -60,13 +57,11 @@ NAN_METHOD(_VkGeometryAABBNVX::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("aabbData").ToLocalChecked();
       v8::Local<v8::String> sAccess3 = Nan::New("numAABBs").ToLocalChecked();
       v8::Local<v8::String> sAccess4 = Nan::New("stride").ToLocalChecked();
       v8::Local<v8::String> sAccess5 = Nan::New("offset").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
       if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
@@ -96,11 +91,6 @@ NAN_GETTER(_VkGeometryAABBNVX::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkGeometryAABBNVX::GetpNext) {
-  _VkGeometryAABBNVX *self = Nan::ObjectWrap::Unwrap<_VkGeometryAABBNVX>(info.This());
-}NAN_SETTER(_VkGeometryAABBNVX::SetpNext) {
-  _VkGeometryAABBNVX *self = Nan::ObjectWrap::Unwrap<_VkGeometryAABBNVX>(info.This());
 }// aabbData
 NAN_GETTER(_VkGeometryAABBNVX::GetaabbData) {
   _VkGeometryAABBNVX *self = Nan::ObjectWrap::Unwrap<_VkGeometryAABBNVX>(info.This());

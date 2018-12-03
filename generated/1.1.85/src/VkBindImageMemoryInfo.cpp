@@ -17,8 +17,6 @@ _VkBindImageMemoryInfo::~_VkBindImageMemoryInfo() {
   //printf("VkBindImageMemoryInfo deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
   
   
@@ -37,7 +35,6 @@ void _VkBindImageMemoryInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE t
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("image").ToLocalChecked(), Getimage, Setimage, ctor);
   SetPrototypeAccessor(proto, Nan::New("memory").ToLocalChecked(), Getmemory, Setmemory, ctor);
   SetPrototypeAccessor(proto, Nan::New("memoryOffset").ToLocalChecked(), GetmemoryOffset, SetmemoryOffset, ctor);
@@ -58,12 +55,10 @@ NAN_METHOD(_VkBindImageMemoryInfo::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("image").ToLocalChecked();
       v8::Local<v8::String> sAccess3 = Nan::New("memory").ToLocalChecked();
       v8::Local<v8::String> sAccess4 = Nan::New("memoryOffset").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
       if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
@@ -92,11 +87,6 @@ NAN_GETTER(_VkBindImageMemoryInfo::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkBindImageMemoryInfo::GetpNext) {
-  _VkBindImageMemoryInfo *self = Nan::ObjectWrap::Unwrap<_VkBindImageMemoryInfo>(info.This());
-}NAN_SETTER(_VkBindImageMemoryInfo::SetpNext) {
-  _VkBindImageMemoryInfo *self = Nan::ObjectWrap::Unwrap<_VkBindImageMemoryInfo>(info.This());
 }// image
 NAN_GETTER(_VkBindImageMemoryInfo::Getimage) {
   _VkBindImageMemoryInfo *self = Nan::ObjectWrap::Unwrap<_VkBindImageMemoryInfo>(info.This());

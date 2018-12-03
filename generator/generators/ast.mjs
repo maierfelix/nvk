@@ -623,6 +623,7 @@ export default function(xmlInput) {
       out.push({
         kind: TYPES.HANDLE,
         name,
+        parent: parent || null,
         isNonDispatchable
       });
     });

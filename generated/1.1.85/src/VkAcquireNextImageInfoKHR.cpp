@@ -17,8 +17,6 @@ _VkAcquireNextImageInfoKHR::~_VkAcquireNextImageInfoKHR() {
   //printf("VkAcquireNextImageInfoKHR deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
   
   
@@ -39,7 +37,6 @@ void _VkAcquireNextImageInfoKHR::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TY
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("swapchain").ToLocalChecked(), Getswapchain, Setswapchain, ctor);
   SetPrototypeAccessor(proto, Nan::New("timeout").ToLocalChecked(), Gettimeout, Settimeout, ctor);
   SetPrototypeAccessor(proto, Nan::New("semaphore").ToLocalChecked(), Getsemaphore, Setsemaphore, ctor);
@@ -62,14 +59,12 @@ NAN_METHOD(_VkAcquireNextImageInfoKHR::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("swapchain").ToLocalChecked();
       v8::Local<v8::String> sAccess3 = Nan::New("timeout").ToLocalChecked();
       v8::Local<v8::String> sAccess4 = Nan::New("semaphore").ToLocalChecked();
       v8::Local<v8::String> sAccess5 = Nan::New("fence").ToLocalChecked();
       v8::Local<v8::String> sAccess6 = Nan::New("deviceMask").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
       if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
@@ -100,11 +95,6 @@ NAN_GETTER(_VkAcquireNextImageInfoKHR::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkAcquireNextImageInfoKHR::GetpNext) {
-  _VkAcquireNextImageInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkAcquireNextImageInfoKHR>(info.This());
-}NAN_SETTER(_VkAcquireNextImageInfoKHR::SetpNext) {
-  _VkAcquireNextImageInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkAcquireNextImageInfoKHR>(info.This());
 }// swapchain
 NAN_GETTER(_VkAcquireNextImageInfoKHR::Getswapchain) {
   _VkAcquireNextImageInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkAcquireNextImageInfoKHR>(info.This());

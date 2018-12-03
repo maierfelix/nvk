@@ -389,7 +389,7 @@ function generateBindings(specXML, version) {
       });
     });
   }
-  calls = calls.filter(call => callsWhiteList.includes(call.name));
+  // filter out structs by unsupported extensions
   structs = structs.filter(struct => {
     if (struct.extension) {
       let {extension} = struct;
@@ -397,7 +397,15 @@ function generateBindings(specXML, version) {
     }
     return true;
   });
-  //structs = structs.filter(struct => structWhiteList.includes(struct.name));
+  // filter out calls by unsupported extensions
+  calls = calls.filter(call => {
+    if (call.extension) {
+      let {extension} = call;
+      if (extension.platform !== "default" && extension.platform !== "win32") return false;
+    }
+    return true;
+  });
+  //calls = calls.filter(call => callsWhiteList.includes(call.name));
   // generate structs
   {
     console.log("Generating Vk structs..");

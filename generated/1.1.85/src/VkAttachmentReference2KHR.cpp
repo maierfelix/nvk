@@ -17,8 +17,6 @@ _VkAttachmentReference2KHR::~_VkAttachmentReference2KHR() {
   //printf("VkAttachmentReference2KHR deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
   
   
@@ -37,7 +35,6 @@ void _VkAttachmentReference2KHR::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TY
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("attachment").ToLocalChecked(), Getattachment, Setattachment, ctor);
   SetPrototypeAccessor(proto, Nan::New("layout").ToLocalChecked(), Getlayout, Setlayout, ctor);
   SetPrototypeAccessor(proto, Nan::New("aspectMask").ToLocalChecked(), GetaspectMask, SetaspectMask, ctor);
@@ -58,12 +55,10 @@ NAN_METHOD(_VkAttachmentReference2KHR::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("attachment").ToLocalChecked();
       v8::Local<v8::String> sAccess3 = Nan::New("layout").ToLocalChecked();
       v8::Local<v8::String> sAccess4 = Nan::New("aspectMask").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
       if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
@@ -92,11 +87,6 @@ NAN_GETTER(_VkAttachmentReference2KHR::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkAttachmentReference2KHR::GetpNext) {
-  _VkAttachmentReference2KHR *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference2KHR>(info.This());
-}NAN_SETTER(_VkAttachmentReference2KHR::SetpNext) {
-  _VkAttachmentReference2KHR *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference2KHR>(info.This());
 }// attachment
 NAN_GETTER(_VkAttachmentReference2KHR::Getattachment) {
   _VkAttachmentReference2KHR *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference2KHR>(info.This());

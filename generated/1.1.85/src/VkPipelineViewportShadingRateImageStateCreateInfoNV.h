@@ -20,10 +20,6 @@ class _VkPipelineViewportShadingRateImageStateCreateInfoNV: public Nan::ObjectWr
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
     
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
-    static NAN_GETTER(GetpNext);
-    static NAN_SETTER(SetpNext);
-    
     static NAN_GETTER(GetshadingRateImageEnable);
     static NAN_SETTER(SetshadingRateImageEnable);
     

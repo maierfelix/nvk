@@ -17,8 +17,6 @@ _VkMemoryGetFdInfoKHR::~_VkMemoryGetFdInfoKHR() {
   //printf("VkMemoryGetFdInfoKHR deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
   
 }
@@ -36,7 +34,6 @@ void _VkMemoryGetFdInfoKHR::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE ta
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("memory").ToLocalChecked(), Getmemory, Setmemory, ctor);
   SetPrototypeAccessor(proto, Nan::New("handleType").ToLocalChecked(), GethandleType, SethandleType, ctor);
   Nan::Set(target, Nan::New("VkMemoryGetFdInfoKHR").ToLocalChecked(), ctor->GetFunction());
@@ -56,11 +53,9 @@ NAN_METHOD(_VkMemoryGetFdInfoKHR::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("memory").ToLocalChecked();
       v8::Local<v8::String> sAccess3 = Nan::New("handleType").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
       
@@ -88,11 +83,6 @@ NAN_GETTER(_VkMemoryGetFdInfoKHR::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkMemoryGetFdInfoKHR::GetpNext) {
-  _VkMemoryGetFdInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkMemoryGetFdInfoKHR>(info.This());
-}NAN_SETTER(_VkMemoryGetFdInfoKHR::SetpNext) {
-  _VkMemoryGetFdInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkMemoryGetFdInfoKHR>(info.This());
 }// memory
 NAN_GETTER(_VkMemoryGetFdInfoKHR::Getmemory) {
   _VkMemoryGetFdInfoKHR *self = Nan::ObjectWrap::Unwrap<_VkMemoryGetFdInfoKHR>(info.This());

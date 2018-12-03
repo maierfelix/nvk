@@ -17,8 +17,6 @@ _VkRenderPassMultiviewCreateInfo::~_VkRenderPassMultiviewCreateInfo() {
   //printf("VkRenderPassMultiviewCreateInfo deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
   pViewMasks.Reset();
   
@@ -43,7 +41,6 @@ void _VkRenderPassMultiviewCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_A
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("subpassCount").ToLocalChecked(), GetsubpassCount, SetsubpassCount, ctor);
   SetPrototypeAccessor(proto, Nan::New("pViewMasks").ToLocalChecked(), GetpViewMasks, SetpViewMasks, ctor);
   SetPrototypeAccessor(proto, Nan::New("dependencyCount").ToLocalChecked(), GetdependencyCount, SetdependencyCount, ctor);
@@ -67,7 +64,6 @@ NAN_METHOD(_VkRenderPassMultiviewCreateInfo::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("subpassCount").ToLocalChecked();
       v8::Local<v8::String> sAccess3 = Nan::New("pViewMasks").ToLocalChecked();
       v8::Local<v8::String> sAccess4 = Nan::New("dependencyCount").ToLocalChecked();
@@ -75,7 +71,6 @@ NAN_METHOD(_VkRenderPassMultiviewCreateInfo::New) {
       v8::Local<v8::String> sAccess6 = Nan::New("correlationMaskCount").ToLocalChecked();
       v8::Local<v8::String> sAccess7 = Nan::New("pCorrelationMasks").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
       if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
@@ -107,11 +102,6 @@ NAN_GETTER(_VkRenderPassMultiviewCreateInfo::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkRenderPassMultiviewCreateInfo::GetpNext) {
-  _VkRenderPassMultiviewCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkRenderPassMultiviewCreateInfo>(info.This());
-}NAN_SETTER(_VkRenderPassMultiviewCreateInfo::SetpNext) {
-  _VkRenderPassMultiviewCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkRenderPassMultiviewCreateInfo>(info.This());
 }// subpassCount
 NAN_GETTER(_VkRenderPassMultiviewCreateInfo::GetsubpassCount) {
   _VkRenderPassMultiviewCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkRenderPassMultiviewCreateInfo>(info.This());

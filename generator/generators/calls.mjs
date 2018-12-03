@@ -2,11 +2,29 @@ import fs from "fs";
 import nunjucks from "nunjucks";
 import pkg from "../../package.json";
 
+import {
+  isIgnoreableType
+} from "../utils";
+
 let ast = null;
 
 const CPP_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/calls-cpp.njk`, "utf-8");
 
 nunjucks.configure({ autoescape: true });
+
+function getCallExtension(call) {
+  let extensions = ast.filter(node => node.kind === "EXTENSION");
+  for (let ii = 0; ii < extensions.length; ++ii) {
+    let extension = extensions[ii];
+    for (let jj = 0; jj < extension.members.length; ++jj) {
+      let member = extension.members[jj];
+      if (member.kind === `EXTENSION_MEMBER_COMMAND` && member.name === call.name) {
+        return { extension, member };
+      }
+    };
+  };
+  return null;
+};
 
 function getStructByStructName(name) {
   let structs = ast.filter(node => node.kind === "STRUCT");
@@ -53,7 +71,7 @@ function getMemberCopyInstructions(struct) {
       out += `
       if (&copy->${member.name} != nullptr) {
         ${instantiateMemberClass(member)}
-        result->${member.name} = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(inst);
+        result->${member.name}.Reset<v8::Object>(inst.As<v8::Object>());
         unwrapped->instance = copy->${member.name};
       }`;
     }
@@ -67,7 +85,7 @@ function getMemberCopyInstructions(struct) {
         v8::Local<v8::String> strv8 = v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), stri.c_str());
         Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> str(Nan::To<v8::String>(strv8).ToLocalChecked());
         result->${member.name} = str;
-        strcpy(instance->${member.name}, copy->${member.name});
+        strcpy(const_cast<char *>(instance->${member.name}), copy->${member.name});
       }`;
     }
     else if (member.isArray) {
@@ -92,22 +110,24 @@ function getInputArrayBody(param, index) {
   if (param.isBaseType) rawType = param.baseType;
   let out = ``;
   let {isConstant} = param;
-  let isReference = param.dereferenceCount > 0;
-  if (!isReference) console.warn(`Cannot handle non-reference item in input-array-body!`);
+  if (param.dereferenceCount <= 0) console.warn(`Cannot handle non-reference item in input-array-body!`);
   // create variable
   {
     let varType = param.enumType || param.baseType || param.type;
-    if (param.isNumericArray && isConstant && isReference) {
+    if (param.isNumericArray && isConstant && !param.enumType) {
       out += `
   std::shared_ptr<std::vector<${varType}>> $p${index} = nullptr;\n`;
     }
-    else if (param.isArray && (param.isHandleType || param.isStructType)) {
+    else if (param.isHandleType || param.isStructType) {
       out += `
   std::shared_ptr<std::vector<${varType}>> $p${index} = nullptr;\n`;
+    }
+    else if (param.enumType) {
+      out += `
+  ${varType} *$p${index} = nullptr;\n`;
     }
     else {
-      out += `
-  ${varType} ${isReference ? "*" : ""}$p${index} = nullptr;\n`;
+      console.warn(`Cannot handle param ${rawType} in input-array-body!`);
     }
   }
   // fill variable
@@ -153,11 +173,11 @@ function getInputArrayBody(param, index) {
   else if (param.enumType) {
     out += `
     v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[${index}]);
-    ${param.enumRawType} arr${index} = new ${param.enumType}[array->Length()];
+    ${param.enumType}* arr${index} = new ${param.enumType}[array->Length()];
     $p${index} = arr${index};`;
   }
   // numbers
-  else if (param.isNumericArray && isConstant && isReference) {
+  else if (param.isNumericArray && isConstant) {
     let type = param.baseType || param.type;
     out += `
     std::vector<${type}> data = createArrayOfV8Numbers<${type}>(info[${index}]);
@@ -168,7 +188,7 @@ function getInputArrayBody(param, index) {
   }
   out += `
   } else if (!info[${index}]->IsNull()) {
-    return Nan::ThrowError("Invalid type for argument ${index + 1} '${param.name}'");
+    return Nan::ThrowTypeError("Invalid type for argument ${index + 1} '${param.name}'");
   }\n`;
   return out;
 };
@@ -176,11 +196,30 @@ function getInputArrayBody(param, index) {
 function getCallBodyBefore(call) {
   let {params} = call;
   let out = params.map((param, index) => {
+    if (isIgnoreableType(param)) return ``;
     let {rawType} = param;
     if (param.isBaseType && param.type !== "VkBool32") rawType = param.baseType;
     // ignore
     if (param.name === "pAllocator") {
       return ``;
+    }
+    if (param.isStaticArray && param.isNumericArray) {
+      return `
+    std::shared_ptr<std::vector<${param.type}>> $p${index} = nullptr;
+    if (info[${index}]->IsArray()) {
+      // validate length
+      if (v8::Local<v8::Array>::Cast(info[${index}])->Length() != ${param.length}) {
+        return Nan::ThrowTypeError("Invalid array length for argument ${index + 1} '${param.name}'");
+      } else {
+        std::vector<${param.type}> data = createArrayOfV8Numbers<${param.type}>(info[${index}]);
+        $p${index} = std::make_shared<std::vector<${param.type}>>(data);
+      }
+    } else if (!info[${index}]->IsNull()) {
+      return Nan::ThrowTypeError("Invalid type for argument ${index + 1} '${param.name}'");
+    }`;
+    }
+    else if (param.isArray && param.enumType) {
+      return getInputArrayBody(param, index);
     }
     switch (rawType) {
       case "int":
@@ -197,13 +236,22 @@ function getCallBodyBefore(call) {
         return `
   v8::Local<v8::Object> obj${index};
   ${param.type} $p${index};
-  if (!(info[${index}]->IsNull())) {
+  if (info[${index}]->IsObject()) {
     obj${index} = Nan::To<v8::Object>(info[${index}]).ToLocalChecked();
     v8::Local<v8::Value> val = obj${index}->Get(Nan::New("$").ToLocalChecked());
     $p${index} = static_cast<${param.type}>(Nan::To<bool>(val).FromMaybe(false));
-  } else {
-
+  } else if (!info[${index}]->IsNull()) {
+    Nan::ThrowTypeError("Expected 'Object' or 'null' for argument ${index + 1} '${param.name}'");
   }`;
+      case "const char *":
+        return `
+  ${param.type}* $p${index};
+  if (info[${index}]->IsString()) {
+    $p${index} = copyV8String(info[${index}]);
+  } else if (!info[${index}]->IsNull()) {
+    Nan::ThrowTypeError("Expected 'String' or 'null' for argument ${index + 1} '${param.name}'");
+  }`;
+        return ``;
       case "int *":
       case "size_t *":
       case "int32_t *":
@@ -219,20 +267,27 @@ function getCallBodyBefore(call) {
           return `
   v8::Local<v8::Object> obj${index};
   ${param.type} $p${index};
-  if (!(info[${index}]->IsNull())) {
+  if (info[${index}]->IsObject()) {
     obj${index} = Nan::To<v8::Object>(info[${index}]).ToLocalChecked();
     v8::Local<v8::Value> val = obj${index}->Get(Nan::New("$").ToLocalChecked());
     $p${index} = static_cast<${param.type}>(Nan::To<int64_t>(val).FromMaybe(0));
+  } else if (!info[${index}]->IsNull()) {
+    Nan::ThrowTypeError("Expected 'Object' or 'null' for argument ${index + 1} '${param.name}'");
   }`;
         }
       case "void **":
         return `
   v8::Local<v8::Object> obj${index} = Nan::To<v8::Object>(info[${index}]).ToLocalChecked();
   void *$p${index};`;
-      case "void *":
       case "const void *":
-        console.log(`Cannot handle void pointer param ${rawType}`);
-        return ``;
+        return `
+  ${param.type}* $p${index};
+  if (info[${index}]->IsArrayBufferView()) {
+    v8::Local<v8::ArrayBufferView> arr = v8::Local<v8::ArrayBufferView>::Cast(Nan::To<v8::Object>(info[${index}]).ToLocalChecked());
+    $p${index} = arr->Buffer()->GetContents().Data();
+  } else {
+    $p${index} = nullptr;
+  }`;
       default: {
         // array of structs or handles
         if (param.isArray && (param.isStructType || param.isHandleType)) {
@@ -251,16 +306,17 @@ function getCallBodyBefore(call) {
             if (param.isHandleType) deinitialize = `VK_NULL_HANDLE`;
             else console.warn(`Cannot handle param deinitializer!`);
           }
-          //console.log(!!param.isStructType, !!param.isHandleType, isReference);
           return `
   _${param.type}* obj${index};
   ${param.type} *$p${index};
-  if (!(info[${index}]->IsNull())) {
+  if (info[${index}]->IsObject()) {
     obj${index} = Nan::ObjectWrap::Unwrap<_${param.type}>(Nan::To<v8::Object>(info[${index}]).ToLocalChecked());
     ${ param.isStructType ? `if (!obj${index}->flush()) return;` : `` }
     $p${index} = &obj${index}->instance;
-  } else {
+  } else if (info[${index}]->IsNull()){
     $p${index} = ${deinitialize};
+  } else {
+    Nan::ThrowTypeError("Expected 'Object' or 'null' for argument ${index + 1} '${param.name}'");
   }`;
         }
         console.warn(`Cannot handle param ${rawType} in call-body-before!`);
@@ -277,14 +333,23 @@ function getCallBodyInner(call) {
   params.map((param, index) => {
     let addComma = index < params.length - 1 ? ",\n" : "";
     let byReference = "";
+    if (isIgnoreableType(param)) {
+      out += `nullptr${addComma}`;
+      return;
+    }
     if (param.name === "pAllocator") {
       out += `    nullptr${addComma}`;
       return;
     }
     else if (
+      param.isStaticArray &&
+      param.isNumericArray
+    ) out += `    $p${index} ? $p${index}.get()->data() : nullptr${addComma}`;
+    else if (
       param.dereferenceCount > 0 &&
       param.isNumericArray &&
-      param.isConstant
+      param.isConstant &&
+      !param.enumType
     ) {
       out += `    $p${index} ? $p${index}.get()->data() : nullptr${addComma}`;
     }
@@ -292,8 +357,11 @@ function getCallBodyInner(call) {
       param.isArray &&
       (param.isHandleType || param.isStructType)
     ) {
-      out += `    $p${index} ? $p${index}.get()->data() : nullptr${addComma}`;
+      out += `    $p${index} ? (${param.rawType}) $p${index}.get()->data() : nullptr${addComma}`;
     }
+    else if (
+      param.rawType === `const void *`
+    ) out += `    $p${index}${addComma}`;
     // if handle is null then use VK_NULL_HANDLE
     else if (
       !param.isConstant &&
@@ -304,6 +372,18 @@ function getCallBodyInner(call) {
       param.dereferenceCount <= 0 &&
       (param.isStructType || param.isHandleType)
     ) out += `    *$p${index}${addComma}`;
+    else if (
+      param.isString &&
+      param.dereferenceCount > 0
+    ) out += `    $p${index}${addComma}`;
+    else if (
+      param.isNumber &&
+      param.isBitmaskType
+    ) out += `    static_cast<${param.bitmaskRawType}>($p${index})${addComma}`;
+    else if (
+      param.isBitmaskType &&
+      param.dereferenceCount > 0
+    ) out += `    reinterpret_cast<${param.bitmaskRawType}>(&$p${index})${addComma}`;
     else if (
       param.dereferenceCount > 0 &&
       !(param.isStructType || param.isHandleType || param.enumType)
@@ -318,9 +398,11 @@ function getCallBodyInner(call) {
 /**
  * Reads back copied content
  */
-function getCallBodyAfter(params) {
+function getCallBodyAfter(call) {
   let out = [];
+  let {params} = call;
   params.map((param, pIndex) => {
+    if (isIgnoreableType(param)) return;
     let isReference = param.dereferenceCount > 0;
     let isConstant = param.isConstant;
     if (isConstant) return;
@@ -401,15 +483,22 @@ function getCallBodyAfter(params) {
     else {
       // array of numbers or bools
       switch (param.rawType) {
-        case "int *":
         case "size_t *":
+        case "uint64_t *":
+        case "const uint64_t *":
+          out.push(`
+    v8::Local<v8::BigInt> pnum${pIndex} = v8::BigInt::New(v8::Isolate::GetCurrent(), (uint64_t)$p${pIndex});
+    obj${pIndex}->Set(Nan::New("$").ToLocalChecked(), pnum${pIndex});`);
+          break;
+        case "int *":
         case "int32_t *":
         case "uint32_t *":
-        case "uint64_t *":
         case "const int32_t *":
         case "const uint32_t *":
-        case "const uint64_t *":
         case "const float *":
+          out.push(`
+    obj${pIndex}->Set(Nan::New("$").ToLocalChecked(), Nan::New($p${pIndex}));`);
+          break;
         case "VkBool32 *":
           out.push(`
     obj${pIndex}->Set(Nan::New("$").ToLocalChecked(), Nan::New($p${pIndex}));`);
@@ -422,20 +511,48 @@ function getCallBodyAfter(params) {
   return out.join("");
 };
 
+function getCallProcedure(call) {
+  let out = ``;
+  let inner = getCallBodyInner(call);
+  let ext = getCallExtension(call);
+  if (ext) {
+    let {extension} = ext;
+    if ((extension.author !== "KHR") || (extension.platform === "default" || extension.platform === "win32")) {
+      let param = call.params[0];
+      if (extension.type === "device") {
+        let device = param.type === "VkDevice" ? "*$p0" : "nullptr";
+        out += `
+    PFN_${call.name} ${call.name} = (PFN_${call.name}) vkGetDeviceProcAddr(${device}, "${call.name}");`;
+      }
+      else if (extension.type === "instance") {
+        let instance = param.type === "VkInstance" ? "*$p0" : "nullptr";
+        out += `
+    PFN_${call.name} ${call.name} = (PFN_${call.name}) vkGetInstanceProcAddr(${instance}, "${call.name}");`;
+      }
+      else {
+        // ignore
+      }
+    }
+  }
+  if (call.rawType !== "void") {
+    out += `
+  ${call.type} out = `;
+  } else {
+    out += `\n`;
+  }
+  out += `${call.name}(
+${inner}
+  );`;
+  return out;
+};
+
 function getCallBody(call) {
   let out = ``;
   let vari = ``;
   let before = getCallBodyBefore(call);
-  let inner = getCallBodyInner(call);
-  let outer = getCallBodyAfter(call.params);
+  let outer = getCallBodyAfter(call);
   out += before;
-  if (call.rawType !== "void") {
-    vari = `${call.type} out = `;
-  }
-  out += `
-  ${vari}${call.name}(
-${inner}
-  );`;
+  out += getCallProcedure(call);
   out += outer;
   return out;
 };
@@ -446,18 +563,18 @@ ${inner}
  */
 function getMutableStructReflectInstructions(name, pIndex, basePath, out = []) {
   let struct = getStructByStructName(name);
-  // go through each struct meber and manually back-reflect it
+  // go through each struct member and manually back-reflect it
   struct.children.map((member, mIndex) => {
     // these can be ignored
     if (
       member.isNumber ||
       member.isBoolean ||
-      member.isEnumType ||
       member.isBaseType ||
       member.bitmaskType ||
-      member.enumType
+      member.enumType ||
+      isIgnoreableType(member)
     ) return;
-    // raw string
+    // string
     if (member.isString && member.isStaticArray) {
       out.push(`
   {
@@ -465,6 +582,19 @@ function getMutableStructReflectInstructions(name, pIndex, basePath, out = []) {
     v8::Local<v8::String> str${pIndex} = v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), (&${basePath}instance)->${member.name});
     ${basePath}${member.name} = Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>>(str${pIndex});
   }`);
+    }
+    // struct
+    else if (member.isStructType && !member.isArray) {
+      out.push(`
+  {
+    v8::Local<v8::Function> ctor = Nan::GetFunction(Nan::New(_${member.type}::constructor)).ToLocalChecked();
+    v8::Local<v8::Object> inst = Nan::NewInstance(ctor).ToLocalChecked();
+    _${member.type}* unwrapped${basePath.length} = Nan::ObjectWrap::Unwrap<_${member.type}>(inst);
+    ${basePath}${member.name}.Reset<v8::Object>(inst);
+    memcpy((&unwrapped${basePath.length}->instance), &${basePath}instance.${member.name}, sizeof(${member.type}));
+    ${getMutableStructReflectInstructions(member.type, pIndex, `unwrapped${basePath.length}->`, [])}
+  }
+      `);
     }
     // array of numbers
     else if (member.isNumericArray) {
@@ -476,42 +606,30 @@ function getMutableStructReflectInstructions(name, pIndex, basePath, out = []) {
     for (unsigned int ii = 0; ii < ${member.length}; ++ii) {
       arr${pIndex}->Set(ii, Nan::New((&${basePath}instance)->${member.name}[ii]));
     };
-    ${basePath}${member.name} = Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>>(arr${pIndex});
+    ${basePath}${member.name}.Reset<v8::Array>(arr${pIndex});
   }`);
-    }
-    // raw struct
-    else if (member.isStructType && !member.isArray) {
-      out.push(`
-  {
-    v8::Local<v8::Function> ctor = Nan::GetFunction(Nan::New(_${member.type}::constructor)).ToLocalChecked();
-    v8::Local<v8::Object> inst = Nan::NewInstance(ctor).ToLocalChecked();
-    _${member.type}* unwrapped${basePath.length} = Nan::ObjectWrap::Unwrap<_${member.type}>(inst);
-    obj${pIndex}->${member.name} = Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>>(inst);
-    memcpy((&unwrapped${basePath.length}->instance), &${basePath}instance.${member.name}, sizeof(${member.type}));
-    ${getMutableStructReflectInstructions(member.type, pIndex, `unwrapped${basePath.length}->`, [])}
-  }
-      `);
     }
     // array of structs
     else if (member.isStructType && member.isArray) {
+      // TODO: this only works for primitive-type members
       out.push(`
   {
     // back reflect array
-    unsigned int len = obj${pIndex}->instance.${member.dynamicLength};
+    unsigned int len = ${basePath}instance.${member.dynamicLength};
     v8::Local<v8::Array> arr = v8::Array::New(v8::Isolate::GetCurrent(), len);
     // populate array
     for (unsigned int ii = 0; ii < len; ++ii) {
       v8::Local<v8::Function> ctor = Nan::GetFunction(Nan::New(_${member.type}::constructor)).ToLocalChecked();
       v8::Local<v8::Object> inst = Nan::NewInstance(ctor).ToLocalChecked();
       _${member.type}* unwrapped = Nan::ObjectWrap::Unwrap<_${member.type}>(inst);
-      memcpy(&unwrapped->instance, &obj1->instance.${member.name}[ii], sizeof(${member.type}));
+      memcpy(&unwrapped->instance, &${basePath}instance.${member.name}[ii], sizeof(${member.type}));
       arr->Set(ii, inst);
     };
-    obj${pIndex}->${member.name} = Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>>(arr);
+    ${basePath}${member.name}.Reset<v8::Array>(arr);
   }`);
     }
     else {
-      console.log(`Error: Cannot handle param member ${member.name} of type ${member.type}`);
+      console.log(`Error: Cannot handle member ${member.name} of type ${member.type} in mutable-struct-reflection!`);
     }
   });
   return out.join("");

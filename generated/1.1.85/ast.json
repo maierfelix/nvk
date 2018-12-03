@@ -2,186 +2,223 @@
   {
     "kind": "HANDLE",
     "name": "VkInstance",
+    "parent": null,
     "isNonDispatchable": false
   },
   {
     "kind": "HANDLE",
     "name": "VkPhysicalDevice",
+    "parent": "VkInstance",
     "isNonDispatchable": false
   },
   {
     "kind": "HANDLE",
     "name": "VkDevice",
+    "parent": "VkPhysicalDevice",
     "isNonDispatchable": false
   },
   {
     "kind": "HANDLE",
     "name": "VkQueue",
+    "parent": "VkDevice",
     "isNonDispatchable": false
   },
   {
     "kind": "HANDLE",
     "name": "VkCommandBuffer",
+    "parent": "VkCommandPool",
     "isNonDispatchable": false
   },
   {
     "kind": "HANDLE",
     "name": "VkDeviceMemory",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkCommandPool",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkBuffer",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkBufferView",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkImage",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkImageView",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkShaderModule",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkPipeline",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkPipelineLayout",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkSampler",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkDescriptorSet",
+    "parent": "VkDescriptorPool",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkDescriptorSetLayout",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkDescriptorPool",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkFence",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkSemaphore",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkEvent",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkQueryPool",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkFramebuffer",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkRenderPass",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkPipelineCache",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkObjectTableNVX",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkIndirectCommandsLayoutNVX",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkDescriptorUpdateTemplate",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkSamplerYcbcrConversion",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkValidationCacheEXT",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkAccelerationStructureNVX",
+    "parent": "VkDevice",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkDisplayKHR",
+    "parent": null,
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkDisplayModeKHR",
+    "parent": "VkPhysicalDevice,VkDisplayKHR",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkSurfaceKHR",
+    "parent": "VkInstance",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkSwapchainKHR",
+    "parent": "VkSurfaceKHR",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkDebugReportCallbackEXT",
+    "parent": "VkInstance",
     "isNonDispatchable": true
   },
   {
     "kind": "HANDLE",
     "name": "VkDebugUtilsMessengerEXT",
+    "parent": "VkInstance",
     "isNonDispatchable": true
   },
   {

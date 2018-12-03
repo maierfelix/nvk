@@ -17,8 +17,6 @@ _VkObjectTableCreateInfoNVX::~_VkObjectTableCreateInfoNVX() {
   //printf("VkObjectTableCreateInfoNVX deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
   pObjectEntryTypes.Reset();
   
@@ -46,7 +44,6 @@ void _VkObjectTableCreateInfoNVX::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_T
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("objectCount").ToLocalChecked(), GetobjectCount, SetobjectCount, ctor);
   SetPrototypeAccessor(proto, Nan::New("pObjectEntryTypes").ToLocalChecked(), GetpObjectEntryTypes, SetpObjectEntryTypes, ctor);
   SetPrototypeAccessor(proto, Nan::New("pObjectEntryCounts").ToLocalChecked(), GetpObjectEntryCounts, SetpObjectEntryCounts, ctor);
@@ -73,7 +70,6 @@ NAN_METHOD(_VkObjectTableCreateInfoNVX::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("objectCount").ToLocalChecked();
       v8::Local<v8::String> sAccess3 = Nan::New("pObjectEntryTypes").ToLocalChecked();
       v8::Local<v8::String> sAccess4 = Nan::New("pObjectEntryCounts").ToLocalChecked();
@@ -84,7 +80,6 @@ NAN_METHOD(_VkObjectTableCreateInfoNVX::New) {
       v8::Local<v8::String> sAccess9 = Nan::New("maxSampledImagesPerDescriptor").ToLocalChecked();
       v8::Local<v8::String> sAccess10 = Nan::New("maxPipelineLayouts").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
       if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
@@ -119,11 +114,6 @@ NAN_GETTER(_VkObjectTableCreateInfoNVX::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkObjectTableCreateInfoNVX::GetpNext) {
-  _VkObjectTableCreateInfoNVX *self = Nan::ObjectWrap::Unwrap<_VkObjectTableCreateInfoNVX>(info.This());
-}NAN_SETTER(_VkObjectTableCreateInfoNVX::SetpNext) {
-  _VkObjectTableCreateInfoNVX *self = Nan::ObjectWrap::Unwrap<_VkObjectTableCreateInfoNVX>(info.This());
 }// objectCount
 NAN_GETTER(_VkObjectTableCreateInfoNVX::GetobjectCount) {
   _VkObjectTableCreateInfoNVX *self = Nan::ObjectWrap::Unwrap<_VkObjectTableCreateInfoNVX>(info.This());

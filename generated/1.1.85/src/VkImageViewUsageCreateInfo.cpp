@@ -17,8 +17,6 @@ _VkImageViewUsageCreateInfo::~_VkImageViewUsageCreateInfo() {
   //printf("VkImageViewUsageCreateInfo deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
 }
 
@@ -35,7 +33,6 @@ void _VkImageViewUsageCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_T
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("usage").ToLocalChecked(), Getusage, Setusage, ctor);
   Nan::Set(target, Nan::New("VkImageViewUsageCreateInfo").ToLocalChecked(), ctor->GetFunction());
 }
@@ -54,10 +51,8 @@ NAN_METHOD(_VkImageViewUsageCreateInfo::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("usage").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       
     }
@@ -84,11 +79,6 @@ NAN_GETTER(_VkImageViewUsageCreateInfo::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkImageViewUsageCreateInfo::GetpNext) {
-  _VkImageViewUsageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageViewUsageCreateInfo>(info.This());
-}NAN_SETTER(_VkImageViewUsageCreateInfo::SetpNext) {
-  _VkImageViewUsageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageViewUsageCreateInfo>(info.This());
 }// usage
 NAN_GETTER(_VkImageViewUsageCreateInfo::Getusage) {
   _VkImageViewUsageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageViewUsageCreateInfo>(info.This());

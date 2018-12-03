@@ -20,10 +20,6 @@ class _VkBufferMemoryBarrier: public Nan::ObjectWrap {
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
     
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
-    static NAN_GETTER(GetpNext);
-    static NAN_SETTER(SetpNext);
-    
     static NAN_GETTER(GetsrcAccessMask);
     static NAN_SETTER(SetsrcAccessMask);
     

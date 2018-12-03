@@ -17,8 +17,6 @@ _VkImageCreateInfo::~_VkImageCreateInfo() {
   //printf("VkImageCreateInfo deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
   
   
@@ -48,7 +46,6 @@ void _VkImageCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE targe
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("flags").ToLocalChecked(), Getflags, Setflags, ctor);
   SetPrototypeAccessor(proto, Nan::New("imageType").ToLocalChecked(), GetimageType, SetimageType, ctor);
   SetPrototypeAccessor(proto, Nan::New("format").ToLocalChecked(), Getformat, Setformat, ctor);
@@ -85,7 +82,6 @@ NAN_METHOD(_VkImageCreateInfo::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
       v8::Local<v8::String> sAccess3 = Nan::New("imageType").ToLocalChecked();
       v8::Local<v8::String> sAccess4 = Nan::New("format").ToLocalChecked();
@@ -100,7 +96,6 @@ NAN_METHOD(_VkImageCreateInfo::New) {
       v8::Local<v8::String> sAccess13 = Nan::New("pQueueFamilyIndices").ToLocalChecked();
       v8::Local<v8::String> sAccess14 = Nan::New("initialLayout").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
       if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
@@ -139,11 +134,6 @@ NAN_GETTER(_VkImageCreateInfo::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkImageCreateInfo::GetpNext) {
-  _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
-}NAN_SETTER(_VkImageCreateInfo::SetpNext) {
-  _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());
 }// flags
 NAN_GETTER(_VkImageCreateInfo::Getflags) {
   _VkImageCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(info.This());

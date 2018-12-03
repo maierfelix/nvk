@@ -17,8 +17,6 @@ _VkPhysicalDeviceExternalBufferInfo::~_VkPhysicalDeviceExternalBufferInfo() {
   //printf("VkPhysicalDeviceExternalBufferInfo deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
   
   
@@ -37,7 +35,6 @@ void _VkPhysicalDeviceExternalBufferInfo::Initialize(Nan::ADDON_REGISTER_FUNCTIO
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("flags").ToLocalChecked(), Getflags, Setflags, ctor);
   SetPrototypeAccessor(proto, Nan::New("usage").ToLocalChecked(), Getusage, Setusage, ctor);
   SetPrototypeAccessor(proto, Nan::New("handleType").ToLocalChecked(), GethandleType, SethandleType, ctor);
@@ -58,12 +55,10 @@ NAN_METHOD(_VkPhysicalDeviceExternalBufferInfo::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("flags").ToLocalChecked();
       v8::Local<v8::String> sAccess3 = Nan::New("usage").ToLocalChecked();
       v8::Local<v8::String> sAccess4 = Nan::New("handleType").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
       if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
@@ -92,11 +87,6 @@ NAN_GETTER(_VkPhysicalDeviceExternalBufferInfo::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkPhysicalDeviceExternalBufferInfo::GetpNext) {
-  _VkPhysicalDeviceExternalBufferInfo *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceExternalBufferInfo>(info.This());
-}NAN_SETTER(_VkPhysicalDeviceExternalBufferInfo::SetpNext) {
-  _VkPhysicalDeviceExternalBufferInfo *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceExternalBufferInfo>(info.This());
 }// flags
 NAN_GETTER(_VkPhysicalDeviceExternalBufferInfo::Getflags) {
   _VkPhysicalDeviceExternalBufferInfo *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceExternalBufferInfo>(info.This());

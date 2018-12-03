@@ -17,8 +17,6 @@ _VkSamplerYcbcrConversionCreateInfo::~_VkSamplerYcbcrConversionCreateInfo() {
   //printf("VkSamplerYcbcrConversionCreateInfo deconstructed!!\n");
   
   
-  pNext.Reset();
-  
   
   
   
@@ -42,7 +40,6 @@ void _VkSamplerYcbcrConversionCreateInfo::Initialize(Nan::ADDON_REGISTER_FUNCTIO
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
   SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("pNext").ToLocalChecked(), GetpNext, SetpNext, ctor);
   SetPrototypeAccessor(proto, Nan::New("format").ToLocalChecked(), Getformat, Setformat, ctor);
   SetPrototypeAccessor(proto, Nan::New("ycbcrModel").ToLocalChecked(), GetycbcrModel, SetycbcrModel, ctor);
   SetPrototypeAccessor(proto, Nan::New("ycbcrRange").ToLocalChecked(), GetycbcrRange, SetycbcrRange, ctor);
@@ -74,7 +71,6 @@ NAN_METHOD(_VkSamplerYcbcrConversionCreateInfo::New) {
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("pNext").ToLocalChecked();
       v8::Local<v8::String> sAccess2 = Nan::New("format").ToLocalChecked();
       v8::Local<v8::String> sAccess3 = Nan::New("ycbcrModel").ToLocalChecked();
       v8::Local<v8::String> sAccess4 = Nan::New("ycbcrRange").ToLocalChecked();
@@ -84,7 +80,6 @@ NAN_METHOD(_VkSamplerYcbcrConversionCreateInfo::New) {
       v8::Local<v8::String> sAccess8 = Nan::New("chromaFilter").ToLocalChecked();
       v8::Local<v8::String> sAccess9 = Nan::New("forceExplicitReconstruction").ToLocalChecked();
       if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
       if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
       if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
       if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
@@ -118,11 +113,6 @@ NAN_GETTER(_VkSamplerYcbcrConversionCreateInfo::GetsType) {
     Nan::ThrowTypeError(msg.c_str());
     return;
   }
-}// pNext
-NAN_GETTER(_VkSamplerYcbcrConversionCreateInfo::GetpNext) {
-  _VkSamplerYcbcrConversionCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerYcbcrConversionCreateInfo>(info.This());
-}NAN_SETTER(_VkSamplerYcbcrConversionCreateInfo::SetpNext) {
-  _VkSamplerYcbcrConversionCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerYcbcrConversionCreateInfo>(info.This());
 }// format
 NAN_GETTER(_VkSamplerYcbcrConversionCreateInfo::Getformat) {
   _VkSamplerYcbcrConversionCreateInfo *self = Nan::ObjectWrap::Unwrap<_VkSamplerYcbcrConversionCreateInfo>(info.This());
