@@ -334,7 +334,6 @@ function createInstance() {
   });
 
   result = vkCreateInstance(createInfo, null, instance);
-  //vkUseInstance(instance);
   ASSERT_VK_RESULT(result);
 };
 
@@ -410,7 +409,6 @@ function createLogicalDevice() {
   deviceInfo.pEnabledFeatures = usedFeatures;
 
   result = vkCreateDevice(physicalDevice, deviceInfo, null, device);
-  //vkUseDevice(device);
   ASSERT_VK_RESULT(result);
 };
 
