@@ -14886,6 +14886,14 @@ declare function VK_VERSION_PATCH(
   patch: number
 ): number;
 
+declare function vkUseDevice(
+  pDevice: VkDevice
+): void;
+
+declare function vkUseInstance(
+  pInstance: VkInstance
+): void;
+
 declare var VK_API_VERSION_1_0: number;
 
 /** #### VULKANWINDOW #### */

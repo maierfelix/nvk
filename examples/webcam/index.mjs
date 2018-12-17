@@ -334,6 +334,7 @@ function createInstance() {
   });
 
   result = vkCreateInstance(createInfo, null, instance);
+  //vkUseInstance(instance);
   ASSERT_VK_RESULT(result);
 };
 
@@ -409,6 +410,7 @@ function createLogicalDevice() {
   deviceInfo.pEnabledFeatures = usedFeatures;
 
   result = vkCreateDevice(physicalDevice, deviceInfo, null, device);
+  //vkUseDevice(device);
   ASSERT_VK_RESULT(result);
 };
 
@@ -1123,7 +1125,7 @@ function updateTransforms() {
     (60 + rotationX) * Math.PI / 180,
     vec3.fromValues(0.0, 0.0, 1.0)
   );
-  rotationX += 0.25 + rotationVeloX * 0.1;
+  rotationX += (!mousePressed ? 0.25 : 0.0) + rotationVeloX * 0.1;
   rotationVeloX *= 0.9;
   for (let ii = 0; ii < mModel.length; ++ii) ubo[0 + ii] = mModel[ii];
 

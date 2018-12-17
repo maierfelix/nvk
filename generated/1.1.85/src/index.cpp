@@ -98,6 +98,14 @@ static void init(v8::Handle<v8::Object> target, v8::Handle<v8::Object> module) {
     Nan::New("VK_API_VERSION_1_0").ToLocalChecked(),
     Nan::New(VK_MAKE_VERSION(1, 0, 0))
   );
+  target->Set(
+    Nan::New("vkUseDevice").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkUseDevice)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkUseInstance").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkUseInstance)->GetFunction()
+  );
   // generated initializers
   _VkDebugUtilsMessengerEXT::Initialize(target);
   _VkDebugReportCallbackEXT::Initialize(target);

@@ -12,10 +12,38 @@
 #include <map>
 #include <string>
 
+VkDevice currentDevice = VK_NULL_HANDLE;
+VkInstance currentInstance = VK_NULL_HANDLE;
+
+void _vkUseDevice(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+  if (info[0]->IsObject()) {
+    _VkDevice* obj = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    currentDevice = obj->instance;
+  } else if (info[0]->IsNull()) {
+    currentDevice = VK_NULL_HANDLE;
+  } else {
+    Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'pDevice'");
+  }
+  info.GetReturnValue().SetUndefined();
+};
+
+void _vkUseInstance(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+  if (info[0]->IsObject()) {
+    _VkInstance* obj = Nan::ObjectWrap::Unwrap<_VkInstance>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    currentInstance = obj->instance;
+  } else if (info[0]->IsNull()) {
+    currentInstance = VK_NULL_HANDLE;
+  } else {
+    Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'pInstance'");
+  }
+  info.GetReturnValue().SetUndefined();
+};
+
 {% for call in calls -%}
 
 void _{{ call.name }}(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   {{ getCallBody(call) | safe }}
+  {{ getCallObjectUpdate(call) | safe }}
   {{ getCallReturn(call) | safe }}
 };
 

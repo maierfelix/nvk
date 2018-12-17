@@ -16,6 +16,33 @@
 #include <map>
 #include <string>
 
+VkDevice currentDevice = VK_NULL_HANDLE;
+VkInstance currentInstance = VK_NULL_HANDLE;
+
+void _vkUseDevice(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+  if (info[0]->IsObject()) {
+    _VkDevice* obj = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    currentDevice = obj->instance;
+  } else if (info[0]->IsNull()) {
+    currentDevice = VK_NULL_HANDLE;
+  } else {
+    Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'pDevice'");
+  }
+  info.GetReturnValue().SetUndefined();
+};
+
+void _vkUseInstance(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+  if (info[0]->IsObject()) {
+    _VkInstance* obj = Nan::ObjectWrap::Unwrap<_VkInstance>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    currentInstance = obj->instance;
+  } else if (info[0]->IsNull()) {
+    currentInstance = VK_NULL_HANDLE;
+  } else {
+    Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'pInstance'");
+  }
+  info.GetReturnValue().SetUndefined();
+};
+
 void _vkCreateInstance(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   
   _VkInstanceCreateInfo* obj0;
@@ -47,6 +74,8 @@ void _vkCreateInstance(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p2
   );
+  
+  currentInstance = obj2->instance;
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -68,6 +97,7 @@ vkDestroyInstance(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -128,6 +158,7 @@ void _vkEnumeratePhysicalDevices(const Nan::FunctionCallbackInfo<v8::Value>& inf
       target->instance = $pdata[ii];
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -155,6 +186,7 @@ void _vkGetDeviceProcAddr(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   info.GetReturnValue().Set(Nan::New(0));
 };
 
@@ -182,6 +214,7 @@ void _vkGetInstanceProcAddr(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   info.GetReturnValue().Set(Nan::New(0));
 };
 
@@ -301,6 +334,7 @@ vkGetPhysicalDeviceProperties(
   }
       
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -381,6 +415,7 @@ vkGetPhysicalDeviceQueueFamilyProperties(
     };
   }
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -443,6 +478,7 @@ vkGetPhysicalDeviceMemoryProperties(
     obj1->memoryHeaps.Reset<v8::Array>(arr);
   }
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -476,6 +512,7 @@ vkGetPhysicalDeviceFeatures(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -513,6 +550,7 @@ vkGetPhysicalDeviceFormatProperties(
     $p1,
     $p2
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -571,6 +609,7 @@ void _vkGetPhysicalDeviceImageFormatProperties(const Nan::FunctionCallbackInfo<v
     
   }
       
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -618,6 +657,8 @@ void _vkCreateDevice(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
+  currentDevice = obj3->instance;
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -640,6 +681,7 @@ vkDestroyDevice(
     nullptr
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -659,6 +701,7 @@ void _vkEnumerateInstanceVersion(const Nan::FunctionCallbackInfo<v8::Value>& inf
     &$p0
   );
     obj0->Set(Nan::New("$").ToLocalChecked(), Nan::New($p0));
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -729,6 +772,7 @@ void _vkEnumerateInstanceLayerProperties(const Nan::FunctionCallbackInfo<v8::Val
       }
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -800,6 +844,7 @@ void _vkEnumerateInstanceExtensionProperties(const Nan::FunctionCallbackInfo<v8:
       }
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -883,6 +928,7 @@ void _vkEnumerateDeviceLayerProperties(const Nan::FunctionCallbackInfo<v8::Value
       }
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -967,6 +1013,7 @@ void _vkEnumerateDeviceExtensionProperties(const Nan::FunctionCallbackInfo<v8::V
       }
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -1005,6 +1052,7 @@ vkGetDeviceQueue(
     $p2,
     $p3
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -1068,6 +1116,7 @@ void _vkQueueSubmit(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p2 ? (const VkSubmitInfo *) $p2.get()->data() : nullptr,
     info[3]->IsNull() ? VK_NULL_HANDLE : *$p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -1087,6 +1136,7 @@ void _vkQueueWaitIdle(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   int32_t out = vkQueueWaitIdle(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -1106,6 +1156,7 @@ void _vkDeviceWaitIdle(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   int32_t out = vkDeviceWaitIdle(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -1153,6 +1204,7 @@ void _vkAllocateMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -1187,6 +1239,7 @@ vkFreeMemory(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -1236,6 +1289,7 @@ void _vkMapMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   );
   v8::Local<v8::BigInt> ptr5 = v8::BigInt::New(v8::Isolate::GetCurrent(), (int64_t)$p5);
   obj5->Set(Nan::New("$").ToLocalChecked(), ptr5);
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -1268,6 +1322,7 @@ vkUnmapMemory(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -1318,6 +1373,7 @@ void _vkFlushMappedMemoryRanges(const Nan::FunctionCallbackInfo<v8::Value>& info
     $p1,
     $p2 ? (const VkMappedMemoryRange *) $p2.get()->data() : nullptr
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -1366,6 +1422,7 @@ void _vkInvalidateMappedMemoryRanges(const Nan::FunctionCallbackInfo<v8::Value>&
     $p1,
     $p2 ? (const VkMappedMemoryRange *) $p2.get()->data() : nullptr
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -1411,6 +1468,7 @@ vkGetDeviceMemoryCommitment(
   );
     v8::Local<v8::BigInt> pnum2 = v8::BigInt::New(v8::Isolate::GetCurrent(), (uint64_t)$p2);
     obj2->Set(Nan::New("$").ToLocalChecked(), pnum2);
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -1458,6 +1516,7 @@ vkGetBufferMemoryRequirements(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -1508,6 +1567,7 @@ void _vkBindBufferMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[2]->IsNull() ? VK_NULL_HANDLE : *$p2,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -1553,6 +1613,7 @@ vkGetImageMemoryRequirements(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -1603,6 +1664,7 @@ void _vkBindImageMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[2]->IsNull() ? VK_NULL_HANDLE : *$p2,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -1694,6 +1756,7 @@ vkGetImageSparseMemoryRequirements(
       }
     };
   }
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -1790,6 +1853,7 @@ vkGetPhysicalDeviceSparseImageFormatProperties(
     };
   }
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -1852,6 +1916,7 @@ void _vkQueueBindSparse(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p2 ? (const VkBindSparseInfo *) $p2.get()->data() : nullptr,
     info[3]->IsNull() ? VK_NULL_HANDLE : *$p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -1899,6 +1964,7 @@ void _vkCreateFence(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -1933,6 +1999,7 @@ vkDestroyFence(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -1975,6 +2042,7 @@ void _vkResetFences(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p1,
     $p2 ? (const VkFence *) $p2.get()->data() : nullptr
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -2007,6 +2075,7 @@ void _vkGetFenceStatus(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -2053,6 +2122,7 @@ void _vkWaitForFences(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p3,
     $p4
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -2100,6 +2170,7 @@ void _vkCreateSemaphore(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -2134,6 +2205,7 @@ vkDestroySemaphore(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -2183,6 +2255,7 @@ void _vkCreateEvent(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -2218,6 +2291,7 @@ vkDestroyEvent(
     nullptr
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -2251,6 +2325,7 @@ void _vkGetEventStatus(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -2283,6 +2358,7 @@ void _vkSetEvent(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -2315,6 +2391,7 @@ void _vkResetEvent(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -2362,6 +2439,7 @@ void _vkCreateQueryPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -2396,6 +2474,7 @@ vkDestroyQueryPool(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -2447,6 +2526,7 @@ nullptr,
     $p6,
     static_cast<VkQueryResultFlags>($p7)
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -2494,6 +2574,7 @@ void _vkCreateBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -2528,6 +2609,7 @@ vkDestroyBuffer(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -2577,6 +2659,7 @@ void _vkCreateBufferView(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -2611,6 +2694,7 @@ vkDestroyBufferView(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -2660,6 +2744,7 @@ void _vkCreateImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -2694,6 +2779,7 @@ vkDestroyImage(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -2755,6 +2841,7 @@ vkGetImageSubresourceLayout(
     $p3
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -2803,6 +2890,7 @@ void _vkCreateImageView(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -2837,6 +2925,7 @@ vkDestroyImageView(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -2886,6 +2975,7 @@ void _vkCreateShaderModule(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -2920,6 +3010,7 @@ vkDestroyShaderModule(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -2969,6 +3060,7 @@ void _vkCreatePipelineCache(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -3003,6 +3095,7 @@ vkDestroyPipelineCache(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -3052,6 +3145,7 @@ nullptr
   );
     v8::Local<v8::BigInt> pnum2 = v8::BigInt::New(v8::Isolate::GetCurrent(), (uint64_t)$p2);
     obj2->Set(Nan::New("$").ToLocalChecked(), pnum2);
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -3105,6 +3199,7 @@ void _vkMergePipelineCaches(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p2,
     $p3 ? (const VkPipelineCache *) $p3.get()->data() : nullptr
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -3195,6 +3290,7 @@ void _vkCreateGraphicsPipelines(const Nan::FunctionCallbackInfo<v8::Value>& info
       target->instance = $pdata[ii];
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -3285,6 +3381,7 @@ void _vkCreateComputePipelines(const Nan::FunctionCallbackInfo<v8::Value>& info)
       target->instance = $pdata[ii];
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -3319,6 +3416,7 @@ vkDestroyPipeline(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -3368,6 +3466,7 @@ void _vkCreatePipelineLayout(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -3402,6 +3501,7 @@ vkDestroyPipelineLayout(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -3451,6 +3551,7 @@ void _vkCreateSampler(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -3485,6 +3586,7 @@ vkDestroySampler(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -3534,6 +3636,7 @@ void _vkCreateDescriptorSetLayout(const Nan::FunctionCallbackInfo<v8::Value>& in
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -3568,6 +3671,7 @@ vkDestroyDescriptorSetLayout(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -3617,6 +3721,7 @@ void _vkCreateDescriptorPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -3651,6 +3756,7 @@ vkDestroyDescriptorPool(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -3688,6 +3794,7 @@ void _vkResetDescriptorPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     static_cast<VkDescriptorPoolResetFlags>($p2)
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -3747,6 +3854,7 @@ void _vkAllocateDescriptorSets(const Nan::FunctionCallbackInfo<v8::Value>& info)
       target->instance = $pdata[ii];
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -3800,6 +3908,7 @@ void _vkFreeDescriptorSets(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p2,
     $p3 ? (const VkDescriptorSet *) $p3.get()->data() : nullptr
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -3878,6 +3987,7 @@ vkUpdateDescriptorSets(
     $p4 ? (const VkCopyDescriptorSet *) $p4.get()->data() : nullptr
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -3926,6 +4036,7 @@ void _vkCreateFramebuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -3960,6 +4071,7 @@ vkDestroyFramebuffer(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -4009,6 +4121,7 @@ void _vkCreateRenderPass(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -4043,6 +4156,7 @@ vkDestroyRenderPass(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -4090,6 +4204,7 @@ vkGetRenderAreaGranularity(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -4139,6 +4254,7 @@ void _vkCreateCommandPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -4173,6 +4289,7 @@ vkDestroyCommandPool(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -4210,6 +4327,7 @@ void _vkResetCommandPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     static_cast<VkCommandPoolResetFlags>($p2)
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -4269,6 +4387,7 @@ void _vkAllocateCommandBuffers(const Nan::FunctionCallbackInfo<v8::Value>& info)
       target->instance = $pdata[ii];
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -4323,6 +4442,7 @@ vkFreeCommandBuffers(
     $p3 ? (const VkCommandBuffer *) $p3.get()->data() : nullptr
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -4356,6 +4476,7 @@ void _vkBeginCommandBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -4375,6 +4496,7 @@ void _vkEndCommandBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   int32_t out = vkEndCommandBuffer(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -4397,6 +4519,7 @@ void _vkResetCommandBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     static_cast<VkCommandBufferResetFlags>($p1)
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -4432,6 +4555,7 @@ vkCmdBindPipeline(
     $p1,
     info[2]->IsNull() ? VK_NULL_HANDLE : *$p2
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -4486,6 +4610,7 @@ vkCmdSetViewport(
     $p3 ? (const VkViewport *) $p3.get()->data() : nullptr
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -4539,6 +4664,7 @@ vkCmdSetScissor(
     $p3 ? (const VkRect2D *) $p3.get()->data() : nullptr
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -4562,6 +4688,7 @@ vkCmdSetLineWidth(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -4592,6 +4719,7 @@ vkCmdSetDepthBias(
     $p2,
     $p3
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -4628,6 +4756,7 @@ vkCmdSetBlendConstants(
     $p1 ? $p1.get()->data() : nullptr
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -4654,6 +4783,7 @@ vkCmdSetDepthBounds(
     $p1,
     $p2
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -4682,6 +4812,7 @@ vkCmdSetStencilCompareMask(
     $p2
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -4709,6 +4840,7 @@ vkCmdSetStencilWriteMask(
     $p2
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -4735,6 +4867,7 @@ vkCmdSetStencilReference(
     static_cast<VkStencilFaceFlags>($p1),
     $p2
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -4812,6 +4945,7 @@ vkCmdBindDescriptorSets(
     $p7 ? $p7.get()->data() : nullptr
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -4851,6 +4985,7 @@ vkCmdBindIndexBuffer(
     $p2,
     $p3
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -4909,6 +5044,7 @@ vkCmdBindVertexBuffers(
     $p4 ? $p4.get()->data() : nullptr
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -4941,6 +5077,7 @@ vkCmdDraw(
     $p3,
     $p4
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -4977,6 +5114,7 @@ vkCmdDrawIndexed(
     $p4,
     $p5
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -5021,6 +5159,7 @@ vkCmdDrawIndirect(
     $p4
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -5064,6 +5203,7 @@ vkCmdDrawIndexedIndirect(
     $p4
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -5093,6 +5233,7 @@ vkCmdDispatch(
     $p2,
     $p3
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -5130,6 +5271,7 @@ vkCmdDispatchIndirect(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -5206,6 +5348,7 @@ vkCmdCopyBuffer(
     $p3,
     $p4 ? (const VkBufferCopy *) $p4.get()->data() : nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -5288,6 +5431,7 @@ vkCmdCopyImage(
     $p5,
     $p6 ? (const VkImageCopy *) $p6.get()->data() : nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -5374,6 +5518,7 @@ vkCmdBlitImage(
     $p7
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -5452,6 +5597,7 @@ vkCmdCopyBufferToImage(
     $p4,
     $p5 ? (const VkBufferImageCopy *) $p5.get()->data() : nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -5532,6 +5678,7 @@ vkCmdCopyImageToBuffer(
     $p5 ? (const VkBufferImageCopy *) $p5.get()->data() : nullptr
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -5581,6 +5728,7 @@ vkCmdUpdateBuffer(
     $p4
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -5623,6 +5771,7 @@ vkCmdFillBuffer(
     $p3,
     $p4
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -5703,6 +5852,7 @@ vkCmdClearColorImage(
     $p5 ? (const VkImageSubresourceRange *) $p5.get()->data() : nullptr
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -5782,6 +5932,7 @@ vkCmdClearDepthStencilImage(
     $p5 ? (const VkImageSubresourceRange *) $p5.get()->data() : nullptr
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -5860,6 +6011,7 @@ vkCmdClearAttachments(
     $p3,
     $p4 ? (const VkClearRect *) $p4.get()->data() : nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -5943,6 +6095,7 @@ vkCmdResolveImage(
     $p6 ? (const VkImageResolve *) $p6.get()->data() : nullptr
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -5980,6 +6133,7 @@ vkCmdSetEvent(
     static_cast<VkPipelineStageFlags>($p2)
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -6016,6 +6170,7 @@ vkCmdResetEvent(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     static_cast<VkPipelineStageFlags>($p2)
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -6152,6 +6307,7 @@ vkCmdWaitEvents(
     $p10 ? (const VkImageMemoryBarrier *) $p10.get()->data() : nullptr
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -6269,6 +6425,7 @@ vkCmdPipelineBarrier(
     $p9 ? (const VkImageMemoryBarrier *) $p9.get()->data() : nullptr
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -6309,6 +6466,7 @@ vkCmdBeginQuery(
     static_cast<VkQueryControlFlags>($p3)
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -6346,6 +6504,7 @@ vkCmdEndQuery(
     $p2
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -6375,11 +6534,12 @@ void _vkCmdBeginConditionalRenderingEXT(const Nan::FunctionCallbackInfo<v8::Valu
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pConditionalRenderingBegin'");
   }
-    PFN_vkCmdBeginConditionalRenderingEXT vkCmdBeginConditionalRenderingEXT = (PFN_vkCmdBeginConditionalRenderingEXT) vkGetDeviceProcAddr(nullptr, "vkCmdBeginConditionalRenderingEXT");
+    PFN_vkCmdBeginConditionalRenderingEXT vkCmdBeginConditionalRenderingEXT = (PFN_vkCmdBeginConditionalRenderingEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdBeginConditionalRenderingEXT");
 vkCmdBeginConditionalRenderingEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -6398,10 +6558,11 @@ void _vkCmdEndConditionalRenderingEXT(const Nan::FunctionCallbackInfo<v8::Value>
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
   }
-    PFN_vkCmdEndConditionalRenderingEXT vkCmdEndConditionalRenderingEXT = (PFN_vkCmdEndConditionalRenderingEXT) vkGetDeviceProcAddr(nullptr, "vkCmdEndConditionalRenderingEXT");
+    PFN_vkCmdEndConditionalRenderingEXT vkCmdEndConditionalRenderingEXT = (PFN_vkCmdEndConditionalRenderingEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdEndConditionalRenderingEXT");
 vkCmdEndConditionalRenderingEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -6443,6 +6604,7 @@ vkCmdResetQueryPool(
     $p3
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -6482,6 +6644,7 @@ vkCmdWriteTimestamp(
     info[2]->IsNull() ? VK_NULL_HANDLE : *$p2,
     $p3
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -6545,6 +6708,7 @@ vkCmdCopyQueryPoolResults(
     static_cast<VkQueryResultFlags>($p7)
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -6597,6 +6761,7 @@ vkCmdPushConstants(
     $p5
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -6634,6 +6799,7 @@ vkCmdBeginRenderPass(
     $p2
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -6658,6 +6824,7 @@ vkCmdNextSubpass(
     $p1
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -6678,6 +6845,7 @@ void _vkCmdEndRenderPass(const Nan::FunctionCallbackInfo<v8::Value>& info) {
 vkCmdEndRenderPass(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -6720,6 +6888,7 @@ vkCmdExecuteCommands(
     $p1,
     $p2 ? (const VkCommandBuffer *) $p2.get()->data() : nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -6773,7 +6942,7 @@ void _vkGetPhysicalDeviceDisplayPropertiesKHR(const Nan::FunctionCallbackInfo<v8
     return Nan::ThrowTypeError("Invalid type for argument 3 'pProperties'");
   }
 
-    PFN_vkGetPhysicalDeviceDisplayPropertiesKHR vkGetPhysicalDeviceDisplayPropertiesKHR = (PFN_vkGetPhysicalDeviceDisplayPropertiesKHR) vkGetInstanceProcAddr(nullptr, "vkGetPhysicalDeviceDisplayPropertiesKHR");
+    PFN_vkGetPhysicalDeviceDisplayPropertiesKHR vkGetPhysicalDeviceDisplayPropertiesKHR = (PFN_vkGetPhysicalDeviceDisplayPropertiesKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceDisplayPropertiesKHR");
   int32_t out = vkGetPhysicalDeviceDisplayPropertiesKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     &$p1,
@@ -6817,6 +6986,7 @@ void _vkGetPhysicalDeviceDisplayPropertiesKHR(const Nan::FunctionCallbackInfo<v8
       }
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -6868,7 +7038,7 @@ void _vkGetPhysicalDeviceDisplayPlanePropertiesKHR(const Nan::FunctionCallbackIn
     return Nan::ThrowTypeError("Invalid type for argument 3 'pProperties'");
   }
 
-    PFN_vkGetPhysicalDeviceDisplayPlanePropertiesKHR vkGetPhysicalDeviceDisplayPlanePropertiesKHR = (PFN_vkGetPhysicalDeviceDisplayPlanePropertiesKHR) vkGetInstanceProcAddr(nullptr, "vkGetPhysicalDeviceDisplayPlanePropertiesKHR");
+    PFN_vkGetPhysicalDeviceDisplayPlanePropertiesKHR vkGetPhysicalDeviceDisplayPlanePropertiesKHR = (PFN_vkGetPhysicalDeviceDisplayPlanePropertiesKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceDisplayPlanePropertiesKHR");
   int32_t out = vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     &$p1,
@@ -6887,6 +7057,7 @@ void _vkGetPhysicalDeviceDisplayPlanePropertiesKHR(const Nan::FunctionCallbackIn
       
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -6932,7 +7103,7 @@ void _vkGetDisplayPlaneSupportedDisplaysKHR(const Nan::FunctionCallbackInfo<v8::
     return Nan::ThrowTypeError("Invalid type for argument 4 'pDisplays'");
   }
 
-    PFN_vkGetDisplayPlaneSupportedDisplaysKHR vkGetDisplayPlaneSupportedDisplaysKHR = (PFN_vkGetDisplayPlaneSupportedDisplaysKHR) vkGetInstanceProcAddr(nullptr, "vkGetDisplayPlaneSupportedDisplaysKHR");
+    PFN_vkGetDisplayPlaneSupportedDisplaysKHR vkGetDisplayPlaneSupportedDisplaysKHR = (PFN_vkGetDisplayPlaneSupportedDisplaysKHR) vkGetInstanceProcAddr(currentInstance, "vkGetDisplayPlaneSupportedDisplaysKHR");
   int32_t out = vkGetDisplayPlaneSupportedDisplaysKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
@@ -6949,6 +7120,7 @@ void _vkGetDisplayPlaneSupportedDisplaysKHR(const Nan::FunctionCallbackInfo<v8::
       target->instance = $pdata[ii];
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -7012,7 +7184,7 @@ void _vkGetDisplayModePropertiesKHR(const Nan::FunctionCallbackInfo<v8::Value>& 
     return Nan::ThrowTypeError("Invalid type for argument 4 'pProperties'");
   }
 
-    PFN_vkGetDisplayModePropertiesKHR vkGetDisplayModePropertiesKHR = (PFN_vkGetDisplayModePropertiesKHR) vkGetInstanceProcAddr(nullptr, "vkGetDisplayModePropertiesKHR");
+    PFN_vkGetDisplayModePropertiesKHR vkGetDisplayModePropertiesKHR = (PFN_vkGetDisplayModePropertiesKHR) vkGetInstanceProcAddr(currentInstance, "vkGetDisplayModePropertiesKHR");
   int32_t out = vkGetDisplayModePropertiesKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -7041,6 +7213,7 @@ void _vkGetDisplayModePropertiesKHR(const Nan::FunctionCallbackInfo<v8::Value>& 
       }
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -7094,7 +7267,7 @@ void _vkCreateDisplayModeKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 5 'pMode'");
   }
-    PFN_vkCreateDisplayModeKHR vkCreateDisplayModeKHR = (PFN_vkCreateDisplayModeKHR) vkGetInstanceProcAddr(nullptr, "vkCreateDisplayModeKHR");
+    PFN_vkCreateDisplayModeKHR vkCreateDisplayModeKHR = (PFN_vkCreateDisplayModeKHR) vkGetInstanceProcAddr(currentInstance, "vkCreateDisplayModeKHR");
   int32_t out = vkCreateDisplayModeKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -7102,6 +7275,7 @@ void _vkCreateDisplayModeKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p4
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -7144,7 +7318,7 @@ void _vkGetDisplayPlaneCapabilitiesKHR(const Nan::FunctionCallbackInfo<v8::Value
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pCapabilities'");
   }
-    PFN_vkGetDisplayPlaneCapabilitiesKHR vkGetDisplayPlaneCapabilitiesKHR = (PFN_vkGetDisplayPlaneCapabilitiesKHR) vkGetInstanceProcAddr(nullptr, "vkGetDisplayPlaneCapabilitiesKHR");
+    PFN_vkGetDisplayPlaneCapabilitiesKHR vkGetDisplayPlaneCapabilitiesKHR = (PFN_vkGetDisplayPlaneCapabilitiesKHR) vkGetInstanceProcAddr(currentInstance, "vkGetDisplayPlaneCapabilitiesKHR");
   int32_t out = vkGetDisplayPlaneCapabilitiesKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -7223,6 +7397,7 @@ void _vkGetDisplayPlaneCapabilitiesKHR(const Nan::FunctionCallbackInfo<v8::Value
     
   }
       
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -7271,6 +7446,7 @@ void _vkCreateDisplayPlaneSurfaceKHR(const Nan::FunctionCallbackInfo<v8::Value>&
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -7349,6 +7525,7 @@ void _vkCreateSharedSwapchainsKHR(const Nan::FunctionCallbackInfo<v8::Value>& in
       target->instance = $pdata[ii];
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -7384,6 +7561,7 @@ vkDestroySurfaceKHR(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -7426,7 +7604,7 @@ void _vkGetPhysicalDeviceSurfaceSupportKHR(const Nan::FunctionCallbackInfo<v8::V
   } else if (!info[3]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pSupported'");
   }
-    PFN_vkGetPhysicalDeviceSurfaceSupportKHR vkGetPhysicalDeviceSurfaceSupportKHR = (PFN_vkGetPhysicalDeviceSurfaceSupportKHR) vkGetInstanceProcAddr(nullptr, "vkGetPhysicalDeviceSurfaceSupportKHR");
+    PFN_vkGetPhysicalDeviceSurfaceSupportKHR vkGetPhysicalDeviceSurfaceSupportKHR = (PFN_vkGetPhysicalDeviceSurfaceSupportKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceSurfaceSupportKHR");
   int32_t out = vkGetPhysicalDeviceSurfaceSupportKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
@@ -7434,6 +7612,7 @@ void _vkGetPhysicalDeviceSurfaceSupportKHR(const Nan::FunctionCallbackInfo<v8::V
     &$p3
   );
     obj3->Set(Nan::New("$").ToLocalChecked(), Nan::New($p3));
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -7474,7 +7653,7 @@ void _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Nan::FunctionCallbackInfo<
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pSurfaceCapabilities'");
   }
-    PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR vkGetPhysicalDeviceSurfaceCapabilitiesKHR = (PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR) vkGetInstanceProcAddr(nullptr, "vkGetPhysicalDeviceSurfaceCapabilitiesKHR");
+    PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR vkGetPhysicalDeviceSurfaceCapabilitiesKHR = (PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceSurfaceCapabilitiesKHR");
   int32_t out = vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -7507,6 +7686,7 @@ void _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Nan::FunctionCallbackInfo<
     
   }
       
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -7570,7 +7750,7 @@ void _vkGetPhysicalDeviceSurfaceFormatsKHR(const Nan::FunctionCallbackInfo<v8::V
     return Nan::ThrowTypeError("Invalid type for argument 4 'pSurfaceFormats'");
   }
 
-    PFN_vkGetPhysicalDeviceSurfaceFormatsKHR vkGetPhysicalDeviceSurfaceFormatsKHR = (PFN_vkGetPhysicalDeviceSurfaceFormatsKHR) vkGetInstanceProcAddr(nullptr, "vkGetPhysicalDeviceSurfaceFormatsKHR");
+    PFN_vkGetPhysicalDeviceSurfaceFormatsKHR vkGetPhysicalDeviceSurfaceFormatsKHR = (PFN_vkGetPhysicalDeviceSurfaceFormatsKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceSurfaceFormatsKHR");
   int32_t out = vkGetPhysicalDeviceSurfaceFormatsKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -7590,6 +7770,7 @@ void _vkGetPhysicalDeviceSurfaceFormatsKHR(const Nan::FunctionCallbackInfo<v8::V
       
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -7640,7 +7821,7 @@ void _vkGetPhysicalDeviceSurfacePresentModesKHR(const Nan::FunctionCallbackInfo<
     return Nan::ThrowTypeError("Invalid type for argument 4 'pPresentModes'");
   }
 
-    PFN_vkGetPhysicalDeviceSurfacePresentModesKHR vkGetPhysicalDeviceSurfacePresentModesKHR = (PFN_vkGetPhysicalDeviceSurfacePresentModesKHR) vkGetInstanceProcAddr(nullptr, "vkGetPhysicalDeviceSurfacePresentModesKHR");
+    PFN_vkGetPhysicalDeviceSurfacePresentModesKHR vkGetPhysicalDeviceSurfacePresentModesKHR = (PFN_vkGetPhysicalDeviceSurfacePresentModesKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceSurfacePresentModesKHR");
   int32_t out = vkGetPhysicalDeviceSurfacePresentModesKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -7655,6 +7836,7 @@ void _vkGetPhysicalDeviceSurfacePresentModesKHR(const Nan::FunctionCallbackInfo<
       array->Set(ii, Nan::New($p3[ii]));
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -7703,6 +7885,7 @@ void _vkCreateSwapchainKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -7738,6 +7921,7 @@ vkDestroySwapchainKHR(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -7812,6 +7996,7 @@ void _vkGetSwapchainImagesKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) 
       target->instance = $pdata[ii];
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -7886,6 +8071,7 @@ void _vkAcquireNextImageKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     &$p5
   );
     obj5->Set(Nan::New("$").ToLocalChecked(), Nan::New($p5));
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -7914,11 +8100,12 @@ void _vkQueuePresentKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pPresentInfo'");
   }
-    PFN_vkQueuePresentKHR vkQueuePresentKHR = (PFN_vkQueuePresentKHR) vkGetDeviceProcAddr(nullptr, "vkQueuePresentKHR");
+    PFN_vkQueuePresentKHR vkQueuePresentKHR = (PFN_vkQueuePresentKHR) vkGetDeviceProcAddr(currentDevice, "vkQueuePresentKHR");
   int32_t out = vkQueuePresentKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -7967,6 +8154,7 @@ void _vkCreateWin32SurfaceKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) 
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -7985,11 +8173,12 @@ void _vkGetPhysicalDeviceWin32PresentationSupportKHR(const Nan::FunctionCallback
   }
 
   uint32_t $p1 = static_cast<uint32_t>(Nan::To<int64_t>(info[1]).FromMaybe(0));
-    PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR vkGetPhysicalDeviceWin32PresentationSupportKHR = (PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR) vkGetInstanceProcAddr(nullptr, "vkGetPhysicalDeviceWin32PresentationSupportKHR");
+    PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR vkGetPhysicalDeviceWin32PresentationSupportKHR = (PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceWin32PresentationSupportKHR");
   uint32_t out = vkGetPhysicalDeviceWin32PresentationSupportKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   info.GetReturnValue().Set(Nan::New(0));
 };
 
@@ -8038,6 +8227,7 @@ void _vkCreateDebugReportCallbackEXT(const Nan::FunctionCallbackInfo<v8::Value>&
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -8073,6 +8263,7 @@ vkDestroyDebugReportCallbackEXT(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -8127,6 +8318,7 @@ vkDebugReportMessageEXT(
     $p7
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -8161,6 +8353,7 @@ void _vkDebugMarkerSetObjectNameEXT(const Nan::FunctionCallbackInfo<v8::Value>& 
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -8194,6 +8387,7 @@ void _vkDebugMarkerSetObjectTagEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -8222,11 +8416,12 @@ void _vkCmdDebugMarkerBeginEXT(const Nan::FunctionCallbackInfo<v8::Value>& info)
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pMarkerInfo'");
   }
-    PFN_vkCmdDebugMarkerBeginEXT vkCmdDebugMarkerBeginEXT = (PFN_vkCmdDebugMarkerBeginEXT) vkGetDeviceProcAddr(nullptr, "vkCmdDebugMarkerBeginEXT");
+    PFN_vkCmdDebugMarkerBeginEXT vkCmdDebugMarkerBeginEXT = (PFN_vkCmdDebugMarkerBeginEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdDebugMarkerBeginEXT");
 vkCmdDebugMarkerBeginEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -8245,10 +8440,11 @@ void _vkCmdDebugMarkerEndEXT(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
   }
-    PFN_vkCmdDebugMarkerEndEXT vkCmdDebugMarkerEndEXT = (PFN_vkCmdDebugMarkerEndEXT) vkGetDeviceProcAddr(nullptr, "vkCmdDebugMarkerEndEXT");
+    PFN_vkCmdDebugMarkerEndEXT vkCmdDebugMarkerEndEXT = (PFN_vkCmdDebugMarkerEndEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdDebugMarkerEndEXT");
 vkCmdDebugMarkerEndEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -8279,11 +8475,12 @@ void _vkCmdDebugMarkerInsertEXT(const Nan::FunctionCallbackInfo<v8::Value>& info
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pMarkerInfo'");
   }
-    PFN_vkCmdDebugMarkerInsertEXT vkCmdDebugMarkerInsertEXT = (PFN_vkCmdDebugMarkerInsertEXT) vkGetDeviceProcAddr(nullptr, "vkCmdDebugMarkerInsertEXT");
+    PFN_vkCmdDebugMarkerInsertEXT vkCmdDebugMarkerInsertEXT = (PFN_vkCmdDebugMarkerInsertEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdDebugMarkerInsertEXT");
 vkCmdDebugMarkerInsertEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -8326,7 +8523,7 @@ void _vkGetPhysicalDeviceExternalImageFormatPropertiesNV(const Nan::FunctionCall
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 8 'pExternalImageFormatProperties'");
   }
-    PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV vkGetPhysicalDeviceExternalImageFormatPropertiesNV = (PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV) vkGetInstanceProcAddr(nullptr, "vkGetPhysicalDeviceExternalImageFormatPropertiesNV");
+    PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV vkGetPhysicalDeviceExternalImageFormatPropertiesNV = (PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceExternalImageFormatPropertiesNV");
   int32_t out = vkGetPhysicalDeviceExternalImageFormatPropertiesNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
@@ -8355,6 +8552,7 @@ void _vkGetPhysicalDeviceExternalImageFormatPropertiesNV(const Nan::FunctionCall
       
   }
       
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -8393,6 +8591,7 @@ void _vkGetMemoryWin32HandleNV(const Nan::FunctionCallbackInfo<v8::Value>& info)
     static_cast<VkExternalMemoryHandleTypeFlagsNV>($p2),
 nullptr
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -8441,7 +8640,7 @@ void _vkCmdDrawIndirectCountAMD(const Nan::FunctionCallbackInfo<v8::Value>& info
   uint32_t $p5 = static_cast<uint32_t>(Nan::To<int64_t>(info[5]).FromMaybe(0));
 
   uint32_t $p6 = static_cast<uint32_t>(Nan::To<int64_t>(info[6]).FromMaybe(0));
-    PFN_vkCmdDrawIndirectCountAMD vkCmdDrawIndirectCountAMD = (PFN_vkCmdDrawIndirectCountAMD) vkGetDeviceProcAddr(nullptr, "vkCmdDrawIndirectCountAMD");
+    PFN_vkCmdDrawIndirectCountAMD vkCmdDrawIndirectCountAMD = (PFN_vkCmdDrawIndirectCountAMD) vkGetDeviceProcAddr(currentDevice, "vkCmdDrawIndirectCountAMD");
 vkCmdDrawIndirectCountAMD(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -8451,6 +8650,7 @@ vkCmdDrawIndirectCountAMD(
     $p5,
     $p6
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -8501,7 +8701,7 @@ void _vkCmdDrawIndexedIndirectCountAMD(const Nan::FunctionCallbackInfo<v8::Value
   uint32_t $p5 = static_cast<uint32_t>(Nan::To<int64_t>(info[5]).FromMaybe(0));
 
   uint32_t $p6 = static_cast<uint32_t>(Nan::To<int64_t>(info[6]).FromMaybe(0));
-    PFN_vkCmdDrawIndexedIndirectCountAMD vkCmdDrawIndexedIndirectCountAMD = (PFN_vkCmdDrawIndexedIndirectCountAMD) vkGetDeviceProcAddr(nullptr, "vkCmdDrawIndexedIndirectCountAMD");
+    PFN_vkCmdDrawIndexedIndirectCountAMD vkCmdDrawIndexedIndirectCountAMD = (PFN_vkCmdDrawIndexedIndirectCountAMD) vkGetDeviceProcAddr(currentDevice, "vkCmdDrawIndexedIndirectCountAMD");
 vkCmdDrawIndexedIndirectCountAMD(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -8511,6 +8711,7 @@ vkCmdDrawIndexedIndirectCountAMD(
     $p5,
     $p6
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -8541,11 +8742,12 @@ void _vkCmdProcessCommandsNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pProcessCommandsInfo'");
   }
-    PFN_vkCmdProcessCommandsNVX vkCmdProcessCommandsNVX = (PFN_vkCmdProcessCommandsNVX) vkGetDeviceProcAddr(nullptr, "vkCmdProcessCommandsNVX");
+    PFN_vkCmdProcessCommandsNVX vkCmdProcessCommandsNVX = (PFN_vkCmdProcessCommandsNVX) vkGetDeviceProcAddr(currentDevice, "vkCmdProcessCommandsNVX");
 vkCmdProcessCommandsNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -8576,11 +8778,12 @@ void _vkCmdReserveSpaceForCommandsNVX(const Nan::FunctionCallbackInfo<v8::Value>
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pReserveSpaceInfo'");
   }
-    PFN_vkCmdReserveSpaceForCommandsNVX vkCmdReserveSpaceForCommandsNVX = (PFN_vkCmdReserveSpaceForCommandsNVX) vkGetDeviceProcAddr(nullptr, "vkCmdReserveSpaceForCommandsNVX");
+    PFN_vkCmdReserveSpaceForCommandsNVX vkCmdReserveSpaceForCommandsNVX = (PFN_vkCmdReserveSpaceForCommandsNVX) vkGetDeviceProcAddr(currentDevice, "vkCmdReserveSpaceForCommandsNVX");
 vkCmdReserveSpaceForCommandsNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -8631,6 +8834,7 @@ void _vkCreateIndirectCommandsLayoutNVX(const Nan::FunctionCallbackInfo<v8::Valu
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -8666,6 +8870,7 @@ vkDestroyIndirectCommandsLayoutNVX(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -8716,6 +8921,7 @@ void _vkCreateObjectTableNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -8751,6 +8957,7 @@ vkDestroyObjectTableNVX(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -8827,6 +9034,7 @@ void _vkRegisterObjectsNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p3 ? (const VkObjectTableEntryNVX * const*) $p3.get()->data() : nullptr,
     $p4 ? $p4.get()->data() : nullptr
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -8888,6 +9096,7 @@ void _vkUnregisterObjectsNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p3,
     $p4 ? $p4.get()->data() : nullptr
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -8928,12 +9137,13 @@ void _vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(const Nan::FunctionCallb
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pLimits'");
   }
-    PFN_vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX = (PFN_vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX) vkGetDeviceProcAddr(nullptr, "vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX");
+    PFN_vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX = (PFN_vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX) vkGetDeviceProcAddr(currentDevice, "vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX");
 vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -8977,6 +9187,7 @@ vkGetPhysicalDeviceFeatures2(
     
   }
       
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -9107,6 +9318,7 @@ vkGetPhysicalDeviceProperties2(
   }
       
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -9152,6 +9364,7 @@ vkGetPhysicalDeviceFormatProperties2(
     
   }
       
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -9217,6 +9430,7 @@ void _vkGetPhysicalDeviceImageFormatProperties2(const Nan::FunctionCallbackInfo<
       
   }
       
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -9296,6 +9510,7 @@ vkGetPhysicalDeviceQueueFamilyProperties2(
     };
   }
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -9366,6 +9581,7 @@ vkGetPhysicalDeviceMemoryProperties2(
   }
   }
       
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -9460,6 +9676,7 @@ vkGetPhysicalDeviceSparseImageFormatProperties2(
     };
   }
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -9520,7 +9737,7 @@ void _vkCmdPushDescriptorSetKHR(const Nan::FunctionCallbackInfo<v8::Value>& info
     return Nan::ThrowTypeError("Invalid type for argument 6 'pDescriptorWrites'");
   }
 
-    PFN_vkCmdPushDescriptorSetKHR vkCmdPushDescriptorSetKHR = (PFN_vkCmdPushDescriptorSetKHR) vkGetDeviceProcAddr(nullptr, "vkCmdPushDescriptorSetKHR");
+    PFN_vkCmdPushDescriptorSetKHR vkCmdPushDescriptorSetKHR = (PFN_vkCmdPushDescriptorSetKHR) vkGetDeviceProcAddr(currentDevice, "vkCmdPushDescriptorSetKHR");
 vkCmdPushDescriptorSetKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
@@ -9529,6 +9746,7 @@ vkCmdPushDescriptorSetKHR(
     $p4,
     $p5 ? (const VkWriteDescriptorSet *) $p5.get()->data() : nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -9566,6 +9784,7 @@ vkTrimCommandPool(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     static_cast<VkCommandPoolTrimFlags>($p2)
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -9623,6 +9842,7 @@ vkGetPhysicalDeviceExternalBufferProperties(
   }
       
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -9659,6 +9879,7 @@ void _vkGetMemoryWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>& info
     $p1,
 nullptr
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -9697,6 +9918,7 @@ void _vkGetMemoryWin32HandlePropertiesKHR(const Nan::FunctionCallbackInfo<v8::Va
 nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -9742,6 +9964,7 @@ void _vkGetMemoryFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     &$p2
   );
     obj2->Set(Nan::New("$").ToLocalChecked(), Nan::New($p2));
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -9781,6 +10004,7 @@ void _vkGetMemoryFdPropertiesKHR(const Nan::FunctionCallbackInfo<v8::Value>& inf
     $p2,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -9827,6 +10051,7 @@ vkGetPhysicalDeviceExternalSemaphoreProperties(
     $p2
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -9863,6 +10088,7 @@ void _vkGetSemaphoreWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>& i
     $p1,
 nullptr
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -9896,6 +10122,7 @@ void _vkImportSemaphoreWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -9941,6 +10168,7 @@ void _vkGetSemaphoreFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     &$p2
   );
     obj2->Set(Nan::New("$").ToLocalChecked(), Nan::New($p2));
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -9974,6 +10202,7 @@ void _vkImportSemaphoreFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -10020,6 +10249,7 @@ vkGetPhysicalDeviceExternalFenceProperties(
     $p2
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -10056,6 +10286,7 @@ void _vkGetFenceWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>& info)
     $p1,
 nullptr
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -10089,6 +10320,7 @@ void _vkImportFenceWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>& in
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -10134,6 +10366,7 @@ void _vkGetFenceFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     &$p2
   );
     obj2->Set(Nan::New("$").ToLocalChecked(), Nan::New($p2));
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -10167,6 +10400,7 @@ void _vkImportFenceFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -10195,11 +10429,12 @@ void _vkReleaseDisplayEXT(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'display'");
   }
-    PFN_vkReleaseDisplayEXT vkReleaseDisplayEXT = (PFN_vkReleaseDisplayEXT) vkGetInstanceProcAddr(nullptr, "vkReleaseDisplayEXT");
+    PFN_vkReleaseDisplayEXT vkReleaseDisplayEXT = (PFN_vkReleaseDisplayEXT) vkGetInstanceProcAddr(currentInstance, "vkReleaseDisplayEXT");
   int32_t out = vkReleaseDisplayEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -10246,6 +10481,7 @@ void _vkDisplayPowerControlEXT(const Nan::FunctionCallbackInfo<v8::Value>& info)
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -10294,6 +10530,7 @@ void _vkRegisterDeviceEventEXT(const Nan::FunctionCallbackInfo<v8::Value>& info)
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -10355,6 +10592,7 @@ void _vkRegisterDisplayEventEXT(const Nan::FunctionCallbackInfo<v8::Value>& info
     nullptr,
     $p4
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -10404,6 +10642,7 @@ void _vkGetSwapchainCounterEXT(const Nan::FunctionCallbackInfo<v8::Value>& info)
   );
     v8::Local<v8::BigInt> pnum3 = v8::BigInt::New(v8::Isolate::GetCurrent(), (uint64_t)$p3);
     obj3->Set(Nan::New("$").ToLocalChecked(), pnum3);
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -10444,7 +10683,7 @@ void _vkGetPhysicalDeviceSurfaceCapabilities2EXT(const Nan::FunctionCallbackInfo
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pSurfaceCapabilities'");
   }
-    PFN_vkGetPhysicalDeviceSurfaceCapabilities2EXT vkGetPhysicalDeviceSurfaceCapabilities2EXT = (PFN_vkGetPhysicalDeviceSurfaceCapabilities2EXT) vkGetInstanceProcAddr(nullptr, "vkGetPhysicalDeviceSurfaceCapabilities2EXT");
+    PFN_vkGetPhysicalDeviceSurfaceCapabilities2EXT vkGetPhysicalDeviceSurfaceCapabilities2EXT = (PFN_vkGetPhysicalDeviceSurfaceCapabilities2EXT) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceSurfaceCapabilities2EXT");
   int32_t out = vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -10477,6 +10716,7 @@ void _vkGetPhysicalDeviceSurfaceCapabilities2EXT(const Nan::FunctionCallbackInfo
     
   }
       
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -10546,6 +10786,7 @@ void _vkEnumeratePhysicalDeviceGroups(const Nan::FunctionCallbackInfo<v8::Value>
       
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -10586,6 +10827,7 @@ vkGetDeviceGroupPeerMemoryFeatures(
     reinterpret_cast<VkPeerMemoryFeatureFlags *>(&$p4)
   );
     obj4->Set(Nan::New("$").ToLocalChecked(), Nan::New($p4));
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -10636,6 +10878,7 @@ void _vkBindBufferMemory2(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p1,
     $p2 ? (const VkBindBufferMemoryInfo *) $p2.get()->data() : nullptr
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -10684,6 +10927,7 @@ void _vkBindImageMemory2(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p1,
     $p2 ? (const VkBindImageMemoryInfo *) $p2.get()->data() : nullptr
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -10706,6 +10950,7 @@ vkCmdSetDeviceMask(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -10750,6 +10995,7 @@ void _vkGetDeviceGroupPresentCapabilitiesKHR(const Nan::FunctionCallbackInfo<v8:
     };
     obj1->presentMask.Reset<v8::Array>(arr1);
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -10795,6 +11041,7 @@ void _vkGetDeviceGroupSurfacePresentModesKHR(const Nan::FunctionCallbackInfo<v8:
     reinterpret_cast<VkDeviceGroupPresentModeFlagsKHR *>(&$p2)
   );
     obj2->Set(Nan::New("$").ToLocalChecked(), Nan::New($p2));
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -10840,6 +11087,7 @@ void _vkAcquireNextImage2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     &$p2
   );
     obj2->Set(Nan::New("$").ToLocalChecked(), Nan::New($p2));
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -10877,6 +11125,7 @@ vkCmdDispatchBase(
     $p5,
     $p6
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -10942,7 +11191,7 @@ void _vkGetPhysicalDevicePresentRectanglesKHR(const Nan::FunctionCallbackInfo<v8
     return Nan::ThrowTypeError("Invalid type for argument 4 'pRects'");
   }
 
-    PFN_vkGetPhysicalDevicePresentRectanglesKHR vkGetPhysicalDevicePresentRectanglesKHR = (PFN_vkGetPhysicalDevicePresentRectanglesKHR) vkGetDeviceProcAddr(nullptr, "vkGetPhysicalDevicePresentRectanglesKHR");
+    PFN_vkGetPhysicalDevicePresentRectanglesKHR vkGetPhysicalDevicePresentRectanglesKHR = (PFN_vkGetPhysicalDevicePresentRectanglesKHR) vkGetDeviceProcAddr(currentDevice, "vkGetPhysicalDevicePresentRectanglesKHR");
   int32_t out = vkGetPhysicalDevicePresentRectanglesKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -10980,6 +11229,7 @@ void _vkGetPhysicalDevicePresentRectanglesKHR(const Nan::FunctionCallbackInfo<v8
       }
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -11027,6 +11277,7 @@ void _vkCreateDescriptorUpdateTemplate(const Nan::FunctionCallbackInfo<v8::Value
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -11061,6 +11312,7 @@ vkDestroyDescriptorUpdateTemplate(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -11118,6 +11370,7 @@ vkUpdateDescriptorSetWithTemplate(
     $p3
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -11169,7 +11422,7 @@ void _vkCmdPushDescriptorSetWithTemplateKHR(const Nan::FunctionCallbackInfo<v8::
   } else {
     $p4 = nullptr;
   }
-    PFN_vkCmdPushDescriptorSetWithTemplateKHR vkCmdPushDescriptorSetWithTemplateKHR = (PFN_vkCmdPushDescriptorSetWithTemplateKHR) vkGetDeviceProcAddr(nullptr, "vkCmdPushDescriptorSetWithTemplateKHR");
+    PFN_vkCmdPushDescriptorSetWithTemplateKHR vkCmdPushDescriptorSetWithTemplateKHR = (PFN_vkCmdPushDescriptorSetWithTemplateKHR) vkGetDeviceProcAddr(currentDevice, "vkCmdPushDescriptorSetWithTemplateKHR");
 vkCmdPushDescriptorSetWithTemplateKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -11177,6 +11430,7 @@ vkCmdPushDescriptorSetWithTemplateKHR(
     $p3,
     $p4
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -11247,6 +11501,7 @@ vkSetHdrMetadataEXT(
     $p3 ? (const VkHdrMetadataEXT *) $p3.get()->data() : nullptr
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -11281,6 +11536,7 @@ void _vkGetSwapchainStatusKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) 
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -11327,6 +11583,7 @@ void _vkGetRefreshCycleDurationGOOGLE(const Nan::FunctionCallbackInfo<v8::Value>
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -11410,6 +11667,7 @@ void _vkGetPastPresentationTimingGOOGLE(const Nan::FunctionCallbackInfo<v8::Valu
       
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -11455,13 +11713,14 @@ void _vkCmdSetViewportWScalingNV(const Nan::FunctionCallbackInfo<v8::Value>& inf
     return Nan::ThrowTypeError("Invalid type for argument 4 'pViewportWScalings'");
   }
 
-    PFN_vkCmdSetViewportWScalingNV vkCmdSetViewportWScalingNV = (PFN_vkCmdSetViewportWScalingNV) vkGetDeviceProcAddr(nullptr, "vkCmdSetViewportWScalingNV");
+    PFN_vkCmdSetViewportWScalingNV vkCmdSetViewportWScalingNV = (PFN_vkCmdSetViewportWScalingNV) vkGetDeviceProcAddr(currentDevice, "vkCmdSetViewportWScalingNV");
 vkCmdSetViewportWScalingNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2,
     $p3 ? (const VkViewportWScalingNV *) $p3.get()->data() : nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -11509,13 +11768,14 @@ void _vkCmdSetDiscardRectangleEXT(const Nan::FunctionCallbackInfo<v8::Value>& in
     return Nan::ThrowTypeError("Invalid type for argument 4 'pDiscardRectangles'");
   }
 
-    PFN_vkCmdSetDiscardRectangleEXT vkCmdSetDiscardRectangleEXT = (PFN_vkCmdSetDiscardRectangleEXT) vkGetDeviceProcAddr(nullptr, "vkCmdSetDiscardRectangleEXT");
+    PFN_vkCmdSetDiscardRectangleEXT vkCmdSetDiscardRectangleEXT = (PFN_vkCmdSetDiscardRectangleEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdSetDiscardRectangleEXT");
 vkCmdSetDiscardRectangleEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2,
     $p3 ? (const VkRect2D *) $p3.get()->data() : nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -11546,11 +11806,12 @@ void _vkCmdSetSampleLocationsEXT(const Nan::FunctionCallbackInfo<v8::Value>& inf
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pSampleLocationsInfo'");
   }
-    PFN_vkCmdSetSampleLocationsEXT vkCmdSetSampleLocationsEXT = (PFN_vkCmdSetSampleLocationsEXT) vkGetDeviceProcAddr(nullptr, "vkCmdSetSampleLocationsEXT");
+    PFN_vkCmdSetSampleLocationsEXT vkCmdSetSampleLocationsEXT = (PFN_vkCmdSetSampleLocationsEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdSetSampleLocationsEXT");
 vkCmdSetSampleLocationsEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -11583,7 +11844,7 @@ void _vkGetPhysicalDeviceMultisamplePropertiesEXT(const Nan::FunctionCallbackInf
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pMultisampleProperties'");
   }
-    PFN_vkGetPhysicalDeviceMultisamplePropertiesEXT vkGetPhysicalDeviceMultisamplePropertiesEXT = (PFN_vkGetPhysicalDeviceMultisamplePropertiesEXT) vkGetDeviceProcAddr(nullptr, "vkGetPhysicalDeviceMultisamplePropertiesEXT");
+    PFN_vkGetPhysicalDeviceMultisamplePropertiesEXT vkGetPhysicalDeviceMultisamplePropertiesEXT = (PFN_vkGetPhysicalDeviceMultisamplePropertiesEXT) vkGetDeviceProcAddr(currentDevice, "vkGetPhysicalDeviceMultisamplePropertiesEXT");
 vkGetPhysicalDeviceMultisamplePropertiesEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     static_cast<VkSampleCountFlagBits>($p1),
@@ -11598,6 +11859,7 @@ vkGetPhysicalDeviceMultisamplePropertiesEXT(
     
   }
       
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -11640,7 +11902,7 @@ void _vkGetPhysicalDeviceSurfaceCapabilities2KHR(const Nan::FunctionCallbackInfo
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pSurfaceCapabilities'");
   }
-    PFN_vkGetPhysicalDeviceSurfaceCapabilities2KHR vkGetPhysicalDeviceSurfaceCapabilities2KHR = (PFN_vkGetPhysicalDeviceSurfaceCapabilities2KHR) vkGetInstanceProcAddr(nullptr, "vkGetPhysicalDeviceSurfaceCapabilities2KHR");
+    PFN_vkGetPhysicalDeviceSurfaceCapabilities2KHR vkGetPhysicalDeviceSurfaceCapabilities2KHR = (PFN_vkGetPhysicalDeviceSurfaceCapabilities2KHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceSurfaceCapabilities2KHR");
   int32_t out = vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
@@ -11682,6 +11944,7 @@ void _vkGetPhysicalDeviceSurfaceCapabilities2KHR(const Nan::FunctionCallbackInfo
       
   }
       
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -11745,7 +12008,7 @@ void _vkGetPhysicalDeviceSurfaceFormats2KHR(const Nan::FunctionCallbackInfo<v8::
     return Nan::ThrowTypeError("Invalid type for argument 4 'pSurfaceFormats'");
   }
 
-    PFN_vkGetPhysicalDeviceSurfaceFormats2KHR vkGetPhysicalDeviceSurfaceFormats2KHR = (PFN_vkGetPhysicalDeviceSurfaceFormats2KHR) vkGetInstanceProcAddr(nullptr, "vkGetPhysicalDeviceSurfaceFormats2KHR");
+    PFN_vkGetPhysicalDeviceSurfaceFormats2KHR vkGetPhysicalDeviceSurfaceFormats2KHR = (PFN_vkGetPhysicalDeviceSurfaceFormats2KHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceSurfaceFormats2KHR");
   int32_t out = vkGetPhysicalDeviceSurfaceFormats2KHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
@@ -11774,6 +12037,7 @@ void _vkGetPhysicalDeviceSurfaceFormats2KHR(const Nan::FunctionCallbackInfo<v8::
       }
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -11825,7 +12089,7 @@ void _vkGetPhysicalDeviceDisplayProperties2KHR(const Nan::FunctionCallbackInfo<v
     return Nan::ThrowTypeError("Invalid type for argument 3 'pProperties'");
   }
 
-    PFN_vkGetPhysicalDeviceDisplayProperties2KHR vkGetPhysicalDeviceDisplayProperties2KHR = (PFN_vkGetPhysicalDeviceDisplayProperties2KHR) vkGetInstanceProcAddr(nullptr, "vkGetPhysicalDeviceDisplayProperties2KHR");
+    PFN_vkGetPhysicalDeviceDisplayProperties2KHR vkGetPhysicalDeviceDisplayProperties2KHR = (PFN_vkGetPhysicalDeviceDisplayProperties2KHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceDisplayProperties2KHR");
   int32_t out = vkGetPhysicalDeviceDisplayProperties2KHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     &$p1,
@@ -11853,6 +12117,7 @@ void _vkGetPhysicalDeviceDisplayProperties2KHR(const Nan::FunctionCallbackInfo<v
       }
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -11904,7 +12169,7 @@ void _vkGetPhysicalDeviceDisplayPlaneProperties2KHR(const Nan::FunctionCallbackI
     return Nan::ThrowTypeError("Invalid type for argument 3 'pProperties'");
   }
 
-    PFN_vkGetPhysicalDeviceDisplayPlaneProperties2KHR vkGetPhysicalDeviceDisplayPlaneProperties2KHR = (PFN_vkGetPhysicalDeviceDisplayPlaneProperties2KHR) vkGetInstanceProcAddr(nullptr, "vkGetPhysicalDeviceDisplayPlaneProperties2KHR");
+    PFN_vkGetPhysicalDeviceDisplayPlaneProperties2KHR vkGetPhysicalDeviceDisplayPlaneProperties2KHR = (PFN_vkGetPhysicalDeviceDisplayPlaneProperties2KHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceDisplayPlaneProperties2KHR");
   int32_t out = vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     &$p1,
@@ -11932,6 +12197,7 @@ void _vkGetPhysicalDeviceDisplayPlaneProperties2KHR(const Nan::FunctionCallbackI
       }
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -11995,7 +12261,7 @@ void _vkGetDisplayModeProperties2KHR(const Nan::FunctionCallbackInfo<v8::Value>&
     return Nan::ThrowTypeError("Invalid type for argument 4 'pProperties'");
   }
 
-    PFN_vkGetDisplayModeProperties2KHR vkGetDisplayModeProperties2KHR = (PFN_vkGetDisplayModeProperties2KHR) vkGetInstanceProcAddr(nullptr, "vkGetDisplayModeProperties2KHR");
+    PFN_vkGetDisplayModeProperties2KHR vkGetDisplayModeProperties2KHR = (PFN_vkGetDisplayModeProperties2KHR) vkGetInstanceProcAddr(currentInstance, "vkGetDisplayModeProperties2KHR");
   int32_t out = vkGetDisplayModeProperties2KHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -12024,6 +12290,7 @@ void _vkGetDisplayModeProperties2KHR(const Nan::FunctionCallbackInfo<v8::Value>&
       }
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -12064,7 +12331,7 @@ void _vkGetDisplayPlaneCapabilities2KHR(const Nan::FunctionCallbackInfo<v8::Valu
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pCapabilities'");
   }
-    PFN_vkGetDisplayPlaneCapabilities2KHR vkGetDisplayPlaneCapabilities2KHR = (PFN_vkGetDisplayPlaneCapabilities2KHR) vkGetInstanceProcAddr(nullptr, "vkGetDisplayPlaneCapabilities2KHR");
+    PFN_vkGetDisplayPlaneCapabilities2KHR vkGetDisplayPlaneCapabilities2KHR = (PFN_vkGetDisplayPlaneCapabilities2KHR) vkGetInstanceProcAddr(currentInstance, "vkGetDisplayPlaneCapabilities2KHR");
   int32_t out = vkGetDisplayPlaneCapabilities2KHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
@@ -12151,6 +12418,7 @@ void _vkGetDisplayPlaneCapabilities2KHR(const Nan::FunctionCallbackInfo<v8::Valu
       
   }
       
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -12205,6 +12473,7 @@ vkGetBufferMemoryRequirements2(
     
   }
       
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -12261,6 +12530,7 @@ vkGetImageMemoryRequirements2(
     
   }
       
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -12355,6 +12625,7 @@ vkGetImageSparseMemoryRequirements2(
     };
   }
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -12403,6 +12674,7 @@ void _vkCreateSamplerYcbcrConversion(const Nan::FunctionCallbackInfo<v8::Value>&
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -12437,6 +12709,7 @@ vkDestroySamplerYcbcrConversion(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -12484,6 +12757,7 @@ vkGetDeviceQueue2(
     $p1,
     $p2
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -12534,6 +12808,7 @@ void _vkCreateValidationCacheEXT(const Nan::FunctionCallbackInfo<v8::Value>& inf
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -12569,6 +12844,7 @@ vkDestroyValidationCacheEXT(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -12619,6 +12895,7 @@ nullptr
   );
     v8::Local<v8::BigInt> pnum2 = v8::BigInt::New(v8::Isolate::GetCurrent(), (uint64_t)$p2);
     obj2->Set(Nan::New("$").ToLocalChecked(), pnum2);
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -12673,6 +12950,7 @@ void _vkMergeValidationCachesEXT(const Nan::FunctionCallbackInfo<v8::Value>& inf
     $p2,
     $p3 ? (const VkValidationCacheEXT *) $p3.get()->data() : nullptr
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -12718,6 +12996,7 @@ vkGetDescriptorSetLayoutSupport(
     $p1,
     $p2
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -12774,6 +13053,7 @@ nullptr
   );
     v8::Local<v8::BigInt> pnum4 = v8::BigInt::New(v8::Isolate::GetCurrent(), (uint64_t)$p4);
     obj4->Set(Nan::New("$").ToLocalChecked(), pnum4);
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -12802,11 +13082,12 @@ void _vkSetDebugUtilsObjectNameEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pNameInfo'");
   }
-    PFN_vkSetDebugUtilsObjectNameEXT vkSetDebugUtilsObjectNameEXT = (PFN_vkSetDebugUtilsObjectNameEXT) vkGetInstanceProcAddr(nullptr, "vkSetDebugUtilsObjectNameEXT");
+    PFN_vkSetDebugUtilsObjectNameEXT vkSetDebugUtilsObjectNameEXT = (PFN_vkSetDebugUtilsObjectNameEXT) vkGetInstanceProcAddr(currentInstance, "vkSetDebugUtilsObjectNameEXT");
   int32_t out = vkSetDebugUtilsObjectNameEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -12835,11 +13116,12 @@ void _vkSetDebugUtilsObjectTagEXT(const Nan::FunctionCallbackInfo<v8::Value>& in
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pTagInfo'");
   }
-    PFN_vkSetDebugUtilsObjectTagEXT vkSetDebugUtilsObjectTagEXT = (PFN_vkSetDebugUtilsObjectTagEXT) vkGetInstanceProcAddr(nullptr, "vkSetDebugUtilsObjectTagEXT");
+    PFN_vkSetDebugUtilsObjectTagEXT vkSetDebugUtilsObjectTagEXT = (PFN_vkSetDebugUtilsObjectTagEXT) vkGetInstanceProcAddr(currentInstance, "vkSetDebugUtilsObjectTagEXT");
   int32_t out = vkSetDebugUtilsObjectTagEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -12868,11 +13150,12 @@ void _vkQueueBeginDebugUtilsLabelEXT(const Nan::FunctionCallbackInfo<v8::Value>&
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pLabelInfo'");
   }
-    PFN_vkQueueBeginDebugUtilsLabelEXT vkQueueBeginDebugUtilsLabelEXT = (PFN_vkQueueBeginDebugUtilsLabelEXT) vkGetInstanceProcAddr(nullptr, "vkQueueBeginDebugUtilsLabelEXT");
+    PFN_vkQueueBeginDebugUtilsLabelEXT vkQueueBeginDebugUtilsLabelEXT = (PFN_vkQueueBeginDebugUtilsLabelEXT) vkGetInstanceProcAddr(currentInstance, "vkQueueBeginDebugUtilsLabelEXT");
 vkQueueBeginDebugUtilsLabelEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -12891,10 +13174,11 @@ void _vkQueueEndDebugUtilsLabelEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'queue'");
   }
-    PFN_vkQueueEndDebugUtilsLabelEXT vkQueueEndDebugUtilsLabelEXT = (PFN_vkQueueEndDebugUtilsLabelEXT) vkGetInstanceProcAddr(nullptr, "vkQueueEndDebugUtilsLabelEXT");
+    PFN_vkQueueEndDebugUtilsLabelEXT vkQueueEndDebugUtilsLabelEXT = (PFN_vkQueueEndDebugUtilsLabelEXT) vkGetInstanceProcAddr(currentInstance, "vkQueueEndDebugUtilsLabelEXT");
 vkQueueEndDebugUtilsLabelEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -12925,11 +13209,12 @@ void _vkQueueInsertDebugUtilsLabelEXT(const Nan::FunctionCallbackInfo<v8::Value>
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pLabelInfo'");
   }
-    PFN_vkQueueInsertDebugUtilsLabelEXT vkQueueInsertDebugUtilsLabelEXT = (PFN_vkQueueInsertDebugUtilsLabelEXT) vkGetInstanceProcAddr(nullptr, "vkQueueInsertDebugUtilsLabelEXT");
+    PFN_vkQueueInsertDebugUtilsLabelEXT vkQueueInsertDebugUtilsLabelEXT = (PFN_vkQueueInsertDebugUtilsLabelEXT) vkGetInstanceProcAddr(currentInstance, "vkQueueInsertDebugUtilsLabelEXT");
 vkQueueInsertDebugUtilsLabelEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -12960,11 +13245,12 @@ void _vkCmdBeginDebugUtilsLabelEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pLabelInfo'");
   }
-    PFN_vkCmdBeginDebugUtilsLabelEXT vkCmdBeginDebugUtilsLabelEXT = (PFN_vkCmdBeginDebugUtilsLabelEXT) vkGetInstanceProcAddr(nullptr, "vkCmdBeginDebugUtilsLabelEXT");
+    PFN_vkCmdBeginDebugUtilsLabelEXT vkCmdBeginDebugUtilsLabelEXT = (PFN_vkCmdBeginDebugUtilsLabelEXT) vkGetInstanceProcAddr(currentInstance, "vkCmdBeginDebugUtilsLabelEXT");
 vkCmdBeginDebugUtilsLabelEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -12983,10 +13269,11 @@ void _vkCmdEndDebugUtilsLabelEXT(const Nan::FunctionCallbackInfo<v8::Value>& inf
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
   }
-    PFN_vkCmdEndDebugUtilsLabelEXT vkCmdEndDebugUtilsLabelEXT = (PFN_vkCmdEndDebugUtilsLabelEXT) vkGetInstanceProcAddr(nullptr, "vkCmdEndDebugUtilsLabelEXT");
+    PFN_vkCmdEndDebugUtilsLabelEXT vkCmdEndDebugUtilsLabelEXT = (PFN_vkCmdEndDebugUtilsLabelEXT) vkGetInstanceProcAddr(currentInstance, "vkCmdEndDebugUtilsLabelEXT");
 vkCmdEndDebugUtilsLabelEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -13017,11 +13304,12 @@ void _vkCmdInsertDebugUtilsLabelEXT(const Nan::FunctionCallbackInfo<v8::Value>& 
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pLabelInfo'");
   }
-    PFN_vkCmdInsertDebugUtilsLabelEXT vkCmdInsertDebugUtilsLabelEXT = (PFN_vkCmdInsertDebugUtilsLabelEXT) vkGetInstanceProcAddr(nullptr, "vkCmdInsertDebugUtilsLabelEXT");
+    PFN_vkCmdInsertDebugUtilsLabelEXT vkCmdInsertDebugUtilsLabelEXT = (PFN_vkCmdInsertDebugUtilsLabelEXT) vkGetInstanceProcAddr(currentInstance, "vkCmdInsertDebugUtilsLabelEXT");
 vkCmdInsertDebugUtilsLabelEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -13072,6 +13360,7 @@ void _vkCreateDebugUtilsMessengerEXT(const Nan::FunctionCallbackInfo<v8::Value>&
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -13107,6 +13396,7 @@ vkDestroyDebugUtilsMessengerEXT(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -13148,6 +13438,7 @@ vkSubmitDebugUtilsMessageEXT(
     static_cast<VkDebugUtilsMessageTypeFlagsEXT>($p2),
     $p3
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -13195,6 +13486,7 @@ void _vkGetMemoryHostPointerPropertiesEXT(const Nan::FunctionCallbackInfo<v8::Va
     $p2,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -13229,7 +13521,7 @@ void _vkCmdWriteBufferMarkerAMD(const Nan::FunctionCallbackInfo<v8::Value>& info
   uint64_t $p3 = static_cast<uint64_t>(Nan::To<int64_t>(info[3]).FromMaybe(0));
 
   uint32_t $p4 = static_cast<uint32_t>(Nan::To<int64_t>(info[4]).FromMaybe(0));
-    PFN_vkCmdWriteBufferMarkerAMD vkCmdWriteBufferMarkerAMD = (PFN_vkCmdWriteBufferMarkerAMD) vkGetDeviceProcAddr(nullptr, "vkCmdWriteBufferMarkerAMD");
+    PFN_vkCmdWriteBufferMarkerAMD vkCmdWriteBufferMarkerAMD = (PFN_vkCmdWriteBufferMarkerAMD) vkGetDeviceProcAddr(currentDevice, "vkCmdWriteBufferMarkerAMD");
 vkCmdWriteBufferMarkerAMD(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     static_cast<VkPipelineStageFlagBits>($p1),
@@ -13237,6 +13529,7 @@ vkCmdWriteBufferMarkerAMD(
     $p3,
     $p4
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -13287,6 +13580,7 @@ void _vkCreateRenderPass2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -13327,12 +13621,13 @@ void _vkCmdBeginRenderPass2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info)
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pSubpassBeginInfo'");
   }
-    PFN_vkCmdBeginRenderPass2KHR vkCmdBeginRenderPass2KHR = (PFN_vkCmdBeginRenderPass2KHR) vkGetDeviceProcAddr(nullptr, "vkCmdBeginRenderPass2KHR");
+    PFN_vkCmdBeginRenderPass2KHR vkCmdBeginRenderPass2KHR = (PFN_vkCmdBeginRenderPass2KHR) vkGetDeviceProcAddr(currentDevice, "vkCmdBeginRenderPass2KHR");
 vkCmdBeginRenderPass2KHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -13375,12 +13670,13 @@ void _vkCmdNextSubpass2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pSubpassEndInfo'");
   }
-    PFN_vkCmdNextSubpass2KHR vkCmdNextSubpass2KHR = (PFN_vkCmdNextSubpass2KHR) vkGetDeviceProcAddr(nullptr, "vkCmdNextSubpass2KHR");
+    PFN_vkCmdNextSubpass2KHR vkCmdNextSubpass2KHR = (PFN_vkCmdNextSubpass2KHR) vkGetDeviceProcAddr(currentDevice, "vkCmdNextSubpass2KHR");
 vkCmdNextSubpass2KHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -13411,11 +13707,12 @@ void _vkCmdEndRenderPass2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pSubpassEndInfo'");
   }
-    PFN_vkCmdEndRenderPass2KHR vkCmdEndRenderPass2KHR = (PFN_vkCmdEndRenderPass2KHR) vkGetDeviceProcAddr(nullptr, "vkCmdEndRenderPass2KHR");
+    PFN_vkCmdEndRenderPass2KHR vkCmdEndRenderPass2KHR = (PFN_vkCmdEndRenderPass2KHR) vkGetDeviceProcAddr(currentDevice, "vkCmdEndRenderPass2KHR");
 vkCmdEndRenderPass2KHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -13466,7 +13763,7 @@ void _vkCmdDrawIndirectCountKHR(const Nan::FunctionCallbackInfo<v8::Value>& info
   uint32_t $p5 = static_cast<uint32_t>(Nan::To<int64_t>(info[5]).FromMaybe(0));
 
   uint32_t $p6 = static_cast<uint32_t>(Nan::To<int64_t>(info[6]).FromMaybe(0));
-    PFN_vkCmdDrawIndirectCountKHR vkCmdDrawIndirectCountKHR = (PFN_vkCmdDrawIndirectCountKHR) vkGetDeviceProcAddr(nullptr, "vkCmdDrawIndirectCountKHR");
+    PFN_vkCmdDrawIndirectCountKHR vkCmdDrawIndirectCountKHR = (PFN_vkCmdDrawIndirectCountKHR) vkGetDeviceProcAddr(currentDevice, "vkCmdDrawIndirectCountKHR");
 vkCmdDrawIndirectCountKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -13476,6 +13773,7 @@ vkCmdDrawIndirectCountKHR(
     $p5,
     $p6
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -13526,7 +13824,7 @@ void _vkCmdDrawIndexedIndirectCountKHR(const Nan::FunctionCallbackInfo<v8::Value
   uint32_t $p5 = static_cast<uint32_t>(Nan::To<int64_t>(info[5]).FromMaybe(0));
 
   uint32_t $p6 = static_cast<uint32_t>(Nan::To<int64_t>(info[6]).FromMaybe(0));
-    PFN_vkCmdDrawIndexedIndirectCountKHR vkCmdDrawIndexedIndirectCountKHR = (PFN_vkCmdDrawIndexedIndirectCountKHR) vkGetDeviceProcAddr(nullptr, "vkCmdDrawIndexedIndirectCountKHR");
+    PFN_vkCmdDrawIndexedIndirectCountKHR vkCmdDrawIndexedIndirectCountKHR = (PFN_vkCmdDrawIndexedIndirectCountKHR) vkGetDeviceProcAddr(currentDevice, "vkCmdDrawIndexedIndirectCountKHR");
 vkCmdDrawIndexedIndirectCountKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -13536,6 +13834,7 @@ vkCmdDrawIndexedIndirectCountKHR(
     $p5,
     $p6
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -13562,11 +13861,12 @@ void _vkCmdSetCheckpointNV(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   } else {
     $p1 = nullptr;
   }
-    PFN_vkCmdSetCheckpointNV vkCmdSetCheckpointNV = (PFN_vkCmdSetCheckpointNV) vkGetDeviceProcAddr(nullptr, "vkCmdSetCheckpointNV");
+    PFN_vkCmdSetCheckpointNV vkCmdSetCheckpointNV = (PFN_vkCmdSetCheckpointNV) vkGetDeviceProcAddr(currentDevice, "vkCmdSetCheckpointNV");
 vkCmdSetCheckpointNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -13620,7 +13920,7 @@ void _vkGetQueueCheckpointDataNV(const Nan::FunctionCallbackInfo<v8::Value>& inf
     return Nan::ThrowTypeError("Invalid type for argument 3 'pCheckpointData'");
   }
 
-    PFN_vkGetQueueCheckpointDataNV vkGetQueueCheckpointDataNV = (PFN_vkGetQueueCheckpointDataNV) vkGetDeviceProcAddr(nullptr, "vkGetQueueCheckpointDataNV");
+    PFN_vkGetQueueCheckpointDataNV vkGetQueueCheckpointDataNV = (PFN_vkGetQueueCheckpointDataNV) vkGetDeviceProcAddr(currentDevice, "vkGetQueueCheckpointDataNV");
 vkGetQueueCheckpointDataNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     &$p1,
@@ -13639,6 +13939,7 @@ vkGetQueueCheckpointDataNV(
       
     };
   }
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -13686,13 +13987,14 @@ void _vkCmdSetExclusiveScissorNV(const Nan::FunctionCallbackInfo<v8::Value>& inf
     return Nan::ThrowTypeError("Invalid type for argument 4 'pExclusiveScissors'");
   }
 
-    PFN_vkCmdSetExclusiveScissorNV vkCmdSetExclusiveScissorNV = (PFN_vkCmdSetExclusiveScissorNV) vkGetDeviceProcAddr(nullptr, "vkCmdSetExclusiveScissorNV");
+    PFN_vkCmdSetExclusiveScissorNV vkCmdSetExclusiveScissorNV = (PFN_vkCmdSetExclusiveScissorNV) vkGetDeviceProcAddr(currentDevice, "vkCmdSetExclusiveScissorNV");
 vkCmdSetExclusiveScissorNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2,
     $p3 ? (const VkRect2D *) $p3.get()->data() : nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -13725,12 +14027,13 @@ void _vkCmdBindShadingRateImageNV(const Nan::FunctionCallbackInfo<v8::Value>& in
   }
 
   VkImageLayout $p2 = static_cast<VkImageLayout>(Nan::To<int64_t>(info[2]).FromMaybe(0));
-    PFN_vkCmdBindShadingRateImageNV vkCmdBindShadingRateImageNV = (PFN_vkCmdBindShadingRateImageNV) vkGetDeviceProcAddr(nullptr, "vkCmdBindShadingRateImageNV");
+    PFN_vkCmdBindShadingRateImageNV vkCmdBindShadingRateImageNV = (PFN_vkCmdBindShadingRateImageNV) vkGetDeviceProcAddr(currentDevice, "vkCmdBindShadingRateImageNV");
 vkCmdBindShadingRateImageNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -13778,13 +14081,14 @@ void _vkCmdSetViewportShadingRatePaletteNV(const Nan::FunctionCallbackInfo<v8::V
     return Nan::ThrowTypeError("Invalid type for argument 4 'pShadingRatePalettes'");
   }
 
-    PFN_vkCmdSetViewportShadingRatePaletteNV vkCmdSetViewportShadingRatePaletteNV = (PFN_vkCmdSetViewportShadingRatePaletteNV) vkGetDeviceProcAddr(nullptr, "vkCmdSetViewportShadingRatePaletteNV");
+    PFN_vkCmdSetViewportShadingRatePaletteNV vkCmdSetViewportShadingRatePaletteNV = (PFN_vkCmdSetViewportShadingRatePaletteNV) vkGetDeviceProcAddr(currentDevice, "vkCmdSetViewportShadingRatePaletteNV");
 vkCmdSetViewportShadingRatePaletteNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2,
     $p3 ? (const VkShadingRatePaletteNV *) $p3.get()->data() : nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -13832,13 +14136,14 @@ void _vkCmdSetCoarseSampleOrderNV(const Nan::FunctionCallbackInfo<v8::Value>& in
     return Nan::ThrowTypeError("Invalid type for argument 4 'pCustomSampleOrders'");
   }
 
-    PFN_vkCmdSetCoarseSampleOrderNV vkCmdSetCoarseSampleOrderNV = (PFN_vkCmdSetCoarseSampleOrderNV) vkGetDeviceProcAddr(nullptr, "vkCmdSetCoarseSampleOrderNV");
+    PFN_vkCmdSetCoarseSampleOrderNV vkCmdSetCoarseSampleOrderNV = (PFN_vkCmdSetCoarseSampleOrderNV) vkGetDeviceProcAddr(currentDevice, "vkCmdSetCoarseSampleOrderNV");
 vkCmdSetCoarseSampleOrderNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2,
     $p3 ? (const VkCoarseSampleOrderCustomNV *) $p3.get()->data() : nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -13861,12 +14166,13 @@ void _vkCmdDrawMeshTasksNV(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   uint32_t $p1 = static_cast<uint32_t>(Nan::To<int64_t>(info[1]).FromMaybe(0));
 
   uint32_t $p2 = static_cast<uint32_t>(Nan::To<int64_t>(info[2]).FromMaybe(0));
-    PFN_vkCmdDrawMeshTasksNV vkCmdDrawMeshTasksNV = (PFN_vkCmdDrawMeshTasksNV) vkGetDeviceProcAddr(nullptr, "vkCmdDrawMeshTasksNV");
+    PFN_vkCmdDrawMeshTasksNV vkCmdDrawMeshTasksNV = (PFN_vkCmdDrawMeshTasksNV) vkGetDeviceProcAddr(currentDevice, "vkCmdDrawMeshTasksNV");
 vkCmdDrawMeshTasksNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -13903,7 +14209,7 @@ void _vkCmdDrawMeshTasksIndirectNV(const Nan::FunctionCallbackInfo<v8::Value>& i
   uint32_t $p3 = static_cast<uint32_t>(Nan::To<int64_t>(info[3]).FromMaybe(0));
 
   uint32_t $p4 = static_cast<uint32_t>(Nan::To<int64_t>(info[4]).FromMaybe(0));
-    PFN_vkCmdDrawMeshTasksIndirectNV vkCmdDrawMeshTasksIndirectNV = (PFN_vkCmdDrawMeshTasksIndirectNV) vkGetDeviceProcAddr(nullptr, "vkCmdDrawMeshTasksIndirectNV");
+    PFN_vkCmdDrawMeshTasksIndirectNV vkCmdDrawMeshTasksIndirectNV = (PFN_vkCmdDrawMeshTasksIndirectNV) vkGetDeviceProcAddr(currentDevice, "vkCmdDrawMeshTasksIndirectNV");
 vkCmdDrawMeshTasksIndirectNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -13911,6 +14217,7 @@ vkCmdDrawMeshTasksIndirectNV(
     $p3,
     $p4
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -13961,7 +14268,7 @@ void _vkCmdDrawMeshTasksIndirectCountNV(const Nan::FunctionCallbackInfo<v8::Valu
   uint32_t $p5 = static_cast<uint32_t>(Nan::To<int64_t>(info[5]).FromMaybe(0));
 
   uint32_t $p6 = static_cast<uint32_t>(Nan::To<int64_t>(info[6]).FromMaybe(0));
-    PFN_vkCmdDrawMeshTasksIndirectCountNV vkCmdDrawMeshTasksIndirectCountNV = (PFN_vkCmdDrawMeshTasksIndirectCountNV) vkGetDeviceProcAddr(nullptr, "vkCmdDrawMeshTasksIndirectCountNV");
+    PFN_vkCmdDrawMeshTasksIndirectCountNV vkCmdDrawMeshTasksIndirectCountNV = (PFN_vkCmdDrawMeshTasksIndirectCountNV) vkGetDeviceProcAddr(currentDevice, "vkCmdDrawMeshTasksIndirectCountNV");
 vkCmdDrawMeshTasksIndirectCountNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -13971,6 +14278,7 @@ vkCmdDrawMeshTasksIndirectCountNV(
     $p5,
     $p6
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -14009,6 +14317,7 @@ void _vkCompileDeferredNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -14057,6 +14366,7 @@ void _vkCreateAccelerationStructureNVX(const Nan::FunctionCallbackInfo<v8::Value
     nullptr,
     $p3
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -14092,6 +14402,7 @@ vkDestroyAccelerationStructureNVX(
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -14141,6 +14452,7 @@ vkGetAccelerationStructureMemoryRequirementsNVX(
     $p2
   );
   
+  
   info.GetReturnValue().SetUndefined();
   
 };
@@ -14188,6 +14500,7 @@ vkGetAccelerationStructureScratchMemoryRequirementsNVX(
     $p1,
     $p2
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -14239,6 +14552,7 @@ void _vkBindAccelerationStructureMemoryNVX(const Nan::FunctionCallbackInfo<v8::V
     $p1,
     $p2 ? (const VkBindAccelerationStructureMemoryInfoNVX *) $p2.get()->data() : nullptr
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -14281,13 +14595,14 @@ void _vkCmdCopyAccelerationStructureNVX(const Nan::FunctionCallbackInfo<v8::Valu
   }
 
   VkCopyAccelerationStructureModeNVX $p3 = static_cast<VkCopyAccelerationStructureModeNVX>(Nan::To<int64_t>(info[3]).FromMaybe(0));
-    PFN_vkCmdCopyAccelerationStructureNVX vkCmdCopyAccelerationStructureNVX = (PFN_vkCmdCopyAccelerationStructureNVX) vkGetDeviceProcAddr(nullptr, "vkCmdCopyAccelerationStructureNVX");
+    PFN_vkCmdCopyAccelerationStructureNVX vkCmdCopyAccelerationStructureNVX = (PFN_vkCmdCopyAccelerationStructureNVX) vkGetDeviceProcAddr(currentDevice, "vkCmdCopyAccelerationStructureNVX");
 vkCmdCopyAccelerationStructureNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     info[2]->IsNull() ? VK_NULL_HANDLE : *$p2,
     $p3
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -14334,7 +14649,7 @@ void _vkCmdWriteAccelerationStructurePropertiesNVX(const Nan::FunctionCallbackIn
   }
 
   uint32_t $p4 = static_cast<uint32_t>(Nan::To<int64_t>(info[4]).FromMaybe(0));
-    PFN_vkCmdWriteAccelerationStructurePropertiesNVX vkCmdWriteAccelerationStructurePropertiesNVX = (PFN_vkCmdWriteAccelerationStructurePropertiesNVX) vkGetDeviceProcAddr(nullptr, "vkCmdWriteAccelerationStructurePropertiesNVX");
+    PFN_vkCmdWriteAccelerationStructurePropertiesNVX vkCmdWriteAccelerationStructurePropertiesNVX = (PFN_vkCmdWriteAccelerationStructurePropertiesNVX) vkGetDeviceProcAddr(currentDevice, "vkCmdWriteAccelerationStructurePropertiesNVX");
 vkCmdWriteAccelerationStructurePropertiesNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -14342,6 +14657,7 @@ vkCmdWriteAccelerationStructurePropertiesNVX(
     info[3]->IsNull() ? VK_NULL_HANDLE : *$p3,
     $p4
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -14447,7 +14763,7 @@ void _vkCmdBuildAccelerationStructureNVX(const Nan::FunctionCallbackInfo<v8::Val
   }
 
   uint64_t $p12 = static_cast<uint64_t>(Nan::To<int64_t>(info[12]).FromMaybe(0));
-    PFN_vkCmdBuildAccelerationStructureNVX vkCmdBuildAccelerationStructureNVX = (PFN_vkCmdBuildAccelerationStructureNVX) vkGetDeviceProcAddr(nullptr, "vkCmdBuildAccelerationStructureNVX");
+    PFN_vkCmdBuildAccelerationStructureNVX vkCmdBuildAccelerationStructureNVX = (PFN_vkCmdBuildAccelerationStructureNVX) vkGetDeviceProcAddr(currentDevice, "vkCmdBuildAccelerationStructureNVX");
 vkCmdBuildAccelerationStructureNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
@@ -14463,6 +14779,7 @@ vkCmdBuildAccelerationStructureNVX(
     info[11]->IsNull() ? VK_NULL_HANDLE : *$p11,
     $p12
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -14531,7 +14848,7 @@ void _vkCmdTraceRaysNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   uint32_t $p9 = static_cast<uint32_t>(Nan::To<int64_t>(info[9]).FromMaybe(0));
 
   uint32_t $p10 = static_cast<uint32_t>(Nan::To<int64_t>(info[10]).FromMaybe(0));
-    PFN_vkCmdTraceRaysNVX vkCmdTraceRaysNVX = (PFN_vkCmdTraceRaysNVX) vkGetDeviceProcAddr(nullptr, "vkCmdTraceRaysNVX");
+    PFN_vkCmdTraceRaysNVX vkCmdTraceRaysNVX = (PFN_vkCmdTraceRaysNVX) vkGetDeviceProcAddr(currentDevice, "vkCmdTraceRaysNVX");
 vkCmdTraceRaysNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -14545,6 +14862,7 @@ vkCmdTraceRaysNVX(
     $p9,
     $p10
   );
+  
   
   info.GetReturnValue().SetUndefined();
   
@@ -14591,6 +14909,7 @@ void _vkGetRaytracingShaderHandlesNVX(const Nan::FunctionCallbackInfo<v8::Value>
     $p4,
 nullptr
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -14629,6 +14948,7 @@ void _vkGetAccelerationStructureHandleNVX(const Nan::FunctionCallbackInfo<v8::Va
     $p2,
 nullptr
   );
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -14720,6 +15040,7 @@ void _vkCreateRaytracingPipelinesNVX(const Nan::FunctionCallbackInfo<v8::Value>&
       target->instance = $pdata[ii];
     };
   }
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 

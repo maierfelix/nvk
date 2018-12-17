@@ -46,10 +46,10 @@ function getHandleByHandleName(name) {
   return null;
 };
 
-function getParamIndexByParamName(struct, name) {
-  for (let ii = 0; ii < struct.children.length; ++ii) {
-    let child = struct.children[ii];
-    if (child.name === name) return ii;
+function getParamIndexByParamName(call, name) {
+  for (let ii = 0; ii < call.params.length; ++ii) {
+    let param = call.params[ii];
+    if (param.name === name) return ii;
   };
   console.error(`Cannot resolve param index by name "${name}"`);
   return null;
@@ -520,12 +520,12 @@ function getCallProcedure(call) {
     if ((extension.author !== "KHR") || (extension.platform === "default" || extension.platform === "win32")) {
       let param = call.params[0];
       if (extension.type === "device") {
-        let device = param.type === "VkDevice" ? "*$p0" : "nullptr";
+        let device = param.type === "VkDevice" ? "*$p0" : "currentDevice";
         out += `
     PFN_${call.name} ${call.name} = (PFN_${call.name}) vkGetDeviceProcAddr(${device}, "${call.name}");`;
       }
       else if (extension.type === "instance") {
-        let instance = param.type === "VkInstance" ? "*$p0" : "nullptr";
+        let instance = param.type === "VkInstance" ? "*$p0" : "currentInstance";
         out += `
     PFN_${call.name} ${call.name} = (PFN_${call.name}) vkGetInstanceProcAddr(${instance}, "${call.name}");`;
       }
@@ -656,12 +656,29 @@ function getCallReturn(call) {
   return `info.GetReturnValue().Set(Nan::New(0));`;
 };
 
+function getCallObjectUpdate(call) {
+  switch (call.name) {
+    case "vkCreateDevice": {
+      let index = getParamIndexByParamName(call, "pDevice");
+      return `
+  currentDevice = obj${index}->instance;`;
+    }
+    case "vkCreateInstance": {
+      let index = getParamIndexByParamName(call, "pInstance");
+      return `
+  currentInstance = obj${index}->instance;`;
+    }
+  };
+  return ``;
+};
+
 export default function(astReference, calls) {
   ast = astReference;
   let vars = {
     calls,
     getCallBody,
-    getCallReturn
+    getCallReturn,
+    getCallObjectUpdate
   };
   let out = {
     source: null
