@@ -513,26 +513,11 @@ function getCallBodyAfter(call) {
 
 function getCallProcedure(call) {
   let out = ``;
+  let callee = call.name;
   let inner = getCallBodyInner(call);
   let ext = getCallExtension(call);
   if (ext) {
-    let {extension} = ext;
-    if ((extension.author !== "KHR") || (extension.platform === "default" || extension.platform === "win32")) {
-      let param = call.params[0];
-      if (extension.type === "device") {
-        let device = param.type === "VkDevice" ? "*$p0" : "currentDevice";
-        out += `
-    PFN_${call.name} ${call.name} = (PFN_${call.name}) vkGetDeviceProcAddr(${device}, "${call.name}");`;
-      }
-      else if (extension.type === "instance") {
-        let instance = param.type === "VkInstance" ? "*$p0" : "currentInstance";
-        out += `
-    PFN_${call.name} ${call.name} = (PFN_${call.name}) vkGetInstanceProcAddr(${instance}, "${call.name}");`;
-      }
-      else {
-        // ignore
-      }
-    }
+    callee = `$${call.name}`;
   }
   if (call.rawType !== "void") {
     out += `
@@ -540,7 +525,7 @@ function getCallProcedure(call) {
   } else {
     out += `\n`;
   }
-  out += `${call.name}(
+  out += `${callee}(
 ${inner}
   );`;
   return out;
@@ -661,15 +646,51 @@ function getCallObjectUpdate(call) {
     case "vkCreateDevice": {
       let index = getParamIndexByParamName(call, "pDevice");
       return `
-  currentDevice = obj${index}->instance;`;
+  vkUseDevice(obj${index}->instance);`;
     }
     case "vkCreateInstance": {
       let index = getParamIndexByParamName(call, "pInstance");
       return `
-  currentInstance = obj${index}->instance;`;
+  vkUseInstance(obj${index}->instance);`;
     }
   };
   return ``;
+};
+
+function getCallProcAddrDeclarations(calls) {
+  let out = ``;
+  calls.map(call => {
+    let ext = getCallExtension(call);
+    if (ext) {
+      let {extension} = ext;
+      if (extension.type === "device" || extension.type === "instance") {
+        out += `
+PFN_${call.name} $${call.name} = nullptr;`;
+      }
+    }
+  });
+  return out;
+};
+
+function getCallProcAddrInitializers(calls, type) {
+  let out = ``;
+  calls.map(call => {
+    let ext = getCallExtension(call);
+    if (ext) {
+      let {extension} = ext;
+      if (extension.type === type) {
+        if (extension.type === "device") {
+          out += `
+  $${call.name} = (PFN_${call.name}) vkGetDeviceProcAddr(currentDevice, "${call.name}");`;
+        }
+        else if (extension.type === "instance") {
+          out += `
+  $${call.name} = (PFN_${call.name}) vkGetInstanceProcAddr(currentInstance, "${call.name}");`;
+        }
+      }
+    }
+  });
+  return out;
 };
 
 export default function(astReference, calls) {
@@ -678,7 +699,9 @@ export default function(astReference, calls) {
     calls,
     getCallBody,
     getCallReturn,
-    getCallObjectUpdate
+    getCallObjectUpdate,
+    getCallProcAddrDeclarations,
+    getCallProcAddrInitializers
   };
   let out = {
     source: null

@@ -14,11 +14,22 @@
 
 VkDevice currentDevice = VK_NULL_HANDLE;
 VkInstance currentInstance = VK_NULL_HANDLE;
+{{ getCallProcAddrDeclarations(calls) | safe }}
+
+void vkUseDevice(VkDevice pDevice) {
+  currentDevice = pDevice;
+  {{- getCallProcAddrInitializers(calls, "device") | safe }}
+};
+
+void vkUseInstance(VkInstance pInstance) {
+  currentInstance = pInstance;
+  {{- getCallProcAddrInitializers(calls, "instance") | safe }}
+};
 
 void _vkUseDevice(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   if (info[0]->IsObject()) {
     _VkDevice* obj = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
-    currentDevice = obj->instance;
+    vkUseDevice(obj->instance);
   } else if (info[0]->IsNull()) {
     currentDevice = VK_NULL_HANDLE;
   } else {
@@ -30,7 +41,7 @@ void _vkUseDevice(const Nan::FunctionCallbackInfo<v8::Value>& info) {
 void _vkUseInstance(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   if (info[0]->IsObject()) {
     _VkInstance* obj = Nan::ObjectWrap::Unwrap<_VkInstance>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
-    currentInstance = obj->instance;
+    vkUseInstance(obj->instance);
   } else if (info[0]->IsNull()) {
     currentInstance = VK_NULL_HANDLE;
   } else {

@@ -19,10 +19,273 @@
 VkDevice currentDevice = VK_NULL_HANDLE;
 VkInstance currentInstance = VK_NULL_HANDLE;
 
+PFN_vkCmdBeginConditionalRenderingEXT $vkCmdBeginConditionalRenderingEXT = nullptr;
+PFN_vkCmdEndConditionalRenderingEXT $vkCmdEndConditionalRenderingEXT = nullptr;
+PFN_vkGetPhysicalDeviceDisplayPropertiesKHR $vkGetPhysicalDeviceDisplayPropertiesKHR = nullptr;
+PFN_vkGetPhysicalDeviceDisplayPlanePropertiesKHR $vkGetPhysicalDeviceDisplayPlanePropertiesKHR = nullptr;
+PFN_vkGetDisplayPlaneSupportedDisplaysKHR $vkGetDisplayPlaneSupportedDisplaysKHR = nullptr;
+PFN_vkGetDisplayModePropertiesKHR $vkGetDisplayModePropertiesKHR = nullptr;
+PFN_vkCreateDisplayModeKHR $vkCreateDisplayModeKHR = nullptr;
+PFN_vkGetDisplayPlaneCapabilitiesKHR $vkGetDisplayPlaneCapabilitiesKHR = nullptr;
+PFN_vkCreateDisplayPlaneSurfaceKHR $vkCreateDisplayPlaneSurfaceKHR = nullptr;
+PFN_vkCreateSharedSwapchainsKHR $vkCreateSharedSwapchainsKHR = nullptr;
+PFN_vkDestroySurfaceKHR $vkDestroySurfaceKHR = nullptr;
+PFN_vkGetPhysicalDeviceSurfaceSupportKHR $vkGetPhysicalDeviceSurfaceSupportKHR = nullptr;
+PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR $vkGetPhysicalDeviceSurfaceCapabilitiesKHR = nullptr;
+PFN_vkGetPhysicalDeviceSurfaceFormatsKHR $vkGetPhysicalDeviceSurfaceFormatsKHR = nullptr;
+PFN_vkGetPhysicalDeviceSurfacePresentModesKHR $vkGetPhysicalDeviceSurfacePresentModesKHR = nullptr;
+PFN_vkCreateSwapchainKHR $vkCreateSwapchainKHR = nullptr;
+PFN_vkDestroySwapchainKHR $vkDestroySwapchainKHR = nullptr;
+PFN_vkGetSwapchainImagesKHR $vkGetSwapchainImagesKHR = nullptr;
+PFN_vkAcquireNextImageKHR $vkAcquireNextImageKHR = nullptr;
+PFN_vkQueuePresentKHR $vkQueuePresentKHR = nullptr;
+PFN_vkCreateWin32SurfaceKHR $vkCreateWin32SurfaceKHR = nullptr;
+PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR $vkGetPhysicalDeviceWin32PresentationSupportKHR = nullptr;
+PFN_vkCreateDebugReportCallbackEXT $vkCreateDebugReportCallbackEXT = nullptr;
+PFN_vkDestroyDebugReportCallbackEXT $vkDestroyDebugReportCallbackEXT = nullptr;
+PFN_vkDebugReportMessageEXT $vkDebugReportMessageEXT = nullptr;
+PFN_vkDebugMarkerSetObjectNameEXT $vkDebugMarkerSetObjectNameEXT = nullptr;
+PFN_vkDebugMarkerSetObjectTagEXT $vkDebugMarkerSetObjectTagEXT = nullptr;
+PFN_vkCmdDebugMarkerBeginEXT $vkCmdDebugMarkerBeginEXT = nullptr;
+PFN_vkCmdDebugMarkerEndEXT $vkCmdDebugMarkerEndEXT = nullptr;
+PFN_vkCmdDebugMarkerInsertEXT $vkCmdDebugMarkerInsertEXT = nullptr;
+PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV $vkGetPhysicalDeviceExternalImageFormatPropertiesNV = nullptr;
+PFN_vkGetMemoryWin32HandleNV $vkGetMemoryWin32HandleNV = nullptr;
+PFN_vkCmdDrawIndirectCountAMD $vkCmdDrawIndirectCountAMD = nullptr;
+PFN_vkCmdDrawIndexedIndirectCountAMD $vkCmdDrawIndexedIndirectCountAMD = nullptr;
+PFN_vkCmdProcessCommandsNVX $vkCmdProcessCommandsNVX = nullptr;
+PFN_vkCmdReserveSpaceForCommandsNVX $vkCmdReserveSpaceForCommandsNVX = nullptr;
+PFN_vkCreateIndirectCommandsLayoutNVX $vkCreateIndirectCommandsLayoutNVX = nullptr;
+PFN_vkDestroyIndirectCommandsLayoutNVX $vkDestroyIndirectCommandsLayoutNVX = nullptr;
+PFN_vkCreateObjectTableNVX $vkCreateObjectTableNVX = nullptr;
+PFN_vkDestroyObjectTableNVX $vkDestroyObjectTableNVX = nullptr;
+PFN_vkRegisterObjectsNVX $vkRegisterObjectsNVX = nullptr;
+PFN_vkUnregisterObjectsNVX $vkUnregisterObjectsNVX = nullptr;
+PFN_vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX $vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX = nullptr;
+PFN_vkCmdPushDescriptorSetKHR $vkCmdPushDescriptorSetKHR = nullptr;
+PFN_vkGetMemoryWin32HandleKHR $vkGetMemoryWin32HandleKHR = nullptr;
+PFN_vkGetMemoryWin32HandlePropertiesKHR $vkGetMemoryWin32HandlePropertiesKHR = nullptr;
+PFN_vkGetMemoryFdKHR $vkGetMemoryFdKHR = nullptr;
+PFN_vkGetMemoryFdPropertiesKHR $vkGetMemoryFdPropertiesKHR = nullptr;
+PFN_vkGetSemaphoreWin32HandleKHR $vkGetSemaphoreWin32HandleKHR = nullptr;
+PFN_vkImportSemaphoreWin32HandleKHR $vkImportSemaphoreWin32HandleKHR = nullptr;
+PFN_vkGetSemaphoreFdKHR $vkGetSemaphoreFdKHR = nullptr;
+PFN_vkImportSemaphoreFdKHR $vkImportSemaphoreFdKHR = nullptr;
+PFN_vkGetFenceWin32HandleKHR $vkGetFenceWin32HandleKHR = nullptr;
+PFN_vkImportFenceWin32HandleKHR $vkImportFenceWin32HandleKHR = nullptr;
+PFN_vkGetFenceFdKHR $vkGetFenceFdKHR = nullptr;
+PFN_vkImportFenceFdKHR $vkImportFenceFdKHR = nullptr;
+PFN_vkReleaseDisplayEXT $vkReleaseDisplayEXT = nullptr;
+PFN_vkDisplayPowerControlEXT $vkDisplayPowerControlEXT = nullptr;
+PFN_vkRegisterDeviceEventEXT $vkRegisterDeviceEventEXT = nullptr;
+PFN_vkRegisterDisplayEventEXT $vkRegisterDisplayEventEXT = nullptr;
+PFN_vkGetSwapchainCounterEXT $vkGetSwapchainCounterEXT = nullptr;
+PFN_vkGetPhysicalDeviceSurfaceCapabilities2EXT $vkGetPhysicalDeviceSurfaceCapabilities2EXT = nullptr;
+PFN_vkGetDeviceGroupPresentCapabilitiesKHR $vkGetDeviceGroupPresentCapabilitiesKHR = nullptr;
+PFN_vkGetDeviceGroupSurfacePresentModesKHR $vkGetDeviceGroupSurfacePresentModesKHR = nullptr;
+PFN_vkAcquireNextImage2KHR $vkAcquireNextImage2KHR = nullptr;
+PFN_vkGetPhysicalDevicePresentRectanglesKHR $vkGetPhysicalDevicePresentRectanglesKHR = nullptr;
+PFN_vkCmdPushDescriptorSetWithTemplateKHR $vkCmdPushDescriptorSetWithTemplateKHR = nullptr;
+PFN_vkSetHdrMetadataEXT $vkSetHdrMetadataEXT = nullptr;
+PFN_vkGetSwapchainStatusKHR $vkGetSwapchainStatusKHR = nullptr;
+PFN_vkGetRefreshCycleDurationGOOGLE $vkGetRefreshCycleDurationGOOGLE = nullptr;
+PFN_vkGetPastPresentationTimingGOOGLE $vkGetPastPresentationTimingGOOGLE = nullptr;
+PFN_vkCmdSetViewportWScalingNV $vkCmdSetViewportWScalingNV = nullptr;
+PFN_vkCmdSetDiscardRectangleEXT $vkCmdSetDiscardRectangleEXT = nullptr;
+PFN_vkCmdSetSampleLocationsEXT $vkCmdSetSampleLocationsEXT = nullptr;
+PFN_vkGetPhysicalDeviceMultisamplePropertiesEXT $vkGetPhysicalDeviceMultisamplePropertiesEXT = nullptr;
+PFN_vkGetPhysicalDeviceSurfaceCapabilities2KHR $vkGetPhysicalDeviceSurfaceCapabilities2KHR = nullptr;
+PFN_vkGetPhysicalDeviceSurfaceFormats2KHR $vkGetPhysicalDeviceSurfaceFormats2KHR = nullptr;
+PFN_vkGetPhysicalDeviceDisplayProperties2KHR $vkGetPhysicalDeviceDisplayProperties2KHR = nullptr;
+PFN_vkGetPhysicalDeviceDisplayPlaneProperties2KHR $vkGetPhysicalDeviceDisplayPlaneProperties2KHR = nullptr;
+PFN_vkGetDisplayModeProperties2KHR $vkGetDisplayModeProperties2KHR = nullptr;
+PFN_vkGetDisplayPlaneCapabilities2KHR $vkGetDisplayPlaneCapabilities2KHR = nullptr;
+PFN_vkCreateValidationCacheEXT $vkCreateValidationCacheEXT = nullptr;
+PFN_vkDestroyValidationCacheEXT $vkDestroyValidationCacheEXT = nullptr;
+PFN_vkGetValidationCacheDataEXT $vkGetValidationCacheDataEXT = nullptr;
+PFN_vkMergeValidationCachesEXT $vkMergeValidationCachesEXT = nullptr;
+PFN_vkGetShaderInfoAMD $vkGetShaderInfoAMD = nullptr;
+PFN_vkSetDebugUtilsObjectNameEXT $vkSetDebugUtilsObjectNameEXT = nullptr;
+PFN_vkSetDebugUtilsObjectTagEXT $vkSetDebugUtilsObjectTagEXT = nullptr;
+PFN_vkQueueBeginDebugUtilsLabelEXT $vkQueueBeginDebugUtilsLabelEXT = nullptr;
+PFN_vkQueueEndDebugUtilsLabelEXT $vkQueueEndDebugUtilsLabelEXT = nullptr;
+PFN_vkQueueInsertDebugUtilsLabelEXT $vkQueueInsertDebugUtilsLabelEXT = nullptr;
+PFN_vkCmdBeginDebugUtilsLabelEXT $vkCmdBeginDebugUtilsLabelEXT = nullptr;
+PFN_vkCmdEndDebugUtilsLabelEXT $vkCmdEndDebugUtilsLabelEXT = nullptr;
+PFN_vkCmdInsertDebugUtilsLabelEXT $vkCmdInsertDebugUtilsLabelEXT = nullptr;
+PFN_vkCreateDebugUtilsMessengerEXT $vkCreateDebugUtilsMessengerEXT = nullptr;
+PFN_vkDestroyDebugUtilsMessengerEXT $vkDestroyDebugUtilsMessengerEXT = nullptr;
+PFN_vkSubmitDebugUtilsMessageEXT $vkSubmitDebugUtilsMessageEXT = nullptr;
+PFN_vkGetMemoryHostPointerPropertiesEXT $vkGetMemoryHostPointerPropertiesEXT = nullptr;
+PFN_vkCmdWriteBufferMarkerAMD $vkCmdWriteBufferMarkerAMD = nullptr;
+PFN_vkCreateRenderPass2KHR $vkCreateRenderPass2KHR = nullptr;
+PFN_vkCmdBeginRenderPass2KHR $vkCmdBeginRenderPass2KHR = nullptr;
+PFN_vkCmdNextSubpass2KHR $vkCmdNextSubpass2KHR = nullptr;
+PFN_vkCmdEndRenderPass2KHR $vkCmdEndRenderPass2KHR = nullptr;
+PFN_vkCmdDrawIndirectCountKHR $vkCmdDrawIndirectCountKHR = nullptr;
+PFN_vkCmdDrawIndexedIndirectCountKHR $vkCmdDrawIndexedIndirectCountKHR = nullptr;
+PFN_vkCmdSetCheckpointNV $vkCmdSetCheckpointNV = nullptr;
+PFN_vkGetQueueCheckpointDataNV $vkGetQueueCheckpointDataNV = nullptr;
+PFN_vkCmdSetExclusiveScissorNV $vkCmdSetExclusiveScissorNV = nullptr;
+PFN_vkCmdBindShadingRateImageNV $vkCmdBindShadingRateImageNV = nullptr;
+PFN_vkCmdSetViewportShadingRatePaletteNV $vkCmdSetViewportShadingRatePaletteNV = nullptr;
+PFN_vkCmdSetCoarseSampleOrderNV $vkCmdSetCoarseSampleOrderNV = nullptr;
+PFN_vkCmdDrawMeshTasksNV $vkCmdDrawMeshTasksNV = nullptr;
+PFN_vkCmdDrawMeshTasksIndirectNV $vkCmdDrawMeshTasksIndirectNV = nullptr;
+PFN_vkCmdDrawMeshTasksIndirectCountNV $vkCmdDrawMeshTasksIndirectCountNV = nullptr;
+PFN_vkCompileDeferredNVX $vkCompileDeferredNVX = nullptr;
+PFN_vkCreateAccelerationStructureNVX $vkCreateAccelerationStructureNVX = nullptr;
+PFN_vkDestroyAccelerationStructureNVX $vkDestroyAccelerationStructureNVX = nullptr;
+PFN_vkGetAccelerationStructureMemoryRequirementsNVX $vkGetAccelerationStructureMemoryRequirementsNVX = nullptr;
+PFN_vkGetAccelerationStructureScratchMemoryRequirementsNVX $vkGetAccelerationStructureScratchMemoryRequirementsNVX = nullptr;
+PFN_vkBindAccelerationStructureMemoryNVX $vkBindAccelerationStructureMemoryNVX = nullptr;
+PFN_vkCmdCopyAccelerationStructureNVX $vkCmdCopyAccelerationStructureNVX = nullptr;
+PFN_vkCmdWriteAccelerationStructurePropertiesNVX $vkCmdWriteAccelerationStructurePropertiesNVX = nullptr;
+PFN_vkCmdBuildAccelerationStructureNVX $vkCmdBuildAccelerationStructureNVX = nullptr;
+PFN_vkCmdTraceRaysNVX $vkCmdTraceRaysNVX = nullptr;
+PFN_vkGetRaytracingShaderHandlesNVX $vkGetRaytracingShaderHandlesNVX = nullptr;
+PFN_vkGetAccelerationStructureHandleNVX $vkGetAccelerationStructureHandleNVX = nullptr;
+PFN_vkCreateRaytracingPipelinesNVX $vkCreateRaytracingPipelinesNVX = nullptr;
+
+void vkUseDevice(VkDevice pDevice) {
+  currentDevice = pDevice;
+  $vkCmdBeginConditionalRenderingEXT = (PFN_vkCmdBeginConditionalRenderingEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdBeginConditionalRenderingEXT");
+  $vkCmdEndConditionalRenderingEXT = (PFN_vkCmdEndConditionalRenderingEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdEndConditionalRenderingEXT");
+  $vkCreateSharedSwapchainsKHR = (PFN_vkCreateSharedSwapchainsKHR) vkGetDeviceProcAddr(currentDevice, "vkCreateSharedSwapchainsKHR");
+  $vkCreateSwapchainKHR = (PFN_vkCreateSwapchainKHR) vkGetDeviceProcAddr(currentDevice, "vkCreateSwapchainKHR");
+  $vkDestroySwapchainKHR = (PFN_vkDestroySwapchainKHR) vkGetDeviceProcAddr(currentDevice, "vkDestroySwapchainKHR");
+  $vkGetSwapchainImagesKHR = (PFN_vkGetSwapchainImagesKHR) vkGetDeviceProcAddr(currentDevice, "vkGetSwapchainImagesKHR");
+  $vkAcquireNextImageKHR = (PFN_vkAcquireNextImageKHR) vkGetDeviceProcAddr(currentDevice, "vkAcquireNextImageKHR");
+  $vkQueuePresentKHR = (PFN_vkQueuePresentKHR) vkGetDeviceProcAddr(currentDevice, "vkQueuePresentKHR");
+  $vkDebugMarkerSetObjectNameEXT = (PFN_vkDebugMarkerSetObjectNameEXT) vkGetDeviceProcAddr(currentDevice, "vkDebugMarkerSetObjectNameEXT");
+  $vkDebugMarkerSetObjectTagEXT = (PFN_vkDebugMarkerSetObjectTagEXT) vkGetDeviceProcAddr(currentDevice, "vkDebugMarkerSetObjectTagEXT");
+  $vkCmdDebugMarkerBeginEXT = (PFN_vkCmdDebugMarkerBeginEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdDebugMarkerBeginEXT");
+  $vkCmdDebugMarkerEndEXT = (PFN_vkCmdDebugMarkerEndEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdDebugMarkerEndEXT");
+  $vkCmdDebugMarkerInsertEXT = (PFN_vkCmdDebugMarkerInsertEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdDebugMarkerInsertEXT");
+  $vkGetMemoryWin32HandleNV = (PFN_vkGetMemoryWin32HandleNV) vkGetDeviceProcAddr(currentDevice, "vkGetMemoryWin32HandleNV");
+  $vkCmdDrawIndirectCountAMD = (PFN_vkCmdDrawIndirectCountAMD) vkGetDeviceProcAddr(currentDevice, "vkCmdDrawIndirectCountAMD");
+  $vkCmdDrawIndexedIndirectCountAMD = (PFN_vkCmdDrawIndexedIndirectCountAMD) vkGetDeviceProcAddr(currentDevice, "vkCmdDrawIndexedIndirectCountAMD");
+  $vkCmdProcessCommandsNVX = (PFN_vkCmdProcessCommandsNVX) vkGetDeviceProcAddr(currentDevice, "vkCmdProcessCommandsNVX");
+  $vkCmdReserveSpaceForCommandsNVX = (PFN_vkCmdReserveSpaceForCommandsNVX) vkGetDeviceProcAddr(currentDevice, "vkCmdReserveSpaceForCommandsNVX");
+  $vkCreateIndirectCommandsLayoutNVX = (PFN_vkCreateIndirectCommandsLayoutNVX) vkGetDeviceProcAddr(currentDevice, "vkCreateIndirectCommandsLayoutNVX");
+  $vkDestroyIndirectCommandsLayoutNVX = (PFN_vkDestroyIndirectCommandsLayoutNVX) vkGetDeviceProcAddr(currentDevice, "vkDestroyIndirectCommandsLayoutNVX");
+  $vkCreateObjectTableNVX = (PFN_vkCreateObjectTableNVX) vkGetDeviceProcAddr(currentDevice, "vkCreateObjectTableNVX");
+  $vkDestroyObjectTableNVX = (PFN_vkDestroyObjectTableNVX) vkGetDeviceProcAddr(currentDevice, "vkDestroyObjectTableNVX");
+  $vkRegisterObjectsNVX = (PFN_vkRegisterObjectsNVX) vkGetDeviceProcAddr(currentDevice, "vkRegisterObjectsNVX");
+  $vkUnregisterObjectsNVX = (PFN_vkUnregisterObjectsNVX) vkGetDeviceProcAddr(currentDevice, "vkUnregisterObjectsNVX");
+  $vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX = (PFN_vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX) vkGetDeviceProcAddr(currentDevice, "vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX");
+  $vkCmdPushDescriptorSetKHR = (PFN_vkCmdPushDescriptorSetKHR) vkGetDeviceProcAddr(currentDevice, "vkCmdPushDescriptorSetKHR");
+  $vkGetMemoryWin32HandleKHR = (PFN_vkGetMemoryWin32HandleKHR) vkGetDeviceProcAddr(currentDevice, "vkGetMemoryWin32HandleKHR");
+  $vkGetMemoryWin32HandlePropertiesKHR = (PFN_vkGetMemoryWin32HandlePropertiesKHR) vkGetDeviceProcAddr(currentDevice, "vkGetMemoryWin32HandlePropertiesKHR");
+  $vkGetMemoryFdKHR = (PFN_vkGetMemoryFdKHR) vkGetDeviceProcAddr(currentDevice, "vkGetMemoryFdKHR");
+  $vkGetMemoryFdPropertiesKHR = (PFN_vkGetMemoryFdPropertiesKHR) vkGetDeviceProcAddr(currentDevice, "vkGetMemoryFdPropertiesKHR");
+  $vkGetSemaphoreWin32HandleKHR = (PFN_vkGetSemaphoreWin32HandleKHR) vkGetDeviceProcAddr(currentDevice, "vkGetSemaphoreWin32HandleKHR");
+  $vkImportSemaphoreWin32HandleKHR = (PFN_vkImportSemaphoreWin32HandleKHR) vkGetDeviceProcAddr(currentDevice, "vkImportSemaphoreWin32HandleKHR");
+  $vkGetSemaphoreFdKHR = (PFN_vkGetSemaphoreFdKHR) vkGetDeviceProcAddr(currentDevice, "vkGetSemaphoreFdKHR");
+  $vkImportSemaphoreFdKHR = (PFN_vkImportSemaphoreFdKHR) vkGetDeviceProcAddr(currentDevice, "vkImportSemaphoreFdKHR");
+  $vkGetFenceWin32HandleKHR = (PFN_vkGetFenceWin32HandleKHR) vkGetDeviceProcAddr(currentDevice, "vkGetFenceWin32HandleKHR");
+  $vkImportFenceWin32HandleKHR = (PFN_vkImportFenceWin32HandleKHR) vkGetDeviceProcAddr(currentDevice, "vkImportFenceWin32HandleKHR");
+  $vkGetFenceFdKHR = (PFN_vkGetFenceFdKHR) vkGetDeviceProcAddr(currentDevice, "vkGetFenceFdKHR");
+  $vkImportFenceFdKHR = (PFN_vkImportFenceFdKHR) vkGetDeviceProcAddr(currentDevice, "vkImportFenceFdKHR");
+  $vkDisplayPowerControlEXT = (PFN_vkDisplayPowerControlEXT) vkGetDeviceProcAddr(currentDevice, "vkDisplayPowerControlEXT");
+  $vkRegisterDeviceEventEXT = (PFN_vkRegisterDeviceEventEXT) vkGetDeviceProcAddr(currentDevice, "vkRegisterDeviceEventEXT");
+  $vkRegisterDisplayEventEXT = (PFN_vkRegisterDisplayEventEXT) vkGetDeviceProcAddr(currentDevice, "vkRegisterDisplayEventEXT");
+  $vkGetSwapchainCounterEXT = (PFN_vkGetSwapchainCounterEXT) vkGetDeviceProcAddr(currentDevice, "vkGetSwapchainCounterEXT");
+  $vkGetDeviceGroupPresentCapabilitiesKHR = (PFN_vkGetDeviceGroupPresentCapabilitiesKHR) vkGetDeviceProcAddr(currentDevice, "vkGetDeviceGroupPresentCapabilitiesKHR");
+  $vkGetDeviceGroupSurfacePresentModesKHR = (PFN_vkGetDeviceGroupSurfacePresentModesKHR) vkGetDeviceProcAddr(currentDevice, "vkGetDeviceGroupSurfacePresentModesKHR");
+  $vkAcquireNextImage2KHR = (PFN_vkAcquireNextImage2KHR) vkGetDeviceProcAddr(currentDevice, "vkAcquireNextImage2KHR");
+  $vkGetPhysicalDevicePresentRectanglesKHR = (PFN_vkGetPhysicalDevicePresentRectanglesKHR) vkGetDeviceProcAddr(currentDevice, "vkGetPhysicalDevicePresentRectanglesKHR");
+  $vkCmdPushDescriptorSetWithTemplateKHR = (PFN_vkCmdPushDescriptorSetWithTemplateKHR) vkGetDeviceProcAddr(currentDevice, "vkCmdPushDescriptorSetWithTemplateKHR");
+  $vkSetHdrMetadataEXT = (PFN_vkSetHdrMetadataEXT) vkGetDeviceProcAddr(currentDevice, "vkSetHdrMetadataEXT");
+  $vkGetSwapchainStatusKHR = (PFN_vkGetSwapchainStatusKHR) vkGetDeviceProcAddr(currentDevice, "vkGetSwapchainStatusKHR");
+  $vkGetRefreshCycleDurationGOOGLE = (PFN_vkGetRefreshCycleDurationGOOGLE) vkGetDeviceProcAddr(currentDevice, "vkGetRefreshCycleDurationGOOGLE");
+  $vkGetPastPresentationTimingGOOGLE = (PFN_vkGetPastPresentationTimingGOOGLE) vkGetDeviceProcAddr(currentDevice, "vkGetPastPresentationTimingGOOGLE");
+  $vkCmdSetViewportWScalingNV = (PFN_vkCmdSetViewportWScalingNV) vkGetDeviceProcAddr(currentDevice, "vkCmdSetViewportWScalingNV");
+  $vkCmdSetDiscardRectangleEXT = (PFN_vkCmdSetDiscardRectangleEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdSetDiscardRectangleEXT");
+  $vkCmdSetSampleLocationsEXT = (PFN_vkCmdSetSampleLocationsEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdSetSampleLocationsEXT");
+  $vkGetPhysicalDeviceMultisamplePropertiesEXT = (PFN_vkGetPhysicalDeviceMultisamplePropertiesEXT) vkGetDeviceProcAddr(currentDevice, "vkGetPhysicalDeviceMultisamplePropertiesEXT");
+  $vkCreateValidationCacheEXT = (PFN_vkCreateValidationCacheEXT) vkGetDeviceProcAddr(currentDevice, "vkCreateValidationCacheEXT");
+  $vkDestroyValidationCacheEXT = (PFN_vkDestroyValidationCacheEXT) vkGetDeviceProcAddr(currentDevice, "vkDestroyValidationCacheEXT");
+  $vkGetValidationCacheDataEXT = (PFN_vkGetValidationCacheDataEXT) vkGetDeviceProcAddr(currentDevice, "vkGetValidationCacheDataEXT");
+  $vkMergeValidationCachesEXT = (PFN_vkMergeValidationCachesEXT) vkGetDeviceProcAddr(currentDevice, "vkMergeValidationCachesEXT");
+  $vkGetShaderInfoAMD = (PFN_vkGetShaderInfoAMD) vkGetDeviceProcAddr(currentDevice, "vkGetShaderInfoAMD");
+  $vkGetMemoryHostPointerPropertiesEXT = (PFN_vkGetMemoryHostPointerPropertiesEXT) vkGetDeviceProcAddr(currentDevice, "vkGetMemoryHostPointerPropertiesEXT");
+  $vkCmdWriteBufferMarkerAMD = (PFN_vkCmdWriteBufferMarkerAMD) vkGetDeviceProcAddr(currentDevice, "vkCmdWriteBufferMarkerAMD");
+  $vkCreateRenderPass2KHR = (PFN_vkCreateRenderPass2KHR) vkGetDeviceProcAddr(currentDevice, "vkCreateRenderPass2KHR");
+  $vkCmdBeginRenderPass2KHR = (PFN_vkCmdBeginRenderPass2KHR) vkGetDeviceProcAddr(currentDevice, "vkCmdBeginRenderPass2KHR");
+  $vkCmdNextSubpass2KHR = (PFN_vkCmdNextSubpass2KHR) vkGetDeviceProcAddr(currentDevice, "vkCmdNextSubpass2KHR");
+  $vkCmdEndRenderPass2KHR = (PFN_vkCmdEndRenderPass2KHR) vkGetDeviceProcAddr(currentDevice, "vkCmdEndRenderPass2KHR");
+  $vkCmdDrawIndirectCountKHR = (PFN_vkCmdDrawIndirectCountKHR) vkGetDeviceProcAddr(currentDevice, "vkCmdDrawIndirectCountKHR");
+  $vkCmdDrawIndexedIndirectCountKHR = (PFN_vkCmdDrawIndexedIndirectCountKHR) vkGetDeviceProcAddr(currentDevice, "vkCmdDrawIndexedIndirectCountKHR");
+  $vkCmdSetCheckpointNV = (PFN_vkCmdSetCheckpointNV) vkGetDeviceProcAddr(currentDevice, "vkCmdSetCheckpointNV");
+  $vkGetQueueCheckpointDataNV = (PFN_vkGetQueueCheckpointDataNV) vkGetDeviceProcAddr(currentDevice, "vkGetQueueCheckpointDataNV");
+  $vkCmdSetExclusiveScissorNV = (PFN_vkCmdSetExclusiveScissorNV) vkGetDeviceProcAddr(currentDevice, "vkCmdSetExclusiveScissorNV");
+  $vkCmdBindShadingRateImageNV = (PFN_vkCmdBindShadingRateImageNV) vkGetDeviceProcAddr(currentDevice, "vkCmdBindShadingRateImageNV");
+  $vkCmdSetViewportShadingRatePaletteNV = (PFN_vkCmdSetViewportShadingRatePaletteNV) vkGetDeviceProcAddr(currentDevice, "vkCmdSetViewportShadingRatePaletteNV");
+  $vkCmdSetCoarseSampleOrderNV = (PFN_vkCmdSetCoarseSampleOrderNV) vkGetDeviceProcAddr(currentDevice, "vkCmdSetCoarseSampleOrderNV");
+  $vkCmdDrawMeshTasksNV = (PFN_vkCmdDrawMeshTasksNV) vkGetDeviceProcAddr(currentDevice, "vkCmdDrawMeshTasksNV");
+  $vkCmdDrawMeshTasksIndirectNV = (PFN_vkCmdDrawMeshTasksIndirectNV) vkGetDeviceProcAddr(currentDevice, "vkCmdDrawMeshTasksIndirectNV");
+  $vkCmdDrawMeshTasksIndirectCountNV = (PFN_vkCmdDrawMeshTasksIndirectCountNV) vkGetDeviceProcAddr(currentDevice, "vkCmdDrawMeshTasksIndirectCountNV");
+  $vkCompileDeferredNVX = (PFN_vkCompileDeferredNVX) vkGetDeviceProcAddr(currentDevice, "vkCompileDeferredNVX");
+  $vkCreateAccelerationStructureNVX = (PFN_vkCreateAccelerationStructureNVX) vkGetDeviceProcAddr(currentDevice, "vkCreateAccelerationStructureNVX");
+  $vkDestroyAccelerationStructureNVX = (PFN_vkDestroyAccelerationStructureNVX) vkGetDeviceProcAddr(currentDevice, "vkDestroyAccelerationStructureNVX");
+  $vkGetAccelerationStructureMemoryRequirementsNVX = (PFN_vkGetAccelerationStructureMemoryRequirementsNVX) vkGetDeviceProcAddr(currentDevice, "vkGetAccelerationStructureMemoryRequirementsNVX");
+  $vkGetAccelerationStructureScratchMemoryRequirementsNVX = (PFN_vkGetAccelerationStructureScratchMemoryRequirementsNVX) vkGetDeviceProcAddr(currentDevice, "vkGetAccelerationStructureScratchMemoryRequirementsNVX");
+  $vkBindAccelerationStructureMemoryNVX = (PFN_vkBindAccelerationStructureMemoryNVX) vkGetDeviceProcAddr(currentDevice, "vkBindAccelerationStructureMemoryNVX");
+  $vkCmdCopyAccelerationStructureNVX = (PFN_vkCmdCopyAccelerationStructureNVX) vkGetDeviceProcAddr(currentDevice, "vkCmdCopyAccelerationStructureNVX");
+  $vkCmdWriteAccelerationStructurePropertiesNVX = (PFN_vkCmdWriteAccelerationStructurePropertiesNVX) vkGetDeviceProcAddr(currentDevice, "vkCmdWriteAccelerationStructurePropertiesNVX");
+  $vkCmdBuildAccelerationStructureNVX = (PFN_vkCmdBuildAccelerationStructureNVX) vkGetDeviceProcAddr(currentDevice, "vkCmdBuildAccelerationStructureNVX");
+  $vkCmdTraceRaysNVX = (PFN_vkCmdTraceRaysNVX) vkGetDeviceProcAddr(currentDevice, "vkCmdTraceRaysNVX");
+  $vkGetRaytracingShaderHandlesNVX = (PFN_vkGetRaytracingShaderHandlesNVX) vkGetDeviceProcAddr(currentDevice, "vkGetRaytracingShaderHandlesNVX");
+  $vkGetAccelerationStructureHandleNVX = (PFN_vkGetAccelerationStructureHandleNVX) vkGetDeviceProcAddr(currentDevice, "vkGetAccelerationStructureHandleNVX");
+  $vkCreateRaytracingPipelinesNVX = (PFN_vkCreateRaytracingPipelinesNVX) vkGetDeviceProcAddr(currentDevice, "vkCreateRaytracingPipelinesNVX");
+};
+
+void vkUseInstance(VkInstance pInstance) {
+  currentInstance = pInstance;
+  $vkGetPhysicalDeviceDisplayPropertiesKHR = (PFN_vkGetPhysicalDeviceDisplayPropertiesKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceDisplayPropertiesKHR");
+  $vkGetPhysicalDeviceDisplayPlanePropertiesKHR = (PFN_vkGetPhysicalDeviceDisplayPlanePropertiesKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceDisplayPlanePropertiesKHR");
+  $vkGetDisplayPlaneSupportedDisplaysKHR = (PFN_vkGetDisplayPlaneSupportedDisplaysKHR) vkGetInstanceProcAddr(currentInstance, "vkGetDisplayPlaneSupportedDisplaysKHR");
+  $vkGetDisplayModePropertiesKHR = (PFN_vkGetDisplayModePropertiesKHR) vkGetInstanceProcAddr(currentInstance, "vkGetDisplayModePropertiesKHR");
+  $vkCreateDisplayModeKHR = (PFN_vkCreateDisplayModeKHR) vkGetInstanceProcAddr(currentInstance, "vkCreateDisplayModeKHR");
+  $vkGetDisplayPlaneCapabilitiesKHR = (PFN_vkGetDisplayPlaneCapabilitiesKHR) vkGetInstanceProcAddr(currentInstance, "vkGetDisplayPlaneCapabilitiesKHR");
+  $vkCreateDisplayPlaneSurfaceKHR = (PFN_vkCreateDisplayPlaneSurfaceKHR) vkGetInstanceProcAddr(currentInstance, "vkCreateDisplayPlaneSurfaceKHR");
+  $vkDestroySurfaceKHR = (PFN_vkDestroySurfaceKHR) vkGetInstanceProcAddr(currentInstance, "vkDestroySurfaceKHR");
+  $vkGetPhysicalDeviceSurfaceSupportKHR = (PFN_vkGetPhysicalDeviceSurfaceSupportKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceSurfaceSupportKHR");
+  $vkGetPhysicalDeviceSurfaceCapabilitiesKHR = (PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceSurfaceCapabilitiesKHR");
+  $vkGetPhysicalDeviceSurfaceFormatsKHR = (PFN_vkGetPhysicalDeviceSurfaceFormatsKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceSurfaceFormatsKHR");
+  $vkGetPhysicalDeviceSurfacePresentModesKHR = (PFN_vkGetPhysicalDeviceSurfacePresentModesKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceSurfacePresentModesKHR");
+  $vkCreateWin32SurfaceKHR = (PFN_vkCreateWin32SurfaceKHR) vkGetInstanceProcAddr(currentInstance, "vkCreateWin32SurfaceKHR");
+  $vkGetPhysicalDeviceWin32PresentationSupportKHR = (PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceWin32PresentationSupportKHR");
+  $vkCreateDebugReportCallbackEXT = (PFN_vkCreateDebugReportCallbackEXT) vkGetInstanceProcAddr(currentInstance, "vkCreateDebugReportCallbackEXT");
+  $vkDestroyDebugReportCallbackEXT = (PFN_vkDestroyDebugReportCallbackEXT) vkGetInstanceProcAddr(currentInstance, "vkDestroyDebugReportCallbackEXT");
+  $vkDebugReportMessageEXT = (PFN_vkDebugReportMessageEXT) vkGetInstanceProcAddr(currentInstance, "vkDebugReportMessageEXT");
+  $vkGetPhysicalDeviceExternalImageFormatPropertiesNV = (PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceExternalImageFormatPropertiesNV");
+  $vkReleaseDisplayEXT = (PFN_vkReleaseDisplayEXT) vkGetInstanceProcAddr(currentInstance, "vkReleaseDisplayEXT");
+  $vkGetPhysicalDeviceSurfaceCapabilities2EXT = (PFN_vkGetPhysicalDeviceSurfaceCapabilities2EXT) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceSurfaceCapabilities2EXT");
+  $vkGetPhysicalDeviceSurfaceCapabilities2KHR = (PFN_vkGetPhysicalDeviceSurfaceCapabilities2KHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceSurfaceCapabilities2KHR");
+  $vkGetPhysicalDeviceSurfaceFormats2KHR = (PFN_vkGetPhysicalDeviceSurfaceFormats2KHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceSurfaceFormats2KHR");
+  $vkGetPhysicalDeviceDisplayProperties2KHR = (PFN_vkGetPhysicalDeviceDisplayProperties2KHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceDisplayProperties2KHR");
+  $vkGetPhysicalDeviceDisplayPlaneProperties2KHR = (PFN_vkGetPhysicalDeviceDisplayPlaneProperties2KHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceDisplayPlaneProperties2KHR");
+  $vkGetDisplayModeProperties2KHR = (PFN_vkGetDisplayModeProperties2KHR) vkGetInstanceProcAddr(currentInstance, "vkGetDisplayModeProperties2KHR");
+  $vkGetDisplayPlaneCapabilities2KHR = (PFN_vkGetDisplayPlaneCapabilities2KHR) vkGetInstanceProcAddr(currentInstance, "vkGetDisplayPlaneCapabilities2KHR");
+  $vkSetDebugUtilsObjectNameEXT = (PFN_vkSetDebugUtilsObjectNameEXT) vkGetInstanceProcAddr(currentInstance, "vkSetDebugUtilsObjectNameEXT");
+  $vkSetDebugUtilsObjectTagEXT = (PFN_vkSetDebugUtilsObjectTagEXT) vkGetInstanceProcAddr(currentInstance, "vkSetDebugUtilsObjectTagEXT");
+  $vkQueueBeginDebugUtilsLabelEXT = (PFN_vkQueueBeginDebugUtilsLabelEXT) vkGetInstanceProcAddr(currentInstance, "vkQueueBeginDebugUtilsLabelEXT");
+  $vkQueueEndDebugUtilsLabelEXT = (PFN_vkQueueEndDebugUtilsLabelEXT) vkGetInstanceProcAddr(currentInstance, "vkQueueEndDebugUtilsLabelEXT");
+  $vkQueueInsertDebugUtilsLabelEXT = (PFN_vkQueueInsertDebugUtilsLabelEXT) vkGetInstanceProcAddr(currentInstance, "vkQueueInsertDebugUtilsLabelEXT");
+  $vkCmdBeginDebugUtilsLabelEXT = (PFN_vkCmdBeginDebugUtilsLabelEXT) vkGetInstanceProcAddr(currentInstance, "vkCmdBeginDebugUtilsLabelEXT");
+  $vkCmdEndDebugUtilsLabelEXT = (PFN_vkCmdEndDebugUtilsLabelEXT) vkGetInstanceProcAddr(currentInstance, "vkCmdEndDebugUtilsLabelEXT");
+  $vkCmdInsertDebugUtilsLabelEXT = (PFN_vkCmdInsertDebugUtilsLabelEXT) vkGetInstanceProcAddr(currentInstance, "vkCmdInsertDebugUtilsLabelEXT");
+  $vkCreateDebugUtilsMessengerEXT = (PFN_vkCreateDebugUtilsMessengerEXT) vkGetInstanceProcAddr(currentInstance, "vkCreateDebugUtilsMessengerEXT");
+  $vkDestroyDebugUtilsMessengerEXT = (PFN_vkDestroyDebugUtilsMessengerEXT) vkGetInstanceProcAddr(currentInstance, "vkDestroyDebugUtilsMessengerEXT");
+  $vkSubmitDebugUtilsMessageEXT = (PFN_vkSubmitDebugUtilsMessageEXT) vkGetInstanceProcAddr(currentInstance, "vkSubmitDebugUtilsMessageEXT");
+};
+
 void _vkUseDevice(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   if (info[0]->IsObject()) {
     _VkDevice* obj = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
-    currentDevice = obj->instance;
+    vkUseDevice(obj->instance);
   } else if (info[0]->IsNull()) {
     currentDevice = VK_NULL_HANDLE;
   } else {
@@ -34,7 +297,7 @@ void _vkUseDevice(const Nan::FunctionCallbackInfo<v8::Value>& info) {
 void _vkUseInstance(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   if (info[0]->IsObject()) {
     _VkInstance* obj = Nan::ObjectWrap::Unwrap<_VkInstance>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
-    currentInstance = obj->instance;
+    vkUseInstance(obj->instance);
   } else if (info[0]->IsNull()) {
     currentInstance = VK_NULL_HANDLE;
   } else {
@@ -75,7 +338,7 @@ void _vkCreateInstance(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p2
   );
   
-  currentInstance = obj2->instance;
+  vkUseInstance(obj2->instance);
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -658,7 +921,7 @@ void _vkCreateDevice(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p3
   );
   
-  currentDevice = obj3->instance;
+  vkUseDevice(obj3->instance);
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -6534,8 +6797,7 @@ void _vkCmdBeginConditionalRenderingEXT(const Nan::FunctionCallbackInfo<v8::Valu
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pConditionalRenderingBegin'");
   }
-    PFN_vkCmdBeginConditionalRenderingEXT vkCmdBeginConditionalRenderingEXT = (PFN_vkCmdBeginConditionalRenderingEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdBeginConditionalRenderingEXT");
-vkCmdBeginConditionalRenderingEXT(
+$vkCmdBeginConditionalRenderingEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
@@ -6558,8 +6820,7 @@ void _vkCmdEndConditionalRenderingEXT(const Nan::FunctionCallbackInfo<v8::Value>
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
   }
-    PFN_vkCmdEndConditionalRenderingEXT vkCmdEndConditionalRenderingEXT = (PFN_vkCmdEndConditionalRenderingEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdEndConditionalRenderingEXT");
-vkCmdEndConditionalRenderingEXT(
+$vkCmdEndConditionalRenderingEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0
   );
   
@@ -6942,8 +7203,7 @@ void _vkGetPhysicalDeviceDisplayPropertiesKHR(const Nan::FunctionCallbackInfo<v8
     return Nan::ThrowTypeError("Invalid type for argument 3 'pProperties'");
   }
 
-    PFN_vkGetPhysicalDeviceDisplayPropertiesKHR vkGetPhysicalDeviceDisplayPropertiesKHR = (PFN_vkGetPhysicalDeviceDisplayPropertiesKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceDisplayPropertiesKHR");
-  int32_t out = vkGetPhysicalDeviceDisplayPropertiesKHR(
+  int32_t out = $vkGetPhysicalDeviceDisplayPropertiesKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     &$p1,
     $p2 ? (VkDisplayPropertiesKHR *) $p2.get()->data() : nullptr
@@ -7038,8 +7298,7 @@ void _vkGetPhysicalDeviceDisplayPlanePropertiesKHR(const Nan::FunctionCallbackIn
     return Nan::ThrowTypeError("Invalid type for argument 3 'pProperties'");
   }
 
-    PFN_vkGetPhysicalDeviceDisplayPlanePropertiesKHR vkGetPhysicalDeviceDisplayPlanePropertiesKHR = (PFN_vkGetPhysicalDeviceDisplayPlanePropertiesKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceDisplayPlanePropertiesKHR");
-  int32_t out = vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
+  int32_t out = $vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     &$p1,
     $p2 ? (VkDisplayPlanePropertiesKHR *) $p2.get()->data() : nullptr
@@ -7103,8 +7362,7 @@ void _vkGetDisplayPlaneSupportedDisplaysKHR(const Nan::FunctionCallbackInfo<v8::
     return Nan::ThrowTypeError("Invalid type for argument 4 'pDisplays'");
   }
 
-    PFN_vkGetDisplayPlaneSupportedDisplaysKHR vkGetDisplayPlaneSupportedDisplaysKHR = (PFN_vkGetDisplayPlaneSupportedDisplaysKHR) vkGetInstanceProcAddr(currentInstance, "vkGetDisplayPlaneSupportedDisplaysKHR");
-  int32_t out = vkGetDisplayPlaneSupportedDisplaysKHR(
+  int32_t out = $vkGetDisplayPlaneSupportedDisplaysKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     &$p2,
@@ -7184,8 +7442,7 @@ void _vkGetDisplayModePropertiesKHR(const Nan::FunctionCallbackInfo<v8::Value>& 
     return Nan::ThrowTypeError("Invalid type for argument 4 'pProperties'");
   }
 
-    PFN_vkGetDisplayModePropertiesKHR vkGetDisplayModePropertiesKHR = (PFN_vkGetDisplayModePropertiesKHR) vkGetInstanceProcAddr(currentInstance, "vkGetDisplayModePropertiesKHR");
-  int32_t out = vkGetDisplayModePropertiesKHR(
+  int32_t out = $vkGetDisplayModePropertiesKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     &$p2,
@@ -7267,8 +7524,7 @@ void _vkCreateDisplayModeKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 5 'pMode'");
   }
-    PFN_vkCreateDisplayModeKHR vkCreateDisplayModeKHR = (PFN_vkCreateDisplayModeKHR) vkGetInstanceProcAddr(currentInstance, "vkCreateDisplayModeKHR");
-  int32_t out = vkCreateDisplayModeKHR(
+  int32_t out = $vkCreateDisplayModeKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2,
@@ -7318,8 +7574,7 @@ void _vkGetDisplayPlaneCapabilitiesKHR(const Nan::FunctionCallbackInfo<v8::Value
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pCapabilities'");
   }
-    PFN_vkGetDisplayPlaneCapabilitiesKHR vkGetDisplayPlaneCapabilitiesKHR = (PFN_vkGetDisplayPlaneCapabilitiesKHR) vkGetInstanceProcAddr(currentInstance, "vkGetDisplayPlaneCapabilitiesKHR");
-  int32_t out = vkGetDisplayPlaneCapabilitiesKHR(
+  int32_t out = $vkGetDisplayPlaneCapabilitiesKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2,
@@ -7439,8 +7694,7 @@ void _vkCreateDisplayPlaneSurfaceKHR(const Nan::FunctionCallbackInfo<v8::Value>&
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pSurface'");
   }
-    PFN_vkCreateDisplayPlaneSurfaceKHR vkCreateDisplayPlaneSurfaceKHR = (PFN_vkCreateDisplayPlaneSurfaceKHR) vkGetInstanceProcAddr(*$p0, "vkCreateDisplayPlaneSurfaceKHR");
-  int32_t out = vkCreateDisplayPlaneSurfaceKHR(
+  int32_t out = $vkCreateDisplayPlaneSurfaceKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     nullptr,
@@ -7508,8 +7762,7 @@ void _vkCreateSharedSwapchainsKHR(const Nan::FunctionCallbackInfo<v8::Value>& in
     return Nan::ThrowTypeError("Invalid type for argument 5 'pSwapchains'");
   }
 
-    PFN_vkCreateSharedSwapchainsKHR vkCreateSharedSwapchainsKHR = (PFN_vkCreateSharedSwapchainsKHR) vkGetDeviceProcAddr(*$p0, "vkCreateSharedSwapchainsKHR");
-  int32_t out = vkCreateSharedSwapchainsKHR(
+  int32_t out = $vkCreateSharedSwapchainsKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2 ? (const VkSwapchainCreateInfoKHR *) $p2.get()->data() : nullptr,
@@ -7555,8 +7808,7 @@ void _vkDestroySurfaceKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'surface'");
   }
 
-    PFN_vkDestroySurfaceKHR vkDestroySurfaceKHR = (PFN_vkDestroySurfaceKHR) vkGetInstanceProcAddr(*$p0, "vkDestroySurfaceKHR");
-vkDestroySurfaceKHR(
+$vkDestroySurfaceKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
@@ -7604,8 +7856,7 @@ void _vkGetPhysicalDeviceSurfaceSupportKHR(const Nan::FunctionCallbackInfo<v8::V
   } else if (!info[3]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pSupported'");
   }
-    PFN_vkGetPhysicalDeviceSurfaceSupportKHR vkGetPhysicalDeviceSurfaceSupportKHR = (PFN_vkGetPhysicalDeviceSurfaceSupportKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceSurfaceSupportKHR");
-  int32_t out = vkGetPhysicalDeviceSurfaceSupportKHR(
+  int32_t out = $vkGetPhysicalDeviceSurfaceSupportKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     info[2]->IsNull() ? VK_NULL_HANDLE : *$p2,
@@ -7653,8 +7904,7 @@ void _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Nan::FunctionCallbackInfo<
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pSurfaceCapabilities'");
   }
-    PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR vkGetPhysicalDeviceSurfaceCapabilitiesKHR = (PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceSurfaceCapabilitiesKHR");
-  int32_t out = vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
+  int32_t out = $vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2
@@ -7750,8 +8000,7 @@ void _vkGetPhysicalDeviceSurfaceFormatsKHR(const Nan::FunctionCallbackInfo<v8::V
     return Nan::ThrowTypeError("Invalid type for argument 4 'pSurfaceFormats'");
   }
 
-    PFN_vkGetPhysicalDeviceSurfaceFormatsKHR vkGetPhysicalDeviceSurfaceFormatsKHR = (PFN_vkGetPhysicalDeviceSurfaceFormatsKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceSurfaceFormatsKHR");
-  int32_t out = vkGetPhysicalDeviceSurfaceFormatsKHR(
+  int32_t out = $vkGetPhysicalDeviceSurfaceFormatsKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     &$p2,
@@ -7821,8 +8070,7 @@ void _vkGetPhysicalDeviceSurfacePresentModesKHR(const Nan::FunctionCallbackInfo<
     return Nan::ThrowTypeError("Invalid type for argument 4 'pPresentModes'");
   }
 
-    PFN_vkGetPhysicalDeviceSurfacePresentModesKHR vkGetPhysicalDeviceSurfacePresentModesKHR = (PFN_vkGetPhysicalDeviceSurfacePresentModesKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceSurfacePresentModesKHR");
-  int32_t out = vkGetPhysicalDeviceSurfacePresentModesKHR(
+  int32_t out = $vkGetPhysicalDeviceSurfacePresentModesKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     &$p2,
@@ -7878,8 +8126,7 @@ void _vkCreateSwapchainKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pSwapchain'");
   }
-    PFN_vkCreateSwapchainKHR vkCreateSwapchainKHR = (PFN_vkCreateSwapchainKHR) vkGetDeviceProcAddr(*$p0, "vkCreateSwapchainKHR");
-  int32_t out = vkCreateSwapchainKHR(
+  int32_t out = $vkCreateSwapchainKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     nullptr,
@@ -7915,8 +8162,7 @@ void _vkDestroySwapchainKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'swapchain'");
   }
 
-    PFN_vkDestroySwapchainKHR vkDestroySwapchainKHR = (PFN_vkDestroySwapchainKHR) vkGetDeviceProcAddr(*$p0, "vkDestroySwapchainKHR");
-vkDestroySwapchainKHR(
+$vkDestroySwapchainKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
@@ -7979,8 +8225,7 @@ void _vkGetSwapchainImagesKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) 
     return Nan::ThrowTypeError("Invalid type for argument 4 'pSwapchainImages'");
   }
 
-    PFN_vkGetSwapchainImagesKHR vkGetSwapchainImagesKHR = (PFN_vkGetSwapchainImagesKHR) vkGetDeviceProcAddr(*$p0, "vkGetSwapchainImagesKHR");
-  int32_t out = vkGetSwapchainImagesKHR(
+  int32_t out = $vkGetSwapchainImagesKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     &$p2,
@@ -8061,8 +8306,7 @@ void _vkAcquireNextImageKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   } else if (!info[5]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 6 'pImageIndex'");
   }
-    PFN_vkAcquireNextImageKHR vkAcquireNextImageKHR = (PFN_vkAcquireNextImageKHR) vkGetDeviceProcAddr(*$p0, "vkAcquireNextImageKHR");
-  int32_t out = vkAcquireNextImageKHR(
+  int32_t out = $vkAcquireNextImageKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2,
@@ -8100,8 +8344,7 @@ void _vkQueuePresentKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pPresentInfo'");
   }
-    PFN_vkQueuePresentKHR vkQueuePresentKHR = (PFN_vkQueuePresentKHR) vkGetDeviceProcAddr(currentDevice, "vkQueuePresentKHR");
-  int32_t out = vkQueuePresentKHR(
+  int32_t out = $vkQueuePresentKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
@@ -8147,8 +8390,7 @@ void _vkCreateWin32SurfaceKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pSurface'");
   }
-    PFN_vkCreateWin32SurfaceKHR vkCreateWin32SurfaceKHR = (PFN_vkCreateWin32SurfaceKHR) vkGetInstanceProcAddr(*$p0, "vkCreateWin32SurfaceKHR");
-  int32_t out = vkCreateWin32SurfaceKHR(
+  int32_t out = $vkCreateWin32SurfaceKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     nullptr,
@@ -8173,8 +8415,7 @@ void _vkGetPhysicalDeviceWin32PresentationSupportKHR(const Nan::FunctionCallback
   }
 
   uint32_t $p1 = static_cast<uint32_t>(Nan::To<int64_t>(info[1]).FromMaybe(0));
-    PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR vkGetPhysicalDeviceWin32PresentationSupportKHR = (PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceWin32PresentationSupportKHR");
-  uint32_t out = vkGetPhysicalDeviceWin32PresentationSupportKHR(
+  uint32_t out = $vkGetPhysicalDeviceWin32PresentationSupportKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
@@ -8220,8 +8461,7 @@ void _vkCreateDebugReportCallbackEXT(const Nan::FunctionCallbackInfo<v8::Value>&
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pCallback'");
   }
-    PFN_vkCreateDebugReportCallbackEXT vkCreateDebugReportCallbackEXT = (PFN_vkCreateDebugReportCallbackEXT) vkGetInstanceProcAddr(*$p0, "vkCreateDebugReportCallbackEXT");
-  int32_t out = vkCreateDebugReportCallbackEXT(
+  int32_t out = $vkCreateDebugReportCallbackEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     nullptr,
@@ -8257,8 +8497,7 @@ void _vkDestroyDebugReportCallbackEXT(const Nan::FunctionCallbackInfo<v8::Value>
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'callback'");
   }
 
-    PFN_vkDestroyDebugReportCallbackEXT vkDestroyDebugReportCallbackEXT = (PFN_vkDestroyDebugReportCallbackEXT) vkGetInstanceProcAddr(*$p0, "vkDestroyDebugReportCallbackEXT");
-vkDestroyDebugReportCallbackEXT(
+$vkDestroyDebugReportCallbackEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
@@ -8306,8 +8545,7 @@ void _vkDebugReportMessageEXT(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   } else if (!info[7]->IsNull()) {
     Nan::ThrowTypeError("Expected 'String' or 'null' for argument 8 'pMessage'");
   }
-    PFN_vkDebugReportMessageEXT vkDebugReportMessageEXT = (PFN_vkDebugReportMessageEXT) vkGetInstanceProcAddr(*$p0, "vkDebugReportMessageEXT");
-vkDebugReportMessageEXT(
+$vkDebugReportMessageEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     static_cast<VkDebugReportFlagsEXT>($p1),
     $p2,
@@ -8348,8 +8586,7 @@ void _vkDebugMarkerSetObjectNameEXT(const Nan::FunctionCallbackInfo<v8::Value>& 
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pNameInfo'");
   }
-    PFN_vkDebugMarkerSetObjectNameEXT vkDebugMarkerSetObjectNameEXT = (PFN_vkDebugMarkerSetObjectNameEXT) vkGetDeviceProcAddr(*$p0, "vkDebugMarkerSetObjectNameEXT");
-  int32_t out = vkDebugMarkerSetObjectNameEXT(
+  int32_t out = $vkDebugMarkerSetObjectNameEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
@@ -8382,8 +8619,7 @@ void _vkDebugMarkerSetObjectTagEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pTagInfo'");
   }
-    PFN_vkDebugMarkerSetObjectTagEXT vkDebugMarkerSetObjectTagEXT = (PFN_vkDebugMarkerSetObjectTagEXT) vkGetDeviceProcAddr(*$p0, "vkDebugMarkerSetObjectTagEXT");
-  int32_t out = vkDebugMarkerSetObjectTagEXT(
+  int32_t out = $vkDebugMarkerSetObjectTagEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
@@ -8416,8 +8652,7 @@ void _vkCmdDebugMarkerBeginEXT(const Nan::FunctionCallbackInfo<v8::Value>& info)
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pMarkerInfo'");
   }
-    PFN_vkCmdDebugMarkerBeginEXT vkCmdDebugMarkerBeginEXT = (PFN_vkCmdDebugMarkerBeginEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdDebugMarkerBeginEXT");
-vkCmdDebugMarkerBeginEXT(
+$vkCmdDebugMarkerBeginEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
@@ -8440,8 +8675,7 @@ void _vkCmdDebugMarkerEndEXT(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
   }
-    PFN_vkCmdDebugMarkerEndEXT vkCmdDebugMarkerEndEXT = (PFN_vkCmdDebugMarkerEndEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdDebugMarkerEndEXT");
-vkCmdDebugMarkerEndEXT(
+$vkCmdDebugMarkerEndEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0
   );
   
@@ -8475,8 +8709,7 @@ void _vkCmdDebugMarkerInsertEXT(const Nan::FunctionCallbackInfo<v8::Value>& info
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pMarkerInfo'");
   }
-    PFN_vkCmdDebugMarkerInsertEXT vkCmdDebugMarkerInsertEXT = (PFN_vkCmdDebugMarkerInsertEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdDebugMarkerInsertEXT");
-vkCmdDebugMarkerInsertEXT(
+$vkCmdDebugMarkerInsertEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
@@ -8523,8 +8756,7 @@ void _vkGetPhysicalDeviceExternalImageFormatPropertiesNV(const Nan::FunctionCall
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 8 'pExternalImageFormatProperties'");
   }
-    PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV vkGetPhysicalDeviceExternalImageFormatPropertiesNV = (PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceExternalImageFormatPropertiesNV");
-  int32_t out = vkGetPhysicalDeviceExternalImageFormatPropertiesNV(
+  int32_t out = $vkGetPhysicalDeviceExternalImageFormatPropertiesNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2,
@@ -8584,8 +8816,7 @@ void _vkGetMemoryWin32HandleNV(const Nan::FunctionCallbackInfo<v8::Value>& info)
 
   int32_t $p2 = static_cast<int32_t>(Nan::To<int64_t>(info[2]).FromMaybe(0));
 
-    PFN_vkGetMemoryWin32HandleNV vkGetMemoryWin32HandleNV = (PFN_vkGetMemoryWin32HandleNV) vkGetDeviceProcAddr(*$p0, "vkGetMemoryWin32HandleNV");
-  int32_t out = vkGetMemoryWin32HandleNV(
+  int32_t out = $vkGetMemoryWin32HandleNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     static_cast<VkExternalMemoryHandleTypeFlagsNV>($p2),
@@ -8640,8 +8871,7 @@ void _vkCmdDrawIndirectCountAMD(const Nan::FunctionCallbackInfo<v8::Value>& info
   uint32_t $p5 = static_cast<uint32_t>(Nan::To<int64_t>(info[5]).FromMaybe(0));
 
   uint32_t $p6 = static_cast<uint32_t>(Nan::To<int64_t>(info[6]).FromMaybe(0));
-    PFN_vkCmdDrawIndirectCountAMD vkCmdDrawIndirectCountAMD = (PFN_vkCmdDrawIndirectCountAMD) vkGetDeviceProcAddr(currentDevice, "vkCmdDrawIndirectCountAMD");
-vkCmdDrawIndirectCountAMD(
+$vkCmdDrawIndirectCountAMD(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2,
@@ -8701,8 +8931,7 @@ void _vkCmdDrawIndexedIndirectCountAMD(const Nan::FunctionCallbackInfo<v8::Value
   uint32_t $p5 = static_cast<uint32_t>(Nan::To<int64_t>(info[5]).FromMaybe(0));
 
   uint32_t $p6 = static_cast<uint32_t>(Nan::To<int64_t>(info[6]).FromMaybe(0));
-    PFN_vkCmdDrawIndexedIndirectCountAMD vkCmdDrawIndexedIndirectCountAMD = (PFN_vkCmdDrawIndexedIndirectCountAMD) vkGetDeviceProcAddr(currentDevice, "vkCmdDrawIndexedIndirectCountAMD");
-vkCmdDrawIndexedIndirectCountAMD(
+$vkCmdDrawIndexedIndirectCountAMD(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2,
@@ -8742,8 +8971,7 @@ void _vkCmdProcessCommandsNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pProcessCommandsInfo'");
   }
-    PFN_vkCmdProcessCommandsNVX vkCmdProcessCommandsNVX = (PFN_vkCmdProcessCommandsNVX) vkGetDeviceProcAddr(currentDevice, "vkCmdProcessCommandsNVX");
-vkCmdProcessCommandsNVX(
+$vkCmdProcessCommandsNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
@@ -8778,8 +9006,7 @@ void _vkCmdReserveSpaceForCommandsNVX(const Nan::FunctionCallbackInfo<v8::Value>
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pReserveSpaceInfo'");
   }
-    PFN_vkCmdReserveSpaceForCommandsNVX vkCmdReserveSpaceForCommandsNVX = (PFN_vkCmdReserveSpaceForCommandsNVX) vkGetDeviceProcAddr(currentDevice, "vkCmdReserveSpaceForCommandsNVX");
-vkCmdReserveSpaceForCommandsNVX(
+$vkCmdReserveSpaceForCommandsNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
@@ -8827,8 +9054,7 @@ void _vkCreateIndirectCommandsLayoutNVX(const Nan::FunctionCallbackInfo<v8::Valu
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pIndirectCommandsLayout'");
   }
-    PFN_vkCreateIndirectCommandsLayoutNVX vkCreateIndirectCommandsLayoutNVX = (PFN_vkCreateIndirectCommandsLayoutNVX) vkGetDeviceProcAddr(*$p0, "vkCreateIndirectCommandsLayoutNVX");
-  int32_t out = vkCreateIndirectCommandsLayoutNVX(
+  int32_t out = $vkCreateIndirectCommandsLayoutNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     nullptr,
@@ -8864,8 +9090,7 @@ void _vkDestroyIndirectCommandsLayoutNVX(const Nan::FunctionCallbackInfo<v8::Val
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'indirectCommandsLayout'");
   }
 
-    PFN_vkDestroyIndirectCommandsLayoutNVX vkDestroyIndirectCommandsLayoutNVX = (PFN_vkDestroyIndirectCommandsLayoutNVX) vkGetDeviceProcAddr(*$p0, "vkDestroyIndirectCommandsLayoutNVX");
-vkDestroyIndirectCommandsLayoutNVX(
+$vkDestroyIndirectCommandsLayoutNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
@@ -8914,8 +9139,7 @@ void _vkCreateObjectTableNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pObjectTable'");
   }
-    PFN_vkCreateObjectTableNVX vkCreateObjectTableNVX = (PFN_vkCreateObjectTableNVX) vkGetDeviceProcAddr(*$p0, "vkCreateObjectTableNVX");
-  int32_t out = vkCreateObjectTableNVX(
+  int32_t out = $vkCreateObjectTableNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     nullptr,
@@ -8951,8 +9175,7 @@ void _vkDestroyObjectTableNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) 
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'objectTable'");
   }
 
-    PFN_vkDestroyObjectTableNVX vkDestroyObjectTableNVX = (PFN_vkDestroyObjectTableNVX) vkGetDeviceProcAddr(*$p0, "vkDestroyObjectTableNVX");
-vkDestroyObjectTableNVX(
+$vkDestroyObjectTableNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
@@ -9026,8 +9249,7 @@ void _vkRegisterObjectsNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     return Nan::ThrowTypeError("Invalid type for argument 5 'pObjectIndices'");
   }
 
-    PFN_vkRegisterObjectsNVX vkRegisterObjectsNVX = (PFN_vkRegisterObjectsNVX) vkGetDeviceProcAddr(*$p0, "vkRegisterObjectsNVX");
-  int32_t out = vkRegisterObjectsNVX(
+  int32_t out = $vkRegisterObjectsNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2,
@@ -9088,8 +9310,7 @@ void _vkUnregisterObjectsNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     return Nan::ThrowTypeError("Invalid type for argument 5 'pObjectIndices'");
   }
 
-    PFN_vkUnregisterObjectsNVX vkUnregisterObjectsNVX = (PFN_vkUnregisterObjectsNVX) vkGetDeviceProcAddr(*$p0, "vkUnregisterObjectsNVX");
-  int32_t out = vkUnregisterObjectsNVX(
+  int32_t out = $vkUnregisterObjectsNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2,
@@ -9137,8 +9358,7 @@ void _vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(const Nan::FunctionCallb
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pLimits'");
   }
-    PFN_vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX = (PFN_vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX) vkGetDeviceProcAddr(currentDevice, "vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX");
-vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(
+$vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2
@@ -9737,8 +9957,7 @@ void _vkCmdPushDescriptorSetKHR(const Nan::FunctionCallbackInfo<v8::Value>& info
     return Nan::ThrowTypeError("Invalid type for argument 6 'pDescriptorWrites'");
   }
 
-    PFN_vkCmdPushDescriptorSetKHR vkCmdPushDescriptorSetKHR = (PFN_vkCmdPushDescriptorSetKHR) vkGetDeviceProcAddr(currentDevice, "vkCmdPushDescriptorSetKHR");
-vkCmdPushDescriptorSetKHR(
+$vkCmdPushDescriptorSetKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     info[2]->IsNull() ? VK_NULL_HANDLE : *$p2,
@@ -9873,8 +10092,7 @@ void _vkGetMemoryWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>& info
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pGetWin32HandleInfo'");
   }
 
-    PFN_vkGetMemoryWin32HandleKHR vkGetMemoryWin32HandleKHR = (PFN_vkGetMemoryWin32HandleKHR) vkGetDeviceProcAddr(*$p0, "vkGetMemoryWin32HandleKHR");
-  int32_t out = vkGetMemoryWin32HandleKHR(
+  int32_t out = $vkGetMemoryWin32HandleKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
 nullptr
@@ -9911,8 +10129,7 @@ void _vkGetMemoryWin32HandlePropertiesKHR(const Nan::FunctionCallbackInfo<v8::Va
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pMemoryWin32HandleProperties'");
   }
-    PFN_vkGetMemoryWin32HandlePropertiesKHR vkGetMemoryWin32HandlePropertiesKHR = (PFN_vkGetMemoryWin32HandlePropertiesKHR) vkGetDeviceProcAddr(*$p0, "vkGetMemoryWin32HandlePropertiesKHR");
-  int32_t out = vkGetMemoryWin32HandlePropertiesKHR(
+  int32_t out = $vkGetMemoryWin32HandlePropertiesKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     static_cast<VkExternalMemoryHandleTypeFlagBits>($p1),
 nullptr,
@@ -9957,8 +10174,7 @@ void _vkGetMemoryFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pFd'");
   }
-    PFN_vkGetMemoryFdKHR vkGetMemoryFdKHR = (PFN_vkGetMemoryFdKHR) vkGetDeviceProcAddr(*$p0, "vkGetMemoryFdKHR");
-  int32_t out = vkGetMemoryFdKHR(
+  int32_t out = $vkGetMemoryFdKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     &$p2
@@ -9997,8 +10213,7 @@ void _vkGetMemoryFdPropertiesKHR(const Nan::FunctionCallbackInfo<v8::Value>& inf
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pMemoryFdProperties'");
   }
-    PFN_vkGetMemoryFdPropertiesKHR vkGetMemoryFdPropertiesKHR = (PFN_vkGetMemoryFdPropertiesKHR) vkGetDeviceProcAddr(*$p0, "vkGetMemoryFdPropertiesKHR");
-  int32_t out = vkGetMemoryFdPropertiesKHR(
+  int32_t out = $vkGetMemoryFdPropertiesKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     static_cast<VkExternalMemoryHandleTypeFlagBits>($p1),
     $p2,
@@ -10082,8 +10297,7 @@ void _vkGetSemaphoreWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>& i
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pGetWin32HandleInfo'");
   }
 
-    PFN_vkGetSemaphoreWin32HandleKHR vkGetSemaphoreWin32HandleKHR = (PFN_vkGetSemaphoreWin32HandleKHR) vkGetDeviceProcAddr(*$p0, "vkGetSemaphoreWin32HandleKHR");
-  int32_t out = vkGetSemaphoreWin32HandleKHR(
+  int32_t out = $vkGetSemaphoreWin32HandleKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
 nullptr
@@ -10117,8 +10331,7 @@ void _vkImportSemaphoreWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pImportSemaphoreWin32HandleInfo'");
   }
-    PFN_vkImportSemaphoreWin32HandleKHR vkImportSemaphoreWin32HandleKHR = (PFN_vkImportSemaphoreWin32HandleKHR) vkGetDeviceProcAddr(*$p0, "vkImportSemaphoreWin32HandleKHR");
-  int32_t out = vkImportSemaphoreWin32HandleKHR(
+  int32_t out = $vkImportSemaphoreWin32HandleKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
@@ -10161,8 +10374,7 @@ void _vkGetSemaphoreFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pFd'");
   }
-    PFN_vkGetSemaphoreFdKHR vkGetSemaphoreFdKHR = (PFN_vkGetSemaphoreFdKHR) vkGetDeviceProcAddr(*$p0, "vkGetSemaphoreFdKHR");
-  int32_t out = vkGetSemaphoreFdKHR(
+  int32_t out = $vkGetSemaphoreFdKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     &$p2
@@ -10197,8 +10409,7 @@ void _vkImportSemaphoreFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pImportSemaphoreFdInfo'");
   }
-    PFN_vkImportSemaphoreFdKHR vkImportSemaphoreFdKHR = (PFN_vkImportSemaphoreFdKHR) vkGetDeviceProcAddr(*$p0, "vkImportSemaphoreFdKHR");
-  int32_t out = vkImportSemaphoreFdKHR(
+  int32_t out = $vkImportSemaphoreFdKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
@@ -10280,8 +10491,7 @@ void _vkGetFenceWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>& info)
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pGetWin32HandleInfo'");
   }
 
-    PFN_vkGetFenceWin32HandleKHR vkGetFenceWin32HandleKHR = (PFN_vkGetFenceWin32HandleKHR) vkGetDeviceProcAddr(*$p0, "vkGetFenceWin32HandleKHR");
-  int32_t out = vkGetFenceWin32HandleKHR(
+  int32_t out = $vkGetFenceWin32HandleKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
 nullptr
@@ -10315,8 +10525,7 @@ void _vkImportFenceWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>& in
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pImportFenceWin32HandleInfo'");
   }
-    PFN_vkImportFenceWin32HandleKHR vkImportFenceWin32HandleKHR = (PFN_vkImportFenceWin32HandleKHR) vkGetDeviceProcAddr(*$p0, "vkImportFenceWin32HandleKHR");
-  int32_t out = vkImportFenceWin32HandleKHR(
+  int32_t out = $vkImportFenceWin32HandleKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
@@ -10359,8 +10568,7 @@ void _vkGetFenceFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pFd'");
   }
-    PFN_vkGetFenceFdKHR vkGetFenceFdKHR = (PFN_vkGetFenceFdKHR) vkGetDeviceProcAddr(*$p0, "vkGetFenceFdKHR");
-  int32_t out = vkGetFenceFdKHR(
+  int32_t out = $vkGetFenceFdKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     &$p2
@@ -10395,8 +10603,7 @@ void _vkImportFenceFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pImportFenceFdInfo'");
   }
-    PFN_vkImportFenceFdKHR vkImportFenceFdKHR = (PFN_vkImportFenceFdKHR) vkGetDeviceProcAddr(*$p0, "vkImportFenceFdKHR");
-  int32_t out = vkImportFenceFdKHR(
+  int32_t out = $vkImportFenceFdKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
@@ -10429,8 +10636,7 @@ void _vkReleaseDisplayEXT(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'display'");
   }
-    PFN_vkReleaseDisplayEXT vkReleaseDisplayEXT = (PFN_vkReleaseDisplayEXT) vkGetInstanceProcAddr(currentInstance, "vkReleaseDisplayEXT");
-  int32_t out = vkReleaseDisplayEXT(
+  int32_t out = $vkReleaseDisplayEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1
   );
@@ -10475,8 +10681,7 @@ void _vkDisplayPowerControlEXT(const Nan::FunctionCallbackInfo<v8::Value>& info)
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pDisplayPowerInfo'");
   }
-    PFN_vkDisplayPowerControlEXT vkDisplayPowerControlEXT = (PFN_vkDisplayPowerControlEXT) vkGetDeviceProcAddr(*$p0, "vkDisplayPowerControlEXT");
-  int32_t out = vkDisplayPowerControlEXT(
+  int32_t out = $vkDisplayPowerControlEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2
@@ -10523,8 +10728,7 @@ void _vkRegisterDeviceEventEXT(const Nan::FunctionCallbackInfo<v8::Value>& info)
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pFence'");
   }
-    PFN_vkRegisterDeviceEventEXT vkRegisterDeviceEventEXT = (PFN_vkRegisterDeviceEventEXT) vkGetDeviceProcAddr(*$p0, "vkRegisterDeviceEventEXT");
-  int32_t out = vkRegisterDeviceEventEXT(
+  int32_t out = $vkRegisterDeviceEventEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     nullptr,
@@ -10584,8 +10788,7 @@ void _vkRegisterDisplayEventEXT(const Nan::FunctionCallbackInfo<v8::Value>& info
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 5 'pFence'");
   }
-    PFN_vkRegisterDisplayEventEXT vkRegisterDisplayEventEXT = (PFN_vkRegisterDisplayEventEXT) vkGetDeviceProcAddr(*$p0, "vkRegisterDisplayEventEXT");
-  int32_t out = vkRegisterDisplayEventEXT(
+  int32_t out = $vkRegisterDisplayEventEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2,
@@ -10633,8 +10836,7 @@ void _vkGetSwapchainCounterEXT(const Nan::FunctionCallbackInfo<v8::Value>& info)
   } else if (!info[3]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pCounterValue'");
   }
-    PFN_vkGetSwapchainCounterEXT vkGetSwapchainCounterEXT = (PFN_vkGetSwapchainCounterEXT) vkGetDeviceProcAddr(*$p0, "vkGetSwapchainCounterEXT");
-  int32_t out = vkGetSwapchainCounterEXT(
+  int32_t out = $vkGetSwapchainCounterEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     static_cast<VkSurfaceCounterFlagBitsEXT>($p2),
@@ -10683,8 +10885,7 @@ void _vkGetPhysicalDeviceSurfaceCapabilities2EXT(const Nan::FunctionCallbackInfo
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pSurfaceCapabilities'");
   }
-    PFN_vkGetPhysicalDeviceSurfaceCapabilities2EXT vkGetPhysicalDeviceSurfaceCapabilities2EXT = (PFN_vkGetPhysicalDeviceSurfaceCapabilities2EXT) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceSurfaceCapabilities2EXT");
-  int32_t out = vkGetPhysicalDeviceSurfaceCapabilities2EXT(
+  int32_t out = $vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2
@@ -10981,8 +11182,7 @@ void _vkGetDeviceGroupPresentCapabilitiesKHR(const Nan::FunctionCallbackInfo<v8:
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pDeviceGroupPresentCapabilities'");
   }
-    PFN_vkGetDeviceGroupPresentCapabilitiesKHR vkGetDeviceGroupPresentCapabilitiesKHR = (PFN_vkGetDeviceGroupPresentCapabilitiesKHR) vkGetDeviceProcAddr(*$p0, "vkGetDeviceGroupPresentCapabilitiesKHR");
-  int32_t out = vkGetDeviceGroupPresentCapabilitiesKHR(
+  int32_t out = $vkGetDeviceGroupPresentCapabilitiesKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
@@ -11034,8 +11234,7 @@ void _vkGetDeviceGroupSurfacePresentModesKHR(const Nan::FunctionCallbackInfo<v8:
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pModes'");
   }
-    PFN_vkGetDeviceGroupSurfacePresentModesKHR vkGetDeviceGroupSurfacePresentModesKHR = (PFN_vkGetDeviceGroupSurfacePresentModesKHR) vkGetDeviceProcAddr(*$p0, "vkGetDeviceGroupSurfacePresentModesKHR");
-  int32_t out = vkGetDeviceGroupSurfacePresentModesKHR(
+  int32_t out = $vkGetDeviceGroupSurfacePresentModesKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     reinterpret_cast<VkDeviceGroupPresentModeFlagsKHR *>(&$p2)
@@ -11080,8 +11279,7 @@ void _vkAcquireNextImage2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pImageIndex'");
   }
-    PFN_vkAcquireNextImage2KHR vkAcquireNextImage2KHR = (PFN_vkAcquireNextImage2KHR) vkGetDeviceProcAddr(*$p0, "vkAcquireNextImage2KHR");
-  int32_t out = vkAcquireNextImage2KHR(
+  int32_t out = $vkAcquireNextImage2KHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     &$p2
@@ -11191,8 +11389,7 @@ void _vkGetPhysicalDevicePresentRectanglesKHR(const Nan::FunctionCallbackInfo<v8
     return Nan::ThrowTypeError("Invalid type for argument 4 'pRects'");
   }
 
-    PFN_vkGetPhysicalDevicePresentRectanglesKHR vkGetPhysicalDevicePresentRectanglesKHR = (PFN_vkGetPhysicalDevicePresentRectanglesKHR) vkGetDeviceProcAddr(currentDevice, "vkGetPhysicalDevicePresentRectanglesKHR");
-  int32_t out = vkGetPhysicalDevicePresentRectanglesKHR(
+  int32_t out = $vkGetPhysicalDevicePresentRectanglesKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     &$p2,
@@ -11422,8 +11619,7 @@ void _vkCmdPushDescriptorSetWithTemplateKHR(const Nan::FunctionCallbackInfo<v8::
   } else {
     $p4 = nullptr;
   }
-    PFN_vkCmdPushDescriptorSetWithTemplateKHR vkCmdPushDescriptorSetWithTemplateKHR = (PFN_vkCmdPushDescriptorSetWithTemplateKHR) vkGetDeviceProcAddr(currentDevice, "vkCmdPushDescriptorSetWithTemplateKHR");
-vkCmdPushDescriptorSetWithTemplateKHR(
+$vkCmdPushDescriptorSetWithTemplateKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     info[2]->IsNull() ? VK_NULL_HANDLE : *$p2,
@@ -11493,8 +11689,7 @@ void _vkSetHdrMetadataEXT(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     return Nan::ThrowTypeError("Invalid type for argument 4 'pMetadata'");
   }
 
-    PFN_vkSetHdrMetadataEXT vkSetHdrMetadataEXT = (PFN_vkSetHdrMetadataEXT) vkGetDeviceProcAddr(*$p0, "vkSetHdrMetadataEXT");
-vkSetHdrMetadataEXT(
+$vkSetHdrMetadataEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2 ? (const VkSwapchainKHR *) $p2.get()->data() : nullptr,
@@ -11531,8 +11726,7 @@ void _vkGetSwapchainStatusKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'swapchain'");
   }
-    PFN_vkGetSwapchainStatusKHR vkGetSwapchainStatusKHR = (PFN_vkGetSwapchainStatusKHR) vkGetDeviceProcAddr(*$p0, "vkGetSwapchainStatusKHR");
-  int32_t out = vkGetSwapchainStatusKHR(
+  int32_t out = $vkGetSwapchainStatusKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1
   );
@@ -11577,8 +11771,7 @@ void _vkGetRefreshCycleDurationGOOGLE(const Nan::FunctionCallbackInfo<v8::Value>
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pDisplayTimingProperties'");
   }
-    PFN_vkGetRefreshCycleDurationGOOGLE vkGetRefreshCycleDurationGOOGLE = (PFN_vkGetRefreshCycleDurationGOOGLE) vkGetDeviceProcAddr(*$p0, "vkGetRefreshCycleDurationGOOGLE");
-  int32_t out = vkGetRefreshCycleDurationGOOGLE(
+  int32_t out = $vkGetRefreshCycleDurationGOOGLE(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2
@@ -11647,8 +11840,7 @@ void _vkGetPastPresentationTimingGOOGLE(const Nan::FunctionCallbackInfo<v8::Valu
     return Nan::ThrowTypeError("Invalid type for argument 4 'pPresentationTimings'");
   }
 
-    PFN_vkGetPastPresentationTimingGOOGLE vkGetPastPresentationTimingGOOGLE = (PFN_vkGetPastPresentationTimingGOOGLE) vkGetDeviceProcAddr(*$p0, "vkGetPastPresentationTimingGOOGLE");
-  int32_t out = vkGetPastPresentationTimingGOOGLE(
+  int32_t out = $vkGetPastPresentationTimingGOOGLE(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     &$p2,
@@ -11713,8 +11905,7 @@ void _vkCmdSetViewportWScalingNV(const Nan::FunctionCallbackInfo<v8::Value>& inf
     return Nan::ThrowTypeError("Invalid type for argument 4 'pViewportWScalings'");
   }
 
-    PFN_vkCmdSetViewportWScalingNV vkCmdSetViewportWScalingNV = (PFN_vkCmdSetViewportWScalingNV) vkGetDeviceProcAddr(currentDevice, "vkCmdSetViewportWScalingNV");
-vkCmdSetViewportWScalingNV(
+$vkCmdSetViewportWScalingNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2,
@@ -11768,8 +11959,7 @@ void _vkCmdSetDiscardRectangleEXT(const Nan::FunctionCallbackInfo<v8::Value>& in
     return Nan::ThrowTypeError("Invalid type for argument 4 'pDiscardRectangles'");
   }
 
-    PFN_vkCmdSetDiscardRectangleEXT vkCmdSetDiscardRectangleEXT = (PFN_vkCmdSetDiscardRectangleEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdSetDiscardRectangleEXT");
-vkCmdSetDiscardRectangleEXT(
+$vkCmdSetDiscardRectangleEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2,
@@ -11806,8 +11996,7 @@ void _vkCmdSetSampleLocationsEXT(const Nan::FunctionCallbackInfo<v8::Value>& inf
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pSampleLocationsInfo'");
   }
-    PFN_vkCmdSetSampleLocationsEXT vkCmdSetSampleLocationsEXT = (PFN_vkCmdSetSampleLocationsEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdSetSampleLocationsEXT");
-vkCmdSetSampleLocationsEXT(
+$vkCmdSetSampleLocationsEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
@@ -11844,8 +12033,7 @@ void _vkGetPhysicalDeviceMultisamplePropertiesEXT(const Nan::FunctionCallbackInf
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pMultisampleProperties'");
   }
-    PFN_vkGetPhysicalDeviceMultisamplePropertiesEXT vkGetPhysicalDeviceMultisamplePropertiesEXT = (PFN_vkGetPhysicalDeviceMultisamplePropertiesEXT) vkGetDeviceProcAddr(currentDevice, "vkGetPhysicalDeviceMultisamplePropertiesEXT");
-vkGetPhysicalDeviceMultisamplePropertiesEXT(
+$vkGetPhysicalDeviceMultisamplePropertiesEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     static_cast<VkSampleCountFlagBits>($p1),
     $p2
@@ -11902,8 +12090,7 @@ void _vkGetPhysicalDeviceSurfaceCapabilities2KHR(const Nan::FunctionCallbackInfo
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pSurfaceCapabilities'");
   }
-    PFN_vkGetPhysicalDeviceSurfaceCapabilities2KHR vkGetPhysicalDeviceSurfaceCapabilities2KHR = (PFN_vkGetPhysicalDeviceSurfaceCapabilities2KHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceSurfaceCapabilities2KHR");
-  int32_t out = vkGetPhysicalDeviceSurfaceCapabilities2KHR(
+  int32_t out = $vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2
@@ -12008,8 +12195,7 @@ void _vkGetPhysicalDeviceSurfaceFormats2KHR(const Nan::FunctionCallbackInfo<v8::
     return Nan::ThrowTypeError("Invalid type for argument 4 'pSurfaceFormats'");
   }
 
-    PFN_vkGetPhysicalDeviceSurfaceFormats2KHR vkGetPhysicalDeviceSurfaceFormats2KHR = (PFN_vkGetPhysicalDeviceSurfaceFormats2KHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceSurfaceFormats2KHR");
-  int32_t out = vkGetPhysicalDeviceSurfaceFormats2KHR(
+  int32_t out = $vkGetPhysicalDeviceSurfaceFormats2KHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     &$p2,
@@ -12089,8 +12275,7 @@ void _vkGetPhysicalDeviceDisplayProperties2KHR(const Nan::FunctionCallbackInfo<v
     return Nan::ThrowTypeError("Invalid type for argument 3 'pProperties'");
   }
 
-    PFN_vkGetPhysicalDeviceDisplayProperties2KHR vkGetPhysicalDeviceDisplayProperties2KHR = (PFN_vkGetPhysicalDeviceDisplayProperties2KHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceDisplayProperties2KHR");
-  int32_t out = vkGetPhysicalDeviceDisplayProperties2KHR(
+  int32_t out = $vkGetPhysicalDeviceDisplayProperties2KHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     &$p1,
     $p2 ? (VkDisplayProperties2KHR *) $p2.get()->data() : nullptr
@@ -12169,8 +12354,7 @@ void _vkGetPhysicalDeviceDisplayPlaneProperties2KHR(const Nan::FunctionCallbackI
     return Nan::ThrowTypeError("Invalid type for argument 3 'pProperties'");
   }
 
-    PFN_vkGetPhysicalDeviceDisplayPlaneProperties2KHR vkGetPhysicalDeviceDisplayPlaneProperties2KHR = (PFN_vkGetPhysicalDeviceDisplayPlaneProperties2KHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceDisplayPlaneProperties2KHR");
-  int32_t out = vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
+  int32_t out = $vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     &$p1,
     $p2 ? (VkDisplayPlaneProperties2KHR *) $p2.get()->data() : nullptr
@@ -12261,8 +12445,7 @@ void _vkGetDisplayModeProperties2KHR(const Nan::FunctionCallbackInfo<v8::Value>&
     return Nan::ThrowTypeError("Invalid type for argument 4 'pProperties'");
   }
 
-    PFN_vkGetDisplayModeProperties2KHR vkGetDisplayModeProperties2KHR = (PFN_vkGetDisplayModeProperties2KHR) vkGetInstanceProcAddr(currentInstance, "vkGetDisplayModeProperties2KHR");
-  int32_t out = vkGetDisplayModeProperties2KHR(
+  int32_t out = $vkGetDisplayModeProperties2KHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     &$p2,
@@ -12331,8 +12514,7 @@ void _vkGetDisplayPlaneCapabilities2KHR(const Nan::FunctionCallbackInfo<v8::Valu
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pCapabilities'");
   }
-    PFN_vkGetDisplayPlaneCapabilities2KHR vkGetDisplayPlaneCapabilities2KHR = (PFN_vkGetDisplayPlaneCapabilities2KHR) vkGetInstanceProcAddr(currentInstance, "vkGetDisplayPlaneCapabilities2KHR");
-  int32_t out = vkGetDisplayPlaneCapabilities2KHR(
+  int32_t out = $vkGetDisplayPlaneCapabilities2KHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2
@@ -12801,8 +12983,7 @@ void _vkCreateValidationCacheEXT(const Nan::FunctionCallbackInfo<v8::Value>& inf
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pValidationCache'");
   }
-    PFN_vkCreateValidationCacheEXT vkCreateValidationCacheEXT = (PFN_vkCreateValidationCacheEXT) vkGetDeviceProcAddr(*$p0, "vkCreateValidationCacheEXT");
-  int32_t out = vkCreateValidationCacheEXT(
+  int32_t out = $vkCreateValidationCacheEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     nullptr,
@@ -12838,8 +13019,7 @@ void _vkDestroyValidationCacheEXT(const Nan::FunctionCallbackInfo<v8::Value>& in
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'validationCache'");
   }
 
-    PFN_vkDestroyValidationCacheEXT vkDestroyValidationCacheEXT = (PFN_vkDestroyValidationCacheEXT) vkGetDeviceProcAddr(*$p0, "vkDestroyValidationCacheEXT");
-vkDestroyValidationCacheEXT(
+$vkDestroyValidationCacheEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
@@ -12886,8 +13066,7 @@ void _vkGetValidationCacheDataEXT(const Nan::FunctionCallbackInfo<v8::Value>& in
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pDataSize'");
   }
 
-    PFN_vkGetValidationCacheDataEXT vkGetValidationCacheDataEXT = (PFN_vkGetValidationCacheDataEXT) vkGetDeviceProcAddr(*$p0, "vkGetValidationCacheDataEXT");
-  int32_t out = vkGetValidationCacheDataEXT(
+  int32_t out = $vkGetValidationCacheDataEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     &$p2,
@@ -12943,8 +13122,7 @@ void _vkMergeValidationCachesEXT(const Nan::FunctionCallbackInfo<v8::Value>& inf
     return Nan::ThrowTypeError("Invalid type for argument 4 'pSrcCaches'");
   }
 
-    PFN_vkMergeValidationCachesEXT vkMergeValidationCachesEXT = (PFN_vkMergeValidationCachesEXT) vkGetDeviceProcAddr(*$p0, "vkMergeValidationCachesEXT");
-  int32_t out = vkMergeValidationCachesEXT(
+  int32_t out = $vkMergeValidationCachesEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2,
@@ -13042,8 +13220,7 @@ void _vkGetShaderInfoAMD(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 5 'pInfoSize'");
   }
 
-    PFN_vkGetShaderInfoAMD vkGetShaderInfoAMD = (PFN_vkGetShaderInfoAMD) vkGetDeviceProcAddr(*$p0, "vkGetShaderInfoAMD");
-  int32_t out = vkGetShaderInfoAMD(
+  int32_t out = $vkGetShaderInfoAMD(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     static_cast<VkShaderStageFlagBits>($p2),
@@ -13082,8 +13259,7 @@ void _vkSetDebugUtilsObjectNameEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pNameInfo'");
   }
-    PFN_vkSetDebugUtilsObjectNameEXT vkSetDebugUtilsObjectNameEXT = (PFN_vkSetDebugUtilsObjectNameEXT) vkGetInstanceProcAddr(currentInstance, "vkSetDebugUtilsObjectNameEXT");
-  int32_t out = vkSetDebugUtilsObjectNameEXT(
+  int32_t out = $vkSetDebugUtilsObjectNameEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
@@ -13116,8 +13292,7 @@ void _vkSetDebugUtilsObjectTagEXT(const Nan::FunctionCallbackInfo<v8::Value>& in
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pTagInfo'");
   }
-    PFN_vkSetDebugUtilsObjectTagEXT vkSetDebugUtilsObjectTagEXT = (PFN_vkSetDebugUtilsObjectTagEXT) vkGetInstanceProcAddr(currentInstance, "vkSetDebugUtilsObjectTagEXT");
-  int32_t out = vkSetDebugUtilsObjectTagEXT(
+  int32_t out = $vkSetDebugUtilsObjectTagEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
@@ -13150,8 +13325,7 @@ void _vkQueueBeginDebugUtilsLabelEXT(const Nan::FunctionCallbackInfo<v8::Value>&
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pLabelInfo'");
   }
-    PFN_vkQueueBeginDebugUtilsLabelEXT vkQueueBeginDebugUtilsLabelEXT = (PFN_vkQueueBeginDebugUtilsLabelEXT) vkGetInstanceProcAddr(currentInstance, "vkQueueBeginDebugUtilsLabelEXT");
-vkQueueBeginDebugUtilsLabelEXT(
+$vkQueueBeginDebugUtilsLabelEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
@@ -13174,8 +13348,7 @@ void _vkQueueEndDebugUtilsLabelEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'queue'");
   }
-    PFN_vkQueueEndDebugUtilsLabelEXT vkQueueEndDebugUtilsLabelEXT = (PFN_vkQueueEndDebugUtilsLabelEXT) vkGetInstanceProcAddr(currentInstance, "vkQueueEndDebugUtilsLabelEXT");
-vkQueueEndDebugUtilsLabelEXT(
+$vkQueueEndDebugUtilsLabelEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0
   );
   
@@ -13209,8 +13382,7 @@ void _vkQueueInsertDebugUtilsLabelEXT(const Nan::FunctionCallbackInfo<v8::Value>
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pLabelInfo'");
   }
-    PFN_vkQueueInsertDebugUtilsLabelEXT vkQueueInsertDebugUtilsLabelEXT = (PFN_vkQueueInsertDebugUtilsLabelEXT) vkGetInstanceProcAddr(currentInstance, "vkQueueInsertDebugUtilsLabelEXT");
-vkQueueInsertDebugUtilsLabelEXT(
+$vkQueueInsertDebugUtilsLabelEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
@@ -13245,8 +13417,7 @@ void _vkCmdBeginDebugUtilsLabelEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pLabelInfo'");
   }
-    PFN_vkCmdBeginDebugUtilsLabelEXT vkCmdBeginDebugUtilsLabelEXT = (PFN_vkCmdBeginDebugUtilsLabelEXT) vkGetInstanceProcAddr(currentInstance, "vkCmdBeginDebugUtilsLabelEXT");
-vkCmdBeginDebugUtilsLabelEXT(
+$vkCmdBeginDebugUtilsLabelEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
@@ -13269,8 +13440,7 @@ void _vkCmdEndDebugUtilsLabelEXT(const Nan::FunctionCallbackInfo<v8::Value>& inf
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
   }
-    PFN_vkCmdEndDebugUtilsLabelEXT vkCmdEndDebugUtilsLabelEXT = (PFN_vkCmdEndDebugUtilsLabelEXT) vkGetInstanceProcAddr(currentInstance, "vkCmdEndDebugUtilsLabelEXT");
-vkCmdEndDebugUtilsLabelEXT(
+$vkCmdEndDebugUtilsLabelEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0
   );
   
@@ -13304,8 +13474,7 @@ void _vkCmdInsertDebugUtilsLabelEXT(const Nan::FunctionCallbackInfo<v8::Value>& 
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pLabelInfo'");
   }
-    PFN_vkCmdInsertDebugUtilsLabelEXT vkCmdInsertDebugUtilsLabelEXT = (PFN_vkCmdInsertDebugUtilsLabelEXT) vkGetInstanceProcAddr(currentInstance, "vkCmdInsertDebugUtilsLabelEXT");
-vkCmdInsertDebugUtilsLabelEXT(
+$vkCmdInsertDebugUtilsLabelEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
@@ -13353,8 +13522,7 @@ void _vkCreateDebugUtilsMessengerEXT(const Nan::FunctionCallbackInfo<v8::Value>&
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pMessenger'");
   }
-    PFN_vkCreateDebugUtilsMessengerEXT vkCreateDebugUtilsMessengerEXT = (PFN_vkCreateDebugUtilsMessengerEXT) vkGetInstanceProcAddr(*$p0, "vkCreateDebugUtilsMessengerEXT");
-  int32_t out = vkCreateDebugUtilsMessengerEXT(
+  int32_t out = $vkCreateDebugUtilsMessengerEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     nullptr,
@@ -13390,8 +13558,7 @@ void _vkDestroyDebugUtilsMessengerEXT(const Nan::FunctionCallbackInfo<v8::Value>
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'messenger'");
   }
 
-    PFN_vkDestroyDebugUtilsMessengerEXT vkDestroyDebugUtilsMessengerEXT = (PFN_vkDestroyDebugUtilsMessengerEXT) vkGetInstanceProcAddr(*$p0, "vkDestroyDebugUtilsMessengerEXT");
-vkDestroyDebugUtilsMessengerEXT(
+$vkDestroyDebugUtilsMessengerEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
@@ -13431,8 +13598,7 @@ void _vkSubmitDebugUtilsMessageEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pCallbackData'");
   }
-    PFN_vkSubmitDebugUtilsMessageEXT vkSubmitDebugUtilsMessageEXT = (PFN_vkSubmitDebugUtilsMessageEXT) vkGetInstanceProcAddr(*$p0, "vkSubmitDebugUtilsMessageEXT");
-vkSubmitDebugUtilsMessageEXT(
+$vkSubmitDebugUtilsMessageEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     static_cast<VkDebugUtilsMessageSeverityFlagBitsEXT>($p1),
     static_cast<VkDebugUtilsMessageTypeFlagsEXT>($p2),
@@ -13479,8 +13645,7 @@ void _vkGetMemoryHostPointerPropertiesEXT(const Nan::FunctionCallbackInfo<v8::Va
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pMemoryHostPointerProperties'");
   }
-    PFN_vkGetMemoryHostPointerPropertiesEXT vkGetMemoryHostPointerPropertiesEXT = (PFN_vkGetMemoryHostPointerPropertiesEXT) vkGetDeviceProcAddr(*$p0, "vkGetMemoryHostPointerPropertiesEXT");
-  int32_t out = vkGetMemoryHostPointerPropertiesEXT(
+  int32_t out = $vkGetMemoryHostPointerPropertiesEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     static_cast<VkExternalMemoryHandleTypeFlagBits>($p1),
     $p2,
@@ -13521,8 +13686,7 @@ void _vkCmdWriteBufferMarkerAMD(const Nan::FunctionCallbackInfo<v8::Value>& info
   uint64_t $p3 = static_cast<uint64_t>(Nan::To<int64_t>(info[3]).FromMaybe(0));
 
   uint32_t $p4 = static_cast<uint32_t>(Nan::To<int64_t>(info[4]).FromMaybe(0));
-    PFN_vkCmdWriteBufferMarkerAMD vkCmdWriteBufferMarkerAMD = (PFN_vkCmdWriteBufferMarkerAMD) vkGetDeviceProcAddr(currentDevice, "vkCmdWriteBufferMarkerAMD");
-vkCmdWriteBufferMarkerAMD(
+$vkCmdWriteBufferMarkerAMD(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     static_cast<VkPipelineStageFlagBits>($p1),
     info[2]->IsNull() ? VK_NULL_HANDLE : *$p2,
@@ -13573,8 +13737,7 @@ void _vkCreateRenderPass2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pRenderPass'");
   }
-    PFN_vkCreateRenderPass2KHR vkCreateRenderPass2KHR = (PFN_vkCreateRenderPass2KHR) vkGetDeviceProcAddr(*$p0, "vkCreateRenderPass2KHR");
-  int32_t out = vkCreateRenderPass2KHR(
+  int32_t out = $vkCreateRenderPass2KHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     nullptr,
@@ -13621,8 +13784,7 @@ void _vkCmdBeginRenderPass2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info)
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pSubpassBeginInfo'");
   }
-    PFN_vkCmdBeginRenderPass2KHR vkCmdBeginRenderPass2KHR = (PFN_vkCmdBeginRenderPass2KHR) vkGetDeviceProcAddr(currentDevice, "vkCmdBeginRenderPass2KHR");
-vkCmdBeginRenderPass2KHR(
+$vkCmdBeginRenderPass2KHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2
@@ -13670,8 +13832,7 @@ void _vkCmdNextSubpass2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pSubpassEndInfo'");
   }
-    PFN_vkCmdNextSubpass2KHR vkCmdNextSubpass2KHR = (PFN_vkCmdNextSubpass2KHR) vkGetDeviceProcAddr(currentDevice, "vkCmdNextSubpass2KHR");
-vkCmdNextSubpass2KHR(
+$vkCmdNextSubpass2KHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2
@@ -13707,8 +13868,7 @@ void _vkCmdEndRenderPass2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pSubpassEndInfo'");
   }
-    PFN_vkCmdEndRenderPass2KHR vkCmdEndRenderPass2KHR = (PFN_vkCmdEndRenderPass2KHR) vkGetDeviceProcAddr(currentDevice, "vkCmdEndRenderPass2KHR");
-vkCmdEndRenderPass2KHR(
+$vkCmdEndRenderPass2KHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
@@ -13763,8 +13923,7 @@ void _vkCmdDrawIndirectCountKHR(const Nan::FunctionCallbackInfo<v8::Value>& info
   uint32_t $p5 = static_cast<uint32_t>(Nan::To<int64_t>(info[5]).FromMaybe(0));
 
   uint32_t $p6 = static_cast<uint32_t>(Nan::To<int64_t>(info[6]).FromMaybe(0));
-    PFN_vkCmdDrawIndirectCountKHR vkCmdDrawIndirectCountKHR = (PFN_vkCmdDrawIndirectCountKHR) vkGetDeviceProcAddr(currentDevice, "vkCmdDrawIndirectCountKHR");
-vkCmdDrawIndirectCountKHR(
+$vkCmdDrawIndirectCountKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2,
@@ -13824,8 +13983,7 @@ void _vkCmdDrawIndexedIndirectCountKHR(const Nan::FunctionCallbackInfo<v8::Value
   uint32_t $p5 = static_cast<uint32_t>(Nan::To<int64_t>(info[5]).FromMaybe(0));
 
   uint32_t $p6 = static_cast<uint32_t>(Nan::To<int64_t>(info[6]).FromMaybe(0));
-    PFN_vkCmdDrawIndexedIndirectCountKHR vkCmdDrawIndexedIndirectCountKHR = (PFN_vkCmdDrawIndexedIndirectCountKHR) vkGetDeviceProcAddr(currentDevice, "vkCmdDrawIndexedIndirectCountKHR");
-vkCmdDrawIndexedIndirectCountKHR(
+$vkCmdDrawIndexedIndirectCountKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2,
@@ -13861,8 +14019,7 @@ void _vkCmdSetCheckpointNV(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   } else {
     $p1 = nullptr;
   }
-    PFN_vkCmdSetCheckpointNV vkCmdSetCheckpointNV = (PFN_vkCmdSetCheckpointNV) vkGetDeviceProcAddr(currentDevice, "vkCmdSetCheckpointNV");
-vkCmdSetCheckpointNV(
+$vkCmdSetCheckpointNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
@@ -13920,8 +14077,7 @@ void _vkGetQueueCheckpointDataNV(const Nan::FunctionCallbackInfo<v8::Value>& inf
     return Nan::ThrowTypeError("Invalid type for argument 3 'pCheckpointData'");
   }
 
-    PFN_vkGetQueueCheckpointDataNV vkGetQueueCheckpointDataNV = (PFN_vkGetQueueCheckpointDataNV) vkGetDeviceProcAddr(currentDevice, "vkGetQueueCheckpointDataNV");
-vkGetQueueCheckpointDataNV(
+$vkGetQueueCheckpointDataNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     &$p1,
     $p2 ? (VkCheckpointDataNV *) $p2.get()->data() : nullptr
@@ -13987,8 +14143,7 @@ void _vkCmdSetExclusiveScissorNV(const Nan::FunctionCallbackInfo<v8::Value>& inf
     return Nan::ThrowTypeError("Invalid type for argument 4 'pExclusiveScissors'");
   }
 
-    PFN_vkCmdSetExclusiveScissorNV vkCmdSetExclusiveScissorNV = (PFN_vkCmdSetExclusiveScissorNV) vkGetDeviceProcAddr(currentDevice, "vkCmdSetExclusiveScissorNV");
-vkCmdSetExclusiveScissorNV(
+$vkCmdSetExclusiveScissorNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2,
@@ -14027,8 +14182,7 @@ void _vkCmdBindShadingRateImageNV(const Nan::FunctionCallbackInfo<v8::Value>& in
   }
 
   VkImageLayout $p2 = static_cast<VkImageLayout>(Nan::To<int64_t>(info[2]).FromMaybe(0));
-    PFN_vkCmdBindShadingRateImageNV vkCmdBindShadingRateImageNV = (PFN_vkCmdBindShadingRateImageNV) vkGetDeviceProcAddr(currentDevice, "vkCmdBindShadingRateImageNV");
-vkCmdBindShadingRateImageNV(
+$vkCmdBindShadingRateImageNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2
@@ -14081,8 +14235,7 @@ void _vkCmdSetViewportShadingRatePaletteNV(const Nan::FunctionCallbackInfo<v8::V
     return Nan::ThrowTypeError("Invalid type for argument 4 'pShadingRatePalettes'");
   }
 
-    PFN_vkCmdSetViewportShadingRatePaletteNV vkCmdSetViewportShadingRatePaletteNV = (PFN_vkCmdSetViewportShadingRatePaletteNV) vkGetDeviceProcAddr(currentDevice, "vkCmdSetViewportShadingRatePaletteNV");
-vkCmdSetViewportShadingRatePaletteNV(
+$vkCmdSetViewportShadingRatePaletteNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2,
@@ -14136,8 +14289,7 @@ void _vkCmdSetCoarseSampleOrderNV(const Nan::FunctionCallbackInfo<v8::Value>& in
     return Nan::ThrowTypeError("Invalid type for argument 4 'pCustomSampleOrders'");
   }
 
-    PFN_vkCmdSetCoarseSampleOrderNV vkCmdSetCoarseSampleOrderNV = (PFN_vkCmdSetCoarseSampleOrderNV) vkGetDeviceProcAddr(currentDevice, "vkCmdSetCoarseSampleOrderNV");
-vkCmdSetCoarseSampleOrderNV(
+$vkCmdSetCoarseSampleOrderNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2,
@@ -14166,8 +14318,7 @@ void _vkCmdDrawMeshTasksNV(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   uint32_t $p1 = static_cast<uint32_t>(Nan::To<int64_t>(info[1]).FromMaybe(0));
 
   uint32_t $p2 = static_cast<uint32_t>(Nan::To<int64_t>(info[2]).FromMaybe(0));
-    PFN_vkCmdDrawMeshTasksNV vkCmdDrawMeshTasksNV = (PFN_vkCmdDrawMeshTasksNV) vkGetDeviceProcAddr(currentDevice, "vkCmdDrawMeshTasksNV");
-vkCmdDrawMeshTasksNV(
+$vkCmdDrawMeshTasksNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2
@@ -14209,8 +14360,7 @@ void _vkCmdDrawMeshTasksIndirectNV(const Nan::FunctionCallbackInfo<v8::Value>& i
   uint32_t $p3 = static_cast<uint32_t>(Nan::To<int64_t>(info[3]).FromMaybe(0));
 
   uint32_t $p4 = static_cast<uint32_t>(Nan::To<int64_t>(info[4]).FromMaybe(0));
-    PFN_vkCmdDrawMeshTasksIndirectNV vkCmdDrawMeshTasksIndirectNV = (PFN_vkCmdDrawMeshTasksIndirectNV) vkGetDeviceProcAddr(currentDevice, "vkCmdDrawMeshTasksIndirectNV");
-vkCmdDrawMeshTasksIndirectNV(
+$vkCmdDrawMeshTasksIndirectNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2,
@@ -14268,8 +14418,7 @@ void _vkCmdDrawMeshTasksIndirectCountNV(const Nan::FunctionCallbackInfo<v8::Valu
   uint32_t $p5 = static_cast<uint32_t>(Nan::To<int64_t>(info[5]).FromMaybe(0));
 
   uint32_t $p6 = static_cast<uint32_t>(Nan::To<int64_t>(info[6]).FromMaybe(0));
-    PFN_vkCmdDrawMeshTasksIndirectCountNV vkCmdDrawMeshTasksIndirectCountNV = (PFN_vkCmdDrawMeshTasksIndirectCountNV) vkGetDeviceProcAddr(currentDevice, "vkCmdDrawMeshTasksIndirectCountNV");
-vkCmdDrawMeshTasksIndirectCountNV(
+$vkCmdDrawMeshTasksIndirectCountNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2,
@@ -14311,8 +14460,7 @@ void _vkCompileDeferredNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   }
 
   uint32_t $p2 = static_cast<uint32_t>(Nan::To<int64_t>(info[2]).FromMaybe(0));
-    PFN_vkCompileDeferredNVX vkCompileDeferredNVX = (PFN_vkCompileDeferredNVX) vkGetDeviceProcAddr(*$p0, "vkCompileDeferredNVX");
-  int32_t out = vkCompileDeferredNVX(
+  int32_t out = $vkCompileDeferredNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2
@@ -14359,8 +14507,7 @@ void _vkCreateAccelerationStructureNVX(const Nan::FunctionCallbackInfo<v8::Value
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pAccelerationStructure'");
   }
-    PFN_vkCreateAccelerationStructureNVX vkCreateAccelerationStructureNVX = (PFN_vkCreateAccelerationStructureNVX) vkGetDeviceProcAddr(*$p0, "vkCreateAccelerationStructureNVX");
-  int32_t out = vkCreateAccelerationStructureNVX(
+  int32_t out = $vkCreateAccelerationStructureNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     nullptr,
@@ -14396,8 +14543,7 @@ void _vkDestroyAccelerationStructureNVX(const Nan::FunctionCallbackInfo<v8::Valu
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'accelerationStructure'");
   }
 
-    PFN_vkDestroyAccelerationStructureNVX vkDestroyAccelerationStructureNVX = (PFN_vkDestroyAccelerationStructureNVX) vkGetDeviceProcAddr(*$p0, "vkDestroyAccelerationStructureNVX");
-vkDestroyAccelerationStructureNVX(
+$vkDestroyAccelerationStructureNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     nullptr
@@ -14445,8 +14591,7 @@ void _vkGetAccelerationStructureMemoryRequirementsNVX(const Nan::FunctionCallbac
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pMemoryRequirements'");
   }
-    PFN_vkGetAccelerationStructureMemoryRequirementsNVX vkGetAccelerationStructureMemoryRequirementsNVX = (PFN_vkGetAccelerationStructureMemoryRequirementsNVX) vkGetDeviceProcAddr(*$p0, "vkGetAccelerationStructureMemoryRequirementsNVX");
-vkGetAccelerationStructureMemoryRequirementsNVX(
+$vkGetAccelerationStructureMemoryRequirementsNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2
@@ -14494,8 +14639,7 @@ void _vkGetAccelerationStructureScratchMemoryRequirementsNVX(const Nan::Function
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pMemoryRequirements'");
   }
-    PFN_vkGetAccelerationStructureScratchMemoryRequirementsNVX vkGetAccelerationStructureScratchMemoryRequirementsNVX = (PFN_vkGetAccelerationStructureScratchMemoryRequirementsNVX) vkGetDeviceProcAddr(*$p0, "vkGetAccelerationStructureScratchMemoryRequirementsNVX");
-vkGetAccelerationStructureScratchMemoryRequirementsNVX(
+$vkGetAccelerationStructureScratchMemoryRequirementsNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2
@@ -14546,8 +14690,7 @@ void _vkBindAccelerationStructureMemoryNVX(const Nan::FunctionCallbackInfo<v8::V
     return Nan::ThrowTypeError("Invalid type for argument 3 'pBindInfos'");
   }
 
-    PFN_vkBindAccelerationStructureMemoryNVX vkBindAccelerationStructureMemoryNVX = (PFN_vkBindAccelerationStructureMemoryNVX) vkGetDeviceProcAddr(*$p0, "vkBindAccelerationStructureMemoryNVX");
-  int32_t out = vkBindAccelerationStructureMemoryNVX(
+  int32_t out = $vkBindAccelerationStructureMemoryNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2 ? (const VkBindAccelerationStructureMemoryInfoNVX *) $p2.get()->data() : nullptr
@@ -14595,8 +14738,7 @@ void _vkCmdCopyAccelerationStructureNVX(const Nan::FunctionCallbackInfo<v8::Valu
   }
 
   VkCopyAccelerationStructureModeNVX $p3 = static_cast<VkCopyAccelerationStructureModeNVX>(Nan::To<int64_t>(info[3]).FromMaybe(0));
-    PFN_vkCmdCopyAccelerationStructureNVX vkCmdCopyAccelerationStructureNVX = (PFN_vkCmdCopyAccelerationStructureNVX) vkGetDeviceProcAddr(currentDevice, "vkCmdCopyAccelerationStructureNVX");
-vkCmdCopyAccelerationStructureNVX(
+$vkCmdCopyAccelerationStructureNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     info[2]->IsNull() ? VK_NULL_HANDLE : *$p2,
@@ -14649,8 +14791,7 @@ void _vkCmdWriteAccelerationStructurePropertiesNVX(const Nan::FunctionCallbackIn
   }
 
   uint32_t $p4 = static_cast<uint32_t>(Nan::To<int64_t>(info[4]).FromMaybe(0));
-    PFN_vkCmdWriteAccelerationStructurePropertiesNVX vkCmdWriteAccelerationStructurePropertiesNVX = (PFN_vkCmdWriteAccelerationStructurePropertiesNVX) vkGetDeviceProcAddr(currentDevice, "vkCmdWriteAccelerationStructurePropertiesNVX");
-vkCmdWriteAccelerationStructurePropertiesNVX(
+$vkCmdWriteAccelerationStructurePropertiesNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2,
@@ -14763,8 +14904,7 @@ void _vkCmdBuildAccelerationStructureNVX(const Nan::FunctionCallbackInfo<v8::Val
   }
 
   uint64_t $p12 = static_cast<uint64_t>(Nan::To<int64_t>(info[12]).FromMaybe(0));
-    PFN_vkCmdBuildAccelerationStructureNVX vkCmdBuildAccelerationStructureNVX = (PFN_vkCmdBuildAccelerationStructureNVX) vkGetDeviceProcAddr(currentDevice, "vkCmdBuildAccelerationStructureNVX");
-vkCmdBuildAccelerationStructureNVX(
+$vkCmdBuildAccelerationStructureNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2,
@@ -14848,8 +14988,7 @@ void _vkCmdTraceRaysNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   uint32_t $p9 = static_cast<uint32_t>(Nan::To<int64_t>(info[9]).FromMaybe(0));
 
   uint32_t $p10 = static_cast<uint32_t>(Nan::To<int64_t>(info[10]).FromMaybe(0));
-    PFN_vkCmdTraceRaysNVX vkCmdTraceRaysNVX = (PFN_vkCmdTraceRaysNVX) vkGetDeviceProcAddr(currentDevice, "vkCmdTraceRaysNVX");
-vkCmdTraceRaysNVX(
+$vkCmdTraceRaysNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2,
@@ -14900,8 +15039,7 @@ void _vkGetRaytracingShaderHandlesNVX(const Nan::FunctionCallbackInfo<v8::Value>
 
   size_t $p4 = static_cast<size_t>(Nan::To<int64_t>(info[4]).FromMaybe(0));
 
-    PFN_vkGetRaytracingShaderHandlesNVX vkGetRaytracingShaderHandlesNVX = (PFN_vkGetRaytracingShaderHandlesNVX) vkGetDeviceProcAddr(*$p0, "vkGetRaytracingShaderHandlesNVX");
-  int32_t out = vkGetRaytracingShaderHandlesNVX(
+  int32_t out = $vkGetRaytracingShaderHandlesNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2,
@@ -14941,8 +15079,7 @@ void _vkGetAccelerationStructureHandleNVX(const Nan::FunctionCallbackInfo<v8::Va
 
   size_t $p2 = static_cast<size_t>(Nan::To<int64_t>(info[2]).FromMaybe(0));
 
-    PFN_vkGetAccelerationStructureHandleNVX vkGetAccelerationStructureHandleNVX = (PFN_vkGetAccelerationStructureHandleNVX) vkGetDeviceProcAddr(*$p0, "vkGetAccelerationStructureHandleNVX");
-  int32_t out = vkGetAccelerationStructureHandleNVX(
+  int32_t out = $vkGetAccelerationStructureHandleNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2,
@@ -15022,8 +15159,7 @@ void _vkCreateRaytracingPipelinesNVX(const Nan::FunctionCallbackInfo<v8::Value>&
     return Nan::ThrowTypeError("Invalid type for argument 6 'pPipelines'");
   }
 
-    PFN_vkCreateRaytracingPipelinesNVX vkCreateRaytracingPipelinesNVX = (PFN_vkCreateRaytracingPipelinesNVX) vkGetDeviceProcAddr(*$p0, "vkCreateRaytracingPipelinesNVX");
-  int32_t out = vkCreateRaytracingPipelinesNVX(
+  int32_t out = $vkCreateRaytracingPipelinesNVX(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2,
