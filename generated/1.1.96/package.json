@@ -1,0 +1,8 @@
+{
+  "name": "vulkan-bindings-v1.1.96",
+  "version": "0.0.1",
+  "gypfile": true,
+  "scripts": {},
+  "devDependencies": {},
+  "dependencies": {}
+}

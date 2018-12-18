@@ -44878,7 +44878,7 @@
         "name": "pPhysicalDeviceCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -45032,7 +45032,7 @@
         "name": "pQueueFamilyPropertyCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -45390,7 +45390,7 @@
         "name": "pApiVersion",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       }
     ]
@@ -45415,7 +45415,7 @@
         "name": "pPropertyCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -45465,7 +45465,7 @@
         "name": "pPropertyCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -45516,7 +45516,7 @@
         "name": "pPropertyCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -45578,7 +45578,7 @@
         "name": "pPropertyCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -46150,7 +46150,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "baseType": "VkDeviceSize",
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       }
     ]
@@ -46416,7 +46416,7 @@
         "name": "pSparseMemoryRequirementCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -46533,7 +46533,7 @@
         "name": "pPropertyCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -53033,7 +53033,7 @@
         "name": "pPropertyCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -53084,7 +53084,7 @@
         "name": "pPropertyCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -53146,7 +53146,7 @@
         "name": "pDisplayCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -53210,7 +53210,7 @@
         "name": "pPropertyCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -53714,7 +53714,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "baseType": "VkBool32",
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       }
     ]
@@ -53813,7 +53813,7 @@
         "name": "pSurfaceFormatCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -53876,7 +53876,7 @@
         "name": "pPresentModeCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -54051,7 +54051,7 @@
         "name": "pSwapchainImageCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -54150,7 +54150,7 @@
         "name": "pImageIndex",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       }
     ]
@@ -56146,7 +56146,7 @@
         "name": "pQueueFamilyPropertyCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -56240,7 +56240,7 @@
         "name": "pPropertyCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -57492,7 +57492,7 @@
         "name": "pCounterValue",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       }
     ]
@@ -57579,7 +57579,7 @@
         "name": "pPhysicalDeviceGroupCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -57663,7 +57663,7 @@
         "bitmaskType": "VkPeerMemoryFeatureFlagBits",
         "bitmaskRawType": "VkPeerMemoryFeatureFlags *",
         "isBitmaskType": true,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       }
     ]
@@ -57892,7 +57892,7 @@
         "bitmaskType": "VkDeviceGroupPresentModeFlagBitsKHR",
         "bitmaskRawType": "VkDeviceGroupPresentModeFlagsKHR *",
         "isBitmaskType": true,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       }
     ]
@@ -57940,7 +57940,7 @@
         "name": "pImageIndex",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       }
     ]
@@ -58079,7 +58079,7 @@
         "name": "pRectCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -58530,7 +58530,7 @@
         "name": "pPresentationTimingCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -58969,7 +58969,7 @@
         "name": "pSurfaceFormatCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -59020,7 +59020,7 @@
         "name": "pPropertyCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -59071,7 +59071,7 @@
         "name": "pPropertyCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -59134,7 +59134,7 @@
         "name": "pPropertyCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -59334,7 +59334,7 @@
         "name": "pSparseMemoryRequirementCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -61201,7 +61201,7 @@
         "name": "pCheckpointDataCount",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       },
       {

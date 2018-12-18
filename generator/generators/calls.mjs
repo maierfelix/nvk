@@ -126,8 +126,12 @@ function getInputArrayBody(param, index) {
       out += `
   ${varType} *$p${index} = nullptr;\n`;
     }
+    else if (param.isTypedArray && !param.isConstant) {
+      out += `
+  ${param.type}* $p${index} = nullptr;\n`;
+    }
     else {
-      console.warn(`Cannot handle param ${rawType} in input-array-body!`);
+      console.warn(`Cannot handle param intializer ${rawType} in input-array-body!`);
     }
   }
   // fill variable
@@ -168,6 +172,11 @@ function getInputArrayBody(param, index) {
       data[ii] = result->instance;
     };
     $p${index} = std::make_shared<std::vector<${param.type}>>(data);`;
+  }
+  // typed array
+  else if (param.isTypedArray && !param.isConstant && !param.enumType) {
+    out += `
+    $p${index} = getTypedArrayData<${param.type}>(Nan::To<v8::Object>(info[${index}]).ToLocalChecked());`;
   }
   // enum
   else if (param.enumType) {
@@ -354,6 +363,12 @@ function getCallBodyInner(call) {
       out += `    $p${index} ? $p${index}.get()->data() : nullptr${addComma}`;
     }
     else if (
+      param.isTypedArray &&
+      !param.isConstant
+    ) {
+      out += `    $p${index}${addComma}`;
+    }
+    else if (
       param.isArray &&
       (param.isHandleType || param.isStructType)
     ) {
@@ -452,6 +467,10 @@ function getCallBodyAfter(call) {
       target->instance = $pdata[ii];
     };
   }`);
+    }
+    // typed array
+    else if (param.isTypedArray && !param.isConstant) {
+      // no reflection needed
     }
     else if (param.isStructType) {
       // no reflection needed

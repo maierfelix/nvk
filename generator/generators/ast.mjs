@@ -1,6 +1,10 @@
 import xml from "xml-js";
 import pkg from "../../package.json";
 
+import {
+  isNumericReferenceType
+} from "../utils";
+
 let xmlOpts = {
   ignoreComment: true,
   ignoreInstruction: true
@@ -451,28 +455,10 @@ function parseTypeElement(child) {
   if (out.isArray && isNumber(type)) out.isNumericArray = true;
   // a typed array
   if (out.isNumericArray && !out.isStaticArray) {
-    switch (out.rawType) {
-      case "float *":
-      case "int8_t *":
-      case "int16_t *":
-      case "int32_t *":
-      case "uint8_t *":
-      case "uint16_t *":
-      case "uint32_t *":
-      case "const float *":
-      case "const int8_t *":
-      case "const int16_t *":
-      case "const int32_t *":
-      case "const uint8_t *":
-      case "const uint16_t *":
-      case "const uint32_t *":
-      case "const uint64_t *":
-        out.isTypedArray = true;
-        out.jsTypedArrayName = getJsTypedArrayName(out.rawType);
-      break;
-      default:
-        console.warn(`Cannot determine TypedArray validity!`);
-    };
+    if (isNumericReferenceType(out.rawType)) {
+      out.isTypedArray = true;
+      out.jsTypedArrayName = getJsTypedArrayName(out.rawType);
+    }
   }
   // figure out js relative type
   {
@@ -482,6 +468,7 @@ function parseTypeElement(child) {
     else if (out.isTypedArray) jsType = "ArrayBufferView";
     else if (out.isArray) jsType = "Array";
     else if (out.isStructType || out.isHandleType) jsType = "Object";
+    else if (!out.isConstant && isNumericReferenceType(out.rawType)) jsType = "Object";
     out.jsType = jsType;
   }
   return out;

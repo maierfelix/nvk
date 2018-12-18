@@ -169,6 +169,7 @@ function processHeaderGetter(struct, member) {
     case "size_t":
     case "int32_t":
     case "uint8_t":
+    case "uint16_t":
     case "uint32_t":
     case "uint64_t":
       return `
@@ -219,6 +220,7 @@ function processSourceGetter(struct, member) {
     case "size_t":
     case "int32_t":
     case "uint8_t":
+    case "uint16_t":
     case "uint32_t":
     case "uint64_t":
       return `

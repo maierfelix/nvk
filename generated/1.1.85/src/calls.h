@@ -8063,9 +8063,7 @@ void _vkGetPhysicalDeviceSurfacePresentModesKHR(const Nan::FunctionCallbackInfo<
 
   if (info[3]->IsArray()) {
 
-    v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[3]);
-    VkPresentModeKHR* arr3 = new VkPresentModeKHR[array->Length()];
-    $p3 = arr3;
+    $p3 = reinterpret_cast<VkPresentModeKHR *>(getTypedArrayData<int32_t>(Nan::To<v8::Object>(info[3]).ToLocalChecked()));
   } else if (!info[3]->IsNull()) {
     return Nan::ThrowTypeError("Invalid type for argument 4 'pPresentModes'");
   }

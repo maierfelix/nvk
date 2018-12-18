@@ -41,6 +41,30 @@ export function getSortedIncludes(includes) {
   return out;
 };
 
+export function isNumericReferenceType(type) {
+  switch (type) {
+    case "float *":
+    case "int8_t *":
+    case "int16_t *":
+    case "int32_t *":
+    case "uint8_t *":
+    case "uint16_t *":
+    case "uint32_t *":
+    case "uint64_t *":
+    case "const float *":
+    case "const int8_t *":
+    case "const int16_t *":
+    case "const int32_t *":
+    case "const uint8_t *":
+    case "const uint16_t *":
+    case "const uint32_t *":
+    case "const uint64_t *":
+      return true;
+    break;
+  };
+  return false;
+};
+
 export function isIgnoreableType(obj) {
   let type = obj.rawType;
   // dont ignore
