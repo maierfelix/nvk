@@ -52,6 +52,7 @@ let validationLayers = [
   "VK_LAYER_LUNARG_standard_validation"
 ];
 let instanceInfo = new VkInstanceCreateInfo();
+instanceInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
 instanceInfo.pApplicationInfo = appInfo;
 instanceInfo.ppEnabledLayerNames = validationLayers;
 instanceInfo.enabledLayerCount = validationLayers.length;
