@@ -6,8 +6,7 @@
 
 #
 
-This is a [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for node.js, which allows to interact from JavaScript/[TypeScript](#typescript) with the low-level interface of Vulkan. The API of this project strives to be as close as possible to Vulkan's C/C++ API.
-
+This is a [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for node.js, which allows to interact from JavaScript/[TypeScript](#typescript) with the low-level interface of Vulkan. The API style of this project strives to be as close as possible to Vulkan's C/C++ API. Currently the latest supported Vulkan version is *1.1.92*, which includes support for e.g. NVIDIA's Ray Tracing extension `VK_NVX_raytracing`.
 #
 
   * [Preview](#preview)
@@ -41,6 +40,7 @@ In most cases the bindings match the native style of Vulkan. This allows you to 
 
 JavaScript/TypeScript:
 ````js
+let instance = new VkInstance();
 let appInfo = new VkApplicationInfo();
 appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
 appInfo.pApplicationName = "App";
@@ -48,10 +48,19 @@ appInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
 appInfo.pEngineName = "Engine";
 appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
 appInfo.apiVersion = VK_API_VERSION_1_0;
+let validationLayers = [
+  "VK_LAYER_LUNARG_standard_validation"
+];
+let instanceInfo = new VkInstanceCreateInfo();
+instanceInfo.pApplicationInfo = appInfo;
+instanceInfo.ppEnabledLayerNames = validationLayers;
+instanceInfo.enabledLayerCount = validationLayers.length;
+vkCreateInstance(instanceInfo, null, instance);
 ````
 
 C++:
 ````cpp
+VkInstance instance;
 VkApplicationInfo appInfo = {};
 appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
 appInfo.pApplicationName = "App";
@@ -59,6 +68,15 @@ appInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
 appInfo.pEngineName = "Engine";
 appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
 appInfo.apiVersion = VK_API_VERSION_1_0;
+const std::vector<const char*> validationLayers = {
+  "VK_LAYER_LUNARG_standard_validation"
+};
+VkInstanceCreateInfo instanceInfo = {};
+instanceInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+instanceInfo.pApplicationInfo = &appInfo;
+instanceInfo.ppEnabledLayerNames = validationLayers.data();
+instanceInfo.enabledLayerCount = static_cast<uint32_t>(validationLayers.size());
+vkCreateInstance(&instanceInfo, nullptr, &instance);
 ````
 
 ## Installation:
@@ -218,10 +236,11 @@ CEF recently got shared textures added, meaning crazy performance and no CPU wan
 But CEF's shared textures on Windows require D3D11 which I'm not familiar with. If you're interested in helping and solving this one last step, please make a PR!
 
 ## TODOs:
- - [ ] Struct generation (~85%)
+ - [ ] Struct generation (~95%)
  - [x] Handle generation (~100%)
  - [x] Enum generation (100%)
- - [ ] Function generation (~85%)
- - [ ] Deallocation (~85%)
- - [ ] Vulkan API fill V8 reflection (~85%)
+ - [ ] Function generation (~95%)
+ - [ ] Deallocation (~90%)
+ - [ ] Vulkan API fill V8 reflection (~90%)
+ - [ ] Documentation generator (0%)
  - [ ] CEF D3D11 high-performance texture sharing (~0%)
