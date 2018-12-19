@@ -48,6 +48,7 @@ appInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
 appInfo.pEngineName = "Engine";
 appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
 appInfo.apiVersion = VK_API_VERSION_1_0;
+
 let validationLayers = [
   "VK_LAYER_LUNARG_standard_validation"
 ];
@@ -69,6 +70,7 @@ appInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
 appInfo.pEngineName = "Engine";
 appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
 appInfo.apiVersion = VK_API_VERSION_1_0;
+
 const std::vector<const char*> validationLayers = {
   "VK_LAYER_LUNARG_standard_validation"
 };
