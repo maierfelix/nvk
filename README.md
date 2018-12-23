@@ -74,7 +74,7 @@ Make sure you have Visual Studio >= 15 installed or use
 npm install --global --production windows-build-tools
 ````
 
-Install the corresponding Vulkan SDK version from [here](https://vulkan.lunarg.com/sdk/home#windows). The later installer will ask you to setup bindings for ``1.1.85``, so make sure you have ``Vulkan SDK 1.1.85`` installed.
+Install the corresponding Vulkan SDK version from [here](https://vulkan.lunarg.com/sdk/home#windows). The later installer will ask you to setup bindings for ``1.1.92``, so make sure you have ``Vulkan SDK 1.1.92`` installed.
 
 Install node-vulkan
 ````
@@ -103,7 +103,7 @@ npm run [script] [flag] [value]
 #### Generation:
 You can specify a version to generate bindings for like this:
 ````
-npm run generate --vkversion=1.1.85
+npm run generate --vkversion=1.1.92
 ````
 
  - Make sure the specified version to generate bindings for can be found [here](https://github.com/KhronosGroup/Vulkan-Docs/releases)
@@ -113,14 +113,14 @@ npm run generate --vkversion=1.1.85
 #### Building:
 You can build the generated bindings like this:
 ````
-npm run build --vkversion=1.1.85 --msvsversion=2017
+npm run build --vkversion=1.1.92 --msvsversion=2017
 ````
 
 The compiled bindings can then be found in `generated/{vkversion}/build`
 
 ## TypeScript:
 
-When generating bindings, a TypeScript definition file is auto-generated as well (see e.g. the file [here](https://github.com/maierfelix/node-vulkan/blob/master/generated/1.1.85/index.d.ts)).
+When generating bindings, a TypeScript definition file is auto-generated as well (see e.g. the file [here](https://github.com/maierfelix/node-vulkan/blob/master/generated/1.1.92/index.d.ts)).
 
 To use the definition file, simply follow the installation steps above. Afterwards in your `.ts` file, import and use node-vulkan as follows:
 
@@ -130,7 +130,7 @@ import {
   VkApplicationInfo,
   VK_MAKE_VERSION,
   VK_API_VERSION_1_0
-} from "node-vulkan/generated/1.1.85/index";
+} from "node-vulkan/generated/1.1.92/index";
 
 let win = new VulkanWindow({ width: 480, height: 320 });
 
@@ -196,9 +196,9 @@ This tool uses a new JavaScript type called [`BigInt`](https://developers.google
 
 ## Binding Code Generator:
 
-The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/node-vulkan/master/generated/1.1.85/ast.json), which is then used by the code generator. Currently a total of `~170.000` lines of code get generated, where `~110.000` lines are C++ code.
+The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/node-vulkan/master/generated/1.1.92/ast.json), which is then used by the code generator. Currently a total of `~170.000` lines of code get generated, where `~110.000` lines are C++ code.
 
-If you're interested in what a generated file look like, checkout [`calls.h`](https://github.com/maierfelix/node-vulkan/blob/master/generated/1.1.85/src/calls.h) or [`VkGraphicsPipelineCreateInfo.cpp`](https://github.com/maierfelix/node-vulkan/blob/master/generated/1.1.85/src/VkGraphicsPipelineCreateInfo.cpp)
+If you're interested in what a generated file look like, checkout [`calls.h`](https://github.com/maierfelix/node-vulkan/blob/master/generated/1.1.92/src/calls.h) or [`VkGraphicsPipelineCreateInfo.cpp`](https://github.com/maierfelix/node-vulkan/blob/master/generated/1.1.92/src/VkGraphicsPipelineCreateInfo.cpp)
 
 ## HTML, CSS based UIs
 
