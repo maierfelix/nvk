@@ -9,7 +9,7 @@
     "GEN_OUT_DIR": "./generated",
     "SPEC_DIR": "./generator/specifications",
     "TEMPLATE_DIR": "./generator/templates",
-    "POST_DEFAULT_BINDING_VERSION": "1.1.85"
+    "POST_DEFAULT_BINDING_VERSION": "1.1.92"
   },
   "scripts": {
     "build": "node ./build.js",
