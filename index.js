@@ -49,7 +49,13 @@ if (!fs.existsSync(addonPath)) {
   // show user available bindings
   process.stderr.write(`You may instead use one of the following bindings:\n`);
   fs.readdirSync(bindingsPath).forEach(dirname => {
-    process.stderr.write(`> ${dirname}\n`);
+    let addon = null;
+    try {
+      addon = require(bindingsPath + dirname + `/build/Release/addon.node`);
+    } catch (e) {
+
+    }
+    if (addon) process.stderr.write(`> ${dirname}\n`);
   });
   process.stderr.write(`Make sure to generate and compile the bindings for ${vkVersion}\n`);
   throw `Exiting..`;

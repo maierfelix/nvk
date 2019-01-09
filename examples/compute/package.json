@@ -4,5 +4,7 @@
   "scripts": {
     "start": "node --inspect --experimental-modules ./index.mjs"
   },
-  "dependencies": {}
+  "dependencies": {
+    "pngjs": "^3.3.3"
+  }
 }

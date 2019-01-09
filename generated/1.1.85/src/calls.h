@@ -666,6 +666,9 @@ vkGetPhysicalDeviceQueueFamilyProperties(
       VkQueueFamilyProperties *instance = &result->instance;
       VkQueueFamilyProperties *copy = &$pdata[ii];
       
+      instance->queueFlags = copy->queueFlags;
+      instance->queueCount = copy->queueCount;
+      instance->timestampValidBits = copy->timestampValidBits;
       instance->minImageTransferGranularity = copy->minImageTransferGranularity;
       if (&copy->minImageTransferGranularity != nullptr) {
         
@@ -1026,6 +1029,8 @@ void _vkEnumerateInstanceLayerProperties(const Nan::FunctionCallbackInfo<v8::Val
         result->layerName = str;
         strcpy(const_cast<char *>(instance->layerName), copy->layerName);
       }
+      instance->specVersion = copy->specVersion;
+      instance->implementationVersion = copy->implementationVersion;
       {
         std::string stri(copy->description);
         v8::Local<v8::String> strv8 = v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), stri.c_str());
@@ -1105,6 +1110,7 @@ void _vkEnumerateInstanceExtensionProperties(const Nan::FunctionCallbackInfo<v8:
         result->extensionName = str;
         strcpy(const_cast<char *>(instance->extensionName), copy->extensionName);
       }
+      instance->specVersion = copy->specVersion;
     };
   }
   
@@ -1182,6 +1188,8 @@ void _vkEnumerateDeviceLayerProperties(const Nan::FunctionCallbackInfo<v8::Value
         result->layerName = str;
         strcpy(const_cast<char *>(instance->layerName), copy->layerName);
       }
+      instance->specVersion = copy->specVersion;
+      instance->implementationVersion = copy->implementationVersion;
       {
         std::string stri(copy->description);
         v8::Local<v8::String> strv8 = v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), stri.c_str());
@@ -1274,6 +1282,7 @@ void _vkEnumerateDeviceExtensionProperties(const Nan::FunctionCallbackInfo<v8::V
         result->extensionName = str;
         strcpy(const_cast<char *>(instance->extensionName), copy->extensionName);
       }
+      instance->specVersion = copy->specVersion;
     };
   }
   
@@ -2017,6 +2026,10 @@ vkGetImageSparseMemoryRequirements(
         result->formatProperties.Reset<v8::Object>(inst.As<v8::Object>());
         unwrapped->instance = copy->formatProperties;
       }
+      instance->imageMipTailFirstLod = copy->imageMipTailFirstLod;
+      instance->imageMipTailSize = copy->imageMipTailSize;
+      instance->imageMipTailOffset = copy->imageMipTailOffset;
+      instance->imageMipTailStride = copy->imageMipTailStride;
     };
   }
   
@@ -2104,6 +2117,7 @@ vkGetPhysicalDeviceSparseImageFormatProperties(
       VkSparseImageFormatProperties *instance = &result->instance;
       VkSparseImageFormatProperties *copy = &$pdata[ii];
       
+      instance->aspectMask = copy->aspectMask;
       instance->imageGranularity = copy->imageGranularity;
       if (&copy->imageGranularity != nullptr) {
         
@@ -2113,6 +2127,7 @@ vkGetPhysicalDeviceSparseImageFormatProperties(
         result->imageGranularity.Reset<v8::Object>(inst.As<v8::Object>());
         unwrapped->instance = copy->imageGranularity;
       }
+      instance->flags = copy->flags;
     };
   }
   
@@ -7244,6 +7259,9 @@ void _vkGetPhysicalDeviceDisplayPropertiesKHR(const Nan::FunctionCallbackInfo<v8
         result->physicalResolution.Reset<v8::Object>(inst.As<v8::Object>());
         unwrapped->instance = copy->physicalResolution;
       }
+      instance->supportedTransforms = copy->supportedTransforms;
+      instance->planeReorderPossible = copy->planeReorderPossible;
+      instance->persistentContent = copy->persistentContent;
     };
   }
   
@@ -7314,6 +7332,7 @@ void _vkGetPhysicalDeviceDisplayPlanePropertiesKHR(const Nan::FunctionCallbackIn
       VkDisplayPlanePropertiesKHR *instance = &result->instance;
       VkDisplayPlanePropertiesKHR *copy = &$pdata[ii];
       
+      instance->currentStackIndex = copy->currentStackIndex;
     };
   }
   
@@ -8017,6 +8036,8 @@ void _vkGetPhysicalDeviceSurfaceFormatsKHR(const Nan::FunctionCallbackInfo<v8::V
       VkSurfaceFormatKHR *instance = &result->instance;
       VkSurfaceFormatKHR *copy = &$pdata[ii];
       
+      instance->format = copy->format;
+      instance->colorSpace = copy->colorSpace;
     };
   }
   
@@ -8063,7 +8084,9 @@ void _vkGetPhysicalDeviceSurfacePresentModesKHR(const Nan::FunctionCallbackInfo<
 
   if (info[3]->IsArray()) {
 
-    $p3 = reinterpret_cast<VkPresentModeKHR *>(getTypedArrayData<int32_t>(Nan::To<v8::Object>(info[3]).ToLocalChecked()));
+    v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[3]);
+    VkPresentModeKHR* arr3 = new VkPresentModeKHR[array->Length()];
+    $p3 = arr3;
   } else if (!info[3]->IsNull()) {
     return Nan::ThrowTypeError("Invalid type for argument 4 'pPresentModes'");
   }
@@ -9716,6 +9739,7 @@ vkGetPhysicalDeviceQueueFamilyProperties2(
       VkQueueFamilyProperties2 *instance = &result->instance;
       VkQueueFamilyProperties2 *copy = &$pdata[ii];
       
+      instance->sType = copy->sType;
       instance->queueFamilyProperties = copy->queueFamilyProperties;
       if (&copy->queueFamilyProperties != nullptr) {
         
@@ -9882,6 +9906,7 @@ vkGetPhysicalDeviceSparseImageFormatProperties2(
       VkSparseImageFormatProperties2 *instance = &result->instance;
       VkSparseImageFormatProperties2 *copy = &$pdata[ii];
       
+      instance->sType = copy->sType;
       instance->properties = copy->properties;
       if (&copy->properties != nullptr) {
         
@@ -10983,6 +11008,9 @@ void _vkEnumeratePhysicalDeviceGroups(const Nan::FunctionCallbackInfo<v8::Value>
       VkPhysicalDeviceGroupProperties *instance = &result->instance;
       VkPhysicalDeviceGroupProperties *copy = &$pdata[ii];
       
+      instance->sType = copy->sType;
+      instance->physicalDeviceCount = copy->physicalDeviceCount;
+      instance->subsetAllocation = copy->subsetAllocation;
     };
   }
   
@@ -11855,6 +11883,11 @@ void _vkGetPastPresentationTimingGOOGLE(const Nan::FunctionCallbackInfo<v8::Valu
       VkPastPresentationTimingGOOGLE *instance = &result->instance;
       VkPastPresentationTimingGOOGLE *copy = &$pdata[ii];
       
+      instance->presentID = copy->presentID;
+      instance->desiredPresentTime = copy->desiredPresentTime;
+      instance->actualPresentTime = copy->actualPresentTime;
+      instance->earliestPresentTime = copy->earliestPresentTime;
+      instance->presentMargin = copy->presentMargin;
     };
   }
   
@@ -12210,6 +12243,7 @@ void _vkGetPhysicalDeviceSurfaceFormats2KHR(const Nan::FunctionCallbackInfo<v8::
       VkSurfaceFormat2KHR *instance = &result->instance;
       VkSurfaceFormat2KHR *copy = &$pdata[ii];
       
+      instance->sType = copy->sType;
       instance->surfaceFormat = copy->surfaceFormat;
       if (&copy->surfaceFormat != nullptr) {
         
@@ -12289,6 +12323,7 @@ void _vkGetPhysicalDeviceDisplayProperties2KHR(const Nan::FunctionCallbackInfo<v
       VkDisplayProperties2KHR *instance = &result->instance;
       VkDisplayProperties2KHR *copy = &$pdata[ii];
       
+      instance->sType = copy->sType;
       instance->displayProperties = copy->displayProperties;
       if (&copy->displayProperties != nullptr) {
         
@@ -12368,6 +12403,7 @@ void _vkGetPhysicalDeviceDisplayPlaneProperties2KHR(const Nan::FunctionCallbackI
       VkDisplayPlaneProperties2KHR *instance = &result->instance;
       VkDisplayPlaneProperties2KHR *copy = &$pdata[ii];
       
+      instance->sType = copy->sType;
       instance->displayPlaneProperties = copy->displayPlaneProperties;
       if (&copy->displayPlaneProperties != nullptr) {
         
@@ -12460,6 +12496,7 @@ void _vkGetDisplayModeProperties2KHR(const Nan::FunctionCallbackInfo<v8::Value>&
       VkDisplayModeProperties2KHR *instance = &result->instance;
       VkDisplayModeProperties2KHR *copy = &$pdata[ii];
       
+      instance->sType = copy->sType;
       instance->displayModeProperties = copy->displayModeProperties;
       if (&copy->displayModeProperties != nullptr) {
         
@@ -12793,6 +12830,7 @@ vkGetImageSparseMemoryRequirements2(
       VkSparseImageMemoryRequirements2 *instance = &result->instance;
       VkSparseImageMemoryRequirements2 *copy = &$pdata[ii];
       
+      instance->sType = copy->sType;
       instance->memoryRequirements = copy->memoryRequirements;
       if (&copy->memoryRequirements != nullptr) {
         
@@ -14091,6 +14129,8 @@ $vkGetQueueCheckpointDataNV(
       VkCheckpointDataNV *instance = &result->instance;
       VkCheckpointDataNV *copy = &$pdata[ii];
       
+      instance->sType = copy->sType;
+      instance->stage = copy->stage;
     };
   }
   
