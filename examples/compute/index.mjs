@@ -70,7 +70,7 @@ let workGroupSize = 32;
 
 let pixelBuffer = new VkBuffer();
 let pixelBufferMemory = new VkDeviceMemory();
-let pixelBufferSize = width * height * 4;
+let pixelBufferSize = width * height * (4 * Float32Array.BYTES_PER_ELEMENT);
 
 let layers = ["VK_LAYER_LUNARG_standard_validation"];
 
