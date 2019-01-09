@@ -10,6 +10,11 @@ Note that the `vkversion` flag specifies the vulkan version you want to use. Mak
 
 ## Previews:
 
+#### [Compute](https://github.com/maierfelix/node-vulkan/tree/master/examples/compute):
+<img src="https://i.imgur.com/ZBSsmZT.jpg" width="336">
+
+ - Compute shader rendering the mandelbrot set
+
 #### [Cube](https://github.com/maierfelix/node-vulkan/tree/master/examples/cube):
 <img src="https://i.imgur.com/ey9XooY.gif" width="336">
 
