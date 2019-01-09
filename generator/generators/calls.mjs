@@ -93,7 +93,8 @@ function getMemberCopyInstructions(struct) {
       console.log(`Error: Member copy instruction for arrays not handled yet!`);
     }
     else if (member.isNumber || member.bitmaskType || member.enumType) {
-      // can be ignored
+      out += `
+      instance->${member.name} = copy->${member.name};`;
     }
     else if (member.type === "void") {
       // ???
@@ -482,7 +483,7 @@ function getCallBodyAfter(call) {
       // no reflection needed
     }
     else if (param.enumType) {
-      // no reflection needed
+      
     }
     else if (param.isHandleType) {
       // no reflection needed
