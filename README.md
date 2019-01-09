@@ -32,7 +32,7 @@ This is a [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for node.js, 
 ## Preview:<br/>
 <img src="https://i.imgur.com/cRrVc1N.gif" width="380">
 
-You can find more previews and demos in [/examples](https://github.com/maierfelix/nvk/tree/master/examples)
+You can find more previews and demos in [/examples](https://github.com/maierfelix/nvk-examples)
 
 ## Example:
 
