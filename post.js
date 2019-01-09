@@ -32,7 +32,7 @@ function blankLine() {
 
 function goodbye() {
   blankLine();
-  console.log(`If you want to manually build the bindings, navigate to node-vulkan's package and follow the Install instructions in the README.md`);
+  console.log(`If you want to manually build the bindings, navigate to nvk's package and follow the Install instructions in the README.md`);
   rl.close();
 };
 
@@ -102,7 +102,7 @@ function askBindingsVersion() {
 })();
 
 (function askAutoBuild() {
-  console.log(`It seems like you just installed node-vulkan v${pkg.version}`);
+  console.log(`It seems like you just installed nvk v${pkg.version}`);
   rl.question(`Do you want me to automatically setup bindings for you? [y/N] `, answer => {
     if (isAnswerYes(answer)) {
       askBindingsVersion();
@@ -111,4 +111,3 @@ function askBindingsVersion() {
     }
   });
 })();
-

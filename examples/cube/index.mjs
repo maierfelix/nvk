@@ -34,7 +34,7 @@ global.semaphoreRenderingDone = new VkSemaphore();
 global.win = new VulkanWindow({
   width: 480,
   height: 320,
-  title: "node-vulkan"
+  title: "nvk cube"
 });
 
 global.ASSERT_VK_RESULT = result => {

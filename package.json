@@ -1,5 +1,5 @@
 {
-  "name": "node-vulkan",
+  "name": "nvk",
   "main": "index.js",
   "version": "0.1.2",
   "engines": {
@@ -27,7 +27,7 @@
   "description": "Vulkan rendering API for node",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maierfelix/node-vulkan.git"
+    "url": "git+https://github.com/maierfelix/nvk.git"
   },
   "keywords": [
     "vulkan",
@@ -40,7 +40,7 @@
   "author": "Felix Maier",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/maierfelix/node-vulkan/issues"
+    "url": "https://github.com/maierfelix/nvk/issues"
   },
-  "homepage": "https://github.com/maierfelix/node-vulkan#readme"
+  "homepage": "https://github.com/maierfelix/nvk#readme"
 }

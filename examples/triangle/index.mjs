@@ -121,7 +121,7 @@ vkEnumerateInstanceLayerProperties(amountOfLayers, layers);
 let win = new VulkanWindow({
   width: 480,
   height: 320,
-  title: "node-vulkan triangle"
+  title: "nvk triangle"
 });
 
 // app info

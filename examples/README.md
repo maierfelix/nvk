@@ -10,26 +10,26 @@ Note that the `vkversion` flag specifies the vulkan version you want to use. Mak
 
 ## Previews:
 
-#### [Compute](https://github.com/maierfelix/node-vulkan/tree/master/examples/compute):
+#### [Compute](https://github.com/maierfelix/nvk/tree/master/examples/compute):
 <img src="https://i.imgur.com/ZBSsmZT.jpg" width="336">
 
  - Compute shader rendering the mandelbrot set
 
-#### [Cube](https://github.com/maierfelix/node-vulkan/tree/master/examples/cube):
+#### [Cube](https://github.com/maierfelix/nvk/tree/master/examples/cube):
 <img src="https://i.imgur.com/ey9XooY.gif" width="336">
 
  - A spinning cube, demonstrating buffer and texture upload
 
-#### [Triangle](https://github.com/maierfelix/node-vulkan/tree/master/examples/triangle):
+#### [Triangle](https://github.com/maierfelix/nvk/tree/master/examples/triangle):
 <img src="https://i.imgur.com/nGGxpsQ.gif" width="336">
 
  - The most basic example - A good starting point
 
-#### [TypeScript](https://github.com/maierfelix/node-vulkan/tree/master/examples/typescript):
+#### [TypeScript](https://github.com/maierfelix/nvk/tree/master/examples/typescript):
 
- - Example on how to setup and use ``node-vulkan`` in TypeScript
+ - Example on how to setup and use ``nvk`` in TypeScript
 
-#### [Webcam](https://github.com/maierfelix/node-vulkan/tree/master/examples/webcam):
+#### [Webcam](https://github.com/maierfelix/nvk/tree/master/examples/webcam):
 <img src="https://i.imgur.com/cRrVc1N.gif" width="336">
 
  - A spinning webcam model using a PBR shader

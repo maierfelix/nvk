@@ -33,7 +33,7 @@ global.semaphoreRenderingDone = new VkSemaphore();
 global.win = new VulkanWindow({
   width: 480,
   height: 320,
-  title: "node-vulkan"
+  title: "nvk webcam"
 });
 
 // file drop

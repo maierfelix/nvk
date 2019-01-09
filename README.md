@@ -32,11 +32,11 @@ This is a [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for node.js, 
 ## Preview:<br/>
 <img src="https://i.imgur.com/cRrVc1N.gif" width="380">
 
-You can find more previews and demos in [/examples](https://github.com/maierfelix/node-vulkan/tree/master/examples)
+You can find more previews and demos in [/examples](https://github.com/maierfelix/nvk/tree/master/examples)
 
 ## Example:
 
-In most cases the bindings match the native style of Vulkan. This allows you to follow existing C/C++ tutorials, but write the implementation itself with node-vulkan. Note that both interfaces end up with a similar amount of code. Optionally you can use some [syntactic sugar](#syntactic-sugar) to write things quicker.
+In most cases the bindings match the native style of Vulkan. This allows you to follow existing C/C++ tutorials, but write the implementation itself with *nvk*. Note that both interfaces end up with a similar amount of code. Optionally you can use some [syntactic sugar](#syntactic-sugar) to write things quicker.
 
 JavaScript/TypeScript:
 ````js
@@ -97,14 +97,14 @@ npm install --global --production windows-build-tools
 
 Install the corresponding Vulkan SDK version from [here](https://vulkan.lunarg.com/sdk/home#windows). The later installer will ask you to setup bindings for ``1.1.92``, so make sure you have ``Vulkan SDK 1.1.92`` installed.
 
-Install node-vulkan
+Install *nvk*
 ````
-npm install node-vulkan
+npm install nvk
 ````
 
-After installing node-vulkan, a setup will ask you, if it should automate the whole binding build process for you.
+After installing *nvk*, a setup will ask you, if it should automate the whole binding build process for you.
 
-Afterwards you can `require` or `import` node-vulkan in your project!
+Afterwards you can `require` or `import` *nvk* in your project!
 
 ## CLI:
 
@@ -141,9 +141,9 @@ The compiled bindings can then be found in `generated/{vkversion}/build`
 
 ## TypeScript:
 
-When generating bindings, a TypeScript definition file is auto-generated as well (see e.g. the file [here](https://github.com/maierfelix/node-vulkan/blob/master/generated/1.1.92/index.d.ts)).
+When generating bindings, a TypeScript definition file is auto-generated as well (see e.g. the file [here](https://github.com/maierfelix/nvk/blob/master/generated/1.1.92/index.d.ts)).
 
-To use the definition file, simply follow the installation steps above. Afterwards in your `.ts` file, import and use node-vulkan as follows:
+To use the definition file, simply follow the installation steps above. Afterwards in your `.ts` file, import and use *nvk* as follows:
 
 ````ts
 import {
@@ -151,7 +151,7 @@ import {
   VkApplicationInfo,
   VK_MAKE_VERSION,
   VK_API_VERSION_1_0
-} from "node-vulkan/generated/1.1.92/index";
+} from "nvk/generated/1.1.92/index";
 
 let win = new VulkanWindow({ width: 480, height: 320 });
 
@@ -217,13 +217,13 @@ This tool uses a new JavaScript type called [`BigInt`](https://developers.google
 
 ## Binding Code Generator:
 
-The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/node-vulkan/master/generated/1.1.92/ast.json), which is then used by the code generator. Currently a total of `~170.000` lines of code get generated, where `~110.000` lines are C++ code.
+The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.92/ast.json), which is then used by the code generator. Currently a total of `~170.000` lines of code get generated, where `~110.000` lines are C++ code.
 
-If you're interested in what a generated file look like, checkout [`calls.h`](https://github.com/maierfelix/node-vulkan/blob/master/generated/1.1.92/src/calls.h) or [`VkGraphicsPipelineCreateInfo.cpp`](https://github.com/maierfelix/node-vulkan/blob/master/generated/1.1.92/src/VkGraphicsPipelineCreateInfo.cpp)
+If you're interested in what a generated file look like, checkout [`calls.h`](https://github.com/maierfelix/nvk/blob/master/generated/1.1.92/src/calls.h) or [`VkGraphicsPipelineCreateInfo.cpp`](https://github.com/maierfelix/nvk/blob/master/generated/1.1.92/src/VkGraphicsPipelineCreateInfo.cpp)
 
 ## HTML, CSS based UIs
 
-The [chromium-ui](https://github.com/maierfelix/node-vulkan/tree/chromium-ui) branch contains an experiment about letting users create UIs with a complete HTML/CSS browser toolchain. The website (browser frame) can then be rendered inside Vulkan. This is done using [Chromium-Embedded-Framework](https://bitbucket.org/chromiumembedded/cef). The browser texture is shared with vulkan's memory, so you can directly render it on top of your application. Oh yes!
+The [chromium-ui](https://github.com/maierfelix/nvk/tree/chromium-ui) branch contains an experiment about letting users create UIs with a complete HTML/CSS browser toolchain. The website (browser frame) can then be rendered inside Vulkan. This is done using [Chromium-Embedded-Framework](https://bitbucket.org/chromiumembedded/cef). The browser texture is shared with vulkan's memory, so you can directly render it on top of your application. Oh yes!
 
 There is one last thing that prevents me from merging it. At the moment, browser redraws trigger a CPU texture copying path, which is horribly slow. At the moment the pipeline is:
 
