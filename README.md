@@ -90,19 +90,19 @@ vkCreateInstance(&instanceInfo, nullptr, &instance);
  - node.js >= v10.9.0 recommended
 
 ### Windows:
-Make sure you have Visual Studio >= 15 installed or use
+If you already have Visual Studio >= 15 installed, then just make sure to have Python `2.7.x` installed.
+
+If you don't have Visual Studio, then install the following package:
 ````
 npm install --global --production windows-build-tools
 ````
 
-Install the corresponding Vulkan SDK version from [here](https://vulkan.lunarg.com/sdk/home#windows). The later installer will ask you to setup bindings for ``1.1.92``, so make sure you have ``Vulkan SDK 1.1.92`` installed.
+Now install the corresponding Vulkan SDK version from [here](https://vulkan.lunarg.com/sdk/home#windows). The *nvk* installer will ask you to setup bindings for ``1.1.92``, so make sure you have ``Vulkan SDK 1.1.92`` installed.
 
-Install *nvk*
+Next, install *nvk* and follow the setup instructions
 ````
 npm install nvk
 ````
-
-After installing *nvk*, a setup will ask you, if it should automate the whole binding build process for you.
 
 Afterwards you can `require` or `import` *nvk* in your project!
 
