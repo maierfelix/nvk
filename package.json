@@ -1,7 +1,7 @@
 {
   "name": "nvk",
   "main": "index.js",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "engines": {
     "node": ">= 10.9.0"
   },
@@ -9,7 +9,8 @@
     "GEN_OUT_DIR": "./generated",
     "SPEC_DIR": "./generator/specifications",
     "TEMPLATE_DIR": "./generator/templates",
-    "POST_DEFAULT_BINDING_VERSION": "1.1.92"
+    "POST_DEFAULT_BINDING_VERSION": "1.1.92",
+    "TS_ROOT": "../../index"
   },
   "scripts": {
     "build": "node ./build.js",

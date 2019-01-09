@@ -11,7 +11,8 @@ nunjucks.configure({ autoescape: true });
 export default function(astReference, VK_VERSION) {
   ast = astReference;
   let vars = {
-    VK_VERSION
+    VK_VERSION,
+    NVK_VERSION: pkg.version
   };
   let out = {
     json: null

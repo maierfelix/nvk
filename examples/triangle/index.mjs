@@ -1,7 +1,7 @@
 import fs from "fs";
-import vk from "../../index";
+import nvk from "../../index";
 
-Object.assign(global, vk);
+Object.assign(global, nvk);
 
 let vertices = new Float32Array([
    0.0, -0.5,

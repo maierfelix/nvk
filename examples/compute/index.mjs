@@ -1,8 +1,8 @@
 import fs from "fs";
-import vk from "../../index";
+import nvk from "../../index";
 import pngjs from "pngjs"; const { PNG } = pngjs;
 
-Object.assign(global, vk);
+Object.assign(global, nvk);
 
 function ASSERT_VK_RESULT(result) {
   if (result !== VK_SUCCESS) throw new Error(`Vulkan assertion failed: ${result}`);

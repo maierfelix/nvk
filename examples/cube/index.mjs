@@ -1,5 +1,5 @@
 import fs from "fs";
-import vk from "../../index";
+import nvk from "../../index";
 import { performance } from "perf_hooks";
 import glm from "gl-matrix"; const { vec3, mat4 } = glm;
 
@@ -14,7 +14,7 @@ import {
   getMemoryTypeIndex
 } from "./buffer";
 
-Object.assign(global, vk);
+Object.assign(global, nvk);
 
 global.result = null;
 global.device = new VkDevice();

@@ -8,7 +8,7 @@ import {
   VkApplicationInfo,
   VkInstanceCreateInfo,
   vkCreateInstance
-} from "../../generated/1.1.85/index";
+} from "../../generated/1.1.92/index";
 
 let win = new VulkanWindow({
   width: 480,

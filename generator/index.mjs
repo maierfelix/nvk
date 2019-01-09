@@ -303,6 +303,11 @@ function generateBindings(specXML, version) {
     writeAddonFile(`${generateSrcPath}/index.h`, indexFile.header, "utf-8", true);
     writeAddonFile(`${generateSrcPath}/index.cpp`, indexFile.source, "utf-8", true);
   }
+  // generate typescript index
+  {
+    let source = `module.exports = require("${pkg.config.TS_ROOT}");`;
+    writeAddonFile(`${generatePath}/index.js`, source, "utf-8");
+  }
   console.log(``);
   console.log(`Generation stats:`);
   console.log(`Total files: ${totalFiles}/${writtenFiles}`);
