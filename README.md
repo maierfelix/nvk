@@ -97,7 +97,7 @@ If you don't have Visual Studio, then install the following package:
 npm install --global --production windows-build-tools
 ````
 
-Now install the corresponding Vulkan SDK version from [here](https://vulkan.lunarg.com/sdk/home#windows). The *nvk* installer will ask you to setup bindings for ``1.1.92``, so make sure you have ``Vulkan SDK 1.1.92`` installed.
+Now install the corresponding Vulkan SDK version from [here](https://vulkan.lunarg.com/sdk/home#windows). The *nvk* installer will ask you to setup bindings for ``1.1.85``, so make sure you have ``Vulkan SDK 1.1.85`` installed.
 
 Next, install *nvk* and follow the setup instructions
 ````
@@ -113,31 +113,39 @@ Afterwards you can `require` or `import` *nvk* in your project!
 npm run [script] [flag] [value]
 ````
 
-#### Flags:
-````
- [--vkversion] [version]: The Vulkan version to generate bindings for
- [--msvsversion] [msvsversion]: The Visual Studio version to build the bindings with
-````
-
 ### Usage:
 
 #### Generation:
-You can specify a version to generate bindings for like this:
+You can generate bindings with:
 ````
-npm run generate --vkversion=1.1.92
+npm run generate --vkversion=1.1.85
 ````
+
+The generated bindings can then be found in `generated/{vkversion}/`
 
  - Make sure the specified version to generate bindings for can be found [here](https://github.com/KhronosGroup/Vulkan-Docs/releases)
  - The binding specification file gets auto-downloaded and is stored in `generate/specifications/{vkversion}.xml`<br/>
- - The generated bindings can then be found in `generated/{vkversion}/`
+ - `--incremental` flag should only be used if you're a developer of *nvk*
+
+##### Flags:
+````
+[--vkversion]: The Vulkan version to generate bindings for
+[--incremental]: Enables incremental builds when building the bindings
+````
 
 #### Building:
-You can build the generated bindings like this:
+You can build the generated bindings with:
 ````
-npm run build --vkversion=1.1.92 --msvsversion=2017
+npm run build --vkversion=1.1.85 --msvsversion=2017
 ````
 
 The compiled bindings can then be found in `generated/{vkversion}/build`
+
+##### Flags:
+````
+[--vkversion]: The Vulkan version to build bindings for
+[--msvsversion]: The Visual Studio version to build the bindings with
+````
 
 ## TypeScript:
 
@@ -151,7 +159,7 @@ import {
   VkApplicationInfo,
   VK_MAKE_VERSION,
   VK_API_VERSION_1_0
-} from "nvk/generated/1.1.92/index";
+} from "nvk/generated/1.1.85/index";
 
 let win = new VulkanWindow({ width: 480, height: 320 });
 
@@ -217,9 +225,7 @@ This tool uses a new JavaScript type called [`BigInt`](https://developers.google
 
 ## Binding Code Generator:
 
-The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.92/ast.json), which is then used by the code generator. Currently a total of `~170.000` lines of code get generated, where `~110.000` lines are C++ code.
-
-If you're interested in what a generated file look like, checkout [`calls.h`](https://github.com/maierfelix/nvk/blob/master/generated/1.1.92/src/calls.h) or [`VkGraphicsPipelineCreateInfo.cpp`](https://github.com/maierfelix/nvk/blob/master/generated/1.1.92/src/VkGraphicsPipelineCreateInfo.cpp)
+The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.92/ast.json), which is then used by the code generator. Currently a total of `~180.000` lines of code get generated, where `~100.000` lines are C++ code.
 
 ## HTML, CSS based UIs
 
