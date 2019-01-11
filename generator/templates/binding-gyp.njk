@@ -27,7 +27,6 @@
       ],
       "library_dirs": [
         "<(root)/lib/<(platform)/<(target_arch)/GLFW",
-        "<(root)/lib/<(platform)/<(target_arch)/GLEW",
         "<(vkSDK)/<(vkVersion)/Lib"
       ],
       "conditions": [
@@ -40,9 +39,7 @@
             "link_settings": {
               "libraries": [
                 "-lglfw3dll.lib",
-                "-lglew32.lib",
-                "-lvulkan-1.lib",
-                "-lopengl32.lib"
+                "-lvulkan-1.lib"
               ]
             },
             "defines": [
@@ -60,7 +57,7 @@
                 "AdditionalOptions" : ["/NODEFAULTLIB:MSVCRT"]
               },
               "VCLinkerTool": {
-                "LinkTimeCodeGeneration": 1,
+                "LinkTimeCodeGeneration": 2,
                 "LinkIncremental": 1,
                 "AdditionalLibraryDirectories": [
                   "../@PROJECT_SOURCE_DIR@/lib/<(platform)/<(target_arch)",

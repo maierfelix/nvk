@@ -30,10 +30,8 @@ function invalidMemberTypeError(member) {
     }
   }
   return `
-    std::string details = getV8ObjectDetails(value);
-    if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
-    std::string msg = "Expected '${expected}' for '${currentStruct.name}.${member.name}' but got '" + details + "'";
-    Nan::ThrowTypeError(msg.c_str());`;
+    NanInvalidStructMemberTypeError(value, "${currentStruct.name}.${member.name}", "${expected}");
+  `;
 };
 
 function invalidMemberArrayLengthError(member) {

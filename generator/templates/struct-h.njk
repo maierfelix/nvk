@@ -1,11 +1,3 @@
-#ifndef __VK_{{ struct_name.toUpperCase() }}_H__
-#define __VK_{{ struct_name.toUpperCase() }}_H__
-
-#include <nan.h>
-
-#include <vulkan/vulkan_win32.h>
-#define GLFW_INCLUDE_VULKAN
-#include <GLFW/glfw3.h>
 
 class _{{ struct_name }}: public Nan::ObjectWrap {
 
@@ -35,5 +27,3 @@ class _{{ struct_name }}: public Nan::ObjectWrap {
     ~_{{ struct_name }}();
 
 };
-
-#endif

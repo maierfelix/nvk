@@ -215,6 +215,7 @@ function generateBindings(specXML, version) {
     }
     return true;
   });
+  let files = [];
   // generate structs
   {
     console.log("Generating Vk structs..");
@@ -222,8 +223,13 @@ function generateBindings(specXML, version) {
       let result = generateStructs(ast, struct);
       result.includes.map(incl => includes.push(incl));
       if (includes.indexOf(struct.name) <= -1) includes.push({ name: struct.name, include: "" });
-      writeAddonFile(`${generateSrcPath}/${struct.name}.h`, result.header, "utf-8", true);
-      writeAddonFile(`${generateSrcPath}/${struct.name}.cpp`, result.source, "utf-8", true);
+      //writeAddonFile(`${generateSrcPath}/${struct.name}.h`, result.header, "utf-8", true);
+      //writeAddonFile(`${generateSrcPath}/${struct.name}.cpp`, result.source, "utf-8", true);
+      files.push({
+        name: struct.name,
+        header: result.header,
+        source: result.source
+      });
     });
   }
   // generate handles
@@ -232,13 +238,45 @@ function generateBindings(specXML, version) {
     handles.map(handle => {
       let result = generateHandles(ast, handle);
       if (includes.indexOf(handle.name) <= -1) includes.push({ name: handle.name, include: "" });
-      writeAddonFile(`${generateSrcPath}/${handle.name}.h`, result.header, "utf-8", true);
-      writeAddonFile(`${generateSrcPath}/${handle.name}.cpp`, result.source, "utf-8", true);
+      //writeAddonFile(`${generateSrcPath}/${handle.name}.h`, result.header, "utf-8", true);
+      //writeAddonFile(`${generateSrcPath}/${handle.name}.cpp`, result.source, "utf-8", true);
+      files.push({
+        name: handle.name,
+        header: result.header,
+        source: result.source
+      });
     });
   }
   // create sorted includes
   {
     sortedIncludes = getSortedIncludes(includes);
+  }
+  // merge structs and handles into one source file
+  {
+    let source = `#include <nan.h>
+
+#include <vulkan/vulkan_win32.h>
+#define GLFW_INCLUDE_VULKAN
+#include <GLFW/glfw3.h>
+
+#include "utils.h"
+    `;
+    let sorted = [];
+    // sort
+    for (let ii = 0; ii < files.length; ++ii) {
+      let file = files[ii];
+      let sortedIndex = sortedIncludes.indexOf(file.name);
+      sorted[sortedIndex] = file;
+    };
+    // merge
+    sorted.map(file => {
+      source += `\n/** ## BEGIN ${file.name} ## **/\n`;
+      source += file.header;
+      source += `\n`;
+      source += file.source;
+      source += `\n/** ## END ${file.name} ## **/\n`;
+    });
+    writeAddonFile(`${generateSrcPath}/source.h`, source, "utf-8", true);
   }
   // generate enums
   {
@@ -275,7 +313,7 @@ function generateBindings(specXML, version) {
   // generate binding.gyp
   {
     console.log("Generating binding.gyp..");
-    let result = generateGyp(ast, version, includeNames);
+    let result = generateGyp(ast, version, [`"./src/index.cpp"`]);
     writeAddonFile(`${generatePath}/binding.gyp`, result.gyp, "utf-8");
   }
   // generate package.json
@@ -284,12 +322,6 @@ function generateBindings(specXML, version) {
     let result = generatePackage(ast, version);
     writeAddonFile(`${generatePath}/package.json`, result.json, "utf-8");
   }
-  // filter includes
-  /*{
-    includes = includes.filter(incl => {
-      return isWin32Struct(incl.name) && isWin32Struct(incl.include);
-    });
-  }*/
   // generate utils
   {
     console.log("Generating utils..");

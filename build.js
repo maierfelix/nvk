@@ -52,7 +52,6 @@ function copyFiles() {
     let baseDir = `./lib/${unitPlatform}/${architecture}`;
     let targetDir = `./generated/${vkVersion}/build/Release`;
     let files = [
-      [`${baseDir}/GLEW/glew32.dll`, targetDir],
       [`${baseDir}/GLFW/glfw3.dll`, targetDir],
       [`./src/`, `./generated/${vkVersion}/src`]
     ];

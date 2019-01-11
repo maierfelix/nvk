@@ -8,9 +8,11 @@
 #include <nan.h>
 
 #define GLFW_INCLUDE_VULKAN
-
 #include <GLFW/glfw3.h>
 
+#include "source.h"
+
+/*
 #include "VkDebugUtilsMessengerEXT.h"
 #include "VkDebugReportCallbackEXT.h"
 #include "VkSwapchainKHR.h"
@@ -493,5 +495,5 @@
 #include "VkBaseInStructure.h"
 #include "VkBaseOutStructure.h"
 
-
+*/
 #endif

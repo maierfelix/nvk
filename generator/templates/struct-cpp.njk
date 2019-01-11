@@ -1,7 +1,7 @@
-#include "utils.h"
+/*
 {{- processSourceIncludes(struct) | safe }}
 #include "{{ struct_name }}.h"
-
+*/
 Nan::Persistent<v8::FunctionTemplate> _{{ struct_name }}::constructor;
 
 _{{ struct_name }}::_{{ struct_name }}() {
