@@ -50,6 +50,10 @@
             ],
             "msvs_settings": {
               "VCCLCompilerTool": {
+                "FavorSizeOrSpeed": 1,
+                "StringPooling": "true",
+                "Optimization": 2,
+                "WarningLevel": 3,
                 "AdditionalOptions": ["/MP /EHsc"],
                 "ExceptionHandling": 1
               },
@@ -57,8 +61,10 @@
                 "AdditionalOptions" : ["/NODEFAULTLIB:MSVCRT"]
               },
               "VCLinkerTool": {
-                "LinkTimeCodeGeneration": 2,
-                "LinkIncremental": 1,
+                
+      "LinkTimeCodeGeneration": 1,
+      "LinkIncremental": 1
+    ,
                 "AdditionalLibraryDirectories": [
                   "../@PROJECT_SOURCE_DIR@/lib/<(platform)/<(target_arch)",
                 ]

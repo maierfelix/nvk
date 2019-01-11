@@ -20,7 +20,7 @@ export default function(astReference, vkVersion, incremental, vkIncludes) {
     `;
   } else {
     INCREMENTAL += `
-      "LinkTimeCodeGeneration": 2,
+      "LinkTimeCodeGeneration": 1,
       "LinkIncremental": 1
     `;
   }
