@@ -144,7 +144,7 @@ function isWin32Struct(name) {
   return !isANDROID && !isMVK;
 };
 
-function generateBindings(specXML, version) {
+function generateBindings({xml, version, incremental} = _) {
   let ast = null;
   let includes = [];
   let includeNames = [];
@@ -163,11 +163,12 @@ function generateBindings(specXML, version) {
     if (!fs.existsSync(generateSrcPath)) fs.mkdirSync(generateSrcPath);
   }
   // introduce
+  if (incremental) console.log(`Note: Bindings will use incremental building`);
   console.log(`Generating bindings for ${version}...`);
   // generate AST
   {
     console.log(`Generating AST..`);
-    ast = generateAST(specXML);
+    ast = generateAST(xml);
     patchAST(ast);
     let str = JSON.stringify(ast, null, 2);
     writeAddonFile(`${generatePath}/ast.json`, str, "utf-8");
@@ -313,7 +314,7 @@ function generateBindings(specXML, version) {
   // generate binding.gyp
   {
     console.log("Generating binding.gyp..");
-    let result = generateGyp(ast, version, [`"./src/index.cpp"`]);
+    let result = generateGyp(ast, version, incremental, [`"./src/index.cpp"`]);
     writeAddonFile(`${generatePath}/binding.gyp`, result.gyp, "utf-8");
   }
   // generate package.json
@@ -351,9 +352,11 @@ let vkVersion = process.env.npm_config_vkversion;
 if (!vkVersion) throw `No specification version -vkversion specified!`;
 vkVersion = formatVkVersion(vkVersion);
 
+let incremental = process.env.npm_config_incremental === "true";
+
 downloadVulkanSpecificationFile(vkVersion).then(out => {
   // read specification file
   if (out.error) throw out.error;
-  const specXML = fs.readFileSync(out.path, "utf-8");
-  generateBindings(specXML, vkVersion);
+  const xml = fs.readFileSync(out.path, "utf-8");
+  generateBindings({ xml, version: vkVersion, incremental });
 });

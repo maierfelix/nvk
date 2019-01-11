@@ -10,11 +10,24 @@ const GYP_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/binding-gyp.njk
 
 nunjucks.configure({ autoescape: true });
 
-export default function(astReference, VK_VERSION, VK_INCLUDES) {
+export default function(astReference, vkVersion, incremental, vkIncludes) {
   ast = astReference;
+  let INCREMENTAL = "";
+  if (incremental) {
+    INCREMENTAL += `
+      "LinkTimeCodeGeneration": 1,
+      "LinkIncremental": 0
+    `;
+  } else {
+    INCREMENTAL += `
+      "LinkTimeCodeGeneration": 2,
+      "LinkIncremental": 1
+    `;
+  }
   let vars = {
-    VK_VERSION: getLunarVkVersion(VK_VERSION),
-    VK_INCLUDES: VK_INCLUDES.join(`,\n`)
+    INCREMENTAL,
+    VK_VERSION: getLunarVkVersion(vkVersion),
+    VK_INCLUDES: vkIncludes.join(`,\n`)
   };
   let out = {
     gyp: null

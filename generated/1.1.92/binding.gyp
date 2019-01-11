@@ -57,8 +57,10 @@
                 "AdditionalOptions" : ["/NODEFAULTLIB:MSVCRT"]
               },
               "VCLinkerTool": {
-                "LinkTimeCodeGeneration": 2,
-                "LinkIncremental": 1,
+                
+      "LinkTimeCodeGeneration": 1,
+      "LinkIncremental": 0
+    ,
                 "AdditionalLibraryDirectories": [
                   "../@PROJECT_SOURCE_DIR@/lib/<(platform)/<(target_arch)",
                 ]
