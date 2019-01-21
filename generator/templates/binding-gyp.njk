@@ -2,8 +2,7 @@
   "variables": {
     "root": "../..",
     "platform": "<(OS)",
-    "vkVersion": "{{ VK_VERSION | safe }}",
-    "vkSDK": "C:/VulkanSDK"
+    "vkSDK": "{{ VK_SDK_PATH | safe }}"
   },
   "conditions": [
     [ "platform == 'win'", { "variables": { "platform": "win" } } ],
@@ -23,11 +22,11 @@
       "include_dirs": [
         "<!(node -e \"require('nan')\")",
         "<(root)/lib/include/",
-        "<(vkSDK)/<(vkVersion)/Include"
+        "<(vkSDK)/Include"
       ],
       "library_dirs": [
         "<(root)/lib/<(platform)/<(target_arch)/GLFW",
-        "<(vkSDK)/<(vkVersion)/Lib"
+        "<(vkSDK)/Lib"
       ],
       "conditions": [
         [

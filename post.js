@@ -18,12 +18,13 @@ let isAnswerYes = answer => {
   answer = answer.toUpperCase();
   return answer === "Y" || answer === "YES";
 };
-let isVulkanVersion = version => {
+let getVulkanVersion = version => {
   let split = version.split(".");
-  if (split.length === 3) {
-    return (!Number.isNaN(split[0]) && !Number.isNaN(split[1]) && !Number.isNaN(split[2]));
+  if (split.length > 3) {
+    let subv = split[3];
+    if (subv === "0" || subv === "1") split.pop();
   }
-  return false;
+  return split.join(".");
 };
 
 function blankLine() {
@@ -86,10 +87,12 @@ function askBindingsVersion() {
   rl.question(`Press [ENTER] to use the recommended version, or type in another version: [x.x.x] `, answer => {
     if (!answer.length) {
       setupBindings(defaultVersion);
-    } else if (isVulkanVersion(answer)) {
-      setupBindings(answer);
     } else {
-      goodbye();
+      let formatted = getVulkanVersion(answer);
+      if (answer !== formatted) {
+        console.log(`Warning: Reformatted specificed version to avoid version inconsitency: ${answer} => ${formatted}`);
+      }
+      setupBindings(formatted);
     }
   });
 };

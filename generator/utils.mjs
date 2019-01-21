@@ -1,12 +1,16 @@
+import fs from "fs";
 import toposort from "toposort";
 
 export function formatVkVersion(version) {
   let split = version.split(".");
   if (split.length > 3) {
+    let subv = split[3];
     // .0 at version end is ignored, pop it
-    if (split[3] === "0") {
+    if (subv === "0" || subv === "1") {
       split.pop();
       return split.join(".");
+    } else {
+      console.warn(`Warning: Version ${version} has unsupported formatting`);
     }
   }
   return version;
@@ -20,6 +24,26 @@ export function getLunarVkVersion(version) {
     return split.join(".");
   }
   return version;
+};
+
+export function getLunarVkSDKPath() {
+  let envSDKPath = process.env.VK_SDK_PATH;
+  let path = envSDKPath.substr(0, envSDKPath.lastIndexOf(`\\`));
+  return path.replace(/\\/g, `/`);
+};
+
+export function resolveLunarVkSDKPath(vkVersion) {
+  let VK_SDK_PATH = getLunarVkSDKPath();
+  let indices = [...Array(10)].map((v, i) => i);
+  let sdkPath = VK_SDK_PATH + `/` + vkVersion;
+  if (!fs.existsSync(sdkPath)) {
+    // x.x.x.0-9
+    for (let index of indices) {
+      sdkPath = VK_SDK_PATH + `/` + vkVersion + `.${index}`;
+      if (fs.existsSync(sdkPath)) return sdkPath;
+    };
+  }
+  return sdkPath;
 };
 
 export function removeDuplicates(array, condition) {

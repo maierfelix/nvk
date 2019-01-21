@@ -144,7 +144,7 @@ function isWin32Struct(name) {
   return !isANDROID && !isMVK;
 };
 
-function generateBindings({xml, version, incremental} = _) {
+async function generateBindings({xml, version, incremental} = _) {
   let ast = null;
   let includes = [];
   let includeNames = [];
@@ -314,7 +314,7 @@ function generateBindings({xml, version, incremental} = _) {
   // generate binding.gyp
   {
     console.log("Generating binding.gyp..");
-    let result = generateGyp(ast, version, incremental, [`"./src/index.cpp"`]);
+    let result = await generateGyp(ast, version, incremental, [`"./src/index.cpp"`]);
     writeAddonFile(`${generatePath}/binding.gyp`, result.gyp, "utf-8");
   }
   // generate package.json
