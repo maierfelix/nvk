@@ -1,8 +1,14 @@
+/**
+
+  Generates a binding.gyp to compile the generated bindings
+
+**/
 import fs from "fs";
 import nunjucks from "nunjucks";
 import pkg from "../../package.json";
 
 import {
+  warn,
   getLunarVkSDKPath,
   resolveLunarVkSDKPath
 } from "../utils";
@@ -31,10 +37,11 @@ export default async function(astReference, vkVersion, incremental, vkIncludes) 
   // x.x.x
   let sdkPath = resolveLunarVkSDKPath(vkVersion);
   if (!fs.existsSync(sdkPath)) {
-    throw new Error(`Unable to find Vulkan SDK for ${vkVersion}! Please make sure you installed the corresponding SDK version to build the bindings`);
+    warn(`Unable to find Vulkan SDK for ${vkVersion}! Please make sure you installed the corresponding SDK version to build the bindings`);
+    warn(`Building the generated bindings might fail`);
   }
-  if (VK_SDK_PATH + `/` + vkVersion !== sdkPath) {
-    console.warn(`Warning: Using fallback SDK at ${sdkPath}`);
+  else if (VK_SDK_PATH + `/` + vkVersion !== sdkPath) {
+    warn(`Using fallback SDK at ${sdkPath}`);
   }
   let vars = {
     INCREMENTAL,

@@ -1,3 +1,10 @@
+/**
+
+  Applies various patches to the AST including:
+   - Fixes for specifications
+   - Code behavior changes for a more JS conform usage
+
+**/
 export default function(ast) {
 
   let structs = ast.filter(node => node.kind === "STRUCT");

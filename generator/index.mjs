@@ -14,8 +14,10 @@ import generateGyp from "./generators/gyp";
 import generatePackage from "./generators/package";
 import generateUtils from "./generators/utils";
 import generateTS from "./generators/typescript";
+import generateDocs from "./generators/docs";
 
 import {
+  warn,
   formatVkVersion,
   getSortedIncludes
 } from "./utils";
@@ -67,7 +69,7 @@ function downloadVulkanSpecificationFile(version) {
 };
 
 // bridged to only change the change data of a file if it's really necessary
-// (the compiler seems to re-compile based on file changes..)
+// (msbuild seems to re-compile based on file change date..)
 function writeAddonFile(path, data, encoding, includeNotice = false) {
   let source = null;
   try {
@@ -131,20 +133,14 @@ function mergeExtensionsIntoEnums(enums, extensions) {
           insertOrReplaceEnumMember(strExt, member);
         }
         else {
-          console.warn(`Cannot handle enum extension ${extension.name} in merge-extensions!`);
+          warn(`Cannot handle enum extension ${extension.name} in merge-extensions!`);
         }
       }
     });
   });
 };
 
-function isWin32Struct(name) {
-  let isANDROID = name.substr(name.length - 7, name.length) === "ANDROID";
-  let isMVK = name.substr(name.length - 3, name.length) === "MVK";
-  return !isANDROID && !isMVK;
-};
-
-async function generateBindings({xml, version, incremental} = _) {
+async function generateBindings({xml, version, docs, incremental} = _) {
   let ast = null;
   let includes = [];
   let includeNames = [];
@@ -168,7 +164,7 @@ async function generateBindings({xml, version, incremental} = _) {
   // generate AST
   {
     console.log(`Generating AST..`);
-    ast = generateAST(xml);
+    ast = await generateAST(xml, version);
     patchAST(ast);
     let str = JSON.stringify(ast, null, 2);
     writeAddonFile(`${generatePath}/ast.json`, str, "utf-8");
@@ -338,8 +334,15 @@ async function generateBindings({xml, version, incremental} = _) {
   }
   // generate typescript index
   {
+    console.log("Generating typescript index..");
     let source = `module.exports = require("${pkg.config.TS_ROOT}");`;
     writeAddonFile(`${generatePath}/index.js`, source, "utf-8");
+  }
+  // docs
+  if (docs) {
+    console.log("Generating docs..");
+    let data = { structs, handles, calls, enums, includes: sortedIncludes };
+    await generateDocs(ast, data);
   }
   console.log(``);
   console.log(`Generation stats:`);
@@ -352,11 +355,12 @@ let vkVersion = process.env.npm_config_vkversion;
 if (!vkVersion) throw `No specification version -vkversion specified!`;
 vkVersion = formatVkVersion(vkVersion);
 
+let docs = process.env.npm_config_docs === "true";
 let incremental = process.env.npm_config_incremental === "true";
 
 downloadVulkanSpecificationFile(vkVersion).then(out => {
   // read specification file
   if (out.error) throw out.error;
   const xml = fs.readFileSync(out.path, "utf-8");
-  generateBindings({ xml, version: vkVersion, incremental });
+  generateBindings({ xml, version: vkVersion, docs, incremental });
 });

@@ -1,8 +1,14 @@
+/**
+
+  Generates C++ binding code for vulkan structs
+
+**/
 import fs from "fs";
 import nunjucks from "nunjucks";
 import pkg from "../../package.json";
 
 import {
+  warn,
   isIgnoreableType
 } from "../utils";
 
@@ -19,7 +25,7 @@ let globalIncludes = [];
 function invalidMemberTypeError(member) {
   let expected = member.jsType;
   if (expected === "undefined") {
-    console.warn(`Cannot handle member ${member.rawType} in member-type-error`);
+    warn(`Cannot handle member ${member.rawType} in member-type-error`);
   // try to give better hints
   } else {
     if (member.isStructType || member.isHandleType) {
@@ -173,7 +179,7 @@ function processHeaderGetter(struct, member) {
       return `
     static NAN_GETTER(Get${member.name});`;
     default: {
-      console.warn(`Cannot handle member ${member.rawType} in header-getter!`);
+      warn(`Cannot handle member ${member.rawType} in header-getter!`);
       return `
     static NAN_GETTER(Get${member.name});`;
     }
@@ -260,7 +266,7 @@ function processSourceGetter(struct, member) {
     info.GetReturnValue().Set(obj);
   }`;
       }
-      console.warn(`Cannot handle member ${member.rawType} in source-getter!`);
+      warn(`Cannot handle member ${member.rawType} in source-getter!`);
       return retUnknown(member);
     } break;
   };
@@ -268,7 +274,7 @@ function processSourceGetter(struct, member) {
 
 function processStaticArraySourceSetter(member) {
   if (!member.hasOwnProperty("length")) {
-    console.warn(`Cannot process static array length ${member.length} in static-array source-setter!`);
+    warn(`Cannot process static array length ${member.length} in static-array source-setter!`);
   }
   return `
   // js
@@ -358,7 +364,7 @@ function processSourceSetter(struct, member) {
     return;
   }`;
       } else {
-        console.warn(`Cannot handle member ${member.rawType} in source-setter`);
+        warn(`Cannot handle member ${member.rawType} in source-setter`);
       }
     case "const char *":
       return `
@@ -429,7 +435,7 @@ function processSourceSetter(struct, member) {
     return;
   }`;
       }
-      console.warn(`Cannot handle member ${member.rawType} in source-setter!`);
+      warn(`Cannot handle member ${member.rawType} in source-setter!`);
       return retUnknown(member);
     } break;
   };
@@ -528,7 +534,7 @@ function processFlushSourceSetter(struct, member) {
     self->instance.${member.name} = data->data();`;
   }
   else {
-    console.warn(`Cannot process ${struct.name}.${member.name} in flush source-setter!`);
+    warn(`Cannot process ${struct.name}.${member.name} in flush source-setter!`);
   }
 };
 
@@ -596,7 +602,7 @@ function isHeaderHeapVector(member) {
 function getHeaderHeapVectorType(member) {
   if (isArrayOfObjectsMember(member)) return member.type;
   else if (member.rawType === "const char * const*") return `char*`;
-  else console.warn(`Cannot process ${member.type} in heap-vector-initializer!`);
+  else warn(`Cannot process ${member.type} in heap-vector-initializer!`);
   return null;
 };
 
@@ -665,7 +671,7 @@ function processFlushMemberSetter(struct, member) {
     case "const char * const*":
       return ``;
     default:
-      console.warn(`Cannot handle member ${member.rawType} in flush-member!`);
+      warn(`Cannot handle member ${member.rawType} in flush-member!`);
   };
   return ``;
 };
@@ -686,7 +692,7 @@ function getMemberIndexByName(struct, name) {
     let child = struct.children[ii];
     if (child.name === name) return ii;
   };
-  console.warn(`Failed to resolve member by name ${name}`);
+  warn(`Failed to resolve member by name ${name}`);
   return null;
 };
 

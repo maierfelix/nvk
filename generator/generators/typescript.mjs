@@ -1,8 +1,14 @@
+/**
+
+  Generates a typescript type definition file
+
+**/
 import fs from "fs";
 import nunjucks from "nunjucks";
 import pkg from "../../package.json";
 
 import {
+  warn,
   isIgnoreableType
 } from "../utils";
 
@@ -122,7 +128,7 @@ function getTypescriptType(member) {
     case "void **":
       return `VkInoutAddress`;
     default: {
-      console.warn(`Cannot handle member ${member.rawType} in member-ts-type!`);
+      warn(`Cannot handle member ${member.rawType} in member-ts-type!`);
       return ``;
     }
   };
@@ -159,9 +165,10 @@ function processCallReturn(call) {
       return `void`;
     case "int32_t":
     case "uint32_t":
+    case "uint64_t":
       return `number`;
     default:
-      console.warn(`Cannot handle call param return type ${type} in ts-call-return!`);
+      warn(`Cannot handle call param return type ${type} in ts-call-return!`);
   };
   return `void`;
 };

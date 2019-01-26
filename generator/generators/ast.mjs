@@ -1,7 +1,15 @@
+/**
+
+  Generates a processable AST from vulkan specification files
+
+**/
 import xml from "xml-js";
 import pkg from "../../package.json";
+import parseDocumentation from "../doc-parser";
 
 import {
+  warn,
+  formatIntToHex,
   isNumericReferenceType
 } from "../utils";
 
@@ -176,7 +184,7 @@ function parseExtensionMembers(parent, child) {
           member.name = attr.name;
           member.extends = attr.extends;
           let pos = 1 << parseInt(attr.bitpos, 0);
-          member.value = `0x` + pos.toString(16);
+          member.value = formatIntToHex(pos);
           out.push(member);
         }
         else if (attr.alias) {
@@ -297,7 +305,7 @@ function parseEnumMember(parent, child) {
   let isFloat = value.indexOf(".") !== -1;
   if (type === "BITPOS") {
     let pos = 1 << parseInt(value, 0);
-    value = `0x` + pos.toString(16);
+    value = formatIntToHex(pos);
   }
   if (Number.isNaN(parsed) || isFloat) {
     value = `(__int32)${value}`;
@@ -476,13 +484,13 @@ function parseTypeElement(child) {
 
 function registerStruct(struct) {
   let {name} = struct;
-  if (structs[name]) console.warn(`Struct ${name} already registered!`);
+  if (structs[name]) warn(`Struct ${name} already registered!`);
   structs[name] = 1;
 };
 
 function registerEnum(enu) {
   let {name} = enu;
-  if (enums[name]) console.warn(`Enum ${name} already registered!`);
+  if (enums[name]) warn(`Enum ${name} already registered!`);
   enums[name] = enu.value || 1;
 };
 
@@ -532,11 +540,44 @@ function getJsTypedArrayName(type) {
     case "const uint64_t *":
       return "BigUint64Array";
   };
-  console.warn(`Cannot resolve equivalent JS typed array name for ${type}`);
+  warn(`Cannot resolve equivalent JS typed array name for ${type}`);
   return null;
 };
 
-export default function(xmlInput) {
+function getDocumentationEntryByName(name, docs) {
+  for (let ii = 0; ii < docs.length; ++ii) {
+    let entry = docs[ii];
+    let {description} = entry;
+    if (description.name === name) return entry;
+    if (entry.equivalents && entry.equivalents.indexOf(name) > -1) return entry;
+  };
+  return null;
+};
+
+function getNodeChildByName(node, name) {
+  let children = node.children || node.params || [];
+  for (let ii = 0; ii < children.length; ++ii) {
+    let child = children[ii];
+    if (child.name === name) return child;
+  };
+  return null;
+};
+
+function fillDocumentation(objects, docs) {
+  objects.map(object => {
+    let doc = getDocumentationEntryByName(object.name, docs);
+    if (!doc) return warn(`Missing documentation for ${object.name}`);
+    doc.params.map(param => {
+      if (!param) return;
+      let child = getNodeChildByName(object, param.name);
+      if (child) child.description = param.description;
+    });
+    object.category = doc.category;
+    object.description = doc.description.description;
+  });
+};
+
+export default function(xmlInput, version) {
   let obj = new xml.xml2js(xmlInput, xmlOpts);
   let out = [];
   // bitmask type links
@@ -632,6 +673,7 @@ export default function(xmlInput) {
     });
     out.push(ast);
   }
+  // enums
   if (true) {
     let results = [];
     findXMLElements(obj, { type: "enum" }, results);
@@ -640,6 +682,7 @@ export default function(xmlInput) {
       out.push(ast);
     });
   }
+  // extensions
   if (true) {
     let results = [];
     findXMLElements(obj, { comment: "Vulkan extension interface definitions" }, results);
@@ -648,6 +691,7 @@ export default function(xmlInput) {
       out.push(node);
     });
   }
+  // structs
   if (true) {
     let results = [];
     findXMLElements(obj, { category: "struct" }, results);
@@ -656,7 +700,7 @@ export default function(xmlInput) {
       out.push(ast);
     });
     let structs = out.filter(node => node.kind === "STRUCT");
-    // add extensions
+    // include struct extensions
     structs.map(struct => {
       if (struct.extends) {
         let extStruct = structs.filter(stru => stru.name === struct.extends)[0];
@@ -667,6 +711,7 @@ export default function(xmlInput) {
       }
     });
   }
+  // unions
   if (true) {
     let results = [];
     findXMLElements(obj, { category: "union" }, results);
@@ -675,6 +720,7 @@ export default function(xmlInput) {
       out.push(ast);
     });
   }
+  // bitmasks
   if (true) {
     let results = [];
     findXMLElements(obj, { type: "bitmask" }, results);
@@ -683,6 +729,7 @@ export default function(xmlInput) {
       out.push(ast);
     });
   }
+  // calls
   if (true) {
     let results = [];
     let commands = [];
@@ -707,5 +754,16 @@ export default function(xmlInput) {
     };
     commands.map(cmd => out.push(cmd));
   }
-  return out;
+  return new Promise(resolve => {
+    parseDocumentation(version).then(ast => {
+      let structs = out.filter(node => node.kind === "STRUCT");
+      let handles = out.filter(node => node.kind === "HANDLE");
+      let calls = out.filter(node => node.kind === "COMMAND_PROTO");
+      // insert documentation
+      fillDocumentation(structs, ast);
+      fillDocumentation(handles, ast);
+      fillDocumentation(calls, ast);
+      resolve(out);
+    });
+  });
 };

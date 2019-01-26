@@ -1,6 +1,33 @@
 import fs from "fs";
 import toposort from "toposort";
 
+export function warn() {
+  let args = [];
+  for (let ii = 0; ii < arguments.length; ++ii) args.push(arguments[ii]);
+  let str = args.join(", ");
+  console.log(`\x1b[33m%s\x1b[0m`, `Warning: ${str}`);
+};
+
+export function error() {
+  let args = [];
+  for (let ii = 0; ii < arguments.length; ++ii) args.push(arguments[ii]);
+  let str = args.join(", ");
+  process.stderr.write(`\x1b[31mError: ${str}\n\x1b[0m`);
+};
+
+export function formatIntToHex(n) {
+  let h = parseInt(n.toString(16));
+  let sign = h < 0 ? `-` : ``;
+  let abs = Math.abs(h);
+  return `${sign}0x${abs}`;
+};
+
+export function getFileNameFromPath(path) {
+  let filePath = path.substr(path.lastIndexOf("/") + 1);
+  let fileName = filePath.substr(0, filePath.indexOf("."));
+  return fileName;
+};
+
 export function formatVkVersion(version) {
   let split = version.split(".");
   if (split.length > 3) {
@@ -10,7 +37,7 @@ export function formatVkVersion(version) {
       split.pop();
       return split.join(".");
     } else {
-      console.warn(`Warning: Version ${version} has unsupported formatting`);
+      warn(`Version ${version} has unsupported formatting`);
     }
   }
   return version;

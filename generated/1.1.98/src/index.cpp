@@ -145,7 +145,20 @@ static void init(v8::Handle<v8::Object> target, v8::Handle<v8::Object> module) {
   _VkPhysicalDevice::Initialize(target);
   _VkInstance::Initialize(target);
   _VkClearColorValue::Initialize(target);
+  _VkBufferDeviceAddressCreateInfoEXT::Initialize(target);
+  _VkBufferDeviceAddressInfoEXT::Initialize(target);
+  _VkPhysicalDeviceBufferAddressFeaturesEXT::Initialize(target);
+  _VkMemoryPriorityAllocateInfoEXT::Initialize(target);
+  _VkPhysicalDeviceMemoryPriorityFeaturesEXT::Initialize(target);
+  _VkPhysicalDeviceMemoryBudgetPropertiesEXT::Initialize(target);
+  _VkPhysicalDeviceScalarBlockLayoutFeaturesEXT::Initialize(target);
+  _VkAttachmentReference::Initialize(target);
+  _VkRenderPassFragmentDensityMapCreateInfoEXT::Initialize(target);
+  _VkExtent2D::Initialize(target);
+  _VkPhysicalDeviceFragmentDensityMapPropertiesEXT::Initialize(target);
+  _VkPhysicalDeviceFragmentDensityMapFeaturesEXT::Initialize(target);
   _VkDeviceMemoryOverallocationCreateInfoAMD::Initialize(target);
+  _VkImageStencilUsageCreateInfoEXT::Initialize(target);
   _VkImageDrmFormatModifierPropertiesEXT::Initialize(target);
   _VkSubresourceLayout::Initialize(target);
   _VkImageDrmFormatModifierExplicitCreateInfoEXT::Initialize(target);
@@ -174,7 +187,6 @@ static void init(v8::Handle<v8::Object> target, v8::Handle<v8::Object> module) {
   _VkCoarseSampleLocationNV::Initialize(target);
   _VkCoarseSampleOrderCustomNV::Initialize(target);
   _VkPipelineViewportCoarseSampleOrderStateCreateInfoNV::Initialize(target);
-  _VkExtent2D::Initialize(target);
   _VkPhysicalDeviceShadingRateImagePropertiesNV::Initialize(target);
   _VkPhysicalDeviceShadingRateImageFeaturesNV::Initialize(target);
   _VkShadingRatePaletteNV::Initialize(target);
@@ -194,6 +206,9 @@ static void init(v8::Handle<v8::Object> target, v8::Handle<v8::Object> module) {
   _VkPhysicalDeviceTransformFeedbackFeaturesEXT::Initialize(target);
   _VkPhysicalDeviceASTCDecodeFeaturesEXT::Initialize(target);
   _VkImageViewASTCDecodeModeEXT::Initialize(target);
+  _VkAttachmentReference2KHR::Initialize(target);
+  _VkSubpassDescriptionDepthStencilResolveKHR::Initialize(target);
+  _VkPhysicalDeviceDepthStencilResolvePropertiesKHR::Initialize(target);
   _VkCheckpointDataNV::Initialize(target);
   _VkQueueFamilyCheckpointPropertiesNV::Initialize(target);
   _VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT::Initialize(target);
@@ -209,7 +224,6 @@ static void init(v8::Handle<v8::Object> target, v8::Handle<v8::Object> module) {
   _VkSubpassEndInfoKHR::Initialize(target);
   _VkSubpassBeginInfoKHR::Initialize(target);
   _VkSubpassDependency2KHR::Initialize(target);
-  _VkAttachmentReference2KHR::Initialize(target);
   _VkSubpassDescription2KHR::Initialize(target);
   _VkAttachmentDescription2KHR::Initialize(target);
   _VkRenderPassCreateInfo2KHR::Initialize(target);
@@ -233,6 +247,8 @@ static void init(v8::Handle<v8::Object> target, v8::Handle<v8::Object> module) {
   _VkDeviceQueueGlobalPriorityCreateInfoEXT::Initialize(target);
   _VkShaderResourceUsageAMD::Initialize(target);
   _VkShaderStatisticsInfoAMD::Initialize(target);
+  _VkPhysicalDeviceFloatControlsPropertiesKHR::Initialize(target);
+  _VkPhysicalDeviceFloat16Int8FeaturesKHR::Initialize(target);
   _VkPhysicalDeviceShaderDrawParameterFeatures::Initialize(target);
   _VkDescriptorSetLayoutSupportKHR::Initialize(target);
   _VkDescriptorSetLayoutSupport::Initialize(target);
@@ -494,6 +510,7 @@ static void init(v8::Handle<v8::Object> target, v8::Handle<v8::Object> module) {
   _VkDebugMarkerObjectTagInfoEXT::Initialize(target);
   _VkDebugMarkerObjectNameInfoEXT::Initialize(target);
   _VkPipelineRasterizationStateRasterizationOrderAMD::Initialize(target);
+  _VkValidationFeaturesEXT::Initialize(target);
   _VkValidationFlagsEXT::Initialize(target);
   _VkDebugReportCallbackCreateInfoEXT::Initialize(target);
   _VkPresentInfoKHR::Initialize(target);
@@ -512,7 +529,6 @@ static void init(v8::Handle<v8::Object> target, v8::Handle<v8::Object> module) {
   _VkFenceCreateInfo::Initialize(target);
   _VkEventCreateInfo::Initialize(target);
   _VkSubpassDependency::Initialize(target);
-  _VkAttachmentReference::Initialize(target);
   _VkSubpassDescription::Initialize(target);
   _VkAttachmentDescription::Initialize(target);
   _VkRenderPassCreateInfo::Initialize(target);
@@ -1788,6 +1804,10 @@ static void init(v8::Handle<v8::Object> target, v8::Handle<v8::Object> module) {
   target->Set(
     Nan::New("vkGetImageDrmFormatModifierPropertiesEXT").ToLocalChecked(),
     Nan::New<v8::FunctionTemplate>(_vkGetImageDrmFormatModifierPropertiesEXT)->GetFunction()
+  );
+  target->Set(
+    Nan::New("vkGetBufferDeviceAddressEXT").ToLocalChecked(),
+    Nan::New<v8::FunctionTemplate>(_vkGetBufferDeviceAddressEXT)->GetFunction()
   );
   
 }

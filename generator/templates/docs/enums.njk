@@ -1,0 +1,9 @@
+{% for enu in enums %}
+
+export enum {{ enu.name }} {
+  {% for child in enu.children -%}
+  {{ child.name }},
+  {% endfor %}
+}
+
+{% endfor %}

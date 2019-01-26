@@ -1,0 +1,5 @@
+{% for name in includes -%}
+{%- if isHandleInclude(name) == true -%}
+export interface {{ name | safe }} {}
+{% endif -%}
+{% endfor %}

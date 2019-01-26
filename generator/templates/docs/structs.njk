@@ -1,0 +1,7 @@
+{% for name in includes -%}
+{%- if isStructInclude(name) == true -%}
+export interface {{ name | safe }} {
+{{ processStructMembers(name, false) | safe }}
+}
+{% endif %}
+{% endfor %}

@@ -96,7 +96,7 @@ std::map<std::string, std::string> _API_Extensions_Strings = {
   { "VK_KHR_EXTERNAL_SEMAPHORE_FD_EXTENSION_NAME", "VK_KHR_external_semaphore_fd" },
   { "VK_KHR_PUSH_DESCRIPTOR_EXTENSION_NAME", "VK_KHR_push_descriptor" },
   { "VK_EXT_CONDITIONAL_RENDERING_EXTENSION_NAME", "VK_EXT_conditional_rendering" },
-  { "VK_KHR_EXTENSION_83_EXTENSION_NAME", "VK_KHR_extension_83" },
+  { "VK_KHR_SHADER_FLOAT16_INT8_EXTENSION_NAME", "VK_KHR_shader_float16_int8" },
   { "VK_KHR_16BIT_STORAGE_EXTENSION_NAME", "VK_KHR_16bit_storage" },
   { "VK_KHR_INCREMENTAL_PRESENT_EXTENSION_NAME", "VK_KHR_incremental_present" },
   { "VK_KHR_DESCRIPTOR_UPDATE_TEMPLATE_EXTENSION_NAME", "VK_KHR_descriptor_update_template" },
@@ -209,10 +209,10 @@ std::map<std::string, std::string> _API_Extensions_Strings = {
   { "VK_GOOGLE_EXTENSION_195_EXTENSION_NAME", "VK_GOOGLE_extension_195" },
   { "VK_GOOGLE_EXTENSION_196_EXTENSION_NAME", "VK_GOOGLE_extension_196" },
   { "VK_KHR_DRIVER_PROPERTIES_EXTENSION_NAME", "VK_KHR_driver_properties" },
-  { "VK_ARM_EXTENSION_198_EXTENSION_NAME", "VK_EXT_extension_198" },
+  { "VK_KHR_SHADER_FLOAT_CONTROLS_EXTENSION_NAME", "VK_KHR_shader_float_controls" },
   { "VK_NV_SHADER_SUBGROUP_PARTITIONED_EXTENSION_NAME", "VK_NV_shader_subgroup_partitioned" },
-  { "VK_KHR_EXTENSION_200_EXTENSION_NAME", "VK_KHR_extension_200" },
-  { "VK_KHR_EXTENSION_201_EXTENSION_NAME", "VK_KHR_extension_201" },
+  { "VK_KHR_DEPTH_STENCIL_RESOLVE_EXTENSION_NAME", "VK_KHR_depth_stencil_resolve" },
+  { "VK_KHR_SWAPCHAIN_MUTABLE_FORMAT_EXTENSION_NAME", "VK_KHR_swapchain_mutable_format" },
   { "VK_NV_COMPUTE_SHADER_DERIVATIVES_EXTENSION_NAME", "VK_NV_compute_shader_derivatives" },
   { "VK_NV_MESH_SHADER_EXTENSION_NAME", "VK_NV_mesh_shader" },
   { "VK_NV_FRAGMENT_SHADER_BARYCENTRIC_EXTENSION_NAME", "VK_NV_fragment_shader_barycentric" },
@@ -230,10 +230,10 @@ std::map<std::string, std::string> _API_Extensions_Strings = {
   { "VK_KHR_EXTENSION_216_EXTENSION_NAME", "VK_KHR_extension_216" },
   { "VK_KHR_EXTENSION_217_EXTENSION_NAME", "VK_KHR_extension_217" },
   { "VK_EXT_MACOS_IOS_WINDOW_EXTENSION_NAME", "VK_EXT_macos_ios_window" },
-  { "VK_EXT_EXTENSION_219_EXTENSION_NAME", "VK_EXT_extension_219" },
+  { "VK_EXT_FRAGMENT_DENSITY_MAP_EXTENSION_NAME", "VK_EXT_fragment_density_map" },
   { "VK_EXT_EXTENSION_220_EXTENSION_NAME", "VK_EXT_extension_220" },
   { "VK_KHR_EXTENSION_221_EXTENSION_NAME", "VK_KHR_extension_221" },
-  { "VK_EXT_EXTENSION_222_EXTENSION_NAME", "VK_EXT_extension_222" },
+  { "VK_EXT_SCALAR_BLOCK_LAYOUT_EXTENSION_NAME", "VK_EXT_scalar_block_layout" },
   { "VK_EXT_EXTENSION_223_EXTENSION_NAME", "VK_EXT_extension_223" },
   { "VK_GOOGLE_HLSL_FUNCTIONALITY1_EXTENSION_NAME", "VK_GOOGLE_hlsl_functionality1" },
   { "VK_GOOGLE_DECORATE_STRING_EXTENSION_NAME", "VK_GOOGLE_decorate_string" },
@@ -249,17 +249,19 @@ std::map<std::string, std::string> _API_Extensions_Strings = {
   { "VK_AMD_EXTENSION_235_EXTENSION_NAME", "VK_AMD_extension_235" },
   { "VK_AMD_EXTENSION_236_EXTENSION_NAME", "VK_AMD_extension_236" },
   { "VK_KHR_EXTENSION_237_EXTENSION_NAME", "VK_KHR_extension_237" },
-  { "VK_KHR_EXTENSION_238_EXTENSION_NAME", "VK_KHR_extension_238" },
-  { "VK_KHR_EXTENSION_239_EXTENSION_NAME", "VK_KHR_extension_239" },
+  { "VK_EXT_MEMORY_BUDGET_EXTENSION_NAME", "VK_EXT_memory_budget" },
+  { "VK_EXT_MEMORY_PRIORITY_EXTENSION_NAME", "VK_EXT_memory_priority" },
   { "VK_KHR_EXTENSION_240_EXTENSION_NAME", "VK_KHR_extension_240" },
   { "VK_NV_EXTENSION_241_EXTENSION_NAME", "VK_NV_extension_241" },
   { "VK_NV_EXTENSION_242_EXTENSION_NAME", "VK_NV_extension_242" },
   { "VK_INTEL_EXTENSION_243_EXTENSION_NAME", "VK_INTEL_extension_243" },
   { "VK_MESA_EXTENSION_244_EXTENSION_NAME", "VK_MESA_extension_244" },
-  { "VK_NV_EXTENSION_245_EXTENSION_NAME", "VK_NV_extension_245" },
+  { "VK_EXT_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME", "VK_EXT_buffer_device_address" },
   { "VK_EXT_EXTENSION_246_EXTENSION_NAME", "VK_EXT_extension_246" },
-  { "VK_EXT_EXTENSION_247_EXTENSION_NAME", "VK_EXT_extension_247" },
-  { "VK_EXT_EXTENSION_248_EXTENSION_NAME", "VK_EXT_extension_248" },
+  { "VK_EXT_SEPARATE_STENCIL_USAGE_EXTENSION_NAME", "VK_EXT_separate_stencil_usage" },
+  { "VK_EXT_VALIDATION_FEATURES_EXTENSION_NAME", "VK_EXT_validation_features" },
+  { "VK_KHR_EXTENSION_249_EXTENSION_NAME", "VK_KHR_extension_249" },
+  { "VK_NV_EXTENSION_250_EXTENSION_NAME", "VK_NV_extension_250" },
   
 };
 std::map<std::string, __int32> _API_Extensions = {
@@ -348,7 +350,7 @@ std::map<std::string, __int32> _API_Extensions = {
   { "VK_KHR_PUSH_DESCRIPTOR_SPEC_VERSION", 2 },
   { "VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS_KHR", 1 },
   { "VK_EXT_CONDITIONAL_RENDERING_SPEC_VERSION", 1 },
-  { "VK_KHR_EXTENSION_83_SPEC_VERSION", 0 },
+  { "VK_KHR_SHADER_FLOAT16_INT8_SPEC_VERSION", 1 },
   { "VK_KHR_16BIT_STORAGE_SPEC_VERSION", 1 },
   { "VK_KHR_INCREMENTAL_PRESENT_SPEC_VERSION", 1 },
   { "VK_KHR_DESCRIPTOR_UPDATE_TEMPLATE_SPEC_VERSION", 1 },
@@ -429,7 +431,7 @@ std::map<std::string, __int32> _API_Extensions = {
   { "VK_EXT_SHADER_VIEWPORT_INDEX_LAYER_SPEC_VERSION", 1 },
   { "VK_EXT_EXTENSION_164_SPEC_VERSION", 0 },
   { "VK_NV_SHADING_RATE_IMAGE_SPEC_VERSION", 3 },
-  { "VK_NV_RAY_TRACING_SPEC_VERSION", 2 },
+  { "VK_NV_RAY_TRACING_SPEC_VERSION", 3 },
   { "VK_NV_REPRESENTATIVE_FRAGMENT_TEST_SPEC_VERSION", 1 },
   { "VK_EXT_EXTENSION_168_SPEC_VERSION", 0 },
   { "VK_KHR_MAINTENANCE3_SPEC_VERSION", 1 },
@@ -461,10 +463,10 @@ std::map<std::string, __int32> _API_Extensions = {
   { "VK_GOOGLE_EXTENSION_195_SPEC_VERSION", 0 },
   { "VK_GOOGLE_EXTENSION_196_SPEC_VERSION", 0 },
   { "VK_KHR_DRIVER_PROPERTIES_SPEC_VERSION", 1 },
-  { "VK_ARM_EXTENSION_198_SPEC_VERSION", 0 },
+  { "VK_KHR_SHADER_FLOAT_CONTROLS_SPEC_VERSION", 1 },
   { "VK_NV_SHADER_SUBGROUP_PARTITIONED_SPEC_VERSION", 1 },
-  { "VK_KHR_EXTENSION_200_SPEC_VERSION", 0 },
-  { "VK_KHR_EXTENSION_201_SPEC_VERSION", 0 },
+  { "VK_KHR_DEPTH_STENCIL_RESOLVE_SPEC_VERSION", 1 },
+  { "VK_KHR_SWAPCHAIN_MUTABLE_FORMAT_SPEC_VERSION", 1 },
   { "VK_NV_COMPUTE_SHADER_DERIVATIVES_SPEC_VERSION", 1 },
   { "VK_NV_MESH_SHADER_SPEC_VERSION", 1 },
   { "VK_NV_FRAGMENT_SHADER_BARYCENTRIC_SPEC_VERSION", 1 },
@@ -476,19 +478,19 @@ std::map<std::string, __int32> _API_Extensions = {
   { "VK_KHR_EXTENSION_210_SPEC_VERSION", 0 },
   { "VK_KHR_EXTENSION_211_SPEC_VERSION", 0 },
   { "VK_KHR_VULKAN_MEMORY_MODEL_SPEC_VERSION", 2 },
-  { "VK_EXT_PCI_BUS_INFO_SPEC_VERSION", 1 },
+  { "VK_EXT_PCI_BUS_INFO_SPEC_VERSION", 2 },
   { "VK_KHR_EXTENSION_214_SPEC_VERSION", 0 },
   { "VK_FUCHSIA_IMAGEPIPE_SURFACE_SPEC_VERSION", 1 },
   { "VK_KHR_EXTENSION_216_SPEC_VERSION", 0 },
   { "VK_KHR_EXTENSION_217_SPEC_VERSION", 0 },
   { "VK_EXT_MACOS_IOS_WINDOW_SPEC_VERSION", 0 },
-  { "VK_EXT_EXTENSION_219_SPEC_VERSION", 0 },
+  { "VK_EXT_FRAGMENT_DENSITY_MAP_SPEC_VERSION", 1 },
   { "VK_EXT_EXTENSION_220_SPEC_VERSION", 0 },
   { "VK_KHR_EXTENSION_221_SPEC_VERSION", 0 },
-  { "VK_EXT_EXTENSION_222_SPEC_VERSION", 0 },
+  { "VK_EXT_SCALAR_BLOCK_LAYOUT_SPEC_VERSION", 1 },
   { "VK_EXT_EXTENSION_223_SPEC_VERSION", 0 },
-  { "VK_GOOGLE_HLSL_FUNCTIONALITY1_SPEC_VERSION", 0 },
-  { "VK_GOOGLE_DECORATE_STRING_SPEC_VERSION", 0 },
+  { "VK_GOOGLE_HLSL_FUNCTIONALITY1_SPEC_VERSION", 1 },
+  { "VK_GOOGLE_DECORATE_STRING_SPEC_VERSION", 1 },
   { "VK_AMD_EXTENSION_226_SPEC_VERSION", 0 },
   { "VK_AMD_EXTENSION_227_SPEC_VERSION", 0 },
   { "VK_AMD_EXTENSION_228_SPEC_VERSION", 0 },
@@ -501,17 +503,19 @@ std::map<std::string, __int32> _API_Extensions = {
   { "VK_AMD_EXTENSION_235_SPEC_VERSION", 0 },
   { "VK_AMD_EXTENSION_236_SPEC_VERSION", 0 },
   { "VK_KHR_EXTENSION_237_SPEC_VERSION", 0 },
-  { "VK_KHR_EXTENSION_238_SPEC_VERSION", 0 },
-  { "VK_KHR_EXTENSION_239_SPEC_VERSION", 0 },
+  { "VK_EXT_MEMORY_BUDGET_SPEC_VERSION", 1 },
+  { "VK_EXT_MEMORY_PRIORITY_SPEC_VERSION", 1 },
   { "VK_KHR_EXTENSION_240_SPEC_VERSION", 0 },
   { "VK_NV_EXTENSION_241_SPEC_VERSION", 0 },
   { "VK_NV_EXTENSION_242_SPEC_VERSION", 0 },
   { "VK_INTEL_EXTENSION_243_SPEC_VERSION", 0 },
   { "VK_MESA_EXTENSION_244_SPEC_VERSION", 0 },
-  { "VK_NV_EXTENSION_245_SPEC_VERSION", 0 },
+  { "VK_EXT_BUFFER_DEVICE_ADDRESS_SPEC_VERSION", 2 },
   { "VK_EXT_EXTENSION_246_SPEC_VERSION", 0 },
-  { "VK_EXT_EXTENSION_247_SPEC_VERSION", 0 },
-  { "VK_EXT_EXTENSION_248_SPEC_VERSION", 0 },
+  { "VK_EXT_SEPARATE_STENCIL_USAGE_SPEC_VERSION", 1 },
+  { "VK_EXT_VALIDATION_FEATURES_SPEC_VERSION", 1 },
+  { "VK_KHR_EXTENSION_249_SPEC_VERSION", 0 },
+  { "VK_NV_EXTENSION_250_SPEC_VERSION", 0 },
   
 };
 std::map<std::string, __int32> _API_Constants = {
@@ -558,6 +562,7 @@ std::map<std::string, __int32> _VkImageLayout = {
   { "VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL_KHR", VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL },
   { "VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL_KHR", VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL },
   { "VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV", 1000164003 },
+  { "VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT", 1000218000 },
   
 };
 std::map<std::string, __int32> _VkAttachmentLoadOp = {
@@ -628,6 +633,8 @@ std::map<std::string, __int32> _VkQueryType = {
   { "VK_QUERY_TYPE_OCCLUSION", 0 },
   { "VK_QUERY_TYPE_PIPELINE_STATISTICS", 1 },
   { "VK_QUERY_TYPE_TIMESTAMP", 2 },
+  { "VK_QUERY_TYPE_RESERVED_8", 1000023008 },
+  { "VK_QUERY_TYPE_RESERVED_4", 1000024004 },
   { "VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT", 1000028004 },
   { "VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV", 1000165000 },
   
@@ -1218,6 +1225,7 @@ std::map<std::string, __int32> _VkStructureType = {
   { "VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_CONDITIONAL_RENDERING_INFO_EXT", 1000081000 },
   { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONDITIONAL_RENDERING_FEATURES_EXT", 1000081001 },
   { "VK_STRUCTURE_TYPE_CONDITIONAL_RENDERING_BEGIN_INFO_EXT", 1000081002 },
+  { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT16_INT8_FEATURES_KHR", 1000082000 },
   { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES_KHR", VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES },
   { "VK_STRUCTURE_TYPE_PRESENT_REGIONS_KHR", 1000084000 },
   { "VK_STRUCTURE_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO_KHR", VK_STRUCTURE_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO },
@@ -1361,6 +1369,9 @@ std::map<std::string, __int32> _VkStructureType = {
   { "VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_EXT", 1000190001 },
   { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_EXT", 1000190002 },
   { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES_KHR", 1000196000 },
+  { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES_KHR", 1000197000 },
+  { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES_KHR", 1000199000 },
+  { "VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE_KHR", 1000199001 },
   { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_NV", 1000201000 },
   { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV", 1000202000 },
   { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV", 1000202001 },
@@ -1373,6 +1384,18 @@ std::map<std::string, __int32> _VkStructureType = {
   { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES_KHR", 1000211000 },
   { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT", 1000212000 },
   { "VK_STRUCTURE_TYPE_IMAGEPIPE_SURFACE_CREATE_INFO_FUCHSIA", 1000214000 },
+  { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT", 1000218000 },
+  { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT", 1000218001 },
+  { "VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT", 1000218002 },
+  { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCALAR_BLOCK_LAYOUT_FEATURES_EXT", 1000221000 },
+  { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT", 1000237000 },
+  { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PRIORITY_FEATURES_EXT", 1000238000 },
+  { "VK_STRUCTURE_TYPE_MEMORY_PRIORITY_ALLOCATE_INFO_EXT", 1000238001 },
+  { "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_ADDRESS_FEATURES_EXT", 1000244000 },
+  { "VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_INFO_EXT", 1000244001 },
+  { "VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_CREATE_INFO_EXT", 1000244002 },
+  { "VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO_EXT", 1000246000 },
+  { "VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT", 1000247000 },
   
 };
 std::map<std::string, __int32> _VkSubpassContents = {
@@ -1411,6 +1434,7 @@ std::map<std::string, __int32> _VkResult = {
   { "VK_ERROR_INVALID_DRM_FORMAT_MODIFIER_PLANE_LAYOUT_EXT", -1000158000 },
   { "VK_ERROR_FRAGMENTATION_EXT", -1000161000 },
   { "VK_ERROR_NOT_PERMITTED_EXT", -1000174001 },
+  { "VK_ERROR_INVALID_DEVICE_ADDRESS_EXT", -1000244000 },
   
 };
 std::map<std::string, __int32> _VkDynamicState = {
@@ -1566,6 +1590,21 @@ std::map<std::string, __int32> _VkValidationCheckEXT = {
   { "VK_VALIDATION_CHECK_SHADERS_EXT", 1 },
   
 };
+std::map<std::string, __int32> _VkValidationFeatureEnableEXT = {
+  { "VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT", 0 },
+  { "VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT", 1 },
+  
+};
+std::map<std::string, __int32> _VkValidationFeatureDisableEXT = {
+  { "VK_VALIDATION_FEATURE_DISABLE_ALL_EXT", 0 },
+  { "VK_VALIDATION_FEATURE_DISABLE_SHADERS_EXT", 1 },
+  { "VK_VALIDATION_FEATURE_DISABLE_THREAD_SAFETY_EXT", 2 },
+  { "VK_VALIDATION_FEATURE_DISABLE_API_PARAMETERS_EXT", 3 },
+  { "VK_VALIDATION_FEATURE_DISABLE_OBJECT_LIFETIMES_EXT", 4 },
+  { "VK_VALIDATION_FEATURE_DISABLE_CORE_CHECKS_EXT", 5 },
+  { "VK_VALIDATION_FEATURE_DISABLE_UNIQUE_HANDLES_EXT", 6 },
+  
+};
 std::map<std::string, __int32> _VkIndirectCommandsTokenTypeNVX = {
   { "VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NVX", 0 },
   { "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DESCRIPTOR_SET_NVX", 1 },
@@ -1714,6 +1753,7 @@ std::map<std::string, __int32> _VkDriverIdKHR = {
   { "VK_DRIVER_ID_IMAGINATION_PROPRIETARY_KHR", 7 },
   { "VK_DRIVER_ID_QUALCOMM_PROPRIETARY_KHR", 8 },
   { "VK_DRIVER_ID_ARM_PROPRIETARY_KHR", 9 },
+  { "VK_DRIVER_ID_GOOGLE_PASTEL_KHR", 10 },
   
 };
 std::map<std::string, __int32> _VkShadingRatePaletteEntryNV = {
@@ -1783,6 +1823,8 @@ std::map<std::string, __int32> _VkQueueFlagBits = {
   { "VK_QUEUE_COMPUTE_BIT", 0x2 },
   { "VK_QUEUE_TRANSFER_BIT", 0x4 },
   { "VK_QUEUE_SPARSE_BINDING_BIT", 0x8 },
+  { "VK_QUEUE_RESERVED_6_BIT_KHR", 0x40 },
+  { "VK_QUEUE_RESERVED_5_BIT_KHR", 0x20 },
   
 };
 std::map<std::string, __int32> _VkRenderPassCreateFlagBits = {
@@ -1823,6 +1865,10 @@ std::map<std::string, __int32> _VkAccessFlagBits = {
   { "VK_ACCESS_HOST_WRITE_BIT", 0x4000 },
   { "VK_ACCESS_MEMORY_READ_BIT", 0x8000 },
   { "VK_ACCESS_MEMORY_WRITE_BIT", 0x10000 },
+  { "VK_ACCESS_RESERVED_30_BIT_KHR", 0x40000000 },
+  { "VK_ACCESS_RESERVED_31_BIT_KHR", -0x80000000 },
+  { "VK_ACCESS_RESERVED_28_BIT_KHR", 0x10000000 },
+  { "VK_ACCESS_RESERVED_29_BIT_KHR", 0x20000000 },
   { "VK_ACCESS_TRANSFORM_FEEDBACK_WRITE_BIT_EXT", 0x2000000 },
   { "VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT", 0x4000000 },
   { "VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT", 0x8000000 },
@@ -1833,7 +1879,7 @@ std::map<std::string, __int32> _VkAccessFlagBits = {
   { "VK_ACCESS_SHADING_RATE_IMAGE_READ_BIT_NV", 0x800000 },
   { "VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_NV", 0x200000 },
   { "VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_NV", 0x400000 },
-  { "VK_ACCESS_RESERVED_24_BIT_EXT", 0x1000000 },
+  { "VK_ACCESS_FRAGMENT_DENSITY_MAP_READ_BIT_EXT", 0x1000000 },
   
 };
 std::map<std::string, __int32> _VkBufferUsageFlagBits = {
@@ -1846,16 +1892,22 @@ std::map<std::string, __int32> _VkBufferUsageFlagBits = {
   { "VK_BUFFER_USAGE_INDEX_BUFFER_BIT", 0x40 },
   { "VK_BUFFER_USAGE_VERTEX_BUFFER_BIT", 0x80 },
   { "VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT", 0x100 },
+  { "VK_BUFFER_USAGE_RESERVED_15_BIT_KHR", 0x8000 },
+  { "VK_BUFFER_USAGE_RESERVED_16_BIT_KHR", 0x10000 },
+  { "VK_BUFFER_USAGE_RESERVED_13_BIT_KHR", 0x2000 },
+  { "VK_BUFFER_USAGE_RESERVED_14_BIT_KHR", 0x4000 },
   { "VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_BUFFER_BIT_EXT", 0x800 },
   { "VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT", 0x1000 },
   { "VK_BUFFER_USAGE_CONDITIONAL_RENDERING_BIT_EXT", 0x200 },
   { "VK_BUFFER_USAGE_RAY_TRACING_BIT_NV", 0x400 },
+  { "VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT_EXT", 0x20000 },
   
 };
 std::map<std::string, __int32> _VkBufferCreateFlagBits = {
   { "VK_BUFFER_CREATE_SPARSE_BINDING_BIT", 0x1 },
   { "VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT", 0x2 },
   { "VK_BUFFER_CREATE_SPARSE_ALIASED_BIT", 0x4 },
+  { "VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT", 0x10 },
   
 };
 std::map<std::string, __int32> _VkShaderStageFlagBits = {
@@ -1886,8 +1938,14 @@ std::map<std::string, __int32> _VkImageUsageFlagBits = {
   { "VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT", 0x20 },
   { "VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT", 0x40 },
   { "VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT", 0x80 },
+  { "VK_IMAGE_USAGE_RESERVED_13_BIT_KHR", 0x2000 },
+  { "VK_IMAGE_USAGE_RESERVED_14_BIT_KHR", 0x4000 },
+  { "VK_IMAGE_USAGE_RESERVED_15_BIT_KHR", 0x8000 },
+  { "VK_IMAGE_USAGE_RESERVED_10_BIT_KHR", 0x400 },
+  { "VK_IMAGE_USAGE_RESERVED_11_BIT_KHR", 0x800 },
+  { "VK_IMAGE_USAGE_RESERVED_12_BIT_KHR", 0x1000 },
   { "VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV", 0x100 },
-  { "VK_IMAGE_USAGE_RESERVED_9_BIT_EXT", 0x200 },
+  { "VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT", 0x200 },
   
 };
 std::map<std::string, __int32> _VkImageCreateFlagBits = {
@@ -1904,7 +1962,16 @@ std::map<std::string, __int32> _VkImageCreateFlagBits = {
   { "VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT", 0x1000 },
   { "VK_IMAGE_CREATE_DISJOINT_BIT_KHR", VK_IMAGE_CREATE_DISJOINT_BIT },
   { "VK_IMAGE_CREATE_ALIAS_BIT_KHR", VK_IMAGE_CREATE_ALIAS_BIT },
-  { "VK_IMAGE_CREATE_RESERVED_14_BIT_EXT", 0x4000 },
+  { "VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT", 0x4000 },
+  
+};
+std::map<std::string, __int32> _VkImageViewCreateFlagBits = {
+  { "VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT", 0x1 },
+  
+};
+std::map<std::string, __int32> _VkSamplerCreateFlagBits = {
+  { "VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT", 0x1 },
+  { "VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT", 0x2 },
   
 };
 std::map<std::string, __int32> _VkPipelineCreateFlagBits = {
@@ -1942,6 +2009,10 @@ std::map<std::string, __int32> _VkFormatFeatureFlagBits = {
   { "VK_FORMAT_FEATURE_BLIT_DST_BIT", 0x800 },
   { "VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT", 0x1000 },
   { "VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_IMG", 0x2000 },
+  { "VK_FORMAT_FEATURE_RESERVED_27_BIT_KHR", 0x8000000 },
+  { "VK_FORMAT_FEATURE_RESERVED_28_BIT_KHR", 0x10000000 },
+  { "VK_FORMAT_FEATURE_RESERVED_25_BIT_KHR", 0x2000000 },
+  { "VK_FORMAT_FEATURE_RESERVED_26_BIT_KHR", 0x4000000 },
   { "VK_FORMAT_FEATURE_TRANSFER_SRC_BIT_KHR", VK_FORMAT_FEATURE_TRANSFER_SRC_BIT },
   { "VK_FORMAT_FEATURE_TRANSFER_DST_BIT_KHR", VK_FORMAT_FEATURE_TRANSFER_DST_BIT },
   { "VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT_EXT", 0x10000 },
@@ -1952,7 +2023,7 @@ std::map<std::string, __int32> _VkFormatFeatureFlagBits = {
   { "VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT_KHR", VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT },
   { "VK_FORMAT_FEATURE_DISJOINT_BIT_KHR", VK_FORMAT_FEATURE_DISJOINT_BIT },
   { "VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT_KHR", VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT },
-  { "VK_FORMAT_FEATURE_RESERVED_24_BIT_EXT", 0x1000000 },
+  { "VK_FORMAT_FEATURE_FRAGMENT_DENSITY_MAP_BIT_EXT", 0x1000000 },
   
 };
 std::map<std::string, __int32> _VkQueryControlFlagBits = {
@@ -2028,6 +2099,8 @@ std::map<std::string, __int32> _VkPipelineStageFlagBits = {
   { "VK_PIPELINE_STAGE_HOST_BIT", 0x4000 },
   { "VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT", 0x8000 },
   { "VK_PIPELINE_STAGE_ALL_COMMANDS_BIT", 0x10000 },
+  { "VK_PIPELINE_STAGE_RESERVED_27_BIT_KHR", 0x8000000 },
+  { "VK_PIPELINE_STAGE_RESERVED_26_BIT_KHR", 0x4000000 },
   { "VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT", 0x1000000 },
   { "VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT", 0x40000 },
   { "VK_PIPELINE_STAGE_COMMAND_PROCESS_BIT_NVX", 0x20000 },
@@ -2036,7 +2109,7 @@ std::map<std::string, __int32> _VkPipelineStageFlagBits = {
   { "VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_NV", 0x2000000 },
   { "VK_PIPELINE_STAGE_TASK_SHADER_BIT_NV", 0x80000 },
   { "VK_PIPELINE_STAGE_MESH_SHADER_BIT_NV", 0x100000 },
-  { "VK_PIPELINE_STAGE_RESERVED_23_BIT_EXT", 0x800000 },
+  { "VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT", 0x800000 },
   
 };
 std::map<std::string, __int32> _VkCommandPoolCreateFlagBits = {
@@ -2267,6 +2340,7 @@ std::map<std::string, __int32> _VkDeviceGroupPresentModeFlagBitsKHR = {
 std::map<std::string, __int32> _VkSwapchainCreateFlagBitsKHR = {
   { "VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR", 0x1 },
   { "VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR", 0x2 },
+  { "VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR", 0x4 },
   
 };
 std::map<std::string, __int32> _VkSubpassDescriptionFlagBits = {
@@ -2296,6 +2370,14 @@ std::map<std::string, __int32> _VkDescriptorBindingFlagBitsEXT = {
 };
 std::map<std::string, __int32> _VkConditionalRenderingFlagBitsEXT = {
   { "VK_CONDITIONAL_RENDERING_INVERTED_BIT_EXT", 0x1 },
+  
+};
+std::map<std::string, __int32> _VkResolveModeFlagBitsKHR = {
+  { "VK_RESOLVE_MODE_NONE_KHR", 0 },
+  { "VK_RESOLVE_MODE_SAMPLE_ZERO_BIT_KHR", 0x1 },
+  { "VK_RESOLVE_MODE_AVERAGE_BIT_KHR", 0x2 },
+  { "VK_RESOLVE_MODE_MIN_BIT_KHR", 0x4 },
+  { "VK_RESOLVE_MODE_MAX_BIT_KHR", 0x8 },
   
 };
 std::map<std::string, __int32> _VkGeometryInstanceFlagBitsNV = {
@@ -2739,6 +2821,24 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   {
     std::map<std::string, __int32>::iterator it;
     v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    for (it = _VkValidationFeatureEnableEXT.begin(); it != _VkValidationFeatureEnableEXT.end(); it++) {
+      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+    };
+    out->Set(Nan::New("VkValidationFeatureEnableEXT").ToLocalChecked(), entry);
+  }
+  {
+    std::map<std::string, __int32>::iterator it;
+    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    for (it = _VkValidationFeatureDisableEXT.begin(); it != _VkValidationFeatureDisableEXT.end(); it++) {
+      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+    };
+    out->Set(Nan::New("VkValidationFeatureDisableEXT").ToLocalChecked(), entry);
+  }
+  {
+    std::map<std::string, __int32>::iterator it;
+    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
     for (it = _VkIndirectCommandsTokenTypeNVX.begin(); it != _VkIndirectCommandsTokenTypeNVX.end(); it++) {
       entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
       out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
@@ -3104,6 +3204,24 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
       out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
     };
     out->Set(Nan::New("VkImageCreateFlagBits").ToLocalChecked(), entry);
+  }
+  {
+    std::map<std::string, __int32>::iterator it;
+    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    for (it = _VkImageViewCreateFlagBits.begin(); it != _VkImageViewCreateFlagBits.end(); it++) {
+      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+    };
+    out->Set(Nan::New("VkImageViewCreateFlagBits").ToLocalChecked(), entry);
+  }
+  {
+    std::map<std::string, __int32>::iterator it;
+    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    for (it = _VkSamplerCreateFlagBits.begin(); it != _VkSamplerCreateFlagBits.end(); it++) {
+      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+    };
+    out->Set(Nan::New("VkSamplerCreateFlagBits").ToLocalChecked(), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
@@ -3536,6 +3654,15 @@ void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
       out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
     };
     out->Set(Nan::New("VkConditionalRenderingFlagBitsEXT").ToLocalChecked(), entry);
+  }
+  {
+    std::map<std::string, __int32>::iterator it;
+    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    for (it = _VkResolveModeFlagBitsKHR.begin(); it != _VkResolveModeFlagBitsKHR.end(); it++) {
+      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+    };
+    out->Set(Nan::New("VkResolveModeFlagBitsKHR").ToLocalChecked(), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;

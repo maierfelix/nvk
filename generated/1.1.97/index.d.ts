@@ -267,7 +267,6 @@ export enum API_Extensions_Strings {
   VK_EXT_VALIDATION_FEATURES_EXTENSION_NAME,
   VK_KHR_EXTENSION_249_EXTENSION_NAME,
   VK_NV_EXTENSION_250_EXTENSION_NAME,
-  VK_NV_EXTENSION_251_EXTENSION_NAME,
   
 }
 
@@ -524,7 +523,6 @@ export enum API_Extensions {
   VK_EXT_VALIDATION_FEATURES_SPEC_VERSION,
   VK_KHR_EXTENSION_249_SPEC_VERSION,
   VK_NV_EXTENSION_250_SPEC_VERSION,
-  VK_NV_EXTENSION_251_SPEC_VERSION,
   
 }
 
@@ -3608,69 +3606,69 @@ export interface VkDrmFormatModifierPropertiesEXT {
 
 /** ## VkDrmFormatModifierPropertiesListEXT ## */
 interface VkDrmFormatModifierPropertiesListEXTInitializer {
-  readonly sType?: VkStructureType;
-  readonly pNext?: null;
-  readonly drmFormatModifierCount?: number;
-  readonly pDrmFormatModifierProperties?: VkDrmFormatModifierPropertiesEXT[] | null;
+  sType?: VkStructureType;
+  pNext?: null;
+  drmFormatModifierCount?: number;
+  pDrmFormatModifierProperties?: VkDrmFormatModifierPropertiesEXT[] | null;
 }
 
 declare var VkDrmFormatModifierPropertiesListEXT: {
   prototype: VkDrmFormatModifierPropertiesListEXT;
   new(param?: VkDrmFormatModifierPropertiesListEXTInitializer | null): VkDrmFormatModifierPropertiesListEXT;
-  readonly sType: VkStructureType;
-  readonly pNext: null;
-  readonly drmFormatModifierCount: number;
-  readonly pDrmFormatModifierProperties: VkDrmFormatModifierPropertiesEXT[] | null;
+  sType: VkStructureType;
+  pNext: null;
+  drmFormatModifierCount: number;
+  pDrmFormatModifierProperties: VkDrmFormatModifierPropertiesEXT[] | null;
 }
 
 export interface VkDrmFormatModifierPropertiesListEXT {
-  readonly sType: VkStructureType;
-  readonly pNext: null;
-  readonly drmFormatModifierCount: number;
-  readonly pDrmFormatModifierProperties: VkDrmFormatModifierPropertiesEXT[] | null;
+  sType: VkStructureType;
+  pNext: null;
+  drmFormatModifierCount: number;
+  pDrmFormatModifierProperties: VkDrmFormatModifierPropertiesEXT[] | null;
 }
 
 
 /** ## VkPhysicalDeviceRayTracingPropertiesNV ## */
 interface VkPhysicalDeviceRayTracingPropertiesNVInitializer {
-  readonly sType?: VkStructureType;
-  readonly pNext?: null;
-  readonly shaderGroupHandleSize?: number;
-  readonly maxRecursionDepth?: number;
-  readonly maxShaderGroupStride?: number;
-  readonly shaderGroupBaseAlignment?: number;
-  readonly maxGeometryCount?: number;
-  readonly maxInstanceCount?: number;
-  readonly maxTriangleCount?: number;
-  readonly maxDescriptorSetAccelerationStructures?: number;
+  sType?: VkStructureType;
+  pNext?: null;
+  shaderGroupHandleSize?: number;
+  maxRecursionDepth?: number;
+  maxShaderGroupStride?: number;
+  shaderGroupBaseAlignment?: number;
+  maxGeometryCount?: number;
+  maxInstanceCount?: number;
+  maxTriangleCount?: number;
+  maxDescriptorSetAccelerationStructures?: number;
 }
 
 declare var VkPhysicalDeviceRayTracingPropertiesNV: {
   prototype: VkPhysicalDeviceRayTracingPropertiesNV;
   new(param?: VkPhysicalDeviceRayTracingPropertiesNVInitializer | null): VkPhysicalDeviceRayTracingPropertiesNV;
-  readonly sType: VkStructureType;
-  readonly pNext: null;
-  readonly shaderGroupHandleSize: number;
-  readonly maxRecursionDepth: number;
-  readonly maxShaderGroupStride: number;
-  readonly shaderGroupBaseAlignment: number;
-  readonly maxGeometryCount: number;
-  readonly maxInstanceCount: number;
-  readonly maxTriangleCount: number;
-  readonly maxDescriptorSetAccelerationStructures: number;
+  sType: VkStructureType;
+  pNext: null;
+  shaderGroupHandleSize: number;
+  maxRecursionDepth: number;
+  maxShaderGroupStride: number;
+  shaderGroupBaseAlignment: number;
+  maxGeometryCount: number;
+  maxInstanceCount: number;
+  maxTriangleCount: number;
+  maxDescriptorSetAccelerationStructures: number;
 }
 
 export interface VkPhysicalDeviceRayTracingPropertiesNV {
-  readonly sType: VkStructureType;
-  readonly pNext: null;
-  readonly shaderGroupHandleSize: number;
-  readonly maxRecursionDepth: number;
-  readonly maxShaderGroupStride: number;
-  readonly shaderGroupBaseAlignment: number;
-  readonly maxGeometryCount: number;
-  readonly maxInstanceCount: number;
-  readonly maxTriangleCount: number;
-  readonly maxDescriptorSetAccelerationStructures: number;
+  sType: VkStructureType;
+  pNext: null;
+  shaderGroupHandleSize: number;
+  maxRecursionDepth: number;
+  maxShaderGroupStride: number;
+  shaderGroupBaseAlignment: number;
+  maxGeometryCount: number;
+  maxInstanceCount: number;
+  maxTriangleCount: number;
+  maxDescriptorSetAccelerationStructures: number;
 }
 
 
@@ -4129,59 +4127,59 @@ export interface VkDrawMeshTasksIndirectCommandNV {
 
 /** ## VkPhysicalDeviceMeshShaderPropertiesNV ## */
 interface VkPhysicalDeviceMeshShaderPropertiesNVInitializer {
-  readonly sType?: VkStructureType;
-  readonly pNext?: null;
-  readonly maxDrawMeshTasksCount?: number;
-  readonly maxTaskWorkGroupInvocations?: number;
-  readonly maxTaskWorkGroupSize?: number[] | null;
-  readonly maxTaskTotalMemorySize?: number;
-  readonly maxTaskOutputCount?: number;
-  readonly maxMeshWorkGroupInvocations?: number;
-  readonly maxMeshWorkGroupSize?: number[] | null;
-  readonly maxMeshTotalMemorySize?: number;
-  readonly maxMeshOutputVertices?: number;
-  readonly maxMeshOutputPrimitives?: number;
-  readonly maxMeshMultiviewViewCount?: number;
-  readonly meshOutputPerVertexGranularity?: number;
-  readonly meshOutputPerPrimitiveGranularity?: number;
+  sType?: VkStructureType;
+  pNext?: null;
+  maxDrawMeshTasksCount?: number;
+  maxTaskWorkGroupInvocations?: number;
+  maxTaskWorkGroupSize?: number[] | null;
+  maxTaskTotalMemorySize?: number;
+  maxTaskOutputCount?: number;
+  maxMeshWorkGroupInvocations?: number;
+  maxMeshWorkGroupSize?: number[] | null;
+  maxMeshTotalMemorySize?: number;
+  maxMeshOutputVertices?: number;
+  maxMeshOutputPrimitives?: number;
+  maxMeshMultiviewViewCount?: number;
+  meshOutputPerVertexGranularity?: number;
+  meshOutputPerPrimitiveGranularity?: number;
 }
 
 declare var VkPhysicalDeviceMeshShaderPropertiesNV: {
   prototype: VkPhysicalDeviceMeshShaderPropertiesNV;
   new(param?: VkPhysicalDeviceMeshShaderPropertiesNVInitializer | null): VkPhysicalDeviceMeshShaderPropertiesNV;
-  readonly sType: VkStructureType;
-  readonly pNext: null;
-  readonly maxDrawMeshTasksCount: number;
-  readonly maxTaskWorkGroupInvocations: number;
-  readonly maxTaskWorkGroupSize: number[] | null;
-  readonly maxTaskTotalMemorySize: number;
-  readonly maxTaskOutputCount: number;
-  readonly maxMeshWorkGroupInvocations: number;
-  readonly maxMeshWorkGroupSize: number[] | null;
-  readonly maxMeshTotalMemorySize: number;
-  readonly maxMeshOutputVertices: number;
-  readonly maxMeshOutputPrimitives: number;
-  readonly maxMeshMultiviewViewCount: number;
-  readonly meshOutputPerVertexGranularity: number;
-  readonly meshOutputPerPrimitiveGranularity: number;
+  sType: VkStructureType;
+  pNext: null;
+  maxDrawMeshTasksCount: number;
+  maxTaskWorkGroupInvocations: number;
+  maxTaskWorkGroupSize: number[] | null;
+  maxTaskTotalMemorySize: number;
+  maxTaskOutputCount: number;
+  maxMeshWorkGroupInvocations: number;
+  maxMeshWorkGroupSize: number[] | null;
+  maxMeshTotalMemorySize: number;
+  maxMeshOutputVertices: number;
+  maxMeshOutputPrimitives: number;
+  maxMeshMultiviewViewCount: number;
+  meshOutputPerVertexGranularity: number;
+  meshOutputPerPrimitiveGranularity: number;
 }
 
 export interface VkPhysicalDeviceMeshShaderPropertiesNV {
-  readonly sType: VkStructureType;
-  readonly pNext: null;
-  readonly maxDrawMeshTasksCount: number;
-  readonly maxTaskWorkGroupInvocations: number;
-  readonly maxTaskWorkGroupSize: number[] | null;
-  readonly maxTaskTotalMemorySize: number;
-  readonly maxTaskOutputCount: number;
-  readonly maxMeshWorkGroupInvocations: number;
-  readonly maxMeshWorkGroupSize: number[] | null;
-  readonly maxMeshTotalMemorySize: number;
-  readonly maxMeshOutputVertices: number;
-  readonly maxMeshOutputPrimitives: number;
-  readonly maxMeshMultiviewViewCount: number;
-  readonly meshOutputPerVertexGranularity: number;
-  readonly meshOutputPerPrimitiveGranularity: number;
+  sType: VkStructureType;
+  pNext: null;
+  maxDrawMeshTasksCount: number;
+  maxTaskWorkGroupInvocations: number;
+  maxTaskWorkGroupSize: number[] | null;
+  maxTaskTotalMemorySize: number;
+  maxTaskOutputCount: number;
+  maxMeshWorkGroupInvocations: number;
+  maxMeshWorkGroupSize: number[] | null;
+  maxMeshTotalMemorySize: number;
+  maxMeshOutputVertices: number;
+  maxMeshOutputPrimitives: number;
+  maxMeshMultiviewViewCount: number;
+  meshOutputPerVertexGranularity: number;
+  meshOutputPerPrimitiveGranularity: number;
 }
 
 
@@ -4938,7 +4936,6 @@ interface VkPhysicalDeviceVulkanMemoryModelFeaturesKHRInitializer {
   pNext?: null;
   vulkanMemoryModel?: number;
   vulkanMemoryModelDeviceScope?: number;
-  vulkanMemoryModelAvailabilityVisibilityChains?: number;
 }
 
 declare var VkPhysicalDeviceVulkanMemoryModelFeaturesKHR: {
@@ -4948,7 +4945,6 @@ declare var VkPhysicalDeviceVulkanMemoryModelFeaturesKHR: {
   pNext: null;
   vulkanMemoryModel: number;
   vulkanMemoryModelDeviceScope: number;
-  vulkanMemoryModelAvailabilityVisibilityChains: number;
 }
 
 export interface VkPhysicalDeviceVulkanMemoryModelFeaturesKHR {
@@ -4956,7 +4952,6 @@ export interface VkPhysicalDeviceVulkanMemoryModelFeaturesKHR {
   pNext: null;
   vulkanMemoryModel: number;
   vulkanMemoryModelDeviceScope: number;
-  vulkanMemoryModelAvailabilityVisibilityChains: number;
 }
 
 
@@ -5068,23 +5063,23 @@ export interface VkPhysicalDevicePCIBusInfoPropertiesEXT {
 
 /** ## VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT ## */
 interface VkPhysicalDeviceVertexAttributeDivisorPropertiesEXTInitializer {
-  readonly sType?: VkStructureType;
-  readonly pNext?: null;
-  readonly maxVertexAttribDivisor?: number;
+  sType?: VkStructureType;
+  pNext?: null;
+  maxVertexAttribDivisor?: number;
 }
 
 declare var VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT: {
   prototype: VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT;
   new(param?: VkPhysicalDeviceVertexAttributeDivisorPropertiesEXTInitializer | null): VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT;
-  readonly sType: VkStructureType;
-  readonly pNext: null;
-  readonly maxVertexAttribDivisor: number;
+  sType: VkStructureType;
+  pNext: null;
+  maxVertexAttribDivisor: number;
 }
 
 export interface VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT {
-  readonly sType: VkStructureType;
-  readonly pNext: null;
-  readonly maxVertexAttribDivisor: number;
+  sType: VkStructureType;
+  pNext: null;
+  maxVertexAttribDivisor: number;
 }
 
 
@@ -5712,91 +5707,91 @@ export interface VkCalibratedTimestampInfoEXT {
 
 /** ## VkPhysicalDeviceConservativeRasterizationPropertiesEXT ## */
 interface VkPhysicalDeviceConservativeRasterizationPropertiesEXTInitializer {
-  readonly sType?: VkStructureType;
-  readonly pNext?: null;
-  readonly primitiveOverestimationSize?: number;
-  readonly maxExtraPrimitiveOverestimationSize?: number;
-  readonly extraPrimitiveOverestimationSizeGranularity?: number;
-  readonly primitiveUnderestimation?: number;
-  readonly conservativePointAndLineRasterization?: number;
-  readonly degenerateTrianglesRasterized?: number;
-  readonly degenerateLinesRasterized?: number;
-  readonly fullyCoveredFragmentShaderInputVariable?: number;
-  readonly conservativeRasterizationPostDepthCoverage?: number;
+  sType?: VkStructureType;
+  pNext?: null;
+  primitiveOverestimationSize?: number;
+  maxExtraPrimitiveOverestimationSize?: number;
+  extraPrimitiveOverestimationSizeGranularity?: number;
+  primitiveUnderestimation?: number;
+  conservativePointAndLineRasterization?: number;
+  degenerateTrianglesRasterized?: number;
+  degenerateLinesRasterized?: number;
+  fullyCoveredFragmentShaderInputVariable?: number;
+  conservativeRasterizationPostDepthCoverage?: number;
 }
 
 declare var VkPhysicalDeviceConservativeRasterizationPropertiesEXT: {
   prototype: VkPhysicalDeviceConservativeRasterizationPropertiesEXT;
   new(param?: VkPhysicalDeviceConservativeRasterizationPropertiesEXTInitializer | null): VkPhysicalDeviceConservativeRasterizationPropertiesEXT;
-  readonly sType: VkStructureType;
-  readonly pNext: null;
-  readonly primitiveOverestimationSize: number;
-  readonly maxExtraPrimitiveOverestimationSize: number;
-  readonly extraPrimitiveOverestimationSizeGranularity: number;
-  readonly primitiveUnderestimation: number;
-  readonly conservativePointAndLineRasterization: number;
-  readonly degenerateTrianglesRasterized: number;
-  readonly degenerateLinesRasterized: number;
-  readonly fullyCoveredFragmentShaderInputVariable: number;
-  readonly conservativeRasterizationPostDepthCoverage: number;
+  sType: VkStructureType;
+  pNext: null;
+  primitiveOverestimationSize: number;
+  maxExtraPrimitiveOverestimationSize: number;
+  extraPrimitiveOverestimationSizeGranularity: number;
+  primitiveUnderestimation: number;
+  conservativePointAndLineRasterization: number;
+  degenerateTrianglesRasterized: number;
+  degenerateLinesRasterized: number;
+  fullyCoveredFragmentShaderInputVariable: number;
+  conservativeRasterizationPostDepthCoverage: number;
 }
 
 export interface VkPhysicalDeviceConservativeRasterizationPropertiesEXT {
-  readonly sType: VkStructureType;
-  readonly pNext: null;
-  readonly primitiveOverestimationSize: number;
-  readonly maxExtraPrimitiveOverestimationSize: number;
-  readonly extraPrimitiveOverestimationSizeGranularity: number;
-  readonly primitiveUnderestimation: number;
-  readonly conservativePointAndLineRasterization: number;
-  readonly degenerateTrianglesRasterized: number;
-  readonly degenerateLinesRasterized: number;
-  readonly fullyCoveredFragmentShaderInputVariable: number;
-  readonly conservativeRasterizationPostDepthCoverage: number;
+  sType: VkStructureType;
+  pNext: null;
+  primitiveOverestimationSize: number;
+  maxExtraPrimitiveOverestimationSize: number;
+  extraPrimitiveOverestimationSizeGranularity: number;
+  primitiveUnderestimation: number;
+  conservativePointAndLineRasterization: number;
+  degenerateTrianglesRasterized: number;
+  degenerateLinesRasterized: number;
+  fullyCoveredFragmentShaderInputVariable: number;
+  conservativeRasterizationPostDepthCoverage: number;
 }
 
 
 /** ## VkPhysicalDeviceExternalMemoryHostPropertiesEXT ## */
 interface VkPhysicalDeviceExternalMemoryHostPropertiesEXTInitializer {
-  readonly sType?: VkStructureType;
-  readonly pNext?: null;
-  readonly minImportedHostPointerAlignment?: number;
+  sType?: VkStructureType;
+  pNext?: null;
+  minImportedHostPointerAlignment?: number;
 }
 
 declare var VkPhysicalDeviceExternalMemoryHostPropertiesEXT: {
   prototype: VkPhysicalDeviceExternalMemoryHostPropertiesEXT;
   new(param?: VkPhysicalDeviceExternalMemoryHostPropertiesEXTInitializer | null): VkPhysicalDeviceExternalMemoryHostPropertiesEXT;
-  readonly sType: VkStructureType;
-  readonly pNext: null;
-  readonly minImportedHostPointerAlignment: number;
+  sType: VkStructureType;
+  pNext: null;
+  minImportedHostPointerAlignment: number;
 }
 
 export interface VkPhysicalDeviceExternalMemoryHostPropertiesEXT {
-  readonly sType: VkStructureType;
-  readonly pNext: null;
-  readonly minImportedHostPointerAlignment: number;
+  sType: VkStructureType;
+  pNext: null;
+  minImportedHostPointerAlignment: number;
 }
 
 
 /** ## VkMemoryHostPointerPropertiesEXT ## */
 interface VkMemoryHostPointerPropertiesEXTInitializer {
-  readonly sType?: VkStructureType;
-  readonly pNext?: null;
-  readonly memoryTypeBits?: number;
+  sType?: VkStructureType;
+  pNext?: null;
+  memoryTypeBits?: number;
 }
 
 declare var VkMemoryHostPointerPropertiesEXT: {
   prototype: VkMemoryHostPointerPropertiesEXT;
   new(param?: VkMemoryHostPointerPropertiesEXTInitializer | null): VkMemoryHostPointerPropertiesEXT;
-  readonly sType: VkStructureType;
-  readonly pNext: null;
-  readonly memoryTypeBits: number;
+  sType: VkStructureType;
+  pNext: null;
+  memoryTypeBits: number;
 }
 
 export interface VkMemoryHostPointerPropertiesEXT {
-  readonly sType: VkStructureType;
-  readonly pNext: null;
-  readonly memoryTypeBits: number;
+  sType: VkStructureType;
+  pNext: null;
+  memoryTypeBits: number;
 }
 
 
@@ -6081,71 +6076,71 @@ export interface VkShaderStatisticsInfoAMD {
 
 /** ## VkPhysicalDeviceFloatControlsPropertiesKHR ## */
 interface VkPhysicalDeviceFloatControlsPropertiesKHRInitializer {
-  readonly sType?: VkStructureType;
-  readonly pNext?: null;
-  readonly separateDenormSettings?: number;
-  readonly separateRoundingModeSettings?: number;
-  readonly shaderSignedZeroInfNanPreserveFloat16?: number;
-  readonly shaderSignedZeroInfNanPreserveFloat32?: number;
-  readonly shaderSignedZeroInfNanPreserveFloat64?: number;
-  readonly shaderDenormPreserveFloat16?: number;
-  readonly shaderDenormPreserveFloat32?: number;
-  readonly shaderDenormPreserveFloat64?: number;
-  readonly shaderDenormFlushToZeroFloat16?: number;
-  readonly shaderDenormFlushToZeroFloat32?: number;
-  readonly shaderDenormFlushToZeroFloat64?: number;
-  readonly shaderRoundingModeRTEFloat16?: number;
-  readonly shaderRoundingModeRTEFloat32?: number;
-  readonly shaderRoundingModeRTEFloat64?: number;
-  readonly shaderRoundingModeRTZFloat16?: number;
-  readonly shaderRoundingModeRTZFloat32?: number;
-  readonly shaderRoundingModeRTZFloat64?: number;
+  sType?: VkStructureType;
+  pNext?: null;
+  separateDenormSettings?: number;
+  separateRoundingModeSettings?: number;
+  shaderSignedZeroInfNanPreserveFloat16?: number;
+  shaderSignedZeroInfNanPreserveFloat32?: number;
+  shaderSignedZeroInfNanPreserveFloat64?: number;
+  shaderDenormPreserveFloat16?: number;
+  shaderDenormPreserveFloat32?: number;
+  shaderDenormPreserveFloat64?: number;
+  shaderDenormFlushToZeroFloat16?: number;
+  shaderDenormFlushToZeroFloat32?: number;
+  shaderDenormFlushToZeroFloat64?: number;
+  shaderRoundingModeRTEFloat16?: number;
+  shaderRoundingModeRTEFloat32?: number;
+  shaderRoundingModeRTEFloat64?: number;
+  shaderRoundingModeRTZFloat16?: number;
+  shaderRoundingModeRTZFloat32?: number;
+  shaderRoundingModeRTZFloat64?: number;
 }
 
 declare var VkPhysicalDeviceFloatControlsPropertiesKHR: {
   prototype: VkPhysicalDeviceFloatControlsPropertiesKHR;
   new(param?: VkPhysicalDeviceFloatControlsPropertiesKHRInitializer | null): VkPhysicalDeviceFloatControlsPropertiesKHR;
-  readonly sType: VkStructureType;
-  readonly pNext: null;
-  readonly separateDenormSettings: number;
-  readonly separateRoundingModeSettings: number;
-  readonly shaderSignedZeroInfNanPreserveFloat16: number;
-  readonly shaderSignedZeroInfNanPreserveFloat32: number;
-  readonly shaderSignedZeroInfNanPreserveFloat64: number;
-  readonly shaderDenormPreserveFloat16: number;
-  readonly shaderDenormPreserveFloat32: number;
-  readonly shaderDenormPreserveFloat64: number;
-  readonly shaderDenormFlushToZeroFloat16: number;
-  readonly shaderDenormFlushToZeroFloat32: number;
-  readonly shaderDenormFlushToZeroFloat64: number;
-  readonly shaderRoundingModeRTEFloat16: number;
-  readonly shaderRoundingModeRTEFloat32: number;
-  readonly shaderRoundingModeRTEFloat64: number;
-  readonly shaderRoundingModeRTZFloat16: number;
-  readonly shaderRoundingModeRTZFloat32: number;
-  readonly shaderRoundingModeRTZFloat64: number;
+  sType: VkStructureType;
+  pNext: null;
+  separateDenormSettings: number;
+  separateRoundingModeSettings: number;
+  shaderSignedZeroInfNanPreserveFloat16: number;
+  shaderSignedZeroInfNanPreserveFloat32: number;
+  shaderSignedZeroInfNanPreserveFloat64: number;
+  shaderDenormPreserveFloat16: number;
+  shaderDenormPreserveFloat32: number;
+  shaderDenormPreserveFloat64: number;
+  shaderDenormFlushToZeroFloat16: number;
+  shaderDenormFlushToZeroFloat32: number;
+  shaderDenormFlushToZeroFloat64: number;
+  shaderRoundingModeRTEFloat16: number;
+  shaderRoundingModeRTEFloat32: number;
+  shaderRoundingModeRTEFloat64: number;
+  shaderRoundingModeRTZFloat16: number;
+  shaderRoundingModeRTZFloat32: number;
+  shaderRoundingModeRTZFloat64: number;
 }
 
 export interface VkPhysicalDeviceFloatControlsPropertiesKHR {
-  readonly sType: VkStructureType;
-  readonly pNext: null;
-  readonly separateDenormSettings: number;
-  readonly separateRoundingModeSettings: number;
-  readonly shaderSignedZeroInfNanPreserveFloat16: number;
-  readonly shaderSignedZeroInfNanPreserveFloat32: number;
-  readonly shaderSignedZeroInfNanPreserveFloat64: number;
-  readonly shaderDenormPreserveFloat16: number;
-  readonly shaderDenormPreserveFloat32: number;
-  readonly shaderDenormPreserveFloat64: number;
-  readonly shaderDenormFlushToZeroFloat16: number;
-  readonly shaderDenormFlushToZeroFloat32: number;
-  readonly shaderDenormFlushToZeroFloat64: number;
-  readonly shaderRoundingModeRTEFloat16: number;
-  readonly shaderRoundingModeRTEFloat32: number;
-  readonly shaderRoundingModeRTEFloat64: number;
-  readonly shaderRoundingModeRTZFloat16: number;
-  readonly shaderRoundingModeRTZFloat32: number;
-  readonly shaderRoundingModeRTZFloat64: number;
+  sType: VkStructureType;
+  pNext: null;
+  separateDenormSettings: number;
+  separateRoundingModeSettings: number;
+  shaderSignedZeroInfNanPreserveFloat16: number;
+  shaderSignedZeroInfNanPreserveFloat32: number;
+  shaderSignedZeroInfNanPreserveFloat64: number;
+  shaderDenormPreserveFloat16: number;
+  shaderDenormPreserveFloat32: number;
+  shaderDenormPreserveFloat64: number;
+  shaderDenormFlushToZeroFloat16: number;
+  shaderDenormFlushToZeroFloat32: number;
+  shaderDenormFlushToZeroFloat64: number;
+  shaderRoundingModeRTEFloat16: number;
+  shaderRoundingModeRTEFloat32: number;
+  shaderRoundingModeRTEFloat64: number;
+  shaderRoundingModeRTZFloat16: number;
+  shaderRoundingModeRTZFloat32: number;
+  shaderRoundingModeRTZFloat64: number;
 }
 
 
@@ -6882,23 +6877,23 @@ export interface VkDeviceQueueInfo2 {
 
 /** ## VkPhysicalDeviceProtectedMemoryProperties ## */
 interface VkPhysicalDeviceProtectedMemoryPropertiesInitializer {
-  readonly sType?: VkStructureType;
-  readonly pNext?: null;
-  readonly protectedNoFault?: number;
+  sType?: VkStructureType;
+  pNext?: null;
+  protectedNoFault?: number;
 }
 
 declare var VkPhysicalDeviceProtectedMemoryProperties: {
   prototype: VkPhysicalDeviceProtectedMemoryProperties;
   new(param?: VkPhysicalDeviceProtectedMemoryPropertiesInitializer | null): VkPhysicalDeviceProtectedMemoryProperties;
-  readonly sType: VkStructureType;
-  readonly pNext: null;
-  readonly protectedNoFault: number;
+  sType: VkStructureType;
+  pNext: null;
+  protectedNoFault: number;
 }
 
 export interface VkPhysicalDeviceProtectedMemoryProperties {
-  readonly sType: VkStructureType;
-  readonly pNext: null;
-  readonly protectedNoFault: number;
+  sType: VkStructureType;
+  pNext: null;
+  protectedNoFault: number;
 }
 
 
@@ -8356,23 +8351,23 @@ export interface VkPipelineDiscardRectangleStateCreateInfoEXT {
 
 /** ## VkPhysicalDeviceDiscardRectanglePropertiesEXT ## */
 interface VkPhysicalDeviceDiscardRectanglePropertiesEXTInitializer {
-  readonly sType?: VkStructureType;
-  readonly pNext?: null;
-  readonly maxDiscardRectangles?: number;
+  sType?: VkStructureType;
+  pNext?: null;
+  maxDiscardRectangles?: number;
 }
 
 declare var VkPhysicalDeviceDiscardRectanglePropertiesEXT: {
   prototype: VkPhysicalDeviceDiscardRectanglePropertiesEXT;
   new(param?: VkPhysicalDeviceDiscardRectanglePropertiesEXTInitializer | null): VkPhysicalDeviceDiscardRectanglePropertiesEXT;
-  readonly sType: VkStructureType;
-  readonly pNext: null;
-  readonly maxDiscardRectangles: number;
+  sType: VkStructureType;
+  pNext: null;
+  maxDiscardRectangles: number;
 }
 
 export interface VkPhysicalDeviceDiscardRectanglePropertiesEXT {
-  readonly sType: VkStructureType;
-  readonly pNext: null;
-  readonly maxDiscardRectangles: number;
+  sType: VkStructureType;
+  pNext: null;
+  maxDiscardRectangles: number;
 }
 
 
@@ -10941,23 +10936,23 @@ export interface VkPhysicalDeviceDriverPropertiesKHR {
 
 /** ## VkPhysicalDevicePushDescriptorPropertiesKHR ## */
 interface VkPhysicalDevicePushDescriptorPropertiesKHRInitializer {
-  readonly sType?: VkStructureType;
-  readonly pNext?: null;
-  readonly maxPushDescriptors?: number;
+  sType?: VkStructureType;
+  pNext?: null;
+  maxPushDescriptors?: number;
 }
 
 declare var VkPhysicalDevicePushDescriptorPropertiesKHR: {
   prototype: VkPhysicalDevicePushDescriptorPropertiesKHR;
   new(param?: VkPhysicalDevicePushDescriptorPropertiesKHRInitializer | null): VkPhysicalDevicePushDescriptorPropertiesKHR;
-  readonly sType: VkStructureType;
-  readonly pNext: null;
-  readonly maxPushDescriptors: number;
+  sType: VkStructureType;
+  pNext: null;
+  maxPushDescriptors: number;
 }
 
 export interface VkPhysicalDevicePushDescriptorPropertiesKHR {
-  readonly sType: VkStructureType;
-  readonly pNext: null;
-  readonly maxPushDescriptors: number;
+  sType: VkStructureType;
+  pNext: null;
+  maxPushDescriptors: number;
 }
 
 

@@ -1,8 +1,14 @@
+/**
+
+  Generates C++ binding code for vulkan function calls
+
+**/
 import fs from "fs";
 import nunjucks from "nunjucks";
 import pkg from "../../package.json";
 
 import {
+  warn, error,
   isIgnoreableType
 } from "../utils";
 
@@ -32,7 +38,7 @@ function getStructByStructName(name) {
     let struct = structs[ii];
     if (struct.name === name) return struct;
   };
-  console.error(`Cannot resolve struct by name "${name}"`);
+  error(`Cannot resolve struct by name "${name}"`);
   return null;
 };
 
@@ -42,7 +48,7 @@ function getHandleByHandleName(name) {
     let handle = handles[ii];
     if (handle.name === name) return handle;
   };
-  console.error(`Cannot resolve handle by name "${name}"`);
+  error(`Cannot resolve handle by name "${name}"`);
   return null;
 };
 
@@ -51,7 +57,7 @@ function getParamIndexByParamName(call, name) {
     let param = call.params[ii];
     if (param.name === name) return ii;
   };
-  console.error(`Cannot resolve param index by name "${name}"`);
+  error(`Cannot resolve param index by name "${name}"`);
   return null;
 };
 
@@ -100,7 +106,7 @@ function getMemberCopyInstructions(struct) {
       // ???
     }
     else {
-      console.warn(`Cannot handle ${member.type} in get-member-copy-instruction!`);
+      warn(`Cannot handle ${member.type} in get-member-copy-instruction!`);
     }
   });
   return out;
@@ -111,7 +117,7 @@ function getInputArrayBody(param, index) {
   if (param.isBaseType) rawType = param.baseType;
   let out = ``;
   let {isConstant} = param;
-  if (param.dereferenceCount <= 0) console.warn(`Cannot handle non-reference item in input-array-body!`);
+  if (param.dereferenceCount <= 0) warn(`Cannot handle non-reference item in input-array-body!`);
   // create variable
   {
     let varType = param.enumType || param.baseType || param.type;
@@ -132,7 +138,7 @@ function getInputArrayBody(param, index) {
   ${param.type}* $p${index} = nullptr;\n`;
     }
     else {
-      console.warn(`Cannot handle param intializer ${rawType} in input-array-body!`);
+      warn(`Cannot handle param intializer ${rawType} in input-array-body!`);
     }
   }
   // fill variable
@@ -194,7 +200,7 @@ function getInputArrayBody(param, index) {
     $p${index} = std::make_shared<std::vector<${type}>>(data);`;
   }
   else {
-    console.warn(`Cannot handle param ${rawType} in input-array-body!`);
+    warn(`Cannot handle param ${rawType} in input-array-body!`);
   }
   out += `
   } else if (!info[${index}]->IsNull()) {
@@ -311,10 +317,10 @@ function getCallBodyBefore(call) {
           if (isReference) {
             if (param.isStructType) deinitialize = `nullptr`;
             else if (param.isHandleType) deinitialize = `VK_NULL_HANDLE`;
-            else console.warn(`Cannot handle param reference deinitializer!`);
+            else warn(`Cannot handle param reference deinitializer!`);
           } else {
             if (param.isHandleType) deinitialize = `VK_NULL_HANDLE`;
-            else console.warn(`Cannot handle param deinitializer!`);
+            else warn(`Cannot handle param deinitializer!`);
           }
           return `
   _${param.type}* obj${index};
@@ -329,7 +335,7 @@ function getCallBodyBefore(call) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument ${index + 1} '${param.name}'");
   }`;
         }
-        console.warn(`Cannot handle param ${rawType} in call-body-before!`);
+        warn(`Cannot handle param ${rawType} in call-body-before!`);
         return ``;
       } break;
     };
@@ -524,7 +530,7 @@ function getCallBodyAfter(call) {
     obj${pIndex}->Set(Nan::New("$").ToLocalChecked(), Nan::New($p${pIndex}));`);
           break;
         default:
-          console.warn(`Cannot handle ${param.type} in call-body-after!`);
+          warn(`Cannot handle ${param.type} in call-body-after!`);
       };
     }
   });

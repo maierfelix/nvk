@@ -2210,6 +2210,1529 @@ NAN_GETTER(_VkClearColorValue::Getuint32) {
 }
 /** ## END VkClearColorValue ## **/
 
+/** ## BEGIN VkBufferDeviceAddressCreateInfoEXT ## **/
+
+class _VkBufferDeviceAddressCreateInfoEXT: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    static NAN_GETTER(GetdeviceAddress);
+    static NAN_SETTER(SetdeviceAddress);
+    
+
+    // real instance
+    VkBufferDeviceAddressCreateInfoEXT instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkBufferDeviceAddressCreateInfoEXT();
+    ~_VkBufferDeviceAddressCreateInfoEXT();
+
+};
+
+/*
+#include "index.h"
+#include "VkBufferDeviceAddressCreateInfoEXT.h"
+*/
+Nan::Persistent<v8::FunctionTemplate> _VkBufferDeviceAddressCreateInfoEXT::constructor;
+
+_VkBufferDeviceAddressCreateInfoEXT::_VkBufferDeviceAddressCreateInfoEXT() {
+  instance.sType = VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_CREATE_INFO_EXT;
+  
+}
+
+_VkBufferDeviceAddressCreateInfoEXT::~_VkBufferDeviceAddressCreateInfoEXT() {
+  //printf("VkBufferDeviceAddressCreateInfoEXT deconstructed!!\n");
+  
+  
+  
+}
+
+void _VkBufferDeviceAddressCreateInfoEXT::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
+  Nan::HandleScope scope;
+
+  // constructor
+  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkBufferDeviceAddressCreateInfoEXT::New);
+  constructor.Reset(ctor);
+  ctor->InstanceTemplate()->SetInternalFieldCount(1);
+  ctor->SetClassName(Nan::New("VkBufferDeviceAddressCreateInfoEXT").ToLocalChecked());
+
+  // prototype
+  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
+  SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
+  SetPrototypeAccessor(proto, Nan::New("deviceAddress").ToLocalChecked(), GetdeviceAddress, SetdeviceAddress, ctor);
+  Nan::Set(target, Nan::New("VkBufferDeviceAddressCreateInfoEXT").ToLocalChecked(), ctor->GetFunction());
+}
+
+bool _VkBufferDeviceAddressCreateInfoEXT::flush() {
+  _VkBufferDeviceAddressCreateInfoEXT *self = this;
+  
+  return true;
+}
+
+NAN_METHOD(_VkBufferDeviceAddressCreateInfoEXT::New) {
+  if (info.IsConstructCall()) {
+    _VkBufferDeviceAddressCreateInfoEXT* self = new _VkBufferDeviceAddressCreateInfoEXT();
+    self->Wrap(info.Holder());
+    
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+      v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+      v8::Local<v8::String> sAccess2 = Nan::New("deviceAddress").ToLocalChecked();
+      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
+      if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
+      
+    }
+    
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkBufferDeviceAddressCreateInfoEXT constructor cannot be invoked without 'new'");
+  }
+};
+
+// sType
+NAN_GETTER(_VkBufferDeviceAddressCreateInfoEXT::GetsType) {
+  _VkBufferDeviceAddressCreateInfoEXT *self = Nan::ObjectWrap::Unwrap<_VkBufferDeviceAddressCreateInfoEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
+}NAN_SETTER(_VkBufferDeviceAddressCreateInfoEXT::SetsType) {
+  _VkBufferDeviceAddressCreateInfoEXT *self = Nan::ObjectWrap::Unwrap<_VkBufferDeviceAddressCreateInfoEXT>(info.This());
+  if (value->IsNumber()) {
+    self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkBufferDeviceAddressCreateInfoEXT.sType", "Number");
+  
+    return;
+  }
+}// deviceAddress
+NAN_GETTER(_VkBufferDeviceAddressCreateInfoEXT::GetdeviceAddress) {
+  _VkBufferDeviceAddressCreateInfoEXT *self = Nan::ObjectWrap::Unwrap<_VkBufferDeviceAddressCreateInfoEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.deviceAddress));
+}NAN_SETTER(_VkBufferDeviceAddressCreateInfoEXT::SetdeviceAddress) {
+  _VkBufferDeviceAddressCreateInfoEXT *self = Nan::ObjectWrap::Unwrap<_VkBufferDeviceAddressCreateInfoEXT>(info.This());
+  if (value->IsNumber()) {
+    self->instance.deviceAddress = static_cast<uint64_t>(Nan::To<int64_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkBufferDeviceAddressCreateInfoEXT.deviceAddress", "Number");
+  
+    return;
+  }
+}
+/** ## END VkBufferDeviceAddressCreateInfoEXT ## **/
+
+/** ## BEGIN VkBufferDeviceAddressInfoEXT ## **/
+
+class _VkBufferDeviceAddressInfoEXT: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> buffer;
+      static NAN_GETTER(Getbuffer);
+    static NAN_SETTER(Setbuffer);
+    
+
+    // real instance
+    VkBufferDeviceAddressInfoEXT instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkBufferDeviceAddressInfoEXT();
+    ~_VkBufferDeviceAddressInfoEXT();
+
+};
+
+/*
+#include "index.h"
+#include "VkBufferDeviceAddressInfoEXT.h"
+*/
+Nan::Persistent<v8::FunctionTemplate> _VkBufferDeviceAddressInfoEXT::constructor;
+
+_VkBufferDeviceAddressInfoEXT::_VkBufferDeviceAddressInfoEXT() {
+  instance.sType = VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_INFO_EXT;
+  
+}
+
+_VkBufferDeviceAddressInfoEXT::~_VkBufferDeviceAddressInfoEXT() {
+  //printf("VkBufferDeviceAddressInfoEXT deconstructed!!\n");
+  
+  
+  
+}
+
+void _VkBufferDeviceAddressInfoEXT::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
+  Nan::HandleScope scope;
+
+  // constructor
+  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkBufferDeviceAddressInfoEXT::New);
+  constructor.Reset(ctor);
+  ctor->InstanceTemplate()->SetInternalFieldCount(1);
+  ctor->SetClassName(Nan::New("VkBufferDeviceAddressInfoEXT").ToLocalChecked());
+
+  // prototype
+  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
+  SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
+  SetPrototypeAccessor(proto, Nan::New("buffer").ToLocalChecked(), Getbuffer, Setbuffer, ctor);
+  Nan::Set(target, Nan::New("VkBufferDeviceAddressInfoEXT").ToLocalChecked(), ctor->GetFunction());
+}
+
+bool _VkBufferDeviceAddressInfoEXT::flush() {
+  _VkBufferDeviceAddressInfoEXT *self = this;
+  
+  return true;
+}
+
+NAN_METHOD(_VkBufferDeviceAddressInfoEXT::New) {
+  if (info.IsConstructCall()) {
+    _VkBufferDeviceAddressInfoEXT* self = new _VkBufferDeviceAddressInfoEXT();
+    self->Wrap(info.Holder());
+    
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+      v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+      v8::Local<v8::String> sAccess2 = Nan::New("buffer").ToLocalChecked();
+      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
+      if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
+      
+    }
+    
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkBufferDeviceAddressInfoEXT constructor cannot be invoked without 'new'");
+  }
+};
+
+// sType
+NAN_GETTER(_VkBufferDeviceAddressInfoEXT::GetsType) {
+  _VkBufferDeviceAddressInfoEXT *self = Nan::ObjectWrap::Unwrap<_VkBufferDeviceAddressInfoEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
+}NAN_SETTER(_VkBufferDeviceAddressInfoEXT::SetsType) {
+  _VkBufferDeviceAddressInfoEXT *self = Nan::ObjectWrap::Unwrap<_VkBufferDeviceAddressInfoEXT>(info.This());
+  if (value->IsNumber()) {
+    self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkBufferDeviceAddressInfoEXT.sType", "Number");
+  
+    return;
+  }
+}// buffer
+NAN_GETTER(_VkBufferDeviceAddressInfoEXT::Getbuffer) {
+  _VkBufferDeviceAddressInfoEXT *self = Nan::ObjectWrap::Unwrap<_VkBufferDeviceAddressInfoEXT>(info.This());
+  if (self->buffer.IsEmpty()) {
+    info.GetReturnValue().SetNull();
+  } else {
+    v8::Local<v8::Object> obj = Nan::New(self->buffer);
+    info.GetReturnValue().Set(obj);
+  }
+}NAN_SETTER(_VkBufferDeviceAddressInfoEXT::Setbuffer) {
+  _VkBufferDeviceAddressInfoEXT *self = Nan::ObjectWrap::Unwrap<_VkBufferDeviceAddressInfoEXT>(info.This());
+  // js
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      self->buffer.Reset<v8::Object>(value.As<v8::Object>());
+      _VkBuffer* inst = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
+      ;
+      self->instance.buffer = inst->instance;
+    } else {
+      
+    NanInvalidStructMemberTypeError(value, "VkBufferDeviceAddressInfoEXT.buffer", "[object VkBuffer]");
+  
+      return;
+    }
+  } else if (value->IsNull()) {
+    self->buffer.Reset();
+    self->instance.buffer = VK_NULL_HANDLE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkBufferDeviceAddressInfoEXT.buffer", "[object VkBuffer]");
+  
+    return;
+  }
+}
+/** ## END VkBufferDeviceAddressInfoEXT ## **/
+
+/** ## BEGIN VkPhysicalDeviceBufferAddressFeaturesEXT ## **/
+
+class _VkPhysicalDeviceBufferAddressFeaturesEXT: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    static NAN_GETTER(GetbufferDeviceAddress);
+    static NAN_SETTER(SetbufferDeviceAddress);
+    
+    static NAN_GETTER(GetbufferDeviceAddressCaptureReplay);
+    static NAN_SETTER(SetbufferDeviceAddressCaptureReplay);
+    
+    static NAN_GETTER(GetbufferDeviceAddressMultiDevice);
+    static NAN_SETTER(SetbufferDeviceAddressMultiDevice);
+    
+
+    // real instance
+    VkPhysicalDeviceBufferAddressFeaturesEXT instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkPhysicalDeviceBufferAddressFeaturesEXT();
+    ~_VkPhysicalDeviceBufferAddressFeaturesEXT();
+
+};
+
+/*
+#include "index.h"
+#include "VkPhysicalDeviceBufferAddressFeaturesEXT.h"
+*/
+Nan::Persistent<v8::FunctionTemplate> _VkPhysicalDeviceBufferAddressFeaturesEXT::constructor;
+
+_VkPhysicalDeviceBufferAddressFeaturesEXT::_VkPhysicalDeviceBufferAddressFeaturesEXT() {
+  instance.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_ADDRESS_FEATURES_EXT;
+  
+}
+
+_VkPhysicalDeviceBufferAddressFeaturesEXT::~_VkPhysicalDeviceBufferAddressFeaturesEXT() {
+  //printf("VkPhysicalDeviceBufferAddressFeaturesEXT deconstructed!!\n");
+  
+  
+  
+  
+  
+}
+
+void _VkPhysicalDeviceBufferAddressFeaturesEXT::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
+  Nan::HandleScope scope;
+
+  // constructor
+  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkPhysicalDeviceBufferAddressFeaturesEXT::New);
+  constructor.Reset(ctor);
+  ctor->InstanceTemplate()->SetInternalFieldCount(1);
+  ctor->SetClassName(Nan::New("VkPhysicalDeviceBufferAddressFeaturesEXT").ToLocalChecked());
+
+  // prototype
+  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
+  SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
+  SetPrototypeAccessor(proto, Nan::New("bufferDeviceAddress").ToLocalChecked(), GetbufferDeviceAddress, SetbufferDeviceAddress, ctor);
+  SetPrototypeAccessor(proto, Nan::New("bufferDeviceAddressCaptureReplay").ToLocalChecked(), GetbufferDeviceAddressCaptureReplay, SetbufferDeviceAddressCaptureReplay, ctor);
+  SetPrototypeAccessor(proto, Nan::New("bufferDeviceAddressMultiDevice").ToLocalChecked(), GetbufferDeviceAddressMultiDevice, SetbufferDeviceAddressMultiDevice, ctor);
+  Nan::Set(target, Nan::New("VkPhysicalDeviceBufferAddressFeaturesEXT").ToLocalChecked(), ctor->GetFunction());
+}
+
+bool _VkPhysicalDeviceBufferAddressFeaturesEXT::flush() {
+  _VkPhysicalDeviceBufferAddressFeaturesEXT *self = this;
+  
+  return true;
+}
+
+NAN_METHOD(_VkPhysicalDeviceBufferAddressFeaturesEXT::New) {
+  if (info.IsConstructCall()) {
+    _VkPhysicalDeviceBufferAddressFeaturesEXT* self = new _VkPhysicalDeviceBufferAddressFeaturesEXT();
+    self->Wrap(info.Holder());
+    
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+      v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+      v8::Local<v8::String> sAccess2 = Nan::New("bufferDeviceAddress").ToLocalChecked();
+      v8::Local<v8::String> sAccess3 = Nan::New("bufferDeviceAddressCaptureReplay").ToLocalChecked();
+      v8::Local<v8::String> sAccess4 = Nan::New("bufferDeviceAddressMultiDevice").ToLocalChecked();
+      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
+      if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
+      if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
+      if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
+      
+    }
+    
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkPhysicalDeviceBufferAddressFeaturesEXT constructor cannot be invoked without 'new'");
+  }
+};
+
+// sType
+NAN_GETTER(_VkPhysicalDeviceBufferAddressFeaturesEXT::GetsType) {
+  _VkPhysicalDeviceBufferAddressFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceBufferAddressFeaturesEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
+}NAN_SETTER(_VkPhysicalDeviceBufferAddressFeaturesEXT::SetsType) {
+  _VkPhysicalDeviceBufferAddressFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceBufferAddressFeaturesEXT>(info.This());
+  if (value->IsNumber()) {
+    self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceBufferAddressFeaturesEXT.sType", "Number");
+  
+    return;
+  }
+}// bufferDeviceAddress
+NAN_GETTER(_VkPhysicalDeviceBufferAddressFeaturesEXT::GetbufferDeviceAddress) {
+  _VkPhysicalDeviceBufferAddressFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceBufferAddressFeaturesEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.bufferDeviceAddress));
+}NAN_SETTER(_VkPhysicalDeviceBufferAddressFeaturesEXT::SetbufferDeviceAddress) {
+  _VkPhysicalDeviceBufferAddressFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceBufferAddressFeaturesEXT>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.bufferDeviceAddress = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceBufferAddressFeaturesEXT.bufferDeviceAddress", "Number");
+  
+    return;
+  }
+}// bufferDeviceAddressCaptureReplay
+NAN_GETTER(_VkPhysicalDeviceBufferAddressFeaturesEXT::GetbufferDeviceAddressCaptureReplay) {
+  _VkPhysicalDeviceBufferAddressFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceBufferAddressFeaturesEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.bufferDeviceAddressCaptureReplay));
+}NAN_SETTER(_VkPhysicalDeviceBufferAddressFeaturesEXT::SetbufferDeviceAddressCaptureReplay) {
+  _VkPhysicalDeviceBufferAddressFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceBufferAddressFeaturesEXT>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.bufferDeviceAddressCaptureReplay = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceBufferAddressFeaturesEXT.bufferDeviceAddressCaptureReplay", "Number");
+  
+    return;
+  }
+}// bufferDeviceAddressMultiDevice
+NAN_GETTER(_VkPhysicalDeviceBufferAddressFeaturesEXT::GetbufferDeviceAddressMultiDevice) {
+  _VkPhysicalDeviceBufferAddressFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceBufferAddressFeaturesEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.bufferDeviceAddressMultiDevice));
+}NAN_SETTER(_VkPhysicalDeviceBufferAddressFeaturesEXT::SetbufferDeviceAddressMultiDevice) {
+  _VkPhysicalDeviceBufferAddressFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceBufferAddressFeaturesEXT>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.bufferDeviceAddressMultiDevice = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceBufferAddressFeaturesEXT.bufferDeviceAddressMultiDevice", "Number");
+  
+    return;
+  }
+}
+/** ## END VkPhysicalDeviceBufferAddressFeaturesEXT ## **/
+
+/** ## BEGIN VkMemoryPriorityAllocateInfoEXT ## **/
+
+class _VkMemoryPriorityAllocateInfoEXT: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    static NAN_GETTER(Getpriority);
+    static NAN_SETTER(Setpriority);
+    
+
+    // real instance
+    VkMemoryPriorityAllocateInfoEXT instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkMemoryPriorityAllocateInfoEXT();
+    ~_VkMemoryPriorityAllocateInfoEXT();
+
+};
+
+/*
+#include "index.h"
+#include "VkMemoryPriorityAllocateInfoEXT.h"
+*/
+Nan::Persistent<v8::FunctionTemplate> _VkMemoryPriorityAllocateInfoEXT::constructor;
+
+_VkMemoryPriorityAllocateInfoEXT::_VkMemoryPriorityAllocateInfoEXT() {
+  instance.sType = VK_STRUCTURE_TYPE_MEMORY_PRIORITY_ALLOCATE_INFO_EXT;
+  
+}
+
+_VkMemoryPriorityAllocateInfoEXT::~_VkMemoryPriorityAllocateInfoEXT() {
+  //printf("VkMemoryPriorityAllocateInfoEXT deconstructed!!\n");
+  
+  
+  
+}
+
+void _VkMemoryPriorityAllocateInfoEXT::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
+  Nan::HandleScope scope;
+
+  // constructor
+  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkMemoryPriorityAllocateInfoEXT::New);
+  constructor.Reset(ctor);
+  ctor->InstanceTemplate()->SetInternalFieldCount(1);
+  ctor->SetClassName(Nan::New("VkMemoryPriorityAllocateInfoEXT").ToLocalChecked());
+
+  // prototype
+  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
+  SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
+  SetPrototypeAccessor(proto, Nan::New("priority").ToLocalChecked(), Getpriority, Setpriority, ctor);
+  Nan::Set(target, Nan::New("VkMemoryPriorityAllocateInfoEXT").ToLocalChecked(), ctor->GetFunction());
+}
+
+bool _VkMemoryPriorityAllocateInfoEXT::flush() {
+  _VkMemoryPriorityAllocateInfoEXT *self = this;
+  
+  return true;
+}
+
+NAN_METHOD(_VkMemoryPriorityAllocateInfoEXT::New) {
+  if (info.IsConstructCall()) {
+    _VkMemoryPriorityAllocateInfoEXT* self = new _VkMemoryPriorityAllocateInfoEXT();
+    self->Wrap(info.Holder());
+    
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+      v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+      v8::Local<v8::String> sAccess2 = Nan::New("priority").ToLocalChecked();
+      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
+      if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
+      
+    }
+    
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkMemoryPriorityAllocateInfoEXT constructor cannot be invoked without 'new'");
+  }
+};
+
+// sType
+NAN_GETTER(_VkMemoryPriorityAllocateInfoEXT::GetsType) {
+  _VkMemoryPriorityAllocateInfoEXT *self = Nan::ObjectWrap::Unwrap<_VkMemoryPriorityAllocateInfoEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
+}NAN_SETTER(_VkMemoryPriorityAllocateInfoEXT::SetsType) {
+  _VkMemoryPriorityAllocateInfoEXT *self = Nan::ObjectWrap::Unwrap<_VkMemoryPriorityAllocateInfoEXT>(info.This());
+  if (value->IsNumber()) {
+    self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkMemoryPriorityAllocateInfoEXT.sType", "Number");
+  
+    return;
+  }
+}// priority
+NAN_GETTER(_VkMemoryPriorityAllocateInfoEXT::Getpriority) {
+  _VkMemoryPriorityAllocateInfoEXT *self = Nan::ObjectWrap::Unwrap<_VkMemoryPriorityAllocateInfoEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.priority));
+}NAN_SETTER(_VkMemoryPriorityAllocateInfoEXT::Setpriority) {
+  _VkMemoryPriorityAllocateInfoEXT *self = Nan::ObjectWrap::Unwrap<_VkMemoryPriorityAllocateInfoEXT>(info.This());
+  if (value->IsNumber()) {
+    self->instance.priority = static_cast<float>(Nan::To<int64_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkMemoryPriorityAllocateInfoEXT.priority", "Number");
+  
+    return;
+  }
+}
+/** ## END VkMemoryPriorityAllocateInfoEXT ## **/
+
+/** ## BEGIN VkPhysicalDeviceMemoryPriorityFeaturesEXT ## **/
+
+class _VkPhysicalDeviceMemoryPriorityFeaturesEXT: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    static NAN_GETTER(GetmemoryPriority);
+    static NAN_SETTER(SetmemoryPriority);
+    
+
+    // real instance
+    VkPhysicalDeviceMemoryPriorityFeaturesEXT instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkPhysicalDeviceMemoryPriorityFeaturesEXT();
+    ~_VkPhysicalDeviceMemoryPriorityFeaturesEXT();
+
+};
+
+/*
+#include "index.h"
+#include "VkPhysicalDeviceMemoryPriorityFeaturesEXT.h"
+*/
+Nan::Persistent<v8::FunctionTemplate> _VkPhysicalDeviceMemoryPriorityFeaturesEXT::constructor;
+
+_VkPhysicalDeviceMemoryPriorityFeaturesEXT::_VkPhysicalDeviceMemoryPriorityFeaturesEXT() {
+  instance.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PRIORITY_FEATURES_EXT;
+  
+}
+
+_VkPhysicalDeviceMemoryPriorityFeaturesEXT::~_VkPhysicalDeviceMemoryPriorityFeaturesEXT() {
+  //printf("VkPhysicalDeviceMemoryPriorityFeaturesEXT deconstructed!!\n");
+  
+  
+  
+}
+
+void _VkPhysicalDeviceMemoryPriorityFeaturesEXT::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
+  Nan::HandleScope scope;
+
+  // constructor
+  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkPhysicalDeviceMemoryPriorityFeaturesEXT::New);
+  constructor.Reset(ctor);
+  ctor->InstanceTemplate()->SetInternalFieldCount(1);
+  ctor->SetClassName(Nan::New("VkPhysicalDeviceMemoryPriorityFeaturesEXT").ToLocalChecked());
+
+  // prototype
+  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
+  SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
+  SetPrototypeAccessor(proto, Nan::New("memoryPriority").ToLocalChecked(), GetmemoryPriority, SetmemoryPriority, ctor);
+  Nan::Set(target, Nan::New("VkPhysicalDeviceMemoryPriorityFeaturesEXT").ToLocalChecked(), ctor->GetFunction());
+}
+
+bool _VkPhysicalDeviceMemoryPriorityFeaturesEXT::flush() {
+  _VkPhysicalDeviceMemoryPriorityFeaturesEXT *self = this;
+  
+  return true;
+}
+
+NAN_METHOD(_VkPhysicalDeviceMemoryPriorityFeaturesEXT::New) {
+  if (info.IsConstructCall()) {
+    _VkPhysicalDeviceMemoryPriorityFeaturesEXT* self = new _VkPhysicalDeviceMemoryPriorityFeaturesEXT();
+    self->Wrap(info.Holder());
+    
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+      v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+      v8::Local<v8::String> sAccess2 = Nan::New("memoryPriority").ToLocalChecked();
+      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
+      if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
+      
+    }
+    
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkPhysicalDeviceMemoryPriorityFeaturesEXT constructor cannot be invoked without 'new'");
+  }
+};
+
+// sType
+NAN_GETTER(_VkPhysicalDeviceMemoryPriorityFeaturesEXT::GetsType) {
+  _VkPhysicalDeviceMemoryPriorityFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceMemoryPriorityFeaturesEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
+}NAN_SETTER(_VkPhysicalDeviceMemoryPriorityFeaturesEXT::SetsType) {
+  _VkPhysicalDeviceMemoryPriorityFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceMemoryPriorityFeaturesEXT>(info.This());
+  if (value->IsNumber()) {
+    self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceMemoryPriorityFeaturesEXT.sType", "Number");
+  
+    return;
+  }
+}// memoryPriority
+NAN_GETTER(_VkPhysicalDeviceMemoryPriorityFeaturesEXT::GetmemoryPriority) {
+  _VkPhysicalDeviceMemoryPriorityFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceMemoryPriorityFeaturesEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.memoryPriority));
+}NAN_SETTER(_VkPhysicalDeviceMemoryPriorityFeaturesEXT::SetmemoryPriority) {
+  _VkPhysicalDeviceMemoryPriorityFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceMemoryPriorityFeaturesEXT>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.memoryPriority = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceMemoryPriorityFeaturesEXT.memoryPriority", "Number");
+  
+    return;
+  }
+}
+/** ## END VkPhysicalDeviceMemoryPriorityFeaturesEXT ## **/
+
+/** ## BEGIN VkPhysicalDeviceMemoryBudgetPropertiesEXT ## **/
+
+class _VkPhysicalDeviceMemoryBudgetPropertiesEXT: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    std::vector<uint64_t>* vheapBudget;
+    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> heapBudget;
+    static NAN_GETTER(GetheapBudget);
+    std::vector<uint64_t>* vheapUsage;
+    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> heapUsage;
+    static NAN_GETTER(GetheapUsage);
+
+    // real instance
+    VkPhysicalDeviceMemoryBudgetPropertiesEXT instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkPhysicalDeviceMemoryBudgetPropertiesEXT();
+    ~_VkPhysicalDeviceMemoryBudgetPropertiesEXT();
+
+};
+
+/*
+#include <string.h>
+#include "index.h"
+#include "VkPhysicalDeviceMemoryBudgetPropertiesEXT.h"
+*/
+Nan::Persistent<v8::FunctionTemplate> _VkPhysicalDeviceMemoryBudgetPropertiesEXT::constructor;
+
+_VkPhysicalDeviceMemoryBudgetPropertiesEXT::_VkPhysicalDeviceMemoryBudgetPropertiesEXT() {
+  instance.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT;
+  vheapBudget = new std::vector<uint64_t>;
+  vheapUsage = new std::vector<uint64_t>;
+  
+}
+
+_VkPhysicalDeviceMemoryBudgetPropertiesEXT::~_VkPhysicalDeviceMemoryBudgetPropertiesEXT() {
+  //printf("VkPhysicalDeviceMemoryBudgetPropertiesEXT deconstructed!!\n");
+  
+  
+  vheapBudget->clear();
+  delete vheapBudget;
+  
+  
+  vheapUsage->clear();
+  delete vheapUsage;
+  
+  
+}
+
+void _VkPhysicalDeviceMemoryBudgetPropertiesEXT::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
+  Nan::HandleScope scope;
+
+  // constructor
+  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkPhysicalDeviceMemoryBudgetPropertiesEXT::New);
+  constructor.Reset(ctor);
+  ctor->InstanceTemplate()->SetInternalFieldCount(1);
+  ctor->SetClassName(Nan::New("VkPhysicalDeviceMemoryBudgetPropertiesEXT").ToLocalChecked());
+
+  // prototype
+  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
+  SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, nullptr, ctor);
+  SetPrototypeAccessor(proto, Nan::New("heapBudget").ToLocalChecked(), GetheapBudget, nullptr, ctor);
+  SetPrototypeAccessor(proto, Nan::New("heapUsage").ToLocalChecked(), GetheapUsage, nullptr, ctor);
+  Nan::Set(target, Nan::New("VkPhysicalDeviceMemoryBudgetPropertiesEXT").ToLocalChecked(), ctor->GetFunction());
+}
+
+bool _VkPhysicalDeviceMemoryBudgetPropertiesEXT::flush() {
+  _VkPhysicalDeviceMemoryBudgetPropertiesEXT *self = this;
+  if (!(self->heapBudget.IsEmpty())) {
+    v8::Local<v8::Value> value = Nan::New(self->heapBudget);
+    
+  }if (!(self->heapUsage.IsEmpty())) {
+    v8::Local<v8::Value> value = Nan::New(self->heapUsage);
+    
+  }
+  return true;
+}
+
+NAN_METHOD(_VkPhysicalDeviceMemoryBudgetPropertiesEXT::New) {
+  if (info.IsConstructCall()) {
+    _VkPhysicalDeviceMemoryBudgetPropertiesEXT* self = new _VkPhysicalDeviceMemoryBudgetPropertiesEXT();
+    self->Wrap(info.Holder());
+    
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkPhysicalDeviceMemoryBudgetPropertiesEXT constructor cannot be invoked without 'new'");
+  }
+};
+
+// sType
+NAN_GETTER(_VkPhysicalDeviceMemoryBudgetPropertiesEXT::GetsType) {
+  _VkPhysicalDeviceMemoryBudgetPropertiesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceMemoryBudgetPropertiesEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
+}// heapBudget
+NAN_GETTER(_VkPhysicalDeviceMemoryBudgetPropertiesEXT::GetheapBudget) {
+  _VkPhysicalDeviceMemoryBudgetPropertiesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceMemoryBudgetPropertiesEXT>(info.This());
+  if (self->heapBudget.IsEmpty()) {
+    info.GetReturnValue().SetNull();
+  } else {
+    info.GetReturnValue().Set(Nan::New(self->heapBudget));
+  }
+}// heapUsage
+NAN_GETTER(_VkPhysicalDeviceMemoryBudgetPropertiesEXT::GetheapUsage) {
+  _VkPhysicalDeviceMemoryBudgetPropertiesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceMemoryBudgetPropertiesEXT>(info.This());
+  if (self->heapUsage.IsEmpty()) {
+    info.GetReturnValue().SetNull();
+  } else {
+    info.GetReturnValue().Set(Nan::New(self->heapUsage));
+  }
+}
+/** ## END VkPhysicalDeviceMemoryBudgetPropertiesEXT ## **/
+
+/** ## BEGIN VkPhysicalDeviceScalarBlockLayoutFeaturesEXT ## **/
+
+class _VkPhysicalDeviceScalarBlockLayoutFeaturesEXT: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    static NAN_GETTER(GetscalarBlockLayout);
+    static NAN_SETTER(SetscalarBlockLayout);
+    
+
+    // real instance
+    VkPhysicalDeviceScalarBlockLayoutFeaturesEXT instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkPhysicalDeviceScalarBlockLayoutFeaturesEXT();
+    ~_VkPhysicalDeviceScalarBlockLayoutFeaturesEXT();
+
+};
+
+/*
+#include "index.h"
+#include "VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.h"
+*/
+Nan::Persistent<v8::FunctionTemplate> _VkPhysicalDeviceScalarBlockLayoutFeaturesEXT::constructor;
+
+_VkPhysicalDeviceScalarBlockLayoutFeaturesEXT::_VkPhysicalDeviceScalarBlockLayoutFeaturesEXT() {
+  instance.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCALAR_BLOCK_LAYOUT_FEATURES_EXT;
+  
+}
+
+_VkPhysicalDeviceScalarBlockLayoutFeaturesEXT::~_VkPhysicalDeviceScalarBlockLayoutFeaturesEXT() {
+  //printf("VkPhysicalDeviceScalarBlockLayoutFeaturesEXT deconstructed!!\n");
+  
+  
+  
+}
+
+void _VkPhysicalDeviceScalarBlockLayoutFeaturesEXT::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
+  Nan::HandleScope scope;
+
+  // constructor
+  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkPhysicalDeviceScalarBlockLayoutFeaturesEXT::New);
+  constructor.Reset(ctor);
+  ctor->InstanceTemplate()->SetInternalFieldCount(1);
+  ctor->SetClassName(Nan::New("VkPhysicalDeviceScalarBlockLayoutFeaturesEXT").ToLocalChecked());
+
+  // prototype
+  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
+  SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
+  SetPrototypeAccessor(proto, Nan::New("scalarBlockLayout").ToLocalChecked(), GetscalarBlockLayout, SetscalarBlockLayout, ctor);
+  Nan::Set(target, Nan::New("VkPhysicalDeviceScalarBlockLayoutFeaturesEXT").ToLocalChecked(), ctor->GetFunction());
+}
+
+bool _VkPhysicalDeviceScalarBlockLayoutFeaturesEXT::flush() {
+  _VkPhysicalDeviceScalarBlockLayoutFeaturesEXT *self = this;
+  
+  return true;
+}
+
+NAN_METHOD(_VkPhysicalDeviceScalarBlockLayoutFeaturesEXT::New) {
+  if (info.IsConstructCall()) {
+    _VkPhysicalDeviceScalarBlockLayoutFeaturesEXT* self = new _VkPhysicalDeviceScalarBlockLayoutFeaturesEXT();
+    self->Wrap(info.Holder());
+    
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+      v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+      v8::Local<v8::String> sAccess2 = Nan::New("scalarBlockLayout").ToLocalChecked();
+      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
+      if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
+      
+    }
+    
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkPhysicalDeviceScalarBlockLayoutFeaturesEXT constructor cannot be invoked without 'new'");
+  }
+};
+
+// sType
+NAN_GETTER(_VkPhysicalDeviceScalarBlockLayoutFeaturesEXT::GetsType) {
+  _VkPhysicalDeviceScalarBlockLayoutFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceScalarBlockLayoutFeaturesEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
+}NAN_SETTER(_VkPhysicalDeviceScalarBlockLayoutFeaturesEXT::SetsType) {
+  _VkPhysicalDeviceScalarBlockLayoutFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceScalarBlockLayoutFeaturesEXT>(info.This());
+  if (value->IsNumber()) {
+    self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.sType", "Number");
+  
+    return;
+  }
+}// scalarBlockLayout
+NAN_GETTER(_VkPhysicalDeviceScalarBlockLayoutFeaturesEXT::GetscalarBlockLayout) {
+  _VkPhysicalDeviceScalarBlockLayoutFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceScalarBlockLayoutFeaturesEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.scalarBlockLayout));
+}NAN_SETTER(_VkPhysicalDeviceScalarBlockLayoutFeaturesEXT::SetscalarBlockLayout) {
+  _VkPhysicalDeviceScalarBlockLayoutFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceScalarBlockLayoutFeaturesEXT>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.scalarBlockLayout = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.scalarBlockLayout", "Number");
+  
+    return;
+  }
+}
+/** ## END VkPhysicalDeviceScalarBlockLayoutFeaturesEXT ## **/
+
+/** ## BEGIN VkAttachmentReference ## **/
+
+class _VkAttachmentReference: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    // #accessors
+    static NAN_GETTER(Getattachment);
+    static NAN_SETTER(Setattachment);
+    
+    static NAN_GETTER(Getlayout);
+    static NAN_SETTER(Setlayout);
+    
+
+    // real instance
+    VkAttachmentReference instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkAttachmentReference();
+    ~_VkAttachmentReference();
+
+};
+
+/*
+#include "index.h"
+#include "VkAttachmentReference.h"
+*/
+Nan::Persistent<v8::FunctionTemplate> _VkAttachmentReference::constructor;
+
+_VkAttachmentReference::_VkAttachmentReference() {
+  
+  
+}
+
+_VkAttachmentReference::~_VkAttachmentReference() {
+  //printf("VkAttachmentReference deconstructed!!\n");
+  
+  
+  
+}
+
+void _VkAttachmentReference::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
+  Nan::HandleScope scope;
+
+  // constructor
+  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkAttachmentReference::New);
+  constructor.Reset(ctor);
+  ctor->InstanceTemplate()->SetInternalFieldCount(1);
+  ctor->SetClassName(Nan::New("VkAttachmentReference").ToLocalChecked());
+
+  // prototype
+  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
+  SetPrototypeAccessor(proto, Nan::New("attachment").ToLocalChecked(), Getattachment, Setattachment, ctor);
+  SetPrototypeAccessor(proto, Nan::New("layout").ToLocalChecked(), Getlayout, Setlayout, ctor);
+  Nan::Set(target, Nan::New("VkAttachmentReference").ToLocalChecked(), ctor->GetFunction());
+}
+
+bool _VkAttachmentReference::flush() {
+  _VkAttachmentReference *self = this;
+  
+  return true;
+}
+
+NAN_METHOD(_VkAttachmentReference::New) {
+  if (info.IsConstructCall()) {
+    _VkAttachmentReference* self = new _VkAttachmentReference();
+    self->Wrap(info.Holder());
+    
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+      v8::Local<v8::String> sAccess0 = Nan::New("attachment").ToLocalChecked();
+      v8::Local<v8::String> sAccess1 = Nan::New("layout").ToLocalChecked();
+      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
+      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
+      
+    }
+    
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkAttachmentReference constructor cannot be invoked without 'new'");
+  }
+};
+
+// attachment
+NAN_GETTER(_VkAttachmentReference::Getattachment) {
+  _VkAttachmentReference *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.attachment));
+}NAN_SETTER(_VkAttachmentReference::Setattachment) {
+  _VkAttachmentReference *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference>(info.This());
+  if (value->IsNumber()) {
+    self->instance.attachment = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkAttachmentReference.attachment", "Number");
+  
+    return;
+  }
+}// layout
+NAN_GETTER(_VkAttachmentReference::Getlayout) {
+  _VkAttachmentReference *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.layout));
+}NAN_SETTER(_VkAttachmentReference::Setlayout) {
+  _VkAttachmentReference *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference>(info.This());
+  if (value->IsNumber()) {
+    self->instance.layout = static_cast<VkImageLayout>(Nan::To<int32_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkAttachmentReference.layout", "Number");
+  
+    return;
+  }
+}
+/** ## END VkAttachmentReference ## **/
+
+/** ## BEGIN VkRenderPassFragmentDensityMapCreateInfoEXT ## **/
+
+class _VkRenderPassFragmentDensityMapCreateInfoEXT: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> fragmentDensityMapAttachment;
+      static NAN_GETTER(GetfragmentDensityMapAttachment);
+    static NAN_SETTER(SetfragmentDensityMapAttachment);
+    
+
+    // real instance
+    VkRenderPassFragmentDensityMapCreateInfoEXT instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkRenderPassFragmentDensityMapCreateInfoEXT();
+    ~_VkRenderPassFragmentDensityMapCreateInfoEXT();
+
+};
+
+/*
+#include "index.h"
+#include "VkRenderPassFragmentDensityMapCreateInfoEXT.h"
+*/
+Nan::Persistent<v8::FunctionTemplate> _VkRenderPassFragmentDensityMapCreateInfoEXT::constructor;
+
+_VkRenderPassFragmentDensityMapCreateInfoEXT::_VkRenderPassFragmentDensityMapCreateInfoEXT() {
+  instance.sType = VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT;
+  
+}
+
+_VkRenderPassFragmentDensityMapCreateInfoEXT::~_VkRenderPassFragmentDensityMapCreateInfoEXT() {
+  //printf("VkRenderPassFragmentDensityMapCreateInfoEXT deconstructed!!\n");
+  
+  
+  
+}
+
+void _VkRenderPassFragmentDensityMapCreateInfoEXT::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
+  Nan::HandleScope scope;
+
+  // constructor
+  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkRenderPassFragmentDensityMapCreateInfoEXT::New);
+  constructor.Reset(ctor);
+  ctor->InstanceTemplate()->SetInternalFieldCount(1);
+  ctor->SetClassName(Nan::New("VkRenderPassFragmentDensityMapCreateInfoEXT").ToLocalChecked());
+
+  // prototype
+  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
+  SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
+  SetPrototypeAccessor(proto, Nan::New("fragmentDensityMapAttachment").ToLocalChecked(), GetfragmentDensityMapAttachment, SetfragmentDensityMapAttachment, ctor);
+  Nan::Set(target, Nan::New("VkRenderPassFragmentDensityMapCreateInfoEXT").ToLocalChecked(), ctor->GetFunction());
+}
+
+bool _VkRenderPassFragmentDensityMapCreateInfoEXT::flush() {
+  _VkRenderPassFragmentDensityMapCreateInfoEXT *self = this;
+  if (!(self->fragmentDensityMapAttachment.IsEmpty())) {
+    v8::Local<v8::Value> value = Nan::New(self->fragmentDensityMapAttachment);
+    
+    _VkAttachmentReference* result = Nan::ObjectWrap::Unwrap<_VkAttachmentReference>(Nan::To<v8::Object>(value).ToLocalChecked());
+    if (!result->flush()) return false;
+    self->instance.fragmentDensityMapAttachment = result->instance;
+  }
+  return true;
+}
+
+NAN_METHOD(_VkRenderPassFragmentDensityMapCreateInfoEXT::New) {
+  if (info.IsConstructCall()) {
+    _VkRenderPassFragmentDensityMapCreateInfoEXT* self = new _VkRenderPassFragmentDensityMapCreateInfoEXT();
+    self->Wrap(info.Holder());
+    
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+      v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+      v8::Local<v8::String> sAccess2 = Nan::New("fragmentDensityMapAttachment").ToLocalChecked();
+      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
+      if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
+      
+    }
+    
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkRenderPassFragmentDensityMapCreateInfoEXT constructor cannot be invoked without 'new'");
+  }
+};
+
+// sType
+NAN_GETTER(_VkRenderPassFragmentDensityMapCreateInfoEXT::GetsType) {
+  _VkRenderPassFragmentDensityMapCreateInfoEXT *self = Nan::ObjectWrap::Unwrap<_VkRenderPassFragmentDensityMapCreateInfoEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
+}NAN_SETTER(_VkRenderPassFragmentDensityMapCreateInfoEXT::SetsType) {
+  _VkRenderPassFragmentDensityMapCreateInfoEXT *self = Nan::ObjectWrap::Unwrap<_VkRenderPassFragmentDensityMapCreateInfoEXT>(info.This());
+  if (value->IsNumber()) {
+    self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkRenderPassFragmentDensityMapCreateInfoEXT.sType", "Number");
+  
+    return;
+  }
+}// fragmentDensityMapAttachment
+NAN_GETTER(_VkRenderPassFragmentDensityMapCreateInfoEXT::GetfragmentDensityMapAttachment) {
+  _VkRenderPassFragmentDensityMapCreateInfoEXT *self = Nan::ObjectWrap::Unwrap<_VkRenderPassFragmentDensityMapCreateInfoEXT>(info.This());
+  if (self->fragmentDensityMapAttachment.IsEmpty()) {
+    info.GetReturnValue().SetNull();
+  } else {
+    v8::Local<v8::Object> obj = Nan::New(self->fragmentDensityMapAttachment);
+    info.GetReturnValue().Set(obj);
+  }
+}NAN_SETTER(_VkRenderPassFragmentDensityMapCreateInfoEXT::SetfragmentDensityMapAttachment) {
+  _VkRenderPassFragmentDensityMapCreateInfoEXT *self = Nan::ObjectWrap::Unwrap<_VkRenderPassFragmentDensityMapCreateInfoEXT>(info.This());
+  // js
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkAttachmentReference::constructor)->HasInstance(obj)) {
+      self->fragmentDensityMapAttachment.Reset<v8::Object>(value.As<v8::Object>());
+      _VkAttachmentReference* inst = Nan::ObjectWrap::Unwrap<_VkAttachmentReference>(obj);
+      inst->flush();
+      self->instance.fragmentDensityMapAttachment = inst->instance;
+    } else {
+      
+    NanInvalidStructMemberTypeError(value, "VkRenderPassFragmentDensityMapCreateInfoEXT.fragmentDensityMapAttachment", "[object VkAttachmentReference]");
+  
+      return;
+    }
+  } else if (value->IsNull()) {
+    self->fragmentDensityMapAttachment.Reset();
+    memset(&self->instance.fragmentDensityMapAttachment, 0, sizeof(VkAttachmentReference));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkRenderPassFragmentDensityMapCreateInfoEXT.fragmentDensityMapAttachment", "[object VkAttachmentReference]");
+  
+    return;
+  }
+}
+/** ## END VkRenderPassFragmentDensityMapCreateInfoEXT ## **/
+
+/** ## BEGIN VkExtent2D ## **/
+
+class _VkExtent2D: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    // #accessors
+    static NAN_GETTER(Getwidth);
+    static NAN_SETTER(Setwidth);
+    
+    static NAN_GETTER(Getheight);
+    static NAN_SETTER(Setheight);
+    
+
+    // real instance
+    VkExtent2D instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkExtent2D();
+    ~_VkExtent2D();
+
+};
+
+/*
+#include "index.h"
+#include "VkExtent2D.h"
+*/
+Nan::Persistent<v8::FunctionTemplate> _VkExtent2D::constructor;
+
+_VkExtent2D::_VkExtent2D() {
+  
+  
+}
+
+_VkExtent2D::~_VkExtent2D() {
+  //printf("VkExtent2D deconstructed!!\n");
+  
+  
+  
+}
+
+void _VkExtent2D::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
+  Nan::HandleScope scope;
+
+  // constructor
+  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkExtent2D::New);
+  constructor.Reset(ctor);
+  ctor->InstanceTemplate()->SetInternalFieldCount(1);
+  ctor->SetClassName(Nan::New("VkExtent2D").ToLocalChecked());
+
+  // prototype
+  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
+  SetPrototypeAccessor(proto, Nan::New("width").ToLocalChecked(), Getwidth, Setwidth, ctor);
+  SetPrototypeAccessor(proto, Nan::New("height").ToLocalChecked(), Getheight, Setheight, ctor);
+  Nan::Set(target, Nan::New("VkExtent2D").ToLocalChecked(), ctor->GetFunction());
+}
+
+bool _VkExtent2D::flush() {
+  _VkExtent2D *self = this;
+  
+  return true;
+}
+
+NAN_METHOD(_VkExtent2D::New) {
+  if (info.IsConstructCall()) {
+    _VkExtent2D* self = new _VkExtent2D();
+    self->Wrap(info.Holder());
+    
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+      v8::Local<v8::String> sAccess0 = Nan::New("width").ToLocalChecked();
+      v8::Local<v8::String> sAccess1 = Nan::New("height").ToLocalChecked();
+      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
+      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
+      
+    }
+    
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkExtent2D constructor cannot be invoked without 'new'");
+  }
+};
+
+// width
+NAN_GETTER(_VkExtent2D::Getwidth) {
+  _VkExtent2D *self = Nan::ObjectWrap::Unwrap<_VkExtent2D>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.width));
+}NAN_SETTER(_VkExtent2D::Setwidth) {
+  _VkExtent2D *self = Nan::ObjectWrap::Unwrap<_VkExtent2D>(info.This());
+  if (value->IsNumber()) {
+    self->instance.width = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkExtent2D.width", "Number");
+  
+    return;
+  }
+}// height
+NAN_GETTER(_VkExtent2D::Getheight) {
+  _VkExtent2D *self = Nan::ObjectWrap::Unwrap<_VkExtent2D>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.height));
+}NAN_SETTER(_VkExtent2D::Setheight) {
+  _VkExtent2D *self = Nan::ObjectWrap::Unwrap<_VkExtent2D>(info.This());
+  if (value->IsNumber()) {
+    self->instance.height = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkExtent2D.height", "Number");
+  
+    return;
+  }
+}
+/** ## END VkExtent2D ## **/
+
+/** ## BEGIN VkPhysicalDeviceFragmentDensityMapPropertiesEXT ## **/
+
+class _VkPhysicalDeviceFragmentDensityMapPropertiesEXT: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    // #accessors
+    static NAN_GETTER(GetsType);
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> minFragmentDensityTexelSize;
+      static NAN_GETTER(GetminFragmentDensityTexelSize);
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> maxFragmentDensityTexelSize;
+      static NAN_GETTER(GetmaxFragmentDensityTexelSize);
+    static NAN_GETTER(GetfragmentDensityInvocations);
+
+    // real instance
+    VkPhysicalDeviceFragmentDensityMapPropertiesEXT instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkPhysicalDeviceFragmentDensityMapPropertiesEXT();
+    ~_VkPhysicalDeviceFragmentDensityMapPropertiesEXT();
+
+};
+
+/*
+#include "index.h"
+#include "VkPhysicalDeviceFragmentDensityMapPropertiesEXT.h"
+*/
+Nan::Persistent<v8::FunctionTemplate> _VkPhysicalDeviceFragmentDensityMapPropertiesEXT::constructor;
+
+_VkPhysicalDeviceFragmentDensityMapPropertiesEXT::_VkPhysicalDeviceFragmentDensityMapPropertiesEXT() {
+  instance.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT;
+  
+}
+
+_VkPhysicalDeviceFragmentDensityMapPropertiesEXT::~_VkPhysicalDeviceFragmentDensityMapPropertiesEXT() {
+  //printf("VkPhysicalDeviceFragmentDensityMapPropertiesEXT deconstructed!!\n");
+  
+  
+  
+  
+  
+}
+
+void _VkPhysicalDeviceFragmentDensityMapPropertiesEXT::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
+  Nan::HandleScope scope;
+
+  // constructor
+  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkPhysicalDeviceFragmentDensityMapPropertiesEXT::New);
+  constructor.Reset(ctor);
+  ctor->InstanceTemplate()->SetInternalFieldCount(1);
+  ctor->SetClassName(Nan::New("VkPhysicalDeviceFragmentDensityMapPropertiesEXT").ToLocalChecked());
+
+  // prototype
+  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
+  SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, nullptr, ctor);
+  SetPrototypeAccessor(proto, Nan::New("minFragmentDensityTexelSize").ToLocalChecked(), GetminFragmentDensityTexelSize, nullptr, ctor);
+  SetPrototypeAccessor(proto, Nan::New("maxFragmentDensityTexelSize").ToLocalChecked(), GetmaxFragmentDensityTexelSize, nullptr, ctor);
+  SetPrototypeAccessor(proto, Nan::New("fragmentDensityInvocations").ToLocalChecked(), GetfragmentDensityInvocations, nullptr, ctor);
+  Nan::Set(target, Nan::New("VkPhysicalDeviceFragmentDensityMapPropertiesEXT").ToLocalChecked(), ctor->GetFunction());
+}
+
+bool _VkPhysicalDeviceFragmentDensityMapPropertiesEXT::flush() {
+  _VkPhysicalDeviceFragmentDensityMapPropertiesEXT *self = this;
+  if (!(self->minFragmentDensityTexelSize.IsEmpty())) {
+    v8::Local<v8::Value> value = Nan::New(self->minFragmentDensityTexelSize);
+    
+  }if (!(self->maxFragmentDensityTexelSize.IsEmpty())) {
+    v8::Local<v8::Value> value = Nan::New(self->maxFragmentDensityTexelSize);
+    
+  }
+  return true;
+}
+
+NAN_METHOD(_VkPhysicalDeviceFragmentDensityMapPropertiesEXT::New) {
+  if (info.IsConstructCall()) {
+    _VkPhysicalDeviceFragmentDensityMapPropertiesEXT* self = new _VkPhysicalDeviceFragmentDensityMapPropertiesEXT();
+    self->Wrap(info.Holder());
+    
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkPhysicalDeviceFragmentDensityMapPropertiesEXT constructor cannot be invoked without 'new'");
+  }
+};
+
+// sType
+NAN_GETTER(_VkPhysicalDeviceFragmentDensityMapPropertiesEXT::GetsType) {
+  _VkPhysicalDeviceFragmentDensityMapPropertiesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFragmentDensityMapPropertiesEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
+}// minFragmentDensityTexelSize
+NAN_GETTER(_VkPhysicalDeviceFragmentDensityMapPropertiesEXT::GetminFragmentDensityTexelSize) {
+  _VkPhysicalDeviceFragmentDensityMapPropertiesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFragmentDensityMapPropertiesEXT>(info.This());
+  if (self->minFragmentDensityTexelSize.IsEmpty()) {
+    info.GetReturnValue().SetNull();
+  } else {
+    v8::Local<v8::Object> obj = Nan::New(self->minFragmentDensityTexelSize);
+    info.GetReturnValue().Set(obj);
+  }
+}// maxFragmentDensityTexelSize
+NAN_GETTER(_VkPhysicalDeviceFragmentDensityMapPropertiesEXT::GetmaxFragmentDensityTexelSize) {
+  _VkPhysicalDeviceFragmentDensityMapPropertiesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFragmentDensityMapPropertiesEXT>(info.This());
+  if (self->maxFragmentDensityTexelSize.IsEmpty()) {
+    info.GetReturnValue().SetNull();
+  } else {
+    v8::Local<v8::Object> obj = Nan::New(self->maxFragmentDensityTexelSize);
+    info.GetReturnValue().Set(obj);
+  }
+}// fragmentDensityInvocations
+NAN_GETTER(_VkPhysicalDeviceFragmentDensityMapPropertiesEXT::GetfragmentDensityInvocations) {
+  _VkPhysicalDeviceFragmentDensityMapPropertiesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFragmentDensityMapPropertiesEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.fragmentDensityInvocations));
+}
+/** ## END VkPhysicalDeviceFragmentDensityMapPropertiesEXT ## **/
+
+/** ## BEGIN VkPhysicalDeviceFragmentDensityMapFeaturesEXT ## **/
+
+class _VkPhysicalDeviceFragmentDensityMapFeaturesEXT: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_GETTER(GetfragmentDensityMap);
+    static NAN_GETTER(GetfragmentDensityMapDynamic);
+    static NAN_GETTER(GetfragmentDensityMapNonSubsampledImages);
+
+    // real instance
+    VkPhysicalDeviceFragmentDensityMapFeaturesEXT instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkPhysicalDeviceFragmentDensityMapFeaturesEXT();
+    ~_VkPhysicalDeviceFragmentDensityMapFeaturesEXT();
+
+};
+
+/*
+#include "index.h"
+#include "VkPhysicalDeviceFragmentDensityMapFeaturesEXT.h"
+*/
+Nan::Persistent<v8::FunctionTemplate> _VkPhysicalDeviceFragmentDensityMapFeaturesEXT::constructor;
+
+_VkPhysicalDeviceFragmentDensityMapFeaturesEXT::_VkPhysicalDeviceFragmentDensityMapFeaturesEXT() {
+  instance.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT;
+  
+}
+
+_VkPhysicalDeviceFragmentDensityMapFeaturesEXT::~_VkPhysicalDeviceFragmentDensityMapFeaturesEXT() {
+  //printf("VkPhysicalDeviceFragmentDensityMapFeaturesEXT deconstructed!!\n");
+  
+  
+  
+  
+  
+}
+
+void _VkPhysicalDeviceFragmentDensityMapFeaturesEXT::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
+  Nan::HandleScope scope;
+
+  // constructor
+  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkPhysicalDeviceFragmentDensityMapFeaturesEXT::New);
+  constructor.Reset(ctor);
+  ctor->InstanceTemplate()->SetInternalFieldCount(1);
+  ctor->SetClassName(Nan::New("VkPhysicalDeviceFragmentDensityMapFeaturesEXT").ToLocalChecked());
+
+  // prototype
+  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
+  SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, nullptr, ctor);
+  SetPrototypeAccessor(proto, Nan::New("fragmentDensityMap").ToLocalChecked(), GetfragmentDensityMap, nullptr, ctor);
+  SetPrototypeAccessor(proto, Nan::New("fragmentDensityMapDynamic").ToLocalChecked(), GetfragmentDensityMapDynamic, nullptr, ctor);
+  SetPrototypeAccessor(proto, Nan::New("fragmentDensityMapNonSubsampledImages").ToLocalChecked(), GetfragmentDensityMapNonSubsampledImages, nullptr, ctor);
+  Nan::Set(target, Nan::New("VkPhysicalDeviceFragmentDensityMapFeaturesEXT").ToLocalChecked(), ctor->GetFunction());
+}
+
+bool _VkPhysicalDeviceFragmentDensityMapFeaturesEXT::flush() {
+  _VkPhysicalDeviceFragmentDensityMapFeaturesEXT *self = this;
+  
+  return true;
+}
+
+NAN_METHOD(_VkPhysicalDeviceFragmentDensityMapFeaturesEXT::New) {
+  if (info.IsConstructCall()) {
+    _VkPhysicalDeviceFragmentDensityMapFeaturesEXT* self = new _VkPhysicalDeviceFragmentDensityMapFeaturesEXT();
+    self->Wrap(info.Holder());
+    
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkPhysicalDeviceFragmentDensityMapFeaturesEXT constructor cannot be invoked without 'new'");
+  }
+};
+
+// sType
+NAN_GETTER(_VkPhysicalDeviceFragmentDensityMapFeaturesEXT::GetsType) {
+  _VkPhysicalDeviceFragmentDensityMapFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFragmentDensityMapFeaturesEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
+}// fragmentDensityMap
+NAN_GETTER(_VkPhysicalDeviceFragmentDensityMapFeaturesEXT::GetfragmentDensityMap) {
+  _VkPhysicalDeviceFragmentDensityMapFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFragmentDensityMapFeaturesEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.fragmentDensityMap));
+}// fragmentDensityMapDynamic
+NAN_GETTER(_VkPhysicalDeviceFragmentDensityMapFeaturesEXT::GetfragmentDensityMapDynamic) {
+  _VkPhysicalDeviceFragmentDensityMapFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFragmentDensityMapFeaturesEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.fragmentDensityMapDynamic));
+}// fragmentDensityMapNonSubsampledImages
+NAN_GETTER(_VkPhysicalDeviceFragmentDensityMapFeaturesEXT::GetfragmentDensityMapNonSubsampledImages) {
+  _VkPhysicalDeviceFragmentDensityMapFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFragmentDensityMapFeaturesEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.fragmentDensityMapNonSubsampledImages));
+}
+/** ## END VkPhysicalDeviceFragmentDensityMapFeaturesEXT ## **/
+
 /** ## BEGIN VkDeviceMemoryOverallocationCreateInfoAMD ## **/
 
 class _VkDeviceMemoryOverallocationCreateInfoAMD: public Nan::ObjectWrap {
@@ -2330,6 +3853,127 @@ NAN_GETTER(_VkDeviceMemoryOverallocationCreateInfoAMD::GetoverallocationBehavior
   }
 }
 /** ## END VkDeviceMemoryOverallocationCreateInfoAMD ## **/
+
+/** ## BEGIN VkImageStencilUsageCreateInfoEXT ## **/
+
+class _VkImageStencilUsageCreateInfoEXT: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    static NAN_GETTER(GetstencilUsage);
+    static NAN_SETTER(SetstencilUsage);
+    
+
+    // real instance
+    VkImageStencilUsageCreateInfoEXT instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkImageStencilUsageCreateInfoEXT();
+    ~_VkImageStencilUsageCreateInfoEXT();
+
+};
+
+/*
+#include "index.h"
+#include "VkImageStencilUsageCreateInfoEXT.h"
+*/
+Nan::Persistent<v8::FunctionTemplate> _VkImageStencilUsageCreateInfoEXT::constructor;
+
+_VkImageStencilUsageCreateInfoEXT::_VkImageStencilUsageCreateInfoEXT() {
+  instance.sType = VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO_EXT;
+  
+}
+
+_VkImageStencilUsageCreateInfoEXT::~_VkImageStencilUsageCreateInfoEXT() {
+  //printf("VkImageStencilUsageCreateInfoEXT deconstructed!!\n");
+  
+  
+  
+}
+
+void _VkImageStencilUsageCreateInfoEXT::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
+  Nan::HandleScope scope;
+
+  // constructor
+  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkImageStencilUsageCreateInfoEXT::New);
+  constructor.Reset(ctor);
+  ctor->InstanceTemplate()->SetInternalFieldCount(1);
+  ctor->SetClassName(Nan::New("VkImageStencilUsageCreateInfoEXT").ToLocalChecked());
+
+  // prototype
+  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
+  SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
+  SetPrototypeAccessor(proto, Nan::New("stencilUsage").ToLocalChecked(), GetstencilUsage, SetstencilUsage, ctor);
+  Nan::Set(target, Nan::New("VkImageStencilUsageCreateInfoEXT").ToLocalChecked(), ctor->GetFunction());
+}
+
+bool _VkImageStencilUsageCreateInfoEXT::flush() {
+  _VkImageStencilUsageCreateInfoEXT *self = this;
+  
+  return true;
+}
+
+NAN_METHOD(_VkImageStencilUsageCreateInfoEXT::New) {
+  if (info.IsConstructCall()) {
+    _VkImageStencilUsageCreateInfoEXT* self = new _VkImageStencilUsageCreateInfoEXT();
+    self->Wrap(info.Holder());
+    
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+      v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+      v8::Local<v8::String> sAccess2 = Nan::New("stencilUsage").ToLocalChecked();
+      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
+      if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
+      
+    }
+    
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkImageStencilUsageCreateInfoEXT constructor cannot be invoked without 'new'");
+  }
+};
+
+// sType
+NAN_GETTER(_VkImageStencilUsageCreateInfoEXT::GetsType) {
+  _VkImageStencilUsageCreateInfoEXT *self = Nan::ObjectWrap::Unwrap<_VkImageStencilUsageCreateInfoEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
+}NAN_SETTER(_VkImageStencilUsageCreateInfoEXT::SetsType) {
+  _VkImageStencilUsageCreateInfoEXT *self = Nan::ObjectWrap::Unwrap<_VkImageStencilUsageCreateInfoEXT>(info.This());
+  if (value->IsNumber()) {
+    self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkImageStencilUsageCreateInfoEXT.sType", "Number");
+  
+    return;
+  }
+}// stencilUsage
+NAN_GETTER(_VkImageStencilUsageCreateInfoEXT::GetstencilUsage) {
+  _VkImageStencilUsageCreateInfoEXT *self = Nan::ObjectWrap::Unwrap<_VkImageStencilUsageCreateInfoEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.stencilUsage));
+}NAN_SETTER(_VkImageStencilUsageCreateInfoEXT::SetstencilUsage) {
+  _VkImageStencilUsageCreateInfoEXT *self = Nan::ObjectWrap::Unwrap<_VkImageStencilUsageCreateInfoEXT>(info.This());
+  if (value->IsNumber()) {
+    self->instance.stencilUsage = static_cast<VkImageUsageFlags>(Nan::To<int32_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkImageStencilUsageCreateInfoEXT.stencilUsage", "Number");
+  
+    return;
+  }
+}
+/** ## END VkImageStencilUsageCreateInfoEXT ## **/
 
 /** ## BEGIN VkImageDrmFormatModifierPropertiesEXT ## **/
 
@@ -8233,127 +9877,6 @@ NAN_GETTER(_VkPipelineViewportCoarseSampleOrderStateCreateInfoNV::GetpCustomSamp
 }
 /** ## END VkPipelineViewportCoarseSampleOrderStateCreateInfoNV ## **/
 
-/** ## BEGIN VkExtent2D ## **/
-
-class _VkExtent2D: public Nan::ObjectWrap {
-
-  public:
-    // #methods
-    static NAN_METHOD(New);
-    // #accessors
-    static NAN_GETTER(Getwidth);
-    static NAN_SETTER(Setwidth);
-    
-    static NAN_GETTER(Getheight);
-    static NAN_SETTER(Setheight);
-    
-
-    // real instance
-    VkExtent2D instance = {};
-
-    static Nan::Persistent<v8::FunctionTemplate> constructor;
-    static void Initialize(v8::Local<v8::Object> exports);
-    bool flush(void);
-
-  private:
-
-    _VkExtent2D();
-    ~_VkExtent2D();
-
-};
-
-/*
-#include "index.h"
-#include "VkExtent2D.h"
-*/
-Nan::Persistent<v8::FunctionTemplate> _VkExtent2D::constructor;
-
-_VkExtent2D::_VkExtent2D() {
-  
-  
-}
-
-_VkExtent2D::~_VkExtent2D() {
-  //printf("VkExtent2D deconstructed!!\n");
-  
-  
-  
-}
-
-void _VkExtent2D::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
-  Nan::HandleScope scope;
-
-  // constructor
-  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkExtent2D::New);
-  constructor.Reset(ctor);
-  ctor->InstanceTemplate()->SetInternalFieldCount(1);
-  ctor->SetClassName(Nan::New("VkExtent2D").ToLocalChecked());
-
-  // prototype
-  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
-  
-  SetPrototypeAccessor(proto, Nan::New("width").ToLocalChecked(), Getwidth, Setwidth, ctor);
-  SetPrototypeAccessor(proto, Nan::New("height").ToLocalChecked(), Getheight, Setheight, ctor);
-  Nan::Set(target, Nan::New("VkExtent2D").ToLocalChecked(), ctor->GetFunction());
-}
-
-bool _VkExtent2D::flush() {
-  _VkExtent2D *self = this;
-  
-  return true;
-}
-
-NAN_METHOD(_VkExtent2D::New) {
-  if (info.IsConstructCall()) {
-    _VkExtent2D* self = new _VkExtent2D();
-    self->Wrap(info.Holder());
-    
-    if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
-      v8::Local<v8::String> sAccess0 = Nan::New("width").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("height").ToLocalChecked();
-      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
-      
-    }
-    
-    info.GetReturnValue().Set(info.Holder());
-  } else {
-    Nan::ThrowError("VkExtent2D constructor cannot be invoked without 'new'");
-  }
-};
-
-// width
-NAN_GETTER(_VkExtent2D::Getwidth) {
-  _VkExtent2D *self = Nan::ObjectWrap::Unwrap<_VkExtent2D>(info.This());
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.width));
-}NAN_SETTER(_VkExtent2D::Setwidth) {
-  _VkExtent2D *self = Nan::ObjectWrap::Unwrap<_VkExtent2D>(info.This());
-  if (value->IsNumber()) {
-    self->instance.width = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
-  } else {
-    
-    NanInvalidStructMemberTypeError(value, "VkExtent2D.width", "Number");
-  
-    return;
-  }
-}// height
-NAN_GETTER(_VkExtent2D::Getheight) {
-  _VkExtent2D *self = Nan::ObjectWrap::Unwrap<_VkExtent2D>(info.This());
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.height));
-}NAN_SETTER(_VkExtent2D::Setheight) {
-  _VkExtent2D *self = Nan::ObjectWrap::Unwrap<_VkExtent2D>(info.This());
-  if (value->IsNumber()) {
-    self->instance.height = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
-  } else {
-    
-    NanInvalidStructMemberTypeError(value, "VkExtent2D.height", "Number");
-  
-    return;
-  }
-}
-/** ## END VkExtent2D ## **/
-
 /** ## BEGIN VkPhysicalDeviceShadingRateImagePropertiesNV ## **/
 
 class _VkPhysicalDeviceShadingRateImagePropertiesNV: public Nan::ObjectWrap {
@@ -11006,6 +12529,463 @@ NAN_GETTER(_VkImageViewASTCDecodeModeEXT::GetdecodeMode) {
 }
 /** ## END VkImageViewASTCDecodeModeEXT ## **/
 
+/** ## BEGIN VkAttachmentReference2KHR ## **/
+
+class _VkAttachmentReference2KHR: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    static NAN_GETTER(Getattachment);
+    static NAN_SETTER(Setattachment);
+    
+    static NAN_GETTER(Getlayout);
+    static NAN_SETTER(Setlayout);
+    
+    static NAN_GETTER(GetaspectMask);
+    static NAN_SETTER(SetaspectMask);
+    
+
+    // real instance
+    VkAttachmentReference2KHR instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkAttachmentReference2KHR();
+    ~_VkAttachmentReference2KHR();
+
+};
+
+/*
+#include "index.h"
+#include "VkAttachmentReference2KHR.h"
+*/
+Nan::Persistent<v8::FunctionTemplate> _VkAttachmentReference2KHR::constructor;
+
+_VkAttachmentReference2KHR::_VkAttachmentReference2KHR() {
+  instance.sType = VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_2_KHR;
+  
+}
+
+_VkAttachmentReference2KHR::~_VkAttachmentReference2KHR() {
+  //printf("VkAttachmentReference2KHR deconstructed!!\n");
+  
+  
+  
+  
+  
+}
+
+void _VkAttachmentReference2KHR::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
+  Nan::HandleScope scope;
+
+  // constructor
+  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkAttachmentReference2KHR::New);
+  constructor.Reset(ctor);
+  ctor->InstanceTemplate()->SetInternalFieldCount(1);
+  ctor->SetClassName(Nan::New("VkAttachmentReference2KHR").ToLocalChecked());
+
+  // prototype
+  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
+  SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
+  SetPrototypeAccessor(proto, Nan::New("attachment").ToLocalChecked(), Getattachment, Setattachment, ctor);
+  SetPrototypeAccessor(proto, Nan::New("layout").ToLocalChecked(), Getlayout, Setlayout, ctor);
+  SetPrototypeAccessor(proto, Nan::New("aspectMask").ToLocalChecked(), GetaspectMask, SetaspectMask, ctor);
+  Nan::Set(target, Nan::New("VkAttachmentReference2KHR").ToLocalChecked(), ctor->GetFunction());
+}
+
+bool _VkAttachmentReference2KHR::flush() {
+  _VkAttachmentReference2KHR *self = this;
+  
+  return true;
+}
+
+NAN_METHOD(_VkAttachmentReference2KHR::New) {
+  if (info.IsConstructCall()) {
+    _VkAttachmentReference2KHR* self = new _VkAttachmentReference2KHR();
+    self->Wrap(info.Holder());
+    
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+      v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+      v8::Local<v8::String> sAccess2 = Nan::New("attachment").ToLocalChecked();
+      v8::Local<v8::String> sAccess3 = Nan::New("layout").ToLocalChecked();
+      v8::Local<v8::String> sAccess4 = Nan::New("aspectMask").ToLocalChecked();
+      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
+      if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
+      if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
+      if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
+      
+    }
+    
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkAttachmentReference2KHR constructor cannot be invoked without 'new'");
+  }
+};
+
+// sType
+NAN_GETTER(_VkAttachmentReference2KHR::GetsType) {
+  _VkAttachmentReference2KHR *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference2KHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
+}NAN_SETTER(_VkAttachmentReference2KHR::SetsType) {
+  _VkAttachmentReference2KHR *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference2KHR>(info.This());
+  if (value->IsNumber()) {
+    self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkAttachmentReference2KHR.sType", "Number");
+  
+    return;
+  }
+}// attachment
+NAN_GETTER(_VkAttachmentReference2KHR::Getattachment) {
+  _VkAttachmentReference2KHR *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference2KHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.attachment));
+}NAN_SETTER(_VkAttachmentReference2KHR::Setattachment) {
+  _VkAttachmentReference2KHR *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference2KHR>(info.This());
+  if (value->IsNumber()) {
+    self->instance.attachment = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkAttachmentReference2KHR.attachment", "Number");
+  
+    return;
+  }
+}// layout
+NAN_GETTER(_VkAttachmentReference2KHR::Getlayout) {
+  _VkAttachmentReference2KHR *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference2KHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.layout));
+}NAN_SETTER(_VkAttachmentReference2KHR::Setlayout) {
+  _VkAttachmentReference2KHR *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference2KHR>(info.This());
+  if (value->IsNumber()) {
+    self->instance.layout = static_cast<VkImageLayout>(Nan::To<int32_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkAttachmentReference2KHR.layout", "Number");
+  
+    return;
+  }
+}// aspectMask
+NAN_GETTER(_VkAttachmentReference2KHR::GetaspectMask) {
+  _VkAttachmentReference2KHR *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference2KHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.aspectMask));
+}NAN_SETTER(_VkAttachmentReference2KHR::SetaspectMask) {
+  _VkAttachmentReference2KHR *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference2KHR>(info.This());
+  if (value->IsNumber()) {
+    self->instance.aspectMask = static_cast<VkImageAspectFlags>(Nan::To<int32_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkAttachmentReference2KHR.aspectMask", "Number");
+  
+    return;
+  }
+}
+/** ## END VkAttachmentReference2KHR ## **/
+
+/** ## BEGIN VkSubpassDescriptionDepthStencilResolveKHR ## **/
+
+class _VkSubpassDescriptionDepthStencilResolveKHR: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    static NAN_GETTER(GetdepthResolveMode);
+    static NAN_SETTER(SetdepthResolveMode);
+    
+    static NAN_GETTER(GetstencilResolveMode);
+    static NAN_SETTER(SetstencilResolveMode);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pDepthStencilResolveAttachment;
+      static NAN_GETTER(GetpDepthStencilResolveAttachment);
+    static NAN_SETTER(SetpDepthStencilResolveAttachment);
+    
+
+    // real instance
+    VkSubpassDescriptionDepthStencilResolveKHR instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkSubpassDescriptionDepthStencilResolveKHR();
+    ~_VkSubpassDescriptionDepthStencilResolveKHR();
+
+};
+
+/*
+#include "index.h"
+#include "VkSubpassDescriptionDepthStencilResolveKHR.h"
+*/
+Nan::Persistent<v8::FunctionTemplate> _VkSubpassDescriptionDepthStencilResolveKHR::constructor;
+
+_VkSubpassDescriptionDepthStencilResolveKHR::_VkSubpassDescriptionDepthStencilResolveKHR() {
+  instance.sType = VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE_KHR;
+  
+}
+
+_VkSubpassDescriptionDepthStencilResolveKHR::~_VkSubpassDescriptionDepthStencilResolveKHR() {
+  //printf("VkSubpassDescriptionDepthStencilResolveKHR deconstructed!!\n");
+  
+  
+  
+  
+  pDepthStencilResolveAttachment.Reset();
+  
+}
+
+void _VkSubpassDescriptionDepthStencilResolveKHR::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
+  Nan::HandleScope scope;
+
+  // constructor
+  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkSubpassDescriptionDepthStencilResolveKHR::New);
+  constructor.Reset(ctor);
+  ctor->InstanceTemplate()->SetInternalFieldCount(1);
+  ctor->SetClassName(Nan::New("VkSubpassDescriptionDepthStencilResolveKHR").ToLocalChecked());
+
+  // prototype
+  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
+  SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
+  SetPrototypeAccessor(proto, Nan::New("depthResolveMode").ToLocalChecked(), GetdepthResolveMode, SetdepthResolveMode, ctor);
+  SetPrototypeAccessor(proto, Nan::New("stencilResolveMode").ToLocalChecked(), GetstencilResolveMode, SetstencilResolveMode, ctor);
+  SetPrototypeAccessor(proto, Nan::New("pDepthStencilResolveAttachment").ToLocalChecked(), GetpDepthStencilResolveAttachment, SetpDepthStencilResolveAttachment, ctor);
+  Nan::Set(target, Nan::New("VkSubpassDescriptionDepthStencilResolveKHR").ToLocalChecked(), ctor->GetFunction());
+}
+
+bool _VkSubpassDescriptionDepthStencilResolveKHR::flush() {
+  _VkSubpassDescriptionDepthStencilResolveKHR *self = this;
+  
+  return true;
+}
+
+NAN_METHOD(_VkSubpassDescriptionDepthStencilResolveKHR::New) {
+  if (info.IsConstructCall()) {
+    _VkSubpassDescriptionDepthStencilResolveKHR* self = new _VkSubpassDescriptionDepthStencilResolveKHR();
+    self->Wrap(info.Holder());
+    
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+      v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+      v8::Local<v8::String> sAccess2 = Nan::New("depthResolveMode").ToLocalChecked();
+      v8::Local<v8::String> sAccess3 = Nan::New("stencilResolveMode").ToLocalChecked();
+      v8::Local<v8::String> sAccess4 = Nan::New("pDepthStencilResolveAttachment").ToLocalChecked();
+      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
+      if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
+      if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
+      if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
+      
+    }
+    
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkSubpassDescriptionDepthStencilResolveKHR constructor cannot be invoked without 'new'");
+  }
+};
+
+// sType
+NAN_GETTER(_VkSubpassDescriptionDepthStencilResolveKHR::GetsType) {
+  _VkSubpassDescriptionDepthStencilResolveKHR *self = Nan::ObjectWrap::Unwrap<_VkSubpassDescriptionDepthStencilResolveKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
+}NAN_SETTER(_VkSubpassDescriptionDepthStencilResolveKHR::SetsType) {
+  _VkSubpassDescriptionDepthStencilResolveKHR *self = Nan::ObjectWrap::Unwrap<_VkSubpassDescriptionDepthStencilResolveKHR>(info.This());
+  if (value->IsNumber()) {
+    self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkSubpassDescriptionDepthStencilResolveKHR.sType", "Number");
+  
+    return;
+  }
+}// depthResolveMode
+NAN_GETTER(_VkSubpassDescriptionDepthStencilResolveKHR::GetdepthResolveMode) {
+  _VkSubpassDescriptionDepthStencilResolveKHR *self = Nan::ObjectWrap::Unwrap<_VkSubpassDescriptionDepthStencilResolveKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.depthResolveMode));
+}NAN_SETTER(_VkSubpassDescriptionDepthStencilResolveKHR::SetdepthResolveMode) {
+  _VkSubpassDescriptionDepthStencilResolveKHR *self = Nan::ObjectWrap::Unwrap<_VkSubpassDescriptionDepthStencilResolveKHR>(info.This());
+  if (value->IsNumber()) {
+    self->instance.depthResolveMode = static_cast<VkResolveModeFlagBitsKHR>(Nan::To<int32_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkSubpassDescriptionDepthStencilResolveKHR.depthResolveMode", "Number");
+  
+    return;
+  }
+}// stencilResolveMode
+NAN_GETTER(_VkSubpassDescriptionDepthStencilResolveKHR::GetstencilResolveMode) {
+  _VkSubpassDescriptionDepthStencilResolveKHR *self = Nan::ObjectWrap::Unwrap<_VkSubpassDescriptionDepthStencilResolveKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.stencilResolveMode));
+}NAN_SETTER(_VkSubpassDescriptionDepthStencilResolveKHR::SetstencilResolveMode) {
+  _VkSubpassDescriptionDepthStencilResolveKHR *self = Nan::ObjectWrap::Unwrap<_VkSubpassDescriptionDepthStencilResolveKHR>(info.This());
+  if (value->IsNumber()) {
+    self->instance.stencilResolveMode = static_cast<VkResolveModeFlagBitsKHR>(Nan::To<int32_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkSubpassDescriptionDepthStencilResolveKHR.stencilResolveMode", "Number");
+  
+    return;
+  }
+}// pDepthStencilResolveAttachment
+NAN_GETTER(_VkSubpassDescriptionDepthStencilResolveKHR::GetpDepthStencilResolveAttachment) {
+  _VkSubpassDescriptionDepthStencilResolveKHR *self = Nan::ObjectWrap::Unwrap<_VkSubpassDescriptionDepthStencilResolveKHR>(info.This());
+  if (self->pDepthStencilResolveAttachment.IsEmpty()) {
+    info.GetReturnValue().SetNull();
+  } else {
+    v8::Local<v8::Object> obj = Nan::New(self->pDepthStencilResolveAttachment);
+    info.GetReturnValue().Set(obj);
+  }
+}NAN_SETTER(_VkSubpassDescriptionDepthStencilResolveKHR::SetpDepthStencilResolveAttachment) {
+  _VkSubpassDescriptionDepthStencilResolveKHR *self = Nan::ObjectWrap::Unwrap<_VkSubpassDescriptionDepthStencilResolveKHR>(info.This());
+  // js
+  if (!value->IsNull()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    if (Nan::New(_VkAttachmentReference2KHR::constructor)->HasInstance(obj)) {
+      self->pDepthStencilResolveAttachment.Reset<v8::Object>(value.As<v8::Object>());
+      _VkAttachmentReference2KHR* inst = Nan::ObjectWrap::Unwrap<_VkAttachmentReference2KHR>(obj);
+      inst->flush();
+      self->instance.pDepthStencilResolveAttachment = &inst->instance;
+    } else {
+      
+    NanInvalidStructMemberTypeError(value, "VkSubpassDescriptionDepthStencilResolveKHR.pDepthStencilResolveAttachment", "[object VkAttachmentReference2KHR]");
+  
+      return;
+    }
+  } else if (value->IsNull()) {
+    self->pDepthStencilResolveAttachment.Reset();
+    self->instance.pDepthStencilResolveAttachment = nullptr;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkSubpassDescriptionDepthStencilResolveKHR.pDepthStencilResolveAttachment", "[object VkAttachmentReference2KHR]");
+  
+    return;
+  }
+}
+/** ## END VkSubpassDescriptionDepthStencilResolveKHR ## **/
+
+/** ## BEGIN VkPhysicalDeviceDepthStencilResolvePropertiesKHR ## **/
+
+class _VkPhysicalDeviceDepthStencilResolvePropertiesKHR: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_GETTER(GetsupportedDepthResolveModes);
+    static NAN_GETTER(GetsupportedStencilResolveModes);
+    static NAN_GETTER(GetindependentResolveNone);
+    static NAN_GETTER(GetindependentResolve);
+
+    // real instance
+    VkPhysicalDeviceDepthStencilResolvePropertiesKHR instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkPhysicalDeviceDepthStencilResolvePropertiesKHR();
+    ~_VkPhysicalDeviceDepthStencilResolvePropertiesKHR();
+
+};
+
+/*
+#include "index.h"
+#include "VkPhysicalDeviceDepthStencilResolvePropertiesKHR.h"
+*/
+Nan::Persistent<v8::FunctionTemplate> _VkPhysicalDeviceDepthStencilResolvePropertiesKHR::constructor;
+
+_VkPhysicalDeviceDepthStencilResolvePropertiesKHR::_VkPhysicalDeviceDepthStencilResolvePropertiesKHR() {
+  instance.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES_KHR;
+  
+}
+
+_VkPhysicalDeviceDepthStencilResolvePropertiesKHR::~_VkPhysicalDeviceDepthStencilResolvePropertiesKHR() {
+  //printf("VkPhysicalDeviceDepthStencilResolvePropertiesKHR deconstructed!!\n");
+  
+  
+  
+  
+  
+  
+}
+
+void _VkPhysicalDeviceDepthStencilResolvePropertiesKHR::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
+  Nan::HandleScope scope;
+
+  // constructor
+  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkPhysicalDeviceDepthStencilResolvePropertiesKHR::New);
+  constructor.Reset(ctor);
+  ctor->InstanceTemplate()->SetInternalFieldCount(1);
+  ctor->SetClassName(Nan::New("VkPhysicalDeviceDepthStencilResolvePropertiesKHR").ToLocalChecked());
+
+  // prototype
+  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
+  SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, nullptr, ctor);
+  SetPrototypeAccessor(proto, Nan::New("supportedDepthResolveModes").ToLocalChecked(), GetsupportedDepthResolveModes, nullptr, ctor);
+  SetPrototypeAccessor(proto, Nan::New("supportedStencilResolveModes").ToLocalChecked(), GetsupportedStencilResolveModes, nullptr, ctor);
+  SetPrototypeAccessor(proto, Nan::New("independentResolveNone").ToLocalChecked(), GetindependentResolveNone, nullptr, ctor);
+  SetPrototypeAccessor(proto, Nan::New("independentResolve").ToLocalChecked(), GetindependentResolve, nullptr, ctor);
+  Nan::Set(target, Nan::New("VkPhysicalDeviceDepthStencilResolvePropertiesKHR").ToLocalChecked(), ctor->GetFunction());
+}
+
+bool _VkPhysicalDeviceDepthStencilResolvePropertiesKHR::flush() {
+  _VkPhysicalDeviceDepthStencilResolvePropertiesKHR *self = this;
+  
+  return true;
+}
+
+NAN_METHOD(_VkPhysicalDeviceDepthStencilResolvePropertiesKHR::New) {
+  if (info.IsConstructCall()) {
+    _VkPhysicalDeviceDepthStencilResolvePropertiesKHR* self = new _VkPhysicalDeviceDepthStencilResolvePropertiesKHR();
+    self->Wrap(info.Holder());
+    
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkPhysicalDeviceDepthStencilResolvePropertiesKHR constructor cannot be invoked without 'new'");
+  }
+};
+
+// sType
+NAN_GETTER(_VkPhysicalDeviceDepthStencilResolvePropertiesKHR::GetsType) {
+  _VkPhysicalDeviceDepthStencilResolvePropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceDepthStencilResolvePropertiesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
+}// supportedDepthResolveModes
+NAN_GETTER(_VkPhysicalDeviceDepthStencilResolvePropertiesKHR::GetsupportedDepthResolveModes) {
+  _VkPhysicalDeviceDepthStencilResolvePropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceDepthStencilResolvePropertiesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.supportedDepthResolveModes));
+}// supportedStencilResolveModes
+NAN_GETTER(_VkPhysicalDeviceDepthStencilResolvePropertiesKHR::GetsupportedStencilResolveModes) {
+  _VkPhysicalDeviceDepthStencilResolvePropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceDepthStencilResolvePropertiesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.supportedStencilResolveModes));
+}// independentResolveNone
+NAN_GETTER(_VkPhysicalDeviceDepthStencilResolvePropertiesKHR::GetindependentResolveNone) {
+  _VkPhysicalDeviceDepthStencilResolvePropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceDepthStencilResolvePropertiesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.independentResolveNone));
+}// independentResolve
+NAN_GETTER(_VkPhysicalDeviceDepthStencilResolvePropertiesKHR::GetindependentResolve) {
+  _VkPhysicalDeviceDepthStencilResolvePropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceDepthStencilResolvePropertiesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.independentResolve));
+}
+/** ## END VkPhysicalDeviceDepthStencilResolvePropertiesKHR ## **/
+
 /** ## BEGIN VkCheckpointDataNV ## **/
 
 class _VkCheckpointDataNV: public Nan::ObjectWrap {
@@ -11475,8 +13455,14 @@ class _VkPhysicalDeviceVulkanMemoryModelFeaturesKHR: public Nan::ObjectWrap {
     static NAN_METHOD(New);
     // #accessors
     static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
     static NAN_GETTER(GetvulkanMemoryModel);
+    static NAN_SETTER(SetvulkanMemoryModel);
+    
     static NAN_GETTER(GetvulkanMemoryModelDeviceScope);
+    static NAN_SETTER(SetvulkanMemoryModelDeviceScope);
+    
 
     // real instance
     VkPhysicalDeviceVulkanMemoryModelFeaturesKHR instance = {};
@@ -11523,9 +13509,9 @@ void _VkPhysicalDeviceVulkanMemoryModelFeaturesKHR::Initialize(Nan::ADDON_REGIST
   // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
-  SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, nullptr, ctor);
-  SetPrototypeAccessor(proto, Nan::New("vulkanMemoryModel").ToLocalChecked(), GetvulkanMemoryModel, nullptr, ctor);
-  SetPrototypeAccessor(proto, Nan::New("vulkanMemoryModelDeviceScope").ToLocalChecked(), GetvulkanMemoryModelDeviceScope, nullptr, ctor);
+  SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
+  SetPrototypeAccessor(proto, Nan::New("vulkanMemoryModel").ToLocalChecked(), GetvulkanMemoryModel, SetvulkanMemoryModel, ctor);
+  SetPrototypeAccessor(proto, Nan::New("vulkanMemoryModelDeviceScope").ToLocalChecked(), GetvulkanMemoryModelDeviceScope, SetvulkanMemoryModelDeviceScope, ctor);
   Nan::Set(target, Nan::New("VkPhysicalDeviceVulkanMemoryModelFeaturesKHR").ToLocalChecked(), ctor->GetFunction());
 }
 
@@ -11540,6 +13526,17 @@ NAN_METHOD(_VkPhysicalDeviceVulkanMemoryModelFeaturesKHR::New) {
     _VkPhysicalDeviceVulkanMemoryModelFeaturesKHR* self = new _VkPhysicalDeviceVulkanMemoryModelFeaturesKHR();
     self->Wrap(info.Holder());
     
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+      v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+      v8::Local<v8::String> sAccess2 = Nan::New("vulkanMemoryModel").ToLocalChecked();
+      v8::Local<v8::String> sAccess3 = Nan::New("vulkanMemoryModelDeviceScope").ToLocalChecked();
+      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
+      if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
+      if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
+      
+    }
+    
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkPhysicalDeviceVulkanMemoryModelFeaturesKHR constructor cannot be invoked without 'new'");
@@ -11550,14 +13547,44 @@ NAN_METHOD(_VkPhysicalDeviceVulkanMemoryModelFeaturesKHR::New) {
 NAN_GETTER(_VkPhysicalDeviceVulkanMemoryModelFeaturesKHR::GetsType) {
   _VkPhysicalDeviceVulkanMemoryModelFeaturesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceVulkanMemoryModelFeaturesKHR>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
+}NAN_SETTER(_VkPhysicalDeviceVulkanMemoryModelFeaturesKHR::SetsType) {
+  _VkPhysicalDeviceVulkanMemoryModelFeaturesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceVulkanMemoryModelFeaturesKHR>(info.This());
+  if (value->IsNumber()) {
+    self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.sType", "Number");
+  
+    return;
+  }
 }// vulkanMemoryModel
 NAN_GETTER(_VkPhysicalDeviceVulkanMemoryModelFeaturesKHR::GetvulkanMemoryModel) {
   _VkPhysicalDeviceVulkanMemoryModelFeaturesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceVulkanMemoryModelFeaturesKHR>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.vulkanMemoryModel));
+}NAN_SETTER(_VkPhysicalDeviceVulkanMemoryModelFeaturesKHR::SetvulkanMemoryModel) {
+  _VkPhysicalDeviceVulkanMemoryModelFeaturesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceVulkanMemoryModelFeaturesKHR>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.vulkanMemoryModel = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.vulkanMemoryModel", "Number");
+  
+    return;
+  }
 }// vulkanMemoryModelDeviceScope
 NAN_GETTER(_VkPhysicalDeviceVulkanMemoryModelFeaturesKHR::GetvulkanMemoryModelDeviceScope) {
   _VkPhysicalDeviceVulkanMemoryModelFeaturesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceVulkanMemoryModelFeaturesKHR>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.vulkanMemoryModelDeviceScope));
+}NAN_SETTER(_VkPhysicalDeviceVulkanMemoryModelFeaturesKHR::SetvulkanMemoryModelDeviceScope) {
+  _VkPhysicalDeviceVulkanMemoryModelFeaturesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceVulkanMemoryModelFeaturesKHR>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.vulkanMemoryModelDeviceScope = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.vulkanMemoryModelDeviceScope", "Number");
+  
+    return;
+  }
 }
 /** ## END VkPhysicalDeviceVulkanMemoryModelFeaturesKHR ## **/
 
@@ -13021,169 +15048,6 @@ NAN_GETTER(_VkSubpassDependency2KHR::GetviewOffset) {
   }
 }
 /** ## END VkSubpassDependency2KHR ## **/
-
-/** ## BEGIN VkAttachmentReference2KHR ## **/
-
-class _VkAttachmentReference2KHR: public Nan::ObjectWrap {
-
-  public:
-    // #methods
-    static NAN_METHOD(New);
-    // #accessors
-    static NAN_GETTER(GetsType);
-    static NAN_SETTER(SetsType);
-    
-    static NAN_GETTER(Getattachment);
-    static NAN_SETTER(Setattachment);
-    
-    static NAN_GETTER(Getlayout);
-    static NAN_SETTER(Setlayout);
-    
-    static NAN_GETTER(GetaspectMask);
-    static NAN_SETTER(SetaspectMask);
-    
-
-    // real instance
-    VkAttachmentReference2KHR instance = {};
-
-    static Nan::Persistent<v8::FunctionTemplate> constructor;
-    static void Initialize(v8::Local<v8::Object> exports);
-    bool flush(void);
-
-  private:
-
-    _VkAttachmentReference2KHR();
-    ~_VkAttachmentReference2KHR();
-
-};
-
-/*
-#include "index.h"
-#include "VkAttachmentReference2KHR.h"
-*/
-Nan::Persistent<v8::FunctionTemplate> _VkAttachmentReference2KHR::constructor;
-
-_VkAttachmentReference2KHR::_VkAttachmentReference2KHR() {
-  instance.sType = VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_2_KHR;
-  
-}
-
-_VkAttachmentReference2KHR::~_VkAttachmentReference2KHR() {
-  //printf("VkAttachmentReference2KHR deconstructed!!\n");
-  
-  
-  
-  
-  
-}
-
-void _VkAttachmentReference2KHR::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
-  Nan::HandleScope scope;
-
-  // constructor
-  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkAttachmentReference2KHR::New);
-  constructor.Reset(ctor);
-  ctor->InstanceTemplate()->SetInternalFieldCount(1);
-  ctor->SetClassName(Nan::New("VkAttachmentReference2KHR").ToLocalChecked());
-
-  // prototype
-  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
-  
-  SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
-  SetPrototypeAccessor(proto, Nan::New("attachment").ToLocalChecked(), Getattachment, Setattachment, ctor);
-  SetPrototypeAccessor(proto, Nan::New("layout").ToLocalChecked(), Getlayout, Setlayout, ctor);
-  SetPrototypeAccessor(proto, Nan::New("aspectMask").ToLocalChecked(), GetaspectMask, SetaspectMask, ctor);
-  Nan::Set(target, Nan::New("VkAttachmentReference2KHR").ToLocalChecked(), ctor->GetFunction());
-}
-
-bool _VkAttachmentReference2KHR::flush() {
-  _VkAttachmentReference2KHR *self = this;
-  
-  return true;
-}
-
-NAN_METHOD(_VkAttachmentReference2KHR::New) {
-  if (info.IsConstructCall()) {
-    _VkAttachmentReference2KHR* self = new _VkAttachmentReference2KHR();
-    self->Wrap(info.Holder());
-    
-    if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
-      v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
-      v8::Local<v8::String> sAccess2 = Nan::New("attachment").ToLocalChecked();
-      v8::Local<v8::String> sAccess3 = Nan::New("layout").ToLocalChecked();
-      v8::Local<v8::String> sAccess4 = Nan::New("aspectMask").ToLocalChecked();
-      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
-      if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
-      if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
-      
-    }
-    
-    info.GetReturnValue().Set(info.Holder());
-  } else {
-    Nan::ThrowError("VkAttachmentReference2KHR constructor cannot be invoked without 'new'");
-  }
-};
-
-// sType
-NAN_GETTER(_VkAttachmentReference2KHR::GetsType) {
-  _VkAttachmentReference2KHR *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference2KHR>(info.This());
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
-}NAN_SETTER(_VkAttachmentReference2KHR::SetsType) {
-  _VkAttachmentReference2KHR *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference2KHR>(info.This());
-  if (value->IsNumber()) {
-    self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
-  } else {
-    
-    NanInvalidStructMemberTypeError(value, "VkAttachmentReference2KHR.sType", "Number");
-  
-    return;
-  }
-}// attachment
-NAN_GETTER(_VkAttachmentReference2KHR::Getattachment) {
-  _VkAttachmentReference2KHR *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference2KHR>(info.This());
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.attachment));
-}NAN_SETTER(_VkAttachmentReference2KHR::Setattachment) {
-  _VkAttachmentReference2KHR *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference2KHR>(info.This());
-  if (value->IsNumber()) {
-    self->instance.attachment = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
-  } else {
-    
-    NanInvalidStructMemberTypeError(value, "VkAttachmentReference2KHR.attachment", "Number");
-  
-    return;
-  }
-}// layout
-NAN_GETTER(_VkAttachmentReference2KHR::Getlayout) {
-  _VkAttachmentReference2KHR *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference2KHR>(info.This());
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.layout));
-}NAN_SETTER(_VkAttachmentReference2KHR::Setlayout) {
-  _VkAttachmentReference2KHR *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference2KHR>(info.This());
-  if (value->IsNumber()) {
-    self->instance.layout = static_cast<VkImageLayout>(Nan::To<int32_t>(value).FromMaybe(0));
-  } else {
-    
-    NanInvalidStructMemberTypeError(value, "VkAttachmentReference2KHR.layout", "Number");
-  
-    return;
-  }
-}// aspectMask
-NAN_GETTER(_VkAttachmentReference2KHR::GetaspectMask) {
-  _VkAttachmentReference2KHR *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference2KHR>(info.This());
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.aspectMask));
-}NAN_SETTER(_VkAttachmentReference2KHR::SetaspectMask) {
-  _VkAttachmentReference2KHR *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference2KHR>(info.This());
-  if (value->IsNumber()) {
-    self->instance.aspectMask = static_cast<VkImageAspectFlags>(Nan::To<int32_t>(value).FromMaybe(0));
-  } else {
-    
-    NanInvalidStructMemberTypeError(value, "VkAttachmentReference2KHR.aspectMask", "Number");
-  
-    return;
-  }
-}
-/** ## END VkAttachmentReference2KHR ## **/
 
 /** ## BEGIN VkSubpassDescription2KHR ## **/
 
@@ -18391,6 +20255,605 @@ NAN_GETTER(_VkShaderStatisticsInfoAMD::GetcomputeWorkGroupSize) {
 }
 /** ## END VkShaderStatisticsInfoAMD ## **/
 
+/** ## BEGIN VkPhysicalDeviceFloatControlsPropertiesKHR ## **/
+
+class _VkPhysicalDeviceFloatControlsPropertiesKHR: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    static NAN_GETTER(GetseparateDenormSettings);
+    static NAN_SETTER(SetseparateDenormSettings);
+    
+    static NAN_GETTER(GetseparateRoundingModeSettings);
+    static NAN_SETTER(SetseparateRoundingModeSettings);
+    
+    static NAN_GETTER(GetshaderSignedZeroInfNanPreserveFloat16);
+    static NAN_SETTER(SetshaderSignedZeroInfNanPreserveFloat16);
+    
+    static NAN_GETTER(GetshaderSignedZeroInfNanPreserveFloat32);
+    static NAN_SETTER(SetshaderSignedZeroInfNanPreserveFloat32);
+    
+    static NAN_GETTER(GetshaderSignedZeroInfNanPreserveFloat64);
+    static NAN_SETTER(SetshaderSignedZeroInfNanPreserveFloat64);
+    
+    static NAN_GETTER(GetshaderDenormPreserveFloat16);
+    static NAN_SETTER(SetshaderDenormPreserveFloat16);
+    
+    static NAN_GETTER(GetshaderDenormPreserveFloat32);
+    static NAN_SETTER(SetshaderDenormPreserveFloat32);
+    
+    static NAN_GETTER(GetshaderDenormPreserveFloat64);
+    static NAN_SETTER(SetshaderDenormPreserveFloat64);
+    
+    static NAN_GETTER(GetshaderDenormFlushToZeroFloat16);
+    static NAN_SETTER(SetshaderDenormFlushToZeroFloat16);
+    
+    static NAN_GETTER(GetshaderDenormFlushToZeroFloat32);
+    static NAN_SETTER(SetshaderDenormFlushToZeroFloat32);
+    
+    static NAN_GETTER(GetshaderDenormFlushToZeroFloat64);
+    static NAN_SETTER(SetshaderDenormFlushToZeroFloat64);
+    
+    static NAN_GETTER(GetshaderRoundingModeRTEFloat16);
+    static NAN_SETTER(SetshaderRoundingModeRTEFloat16);
+    
+    static NAN_GETTER(GetshaderRoundingModeRTEFloat32);
+    static NAN_SETTER(SetshaderRoundingModeRTEFloat32);
+    
+    static NAN_GETTER(GetshaderRoundingModeRTEFloat64);
+    static NAN_SETTER(SetshaderRoundingModeRTEFloat64);
+    
+    static NAN_GETTER(GetshaderRoundingModeRTZFloat16);
+    static NAN_SETTER(SetshaderRoundingModeRTZFloat16);
+    
+    static NAN_GETTER(GetshaderRoundingModeRTZFloat32);
+    static NAN_SETTER(SetshaderRoundingModeRTZFloat32);
+    
+    static NAN_GETTER(GetshaderRoundingModeRTZFloat64);
+    static NAN_SETTER(SetshaderRoundingModeRTZFloat64);
+    
+
+    // real instance
+    VkPhysicalDeviceFloatControlsPropertiesKHR instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkPhysicalDeviceFloatControlsPropertiesKHR();
+    ~_VkPhysicalDeviceFloatControlsPropertiesKHR();
+
+};
+
+/*
+#include "index.h"
+#include "VkPhysicalDeviceFloatControlsPropertiesKHR.h"
+*/
+Nan::Persistent<v8::FunctionTemplate> _VkPhysicalDeviceFloatControlsPropertiesKHR::constructor;
+
+_VkPhysicalDeviceFloatControlsPropertiesKHR::_VkPhysicalDeviceFloatControlsPropertiesKHR() {
+  instance.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES_KHR;
+  
+}
+
+_VkPhysicalDeviceFloatControlsPropertiesKHR::~_VkPhysicalDeviceFloatControlsPropertiesKHR() {
+  //printf("VkPhysicalDeviceFloatControlsPropertiesKHR deconstructed!!\n");
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+}
+
+void _VkPhysicalDeviceFloatControlsPropertiesKHR::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
+  Nan::HandleScope scope;
+
+  // constructor
+  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkPhysicalDeviceFloatControlsPropertiesKHR::New);
+  constructor.Reset(ctor);
+  ctor->InstanceTemplate()->SetInternalFieldCount(1);
+  ctor->SetClassName(Nan::New("VkPhysicalDeviceFloatControlsPropertiesKHR").ToLocalChecked());
+
+  // prototype
+  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
+  SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
+  SetPrototypeAccessor(proto, Nan::New("separateDenormSettings").ToLocalChecked(), GetseparateDenormSettings, SetseparateDenormSettings, ctor);
+  SetPrototypeAccessor(proto, Nan::New("separateRoundingModeSettings").ToLocalChecked(), GetseparateRoundingModeSettings, SetseparateRoundingModeSettings, ctor);
+  SetPrototypeAccessor(proto, Nan::New("shaderSignedZeroInfNanPreserveFloat16").ToLocalChecked(), GetshaderSignedZeroInfNanPreserveFloat16, SetshaderSignedZeroInfNanPreserveFloat16, ctor);
+  SetPrototypeAccessor(proto, Nan::New("shaderSignedZeroInfNanPreserveFloat32").ToLocalChecked(), GetshaderSignedZeroInfNanPreserveFloat32, SetshaderSignedZeroInfNanPreserveFloat32, ctor);
+  SetPrototypeAccessor(proto, Nan::New("shaderSignedZeroInfNanPreserveFloat64").ToLocalChecked(), GetshaderSignedZeroInfNanPreserveFloat64, SetshaderSignedZeroInfNanPreserveFloat64, ctor);
+  SetPrototypeAccessor(proto, Nan::New("shaderDenormPreserveFloat16").ToLocalChecked(), GetshaderDenormPreserveFloat16, SetshaderDenormPreserveFloat16, ctor);
+  SetPrototypeAccessor(proto, Nan::New("shaderDenormPreserveFloat32").ToLocalChecked(), GetshaderDenormPreserveFloat32, SetshaderDenormPreserveFloat32, ctor);
+  SetPrototypeAccessor(proto, Nan::New("shaderDenormPreserveFloat64").ToLocalChecked(), GetshaderDenormPreserveFloat64, SetshaderDenormPreserveFloat64, ctor);
+  SetPrototypeAccessor(proto, Nan::New("shaderDenormFlushToZeroFloat16").ToLocalChecked(), GetshaderDenormFlushToZeroFloat16, SetshaderDenormFlushToZeroFloat16, ctor);
+  SetPrototypeAccessor(proto, Nan::New("shaderDenormFlushToZeroFloat32").ToLocalChecked(), GetshaderDenormFlushToZeroFloat32, SetshaderDenormFlushToZeroFloat32, ctor);
+  SetPrototypeAccessor(proto, Nan::New("shaderDenormFlushToZeroFloat64").ToLocalChecked(), GetshaderDenormFlushToZeroFloat64, SetshaderDenormFlushToZeroFloat64, ctor);
+  SetPrototypeAccessor(proto, Nan::New("shaderRoundingModeRTEFloat16").ToLocalChecked(), GetshaderRoundingModeRTEFloat16, SetshaderRoundingModeRTEFloat16, ctor);
+  SetPrototypeAccessor(proto, Nan::New("shaderRoundingModeRTEFloat32").ToLocalChecked(), GetshaderRoundingModeRTEFloat32, SetshaderRoundingModeRTEFloat32, ctor);
+  SetPrototypeAccessor(proto, Nan::New("shaderRoundingModeRTEFloat64").ToLocalChecked(), GetshaderRoundingModeRTEFloat64, SetshaderRoundingModeRTEFloat64, ctor);
+  SetPrototypeAccessor(proto, Nan::New("shaderRoundingModeRTZFloat16").ToLocalChecked(), GetshaderRoundingModeRTZFloat16, SetshaderRoundingModeRTZFloat16, ctor);
+  SetPrototypeAccessor(proto, Nan::New("shaderRoundingModeRTZFloat32").ToLocalChecked(), GetshaderRoundingModeRTZFloat32, SetshaderRoundingModeRTZFloat32, ctor);
+  SetPrototypeAccessor(proto, Nan::New("shaderRoundingModeRTZFloat64").ToLocalChecked(), GetshaderRoundingModeRTZFloat64, SetshaderRoundingModeRTZFloat64, ctor);
+  Nan::Set(target, Nan::New("VkPhysicalDeviceFloatControlsPropertiesKHR").ToLocalChecked(), ctor->GetFunction());
+}
+
+bool _VkPhysicalDeviceFloatControlsPropertiesKHR::flush() {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = this;
+  
+  return true;
+}
+
+NAN_METHOD(_VkPhysicalDeviceFloatControlsPropertiesKHR::New) {
+  if (info.IsConstructCall()) {
+    _VkPhysicalDeviceFloatControlsPropertiesKHR* self = new _VkPhysicalDeviceFloatControlsPropertiesKHR();
+    self->Wrap(info.Holder());
+    
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+      v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+      v8::Local<v8::String> sAccess2 = Nan::New("separateDenormSettings").ToLocalChecked();
+      v8::Local<v8::String> sAccess3 = Nan::New("separateRoundingModeSettings").ToLocalChecked();
+      v8::Local<v8::String> sAccess4 = Nan::New("shaderSignedZeroInfNanPreserveFloat16").ToLocalChecked();
+      v8::Local<v8::String> sAccess5 = Nan::New("shaderSignedZeroInfNanPreserveFloat32").ToLocalChecked();
+      v8::Local<v8::String> sAccess6 = Nan::New("shaderSignedZeroInfNanPreserveFloat64").ToLocalChecked();
+      v8::Local<v8::String> sAccess7 = Nan::New("shaderDenormPreserveFloat16").ToLocalChecked();
+      v8::Local<v8::String> sAccess8 = Nan::New("shaderDenormPreserveFloat32").ToLocalChecked();
+      v8::Local<v8::String> sAccess9 = Nan::New("shaderDenormPreserveFloat64").ToLocalChecked();
+      v8::Local<v8::String> sAccess10 = Nan::New("shaderDenormFlushToZeroFloat16").ToLocalChecked();
+      v8::Local<v8::String> sAccess11 = Nan::New("shaderDenormFlushToZeroFloat32").ToLocalChecked();
+      v8::Local<v8::String> sAccess12 = Nan::New("shaderDenormFlushToZeroFloat64").ToLocalChecked();
+      v8::Local<v8::String> sAccess13 = Nan::New("shaderRoundingModeRTEFloat16").ToLocalChecked();
+      v8::Local<v8::String> sAccess14 = Nan::New("shaderRoundingModeRTEFloat32").ToLocalChecked();
+      v8::Local<v8::String> sAccess15 = Nan::New("shaderRoundingModeRTEFloat64").ToLocalChecked();
+      v8::Local<v8::String> sAccess16 = Nan::New("shaderRoundingModeRTZFloat16").ToLocalChecked();
+      v8::Local<v8::String> sAccess17 = Nan::New("shaderRoundingModeRTZFloat32").ToLocalChecked();
+      v8::Local<v8::String> sAccess18 = Nan::New("shaderRoundingModeRTZFloat64").ToLocalChecked();
+      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
+      if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
+      if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
+      if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
+      if (obj->Has(sAccess5)) info.This()->Set(sAccess5, obj->Get(sAccess5));
+      if (obj->Has(sAccess6)) info.This()->Set(sAccess6, obj->Get(sAccess6));
+      if (obj->Has(sAccess7)) info.This()->Set(sAccess7, obj->Get(sAccess7));
+      if (obj->Has(sAccess8)) info.This()->Set(sAccess8, obj->Get(sAccess8));
+      if (obj->Has(sAccess9)) info.This()->Set(sAccess9, obj->Get(sAccess9));
+      if (obj->Has(sAccess10)) info.This()->Set(sAccess10, obj->Get(sAccess10));
+      if (obj->Has(sAccess11)) info.This()->Set(sAccess11, obj->Get(sAccess11));
+      if (obj->Has(sAccess12)) info.This()->Set(sAccess12, obj->Get(sAccess12));
+      if (obj->Has(sAccess13)) info.This()->Set(sAccess13, obj->Get(sAccess13));
+      if (obj->Has(sAccess14)) info.This()->Set(sAccess14, obj->Get(sAccess14));
+      if (obj->Has(sAccess15)) info.This()->Set(sAccess15, obj->Get(sAccess15));
+      if (obj->Has(sAccess16)) info.This()->Set(sAccess16, obj->Get(sAccess16));
+      if (obj->Has(sAccess17)) info.This()->Set(sAccess17, obj->Get(sAccess17));
+      if (obj->Has(sAccess18)) info.This()->Set(sAccess18, obj->Get(sAccess18));
+      
+    }
+    
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkPhysicalDeviceFloatControlsPropertiesKHR constructor cannot be invoked without 'new'");
+  }
+};
+
+// sType
+NAN_GETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::GetsType) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
+}NAN_SETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::SetsType) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  if (value->IsNumber()) {
+    self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceFloatControlsPropertiesKHR.sType", "Number");
+  
+    return;
+  }
+}// separateDenormSettings
+NAN_GETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::GetseparateDenormSettings) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.separateDenormSettings));
+}NAN_SETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::SetseparateDenormSettings) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.separateDenormSettings = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceFloatControlsPropertiesKHR.separateDenormSettings", "Number");
+  
+    return;
+  }
+}// separateRoundingModeSettings
+NAN_GETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::GetseparateRoundingModeSettings) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.separateRoundingModeSettings));
+}NAN_SETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::SetseparateRoundingModeSettings) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.separateRoundingModeSettings = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceFloatControlsPropertiesKHR.separateRoundingModeSettings", "Number");
+  
+    return;
+  }
+}// shaderSignedZeroInfNanPreserveFloat16
+NAN_GETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::GetshaderSignedZeroInfNanPreserveFloat16) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderSignedZeroInfNanPreserveFloat16));
+}NAN_SETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::SetshaderSignedZeroInfNanPreserveFloat16) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.shaderSignedZeroInfNanPreserveFloat16 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceFloatControlsPropertiesKHR.shaderSignedZeroInfNanPreserveFloat16", "Number");
+  
+    return;
+  }
+}// shaderSignedZeroInfNanPreserveFloat32
+NAN_GETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::GetshaderSignedZeroInfNanPreserveFloat32) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderSignedZeroInfNanPreserveFloat32));
+}NAN_SETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::SetshaderSignedZeroInfNanPreserveFloat32) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.shaderSignedZeroInfNanPreserveFloat32 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceFloatControlsPropertiesKHR.shaderSignedZeroInfNanPreserveFloat32", "Number");
+  
+    return;
+  }
+}// shaderSignedZeroInfNanPreserveFloat64
+NAN_GETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::GetshaderSignedZeroInfNanPreserveFloat64) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderSignedZeroInfNanPreserveFloat64));
+}NAN_SETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::SetshaderSignedZeroInfNanPreserveFloat64) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.shaderSignedZeroInfNanPreserveFloat64 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceFloatControlsPropertiesKHR.shaderSignedZeroInfNanPreserveFloat64", "Number");
+  
+    return;
+  }
+}// shaderDenormPreserveFloat16
+NAN_GETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::GetshaderDenormPreserveFloat16) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderDenormPreserveFloat16));
+}NAN_SETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::SetshaderDenormPreserveFloat16) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.shaderDenormPreserveFloat16 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceFloatControlsPropertiesKHR.shaderDenormPreserveFloat16", "Number");
+  
+    return;
+  }
+}// shaderDenormPreserveFloat32
+NAN_GETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::GetshaderDenormPreserveFloat32) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderDenormPreserveFloat32));
+}NAN_SETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::SetshaderDenormPreserveFloat32) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.shaderDenormPreserveFloat32 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceFloatControlsPropertiesKHR.shaderDenormPreserveFloat32", "Number");
+  
+    return;
+  }
+}// shaderDenormPreserveFloat64
+NAN_GETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::GetshaderDenormPreserveFloat64) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderDenormPreserveFloat64));
+}NAN_SETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::SetshaderDenormPreserveFloat64) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.shaderDenormPreserveFloat64 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceFloatControlsPropertiesKHR.shaderDenormPreserveFloat64", "Number");
+  
+    return;
+  }
+}// shaderDenormFlushToZeroFloat16
+NAN_GETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::GetshaderDenormFlushToZeroFloat16) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderDenormFlushToZeroFloat16));
+}NAN_SETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::SetshaderDenormFlushToZeroFloat16) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.shaderDenormFlushToZeroFloat16 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceFloatControlsPropertiesKHR.shaderDenormFlushToZeroFloat16", "Number");
+  
+    return;
+  }
+}// shaderDenormFlushToZeroFloat32
+NAN_GETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::GetshaderDenormFlushToZeroFloat32) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderDenormFlushToZeroFloat32));
+}NAN_SETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::SetshaderDenormFlushToZeroFloat32) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.shaderDenormFlushToZeroFloat32 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceFloatControlsPropertiesKHR.shaderDenormFlushToZeroFloat32", "Number");
+  
+    return;
+  }
+}// shaderDenormFlushToZeroFloat64
+NAN_GETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::GetshaderDenormFlushToZeroFloat64) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderDenormFlushToZeroFloat64));
+}NAN_SETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::SetshaderDenormFlushToZeroFloat64) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.shaderDenormFlushToZeroFloat64 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceFloatControlsPropertiesKHR.shaderDenormFlushToZeroFloat64", "Number");
+  
+    return;
+  }
+}// shaderRoundingModeRTEFloat16
+NAN_GETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::GetshaderRoundingModeRTEFloat16) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderRoundingModeRTEFloat16));
+}NAN_SETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::SetshaderRoundingModeRTEFloat16) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.shaderRoundingModeRTEFloat16 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceFloatControlsPropertiesKHR.shaderRoundingModeRTEFloat16", "Number");
+  
+    return;
+  }
+}// shaderRoundingModeRTEFloat32
+NAN_GETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::GetshaderRoundingModeRTEFloat32) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderRoundingModeRTEFloat32));
+}NAN_SETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::SetshaderRoundingModeRTEFloat32) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.shaderRoundingModeRTEFloat32 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceFloatControlsPropertiesKHR.shaderRoundingModeRTEFloat32", "Number");
+  
+    return;
+  }
+}// shaderRoundingModeRTEFloat64
+NAN_GETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::GetshaderRoundingModeRTEFloat64) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderRoundingModeRTEFloat64));
+}NAN_SETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::SetshaderRoundingModeRTEFloat64) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.shaderRoundingModeRTEFloat64 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceFloatControlsPropertiesKHR.shaderRoundingModeRTEFloat64", "Number");
+  
+    return;
+  }
+}// shaderRoundingModeRTZFloat16
+NAN_GETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::GetshaderRoundingModeRTZFloat16) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderRoundingModeRTZFloat16));
+}NAN_SETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::SetshaderRoundingModeRTZFloat16) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.shaderRoundingModeRTZFloat16 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceFloatControlsPropertiesKHR.shaderRoundingModeRTZFloat16", "Number");
+  
+    return;
+  }
+}// shaderRoundingModeRTZFloat32
+NAN_GETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::GetshaderRoundingModeRTZFloat32) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderRoundingModeRTZFloat32));
+}NAN_SETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::SetshaderRoundingModeRTZFloat32) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.shaderRoundingModeRTZFloat32 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceFloatControlsPropertiesKHR.shaderRoundingModeRTZFloat32", "Number");
+  
+    return;
+  }
+}// shaderRoundingModeRTZFloat64
+NAN_GETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::GetshaderRoundingModeRTZFloat64) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderRoundingModeRTZFloat64));
+}NAN_SETTER(_VkPhysicalDeviceFloatControlsPropertiesKHR::SetshaderRoundingModeRTZFloat64) {
+  _VkPhysicalDeviceFloatControlsPropertiesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloatControlsPropertiesKHR>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.shaderRoundingModeRTZFloat64 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceFloatControlsPropertiesKHR.shaderRoundingModeRTZFloat64", "Number");
+  
+    return;
+  }
+}
+/** ## END VkPhysicalDeviceFloatControlsPropertiesKHR ## **/
+
+/** ## BEGIN VkPhysicalDeviceFloat16Int8FeaturesKHR ## **/
+
+class _VkPhysicalDeviceFloat16Int8FeaturesKHR: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    static NAN_GETTER(GetshaderFloat16);
+    static NAN_SETTER(SetshaderFloat16);
+    
+    static NAN_GETTER(GetshaderInt8);
+    static NAN_SETTER(SetshaderInt8);
+    
+
+    // real instance
+    VkPhysicalDeviceFloat16Int8FeaturesKHR instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkPhysicalDeviceFloat16Int8FeaturesKHR();
+    ~_VkPhysicalDeviceFloat16Int8FeaturesKHR();
+
+};
+
+/*
+#include "index.h"
+#include "VkPhysicalDeviceFloat16Int8FeaturesKHR.h"
+*/
+Nan::Persistent<v8::FunctionTemplate> _VkPhysicalDeviceFloat16Int8FeaturesKHR::constructor;
+
+_VkPhysicalDeviceFloat16Int8FeaturesKHR::_VkPhysicalDeviceFloat16Int8FeaturesKHR() {
+  instance.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT16_INT8_FEATURES_KHR;
+  
+}
+
+_VkPhysicalDeviceFloat16Int8FeaturesKHR::~_VkPhysicalDeviceFloat16Int8FeaturesKHR() {
+  //printf("VkPhysicalDeviceFloat16Int8FeaturesKHR deconstructed!!\n");
+  
+  
+  
+  
+}
+
+void _VkPhysicalDeviceFloat16Int8FeaturesKHR::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
+  Nan::HandleScope scope;
+
+  // constructor
+  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkPhysicalDeviceFloat16Int8FeaturesKHR::New);
+  constructor.Reset(ctor);
+  ctor->InstanceTemplate()->SetInternalFieldCount(1);
+  ctor->SetClassName(Nan::New("VkPhysicalDeviceFloat16Int8FeaturesKHR").ToLocalChecked());
+
+  // prototype
+  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
+  SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
+  SetPrototypeAccessor(proto, Nan::New("shaderFloat16").ToLocalChecked(), GetshaderFloat16, SetshaderFloat16, ctor);
+  SetPrototypeAccessor(proto, Nan::New("shaderInt8").ToLocalChecked(), GetshaderInt8, SetshaderInt8, ctor);
+  Nan::Set(target, Nan::New("VkPhysicalDeviceFloat16Int8FeaturesKHR").ToLocalChecked(), ctor->GetFunction());
+}
+
+bool _VkPhysicalDeviceFloat16Int8FeaturesKHR::flush() {
+  _VkPhysicalDeviceFloat16Int8FeaturesKHR *self = this;
+  
+  return true;
+}
+
+NAN_METHOD(_VkPhysicalDeviceFloat16Int8FeaturesKHR::New) {
+  if (info.IsConstructCall()) {
+    _VkPhysicalDeviceFloat16Int8FeaturesKHR* self = new _VkPhysicalDeviceFloat16Int8FeaturesKHR();
+    self->Wrap(info.Holder());
+    
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+      v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+      v8::Local<v8::String> sAccess2 = Nan::New("shaderFloat16").ToLocalChecked();
+      v8::Local<v8::String> sAccess3 = Nan::New("shaderInt8").ToLocalChecked();
+      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
+      if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
+      if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
+      
+    }
+    
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkPhysicalDeviceFloat16Int8FeaturesKHR constructor cannot be invoked without 'new'");
+  }
+};
+
+// sType
+NAN_GETTER(_VkPhysicalDeviceFloat16Int8FeaturesKHR::GetsType) {
+  _VkPhysicalDeviceFloat16Int8FeaturesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloat16Int8FeaturesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
+}NAN_SETTER(_VkPhysicalDeviceFloat16Int8FeaturesKHR::SetsType) {
+  _VkPhysicalDeviceFloat16Int8FeaturesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloat16Int8FeaturesKHR>(info.This());
+  if (value->IsNumber()) {
+    self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceFloat16Int8FeaturesKHR.sType", "Number");
+  
+    return;
+  }
+}// shaderFloat16
+NAN_GETTER(_VkPhysicalDeviceFloat16Int8FeaturesKHR::GetshaderFloat16) {
+  _VkPhysicalDeviceFloat16Int8FeaturesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloat16Int8FeaturesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderFloat16));
+}NAN_SETTER(_VkPhysicalDeviceFloat16Int8FeaturesKHR::SetshaderFloat16) {
+  _VkPhysicalDeviceFloat16Int8FeaturesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloat16Int8FeaturesKHR>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.shaderFloat16 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceFloat16Int8FeaturesKHR.shaderFloat16", "Number");
+  
+    return;
+  }
+}// shaderInt8
+NAN_GETTER(_VkPhysicalDeviceFloat16Int8FeaturesKHR::GetshaderInt8) {
+  _VkPhysicalDeviceFloat16Int8FeaturesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloat16Int8FeaturesKHR>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.shaderInt8));
+}NAN_SETTER(_VkPhysicalDeviceFloat16Int8FeaturesKHR::SetshaderInt8) {
+  _VkPhysicalDeviceFloat16Int8FeaturesKHR *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFloat16Int8FeaturesKHR>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.shaderInt8 = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceFloat16Int8FeaturesKHR.shaderInt8", "Number");
+  
+    return;
+  }
+}
+/** ## END VkPhysicalDeviceFloat16Int8FeaturesKHR ## **/
+
 /** ## BEGIN VkPhysicalDeviceShaderDrawParameterFeatures ## **/
 
 class _VkPhysicalDeviceShaderDrawParameterFeatures: public Nan::ObjectWrap {
@@ -19931,8 +22394,14 @@ class _VkPhysicalDeviceInlineUniformBlockFeaturesEXT: public Nan::ObjectWrap {
     static NAN_METHOD(New);
     // #accessors
     static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
     static NAN_GETTER(GetinlineUniformBlock);
+    static NAN_SETTER(SetinlineUniformBlock);
+    
     static NAN_GETTER(GetdescriptorBindingInlineUniformBlockUpdateAfterBind);
+    static NAN_SETTER(SetdescriptorBindingInlineUniformBlockUpdateAfterBind);
+    
 
     // real instance
     VkPhysicalDeviceInlineUniformBlockFeaturesEXT instance = {};
@@ -19979,9 +22448,9 @@ void _VkPhysicalDeviceInlineUniformBlockFeaturesEXT::Initialize(Nan::ADDON_REGIS
   // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   
-  SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, nullptr, ctor);
-  SetPrototypeAccessor(proto, Nan::New("inlineUniformBlock").ToLocalChecked(), GetinlineUniformBlock, nullptr, ctor);
-  SetPrototypeAccessor(proto, Nan::New("descriptorBindingInlineUniformBlockUpdateAfterBind").ToLocalChecked(), GetdescriptorBindingInlineUniformBlockUpdateAfterBind, nullptr, ctor);
+  SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
+  SetPrototypeAccessor(proto, Nan::New("inlineUniformBlock").ToLocalChecked(), GetinlineUniformBlock, SetinlineUniformBlock, ctor);
+  SetPrototypeAccessor(proto, Nan::New("descriptorBindingInlineUniformBlockUpdateAfterBind").ToLocalChecked(), GetdescriptorBindingInlineUniformBlockUpdateAfterBind, SetdescriptorBindingInlineUniformBlockUpdateAfterBind, ctor);
   Nan::Set(target, Nan::New("VkPhysicalDeviceInlineUniformBlockFeaturesEXT").ToLocalChecked(), ctor->GetFunction());
 }
 
@@ -19996,6 +22465,17 @@ NAN_METHOD(_VkPhysicalDeviceInlineUniformBlockFeaturesEXT::New) {
     _VkPhysicalDeviceInlineUniformBlockFeaturesEXT* self = new _VkPhysicalDeviceInlineUniformBlockFeaturesEXT();
     self->Wrap(info.Holder());
     
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+      v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+      v8::Local<v8::String> sAccess2 = Nan::New("inlineUniformBlock").ToLocalChecked();
+      v8::Local<v8::String> sAccess3 = Nan::New("descriptorBindingInlineUniformBlockUpdateAfterBind").ToLocalChecked();
+      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
+      if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
+      if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
+      
+    }
+    
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("VkPhysicalDeviceInlineUniformBlockFeaturesEXT constructor cannot be invoked without 'new'");
@@ -20006,14 +22486,44 @@ NAN_METHOD(_VkPhysicalDeviceInlineUniformBlockFeaturesEXT::New) {
 NAN_GETTER(_VkPhysicalDeviceInlineUniformBlockFeaturesEXT::GetsType) {
   _VkPhysicalDeviceInlineUniformBlockFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceInlineUniformBlockFeaturesEXT>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
+}NAN_SETTER(_VkPhysicalDeviceInlineUniformBlockFeaturesEXT::SetsType) {
+  _VkPhysicalDeviceInlineUniformBlockFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceInlineUniformBlockFeaturesEXT>(info.This());
+  if (value->IsNumber()) {
+    self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceInlineUniformBlockFeaturesEXT.sType", "Number");
+  
+    return;
+  }
 }// inlineUniformBlock
 NAN_GETTER(_VkPhysicalDeviceInlineUniformBlockFeaturesEXT::GetinlineUniformBlock) {
   _VkPhysicalDeviceInlineUniformBlockFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceInlineUniformBlockFeaturesEXT>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.inlineUniformBlock));
+}NAN_SETTER(_VkPhysicalDeviceInlineUniformBlockFeaturesEXT::SetinlineUniformBlock) {
+  _VkPhysicalDeviceInlineUniformBlockFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceInlineUniformBlockFeaturesEXT>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.inlineUniformBlock = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceInlineUniformBlockFeaturesEXT.inlineUniformBlock", "Number");
+  
+    return;
+  }
 }// descriptorBindingInlineUniformBlockUpdateAfterBind
 NAN_GETTER(_VkPhysicalDeviceInlineUniformBlockFeaturesEXT::GetdescriptorBindingInlineUniformBlockUpdateAfterBind) {
   _VkPhysicalDeviceInlineUniformBlockFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceInlineUniformBlockFeaturesEXT>(info.This());
   info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.descriptorBindingInlineUniformBlockUpdateAfterBind));
+}NAN_SETTER(_VkPhysicalDeviceInlineUniformBlockFeaturesEXT::SetdescriptorBindingInlineUniformBlockUpdateAfterBind) {
+  _VkPhysicalDeviceInlineUniformBlockFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceInlineUniformBlockFeaturesEXT>(info.This());
+  if (value->IsBoolean() || value->IsNumber()) {
+    self->instance.descriptorBindingInlineUniformBlockUpdateAfterBind = static_cast<uint32_t>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkPhysicalDeviceInlineUniformBlockFeaturesEXT.descriptorBindingInlineUniformBlockUpdateAfterBind", "Number");
+  
+    return;
+  }
 }
 /** ## END VkPhysicalDeviceInlineUniformBlockFeaturesEXT ## **/
 
@@ -55371,6 +57881,242 @@ NAN_GETTER(_VkPipelineRasterizationStateRasterizationOrderAMD::GetrasterizationO
 }
 /** ## END VkPipelineRasterizationStateRasterizationOrderAMD ## **/
 
+/** ## BEGIN VkValidationFeaturesEXT ## **/
+
+class _VkValidationFeaturesEXT: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    static NAN_GETTER(GetenabledValidationFeatureCount);
+    static NAN_SETTER(SetenabledValidationFeatureCount);
+    
+    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> pEnabledValidationFeatures;
+    static NAN_GETTER(GetpEnabledValidationFeatures);
+    static NAN_SETTER(SetpEnabledValidationFeatures);
+    
+    static NAN_GETTER(GetdisabledValidationFeatureCount);
+    static NAN_SETTER(SetdisabledValidationFeatureCount);
+    
+    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> pDisabledValidationFeatures;
+    static NAN_GETTER(GetpDisabledValidationFeatures);
+    static NAN_SETTER(SetpDisabledValidationFeatures);
+    
+
+    // real instance
+    VkValidationFeaturesEXT instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkValidationFeaturesEXT();
+    ~_VkValidationFeaturesEXT();
+
+};
+
+/*
+#include "index.h"
+#include "VkValidationFeaturesEXT.h"
+*/
+Nan::Persistent<v8::FunctionTemplate> _VkValidationFeaturesEXT::constructor;
+
+_VkValidationFeaturesEXT::_VkValidationFeaturesEXT() {
+  instance.sType = VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT;
+  
+}
+
+_VkValidationFeaturesEXT::~_VkValidationFeaturesEXT() {
+  //printf("VkValidationFeaturesEXT deconstructed!!\n");
+  
+  
+  
+  pEnabledValidationFeatures.Reset();
+  
+  
+  pDisabledValidationFeatures.Reset();
+  
+}
+
+void _VkValidationFeaturesEXT::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
+  Nan::HandleScope scope;
+
+  // constructor
+  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkValidationFeaturesEXT::New);
+  constructor.Reset(ctor);
+  ctor->InstanceTemplate()->SetInternalFieldCount(1);
+  ctor->SetClassName(Nan::New("VkValidationFeaturesEXT").ToLocalChecked());
+
+  // prototype
+  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  
+  SetPrototypeAccessor(proto, Nan::New("sType").ToLocalChecked(), GetsType, SetsType, ctor);
+  SetPrototypeAccessor(proto, Nan::New("enabledValidationFeatureCount").ToLocalChecked(), GetenabledValidationFeatureCount, SetenabledValidationFeatureCount, ctor);
+  SetPrototypeAccessor(proto, Nan::New("pEnabledValidationFeatures").ToLocalChecked(), GetpEnabledValidationFeatures, SetpEnabledValidationFeatures, ctor);
+  SetPrototypeAccessor(proto, Nan::New("disabledValidationFeatureCount").ToLocalChecked(), GetdisabledValidationFeatureCount, SetdisabledValidationFeatureCount, ctor);
+  SetPrototypeAccessor(proto, Nan::New("pDisabledValidationFeatures").ToLocalChecked(), GetpDisabledValidationFeatures, SetpDisabledValidationFeatures, ctor);
+  Nan::Set(target, Nan::New("VkValidationFeaturesEXT").ToLocalChecked(), ctor->GetFunction());
+}
+
+bool _VkValidationFeaturesEXT::flush() {
+  _VkValidationFeaturesEXT *self = this;
+  
+  return true;
+}
+
+NAN_METHOD(_VkValidationFeaturesEXT::New) {
+  if (info.IsConstructCall()) {
+    _VkValidationFeaturesEXT* self = new _VkValidationFeaturesEXT();
+    self->Wrap(info.Holder());
+    
+    if (info[0]->IsObject()) {
+      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+      v8::Local<v8::String> sAccess0 = Nan::New("sType").ToLocalChecked();
+      v8::Local<v8::String> sAccess2 = Nan::New("enabledValidationFeatureCount").ToLocalChecked();
+      v8::Local<v8::String> sAccess3 = Nan::New("pEnabledValidationFeatures").ToLocalChecked();
+      v8::Local<v8::String> sAccess4 = Nan::New("disabledValidationFeatureCount").ToLocalChecked();
+      v8::Local<v8::String> sAccess5 = Nan::New("pDisabledValidationFeatures").ToLocalChecked();
+      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
+      if (obj->Has(sAccess2)) info.This()->Set(sAccess2, obj->Get(sAccess2));
+      if (obj->Has(sAccess3)) info.This()->Set(sAccess3, obj->Get(sAccess3));
+      if (obj->Has(sAccess4)) info.This()->Set(sAccess4, obj->Get(sAccess4));
+      if (obj->Has(sAccess5)) info.This()->Set(sAccess5, obj->Get(sAccess5));
+      
+    }
+    
+    info.GetReturnValue().Set(info.Holder());
+  } else {
+    Nan::ThrowError("VkValidationFeaturesEXT constructor cannot be invoked without 'new'");
+  }
+};
+
+// sType
+NAN_GETTER(_VkValidationFeaturesEXT::GetsType) {
+  _VkValidationFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkValidationFeaturesEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.sType));
+}NAN_SETTER(_VkValidationFeaturesEXT::SetsType) {
+  _VkValidationFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkValidationFeaturesEXT>(info.This());
+  if (value->IsNumber()) {
+    self->instance.sType = static_cast<VkStructureType>(Nan::To<int32_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkValidationFeaturesEXT.sType", "Number");
+  
+    return;
+  }
+}// enabledValidationFeatureCount
+NAN_GETTER(_VkValidationFeaturesEXT::GetenabledValidationFeatureCount) {
+  _VkValidationFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkValidationFeaturesEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.enabledValidationFeatureCount));
+}NAN_SETTER(_VkValidationFeaturesEXT::SetenabledValidationFeatureCount) {
+  _VkValidationFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkValidationFeaturesEXT>(info.This());
+  if (value->IsNumber()) {
+    self->instance.enabledValidationFeatureCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkValidationFeaturesEXT.enabledValidationFeatureCount", "Number");
+  
+    return;
+  }
+}// pEnabledValidationFeatures
+NAN_GETTER(_VkValidationFeaturesEXT::GetpEnabledValidationFeatures) {
+  _VkValidationFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkValidationFeaturesEXT>(info.This());
+  if (self->pEnabledValidationFeatures.IsEmpty()) {
+    info.GetReturnValue().SetNull();
+  } else {
+    v8::Local<v8::Object> obj = Nan::New(self->pEnabledValidationFeatures);
+    info.GetReturnValue().Set(obj);
+  }
+}NAN_SETTER(_VkValidationFeaturesEXT::SetpEnabledValidationFeatures) {
+  _VkValidationFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkValidationFeaturesEXT>(info.This());
+  
+    // js
+    if (value->IsArrayBufferView()) {
+      if (value->IsInt32Array()) {
+        self->pEnabledValidationFeatures.Reset<v8::Array>(value.As<v8::Array>());
+      } else {
+        
+    NanInvalidStructMemberTypeError(value, "VkValidationFeaturesEXT.pEnabledValidationFeatures", "Int32Array");
+  
+        return;
+      }
+    } else if (value->IsNull()) {
+      self->pEnabledValidationFeatures.Reset();
+    } else {
+      
+    NanInvalidStructMemberTypeError(value, "VkValidationFeaturesEXT.pEnabledValidationFeatures", "Int32Array");
+  
+      return;
+    }
+  
+  
+  // vulkan
+  if (value->IsArrayBufferView()) {
+    self->instance.pEnabledValidationFeatures = reinterpret_cast<const VkValidationFeatureEnableEXT *>(getTypedArrayData<int32_t>(Nan::To<v8::Object>(value).ToLocalChecked(), nullptr));
+  } else {
+    self->instance.pEnabledValidationFeatures = nullptr;
+  }
+}// disabledValidationFeatureCount
+NAN_GETTER(_VkValidationFeaturesEXT::GetdisabledValidationFeatureCount) {
+  _VkValidationFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkValidationFeaturesEXT>(info.This());
+  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.disabledValidationFeatureCount));
+}NAN_SETTER(_VkValidationFeaturesEXT::SetdisabledValidationFeatureCount) {
+  _VkValidationFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkValidationFeaturesEXT>(info.This());
+  if (value->IsNumber()) {
+    self->instance.disabledValidationFeatureCount = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
+  } else {
+    
+    NanInvalidStructMemberTypeError(value, "VkValidationFeaturesEXT.disabledValidationFeatureCount", "Number");
+  
+    return;
+  }
+}// pDisabledValidationFeatures
+NAN_GETTER(_VkValidationFeaturesEXT::GetpDisabledValidationFeatures) {
+  _VkValidationFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkValidationFeaturesEXT>(info.This());
+  if (self->pDisabledValidationFeatures.IsEmpty()) {
+    info.GetReturnValue().SetNull();
+  } else {
+    v8::Local<v8::Object> obj = Nan::New(self->pDisabledValidationFeatures);
+    info.GetReturnValue().Set(obj);
+  }
+}NAN_SETTER(_VkValidationFeaturesEXT::SetpDisabledValidationFeatures) {
+  _VkValidationFeaturesEXT *self = Nan::ObjectWrap::Unwrap<_VkValidationFeaturesEXT>(info.This());
+  
+    // js
+    if (value->IsArrayBufferView()) {
+      if (value->IsInt32Array()) {
+        self->pDisabledValidationFeatures.Reset<v8::Array>(value.As<v8::Array>());
+      } else {
+        
+    NanInvalidStructMemberTypeError(value, "VkValidationFeaturesEXT.pDisabledValidationFeatures", "Int32Array");
+  
+        return;
+      }
+    } else if (value->IsNull()) {
+      self->pDisabledValidationFeatures.Reset();
+    } else {
+      
+    NanInvalidStructMemberTypeError(value, "VkValidationFeaturesEXT.pDisabledValidationFeatures", "Int32Array");
+  
+      return;
+    }
+  
+  
+  // vulkan
+  if (value->IsArrayBufferView()) {
+    self->instance.pDisabledValidationFeatures = reinterpret_cast<const VkValidationFeatureDisableEXT *>(getTypedArrayData<int32_t>(Nan::To<v8::Object>(value).ToLocalChecked(), nullptr));
+  } else {
+    self->instance.pDisabledValidationFeatures = nullptr;
+  }
+}
+/** ## END VkValidationFeaturesEXT ## **/
+
 /** ## BEGIN VkValidationFlagsEXT ## **/
 
 class _VkValidationFlagsEXT: public Nan::ObjectWrap {
@@ -59412,127 +62158,6 @@ NAN_GETTER(_VkSubpassDependency::GetdependencyFlags) {
   }
 }
 /** ## END VkSubpassDependency ## **/
-
-/** ## BEGIN VkAttachmentReference ## **/
-
-class _VkAttachmentReference: public Nan::ObjectWrap {
-
-  public:
-    // #methods
-    static NAN_METHOD(New);
-    // #accessors
-    static NAN_GETTER(Getattachment);
-    static NAN_SETTER(Setattachment);
-    
-    static NAN_GETTER(Getlayout);
-    static NAN_SETTER(Setlayout);
-    
-
-    // real instance
-    VkAttachmentReference instance = {};
-
-    static Nan::Persistent<v8::FunctionTemplate> constructor;
-    static void Initialize(v8::Local<v8::Object> exports);
-    bool flush(void);
-
-  private:
-
-    _VkAttachmentReference();
-    ~_VkAttachmentReference();
-
-};
-
-/*
-#include "index.h"
-#include "VkAttachmentReference.h"
-*/
-Nan::Persistent<v8::FunctionTemplate> _VkAttachmentReference::constructor;
-
-_VkAttachmentReference::_VkAttachmentReference() {
-  
-  
-}
-
-_VkAttachmentReference::~_VkAttachmentReference() {
-  //printf("VkAttachmentReference deconstructed!!\n");
-  
-  
-  
-}
-
-void _VkAttachmentReference::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
-  Nan::HandleScope scope;
-
-  // constructor
-  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_VkAttachmentReference::New);
-  constructor.Reset(ctor);
-  ctor->InstanceTemplate()->SetInternalFieldCount(1);
-  ctor->SetClassName(Nan::New("VkAttachmentReference").ToLocalChecked());
-
-  // prototype
-  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
-  
-  SetPrototypeAccessor(proto, Nan::New("attachment").ToLocalChecked(), Getattachment, Setattachment, ctor);
-  SetPrototypeAccessor(proto, Nan::New("layout").ToLocalChecked(), Getlayout, Setlayout, ctor);
-  Nan::Set(target, Nan::New("VkAttachmentReference").ToLocalChecked(), ctor->GetFunction());
-}
-
-bool _VkAttachmentReference::flush() {
-  _VkAttachmentReference *self = this;
-  
-  return true;
-}
-
-NAN_METHOD(_VkAttachmentReference::New) {
-  if (info.IsConstructCall()) {
-    _VkAttachmentReference* self = new _VkAttachmentReference();
-    self->Wrap(info.Holder());
-    
-    if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
-      v8::Local<v8::String> sAccess0 = Nan::New("attachment").ToLocalChecked();
-      v8::Local<v8::String> sAccess1 = Nan::New("layout").ToLocalChecked();
-      if (obj->Has(sAccess0)) info.This()->Set(sAccess0, obj->Get(sAccess0));
-      if (obj->Has(sAccess1)) info.This()->Set(sAccess1, obj->Get(sAccess1));
-      
-    }
-    
-    info.GetReturnValue().Set(info.Holder());
-  } else {
-    Nan::ThrowError("VkAttachmentReference constructor cannot be invoked without 'new'");
-  }
-};
-
-// attachment
-NAN_GETTER(_VkAttachmentReference::Getattachment) {
-  _VkAttachmentReference *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference>(info.This());
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.attachment));
-}NAN_SETTER(_VkAttachmentReference::Setattachment) {
-  _VkAttachmentReference *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference>(info.This());
-  if (value->IsNumber()) {
-    self->instance.attachment = static_cast<uint32_t>(Nan::To<int64_t>(value).FromMaybe(0));
-  } else {
-    
-    NanInvalidStructMemberTypeError(value, "VkAttachmentReference.attachment", "Number");
-  
-    return;
-  }
-}// layout
-NAN_GETTER(_VkAttachmentReference::Getlayout) {
-  _VkAttachmentReference *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference>(info.This());
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.layout));
-}NAN_SETTER(_VkAttachmentReference::Setlayout) {
-  _VkAttachmentReference *self = Nan::ObjectWrap::Unwrap<_VkAttachmentReference>(info.This());
-  if (value->IsNumber()) {
-    self->instance.layout = static_cast<VkImageLayout>(Nan::To<int32_t>(value).FromMaybe(0));
-  } else {
-    
-    NanInvalidStructMemberTypeError(value, "VkAttachmentReference.layout", "Number");
-  
-    return;
-  }
-}
-/** ## END VkAttachmentReference ## **/
 
 /** ## BEGIN VkSubpassDescription ## **/
 

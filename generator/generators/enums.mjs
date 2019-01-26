@@ -1,3 +1,8 @@
+/**
+
+  Generates JS relative list of vulkan enums and bitmasks
+
+**/
 import fs from "fs";
 import nunjucks from "nunjucks";
 import pkg from "../../package.json";
