@@ -97,7 +97,7 @@ If you don't have Visual Studio, then install the following package:
 npm install --global --production windows-build-tools
 ````
 
-Now install the corresponding Vulkan SDK version from [here](https://vulkan.lunarg.com/sdk/home#windows). The *nvk* installer will ask you to setup bindings for ``1.1.85``, so make sure you have ``Vulkan SDK 1.1.85`` installed.
+Now install the corresponding Vulkan SDK version from [here](https://vulkan.lunarg.com/sdk/home#windows). The *nvk* installer will ask you to setup bindings for ``1.1.97``, so make sure you have ``Vulkan SDK 1.1.97`` installed.
 
 Next, install *nvk* and follow the setup instructions
 ````
@@ -118,7 +118,7 @@ npm run [script] [flag] [value]
 #### Generation:
 You can generate bindings with:
 ````
-npm run generate --vkversion=1.1.85
+npm run generate --vkversion=1.1.97
 ````
 
 The generated bindings can then be found in `generated/{vkversion}/`
@@ -136,7 +136,7 @@ The generated bindings can then be found in `generated/{vkversion}/`
 #### Building:
 You can build the generated bindings with:
 ````
-npm run build --vkversion=1.1.85 --msvsversion=2017
+npm run build --vkversion=1.1.97 --msvsversion=2017
 ````
 
 The compiled bindings can then be found in `generated/{vkversion}/build`
@@ -159,7 +159,7 @@ import {
   VkApplicationInfo,
   VK_MAKE_VERSION,
   VK_API_VERSION_1_0
-} from "nvk/generated/1.1.85/index";
+} from "nvk/generated/1.1.97/index";
 
 let win = new VulkanWindow({ width: 480, height: 320 });
 
