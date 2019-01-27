@@ -577,7 +577,7 @@ function fillDocumentation(objects, docs) {
   });
 };
 
-export default function(xmlInput, version) {
+export default function({ xmlInput, version, docs } = _) {
   let obj = new xml.xml2js(xmlInput, xmlOpts);
   let out = [];
   // bitmask type links
@@ -755,15 +755,20 @@ export default function(xmlInput, version) {
     commands.map(cmd => out.push(cmd));
   }
   return new Promise(resolve => {
-    parseDocumentation(version).then(ast => {
-      let structs = out.filter(node => node.kind === "STRUCT");
-      let handles = out.filter(node => node.kind === "HANDLE");
-      let calls = out.filter(node => node.kind === "COMMAND_PROTO");
-      // insert documentation
-      fillDocumentation(structs, ast);
-      fillDocumentation(handles, ast);
-      fillDocumentation(calls, ast);
+    // put documentation information into generated AST
+    if (docs) {
+      parseDocumentation(version).then(ast => {
+        let structs = out.filter(node => node.kind === "STRUCT");
+        let handles = out.filter(node => node.kind === "HANDLE");
+        let calls = out.filter(node => node.kind === "COMMAND_PROTO");
+        // insert documentation
+        fillDocumentation(structs, ast);
+        fillDocumentation(handles, ast);
+        fillDocumentation(calls, ast);
+        resolve(out);
+      });
+    } else {
       resolve(out);
-    });
+    }
   });
 };

@@ -91,3 +91,8 @@ package-lock.json
 generated/*/build
 
 examples-dev
+
+docs/*.zip
+docs/doc_tmp
+
+generator/specifications/*.xml

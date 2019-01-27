@@ -164,7 +164,7 @@ async function generateBindings({xml, version, docs, incremental} = _) {
   // generate AST
   {
     console.log(`Generating AST..`);
-    ast = await generateAST(xml, version);
+    ast = await generateAST({ xmlInput: xml, version, docs });
     patchAST(ast);
     let str = JSON.stringify(ast, null, 2);
     writeAddonFile(`${generatePath}/ast.json`, str, "utf-8");
