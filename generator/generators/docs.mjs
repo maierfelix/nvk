@@ -242,7 +242,7 @@ function getType(member) {
   let {type} = getJavaScriptType(member);
   switch (type) {
     case JavaScriptType.UNKNOWN: return `N/A`;
-    case JavaScriptType.OBJECT: return `<a href="./${member.type}.html">${member.type}]</a>`;
+    case JavaScriptType.OBJECT: return `<a href="./${member.type}.html">${member.type}</a>`;
     case JavaScriptType.NULL: return `null`;
     case JavaScriptType.STRING: return `String`;
     case JavaScriptType.NUMBER: return `Number`;
