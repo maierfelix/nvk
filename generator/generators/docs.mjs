@@ -106,20 +106,25 @@ function getNumericTypescriptType({type, isEnum, isBitmask} = _) {
         isNullable: true
       });
   };
-  let type = (
+  let jsType = (
     isEnum ? JavaScriptType.ENUM :
     isBitmask ? JavaScriptType.BITMASK :
     JavaScriptType.UNKNOWN
   );
   return new JavaScriptType({
-    type,
+    type: jsType,
     isNullable: true
   });
 };
 
 function getJavaScriptType(member) {
   let {rawType} = member;
-  if (isIgnoreableType(member)) return `null`;
+  if (isIgnoreableType(member)) {
+    return new JavaScriptType({
+      type: JavaScriptType.NULL,
+      isNullable: true
+    });
+  }
   if (member.kind === "COMMAND_PARAM") {
     // handle inout parameters
     switch (member.rawType) {
@@ -233,38 +238,98 @@ function getJavaScriptType(member) {
   };
 };
 
-function processCall(call) {
-  return `42`;
+function getType(member) {
+  let {type} = getJavaScriptType(member);
+  switch (type) {
+    case JavaScriptType.UNKNOWN: return `N/A`;
+    case JavaScriptType.OBJECT: return `<a href="./${member.type}.html">${member.type}]</a>`;
+    case JavaScriptType.NULL: return `null`;
+    case JavaScriptType.STRING: return `String`;
+    case JavaScriptType.NUMBER: return `Number`;
+    case JavaScriptType.ENUM: return `Number`;
+    case JavaScriptType.BITMASK: return `Number`;
+    case JavaScriptType.OBJECT_INOUT: return `Object`;
+    case JavaScriptType.ARRAY_OF_STRINGS: {
+      return `Array<vk-property-type type="string">[String]</vk-property-type>`;
+    }
+    case JavaScriptType.ARRAY_OF_NUMBERS: {
+      return `Array<vk-property-type type="number">[Number]</vk-property-type>`;
+    }
+    case JavaScriptType.ARRAY_OF_OBJECTS: {
+      return `Array<vk-property-type type="object">[<a href="./${member.type}.html">${member.type}]</a></vk-property-type>`;
+    }
+    case JavaScriptType.TYPED_ARRAY: return member.jsTypedArrayName;
+  };
+  warn(`Cannot resolve doc type ${type} for ${member.name}`);
+  return ``;
 };
 
-export default function(astReference, data) {
+function getCSSType(member) {
+  let {type} = getJavaScriptType(member);
+  switch (type) {
+    case JavaScriptType.UNKNOWN: return `N/A`;
+    case JavaScriptType.OBJECT: return `object`;
+    case JavaScriptType.NULL: return `null`;
+    case JavaScriptType.STRING: return `string`;
+    case JavaScriptType.NUMBER: return `number`;
+    case JavaScriptType.ENUM: return `number`;
+    case JavaScriptType.BITMASK: return `number`;
+    case JavaScriptType.OBJECT_INOUT: return `object`;
+    case JavaScriptType.ARRAY_OF_STRINGS: return `array`;
+    case JavaScriptType.ARRAY_OF_NUMBERS: return `array`;
+    case JavaScriptType.ARRAY_OF_OBJECTS: return `array`;
+    case JavaScriptType.TYPED_ARRAY: return `typedarray`;
+  };
+  warn(`Cannot resolve CSS doc type ${type} for ${member.name}`);
+  return ``;
+};
+
+function getCategories({ calls, structs, handles } = _) {
+  let out = [];
+  calls.map(call => { if (out.indexOf(call.category) <= -1) out.push(call.category); });
+  structs.map(struct => { if (out.indexOf(struct.category) <= -1) out.push(struct.category); });
+  handles.map(handle => { if (out.indexOf(handle.category) <= -1) out.push(handle.category); });
+  return out;
+};
+
+function getStructsByCategory(category) {
+  let out = [];
+  // collect structs matching category
+  structs.map(struct => {
+    if (struct.category === category) out.push(struct);
+  });
+  // sort alphabetically
+  out = out.sort((a, b) => {
+    if (a.name < b.name) return -1;
+    if (a.name > b.name) return 1;
+    return 0;
+  });
+  return out;
+};
+
+export default function(astReference, data, version) {
   ast = astReference;
   calls = data.calls;
   enums = data.enums;
   structs = data.structs;
   handles = data.handles;
   includes = data.includes;
-  let vars = {
-    calls,
-    enums,
-    structs,
-    handles,
-    includes,
-    processCall,
-    getStructByName,
-    isHandleInclude,
-    isStructInclude
-  };
-  let out = {
-    source: null
-  };
-  // calls
+  let categories = getCategories({ calls, structs, handles });
+  // structs
   {
-    let template = CALLS_TEMPLATE;
-    let output = nunjucks.renderString(template, vars);
+    structs.map(struct => {
+      let output = nunjucks.renderString(STRUCTS_TEMPLATE, {
+        struct,
+        structs,
+        members: struct.children,
+        categories,
+        getType,
+        getCSSType,
+        getStructsByCategory
+      });
+      fs.writeFileSync(`docs/${version}/structs/${struct.name}.html`, output, `utf-8`);
+    });
     //console.log(output);
   }
-  return new Promise(resolve => {
-    resolve(ast);
-  });
+  return null;
 };

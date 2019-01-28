@@ -94,5 +94,6 @@ examples-dev
 
 docs/*.zip
 docs/doc_tmp
+docs/*/
 
 generator/specifications/*.xml

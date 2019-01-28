@@ -1,7 +1,96 @@
-{% for name in includes -%}
-{%- if isStructInclude(name) == true -%}
-export interface {{ name | safe }} {
-{{ processStructMembers(name, false) | safe }}
-}
-{% endif %}
-{% endfor %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../assets/css/vk.css"/>
+<link rel="stylesheet" href="../assets/css/prism.css"/>
+
+<vk-title>{{ struct.name }} | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+          {% for struct in structs -%}
+          <li><a href="./{{ struct.name }}.html">{{ struct.name }}</a></li>
+          {% endfor %}
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+
+    {% for category in categories -%}
+    <!-- {{ category | safe }} -->
+    <details>
+       <summary>{{ category | safe }}</summary>
+        <ol>
+          {% for struct in getStructsByCategory(category) -%}
+          {%- if struct.category == category -%}
+          <li><a href="./{{ struct.name }}.html">{{ struct.name }}</a></li>
+          {% endif -%}
+          {% endfor -%}
+        </ol>
+    </details>
+    {% endfor -%}
+  </vk-navigation>
+
+  <!-- Struct -->
+  <vk-struct>
+
+    <vk-name>{{ struct.name }}</vk-name>
+
+    <vk-description>{{ struct.description | safe }}</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">instanceCreateInfo = new {{ struct.name }}();
+instanceCreateInfo = new {{ struct.name }}(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">let instanceCreateInfo = new {{ struct.name }}();
+{% for member in members -%}
+instanceCreateInfo.{{ member.name }} = ;
+{% endfor -%}
+      </code></pre>
+    </vk-stub>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      {% for member in members -%}
+      <!-- {{ struct.name }}.prototype.{{ member.name }} -->
+      <vk-property-entry>
+        <vk-property-prototype>{{ struct.name }}.prototype.<vk-prototype-name>{{ member.name }}</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="{{ getCSSType(member) | safe }}">{{ getType(member) | safe }}</vk-property-type>
+        <vk-property-description>{{ member.description | safe }}</vk-property-description>
+      </vk-property-entry>
+      {% endfor %}
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script type="text/javascript" src="../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../assets/js/index.js"></script>

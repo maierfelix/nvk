@@ -342,7 +342,7 @@ async function generateBindings({xml, version, docs, incremental} = _) {
   if (docs) {
     console.log("Generating docs..");
     let data = { structs, handles, calls, enums, includes: sortedIncludes };
-    await generateDocs(ast, data);
+    generateDocs(ast, data, version);
   }
   console.log(``);
   console.log(`Generation stats:`);
