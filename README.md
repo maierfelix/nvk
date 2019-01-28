@@ -131,6 +131,7 @@ The generated bindings can then be found in `generated/{vkversion}/`
 ````
 [--vkversion]: The Vulkan version to generate bindings for
 [--incremental]: Enables incremental builds when building the bindings
+[--docs]: Generates HTML-based documentation
 ````
 
 #### Building:
@@ -229,7 +230,7 @@ The Generator generates C++ code from a `vk.xml` specification file. It first co
 
 ## HTML, CSS based UIs
 
-The [chromium-ui](https://github.com/maierfelix/nvk/tree/chromium-ui) branch contains an experiment about letting users create UIs with a complete HTML/CSS browser toolchain. The website (browser frame) can then be rendered inside Vulkan. This is done using [Chromium-Embedded-Framework](https://bitbucket.org/chromiumembedded/cef). The browser texture is shared with vulkan's memory, so you can directly render it on top of your application. Oh yes!
+The [chromium-ui](https://github.com/maierfelix/nvk/tree/chromium-ui) branch contains an experiment about letting users create UIs with a complete HTML/CSS browser toolchain. The website (browser frame) can then be rendered inside Vulkan. This is done using [Chromium-Embedded-Framework](https://bitbucket.org/chromiumembedded/cef). The browser texture is shared with vulkan's memory, so you can directly render it on top of your application.
 
 There is one last thing that prevents me from merging it. At the moment, browser redraws trigger a CPU texture copying path, which is horribly slow. At the moment the pipeline is:
 
