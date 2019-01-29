@@ -12,7 +12,7 @@
 
 std::string dirname;
 
-#include "index.h"
+#include "source.h"
 #include "calls.h"
 #include "enums.h"
 #include "window.h"

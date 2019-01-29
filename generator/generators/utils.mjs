@@ -8,9 +8,11 @@ const H_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/utils-h.njk`, "ut
 
 nunjucks.configure({ autoescape: true });
 
-export default function(astReference, VK_VERSION) {
+export default function(astReference, structs) {
   ast = astReference;
-  let vars = {};
+  let vars = {
+    structs
+  };
   let out = {
     header: null
   };

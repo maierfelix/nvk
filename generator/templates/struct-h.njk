@@ -8,7 +8,7 @@ class _{{ struct_name }}: public Nan::ObjectWrap {
     {%- for member in members %}
     {%- if isIgnoreableType(member) != true -%}
     {{- processHeaderGetter(struct, member) | safe }}
-    {%- if isStructReturnedOnly(struct) != true -%}
+    {%- if isFillableMember(struct, member) == true -%}
     {{- processHeaderSetter(struct, member) | safe }}
     {% endif -%}
     {% endif -%}

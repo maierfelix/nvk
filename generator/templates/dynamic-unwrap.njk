@@ -1,0 +1,45 @@
+#ifndef __DYN_UNWRAP__
+#define __DYN_UNWRAP__
+
+#include <nan.h>
+#include "source.h"
+
+#include <map>
+#include <string>
+
+static const std::map<std::string, VkStructureType> constructor2sType = {
+  {% for struct in structs -%}
+  {%- if struct.sType -%}
+  { "{{ struct.name }}", {{ struct.sType }} },
+  {% endif -%}
+  {% endfor %}
+};
+
+inline VkStructureType GetStructureTypeFromObject(v8::Local<v8::Object> obj) {
+  std::string constructorName = std::string(*Nan::Utf8String(obj->GetConstructorName()));
+  auto it = constructor2sType.find(constructorName);
+  if (it == constructor2sType.end()) return (VkStructureType) -1;
+  VkStructureType sType = it->second;
+  return sType;
+}
+
+bool IsValidStructureObject(v8::Local<v8::Object> obj) {
+  return GetStructureTypeFromObject(obj) > -1;
+}
+
+void * DynamicObjectUnwrapInstance(v8::Local<v8::Object> obj) {
+  std::string constructorName = std::string(*Nan::Utf8String(obj->GetConstructorName()));
+  VkStructureType sType = GetStructureTypeFromObject(obj);
+  switch (sType) {
+    {% for struct in structs -%}
+    {%- if struct.sType -%}
+    case {{ struct.sType }}: return (void *) &Nan::ObjectWrap::Unwrap<_{{ struct.name }}>(obj)->instance;
+    {% endif -%}
+    {% endfor %}
+  };
+  std::string msg = "Dynamic Object Unwrap failed! Invalid constructor: '" + constructorName + "'";
+  Nan::ThrowTypeError(msg.c_str());
+  return nullptr;
+}
+
+#endif

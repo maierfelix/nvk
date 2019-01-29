@@ -258,7 +258,9 @@ function getType(member) {
     case JavaScriptType.ARRAY_OF_OBJECTS: {
       return `Array<vk-property-type type="object">[<a href="./${member.type}.html">${member.type}]</a></vk-property-type>`;
     }
-    case JavaScriptType.TYPED_ARRAY: return member.jsTypedArrayName;
+    case JavaScriptType.TYPED_ARRAY: {
+      return `<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/${member.jsTypedArrayName}">${member.jsTypedArrayName}</a>`;
+    }
   };
   warn(`Cannot resolve doc type ${type} for ${member.name}`);
   return ``;

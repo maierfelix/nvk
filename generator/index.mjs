@@ -3,6 +3,8 @@ import https from "https";
 
 import pkg from "../package.json";
 
+import nunjucks from "nunjucks";
+
 import patchAST from "./generators/ast-patch";
 import generateAST from "./generators/ast";
 import generateCalls from "./generators/calls";
@@ -248,16 +250,15 @@ async function generateBindings({xml, version, docs, incremental} = _) {
   {
     sortedIncludes = getSortedIncludes(includes);
   }
+  // dynamic unwrap
+  {
+    const DYN_UNWRAP_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/dynamic-unwrap.njk`, "utf-8");
+    let source = nunjucks.renderString(DYN_UNWRAP_TEMPLATE, { structs });
+    writeAddonFile(`${generateSrcPath}/dynamic-unwrap.h`, source, "utf-8", true);
+  }
   // merge structs and handles into one source file
   {
-    let source = `#include <nan.h>
-
-#include <vulkan/vulkan_win32.h>
-#define GLFW_INCLUDE_VULKAN
-#include <GLFW/glfw3.h>
-
-#include "utils.h"
-    `;
+    let source = ``;
     let sorted = [];
     // sort
     for (let ii = 0; ii < files.length; ++ii) {
@@ -265,15 +266,43 @@ async function generateBindings({xml, version, docs, incremental} = _) {
       let sortedIndex = sortedIncludes.indexOf(file.name);
       sorted[sortedIndex] = file;
     };
-    // merge
+    source += ``;
+    source += `
+#ifndef __SOURCE_H__
+#define __SOURCE_H__
+#include <nan.h>
+
+#define GLFW_INCLUDE_VULKAN
+#include <GLFW/glfw3.h>
+
+#define VK_USE_PLATFORM_WIN32_KHR
+#include <vulkan/vulkan_win32.h>
+
+#include "utils.h"`;
+    // header
     sorted.map(file => {
       source += `\n/** ## BEGIN ${file.name} ## **/\n`;
       source += file.header;
-      source += `\n`;
+      source += `\n/** ## END ${file.name} ## **/\n`;
+    });
+    source += `
+#endif`;
+    writeAddonFile(`${generateSrcPath}/source.h`, source, "utf-8", true);
+    source = ``;
+    source += `
+#ifndef __SOURCE_CPP__
+#define __SOURCE_CPP__
+#include "source.h"
+#include "dynamic-unwrap.h"`;
+    // source
+    sorted.map(file => {
+      source += `\n/** ## BEGIN ${file.name} ## **/\n`;
       source += file.source;
       source += `\n/** ## END ${file.name} ## **/\n`;
     });
-    writeAddonFile(`${generateSrcPath}/source.h`, source, "utf-8", true);
+    source += `
+#endif`;
+    writeAddonFile(`${generateSrcPath}/source.cpp`, source, "utf-8", true);
   }
   // generate enums
   {
@@ -310,7 +339,7 @@ async function generateBindings({xml, version, docs, incremental} = _) {
   // generate binding.gyp
   {
     console.log("Generating binding.gyp..");
-    let result = await generateGyp(ast, version, incremental, [`"./src/index.cpp"`]);
+    let result = await generateGyp(ast, version, incremental, [`"./src/index.cpp"`, `"./src/source.cpp"`]);
     writeAddonFile(`${generatePath}/binding.gyp`, result.gyp, "utf-8");
   }
   // generate package.json
@@ -322,7 +351,7 @@ async function generateBindings({xml, version, docs, incremental} = _) {
   // generate utils
   {
     console.log("Generating utils..");
-    let utilsFile = generateUtils(includes, calls);
+    let utilsFile = generateUtils(includes, structs);
     writeAddonFile(`${generateSrcPath}/utils.h`, utilsFile.header, "utf-8", true);
   }
   // generate indices

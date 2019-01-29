@@ -65,22 +65,24 @@ NAN_METHOD(_{{ struct_name }}::New) {
   if (info.IsConstructCall()) {
     _{{ struct_name }}* self = new _{{ struct_name }}();
     self->Wrap(info.Holder());
-    {% if isStructReturnedOnly(struct) != true %}
     if (info[0]->IsObject()) {
       v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
       {% for member in members %}
       {%- if isIgnoreableType(member) != true -%}
+      {%- if isFillableMember(struct, member) == true -%}
       v8::Local<v8::String> sAccess{{ loop.index0 }} = Nan::New("{{ member.name }}").ToLocalChecked();
+      {% endif -%}
       {% endif -%}
       {% endfor -%}
 
       {% for member in members %}
       {%- if isIgnoreableType(member) != true -%}
+      {%- if isFillableMember(struct, member) == true -%}
       if (obj->Has(sAccess{{ loop.index0 }})) info.This()->Set(sAccess{{ loop.index0 }}, obj->Get(sAccess{{ loop.index0 }}));
+      {% endif -%}
       {% endif -%}
       {% endfor %}
     }
-    {% endif %}
     info.GetReturnValue().Set(info.Holder());
   } else {
     Nan::ThrowError("{{ struct_name }} constructor cannot be invoked without 'new'");
@@ -94,7 +96,7 @@ NAN_GETTER(_{{ struct_name }}::Get{{ member.name }}) {
   _{{ struct_name }} *self = Nan::ObjectWrap::Unwrap<_{{ struct_name }}>(info.This());
   {{- processSourceGetter(struct, member) | safe }}
 }
-{%- if isStructReturnedOnly(struct) != true -%}
+{%- if isFillableMember(struct, member) == true -%}
 NAN_SETTER(_{{ struct_name }}::Set{{ member.name }}) {
   _{{ struct_name }} *self = Nan::ObjectWrap::Unwrap<_{{ struct_name }}>(info.This());
   {{- processSourceSetter(struct, member) | safe }}

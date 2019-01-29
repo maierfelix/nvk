@@ -9,6 +9,7 @@ import pkg from "../../package.json";
 
 import {
   warn,
+  isPNextMember,
   isIgnoreableType
 } from "../utils";
 
@@ -24,7 +25,10 @@ let globalIncludes = [];
 
 function invalidMemberTypeError(member) {
   let expected = member.jsType;
-  if (expected === "undefined") {
+  if (isPNextMember(member)) {
+    expected = `[object Object]`;
+  }
+  else if (expected === "undefined") {
     warn(`Cannot handle member ${member.rawType} in member-type-error`);
   // try to give better hints
   } else {
@@ -138,11 +142,12 @@ function processHeaderGetter(struct, member) {
       static NAN_GETTER(Get${member.name});`;
     }
   }
-  switch (rawType) {
-    case "const void *":
-      return `
+  if (isPNextMember(member)) {
+    return `
     Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> ${member.name};
     static NAN_GETTER(Get${member.name});`;
+  }
+  switch (rawType) {
     case "const char *":
       return `
     Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> ${member.name};
@@ -256,8 +261,7 @@ function processSourceGetter(struct, member) {
     info.GetReturnValue().Set(obj);
   }`;
     default: {
-      if (member.isStructType || member.isHandleType || rawType === "const void *") {
-        if (rawType === "const void *") return ``; // TODO
+      if (member.isStructType || member.isHandleType || isPNextMember(member)) {
         return `
   if (self->${member.name}.IsEmpty()) {
     info.GetReturnValue().SetNull();
@@ -399,16 +403,28 @@ function processSourceSetter(struct, member) {
   ${genPersistentV8TypedArray(member)}
   ${getTypedV8Array(member)}`;
     default: {
-      if (member.isStructType || member.isHandleType || rawType === "const void *") {
-        let isReference = member.dereferenceCount > 0;
+      let isReference = member.dereferenceCount > 0;
+      // initialization
+      let initialize = `
+      self->${member.name}.Reset<v8::Object>(value.As<v8::Object>());
+      _${member.type}* inst = Nan::ObjectWrap::Unwrap<_${member.type}>(obj);
+      ${member.isStructType ? `inst->flush()` : ``};
+      self->instance.${member.name} = ${isReference ? "&" : ""}inst->instance;`;
+      // condition to perform initialization
+      let validObjectCondition = `Nan::New(_${member.type}::constructor)->HasInstance(obj)`;
+      if (member.isStructType || member.isHandleType || isPNextMember(member)) {
         let deinitialize = ``;
-        if (rawType === "const void *") {
-          return ``; // TODO
+        if (isPNextMember(member)) {
+          validObjectCondition = `IsValidStructureObject(obj)`;
+          initialize = `
+      self->${member.name}.Reset<v8::Object>(obj);
+      self->instance.${member.name} = (${member.rawType}) DynamicObjectUnwrapInstance(obj);
+      //VkStructureType sType = ((int*)(self->instance.pNext))[0]);`;
         }
         if (member.isHandleType) {
           deinitialize = `self->instance.${member.name} = VK_NULL_HANDLE;`;
         }
-        else if (isReference) {
+        else if (isReference || isPNextMember(member)) {
           deinitialize = `self->instance.${member.name} = nullptr;`;
         }
         else {
@@ -418,11 +434,8 @@ function processSourceSetter(struct, member) {
   // js
   if (!value->IsNull()) {
     v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
-    if (Nan::New(_${member.type}::constructor)->HasInstance(obj)) {
-      self->${member.name}.Reset<v8::Object>(value.As<v8::Object>());
-      _${member.type}* inst = Nan::ObjectWrap::Unwrap<_${member.type}>(obj);
-      ${member.isStructType ? `inst->flush()` : ``};
-      self->instance.${member.name} = ${isReference ? "&" : ""}inst->instance;
+    if (${validObjectCondition}) {
+      ${initialize}
     } else {
       ${invalidMemberTypeError(member)}
       return;
@@ -642,7 +655,7 @@ function processFlushMemberSetter(struct, member) {
   v8::Local<v8::String> sAccess${index} = Nan::New("${member.name}").ToLocalChecked();
   info.This()->Set(sAccess${index}, info.This()->Get(sAccess${index}));`;
   let {rawType} = member;
-  if (rawType === "const void *") return ``;
+  if (isPNextMember(member)) return ``;
   if (member.isTypedArray) return ``;
   if (member.isBaseType) rawType = member.baseType;
   if (member.isStaticArray && member.type !== "char") return out;
@@ -678,7 +691,7 @@ function processFlushMemberSetter(struct, member) {
 
 function processSourceMemberAccessor(struct, member) {
   let {name} = member;
-  if (isStructReturnedOnly(struct)) {
+  if (!isFillableMember(struct, member)) {
     return `
   SetPrototypeAccessor(proto, Nan::New("${name}").ToLocalChecked(), Get${name}, nullptr, ctor);`;
   } else {
@@ -727,8 +740,9 @@ function structNameToStructType(name) {
   return out;
 };
 
-function isStructReturnedOnly(struct) {
-  return struct.returnedonly;
+function isFillableMember(struct, member) {
+  if (member.name === `sType` || member.name === `pNext`) return true;
+  return !struct.returnedonly;
 };
 
 export default function(astReference, struct) {
@@ -745,8 +759,8 @@ export default function(astReference, struct) {
     isArrayOfObjectsMember,
     isFlushableMember,
     isHeaderHeapVector,
-    isStructReturnedOnly,
     isIgnoreableType,
+    isFillableMember,
     processSourceGetter,
     processSourceSetter,
     processHeaderGetter,

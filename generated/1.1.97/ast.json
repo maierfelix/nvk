@@ -16733,6 +16733,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -16814,6 +16815,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is a value to be interpreted by the implementation of the callbacks. When any of the callbacks in sname:VkAllocationCallbacks are called, the Vulkan implementation will pass this value as the first parameter to the callback. This value can: vary each time an allocator is passed into a command, even when the same object takes an allocator in multiple commands."
       },
@@ -16903,6 +16905,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure.ifndef::VK_VERSION_1_1[]"
       },
@@ -16994,6 +16997,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -17140,6 +17144,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -17385,6 +17390,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -17702,6 +17708,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -17995,6 +18002,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -18138,6 +18146,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -18253,6 +18262,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -18379,6 +18389,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -18661,6 +18672,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -18726,6 +18738,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -18854,6 +18867,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -18999,6 +19013,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -19292,6 +19307,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -19765,6 +19781,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -20214,6 +20231,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -20372,6 +20390,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -20485,6 +20504,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -20576,6 +20596,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -20726,6 +20747,7 @@
         "length": "dataSize",
         "isDynamicArray": true,
         "jsType": "Array",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " contains the actual constant values to specialize with."
       }
@@ -20760,6 +20782,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -20862,6 +20885,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -21067,6 +21091,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -21174,6 +21199,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -21252,6 +21278,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -21317,6 +21344,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -21428,6 +21456,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -21616,6 +21645,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -21880,6 +21910,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -22002,6 +22033,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -22184,6 +22216,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -22350,6 +22383,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -22589,6 +22623,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -22629,6 +22664,7 @@
         "length": "initialDataSize",
         "isDynamicArray": true,
         "jsType": "Array",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is a pointer to previously retrieved pipeline cache data. If the pipeline cache data is incompatible (as defined below) with the device, the pipeline cache will be initially empty. If pname:initialDataSize is zero, pname:pInitialData is ignored."
       }
@@ -22711,6 +22747,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -22816,6 +22853,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -23068,6 +23106,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -23130,6 +23169,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -23204,6 +23244,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -23324,6 +23365,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -23389,6 +23431,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -24000,6 +24043,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -24133,6 +24177,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -24183,6 +24228,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -26275,6 +26321,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -26329,6 +26376,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -26420,6 +26468,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -26716,6 +26765,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -27061,6 +27111,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -27239,6 +27290,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -27380,6 +27432,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -27594,6 +27647,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -27655,6 +27709,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -27681,6 +27736,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is the code:nn::code:vi::code:NativeWindowHandle for the code:nn::code:vi::code:Layer with which to associate the surface."
       }
@@ -27716,6 +27772,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -27787,6 +27844,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -27858,6 +27916,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -27930,6 +27989,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -28002,6 +28062,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -28100,6 +28161,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -28350,6 +28412,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -28482,6 +28545,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -28519,6 +28583,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is user data to be passed to the callback."
       }
@@ -28555,6 +28620,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -28622,6 +28688,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -28720,6 +28787,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -28770,6 +28838,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -28843,6 +28912,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -28907,6 +28977,7 @@
         "length": "tagSize",
         "isDynamicArray": true,
         "jsType": "Array",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       }
     ],
@@ -28941,6 +29012,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -29003,6 +29075,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -29053,6 +29126,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -29103,6 +29177,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -29231,6 +29306,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -29282,6 +29358,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -29333,6 +29410,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -29395,6 +29473,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -29452,6 +29531,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -29592,6 +29672,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -29641,6 +29722,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -29842,6 +29924,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -29933,6 +30016,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -30098,6 +30182,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -30171,6 +30256,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -30659,6 +30745,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -30715,6 +30802,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -30799,6 +30887,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -30857,6 +30946,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure. The pname:pNext chain of sname:VkImageFormatProperties2 is used to allow the specification of additional capabilities to be returned from fname:vkGetPhysicalDeviceImageFormatProperties2."
       },
@@ -30918,6 +31008,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure. The pname:pNext chain of sname:VkPhysicalDeviceImageFormatInfo2 is used to provide additional image parameters to fname:vkGetPhysicalDeviceImageFormatProperties2."
       },
@@ -31037,6 +31128,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -31095,6 +31187,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -31153,6 +31246,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -31208,6 +31302,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -31323,6 +31418,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -31428,6 +31524,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension specific structure."
       },
@@ -31520,6 +31617,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -31662,6 +31760,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -31794,6 +31893,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -31853,6 +31953,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -31909,6 +32010,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is NULL or a pointer to an extension-specific structure."
       },
@@ -31997,6 +32099,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is NULL or a pointer to an extension-specific structure."
       },
@@ -32052,6 +32155,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -32163,6 +32267,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -32222,6 +32327,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -32281,6 +32387,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -32340,6 +32447,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -32412,6 +32520,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -32481,6 +32590,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -32528,6 +32638,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -32591,6 +32702,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -32653,6 +32765,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -32700,6 +32813,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -32762,6 +32876,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -32901,6 +33016,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is NULL or a pointer to an extension-specific structure."
       },
@@ -32958,6 +33074,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -33045,6 +33162,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -33104,6 +33222,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -33203,6 +33322,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -33272,6 +33392,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -33366,6 +33487,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -33429,6 +33551,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -33518,6 +33641,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -33581,6 +33705,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is NULL or a pointer to an extension-specific structure."
       },
@@ -33638,6 +33763,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -33725,6 +33851,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -33784,6 +33911,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -33883,6 +34011,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -33952,6 +34081,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -34015,6 +34145,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -34104,6 +34235,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -34166,6 +34298,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -34250,6 +34383,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -34313,6 +34447,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -34442,6 +34577,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -34614,6 +34750,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -34663,6 +34800,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -34711,6 +34849,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -34760,6 +34899,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -34811,6 +34951,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -34896,6 +35037,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -34967,6 +35109,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -35051,6 +35194,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -35124,6 +35268,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -35210,6 +35355,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -35310,6 +35456,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -35393,6 +35540,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -35449,6 +35597,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -35580,6 +35729,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -35648,6 +35798,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -35713,6 +35864,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -35762,6 +35914,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -35822,6 +35975,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -35920,6 +36074,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -36000,6 +36155,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -36072,6 +36228,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -36210,6 +36367,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -36388,6 +36546,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -36609,6 +36768,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -36705,6 +36865,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -36731,6 +36892,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is a reference to a code:UIView object which will display this surface. This code:UIView must: be backed by a code:CALayer instance of type code:CAMetalLayer."
       }
@@ -36766,6 +36928,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -36792,6 +36955,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is a reference to a code:NSView object which will display this surface. This code:NSView must: be backed by a code:CALayer instance of type code:CAMetalLayer."
       }
@@ -36859,6 +37023,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -37001,6 +37166,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -37079,6 +37245,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -37127,6 +37294,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -37219,6 +37387,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -37322,6 +37491,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -37392,6 +37562,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -37440,6 +37611,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -37490,6 +37662,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -37537,6 +37710,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -37584,6 +37758,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -37631,6 +37806,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -37678,6 +37854,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -37737,6 +37914,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -37784,6 +37962,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -37835,6 +38014,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -37932,6 +38112,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -38024,6 +38205,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -38080,6 +38262,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -38139,6 +38322,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -38195,6 +38379,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -38253,6 +38438,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -38308,6 +38494,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -38366,6 +38553,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -38438,6 +38626,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -38508,6 +38697,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -38567,6 +38757,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -38625,6 +38816,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -38682,6 +38874,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -38835,6 +39028,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -38894,6 +39088,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -38952,6 +39147,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -39008,6 +39204,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -39064,6 +39261,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL`."
       },
@@ -39114,6 +39312,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -39188,6 +39387,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -39236,6 +39436,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -39285,6 +39486,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -39335,6 +39537,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure. The pname:pNext chain of sname:VkDeviceQueueInfo2 is used to provide additional image parameters to fname:vkGetDeviceQueue2."
       },
@@ -39409,6 +39612,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure"
       },
@@ -39486,6 +39690,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -39583,6 +39788,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -39738,6 +39944,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -39828,6 +40035,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -39890,6 +40098,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -39993,6 +40202,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -40040,6 +40250,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -40089,6 +40300,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -40137,6 +40349,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -40255,6 +40468,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -40332,6 +40546,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -40395,6 +40610,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -40487,6 +40703,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -40513,6 +40730,7 @@
         "length": "dataSize",
         "isDynamicArray": true,
         "jsType": "Array",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       }
     ],
@@ -40548,6 +40766,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -40596,6 +40815,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -40704,6 +40924,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -40770,6 +40991,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -40810,6 +41032,7 @@
         "length": "initialDataSize",
         "isDynamicArray": true,
         "jsType": "Array",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is a pointer to previously retrieved validation cache data. If the validation cache data is incompatible (as defined below) with the device, the validation cache will be initially empty. If pname:initialDataSize is zero, pname:pInitialData is ignored."
       }
@@ -40845,6 +41068,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -40894,6 +41118,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -40963,6 +41188,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -41022,6 +41248,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -41071,6 +41298,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -41135,6 +41363,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -41391,6 +41620,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -41401,6 +41631,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -41627,6 +41858,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -41677,6 +41909,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -41750,6 +41983,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -41814,6 +42048,7 @@
         "length": "tagSize",
         "isDynamicArray": true,
         "jsType": "Array",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       }
     ],
@@ -41848,6 +42083,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -41910,6 +42146,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -41977,6 +42214,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is user data to be passed to the callback."
       }
@@ -42013,6 +42251,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -42179,6 +42418,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -42205,6 +42445,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is the host pointer to import from."
       }
@@ -42241,6 +42482,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -42288,6 +42530,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -42337,6 +42580,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -42485,6 +42729,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -42534,6 +42779,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -42737,6 +42983,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -42813,6 +43060,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -43108,6 +43356,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -43434,6 +43683,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -43502,6 +43752,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -43567,6 +43818,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -43615,6 +43867,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -43778,6 +44031,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -43854,6 +44108,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -44042,6 +44297,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -44188,6 +44444,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -44345,6 +44602,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -44394,6 +44652,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       }
@@ -44462,6 +44721,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure"
       },
@@ -44525,6 +44785,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -44573,6 +44834,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -44657,6 +44919,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -44704,6 +44967,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -44752,6 +45016,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -44815,6 +45080,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -44863,6 +45129,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -45008,6 +45275,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure"
       },
@@ -45058,6 +45326,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -45106,6 +45375,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -45182,6 +45452,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -45246,6 +45517,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -45310,6 +45582,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -45374,6 +45647,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -45438,6 +45712,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -45489,6 +45764,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -45515,6 +45791,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " contains the value of the last checkpoint marker executed in the stage that pname:stage refers to."
       }
@@ -45549,6 +45826,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -45641,6 +45919,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -45719,6 +45998,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -45768,6 +46048,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -45815,6 +46096,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -45877,6 +46159,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -46033,6 +46316,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -46095,6 +46379,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -46143,6 +46428,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -46192,6 +46478,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -46241,6 +46528,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -46303,6 +46591,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -46351,6 +46640,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -46411,6 +46701,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -46458,6 +46749,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -46547,6 +46839,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -46623,6 +46916,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -46686,6 +46980,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -46863,6 +47158,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -46939,6 +47235,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -47002,6 +47299,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -47231,6 +47529,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -47328,6 +47627,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -47481,6 +47781,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -47656,6 +47957,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -47772,6 +48074,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -47848,6 +48151,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -47951,6 +48255,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -48011,6 +48316,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -48114,6 +48420,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -48178,6 +48485,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -48240,6 +48548,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -48372,6 +48681,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -48483,6 +48793,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -48574,6 +48885,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -48639,6 +48951,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -48714,6 +49027,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -48761,6 +49075,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -48812,6 +49127,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -48861,6 +49177,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -48937,6 +49254,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -49007,6 +49325,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -49054,6 +49373,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -49103,6 +49423,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -49170,6 +49491,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -49219,6 +49541,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -49266,6 +49589,7 @@
         "isConstant": false,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -49343,6 +49667,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -49391,6 +49716,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "STRUCT_MEMBER",
         "description": " is `NULL` or a pointer to an extension-specific structure."
       },
@@ -54370,6 +54696,7 @@
         "length": "dataSize",
         "isDynamicArray": true,
         "jsType": "Array",
+        "isVoidPointer": true,
         "kind": "COMMAND_PARAM",
         "description": " is a pointer to a user-allocated buffer where the results will be written"
       },
@@ -55244,6 +55571,7 @@
         "length": "pDataSize",
         "isDynamicArray": true,
         "jsType": "Array",
+        "isVoidPointer": true,
         "kind": "COMMAND_PARAM",
         "description": " is either `NULL` or a pointer to a buffer."
       }
@@ -58837,6 +59165,7 @@
         "length": "dataSize",
         "isDynamicArray": true,
         "jsType": "Array",
+        "isVoidPointer": true,
         "kind": "COMMAND_PARAM",
         "description": " is a pointer to the source data for the buffer update, and must: be at least pname:dataSize bytes in size."
       }
@@ -60239,6 +60568,7 @@
         "length": "size",
         "isDynamicArray": true,
         "jsType": "Array",
+        "isVoidPointer": true,
         "kind": "COMMAND_PARAM"
       }
     ],
@@ -66190,6 +66520,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "COMMAND_PARAM",
         "description": " is a pointer to memory which contains one or more structures of slink:VkDescriptorImageInfo, slink:VkDescriptorBufferInfo, or slink:VkBufferView used to write the descriptors."
       }
@@ -66266,6 +66597,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "COMMAND_PARAM",
         "description": " Points to memory which contains the descriptors for the templated update."
       }
@@ -67741,6 +68073,7 @@
         "length": "pDataSize",
         "isDynamicArray": true,
         "jsType": "Array",
+        "isVoidPointer": true,
         "kind": "COMMAND_PARAM",
         "description": " is either `NULL` or a pointer to a buffer."
       }
@@ -68170,6 +68503,7 @@
         "length": "pInfoSize",
         "isDynamicArray": true,
         "jsType": "Array",
+        "isVoidPointer": true,
         "kind": "COMMAND_PARAM",
         "description": " is either NULL or a pointer to a buffer."
       }
@@ -68853,6 +69187,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "COMMAND_PARAM",
         "description": " is the host pointer to import from."
       },
@@ -69499,6 +69834,7 @@
         "isConstant": true,
         "dereferenceCount": 1,
         "jsType": "undefined",
+        "isVoidPointer": true,
         "kind": "COMMAND_PARAM",
         "description": " is an opaque application-provided value that will be associated with the checkpoint."
       }
@@ -71420,6 +71756,7 @@
         "length": "dataSize",
         "isDynamicArray": true,
         "jsType": "Array",
+        "isVoidPointer": true,
         "kind": "COMMAND_PARAM",
         "description": " is a pointer to a user-allocated buffer where the results will be written."
       }
@@ -71489,6 +71826,7 @@
         "length": "dataSize",
         "isDynamicArray": true,
         "jsType": "Array",
+        "isVoidPointer": true,
         "kind": "COMMAND_PARAM",
         "description": " is a pointer to a user-allocated buffer where the results will be written."
       }

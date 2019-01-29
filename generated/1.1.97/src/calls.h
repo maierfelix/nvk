@@ -11,7 +11,7 @@
 #include <GLFW/glfw3.h>
 
 #include "utils.h"
-#include "index.h"
+#include "source.h"
 
 #include <map>
 #include <string>
@@ -6009,19 +6009,12 @@ void _vkCmdUpdateBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
 
   uint64_t $p3 = static_cast<uint64_t>(Nan::To<int64_t>(info[3]).FromMaybe(0));
 
-  void* $p4;
-  if (info[4]->IsArrayBufferView()) {
-    v8::Local<v8::ArrayBufferView> arr = v8::Local<v8::ArrayBufferView>::Cast(Nan::To<v8::Object>(info[4]).ToLocalChecked());
-    $p4 = arr->Buffer()->GetContents().Data();
-  } else {
-    $p4 = nullptr;
-  }
 vkCmdUpdateBuffer(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2,
     $p3,
-    $p4
+nullptr
   );
   
   
@@ -7039,20 +7032,13 @@ void _vkCmdPushConstants(const Nan::FunctionCallbackInfo<v8::Value>& info) {
 
   uint32_t $p4 = static_cast<uint32_t>(Nan::To<int64_t>(info[4]).FromMaybe(0));
 
-  void* $p5;
-  if (info[5]->IsArrayBufferView()) {
-    v8::Local<v8::ArrayBufferView> arr = v8::Local<v8::ArrayBufferView>::Cast(Nan::To<v8::Object>(info[5]).ToLocalChecked());
-    $p5 = arr->Buffer()->GetContents().Data();
-  } else {
-    $p5 = nullptr;
-  }
 vkCmdPushConstants(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     static_cast<VkShaderStageFlags>($p2),
     $p3,
     $p4,
-    $p5
+nullptr
   );
   
   
@@ -11597,18 +11583,11 @@ void _vkUpdateDescriptorSetWithTemplate(const Nan::FunctionCallbackInfo<v8::Valu
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'descriptorUpdateTemplate'");
   }
 
-  void* $p3;
-  if (info[3]->IsArrayBufferView()) {
-    v8::Local<v8::ArrayBufferView> arr = v8::Local<v8::ArrayBufferView>::Cast(Nan::To<v8::Object>(info[3]).ToLocalChecked());
-    $p3 = arr->Buffer()->GetContents().Data();
-  } else {
-    $p3 = nullptr;
-  }
 vkUpdateDescriptorSetWithTemplate(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     info[2]->IsNull() ? VK_NULL_HANDLE : *$p2,
-    $p3
+nullptr
   );
   
   
@@ -11656,19 +11635,12 @@ void _vkCmdPushDescriptorSetWithTemplateKHR(const Nan::FunctionCallbackInfo<v8::
 
   uint32_t $p3 = static_cast<uint32_t>(Nan::To<int64_t>(info[3]).FromMaybe(0));
 
-  void* $p4;
-  if (info[4]->IsArrayBufferView()) {
-    v8::Local<v8::ArrayBufferView> arr = v8::Local<v8::ArrayBufferView>::Cast(Nan::To<v8::Object>(info[4]).ToLocalChecked());
-    $p4 = arr->Buffer()->GetContents().Data();
-  } else {
-    $p4 = nullptr;
-  }
 $vkCmdPushDescriptorSetWithTemplateKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     info[2]->IsNull() ? VK_NULL_HANDLE : *$p2,
     $p3,
-    $p4
+nullptr
   );
   
   
@@ -13805,13 +13777,6 @@ void _vkGetMemoryHostPointerPropertiesEXT(const Nan::FunctionCallbackInfo<v8::Va
 
   int32_t $p1 = static_cast<int32_t>(Nan::To<int64_t>(info[1]).FromMaybe(0));
 
-  void* $p2;
-  if (info[2]->IsArrayBufferView()) {
-    v8::Local<v8::ArrayBufferView> arr = v8::Local<v8::ArrayBufferView>::Cast(Nan::To<v8::Object>(info[2]).ToLocalChecked());
-    $p2 = arr->Buffer()->GetContents().Data();
-  } else {
-    $p2 = nullptr;
-  }
 
   _VkMemoryHostPointerPropertiesEXT* obj3;
   VkMemoryHostPointerPropertiesEXT *$p3;
@@ -13827,7 +13792,7 @@ void _vkGetMemoryHostPointerPropertiesEXT(const Nan::FunctionCallbackInfo<v8::Va
   int32_t out = $vkGetMemoryHostPointerPropertiesEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     static_cast<VkExternalMemoryHandleTypeFlagBits>($p1),
-    $p2,
+nullptr,
     $p3
   );
   
@@ -14191,16 +14156,9 @@ void _vkCmdSetCheckpointNV(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
   }
 
-  void* $p1;
-  if (info[1]->IsArrayBufferView()) {
-    v8::Local<v8::ArrayBufferView> arr = v8::Local<v8::ArrayBufferView>::Cast(Nan::To<v8::Object>(info[1]).ToLocalChecked());
-    $p1 = arr->Buffer()->GetContents().Data();
-  } else {
-    $p1 = nullptr;
-  }
 $vkCmdSetCheckpointNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
-    $p1
+nullptr
   );
   
   

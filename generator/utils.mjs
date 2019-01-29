@@ -119,7 +119,7 @@ export function isNumericReferenceType(type) {
 export function isIgnoreableType(obj) {
   let type = obj.rawType;
   // dont ignore
-  if (type === "const void *" && obj.name === "pNext") return true;
+  if (isPNextMember(obj)) return false;
   // ignore just for now
   if (type.substr(0, 4) === "PFN_") return true;
   if (type.substr(type.length - 4, type.length) === "2KHR") return true;
@@ -128,6 +128,7 @@ export function isIgnoreableType(obj) {
     type === "struct AHardwareBuffer *" ||
     type === "void" ||
     type === "void *" ||
+    type === "const void *" ||
     type === "struct ANativeWindow *" ||
     type === "MirSurface *" ||
     type === "MirConnection *" ||
@@ -144,4 +145,8 @@ export function isIgnoreableType(obj) {
     type === "LPCWSTR" ||
     type === "HINSTANCE"
   );
+};
+
+export function isPNextMember(member) {
+  return member.name === `pNext` && member.isVoidPointer;
 };

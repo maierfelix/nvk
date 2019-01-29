@@ -1,0 +1,38 @@
+#ifndef __SOURCE__
+#define __SOURCE__
+
+#include <nan.h>
+#include <vulkan/vulkan_win32.h>
+#define GLFW_INCLUDE_VULKAN
+#include <GLFW/glfw3.h>
+
+#include "utils.h"
+
+#include <map>
+#include <string>
+
+std::map<std::string, VkStructureType> constructor2sType = {
+  {% for struct in structs -%}
+  {%- if struct.sType -%}
+  { "{{ struct.name }}", {{ struct.sType }} },
+  {% endif -%}
+  {% endfor %}
+};
+
+void * DynamicObjectUnwrapInstance(v8::Local<v8::Object> obj) {
+  std::string constructorName = *(Nan::Utf8String(obj->GetConstructorName()));
+  VkStructureType sType = constructor2sType.at(constructorName);
+  switch (sType) {
+    {% for struct in structs -%}
+    {%- if struct.sType -%}
+    case {{ struct.sType }}: return (void *) &Nan::ObjectWrap::Unwrap<_{{ struct.name }}>(obj)->instance;
+    {% endif -%}
+    {% endfor %}
+  };
+  Nan::ThrowRangeError("Dynamic Object Unwrap failed! Invalid constructor: '" + constructorName + "'");
+  return -1;
+}
+
+
+
+#endif

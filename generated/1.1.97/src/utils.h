@@ -6,7 +6,7 @@
 #define __UTILS__
 
 #include <nan.h>
-#include "index.h"
+#include "source.h"
 
 #define VULKAN_ASSERT(func) { VkResult res = func; TRAP(res >= VK_SUCCESS); }
 
@@ -29,7 +29,7 @@ inline void SetPrototypeAccessor(
   );
 };
 
-std::string getV8ObjectDetails(v8::Local<v8::Value> value) {
+inline std::string getV8ObjectDetails(v8::Local<v8::Value> value) {
   Nan::Utf8String utf8(value->ToDetailString(Nan::GetCurrentContext()).ToLocalChecked());
   std::string details(*utf8);
   return details;
@@ -67,7 +67,7 @@ template<typename T> inline T* getTypedArrayData(v8::Local<v8::Object> obj, int 
   return data;
 };
 
-void NanInvalidStructMemberTypeError(
+inline void NanInvalidStructMemberTypeError(
   v8::Local<v8::Value> value,
   std::string memberName,
   std::string expectedType

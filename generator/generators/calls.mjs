@@ -9,6 +9,7 @@ import pkg from "../../package.json";
 
 import {
   warn, error,
+  isPNextMember,
   isIgnoreableType
 } from "../utils";
 
@@ -585,6 +586,14 @@ function getMutableStructReflectInstructions(name, pIndex, basePath, out = []) {
       member.enumType ||
       isIgnoreableType(member)
     ) return;
+    // TODO: validate that this works
+    // pNext structure could have needs for deep reflection
+    if (isPNextMember(member)) {
+      // idea:
+      // read sType using: ((int*)(self->instance.pNext))[0]);
+      // and recursively reflect based on AST node.extensions[sType]
+      return;
+    }
     // string
     if (member.isString && member.isStaticArray) {
       out.push(`

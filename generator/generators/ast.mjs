@@ -479,6 +479,10 @@ function parseTypeElement(child) {
     else if (!out.isConstant && isNumericReferenceType(out.rawType)) jsType = "Object";
     out.jsType = jsType;
   }
+  // void pointer
+  if (out.rawType === `void *` || out.rawType === `const void *`){
+    out.isVoidPointer = true;
+  }
   return out;
 };
 
