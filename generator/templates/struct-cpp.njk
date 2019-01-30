@@ -39,7 +39,7 @@ void _{{ struct_name }}::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE targe
   // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
   SetPrototypeAccessor(proto, Nan::New("memoryBuffer").ToLocalChecked(), GetmemoryBuffer, nullptr, ctor);
-  SetPrototypeAccessor(proto, Nan::New("memoryTable").ToLocalChecked(), GetmemoryTable, nullptr, ctor);
+  SetPrototypeAccessor(proto, Nan::New("memoryLayout").ToLocalChecked(), GetmemoryLayout, nullptr, ctor);
   {% for member in members -%}
   {%- if isIgnoreableType(member) != true -%}
   {{- processSourceMemberAccessor(struct, member) | safe -}}
@@ -61,7 +61,7 @@ NAN_GETTER(_{{ struct_name }}::GetmemoryBuffer) {
   info.GetReturnValue().Set(buffer);
 }
 
-NAN_GETTER(_{{ struct_name }}::GetmemoryTable) {
+NAN_GETTER(_{{ struct_name }}::GetmemoryLayout) {
   _{{ struct_name }} *self = Nan::ObjectWrap::Unwrap<_{{ struct_name }}>(info.This());
 
   v8::Local<v8::Object> out = Nan::New<v8::Object>();

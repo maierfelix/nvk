@@ -947,7 +947,7 @@ class _VkClearColorValue: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     std::vector<float>* vfloat32;
     Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> float32;
@@ -989,7 +989,7 @@ class _VkBufferDeviceAddressCreateInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -1026,7 +1026,7 @@ class _VkBufferDeviceAddressInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -1064,7 +1064,7 @@ class _VkPhysicalDeviceBufferAddressFeaturesEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -1107,7 +1107,7 @@ class _VkMemoryPriorityAllocateInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -1144,7 +1144,7 @@ class _VkPhysicalDeviceMemoryPriorityFeaturesEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -1181,7 +1181,7 @@ class _VkPhysicalDeviceMemoryBudgetPropertiesEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -1221,7 +1221,7 @@ class _VkPhysicalDeviceScalarBlockLayoutFeaturesEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -1258,7 +1258,7 @@ class _VkAttachmentReference: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getattachment);
     static NAN_SETTER(Setattachment);
@@ -1291,7 +1291,7 @@ class _VkRenderPassFragmentDensityMapCreateInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -1329,7 +1329,7 @@ class _VkExtent2D: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getwidth);
     static NAN_SETTER(Setwidth);
@@ -1362,7 +1362,7 @@ class _VkPhysicalDeviceFragmentDensityMapPropertiesEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -1401,7 +1401,7 @@ class _VkPhysicalDeviceFragmentDensityMapFeaturesEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -1438,7 +1438,7 @@ class _VkDeviceMemoryOverallocationCreateInfoAMD: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -1475,7 +1475,7 @@ class _VkImageStencilUsageCreateInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -1512,7 +1512,7 @@ class _VkImageDrmFormatModifierPropertiesEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -1547,7 +1547,7 @@ class _VkSubresourceLayout: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getoffset);
     static NAN_GETTER(Getsize);
@@ -1579,7 +1579,7 @@ class _VkImageDrmFormatModifierExplicitCreateInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -1624,7 +1624,7 @@ class _VkImageDrmFormatModifierListCreateInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -1665,7 +1665,7 @@ class _VkPhysicalDeviceImageDrmFormatModifierInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -1712,7 +1712,7 @@ class _VkDrmFormatModifierPropertiesEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetdrmFormatModifier);
     static NAN_GETTER(GetdrmFormatModifierPlaneCount);
@@ -1742,7 +1742,7 @@ class _VkDrmFormatModifierPropertiesListEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -1784,7 +1784,7 @@ class _VkPhysicalDeviceRayTracingPropertiesNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -1842,7 +1842,7 @@ class _VkAccelerationStructureMemoryRequirementsInfoNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -1883,7 +1883,7 @@ class _VkWriteDescriptorSetAccelerationStructureNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -1925,7 +1925,7 @@ class _VkBindAccelerationStructureMemoryInfoNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -1977,7 +1977,7 @@ class _VkGeometryAABBNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -2024,7 +2024,7 @@ class _VkGeometryTrianglesNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -2094,7 +2094,7 @@ class _VkGeometryDataNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> triangles;
       static NAN_GETTER(Gettriangles);
@@ -2129,7 +2129,7 @@ class _VkGeometryNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -2173,7 +2173,7 @@ class _VkAccelerationStructureInfoNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -2224,7 +2224,7 @@ class _VkAccelerationStructureCreateInfoNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -2265,7 +2265,7 @@ class _VkRayTracingShaderGroupCreateInfoNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -2314,7 +2314,7 @@ class _VkSpecializationMapEntry: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetconstantID);
     static NAN_SETTER(SetconstantID);
@@ -2350,7 +2350,7 @@ class _VkSpecializationInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetmapEntryCount);
     static NAN_SETTER(SetmapEntryCount);
@@ -2388,7 +2388,7 @@ class _VkPipelineShaderStageCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -2440,7 +2440,7 @@ class _VkRayTracingPipelineCreateInfoNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -2507,7 +2507,7 @@ class _VkDrawMeshTasksIndirectCommandNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GettaskCount);
     static NAN_SETTER(SettaskCount);
@@ -2540,7 +2540,7 @@ class _VkPhysicalDeviceMeshShaderPropertiesNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -2617,7 +2617,7 @@ class _VkPhysicalDeviceMeshShaderFeaturesNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -2657,7 +2657,7 @@ class _VkCoarseSampleLocationNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetpixelX);
     static NAN_SETTER(SetpixelX);
@@ -2693,7 +2693,7 @@ class _VkCoarseSampleOrderCustomNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetshadingRate);
     static NAN_SETTER(SetshadingRate);
@@ -2734,7 +2734,7 @@ class _VkPipelineViewportCoarseSampleOrderStateCreateInfoNV: public Nan::ObjectW
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -2779,7 +2779,7 @@ class _VkPhysicalDeviceShadingRateImagePropertiesNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -2817,7 +2817,7 @@ class _VkPhysicalDeviceShadingRateImageFeaturesNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -2857,7 +2857,7 @@ class _VkShadingRatePaletteNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetshadingRatePaletteEntryCount);
     static NAN_SETTER(SetshadingRatePaletteEntryCount);
@@ -2891,7 +2891,7 @@ class _VkPipelineViewportShadingRateImageStateCreateInfoNV: public Nan::ObjectWr
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -2936,7 +2936,7 @@ class _VkPhysicalDeviceShaderImageFootprintFeaturesNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -2973,7 +2973,7 @@ class _VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV: public Nan::ObjectWr
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -3010,7 +3010,7 @@ class _VkPhysicalDeviceComputeShaderDerivativesFeaturesNV: public Nan::ObjectWra
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -3050,7 +3050,7 @@ class _VkPhysicalDeviceCornerSampledImageFeaturesNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -3087,7 +3087,7 @@ class _VkOffset2D: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getx);
     static NAN_SETTER(Setx);
@@ -3120,7 +3120,7 @@ class _VkRect2D: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> offset;
       static NAN_GETTER(Getoffset);
@@ -3155,7 +3155,7 @@ class _VkPipelineViewportExclusiveScissorStateCreateInfoNV: public Nan::ObjectWr
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -3197,7 +3197,7 @@ class _VkPhysicalDeviceExclusiveScissorFeaturesNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -3234,7 +3234,7 @@ class _VkPipelineRepresentativeFragmentTestStateCreateInfoNV: public Nan::Object
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -3271,7 +3271,7 @@ class _VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV: public Nan::ObjectW
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -3308,7 +3308,7 @@ class _VkPipelineRasterizationStateStreamCreateInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -3348,7 +3348,7 @@ class _VkPhysicalDeviceTransformFeedbackPropertiesEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -3392,7 +3392,7 @@ class _VkPhysicalDeviceTransformFeedbackFeaturesEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -3432,7 +3432,7 @@ class _VkPhysicalDeviceASTCDecodeFeaturesEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -3469,7 +3469,7 @@ class _VkImageViewASTCDecodeModeEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -3506,7 +3506,7 @@ class _VkAttachmentReference2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -3549,7 +3549,7 @@ class _VkSubpassDescriptionDepthStencilResolveKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -3593,7 +3593,7 @@ class _VkPhysicalDeviceDepthStencilResolvePropertiesKHR: public Nan::ObjectWrap 
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -3631,7 +3631,7 @@ class _VkCheckpointDataNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -3666,7 +3666,7 @@ class _VkQueueFamilyCheckpointPropertiesNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -3701,7 +3701,7 @@ class _VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT: public Nan::ObjectWrap
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -3741,7 +3741,7 @@ class _VkPhysicalDeviceShaderAtomicInt64FeaturesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -3781,7 +3781,7 @@ class _VkPhysicalDeviceVulkanMemoryModelFeaturesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -3821,7 +3821,7 @@ class _VkPhysicalDeviceConditionalRenderingFeaturesEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -3861,7 +3861,7 @@ class _VkPhysicalDevice8BitStorageFeaturesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -3904,7 +3904,7 @@ class _VkCommandBufferInheritanceConditionalRenderingInfoEXT: public Nan::Object
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -3941,7 +3941,7 @@ class _VkPhysicalDevicePCIBusInfoPropertiesEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -3979,7 +3979,7 @@ class _VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT: public Nan::ObjectWr
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -4016,7 +4016,7 @@ class _VkVertexInputBindingDivisorDescriptionEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getbinding);
     static NAN_SETTER(Setbinding);
@@ -4049,7 +4049,7 @@ class _VkPipelineVertexInputDivisorStateCreateInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -4091,7 +4091,7 @@ class _VkSubpassEndInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -4125,7 +4125,7 @@ class _VkSubpassBeginInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -4162,7 +4162,7 @@ class _VkSubpassDependency2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -4220,7 +4220,7 @@ class _VkSubpassDescription2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -4295,7 +4295,7 @@ class _VkAttachmentDescription2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -4356,7 +4356,7 @@ class _VkRenderPassCreateInfo2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -4424,7 +4424,7 @@ class _VkDescriptorSetVariableDescriptorCountLayoutSupportEXT: public Nan::Objec
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -4459,7 +4459,7 @@ class _VkDescriptorSetVariableDescriptorCountAllocateInfoEXT: public Nan::Object
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -4500,7 +4500,7 @@ class _VkDescriptorSetLayoutBindingFlagsCreateInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -4541,7 +4541,7 @@ class _VkPhysicalDeviceDescriptorIndexingPropertiesEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -4598,7 +4598,7 @@ class _VkPhysicalDeviceDescriptorIndexingFeaturesEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -4692,7 +4692,7 @@ class _VkPipelineRasterizationConservativeStateCreateInfoEXT: public Nan::Object
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -4735,7 +4735,7 @@ class _VkPhysicalDeviceShaderCorePropertiesAMD: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -4783,7 +4783,7 @@ class _VkCalibratedTimestampInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -4820,7 +4820,7 @@ class _VkPhysicalDeviceConservativeRasterizationPropertiesEXT: public Nan::Objec
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -4881,7 +4881,7 @@ class _VkPhysicalDeviceExternalMemoryHostPropertiesEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -4918,7 +4918,7 @@ class _VkMemoryHostPointerPropertiesEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -4955,7 +4955,7 @@ class _VkImportMemoryHostPointerInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -4992,7 +4992,7 @@ class _VkDebugUtilsObjectNameInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -5036,7 +5036,7 @@ class _VkDebugUtilsLabelEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -5079,7 +5079,7 @@ class _VkDebugUtilsMessengerCallbackDataEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -5151,7 +5151,7 @@ class _VkDebugUtilsMessengerCreateInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -5194,7 +5194,7 @@ class _VkDebugUtilsObjectTagInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -5240,7 +5240,7 @@ class _VkDeviceQueueGlobalPriorityCreateInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -5277,7 +5277,7 @@ class _VkShaderResourceUsageAMD: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetnumUsedVgprs);
     static NAN_GETTER(GetnumUsedSgprs);
@@ -5309,7 +5309,7 @@ class _VkShaderStatisticsInfoAMD: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetshaderStageMask);
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> resourceUsage;
@@ -5346,7 +5346,7 @@ class _VkPhysicalDeviceFloatControlsPropertiesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -5431,7 +5431,7 @@ class _VkPhysicalDeviceFloat16Int8FeaturesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -5471,7 +5471,7 @@ class _VkPhysicalDeviceShaderDrawParameterFeatures: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -5508,7 +5508,7 @@ class _VkDescriptorSetLayoutSupportKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -5535,7 +5535,7 @@ class _VkDescriptorSetLayoutSupport: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -5570,7 +5570,7 @@ class _VkPhysicalDeviceMaintenance3PropertiesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -5597,7 +5597,7 @@ class _VkPhysicalDeviceMaintenance3Properties: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -5633,7 +5633,7 @@ class _VkShaderModuleValidationCacheCreateInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -5671,7 +5671,7 @@ class _VkValidationCacheCreateInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -5711,7 +5711,7 @@ class _VkImageFormatListCreateInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -5752,7 +5752,7 @@ class _VkPipelineCoverageModulationStateCreateInfoNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -5802,7 +5802,7 @@ class _VkDescriptorPoolInlineUniformBlockCreateInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -5839,7 +5839,7 @@ class _VkWriteDescriptorSetInlineUniformBlockEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -5876,7 +5876,7 @@ class _VkPhysicalDeviceInlineUniformBlockPropertiesEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -5915,7 +5915,7 @@ class _VkPhysicalDeviceInlineUniformBlockFeaturesEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -5955,7 +5955,7 @@ class _VkPipelineColorBlendAdvancedStateCreateInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -5998,7 +5998,7 @@ class _VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT: public Nan::ObjectWr
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -6038,7 +6038,7 @@ class _VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT: public Nan::ObjectWrap
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -6075,7 +6075,7 @@ class _VkSamplerReductionModeCreateInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -6112,7 +6112,7 @@ class _VkMultisamplePropertiesEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -6148,7 +6148,7 @@ class _VkPhysicalDeviceSampleLocationsPropertiesEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -6190,7 +6190,7 @@ class _VkSampleLocationEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getx);
     static NAN_SETTER(Setx);
@@ -6223,7 +6223,7 @@ class _VkSampleLocationsInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -6272,7 +6272,7 @@ class _VkPipelineSampleLocationsStateCreateInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -6313,7 +6313,7 @@ class _VkSubpassSampleLocationsEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsubpassIndex);
     static NAN_SETTER(SetsubpassIndex);
@@ -6347,7 +6347,7 @@ class _VkAttachmentSampleLocationsEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetattachmentIndex);
     static NAN_SETTER(SetattachmentIndex);
@@ -6381,7 +6381,7 @@ class _VkRenderPassSampleLocationsBeginInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -6431,7 +6431,7 @@ class _VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT: public Nan::ObjectWrap 
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -6467,7 +6467,7 @@ class _VkPipelineCoverageToColorStateCreateInfoNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -6510,7 +6510,7 @@ class _VkDeviceQueueInfo2: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -6553,7 +6553,7 @@ class _VkPhysicalDeviceProtectedMemoryProperties: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -6590,7 +6590,7 @@ class _VkPhysicalDeviceProtectedMemoryFeatures: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -6627,7 +6627,7 @@ class _VkProtectedSubmitInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -6664,7 +6664,7 @@ class _VkConditionalRenderingBeginInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -6708,7 +6708,7 @@ class _VkTextureLODGatherFormatPropertiesAMD: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -6743,7 +6743,7 @@ class _VkSamplerYcbcrConversionImageFormatPropertiesKHR: public Nan::ObjectWrap 
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -6770,7 +6770,7 @@ class _VkSamplerYcbcrConversionImageFormatProperties: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -6805,7 +6805,7 @@ class _VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR: public Nan::ObjectWrap
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -6832,7 +6832,7 @@ class _VkPhysicalDeviceSamplerYcbcrConversionFeatures: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -6869,7 +6869,7 @@ class _VkImagePlaneMemoryRequirementsInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -6896,7 +6896,7 @@ class _VkImagePlaneMemoryRequirementsInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -6933,7 +6933,7 @@ class _VkBindImagePlaneMemoryInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -6960,7 +6960,7 @@ class _VkBindImagePlaneMemoryInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -6997,7 +6997,7 @@ class _VkSamplerYcbcrConversionCreateInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -7024,7 +7024,7 @@ class _VkComponentMapping: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getr);
     static NAN_SETTER(Setr);
@@ -7063,7 +7063,7 @@ class _VkSamplerYcbcrConversionCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -7122,7 +7122,7 @@ class _VkSamplerYcbcrConversionInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -7149,7 +7149,7 @@ class _VkSamplerYcbcrConversionInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -7187,7 +7187,7 @@ class _VkPipelineTessellationDomainOriginStateCreateInfoKHR: public Nan::ObjectW
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -7214,7 +7214,7 @@ class _VkPipelineTessellationDomainOriginStateCreateInfo: public Nan::ObjectWrap
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -7251,7 +7251,7 @@ class _VkImageViewUsageCreateInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -7278,7 +7278,7 @@ class _VkImageViewUsageCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -7315,7 +7315,7 @@ class _VkMemoryDedicatedAllocateInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -7342,7 +7342,7 @@ class _VkMemoryDedicatedAllocateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -7384,7 +7384,7 @@ class _VkMemoryDedicatedRequirementsKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -7411,7 +7411,7 @@ class _VkMemoryDedicatedRequirements: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -7447,7 +7447,7 @@ class _VkPhysicalDevicePointClippingPropertiesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -7474,7 +7474,7 @@ class _VkPhysicalDevicePointClippingProperties: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -7509,7 +7509,7 @@ class _VkSparseImageMemoryRequirements2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -7536,7 +7536,7 @@ class _VkExtent3D: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getwidth);
     static NAN_SETTER(Setwidth);
@@ -7572,7 +7572,7 @@ class _VkSparseImageFormatProperties: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetaspectMask);
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> imageGranularity;
@@ -7603,7 +7603,7 @@ class _VkSparseImageMemoryRequirements: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> formatProperties;
       static NAN_GETTER(GetformatProperties);
@@ -7636,7 +7636,7 @@ class _VkSparseImageMemoryRequirements2: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -7672,7 +7672,7 @@ class _VkMemoryRequirements2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -7699,7 +7699,7 @@ class _VkMemoryRequirements: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getsize);
     static NAN_GETTER(Getalignment);
@@ -7729,7 +7729,7 @@ class _VkMemoryRequirements2: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -7765,7 +7765,7 @@ class _VkImageSparseMemoryRequirementsInfo2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -7792,7 +7792,7 @@ class _VkImageSparseMemoryRequirementsInfo2: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -7830,7 +7830,7 @@ class _VkImageMemoryRequirementsInfo2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -7857,7 +7857,7 @@ class _VkImageMemoryRequirementsInfo2: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -7895,7 +7895,7 @@ class _VkBufferMemoryRequirementsInfo2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -7922,7 +7922,7 @@ class _VkBufferMemoryRequirementsInfo2: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -7960,7 +7960,7 @@ class _VkPhysicalDeviceSubgroupProperties: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -7998,7 +7998,7 @@ class _VkPhysicalDevice16BitStorageFeaturesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -8025,7 +8025,7 @@ class _VkPhysicalDevice16BitStorageFeatures: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -8071,7 +8071,7 @@ class _VkSharedPresentSurfaceCapabilitiesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -8106,7 +8106,7 @@ class _VkDisplayPlaneCapabilitiesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsupportedAlpha);
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> minSrcPosition;
@@ -8150,7 +8150,7 @@ class _VkDisplayPlaneCapabilities2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -8186,7 +8186,7 @@ class _VkDisplayPlaneInfo2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -8227,7 +8227,7 @@ class _VkDisplayModeParametersKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> visibleRegion;
       static NAN_GETTER(GetvisibleRegion);
@@ -8261,7 +8261,7 @@ class _VkDisplayModePropertiesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> displayMode;
       static NAN_GETTER(GetdisplayMode);
@@ -8292,7 +8292,7 @@ class _VkDisplayModeProperties2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -8328,7 +8328,7 @@ class _VkDisplayPlanePropertiesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> currentDisplay;
       static NAN_GETTER(GetcurrentDisplay);
@@ -8358,7 +8358,7 @@ class _VkDisplayPlaneProperties2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -8394,7 +8394,7 @@ class _VkDisplayPropertiesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> display;
       static NAN_GETTER(Getdisplay);
@@ -8432,7 +8432,7 @@ class _VkDisplayProperties2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -8468,7 +8468,7 @@ class _VkSurfaceFormatKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getformat);
     static NAN_GETTER(GetcolorSpace);
@@ -8497,7 +8497,7 @@ class _VkSurfaceFormat2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -8533,7 +8533,7 @@ class _VkSurfaceCapabilitiesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetminImageCount);
     static NAN_GETTER(GetmaxImageCount);
@@ -8573,7 +8573,7 @@ class _VkSurfaceCapabilities2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -8609,7 +8609,7 @@ class _VkPhysicalDeviceSurfaceInfo2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -8647,7 +8647,7 @@ class _VkRenderPassInputAttachmentAspectCreateInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -8674,7 +8674,7 @@ class _VkInputAttachmentAspectReference: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getsubpass);
     static NAN_SETTER(Setsubpass);
@@ -8710,7 +8710,7 @@ class _VkRenderPassInputAttachmentAspectCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -8752,7 +8752,7 @@ class _VkInputAttachmentAspectReferenceKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -8779,7 +8779,7 @@ class _VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX: public Nan::Obje
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -8814,7 +8814,7 @@ class _VkPipelineDiscardRectangleStateCreateInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -8862,7 +8862,7 @@ class _VkPhysicalDeviceDiscardRectanglePropertiesEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -8899,7 +8899,7 @@ class _VkViewportSwizzleNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getx);
     static NAN_SETTER(Setx);
@@ -8938,7 +8938,7 @@ class _VkPipelineViewportSwizzleStateCreateInfoNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -8983,7 +8983,7 @@ class _VkViewportWScalingNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getxcoeff);
     static NAN_SETTER(Setxcoeff);
@@ -9016,7 +9016,7 @@ class _VkPipelineViewportWScalingStateCreateInfoNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -9061,7 +9061,7 @@ class _VkPresentTimeGOOGLE: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetpresentID);
     static NAN_SETTER(SetpresentID);
@@ -9094,7 +9094,7 @@ class _VkPresentTimesInfoGOOGLE: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -9136,7 +9136,7 @@ class _VkPastPresentationTimingGOOGLE: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetpresentID);
     static NAN_GETTER(GetdesiredPresentTime);
@@ -9168,7 +9168,7 @@ class _VkRefreshCycleDurationGOOGLE: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetrefreshDuration);
 
@@ -9196,7 +9196,7 @@ class _VkXYColorEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getx);
     static NAN_SETTER(Setx);
@@ -9229,7 +9229,7 @@ class _VkHdrMetadataEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -9291,7 +9291,7 @@ class _VkDescriptorUpdateTemplateCreateInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -9318,7 +9318,7 @@ class _VkDescriptorUpdateTemplateEntry: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetdstBinding);
     static NAN_SETTER(SetdstBinding);
@@ -9363,7 +9363,7 @@ class _VkDescriptorUpdateTemplateCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -9425,7 +9425,7 @@ class _VkDescriptorUpdateTemplateEntryKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -9452,7 +9452,7 @@ class _VkDeviceGroupSwapchainCreateInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -9489,7 +9489,7 @@ class _VkDeviceGroupDeviceCreateInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -9516,7 +9516,7 @@ class _VkDeviceGroupDeviceCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -9558,7 +9558,7 @@ class _VkDeviceGroupPresentInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -9602,7 +9602,7 @@ class _VkAcquireNextImageInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -9654,7 +9654,7 @@ class _VkBindImageMemorySwapchainInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -9695,7 +9695,7 @@ class _VkImageSwapchainCreateInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -9733,7 +9733,7 @@ class _VkDeviceGroupPresentCapabilitiesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -9771,7 +9771,7 @@ class _VkDeviceGroupBindSparseInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -9798,7 +9798,7 @@ class _VkDeviceGroupBindSparseInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -9838,7 +9838,7 @@ class _VkDeviceGroupSubmitInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -9865,7 +9865,7 @@ class _VkDeviceGroupSubmitInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -9920,7 +9920,7 @@ class _VkDeviceGroupCommandBufferBeginInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -9947,7 +9947,7 @@ class _VkDeviceGroupCommandBufferBeginInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -9984,7 +9984,7 @@ class _VkDeviceGroupRenderPassBeginInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -10011,7 +10011,7 @@ class _VkDeviceGroupRenderPassBeginInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -10056,7 +10056,7 @@ class _VkBindImageMemoryDeviceGroupInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -10083,7 +10083,7 @@ class _VkBindImageMemoryDeviceGroupInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -10132,7 +10132,7 @@ class _VkBindImageMemoryInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -10159,7 +10159,7 @@ class _VkBindImageMemoryInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -10204,7 +10204,7 @@ class _VkBindBufferMemoryDeviceGroupInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -10231,7 +10231,7 @@ class _VkBindBufferMemoryDeviceGroupInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -10272,7 +10272,7 @@ class _VkBindBufferMemoryInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -10299,7 +10299,7 @@ class _VkBindBufferMemoryInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -10344,7 +10344,7 @@ class _VkMemoryAllocateFlagsInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -10371,7 +10371,7 @@ class _VkMemoryAllocateFlagsInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -10411,7 +10411,7 @@ class _VkPhysicalDeviceGroupPropertiesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -10438,7 +10438,7 @@ class _VkPhysicalDeviceGroupProperties: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -10477,7 +10477,7 @@ class _VkSwapchainCounterCreateInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -10514,7 +10514,7 @@ class _VkDisplayEventInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -10551,7 +10551,7 @@ class _VkDeviceEventInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -10588,7 +10588,7 @@ class _VkDisplayPowerInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -10625,7 +10625,7 @@ class _VkSurfaceCapabilities2EXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -10673,7 +10673,7 @@ class _VkRenderPassMultiviewCreateInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -10700,7 +10700,7 @@ class _VkRenderPassMultiviewCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -10755,7 +10755,7 @@ class _VkPhysicalDeviceMultiviewPropertiesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -10782,7 +10782,7 @@ class _VkPhysicalDeviceMultiviewProperties: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -10818,7 +10818,7 @@ class _VkPhysicalDeviceMultiviewFeaturesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -10845,7 +10845,7 @@ class _VkPhysicalDeviceMultiviewFeatures: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -10888,7 +10888,7 @@ class _VkFenceGetFdInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -10929,7 +10929,7 @@ class _VkImportFenceFdInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -10976,7 +10976,7 @@ class _VkFenceGetWin32HandleInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -11017,7 +11017,7 @@ class _VkExportFenceWin32HandleInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -11051,7 +11051,7 @@ class _VkImportFenceWin32HandleInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -11095,7 +11095,7 @@ class _VkExportFenceCreateInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -11122,7 +11122,7 @@ class _VkExportFenceCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -11159,7 +11159,7 @@ class _VkExternalFencePropertiesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -11186,7 +11186,7 @@ class _VkExternalFenceProperties: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -11223,7 +11223,7 @@ class _VkPhysicalDeviceExternalFenceInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -11250,7 +11250,7 @@ class _VkPhysicalDeviceExternalFenceInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -11287,7 +11287,7 @@ class _VkSemaphoreGetFdInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -11328,7 +11328,7 @@ class _VkImportSemaphoreFdInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -11375,7 +11375,7 @@ class _VkSemaphoreGetWin32HandleInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -11416,7 +11416,7 @@ class _VkD3D12FenceSubmitInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -11464,7 +11464,7 @@ class _VkExportSemaphoreWin32HandleInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -11498,7 +11498,7 @@ class _VkImportSemaphoreWin32HandleInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -11542,7 +11542,7 @@ class _VkExportSemaphoreCreateInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -11569,7 +11569,7 @@ class _VkExportSemaphoreCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -11606,7 +11606,7 @@ class _VkExternalSemaphorePropertiesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -11633,7 +11633,7 @@ class _VkExternalSemaphoreProperties: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -11670,7 +11670,7 @@ class _VkPhysicalDeviceExternalSemaphoreInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -11697,7 +11697,7 @@ class _VkPhysicalDeviceExternalSemaphoreInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -11734,7 +11734,7 @@ class _VkWin32KeyedMutexAcquireReleaseInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -11796,7 +11796,7 @@ class _VkMemoryGetFdInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -11837,7 +11837,7 @@ class _VkMemoryFdPropertiesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -11872,7 +11872,7 @@ class _VkImportMemoryFdInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -11912,7 +11912,7 @@ class _VkMemoryGetWin32HandleInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -11953,7 +11953,7 @@ class _VkMemoryWin32HandlePropertiesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -11988,7 +11988,7 @@ class _VkExportMemoryWin32HandleInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -12022,7 +12022,7 @@ class _VkImportMemoryWin32HandleInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -12059,7 +12059,7 @@ class _VkExportMemoryAllocateInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -12086,7 +12086,7 @@ class _VkExportMemoryAllocateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -12123,7 +12123,7 @@ class _VkExternalMemoryBufferCreateInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -12150,7 +12150,7 @@ class _VkExternalMemoryBufferCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -12187,7 +12187,7 @@ class _VkExternalMemoryImageCreateInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -12214,7 +12214,7 @@ class _VkExternalMemoryImageCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -12251,7 +12251,7 @@ class _VkPhysicalDeviceIDPropertiesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -12278,7 +12278,7 @@ class _VkPhysicalDeviceIDProperties: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -12323,7 +12323,7 @@ class _VkExternalBufferPropertiesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -12350,7 +12350,7 @@ class _VkExternalMemoryProperties: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetexternalMemoryFeatures);
     static NAN_GETTER(GetexportFromImportedHandleTypes);
@@ -12380,7 +12380,7 @@ class _VkExternalBufferProperties: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -12416,7 +12416,7 @@ class _VkPhysicalDeviceExternalBufferInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -12443,7 +12443,7 @@ class _VkPhysicalDeviceExternalBufferInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -12486,7 +12486,7 @@ class _VkExternalImageFormatPropertiesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -12513,7 +12513,7 @@ class _VkExternalImageFormatProperties: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -12549,7 +12549,7 @@ class _VkPhysicalDeviceExternalImageFormatInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -12576,7 +12576,7 @@ class _VkPhysicalDeviceExternalImageFormatInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -12613,7 +12613,7 @@ class _VkExternalMemoryPropertiesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -12640,7 +12640,7 @@ class _VkPhysicalDeviceVariablePointerFeaturesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -12667,7 +12667,7 @@ class _VkPhysicalDeviceVariablePointerFeatures: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -12707,7 +12707,7 @@ class _VkRectLayerKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> offset;
       static NAN_GETTER(Getoffset);
@@ -12745,7 +12745,7 @@ class _VkPresentRegionKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetrectangleCount);
     static NAN_SETTER(SetrectangleCount);
@@ -12780,7 +12780,7 @@ class _VkPresentRegionsKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -12822,7 +12822,7 @@ class _VkConformanceVersionKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getmajor);
     static NAN_SETTER(Setmajor);
@@ -12861,7 +12861,7 @@ class _VkPhysicalDeviceDriverPropertiesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -12902,7 +12902,7 @@ class _VkPhysicalDevicePushDescriptorPropertiesKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -12939,7 +12939,7 @@ class _VkPhysicalDeviceSparseImageFormatInfo2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -12966,7 +12966,7 @@ class _VkPhysicalDeviceSparseImageFormatInfo2: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -13015,7 +13015,7 @@ class _VkSparseImageFormatProperties2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -13042,7 +13042,7 @@ class _VkSparseImageFormatProperties2: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -13078,7 +13078,7 @@ class _VkPhysicalDeviceMemoryProperties2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -13105,7 +13105,7 @@ class _VkMemoryHeap: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getsize);
     static NAN_GETTER(Getflags);
@@ -13134,7 +13134,7 @@ class _VkMemoryType: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetpropertyFlags);
     static NAN_GETTER(GetheapIndex);
@@ -13163,7 +13163,7 @@ class _VkPhysicalDeviceMemoryProperties: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetmemoryTypeCount);
     std::vector<VkMemoryType>* vmemoryTypes;
@@ -13198,7 +13198,7 @@ class _VkPhysicalDeviceMemoryProperties2: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -13234,7 +13234,7 @@ class _VkQueueFamilyProperties2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -13261,7 +13261,7 @@ class _VkQueueFamilyProperties: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetqueueFlags);
     static NAN_GETTER(GetqueueCount);
@@ -13293,7 +13293,7 @@ class _VkQueueFamilyProperties2: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -13329,7 +13329,7 @@ class _VkPhysicalDeviceImageFormatInfo2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -13356,7 +13356,7 @@ class _VkPhysicalDeviceImageFormatInfo2: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -13405,7 +13405,7 @@ class _VkImageFormatProperties2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -13432,7 +13432,7 @@ class _VkImageFormatProperties: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> maxExtent;
       static NAN_GETTER(GetmaxExtent);
@@ -13465,7 +13465,7 @@ class _VkImageFormatProperties2: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -13501,7 +13501,7 @@ class _VkFormatProperties2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -13528,7 +13528,7 @@ class _VkFormatProperties: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetlinearTilingFeatures);
     static NAN_GETTER(GetoptimalTilingFeatures);
@@ -13558,7 +13558,7 @@ class _VkFormatProperties2: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -13594,7 +13594,7 @@ class _VkPhysicalDeviceProperties2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -13621,7 +13621,7 @@ class _VkPhysicalDeviceSparseProperties: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetresidencyStandard2DBlockShape);
     static NAN_GETTER(GetresidencyStandard2DMultisampleBlockShape);
@@ -13653,7 +13653,7 @@ class _VkPhysicalDeviceLimits: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetmaxImageDimension1D);
     static NAN_GETTER(GetmaxImageDimension2D);
@@ -13798,7 +13798,7 @@ class _VkPhysicalDeviceProperties: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetapiVersion);
     static NAN_GETTER(GetdriverVersion);
@@ -13839,7 +13839,7 @@ class _VkPhysicalDeviceProperties2: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -13875,7 +13875,7 @@ class _VkPhysicalDeviceFeatures2KHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -13902,7 +13902,7 @@ class _VkPhysicalDeviceFeatures: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetrobustBufferAccess);
     static NAN_SETTER(SetrobustBufferAccess);
@@ -14094,7 +14094,7 @@ class _VkPhysicalDeviceFeatures2: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -14132,7 +14132,7 @@ class _VkObjectTablePushConstantEntryNVX: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Gettype);
     static NAN_SETTER(Settype);
@@ -14172,7 +14172,7 @@ class _VkObjectTableIndexBufferEntryNVX: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Gettype);
     static NAN_SETTER(Settype);
@@ -14212,7 +14212,7 @@ class _VkObjectTableVertexBufferEntryNVX: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Gettype);
     static NAN_SETTER(Settype);
@@ -14249,7 +14249,7 @@ class _VkObjectTableDescriptorSetEntryNVX: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Gettype);
     static NAN_SETTER(Settype);
@@ -14290,7 +14290,7 @@ class _VkObjectTablePipelineEntryNVX: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Gettype);
     static NAN_SETTER(Settype);
@@ -14327,7 +14327,7 @@ class _VkObjectTableEntryNVX: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Gettype);
     static NAN_SETTER(Settype);
@@ -14360,7 +14360,7 @@ class _VkObjectTableCreateInfoNVX: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -14424,7 +14424,7 @@ class _VkCmdReserveSpaceForCommandsInfoNVX: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -14469,7 +14469,7 @@ class _VkIndirectCommandsTokenNVX: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GettokenType);
     static NAN_SETTER(SettokenType);
@@ -14506,7 +14506,7 @@ class _VkCmdProcessCommandsInfoNVX: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -14577,7 +14577,7 @@ class _VkIndirectCommandsLayoutTokenNVX: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GettokenType);
     static NAN_SETTER(SettokenType);
@@ -14616,7 +14616,7 @@ class _VkIndirectCommandsLayoutCreateInfoNVX: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -14664,7 +14664,7 @@ class _VkDeviceGeneratedCommandsLimitsNVX: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -14713,7 +14713,7 @@ class _VkDeviceGeneratedCommandsFeaturesNVX: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -14750,7 +14750,7 @@ class _VkWin32KeyedMutexAcquireReleaseInfoNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -14812,7 +14812,7 @@ class _VkExportMemoryWin32HandleInfoNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -14846,7 +14846,7 @@ class _VkImportMemoryWin32HandleInfoNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -14883,7 +14883,7 @@ class _VkExportMemoryAllocateInfoNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -14920,7 +14920,7 @@ class _VkExternalMemoryImageCreateInfoNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -14957,7 +14957,7 @@ class _VkExternalImageFormatPropertiesNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> imageFormatProperties;
       static NAN_GETTER(GetimageFormatProperties);
@@ -14989,7 +14989,7 @@ class _VkDedicatedAllocationMemoryAllocateInfoNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -15031,7 +15031,7 @@ class _VkDedicatedAllocationBufferCreateInfoNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -15068,7 +15068,7 @@ class _VkDedicatedAllocationImageCreateInfoNV: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -15105,7 +15105,7 @@ class _VkDebugMarkerMarkerInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -15148,7 +15148,7 @@ class _VkDebugMarkerObjectTagInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -15194,7 +15194,7 @@ class _VkDebugMarkerObjectNameInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -15238,7 +15238,7 @@ class _VkPipelineRasterizationStateRasterizationOrderAMD: public Nan::ObjectWrap
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -15275,7 +15275,7 @@ class _VkValidationFeaturesEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -15323,7 +15323,7 @@ class _VkValidationFlagsEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -15364,7 +15364,7 @@ class _VkDebugReportCallbackCreateInfoEXT: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -15401,7 +15401,7 @@ class _VkPresentInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -15459,7 +15459,7 @@ class _VkSwapchainCreateInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -15545,7 +15545,7 @@ class _VkWin32SurfaceCreateInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -15582,7 +15582,7 @@ class _VkDisplayPresentInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -15627,7 +15627,7 @@ class _VkDisplaySurfaceCreateInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -15687,7 +15687,7 @@ class _VkDisplayModeCreateInfoKHR: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -15728,7 +15728,7 @@ class _VkSubmitInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -15790,7 +15790,7 @@ class _VkDispatchIndirectCommand: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getx);
     static NAN_SETTER(Setx);
@@ -15826,7 +15826,7 @@ class _VkDrawIndexedIndirectCommand: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetindexCount);
     static NAN_SETTER(SetindexCount);
@@ -15868,7 +15868,7 @@ class _VkDrawIndirectCommand: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetvertexCount);
     static NAN_SETTER(SetvertexCount);
@@ -15907,7 +15907,7 @@ class _VkFramebufferCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -15965,7 +15965,7 @@ class _VkQueryPoolCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -16011,7 +16011,7 @@ class _VkSemaphoreCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -16048,7 +16048,7 @@ class _VkFenceCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -16085,7 +16085,7 @@ class _VkEventCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -16122,7 +16122,7 @@ class _VkSubpassDependency: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsrcSubpass);
     static NAN_SETTER(SetsrcSubpass);
@@ -16170,7 +16170,7 @@ class _VkSubpassDescription: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getflags);
     static NAN_SETTER(Setflags);
@@ -16235,7 +16235,7 @@ class _VkAttachmentDescription: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getflags);
     static NAN_SETTER(Setflags);
@@ -16289,7 +16289,7 @@ class _VkRenderPassCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -16350,7 +16350,7 @@ class _VkClearDepthStencilValue: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getdepth);
     static NAN_SETTER(Setdepth);
@@ -16383,7 +16383,7 @@ class _VkClearValue: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> color;
       static NAN_GETTER(Getcolor);
@@ -16418,7 +16418,7 @@ class _VkClearAttachment: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetaspectMask);
     static NAN_SETTER(SetaspectMask);
@@ -16455,7 +16455,7 @@ class _VkRenderPassBeginInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -16509,7 +16509,7 @@ class _VkCommandBufferInheritanceInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -16563,7 +16563,7 @@ class _VkCommandBufferBeginInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -16604,7 +16604,7 @@ class _VkCommandBufferAllocateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -16648,7 +16648,7 @@ class _VkCommandPoolCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -16688,7 +16688,7 @@ class _VkSamplerCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -16770,7 +16770,7 @@ class _VkPushConstantRange: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetstageFlags);
     static NAN_SETTER(SetstageFlags);
@@ -16806,7 +16806,7 @@ class _VkPipelineLayoutCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -16859,7 +16859,7 @@ class _VkPipelineCacheCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -16899,7 +16899,7 @@ class _VkPipelineDynamicStateCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -16943,7 +16943,7 @@ class _VkPipelineColorBlendAttachmentState: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetblendEnable);
     static NAN_SETTER(SetblendEnable);
@@ -16994,7 +16994,7 @@ class _VkPipelineColorBlendStateCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -17050,7 +17050,7 @@ class _VkStencilOpState: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetfailOp);
     static NAN_SETTER(SetfailOp);
@@ -17098,7 +17098,7 @@ class _VkPipelineDepthStencilStateCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -17164,7 +17164,7 @@ class _VkPipelineMultisampleStateCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -17220,7 +17220,7 @@ class _VkPipelineRasterizationStateCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -17287,7 +17287,7 @@ class _VkViewport: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getx);
     static NAN_SETTER(Setx);
@@ -17332,7 +17332,7 @@ class _VkPipelineViewportStateCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -17385,7 +17385,7 @@ class _VkPipelineTessellationStateCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -17425,7 +17425,7 @@ class _VkPipelineInputAssemblyStateCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -17468,7 +17468,7 @@ class _VkVertexInputAttributeDescription: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getlocation);
     static NAN_SETTER(Setlocation);
@@ -17507,7 +17507,7 @@ class _VkVertexInputBindingDescription: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getbinding);
     static NAN_SETTER(Setbinding);
@@ -17543,7 +17543,7 @@ class _VkPipelineVertexInputStateCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -17596,7 +17596,7 @@ class _VkGraphicsPipelineCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -17695,7 +17695,7 @@ class _VkComputePipelineCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -17747,7 +17747,7 @@ class _VkDescriptorSetAllocateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -17793,7 +17793,7 @@ class _VkDescriptorPoolSize: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Gettype);
     static NAN_SETTER(Settype);
@@ -17826,7 +17826,7 @@ class _VkDescriptorPoolCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -17874,7 +17874,7 @@ class _VkDescriptorSetLayoutBinding: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getbinding);
     static NAN_SETTER(Setbinding);
@@ -17918,7 +17918,7 @@ class _VkDescriptorSetLayoutCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -17963,7 +17963,7 @@ class _VkShaderModuleCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -18007,7 +18007,7 @@ class _VkOffset3D: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(Getx);
     static NAN_SETTER(Setx);
@@ -18043,7 +18043,7 @@ class _VkImageSubresourceLayers: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetaspectMask);
     static NAN_SETTER(SetaspectMask);
@@ -18082,7 +18082,7 @@ class _VkImageResolve: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> srcSubresource;
       static NAN_GETTER(GetsrcSubresource);
@@ -18129,7 +18129,7 @@ class _VkBufferImageCopy: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetbufferOffset);
     static NAN_SETTER(SetbufferOffset);
@@ -18177,7 +18177,7 @@ class _VkImageBlit: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> srcSubresource;
       static NAN_GETTER(GetsrcSubresource);
@@ -18222,7 +18222,7 @@ class _VkImageCopy: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> srcSubresource;
       static NAN_GETTER(GetsrcSubresource);
@@ -18269,7 +18269,7 @@ class _VkImageSubresource: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetaspectMask);
     static NAN_SETTER(SetaspectMask);
@@ -18305,7 +18305,7 @@ class _VkSparseImageMemoryBind: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> subresource;
       static NAN_GETTER(Getsubresource);
@@ -18354,7 +18354,7 @@ class _VkSparseImageMemoryBindInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> image;
       static NAN_GETTER(Getimage);
@@ -18393,7 +18393,7 @@ class _VkSparseMemoryBind: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetresourceOffset);
     static NAN_SETTER(SetresourceOffset);
@@ -18436,7 +18436,7 @@ class _VkSparseImageOpaqueMemoryBindInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> image;
       static NAN_GETTER(Getimage);
@@ -18475,7 +18475,7 @@ class _VkSparseBufferMemoryBindInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> buffer;
       static NAN_GETTER(Getbuffer);
@@ -18514,7 +18514,7 @@ class _VkBindSparseInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -18588,7 +18588,7 @@ class _VkBufferCopy: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsrcOffset);
     static NAN_SETTER(SetsrcOffset);
@@ -18624,7 +18624,7 @@ class _VkImageSubresourceRange: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetaspectMask);
     static NAN_SETTER(SetaspectMask);
@@ -18666,7 +18666,7 @@ class _VkImageViewCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -18721,7 +18721,7 @@ class _VkImageCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -18796,7 +18796,7 @@ class _VkImageMemoryBarrier: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -18856,7 +18856,7 @@ class _VkBufferMemoryBarrier: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -18912,7 +18912,7 @@ class _VkMemoryBarrier: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -18952,7 +18952,7 @@ class _VkBufferViewCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -19002,7 +19002,7 @@ class _VkBufferCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -19055,7 +19055,7 @@ class _VkCopyDescriptorSet: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -19112,7 +19112,7 @@ class _VkDescriptorBufferInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> buffer;
       static NAN_GETTER(Getbuffer);
@@ -19149,7 +19149,7 @@ class _VkDescriptorImageInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> sampler;
       static NAN_GETTER(Getsampler);
@@ -19187,7 +19187,7 @@ class _VkWriteDescriptorSet: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -19252,7 +19252,7 @@ class _VkMappedMemoryRange: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -19296,7 +19296,7 @@ class _VkMemoryAllocateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -19336,7 +19336,7 @@ class _VkApplicationInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -19387,7 +19387,7 @@ class _VkInstanceCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -19444,7 +19444,7 @@ class _VkDeviceQueueCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -19491,7 +19491,7 @@ class _VkDeviceCreateInfo: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -19556,7 +19556,7 @@ class _VkAllocationCallbacks: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
 
     // real instance
@@ -19583,7 +19583,7 @@ class _VkLayerProperties: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> layerName;
     static NAN_GETTER(GetlayerName);
@@ -19616,7 +19616,7 @@ class _VkExtensionProperties: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> extensionName;
     static NAN_GETTER(GetextensionName);
@@ -19646,7 +19646,7 @@ class _VkClearRect: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
       Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> rect;
       static NAN_GETTER(Getrect);
@@ -19683,7 +19683,7 @@ class _VkBaseInStructure: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
@@ -19717,7 +19717,7 @@ class _VkBaseOutStructure: public Nan::ObjectWrap {
     // #methods
     static NAN_METHOD(New);
     static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryTable);
+    static NAN_GETTER(GetmemoryLayout);
     // #accessors
     static NAN_GETTER(GetsType);
     static NAN_SETTER(SetsType);
