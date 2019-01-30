@@ -38,12 +38,48 @@ void _{{ struct_name }}::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE targe
 
   // prototype
   v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  SetPrototypeAccessor(proto, Nan::New("memoryBuffer").ToLocalChecked(), GetmemoryBuffer, nullptr, ctor);
+  SetPrototypeAccessor(proto, Nan::New("memoryTable").ToLocalChecked(), GetmemoryTable, nullptr, ctor);
   {% for member in members -%}
   {%- if isIgnoreableType(member) != true -%}
   {{- processSourceMemberAccessor(struct, member) | safe -}}
   {% endif -%}
   {% endfor %}
   Nan::Set(target, Nan::New("{{ struct_name }}").ToLocalChecked(), ctor->GetFunction());
+}
+
+NAN_GETTER(_{{ struct_name }}::GetmemoryBuffer) {
+  _{{ struct_name }} *self = Nan::ObjectWrap::Unwrap<_{{ struct_name }}>(info.This());
+  uint32_t size = sizeof(self->instance);
+  void * addr = reinterpret_cast<void *>(&self->instance);
+  v8::Local<v8::ArrayBuffer> buffer = v8::ArrayBuffer::New(
+    v8::Isolate::GetCurrent(),
+    addr,
+    size,
+    v8::ArrayBufferCreationMode::kExternalized
+  );
+  info.GetReturnValue().Set(buffer);
+}
+
+NAN_GETTER(_{{ struct_name }}::GetmemoryTable) {
+  _{{ struct_name }} *self = Nan::ObjectWrap::Unwrap<_{{ struct_name }}>(info.This());
+
+  v8::Local<v8::Object> out = Nan::New<v8::Object>();
+
+  {% for member in members -%}
+  {%- if isIgnoreableType(member) != true %}
+  {
+    v8::Local<v8::Object> obj = Nan::New<v8::Object>();
+    uint32_t byteOffset = ((size_t)&((({{ struct.name }} *)0)->{{ member.name | safe }}));
+    uint32_t byteLength = sizeof(self->instance.{{ member.name | safe }});
+    obj->Set(Nan::New("byteOffset").ToLocalChecked(), Nan::New(byteOffset));
+    obj->Set(Nan::New("byteLength").ToLocalChecked(), Nan::New(byteLength));
+    out->Set(Nan::New("{{ member.name | safe }}").ToLocalChecked(), obj);
+  }
+  {%- endif -%}
+  {%- endfor %}
+
+  info.GetReturnValue().Set(out);
 }
 
 bool _{{ struct_name }}::flush() {

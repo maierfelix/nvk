@@ -25,7 +25,7 @@ inline void SetPrototypeAccessor(
   );
 };
 
-inline std::string getV8ObjectDetails(v8::Local<v8::Value> value) {
+inline std::string getV8ValueDetails(v8::Local<v8::Value> value) {
   Nan::Utf8String utf8(value->ToDetailString(Nan::GetCurrentContext()).ToLocalChecked());
   std::string details(*utf8);
   return details;
@@ -68,7 +68,7 @@ inline void NanInvalidStructMemberTypeError(
   std::string memberName,
   std::string expectedType
 ) {
-  std::string details = getV8ObjectDetails(value);
+  std::string details = getV8ValueDetails(value);
   if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
   std::string msg = "Expected '" + expectedType + "' for '" + memberName + "' but got '" + details + "'";
   Nan::ThrowTypeError(msg.c_str());
