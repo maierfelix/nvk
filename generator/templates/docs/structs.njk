@@ -22,7 +22,7 @@
         <ol id="search-list">
           <li id="no-search-results">No Results</li>
           {% for obj in objects -%}
-          <li><a href="../{{ getObjectFolder(obj) }}/{{ obj.name }}.html">{{ obj.name }}</a></li>
+          <li label="{{ getObjectLabel(obj) }}"><a href="../{{ getObjectFolder(obj) }}/{{ obj.name }}.html">{{ obj.name }}</a></li>
           {% endfor %}
         </ol>
       </vk-search-results>
@@ -36,7 +36,7 @@
         <ol>
           {% for obj in getObjectsByCategory(category) -%}
           {%- if obj.category == category -%}
-          <li><a href="../{{ getObjectFolder(obj) }}/{{ obj.name }}.html">{{ obj.name }}</a></li>
+          <li label="{{ getObjectLabel(obj) }}"><a href="../{{ getObjectFolder(obj) }}/{{ obj.name }}.html">{{ obj.name }}</a></li>
           {% endif -%}
           {% endfor -%}
         </ol>
@@ -95,7 +95,7 @@ instanceCreateInfo.{{ member.name }} = ;
       <vk-property-entry>
         <vk-property-prototype>{{ struct.name }}.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
-        <vk-property-description>Gives an ArrayBuffer into the memory of the original vulkan structure instance.</vk-property-description>
+        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
       <!-- {{ struct.name }}.prototype.memoryLayout -->
       <vk-property-entry>

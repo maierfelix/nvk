@@ -306,12 +306,9 @@ function getObjectsByCategory(category) {
   let out = [];
   // collect objects matching category
   {
-    structs.map(struct => {
-      if (struct.category === category) out.push(struct);
-    });
-    handles.map(handle => {
-      if (handle.category === category) out.push(handle);
-    });
+    calls.map(call => { if (call.category === category) out.push(call); });
+    structs.map(struct => { if (struct.category === category) out.push(struct); });
+    handles.map(handle => { if (handle.category === category) out.push(handle); });
   }
   // sort alphabetically
   out = out.sort((a, b) => {
@@ -332,6 +329,18 @@ function getObjectFolder(obj) {
       return "calls";
     case "HANDLE":
       return "handles";
+  };
+  return ``;
+};
+
+function getObjectLabel(obj) {
+  switch (obj.kind) {
+    case "STRUCT":
+      return "s";
+    case "COMMAND_PROTO":
+      return "f";
+    case "HANDLE":
+      return "h";
   };
   return ``;
 };
@@ -358,6 +367,7 @@ export default function(astReference, data, version) {
         categories,
         getType,
         getCSSType,
+        getObjectLabel,
         getObjectFolder,
         getObjectsByCategory
       });
@@ -375,6 +385,7 @@ export default function(astReference, data, version) {
         categories,
         getType,
         getCSSType,
+        getObjectLabel,
         getObjectFolder,
         getObjectsByCategory
       });
@@ -392,6 +403,7 @@ export default function(astReference, data, version) {
         categories,
         getType,
         getCSSType,
+        getObjectLabel,
         getObjectFolder,
         getObjectsByCategory
       });

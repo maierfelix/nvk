@@ -22,7 +22,7 @@
         <ol id="search-list">
           <li id="no-search-results">No Results</li>
           {% for obj in objects -%}
-          <li><a href="../{{ getObjectFolder(obj) }}/{{ obj.name }}.html">{{ obj.name }}</a></li>
+          <li label="{{ getObjectLabel(obj) }}"><a href="../{{ getObjectFolder(obj) }}/{{ obj.name }}.html">{{ obj.name }}</a></li>
           {% endfor %}
         </ol>
       </vk-search-results>
@@ -36,7 +36,7 @@
         <ol>
           {% for obj in getObjectsByCategory(category) -%}
           {%- if obj.category == category -%}
-          <li><a href="../{{ getObjectFolder(obj) }}/{{ obj.name }}.html">{{ obj.name }}</a></li>
+          <li label="{{ getObjectLabel(obj) }}"><a href="../{{ getObjectFolder(obj) }}/{{ obj.name }}.html">{{ obj.name }}</a></li>
           {% endif -%}
           {% endfor -%}
         </ol>

@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="../../assets/css/vk.css"/>
 <link rel="stylesheet" href="../../assets/css/prism.css"/>
 
-<vk-title>{{ call.name }} | NVK</vk-title>
+<vk-title>{{ struct.name }} | NVK</vk-title>
 
 <vk-centered>
 
@@ -44,31 +44,14 @@
     {% endfor -%}
   </vk-navigation>
 
-  <!-- Call -->
+  <!-- Content -->
   <vk-struct>
 
-    <vk-name>{{ call.name }}</vk-name>
+    <vk-name>{{ struct.name }}</vk-name>
 
-    <vk-description>{{ call.description | safe }}</vk-description>
-
-    <vk-section-title>Syntax</vk-section-title>
-    <vk-syntax>
-      <pre><code class="language-js">{{ call.name }}();
-</code></pre>
-    </vk-syntax>
-
-    <vk-section-title>Parameters</vk-section-title>
-
-    <vk-properties>
-      {% for param in params -%}
-      <!-- {{ param.name }} -->
-      <vk-property-entry>
-        <vk-property-parameter>{{ param.name }}</vk-property-parameter>
-        <vk-property-type type="{{ getCSSType(param) | safe }}">{{ getType(param) | safe }}</vk-property-type>
-        <vk-property-description>{{ param.description | safe }}</vk-property-description>
-      </vk-property-entry>
-      {% endfor %}
-    </vk-properties>
+    <vk-description>
+    This is a <a href="https://en.wikipedia.org/wiki/Vulkan_(API)">Vulkan</a> API for node.js, which allows to interact from JavaScript/<a href="https://github.com/maierfelix/nvk#typescript">TypeScript</a> with the low-level interface of Vulkan. The API style of this project strives to be as close as possible to Vulkan's C99 API.
+    </vk-description>
 
   </vk-struct>
 
