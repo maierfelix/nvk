@@ -23,10 +23,13 @@ let includes = null;
 
 let objects = [];
 
-const CALLS_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/docs/calls.njk`, "utf-8");
-const ENUMS_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/docs/enums.njk`, "utf-8");
-const HANDLES_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/docs/handles.njk`, "utf-8");
-const STRUCTS_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/docs/structs.njk`, "utf-8");
+const {TEMPLATE_DIR} = pkg.config;
+
+const INDEX_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/index.njk`, "utf-8");
+const CALLS_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/calls.njk`, "utf-8");
+const ENUMS_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/enums.njk`, "utf-8");
+const HANDLES_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/handles.njk`, "utf-8");
+const STRUCTS_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/structs.njk`, "utf-8");
 
 nunjucks.configure({ autoescape: true });
 
@@ -356,6 +359,46 @@ export default function(astReference, data, version) {
   structs.map(struct => { objects.push(struct); });
   handles.map(handle => { objects.push(handle); });
   let categories = getCategories({ calls, structs, handles });
+  // index
+  {
+    let output = nunjucks.renderString(INDEX_TEMPLATE, {
+      objects,
+      categories,
+      getObjectLabel,
+      getObjectFolder,
+      getObjectsByCategory
+    });
+    fs.writeFileSync(`docs/${version}/index.html`, output, `utf-8`);
+  }
+  // search json
+  {
+    let out = [];
+    objects.map(obj => {
+      out.push({
+        name: obj.name,
+        label: getObjectLabel(obj),
+        folder: getObjectFolder(obj)
+      });
+    });
+    fs.writeFileSync(`docs/${version}/search.json`, JSON.stringify(out), `utf-8`);
+  }
+  // categories json
+  {
+    let out = [];
+    categories.map(name => {
+      let category = { category: name, objects: [] };
+      let objects = getObjectsByCategory(name);
+      objects.map(obj => {
+        category.objects.push({
+          name: obj.name,
+          label: getObjectLabel(obj),
+          folder: getObjectFolder(obj)
+        });
+      });
+      out.push(category);
+    });
+    fs.writeFileSync(`docs/${version}/categories.json`, JSON.stringify(out), `utf-8`);
+  }
   // structs
   {
     structs.map(struct => {

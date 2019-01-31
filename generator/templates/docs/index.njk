@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="../../assets/css/vk.css"/>
 <link rel="stylesheet" href="../../assets/css/prism.css"/>
 
-<vk-title>{{ struct.name }} | NVK</vk-title>
+<vk-title>NVK</vk-title>
 
 <vk-centered>
 
@@ -22,7 +22,7 @@
         <ol id="search-list">
           <li id="no-search-results">No Results</li>
           {% for obj in objects -%}
-          <li label="{{ getObjectLabel(obj) }}"><a href="../{{ getObjectFolder(obj) }}/{{ obj.name }}.html">{{ obj.name }}</a></li>
+          <li label="{{ getObjectLabel(obj) }}"><a href="./{{ getObjectFolder(obj) }}/{{ obj.name }}.html">{{ obj.name }}</a></li>
           {% endfor %}
         </ol>
       </vk-search-results>
@@ -36,7 +36,7 @@
         <ol>
           {% for obj in getObjectsByCategory(category) -%}
           {%- if obj.category == category -%}
-          <li label="{{ getObjectLabel(obj) }}"><a href="../{{ getObjectFolder(obj) }}/{{ obj.name }}.html">{{ obj.name }}</a></li>
+          <li label="{{ getObjectLabel(obj) }}"><a href="./{{ getObjectFolder(obj) }}/{{ obj.name }}.html">{{ obj.name }}</a></li>
           {% endif -%}
           {% endfor -%}
         </ol>
@@ -47,10 +47,14 @@
   <!-- Content -->
   <vk-struct>
 
-    <vk-name>{{ struct.name }}</vk-name>
+    <vk-name>NVK</vk-name>
 
     <vk-description>
     This is a <a href="https://en.wikipedia.org/wiki/Vulkan_(API)">Vulkan</a> API for node.js, which allows to interact from JavaScript/<a href="https://github.com/maierfelix/nvk#typescript">TypeScript</a> with the low-level interface of Vulkan. The API style of this project strives to be as close as possible to Vulkan's C99 API.
+    </vk-description>
+
+    <vk-description>
+    The recommended Vulkan version to use is: <vk-property-prototype class="no-float" id="recommendedVersion">...</vk-property-prototype>
     </vk-description>
 
   </vk-struct>
@@ -59,3 +63,22 @@
 
 <script type="text/javascript" src="../../assets/js/prism.min.js"></script>
 <script type="text/javascript" src="../../assets/js/index.js"></script>
+
+<script>
+
+  function loadJSON(path) {
+    return new Promise(resolve => {
+      fetch(path)
+      .then(resp => resp.json())
+      .then(json => resolve(json));
+    });
+  };
+
+  let url = `https://raw.githubusercontent.com/maierfelix/nvk/master/package.json`;
+
+  loadJSON(url).then(json => {
+    let {config} = json;
+    recommendedVersion.innerHTML = config.POST_DEFAULT_BINDING_VERSION;
+  });
+
+</script>
