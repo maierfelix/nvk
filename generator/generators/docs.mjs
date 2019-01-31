@@ -21,6 +21,8 @@ let structs = null;
 let handles = null;
 let includes = null;
 
+let objects = [];
+
 const CALLS_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/docs/calls.njk`, "utf-8");
 const ENUMS_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/docs/enums.njk`, "utf-8");
 const HANDLES_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/docs/handles.njk`, "utf-8");
@@ -126,6 +128,14 @@ function getJavaScriptType(member) {
     });
   }
   if (member.kind === "COMMAND_PARAM") {
+    if (member.isTypedArray) {
+      return new JavaScriptType({
+        type: JavaScriptType.TYPED_ARRAY,
+        value: member.jsTypedArrayName,
+        isArray: true,
+        isNullable: true
+      });
+    }
     // handle inout parameters
     switch (member.rawType) {
       case "size_t *":
@@ -133,10 +143,6 @@ function getJavaScriptType(member) {
       case "int32_t *":
       case "uint32_t *":
       case "uint64_t *":
-      case "const int32_t *":
-      case "const uint32_t *":
-      case "const uint64_t *":
-      case "const float *":
       case "VkBool32 *":
         return new JavaScriptType({
           type: JavaScriptType.OBJECT_INOUT,
@@ -158,7 +164,10 @@ function getJavaScriptType(member) {
   if (member.isBitmaskType) {
     let bitmask = getBitmaskByName(member.bitmaskType);
     // future reserved bitmask, or must be 0
-    if (!bitmask) return JavaScriptType.NULL;
+    if (!bitmask) return new JavaScriptType({
+      type: JavaScriptType.NUMBER,
+      isNullable: true
+    });
     return getNumericTypescriptType({ type: member.bitmaskType, isBitmask: true });
   }
   if (member.isStaticArray) {
@@ -231,18 +240,17 @@ function getJavaScriptType(member) {
         value: "BigInt",
         isNullable: true
       });
-    default: {
-      warn(`Cannot handle member ${member.rawType} in doc generator!`);
-      return ``;
-    }
   };
+  warn(`Cannot handle member ${member.rawType} in doc generator!`);
+  return null;
 };
 
-function getType(member) {
-  let {type} = getJavaScriptType(member);
+function getType(object) {
+  let folder = getObjectFolder(object);
+  let {type} = getJavaScriptType(object);
   switch (type) {
     case JavaScriptType.UNKNOWN: return `N/A`;
-    case JavaScriptType.OBJECT: return `<a href="./${member.type}.html">${member.type}</a>`;
+    case JavaScriptType.OBJECT: return `<a href="../${folder}/${object.type}.html">${object.type}</a>`;
     case JavaScriptType.NULL: return `null`;
     case JavaScriptType.STRING: return `String`;
     case JavaScriptType.NUMBER: return `Number`;
@@ -256,13 +264,13 @@ function getType(member) {
       return `Array<vk-property-type type="number">[Number]</vk-property-type>`;
     }
     case JavaScriptType.ARRAY_OF_OBJECTS: {
-      return `Array<vk-property-type type="object">[<a href="./${member.type}.html">${member.type}]</a></vk-property-type>`;
+      return `Array<vk-property-type type="object">[<a href="../${folder}/${object.type}.html">${object.type}]</a></vk-property-type>`;
     }
     case JavaScriptType.TYPED_ARRAY: {
-      return `<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/${member.jsTypedArrayName}">${member.jsTypedArrayName}</a>`;
+      return `<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/${object.jsTypedArrayName}">${object.jsTypedArrayName}</a>`;
     }
   };
-  warn(`Cannot resolve doc type ${type} for ${member.name}`);
+  warn(`Cannot resolve doc type ${type} for ${object.name}`);
   return ``;
 };
 
@@ -294,12 +302,17 @@ function getCategories({ calls, structs, handles } = _) {
   return out;
 };
 
-function getStructsByCategory(category) {
+function getObjectsByCategory(category) {
   let out = [];
-  // collect structs matching category
-  structs.map(struct => {
-    if (struct.category === category) out.push(struct);
-  });
+  // collect objects matching category
+  {
+    structs.map(struct => {
+      if (struct.category === category) out.push(struct);
+    });
+    handles.map(handle => {
+      if (handle.category === category) out.push(handle);
+    });
+  }
   // sort alphabetically
   out = out.sort((a, b) => {
     if (a.name < b.name) return -1;
@@ -309,6 +322,20 @@ function getStructsByCategory(category) {
   return out;
 };
 
+function getObjectFolder(obj) {
+  if (obj.isHandleType) return "handles";
+  if (obj.isStructType) return "structs";
+  switch (obj.kind) {
+    case "STRUCT":
+      return "structs";
+    case "COMMAND_PROTO":
+      return "calls";
+    case "HANDLE":
+      return "handles";
+  };
+  return ``;
+};
+
 export default function(astReference, data, version) {
   ast = astReference;
   calls = data.calls;
@@ -316,6 +343,9 @@ export default function(astReference, data, version) {
   structs = data.structs;
   handles = data.handles;
   includes = data.includes;
+  calls.map(call => { objects.push(call); });
+  structs.map(struct => { objects.push(struct); });
+  handles.map(handle => { objects.push(handle); });
   let categories = getCategories({ calls, structs, handles });
   // structs
   {
@@ -323,15 +353,50 @@ export default function(astReference, data, version) {
       let output = nunjucks.renderString(STRUCTS_TEMPLATE, {
         struct,
         structs,
+        objects,
         members: struct.children,
         categories,
         getType,
         getCSSType,
-        getStructsByCategory
+        getObjectFolder,
+        getObjectsByCategory
       });
       fs.writeFileSync(`docs/${version}/structs/${struct.name}.html`, output, `utf-8`);
     });
-    //console.log(output);
+  }
+  // handles
+  {
+    handles.map(handle => {
+      let output = nunjucks.renderString(HANDLES_TEMPLATE, {
+        handle,
+        handles,
+        objects,
+        members: handle.children,
+        categories,
+        getType,
+        getCSSType,
+        getObjectFolder,
+        getObjectsByCategory
+      });
+      fs.writeFileSync(`docs/${version}/handles/${handle.name}.html`, output, `utf-8`);
+    });
+  }
+  // calls
+  {
+    calls.map(call => {
+      let output = nunjucks.renderString(CALLS_TEMPLATE, {
+        call,
+        calls,
+        objects,
+        params: call.params,
+        categories,
+        getType,
+        getCSSType,
+        getObjectFolder,
+        getObjectsByCategory
+      });
+      fs.writeFileSync(`docs/${version}/calls/${call.name}.html`, output, `utf-8`);
+    });
   }
   return null;
 };

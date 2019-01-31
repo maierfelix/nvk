@@ -6,7 +6,7 @@
 
 #
 
-This is a [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for node.js, which allows to interact from JavaScript/[TypeScript](#typescript) with the low-level interface of Vulkan. The API style of this project strives to be as close as possible to Vulkan's C99 API. Currently the latest supported Vulkan version is *1.1.92*, which includes support for e.g. NVIDIA's Ray Tracing extension `VK_NVX_raytracing`.
+This is a [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for node.js, which allows to interact from JavaScript/[TypeScript](#typescript) with the low-level interface of Vulkan. The API style of this project strives to be as close as possible to Vulkan's C99 API. Currently the latest supported Vulkan version is *1.1.97*, which includes support for e.g. NVIDIA's Ray Tracing extension `VK_NVX_raytracing`.
 #
 
   * [Preview](#preview)

@@ -122,9 +122,9 @@ function getInputArrayBody(param, index) {
   // create variable
   {
     let varType = param.enumType || param.baseType || param.type;
-    if (param.isNumericArray && isConstant && !param.enumType) {
+    if (param.isTypedArray) {
       out += `
-  std::shared_ptr<std::vector<${varType}>> $p${index} = nullptr;\n`;
+  std::shared_ptr<${param.type}*> $p${index} = nullptr;\n`;
     }
     else if (param.isHandleType || param.isStructType) {
       out += `
@@ -134,17 +134,17 @@ function getInputArrayBody(param, index) {
       out += `
   ${varType} *$p${index} = nullptr;\n`;
     }
-    else if (param.isTypedArray && !param.isConstant) {
-      out += `
-  ${param.type}* $p${index} = nullptr;\n`;
-    }
     else {
       warn(`Cannot handle param intializer ${rawType} in input-array-body!`);
     }
   }
   // fill variable
+  let condition = `IsArray`;
+  // validate that we got a typed array
+  if (param.isTypedArray) condition = `Is${param.jsTypedArrayName}`;
+  // fill variable
   out += `
-  if (info[${index}]->IsArray()) {\n`;
+  if (info[${index}]->${condition}()) {\n`;
   // auto flush structs
   if (param.isStructType) {
     out += `
@@ -182,9 +182,11 @@ function getInputArrayBody(param, index) {
     $p${index} = std::make_shared<std::vector<${param.type}>>(data);`;
   }
   // typed array
-  else if (param.isTypedArray && !param.isConstant && !param.enumType) {
+  else if (param.isTypedArray) {
+    let type = param.baseType || param.type;
     out += `
-    $p${index} = getTypedArrayData<${param.type}>(Nan::To<v8::Object>(info[${index}]).ToLocalChecked());`;
+    ${type}* data = getTypedArrayData<${type}>(Nan::To<v8::Object>(info[${index}]).ToLocalChecked());
+    $p${index} = std::make_shared<${type}*>(data);`;
   }
   // enum
   else if (param.enumType) {
@@ -363,18 +365,14 @@ function getCallBodyInner(call) {
       param.isNumericArray
     ) out += `    $p${index} ? $p${index}.get()->data() : nullptr${addComma}`;
     else if (
-      param.dereferenceCount > 0 &&
-      param.isNumericArray &&
-      param.isConstant &&
-      !param.enumType
+      param.isTypedArray && param.enumType
     ) {
-      out += `    $p${index} ? $p${index}.get()->data() : nullptr${addComma}`;
+      out += `    $p${index} ? (${param.enumType} *) *$p${index}.get() : nullptr${addComma}`;
     }
     else if (
-      param.isTypedArray &&
-      !param.isConstant
+      param.isTypedArray
     ) {
-      out += `    $p${index}${addComma}`;
+      out += `    $p${index} ? *$p${index}.get() : nullptr${addComma}`;
     }
     else if (
       param.isArray &&
@@ -453,15 +451,8 @@ function getCallBodyAfter(call) {
       out.push(instr);
     }
     // array of enums
-    else if (param.isArray && param.enumType) {
-      out.push(`
-  if (info[${pIndex}]->IsArray()) {
-    v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(info[${pIndex}]);
-    for (unsigned int ii = 0; ii < array->Length(); ++ii) {
-      v8::Handle<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
-      array->Set(ii, Nan::New($p${pIndex}[ii]));
-    };
-  }`);
+    else if (param.isTypedArray && param.enumType) {
+      // no reflection needed
     }
     // array of handles
     else if (param.isArray && param.isHandleType) {
