@@ -226,7 +226,7 @@ This tool uses a new JavaScript type called [`BigInt`](https://developers.google
 
 ## Binding Code Generator:
 
-The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.92/ast.json), which is then used by the code generator. Currently a total of `~180.000` lines of code get generated, where `~100.000` lines are C++ code.
+The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.92/ast.json), which is then used by the code generator. Currently a total of `~230.000` lines of code get generated, where `~150.000` lines are C++ code.
 
 ## HTML, CSS based UIs
 
