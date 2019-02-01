@@ -187,6 +187,7 @@ function parse(version) {
                 chapter.map(entry => {
                   entries.push(entry);
                 });
+                fs.unlinkSync(`${DOCS_DIR}/doc_tmp`);
                 zip.readEntry();
               });
               readStream.pipe(writeStream);

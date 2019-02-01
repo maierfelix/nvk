@@ -23,7 +23,7 @@ let includes = null;
 
 let objects = [];
 
-const {TEMPLATE_DIR} = pkg.config;
+const {DOCS_DIR, TEMPLATE_DIR} = pkg.config;
 
 const INDEX_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/index.njk`, "utf-8");
 const CALLS_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/calls.njk`, "utf-8");
@@ -359,6 +359,17 @@ export default function(astReference, data, version) {
   structs.map(struct => { objects.push(struct); });
   handles.map(handle => { objects.push(handle); });
   let categories = getCategories({ calls, structs, handles });
+  // reserve write dirs
+  {
+    // docs/x/
+    if (!fs.existsSync(`${DOCS_DIR}/${version}`)) fs.mkdirSync(`${DOCS_DIR}/${version}`);
+    // docs/x/calls/
+    if (!fs.existsSync(`${DOCS_DIR}/${version}/calls`)) fs.mkdirSync(`${DOCS_DIR}/${version}/calls`);
+    // docs/x/handles
+    if (!fs.existsSync(`${DOCS_DIR}/${version}/handles`)) fs.mkdirSync(`${DOCS_DIR}/${version}/handles`);
+    // docs/x/structs
+    if (!fs.existsSync(`${DOCS_DIR}/${version}/structs`)) fs.mkdirSync(`${DOCS_DIR}/${version}/structs`);
+  }
   // index
   {
     let output = nunjucks.renderString(INDEX_TEMPLATE, {
@@ -368,7 +379,7 @@ export default function(astReference, data, version) {
       getObjectFolder,
       getObjectsByCategory
     });
-    fs.writeFileSync(`docs/${version}/index.html`, output, `utf-8`);
+    fs.writeFileSync(`${DOCS_DIR}/${version}/index.html`, output, `utf-8`);
   }
   // search json
   {
@@ -380,7 +391,7 @@ export default function(astReference, data, version) {
         folder: getObjectFolder(obj)
       });
     });
-    fs.writeFileSync(`docs/${version}/search.json`, JSON.stringify(out), `utf-8`);
+    fs.writeFileSync(`${DOCS_DIR}/${version}/search.json`, JSON.stringify(out), `utf-8`);
   }
   // categories json
   {
@@ -397,7 +408,7 @@ export default function(astReference, data, version) {
       });
       out.push(category);
     });
-    fs.writeFileSync(`docs/${version}/categories.json`, JSON.stringify(out), `utf-8`);
+    fs.writeFileSync(`${DOCS_DIR}/${version}/categories.json`, JSON.stringify(out), `utf-8`);
   }
   // structs
   {
@@ -414,7 +425,7 @@ export default function(astReference, data, version) {
         getObjectFolder,
         getObjectsByCategory
       });
-      fs.writeFileSync(`docs/${version}/structs/${struct.name}.html`, output, `utf-8`);
+      fs.writeFileSync(`${DOCS_DIR}/${version}/structs/${struct.name}.html`, output, `utf-8`);
     });
   }
   // handles
@@ -432,7 +443,7 @@ export default function(astReference, data, version) {
         getObjectFolder,
         getObjectsByCategory
       });
-      fs.writeFileSync(`docs/${version}/handles/${handle.name}.html`, output, `utf-8`);
+      fs.writeFileSync(`${DOCS_DIR}/${version}/handles/${handle.name}.html`, output, `utf-8`);
     });
   }
   // calls
@@ -450,7 +461,7 @@ export default function(astReference, data, version) {
         getObjectFolder,
         getObjectsByCategory
       });
-      fs.writeFileSync(`docs/${version}/calls/${call.name}.html`, output, `utf-8`);
+      fs.writeFileSync(`${DOCS_DIR}/${version}/calls/${call.name}.html`, output, `utf-8`);
     });
   }
   return null;
