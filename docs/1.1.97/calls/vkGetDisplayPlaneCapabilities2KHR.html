@@ -1,0 +1,77 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>vkGetDisplayPlaneCapabilities2KHR | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Call -->
+  <vk-struct>
+
+    <vk-name>vkGetDisplayPlaneCapabilities2KHR</vk-name>
+
+    <vk-description>Query capabilities of a mode and plane combination</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">vkGetDisplayPlaneCapabilities2KHR();
+</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <!-- physicalDevice -->
+      <vk-property-entry>
+        <vk-property-parameter>physicalDevice</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkPhysicalDevice.html">VkPhysicalDevice</a></vk-property-type>
+        <vk-property-description> is the physical device associated with pname:pDisplayPlaneInfo.</vk-property-description>
+      </vk-property-entry>
+      <!-- pDisplayPlaneInfo -->
+      <vk-property-entry>
+        <vk-property-parameter>pDisplayPlaneInfo</vk-property-parameter>
+        <vk-property-type type="object"><a href="../structs/VkDisplayPlaneInfo2KHR.html">VkDisplayPlaneInfo2KHR</a></vk-property-type>
+        <vk-property-description> is a pointer to an instance of the slink:VkDisplayPlaneInfo2KHR structure describing the plane and mode.</vk-property-description>
+      </vk-property-entry>
+      <!-- pCapabilities -->
+      <vk-property-entry>
+        <vk-property-parameter>pCapabilities</vk-property-parameter>
+        <vk-property-type type="object"><a href="../structs/VkDisplayPlaneCapabilities2KHR.html">VkDisplayPlaneCapabilities2KHR</a></vk-property-type>
+        <vk-property-description> is a pointer to a slink:VkDisplayPlaneCapabilities2KHR structure in which the capabilities are returned.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

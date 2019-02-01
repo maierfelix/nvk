@@ -1,0 +1,154 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>VkPipelineMultisampleStateCreateInfo | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Struct -->
+  <vk-struct>
+
+    <vk-name>VkPipelineMultisampleStateCreateInfo</vk-name>
+
+    <vk-description>Structure specifying parameters of a newly created pipeline multisample state</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">instanceCreateInfo = new VkPipelineMultisampleStateCreateInfo();
+instanceCreateInfo = new VkPipelineMultisampleStateCreateInfo(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">let instanceCreateInfo = new VkPipelineMultisampleStateCreateInfo();
+instanceCreateInfo.sType = ;
+instanceCreateInfo.pNext = ;
+instanceCreateInfo.flags = ;
+instanceCreateInfo.rasterizationSamples = ;
+instanceCreateInfo.sampleShadingEnable = ;
+instanceCreateInfo.minSampleShading = ;
+instanceCreateInfo.pSampleMask = ;
+instanceCreateInfo.alphaToCoverageEnable = ;
+instanceCreateInfo.alphaToOneEnable = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkPipelineMultisampleStateCreateInfo.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineMultisampleStateCreateInfo.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineMultisampleStateCreateInfo.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineMultisampleStateCreateInfo.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is `NULL` or a pointer to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineMultisampleStateCreateInfo.prototype.flags -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineMultisampleStateCreateInfo.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is reserved for future use.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineMultisampleStateCreateInfo.prototype.rasterizationSamples -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineMultisampleStateCreateInfo.prototype.<vk-prototype-name>rasterizationSamples</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a elink:VkSampleCountFlagBits specifying the number of samples used in rasterization.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineMultisampleStateCreateInfo.prototype.sampleShadingEnable -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineMultisampleStateCreateInfo.prototype.<vk-prototype-name>sampleShadingEnable</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> can: be used to enable <<primsrast-sampleshading,Sample Shading>>.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineMultisampleStateCreateInfo.prototype.minSampleShading -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineMultisampleStateCreateInfo.prototype.<vk-prototype-name>minSampleShading</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> specifies a minimum fraction of sample shading if pname:sampleShadingEnable is set to ename:VK_TRUE.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineMultisampleStateCreateInfo.prototype.pSampleMask -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineMultisampleStateCreateInfo.prototype.<vk-prototype-name>pSampleMask</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array">Uint32Array</a></vk-property-type>
+        <vk-property-description> is a bitmask of static coverage information that is ANDed with the coverage information generated during rasterization, as described in <<fragops-samplemask,Sample Mask>>.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineMultisampleStateCreateInfo.prototype.alphaToCoverageEnable -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineMultisampleStateCreateInfo.prototype.<vk-prototype-name>alphaToCoverageEnable</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> controls whether a temporary coverage value is generated based on the alpha component of the fragment's first color output as specified in the <<fragops-covg,Multisample Coverage>> section.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineMultisampleStateCreateInfo.prototype.alphaToOneEnable -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineMultisampleStateCreateInfo.prototype.<vk-prototype-name>alphaToOneEnable</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> controls whether the alpha component of the fragment's first color output is replaced with one as described in <<fragops-covg,Multisample Coverage>>.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkPipelineMultisampleStateCreateInfo.prototype.memoryBuffer -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineMultisampleStateCreateInfo.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineMultisampleStateCreateInfo.prototype.memoryLayout -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineMultisampleStateCreateInfo.prototype.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the memory layout for this structure's members.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

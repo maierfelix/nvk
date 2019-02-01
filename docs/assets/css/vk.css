@@ -1,0 +1,266 @@
+body {
+  color: black;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  overflow-x: hidden;
+  font-size: 1rem;
+}
+
+.no-float {
+  float: none;
+}
+
+vk-search > input {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  overflow-x: hidden;
+  font-size: 1rem;
+  margin-bottom: 0.5em;
+  width: 100%;
+}
+
+vk-centered {
+  margin: 0 auto;
+  position: relative;
+  max-width: 90.0em;
+  clear: both;
+  display: block;
+}
+
+vk-navigation {
+  position: relative;
+  margin-right: 0%;
+  float: left;
+  width: 25.75%;
+  padding: 0.25em;
+  display: block;
+}
+
+vk-navigation > vk-section-title {
+  padding-bottom: 0.5em;
+}
+
+vk-struct {
+  margin: 0 auto;
+  position: relative;
+  max-width: 60em;
+  margin-right: 0;
+  float: right;
+  width: 74.25%;
+}
+
+vk-property-prototype {
+  background: rgba(221,221,221,.35);
+  padding: 0.4em;
+}
+
+vk-prototype-name {
+  font-weight: bold;
+  padding: 0.0em;
+}
+
+vk-property-parameter {
+  background: rgba(221,221,221,.35);
+  padding: 0.4em;
+  font-weight: bold;
+  display: inline-block;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+vk-property-type {
+  background: rgba(0,0,0,0.035);
+  padding: 0.45em;
+}
+
+vk-property-type[type="null"]    { color: rgba(146, 207, 0, 1); }
+vk-property-type[type="number"]  { color: rgba(28, 0, 207, 1); }
+vk-property-type[type="string"]  { color: rgba(197, 25, 22, 1); }
+vk-property-type[type="array"]   { color: rgba(171, 13, 144, 1); }
+vk-property-type[type="boolean"] { color: rgba(171, 13, 144, 1); }
+vk-property-type[type="object"]  {
+  color: rgba(124, 146, 208, 1);
+  cursor: pointer;
+}
+
+vk-property-type[type="typedarray"] > a:link,
+vk-property-type[type="arraybuffer"] > a:link {
+  color: rgba(228, 0, 211, 1);
+  cursor: pointer;
+  text-decoration: underline;
+}
+vk-property-type[type="typedarray"] > a:visited,
+vk-property-type[type="arraybuffer"] > a:visited {
+  color: rgba(169, 0, 156, 1);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+vk-property-type[type="object"] > a:link {
+  color: rgba(124, 146, 208, 1);
+  cursor: pointer;
+  text-decoration: underline;
+}
+vk-property-type[type="object"] > a:visited {
+  color: rgba(63, 84, 146, 1);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+vk-property-type > vk-property-type {
+  background: rgba(0,0,0,0.02);
+  float: right;
+  margin-left: 0.5em;
+  padding: 0.0em;
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+}
+
+vk-property-description {
+  padding: 0.25em;
+}
+
+vk-property-entry {
+  padding: 0.75em;
+}
+
+vk-name {
+  font-size: 2.75em;
+  padding: 0.25em;
+}
+
+vk-title {
+  display: none;
+}
+
+vk-section-title {
+  font-size: 2em;
+  padding-left: 0.25em;
+  padding-top: 0.125em;
+}
+
+vk-description {
+  padding: 0.75em;
+}
+
+vk-stub, vk-syntax {
+  padding: 0.75em;
+  padding-top: 0.25em;
+}
+
+vk-category {
+  white-space: pre;
+  padding: 0.5em;
+}
+
+vk-struct,
+vk-name,
+vk-description,
+vk-syntax,
+vk-stub,
+vk-properties,
+vk-property-entry,
+vk-property-type,
+vk-property-prototype,
+vk-prototype-name,
+vk-property-description,
+vk-section-title,
+vk-category
+{
+  display: block;
+  width: 100%;
+}
+
+vk-property-type,
+vk-prototype-name,
+vk-property-prototype
+{
+  display: inline-block !important;
+  width: auto !important;
+  white-space: pre;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+vk-prototype-name {
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+}
+
+details {
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.05);
+  padding: 0.25em;
+  padding-left: 0.5em;
+  margin-bottom: 0.5em;
+  overflow: hidden;
+}
+
+details > ol {
+  list-style-type: none;
+  padding-left: 0.5em;
+}
+
+details > ol > li {
+  word-break: break-all;
+}
+
+ol > li[label="f"]:before {
+  content: "[f] ";
+  font-style: italic;
+  font-family: monospace;
+  font-weight: 800;
+  color: #9a9a9a;
+}
+
+ol > li[label="s"]:before {
+  content: "[s] ";
+  font-style: italic;
+  font-family: monospace;
+  font-weight: 800;
+  color: #9a9a9a;
+}
+
+ol > li[label="h"]:before {
+  content: "[h] ";
+  font-style: italic;
+  font-family: monospace;
+  font-weight: 800;
+  color: #9a9a9a;
+}
+
+summary {
+  outline: none;
+}
+
+summary:before {
+  display: inline-block;
+  width: 1.0em;
+}
+
+li > a {
+  color: rgba(124, 146, 208, 1);
+}
+
+vk-search-results > ol {
+  border: 1px solid rgba(0,0,0,0.05);
+  padding: 0.5em;
+  list-style: none;
+  margin-top: -0.5em;
+  display: none;
+  padding-left: 1em;
+}
+
+vk-search-results > ol > li {
+  padding-top: 0.25em;
+}
+
+vk-search-results > ol > li:before {
+  content: "> ";
+}
+
+vk-logo {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+}
+
+vk-logo > img {
+  width: 4em;
+}

@@ -1,0 +1,217 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>VkSwapchainCreateInfoKHR | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Struct -->
+  <vk-struct>
+
+    <vk-name>VkSwapchainCreateInfoKHR</vk-name>
+
+    <vk-description>Structure specifying parameters of a newly created swapchain object</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">instanceCreateInfo = new VkSwapchainCreateInfoKHR();
+instanceCreateInfo = new VkSwapchainCreateInfoKHR(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">let instanceCreateInfo = new VkSwapchainCreateInfoKHR();
+instanceCreateInfo.sType = ;
+instanceCreateInfo.pNext = ;
+instanceCreateInfo.flags = ;
+instanceCreateInfo.surface = ;
+instanceCreateInfo.minImageCount = ;
+instanceCreateInfo.imageFormat = ;
+instanceCreateInfo.imageColorSpace = ;
+instanceCreateInfo.imageExtent = ;
+instanceCreateInfo.imageArrayLayers = ;
+instanceCreateInfo.imageUsage = ;
+instanceCreateInfo.imageSharingMode = ;
+instanceCreateInfo.queueFamilyIndexCount = ;
+instanceCreateInfo.pQueueFamilyIndices = ;
+instanceCreateInfo.preTransform = ;
+instanceCreateInfo.compositeAlpha = ;
+instanceCreateInfo.presentMode = ;
+instanceCreateInfo.clipped = ;
+instanceCreateInfo.oldSwapchain = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkSwapchainCreateInfoKHR.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkSwapchainCreateInfoKHR.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is `NULL` or a pointer to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkSwapchainCreateInfoKHR.prototype.flags -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a bitmask of elink:VkSwapchainCreateFlagBitsKHR indicating parameters of the swapchain creation.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkSwapchainCreateInfoKHR.prototype.surface -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>surface</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../handles/VkSurfaceKHR.html">VkSurfaceKHR</a></vk-property-type>
+        <vk-property-description> is the surface onto which the swapchain will present images. If the creation succeeds, the swapchain becomes associated with pname:surface.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkSwapchainCreateInfoKHR.prototype.minImageCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>minImageCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the minimum number of presentable images that the application needs. The implementation will either create the swapchain with at least that many images, or it will fail to create the swapchain.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkSwapchainCreateInfoKHR.prototype.imageFormat -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>imageFormat</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a elink:VkFormat value specifying the format the swapchain image(s) will be created with.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkSwapchainCreateInfoKHR.prototype.imageColorSpace -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>imageColorSpace</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a elink:VkColorSpaceKHR value specifying the way the swapchain interprets image data.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkSwapchainCreateInfoKHR.prototype.imageExtent -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>imageExtent</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../structs/VkExtent2D.html">VkExtent2D</a></vk-property-type>
+        <vk-property-description> is the size (in pixels) of the swapchain image(s). The behavior is platform-dependent if the image extent does not match the surface's pname:currentExtent as returned by fname:vkGetPhysicalDeviceSurfaceCapabilitiesKHR.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkSwapchainCreateInfoKHR.prototype.imageArrayLayers -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>imageArrayLayers</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkSwapchainCreateInfoKHR.prototype.imageUsage -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>imageUsage</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkSwapchainCreateInfoKHR.prototype.imageSharingMode -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>imageSharingMode</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkSwapchainCreateInfoKHR.prototype.queueFamilyIndexCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>queueFamilyIndexCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkSwapchainCreateInfoKHR.prototype.pQueueFamilyIndices -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>pQueueFamilyIndices</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array">Uint32Array</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkSwapchainCreateInfoKHR.prototype.preTransform -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>preTransform</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkSwapchainCreateInfoKHR.prototype.compositeAlpha -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>compositeAlpha</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkSwapchainCreateInfoKHR.prototype.presentMode -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>presentMode</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkSwapchainCreateInfoKHR.prototype.clipped -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>clipped</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkSwapchainCreateInfoKHR.prototype.oldSwapchain -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>oldSwapchain</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../handles/VkSwapchainKHR.html">VkSwapchainKHR</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkSwapchainCreateInfoKHR.prototype.memoryBuffer -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkSwapchainCreateInfoKHR.prototype.memoryLayout -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the memory layout for this structure's members.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

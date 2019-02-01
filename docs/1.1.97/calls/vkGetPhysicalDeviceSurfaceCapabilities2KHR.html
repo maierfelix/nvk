@@ -1,0 +1,77 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>vkGetPhysicalDeviceSurfaceCapabilities2KHR | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Call -->
+  <vk-struct>
+
+    <vk-name>vkGetPhysicalDeviceSurfaceCapabilities2KHR</vk-name>
+
+    <vk-description>Reports capabilities of a surface on a physical device</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">vkGetPhysicalDeviceSurfaceCapabilities2KHR();
+</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <!-- physicalDevice -->
+      <vk-property-entry>
+        <vk-property-parameter>physicalDevice</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkPhysicalDevice.html">VkPhysicalDevice</a></vk-property-type>
+        <vk-property-description> is the physical device that will be associated with the swapchain to be created, as described for flink:vkCreateSwapchainKHR.</vk-property-description>
+      </vk-property-entry>
+      <!-- pSurfaceInfo -->
+      <vk-property-entry>
+        <vk-property-parameter>pSurfaceInfo</vk-property-parameter>
+        <vk-property-type type="object"><a href="../structs/VkPhysicalDeviceSurfaceInfo2KHR.html">VkPhysicalDeviceSurfaceInfo2KHR</a></vk-property-type>
+        <vk-property-description> points to an instance of the slink:VkPhysicalDeviceSurfaceInfo2KHR structure, describing the surface and other fixed parameters that would be consumed by flink:vkCreateSwapchainKHR.</vk-property-description>
+      </vk-property-entry>
+      <!-- pSurfaceCapabilities -->
+      <vk-property-entry>
+        <vk-property-parameter>pSurfaceCapabilities</vk-property-parameter>
+        <vk-property-type type="object"><a href="../structs/VkSurfaceCapabilities2KHR.html">VkSurfaceCapabilities2KHR</a></vk-property-type>
+        <vk-property-description> points to an instance of the slink:VkSurfaceCapabilities2KHR structure in which the capabilities are returned.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

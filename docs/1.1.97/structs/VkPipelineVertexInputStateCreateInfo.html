@@ -1,0 +1,140 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>VkPipelineVertexInputStateCreateInfo | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Struct -->
+  <vk-struct>
+
+    <vk-name>VkPipelineVertexInputStateCreateInfo</vk-name>
+
+    <vk-description>Structure specifying parameters of a newly created pipeline vertex input state</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">instanceCreateInfo = new VkPipelineVertexInputStateCreateInfo();
+instanceCreateInfo = new VkPipelineVertexInputStateCreateInfo(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">let instanceCreateInfo = new VkPipelineVertexInputStateCreateInfo();
+instanceCreateInfo.sType = ;
+instanceCreateInfo.pNext = ;
+instanceCreateInfo.flags = ;
+instanceCreateInfo.vertexBindingDescriptionCount = ;
+instanceCreateInfo.pVertexBindingDescriptions = ;
+instanceCreateInfo.vertexAttributeDescriptionCount = ;
+instanceCreateInfo.pVertexAttributeDescriptions = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkPipelineVertexInputStateCreateInfo.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineVertexInputStateCreateInfo.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineVertexInputStateCreateInfo.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineVertexInputStateCreateInfo.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is `NULL` or a pointer to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineVertexInputStateCreateInfo.prototype.flags -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineVertexInputStateCreateInfo.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is reserved for future use.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineVertexInputStateCreateInfo.prototype.vertexBindingDescriptionCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineVertexInputStateCreateInfo.prototype.<vk-prototype-name>vertexBindingDescriptionCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the number of vertex binding descriptions provided in pname:pVertexBindingDescriptions.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineVertexInputStateCreateInfo.prototype.pVertexBindingDescriptions -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineVertexInputStateCreateInfo.prototype.<vk-prototype-name>pVertexBindingDescriptions</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkVertexInputBindingDescription.html">VkVertexInputBindingDescription]</a></vk-property-type></vk-property-type>
+        <vk-property-description> is a pointer to an array of sname:VkVertexInputBindingDescription structures.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineVertexInputStateCreateInfo.prototype.vertexAttributeDescriptionCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineVertexInputStateCreateInfo.prototype.<vk-prototype-name>vertexAttributeDescriptionCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the number of vertex attribute descriptions provided in pname:pVertexAttributeDescriptions.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineVertexInputStateCreateInfo.prototype.pVertexAttributeDescriptions -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineVertexInputStateCreateInfo.prototype.<vk-prototype-name>pVertexAttributeDescriptions</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkVertexInputAttributeDescription.html">VkVertexInputAttributeDescription]</a></vk-property-type></vk-property-type>
+        <vk-property-description> is a pointer to an array of sname:VkVertexInputAttributeDescription structures.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkPipelineVertexInputStateCreateInfo.prototype.memoryBuffer -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineVertexInputStateCreateInfo.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineVertexInputStateCreateInfo.prototype.memoryLayout -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineVertexInputStateCreateInfo.prototype.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the memory layout for this structure's members.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

@@ -246,6 +246,7 @@ CEF recently got shared textures added, meaning crazy performance and no CPU wan
 But CEF's shared textures on Windows require D3D11 which I'm not familiar with. If you're interested in helping and solving this one last step, please make a PR!
 
 ## TODOs:
+ - [ ] Move from V8 to NAPI (~0%)
  - [ ] Struct generation (~95%)
  - [x] Handle generation (~100%)
  - [x] Enum generation (100%)

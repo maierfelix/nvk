@@ -1,0 +1,119 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>VkExternalImageFormatPropertiesNV | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Struct -->
+  <vk-struct>
+
+    <vk-name>VkExternalImageFormatPropertiesNV</vk-name>
+
+    <vk-description>Structure specifying external image format properties</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">instanceCreateInfo = new VkExternalImageFormatPropertiesNV();
+instanceCreateInfo = new VkExternalImageFormatPropertiesNV(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">let instanceCreateInfo = new VkExternalImageFormatPropertiesNV();
+instanceCreateInfo.imageFormatProperties = ;
+instanceCreateInfo.externalMemoryFeatures = ;
+instanceCreateInfo.exportFromImportedHandleTypes = ;
+instanceCreateInfo.compatibleHandleTypes = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkExternalImageFormatPropertiesNV.prototype.imageFormatProperties -->
+      <vk-property-entry>
+        <vk-property-prototype>VkExternalImageFormatPropertiesNV.prototype.<vk-prototype-name>imageFormatProperties</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../structs/VkImageFormatProperties.html">VkImageFormatProperties</a></vk-property-type>
+        <vk-property-description> will be filled in as when calling flink:vkGetPhysicalDeviceImageFormatProperties, but the values returned may: vary depending on the external handle type requested.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkExternalImageFormatPropertiesNV.prototype.externalMemoryFeatures -->
+      <vk-property-entry>
+        <vk-property-prototype>VkExternalImageFormatPropertiesNV.prototype.<vk-prototype-name>externalMemoryFeatures</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a bitmask of elink:VkExternalMemoryFeatureFlagBitsNV, indicating properties of the external memory handle type (flink:vkGetPhysicalDeviceExternalImageFormatPropertiesNV::pname:externalHandleType) being queried, or 0 if the external memory handle type is 0.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkExternalImageFormatPropertiesNV.prototype.exportFromImportedHandleTypes -->
+      <vk-property-entry>
+        <vk-property-prototype>VkExternalImageFormatPropertiesNV.prototype.<vk-prototype-name>exportFromImportedHandleTypes</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a bitmask of elink:VkExternalMemoryHandleTypeFlagBitsNV containing a bit set for every external handle type that may: be used to create memory from which the handles of the type specified in flink:vkGetPhysicalDeviceExternalImageFormatPropertiesNV::pname:externalHandleType can: be exported, or 0 if the external memory handle type is 0.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkExternalImageFormatPropertiesNV.prototype.compatibleHandleTypes -->
+      <vk-property-entry>
+        <vk-property-prototype>VkExternalImageFormatPropertiesNV.prototype.<vk-prototype-name>compatibleHandleTypes</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a bitmask of elink:VkExternalMemoryHandleTypeFlagBitsNV containing a bit set for every external handle type that may: be specified simultaneously with the handle type specified by flink:vkGetPhysicalDeviceExternalImageFormatPropertiesNV::pname:externalHandleType when calling flink:vkAllocateMemory, or 0 if the external memory handle type is 0. pname:compatibleHandleTypes will always contain flink:vkGetPhysicalDeviceExternalImageFormatPropertiesNV::pname:externalHandleType</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkExternalImageFormatPropertiesNV.prototype.memoryBuffer -->
+      <vk-property-entry>
+        <vk-property-prototype>VkExternalImageFormatPropertiesNV.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkExternalImageFormatPropertiesNV.prototype.memoryLayout -->
+      <vk-property-entry>
+        <vk-property-prototype>VkExternalImageFormatPropertiesNV.prototype.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the memory layout for this structure's members.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

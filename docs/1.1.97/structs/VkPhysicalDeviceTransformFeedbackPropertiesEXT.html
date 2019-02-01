@@ -1,0 +1,175 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>VkPhysicalDeviceTransformFeedbackPropertiesEXT | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Struct -->
+  <vk-struct>
+
+    <vk-name>VkPhysicalDeviceTransformFeedbackPropertiesEXT</vk-name>
+
+    <vk-description>Structure describing transform feedback properties that can be supported by an implementation</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">instanceCreateInfo = new VkPhysicalDeviceTransformFeedbackPropertiesEXT();
+instanceCreateInfo = new VkPhysicalDeviceTransformFeedbackPropertiesEXT(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">let instanceCreateInfo = new VkPhysicalDeviceTransformFeedbackPropertiesEXT();
+instanceCreateInfo.sType = ;
+instanceCreateInfo.pNext = ;
+instanceCreateInfo.maxTransformFeedbackStreams = ;
+instanceCreateInfo.maxTransformFeedbackBuffers = ;
+instanceCreateInfo.maxTransformFeedbackBufferSize = ;
+instanceCreateInfo.maxTransformFeedbackStreamDataSize = ;
+instanceCreateInfo.maxTransformFeedbackBufferDataSize = ;
+instanceCreateInfo.maxTransformFeedbackBufferDataStride = ;
+instanceCreateInfo.transformFeedbackQueries = ;
+instanceCreateInfo.transformFeedbackStreamsLinesTriangles = ;
+instanceCreateInfo.transformFeedbackRasterizationStreamSelect = ;
+instanceCreateInfo.transformFeedbackDraw = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is `NULL` or a pointer to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.maxTransformFeedbackStreams -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.<vk-prototype-name>maxTransformFeedbackStreams</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the maximum number of vertex streams that can be output from geometry shaders declared with the code:GeometryStreams capability. If the implementation does not support sname:VkPhysicalDeviceTransformFeedbackFeaturesEXT::pname:geometryStreams then pname:maxTransformFeedbackStreams must: be set to `1`.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.maxTransformFeedbackBuffers -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.<vk-prototype-name>maxTransformFeedbackBuffers</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.maxTransformFeedbackBufferSize -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.<vk-prototype-name>maxTransformFeedbackBufferSize</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.maxTransformFeedbackStreamDataSize -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.<vk-prototype-name>maxTransformFeedbackStreamDataSize</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.maxTransformFeedbackBufferDataSize -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.<vk-prototype-name>maxTransformFeedbackBufferDataSize</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.maxTransformFeedbackBufferDataStride -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.<vk-prototype-name>maxTransformFeedbackBufferDataStride</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.transformFeedbackQueries -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.<vk-prototype-name>transformFeedbackQueries</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.transformFeedbackStreamsLinesTriangles -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.<vk-prototype-name>transformFeedbackStreamsLinesTriangles</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.transformFeedbackRasterizationStreamSelect -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.<vk-prototype-name>transformFeedbackRasterizationStreamSelect</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.transformFeedbackDraw -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.<vk-prototype-name>transformFeedbackDraw</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.memoryBuffer -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.memoryLayout -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the memory layout for this structure's members.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

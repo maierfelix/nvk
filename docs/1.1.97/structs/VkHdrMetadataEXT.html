@@ -1,0 +1,161 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>VkHdrMetadataEXT | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Struct -->
+  <vk-struct>
+
+    <vk-name>VkHdrMetadataEXT</vk-name>
+
+    <vk-description>structure to specify Hdr metadata</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">instanceCreateInfo = new VkHdrMetadataEXT();
+instanceCreateInfo = new VkHdrMetadataEXT(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">let instanceCreateInfo = new VkHdrMetadataEXT();
+instanceCreateInfo.sType = ;
+instanceCreateInfo.pNext = ;
+instanceCreateInfo.displayPrimaryRed = ;
+instanceCreateInfo.displayPrimaryGreen = ;
+instanceCreateInfo.displayPrimaryBlue = ;
+instanceCreateInfo.whitePoint = ;
+instanceCreateInfo.maxLuminance = ;
+instanceCreateInfo.minLuminance = ;
+instanceCreateInfo.maxContentLightLevel = ;
+instanceCreateInfo.maxFrameAverageLightLevel = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkHdrMetadataEXT.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkHdrMetadataEXT.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkHdrMetadataEXT.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkHdrMetadataEXT.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is `NULL` or a pointer to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkHdrMetadataEXT.prototype.displayPrimaryRed -->
+      <vk-property-entry>
+        <vk-property-prototype>VkHdrMetadataEXT.prototype.<vk-prototype-name>displayPrimaryRed</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../structs/VkXYColorEXT.html">VkXYColorEXT</a></vk-property-type>
+        <vk-property-description> is the mastering display's red primary in chromaticity coordinates</vk-property-description>
+      </vk-property-entry>
+      <!-- VkHdrMetadataEXT.prototype.displayPrimaryGreen -->
+      <vk-property-entry>
+        <vk-property-prototype>VkHdrMetadataEXT.prototype.<vk-prototype-name>displayPrimaryGreen</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../structs/VkXYColorEXT.html">VkXYColorEXT</a></vk-property-type>
+        <vk-property-description> is the mastering display's green primary in chromaticity coordinates</vk-property-description>
+      </vk-property-entry>
+      <!-- VkHdrMetadataEXT.prototype.displayPrimaryBlue -->
+      <vk-property-entry>
+        <vk-property-prototype>VkHdrMetadataEXT.prototype.<vk-prototype-name>displayPrimaryBlue</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../structs/VkXYColorEXT.html">VkXYColorEXT</a></vk-property-type>
+        <vk-property-description> is the mastering display's blue primary in chromaticity coordinates</vk-property-description>
+      </vk-property-entry>
+      <!-- VkHdrMetadataEXT.prototype.whitePoint -->
+      <vk-property-entry>
+        <vk-property-prototype>VkHdrMetadataEXT.prototype.<vk-prototype-name>whitePoint</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../structs/VkXYColorEXT.html">VkXYColorEXT</a></vk-property-type>
+        <vk-property-description> is the mastering display's white-point in chromaticity coordinates</vk-property-description>
+      </vk-property-entry>
+      <!-- VkHdrMetadataEXT.prototype.maxLuminance -->
+      <vk-property-entry>
+        <vk-property-prototype>VkHdrMetadataEXT.prototype.<vk-prototype-name>maxLuminance</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the maximum luminance of the mastering display in nits</vk-property-description>
+      </vk-property-entry>
+      <!-- VkHdrMetadataEXT.prototype.minLuminance -->
+      <vk-property-entry>
+        <vk-property-prototype>VkHdrMetadataEXT.prototype.<vk-prototype-name>minLuminance</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the minimum luminance of the mastering display in nits</vk-property-description>
+      </vk-property-entry>
+      <!-- VkHdrMetadataEXT.prototype.maxContentLightLevel -->
+      <vk-property-entry>
+        <vk-property-prototype>VkHdrMetadataEXT.prototype.<vk-prototype-name>maxContentLightLevel</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is content's maximum luminance in nits</vk-property-description>
+      </vk-property-entry>
+      <!-- VkHdrMetadataEXT.prototype.maxFrameAverageLightLevel -->
+      <vk-property-entry>
+        <vk-property-prototype>VkHdrMetadataEXT.prototype.<vk-prototype-name>maxFrameAverageLightLevel</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the maximum frame average light level in nits</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkHdrMetadataEXT.prototype.memoryBuffer -->
+      <vk-property-entry>
+        <vk-property-prototype>VkHdrMetadataEXT.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkHdrMetadataEXT.prototype.memoryLayout -->
+      <vk-property-entry>
+        <vk-property-prototype>VkHdrMetadataEXT.prototype.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the memory layout for this structure's members.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

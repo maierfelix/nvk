@@ -1,0 +1,476 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>VkPhysicalDeviceFeatures | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Struct -->
+  <vk-struct>
+
+    <vk-name>VkPhysicalDeviceFeatures</vk-name>
+
+    <vk-description>Structure describing the fine-grained features that can be supported by an implementation</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">instanceCreateInfo = new VkPhysicalDeviceFeatures();
+instanceCreateInfo = new VkPhysicalDeviceFeatures(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">let instanceCreateInfo = new VkPhysicalDeviceFeatures();
+instanceCreateInfo.robustBufferAccess = ;
+instanceCreateInfo.fullDrawIndexUint32 = ;
+instanceCreateInfo.imageCubeArray = ;
+instanceCreateInfo.independentBlend = ;
+instanceCreateInfo.geometryShader = ;
+instanceCreateInfo.tessellationShader = ;
+instanceCreateInfo.sampleRateShading = ;
+instanceCreateInfo.dualSrcBlend = ;
+instanceCreateInfo.logicOp = ;
+instanceCreateInfo.multiDrawIndirect = ;
+instanceCreateInfo.drawIndirectFirstInstance = ;
+instanceCreateInfo.depthClamp = ;
+instanceCreateInfo.depthBiasClamp = ;
+instanceCreateInfo.fillModeNonSolid = ;
+instanceCreateInfo.depthBounds = ;
+instanceCreateInfo.wideLines = ;
+instanceCreateInfo.largePoints = ;
+instanceCreateInfo.alphaToOne = ;
+instanceCreateInfo.multiViewport = ;
+instanceCreateInfo.samplerAnisotropy = ;
+instanceCreateInfo.textureCompressionETC2 = ;
+instanceCreateInfo.textureCompressionASTC_LDR = ;
+instanceCreateInfo.textureCompressionBC = ;
+instanceCreateInfo.occlusionQueryPrecise = ;
+instanceCreateInfo.pipelineStatisticsQuery = ;
+instanceCreateInfo.vertexPipelineStoresAndAtomics = ;
+instanceCreateInfo.fragmentStoresAndAtomics = ;
+instanceCreateInfo.shaderTessellationAndGeometryPointSize = ;
+instanceCreateInfo.shaderImageGatherExtended = ;
+instanceCreateInfo.shaderStorageImageExtendedFormats = ;
+instanceCreateInfo.shaderStorageImageMultisample = ;
+instanceCreateInfo.shaderStorageImageReadWithoutFormat = ;
+instanceCreateInfo.shaderStorageImageWriteWithoutFormat = ;
+instanceCreateInfo.shaderUniformBufferArrayDynamicIndexing = ;
+instanceCreateInfo.shaderSampledImageArrayDynamicIndexing = ;
+instanceCreateInfo.shaderStorageBufferArrayDynamicIndexing = ;
+instanceCreateInfo.shaderStorageImageArrayDynamicIndexing = ;
+instanceCreateInfo.shaderClipDistance = ;
+instanceCreateInfo.shaderCullDistance = ;
+instanceCreateInfo.shaderFloat64 = ;
+instanceCreateInfo.shaderInt64 = ;
+instanceCreateInfo.shaderInt16 = ;
+instanceCreateInfo.shaderResourceResidency = ;
+instanceCreateInfo.shaderResourceMinLod = ;
+instanceCreateInfo.sparseBinding = ;
+instanceCreateInfo.sparseResidencyBuffer = ;
+instanceCreateInfo.sparseResidencyImage2D = ;
+instanceCreateInfo.sparseResidencyImage3D = ;
+instanceCreateInfo.sparseResidency2Samples = ;
+instanceCreateInfo.sparseResidency4Samples = ;
+instanceCreateInfo.sparseResidency8Samples = ;
+instanceCreateInfo.sparseResidency16Samples = ;
+instanceCreateInfo.sparseResidencyAliased = ;
+instanceCreateInfo.variableMultisampleRate = ;
+instanceCreateInfo.inheritedQueries = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkPhysicalDeviceFeatures.prototype.robustBufferAccess -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>robustBufferAccess</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> specifies that accesses to buffers are bounds-checked against the range of the buffer descriptor (as determined by sname:VkDescriptorBufferInfo::pname:range, sname:VkBufferViewCreateInfo::pname:range, or the size of the buffer). Out of bounds accesses must: not cause application termination, and the effects of shader loads, stores, and atomics must: conform to an implementation-dependent behavior as described below.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.fullDrawIndexUint32 -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>fullDrawIndexUint32</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.imageCubeArray -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>imageCubeArray</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.independentBlend -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>independentBlend</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.geometryShader -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>geometryShader</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.tessellationShader -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>tessellationShader</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.sampleRateShading -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>sampleRateShading</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.dualSrcBlend -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>dualSrcBlend</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.logicOp -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>logicOp</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.multiDrawIndirect -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>multiDrawIndirect</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.drawIndirectFirstInstance -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>drawIndirectFirstInstance</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.depthClamp -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>depthClamp</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.depthBiasClamp -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>depthBiasClamp</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.fillModeNonSolid -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>fillModeNonSolid</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.depthBounds -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>depthBounds</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.wideLines -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>wideLines</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.largePoints -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>largePoints</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.alphaToOne -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>alphaToOne</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.multiViewport -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>multiViewport</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.samplerAnisotropy -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>samplerAnisotropy</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.textureCompressionETC2 -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>textureCompressionETC2</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.textureCompressionASTC_LDR -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>textureCompressionASTC_LDR</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.textureCompressionBC -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>textureCompressionBC</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.occlusionQueryPrecise -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>occlusionQueryPrecise</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.pipelineStatisticsQuery -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>pipelineStatisticsQuery</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.vertexPipelineStoresAndAtomics -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>vertexPipelineStoresAndAtomics</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.fragmentStoresAndAtomics -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>fragmentStoresAndAtomics</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.shaderTessellationAndGeometryPointSize -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderTessellationAndGeometryPointSize</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.shaderImageGatherExtended -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderImageGatherExtended</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.shaderStorageImageExtendedFormats -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderStorageImageExtendedFormats</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.shaderStorageImageMultisample -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderStorageImageMultisample</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.shaderStorageImageReadWithoutFormat -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderStorageImageReadWithoutFormat</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.shaderStorageImageWriteWithoutFormat -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderStorageImageWriteWithoutFormat</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.shaderUniformBufferArrayDynamicIndexing -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderUniformBufferArrayDynamicIndexing</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.shaderSampledImageArrayDynamicIndexing -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderSampledImageArrayDynamicIndexing</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.shaderStorageBufferArrayDynamicIndexing -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderStorageBufferArrayDynamicIndexing</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.shaderStorageImageArrayDynamicIndexing -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderStorageImageArrayDynamicIndexing</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.shaderClipDistance -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderClipDistance</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.shaderCullDistance -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderCullDistance</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.shaderFloat64 -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderFloat64</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.shaderInt64 -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderInt64</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.shaderInt16 -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderInt16</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.shaderResourceResidency -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderResourceResidency</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.shaderResourceMinLod -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>shaderResourceMinLod</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.sparseBinding -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>sparseBinding</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.sparseResidencyBuffer -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>sparseResidencyBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.sparseResidencyImage2D -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>sparseResidencyImage2D</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.sparseResidencyImage3D -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>sparseResidencyImage3D</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.sparseResidency2Samples -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>sparseResidency2Samples</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.sparseResidency4Samples -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>sparseResidency4Samples</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.sparseResidency8Samples -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>sparseResidency8Samples</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.sparseResidency16Samples -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>sparseResidency16Samples</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.sparseResidencyAliased -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>sparseResidencyAliased</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.variableMultisampleRate -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>variableMultisampleRate</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.inheritedQueries -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>inheritedQueries</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkPhysicalDeviceFeatures.prototype.memoryBuffer -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceFeatures.prototype.memoryLayout -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceFeatures.prototype.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the memory layout for this structure's members.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

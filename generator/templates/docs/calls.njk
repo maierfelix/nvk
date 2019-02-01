@@ -21,27 +21,11 @@
       <vk-search-results>
         <ol id="search-list">
           <li id="no-search-results">No Results</li>
-          {% for obj in objects -%}
-          <li label="{{ getObjectLabel(obj) }}"><a href="../{{ getObjectFolder(obj) }}/{{ obj.name }}.html">{{ obj.name }}</a></li>
-          {% endfor %}
         </ol>
       </vk-search-results>
     </vk-search>
     <vk-section-title>Categories</vk-section-title>
-
-    {% for category in categories -%}
-    <!-- {{ category | safe }} -->
-    <details>
-       <summary>{{ category | safe }}</summary>
-        <ol>
-          {% for obj in getObjectsByCategory(category) -%}
-          {%- if obj.category == category -%}
-          <li label="{{ getObjectLabel(obj) }}"><a href="../{{ getObjectFolder(obj) }}/{{ obj.name }}.html">{{ obj.name }}</a></li>
-          {% endif -%}
-          {% endfor -%}
-        </ol>
-    </details>
-    {% endfor -%}
+    <vk-categories></vk-categories>
   </vk-navigation>
 
   <!-- Call -->
@@ -73,6 +57,10 @@
   </vk-struct>
 
 </vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
 
 <script type="text/javascript" src="../../assets/js/prism.min.js"></script>
 <script type="text/javascript" src="../../assets/js/index.js"></script>
