@@ -15040,6 +15040,15 @@ $vkGetAccelerationStructureMemoryRequirementsNV(
     $p1,
     $p2
   );
+  {
+    v8::Local<v8::Function> ctor = Nan::GetFunction(Nan::New(_VkMemoryRequirements::constructor)).ToLocalChecked();
+    v8::Local<v8::Object> inst = Nan::NewInstance(ctor).ToLocalChecked();
+    _VkMemoryRequirements* unwrapped6 = Nan::ObjectWrap::Unwrap<_VkMemoryRequirements>(inst);
+    obj2->memoryRequirements.Reset<v8::Object>(inst);
+    memcpy((&unwrapped6->instance), &obj2->instance.memoryRequirements, sizeof(VkMemoryRequirements));
+    
+  }
+      
   
   
   info.GetReturnValue().SetUndefined();

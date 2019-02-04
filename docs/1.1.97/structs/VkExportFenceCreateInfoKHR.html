@@ -44,6 +44,9 @@ instanceCreateInfo = new VkExportFenceCreateInfoKHR(object);</code></pre>
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
       <pre><code class="language-js">let instanceCreateInfo = new VkExportFenceCreateInfoKHR();
+instanceCreateInfo.sType = ;
+instanceCreateInfo.pNext = ;
+instanceCreateInfo.handleTypes = ;
 </code></pre>
     </vk-stub>
 
@@ -59,6 +62,24 @@ instanceCreateInfo = new VkExportFenceCreateInfoKHR(object);</code></pre>
     <vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
+      <!-- VkExportFenceCreateInfoKHR.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkExportFenceCreateInfoKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkExportFenceCreateInfoKHR.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkExportFenceCreateInfoKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is `NULL` or a pointer to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkExportFenceCreateInfoKHR.prototype.handleTypes -->
+      <vk-property-entry>
+        <vk-property-prototype>VkExportFenceCreateInfoKHR.prototype.<vk-prototype-name>handleTypes</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a bitmask of elink:VkExternalFenceHandleTypeFlagBits specifying one or more fence handle types the application can: export from the resulting fence. The application can: request multiple handle types for the same fence.</vk-property-description>
+      </vk-property-entry>
       
     </vk-properties>
 

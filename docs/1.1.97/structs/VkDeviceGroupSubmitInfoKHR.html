@@ -44,6 +44,14 @@ instanceCreateInfo = new VkDeviceGroupSubmitInfoKHR(object);</code></pre>
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
       <pre><code class="language-js">let instanceCreateInfo = new VkDeviceGroupSubmitInfoKHR();
+instanceCreateInfo.sType = ;
+instanceCreateInfo.pNext = ;
+instanceCreateInfo.waitSemaphoreCount = ;
+instanceCreateInfo.pWaitSemaphoreDeviceIndices = ;
+instanceCreateInfo.commandBufferCount = ;
+instanceCreateInfo.pCommandBufferDeviceMasks = ;
+instanceCreateInfo.signalSemaphoreCount = ;
+instanceCreateInfo.pSignalSemaphoreDeviceIndices = ;
 </code></pre>
     </vk-stub>
 
@@ -59,6 +67,54 @@ instanceCreateInfo = new VkDeviceGroupSubmitInfoKHR(object);</code></pre>
     <vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
+      <!-- VkDeviceGroupSubmitInfoKHR.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceGroupSubmitInfoKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkDeviceGroupSubmitInfoKHR.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceGroupSubmitInfoKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is `NULL` or a pointer to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkDeviceGroupSubmitInfoKHR.prototype.waitSemaphoreCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceGroupSubmitInfoKHR.prototype.<vk-prototype-name>waitSemaphoreCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the number of elements in the pname:pWaitSemaphoreDeviceIndices array.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkDeviceGroupSubmitInfoKHR.prototype.pWaitSemaphoreDeviceIndices -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceGroupSubmitInfoKHR.prototype.<vk-prototype-name>pWaitSemaphoreDeviceIndices</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array">Uint32Array</a></vk-property-type>
+        <vk-property-description> is an array of device indices indicating which physical device executes the semaphore wait operation in the corresponding element of slink:VkSubmitInfo::pname:pWaitSemaphores.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkDeviceGroupSubmitInfoKHR.prototype.commandBufferCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceGroupSubmitInfoKHR.prototype.<vk-prototype-name>commandBufferCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the number of elements in the pname:pCommandBufferDeviceMasks array.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkDeviceGroupSubmitInfoKHR.prototype.pCommandBufferDeviceMasks -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceGroupSubmitInfoKHR.prototype.<vk-prototype-name>pCommandBufferDeviceMasks</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array">Uint32Array</a></vk-property-type>
+        <vk-property-description> is an array of device masks indicating which physical devices execute the command buffer in the corresponding element of slink:VkSubmitInfo::pname:pCommandBuffers. A physical device executes the command buffer if the corresponding bit is set in the mask.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkDeviceGroupSubmitInfoKHR.prototype.signalSemaphoreCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceGroupSubmitInfoKHR.prototype.<vk-prototype-name>signalSemaphoreCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the number of elements in the pname:pSignalSemaphoreDeviceIndices array.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkDeviceGroupSubmitInfoKHR.prototype.pSignalSemaphoreDeviceIndices -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceGroupSubmitInfoKHR.prototype.<vk-prototype-name>pSignalSemaphoreDeviceIndices</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array">Uint32Array</a></vk-property-type>
+        <vk-property-description> is an array of device indices indicating which physical device executes the semaphore signal operation in the corresponding element of slink:VkSubmitInfo::pname:pSignalSemaphores.</vk-property-description>
+      </vk-property-entry>
       
     </vk-properties>
 

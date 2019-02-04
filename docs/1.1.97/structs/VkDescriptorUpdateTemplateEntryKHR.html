@@ -44,6 +44,12 @@ instanceCreateInfo = new VkDescriptorUpdateTemplateEntryKHR(object);</code></pre
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
       <pre><code class="language-js">let instanceCreateInfo = new VkDescriptorUpdateTemplateEntryKHR();
+instanceCreateInfo.dstBinding = ;
+instanceCreateInfo.dstArrayElement = ;
+instanceCreateInfo.descriptorCount = ;
+instanceCreateInfo.descriptorType = ;
+instanceCreateInfo.offset = ;
+instanceCreateInfo.stride = ;
 </code></pre>
     </vk-stub>
 
@@ -59,6 +65,42 @@ instanceCreateInfo = new VkDescriptorUpdateTemplateEntryKHR(object);</code></pre
     <vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
+      <!-- VkDescriptorUpdateTemplateEntryKHR.prototype.dstBinding -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDescriptorUpdateTemplateEntryKHR.prototype.<vk-prototype-name>dstBinding</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the descriptor binding to update when using this descriptor update template.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkDescriptorUpdateTemplateEntryKHR.prototype.dstArrayElement -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDescriptorUpdateTemplateEntryKHR.prototype.<vk-prototype-name>dstArrayElement</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the starting element in the array belonging to pname:dstBinding. If the descriptor binding identified by pname:srcBinding has a descriptor type of ename:VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK_EXT then pname:dstArrayElement specifies the starting byte offset to update.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkDescriptorUpdateTemplateEntryKHR.prototype.descriptorCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDescriptorUpdateTemplateEntryKHR.prototype.<vk-prototype-name>descriptorCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkDescriptorUpdateTemplateEntryKHR.prototype.descriptorType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDescriptorUpdateTemplateEntryKHR.prototype.<vk-prototype-name>descriptorType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkDescriptorUpdateTemplateEntryKHR.prototype.offset -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDescriptorUpdateTemplateEntryKHR.prototype.<vk-prototype-name>offset</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkDescriptorUpdateTemplateEntryKHR.prototype.stride -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDescriptorUpdateTemplateEntryKHR.prototype.<vk-prototype-name>stride</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
       
     </vk-properties>
 

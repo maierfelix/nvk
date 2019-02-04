@@ -44,6 +44,11 @@ instanceCreateInfo = new VkBindImageMemoryInfoKHR(object);</code></pre>
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
       <pre><code class="language-js">let instanceCreateInfo = new VkBindImageMemoryInfoKHR();
+instanceCreateInfo.sType = ;
+instanceCreateInfo.pNext = ;
+instanceCreateInfo.image = ;
+instanceCreateInfo.memory = ;
+instanceCreateInfo.memoryOffset = ;
 </code></pre>
     </vk-stub>
 
@@ -59,6 +64,36 @@ instanceCreateInfo = new VkBindImageMemoryInfoKHR(object);</code></pre>
     <vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
+      <!-- VkBindImageMemoryInfoKHR.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkBindImageMemoryInfoKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkBindImageMemoryInfoKHR.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkBindImageMemoryInfoKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is `NULL` or a pointer to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkBindImageMemoryInfoKHR.prototype.image -->
+      <vk-property-entry>
+        <vk-property-prototype>VkBindImageMemoryInfoKHR.prototype.<vk-prototype-name>image</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../handles/VkImage.html">VkImage</a></vk-property-type>
+        <vk-property-description> is the image to be attached to memory.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkBindImageMemoryInfoKHR.prototype.memory -->
+      <vk-property-entry>
+        <vk-property-prototype>VkBindImageMemoryInfoKHR.prototype.<vk-prototype-name>memory</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../handles/VkDeviceMemory.html">VkDeviceMemory</a></vk-property-type>
+        <vk-property-description> which is to be bound to the image. The number of bytes returned in the sname:VkMemoryRequirements::pname:size member in pname:memory, starting from pname:memoryOffset bytes, will be bound to the specified image.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkBindImageMemoryInfoKHR.prototype.memoryOffset -->
+      <vk-property-entry>
+        <vk-property-prototype>VkBindImageMemoryInfoKHR.prototype.<vk-prototype-name>memoryOffset</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
       
     </vk-properties>
 

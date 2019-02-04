@@ -44,6 +44,11 @@ instanceCreateInfo = new VkPhysicalDeviceGroupPropertiesKHR(object);</code></pre
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
       <pre><code class="language-js">let instanceCreateInfo = new VkPhysicalDeviceGroupPropertiesKHR();
+instanceCreateInfo.sType = ;
+instanceCreateInfo.pNext = ;
+instanceCreateInfo.physicalDeviceCount = ;
+instanceCreateInfo.physicalDevices = ;
+instanceCreateInfo.subsetAllocation = ;
 </code></pre>
     </vk-stub>
 
@@ -59,6 +64,36 @@ instanceCreateInfo = new VkPhysicalDeviceGroupPropertiesKHR(object);</code></pre
     <vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
+      <!-- VkPhysicalDeviceGroupPropertiesKHR.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceGroupPropertiesKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceGroupPropertiesKHR.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceGroupPropertiesKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is `NULL` or a pointer to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceGroupPropertiesKHR.prototype.physicalDeviceCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceGroupPropertiesKHR.prototype.<vk-prototype-name>physicalDeviceCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the number of physical devices in the group.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceGroupPropertiesKHR.prototype.physicalDevices -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceGroupPropertiesKHR.prototype.<vk-prototype-name>physicalDevices</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="number">[Number]</vk-property-type></vk-property-type>
+        <vk-property-description> is an array of physical device handles representing all physical devices in the group. The first pname:physicalDeviceCount elements of the array will be valid.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceGroupPropertiesKHR.prototype.subsetAllocation -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceGroupPropertiesKHR.prototype.<vk-prototype-name>subsetAllocation</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> specifies whether logical devices created from the group support allocating device memory on a subset of devices, via the pname:deviceMask member of the slink:VkMemoryAllocateFlagsInfo. If this is ename:VK_FALSE, then all device memory allocations are made across all physical devices in the group. If pname:physicalDeviceCount is `1`, then pname:subsetAllocation must: be ename:VK_FALSE.</vk-property-description>
+      </vk-property-entry>
       
     </vk-properties>
 

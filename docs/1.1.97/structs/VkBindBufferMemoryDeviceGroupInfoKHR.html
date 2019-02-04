@@ -44,6 +44,10 @@ instanceCreateInfo = new VkBindBufferMemoryDeviceGroupInfoKHR(object);</code></p
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
       <pre><code class="language-js">let instanceCreateInfo = new VkBindBufferMemoryDeviceGroupInfoKHR();
+instanceCreateInfo.sType = ;
+instanceCreateInfo.pNext = ;
+instanceCreateInfo.deviceIndexCount = ;
+instanceCreateInfo.pDeviceIndices = ;
 </code></pre>
     </vk-stub>
 
@@ -59,6 +63,30 @@ instanceCreateInfo = new VkBindBufferMemoryDeviceGroupInfoKHR(object);</code></p
     <vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
+      <!-- VkBindBufferMemoryDeviceGroupInfoKHR.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkBindBufferMemoryDeviceGroupInfoKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkBindBufferMemoryDeviceGroupInfoKHR.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkBindBufferMemoryDeviceGroupInfoKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is `NULL` or a pointer to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkBindBufferMemoryDeviceGroupInfoKHR.prototype.deviceIndexCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkBindBufferMemoryDeviceGroupInfoKHR.prototype.<vk-prototype-name>deviceIndexCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the number of elements in pname:pDeviceIndices.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkBindBufferMemoryDeviceGroupInfoKHR.prototype.pDeviceIndices -->
+      <vk-property-entry>
+        <vk-property-prototype>VkBindBufferMemoryDeviceGroupInfoKHR.prototype.<vk-prototype-name>pDeviceIndices</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array">Uint32Array</a></vk-property-type>
+        <vk-property-description> is a pointer to an array of device indices.</vk-property-description>
+      </vk-property-entry>
       
     </vk-properties>
 

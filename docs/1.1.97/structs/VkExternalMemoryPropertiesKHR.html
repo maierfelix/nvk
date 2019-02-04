@@ -44,6 +44,9 @@ instanceCreateInfo = new VkExternalMemoryPropertiesKHR(object);</code></pre>
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
       <pre><code class="language-js">let instanceCreateInfo = new VkExternalMemoryPropertiesKHR();
+instanceCreateInfo.externalMemoryFeatures = ;
+instanceCreateInfo.exportFromImportedHandleTypes = ;
+instanceCreateInfo.compatibleHandleTypes = ;
 </code></pre>
     </vk-stub>
 
@@ -59,6 +62,24 @@ instanceCreateInfo = new VkExternalMemoryPropertiesKHR(object);</code></pre>
     <vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
+      <!-- VkExternalMemoryPropertiesKHR.prototype.externalMemoryFeatures -->
+      <vk-property-entry>
+        <vk-property-prototype>VkExternalMemoryPropertiesKHR.prototype.<vk-prototype-name>externalMemoryFeatures</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a bitmask of elink:VkExternalMemoryFeatureFlagBits specifying the features of pname:handleType.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkExternalMemoryPropertiesKHR.prototype.exportFromImportedHandleTypes -->
+      <vk-property-entry>
+        <vk-property-prototype>VkExternalMemoryPropertiesKHR.prototype.<vk-prototype-name>exportFromImportedHandleTypes</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a bitmask of elink:VkExternalMemoryHandleTypeFlagBits specifying which types of imported handle pname:handleType can: be exported from.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkExternalMemoryPropertiesKHR.prototype.compatibleHandleTypes -->
+      <vk-property-entry>
+        <vk-property-prototype>VkExternalMemoryPropertiesKHR.prototype.<vk-prototype-name>compatibleHandleTypes</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a bitmask of elink:VkExternalMemoryHandleTypeFlagBits specifying handle types which can: be specified at the same time as pname:handleType when creating an image compatible with external memory.</vk-property-description>
+      </vk-property-entry>
       
     </vk-properties>
 

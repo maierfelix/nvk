@@ -5510,6 +5510,14 @@ class _VkDescriptorSetLayoutSupportKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(Getsupported);
 
     // real instance
     VkDescriptorSetLayoutSupportKHR instance = {};
@@ -5572,6 +5580,15 @@ class _VkPhysicalDeviceMaintenance3PropertiesKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GetmaxPerSetDescriptors);
+    static NAN_GETTER(GetmaxMemoryAllocationSize);
 
     // real instance
     VkPhysicalDeviceMaintenance3PropertiesKHR instance = {};
@@ -6745,6 +6762,14 @@ class _VkSamplerYcbcrConversionImageFormatPropertiesKHR: public Nan::ObjectWrap 
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GetcombinedImageSamplerDescriptorCount);
 
     // real instance
     VkSamplerYcbcrConversionImageFormatPropertiesKHR instance = {};
@@ -6807,6 +6832,16 @@ class _VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR: public Nan::ObjectWrap
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GetsamplerYcbcrConversion);
+    static NAN_SETTER(SetsamplerYcbcrConversion);
+    
 
     // real instance
     VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR instance = {};
@@ -6871,6 +6906,16 @@ class _VkImagePlaneMemoryRequirementsInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GetplaneAspect);
+    static NAN_SETTER(SetplaneAspect);
+    
 
     // real instance
     VkImagePlaneMemoryRequirementsInfoKHR instance = {};
@@ -6935,6 +6980,16 @@ class _VkBindImagePlaneMemoryInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GetplaneAspect);
+    static NAN_SETTER(SetplaneAspect);
+    
 
     // real instance
     VkBindImagePlaneMemoryInfoKHR instance = {};
@@ -6989,33 +7044,6 @@ class _VkBindImagePlaneMemoryInfo: public Nan::ObjectWrap {
 
 /** ## END VkBindImagePlaneMemoryInfo ## **/
 
-/** ## BEGIN VkSamplerYcbcrConversionCreateInfoKHR ## **/
-
-class _VkSamplerYcbcrConversionCreateInfoKHR: public Nan::ObjectWrap {
-
-  public:
-    // #methods
-    static NAN_METHOD(New);
-    static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryLayout);
-    // #accessors
-
-    // real instance
-    VkSamplerYcbcrConversionCreateInfoKHR instance = {};
-
-    static Nan::Persistent<v8::FunctionTemplate> constructor;
-    static void Initialize(v8::Local<v8::Object> exports);
-    bool flush(void);
-
-  private:
-
-    _VkSamplerYcbcrConversionCreateInfoKHR();
-    ~_VkSamplerYcbcrConversionCreateInfoKHR();
-
-};
-
-/** ## END VkSamplerYcbcrConversionCreateInfoKHR ## **/
-
 /** ## BEGIN VkComponentMapping ## **/
 
 class _VkComponentMapping: public Nan::ObjectWrap {
@@ -7054,6 +7082,65 @@ class _VkComponentMapping: public Nan::ObjectWrap {
 };
 
 /** ## END VkComponentMapping ## **/
+
+/** ## BEGIN VkSamplerYcbcrConversionCreateInfoKHR ## **/
+
+class _VkSamplerYcbcrConversionCreateInfoKHR: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    static NAN_GETTER(GetmemoryBuffer);
+    static NAN_GETTER(GetmemoryLayout);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(Getformat);
+    static NAN_SETTER(Setformat);
+    
+    static NAN_GETTER(GetycbcrModel);
+    static NAN_SETTER(SetycbcrModel);
+    
+    static NAN_GETTER(GetycbcrRange);
+    static NAN_SETTER(SetycbcrRange);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> components;
+      static NAN_GETTER(Getcomponents);
+    static NAN_SETTER(Setcomponents);
+    
+    static NAN_GETTER(GetxChromaOffset);
+    static NAN_SETTER(SetxChromaOffset);
+    
+    static NAN_GETTER(GetyChromaOffset);
+    static NAN_SETTER(SetyChromaOffset);
+    
+    static NAN_GETTER(GetchromaFilter);
+    static NAN_SETTER(SetchromaFilter);
+    
+    static NAN_GETTER(GetforceExplicitReconstruction);
+    static NAN_SETTER(SetforceExplicitReconstruction);
+    
+
+    // real instance
+    VkSamplerYcbcrConversionCreateInfoKHR instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkSamplerYcbcrConversionCreateInfoKHR();
+    ~_VkSamplerYcbcrConversionCreateInfoKHR();
+
+};
+
+/** ## END VkSamplerYcbcrConversionCreateInfoKHR ## **/
 
 /** ## BEGIN VkSamplerYcbcrConversionCreateInfo ## **/
 
@@ -7124,6 +7211,17 @@ class _VkSamplerYcbcrConversionInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> conversion;
+      static NAN_GETTER(Getconversion);
+    static NAN_SETTER(Setconversion);
+    
 
     // real instance
     VkSamplerYcbcrConversionInfoKHR instance = {};
@@ -7189,6 +7287,16 @@ class _VkPipelineTessellationDomainOriginStateCreateInfoKHR: public Nan::ObjectW
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GetdomainOrigin);
+    static NAN_SETTER(SetdomainOrigin);
+    
 
     // real instance
     VkPipelineTessellationDomainOriginStateCreateInfoKHR instance = {};
@@ -7253,6 +7361,16 @@ class _VkImageViewUsageCreateInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(Getusage);
+    static NAN_SETTER(Setusage);
+    
 
     // real instance
     VkImageViewUsageCreateInfoKHR instance = {};
@@ -7317,6 +7435,21 @@ class _VkMemoryDedicatedAllocateInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> image;
+      static NAN_GETTER(Getimage);
+    static NAN_SETTER(Setimage);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> buffer;
+      static NAN_GETTER(Getbuffer);
+    static NAN_SETTER(Setbuffer);
+    
 
     // real instance
     VkMemoryDedicatedAllocateInfoKHR instance = {};
@@ -7386,6 +7519,15 @@ class _VkMemoryDedicatedRequirementsKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GetprefersDedicatedAllocation);
+    static NAN_GETTER(GetrequiresDedicatedAllocation);
 
     // real instance
     VkMemoryDedicatedRequirementsKHR instance = {};
@@ -7449,6 +7591,14 @@ class _VkPhysicalDevicePointClippingPropertiesKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GetpointClippingBehavior);
 
     // real instance
     VkPhysicalDevicePointClippingPropertiesKHR instance = {};
@@ -7500,33 +7650,6 @@ class _VkPhysicalDevicePointClippingProperties: public Nan::ObjectWrap {
 };
 
 /** ## END VkPhysicalDevicePointClippingProperties ## **/
-
-/** ## BEGIN VkSparseImageMemoryRequirements2KHR ## **/
-
-class _VkSparseImageMemoryRequirements2KHR: public Nan::ObjectWrap {
-
-  public:
-    // #methods
-    static NAN_METHOD(New);
-    static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryLayout);
-    // #accessors
-
-    // real instance
-    VkSparseImageMemoryRequirements2KHR instance = {};
-
-    static Nan::Persistent<v8::FunctionTemplate> constructor;
-    static void Initialize(v8::Local<v8::Object> exports);
-    bool flush(void);
-
-  private:
-
-    _VkSparseImageMemoryRequirements2KHR();
-    ~_VkSparseImageMemoryRequirements2KHR();
-
-};
-
-/** ## END VkSparseImageMemoryRequirements2KHR ## **/
 
 /** ## BEGIN VkExtent3D ## **/
 
@@ -7628,6 +7751,42 @@ class _VkSparseImageMemoryRequirements: public Nan::ObjectWrap {
 
 /** ## END VkSparseImageMemoryRequirements ## **/
 
+/** ## BEGIN VkSparseImageMemoryRequirements2KHR ## **/
+
+class _VkSparseImageMemoryRequirements2KHR: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    static NAN_GETTER(GetmemoryBuffer);
+    static NAN_GETTER(GetmemoryLayout);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> memoryRequirements;
+      static NAN_GETTER(GetmemoryRequirements);
+
+    // real instance
+    VkSparseImageMemoryRequirements2KHR instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkSparseImageMemoryRequirements2KHR();
+    ~_VkSparseImageMemoryRequirements2KHR();
+
+};
+
+/** ## END VkSparseImageMemoryRequirements2KHR ## **/
+
 /** ## BEGIN VkSparseImageMemoryRequirements2 ## **/
 
 class _VkSparseImageMemoryRequirements2: public Nan::ObjectWrap {
@@ -7664,33 +7823,6 @@ class _VkSparseImageMemoryRequirements2: public Nan::ObjectWrap {
 
 /** ## END VkSparseImageMemoryRequirements2 ## **/
 
-/** ## BEGIN VkMemoryRequirements2KHR ## **/
-
-class _VkMemoryRequirements2KHR: public Nan::ObjectWrap {
-
-  public:
-    // #methods
-    static NAN_METHOD(New);
-    static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryLayout);
-    // #accessors
-
-    // real instance
-    VkMemoryRequirements2KHR instance = {};
-
-    static Nan::Persistent<v8::FunctionTemplate> constructor;
-    static void Initialize(v8::Local<v8::Object> exports);
-    bool flush(void);
-
-  private:
-
-    _VkMemoryRequirements2KHR();
-    ~_VkMemoryRequirements2KHR();
-
-};
-
-/** ## END VkMemoryRequirements2KHR ## **/
-
 /** ## BEGIN VkMemoryRequirements ## **/
 
 class _VkMemoryRequirements: public Nan::ObjectWrap {
@@ -7720,6 +7852,42 @@ class _VkMemoryRequirements: public Nan::ObjectWrap {
 };
 
 /** ## END VkMemoryRequirements ## **/
+
+/** ## BEGIN VkMemoryRequirements2KHR ## **/
+
+class _VkMemoryRequirements2KHR: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    static NAN_GETTER(GetmemoryBuffer);
+    static NAN_GETTER(GetmemoryLayout);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> memoryRequirements;
+      static NAN_GETTER(GetmemoryRequirements);
+
+    // real instance
+    VkMemoryRequirements2KHR instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkMemoryRequirements2KHR();
+    ~_VkMemoryRequirements2KHR();
+
+};
+
+/** ## END VkMemoryRequirements2KHR ## **/
 
 /** ## BEGIN VkMemoryRequirements2 ## **/
 
@@ -7767,6 +7935,17 @@ class _VkImageSparseMemoryRequirementsInfo2KHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> image;
+      static NAN_GETTER(Getimage);
+    static NAN_SETTER(Setimage);
+    
 
     // real instance
     VkImageSparseMemoryRequirementsInfo2KHR instance = {};
@@ -7832,6 +8011,17 @@ class _VkImageMemoryRequirementsInfo2KHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> image;
+      static NAN_GETTER(Getimage);
+    static NAN_SETTER(Setimage);
+    
 
     // real instance
     VkImageMemoryRequirementsInfo2KHR instance = {};
@@ -7897,6 +8087,17 @@ class _VkBufferMemoryRequirementsInfo2KHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> buffer;
+      static NAN_GETTER(Getbuffer);
+    static NAN_SETTER(Setbuffer);
+    
 
     // real instance
     VkBufferMemoryRequirementsInfo2KHR instance = {};
@@ -8000,6 +8201,25 @@ class _VkPhysicalDevice16BitStorageFeaturesKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GetstorageBuffer16BitAccess);
+    static NAN_SETTER(SetstorageBuffer16BitAccess);
+    
+    static NAN_GETTER(GetuniformAndStorageBuffer16BitAccess);
+    static NAN_SETTER(SetuniformAndStorageBuffer16BitAccess);
+    
+    static NAN_GETTER(GetstoragePushConstant16);
+    static NAN_SETTER(SetstoragePushConstant16);
+    
+    static NAN_GETTER(GetstorageInputOutput16);
+    static NAN_SETTER(SetstorageInputOutput16);
+    
 
     // real instance
     VkPhysicalDevice16BitStorageFeaturesKHR instance = {};
@@ -8639,33 +8859,6 @@ class _VkPhysicalDeviceSurfaceInfo2KHR: public Nan::ObjectWrap {
 
 /** ## END VkPhysicalDeviceSurfaceInfo2KHR ## **/
 
-/** ## BEGIN VkRenderPassInputAttachmentAspectCreateInfoKHR ## **/
-
-class _VkRenderPassInputAttachmentAspectCreateInfoKHR: public Nan::ObjectWrap {
-
-  public:
-    // #methods
-    static NAN_METHOD(New);
-    static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryLayout);
-    // #accessors
-
-    // real instance
-    VkRenderPassInputAttachmentAspectCreateInfoKHR instance = {};
-
-    static Nan::Persistent<v8::FunctionTemplate> constructor;
-    static void Initialize(v8::Local<v8::Object> exports);
-    bool flush(void);
-
-  private:
-
-    _VkRenderPassInputAttachmentAspectCreateInfoKHR();
-    ~_VkRenderPassInputAttachmentAspectCreateInfoKHR();
-
-};
-
-/** ## END VkRenderPassInputAttachmentAspectCreateInfoKHR ## **/
-
 /** ## BEGIN VkInputAttachmentAspectReference ## **/
 
 class _VkInputAttachmentAspectReference: public Nan::ObjectWrap {
@@ -8701,6 +8894,48 @@ class _VkInputAttachmentAspectReference: public Nan::ObjectWrap {
 };
 
 /** ## END VkInputAttachmentAspectReference ## **/
+
+/** ## BEGIN VkRenderPassInputAttachmentAspectCreateInfoKHR ## **/
+
+class _VkRenderPassInputAttachmentAspectCreateInfoKHR: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    static NAN_GETTER(GetmemoryBuffer);
+    static NAN_GETTER(GetmemoryLayout);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GetaspectReferenceCount);
+    static NAN_SETTER(SetaspectReferenceCount);
+    
+    std::vector<VkInputAttachmentAspectReference>* vpAspectReferences;
+    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> pAspectReferences;
+    static NAN_GETTER(GetpAspectReferences);
+    static NAN_SETTER(SetpAspectReferences);
+    
+
+    // real instance
+    VkRenderPassInputAttachmentAspectCreateInfoKHR instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkRenderPassInputAttachmentAspectCreateInfoKHR();
+    ~_VkRenderPassInputAttachmentAspectCreateInfoKHR();
+
+};
+
+/** ## END VkRenderPassInputAttachmentAspectCreateInfoKHR ## **/
 
 /** ## BEGIN VkRenderPassInputAttachmentAspectCreateInfo ## **/
 
@@ -8754,6 +8989,15 @@ class _VkInputAttachmentAspectReferenceKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(Getsubpass);
+    static NAN_SETTER(Setsubpass);
+    
+    static NAN_GETTER(GetinputAttachmentIndex);
+    static NAN_SETTER(SetinputAttachmentIndex);
+    
+    static NAN_GETTER(GetaspectMask);
+    static NAN_SETTER(SetaspectMask);
+    
 
     // real instance
     VkInputAttachmentAspectReferenceKHR instance = {};
@@ -9283,33 +9527,6 @@ class _VkHdrMetadataEXT: public Nan::ObjectWrap {
 
 /** ## END VkHdrMetadataEXT ## **/
 
-/** ## BEGIN VkDescriptorUpdateTemplateCreateInfoKHR ## **/
-
-class _VkDescriptorUpdateTemplateCreateInfoKHR: public Nan::ObjectWrap {
-
-  public:
-    // #methods
-    static NAN_METHOD(New);
-    static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryLayout);
-    // #accessors
-
-    // real instance
-    VkDescriptorUpdateTemplateCreateInfoKHR instance = {};
-
-    static Nan::Persistent<v8::FunctionTemplate> constructor;
-    static void Initialize(v8::Local<v8::Object> exports);
-    bool flush(void);
-
-  private:
-
-    _VkDescriptorUpdateTemplateCreateInfoKHR();
-    ~_VkDescriptorUpdateTemplateCreateInfoKHR();
-
-};
-
-/** ## END VkDescriptorUpdateTemplateCreateInfoKHR ## **/
-
 /** ## BEGIN VkDescriptorUpdateTemplateEntry ## **/
 
 class _VkDescriptorUpdateTemplateEntry: public Nan::ObjectWrap {
@@ -9354,6 +9571,68 @@ class _VkDescriptorUpdateTemplateEntry: public Nan::ObjectWrap {
 };
 
 /** ## END VkDescriptorUpdateTemplateEntry ## **/
+
+/** ## BEGIN VkDescriptorUpdateTemplateCreateInfoKHR ## **/
+
+class _VkDescriptorUpdateTemplateCreateInfoKHR: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    static NAN_GETTER(GetmemoryBuffer);
+    static NAN_GETTER(GetmemoryLayout);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(Getflags);
+    static NAN_SETTER(Setflags);
+    
+    static NAN_GETTER(GetdescriptorUpdateEntryCount);
+    static NAN_SETTER(SetdescriptorUpdateEntryCount);
+    
+    std::vector<VkDescriptorUpdateTemplateEntry>* vpDescriptorUpdateEntries;
+    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> pDescriptorUpdateEntries;
+    static NAN_GETTER(GetpDescriptorUpdateEntries);
+    static NAN_SETTER(SetpDescriptorUpdateEntries);
+    
+    static NAN_GETTER(GettemplateType);
+    static NAN_SETTER(SettemplateType);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> descriptorSetLayout;
+      static NAN_GETTER(GetdescriptorSetLayout);
+    static NAN_SETTER(SetdescriptorSetLayout);
+    
+    static NAN_GETTER(GetpipelineBindPoint);
+    static NAN_SETTER(SetpipelineBindPoint);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pipelineLayout;
+      static NAN_GETTER(GetpipelineLayout);
+    static NAN_SETTER(SetpipelineLayout);
+    
+    static NAN_GETTER(Getset);
+    static NAN_SETTER(Setset);
+    
+
+    // real instance
+    VkDescriptorUpdateTemplateCreateInfoKHR instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkDescriptorUpdateTemplateCreateInfoKHR();
+    ~_VkDescriptorUpdateTemplateCreateInfoKHR();
+
+};
+
+/** ## END VkDescriptorUpdateTemplateCreateInfoKHR ## **/
 
 /** ## BEGIN VkDescriptorUpdateTemplateCreateInfo ## **/
 
@@ -9427,6 +9706,24 @@ class _VkDescriptorUpdateTemplateEntryKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetdstBinding);
+    static NAN_SETTER(SetdstBinding);
+    
+    static NAN_GETTER(GetdstArrayElement);
+    static NAN_SETTER(SetdstArrayElement);
+    
+    static NAN_GETTER(GetdescriptorCount);
+    static NAN_SETTER(SetdescriptorCount);
+    
+    static NAN_GETTER(GetdescriptorType);
+    static NAN_SETTER(SetdescriptorType);
+    
+    static NAN_GETTER(Getoffset);
+    static NAN_SETTER(Setoffset);
+    
+    static NAN_GETTER(Getstride);
+    static NAN_SETTER(Setstride);
+    
 
     // real instance
     VkDescriptorUpdateTemplateEntryKHR instance = {};
@@ -9491,6 +9788,21 @@ class _VkDeviceGroupDeviceCreateInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GetphysicalDeviceCount);
+    static NAN_SETTER(SetphysicalDeviceCount);
+    
+    std::vector<VkPhysicalDevice>* vpPhysicalDevices;
+    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> pPhysicalDevices;
+    static NAN_GETTER(GetpPhysicalDevices);
+    static NAN_SETTER(SetpPhysicalDevices);
+    
 
     // real instance
     VkDeviceGroupDeviceCreateInfoKHR instance = {};
@@ -9773,6 +10085,19 @@ class _VkDeviceGroupBindSparseInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GetresourceDeviceIndex);
+    static NAN_SETTER(SetresourceDeviceIndex);
+    
+    static NAN_GETTER(GetmemoryDeviceIndex);
+    static NAN_SETTER(SetmemoryDeviceIndex);
+    
 
     // real instance
     VkDeviceGroupBindSparseInfoKHR instance = {};
@@ -9840,6 +10165,34 @@ class _VkDeviceGroupSubmitInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GetwaitSemaphoreCount);
+    static NAN_SETTER(SetwaitSemaphoreCount);
+    
+    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> pWaitSemaphoreDeviceIndices;
+    static NAN_GETTER(GetpWaitSemaphoreDeviceIndices);
+    static NAN_SETTER(SetpWaitSemaphoreDeviceIndices);
+    
+    static NAN_GETTER(GetcommandBufferCount);
+    static NAN_SETTER(SetcommandBufferCount);
+    
+    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> pCommandBufferDeviceMasks;
+    static NAN_GETTER(GetpCommandBufferDeviceMasks);
+    static NAN_SETTER(SetpCommandBufferDeviceMasks);
+    
+    static NAN_GETTER(GetsignalSemaphoreCount);
+    static NAN_SETTER(SetsignalSemaphoreCount);
+    
+    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> pSignalSemaphoreDeviceIndices;
+    static NAN_GETTER(GetpSignalSemaphoreDeviceIndices);
+    static NAN_SETTER(SetpSignalSemaphoreDeviceIndices);
+    
 
     // real instance
     VkDeviceGroupSubmitInfoKHR instance = {};
@@ -9922,6 +10275,16 @@ class _VkDeviceGroupCommandBufferBeginInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GetdeviceMask);
+    static NAN_SETTER(SetdeviceMask);
+    
 
     // real instance
     VkDeviceGroupCommandBufferBeginInfoKHR instance = {};
@@ -9986,6 +10349,24 @@ class _VkDeviceGroupRenderPassBeginInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GetdeviceMask);
+    static NAN_SETTER(SetdeviceMask);
+    
+    static NAN_GETTER(GetdeviceRenderAreaCount);
+    static NAN_SETTER(SetdeviceRenderAreaCount);
+    
+    std::vector<VkRect2D>* vpDeviceRenderAreas;
+    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> pDeviceRenderAreas;
+    static NAN_GETTER(GetpDeviceRenderAreas);
+    static NAN_SETTER(SetpDeviceRenderAreas);
+    
 
     // real instance
     VkDeviceGroupRenderPassBeginInfoKHR instance = {};
@@ -10058,6 +10439,28 @@ class _VkBindImageMemoryDeviceGroupInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GetdeviceIndexCount);
+    static NAN_SETTER(SetdeviceIndexCount);
+    
+    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> pDeviceIndices;
+    static NAN_GETTER(GetpDeviceIndices);
+    static NAN_SETTER(SetpDeviceIndices);
+    
+    static NAN_GETTER(GetsplitInstanceBindRegionCount);
+    static NAN_SETTER(SetsplitInstanceBindRegionCount);
+    
+    std::vector<VkRect2D>* vpSplitInstanceBindRegions;
+    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> pSplitInstanceBindRegions;
+    static NAN_GETTER(GetpSplitInstanceBindRegions);
+    static NAN_SETTER(SetpSplitInstanceBindRegions);
+    
 
     // real instance
     VkBindImageMemoryDeviceGroupInfoKHR instance = {};
@@ -10134,6 +10537,24 @@ class _VkBindImageMemoryInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> image;
+      static NAN_GETTER(Getimage);
+    static NAN_SETTER(Setimage);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> memory;
+      static NAN_GETTER(Getmemory);
+    static NAN_SETTER(Setmemory);
+    
+    static NAN_GETTER(GetmemoryOffset);
+    static NAN_SETTER(SetmemoryOffset);
+    
 
     // real instance
     VkBindImageMemoryInfoKHR instance = {};
@@ -10206,6 +10627,20 @@ class _VkBindBufferMemoryDeviceGroupInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GetdeviceIndexCount);
+    static NAN_SETTER(SetdeviceIndexCount);
+    
+    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> pDeviceIndices;
+    static NAN_GETTER(GetpDeviceIndices);
+    static NAN_SETTER(SetpDeviceIndices);
+    
 
     // real instance
     VkBindBufferMemoryDeviceGroupInfoKHR instance = {};
@@ -10274,6 +10709,24 @@ class _VkBindBufferMemoryInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> buffer;
+      static NAN_GETTER(Getbuffer);
+    static NAN_SETTER(Setbuffer);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> memory;
+      static NAN_GETTER(Getmemory);
+    static NAN_SETTER(Setmemory);
+    
+    static NAN_GETTER(GetmemoryOffset);
+    static NAN_SETTER(SetmemoryOffset);
+    
 
     // real instance
     VkBindBufferMemoryInfoKHR instance = {};
@@ -10346,6 +10799,19 @@ class _VkMemoryAllocateFlagsInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(Getflags);
+    static NAN_SETTER(Setflags);
+    
+    static NAN_GETTER(GetdeviceMask);
+    static NAN_SETTER(SetdeviceMask);
+    
 
     // real instance
     VkMemoryAllocateFlagsInfoKHR instance = {};
@@ -10413,6 +10879,18 @@ class _VkPhysicalDeviceGroupPropertiesKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GetphysicalDeviceCount);
+    std::vector<VkPhysicalDevice>* vphysicalDevices;
+    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> physicalDevices;
+    static NAN_GETTER(GetphysicalDevices);
+    static NAN_GETTER(GetsubsetAllocation);
 
     // real instance
     VkPhysicalDeviceGroupPropertiesKHR instance = {};
@@ -10675,6 +11153,34 @@ class _VkRenderPassMultiviewCreateInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GetsubpassCount);
+    static NAN_SETTER(SetsubpassCount);
+    
+    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> pViewMasks;
+    static NAN_GETTER(GetpViewMasks);
+    static NAN_SETTER(SetpViewMasks);
+    
+    static NAN_GETTER(GetdependencyCount);
+    static NAN_SETTER(SetdependencyCount);
+    
+    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> pViewOffsets;
+    static NAN_GETTER(GetpViewOffsets);
+    static NAN_SETTER(SetpViewOffsets);
+    
+    static NAN_GETTER(GetcorrelationMaskCount);
+    static NAN_SETTER(SetcorrelationMaskCount);
+    
+    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> pCorrelationMasks;
+    static NAN_GETTER(GetpCorrelationMasks);
+    static NAN_SETTER(SetpCorrelationMasks);
+    
 
     // real instance
     VkRenderPassMultiviewCreateInfoKHR instance = {};
@@ -10757,6 +11263,15 @@ class _VkPhysicalDeviceMultiviewPropertiesKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GetmaxMultiviewViewCount);
+    static NAN_GETTER(GetmaxMultiviewInstanceIndex);
 
     // real instance
     VkPhysicalDeviceMultiviewPropertiesKHR instance = {};
@@ -10820,6 +11335,22 @@ class _VkPhysicalDeviceMultiviewFeaturesKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(Getmultiview);
+    static NAN_SETTER(Setmultiview);
+    
+    static NAN_GETTER(GetmultiviewGeometryShader);
+    static NAN_SETTER(SetmultiviewGeometryShader);
+    
+    static NAN_GETTER(GetmultiviewTessellationShader);
+    static NAN_SETTER(SetmultiviewTessellationShader);
+    
 
     // real instance
     VkPhysicalDeviceMultiviewFeaturesKHR instance = {};
@@ -11097,6 +11628,16 @@ class _VkExportFenceCreateInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GethandleTypes);
+    static NAN_SETTER(SethandleTypes);
+    
 
     // real instance
     VkExportFenceCreateInfoKHR instance = {};
@@ -11161,6 +11702,16 @@ class _VkExternalFencePropertiesKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GetexportFromImportedHandleTypes);
+    static NAN_GETTER(GetcompatibleHandleTypes);
+    static NAN_GETTER(GetexternalFenceFeatures);
 
     // real instance
     VkExternalFencePropertiesKHR instance = {};
@@ -11225,6 +11776,16 @@ class _VkPhysicalDeviceExternalFenceInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GethandleType);
+    static NAN_SETTER(SethandleType);
+    
 
     // real instance
     VkPhysicalDeviceExternalFenceInfoKHR instance = {};
@@ -11544,6 +12105,16 @@ class _VkExportSemaphoreCreateInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GethandleTypes);
+    static NAN_SETTER(SethandleTypes);
+    
 
     // real instance
     VkExportSemaphoreCreateInfoKHR instance = {};
@@ -11608,6 +12179,16 @@ class _VkExternalSemaphorePropertiesKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GetexportFromImportedHandleTypes);
+    static NAN_GETTER(GetcompatibleHandleTypes);
+    static NAN_GETTER(GetexternalSemaphoreFeatures);
 
     // real instance
     VkExternalSemaphorePropertiesKHR instance = {};
@@ -11672,6 +12253,16 @@ class _VkPhysicalDeviceExternalSemaphoreInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GethandleType);
+    static NAN_SETTER(SethandleType);
+    
 
     // real instance
     VkPhysicalDeviceExternalSemaphoreInfoKHR instance = {};
@@ -12061,6 +12652,16 @@ class _VkExportMemoryAllocateInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GethandleTypes);
+    static NAN_SETTER(SethandleTypes);
+    
 
     // real instance
     VkExportMemoryAllocateInfoKHR instance = {};
@@ -12125,6 +12726,16 @@ class _VkExternalMemoryBufferCreateInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GethandleTypes);
+    static NAN_SETTER(SethandleTypes);
+    
 
     // real instance
     VkExternalMemoryBufferCreateInfoKHR instance = {};
@@ -12189,6 +12800,16 @@ class _VkExternalMemoryImageCreateInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GethandleTypes);
+    static NAN_SETTER(SethandleTypes);
+    
 
     // real instance
     VkExternalMemoryImageCreateInfoKHR instance = {};
@@ -12253,6 +12874,24 @@ class _VkPhysicalDeviceIDPropertiesKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    std::vector<uint8_t>* vdeviceUUID;
+    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> deviceUUID;
+    static NAN_GETTER(GetdeviceUUID);
+    std::vector<uint8_t>* vdriverUUID;
+    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> driverUUID;
+    static NAN_GETTER(GetdriverUUID);
+    std::vector<uint8_t>* vdeviceLUID;
+    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> deviceLUID;
+    static NAN_GETTER(GetdeviceLUID);
+    static NAN_GETTER(GetdeviceNodeMask);
+    static NAN_GETTER(GetdeviceLUIDValid);
 
     // real instance
     VkPhysicalDeviceIDPropertiesKHR instance = {};
@@ -12315,33 +12954,6 @@ class _VkPhysicalDeviceIDProperties: public Nan::ObjectWrap {
 
 /** ## END VkPhysicalDeviceIDProperties ## **/
 
-/** ## BEGIN VkExternalBufferPropertiesKHR ## **/
-
-class _VkExternalBufferPropertiesKHR: public Nan::ObjectWrap {
-
-  public:
-    // #methods
-    static NAN_METHOD(New);
-    static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryLayout);
-    // #accessors
-
-    // real instance
-    VkExternalBufferPropertiesKHR instance = {};
-
-    static Nan::Persistent<v8::FunctionTemplate> constructor;
-    static void Initialize(v8::Local<v8::Object> exports);
-    bool flush(void);
-
-  private:
-
-    _VkExternalBufferPropertiesKHR();
-    ~_VkExternalBufferPropertiesKHR();
-
-};
-
-/** ## END VkExternalBufferPropertiesKHR ## **/
-
 /** ## BEGIN VkExternalMemoryProperties ## **/
 
 class _VkExternalMemoryProperties: public Nan::ObjectWrap {
@@ -12371,6 +12983,42 @@ class _VkExternalMemoryProperties: public Nan::ObjectWrap {
 };
 
 /** ## END VkExternalMemoryProperties ## **/
+
+/** ## BEGIN VkExternalBufferPropertiesKHR ## **/
+
+class _VkExternalBufferPropertiesKHR: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    static NAN_GETTER(GetmemoryBuffer);
+    static NAN_GETTER(GetmemoryLayout);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> externalMemoryProperties;
+      static NAN_GETTER(GetexternalMemoryProperties);
+
+    // real instance
+    VkExternalBufferPropertiesKHR instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkExternalBufferPropertiesKHR();
+    ~_VkExternalBufferPropertiesKHR();
+
+};
+
+/** ## END VkExternalBufferPropertiesKHR ## **/
 
 /** ## BEGIN VkExternalBufferProperties ## **/
 
@@ -12418,6 +13066,22 @@ class _VkPhysicalDeviceExternalBufferInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(Getflags);
+    static NAN_SETTER(Setflags);
+    
+    static NAN_GETTER(Getusage);
+    static NAN_SETTER(Setusage);
+    
+    static NAN_GETTER(GethandleType);
+    static NAN_SETTER(SethandleType);
+    
 
     // real instance
     VkPhysicalDeviceExternalBufferInfoKHR instance = {};
@@ -12488,6 +13152,15 @@ class _VkExternalImageFormatPropertiesKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> externalMemoryProperties;
+      static NAN_GETTER(GetexternalMemoryProperties);
 
     // real instance
     VkExternalImageFormatPropertiesKHR instance = {};
@@ -12551,6 +13224,16 @@ class _VkPhysicalDeviceExternalImageFormatInfoKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GethandleType);
+    static NAN_SETTER(SethandleType);
+    
 
     // real instance
     VkPhysicalDeviceExternalImageFormatInfoKHR instance = {};
@@ -12615,6 +13298,9 @@ class _VkExternalMemoryPropertiesKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetexternalMemoryFeatures);
+    static NAN_GETTER(GetexportFromImportedHandleTypes);
+    static NAN_GETTER(GetcompatibleHandleTypes);
 
     // real instance
     VkExternalMemoryPropertiesKHR instance = {};
@@ -12642,6 +13328,19 @@ class _VkPhysicalDeviceVariablePointerFeaturesKHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(GetvariablePointersStorageBuffer);
+    static NAN_SETTER(SetvariablePointersStorageBuffer);
+    
+    static NAN_GETTER(GetvariablePointers);
+    static NAN_SETTER(SetvariablePointers);
+    
 
     // real instance
     VkPhysicalDeviceVariablePointerFeaturesKHR instance = {};
@@ -12941,6 +13640,28 @@ class _VkPhysicalDeviceSparseImageFormatInfo2KHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(Getformat);
+    static NAN_SETTER(Setformat);
+    
+    static NAN_GETTER(Gettype);
+    static NAN_SETTER(Settype);
+    
+    static NAN_GETTER(Getsamples);
+    static NAN_SETTER(Setsamples);
+    
+    static NAN_GETTER(Getusage);
+    static NAN_SETTER(Setusage);
+    
+    static NAN_GETTER(Gettiling);
+    static NAN_SETTER(Settiling);
+    
 
     // real instance
     VkPhysicalDeviceSparseImageFormatInfo2KHR instance = {};
@@ -13017,6 +13738,15 @@ class _VkSparseImageFormatProperties2KHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> properties;
+      static NAN_GETTER(Getproperties);
 
     // real instance
     VkSparseImageFormatProperties2KHR instance = {};
@@ -13069,33 +13799,6 @@ class _VkSparseImageFormatProperties2: public Nan::ObjectWrap {
 };
 
 /** ## END VkSparseImageFormatProperties2 ## **/
-
-/** ## BEGIN VkPhysicalDeviceMemoryProperties2KHR ## **/
-
-class _VkPhysicalDeviceMemoryProperties2KHR: public Nan::ObjectWrap {
-
-  public:
-    // #methods
-    static NAN_METHOD(New);
-    static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryLayout);
-    // #accessors
-
-    // real instance
-    VkPhysicalDeviceMemoryProperties2KHR instance = {};
-
-    static Nan::Persistent<v8::FunctionTemplate> constructor;
-    static void Initialize(v8::Local<v8::Object> exports);
-    bool flush(void);
-
-  private:
-
-    _VkPhysicalDeviceMemoryProperties2KHR();
-    ~_VkPhysicalDeviceMemoryProperties2KHR();
-
-};
-
-/** ## END VkPhysicalDeviceMemoryProperties2KHR ## **/
 
 /** ## BEGIN VkMemoryHeap ## **/
 
@@ -13190,6 +13893,42 @@ class _VkPhysicalDeviceMemoryProperties: public Nan::ObjectWrap {
 
 /** ## END VkPhysicalDeviceMemoryProperties ## **/
 
+/** ## BEGIN VkPhysicalDeviceMemoryProperties2KHR ## **/
+
+class _VkPhysicalDeviceMemoryProperties2KHR: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    static NAN_GETTER(GetmemoryBuffer);
+    static NAN_GETTER(GetmemoryLayout);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> memoryProperties;
+      static NAN_GETTER(GetmemoryProperties);
+
+    // real instance
+    VkPhysicalDeviceMemoryProperties2KHR instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkPhysicalDeviceMemoryProperties2KHR();
+    ~_VkPhysicalDeviceMemoryProperties2KHR();
+
+};
+
+/** ## END VkPhysicalDeviceMemoryProperties2KHR ## **/
+
 /** ## BEGIN VkPhysicalDeviceMemoryProperties2 ## **/
 
 class _VkPhysicalDeviceMemoryProperties2: public Nan::ObjectWrap {
@@ -13226,33 +13965,6 @@ class _VkPhysicalDeviceMemoryProperties2: public Nan::ObjectWrap {
 
 /** ## END VkPhysicalDeviceMemoryProperties2 ## **/
 
-/** ## BEGIN VkQueueFamilyProperties2KHR ## **/
-
-class _VkQueueFamilyProperties2KHR: public Nan::ObjectWrap {
-
-  public:
-    // #methods
-    static NAN_METHOD(New);
-    static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryLayout);
-    // #accessors
-
-    // real instance
-    VkQueueFamilyProperties2KHR instance = {};
-
-    static Nan::Persistent<v8::FunctionTemplate> constructor;
-    static void Initialize(v8::Local<v8::Object> exports);
-    bool flush(void);
-
-  private:
-
-    _VkQueueFamilyProperties2KHR();
-    ~_VkQueueFamilyProperties2KHR();
-
-};
-
-/** ## END VkQueueFamilyProperties2KHR ## **/
-
 /** ## BEGIN VkQueueFamilyProperties ## **/
 
 class _VkQueueFamilyProperties: public Nan::ObjectWrap {
@@ -13284,6 +13996,42 @@ class _VkQueueFamilyProperties: public Nan::ObjectWrap {
 };
 
 /** ## END VkQueueFamilyProperties ## **/
+
+/** ## BEGIN VkQueueFamilyProperties2KHR ## **/
+
+class _VkQueueFamilyProperties2KHR: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    static NAN_GETTER(GetmemoryBuffer);
+    static NAN_GETTER(GetmemoryLayout);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> queueFamilyProperties;
+      static NAN_GETTER(GetqueueFamilyProperties);
+
+    // real instance
+    VkQueueFamilyProperties2KHR instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkQueueFamilyProperties2KHR();
+    ~_VkQueueFamilyProperties2KHR();
+
+};
+
+/** ## END VkQueueFamilyProperties2KHR ## **/
 
 /** ## BEGIN VkQueueFamilyProperties2 ## **/
 
@@ -13331,6 +14079,28 @@ class _VkPhysicalDeviceImageFormatInfo2KHR: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+    static NAN_GETTER(Getformat);
+    static NAN_SETTER(Setformat);
+    
+    static NAN_GETTER(Gettype);
+    static NAN_SETTER(Settype);
+    
+    static NAN_GETTER(Gettiling);
+    static NAN_SETTER(Settiling);
+    
+    static NAN_GETTER(Getusage);
+    static NAN_SETTER(Setusage);
+    
+    static NAN_GETTER(Getflags);
+    static NAN_SETTER(Setflags);
+    
 
     // real instance
     VkPhysicalDeviceImageFormatInfo2KHR instance = {};
@@ -13397,33 +14167,6 @@ class _VkPhysicalDeviceImageFormatInfo2: public Nan::ObjectWrap {
 
 /** ## END VkPhysicalDeviceImageFormatInfo2 ## **/
 
-/** ## BEGIN VkImageFormatProperties2KHR ## **/
-
-class _VkImageFormatProperties2KHR: public Nan::ObjectWrap {
-
-  public:
-    // #methods
-    static NAN_METHOD(New);
-    static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryLayout);
-    // #accessors
-
-    // real instance
-    VkImageFormatProperties2KHR instance = {};
-
-    static Nan::Persistent<v8::FunctionTemplate> constructor;
-    static void Initialize(v8::Local<v8::Object> exports);
-    bool flush(void);
-
-  private:
-
-    _VkImageFormatProperties2KHR();
-    ~_VkImageFormatProperties2KHR();
-
-};
-
-/** ## END VkImageFormatProperties2KHR ## **/
-
 /** ## BEGIN VkImageFormatProperties ## **/
 
 class _VkImageFormatProperties: public Nan::ObjectWrap {
@@ -13456,6 +14199,42 @@ class _VkImageFormatProperties: public Nan::ObjectWrap {
 };
 
 /** ## END VkImageFormatProperties ## **/
+
+/** ## BEGIN VkImageFormatProperties2KHR ## **/
+
+class _VkImageFormatProperties2KHR: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    static NAN_GETTER(GetmemoryBuffer);
+    static NAN_GETTER(GetmemoryLayout);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> imageFormatProperties;
+      static NAN_GETTER(GetimageFormatProperties);
+
+    // real instance
+    VkImageFormatProperties2KHR instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkImageFormatProperties2KHR();
+    ~_VkImageFormatProperties2KHR();
+
+};
+
+/** ## END VkImageFormatProperties2KHR ## **/
 
 /** ## BEGIN VkImageFormatProperties2 ## **/
 
@@ -13493,33 +14272,6 @@ class _VkImageFormatProperties2: public Nan::ObjectWrap {
 
 /** ## END VkImageFormatProperties2 ## **/
 
-/** ## BEGIN VkFormatProperties2KHR ## **/
-
-class _VkFormatProperties2KHR: public Nan::ObjectWrap {
-
-  public:
-    // #methods
-    static NAN_METHOD(New);
-    static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryLayout);
-    // #accessors
-
-    // real instance
-    VkFormatProperties2KHR instance = {};
-
-    static Nan::Persistent<v8::FunctionTemplate> constructor;
-    static void Initialize(v8::Local<v8::Object> exports);
-    bool flush(void);
-
-  private:
-
-    _VkFormatProperties2KHR();
-    ~_VkFormatProperties2KHR();
-
-};
-
-/** ## END VkFormatProperties2KHR ## **/
-
 /** ## BEGIN VkFormatProperties ## **/
 
 class _VkFormatProperties: public Nan::ObjectWrap {
@@ -13549,6 +14301,42 @@ class _VkFormatProperties: public Nan::ObjectWrap {
 };
 
 /** ## END VkFormatProperties ## **/
+
+/** ## BEGIN VkFormatProperties2KHR ## **/
+
+class _VkFormatProperties2KHR: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    static NAN_GETTER(GetmemoryBuffer);
+    static NAN_GETTER(GetmemoryLayout);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> formatProperties;
+      static NAN_GETTER(GetformatProperties);
+
+    // real instance
+    VkFormatProperties2KHR instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkFormatProperties2KHR();
+    ~_VkFormatProperties2KHR();
+
+};
+
+/** ## END VkFormatProperties2KHR ## **/
 
 /** ## BEGIN VkFormatProperties2 ## **/
 
@@ -13585,33 +14373,6 @@ class _VkFormatProperties2: public Nan::ObjectWrap {
 };
 
 /** ## END VkFormatProperties2 ## **/
-
-/** ## BEGIN VkPhysicalDeviceProperties2KHR ## **/
-
-class _VkPhysicalDeviceProperties2KHR: public Nan::ObjectWrap {
-
-  public:
-    // #methods
-    static NAN_METHOD(New);
-    static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryLayout);
-    // #accessors
-
-    // real instance
-    VkPhysicalDeviceProperties2KHR instance = {};
-
-    static Nan::Persistent<v8::FunctionTemplate> constructor;
-    static void Initialize(v8::Local<v8::Object> exports);
-    bool flush(void);
-
-  private:
-
-    _VkPhysicalDeviceProperties2KHR();
-    ~_VkPhysicalDeviceProperties2KHR();
-
-};
-
-/** ## END VkPhysicalDeviceProperties2KHR ## **/
 
 /** ## BEGIN VkPhysicalDeviceSparseProperties ## **/
 
@@ -13831,6 +14592,42 @@ class _VkPhysicalDeviceProperties: public Nan::ObjectWrap {
 
 /** ## END VkPhysicalDeviceProperties ## **/
 
+/** ## BEGIN VkPhysicalDeviceProperties2KHR ## **/
+
+class _VkPhysicalDeviceProperties2KHR: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    static NAN_GETTER(GetmemoryBuffer);
+    static NAN_GETTER(GetmemoryLayout);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> properties;
+      static NAN_GETTER(Getproperties);
+
+    // real instance
+    VkPhysicalDeviceProperties2KHR instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkPhysicalDeviceProperties2KHR();
+    ~_VkPhysicalDeviceProperties2KHR();
+
+};
+
+/** ## END VkPhysicalDeviceProperties2KHR ## **/
+
 /** ## BEGIN VkPhysicalDeviceProperties2 ## **/
 
 class _VkPhysicalDeviceProperties2: public Nan::ObjectWrap {
@@ -13866,33 +14663,6 @@ class _VkPhysicalDeviceProperties2: public Nan::ObjectWrap {
 };
 
 /** ## END VkPhysicalDeviceProperties2 ## **/
-
-/** ## BEGIN VkPhysicalDeviceFeatures2KHR ## **/
-
-class _VkPhysicalDeviceFeatures2KHR: public Nan::ObjectWrap {
-
-  public:
-    // #methods
-    static NAN_METHOD(New);
-    static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryLayout);
-    // #accessors
-
-    // real instance
-    VkPhysicalDeviceFeatures2KHR instance = {};
-
-    static Nan::Persistent<v8::FunctionTemplate> constructor;
-    static void Initialize(v8::Local<v8::Object> exports);
-    bool flush(void);
-
-  private:
-
-    _VkPhysicalDeviceFeatures2KHR();
-    ~_VkPhysicalDeviceFeatures2KHR();
-
-};
-
-/** ## END VkPhysicalDeviceFeatures2KHR ## **/
 
 /** ## BEGIN VkPhysicalDeviceFeatures ## **/
 
@@ -14085,6 +14855,44 @@ class _VkPhysicalDeviceFeatures: public Nan::ObjectWrap {
 };
 
 /** ## END VkPhysicalDeviceFeatures ## **/
+
+/** ## BEGIN VkPhysicalDeviceFeatures2KHR ## **/
+
+class _VkPhysicalDeviceFeatures2KHR: public Nan::ObjectWrap {
+
+  public:
+    // #methods
+    static NAN_METHOD(New);
+    static NAN_GETTER(GetmemoryBuffer);
+    static NAN_GETTER(GetmemoryLayout);
+    // #accessors
+    static NAN_GETTER(GetsType);
+    static NAN_SETTER(SetsType);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pNext;
+    static NAN_GETTER(GetpNext);
+    static NAN_SETTER(SetpNext);
+    
+      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> features;
+      static NAN_GETTER(Getfeatures);
+    static NAN_SETTER(Setfeatures);
+    
+
+    // real instance
+    VkPhysicalDeviceFeatures2KHR instance = {};
+
+    static Nan::Persistent<v8::FunctionTemplate> constructor;
+    static void Initialize(v8::Local<v8::Object> exports);
+    bool flush(void);
+
+  private:
+
+    _VkPhysicalDeviceFeatures2KHR();
+    ~_VkPhysicalDeviceFeatures2KHR();
+
+};
+
+/** ## END VkPhysicalDeviceFeatures2KHR ## **/
 
 /** ## BEGIN VkPhysicalDeviceFeatures2 ## **/
 

@@ -44,6 +44,14 @@ instanceCreateInfo = new VkRenderPassMultiviewCreateInfoKHR(object);</code></pre
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
       <pre><code class="language-js">let instanceCreateInfo = new VkRenderPassMultiviewCreateInfoKHR();
+instanceCreateInfo.sType = ;
+instanceCreateInfo.pNext = ;
+instanceCreateInfo.subpassCount = ;
+instanceCreateInfo.pViewMasks = ;
+instanceCreateInfo.dependencyCount = ;
+instanceCreateInfo.pViewOffsets = ;
+instanceCreateInfo.correlationMaskCount = ;
+instanceCreateInfo.pCorrelationMasks = ;
 </code></pre>
     </vk-stub>
 
@@ -59,6 +67,54 @@ instanceCreateInfo = new VkRenderPassMultiviewCreateInfoKHR(object);</code></pre
     <vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
+      <!-- VkRenderPassMultiviewCreateInfoKHR.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkRenderPassMultiviewCreateInfoKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkRenderPassMultiviewCreateInfoKHR.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkRenderPassMultiviewCreateInfoKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is `NULL` or a pointer to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkRenderPassMultiviewCreateInfoKHR.prototype.subpassCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkRenderPassMultiviewCreateInfoKHR.prototype.<vk-prototype-name>subpassCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> number of view masks, where each mask is a bitfield of view indices describing which views rendering is broadcast to in each subpass, when multiview is enabled. If pname:subpassCount is zero, each view mask is treated as zero.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkRenderPassMultiviewCreateInfoKHR.prototype.pViewMasks -->
+      <vk-property-entry>
+        <vk-property-prototype>VkRenderPassMultiviewCreateInfoKHR.prototype.<vk-prototype-name>pViewMasks</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array">Uint32Array</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkRenderPassMultiviewCreateInfoKHR.prototype.dependencyCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkRenderPassMultiviewCreateInfoKHR.prototype.<vk-prototype-name>dependencyCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> view offsets, one for each dependency. If pname:dependencyCount is zero, each dependency's view offset is treated as zero. Each view offset controls which views in the source subpass the views in the destination subpass depend on.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkRenderPassMultiviewCreateInfoKHR.prototype.pViewOffsets -->
+      <vk-property-entry>
+        <vk-property-prototype>VkRenderPassMultiviewCreateInfoKHR.prototype.<vk-prototype-name>pViewOffsets</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array">Int32Array</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkRenderPassMultiviewCreateInfoKHR.prototype.correlationMaskCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkRenderPassMultiviewCreateInfoKHR.prototype.<vk-prototype-name>correlationMaskCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is zero or a number of correlation masks.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkRenderPassMultiviewCreateInfoKHR.prototype.pCorrelationMasks -->
+      <vk-property-entry>
+        <vk-property-prototype>VkRenderPassMultiviewCreateInfoKHR.prototype.<vk-prototype-name>pCorrelationMasks</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array">Uint32Array</a></vk-property-type>
+        <vk-property-description> is an array of view masks indicating sets of views that may: be more efficient to render concurrently.</vk-property-description>
+      </vk-property-entry>
       
     </vk-properties>
 

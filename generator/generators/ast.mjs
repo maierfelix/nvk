@@ -9,7 +9,9 @@ import parseDocumentation from "../doc-parser";
 
 import {
   warn,
+  getNodeByName,
   formatIntToHex,
+  getAutoStructureType,
   isNumericReferenceType
 } from "../utils";
 
@@ -331,10 +333,8 @@ function parseStructElement(parent) {
     returnedonly: !!attr.returnedonly,
     children
   };
-  if (attr.structextends) {
-    out.extends = attr.structextends;
-  }
-  //registerStruct(out);
+  if (attr.alias) out.alias = attr.alias;
+  if (attr.structextends) out.extends = attr.structextends;
   if (!elements) return out;
   elements.map((child, index) => {
     switch (child.name) {
@@ -757,6 +757,26 @@ export default function({ xmlInput, version, docs } = _) {
       if (idx++ >= nodes.length - 1) break;
     };
     commands.map(cmd => out.push(cmd));
+  }
+  // merge aliased structs
+  {
+    let enums = out.filter(node => node.kind === "ENUM");
+    let structs = out.filter(node => node.kind === "STRUCT");
+    structs.map(struct => {
+      if (struct.alias) {
+        let {alias} = struct;
+        let aliasedStruct = getNodeByName(alias, structs);
+        if (!aliasedStruct) return warn(`Cannot resolve struct alias ${alias}`);
+        for (let key in aliasedStruct) {
+          if (key === "sType") {
+            struct.sType = getAutoStructureType(struct.name);
+          }
+          else if (key !== "name") {
+            struct[key] = aliasedStruct[key];
+          }
+        };
+      }
+    });
   }
   return new Promise(resolve => {
     // put documentation information into generated AST

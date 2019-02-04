@@ -44,6 +44,10 @@ instanceCreateInfo = new VkRenderPassInputAttachmentAspectCreateInfoKHR(object);
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
       <pre><code class="language-js">let instanceCreateInfo = new VkRenderPassInputAttachmentAspectCreateInfoKHR();
+instanceCreateInfo.sType = ;
+instanceCreateInfo.pNext = ;
+instanceCreateInfo.aspectReferenceCount = ;
+instanceCreateInfo.pAspectReferences = ;
 </code></pre>
     </vk-stub>
 
@@ -59,6 +63,30 @@ instanceCreateInfo = new VkRenderPassInputAttachmentAspectCreateInfoKHR(object);
     <vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
+      <!-- VkRenderPassInputAttachmentAspectCreateInfoKHR.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkRenderPassInputAttachmentAspectCreateInfoKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkRenderPassInputAttachmentAspectCreateInfoKHR.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkRenderPassInputAttachmentAspectCreateInfoKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is `NULL` or a pointer to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkRenderPassInputAttachmentAspectCreateInfoKHR.prototype.aspectReferenceCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkRenderPassInputAttachmentAspectCreateInfoKHR.prototype.<vk-prototype-name>aspectReferenceCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> number of slink:VkInputAttachmentAspectReference structures describing which aspect(s) can: be accessed for a given input attachment within a given subpass.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkRenderPassInputAttachmentAspectCreateInfoKHR.prototype.pAspectReferences -->
+      <vk-property-entry>
+        <vk-property-prototype>VkRenderPassInputAttachmentAspectCreateInfoKHR.prototype.<vk-prototype-name>pAspectReferences</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkInputAttachmentAspectReference.html">VkInputAttachmentAspectReference]</a></vk-property-type></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
       
     </vk-properties>
 

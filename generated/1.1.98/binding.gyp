@@ -17,7 +17,8 @@
     {
       "target_name": "addon",
       "sources": [
-        "./src/index.cpp"
+        "./src/index.cpp",
+"./src/source.cpp"
       ],
       "include_dirs": [
         "<!(node -e \"require('nan')\")",

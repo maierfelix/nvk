@@ -44,6 +44,16 @@ instanceCreateInfo = new VkSamplerYcbcrConversionCreateInfoKHR(object);</code></
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
       <pre><code class="language-js">let instanceCreateInfo = new VkSamplerYcbcrConversionCreateInfoKHR();
+instanceCreateInfo.sType = ;
+instanceCreateInfo.pNext = ;
+instanceCreateInfo.format = ;
+instanceCreateInfo.ycbcrModel = ;
+instanceCreateInfo.ycbcrRange = ;
+instanceCreateInfo.components = ;
+instanceCreateInfo.xChromaOffset = ;
+instanceCreateInfo.yChromaOffset = ;
+instanceCreateInfo.chromaFilter = ;
+instanceCreateInfo.forceExplicitReconstruction = ;
 </code></pre>
     </vk-stub>
 
@@ -59,6 +69,66 @@ instanceCreateInfo = new VkSamplerYcbcrConversionCreateInfoKHR(object);</code></
     <vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
+      <!-- VkSamplerYcbcrConversionCreateInfoKHR.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSamplerYcbcrConversionCreateInfoKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkSamplerYcbcrConversionCreateInfoKHR.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSamplerYcbcrConversionCreateInfoKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is `NULL` or a pointer to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkSamplerYcbcrConversionCreateInfoKHR.prototype.format -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSamplerYcbcrConversionCreateInfoKHR.prototype.<vk-prototype-name>format</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the format of the image from which color information will be retrieved.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkSamplerYcbcrConversionCreateInfoKHR.prototype.ycbcrModel -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSamplerYcbcrConversionCreateInfoKHR.prototype.<vk-prototype-name>ycbcrModel</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> describes the color matrix for conversion between color models.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkSamplerYcbcrConversionCreateInfoKHR.prototype.ycbcrRange -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSamplerYcbcrConversionCreateInfoKHR.prototype.<vk-prototype-name>ycbcrRange</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> describes whether the encoded values have headroom and foot room, or whether the encoding uses the full numerical range.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkSamplerYcbcrConversionCreateInfoKHR.prototype.components -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSamplerYcbcrConversionCreateInfoKHR.prototype.<vk-prototype-name>components</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../structs/VkComponentMapping.html">VkComponentMapping</a></vk-property-type>
+        <vk-property-description> applies a _swizzle_ based on elink:VkComponentSwizzle enums prior to range expansion and color model conversion.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkSamplerYcbcrConversionCreateInfoKHR.prototype.xChromaOffset -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSamplerYcbcrConversionCreateInfoKHR.prototype.<vk-prototype-name>xChromaOffset</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> describes the <<textures-chroma-reconstruction,sample location>> associated with downsampled chroma channels in the x dimension. pname:xChromaOffset has no effect for formats in which chroma channels are the same resolution as the luma channel.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkSamplerYcbcrConversionCreateInfoKHR.prototype.yChromaOffset -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSamplerYcbcrConversionCreateInfoKHR.prototype.<vk-prototype-name>yChromaOffset</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> describes the <<textures-chroma-reconstruction,sample location>> associated with downsampled chroma channels in the y dimension. pname:yChromaOffset has no effect for formats in which the chroma channels are not downsampled vertically.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkSamplerYcbcrConversionCreateInfoKHR.prototype.chromaFilter -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSamplerYcbcrConversionCreateInfoKHR.prototype.<vk-prototype-name>chromaFilter</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the filter for chroma reconstruction.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkSamplerYcbcrConversionCreateInfoKHR.prototype.forceExplicitReconstruction -->
+      <vk-property-entry>
+        <vk-property-prototype>VkSamplerYcbcrConversionCreateInfoKHR.prototype.<vk-prototype-name>forceExplicitReconstruction</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> can: be used to ensure that reconstruction is done explicitly, if supported.</vk-property-description>
+      </vk-property-entry>
       
     </vk-properties>
 

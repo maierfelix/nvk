@@ -44,6 +44,10 @@ instanceCreateInfo = new VkPhysicalDeviceVariablePointerFeaturesKHR(object);</co
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
       <pre><code class="language-js">let instanceCreateInfo = new VkPhysicalDeviceVariablePointerFeaturesKHR();
+instanceCreateInfo.sType = ;
+instanceCreateInfo.pNext = ;
+instanceCreateInfo.variablePointersStorageBuffer = ;
+instanceCreateInfo.variablePointers = ;
 </code></pre>
     </vk-stub>
 
@@ -59,6 +63,30 @@ instanceCreateInfo = new VkPhysicalDeviceVariablePointerFeaturesKHR(object);</co
     <vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
+      <!-- VkPhysicalDeviceVariablePointerFeaturesKHR.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceVariablePointerFeaturesKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceVariablePointerFeaturesKHR.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceVariablePointerFeaturesKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceVariablePointerFeaturesKHR.prototype.variablePointersStorageBuffer -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceVariablePointerFeaturesKHR.prototype.<vk-prototype-name>variablePointersStorageBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceVariablePointerFeaturesKHR.prototype.variablePointers -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceVariablePointerFeaturesKHR.prototype.<vk-prototype-name>variablePointers</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> specifies whether the implementation supports the SPIR-V `VariablePointers` capability. When this feature is not enabled, shader modules must: not declare the `VariablePointers` capability.</vk-property-description>
+      </vk-property-entry>
       
     </vk-properties>
 

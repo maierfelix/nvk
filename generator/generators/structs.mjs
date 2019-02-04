@@ -9,8 +9,10 @@ import pkg from "../../package.json";
 
 import {
   warn,
+  getNodeByName,
   isPNextMember,
-  isIgnoreableType
+  isIgnoreableType,
+  getAutoStructureType
 } from "../utils";
 
 let ast = null;
@@ -718,26 +720,9 @@ function processMemberAutosType(struct) {
   let filtered = struct.children.filter(member => member.name === "sType");
   let sTypeMember = null;
   if (filtered.length) sTypeMember = filtered[0];
-  if (sTypeMember) sType = struct.sType || structNameToStructType(struct.name);
+  if (sTypeMember) sType = struct.sType || getAutoStructureType(struct.name);
   if (sType) return `instance.sType = ${sType};`;
   return ``;
-};
-
-// shouldnt be necessary, but this method
-// auto-generates the sType name by a struct name
-function structNameToStructType(name) {
-  let out = ``;
-  let rx = /(([A-Z][a-z]+)|([A-Z][A-Z]+))/gm;
-  let values = [];
-  let match = null;
-  while ((match = rx.exec(name)) !== null) {
-    if (match[0] === `Vk`) out += `VK_STRUCTURE_TYPE_`;
-    else {
-      values.push(match[0].toUpperCase());
-    }
-  };
-  out += values.join(`_`);
-  return out;
 };
 
 function isFillableMember(struct, member) {

@@ -44,6 +44,11 @@ instanceCreateInfo = new VkBindBufferMemoryInfoKHR(object);</code></pre>
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
       <pre><code class="language-js">let instanceCreateInfo = new VkBindBufferMemoryInfoKHR();
+instanceCreateInfo.sType = ;
+instanceCreateInfo.pNext = ;
+instanceCreateInfo.buffer = ;
+instanceCreateInfo.memory = ;
+instanceCreateInfo.memoryOffset = ;
 </code></pre>
     </vk-stub>
 
@@ -59,6 +64,36 @@ instanceCreateInfo = new VkBindBufferMemoryInfoKHR(object);</code></pre>
     <vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
+      <!-- VkBindBufferMemoryInfoKHR.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkBindBufferMemoryInfoKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkBindBufferMemoryInfoKHR.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkBindBufferMemoryInfoKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is `NULL` or a pointer to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkBindBufferMemoryInfoKHR.prototype.buffer -->
+      <vk-property-entry>
+        <vk-property-prototype>VkBindBufferMemoryInfoKHR.prototype.<vk-prototype-name>buffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../handles/VkBuffer.html">VkBuffer</a></vk-property-type>
+        <vk-property-description> is the buffer to be attached to memory.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkBindBufferMemoryInfoKHR.prototype.memory -->
+      <vk-property-entry>
+        <vk-property-prototype>VkBindBufferMemoryInfoKHR.prototype.<vk-prototype-name>memory</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../handles/VkDeviceMemory.html">VkDeviceMemory</a></vk-property-type>
+        <vk-property-description> which is to be bound to the buffer. The number of bytes returned in the sname:VkMemoryRequirements::pname:size member in pname:memory, starting from pname:memoryOffset bytes, will be bound to the specified buffer.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkBindBufferMemoryInfoKHR.prototype.memoryOffset -->
+      <vk-property-entry>
+        <vk-property-prototype>VkBindBufferMemoryInfoKHR.prototype.<vk-prototype-name>memoryOffset</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
       
     </vk-properties>
 

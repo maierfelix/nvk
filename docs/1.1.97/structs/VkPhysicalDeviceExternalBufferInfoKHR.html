@@ -44,6 +44,11 @@ instanceCreateInfo = new VkPhysicalDeviceExternalBufferInfoKHR(object);</code></
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
       <pre><code class="language-js">let instanceCreateInfo = new VkPhysicalDeviceExternalBufferInfoKHR();
+instanceCreateInfo.sType = ;
+instanceCreateInfo.pNext = ;
+instanceCreateInfo.flags = ;
+instanceCreateInfo.usage = ;
+instanceCreateInfo.handleType = ;
 </code></pre>
     </vk-stub>
 
@@ -59,6 +64,36 @@ instanceCreateInfo = new VkPhysicalDeviceExternalBufferInfoKHR(object);</code></
     <vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
+      <!-- VkPhysicalDeviceExternalBufferInfoKHR.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceExternalBufferInfoKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the type of this structure</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceExternalBufferInfoKHR.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceExternalBufferInfoKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is NULL or a pointer to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceExternalBufferInfoKHR.prototype.flags -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceExternalBufferInfoKHR.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a bitmask of elink:VkBufferCreateFlagBits describing additional parameters of the buffer, corresponding to slink:VkBufferCreateInfo::pname:flags.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceExternalBufferInfoKHR.prototype.usage -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceExternalBufferInfoKHR.prototype.<vk-prototype-name>usage</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a bitmask of elink:VkBufferUsageFlagBits describing the intended usage of the buffer, corresponding to slink:VkBufferCreateInfo::pname:usage.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceExternalBufferInfoKHR.prototype.handleType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceExternalBufferInfoKHR.prototype.<vk-prototype-name>handleType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a elink:VkExternalMemoryHandleTypeFlagBits value specifying the memory handle type that will be used with the memory associated with the buffer.</vk-property-description>
+      </vk-property-entry>
       
     </vk-properties>
 

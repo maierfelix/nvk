@@ -44,6 +44,13 @@ instanceCreateInfo = new VkPhysicalDeviceIDPropertiesKHR(object);</code></pre>
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
       <pre><code class="language-js">let instanceCreateInfo = new VkPhysicalDeviceIDPropertiesKHR();
+instanceCreateInfo.sType = ;
+instanceCreateInfo.pNext = ;
+instanceCreateInfo.deviceUUID = ;
+instanceCreateInfo.driverUUID = ;
+instanceCreateInfo.deviceLUID = ;
+instanceCreateInfo.deviceNodeMask = ;
+instanceCreateInfo.deviceLUIDValid = ;
 </code></pre>
     </vk-stub>
 
@@ -59,6 +66,48 @@ instanceCreateInfo = new VkPhysicalDeviceIDPropertiesKHR(object);</code></pre>
     <vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
+      <!-- VkPhysicalDeviceIDPropertiesKHR.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceIDPropertiesKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceIDPropertiesKHR.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceIDPropertiesKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is `NULL` or a pointer to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceIDPropertiesKHR.prototype.deviceUUID -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceIDPropertiesKHR.prototype.<vk-prototype-name>deviceUUID</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="number">[Number]</vk-property-type></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceIDPropertiesKHR.prototype.driverUUID -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceIDPropertiesKHR.prototype.<vk-prototype-name>driverUUID</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="number">[Number]</vk-property-type></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceIDPropertiesKHR.prototype.deviceLUID -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceIDPropertiesKHR.prototype.<vk-prototype-name>deviceLUID</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="number">[Number]</vk-property-type></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceIDPropertiesKHR.prototype.deviceNodeMask -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceIDPropertiesKHR.prototype.<vk-prototype-name>deviceNodeMask</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a bitfield identifying the node within a linked device adapter corresponding to the device.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceIDPropertiesKHR.prototype.deviceLUIDValid -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceIDPropertiesKHR.prototype.<vk-prototype-name>deviceLUIDValid</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
       
     </vk-properties>
 

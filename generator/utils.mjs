@@ -92,6 +92,34 @@ export function getSortedIncludes(includes) {
   return out;
 };
 
+export function getNodeByName(name, nodes) {
+  for (let ii = 0; ii < nodes.length; ++ii) {
+    let node = nodes[ii];
+    if (node.name === name) return node;
+  };
+  return null;
+};
+
+// shouldnt be necessary, but this method
+// auto-generates the sType name by a struct's name
+export function getAutoStructureType(name) {
+  let out = ``;
+  // ohhohoo ahhaaahaa iiiiiiididfsndfrg
+  let rx = /(?<!(^|[A-Z0-9]))(?=[A-Z0-9])|(?<!(^|[^A-Z]))(?=[0-9])|(?<!(^|[^0-9]))(?=[A-Za-z])|(?<!^)(?=[A-Z][a-z])/gm;
+  let values = [];
+  let splits = name.split(rx);
+  splits.map(v => {
+    if (v) {
+      if (v === `Vk`) out += `VK_STRUCTURE_TYPE_`;
+      else values.push(v);
+    }
+  });
+  out += values.join(`_`).toUpperCase();
+  // merge e.g. 8_BIT => 8BIT
+  out = out.replace(/(_BIT)/gm, `BIT`);
+  return out;
+};
+
 export function isNumericReferenceType(type) {
   switch (type) {
     case "float *":

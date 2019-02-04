@@ -32,7 +32,7 @@ void * DynamicObjectUnwrapInstance(v8::Local<v8::Object> obj) {
   VkStructureType sType = GetStructureTypeFromObject(obj);
   switch (sType) {
     {% for struct in structs -%}
-    {%- if struct.sType -%}
+    {%- if struct.sType and not struct.alias -%}
     case {{ struct.sType }}: return (void *) &Nan::ObjectWrap::Unwrap<_{{ struct.name }}>(obj)->instance;
     {% endif -%}
     {% endfor %}

@@ -44,6 +44,11 @@ instanceCreateInfo = new VkExternalSemaphorePropertiesKHR(object);</code></pre>
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
       <pre><code class="language-js">let instanceCreateInfo = new VkExternalSemaphorePropertiesKHR();
+instanceCreateInfo.sType = ;
+instanceCreateInfo.pNext = ;
+instanceCreateInfo.exportFromImportedHandleTypes = ;
+instanceCreateInfo.compatibleHandleTypes = ;
+instanceCreateInfo.externalSemaphoreFeatures = ;
 </code></pre>
     </vk-stub>
 
@@ -59,6 +64,36 @@ instanceCreateInfo = new VkExternalSemaphorePropertiesKHR(object);</code></pre>
     <vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
+      <!-- VkExternalSemaphorePropertiesKHR.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkExternalSemaphorePropertiesKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkExternalSemaphorePropertiesKHR.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkExternalSemaphorePropertiesKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkExternalSemaphorePropertiesKHR.prototype.exportFromImportedHandleTypes -->
+      <vk-property-entry>
+        <vk-property-prototype>VkExternalSemaphorePropertiesKHR.prototype.<vk-prototype-name>exportFromImportedHandleTypes</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a bitmask of elink:VkExternalSemaphoreHandleTypeFlagBits specifying which types of imported handle pname:handleType can: be exported from.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkExternalSemaphorePropertiesKHR.prototype.compatibleHandleTypes -->
+      <vk-property-entry>
+        <vk-property-prototype>VkExternalSemaphorePropertiesKHR.prototype.<vk-prototype-name>compatibleHandleTypes</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a bitmask of elink:VkExternalSemaphoreHandleTypeFlagBits specifying handle types which can: be specified at the same time as pname:handleType when creating a semaphore.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkExternalSemaphorePropertiesKHR.prototype.externalSemaphoreFeatures -->
+      <vk-property-entry>
+        <vk-property-prototype>VkExternalSemaphorePropertiesKHR.prototype.<vk-prototype-name>externalSemaphoreFeatures</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a bitmask of elink:VkExternalSemaphoreFeatureFlagBits describing the features of pname:handleType.</vk-property-description>
+      </vk-property-entry>
       
     </vk-properties>
 
