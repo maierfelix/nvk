@@ -348,6 +348,25 @@ function getObjectLabel(obj) {
   return ``;
 };
 
+function getCallReturnType(call) {
+  let type = call.rawType;
+  if (call.enumType) return call.enumType;
+  switch (type) {
+    case "void":
+      return "void";
+    case "int8_t":
+    case "int16_t":
+    case "int32_t":
+    case "uint8_t":
+    case "uint16_t":
+    case "uint32_t":
+      return "Number";
+    case "uint64_t":
+      return "BigInt";
+  };
+  return `N/A`;
+};
+
 export default function(astReference, data, version) {
   ast = astReference;
   calls = data.calls;
@@ -459,6 +478,7 @@ export default function(astReference, data, version) {
         getCSSType,
         getObjectLabel,
         getObjectFolder,
+        getCallReturnType,
         getObjectsByCategory
       });
       fs.writeFileSync(`${DOCS_DIR}/${version}/calls/${call.name}.html`, output, `utf-8`);

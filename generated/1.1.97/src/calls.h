@@ -367,6 +367,7 @@ void _vkCreateInstance(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   );
   
   vkUseInstance(obj2->instance);
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -466,6 +467,7 @@ void _vkEnumeratePhysicalDevices(const Nan::FunctionCallbackInfo<v8::Value>& inf
       target->instance = $pdata[ii];
     };
   }
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -995,6 +997,7 @@ void _vkGetPhysicalDeviceImageFormatProperties(const Nan::FunctionCallbackInfo<v
   }
       
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -1059,6 +1062,7 @@ void _vkCreateDevice(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   );
   
   vkUseDevice(obj3->instance);
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -1112,6 +1116,7 @@ void _vkEnumerateInstanceVersion(const Nan::FunctionCallbackInfo<v8::Value>& inf
     &$p0
   );
     obj0->Set(Nan::New("$").ToLocalChecked(), Nan::New($p0));
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -1193,6 +1198,7 @@ void _vkEnumerateInstanceLayerProperties(const Nan::FunctionCallbackInfo<v8::Val
     };
   }
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -1273,6 +1279,7 @@ void _vkEnumerateInstanceExtensionProperties(const Nan::FunctionCallbackInfo<v8:
       instance->specVersion = copy->specVersion;
     };
   }
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -1372,6 +1379,7 @@ void _vkEnumerateDeviceLayerProperties(const Nan::FunctionCallbackInfo<v8::Value
     };
   }
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -1470,6 +1478,7 @@ void _vkEnumerateDeviceExtensionProperties(const Nan::FunctionCallbackInfo<v8::V
       instance->specVersion = copy->specVersion;
     };
   }
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -1595,6 +1604,7 @@ void _vkQueueSubmit(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[3]->IsNull() ? VK_NULL_HANDLE : *$p3
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -1620,6 +1630,7 @@ void _vkQueueWaitIdle(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -1644,6 +1655,7 @@ void _vkDeviceWaitIdle(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   int32_t out = vkDeviceWaitIdle(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -1707,6 +1719,7 @@ void _vkAllocateMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -1813,6 +1826,7 @@ void _vkMapMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   v8::Local<v8::BigInt> ptr5 = v8::BigInt::New(v8::Isolate::GetCurrent(), (int64_t)$p5);
   obj5->Set(Nan::New("$").ToLocalChecked(), ptr5);
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -1913,6 +1927,7 @@ void _vkFlushMappedMemoryRanges(const Nan::FunctionCallbackInfo<v8::Value>& info
     $p2 ? (const VkMappedMemoryRange *) $p2.get()->data() : nullptr
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -1967,6 +1982,7 @@ void _vkInvalidateMappedMemoryRanges(const Nan::FunctionCallbackInfo<v8::Value>&
     $p1,
     $p2 ? (const VkMappedMemoryRange *) $p2.get()->data() : nullptr
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -2159,6 +2175,7 @@ void _vkBindBufferMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p3
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -2285,6 +2302,7 @@ void _vkBindImageMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[2]->IsNull() ? VK_NULL_HANDLE : *$p2,
     $p3
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -2584,6 +2602,7 @@ void _vkQueueBindSparse(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[3]->IsNull() ? VK_NULL_HANDLE : *$p3
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -2646,6 +2665,7 @@ void _vkCreateFence(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -2741,6 +2761,7 @@ void _vkResetFences(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p2 ? (const VkFence *) $p2.get()->data() : nullptr
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -2783,6 +2804,7 @@ void _vkGetFenceStatus(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -2836,6 +2858,7 @@ void _vkWaitForFences(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p3,
     $p4
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -2899,6 +2922,7 @@ void _vkCreateSemaphore(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -3010,6 +3034,7 @@ void _vkCreateEvent(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p3
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -3100,6 +3125,7 @@ void _vkGetEventStatus(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -3143,6 +3169,7 @@ void _vkSetEvent(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -3185,6 +3212,7 @@ void _vkResetEvent(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -3248,6 +3276,7 @@ void _vkCreateQueryPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -3356,6 +3385,7 @@ nullptr,
     static_cast<VkQueryResultFlags>($p7)
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -3418,6 +3448,7 @@ void _vkCreateBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -3529,6 +3560,7 @@ void _vkCreateBufferView(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p3
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -3638,6 +3670,7 @@ void _vkCreateImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -3830,6 +3863,7 @@ void _vkCreateImageView(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p3
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -3940,6 +3974,7 @@ void _vkCreateShaderModule(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p3
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -4049,6 +4084,7 @@ void _vkCreatePipelineCache(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -4161,6 +4197,7 @@ nullptr
     v8::Local<v8::BigInt> pnum2 = v8::BigInt::New(v8::Isolate::GetCurrent(), (uint64_t)$p2);
     obj2->Set(Nan::New("$").ToLocalChecked(), pnum2);
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -4225,6 +4262,7 @@ void _vkMergePipelineCaches(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p2,
     $p3 ? (const VkPipelineCache *) $p3.get()->data() : nullptr
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -4329,6 +4367,7 @@ void _vkCreateGraphicsPipelines(const Nan::FunctionCallbackInfo<v8::Value>& info
     };
   }
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -4431,6 +4470,7 @@ void _vkCreateComputePipelines(const Nan::FunctionCallbackInfo<v8::Value>& info)
       target->instance = $pdata[ii];
     };
   }
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -4542,6 +4582,7 @@ void _vkCreatePipelineLayout(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p3
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -4651,6 +4692,7 @@ void _vkCreateSampler(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -4762,6 +4804,7 @@ void _vkCreateDescriptorSetLayout(const Nan::FunctionCallbackInfo<v8::Value>& in
     $p3
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -4872,6 +4915,7 @@ void _vkCreateDescriptorPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p3
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -4965,6 +5009,7 @@ void _vkResetDescriptorPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     static_cast<VkDescriptorPoolResetFlags>($p2)
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -5036,6 +5081,7 @@ void _vkAllocateDescriptorSets(const Nan::FunctionCallbackInfo<v8::Value>& info)
     };
   }
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -5100,6 +5146,7 @@ void _vkFreeDescriptorSets(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p2,
     $p3 ? (const VkDescriptorSet *) $p3.get()->data() : nullptr
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -5251,6 +5298,7 @@ void _vkCreateFramebuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p3
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -5360,6 +5408,7 @@ void _vkCreateRenderPass(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -5534,6 +5583,7 @@ void _vkCreateCommandPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p3
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -5627,6 +5677,7 @@ void _vkResetCommandPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     static_cast<VkCommandPoolResetFlags>($p2)
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -5697,6 +5748,7 @@ void _vkAllocateCommandBuffers(const Nan::FunctionCallbackInfo<v8::Value>& info)
       target->instance = $pdata[ii];
     };
   }
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -5808,6 +5860,7 @@ void _vkBeginCommandBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p1
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -5832,6 +5885,7 @@ void _vkEndCommandBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   int32_t out = vkEndCommandBuffer(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -5860,6 +5914,7 @@ void _vkResetCommandBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     static_cast<VkCommandBufferResetFlags>($p1)
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -8756,6 +8811,7 @@ void _vkGetPhysicalDeviceDisplayPropertiesKHR(const Nan::FunctionCallbackInfo<v8
     };
   }
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -8839,6 +8895,7 @@ void _vkGetPhysicalDeviceDisplayPlanePropertiesKHR(const Nan::FunctionCallbackIn
     };
   }
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -8912,6 +8969,7 @@ void _vkGetDisplayPlaneSupportedDisplaysKHR(const Nan::FunctionCallbackInfo<v8::
       target->instance = $pdata[ii];
     };
   }
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -9022,6 +9080,7 @@ void _vkGetDisplayModePropertiesKHR(const Nan::FunctionCallbackInfo<v8::Value>& 
     };
   }
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -9102,6 +9161,7 @@ void _vkCreateDisplayModeKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p4
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -9239,6 +9299,7 @@ void _vkGetDisplayPlaneCapabilitiesKHR(const Nan::FunctionCallbackInfo<v8::Value
   }
       
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -9301,6 +9362,7 @@ void _vkCreateDisplayPlaneSurfaceKHR(const Nan::FunctionCallbackInfo<v8::Value>&
     nullptr,
     $p3
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -9386,6 +9448,7 @@ void _vkCreateSharedSwapchainsKHR(const Nan::FunctionCallbackInfo<v8::Value>& in
       target->instance = $pdata[ii];
     };
   }
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -9498,6 +9561,7 @@ void _vkGetPhysicalDeviceSurfaceSupportKHR(const Nan::FunctionCallbackInfo<v8::V
   );
     obj3->Set(Nan::New("$").ToLocalChecked(), Nan::New($p3));
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -9585,6 +9649,7 @@ void _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Nan::FunctionCallbackInfo<
     
   }
       
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -9688,6 +9753,7 @@ void _vkGetPhysicalDeviceSurfaceFormatsKHR(const Nan::FunctionCallbackInfo<v8::V
     };
   }
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -9762,6 +9828,7 @@ void _vkGetPhysicalDeviceSurfacePresentModesKHR(const Nan::FunctionCallbackInfo<
   );
     obj2->Set(Nan::New("$").ToLocalChecked(), Nan::New($p2));
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -9824,6 +9891,7 @@ void _vkCreateSwapchainKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -9961,6 +10029,7 @@ void _vkGetSwapchainImagesKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) 
     };
   }
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -10061,6 +10130,7 @@ void _vkAcquireNextImageKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   );
     obj5->Set(Nan::New("$").ToLocalChecked(), Nan::New($p5));
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -10103,6 +10173,7 @@ void _vkQueuePresentKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -10167,6 +10238,7 @@ void _vkCreateWin32SurfaceKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) 
     $p3
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -10195,7 +10267,8 @@ void _vkGetPhysicalDeviceWin32PresentationSupportKHR(const Nan::FunctionCallback
     $p1
   );
   
-  info.GetReturnValue().Set(Nan::New(0));
+  
+  info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
 void _vkCreateDebugReportCallbackEXT(const Nan::FunctionCallbackInfo<v8::Value>& info) {
@@ -10257,6 +10330,7 @@ void _vkCreateDebugReportCallbackEXT(const Nan::FunctionCallbackInfo<v8::Value>&
     nullptr,
     $p3
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -10408,6 +10482,7 @@ void _vkDebugMarkerSetObjectNameEXT(const Nan::FunctionCallbackInfo<v8::Value>& 
     $p1
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -10450,6 +10525,7 @@ void _vkDebugMarkerSetObjectTagEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -10647,6 +10723,7 @@ void _vkGetPhysicalDeviceExternalImageFormatPropertiesNV(const Nan::FunctionCall
   }
       
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -10694,6 +10771,7 @@ void _vkGetMemoryWin32HandleNV(const Nan::FunctionCallbackInfo<v8::Value>& info)
     static_cast<VkExternalMemoryHandleTypeFlagsNV>($p2),
 nullptr
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -10998,6 +11076,7 @@ void _vkCreateIndirectCommandsLayoutNVX(const Nan::FunctionCallbackInfo<v8::Valu
     $p3
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -11107,6 +11186,7 @@ void _vkCreateObjectTableNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -11241,6 +11321,7 @@ void _vkRegisterObjectsNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p4 ? *$p4.get() : nullptr
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -11312,6 +11393,7 @@ void _vkUnregisterObjectsNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p3 ? (VkObjectEntryTypeNVX *) *$p3.get() : nullptr,
     $p4 ? *$p4.get() : nullptr
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -11705,6 +11787,7 @@ void _vkGetPhysicalDeviceImageFormatProperties2(const Nan::FunctionCallbackInfo<
       
   }
       
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -12240,6 +12323,7 @@ void _vkGetMemoryWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>& info
 nullptr
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -12287,6 +12371,7 @@ void _vkGetMemoryWin32HandlePropertiesKHR(const Nan::FunctionCallbackInfo<v8::Va
 nullptr,
     $p3
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -12349,6 +12434,7 @@ void _vkGetMemoryFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   );
     obj2->Set(Nan::New("$").ToLocalChecked(), Nan::New($p2));
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -12397,6 +12483,7 @@ void _vkGetMemoryFdPropertiesKHR(const Nan::FunctionCallbackInfo<v8::Value>& inf
     $p2,
     $p3
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -12506,6 +12593,7 @@ void _vkGetSemaphoreWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>& i
 nullptr
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -12548,6 +12636,7 @@ void _vkImportSemaphoreWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -12610,6 +12699,7 @@ void _vkGetSemaphoreFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   );
     obj2->Set(Nan::New("$").ToLocalChecked(), Nan::New($p2));
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -12652,6 +12742,7 @@ void _vkImportSemaphoreFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -12761,6 +12852,7 @@ void _vkGetFenceWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>& info)
 nullptr
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -12803,6 +12895,7 @@ void _vkImportFenceWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>& in
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -12865,6 +12958,7 @@ void _vkGetFenceFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   );
     obj2->Set(Nan::New("$").ToLocalChecked(), Nan::New($p2));
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -12908,6 +13002,7 @@ void _vkImportFenceFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p1
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -12950,6 +13045,7 @@ void _vkReleaseDisplayEXT(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -13011,6 +13107,7 @@ void _vkDisplayPowerControlEXT(const Nan::FunctionCallbackInfo<v8::Value>& info)
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -13074,6 +13171,7 @@ void _vkRegisterDeviceEventEXT(const Nan::FunctionCallbackInfo<v8::Value>& info)
     nullptr,
     $p3
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -13156,6 +13254,7 @@ void _vkRegisterDisplayEventEXT(const Nan::FunctionCallbackInfo<v8::Value>& info
     $p4
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -13220,6 +13319,7 @@ void _vkGetSwapchainCounterEXT(const Nan::FunctionCallbackInfo<v8::Value>& info)
   );
     v8::Local<v8::BigInt> pnum3 = v8::BigInt::New(v8::Isolate::GetCurrent(), (uint64_t)$p3);
     obj3->Set(Nan::New("$").ToLocalChecked(), pnum3);
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -13309,6 +13409,7 @@ void _vkGetPhysicalDeviceSurfaceCapabilities2EXT(const Nan::FunctionCallbackInfo
   }
       
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -13393,6 +13494,7 @@ void _vkEnumeratePhysicalDeviceGroups(const Nan::FunctionCallbackInfo<v8::Value>
       instance->subsetAllocation = copy->subsetAllocation;
     };
   }
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -13503,6 +13605,7 @@ void _vkBindBufferMemory2(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p2 ? (const VkBindBufferMemoryInfo *) $p2.get()->data() : nullptr
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -13557,6 +13660,7 @@ void _vkBindImageMemory2(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p1,
     $p2 ? (const VkBindImageMemoryInfo *) $p2.get()->data() : nullptr
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -13640,6 +13744,7 @@ void _vkGetDeviceGroupPresentCapabilitiesKHR(const Nan::FunctionCallbackInfo<v8:
     obj1->presentMask.Reset<v8::Array>(arr1);
   }
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -13701,6 +13806,7 @@ void _vkGetDeviceGroupSurfacePresentModesKHR(const Nan::FunctionCallbackInfo<v8:
   );
     obj2->Set(Nan::New("$").ToLocalChecked(), Nan::New($p2));
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -13761,6 +13867,7 @@ void _vkAcquireNextImage2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     &$p2
   );
     obj2->Set(Nan::New("$").ToLocalChecked(), Nan::New($p2));
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -13925,6 +14032,7 @@ void _vkGetPhysicalDevicePresentRectanglesKHR(const Nan::FunctionCallbackInfo<v8
     };
   }
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -13987,6 +14095,7 @@ void _vkCreateDescriptorUpdateTemplate(const Nan::FunctionCallbackInfo<v8::Value
     nullptr,
     $p3
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -14287,6 +14396,7 @@ void _vkGetSwapchainStatusKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) 
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -14347,6 +14457,7 @@ void _vkGetRefreshCycleDurationGOOGLE(const Nan::FunctionCallbackInfo<v8::Value>
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -14452,6 +14563,7 @@ void _vkGetPastPresentationTimingGOOGLE(const Nan::FunctionCallbackInfo<v8::Valu
       instance->presentMargin = copy->presentMargin;
     };
   }
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -14772,6 +14884,7 @@ void _vkGetPhysicalDeviceSurfaceCapabilities2KHR(const Nan::FunctionCallbackInfo
   }
       
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -14882,6 +14995,7 @@ void _vkGetPhysicalDeviceSurfaceFormats2KHR(const Nan::FunctionCallbackInfo<v8::
     };
   }
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -14974,6 +15088,7 @@ void _vkGetPhysicalDeviceDisplayProperties2KHR(const Nan::FunctionCallbackInfo<v
     };
   }
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -15065,6 +15180,7 @@ void _vkGetPhysicalDeviceDisplayPlaneProperties2KHR(const Nan::FunctionCallbackI
       }
     };
   }
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -15175,6 +15291,7 @@ void _vkGetDisplayModeProperties2KHR(const Nan::FunctionCallbackInfo<v8::Value>&
       }
     };
   }
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -15317,6 +15434,7 @@ void _vkGetDisplayPlaneCapabilities2KHR(const Nan::FunctionCallbackInfo<v8::Valu
       
   }
       
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -15637,6 +15755,7 @@ void _vkCreateSamplerYcbcrConversion(const Nan::FunctionCallbackInfo<v8::Value>&
     $p3
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -15810,6 +15929,7 @@ void _vkCreateValidationCacheEXT(const Nan::FunctionCallbackInfo<v8::Value>& inf
     $p3
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -15921,6 +16041,7 @@ nullptr
     v8::Local<v8::BigInt> pnum2 = v8::BigInt::New(v8::Isolate::GetCurrent(), (uint64_t)$p2);
     obj2->Set(Nan::New("$").ToLocalChecked(), pnum2);
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -15985,6 +16106,7 @@ void _vkMergeValidationCachesEXT(const Nan::FunctionCallbackInfo<v8::Value>& inf
     $p2,
     $p3 ? (const VkValidationCacheEXT *) $p3.get()->data() : nullptr
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -16119,6 +16241,7 @@ nullptr
     v8::Local<v8::BigInt> pnum4 = v8::BigInt::New(v8::Isolate::GetCurrent(), (uint64_t)$p4);
     obj4->Set(Nan::New("$").ToLocalChecked(), pnum4);
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -16174,6 +16297,7 @@ void _vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(const Nan::FunctionCallback
     $p2 ? (VkTimeDomainEXT *) *$p2.get() : nullptr
   );
     obj1->Set(Nan::New("$").ToLocalChecked(), Nan::New($p1));
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -16262,6 +16386,7 @@ void _vkGetCalibratedTimestampsEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
     v8::Local<v8::BigInt> pnum4 = v8::BigInt::New(v8::Isolate::GetCurrent(), (uint64_t)$p4);
     obj4->Set(Nan::New("$").ToLocalChecked(), pnum4);
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -16305,6 +16430,7 @@ void _vkSetDebugUtilsObjectNameEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
     $p1
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -16347,6 +16473,7 @@ void _vkSetDebugUtilsObjectTagEXT(const Nan::FunctionCallbackInfo<v8::Value>& in
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -16645,6 +16772,7 @@ void _vkCreateDebugUtilsMessengerEXT(const Nan::FunctionCallbackInfo<v8::Value>&
     $p3
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -16791,6 +16919,7 @@ nullptr,
     $p3
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -16907,6 +17036,7 @@ void _vkCreateRenderPass2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     nullptr,
     $p3
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -18153,6 +18283,7 @@ void _vkCompileDeferredNV(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p2
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -18215,6 +18346,7 @@ void _vkCreateAccelerationStructureNV(const Nan::FunctionCallbackInfo<v8::Value>
     nullptr,
     $p3
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -18389,6 +18521,7 @@ void _vkBindAccelerationStructureMemoryNV(const Nan::FunctionCallbackInfo<v8::Va
     $p1,
     $p2 ? (const VkBindAccelerationStructureMemoryInfoNV *) $p2.get()->data() : nullptr
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -18838,6 +18971,7 @@ void _vkGetRayTracingShaderGroupHandlesNV(const Nan::FunctionCallbackInfo<v8::Va
 nullptr
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -18885,6 +19019,7 @@ void _vkGetAccelerationStructureHandleNV(const Nan::FunctionCallbackInfo<v8::Val
     $p2,
 nullptr
   );
+  
   
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
@@ -18989,6 +19124,7 @@ void _vkCreateRayTracingPipelinesNV(const Nan::FunctionCallbackInfo<v8::Value>& 
     };
   }
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -19050,6 +19186,7 @@ void _vkGetImageDrmFormatModifierPropertiesEXT(const Nan::FunctionCallbackInfo<v
     $p2
   );
   
+  
   info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
 };
 
@@ -19093,7 +19230,8 @@ void _vkGetBufferDeviceAddressEXT(const Nan::FunctionCallbackInfo<v8::Value>& in
     $p1
   );
   
-  info.GetReturnValue().Set(Nan::New(0));
+  
+  info.GetReturnValue().Set(v8::BigInt::New(v8::Isolate::GetCurrent(), out));
 };
 
 

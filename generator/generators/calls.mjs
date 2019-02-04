@@ -678,6 +678,17 @@ function getCallReturn(call) {
       return `
   info.GetReturnValue().Set(Nan::New(!!out));
   `;
+    case "int8_t":
+    case "int16_t":
+    case "int32_t":
+    case "uint8_t":
+    case "uint16_t":
+    case "uint32_t":
+      return `
+  info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));`;
+    case "uint64_t":
+      return `
+  info.GetReturnValue().Set(v8::BigInt::New(v8::Isolate::GetCurrent(), out));`;
     default: {
       //console.warn(`Cannot handle ${rawType} in call-return!`);
     }

@@ -37,7 +37,7 @@
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
-      <pre><code class="language-js">{{ call.name }}();
+      <pre><code class="language-js">{{ getCallReturnType(call) | safe }} {{ call.name }}();
 </code></pre>
     </vk-syntax>
 
