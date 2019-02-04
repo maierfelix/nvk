@@ -67,7 +67,7 @@ template<typename T> inline T* getTypedArrayData(v8::Local<v8::Object> obj, int 
   return data;
 };
 
-inline void NanInvalidStructMemberTypeError(
+inline void NanObjectTypeError(
   v8::Local<v8::Value> value,
   std::string memberName,
   std::string expectedType

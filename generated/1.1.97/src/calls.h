@@ -329,10 +329,15 @@ void _vkCreateInstance(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkInstanceCreateInfo* obj0;
   VkInstanceCreateInfo *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkInstanceCreateInfo>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkInstanceCreateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkInstanceCreateInfo]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkInstanceCreateInfo>(obj);
     if (!obj0->flush()) return;
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'pCreateInfo'");
@@ -342,10 +347,15 @@ void _vkCreateInstance(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkInstance* obj2;
   VkInstance *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkInstance>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkInstance::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkInstance]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkInstance>(obj);
     
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pInstance'");
@@ -365,10 +375,15 @@ void _vkDestroyInstance(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkInstance* obj0;
   VkInstance *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkInstance::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'instance'");
@@ -389,10 +404,15 @@ void _vkEnumeratePhysicalDevices(const Nan::FunctionCallbackInfo<v8::Value>& inf
   _VkInstance* obj0;
   VkInstance *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkInstance::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'instance'");
@@ -402,10 +422,16 @@ void _vkEnumeratePhysicalDevices(const Nan::FunctionCallbackInfo<v8::Value>& inf
   uint32_t $p1;
   if (info[1]->IsObject()) {
     obj1 = Nan::To<v8::Object>(info[1]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj1->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj1, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 2");
+      return;
+    }
+    v8::Local<v8::Value> val = obj1->Get(accessor);
     $p1 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[1]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pPhysicalDeviceCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkPhysicalDevice>> $p2 = nullptr;
@@ -421,7 +447,8 @@ void _vkEnumeratePhysicalDevices(const Nan::FunctionCallbackInfo<v8::Value>& inf
     };
     $p2 = std::make_shared<std::vector<VkPhysicalDevice>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pPhysicalDevices'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pPhysicalDevices'");
+    return;
   }
 
   int32_t out = vkEnumeratePhysicalDevices(
@@ -448,10 +475,15 @@ void _vkGetDeviceProcAddr(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -462,6 +494,7 @@ void _vkGetDeviceProcAddr(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p1 = copyV8String(info[1]);
   } else if (!info[1]->IsNull()) {
     Nan::ThrowTypeError("Expected 'String' or 'null' for argument 2 'pName'");
+    return;
   }
   PFN_vkVoidFunction out = vkGetDeviceProcAddr(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -476,10 +509,15 @@ void _vkGetInstanceProcAddr(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkInstance* obj0;
   VkInstance *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkInstance::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'instance'");
@@ -490,6 +528,7 @@ void _vkGetInstanceProcAddr(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p1 = copyV8String(info[1]);
   } else if (!info[1]->IsNull()) {
     Nan::ThrowTypeError("Expected 'String' or 'null' for argument 2 'pName'");
+    return;
   }
   PFN_vkVoidFunction out = vkGetInstanceProcAddr(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -504,10 +543,15 @@ void _vkGetPhysicalDeviceProperties(const Nan::FunctionCallbackInfo<v8::Value>& 
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -516,10 +560,15 @@ void _vkGetPhysicalDeviceProperties(const Nan::FunctionCallbackInfo<v8::Value>& 
   _VkPhysicalDeviceProperties* obj1;
   VkPhysicalDeviceProperties *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceProperties>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDeviceProperties::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceProperties]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceProperties>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pProperties'");
@@ -625,10 +674,15 @@ void _vkGetPhysicalDeviceQueueFamilyProperties(const Nan::FunctionCallbackInfo<v
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -638,10 +692,16 @@ void _vkGetPhysicalDeviceQueueFamilyProperties(const Nan::FunctionCallbackInfo<v
   uint32_t $p1;
   if (info[1]->IsObject()) {
     obj1 = Nan::To<v8::Object>(info[1]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj1->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj1, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 2");
+      return;
+    }
+    v8::Local<v8::Value> val = obj1->Get(accessor);
     $p1 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[1]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pQueueFamilyPropertyCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkQueueFamilyProperties>> $p2 = nullptr;
@@ -665,7 +725,8 @@ void _vkGetPhysicalDeviceQueueFamilyProperties(const Nan::FunctionCallbackInfo<v
     };
     $p2 = std::make_shared<std::vector<VkQueueFamilyProperties>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pQueueFamilyProperties'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pQueueFamilyProperties'");
+    return;
   }
 
 vkGetPhysicalDeviceQueueFamilyProperties(
@@ -709,10 +770,15 @@ void _vkGetPhysicalDeviceMemoryProperties(const Nan::FunctionCallbackInfo<v8::Va
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -721,10 +787,15 @@ void _vkGetPhysicalDeviceMemoryProperties(const Nan::FunctionCallbackInfo<v8::Va
   _VkPhysicalDeviceMemoryProperties* obj1;
   VkPhysicalDeviceMemoryProperties *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceMemoryProperties>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDeviceMemoryProperties::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceMemoryProperties]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceMemoryProperties>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pMemoryProperties'");
@@ -772,10 +843,15 @@ void _vkGetPhysicalDeviceFeatures(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -784,10 +860,15 @@ void _vkGetPhysicalDeviceFeatures(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkPhysicalDeviceFeatures* obj1;
   VkPhysicalDeviceFeatures *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDeviceFeatures::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceFeatures]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pFeatures'");
@@ -807,10 +888,15 @@ void _vkGetPhysicalDeviceFormatProperties(const Nan::FunctionCallbackInfo<v8::Va
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -821,10 +907,15 @@ void _vkGetPhysicalDeviceFormatProperties(const Nan::FunctionCallbackInfo<v8::Va
   _VkFormatProperties* obj2;
   VkFormatProperties *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkFormatProperties>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkFormatProperties::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkFormatProperties]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkFormatProperties>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pFormatProperties'");
@@ -845,10 +936,15 @@ void _vkGetPhysicalDeviceImageFormatProperties(const Nan::FunctionCallbackInfo<v
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -867,10 +963,15 @@ void _vkGetPhysicalDeviceImageFormatProperties(const Nan::FunctionCallbackInfo<v
   _VkImageFormatProperties* obj6;
   VkImageFormatProperties *$p6;
   if (info[6]->IsObject()) {
-    obj6 = Nan::ObjectWrap::Unwrap<_VkImageFormatProperties>(Nan::To<v8::Object>(info[6]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[6]).ToLocalChecked();
+    if (!Nan::New(_VkImageFormatProperties::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[6], "argument 7", "[object VkImageFormatProperties]");
+      return;
+    }
+    obj6 = Nan::ObjectWrap::Unwrap<_VkImageFormatProperties>(obj);
     if (!obj6->flush()) return;
     $p6 = &obj6->instance;
-  } else if (info[6]->IsNull()){
+  } else if (info[6]->IsNull()) {
     $p6 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 7 'pImageFormatProperties'");
@@ -902,10 +1003,15 @@ void _vkCreateDevice(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -914,10 +1020,15 @@ void _vkCreateDevice(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDeviceCreateInfo* obj1;
   VkDeviceCreateInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDeviceCreateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDeviceCreateInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceCreateInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -927,10 +1038,15 @@ void _vkCreateDevice(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj3;
   VkDevice *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkDevice]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pDevice'");
@@ -951,10 +1067,15 @@ void _vkDestroyDevice(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -976,10 +1097,16 @@ void _vkEnumerateInstanceVersion(const Nan::FunctionCallbackInfo<v8::Value>& inf
   uint32_t $p0;
   if (info[0]->IsObject()) {
     obj0 = Nan::To<v8::Object>(info[0]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj0->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj0, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 1");
+      return;
+    }
+    v8::Local<v8::Value> val = obj0->Get(accessor);
     $p0 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[0]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'pApiVersion'");
+    return;
   }
   int32_t out = vkEnumerateInstanceVersion(
     &$p0
@@ -995,10 +1122,16 @@ void _vkEnumerateInstanceLayerProperties(const Nan::FunctionCallbackInfo<v8::Val
   uint32_t $p0;
   if (info[0]->IsObject()) {
     obj0 = Nan::To<v8::Object>(info[0]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj0->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj0, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 1");
+      return;
+    }
+    v8::Local<v8::Value> val = obj0->Get(accessor);
     $p0 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[0]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'pPropertyCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkLayerProperties>> $p1 = nullptr;
@@ -1022,7 +1155,8 @@ void _vkEnumerateInstanceLayerProperties(const Nan::FunctionCallbackInfo<v8::Val
     };
     $p1 = std::make_shared<std::vector<VkLayerProperties>>(data);
   } else if (!info[1]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 2 'pProperties'");
+    Nan::ThrowTypeError("Invalid type for argument 2 'pProperties'");
+    return;
   }
 
   int32_t out = vkEnumerateInstanceLayerProperties(
@@ -1069,16 +1203,23 @@ void _vkEnumerateInstanceExtensionProperties(const Nan::FunctionCallbackInfo<v8:
     $p0 = copyV8String(info[0]);
   } else if (!info[0]->IsNull()) {
     Nan::ThrowTypeError("Expected 'String' or 'null' for argument 1 'pLayerName'");
+    return;
   }
 
   v8::Local<v8::Object> obj1;
   uint32_t $p1;
   if (info[1]->IsObject()) {
     obj1 = Nan::To<v8::Object>(info[1]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj1->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj1, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 2");
+      return;
+    }
+    v8::Local<v8::Value> val = obj1->Get(accessor);
     $p1 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[1]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pPropertyCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkExtensionProperties>> $p2 = nullptr;
@@ -1102,7 +1243,8 @@ void _vkEnumerateInstanceExtensionProperties(const Nan::FunctionCallbackInfo<v8:
     };
     $p2 = std::make_shared<std::vector<VkExtensionProperties>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pProperties'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pProperties'");
+    return;
   }
 
   int32_t out = vkEnumerateInstanceExtensionProperties(
@@ -1140,10 +1282,15 @@ void _vkEnumerateDeviceLayerProperties(const Nan::FunctionCallbackInfo<v8::Value
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -1153,10 +1300,16 @@ void _vkEnumerateDeviceLayerProperties(const Nan::FunctionCallbackInfo<v8::Value
   uint32_t $p1;
   if (info[1]->IsObject()) {
     obj1 = Nan::To<v8::Object>(info[1]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj1->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj1, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 2");
+      return;
+    }
+    v8::Local<v8::Value> val = obj1->Get(accessor);
     $p1 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[1]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pPropertyCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkLayerProperties>> $p2 = nullptr;
@@ -1180,7 +1333,8 @@ void _vkEnumerateDeviceLayerProperties(const Nan::FunctionCallbackInfo<v8::Value
     };
     $p2 = std::make_shared<std::vector<VkLayerProperties>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pProperties'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pProperties'");
+    return;
   }
 
   int32_t out = vkEnumerateDeviceLayerProperties(
@@ -1226,10 +1380,15 @@ void _vkEnumerateDeviceExtensionProperties(const Nan::FunctionCallbackInfo<v8::V
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -1240,16 +1399,23 @@ void _vkEnumerateDeviceExtensionProperties(const Nan::FunctionCallbackInfo<v8::V
     $p1 = copyV8String(info[1]);
   } else if (!info[1]->IsNull()) {
     Nan::ThrowTypeError("Expected 'String' or 'null' for argument 2 'pLayerName'");
+    return;
   }
 
   v8::Local<v8::Object> obj2;
   uint32_t $p2;
   if (info[2]->IsObject()) {
     obj2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj2->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj2, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 3");
+      return;
+    }
+    v8::Local<v8::Value> val = obj2->Get(accessor);
     $p2 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pPropertyCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkExtensionProperties>> $p3 = nullptr;
@@ -1273,7 +1439,8 @@ void _vkEnumerateDeviceExtensionProperties(const Nan::FunctionCallbackInfo<v8::V
     };
     $p3 = std::make_shared<std::vector<VkExtensionProperties>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pProperties'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pProperties'");
+    return;
   }
 
   int32_t out = vkEnumerateDeviceExtensionProperties(
@@ -1312,10 +1479,15 @@ void _vkGetDeviceQueue(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -1328,10 +1500,15 @@ void _vkGetDeviceQueue(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkQueue* obj3;
   VkQueue *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkQueue>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkQueue::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkQueue]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkQueue>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pQueue'");
@@ -1353,10 +1530,15 @@ void _vkQueueSubmit(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkQueue* obj0;
   VkQueue *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkQueue>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkQueue::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkQueue]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkQueue>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'queue'");
@@ -1385,17 +1567,23 @@ void _vkQueueSubmit(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p2 = std::make_shared<std::vector<VkSubmitInfo>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pSubmits'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pSubmits'");
+    return;
   }
 
 
   _VkFence* obj3;
   VkFence *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkFence>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkFence::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkFence]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkFence>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'fence'");
@@ -1415,10 +1603,15 @@ void _vkQueueWaitIdle(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkQueue* obj0;
   VkQueue *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkQueue>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkQueue::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkQueue]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkQueue>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'queue'");
@@ -1435,10 +1628,15 @@ void _vkDeviceWaitIdle(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -1455,10 +1653,15 @@ void _vkAllocateMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -1467,10 +1670,15 @@ void _vkAllocateMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkMemoryAllocateInfo* obj1;
   VkMemoryAllocateInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkMemoryAllocateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkMemoryAllocateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkMemoryAllocateInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkMemoryAllocateInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pAllocateInfo'");
@@ -1480,10 +1688,15 @@ void _vkAllocateMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDeviceMemory* obj3;
   VkDeviceMemory *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkDeviceMemory::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkDeviceMemory]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pMemory'");
@@ -1503,10 +1716,15 @@ void _vkFreeMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -1515,10 +1733,15 @@ void _vkFreeMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDeviceMemory* obj1;
   VkDeviceMemory *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDeviceMemory::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDeviceMemory]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'memory'");
@@ -1540,10 +1763,15 @@ void _vkMapMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -1552,10 +1780,15 @@ void _vkMapMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDeviceMemory* obj1;
   VkDeviceMemory *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDeviceMemory::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDeviceMemory]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'memory'");
@@ -1588,10 +1821,15 @@ void _vkUnmapMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -1600,10 +1838,15 @@ void _vkUnmapMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDeviceMemory* obj1;
   VkDeviceMemory *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDeviceMemory::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDeviceMemory]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'memory'");
@@ -1623,10 +1866,15 @@ void _vkFlushMappedMemoryRanges(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -1655,7 +1903,8 @@ void _vkFlushMappedMemoryRanges(const Nan::FunctionCallbackInfo<v8::Value>& info
     };
     $p2 = std::make_shared<std::vector<VkMappedMemoryRange>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pMemoryRanges'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pMemoryRanges'");
+    return;
   }
 
   int32_t out = vkFlushMappedMemoryRanges(
@@ -1672,10 +1921,15 @@ void _vkInvalidateMappedMemoryRanges(const Nan::FunctionCallbackInfo<v8::Value>&
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -1704,7 +1958,8 @@ void _vkInvalidateMappedMemoryRanges(const Nan::FunctionCallbackInfo<v8::Value>&
     };
     $p2 = std::make_shared<std::vector<VkMappedMemoryRange>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pMemoryRanges'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pMemoryRanges'");
+    return;
   }
 
   int32_t out = vkInvalidateMappedMemoryRanges(
@@ -1721,10 +1976,15 @@ void _vkGetDeviceMemoryCommitment(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -1733,10 +1993,15 @@ void _vkGetDeviceMemoryCommitment(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkDeviceMemory* obj1;
   VkDeviceMemory *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDeviceMemory::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDeviceMemory]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'memory'");
@@ -1746,10 +2011,16 @@ void _vkGetDeviceMemoryCommitment(const Nan::FunctionCallbackInfo<v8::Value>& in
   uint64_t $p2;
   if (info[2]->IsObject()) {
     obj2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj2->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj2, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 3");
+      return;
+    }
+    v8::Local<v8::Value> val = obj2->Get(accessor);
     $p2 = static_cast<uint64_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pCommittedMemoryInBytes'");
+    return;
   }
 vkGetDeviceMemoryCommitment(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -1769,10 +2040,15 @@ void _vkGetBufferMemoryRequirements(const Nan::FunctionCallbackInfo<v8::Value>& 
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -1781,10 +2057,15 @@ void _vkGetBufferMemoryRequirements(const Nan::FunctionCallbackInfo<v8::Value>& 
   _VkBuffer* obj1;
   VkBuffer *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'buffer'");
@@ -1793,10 +2074,15 @@ void _vkGetBufferMemoryRequirements(const Nan::FunctionCallbackInfo<v8::Value>& 
   _VkMemoryRequirements* obj2;
   VkMemoryRequirements *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkMemoryRequirements>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkMemoryRequirements::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkMemoryRequirements]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkMemoryRequirements>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pMemoryRequirements'");
@@ -1817,10 +2103,15 @@ void _vkBindBufferMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -1829,10 +2120,15 @@ void _vkBindBufferMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBuffer* obj1;
   VkBuffer *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'buffer'");
@@ -1841,10 +2137,15 @@ void _vkBindBufferMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDeviceMemory* obj2;
   VkDeviceMemory *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkDeviceMemory::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkDeviceMemory]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(obj);
     
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'memory'");
@@ -1866,10 +2167,15 @@ void _vkGetImageMemoryRequirements(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -1878,10 +2184,15 @@ void _vkGetImageMemoryRequirements(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkImage* obj1;
   VkImage *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkImage::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkImage]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'image'");
@@ -1890,10 +2201,15 @@ void _vkGetImageMemoryRequirements(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkMemoryRequirements* obj2;
   VkMemoryRequirements *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkMemoryRequirements>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkMemoryRequirements::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkMemoryRequirements]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkMemoryRequirements>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pMemoryRequirements'");
@@ -1914,10 +2230,15 @@ void _vkBindImageMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -1926,10 +2247,15 @@ void _vkBindImageMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImage* obj1;
   VkImage *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkImage::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkImage]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'image'");
@@ -1938,10 +2264,15 @@ void _vkBindImageMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDeviceMemory* obj2;
   VkDeviceMemory *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkDeviceMemory::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkDeviceMemory]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(obj);
     
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'memory'");
@@ -1963,10 +2294,15 @@ void _vkGetImageSparseMemoryRequirements(const Nan::FunctionCallbackInfo<v8::Val
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -1975,10 +2311,15 @@ void _vkGetImageSparseMemoryRequirements(const Nan::FunctionCallbackInfo<v8::Val
   _VkImage* obj1;
   VkImage *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkImage::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkImage]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'image'");
@@ -1988,10 +2329,16 @@ void _vkGetImageSparseMemoryRequirements(const Nan::FunctionCallbackInfo<v8::Val
   uint32_t $p2;
   if (info[2]->IsObject()) {
     obj2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj2->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj2, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 3");
+      return;
+    }
+    v8::Local<v8::Value> val = obj2->Get(accessor);
     $p2 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pSparseMemoryRequirementCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkSparseImageMemoryRequirements>> $p3 = nullptr;
@@ -2015,7 +2362,8 @@ void _vkGetImageSparseMemoryRequirements(const Nan::FunctionCallbackInfo<v8::Val
     };
     $p3 = std::make_shared<std::vector<VkSparseImageMemoryRequirements>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pSparseMemoryRequirements'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pSparseMemoryRequirements'");
+    return;
   }
 
 vkGetImageSparseMemoryRequirements(
@@ -2061,10 +2409,15 @@ void _vkGetPhysicalDeviceSparseImageFormatProperties(const Nan::FunctionCallback
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -2084,10 +2437,16 @@ void _vkGetPhysicalDeviceSparseImageFormatProperties(const Nan::FunctionCallback
   uint32_t $p6;
   if (info[6]->IsObject()) {
     obj6 = Nan::To<v8::Object>(info[6]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj6->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj6, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 7");
+      return;
+    }
+    v8::Local<v8::Value> val = obj6->Get(accessor);
     $p6 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[6]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 7 'pPropertyCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkSparseImageFormatProperties>> $p7 = nullptr;
@@ -2111,7 +2470,8 @@ void _vkGetPhysicalDeviceSparseImageFormatProperties(const Nan::FunctionCallback
     };
     $p7 = std::make_shared<std::vector<VkSparseImageFormatProperties>>(data);
   } else if (!info[7]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 8 'pProperties'");
+    Nan::ThrowTypeError("Invalid type for argument 8 'pProperties'");
+    return;
   }
 
 vkGetPhysicalDeviceSparseImageFormatProperties(
@@ -2159,10 +2519,15 @@ void _vkQueueBindSparse(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkQueue* obj0;
   VkQueue *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkQueue>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkQueue::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkQueue]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkQueue>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'queue'");
@@ -2191,17 +2556,23 @@ void _vkQueueBindSparse(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p2 = std::make_shared<std::vector<VkBindSparseInfo>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pBindInfo'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pBindInfo'");
+    return;
   }
 
 
   _VkFence* obj3;
   VkFence *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkFence>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkFence::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkFence]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkFence>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'fence'");
@@ -2221,10 +2592,15 @@ void _vkCreateFence(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -2233,10 +2609,15 @@ void _vkCreateFence(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkFenceCreateInfo* obj1;
   VkFenceCreateInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkFenceCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkFenceCreateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkFenceCreateInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkFenceCreateInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -2246,10 +2627,15 @@ void _vkCreateFence(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkFence* obj3;
   VkFence *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkFence>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkFence::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkFence]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkFence>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pFence'");
@@ -2269,10 +2655,15 @@ void _vkDestroyFence(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -2281,10 +2672,15 @@ void _vkDestroyFence(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkFence* obj1;
   VkFence *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkFence>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkFence::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkFence]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkFence>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'fence'");
@@ -2306,10 +2702,15 @@ void _vkResetFences(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -2330,7 +2731,8 @@ void _vkResetFences(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p2 = std::make_shared<std::vector<VkFence>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pFences'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pFences'");
+    return;
   }
 
   int32_t out = vkResetFences(
@@ -2347,10 +2749,15 @@ void _vkGetFenceStatus(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -2359,10 +2766,15 @@ void _vkGetFenceStatus(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkFence* obj1;
   VkFence *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkFence>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkFence::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkFence]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkFence>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'fence'");
@@ -2380,10 +2792,15 @@ void _vkWaitForFences(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -2404,7 +2821,8 @@ void _vkWaitForFences(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p2 = std::make_shared<std::vector<VkFence>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pFences'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pFences'");
+    return;
   }
 
 
@@ -2427,10 +2845,15 @@ void _vkCreateSemaphore(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -2439,10 +2862,15 @@ void _vkCreateSemaphore(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkSemaphoreCreateInfo* obj1;
   VkSemaphoreCreateInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSemaphoreCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSemaphoreCreateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSemaphoreCreateInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSemaphoreCreateInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -2452,10 +2880,15 @@ void _vkCreateSemaphore(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkSemaphore* obj3;
   VkSemaphore *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkSemaphore>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkSemaphore::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkSemaphore]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkSemaphore>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pSemaphore'");
@@ -2475,10 +2908,15 @@ void _vkDestroySemaphore(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -2487,10 +2925,15 @@ void _vkDestroySemaphore(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkSemaphore* obj1;
   VkSemaphore *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSemaphore>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSemaphore::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSemaphore]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSemaphore>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'semaphore'");
@@ -2512,10 +2955,15 @@ void _vkCreateEvent(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -2524,10 +2972,15 @@ void _vkCreateEvent(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkEventCreateInfo* obj1;
   VkEventCreateInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkEventCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkEventCreateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkEventCreateInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkEventCreateInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -2537,10 +2990,15 @@ void _vkCreateEvent(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkEvent* obj3;
   VkEvent *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkEvent>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkEvent::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkEvent]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkEvent>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pEvent'");
@@ -2560,10 +3018,15 @@ void _vkDestroyEvent(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -2572,10 +3035,15 @@ void _vkDestroyEvent(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkEvent* obj1;
   VkEvent *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkEvent>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkEvent::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkEvent]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkEvent>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'event'");
@@ -2597,10 +3065,15 @@ void _vkGetEventStatus(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -2609,10 +3082,15 @@ void _vkGetEventStatus(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkEvent* obj1;
   VkEvent *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkEvent>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkEvent::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkEvent]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkEvent>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'event'");
@@ -2630,10 +3108,15 @@ void _vkSetEvent(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -2642,10 +3125,15 @@ void _vkSetEvent(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkEvent* obj1;
   VkEvent *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkEvent>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkEvent::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkEvent]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkEvent>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'event'");
@@ -2663,10 +3151,15 @@ void _vkResetEvent(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -2675,10 +3168,15 @@ void _vkResetEvent(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkEvent* obj1;
   VkEvent *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkEvent>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkEvent::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkEvent]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkEvent>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'event'");
@@ -2696,10 +3194,15 @@ void _vkCreateQueryPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -2708,10 +3211,15 @@ void _vkCreateQueryPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkQueryPoolCreateInfo* obj1;
   VkQueryPoolCreateInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkQueryPoolCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkQueryPoolCreateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkQueryPoolCreateInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkQueryPoolCreateInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -2721,10 +3229,15 @@ void _vkCreateQueryPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkQueryPool* obj3;
   VkQueryPool *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkQueryPool>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkQueryPool::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkQueryPool]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkQueryPool>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pQueryPool'");
@@ -2744,10 +3257,15 @@ void _vkDestroyQueryPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -2756,10 +3274,15 @@ void _vkDestroyQueryPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkQueryPool* obj1;
   VkQueryPool *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkQueryPool>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkQueryPool::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkQueryPool]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkQueryPool>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'queryPool'");
@@ -2781,10 +3304,15 @@ void _vkGetQueryPoolResults(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -2793,10 +3321,15 @@ void _vkGetQueryPoolResults(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkQueryPool* obj1;
   VkQueryPool *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkQueryPool>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkQueryPool::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkQueryPool]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkQueryPool>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'queryPool'");
@@ -2831,10 +3364,15 @@ void _vkCreateBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -2843,10 +3381,15 @@ void _vkCreateBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBufferCreateInfo* obj1;
   VkBufferCreateInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkBufferCreateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkBufferCreateInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBufferCreateInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -2856,10 +3399,15 @@ void _vkCreateBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBuffer* obj3;
   VkBuffer *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pBuffer'");
@@ -2879,10 +3427,15 @@ void _vkDestroyBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -2891,10 +3444,15 @@ void _vkDestroyBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBuffer* obj1;
   VkBuffer *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'buffer'");
@@ -2916,10 +3474,15 @@ void _vkCreateBufferView(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -2928,10 +3491,15 @@ void _vkCreateBufferView(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBufferViewCreateInfo* obj1;
   VkBufferViewCreateInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBufferViewCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkBufferViewCreateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkBufferViewCreateInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBufferViewCreateInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -2941,10 +3509,15 @@ void _vkCreateBufferView(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBufferView* obj3;
   VkBufferView *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkBufferView>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkBufferView::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkBufferView]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkBufferView>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pView'");
@@ -2964,10 +3537,15 @@ void _vkDestroyBufferView(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -2976,10 +3554,15 @@ void _vkDestroyBufferView(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBufferView* obj1;
   VkBufferView *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBufferView>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkBufferView::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkBufferView]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBufferView>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'bufferView'");
@@ -3001,10 +3584,15 @@ void _vkCreateImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -3013,10 +3601,15 @@ void _vkCreateImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImageCreateInfo* obj1;
   VkImageCreateInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkImageCreateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkImageCreateInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImageCreateInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -3026,10 +3619,15 @@ void _vkCreateImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImage* obj3;
   VkImage *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkImage::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkImage]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkImage>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pImage'");
@@ -3049,10 +3647,15 @@ void _vkDestroyImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -3061,10 +3664,15 @@ void _vkDestroyImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImage* obj1;
   VkImage *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkImage::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkImage]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'image'");
@@ -3086,10 +3694,15 @@ void _vkGetImageSubresourceLayout(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -3098,10 +3711,15 @@ void _vkGetImageSubresourceLayout(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkImage* obj1;
   VkImage *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkImage::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkImage]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'image'");
@@ -3110,10 +3728,15 @@ void _vkGetImageSubresourceLayout(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkImageSubresource* obj2;
   VkImageSubresource *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkImageSubresource>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkImageSubresource::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkImageSubresource]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkImageSubresource>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pSubresource'");
@@ -3122,10 +3745,15 @@ void _vkGetImageSubresourceLayout(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkSubresourceLayout* obj3;
   VkSubresourceLayout *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkSubresourceLayout>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkSubresourceLayout::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkSubresourceLayout]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkSubresourceLayout>(obj);
     if (!obj3->flush()) return;
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pLayout'");
@@ -3147,10 +3775,15 @@ void _vkCreateImageView(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -3159,10 +3792,15 @@ void _vkCreateImageView(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImageViewCreateInfo* obj1;
   VkImageViewCreateInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImageViewCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkImageViewCreateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkImageViewCreateInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImageViewCreateInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -3172,10 +3810,15 @@ void _vkCreateImageView(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImageView* obj3;
   VkImageView *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkImageView>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkImageView::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkImageView]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkImageView>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pView'");
@@ -3195,10 +3838,15 @@ void _vkDestroyImageView(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -3207,10 +3855,15 @@ void _vkDestroyImageView(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImageView* obj1;
   VkImageView *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImageView>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkImageView::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkImageView]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImageView>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'imageView'");
@@ -3232,10 +3885,15 @@ void _vkCreateShaderModule(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -3244,10 +3902,15 @@ void _vkCreateShaderModule(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkShaderModuleCreateInfo* obj1;
   VkShaderModuleCreateInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkShaderModuleCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkShaderModuleCreateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkShaderModuleCreateInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkShaderModuleCreateInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -3257,10 +3920,15 @@ void _vkCreateShaderModule(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkShaderModule* obj3;
   VkShaderModule *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkShaderModule>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkShaderModule::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkShaderModule]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkShaderModule>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pShaderModule'");
@@ -3280,10 +3948,15 @@ void _vkDestroyShaderModule(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -3292,10 +3965,15 @@ void _vkDestroyShaderModule(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkShaderModule* obj1;
   VkShaderModule *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkShaderModule>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkShaderModule::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkShaderModule]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkShaderModule>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'shaderModule'");
@@ -3317,10 +3995,15 @@ void _vkCreatePipelineCache(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -3329,10 +4012,15 @@ void _vkCreatePipelineCache(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkPipelineCacheCreateInfo* obj1;
   VkPipelineCacheCreateInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineCacheCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPipelineCacheCreateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPipelineCacheCreateInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineCacheCreateInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -3342,10 +4030,15 @@ void _vkCreatePipelineCache(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkPipelineCache* obj3;
   VkPipelineCache *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkPipelineCache>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkPipelineCache::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkPipelineCache]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkPipelineCache>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pPipelineCache'");
@@ -3365,10 +4058,15 @@ void _vkDestroyPipelineCache(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -3377,10 +4075,15 @@ void _vkDestroyPipelineCache(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkPipelineCache* obj1;
   VkPipelineCache *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineCache>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPipelineCache::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPipelineCache]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineCache>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pipelineCache'");
@@ -3402,10 +4105,15 @@ void _vkGetPipelineCacheData(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -3414,10 +4122,15 @@ void _vkGetPipelineCacheData(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkPipelineCache* obj1;
   VkPipelineCache *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineCache>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPipelineCache::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPipelineCache]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineCache>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pipelineCache'");
@@ -3427,10 +4140,16 @@ void _vkGetPipelineCacheData(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   size_t $p2;
   if (info[2]->IsObject()) {
     obj2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj2->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj2, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 3");
+      return;
+    }
+    v8::Local<v8::Value> val = obj2->Get(accessor);
     $p2 = static_cast<size_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pDataSize'");
+    return;
   }
 
   int32_t out = vkGetPipelineCacheData(
@@ -3450,10 +4169,15 @@ void _vkMergePipelineCaches(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -3462,10 +4186,15 @@ void _vkMergePipelineCaches(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkPipelineCache* obj1;
   VkPipelineCache *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineCache>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPipelineCache::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPipelineCache]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineCache>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'dstCache'");
@@ -3486,7 +4215,8 @@ void _vkMergePipelineCaches(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p3 = std::make_shared<std::vector<VkPipelineCache>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pSrcCaches'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pSrcCaches'");
+    return;
   }
 
   int32_t out = vkMergePipelineCaches(
@@ -3504,10 +4234,15 @@ void _vkCreateGraphicsPipelines(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -3516,10 +4251,15 @@ void _vkCreateGraphicsPipelines(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkPipelineCache* obj1;
   VkPipelineCache *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineCache>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPipelineCache::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPipelineCache]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineCache>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pipelineCache'");
@@ -3548,7 +4288,8 @@ void _vkCreateGraphicsPipelines(const Nan::FunctionCallbackInfo<v8::Value>& info
     };
     $p3 = std::make_shared<std::vector<VkGraphicsPipelineCreateInfo>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pCreateInfos'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pCreateInfos'");
+    return;
   }
 
 
@@ -3566,7 +4307,8 @@ void _vkCreateGraphicsPipelines(const Nan::FunctionCallbackInfo<v8::Value>& info
     };
     $p5 = std::make_shared<std::vector<VkPipeline>>(data);
   } else if (!info[5]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 6 'pPipelines'");
+    Nan::ThrowTypeError("Invalid type for argument 6 'pPipelines'");
+    return;
   }
 
   int32_t out = vkCreateGraphicsPipelines(
@@ -3595,10 +4337,15 @@ void _vkCreateComputePipelines(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -3607,10 +4354,15 @@ void _vkCreateComputePipelines(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkPipelineCache* obj1;
   VkPipelineCache *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineCache>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPipelineCache::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPipelineCache]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineCache>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pipelineCache'");
@@ -3639,7 +4391,8 @@ void _vkCreateComputePipelines(const Nan::FunctionCallbackInfo<v8::Value>& info)
     };
     $p3 = std::make_shared<std::vector<VkComputePipelineCreateInfo>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pCreateInfos'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pCreateInfos'");
+    return;
   }
 
 
@@ -3657,7 +4410,8 @@ void _vkCreateComputePipelines(const Nan::FunctionCallbackInfo<v8::Value>& info)
     };
     $p5 = std::make_shared<std::vector<VkPipeline>>(data);
   } else if (!info[5]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 6 'pPipelines'");
+    Nan::ThrowTypeError("Invalid type for argument 6 'pPipelines'");
+    return;
   }
 
   int32_t out = vkCreateComputePipelines(
@@ -3686,10 +4440,15 @@ void _vkDestroyPipeline(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -3698,10 +4457,15 @@ void _vkDestroyPipeline(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkPipeline* obj1;
   VkPipeline *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPipeline>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPipeline::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPipeline]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPipeline>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pipeline'");
@@ -3723,10 +4487,15 @@ void _vkCreatePipelineLayout(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -3735,10 +4504,15 @@ void _vkCreatePipelineLayout(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkPipelineLayoutCreateInfo* obj1;
   VkPipelineLayoutCreateInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineLayoutCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPipelineLayoutCreateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPipelineLayoutCreateInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineLayoutCreateInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -3748,10 +4522,15 @@ void _vkCreatePipelineLayout(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkPipelineLayout* obj3;
   VkPipelineLayout *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkPipelineLayout>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkPipelineLayout::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkPipelineLayout]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkPipelineLayout>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pPipelineLayout'");
@@ -3771,10 +4550,15 @@ void _vkDestroyPipelineLayout(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -3783,10 +4567,15 @@ void _vkDestroyPipelineLayout(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkPipelineLayout* obj1;
   VkPipelineLayout *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineLayout>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPipelineLayout::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPipelineLayout]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineLayout>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pipelineLayout'");
@@ -3808,10 +4597,15 @@ void _vkCreateSampler(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -3820,10 +4614,15 @@ void _vkCreateSampler(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkSamplerCreateInfo* obj1;
   VkSamplerCreateInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSamplerCreateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSamplerCreateInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSamplerCreateInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -3833,10 +4632,15 @@ void _vkCreateSampler(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkSampler* obj3;
   VkSampler *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkSampler>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkSampler::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkSampler]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkSampler>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pSampler'");
@@ -3856,10 +4660,15 @@ void _vkDestroySampler(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -3868,10 +4677,15 @@ void _vkDestroySampler(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkSampler* obj1;
   VkSampler *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSampler>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSampler::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSampler]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSampler>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'sampler'");
@@ -3893,10 +4707,15 @@ void _vkCreateDescriptorSetLayout(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -3905,10 +4724,15 @@ void _vkCreateDescriptorSetLayout(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkDescriptorSetLayoutCreateInfo* obj1;
   VkDescriptorSetLayoutCreateInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDescriptorSetLayoutCreateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDescriptorSetLayoutCreateInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutCreateInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -3918,10 +4742,15 @@ void _vkCreateDescriptorSetLayout(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkDescriptorSetLayout* obj3;
   VkDescriptorSetLayout *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayout>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkDescriptorSetLayout::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkDescriptorSetLayout]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayout>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pSetLayout'");
@@ -3941,10 +4770,15 @@ void _vkDestroyDescriptorSetLayout(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -3953,10 +4787,15 @@ void _vkDestroyDescriptorSetLayout(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkDescriptorSetLayout* obj1;
   VkDescriptorSetLayout *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayout>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDescriptorSetLayout::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDescriptorSetLayout]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayout>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'descriptorSetLayout'");
@@ -3978,10 +4817,15 @@ void _vkCreateDescriptorPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -3990,10 +4834,15 @@ void _vkCreateDescriptorPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDescriptorPoolCreateInfo* obj1;
   VkDescriptorPoolCreateInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorPoolCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDescriptorPoolCreateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDescriptorPoolCreateInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorPoolCreateInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -4003,10 +4852,15 @@ void _vkCreateDescriptorPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDescriptorPool* obj3;
   VkDescriptorPool *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkDescriptorPool>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkDescriptorPool::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkDescriptorPool]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkDescriptorPool>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pDescriptorPool'");
@@ -4026,10 +4880,15 @@ void _vkDestroyDescriptorPool(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -4038,10 +4897,15 @@ void _vkDestroyDescriptorPool(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkDescriptorPool* obj1;
   VkDescriptorPool *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorPool>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDescriptorPool::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDescriptorPool]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorPool>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'descriptorPool'");
@@ -4063,10 +4927,15 @@ void _vkResetDescriptorPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -4075,10 +4944,15 @@ void _vkResetDescriptorPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDescriptorPool* obj1;
   VkDescriptorPool *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorPool>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDescriptorPool::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDescriptorPool]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorPool>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'descriptorPool'");
@@ -4099,10 +4973,15 @@ void _vkAllocateDescriptorSets(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -4111,10 +4990,15 @@ void _vkAllocateDescriptorSets(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkDescriptorSetAllocateInfo* obj1;
   VkDescriptorSetAllocateInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorSetAllocateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDescriptorSetAllocateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDescriptorSetAllocateInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorSetAllocateInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pAllocateInfo'");
@@ -4133,7 +5017,8 @@ void _vkAllocateDescriptorSets(const Nan::FunctionCallbackInfo<v8::Value>& info)
     };
     $p2 = std::make_shared<std::vector<VkDescriptorSet>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pDescriptorSets'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pDescriptorSets'");
+    return;
   }
 
   int32_t out = vkAllocateDescriptorSets(
@@ -4159,10 +5044,15 @@ void _vkFreeDescriptorSets(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -4171,10 +5061,15 @@ void _vkFreeDescriptorSets(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDescriptorPool* obj1;
   VkDescriptorPool *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorPool>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDescriptorPool::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDescriptorPool]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorPool>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'descriptorPool'");
@@ -4195,7 +5090,8 @@ void _vkFreeDescriptorSets(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p3 = std::make_shared<std::vector<VkDescriptorSet>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pDescriptorSets'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pDescriptorSets'");
+    return;
   }
 
   int32_t out = vkFreeDescriptorSets(
@@ -4213,10 +5109,15 @@ void _vkUpdateDescriptorSets(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -4245,7 +5146,8 @@ void _vkUpdateDescriptorSets(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p2 = std::make_shared<std::vector<VkWriteDescriptorSet>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pDescriptorWrites'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pDescriptorWrites'");
+    return;
   }
 
 
@@ -4272,7 +5174,8 @@ void _vkUpdateDescriptorSets(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p4 = std::make_shared<std::vector<VkCopyDescriptorSet>>(data);
   } else if (!info[4]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 5 'pDescriptorCopies'");
+    Nan::ThrowTypeError("Invalid type for argument 5 'pDescriptorCopies'");
+    return;
   }
 
 vkUpdateDescriptorSets(
@@ -4293,10 +5196,15 @@ void _vkCreateFramebuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -4305,10 +5213,15 @@ void _vkCreateFramebuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkFramebufferCreateInfo* obj1;
   VkFramebufferCreateInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkFramebufferCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkFramebufferCreateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkFramebufferCreateInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkFramebufferCreateInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -4318,10 +5231,15 @@ void _vkCreateFramebuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkFramebuffer* obj3;
   VkFramebuffer *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkFramebuffer>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkFramebuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkFramebuffer]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkFramebuffer>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pFramebuffer'");
@@ -4341,10 +5259,15 @@ void _vkDestroyFramebuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -4353,10 +5276,15 @@ void _vkDestroyFramebuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkFramebuffer* obj1;
   VkFramebuffer *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkFramebuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkFramebuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkFramebuffer]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkFramebuffer>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'framebuffer'");
@@ -4378,10 +5306,15 @@ void _vkCreateRenderPass(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -4390,10 +5323,15 @@ void _vkCreateRenderPass(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkRenderPassCreateInfo* obj1;
   VkRenderPassCreateInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkRenderPassCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkRenderPassCreateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkRenderPassCreateInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkRenderPassCreateInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -4403,10 +5341,15 @@ void _vkCreateRenderPass(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkRenderPass* obj3;
   VkRenderPass *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkRenderPass>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkRenderPass::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkRenderPass]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkRenderPass>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pRenderPass'");
@@ -4426,10 +5369,15 @@ void _vkDestroyRenderPass(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -4438,10 +5386,15 @@ void _vkDestroyRenderPass(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkRenderPass* obj1;
   VkRenderPass *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkRenderPass>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkRenderPass::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkRenderPass]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkRenderPass>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'renderPass'");
@@ -4463,10 +5416,15 @@ void _vkGetRenderAreaGranularity(const Nan::FunctionCallbackInfo<v8::Value>& inf
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -4475,10 +5433,15 @@ void _vkGetRenderAreaGranularity(const Nan::FunctionCallbackInfo<v8::Value>& inf
   _VkRenderPass* obj1;
   VkRenderPass *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkRenderPass>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkRenderPass::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkRenderPass]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkRenderPass>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'renderPass'");
@@ -4487,10 +5450,15 @@ void _vkGetRenderAreaGranularity(const Nan::FunctionCallbackInfo<v8::Value>& inf
   _VkExtent2D* obj2;
   VkExtent2D *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkExtent2D>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkExtent2D::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkExtent2D]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkExtent2D>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pGranularity'");
@@ -4511,10 +5479,15 @@ void _vkCreateCommandPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -4523,10 +5496,15 @@ void _vkCreateCommandPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandPoolCreateInfo* obj1;
   VkCommandPoolCreateInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkCommandPoolCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkCommandPoolCreateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkCommandPoolCreateInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkCommandPoolCreateInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -4536,10 +5514,15 @@ void _vkCreateCommandPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandPool* obj3;
   VkCommandPool *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkCommandPool>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkCommandPool::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkCommandPool]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkCommandPool>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pCommandPool'");
@@ -4559,10 +5542,15 @@ void _vkDestroyCommandPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -4571,10 +5559,15 @@ void _vkDestroyCommandPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandPool* obj1;
   VkCommandPool *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkCommandPool>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkCommandPool::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkCommandPool]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkCommandPool>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'commandPool'");
@@ -4596,10 +5589,15 @@ void _vkResetCommandPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -4608,10 +5606,15 @@ void _vkResetCommandPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandPool* obj1;
   VkCommandPool *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkCommandPool>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkCommandPool::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkCommandPool]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkCommandPool>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'commandPool'");
@@ -4632,10 +5635,15 @@ void _vkAllocateCommandBuffers(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -4644,10 +5652,15 @@ void _vkAllocateCommandBuffers(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkCommandBufferAllocateInfo* obj1;
   VkCommandBufferAllocateInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkCommandBufferAllocateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBufferAllocateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkCommandBufferAllocateInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkCommandBufferAllocateInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pAllocateInfo'");
@@ -4666,7 +5679,8 @@ void _vkAllocateCommandBuffers(const Nan::FunctionCallbackInfo<v8::Value>& info)
     };
     $p2 = std::make_shared<std::vector<VkCommandBuffer>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pCommandBuffers'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pCommandBuffers'");
+    return;
   }
 
   int32_t out = vkAllocateCommandBuffers(
@@ -4692,10 +5706,15 @@ void _vkFreeCommandBuffers(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -4704,10 +5723,15 @@ void _vkFreeCommandBuffers(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandPool* obj1;
   VkCommandPool *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkCommandPool>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkCommandPool::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkCommandPool]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkCommandPool>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'commandPool'");
@@ -4728,7 +5752,8 @@ void _vkFreeCommandBuffers(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p3 = std::make_shared<std::vector<VkCommandBuffer>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pCommandBuffers'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pCommandBuffers'");
+    return;
   }
 
 vkFreeCommandBuffers(
@@ -4748,10 +5773,15 @@ void _vkBeginCommandBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -4760,10 +5790,15 @@ void _vkBeginCommandBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBufferBeginInfo* obj1;
   VkCommandBufferBeginInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkCommandBufferBeginInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBufferBeginInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkCommandBufferBeginInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkCommandBufferBeginInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pBeginInfo'");
@@ -4781,10 +5816,15 @@ void _vkEndCommandBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -4801,10 +5841,15 @@ void _vkResetCommandBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -4824,10 +5869,15 @@ void _vkCmdBindPipeline(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -4838,10 +5888,15 @@ void _vkCmdBindPipeline(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkPipeline* obj2;
   VkPipeline *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkPipeline>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkPipeline::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkPipeline]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkPipeline>(obj);
     
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pipeline'");
@@ -4862,10 +5917,15 @@ void _vkCmdSetViewport(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -4896,7 +5956,8 @@ void _vkCmdSetViewport(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p3 = std::make_shared<std::vector<VkViewport>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pViewports'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pViewports'");
+    return;
   }
 
 vkCmdSetViewport(
@@ -4916,10 +5977,15 @@ void _vkCmdSetScissor(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -4950,7 +6016,8 @@ void _vkCmdSetScissor(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p3 = std::make_shared<std::vector<VkRect2D>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pScissors'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pScissors'");
+    return;
   }
 
 vkCmdSetScissor(
@@ -4970,10 +6037,15 @@ void _vkCmdSetLineWidth(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -4995,10 +6067,15 @@ void _vkCmdSetDepthBias(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -5026,10 +6103,15 @@ void _vkCmdSetBlendConstants(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -5045,7 +6127,8 @@ void _vkCmdSetBlendConstants(const Nan::FunctionCallbackInfo<v8::Value>& info) {
         $p1 = std::make_shared<std::vector<float>>(data);
       }
     } else if (!info[1]->IsNull()) {
-      return Nan::ThrowTypeError("Invalid type for argument 2 'blendConstants'");
+      Nan::ThrowTypeError("Invalid type for argument 2 'blendConstants'");
+      return;
     }
 vkCmdSetBlendConstants(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -5062,10 +6145,15 @@ void _vkCmdSetDepthBounds(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -5090,10 +6178,15 @@ void _vkCmdSetStencilCompareMask(const Nan::FunctionCallbackInfo<v8::Value>& inf
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -5118,10 +6211,15 @@ void _vkCmdSetStencilWriteMask(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -5146,10 +6244,15 @@ void _vkCmdSetStencilReference(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -5174,10 +6277,15 @@ void _vkCmdBindDescriptorSets(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -5188,10 +6296,15 @@ void _vkCmdBindDescriptorSets(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkPipelineLayout* obj2;
   VkPipelineLayout *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkPipelineLayout>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkPipelineLayout::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkPipelineLayout]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkPipelineLayout>(obj);
     
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'layout'");
@@ -5214,7 +6327,8 @@ void _vkCmdBindDescriptorSets(const Nan::FunctionCallbackInfo<v8::Value>& info) 
     };
     $p5 = std::make_shared<std::vector<VkDescriptorSet>>(data);
   } else if (!info[5]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 6 'pDescriptorSets'");
+    Nan::ThrowTypeError("Invalid type for argument 6 'pDescriptorSets'");
+    return;
   }
 
 
@@ -5227,7 +6341,8 @@ void _vkCmdBindDescriptorSets(const Nan::FunctionCallbackInfo<v8::Value>& info) 
     uint32_t* data = getTypedArrayData<uint32_t>(Nan::To<v8::Object>(info[7]).ToLocalChecked());
     $p7 = std::make_shared<uint32_t*>(data);
   } else if (!info[7]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 8 'pDynamicOffsets'");
+    Nan::ThrowTypeError("Invalid type for argument 8 'pDynamicOffsets'");
+    return;
   }
 
 vkCmdBindDescriptorSets(
@@ -5251,10 +6366,15 @@ void _vkCmdBindIndexBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -5263,10 +6383,15 @@ void _vkCmdBindIndexBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBuffer* obj1;
   VkBuffer *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'buffer'");
@@ -5292,10 +6417,15 @@ void _vkCmdBindVertexBuffers(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -5318,7 +6448,8 @@ void _vkCmdBindVertexBuffers(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p3 = std::make_shared<std::vector<VkBuffer>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pBuffers'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pBuffers'");
+    return;
   }
 
 
@@ -5329,7 +6460,8 @@ void _vkCmdBindVertexBuffers(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     VkDeviceSize* data = getTypedArrayData<VkDeviceSize>(Nan::To<v8::Object>(info[4]).ToLocalChecked());
     $p4 = std::make_shared<VkDeviceSize*>(data);
   } else if (!info[4]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 5 'pOffsets'");
+    Nan::ThrowTypeError("Invalid type for argument 5 'pOffsets'");
+    return;
   }
 
 vkCmdBindVertexBuffers(
@@ -5350,10 +6482,15 @@ void _vkCmdDraw(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -5384,10 +6521,15 @@ void _vkCmdDrawIndexed(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -5421,10 +6563,15 @@ void _vkCmdDrawIndirect(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -5433,10 +6580,15 @@ void _vkCmdDrawIndirect(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBuffer* obj1;
   VkBuffer *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'buffer'");
@@ -5465,10 +6617,15 @@ void _vkCmdDrawIndexedIndirect(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -5477,10 +6634,15 @@ void _vkCmdDrawIndexedIndirect(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkBuffer* obj1;
   VkBuffer *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'buffer'");
@@ -5509,10 +6671,15 @@ void _vkCmdDispatch(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -5540,10 +6707,15 @@ void _vkCmdDispatchIndirect(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -5552,10 +6724,15 @@ void _vkCmdDispatchIndirect(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBuffer* obj1;
   VkBuffer *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'buffer'");
@@ -5578,10 +6755,15 @@ void _vkCmdCopyBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -5590,10 +6772,15 @@ void _vkCmdCopyBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBuffer* obj1;
   VkBuffer *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'srcBuffer'");
@@ -5602,10 +6789,15 @@ void _vkCmdCopyBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBuffer* obj2;
   VkBuffer *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkBuffer]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'dstBuffer'");
@@ -5634,7 +6826,8 @@ void _vkCmdCopyBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p4 = std::make_shared<std::vector<VkBufferCopy>>(data);
   } else if (!info[4]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 5 'pRegions'");
+    Nan::ThrowTypeError("Invalid type for argument 5 'pRegions'");
+    return;
   }
 
 vkCmdCopyBuffer(
@@ -5655,10 +6848,15 @@ void _vkCmdCopyImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -5667,10 +6865,15 @@ void _vkCmdCopyImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImage* obj1;
   VkImage *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkImage::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkImage]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'srcImage'");
@@ -5681,10 +6884,15 @@ void _vkCmdCopyImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImage* obj3;
   VkImage *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkImage::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkImage]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkImage>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'dstImage'");
@@ -5715,7 +6923,8 @@ void _vkCmdCopyImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p6 = std::make_shared<std::vector<VkImageCopy>>(data);
   } else if (!info[6]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 7 'pRegions'");
+    Nan::ThrowTypeError("Invalid type for argument 7 'pRegions'");
+    return;
   }
 
 vkCmdCopyImage(
@@ -5738,10 +6947,15 @@ void _vkCmdBlitImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -5750,10 +6964,15 @@ void _vkCmdBlitImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImage* obj1;
   VkImage *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkImage::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkImage]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'srcImage'");
@@ -5764,10 +6983,15 @@ void _vkCmdBlitImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImage* obj3;
   VkImage *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkImage::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkImage]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkImage>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'dstImage'");
@@ -5798,7 +7022,8 @@ void _vkCmdBlitImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p6 = std::make_shared<std::vector<VkImageBlit>>(data);
   } else if (!info[6]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 7 'pRegions'");
+    Nan::ThrowTypeError("Invalid type for argument 7 'pRegions'");
+    return;
   }
 
 
@@ -5824,10 +7049,15 @@ void _vkCmdCopyBufferToImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -5836,10 +7066,15 @@ void _vkCmdCopyBufferToImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBuffer* obj1;
   VkBuffer *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'srcBuffer'");
@@ -5848,10 +7083,15 @@ void _vkCmdCopyBufferToImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImage* obj2;
   VkImage *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkImage::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkImage]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkImage>(obj);
     
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'dstImage'");
@@ -5882,7 +7122,8 @@ void _vkCmdCopyBufferToImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p5 = std::make_shared<std::vector<VkBufferImageCopy>>(data);
   } else if (!info[5]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 6 'pRegions'");
+    Nan::ThrowTypeError("Invalid type for argument 6 'pRegions'");
+    return;
   }
 
 vkCmdCopyBufferToImage(
@@ -5904,10 +7145,15 @@ void _vkCmdCopyImageToBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -5916,10 +7162,15 @@ void _vkCmdCopyImageToBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImage* obj1;
   VkImage *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkImage::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkImage]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'srcImage'");
@@ -5930,10 +7181,15 @@ void _vkCmdCopyImageToBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBuffer* obj3;
   VkBuffer *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'dstBuffer'");
@@ -5962,7 +7218,8 @@ void _vkCmdCopyImageToBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p5 = std::make_shared<std::vector<VkBufferImageCopy>>(data);
   } else if (!info[5]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 6 'pRegions'");
+    Nan::ThrowTypeError("Invalid type for argument 6 'pRegions'");
+    return;
   }
 
 vkCmdCopyImageToBuffer(
@@ -5984,10 +7241,15 @@ void _vkCmdUpdateBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -5996,10 +7258,15 @@ void _vkCmdUpdateBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBuffer* obj1;
   VkBuffer *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'dstBuffer'");
@@ -6027,10 +7294,15 @@ void _vkCmdFillBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -6039,10 +7311,15 @@ void _vkCmdFillBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBuffer* obj1;
   VkBuffer *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'dstBuffer'");
@@ -6071,10 +7348,15 @@ void _vkCmdClearColorImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -6083,10 +7365,15 @@ void _vkCmdClearColorImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImage* obj1;
   VkImage *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkImage::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkImage]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'image'");
@@ -6097,10 +7384,15 @@ void _vkCmdClearColorImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkClearColorValue* obj3;
   VkClearColorValue *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkClearColorValue>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkClearColorValue::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkClearColorValue]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkClearColorValue>(obj);
     if (!obj3->flush()) return;
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pColor'");
@@ -6129,7 +7421,8 @@ void _vkCmdClearColorImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p5 = std::make_shared<std::vector<VkImageSubresourceRange>>(data);
   } else if (!info[5]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 6 'pRanges'");
+    Nan::ThrowTypeError("Invalid type for argument 6 'pRanges'");
+    return;
   }
 
 vkCmdClearColorImage(
@@ -6151,10 +7444,15 @@ void _vkCmdClearDepthStencilImage(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -6163,10 +7461,15 @@ void _vkCmdClearDepthStencilImage(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkImage* obj1;
   VkImage *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkImage::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkImage]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'image'");
@@ -6177,10 +7480,15 @@ void _vkCmdClearDepthStencilImage(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkClearDepthStencilValue* obj3;
   VkClearDepthStencilValue *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkClearDepthStencilValue>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkClearDepthStencilValue::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkClearDepthStencilValue]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkClearDepthStencilValue>(obj);
     if (!obj3->flush()) return;
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pDepthStencil'");
@@ -6209,7 +7517,8 @@ void _vkCmdClearDepthStencilImage(const Nan::FunctionCallbackInfo<v8::Value>& in
     };
     $p5 = std::make_shared<std::vector<VkImageSubresourceRange>>(data);
   } else if (!info[5]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 6 'pRanges'");
+    Nan::ThrowTypeError("Invalid type for argument 6 'pRanges'");
+    return;
   }
 
 vkCmdClearDepthStencilImage(
@@ -6231,10 +7540,15 @@ void _vkCmdClearAttachments(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -6263,7 +7577,8 @@ void _vkCmdClearAttachments(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p2 = std::make_shared<std::vector<VkClearAttachment>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pAttachments'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pAttachments'");
+    return;
   }
 
 
@@ -6290,7 +7605,8 @@ void _vkCmdClearAttachments(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p4 = std::make_shared<std::vector<VkClearRect>>(data);
   } else if (!info[4]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 5 'pRects'");
+    Nan::ThrowTypeError("Invalid type for argument 5 'pRects'");
+    return;
   }
 
 vkCmdClearAttachments(
@@ -6311,10 +7627,15 @@ void _vkCmdResolveImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -6323,10 +7644,15 @@ void _vkCmdResolveImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImage* obj1;
   VkImage *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkImage::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkImage]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'srcImage'");
@@ -6337,10 +7663,15 @@ void _vkCmdResolveImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImage* obj3;
   VkImage *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkImage::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkImage]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkImage>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'dstImage'");
@@ -6371,7 +7702,8 @@ void _vkCmdResolveImage(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p6 = std::make_shared<std::vector<VkImageResolve>>(data);
   } else if (!info[6]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 7 'pRegions'");
+    Nan::ThrowTypeError("Invalid type for argument 7 'pRegions'");
+    return;
   }
 
 vkCmdResolveImage(
@@ -6394,10 +7726,15 @@ void _vkCmdSetEvent(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -6406,10 +7743,15 @@ void _vkCmdSetEvent(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkEvent* obj1;
   VkEvent *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkEvent>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkEvent::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkEvent]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkEvent>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'event'");
@@ -6432,10 +7774,15 @@ void _vkCmdResetEvent(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -6444,10 +7791,15 @@ void _vkCmdResetEvent(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkEvent* obj1;
   VkEvent *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkEvent>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkEvent::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkEvent]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkEvent>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'event'");
@@ -6470,10 +7822,15 @@ void _vkCmdWaitEvents(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -6494,7 +7851,8 @@ void _vkCmdWaitEvents(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p2 = std::make_shared<std::vector<VkEvent>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pEvents'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pEvents'");
+    return;
   }
 
 
@@ -6525,7 +7883,8 @@ void _vkCmdWaitEvents(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p6 = std::make_shared<std::vector<VkMemoryBarrier>>(data);
   } else if (!info[6]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 7 'pMemoryBarriers'");
+    Nan::ThrowTypeError("Invalid type for argument 7 'pMemoryBarriers'");
+    return;
   }
 
 
@@ -6552,7 +7911,8 @@ void _vkCmdWaitEvents(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p8 = std::make_shared<std::vector<VkBufferMemoryBarrier>>(data);
   } else if (!info[8]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 9 'pBufferMemoryBarriers'");
+    Nan::ThrowTypeError("Invalid type for argument 9 'pBufferMemoryBarriers'");
+    return;
   }
 
 
@@ -6579,7 +7939,8 @@ void _vkCmdWaitEvents(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p10 = std::make_shared<std::vector<VkImageMemoryBarrier>>(data);
   } else if (!info[10]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 11 'pImageMemoryBarriers'");
+    Nan::ThrowTypeError("Invalid type for argument 11 'pImageMemoryBarriers'");
+    return;
   }
 
 vkCmdWaitEvents(
@@ -6606,10 +7967,15 @@ void _vkCmdPipelineBarrier(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -6644,7 +8010,8 @@ void _vkCmdPipelineBarrier(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p5 = std::make_shared<std::vector<VkMemoryBarrier>>(data);
   } else if (!info[5]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 6 'pMemoryBarriers'");
+    Nan::ThrowTypeError("Invalid type for argument 6 'pMemoryBarriers'");
+    return;
   }
 
 
@@ -6671,7 +8038,8 @@ void _vkCmdPipelineBarrier(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p7 = std::make_shared<std::vector<VkBufferMemoryBarrier>>(data);
   } else if (!info[7]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 8 'pBufferMemoryBarriers'");
+    Nan::ThrowTypeError("Invalid type for argument 8 'pBufferMemoryBarriers'");
+    return;
   }
 
 
@@ -6698,7 +8066,8 @@ void _vkCmdPipelineBarrier(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p9 = std::make_shared<std::vector<VkImageMemoryBarrier>>(data);
   } else if (!info[9]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 10 'pImageMemoryBarriers'");
+    Nan::ThrowTypeError("Invalid type for argument 10 'pImageMemoryBarriers'");
+    return;
   }
 
 vkCmdPipelineBarrier(
@@ -6724,10 +8093,15 @@ void _vkCmdBeginQuery(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -6736,10 +8110,15 @@ void _vkCmdBeginQuery(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkQueryPool* obj1;
   VkQueryPool *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkQueryPool>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkQueryPool::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkQueryPool]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkQueryPool>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'queryPool'");
@@ -6765,10 +8144,15 @@ void _vkCmdEndQuery(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -6777,10 +8161,15 @@ void _vkCmdEndQuery(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkQueryPool* obj1;
   VkQueryPool *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkQueryPool>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkQueryPool::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkQueryPool]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkQueryPool>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'queryPool'");
@@ -6803,10 +8192,15 @@ void _vkCmdBeginConditionalRenderingEXT(const Nan::FunctionCallbackInfo<v8::Valu
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -6815,10 +8209,15 @@ void _vkCmdBeginConditionalRenderingEXT(const Nan::FunctionCallbackInfo<v8::Valu
   _VkConditionalRenderingBeginInfoEXT* obj1;
   VkConditionalRenderingBeginInfoEXT *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkConditionalRenderingBeginInfoEXT>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkConditionalRenderingBeginInfoEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkConditionalRenderingBeginInfoEXT]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkConditionalRenderingBeginInfoEXT>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pConditionalRenderingBegin'");
@@ -6838,10 +8237,15 @@ void _vkCmdEndConditionalRenderingEXT(const Nan::FunctionCallbackInfo<v8::Value>
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -6860,10 +8264,15 @@ void _vkCmdResetQueryPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -6872,10 +8281,15 @@ void _vkCmdResetQueryPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkQueryPool* obj1;
   VkQueryPool *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkQueryPool>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkQueryPool::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkQueryPool]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkQueryPool>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'queryPool'");
@@ -6901,10 +8315,15 @@ void _vkCmdWriteTimestamp(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -6915,10 +8334,15 @@ void _vkCmdWriteTimestamp(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkQueryPool* obj2;
   VkQueryPool *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkQueryPool>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkQueryPool::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkQueryPool]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkQueryPool>(obj);
     
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'queryPool'");
@@ -6942,10 +8366,15 @@ void _vkCmdCopyQueryPoolResults(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -6954,10 +8383,15 @@ void _vkCmdCopyQueryPoolResults(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkQueryPool* obj1;
   VkQueryPool *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkQueryPool>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkQueryPool::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkQueryPool]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkQueryPool>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'queryPool'");
@@ -6970,10 +8404,15 @@ void _vkCmdCopyQueryPoolResults(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkBuffer* obj4;
   VkBuffer *$p4;
   if (info[4]->IsObject()) {
-    obj4 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[4]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[4]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[4], "argument 5", "[object VkBuffer]");
+      return;
+    }
+    obj4 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p4 = &obj4->instance;
-  } else if (info[4]->IsNull()){
+  } else if (info[4]->IsNull()) {
     $p4 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 5 'dstBuffer'");
@@ -7005,10 +8444,15 @@ void _vkCmdPushConstants(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -7017,10 +8461,15 @@ void _vkCmdPushConstants(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkPipelineLayout* obj1;
   VkPipelineLayout *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineLayout>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPipelineLayout::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPipelineLayout]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineLayout>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'layout'");
@@ -7051,10 +8500,15 @@ void _vkCmdBeginRenderPass(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -7063,10 +8517,15 @@ void _vkCmdBeginRenderPass(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkRenderPassBeginInfo* obj1;
   VkRenderPassBeginInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkRenderPassBeginInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkRenderPassBeginInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkRenderPassBeginInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkRenderPassBeginInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pRenderPassBegin'");
@@ -7089,10 +8548,15 @@ void _vkCmdNextSubpass(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -7114,10 +8578,15 @@ void _vkCmdEndRenderPass(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -7136,10 +8605,15 @@ void _vkCmdExecuteCommands(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -7160,7 +8634,8 @@ void _vkCmdExecuteCommands(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p2 = std::make_shared<std::vector<VkCommandBuffer>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pCommandBuffers'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pCommandBuffers'");
+    return;
   }
 
 vkCmdExecuteCommands(
@@ -7179,10 +8654,15 @@ void _vkGetPhysicalDeviceDisplayPropertiesKHR(const Nan::FunctionCallbackInfo<v8
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -7192,10 +8672,16 @@ void _vkGetPhysicalDeviceDisplayPropertiesKHR(const Nan::FunctionCallbackInfo<v8
   uint32_t $p1;
   if (info[1]->IsObject()) {
     obj1 = Nan::To<v8::Object>(info[1]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj1->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj1, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 2");
+      return;
+    }
+    v8::Local<v8::Value> val = obj1->Get(accessor);
     $p1 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[1]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pPropertyCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkDisplayPropertiesKHR>> $p2 = nullptr;
@@ -7219,7 +8705,8 @@ void _vkGetPhysicalDeviceDisplayPropertiesKHR(const Nan::FunctionCallbackInfo<v8
     };
     $p2 = std::make_shared<std::vector<VkDisplayPropertiesKHR>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pProperties'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pProperties'");
+    return;
   }
 
   int32_t out = $vkGetPhysicalDeviceDisplayPropertiesKHR(
@@ -7277,10 +8764,15 @@ void _vkGetPhysicalDeviceDisplayPlanePropertiesKHR(const Nan::FunctionCallbackIn
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -7290,10 +8782,16 @@ void _vkGetPhysicalDeviceDisplayPlanePropertiesKHR(const Nan::FunctionCallbackIn
   uint32_t $p1;
   if (info[1]->IsObject()) {
     obj1 = Nan::To<v8::Object>(info[1]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj1->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj1, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 2");
+      return;
+    }
+    v8::Local<v8::Value> val = obj1->Get(accessor);
     $p1 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[1]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pPropertyCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkDisplayPlanePropertiesKHR>> $p2 = nullptr;
@@ -7317,7 +8815,8 @@ void _vkGetPhysicalDeviceDisplayPlanePropertiesKHR(const Nan::FunctionCallbackIn
     };
     $p2 = std::make_shared<std::vector<VkDisplayPlanePropertiesKHR>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pProperties'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pProperties'");
+    return;
   }
 
   int32_t out = $vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
@@ -7348,10 +8847,15 @@ void _vkGetDisplayPlaneSupportedDisplaysKHR(const Nan::FunctionCallbackInfo<v8::
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -7363,10 +8867,16 @@ void _vkGetDisplayPlaneSupportedDisplaysKHR(const Nan::FunctionCallbackInfo<v8::
   uint32_t $p2;
   if (info[2]->IsObject()) {
     obj2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj2->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj2, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 3");
+      return;
+    }
+    v8::Local<v8::Value> val = obj2->Get(accessor);
     $p2 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pDisplayCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkDisplayKHR>> $p3 = nullptr;
@@ -7382,7 +8892,8 @@ void _vkGetDisplayPlaneSupportedDisplaysKHR(const Nan::FunctionCallbackInfo<v8::
     };
     $p3 = std::make_shared<std::vector<VkDisplayKHR>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pDisplays'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pDisplays'");
+    return;
   }
 
   int32_t out = $vkGetDisplayPlaneSupportedDisplaysKHR(
@@ -7410,10 +8921,15 @@ void _vkGetDisplayModePropertiesKHR(const Nan::FunctionCallbackInfo<v8::Value>& 
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -7422,10 +8938,15 @@ void _vkGetDisplayModePropertiesKHR(const Nan::FunctionCallbackInfo<v8::Value>& 
   _VkDisplayKHR* obj1;
   VkDisplayKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDisplayKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDisplayKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDisplayKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDisplayKHR>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'display'");
@@ -7435,10 +8956,16 @@ void _vkGetDisplayModePropertiesKHR(const Nan::FunctionCallbackInfo<v8::Value>& 
   uint32_t $p2;
   if (info[2]->IsObject()) {
     obj2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj2->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj2, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 3");
+      return;
+    }
+    v8::Local<v8::Value> val = obj2->Get(accessor);
     $p2 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pPropertyCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkDisplayModePropertiesKHR>> $p3 = nullptr;
@@ -7462,7 +8989,8 @@ void _vkGetDisplayModePropertiesKHR(const Nan::FunctionCallbackInfo<v8::Value>& 
     };
     $p3 = std::make_shared<std::vector<VkDisplayModePropertiesKHR>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pProperties'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pProperties'");
+    return;
   }
 
   int32_t out = $vkGetDisplayModePropertiesKHR(
@@ -7502,10 +9030,15 @@ void _vkCreateDisplayModeKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -7514,10 +9047,15 @@ void _vkCreateDisplayModeKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDisplayKHR* obj1;
   VkDisplayKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDisplayKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDisplayKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDisplayKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDisplayKHR>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'display'");
@@ -7526,10 +9064,15 @@ void _vkCreateDisplayModeKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDisplayModeCreateInfoKHR* obj2;
   VkDisplayModeCreateInfoKHR *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkDisplayModeCreateInfoKHR>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkDisplayModeCreateInfoKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkDisplayModeCreateInfoKHR]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkDisplayModeCreateInfoKHR>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pCreateInfo'");
@@ -7539,10 +9082,15 @@ void _vkCreateDisplayModeKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDisplayModeKHR* obj4;
   VkDisplayModeKHR *$p4;
   if (info[4]->IsObject()) {
-    obj4 = Nan::ObjectWrap::Unwrap<_VkDisplayModeKHR>(Nan::To<v8::Object>(info[4]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[4]).ToLocalChecked();
+    if (!Nan::New(_VkDisplayModeKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[4], "argument 5", "[object VkDisplayModeKHR]");
+      return;
+    }
+    obj4 = Nan::ObjectWrap::Unwrap<_VkDisplayModeKHR>(obj);
     
     $p4 = &obj4->instance;
-  } else if (info[4]->IsNull()){
+  } else if (info[4]->IsNull()) {
     $p4 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 5 'pMode'");
@@ -7563,10 +9111,15 @@ void _vkGetDisplayPlaneCapabilitiesKHR(const Nan::FunctionCallbackInfo<v8::Value
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -7575,10 +9128,15 @@ void _vkGetDisplayPlaneCapabilitiesKHR(const Nan::FunctionCallbackInfo<v8::Value
   _VkDisplayModeKHR* obj1;
   VkDisplayModeKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDisplayModeKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDisplayModeKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDisplayModeKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDisplayModeKHR>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'mode'");
@@ -7589,10 +9147,15 @@ void _vkGetDisplayPlaneCapabilitiesKHR(const Nan::FunctionCallbackInfo<v8::Value
   _VkDisplayPlaneCapabilitiesKHR* obj3;
   VkDisplayPlaneCapabilitiesKHR *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkDisplayPlaneCapabilitiesKHR>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkDisplayPlaneCapabilitiesKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkDisplayPlaneCapabilitiesKHR]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkDisplayPlaneCapabilitiesKHR>(obj);
     if (!obj3->flush()) return;
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pCapabilities'");
@@ -7684,10 +9247,15 @@ void _vkCreateDisplayPlaneSurfaceKHR(const Nan::FunctionCallbackInfo<v8::Value>&
   _VkInstance* obj0;
   VkInstance *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkInstance::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'instance'");
@@ -7696,10 +9264,15 @@ void _vkCreateDisplayPlaneSurfaceKHR(const Nan::FunctionCallbackInfo<v8::Value>&
   _VkDisplaySurfaceCreateInfoKHR* obj1;
   VkDisplaySurfaceCreateInfoKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDisplaySurfaceCreateInfoKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDisplaySurfaceCreateInfoKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDisplaySurfaceCreateInfoKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDisplaySurfaceCreateInfoKHR>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -7709,10 +9282,15 @@ void _vkCreateDisplayPlaneSurfaceKHR(const Nan::FunctionCallbackInfo<v8::Value>&
   _VkSurfaceKHR* obj3;
   VkSurfaceKHR *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkSurfaceKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkSurfaceKHR]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pSurface'");
@@ -7732,10 +9310,15 @@ void _vkCreateSharedSwapchainsKHR(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -7764,7 +9347,8 @@ void _vkCreateSharedSwapchainsKHR(const Nan::FunctionCallbackInfo<v8::Value>& in
     };
     $p2 = std::make_shared<std::vector<VkSwapchainCreateInfoKHR>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pCreateInfos'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pCreateInfos'");
+    return;
   }
 
 
@@ -7782,7 +9366,8 @@ void _vkCreateSharedSwapchainsKHR(const Nan::FunctionCallbackInfo<v8::Value>& in
     };
     $p4 = std::make_shared<std::vector<VkSwapchainKHR>>(data);
   } else if (!info[4]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 5 'pSwapchains'");
+    Nan::ThrowTypeError("Invalid type for argument 5 'pSwapchains'");
+    return;
   }
 
   int32_t out = $vkCreateSharedSwapchainsKHR(
@@ -7810,10 +9395,15 @@ void _vkDestroySurfaceKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkInstance* obj0;
   VkInstance *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkInstance::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'instance'");
@@ -7822,10 +9412,15 @@ void _vkDestroySurfaceKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkSurfaceKHR* obj1;
   VkSurfaceKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSurfaceKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSurfaceKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'surface'");
@@ -7847,10 +9442,15 @@ void _vkGetPhysicalDeviceSurfaceSupportKHR(const Nan::FunctionCallbackInfo<v8::V
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -7861,10 +9461,15 @@ void _vkGetPhysicalDeviceSurfaceSupportKHR(const Nan::FunctionCallbackInfo<v8::V
   _VkSurfaceKHR* obj2;
   VkSurfaceKHR *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkSurfaceKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkSurfaceKHR]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(obj);
     
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'surface'");
@@ -7874,10 +9479,16 @@ void _vkGetPhysicalDeviceSurfaceSupportKHR(const Nan::FunctionCallbackInfo<v8::V
   uint32_t $p3;
   if (info[3]->IsObject()) {
     obj3 = Nan::To<v8::Object>(info[3]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj3->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj3, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 4");
+      return;
+    }
+    v8::Local<v8::Value> val = obj3->Get(accessor);
     $p3 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[3]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pSupported'");
+    return;
   }
   int32_t out = $vkGetPhysicalDeviceSurfaceSupportKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -7895,10 +9506,15 @@ void _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Nan::FunctionCallbackInfo<
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -7907,10 +9523,15 @@ void _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Nan::FunctionCallbackInfo<
   _VkSurfaceKHR* obj1;
   VkSurfaceKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSurfaceKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSurfaceKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'surface'");
@@ -7919,10 +9540,15 @@ void _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Nan::FunctionCallbackInfo<
   _VkSurfaceCapabilitiesKHR* obj2;
   VkSurfaceCapabilitiesKHR *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkSurfaceCapabilitiesKHR>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkSurfaceCapabilitiesKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkSurfaceCapabilitiesKHR]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkSurfaceCapabilitiesKHR>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pSurfaceCapabilities'");
@@ -7968,10 +9594,15 @@ void _vkGetPhysicalDeviceSurfaceFormatsKHR(const Nan::FunctionCallbackInfo<v8::V
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -7980,10 +9611,15 @@ void _vkGetPhysicalDeviceSurfaceFormatsKHR(const Nan::FunctionCallbackInfo<v8::V
   _VkSurfaceKHR* obj1;
   VkSurfaceKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSurfaceKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSurfaceKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'surface'");
@@ -7993,10 +9629,16 @@ void _vkGetPhysicalDeviceSurfaceFormatsKHR(const Nan::FunctionCallbackInfo<v8::V
   uint32_t $p2;
   if (info[2]->IsObject()) {
     obj2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj2->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj2, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 3");
+      return;
+    }
+    v8::Local<v8::Value> val = obj2->Get(accessor);
     $p2 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pSurfaceFormatCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkSurfaceFormatKHR>> $p3 = nullptr;
@@ -8020,7 +9662,8 @@ void _vkGetPhysicalDeviceSurfaceFormatsKHR(const Nan::FunctionCallbackInfo<v8::V
     };
     $p3 = std::make_shared<std::vector<VkSurfaceFormatKHR>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pSurfaceFormats'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pSurfaceFormats'");
+    return;
   }
 
   int32_t out = $vkGetPhysicalDeviceSurfaceFormatsKHR(
@@ -8053,10 +9696,15 @@ void _vkGetPhysicalDeviceSurfacePresentModesKHR(const Nan::FunctionCallbackInfo<
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -8065,10 +9713,15 @@ void _vkGetPhysicalDeviceSurfacePresentModesKHR(const Nan::FunctionCallbackInfo<
   _VkSurfaceKHR* obj1;
   VkSurfaceKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSurfaceKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSurfaceKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'surface'");
@@ -8078,10 +9731,16 @@ void _vkGetPhysicalDeviceSurfacePresentModesKHR(const Nan::FunctionCallbackInfo<
   uint32_t $p2;
   if (info[2]->IsObject()) {
     obj2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj2->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj2, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 3");
+      return;
+    }
+    v8::Local<v8::Value> val = obj2->Get(accessor);
     $p2 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pPresentModeCount'");
+    return;
   }
 
   std::shared_ptr<int32_t*> $p3 = nullptr;
@@ -8091,7 +9750,8 @@ void _vkGetPhysicalDeviceSurfacePresentModesKHR(const Nan::FunctionCallbackInfo<
     int32_t* data = getTypedArrayData<int32_t>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
     $p3 = std::make_shared<int32_t*>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pPresentModes'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pPresentModes'");
+    return;
   }
 
   int32_t out = $vkGetPhysicalDeviceSurfacePresentModesKHR(
@@ -8110,10 +9770,15 @@ void _vkCreateSwapchainKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -8122,10 +9787,15 @@ void _vkCreateSwapchainKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkSwapchainCreateInfoKHR* obj1;
   VkSwapchainCreateInfoKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSwapchainCreateInfoKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSwapchainCreateInfoKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainCreateInfoKHR>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -8135,10 +9805,15 @@ void _vkCreateSwapchainKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkSwapchainKHR* obj3;
   VkSwapchainKHR *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkSwapchainKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkSwapchainKHR]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pSwapchain'");
@@ -8158,10 +9833,15 @@ void _vkDestroySwapchainKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -8170,10 +9850,15 @@ void _vkDestroySwapchainKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkSwapchainKHR* obj1;
   VkSwapchainKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSwapchainKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSwapchainKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'swapchain'");
@@ -8195,10 +9880,15 @@ void _vkGetSwapchainImagesKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -8207,10 +9897,15 @@ void _vkGetSwapchainImagesKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkSwapchainKHR* obj1;
   VkSwapchainKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSwapchainKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSwapchainKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'swapchain'");
@@ -8220,10 +9915,16 @@ void _vkGetSwapchainImagesKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   uint32_t $p2;
   if (info[2]->IsObject()) {
     obj2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj2->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj2, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 3");
+      return;
+    }
+    v8::Local<v8::Value> val = obj2->Get(accessor);
     $p2 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pSwapchainImageCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkImage>> $p3 = nullptr;
@@ -8239,7 +9940,8 @@ void _vkGetSwapchainImagesKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) 
     };
     $p3 = std::make_shared<std::vector<VkImage>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pSwapchainImages'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pSwapchainImages'");
+    return;
   }
 
   int32_t out = $vkGetSwapchainImagesKHR(
@@ -8267,10 +9969,15 @@ void _vkAcquireNextImageKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -8279,10 +9986,15 @@ void _vkAcquireNextImageKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkSwapchainKHR* obj1;
   VkSwapchainKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSwapchainKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSwapchainKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'swapchain'");
@@ -8293,10 +10005,15 @@ void _vkAcquireNextImageKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkSemaphore* obj3;
   VkSemaphore *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkSemaphore>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkSemaphore::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkSemaphore]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkSemaphore>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'semaphore'");
@@ -8305,10 +10022,15 @@ void _vkAcquireNextImageKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkFence* obj4;
   VkFence *$p4;
   if (info[4]->IsObject()) {
-    obj4 = Nan::ObjectWrap::Unwrap<_VkFence>(Nan::To<v8::Object>(info[4]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[4]).ToLocalChecked();
+    if (!Nan::New(_VkFence::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[4], "argument 5", "[object VkFence]");
+      return;
+    }
+    obj4 = Nan::ObjectWrap::Unwrap<_VkFence>(obj);
     
     $p4 = &obj4->instance;
-  } else if (info[4]->IsNull()){
+  } else if (info[4]->IsNull()) {
     $p4 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 5 'fence'");
@@ -8318,10 +10040,16 @@ void _vkAcquireNextImageKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   uint32_t $p5;
   if (info[5]->IsObject()) {
     obj5 = Nan::To<v8::Object>(info[5]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj5->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj5, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 6");
+      return;
+    }
+    v8::Local<v8::Value> val = obj5->Get(accessor);
     $p5 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[5]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 6 'pImageIndex'");
+    return;
   }
   int32_t out = $vkAcquireNextImageKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -8341,10 +10069,15 @@ void _vkQueuePresentKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkQueue* obj0;
   VkQueue *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkQueue>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkQueue::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkQueue]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkQueue>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'queue'");
@@ -8353,10 +10086,15 @@ void _vkQueuePresentKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkPresentInfoKHR* obj1;
   VkPresentInfoKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPresentInfoKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPresentInfoKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPresentInfoKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPresentInfoKHR>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pPresentInfo'");
@@ -8374,10 +10112,15 @@ void _vkCreateWin32SurfaceKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkInstance* obj0;
   VkInstance *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkInstance::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'instance'");
@@ -8386,10 +10129,15 @@ void _vkCreateWin32SurfaceKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkWin32SurfaceCreateInfoKHR* obj1;
   VkWin32SurfaceCreateInfoKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkWin32SurfaceCreateInfoKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkWin32SurfaceCreateInfoKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkWin32SurfaceCreateInfoKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkWin32SurfaceCreateInfoKHR>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -8399,10 +10147,15 @@ void _vkCreateWin32SurfaceKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkSurfaceKHR* obj3;
   VkSurfaceKHR *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkSurfaceKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkSurfaceKHR]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pSurface'");
@@ -8422,10 +10175,15 @@ void _vkGetPhysicalDeviceWin32PresentationSupportKHR(const Nan::FunctionCallback
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -8445,10 +10203,15 @@ void _vkCreateDebugReportCallbackEXT(const Nan::FunctionCallbackInfo<v8::Value>&
   _VkInstance* obj0;
   VkInstance *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkInstance::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'instance'");
@@ -8457,10 +10220,15 @@ void _vkCreateDebugReportCallbackEXT(const Nan::FunctionCallbackInfo<v8::Value>&
   _VkDebugReportCallbackCreateInfoEXT* obj1;
   VkDebugReportCallbackCreateInfoEXT *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugReportCallbackCreateInfoEXT>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDebugReportCallbackCreateInfoEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDebugReportCallbackCreateInfoEXT]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugReportCallbackCreateInfoEXT>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -8470,10 +10238,15 @@ void _vkCreateDebugReportCallbackEXT(const Nan::FunctionCallbackInfo<v8::Value>&
   _VkDebugReportCallbackEXT* obj3;
   VkDebugReportCallbackEXT *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkDebugReportCallbackEXT>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkDebugReportCallbackEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkDebugReportCallbackEXT]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkDebugReportCallbackEXT>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pCallback'");
@@ -8493,10 +10266,15 @@ void _vkDestroyDebugReportCallbackEXT(const Nan::FunctionCallbackInfo<v8::Value>
   _VkInstance* obj0;
   VkInstance *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkInstance::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'instance'");
@@ -8505,10 +10283,15 @@ void _vkDestroyDebugReportCallbackEXT(const Nan::FunctionCallbackInfo<v8::Value>
   _VkDebugReportCallbackEXT* obj1;
   VkDebugReportCallbackEXT *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugReportCallbackEXT>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDebugReportCallbackEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDebugReportCallbackEXT]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugReportCallbackEXT>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'callback'");
@@ -8530,10 +10313,15 @@ void _vkDebugReportMessageEXT(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkInstance* obj0;
   VkInstance *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkInstance::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'instance'");
@@ -8554,6 +10342,7 @@ void _vkDebugReportMessageEXT(const Nan::FunctionCallbackInfo<v8::Value>& info) 
     $p6 = copyV8String(info[6]);
   } else if (!info[6]->IsNull()) {
     Nan::ThrowTypeError("Expected 'String' or 'null' for argument 7 'pLayerPrefix'");
+    return;
   }
 
   char* $p7;
@@ -8561,6 +10350,7 @@ void _vkDebugReportMessageEXT(const Nan::FunctionCallbackInfo<v8::Value>& info) 
     $p7 = copyV8String(info[7]);
   } else if (!info[7]->IsNull()) {
     Nan::ThrowTypeError("Expected 'String' or 'null' for argument 8 'pMessage'");
+    return;
   }
 $vkDebugReportMessageEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -8583,10 +10373,15 @@ void _vkDebugMarkerSetObjectNameEXT(const Nan::FunctionCallbackInfo<v8::Value>& 
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -8595,10 +10390,15 @@ void _vkDebugMarkerSetObjectNameEXT(const Nan::FunctionCallbackInfo<v8::Value>& 
   _VkDebugMarkerObjectNameInfoEXT* obj1;
   VkDebugMarkerObjectNameInfoEXT *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugMarkerObjectNameInfoEXT>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDebugMarkerObjectNameInfoEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDebugMarkerObjectNameInfoEXT]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugMarkerObjectNameInfoEXT>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pNameInfo'");
@@ -8616,10 +10416,15 @@ void _vkDebugMarkerSetObjectTagEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -8628,10 +10433,15 @@ void _vkDebugMarkerSetObjectTagEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkDebugMarkerObjectTagInfoEXT* obj1;
   VkDebugMarkerObjectTagInfoEXT *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugMarkerObjectTagInfoEXT>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDebugMarkerObjectTagInfoEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDebugMarkerObjectTagInfoEXT]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugMarkerObjectTagInfoEXT>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pTagInfo'");
@@ -8649,10 +10459,15 @@ void _vkCmdDebugMarkerBeginEXT(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -8661,10 +10476,15 @@ void _vkCmdDebugMarkerBeginEXT(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkDebugMarkerMarkerInfoEXT* obj1;
   VkDebugMarkerMarkerInfoEXT *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugMarkerMarkerInfoEXT>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDebugMarkerMarkerInfoEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDebugMarkerMarkerInfoEXT]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugMarkerMarkerInfoEXT>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pMarkerInfo'");
@@ -8684,10 +10504,15 @@ void _vkCmdDebugMarkerEndEXT(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -8706,10 +10531,15 @@ void _vkCmdDebugMarkerInsertEXT(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -8718,10 +10548,15 @@ void _vkCmdDebugMarkerInsertEXT(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkDebugMarkerMarkerInfoEXT* obj1;
   VkDebugMarkerMarkerInfoEXT *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugMarkerMarkerInfoEXT>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDebugMarkerMarkerInfoEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDebugMarkerMarkerInfoEXT]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugMarkerMarkerInfoEXT>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pMarkerInfo'");
@@ -8741,10 +10576,15 @@ void _vkGetPhysicalDeviceExternalImageFormatPropertiesNV(const Nan::FunctionCall
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -8765,10 +10605,15 @@ void _vkGetPhysicalDeviceExternalImageFormatPropertiesNV(const Nan::FunctionCall
   _VkExternalImageFormatPropertiesNV* obj7;
   VkExternalImageFormatPropertiesNV *$p7;
   if (info[7]->IsObject()) {
-    obj7 = Nan::ObjectWrap::Unwrap<_VkExternalImageFormatPropertiesNV>(Nan::To<v8::Object>(info[7]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[7]).ToLocalChecked();
+    if (!Nan::New(_VkExternalImageFormatPropertiesNV::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[7], "argument 8", "[object VkExternalImageFormatPropertiesNV]");
+      return;
+    }
+    obj7 = Nan::ObjectWrap::Unwrap<_VkExternalImageFormatPropertiesNV>(obj);
     if (!obj7->flush()) return;
     $p7 = &obj7->instance;
-  } else if (info[7]->IsNull()){
+  } else if (info[7]->IsNull()) {
     $p7 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 8 'pExternalImageFormatProperties'");
@@ -8810,10 +10655,15 @@ void _vkGetMemoryWin32HandleNV(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -8822,10 +10672,15 @@ void _vkGetMemoryWin32HandleNV(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkDeviceMemory* obj1;
   VkDeviceMemory *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDeviceMemory::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDeviceMemory]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceMemory>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'memory'");
@@ -8848,10 +10703,15 @@ void _vkCmdDrawIndirectCountAMD(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -8860,10 +10720,15 @@ void _vkCmdDrawIndirectCountAMD(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkBuffer* obj1;
   VkBuffer *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'buffer'");
@@ -8874,10 +10739,15 @@ void _vkCmdDrawIndirectCountAMD(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkBuffer* obj3;
   VkBuffer *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'countBuffer'");
@@ -8908,10 +10778,15 @@ void _vkCmdDrawIndexedIndirectCountAMD(const Nan::FunctionCallbackInfo<v8::Value
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -8920,10 +10795,15 @@ void _vkCmdDrawIndexedIndirectCountAMD(const Nan::FunctionCallbackInfo<v8::Value
   _VkBuffer* obj1;
   VkBuffer *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'buffer'");
@@ -8934,10 +10814,15 @@ void _vkCmdDrawIndexedIndirectCountAMD(const Nan::FunctionCallbackInfo<v8::Value
   _VkBuffer* obj3;
   VkBuffer *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'countBuffer'");
@@ -8968,10 +10853,15 @@ void _vkCmdProcessCommandsNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -8980,10 +10870,15 @@ void _vkCmdProcessCommandsNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkCmdProcessCommandsInfoNVX* obj1;
   VkCmdProcessCommandsInfoNVX *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkCmdProcessCommandsInfoNVX>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkCmdProcessCommandsInfoNVX::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkCmdProcessCommandsInfoNVX]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkCmdProcessCommandsInfoNVX>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pProcessCommandsInfo'");
@@ -9003,10 +10898,15 @@ void _vkCmdReserveSpaceForCommandsNVX(const Nan::FunctionCallbackInfo<v8::Value>
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -9015,10 +10915,15 @@ void _vkCmdReserveSpaceForCommandsNVX(const Nan::FunctionCallbackInfo<v8::Value>
   _VkCmdReserveSpaceForCommandsInfoNVX* obj1;
   VkCmdReserveSpaceForCommandsInfoNVX *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkCmdReserveSpaceForCommandsInfoNVX>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkCmdReserveSpaceForCommandsInfoNVX::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkCmdReserveSpaceForCommandsInfoNVX]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkCmdReserveSpaceForCommandsInfoNVX>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pReserveSpaceInfo'");
@@ -9038,10 +10943,15 @@ void _vkCreateIndirectCommandsLayoutNVX(const Nan::FunctionCallbackInfo<v8::Valu
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -9050,10 +10960,15 @@ void _vkCreateIndirectCommandsLayoutNVX(const Nan::FunctionCallbackInfo<v8::Valu
   _VkIndirectCommandsLayoutCreateInfoNVX* obj1;
   VkIndirectCommandsLayoutCreateInfoNVX *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkIndirectCommandsLayoutCreateInfoNVX>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkIndirectCommandsLayoutCreateInfoNVX::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkIndirectCommandsLayoutCreateInfoNVX]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkIndirectCommandsLayoutCreateInfoNVX>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -9063,10 +10978,15 @@ void _vkCreateIndirectCommandsLayoutNVX(const Nan::FunctionCallbackInfo<v8::Valu
   _VkIndirectCommandsLayoutNVX* obj3;
   VkIndirectCommandsLayoutNVX *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkIndirectCommandsLayoutNVX>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkIndirectCommandsLayoutNVX::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkIndirectCommandsLayoutNVX]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkIndirectCommandsLayoutNVX>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pIndirectCommandsLayout'");
@@ -9086,10 +11006,15 @@ void _vkDestroyIndirectCommandsLayoutNVX(const Nan::FunctionCallbackInfo<v8::Val
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -9098,10 +11023,15 @@ void _vkDestroyIndirectCommandsLayoutNVX(const Nan::FunctionCallbackInfo<v8::Val
   _VkIndirectCommandsLayoutNVX* obj1;
   VkIndirectCommandsLayoutNVX *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkIndirectCommandsLayoutNVX>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkIndirectCommandsLayoutNVX::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkIndirectCommandsLayoutNVX]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkIndirectCommandsLayoutNVX>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'indirectCommandsLayout'");
@@ -9123,10 +11053,15 @@ void _vkCreateObjectTableNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -9135,10 +11070,15 @@ void _vkCreateObjectTableNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkObjectTableCreateInfoNVX* obj1;
   VkObjectTableCreateInfoNVX *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkObjectTableCreateInfoNVX>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkObjectTableCreateInfoNVX::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkObjectTableCreateInfoNVX]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkObjectTableCreateInfoNVX>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -9148,10 +11088,15 @@ void _vkCreateObjectTableNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkObjectTableNVX* obj3;
   VkObjectTableNVX *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkObjectTableNVX>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkObjectTableNVX::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkObjectTableNVX]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkObjectTableNVX>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pObjectTable'");
@@ -9171,10 +11116,15 @@ void _vkDestroyObjectTableNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -9183,10 +11133,15 @@ void _vkDestroyObjectTableNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkObjectTableNVX* obj1;
   VkObjectTableNVX *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkObjectTableNVX>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkObjectTableNVX::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkObjectTableNVX]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkObjectTableNVX>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'objectTable'");
@@ -9208,10 +11163,15 @@ void _vkRegisterObjectsNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -9220,10 +11180,15 @@ void _vkRegisterObjectsNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkObjectTableNVX* obj1;
   VkObjectTableNVX *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkObjectTableNVX>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkObjectTableNVX::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkObjectTableNVX]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkObjectTableNVX>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'objectTable'");
@@ -9252,7 +11217,8 @@ void _vkRegisterObjectsNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p3 = std::make_shared<std::vector<VkObjectTableEntryNVX>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'ppObjectTableEntries'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'ppObjectTableEntries'");
+    return;
   }
 
 
@@ -9263,7 +11229,8 @@ void _vkRegisterObjectsNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     uint32_t* data = getTypedArrayData<uint32_t>(Nan::To<v8::Object>(info[4]).ToLocalChecked());
     $p4 = std::make_shared<uint32_t*>(data);
   } else if (!info[4]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 5 'pObjectIndices'");
+    Nan::ThrowTypeError("Invalid type for argument 5 'pObjectIndices'");
+    return;
   }
 
   int32_t out = $vkRegisterObjectsNVX(
@@ -9282,10 +11249,15 @@ void _vkUnregisterObjectsNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -9294,10 +11266,15 @@ void _vkUnregisterObjectsNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkObjectTableNVX* obj1;
   VkObjectTableNVX *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkObjectTableNVX>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkObjectTableNVX::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkObjectTableNVX]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkObjectTableNVX>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'objectTable'");
@@ -9312,7 +11289,8 @@ void _vkUnregisterObjectsNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     int32_t* data = getTypedArrayData<int32_t>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
     $p3 = std::make_shared<int32_t*>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pObjectEntryTypes'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pObjectEntryTypes'");
+    return;
   }
 
 
@@ -9323,7 +11301,8 @@ void _vkUnregisterObjectsNVX(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     uint32_t* data = getTypedArrayData<uint32_t>(Nan::To<v8::Object>(info[4]).ToLocalChecked());
     $p4 = std::make_shared<uint32_t*>(data);
   } else if (!info[4]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 5 'pObjectIndices'");
+    Nan::ThrowTypeError("Invalid type for argument 5 'pObjectIndices'");
+    return;
   }
 
   int32_t out = $vkUnregisterObjectsNVX(
@@ -9342,10 +11321,15 @@ void _vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(const Nan::FunctionCallb
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -9354,10 +11338,15 @@ void _vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(const Nan::FunctionCallb
   _VkDeviceGeneratedCommandsFeaturesNVX* obj1;
   VkDeviceGeneratedCommandsFeaturesNVX *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceGeneratedCommandsFeaturesNVX>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDeviceGeneratedCommandsFeaturesNVX::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDeviceGeneratedCommandsFeaturesNVX]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceGeneratedCommandsFeaturesNVX>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pFeatures'");
@@ -9366,10 +11355,15 @@ void _vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(const Nan::FunctionCallb
   _VkDeviceGeneratedCommandsLimitsNVX* obj2;
   VkDeviceGeneratedCommandsLimitsNVX *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkDeviceGeneratedCommandsLimitsNVX>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkDeviceGeneratedCommandsLimitsNVX::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkDeviceGeneratedCommandsLimitsNVX]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkDeviceGeneratedCommandsLimitsNVX>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pLimits'");
@@ -9390,10 +11384,15 @@ void _vkGetPhysicalDeviceFeatures2(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -9402,10 +11401,15 @@ void _vkGetPhysicalDeviceFeatures2(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkPhysicalDeviceFeatures2* obj1;
   VkPhysicalDeviceFeatures2 *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures2>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDeviceFeatures2::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceFeatures2]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceFeatures2>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pFeatures'");
@@ -9434,10 +11438,15 @@ void _vkGetPhysicalDeviceProperties2(const Nan::FunctionCallbackInfo<v8::Value>&
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -9446,10 +11455,15 @@ void _vkGetPhysicalDeviceProperties2(const Nan::FunctionCallbackInfo<v8::Value>&
   _VkPhysicalDeviceProperties2* obj1;
   VkPhysicalDeviceProperties2 *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceProperties2>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDeviceProperties2::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceProperties2]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceProperties2>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pProperties'");
@@ -9564,10 +11578,15 @@ void _vkGetPhysicalDeviceFormatProperties2(const Nan::FunctionCallbackInfo<v8::V
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -9578,10 +11597,15 @@ void _vkGetPhysicalDeviceFormatProperties2(const Nan::FunctionCallbackInfo<v8::V
   _VkFormatProperties2* obj2;
   VkFormatProperties2 *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkFormatProperties2>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkFormatProperties2::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkFormatProperties2]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkFormatProperties2>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pFormatProperties'");
@@ -9611,10 +11635,15 @@ void _vkGetPhysicalDeviceImageFormatProperties2(const Nan::FunctionCallbackInfo<
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -9623,10 +11652,15 @@ void _vkGetPhysicalDeviceImageFormatProperties2(const Nan::FunctionCallbackInfo<
   _VkPhysicalDeviceImageFormatInfo2* obj1;
   VkPhysicalDeviceImageFormatInfo2 *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceImageFormatInfo2>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDeviceImageFormatInfo2::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceImageFormatInfo2]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceImageFormatInfo2>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pImageFormatInfo'");
@@ -9635,10 +11669,15 @@ void _vkGetPhysicalDeviceImageFormatProperties2(const Nan::FunctionCallbackInfo<
   _VkImageFormatProperties2* obj2;
   VkImageFormatProperties2 *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkImageFormatProperties2>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkImageFormatProperties2::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkImageFormatProperties2]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkImageFormatProperties2>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pImageFormatProperties'");
@@ -9675,10 +11714,15 @@ void _vkGetPhysicalDeviceQueueFamilyProperties2(const Nan::FunctionCallbackInfo<
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -9688,10 +11732,16 @@ void _vkGetPhysicalDeviceQueueFamilyProperties2(const Nan::FunctionCallbackInfo<
   uint32_t $p1;
   if (info[1]->IsObject()) {
     obj1 = Nan::To<v8::Object>(info[1]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj1->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj1, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 2");
+      return;
+    }
+    v8::Local<v8::Value> val = obj1->Get(accessor);
     $p1 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[1]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pQueueFamilyPropertyCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkQueueFamilyProperties2>> $p2 = nullptr;
@@ -9715,7 +11765,8 @@ void _vkGetPhysicalDeviceQueueFamilyProperties2(const Nan::FunctionCallbackInfo<
     };
     $p2 = std::make_shared<std::vector<VkQueueFamilyProperties2>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pQueueFamilyProperties'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pQueueFamilyProperties'");
+    return;
   }
 
 vkGetPhysicalDeviceQueueFamilyProperties2(
@@ -9757,10 +11808,15 @@ void _vkGetPhysicalDeviceMemoryProperties2(const Nan::FunctionCallbackInfo<v8::V
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -9769,10 +11825,15 @@ void _vkGetPhysicalDeviceMemoryProperties2(const Nan::FunctionCallbackInfo<v8::V
   _VkPhysicalDeviceMemoryProperties2* obj1;
   VkPhysicalDeviceMemoryProperties2 *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceMemoryProperties2>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDeviceMemoryProperties2::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceMemoryProperties2]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceMemoryProperties2>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pMemoryProperties'");
@@ -9829,10 +11890,15 @@ void _vkGetPhysicalDeviceSparseImageFormatProperties2(const Nan::FunctionCallbac
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -9841,10 +11907,15 @@ void _vkGetPhysicalDeviceSparseImageFormatProperties2(const Nan::FunctionCallbac
   _VkPhysicalDeviceSparseImageFormatInfo2* obj1;
   VkPhysicalDeviceSparseImageFormatInfo2 *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceSparseImageFormatInfo2>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDeviceSparseImageFormatInfo2::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceSparseImageFormatInfo2]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceSparseImageFormatInfo2>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pFormatInfo'");
@@ -9854,10 +11925,16 @@ void _vkGetPhysicalDeviceSparseImageFormatProperties2(const Nan::FunctionCallbac
   uint32_t $p2;
   if (info[2]->IsObject()) {
     obj2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj2->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj2, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 3");
+      return;
+    }
+    v8::Local<v8::Value> val = obj2->Get(accessor);
     $p2 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pPropertyCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkSparseImageFormatProperties2>> $p3 = nullptr;
@@ -9881,7 +11958,8 @@ void _vkGetPhysicalDeviceSparseImageFormatProperties2(const Nan::FunctionCallbac
     };
     $p3 = std::make_shared<std::vector<VkSparseImageFormatProperties2>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pProperties'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pProperties'");
+    return;
   }
 
 vkGetPhysicalDeviceSparseImageFormatProperties2(
@@ -9924,10 +12002,15 @@ void _vkCmdPushDescriptorSetKHR(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -9938,10 +12021,15 @@ void _vkCmdPushDescriptorSetKHR(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkPipelineLayout* obj2;
   VkPipelineLayout *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkPipelineLayout>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkPipelineLayout::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkPipelineLayout]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkPipelineLayout>(obj);
     
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'layout'");
@@ -9972,7 +12060,8 @@ void _vkCmdPushDescriptorSetKHR(const Nan::FunctionCallbackInfo<v8::Value>& info
     };
     $p5 = std::make_shared<std::vector<VkWriteDescriptorSet>>(data);
   } else if (!info[5]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 6 'pDescriptorWrites'");
+    Nan::ThrowTypeError("Invalid type for argument 6 'pDescriptorWrites'");
+    return;
   }
 
 $vkCmdPushDescriptorSetKHR(
@@ -9994,10 +12083,15 @@ void _vkTrimCommandPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -10006,10 +12100,15 @@ void _vkTrimCommandPool(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandPool* obj1;
   VkCommandPool *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkCommandPool>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkCommandPool::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkCommandPool]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkCommandPool>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'commandPool'");
@@ -10032,10 +12131,15 @@ void _vkGetPhysicalDeviceExternalBufferProperties(const Nan::FunctionCallbackInf
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -10044,10 +12148,15 @@ void _vkGetPhysicalDeviceExternalBufferProperties(const Nan::FunctionCallbackInf
   _VkPhysicalDeviceExternalBufferInfo* obj1;
   VkPhysicalDeviceExternalBufferInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceExternalBufferInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDeviceExternalBufferInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceExternalBufferInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceExternalBufferInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pExternalBufferInfo'");
@@ -10056,10 +12165,15 @@ void _vkGetPhysicalDeviceExternalBufferProperties(const Nan::FunctionCallbackInf
   _VkExternalBufferProperties* obj2;
   VkExternalBufferProperties *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkExternalBufferProperties>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkExternalBufferProperties::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkExternalBufferProperties]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkExternalBufferProperties>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pExternalBufferProperties'");
@@ -10089,10 +12203,15 @@ void _vkGetMemoryWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -10101,10 +12220,15 @@ void _vkGetMemoryWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkMemoryGetWin32HandleInfoKHR* obj1;
   VkMemoryGetWin32HandleInfoKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkMemoryGetWin32HandleInfoKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkMemoryGetWin32HandleInfoKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkMemoryGetWin32HandleInfoKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkMemoryGetWin32HandleInfoKHR>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pGetWin32HandleInfo'");
@@ -10124,10 +12248,15 @@ void _vkGetMemoryWin32HandlePropertiesKHR(const Nan::FunctionCallbackInfo<v8::Va
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -10139,10 +12268,15 @@ void _vkGetMemoryWin32HandlePropertiesKHR(const Nan::FunctionCallbackInfo<v8::Va
   _VkMemoryWin32HandlePropertiesKHR* obj3;
   VkMemoryWin32HandlePropertiesKHR *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkMemoryWin32HandlePropertiesKHR>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkMemoryWin32HandlePropertiesKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkMemoryWin32HandlePropertiesKHR]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkMemoryWin32HandlePropertiesKHR>(obj);
     if (!obj3->flush()) return;
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pMemoryWin32HandleProperties'");
@@ -10162,10 +12296,15 @@ void _vkGetMemoryFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -10174,10 +12313,15 @@ void _vkGetMemoryFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkMemoryGetFdInfoKHR* obj1;
   VkMemoryGetFdInfoKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkMemoryGetFdInfoKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkMemoryGetFdInfoKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkMemoryGetFdInfoKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkMemoryGetFdInfoKHR>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pGetFdInfo'");
@@ -10187,10 +12331,16 @@ void _vkGetMemoryFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   int $p2;
   if (info[2]->IsObject()) {
     obj2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj2->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj2, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 3");
+      return;
+    }
+    v8::Local<v8::Value> val = obj2->Get(accessor);
     $p2 = static_cast<int>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pFd'");
+    return;
   }
   int32_t out = $vkGetMemoryFdKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -10207,10 +12357,15 @@ void _vkGetMemoryFdPropertiesKHR(const Nan::FunctionCallbackInfo<v8::Value>& inf
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -10223,10 +12378,15 @@ void _vkGetMemoryFdPropertiesKHR(const Nan::FunctionCallbackInfo<v8::Value>& inf
   _VkMemoryFdPropertiesKHR* obj3;
   VkMemoryFdPropertiesKHR *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkMemoryFdPropertiesKHR>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkMemoryFdPropertiesKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkMemoryFdPropertiesKHR]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkMemoryFdPropertiesKHR>(obj);
     if (!obj3->flush()) return;
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pMemoryFdProperties'");
@@ -10246,10 +12406,15 @@ void _vkGetPhysicalDeviceExternalSemaphoreProperties(const Nan::FunctionCallback
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -10258,10 +12423,15 @@ void _vkGetPhysicalDeviceExternalSemaphoreProperties(const Nan::FunctionCallback
   _VkPhysicalDeviceExternalSemaphoreInfo* obj1;
   VkPhysicalDeviceExternalSemaphoreInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceExternalSemaphoreInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDeviceExternalSemaphoreInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceExternalSemaphoreInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceExternalSemaphoreInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pExternalSemaphoreInfo'");
@@ -10270,10 +12440,15 @@ void _vkGetPhysicalDeviceExternalSemaphoreProperties(const Nan::FunctionCallback
   _VkExternalSemaphoreProperties* obj2;
   VkExternalSemaphoreProperties *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkExternalSemaphoreProperties>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkExternalSemaphoreProperties::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkExternalSemaphoreProperties]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkExternalSemaphoreProperties>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pExternalSemaphoreProperties'");
@@ -10294,10 +12469,15 @@ void _vkGetSemaphoreWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -10306,10 +12486,15 @@ void _vkGetSemaphoreWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkSemaphoreGetWin32HandleInfoKHR* obj1;
   VkSemaphoreGetWin32HandleInfoKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSemaphoreGetWin32HandleInfoKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSemaphoreGetWin32HandleInfoKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSemaphoreGetWin32HandleInfoKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSemaphoreGetWin32HandleInfoKHR>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pGetWin32HandleInfo'");
@@ -10329,10 +12514,15 @@ void _vkImportSemaphoreWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -10341,10 +12531,15 @@ void _vkImportSemaphoreWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>
   _VkImportSemaphoreWin32HandleInfoKHR* obj1;
   VkImportSemaphoreWin32HandleInfoKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImportSemaphoreWin32HandleInfoKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkImportSemaphoreWin32HandleInfoKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkImportSemaphoreWin32HandleInfoKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImportSemaphoreWin32HandleInfoKHR>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pImportSemaphoreWin32HandleInfo'");
@@ -10362,10 +12557,15 @@ void _vkGetSemaphoreFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -10374,10 +12574,15 @@ void _vkGetSemaphoreFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkSemaphoreGetFdInfoKHR* obj1;
   VkSemaphoreGetFdInfoKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSemaphoreGetFdInfoKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSemaphoreGetFdInfoKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSemaphoreGetFdInfoKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSemaphoreGetFdInfoKHR>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pGetFdInfo'");
@@ -10387,10 +12592,16 @@ void _vkGetSemaphoreFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   int $p2;
   if (info[2]->IsObject()) {
     obj2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj2->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj2, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 3");
+      return;
+    }
+    v8::Local<v8::Value> val = obj2->Get(accessor);
     $p2 = static_cast<int>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pFd'");
+    return;
   }
   int32_t out = $vkGetSemaphoreFdKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -10407,10 +12618,15 @@ void _vkImportSemaphoreFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -10419,10 +12635,15 @@ void _vkImportSemaphoreFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImportSemaphoreFdInfoKHR* obj1;
   VkImportSemaphoreFdInfoKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImportSemaphoreFdInfoKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkImportSemaphoreFdInfoKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkImportSemaphoreFdInfoKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImportSemaphoreFdInfoKHR>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pImportSemaphoreFdInfo'");
@@ -10440,10 +12661,15 @@ void _vkGetPhysicalDeviceExternalFenceProperties(const Nan::FunctionCallbackInfo
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -10452,10 +12678,15 @@ void _vkGetPhysicalDeviceExternalFenceProperties(const Nan::FunctionCallbackInfo
   _VkPhysicalDeviceExternalFenceInfo* obj1;
   VkPhysicalDeviceExternalFenceInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceExternalFenceInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDeviceExternalFenceInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceExternalFenceInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceExternalFenceInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pExternalFenceInfo'");
@@ -10464,10 +12695,15 @@ void _vkGetPhysicalDeviceExternalFenceProperties(const Nan::FunctionCallbackInfo
   _VkExternalFenceProperties* obj2;
   VkExternalFenceProperties *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkExternalFenceProperties>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkExternalFenceProperties::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkExternalFenceProperties]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkExternalFenceProperties>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pExternalFenceProperties'");
@@ -10488,10 +12724,15 @@ void _vkGetFenceWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -10500,10 +12741,15 @@ void _vkGetFenceWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkFenceGetWin32HandleInfoKHR* obj1;
   VkFenceGetWin32HandleInfoKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkFenceGetWin32HandleInfoKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkFenceGetWin32HandleInfoKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkFenceGetWin32HandleInfoKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkFenceGetWin32HandleInfoKHR>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pGetWin32HandleInfo'");
@@ -10523,10 +12769,15 @@ void _vkImportFenceWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -10535,10 +12786,15 @@ void _vkImportFenceWin32HandleKHR(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkImportFenceWin32HandleInfoKHR* obj1;
   VkImportFenceWin32HandleInfoKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImportFenceWin32HandleInfoKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkImportFenceWin32HandleInfoKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkImportFenceWin32HandleInfoKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImportFenceWin32HandleInfoKHR>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pImportFenceWin32HandleInfo'");
@@ -10556,10 +12812,15 @@ void _vkGetFenceFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -10568,10 +12829,15 @@ void _vkGetFenceFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkFenceGetFdInfoKHR* obj1;
   VkFenceGetFdInfoKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkFenceGetFdInfoKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkFenceGetFdInfoKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkFenceGetFdInfoKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkFenceGetFdInfoKHR>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pGetFdInfo'");
@@ -10581,10 +12847,16 @@ void _vkGetFenceFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   int $p2;
   if (info[2]->IsObject()) {
     obj2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj2->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj2, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 3");
+      return;
+    }
+    v8::Local<v8::Value> val = obj2->Get(accessor);
     $p2 = static_cast<int>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pFd'");
+    return;
   }
   int32_t out = $vkGetFenceFdKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -10601,10 +12873,15 @@ void _vkImportFenceFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -10613,10 +12890,15 @@ void _vkImportFenceFdKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkImportFenceFdInfoKHR* obj1;
   VkImportFenceFdInfoKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImportFenceFdInfoKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkImportFenceFdInfoKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkImportFenceFdInfoKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImportFenceFdInfoKHR>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pImportFenceFdInfo'");
@@ -10634,10 +12916,15 @@ void _vkReleaseDisplayEXT(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -10646,10 +12933,15 @@ void _vkReleaseDisplayEXT(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDisplayKHR* obj1;
   VkDisplayKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDisplayKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDisplayKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDisplayKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDisplayKHR>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'display'");
@@ -10667,10 +12959,15 @@ void _vkDisplayPowerControlEXT(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -10679,10 +12976,15 @@ void _vkDisplayPowerControlEXT(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkDisplayKHR* obj1;
   VkDisplayKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDisplayKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDisplayKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDisplayKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDisplayKHR>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'display'");
@@ -10691,10 +12993,15 @@ void _vkDisplayPowerControlEXT(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkDisplayPowerInfoEXT* obj2;
   VkDisplayPowerInfoEXT *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkDisplayPowerInfoEXT>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkDisplayPowerInfoEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkDisplayPowerInfoEXT]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkDisplayPowerInfoEXT>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pDisplayPowerInfo'");
@@ -10713,10 +13020,15 @@ void _vkRegisterDeviceEventEXT(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -10725,10 +13037,15 @@ void _vkRegisterDeviceEventEXT(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkDeviceEventInfoEXT* obj1;
   VkDeviceEventInfoEXT *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceEventInfoEXT>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDeviceEventInfoEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDeviceEventInfoEXT]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceEventInfoEXT>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pDeviceEventInfo'");
@@ -10738,10 +13055,15 @@ void _vkRegisterDeviceEventEXT(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkFence* obj3;
   VkFence *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkFence>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkFence::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkFence]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkFence>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pFence'");
@@ -10761,10 +13083,15 @@ void _vkRegisterDisplayEventEXT(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -10773,10 +13100,15 @@ void _vkRegisterDisplayEventEXT(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkDisplayKHR* obj1;
   VkDisplayKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDisplayKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDisplayKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDisplayKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDisplayKHR>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'display'");
@@ -10785,10 +13117,15 @@ void _vkRegisterDisplayEventEXT(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkDisplayEventInfoEXT* obj2;
   VkDisplayEventInfoEXT *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkDisplayEventInfoEXT>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkDisplayEventInfoEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkDisplayEventInfoEXT]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkDisplayEventInfoEXT>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pDisplayEventInfo'");
@@ -10798,10 +13135,15 @@ void _vkRegisterDisplayEventEXT(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkFence* obj4;
   VkFence *$p4;
   if (info[4]->IsObject()) {
-    obj4 = Nan::ObjectWrap::Unwrap<_VkFence>(Nan::To<v8::Object>(info[4]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[4]).ToLocalChecked();
+    if (!Nan::New(_VkFence::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[4], "argument 5", "[object VkFence]");
+      return;
+    }
+    obj4 = Nan::ObjectWrap::Unwrap<_VkFence>(obj);
     
     $p4 = &obj4->instance;
-  } else if (info[4]->IsNull()){
+  } else if (info[4]->IsNull()) {
     $p4 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 5 'pFence'");
@@ -10822,10 +13164,15 @@ void _vkGetSwapchainCounterEXT(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -10834,10 +13181,15 @@ void _vkGetSwapchainCounterEXT(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkSwapchainKHR* obj1;
   VkSwapchainKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSwapchainKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSwapchainKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'swapchain'");
@@ -10849,10 +13201,16 @@ void _vkGetSwapchainCounterEXT(const Nan::FunctionCallbackInfo<v8::Value>& info)
   uint64_t $p3;
   if (info[3]->IsObject()) {
     obj3 = Nan::To<v8::Object>(info[3]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj3->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj3, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 4");
+      return;
+    }
+    v8::Local<v8::Value> val = obj3->Get(accessor);
     $p3 = static_cast<uint64_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[3]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pCounterValue'");
+    return;
   }
   int32_t out = $vkGetSwapchainCounterEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -10871,10 +13229,15 @@ void _vkGetPhysicalDeviceSurfaceCapabilities2EXT(const Nan::FunctionCallbackInfo
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -10883,10 +13246,15 @@ void _vkGetPhysicalDeviceSurfaceCapabilities2EXT(const Nan::FunctionCallbackInfo
   _VkSurfaceKHR* obj1;
   VkSurfaceKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSurfaceKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSurfaceKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'surface'");
@@ -10895,10 +13263,15 @@ void _vkGetPhysicalDeviceSurfaceCapabilities2EXT(const Nan::FunctionCallbackInfo
   _VkSurfaceCapabilities2EXT* obj2;
   VkSurfaceCapabilities2EXT *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkSurfaceCapabilities2EXT>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkSurfaceCapabilities2EXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkSurfaceCapabilities2EXT]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkSurfaceCapabilities2EXT>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pSurfaceCapabilities'");
@@ -10944,10 +13317,15 @@ void _vkEnumeratePhysicalDeviceGroups(const Nan::FunctionCallbackInfo<v8::Value>
   _VkInstance* obj0;
   VkInstance *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkInstance::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'instance'");
@@ -10957,10 +13335,16 @@ void _vkEnumeratePhysicalDeviceGroups(const Nan::FunctionCallbackInfo<v8::Value>
   uint32_t $p1;
   if (info[1]->IsObject()) {
     obj1 = Nan::To<v8::Object>(info[1]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj1->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj1, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 2");
+      return;
+    }
+    v8::Local<v8::Value> val = obj1->Get(accessor);
     $p1 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[1]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pPhysicalDeviceGroupCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkPhysicalDeviceGroupProperties>> $p2 = nullptr;
@@ -10984,7 +13368,8 @@ void _vkEnumeratePhysicalDeviceGroups(const Nan::FunctionCallbackInfo<v8::Value>
     };
     $p2 = std::make_shared<std::vector<VkPhysicalDeviceGroupProperties>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pPhysicalDeviceGroupProperties'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pPhysicalDeviceGroupProperties'");
+    return;
   }
 
   int32_t out = vkEnumeratePhysicalDeviceGroups(
@@ -11017,10 +13402,15 @@ void _vkGetDeviceGroupPeerMemoryFeatures(const Nan::FunctionCallbackInfo<v8::Val
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -11036,10 +13426,16 @@ void _vkGetDeviceGroupPeerMemoryFeatures(const Nan::FunctionCallbackInfo<v8::Val
   int32_t $p4;
   if (info[4]->IsObject()) {
     obj4 = Nan::To<v8::Object>(info[4]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj4->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj4, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 5");
+      return;
+    }
+    v8::Local<v8::Value> val = obj4->Get(accessor);
     $p4 = static_cast<int32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[4]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 5 'pPeerMemoryFeatures'");
+    return;
   }
 vkGetDeviceGroupPeerMemoryFeatures(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -11060,10 +13456,15 @@ void _vkBindBufferMemory2(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -11092,7 +13493,8 @@ void _vkBindBufferMemory2(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p2 = std::make_shared<std::vector<VkBindBufferMemoryInfo>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pBindInfos'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pBindInfos'");
+    return;
   }
 
   int32_t out = vkBindBufferMemory2(
@@ -11109,10 +13511,15 @@ void _vkBindImageMemory2(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -11141,7 +13548,8 @@ void _vkBindImageMemory2(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p2 = std::make_shared<std::vector<VkBindImageMemoryInfo>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pBindInfos'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pBindInfos'");
+    return;
   }
 
   int32_t out = vkBindImageMemory2(
@@ -11158,10 +13566,15 @@ void _vkCmdSetDeviceMask(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -11183,10 +13596,15 @@ void _vkGetDeviceGroupPresentCapabilitiesKHR(const Nan::FunctionCallbackInfo<v8:
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -11195,10 +13613,15 @@ void _vkGetDeviceGroupPresentCapabilitiesKHR(const Nan::FunctionCallbackInfo<v8:
   _VkDeviceGroupPresentCapabilitiesKHR* obj1;
   VkDeviceGroupPresentCapabilitiesKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceGroupPresentCapabilitiesKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDeviceGroupPresentCapabilitiesKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDeviceGroupPresentCapabilitiesKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceGroupPresentCapabilitiesKHR>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pDeviceGroupPresentCapabilities'");
@@ -11225,10 +13648,15 @@ void _vkGetDeviceGroupSurfacePresentModesKHR(const Nan::FunctionCallbackInfo<v8:
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -11237,10 +13665,15 @@ void _vkGetDeviceGroupSurfacePresentModesKHR(const Nan::FunctionCallbackInfo<v8:
   _VkSurfaceKHR* obj1;
   VkSurfaceKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSurfaceKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSurfaceKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'surface'");
@@ -11250,10 +13683,16 @@ void _vkGetDeviceGroupSurfacePresentModesKHR(const Nan::FunctionCallbackInfo<v8:
   int32_t $p2;
   if (info[2]->IsObject()) {
     obj2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj2->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj2, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 3");
+      return;
+    }
+    v8::Local<v8::Value> val = obj2->Get(accessor);
     $p2 = static_cast<int32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pModes'");
+    return;
   }
   int32_t out = $vkGetDeviceGroupSurfacePresentModesKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -11270,10 +13709,15 @@ void _vkAcquireNextImage2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -11282,10 +13726,15 @@ void _vkAcquireNextImage2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkAcquireNextImageInfoKHR* obj1;
   VkAcquireNextImageInfoKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkAcquireNextImageInfoKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkAcquireNextImageInfoKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkAcquireNextImageInfoKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkAcquireNextImageInfoKHR>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pAcquireInfo'");
@@ -11295,10 +13744,16 @@ void _vkAcquireNextImage2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   uint32_t $p2;
   if (info[2]->IsObject()) {
     obj2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj2->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj2, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 3");
+      return;
+    }
+    v8::Local<v8::Value> val = obj2->Get(accessor);
     $p2 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pImageIndex'");
+    return;
   }
   int32_t out = $vkAcquireNextImage2KHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -11315,10 +13770,15 @@ void _vkCmdDispatchBase(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -11355,10 +13815,15 @@ void _vkGetPhysicalDevicePresentRectanglesKHR(const Nan::FunctionCallbackInfo<v8
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -11367,10 +13832,15 @@ void _vkGetPhysicalDevicePresentRectanglesKHR(const Nan::FunctionCallbackInfo<v8
   _VkSurfaceKHR* obj1;
   VkSurfaceKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSurfaceKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSurfaceKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'surface'");
@@ -11380,10 +13850,16 @@ void _vkGetPhysicalDevicePresentRectanglesKHR(const Nan::FunctionCallbackInfo<v8
   uint32_t $p2;
   if (info[2]->IsObject()) {
     obj2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj2->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj2, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 3");
+      return;
+    }
+    v8::Local<v8::Value> val = obj2->Get(accessor);
     $p2 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pRectCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkRect2D>> $p3 = nullptr;
@@ -11407,7 +13883,8 @@ void _vkGetPhysicalDevicePresentRectanglesKHR(const Nan::FunctionCallbackInfo<v8
     };
     $p3 = std::make_shared<std::vector<VkRect2D>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pRects'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pRects'");
+    return;
   }
 
   int32_t out = $vkGetPhysicalDevicePresentRectanglesKHR(
@@ -11456,10 +13933,15 @@ void _vkCreateDescriptorUpdateTemplate(const Nan::FunctionCallbackInfo<v8::Value
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -11468,10 +13950,15 @@ void _vkCreateDescriptorUpdateTemplate(const Nan::FunctionCallbackInfo<v8::Value
   _VkDescriptorUpdateTemplateCreateInfo* obj1;
   VkDescriptorUpdateTemplateCreateInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorUpdateTemplateCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDescriptorUpdateTemplateCreateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDescriptorUpdateTemplateCreateInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorUpdateTemplateCreateInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -11481,10 +13968,15 @@ void _vkCreateDescriptorUpdateTemplate(const Nan::FunctionCallbackInfo<v8::Value
   _VkDescriptorUpdateTemplate* obj3;
   VkDescriptorUpdateTemplate *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkDescriptorUpdateTemplate>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkDescriptorUpdateTemplate::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkDescriptorUpdateTemplate]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkDescriptorUpdateTemplate>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pDescriptorUpdateTemplate'");
@@ -11504,10 +13996,15 @@ void _vkDestroyDescriptorUpdateTemplate(const Nan::FunctionCallbackInfo<v8::Valu
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -11516,10 +14013,15 @@ void _vkDestroyDescriptorUpdateTemplate(const Nan::FunctionCallbackInfo<v8::Valu
   _VkDescriptorUpdateTemplate* obj1;
   VkDescriptorUpdateTemplate *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorUpdateTemplate>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDescriptorUpdateTemplate::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDescriptorUpdateTemplate]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorUpdateTemplate>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'descriptorUpdateTemplate'");
@@ -11541,10 +14043,15 @@ void _vkUpdateDescriptorSetWithTemplate(const Nan::FunctionCallbackInfo<v8::Valu
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -11553,10 +14060,15 @@ void _vkUpdateDescriptorSetWithTemplate(const Nan::FunctionCallbackInfo<v8::Valu
   _VkDescriptorSet* obj1;
   VkDescriptorSet *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorSet>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDescriptorSet::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDescriptorSet]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorSet>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'descriptorSet'");
@@ -11565,10 +14077,15 @@ void _vkUpdateDescriptorSetWithTemplate(const Nan::FunctionCallbackInfo<v8::Valu
   _VkDescriptorUpdateTemplate* obj2;
   VkDescriptorUpdateTemplate *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkDescriptorUpdateTemplate>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkDescriptorUpdateTemplate::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkDescriptorUpdateTemplate]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkDescriptorUpdateTemplate>(obj);
     
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'descriptorUpdateTemplate'");
@@ -11591,10 +14108,15 @@ void _vkCmdPushDescriptorSetWithTemplateKHR(const Nan::FunctionCallbackInfo<v8::
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -11603,10 +14125,15 @@ void _vkCmdPushDescriptorSetWithTemplateKHR(const Nan::FunctionCallbackInfo<v8::
   _VkDescriptorUpdateTemplate* obj1;
   VkDescriptorUpdateTemplate *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorUpdateTemplate>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDescriptorUpdateTemplate::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDescriptorUpdateTemplate]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorUpdateTemplate>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'descriptorUpdateTemplate'");
@@ -11615,10 +14142,15 @@ void _vkCmdPushDescriptorSetWithTemplateKHR(const Nan::FunctionCallbackInfo<v8::
   _VkPipelineLayout* obj2;
   VkPipelineLayout *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkPipelineLayout>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkPipelineLayout::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkPipelineLayout]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkPipelineLayout>(obj);
     
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'layout'");
@@ -11644,10 +14176,15 @@ void _vkSetHdrMetadataEXT(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -11668,7 +14205,8 @@ void _vkSetHdrMetadataEXT(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p2 = std::make_shared<std::vector<VkSwapchainKHR>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pSwapchains'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pSwapchains'");
+    return;
   }
 
 
@@ -11693,7 +14231,8 @@ void _vkSetHdrMetadataEXT(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     };
     $p3 = std::make_shared<std::vector<VkHdrMetadataEXT>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pMetadata'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pMetadata'");
+    return;
   }
 
 $vkSetHdrMetadataEXT(
@@ -11713,10 +14252,15 @@ void _vkGetSwapchainStatusKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -11725,10 +14269,15 @@ void _vkGetSwapchainStatusKHR(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkSwapchainKHR* obj1;
   VkSwapchainKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSwapchainKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSwapchainKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'swapchain'");
@@ -11746,10 +14295,15 @@ void _vkGetRefreshCycleDurationGOOGLE(const Nan::FunctionCallbackInfo<v8::Value>
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -11758,10 +14312,15 @@ void _vkGetRefreshCycleDurationGOOGLE(const Nan::FunctionCallbackInfo<v8::Value>
   _VkSwapchainKHR* obj1;
   VkSwapchainKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSwapchainKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSwapchainKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'swapchain'");
@@ -11770,10 +14329,15 @@ void _vkGetRefreshCycleDurationGOOGLE(const Nan::FunctionCallbackInfo<v8::Value>
   _VkRefreshCycleDurationGOOGLE* obj2;
   VkRefreshCycleDurationGOOGLE *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkRefreshCycleDurationGOOGLE>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkRefreshCycleDurationGOOGLE::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkRefreshCycleDurationGOOGLE]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkRefreshCycleDurationGOOGLE>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pDisplayTimingProperties'");
@@ -11792,10 +14356,15 @@ void _vkGetPastPresentationTimingGOOGLE(const Nan::FunctionCallbackInfo<v8::Valu
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -11804,10 +14373,15 @@ void _vkGetPastPresentationTimingGOOGLE(const Nan::FunctionCallbackInfo<v8::Valu
   _VkSwapchainKHR* obj1;
   VkSwapchainKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSwapchainKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSwapchainKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSwapchainKHR>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'swapchain'");
@@ -11817,10 +14391,16 @@ void _vkGetPastPresentationTimingGOOGLE(const Nan::FunctionCallbackInfo<v8::Valu
   uint32_t $p2;
   if (info[2]->IsObject()) {
     obj2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj2->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj2, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 3");
+      return;
+    }
+    v8::Local<v8::Value> val = obj2->Get(accessor);
     $p2 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pPresentationTimingCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkPastPresentationTimingGOOGLE>> $p3 = nullptr;
@@ -11844,7 +14424,8 @@ void _vkGetPastPresentationTimingGOOGLE(const Nan::FunctionCallbackInfo<v8::Valu
     };
     $p3 = std::make_shared<std::vector<VkPastPresentationTimingGOOGLE>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pPresentationTimings'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pPresentationTimings'");
+    return;
   }
 
   int32_t out = $vkGetPastPresentationTimingGOOGLE(
@@ -11880,10 +14461,15 @@ void _vkCmdSetViewportWScalingNV(const Nan::FunctionCallbackInfo<v8::Value>& inf
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -11914,7 +14500,8 @@ void _vkCmdSetViewportWScalingNV(const Nan::FunctionCallbackInfo<v8::Value>& inf
     };
     $p3 = std::make_shared<std::vector<VkViewportWScalingNV>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pViewportWScalings'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pViewportWScalings'");
+    return;
   }
 
 $vkCmdSetViewportWScalingNV(
@@ -11934,10 +14521,15 @@ void _vkCmdSetDiscardRectangleEXT(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -11968,7 +14560,8 @@ void _vkCmdSetDiscardRectangleEXT(const Nan::FunctionCallbackInfo<v8::Value>& in
     };
     $p3 = std::make_shared<std::vector<VkRect2D>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pDiscardRectangles'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pDiscardRectangles'");
+    return;
   }
 
 $vkCmdSetDiscardRectangleEXT(
@@ -11988,10 +14581,15 @@ void _vkCmdSetSampleLocationsEXT(const Nan::FunctionCallbackInfo<v8::Value>& inf
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -12000,10 +14598,15 @@ void _vkCmdSetSampleLocationsEXT(const Nan::FunctionCallbackInfo<v8::Value>& inf
   _VkSampleLocationsInfoEXT* obj1;
   VkSampleLocationsInfoEXT *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSampleLocationsInfoEXT>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSampleLocationsInfoEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSampleLocationsInfoEXT]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSampleLocationsInfoEXT>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pSampleLocationsInfo'");
@@ -12023,10 +14626,15 @@ void _vkGetPhysicalDeviceMultisamplePropertiesEXT(const Nan::FunctionCallbackInf
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -12037,10 +14645,15 @@ void _vkGetPhysicalDeviceMultisamplePropertiesEXT(const Nan::FunctionCallbackInf
   _VkMultisamplePropertiesEXT* obj2;
   VkMultisamplePropertiesEXT *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkMultisamplePropertiesEXT>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkMultisamplePropertiesEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkMultisamplePropertiesEXT]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkMultisamplePropertiesEXT>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pMultisampleProperties'");
@@ -12070,10 +14683,15 @@ void _vkGetPhysicalDeviceSurfaceCapabilities2KHR(const Nan::FunctionCallbackInfo
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -12082,10 +14700,15 @@ void _vkGetPhysicalDeviceSurfaceCapabilities2KHR(const Nan::FunctionCallbackInfo
   _VkPhysicalDeviceSurfaceInfo2KHR* obj1;
   VkPhysicalDeviceSurfaceInfo2KHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceSurfaceInfo2KHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDeviceSurfaceInfo2KHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceSurfaceInfo2KHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceSurfaceInfo2KHR>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pSurfaceInfo'");
@@ -12094,10 +14717,15 @@ void _vkGetPhysicalDeviceSurfaceCapabilities2KHR(const Nan::FunctionCallbackInfo
   _VkSurfaceCapabilities2KHR* obj2;
   VkSurfaceCapabilities2KHR *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkSurfaceCapabilities2KHR>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkSurfaceCapabilities2KHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkSurfaceCapabilities2KHR]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkSurfaceCapabilities2KHR>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pSurfaceCapabilities'");
@@ -12152,10 +14780,15 @@ void _vkGetPhysicalDeviceSurfaceFormats2KHR(const Nan::FunctionCallbackInfo<v8::
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -12164,10 +14797,15 @@ void _vkGetPhysicalDeviceSurfaceFormats2KHR(const Nan::FunctionCallbackInfo<v8::
   _VkPhysicalDeviceSurfaceInfo2KHR* obj1;
   VkPhysicalDeviceSurfaceInfo2KHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceSurfaceInfo2KHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDeviceSurfaceInfo2KHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceSurfaceInfo2KHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPhysicalDeviceSurfaceInfo2KHR>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pSurfaceInfo'");
@@ -12177,10 +14815,16 @@ void _vkGetPhysicalDeviceSurfaceFormats2KHR(const Nan::FunctionCallbackInfo<v8::
   uint32_t $p2;
   if (info[2]->IsObject()) {
     obj2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj2->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj2, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 3");
+      return;
+    }
+    v8::Local<v8::Value> val = obj2->Get(accessor);
     $p2 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pSurfaceFormatCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkSurfaceFormat2KHR>> $p3 = nullptr;
@@ -12204,7 +14848,8 @@ void _vkGetPhysicalDeviceSurfaceFormats2KHR(const Nan::FunctionCallbackInfo<v8::
     };
     $p3 = std::make_shared<std::vector<VkSurfaceFormat2KHR>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pSurfaceFormats'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pSurfaceFormats'");
+    return;
   }
 
   int32_t out = $vkGetPhysicalDeviceSurfaceFormats2KHR(
@@ -12245,10 +14890,15 @@ void _vkGetPhysicalDeviceDisplayProperties2KHR(const Nan::FunctionCallbackInfo<v
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -12258,10 +14908,16 @@ void _vkGetPhysicalDeviceDisplayProperties2KHR(const Nan::FunctionCallbackInfo<v
   uint32_t $p1;
   if (info[1]->IsObject()) {
     obj1 = Nan::To<v8::Object>(info[1]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj1->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj1, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 2");
+      return;
+    }
+    v8::Local<v8::Value> val = obj1->Get(accessor);
     $p1 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[1]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pPropertyCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkDisplayProperties2KHR>> $p2 = nullptr;
@@ -12285,7 +14941,8 @@ void _vkGetPhysicalDeviceDisplayProperties2KHR(const Nan::FunctionCallbackInfo<v
     };
     $p2 = std::make_shared<std::vector<VkDisplayProperties2KHR>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pProperties'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pProperties'");
+    return;
   }
 
   int32_t out = $vkGetPhysicalDeviceDisplayProperties2KHR(
@@ -12325,10 +14982,15 @@ void _vkGetPhysicalDeviceDisplayPlaneProperties2KHR(const Nan::FunctionCallbackI
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -12338,10 +15000,16 @@ void _vkGetPhysicalDeviceDisplayPlaneProperties2KHR(const Nan::FunctionCallbackI
   uint32_t $p1;
   if (info[1]->IsObject()) {
     obj1 = Nan::To<v8::Object>(info[1]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj1->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj1, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 2");
+      return;
+    }
+    v8::Local<v8::Value> val = obj1->Get(accessor);
     $p1 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[1]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pPropertyCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkDisplayPlaneProperties2KHR>> $p2 = nullptr;
@@ -12365,7 +15033,8 @@ void _vkGetPhysicalDeviceDisplayPlaneProperties2KHR(const Nan::FunctionCallbackI
     };
     $p2 = std::make_shared<std::vector<VkDisplayPlaneProperties2KHR>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pProperties'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pProperties'");
+    return;
   }
 
   int32_t out = $vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
@@ -12405,10 +15074,15 @@ void _vkGetDisplayModeProperties2KHR(const Nan::FunctionCallbackInfo<v8::Value>&
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -12417,10 +15091,15 @@ void _vkGetDisplayModeProperties2KHR(const Nan::FunctionCallbackInfo<v8::Value>&
   _VkDisplayKHR* obj1;
   VkDisplayKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDisplayKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDisplayKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDisplayKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDisplayKHR>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'display'");
@@ -12430,10 +15109,16 @@ void _vkGetDisplayModeProperties2KHR(const Nan::FunctionCallbackInfo<v8::Value>&
   uint32_t $p2;
   if (info[2]->IsObject()) {
     obj2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj2->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj2, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 3");
+      return;
+    }
+    v8::Local<v8::Value> val = obj2->Get(accessor);
     $p2 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pPropertyCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkDisplayModeProperties2KHR>> $p3 = nullptr;
@@ -12457,7 +15142,8 @@ void _vkGetDisplayModeProperties2KHR(const Nan::FunctionCallbackInfo<v8::Value>&
     };
     $p3 = std::make_shared<std::vector<VkDisplayModeProperties2KHR>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pProperties'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pProperties'");
+    return;
   }
 
   int32_t out = $vkGetDisplayModeProperties2KHR(
@@ -12498,10 +15184,15 @@ void _vkGetDisplayPlaneCapabilities2KHR(const Nan::FunctionCallbackInfo<v8::Valu
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -12510,10 +15201,15 @@ void _vkGetDisplayPlaneCapabilities2KHR(const Nan::FunctionCallbackInfo<v8::Valu
   _VkDisplayPlaneInfo2KHR* obj1;
   VkDisplayPlaneInfo2KHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDisplayPlaneInfo2KHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDisplayPlaneInfo2KHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDisplayPlaneInfo2KHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDisplayPlaneInfo2KHR>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pDisplayPlaneInfo'");
@@ -12522,10 +15218,15 @@ void _vkGetDisplayPlaneCapabilities2KHR(const Nan::FunctionCallbackInfo<v8::Valu
   _VkDisplayPlaneCapabilities2KHR* obj2;
   VkDisplayPlaneCapabilities2KHR *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkDisplayPlaneCapabilities2KHR>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkDisplayPlaneCapabilities2KHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkDisplayPlaneCapabilities2KHR]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkDisplayPlaneCapabilities2KHR>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pCapabilities'");
@@ -12625,10 +15326,15 @@ void _vkGetBufferMemoryRequirements2(const Nan::FunctionCallbackInfo<v8::Value>&
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -12637,10 +15343,15 @@ void _vkGetBufferMemoryRequirements2(const Nan::FunctionCallbackInfo<v8::Value>&
   _VkBufferMemoryRequirementsInfo2* obj1;
   VkBufferMemoryRequirementsInfo2 *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBufferMemoryRequirementsInfo2>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkBufferMemoryRequirementsInfo2::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkBufferMemoryRequirementsInfo2]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBufferMemoryRequirementsInfo2>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pInfo'");
@@ -12649,10 +15360,15 @@ void _vkGetBufferMemoryRequirements2(const Nan::FunctionCallbackInfo<v8::Value>&
   _VkMemoryRequirements2* obj2;
   VkMemoryRequirements2 *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkMemoryRequirements2>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkMemoryRequirements2::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkMemoryRequirements2]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkMemoryRequirements2>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pMemoryRequirements'");
@@ -12682,10 +15398,15 @@ void _vkGetImageMemoryRequirements2(const Nan::FunctionCallbackInfo<v8::Value>& 
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -12694,10 +15415,15 @@ void _vkGetImageMemoryRequirements2(const Nan::FunctionCallbackInfo<v8::Value>& 
   _VkImageMemoryRequirementsInfo2* obj1;
   VkImageMemoryRequirementsInfo2 *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImageMemoryRequirementsInfo2>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkImageMemoryRequirementsInfo2::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkImageMemoryRequirementsInfo2]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImageMemoryRequirementsInfo2>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pInfo'");
@@ -12706,10 +15432,15 @@ void _vkGetImageMemoryRequirements2(const Nan::FunctionCallbackInfo<v8::Value>& 
   _VkMemoryRequirements2* obj2;
   VkMemoryRequirements2 *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkMemoryRequirements2>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkMemoryRequirements2::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkMemoryRequirements2]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkMemoryRequirements2>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pMemoryRequirements'");
@@ -12739,10 +15470,15 @@ void _vkGetImageSparseMemoryRequirements2(const Nan::FunctionCallbackInfo<v8::Va
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -12751,10 +15487,15 @@ void _vkGetImageSparseMemoryRequirements2(const Nan::FunctionCallbackInfo<v8::Va
   _VkImageSparseMemoryRequirementsInfo2* obj1;
   VkImageSparseMemoryRequirementsInfo2 *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImageSparseMemoryRequirementsInfo2>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkImageSparseMemoryRequirementsInfo2::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkImageSparseMemoryRequirementsInfo2]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImageSparseMemoryRequirementsInfo2>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pInfo'");
@@ -12764,10 +15505,16 @@ void _vkGetImageSparseMemoryRequirements2(const Nan::FunctionCallbackInfo<v8::Va
   uint32_t $p2;
   if (info[2]->IsObject()) {
     obj2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj2->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj2, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 3");
+      return;
+    }
+    v8::Local<v8::Value> val = obj2->Get(accessor);
     $p2 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pSparseMemoryRequirementCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkSparseImageMemoryRequirements2>> $p3 = nullptr;
@@ -12791,7 +15538,8 @@ void _vkGetImageSparseMemoryRequirements2(const Nan::FunctionCallbackInfo<v8::Va
     };
     $p3 = std::make_shared<std::vector<VkSparseImageMemoryRequirements2>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pSparseMemoryRequirements'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pSparseMemoryRequirements'");
+    return;
   }
 
 vkGetImageSparseMemoryRequirements2(
@@ -12834,10 +15582,15 @@ void _vkCreateSamplerYcbcrConversion(const Nan::FunctionCallbackInfo<v8::Value>&
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -12846,10 +15599,15 @@ void _vkCreateSamplerYcbcrConversion(const Nan::FunctionCallbackInfo<v8::Value>&
   _VkSamplerYcbcrConversionCreateInfo* obj1;
   VkSamplerYcbcrConversionCreateInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSamplerYcbcrConversionCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSamplerYcbcrConversionCreateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSamplerYcbcrConversionCreateInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSamplerYcbcrConversionCreateInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -12859,10 +15617,15 @@ void _vkCreateSamplerYcbcrConversion(const Nan::FunctionCallbackInfo<v8::Value>&
   _VkSamplerYcbcrConversion* obj3;
   VkSamplerYcbcrConversion *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkSamplerYcbcrConversion>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkSamplerYcbcrConversion::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkSamplerYcbcrConversion]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkSamplerYcbcrConversion>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pYcbcrConversion'");
@@ -12882,10 +15645,15 @@ void _vkDestroySamplerYcbcrConversion(const Nan::FunctionCallbackInfo<v8::Value>
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -12894,10 +15662,15 @@ void _vkDestroySamplerYcbcrConversion(const Nan::FunctionCallbackInfo<v8::Value>
   _VkSamplerYcbcrConversion* obj1;
   VkSamplerYcbcrConversion *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSamplerYcbcrConversion>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSamplerYcbcrConversion::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSamplerYcbcrConversion]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSamplerYcbcrConversion>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'ycbcrConversion'");
@@ -12919,10 +15692,15 @@ void _vkGetDeviceQueue2(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -12931,10 +15709,15 @@ void _vkGetDeviceQueue2(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDeviceQueueInfo2* obj1;
   VkDeviceQueueInfo2 *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceQueueInfo2>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDeviceQueueInfo2::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDeviceQueueInfo2]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDeviceQueueInfo2>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pQueueInfo'");
@@ -12943,10 +15726,15 @@ void _vkGetDeviceQueue2(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkQueue* obj2;
   VkQueue *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkQueue>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkQueue::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkQueue]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkQueue>(obj);
     
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pQueue'");
@@ -12967,10 +15755,15 @@ void _vkCreateValidationCacheEXT(const Nan::FunctionCallbackInfo<v8::Value>& inf
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -12979,10 +15772,15 @@ void _vkCreateValidationCacheEXT(const Nan::FunctionCallbackInfo<v8::Value>& inf
   _VkValidationCacheCreateInfoEXT* obj1;
   VkValidationCacheCreateInfoEXT *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkValidationCacheCreateInfoEXT>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkValidationCacheCreateInfoEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkValidationCacheCreateInfoEXT]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkValidationCacheCreateInfoEXT>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -12992,10 +15790,15 @@ void _vkCreateValidationCacheEXT(const Nan::FunctionCallbackInfo<v8::Value>& inf
   _VkValidationCacheEXT* obj3;
   VkValidationCacheEXT *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkValidationCacheEXT>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkValidationCacheEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkValidationCacheEXT]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkValidationCacheEXT>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pValidationCache'");
@@ -13015,10 +15818,15 @@ void _vkDestroyValidationCacheEXT(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -13027,10 +15835,15 @@ void _vkDestroyValidationCacheEXT(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkValidationCacheEXT* obj1;
   VkValidationCacheEXT *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkValidationCacheEXT>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkValidationCacheEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkValidationCacheEXT]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkValidationCacheEXT>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'validationCache'");
@@ -13052,10 +15865,15 @@ void _vkGetValidationCacheDataEXT(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -13064,10 +15882,15 @@ void _vkGetValidationCacheDataEXT(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkValidationCacheEXT* obj1;
   VkValidationCacheEXT *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkValidationCacheEXT>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkValidationCacheEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkValidationCacheEXT]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkValidationCacheEXT>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'validationCache'");
@@ -13077,10 +15900,16 @@ void _vkGetValidationCacheDataEXT(const Nan::FunctionCallbackInfo<v8::Value>& in
   size_t $p2;
   if (info[2]->IsObject()) {
     obj2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj2->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj2, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 3");
+      return;
+    }
+    v8::Local<v8::Value> val = obj2->Get(accessor);
     $p2 = static_cast<size_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[2]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pDataSize'");
+    return;
   }
 
   int32_t out = $vkGetValidationCacheDataEXT(
@@ -13100,10 +15929,15 @@ void _vkMergeValidationCachesEXT(const Nan::FunctionCallbackInfo<v8::Value>& inf
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -13112,10 +15946,15 @@ void _vkMergeValidationCachesEXT(const Nan::FunctionCallbackInfo<v8::Value>& inf
   _VkValidationCacheEXT* obj1;
   VkValidationCacheEXT *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkValidationCacheEXT>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkValidationCacheEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkValidationCacheEXT]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkValidationCacheEXT>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'dstCache'");
@@ -13136,7 +15975,8 @@ void _vkMergeValidationCachesEXT(const Nan::FunctionCallbackInfo<v8::Value>& inf
     };
     $p3 = std::make_shared<std::vector<VkValidationCacheEXT>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pSrcCaches'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pSrcCaches'");
+    return;
   }
 
   int32_t out = $vkMergeValidationCachesEXT(
@@ -13154,10 +15994,15 @@ void _vkGetDescriptorSetLayoutSupport(const Nan::FunctionCallbackInfo<v8::Value>
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -13166,10 +16011,15 @@ void _vkGetDescriptorSetLayoutSupport(const Nan::FunctionCallbackInfo<v8::Value>
   _VkDescriptorSetLayoutCreateInfo* obj1;
   VkDescriptorSetLayoutCreateInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutCreateInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDescriptorSetLayoutCreateInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDescriptorSetLayoutCreateInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutCreateInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -13178,10 +16028,15 @@ void _vkGetDescriptorSetLayoutSupport(const Nan::FunctionCallbackInfo<v8::Value>
   _VkDescriptorSetLayoutSupport* obj2;
   VkDescriptorSetLayoutSupport *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutSupport>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkDescriptorSetLayoutSupport::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkDescriptorSetLayoutSupport]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkDescriptorSetLayoutSupport>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pSupport'");
@@ -13202,10 +16057,15 @@ void _vkGetShaderInfoAMD(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -13214,10 +16074,15 @@ void _vkGetShaderInfoAMD(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkPipeline* obj1;
   VkPipeline *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPipeline>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPipeline::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPipeline]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPipeline>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pipeline'");
@@ -13231,10 +16096,16 @@ void _vkGetShaderInfoAMD(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   size_t $p4;
   if (info[4]->IsObject()) {
     obj4 = Nan::To<v8::Object>(info[4]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj4->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj4, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 5");
+      return;
+    }
+    v8::Local<v8::Value> val = obj4->Get(accessor);
     $p4 = static_cast<size_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[4]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 5 'pInfoSize'");
+    return;
   }
 
   int32_t out = $vkGetShaderInfoAMD(
@@ -13256,10 +16127,15 @@ void _vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(const Nan::FunctionCallback
   _VkPhysicalDevice* obj0;
   VkPhysicalDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkPhysicalDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkPhysicalDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'physicalDevice'");
@@ -13269,10 +16145,16 @@ void _vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(const Nan::FunctionCallback
   uint32_t $p1;
   if (info[1]->IsObject()) {
     obj1 = Nan::To<v8::Object>(info[1]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj1->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj1, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 2");
+      return;
+    }
+    v8::Local<v8::Value> val = obj1->Get(accessor);
     $p1 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[1]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pTimeDomainCount'");
+    return;
   }
 
   std::shared_ptr<int32_t*> $p2 = nullptr;
@@ -13282,7 +16164,8 @@ void _vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(const Nan::FunctionCallback
     int32_t* data = getTypedArrayData<int32_t>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
     $p2 = std::make_shared<int32_t*>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pTimeDomains'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pTimeDomains'");
+    return;
   }
 
   int32_t out = $vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
@@ -13300,10 +16183,15 @@ void _vkGetCalibratedTimestampsEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -13332,7 +16220,8 @@ void _vkGetCalibratedTimestampsEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
     };
     $p2 = std::make_shared<std::vector<VkCalibratedTimestampInfoEXT>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pTimestampInfos'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pTimestampInfos'");
+    return;
   }
 
 
@@ -13343,7 +16232,8 @@ void _vkGetCalibratedTimestampsEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
     uint64_t* data = getTypedArrayData<uint64_t>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
     $p3 = std::make_shared<uint64_t*>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pTimestamps'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pTimestamps'");
+    return;
   }
 
 
@@ -13351,10 +16241,16 @@ void _vkGetCalibratedTimestampsEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
   uint64_t $p4;
   if (info[4]->IsObject()) {
     obj4 = Nan::To<v8::Object>(info[4]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj4->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj4, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 5");
+      return;
+    }
+    v8::Local<v8::Value> val = obj4->Get(accessor);
     $p4 = static_cast<uint64_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[4]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 5 'pMaxDeviation'");
+    return;
   }
   int32_t out = $vkGetCalibratedTimestampsEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -13374,10 +16270,15 @@ void _vkSetDebugUtilsObjectNameEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -13386,10 +16287,15 @@ void _vkSetDebugUtilsObjectNameEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkDebugUtilsObjectNameInfoEXT* obj1;
   VkDebugUtilsObjectNameInfoEXT *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugUtilsObjectNameInfoEXT>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDebugUtilsObjectNameInfoEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDebugUtilsObjectNameInfoEXT]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugUtilsObjectNameInfoEXT>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pNameInfo'");
@@ -13407,10 +16313,15 @@ void _vkSetDebugUtilsObjectTagEXT(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -13419,10 +16330,15 @@ void _vkSetDebugUtilsObjectTagEXT(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkDebugUtilsObjectTagInfoEXT* obj1;
   VkDebugUtilsObjectTagInfoEXT *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugUtilsObjectTagInfoEXT>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDebugUtilsObjectTagInfoEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDebugUtilsObjectTagInfoEXT]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugUtilsObjectTagInfoEXT>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pTagInfo'");
@@ -13440,10 +16356,15 @@ void _vkQueueBeginDebugUtilsLabelEXT(const Nan::FunctionCallbackInfo<v8::Value>&
   _VkQueue* obj0;
   VkQueue *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkQueue>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkQueue::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkQueue]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkQueue>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'queue'");
@@ -13452,10 +16373,15 @@ void _vkQueueBeginDebugUtilsLabelEXT(const Nan::FunctionCallbackInfo<v8::Value>&
   _VkDebugUtilsLabelEXT* obj1;
   VkDebugUtilsLabelEXT *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugUtilsLabelEXT>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDebugUtilsLabelEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDebugUtilsLabelEXT]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugUtilsLabelEXT>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pLabelInfo'");
@@ -13475,10 +16401,15 @@ void _vkQueueEndDebugUtilsLabelEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkQueue* obj0;
   VkQueue *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkQueue>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkQueue::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkQueue]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkQueue>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'queue'");
@@ -13497,10 +16428,15 @@ void _vkQueueInsertDebugUtilsLabelEXT(const Nan::FunctionCallbackInfo<v8::Value>
   _VkQueue* obj0;
   VkQueue *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkQueue>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkQueue::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkQueue]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkQueue>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'queue'");
@@ -13509,10 +16445,15 @@ void _vkQueueInsertDebugUtilsLabelEXT(const Nan::FunctionCallbackInfo<v8::Value>
   _VkDebugUtilsLabelEXT* obj1;
   VkDebugUtilsLabelEXT *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugUtilsLabelEXT>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDebugUtilsLabelEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDebugUtilsLabelEXT]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugUtilsLabelEXT>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pLabelInfo'");
@@ -13532,10 +16473,15 @@ void _vkCmdBeginDebugUtilsLabelEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -13544,10 +16490,15 @@ void _vkCmdBeginDebugUtilsLabelEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkDebugUtilsLabelEXT* obj1;
   VkDebugUtilsLabelEXT *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugUtilsLabelEXT>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDebugUtilsLabelEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDebugUtilsLabelEXT]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugUtilsLabelEXT>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pLabelInfo'");
@@ -13567,10 +16518,15 @@ void _vkCmdEndDebugUtilsLabelEXT(const Nan::FunctionCallbackInfo<v8::Value>& inf
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -13589,10 +16545,15 @@ void _vkCmdInsertDebugUtilsLabelEXT(const Nan::FunctionCallbackInfo<v8::Value>& 
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -13601,10 +16562,15 @@ void _vkCmdInsertDebugUtilsLabelEXT(const Nan::FunctionCallbackInfo<v8::Value>& 
   _VkDebugUtilsLabelEXT* obj1;
   VkDebugUtilsLabelEXT *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugUtilsLabelEXT>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDebugUtilsLabelEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDebugUtilsLabelEXT]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugUtilsLabelEXT>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pLabelInfo'");
@@ -13624,10 +16590,15 @@ void _vkCreateDebugUtilsMessengerEXT(const Nan::FunctionCallbackInfo<v8::Value>&
   _VkInstance* obj0;
   VkInstance *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkInstance::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'instance'");
@@ -13636,10 +16607,15 @@ void _vkCreateDebugUtilsMessengerEXT(const Nan::FunctionCallbackInfo<v8::Value>&
   _VkDebugUtilsMessengerCreateInfoEXT* obj1;
   VkDebugUtilsMessengerCreateInfoEXT *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugUtilsMessengerCreateInfoEXT>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDebugUtilsMessengerCreateInfoEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDebugUtilsMessengerCreateInfoEXT]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugUtilsMessengerCreateInfoEXT>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -13649,10 +16625,15 @@ void _vkCreateDebugUtilsMessengerEXT(const Nan::FunctionCallbackInfo<v8::Value>&
   _VkDebugUtilsMessengerEXT* obj3;
   VkDebugUtilsMessengerEXT *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkDebugUtilsMessengerEXT>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkDebugUtilsMessengerEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkDebugUtilsMessengerEXT]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkDebugUtilsMessengerEXT>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pMessenger'");
@@ -13672,10 +16653,15 @@ void _vkDestroyDebugUtilsMessengerEXT(const Nan::FunctionCallbackInfo<v8::Value>
   _VkInstance* obj0;
   VkInstance *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkInstance::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'instance'");
@@ -13684,10 +16670,15 @@ void _vkDestroyDebugUtilsMessengerEXT(const Nan::FunctionCallbackInfo<v8::Value>
   _VkDebugUtilsMessengerEXT* obj1;
   VkDebugUtilsMessengerEXT *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugUtilsMessengerEXT>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkDebugUtilsMessengerEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkDebugUtilsMessengerEXT]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkDebugUtilsMessengerEXT>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'messenger'");
@@ -13709,10 +16700,15 @@ void _vkSubmitDebugUtilsMessageEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkInstance* obj0;
   VkInstance *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkInstance::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkInstance]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkInstance>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'instance'");
@@ -13725,10 +16721,15 @@ void _vkSubmitDebugUtilsMessageEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkDebugUtilsMessengerCallbackDataEXT* obj3;
   VkDebugUtilsMessengerCallbackDataEXT *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkDebugUtilsMessengerCallbackDataEXT>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkDebugUtilsMessengerCallbackDataEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkDebugUtilsMessengerCallbackDataEXT]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkDebugUtilsMessengerCallbackDataEXT>(obj);
     if (!obj3->flush()) return;
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pCallbackData'");
@@ -13750,10 +16751,15 @@ void _vkGetMemoryHostPointerPropertiesEXT(const Nan::FunctionCallbackInfo<v8::Va
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -13765,10 +16771,15 @@ void _vkGetMemoryHostPointerPropertiesEXT(const Nan::FunctionCallbackInfo<v8::Va
   _VkMemoryHostPointerPropertiesEXT* obj3;
   VkMemoryHostPointerPropertiesEXT *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkMemoryHostPointerPropertiesEXT>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkMemoryHostPointerPropertiesEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkMemoryHostPointerPropertiesEXT]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkMemoryHostPointerPropertiesEXT>(obj);
     if (!obj3->flush()) return;
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pMemoryHostPointerProperties'");
@@ -13788,10 +16799,15 @@ void _vkCmdWriteBufferMarkerAMD(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -13802,10 +16818,15 @@ void _vkCmdWriteBufferMarkerAMD(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkBuffer* obj2;
   VkBuffer *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkBuffer]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'dstBuffer'");
@@ -13832,10 +16853,15 @@ void _vkCreateRenderPass2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -13844,10 +16870,15 @@ void _vkCreateRenderPass2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkRenderPassCreateInfo2KHR* obj1;
   VkRenderPassCreateInfo2KHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkRenderPassCreateInfo2KHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkRenderPassCreateInfo2KHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkRenderPassCreateInfo2KHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkRenderPassCreateInfo2KHR>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -13857,10 +16888,15 @@ void _vkCreateRenderPass2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkRenderPass* obj3;
   VkRenderPass *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkRenderPass>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkRenderPass::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkRenderPass]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkRenderPass>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pRenderPass'");
@@ -13880,10 +16916,15 @@ void _vkCmdBeginRenderPass2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -13892,10 +16933,15 @@ void _vkCmdBeginRenderPass2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkRenderPassBeginInfo* obj1;
   VkRenderPassBeginInfo *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkRenderPassBeginInfo>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkRenderPassBeginInfo::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkRenderPassBeginInfo]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkRenderPassBeginInfo>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pRenderPassBegin'");
@@ -13904,10 +16950,15 @@ void _vkCmdBeginRenderPass2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info)
   _VkSubpassBeginInfoKHR* obj2;
   VkSubpassBeginInfoKHR *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkSubpassBeginInfoKHR>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkSubpassBeginInfoKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkSubpassBeginInfoKHR]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkSubpassBeginInfoKHR>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pSubpassBeginInfo'");
@@ -13928,10 +16979,15 @@ void _vkCmdNextSubpass2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -13940,10 +16996,15 @@ void _vkCmdNextSubpass2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkSubpassBeginInfoKHR* obj1;
   VkSubpassBeginInfoKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSubpassBeginInfoKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSubpassBeginInfoKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSubpassBeginInfoKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSubpassBeginInfoKHR>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pSubpassBeginInfo'");
@@ -13952,10 +17013,15 @@ void _vkCmdNextSubpass2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkSubpassEndInfoKHR* obj2;
   VkSubpassEndInfoKHR *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkSubpassEndInfoKHR>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkSubpassEndInfoKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkSubpassEndInfoKHR]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkSubpassEndInfoKHR>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pSubpassEndInfo'");
@@ -13976,10 +17042,15 @@ void _vkCmdEndRenderPass2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -13988,10 +17059,15 @@ void _vkCmdEndRenderPass2KHR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkSubpassEndInfoKHR* obj1;
   VkSubpassEndInfoKHR *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkSubpassEndInfoKHR>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkSubpassEndInfoKHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkSubpassEndInfoKHR]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkSubpassEndInfoKHR>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pSubpassEndInfo'");
@@ -14011,10 +17087,15 @@ void _vkCmdDrawIndirectCountKHR(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -14023,10 +17104,15 @@ void _vkCmdDrawIndirectCountKHR(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkBuffer* obj1;
   VkBuffer *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'buffer'");
@@ -14037,10 +17123,15 @@ void _vkCmdDrawIndirectCountKHR(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkBuffer* obj3;
   VkBuffer *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'countBuffer'");
@@ -14071,10 +17162,15 @@ void _vkCmdDrawIndexedIndirectCountKHR(const Nan::FunctionCallbackInfo<v8::Value
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -14083,10 +17179,15 @@ void _vkCmdDrawIndexedIndirectCountKHR(const Nan::FunctionCallbackInfo<v8::Value
   _VkBuffer* obj1;
   VkBuffer *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'buffer'");
@@ -14097,10 +17198,15 @@ void _vkCmdDrawIndexedIndirectCountKHR(const Nan::FunctionCallbackInfo<v8::Value
   _VkBuffer* obj3;
   VkBuffer *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'countBuffer'");
@@ -14131,10 +17237,15 @@ void _vkCmdSetCheckpointNV(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -14155,10 +17266,15 @@ void _vkGetQueueCheckpointDataNV(const Nan::FunctionCallbackInfo<v8::Value>& inf
   _VkQueue* obj0;
   VkQueue *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkQueue>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkQueue::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkQueue]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkQueue>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'queue'");
@@ -14168,10 +17284,16 @@ void _vkGetQueueCheckpointDataNV(const Nan::FunctionCallbackInfo<v8::Value>& inf
   uint32_t $p1;
   if (info[1]->IsObject()) {
     obj1 = Nan::To<v8::Object>(info[1]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj1->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj1, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument 2");
+      return;
+    }
+    v8::Local<v8::Value> val = obj1->Get(accessor);
     $p1 = static_cast<uint32_t>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[1]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCheckpointDataCount'");
+    return;
   }
 
   std::shared_ptr<std::vector<VkCheckpointDataNV>> $p2 = nullptr;
@@ -14195,7 +17317,8 @@ void _vkGetQueueCheckpointDataNV(const Nan::FunctionCallbackInfo<v8::Value>& inf
     };
     $p2 = std::make_shared<std::vector<VkCheckpointDataNV>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pCheckpointData'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pCheckpointData'");
+    return;
   }
 
 $vkGetQueueCheckpointDataNV(
@@ -14229,10 +17352,15 @@ void _vkCmdBindTransformFeedbackBuffersEXT(const Nan::FunctionCallbackInfo<v8::V
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -14255,7 +17383,8 @@ void _vkCmdBindTransformFeedbackBuffersEXT(const Nan::FunctionCallbackInfo<v8::V
     };
     $p3 = std::make_shared<std::vector<VkBuffer>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pBuffers'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pBuffers'");
+    return;
   }
 
 
@@ -14266,7 +17395,8 @@ void _vkCmdBindTransformFeedbackBuffersEXT(const Nan::FunctionCallbackInfo<v8::V
     VkDeviceSize* data = getTypedArrayData<VkDeviceSize>(Nan::To<v8::Object>(info[4]).ToLocalChecked());
     $p4 = std::make_shared<VkDeviceSize*>(data);
   } else if (!info[4]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 5 'pOffsets'");
+    Nan::ThrowTypeError("Invalid type for argument 5 'pOffsets'");
+    return;
   }
 
 
@@ -14277,7 +17407,8 @@ void _vkCmdBindTransformFeedbackBuffersEXT(const Nan::FunctionCallbackInfo<v8::V
     VkDeviceSize* data = getTypedArrayData<VkDeviceSize>(Nan::To<v8::Object>(info[5]).ToLocalChecked());
     $p5 = std::make_shared<VkDeviceSize*>(data);
   } else if (!info[5]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 6 'pSizes'");
+    Nan::ThrowTypeError("Invalid type for argument 6 'pSizes'");
+    return;
   }
 
 $vkCmdBindTransformFeedbackBuffersEXT(
@@ -14299,10 +17430,15 @@ void _vkCmdBeginTransformFeedbackEXT(const Nan::FunctionCallbackInfo<v8::Value>&
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -14325,7 +17461,8 @@ void _vkCmdBeginTransformFeedbackEXT(const Nan::FunctionCallbackInfo<v8::Value>&
     };
     $p3 = std::make_shared<std::vector<VkBuffer>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pCounterBuffers'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pCounterBuffers'");
+    return;
   }
 
 
@@ -14336,7 +17473,8 @@ void _vkCmdBeginTransformFeedbackEXT(const Nan::FunctionCallbackInfo<v8::Value>&
     VkDeviceSize* data = getTypedArrayData<VkDeviceSize>(Nan::To<v8::Object>(info[4]).ToLocalChecked());
     $p4 = std::make_shared<VkDeviceSize*>(data);
   } else if (!info[4]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 5 'pCounterBufferOffsets'");
+    Nan::ThrowTypeError("Invalid type for argument 5 'pCounterBufferOffsets'");
+    return;
   }
 
 $vkCmdBeginTransformFeedbackEXT(
@@ -14357,10 +17495,15 @@ void _vkCmdEndTransformFeedbackEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -14383,7 +17526,8 @@ void _vkCmdEndTransformFeedbackEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
     };
     $p3 = std::make_shared<std::vector<VkBuffer>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pCounterBuffers'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pCounterBuffers'");
+    return;
   }
 
 
@@ -14394,7 +17538,8 @@ void _vkCmdEndTransformFeedbackEXT(const Nan::FunctionCallbackInfo<v8::Value>& i
     VkDeviceSize* data = getTypedArrayData<VkDeviceSize>(Nan::To<v8::Object>(info[4]).ToLocalChecked());
     $p4 = std::make_shared<VkDeviceSize*>(data);
   } else if (!info[4]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 5 'pCounterBufferOffsets'");
+    Nan::ThrowTypeError("Invalid type for argument 5 'pCounterBufferOffsets'");
+    return;
   }
 
 $vkCmdEndTransformFeedbackEXT(
@@ -14415,10 +17560,15 @@ void _vkCmdBeginQueryIndexedEXT(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -14427,10 +17577,15 @@ void _vkCmdBeginQueryIndexedEXT(const Nan::FunctionCallbackInfo<v8::Value>& info
   _VkQueryPool* obj1;
   VkQueryPool *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkQueryPool>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkQueryPool::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkQueryPool]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkQueryPool>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'queryPool'");
@@ -14459,10 +17614,15 @@ void _vkCmdEndQueryIndexedEXT(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -14471,10 +17631,15 @@ void _vkCmdEndQueryIndexedEXT(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   _VkQueryPool* obj1;
   VkQueryPool *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkQueryPool>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkQueryPool::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkQueryPool]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkQueryPool>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'queryPool'");
@@ -14500,10 +17665,15 @@ void _vkCmdDrawIndirectByteCountEXT(const Nan::FunctionCallbackInfo<v8::Value>& 
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -14516,10 +17686,15 @@ void _vkCmdDrawIndirectByteCountEXT(const Nan::FunctionCallbackInfo<v8::Value>& 
   _VkBuffer* obj3;
   VkBuffer *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'counterBuffer'");
@@ -14550,10 +17725,15 @@ void _vkCmdSetExclusiveScissorNV(const Nan::FunctionCallbackInfo<v8::Value>& inf
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -14584,7 +17764,8 @@ void _vkCmdSetExclusiveScissorNV(const Nan::FunctionCallbackInfo<v8::Value>& inf
     };
     $p3 = std::make_shared<std::vector<VkRect2D>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pExclusiveScissors'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pExclusiveScissors'");
+    return;
   }
 
 $vkCmdSetExclusiveScissorNV(
@@ -14604,10 +17785,15 @@ void _vkCmdBindShadingRateImageNV(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -14616,10 +17802,15 @@ void _vkCmdBindShadingRateImageNV(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkImageView* obj1;
   VkImageView *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImageView>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkImageView::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkImageView]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImageView>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'imageView'");
@@ -14642,10 +17833,15 @@ void _vkCmdSetViewportShadingRatePaletteNV(const Nan::FunctionCallbackInfo<v8::V
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -14676,7 +17872,8 @@ void _vkCmdSetViewportShadingRatePaletteNV(const Nan::FunctionCallbackInfo<v8::V
     };
     $p3 = std::make_shared<std::vector<VkShadingRatePaletteNV>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pShadingRatePalettes'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pShadingRatePalettes'");
+    return;
   }
 
 $vkCmdSetViewportShadingRatePaletteNV(
@@ -14696,10 +17893,15 @@ void _vkCmdSetCoarseSampleOrderNV(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -14730,7 +17932,8 @@ void _vkCmdSetCoarseSampleOrderNV(const Nan::FunctionCallbackInfo<v8::Value>& in
     };
     $p3 = std::make_shared<std::vector<VkCoarseSampleOrderCustomNV>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pCustomSampleOrders'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pCustomSampleOrders'");
+    return;
   }
 
 $vkCmdSetCoarseSampleOrderNV(
@@ -14750,10 +17953,15 @@ void _vkCmdDrawMeshTasksNV(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -14778,10 +17986,15 @@ void _vkCmdDrawMeshTasksIndirectNV(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -14790,10 +18003,15 @@ void _vkCmdDrawMeshTasksIndirectNV(const Nan::FunctionCallbackInfo<v8::Value>& i
   _VkBuffer* obj1;
   VkBuffer *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'buffer'");
@@ -14822,10 +18040,15 @@ void _vkCmdDrawMeshTasksIndirectCountNV(const Nan::FunctionCallbackInfo<v8::Valu
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -14834,10 +18057,15 @@ void _vkCmdDrawMeshTasksIndirectCountNV(const Nan::FunctionCallbackInfo<v8::Valu
   _VkBuffer* obj1;
   VkBuffer *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'buffer'");
@@ -14848,10 +18076,15 @@ void _vkCmdDrawMeshTasksIndirectCountNV(const Nan::FunctionCallbackInfo<v8::Valu
   _VkBuffer* obj3;
   VkBuffer *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'countBuffer'");
@@ -14882,10 +18115,15 @@ void _vkCompileDeferredNV(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -14894,10 +18132,15 @@ void _vkCompileDeferredNV(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkPipeline* obj1;
   VkPipeline *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPipeline>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPipeline::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPipeline]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPipeline>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pipeline'");
@@ -14918,10 +18161,15 @@ void _vkCreateAccelerationStructureNV(const Nan::FunctionCallbackInfo<v8::Value>
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -14930,10 +18178,15 @@ void _vkCreateAccelerationStructureNV(const Nan::FunctionCallbackInfo<v8::Value>
   _VkAccelerationStructureCreateInfoNV* obj1;
   VkAccelerationStructureCreateInfoNV *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkAccelerationStructureCreateInfoNV>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkAccelerationStructureCreateInfoNV::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkAccelerationStructureCreateInfoNV]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkAccelerationStructureCreateInfoNV>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pCreateInfo'");
@@ -14943,10 +18196,15 @@ void _vkCreateAccelerationStructureNV(const Nan::FunctionCallbackInfo<v8::Value>
   _VkAccelerationStructureNV* obj3;
   VkAccelerationStructureNV *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkAccelerationStructureNV>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkAccelerationStructureNV::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkAccelerationStructureNV]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkAccelerationStructureNV>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'pAccelerationStructure'");
@@ -14966,10 +18224,15 @@ void _vkDestroyAccelerationStructureNV(const Nan::FunctionCallbackInfo<v8::Value
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -14978,10 +18241,15 @@ void _vkDestroyAccelerationStructureNV(const Nan::FunctionCallbackInfo<v8::Value
   _VkAccelerationStructureNV* obj1;
   VkAccelerationStructureNV *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkAccelerationStructureNV>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkAccelerationStructureNV::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkAccelerationStructureNV]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkAccelerationStructureNV>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'accelerationStructure'");
@@ -15003,10 +18271,15 @@ void _vkGetAccelerationStructureMemoryRequirementsNV(const Nan::FunctionCallback
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -15015,10 +18288,15 @@ void _vkGetAccelerationStructureMemoryRequirementsNV(const Nan::FunctionCallback
   _VkAccelerationStructureMemoryRequirementsInfoNV* obj1;
   VkAccelerationStructureMemoryRequirementsInfoNV *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkAccelerationStructureMemoryRequirementsInfoNV>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkAccelerationStructureMemoryRequirementsInfoNV::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkAccelerationStructureMemoryRequirementsInfoNV]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkAccelerationStructureMemoryRequirementsInfoNV>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pInfo'");
@@ -15027,10 +18305,15 @@ void _vkGetAccelerationStructureMemoryRequirementsNV(const Nan::FunctionCallback
   _VkMemoryRequirements2KHR* obj2;
   VkMemoryRequirements2KHR *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkMemoryRequirements2KHR>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkMemoryRequirements2KHR::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkMemoryRequirements2KHR]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkMemoryRequirements2KHR>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pMemoryRequirements'");
@@ -15060,10 +18343,15 @@ void _vkBindAccelerationStructureMemoryNV(const Nan::FunctionCallbackInfo<v8::Va
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -15092,7 +18380,8 @@ void _vkBindAccelerationStructureMemoryNV(const Nan::FunctionCallbackInfo<v8::Va
     };
     $p2 = std::make_shared<std::vector<VkBindAccelerationStructureMemoryInfoNV>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pBindInfos'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pBindInfos'");
+    return;
   }
 
   int32_t out = $vkBindAccelerationStructureMemoryNV(
@@ -15109,10 +18398,15 @@ void _vkCmdCopyAccelerationStructureNV(const Nan::FunctionCallbackInfo<v8::Value
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -15121,10 +18415,15 @@ void _vkCmdCopyAccelerationStructureNV(const Nan::FunctionCallbackInfo<v8::Value
   _VkAccelerationStructureNV* obj1;
   VkAccelerationStructureNV *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkAccelerationStructureNV>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkAccelerationStructureNV::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkAccelerationStructureNV]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkAccelerationStructureNV>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'dst'");
@@ -15133,10 +18432,15 @@ void _vkCmdCopyAccelerationStructureNV(const Nan::FunctionCallbackInfo<v8::Value
   _VkAccelerationStructureNV* obj2;
   VkAccelerationStructureNV *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkAccelerationStructureNV>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkAccelerationStructureNV::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkAccelerationStructureNV]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkAccelerationStructureNV>(obj);
     
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'src'");
@@ -15160,10 +18464,15 @@ void _vkCmdWriteAccelerationStructuresPropertiesNV(const Nan::FunctionCallbackIn
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -15184,7 +18493,8 @@ void _vkCmdWriteAccelerationStructuresPropertiesNV(const Nan::FunctionCallbackIn
     };
     $p2 = std::make_shared<std::vector<VkAccelerationStructureNV>>(data);
   } else if (!info[2]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 3 'pAccelerationStructures'");
+    Nan::ThrowTypeError("Invalid type for argument 3 'pAccelerationStructures'");
+    return;
   }
 
 
@@ -15193,10 +18503,15 @@ void _vkCmdWriteAccelerationStructuresPropertiesNV(const Nan::FunctionCallbackIn
   _VkQueryPool* obj4;
   VkQueryPool *$p4;
   if (info[4]->IsObject()) {
-    obj4 = Nan::ObjectWrap::Unwrap<_VkQueryPool>(Nan::To<v8::Object>(info[4]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[4]).ToLocalChecked();
+    if (!Nan::New(_VkQueryPool::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[4], "argument 5", "[object VkQueryPool]");
+      return;
+    }
+    obj4 = Nan::ObjectWrap::Unwrap<_VkQueryPool>(obj);
     
     $p4 = &obj4->instance;
-  } else if (info[4]->IsNull()){
+  } else if (info[4]->IsNull()) {
     $p4 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 5 'queryPool'");
@@ -15222,10 +18537,15 @@ void _vkCmdBuildAccelerationStructureNV(const Nan::FunctionCallbackInfo<v8::Valu
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -15234,10 +18554,15 @@ void _vkCmdBuildAccelerationStructureNV(const Nan::FunctionCallbackInfo<v8::Valu
   _VkAccelerationStructureInfoNV* obj1;
   VkAccelerationStructureInfoNV *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkAccelerationStructureInfoNV>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkAccelerationStructureInfoNV::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkAccelerationStructureInfoNV]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkAccelerationStructureInfoNV>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pInfo'");
@@ -15246,10 +18571,15 @@ void _vkCmdBuildAccelerationStructureNV(const Nan::FunctionCallbackInfo<v8::Valu
   _VkBuffer* obj2;
   VkBuffer *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkBuffer]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'instanceData'");
@@ -15262,10 +18592,15 @@ void _vkCmdBuildAccelerationStructureNV(const Nan::FunctionCallbackInfo<v8::Valu
   _VkAccelerationStructureNV* obj5;
   VkAccelerationStructureNV *$p5;
   if (info[5]->IsObject()) {
-    obj5 = Nan::ObjectWrap::Unwrap<_VkAccelerationStructureNV>(Nan::To<v8::Object>(info[5]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[5]).ToLocalChecked();
+    if (!Nan::New(_VkAccelerationStructureNV::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[5], "argument 6", "[object VkAccelerationStructureNV]");
+      return;
+    }
+    obj5 = Nan::ObjectWrap::Unwrap<_VkAccelerationStructureNV>(obj);
     
     $p5 = &obj5->instance;
-  } else if (info[5]->IsNull()){
+  } else if (info[5]->IsNull()) {
     $p5 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 6 'dst'");
@@ -15274,10 +18609,15 @@ void _vkCmdBuildAccelerationStructureNV(const Nan::FunctionCallbackInfo<v8::Valu
   _VkAccelerationStructureNV* obj6;
   VkAccelerationStructureNV *$p6;
   if (info[6]->IsObject()) {
-    obj6 = Nan::ObjectWrap::Unwrap<_VkAccelerationStructureNV>(Nan::To<v8::Object>(info[6]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[6]).ToLocalChecked();
+    if (!Nan::New(_VkAccelerationStructureNV::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[6], "argument 7", "[object VkAccelerationStructureNV]");
+      return;
+    }
+    obj6 = Nan::ObjectWrap::Unwrap<_VkAccelerationStructureNV>(obj);
     
     $p6 = &obj6->instance;
-  } else if (info[6]->IsNull()){
+  } else if (info[6]->IsNull()) {
     $p6 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 7 'src'");
@@ -15286,10 +18626,15 @@ void _vkCmdBuildAccelerationStructureNV(const Nan::FunctionCallbackInfo<v8::Valu
   _VkBuffer* obj7;
   VkBuffer *$p7;
   if (info[7]->IsObject()) {
-    obj7 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[7]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[7]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[7], "argument 8", "[object VkBuffer]");
+      return;
+    }
+    obj7 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p7 = &obj7->instance;
-  } else if (info[7]->IsNull()){
+  } else if (info[7]->IsNull()) {
     $p7 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 8 'scratch'");
@@ -15318,10 +18663,15 @@ void _vkCmdTraceRaysNV(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkCommandBuffer* obj0;
   VkCommandBuffer *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkCommandBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkCommandBuffer>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
@@ -15330,10 +18680,15 @@ void _vkCmdTraceRaysNV(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBuffer* obj1;
   VkBuffer *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'raygenShaderBindingTableBuffer'");
@@ -15344,10 +18699,15 @@ void _vkCmdTraceRaysNV(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBuffer* obj3;
   VkBuffer *$p3;
   if (info[3]->IsObject()) {
-    obj3 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[3]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
+      return;
+    }
+    obj3 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p3 = &obj3->instance;
-  } else if (info[3]->IsNull()){
+  } else if (info[3]->IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 4 'missShaderBindingTableBuffer'");
@@ -15360,10 +18720,15 @@ void _vkCmdTraceRaysNV(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBuffer* obj6;
   VkBuffer *$p6;
   if (info[6]->IsObject()) {
-    obj6 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[6]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[6]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[6], "argument 7", "[object VkBuffer]");
+      return;
+    }
+    obj6 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p6 = &obj6->instance;
-  } else if (info[6]->IsNull()){
+  } else if (info[6]->IsNull()) {
     $p6 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 7 'hitShaderBindingTableBuffer'");
@@ -15376,10 +18741,15 @@ void _vkCmdTraceRaysNV(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   _VkBuffer* obj9;
   VkBuffer *$p9;
   if (info[9]->IsObject()) {
-    obj9 = Nan::ObjectWrap::Unwrap<_VkBuffer>(Nan::To<v8::Object>(info[9]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[9]).ToLocalChecked();
+    if (!Nan::New(_VkBuffer::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[9], "argument 10", "[object VkBuffer]");
+      return;
+    }
+    obj9 = Nan::ObjectWrap::Unwrap<_VkBuffer>(obj);
     
     $p9 = &obj9->instance;
-  } else if (info[9]->IsNull()){
+  } else if (info[9]->IsNull()) {
     $p9 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 10 'callableShaderBindingTableBuffer'");
@@ -15422,10 +18792,15 @@ void _vkGetRayTracingShaderGroupHandlesNV(const Nan::FunctionCallbackInfo<v8::Va
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -15434,10 +18809,15 @@ void _vkGetRayTracingShaderGroupHandlesNV(const Nan::FunctionCallbackInfo<v8::Va
   _VkPipeline* obj1;
   VkPipeline *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPipeline>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPipeline::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPipeline]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPipeline>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pipeline'");
@@ -15466,10 +18846,15 @@ void _vkGetAccelerationStructureHandleNV(const Nan::FunctionCallbackInfo<v8::Val
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -15478,10 +18863,15 @@ void _vkGetAccelerationStructureHandleNV(const Nan::FunctionCallbackInfo<v8::Val
   _VkAccelerationStructureNV* obj1;
   VkAccelerationStructureNV *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkAccelerationStructureNV>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkAccelerationStructureNV::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkAccelerationStructureNV]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkAccelerationStructureNV>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'accelerationStructure'");
@@ -15504,10 +18894,15 @@ void _vkCreateRayTracingPipelinesNV(const Nan::FunctionCallbackInfo<v8::Value>& 
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -15516,10 +18911,15 @@ void _vkCreateRayTracingPipelinesNV(const Nan::FunctionCallbackInfo<v8::Value>& 
   _VkPipelineCache* obj1;
   VkPipelineCache *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineCache>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkPipelineCache::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkPipelineCache]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkPipelineCache>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pipelineCache'");
@@ -15548,7 +18948,8 @@ void _vkCreateRayTracingPipelinesNV(const Nan::FunctionCallbackInfo<v8::Value>& 
     };
     $p3 = std::make_shared<std::vector<VkRayTracingPipelineCreateInfoNV>>(data);
   } else if (!info[3]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 4 'pCreateInfos'");
+    Nan::ThrowTypeError("Invalid type for argument 4 'pCreateInfos'");
+    return;
   }
 
 
@@ -15566,7 +18967,8 @@ void _vkCreateRayTracingPipelinesNV(const Nan::FunctionCallbackInfo<v8::Value>& 
     };
     $p5 = std::make_shared<std::vector<VkPipeline>>(data);
   } else if (!info[5]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument 6 'pPipelines'");
+    Nan::ThrowTypeError("Invalid type for argument 6 'pPipelines'");
+    return;
   }
 
   int32_t out = $vkCreateRayTracingPipelinesNV(
@@ -15595,10 +18997,15 @@ void _vkGetImageDrmFormatModifierPropertiesEXT(const Nan::FunctionCallbackInfo<v
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -15607,10 +19014,15 @@ void _vkGetImageDrmFormatModifierPropertiesEXT(const Nan::FunctionCallbackInfo<v
   _VkImage* obj1;
   VkImage *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkImage::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkImage]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkImage>(obj);
     
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'image'");
@@ -15619,10 +19031,15 @@ void _vkGetImageDrmFormatModifierPropertiesEXT(const Nan::FunctionCallbackInfo<v
   _VkImageDrmFormatModifierPropertiesEXT* obj2;
   VkImageDrmFormatModifierPropertiesEXT *$p2;
   if (info[2]->IsObject()) {
-    obj2 = Nan::ObjectWrap::Unwrap<_VkImageDrmFormatModifierPropertiesEXT>(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[2]).ToLocalChecked();
+    if (!Nan::New(_VkImageDrmFormatModifierPropertiesEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[2], "argument 3", "[object VkImageDrmFormatModifierPropertiesEXT]");
+      return;
+    }
+    obj2 = Nan::ObjectWrap::Unwrap<_VkImageDrmFormatModifierPropertiesEXT>(obj);
     if (!obj2->flush()) return;
     $p2 = &obj2->instance;
-  } else if (info[2]->IsNull()){
+  } else if (info[2]->IsNull()) {
     $p2 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'pProperties'");
@@ -15641,10 +19058,15 @@ void _vkGetBufferDeviceAddressEXT(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkDevice* obj0;
   VkDevice *$p0;
   if (info[0]->IsObject()) {
-    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
+    if (!Nan::New(_VkDevice::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[0], "argument 1", "[object VkDevice]");
+      return;
+    }
+    obj0 = Nan::ObjectWrap::Unwrap<_VkDevice>(obj);
     
     $p0 = &obj0->instance;
-  } else if (info[0]->IsNull()){
+  } else if (info[0]->IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'device'");
@@ -15653,10 +19075,15 @@ void _vkGetBufferDeviceAddressEXT(const Nan::FunctionCallbackInfo<v8::Value>& in
   _VkBufferDeviceAddressInfoEXT* obj1;
   VkBufferDeviceAddressInfoEXT *$p1;
   if (info[1]->IsObject()) {
-    obj1 = Nan::ObjectWrap::Unwrap<_VkBufferDeviceAddressInfoEXT>(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[1]).ToLocalChecked();
+    if (!Nan::New(_VkBufferDeviceAddressInfoEXT::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[1], "argument 2", "[object VkBufferDeviceAddressInfoEXT]");
+      return;
+    }
+    obj1 = Nan::ObjectWrap::Unwrap<_VkBufferDeviceAddressInfoEXT>(obj);
     if (!obj1->flush()) return;
     $p1 = &obj1->instance;
-  } else if (info[1]->IsNull()){
+  } else if (info[1]->IsNull()) {
     $p1 = nullptr;
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 2 'pInfo'");

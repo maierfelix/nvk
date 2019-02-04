@@ -42,7 +42,7 @@ function invalidMemberTypeError(member) {
     }
   }
   return `
-    NanInvalidStructMemberTypeError(value, "${currentStruct.name}.${member.name}", "${expected}");
+    NanObjectTypeError(value, "${currentStruct.name}.${member.name}", "${expected}");
   `;
 };
 

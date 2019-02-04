@@ -207,7 +207,8 @@ function getInputArrayBody(param, index) {
   }
   out += `
   } else if (!info[${index}]->IsNull()) {
-    return Nan::ThrowTypeError("Invalid type for argument ${index + 1} '${param.name}'");
+    Nan::ThrowTypeError("Invalid type for argument ${index + 1} '${param.name}'");
+    return;
   }\n`;
   return out;
 };
@@ -234,7 +235,8 @@ function getCallBodyBefore(call) {
         $p${index} = std::make_shared<std::vector<${param.type}>>(data);
       }
     } else if (!info[${index}]->IsNull()) {
-      return Nan::ThrowTypeError("Invalid type for argument ${index + 1} '${param.name}'");
+      Nan::ThrowTypeError("Invalid type for argument ${index + 1} '${param.name}'");
+      return;
     }`;
     }
     else if (param.isArray && param.enumType) {
@@ -257,10 +259,16 @@ function getCallBodyBefore(call) {
   ${param.type} $p${index};
   if (info[${index}]->IsObject()) {
     obj${index} = Nan::To<v8::Object>(info[${index}]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj${index}->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj${index}, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument ${index + 1}");
+      return;
+    }
+    v8::Local<v8::Value> val = obj${index}->Get(accessor);
     $p${index} = static_cast<${param.type}>(Nan::To<bool>(val).FromMaybe(false));
   } else if (!info[${index}]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument ${index + 1} '${param.name}'");
+    return;
   }`;
       case "const char *":
         return `
@@ -269,6 +277,7 @@ function getCallBodyBefore(call) {
     $p${index} = copyV8String(info[${index}]);
   } else if (!info[${index}]->IsNull()) {
     Nan::ThrowTypeError("Expected 'String' or 'null' for argument ${index + 1} '${param.name}'");
+    return;
   }`;
         return ``;
       case "int *":
@@ -288,10 +297,16 @@ function getCallBodyBefore(call) {
   ${param.type} $p${index};
   if (info[${index}]->IsObject()) {
     obj${index} = Nan::To<v8::Object>(info[${index}]).ToLocalChecked();
-    v8::Local<v8::Value> val = obj${index}->Get(Nan::New("$").ToLocalChecked());
+    v8::Local<v8::String> accessor = Nan::New("$").ToLocalChecked();
+    if (!Nan::HasOwnProperty(obj${index}, accessor).FromJust()) {
+      Nan::ThrowReferenceError("Missing Object property '$' for argument ${index + 1}");
+      return;
+    }
+    v8::Local<v8::Value> val = obj${index}->Get(accessor);
     $p${index} = static_cast<${param.type}>(Nan::To<int64_t>(val).FromMaybe(0));
   } else if (!info[${index}]->IsNull()) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument ${index + 1} '${param.name}'");
+    return;
   }`;
         }
       case "void **":
@@ -304,8 +319,9 @@ function getCallBodyBefore(call) {
   if (info[${index}]->IsArrayBufferView()) {
     v8::Local<v8::ArrayBufferView> arr = v8::Local<v8::ArrayBufferView>::Cast(Nan::To<v8::Object>(info[${index}]).ToLocalChecked());
     $p${index} = arr->Buffer()->GetContents().Data();
-  } else {
-    $p${index} = nullptr;
+  } else if (!info[${index}]->IsNull()) {
+    Nan::ThrowTypeError("Expected '${param.jsTypedArrayName}' or 'null' for argument ${index + 1} '${param.name}'");
+    return;
   }`;
       default: {
         // array of structs or handles
@@ -329,10 +345,15 @@ function getCallBodyBefore(call) {
   _${param.type}* obj${index};
   ${param.type} *$p${index};
   if (info[${index}]->IsObject()) {
-    obj${index} = Nan::ObjectWrap::Unwrap<_${param.type}>(Nan::To<v8::Object>(info[${index}]).ToLocalChecked());
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[${index}]).ToLocalChecked();
+    if (!Nan::New(_${param.type}::constructor)->HasInstance(obj)) {
+      NanObjectTypeError(info[${index}], "argument ${index + 1}", "[object ${param.type}]");
+      return;
+    }
+    obj${index} = Nan::ObjectWrap::Unwrap<_${param.type}>(obj);
     ${ param.isStructType ? `if (!obj${index}->flush()) return;` : `` }
     $p${index} = &obj${index}->instance;
-  } else if (info[${index}]->IsNull()){
+  } else if (info[${index}]->IsNull()) {
     $p${index} = ${deinitialize};
   } else {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument ${index + 1} '${param.name}'");
