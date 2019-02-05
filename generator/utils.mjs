@@ -154,7 +154,6 @@ export function isIgnoreableType(obj) {
   return (
     type === "const SECURITY_ATTRIBUTES *" ||
     type === "struct AHardwareBuffer *" ||
-    type === "void" ||
     type === "void *" ||
     type === "const void *" ||
     type === "struct ANativeWindow *" ||

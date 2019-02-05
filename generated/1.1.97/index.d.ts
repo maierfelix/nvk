@@ -16320,145 +16320,145 @@ export interface VkBaseOutStructure {
 
 /** #### CALLS #### **/
 declare function vkCreateInstance(pCreateInfo: VkInstanceCreateInfo | null, pAllocator: null, pInstance: VkInstance | null): number;
-
+declare function vkDestroyInstance(instance: VkInstance | null, pAllocator: null): void;
 declare function vkEnumeratePhysicalDevices(instance: VkInstance | null, pPhysicalDeviceCount: VkInout, pPhysicalDevices: VkPhysicalDevice[] | null): number;
 
 
-
-
-
-
-
+declare function vkGetPhysicalDeviceProperties(physicalDevice: VkPhysicalDevice | null, pProperties: VkPhysicalDeviceProperties | null): void;
+declare function vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice: VkPhysicalDevice | null, pQueueFamilyPropertyCount: VkInout, pQueueFamilyProperties: VkQueueFamilyProperties[] | null): void;
+declare function vkGetPhysicalDeviceMemoryProperties(physicalDevice: VkPhysicalDevice | null, pMemoryProperties: VkPhysicalDeviceMemoryProperties | null): void;
+declare function vkGetPhysicalDeviceFeatures(physicalDevice: VkPhysicalDevice | null, pFeatures: VkPhysicalDeviceFeatures | null): void;
+declare function vkGetPhysicalDeviceFormatProperties(physicalDevice: VkPhysicalDevice | null, format: VkFormat, pFormatProperties: VkFormatProperties | null): void;
 declare function vkGetPhysicalDeviceImageFormatProperties(physicalDevice: VkPhysicalDevice | null, format: VkFormat, type: VkImageType, tiling: VkImageTiling, usage: VkImageUsageFlagBits, flags: VkImageCreateFlagBits, pImageFormatProperties: VkImageFormatProperties | null): number;
 declare function vkCreateDevice(physicalDevice: VkPhysicalDevice | null, pCreateInfo: VkDeviceCreateInfo | null, pAllocator: null, pDevice: VkDevice | null): number;
-
+declare function vkDestroyDevice(device: VkDevice | null, pAllocator: null): void;
 declare function vkEnumerateInstanceVersion(pApiVersion: VkInout): number;
 declare function vkEnumerateInstanceLayerProperties(pPropertyCount: VkInout, pProperties: VkLayerProperties[] | null): number;
 declare function vkEnumerateInstanceExtensionProperties(pLayerName: string | null, pPropertyCount: VkInout, pProperties: VkExtensionProperties[] | null): number;
 declare function vkEnumerateDeviceLayerProperties(physicalDevice: VkPhysicalDevice | null, pPropertyCount: VkInout, pProperties: VkLayerProperties[] | null): number;
 declare function vkEnumerateDeviceExtensionProperties(physicalDevice: VkPhysicalDevice | null, pLayerName: string | null, pPropertyCount: VkInout, pProperties: VkExtensionProperties[] | null): number;
-
+declare function vkGetDeviceQueue(device: VkDevice | null, queueFamilyIndex: number, queueIndex: number, pQueue: VkQueue | null): void;
 declare function vkQueueSubmit(queue: VkQueue | null, submitCount: number, pSubmits: VkSubmitInfo[] | null, fence: VkFence | null): number;
 declare function vkQueueWaitIdle(queue: VkQueue | null): number;
 declare function vkDeviceWaitIdle(device: VkDevice | null): number;
 declare function vkAllocateMemory(device: VkDevice | null, pAllocateInfo: VkMemoryAllocateInfo | null, pAllocator: null, pMemory: VkDeviceMemory | null): number;
-
+declare function vkFreeMemory(device: VkDevice | null, memory: VkDeviceMemory | null, pAllocator: null): void;
 declare function vkMapMemory(device: VkDevice | null, memory: VkDeviceMemory | null, offset: number, size: number, flags: null, ppData: VkInoutAddress): number;
-
+declare function vkUnmapMemory(device: VkDevice | null, memory: VkDeviceMemory | null): void;
 declare function vkFlushMappedMemoryRanges(device: VkDevice | null, memoryRangeCount: number, pMemoryRanges: VkMappedMemoryRange[] | null): number;
 declare function vkInvalidateMappedMemoryRanges(device: VkDevice | null, memoryRangeCount: number, pMemoryRanges: VkMappedMemoryRange[] | null): number;
-
-
+declare function vkGetDeviceMemoryCommitment(device: VkDevice | null, memory: VkDeviceMemory | null, pCommittedMemoryInBytes: VkInout): void;
+declare function vkGetBufferMemoryRequirements(device: VkDevice | null, buffer: VkBuffer | null, pMemoryRequirements: VkMemoryRequirements | null): void;
 declare function vkBindBufferMemory(device: VkDevice | null, buffer: VkBuffer | null, memory: VkDeviceMemory | null, memoryOffset: number): number;
-
+declare function vkGetImageMemoryRequirements(device: VkDevice | null, image: VkImage | null, pMemoryRequirements: VkMemoryRequirements | null): void;
 declare function vkBindImageMemory(device: VkDevice | null, image: VkImage | null, memory: VkDeviceMemory | null, memoryOffset: number): number;
-
-
+declare function vkGetImageSparseMemoryRequirements(device: VkDevice | null, image: VkImage | null, pSparseMemoryRequirementCount: VkInout, pSparseMemoryRequirements: VkSparseImageMemoryRequirements[] | null): void;
+declare function vkGetPhysicalDeviceSparseImageFormatProperties(physicalDevice: VkPhysicalDevice | null, format: VkFormat, type: VkImageType, samples: number, usage: VkImageUsageFlagBits, tiling: VkImageTiling, pPropertyCount: VkInout, pProperties: VkSparseImageFormatProperties[] | null): void;
 declare function vkQueueBindSparse(queue: VkQueue | null, bindInfoCount: number, pBindInfo: VkBindSparseInfo[] | null, fence: VkFence | null): number;
 declare function vkCreateFence(device: VkDevice | null, pCreateInfo: VkFenceCreateInfo | null, pAllocator: null, pFence: VkFence | null): number;
-
+declare function vkDestroyFence(device: VkDevice | null, fence: VkFence | null, pAllocator: null): void;
 declare function vkResetFences(device: VkDevice | null, fenceCount: number, pFences: VkFence[] | null): number;
 declare function vkGetFenceStatus(device: VkDevice | null, fence: VkFence | null): number;
 declare function vkWaitForFences(device: VkDevice | null, fenceCount: number, pFences: VkFence[] | null, waitAll: number, timeout: number): number;
 declare function vkCreateSemaphore(device: VkDevice | null, pCreateInfo: VkSemaphoreCreateInfo | null, pAllocator: null, pSemaphore: VkSemaphore | null): number;
-
+declare function vkDestroySemaphore(device: VkDevice | null, semaphore: VkSemaphore | null, pAllocator: null): void;
 declare function vkCreateEvent(device: VkDevice | null, pCreateInfo: VkEventCreateInfo | null, pAllocator: null, pEvent: VkEvent | null): number;
-
+declare function vkDestroyEvent(device: VkDevice | null, event: VkEvent | null, pAllocator: null): void;
 declare function vkGetEventStatus(device: VkDevice | null, event: VkEvent | null): number;
 declare function vkSetEvent(device: VkDevice | null, event: VkEvent | null): number;
 declare function vkResetEvent(device: VkDevice | null, event: VkEvent | null): number;
 declare function vkCreateQueryPool(device: VkDevice | null, pCreateInfo: VkQueryPoolCreateInfo | null, pAllocator: null, pQueryPool: VkQueryPool | null): number;
-
+declare function vkDestroyQueryPool(device: VkDevice | null, queryPool: VkQueryPool | null, pAllocator: null): void;
 declare function vkGetQueryPoolResults(device: VkDevice | null, queryPool: VkQueryPool | null, firstQuery: number, queryCount: number, dataSize: number, pData: null, stride: number, flags: VkQueryResultFlagBits): number;
 declare function vkCreateBuffer(device: VkDevice | null, pCreateInfo: VkBufferCreateInfo | null, pAllocator: null, pBuffer: VkBuffer | null): number;
-
+declare function vkDestroyBuffer(device: VkDevice | null, buffer: VkBuffer | null, pAllocator: null): void;
 declare function vkCreateBufferView(device: VkDevice | null, pCreateInfo: VkBufferViewCreateInfo | null, pAllocator: null, pView: VkBufferView | null): number;
-
+declare function vkDestroyBufferView(device: VkDevice | null, bufferView: VkBufferView | null, pAllocator: null): void;
 declare function vkCreateImage(device: VkDevice | null, pCreateInfo: VkImageCreateInfo | null, pAllocator: null, pImage: VkImage | null): number;
-
-
+declare function vkDestroyImage(device: VkDevice | null, image: VkImage | null, pAllocator: null): void;
+declare function vkGetImageSubresourceLayout(device: VkDevice | null, image: VkImage | null, pSubresource: VkImageSubresource | null, pLayout: VkSubresourceLayout | null): void;
 declare function vkCreateImageView(device: VkDevice | null, pCreateInfo: VkImageViewCreateInfo | null, pAllocator: null, pView: VkImageView | null): number;
-
+declare function vkDestroyImageView(device: VkDevice | null, imageView: VkImageView | null, pAllocator: null): void;
 declare function vkCreateShaderModule(device: VkDevice | null, pCreateInfo: VkShaderModuleCreateInfo | null, pAllocator: null, pShaderModule: VkShaderModule | null): number;
-
+declare function vkDestroyShaderModule(device: VkDevice | null, shaderModule: VkShaderModule | null, pAllocator: null): void;
 declare function vkCreatePipelineCache(device: VkDevice | null, pCreateInfo: VkPipelineCacheCreateInfo | null, pAllocator: null, pPipelineCache: VkPipelineCache | null): number;
-
+declare function vkDestroyPipelineCache(device: VkDevice | null, pipelineCache: VkPipelineCache | null, pAllocator: null): void;
 declare function vkGetPipelineCacheData(device: VkDevice | null, pipelineCache: VkPipelineCache | null, pDataSize: VkInout, pData: null): number;
 declare function vkMergePipelineCaches(device: VkDevice | null, dstCache: VkPipelineCache | null, srcCacheCount: number, pSrcCaches: VkPipelineCache[] | null): number;
 declare function vkCreateGraphicsPipelines(device: VkDevice | null, pipelineCache: VkPipelineCache | null, createInfoCount: number, pCreateInfos: VkGraphicsPipelineCreateInfo[] | null, pAllocator: null, pPipelines: VkPipeline[] | null): number;
 declare function vkCreateComputePipelines(device: VkDevice | null, pipelineCache: VkPipelineCache | null, createInfoCount: number, pCreateInfos: VkComputePipelineCreateInfo[] | null, pAllocator: null, pPipelines: VkPipeline[] | null): number;
-
+declare function vkDestroyPipeline(device: VkDevice | null, pipeline: VkPipeline | null, pAllocator: null): void;
 declare function vkCreatePipelineLayout(device: VkDevice | null, pCreateInfo: VkPipelineLayoutCreateInfo | null, pAllocator: null, pPipelineLayout: VkPipelineLayout | null): number;
-
+declare function vkDestroyPipelineLayout(device: VkDevice | null, pipelineLayout: VkPipelineLayout | null, pAllocator: null): void;
 declare function vkCreateSampler(device: VkDevice | null, pCreateInfo: VkSamplerCreateInfo | null, pAllocator: null, pSampler: VkSampler | null): number;
-
+declare function vkDestroySampler(device: VkDevice | null, sampler: VkSampler | null, pAllocator: null): void;
 declare function vkCreateDescriptorSetLayout(device: VkDevice | null, pCreateInfo: VkDescriptorSetLayoutCreateInfo | null, pAllocator: null, pSetLayout: VkDescriptorSetLayout | null): number;
-
+declare function vkDestroyDescriptorSetLayout(device: VkDevice | null, descriptorSetLayout: VkDescriptorSetLayout | null, pAllocator: null): void;
 declare function vkCreateDescriptorPool(device: VkDevice | null, pCreateInfo: VkDescriptorPoolCreateInfo | null, pAllocator: null, pDescriptorPool: VkDescriptorPool | null): number;
-
+declare function vkDestroyDescriptorPool(device: VkDevice | null, descriptorPool: VkDescriptorPool | null, pAllocator: null): void;
 declare function vkResetDescriptorPool(device: VkDevice | null, descriptorPool: VkDescriptorPool | null, flags: null): number;
 declare function vkAllocateDescriptorSets(device: VkDevice | null, pAllocateInfo: VkDescriptorSetAllocateInfo | null, pDescriptorSets: VkDescriptorSet[] | null): number;
 declare function vkFreeDescriptorSets(device: VkDevice | null, descriptorPool: VkDescriptorPool | null, descriptorSetCount: number, pDescriptorSets: VkDescriptorSet[] | null): number;
-
+declare function vkUpdateDescriptorSets(device: VkDevice | null, descriptorWriteCount: number, pDescriptorWrites: VkWriteDescriptorSet[] | null, descriptorCopyCount: number, pDescriptorCopies: VkCopyDescriptorSet[] | null): void;
 declare function vkCreateFramebuffer(device: VkDevice | null, pCreateInfo: VkFramebufferCreateInfo | null, pAllocator: null, pFramebuffer: VkFramebuffer | null): number;
-
+declare function vkDestroyFramebuffer(device: VkDevice | null, framebuffer: VkFramebuffer | null, pAllocator: null): void;
 declare function vkCreateRenderPass(device: VkDevice | null, pCreateInfo: VkRenderPassCreateInfo | null, pAllocator: null, pRenderPass: VkRenderPass | null): number;
-
-
+declare function vkDestroyRenderPass(device: VkDevice | null, renderPass: VkRenderPass | null, pAllocator: null): void;
+declare function vkGetRenderAreaGranularity(device: VkDevice | null, renderPass: VkRenderPass | null, pGranularity: VkExtent2D | null): void;
 declare function vkCreateCommandPool(device: VkDevice | null, pCreateInfo: VkCommandPoolCreateInfo | null, pAllocator: null, pCommandPool: VkCommandPool | null): number;
-
+declare function vkDestroyCommandPool(device: VkDevice | null, commandPool: VkCommandPool | null, pAllocator: null): void;
 declare function vkResetCommandPool(device: VkDevice | null, commandPool: VkCommandPool | null, flags: VkCommandPoolResetFlagBits): number;
 declare function vkAllocateCommandBuffers(device: VkDevice | null, pAllocateInfo: VkCommandBufferAllocateInfo | null, pCommandBuffers: VkCommandBuffer[] | null): number;
-
+declare function vkFreeCommandBuffers(device: VkDevice | null, commandPool: VkCommandPool | null, commandBufferCount: number, pCommandBuffers: VkCommandBuffer[] | null): void;
 declare function vkBeginCommandBuffer(commandBuffer: VkCommandBuffer | null, pBeginInfo: VkCommandBufferBeginInfo | null): number;
 declare function vkEndCommandBuffer(commandBuffer: VkCommandBuffer | null): number;
 declare function vkResetCommandBuffer(commandBuffer: VkCommandBuffer | null, flags: VkCommandBufferResetFlagBits): number;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+declare function vkCmdBindPipeline(commandBuffer: VkCommandBuffer | null, pipelineBindPoint: VkPipelineBindPoint, pipeline: VkPipeline | null): void;
+declare function vkCmdSetViewport(commandBuffer: VkCommandBuffer | null, firstViewport: number, viewportCount: number, pViewports: VkViewport[] | null): void;
+declare function vkCmdSetScissor(commandBuffer: VkCommandBuffer | null, firstScissor: number, scissorCount: number, pScissors: VkRect2D[] | null): void;
+declare function vkCmdSetLineWidth(commandBuffer: VkCommandBuffer | null, lineWidth: number): void;
+declare function vkCmdSetDepthBias(commandBuffer: VkCommandBuffer | null, depthBiasConstantFactor: number, depthBiasClamp: number, depthBiasSlopeFactor: number): void;
+declare function vkCmdSetBlendConstants(commandBuffer: VkCommandBuffer | null, blendConstants: number[] | null): void;
+declare function vkCmdSetDepthBounds(commandBuffer: VkCommandBuffer | null, minDepthBounds: number, maxDepthBounds: number): void;
+declare function vkCmdSetStencilCompareMask(commandBuffer: VkCommandBuffer | null, faceMask: VkStencilFaceFlagBits, compareMask: number): void;
+declare function vkCmdSetStencilWriteMask(commandBuffer: VkCommandBuffer | null, faceMask: VkStencilFaceFlagBits, writeMask: number): void;
+declare function vkCmdSetStencilReference(commandBuffer: VkCommandBuffer | null, faceMask: VkStencilFaceFlagBits, reference: number): void;
+declare function vkCmdBindDescriptorSets(commandBuffer: VkCommandBuffer | null, pipelineBindPoint: VkPipelineBindPoint, layout: VkPipelineLayout | null, firstSet: number, descriptorSetCount: number, pDescriptorSets: VkDescriptorSet[] | null, dynamicOffsetCount: number, pDynamicOffsets: VkInout): void;
+declare function vkCmdBindIndexBuffer(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: number, indexType: VkIndexType): void;
+declare function vkCmdBindVertexBuffers(commandBuffer: VkCommandBuffer | null, firstBinding: number, bindingCount: number, pBuffers: VkBuffer[] | null, pOffsets: VkInout): void;
+declare function vkCmdDraw(commandBuffer: VkCommandBuffer | null, vertexCount: number, instanceCount: number, firstVertex: number, firstInstance: number): void;
+declare function vkCmdDrawIndexed(commandBuffer: VkCommandBuffer | null, indexCount: number, instanceCount: number, firstIndex: number, vertexOffset: number, firstInstance: number): void;
+declare function vkCmdDrawIndirect(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: number, drawCount: number, stride: number): void;
+declare function vkCmdDrawIndexedIndirect(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: number, drawCount: number, stride: number): void;
+declare function vkCmdDispatch(commandBuffer: VkCommandBuffer | null, groupCountX: number, groupCountY: number, groupCountZ: number): void;
+declare function vkCmdDispatchIndirect(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: number): void;
+declare function vkCmdCopyBuffer(commandBuffer: VkCommandBuffer | null, srcBuffer: VkBuffer | null, dstBuffer: VkBuffer | null, regionCount: number, pRegions: VkBufferCopy[] | null): void;
+declare function vkCmdCopyImage(commandBuffer: VkCommandBuffer | null, srcImage: VkImage | null, srcImageLayout: VkImageLayout, dstImage: VkImage | null, dstImageLayout: VkImageLayout, regionCount: number, pRegions: VkImageCopy[] | null): void;
+declare function vkCmdBlitImage(commandBuffer: VkCommandBuffer | null, srcImage: VkImage | null, srcImageLayout: VkImageLayout, dstImage: VkImage | null, dstImageLayout: VkImageLayout, regionCount: number, pRegions: VkImageBlit[] | null, filter: VkFilter): void;
+declare function vkCmdCopyBufferToImage(commandBuffer: VkCommandBuffer | null, srcBuffer: VkBuffer | null, dstImage: VkImage | null, dstImageLayout: VkImageLayout, regionCount: number, pRegions: VkBufferImageCopy[] | null): void;
+declare function vkCmdCopyImageToBuffer(commandBuffer: VkCommandBuffer | null, srcImage: VkImage | null, srcImageLayout: VkImageLayout, dstBuffer: VkBuffer | null, regionCount: number, pRegions: VkBufferImageCopy[] | null): void;
+declare function vkCmdUpdateBuffer(commandBuffer: VkCommandBuffer | null, dstBuffer: VkBuffer | null, dstOffset: number, dataSize: number, pData: null): void;
+declare function vkCmdFillBuffer(commandBuffer: VkCommandBuffer | null, dstBuffer: VkBuffer | null, dstOffset: number, size: number, data: number): void;
+declare function vkCmdClearColorImage(commandBuffer: VkCommandBuffer | null, image: VkImage | null, imageLayout: VkImageLayout, pColor: VkClearColorValue | null, rangeCount: number, pRanges: VkImageSubresourceRange[] | null): void;
+declare function vkCmdClearDepthStencilImage(commandBuffer: VkCommandBuffer | null, image: VkImage | null, imageLayout: VkImageLayout, pDepthStencil: VkClearDepthStencilValue | null, rangeCount: number, pRanges: VkImageSubresourceRange[] | null): void;
+declare function vkCmdClearAttachments(commandBuffer: VkCommandBuffer | null, attachmentCount: number, pAttachments: VkClearAttachment[] | null, rectCount: number, pRects: VkClearRect[] | null): void;
+declare function vkCmdResolveImage(commandBuffer: VkCommandBuffer | null, srcImage: VkImage | null, srcImageLayout: VkImageLayout, dstImage: VkImage | null, dstImageLayout: VkImageLayout, regionCount: number, pRegions: VkImageResolve[] | null): void;
+declare function vkCmdSetEvent(commandBuffer: VkCommandBuffer | null, event: VkEvent | null, stageMask: VkPipelineStageFlagBits): void;
+declare function vkCmdResetEvent(commandBuffer: VkCommandBuffer | null, event: VkEvent | null, stageMask: VkPipelineStageFlagBits): void;
+declare function vkCmdWaitEvents(commandBuffer: VkCommandBuffer | null, eventCount: number, pEvents: VkEvent[] | null, srcStageMask: VkPipelineStageFlagBits, dstStageMask: VkPipelineStageFlagBits, memoryBarrierCount: number, pMemoryBarriers: VkMemoryBarrier[] | null, bufferMemoryBarrierCount: number, pBufferMemoryBarriers: VkBufferMemoryBarrier[] | null, imageMemoryBarrierCount: number, pImageMemoryBarriers: VkImageMemoryBarrier[] | null): void;
+declare function vkCmdPipelineBarrier(commandBuffer: VkCommandBuffer | null, srcStageMask: VkPipelineStageFlagBits, dstStageMask: VkPipelineStageFlagBits, dependencyFlags: VkDependencyFlagBits, memoryBarrierCount: number, pMemoryBarriers: VkMemoryBarrier[] | null, bufferMemoryBarrierCount: number, pBufferMemoryBarriers: VkBufferMemoryBarrier[] | null, imageMemoryBarrierCount: number, pImageMemoryBarriers: VkImageMemoryBarrier[] | null): void;
+declare function vkCmdBeginQuery(commandBuffer: VkCommandBuffer | null, queryPool: VkQueryPool | null, query: number, flags: VkQueryControlFlagBits): void;
+declare function vkCmdEndQuery(commandBuffer: VkCommandBuffer | null, queryPool: VkQueryPool | null, query: number): void;
+declare function vkCmdBeginConditionalRenderingEXT(commandBuffer: VkCommandBuffer | null, pConditionalRenderingBegin: VkConditionalRenderingBeginInfoEXT | null): void;
+declare function vkCmdEndConditionalRenderingEXT(commandBuffer: VkCommandBuffer | null): void;
+declare function vkCmdResetQueryPool(commandBuffer: VkCommandBuffer | null, queryPool: VkQueryPool | null, firstQuery: number, queryCount: number): void;
+declare function vkCmdWriteTimestamp(commandBuffer: VkCommandBuffer | null, pipelineStage: number, queryPool: VkQueryPool | null, query: number): void;
+declare function vkCmdCopyQueryPoolResults(commandBuffer: VkCommandBuffer | null, queryPool: VkQueryPool | null, firstQuery: number, queryCount: number, dstBuffer: VkBuffer | null, dstOffset: number, stride: number, flags: VkQueryResultFlagBits): void;
+declare function vkCmdPushConstants(commandBuffer: VkCommandBuffer | null, layout: VkPipelineLayout | null, stageFlags: VkShaderStageFlagBits, offset: number, size: number, pValues: null): void;
+declare function vkCmdBeginRenderPass(commandBuffer: VkCommandBuffer | null, pRenderPassBegin: VkRenderPassBeginInfo | null, contents: VkSubpassContents): void;
+declare function vkCmdNextSubpass(commandBuffer: VkCommandBuffer | null, contents: VkSubpassContents): void;
+declare function vkCmdEndRenderPass(commandBuffer: VkCommandBuffer | null): void;
+declare function vkCmdExecuteCommands(commandBuffer: VkCommandBuffer | null, commandBufferCount: number, pCommandBuffers: VkCommandBuffer[] | null): void;
 declare function vkGetPhysicalDeviceDisplayPropertiesKHR(physicalDevice: VkPhysicalDevice | null, pPropertyCount: VkInout, pProperties: VkDisplayPropertiesKHR[] | null): number;
 declare function vkGetPhysicalDeviceDisplayPlanePropertiesKHR(physicalDevice: VkPhysicalDevice | null, pPropertyCount: VkInout, pProperties: VkDisplayPlanePropertiesKHR[] | null): number;
 declare function vkGetDisplayPlaneSupportedDisplaysKHR(physicalDevice: VkPhysicalDevice | null, planeIndex: number, pDisplayCount: VkInout, pDisplays: VkDisplayKHR[] | null): number;
@@ -16467,59 +16467,59 @@ declare function vkCreateDisplayModeKHR(physicalDevice: VkPhysicalDevice | null,
 declare function vkGetDisplayPlaneCapabilitiesKHR(physicalDevice: VkPhysicalDevice | null, mode: VkDisplayModeKHR | null, planeIndex: number, pCapabilities: VkDisplayPlaneCapabilitiesKHR | null): number;
 declare function vkCreateDisplayPlaneSurfaceKHR(instance: VkInstance | null, pCreateInfo: VkDisplaySurfaceCreateInfoKHR | null, pAllocator: null, pSurface: VkSurfaceKHR | null): number;
 declare function vkCreateSharedSwapchainsKHR(device: VkDevice | null, swapchainCount: number, pCreateInfos: VkSwapchainCreateInfoKHR[] | null, pAllocator: null, pSwapchains: VkSwapchainKHR[] | null): number;
-
+declare function vkDestroySurfaceKHR(instance: VkInstance | null, surface: VkSurfaceKHR | null, pAllocator: null): void;
 declare function vkGetPhysicalDeviceSurfaceSupportKHR(physicalDevice: VkPhysicalDevice | null, queueFamilyIndex: number, surface: VkSurfaceKHR | null, pSupported: VkInout): number;
 declare function vkGetPhysicalDeviceSurfaceCapabilitiesKHR(physicalDevice: VkPhysicalDevice | null, surface: VkSurfaceKHR | null, pSurfaceCapabilities: VkSurfaceCapabilitiesKHR | null): number;
 declare function vkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice: VkPhysicalDevice | null, surface: VkSurfaceKHR | null, pSurfaceFormatCount: VkInout, pSurfaceFormats: VkSurfaceFormatKHR[] | null): number;
 declare function vkGetPhysicalDeviceSurfacePresentModesKHR(physicalDevice: VkPhysicalDevice | null, surface: VkSurfaceKHR | null, pPresentModeCount: VkInout, pPresentModes: VkInout): number;
 declare function vkCreateSwapchainKHR(device: VkDevice | null, pCreateInfo: VkSwapchainCreateInfoKHR | null, pAllocator: null, pSwapchain: VkSwapchainKHR | null): number;
-
+declare function vkDestroySwapchainKHR(device: VkDevice | null, swapchain: VkSwapchainKHR | null, pAllocator: null): void;
 declare function vkGetSwapchainImagesKHR(device: VkDevice | null, swapchain: VkSwapchainKHR | null, pSwapchainImageCount: VkInout, pSwapchainImages: VkImage[] | null): number;
 declare function vkAcquireNextImageKHR(device: VkDevice | null, swapchain: VkSwapchainKHR | null, timeout: number, semaphore: VkSemaphore | null, fence: VkFence | null, pImageIndex: VkInout): number;
 declare function vkQueuePresentKHR(queue: VkQueue | null, pPresentInfo: VkPresentInfoKHR | null): number;
 declare function vkCreateWin32SurfaceKHR(instance: VkInstance | null, pCreateInfo: VkWin32SurfaceCreateInfoKHR | null, pAllocator: null, pSurface: VkSurfaceKHR | null): number;
 declare function vkGetPhysicalDeviceWin32PresentationSupportKHR(physicalDevice: VkPhysicalDevice | null, queueFamilyIndex: number): number;
 declare function vkCreateDebugReportCallbackEXT(instance: VkInstance | null, pCreateInfo: VkDebugReportCallbackCreateInfoEXT | null, pAllocator: null, pCallback: VkDebugReportCallbackEXT | null): number;
-
-
+declare function vkDestroyDebugReportCallbackEXT(instance: VkInstance | null, callback: VkDebugReportCallbackEXT | null, pAllocator: null): void;
+declare function vkDebugReportMessageEXT(instance: VkInstance | null, flags: VkDebugReportFlagBitsEXT, objectType: VkDebugReportObjectTypeEXT, object: number, location: number, messageCode: number, pLayerPrefix: string | null, pMessage: string | null): void;
 declare function vkDebugMarkerSetObjectNameEXT(device: VkDevice | null, pNameInfo: VkDebugMarkerObjectNameInfoEXT | null): number;
 declare function vkDebugMarkerSetObjectTagEXT(device: VkDevice | null, pTagInfo: VkDebugMarkerObjectTagInfoEXT | null): number;
-
-
-
+declare function vkCmdDebugMarkerBeginEXT(commandBuffer: VkCommandBuffer | null, pMarkerInfo: VkDebugMarkerMarkerInfoEXT | null): void;
+declare function vkCmdDebugMarkerEndEXT(commandBuffer: VkCommandBuffer | null): void;
+declare function vkCmdDebugMarkerInsertEXT(commandBuffer: VkCommandBuffer | null, pMarkerInfo: VkDebugMarkerMarkerInfoEXT | null): void;
 declare function vkGetPhysicalDeviceExternalImageFormatPropertiesNV(physicalDevice: VkPhysicalDevice | null, format: VkFormat, type: VkImageType, tiling: VkImageTiling, usage: VkImageUsageFlagBits, flags: VkImageCreateFlagBits, externalHandleType: VkExternalMemoryHandleTypeFlagBitsNV, pExternalImageFormatProperties: VkExternalImageFormatPropertiesNV | null): number;
 declare function vkGetMemoryWin32HandleNV(device: VkDevice | null, memory: VkDeviceMemory | null, handleType: VkExternalMemoryHandleTypeFlagBitsNV, pHandle: null): number;
-
-
-
-
+declare function vkCmdDrawIndirectCountAMD(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: number, countBuffer: VkBuffer | null, countBufferOffset: number, maxDrawCount: number, stride: number): void;
+declare function vkCmdDrawIndexedIndirectCountAMD(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: number, countBuffer: VkBuffer | null, countBufferOffset: number, maxDrawCount: number, stride: number): void;
+declare function vkCmdProcessCommandsNVX(commandBuffer: VkCommandBuffer | null, pProcessCommandsInfo: VkCmdProcessCommandsInfoNVX | null): void;
+declare function vkCmdReserveSpaceForCommandsNVX(commandBuffer: VkCommandBuffer | null, pReserveSpaceInfo: VkCmdReserveSpaceForCommandsInfoNVX | null): void;
 declare function vkCreateIndirectCommandsLayoutNVX(device: VkDevice | null, pCreateInfo: VkIndirectCommandsLayoutCreateInfoNVX | null, pAllocator: null, pIndirectCommandsLayout: VkIndirectCommandsLayoutNVX | null): number;
-
+declare function vkDestroyIndirectCommandsLayoutNVX(device: VkDevice | null, indirectCommandsLayout: VkIndirectCommandsLayoutNVX | null, pAllocator: null): void;
 declare function vkCreateObjectTableNVX(device: VkDevice | null, pCreateInfo: VkObjectTableCreateInfoNVX | null, pAllocator: null, pObjectTable: VkObjectTableNVX | null): number;
-
+declare function vkDestroyObjectTableNVX(device: VkDevice | null, objectTable: VkObjectTableNVX | null, pAllocator: null): void;
 declare function vkRegisterObjectsNVX(device: VkDevice | null, objectTable: VkObjectTableNVX | null, objectCount: number, ppObjectTableEntries: VkObjectTableEntryNVX[] | null, pObjectIndices: VkInout): number;
 declare function vkUnregisterObjectsNVX(device: VkDevice | null, objectTable: VkObjectTableNVX | null, objectCount: number, pObjectEntryTypes: VkInout, pObjectIndices: VkInout): number;
-
-
-
-
+declare function vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(physicalDevice: VkPhysicalDevice | null, pFeatures: VkDeviceGeneratedCommandsFeaturesNVX | null, pLimits: VkDeviceGeneratedCommandsLimitsNVX | null): void;
+declare function vkGetPhysicalDeviceFeatures2(physicalDevice: VkPhysicalDevice | null, pFeatures: VkPhysicalDeviceFeatures2 | null): void;
+declare function vkGetPhysicalDeviceProperties2(physicalDevice: VkPhysicalDevice | null, pProperties: VkPhysicalDeviceProperties2 | null): void;
+declare function vkGetPhysicalDeviceFormatProperties2(physicalDevice: VkPhysicalDevice | null, format: VkFormat, pFormatProperties: VkFormatProperties2 | null): void;
 declare function vkGetPhysicalDeviceImageFormatProperties2(physicalDevice: VkPhysicalDevice | null, pImageFormatInfo: VkPhysicalDeviceImageFormatInfo2 | null, pImageFormatProperties: VkImageFormatProperties2 | null): number;
-
-
-
-
-
-
+declare function vkGetPhysicalDeviceQueueFamilyProperties2(physicalDevice: VkPhysicalDevice | null, pQueueFamilyPropertyCount: VkInout, pQueueFamilyProperties: VkQueueFamilyProperties2[] | null): void;
+declare function vkGetPhysicalDeviceMemoryProperties2(physicalDevice: VkPhysicalDevice | null, pMemoryProperties: VkPhysicalDeviceMemoryProperties2 | null): void;
+declare function vkGetPhysicalDeviceSparseImageFormatProperties2(physicalDevice: VkPhysicalDevice | null, pFormatInfo: VkPhysicalDeviceSparseImageFormatInfo2 | null, pPropertyCount: VkInout, pProperties: VkSparseImageFormatProperties2[] | null): void;
+declare function vkCmdPushDescriptorSetKHR(commandBuffer: VkCommandBuffer | null, pipelineBindPoint: VkPipelineBindPoint, layout: VkPipelineLayout | null, set: number, descriptorWriteCount: number, pDescriptorWrites: VkWriteDescriptorSet[] | null): void;
+declare function vkTrimCommandPool(device: VkDevice | null, commandPool: VkCommandPool | null, flags: null): void;
+declare function vkGetPhysicalDeviceExternalBufferProperties(physicalDevice: VkPhysicalDevice | null, pExternalBufferInfo: VkPhysicalDeviceExternalBufferInfo | null, pExternalBufferProperties: VkExternalBufferProperties | null): void;
 declare function vkGetMemoryWin32HandleKHR(device: VkDevice | null, pGetWin32HandleInfo: VkMemoryGetWin32HandleInfoKHR | null, pHandle: null): number;
 declare function vkGetMemoryWin32HandlePropertiesKHR(device: VkDevice | null, handleType: number, handle: null, pMemoryWin32HandleProperties: VkMemoryWin32HandlePropertiesKHR | null): number;
 declare function vkGetMemoryFdKHR(device: VkDevice | null, pGetFdInfo: VkMemoryGetFdInfoKHR | null, pFd: VkInout): number;
 declare function vkGetMemoryFdPropertiesKHR(device: VkDevice | null, handleType: number, fd: number, pMemoryFdProperties: VkMemoryFdPropertiesKHR | null): number;
-
+declare function vkGetPhysicalDeviceExternalSemaphoreProperties(physicalDevice: VkPhysicalDevice | null, pExternalSemaphoreInfo: VkPhysicalDeviceExternalSemaphoreInfo | null, pExternalSemaphoreProperties: VkExternalSemaphoreProperties | null): void;
 declare function vkGetSemaphoreWin32HandleKHR(device: VkDevice | null, pGetWin32HandleInfo: VkSemaphoreGetWin32HandleInfoKHR | null, pHandle: null): number;
 declare function vkImportSemaphoreWin32HandleKHR(device: VkDevice | null, pImportSemaphoreWin32HandleInfo: VkImportSemaphoreWin32HandleInfoKHR | null): number;
 declare function vkGetSemaphoreFdKHR(device: VkDevice | null, pGetFdInfo: VkSemaphoreGetFdInfoKHR | null, pFd: VkInout): number;
 declare function vkImportSemaphoreFdKHR(device: VkDevice | null, pImportSemaphoreFdInfo: VkImportSemaphoreFdInfoKHR | null): number;
-
+declare function vkGetPhysicalDeviceExternalFenceProperties(physicalDevice: VkPhysicalDevice | null, pExternalFenceInfo: VkPhysicalDeviceExternalFenceInfo | null, pExternalFenceProperties: VkExternalFenceProperties | null): void;
 declare function vkGetFenceWin32HandleKHR(device: VkDevice | null, pGetWin32HandleInfo: VkFenceGetWin32HandleInfoKHR | null, pHandle: null): number;
 declare function vkImportFenceWin32HandleKHR(device: VkDevice | null, pImportFenceWin32HandleInfo: VkImportFenceWin32HandleInfoKHR | null): number;
 declare function vkGetFenceFdKHR(device: VkDevice | null, pGetFdInfo: VkFenceGetFdInfoKHR | null, pFd: VkInout): number;
@@ -16531,90 +16531,90 @@ declare function vkRegisterDisplayEventEXT(device: VkDevice | null, display: VkD
 declare function vkGetSwapchainCounterEXT(device: VkDevice | null, swapchain: VkSwapchainKHR | null, counter: number, pCounterValue: VkInout): number;
 declare function vkGetPhysicalDeviceSurfaceCapabilities2EXT(physicalDevice: VkPhysicalDevice | null, surface: VkSurfaceKHR | null, pSurfaceCapabilities: VkSurfaceCapabilities2EXT | null): number;
 declare function vkEnumeratePhysicalDeviceGroups(instance: VkInstance | null, pPhysicalDeviceGroupCount: VkInout, pPhysicalDeviceGroupProperties: VkPhysicalDeviceGroupProperties[] | null): number;
-
+declare function vkGetDeviceGroupPeerMemoryFeatures(device: VkDevice | null, heapIndex: number, localDeviceIndex: number, remoteDeviceIndex: number, pPeerMemoryFeatures: VkInout): void;
 declare function vkBindBufferMemory2(device: VkDevice | null, bindInfoCount: number, pBindInfos: VkBindBufferMemoryInfo[] | null): number;
 declare function vkBindImageMemory2(device: VkDevice | null, bindInfoCount: number, pBindInfos: VkBindImageMemoryInfo[] | null): number;
-
+declare function vkCmdSetDeviceMask(commandBuffer: VkCommandBuffer | null, deviceMask: number): void;
 declare function vkGetDeviceGroupPresentCapabilitiesKHR(device: VkDevice | null, pDeviceGroupPresentCapabilities: VkDeviceGroupPresentCapabilitiesKHR | null): number;
 declare function vkGetDeviceGroupSurfacePresentModesKHR(device: VkDevice | null, surface: VkSurfaceKHR | null, pModes: VkInout): number;
 declare function vkAcquireNextImage2KHR(device: VkDevice | null, pAcquireInfo: VkAcquireNextImageInfoKHR | null, pImageIndex: VkInout): number;
-
+declare function vkCmdDispatchBase(commandBuffer: VkCommandBuffer | null, baseGroupX: number, baseGroupY: number, baseGroupZ: number, groupCountX: number, groupCountY: number, groupCountZ: number): void;
 declare function vkGetPhysicalDevicePresentRectanglesKHR(physicalDevice: VkPhysicalDevice | null, surface: VkSurfaceKHR | null, pRectCount: VkInout, pRects: VkRect2D[] | null): number;
 declare function vkCreateDescriptorUpdateTemplate(device: VkDevice | null, pCreateInfo: VkDescriptorUpdateTemplateCreateInfo | null, pAllocator: null, pDescriptorUpdateTemplate: VkDescriptorUpdateTemplate | null): number;
-
-
-
-
+declare function vkDestroyDescriptorUpdateTemplate(device: VkDevice | null, descriptorUpdateTemplate: VkDescriptorUpdateTemplate | null, pAllocator: null): void;
+declare function vkUpdateDescriptorSetWithTemplate(device: VkDevice | null, descriptorSet: VkDescriptorSet | null, descriptorUpdateTemplate: VkDescriptorUpdateTemplate | null, pData: null): void;
+declare function vkCmdPushDescriptorSetWithTemplateKHR(commandBuffer: VkCommandBuffer | null, descriptorUpdateTemplate: VkDescriptorUpdateTemplate | null, layout: VkPipelineLayout | null, set: number, pData: null): void;
+declare function vkSetHdrMetadataEXT(device: VkDevice | null, swapchainCount: number, pSwapchains: VkSwapchainKHR[] | null, pMetadata: VkHdrMetadataEXT[] | null): void;
 declare function vkGetSwapchainStatusKHR(device: VkDevice | null, swapchain: VkSwapchainKHR | null): number;
 declare function vkGetRefreshCycleDurationGOOGLE(device: VkDevice | null, swapchain: VkSwapchainKHR | null, pDisplayTimingProperties: VkRefreshCycleDurationGOOGLE | null): number;
 declare function vkGetPastPresentationTimingGOOGLE(device: VkDevice | null, swapchain: VkSwapchainKHR | null, pPresentationTimingCount: VkInout, pPresentationTimings: VkPastPresentationTimingGOOGLE[] | null): number;
-
-
-
-
+declare function vkCmdSetViewportWScalingNV(commandBuffer: VkCommandBuffer | null, firstViewport: number, viewportCount: number, pViewportWScalings: VkViewportWScalingNV[] | null): void;
+declare function vkCmdSetDiscardRectangleEXT(commandBuffer: VkCommandBuffer | null, firstDiscardRectangle: number, discardRectangleCount: number, pDiscardRectangles: VkRect2D[] | null): void;
+declare function vkCmdSetSampleLocationsEXT(commandBuffer: VkCommandBuffer | null, pSampleLocationsInfo: VkSampleLocationsInfoEXT | null): void;
+declare function vkGetPhysicalDeviceMultisamplePropertiesEXT(physicalDevice: VkPhysicalDevice | null, samples: number, pMultisampleProperties: VkMultisamplePropertiesEXT | null): void;
 declare function vkGetPhysicalDeviceSurfaceCapabilities2KHR(physicalDevice: VkPhysicalDevice | null, pSurfaceInfo: VkPhysicalDeviceSurfaceInfo2KHR | null, pSurfaceCapabilities: VkSurfaceCapabilities2KHR | null): number;
 declare function vkGetPhysicalDeviceSurfaceFormats2KHR(physicalDevice: VkPhysicalDevice | null, pSurfaceInfo: VkPhysicalDeviceSurfaceInfo2KHR | null, pSurfaceFormatCount: VkInout, pSurfaceFormats: VkSurfaceFormat2KHR[] | null): number;
 declare function vkGetPhysicalDeviceDisplayProperties2KHR(physicalDevice: VkPhysicalDevice | null, pPropertyCount: VkInout, pProperties: VkDisplayProperties2KHR[] | null): number;
 declare function vkGetPhysicalDeviceDisplayPlaneProperties2KHR(physicalDevice: VkPhysicalDevice | null, pPropertyCount: VkInout, pProperties: VkDisplayPlaneProperties2KHR[] | null): number;
 declare function vkGetDisplayModeProperties2KHR(physicalDevice: VkPhysicalDevice | null, display: VkDisplayKHR | null, pPropertyCount: VkInout, pProperties: VkDisplayModeProperties2KHR[] | null): number;
 declare function vkGetDisplayPlaneCapabilities2KHR(physicalDevice: VkPhysicalDevice | null, pDisplayPlaneInfo: VkDisplayPlaneInfo2KHR | null, pCapabilities: VkDisplayPlaneCapabilities2KHR | null): number;
-
-
-
+declare function vkGetBufferMemoryRequirements2(device: VkDevice | null, pInfo: VkBufferMemoryRequirementsInfo2 | null, pMemoryRequirements: VkMemoryRequirements2 | null): void;
+declare function vkGetImageMemoryRequirements2(device: VkDevice | null, pInfo: VkImageMemoryRequirementsInfo2 | null, pMemoryRequirements: VkMemoryRequirements2 | null): void;
+declare function vkGetImageSparseMemoryRequirements2(device: VkDevice | null, pInfo: VkImageSparseMemoryRequirementsInfo2 | null, pSparseMemoryRequirementCount: VkInout, pSparseMemoryRequirements: VkSparseImageMemoryRequirements2[] | null): void;
 declare function vkCreateSamplerYcbcrConversion(device: VkDevice | null, pCreateInfo: VkSamplerYcbcrConversionCreateInfo | null, pAllocator: null, pYcbcrConversion: VkSamplerYcbcrConversion | null): number;
-
-
+declare function vkDestroySamplerYcbcrConversion(device: VkDevice | null, ycbcrConversion: VkSamplerYcbcrConversion | null, pAllocator: null): void;
+declare function vkGetDeviceQueue2(device: VkDevice | null, pQueueInfo: VkDeviceQueueInfo2 | null, pQueue: VkQueue | null): void;
 declare function vkCreateValidationCacheEXT(device: VkDevice | null, pCreateInfo: VkValidationCacheCreateInfoEXT | null, pAllocator: null, pValidationCache: VkValidationCacheEXT | null): number;
-
+declare function vkDestroyValidationCacheEXT(device: VkDevice | null, validationCache: VkValidationCacheEXT | null, pAllocator: null): void;
 declare function vkGetValidationCacheDataEXT(device: VkDevice | null, validationCache: VkValidationCacheEXT | null, pDataSize: VkInout, pData: null): number;
 declare function vkMergeValidationCachesEXT(device: VkDevice | null, dstCache: VkValidationCacheEXT | null, srcCacheCount: number, pSrcCaches: VkValidationCacheEXT[] | null): number;
-
+declare function vkGetDescriptorSetLayoutSupport(device: VkDevice | null, pCreateInfo: VkDescriptorSetLayoutCreateInfo | null, pSupport: VkDescriptorSetLayoutSupport | null): void;
 declare function vkGetShaderInfoAMD(device: VkDevice | null, pipeline: VkPipeline | null, shaderStage: number, infoType: VkShaderInfoTypeAMD, pInfoSize: VkInout, pInfo: null): number;
 declare function vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(physicalDevice: VkPhysicalDevice | null, pTimeDomainCount: VkInout, pTimeDomains: VkInout): number;
 declare function vkGetCalibratedTimestampsEXT(device: VkDevice | null, timestampCount: number, pTimestampInfos: VkCalibratedTimestampInfoEXT[] | null, pTimestamps: VkInout, pMaxDeviation: VkInout): number;
 declare function vkSetDebugUtilsObjectNameEXT(device: VkDevice | null, pNameInfo: VkDebugUtilsObjectNameInfoEXT | null): number;
 declare function vkSetDebugUtilsObjectTagEXT(device: VkDevice | null, pTagInfo: VkDebugUtilsObjectTagInfoEXT | null): number;
-
-
-
-
-
-
+declare function vkQueueBeginDebugUtilsLabelEXT(queue: VkQueue | null, pLabelInfo: VkDebugUtilsLabelEXT | null): void;
+declare function vkQueueEndDebugUtilsLabelEXT(queue: VkQueue | null): void;
+declare function vkQueueInsertDebugUtilsLabelEXT(queue: VkQueue | null, pLabelInfo: VkDebugUtilsLabelEXT | null): void;
+declare function vkCmdBeginDebugUtilsLabelEXT(commandBuffer: VkCommandBuffer | null, pLabelInfo: VkDebugUtilsLabelEXT | null): void;
+declare function vkCmdEndDebugUtilsLabelEXT(commandBuffer: VkCommandBuffer | null): void;
+declare function vkCmdInsertDebugUtilsLabelEXT(commandBuffer: VkCommandBuffer | null, pLabelInfo: VkDebugUtilsLabelEXT | null): void;
 declare function vkCreateDebugUtilsMessengerEXT(instance: VkInstance | null, pCreateInfo: VkDebugUtilsMessengerCreateInfoEXT | null, pAllocator: null, pMessenger: VkDebugUtilsMessengerEXT | null): number;
-
-
+declare function vkDestroyDebugUtilsMessengerEXT(instance: VkInstance | null, messenger: VkDebugUtilsMessengerEXT | null, pAllocator: null): void;
+declare function vkSubmitDebugUtilsMessageEXT(instance: VkInstance | null, messageSeverity: number, messageTypes: VkDebugUtilsMessageTypeFlagBitsEXT, pCallbackData: VkDebugUtilsMessengerCallbackDataEXT | null): void;
 declare function vkGetMemoryHostPointerPropertiesEXT(device: VkDevice | null, handleType: number, pHostPointer: null, pMemoryHostPointerProperties: VkMemoryHostPointerPropertiesEXT | null): number;
-
+declare function vkCmdWriteBufferMarkerAMD(commandBuffer: VkCommandBuffer | null, pipelineStage: number, dstBuffer: VkBuffer | null, dstOffset: number, marker: number): void;
 declare function vkCreateRenderPass2KHR(device: VkDevice | null, pCreateInfo: VkRenderPassCreateInfo2KHR | null, pAllocator: null, pRenderPass: VkRenderPass | null): number;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+declare function vkCmdBeginRenderPass2KHR(commandBuffer: VkCommandBuffer | null, pRenderPassBegin: VkRenderPassBeginInfo | null, pSubpassBeginInfo: VkSubpassBeginInfoKHR | null): void;
+declare function vkCmdNextSubpass2KHR(commandBuffer: VkCommandBuffer | null, pSubpassBeginInfo: VkSubpassBeginInfoKHR | null, pSubpassEndInfo: VkSubpassEndInfoKHR | null): void;
+declare function vkCmdEndRenderPass2KHR(commandBuffer: VkCommandBuffer | null, pSubpassEndInfo: VkSubpassEndInfoKHR | null): void;
+declare function vkCmdDrawIndirectCountKHR(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: number, countBuffer: VkBuffer | null, countBufferOffset: number, maxDrawCount: number, stride: number): void;
+declare function vkCmdDrawIndexedIndirectCountKHR(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: number, countBuffer: VkBuffer | null, countBufferOffset: number, maxDrawCount: number, stride: number): void;
+declare function vkCmdSetCheckpointNV(commandBuffer: VkCommandBuffer | null, pCheckpointMarker: null): void;
+declare function vkGetQueueCheckpointDataNV(queue: VkQueue | null, pCheckpointDataCount: VkInout, pCheckpointData: VkCheckpointDataNV[] | null): void;
+declare function vkCmdBindTransformFeedbackBuffersEXT(commandBuffer: VkCommandBuffer | null, firstBinding: number, bindingCount: number, pBuffers: VkBuffer[] | null, pOffsets: VkInout, pSizes: VkInout): void;
+declare function vkCmdBeginTransformFeedbackEXT(commandBuffer: VkCommandBuffer | null, firstCounterBuffer: number, counterBufferCount: number, pCounterBuffers: VkBuffer[] | null, pCounterBufferOffsets: VkInout): void;
+declare function vkCmdEndTransformFeedbackEXT(commandBuffer: VkCommandBuffer | null, firstCounterBuffer: number, counterBufferCount: number, pCounterBuffers: VkBuffer[] | null, pCounterBufferOffsets: VkInout): void;
+declare function vkCmdBeginQueryIndexedEXT(commandBuffer: VkCommandBuffer | null, queryPool: VkQueryPool | null, query: number, flags: VkQueryControlFlagBits, index: number): void;
+declare function vkCmdEndQueryIndexedEXT(commandBuffer: VkCommandBuffer | null, queryPool: VkQueryPool | null, query: number, index: number): void;
+declare function vkCmdDrawIndirectByteCountEXT(commandBuffer: VkCommandBuffer | null, instanceCount: number, firstInstance: number, counterBuffer: VkBuffer | null, counterBufferOffset: number, counterOffset: number, vertexStride: number): void;
+declare function vkCmdSetExclusiveScissorNV(commandBuffer: VkCommandBuffer | null, firstExclusiveScissor: number, exclusiveScissorCount: number, pExclusiveScissors: VkRect2D[] | null): void;
+declare function vkCmdBindShadingRateImageNV(commandBuffer: VkCommandBuffer | null, imageView: VkImageView | null, imageLayout: VkImageLayout): void;
+declare function vkCmdSetViewportShadingRatePaletteNV(commandBuffer: VkCommandBuffer | null, firstViewport: number, viewportCount: number, pShadingRatePalettes: VkShadingRatePaletteNV[] | null): void;
+declare function vkCmdSetCoarseSampleOrderNV(commandBuffer: VkCommandBuffer | null, sampleOrderType: VkCoarseSampleOrderTypeNV, customSampleOrderCount: number, pCustomSampleOrders: VkCoarseSampleOrderCustomNV[] | null): void;
+declare function vkCmdDrawMeshTasksNV(commandBuffer: VkCommandBuffer | null, taskCount: number, firstTask: number): void;
+declare function vkCmdDrawMeshTasksIndirectNV(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: number, drawCount: number, stride: number): void;
+declare function vkCmdDrawMeshTasksIndirectCountNV(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: number, countBuffer: VkBuffer | null, countBufferOffset: number, maxDrawCount: number, stride: number): void;
 declare function vkCompileDeferredNV(device: VkDevice | null, pipeline: VkPipeline | null, shader: number): number;
 declare function vkCreateAccelerationStructureNV(device: VkDevice | null, pCreateInfo: VkAccelerationStructureCreateInfoNV | null, pAllocator: null, pAccelerationStructure: VkAccelerationStructureNV | null): number;
-
-
+declare function vkDestroyAccelerationStructureNV(device: VkDevice | null, accelerationStructure: VkAccelerationStructureNV | null, pAllocator: null): void;
+declare function vkGetAccelerationStructureMemoryRequirementsNV(device: VkDevice | null, pInfo: VkAccelerationStructureMemoryRequirementsInfoNV | null, pMemoryRequirements: VkMemoryRequirements2KHR | null): void;
 declare function vkBindAccelerationStructureMemoryNV(device: VkDevice | null, bindInfoCount: number, pBindInfos: VkBindAccelerationStructureMemoryInfoNV[] | null): number;
-
-
-
-
+declare function vkCmdCopyAccelerationStructureNV(commandBuffer: VkCommandBuffer | null, dst: VkAccelerationStructureNV | null, src: VkAccelerationStructureNV | null, mode: VkCopyAccelerationStructureModeNV): void;
+declare function vkCmdWriteAccelerationStructuresPropertiesNV(commandBuffer: VkCommandBuffer | null, accelerationStructureCount: number, pAccelerationStructures: VkAccelerationStructureNV[] | null, queryType: VkQueryType, queryPool: VkQueryPool | null, firstQuery: number): void;
+declare function vkCmdBuildAccelerationStructureNV(commandBuffer: VkCommandBuffer | null, pInfo: VkAccelerationStructureInfoNV | null, instanceData: VkBuffer | null, instanceOffset: number, update: number, dst: VkAccelerationStructureNV | null, src: VkAccelerationStructureNV | null, scratch: VkBuffer | null, scratchOffset: number): void;
+declare function vkCmdTraceRaysNV(commandBuffer: VkCommandBuffer | null, raygenShaderBindingTableBuffer: VkBuffer | null, raygenShaderBindingOffset: number, missShaderBindingTableBuffer: VkBuffer | null, missShaderBindingOffset: number, missShaderBindingStride: number, hitShaderBindingTableBuffer: VkBuffer | null, hitShaderBindingOffset: number, hitShaderBindingStride: number, callableShaderBindingTableBuffer: VkBuffer | null, callableShaderBindingOffset: number, callableShaderBindingStride: number, width: number, height: number, depth: number): void;
 declare function vkGetRayTracingShaderGroupHandlesNV(device: VkDevice | null, pipeline: VkPipeline | null, firstGroup: number, groupCount: number, dataSize: number, pData: null): number;
 declare function vkGetAccelerationStructureHandleNV(device: VkDevice | null, accelerationStructure: VkAccelerationStructureNV | null, dataSize: number, pData: null): number;
 declare function vkCreateRayTracingPipelinesNV(device: VkDevice | null, pipelineCache: VkPipelineCache | null, createInfoCount: number, pCreateInfos: VkRayTracingPipelineCreateInfoNV[] | null, pAllocator: null, pPipelines: VkPipeline[] | null): number;
