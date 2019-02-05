@@ -12,6 +12,15 @@ function loadJSON(path) {
   });
 };
 
+function applyCategoryClickListenerFix() {
+  let details = document.querySelectorAll("details");
+  details.forEach(d => {
+    d.onclick = e => {
+      if (e.target === d) d.children[0].click();
+    };
+  });
+};
+
 function performSearch(search) {
   search = search.trim().toUpperCase();
   let matches = 0;
@@ -71,6 +80,7 @@ function loadCategories() {
       html += `</details>`;
     });
     $(`vk-categories`).insertAdjacentHTML("beforeend", html);
+    applyCategoryClickListenerFix();
   });
 };
 
@@ -96,13 +106,6 @@ window.onmousedown = e => {
   clickedElement = e.target;
   el.onblur();
 };
-
-let details = document.querySelectorAll("details");
-details.forEach(d => {
-  d.onclick = e => {
-    if (e.target === d) d.children[0].click();
-  };
-});
 
 document.title = $(`vk-title`).innerHTML;
 
