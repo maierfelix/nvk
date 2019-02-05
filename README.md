@@ -247,11 +247,11 @@ But CEF's shared textures on Windows require D3D11 which I'm not familiar with. 
 
 ## TODOs:
  - [ ] Move from V8 to NAPI (~0%)
- - [ ] Struct generation (~95%)
+ - [ ] Struct generation (~98%)
  - [x] Handle generation (~100%)
  - [x] Enum generation (100%)
  - [ ] Function generation (~95%)
  - [ ] Deallocation (~90%)
  - [ ] Vulkan API fill V8 reflection (~90%)
- - [ ] Documentation generator (0%)
+ - [ ] Documentation generator (85%)
  - [ ] CEF D3D11 high-performance texture sharing (~0%)
