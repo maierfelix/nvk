@@ -216,6 +216,17 @@ function getInputArrayBody(param, index) {
 function getCallBodyBefore(call) {
   let {params} = call;
   let out = params.map((param, index) => {
+    if (param.isDynamicVoidPointer) {
+      return `
+  ${param.type}* $p${index};
+  if (info[${index}]->IsArrayBuffer()) {
+    v8::Local<v8::ArrayBuffer> buf = v8::Local<v8::ArrayBuffer>::Cast(Nan::To<v8::Object>(info[${index}]).ToLocalChecked());
+    $p${index} = buf->GetContents().Data();
+  } else if (!info[${index}]->IsNull()) {
+    Nan::ThrowTypeError("Expected '${param.jsTypedArrayName}' or 'null' for argument ${index + 1} '${param.name}'");
+    return;
+  }`;
+    }
     if (isIgnoreableType(param)) return ``;
     let {rawType} = param;
     if (param.isBaseType && param.type !== "VkBool32") rawType = param.baseType;
@@ -373,6 +384,10 @@ function getCallBodyInner(call) {
   params.map((param, index) => {
     let addComma = index < params.length - 1 ? ",\n" : "";
     let byReference = "";
+    if (param.isDynamicVoidPointer) {
+      out += `    info[${index}]->IsNull() ? nullptr : $p${index}${addComma}`;
+      return;
+    }
     if (isIgnoreableType(param)) {
       out += `nullptr${addComma}`;
       return;

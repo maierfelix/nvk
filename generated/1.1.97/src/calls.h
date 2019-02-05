@@ -3370,6 +3370,14 @@ void _vkGetQueryPoolResults(const Nan::FunctionCallbackInfo<v8::Value>& info) {
 
   size_t $p4 = static_cast<size_t>(Nan::To<int64_t>(info[4]).FromMaybe(0));
 
+  void* $p5;
+  if (info[5]->IsArrayBuffer()) {
+    v8::Local<v8::ArrayBuffer> buf = v8::Local<v8::ArrayBuffer>::Cast(Nan::To<v8::Object>(info[5]).ToLocalChecked());
+    $p5 = buf->GetContents().Data();
+  } else if (!info[5]->IsNull()) {
+    Nan::ThrowTypeError("Expected 'ArrayBuffer' or 'null' for argument 6 'pData'");
+    return;
+  }
 
   uint64_t $p6 = static_cast<uint64_t>(Nan::To<int64_t>(info[6]).FromMaybe(0));
 
@@ -3380,7 +3388,7 @@ void _vkGetQueryPoolResults(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     $p2,
     $p3,
     $p4,
-nullptr,
+    info[5]->IsNull() ? nullptr : $p5,
     $p6,
     static_cast<VkQueryResultFlags>($p7)
   );
@@ -4188,11 +4196,19 @@ void _vkGetPipelineCacheData(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     return;
   }
 
+  void* $p3;
+  if (info[3]->IsArrayBuffer()) {
+    v8::Local<v8::ArrayBuffer> buf = v8::Local<v8::ArrayBuffer>::Cast(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    $p3 = buf->GetContents().Data();
+  } else if (!info[3]->IsNull()) {
+    Nan::ThrowTypeError("Expected 'ArrayBuffer' or 'null' for argument 4 'pData'");
+    return;
+  }
   int32_t out = vkGetPipelineCacheData(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     &$p2,
-nullptr
+    info[3]->IsNull() ? nullptr : $p3
   );
     v8::Local<v8::BigInt> pnum2 = v8::BigInt::New(v8::Isolate::GetCurrent(), (uint64_t)$p2);
     obj2->Set(Nan::New("$").ToLocalChecked(), pnum2);
@@ -16032,11 +16048,19 @@ void _vkGetValidationCacheDataEXT(const Nan::FunctionCallbackInfo<v8::Value>& in
     return;
   }
 
+  void* $p3;
+  if (info[3]->IsArrayBuffer()) {
+    v8::Local<v8::ArrayBuffer> buf = v8::Local<v8::ArrayBuffer>::Cast(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    $p3 = buf->GetContents().Data();
+  } else if (!info[3]->IsNull()) {
+    Nan::ThrowTypeError("Expected 'ArrayBuffer' or 'null' for argument 4 'pData'");
+    return;
+  }
   int32_t out = $vkGetValidationCacheDataEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     &$p2,
-nullptr
+    info[3]->IsNull() ? nullptr : $p3
   );
     v8::Local<v8::BigInt> pnum2 = v8::BigInt::New(v8::Isolate::GetCurrent(), (uint64_t)$p2);
     obj2->Set(Nan::New("$").ToLocalChecked(), pnum2);
@@ -16230,13 +16254,21 @@ void _vkGetShaderInfoAMD(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     return;
   }
 
+  void* $p5;
+  if (info[5]->IsArrayBuffer()) {
+    v8::Local<v8::ArrayBuffer> buf = v8::Local<v8::ArrayBuffer>::Cast(Nan::To<v8::Object>(info[5]).ToLocalChecked());
+    $p5 = buf->GetContents().Data();
+  } else if (!info[5]->IsNull()) {
+    Nan::ThrowTypeError("Expected 'ArrayBuffer' or 'null' for argument 6 'pInfo'");
+    return;
+  }
   int32_t out = $vkGetShaderInfoAMD(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     static_cast<VkShaderStageFlagBits>($p2),
     $p3,
     &$p4,
-nullptr
+    info[5]->IsNull() ? nullptr : $p5
   );
     v8::Local<v8::BigInt> pnum4 = v8::BigInt::New(v8::Isolate::GetCurrent(), (uint64_t)$p4);
     obj4->Set(Nan::New("$").ToLocalChecked(), pnum4);
@@ -18962,13 +18994,21 @@ void _vkGetRayTracingShaderGroupHandlesNV(const Nan::FunctionCallbackInfo<v8::Va
 
   size_t $p4 = static_cast<size_t>(Nan::To<int64_t>(info[4]).FromMaybe(0));
 
+  void* $p5;
+  if (info[5]->IsArrayBuffer()) {
+    v8::Local<v8::ArrayBuffer> buf = v8::Local<v8::ArrayBuffer>::Cast(Nan::To<v8::Object>(info[5]).ToLocalChecked());
+    $p5 = buf->GetContents().Data();
+  } else if (!info[5]->IsNull()) {
+    Nan::ThrowTypeError("Expected 'ArrayBuffer' or 'null' for argument 6 'pData'");
+    return;
+  }
   int32_t out = $vkGetRayTracingShaderGroupHandlesNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2,
     $p3,
     $p4,
-nullptr
+    info[5]->IsNull() ? nullptr : $p5
   );
   
   
@@ -19013,11 +19053,19 @@ void _vkGetAccelerationStructureHandleNV(const Nan::FunctionCallbackInfo<v8::Val
 
   size_t $p2 = static_cast<size_t>(Nan::To<int64_t>(info[2]).FromMaybe(0));
 
+  void* $p3;
+  if (info[3]->IsArrayBuffer()) {
+    v8::Local<v8::ArrayBuffer> buf = v8::Local<v8::ArrayBuffer>::Cast(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    $p3 = buf->GetContents().Data();
+  } else if (!info[3]->IsNull()) {
+    Nan::ThrowTypeError("Expected 'ArrayBuffer' or 'null' for argument 4 'pData'");
+    return;
+  }
   int32_t out = $vkGetAccelerationStructureHandleNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2,
-nullptr
+    info[3]->IsNull() ? nullptr : $p3
   );
   
   

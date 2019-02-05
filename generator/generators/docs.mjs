@@ -124,6 +124,14 @@ function getNumericTypescriptType({type, isEnum, isBitmask} = _) {
 
 function getJavaScriptType(member) {
   let {rawType} = member;
+  if (member.isTypedArray) {
+    return new JavaScriptType({
+      type: JavaScriptType.TYPED_ARRAY,
+      value: member.jsTypedArrayName,
+      isArray: true,
+      isNullable: true
+    });
+  }
   if (isIgnoreableType(member)) {
     return new JavaScriptType({
       type: JavaScriptType.NULL,
@@ -131,14 +139,6 @@ function getJavaScriptType(member) {
     });
   }
   if (member.kind === "COMMAND_PARAM") {
-    if (member.isTypedArray) {
-      return new JavaScriptType({
-        type: JavaScriptType.TYPED_ARRAY,
-        value: member.jsTypedArrayName,
-        isArray: true,
-        isNullable: true
-      });
-    }
     // handle inout parameters
     switch (member.rawType) {
       case "size_t *":
@@ -155,14 +155,6 @@ function getJavaScriptType(member) {
     };
   }
   if (member.isBaseType) rawType = member.baseType;
-  if (member.isTypedArray) {
-    return new JavaScriptType({
-      type: JavaScriptType.TYPED_ARRAY,
-      value: member.jsTypedArrayName,
-      isArray: true,
-      isNullable: true
-    });
-  }
   if (member.enumType) return getNumericTypescriptType({ type: member.enumType, isEnum: true });
   if (member.isBitmaskType) {
     let bitmask = getBitmaskByName(member.bitmaskType);

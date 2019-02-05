@@ -480,8 +480,14 @@ function parseTypeElement(child) {
     out.jsType = jsType;
   }
   // void pointer
-  if (out.rawType === `void *` || out.rawType === `const void *`){
+  if (out.rawType === `void *` || out.rawType === `const void *`) {
     out.isVoidPointer = true;
+    out.isContantVoidPointer = out.rawType === `const void *`;
+    out.isDynamicVoidPointer = !out.isContantVoidPointer;
+    if (out.isDynamicVoidPointer && out.name !== `pNext`) {
+      out.isTypedArray = true;
+      out.jsTypedArrayName = getJsTypedArrayName(out.rawType);
+    }
   }
   return out;
 };
@@ -516,6 +522,8 @@ function isNumber(type) {
 
 function getJsTypedArrayName(type) {
   switch (type) {
+    case "void *":
+      return `ArrayBuffer`;
     case "float *":
     case "const float *":
       return "Float32Array";

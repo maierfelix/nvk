@@ -68,7 +68,7 @@ instanceCreateInfo.pfnInternalFree = ;
       <!-- VkAllocationCallbacks.prototype.pUserData -->
       <vk-property-entry>
         <vk-property-prototype>VkAllocationCallbacks.prototype.<vk-prototype-name>pUserData</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description> is a value to be interpreted by the implementation of the callbacks. When any of the callbacks in sname:VkAllocationCallbacks are called, the Vulkan implementation will pass this value as the first parameter to the callback. This value can: vary each time an allocator is passed into a command, even when the same object takes an allocator in multiple commands.</vk-property-description>
       </vk-property-entry>
       <!-- VkAllocationCallbacks.prototype.pfnAllocation -->
