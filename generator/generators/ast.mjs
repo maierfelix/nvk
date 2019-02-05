@@ -545,14 +545,28 @@ function getNodeChildByName(node, name) {
 function fillDocumentation(objects, docs) {
   objects.map(object => {
     let doc = getDocumentationEntryByName(object.name, docs);
-    if (!doc) return warn(`Missing documentation for ${object.name}`);
+    if (!doc) {
+      // fill with empty documentation information
+      object.documentation = { category: "", description: "" };
+      (object.children || object.params || []).map(child => {
+        child.documentation = { macros: [], description: "" };
+      });
+      return warn(`Missing documentation for ${object.name}`);
+    }
     doc.children.map(c => {
       if (!c) return;
       let child = getNodeChildByName(object, c.name);
-      if (child) child.description = c.description;
+      if (child) {
+        child.documentation = {
+          macros: c.macros,
+          description: c.description
+        };
+      }
     });
-    object.category = doc.category;
-    object.description = doc.description.description;
+    object.documentation = {
+      category: doc.category,
+      description: doc.description.description
+    };
   });
 };
 

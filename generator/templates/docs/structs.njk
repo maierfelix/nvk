@@ -33,7 +33,7 @@
 
     <vk-name>{{ struct.name }}</vk-name>
 
-    <vk-description>{{ struct.description | safe }}</vk-description>
+    <vk-description>{{ struct.documentation.description | safe }}</vk-description>
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
@@ -67,7 +67,7 @@ instanceCreateInfo.{{ member.name }} = ;
       <vk-property-entry>
         <vk-property-prototype>{{ struct.name }}.prototype.<vk-prototype-name>{{ member.name }}</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="{{ getCSSType(member) | safe }}">{{ getType(member) | safe }}</vk-property-type>
-        <vk-property-description>{{ member.description | safe }}</vk-property-description>
+        <vk-property-description>{{ member.documentation.description | safe }}</vk-property-description>
       </vk-property-entry>
       {% endfor %}
     </vk-properties>

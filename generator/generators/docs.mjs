@@ -291,9 +291,9 @@ function getCSSType(member) {
 
 function getCategories({ calls, structs, handles } = _) {
   let out = [];
-  calls.map(call => { if (out.indexOf(call.category) <= -1) out.push(call.category); });
-  structs.map(struct => { if (out.indexOf(struct.category) <= -1) out.push(struct.category); });
-  handles.map(handle => { if (out.indexOf(handle.category) <= -1) out.push(handle.category); });
+  calls.map(call => { if (out.indexOf(call.documentation.category) <= -1) out.push(call.documentation.category); });
+  structs.map(struct => { if (out.indexOf(struct.documentation.category) <= -1) out.push(struct.documentation.category); });
+  handles.map(handle => { if (out.indexOf(handle.documentation.category) <= -1) out.push(handle.documentation.category); });
   return out;
 };
 
@@ -301,9 +301,9 @@ function getObjectsByCategory(category) {
   let out = [];
   // collect objects matching category
   {
-    calls.map(call => { if (call.category === category) out.push(call); });
-    structs.map(struct => { if (struct.category === category) out.push(struct); });
-    handles.map(handle => { if (handle.category === category) out.push(handle); });
+    calls.map(call => { if (call.documentation.category === category) out.push(call); });
+    structs.map(struct => { if (struct.documentation.category === category) out.push(struct); });
+    handles.map(handle => { if (handle.documentation.category === category) out.push(handle); });
   }
   // sort alphabetically
   out = out.sort((a, b) => {

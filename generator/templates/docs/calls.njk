@@ -33,7 +33,7 @@
 
     <vk-name>{{ call.name }}</vk-name>
 
-    <vk-description>{{ call.description | safe }}</vk-description>
+    <vk-description>{{ call.documentation.description | safe }}</vk-description>
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
@@ -49,7 +49,7 @@
       <vk-property-entry>
         <vk-property-parameter>{{ param.name }}</vk-property-parameter>
         <vk-property-type type="{{ getCSSType(param) | safe }}">{{ getType(param) | safe }}</vk-property-type>
-        <vk-property-description>{{ param.description | safe }}</vk-property-description>
+        <vk-property-description>{{ param.documentation.description | safe }}</vk-property-description>
       </vk-property-entry>
       {% endfor %}
     </vk-properties>
