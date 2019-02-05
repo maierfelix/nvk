@@ -68982,7 +68982,7 @@
               "value": "VkInstance"
             }
           ],
-          "description": " reference a {#0#} handle in which the resulting instance is returned."
+          "description": " references a {#0#} handle in which the resulting instance is returned."
         }
       }
     ],
