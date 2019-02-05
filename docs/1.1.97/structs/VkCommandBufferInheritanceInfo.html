@@ -83,31 +83,31 @@ instanceCreateInfo.pipelineStatistics = ;
       <vk-property-entry>
         <vk-property-prototype>VkCommandBufferInheritanceInfo.prototype.<vk-prototype-name>renderPass</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../handles/VkRenderPass.html">VkRenderPass</a></vk-property-type>
-        <vk-property-description> is a {#1#} object defining which render passes the {#0#} will be <<renderpass-compatibility, compatible>> with and can: be executed within. If the sname:VkCommandBuffer will not be executed within a render pass instance, {#2#} is ignored.</vk-property-description>
+        <vk-property-description> is a {#2#} object defining which render passes the {#0#} will be <<renderpass-compatibility, compatible>> with and can: be executed within. If the {#1#} will not be executed within a render pass instance, {#3#} is ignored.</vk-property-description>
       </vk-property-entry>
       <!-- VkCommandBufferInheritanceInfo.prototype.subpass -->
       <vk-property-entry>
         <vk-property-prototype>VkCommandBufferInheritanceInfo.prototype.<vk-prototype-name>subpass</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is the index of the subpass within the render pass instance that the {#0#} will be executed within. If the sname:VkCommandBuffer will not be executed within a render pass instance, {#1#} is ignored.</vk-property-description>
+        <vk-property-description> is the index of the subpass within the render pass instance that the {#0#} will be executed within. If the {#1#} will not be executed within a render pass instance, {#2#} is ignored.</vk-property-description>
       </vk-property-entry>
       <!-- VkCommandBufferInheritanceInfo.prototype.framebuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkCommandBufferInheritanceInfo.prototype.<vk-prototype-name>framebuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../handles/VkFramebuffer.html">VkFramebuffer</a></vk-property-type>
-        <vk-property-description> optionally refers to the {#1#} object that the {#0#} will be rendering to if it is executed within a render pass instance. It can: be {#2#} if the framebuffer is not known, or if the sname:VkCommandBuffer will not be executed within a render pass instance.+[NOTE].Note====Specifying the exact framebuffer that the secondary command buffer will beexecuted with may: result in better performance at command buffer executiontime.====</vk-property-description>
+        <vk-property-description> optionally refers to the {#2#} object that the {#0#} will be rendering to if it is executed within a render pass instance. It can: be {#3#} if the framebuffer is not known, or if the {#1#} will not be executed within a render pass instance.+[NOTE].Note====Specifying the exact framebuffer that the secondary command buffer will beexecuted with may: result in better performance at command buffer executiontime.====</vk-property-description>
       </vk-property-entry>
       <!-- VkCommandBufferInheritanceInfo.prototype.occlusionQueryEnable -->
       <vk-property-entry>
         <vk-property-prototype>VkCommandBufferInheritanceInfo.prototype.<vk-prototype-name>occlusionQueryEnable</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> specifies whether the command buffer can: be executed while an occlusion query is active in the primary command buffer. If this is {#0#}, then this command buffer can: be executed whether the primary command buffer has an occlusion query active or not. If this is ename:VK_FALSE, then the primary command buffer must: not have an occlusion query active.</vk-property-description>
+        <vk-property-description> specifies whether the command buffer can: be executed while an occlusion query is active in the primary command buffer. If this is {#0#}, then this command buffer can: be executed whether the primary command buffer has an occlusion query active or not. If this is {#1#}, then the primary command buffer must: not have an occlusion query active.</vk-property-description>
       </vk-property-entry>
       <!-- VkCommandBufferInheritanceInfo.prototype.queryFlags -->
       <vk-property-entry>
         <vk-property-prototype>VkCommandBufferInheritanceInfo.prototype.<vk-prototype-name>queryFlags</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> specifies the query flags that can: be used by an active occlusion query in the primary command buffer when this secondary command buffer is executed. If this value includes the {#0#} bit, then the active query can: return boolean results or actual sample counts. If this bit is not set, then the active query must: not use the ename:VK_QUERY_CONTROL_PRECISE_BIT bit.</vk-property-description>
+        <vk-property-description> specifies the query flags that can: be used by an active occlusion query in the primary command buffer when this secondary command buffer is executed. If this value includes the {#0#} bit, then the active query can: return boolean results or actual sample counts. If this bit is not set, then the active query must: not use the {#1#} bit.</vk-property-description>
       </vk-property-entry>
       <!-- VkCommandBufferInheritanceInfo.prototype.pipelineStatistics -->
       <vk-property-entry>

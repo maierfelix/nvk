@@ -21,33 +21,33 @@ import {
 const {DOCS_DIR} = pkg.config;
 
 const MACROS = [
-  /(can):(\w*)/,
-  /(cannot):(\w*)/,
-  /(may):(\w*)/,
-  /(must):(\w*)/,
-  /(optional):(\w*)/,
-  /(required):(\w*)/,
-  /(should):(\w*)/,
-  /(flink):(\w+)/,
-  /(fname):(\w+)/,
-  /(ftext):([\w\*]+)/,
-  /(sname):(\w+)/,
-  /(slink):(\w+)/,
-  /(stext):([\w\*]+)/,
-  /(ename):(\w+)/,
-  /(elink):(\w+)/,
-  /(etext):([\w\*]+)/,
-  /(pname):(\w+(\.\w+)*)/,
-  /(ptext):([\w\*]+(\.[\w\*]+)*)/,
-  /(dname):(\w+)/,
-  /(dlink):(\w+)/,
-  /(tname):(\w+)/,
-  /(tlink):(\w+)/,
-  /(basetype):(\w+)/,
-  /(code):(\w+(\.\w+)*)/,
-  /(tag):(\w+)/,
-  /(attr):(\w+)/,
-  /(undefined):/
+  /(can):(\w*)/gm,
+  /(cannot):(\w*)/gm,
+  /(may):(\w*)/gm,
+  /(must):(\w*)/gm,
+  /(optional):(\w*)/gm,
+  /(required):(\w*)/gm,
+  /(should):(\w*)/gm,
+  /(flink):(\w+)/gm,
+  /(fname):(\w+)/gm,
+  /(ftext):([\w\*]+)/gm,
+  /(sname):(\w+)/gm,
+  /(slink):(\w+)/gm,
+  /(stext):([\w\*]+)/gm,
+  /(ename):(\w+)/gm,
+  /(elink):(\w+)/gm,
+  /(etext):([\w\*]+)/gm,
+  /(pname):(\w+(\.\w+)*)/gm,
+  /(ptext):([\w\*]+(\.[\w\*]+)*)/gm,
+  /(dname):(\w+)/gm,
+  /(dlink):(\w+)/gm,
+  /(tname):(\w+)/gm,
+  /(tlink):(\w+)/gm,
+  /(basetype):(\w+)/gm,
+  /(code):(\w+(\.\w+)*)/gm,
+  /(tag):(\w+)/gm,
+  /(attr):(\w+)/gm,
+  /(undefined):/gm
 ];
 
 const REPLACEMENTS = [
@@ -58,6 +58,10 @@ const REPLACEMENTS = [
   {
     replace: /is a pointer to/gm,
     with: "is a reference to"
+  },
+  {
+    replace: /points to a pointer/gm,
+    with: "is a reference"
   },
   {
     replace: /pointer/gm,
@@ -242,17 +246,18 @@ function getChapterEntryByName(name) {
 // apply text replacements
 function extractDescriptionMacros(desc) {
   let out = [];
-  MACROS.map(m => {
-    let match = desc.match(m);
-    if (match && match[0] && match[1] && match[2]) {
-      let macro = {
-        kind: match[1],
-        value: match[2],
-        index: out.length
-      };
-      out.push(macro);
-      desc = desc.replace(match[0], `{#${out.length - 1}#}`);
-    }
+  MACROS.map(rx => {
+    let match = null;
+    while (match = rx.exec(desc)) {
+      if (match[0] && match[1] && match[2]) {
+        let macro = {
+          kind: match[1],
+          value: match[2]
+        };
+        out.push(macro);
+        desc = desc.replace(match[0], `{#${out.length - 1}#}`);
+      }
+    };
   });
   return {
     macros: out,
