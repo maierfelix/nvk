@@ -546,10 +546,10 @@ function fillDocumentation(objects, docs) {
   objects.map(object => {
     let doc = getDocumentationEntryByName(object.name, docs);
     if (!doc) return warn(`Missing documentation for ${object.name}`);
-    doc.params.map(param => {
-      if (!param) return;
-      let child = getNodeChildByName(object, param.name);
-      if (child) child.description = param.description;
+    doc.children.map(c => {
+      if (!c) return;
+      let child = getNodeChildByName(object, c.name);
+      if (child) child.description = c.description;
     });
     object.category = doc.category;
     object.description = doc.description.description;

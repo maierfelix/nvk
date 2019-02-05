@@ -20,6 +20,80 @@ import {
 
 const {DOCS_DIR} = pkg.config;
 
+const MACROS = [
+  /(can):(\w*)/,
+  /(cannot):(\w*)/,
+  /(may):(\w*)/,
+  /(must):(\w*)/,
+  /(optional):(\w*)/,
+  /(required):(\w*)/,
+  /(should):(\w*)/,
+  /(flink):(\w+)/,
+  /(fname):(\w+)/,
+  /(ftext):([\w\*]+)/,
+  /(sname):(\w+)/,
+  /(slink):(\w+)/,
+  /(stext):([\w\*]+)/,
+  /(ename):(\w+)/,
+  /(elink):(\w+)/,
+  /(etext):([\w\*]+)/,
+  /(pname):(\w+(\.\w+)*)/,
+  /(ptext):([\w\*]+(\.[\w\*]+)*)/,
+  /(dname):(\w+)/,
+  /(dlink):(\w+)/,
+  /(tname):(\w+)/,
+  /(tlink):(\w+)/,
+  /(basetype):(\w+)/,
+  /(code):(\w+(\.\w+)*)/,
+  /(tag):(\w+)/,
+  /(attr):(\w+)/,
+  /(undefined):/
+];
+
+const REPLACEMENTS = [
+  {
+    replace: /is a pointer to an array/gm,
+    with: "is an array"
+  },
+  {
+    replace: /is a pointer to/gm,
+    with: "is a reference to"
+  },
+  {
+    replace: /pointer/gm,
+    with: "reference"
+  },
+  {
+    replace: /points/gm,
+    with: "reference"
+  },
+  {
+    replace: /null-terminated UTF-8 strings/gm,
+    with: "strings"
+  },
+  {
+    replace: /null-terminated UTF-8 string/gm,
+    with: "string"
+  },
+  {
+    replace: /an integer/gm,
+    with: "a number"
+  },
+  {
+    replace: /an unsigned integer/gm,
+    with: "a number"
+  },
+  {
+    replace: /is the unsigned integer size/gm,
+    with: "is the size"
+  },
+  {
+    replace: /`NULL`/gm,
+    with: "<i>null</i>"
+  }
+];
+
+
 function isChapterFile(path) {
   path = escapePath(path);
   let includesChapter = path.substr(0, 10);
@@ -105,7 +179,7 @@ function parseChapterCategory(source) {
 function parseChapter(source) {
   let rx = /\[open,refpage([^}]+?)\]\n\--[^]*?\--/gm;
   let out = [];
-  let params = [];
+  let children = [];
   let descriptions = [];
   let equivalents = [];
   let match = null;
@@ -115,11 +189,11 @@ function parseChapter(source) {
     let param = parseSectionParameters(text);
     let descr = parseSectionDescriptions(text);
     let equiv = parseSectionEquivalents(text);
-    params.push(param);
+    children.push(param);
     descriptions.push(descr);
     equivalents.push(...equiv);
   };
-  if (descriptions.length !== params.length) {
+  if (descriptions.length !== children.length) {
     throw `Failed to parse chapter`;
   }
   descriptions.map((description, index) => {
@@ -127,7 +201,7 @@ function parseChapter(source) {
       category,
       description,
       equivalents,
-      params: params[index][0] || []
+      children: children[index][0] || []
     });
   });
   return out;
@@ -160,6 +234,60 @@ function getChapterEntryByName(name) {
     if (description.name === name) return entry;
   };
   return null;
+};
+
+// apply text replacements
+function transformDescription(desc) {
+  REPLACEMENTS.map(r => {
+    desc = desc.replace(r.replace, r.with);
+  });
+  return desc;
+};
+
+// apply text replacements
+function extractDescriptionMacros(desc) {
+  let out = [];
+  MACROS.map(m => {
+    let match = desc.match(m);
+    if (match && match[0] && match[1] && match[2]) {
+      let position = {
+        start: match.index,
+        end: match.index + match[0].length
+      };
+      let macro = {
+        kind: match[1],
+        value: match[2],
+        position
+      };
+      out.push(macro);
+    }
+  });
+  return out;
+};
+
+function transformDescriptions(entries) {
+  entries.map(entry => {
+    let desc = entry.description;
+    let {name, description, type} = desc;
+    desc.description = transformDescription(description);
+    desc.macros = extractDescriptionMacros(description);
+    switch (type) {
+      case "protos":
+      case "structs": {
+        entry.children.map(c => {
+          if (c && c.description) {
+            c.description = transformDescription(c.description);
+            c.macros = extractDescriptionMacros(c.description);
+          }
+        });
+      } break;
+      case "handles": {
+        // no members
+      } break;
+      case "enums": break;
+      case "flags": break;
+    };
+  });
 };
 
 function parse(version) {
@@ -198,7 +326,7 @@ function parse(version) {
         }
       });
       zip.on("end", () => {
-        //fs.writeFileSync("ast.json", JSON.stringify(entries), "utf-8");
+        transformDescriptions(entries);
         resolve(entries);
       });
     });

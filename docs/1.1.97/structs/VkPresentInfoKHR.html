@@ -77,7 +77,7 @@ instanceCreateInfo.pResults = ;
       <vk-property-entry>
         <vk-property-prototype>VkPresentInfoKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
-        <vk-property-description> is `NULL` or a pointer to an extension-specific structure.</vk-property-description>
+        <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
       <!-- VkPresentInfoKHR.prototype.waitSemaphoreCount -->
       <vk-property-entry>
@@ -113,7 +113,7 @@ instanceCreateInfo.pResults = ;
       <vk-property-entry>
         <vk-property-prototype>VkPresentInfoKHR.prototype.<vk-prototype-name>pResults</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array">Int32Array</a></vk-property-type>
-        <vk-property-description> is an array of elink:VkResult typed elements with pname:swapchainCount entries. Applications that do not need per-swapchain results can: use `NULL` for pname:pResults. If non-`NULL`, each entry in pname:pResults will be set to the elink:VkResult for presenting the swapchain corresponding to the same index in pname:pSwapchains.</vk-property-description>
+        <vk-property-description> is an array of elink:VkResult typed elements with pname:swapchainCount entries. Applications that do not need per-swapchain results can: use <i>null</i> for pname:pResults. If non-<i>null</i>, each entry in pname:pResults will be set to the elink:VkResult for presenting the swapchain corresponding to the same index in pname:pSwapchains.</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

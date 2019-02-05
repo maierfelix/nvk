@@ -85,31 +85,31 @@ instanceCreateInfo.vgprAllocationGranularity = ;
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
-        <vk-property-description> is `NULL` or a pointer to an extension-specific structure.</vk-property-description>
+        <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.shaderEngineCount -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>shaderEngineCount</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is an unsigned integer value indicating the number of shader engines found inside the shader core of the physical device.</vk-property-description>
+        <vk-property-description> is a number value indicating the number of shader engines found inside the shader core of the physical device.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.shaderArraysPerEngineCount -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>shaderArraysPerEngineCount</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is an unsigned integer value indicating the number of shader arrays inside a shader engine. Each shader array has its own scan converter, set of compute units, and a render back end (color and depth buffers). Shader arrays within a shader engine share shader processor input (wave launcher) and shader export (export buffer) units. Currently, a shader engine can have one or two shader arrays.</vk-property-description>
+        <vk-property-description> is a number value indicating the number of shader arrays inside a shader engine. Each shader array has its own scan converter, set of compute units, and a render back end (color and depth buffers). Shader arrays within a shader engine share shader processor input (wave launcher) and shader export (export buffer) units. Currently, a shader engine can have one or two shader arrays.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.computeUnitsPerShaderArray -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>computeUnitsPerShaderArray</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is an unsigned integer value indicating the number of compute units within a shader array. A compute unit houses a set of SIMDs along with a sequencer module and a local data store.</vk-property-description>
+        <vk-property-description> is a number value indicating the number of compute units within a shader array. A compute unit houses a set of SIMDs along with a sequencer module and a local data store.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.simdPerComputeUnit -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>simdPerComputeUnit</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is an unsigned integer value indicating the number of SIMDs inside a compute unit. Each SIMD processes a single instruction at a time.</vk-property-description>
+        <vk-property-description> is a number value indicating the number of SIMDs inside a compute unit. Each SIMD processes a single instruction at a time.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.wavefrontsPerSimd -->
       <vk-property-entry>
@@ -121,55 +121,55 @@ instanceCreateInfo.vgprAllocationGranularity = ;
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>wavefrontSize</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is an unsigned integer value indicating the number of channels (or threads) in a wavefront.</vk-property-description>
+        <vk-property-description> is a number value indicating the number of channels (or threads) in a wavefront.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.sgprsPerSimd -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>sgprsPerSimd</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is an unsigned integer value indicating the number of physical Scalar General Purpose Registers (SGPRs) per SIMD.</vk-property-description>
+        <vk-property-description> is a number value indicating the number of physical Scalar General Purpose Registers (SGPRs) per SIMD.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.minSgprAllocation -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>minSgprAllocation</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is an unsigned integer value indicating the minimum number of SGPRs allocated for a wave.</vk-property-description>
+        <vk-property-description> is a number value indicating the minimum number of SGPRs allocated for a wave.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.maxSgprAllocation -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>maxSgprAllocation</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is an unsigned integer value indicating the maximum number of SGPRs allocated for a wave.</vk-property-description>
+        <vk-property-description> is a number value indicating the maximum number of SGPRs allocated for a wave.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.sgprAllocationGranularity -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>sgprAllocationGranularity</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is an unsigned integer value indicating the granularity of SGPR allocation for a wave.</vk-property-description>
+        <vk-property-description> is a number value indicating the granularity of SGPR allocation for a wave.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.vgprsPerSimd -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>vgprsPerSimd</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is an unsigned integer value indicating the number of physical Vector General Purpose Registers (VGPRs) per SIMD.</vk-property-description>
+        <vk-property-description> is a number value indicating the number of physical Vector General Purpose Registers (VGPRs) per SIMD.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.minVgprAllocation -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>minVgprAllocation</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is an unsigned integer value indicating the minimum number of VGPRs allocated for a wave.</vk-property-description>
+        <vk-property-description> is a number value indicating the minimum number of VGPRs allocated for a wave.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.maxVgprAllocation -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>maxVgprAllocation</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is an unsigned integer value indicating the maximum number of VGPRs allocated for a wave.</vk-property-description>
+        <vk-property-description> is a number value indicating the maximum number of VGPRs allocated for a wave.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.vgprAllocationGranularity -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>vgprAllocationGranularity</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is an unsigned integer value indicating the granularity of VGPR allocation for a wave.</vk-property-description>
+        <vk-property-description> is a number value indicating the granularity of VGPR allocation for a wave.</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

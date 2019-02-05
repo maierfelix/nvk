@@ -33,7 +33,7 @@
 
     <vk-name>vkGetInstanceProcAddr</vk-name>
 
-    <vk-description>Return a function pointer for a command</vk-description>
+    <vk-description>Return a function reference for a command</vk-description>
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
@@ -48,7 +48,7 @@
       <vk-property-entry>
         <vk-property-parameter>instance</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkInstance.html">VkInstance</a></vk-property-type>
-        <vk-property-description> is the instance that the function pointer will be compatible with, or `NULL` for commands not dependent on any instance.</vk-property-description>
+        <vk-property-description> is the instance that the function reference will be compatible with, or <i>null</i> for commands not dependent on any instance.</vk-property-description>
       </vk-property-entry>
       <!-- pName -->
       <vk-property-entry>

@@ -33,7 +33,7 @@
 
     <vk-name>VkAllocationCallbacks</vk-name>
 
-    <vk-description>Structure containing callback function pointers for memory allocation</vk-description>
+    <vk-description>Structure containing callback function references for memory allocation</vk-description>
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
@@ -75,31 +75,31 @@ instanceCreateInfo.pfnInternalFree = ;
       <vk-property-entry>
         <vk-property-prototype>VkAllocationCallbacks.prototype.<vk-prototype-name>pfnAllocation</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
-        <vk-property-description> is a pointer to an application-defined memory allocation function of type tlink:PFN_vkAllocationFunction.</vk-property-description>
+        <vk-property-description> is a reference to an application-defined memory allocation function of type tlink:PFN_vkAllocationFunction.</vk-property-description>
       </vk-property-entry>
       <!-- VkAllocationCallbacks.prototype.pfnReallocation -->
       <vk-property-entry>
         <vk-property-prototype>VkAllocationCallbacks.prototype.<vk-prototype-name>pfnReallocation</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
-        <vk-property-description> is a pointer to an application-defined memory reallocation function of type tlink:PFN_vkReallocationFunction.</vk-property-description>
+        <vk-property-description> is a reference to an application-defined memory reallocation function of type tlink:PFN_vkReallocationFunction.</vk-property-description>
       </vk-property-entry>
       <!-- VkAllocationCallbacks.prototype.pfnFree -->
       <vk-property-entry>
         <vk-property-prototype>VkAllocationCallbacks.prototype.<vk-prototype-name>pfnFree</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
-        <vk-property-description> is a pointer to an application-defined memory free function of type tlink:PFN_vkFreeFunction.</vk-property-description>
+        <vk-property-description> is a reference to an application-defined memory free function of type tlink:PFN_vkFreeFunction.</vk-property-description>
       </vk-property-entry>
       <!-- VkAllocationCallbacks.prototype.pfnInternalAllocation -->
       <vk-property-entry>
         <vk-property-prototype>VkAllocationCallbacks.prototype.<vk-prototype-name>pfnInternalAllocation</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
-        <vk-property-description> is a pointer to an application-defined function that is called by the implementation when the implementation makes internal allocations, and it is of type tlink:PFN_vkInternalAllocationNotification.</vk-property-description>
+        <vk-property-description> is a reference to an application-defined function that is called by the implementation when the implementation makes internal allocations, and it is of type tlink:PFN_vkInternalAllocationNotification.</vk-property-description>
       </vk-property-entry>
       <!-- VkAllocationCallbacks.prototype.pfnInternalFree -->
       <vk-property-entry>
         <vk-property-prototype>VkAllocationCallbacks.prototype.<vk-prototype-name>pfnInternalFree</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
-        <vk-property-description> is a pointer to an application-defined function that is called by the implementation when the implementation frees internal allocations, and it is of type tlink:PFN_vkInternalFreeNotification.</vk-property-description>
+        <vk-property-description> is a reference to an application-defined function that is called by the implementation when the implementation frees internal allocations, and it is of type tlink:PFN_vkInternalFreeNotification.</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

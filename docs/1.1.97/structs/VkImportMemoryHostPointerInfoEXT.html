@@ -33,7 +33,7 @@
 
     <vk-name>VkImportMemoryHostPointerInfoEXT</vk-name>
 
-    <vk-description>import memory from a host pointer</vk-description>
+    <vk-description>import memory from a host reference</vk-description>
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
@@ -73,7 +73,7 @@ instanceCreateInfo.pHostPointer = ;
       <vk-property-entry>
         <vk-property-prototype>VkImportMemoryHostPointerInfoEXT.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
-        <vk-property-description> is `NULL` or a pointer to an extension-specific structure.</vk-property-description>
+        <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
       <!-- VkImportMemoryHostPointerInfoEXT.prototype.handleType -->
       <vk-property-entry>
@@ -85,7 +85,7 @@ instanceCreateInfo.pHostPointer = ;
       <vk-property-entry>
         <vk-property-prototype>VkImportMemoryHostPointerInfoEXT.prototype.<vk-prototype-name>pHostPointer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
-        <vk-property-description> is the host pointer to import from.</vk-property-description>
+        <vk-property-description> is the host reference to import from.</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

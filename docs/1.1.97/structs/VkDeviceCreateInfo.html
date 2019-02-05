@@ -79,7 +79,7 @@ instanceCreateInfo.pEnabledFeatures = ;
       <vk-property-entry>
         <vk-property-prototype>VkDeviceCreateInfo.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
-        <vk-property-description> is `NULL` or a pointer to an extension-specific structure.</vk-property-description>
+        <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
       <!-- VkDeviceCreateInfo.prototype.flags -->
       <vk-property-entry>
@@ -91,13 +91,13 @@ instanceCreateInfo.pEnabledFeatures = ;
       <vk-property-entry>
         <vk-property-prototype>VkDeviceCreateInfo.prototype.<vk-prototype-name>queueCreateInfoCount</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is the unsigned integer size of the pname:pQueueCreateInfos array. Refer to the <<devsandqueues-queue-creation,Queue Creation>> section below for further details.</vk-property-description>
+        <vk-property-description> is the size of the pname:pQueueCreateInfos array. Refer to the <<devsandqueues-queue-creation,Queue Creation>> section below for further details.</vk-property-description>
       </vk-property-entry>
       <!-- VkDeviceCreateInfo.prototype.pQueueCreateInfos -->
       <vk-property-entry>
         <vk-property-prototype>VkDeviceCreateInfo.prototype.<vk-prototype-name>pQueueCreateInfos</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkDeviceQueueCreateInfo.html">VkDeviceQueueCreateInfo]</a></vk-property-type></vk-property-type>
-        <vk-property-description> is a pointer to an array of slink:VkDeviceQueueCreateInfo structures describing the queues that are requested to be created along with the logical device. Refer to the <<devsandqueues-queue-creation,Queue Creation>> section below for further details.</vk-property-description>
+        <vk-property-description> is an array of slink:VkDeviceQueueCreateInfo structures describing the queues that are requested to be created along with the logical device. Refer to the <<devsandqueues-queue-creation,Queue Creation>> section below for further details.</vk-property-description>
       </vk-property-entry>
       <!-- VkDeviceCreateInfo.prototype.enabledLayerCount -->
       <vk-property-entry>
@@ -121,13 +121,13 @@ instanceCreateInfo.pEnabledFeatures = ;
       <vk-property-entry>
         <vk-property-prototype>VkDeviceCreateInfo.prototype.<vk-prototype-name>ppEnabledExtensionNames</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="string">[String]</vk-property-type></vk-property-type>
-        <vk-property-description> is a pointer to an array of pname:enabledExtensionCount null-terminated UTF-8 strings containing the names of extensions to enable for the created device. See the <<extended-functionality-extensions,Extensions>> section for further details.</vk-property-description>
+        <vk-property-description> is an array of pname:enabledExtensionCount strings containing the names of extensions to enable for the created device. See the <<extended-functionality-extensions,Extensions>> section for further details.</vk-property-description>
       </vk-property-entry>
       <!-- VkDeviceCreateInfo.prototype.pEnabledFeatures -->
       <vk-property-entry>
         <vk-property-prototype>VkDeviceCreateInfo.prototype.<vk-prototype-name>pEnabledFeatures</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkPhysicalDeviceFeatures.html">VkPhysicalDeviceFeatures</a></vk-property-type>
-        <vk-property-description> is `NULL` or a pointer to a slink:VkPhysicalDeviceFeatures structure that contains boolean indicators of all the features to be enabled. Refer to the <<features-features,Features>> section for further details.</vk-property-description>
+        <vk-property-description> is <i>null</i> or a reference to a slink:VkPhysicalDeviceFeatures structure that contains boolean indicators of all the features to be enabled. Refer to the <<features-features,Features>> section for further details.</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>
