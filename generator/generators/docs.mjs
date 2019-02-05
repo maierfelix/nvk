@@ -370,7 +370,15 @@ export default function(astReference, data, version) {
   structs.map(struct => { objects.push(struct); });
   handles.map(handle => { objects.push(handle); });
   let categories = getCategories({ calls, structs, handles });
-  // reserve write dirs
+  let defaultFunctions = {
+    getType,
+    getCSSType,
+    getObjectLabel,
+    getObjectFolder,
+    getCallReturnType,
+    getObjectsByCategory
+  };
+  // reserve output dirs
   {
     // docs/x/
     if (!fs.existsSync(`${DOCS_DIR}/${version}`)) fs.mkdirSync(`${DOCS_DIR}/${version}`);
@@ -386,9 +394,7 @@ export default function(astReference, data, version) {
     let output = nunjucks.renderString(INDEX_TEMPLATE, {
       objects,
       categories,
-      getObjectLabel,
-      getObjectFolder,
-      getObjectsByCategory
+      ...defaultFunctions
     });
     fs.writeFileSync(`${DOCS_DIR}/${version}/index.html`, output, `utf-8`);
   }
@@ -430,11 +436,7 @@ export default function(astReference, data, version) {
         objects,
         members: struct.children,
         categories,
-        getType,
-        getCSSType,
-        getObjectLabel,
-        getObjectFolder,
-        getObjectsByCategory
+        ...defaultFunctions
       });
       fs.writeFileSync(`${DOCS_DIR}/${version}/structs/${struct.name}.html`, output, `utf-8`);
     });
@@ -448,11 +450,7 @@ export default function(astReference, data, version) {
         objects,
         members: handle.children,
         categories,
-        getType,
-        getCSSType,
-        getObjectLabel,
-        getObjectFolder,
-        getObjectsByCategory
+        ...defaultFunctions
       });
       fs.writeFileSync(`${DOCS_DIR}/${version}/handles/${handle.name}.html`, output, `utf-8`);
     });
@@ -466,12 +464,7 @@ export default function(astReference, data, version) {
         objects,
         params: call.params,
         categories,
-        getType,
-        getCSSType,
-        getObjectLabel,
-        getObjectFolder,
-        getCallReturnType,
-        getObjectsByCategory
+        ...defaultFunctions
       });
       fs.writeFileSync(`${DOCS_DIR}/${version}/calls/${call.name}.html`, output, `utf-8`);
     });
