@@ -9,10 +9,12 @@ import parseDocumentation from "../doc-parser";
 
 import {
   warn,
+  isPNextMember,
   getNodeByName,
   formatIntToHex,
   getAutoStructureType,
-  isNumericReferenceType
+  isNumericReferenceType,
+  getJavaScriptTypedArrayName
 } from "../utils";
 
 let xmlOpts = {
@@ -465,7 +467,17 @@ function parseTypeElement(child) {
   if (out.isNumericArray && !out.isStaticArray) {
     if (isNumericReferenceType(out.rawType)) {
       out.isTypedArray = true;
-      out.jsTypedArrayName = getJsTypedArrayName(out.rawType);
+      out.jsTypedArrayName = getJavaScriptTypedArrayName(out.rawType);
+    }
+  }
+  // void pointer
+  if (out.rawType === `void *` || out.rawType === `const void *`) {
+    out.isVoidPointer = true;
+    out.isContantVoidPointer = out.rawType === `const void *`;
+    out.isDynamicVoidPointer = !out.isContantVoidPointer;
+    if (!isPNextMember(out)) {
+      out.isTypedArray = true;
+      out.jsTypedArrayName = getJavaScriptTypedArrayName(out.rawType);
     }
   }
   // figure out js relative type
@@ -474,20 +486,11 @@ function parseTypeElement(child) {
     if (out.isNumber) jsType = "Number";
     else if (out.isString) jsType = "String";
     else if (out.isTypedArray) jsType = "ArrayBufferView";
+    else if (out.isVoidPointer) jsType = "ArrayBuffer";
     else if (out.isArray) jsType = "Array";
     else if (out.isStructType || out.isHandleType) jsType = "Object";
     else if (!out.isConstant && isNumericReferenceType(out.rawType)) jsType = "Object";
     out.jsType = jsType;
-  }
-  // void pointer
-  if (out.rawType === `void *` || out.rawType === `const void *`) {
-    out.isVoidPointer = true;
-    out.isContantVoidPointer = out.rawType === `const void *`;
-    out.isDynamicVoidPointer = !out.isContantVoidPointer;
-    if (out.isDynamicVoidPointer && out.name !== `pNext`) {
-      out.isTypedArray = true;
-      out.jsTypedArrayName = getJsTypedArrayName(out.rawType);
-    }
   }
   return out;
 };
@@ -518,42 +521,6 @@ function isNumber(type) {
       return true;
   };
   return false;
-};
-
-function getJsTypedArrayName(type) {
-  switch (type) {
-    case "void *":
-      return `ArrayBuffer`;
-    case "float *":
-    case "const float *":
-      return "Float32Array";
-    case "int8_t *":
-    case "const int8_t *":
-      return "Int8Array";
-    case "int16_t *":
-    case "const int16_t *":
-      return "Int16Array";
-    case "int32_t *":
-    case "const int32_t *":
-      return "Int32Array";
-    case "int64_t *":
-    case "const int64_t *":
-      return "Int64Array";
-    case "uint8_t *":
-    case "const uint8_t *":
-      return "Uint8Array";
-    case "uint16_t *":
-    case "const uint16_t *": 
-      return "Uint16Array";
-    case "uint32_t *":
-    case "const uint32_t *":
-      return "Uint32Array";
-    case "uint64_t *":
-    case "const uint64_t *":
-      return "BigUint64Array";
-  };
-  warn(`Cannot resolve equivalent JS typed array name for ${type}`);
-  return null;
 };
 
 function getDocumentationEntryByName(name, docs) {

@@ -149,6 +149,11 @@ function processHeaderGetter(struct, member) {
     Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> ${member.name};
     static NAN_GETTER(Get${member.name});`;
   }
+  if (member.isVoidPointer) {
+    return `
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> ${member.name};
+    static NAN_GETTER(Get${member.name});`;
+  }
   switch (rawType) {
     case "const char *":
       return `
@@ -186,7 +191,7 @@ function processHeaderGetter(struct, member) {
       return `
     static NAN_GETTER(Get${member.name});`;
     default: {
-      warn(`Cannot handle member ${member.rawType} in header-getter!`);
+      warn(`Cannot handle member ${member.rawType} for ${struct.name} in header-getter!`);
       return `
     static NAN_GETTER(Get${member.name});`;
     }
@@ -216,7 +221,7 @@ function processSourceGetter(struct, member) {
     info.GetReturnValue().Set(Nan::New(self->${member.name}));
   }`;
   }
-  if (member.isArray && (member.isStructType || member.isHandleType)) {
+  if ((member.isArray && (member.isStructType || member.isHandleType)) || member.isVoidPointer) {
     return `
   if (self->${member.name}.IsEmpty()) {
     info.GetReturnValue().SetNull();
@@ -272,7 +277,7 @@ function processSourceGetter(struct, member) {
     info.GetReturnValue().Set(obj);
   }`;
       }
-      warn(`Cannot handle member ${member.rawType} in source-getter!`);
+      warn(`Cannot handle member ${member.rawType} for ${struct.name} in source-getter!`);
       return retUnknown(member);
     } break;
   };
@@ -337,6 +342,20 @@ function processSourceSetter(struct, member) {
     return;
   }`;
   }
+  if (member.isVoidPointer && !isPNextMember(member)) {
+    return `
+  if (value->IsArrayBuffer()) {
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    v8::Local<v8::ArrayBuffer> buf = v8::Local<v8::ArrayBuffer>::Cast(obj);
+    self->instance.${member.name} = buf->GetContents().Data();
+    self->${member.name}.Reset<v8::Object>(obj);
+  } else if (value->IsNull()) {
+    self->instance.${member.name} = nullptr;
+  } else {
+    ${invalidMemberTypeError(member)}
+    return;
+  }`;
+  }
   switch (rawType) {
     case "int":
     case "float":
@@ -370,7 +389,7 @@ function processSourceSetter(struct, member) {
     return;
   }`;
       } else {
-        warn(`Cannot handle member ${member.rawType} in source-setter`);
+        warn(`Cannot handle member ${member.rawType} for ${struct.name} in source-setter`);
       }
     case "const char *":
       return `
@@ -450,7 +469,7 @@ function processSourceSetter(struct, member) {
     return;
   }`;
       }
-      warn(`Cannot handle member ${member.rawType} in source-setter!`);
+      warn(`Cannot handle member ${member.rawType} for ${struct.name} in source-setter!`);
       return retUnknown(member);
     } break;
   };
@@ -727,6 +746,7 @@ function processMemberAutosType(struct) {
 
 function isFillableMember(struct, member) {
   if (member.name === `sType` || member.name === `pNext`) return true;
+  if (member.isVoidPointer) return true;
   return !struct.returnedonly;
 };
 

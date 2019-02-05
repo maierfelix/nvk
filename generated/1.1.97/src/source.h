@@ -2363,6 +2363,10 @@ class _VkSpecializationInfo: public Nan::ObjectWrap {
     static NAN_GETTER(GetdataSize);
     static NAN_SETTER(SetdataSize);
     
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pData;
+    static NAN_GETTER(GetpData);
+    static NAN_SETTER(SetpData);
+    
 
     // real instance
     VkSpecializationInfo instance = {};
@@ -3641,6 +3645,10 @@ class _VkCheckpointDataNV: public Nan::ObjectWrap {
     static NAN_SETTER(SetpNext);
     
     static NAN_GETTER(Getstage);
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pCheckpointMarker;
+    static NAN_GETTER(GetpCheckpointMarker);
+    static NAN_SETTER(SetpCheckpointMarker);
+    
 
     // real instance
     VkCheckpointDataNV instance = {};
@@ -4967,6 +4975,10 @@ class _VkImportMemoryHostPointerInfoEXT: public Nan::ObjectWrap {
     static NAN_GETTER(GethandleType);
     static NAN_SETTER(SethandleType);
     
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pHostPointer;
+    static NAN_GETTER(GetpHostPointer);
+    static NAN_SETTER(SetpHostPointer);
+    
 
     // real instance
     VkImportMemoryHostPointerInfoEXT instance = {};
@@ -5169,6 +5181,10 @@ class _VkDebugUtilsMessengerCreateInfoEXT: public Nan::ObjectWrap {
     static NAN_GETTER(GetmessageType);
     static NAN_SETTER(SetmessageType);
     
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pUserData;
+    static NAN_GETTER(GetpUserData);
+    static NAN_SETTER(SetpUserData);
+    
 
     // real instance
     VkDebugUtilsMessengerCreateInfoEXT instance = {};
@@ -5214,6 +5230,10 @@ class _VkDebugUtilsObjectTagInfoEXT: public Nan::ObjectWrap {
     
     static NAN_GETTER(GettagSize);
     static NAN_SETTER(SettagSize);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pTag;
+    static NAN_GETTER(GetpTag);
+    static NAN_SETTER(SetpTag);
     
 
     // real instance
@@ -5703,6 +5723,10 @@ class _VkValidationCacheCreateInfoEXT: public Nan::ObjectWrap {
     static NAN_GETTER(GetinitialDataSize);
     static NAN_SETTER(SetinitialDataSize);
     
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pInitialData;
+    static NAN_GETTER(GetpInitialData);
+    static NAN_SETTER(SetpInitialData);
+    
 
     // real instance
     VkValidationCacheCreateInfoEXT instance = {};
@@ -5867,6 +5891,10 @@ class _VkWriteDescriptorSetInlineUniformBlockEXT: public Nan::ObjectWrap {
     
     static NAN_GETTER(GetdataSize);
     static NAN_SETTER(SetdataSize);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pData;
+    static NAN_GETTER(GetpData);
+    static NAN_SETTER(SetpData);
     
 
     // real instance
@@ -15977,6 +16005,10 @@ class _VkDebugMarkerObjectTagInfoEXT: public Nan::ObjectWrap {
     static NAN_GETTER(GettagSize);
     static NAN_SETTER(SettagSize);
     
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pTag;
+    static NAN_GETTER(GetpTag);
+    static NAN_SETTER(SetpTag);
+    
 
     // real instance
     VkDebugMarkerObjectTagInfoEXT instance = {};
@@ -16183,6 +16215,10 @@ class _VkDebugReportCallbackCreateInfoEXT: public Nan::ObjectWrap {
     
     static NAN_GETTER(Getflags);
     static NAN_SETTER(Setflags);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pUserData;
+    static NAN_GETTER(GetpUserData);
+    static NAN_SETTER(SetpUserData);
     
 
     // real instance
@@ -17681,6 +17717,10 @@ class _VkPipelineCacheCreateInfo: public Nan::ObjectWrap {
     
     static NAN_GETTER(GetinitialDataSize);
     static NAN_SETTER(SetinitialDataSize);
+    
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pInitialData;
+    static NAN_GETTER(GetpInitialData);
+    static NAN_SETTER(SetpInitialData);
     
 
     // real instance
@@ -20366,6 +20406,10 @@ class _VkAllocationCallbacks: public Nan::ObjectWrap {
     static NAN_GETTER(GetmemoryBuffer);
     static NAN_GETTER(GetmemoryLayout);
     // #accessors
+    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> pUserData;
+    static NAN_GETTER(GetpUserData);
+    static NAN_SETTER(SetpUserData);
+    
 
     // real instance
     VkAllocationCallbacks instance = {};

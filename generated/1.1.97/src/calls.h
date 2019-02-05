@@ -7347,12 +7347,20 @@ void _vkCmdUpdateBuffer(const Nan::FunctionCallbackInfo<v8::Value>& info) {
 
   uint64_t $p3 = static_cast<uint64_t>(Nan::To<int64_t>(info[3]).FromMaybe(0));
 
+  void* $p4;
+  if (info[4]->IsArrayBuffer()) {
+    v8::Local<v8::ArrayBuffer> buf = v8::Local<v8::ArrayBuffer>::Cast(Nan::To<v8::Object>(info[4]).ToLocalChecked());
+    $p4 = buf->GetContents().Data();
+  } else if (!info[4]->IsNull()) {
+    Nan::ThrowTypeError("Expected 'ArrayBuffer' or 'null' for argument 5 'pData'");
+    return;
+  }
 vkCmdUpdateBuffer(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2,
     $p3,
-nullptr
+    info[4]->IsNull() ? nullptr : $p4
   );
   
   
@@ -8552,13 +8560,21 @@ void _vkCmdPushConstants(const Nan::FunctionCallbackInfo<v8::Value>& info) {
 
   uint32_t $p4 = static_cast<uint32_t>(Nan::To<int64_t>(info[4]).FromMaybe(0));
 
+  void* $p5;
+  if (info[5]->IsArrayBuffer()) {
+    v8::Local<v8::ArrayBuffer> buf = v8::Local<v8::ArrayBuffer>::Cast(Nan::To<v8::Object>(info[5]).ToLocalChecked());
+    $p5 = buf->GetContents().Data();
+  } else if (!info[5]->IsNull()) {
+    Nan::ThrowTypeError("Expected 'ArrayBuffer' or 'null' for argument 6 'pValues'");
+    return;
+  }
 vkCmdPushConstants(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     static_cast<VkShaderStageFlags>($p2),
     $p3,
     $p4,
-nullptr
+    info[5]->IsNull() ? nullptr : $p5
   );
   
   
@@ -14216,11 +14232,19 @@ void _vkUpdateDescriptorSetWithTemplate(const Nan::FunctionCallbackInfo<v8::Valu
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 3 'descriptorUpdateTemplate'");
   }
 
+  void* $p3;
+  if (info[3]->IsArrayBuffer()) {
+    v8::Local<v8::ArrayBuffer> buf = v8::Local<v8::ArrayBuffer>::Cast(Nan::To<v8::Object>(info[3]).ToLocalChecked());
+    $p3 = buf->GetContents().Data();
+  } else if (!info[3]->IsNull()) {
+    Nan::ThrowTypeError("Expected 'ArrayBuffer' or 'null' for argument 4 'pData'");
+    return;
+  }
 vkUpdateDescriptorSetWithTemplate(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     info[2]->IsNull() ? VK_NULL_HANDLE : *$p2,
-nullptr
+    info[3]->IsNull() ? nullptr : $p3
   );
   
   
@@ -14283,12 +14307,20 @@ void _vkCmdPushDescriptorSetWithTemplateKHR(const Nan::FunctionCallbackInfo<v8::
 
   uint32_t $p3 = static_cast<uint32_t>(Nan::To<int64_t>(info[3]).FromMaybe(0));
 
+  void* $p4;
+  if (info[4]->IsArrayBuffer()) {
+    v8::Local<v8::ArrayBuffer> buf = v8::Local<v8::ArrayBuffer>::Cast(Nan::To<v8::Object>(info[4]).ToLocalChecked());
+    $p4 = buf->GetContents().Data();
+  } else if (!info[4]->IsNull()) {
+    Nan::ThrowTypeError("Expected 'ArrayBuffer' or 'null' for argument 5 'pData'");
+    return;
+  }
 $vkCmdPushDescriptorSetWithTemplateKHR(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1]->IsNull() ? VK_NULL_HANDLE : *$p1,
     info[2]->IsNull() ? VK_NULL_HANDLE : *$p2,
     $p3,
-nullptr
+    info[4]->IsNull() ? nullptr : $p4
   );
   
   
@@ -16927,6 +16959,14 @@ void _vkGetMemoryHostPointerPropertiesEXT(const Nan::FunctionCallbackInfo<v8::Va
 
   int32_t $p1 = static_cast<int32_t>(Nan::To<int64_t>(info[1]).FromMaybe(0));
 
+  void* $p2;
+  if (info[2]->IsArrayBuffer()) {
+    v8::Local<v8::ArrayBuffer> buf = v8::Local<v8::ArrayBuffer>::Cast(Nan::To<v8::Object>(info[2]).ToLocalChecked());
+    $p2 = buf->GetContents().Data();
+  } else if (!info[2]->IsNull()) {
+    Nan::ThrowTypeError("Expected 'ArrayBuffer' or 'null' for argument 3 'pHostPointer'");
+    return;
+  }
 
   _VkMemoryHostPointerPropertiesEXT* obj3;
   VkMemoryHostPointerPropertiesEXT *$p3;
@@ -16947,7 +16987,7 @@ void _vkGetMemoryHostPointerPropertiesEXT(const Nan::FunctionCallbackInfo<v8::Va
   int32_t out = $vkGetMemoryHostPointerPropertiesEXT(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
     static_cast<VkExternalMemoryHandleTypeFlagBits>($p1),
-nullptr,
+    info[2]->IsNull() ? nullptr : $p2,
     $p3
   );
   
@@ -17413,9 +17453,17 @@ void _vkCmdSetCheckpointNV(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'commandBuffer'");
   }
 
+  void* $p1;
+  if (info[1]->IsArrayBuffer()) {
+    v8::Local<v8::ArrayBuffer> buf = v8::Local<v8::ArrayBuffer>::Cast(Nan::To<v8::Object>(info[1]).ToLocalChecked());
+    $p1 = buf->GetContents().Data();
+  } else if (!info[1]->IsNull()) {
+    Nan::ThrowTypeError("Expected 'ArrayBuffer' or 'null' for argument 2 'pCheckpointMarker'");
+    return;
+  }
 $vkCmdSetCheckpointNV(
     info[0]->IsNull() ? VK_NULL_HANDLE : *$p0,
-nullptr
+    info[1]->IsNull() ? nullptr : $p1
   );
   
   

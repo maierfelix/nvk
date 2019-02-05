@@ -4006,7 +4006,7 @@ interface VkSpecializationInfoInitializer {
   mapEntryCount?: number;
   pMapEntries?: VkSpecializationMapEntry[] | null;
   dataSize?: number;
-  pData?: null;
+  pData?: ArrayBuffer | null;
 }
 
 declare var VkSpecializationInfo: {
@@ -4015,14 +4015,14 @@ declare var VkSpecializationInfo: {
   mapEntryCount: number;
   pMapEntries: VkSpecializationMapEntry[] | null;
   dataSize: number;
-  pData: null;
+  pData: ArrayBuffer | null;
 }
 
 export interface VkSpecializationInfo {
   mapEntryCount: number;
   pMapEntries: VkSpecializationMapEntry[] | null;
   dataSize: number;
-  pData: null;
+  pData: ArrayBuffer | null;
 }
 
 
@@ -4838,7 +4838,7 @@ interface VkCheckpointDataNVInitializer {
   readonly sType?: VkStructureType;
   readonly pNext?: null;
   readonly stage?: VkPipelineStageFlagBits;
-  readonly pCheckpointMarker?: null;
+  readonly pCheckpointMarker?: ArrayBuffer | null;
 }
 
 declare var VkCheckpointDataNV: {
@@ -4847,14 +4847,14 @@ declare var VkCheckpointDataNV: {
   readonly sType: VkStructureType;
   readonly pNext: null;
   readonly stage: VkPipelineStageFlagBits;
-  readonly pCheckpointMarker: null;
+  readonly pCheckpointMarker: ArrayBuffer | null;
 }
 
 export interface VkCheckpointDataNV {
   readonly sType: VkStructureType;
   readonly pNext: null;
   readonly stage: VkPipelineStageFlagBits;
-  readonly pCheckpointMarker: null;
+  readonly pCheckpointMarker: ArrayBuffer | null;
 }
 
 
@@ -5800,7 +5800,7 @@ interface VkImportMemoryHostPointerInfoEXTInitializer {
   sType?: VkStructureType;
   pNext?: null;
   handleType?: VkExternalMemoryHandleTypeFlagBits;
-  pHostPointer?: null;
+  pHostPointer?: ArrayBuffer | null;
 }
 
 declare var VkImportMemoryHostPointerInfoEXT: {
@@ -5809,14 +5809,14 @@ declare var VkImportMemoryHostPointerInfoEXT: {
   sType: VkStructureType;
   pNext: null;
   handleType: VkExternalMemoryHandleTypeFlagBits;
-  pHostPointer: null;
+  pHostPointer: ArrayBuffer | null;
 }
 
 export interface VkImportMemoryHostPointerInfoEXT {
   sType: VkStructureType;
   pNext: null;
   handleType: VkExternalMemoryHandleTypeFlagBits;
-  pHostPointer: null;
+  pHostPointer: ArrayBuffer | null;
 }
 
 
@@ -5930,7 +5930,7 @@ interface VkDebugUtilsMessengerCreateInfoEXTInitializer {
   messageSeverity?: VkDebugUtilsMessageSeverityFlagBitsEXT;
   messageType?: VkDebugUtilsMessageTypeFlagBitsEXT;
   pfnUserCallback?: null;
-  pUserData?: null;
+  pUserData?: ArrayBuffer | null;
 }
 
 declare var VkDebugUtilsMessengerCreateInfoEXT: {
@@ -5942,7 +5942,7 @@ declare var VkDebugUtilsMessengerCreateInfoEXT: {
   messageSeverity: VkDebugUtilsMessageSeverityFlagBitsEXT;
   messageType: VkDebugUtilsMessageTypeFlagBitsEXT;
   pfnUserCallback: null;
-  pUserData: null;
+  pUserData: ArrayBuffer | null;
 }
 
 export interface VkDebugUtilsMessengerCreateInfoEXT {
@@ -5952,7 +5952,7 @@ export interface VkDebugUtilsMessengerCreateInfoEXT {
   messageSeverity: VkDebugUtilsMessageSeverityFlagBitsEXT;
   messageType: VkDebugUtilsMessageTypeFlagBitsEXT;
   pfnUserCallback: null;
-  pUserData: null;
+  pUserData: ArrayBuffer | null;
 }
 
 
@@ -5964,7 +5964,7 @@ interface VkDebugUtilsObjectTagInfoEXTInitializer {
   objectHandle?: number;
   tagName?: number;
   tagSize?: number;
-  pTag?: null;
+  pTag?: ArrayBuffer | null;
 }
 
 declare var VkDebugUtilsObjectTagInfoEXT: {
@@ -5976,7 +5976,7 @@ declare var VkDebugUtilsObjectTagInfoEXT: {
   objectHandle: number;
   tagName: number;
   tagSize: number;
-  pTag: null;
+  pTag: ArrayBuffer | null;
 }
 
 export interface VkDebugUtilsObjectTagInfoEXT {
@@ -5986,7 +5986,7 @@ export interface VkDebugUtilsObjectTagInfoEXT {
   objectHandle: number;
   tagName: number;
   tagSize: number;
-  pTag: null;
+  pTag: ArrayBuffer | null;
 }
 
 
@@ -6313,7 +6313,7 @@ interface VkValidationCacheCreateInfoEXTInitializer {
   pNext?: null;
   flags?: null;
   initialDataSize?: number;
-  pInitialData?: null;
+  pInitialData?: ArrayBuffer | null;
 }
 
 declare var VkValidationCacheCreateInfoEXT: {
@@ -6323,7 +6323,7 @@ declare var VkValidationCacheCreateInfoEXT: {
   pNext: null;
   flags: null;
   initialDataSize: number;
-  pInitialData: null;
+  pInitialData: ArrayBuffer | null;
 }
 
 export interface VkValidationCacheCreateInfoEXT {
@@ -6331,7 +6331,7 @@ export interface VkValidationCacheCreateInfoEXT {
   pNext: null;
   flags: null;
   initialDataSize: number;
-  pInitialData: null;
+  pInitialData: ArrayBuffer | null;
 }
 
 
@@ -6421,7 +6421,7 @@ interface VkWriteDescriptorSetInlineUniformBlockEXTInitializer {
   sType?: VkStructureType;
   pNext?: null;
   dataSize?: number;
-  pData?: null;
+  pData?: ArrayBuffer | null;
 }
 
 declare var VkWriteDescriptorSetInlineUniformBlockEXT: {
@@ -6430,14 +6430,14 @@ declare var VkWriteDescriptorSetInlineUniformBlockEXT: {
   sType: VkStructureType;
   pNext: null;
   dataSize: number;
-  pData: null;
+  pData: ArrayBuffer | null;
 }
 
 export interface VkWriteDescriptorSetInlineUniformBlockEXT {
   sType: VkStructureType;
   pNext: null;
   dataSize: number;
-  pData: null;
+  pData: ArrayBuffer | null;
 }
 
 
@@ -13278,7 +13278,7 @@ interface VkDebugMarkerObjectTagInfoEXTInitializer {
   object?: number;
   tagName?: number;
   tagSize?: number;
-  pTag?: null;
+  pTag?: ArrayBuffer | null;
 }
 
 declare var VkDebugMarkerObjectTagInfoEXT: {
@@ -13290,7 +13290,7 @@ declare var VkDebugMarkerObjectTagInfoEXT: {
   object: number;
   tagName: number;
   tagSize: number;
-  pTag: null;
+  pTag: ArrayBuffer | null;
 }
 
 export interface VkDebugMarkerObjectTagInfoEXT {
@@ -13300,7 +13300,7 @@ export interface VkDebugMarkerObjectTagInfoEXT {
   object: number;
   tagName: number;
   tagSize: number;
-  pTag: null;
+  pTag: ArrayBuffer | null;
 }
 
 
@@ -13416,7 +13416,7 @@ interface VkDebugReportCallbackCreateInfoEXTInitializer {
   pNext?: null;
   flags?: VkDebugReportFlagBitsEXT;
   pfnCallback?: null;
-  pUserData?: null;
+  pUserData?: ArrayBuffer | null;
 }
 
 declare var VkDebugReportCallbackCreateInfoEXT: {
@@ -13426,7 +13426,7 @@ declare var VkDebugReportCallbackCreateInfoEXT: {
   pNext: null;
   flags: VkDebugReportFlagBitsEXT;
   pfnCallback: null;
-  pUserData: null;
+  pUserData: ArrayBuffer | null;
 }
 
 export interface VkDebugReportCallbackCreateInfoEXT {
@@ -13434,7 +13434,7 @@ export interface VkDebugReportCallbackCreateInfoEXT {
   pNext: null;
   flags: VkDebugReportFlagBitsEXT;
   pfnCallback: null;
-  pUserData: null;
+  pUserData: ArrayBuffer | null;
 }
 
 
@@ -14413,7 +14413,7 @@ interface VkPipelineCacheCreateInfoInitializer {
   pNext?: null;
   flags?: null;
   initialDataSize?: number;
-  pInitialData?: null;
+  pInitialData?: ArrayBuffer | null;
 }
 
 declare var VkPipelineCacheCreateInfo: {
@@ -14423,7 +14423,7 @@ declare var VkPipelineCacheCreateInfo: {
   pNext: null;
   flags: null;
   initialDataSize: number;
-  pInitialData: null;
+  pInitialData: ArrayBuffer | null;
 }
 
 export interface VkPipelineCacheCreateInfo {
@@ -14431,7 +14431,7 @@ export interface VkPipelineCacheCreateInfo {
   pNext: null;
   flags: null;
   initialDataSize: number;
-  pInitialData: null;
+  pInitialData: ArrayBuffer | null;
 }
 
 
@@ -16183,7 +16183,7 @@ export interface VkDeviceCreateInfo {
 
 /** ## VkAllocationCallbacks ## */
 interface VkAllocationCallbacksInitializer {
-  pUserData?: null;
+  pUserData?: ArrayBuffer | null;
   pfnAllocation?: null;
   pfnReallocation?: null;
   pfnFree?: null;
@@ -16194,7 +16194,7 @@ interface VkAllocationCallbacksInitializer {
 declare var VkAllocationCallbacks: {
   prototype: VkAllocationCallbacks;
   new(param?: VkAllocationCallbacksInitializer | null): VkAllocationCallbacks;
-  pUserData: null;
+  pUserData: ArrayBuffer | null;
   pfnAllocation: null;
   pfnReallocation: null;
   pfnFree: null;
@@ -16203,7 +16203,7 @@ declare var VkAllocationCallbacks: {
 }
 
 export interface VkAllocationCallbacks {
-  pUserData: null;
+  pUserData: ArrayBuffer | null;
   pfnAllocation: null;
   pfnReallocation: null;
   pfnFree: null;
@@ -16369,7 +16369,7 @@ declare function vkSetEvent(device: VkDevice | null, event: VkEvent | null): num
 declare function vkResetEvent(device: VkDevice | null, event: VkEvent | null): number;
 declare function vkCreateQueryPool(device: VkDevice | null, pCreateInfo: VkQueryPoolCreateInfo | null, pAllocator: null, pQueryPool: VkQueryPool | null): number;
 declare function vkDestroyQueryPool(device: VkDevice | null, queryPool: VkQueryPool | null, pAllocator: null): void;
-declare function vkGetQueryPoolResults(device: VkDevice | null, queryPool: VkQueryPool | null, firstQuery: number, queryCount: number, dataSize: number, pData: null, stride: number, flags: VkQueryResultFlagBits): number;
+declare function vkGetQueryPoolResults(device: VkDevice | null, queryPool: VkQueryPool | null, firstQuery: number, queryCount: number, dataSize: number, pData: ArrayBuffer | null, stride: number, flags: VkQueryResultFlagBits): number;
 declare function vkCreateBuffer(device: VkDevice | null, pCreateInfo: VkBufferCreateInfo | null, pAllocator: null, pBuffer: VkBuffer | null): number;
 declare function vkDestroyBuffer(device: VkDevice | null, buffer: VkBuffer | null, pAllocator: null): void;
 declare function vkCreateBufferView(device: VkDevice | null, pCreateInfo: VkBufferViewCreateInfo | null, pAllocator: null, pView: VkBufferView | null): number;
@@ -16383,7 +16383,7 @@ declare function vkCreateShaderModule(device: VkDevice | null, pCreateInfo: VkSh
 declare function vkDestroyShaderModule(device: VkDevice | null, shaderModule: VkShaderModule | null, pAllocator: null): void;
 declare function vkCreatePipelineCache(device: VkDevice | null, pCreateInfo: VkPipelineCacheCreateInfo | null, pAllocator: null, pPipelineCache: VkPipelineCache | null): number;
 declare function vkDestroyPipelineCache(device: VkDevice | null, pipelineCache: VkPipelineCache | null, pAllocator: null): void;
-declare function vkGetPipelineCacheData(device: VkDevice | null, pipelineCache: VkPipelineCache | null, pDataSize: VkInout, pData: null): number;
+declare function vkGetPipelineCacheData(device: VkDevice | null, pipelineCache: VkPipelineCache | null, pDataSize: VkInout, pData: ArrayBuffer | null): number;
 declare function vkMergePipelineCaches(device: VkDevice | null, dstCache: VkPipelineCache | null, srcCacheCount: number, pSrcCaches: VkPipelineCache[] | null): number;
 declare function vkCreateGraphicsPipelines(device: VkDevice | null, pipelineCache: VkPipelineCache | null, createInfoCount: number, pCreateInfos: VkGraphicsPipelineCreateInfo[] | null, pAllocator: null, pPipelines: VkPipeline[] | null): number;
 declare function vkCreateComputePipelines(device: VkDevice | null, pipelineCache: VkPipelineCache | null, createInfoCount: number, pCreateInfos: VkComputePipelineCreateInfo[] | null, pAllocator: null, pPipelines: VkPipeline[] | null): number;
@@ -16437,7 +16437,7 @@ declare function vkCmdCopyImage(commandBuffer: VkCommandBuffer | null, srcImage:
 declare function vkCmdBlitImage(commandBuffer: VkCommandBuffer | null, srcImage: VkImage | null, srcImageLayout: VkImageLayout, dstImage: VkImage | null, dstImageLayout: VkImageLayout, regionCount: number, pRegions: VkImageBlit[] | null, filter: VkFilter): void;
 declare function vkCmdCopyBufferToImage(commandBuffer: VkCommandBuffer | null, srcBuffer: VkBuffer | null, dstImage: VkImage | null, dstImageLayout: VkImageLayout, regionCount: number, pRegions: VkBufferImageCopy[] | null): void;
 declare function vkCmdCopyImageToBuffer(commandBuffer: VkCommandBuffer | null, srcImage: VkImage | null, srcImageLayout: VkImageLayout, dstBuffer: VkBuffer | null, regionCount: number, pRegions: VkBufferImageCopy[] | null): void;
-declare function vkCmdUpdateBuffer(commandBuffer: VkCommandBuffer | null, dstBuffer: VkBuffer | null, dstOffset: number, dataSize: number, pData: null): void;
+declare function vkCmdUpdateBuffer(commandBuffer: VkCommandBuffer | null, dstBuffer: VkBuffer | null, dstOffset: number, dataSize: number, pData: ArrayBuffer | null): void;
 declare function vkCmdFillBuffer(commandBuffer: VkCommandBuffer | null, dstBuffer: VkBuffer | null, dstOffset: number, size: number, data: number): void;
 declare function vkCmdClearColorImage(commandBuffer: VkCommandBuffer | null, image: VkImage | null, imageLayout: VkImageLayout, pColor: VkClearColorValue | null, rangeCount: number, pRanges: VkImageSubresourceRange[] | null): void;
 declare function vkCmdClearDepthStencilImage(commandBuffer: VkCommandBuffer | null, image: VkImage | null, imageLayout: VkImageLayout, pDepthStencil: VkClearDepthStencilValue | null, rangeCount: number, pRanges: VkImageSubresourceRange[] | null): void;
@@ -16454,7 +16454,7 @@ declare function vkCmdEndConditionalRenderingEXT(commandBuffer: VkCommandBuffer 
 declare function vkCmdResetQueryPool(commandBuffer: VkCommandBuffer | null, queryPool: VkQueryPool | null, firstQuery: number, queryCount: number): void;
 declare function vkCmdWriteTimestamp(commandBuffer: VkCommandBuffer | null, pipelineStage: number, queryPool: VkQueryPool | null, query: number): void;
 declare function vkCmdCopyQueryPoolResults(commandBuffer: VkCommandBuffer | null, queryPool: VkQueryPool | null, firstQuery: number, queryCount: number, dstBuffer: VkBuffer | null, dstOffset: number, stride: number, flags: VkQueryResultFlagBits): void;
-declare function vkCmdPushConstants(commandBuffer: VkCommandBuffer | null, layout: VkPipelineLayout | null, stageFlags: VkShaderStageFlagBits, offset: number, size: number, pValues: null): void;
+declare function vkCmdPushConstants(commandBuffer: VkCommandBuffer | null, layout: VkPipelineLayout | null, stageFlags: VkShaderStageFlagBits, offset: number, size: number, pValues: ArrayBuffer | null): void;
 declare function vkCmdBeginRenderPass(commandBuffer: VkCommandBuffer | null, pRenderPassBegin: VkRenderPassBeginInfo | null, contents: VkSubpassContents): void;
 declare function vkCmdNextSubpass(commandBuffer: VkCommandBuffer | null, contents: VkSubpassContents): void;
 declare function vkCmdEndRenderPass(commandBuffer: VkCommandBuffer | null): void;
@@ -16542,8 +16542,8 @@ declare function vkCmdDispatchBase(commandBuffer: VkCommandBuffer | null, baseGr
 declare function vkGetPhysicalDevicePresentRectanglesKHR(physicalDevice: VkPhysicalDevice | null, surface: VkSurfaceKHR | null, pRectCount: VkInout, pRects: VkRect2D[] | null): number;
 declare function vkCreateDescriptorUpdateTemplate(device: VkDevice | null, pCreateInfo: VkDescriptorUpdateTemplateCreateInfo | null, pAllocator: null, pDescriptorUpdateTemplate: VkDescriptorUpdateTemplate | null): number;
 declare function vkDestroyDescriptorUpdateTemplate(device: VkDevice | null, descriptorUpdateTemplate: VkDescriptorUpdateTemplate | null, pAllocator: null): void;
-declare function vkUpdateDescriptorSetWithTemplate(device: VkDevice | null, descriptorSet: VkDescriptorSet | null, descriptorUpdateTemplate: VkDescriptorUpdateTemplate | null, pData: null): void;
-declare function vkCmdPushDescriptorSetWithTemplateKHR(commandBuffer: VkCommandBuffer | null, descriptorUpdateTemplate: VkDescriptorUpdateTemplate | null, layout: VkPipelineLayout | null, set: number, pData: null): void;
+declare function vkUpdateDescriptorSetWithTemplate(device: VkDevice | null, descriptorSet: VkDescriptorSet | null, descriptorUpdateTemplate: VkDescriptorUpdateTemplate | null, pData: ArrayBuffer | null): void;
+declare function vkCmdPushDescriptorSetWithTemplateKHR(commandBuffer: VkCommandBuffer | null, descriptorUpdateTemplate: VkDescriptorUpdateTemplate | null, layout: VkPipelineLayout | null, set: number, pData: ArrayBuffer | null): void;
 declare function vkSetHdrMetadataEXT(device: VkDevice | null, swapchainCount: number, pSwapchains: VkSwapchainKHR[] | null, pMetadata: VkHdrMetadataEXT[] | null): void;
 declare function vkGetSwapchainStatusKHR(device: VkDevice | null, swapchain: VkSwapchainKHR | null): number;
 declare function vkGetRefreshCycleDurationGOOGLE(device: VkDevice | null, swapchain: VkSwapchainKHR | null, pDisplayTimingProperties: VkRefreshCycleDurationGOOGLE | null): number;
@@ -16566,10 +16566,10 @@ declare function vkDestroySamplerYcbcrConversion(device: VkDevice | null, ycbcrC
 declare function vkGetDeviceQueue2(device: VkDevice | null, pQueueInfo: VkDeviceQueueInfo2 | null, pQueue: VkQueue | null): void;
 declare function vkCreateValidationCacheEXT(device: VkDevice | null, pCreateInfo: VkValidationCacheCreateInfoEXT | null, pAllocator: null, pValidationCache: VkValidationCacheEXT | null): number;
 declare function vkDestroyValidationCacheEXT(device: VkDevice | null, validationCache: VkValidationCacheEXT | null, pAllocator: null): void;
-declare function vkGetValidationCacheDataEXT(device: VkDevice | null, validationCache: VkValidationCacheEXT | null, pDataSize: VkInout, pData: null): number;
+declare function vkGetValidationCacheDataEXT(device: VkDevice | null, validationCache: VkValidationCacheEXT | null, pDataSize: VkInout, pData: ArrayBuffer | null): number;
 declare function vkMergeValidationCachesEXT(device: VkDevice | null, dstCache: VkValidationCacheEXT | null, srcCacheCount: number, pSrcCaches: VkValidationCacheEXT[] | null): number;
 declare function vkGetDescriptorSetLayoutSupport(device: VkDevice | null, pCreateInfo: VkDescriptorSetLayoutCreateInfo | null, pSupport: VkDescriptorSetLayoutSupport | null): void;
-declare function vkGetShaderInfoAMD(device: VkDevice | null, pipeline: VkPipeline | null, shaderStage: number, infoType: VkShaderInfoTypeAMD, pInfoSize: VkInout, pInfo: null): number;
+declare function vkGetShaderInfoAMD(device: VkDevice | null, pipeline: VkPipeline | null, shaderStage: number, infoType: VkShaderInfoTypeAMD, pInfoSize: VkInout, pInfo: ArrayBuffer | null): number;
 declare function vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(physicalDevice: VkPhysicalDevice | null, pTimeDomainCount: VkInout, pTimeDomains: VkInout): number;
 declare function vkGetCalibratedTimestampsEXT(device: VkDevice | null, timestampCount: number, pTimestampInfos: VkCalibratedTimestampInfoEXT[] | null, pTimestamps: VkInout, pMaxDeviation: VkInout): number;
 declare function vkSetDebugUtilsObjectNameEXT(device: VkDevice | null, pNameInfo: VkDebugUtilsObjectNameInfoEXT | null): number;
@@ -16583,7 +16583,7 @@ declare function vkCmdInsertDebugUtilsLabelEXT(commandBuffer: VkCommandBuffer | 
 declare function vkCreateDebugUtilsMessengerEXT(instance: VkInstance | null, pCreateInfo: VkDebugUtilsMessengerCreateInfoEXT | null, pAllocator: null, pMessenger: VkDebugUtilsMessengerEXT | null): number;
 declare function vkDestroyDebugUtilsMessengerEXT(instance: VkInstance | null, messenger: VkDebugUtilsMessengerEXT | null, pAllocator: null): void;
 declare function vkSubmitDebugUtilsMessageEXT(instance: VkInstance | null, messageSeverity: number, messageTypes: VkDebugUtilsMessageTypeFlagBitsEXT, pCallbackData: VkDebugUtilsMessengerCallbackDataEXT | null): void;
-declare function vkGetMemoryHostPointerPropertiesEXT(device: VkDevice | null, handleType: number, pHostPointer: null, pMemoryHostPointerProperties: VkMemoryHostPointerPropertiesEXT | null): number;
+declare function vkGetMemoryHostPointerPropertiesEXT(device: VkDevice | null, handleType: number, pHostPointer: ArrayBuffer | null, pMemoryHostPointerProperties: VkMemoryHostPointerPropertiesEXT | null): number;
 declare function vkCmdWriteBufferMarkerAMD(commandBuffer: VkCommandBuffer | null, pipelineStage: number, dstBuffer: VkBuffer | null, dstOffset: number, marker: number): void;
 declare function vkCreateRenderPass2KHR(device: VkDevice | null, pCreateInfo: VkRenderPassCreateInfo2KHR | null, pAllocator: null, pRenderPass: VkRenderPass | null): number;
 declare function vkCmdBeginRenderPass2KHR(commandBuffer: VkCommandBuffer | null, pRenderPassBegin: VkRenderPassBeginInfo | null, pSubpassBeginInfo: VkSubpassBeginInfoKHR | null): void;
@@ -16591,7 +16591,7 @@ declare function vkCmdNextSubpass2KHR(commandBuffer: VkCommandBuffer | null, pSu
 declare function vkCmdEndRenderPass2KHR(commandBuffer: VkCommandBuffer | null, pSubpassEndInfo: VkSubpassEndInfoKHR | null): void;
 declare function vkCmdDrawIndirectCountKHR(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: number, countBuffer: VkBuffer | null, countBufferOffset: number, maxDrawCount: number, stride: number): void;
 declare function vkCmdDrawIndexedIndirectCountKHR(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: number, countBuffer: VkBuffer | null, countBufferOffset: number, maxDrawCount: number, stride: number): void;
-declare function vkCmdSetCheckpointNV(commandBuffer: VkCommandBuffer | null, pCheckpointMarker: null): void;
+declare function vkCmdSetCheckpointNV(commandBuffer: VkCommandBuffer | null, pCheckpointMarker: ArrayBuffer | null): void;
 declare function vkGetQueueCheckpointDataNV(queue: VkQueue | null, pCheckpointDataCount: VkInout, pCheckpointData: VkCheckpointDataNV[] | null): void;
 declare function vkCmdBindTransformFeedbackBuffersEXT(commandBuffer: VkCommandBuffer | null, firstBinding: number, bindingCount: number, pBuffers: VkBuffer[] | null, pOffsets: VkInout, pSizes: VkInout): void;
 declare function vkCmdBeginTransformFeedbackEXT(commandBuffer: VkCommandBuffer | null, firstCounterBuffer: number, counterBufferCount: number, pCounterBuffers: VkBuffer[] | null, pCounterBufferOffsets: VkInout): void;
@@ -16615,8 +16615,8 @@ declare function vkCmdCopyAccelerationStructureNV(commandBuffer: VkCommandBuffer
 declare function vkCmdWriteAccelerationStructuresPropertiesNV(commandBuffer: VkCommandBuffer | null, accelerationStructureCount: number, pAccelerationStructures: VkAccelerationStructureNV[] | null, queryType: VkQueryType, queryPool: VkQueryPool | null, firstQuery: number): void;
 declare function vkCmdBuildAccelerationStructureNV(commandBuffer: VkCommandBuffer | null, pInfo: VkAccelerationStructureInfoNV | null, instanceData: VkBuffer | null, instanceOffset: number, update: number, dst: VkAccelerationStructureNV | null, src: VkAccelerationStructureNV | null, scratch: VkBuffer | null, scratchOffset: number): void;
 declare function vkCmdTraceRaysNV(commandBuffer: VkCommandBuffer | null, raygenShaderBindingTableBuffer: VkBuffer | null, raygenShaderBindingOffset: number, missShaderBindingTableBuffer: VkBuffer | null, missShaderBindingOffset: number, missShaderBindingStride: number, hitShaderBindingTableBuffer: VkBuffer | null, hitShaderBindingOffset: number, hitShaderBindingStride: number, callableShaderBindingTableBuffer: VkBuffer | null, callableShaderBindingOffset: number, callableShaderBindingStride: number, width: number, height: number, depth: number): void;
-declare function vkGetRayTracingShaderGroupHandlesNV(device: VkDevice | null, pipeline: VkPipeline | null, firstGroup: number, groupCount: number, dataSize: number, pData: null): number;
-declare function vkGetAccelerationStructureHandleNV(device: VkDevice | null, accelerationStructure: VkAccelerationStructureNV | null, dataSize: number, pData: null): number;
+declare function vkGetRayTracingShaderGroupHandlesNV(device: VkDevice | null, pipeline: VkPipeline | null, firstGroup: number, groupCount: number, dataSize: number, pData: ArrayBuffer | null): number;
+declare function vkGetAccelerationStructureHandleNV(device: VkDevice | null, accelerationStructure: VkAccelerationStructureNV | null, dataSize: number, pData: ArrayBuffer | null): number;
 declare function vkCreateRayTracingPipelinesNV(device: VkDevice | null, pipelineCache: VkPipelineCache | null, createInfoCount: number, pCreateInfos: VkRayTracingPipelineCreateInfoNV[] | null, pAllocator: null, pPipelines: VkPipeline[] | null): number;
 declare function vkGetImageDrmFormatModifierPropertiesEXT(device: VkDevice | null, image: VkImage | null, pProperties: VkImageDrmFormatModifierPropertiesEXT | null): number;
 declare function vkGetBufferDeviceAddressEXT(device: VkDevice | null, pInfo: VkBufferDeviceAddressInfoEXT | null): number;

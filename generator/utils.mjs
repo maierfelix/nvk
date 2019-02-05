@@ -154,8 +154,6 @@ export function isIgnoreableType(obj) {
   return (
     type === "const SECURITY_ATTRIBUTES *" ||
     type === "struct AHardwareBuffer *" ||
-    type === "void *" ||
-    type === "const void *" ||
     type === "struct ANativeWindow *" ||
     type === "MirSurface *" ||
     type === "MirConnection *" ||
@@ -176,4 +174,41 @@ export function isIgnoreableType(obj) {
 
 export function isPNextMember(member) {
   return member.name === `pNext` && member.isVoidPointer;
+};
+
+export function getJavaScriptTypedArrayName(type) {
+  switch (type) {
+    case "void *":
+    case "const void *":
+      return `ArrayBuffer`;
+    case "float *":
+    case "const float *":
+      return "Float32Array";
+    case "int8_t *":
+    case "const int8_t *":
+      return "Int8Array";
+    case "int16_t *":
+    case "const int16_t *":
+      return "Int16Array";
+    case "int32_t *":
+    case "const int32_t *":
+      return "Int32Array";
+    case "int64_t *":
+    case "const int64_t *":
+      return "Int64Array";
+    case "uint8_t *":
+    case "const uint8_t *":
+      return "Uint8Array";
+    case "uint16_t *":
+    case "const uint16_t *": 
+      return "Uint16Array";
+    case "uint32_t *":
+    case "const uint32_t *":
+      return "Uint32Array";
+    case "uint64_t *":
+    case "const uint64_t *":
+      return "BigUint64Array";
+  };
+  warn(`Cannot resolve equivalent JS typed array name for ${type}`);
+  return null;
 };

@@ -216,7 +216,7 @@ function getInputArrayBody(param, index) {
 function getCallBodyBefore(call) {
   let {params} = call;
   let out = params.map((param, index) => {
-    if (param.isDynamicVoidPointer) {
+    if (param.isVoidPointer) {
       return `
   ${param.type}* $p${index};
   if (info[${index}]->IsArrayBuffer()) {
@@ -384,7 +384,7 @@ function getCallBodyInner(call) {
   params.map((param, index) => {
     let addComma = index < params.length - 1 ? ",\n" : "";
     let byReference = "";
-    if (param.isDynamicVoidPointer) {
+    if (param.isVoidPointer) {
       out += `    info[${index}]->IsNull() ? nullptr : $p${index}${addComma}`;
       return;
     }
