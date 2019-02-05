@@ -81,19 +81,19 @@ instanceCreateInfo.quadOperationsInAllStages = ;
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceSubgroupProperties.prototype.<vk-prototype-name>subgroupSize</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is the number of invocations in each subgroup. This will match any <<interfaces-builtin-variables-sgs, code:SubgroupSize>> decorated variable used in any shader module created on this device. pname:subgroupSize is at least 1 if any of the physical device's queues support ename:VK_QUEUE_GRAPHICS_BIT or ename:VK_QUEUE_COMPUTE_BIT.</vk-property-description>
+        <vk-property-description> is the number of invocations in each subgroup. This will match any <<interfaces-builtin-variables-sgs, {#2#}>> decorated variable used in any shader module created on this device. {#1#} is at least 1 if any of the physical device's queues support {#0#} or ename:VK_QUEUE_COMPUTE_BIT.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceSubgroupProperties.prototype.supportedStages -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceSubgroupProperties.prototype.<vk-prototype-name>supportedStages</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a bitfield of elink:VkShaderStageFlagBits describing the shader stages that subgroup operations are supported in. pname:supportedStages will have the ename:VK_SHADER_STAGE_COMPUTE_BIT bit set if any of the physical device's queues support ename:VK_QUEUE_COMPUTE_BIT.</vk-property-description>
+        <vk-property-description> is a bitfield of {#1#} describing the shader stages that subgroup operations are supported in. {#2#} will have the {#0#} bit set if any of the physical device's queues support ename:VK_QUEUE_COMPUTE_BIT.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceSubgroupProperties.prototype.supportedOperations -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceSubgroupProperties.prototype.<vk-prototype-name>supportedOperations</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a bitmask of elink:VkSubgroupFeatureFlagBits specifying the sets of subgroup operations supported on this device. pname:supportedOperations will have the ename:VK_SUBGROUP_FEATURE_BASIC_BIT bit set if any of the physical device's queues support ename:VK_QUEUE_GRAPHICS_BIT or ename:VK_QUEUE_COMPUTE_BIT.</vk-property-description>
+        <vk-property-description> is a bitmask of {#1#} specifying the sets of subgroup operations supported on this device. {#2#} will have the {#0#} bit set if any of the physical device's queues support ename:VK_QUEUE_GRAPHICS_BIT or ename:VK_QUEUE_COMPUTE_BIT.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceSubgroupProperties.prototype.quadOperationsInAllStages -->
       <vk-property-entry>

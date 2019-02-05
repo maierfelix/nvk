@@ -65,13 +65,13 @@ instanceCreateInfo.desiredPresentTime = ;
       <vk-property-entry>
         <vk-property-prototype>VkPresentTimeGOOGLE.prototype.<vk-prototype-name>presentID</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is an application-provided identification value, that can: be used with the results of flink:vkGetPastPresentationTimingGOOGLE, in order to uniquely identify this present. In order to be useful to the application, it should: be unique within some period of time that is meaningful to the application.</vk-property-description>
+        <vk-property-description> is an application-provided identification value, that can: be used with the results of {#0#}, in order to uniquely identify this present. In order to be useful to the application, it should: be unique within some period of time that is meaningful to the application.</vk-property-description>
       </vk-property-entry>
       <!-- VkPresentTimeGOOGLE.prototype.desiredPresentTime -->
       <vk-property-entry>
         <vk-property-prototype>VkPresentTimeGOOGLE.prototype.<vk-prototype-name>desiredPresentTime</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> specifies that the image given should: not be displayed to the user any earlier than this time. pname:desiredPresentTime is a time in nanoseconds, relative to a monotonically-increasing clock (e.g. `CLOCK_MONOTONIC` (see clock_gettime(2)) on Android and Linux). A value of zero specifies that the presentation engine may: display the image at any time. This is useful when the application desires to provide pname:presentID, but doesn't need a specific pname:desiredPresentTime.</vk-property-description>
+        <vk-property-description> specifies that the image given should: not be displayed to the user any earlier than this time. {#0#} is a time in nanoseconds, relative to a monotonically-increasing clock (e.g. `CLOCK_MONOTONIC` (see clock_gettime(2)) on Android and Linux). A value of zero specifies that the presentation engine may: display the image at any time. This is useful when the application desires to provide pname:presentID, but doesn't need a specific pname:desiredPresentTime.</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

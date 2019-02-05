@@ -68,8 +68,8 @@ const REPLACEMENTS = [
     with: "reference"
   },
   {
-    replace: /null-terminated UTF-8 strings/gm,
-    with: "strings"
+    replace: /NULL-terminated UTF-16 string/gm,
+    with: "string"
   },
   {
     replace: /null-terminated UTF-8 string/gm,
@@ -90,9 +90,12 @@ const REPLACEMENTS = [
   {
     replace: /`NULL`/gm,
     with: "<i>null</i>"
+  },
+  {
+    replace: /NULL/gm,
+    with: "<i>null</i>"
   }
 ];
-
 
 function isChapterFile(path) {
   path = escapePath(path);
@@ -237,47 +240,63 @@ function getChapterEntryByName(name) {
 };
 
 // apply text replacements
-function transformDescription(desc) {
-  REPLACEMENTS.map(r => {
-    desc = desc.replace(r.replace, r.with);
-  });
-  return desc;
-};
-
-// apply text replacements
 function extractDescriptionMacros(desc) {
   let out = [];
   MACROS.map(m => {
     let match = desc.match(m);
     if (match && match[0] && match[1] && match[2]) {
-      let position = {
-        start: match.index,
-        end: match.index + match[0].length
-      };
       let macro = {
         kind: match[1],
         value: match[2],
-        position
+        index: out.length
       };
       out.push(macro);
+      desc = desc.replace(match[0], `{#${out.length - 1}#}`);
     }
   });
-  return out;
+  return {
+    macros: out,
+    description: desc
+  };
+};
+
+function applyDescriptionReplacements(desc) {
+  REPLACEMENTS.map(r => {
+    desc = desc.replace(r.replace, r.with);
+  });
+  return {
+    description: desc
+  };
+};
+
+// apply text replacements
+function transformDescription(description) {
+  let pass0 = extractDescriptionMacros(description);
+  let {macros} = pass0;
+  description = pass0.description;
+  let pass1 = applyDescriptionReplacements(description);
+  description = pass1.description;
+  return {
+    macros,
+    description
+  };
 };
 
 function transformDescriptions(entries) {
   entries.map(entry => {
     let desc = entry.description;
     let {name, description, type} = desc;
-    desc.description = transformDescription(description);
-    desc.macros = extractDescriptionMacros(description);
+    let result = transformDescription(description);
+    desc.description = result.description;
+    desc.macros = result.macros;
     switch (type) {
       case "protos":
       case "structs": {
         entry.children.map(c => {
           if (c && c.description) {
-            c.description = transformDescription(c.description);
-            c.macros = extractDescriptionMacros(c.description);
+            let result = transformDescription(c.description);
+            c.description = result.description;
+            c.macros = result.macros;
           }
         });
       } break;

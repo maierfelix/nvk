@@ -87,13 +87,13 @@ instanceCreateInfo.sequencesIndexOffset = ;
       <vk-property-entry>
         <vk-property-prototype>VkCmdProcessCommandsInfoNVX.prototype.<vk-prototype-name>objectTable</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../handles/VkObjectTableNVX.html">VkObjectTableNVX</a></vk-property-type>
-        <vk-property-description> is the slink:VkObjectTableNVX to be used for the generation process. Only registered objects at the time flink:vkCmdReserveSpaceForCommandsNVX is called, will be taken into account for the reservation.</vk-property-description>
+        <vk-property-description> is the {#1#} to be used for the generation process. Only registered objects at the time {#0#} is called, will be taken into account for the reservation.</vk-property-description>
       </vk-property-entry>
       <!-- VkCmdProcessCommandsInfoNVX.prototype.indirectCommandsLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkCmdProcessCommandsInfoNVX.prototype.<vk-prototype-name>indirectCommandsLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../handles/VkIndirectCommandsLayoutNVX.html">VkIndirectCommandsLayoutNVX</a></vk-property-type>
-        <vk-property-description> is the slink:VkIndirectCommandsLayoutNVX that provides the command sequence to generate.</vk-property-description>
+        <vk-property-description> is the {#0#} that provides the command sequence to generate.</vk-property-description>
       </vk-property-entry>
       <!-- VkCmdProcessCommandsInfoNVX.prototype.indirectCommandsTokenCount -->
       <vk-property-entry>
@@ -105,43 +105,43 @@ instanceCreateInfo.sequencesIndexOffset = ;
       <vk-property-entry>
         <vk-property-prototype>VkCmdProcessCommandsInfoNVX.prototype.<vk-prototype-name>pIndirectCommandsTokens</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkIndirectCommandsTokenNVX.html">VkIndirectCommandsTokenNVX]</a></vk-property-type></vk-property-type>
-        <vk-property-description> provides an array of slink:VkIndirectCommandsTokenNVX that reference the input data for each token command.</vk-property-description>
+        <vk-property-description> provides an array of {#0#} that reference the input data for each token command.</vk-property-description>
       </vk-property-entry>
       <!-- VkCmdProcessCommandsInfoNVX.prototype.maxSequencesCount -->
       <vk-property-entry>
         <vk-property-prototype>VkCmdProcessCommandsInfoNVX.prototype.<vk-prototype-name>maxSequencesCount</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is the maximum number of sequences for which command buffer space will be reserved. If pname:sequencesCountBuffer is dlink:VK_NULL_HANDLE, this is also the actual number of sequences generated.</vk-property-description>
+        <vk-property-description> is the maximum number of sequences for which command buffer space will be reserved. If {#0#} is {#1#}, this is also the actual number of sequences generated.</vk-property-description>
       </vk-property-entry>
       <!-- VkCmdProcessCommandsInfoNVX.prototype.targetCommandBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkCmdProcessCommandsInfoNVX.prototype.<vk-prototype-name>targetCommandBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></vk-property-type>
-        <vk-property-description> can: be the secondary slink:VkCommandBuffer in which the commands should be recorded. If pname:targetCommandBuffer is <i>null</i> an implicit reservation as well as execution takes place on the processing sname:VkCommandBuffer.</vk-property-description>
+        <vk-property-description> can: be the secondary {#1#} in which the commands should be recorded. If {#2#} is <i>null</i> an implicit reservation as well as execution takes place on the processing {#0#}.</vk-property-description>
       </vk-property-entry>
       <!-- VkCmdProcessCommandsInfoNVX.prototype.sequencesCountBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkCmdProcessCommandsInfoNVX.prototype.<vk-prototype-name>sequencesCountBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../handles/VkBuffer.html">VkBuffer</a></vk-property-type>
-        <vk-property-description> can: be slink:VkBuffer from which the actual amount of sequences is sourced from as code:uint32_t value.</vk-property-description>
+        <vk-property-description> can: be {#0#} from which the actual amount of sequences is sourced from as {#1#} value.</vk-property-description>
       </vk-property-entry>
       <!-- VkCmdProcessCommandsInfoNVX.prototype.sequencesCountOffset -->
       <vk-property-entry>
         <vk-property-prototype>VkCmdProcessCommandsInfoNVX.prototype.<vk-prototype-name>sequencesCountOffset</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is the byte offset into pname:sequencesCountBuffer where the count value is stored.</vk-property-description>
+        <vk-property-description> is the byte offset into {#0#} where the count value is stored.</vk-property-description>
       </vk-property-entry>
       <!-- VkCmdProcessCommandsInfoNVX.prototype.sequencesIndexBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkCmdProcessCommandsInfoNVX.prototype.<vk-prototype-name>sequencesIndexBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../handles/VkBuffer.html">VkBuffer</a></vk-property-type>
-        <vk-property-description> must: be set if pname:indirectCommandsLayout's ename:VK_INDIRECT_COMMANDS_LAYOUT_USAGE_INDEXED_SEQUENCES_BIT_NVX is set and provides the used sequence indices as code:uint32_t array. Otherwise it must: be dlink:VK_NULL_HANDLE.</vk-property-description>
+        <vk-property-description> must: be set if {#1#}'s {#0#} is set and provides the used sequence indices as {#3#} array. Otherwise it must: be {#2#}.</vk-property-description>
       </vk-property-entry>
       <!-- VkCmdProcessCommandsInfoNVX.prototype.sequencesIndexOffset -->
       <vk-property-entry>
         <vk-property-prototype>VkCmdProcessCommandsInfoNVX.prototype.<vk-prototype-name>sequencesIndexOffset</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is the byte offset into pname:sequencesIndexBuffer where the index values start.</vk-property-description>
+        <vk-property-description> is the byte offset into {#0#} where the index values start.</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

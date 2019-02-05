@@ -86,13 +86,13 @@ instanceCreateInfo.subsetAllocation = ;
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceGroupProperties.prototype.<vk-prototype-name>physicalDevices</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="number">[Number]</vk-property-type></vk-property-type>
-        <vk-property-description> is an array of physical device handles representing all physical devices in the group. The first pname:physicalDeviceCount elements of the array will be valid.</vk-property-description>
+        <vk-property-description> is an array of physical device handles representing all physical devices in the group. The first {#0#} elements of the array will be valid.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceGroupProperties.prototype.subsetAllocation -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceGroupProperties.prototype.<vk-prototype-name>subsetAllocation</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> specifies whether logical devices created from the group support allocating device memory on a subset of devices, via the pname:deviceMask member of the slink:VkMemoryAllocateFlagsInfo. If this is ename:VK_FALSE, then all device memory allocations are made across all physical devices in the group. If pname:physicalDeviceCount is `1`, then pname:subsetAllocation must: be ename:VK_FALSE.</vk-property-description>
+        <vk-property-description> specifies whether logical devices created from the group support allocating device memory on a subset of devices, via the {#2#} member of the {#0#}. If this is {#1#}, then all device memory allocations are made across all physical devices in the group. If pname:physicalDeviceCount is `1`, then pname:subsetAllocation must: be ename:VK_FALSE.</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

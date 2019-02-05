@@ -67,25 +67,25 @@ instanceCreateInfo.compatibleHandleTypes = ;
       <vk-property-entry>
         <vk-property-prototype>VkExternalImageFormatPropertiesNV.prototype.<vk-prototype-name>imageFormatProperties</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkImageFormatProperties.html">VkImageFormatProperties</a></vk-property-type>
-        <vk-property-description> will be filled in as when calling flink:vkGetPhysicalDeviceImageFormatProperties, but the values returned may: vary depending on the external handle type requested.</vk-property-description>
+        <vk-property-description> will be filled in as when calling {#0#}, but the values returned may: vary depending on the external handle type requested.</vk-property-description>
       </vk-property-entry>
       <!-- VkExternalImageFormatPropertiesNV.prototype.externalMemoryFeatures -->
       <vk-property-entry>
         <vk-property-prototype>VkExternalImageFormatPropertiesNV.prototype.<vk-prototype-name>externalMemoryFeatures</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a bitmask of elink:VkExternalMemoryFeatureFlagBitsNV, indicating properties of the external memory handle type (flink:vkGetPhysicalDeviceExternalImageFormatPropertiesNV::pname:externalHandleType) being queried, or 0 if the external memory handle type is 0.</vk-property-description>
+        <vk-property-description> is a bitmask of {#1#}, indicating properties of the external memory handle type ({#0#}::{#2#}) being queried, or 0 if the external memory handle type is 0.</vk-property-description>
       </vk-property-entry>
       <!-- VkExternalImageFormatPropertiesNV.prototype.exportFromImportedHandleTypes -->
       <vk-property-entry>
         <vk-property-prototype>VkExternalImageFormatPropertiesNV.prototype.<vk-prototype-name>exportFromImportedHandleTypes</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a bitmask of elink:VkExternalMemoryHandleTypeFlagBitsNV containing a bit set for every external handle type that may: be used to create memory from which the handles of the type specified in flink:vkGetPhysicalDeviceExternalImageFormatPropertiesNV::pname:externalHandleType can: be exported, or 0 if the external memory handle type is 0.</vk-property-description>
+        <vk-property-description> is a bitmask of {#1#} containing a bit set for every external handle type that may: be used to create memory from which the handles of the type specified in {#0#}::{#2#} can: be exported, or 0 if the external memory handle type is 0.</vk-property-description>
       </vk-property-entry>
       <!-- VkExternalImageFormatPropertiesNV.prototype.compatibleHandleTypes -->
       <vk-property-entry>
         <vk-property-prototype>VkExternalImageFormatPropertiesNV.prototype.<vk-prototype-name>compatibleHandleTypes</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a bitmask of elink:VkExternalMemoryHandleTypeFlagBitsNV containing a bit set for every external handle type that may: be specified simultaneously with the handle type specified by flink:vkGetPhysicalDeviceExternalImageFormatPropertiesNV::pname:externalHandleType when calling flink:vkAllocateMemory, or 0 if the external memory handle type is 0. pname:compatibleHandleTypes will always contain flink:vkGetPhysicalDeviceExternalImageFormatPropertiesNV::pname:externalHandleType</vk-property-description>
+        <vk-property-description> is a bitmask of {#1#} containing a bit set for every external handle type that may: be specified simultaneously with the handle type specified by {#0#}::{#2#} when calling flink:vkAllocateMemory, or 0 if the external memory handle type is 0. pname:compatibleHandleTypes will always contain flink:vkGetPhysicalDeviceExternalImageFormatPropertiesNV::pname:externalHandleType</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

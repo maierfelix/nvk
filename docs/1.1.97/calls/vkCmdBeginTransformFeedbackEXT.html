@@ -54,7 +54,7 @@
       <vk-property-entry>
         <vk-property-parameter>firstCounterBuffer</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is the index of the first transform feedback buffer corresponding to pname:pCounterBuffers[0] and pname:pCounterBufferOffsets[0].</vk-property-description>
+        <vk-property-description> is the index of the first transform feedback buffer corresponding to {#0#}[0] and pname:pCounterBufferOffsets[0].</vk-property-description>
       </vk-property-entry>
       <!-- counterBufferCount -->
       <vk-property-entry>
@@ -66,13 +66,13 @@
       <vk-property-entry>
         <vk-property-parameter>pCounterBuffers</vk-property-parameter>
         <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../handles/VkBuffer.html">VkBuffer]</a></vk-property-type></vk-property-type>
-        <vk-property-description> is an optional array of buffer handles to the counter buffers which contain a 4 byte integer value representing the byte offset from the start of the corresponding transform feedback buffer from where to start capturing vertex data. If the byte offset stored to the counter buffer location was done using flink:vkCmdEndTransformFeedbackEXT it can be used to resume transform feedback from the previous location. If pname:pCounterBuffers is <i>null</i>, then transform feedback will start capturing vertex data to byte offset zero in all bound transform feedback buffers. For each element of pname:pCounterBuffers that is dlink:VK_NULL_HANDLE, transform feedback will start capturing vertex data to byte zero in the corresponding bound transform feedback buffer.</vk-property-description>
+        <vk-property-description> is an optional array of buffer handles to the counter buffers which contain a 4 byte integer value representing the byte offset from the start of the corresponding transform feedback buffer from where to start capturing vertex data. If the byte offset stored to the counter buffer location was done using {#0#} it can be used to resume transform feedback from the previous location. If {#1#} is <i>null</i>, then transform feedback will start capturing vertex data to byte offset zero in all bound transform feedback buffers. For each element of pname:pCounterBuffers that is {#2#}, transform feedback will start capturing vertex data to byte zero in the corresponding bound transform feedback buffer.</vk-property-description>
       </vk-property-entry>
       <!-- pCounterBufferOffsets -->
       <vk-property-entry>
         <vk-property-parameter>pCounterBufferOffsets</vk-property-parameter>
         <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigUint64Array">BigUint64Array</a></vk-property-type>
-        <vk-property-description> is an optional array of offsets within each of the pname:pCounterBuffers where the counter values were previously written. The location in each counter buffer at these offsets must: be large enough to contain 4 bytes of data. This data is the number of bytes captured by the previous transform feedback to this buffer. If pname:pCounterBufferOffsets is <i>null</i>, then it is assumed the offsets are zero.</vk-property-description>
+        <vk-property-description> is an optional array of offsets within each of the {#0#} where the counter values were previously written. The location in each counter buffer at these offsets must: be large enough to contain 4 bytes of data. This data is the number of bytes captured by the previous transform feedback to this buffer. If pname:pCounterBufferOffsets is <i>null</i>, then it is assumed the offsets are zero.</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

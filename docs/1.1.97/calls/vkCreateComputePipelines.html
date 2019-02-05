@@ -54,7 +54,7 @@
       <vk-property-entry>
         <vk-property-parameter>pipelineCache</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkPipelineCache.html">VkPipelineCache</a></vk-property-type>
-        <vk-property-description> is either dlink:VK_NULL_HANDLE, indicating that pipeline caching is disabled; or the handle of a valid <<pipelines-cache,pipeline cache>> object, in which case use of that cache is enabled for the duration of the command.</vk-property-description>
+        <vk-property-description> is either {#0#}, indicating that pipeline caching is disabled; or the handle of a valid <<pipelines-cache,pipeline cache>> object, in which case use of that cache is enabled for the duration of the command.</vk-property-description>
       </vk-property-entry>
       <!-- createInfoCount -->
       <vk-property-entry>
@@ -66,7 +66,7 @@
       <vk-property-entry>
         <vk-property-parameter>pCreateInfos</vk-property-parameter>
         <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkComputePipelineCreateInfo.html">VkComputePipelineCreateInfo]</a></vk-property-type></vk-property-type>
-        <vk-property-description> is an array of slink:VkComputePipelineCreateInfo structures.</vk-property-description>
+        <vk-property-description> is an array of {#0#} structures.</vk-property-description>
       </vk-property-entry>
       <!-- pAllocator -->
       <vk-property-entry>
@@ -78,7 +78,7 @@
       <vk-property-entry>
         <vk-property-parameter>pPipelines</vk-property-parameter>
         <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../handles/VkPipeline.html">VkPipeline]</a></vk-property-type></vk-property-type>
-        <vk-property-description> is an array in which the resulting compute pipeline objects are returned.+[NOTE].editing-note====TODO (Jon) - Should we say something like "`the i'th element of thepname:pPipelines array is created based on the corresponding element of thepname:pCreateInfos array`"? Also for flink:vkCreateGraphicsPipelines below.====</vk-property-description>
+        <vk-property-description> is an array in which the resulting compute pipeline objects are returned.+[NOTE].editing-note====TODO (Jon) - Should we say something like "`the i'th element of the{#1#} array is created based on the corresponding element of thepname:pCreateInfos array`"? Also for {#0#} below.====</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

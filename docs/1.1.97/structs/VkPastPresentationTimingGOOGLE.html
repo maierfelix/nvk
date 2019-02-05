@@ -68,31 +68,31 @@ instanceCreateInfo.presentMargin = ;
       <vk-property-entry>
         <vk-property-prototype>VkPastPresentationTimingGOOGLE.prototype.<vk-prototype-name>presentID</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is an application-provided value that was given to a previous fname:vkQueuePresentKHR command via slink:VkPresentTimeGOOGLE::pname:presentID (see below). It can: be used to uniquely identify a previous present with the flink:vkQueuePresentKHR command.</vk-property-description>
+        <vk-property-description> is an application-provided value that was given to a previous {#1#} command via {#2#}::{#3#} (see below). It can: be used to uniquely identify a previous present with the {#0#} command.</vk-property-description>
       </vk-property-entry>
       <!-- VkPastPresentationTimingGOOGLE.prototype.desiredPresentTime -->
       <vk-property-entry>
         <vk-property-prototype>VkPastPresentationTimingGOOGLE.prototype.<vk-prototype-name>desiredPresentTime</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is an application-provided value that was given to a previous flink:vkQueuePresentKHR command via slink:VkPresentTimeGOOGLE::pname:desiredPresentTime. If non-zero, it was used by the application to indicate that an image not be presented any sooner than pname:desiredPresentTime.</vk-property-description>
+        <vk-property-description> is an application-provided value that was given to a previous {#0#} command via {#1#}::{#2#}. If non-zero, it was used by the application to indicate that an image not be presented any sooner than pname:desiredPresentTime.</vk-property-description>
       </vk-property-entry>
       <!-- VkPastPresentationTimingGOOGLE.prototype.actualPresentTime -->
       <vk-property-entry>
         <vk-property-prototype>VkPastPresentationTimingGOOGLE.prototype.<vk-prototype-name>actualPresentTime</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is the time when the image of the pname:swapchain was actually displayed.</vk-property-description>
+        <vk-property-description> is the time when the image of the {#0#} was actually displayed.</vk-property-description>
       </vk-property-entry>
       <!-- VkPastPresentationTimingGOOGLE.prototype.earliestPresentTime -->
       <vk-property-entry>
         <vk-property-prototype>VkPastPresentationTimingGOOGLE.prototype.<vk-prototype-name>earliestPresentTime</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is the time when the image of the pname:swapchain could have been displayed. This may: differ from pname:actualPresentTime if the application requested that the image be presented no sooner than slink:VkPresentTimeGOOGLE::pname:desiredPresentTime.</vk-property-description>
+        <vk-property-description> is the time when the image of the {#1#} could have been displayed. This may: differ from pname:actualPresentTime if the application requested that the image be presented no sooner than {#0#}::pname:desiredPresentTime.</vk-property-description>
       </vk-property-entry>
       <!-- VkPastPresentationTimingGOOGLE.prototype.presentMargin -->
       <vk-property-entry>
         <vk-property-prototype>VkPastPresentationTimingGOOGLE.prototype.<vk-prototype-name>presentMargin</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is an indication of how early the fname:vkQueuePresentKHR command was processed compared to how soon it needed to be processed, and still be presented at pname:earliestPresentTime.</vk-property-description>
+        <vk-property-description> is an indication of how early the {#0#} command was processed compared to how soon it needed to be processed, and still be presented at {#1#}.</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

@@ -66,19 +66,19 @@ instanceCreateInfo.uint32 = ;
       <vk-property-entry>
         <vk-property-prototype>VkClearColorValue.prototype.<vk-prototype-name>float32</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="number">[Number]</vk-property-type></vk-property-type>
-        <vk-property-description> are the color clear values when the format of the image or attachment is one of the formats in the <<features-formats-numericformat, Interpretation of Numeric Format>> table other than signed integer (etext:SINT) or unsigned integer (etext:UINT). Floating point values are automatically converted to the format of the image, with the clear value being treated as linear if the image is sRGB.</vk-property-description>
+        <vk-property-description> are the color clear values when the format of the image or attachment is one of the formats in the <<features-formats-numericformat, Interpretation of Numeric Format>> table other than signed integer ({#0#}) or unsigned integer (etext:UINT). Floating point values are automatically converted to the format of the image, with the clear value being treated as linear if the image is sRGB.</vk-property-description>
       </vk-property-entry>
       <!-- VkClearColorValue.prototype.int32 -->
       <vk-property-entry>
         <vk-property-prototype>VkClearColorValue.prototype.<vk-prototype-name>int32</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="number">[Number]</vk-property-type></vk-property-type>
-        <vk-property-description> are the color clear values when the format of the image or attachment is signed integer (etext:SINT). Signed integer values are converted to the format of the image by casting to the smaller type (with negative 32-bit values mapping to negative values in the smaller type). If the integer clear value is not representable in the target type (e.g. would overflow in conversion to that type), the clear value is undefined:.</vk-property-description>
+        <vk-property-description> are the color clear values when the format of the image or attachment is signed integer ({#0#}). Signed integer values are converted to the format of the image by casting to the smaller type (with negative 32-bit values mapping to negative values in the smaller type). If the integer clear value is not representable in the target type (e.g. would overflow in conversion to that type), the clear value is undefined:.</vk-property-description>
       </vk-property-entry>
       <!-- VkClearColorValue.prototype.uint32 -->
       <vk-property-entry>
         <vk-property-prototype>VkClearColorValue.prototype.<vk-prototype-name>uint32</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="number">[Number]</vk-property-type></vk-property-type>
-        <vk-property-description> are the color clear values when the format of the image or attachment is unsigned integer (etext:UINT). Unsigned integer values are converted to the format of the image by casting to the integer type with fewer bits.</vk-property-description>
+        <vk-property-description> are the color clear values when the format of the image or attachment is unsigned integer ({#0#}). Unsigned integer values are converted to the format of the image by casting to the integer type with fewer bits.</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

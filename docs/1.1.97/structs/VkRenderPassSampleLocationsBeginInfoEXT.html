@@ -81,25 +81,25 @@ instanceCreateInfo.pPostSubpassSampleLocations = ;
       <vk-property-entry>
         <vk-property-prototype>VkRenderPassSampleLocationsBeginInfoEXT.prototype.<vk-prototype-name>attachmentInitialSampleLocationsCount</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is the number of elements in the pname:pAttachmentInitialSampleLocations array.</vk-property-description>
+        <vk-property-description> is the number of elements in the {#0#} array.</vk-property-description>
       </vk-property-entry>
       <!-- VkRenderPassSampleLocationsBeginInfoEXT.prototype.pAttachmentInitialSampleLocations -->
       <vk-property-entry>
         <vk-property-prototype>VkRenderPassSampleLocationsBeginInfoEXT.prototype.<vk-prototype-name>pAttachmentInitialSampleLocations</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkAttachmentSampleLocationsEXT.html">VkAttachmentSampleLocationsEXT]</a></vk-property-type></vk-property-type>
-        <vk-property-description> is an array of pname:attachmentInitialSampleLocationsCount slink:VkAttachmentSampleLocationsEXT structures specifying the attachment indices and their corresponding sample location state. Each element of pname:pAttachmentInitialSampleLocations can: specify the sample location state to use in the automatic layout transition performed to transition a depth/stencil attachment from the initial layout of the attachment to the image layout specified for the attachment in the first subpass using it.</vk-property-description>
+        <vk-property-description> is an array of {#1#} {#0#} structures specifying the attachment indices and their corresponding sample location state. Each element of pname:pAttachmentInitialSampleLocations can: specify the sample location state to use in the automatic layout transition performed to transition a depth/stencil attachment from the initial layout of the attachment to the image layout specified for the attachment in the first subpass using it.</vk-property-description>
       </vk-property-entry>
       <!-- VkRenderPassSampleLocationsBeginInfoEXT.prototype.postSubpassSampleLocationsCount -->
       <vk-property-entry>
         <vk-property-prototype>VkRenderPassSampleLocationsBeginInfoEXT.prototype.<vk-prototype-name>postSubpassSampleLocationsCount</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is the number of elements in the pname:pPostSubpassSampleLocations array.</vk-property-description>
+        <vk-property-description> is the number of elements in the {#0#} array.</vk-property-description>
       </vk-property-entry>
       <!-- VkRenderPassSampleLocationsBeginInfoEXT.prototype.pPostSubpassSampleLocations -->
       <vk-property-entry>
         <vk-property-prototype>VkRenderPassSampleLocationsBeginInfoEXT.prototype.<vk-prototype-name>pPostSubpassSampleLocations</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkSubpassSampleLocationsEXT.html">VkSubpassSampleLocationsEXT]</a></vk-property-type></vk-property-type>
-        <vk-property-description> is an array of pname:postSubpassSampleLocationsCount slink:VkSubpassSampleLocationsEXT structures specifying the subpass indices and their corresponding sample location state. Each element of pname:pPostSubpassSampleLocations can: specify the sample location state to use in the automatic layout transition performed to transition the depth/stencil attachment used by the specified subpass to the image layout specified in a dependent subpass or to the final layout of the attachment in case the specified subpass is the last subpass using that attachment. In addition, if slink:VkPhysicalDeviceSampleLocationsPropertiesEXT::pname:variableSampleLocations is ename:VK_FALSE, each element of pname:pPostSubpassSampleLocations must: specify the sample location state that matches the sample locations used by all pipelines that will be bound to a command buffer during the specified subpass. If pname:variableSampleLocations is ename:VK_TRUE, the sample locations used for rasterization do not depend on pname:pPostSubpassSampleLocations.</vk-property-description>
+        <vk-property-description> is an array of {#2#} {#0#} structures specifying the subpass indices and their corresponding sample location state. Each element of pname:pPostSubpassSampleLocations can: specify the sample location state to use in the automatic layout transition performed to transition the depth/stencil attachment used by the specified subpass to the image layout specified in a dependent subpass or to the final layout of the attachment in case the specified subpass is the last subpass using that attachment. In addition, if slink:VkPhysicalDeviceSampleLocationsPropertiesEXT::pname:variableSampleLocations is {#1#}, each element of pname:pPostSubpassSampleLocations must: specify the sample location state that matches the sample locations used by all pipelines that will be bound to a command buffer during the specified subpass. If pname:variableSampleLocations is ename:VK_TRUE, the sample locations used for rasterization do not depend on pname:pPostSubpassSampleLocations.</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>
