@@ -80,19 +80,19 @@ instanceCreateInfo.imageMipTailStride = ;
       <vk-property-entry>
         <vk-property-prototype>VkSparseImageMemoryRequirements.prototype.<vk-prototype-name>imageMipTailSize</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is the memory size (in bytes) of the mip tail region. If {#1#} contains {#0#}, this is the size of the whole mip tail, otherwise this is the size of the mip tail of a single array layer. This value is guaranteed to be a multiple of the sparse block size in bytes.</vk-property-description>
+        <vk-property-description> is the memory size (in bytes) of the mip tail region. If <b>formatProperties.flags</b> contains <b>VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</b>, this is the size of the whole mip tail, otherwise this is the size of the mip tail of a single array layer. This value is guaranteed to be a multiple of the sparse block size in bytes.</vk-property-description>
       </vk-property-entry>
       <!-- VkSparseImageMemoryRequirements.prototype.imageMipTailOffset -->
       <vk-property-entry>
         <vk-property-prototype>VkSparseImageMemoryRequirements.prototype.<vk-prototype-name>imageMipTailOffset</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is the opaque memory offset used with {#0#} to bind the mip tail region(s).</vk-property-description>
+        <vk-property-description> is the opaque memory offset used with <b><a href="../handles/VkSparseImageOpaqueMemoryBindInfo.html">VkSparseImageOpaqueMemoryBindInfo</a></b> to bind the mip tail region(s).</vk-property-description>
       </vk-property-entry>
       <!-- VkSparseImageMemoryRequirements.prototype.imageMipTailStride -->
       <vk-property-entry>
         <vk-property-prototype>VkSparseImageMemoryRequirements.prototype.<vk-prototype-name>imageMipTailStride</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is the offset stride between each array-layer's mip tail, if {#1#} does not contain {#0#} (otherwise the value is undefined:).</vk-property-description>
+        <vk-property-description> is the offset stride between each array-layer's mip tail, if <b>formatProperties.flags</b> does not contain <b>VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</b> (otherwise the value is undefined:).</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

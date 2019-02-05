@@ -91,19 +91,19 @@ instanceCreateInfo.set = ;
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorUpdateTemplateCreateInfoKHR.prototype.<vk-prototype-name>descriptorUpdateEntryCount</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is the number of elements in the {#0#} array.</vk-property-description>
+        <vk-property-description> is the number of elements in the <b>pDescriptorUpdateEntries</b> array.</vk-property-description>
       </vk-property-entry>
       <!-- VkDescriptorUpdateTemplateCreateInfoKHR.prototype.pDescriptorUpdateEntries -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorUpdateTemplateCreateInfoKHR.prototype.<vk-prototype-name>pDescriptorUpdateEntries</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkDescriptorUpdateTemplateEntry.html">VkDescriptorUpdateTemplateEntry]</a></vk-property-type></vk-property-type>
-        <vk-property-description> is an array of {#0#} structures describing the descriptors to be updated by the descriptor update template.</vk-property-description>
+        <vk-property-description> is an array of <b><a href="../handles/VkDescriptorUpdateTemplateEntry.html">VkDescriptorUpdateTemplateEntry</a></b> structures describing the descriptors to be updated by the descriptor update template.</vk-property-description>
       </vk-property-entry>
       <!-- VkDescriptorUpdateTemplateCreateInfoKHR.prototype.templateType -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorUpdateTemplateCreateInfoKHR.prototype.<vk-prototype-name>templateType</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> Specifies the type of the descriptor update template. If set to {#0#} it can: only be used to update descriptor sets with a fixed {#2#}. If set to {#1#} it can: only be used to push descriptor sets using the provided {#3#}, pname:pipelineLayout, and {#4#} number.</vk-property-description>
+        <vk-property-description> Specifies the type of the descriptor update template. If set to <b>VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET</b> it can: only be used to update descriptor sets with a fixed <b>descriptorSetLayout</b>. If set to <b>VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS_KHR</b> it can: only be used to push descriptor sets using the provided <b>pipelineBindPoint</b>, pname:pipelineLayout, and <b>set</b> number.</vk-property-description>
       </vk-property-entry>
       <!-- VkDescriptorUpdateTemplateCreateInfoKHR.prototype.descriptorSetLayout -->
       <vk-property-entry>

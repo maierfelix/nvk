@@ -93,13 +93,13 @@ instanceCreateInfo.oldSwapchain = ;
       <vk-property-entry>
         <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a bitmask of {#0#} indicating parameters of the swapchain creation.</vk-property-description>
+        <vk-property-description> is a bitmask of <b>VkSwapchainCreateFlagBitsKHR</b> indicating parameters of the swapchain creation.</vk-property-description>
       </vk-property-entry>
       <!-- VkSwapchainCreateInfoKHR.prototype.surface -->
       <vk-property-entry>
         <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>surface</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../handles/VkSurfaceKHR.html">VkSurfaceKHR</a></vk-property-type>
-        <vk-property-description> is the surface onto which the swapchain will present images. If the creation succeeds, the swapchain becomes associated with {#0#}.</vk-property-description>
+        <vk-property-description> is the surface onto which the swapchain will present images. If the creation succeeds, the swapchain becomes associated with <b>surface</b>.</vk-property-description>
       </vk-property-entry>
       <!-- VkSwapchainCreateInfoKHR.prototype.minImageCount -->
       <vk-property-entry>
@@ -111,19 +111,19 @@ instanceCreateInfo.oldSwapchain = ;
       <vk-property-entry>
         <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>imageFormat</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a {#0#} value specifying the format the swapchain image(s) will be created with.</vk-property-description>
+        <vk-property-description> is a <b>VkFormat</b> value specifying the format the swapchain image(s) will be created with.</vk-property-description>
       </vk-property-entry>
       <!-- VkSwapchainCreateInfoKHR.prototype.imageColorSpace -->
       <vk-property-entry>
         <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>imageColorSpace</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a {#0#} value specifying the way the swapchain interprets image data.</vk-property-description>
+        <vk-property-description> is a <b>VkColorSpaceKHR</b> value specifying the way the swapchain interprets image data.</vk-property-description>
       </vk-property-entry>
       <!-- VkSwapchainCreateInfoKHR.prototype.imageExtent -->
       <vk-property-entry>
         <vk-property-prototype>VkSwapchainCreateInfoKHR.prototype.<vk-prototype-name>imageExtent</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkExtent2D.html">VkExtent2D</a></vk-property-type>
-        <vk-property-description> is the size (in pixels) of the swapchain image(s). The behavior is platform-dependent if the image extent does not match the surface's {#1#} as returned by {#0#}.</vk-property-description>
+        <vk-property-description> is the size (in pixels) of the swapchain image(s). The behavior is platform-dependent if the image extent does not match the surface's <b>currentExtent</b> as returned by <b><a href="../calls/vkGetPhysicalDeviceSurfaceCapabilitiesKHR.html">vkGetPhysicalDeviceSurfaceCapabilitiesKHR</a></b>.</vk-property-description>
       </vk-property-entry>
       <!-- VkSwapchainCreateInfoKHR.prototype.imageArrayLayers -->
       <vk-property-entry>

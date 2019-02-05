@@ -88,13 +88,13 @@ instanceCreateInfo.range = ;
       <vk-property-entry>
         <vk-property-prototype>VkBufferViewCreateInfo.prototype.<vk-prototype-name>buffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../handles/VkBuffer.html">VkBuffer</a></vk-property-type>
-        <vk-property-description> is a {#0#} on which the view will be created.</vk-property-description>
+        <vk-property-description> is a <b><a href="../handles/VkBuffer.html">VkBuffer</a></b> on which the view will be created.</vk-property-description>
       </vk-property-entry>
       <!-- VkBufferViewCreateInfo.prototype.format -->
       <vk-property-entry>
         <vk-property-prototype>VkBufferViewCreateInfo.prototype.<vk-prototype-name>format</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a {#0#} describing the format of the data elements in the buffer.</vk-property-description>
+        <vk-property-description> is a <b>VkFormat</b> describing the format of the data elements in the buffer.</vk-property-description>
       </vk-property-entry>
       <!-- VkBufferViewCreateInfo.prototype.offset -->
       <vk-property-entry>
@@ -106,7 +106,7 @@ instanceCreateInfo.range = ;
       <vk-property-entry>
         <vk-property-prototype>VkBufferViewCreateInfo.prototype.<vk-prototype-name>range</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a size in bytes of the buffer view. If {#2#} is equal to {#0#}, the range from {#3#} to the end of the buffer is used. If {#1#} is used and the remaining size of the buffer is not a multiple of the <<texel-block-size, texel block size>> of {#4#}, the nearest smaller multiple is used.</vk-property-description>
+        <vk-property-description> is a size in bytes of the buffer view. If <b>range</b> is equal to <b>VK_WHOLE_SIZE</b>, the range from <b>offset</b> to the end of the buffer is used. If <b>VK_WHOLE_SIZE</b> is used and the remaining size of the buffer is not a multiple of the <<texel-block-size, texel block size>> of <b>format</b>, the nearest smaller multiple is used.</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

@@ -66,13 +66,13 @@
       <vk-property-entry>
         <vk-property-parameter>queryCount</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is the number of queries. {#0#} and pname:queryCount together define a range of queries.</vk-property-description>
+        <vk-property-description> is the number of queries. <b>firstQuery</b> and pname:queryCount together define a range of queries.</vk-property-description>
       </vk-property-entry>
       <!-- dstBuffer -->
       <vk-property-entry>
         <vk-property-parameter>dstBuffer</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkBuffer.html">VkBuffer</a></vk-property-type>
-        <vk-property-description> is a {#0#} object that will receive the results of the copy command.</vk-property-description>
+        <vk-property-description> is a <b><a href="../handles/VkBuffer.html">VkBuffer</a></b> object that will receive the results of the copy command.</vk-property-description>
       </vk-property-entry>
       <!-- dstOffset -->
       <vk-property-entry>
@@ -84,13 +84,13 @@
       <vk-property-entry>
         <vk-property-parameter>stride</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is the stride in bytes between results for individual queries within {#1#}. The required size of the backing memory for {#2#} is determined as described above for {#0#}.</vk-property-description>
+        <vk-property-description> is the stride in bytes between results for individual queries within <b>dstBuffer</b>. The required size of the backing memory for <b>dstBuffer</b> is determined as described above for <b><a href="../calls/vkGetQueryPoolResults.html">vkGetQueryPoolResults</a></b>.</vk-property-description>
       </vk-property-entry>
       <!-- flags -->
       <vk-property-entry>
         <vk-property-parameter>flags</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a bitmask of {#0#} specifying how and when results are returned.</vk-property-description>
+        <vk-property-description> is a bitmask of <b>VkQueryResultFlagBits</b> specifying how and when results are returned.</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

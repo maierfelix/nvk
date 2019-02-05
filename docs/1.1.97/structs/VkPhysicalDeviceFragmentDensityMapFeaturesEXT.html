@@ -80,13 +80,13 @@ instanceCreateInfo.fragmentDensityMapNonSubsampledImages = ;
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceFragmentDensityMapFeaturesEXT.prototype.<vk-prototype-name>fragmentDensityMap</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> specifies whether the implementation supports render passes with a fragment density map attachment. If this feature is not enabled and the {#2#} chain of {#0#} contains sname:VkRenderPassFragmentDensityMapCreateInfoEXT, {#3#} must: be {#1#}.</vk-property-description>
+        <vk-property-description> specifies whether the implementation supports render passes with a fragment density map attachment. If this feature is not enabled and the <b>pNext</b> chain of <b><a href="../structs/VkRenderPassCreateInfo.html">VkRenderPassCreateInfo</a></b> contains sname:VkRenderPassFragmentDensityMapCreateInfoEXT, <b>fragmentDensityMapAttachment</b> must: be <b>VK_ATTACHMENT_UNUSED</b>.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceFragmentDensityMapFeaturesEXT.prototype.fragmentDensityMapDynamic -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceFragmentDensityMapFeaturesEXT.prototype.<vk-prototype-name>fragmentDensityMapDynamic</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> specifies whether the implementation supports dynamic fragment density map image views. If this feature is not enabled, {#1#} must: not be included in {#0#}::{#2#}.</vk-property-description>
+        <vk-property-description> specifies whether the implementation supports dynamic fragment density map image views. If this feature is not enabled, <b>VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT</b> must: not be included in <b><a href="../structs/VkImageViewCreateInfo.html">VkImageViewCreateInfo</a></b>::<b>flags</b>.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceFragmentDensityMapFeaturesEXT.prototype.fragmentDensityMapNonSubsampledImages -->
       <vk-property-entry>

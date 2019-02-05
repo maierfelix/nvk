@@ -359,6 +359,71 @@ function getCallReturnType(call) {
   return `N/A`;
 };
 
+function expandMacro(macro, macroIndex, text) {
+  let {kind, value} = macro;
+  let match = text.match(`{#${macroIndex}#}`);
+  if (!match) {
+    warn(`Failed to expand '${kind}' macro for: ${text}`);
+    return text;
+  }
+  let replacement = null;
+  switch (kind) {
+    case "slink":
+      replacement = `<b><a href="../handles/${value}.html">${value}</a></b>`;
+    break;
+    case "sname":
+      replacement = `<b><a href="../structs/${value}.html">${value}</a></b>`;
+    break;
+    case "flink":
+    case "fname":
+      replacement = `<b><a href="../calls/${value}.html">${value}</a></b>`;
+    break;
+    case "pname":
+    case "ename":
+    case "elink":
+    case "dlink":
+    case "tlink":
+      replacement = `<b>${value}</b>`;
+    break;
+    case "etext":
+      switch (value) {
+        case "SINT":
+        case "UINT":
+          replacement = `<i>${value}</i>`;
+        break;
+      };
+    break;
+    case "code":
+      replacement = `<i>${value}</i>`;
+    break;
+    case "basetype":
+      replacement = `<i>${value}</i>`;
+    break;
+  };
+  if (replacement !== null) {
+    text = text.replace(match[0], replacement);
+  } else {
+    warn(`Failed to expand macro ${kind}:${value}`);
+  }
+  return text;
+};
+
+function getMacroExpandedDescription(doc) {
+  if (!doc) return ``;
+  let {macros, description} = doc;
+  let out = doc.description;
+  macros.map((macro, index) => {
+    out = expandMacro(macro, index, out);
+  });
+  return out;
+};
+
+function getObjectDescription(obj) {
+  let {kind, documentation} = obj;
+  let description = getMacroExpandedDescription(documentation);
+  return description;
+};
+
 export default function(astReference, data, version) {
   ast = astReference;
   calls = data.calls;
@@ -376,7 +441,8 @@ export default function(astReference, data, version) {
     getObjectLabel,
     getObjectFolder,
     getCallReturnType,
-    getObjectsByCategory
+    getObjectsByCategory,
+    getObjectDescription
   };
   // reserve output dirs
   {

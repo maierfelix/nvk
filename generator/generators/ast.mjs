@@ -547,7 +547,7 @@ function fillDocumentation(objects, docs) {
     let doc = getDocumentationEntryByName(object.name, docs);
     if (!doc) {
       // fill with empty documentation information
-      object.documentation = { category: "", description: "" };
+      object.documentation = { macros: [], category: "", description: "" };
       (object.children || object.params || []).map(child => {
         child.documentation = { macros: [], description: "" };
       });
@@ -564,6 +564,7 @@ function fillDocumentation(objects, docs) {
       }
     });
     object.documentation = {
+      macros: [],
       category: doc.category,
       description: doc.description.description
     };

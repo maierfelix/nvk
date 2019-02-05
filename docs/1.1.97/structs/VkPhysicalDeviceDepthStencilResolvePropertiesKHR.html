@@ -81,13 +81,13 @@ instanceCreateInfo.independentResolve = ;
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.<vk-prototype-name>supportedDepthResolveModes</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a bitmask of {#1#} indicating the set of supported depth resolve modes. {#0#} must: be included in the set but implementations may: support additional modes.</vk-property-description>
+        <vk-property-description> is a bitmask of <b>VkResolveModeFlagBitsKHR</b> indicating the set of supported depth resolve modes. <b>VK_RESOLVE_MODE_SAMPLE_ZERO_BIT_KHR</b> must: be included in the set but implementations may: support additional modes.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.supportedStencilResolveModes -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.<vk-prototype-name>supportedStencilResolveModes</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a bitmask of {#2#} indicating the set of supported stencil resolve modes. {#0#} must: be included in the set but implementations may: support additional modes. {#1#} must: not be included in the set.</vk-property-description>
+        <vk-property-description> is a bitmask of <b>VkResolveModeFlagBitsKHR</b> indicating the set of supported stencil resolve modes. <b>VK_RESOLVE_MODE_SAMPLE_ZERO_BIT_KHR</b> must: be included in the set but implementations may: support additional modes. <b>VK_RESOLVE_MODE_AVERAGE_BIT_KHR</b> must: not be included in the set.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.independentResolveNone -->
       <vk-property-entry>
@@ -99,7 +99,7 @@ instanceCreateInfo.independentResolve = ;
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.<vk-prototype-name>independentResolve</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is {#0#} if the implementation supports all combinations of the supported depth and stencil resolve modes.</vk-property-description>
+        <vk-property-description> is <b>VK_TRUE</b> if the implementation supports all combinations of the supported depth and stencil resolve modes.</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

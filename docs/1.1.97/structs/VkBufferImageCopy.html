@@ -81,13 +81,13 @@ instanceCreateInfo.imageExtent = ;
       <vk-property-entry>
         <vk-property-prototype>VkBufferImageCopy.prototype.<vk-prototype-name>bufferImageHeight</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> specify in texels a subregion of a larger two- or three-dimensional image in buffer memory, and control the addressing calculations. If either of these values is zero, that aspect of the buffer memory is considered to be tightly packed according to the {#0#}.</vk-property-description>
+        <vk-property-description> specify in texels a subregion of a larger two- or three-dimensional image in buffer memory, and control the addressing calculations. If either of these values is zero, that aspect of the buffer memory is considered to be tightly packed according to the <b>imageExtent</b>.</vk-property-description>
       </vk-property-entry>
       <!-- VkBufferImageCopy.prototype.imageSubresource -->
       <vk-property-entry>
         <vk-property-prototype>VkBufferImageCopy.prototype.<vk-prototype-name>imageSubresource</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkImageSubresourceLayers.html">VkImageSubresourceLayers</a></vk-property-type>
-        <vk-property-description> is a {#0#} used to specify the specific image subresources of the image used for the source or destination image data.</vk-property-description>
+        <vk-property-description> is a <b><a href="../handles/VkImageSubresourceLayers.html">VkImageSubresourceLayers</a></b> used to specify the specific image subresources of the image used for the source or destination image data.</vk-property-description>
       </vk-property-entry>
       <!-- VkBufferImageCopy.prototype.imageOffset -->
       <vk-property-entry>
@@ -99,7 +99,7 @@ instanceCreateInfo.imageExtent = ;
       <vk-property-entry>
         <vk-property-prototype>VkBufferImageCopy.prototype.<vk-prototype-name>imageExtent</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkExtent3D.html">VkExtent3D</a></vk-property-type>
-        <vk-property-description> is the size in texels of the image to copy in {#0#}, pname:height and {#1#}.</vk-property-description>
+        <vk-property-description> is the size in texels of the image to copy in <b>width</b>, pname:height and <b>depth</b>.</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

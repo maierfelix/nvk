@@ -68,6 +68,10 @@ const REPLACEMENTS = [
     with: "reference"
   },
   {
+    replace: /points a/gm,
+    with: "references a"
+  },
+  {
     replace: /points/gm,
     with: "reference"
   },
@@ -237,7 +241,6 @@ function getChapterEntryByName(name) {
   for (let ii = 0; ii < entries.length; ++ii) {
     let entry = entries[ii];
     let {description} = entry;
-    //console.log(description);
     if (description.name === name) return entry;
   };
   return null;

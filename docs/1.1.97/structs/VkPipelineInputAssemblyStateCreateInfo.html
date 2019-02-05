@@ -86,13 +86,13 @@ instanceCreateInfo.primitiveRestartEnable = ;
       <vk-property-entry>
         <vk-property-prototype>VkPipelineInputAssemblyStateCreateInfo.prototype.<vk-prototype-name>topology</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a {#0#} defining the primitive topology, as described below.</vk-property-description>
+        <vk-property-description> is a <b>VkPrimitiveTopology</b> defining the primitive topology, as described below.</vk-property-description>
       </vk-property-entry>
       <!-- VkPipelineInputAssemblyStateCreateInfo.prototype.primitiveRestartEnable -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineInputAssemblyStateCreateInfo.prototype.<vk-prototype-name>primitiveRestartEnable</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> controls whether a special vertex index value is treated as restarting the assembly of primitives. This enable only applies to indexed draws ({#0#} and flink:vkCmdDrawIndexedIndirect), and the special index value is either 0xFFFFFFFF when the {#4#} parameter of {#1#} is equal to {#2#}, or 0xFFFF when {#5#} is equal to {#3#}. Primitive restart is not allowed for "`list`" topologies.</vk-property-description>
+        <vk-property-description> controls whether a special vertex index value is treated as restarting the assembly of primitives. This enable only applies to indexed draws (<b><a href="../calls/vkCmdDrawIndexed.html">vkCmdDrawIndexed</a></b> and flink:vkCmdDrawIndexedIndirect), and the special index value is either 0xFFFFFFFF when the <b>indexType</b> parameter of <b><a href="../calls/vkCmdBindIndexBuffer.html">vkCmdBindIndexBuffer</a></b> is equal to <b>VK_INDEX_TYPE_UINT32</b>, or 0xFFFF when <b>indexType</b> is equal to <b>VK_INDEX_TYPE_UINT16</b>. Primitive restart is not allowed for "`list`" topologies.</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

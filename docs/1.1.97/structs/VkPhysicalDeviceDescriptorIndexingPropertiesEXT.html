@@ -100,43 +100,43 @@ instanceCreateInfo.maxDescriptorSetUpdateAfterBindInputAttachments = ;
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.<vk-prototype-name>maxUpdateAfterBindDescriptorsInAllPools</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is the maximum number of descriptors (summed over all descriptor types) that can: be created across all pools that are created with the {#0#} bit set. Pool creation may: fail when this limit is exceeded, or when the space this limit represents is unable to satisfy a pool creation due to fragmentation.</vk-property-description>
+        <vk-property-description> is the maximum number of descriptors (summed over all descriptor types) that can: be created across all pools that are created with the <b>VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT_EXT</b> bit set. Pool creation may: fail when this limit is exceeded, or when the space this limit represents is unable to satisfy a pool creation due to fragmentation.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.shaderUniformBufferArrayNonUniformIndexingNative -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.<vk-prototype-name>shaderUniformBufferArrayNonUniformIndexingNative</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a boolean value indicating whether uniform buffer descriptors natively support nonuniform indexing. If this is {#0#}, then a single dynamic instance of an instruction that nonuniformly indexes an array of uniform buffers may: execute multiple times in order to access all the descriptors.</vk-property-description>
+        <vk-property-description> is a boolean value indicating whether uniform buffer descriptors natively support nonuniform indexing. If this is <b>VK_FALSE</b>, then a single dynamic instance of an instruction that nonuniformly indexes an array of uniform buffers may: execute multiple times in order to access all the descriptors.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.shaderSampledImageArrayNonUniformIndexingNative -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.<vk-prototype-name>shaderSampledImageArrayNonUniformIndexingNative</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a boolean value indicating whether sampler and image descriptors natively support nonuniform indexing. If this is {#0#}, then a single dynamic instance of an instruction that nonuniformly indexes an array of samplers or images may: execute multiple times in order to access all the descriptors.</vk-property-description>
+        <vk-property-description> is a boolean value indicating whether sampler and image descriptors natively support nonuniform indexing. If this is <b>VK_FALSE</b>, then a single dynamic instance of an instruction that nonuniformly indexes an array of samplers or images may: execute multiple times in order to access all the descriptors.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.shaderStorageBufferArrayNonUniformIndexingNative -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.<vk-prototype-name>shaderStorageBufferArrayNonUniformIndexingNative</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a boolean value indicating whether storage buffer descriptors natively support nonuniform indexing. If this is {#0#}, then a single dynamic instance of an instruction that nonuniformly indexes an array of storage buffers may: execute multiple times in order to access all the descriptors.</vk-property-description>
+        <vk-property-description> is a boolean value indicating whether storage buffer descriptors natively support nonuniform indexing. If this is <b>VK_FALSE</b>, then a single dynamic instance of an instruction that nonuniformly indexes an array of storage buffers may: execute multiple times in order to access all the descriptors.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.shaderStorageImageArrayNonUniformIndexingNative -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.<vk-prototype-name>shaderStorageImageArrayNonUniformIndexingNative</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a boolean value indicating whether storage image descriptors natively support nonuniform indexing. If this is {#0#}, then a single dynamic instance of an instruction that nonuniformly indexes an array of storage images may: execute multiple times in order to access all the descriptors.</vk-property-description>
+        <vk-property-description> is a boolean value indicating whether storage image descriptors natively support nonuniform indexing. If this is <b>VK_FALSE</b>, then a single dynamic instance of an instruction that nonuniformly indexes an array of storage images may: execute multiple times in order to access all the descriptors.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.shaderInputAttachmentArrayNonUniformIndexingNative -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.<vk-prototype-name>shaderInputAttachmentArrayNonUniformIndexingNative</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a boolean value indicating whether input attachment descriptors natively support nonuniform indexing. If this is {#0#}, then a single dynamic instance of an instruction that nonuniformly indexes an array of input attachments may: execute multiple times in order to access all the descriptors.</vk-property-description>
+        <vk-property-description> is a boolean value indicating whether input attachment descriptors natively support nonuniform indexing. If this is <b>VK_FALSE</b>, then a single dynamic instance of an instruction that nonuniformly indexes an array of input attachments may: execute multiple times in order to access all the descriptors.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.robustBufferAccessUpdateAfterBind -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.<vk-prototype-name>robustBufferAccessUpdateAfterBind</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a boolean value indicating whether <<features-features-robustBufferAccess, {#1#}>> can: be enabled in a device simultaneously with {#2#}, pname:descriptorBindingStorageBufferUpdateAfterBind, {#3#}, and/or pname:descriptorBindingStorageTexelBufferUpdateAfterBind. If this is {#0#}, then either {#4#} must: be disabled or all of these update-after-bind features must: be disabled.</vk-property-description>
+        <vk-property-description> is a boolean value indicating whether <<features-features-robustBufferAccess, <b>robustBufferAccess</b>>> can: be enabled in a device simultaneously with <b>descriptorBindingUniformBufferUpdateAfterBind</b>, pname:descriptorBindingStorageBufferUpdateAfterBind, <b>descriptorBindingUniformTexelBufferUpdateAfterBind</b>, and/or pname:descriptorBindingStorageTexelBufferUpdateAfterBind. If this is <b>VK_FALSE</b>, then either <b>robustBufferAccess</b> must: be disabled or all of these update-after-bind features must: be disabled.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.quadDivergentImplicitLod -->
       <vk-property-entry>
@@ -148,91 +148,91 @@ instanceCreateInfo.maxDescriptorSetUpdateAfterBindInputAttachments = ;
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.<vk-prototype-name>maxPerStageDescriptorUpdateAfterBindSamplers</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is similar to {#1#} but counts descriptors from descriptor sets created with or without the {#0#} bit set.</vk-property-description>
+        <vk-property-description> is similar to <b>maxPerStageDescriptorSamplers</b> but counts descriptors from descriptor sets created with or without the <b>VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT</b> bit set.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.maxPerStageDescriptorUpdateAfterBindUniformBuffers -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.<vk-prototype-name>maxPerStageDescriptorUpdateAfterBindUniformBuffers</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is similar to {#1#} but counts descriptors from descriptor sets created with or without the {#0#} bit set.</vk-property-description>
+        <vk-property-description> is similar to <b>maxPerStageDescriptorUniformBuffers</b> but counts descriptors from descriptor sets created with or without the <b>VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT</b> bit set.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.maxPerStageDescriptorUpdateAfterBindStorageBuffers -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.<vk-prototype-name>maxPerStageDescriptorUpdateAfterBindStorageBuffers</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is similar to {#1#} but counts descriptors from descriptor sets created with or without the {#0#} bit set.</vk-property-description>
+        <vk-property-description> is similar to <b>maxPerStageDescriptorStorageBuffers</b> but counts descriptors from descriptor sets created with or without the <b>VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT</b> bit set.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.maxPerStageDescriptorUpdateAfterBindSampledImages -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.<vk-prototype-name>maxPerStageDescriptorUpdateAfterBindSampledImages</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is similar to {#1#} but counts descriptors from descriptor sets created with or without the {#0#} bit set.</vk-property-description>
+        <vk-property-description> is similar to <b>maxPerStageDescriptorSampledImages</b> but counts descriptors from descriptor sets created with or without the <b>VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT</b> bit set.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.maxPerStageDescriptorUpdateAfterBindStorageImages -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.<vk-prototype-name>maxPerStageDescriptorUpdateAfterBindStorageImages</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is similar to {#1#} but counts descriptors from descriptor sets created with or without the {#0#} bit set.</vk-property-description>
+        <vk-property-description> is similar to <b>maxPerStageDescriptorStorageImages</b> but counts descriptors from descriptor sets created with or without the <b>VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT</b> bit set.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.maxPerStageDescriptorUpdateAfterBindInputAttachments -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.<vk-prototype-name>maxPerStageDescriptorUpdateAfterBindInputAttachments</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is similar to {#1#} but counts descriptors from descriptor sets created with or without the {#0#} bit set.</vk-property-description>
+        <vk-property-description> is similar to <b>maxPerStageDescriptorInputAttachments</b> but counts descriptors from descriptor sets created with or without the <b>VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT</b> bit set.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.maxPerStageUpdateAfterBindResources -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.<vk-prototype-name>maxPerStageUpdateAfterBindResources</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is similar to {#1#} but counts descriptors from descriptor sets created with or without the {#0#} bit set.</vk-property-description>
+        <vk-property-description> is similar to <b>maxPerStageResources</b> but counts descriptors from descriptor sets created with or without the <b>VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT</b> bit set.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.maxDescriptorSetUpdateAfterBindSamplers -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.<vk-prototype-name>maxDescriptorSetUpdateAfterBindSamplers</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is similar to {#1#} but counts descriptors from descriptor sets created with or without the {#0#} bit set.</vk-property-description>
+        <vk-property-description> is similar to <b>maxDescriptorSetSamplers</b> but counts descriptors from descriptor sets created with or without the <b>VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT</b> bit set.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.maxDescriptorSetUpdateAfterBindUniformBuffers -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.<vk-prototype-name>maxDescriptorSetUpdateAfterBindUniformBuffers</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is similar to {#1#} but counts descriptors from descriptor sets created with or without the {#0#} bit set.</vk-property-description>
+        <vk-property-description> is similar to <b>maxDescriptorSetUniformBuffers</b> but counts descriptors from descriptor sets created with or without the <b>VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT</b> bit set.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.maxDescriptorSetUpdateAfterBindUniformBuffersDynamic -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.<vk-prototype-name>maxDescriptorSetUpdateAfterBindUniformBuffersDynamic</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is similar to {#1#} but counts descriptors from descriptor sets created with or without the {#0#} bit set.</vk-property-description>
+        <vk-property-description> is similar to <b>maxDescriptorSetUniformBuffersDynamic</b> but counts descriptors from descriptor sets created with or without the <b>VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT</b> bit set.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.maxDescriptorSetUpdateAfterBindStorageBuffers -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.<vk-prototype-name>maxDescriptorSetUpdateAfterBindStorageBuffers</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is similar to {#1#} but counts descriptors from descriptor sets created with or without the {#0#} bit set.</vk-property-description>
+        <vk-property-description> is similar to <b>maxDescriptorSetStorageBuffers</b> but counts descriptors from descriptor sets created with or without the <b>VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT</b> bit set.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.maxDescriptorSetUpdateAfterBindStorageBuffersDynamic -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.<vk-prototype-name>maxDescriptorSetUpdateAfterBindStorageBuffersDynamic</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is similar to {#1#} but counts descriptors from descriptor sets created with or without the {#0#} bit set.</vk-property-description>
+        <vk-property-description> is similar to <b>maxDescriptorSetStorageBuffersDynamic</b> but counts descriptors from descriptor sets created with or without the <b>VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT</b> bit set.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.maxDescriptorSetUpdateAfterBindSampledImages -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.<vk-prototype-name>maxDescriptorSetUpdateAfterBindSampledImages</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is similar to {#1#} but counts descriptors from descriptor sets created with or without the {#0#} bit set.</vk-property-description>
+        <vk-property-description> is similar to <b>maxDescriptorSetSampledImages</b> but counts descriptors from descriptor sets created with or without the <b>VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT</b> bit set.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.maxDescriptorSetUpdateAfterBindStorageImages -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.<vk-prototype-name>maxDescriptorSetUpdateAfterBindStorageImages</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is similar to {#1#} but counts descriptors from descriptor sets created with or without the {#0#} bit set.</vk-property-description>
+        <vk-property-description> is similar to <b>maxDescriptorSetStorageImages</b> but counts descriptors from descriptor sets created with or without the <b>VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT</b> bit set.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.maxDescriptorSetUpdateAfterBindInputAttachments -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.<vk-prototype-name>maxDescriptorSetUpdateAfterBindInputAttachments</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is similar to {#1#} but counts descriptors from descriptor sets created with or without the {#0#} bit set.</vk-property-description>
+        <vk-property-description> is similar to <b>maxDescriptorSetInputAttachments</b> but counts descriptors from descriptor sets created with or without the <b>VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT</b> bit set.</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

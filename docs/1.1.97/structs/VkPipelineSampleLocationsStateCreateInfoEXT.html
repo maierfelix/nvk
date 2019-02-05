@@ -79,13 +79,13 @@ instanceCreateInfo.sampleLocationsInfo = ;
       <vk-property-entry>
         <vk-property-prototype>VkPipelineSampleLocationsStateCreateInfoEXT.prototype.<vk-prototype-name>sampleLocationsEnable</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> controls whether custom sample locations are used. If {#1#} is {#0#}, the default sample locations are used and the values specified in {#2#} are ignored.</vk-property-description>
+        <vk-property-description> controls whether custom sample locations are used. If <b>sampleLocationsEnable</b> is <b>VK_FALSE</b>, the default sample locations are used and the values specified in <b>sampleLocationsInfo</b> are ignored.</vk-property-description>
       </vk-property-entry>
       <!-- VkPipelineSampleLocationsStateCreateInfoEXT.prototype.sampleLocationsInfo -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineSampleLocationsStateCreateInfoEXT.prototype.<vk-prototype-name>sampleLocationsInfo</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkSampleLocationsInfoEXT.html">VkSampleLocationsInfoEXT</a></vk-property-type>
-        <vk-property-description> is the sample locations to use during rasterization if {#2#} is {#0#} and the graphics pipeline is not created with {#1#}.</vk-property-description>
+        <vk-property-description> is the sample locations to use during rasterization if <b>sampleLocationsEnable</b> is <b>VK_TRUE</b> and the graphics pipeline is not created with <b>VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT</b>.</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

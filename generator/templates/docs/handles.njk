@@ -33,7 +33,7 @@
 
     <vk-name>{{ handle.name }}</vk-name>
 
-    <vk-description>{{ handle.documentation.description | safe }}</vk-description>
+    <vk-description>{{ getObjectDescription(handle) | safe }}</vk-description>
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
