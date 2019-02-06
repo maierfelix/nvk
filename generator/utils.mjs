@@ -127,7 +127,12 @@ export function getObjectInstantiationName(object) {
   }
   let out = name.substr(2, name.length);
   if (object.kind === `STRUCT`) {
+    // remove 'CreateInfo' from name
     out = out.replace(`CreateInfo`, ``);
+    // remove name'Info' from end
+    if (out.substr(out.length - 4, out.length) === `Info`) {
+      out = out.substr(0, out.length - 4);
+    }
     out = out[0].toLowerCase() + out.slice(1);
     out = out + `Info`;
   }
