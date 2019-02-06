@@ -100,7 +100,6 @@ export function getNodeByName(name, nodes) {
   return null;
 };
 
-// shouldnt be necessary, but this method
 // auto-generates the sType name by a struct's name
 export function getAutoStructureType(name) {
   let out = ``;
@@ -117,6 +116,24 @@ export function getAutoStructureType(name) {
   out += values.join(`_`).toUpperCase();
   // merge e.g. 8_BIT => 8BIT
   out = out.replace(/(_BIT)/gm, `BIT`);
+  return out;
+};
+
+export function getObjectInstantiationName(object) {
+  let {name} = object;
+  if (name.substr(0, 2).toUpperCase() !== `VK`) {
+    warn(`Cannot extract instantiation name for object ${name}`);
+    return ``;
+  }
+  let out = name.substr(2, name.length);
+  if (object.kind === `STRUCT`) {
+    out = out.replace(`CreateInfo`, ``);
+    out = out[0].toLowerCase() + out.slice(1);
+    out = out + `Info`;
+  }
+  else if (object.kind === `HANDLE`) {
+    out = out[0].toLowerCase() + out.slice(1);
+  }
   return out;
 };
 

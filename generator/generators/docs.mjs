@@ -12,7 +12,8 @@ import parseDocumentation from "../doc-parser";
 import {
   warn,
   getNodeByName,
-  isIgnoreableType
+  isIgnoreableType,
+  getObjectInstantiationName
 } from "../utils";
 
 let ast = null;
@@ -512,6 +513,7 @@ export default function(astReference, data, version) {
         objects,
         members: struct.children,
         categories,
+        instantiationName: getObjectInstantiationName(struct),
         ...defaultFunctions
       });
       fs.writeFileSync(`${DOCS_DIR}/${version}/structs/${struct.name}.html`, output, `utf-8`);
@@ -526,6 +528,7 @@ export default function(astReference, data, version) {
         objects,
         members: handle.children,
         categories,
+        instantiationName: getObjectInstantiationName(handle),
         ...defaultFunctions
       });
       fs.writeFileSync(`${DOCS_DIR}/${version}/handles/${handle.name}.html`, output, `utf-8`);
