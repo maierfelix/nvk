@@ -18704,10 +18704,14 @@
             },
             {
               "kind": "pname",
+              "value": "maxExtent.height"
+            },
+            {
+              "kind": "pname",
               "value": "maxExtent.depth"
             }
           ],
-          "description": " is the maximum number of mipmap levels. {#2#} {#1#} be equal to the number of levels in the complete mipmap chain based on the [eq]#{#3#}#, [eq]#pname:maxExtent.height#, and [eq]#{#4#}#, except when one of the following conditions is true, in which case it {#0#} instead be `1`:"
+          "description": " is the maximum number of mipmap levels. {#2#} {#1#} be equal to the number of levels in the complete mipmap chain based on the [eq]#{#3#}#, [eq]#{#4#}#, and [eq]#{#5#}#, except when one of the following conditions is true, in which case it {#0#} instead be `1`:"
         }
       },
       {
@@ -18840,9 +18844,13 @@
             {
               "kind": "ename",
               "value": "VK_DESCRIPTOR_TYPE_SAMPLER"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER"
             }
           ],
-          "description": " is a sampler handle, and is used in descriptor updates for types {#0#} and ename:VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER if the binding being updated does not use immutable samplers."
+          "description": " is a sampler handle, and is used in descriptor updates for types {#0#} and {#1#} if the binding being updated does not use immutable samplers."
         }
       },
       {
@@ -18864,10 +18872,18 @@
             },
             {
               "kind": "ename",
+              "value": "VK_DESCRIPTOR_TYPE_STORAGE_IMAGE"
+            },
+            {
+              "kind": "ename",
               "value": "VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT"
             }
           ],
-          "description": " is an image view handle, and is used in descriptor updates for types {#0#}, ename:VK_DESCRIPTOR_TYPE_STORAGE_IMAGE, {#1#}, and ename:VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT."
+          "description": " is an image view handle, and is used in descriptor updates for types {#0#}, {#1#}, {#2#}, and {#3#}."
         }
       },
       {
@@ -18890,7 +18906,15 @@
             },
             {
               "kind": "ename",
+              "value": "VK_DESCRIPTOR_TYPE_STORAGE_IMAGE"
+            },
+            {
+              "kind": "ename",
               "value": "VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT"
             },
             {
               "kind": "pname",
@@ -18901,7 +18925,7 @@
               "value": "imageLayout"
             }
           ],
-          "description": " is the layout that the image subresources accessible from {#2#} will be in at the time this descriptor is accessed. {#3#} is used in descriptor updates for types {#0#}, ename:VK_DESCRIPTOR_TYPE_STORAGE_IMAGE, {#1#}, and ename:VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT."
+          "description": " is the layout that the image subresources accessible from {#4#} will be in at the time this descriptor is accessed. {#5#} is used in descriptor updates for types {#0#}, {#1#}, {#2#}, and {#3#}."
         }
       }
     ],
@@ -19003,10 +19027,14 @@
             },
             {
               "kind": "pname",
+              "value": "dstBinding"
+            },
+            {
+              "kind": "pname",
               "value": "dstArrayElement"
             }
           ],
-          "description": " is the starting element in that array. If the descriptor binding identified by {#1#} and pname:dstBinding has a descriptor type of {#0#} then {#2#} specifies the starting byte offset within the binding."
+          "description": " is the starting element in that array. If the descriptor binding identified by {#1#} and {#2#} has a descriptor type of {#0#} then {#3#} specifies the starting byte offset within the binding."
         }
       },
       {
@@ -19172,10 +19200,14 @@
             },
             {
               "kind": "pname",
+              "value": "srcBinding"
+            },
+            {
+              "kind": "pname",
               "value": "srcArrayElement"
             }
           ],
-          "description": " are the source set, binding, and array element, respectively. If the descriptor binding identified by {#1#} and pname:srcBinding has a descriptor type of {#0#} then {#2#} specifies the starting byte offset within the binding to copy from."
+          "description": " are the source set, binding, and array element, respectively. If the descriptor binding identified by {#1#} and {#2#} has a descriptor type of {#0#} then {#3#} specifies the starting byte offset within the binding to copy from."
         }
       },
       {
@@ -21954,10 +21986,14 @@
             },
             {
               "kind": "pname",
+              "value": "height"
+            },
+            {
+              "kind": "pname",
               "value": "depth"
             }
           ],
-          "description": " is the size in texels of the image to copy in {#0#}, pname:height and {#1#}."
+          "description": " is the size in texels of the image to copy in {#0#}, {#1#} and {#2#}."
         }
       }
     ],
@@ -22043,10 +22079,14 @@
             },
             {
               "kind": "pname",
+              "value": "height"
+            },
+            {
+              "kind": "pname",
               "value": "depth"
             }
           ],
-          "description": " is the size in texels of the source image to resolve in {#0#}, pname:height and {#1#}."
+          "description": " is the size in texels of the source image to resolve in {#0#}, {#1#} and {#2#}."
         }
       }
     ],
@@ -23468,6 +23508,10 @@
               "value": "vkCmdDrawIndexed"
             },
             {
+              "kind": "flink",
+              "value": "vkCmdDrawIndexedIndirect"
+            },
+            {
               "kind": "fname",
               "value": "vkCmdBindIndexBuffer"
             },
@@ -23488,7 +23532,7 @@
               "value": "indexType"
             }
           ],
-          "description": " controls whether a special vertex index value is treated as restarting the assembly of primitives. This enable only applies to indexed draws ({#0#} and flink:vkCmdDrawIndexedIndirect), and the special index value is either 0xFFFFFFFF when the {#4#} parameter of {#1#} is equal to {#2#}, or 0xFFFF when {#5#} is equal to {#3#}. Primitive restart is not allowed for \"`list`\" topologies."
+          "description": " controls whether a special vertex index value is treated as restarting the assembly of primitives. This enable only applies to indexed draws ({#0#} and {#1#}), and the special index value is either 0xFFFFFFFF when the {#5#} parameter of {#2#} is equal to {#3#}, or 0xFFFF when {#6#} is equal to {#4#}. Primitive restart is not allowed for \"`list`\" topologies."
         }
       }
     ],
@@ -25341,9 +25385,13 @@
             {
               "kind": "pname",
               "value": "initialDataSize"
+            },
+            {
+              "kind": "pname",
+              "value": "pInitialData"
             }
           ],
-          "description": " is a reference to previously retrieved pipeline cache data. If the pipeline cache data is incompatible (as defined below) with the device, the pipeline cache will be initially empty. If {#0#} is zero, pname:pInitialData is ignored."
+          "description": " is a reference to previously retrieved pipeline cache data. If the pipeline cache data is incompatible (as defined below) with the device, the pipeline cache will be initially empty. If {#0#} is zero, {#1#} is ignored."
         }
       }
     ],
@@ -25412,9 +25460,13 @@
             {
               "kind": "pname",
               "value": "offset"
+            },
+            {
+              "kind": "pname",
+              "value": "size"
             }
           ],
-          "description": " are the start offset and size, respectively, consumed by the range. Both {#1#} and pname:size are in units of bytes and {#0#} be a multiple of 4. The layout of the push constant variables is specified in the shader."
+          "description": " are the start offset and size, respectively, consumed by the range. Both {#1#} and {#2#} are in units of bytes and {#0#} be a multiple of 4. The layout of the push constant variables is specified in the shader."
         }
       }
     ],
@@ -25741,9 +25793,13 @@
             {
               "kind": "ename",
               "value": "VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER"
             }
           ],
-          "description": " {#0#} each be either {#1#} or ename:VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER."
+          "description": " {#0#} each be either {#1#} or {#2#}."
         }
       },
       {
@@ -25822,10 +25878,14 @@
             },
             {
               "kind": "pname",
+              "value": "anisotropyEnable"
+            },
+            {
+              "kind": "pname",
               "value": "maxAnisotropy"
             }
           ],
-          "description": " is the anisotropy value clamp used by the sampler when {#2#} is {#0#}. If pname:anisotropyEnable is {#1#}, {#3#} is ignored."
+          "description": " is the anisotropy value clamp used by the sampler when {#2#} is {#0#}. If {#3#} is {#1#}, {#4#} is ignored."
         }
       },
       {
@@ -27790,6 +27850,10 @@
               "value": "VkDescriptorBufferInfo"
             },
             {
+              "kind": "sname",
+              "value": "VkBufferViewCreateInfo"
+            },
+            {
               "kind": "pname",
               "value": "range"
             },
@@ -27798,7 +27862,7 @@
               "value": "range"
             }
           ],
-          "description": " specifies that accesses to buffers are bounds-checked against the range of the buffer descriptor (as determined by {#2#}::{#3#}, sname:VkBufferViewCreateInfo::{#4#}, or the size of the buffer). Out of bounds accesses {#0#} not cause application termination, and the effects of shader loads, stores, and atomics {#1#} conform to an implementation-dependent behavior as described below."
+          "description": " specifies that accesses to buffers are bounds-checked against the range of the buffer descriptor (as determined by {#2#}::{#4#}, {#3#}::{#5#}, or the size of the buffer). Out of bounds accesses {#0#} not cause application termination, and the effects of shader loads, stores, and atomics {#1#} conform to an implementation-dependent behavior as described below."
         }
       },
       {
@@ -28821,10 +28885,14 @@
             },
             {
               "kind": "ename",
+              "value": "VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER"
+            },
+            {
+              "kind": "ename",
               "value": "VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT"
             }
           ],
-          "description": " is the maximum number of samplers that {#0#} be accessible to a single shader stage in a pipeline layout. Descriptors with a type of {#1#} or ename:VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER count against this limit. Only descriptors in descriptor set layouts created without the {#2#} bit set count against this limit."
+          "description": " is the maximum number of samplers that {#0#} be accessible to a single shader stage in a pipeline layout. Descriptors with a type of {#1#} or {#2#} count against this limit. Only descriptors in descriptor set layouts created without the {#3#} bit set count against this limit."
         }
       },
       {
@@ -31588,14 +31656,26 @@
             },
             {
               "kind": "pname",
+              "value": "height"
+            },
+            {
+              "kind": "pname",
               "value": "width"
+            },
+            {
+              "kind": "pname",
+              "value": "height"
+            },
+            {
+              "kind": "pname",
+              "value": "currentExtent"
             },
             {
               "kind": "pname",
               "value": "currentExtent"
             }
           ],
-          "description": " contains the smallest valid swapchain extent for the surface on the specified device. The {#0#} and pname:height of the extent will each be less than or equal to the corresponding {#1#} and pname:height of {#2#}, unless pname:currentExtent has the special value described above."
+          "description": " contains the smallest valid swapchain extent for the surface on the specified device. The {#0#} and {#1#} of the extent will each be less than or equal to the corresponding {#2#} and {#3#} of {#4#}, unless {#5#} has the special value described above."
         }
       },
       {
@@ -31616,11 +31696,23 @@
             },
             {
               "kind": "pname",
+              "value": "height"
+            },
+            {
+              "kind": "pname",
               "value": "width"
             },
             {
               "kind": "pname",
+              "value": "height"
+            },
+            {
+              "kind": "pname",
               "value": "minImageExtent"
+            },
+            {
+              "kind": "pname",
+              "value": "width"
             },
             {
               "kind": "pname",
@@ -31632,10 +31724,18 @@
             },
             {
               "kind": "pname",
+              "value": "height"
+            },
+            {
+              "kind": "pname",
+              "value": "currentExtent"
+            },
+            {
+              "kind": "pname",
               "value": "currentExtent"
             }
           ],
-          "description": " contains the largest valid swapchain extent for the surface on the specified device. The {#0#} and {#3#} of the extent will each be greater than or equal to the corresponding {#1#} and pname:height of {#2#}. The {#4#} and pname:height of the extent will each be greater than or equal to the corresponding pname:width and pname:height of {#5#}, unless pname:currentExtent has the special value described above."
+          "description": " contains the largest valid swapchain extent for the surface on the specified device. The {#0#} and {#1#} of the extent will each be greater than or equal to the corresponding {#2#} and {#3#} of {#4#}. The {#5#} and {#6#} of the extent will each be greater than or equal to the corresponding {#7#} and {#8#} of {#9#}, unless {#10#} has the special value described above."
         }
       },
       {
@@ -31756,7 +31856,15 @@
             },
             {
               "kind": "ename",
+              "value": "VK_PRESENT_MODE_MAILBOX_KHR"
+            },
+            {
+              "kind": "ename",
               "value": "VK_PRESENT_MODE_FIFO_KHR"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_PRESENT_MODE_FIFO_RELAXED_KHR"
             },
             {
               "kind": "elink",
@@ -31767,7 +31875,7 @@
               "value": "VkPresentModeKHR"
             }
           ],
-          "description": " is a bitmask of {#3#} representing the ways the application {#0#} use the presentable images of a swapchain created with {#4#} set to {#1#}, ename:VK_PRESENT_MODE_MAILBOX_KHR, {#2#} or ename:VK_PRESENT_MODE_FIFO_RELAXED_KHR"
+          "description": " is a bitmask of {#5#} representing the ways the application {#0#} use the presentable images of a swapchain created with {#6#} set to {#1#}, {#2#}, {#3#} or {#4#}"
         }
       }
     ],
@@ -31948,6 +32056,10 @@
             },
             {
               "kind": "code",
+              "value": "nn"
+            },
+            {
+              "kind": "code",
               "value": "vi"
             },
             {
@@ -31955,7 +32067,7 @@
               "value": "Layer"
             }
           ],
-          "description": " is the {#0#}::{#1#}::{#2#} for the code:nn::{#3#}::{#4#} with which to associate the surface."
+          "description": " is the {#0#}::{#1#}::{#2#} for the {#3#}::{#4#}::{#5#} with which to associate the surface."
         }
       }
     ],
@@ -32047,9 +32159,13 @@
             {
               "kind": "code",
               "value": "wl_display"
+            },
+            {
+              "kind": "code",
+              "value": "wl_surface"
             }
           ],
-          "description": " are references to the Wayland {#0#} and code:wl_surface to associate the surface with."
+          "description": " are references to the Wayland {#0#} and {#1#} to associate the surface with."
         }
       }
     ],
@@ -32141,9 +32257,13 @@
             {
               "kind": "code",
               "value": "HINSTANCE"
+            },
+            {
+              "kind": "code",
+              "value": "HWND"
             }
           ],
-          "description": " are the Win32 {#0#} and code:HWND for the window to associate the surface with."
+          "description": " are the Win32 {#0#} and {#1#} for the window to associate the surface with."
         }
       }
     ],
@@ -34093,6 +34213,10 @@
             },
             {
               "kind": "flink",
+              "value": "vkAllocateMemory"
+            },
+            {
+              "kind": "flink",
               "value": "vkGetPhysicalDeviceExternalImageFormatPropertiesNV"
             },
             {
@@ -34112,7 +34236,7 @@
               "value": "externalHandleType"
             }
           ],
-          "description": " is a bitmask of {#3#} containing a bit set for every external handle type that {#0#} be specified simultaneously with the handle type specified by {#1#}::{#4#} when calling flink:vkAllocateMemory, or 0 if the external memory handle type is 0. {#5#} will always contain {#2#}::{#6#}"
+          "description": " is a bitmask of {#4#} containing a bit set for every external handle type that {#0#} be specified simultaneously with the handle type specified by {#1#}::{#5#} when calling {#2#}, or 0 if the external memory handle type is 0. {#6#} will always contain {#3#}::{#7#}"
         }
       }
     ],
@@ -34705,9 +34829,13 @@
             {
               "kind": "ename",
               "value": "VK_OBJECT_ENTRY_USAGE_GRAPHICS_BIT_NVX"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_PIPELINE_BIND_POINT_COMPUTE"
             }
           ],
-          "description": " specifies whether the {#0#} supports entries with {#2#} bit set and {#1#} supports ename:VK_PIPELINE_BIND_POINT_COMPUTE."
+          "description": " specifies whether the {#0#} supports entries with {#2#} bit set and {#1#} supports {#3#}."
         }
       }
     ],
@@ -35686,9 +35814,13 @@
             {
               "kind": "ename",
               "value": "VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC"
             }
           ],
-          "description": " is the maximum number of {#1#} or ename:VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC used by any single registered {#0#} in this table."
+          "description": " is the maximum number of {#1#} or {#2#} used by any single registered {#0#} in this table."
         }
       },
       {
@@ -35710,9 +35842,13 @@
             {
               "kind": "ename",
               "value": "VK_DESCRIPTOR_TYPE_STORAGE_BUFFER"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC"
             }
           ],
-          "description": " is the maximum number of {#1#} or ename:VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC used by any single registered {#0#} in this table."
+          "description": " is the maximum number of {#1#} or {#2#} used by any single registered {#0#} in this table."
         }
       },
       {
@@ -35734,9 +35870,13 @@
             {
               "kind": "ename",
               "value": "VK_DESCRIPTOR_TYPE_STORAGE_IMAGE"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER"
             }
           ],
-          "description": " is the maximum number of {#1#} or ename:VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER used by any single registered {#0#} in this table."
+          "description": " is the maximum number of {#1#} or {#2#} used by any single registered {#0#} in this table."
         }
       },
       {
@@ -35761,10 +35901,18 @@
             },
             {
               "kind": "ename",
+              "value": "VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER"
+            },
+            {
+              "kind": "ename",
               "value": "VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT"
             }
           ],
-          "description": " is the maximum number of {#1#}, ename:VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, {#2#} or ename:VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT used by any single registered {#0#} in this table."
+          "description": " is the maximum number of {#1#}, {#2#}, {#3#} or {#4#} used by any single registered {#0#} in this table."
         }
       },
       {
@@ -35786,9 +35934,13 @@
             {
               "kind": "sname",
               "value": "VkDescriptorSet"
+            },
+            {
+              "kind": "sname",
+              "value": "VkPipeline"
             }
           ],
-          "description": " is the maximum number of unique {#0#} used by any registered {#1#} or sname:VkPipeline in this table."
+          "description": " is the maximum number of unique {#0#} used by any registered {#1#} or {#2#} in this table."
         }
       }
     ],
@@ -44517,9 +44669,13 @@
             {
               "kind": "pname",
               "value": "physicalDeviceCount"
+            },
+            {
+              "kind": "pname",
+              "value": "subsetAllocation"
             }
           ],
-          "description": " specifies whether logical devices created from the group support allocating device memory on a subset of devices, via the {#4#} member of the {#1#}. If this is {#2#}, then all device memory allocations are made across all physical devices in the group. If {#5#} is `1`, then pname:subsetAllocation {#0#} be {#3#}."
+          "description": " specifies whether logical devices created from the group support allocating device memory on a subset of devices, via the {#4#} member of the {#1#}. If this is {#2#}, then all device memory allocations are made across all physical devices in the group. If {#5#} is `1`, then {#6#} {#0#} be {#3#}."
         }
       }
     ],
@@ -44645,9 +44801,13 @@
             {
               "kind": "pname",
               "value": "physicalDeviceCount"
+            },
+            {
+              "kind": "pname",
+              "value": "subsetAllocation"
             }
           ],
-          "description": " specifies whether logical devices created from the group support allocating device memory on a subset of devices, via the {#4#} member of the {#1#}. If this is {#2#}, then all device memory allocations are made across all physical devices in the group. If {#5#} is `1`, then pname:subsetAllocation {#0#} be {#3#}."
+          "description": " specifies whether logical devices created from the group support allocating device memory on a subset of devices, via the {#4#} member of the {#1#}. If this is {#2#}, then all device memory allocations are made across all physical devices in the group. If {#5#} is `1`, then {#6#} {#0#} be {#3#}."
         }
       }
     ],
@@ -47715,10 +47875,14 @@
             },
             {
               "kind": "pname",
+              "value": "pipelineLayout"
+            },
+            {
+              "kind": "pname",
               "value": "set"
             }
           ],
-          "description": " Specifies the type of the descriptor update template. If set to {#2#} it {#0#} only be used to update descriptor sets with a fixed {#4#}. If set to {#3#} it {#1#} only be used to push descriptor sets using the provided {#5#}, pname:pipelineLayout, and {#6#} number."
+          "description": " Specifies the type of the descriptor update template. If set to {#2#} it {#0#} only be used to update descriptor sets with a fixed {#4#}. If set to {#3#} it {#1#} only be used to push descriptor sets using the provided {#5#}, {#6#}, and {#7#} number."
         }
       },
       {
@@ -47917,10 +48081,14 @@
             },
             {
               "kind": "pname",
+              "value": "pipelineLayout"
+            },
+            {
+              "kind": "pname",
               "value": "set"
             }
           ],
-          "description": " Specifies the type of the descriptor update template. If set to {#2#} it {#0#} only be used to update descriptor sets with a fixed {#4#}. If set to {#3#} it {#1#} only be used to push descriptor sets using the provided {#5#}, pname:pipelineLayout, and {#6#} number."
+          "description": " Specifies the type of the descriptor update template. If set to {#2#} it {#0#} only be used to update descriptor sets with a fixed {#4#}. If set to {#3#} it {#1#} only be used to push descriptor sets using the provided {#5#}, {#6#}, and {#7#} number."
         }
       },
       {
@@ -50253,6 +50421,10 @@
             },
             {
               "kind": "ename",
+              "value": "VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR"
+            },
+            {
+              "kind": "ename",
               "value": "VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT"
             },
             {
@@ -50264,7 +50436,7 @@
               "value": "VkPresentModeKHR"
             }
           ],
-          "description": " is a bitmask of {#5#} representing the ways the application {#0#} use the shared presentable image from a swapchain created with {#6#} set to {#3#} or ename:VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR for the surface on the specified device. {#4#} {#2#} be included in the set but implementations {#1#} support additional usages."
+          "description": " is a bitmask of {#6#} representing the ways the application {#0#} use the shared presentable image from a swapchain created with {#7#} set to {#3#} or {#4#} for the surface on the specified device. {#5#} {#2#} be included in the set but implementations {#1#} support additional usages."
         }
       }
     ],
@@ -50332,9 +50504,13 @@
             {
               "kind": "code",
               "value": "StorageBuffer"
+            },
+            {
+              "kind": "code",
+              "value": "PhysicalStorageBufferEXT"
             }
           ],
-          "description": " specifies whether objects in the {#0#} or code:PhysicalStorageBufferEXT"
+          "description": " specifies whether objects in the {#0#} or {#1#}"
         }
       },
       {
@@ -50441,9 +50617,13 @@
             {
               "kind": "code",
               "value": "StorageBuffer"
+            },
+            {
+              "kind": "code",
+              "value": "PhysicalStorageBufferEXT"
             }
           ],
-          "description": " specifies whether objects in the {#0#} or code:PhysicalStorageBufferEXT"
+          "description": " specifies whether objects in the {#0#} or {#1#}"
         }
       },
       {
@@ -50551,6 +50731,10 @@
               "value": "VK_QUEUE_GRAPHICS_BIT"
             },
             {
+              "kind": "ename",
+              "value": "VK_QUEUE_COMPUTE_BIT"
+            },
+            {
               "kind": "pname",
               "value": "subgroupSize"
             },
@@ -50559,7 +50743,7 @@
               "value": "SubgroupSize"
             }
           ],
-          "description": " is the number of invocations in each subgroup. This will match any <<interfaces-builtin-variables-sgs, {#2#}>> decorated variable used in any shader module created on this device. {#1#} is at least 1 if any of the physical device's queues support {#0#} or ename:VK_QUEUE_COMPUTE_BIT."
+          "description": " is the number of invocations in each subgroup. This will match any <<interfaces-builtin-variables-sgs, {#3#}>> decorated variable used in any shader module created on this device. {#2#} is at least 1 if any of the physical device's queues support {#0#} or {#1#}."
         }
       },
       {
@@ -50621,6 +50805,10 @@
               "value": "VK_QUEUE_GRAPHICS_BIT"
             },
             {
+              "kind": "ename",
+              "value": "VK_QUEUE_COMPUTE_BIT"
+            },
+            {
               "kind": "elink",
               "value": "VkSubgroupFeatureFlagBits"
             },
@@ -50629,7 +50817,7 @@
               "value": "supportedOperations"
             }
           ],
-          "description": " is a bitmask of {#2#} specifying the sets of subgroup operations supported on this device. {#3#} will have the {#0#} bit set if any of the physical device's queues support {#1#} or ename:VK_QUEUE_COMPUTE_BIT."
+          "description": " is a bitmask of {#3#} specifying the sets of subgroup operations supported on this device. {#4#} will have the {#0#} bit set if any of the physical device's queues support {#1#} or {#2#}."
         }
       },
       {
@@ -55751,9 +55939,13 @@
             {
               "kind": "pname",
               "value": "initialDataSize"
+            },
+            {
+              "kind": "pname",
+              "value": "pInitialData"
             }
           ],
-          "description": " is a reference to previously retrieved validation cache data. If the validation cache data is incompatible (as defined below) with the device, the validation cache will be initially empty. If {#0#} is zero, pname:pInitialData is ignored."
+          "description": " is a reference to previously retrieved validation cache data. If the validation cache data is incompatible (as defined below) with the device, the validation cache will be initially empty. If {#0#} is zero, {#1#} is ignored."
         }
       }
     ],
@@ -59022,14 +59214,22 @@
             },
             {
               "kind": "pname",
+              "value": "descriptorBindingStorageBufferUpdateAfterBind"
+            },
+            {
+              "kind": "pname",
               "value": "descriptorBindingUniformTexelBufferUpdateAfterBind"
+            },
+            {
+              "kind": "pname",
+              "value": "descriptorBindingStorageTexelBufferUpdateAfterBind"
             },
             {
               "kind": "pname",
               "value": "robustBufferAccess"
             }
           ],
-          "description": " is a boolean value indicating whether <<features-features-robustBufferAccess, {#4#}>> {#0#} be enabled in a device simultaneously with {#5#}, pname:descriptorBindingStorageBufferUpdateAfterBind, {#6#}, and/or pname:descriptorBindingStorageTexelBufferUpdateAfterBind. If this is {#3#}, then either {#7#} {#1#} be disabled or all of these update-after-bind features {#2#} be disabled."
+          "description": " is a boolean value indicating whether <<features-features-robustBufferAccess, {#4#}>> {#0#} be enabled in a device simultaneously with {#5#}, {#6#}, {#7#}, and/or {#8#}. If this is {#3#}, then either {#9#} {#1#} be disabled or all of these update-after-bind features {#2#} be disabled."
         }
       },
       {
@@ -61869,9 +62069,13 @@
             {
               "kind": "code",
               "value": "StorageBuffer"
+            },
+            {
+              "kind": "code",
+              "value": "PhysicalStorageBufferEXT"
             }
           ],
-          "description": " indicates whether objects in the {#0#} or code:PhysicalStorageBufferEXT"
+          "description": " indicates whether objects in the {#0#} or {#1#}"
         }
       },
       {
@@ -62966,11 +63170,15 @@
               "value": "geometryStreams"
             },
             {
+              "kind": "pname",
+              "value": "maxTransformFeedbackStreams"
+            },
+            {
               "kind": "code",
               "value": "GeometryStreams"
             }
           ],
-          "description": " is the maximum number of vertex streams that can be output from geometry shaders declared with the {#3#} capability. If the implementation does not support {#1#}::{#2#} then pname:maxTransformFeedbackStreams {#0#} be set to `1`."
+          "description": " is the maximum number of vertex streams that can be output from geometry shaders declared with the {#4#} capability. If the implementation does not support {#1#}::{#2#} then {#3#} {#0#} be set to `1`."
         }
       },
       {
@@ -64054,9 +64262,13 @@
             {
               "kind": "pname",
               "value": "pixelX"
+            },
+            {
+              "kind": "pname",
+              "value": "pixelY"
             }
           ],
-          "description": " is the number of the coverage sample in the pixel identified by {#0#} and pname:pixelY."
+          "description": " is the number of the coverage sample in the pixel identified by {#0#} and {#1#}."
         }
       }
     ],
@@ -64726,6 +64938,10 @@
               "value": "VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV"
             },
             {
+              "kind": "ename",
+              "value": "VK_SHADER_UNUSED_NV"
+            },
+            {
               "kind": "pname",
               "value": "pStages"
             },
@@ -64734,7 +64950,7 @@
               "value": "type"
             }
           ],
-          "description": " is the index of the ray generation, miss, or callable shader from {#0#}::{#2#} in the group if the shader group has {#3#} of {#1#} and ename:VK_SHADER_UNUSED_NV otherwise."
+          "description": " is the index of the ray generation, miss, or callable shader from {#0#}::{#3#} in the group if the shader group has {#4#} of {#1#} and {#2#} otherwise."
         }
       },
       {
@@ -64759,6 +64975,10 @@
             },
             {
               "kind": "ename",
+              "value": "VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV"
+            },
+            {
+              "kind": "ename",
               "value": "VK_SHADER_UNUSED_NV"
             },
             {
@@ -64770,7 +64990,7 @@
               "value": "type"
             }
           ],
-          "description": " is the optional index of the closest hit shader from {#0#}::{#3#} in the group if the shader group has {#4#} of {#1#} or ename:VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV and {#2#} otherwise."
+          "description": " is the optional index of the closest hit shader from {#0#}::{#4#} in the group if the shader group has {#5#} of {#1#} or {#2#} and {#3#} otherwise."
         }
       },
       {
@@ -64795,6 +65015,10 @@
             },
             {
               "kind": "ename",
+              "value": "VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV"
+            },
+            {
+              "kind": "ename",
               "value": "VK_SHADER_UNUSED_NV"
             },
             {
@@ -64806,7 +65030,7 @@
               "value": "type"
             }
           ],
-          "description": " is the optional index of the any hit shader from {#0#}::{#3#} in the group if the shader group has {#4#} of {#1#} or ename:VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV and {#2#} otherwise."
+          "description": " is the optional index of the any hit shader from {#0#}::{#4#} in the group if the shader group has {#5#} of {#1#} or {#2#} and {#3#} otherwise."
         }
       },
       {
@@ -64830,6 +65054,10 @@
               "value": "VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV"
             },
             {
+              "kind": "ename",
+              "value": "VK_SHADER_UNUSED_NV"
+            },
+            {
               "kind": "pname",
               "value": "pStages"
             },
@@ -64838,7 +65066,7 @@
               "value": "type"
             }
           ],
-          "description": " is the index of the intersection shader from {#0#}::{#2#} in the group if the shader group has {#3#} of {#1#} and ename:VK_SHADER_UNUSED_NV otherwise."
+          "description": " is the index of the intersection shader from {#0#}::{#3#} in the group if the shader group has {#4#} of {#1#} and {#2#} otherwise."
         }
       }
     ],
@@ -66076,10 +66304,14 @@
             },
             {
               "kind": "ename",
+              "value": "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV"
+            },
+            {
+              "kind": "ename",
               "value": "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV"
             }
           ],
-          "description": " selects the type of memory requirement being queried. {#0#} returns the memory requirements for the object itself. ename:VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV returns the memory requirements for the scratch memory when doing a build. {#1#} returns the memory requirements for the scratch memory when doing an update."
+          "description": " selects the type of memory requirement being queried. {#0#} returns the memory requirements for the object itself. {#1#} returns the memory requirements for the scratch memory when doing a build. {#2#} returns the memory requirements for the scratch memory when doing an update."
         }
       },
       {
@@ -66400,9 +66632,13 @@
             {
               "kind": "pname",
               "value": "format"
+            },
+            {
+              "kind": "pname",
+              "value": "drmFormatModifier"
             }
           ],
-          "description": " is the number of _memory planes_ in any image created with {#0#} and pname:drmFormatModifier. An image's _memory planecount_ is distinct from its _format planecount_, as explained below."
+          "description": " is the number of _memory planes_ in any image created with {#0#} and {#1#}. An image's _memory planecount_ is distinct from its _format planecount_, as explained below."
         }
       },
       {
@@ -66427,9 +66663,13 @@
             {
               "kind": "pname",
               "value": "format"
+            },
+            {
+              "kind": "pname",
+              "value": "drmFormatModifier"
             }
           ],
-          "description": " is a bitmask of {#0#} that are supported by any image created with {#1#} and pname:drmFormatModifier."
+          "description": " is a bitmask of {#0#} that are supported by any image created with {#1#} and {#2#}."
         }
       }
     ],
@@ -66495,6 +66735,10 @@
               "value": "VkImageDrmFormatModifierExplicitCreateInfoEXT"
             },
             {
+              "kind": "slink",
+              "value": "VkImageDrmFormatModifierListCreateInfoEXT"
+            },
+            {
               "kind": "pname",
               "value": "modifier"
             },
@@ -66503,7 +66747,7 @@
               "value": "pModifiers"
             }
           ],
-          "description": " is the image's _Linux DRM format modifier_, corresponding to {#0#}::{#1#} or to slink:VkImageDrmFormatModifierListCreateInfoEXT::{#2#}."
+          "description": " is the image's _Linux DRM format modifier_, corresponding to {#0#}::{#2#} or to {#1#}::{#3#}."
         }
       },
       {
@@ -67031,6 +67275,10 @@
               "value": "VkRenderPassCreateInfo"
             },
             {
+              "kind": "sname",
+              "value": "VkRenderPassFragmentDensityMapCreateInfoEXT"
+            },
+            {
               "kind": "ename",
               "value": "VK_ATTACHMENT_UNUSED"
             },
@@ -67043,7 +67291,7 @@
               "value": "fragmentDensityMapAttachment"
             }
           ],
-          "description": " specifies whether the implementation supports render passes with a fragment density map attachment. If this feature is not enabled and the {#3#} chain of {#1#} contains sname:VkRenderPassFragmentDensityMapCreateInfoEXT, {#4#} {#0#} be {#2#}."
+          "description": " specifies whether the implementation supports render passes with a fragment density map attachment. If this feature is not enabled and the {#4#} chain of {#1#} contains {#2#}, {#5#} {#0#} be {#3#}."
         }
       },
       {
@@ -73735,10 +73983,14 @@
             },
             {
               "kind": "pname",
+              "value": "queryCount"
+            },
+            {
+              "kind": "pname",
               "value": "pipelineStatistics"
             }
           ],
-          "description": " is the number of queries. {#1#} and pname:queryCount together define a range of queries. For pipeline statistics queries, each query index in the pool contains one integer value for each bit that is enabled in {#0#}::{#2#} when the pool is created."
+          "description": " is the number of queries. {#1#} and {#2#} together define a range of queries. For pipeline statistics queries, each query index in the pool contains one integer value for each bit that is enabled in {#0#}::{#3#} when the pool is created."
         }
       },
       {
@@ -77042,9 +77294,13 @@
             {
               "kind": "pname",
               "value": "commandBufferCount"
+            },
+            {
+              "kind": "pname",
+              "value": "pAllocateInfo"
             }
           ],
-          "description": " is an array of {#1#} handles in which the resulting command buffer objects are returned. The array {#0#} be at least the length specified by the {#2#} member of pname:pAllocateInfo. Each allocated command buffer begins in the initial state."
+          "description": " is an array of {#1#} handles in which the resulting command buffer objects are returned. The array {#0#} be at least the length specified by the {#2#} member of {#3#}. Each allocated command buffer begins in the initial state."
         }
       }
     ],
@@ -79949,9 +80205,13 @@
             {
               "kind": "ename",
               "value": "VK_IMAGE_LAYOUT_GENERAL"
+            },
+            {
+              "kind": "ename",
+              "value": "VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL"
             }
           ],
-          "description": " specifies the current layout of the image subresource ranges to be cleared, and {#0#} be {#1#} or ename:VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL."
+          "description": " specifies the current layout of the image subresource ranges to be cleared, and {#0#} be {#1#} or {#2#}."
         }
       },
       {
@@ -81346,9 +81606,13 @@
             {
               "kind": "pname",
               "value": "firstQuery"
+            },
+            {
+              "kind": "pname",
+              "value": "queryCount"
             }
           ],
-          "description": " is the number of queries. {#0#} and pname:queryCount together define a range of queries."
+          "description": " is the number of queries. {#0#} and {#1#} together define a range of queries."
         }
       },
       {
@@ -85308,9 +85572,13 @@
             {
               "kind": "pname",
               "value": "countBuffer"
+            },
+            {
+              "kind": "pname",
+              "value": "maxDrawCount"
             }
           ],
-          "description": " specifies the maximum number of draws that will be executed. The actual number of executed draw calls is the minimum of the count specified in {#0#} and pname:maxDrawCount."
+          "description": " specifies the maximum number of draws that will be executed. The actual number of executed draw calls is the minimum of the count specified in {#0#} and {#1#}."
         }
       },
       {
@@ -85432,9 +85700,13 @@
             {
               "kind": "pname",
               "value": "countBuffer"
+            },
+            {
+              "kind": "pname",
+              "value": "maxDrawCount"
             }
           ],
-          "description": " specifies the maximum number of draws that will be executed. The actual number of executed draw calls is the minimum of the count specified in {#0#} and pname:maxDrawCount."
+          "description": " specifies the maximum number of draws that will be executed. The actual number of executed draw calls is the minimum of the count specified in {#0#} and {#1#}."
         }
       },
       {
@@ -85949,14 +86221,22 @@
             },
             {
               "kind": "sname",
+              "value": "VkObjectTableDescriptorSetEntryNVX"
+            },
+            {
+              "kind": "sname",
               "value": "VkObjectTableVertexBufferEntryNVX"
+            },
+            {
+              "kind": "sname",
+              "value": "VkObjectTableIndexBufferEntryNVX"
             },
             {
               "kind": "sname",
               "value": "VkObjectTablePushConstantEntryNVX"
             }
           ],
-          "description": " provides an array for detailed binding informations, each array element is a reference to a struct of type {#0#}, sname:VkObjectTableDescriptorSetEntryNVX, {#1#}, sname:VkObjectTableIndexBufferEntryNVX or {#2#} (see below for details)."
+          "description": " provides an array for detailed binding informations, each array element is a reference to a struct of type {#0#}, {#1#}, {#2#}, {#3#} or {#4#} (see below for details)."
         }
       },
       {
@@ -89548,10 +89828,14 @@
             },
             {
               "kind": "slink",
+              "value": "VkDescriptorBufferInfo"
+            },
+            {
+              "kind": "slink",
               "value": "VkBufferView"
             }
           ],
-          "description": " is a reference to memory which contains one or more structures of {#0#}, slink:VkDescriptorBufferInfo, or {#1#} used to write the descriptors."
+          "description": " is a reference to memory which contains one or more structures of {#0#}, {#1#}, or {#2#} used to write the descriptors."
         }
       }
     ],
@@ -93787,9 +94071,13 @@
             {
               "kind": "pname",
               "value": "countBuffer"
+            },
+            {
+              "kind": "pname",
+              "value": "maxDrawCount"
             }
           ],
-          "description": " specifies the maximum number of draws that will be executed. The actual number of executed draw calls is the minimum of the count specified in {#0#} and pname:maxDrawCount."
+          "description": " specifies the maximum number of draws that will be executed. The actual number of executed draw calls is the minimum of the count specified in {#0#} and {#1#}."
         }
       },
       {
@@ -93911,9 +94199,13 @@
             {
               "kind": "pname",
               "value": "countBuffer"
+            },
+            {
+              "kind": "pname",
+              "value": "maxDrawCount"
             }
           ],
-          "description": " specifies the maximum number of draws that will be executed. The actual number of executed draw calls is the minimum of the count specified in {#0#} and pname:maxDrawCount."
+          "description": " specifies the maximum number of draws that will be executed. The actual number of executed draw calls is the minimum of the count specified in {#0#} and {#1#}."
         }
       },
       {
@@ -94243,9 +94535,13 @@
             {
               "kind": "pname",
               "value": "pCounterBuffers"
+            },
+            {
+              "kind": "pname",
+              "value": "pCounterBufferOffsets"
             }
           ],
-          "description": " is the index of the first transform feedback buffer corresponding to {#0#}[0] and pname:pCounterBufferOffsets[0]."
+          "description": " is the index of the first transform feedback buffer corresponding to {#0#}[0] and {#1#}[0]."
         }
       },
       {
@@ -94377,9 +94673,13 @@
             {
               "kind": "pname",
               "value": "pCounterBuffers"
+            },
+            {
+              "kind": "pname",
+              "value": "pCounterBufferOffsets"
             }
           ],
-          "description": " is the index of the first transform feedback buffer corresponding to {#0#}[0] and pname:pCounterBufferOffsets[0]."
+          "description": " is the index of the first transform feedback buffer corresponding to {#0#}[0] and {#1#}[0]."
         }
       },
       {
@@ -94759,9 +95059,13 @@
             {
               "kind": "pname",
               "value": "counterBuffer"
+            },
+            {
+              "kind": "pname",
+              "value": "counterBufferOffset"
             }
           ],
-          "description": " is subtracted from the byte count read from the {#0#} at the pname:counterBufferOffset"
+          "description": " is subtracted from the byte count read from the {#0#} at the {#1#}"
         }
       },
       {
@@ -95391,9 +95695,13 @@
             {
               "kind": "pname",
               "value": "countBuffer"
+            },
+            {
+              "kind": "pname",
+              "value": "maxDrawCount"
             }
           ],
-          "description": " specifies the maximum number of draws that will be executed. The actual number of executed draw calls is the minimum of the count specified in {#0#} and pname:maxDrawCount."
+          "description": " specifies the maximum number of draws that will be executed. The actual number of executed draw calls is the minimum of the count specified in {#0#} and {#1#}."
         }
       },
       {

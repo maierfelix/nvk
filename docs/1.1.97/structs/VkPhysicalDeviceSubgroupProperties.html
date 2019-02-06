@@ -81,7 +81,7 @@ instanceCreateInfo.quadOperationsInAllStages = ;
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceSubgroupProperties.prototype.<vk-prototype-name>subgroupSize</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is the number of invocations in each subgroup. This will match any <<interfaces-builtin-variables-sgs, <i>SubgroupSize</i>>> decorated variable used in any shader module created on this device. <b>subgroupSize</b> is at least 1 if any of the physical device's queues support <b>VK_QUEUE_GRAPHICS_BIT</b> or ename:VK_QUEUE_COMPUTE_BIT.</vk-property-description>
+        <vk-property-description> is the number of invocations in each subgroup. This will match any <<interfaces-builtin-variables-sgs, <i>SubgroupSize</i>>> decorated variable used in any shader module created on this device. <b>subgroupSize</b> is at least 1 if any of the physical device's queues support <b>VK_QUEUE_GRAPHICS_BIT</b> or <b>VK_QUEUE_COMPUTE_BIT</b>.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceSubgroupProperties.prototype.supportedStages -->
       <vk-property-entry>
@@ -93,7 +93,7 @@ instanceCreateInfo.quadOperationsInAllStages = ;
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceSubgroupProperties.prototype.<vk-prototype-name>supportedOperations</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a bitmask of <b>VkSubgroupFeatureFlagBits</b> specifying the sets of subgroup operations supported on this device. <b>supportedOperations</b> will have the <b>VK_SUBGROUP_FEATURE_BASIC_BIT</b> bit set if any of the physical device's queues support <b>VK_QUEUE_GRAPHICS_BIT</b> or ename:VK_QUEUE_COMPUTE_BIT.</vk-property-description>
+        <vk-property-description> is a bitmask of <b>VkSubgroupFeatureFlagBits</b> specifying the sets of subgroup operations supported on this device. <b>supportedOperations</b> will have the <b>VK_SUBGROUP_FEATURE_BASIC_BIT</b> bit set if any of the physical device's queues support <b>VK_QUEUE_GRAPHICS_BIT</b> or <b>VK_QUEUE_COMPUTE_BIT</b>.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceSubgroupProperties.prototype.quadOperationsInAllStages -->
       <vk-property-entry>

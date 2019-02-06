@@ -251,7 +251,8 @@ function extractDescriptionMacros(desc) {
   let out = [];
   MACROS.map(rx => {
     let match = null;
-    while (match = rx.exec(desc)) {
+    let input = desc;
+    while (match = rx.exec(input)) {
       if (match[0] && match[1]) {
         let macro = {
           kind: match[1],
