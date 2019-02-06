@@ -56,10 +56,11 @@ function elementIsChildOf(el, root) {
 function loadSearchBar() {
   let html = ``;
   loadJSON(`${root}/search.json`).then(json => {
-    json.map(obj => {
+    json.map(arr => {
+      let [name, label, folder] = arr;
       let el = document.createElement("li");
-      let link = `${root}/${obj.folder}/${obj.name}.html`;
-      html += `<li label="${obj.label}"><a href="${link}">${obj.name}</a></li>`;
+      let link = `${root}/${folder}/${name}.html`;
+      html += `<li label="${label}"><a href="${link}">${name}</a></li>`;
     });
     $(`#search-list`).insertAdjacentHTML("beforeend", html);
   });
@@ -72,9 +73,10 @@ function loadCategories() {
       html += `<details>`;
       html += `<summary>${entry.category}</summary>`;
       html += `<ol>`;
-      entry.objects.map(obj => {
-        let link = `${root}/${obj.folder}/${obj.name}.html`;
-        html += `<li label="${obj.label}"><a href="${link}">${obj.name}</a></li>`;
+      entry.objects.map(arr => {
+        let [name, label, folder] = arr;
+        let link = `${root}/${folder}/${name}.html`;
+        html += `<li label="${label}"><a href="${link}">${name}</a></li>`;
       });
       html += `</ol>`;
       html += `</details>`;

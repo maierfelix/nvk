@@ -466,11 +466,11 @@ export default function(astReference, data, version) {
   {
     let out = [];
     objects.map(obj => {
-      out.push({
-        name: obj.name,
-        label: getObjectLabel(obj),
-        folder: getObjectFolder(obj)
-      });
+      out.push([
+        obj.name,
+        getObjectLabel(obj),
+        getObjectFolder(obj)
+      ]);
     });
     fs.writeFileSync(`${DOCS_DIR}/${version}/search.json`, JSON.stringify(out), `utf-8`);
   }
@@ -481,11 +481,11 @@ export default function(astReference, data, version) {
       let category = { category: name, objects: [] };
       let objects = getObjectsByCategory(name);
       objects.map(obj => {
-        category.objects.push({
-          name: obj.name,
-          label: getObjectLabel(obj),
-          folder: getObjectFolder(obj)
-        });
+        category.objects.push([
+          obj.name,
+          getObjectLabel(obj),
+          getObjectFolder(obj)
+        ]);
       });
       out.push(category);
     });
