@@ -84,6 +84,10 @@ const REPLACEMENTS = [
     with: "string"
   },
   {
+    replace: /null-terminated /gm,
+    with: ""
+  },
+  {
     replace: /an integer/gm,
     with: "a number"
   },

@@ -16927,7 +16927,7 @@
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [],
-          "description": " is a null-terminated string specifying the name of the extension."
+          "description": " is a string specifying the name of the extension."
         }
       },
       {
@@ -57685,7 +57685,7 @@
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [],
-          "description": " is a null-terminated string that identifies the particular message ID that is associated with the provided message. If the message corresponds to a validation layer message, then this string may contain the portion of the Vulkan specification that is believed to have been violated."
+          "description": " is a string that identifies the particular message ID that is associated with the provided message. If the message corresponds to a validation layer message, then this string may contain the portion of the Vulkan specification that is believed to have been violated."
         }
       },
       {
@@ -57715,7 +57715,7 @@
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [],
-          "description": " is a null-terminated string detailing the trigger conditions."
+          "description": " is a string detailing the trigger conditions."
         }
       },
       {
@@ -84913,7 +84913,7 @@
         "kind": "COMMAND_PARAM",
         "documentation": {
           "macros": [],
-          "description": " is a null-terminated string detailing the trigger conditions."
+          "description": " is a string detailing the trigger conditions."
         }
       }
     ],
