@@ -106,7 +106,7 @@ instanceCreateInfo.pPushConstantRanges = ;
       <vk-property-entry>
         <vk-property-prototype>VkPipelineLayoutCreateInfo.prototype.<vk-prototype-name>pPushConstantRanges</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkPushConstantRange.html">VkPushConstantRange]</a></vk-property-type></vk-property-type>
-        <vk-property-description> is an array of <b><a href="../structs/VkPushConstantRange.html">VkPushConstantRange</a></b> structures defining a set of push constant ranges for use in a single pipeline layout. In addition to descriptor set layouts, a pipeline layout also describes how many push constants can: be accessed by each stage of the pipeline.+[NOTE].Note====Push constants represent a high speed path to modify constant data inpipelines that is expected to outperform memory-backed resource updates.====</vk-property-description>
+        <vk-property-description> is an array of <b><a href="../structs/VkPushConstantRange.html">VkPushConstantRange</a></b> structures defining a set of push constant ranges for use in a single pipeline layout. In addition to descriptor set layouts, a pipeline layout also describes how many push constants <i>can</i> be accessed by each stage of the pipeline.+[NOTE].Note====Push constants represent a high speed path to modify constant data inpipelines that is expected to outperform memory-backed resource updates.====</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

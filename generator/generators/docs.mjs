@@ -397,6 +397,18 @@ function expandMacro(macro, macroIndex, text) {
     case "basetype":
       replacement = `<i>${value}</i>`;
     break;
+    case "can":
+    case "cannot":
+    case "may":
+    case "must":
+    case "should":
+    case "optional":
+      replacement = `<i>${kind}</i>`;
+    break;
+    case "required":
+    case "undefined":
+      replacement = `<b style="text-decoration:underline;">${kind}</b>`;
+    break;
   };
   if (replacement !== null) {
     text = text.replace(match[0], replacement);

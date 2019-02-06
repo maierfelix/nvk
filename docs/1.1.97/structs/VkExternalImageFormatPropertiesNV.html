@@ -67,7 +67,7 @@ instanceCreateInfo.compatibleHandleTypes = ;
       <vk-property-entry>
         <vk-property-prototype>VkExternalImageFormatPropertiesNV.prototype.<vk-prototype-name>imageFormatProperties</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkImageFormatProperties.html">VkImageFormatProperties</a></vk-property-type>
-        <vk-property-description> will be filled in as when calling <b><a href="../calls/vkGetPhysicalDeviceImageFormatProperties.html">vkGetPhysicalDeviceImageFormatProperties</a></b>, but the values returned may: vary depending on the external handle type requested.</vk-property-description>
+        <vk-property-description> will be filled in as when calling <b><a href="../calls/vkGetPhysicalDeviceImageFormatProperties.html">vkGetPhysicalDeviceImageFormatProperties</a></b>, but the values returned <i>may</i> vary depending on the external handle type requested.</vk-property-description>
       </vk-property-entry>
       <!-- VkExternalImageFormatPropertiesNV.prototype.externalMemoryFeatures -->
       <vk-property-entry>
@@ -79,13 +79,13 @@ instanceCreateInfo.compatibleHandleTypes = ;
       <vk-property-entry>
         <vk-property-prototype>VkExternalImageFormatPropertiesNV.prototype.<vk-prototype-name>exportFromImportedHandleTypes</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a bitmask of <b>VkExternalMemoryHandleTypeFlagBitsNV</b> containing a bit set for every external handle type that may: be used to create memory from which the handles of the type specified in <b><a href="../calls/vkGetPhysicalDeviceExternalImageFormatPropertiesNV.html">vkGetPhysicalDeviceExternalImageFormatPropertiesNV</a></b>::<b>externalHandleType</b> can: be exported, or 0 if the external memory handle type is 0.</vk-property-description>
+        <vk-property-description> is a bitmask of <b>VkExternalMemoryHandleTypeFlagBitsNV</b> containing a bit set for every external handle type that <i>may</i> be used to create memory from which the handles of the type specified in <b><a href="../calls/vkGetPhysicalDeviceExternalImageFormatPropertiesNV.html">vkGetPhysicalDeviceExternalImageFormatPropertiesNV</a></b>::<b>externalHandleType</b> <i>can</i> be exported, or 0 if the external memory handle type is 0.</vk-property-description>
       </vk-property-entry>
       <!-- VkExternalImageFormatPropertiesNV.prototype.compatibleHandleTypes -->
       <vk-property-entry>
         <vk-property-prototype>VkExternalImageFormatPropertiesNV.prototype.<vk-prototype-name>compatibleHandleTypes</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a bitmask of <b>VkExternalMemoryHandleTypeFlagBitsNV</b> containing a bit set for every external handle type that may: be specified simultaneously with the handle type specified by <b><a href="../calls/vkGetPhysicalDeviceExternalImageFormatPropertiesNV.html">vkGetPhysicalDeviceExternalImageFormatPropertiesNV</a></b>::<b>externalHandleType</b> when calling flink:vkAllocateMemory, or 0 if the external memory handle type is 0. <b>compatibleHandleTypes</b> will always contain <b><a href="../calls/vkGetPhysicalDeviceExternalImageFormatPropertiesNV.html">vkGetPhysicalDeviceExternalImageFormatPropertiesNV</a></b>::<b>externalHandleType</b></vk-property-description>
+        <vk-property-description> is a bitmask of <b>VkExternalMemoryHandleTypeFlagBitsNV</b> containing a bit set for every external handle type that <i>may</i> be specified simultaneously with the handle type specified by <b><a href="../calls/vkGetPhysicalDeviceExternalImageFormatPropertiesNV.html">vkGetPhysicalDeviceExternalImageFormatPropertiesNV</a></b>::<b>externalHandleType</b> when calling flink:vkAllocateMemory, or 0 if the external memory handle type is 0. <b>compatibleHandleTypes</b> will always contain <b><a href="../calls/vkGetPhysicalDeviceExternalImageFormatPropertiesNV.html">vkGetPhysicalDeviceExternalImageFormatPropertiesNV</a></b>::<b>externalHandleType</b></vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

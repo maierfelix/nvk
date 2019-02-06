@@ -17028,8 +17028,13 @@
         "jsType": "String",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is a string providing additional details that can: be used by the application to identify the layer."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " is a string providing additional details that {#0#} be used by the application to identify the layer."
         }
       }
     ],
@@ -17149,8 +17154,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " must: be the highest version of Vulkan that the application is designed to use, encoded as described in the <<fundamentals-versionnum,API Version Numbers and Semantics>> section."
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " {#0#} be the highest version of Vulkan that the application is designed to use, encoded as described in the <<fundamentals-versionnum,API Version Numbers and Semantics>> section."
         }
       }
     ],
@@ -17183,11 +17193,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "sname",
               "value": "VkAllocationCallbacks"
             }
           ],
-          "description": " is a value to be interpreted by the implementation of the callbacks. When any of the callbacks in {#0#} are called, the Vulkan implementation will pass this value as the first parameter to the callback. This value can: vary each time an allocator is passed into a command, even when the same object takes an allocator in multiple commands."
+          "description": " is a value to be interpreted by the implementation of the callbacks. When any of the callbacks in {#1#} are called, the Vulkan implementation will pass this value as the first parameter to the callback. This value {#0#} vary each time an allocator is passed into a command, even when the same object takes an allocator in multiple commands."
         }
       },
       {
@@ -17808,8 +17822,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is the unsigned integer count of queues in this queue family. Each queue family must: support at least one queue."
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " is the unsigned integer count of queues in this queue family. Each queue family {#0#} support at least one queue."
         }
       },
       {
@@ -17895,6 +17914,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "slink",
               "value": "VkMemoryType"
             },
@@ -17903,7 +17926,7 @@
               "value": "memoryHeaps"
             }
           ],
-          "description": " is an array of {#0#} structures describing the _memory types_ that can: be used to access memory allocated from the heaps specified by {#1#}."
+          "description": " is an array of {#1#} structures describing the _memory types_ that {#0#} be used to access memory allocated from the heaps specified by {#2#}."
         },
         "dynamicLength": "memoryTypeCount"
       },
@@ -17943,11 +17966,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "slink",
               "value": "VkMemoryHeap"
             }
           ],
-          "description": " is an array of {#0#} structures describing the _memory heaps_ from which memory can: be allocated."
+          "description": " is an array of {#1#} structures describing the _memory heaps_ from which memory {#0#} be allocated."
         },
         "dynamicLength": "memoryHeapCount"
       }
@@ -18077,8 +18104,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is the size, in bytes, of the memory allocation required: for the resource."
+          "macros": [
+            {
+              "kind": "required",
+              "value": ""
+            }
+          ],
+          "description": " is the size, in bytes, of the memory allocation {#0#} for the resource."
         }
       },
       {
@@ -18093,8 +18125,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is the alignment, in bytes, of the offset within the allocation required: for the resource."
+          "macros": [
+            {
+              "kind": "required",
+              "value": ""
+            }
+          ],
+          "description": " is the alignment, in bytes, of the offset within the allocation {#0#} for the resource."
         }
       },
       {
@@ -18294,9 +18331,13 @@
             {
               "kind": "pname",
               "value": "formatProperties.flags"
+            },
+            {
+              "kind": "undefined",
+              "value": ""
             }
           ],
-          "description": " is the offset stride between each array-layer's mip tail, if {#1#} does not contain {#0#} (otherwise the value is undefined:)."
+          "description": " is the offset stride between each array-layer's mip tail, if {#1#} does not contain {#0#} (otherwise the value is {#2#})."
         }
       }
     ],
@@ -18347,6 +18388,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "slink",
               "value": "VkPhysicalDeviceMemoryProperties"
             },
@@ -18355,7 +18400,7 @@
               "value": "memoryHeapCount"
             }
           ],
-          "description": " describes which memory heap this memory type corresponds to, and must: be less than {#1#} from the {#0#} structure."
+          "description": " describes which memory heap this memory type corresponds to, and {#0#} be less than {#2#} from the {#1#} structure."
         }
       }
     ],
@@ -18642,6 +18687,14 @@
         "documentation": {
           "macros": [
             {
+              "kind": "may",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "pname",
               "value": "maxMipLevels"
             },
@@ -18654,7 +18707,7 @@
               "value": "maxExtent.depth"
             }
           ],
-          "description": " is the maximum number of mipmap levels. {#0#} must: be equal to the number of levels in the complete mipmap chain based on the [eq]#{#1#}#, [eq]#pname:maxExtent.height#, and [eq]#{#2#}#, except when one of the following conditions is true, in which case it may: instead be `1`:"
+          "description": " is the maximum number of mipmap levels. {#2#} {#1#} be equal to the number of levels in the complete mipmap chain based on the [eq]#{#3#}#, [eq]#pname:maxExtent.height#, and [eq]#{#4#}#, except when one of the following conditions is true, in which case it {#0#} instead be `1`:"
         }
       },
       {
@@ -22450,8 +22503,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is the maximum number of descriptor sets that can: be allocated from the pool."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " is the maximum number of descriptor sets that {#0#} be allocated from the pool."
         }
       },
       {
@@ -22868,11 +22926,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "slink",
               "value": "VkSpecializationInfo"
             }
           ],
-          "description": " is a reference to {#0#}, as described in <<pipelines-specialization-constants,Specialization Constants>>, and can: be <i>null</i>."
+          "description": " is a reference to {#1#}, as described in <<pipelines-specialization-constants,Specialization Constants>>, and {#0#} be <i>null</i>."
         }
       }
     ],
@@ -23626,8 +23688,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is the number of <<fragops-scissor,scissors>> and must: match the number of viewports."
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " is the number of <<fragops-scissor,scissors>> and {#0#} match the number of viewports."
         }
       },
       {
@@ -24009,8 +24076,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " can: be used to enable <<primsrast-sampleshading,Sample Shading>>."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " {#0#} be used to enable <<primsrast-sampleshading,Sample Shading>>."
         }
       },
       {
@@ -24363,6 +24435,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "sname",
               "value": "VkPipelineColorBlendAttachmentState"
             },
@@ -24375,7 +24451,7 @@
               "value": "colorAttachmentCount"
             }
           ],
-          "description": " is the number of {#0#} elements in {#1#}. This value must: equal the {#2#} for the subpass in which this pipeline is used."
+          "description": " is the number of {#1#} elements in {#2#}. This value {#0#} equal the {#3#} for the subpass in which this pipeline is used."
         }
       },
       {
@@ -25297,8 +25373,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is a set of stage flags describing the shader stages that will access a range of push constants. If a particular stage is not included in the range, then accessing members of that range of push constants from the corresponding shader stage will return undefined: values."
+          "macros": [
+            {
+              "kind": "undefined",
+              "value": ""
+            }
+          ],
+          "description": " is a set of stage flags describing the shader stages that will access a range of push constants. If a particular stage is not included in the range, then accessing members of that range of push constants from the corresponding shader stage will return {#0#} values."
         }
       },
       {
@@ -25325,11 +25406,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "pname",
               "value": "offset"
             }
           ],
-          "description": " are the start offset and size, respectively, consumed by the range. Both {#0#} and pname:size are in units of bytes and must: be a multiple of 4. The layout of the push constant variables is specified in the shader."
+          "description": " are the start offset and size, respectively, consumed by the range. Both {#1#} and pname:size are in units of bytes and {#0#} be a multiple of 4. The layout of the push constant variables is specified in the shader."
         }
       }
     ],
@@ -25466,11 +25551,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "sname",
               "value": "VkPushConstantRange"
             }
           ],
-          "description": " is an array of {#0#} structures defining a set of push constant ranges for use in a single pipeline layout. In addition to descriptor set layouts, a pipeline layout also describes how many push constants can: be accessed by each stage of the pipeline.+[NOTE].Note====Push constants represent a high speed path to modify constant data inpipelines that is expected to outperform memory-backed resource updates.===="
+          "description": " is an array of {#1#} structures defining a set of push constant ranges for use in a single pipeline layout. In addition to descriptor set layouts, a pipeline layout also describes how many push constants {#0#} be accessed by each stage of the pipeline.+[NOTE].Note====Push constants represent a high speed path to modify constant data inpipelines that is expected to outperform memory-backed resource updates.===="
         }
       }
     ],
@@ -25556,8 +25645,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " must: be equal."
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " {#0#} be equal."
         }
       },
       {
@@ -25641,11 +25735,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE"
             }
           ],
-          "description": " must: each be either {#0#} or ename:VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER."
+          "description": " {#0#} each be either {#1#} or ename:VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER."
         }
       },
       {
@@ -25787,8 +25885,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " must: be zero."
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " {#0#} be zero."
         }
       },
       {
@@ -25931,8 +26034,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " designates a queue family as described in section <<devsandqueues-queueprops,Queue Family Properties>>. All command buffers allocated from this command pool must: be submitted on queues from the same queue family."
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " designates a queue family as described in section <<devsandqueues-queueprops,Queue Family Properties>>. All command buffers allocated from this command pool {#0#} be submitted on queues from the same queue family."
         }
       }
     ],
@@ -26096,6 +26204,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "sname",
               "value": "VkCommandBuffer"
             },
@@ -26112,7 +26224,7 @@
               "value": "renderPass"
             }
           ],
-          "description": " is a {#2#} object defining which render passes the {#0#} will be <<renderpass-compatibility, compatible>> with and can: be executed within. If the {#1#} will not be executed within a render pass instance, {#3#} is ignored."
+          "description": " is a {#3#} object defining which render passes the {#1#} will be <<renderpass-compatibility, compatible>> with and {#0#} be executed within. If the {#2#} will not be executed within a render pass instance, {#4#} is ignored."
         }
       },
       {
@@ -26157,6 +26269,14 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "may",
+              "value": ""
+            },
+            {
               "kind": "sname",
               "value": "VkCommandBuffer"
             },
@@ -26173,7 +26293,7 @@
               "value": "VK_NULL_HANDLE"
             }
           ],
-          "description": " optionally refers to the {#2#} object that the {#0#} will be rendering to if it is executed within a render pass instance. It can: be {#3#} if the framebuffer is not known, or if the {#1#} will not be executed within a render pass instance.+[NOTE].Note====Specifying the exact framebuffer that the secondary command buffer will beexecuted with may: result in better performance at command buffer executiontime.===="
+          "description": " optionally refers to the {#4#} object that the {#2#} will be rendering to if it is executed within a render pass instance. It {#0#} be {#5#} if the framebuffer is not known, or if the {#3#} will not be executed within a render pass instance.+[NOTE].Note====Specifying the exact framebuffer that the secondary command buffer will beexecuted with {#1#} result in better performance at command buffer executiontime.===="
         }
       },
       {
@@ -26191,6 +26311,18 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_TRUE"
             },
@@ -26199,7 +26331,7 @@
               "value": "VK_FALSE"
             }
           ],
-          "description": " specifies whether the command buffer can: be executed while an occlusion query is active in the primary command buffer. If this is {#0#}, then this command buffer can: be executed whether the primary command buffer has an occlusion query active or not. If this is {#1#}, then the primary command buffer must: not have an occlusion query active."
+          "description": " specifies whether the command buffer {#0#} be executed while an occlusion query is active in the primary command buffer. If this is {#3#}, then this command buffer {#1#} be executed whether the primary command buffer has an occlusion query active or not. If this is {#4#}, then the primary command buffer {#2#} not have an occlusion query active."
         }
       },
       {
@@ -26218,6 +26350,18 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_QUERY_CONTROL_PRECISE_BIT"
             },
@@ -26226,7 +26370,7 @@
               "value": "VK_QUERY_CONTROL_PRECISE_BIT"
             }
           ],
-          "description": " specifies the query flags that can: be used by an active occlusion query in the primary command buffer when this secondary command buffer is executed. If this value includes the {#0#} bit, then the active query can: return boolean results or actual sample counts. If this bit is not set, then the active query must: not use the {#1#} bit."
+          "description": " specifies the query flags that {#0#} be used by an active occlusion query in the primary command buffer when this secondary command buffer is executed. If this value includes the {#3#} bit, then the active query {#1#} return boolean results or actual sample counts. If this bit is not set, then the active query {#2#} not use the {#4#} bit."
         }
       },
       {
@@ -26245,11 +26389,23 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "elink",
               "value": "VkQueryPipelineStatisticFlagBits"
             }
           ],
-          "description": " is a bitmask of {#0#} specifying the set of pipeline statistics that can: be counted by an active query in the primary command buffer when this secondary command buffer is executed. If this value includes a given bit, then this command buffer can: be executed whether the primary command buffer has a pipeline statistics query active that includes this bit or not. If this value excludes a given bit, then the active pipeline statistics query must: not be from a query pool that counts that statistic."
+          "description": " is a bitmask of {#3#} specifying the set of pipeline statistics that {#0#} be counted by an active query in the primary command buffer when this secondary command buffer is executed. If this value includes a given bit, then this command buffer {#1#} be executed whether the primary command buffer has a pipeline statistics query active that includes this bit or not. If this value excludes a given bit, then the active pipeline statistics query {#2#} not be from a query pool that counts that statistic."
         }
       }
     ],
@@ -26822,8 +26978,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is the layout the attachment image subresource will be transitioned to when a render pass instance ends. During a render pass instance, an attachment can: use a different layout in each subpass, if desired."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " is the layout the attachment image subresource will be transitioned to when a render pass instance ends. During a render pass instance, an attachment {#0#} use a different layout in each subpass, if desired."
         }
       }
     ],
@@ -27079,8 +27240,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " render pass attachment indices identifying attachments that are not used by this subpass, but whose contents must: be preserved throughout the subpass."
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " render pass attachment indices identifying attachments that are not used by this subpass, but whose contents {#0#} be preserved throughout the subpass."
         }
       },
       {
@@ -27612,6 +27778,14 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "sname",
               "value": "VkDescriptorBufferInfo"
             },
@@ -27624,7 +27798,7 @@
               "value": "range"
             }
           ],
-          "description": " specifies that accesses to buffers are bounds-checked against the range of the buffer descriptor (as determined by {#0#}::{#1#}, sname:VkBufferViewCreateInfo::{#2#}, or the size of the buffer). Out of bounds accesses must: not cause application termination, and the effects of shader loads, stores, and atomics must: conform to an implementation-dependent behavior as described below."
+          "description": " specifies that accesses to buffers are bounds-checked against the range of the buffer descriptor (as determined by {#2#}::{#3#}, sname:VkBufferViewCreateInfo::{#4#}, or the size of the buffer). Out of bounds accesses {#0#} not cause application termination, and the effects of shader loads, stores, and atomics {#1#} conform to an implementation-dependent behavior as described below."
         }
       },
       {
@@ -28408,11 +28582,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_TRUE"
             }
           ],
-          "description": " specifies whether the physical device can: consistently access non-resident regions of a resource. If this property is {#0#}, access to non-resident regions of resources will be guaranteed to return values as if the resource were populated with 0; writes to non-resident regions will be discarded."
+          "description": " specifies whether the physical device {#0#} consistently access non-resident regions of a resource. If this property is {#1#}, access to non-resident regions of resources will be guaranteed to return values as if the resource were populated with 0; writes to non-resident regions will be discarded."
         }
       }
     ],
@@ -28562,11 +28740,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "sname",
               "value": "VkDeviceMemory"
             }
           ],
-          "description": " is the granularity, in bytes, at which buffer or linear image resources, and optimal image resources can: be bound to adjacent offsets in the same {#0#} object without aliasing. See <<resources-bufferimagegranularity,Buffer-Image Granularity>> for more details."
+          "description": " is the granularity, in bytes, at which buffer or linear image resources, and optimal image resources {#0#} be bound to adjacent offsets in the same {#1#} object without aliasing. See <<resources-bufferimagegranularity,Buffer-Image Granularity>> for more details."
         }
       },
       {
@@ -28598,6 +28780,14 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "pname",
               "value": "maxBoundDescriptorSets"
             },
@@ -28606,7 +28796,7 @@
               "value": "DescriptorSet"
             }
           ],
-          "description": " is the maximum number of descriptor sets that can: be simultaneously used by a pipeline. All {#1#} decorations in shader modules must: have a value less than {#0#}. See <<descriptorsets-sets>>."
+          "description": " is the maximum number of descriptor sets that {#0#} be simultaneously used by a pipeline. All {#3#} decorations in shader modules {#1#} have a value less than {#2#}. See <<descriptorsets-sets>>."
         }
       },
       {
@@ -28622,6 +28812,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_DESCRIPTOR_TYPE_SAMPLER"
             },
@@ -28630,7 +28824,7 @@
               "value": "VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT"
             }
           ],
-          "description": " is the maximum number of samplers that can: be accessible to a single shader stage in a pipeline layout. Descriptors with a type of {#0#} or ename:VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER count against this limit. Only descriptors in descriptor set layouts created without the {#1#} bit set count against this limit."
+          "description": " is the maximum number of samplers that {#0#} be accessible to a single shader stage in a pipeline layout. Descriptors with a type of {#1#} or ename:VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER count against this limit. Only descriptors in descriptor set layouts created without the {#2#} bit set count against this limit."
         }
       },
       {
@@ -30039,11 +30233,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "pname",
               "value": "layers"
             }
           ],
-          "description": " define the dimensions of the framebuffer. If the render pass uses multiview, then {#0#} must: be one and each attachment requires a number of layers that is greater than the maximum bit index set in the view mask in the subpasses in which it is used."
+          "description": " define the dimensions of the framebuffer. If the render pass uses multiview, then {#1#} {#0#} be one and each attachment requires a number of layers that is greater than the maximum bit index set in the view mask in the subpasses in which it is used."
         }
       }
     ],
@@ -30488,11 +30686,19 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "pname",
               "value": "display"
             }
           ],
-          "description": " is a reference to a <i>null</i>-terminated string containing the name of the display. Generally, this will be the name provided by the display's EDID. It can: be <i>null</i> if no suitable name is available. If not <i>null</i>, the memory it reference to must: remain accessible as long as {#0#} is valid."
+          "description": " is a reference to a <i>null</i>-terminated string containing the name of the display. Generally, this will be the name provided by the display's EDID. It {#0#} be <i>null</i> if no suitable name is available. If not <i>null</i>, the memory it reference to {#1#} remain accessible as long as {#2#} is valid."
         }
       },
       {
@@ -30781,8 +30987,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is reserved for future use, and must: be zero."
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " is reserved for future use, and {#0#} be zero."
         }
       },
       {
@@ -30798,6 +31009,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "slink",
               "value": "VkDisplayModeParametersKHR"
             },
@@ -30806,7 +31021,7 @@
               "value": "VK_ERROR_INITIALIZATION_FAILED"
             }
           ],
-          "description": " is a {#0#} structure describing the display parameters to use in creating the new mode. If the parameters are not compatible with the specified display, the implementation must: return {#1#}."
+          "description": " is a {#1#} structure describing the display parameters to use in creating the new mode. If the parameters are not compatible with the specified display, the implementation {#0#} return {#2#}."
         }
       }
     ],
@@ -30873,6 +31088,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "pname",
               "value": "x"
             },
@@ -30897,7 +31116,7 @@
               "value": "minSrcPosition"
             }
           ],
-          "description": " is the maximum source rectangle offset supported by this plane using the specified mode. The {#0#} and {#1#} components of {#2#} must: each be greater than or equal to the {#3#} and {#4#} components of {#5#}, respectively."
+          "description": " is the maximum source rectangle offset supported by this plane using the specified mode. The {#1#} and {#2#} components of {#3#} {#0#} each be greater than or equal to the {#4#} and {#5#} components of {#6#}, respectively."
         }
       },
       {
@@ -31034,8 +31253,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is reserved for future use, and must: be zero."
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " is reserved for future use, and {#0#} be zero."
         }
       },
       {
@@ -31234,11 +31458,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "sname",
               "value": "VkDisplayPresentInfoKHR"
             }
           ],
-          "description": " is a rectangular region of pixels to present. It must: be a subset of the image being presented. If {#0#} is not specified, this region will be assumed to be the entire presentable image."
+          "description": " is a rectangular region of pixels to present. It {#0#} be a subset of the image being presented. If {#1#} is not specified, this region will be assumed to be the entire presentable image."
         }
       },
       {
@@ -31316,11 +31544,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "may",
+              "value": ""
+            },
+            {
               "kind": "pname",
               "value": "minImageCount"
             }
           ],
-          "description": " is the maximum number of images the specified device supports for a swapchain created for the surface, and will be either 0, or greater than or equal to {#0#}. A value of 0 means that there is no limit on the number of images, though there may: be limits related to the total amount of memory used by presentable images."
+          "description": " is the maximum number of images the specified device supports for a swapchain created for the surface, and will be either 0, or greater than or equal to {#1#}. A value of 0 means that there is no limit on the number of images, though there {#0#} be limits related to the total amount of memory used by presentable images."
         }
       },
       {
@@ -31417,8 +31649,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is the maximum number of layers presentable images can: have for a swapchain created for this device and surface, and will be at least one."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " is the maximum number of layers presentable images {#0#} have for a swapchain created for this device and surface, and will be at least one."
         }
       },
       {
@@ -31483,11 +31720,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "elink",
               "value": "VkCompositeAlphaFlagBitsKHR"
             }
           ],
-          "description": " is a bitmask of {#0#}, representing the alpha compositing modes supported by the presentation engine for the surface on the specified device, and at least one bit will be set. Opaque composition can: be achieved in any alpha compositing mode by either using an image format that has no alpha component, or by ensuring that all pixels in the presentable images have an alpha value of 1.0."
+          "description": " is a bitmask of {#1#}, representing the alpha compositing modes supported by the presentation engine for the surface on the specified device, and at least one bit will be set. Opaque composition {#0#} be achieved in any alpha compositing mode by either using an image format that has no alpha component, or by ensuring that all pixels in the presentable images have an alpha value of 1.0."
         }
       },
       {
@@ -31506,6 +31747,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_PRESENT_MODE_IMMEDIATE_KHR"
             },
@@ -31522,7 +31767,7 @@
               "value": "VkPresentModeKHR"
             }
           ],
-          "description": " is a bitmask of {#2#} representing the ways the application can: use the presentable images of a swapchain created with {#3#} set to {#0#}, ename:VK_PRESENT_MODE_MAILBOX_KHR, {#1#} or ename:VK_PRESENT_MODE_FIFO_RELAXED_KHR"
+          "description": " is a bitmask of {#3#} representing the ways the application {#0#} use the presentable images of a swapchain created with {#4#} set to {#1#}, ename:VK_PRESENT_MODE_MAILBOX_KHR, {#2#} or ename:VK_PRESENT_MODE_FIFO_RELAXED_KHR"
         }
       }
     ],
@@ -32614,8 +32859,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is the number of semaphores to wait for before issuing the present request. The number may: be zero."
+          "macros": [
+            {
+              "kind": "may",
+              "value": ""
+            }
+          ],
+          "description": " is the number of semaphores to wait for before issuing the present request. The number {#0#} be zero."
         }
       },
       {
@@ -32665,6 +32915,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "slink",
               "value": "VkSwapchainKHR"
             },
@@ -32673,7 +32927,7 @@
               "value": "swapchainCount"
             }
           ],
-          "description": " is an array of {#0#} objects with {#1#} entries. A given swapchain must: not appear in this list more than once."
+          "description": " is an array of {#1#} objects with {#2#} entries. A given swapchain {#0#} not appear in this list more than once."
         }
       },
       {
@@ -32725,6 +32979,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "elink",
               "value": "VkResult"
             },
@@ -32749,7 +33007,7 @@
               "value": "pSwapchains"
             }
           ],
-          "description": " is an array of {#0#} typed elements with {#2#} entries. Applications that do not need per-swapchain results can: use <i>null</i> for {#3#}. If non-<i>null</i>, each entry in {#4#} will be set to the {#1#} for presenting the swapchain corresponding to the same index in {#5#}."
+          "description": " is an array of {#1#} typed elements with {#3#} entries. Applications that do not need per-swapchain results {#0#} use <i>null</i> for {#4#}. If non-<i>null</i>, each entry in {#5#} will be set to the {#2#} for presenting the swapchain corresponding to the same index in {#6#}."
         }
       }
     ],
@@ -33468,11 +33726,19 @@
         "documentation": {
           "macros": [
             {
+              "kind": "may",
+              "value": ""
+            },
+            {
+              "kind": "optional",
+              "value": ""
+            },
+            {
               "kind": "pname",
               "value": "color"
             }
           ],
-          "description": " is an optional: RGBA color value that can be associated with the marker. A particular implementation may: choose to ignore this color value. The values contain RGBA values in order, in the range 0.0 to 1.0. If all elements in {#0#} are set to 0.0 then it is ignored."
+          "description": " is an {#1#} RGBA color value that can be associated with the marker. A particular implementation {#0#} choose to ignore this color value. The values contain RGBA values in order, in the range 0.0 to 1.0. If all elements in {#2#} are set to 0.0 then it is ignored."
         }
       }
     ],
@@ -33721,11 +33987,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "may",
+              "value": ""
+            },
+            {
               "kind": "flink",
               "value": "vkGetPhysicalDeviceImageFormatProperties"
             }
           ],
-          "description": " will be filled in as when calling {#0#}, but the values returned may: vary depending on the external handle type requested."
+          "description": " will be filled in as when calling {#1#}, but the values returned {#0#} vary depending on the external handle type requested."
         }
       },
       {
@@ -33775,6 +34045,14 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "may",
+              "value": ""
+            },
+            {
               "kind": "flink",
               "value": "vkGetPhysicalDeviceExternalImageFormatPropertiesNV"
             },
@@ -33787,7 +34065,7 @@
               "value": "externalHandleType"
             }
           ],
-          "description": " is a bitmask of {#1#} containing a bit set for every external handle type that may: be used to create memory from which the handles of the type specified in {#0#}::{#2#} can: be exported, or 0 if the external memory handle type is 0."
+          "description": " is a bitmask of {#3#} containing a bit set for every external handle type that {#1#} be used to create memory from which the handles of the type specified in {#2#}::{#4#} {#0#} be exported, or 0 if the external memory handle type is 0."
         }
       },
       {
@@ -33805,6 +34083,10 @@
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [
+            {
+              "kind": "may",
+              "value": ""
+            },
             {
               "kind": "flink",
               "value": "vkGetPhysicalDeviceExternalImageFormatPropertiesNV"
@@ -33830,7 +34112,7 @@
               "value": "externalHandleType"
             }
           ],
-          "description": " is a bitmask of {#2#} containing a bit set for every external handle type that may: be specified simultaneously with the handle type specified by {#0#}::{#3#} when calling flink:vkAllocateMemory, or 0 if the external memory handle type is 0. {#4#} will always contain {#1#}::{#5#}"
+          "description": " is a bitmask of {#3#} containing a bit set for every external handle type that {#0#} be specified simultaneously with the handle type specified by {#1#}::{#4#} when calling flink:vkAllocateMemory, or 0 if the external memory handle type is 0. {#5#} will always contain {#2#}::{#6#}"
         }
       }
     ],
@@ -33966,6 +34248,14 @@
         "documentation": {
           "macros": [
             {
+              "kind": "may",
+              "value": ""
+            },
+            {
+              "kind": "may",
+              "value": ""
+            },
+            {
               "kind": "flink",
               "value": "vkGetPhysicalDeviceExternalImageFormatPropertiesNV"
             },
@@ -33974,7 +34264,7 @@
               "value": "VkExternalMemoryHandleTypeFlagBitsNV"
             }
           ],
-          "description": " is a bitmask of {#1#} specifying one or more memory handle types that may: be exported. Multiple handle types may: be requested for the same allocation as long as they are compatible, as reported by {#0#}."
+          "description": " is a bitmask of {#3#} specifying one or more memory handle types that {#0#} be exported. Multiple handle types {#1#} be requested for the same allocation as long as they are compatible, as reported by {#2#}."
         }
       }
     ],
@@ -34997,6 +35287,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "sname",
               "value": "VkCommandBuffer"
             },
@@ -35009,7 +35303,7 @@
               "value": "targetCommandBuffer"
             }
           ],
-          "description": " can: be the secondary {#1#} in which the commands should be recorded. If {#2#} is <i>null</i> an implicit reservation as well as execution takes place on the processing {#0#}."
+          "description": " {#0#} be the secondary {#2#} in which the commands should be recorded. If {#3#} is <i>null</i> an implicit reservation as well as execution takes place on the processing {#1#}."
         }
       },
       {
@@ -35026,6 +35320,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "slink",
               "value": "VkBuffer"
             },
@@ -35034,7 +35332,7 @@
               "value": "uint32_t"
             }
           ],
-          "description": " can: be {#0#} from which the actual amount of sequences is sourced from as {#1#} value."
+          "description": " {#0#} be {#1#} from which the actual amount of sequences is sourced from as {#2#} value."
         }
       },
       {
@@ -35072,6 +35370,14 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_INDIRECT_COMMANDS_LAYOUT_USAGE_INDEXED_SEQUENCES_BIT_NVX"
             },
@@ -35088,7 +35394,7 @@
               "value": "uint32_t"
             }
           ],
-          "description": " must: be set if {#1#}'s {#0#} is set and provides the used sequence indices as {#3#} array. Otherwise it must: be {#2#}."
+          "description": " {#0#} be set if {#3#}'s {#2#} is set and provides the used sequence indices as {#5#} array. Otherwise it {#1#} be {#4#}."
         }
       },
       {
@@ -35198,11 +35504,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "slink",
               "value": "VkIndirectCommandsLayoutNVX"
             }
           ],
-          "description": " is the {#0#} that must: also be used at generation time."
+          "description": " is the {#1#} that {#0#} also be used at generation time."
         }
       },
       {
@@ -37768,11 +38078,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT_KHR"
             }
           ],
-          "description": " is the maximum number of descriptors that can: be used in a descriptor set created with {#0#} set."
+          "description": " is the maximum number of descriptors that {#0#} be used in a descriptor set created with {#1#} set."
         }
       }
     ],
@@ -38111,6 +38425,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "sname",
               "value": "VkRectLayerKHR"
             },
@@ -38123,7 +38441,7 @@
               "value": "pRectangles"
             }
           ],
-          "description": " is either <i>null</i> or a reference to an array of {#0#} structures. The {#1#} structure is the framebuffer coordinates, plus layer, of a portion of a presentable image that has changed and must: be presented. If non-<i>null</i>, each entry in {#2#} is a rectangle of the given image that has changed since the last image was presented to the given swapchain."
+          "description": " is either <i>null</i> or a reference to an array of {#1#} structures. The {#2#} structure is the framebuffer coordinates, plus layer, of a portion of a presentable image that has changed and {#0#} be presented. If non-<i>null</i>, each entry in {#3#} is a rectangle of the given image that has changed since the last image was presented to the given swapchain."
         }
       }
     ],
@@ -38181,11 +38499,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "pname",
               "value": "layer"
             }
           ],
-          "description": " is the layer of the image. For images with only one layer, the value of {#0#} must: be 0."
+          "description": " is the layer of the image. For images with only one layer, the value of {#1#} {#0#} be 0."
         }
       }
     ],
@@ -38252,8 +38574,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " specifies whether the implementation supports the SPIR-V `VariablePointers` capability. When this feature is not enabled, shader modules must: not declare the `VariablePointers` capability."
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " specifies whether the implementation supports the SPIR-V `VariablePointers` capability. When this feature is not enabled, shader modules {#0#} not declare the `VariablePointers` capability."
         }
       }
     ],
@@ -38322,8 +38649,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " specifies whether the implementation supports the SPIR-V `VariablePointers` capability. When this feature is not enabled, shader modules must: not declare the `VariablePointers` capability."
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " specifies whether the implementation supports the SPIR-V `VariablePointers` capability. When this feature is not enabled, shader modules {#0#} not declare the `VariablePointers` capability."
         }
       }
     ],
@@ -38384,6 +38716,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "elink",
               "value": "VkExternalMemoryHandleTypeFlagBits"
             },
@@ -38392,7 +38728,7 @@
               "value": "handleType"
             }
           ],
-          "description": " is a bitmask of {#0#} specifying which types of imported handle {#1#} can: be exported from."
+          "description": " is a bitmask of {#1#} specifying which types of imported handle {#2#} {#0#} be exported from."
         }
       },
       {
@@ -38411,6 +38747,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "elink",
               "value": "VkExternalMemoryHandleTypeFlagBits"
             },
@@ -38419,7 +38759,7 @@
               "value": "handleType"
             }
           ],
-          "description": " is a bitmask of {#0#} specifying handle types which can: be specified at the same time as {#1#} when creating an image compatible with external memory."
+          "description": " is a bitmask of {#1#} specifying handle types which {#0#} be specified at the same time as {#2#} when creating an image compatible with external memory."
         }
       }
     ],
@@ -38477,6 +38817,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "elink",
               "value": "VkExternalMemoryHandleTypeFlagBits"
             },
@@ -38485,7 +38829,7 @@
               "value": "handleType"
             }
           ],
-          "description": " is a bitmask of {#0#} specifying which types of imported handle {#1#} can: be exported from."
+          "description": " is a bitmask of {#1#} specifying which types of imported handle {#2#} {#0#} be exported from."
         }
       },
       {
@@ -38504,6 +38848,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "elink",
               "value": "VkExternalMemoryHandleTypeFlagBits"
             },
@@ -38512,7 +38860,7 @@
               "value": "handleType"
             }
           ],
-          "description": " is a bitmask of {#0#} specifying handle types which can: be specified at the same time as {#1#} when creating an image compatible with external memory."
+          "description": " is a bitmask of {#1#} specifying handle types which {#0#} be specified at the same time as {#2#} when creating an image compatible with external memory."
         }
       }
     ],
@@ -39781,11 +40129,19 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "elink",
               "value": "VkExternalMemoryHandleTypeFlagBits"
             }
           ],
-          "description": " is a bitmask of {#0#} specifying one or more memory handle types the application can: export from the resulting allocation. The application can: request multiple handle types for the same allocation."
+          "description": " is a bitmask of {#2#} specifying one or more memory handle types the application {#0#} export from the resulting allocation. The application {#1#} request multiple handle types for the same allocation."
         }
       }
     ],
@@ -39852,11 +40208,19 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "elink",
               "value": "VkExternalMemoryHandleTypeFlagBits"
             }
           ],
-          "description": " is a bitmask of {#0#} specifying one or more memory handle types the application can: export from the resulting allocation. The application can: request multiple handle types for the same allocation."
+          "description": " is a bitmask of {#2#} specifying one or more memory handle types the application {#0#} export from the resulting allocation. The application {#1#} request multiple handle types for the same allocation."
         }
       }
     ],
@@ -40109,8 +40473,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is a bitmask containing one bit set for every memory type which the specified windows handle can: be imported as."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " is a bitmask containing one bit set for every memory type which the specified windows handle {#0#} be imported as."
         }
       }
     ],
@@ -40329,8 +40698,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is a bitmask containing one bit set for every memory type which the specified file descriptor can: be imported as."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " is a bitmask containing one bit set for every memory type which the specified file descriptor {#0#} be imported as."
         }
       }
     ],
@@ -40786,6 +41160,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "elink",
               "value": "VkExternalSemaphoreHandleTypeFlagBits"
             },
@@ -40794,7 +41172,7 @@
               "value": "handleType"
             }
           ],
-          "description": " is a bitmask of {#0#} specifying which types of imported handle {#1#} can: be exported from."
+          "description": " is a bitmask of {#1#} specifying which types of imported handle {#2#} {#0#} be exported from."
         }
       },
       {
@@ -40813,6 +41191,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "elink",
               "value": "VkExternalSemaphoreHandleTypeFlagBits"
             },
@@ -40821,7 +41203,7 @@
               "value": "handleType"
             }
           ],
-          "description": " is a bitmask of {#0#} specifying handle types which can: be specified at the same time as {#1#} when creating a semaphore."
+          "description": " is a bitmask of {#1#} specifying handle types which {#0#} be specified at the same time as {#2#} when creating a semaphore."
         }
       },
       {
@@ -40906,6 +41288,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "elink",
               "value": "VkExternalSemaphoreHandleTypeFlagBits"
             },
@@ -40914,7 +41300,7 @@
               "value": "handleType"
             }
           ],
-          "description": " is a bitmask of {#0#} specifying which types of imported handle {#1#} can: be exported from."
+          "description": " is a bitmask of {#1#} specifying which types of imported handle {#2#} {#0#} be exported from."
         }
       },
       {
@@ -40933,6 +41319,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "elink",
               "value": "VkExternalSemaphoreHandleTypeFlagBits"
             },
@@ -40941,7 +41331,7 @@
               "value": "handleType"
             }
           ],
-          "description": " is a bitmask of {#0#} specifying handle types which can: be specified at the same time as {#1#} when creating a semaphore."
+          "description": " is a bitmask of {#1#} specifying handle types which {#0#} be specified at the same time as {#2#} when creating a semaphore."
         }
       },
       {
@@ -41035,11 +41425,19 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "elink",
               "value": "VkExternalSemaphoreHandleTypeFlagBits"
             }
           ],
-          "description": " is a bitmask of {#0#} specifying one or more semaphore handle types the application can: export from the resulting semaphore. The application can: request multiple handle types for the same semaphore."
+          "description": " is a bitmask of {#2#} specifying one or more semaphore handle types the application {#0#} export from the resulting semaphore. The application {#1#} request multiple handle types for the same semaphore."
         }
       }
     ],
@@ -41106,11 +41504,19 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "elink",
               "value": "VkExternalSemaphoreHandleTypeFlagBits"
             }
           ],
-          "description": " is a bitmask of {#0#} specifying one or more semaphore handle types the application can: export from the resulting semaphore. The application can: request multiple handle types for the same semaphore."
+          "description": " is a bitmask of {#2#} specifying one or more semaphore handle types the application {#0#} export from the resulting semaphore. The application {#1#} request multiple handle types for the same semaphore."
         }
       }
     ],
@@ -41970,6 +42376,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "elink",
               "value": "VkExternalFenceHandleTypeFlagBits"
             },
@@ -41978,7 +42388,7 @@
               "value": "handleType"
             }
           ],
-          "description": " is a bitmask of {#0#} indicating which types of imported handle {#1#} can: be exported from."
+          "description": " is a bitmask of {#1#} indicating which types of imported handle {#2#} {#0#} be exported from."
         }
       },
       {
@@ -41997,6 +42407,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "elink",
               "value": "VkExternalFenceHandleTypeFlagBits"
             },
@@ -42005,7 +42419,7 @@
               "value": "handleType"
             }
           ],
-          "description": " is a bitmask of {#0#} specifying handle types which can: be specified at the same time as {#1#} when creating a fence."
+          "description": " is a bitmask of {#1#} specifying handle types which {#0#} be specified at the same time as {#2#} when creating a fence."
         }
       },
       {
@@ -42090,6 +42504,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "elink",
               "value": "VkExternalFenceHandleTypeFlagBits"
             },
@@ -42098,7 +42516,7 @@
               "value": "handleType"
             }
           ],
-          "description": " is a bitmask of {#0#} indicating which types of imported handle {#1#} can: be exported from."
+          "description": " is a bitmask of {#1#} indicating which types of imported handle {#2#} {#0#} be exported from."
         }
       },
       {
@@ -42117,6 +42535,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "elink",
               "value": "VkExternalFenceHandleTypeFlagBits"
             },
@@ -42125,7 +42547,7 @@
               "value": "handleType"
             }
           ],
-          "description": " is a bitmask of {#0#} specifying handle types which can: be specified at the same time as {#1#} when creating a fence."
+          "description": " is a bitmask of {#1#} specifying handle types which {#0#} be specified at the same time as {#2#} when creating a fence."
         }
       },
       {
@@ -42219,11 +42641,19 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "elink",
               "value": "VkExternalFenceHandleTypeFlagBits"
             }
           ],
-          "description": " is a bitmask of {#0#} specifying one or more fence handle types the application can: export from the resulting fence. The application can: request multiple handle types for the same fence."
+          "description": " is a bitmask of {#2#} specifying one or more fence handle types the application {#0#} export from the resulting fence. The application {#1#} request multiple handle types for the same fence."
         }
       }
     ],
@@ -42290,11 +42720,19 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "elink",
               "value": "VkExternalFenceHandleTypeFlagBits"
             }
           ],
-          "description": " is a bitmask of {#0#} specifying one or more fence handle types the application can: export from the resulting fence. The application can: request multiple handle types for the same fence."
+          "description": " is a bitmask of {#2#} specifying one or more fence handle types the application {#0#} export from the resulting fence. The application {#1#} request multiple handle types for the same fence."
         }
       }
     ],
@@ -42856,8 +43294,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " specifies whether the implementation supports multiview rendering within a render pass. If this feature is not enabled, the view mask of each subpass must: always be zero."
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " specifies whether the implementation supports multiview rendering within a render pass. If this feature is not enabled, the view mask of each subpass {#0#} always be zero."
         }
       },
       {
@@ -42873,8 +43316,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " specifies whether the implementation supports multiview rendering within a render pass, with <<geometry,geometry shaders>>. If this feature is not enabled, then a pipeline compiled against a subpass with a non-zero view mask must: not include a geometry shader."
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " specifies whether the implementation supports multiview rendering within a render pass, with <<geometry,geometry shaders>>. If this feature is not enabled, then a pipeline compiled against a subpass with a non-zero view mask {#0#} not include a geometry shader."
         }
       },
       {
@@ -42890,8 +43338,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " specifies whether the implementation supports multiview rendering within a render pass, with <<tessellation,tessellation shaders>>. If this feature is not enabled, then a pipeline compiled against a subpass with a non-zero view mask must: not include any tessellation shaders."
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " specifies whether the implementation supports multiview rendering within a render pass, with <<tessellation,tessellation shaders>>. If this feature is not enabled, then a pipeline compiled against a subpass with a non-zero view mask {#0#} not include any tessellation shaders."
         }
       }
     ],
@@ -42947,8 +43400,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " specifies whether the implementation supports multiview rendering within a render pass. If this feature is not enabled, the view mask of each subpass must: always be zero."
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " specifies whether the implementation supports multiview rendering within a render pass. If this feature is not enabled, the view mask of each subpass {#0#} always be zero."
         }
       },
       {
@@ -42964,8 +43422,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " specifies whether the implementation supports multiview rendering within a render pass, with <<geometry,geometry shaders>>. If this feature is not enabled, then a pipeline compiled against a subpass with a non-zero view mask must: not include a geometry shader."
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " specifies whether the implementation supports multiview rendering within a render pass, with <<geometry,geometry shaders>>. If this feature is not enabled, then a pipeline compiled against a subpass with a non-zero view mask {#0#} not include a geometry shader."
         }
       },
       {
@@ -42981,8 +43444,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " specifies whether the implementation supports multiview rendering within a render pass, with <<tessellation,tessellation shaders>>. If this feature is not enabled, then a pipeline compiled against a subpass with a non-zero view mask must: not include any tessellation shaders."
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " specifies whether the implementation supports multiview rendering within a render pass, with <<tessellation,tessellation shaders>>. If this feature is not enabled, then a pipeline compiled against a subpass with a non-zero view mask {#0#} not include any tessellation shaders."
         }
       }
     ],
@@ -43294,8 +43762,13 @@
         "jsType": "ArrayBufferView",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is an array of view masks indicating sets of views that may: be more efficient to render concurrently."
+          "macros": [
+            {
+              "kind": "may",
+              "value": ""
+            }
+          ],
+          "description": " is an array of view masks indicating sets of views that {#0#} be more efficient to render concurrently."
         }
       }
     ],
@@ -43449,8 +43922,13 @@
         "jsType": "ArrayBufferView",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is an array of view masks indicating sets of views that may: be more efficient to render concurrently."
+          "macros": [
+            {
+              "kind": "may",
+              "value": ""
+            }
+          ],
+          "description": " is an array of view masks indicating sets of views that {#0#} be more efficient to render concurrently."
         }
       }
     ],
@@ -44017,6 +44495,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "slink",
               "value": "VkMemoryAllocateFlagsInfo"
             },
@@ -44037,7 +44519,7 @@
               "value": "physicalDeviceCount"
             }
           ],
-          "description": " specifies whether logical devices created from the group support allocating device memory on a subset of devices, via the {#3#} member of the {#0#}. If this is {#1#}, then all device memory allocations are made across all physical devices in the group. If {#4#} is `1`, then pname:subsetAllocation must: be {#2#}."
+          "description": " specifies whether logical devices created from the group support allocating device memory on a subset of devices, via the {#4#} member of the {#1#}. If this is {#2#}, then all device memory allocations are made across all physical devices in the group. If {#5#} is `1`, then pname:subsetAllocation {#0#} be {#3#}."
         }
       }
     ],
@@ -44141,6 +44623,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "slink",
               "value": "VkMemoryAllocateFlagsInfo"
             },
@@ -44161,7 +44647,7 @@
               "value": "physicalDeviceCount"
             }
           ],
-          "description": " specifies whether logical devices created from the group support allocating device memory on a subset of devices, via the {#3#} member of the {#0#}. If this is {#1#}, then all device memory allocations are made across all physical devices in the group. If {#4#} is `1`, then pname:subsetAllocation must: be {#2#}."
+          "description": " specifies whether logical devices created from the group support allocating device memory on a subset of devices, via the {#4#} member of the {#1#}. If this is {#2#}, then all device memory allocations are made across all physical devices in the group. If {#5#} is `1`, then pname:subsetAllocation {#0#} be {#3#}."
         }
       }
     ],
@@ -44248,6 +44734,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT"
             },
@@ -44256,7 +44746,7 @@
               "value": "flags"
             }
           ],
-          "description": " is a mask of physical devices in the logical device, indicating that memory must: be allocated on each device in the mask, if {#0#} is set in {#1#}."
+          "description": " is a mask of physical devices in the logical device, indicating that memory {#0#} be allocated on each device in the mask, if {#1#} is set in {#2#}."
         }
       }
     ],
@@ -44343,6 +44833,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT"
             },
@@ -44351,7 +44845,7 @@
               "value": "flags"
             }
           ],
-          "description": " is a mask of physical devices in the logical device, indicating that memory must: be allocated on each device in the mask, if {#0#} is set in {#1#}."
+          "description": " is a mask of physical devices in the logical device, indicating that memory {#0#} be allocated on each device in the mask, if {#1#} is set in {#2#}."
         }
       }
     ],
@@ -46185,8 +46679,17 @@
         "jsType": "Array",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is an array of masks, where the mask at element [eq]#i# is non-zero if physical device [eq]#i# has a presentation engine, and where bit [eq]#j# is set in element [eq]#i# if physical device [eq]#i# can: present swapchain images from physical device [eq]#j#. If element [eq]#i# is non-zero, then bit [eq]#i# must: be set."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " is an array of masks, where the mask at element [eq]#i# is non-zero if physical device [eq]#i# has a presentation engine, and where bit [eq]#j# is set in element [eq]#i# if physical device [eq]#i# {#0#} present swapchain images from physical device [eq]#j#. If element [eq]#i# is non-zero, then bit [eq]#i# {#1#} be set."
         }
       },
       {
@@ -46843,8 +47346,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is a bitfield of modes that the swapchain can: be used with."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " is a bitfield of modes that the swapchain {#0#} be used with."
         }
       }
     ],
@@ -47182,6 +47690,14 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET"
             },
@@ -47202,7 +47718,7 @@
               "value": "set"
             }
           ],
-          "description": " Specifies the type of the descriptor update template. If set to {#0#} it can: only be used to update descriptor sets with a fixed {#2#}. If set to {#1#} it can: only be used to push descriptor sets using the provided {#3#}, pname:pipelineLayout, and {#4#} number."
+          "description": " Specifies the type of the descriptor update template. If set to {#2#} it {#0#} only be used to update descriptor sets with a fixed {#4#}. If set to {#3#} it {#1#} only be used to push descriptor sets using the provided {#5#}, pname:pipelineLayout, and {#6#} number."
         }
       },
       {
@@ -47376,6 +47892,14 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET"
             },
@@ -47396,7 +47920,7 @@
               "value": "set"
             }
           ],
-          "description": " Specifies the type of the descriptor update template. If set to {#0#} it can: only be used to update descriptor sets with a fixed {#2#}. If set to {#1#} it can: only be used to push descriptor sets using the provided {#3#}, pname:pipelineLayout, and {#4#} number."
+          "description": " Specifies the type of the descriptor update template. If set to {#2#} it {#0#} only be used to update descriptor sets with a fixed {#4#}. If set to {#3#} it {#1#} only be used to push descriptor sets using the provided {#5#}, pname:pipelineLayout, and {#6#} number."
         }
       },
       {
@@ -47702,6 +48226,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "flink",
               "value": "vkQueuePresentKHR"
             },
@@ -47718,7 +48246,7 @@
               "value": "presentID"
             }
           ],
-          "description": " is an application-provided value that was given to a previous {#1#} command via {#2#}::{#3#} (see below). It can: be used to uniquely identify a previous present with the {#0#} command."
+          "description": " is an application-provided value that was given to a previous {#2#} command via {#3#}::{#4#} (see below). It {#0#} be used to uniquely identify a previous present with the {#1#} command."
         }
       },
       {
@@ -47786,6 +48314,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "may",
+              "value": ""
+            },
+            {
               "kind": "slink",
               "value": "VkPresentTimeGOOGLE"
             },
@@ -47802,7 +48334,7 @@
               "value": "desiredPresentTime"
             }
           ],
-          "description": " is the time when the image of the {#1#} could have been displayed. This may: differ from {#2#} if the application requested that the image be presented no sooner than {#0#}::{#3#}."
+          "description": " is the time when the image of the {#2#} could have been displayed. This {#0#} differ from {#3#} if the application requested that the image be presented no sooner than {#1#}::{#4#}."
         }
       },
       {
@@ -47956,11 +48488,19 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "should",
+              "value": ""
+            },
+            {
               "kind": "flink",
               "value": "vkGetPastPresentationTimingGOOGLE"
             }
           ],
-          "description": " is an application-provided identification value, that can: be used with the results of {#0#}, in order to uniquely identify this present. In order to be useful to the application, it should: be unique within some period of time that is meaningful to the application."
+          "description": " is an application-provided identification value, that {#0#} be used with the results of {#2#}, in order to uniquely identify this present. In order to be useful to the application, it {#1#} be unique within some period of time that is meaningful to the application."
         }
       },
       {
@@ -47976,6 +48516,14 @@
         "documentation": {
           "macros": [
             {
+              "kind": "may",
+              "value": ""
+            },
+            {
+              "kind": "should",
+              "value": ""
+            },
+            {
               "kind": "pname",
               "value": "desiredPresentTime"
             },
@@ -47988,7 +48536,7 @@
               "value": "desiredPresentTime"
             }
           ],
-          "description": " specifies that the image given should: not be displayed to the user any earlier than this time. {#0#} is a time in nanoseconds, relative to a monotonically-increasing clock (e.g. `CLOCK_MONOTONIC` (see clock_gettime(2)) on Android and Linux). A value of zero specifies that the presentation engine may: display the image at any time. This is useful when the application desires to provide {#1#}, but doesn't need a specific {#2#}."
+          "description": " specifies that the image given {#1#} not be displayed to the user any earlier than this time. {#2#} is a time in nanoseconds, relative to a monotonically-increasing clock (e.g. `CLOCK_MONOTONIC` (see clock_gettime(2)) on Android and Linux). A value of zero specifies that the presentation engine {#0#} display the image at any time. This is useful when the application desires to provide {#3#}, but doesn't need a specific {#4#}."
         }
       }
     ],
@@ -48072,6 +48620,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "code",
               "value": "UIView"
             },
@@ -48088,7 +48640,7 @@
               "value": "CAMetalLayer"
             }
           ],
-          "description": " is a reference to a {#0#} object which will display this surface. This {#1#} must: be backed by a {#2#} instance of type {#3#}."
+          "description": " is a reference to a {#1#} object which will display this surface. This {#2#} {#0#} be backed by a {#3#} instance of type {#4#}."
         }
       }
     ],
@@ -48173,6 +48725,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "code",
               "value": "NSView"
             },
@@ -48189,7 +48745,7 @@
               "value": "CAMetalLayer"
             }
           ],
-          "description": " is a reference to a {#0#} object which will display this surface. This {#1#} must: be backed by a {#2#} instance of type {#3#}."
+          "description": " is a reference to a {#1#} object which will display this surface. This {#2#} {#0#} be backed by a {#3#} instance of type {#4#}."
         }
       }
     ],
@@ -48595,8 +49151,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is the maximum number of active discard rectangles that can: be specified."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " is the maximum number of active discard rectangles that {#0#} be specified."
         }
       }
     ],
@@ -48831,15 +49392,20 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is a mask of which aspect(s) can: be accessed within the specified subpass."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " is a mask of which aspect(s) {#0#} be accessed within the specified subpass."
         }
       }
     ],
     "documentation": {
       "macros": [],
       "category": "Render Pass",
-      "description": "Structure specifying a subpass/input attachment pair and an aspect mask that can: be read."
+      "description": "Structure specifying a subpass/input attachment pair and an aspect mask that {#0#} be read."
     }
   },
   {
@@ -48883,8 +49449,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is a mask of which aspect(s) can: be accessed within the specified subpass."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " is a mask of which aspect(s) {#0#} be accessed within the specified subpass."
         }
       }
     ],
@@ -48947,11 +49518,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "slink",
               "value": "VkInputAttachmentAspectReference"
             }
           ],
-          "description": " number of {#0#} structures describing which aspect(s) can: be accessed for a given input attachment within a given subpass."
+          "description": " number of {#1#} structures describing which aspect(s) {#0#} be accessed for a given input attachment within a given subpass."
         }
       },
       {
@@ -48974,7 +49549,7 @@
     "documentation": {
       "macros": [],
       "category": "Render Pass",
-      "description": "Structure specifying, for a given subpass/input attachment pair, which aspect can: be read."
+      "description": "Structure specifying, for a given subpass/input attachment pair, which aspect {#0#} be read."
     }
   },
   {
@@ -49029,11 +49604,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "slink",
               "value": "VkInputAttachmentAspectReference"
             }
           ],
-          "description": " number of {#0#} structures describing which aspect(s) can: be accessed for a given input attachment within a given subpass."
+          "description": " number of {#1#} structures describing which aspect(s) {#0#} be accessed for a given input attachment within a given subpass."
         }
       },
       {
@@ -49657,6 +50236,18 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "may",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR"
             },
@@ -49673,7 +50264,7 @@
               "value": "VkPresentModeKHR"
             }
           ],
-          "description": " is a bitmask of {#2#} representing the ways the application can: use the shared presentable image from a swapchain created with {#3#} set to {#0#} or ename:VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR for the surface on the specified device. {#1#} must: be included in the set but implementations may: support additional usages."
+          "description": " is a bitmask of {#5#} representing the ways the application {#0#} use the shared presentable image from a swapchain created with {#6#} set to {#3#} or ename:VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR for the surface on the specified device. {#4#} {#2#} be included in the set but implementations {#1#} support additional usages."
         }
       }
     ],
@@ -50923,8 +51514,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " specifies that the implementation would prefer a dedicated allocation for this resource. The application is still free to suballocate the resource but it may: get better performance if a dedicated allocation is used."
+          "macros": [
+            {
+              "kind": "may",
+              "value": ""
+            }
+          ],
+          "description": " specifies that the implementation would prefer a dedicated allocation for this resource. The application is still free to suballocate the resource but it {#0#} get better performance if a dedicated allocation is used."
         }
       },
       {
@@ -51005,8 +51601,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " specifies that the implementation would prefer a dedicated allocation for this resource. The application is still free to suballocate the resource but it may: get better performance if a dedicated allocation is used."
+          "macros": [
+            {
+              "kind": "may",
+              "value": ""
+            }
+          ],
+          "description": " specifies that the implementation would prefer a dedicated allocation for this resource. The application is still free to suballocate the resource but it {#0#} get better performance if a dedicated allocation is used."
         }
       },
       {
@@ -51832,8 +52433,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " can: be used to ensure that reconstruction is done explicitly, if supported."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " {#0#} be used to ensure that reconstruction is done explicitly, if supported."
         }
       }
     ],
@@ -52028,8 +52634,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " can: be used to ensure that reconstruction is done explicitly, if supported."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " {#0#} be used to ensure that reconstruction is done explicitly, if supported."
         }
       }
     ],
@@ -52897,6 +53508,14 @@
         "documentation": {
           "macros": [
             {
+              "kind": "may",
+              "value": ""
+            },
+            {
+              "kind": "may",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_FALSE"
             },
@@ -52911,9 +53530,21 @@
             {
               "kind": "pname",
               "value": "protectedNoFault"
+            },
+            {
+              "kind": "undefined",
+              "value": ""
+            },
+            {
+              "kind": "undefined",
+              "value": ""
+            },
+            {
+              "kind": "undefined",
+              "value": ""
             }
           ],
-          "description": " specifies whether the undefined: behavior may: include process termination or device loss. If {#2#} is {#0#}, undefined: behavior may: include process termination or device loss. If {#3#} is {#1#}, undefined: behavior will not include process termination or device loss."
+          "description": " specifies whether the {#6#} behavior {#0#} include process termination or device loss. If {#4#} is {#2#}, {#7#} behavior {#1#} include process termination or device loss. If {#5#} is {#3#}, {#8#} behavior will not include process termination or device loss."
         }
       }
     ],
@@ -53544,6 +54175,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "slink",
               "value": "VkAttachmentSampleLocationsEXT"
             },
@@ -53556,7 +54191,7 @@
               "value": "pAttachmentInitialSampleLocations"
             }
           ],
-          "description": " is an array of {#1#} {#0#} structures specifying the attachment indices and their corresponding sample location state. Each element of {#2#} can: specify the sample location state to use in the automatic layout transition performed to transition a depth/stencil attachment from the initial layout of the attachment to the image layout specified for the attachment in the first subpass using it."
+          "description": " is an array of {#2#} {#1#} structures specifying the attachment indices and their corresponding sample location state. Each element of {#3#} {#0#} specify the sample location state to use in the automatic layout transition performed to transition a depth/stencil attachment from the initial layout of the attachment to the image layout specified for the attachment in the first subpass using it."
         }
       },
       {
@@ -53594,6 +54229,14 @@
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            },
             {
               "kind": "slink",
               "value": "VkSubpassSampleLocationsEXT"
@@ -53635,7 +54278,7 @@
               "value": "pPostSubpassSampleLocations"
             }
           ],
-          "description": " is an array of {#4#} {#0#} structures specifying the subpass indices and their corresponding sample location state. Each element of {#5#} can: specify the sample location state to use in the automatic layout transition performed to transition the depth/stencil attachment used by the specified subpass to the image layout specified in a dependent subpass or to the final layout of the attachment in case the specified subpass is the last subpass using that attachment. In addition, if {#1#}::{#6#} is {#2#}, each element of {#7#} must: specify the sample location state that matches the sample locations used by all pipelines that will be bound to a command buffer during the specified subpass. If {#8#} is {#3#}, the sample locations used for rasterization do not depend on {#9#}."
+          "description": " is an array of {#6#} {#2#} structures specifying the subpass indices and their corresponding sample location state. Each element of {#7#} {#0#} specify the sample location state to use in the automatic layout transition performed to transition the depth/stencil attachment used by the specified subpass to the image layout specified in a dependent subpass or to the final layout of the attachment in case the specified subpass is the last subpass using that attachment. In addition, if {#3#}::{#8#} is {#4#}, each element of {#9#} {#1#} specify the sample location state that matches the sample locations used by all pipelines that will be bound to a command buffer during the specified subpass. If {#10#} is {#5#}, the sample locations used for rasterization do not depend on {#11#}."
         }
       }
     ],
@@ -53828,11 +54471,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "pname",
               "value": "sampleLocationSampleCounts"
             }
           ],
-          "description": " is the maximum size of the pixel grid in which sample locations can: vary that is supported for all sample counts in {#0#}."
+          "description": " is the maximum size of the pixel grid in which sample locations {#0#} vary that is supported for all sample counts in {#1#}."
         }
       },
       {
@@ -53879,6 +54526,14 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_TRUE"
             },
@@ -53887,7 +54542,7 @@
               "value": "VK_FALSE"
             }
           ],
-          "description": " specifies whether the sample locations used by all pipelines that will be bound to a command buffer during a subpass must: match. If set to {#0#}, the implementation supports variable sample locations in a subpass. If set to {#1#}, then the sample locations must: stay constant in each subpass."
+          "description": " specifies whether the sample locations used by all pipelines that will be bound to a command buffer during a subpass {#0#} match. If set to {#2#}, the implementation supports variable sample locations in a subpass. If set to {#3#}, then the sample locations {#1#} stay constant in each subpass."
         }
       }
     ],
@@ -53949,8 +54604,13 @@
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is the maximum size of the pixel grid in which sample locations can: vary."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " is the maximum size of the pixel grid in which sample locations {#0#} vary."
         }
       }
     ],
@@ -54134,8 +54794,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is one greater than the highest color attachment index that can: be used in a subpass, for a pipeline that uses an <<framebuffer-blend-advanced,advanced blend operation>>."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " is one greater than the highest color attachment index that {#0#} be used in a subpass, for a pipeline that uses an <<framebuffer-blend-advanced,advanced blend operation>>."
         }
       },
       {
@@ -54151,8 +54816,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " specifies whether advanced blend operations can: vary per-attachment."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " specifies whether advanced blend operations {#0#} vary per-attachment."
         }
       },
       {
@@ -54170,6 +54840,14 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "slink",
               "value": "VkPipelineColorBlendAdvancedStateCreateInfoEXT"
             },
@@ -54186,7 +54864,7 @@
               "value": "srcPremultiplied"
             }
           ],
-          "description": " specifies whether the source color can: be treated as non-premultiplied. If this is {#1#}, then {#0#}::{#3#} must: be {#2#}."
+          "description": " specifies whether the source color {#0#} be treated as non-premultiplied. If this is {#3#}, then {#2#}::{#5#} {#1#} be {#4#}."
         }
       },
       {
@@ -54204,6 +54882,14 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "slink",
               "value": "VkPipelineColorBlendAdvancedStateCreateInfoEXT"
             },
@@ -54220,7 +54906,7 @@
               "value": "dstPremultiplied"
             }
           ],
-          "description": " specifies whether the destination color can: be treated as non-premultiplied. If this is {#1#}, then {#0#}::{#3#} must: be {#2#}."
+          "description": " specifies whether the destination color {#0#} be treated as non-premultiplied. If this is {#3#}, then {#2#}::{#5#} {#1#} be {#4#}."
         }
       },
       {
@@ -54238,6 +54924,14 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "slink",
               "value": "VkPipelineColorBlendAdvancedStateCreateInfoEXT"
             },
@@ -54254,7 +54948,7 @@
               "value": "blendOverlap"
             }
           ],
-          "description": " specifies whether the overlap mode can: be treated as correlated. If this is {#1#}, then {#0#}::{#3#} must: be {#2#}."
+          "description": " specifies whether the overlap mode {#0#} be treated as correlated. If this is {#3#}, then {#2#}::{#5#} {#1#} be {#4#}."
         }
       },
       {
@@ -54438,11 +55132,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK_EXT"
             }
           ],
-          "description": " indicates whether the implementation supports inline uniform block descriptors. If this feature is not enabled, {#0#} must: not be used."
+          "description": " indicates whether the implementation supports inline uniform block descriptors. If this feature is not enabled, {#1#} {#0#} not be used."
         }
       },
       {
@@ -54945,8 +55643,13 @@
         "jsType": "ArrayBufferView",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is an array which lists of all formats which can: be used when creating views of this image."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " is an array which lists of all formats which {#0#} be used when creating views of this image."
         }
       }
     ],
@@ -54955,7 +55658,7 @@
     "documentation": {
       "macros": [],
       "category": "Resource Creation",
-      "description": "Specify that an image can: be used with a particular set of formats"
+      "description": "Specify that an image {#0#} be used with a particular set of formats"
     }
   },
   {
@@ -55182,11 +55885,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "flink",
               "value": "vkGetDescriptorSetLayoutSupport"
             }
           ],
-          "description": " is a maximum number of descriptors (summed over all descriptor types) in a single descriptor set that is guaranteed to satisfy any implementation-dependent constraints on the size of a descriptor set itself. Applications can: query whether a descriptor set that goes beyond this limit is supported using {#0#}."
+          "description": " is a maximum number of descriptors (summed over all descriptor types) in a single descriptor set that is guaranteed to satisfy any implementation-dependent constraints on the size of a descriptor set itself. Applications {#0#} query whether a descriptor set that goes beyond this limit is supported using {#1#}."
         }
       },
       {
@@ -55201,8 +55908,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is the maximum size of a memory allocation that can: be created, even if there is more space available in the heap."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " is the maximum size of a memory allocation that {#0#} be created, even if there is more space available in the heap."
         }
       }
     ],
@@ -55266,11 +55978,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "flink",
               "value": "vkGetDescriptorSetLayoutSupport"
             }
           ],
-          "description": " is a maximum number of descriptors (summed over all descriptor types) in a single descriptor set that is guaranteed to satisfy any implementation-dependent constraints on the size of a descriptor set itself. Applications can: query whether a descriptor set that goes beyond this limit is supported using {#0#}."
+          "description": " is a maximum number of descriptors (summed over all descriptor types) in a single descriptor set that is guaranteed to satisfy any implementation-dependent constraints on the size of a descriptor set itself. Applications {#0#} query whether a descriptor set that goes beyond this limit is supported using {#1#}."
         }
       },
       {
@@ -55285,8 +56001,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is the maximum size of a memory allocation that can: be created, even if there is more space available in the heap."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " is the maximum size of a memory allocation that {#0#} be created, even if there is more space available in the heap."
         }
       }
     ],
@@ -55351,8 +56072,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " specifies whether the descriptor set layout can: be created."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " specifies whether the descriptor set layout {#0#} be created."
         }
       }
     ],
@@ -55418,8 +56144,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " specifies whether the descriptor set layout can: be created."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " specifies whether the descriptor set layout {#0#} be created."
         }
       }
     ],
@@ -55545,11 +56276,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "code",
               "value": "Float16"
             }
           ],
-          "description": " indicates whether 16-bit floats (halfs) are supported in shader code. This also indicates whether shader modules can: declare the {#0#} capability."
+          "description": " indicates whether 16-bit floats (halfs) are supported in shader code. This also indicates whether shader modules {#0#} declare the {#1#} capability."
         }
       },
       {
@@ -55567,11 +56302,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "code",
               "value": "Int8"
             }
           ],
-          "description": " indicates whether 8-bit integers (signed and unsigned) are supported in shader code. This also indicates whether shader modules can: declare the {#0#} capability."
+          "description": " indicates whether 8-bit integers (signed and unsigned) are supported in shader code. This also indicates whether shader modules {#0#} declare the {#1#} capability."
         }
       }
     ],
@@ -56521,11 +57260,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "may",
+              "value": ""
+            },
+            {
               "kind": "pname",
               "value": "color"
             }
           ],
-          "description": " is an optional RGBA color value that can be associated with the label. A particular implementation may: choose to ignore this color value. The values contain RGBA values in order, in the range 0.0 to 1.0. If all elements in {#0#} are set to 0.0 then it is ignored."
+          "description": " is an optional RGBA color value that can be associated with the label. A particular implementation {#0#} choose to ignore this color value. The values contain RGBA values in order, in the range 0.0 to 1.0. If all elements in {#1#} are set to 0.0 then it is ignored."
         }
       }
     ],
@@ -57054,8 +57797,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is a bitmask containing one bit set for every memory type which the specified host reference can: be imported as."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " is a bitmask containing one bit set for every memory type which the specified host reference {#0#} be imported as."
         }
       }
     ],
@@ -57117,8 +57865,17 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is the minimum required: alignment, in bytes, for the base address and size of host references that can: be imported to a Vulkan memory object."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "required",
+              "value": ""
+            }
+          ],
+          "description": " is the minimum {#1#} alignment, in bytes, for the base address and size of host references that {#0#} be imported to a Vulkan memory object."
         }
       }
     ],
@@ -57180,8 +57937,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is the size in pixels the generating primitive is increased at each of its edges during conservative rasterization overestimation mode. Even with a size of 0.0, conservative rasterization overestimation rules still apply and if any part of the pixel rectangle is covered by the generating primitive, fragments are generated for the entire pixel. However implementations may: make the pixel coverage area even more conservative by increasing the size of the generating primitive."
+          "macros": [
+            {
+              "kind": "may",
+              "value": ""
+            }
+          ],
+          "description": " is the size in pixels the generating primitive is increased at each of its edges during conservative rasterization overestimation mode. Even with a size of 0.0, conservative rasterization overestimation rules still apply and if any part of the pixel rectangle is covered by the generating primitive, fragments are generated for the entire pixel. However implementations {#0#} make the pixel coverage area even more conservative by increasing the size of the generating primitive."
         }
       },
       {
@@ -58075,11 +58837,19 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "may",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT_EXT"
             }
           ],
-          "description": " is the maximum number of descriptors (summed over all descriptor types) that can: be created across all pools that are created with the {#0#} bit set. Pool creation may: fail when this limit is exceeded, or when the space this limit represents is unable to satisfy a pool creation due to fragmentation."
+          "description": " is the maximum number of descriptors (summed over all descriptor types) that {#0#} be created across all pools that are created with the {#2#} bit set. Pool creation {#1#} fail when this limit is exceeded, or when the space this limit represents is unable to satisfy a pool creation due to fragmentation."
         }
       },
       {
@@ -58097,11 +58867,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "may",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_FALSE"
             }
           ],
-          "description": " is a boolean value indicating whether uniform buffer descriptors natively support nonuniform indexing. If this is {#0#}, then a single dynamic instance of an instruction that nonuniformly indexes an array of uniform buffers may: execute multiple times in order to access all the descriptors."
+          "description": " is a boolean value indicating whether uniform buffer descriptors natively support nonuniform indexing. If this is {#1#}, then a single dynamic instance of an instruction that nonuniformly indexes an array of uniform buffers {#0#} execute multiple times in order to access all the descriptors."
         }
       },
       {
@@ -58119,11 +58893,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "may",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_FALSE"
             }
           ],
-          "description": " is a boolean value indicating whether sampler and image descriptors natively support nonuniform indexing. If this is {#0#}, then a single dynamic instance of an instruction that nonuniformly indexes an array of samplers or images may: execute multiple times in order to access all the descriptors."
+          "description": " is a boolean value indicating whether sampler and image descriptors natively support nonuniform indexing. If this is {#1#}, then a single dynamic instance of an instruction that nonuniformly indexes an array of samplers or images {#0#} execute multiple times in order to access all the descriptors."
         }
       },
       {
@@ -58141,11 +58919,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "may",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_FALSE"
             }
           ],
-          "description": " is a boolean value indicating whether storage buffer descriptors natively support nonuniform indexing. If this is {#0#}, then a single dynamic instance of an instruction that nonuniformly indexes an array of storage buffers may: execute multiple times in order to access all the descriptors."
+          "description": " is a boolean value indicating whether storage buffer descriptors natively support nonuniform indexing. If this is {#1#}, then a single dynamic instance of an instruction that nonuniformly indexes an array of storage buffers {#0#} execute multiple times in order to access all the descriptors."
         }
       },
       {
@@ -58163,11 +58945,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "may",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_FALSE"
             }
           ],
-          "description": " is a boolean value indicating whether storage image descriptors natively support nonuniform indexing. If this is {#0#}, then a single dynamic instance of an instruction that nonuniformly indexes an array of storage images may: execute multiple times in order to access all the descriptors."
+          "description": " is a boolean value indicating whether storage image descriptors natively support nonuniform indexing. If this is {#1#}, then a single dynamic instance of an instruction that nonuniformly indexes an array of storage images {#0#} execute multiple times in order to access all the descriptors."
         }
       },
       {
@@ -58185,11 +58971,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "may",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_FALSE"
             }
           ],
-          "description": " is a boolean value indicating whether input attachment descriptors natively support nonuniform indexing. If this is {#0#}, then a single dynamic instance of an instruction that nonuniformly indexes an array of input attachments may: execute multiple times in order to access all the descriptors."
+          "description": " is a boolean value indicating whether input attachment descriptors natively support nonuniform indexing. If this is {#1#}, then a single dynamic instance of an instruction that nonuniformly indexes an array of input attachments {#0#} execute multiple times in order to access all the descriptors."
         }
       },
       {
@@ -58206,6 +58996,18 @@
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            },
             {
               "kind": "ename",
               "value": "VK_FALSE"
@@ -58227,7 +59029,7 @@
               "value": "robustBufferAccess"
             }
           ],
-          "description": " is a boolean value indicating whether <<features-features-robustBufferAccess, {#1#}>> can: be enabled in a device simultaneously with {#2#}, pname:descriptorBindingStorageBufferUpdateAfterBind, {#3#}, and/or pname:descriptorBindingStorageTexelBufferUpdateAfterBind. If this is {#0#}, then either {#4#} must: be disabled or all of these update-after-bind features must: be disabled."
+          "description": " is a boolean value indicating whether <<features-features-robustBufferAccess, {#4#}>> {#0#} be enabled in a device simultaneously with {#5#}, pname:descriptorBindingStorageBufferUpdateAfterBind, {#6#}, and/or pname:descriptorBindingStorageTexelBufferUpdateAfterBind. If this is {#3#}, then either {#7#} {#1#} be disabled or all of these update-after-bind features {#2#} be disabled."
         }
       },
       {
@@ -59212,8 +60014,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is a mask of which aspect(s) can: be accessed within the specified subpass as an input attachment."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " is a mask of which aspect(s) {#0#} be accessed within the specified subpass as an input attachment."
         }
       }
     ],
@@ -59457,8 +60264,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " render pass attachment indices identifying attachments that are not used by this subpass, but whose contents must: be preserved throughout the subpass."
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " render pass attachment indices identifying attachments that are not used by this subpass, but whose contents {#0#} be preserved throughout the subpass."
         }
       },
       {
@@ -59895,8 +60707,13 @@
         "jsType": "ArrayBufferView",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is an array of view masks indicating sets of views that may: be more efficient to render concurrently."
+          "macros": [
+            {
+              "kind": "may",
+              "value": ""
+            }
+          ],
+          "description": " is an array of view masks indicating sets of views that {#0#} be more efficient to render concurrently."
         }
       }
     ],
@@ -60056,6 +60873,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "sname",
               "value": "VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT"
             },
@@ -60068,7 +60889,7 @@
               "value": "vertexAttributeInstanceRateZeroDivisor"
             }
           ],
-          "description": " is the number of successive instances that will use the same value of the vertex attribute when instanced rendering is enabled. For example, if the divisor is N, the same vertex attribute will applied to N successive instances before moving on to the next vertex attribute. The maximum value of divisor is implementation dependent and can be queried using {#0#}::{#1#}. A value of `0` can: be used for the divisor if the <<features-features-vertexAttributeInstanceRateZeroDivisor,{#2#}>> feature is enabled. In this case, the same vertex attribute will be applied to all instances."
+          "description": " is the number of successive instances that will use the same value of the vertex attribute when instanced rendering is enabled. For example, if the divisor is N, the same vertex attribute will applied to N successive instances before moving on to the next vertex attribute. The maximum value of divisor is implementation dependent and can be queried using {#1#}::{#2#}. A value of `0` {#0#} be used for the divisor if the <<features-features-vertexAttributeInstanceRateZeroDivisor,{#3#}>> feature is enabled. In this case, the same vertex attribute will be applied to all instances."
         }
       }
     ],
@@ -60531,8 +61352,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is a bitmask containing one bit set for every memory type which the specified Android hardware buffer can: be imported as."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " is a bitmask containing one bit set for every memory type which the specified Android hardware buffer {#0#} be imported as."
         }
       }
     ],
@@ -60683,11 +61509,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "slink",
               "value": "VkExternalFormatANDROID"
             }
           ],
-          "description": " is an implementation-defined external format identifier for use with {#0#}. It must: not be zero."
+          "description": " is an implementation-defined external format identifier for use with {#1#}. It {#0#} not be zero."
         }
       },
       {
@@ -60726,11 +61556,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "should",
+              "value": ""
+            },
+            {
               "kind": "slink",
               "value": "VkSamplerYcbcrConversionCreateInfo"
             }
           ],
-          "description": " is the component swizzle that should: be used in {#0#}."
+          "description": " is the component swizzle that {#0#} be used in {#1#}."
         }
       },
       {
@@ -60884,6 +61718,18 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_TRUE"
             },
@@ -60892,7 +61738,7 @@
               "value": "VK_FALSE"
             }
           ],
-          "description": " specifies whether the command buffer can: be executed while conditional rendering is active in the primary command buffer. If this is {#0#}, then this command buffer can: be executed whether the primary command buffer has active conditional rendering or not. If this is {#1#}, then the primary command buffer must: not have conditional rendering active."
+          "description": " specifies whether the command buffer {#0#} be executed while conditional rendering is active in the primary command buffer. If this is {#3#}, then this command buffer {#1#} be executed whether the primary command buffer has active conditional rendering or not. If this is {#4#}, then the primary command buffer {#2#} not have conditional rendering active."
         }
       }
     ],
@@ -61132,8 +61978,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " specifies whether a secondary command buffer can: be executed while conditional rendering is active in the primary command buffer."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " specifies whether a secondary command buffer {#0#} be executed while conditional rendering is active in the primary command buffer."
         }
       }
     ],
@@ -61199,11 +62050,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "code",
               "value": "VulkanMemoryModelKHR"
             }
           ],
-          "description": " indicates whether the Vulkan Memory Model is supported, as defined in <<memory-model,Vulkan Memory Model>>. This also indicates whether shader modules can: declare the {#0#} capability."
+          "description": " indicates whether the Vulkan Memory Model is supported, as defined in <<memory-model,Vulkan Memory Model>>. This also indicates whether shader modules {#0#} declare the {#1#} capability."
         }
       },
       {
@@ -61221,6 +62076,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "code",
               "value": "Device"
             },
@@ -61229,7 +62088,7 @@
               "value": "VulkanMemoryModelDeviceScopeKHR"
             }
           ],
-          "description": " indicates whether the Vulkan Memory Model can use {#0#} scope synchronization. This also indicates whether shader modules can: declare the {#1#} capability."
+          "description": " indicates whether the Vulkan Memory Model can use {#1#} scope synchronization. This also indicates whether shader modules {#0#} declare the {#2#} capability."
         }
       }
     ],
@@ -61293,8 +62152,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " indicates whether shaders can: support 64-bit unsigned and signed integer atomic operations on buffers."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " indicates whether shaders {#0#} support 64-bit unsigned and signed integer atomic operations on buffers."
         }
       },
       {
@@ -61310,8 +62174,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " indicates whether shaders can: support 64-bit unsigned and signed integer atomic operations on shared memory."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " indicates whether shaders {#0#} support 64-bit unsigned and signed integer atomic operations on shared memory."
         }
       }
     ],
@@ -61616,6 +62485,14 @@
         "documentation": {
           "macros": [
             {
+              "kind": "may",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_RESOLVE_MODE_SAMPLE_ZERO_BIT_KHR"
             },
@@ -61624,7 +62501,7 @@
               "value": "VkResolveModeFlagBitsKHR"
             }
           ],
-          "description": " is a bitmask of {#1#} indicating the set of supported depth resolve modes. {#0#} must: be included in the set but implementations may: support additional modes."
+          "description": " is a bitmask of {#3#} indicating the set of supported depth resolve modes. {#2#} {#1#} be included in the set but implementations {#0#} support additional modes."
         }
       },
       {
@@ -61643,6 +62520,18 @@
         "documentation": {
           "macros": [
             {
+              "kind": "may",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_RESOLVE_MODE_SAMPLE_ZERO_BIT_KHR"
             },
@@ -61655,7 +62544,7 @@
               "value": "VkResolveModeFlagBitsKHR"
             }
           ],
-          "description": " is a bitmask of {#2#} indicating the set of supported stencil resolve modes. {#0#} must: be included in the set but implementations may: support additional modes. {#1#} must: not be included in the set."
+          "description": " is a bitmask of {#5#} indicating the set of supported stencil resolve modes. {#3#} {#1#} be included in the set but implementations {#0#} support additional modes. {#4#} {#2#} not be included in the set."
         }
       },
       {
@@ -61980,11 +62869,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "code",
               "value": "TransformFeedback"
             }
           ],
-          "description": " indicates whether the implementation supports transform feedback and shader modules can: declare the {#0#} capability."
+          "description": " indicates whether the implementation supports transform feedback and shader modules {#0#} declare the {#1#} capability."
         }
       },
       {
@@ -62061,6 +62954,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "sname",
               "value": "VkPhysicalDeviceTransformFeedbackFeaturesEXT"
             },
@@ -62073,7 +62970,7 @@
               "value": "GeometryStreams"
             }
           ],
-          "description": " is the maximum number of vertex streams that can be output from geometry shaders declared with the {#2#} capability. If the implementation does not support {#0#}::{#1#} then pname:maxTransformFeedbackStreams must: be set to `1`."
+          "description": " is the maximum number of vertex streams that can be output from geometry shaders declared with the {#3#} capability. If the implementation does not support {#1#}::{#2#} then pname:maxTransformFeedbackStreams {#0#} be set to `1`."
         }
       },
       {
@@ -63478,8 +64375,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is the maximum number of local workgroups that can: be launched by a single draw mesh tasks command. See <<drawing-mesh-shading>>."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " is the maximum number of local workgroups that {#0#} be launched by a single draw mesh tasks command. See <<drawing-mesh-shading>>."
         }
       },
       {
@@ -63495,6 +64397,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "code",
               "value": "LocalSize"
             },
@@ -63503,7 +64409,7 @@
               "value": "WorkgroupSize"
             }
           ],
-          "description": " is the maximum total number of task shader invocations in a single local workgroup. The product of the X, Y, and Z sizes as specified by the {#0#} execution mode in shader modules and by the object decorated by the {#1#} decoration must: be less than or equal to this limit."
+          "description": " is the maximum total number of task shader invocations in a single local workgroup. The product of the X, Y, and Z sizes as specified by the {#1#} execution mode in shader modules and by the object decorated by the {#2#} decoration {#0#} be less than or equal to this limit."
         }
       },
       {
@@ -63563,6 +64469,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "code",
               "value": "LocalSize"
             },
@@ -63571,7 +64481,7 @@
               "value": "WorkgroupSize"
             }
           ],
-          "description": " is the maximum total number of mesh shader invocations in a single local workgroup. The product of the X, Y, and Z sizes as specified by the {#0#} execution mode in shader modules and by the object decorated by the {#1#} decoration must: be less than or equal to this limit."
+          "description": " is the maximum total number of mesh shader invocations in a single local workgroup. The product of the X, Y, and Z sizes as specified by the {#1#} execution mode in shader modules and by the object decorated by the {#2#} decoration {#0#} be less than or equal to this limit."
         }
       },
       {
@@ -66113,6 +67023,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "sname",
               "value": "VkRenderPassCreateInfo"
             },
@@ -66129,7 +67043,7 @@
               "value": "fragmentDensityMapAttachment"
             }
           ],
-          "description": " specifies whether the implementation supports render passes with a fragment density map attachment. If this feature is not enabled and the {#2#} chain of {#0#} contains sname:VkRenderPassFragmentDensityMapCreateInfoEXT, {#3#} must: be {#1#}."
+          "description": " specifies whether the implementation supports render passes with a fragment density map attachment. If this feature is not enabled and the {#3#} chain of {#1#} contains sname:VkRenderPassFragmentDensityMapCreateInfoEXT, {#4#} {#0#} be {#2#}."
         }
       },
       {
@@ -66147,6 +67061,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "sname",
               "value": "VkImageViewCreateInfo"
             },
@@ -66159,7 +67077,7 @@
               "value": "flags"
             }
           ],
-          "description": " specifies whether the implementation supports dynamic fragment density map image views. If this feature is not enabled, {#1#} must: not be included in {#0#}::{#2#}."
+          "description": " specifies whether the implementation supports dynamic fragment density map image views. If this feature is not enabled, {#2#} {#0#} not be included in {#1#}::{#3#}."
         }
       },
       {
@@ -66175,8 +67093,13 @@
         "jsType": "Number",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " specifies whether the implementation supports regular non-subsampled image attachments with fragment density map render passes. If this feature is not enabled, render passes with a <<renderpass-fragmentdensitymapattachment,fragment density map attachment>> must: only have <<resources-subsampledimages,subsampled attachments>> bound."
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " specifies whether the implementation supports regular non-subsampled image attachments with fragment density map render passes. If this feature is not enabled, render passes with a <<renderpass-fragmentdensitymapattachment,fragment density map attachment>> {#0#} only have <<resources-subsampledimages,subsampled attachments>> bound."
         }
       }
     ],
@@ -66437,8 +67360,17 @@
         "jsType": "Array",
         "kind": "STRUCT_MEMBER",
         "documentation": {
-          "macros": [],
-          "description": " is an array of memory budgets, with one element for each memory heap. A heap's budget is a rough estimate of how much memory the process can: allocate from that heap before allocations may: fail or cause performance degradation. The budget includes any currently allocated device memory."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            },
+            {
+              "kind": "may",
+              "value": ""
+            }
+          ],
+          "description": " is an array of memory budgets, with one element for each memory heap. A heap's budget is a rough estimate of how much memory the process {#0#} allocate from that heap before allocations {#1#} fail or cause performance degradation. The budget includes any currently allocated device memory."
         }
       },
       {
@@ -66679,11 +67611,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "pname",
               "value": "bufferDeviceAddress"
             }
           ],
-          "description": " indicates that the implementation supports the {#0#} feature for logical devices created with multiple physical devices. If this feature is not supported, buffer addresses must: not be queried on a logical device created with more than one physical device."
+          "description": " indicates that the implementation supports the {#1#} feature for logical devices created with multiple physical devices. If this feature is not supported, buffer addresses {#0#} not be queried on a logical device created with more than one physical device."
         }
       }
     ],
@@ -66872,9 +67808,13 @@
             {
               "kind": "etext",
               "value": "SINT"
+            },
+            {
+              "kind": "undefined",
+              "value": ""
             }
           ],
-          "description": " are the color clear values when the format of the image or attachment is signed integer ({#0#}). Signed integer values are converted to the format of the image by casting to the smaller type (with negative 32-bit values mapping to negative values in the smaller type). If the integer clear value is not representable in the target type (e.g. would overflow in conversion to that type), the clear value is undefined:."
+          "description": " are the color clear values when the format of the image or attachment is signed integer ({#0#}). Signed integer values are converted to the format of the image by casting to the smaller type (with negative 32-bit values mapping to negative values in the smaller type). If the integer clear value is not representable in the target type (e.g. would overflow in conversion to that type), the clear value is {#1#}."
         }
       },
       {
@@ -69757,11 +70697,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "fname",
               "value": "vkEnumeratePhysicalDevices"
             }
           ],
-          "description": " must: be one of the device handles returned from a call to {#0#} (see <<devsandqueues-physical-device-enumeration, Physical Device Enumeration>>)."
+          "description": " {#0#} be one of the device handles returned from a call to {#1#} (see <<devsandqueues-physical-device-enumeration, Physical Device Enumeration>>)."
         }
       },
       {
@@ -70370,6 +71314,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "optional",
+              "value": ""
+            },
+            {
               "kind": "pname",
               "value": "fence"
             },
@@ -70378,7 +71326,7 @@
               "value": "VK_NULL_HANDLE"
             }
           ],
-          "description": " is an optional: handle to a fence to be signaled once all submitted command buffers have completed execution. If {#0#} is not {#1#}, it defines a <<synchronization-fences-signaling, fence signal operation>>."
+          "description": " is an {#0#} handle to a fence to be signaled once all submitted command buffers have completed execution. If {#1#} is not {#2#}, it defines a <<synchronization-fences-signaling, fence signal operation>>."
         }
       }
     ],
@@ -70716,6 +71664,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "slink",
               "value": "VkPhysicalDeviceLimits"
             },
@@ -70728,7 +71680,7 @@
               "value": "minMemoryMapAlignment"
             }
           ],
-          "description": " is a reference in which is returned a host-accessible reference to the beginning of the mapped range. This reference minus {#1#} must: be aligned to at least {#0#}::{#2#}."
+          "description": " is a reference in which is returned a host-accessible reference to the beginning of the mapped range. This reference minus {#2#} {#0#} be aligned to at least {#1#}::{#3#}."
         }
       }
     ],
@@ -71660,6 +72612,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "optional",
+              "value": ""
+            },
+            {
               "kind": "pname",
               "value": "fence"
             },
@@ -71668,7 +72624,7 @@
               "value": "VK_NULL_HANDLE"
             }
           ],
-          "description": " is an optional: handle to a fence to be signaled. If {#0#} is not {#1#}, it defines a <<synchronization-fences-signaling, fence signal operation>>."
+          "description": " is an {#0#} handle to a fence to be signaled. If {#1#} is not {#2#}, it defines a <<synchronization-fences-signaling, fence signal operation>>."
         }
       }
     ],
@@ -72025,6 +72981,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_TRUE"
             },
@@ -72041,7 +73001,7 @@
               "value": "pFences"
             }
           ],
-          "description": " is the condition that must: be satisfied to successfully unblock the wait. If {#1#} is {#0#}, then the condition is that all fences in {#2#} are signaled. Otherwise, the condition is that at least one fence in {#3#} is signaled."
+          "description": " is the condition that {#0#} be satisfied to successfully unblock the wait. If {#2#} is {#1#}, then the condition is that all fences in {#3#} are signaled. Otherwise, the condition is that at least one fence in {#4#} is signaled."
         }
       },
       {
@@ -72057,11 +73017,19 @@
         "documentation": {
           "macros": [
             {
+              "kind": "may",
+              "value": ""
+            },
+            {
+              "kind": "may",
+              "value": ""
+            },
+            {
               "kind": "pname",
               "value": "timeout"
             }
           ],
-          "description": " is the timeout period in units of nanoseconds. {#0#} is adjusted to the closest value allowed by the implementation-dependent timeout accuracy, which may: be substantially longer than one nanosecond, and may: be longer than the requested period."
+          "description": " is the timeout period in units of nanoseconds. {#2#} is adjusted to the closest value allowed by the implementation-dependent timeout accuracy, which {#0#} be substantially longer than one nanosecond, and {#1#} be longer than the requested period."
         }
       }
     ],
@@ -76064,6 +77032,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "slink",
               "value": "VkCommandBuffer"
             },
@@ -76072,7 +77044,7 @@
               "value": "commandBufferCount"
             }
           ],
-          "description": " is an array of {#0#} handles in which the resulting command buffer objects are returned. The array must: be at least the length specified by the {#1#} member of pname:pAllocateInfo. Each allocated command buffer begins in the initial state."
+          "description": " is an array of {#1#} handles in which the resulting command buffer objects are returned. The array {#0#} be at least the length specified by the {#2#} member of pname:pAllocateInfo. Each allocated command buffer begins in the initial state."
         }
       }
     ],
@@ -76278,8 +77250,13 @@
         "jsType": "Object",
         "kind": "COMMAND_PARAM",
         "documentation": {
-          "macros": [],
-          "description": " is the command buffer to reset. The command buffer can: be in any state other than <<commandbuffers-lifecycle, pending>>, and is moved into the <<commandbuffers-lifecycle, initial state>>."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " is the command buffer to reset. The command buffer {#0#} be in any state other than <<commandbuffers-lifecycle, pending>>, and is moved into the <<commandbuffers-lifecycle, initial state>>."
         }
       },
       {
@@ -77648,8 +78625,13 @@
         "jsType": "Number",
         "kind": "COMMAND_PARAM",
         "documentation": {
-          "macros": [],
-          "description": " is the number of draws to execute, and can: be zero."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " is the number of draws to execute, and {#0#} be zero."
         }
       },
       {
@@ -77739,8 +78721,13 @@
         "jsType": "Number",
         "kind": "COMMAND_PARAM",
         "documentation": {
-          "macros": [],
-          "description": " is the number of draws to execute, and can: be zero."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " is the number of draws to execute, and {#0#} be zero."
         }
       },
       {
@@ -78597,8 +79584,13 @@
         "jsType": "Number",
         "kind": "COMMAND_PARAM",
         "documentation": {
-          "macros": [],
-          "description": " is the byte offset into the buffer to start updating, and must: be a multiple of 4."
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " is the byte offset into the buffer to start updating, and {#0#} be a multiple of 4."
         }
       },
       {
@@ -78613,8 +79605,13 @@
         "jsType": "Number",
         "kind": "COMMAND_PARAM",
         "documentation": {
-          "macros": [],
-          "description": " is the number of bytes to update, and must: be a multiple of 4."
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " is the number of bytes to update, and {#0#} be a multiple of 4."
         }
       },
       {
@@ -78637,11 +79634,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "pname",
               "value": "dataSize"
             }
           ],
-          "description": " is a reference to the source data for the buffer update, and must: be at least {#0#} bytes in size."
+          "description": " is a reference to the source data for the buffer update, and {#0#} be at least {#1#} bytes in size."
         }
       }
     ],
@@ -78705,8 +79706,13 @@
         "jsType": "Number",
         "kind": "COMMAND_PARAM",
         "documentation": {
-          "macros": [],
-          "description": " is the byte offset into the buffer at which to start filling, and must: be a multiple of 4."
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " is the byte offset into the buffer at which to start filling, and {#0#} be a multiple of 4."
         }
       },
       {
@@ -78723,6 +79729,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_WHOLE_SIZE"
             },
@@ -78735,7 +79745,7 @@
               "value": "offset"
             }
           ],
-          "description": " is the number of bytes to fill, and must: be either a multiple of 4, or {#0#} to fill the range from {#2#} to the end of the buffer. If {#1#} is used and the remaining size of the buffer is not a multiple of 4, then the nearest smaller multiple is used."
+          "description": " is the number of bytes to fill, and {#0#} be either a multiple of 4, or {#1#} to fill the range from {#3#} to the end of the buffer. If {#2#} is used and the remaining size of the buffer is not a multiple of 4, then the nearest smaller multiple is used."
         }
       },
       {
@@ -78822,11 +79832,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR"
             }
           ],
-          "description": " specifies the current layout of the image subresource ranges to be cleared, and must: be {#0#},"
+          "description": " specifies the current layout of the image subresource ranges to be cleared, and {#0#} be {#1#},"
         }
       },
       {
@@ -78929,11 +79943,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "ename",
               "value": "VK_IMAGE_LAYOUT_GENERAL"
             }
           ],
-          "description": " specifies the current layout of the image subresource ranges to be cleared, and must: be {#0#} or ename:VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL."
+          "description": " specifies the current layout of the image subresource ranges to be cleared, and {#0#} be {#1#} or ename:VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL."
         }
       },
       {
@@ -79920,11 +80938,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "elink",
               "value": "VkQueryControlFlagBits"
             }
           ],
-          "description": " is a bitmask of {#0#} specifying constraints on the types of queries that can: be performed."
+          "description": " is a bitmask of {#1#} specifying constraints on the types of queries that {#0#} be performed."
         }
       }
     ],
@@ -81045,8 +82067,13 @@
         "jsType": "Number",
         "kind": "COMMAND_PARAM",
         "documentation": {
-          "macros": [],
-          "description": " is the plane which the application wishes to use, and must: be in the range [eq]#[0, physical device plane count - 1]#."
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " is the plane which the application wishes to use, and {#0#} be in the range [eq]#[0, physical device plane count - 1]#."
         }
       },
       {
@@ -83416,6 +84443,14 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "fname",
               "value": "vkDestroyDebugReportCallbackEXT"
             },
@@ -83428,7 +84463,7 @@
               "value": "callback"
             }
           ],
-          "description": " the {#1#} object to destroy. {#2#} is an externally synchronized object and must: not be used on more than one thread at a time. This means that {#0#} must: not be called when a callback is active."
+          "description": " the {#3#} object to destroy. {#4#} is an externally synchronized object and {#0#} not be used on more than one thread at a time. This means that {#2#} {#1#} not be called when a callback is active."
         }
       },
       {
@@ -83542,6 +84577,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "pname",
               "value": "object"
             },
@@ -83550,7 +84589,7 @@
               "value": "VK_NULL_HANDLE"
             }
           ],
-          "description": " this is the object where the issue was detected. {#0#} can: be {#1#} if there is no object associated with the event."
+          "description": " this is the object where the issue was detected. {#1#} {#0#} be {#2#} if there is no object associated with the event."
         }
       },
       {
@@ -87149,8 +88188,13 @@
         "jsType": "Object",
         "kind": "COMMAND_PARAM",
         "documentation": {
-          "macros": [],
-          "description": " is a logical device on which the event may: occur."
+          "macros": [
+            {
+              "kind": "may",
+              "value": ""
+            }
+          ],
+          "description": " is a logical device on which the event {#0#} occur."
         }
       },
       {
@@ -87248,8 +88292,13 @@
         "jsType": "Object",
         "kind": "COMMAND_PARAM",
         "documentation": {
-          "macros": [],
-          "description": " is the display on which the event may: occur."
+          "macros": [
+            {
+              "kind": "may",
+              "value": ""
+            }
+          ],
+          "description": " is the display on which the event {#0#} occur."
         }
       },
       {
@@ -88568,6 +89617,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "slink",
               "value": "VkPipelineLayout"
             },
@@ -88576,7 +89629,7 @@
               "value": "descriptorUpdateTemplate"
             }
           ],
-          "description": " is a {#0#} object used to program the bindings. It must: be compatible with the layout used to create the {#1#} handle."
+          "description": " is a {#1#} object used to program the bindings. It {#0#} be compatible with the layout used to create the {#2#} handle."
         }
       },
       {
@@ -88592,11 +89645,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "pname",
               "value": "descriptorUpdateTemplate"
             }
           ],
-          "description": " is the set number of the descriptor set in the pipeline layout that will be updated. This must: be the same number used to create the {#0#} handle."
+          "description": " is the set number of the descriptor set in the pipeline layout that will be updated. This {#0#} be the same number used to create the {#1#} handle."
         }
       },
       {
@@ -91859,6 +92916,14 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "fname",
               "value": "vkDestroyDebugUtilsMessengerEXT"
             },
@@ -91871,7 +92936,7 @@
               "value": "messenger"
             }
           ],
-          "description": " the {#1#} object to destroy. {#2#} is an externally synchronized object and must: not be used on more than one thread at a time. This means that {#0#} must: not be called when a callback is active."
+          "description": " the {#3#} object to destroy. {#4#} is an externally synchronized object and {#0#} not be used on more than one thread at a time. This means that {#2#} {#1#} not be called when a callback is active."
         }
       },
       {
@@ -93249,6 +94314,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "pname",
               "value": "pCounterBuffers"
             },
@@ -93257,7 +94326,7 @@
               "value": "pCounterBufferOffsets"
             }
           ],
-          "description": " is an optional array of offsets within each of the {#0#} where the counter values were previously written. The location in each counter buffer at these offsets must: be large enough to contain 4 bytes of data. This data is the number of bytes captured by the previous transform feedback to this buffer. If {#1#} is <i>null</i>, then it is assumed the offsets are zero."
+          "description": " is an optional array of offsets within each of the {#1#} where the counter values were previously written. The location in each counter buffer at these offsets {#0#} be large enough to contain 4 bytes of data. This data is the number of bytes captured by the previous transform feedback to this buffer. If {#2#} is <i>null</i>, then it is assumed the offsets are zero."
         }
       }
     ],
@@ -93341,6 +94410,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "flink",
               "value": "vkCmdBeginTransformFeedbackEXT"
             },
@@ -93349,7 +94422,7 @@
               "value": "vkCmdDrawIndirectByteCountEXT"
             }
           ],
-          "description": " is an optional array of buffer handles to the counter buffers used to record the current byte positions of each transform feedback buffer where the next vertex output data would be captured. This can: be used by a subsequent {#0#} call to resume transform feedback capture from this position. It can also be used by {#1#} to determine the vertex count of the draw call."
+          "description": " is an optional array of buffer handles to the counter buffers used to record the current byte positions of each transform feedback buffer where the next vertex output data would be captured. This {#0#} be used by a subsequent {#1#} call to resume transform feedback capture from this position. It can also be used by {#2#} to determine the vertex count of the draw call."
         }
       },
       {
@@ -93371,6 +94444,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "must",
+              "value": ""
+            },
+            {
               "kind": "pname",
               "value": "pCounterBuffers"
             },
@@ -93379,7 +94456,7 @@
               "value": "pCounterBufferOffsets"
             }
           ],
-          "description": " is an optional array of offsets within each of the {#0#} where the counter values can be written. The location in each counter buffer at these offsets must: be large enough to contain 4 bytes of data. The data stored at this location is the byte offset from the start of the transform feedback buffer binding where the next vertex data would be written. If {#1#} is <i>null</i>, then it is assumed the offsets are zero."
+          "description": " is an optional array of offsets within each of the {#1#} where the counter values can be written. The location in each counter buffer at these offsets {#0#} be large enough to contain 4 bytes of data. The data stored at this location is the byte offset from the start of the transform feedback buffer binding where the next vertex data would be written. If {#2#} is <i>null</i>, then it is assumed the offsets are zero."
         }
       }
     ],
@@ -93462,11 +94539,15 @@
         "documentation": {
           "macros": [
             {
+              "kind": "can",
+              "value": ""
+            },
+            {
               "kind": "elink",
               "value": "VkQueryControlFlagBits"
             }
           ],
-          "description": " is a bitmask of {#0#} specifying constraints on the types of queries that can: be performed."
+          "description": " is a bitmask of {#1#} specifying constraints on the types of queries that {#0#} be performed."
         }
       },
       {
@@ -93836,6 +94917,10 @@
         "documentation": {
           "macros": [
             {
+              "kind": "may",
+              "value": ""
+            },
+            {
               "kind": "pname",
               "value": "imageView"
             },
@@ -93844,7 +94929,7 @@
               "value": "VK_NULL_HANDLE"
             }
           ],
-          "description": " is an image view handle that specifies the shading rate image. {#0#} may: be set to {#1#}, which is equivalent to specifying a view of an image filled with zero values."
+          "description": " is an image view handle that specifies the shading rate image. {#1#} {#0#} be set to {#2#}, which is equivalent to specifying a view of an image filled with zero values."
         }
       },
       {
@@ -94178,8 +95263,13 @@
         "jsType": "Number",
         "kind": "COMMAND_PARAM",
         "documentation": {
-          "macros": [],
-          "description": " is the number of draws to execute, and can: be zero."
+          "macros": [
+            {
+              "kind": "can",
+              "value": ""
+            }
+          ],
+          "description": " is the number of draws to execute, and {#0#} be zero."
         }
       },
       {
@@ -94949,8 +96039,13 @@
         "jsType": "Object",
         "kind": "COMMAND_PARAM",
         "documentation": {
-          "macros": [],
-          "description": " is the buffer containing instance data that will be used to build the acceleration structure as described in <<acceleration-structure-instance, Accelerator structure instances.>> This parameter must: be <i>null</i> for bottom level acceleration structures."
+          "macros": [
+            {
+              "kind": "must",
+              "value": ""
+            }
+          ],
+          "description": " is the buffer containing instance data that will be used to build the acceleration structure as described in <<acceleration-structure-instance, Accelerator structure instances.>> This parameter {#0#} be <i>null</i> for bottom level acceleration structures."
         }
       },
       {

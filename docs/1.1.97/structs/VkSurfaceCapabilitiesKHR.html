@@ -79,7 +79,7 @@ instanceCreateInfo.supportedUsageFlags = ;
       <vk-property-entry>
         <vk-property-prototype>VkSurfaceCapabilitiesKHR.prototype.<vk-prototype-name>maxImageCount</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is the maximum number of images the specified device supports for a swapchain created for the surface, and will be either 0, or greater than or equal to <b>minImageCount</b>. A value of 0 means that there is no limit on the number of images, though there may: be limits related to the total amount of memory used by presentable images.</vk-property-description>
+        <vk-property-description> is the maximum number of images the specified device supports for a swapchain created for the surface, and will be either 0, or greater than or equal to <b>minImageCount</b>. A value of 0 means that there is no limit on the number of images, though there <i>may</i> be limits related to the total amount of memory used by presentable images.</vk-property-description>
       </vk-property-entry>
       <!-- VkSurfaceCapabilitiesKHR.prototype.currentExtent -->
       <vk-property-entry>
@@ -103,7 +103,7 @@ instanceCreateInfo.supportedUsageFlags = ;
       <vk-property-entry>
         <vk-property-prototype>VkSurfaceCapabilitiesKHR.prototype.<vk-prototype-name>maxImageArrayLayers</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is the maximum number of layers presentable images can: have for a swapchain created for this device and surface, and will be at least one.</vk-property-description>
+        <vk-property-description> is the maximum number of layers presentable images <i>can</i> have for a swapchain created for this device and surface, and will be at least one.</vk-property-description>
       </vk-property-entry>
       <!-- VkSurfaceCapabilitiesKHR.prototype.supportedTransforms -->
       <vk-property-entry>
@@ -121,13 +121,13 @@ instanceCreateInfo.supportedUsageFlags = ;
       <vk-property-entry>
         <vk-property-prototype>VkSurfaceCapabilitiesKHR.prototype.<vk-prototype-name>supportedCompositeAlpha</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a bitmask of <b>VkCompositeAlphaFlagBitsKHR</b>, representing the alpha compositing modes supported by the presentation engine for the surface on the specified device, and at least one bit will be set. Opaque composition can: be achieved in any alpha compositing mode by either using an image format that has no alpha component, or by ensuring that all pixels in the presentable images have an alpha value of 1.0.</vk-property-description>
+        <vk-property-description> is a bitmask of <b>VkCompositeAlphaFlagBitsKHR</b>, representing the alpha compositing modes supported by the presentation engine for the surface on the specified device, and at least one bit will be set. Opaque composition <i>can</i> be achieved in any alpha compositing mode by either using an image format that has no alpha component, or by ensuring that all pixels in the presentable images have an alpha value of 1.0.</vk-property-description>
       </vk-property-entry>
       <!-- VkSurfaceCapabilitiesKHR.prototype.supportedUsageFlags -->
       <vk-property-entry>
         <vk-property-prototype>VkSurfaceCapabilitiesKHR.prototype.<vk-prototype-name>supportedUsageFlags</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is a bitmask of <b>VkImageUsageFlagBits</b> representing the ways the application can: use the presentable images of a swapchain created with <b>VkPresentModeKHR</b> set to <b>VK_PRESENT_MODE_IMMEDIATE_KHR</b>, ename:VK_PRESENT_MODE_MAILBOX_KHR, <b>VK_PRESENT_MODE_FIFO_KHR</b> or ename:VK_PRESENT_MODE_FIFO_RELAXED_KHR</vk-property-description>
+        <vk-property-description> is a bitmask of <b>VkImageUsageFlagBits</b> representing the ways the application <i>can</i> use the presentable images of a swapchain created with <b>VkPresentModeKHR</b> set to <b>VK_PRESENT_MODE_IMMEDIATE_KHR</b>, ename:VK_PRESENT_MODE_MAILBOX_KHR, <b>VK_PRESENT_MODE_FIFO_KHR</b> or ename:VK_PRESENT_MODE_FIFO_RELAXED_KHR</vk-property-description>
       </vk-property-entry>
       
     </vk-properties>

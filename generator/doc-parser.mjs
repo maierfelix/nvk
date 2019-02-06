@@ -252,10 +252,10 @@ function extractDescriptionMacros(desc) {
   MACROS.map(rx => {
     let match = null;
     while (match = rx.exec(desc)) {
-      if (match[0] && match[1] && match[2]) {
+      if (match[0] && match[1]) {
         let macro = {
           kind: match[1],
-          value: match[2]
+          value: match[2] || ""
         };
         out.push(macro);
         desc = desc.replace(match[0], `{#${out.length - 1}#}`);
