@@ -11,6 +11,7 @@ import parseDocumentation from "../doc-parser";
 
 import {
   warn,
+  getNodeByName,
   isIgnoreableType
 } from "../utils";
 
@@ -369,15 +370,12 @@ function expandMacro(macro, macroIndex, text) {
   let replacement = null;
   switch (kind) {
     case "slink":
-      replacement = `<b><a href="../handles/${value}.html">${value}</a></b>`;
-    break;
     case "sname":
-      replacement = `<b><a href="../structs/${value}.html">${value}</a></b>`;
-    break;
     case "flink":
-    case "fname":
-      replacement = `<b><a href="../calls/${value}.html">${value}</a></b>`;
-    break;
+    case "fname": {
+      let obj = getNodeByName(value, ast);
+      replacement = `<b><a href="../${getObjectFolder(obj)}/${value}.html">${value}</a></b>`;
+    } break;
     case "pname":
     case "ename":
     case "elink":

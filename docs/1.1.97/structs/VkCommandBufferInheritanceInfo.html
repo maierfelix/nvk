@@ -83,19 +83,19 @@ instanceCreateInfo.pipelineStatistics = ;
       <vk-property-entry>
         <vk-property-prototype>VkCommandBufferInheritanceInfo.prototype.<vk-prototype-name>renderPass</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../handles/VkRenderPass.html">VkRenderPass</a></vk-property-type>
-        <vk-property-description> is a <b><a href="../handles/VkRenderPass.html">VkRenderPass</a></b> object defining which render passes the <b><a href="../structs/VkCommandBuffer.html">VkCommandBuffer</a></b> will be <<renderpass-compatibility, compatible>> with and can: be executed within. If the <b><a href="../structs/VkCommandBuffer.html">VkCommandBuffer</a></b> will not be executed within a render pass instance, <b>renderPass</b> is ignored.</vk-property-description>
+        <vk-property-description> is a <b><a href="../handles/VkRenderPass.html">VkRenderPass</a></b> object defining which render passes the <b><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></b> will be <<renderpass-compatibility, compatible>> with and can: be executed within. If the <b><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></b> will not be executed within a render pass instance, <b>renderPass</b> is ignored.</vk-property-description>
       </vk-property-entry>
       <!-- VkCommandBufferInheritanceInfo.prototype.subpass -->
       <vk-property-entry>
         <vk-property-prototype>VkCommandBufferInheritanceInfo.prototype.<vk-prototype-name>subpass</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
-        <vk-property-description> is the index of the subpass within the render pass instance that the <b><a href="../structs/VkCommandBuffer.html">VkCommandBuffer</a></b> will be executed within. If the <b><a href="../structs/VkCommandBuffer.html">VkCommandBuffer</a></b> will not be executed within a render pass instance, <b>subpass</b> is ignored.</vk-property-description>
+        <vk-property-description> is the index of the subpass within the render pass instance that the <b><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></b> will be executed within. If the <b><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></b> will not be executed within a render pass instance, <b>subpass</b> is ignored.</vk-property-description>
       </vk-property-entry>
       <!-- VkCommandBufferInheritanceInfo.prototype.framebuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkCommandBufferInheritanceInfo.prototype.<vk-prototype-name>framebuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../handles/VkFramebuffer.html">VkFramebuffer</a></vk-property-type>
-        <vk-property-description> optionally refers to the <b><a href="../handles/VkFramebuffer.html">VkFramebuffer</a></b> object that the <b><a href="../structs/VkCommandBuffer.html">VkCommandBuffer</a></b> will be rendering to if it is executed within a render pass instance. It can: be <b>VK_NULL_HANDLE</b> if the framebuffer is not known, or if the <b><a href="../structs/VkCommandBuffer.html">VkCommandBuffer</a></b> will not be executed within a render pass instance.+[NOTE].Note====Specifying the exact framebuffer that the secondary command buffer will beexecuted with may: result in better performance at command buffer executiontime.====</vk-property-description>
+        <vk-property-description> optionally refers to the <b><a href="../handles/VkFramebuffer.html">VkFramebuffer</a></b> object that the <b><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></b> will be rendering to if it is executed within a render pass instance. It can: be <b>VK_NULL_HANDLE</b> if the framebuffer is not known, or if the <b><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></b> will not be executed within a render pass instance.+[NOTE].Note====Specifying the exact framebuffer that the secondary command buffer will beexecuted with may: result in better performance at command buffer executiontime.====</vk-property-description>
       </vk-property-entry>
       <!-- VkCommandBufferInheritanceInfo.prototype.occlusionQueryEnable -->
       <vk-property-entry>
