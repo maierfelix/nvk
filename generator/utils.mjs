@@ -198,6 +198,13 @@ export function isPNextMember(member) {
   return member.name === `pNext` && member.isVoidPointer;
 };
 
+export function isWin32SupportedExtension(platform) {
+  return (
+    platform === "default" ||
+    platform === "win32"
+  );
+}
+
 export function getJavaScriptTypedArrayName(type) {
   switch (type) {
     case "void *":

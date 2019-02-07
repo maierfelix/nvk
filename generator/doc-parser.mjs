@@ -347,7 +347,6 @@ function parse(version) {
                 chapter.map(entry => {
                   entries.push(entry);
                 });
-                fs.unlinkSync(`${DOCS_DIR}/doc_tmp`);
                 zip.readEntry();
               });
               readStream.pipe(writeStream);
@@ -359,6 +358,7 @@ function parse(version) {
       });
       zip.on("end", () => {
         transformDescriptions(entries);
+        if (fs.existsSync(`${DOCS_DIR}/doc_tmp`)) fs.unlinkSync(`${DOCS_DIR}/doc_tmp`);
         resolve(entries);
       });
     });

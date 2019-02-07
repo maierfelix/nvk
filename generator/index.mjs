@@ -21,7 +21,8 @@ import generateDocs from "./generators/docs";
 import {
   warn,
   formatVkVersion,
-  getSortedIncludes
+  getSortedIncludes,
+  isWin32SupportedExtension
 } from "./utils";
 
 const GEN_FILE_NOTICE = `/*
@@ -202,7 +203,7 @@ async function generateBindings({xml, version, docs, incremental} = _) {
   structs = structs.filter(struct => {
     if (struct.extension) {
       let {extension} = struct;
-      if (extension.platform !== "default" && extension.platform !== "win32") return false;
+      if (!isWin32SupportedExtension(extension.platform)) return false;
     }
     return true;
   });
@@ -210,7 +211,7 @@ async function generateBindings({xml, version, docs, incremental} = _) {
   calls = calls.filter(call => {
     if (call.extension) {
       let {extension} = call;
-      if (extension.platform !== "default" && extension.platform !== "win32") return false;
+      if (!isWin32SupportedExtension(extension.platform)) return false;
     }
     return true;
   });

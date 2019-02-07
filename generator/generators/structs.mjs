@@ -12,7 +12,8 @@ import {
   getNodeByName,
   isPNextMember,
   isIgnoreableType,
-  getAutoStructureType
+  getAutoStructureType,
+  isWin32SupportedExtension
 } from "../utils";
 
 let ast = null;
@@ -436,11 +437,32 @@ function processSourceSetter(struct, member) {
       if (member.isStructType || member.isHandleType || isPNextMember(member)) {
         let deinitialize = ``;
         if (isPNextMember(member)) {
+          let {extensions} = struct;
           validObjectCondition = `IsValidStructureObject(obj)`;
           initialize = `
       self->${member.name}.Reset<v8::Object>(obj);
       self->instance.${member.name} = (${member.rawType}) DynamicObjectUnwrapInstance(obj);
-      //VkStructureType sType = ((int*)(self->instance.pNext))[0]);`;
+      VkStructureType sType = static_cast<VkStructureType>(((int*)(self->instance.${member.name}))[0]);`;
+          if (extensions) {
+            initialize += `
+      if (`;
+            extensions.map((extensionName, index) => {
+              let ifAnd = index < extensions.length - 1 ? `&&` : ``;
+              let structExt = getNodeByName(extensionName, ast);
+              if (!structExt || !structExt.sType) {
+                warn(`Cannot resolve struct by extension name '${extensionName}'`);
+              }
+              initialize += `
+        sType != ${structExt.sType} ${ifAnd}`;
+            });
+            initialize += `
+      ) {
+        Nan::ThrowTypeError("Invalid type for '${struct.name}.${member.name}'");
+      }`;
+          } else {
+            initialize += `
+      Nan::ThrowTypeError("'${struct.name}.${member.name}' must be 'null'");`;
+          }
         }
         if (member.isHandleType) {
           deinitialize = `self->instance.${member.name} = VK_NULL_HANDLE;`;
@@ -477,6 +499,25 @@ function processSourceSetter(struct, member) {
 
 function processFlushSourceSetter(struct, member) {
   if (struct.returnedonly) return ``;
+  if (isPNextMember(member)) {
+    let {extensions} = struct;
+    if (!extensions) return ``;
+    let out = `
+    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    VkStructureType sType = GetStructureTypeFromObject(obj);`;
+    extensions.map((extensionName, index) => {
+      let structExt = getNodeByName(extensionName, ast);
+      if (!structExt || !structExt.sType) warn(`Cannot resolve struct by extension name '${extensionName}'`);
+      if (structExt.extension && !isWin32SupportedExtension(structExt.extension.platform)) return;
+      out += `
+    ${index <= 0 ? "if" : "else if"} (sType == ${structExt.sType}) {
+      _${structExt.name}* structExt = Nan::ObjectWrap::Unwrap<_${structExt.name}>(obj);
+      if (!structExt->flush()) return false;
+    }
+      `;
+    });
+    return out;
+  }
   if (member.isStaticArray && member.isNumericArray) {
     return `
     if (value->IsArray()) {
@@ -494,7 +535,7 @@ function processFlushSourceSetter(struct, member) {
       return false;
     }`;
   }
-  else if (member.isStaticArray && (member.isStructType)) {
+  if (member.isStaticArray && (member.isStructType)) {
     return `
     if (value->IsArray()) {
       v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(value);
@@ -524,7 +565,7 @@ function processFlushSourceSetter(struct, member) {
       return false;
     }`;
   }
-  else if (member.isArray && (member.isStructType || member.isHandleType)) {
+  if (member.isArray && (member.isStructType || member.isHandleType)) {
     let isReference = member.isConstant && member.dereferenceCount > 0;
     let flusher = member.isStructType ? `if (!result->flush()) return false;` : ``;
       return `
@@ -548,13 +589,13 @@ function processFlushSourceSetter(struct, member) {
     };
     self->instance.${member.name} = data->data();`;
   }
-  else if (member.isStructType && member.dereferenceCount <= 0 && !member.isConstant) {
+  if (member.isStructType && member.dereferenceCount <= 0 && !member.isConstant) {
     return `
     _${member.type}* result = Nan::ObjectWrap::Unwrap<_${member.type}>(Nan::To<v8::Object>(value).ToLocalChecked());
     if (!result->flush()) return false;
     self->instance.${member.name} = result->instance;`;
   }
-  else if (member.rawType === "const char * const*") {
+  if (member.rawType === "const char * const*") {
     return `
     std::vector<char*>* data = self->v${member.name};
     data->clear();
@@ -567,9 +608,8 @@ function processFlushSourceSetter(struct, member) {
     };
     self->instance.${member.name} = data->data();`;
   }
-  else {
-    warn(`Cannot process ${struct.name}.${member.name} in flush source-setter!`);
-  }
+  warn(`Cannot process ${struct.name}.${member.name} in flush source-setter!`);
+  return ``;
 };
 
 function processSourceIncludes(struct) {
@@ -605,6 +645,7 @@ function processSourceIncludes(struct) {
 };
 
 function isFlushableMember(member) {
+  if (isPNextMember(member)) return true;
   if (member.isStructType && member.dereferenceCount <= 0 && !member.isConstant) return true;
   return isHeaderHeapVector(member);
 };
