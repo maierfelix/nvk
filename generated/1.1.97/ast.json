@@ -17605,8 +17605,37 @@
     "sType": "VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO",
     "extensions": [
       "VkPhysicalDeviceFeatures2",
+      "VkPhysicalDeviceVariablePointerFeatures",
+      "VkPhysicalDeviceMultiviewFeatures",
       "VkDeviceGroupDeviceCreateInfo",
-      "VkDeviceMemoryOverallocationCreateInfoAMD"
+      "VkPhysicalDevice16BitStorageFeatures",
+      "VkPhysicalDeviceSamplerYcbcrConversionFeatures",
+      "VkPhysicalDeviceProtectedMemoryFeatures",
+      "VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT",
+      "VkPhysicalDeviceInlineUniformBlockFeaturesEXT",
+      "VkPhysicalDeviceShaderDrawParameterFeatures",
+      "VkPhysicalDeviceFloat16Int8FeaturesKHR",
+      "VkPhysicalDeviceDescriptorIndexingFeaturesEXT",
+      "VkPhysicalDevice8BitStorageFeaturesKHR",
+      "VkPhysicalDeviceConditionalRenderingFeaturesEXT",
+      "VkPhysicalDeviceVulkanMemoryModelFeaturesKHR",
+      "VkPhysicalDeviceShaderAtomicInt64FeaturesKHR",
+      "VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT",
+      "VkPhysicalDeviceASTCDecodeFeaturesEXT",
+      "VkPhysicalDeviceTransformFeedbackFeaturesEXT",
+      "VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV",
+      "VkPhysicalDeviceExclusiveScissorFeaturesNV",
+      "VkPhysicalDeviceCornerSampledImageFeaturesNV",
+      "VkPhysicalDeviceComputeShaderDerivativesFeaturesNV",
+      "VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV",
+      "VkPhysicalDeviceShaderImageFootprintFeaturesNV",
+      "VkPhysicalDeviceShadingRateImageFeaturesNV",
+      "VkPhysicalDeviceMeshShaderFeaturesNV",
+      "VkDeviceMemoryOverallocationCreateInfoAMD",
+      "VkPhysicalDeviceFragmentDensityMapFeaturesEXT",
+      "VkPhysicalDeviceScalarBlockLayoutFeaturesEXT",
+      "VkPhysicalDeviceMemoryPriorityFeaturesEXT",
+      "VkPhysicalDeviceBufferAddressFeaturesEXT"
     ],
     "documentation": {
       "macros": [],
@@ -20665,8 +20694,11 @@
       "VkExternalMemoryImageCreateInfoNV",
       "VkExternalMemoryImageCreateInfo",
       "VkImageSwapchainCreateInfoKHR",
+      "VkImageFormatListCreateInfoKHR",
+      "VkExternalFormatANDROID",
       "VkImageDrmFormatModifierListCreateInfoEXT",
-      "VkImageDrmFormatModifierExplicitCreateInfoEXT"
+      "VkImageDrmFormatModifierExplicitCreateInfoEXT",
+      "VkImageStencilUsageCreateInfoEXT"
     ],
     "documentation": {
       "macros": [],
@@ -20921,6 +20953,7 @@
     "sType": "VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO",
     "extensions": [
       "VkImageViewUsageCreateInfo",
+      "VkSamplerYcbcrConversionInfo",
       "VkImageViewASTCDecodeModeEXT"
     ],
     "documentation": {
@@ -26013,6 +26046,7 @@
     ],
     "sType": "VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO",
     "extensions": [
+      "VkSamplerYcbcrConversionInfo",
       "VkSamplerReductionModeCreateInfoEXT"
     ],
     "documentation": {
@@ -31571,7 +31605,9 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
-    "extends": "VkPresentInfoKHR",
+    "extends": [
+      "VkPresentInfoKHR"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -32921,7 +32957,8 @@
     "sType": "VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR",
     "extensions": [
       "VkSwapchainCounterCreateInfoEXT",
-      "VkDeviceGroupSwapchainCreateInfoKHR"
+      "VkDeviceGroupSwapchainCreateInfoKHR",
+      "VkImageFormatListCreateInfoKHR"
     ],
     "documentation": {
       "macros": [],
@@ -33240,7 +33277,9 @@
         }
       }
     ],
-    "extends": "VkInstanceCreateInfo",
+    "extends": [
+      "VkInstanceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -33330,7 +33369,9 @@
         }
       }
     ],
-    "extends": "VkInstanceCreateInfo",
+    "extends": [
+      "VkInstanceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_VALIDATION_FLAGS_EXT",
     "documentation": {
       "macros": [],
@@ -33462,7 +33503,9 @@
         }
       }
     ],
-    "extends": "VkInstanceCreateInfo",
+    "extends": [
+      "VkInstanceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT",
     "documentation": {
       "macros": [],
@@ -33532,7 +33575,9 @@
         }
       }
     ],
-    "extends": "VkPipelineRasterizationStateCreateInfo",
+    "extends": [
+      "VkPipelineRasterizationStateCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD",
     "documentation": {
       "macros": [],
@@ -33926,7 +33971,9 @@
         }
       }
     ],
-    "extends": "VkImageCreateInfo",
+    "extends": [
+      "VkImageCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV",
     "documentation": {
       "macros": [],
@@ -33991,7 +34038,9 @@
         }
       }
     ],
-    "extends": "VkBufferCreateInfo",
+    "extends": [
+      "VkBufferCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_BUFFER_CREATE_INFO_NV",
     "documentation": {
       "macros": [],
@@ -34081,7 +34130,9 @@
         }
       }
     ],
-    "extends": "VkMemoryAllocateInfo",
+    "extends": [
+      "VkMemoryAllocateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV",
     "documentation": {
       "macros": [],
@@ -34309,7 +34360,9 @@
         }
       }
     ],
-    "extends": "VkImageCreateInfo",
+    "extends": [
+      "VkImageCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_NV",
     "documentation": {
       "macros": [],
@@ -34392,7 +34445,9 @@
         }
       }
     ],
-    "extends": "VkMemoryAllocateInfo",
+    "extends": [
+      "VkMemoryAllocateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_NV",
     "documentation": {
       "macros": [],
@@ -34486,7 +34541,9 @@
         }
       }
     ],
-    "extends": "VkMemoryAllocateInfo",
+    "extends": [
+      "VkMemoryAllocateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_NV",
     "documentation": {
       "macros": [],
@@ -34572,7 +34629,9 @@
         }
       }
     ],
-    "extends": "VkMemoryAllocateInfo",
+    "extends": [
+      "VkMemoryAllocateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_NV",
     "documentation": {
       "macros": [],
@@ -34757,7 +34816,9 @@
         }
       }
     ],
-    "extends": "VkSubmitInfo",
+    "extends": [
+      "VkSubmitInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_NV",
     "documentation": {
       "macros": [],
@@ -36433,8 +36494,41 @@
         }
       }
     ],
-    "extends": "VkDeviceCreateInfo",
+    "extends": [
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2",
+    "extensions": [
+      "VkPhysicalDeviceVariablePointerFeatures",
+      "VkPhysicalDeviceMultiviewFeatures",
+      "VkPhysicalDevice16BitStorageFeatures",
+      "VkPhysicalDeviceSamplerYcbcrConversionFeatures",
+      "VkPhysicalDeviceProtectedMemoryFeatures",
+      "VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT",
+      "VkPhysicalDeviceInlineUniformBlockFeaturesEXT",
+      "VkPhysicalDeviceShaderDrawParameterFeatures",
+      "VkPhysicalDeviceFloat16Int8FeaturesKHR",
+      "VkPhysicalDeviceDescriptorIndexingFeaturesEXT",
+      "VkPhysicalDevice8BitStorageFeaturesKHR",
+      "VkPhysicalDeviceConditionalRenderingFeaturesEXT",
+      "VkPhysicalDeviceVulkanMemoryModelFeaturesKHR",
+      "VkPhysicalDeviceShaderAtomicInt64FeaturesKHR",
+      "VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT",
+      "VkPhysicalDeviceASTCDecodeFeaturesEXT",
+      "VkPhysicalDeviceTransformFeedbackFeaturesEXT",
+      "VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV",
+      "VkPhysicalDeviceExclusiveScissorFeaturesNV",
+      "VkPhysicalDeviceCornerSampledImageFeaturesNV",
+      "VkPhysicalDeviceComputeShaderDerivativesFeaturesNV",
+      "VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV",
+      "VkPhysicalDeviceShaderImageFootprintFeaturesNV",
+      "VkPhysicalDeviceShadingRateImageFeaturesNV",
+      "VkPhysicalDeviceMeshShaderFeaturesNV",
+      "VkPhysicalDeviceFragmentDensityMapFeaturesEXT",
+      "VkPhysicalDeviceScalarBlockLayoutFeaturesEXT",
+      "VkPhysicalDeviceMemoryPriorityFeaturesEXT",
+      "VkPhysicalDeviceBufferAddressFeaturesEXT"
+    ],
     "documentation": {
       "macros": [],
       "category": "Features, Limits, and Formats",
@@ -36502,8 +36596,41 @@
       }
     ],
     "alias": "VkPhysicalDeviceFeatures2",
-    "extends": "VkDeviceCreateInfo",
+    "extends": [
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2_KHR",
+    "extensions": [
+      "VkPhysicalDeviceVariablePointerFeatures",
+      "VkPhysicalDeviceMultiviewFeatures",
+      "VkPhysicalDevice16BitStorageFeatures",
+      "VkPhysicalDeviceSamplerYcbcrConversionFeatures",
+      "VkPhysicalDeviceProtectedMemoryFeatures",
+      "VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT",
+      "VkPhysicalDeviceInlineUniformBlockFeaturesEXT",
+      "VkPhysicalDeviceShaderDrawParameterFeatures",
+      "VkPhysicalDeviceFloat16Int8FeaturesKHR",
+      "VkPhysicalDeviceDescriptorIndexingFeaturesEXT",
+      "VkPhysicalDevice8BitStorageFeaturesKHR",
+      "VkPhysicalDeviceConditionalRenderingFeaturesEXT",
+      "VkPhysicalDeviceVulkanMemoryModelFeaturesKHR",
+      "VkPhysicalDeviceShaderAtomicInt64FeaturesKHR",
+      "VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT",
+      "VkPhysicalDeviceASTCDecodeFeaturesEXT",
+      "VkPhysicalDeviceTransformFeedbackFeaturesEXT",
+      "VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV",
+      "VkPhysicalDeviceExclusiveScissorFeaturesNV",
+      "VkPhysicalDeviceCornerSampledImageFeaturesNV",
+      "VkPhysicalDeviceComputeShaderDerivativesFeaturesNV",
+      "VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV",
+      "VkPhysicalDeviceShaderImageFootprintFeaturesNV",
+      "VkPhysicalDeviceShadingRateImageFeaturesNV",
+      "VkPhysicalDeviceMeshShaderFeaturesNV",
+      "VkPhysicalDeviceFragmentDensityMapFeaturesEXT",
+      "VkPhysicalDeviceScalarBlockLayoutFeaturesEXT",
+      "VkPhysicalDeviceMemoryPriorityFeaturesEXT",
+      "VkPhysicalDeviceBufferAddressFeaturesEXT"
+    ],
     "documentation": {
       "macros": [],
       "category": "Features, Limits, and Formats",
@@ -37233,7 +37360,9 @@
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2",
     "extensions": [
       "VkPhysicalDeviceExternalImageFormatInfo",
-      "VkPhysicalDeviceImageDrmFormatModifierInfoEXT"
+      "VkImageFormatListCreateInfoKHR",
+      "VkPhysicalDeviceImageDrmFormatModifierInfoEXT",
+      "VkImageStencilUsageCreateInfoEXT"
     ],
     "documentation": {
       "macros": [],
@@ -37450,7 +37579,9 @@
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2_KHR",
     "extensions": [
       "VkPhysicalDeviceExternalImageFormatInfo",
-      "VkPhysicalDeviceImageDrmFormatModifierInfoEXT"
+      "VkImageFormatListCreateInfoKHR",
+      "VkPhysicalDeviceImageDrmFormatModifierInfoEXT",
+      "VkImageStencilUsageCreateInfoEXT"
     ],
     "documentation": {
       "macros": [],
@@ -38242,7 +38373,9 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES_KHR",
     "documentation": {
       "macros": [],
@@ -38435,7 +38568,9 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES_KHR",
     "documentation": {
       "macros": [],
@@ -38537,7 +38672,9 @@
         }
       }
     ],
-    "extends": "VkPresentInfoKHR",
+    "extends": [
+      "VkPresentInfoKHR"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PRESENT_REGIONS_KHR",
     "documentation": {
       "macros": [],
@@ -38736,7 +38873,10 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES",
     "documentation": {
       "macros": [],
@@ -38812,7 +38952,10 @@
       }
     ],
     "alias": "VkPhysicalDeviceVariablePointerFeatures",
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES_KHR",
     "documentation": {
       "macros": [],
@@ -39086,7 +39229,9 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceImageFormatInfo2",
+    "extends": [
+      "VkPhysicalDeviceImageFormatInfo2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_IMAGE_FORMAT_INFO",
     "documentation": {
       "macros": [],
@@ -39158,7 +39303,9 @@
       }
     ],
     "alias": "VkPhysicalDeviceExternalImageFormatInfo",
-    "extends": "VkPhysicalDeviceImageFormatInfo2",
+    "extends": [
+      "VkPhysicalDeviceImageFormatInfo2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_IMAGE_FORMAT_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -39226,7 +39373,9 @@
         }
       }
     ],
-    "extends": "VkImageFormatProperties2",
+    "extends": [
+      "VkImageFormatProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_EXTERNAL_IMAGE_FORMAT_PROPERTIES",
     "documentation": {
       "macros": [],
@@ -39295,7 +39444,9 @@
       }
     ],
     "alias": "VkExternalImageFormatProperties",
-    "extends": "VkImageFormatProperties2",
+    "extends": [
+      "VkImageFormatProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_EXTERNAL_IMAGE_FORMAT_PROPERTIES_KHR",
     "documentation": {
       "macros": [],
@@ -39813,7 +39964,9 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ID_PROPERTIES",
     "documentation": {
       "macros": [],
@@ -39932,7 +40085,9 @@
       }
     ],
     "alias": "VkPhysicalDeviceIDProperties",
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ID_PROPERTIES_KHR",
     "documentation": {
       "macros": [],
@@ -40003,7 +40158,9 @@
         }
       }
     ],
-    "extends": "VkImageCreateInfo",
+    "extends": [
+      "VkImageCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO",
     "documentation": {
       "macros": [],
@@ -40075,7 +40232,9 @@
       }
     ],
     "alias": "VkExternalMemoryImageCreateInfo",
-    "extends": "VkImageCreateInfo",
+    "extends": [
+      "VkImageCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -40146,7 +40305,9 @@
         }
       }
     ],
-    "extends": "VkBufferCreateInfo",
+    "extends": [
+      "VkBufferCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_BUFFER_CREATE_INFO",
     "documentation": {
       "macros": [],
@@ -40218,7 +40379,9 @@
       }
     ],
     "alias": "VkExternalMemoryBufferCreateInfo",
-    "extends": "VkBufferCreateInfo",
+    "extends": [
+      "VkBufferCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_BUFFER_CREATE_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -40297,7 +40460,9 @@
         }
       }
     ],
-    "extends": "VkMemoryAllocateInfo",
+    "extends": [
+      "VkMemoryAllocateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO",
     "documentation": {
       "macros": [],
@@ -40377,7 +40542,9 @@
       }
     ],
     "alias": "VkExportMemoryAllocateInfo",
-    "extends": "VkMemoryAllocateInfo",
+    "extends": [
+      "VkMemoryAllocateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -40467,7 +40634,9 @@
         }
       }
     ],
-    "extends": "VkMemoryAllocateInfo",
+    "extends": [
+      "VkMemoryAllocateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -40567,7 +40736,9 @@
         }
       }
     ],
-    "extends": "VkMemoryAllocateInfo",
+    "extends": [
+      "VkMemoryAllocateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -40792,7 +40963,9 @@
         }
       }
     ],
-    "extends": "VkMemoryAllocateInfo",
+    "extends": [
+      "VkMemoryAllocateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_IMPORT_MEMORY_FD_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -41116,7 +41289,9 @@
         }
       }
     ],
-    "extends": "VkSubmitInfo",
+    "extends": [
+      "VkSubmitInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -41593,7 +41768,9 @@
         }
       }
     ],
-    "extends": "VkSemaphoreCreateInfo",
+    "extends": [
+      "VkSemaphoreCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_CREATE_INFO",
     "documentation": {
       "macros": [],
@@ -41673,7 +41850,9 @@
       }
     ],
     "alias": "VkExportSemaphoreCreateInfo",
-    "extends": "VkSemaphoreCreateInfo",
+    "extends": [
+      "VkSemaphoreCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_CREATE_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -41901,7 +42080,9 @@
         }
       }
     ],
-    "extends": "VkSemaphoreCreateInfo",
+    "extends": [
+      "VkSemaphoreCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -42055,7 +42236,9 @@
         }
       }
     ],
-    "extends": "VkSubmitInfo",
+    "extends": [
+      "VkSubmitInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_D3D12_FENCE_SUBMIT_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -42809,7 +42992,9 @@
         }
       }
     ],
-    "extends": "VkFenceCreateInfo",
+    "extends": [
+      "VkFenceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_EXPORT_FENCE_CREATE_INFO",
     "documentation": {
       "macros": [],
@@ -42889,7 +43074,9 @@
       }
     ],
     "alias": "VkExportFenceCreateInfo",
-    "extends": "VkFenceCreateInfo",
+    "extends": [
+      "VkFenceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_EXPORT_FENCE_CREATE_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -43117,7 +43304,9 @@
         }
       }
     ],
-    "extends": "VkFenceCreateInfo",
+    "extends": [
+      "VkFenceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_EXPORT_FENCE_WIN32_HANDLE_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -43500,7 +43689,10 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES",
     "documentation": {
       "macros": [],
@@ -43607,7 +43799,10 @@
       }
     ],
     "alias": "VkPhysicalDeviceMultiviewFeatures",
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES_KHR",
     "documentation": {
       "macros": [],
@@ -43685,7 +43880,9 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES",
     "documentation": {
       "macros": [],
@@ -43764,7 +43961,9 @@
       }
     ],
     "alias": "VkPhysicalDeviceMultiviewProperties",
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES_KHR",
     "documentation": {
       "macros": [],
@@ -43924,7 +44123,9 @@
         }
       }
     ],
-    "extends": "VkRenderPassCreateInfo",
+    "extends": [
+      "VkRenderPassCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO",
     "documentation": {
       "macros": [],
@@ -44085,7 +44286,9 @@
       }
     ],
     "alias": "VkRenderPassMultiviewCreateInfo",
-    "extends": "VkRenderPassCreateInfo",
+    "extends": [
+      "VkRenderPassCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -44546,7 +44749,9 @@
         }
       }
     ],
-    "extends": "VkSwapchainCreateInfoKHR",
+    "extends": [
+      "VkSwapchainCreateInfoKHR"
+    ],
     "sType": "VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -44910,7 +45115,9 @@
         }
       }
     ],
-    "extends": "VkMemoryAllocateInfo",
+    "extends": [
+      "VkMemoryAllocateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO",
     "documentation": {
       "macros": [],
@@ -45010,7 +45217,9 @@
       }
     ],
     "alias": "VkMemoryAllocateFlagsInfo",
-    "extends": "VkMemoryAllocateInfo",
+    "extends": [
+      "VkMemoryAllocateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -45321,7 +45530,9 @@
         }
       }
     ],
-    "extends": "VkBindBufferMemoryInfo",
+    "extends": [
+      "VkBindBufferMemoryInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO",
     "documentation": {
       "macros": [],
@@ -45410,7 +45621,9 @@
       }
     ],
     "alias": "VkBindBufferMemoryDeviceGroupInfo",
-    "extends": "VkBindBufferMemoryInfo",
+    "extends": [
+      "VkBindBufferMemoryInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -45763,7 +45976,9 @@
         }
       }
     ],
-    "extends": "VkBindImageMemoryInfo",
+    "extends": [
+      "VkBindImageMemoryInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO",
     "documentation": {
       "macros": [],
@@ -45890,7 +46105,9 @@
       }
     ],
     "alias": "VkBindImageMemoryDeviceGroupInfo",
-    "extends": "VkBindImageMemoryInfo",
+    "extends": [
+      "VkBindImageMemoryInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -45996,7 +46213,9 @@
         }
       }
     ],
-    "extends": "VkRenderPassBeginInfo",
+    "extends": [
+      "VkRenderPassBeginInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DEVICE_GROUP_RENDER_PASS_BEGIN_INFO",
     "documentation": {
       "macros": [],
@@ -46103,7 +46322,9 @@
       }
     ],
     "alias": "VkDeviceGroupRenderPassBeginInfo",
-    "extends": "VkRenderPassBeginInfo",
+    "extends": [
+      "VkRenderPassBeginInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DEVICE_GROUP_RENDER_PASS_BEGIN_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -46166,7 +46387,9 @@
         }
       }
     ],
-    "extends": "VkCommandBufferBeginInfo",
+    "extends": [
+      "VkCommandBufferBeginInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DEVICE_GROUP_COMMAND_BUFFER_BEGIN_INFO",
     "documentation": {
       "macros": [],
@@ -46230,7 +46453,9 @@
       }
     ],
     "alias": "VkDeviceGroupCommandBufferBeginInfo",
-    "extends": "VkCommandBufferBeginInfo",
+    "extends": [
+      "VkCommandBufferBeginInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DEVICE_GROUP_COMMAND_BUFFER_BEGIN_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -46425,7 +46650,9 @@
         }
       }
     ],
-    "extends": "VkSubmitInfo",
+    "extends": [
+      "VkSubmitInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DEVICE_GROUP_SUBMIT_INFO",
     "documentation": {
       "macros": [],
@@ -46621,7 +46848,9 @@
       }
     ],
     "alias": "VkDeviceGroupSubmitInfo",
-    "extends": "VkSubmitInfo",
+    "extends": [
+      "VkSubmitInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DEVICE_GROUP_SUBMIT_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -46699,7 +46928,9 @@
         }
       }
     ],
-    "extends": "VkBindSparseInfo",
+    "extends": [
+      "VkBindSparseInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO",
     "documentation": {
       "macros": [],
@@ -46778,7 +47009,9 @@
       }
     ],
     "alias": "VkDeviceGroupBindSparseInfo",
-    "extends": "VkBindSparseInfo",
+    "extends": [
+      "VkBindSparseInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -46944,7 +47177,9 @@
         }
       }
     ],
-    "extends": "VkImageCreateInfo",
+    "extends": [
+      "VkImageCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -47024,7 +47259,9 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
-    "extends": "VkBindImageMemoryInfo",
+    "extends": [
+      "VkBindImageMemoryInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -47270,7 +47507,9 @@
         }
       }
     ],
-    "extends": "VkPresentInfoKHR",
+    "extends": [
+      "VkPresentInfoKHR"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -47357,7 +47596,9 @@
         }
       }
     ],
-    "extends": "VkDeviceCreateInfo",
+    "extends": [
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DEVICE_GROUP_DEVICE_CREATE_INFO",
     "documentation": {
       "macros": [],
@@ -47445,7 +47686,9 @@
       }
     ],
     "alias": "VkDeviceGroupDeviceCreateInfo",
-    "extends": "VkDeviceCreateInfo",
+    "extends": [
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DEVICE_GROUP_DEVICE_CREATE_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -47516,7 +47759,9 @@
         }
       }
     ],
-    "extends": "VkSwapchainCreateInfoKHR",
+    "extends": [
+      "VkSwapchainCreateInfoKHR"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -48630,7 +48875,9 @@
         }
       }
     ],
-    "extends": "VkPresentInfoKHR",
+    "extends": [
+      "VkPresentInfoKHR"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PRESENT_TIMES_INFO_GOOGLE",
     "documentation": {
       "macros": [],
@@ -49057,7 +49304,9 @@
         }
       }
     ],
-    "extends": "VkPipelineViewportStateCreateInfo",
+    "extends": [
+      "VkPipelineViewportStateCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV",
     "documentation": {
       "macros": [],
@@ -49261,7 +49510,9 @@
         }
       }
     ],
-    "extends": "VkPipelineViewportStateCreateInfo",
+    "extends": [
+      "VkPipelineViewportStateCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV",
     "documentation": {
       "macros": [],
@@ -49329,7 +49580,9 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISCARD_RECTANGLE_PROPERTIES_EXT",
     "documentation": {
       "macros": [],
@@ -49450,7 +49703,9 @@
         }
       }
     ],
-    "extends": "VkGraphicsPipelineCreateInfo",
+    "extends": [
+      "VkGraphicsPipelineCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PIPELINE_DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -49511,7 +49766,9 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_ATTRIBUTES_PROPERTIES_NVX",
     "documentation": {
       "macros": [],
@@ -49712,7 +49969,9 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
-    "extends": "VkRenderPassCreateInfo",
+    "extends": [
+      "VkRenderPassCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO",
     "documentation": {
       "macros": [],
@@ -49799,7 +50058,9 @@
       }
     ],
     "alias": "VkRenderPassInputAttachmentAspectCreateInfo",
-    "extends": "VkRenderPassCreateInfo",
+    "extends": [
+      "VkRenderPassCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -50440,7 +50701,9 @@
         }
       }
     ],
-    "extends": "VkSurfaceCapabilities2KHR",
+    "extends": [
+      "VkSurfaceCapabilities2KHR"
+    ],
     "sType": "VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_KHR",
     "documentation": {
       "macros": [],
@@ -50553,7 +50816,10 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES",
     "documentation": {
       "macros": [],
@@ -50667,7 +50933,10 @@
       }
     ],
     "alias": "VkPhysicalDevice16BitStorageFeatures",
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES_KHR",
     "documentation": {
       "macros": [],
@@ -50838,7 +51107,9 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES",
     "documentation": {
       "macros": [],
@@ -51571,7 +51842,9 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES",
     "documentation": {
       "macros": [],
@@ -51642,7 +51915,9 @@
       }
     ],
     "alias": "VkPhysicalDevicePointClippingProperties",
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES_KHR",
     "documentation": {
       "macros": [],
@@ -51729,7 +52004,9 @@
         }
       }
     ],
-    "extends": "VkMemoryRequirements2",
+    "extends": [
+      "VkMemoryRequirements2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS",
     "documentation": {
       "macros": [],
@@ -51817,7 +52094,9 @@
       }
     ],
     "alias": "VkMemoryDedicatedRequirements",
-    "extends": "VkMemoryRequirements2",
+    "extends": [
+      "VkMemoryRequirements2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS_KHR",
     "documentation": {
       "macros": [],
@@ -51907,7 +52186,9 @@
         }
       }
     ],
-    "extends": "VkMemoryAllocateInfo",
+    "extends": [
+      "VkMemoryAllocateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO",
     "documentation": {
       "macros": [],
@@ -51998,7 +52279,9 @@
       }
     ],
     "alias": "VkMemoryDedicatedAllocateInfo",
-    "extends": "VkMemoryAllocateInfo",
+    "extends": [
+      "VkMemoryAllocateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -52069,7 +52352,9 @@
         }
       }
     ],
-    "extends": "VkImageViewCreateInfo",
+    "extends": [
+      "VkImageViewCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_IMAGE_VIEW_USAGE_CREATE_INFO",
     "documentation": {
       "macros": [],
@@ -52141,7 +52426,9 @@
       }
     ],
     "alias": "VkImageViewUsageCreateInfo",
-    "extends": "VkImageViewCreateInfo",
+    "extends": [
+      "VkImageViewCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_IMAGE_VIEW_USAGE_CREATE_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -52211,7 +52498,9 @@
         }
       }
     ],
-    "extends": "VkPipelineTessellationStateCreateInfo",
+    "extends": [
+      "VkPipelineTessellationStateCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO",
     "documentation": {
       "macros": [],
@@ -52282,7 +52571,9 @@
       }
     ],
     "alias": "VkPipelineTessellationDomainOriginStateCreateInfo",
-    "extends": "VkPipelineTessellationStateCreateInfo",
+    "extends": [
+      "VkPipelineTessellationStateCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -52355,7 +52646,10 @@
         }
       }
     ],
-    "extends": "VkSamplerCreateInfo,VkImageViewCreateInfo",
+    "extends": [
+      "VkSamplerCreateInfo",
+      "VkImageViewCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO",
     "documentation": {
       "macros": [],
@@ -52429,7 +52723,10 @@
       }
     ],
     "alias": "VkSamplerYcbcrConversionInfo",
-    "extends": "VkSamplerCreateInfo,VkImageViewCreateInfo",
+    "extends": [
+      "VkSamplerCreateInfo",
+      "VkImageViewCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -52632,6 +52929,9 @@
       }
     ],
     "sType": "VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_CREATE_INFO",
+    "extensions": [
+      "VkExternalFormatANDROID"
+    ],
     "documentation": {
       "macros": [],
       "category": "Samplers",
@@ -52834,6 +53134,9 @@
     ],
     "alias": "VkSamplerYcbcrConversionCreateInfo",
     "sType": "VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_CREATE_INFO_KHR",
+    "extensions": [
+      "VkExternalFormatANDROID"
+    ],
     "documentation": {
       "macros": [],
       "category": "Samplers",
@@ -52898,7 +53201,9 @@
         }
       }
     ],
-    "extends": "VkBindImageMemoryInfo",
+    "extends": [
+      "VkBindImageMemoryInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_BIND_IMAGE_PLANE_MEMORY_INFO",
     "documentation": {
       "macros": [],
@@ -52965,7 +53270,9 @@
       }
     ],
     "alias": "VkBindImagePlaneMemoryInfo",
-    "extends": "VkBindImageMemoryInfo",
+    "extends": [
+      "VkBindImageMemoryInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_BIND_IMAGE_PLANE_MEMORY_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -53031,7 +53338,9 @@
         }
       }
     ],
-    "extends": "VkImageMemoryRequirementsInfo2",
+    "extends": [
+      "VkImageMemoryRequirementsInfo2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO",
     "documentation": {
       "macros": [],
@@ -53098,7 +53407,9 @@
       }
     ],
     "alias": "VkImagePlaneMemoryRequirementsInfo",
-    "extends": "VkImageMemoryRequirementsInfo2",
+    "extends": [
+      "VkImageMemoryRequirementsInfo2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -53151,7 +53462,10 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_YCBCR_CONVERSION_FEATURES",
     "documentation": {
       "macros": [],
@@ -53205,7 +53519,10 @@
       }
     ],
     "alias": "VkPhysicalDeviceSamplerYcbcrConversionFeatures",
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_YCBCR_CONVERSION_FEATURES_KHR",
     "documentation": {
       "macros": [],
@@ -53268,7 +53585,9 @@
         }
       }
     ],
-    "extends": "VkImageFormatProperties2",
+    "extends": [
+      "VkImageFormatProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES",
     "documentation": {
       "macros": [],
@@ -53332,7 +53651,9 @@
       }
     ],
     "alias": "VkSamplerYcbcrConversionImageFormatProperties",
-    "extends": "VkImageFormatProperties2",
+    "extends": [
+      "VkImageFormatProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES_KHR",
     "documentation": {
       "macros": [],
@@ -53397,7 +53718,9 @@
         }
       }
     ],
-    "extends": "VkImageFormatProperties2",
+    "extends": [
+      "VkImageFormatProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD",
     "documentation": {
       "macros": [],
@@ -53577,7 +53900,9 @@
         }
       }
     ],
-    "extends": "VkSubmitInfo",
+    "extends": [
+      "VkSubmitInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PROTECTED_SUBMIT_INFO",
     "documentation": {
       "macros": [],
@@ -53634,7 +53959,10 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES",
     "documentation": {
       "macros": [],
@@ -53736,7 +54064,9 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_PROPERTIES",
     "documentation": {
       "macros": [],
@@ -53947,7 +54277,9 @@
         }
       }
     ],
-    "extends": "VkPipelineMultisampleStateCreateInfo",
+    "extends": [
+      "VkPipelineMultisampleStateCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV",
     "documentation": {
       "macros": [],
@@ -54029,7 +54361,9 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES_EXT",
     "documentation": {
       "macros": [],
@@ -54191,7 +54525,9 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
-    "extends": "VkImageMemoryBarrier",
+    "extends": [
+      "VkImageMemoryBarrier"
+    ],
     "sType": "VK_STRUCTURE_TYPE_SAMPLE_LOCATIONS_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -54470,7 +54806,9 @@
         }
       }
     ],
-    "extends": "VkRenderPassBeginInfo",
+    "extends": [
+      "VkRenderPassBeginInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -54576,7 +54914,9 @@
         }
       }
     ],
-    "extends": "VkPipelineMultisampleStateCreateInfo",
+    "extends": [
+      "VkPipelineMultisampleStateCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -54734,7 +55074,9 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT",
     "documentation": {
       "macros": [],
@@ -54871,7 +55213,9 @@
         }
       }
     ],
-    "extends": "VkSamplerCreateInfo",
+    "extends": [
+      "VkSamplerCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_SAMPLER_REDUCTION_MODE_CREATE_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -54924,7 +55268,10 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_FEATURES_EXT",
     "documentation": {
       "macros": [],
@@ -55162,7 +55509,9 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT",
     "documentation": {
       "macros": [],
@@ -55266,7 +55615,9 @@
         }
       }
     ],
-    "extends": "VkPipelineColorBlendStateCreateInfo",
+    "extends": [
+      "VkPipelineColorBlendStateCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_ADVANCED_STATE_CREATE_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -55354,7 +55705,10 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_FEATURES_EXT",
     "documentation": {
       "macros": [],
@@ -55461,7 +55815,9 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_PROPERTIES_EXT",
     "documentation": {
       "macros": [],
@@ -55542,7 +55898,9 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
-    "extends": "VkWriteDescriptorSet",
+    "extends": [
+      "VkWriteDescriptorSet"
+    ],
     "sType": "VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_INLINE_UNIFORM_BLOCK_EXT",
     "documentation": {
       "macros": [],
@@ -55605,7 +55963,9 @@
         }
       }
     ],
-    "extends": "VkDescriptorPoolCreateInfo",
+    "extends": [
+      "VkDescriptorPoolCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_INLINE_UNIFORM_BLOCK_CREATE_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -55755,7 +56115,9 @@
         }
       }
     ],
-    "extends": "VkPipelineMultisampleStateCreateInfo",
+    "extends": [
+      "VkPipelineMultisampleStateCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV",
     "documentation": {
       "macros": [],
@@ -55841,7 +56203,11 @@
         }
       }
     ],
-    "extends": "VkImageCreateInfo,VkSwapchainCreateInfoKHR,VkPhysicalDeviceImageFormatInfo2",
+    "extends": [
+      "VkImageCreateInfo",
+      "VkSwapchainCreateInfoKHR",
+      "VkPhysicalDeviceImageFormatInfo2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO_KHR",
     "documentation": {
       "macros": [],
@@ -56017,7 +56383,9 @@
         }
       }
     ],
-    "extends": "VkShaderModuleCreateInfo",
+    "extends": [
+      "VkShaderModuleCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -56110,7 +56478,9 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES",
     "documentation": {
       "macros": [],
@@ -56204,7 +56574,9 @@
       }
     ],
     "alias": "VkPhysicalDeviceMaintenance3Properties",
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES_KHR",
     "documentation": {
       "macros": [],
@@ -56406,7 +56778,10 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES",
     "documentation": {
       "macros": [],
@@ -56506,7 +56881,10 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT16_INT8_FEATURES_KHR",
     "documentation": {
       "macros": [],
@@ -56775,7 +57153,9 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES_KHR",
     "documentation": {
       "macros": [],
@@ -57138,7 +57518,9 @@
         }
       }
     ],
-    "extends": "VkDeviceQueueCreateInfo",
+    "extends": [
+      "VkDeviceQueueCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -57608,7 +57990,9 @@
         }
       }
     ],
-    "extends": "VkInstanceCreateInfo",
+    "extends": [
+      "VkInstanceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -57931,7 +58315,9 @@
         }
       }
     ],
-    "extends": "VkMemoryAllocateInfo",
+    "extends": [
+      "VkMemoryAllocateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_IMPORT_MEMORY_HOST_POINTER_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -58071,7 +58457,9 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT",
     "documentation": {
       "macros": [],
@@ -58239,7 +58627,9 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT",
     "documentation": {
       "macros": [],
@@ -58562,7 +58952,9 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD",
     "documentation": {
       "macros": [],
@@ -58669,7 +59061,9 @@
         }
       }
     ],
-    "extends": "VkPipelineRasterizationStateCreateInfo",
+    "extends": [
+      "VkPipelineRasterizationStateCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -58969,7 +59363,10 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES_EXT",
     "documentation": {
       "macros": [],
@@ -59610,7 +60007,9 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES_EXT",
     "documentation": {
       "macros": [],
@@ -59706,7 +60105,9 @@
         }
       }
     ],
-    "extends": "VkDescriptorSetLayoutCreateInfo",
+    "extends": [
+      "VkDescriptorSetLayoutCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -59794,7 +60195,9 @@
         }
       }
     ],
-    "extends": "VkDescriptorSetAllocateInfo",
+    "extends": [
+      "VkDescriptorSetAllocateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -59866,7 +60269,9 @@
         }
       }
     ],
-    "extends": "VkDescriptorSetLayoutSupport",
+    "extends": [
+      "VkDescriptorSetLayoutSupport"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT_EXT",
     "documentation": {
       "macros": [],
@@ -61182,7 +61587,9 @@
         }
       }
     ],
-    "extends": "VkPipelineVertexInputStateCreateInfo",
+    "extends": [
+      "VkPipelineVertexInputStateCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -61245,7 +61652,9 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT",
     "documentation": {
       "macros": [],
@@ -61353,7 +61762,9 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT",
     "documentation": {
       "macros": [],
@@ -61415,7 +61826,9 @@
         }
       }
     ],
-    "extends": "VkMemoryAllocateInfo",
+    "extends": [
+      "VkMemoryAllocateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID",
     "documentation": {
       "macros": [],
@@ -61478,7 +61891,9 @@
         }
       }
     ],
-    "extends": "VkImageFormatProperties2",
+    "extends": [
+      "VkImageFormatProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_USAGE_ANDROID",
     "documentation": {
       "macros": [],
@@ -61856,7 +62271,9 @@
         }
       }
     ],
-    "extends": "VkAndroidHardwareBufferPropertiesANDROID",
+    "extends": [
+      "VkAndroidHardwareBufferPropertiesANDROID"
+    ],
     "sType": "VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_ANDROID",
     "documentation": {
       "macros": [],
@@ -61942,7 +62359,9 @@
         }
       }
     ],
-    "extends": "VkCommandBufferInheritanceInfo",
+    "extends": [
+      "VkCommandBufferInheritanceInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_CONDITIONAL_RENDERING_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -62005,7 +62424,10 @@
         }
       }
     ],
-    "extends": "VkImageCreateInfo,VkSamplerYcbcrConversionCreateInfo",
+    "extends": [
+      "VkImageCreateInfo",
+      "VkSamplerYcbcrConversionCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID",
     "documentation": {
       "macros": [],
@@ -62105,7 +62527,10 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES_KHR",
     "documentation": {
       "macros": [],
@@ -62192,7 +62617,10 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONDITIONAL_RENDERING_FEATURES_EXT",
     "documentation": {
       "macros": [],
@@ -62296,7 +62724,10 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES_KHR",
     "documentation": {
       "macros": [],
@@ -62388,7 +62819,10 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES_KHR",
     "documentation": {
       "macros": [],
@@ -62479,7 +62913,10 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_EXT",
     "documentation": {
       "macros": [],
@@ -62545,7 +62982,9 @@
         }
       }
     ],
-    "extends": "VkQueueFamilyProperties2",
+    "extends": [
+      "VkQueueFamilyProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV",
     "documentation": {
       "macros": [],
@@ -62787,7 +63226,9 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES_KHR",
     "documentation": {
       "macros": [],
@@ -62901,7 +63342,9 @@
         }
       }
     ],
-    "extends": "VkSubpassDescription2KHR",
+    "extends": [
+      "VkSubpassDescription2KHR"
+    ],
     "sType": "VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE_KHR",
     "documentation": {
       "macros": [],
@@ -62966,7 +63409,9 @@
         }
       }
     ],
-    "extends": "VkImageViewCreateInfo",
+    "extends": [
+      "VkImageViewCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_IMAGE_VIEW_ASTC_DECODE_MODE_EXT",
     "documentation": {
       "macros": [],
@@ -63019,7 +63464,10 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ASTC_DECODE_FEATURES_EXT",
     "documentation": {
       "macros": [],
@@ -63098,7 +63546,10 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_FEATURES_EXT",
     "documentation": {
       "macros": [],
@@ -63290,7 +63741,9 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT",
     "documentation": {
       "macros": [],
@@ -63371,7 +63824,9 @@
         }
       }
     ],
-    "extends": "VkPipelineRasterizationStateCreateInfo",
+    "extends": [
+      "VkPipelineRasterizationStateCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -63424,7 +63879,10 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_REPRESENTATIVE_FRAGMENT_TEST_FEATURES_NV",
     "documentation": {
       "macros": [],
@@ -63489,7 +63947,9 @@
         }
       }
     ],
-    "extends": "VkGraphicsPipelineCreateInfo",
+    "extends": [
+      "VkGraphicsPipelineCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PIPELINE_REPRESENTATIVE_FRAGMENT_TEST_STATE_CREATE_INFO_NV",
     "documentation": {
       "macros": [],
@@ -63546,7 +64006,10 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXCLUSIVE_SCISSOR_FEATURES_NV",
     "documentation": {
       "macros": [],
@@ -63632,7 +64095,9 @@
         }
       }
     ],
-    "extends": "VkPipelineViewportStateCreateInfo",
+    "extends": [
+      "VkPipelineViewportStateCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_EXCLUSIVE_SCISSOR_STATE_CREATE_INFO_NV",
     "documentation": {
       "macros": [],
@@ -63702,7 +64167,10 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CORNER_SAMPLED_IMAGE_FEATURES_NV",
     "documentation": {
       "macros": [],
@@ -63768,7 +64236,10 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_NV",
     "documentation": {
       "macros": [],
@@ -63821,7 +64292,10 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_FEATURES_NV",
     "documentation": {
       "macros": [],
@@ -63883,7 +64357,10 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_IMAGE_FOOTPRINT_FEATURES_NV",
     "documentation": {
       "macros": [],
@@ -64040,7 +64517,9 @@
         }
       }
     ],
-    "extends": "VkPipelineViewportStateCreateInfo",
+    "extends": [
+      "VkPipelineViewportStateCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV",
     "documentation": {
       "macros": [],
@@ -64119,7 +64598,10 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_FEATURES_NV",
     "documentation": {
       "macros": [],
@@ -64204,7 +64686,9 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV",
     "documentation": {
       "macros": [],
@@ -64455,7 +64939,9 @@
         }
       }
     ],
-    "extends": "VkPipelineViewportStateCreateInfo",
+    "extends": [
+      "VkPipelineViewportStateCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV",
     "documentation": {
       "macros": [],
@@ -64529,7 +65015,10 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV",
     "documentation": {
       "macros": [],
@@ -64811,7 +65300,9 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV",
     "documentation": {
       "macros": [],
@@ -66237,7 +66728,9 @@
         }
       }
     ],
-    "extends": "VkWriteDescriptorSet",
+    "extends": [
+      "VkWriteDescriptorSet"
+    ],
     "sType": "VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_NV",
     "documentation": {
       "macros": [],
@@ -66498,7 +66991,9 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PROPERTIES_NV",
     "documentation": {
       "macros": [],
@@ -66589,7 +67084,9 @@
         }
       }
     ],
-    "extends": "VkFormatProperties2",
+    "extends": [
+      "VkFormatProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_LIST_EXT",
     "documentation": {
       "macros": [],
@@ -66817,7 +67314,9 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceImageFormatInfo2",
+    "extends": [
+      "VkPhysicalDeviceImageFormatInfo2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_DRM_FORMAT_MODIFIER_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -66905,7 +67404,9 @@
         }
       }
     ],
-    "extends": "VkImageCreateInfo",
+    "extends": [
+      "VkImageCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_LIST_CREATE_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -67015,7 +67516,9 @@
         }
       }
     ],
-    "extends": "VkImageCreateInfo",
+    "extends": [
+      "VkImageCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_EXPLICIT_CREATE_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -67148,7 +67651,10 @@
         }
       }
     ],
-    "extends": "VkImageCreateInfo,VkPhysicalDeviceImageFormatInfo2",
+    "extends": [
+      "VkImageCreateInfo",
+      "VkPhysicalDeviceImageFormatInfo2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -67213,7 +67719,9 @@
         }
       }
     ],
-    "extends": "VkDeviceCreateInfo",
+    "extends": [
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_DEVICE_MEMORY_OVERALLOCATION_CREATE_INFO_AMD",
     "documentation": {
       "macros": [],
@@ -67351,7 +67859,10 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT",
     "documentation": {
       "macros": [],
@@ -67426,7 +67937,9 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
-    "extends": "VkPhysicalDeviceProperties2",
+    "extends": [
+      "VkPhysicalDeviceProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT",
     "documentation": {
       "macros": [],
@@ -67489,7 +68002,9 @@
         }
       }
     ],
-    "extends": "VkRenderPassCreateInfo",
+    "extends": [
+      "VkRenderPassCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -67546,7 +68061,10 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCALAR_BLOCK_LAYOUT_FEATURES_EXT",
     "documentation": {
       "macros": [],
@@ -67641,7 +68159,9 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceMemoryProperties2",
+    "extends": [
+      "VkPhysicalDeviceMemoryProperties2"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT",
     "documentation": {
       "macros": [],
@@ -67703,7 +68223,10 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PRIORITY_FEATURES_EXT",
     "documentation": {
       "macros": [],
@@ -67766,7 +68289,9 @@
         }
       }
     ],
-    "extends": "VkMemoryAllocateInfo",
+    "extends": [
+      "VkMemoryAllocateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_MEMORY_PRIORITY_ALLOCATE_INFO_EXT",
     "documentation": {
       "macros": [],
@@ -67871,7 +68396,10 @@
         }
       }
     ],
-    "extends": "VkPhysicalDeviceFeatures2,VkDeviceCreateInfo",
+    "extends": [
+      "VkPhysicalDeviceFeatures2",
+      "VkDeviceCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_ADDRESS_FEATURES_EXT",
     "documentation": {
       "macros": [],
@@ -67998,7 +68526,9 @@
         }
       }
     ],
-    "extends": "VkBufferCreateInfo",
+    "extends": [
+      "VkBufferCreateInfo"
+    ],
     "sType": "VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_CREATE_INFO_EXT",
     "documentation": {
       "macros": [],

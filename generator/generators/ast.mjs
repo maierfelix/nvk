@@ -336,7 +336,7 @@ function parseStructElement(parent) {
     children
   };
   if (attr.alias) out.alias = attr.alias;
-  if (attr.structextends) out.extends = attr.structextends;
+  if (attr.structextends) out.extends = attr.structextends.split(",");
   if (!elements) return out;
   elements.map((child, index) => {
     switch (child.name) {
@@ -697,11 +697,15 @@ export default function({ xmlInput, version, docs } = _) {
     // include struct extensions
     structs.map(struct => {
       if (struct.extends) {
-        let extStruct = structs.filter(stru => stru.name === struct.extends)[0];
-        if (extStruct) {
-          if (!extStruct.extensions) extStruct.extensions = [];
-          if (extStruct.extensions.indexOf(struct.name) <= -1) extStruct.extensions.push(struct.name);
-        }
+        struct.extends.map(extensionName => {
+          let extStruct = structs.filter(s => s.name === extensionName)[0];
+          if (extStruct) {
+            if (!extStruct.extensions) extStruct.extensions = [];
+            if (extStruct.extensions.indexOf(struct.name) <= -1) extStruct.extensions.push(struct.name);
+          } else {
+            if (!extStruct) warn(`Cannot resolve struct extensions for ${struct.name} => ${struct.extends}`);
+          }
+        });
       }
     });
   }
