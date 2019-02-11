@@ -1,21 +1,15 @@
 #ifndef __VK_{{ handle_name.toUpperCase() }}_H__
 #define __VK_{{ handle_name.toUpperCase() }}_H__
 
-class _{{ handle_name }}: public Nan::ObjectWrap {
-
+class _{{ handle_name }} : public Napi::ObjectWrap<_{{ handle_name }}> {
   public:
-    // #methods
-    static NAN_METHOD(New);
+    static Napi::Object Initialize(Napi::Env env, Napi::Object exports);
+    _{{ handle_name }}(const Napi::CallbackInfo &info);
+    ~_{{ handle_name }}();
+    static Napi::FunctionReference constructor;
 
     // real instance
     {{ handle_name }} instance;
-
-    static Nan::Persistent<v8::FunctionTemplate> constructor;
-    static void Initialize(v8::Local<v8::Object> exports);
-
-  private:
-    _{{ handle_name }}();
-    ~_{{ handle_name }}();
 
 };
 

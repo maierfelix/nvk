@@ -224,7 +224,7 @@ export function getJavaScriptTypedArrayName(type) {
       return "Int32Array";
     case "int64_t *":
     case "const int64_t *":
-      return "Int64Array";
+      return "BigInt64Array";
     case "uint8_t *":
     case "const uint8_t *":
       return "Uint8Array";
@@ -239,5 +239,42 @@ export function getJavaScriptTypedArrayName(type) {
       return "BigUint64Array";
   };
   warn(`Cannot resolve equivalent JS typed array name for ${type}`);
+  return null;
+};
+
+export function getNapiTypedArrayName(type) {
+  switch (type) {
+    case "void *":
+    case "const void *":
+      return `ArrayBuffer`;
+    case "float *":
+    case "const float *":
+      return "napi_float32_array";
+    case "int8_t *":
+    case "const int8_t *":
+      return "napi_int8_array";
+    case "int16_t *":
+    case "const int16_t *":
+      return "napi_int16_array";
+    case "int32_t *":
+    case "const int32_t *":
+      return "napi_int32_array";
+    case "int64_t *":
+    case "const int64_t *":
+      return "napi_bigint64_array";
+    case "uint8_t *":
+    case "const uint8_t *":
+      return "napi_uint8_array";
+    case "uint16_t *":
+    case "const uint16_t *": 
+      return "napi_uint16_array";
+    case "uint32_t *":
+    case "const uint32_t *":
+      return "napi_uint32_array";
+    case "uint64_t *":
+    case "const uint64_t *":
+      return "napi_biguint64_array";
+  };
+  warn(`Cannot resolve equivalent NAPI JS typed array name for ${type}`);
   return null;
 };

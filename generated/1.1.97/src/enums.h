@@ -2401,1298 +2401,1441 @@ std::map<std::string, __int32> _VkBuildAccelerationStructureFlagBitsNV = {
   
 };
 
-void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
-  v8::Local<v8::Object> out = Nan::New<v8::Object>();
-
+Napi::Value getVulkanEnumerations(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  Napi::Object out = Napi::Object::New(env);
   {
     std::map<std::string, std::string>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _API_Extensions_Strings.begin(); it != _API_Extensions_Strings.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), it->second.c_str()));
-      out->Set(Nan::New(it->first).ToLocalChecked(), v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), it->second.c_str()));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::String::New(env, it->second.c_str()));
+      out.Set(accessor, Napi::String::New(env, it->second.c_str()));
     };
-    out->Set(Nan::New("API_Extensions_Strings").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "API_Extensions_Strings"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _API_Extensions.begin(); it != _API_Extensions.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("API_Extensions").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "API_Extensions"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _API_Constants.begin(); it != _API_Constants.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("API_Constants").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "API_Constants"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkImageLayout.begin(); it != _VkImageLayout.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkImageLayout").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkImageLayout"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkAttachmentLoadOp.begin(); it != _VkAttachmentLoadOp.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkAttachmentLoadOp").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkAttachmentLoadOp"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkAttachmentStoreOp.begin(); it != _VkAttachmentStoreOp.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkAttachmentStoreOp").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkAttachmentStoreOp"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkImageType.begin(); it != _VkImageType.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkImageType").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkImageType"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkImageTiling.begin(); it != _VkImageTiling.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkImageTiling").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkImageTiling"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkImageViewType.begin(); it != _VkImageViewType.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkImageViewType").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkImageViewType"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkCommandBufferLevel.begin(); it != _VkCommandBufferLevel.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkCommandBufferLevel").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkCommandBufferLevel"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkComponentSwizzle.begin(); it != _VkComponentSwizzle.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkComponentSwizzle").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkComponentSwizzle"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDescriptorType.begin(); it != _VkDescriptorType.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkDescriptorType").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkDescriptorType"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkQueryType.begin(); it != _VkQueryType.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkQueryType").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkQueryType"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkBorderColor.begin(); it != _VkBorderColor.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkBorderColor").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkBorderColor"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkPipelineBindPoint.begin(); it != _VkPipelineBindPoint.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkPipelineBindPoint").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkPipelineBindPoint"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkPipelineCacheHeaderVersion.begin(); it != _VkPipelineCacheHeaderVersion.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkPipelineCacheHeaderVersion").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkPipelineCacheHeaderVersion"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkPrimitiveTopology.begin(); it != _VkPrimitiveTopology.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkPrimitiveTopology").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkPrimitiveTopology"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSharingMode.begin(); it != _VkSharingMode.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkSharingMode").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkSharingMode"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkIndexType.begin(); it != _VkIndexType.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkIndexType").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkIndexType"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkFilter.begin(); it != _VkFilter.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkFilter").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkFilter"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSamplerMipmapMode.begin(); it != _VkSamplerMipmapMode.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkSamplerMipmapMode").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkSamplerMipmapMode"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSamplerAddressMode.begin(); it != _VkSamplerAddressMode.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkSamplerAddressMode").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkSamplerAddressMode"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkCompareOp.begin(); it != _VkCompareOp.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkCompareOp").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkCompareOp"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkPolygonMode.begin(); it != _VkPolygonMode.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkPolygonMode").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkPolygonMode"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkFrontFace.begin(); it != _VkFrontFace.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkFrontFace").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkFrontFace"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkBlendFactor.begin(); it != _VkBlendFactor.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkBlendFactor").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkBlendFactor"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkBlendOp.begin(); it != _VkBlendOp.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkBlendOp").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkBlendOp"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkStencilOp.begin(); it != _VkStencilOp.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkStencilOp").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkStencilOp"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkLogicOp.begin(); it != _VkLogicOp.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkLogicOp").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkLogicOp"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkInternalAllocationType.begin(); it != _VkInternalAllocationType.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkInternalAllocationType").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkInternalAllocationType"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSystemAllocationScope.begin(); it != _VkSystemAllocationScope.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkSystemAllocationScope").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkSystemAllocationScope"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkPhysicalDeviceType.begin(); it != _VkPhysicalDeviceType.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkPhysicalDeviceType").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkPhysicalDeviceType"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkVertexInputRate.begin(); it != _VkVertexInputRate.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkVertexInputRate").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkVertexInputRate"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkFormat.begin(); it != _VkFormat.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkFormat").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkFormat"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkStructureType.begin(); it != _VkStructureType.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkStructureType").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkStructureType"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSubpassContents.begin(); it != _VkSubpassContents.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkSubpassContents").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkSubpassContents"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkResult.begin(); it != _VkResult.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkResult").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkResult"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDynamicState.begin(); it != _VkDynamicState.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkDynamicState").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkDynamicState"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDescriptorUpdateTemplateType.begin(); it != _VkDescriptorUpdateTemplateType.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkDescriptorUpdateTemplateType").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkDescriptorUpdateTemplateType"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkObjectType.begin(); it != _VkObjectType.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkObjectType").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkObjectType"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkPresentModeKHR.begin(); it != _VkPresentModeKHR.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkPresentModeKHR").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkPresentModeKHR"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkColorSpaceKHR.begin(); it != _VkColorSpaceKHR.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkColorSpaceKHR").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkColorSpaceKHR"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkTimeDomainEXT.begin(); it != _VkTimeDomainEXT.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkTimeDomainEXT").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkTimeDomainEXT"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDebugReportObjectTypeEXT.begin(); it != _VkDebugReportObjectTypeEXT.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkDebugReportObjectTypeEXT").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkDebugReportObjectTypeEXT"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkRasterizationOrderAMD.begin(); it != _VkRasterizationOrderAMD.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkRasterizationOrderAMD").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkRasterizationOrderAMD"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkValidationCheckEXT.begin(); it != _VkValidationCheckEXT.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkValidationCheckEXT").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkValidationCheckEXT"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkValidationFeatureEnableEXT.begin(); it != _VkValidationFeatureEnableEXT.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkValidationFeatureEnableEXT").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkValidationFeatureEnableEXT"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkValidationFeatureDisableEXT.begin(); it != _VkValidationFeatureDisableEXT.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkValidationFeatureDisableEXT").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkValidationFeatureDisableEXT"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkIndirectCommandsTokenTypeNVX.begin(); it != _VkIndirectCommandsTokenTypeNVX.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkIndirectCommandsTokenTypeNVX").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkIndirectCommandsTokenTypeNVX"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkObjectEntryTypeNVX.begin(); it != _VkObjectEntryTypeNVX.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkObjectEntryTypeNVX").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkObjectEntryTypeNVX"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDisplayPowerStateEXT.begin(); it != _VkDisplayPowerStateEXT.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkDisplayPowerStateEXT").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkDisplayPowerStateEXT"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDeviceEventTypeEXT.begin(); it != _VkDeviceEventTypeEXT.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkDeviceEventTypeEXT").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkDeviceEventTypeEXT"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDisplayEventTypeEXT.begin(); it != _VkDisplayEventTypeEXT.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkDisplayEventTypeEXT").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkDisplayEventTypeEXT"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkViewportCoordinateSwizzleNV.begin(); it != _VkViewportCoordinateSwizzleNV.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkViewportCoordinateSwizzleNV").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkViewportCoordinateSwizzleNV"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDiscardRectangleModeEXT.begin(); it != _VkDiscardRectangleModeEXT.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkDiscardRectangleModeEXT").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkDiscardRectangleModeEXT"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkPointClippingBehavior.begin(); it != _VkPointClippingBehavior.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkPointClippingBehavior").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkPointClippingBehavior"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSamplerReductionModeEXT.begin(); it != _VkSamplerReductionModeEXT.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkSamplerReductionModeEXT").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkSamplerReductionModeEXT"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkTessellationDomainOrigin.begin(); it != _VkTessellationDomainOrigin.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkTessellationDomainOrigin").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkTessellationDomainOrigin"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSamplerYcbcrModelConversion.begin(); it != _VkSamplerYcbcrModelConversion.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkSamplerYcbcrModelConversion").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkSamplerYcbcrModelConversion"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSamplerYcbcrRange.begin(); it != _VkSamplerYcbcrRange.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkSamplerYcbcrRange").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkSamplerYcbcrRange"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkChromaLocation.begin(); it != _VkChromaLocation.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkChromaLocation").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkChromaLocation"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkBlendOverlapEXT.begin(); it != _VkBlendOverlapEXT.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkBlendOverlapEXT").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkBlendOverlapEXT"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkCoverageModulationModeNV.begin(); it != _VkCoverageModulationModeNV.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkCoverageModulationModeNV").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkCoverageModulationModeNV"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkValidationCacheHeaderVersionEXT.begin(); it != _VkValidationCacheHeaderVersionEXT.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkValidationCacheHeaderVersionEXT").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkValidationCacheHeaderVersionEXT"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkShaderInfoTypeAMD.begin(); it != _VkShaderInfoTypeAMD.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkShaderInfoTypeAMD").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkShaderInfoTypeAMD"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkQueueGlobalPriorityEXT.begin(); it != _VkQueueGlobalPriorityEXT.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkQueueGlobalPriorityEXT").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkQueueGlobalPriorityEXT"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkConservativeRasterizationModeEXT.begin(); it != _VkConservativeRasterizationModeEXT.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkConservativeRasterizationModeEXT").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkConservativeRasterizationModeEXT"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkVendorId.begin(); it != _VkVendorId.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkVendorId").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkVendorId"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDriverIdKHR.begin(); it != _VkDriverIdKHR.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkDriverIdKHR").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkDriverIdKHR"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkShadingRatePaletteEntryNV.begin(); it != _VkShadingRatePaletteEntryNV.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkShadingRatePaletteEntryNV").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkShadingRatePaletteEntryNV"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkCoarseSampleOrderTypeNV.begin(); it != _VkCoarseSampleOrderTypeNV.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkCoarseSampleOrderTypeNV").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkCoarseSampleOrderTypeNV"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkCopyAccelerationStructureModeNV.begin(); it != _VkCopyAccelerationStructureModeNV.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkCopyAccelerationStructureModeNV").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkCopyAccelerationStructureModeNV"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkAccelerationStructureTypeNV.begin(); it != _VkAccelerationStructureTypeNV.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkAccelerationStructureTypeNV").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkAccelerationStructureTypeNV"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkGeometryTypeNV.begin(); it != _VkGeometryTypeNV.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkGeometryTypeNV").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkGeometryTypeNV"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkAccelerationStructureMemoryRequirementsTypeNV.begin(); it != _VkAccelerationStructureMemoryRequirementsTypeNV.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkAccelerationStructureMemoryRequirementsTypeNV").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkAccelerationStructureMemoryRequirementsTypeNV"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkRayTracingShaderGroupTypeNV.begin(); it != _VkRayTracingShaderGroupTypeNV.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkRayTracingShaderGroupTypeNV").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkRayTracingShaderGroupTypeNV"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkMemoryOverallocationBehaviorAMD.begin(); it != _VkMemoryOverallocationBehaviorAMD.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkMemoryOverallocationBehaviorAMD").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkMemoryOverallocationBehaviorAMD"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkCullModeFlagBits.begin(); it != _VkCullModeFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkCullModeFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkCullModeFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkQueueFlagBits.begin(); it != _VkQueueFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkQueueFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkQueueFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkRenderPassCreateFlagBits.begin(); it != _VkRenderPassCreateFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkRenderPassCreateFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkRenderPassCreateFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDeviceQueueCreateFlagBits.begin(); it != _VkDeviceQueueCreateFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkDeviceQueueCreateFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkDeviceQueueCreateFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkMemoryPropertyFlagBits.begin(); it != _VkMemoryPropertyFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkMemoryPropertyFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkMemoryPropertyFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkMemoryHeapFlagBits.begin(); it != _VkMemoryHeapFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkMemoryHeapFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkMemoryHeapFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkAccessFlagBits.begin(); it != _VkAccessFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkAccessFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkAccessFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkBufferUsageFlagBits.begin(); it != _VkBufferUsageFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkBufferUsageFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkBufferUsageFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkBufferCreateFlagBits.begin(); it != _VkBufferCreateFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkBufferCreateFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkBufferCreateFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkShaderStageFlagBits.begin(); it != _VkShaderStageFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkShaderStageFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkShaderStageFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkImageUsageFlagBits.begin(); it != _VkImageUsageFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkImageUsageFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkImageUsageFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkImageCreateFlagBits.begin(); it != _VkImageCreateFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkImageCreateFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkImageCreateFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkImageViewCreateFlagBits.begin(); it != _VkImageViewCreateFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkImageViewCreateFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkImageViewCreateFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSamplerCreateFlagBits.begin(); it != _VkSamplerCreateFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkSamplerCreateFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkSamplerCreateFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkPipelineCreateFlagBits.begin(); it != _VkPipelineCreateFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkPipelineCreateFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkPipelineCreateFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkColorComponentFlagBits.begin(); it != _VkColorComponentFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkColorComponentFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkColorComponentFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkFenceCreateFlagBits.begin(); it != _VkFenceCreateFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkFenceCreateFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkFenceCreateFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkFormatFeatureFlagBits.begin(); it != _VkFormatFeatureFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkFormatFeatureFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkFormatFeatureFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkQueryControlFlagBits.begin(); it != _VkQueryControlFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkQueryControlFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkQueryControlFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkQueryResultFlagBits.begin(); it != _VkQueryResultFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkQueryResultFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkQueryResultFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkCommandBufferUsageFlagBits.begin(); it != _VkCommandBufferUsageFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkCommandBufferUsageFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkCommandBufferUsageFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkQueryPipelineStatisticFlagBits.begin(); it != _VkQueryPipelineStatisticFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkQueryPipelineStatisticFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkQueryPipelineStatisticFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkImageAspectFlagBits.begin(); it != _VkImageAspectFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkImageAspectFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkImageAspectFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSparseImageFormatFlagBits.begin(); it != _VkSparseImageFormatFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkSparseImageFormatFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkSparseImageFormatFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSparseMemoryBindFlagBits.begin(); it != _VkSparseMemoryBindFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkSparseMemoryBindFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkSparseMemoryBindFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkPipelineStageFlagBits.begin(); it != _VkPipelineStageFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkPipelineStageFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkPipelineStageFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkCommandPoolCreateFlagBits.begin(); it != _VkCommandPoolCreateFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkCommandPoolCreateFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkCommandPoolCreateFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkCommandPoolResetFlagBits.begin(); it != _VkCommandPoolResetFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkCommandPoolResetFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkCommandPoolResetFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkCommandBufferResetFlagBits.begin(); it != _VkCommandBufferResetFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkCommandBufferResetFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkCommandBufferResetFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSampleCountFlagBits.begin(); it != _VkSampleCountFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkSampleCountFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkSampleCountFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkAttachmentDescriptionFlagBits.begin(); it != _VkAttachmentDescriptionFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkAttachmentDescriptionFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkAttachmentDescriptionFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkStencilFaceFlagBits.begin(); it != _VkStencilFaceFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkStencilFaceFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkStencilFaceFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDescriptorPoolCreateFlagBits.begin(); it != _VkDescriptorPoolCreateFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkDescriptorPoolCreateFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkDescriptorPoolCreateFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDependencyFlagBits.begin(); it != _VkDependencyFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkDependencyFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkDependencyFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDisplayPlaneAlphaFlagBitsKHR.begin(); it != _VkDisplayPlaneAlphaFlagBitsKHR.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkDisplayPlaneAlphaFlagBitsKHR").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkDisplayPlaneAlphaFlagBitsKHR"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkCompositeAlphaFlagBitsKHR.begin(); it != _VkCompositeAlphaFlagBitsKHR.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkCompositeAlphaFlagBitsKHR").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkCompositeAlphaFlagBitsKHR"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSurfaceTransformFlagBitsKHR.begin(); it != _VkSurfaceTransformFlagBitsKHR.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkSurfaceTransformFlagBitsKHR").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkSurfaceTransformFlagBitsKHR"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDebugReportFlagBitsEXT.begin(); it != _VkDebugReportFlagBitsEXT.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkDebugReportFlagBitsEXT").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkDebugReportFlagBitsEXT"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkExternalMemoryHandleTypeFlagBitsNV.begin(); it != _VkExternalMemoryHandleTypeFlagBitsNV.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkExternalMemoryHandleTypeFlagBitsNV").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkExternalMemoryHandleTypeFlagBitsNV"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkExternalMemoryFeatureFlagBitsNV.begin(); it != _VkExternalMemoryFeatureFlagBitsNV.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkExternalMemoryFeatureFlagBitsNV").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkExternalMemoryFeatureFlagBitsNV"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSubgroupFeatureFlagBits.begin(); it != _VkSubgroupFeatureFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkSubgroupFeatureFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkSubgroupFeatureFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkIndirectCommandsLayoutUsageFlagBitsNVX.begin(); it != _VkIndirectCommandsLayoutUsageFlagBitsNVX.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkIndirectCommandsLayoutUsageFlagBitsNVX").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkIndirectCommandsLayoutUsageFlagBitsNVX"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkObjectEntryUsageFlagBitsNVX.begin(); it != _VkObjectEntryUsageFlagBitsNVX.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkObjectEntryUsageFlagBitsNVX").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkObjectEntryUsageFlagBitsNVX"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDescriptorSetLayoutCreateFlagBits.begin(); it != _VkDescriptorSetLayoutCreateFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkDescriptorSetLayoutCreateFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkDescriptorSetLayoutCreateFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkExternalMemoryHandleTypeFlagBits.begin(); it != _VkExternalMemoryHandleTypeFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkExternalMemoryHandleTypeFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkExternalMemoryHandleTypeFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkExternalMemoryFeatureFlagBits.begin(); it != _VkExternalMemoryFeatureFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkExternalMemoryFeatureFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkExternalMemoryFeatureFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkExternalSemaphoreHandleTypeFlagBits.begin(); it != _VkExternalSemaphoreHandleTypeFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkExternalSemaphoreHandleTypeFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkExternalSemaphoreHandleTypeFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkExternalSemaphoreFeatureFlagBits.begin(); it != _VkExternalSemaphoreFeatureFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkExternalSemaphoreFeatureFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkExternalSemaphoreFeatureFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSemaphoreImportFlagBits.begin(); it != _VkSemaphoreImportFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkSemaphoreImportFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkSemaphoreImportFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkExternalFenceHandleTypeFlagBits.begin(); it != _VkExternalFenceHandleTypeFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkExternalFenceHandleTypeFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkExternalFenceHandleTypeFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkExternalFenceFeatureFlagBits.begin(); it != _VkExternalFenceFeatureFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkExternalFenceFeatureFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkExternalFenceFeatureFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkFenceImportFlagBits.begin(); it != _VkFenceImportFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkFenceImportFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkFenceImportFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSurfaceCounterFlagBitsEXT.begin(); it != _VkSurfaceCounterFlagBitsEXT.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkSurfaceCounterFlagBitsEXT").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkSurfaceCounterFlagBitsEXT"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkPeerMemoryFeatureFlagBits.begin(); it != _VkPeerMemoryFeatureFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkPeerMemoryFeatureFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkPeerMemoryFeatureFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkMemoryAllocateFlagBits.begin(); it != _VkMemoryAllocateFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkMemoryAllocateFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkMemoryAllocateFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDeviceGroupPresentModeFlagBitsKHR.begin(); it != _VkDeviceGroupPresentModeFlagBitsKHR.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkDeviceGroupPresentModeFlagBitsKHR").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkDeviceGroupPresentModeFlagBitsKHR"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSwapchainCreateFlagBitsKHR.begin(); it != _VkSwapchainCreateFlagBitsKHR.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkSwapchainCreateFlagBitsKHR").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkSwapchainCreateFlagBitsKHR"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSubpassDescriptionFlagBits.begin(); it != _VkSubpassDescriptionFlagBits.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkSubpassDescriptionFlagBits").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkSubpassDescriptionFlagBits"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDebugUtilsMessageSeverityFlagBitsEXT.begin(); it != _VkDebugUtilsMessageSeverityFlagBitsEXT.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkDebugUtilsMessageSeverityFlagBitsEXT").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkDebugUtilsMessageSeverityFlagBitsEXT"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDebugUtilsMessageTypeFlagBitsEXT.begin(); it != _VkDebugUtilsMessageTypeFlagBitsEXT.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkDebugUtilsMessageTypeFlagBitsEXT").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkDebugUtilsMessageTypeFlagBitsEXT"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDescriptorBindingFlagBitsEXT.begin(); it != _VkDescriptorBindingFlagBitsEXT.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkDescriptorBindingFlagBitsEXT").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkDescriptorBindingFlagBitsEXT"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkConditionalRenderingFlagBitsEXT.begin(); it != _VkConditionalRenderingFlagBitsEXT.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkConditionalRenderingFlagBitsEXT").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkConditionalRenderingFlagBitsEXT"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkResolveModeFlagBitsKHR.begin(); it != _VkResolveModeFlagBitsKHR.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkResolveModeFlagBitsKHR").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkResolveModeFlagBitsKHR"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkGeometryInstanceFlagBitsNV.begin(); it != _VkGeometryInstanceFlagBitsNV.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkGeometryInstanceFlagBitsNV").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkGeometryInstanceFlagBitsNV"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkGeometryFlagBitsNV.begin(); it != _VkGeometryFlagBitsNV.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkGeometryFlagBitsNV").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkGeometryFlagBitsNV"), entry);
   }
   {
     std::map<std::string, __int32>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _VkBuildAccelerationStructureFlagBitsNV.begin(); it != _VkBuildAccelerationStructureFlagBitsNV.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
-      out->Set(Nan::New(it->first).ToLocalChecked(), Nan::New(static_cast<__int32>(it->second)));
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
     };
-    out->Set(Nan::New("VkBuildAccelerationStructureFlagBitsNV").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "VkBuildAccelerationStructureFlagBitsNV"), entry);
   }
   
-  info.GetReturnValue().Set(out);
+  return out;
 };
 
 #endif

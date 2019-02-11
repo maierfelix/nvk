@@ -16,21 +16,22 @@ std::map<std::string, {{ getEnumType(enu) | safe }}> _{{ enu.name }} = {
   {% endfor %}
 };
 {% endfor %}
-void getVulkanEnumerations(const Nan::FunctionCallbackInfo<v8::Value>& info) {
-  v8::Local<v8::Object> out = Nan::New<v8::Object>();
-
+Napi::Value getVulkanEnumerations(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  Napi::Object out = Napi::Object::New(env);
   {% for enu in enums -%}
   {
     std::map<std::string, {{ getEnumType(enu) | safe }}>::iterator it;
-    v8::Local<v8::Object> entry = Nan::New<v8::Object>();
+    Napi::Object entry = Napi::Object::New(env);
     for (it = _{{ enu.name }}.begin(); it != _{{ enu.name }}.end(); it++) {
-      entry->Set(Nan::New(it->first).ToLocalChecked(), {{ getEnumV8Value(enu) | safe }});
-      out->Set(Nan::New(it->first).ToLocalChecked(), {{ getEnumV8Value(enu) | safe }});
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, {{ getEnumNapiValue(enu) | safe }});
+      out.Set(accessor, {{ getEnumNapiValue(enu) | safe }});
     };
-    out->Set(Nan::New("{{ enu.name }}").ToLocalChecked(), entry);
+    out.Set(Napi::String::New(env, "{{ enu.name }}"), entry);
   }
   {% endfor %}
-  info.GetReturnValue().Set(out);
+  return out;
 };
 
 #endif

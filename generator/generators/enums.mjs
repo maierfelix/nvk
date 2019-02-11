@@ -23,16 +23,16 @@ function getEnumMemberValue(member) {
   return member.value || member.alias;
 };
 
-function getEnumV8Value(enu) {
+function getEnumNapiValue(enu) {
   if (
     enu.type === "ENUM" ||
     enu.type === "BITMASK" ||
     enu.type === "UNKNOWN"
   ) {
-    return `Nan::New(static_cast<__int32>(it->second))`;
+    return `Napi::Number::New(env, static_cast<__int32>(it->second))`;
   }
   else if (enu.type === "ENUM_STRINGS") {
-    return `v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), it->second.c_str())`;
+    return `Napi::String::New(env, it->second.c_str())`;
   }
 };
 
@@ -41,7 +41,7 @@ export default function(astReference, enums) {
   let vars = {
     enums,
     getEnumType,
-    getEnumV8Value,
+    getEnumNapiValue,
     getEnumMemberValue
   };
   let out = {

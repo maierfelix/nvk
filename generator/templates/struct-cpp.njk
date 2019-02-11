@@ -1,22 +1,40 @@
-/*
-{{- processSourceIncludes(struct) | safe }}
-#include "{{ struct_name }}.h"
-*/
-Nan::Persistent<v8::FunctionTemplate> _{{ struct_name }}::constructor;
 
-_{{ struct_name }}::_{{ struct_name }}() {
-  {{ processMemberAutosType(struct) | safe }}
-  {% for member in members -%}
-  {%- if isIgnoreableType(member) != true -%}
-  {%- if isHeaderHeapVector(member) == true -%}
-  {{ processHeapVectorAllocator(member) | safe }}
-  {% endif -%}
-  {% endif -%}
-  {% endfor %}
+Napi::FunctionReference _{{ struct_name }}::constructor;
+
+_{{ struct_name }}::_{{ struct_name }}(const Napi::CallbackInfo& info) : Napi::ObjectWrap<_{{ struct_name }}>(info) {
+  Napi::Env env = info.Env();
+  if (info.IsConstructCall()) {
+    {{ processMemberAutosType(struct) | safe }}
+    {% for member in members -%}
+    {%- if isIgnoreableType(member) != true -%}
+    {%- if isHeaderHeapVector(member) == true -%}
+    {{ processHeapVectorAllocator(member) | safe }}
+    {% endif -%}
+    {% endif -%}
+    {% endfor %}
+    if (info[0].IsObject()) {
+      Napi::Object obj = info[0].As<Napi::Object>();
+      {% for member in members %}
+      {%- if isIgnoreableType(member) != true -%}
+      {%- if isFillableMember(struct, member) == true -%}
+      v8::Local<v8::String> sAccess{{ loop.index0 }} = Napi::String::New(env, "{{ member.name }}");
+      {% endif -%}
+      {% endif -%}
+      {% endfor -%}
+      {% for member in members %}
+      {%- if isIgnoreableType(member) != true -%}
+      {%- if isFillableMember(struct, member) == true -%}
+      if (obj.Has(sAccess{{ loop.index0 }})) this->Set{{ member.name }}(info, obj.Get(sAccess{{ loop.index0 }}));
+      {% endif -%}
+      {% endif -%}
+      {% endfor %}
+    } else {
+      Napi::Error::New(env, "{{ struct_name }} constructor cannot be invoked without 'new'");
+    }
+  }
 }
 
 _{{ struct_name }}::~_{{ struct_name }}() {
-  //printf("{{ struct_name }} deconstructed!!\n");
   {% for member in members -%}
   {%- if isIgnoreableType(member) != true -%}
   {%- if isHeaderHeapVector(member) == true -%}
@@ -27,59 +45,64 @@ _{{ struct_name }}::~_{{ struct_name }}() {
   {% endfor %}
 }
 
-void _{{ struct_name }}::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
-  Nan::HandleScope scope;
+Napi::Object _{{ struct_name }}::Initialize(Napi::Env env, Napi::Object exports) {
+  Napi::HandleScope scope(env);
 
-  // constructor
-  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_{{ struct_name }}::New);
-  constructor.Reset(ctor);
-  ctor->InstanceTemplate()->SetInternalFieldCount(1);
-  ctor->SetClassName(Nan::New("{{ struct_name }}").ToLocalChecked());
+  Napi::Function func = DefineClass(env, "{{ struct_name }}", {
+    InstanceAccessor(
+      "memoryBuffer",
+      &_{{ struct_name }}::GetmemoryBuffer,
+      nullptr,
+      napi_enumerable
+    ),
+    StaticAccessor(
+      "memoryLayout",
+      &_{{ struct_name }}::GetmemoryLayout,
+      nullptr,
+      napi_enumerable
+    ),
+    {% for member in members -%}
+    {%- if isIgnoreableType(member) != true -%}
+    {{- processSourceMemberAccessor(struct, member) | safe -}}
+    {% endif -%}
+    {% endfor %}
+  });
 
-  // prototype
-  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
-  SetPrototypeAccessor(proto, Nan::New("memoryBuffer").ToLocalChecked(), GetmemoryBuffer, nullptr, ctor);
-  SetPrototypeAccessor(proto, Nan::New("memoryLayout").ToLocalChecked(), GetmemoryLayout, nullptr, ctor);
-  {% for member in members -%}
-  {%- if isIgnoreableType(member) != true -%}
-  {{- processSourceMemberAccessor(struct, member) | safe -}}
-  {% endif -%}
-  {% endfor %}
-  Nan::Set(target, Nan::New("{{ struct_name }}").ToLocalChecked(), ctor->GetFunction());
+  constructor = Napi::Persistent(func);
+
+  constructor.SuppressDestruct();
+  exports.Set("{{ struct_name }}", func);
+  return exports;
 }
 
-NAN_GETTER(_{{ struct_name }}::GetmemoryBuffer) {
-  _{{ struct_name }} *self = Nan::ObjectWrap::Unwrap<_{{ struct_name }}>(info.This());
-  uint32_t size = sizeof(self->instance);
-  void * addr = reinterpret_cast<void *>(&self->instance);
-  v8::Local<v8::ArrayBuffer> buffer = v8::ArrayBuffer::New(
-    v8::Isolate::GetCurrent(),
+Napi::Value _{{ struct_name }}::GetmemoryBuffer(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  void * addr = reinterpret_cast<void *>(&this->instance);
+  uint32_t size = sizeof(this->instance);
+  Napi::ArrayBuffer buffer = Napi::ArrayBuffer::New(
+    env,
     addr,
-    size,
-    v8::ArrayBufferCreationMode::kExternalized
+    size
   );
-  info.GetReturnValue().Set(buffer);
+  return buffer;
 }
 
-NAN_GETTER(_{{ struct_name }}::GetmemoryLayout) {
-  _{{ struct_name }} *self = Nan::ObjectWrap::Unwrap<_{{ struct_name }}>(info.This());
-
-  v8::Local<v8::Object> out = Nan::New<v8::Object>();
-
+Napi::Value _{{ struct_name }}::GetmemoryLayout(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  Napi::Object out = Napi::Object::New(env);
   {% for member in members -%}
   {%- if isIgnoreableType(member) != true %}
   {
-    v8::Local<v8::Object> obj = Nan::New<v8::Object>();
-    uint32_t byteOffset = ((size_t)&((({{ struct.name }} *)0)->{{ member.name | safe }}));
-    uint32_t byteLength = sizeof(self->instance.{{ member.name | safe }});
-    obj->Set(Nan::New("byteOffset").ToLocalChecked(), Nan::New(byteOffset));
-    obj->Set(Nan::New("byteLength").ToLocalChecked(), Nan::New(byteLength));
-    out->Set(Nan::New("{{ member.name | safe }}").ToLocalChecked(), obj);
+    Napi::Object obj = Napi::Object::New(env);
+    uint32_t byteOffset = ((size_t)&((({{ struct.name }} *)0)->{{ member.name }}));
+    uint32_t byteLength = sizeof((({{ struct.name }} *)0)->{{ member.name }});
+    obj.Set(Napi::String::New(env, "byteOffset"), Napi::Number::New(env, byteOffset));
+    obj.Set(Napi::String::New(env, "byteLength"), Napi::Number::New(env, byteLength));
+    out.Set(Napi::String::New(env, "sType"), obj);
   }
   {%- endif -%}
   {%- endfor %}
-
-  info.GetReturnValue().Set(out);
+  return out;
 }
 
 bool _{{ struct_name }}::flush() {
@@ -88,7 +111,7 @@ bool _{{ struct_name }}::flush() {
   {%- if isIgnoreableType(member) != true -%}
   {%- if isFlushableMember(member) == true -%}
   if (!(self->{{ member.name }}.IsEmpty())) {
-    v8::Local<v8::Value> value = Nan::New(self->{{ member.name }});
+    Napi::Value value = self->{{ member.name }}.Value();
     {{ processFlushSourceSetter(struct, member) | safe }}
   }
   {%- endif -%}
@@ -97,44 +120,16 @@ bool _{{ struct_name }}::flush() {
   return true;
 }
 
-NAN_METHOD(_{{ struct_name }}::New) {
-  if (info.IsConstructCall()) {
-    _{{ struct_name }}* self = new _{{ struct_name }}();
-    self->Wrap(info.Holder());
-    if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
-      {% for member in members %}
-      {%- if isIgnoreableType(member) != true -%}
-      {%- if isFillableMember(struct, member) == true -%}
-      v8::Local<v8::String> sAccess{{ loop.index0 }} = Nan::New("{{ member.name }}").ToLocalChecked();
-      {% endif -%}
-      {% endif -%}
-      {% endfor -%}
-
-      {% for member in members %}
-      {%- if isIgnoreableType(member) != true -%}
-      {%- if isFillableMember(struct, member) == true -%}
-      if (obj->Has(sAccess{{ loop.index0 }})) info.This()->Set(sAccess{{ loop.index0 }}, obj->Get(sAccess{{ loop.index0 }}));
-      {% endif -%}
-      {% endif -%}
-      {% endfor %}
-    }
-    info.GetReturnValue().Set(info.Holder());
-  } else {
-    Nan::ThrowError("{{ struct_name }} constructor cannot be invoked without 'new'");
-  }
-};
-
 {% for member in members -%}
 {%- if isIgnoreableType(member) != true -%}
 // {{ member.name }}
-NAN_GETTER(_{{ struct_name }}::Get{{ member.name }}) {
-  _{{ struct_name }} *self = Nan::ObjectWrap::Unwrap<_{{ struct_name }}>(info.This());
+Napi::Value _{{ struct_name }}::Get{{ member.name }}(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
   {{- processSourceGetter(struct, member) | safe }}
 }
 {%- if isFillableMember(struct, member) == true -%}
-NAN_SETTER(_{{ struct_name }}::Set{{ member.name }}) {
-  _{{ struct_name }} *self = Nan::ObjectWrap::Unwrap<_{{ struct_name }}>(info.This());
+void _{{ struct_name }}::Set{{ member.name }}(const Napi::CallbackInfo& info, const Napi::Value& value) {
+  Napi::Env env = info.Env();
   {{- processSourceSetter(struct, member) | safe }}
 }
 {%- endif -%}

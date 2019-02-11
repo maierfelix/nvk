@@ -13,6 +13,7 @@ import {
   isPNextMember,
   isIgnoreableType,
   getAutoStructureType,
+  getNapiTypedArrayName,
   isWin32SupportedExtension
 } from "../utils";
 
@@ -48,17 +49,17 @@ function invalidMemberTypeError(member) {
 };
 
 function invalidMemberArrayLengthError(member) {
-  return `Nan::ThrowRangeError("Invalid array length, expected array length of '${member.length}' for '${currentStruct.name}.${member.name}'");`;
+  return `Napi::RangeError::New(value.Env(), "Invalid array length, expected array length of '${member.length}' for '${currentStruct.name}.${member.name}'").ThrowAsJavaScriptException();`;
 };
 
-function genPersistentV8Array(member) {
+function genPersistentArray(member) {
   return `
     // js
-    if (value->IsArray()) {
-      self->${member.name}.Reset<v8::Array>(value.As<v8::Array>());
-    } else if (value->IsNull()) {
-      self->${member.name}.Reset();
-      self->instance.${member.name} = nullptr;
+    if (value.IsArray()) {
+      this->${member.name}.Reset(value.ToObject());
+    } else if (value.IsNull()) {
+      this->${member.name}.Reset();
+      this->instance.${member.name} = nullptr;
     } else {
       ${invalidMemberTypeError(member)}
       return;
@@ -66,19 +67,19 @@ function genPersistentV8Array(member) {
   `;
 };
 
-function genPersistentV8TypedArray(member) {
+function genPersistentTypedArray(member) {
   let expected = member.jsTypedArrayName;
   return `
     // js
-    if (value->IsArrayBufferView()) {
-      if (value->Is${member.jsTypedArrayName}()) {
-        self->${member.name}.Reset<v8::Array>(value.As<v8::Array>());
+    if (value.IsTypedArray()) {
+      if (value.As<Napi::TypedArray>().TypedArrayType() == ${getNapiTypedArrayName(member.rawType)}) {
+        this->${member.name}.Reset(value.ToObject());
       } else {
         ${invalidMemberTypeError(member)}
         return;
       }
-    } else if (value->IsNull()) {
-      self->${member.name}.Reset();
+    } else if (value.IsNull()) {
+      this->${member.name}.Reset();
     } else {
       ${invalidMemberTypeError(member)}
       return;
@@ -91,18 +92,18 @@ function getTypedV8Array(member) {
     let type = member.enumRawType || member.bitmaskRawType;
     return `
   // vulkan
-  if (value->IsArrayBufferView()) {
-    self->instance.${member.name} = reinterpret_cast<${type}>(getTypedArrayData<${member.type}>(Nan::To<v8::Object>(value).ToLocalChecked(), nullptr));
+  if (value.IsTypedArray()) {
+    this->instance.${member.name} = reinterpret_cast<${type}>(getTypedArrayData<${member.type}>(value, nullptr));
   } else {
-    self->instance.${member.name} = nullptr;
+    this->instance.${member.name} = nullptr;
   }`;
   } else {
     return `
   // vulkan
-  if (value->IsArrayBufferView()) {
-    self->instance.${member.name} = getTypedArrayData<${member.type}>(Nan::To<v8::Object>(value).ToLocalChecked(), nullptr);
+  if (value.IsTypedArray()) {
+    this->instance.${member.name} = getTypedArrayData<${member.type}>(value, nullptr);
   } else {
-    self->instance.${member.name} = nullptr;
+    this->instance.${member.name} = nullptr;
   }`;
   }
 };
@@ -119,20 +120,20 @@ function processHeaderGetter(struct, member) {
     // string of chars
     if (member.type === "char") {
       return `
-    Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> ${member.name};
-    static NAN_GETTER(Get${member.name});`;
+    Napi::ObjectReference ${member.name};
+    Napi::Value Get${member.name}(const Napi::CallbackInfo &info);`;
     } else {
       return `
     std::vector<${member.type}>* v${member.name};
-    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> ${member.name};
-    static NAN_GETTER(Get${member.name});`;
+    Napi::ObjectReference ${member.name};
+    Napi::Value Get${member.name}(const Napi::CallbackInfo &info);`;
     }
   }
   if (member.isArray && (member.isStructType || member.isHandleType)) {
     return `
     std::vector<${member.type}>* v${member.name};
-    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> ${member.name};
-    static NAN_GETTER(Get${member.name});`;
+    Napi::ObjectReference ${member.name};
+    Napi::Value Get${member.name}(const Napi::CallbackInfo &info);`;
   }
   if (
     member.isStructType ||
@@ -141,46 +142,46 @@ function processHeaderGetter(struct, member) {
   ) {
     if (member.isStructType || member.isHandleType || member.dereferenceCount > 0) {
       return `
-      Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> ${member.name};
-      static NAN_GETTER(Get${member.name});`;
+      Napi::ObjectReference ${member.name};
+      Napi::Value Get${member.name}(const Napi::CallbackInfo &info);`;
     }
   }
   if (isPNextMember(member)) {
     return `
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> ${member.name};
-    static NAN_GETTER(Get${member.name});`;
+    Napi::ObjectReference ${member.name};
+    Napi::Value Get${member.name}(const Napi::CallbackInfo &info);`;
   }
   if (member.isVoidPointer) {
     return `
-    Nan::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object>> ${member.name};
-    static NAN_GETTER(Get${member.name});`;
+    Napi::ObjectReference ${member.name};
+    Napi::Value Get${member.name}(const Napi::CallbackInfo &info);`;
   }
   switch (rawType) {
     case "const char *":
       return `
-    Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> ${member.name};
-    static NAN_GETTER(Get${member.name});`;
+    Napi::ObjectReference ${member.name};
+    Napi::Value Get${member.name}(const Napi::CallbackInfo &info);`;
     case "float *":
     case "int32_t *":
     case "uint8_t *":
     case "uint32_t *":
     case "uint64_t *":
       return `
-    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> ${member.name};
-    static NAN_GETTER(Get${member.name});`;
+    Napi::ObjectReference ${member.name};
+    Napi::Value Get${member.name}(const Napi::CallbackInfo &info);`;
     case "const char * const*":
       return `
     std::vector<char *>* v${member.name};
-    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> ${member.name};
-    static NAN_GETTER(Get${member.name});`;
+    Napi::ObjectReference ${member.name};
+    Napi::Value Get${member.name}(const Napi::CallbackInfo &info);`;
     case "const float *":
     case "const int32_t *":
     case "const uint8_t *":
     case "const uint32_t *":
     case "const uint64_t *":
       return `
-    Nan::Persistent<v8::Array, v8::CopyablePersistentTraits<v8::Array>> ${member.name};
-    static NAN_GETTER(Get${member.name});`;
+    Napi::ObjectReference ${member.name};
+    Napi::Value Get${member.name}(const Napi::CallbackInfo &info);`;
     case "int":
     case "float":
     case "size_t":
@@ -190,11 +191,11 @@ function processHeaderGetter(struct, member) {
     case "uint32_t":
     case "uint64_t":
       return `
-    static NAN_GETTER(Get${member.name});`;
+    Napi::Value Get${member.name}(const Napi::CallbackInfo &info);`;
     default: {
       warn(`Cannot handle member ${member.rawType} for ${struct.name} in header-getter!`);
       return `
-    static NAN_GETTER(Get${member.name});`;
+    Napi::Value Get${member.name}(const Napi::CallbackInfo &info);`;
     }
   };
 };
@@ -202,7 +203,7 @@ function processHeaderGetter(struct, member) {
 function processHeaderSetter(struct, member) {
   let {rawType} = member;
   return `
-    static NAN_SETTER(Set${member.name});`;
+    void Set${member.name}(const Napi::CallbackInfo &info, const Napi::Value& value);`;
 };
 
 function processSourceGetter(struct, member) {
@@ -211,25 +212,23 @@ function processSourceGetter(struct, member) {
   if (member.isBaseType) {
     if (member.rawType === "VkBool32") {
       return `
-  info.GetReturnValue().Set(Nan::New<v8::Boolean>(self->instance.${member.name}));`;
+  return Napi::Boolean::New(env, this->instance.${member.name});`;
     }
   }
   if (member.isStaticArray) {
     return `
-  if (self->${member.name}.IsEmpty()) {
-    info.GetReturnValue().SetNull();
-  } else {
-    info.GetReturnValue().Set(Nan::New(self->${member.name}));
-  }`;
+  if (this->${member.name}.IsEmpty()) return env.Null();
+  return this->${member.name}.Value().As<Napi::Array>();`;
   }
-  if ((member.isArray && (member.isStructType || member.isHandleType)) || member.isVoidPointer) {
+  if (member.isVoidPointer) {
     return `
-  if (self->${member.name}.IsEmpty()) {
-    info.GetReturnValue().SetNull();
-  } else {
-    v8::Local<v8::Object> obj = Nan::New(self->${member.name});
-    info.GetReturnValue().Set(obj);
-  }`;
+  if (this->${member.name}.IsEmpty()) return env.Null();
+  return this->${member.name}.Value().As<Napi::Object>();`;
+  }
+  if (member.isArray && (member.isStructType || member.isHandleType)) {
+    return `
+  if (this->${member.name}.IsEmpty()) return env.Null();
+  return this->${member.name}.Value().As<Napi::Array>();`;
   }
   switch (rawType) {
     case "int":
@@ -241,15 +240,11 @@ function processSourceGetter(struct, member) {
     case "uint32_t":
     case "uint64_t":
       return `
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->instance.${member.name}));`;
+  return Napi::Number::New(env, this->instance.${member.name});`;
     case "const char *":
       return `
-  if (self->${member.name}.IsEmpty()) {
-    info.GetReturnValue().SetNull();
-  } else {
-    v8::Local<v8::String> str = Nan::New(self->${member.name});
-    info.GetReturnValue().Set(str);
-  }`;
+  if (this->${member.name}.IsEmpty()) return env.Null();
+  return this->${member.name}.Value().As<Napi::String>();`;
     case "float *":
     case "int32_t *":
     case "uint8_t *":
@@ -262,21 +257,13 @@ function processSourceGetter(struct, member) {
     case "const uint32_t *":
     case "const uint64_t *":
       return `
-  if (self->${member.name}.IsEmpty()) {
-    info.GetReturnValue().SetNull();
-  } else {
-    v8::Local<v8::Object> obj = Nan::New(self->${member.name});
-    info.GetReturnValue().Set(obj);
-  }`;
+  if (this->${member.name}.IsEmpty()) return env.Null();
+  return this->${member.name}.Value().As<Napi::TypedArray>();`;
     default: {
       if (member.isStructType || member.isHandleType || isPNextMember(member)) {
         return `
-  if (self->${member.name}.IsEmpty()) {
-    info.GetReturnValue().SetNull();
-  } else {
-    v8::Local<v8::Object> obj = Nan::New(self->${member.name});
-    info.GetReturnValue().Set(obj);
-  }`;
+  if (this->${member.name}.IsEmpty()) return env.Null();
+  return this->${member.name}.Value().As<Napi::Object>();`;
       }
       warn(`Cannot handle member ${member.rawType} for ${struct.name} in source-getter!`);
       return retUnknown(member);
@@ -290,35 +277,14 @@ function processStaticArraySourceSetter(member) {
   }
   return `
   // js
-  if (value->IsArray()) {
-    self->${member.name}.Reset<v8::Array>(value.As<v8::Array>());
-  } else if (value->IsNull()) {
-    self->${member.name}.Reset();
+  if (value.IsArray()) {
+    this->${member.name}.Reset(value.ToObject());
+  } else if (value.IsNull()) {
+    this->${member.name}.Reset();
   } else {
     ${invalidMemberTypeError(member)}
     return;
   }`;
-};
-
-function genPolymorphicSourceSetter(struct, member) {
-  let out = ``;
-  let {extensions} = struct;
-  if (extensions) {
-    out += `
-    v8::Local<v8::Object> arg = Nan::To<v8::Object>(value).ToLocalChecked();
-    v8::String::Utf8Value ctorUtf8(arg->GetConstructorName());
-    const char* ctor = *ctorUtf8;
-    `;
-    extensions.map((extName, index) => {
-      out += `${index <= 0 ? "if" : " else if"} (ctor == "${extName}") {
-      _${extName}* obj = Nan::ObjectWrap::Unwrap<_${extName}>(Nan::To<v8::Object>(value).ToLocalChecked());
-      self->instance.${member.name} = &obj->instance;
-    }`;
-    });
-  } else {
-    out += `self->instance.${member.name} = nullptr;`;
-  }
-  return out;
 };
 
 function processSourceSetter(struct, member) {
@@ -332,12 +298,12 @@ function processSourceSetter(struct, member) {
     // a reference, then we can just create a copy
     let isReference = member.isConstant && member.dereferenceCount > 0;
     return `
-  ${genPersistentV8Array(member)}
+  ${genPersistentArray(member)}
   // vulkan
-  if (value->IsArray()) {
+  if (value.IsArray()) {
     
-  } else if (value->IsNull()) {
-    self->instance.${member.name} = ${member.isHandleType ? "VK_NULL_HANDLE" : "nullptr"};
+  } else if (value.IsNull()) {
+    this->instance.${member.name} = ${member.isHandleType ? "VK_NULL_HANDLE" : "nullptr"};
   } else {
     ${invalidMemberTypeError(member)}
     return;
@@ -345,13 +311,12 @@ function processSourceSetter(struct, member) {
   }
   if (member.isVoidPointer && !isPNextMember(member)) {
     return `
-  if (value->IsArrayBuffer()) {
-    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
-    v8::Local<v8::ArrayBuffer> buf = v8::Local<v8::ArrayBuffer>::Cast(obj);
-    self->instance.${member.name} = buf->GetContents().Data();
-    self->${member.name}.Reset<v8::Object>(obj);
-  } else if (value->IsNull()) {
-    self->instance.${member.name} = nullptr;
+  if (value.IsArrayBuffer()) {
+    Napi::ArrayBuffer buffer = value.As<Napi::ArrayBuffer>();
+    this->instance.${member.name} = buffer.Data();
+    this->${member.name}.Reset(value.As<Napi::Object>());
+  } else if (value.IsNull()) {
+    this->instance.${member.name} = nullptr;
   } else {
     ${invalidMemberTypeError(member)}
     return;
@@ -367,24 +332,24 @@ function processSourceSetter(struct, member) {
     case "uint64_t":
       if (member.enumType || member.bitmaskRawType) {
         return `
-  if (value->IsNumber()) {
-    self->instance.${member.name} = static_cast<${member.enumType || member.bitmaskRawType}>(Nan::To<int32_t>(value).FromMaybe(0));
+  if (value.IsNumber()) {
+    this->instance.${member.name} = static_cast<${member.enumType || member.bitmaskRawType}>(value.As<Napi::Number>().Int32Value());
   } else {
     ${invalidMemberTypeError(member)}
     return;
   }`;
       } else if (member.isBoolean) { 
         return `
-  if (value->IsBoolean() || value->IsNumber()) {
-    self->instance.${member.name} = static_cast<${rawType}>(Nan::To<bool>(value).FromMaybe(false)) ? VK_TRUE : VK_FALSE;
+  if (value.IsBoolean() || value.IsNumber()) {
+    this->instance.${member.name} = static_cast<${rawType}>(value.As<Napi::Boolean>().Value()) ? VK_TRUE : VK_FALSE;
   } else {
     ${invalidMemberTypeError(member)}
     return;
   }`;
       } else if (member.isNumber) {
         return `
-  if (value->IsNumber()) {
-    self->instance.${member.name} = static_cast<${rawType}>(Nan::To<int64_t>(value).FromMaybe(0));
+  if (value.IsNumber()) {
+    this->instance.${member.name} = static_cast<${rawType}>(value.As<Napi::Number>().Int64Value());
   } else {
     ${invalidMemberTypeError(member)}
     return;
@@ -394,16 +359,13 @@ function processSourceSetter(struct, member) {
       }
     case "const char *":
       return `
-  if (value->IsString()) {
-    Nan::Persistent<v8::String, v8::CopyablePersistentTraits<v8::String>> str(Nan::To<v8::String>(value).ToLocalChecked());
-    self->${member.name} = str;
+  if (value.IsString()) {
+    this->${member.name}.Reset(value.As<Napi::Object>());
     // free previous
-    if (self->instance.${member.name}) {
-      delete[] self->instance.${member.name};
-    }
-    self->instance.${member.name} = copyV8String(value);
-  } else if (value->IsNull()) {
-    self->instance.${member.name} = nullptr;
+    if (this->instance.${member.name}) delete[] this->instance.${member.name};
+    this->instance.${member.name} = copyV8String(value);
+  } else if (value.IsNull()) {
+    this->instance.${member.name} = nullptr;
   } else {
     ${invalidMemberTypeError(member)}
     return;
@@ -411,7 +373,7 @@ function processSourceSetter(struct, member) {
     // array of strings
     case "const char * const*":
       return `
-  ${genPersistentV8Array(member)}`;
+  ${genPersistentArray(member)}`;
     case "float *":
     case "int32_t *":
     case "uint8_t *":
@@ -422,27 +384,27 @@ function processSourceSetter(struct, member) {
     case "const uint32_t *":
     case "const uint64_t *":
       return `
-  ${genPersistentV8TypedArray(member)}
+  ${genPersistentTypedArray(member)}
   ${getTypedV8Array(member)}`;
     default: {
       let isReference = member.dereferenceCount > 0;
       // initialization
       let initialize = `
-      self->${member.name}.Reset<v8::Object>(value.As<v8::Object>());
-      _${member.type}* inst = Nan::ObjectWrap::Unwrap<_${member.type}>(obj);
+      this->${member.name}.Reset(value.As<Napi::Object>());
+      _${member.type}* inst = Napi::ObjectWrap<_${member.type}>::Unwrap(obj);
       ${member.isStructType ? `inst->flush()` : ``};
-      self->instance.${member.name} = ${isReference ? "&" : ""}inst->instance;`;
+      this->instance.${member.name} = ${isReference ? "&" : ""}inst->instance;`;
       // condition to perform initialization
-      let validObjectCondition = `Nan::New(_${member.type}::constructor)->HasInstance(obj)`;
+      let validObjectCondition = `obj.InstanceOf(_${member.type}::constructor.Value())`;
       if (member.isStructType || member.isHandleType || isPNextMember(member)) {
         let deinitialize = ``;
         if (isPNextMember(member)) {
           let {extensions} = struct;
           validObjectCondition = `IsValidStructureObject(obj)`;
           initialize = `
-      self->${member.name}.Reset<v8::Object>(obj);
-      self->instance.${member.name} = (${member.rawType}) DynamicObjectUnwrapInstance(obj);
-      VkStructureType sType = static_cast<VkStructureType>(((int*)(self->instance.${member.name}))[0]);`;
+      this->${member.name}.Reset(obj);
+      this->instance.${member.name} = (${member.rawType}) DynamicObjectUnwrapInstance(obj);
+      VkStructureType sType = static_cast<VkStructureType>(((int*)(this->instance.${member.name}))[0]);`;
           if (extensions) {
             initialize += `
       if (`;
@@ -457,34 +419,34 @@ function processSourceSetter(struct, member) {
             });
             initialize += `
       ) {
-        Nan::ThrowTypeError("Invalid type for '${struct.name}.${member.name}'");
+        Napi::TypeError::New(env, "Invalid type for '${struct.name}.${member.name}'").ThrowAsJavaScriptException();
       }`;
           } else {
             initialize += `
-      Nan::ThrowTypeError("'${struct.name}.${member.name}' must be 'null'");`;
+      Napi::TypeError::New(env, "'${struct.name}.${member.name}' must be 'null'").ThrowAsJavaScriptException();`;
           }
         }
         if (member.isHandleType) {
-          deinitialize = `self->instance.${member.name} = VK_NULL_HANDLE;`;
+          deinitialize = `this->instance.${member.name} = VK_NULL_HANDLE;`;
         }
         else if (isReference || isPNextMember(member)) {
-          deinitialize = `self->instance.${member.name} = nullptr;`;
+          deinitialize = `this->instance.${member.name} = nullptr;`;
         }
         else {
-          deinitialize = `memset(&self->instance.${member.name}, 0, sizeof(${member.type}));`;
+          deinitialize = `memset(&this->instance.${member.name}, 0, sizeof(${member.type}));`;
         }
         return `
   // js
-  if (!value->IsNull()) {
-    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+  if (!value.IsNull()) {
+    Napi::Object obj = value.As<Napi::Object>();
     if (${validObjectCondition}) {
       ${initialize}
     } else {
       ${invalidMemberTypeError(member)}
       return;
     }
-  } else if (value->IsNull()) {
-    self->${member.name}.Reset();
+  } else if (value.IsNull()) {
+    this->${member.name}.Reset();
     ${deinitialize}
   } else {
     ${invalidMemberTypeError(member)}
@@ -503,7 +465,7 @@ function processFlushSourceSetter(struct, member) {
     let {extensions} = struct;
     if (!extensions) return ``;
     let out = `
-    v8::Local<v8::Object> obj = Nan::To<v8::Object>(value).ToLocalChecked();
+    Napi::Object obj = value.As<Napi::Object>();
     VkStructureType sType = GetStructureTypeFromObject(obj);`;
     extensions.map((extensionName, index) => {
       let structExt = getNodeByName(extensionName, ast);
@@ -511,7 +473,7 @@ function processFlushSourceSetter(struct, member) {
       if (structExt.extension && !isWin32SupportedExtension(structExt.extension.platform)) return;
       out += `
     ${index <= 0 ? "if" : "else if"} (sType == ${structExt.sType}) {
-      _${structExt.name}* structExt = Nan::ObjectWrap::Unwrap<_${structExt.name}>(obj);
+      _${structExt.name}* structExt = Napi::ObjectWrap<_${structExt.name}>::Unwrap(obj);
       if (!structExt->flush()) return false;
     }
       `;
@@ -520,16 +482,16 @@ function processFlushSourceSetter(struct, member) {
   }
   if (member.isStaticArray && member.isNumericArray) {
     return `
-    if (value->IsArray()) {
+    if (value.IsArray()) {
       // validate length
-      if (v8::Local<v8::Array>::Cast(value)->Length() != ${member.length}) {
+      if (value.As<Napi::Array>().Length() != ${member.length}) {
         ${invalidMemberArrayLengthError(member)}
         return false;
       }
       std::vector<${member.type}> array = createArrayOfV8Numbers<${member.type}>(value);
-      memcpy(self->instance.${member.name}, array.data(), sizeof(${member.type}) * ${member.length});
-    } else if (value->IsNull()) {
-      memset(&self->instance.${member.name}, 0, sizeof(${member.type}));
+      memcpy(this->instance.${member.name}, array.data(), sizeof(${member.type}) * ${member.length});
+    } else if (value.IsNull()) {
+      memset(&this->instance.${member.name}, 0, sizeof(${member.type}));
     } else {
       ${invalidMemberTypeError(member)}
       return false;
@@ -537,29 +499,28 @@ function processFlushSourceSetter(struct, member) {
   }
   if (member.isStaticArray && (member.isStructType)) {
     return `
-    if (value->IsArray()) {
-      v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(value);
+    if (value.IsArray()) {
+      Napi::Array array = value.As<Napi::Array>();
       // validate length
-      if (array->Length() != ${member.length}) {
+      if (array.Length() != ${member.length}) {
         ${invalidMemberArrayLengthError(member)}
         return false;
       }
-      std::vector<${member.type}>* data = self->v${member.name};
+      std::vector<${member.type}>* data = this->v${member.name};
       data->clear();
-      for (unsigned int ii = 0; ii < array->Length(); ++ii) {
-        v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
-        if (!(Nan::New(_${member.type}::constructor)->HasInstance(obj))) {
+      for (unsigned int ii = 0; ii < array.Length(); ++ii) {
+        Napi::Object obj = array.Get(ii).As<Napi::Object>();
+        if (!(obj.InstanceOf(_${member.type}::constructor.Value()))) {
           ${invalidMemberTypeError(member)}
           return false;
         }
-        _${member.type}* result = Nan::ObjectWrap::Unwrap<_${member.type}>(obj);
+        _${member.type}* result = Napi::ObjectWrap<_${member.type}>::Unwrap(obj);
         if (!result->flush()) return false;
         data->push_back(result->instance);
       };
-      memcpy(self->instance.${member.name}, data->data(), sizeof(${member.type}) * ${member.length});
-
-    } else if (value->IsNull()) {
-      memset(&self->instance.${member.name}, 0, sizeof(${member.type}));
+      memcpy(this->instance.${member.name}, data->data(), sizeof(${member.type}) * ${member.length});
+    } else if (value.IsNull()) {
+      memset(&this->instance.${member.name}, 0, sizeof(${member.type}));
     } else {
       ${invalidMemberTypeError(member)}
       return false;
@@ -569,21 +530,21 @@ function processFlushSourceSetter(struct, member) {
     let isReference = member.isConstant && member.dereferenceCount > 0;
     let flusher = member.isStructType ? `if (!result->flush()) return false;` : ``;
       return `
-    v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(value);
+    Napi::Array array = value.As<Napi::Array>();
     // validate length
-    if (array->Length() != self->instance.${member.length}) {
+    if (array.Length() != this->instance.${member.length}) {
       ${invalidMemberArrayLengthError(member)}
       return false;
     }
-    std::vector<${member.type}>* data = self->v${member.name};
+    std::vector<${member.type}>* data = this->v${member.name};
     data->clear();
-    for (unsigned int ii = 0; ii < array->Length(); ++ii) {
-      v8::Local<v8::Object> obj = Nan::To<v8::Object>(Nan::Get(array, ii).ToLocalChecked()).ToLocalChecked();
-      if (!(Nan::New(_${member.type}::constructor)->HasInstance(obj))) {
+    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
+      Napi::Object obj = array.Get(ii).As<Napi::Object>();
+      if (!(obj.InstanceOf(_${member.type}::constructor.Value()))) {
         ${invalidMemberTypeError(member)}
         return false;
       }
-      _${member.type}* result = Nan::ObjectWrap::Unwrap<_${member.type}>(obj);
+      _${member.type}* result = Napi::ObjectWrap<_${member.type}>::Unwrap(obj);
       ${ flusher }
       data->push_back(result->instance);
     };
@@ -591,7 +552,7 @@ function processFlushSourceSetter(struct, member) {
   }
   if (member.isStructType && member.dereferenceCount <= 0 && !member.isConstant) {
     return `
-    _${member.type}* result = Nan::ObjectWrap::Unwrap<_${member.type}>(Nan::To<v8::Object>(value).ToLocalChecked());
+    _${member.type}* result = Napi::ObjectWrap<_${member.type}>::Unwrap(value.As<Napi::Object>());
     if (!result->flush()) return false;
     self->instance.${member.name} = result->instance;`;
   }
@@ -599,10 +560,10 @@ function processFlushSourceSetter(struct, member) {
     return `
     std::vector<char*>* data = self->v${member.name};
     data->clear();
-    v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(value);
-    for (unsigned int ii = 0; ii < array->Length(); ++ii) {
-      v8::Local<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
-      if (!item->IsString()) return false;
+    Napi::Array array = value.As<Napi::Array>();
+    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
+      Napi::Value item = array.Get(ii);
+      if (!item.IsString()) return false;
       char *copy = copyV8String(item);
       data->push_back(copy);
     };
@@ -710,55 +671,24 @@ function processHeapVectorDeallocator(member) {
   return out;
 };
 
-function processFlushMemberSetter(struct, member) {
-  if (struct.returnedonly) return ``;
-  let index = getMemberIndexByName(struct, member.name);
-  let out = `
-  v8::Local<v8::String> sAccess${index} = Nan::New("${member.name}").ToLocalChecked();
-  info.This()->Set(sAccess${index}, info.This()->Get(sAccess${index}));`;
-  let {rawType} = member;
-  if (isPNextMember(member)) return ``;
-  if (member.isTypedArray) return ``;
-  if (member.isBaseType) rawType = member.baseType;
-  if (member.isStaticArray && member.type !== "char") return out;
-  if (member.isArray && (member.isStructType || member.isHandleType)) return out;
-  if (member.isStructType || member.isHandleType || member.isBaseType || member.dereferenceCount > 0) return out;
-  switch (rawType) {
-    case "float *":
-    case "int32_t *":
-    case "uint8_t *":
-    case "uint32_t *":
-    case "uint64_t *":
-    case "const float *":
-    case "const int32_t *":
-    case "const uint8_t *":
-    case "const uint32_t *":
-    case "const uint64_t *":
-      return out;
-    case "int":
-    case "float":
-    case "size_t":
-    case "int32_t":
-    case "uint8_t":
-    case "uint32_t":
-    case "uint64_t":
-    case "const char *":
-    case "const char * const*":
-      return ``;
-    default:
-      warn(`Cannot handle member ${member.rawType} in flush-member!`);
-  };
-  return ``;
-};
-
 function processSourceMemberAccessor(struct, member) {
   let {name} = member;
-  if (!isFillableMember(struct, member)) {
+  if (isFillableMember(struct, member)) {
     return `
-  SetPrototypeAccessor(proto, Nan::New("${name}").ToLocalChecked(), Get${name}, nullptr, ctor);`;
+  InstanceAccessor(
+    "${name}",
+    &_${struct.name}::Get${name},
+    &_${struct.name}::Set${name},
+    napi_enumerable
+  ),`;
   } else {
     return `
-  SetPrototypeAccessor(proto, Nan::New("${name}").ToLocalChecked(), Get${name}, Set${name}, ctor);`;
+  InstanceAccessor(
+    "${name}",
+    &_${struct.name}::Get${name},
+    nullptr,
+    napi_enumerable
+  ),`;
   }
 };
 
@@ -813,7 +743,6 @@ export default function(astReference, struct) {
     processHeaderSetter,
     processSourceIncludes,
     processMemberAutosType,
-    processFlushMemberSetter,
     processFlushSourceSetter,
     processSourceMemberAccessor,
     processHeapVectorAllocator,
