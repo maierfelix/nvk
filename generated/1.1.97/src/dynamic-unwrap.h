@@ -5,7 +5,8 @@
 #ifndef __DYN_UNWRAP__
 #define __DYN_UNWRAP__
 
-#include <nan.h>
+#define NAPI_EXPERIMENTAL
+#include <napi.h>
 #include "source.h"
 
 #include <map>

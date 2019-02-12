@@ -1,16 +1,22 @@
 #ifndef __VK_WINDOW_H__
 #define __VK_WINDOW_H__
 
-#include <nan.h>
+#define NAPI_EXPERIMENTAL
+#include <napi.h>
 
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
 
-class VulkanWindow: public Nan::ObjectWrap {
+#include "structs.h"
+
+class VulkanWindow : public Napi::ObjectWrap<VulkanWindow> {
 
   public:
 
-    static NAN_METHOD(New);
+    static Napi::Object Initialize(Napi::Env env, Napi::Object exports);
+    VulkanWindow(const Napi::CallbackInfo &info);
+    ~VulkanWindow();
+    static Napi::FunctionReference constructor;
 
     int width = 480;
     int height = 320;
@@ -20,67 +26,66 @@ class VulkanWindow: public Nan::ObjectWrap {
     double mouseLastY = 0;
 
     // event callbacks
-    Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onresize;
-    Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onfocus;
-    Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onclose;
-    Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onkeydown;
-    Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onkeyup;
-    Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onmousemove;
-    Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onmousewheel;
-    Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onmousedown;
-    Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> onmouseup;
-    Nan::Persistent<v8::Function, v8::CopyablePersistentTraits<v8::Function>> ondrop;
+    Napi::FunctionReference onresize;
+    Napi::FunctionReference onfocus;
+    Napi::FunctionReference onclose;
+    Napi::FunctionReference onkeydown;
+    Napi::FunctionReference onkeyup;
+    Napi::FunctionReference onmousemove;
+    Napi::FunctionReference onmousewheel;
+    Napi::FunctionReference onmousedown;
+    Napi::FunctionReference onmouseup;
+    Napi::FunctionReference ondrop;
+
+    Napi::Env env_;
 
     GLFWwindow* instance;
 
-    static Nan::Persistent<v8::FunctionTemplate> constructor;
-    static void Initialize(v8::Local<v8::Object> exports);
+    Napi::Value pollEvents(const Napi::CallbackInfo &info);
+    Napi::Value focus(const Napi::CallbackInfo &info);
+    Napi::Value close(const Napi::CallbackInfo &info);
+    Napi::Value shouldClose(const Napi::CallbackInfo &info);
+    Napi::Value createSurface(const Napi::CallbackInfo &info);
+    Napi::Value getRequiredInstanceExtensions(const Napi::CallbackInfo &info);
 
-    static NAN_METHOD(pollEvents);
-    static NAN_METHOD(focus);
-    static NAN_METHOD(close);
-    static NAN_METHOD(shouldClose);
-    static NAN_METHOD(createSurface);
-    static NAN_METHOD(getRequiredInstanceExtensions);
+    Napi::Value Gettitle(const Napi::CallbackInfo &info);
+    void Settitle(const Napi::CallbackInfo &info, const Napi::Value& value);
 
-    static NAN_GETTER(Gettitle);
-    static NAN_SETTER(Settitle);
+    Napi::Value Getwidth(const Napi::CallbackInfo &info);
+    void Setwidth(const Napi::CallbackInfo &info, const Napi::Value& value);
 
-    static NAN_GETTER(Getwidth);
-    static NAN_SETTER(Setwidth);
+    Napi::Value Getheight(const Napi::CallbackInfo &info);
+    void Setheight(const Napi::CallbackInfo &info, const Napi::Value& value);
 
-    static NAN_GETTER(Getheight);
-    static NAN_SETTER(Setheight);
+    Napi::Value Getonresize(const Napi::CallbackInfo &info);
+    void Setonresize(const Napi::CallbackInfo &info, const Napi::Value& value);
 
-    static NAN_GETTER(Getonresize);
-    static NAN_SETTER(Setonresize);
+    Napi::Value Getonfocus(const Napi::CallbackInfo &info);
+    void Setonfocus(const Napi::CallbackInfo &info, const Napi::Value& value);
 
-    static NAN_GETTER(Getonfocus);
-    static NAN_SETTER(Setonfocus);
+    Napi::Value Getonclose(const Napi::CallbackInfo &info);
+    void Setonclose(const Napi::CallbackInfo &info, const Napi::Value& value);
 
-    static NAN_GETTER(Getonclose);
-    static NAN_SETTER(Setonclose);
+    Napi::Value Getonkeydown(const Napi::CallbackInfo &info);
+    void Setonkeydown(const Napi::CallbackInfo &info, const Napi::Value& value);
 
-    static NAN_GETTER(Getonkeydown);
-    static NAN_SETTER(Setonkeydown);
+    Napi::Value Getonkeyup(const Napi::CallbackInfo &info);
+    void Setonkeyup(const Napi::CallbackInfo &info, const Napi::Value& value);
 
-    static NAN_GETTER(Getonkeyup);
-    static NAN_SETTER(Setonkeyup);
+    Napi::Value Getonmousemove(const Napi::CallbackInfo &info);
+    void Setonmousemove(const Napi::CallbackInfo &info, const Napi::Value& value);
 
-    static NAN_GETTER(Getonmousemove);
-    static NAN_SETTER(Setonmousemove);
+    Napi::Value Getonmousewheel(const Napi::CallbackInfo &info);
+    void Setonmousewheel(const Napi::CallbackInfo &info, const Napi::Value& value);
 
-    static NAN_GETTER(Getonmousewheel);
-    static NAN_SETTER(Setonmousewheel);
+    Napi::Value Getonmousedown(const Napi::CallbackInfo &info);
+    void Setonmousedown(const Napi::CallbackInfo &info, const Napi::Value& value);
 
-    static NAN_GETTER(Getonmousedown);
-    static NAN_SETTER(Setonmousedown);
+    Napi::Value Getonmouseup(const Napi::CallbackInfo &info);
+    void Setonmouseup(const Napi::CallbackInfo &info, const Napi::Value& value);
 
-    static NAN_GETTER(Getonmouseup);
-    static NAN_SETTER(Setonmouseup);
-
-    static NAN_GETTER(Getondrop);
-    static NAN_SETTER(Setondrop);
+    Napi::Value Getondrop(const Napi::CallbackInfo &info);
+    void Setondrop(const Napi::CallbackInfo &info, const Napi::Value& value);
 
     static void onWindowResize(GLFWwindow*, int, int);
     static void onWindowFocus(GLFWwindow*, int);
@@ -91,452 +96,555 @@ class VulkanWindow: public Nan::ObjectWrap {
     static void onWindowMouseButton(GLFWwindow*, int, int, int);
     static void onWindowDrop(GLFWwindow*, int, const char**);
 
-  private:
-    VulkanWindow();
-    ~VulkanWindow();
-
 };
 
-Nan::Persistent<v8::FunctionTemplate> VulkanWindow::constructor;
+Napi::FunctionReference VulkanWindow::constructor;
 
-VulkanWindow::VulkanWindow() {}
 VulkanWindow::~VulkanWindow() {}
 
-void VulkanWindow::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
-  Nan::HandleScope scope;
+Napi::Object VulkanWindow::Initialize(Napi::Env env, Napi::Object exports) {
+  Napi::HandleScope scope(env);
 
-  // constructor
-  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(VulkanWindow::New);
-  constructor.Reset(ctor);
-  ctor->InstanceTemplate()->SetInternalFieldCount(1);
-  ctor->SetClassName(Nan::New("VulkanWindow").ToLocalChecked());
+  Napi::Function func = DefineClass(env, "VulkanWindow", {
+    // methods
+    InstanceMethod(
+      "pollEvents",
+      &VulkanWindow::pollEvents,
+      napi_enumerable
+    ),
+    InstanceMethod(
+      "focus",
+      &VulkanWindow::focus,
+      napi_enumerable
+    ),
+    InstanceMethod(
+      "close",
+      &VulkanWindow::close,
+      napi_enumerable
+    ),
+    InstanceMethod(
+      "shouldClose",
+      &VulkanWindow::shouldClose,
+      napi_enumerable
+    ),
+    InstanceMethod(
+      "createSurface",
+      &VulkanWindow::createSurface,
+      napi_enumerable
+    ),
+    InstanceMethod(
+      "getRequiredInstanceExtensions",
+      &VulkanWindow::getRequiredInstanceExtensions,
+      napi_enumerable
+    ),
+    // accessors
+    InstanceAccessor(
+      "title",
+      &VulkanWindow::Gettitle,
+      &VulkanWindow::Settitle,
+      napi_enumerable
+    ),
+    InstanceAccessor(
+      "width",
+      &VulkanWindow::Getwidth,
+      &VulkanWindow::Setwidth,
+      napi_enumerable
+    ),
+    InstanceAccessor(
+      "height",
+      &VulkanWindow::Getheight,
+      &VulkanWindow::Setheight,
+      napi_enumerable
+    ),
+    InstanceAccessor(
+      "onresize",
+      &VulkanWindow::Getonresize,
+      &VulkanWindow::Setonresize,
+      napi_enumerable
+    ),
+    InstanceAccessor(
+      "onfocus",
+      &VulkanWindow::Getonfocus,
+      &VulkanWindow::Setonfocus,
+      napi_enumerable
+    ),
+    InstanceAccessor(
+      "onclose",
+      &VulkanWindow::Getonclose,
+      &VulkanWindow::Setonclose,
+      napi_enumerable
+    ),
+    InstanceAccessor(
+      "onkeydown",
+      &VulkanWindow::Getonkeydown,
+      &VulkanWindow::Setonkeydown,
+      napi_enumerable
+    ),
+    InstanceAccessor(
+      "onkeyup",
+      &VulkanWindow::Getonkeyup,
+      &VulkanWindow::Setonkeyup,
+      napi_enumerable
+    ),
+    InstanceAccessor(
+      "onmousemove",
+      &VulkanWindow::Getonmousemove,
+      &VulkanWindow::Setonmousemove,
+      napi_enumerable
+    ),
+    InstanceAccessor(
+      "onmousewheel",
+      &VulkanWindow::Getonmousewheel,
+      &VulkanWindow::Setonmousewheel,
+      napi_enumerable
+    ),
+    InstanceAccessor(
+      "onmousedown",
+      &VulkanWindow::Getonmousedown,
+      &VulkanWindow::Setonmousedown,
+      napi_enumerable
+    ),
+    InstanceAccessor(
+      "onmouseup",
+      &VulkanWindow::Getonmouseup,
+      &VulkanWindow::Setonmouseup,
+      napi_enumerable
+    ),
+    InstanceAccessor(
+      "ondrop",
+      &VulkanWindow::Getondrop,
+      &VulkanWindow::Setondrop,
+      napi_enumerable
+    )
+  });
 
-  // prototype
-  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
+  constructor = Napi::Persistent(func);
+  constructor.SuppressDestruct();
 
-  Nan::SetPrototypeMethod(ctor, "pollEvents", pollEvents);
-  Nan::SetPrototypeMethod(ctor, "focus", focus);
-  Nan::SetPrototypeMethod(ctor, "close", close);
-  Nan::SetPrototypeMethod(ctor, "shouldClose", shouldClose);
-  Nan::SetPrototypeMethod(ctor, "createSurface", createSurface);
-  Nan::SetPrototypeMethod(ctor, "getRequiredInstanceExtensions", getRequiredInstanceExtensions);
-
-  SetPrototypeAccessor(proto, Nan::New("title").ToLocalChecked(), Gettitle, Settitle, ctor);
-  SetPrototypeAccessor(proto, Nan::New("width").ToLocalChecked(), Getwidth, Setwidth, ctor);
-  SetPrototypeAccessor(proto, Nan::New("height").ToLocalChecked(), Getheight, Setheight, ctor);
-
-  SetPrototypeAccessor(proto, Nan::New("onresize").ToLocalChecked(), Getonresize, Setonresize, ctor);
-  SetPrototypeAccessor(proto, Nan::New("onfocus").ToLocalChecked(), Getonfocus, Setonfocus, ctor);
-  SetPrototypeAccessor(proto, Nan::New("onclose").ToLocalChecked(), Getonclose, Setonclose, ctor);
-  SetPrototypeAccessor(proto, Nan::New("onkeydown").ToLocalChecked(), Getonkeydown, Setonkeydown, ctor);
-  SetPrototypeAccessor(proto, Nan::New("onkeyup").ToLocalChecked(), Getonkeyup, Setonkeyup, ctor);
-  SetPrototypeAccessor(proto, Nan::New("onmousemove").ToLocalChecked(), Getonmousemove, Setonmousemove, ctor);
-  SetPrototypeAccessor(proto, Nan::New("onmousewheel").ToLocalChecked(), Getonmousewheel, Setonmousewheel, ctor);
-  SetPrototypeAccessor(proto, Nan::New("onmousedown").ToLocalChecked(), Getonmousedown, Setonmousedown, ctor);
-  SetPrototypeAccessor(proto, Nan::New("onmouseup").ToLocalChecked(), Getonmouseup, Setonmouseup, ctor);
-  SetPrototypeAccessor(proto, Nan::New("ondrop").ToLocalChecked(), Getondrop, Setondrop, ctor);
-
-  Nan::Set(target, Nan::New("VulkanWindow").ToLocalChecked(), ctor->GetFunction());
+  exports.Set("VulkanWindow", func);
+  return exports;
 }
 
 void VulkanWindow::onWindowResize(GLFWwindow* window, int w, int h) {
   VulkanWindow* self = static_cast<VulkanWindow*>(glfwGetWindowUserPointer(window));
+  Napi::Env env = self->env_;
   self->width = w;
   self->height = h;
   if (self->onresize.IsEmpty()) return;
-  v8::Local<v8::Object> out = Nan::New<v8::Object>();
-  out->Set(Nan::New("width").ToLocalChecked(), Nan::New(self->width));
-  out->Set(Nan::New("height").ToLocalChecked(), Nan::New(self->height));
-  const unsigned argc = 1;
+  Napi::Object out = Napi::Object::New(env);
+  out.Set("width", Napi::Number::New(env, self->width));
+  out.Set("height", Napi::Number::New(env, self->height));
+
+  /*size_t argc = 1;
+  napi_value argv = socket_wrap->Value();
+  this->onresize.Value().MakeCallback(Napi::Object::New(this->env), argc, &argv);*/
+
+  /*const unsigned argc = 1;
   v8::Local<v8::Value> argv[argc] = { out };
-  Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->onresize), argc, argv);
+  Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->onresize), argc, argv);*/
 }
 
 void VulkanWindow::onWindowFocus(GLFWwindow* window, int focused) {
   VulkanWindow* self = static_cast<VulkanWindow*>(glfwGetWindowUserPointer(window));
+  Napi::Env env = self->env_;
   if (self->onfocus.IsEmpty()) return;
-  v8::Local<v8::Object> out = Nan::New<v8::Object>();
-  out->Set(Nan::New("focused").ToLocalChecked(), Nan::New(!!focused));
-  const unsigned argc = 1;
+  Napi::Object out = Napi::Object::New(env);
+  out.Set("focused", Napi::Boolean::New(env, !!focused));
+  /*const unsigned argc = 1;
   v8::Local<v8::Value> argv[argc] = { out };
-  Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->onfocus), argc, argv);
+  Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->onfocus), argc, argv);*/
 }
 
 void VulkanWindow::onWindowClose(GLFWwindow* window) {
   VulkanWindow* self = static_cast<VulkanWindow*>(glfwGetWindowUserPointer(window));
+  Napi::Env env = self->env_;
   if (self->onclose.IsEmpty()) return;
-  v8::Local<v8::Object> out = Nan::New<v8::Object>();
-  const unsigned argc = 1;
+  Napi::Object out = Napi::Object::New(env);
+  /*const unsigned argc = 1;
   v8::Local<v8::Value> argv[argc] = { out };
-  Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->onclose), argc, argv);
+  Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->onclose), argc, argv);*/
 }
 
 void VulkanWindow::onWindowKeyPress(GLFWwindow* window, int key, int scancode, int action, int mods) {
-  v8::Isolate *isolate = v8::Isolate::GetCurrent();
   VulkanWindow* self = static_cast<VulkanWindow*>(glfwGetWindowUserPointer(window));
-  v8::Local<v8::Object> out = Nan::New<v8::Object>();
-  out->Set(Nan::New("keyCode").ToLocalChecked(), Nan::New(key));
-  const unsigned argc = 1;
-  v8::Local<v8::Value> argv[argc] = { out };
+  Napi::Env env = self->env_;
+  Napi::Object out = Napi::Object::New(env);
+  out.Set("keyCode", Napi::Number::New(env, key));
+  /*const unsigned argc = 1;
+  v8::Local<v8::Value> argv[argc] = { out };*/
   // press
   if (action == GLFW_PRESS) {
     if (!(self->onkeydown.IsEmpty())) {
-      Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->onkeydown), argc, argv);
+      //Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->onkeydown), argc, argv);
     }
   }
   // release
   else if (action == GLFW_RELEASE) {
     if (!(self->onkeyup.IsEmpty())) {
-      Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->onkeyup), argc, argv);
+      //Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->onkeyup), argc, argv);
     }
   }
 }
 
 void VulkanWindow::onWindowMouseMove(GLFWwindow* window, double x, double y) {
   VulkanWindow* self = static_cast<VulkanWindow*>(glfwGetWindowUserPointer(window));
-  v8::Local<v8::Object> out = Nan::New<v8::Object>();
+  Napi::Env env = self->env_;
+  Napi::Object out = Napi::Object::New(env);
   double movementX = self->mouseLastX - x;
   double movementY = self->mouseLastY - y;
   self->mouseLastX = x;
   self->mouseLastY = y;
   if (self->onmousemove.IsEmpty()) return;
-  out->Set(Nan::New("x").ToLocalChecked(), Nan::New(x));
-  out->Set(Nan::New("y").ToLocalChecked(), Nan::New(y));
-  out->Set(Nan::New("movementX").ToLocalChecked(), Nan::New(movementX));
-  out->Set(Nan::New("movementY").ToLocalChecked(), Nan::New(movementY));
-  const unsigned argc = 1;
+  out.Set("x", Napi::Number::New(env, x));
+  out.Set("y", Napi::Number::New(env, y));
+  out.Set("movementX", Napi::Number::New(env, movementX));
+  out.Set("movementY", Napi::Number::New(env, movementY));
+  /*const unsigned argc = 1;
   v8::Local<v8::Value> argv[argc] = { out };
-  Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->onmousemove), argc, argv);
+  Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->onmousemove), argc, argv);*/
 }
 
 void VulkanWindow::onWindowMouseWheel(GLFWwindow* window, double deltaX, double deltaY) {
   VulkanWindow* self = static_cast<VulkanWindow*>(glfwGetWindowUserPointer(window));
+  Napi::Env env = self->env_;
   if (self->onmousewheel.IsEmpty()) return;
   double mouseX = 0;
   double mouseY = 0;
   glfwGetCursorPos(window, &mouseX, &mouseY);
-  v8::Local<v8::Object> out = Nan::New<v8::Object>();
-  out->Set(Nan::New("x").ToLocalChecked(), Nan::New(mouseX));
-  out->Set(Nan::New("y").ToLocalChecked(), Nan::New(mouseY));
-  out->Set(Nan::New("deltaX").ToLocalChecked(), Nan::New(deltaX));
-  out->Set(Nan::New("deltaY").ToLocalChecked(), Nan::New(deltaY));
-  const unsigned argc = 1;
+  Napi::Object out = Napi::Object::New(env);
+  out.Set("x", Napi::Number::New(env, mouseX));
+  out.Set("y", Napi::Number::New(env, mouseY));
+  out.Set("deltaX", Napi::Number::New(env, deltaX));
+  out.Set("deltaY", Napi::Number::New(env, deltaY));
+  /*const unsigned argc = 1;
   v8::Local<v8::Value> argv[argc] = { out };
-  Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->onmousewheel), argc, argv);
+  Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->onmousewheel), argc, argv);*/
 }
 
 void VulkanWindow::onWindowMouseButton(GLFWwindow* window, int button, int action, int mods) {
   VulkanWindow* self = static_cast<VulkanWindow*>(glfwGetWindowUserPointer(window));
-  v8::Local<v8::Object> out = Nan::New<v8::Object>();
+  Napi::Env env = self->env_;
+  Napi::Object out = Napi::Object::New(env);
   double mouseX = 0;
   double mouseY = 0;
   glfwGetCursorPos(window, &mouseX, &mouseY);
-  out->Set(Nan::New("x").ToLocalChecked(), Nan::New(mouseX));
-  out->Set(Nan::New("y").ToLocalChecked(), Nan::New(mouseY));
-  out->Set(Nan::New("button").ToLocalChecked(), Nan::New(button));
-  const unsigned argc = 1;
-  v8::Local<v8::Value> argv[argc] = { out };
+  out.Set("x", Napi::Number::New(env, mouseX));
+  out.Set("y", Napi::Number::New(env, mouseY));
+  out.Set("button", Napi::Number::New(env, button));
+  /*const unsigned argc = 1;
+  v8::Local<v8::Value> argv[argc] = { out };*/
   // press
   if (action == GLFW_PRESS) {
     if (!(self->onmousedown.IsEmpty())) {
-      Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->onmousedown), argc, argv);
+      //Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->onmousedown), argc, argv);
     }
   }
   // release
   else if (action == GLFW_RELEASE) {
     if (!(self->onmouseup.IsEmpty())) {
-      Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->onmouseup), argc, argv);
+      //Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->onmouseup), argc, argv);
     }
   }
 }
 
 void VulkanWindow::onWindowDrop(GLFWwindow* window, int count, const char** paths) {
-  v8::Isolate *isolate = v8::Isolate::GetCurrent();
   VulkanWindow* self = static_cast<VulkanWindow*>(glfwGetWindowUserPointer(window));
+  Napi::Env env = self->env_;
   if (self->ondrop.IsEmpty()) return;
-  v8::Local<v8::Object> out = Nan::New<v8::Object>();
+  Napi::Object out = Napi::Object::New(env);
   // fill paths
-  v8::Local<v8::Array> arr = v8::Array::New(isolate, count);
+  Napi::Array arr = Napi::Array::New(env, count);
   unsigned int len = count;
   for (unsigned int ii = 0; ii < len; ++ii) {
-    v8::Local<v8::String> str = v8::String::NewFromUtf8(isolate, paths[ii]);
-    arr->Set(ii, str);
+    arr.Set(ii, Napi::String::New(env, paths[ii]));
   };
   // add to out obj
-  out->Set(Nan::New("paths").ToLocalChecked(), arr);
-  const unsigned argc = 1;
+  out.Set("paths", arr);
+  /*const unsigned argc = 1;
   v8::Local<v8::Value> argv[argc] = { out };
-  Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->ondrop), argc, argv);
+  Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(self->ondrop), argc, argv);*/
 }
 
-NAN_METHOD(VulkanWindow::New) {
-  VulkanWindow* self = new VulkanWindow();
-  self->Wrap(info.Holder());
-  // create glfw window
+VulkanWindow::VulkanWindow(const Napi::CallbackInfo& info) : Napi::ObjectWrap<VulkanWindow>(info), env_(info.Env()) {
+  Napi::Env env = env_;
   if (info.IsConstructCall()) {
-    // init glfw
-    if (glfwInit() != GLFW_TRUE) return Nan::ThrowError("Failed to init GLFW!");
-    // process arguments
-    // Nan::New(VkApplicationInfo::constructor)->HasInstance(Nan::To<v8::Object>(info[0]).ToLocalChecked()))
-    if (info[0]->IsObject()) {
-      v8::Local<v8::Object> obj = Nan::To<v8::Object>(info[0]).ToLocalChecked();
-      v8::Local<v8::Value> argWidth = obj->Get(Nan::New("width").ToLocalChecked());
-      v8::Local<v8::Value> argHeight = obj->Get(Nan::New("height").ToLocalChecked());
-      v8::Local<v8::Value> argTitle = obj->Get(Nan::New("title").ToLocalChecked());
-      if (!argWidth->IsUndefined()) self->width = Nan::To<uint32_t>(argWidth).FromMaybe(0);
-      if (!argHeight->IsUndefined()) self->height = Nan::To<uint32_t>(argHeight).FromMaybe(0);
-      if (!argTitle->IsUndefined()) self->title = *v8::String::Utf8Value(v8::Isolate::GetCurrent(), argTitle);
+    if (info[0].IsObject()) {
+      // init glfw
+      if (glfwInit() != GLFW_TRUE) Napi::TypeError::New(env, "Failed to initialise GLFW").ThrowAsJavaScriptException();
+      Napi::Object obj = info[0].As<Napi::Object>();
+      if (!obj.Has("width")) Napi::Error::New(env, "'Object' must contain property 'width'").ThrowAsJavaScriptException();
+      if (!obj.Has("height")) Napi::Error::New(env, "'Object' must contain property 'height'").ThrowAsJavaScriptException();
+      if (!obj.Has("title")) Napi::Error::New(env, "'Object' must contain property 'title'").ThrowAsJavaScriptException();
+      Napi::Value argWidth = obj.Get("width");
+      Napi::Value argHeight = obj.Get("height");
+      Napi::Value argTitle = obj.Get("title");
+      if (argWidth.IsNumber()) this->width = argWidth.As<Napi::Number>().Int32Value();
+      if (argHeight.IsNumber()) this->height = argHeight.As<Napi::Number>().Int32Value();
+      if (argTitle.IsString()) this->title = argTitle.As<Napi::String>().Utf8Value();
+      glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+      glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
+      GLFWwindow* window = glfwCreateWindow(this->width, this->height, this->title.c_str(), nullptr, nullptr);
+      this->instance = window;
+      glfwMakeContextCurrent(window);
+      glfwSetWindowUserPointer(window, this);
+      // window events
+      glfwSetWindowSizeCallback(window, VulkanWindow::onWindowResize);
+      glfwSetWindowFocusCallback(window, VulkanWindow::onWindowFocus);
+      glfwSetWindowCloseCallback(window, VulkanWindow::onWindowClose);
+      // keyboard events
+      glfwSetKeyCallback(window, VulkanWindow::onWindowKeyPress);
+      // mouse events
+      glfwSetCursorPosCallback(window, VulkanWindow::onWindowMouseMove);
+      glfwSetScrollCallback(window, VulkanWindow::onWindowMouseWheel);
+      glfwSetMouseButtonCallback(window, VulkanWindow::onWindowMouseButton);
+      // file drop
+      glfwSetDropCallback(window, VulkanWindow::onWindowDrop);
+    } else {
+      Napi::Error::New(env, "Argument 1 must be of type 'Object'").ThrowAsJavaScriptException();
     }
-    glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-    glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
-    GLFWwindow* window = glfwCreateWindow(self->width, self->height, self->title.c_str(), nullptr, nullptr);
-    self->instance = window;
-    glfwMakeContextCurrent(window);
-    glfwSetWindowUserPointer(window, self);
-    // window events
-    glfwSetWindowSizeCallback(window, VulkanWindow::onWindowResize);
-    glfwSetWindowFocusCallback(window, VulkanWindow::onWindowFocus);
-    glfwSetWindowCloseCallback(window, VulkanWindow::onWindowClose);
-    // keyboard events
-    glfwSetKeyCallback(window, VulkanWindow::onWindowKeyPress);
-    // mouse events
-    glfwSetCursorPosCallback(window, VulkanWindow::onWindowMouseMove);
-    glfwSetScrollCallback(window, VulkanWindow::onWindowMouseWheel);
-    glfwSetMouseButtonCallback(window, VulkanWindow::onWindowMouseButton);
-    // file drop
-    glfwSetDropCallback(window, VulkanWindow::onWindowDrop);
+  } else {
+    Napi::Error::New(env, "VulkanWindow constructor cannot be invoked without 'new'").ThrowAsJavaScriptException();
   }
-  info.GetReturnValue().Set(info.Holder());
 }
 
-NAN_METHOD(VulkanWindow::shouldClose) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  GLFWwindow* window = self->instance;
-  info.GetReturnValue().Set(Nan::New((bool)glfwWindowShouldClose(window)));
+Napi::Value VulkanWindow::shouldClose(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  GLFWwindow* window = this->instance;
+  return Napi::Boolean::New(env, static_cast<bool>(glfwWindowShouldClose(window)));
 }
 
-NAN_METHOD(VulkanWindow::focus) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  GLFWwindow* window = self->instance;
+Napi::Value VulkanWindow::focus(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  GLFWwindow* window = this->instance;
   glfwFocusWindow(window);
+  return env.Undefined();
 }
 
-NAN_METHOD(VulkanWindow::close) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  GLFWwindow* window = self->instance;
+Napi::Value VulkanWindow::close(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  GLFWwindow* window = this->instance;
   glfwSetWindowShouldClose(window, GLFW_TRUE);
   VulkanWindow::onWindowClose(window);
+  return env.Undefined();
 }
 
-NAN_METHOD(VulkanWindow::pollEvents) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  GLFWwindow* window = self->instance;
-  if (!glfwWindowShouldClose(window)) {
-    glfwPollEvents();
-  }
+Napi::Value VulkanWindow::pollEvents(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  GLFWwindow* window = this->instance;
+  if (!glfwWindowShouldClose(window)) glfwPollEvents();
+  return env.Undefined();
 }
 
-NAN_METHOD(VulkanWindow::createSurface) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
+Napi::Value VulkanWindow::createSurface(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  Napi::Object arg0;
+  Napi::Object arg1;
+  Napi::Object arg2;
+  if (info[0].IsObject()) arg0 = info[0].As<Napi::Object>();
+  else Napi::TypeError::New(env, "Argument 1 must be of type 'VkInstance'").ThrowAsJavaScriptException();
+  if (info[2].IsObject()) arg2 = info[2].As<Napi::Object>();
+  else Napi::TypeError::New(env, "Argument 2 must be of type 'VkSurfaceKHR'").ThrowAsJavaScriptException();
 
-  v8::Local<v8::Object> arg0;
-  v8::Local<v8::Object> arg1;
-  v8::Local<v8::Object> arg2;
-
-  if (info[0]->IsObject()) arg0 = Nan::To<v8::Object>(info[0]).ToLocalChecked();
-  if (info[1]->IsObject()) arg1 = Nan::To<v8::Object>(info[1]).ToLocalChecked();
-  if (info[2]->IsObject()) arg2 = Nan::To<v8::Object>(info[2]).ToLocalChecked();
-
-  _VkInstance* instance = Nan::ObjectWrap::Unwrap<_VkInstance>(arg0);
-  _VkSurfaceKHR* surface = Nan::ObjectWrap::Unwrap<_VkSurfaceKHR>(arg2);
+  _VkInstance* instance = Napi::ObjectWrap<_VkInstance>::Unwrap(arg0);
+  _VkSurfaceKHR* surface = Napi::ObjectWrap<_VkSurfaceKHR>::Unwrap(arg2);
 
   VkResult out = glfwCreateWindowSurface(
     instance->instance,
-    self->instance,
+    this->instance,
     nullptr,
     &surface->instance
   );
-
-  info.GetReturnValue().Set(Nan::New(static_cast<int32_t>(out)));
+  return Napi::Number::New(env, static_cast<int32_t>(out));
+  return Napi::Number::New(env, static_cast<int32_t>(0));
 }
 
-NAN_METHOD(VulkanWindow::getRequiredInstanceExtensions) {
-  v8::Isolate *isolate = info.GetIsolate();
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-
+Napi::Value VulkanWindow::getRequiredInstanceExtensions(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
   uint32_t glfwExtensionCount = 0;
   const char** glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
-
-  v8::Local<v8::Array> out = v8::Array::New(isolate, glfwExtensionCount);
+  Napi::Array out = Napi::Array::New(env, glfwExtensionCount);
   for (unsigned int ii = 0; ii < glfwExtensionCount; ++ii) {
-    v8::Local<v8::String> str = v8::String::NewFromUtf8(isolate, glfwExtensions[ii]);
-    out->Set(ii, str);
+    out.Set(ii, Napi::String::New(env, glfwExtensions[ii]));
   };
-
-  info.GetReturnValue().Set(out);
+  return out;
 }
 
 // title
-NAN_GETTER(VulkanWindow::Gettitle) {
-  v8::Isolate *isolate = info.GetIsolate();
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  v8::Local<v8::String> str = v8::String::NewFromUtf8(isolate, self->title.c_str());
-  info.GetReturnValue().Set(str);
+Napi::Value VulkanWindow::Gettitle(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  Napi::String str = Napi::String::New(env, this->title.c_str());
+  return str;
 }
-NAN_SETTER(VulkanWindow::Settitle) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  GLFWwindow* window = self->instance;
-
-  v8::Local<v8::Value> argTitle = value;
-  std::string title = *v8::String::Utf8Value(v8::Isolate::GetCurrent(), argTitle);
-  glfwSetWindowTitle(window, title.c_str());
-  self->title = title;
+void VulkanWindow::Settitle(const Napi::CallbackInfo& info, const Napi::Value& value) {
+  Napi::Env env = info.Env();
+  if (!value.IsString()) {
+    Napi::TypeError::New(env, "Argument 1 must be of type 'String'").ThrowAsJavaScriptException();
+  }
+  std::string title = value.ToString().Utf8Value();
+  glfwSetWindowTitle(this->instance, title.c_str());
+  this->title = title;
 }
 
 // width
-NAN_GETTER(VulkanWindow::Getwidth) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->width));
+Napi::Value VulkanWindow::Getwidth(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  return Napi::Number::New(env, static_cast<int32_t>(this->width));
 }
-NAN_SETTER(VulkanWindow::Setwidth) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  GLFWwindow* window = self->instance;
-  self->width = static_cast<int>(Nan::To<uint32_t>(value).FromMaybe(0));
-  glfwSetWindowSize(window, self->width, self->height);
-  VulkanWindow::onWindowResize(window, self->width, self->height);
+void VulkanWindow::Setwidth(const Napi::CallbackInfo& info, const Napi::Value& value) {
+  Napi::Env env = info.Env();
+  GLFWwindow* window = this->instance;
+  if (!value.IsNumber()) {
+    Napi::TypeError::New(env, "Argument 1 must be of type 'Number'").ThrowAsJavaScriptException();
+  }
+  this->width = value.As<Napi::Number>().Int32Value();
+  glfwSetWindowSize(window, this->width, this->height);
+  VulkanWindow::onWindowResize(window, this->width, this->height);
 }
 
 // height
-NAN_GETTER(VulkanWindow::Getheight) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  info.GetReturnValue().Set(Nan::New<v8::Number>(self->height));
+Napi::Value VulkanWindow::Getheight(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  return Napi::Number::New(env, static_cast<int32_t>(this->height));
 }
-NAN_SETTER(VulkanWindow::Setheight) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  GLFWwindow* window = self->instance;
-  self->height = static_cast<int>(Nan::To<uint32_t>(value).FromMaybe(0));
-  glfwSetWindowSize(window, self->width, self->height);
-  VulkanWindow::onWindowResize(window, self->width, self->height);
+void VulkanWindow::Setheight(const Napi::CallbackInfo& info, const Napi::Value& value) {
+  Napi::Env env = info.Env();
+  GLFWwindow* window = this->instance;
+  if (!value.IsNumber()) {
+    Napi::TypeError::New(env, "Argument 1 must be of type 'Number'").ThrowAsJavaScriptException();
+  }
+  this->height = value.As<Napi::Number>().Int32Value();
+  glfwSetWindowSize(window, this->width, this->height);
+  VulkanWindow::onWindowResize(window, this->width, this->height);
 }
 
 // onresize
-NAN_GETTER(VulkanWindow::Getonresize) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  if (self->onresize.IsEmpty()) info.GetReturnValue().SetNull();
-  else info.GetReturnValue().Set(Nan::New<v8::Function>(self->onresize));
+Napi::Value VulkanWindow::Getonresize(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  if (this->onresize.IsEmpty()) return env.Null();
+  return this->onresize.Value().As<Napi::Function>();
 }
-NAN_SETTER(VulkanWindow::Setonresize) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  if (value->IsFunction()) self->onresize.Reset<v8::Function>(value.As<v8::Function>());
-  else self->onresize.Reset();
+void VulkanWindow::Setonresize(const Napi::CallbackInfo& info, const Napi::Value& value) {
+  Napi::Env env = info.Env();
+  if (value.IsFunction()) this->onresize.Reset(value.As<Napi::Function>());
+  else if (value.IsNull()) this->onresize.Reset();
+  else Napi::TypeError::New(env, "Argument 1 must be of type 'Function'").ThrowAsJavaScriptException();
 }
 
 // onfocus
-NAN_GETTER(VulkanWindow::Getonfocus) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  if (self->onfocus.IsEmpty()) info.GetReturnValue().SetNull();
-  else info.GetReturnValue().Set(Nan::New<v8::Function>(self->onfocus));
+Napi::Value VulkanWindow::Getonfocus(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  if (this->onfocus.IsEmpty()) return env.Null();
+  return this->onfocus.Value().As<Napi::Function>();
 }
-NAN_SETTER(VulkanWindow::Setonfocus) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  if (value->IsFunction()) self->onfocus.Reset<v8::Function>(value.As<v8::Function>());
-  else self->onfocus.Reset();
+void VulkanWindow::Setonfocus(const Napi::CallbackInfo& info, const Napi::Value& value) {
+  Napi::Env env = info.Env();
+  if (value.IsFunction()) this->onfocus.Reset(value.As<Napi::Function>());
+  else if (value.IsNull()) this->onfocus.Reset();
+  else Napi::TypeError::New(env, "Argument 1 must be of type 'Function'").ThrowAsJavaScriptException();
 }
 
 // onclose
-NAN_GETTER(VulkanWindow::Getonclose) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  if (self->onclose.IsEmpty()) info.GetReturnValue().SetNull();
-  else info.GetReturnValue().Set(Nan::New<v8::Function>(self->onclose));
+Napi::Value VulkanWindow::Getonclose(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  if (this->onclose.IsEmpty()) return env.Null();
+  return this->onclose.Value().As<Napi::Function>();
 }
-NAN_SETTER(VulkanWindow::Setonclose) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  if (value->IsFunction()) self->onclose.Reset<v8::Function>(value.As<v8::Function>());
-  else self->onclose.Reset();
+void VulkanWindow::Setonclose(const Napi::CallbackInfo& info, const Napi::Value& value) {
+  Napi::Env env = info.Env();
+  if (value.IsFunction()) this->onclose.Reset(value.As<Napi::Function>());
+  else if (value.IsNull()) this->onclose.Reset();
+  else Napi::TypeError::New(env, "Argument 1 must be of type 'Function'").ThrowAsJavaScriptException();
 }
 
 // onkeydown
-NAN_GETTER(VulkanWindow::Getonkeydown) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  if (self->onkeydown.IsEmpty()) info.GetReturnValue().SetNull();
-  else info.GetReturnValue().Set(Nan::New<v8::Function>(self->onkeydown));
+Napi::Value VulkanWindow::Getonkeydown(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  if (this->onkeydown.IsEmpty()) return env.Null();
+  return this->onkeydown.Value().As<Napi::Function>();
 }
-NAN_SETTER(VulkanWindow::Setonkeydown) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  if (value->IsFunction()) self->onkeydown.Reset<v8::Function>(value.As<v8::Function>());
-  else self->onkeydown.Reset();
+void VulkanWindow::Setonkeydown(const Napi::CallbackInfo& info, const Napi::Value& value) {
+  Napi::Env env = info.Env();
+  if (value.IsFunction()) this->onkeydown.Reset(value.As<Napi::Function>());
+  else if (value.IsNull()) this->onkeydown.Reset();
+  else Napi::TypeError::New(env, "Argument 1 must be of type 'Function'").ThrowAsJavaScriptException();
 }
 
 // onkeyup
-NAN_GETTER(VulkanWindow::Getonkeyup) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  if (self->onkeyup.IsEmpty()) info.GetReturnValue().SetNull();
-  else info.GetReturnValue().Set(Nan::New<v8::Function>(self->onkeyup));
+Napi::Value VulkanWindow::Getonkeyup(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  if (this->onkeyup.IsEmpty()) return env.Null();
+  return this->onkeyup.Value().As<Napi::Function>();
 }
-NAN_SETTER(VulkanWindow::Setonkeyup) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  if (value->IsFunction()) self->onkeyup.Reset<v8::Function>(value.As<v8::Function>());
-  else self->onkeyup.Reset();
+void VulkanWindow::Setonkeyup(const Napi::CallbackInfo& info, const Napi::Value& value) {
+  Napi::Env env = info.Env();
+  if (value.IsFunction()) this->onkeyup.Reset(value.As<Napi::Function>());
+  else if (value.IsNull()) this->onkeyup.Reset();
+  else Napi::TypeError::New(env, "Argument 1 must be of type 'Function'").ThrowAsJavaScriptException();
 }
 
 // onmousemove
-NAN_GETTER(VulkanWindow::Getonmousemove) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  if (self->onmousemove.IsEmpty()) info.GetReturnValue().SetNull();
-  else info.GetReturnValue().Set(Nan::New<v8::Function>(self->onmousemove));
+Napi::Value VulkanWindow::Getonmousemove(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  if (this->onmousemove.IsEmpty()) return env.Null();
+  return this->onmousemove.Value().As<Napi::Function>();
 }
-NAN_SETTER(VulkanWindow::Setonmousemove) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  if (value->IsFunction()) self->onmousemove.Reset<v8::Function>(value.As<v8::Function>());
-  else self->onmousemove.Reset();
+void VulkanWindow::Setonmousemove(const Napi::CallbackInfo& info, const Napi::Value& value) {
+  Napi::Env env = info.Env();
+  if (value.IsFunction()) this->onmousemove.Reset(value.As<Napi::Function>());
+  else if (value.IsNull()) this->onmousemove.Reset();
+  else Napi::TypeError::New(env, "Argument 1 must be of type 'Function'").ThrowAsJavaScriptException();
 }
 
 // onmousewheel
-NAN_GETTER(VulkanWindow::Getonmousewheel) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  if (self->onmousewheel.IsEmpty()) info.GetReturnValue().SetNull();
-  else info.GetReturnValue().Set(Nan::New<v8::Function>(self->onmousewheel));
+Napi::Value VulkanWindow::Getonmousewheel(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  if (this->onmousewheel.IsEmpty()) return env.Null();
+  return this->onmousewheel.Value().As<Napi::Function>();
 }
-NAN_SETTER(VulkanWindow::Setonmousewheel) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  if (value->IsFunction()) self->onmousewheel.Reset<v8::Function>(value.As<v8::Function>());
-  else self->onmousewheel.Reset();
+void VulkanWindow::Setonmousewheel(const Napi::CallbackInfo& info, const Napi::Value& value) {
+  Napi::Env env = info.Env();
+  if (value.IsFunction()) this->onmousewheel.Reset(value.As<Napi::Function>());
+  else if (value.IsNull()) this->onmousewheel.Reset();
+  else Napi::TypeError::New(env, "Argument 1 must be of type 'Function'").ThrowAsJavaScriptException();
 }
 
 // onmousedown
-NAN_GETTER(VulkanWindow::Getonmousedown) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  if (self->onmousedown.IsEmpty()) info.GetReturnValue().SetNull();
-  else info.GetReturnValue().Set(Nan::New<v8::Function>(self->onmousedown));
+Napi::Value VulkanWindow::Getonmousedown(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  if (this->onmousedown.IsEmpty()) return env.Null();
+  return this->onmousedown.Value().As<Napi::Function>();
 }
-NAN_SETTER(VulkanWindow::Setonmousedown) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  if (value->IsFunction()) self->onmousedown.Reset<v8::Function>(value.As<v8::Function>());
-  else self->onmousedown.Reset();
+void VulkanWindow::Setonmousedown(const Napi::CallbackInfo& info, const Napi::Value& value) {
+  Napi::Env env = info.Env();
+  if (value.IsFunction()) this->onmousedown.Reset(value.As<Napi::Function>());
+  else if (value.IsNull()) this->onmousedown.Reset();
+  else Napi::TypeError::New(env, "Argument 1 must be of type 'Function'").ThrowAsJavaScriptException();
 }
 
 // onmouseup
-NAN_GETTER(VulkanWindow::Getonmouseup) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  if (self->onmouseup.IsEmpty()) info.GetReturnValue().SetNull();
-  else info.GetReturnValue().Set(Nan::New<v8::Function>(self->onmouseup));
+Napi::Value VulkanWindow::Getonmouseup(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  if (this->onmouseup.IsEmpty()) return env.Null();
+  return this->onmouseup.Value().As<Napi::Function>();
 }
-NAN_SETTER(VulkanWindow::Setonmouseup) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  if (value->IsFunction()) self->onmouseup.Reset<v8::Function>(value.As<v8::Function>());
-  else self->onmouseup.Reset();
+void VulkanWindow::Setonmouseup(const Napi::CallbackInfo& info, const Napi::Value& value) {
+  Napi::Env env = info.Env();
+  if (value.IsFunction()) this->onmouseup.Reset(value.As<Napi::Function>());
+  else if (value.IsNull()) this->onmouseup.Reset();
+  else Napi::TypeError::New(env, "Argument 1 must be of type 'Function'").ThrowAsJavaScriptException();
 }
 
 // ondrop
-NAN_GETTER(VulkanWindow::Getondrop) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  if (self->ondrop.IsEmpty()) info.GetReturnValue().SetNull();
-  else info.GetReturnValue().Set(Nan::New<v8::Function>(self->ondrop));
+Napi::Value VulkanWindow::Getondrop(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  if (this->ondrop.IsEmpty()) return env.Null();
+  return this->ondrop.Value().As<Napi::Function>();
 }
-NAN_SETTER(VulkanWindow::Setondrop) {
-  VulkanWindow *self = Nan::ObjectWrap::Unwrap<VulkanWindow>(info.This());
-  if (value->IsFunction()) self->ondrop.Reset<v8::Function>(value.As<v8::Function>());
-  else self->ondrop.Reset();
+void VulkanWindow::Setondrop(const Napi::CallbackInfo& info, const Napi::Value& value) {
+  Napi::Env env = info.Env();
+  if (value.IsFunction()) this->ondrop.Reset(value.As<Napi::Function>());
+  else if (value.IsNull()) this->ondrop.Reset();
+  else Napi::TypeError::New(env, "Argument 1 must be of type 'Function'").ThrowAsJavaScriptException();
 }
 
 #endif
