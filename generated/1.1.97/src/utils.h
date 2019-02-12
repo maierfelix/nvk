@@ -5,7 +5,8 @@
 #ifndef __UTILS__
 #define __UTILS__
 
-#include <nan.h>
+#define NAPI_EXPERIMENTAL
+#include <napi.h>
 #include "source.h"
 
 #define VULKAN_ASSERT(func) { VkResult res = func; TRAP(res >= VK_SUCCESS); }

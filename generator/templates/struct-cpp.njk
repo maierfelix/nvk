@@ -17,7 +17,7 @@ _{{ struct_name }}::_{{ struct_name }}(const Napi::CallbackInfo& info) : Napi::O
       {% for member in members %}
       {%- if isIgnoreableType(member) != true -%}
       {%- if isFillableMember(struct, member) == true -%}
-      v8::Local<v8::String> sAccess{{ loop.index0 }} = Napi::String::New(env, "{{ member.name }}");
+      Napi::String sAccess{{ loop.index0 }} = Napi::String::New(env, "{{ member.name }}");
       {% endif -%}
       {% endif -%}
       {% endfor -%}

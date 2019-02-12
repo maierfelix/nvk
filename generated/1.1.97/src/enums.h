@@ -5,7 +5,8 @@
 #ifndef __VK_ENUMS_H__
 #define __VK_ENUMS_H__
 
-#include <nan.h>
+#define NAPI_EXPERIMENTAL
+#include <napi.h>
 
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
