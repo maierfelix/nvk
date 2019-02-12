@@ -370,10 +370,11 @@ VulkanWindow::VulkanWindow(const Napi::CallbackInfo& info) : Napi::ObjectWrap<Vu
   if (info.IsConstructCall()) {
     if (info[0].IsObject()) {
       // init glfw
-      if (glfwInit() != GLFW_TRUE) {
-        Napi::TypeError::New(env, "Failed to initialise GLFW").ThrowAsJavaScriptException();
-      }
+      if (glfwInit() != GLFW_TRUE) Napi::TypeError::New(env, "Failed to initialise GLFW").ThrowAsJavaScriptException();
       Napi::Object obj = info[0].As<Napi::Object>();
+      if (!obj.Has("width")) Napi::Error::New(env, "'Object' must contain property 'width'").ThrowAsJavaScriptException();
+      if (!obj.Has("height")) Napi::Error::New(env, "'Object' must contain property 'height'").ThrowAsJavaScriptException();
+      if (!obj.Has("title")) Napi::Error::New(env, "'Object' must contain property 'title'").ThrowAsJavaScriptException();
       Napi::Value argWidth = obj.Get("width");
       Napi::Value argHeight = obj.Get("height");
       Napi::Value argTitle = obj.Get("title");
@@ -399,8 +400,10 @@ VulkanWindow::VulkanWindow(const Napi::CallbackInfo& info) : Napi::ObjectWrap<Vu
       // file drop
       glfwSetDropCallback(window, VulkanWindow::onWindowDrop);
     } else {
-      Napi::Error::New(env, "VulkanWindow constructor cannot be invoked without 'new'");
+      Napi::Error::New(env, "Argument 1 must be of type 'Object'").ThrowAsJavaScriptException();
     }
+  } else {
+    Napi::Error::New(env, "VulkanWindow constructor cannot be invoked without 'new'").ThrowAsJavaScriptException();
   }
 }
 
@@ -452,6 +455,7 @@ Napi::Value VulkanWindow::createSurface(const Napi::CallbackInfo& info) {
     &surface->instance
   );
   return Napi::Number::New(env, static_cast<int32_t>(out));
+  return Napi::Number::New(env, static_cast<int32_t>(0));
 }
 
 Napi::Value VulkanWindow::getRequiredInstanceExtensions(const Napi::CallbackInfo& info) {
@@ -520,6 +524,7 @@ Napi::Value VulkanWindow::Getonresize(const Napi::CallbackInfo& info) {
   return this->onresize.Value().As<Napi::Function>();
 }
 void VulkanWindow::Setonresize(const Napi::CallbackInfo& info, const Napi::Value& value) {
+  Napi::Env env = info.Env();
   if (value.IsFunction()) this->onresize.Reset(value.As<Napi::Function>());
   else if (value.IsNull()) this->onresize.Reset();
   else Napi::TypeError::New(env, "Argument 1 must be of type 'Function'").ThrowAsJavaScriptException();
@@ -532,6 +537,7 @@ Napi::Value VulkanWindow::Getonfocus(const Napi::CallbackInfo& info) {
   return this->onfocus.Value().As<Napi::Function>();
 }
 void VulkanWindow::Setonfocus(const Napi::CallbackInfo& info, const Napi::Value& value) {
+  Napi::Env env = info.Env();
   if (value.IsFunction()) this->onfocus.Reset(value.As<Napi::Function>());
   else if (value.IsNull()) this->onfocus.Reset();
   else Napi::TypeError::New(env, "Argument 1 must be of type 'Function'").ThrowAsJavaScriptException();
@@ -544,6 +550,7 @@ Napi::Value VulkanWindow::Getonclose(const Napi::CallbackInfo& info) {
   return this->onclose.Value().As<Napi::Function>();
 }
 void VulkanWindow::Setonclose(const Napi::CallbackInfo& info, const Napi::Value& value) {
+  Napi::Env env = info.Env();
   if (value.IsFunction()) this->onclose.Reset(value.As<Napi::Function>());
   else if (value.IsNull()) this->onclose.Reset();
   else Napi::TypeError::New(env, "Argument 1 must be of type 'Function'").ThrowAsJavaScriptException();
@@ -556,6 +563,7 @@ Napi::Value VulkanWindow::Getonkeydown(const Napi::CallbackInfo& info) {
   return this->onkeydown.Value().As<Napi::Function>();
 }
 void VulkanWindow::Setonkeydown(const Napi::CallbackInfo& info, const Napi::Value& value) {
+  Napi::Env env = info.Env();
   if (value.IsFunction()) this->onkeydown.Reset(value.As<Napi::Function>());
   else if (value.IsNull()) this->onkeydown.Reset();
   else Napi::TypeError::New(env, "Argument 1 must be of type 'Function'").ThrowAsJavaScriptException();
@@ -568,6 +576,7 @@ Napi::Value VulkanWindow::Getonkeyup(const Napi::CallbackInfo& info) {
   return this->onkeyup.Value().As<Napi::Function>();
 }
 void VulkanWindow::Setonkeyup(const Napi::CallbackInfo& info, const Napi::Value& value) {
+  Napi::Env env = info.Env();
   if (value.IsFunction()) this->onkeyup.Reset(value.As<Napi::Function>());
   else if (value.IsNull()) this->onkeyup.Reset();
   else Napi::TypeError::New(env, "Argument 1 must be of type 'Function'").ThrowAsJavaScriptException();
@@ -580,6 +589,7 @@ Napi::Value VulkanWindow::Getonmousemove(const Napi::CallbackInfo& info) {
   return this->onmousemove.Value().As<Napi::Function>();
 }
 void VulkanWindow::Setonmousemove(const Napi::CallbackInfo& info, const Napi::Value& value) {
+  Napi::Env env = info.Env();
   if (value.IsFunction()) this->onmousemove.Reset(value.As<Napi::Function>());
   else if (value.IsNull()) this->onmousemove.Reset();
   else Napi::TypeError::New(env, "Argument 1 must be of type 'Function'").ThrowAsJavaScriptException();
@@ -592,6 +602,7 @@ Napi::Value VulkanWindow::Getonmousewheel(const Napi::CallbackInfo& info) {
   return this->onmousewheel.Value().As<Napi::Function>();
 }
 void VulkanWindow::Setonmousewheel(const Napi::CallbackInfo& info, const Napi::Value& value) {
+  Napi::Env env = info.Env();
   if (value.IsFunction()) this->onmousewheel.Reset(value.As<Napi::Function>());
   else if (value.IsNull()) this->onmousewheel.Reset();
   else Napi::TypeError::New(env, "Argument 1 must be of type 'Function'").ThrowAsJavaScriptException();
@@ -604,6 +615,7 @@ Napi::Value VulkanWindow::Getonmousedown(const Napi::CallbackInfo& info) {
   return this->onmousedown.Value().As<Napi::Function>();
 }
 void VulkanWindow::Setonmousedown(const Napi::CallbackInfo& info, const Napi::Value& value) {
+  Napi::Env env = info.Env();
   if (value.IsFunction()) this->onmousedown.Reset(value.As<Napi::Function>());
   else if (value.IsNull()) this->onmousedown.Reset();
   else Napi::TypeError::New(env, "Argument 1 must be of type 'Function'").ThrowAsJavaScriptException();
@@ -616,6 +628,7 @@ Napi::Value VulkanWindow::Getonmouseup(const Napi::CallbackInfo& info) {
   return this->onmouseup.Value().As<Napi::Function>();
 }
 void VulkanWindow::Setonmouseup(const Napi::CallbackInfo& info, const Napi::Value& value) {
+  Napi::Env env = info.Env();
   if (value.IsFunction()) this->onmouseup.Reset(value.As<Napi::Function>());
   else if (value.IsNull()) this->onmouseup.Reset();
   else Napi::TypeError::New(env, "Argument 1 must be of type 'Function'").ThrowAsJavaScriptException();
@@ -628,6 +641,7 @@ Napi::Value VulkanWindow::Getondrop(const Napi::CallbackInfo& info) {
   return this->ondrop.Value().As<Napi::Function>();
 }
 void VulkanWindow::Setondrop(const Napi::CallbackInfo& info, const Napi::Value& value) {
+  Napi::Env env = info.Env();
   if (value.IsFunction()) this->ondrop.Reset(value.As<Napi::Function>());
   else if (value.IsNull()) this->ondrop.Reset();
   else Napi::TypeError::New(env, "Argument 1 must be of type 'Function'").ThrowAsJavaScriptException();
