@@ -268,3 +268,40 @@ export function getNapiTypedArrayName(type) {
   warn(`Cannot resolve equivalent NAPI JS typed array name for ${type}`);
   return null;
 };
+
+export function isReferenceableMember(member) {
+  let {rawType} = member;
+  if (member.isStaticArray) return true;
+  if (member.isArray && (member.isStructType || member.isHandleType)) return true;
+  if (member.isStructType || member.isHandleType || member.dereferenceCount > 0) return true;
+  if (isPNextMember(member)) return true;
+  if (member.isVoidPointer) return true;
+  switch (rawType) {
+    case "const char *":
+    case "float *":
+    case "int32_t *":
+    case "uint8_t *":
+    case "uint32_t *":
+    case "uint64_t *":
+    case "const float *":
+    case "const int32_t *":
+    case "const uint8_t *":
+    case "const uint32_t *":
+    case "const uint64_t *":
+    case "const char * const*":
+      return true;
+    case "int":
+    case "float":
+    case "size_t":
+    case "int32_t":
+    case "uint8_t":
+    case "uint16_t":
+    case "uint32_t":
+    case "uint64_t":
+      return false;
+    default: {
+      warn(`Cannot resolve resolvability ${member.rawType} for ${member.name}!`);
+    }
+  };
+  return false;
+};

@@ -598,7 +598,7 @@ vkGetPhysicalDeviceProperties(
   {
     // back reflect string
     Napi::String str1 = Napi::String::New(env, (&obj1->instance)->deviceName);
-    obj1->deviceName.Reset(str1.ToObject());
+    obj1->deviceName.Reset(str1.ToObject(), 1);
   }
   {
     // back reflect array
@@ -607,13 +607,13 @@ vkGetPhysicalDeviceProperties(
     for (unsigned int ii = 0; ii < 16; ++ii) {
       arr1.Set(ii, Napi::Number::New(env, (&obj1->instance)->pipelineCacheUUID[ii]));
     };
-    obj1->pipelineCacheUUID.Reset(arr1.ToObject());
+    obj1->pipelineCacheUUID.Reset(arr1.ToObject(), 1);
   }
   {
     std::vector<napi_value> args;
     Napi::Object inst = _VkPhysicalDeviceLimits::constructor.New(args);
     _VkPhysicalDeviceLimits* unwrapped6 = Napi::ObjectWrap<_VkPhysicalDeviceLimits>::Unwrap(inst);
-    obj1->limits.Reset(inst);
+    obj1->limits.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj1->instance.limits, sizeof(VkPhysicalDeviceLimits));
     
   {
@@ -623,7 +623,7 @@ vkGetPhysicalDeviceProperties(
     for (unsigned int ii = 0; ii < 3; ++ii) {
       arr1.Set(ii, Napi::Number::New(env, (&unwrapped6->instance)->maxComputeWorkGroupCount[ii]));
     };
-    unwrapped6->maxComputeWorkGroupCount.Reset(arr1.ToObject());
+    unwrapped6->maxComputeWorkGroupCount.Reset(arr1.ToObject(), 1);
   }
   {
     // back reflect array
@@ -632,7 +632,7 @@ vkGetPhysicalDeviceProperties(
     for (unsigned int ii = 0; ii < 3; ++ii) {
       arr1.Set(ii, Napi::Number::New(env, (&unwrapped6->instance)->maxComputeWorkGroupSize[ii]));
     };
-    unwrapped6->maxComputeWorkGroupSize.Reset(arr1.ToObject());
+    unwrapped6->maxComputeWorkGroupSize.Reset(arr1.ToObject(), 1);
   }
   {
     // back reflect array
@@ -641,7 +641,7 @@ vkGetPhysicalDeviceProperties(
     for (unsigned int ii = 0; ii < 2; ++ii) {
       arr1.Set(ii, Napi::Number::New(env, (&unwrapped6->instance)->maxViewportDimensions[ii]));
     };
-    unwrapped6->maxViewportDimensions.Reset(arr1.ToObject());
+    unwrapped6->maxViewportDimensions.Reset(arr1.ToObject(), 1);
   }
   {
     // back reflect array
@@ -650,7 +650,7 @@ vkGetPhysicalDeviceProperties(
     for (unsigned int ii = 0; ii < 2; ++ii) {
       arr1.Set(ii, Napi::Number::New(env, (&unwrapped6->instance)->viewportBoundsRange[ii]));
     };
-    unwrapped6->viewportBoundsRange.Reset(arr1.ToObject());
+    unwrapped6->viewportBoundsRange.Reset(arr1.ToObject(), 1);
   }
   {
     // back reflect array
@@ -659,7 +659,7 @@ vkGetPhysicalDeviceProperties(
     for (unsigned int ii = 0; ii < 2; ++ii) {
       arr1.Set(ii, Napi::Number::New(env, (&unwrapped6->instance)->pointSizeRange[ii]));
     };
-    unwrapped6->pointSizeRange.Reset(arr1.ToObject());
+    unwrapped6->pointSizeRange.Reset(arr1.ToObject(), 1);
   }
   {
     // back reflect array
@@ -668,7 +668,7 @@ vkGetPhysicalDeviceProperties(
     for (unsigned int ii = 0; ii < 2; ++ii) {
       arr1.Set(ii, Napi::Number::New(env, (&unwrapped6->instance)->lineWidthRange[ii]));
     };
-    unwrapped6->lineWidthRange.Reset(arr1.ToObject());
+    unwrapped6->lineWidthRange.Reset(arr1.ToObject(), 1);
   }
   }
       
@@ -676,7 +676,7 @@ vkGetPhysicalDeviceProperties(
     std::vector<napi_value> args;
     Napi::Object inst = _VkPhysicalDeviceSparseProperties::constructor.New(args);
     _VkPhysicalDeviceSparseProperties* unwrapped6 = Napi::ObjectWrap<_VkPhysicalDeviceSparseProperties>::Unwrap(inst);
-    obj1->sparseProperties.Reset(inst);
+    obj1->sparseProperties.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj1->instance.sparseProperties, sizeof(VkPhysicalDeviceSparseProperties));
     
   }
@@ -773,7 +773,7 @@ vkGetPhysicalDeviceQueueFamilyProperties(
         std::vector<napi_value> args;
         Napi::Object inst = _VkExtent3D::constructor.New(args);
         _VkExtent3D* unwrapped = Napi::ObjectWrap<_VkExtent3D>::Unwrap(inst);
-        result->minImageTransferGranularity.Reset(inst);
+        result->minImageTransferGranularity.Reset(inst, 1);
         unwrapped->instance = copy->minImageTransferGranularity;
       }
     };
@@ -836,7 +836,7 @@ vkGetPhysicalDeviceMemoryProperties(
       memcpy(&unwrapped->instance, &obj1->instance.memoryTypes[ii], sizeof(VkMemoryType));
       arr.Set(ii, inst);
     };
-    obj1->memoryTypes.Reset(arr.ToObject());
+    obj1->memoryTypes.Reset(arr.ToObject(), 1);
   }
   {
     // back reflect array
@@ -850,7 +850,7 @@ vkGetPhysicalDeviceMemoryProperties(
       memcpy(&unwrapped->instance, &obj1->instance.memoryHeaps[ii], sizeof(VkMemoryHeap));
       arr.Set(ii, inst);
     };
-    obj1->memoryHeaps.Reset(arr.ToObject());
+    obj1->memoryHeaps.Reset(arr.ToObject(), 1);
   }
   
   
@@ -1012,7 +1012,7 @@ Napi::Value _vkGetPhysicalDeviceImageFormatProperties(const Napi::CallbackInfo& 
     std::vector<napi_value> args;
     Napi::Object inst = _VkExtent3D::constructor.New(args);
     _VkExtent3D* unwrapped6 = Napi::ObjectWrap<_VkExtent3D>::Unwrap(inst);
-    obj6->maxExtent.Reset(inst);
+    obj6->maxExtent.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj6->instance.maxExtent, sizeof(VkExtent3D));
     
   }
@@ -1209,14 +1209,14 @@ Napi::Value _vkEnumerateInstanceLayerProperties(const Napi::CallbackInfo& info) 
       
       {
         Napi::String str = Napi::String::New(env, copy->layerName);
-        result->layerName.Reset(str.ToObject());
+        result->layerName.Reset(str.ToObject(), 1);
         strcpy(const_cast<char *>(instance->layerName), copy->layerName);
       }
       instance->specVersion = copy->specVersion;
       instance->implementationVersion = copy->implementationVersion;
       {
         Napi::String str = Napi::String::New(env, copy->description);
-        result->description.Reset(str.ToObject());
+        result->description.Reset(str.ToObject(), 1);
         strcpy(const_cast<char *>(instance->description), copy->description);
       }
     };
@@ -1298,7 +1298,7 @@ Napi::Value _vkEnumerateInstanceExtensionProperties(const Napi::CallbackInfo& in
       
       {
         Napi::String str = Napi::String::New(env, copy->extensionName);
-        result->extensionName.Reset(str.ToObject());
+        result->extensionName.Reset(str.ToObject(), 1);
         strcpy(const_cast<char *>(instance->extensionName), copy->extensionName);
       }
       instance->specVersion = copy->specVersion;
@@ -1390,14 +1390,14 @@ Napi::Value _vkEnumerateDeviceLayerProperties(const Napi::CallbackInfo& info) {
       
       {
         Napi::String str = Napi::String::New(env, copy->layerName);
-        result->layerName.Reset(str.ToObject());
+        result->layerName.Reset(str.ToObject(), 1);
         strcpy(const_cast<char *>(instance->layerName), copy->layerName);
       }
       instance->specVersion = copy->specVersion;
       instance->implementationVersion = copy->implementationVersion;
       {
         Napi::String str = Napi::String::New(env, copy->description);
-        result->description.Reset(str.ToObject());
+        result->description.Reset(str.ToObject(), 1);
         strcpy(const_cast<char *>(instance->description), copy->description);
       }
     };
@@ -1497,7 +1497,7 @@ Napi::Value _vkEnumerateDeviceExtensionProperties(const Napi::CallbackInfo& info
       
       {
         Napi::String str = Napi::String::New(env, copy->extensionName);
-        result->extensionName.Reset(str.ToObject());
+        result->extensionName.Reset(str.ToObject(), 1);
         strcpy(const_cast<char *>(instance->extensionName), copy->extensionName);
       }
       instance->specVersion = copy->specVersion;
@@ -2463,7 +2463,7 @@ vkGetImageSparseMemoryRequirements(
         std::vector<napi_value> args;
         Napi::Object inst = _VkSparseImageFormatProperties::constructor.New(args);
         _VkSparseImageFormatProperties* unwrapped = Napi::ObjectWrap<_VkSparseImageFormatProperties>::Unwrap(inst);
-        result->formatProperties.Reset(inst);
+        result->formatProperties.Reset(inst, 1);
         unwrapped->instance = copy->formatProperties;
       }
       instance->imageMipTailFirstLod = copy->imageMipTailFirstLod;
@@ -2577,7 +2577,7 @@ vkGetPhysicalDeviceSparseImageFormatProperties(
         std::vector<napi_value> args;
         Napi::Object inst = _VkExtent3D::constructor.New(args);
         _VkExtent3D* unwrapped = Napi::ObjectWrap<_VkExtent3D>::Unwrap(inst);
-        result->imageGranularity.Reset(inst);
+        result->imageGranularity.Reset(inst, 1);
         unwrapped->instance = copy->imageGranularity;
       }
       instance->flags = copy->flags;
@@ -9086,7 +9086,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayPropertiesKHR(const Napi::CallbackInfo& i
       
       {
         Napi::String str = Napi::String::New(env, copy->displayName);
-        result->displayName.Reset(str.ToObject());
+        result->displayName.Reset(str.ToObject(), 1);
         strcpy(const_cast<char *>(instance->displayName), copy->displayName);
       }
       instance->physicalDimensions = copy->physicalDimensions;
@@ -9094,7 +9094,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayPropertiesKHR(const Napi::CallbackInfo& i
         std::vector<napi_value> args;
         Napi::Object inst = _VkExtent2D::constructor.New(args);
         _VkExtent2D* unwrapped = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-        result->physicalDimensions.Reset(inst);
+        result->physicalDimensions.Reset(inst, 1);
         unwrapped->instance = copy->physicalDimensions;
       }
       instance->physicalResolution = copy->physicalResolution;
@@ -9102,7 +9102,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayPropertiesKHR(const Napi::CallbackInfo& i
         std::vector<napi_value> args;
         Napi::Object inst = _VkExtent2D::constructor.New(args);
         _VkExtent2D* unwrapped = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-        result->physicalResolution.Reset(inst);
+        result->physicalResolution.Reset(inst, 1);
         unwrapped->instance = copy->physicalResolution;
       }
       instance->supportedTransforms = copy->supportedTransforms;
@@ -9382,7 +9382,7 @@ Napi::Value _vkGetDisplayModePropertiesKHR(const Napi::CallbackInfo& info) {
         std::vector<napi_value> args;
         Napi::Object inst = _VkDisplayModeParametersKHR::constructor.New(args);
         _VkDisplayModeParametersKHR* unwrapped = Napi::ObjectWrap<_VkDisplayModeParametersKHR>::Unwrap(inst);
-        result->parameters.Reset(inst);
+        result->parameters.Reset(inst, 1);
         unwrapped->instance = copy->parameters;
       }
     };
@@ -9542,7 +9542,7 @@ Napi::Value _vkGetDisplayPlaneCapabilitiesKHR(const Napi::CallbackInfo& info) {
     std::vector<napi_value> args;
     Napi::Object inst = _VkOffset2D::constructor.New(args);
     _VkOffset2D* unwrapped6 = Napi::ObjectWrap<_VkOffset2D>::Unwrap(inst);
-    obj3->minSrcPosition.Reset(inst);
+    obj3->minSrcPosition.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj3->instance.minSrcPosition, sizeof(VkOffset2D));
     
   }
@@ -9551,7 +9551,7 @@ Napi::Value _vkGetDisplayPlaneCapabilitiesKHR(const Napi::CallbackInfo& info) {
     std::vector<napi_value> args;
     Napi::Object inst = _VkOffset2D::constructor.New(args);
     _VkOffset2D* unwrapped6 = Napi::ObjectWrap<_VkOffset2D>::Unwrap(inst);
-    obj3->maxSrcPosition.Reset(inst);
+    obj3->maxSrcPosition.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj3->instance.maxSrcPosition, sizeof(VkOffset2D));
     
   }
@@ -9560,7 +9560,7 @@ Napi::Value _vkGetDisplayPlaneCapabilitiesKHR(const Napi::CallbackInfo& info) {
     std::vector<napi_value> args;
     Napi::Object inst = _VkExtent2D::constructor.New(args);
     _VkExtent2D* unwrapped6 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    obj3->minSrcExtent.Reset(inst);
+    obj3->minSrcExtent.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj3->instance.minSrcExtent, sizeof(VkExtent2D));
     
   }
@@ -9569,7 +9569,7 @@ Napi::Value _vkGetDisplayPlaneCapabilitiesKHR(const Napi::CallbackInfo& info) {
     std::vector<napi_value> args;
     Napi::Object inst = _VkExtent2D::constructor.New(args);
     _VkExtent2D* unwrapped6 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    obj3->maxSrcExtent.Reset(inst);
+    obj3->maxSrcExtent.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj3->instance.maxSrcExtent, sizeof(VkExtent2D));
     
   }
@@ -9578,7 +9578,7 @@ Napi::Value _vkGetDisplayPlaneCapabilitiesKHR(const Napi::CallbackInfo& info) {
     std::vector<napi_value> args;
     Napi::Object inst = _VkOffset2D::constructor.New(args);
     _VkOffset2D* unwrapped6 = Napi::ObjectWrap<_VkOffset2D>::Unwrap(inst);
-    obj3->minDstPosition.Reset(inst);
+    obj3->minDstPosition.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj3->instance.minDstPosition, sizeof(VkOffset2D));
     
   }
@@ -9587,7 +9587,7 @@ Napi::Value _vkGetDisplayPlaneCapabilitiesKHR(const Napi::CallbackInfo& info) {
     std::vector<napi_value> args;
     Napi::Object inst = _VkOffset2D::constructor.New(args);
     _VkOffset2D* unwrapped6 = Napi::ObjectWrap<_VkOffset2D>::Unwrap(inst);
-    obj3->maxDstPosition.Reset(inst);
+    obj3->maxDstPosition.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj3->instance.maxDstPosition, sizeof(VkOffset2D));
     
   }
@@ -9596,7 +9596,7 @@ Napi::Value _vkGetDisplayPlaneCapabilitiesKHR(const Napi::CallbackInfo& info) {
     std::vector<napi_value> args;
     Napi::Object inst = _VkExtent2D::constructor.New(args);
     _VkExtent2D* unwrapped6 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    obj3->minDstExtent.Reset(inst);
+    obj3->minDstExtent.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj3->instance.minDstExtent, sizeof(VkExtent2D));
     
   }
@@ -9605,7 +9605,7 @@ Napi::Value _vkGetDisplayPlaneCapabilitiesKHR(const Napi::CallbackInfo& info) {
     std::vector<napi_value> args;
     Napi::Object inst = _VkExtent2D::constructor.New(args);
     _VkExtent2D* unwrapped6 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    obj3->maxDstExtent.Reset(inst);
+    obj3->maxDstExtent.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj3->instance.maxDstExtent, sizeof(VkExtent2D));
     
   }
@@ -9950,7 +9950,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Napi::CallbackInfo&
     std::vector<napi_value> args;
     Napi::Object inst = _VkExtent2D::constructor.New(args);
     _VkExtent2D* unwrapped6 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    obj2->currentExtent.Reset(inst);
+    obj2->currentExtent.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj2->instance.currentExtent, sizeof(VkExtent2D));
     
   }
@@ -9959,7 +9959,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Napi::CallbackInfo&
     std::vector<napi_value> args;
     Napi::Object inst = _VkExtent2D::constructor.New(args);
     _VkExtent2D* unwrapped6 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    obj2->minImageExtent.Reset(inst);
+    obj2->minImageExtent.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj2->instance.minImageExtent, sizeof(VkExtent2D));
     
   }
@@ -9968,7 +9968,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Napi::CallbackInfo&
     std::vector<napi_value> args;
     Napi::Object inst = _VkExtent2D::constructor.New(args);
     _VkExtent2D* unwrapped6 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    obj2->maxImageExtent.Reset(inst);
+    obj2->maxImageExtent.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj2->instance.maxImageExtent, sizeof(VkExtent2D));
     
   }
@@ -11066,14 +11066,14 @@ Napi::Value _vkGetPhysicalDeviceExternalImageFormatPropertiesNV(const Napi::Call
     std::vector<napi_value> args;
     Napi::Object inst = _VkImageFormatProperties::constructor.New(args);
     _VkImageFormatProperties* unwrapped6 = Napi::ObjectWrap<_VkImageFormatProperties>::Unwrap(inst);
-    obj7->imageFormatProperties.Reset(inst);
+    obj7->imageFormatProperties.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj7->instance.imageFormatProperties, sizeof(VkImageFormatProperties));
     
   {
     std::vector<napi_value> args;
     Napi::Object inst = _VkExtent3D::constructor.New(args);
     _VkExtent3D* unwrapped12 = Napi::ObjectWrap<_VkExtent3D>::Unwrap(inst);
-    unwrapped6->maxExtent.Reset(inst);
+    unwrapped6->maxExtent.Reset(inst, 1);
     memcpy((&unwrapped12->instance), &unwrapped6->instance.maxExtent, sizeof(VkExtent3D));
     
   }
@@ -11895,7 +11895,7 @@ vkGetPhysicalDeviceFeatures2(
     std::vector<napi_value> args;
     Napi::Object inst = _VkPhysicalDeviceFeatures::constructor.New(args);
     _VkPhysicalDeviceFeatures* unwrapped6 = Napi::ObjectWrap<_VkPhysicalDeviceFeatures>::Unwrap(inst);
-    obj1->features.Reset(inst);
+    obj1->features.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj1->instance.features, sizeof(VkPhysicalDeviceFeatures));
     
   }
@@ -11950,13 +11950,13 @@ vkGetPhysicalDeviceProperties2(
     std::vector<napi_value> args;
     Napi::Object inst = _VkPhysicalDeviceProperties::constructor.New(args);
     _VkPhysicalDeviceProperties* unwrapped6 = Napi::ObjectWrap<_VkPhysicalDeviceProperties>::Unwrap(inst);
-    obj1->properties.Reset(inst);
+    obj1->properties.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj1->instance.properties, sizeof(VkPhysicalDeviceProperties));
     
   {
     // back reflect string
     Napi::String str1 = Napi::String::New(env, (&unwrapped6->instance)->deviceName);
-    unwrapped6->deviceName.Reset(str1.ToObject());
+    unwrapped6->deviceName.Reset(str1.ToObject(), 1);
   }
   {
     // back reflect array
@@ -11965,13 +11965,13 @@ vkGetPhysicalDeviceProperties2(
     for (unsigned int ii = 0; ii < 16; ++ii) {
       arr1.Set(ii, Napi::Number::New(env, (&unwrapped6->instance)->pipelineCacheUUID[ii]));
     };
-    unwrapped6->pipelineCacheUUID.Reset(arr1.ToObject());
+    unwrapped6->pipelineCacheUUID.Reset(arr1.ToObject(), 1);
   }
   {
     std::vector<napi_value> args;
     Napi::Object inst = _VkPhysicalDeviceLimits::constructor.New(args);
     _VkPhysicalDeviceLimits* unwrapped12 = Napi::ObjectWrap<_VkPhysicalDeviceLimits>::Unwrap(inst);
-    unwrapped6->limits.Reset(inst);
+    unwrapped6->limits.Reset(inst, 1);
     memcpy((&unwrapped12->instance), &unwrapped6->instance.limits, sizeof(VkPhysicalDeviceLimits));
     
   {
@@ -11981,7 +11981,7 @@ vkGetPhysicalDeviceProperties2(
     for (unsigned int ii = 0; ii < 3; ++ii) {
       arr1.Set(ii, Napi::Number::New(env, (&unwrapped12->instance)->maxComputeWorkGroupCount[ii]));
     };
-    unwrapped12->maxComputeWorkGroupCount.Reset(arr1.ToObject());
+    unwrapped12->maxComputeWorkGroupCount.Reset(arr1.ToObject(), 1);
   }
   {
     // back reflect array
@@ -11990,7 +11990,7 @@ vkGetPhysicalDeviceProperties2(
     for (unsigned int ii = 0; ii < 3; ++ii) {
       arr1.Set(ii, Napi::Number::New(env, (&unwrapped12->instance)->maxComputeWorkGroupSize[ii]));
     };
-    unwrapped12->maxComputeWorkGroupSize.Reset(arr1.ToObject());
+    unwrapped12->maxComputeWorkGroupSize.Reset(arr1.ToObject(), 1);
   }
   {
     // back reflect array
@@ -11999,7 +11999,7 @@ vkGetPhysicalDeviceProperties2(
     for (unsigned int ii = 0; ii < 2; ++ii) {
       arr1.Set(ii, Napi::Number::New(env, (&unwrapped12->instance)->maxViewportDimensions[ii]));
     };
-    unwrapped12->maxViewportDimensions.Reset(arr1.ToObject());
+    unwrapped12->maxViewportDimensions.Reset(arr1.ToObject(), 1);
   }
   {
     // back reflect array
@@ -12008,7 +12008,7 @@ vkGetPhysicalDeviceProperties2(
     for (unsigned int ii = 0; ii < 2; ++ii) {
       arr1.Set(ii, Napi::Number::New(env, (&unwrapped12->instance)->viewportBoundsRange[ii]));
     };
-    unwrapped12->viewportBoundsRange.Reset(arr1.ToObject());
+    unwrapped12->viewportBoundsRange.Reset(arr1.ToObject(), 1);
   }
   {
     // back reflect array
@@ -12017,7 +12017,7 @@ vkGetPhysicalDeviceProperties2(
     for (unsigned int ii = 0; ii < 2; ++ii) {
       arr1.Set(ii, Napi::Number::New(env, (&unwrapped12->instance)->pointSizeRange[ii]));
     };
-    unwrapped12->pointSizeRange.Reset(arr1.ToObject());
+    unwrapped12->pointSizeRange.Reset(arr1.ToObject(), 1);
   }
   {
     // back reflect array
@@ -12026,7 +12026,7 @@ vkGetPhysicalDeviceProperties2(
     for (unsigned int ii = 0; ii < 2; ++ii) {
       arr1.Set(ii, Napi::Number::New(env, (&unwrapped12->instance)->lineWidthRange[ii]));
     };
-    unwrapped12->lineWidthRange.Reset(arr1.ToObject());
+    unwrapped12->lineWidthRange.Reset(arr1.ToObject(), 1);
   }
   }
       
@@ -12034,7 +12034,7 @@ vkGetPhysicalDeviceProperties2(
     std::vector<napi_value> args;
     Napi::Object inst = _VkPhysicalDeviceSparseProperties::constructor.New(args);
     _VkPhysicalDeviceSparseProperties* unwrapped12 = Napi::ObjectWrap<_VkPhysicalDeviceSparseProperties>::Unwrap(inst);
-    unwrapped6->sparseProperties.Reset(inst);
+    unwrapped6->sparseProperties.Reset(inst, 1);
     memcpy((&unwrapped12->instance), &unwrapped6->instance.sparseProperties, sizeof(VkPhysicalDeviceSparseProperties));
     
   }
@@ -12094,7 +12094,7 @@ vkGetPhysicalDeviceFormatProperties2(
     std::vector<napi_value> args;
     Napi::Object inst = _VkFormatProperties::constructor.New(args);
     _VkFormatProperties* unwrapped6 = Napi::ObjectWrap<_VkFormatProperties>::Unwrap(inst);
-    obj2->formatProperties.Reset(inst);
+    obj2->formatProperties.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj2->instance.formatProperties, sizeof(VkFormatProperties));
     
   }
@@ -12167,14 +12167,14 @@ Napi::Value _vkGetPhysicalDeviceImageFormatProperties2(const Napi::CallbackInfo&
     std::vector<napi_value> args;
     Napi::Object inst = _VkImageFormatProperties::constructor.New(args);
     _VkImageFormatProperties* unwrapped6 = Napi::ObjectWrap<_VkImageFormatProperties>::Unwrap(inst);
-    obj2->imageFormatProperties.Reset(inst);
+    obj2->imageFormatProperties.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj2->instance.imageFormatProperties, sizeof(VkImageFormatProperties));
     
   {
     std::vector<napi_value> args;
     Napi::Object inst = _VkExtent3D::constructor.New(args);
     _VkExtent3D* unwrapped12 = Napi::ObjectWrap<_VkExtent3D>::Unwrap(inst);
-    unwrapped6->maxExtent.Reset(inst);
+    unwrapped6->maxExtent.Reset(inst, 1);
     memcpy((&unwrapped12->instance), &unwrapped6->instance.maxExtent, sizeof(VkExtent3D));
     
   }
@@ -12271,7 +12271,7 @@ vkGetPhysicalDeviceQueueFamilyProperties2(
         std::vector<napi_value> args;
         Napi::Object inst = _VkQueueFamilyProperties::constructor.New(args);
         _VkQueueFamilyProperties* unwrapped = Napi::ObjectWrap<_VkQueueFamilyProperties>::Unwrap(inst);
-        result->queueFamilyProperties.Reset(inst);
+        result->queueFamilyProperties.Reset(inst, 1);
         unwrapped->instance = copy->queueFamilyProperties;
       }
     };
@@ -12326,7 +12326,7 @@ vkGetPhysicalDeviceMemoryProperties2(
     std::vector<napi_value> args;
     Napi::Object inst = _VkPhysicalDeviceMemoryProperties::constructor.New(args);
     _VkPhysicalDeviceMemoryProperties* unwrapped6 = Napi::ObjectWrap<_VkPhysicalDeviceMemoryProperties>::Unwrap(inst);
-    obj1->memoryProperties.Reset(inst);
+    obj1->memoryProperties.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj1->instance.memoryProperties, sizeof(VkPhysicalDeviceMemoryProperties));
     
   {
@@ -12341,7 +12341,7 @@ vkGetPhysicalDeviceMemoryProperties2(
       memcpy(&unwrapped->instance, &unwrapped6->instance.memoryTypes[ii], sizeof(VkMemoryType));
       arr.Set(ii, inst);
     };
-    unwrapped6->memoryTypes.Reset(arr.ToObject());
+    unwrapped6->memoryTypes.Reset(arr.ToObject(), 1);
   }
   {
     // back reflect array
@@ -12355,7 +12355,7 @@ vkGetPhysicalDeviceMemoryProperties2(
       memcpy(&unwrapped->instance, &unwrapped6->instance.memoryHeaps[ii], sizeof(VkMemoryHeap));
       arr.Set(ii, inst);
     };
-    unwrapped6->memoryHeaps.Reset(arr.ToObject());
+    unwrapped6->memoryHeaps.Reset(arr.ToObject(), 1);
   }
   }
       
@@ -12467,7 +12467,7 @@ vkGetPhysicalDeviceSparseImageFormatProperties2(
         std::vector<napi_value> args;
         Napi::Object inst = _VkSparseImageFormatProperties::constructor.New(args);
         _VkSparseImageFormatProperties* unwrapped = Napi::ObjectWrap<_VkSparseImageFormatProperties>::Unwrap(inst);
-        result->properties.Reset(inst);
+        result->properties.Reset(inst, 1);
         unwrapped->instance = copy->properties;
       }
     };
@@ -12673,7 +12673,7 @@ vkGetPhysicalDeviceExternalBufferProperties(
     std::vector<napi_value> args;
     Napi::Object inst = _VkExternalMemoryProperties::constructor.New(args);
     _VkExternalMemoryProperties* unwrapped6 = Napi::ObjectWrap<_VkExternalMemoryProperties>::Unwrap(inst);
-    obj2->externalMemoryProperties.Reset(inst);
+    obj2->externalMemoryProperties.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj2->instance.externalMemoryProperties, sizeof(VkExternalMemoryProperties));
     
   }
@@ -13821,7 +13821,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2EXT(const Napi::CallbackInfo
     std::vector<napi_value> args;
     Napi::Object inst = _VkExtent2D::constructor.New(args);
     _VkExtent2D* unwrapped6 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    obj2->currentExtent.Reset(inst);
+    obj2->currentExtent.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj2->instance.currentExtent, sizeof(VkExtent2D));
     
   }
@@ -13830,7 +13830,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2EXT(const Napi::CallbackInfo
     std::vector<napi_value> args;
     Napi::Object inst = _VkExtent2D::constructor.New(args);
     _VkExtent2D* unwrapped6 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    obj2->minImageExtent.Reset(inst);
+    obj2->minImageExtent.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj2->instance.minImageExtent, sizeof(VkExtent2D));
     
   }
@@ -13839,7 +13839,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2EXT(const Napi::CallbackInfo
     std::vector<napi_value> args;
     Napi::Object inst = _VkExtent2D::constructor.New(args);
     _VkExtent2D* unwrapped6 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    obj2->maxImageExtent.Reset(inst);
+    obj2->maxImageExtent.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj2->instance.maxImageExtent, sizeof(VkExtent2D));
     
   }
@@ -14191,7 +14191,7 @@ Napi::Value _vkGetDeviceGroupPresentCapabilitiesKHR(const Napi::CallbackInfo& in
     for (unsigned int ii = 0; ii < 32; ++ii) {
       arr1.Set(ii, Napi::Number::New(env, (&obj1->instance)->presentMask[ii]));
     };
-    obj1->presentMask.Reset(arr1.ToObject());
+    obj1->presentMask.Reset(arr1.ToObject(), 1);
   }
   
   
@@ -14472,7 +14472,7 @@ Napi::Value _vkGetPhysicalDevicePresentRectanglesKHR(const Napi::CallbackInfo& i
         std::vector<napi_value> args;
         Napi::Object inst = _VkOffset2D::constructor.New(args);
         _VkOffset2D* unwrapped = Napi::ObjectWrap<_VkOffset2D>::Unwrap(inst);
-        result->offset.Reset(inst);
+        result->offset.Reset(inst, 1);
         unwrapped->instance = copy->offset;
       }
       instance->extent = copy->extent;
@@ -14480,7 +14480,7 @@ Napi::Value _vkGetPhysicalDevicePresentRectanglesKHR(const Napi::CallbackInfo& i
         std::vector<napi_value> args;
         Napi::Object inst = _VkExtent2D::constructor.New(args);
         _VkExtent2D* unwrapped = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-        result->extent.Reset(inst);
+        result->extent.Reset(inst, 1);
         unwrapped->instance = copy->extent;
       }
     };
@@ -15274,7 +15274,7 @@ $vkGetPhysicalDeviceMultisamplePropertiesEXT(
     std::vector<napi_value> args;
     Napi::Object inst = _VkExtent2D::constructor.New(args);
     _VkExtent2D* unwrapped6 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    obj2->maxSampleLocationGridSize.Reset(inst);
+    obj2->maxSampleLocationGridSize.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj2->instance.maxSampleLocationGridSize, sizeof(VkExtent2D));
     
   }
@@ -15347,14 +15347,14 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2KHR(const Napi::CallbackInfo
     std::vector<napi_value> args;
     Napi::Object inst = _VkSurfaceCapabilitiesKHR::constructor.New(args);
     _VkSurfaceCapabilitiesKHR* unwrapped6 = Napi::ObjectWrap<_VkSurfaceCapabilitiesKHR>::Unwrap(inst);
-    obj2->surfaceCapabilities.Reset(inst);
+    obj2->surfaceCapabilities.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj2->instance.surfaceCapabilities, sizeof(VkSurfaceCapabilitiesKHR));
     
   {
     std::vector<napi_value> args;
     Napi::Object inst = _VkExtent2D::constructor.New(args);
     _VkExtent2D* unwrapped12 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    unwrapped6->currentExtent.Reset(inst);
+    unwrapped6->currentExtent.Reset(inst, 1);
     memcpy((&unwrapped12->instance), &unwrapped6->instance.currentExtent, sizeof(VkExtent2D));
     
   }
@@ -15363,7 +15363,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2KHR(const Napi::CallbackInfo
     std::vector<napi_value> args;
     Napi::Object inst = _VkExtent2D::constructor.New(args);
     _VkExtent2D* unwrapped12 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    unwrapped6->minImageExtent.Reset(inst);
+    unwrapped6->minImageExtent.Reset(inst, 1);
     memcpy((&unwrapped12->instance), &unwrapped6->instance.minImageExtent, sizeof(VkExtent2D));
     
   }
@@ -15372,7 +15372,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2KHR(const Napi::CallbackInfo
     std::vector<napi_value> args;
     Napi::Object inst = _VkExtent2D::constructor.New(args);
     _VkExtent2D* unwrapped12 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    unwrapped6->maxImageExtent.Reset(inst);
+    unwrapped6->maxImageExtent.Reset(inst, 1);
     memcpy((&unwrapped12->instance), &unwrapped6->instance.maxImageExtent, sizeof(VkExtent2D));
     
   }
@@ -15487,7 +15487,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormats2KHR(const Napi::CallbackInfo& inf
         std::vector<napi_value> args;
         Napi::Object inst = _VkSurfaceFormatKHR::constructor.New(args);
         _VkSurfaceFormatKHR* unwrapped = Napi::ObjectWrap<_VkSurfaceFormatKHR>::Unwrap(inst);
-        result->surfaceFormat.Reset(inst);
+        result->surfaceFormat.Reset(inst, 1);
         unwrapped->instance = copy->surfaceFormat;
       }
     };
@@ -15582,7 +15582,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayProperties2KHR(const Napi::CallbackInfo& 
         std::vector<napi_value> args;
         Napi::Object inst = _VkDisplayPropertiesKHR::constructor.New(args);
         _VkDisplayPropertiesKHR* unwrapped = Napi::ObjectWrap<_VkDisplayPropertiesKHR>::Unwrap(inst);
-        result->displayProperties.Reset(inst);
+        result->displayProperties.Reset(inst, 1);
         unwrapped->instance = copy->displayProperties;
       }
     };
@@ -15677,7 +15677,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlaneProperties2KHR(const Napi::CallbackI
         std::vector<napi_value> args;
         Napi::Object inst = _VkDisplayPlanePropertiesKHR::constructor.New(args);
         _VkDisplayPlanePropertiesKHR* unwrapped = Napi::ObjectWrap<_VkDisplayPlanePropertiesKHR>::Unwrap(inst);
-        result->displayPlaneProperties.Reset(inst);
+        result->displayPlaneProperties.Reset(inst, 1);
         unwrapped->instance = copy->displayPlaneProperties;
       }
     };
@@ -15790,7 +15790,7 @@ Napi::Value _vkGetDisplayModeProperties2KHR(const Napi::CallbackInfo& info) {
         std::vector<napi_value> args;
         Napi::Object inst = _VkDisplayModePropertiesKHR::constructor.New(args);
         _VkDisplayModePropertiesKHR* unwrapped = Napi::ObjectWrap<_VkDisplayModePropertiesKHR>::Unwrap(inst);
-        result->displayModeProperties.Reset(inst);
+        result->displayModeProperties.Reset(inst, 1);
         unwrapped->instance = copy->displayModeProperties;
       }
     };
@@ -15863,14 +15863,14 @@ Napi::Value _vkGetDisplayPlaneCapabilities2KHR(const Napi::CallbackInfo& info) {
     std::vector<napi_value> args;
     Napi::Object inst = _VkDisplayPlaneCapabilitiesKHR::constructor.New(args);
     _VkDisplayPlaneCapabilitiesKHR* unwrapped6 = Napi::ObjectWrap<_VkDisplayPlaneCapabilitiesKHR>::Unwrap(inst);
-    obj2->capabilities.Reset(inst);
+    obj2->capabilities.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj2->instance.capabilities, sizeof(VkDisplayPlaneCapabilitiesKHR));
     
   {
     std::vector<napi_value> args;
     Napi::Object inst = _VkOffset2D::constructor.New(args);
     _VkOffset2D* unwrapped12 = Napi::ObjectWrap<_VkOffset2D>::Unwrap(inst);
-    unwrapped6->minSrcPosition.Reset(inst);
+    unwrapped6->minSrcPosition.Reset(inst, 1);
     memcpy((&unwrapped12->instance), &unwrapped6->instance.minSrcPosition, sizeof(VkOffset2D));
     
   }
@@ -15879,7 +15879,7 @@ Napi::Value _vkGetDisplayPlaneCapabilities2KHR(const Napi::CallbackInfo& info) {
     std::vector<napi_value> args;
     Napi::Object inst = _VkOffset2D::constructor.New(args);
     _VkOffset2D* unwrapped12 = Napi::ObjectWrap<_VkOffset2D>::Unwrap(inst);
-    unwrapped6->maxSrcPosition.Reset(inst);
+    unwrapped6->maxSrcPosition.Reset(inst, 1);
     memcpy((&unwrapped12->instance), &unwrapped6->instance.maxSrcPosition, sizeof(VkOffset2D));
     
   }
@@ -15888,7 +15888,7 @@ Napi::Value _vkGetDisplayPlaneCapabilities2KHR(const Napi::CallbackInfo& info) {
     std::vector<napi_value> args;
     Napi::Object inst = _VkExtent2D::constructor.New(args);
     _VkExtent2D* unwrapped12 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    unwrapped6->minSrcExtent.Reset(inst);
+    unwrapped6->minSrcExtent.Reset(inst, 1);
     memcpy((&unwrapped12->instance), &unwrapped6->instance.minSrcExtent, sizeof(VkExtent2D));
     
   }
@@ -15897,7 +15897,7 @@ Napi::Value _vkGetDisplayPlaneCapabilities2KHR(const Napi::CallbackInfo& info) {
     std::vector<napi_value> args;
     Napi::Object inst = _VkExtent2D::constructor.New(args);
     _VkExtent2D* unwrapped12 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    unwrapped6->maxSrcExtent.Reset(inst);
+    unwrapped6->maxSrcExtent.Reset(inst, 1);
     memcpy((&unwrapped12->instance), &unwrapped6->instance.maxSrcExtent, sizeof(VkExtent2D));
     
   }
@@ -15906,7 +15906,7 @@ Napi::Value _vkGetDisplayPlaneCapabilities2KHR(const Napi::CallbackInfo& info) {
     std::vector<napi_value> args;
     Napi::Object inst = _VkOffset2D::constructor.New(args);
     _VkOffset2D* unwrapped12 = Napi::ObjectWrap<_VkOffset2D>::Unwrap(inst);
-    unwrapped6->minDstPosition.Reset(inst);
+    unwrapped6->minDstPosition.Reset(inst, 1);
     memcpy((&unwrapped12->instance), &unwrapped6->instance.minDstPosition, sizeof(VkOffset2D));
     
   }
@@ -15915,7 +15915,7 @@ Napi::Value _vkGetDisplayPlaneCapabilities2KHR(const Napi::CallbackInfo& info) {
     std::vector<napi_value> args;
     Napi::Object inst = _VkOffset2D::constructor.New(args);
     _VkOffset2D* unwrapped12 = Napi::ObjectWrap<_VkOffset2D>::Unwrap(inst);
-    unwrapped6->maxDstPosition.Reset(inst);
+    unwrapped6->maxDstPosition.Reset(inst, 1);
     memcpy((&unwrapped12->instance), &unwrapped6->instance.maxDstPosition, sizeof(VkOffset2D));
     
   }
@@ -15924,7 +15924,7 @@ Napi::Value _vkGetDisplayPlaneCapabilities2KHR(const Napi::CallbackInfo& info) {
     std::vector<napi_value> args;
     Napi::Object inst = _VkExtent2D::constructor.New(args);
     _VkExtent2D* unwrapped12 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    unwrapped6->minDstExtent.Reset(inst);
+    unwrapped6->minDstExtent.Reset(inst, 1);
     memcpy((&unwrapped12->instance), &unwrapped6->instance.minDstExtent, sizeof(VkExtent2D));
     
   }
@@ -15933,7 +15933,7 @@ Napi::Value _vkGetDisplayPlaneCapabilities2KHR(const Napi::CallbackInfo& info) {
     std::vector<napi_value> args;
     Napi::Object inst = _VkExtent2D::constructor.New(args);
     _VkExtent2D* unwrapped12 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    unwrapped6->maxDstExtent.Reset(inst);
+    unwrapped6->maxDstExtent.Reset(inst, 1);
     memcpy((&unwrapped12->instance), &unwrapped6->instance.maxDstExtent, sizeof(VkExtent2D));
     
   }
@@ -16008,7 +16008,7 @@ vkGetBufferMemoryRequirements2(
     std::vector<napi_value> args;
     Napi::Object inst = _VkMemoryRequirements::constructor.New(args);
     _VkMemoryRequirements* unwrapped6 = Napi::ObjectWrap<_VkMemoryRequirements>::Unwrap(inst);
-    obj2->memoryRequirements.Reset(inst);
+    obj2->memoryRequirements.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj2->instance.memoryRequirements, sizeof(VkMemoryRequirements));
     
   }
@@ -16081,7 +16081,7 @@ vkGetImageMemoryRequirements2(
     std::vector<napi_value> args;
     Napi::Object inst = _VkMemoryRequirements::constructor.New(args);
     _VkMemoryRequirements* unwrapped6 = Napi::ObjectWrap<_VkMemoryRequirements>::Unwrap(inst);
-    obj2->memoryRequirements.Reset(inst);
+    obj2->memoryRequirements.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj2->instance.memoryRequirements, sizeof(VkMemoryRequirements));
     
   }
@@ -16194,7 +16194,7 @@ vkGetImageSparseMemoryRequirements2(
         std::vector<napi_value> args;
         Napi::Object inst = _VkSparseImageMemoryRequirements::constructor.New(args);
         _VkSparseImageMemoryRequirements* unwrapped = Napi::ObjectWrap<_VkSparseImageMemoryRequirements>::Unwrap(inst);
-        result->memoryRequirements.Reset(inst);
+        result->memoryRequirements.Reset(inst, 1);
         unwrapped->instance = copy->memoryRequirements;
       }
     };
@@ -19097,7 +19097,7 @@ $vkGetAccelerationStructureMemoryRequirementsNV(
     std::vector<napi_value> args;
     Napi::Object inst = _VkMemoryRequirements::constructor.New(args);
     _VkMemoryRequirements* unwrapped6 = Napi::ObjectWrap<_VkMemoryRequirements>::Unwrap(inst);
-    obj2->memoryRequirements.Reset(inst);
+    obj2->memoryRequirements.Reset(inst, 1);
     memcpy((&unwrapped6->instance), &obj2->instance.memoryRequirements, sizeof(VkMemoryRequirements));
     
   }

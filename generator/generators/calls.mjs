@@ -74,7 +74,7 @@ function getMemberCopyInstructions(struct) {
         std::vector<napi_value> args;
         Napi::Object inst = _${member.type}::constructor.New(args);
         _${member.type}* unwrapped = Napi::ObjectWrap<_${member.type}>::Unwrap(inst);
-        result->${member.name}.Reset(inst);
+        result->${member.name}.Reset(inst, 1);
         unwrapped->instance = copy->${member.name};
       }`;
     }
@@ -85,7 +85,7 @@ function getMemberCopyInstructions(struct) {
       out += `
       {
         Napi::String str = Napi::String::New(env, copy->${member.name});
-        result->${member.name}.Reset(str.ToObject());
+        result->${member.name}.Reset(str.ToObject(), 1);
         strcpy(const_cast<char *>(instance->${member.name}), copy->${member.name});
       }`;
     }
@@ -109,7 +109,6 @@ function getMemberCopyInstructions(struct) {
 
 function getInputArrayBody(param, index) {
   let {rawType} = param;
-  if (param.isBaseType) rawType = param.baseType;
   let out = ``;
   let {isConstant} = param;
   if (param.dereferenceCount <= 0) warn(`Cannot handle non-reference item in input-array-body!`);
@@ -608,7 +607,6 @@ function getMutableStructReflectInstructions(name, pIndex, basePath, out = []) {
     if (
       member.isNumber ||
       member.isBoolean ||
-      member.isBaseType ||
       member.bitmaskType ||
       member.enumType ||
       isIgnoreableType(member)
@@ -627,7 +625,7 @@ function getMutableStructReflectInstructions(name, pIndex, basePath, out = []) {
   {
     // back reflect string
     Napi::String str${pIndex} = Napi::String::New(env, (&${basePath}instance)->${member.name});
-    ${basePath}${member.name}.Reset(str${pIndex}.ToObject());
+    ${basePath}${member.name}.Reset(str${pIndex}.ToObject(), 1);
   }`);
     }
     // struct
@@ -637,7 +635,7 @@ function getMutableStructReflectInstructions(name, pIndex, basePath, out = []) {
     std::vector<napi_value> args;
     Napi::Object inst = _${member.type}::constructor.New(args);
     _${member.type}* unwrapped${basePath.length} = Napi::ObjectWrap<_${member.type}>::Unwrap(inst);
-    ${basePath}${member.name}.Reset(inst);
+    ${basePath}${member.name}.Reset(inst, 1);
     memcpy((&unwrapped${basePath.length}->instance), &${basePath}instance.${member.name}, sizeof(${member.type}));
     ${getMutableStructReflectInstructions(member.type, pIndex, `unwrapped${basePath.length}->`, [])}
   }
@@ -653,7 +651,7 @@ function getMutableStructReflectInstructions(name, pIndex, basePath, out = []) {
     for (unsigned int ii = 0; ii < ${member.length}; ++ii) {
       arr${pIndex}.Set(ii, Napi::Number::New(env, (&${basePath}instance)->${member.name}[ii]));
     };
-    ${basePath}${member.name}.Reset(arr${pIndex}.ToObject());
+    ${basePath}${member.name}.Reset(arr${pIndex}.ToObject(), 1);
   }`);
     }
     // array of structs
@@ -672,7 +670,7 @@ function getMutableStructReflectInstructions(name, pIndex, basePath, out = []) {
       memcpy(&unwrapped->instance, &${basePath}instance.${member.name}[ii], sizeof(${member.type}));
       arr.Set(ii, inst);
     };
-    ${basePath}${member.name}.Reset(arr.ToObject());
+    ${basePath}${member.name}.Reset(arr.ToObject(), 1);
   }`);
     }
     else {

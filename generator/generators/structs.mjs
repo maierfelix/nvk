@@ -14,6 +14,7 @@ import {
   isIgnoreableType,
   getAutoStructureType,
   getNapiTypedArrayName,
+  isReferenceableMember,
   isWin32SupportedExtension
 } from "../utils";
 
@@ -56,7 +57,7 @@ function genPersistentArray(member) {
   return `
     // js
     if (value.IsArray()) {
-      this->${member.name}.Reset(value.ToObject());
+      this->${member.name}.Reset(value.ToObject(), 1);
     } else if (value.IsNull()) {
       this->${member.name}.Reset();
       this->instance.${member.name} = nullptr;
@@ -73,7 +74,7 @@ function genPersistentTypedArray(member) {
     // js
     if (value.IsTypedArray()) {
       if (value.As<Napi::TypedArray>().TypedArrayType() == ${getNapiTypedArrayName(member.jsTypedArrayName)}) {
-        this->${member.name}.Reset(value.ToObject());
+        this->${member.name}.Reset(value.ToObject(), 1);
       } else {
         ${invalidMemberTypeError(member)}
         return;
@@ -113,9 +114,16 @@ function retUnknown(member) {
   return " ";
 };
 
+function processDeconstructionSuppressor(member) {
+  if (isReferenceableMember(member)) {
+    return  `
+    this->${member.name}.SuppressDestruct();`;
+  }
+  return ``;
+};
+
 function processHeaderGetter(struct, member) {
   let {rawType} = member;
-  if (member.isBaseType) rawType = member.baseType;
   if (member.isStaticArray) {
     // string of chars
     if (member.type === "char") {
@@ -135,15 +143,11 @@ function processHeaderGetter(struct, member) {
     Napi::ObjectReference ${member.name};
     Napi::Value Get${member.name}(const Napi::CallbackInfo &info);`;
   }
-  if (
-    member.isStructType ||
-    member.isHandleType ||
-    member.isBaseType
-  ) {
+  if (member.isStructType || member.isHandleType) {
     if (member.isStructType || member.isHandleType || member.dereferenceCount > 0) {
       return `
-      Napi::ObjectReference ${member.name};
-      Napi::Value Get${member.name}(const Napi::CallbackInfo &info);`;
+    Napi::ObjectReference ${member.name};
+    Napi::Value Get${member.name}(const Napi::CallbackInfo &info);`;
     }
   }
   if (isPNextMember(member)) {
@@ -218,22 +222,22 @@ function processSourceGetter(struct, member) {
   if (member.isStaticArray && member.isString) {
     return `
   if (this->${member.name}.IsEmpty()) return env.Null();
-  return Napi::String::New(env, this->${member.name});`;
+  return this->${member.name}.Value().ToString();`;
   }
   if (member.isStaticArray) {
     return `
   if (this->${member.name}.IsEmpty()) return env.Null();
-  return Napi::Array::New(env, this->${member.name}.Value());`;
+  return this->${member.name}.Value().As<Napi::Array>();`;
   }
   if (member.isVoidPointer) {
     return `
   if (this->${member.name}.IsEmpty()) return env.Null();
-  return Napi::Object::New(env, this->${member.name}.Value());`;
+  return this->${member.name}.Value().As<Napi::Object>();`;
   }
   if (member.isArray && (member.isStructType || member.isHandleType)) {
     return `
   if (this->${member.name}.IsEmpty()) return env.Null();
-  return Napi::Array::New(env, this->${member.name}.Value());`;
+  return this->${member.name}.Value().As<Napi::Array>();`;
   }
   switch (rawType) {
     case "int":
@@ -249,7 +253,7 @@ function processSourceGetter(struct, member) {
     case "const char *":
       return `
   if (this->${member.name}.IsEmpty()) return env.Null();
-  return Napi::String::New(env, this->${member.name}.Value());`;
+  return this->${member.name}.Value().ToString();`;
     case "float *":
     case "int32_t *":
     case "uint8_t *":
@@ -263,12 +267,12 @@ function processSourceGetter(struct, member) {
     case "const uint64_t *":
       return `
   if (this->${member.name}.IsEmpty()) return env.Null();
-  return Napi::TypedArray::New(env, this->${member.name}.Value());`;
+  return this->${member.name}.Value().As<Napi::TypedArray>();`;
     default: {
       if (member.isStructType || member.isHandleType || isPNextMember(member)) {
         return `
   if (this->${member.name}.IsEmpty()) return env.Null();
-  return Napi::Object::New(env, this->${member.name}.Value());`;
+  return this->${member.name}.Value().As<Napi::Object>();`;
       }
       warn(`Cannot handle member ${member.rawType} for ${struct.name} in source-getter!`);
       return retUnknown(member);
@@ -283,7 +287,7 @@ function processStaticArraySourceSetter(member) {
   return `
   // js
   if (value.IsArray()) {
-    this->${member.name}.Reset(value.ToObject());
+    this->${member.name}.Reset(value.ToObject(), 1);
   } else if (value.IsNull()) {
     this->${member.name}.Reset();
   } else {
@@ -319,7 +323,7 @@ function processSourceSetter(struct, member) {
   if (value.IsArrayBuffer()) {
     Napi::ArrayBuffer buffer = value.As<Napi::ArrayBuffer>();
     this->instance.${member.name} = buffer.Data();
-    this->${member.name}.Reset(value.As<Napi::Object>());
+    this->${member.name}.Reset(value.As<Napi::Object>(), 1);
   } else if (value.IsNull()) {
     this->instance.${member.name} = nullptr;
   } else {
@@ -369,7 +373,7 @@ function processSourceSetter(struct, member) {
     case "const char *":
       return `
   if (value.IsString()) {
-    this->${member.name}.Reset(value.ToObject());
+    this->${member.name}.Reset(value.ToObject(), 1);
     // free previous
     if (this->instance.${member.name}) delete[] this->instance.${member.name};
     this->instance.${member.name} = copyV8String(value);
@@ -400,7 +404,7 @@ function processSourceSetter(struct, member) {
       let isReference = member.dereferenceCount > 0;
       // initialization
       let initialize = `
-      this->${member.name}.Reset(value.ToObject());
+      this->${member.name}.Reset(value.ToObject(), 1);
       _${member.type}* inst = Napi::ObjectWrap<_${member.type}>::Unwrap(obj);
       ${member.isStructType ? `inst->flush()` : ``};
       this->instance.${member.name} = ${isReference ? "&" : ""}inst->instance;`;
@@ -412,7 +416,7 @@ function processSourceSetter(struct, member) {
           let {extensions} = struct;
           validObjectCondition = `IsValidStructureObject(obj)`;
           initialize = `
-      this->${member.name}.Reset(obj);
+      this->${member.name}.Reset(obj, 1);
       this->instance.${member.name} = (${member.rawType}) DynamicObjectUnwrapInstance(obj);
       VkStructureType sType = static_cast<VkStructureType>(((int*)(this->instance.${member.name}))[0]);`;
           if (extensions) {
@@ -757,7 +761,8 @@ export default function(astReference, struct) {
     processSourceMemberAccessor,
     processHeapVectorAllocator,
     processHeapVectorDeallocator,
-    processPersistentDeallocator
+    processPersistentDeallocator,
+    processDeconstructionSuppressor
   };
   let out = {
     header: null,

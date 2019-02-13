@@ -735,12 +735,12 @@ class _VkClearValue : public Napi::ObjectWrap<_VkClearValue> {
     ~_VkClearValue();
 
     // #accessors
-      Napi::ObjectReference color;
-      Napi::Value Getcolor(const Napi::CallbackInfo &info);
+    Napi::ObjectReference color;
+    Napi::Value Getcolor(const Napi::CallbackInfo &info);
     void Setcolor(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference depthStencil;
-      Napi::Value GetdepthStencil(const Napi::CallbackInfo &info);
+    Napi::ObjectReference depthStencil;
+    Napi::Value GetdepthStencil(const Napi::CallbackInfo &info);
     void SetdepthStencil(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -856,8 +856,8 @@ class _VkBufferDeviceAddressInfoEXT : public Napi::ObjectWrap<_VkBufferDeviceAdd
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference buffer;
-      Napi::Value Getbuffer(const Napi::CallbackInfo &info);
+    Napi::ObjectReference buffer;
+    Napi::Value Getbuffer(const Napi::CallbackInfo &info);
     void Setbuffer(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -1088,8 +1088,8 @@ class _VkRenderPassFragmentDensityMapCreateInfoEXT : public Napi::ObjectWrap<_Vk
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference fragmentDensityMapAttachment;
-      Napi::Value GetfragmentDensityMapAttachment(const Napi::CallbackInfo &info);
+    Napi::ObjectReference fragmentDensityMapAttachment;
+    Napi::Value GetfragmentDensityMapAttachment(const Napi::CallbackInfo &info);
     void SetfragmentDensityMapAttachment(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -1126,10 +1126,10 @@ class _VkPhysicalDeviceFragmentDensityMapPropertiesEXT : public Napi::ObjectWrap
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference minFragmentDensityTexelSize;
-      Napi::Value GetminFragmentDensityTexelSize(const Napi::CallbackInfo &info);
-      Napi::ObjectReference maxFragmentDensityTexelSize;
-      Napi::Value GetmaxFragmentDensityTexelSize(const Napi::CallbackInfo &info);
+    Napi::ObjectReference minFragmentDensityTexelSize;
+    Napi::Value GetminFragmentDensityTexelSize(const Napi::CallbackInfo &info);
+    Napi::ObjectReference maxFragmentDensityTexelSize;
+    Napi::Value GetmaxFragmentDensityTexelSize(const Napi::CallbackInfo &info);
     Napi::Value GetfragmentDensityInvocations(const Napi::CallbackInfo &info);
 
     // #default properties
@@ -1577,8 +1577,8 @@ class _VkAccelerationStructureMemoryRequirementsInfoNV : public Napi::ObjectWrap
     Napi::Value Gettype(const Napi::CallbackInfo &info);
     void Settype(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference accelerationStructure;
-      Napi::Value GetaccelerationStructure(const Napi::CallbackInfo &info);
+    Napi::ObjectReference accelerationStructure;
+    Napi::Value GetaccelerationStructure(const Napi::CallbackInfo &info);
     void SetaccelerationStructure(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -1657,12 +1657,12 @@ class _VkBindAccelerationStructureMemoryInfoNV : public Napi::ObjectWrap<_VkBind
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference accelerationStructure;
-      Napi::Value GetaccelerationStructure(const Napi::CallbackInfo &info);
+    Napi::ObjectReference accelerationStructure;
+    Napi::Value GetaccelerationStructure(const Napi::CallbackInfo &info);
     void SetaccelerationStructure(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference memory;
-      Napi::Value Getmemory(const Napi::CallbackInfo &info);
+    Napi::ObjectReference memory;
+    Napi::Value Getmemory(const Napi::CallbackInfo &info);
     void Setmemory(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetmemoryOffset(const Napi::CallbackInfo &info);
@@ -1712,8 +1712,8 @@ class _VkAccelerationStructureCreateInfoNV : public Napi::ObjectWrap<_VkAccelera
     Napi::Value GetcompactedSize(const Napi::CallbackInfo &info);
     void SetcompactedSize(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference info;
-      Napi::Value Getinfo(const Napi::CallbackInfo &info);
+    Napi::ObjectReference info;
+    Napi::Value Getinfo(const Napi::CallbackInfo &info);
     void Setinfo(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -1804,8 +1804,8 @@ class _VkGeometryNV : public Napi::ObjectWrap<_VkGeometryNV> {
     Napi::Value GetgeometryType(const Napi::CallbackInfo &info);
     void SetgeometryType(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference geometry;
-      Napi::Value Getgeometry(const Napi::CallbackInfo &info);
+    Napi::ObjectReference geometry;
+    Napi::Value Getgeometry(const Napi::CallbackInfo &info);
     void Setgeometry(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value Getflags(const Napi::CallbackInfo &info);
@@ -1838,12 +1838,12 @@ class _VkGeometryDataNV : public Napi::ObjectWrap<_VkGeometryDataNV> {
     ~_VkGeometryDataNV();
 
     // #accessors
-      Napi::ObjectReference triangles;
-      Napi::Value Gettriangles(const Napi::CallbackInfo &info);
+    Napi::ObjectReference triangles;
+    Napi::Value Gettriangles(const Napi::CallbackInfo &info);
     void Settriangles(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference aabbs;
-      Napi::Value Getaabbs(const Napi::CallbackInfo &info);
+    Napi::ObjectReference aabbs;
+    Napi::Value Getaabbs(const Napi::CallbackInfo &info);
     void Setaabbs(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -1880,8 +1880,8 @@ class _VkGeometryAABBNV : public Napi::ObjectWrap<_VkGeometryAABBNV> {
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference aabbData;
-      Napi::Value GetaabbData(const Napi::CallbackInfo &info);
+    Napi::ObjectReference aabbData;
+    Napi::Value GetaabbData(const Napi::CallbackInfo &info);
     void SetaabbData(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetnumAABBs(const Napi::CallbackInfo &info);
@@ -1927,8 +1927,8 @@ class _VkGeometryTrianglesNV : public Napi::ObjectWrap<_VkGeometryTrianglesNV> {
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference vertexData;
-      Napi::Value GetvertexData(const Napi::CallbackInfo &info);
+    Napi::ObjectReference vertexData;
+    Napi::Value GetvertexData(const Napi::CallbackInfo &info);
     void SetvertexData(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetvertexOffset(const Napi::CallbackInfo &info);
@@ -1943,8 +1943,8 @@ class _VkGeometryTrianglesNV : public Napi::ObjectWrap<_VkGeometryTrianglesNV> {
     Napi::Value GetvertexFormat(const Napi::CallbackInfo &info);
     void SetvertexFormat(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference indexData;
-      Napi::Value GetindexData(const Napi::CallbackInfo &info);
+    Napi::ObjectReference indexData;
+    Napi::Value GetindexData(const Napi::CallbackInfo &info);
     void SetindexData(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetindexOffset(const Napi::CallbackInfo &info);
@@ -1956,8 +1956,8 @@ class _VkGeometryTrianglesNV : public Napi::ObjectWrap<_VkGeometryTrianglesNV> {
     Napi::Value GetindexType(const Napi::CallbackInfo &info);
     void SetindexType(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference transformData;
-      Napi::Value GettransformData(const Napi::CallbackInfo &info);
+    Napi::ObjectReference transformData;
+    Napi::Value GettransformData(const Napi::CallbackInfo &info);
     void SettransformData(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GettransformOffset(const Napi::CallbackInfo &info);
@@ -2019,12 +2019,12 @@ class _VkRayTracingPipelineCreateInfoNV : public Napi::ObjectWrap<_VkRayTracingP
     Napi::Value GetmaxRecursionDepth(const Napi::CallbackInfo &info);
     void SetmaxRecursionDepth(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference layout;
-      Napi::Value Getlayout(const Napi::CallbackInfo &info);
+    Napi::ObjectReference layout;
+    Napi::Value Getlayout(const Napi::CallbackInfo &info);
     void Setlayout(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference basePipelineHandle;
-      Napi::Value GetbasePipelineHandle(const Napi::CallbackInfo &info);
+    Napi::ObjectReference basePipelineHandle;
+    Napi::Value GetbasePipelineHandle(const Napi::CallbackInfo &info);
     void SetbasePipelineHandle(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetbasePipelineIndex(const Napi::CallbackInfo &info);
@@ -2385,8 +2385,8 @@ class _VkPhysicalDeviceShadingRateImagePropertiesNV : public Napi::ObjectWrap<_V
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference shadingRateTexelSize;
-      Napi::Value GetshadingRateTexelSize(const Napi::CallbackInfo &info);
+    Napi::ObjectReference shadingRateTexelSize;
+    Napi::Value GetshadingRateTexelSize(const Napi::CallbackInfo &info);
     Napi::Value GetshadingRatePaletteSize(const Napi::CallbackInfo &info);
     Napi::Value GetshadingRateMaxCoarseSamples(const Napi::CallbackInfo &info);
 
@@ -3050,8 +3050,8 @@ class _VkSubpassDescriptionDepthStencilResolveKHR : public Napi::ObjectWrap<_VkS
     Napi::Value GetstencilResolveMode(const Napi::CallbackInfo &info);
     void SetstencilResolveMode(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference pDepthStencilResolveAttachment;
-      Napi::Value GetpDepthStencilResolveAttachment(const Napi::CallbackInfo &info);
+    Napi::ObjectReference pDepthStencilResolveAttachment;
+    Napi::Value GetpDepthStencilResolveAttachment(const Napi::CallbackInfo &info);
     void SetpDepthStencilResolveAttachment(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -3817,8 +3817,8 @@ class _VkSubpassDescription2KHR : public Napi::ObjectWrap<_VkSubpassDescription2
     Napi::Value GetpResolveAttachments(const Napi::CallbackInfo &info);
     void SetpResolveAttachments(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference pDepthStencilAttachment;
-      Napi::Value GetpDepthStencilAttachment(const Napi::CallbackInfo &info);
+    Napi::ObjectReference pDepthStencilAttachment;
+    Napi::Value GetpDepthStencilAttachment(const Napi::CallbackInfo &info);
     void SetpDepthStencilAttachment(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetpreserveAttachmentCount(const Napi::CallbackInfo &info);
@@ -4825,8 +4825,8 @@ class _VkShaderStatisticsInfoAMD : public Napi::ObjectWrap<_VkShaderStatisticsIn
 
     // #accessors
     Napi::Value GetshaderStageMask(const Napi::CallbackInfo &info);
-      Napi::ObjectReference resourceUsage;
-      Napi::Value GetresourceUsage(const Napi::CallbackInfo &info);
+    Napi::ObjectReference resourceUsage;
+    Napi::Value GetresourceUsage(const Napi::CallbackInfo &info);
     Napi::Value GetnumPhysicalVgprs(const Napi::CallbackInfo &info);
     Napi::Value GetnumPhysicalSgprs(const Napi::CallbackInfo &info);
     Napi::Value GetnumAvailableVgprs(const Napi::CallbackInfo &info);
@@ -5204,8 +5204,8 @@ class _VkShaderModuleValidationCacheCreateInfoEXT : public Napi::ObjectWrap<_VkS
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference validationCache;
-      Napi::Value GetvalidationCache(const Napi::CallbackInfo &info);
+    Napi::ObjectReference validationCache;
+    Napi::Value GetvalidationCache(const Napi::CallbackInfo &info);
     void SetvalidationCache(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -5691,8 +5691,8 @@ class _VkMultisamplePropertiesEXT : public Napi::ObjectWrap<_VkMultisampleProper
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference maxSampleLocationGridSize;
-      Napi::Value GetmaxSampleLocationGridSize(const Napi::CallbackInfo &info);
+    Napi::ObjectReference maxSampleLocationGridSize;
+    Napi::Value GetmaxSampleLocationGridSize(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -5728,8 +5728,8 @@ class _VkPhysicalDeviceSampleLocationsPropertiesEXT : public Napi::ObjectWrap<_V
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetsampleLocationSampleCounts(const Napi::CallbackInfo &info);
-      Napi::ObjectReference maxSampleLocationGridSize;
-      Napi::Value GetmaxSampleLocationGridSize(const Napi::CallbackInfo &info);
+    Napi::ObjectReference maxSampleLocationGridSize;
+    Napi::Value GetmaxSampleLocationGridSize(const Napi::CallbackInfo &info);
     std::vector<float>* vsampleLocationCoordinateRange;
     Napi::ObjectReference sampleLocationCoordinateRange;
     Napi::Value GetsampleLocationCoordinateRange(const Napi::CallbackInfo &info);
@@ -5772,8 +5772,8 @@ class _VkPipelineSampleLocationsStateCreateInfoEXT : public Napi::ObjectWrap<_Vk
     Napi::Value GetsampleLocationsEnable(const Napi::CallbackInfo &info);
     void SetsampleLocationsEnable(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference sampleLocationsInfo;
-      Napi::Value GetsampleLocationsInfo(const Napi::CallbackInfo &info);
+    Napi::ObjectReference sampleLocationsInfo;
+    Napi::Value GetsampleLocationsInfo(const Napi::CallbackInfo &info);
     void SetsampleLocationsInfo(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -5856,8 +5856,8 @@ class _VkSubpassSampleLocationsEXT : public Napi::ObjectWrap<_VkSubpassSampleLoc
     Napi::Value GetsubpassIndex(const Napi::CallbackInfo &info);
     void SetsubpassIndex(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference sampleLocationsInfo;
-      Napi::Value GetsampleLocationsInfo(const Napi::CallbackInfo &info);
+    Napi::ObjectReference sampleLocationsInfo;
+    Napi::Value GetsampleLocationsInfo(const Napi::CallbackInfo &info);
     void SetsampleLocationsInfo(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -5890,8 +5890,8 @@ class _VkAttachmentSampleLocationsEXT : public Napi::ObjectWrap<_VkAttachmentSam
     Napi::Value GetattachmentIndex(const Napi::CallbackInfo &info);
     void SetattachmentIndex(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference sampleLocationsInfo;
-      Napi::Value GetsampleLocationsInfo(const Napi::CallbackInfo &info);
+    Napi::ObjectReference sampleLocationsInfo;
+    Napi::Value GetsampleLocationsInfo(const Napi::CallbackInfo &info);
     void SetsampleLocationsInfo(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -5931,8 +5931,8 @@ class _VkSampleLocationsInfoEXT : public Napi::ObjectWrap<_VkSampleLocationsInfo
     Napi::Value GetsampleLocationsPerPixel(const Napi::CallbackInfo &info);
     void SetsampleLocationsPerPixel(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference sampleLocationGridSize;
-      Napi::Value GetsampleLocationGridSize(const Napi::CallbackInfo &info);
+    Napi::ObjectReference sampleLocationGridSize;
+    Napi::Value GetsampleLocationGridSize(const Napi::CallbackInfo &info);
     void SetsampleLocationGridSize(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetsampleLocationsCount(const Napi::CallbackInfo &info);
@@ -6243,8 +6243,8 @@ class _VkConditionalRenderingBeginInfoEXT : public Napi::ObjectWrap<_VkCondition
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference buffer;
-      Napi::Value Getbuffer(const Napi::CallbackInfo &info);
+    Napi::ObjectReference buffer;
+    Napi::Value Getbuffer(const Napi::CallbackInfo &info);
     void Setbuffer(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value Getoffset(const Napi::CallbackInfo &info);
@@ -6623,8 +6623,8 @@ class _VkSamplerYcbcrConversionCreateInfoKHR : public Napi::ObjectWrap<_VkSample
     Napi::Value GetycbcrRange(const Napi::CallbackInfo &info);
     void SetycbcrRange(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference components;
-      Napi::Value Getcomponents(const Napi::CallbackInfo &info);
+    Napi::ObjectReference components;
+    Napi::Value Getcomponents(const Napi::CallbackInfo &info);
     void Setcomponents(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetxChromaOffset(const Napi::CallbackInfo &info);
@@ -6682,8 +6682,8 @@ class _VkSamplerYcbcrConversionCreateInfo : public Napi::ObjectWrap<_VkSamplerYc
     Napi::Value GetycbcrRange(const Napi::CallbackInfo &info);
     void SetycbcrRange(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference components;
-      Napi::Value Getcomponents(const Napi::CallbackInfo &info);
+    Napi::ObjectReference components;
+    Napi::Value Getcomponents(const Napi::CallbackInfo &info);
     void Setcomponents(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetxChromaOffset(const Napi::CallbackInfo &info);
@@ -6732,8 +6732,8 @@ class _VkSamplerYcbcrConversionInfoKHR : public Napi::ObjectWrap<_VkSamplerYcbcr
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference conversion;
-      Napi::Value Getconversion(const Napi::CallbackInfo &info);
+    Napi::ObjectReference conversion;
+    Napi::Value Getconversion(const Napi::CallbackInfo &info);
     void Setconversion(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -6770,8 +6770,8 @@ class _VkSamplerYcbcrConversionInfo : public Napi::ObjectWrap<_VkSamplerYcbcrCon
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference conversion;
-      Napi::Value Getconversion(const Napi::CallbackInfo &info);
+    Napi::ObjectReference conversion;
+    Napi::Value Getconversion(const Napi::CallbackInfo &info);
     void Setconversion(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -6956,12 +6956,12 @@ class _VkMemoryDedicatedAllocateInfoKHR : public Napi::ObjectWrap<_VkMemoryDedic
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference image;
-      Napi::Value Getimage(const Napi::CallbackInfo &info);
+    Napi::ObjectReference image;
+    Napi::Value Getimage(const Napi::CallbackInfo &info);
     void Setimage(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference buffer;
-      Napi::Value Getbuffer(const Napi::CallbackInfo &info);
+    Napi::ObjectReference buffer;
+    Napi::Value Getbuffer(const Napi::CallbackInfo &info);
     void Setbuffer(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -6998,12 +6998,12 @@ class _VkMemoryDedicatedAllocateInfo : public Napi::ObjectWrap<_VkMemoryDedicate
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference image;
-      Napi::Value Getimage(const Napi::CallbackInfo &info);
+    Napi::ObjectReference image;
+    Napi::Value Getimage(const Napi::CallbackInfo &info);
     void Setimage(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference buffer;
-      Napi::Value Getbuffer(const Napi::CallbackInfo &info);
+    Napi::ObjectReference buffer;
+    Napi::Value Getbuffer(const Napi::CallbackInfo &info);
     void Setbuffer(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -7182,8 +7182,8 @@ class _VkSparseImageMemoryRequirements2KHR : public Napi::ObjectWrap<_VkSparseIm
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference memoryRequirements;
-      Napi::Value GetmemoryRequirements(const Napi::CallbackInfo &info);
+    Napi::ObjectReference memoryRequirements;
+    Napi::Value GetmemoryRequirements(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -7218,8 +7218,8 @@ class _VkSparseImageMemoryRequirements2 : public Napi::ObjectWrap<_VkSparseImage
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference memoryRequirements;
-      Napi::Value GetmemoryRequirements(const Napi::CallbackInfo &info);
+    Napi::ObjectReference memoryRequirements;
+    Napi::Value GetmemoryRequirements(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -7254,8 +7254,8 @@ class _VkMemoryRequirements2KHR : public Napi::ObjectWrap<_VkMemoryRequirements2
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference memoryRequirements;
-      Napi::Value GetmemoryRequirements(const Napi::CallbackInfo &info);
+    Napi::ObjectReference memoryRequirements;
+    Napi::Value GetmemoryRequirements(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -7290,8 +7290,8 @@ class _VkMemoryRequirements2 : public Napi::ObjectWrap<_VkMemoryRequirements2> {
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference memoryRequirements;
-      Napi::Value GetmemoryRequirements(const Napi::CallbackInfo &info);
+    Napi::ObjectReference memoryRequirements;
+    Napi::Value GetmemoryRequirements(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -7326,8 +7326,8 @@ class _VkImageSparseMemoryRequirementsInfo2KHR : public Napi::ObjectWrap<_VkImag
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference image;
-      Napi::Value Getimage(const Napi::CallbackInfo &info);
+    Napi::ObjectReference image;
+    Napi::Value Getimage(const Napi::CallbackInfo &info);
     void Setimage(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -7364,8 +7364,8 @@ class _VkImageSparseMemoryRequirementsInfo2 : public Napi::ObjectWrap<_VkImageSp
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference image;
-      Napi::Value Getimage(const Napi::CallbackInfo &info);
+    Napi::ObjectReference image;
+    Napi::Value Getimage(const Napi::CallbackInfo &info);
     void Setimage(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -7402,8 +7402,8 @@ class _VkImageMemoryRequirementsInfo2KHR : public Napi::ObjectWrap<_VkImageMemor
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference image;
-      Napi::Value Getimage(const Napi::CallbackInfo &info);
+    Napi::ObjectReference image;
+    Napi::Value Getimage(const Napi::CallbackInfo &info);
     void Setimage(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -7440,8 +7440,8 @@ class _VkImageMemoryRequirementsInfo2 : public Napi::ObjectWrap<_VkImageMemoryRe
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference image;
-      Napi::Value Getimage(const Napi::CallbackInfo &info);
+    Napi::ObjectReference image;
+    Napi::Value Getimage(const Napi::CallbackInfo &info);
     void Setimage(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -7478,8 +7478,8 @@ class _VkBufferMemoryRequirementsInfo2KHR : public Napi::ObjectWrap<_VkBufferMem
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference buffer;
-      Napi::Value Getbuffer(const Napi::CallbackInfo &info);
+    Napi::ObjectReference buffer;
+    Napi::Value Getbuffer(const Napi::CallbackInfo &info);
     void Setbuffer(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -7516,8 +7516,8 @@ class _VkBufferMemoryRequirementsInfo2 : public Napi::ObjectWrap<_VkBufferMemory
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference buffer;
-      Napi::Value Getbuffer(const Napi::CallbackInfo &info);
+    Napi::ObjectReference buffer;
+    Napi::Value Getbuffer(const Napi::CallbackInfo &info);
     void Setbuffer(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -7719,8 +7719,8 @@ class _VkDisplayPlaneCapabilities2KHR : public Napi::ObjectWrap<_VkDisplayPlaneC
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference capabilities;
-      Napi::Value Getcapabilities(const Napi::CallbackInfo &info);
+    Napi::ObjectReference capabilities;
+    Napi::Value Getcapabilities(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -7755,8 +7755,8 @@ class _VkDisplayPlaneInfo2KHR : public Napi::ObjectWrap<_VkDisplayPlaneInfo2KHR>
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference mode;
-      Napi::Value Getmode(const Napi::CallbackInfo &info);
+    Napi::ObjectReference mode;
+    Napi::Value Getmode(const Napi::CallbackInfo &info);
     void Setmode(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetplaneIndex(const Napi::CallbackInfo &info);
@@ -7796,8 +7796,8 @@ class _VkDisplayModeProperties2KHR : public Napi::ObjectWrap<_VkDisplayModePrope
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference displayModeProperties;
-      Napi::Value GetdisplayModeProperties(const Napi::CallbackInfo &info);
+    Napi::ObjectReference displayModeProperties;
+    Napi::Value GetdisplayModeProperties(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -7832,8 +7832,8 @@ class _VkDisplayPlaneProperties2KHR : public Napi::ObjectWrap<_VkDisplayPlanePro
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference displayPlaneProperties;
-      Napi::Value GetdisplayPlaneProperties(const Napi::CallbackInfo &info);
+    Napi::ObjectReference displayPlaneProperties;
+    Napi::Value GetdisplayPlaneProperties(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -7868,8 +7868,8 @@ class _VkDisplayProperties2KHR : public Napi::ObjectWrap<_VkDisplayProperties2KH
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference displayProperties;
-      Napi::Value GetdisplayProperties(const Napi::CallbackInfo &info);
+    Napi::ObjectReference displayProperties;
+    Napi::Value GetdisplayProperties(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -7904,8 +7904,8 @@ class _VkSurfaceFormat2KHR : public Napi::ObjectWrap<_VkSurfaceFormat2KHR> {
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference surfaceFormat;
-      Napi::Value GetsurfaceFormat(const Napi::CallbackInfo &info);
+    Napi::ObjectReference surfaceFormat;
+    Napi::Value GetsurfaceFormat(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -7940,8 +7940,8 @@ class _VkSurfaceCapabilities2KHR : public Napi::ObjectWrap<_VkSurfaceCapabilitie
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference surfaceCapabilities;
-      Napi::Value GetsurfaceCapabilities(const Napi::CallbackInfo &info);
+    Napi::ObjectReference surfaceCapabilities;
+    Napi::Value GetsurfaceCapabilities(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -7976,8 +7976,8 @@ class _VkPhysicalDeviceSurfaceInfo2KHR : public Napi::ObjectWrap<_VkPhysicalDevi
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference surface;
-      Napi::Value Getsurface(const Napi::CallbackInfo &info);
+    Napi::ObjectReference surface;
+    Napi::Value Getsurface(const Napi::CallbackInfo &info);
     void Setsurface(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -8587,20 +8587,20 @@ class _VkHdrMetadataEXT : public Napi::ObjectWrap<_VkHdrMetadataEXT> {
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference displayPrimaryRed;
-      Napi::Value GetdisplayPrimaryRed(const Napi::CallbackInfo &info);
+    Napi::ObjectReference displayPrimaryRed;
+    Napi::Value GetdisplayPrimaryRed(const Napi::CallbackInfo &info);
     void SetdisplayPrimaryRed(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference displayPrimaryGreen;
-      Napi::Value GetdisplayPrimaryGreen(const Napi::CallbackInfo &info);
+    Napi::ObjectReference displayPrimaryGreen;
+    Napi::Value GetdisplayPrimaryGreen(const Napi::CallbackInfo &info);
     void SetdisplayPrimaryGreen(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference displayPrimaryBlue;
-      Napi::Value GetdisplayPrimaryBlue(const Napi::CallbackInfo &info);
+    Napi::ObjectReference displayPrimaryBlue;
+    Napi::Value GetdisplayPrimaryBlue(const Napi::CallbackInfo &info);
     void SetdisplayPrimaryBlue(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference whitePoint;
-      Napi::Value GetwhitePoint(const Napi::CallbackInfo &info);
+    Napi::ObjectReference whitePoint;
+    Napi::Value GetwhitePoint(const Napi::CallbackInfo &info);
     void SetwhitePoint(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetmaxLuminance(const Napi::CallbackInfo &info);
@@ -8696,15 +8696,15 @@ class _VkDescriptorUpdateTemplateCreateInfoKHR : public Napi::ObjectWrap<_VkDesc
     Napi::Value GettemplateType(const Napi::CallbackInfo &info);
     void SettemplateType(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference descriptorSetLayout;
-      Napi::Value GetdescriptorSetLayout(const Napi::CallbackInfo &info);
+    Napi::ObjectReference descriptorSetLayout;
+    Napi::Value GetdescriptorSetLayout(const Napi::CallbackInfo &info);
     void SetdescriptorSetLayout(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetpipelineBindPoint(const Napi::CallbackInfo &info);
     void SetpipelineBindPoint(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference pipelineLayout;
-      Napi::Value GetpipelineLayout(const Napi::CallbackInfo &info);
+    Napi::ObjectReference pipelineLayout;
+    Napi::Value GetpipelineLayout(const Napi::CallbackInfo &info);
     void SetpipelineLayout(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value Getset(const Napi::CallbackInfo &info);
@@ -8758,15 +8758,15 @@ class _VkDescriptorUpdateTemplateCreateInfo : public Napi::ObjectWrap<_VkDescrip
     Napi::Value GettemplateType(const Napi::CallbackInfo &info);
     void SettemplateType(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference descriptorSetLayout;
-      Napi::Value GetdescriptorSetLayout(const Napi::CallbackInfo &info);
+    Napi::ObjectReference descriptorSetLayout;
+    Napi::Value GetdescriptorSetLayout(const Napi::CallbackInfo &info);
     void SetdescriptorSetLayout(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetpipelineBindPoint(const Napi::CallbackInfo &info);
     void SetpipelineBindPoint(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference pipelineLayout;
-      Napi::Value GetpipelineLayout(const Napi::CallbackInfo &info);
+    Napi::ObjectReference pipelineLayout;
+    Napi::Value GetpipelineLayout(const Napi::CallbackInfo &info);
     void SetpipelineLayout(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value Getset(const Napi::CallbackInfo &info);
@@ -9061,19 +9061,19 @@ class _VkAcquireNextImageInfoKHR : public Napi::ObjectWrap<_VkAcquireNextImageIn
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference swapchain;
-      Napi::Value Getswapchain(const Napi::CallbackInfo &info);
+    Napi::ObjectReference swapchain;
+    Napi::Value Getswapchain(const Napi::CallbackInfo &info);
     void Setswapchain(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value Gettimeout(const Napi::CallbackInfo &info);
     void Settimeout(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference semaphore;
-      Napi::Value Getsemaphore(const Napi::CallbackInfo &info);
+    Napi::ObjectReference semaphore;
+    Napi::Value Getsemaphore(const Napi::CallbackInfo &info);
     void Setsemaphore(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference fence;
-      Napi::Value Getfence(const Napi::CallbackInfo &info);
+    Napi::ObjectReference fence;
+    Napi::Value Getfence(const Napi::CallbackInfo &info);
     void Setfence(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetdeviceMask(const Napi::CallbackInfo &info);
@@ -9113,8 +9113,8 @@ class _VkBindImageMemorySwapchainInfoKHR : public Napi::ObjectWrap<_VkBindImageM
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference swapchain;
-      Napi::Value Getswapchain(const Napi::CallbackInfo &info);
+    Napi::ObjectReference swapchain;
+    Napi::Value Getswapchain(const Napi::CallbackInfo &info);
     void Setswapchain(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetimageIndex(const Napi::CallbackInfo &info);
@@ -9154,8 +9154,8 @@ class _VkImageSwapchainCreateInfoKHR : public Napi::ObjectWrap<_VkImageSwapchain
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference swapchain;
-      Napi::Value Getswapchain(const Napi::CallbackInfo &info);
+    Napi::ObjectReference swapchain;
+    Napi::Value Getswapchain(const Napi::CallbackInfo &info);
     void Setswapchain(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -9682,12 +9682,12 @@ class _VkBindImageMemoryInfoKHR : public Napi::ObjectWrap<_VkBindImageMemoryInfo
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference image;
-      Napi::Value Getimage(const Napi::CallbackInfo &info);
+    Napi::ObjectReference image;
+    Napi::Value Getimage(const Napi::CallbackInfo &info);
     void Setimage(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference memory;
-      Napi::Value Getmemory(const Napi::CallbackInfo &info);
+    Napi::ObjectReference memory;
+    Napi::Value Getmemory(const Napi::CallbackInfo &info);
     void Setmemory(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetmemoryOffset(const Napi::CallbackInfo &info);
@@ -9727,12 +9727,12 @@ class _VkBindImageMemoryInfo : public Napi::ObjectWrap<_VkBindImageMemoryInfo> {
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference image;
-      Napi::Value Getimage(const Napi::CallbackInfo &info);
+    Napi::ObjectReference image;
+    Napi::Value Getimage(const Napi::CallbackInfo &info);
     void Setimage(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference memory;
-      Napi::Value Getmemory(const Napi::CallbackInfo &info);
+    Napi::ObjectReference memory;
+    Napi::Value Getmemory(const Napi::CallbackInfo &info);
     void Setmemory(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetmemoryOffset(const Napi::CallbackInfo &info);
@@ -9854,12 +9854,12 @@ class _VkBindBufferMemoryInfoKHR : public Napi::ObjectWrap<_VkBindBufferMemoryIn
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference buffer;
-      Napi::Value Getbuffer(const Napi::CallbackInfo &info);
+    Napi::ObjectReference buffer;
+    Napi::Value Getbuffer(const Napi::CallbackInfo &info);
     void Setbuffer(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference memory;
-      Napi::Value Getmemory(const Napi::CallbackInfo &info);
+    Napi::ObjectReference memory;
+    Napi::Value Getmemory(const Napi::CallbackInfo &info);
     void Setmemory(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetmemoryOffset(const Napi::CallbackInfo &info);
@@ -9899,12 +9899,12 @@ class _VkBindBufferMemoryInfo : public Napi::ObjectWrap<_VkBindBufferMemoryInfo>
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference buffer;
-      Napi::Value Getbuffer(const Napi::CallbackInfo &info);
+    Napi::ObjectReference buffer;
+    Napi::Value Getbuffer(const Napi::CallbackInfo &info);
     void Setbuffer(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference memory;
-      Napi::Value Getmemory(const Napi::CallbackInfo &info);
+    Napi::ObjectReference memory;
+    Napi::Value Getmemory(const Napi::CallbackInfo &info);
     void Setmemory(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetmemoryOffset(const Napi::CallbackInfo &info);
@@ -10252,12 +10252,12 @@ class _VkSurfaceCapabilities2EXT : public Napi::ObjectWrap<_VkSurfaceCapabilitie
     
     Napi::Value GetminImageCount(const Napi::CallbackInfo &info);
     Napi::Value GetmaxImageCount(const Napi::CallbackInfo &info);
-      Napi::ObjectReference currentExtent;
-      Napi::Value GetcurrentExtent(const Napi::CallbackInfo &info);
-      Napi::ObjectReference minImageExtent;
-      Napi::Value GetminImageExtent(const Napi::CallbackInfo &info);
-      Napi::ObjectReference maxImageExtent;
-      Napi::Value GetmaxImageExtent(const Napi::CallbackInfo &info);
+    Napi::ObjectReference currentExtent;
+    Napi::Value GetcurrentExtent(const Napi::CallbackInfo &info);
+    Napi::ObjectReference minImageExtent;
+    Napi::Value GetminImageExtent(const Napi::CallbackInfo &info);
+    Napi::ObjectReference maxImageExtent;
+    Napi::Value GetmaxImageExtent(const Napi::CallbackInfo &info);
     Napi::Value GetmaxImageArrayLayers(const Napi::CallbackInfo &info);
     Napi::Value GetsupportedTransforms(const Napi::CallbackInfo &info);
     Napi::Value GetcurrentTransform(const Napi::CallbackInfo &info);
@@ -10566,8 +10566,8 @@ class _VkFenceGetFdInfoKHR : public Napi::ObjectWrap<_VkFenceGetFdInfoKHR> {
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference fence;
-      Napi::Value Getfence(const Napi::CallbackInfo &info);
+    Napi::ObjectReference fence;
+    Napi::Value Getfence(const Napi::CallbackInfo &info);
     void Setfence(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GethandleType(const Napi::CallbackInfo &info);
@@ -10607,8 +10607,8 @@ class _VkImportFenceFdInfoKHR : public Napi::ObjectWrap<_VkImportFenceFdInfoKHR>
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference fence;
-      Napi::Value Getfence(const Napi::CallbackInfo &info);
+    Napi::ObjectReference fence;
+    Napi::Value Getfence(const Napi::CallbackInfo &info);
     void Setfence(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value Getflags(const Napi::CallbackInfo &info);
@@ -10654,8 +10654,8 @@ class _VkFenceGetWin32HandleInfoKHR : public Napi::ObjectWrap<_VkFenceGetWin32Ha
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference fence;
-      Napi::Value Getfence(const Napi::CallbackInfo &info);
+    Napi::ObjectReference fence;
+    Napi::Value Getfence(const Napi::CallbackInfo &info);
     void Setfence(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GethandleType(const Napi::CallbackInfo &info);
@@ -10729,8 +10729,8 @@ class _VkImportFenceWin32HandleInfoKHR : public Napi::ObjectWrap<_VkImportFenceW
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference fence;
-      Napi::Value Getfence(const Napi::CallbackInfo &info);
+    Napi::ObjectReference fence;
+    Napi::Value Getfence(const Napi::CallbackInfo &info);
     void Setfence(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value Getflags(const Napi::CallbackInfo &info);
@@ -10995,8 +10995,8 @@ class _VkSemaphoreGetFdInfoKHR : public Napi::ObjectWrap<_VkSemaphoreGetFdInfoKH
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference semaphore;
-      Napi::Value Getsemaphore(const Napi::CallbackInfo &info);
+    Napi::ObjectReference semaphore;
+    Napi::Value Getsemaphore(const Napi::CallbackInfo &info);
     void Setsemaphore(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GethandleType(const Napi::CallbackInfo &info);
@@ -11036,8 +11036,8 @@ class _VkImportSemaphoreFdInfoKHR : public Napi::ObjectWrap<_VkImportSemaphoreFd
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference semaphore;
-      Napi::Value Getsemaphore(const Napi::CallbackInfo &info);
+    Napi::ObjectReference semaphore;
+    Napi::Value Getsemaphore(const Napi::CallbackInfo &info);
     void Setsemaphore(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value Getflags(const Napi::CallbackInfo &info);
@@ -11083,8 +11083,8 @@ class _VkSemaphoreGetWin32HandleInfoKHR : public Napi::ObjectWrap<_VkSemaphoreGe
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference semaphore;
-      Napi::Value Getsemaphore(const Napi::CallbackInfo &info);
+    Napi::ObjectReference semaphore;
+    Napi::Value Getsemaphore(const Napi::CallbackInfo &info);
     void Setsemaphore(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GethandleType(const Napi::CallbackInfo &info);
@@ -11206,8 +11206,8 @@ class _VkImportSemaphoreWin32HandleInfoKHR : public Napi::ObjectWrap<_VkImportSe
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference semaphore;
-      Napi::Value Getsemaphore(const Napi::CallbackInfo &info);
+    Napi::ObjectReference semaphore;
+    Napi::Value Getsemaphore(const Napi::CallbackInfo &info);
     void Setsemaphore(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value Getflags(const Napi::CallbackInfo &info);
@@ -11534,8 +11534,8 @@ class _VkMemoryGetFdInfoKHR : public Napi::ObjectWrap<_VkMemoryGetFdInfoKHR> {
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference memory;
-      Napi::Value Getmemory(const Napi::CallbackInfo &info);
+    Napi::ObjectReference memory;
+    Napi::Value Getmemory(const Napi::CallbackInfo &info);
     void Setmemory(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GethandleType(const Napi::CallbackInfo &info);
@@ -11650,8 +11650,8 @@ class _VkMemoryGetWin32HandleInfoKHR : public Napi::ObjectWrap<_VkMemoryGetWin32
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference memory;
-      Napi::Value Getmemory(const Napi::CallbackInfo &info);
+    Napi::ObjectReference memory;
+    Napi::Value Getmemory(const Napi::CallbackInfo &info);
     void Setmemory(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GethandleType(const Napi::CallbackInfo &info);
@@ -12109,8 +12109,8 @@ class _VkExternalBufferPropertiesKHR : public Napi::ObjectWrap<_VkExternalBuffer
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference externalMemoryProperties;
-      Napi::Value GetexternalMemoryProperties(const Napi::CallbackInfo &info);
+    Napi::ObjectReference externalMemoryProperties;
+    Napi::Value GetexternalMemoryProperties(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -12145,8 +12145,8 @@ class _VkExternalBufferProperties : public Napi::ObjectWrap<_VkExternalBufferPro
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference externalMemoryProperties;
-      Napi::Value GetexternalMemoryProperties(const Napi::CallbackInfo &info);
+    Napi::ObjectReference externalMemoryProperties;
+    Napi::Value GetexternalMemoryProperties(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -12267,8 +12267,8 @@ class _VkExternalImageFormatPropertiesKHR : public Napi::ObjectWrap<_VkExternalI
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference externalMemoryProperties;
-      Napi::Value GetexternalMemoryProperties(const Napi::CallbackInfo &info);
+    Napi::ObjectReference externalMemoryProperties;
+    Napi::Value GetexternalMemoryProperties(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -12303,8 +12303,8 @@ class _VkExternalImageFormatProperties : public Napi::ObjectWrap<_VkExternalImag
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference externalMemoryProperties;
-      Napi::Value GetexternalMemoryProperties(const Napi::CallbackInfo &info);
+    Napi::ObjectReference externalMemoryProperties;
+    Napi::Value GetexternalMemoryProperties(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -12546,12 +12546,12 @@ class _VkRectLayerKHR : public Napi::ObjectWrap<_VkRectLayerKHR> {
     ~_VkRectLayerKHR();
 
     // #accessors
-      Napi::ObjectReference offset;
-      Napi::Value Getoffset(const Napi::CallbackInfo &info);
+    Napi::ObjectReference offset;
+    Napi::Value Getoffset(const Napi::CallbackInfo &info);
     void Setoffset(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference extent;
-      Napi::Value Getextent(const Napi::CallbackInfo &info);
+    Napi::ObjectReference extent;
+    Napi::Value Getextent(const Napi::CallbackInfo &info);
     void Setextent(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value Getlayer(const Napi::CallbackInfo &info);
@@ -12673,8 +12673,8 @@ class _VkPhysicalDeviceDriverPropertiesKHR : public Napi::ObjectWrap<_VkPhysical
     Napi::Value GetdriverName(const Napi::CallbackInfo &info);
     Napi::ObjectReference driverInfo;
     Napi::Value GetdriverInfo(const Napi::CallbackInfo &info);
-      Napi::ObjectReference conformanceVersion;
-      Napi::Value GetconformanceVersion(const Napi::CallbackInfo &info);
+    Napi::ObjectReference conformanceVersion;
+    Napi::Value GetconformanceVersion(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -12883,8 +12883,8 @@ class _VkSparseImageFormatProperties2KHR : public Napi::ObjectWrap<_VkSparseImag
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference properties;
-      Napi::Value Getproperties(const Napi::CallbackInfo &info);
+    Napi::ObjectReference properties;
+    Napi::Value Getproperties(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -12919,8 +12919,8 @@ class _VkSparseImageFormatProperties2 : public Napi::ObjectWrap<_VkSparseImageFo
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference properties;
-      Napi::Value Getproperties(const Napi::CallbackInfo &info);
+    Napi::ObjectReference properties;
+    Napi::Value Getproperties(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -12955,8 +12955,8 @@ class _VkPhysicalDeviceMemoryProperties2KHR : public Napi::ObjectWrap<_VkPhysica
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference memoryProperties;
-      Napi::Value GetmemoryProperties(const Napi::CallbackInfo &info);
+    Napi::ObjectReference memoryProperties;
+    Napi::Value GetmemoryProperties(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -12991,8 +12991,8 @@ class _VkPhysicalDeviceMemoryProperties2 : public Napi::ObjectWrap<_VkPhysicalDe
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference memoryProperties;
-      Napi::Value GetmemoryProperties(const Napi::CallbackInfo &info);
+    Napi::ObjectReference memoryProperties;
+    Napi::Value GetmemoryProperties(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -13027,8 +13027,8 @@ class _VkQueueFamilyProperties2KHR : public Napi::ObjectWrap<_VkQueueFamilyPrope
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference queueFamilyProperties;
-      Napi::Value GetqueueFamilyProperties(const Napi::CallbackInfo &info);
+    Napi::ObjectReference queueFamilyProperties;
+    Napi::Value GetqueueFamilyProperties(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -13063,8 +13063,8 @@ class _VkQueueFamilyProperties2 : public Napi::ObjectWrap<_VkQueueFamilyProperti
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference queueFamilyProperties;
-      Napi::Value GetqueueFamilyProperties(const Napi::CallbackInfo &info);
+    Napi::ObjectReference queueFamilyProperties;
+    Napi::Value GetqueueFamilyProperties(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -13197,8 +13197,8 @@ class _VkImageFormatProperties2KHR : public Napi::ObjectWrap<_VkImageFormatPrope
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference imageFormatProperties;
-      Napi::Value GetimageFormatProperties(const Napi::CallbackInfo &info);
+    Napi::ObjectReference imageFormatProperties;
+    Napi::Value GetimageFormatProperties(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -13233,8 +13233,8 @@ class _VkImageFormatProperties2 : public Napi::ObjectWrap<_VkImageFormatProperti
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference imageFormatProperties;
-      Napi::Value GetimageFormatProperties(const Napi::CallbackInfo &info);
+    Napi::ObjectReference imageFormatProperties;
+    Napi::Value GetimageFormatProperties(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -13269,8 +13269,8 @@ class _VkFormatProperties2KHR : public Napi::ObjectWrap<_VkFormatProperties2KHR>
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference formatProperties;
-      Napi::Value GetformatProperties(const Napi::CallbackInfo &info);
+    Napi::ObjectReference formatProperties;
+    Napi::Value GetformatProperties(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -13305,8 +13305,8 @@ class _VkFormatProperties2 : public Napi::ObjectWrap<_VkFormatProperties2> {
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference formatProperties;
-      Napi::Value GetformatProperties(const Napi::CallbackInfo &info);
+    Napi::ObjectReference formatProperties;
+    Napi::Value GetformatProperties(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -13341,8 +13341,8 @@ class _VkPhysicalDeviceProperties2KHR : public Napi::ObjectWrap<_VkPhysicalDevic
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference properties;
-      Napi::Value Getproperties(const Napi::CallbackInfo &info);
+    Napi::ObjectReference properties;
+    Napi::Value Getproperties(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -13377,8 +13377,8 @@ class _VkPhysicalDeviceProperties2 : public Napi::ObjectWrap<_VkPhysicalDevicePr
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference properties;
-      Napi::Value Getproperties(const Napi::CallbackInfo &info);
+    Napi::ObjectReference properties;
+    Napi::Value Getproperties(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -13413,8 +13413,8 @@ class _VkPhysicalDeviceFeatures2KHR : public Napi::ObjectWrap<_VkPhysicalDeviceF
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference features;
-      Napi::Value Getfeatures(const Napi::CallbackInfo &info);
+    Napi::ObjectReference features;
+    Napi::Value Getfeatures(const Napi::CallbackInfo &info);
     void Setfeatures(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -13451,8 +13451,8 @@ class _VkPhysicalDeviceFeatures2 : public Napi::ObjectWrap<_VkPhysicalDeviceFeat
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference features;
-      Napi::Value Getfeatures(const Napi::CallbackInfo &info);
+    Napi::ObjectReference features;
+    Napi::Value Getfeatures(const Napi::CallbackInfo &info);
     void Setfeatures(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -13488,8 +13488,8 @@ class _VkObjectTablePushConstantEntryNVX : public Napi::ObjectWrap<_VkObjectTabl
     Napi::Value Getflags(const Napi::CallbackInfo &info);
     void Setflags(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference pipelineLayout;
-      Napi::Value GetpipelineLayout(const Napi::CallbackInfo &info);
+    Napi::ObjectReference pipelineLayout;
+    Napi::Value GetpipelineLayout(const Napi::CallbackInfo &info);
     void SetpipelineLayout(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetstageFlags(const Napi::CallbackInfo &info);
@@ -13528,8 +13528,8 @@ class _VkObjectTableIndexBufferEntryNVX : public Napi::ObjectWrap<_VkObjectTable
     Napi::Value Getflags(const Napi::CallbackInfo &info);
     void Setflags(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference buffer;
-      Napi::Value Getbuffer(const Napi::CallbackInfo &info);
+    Napi::ObjectReference buffer;
+    Napi::Value Getbuffer(const Napi::CallbackInfo &info);
     void Setbuffer(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetindexType(const Napi::CallbackInfo &info);
@@ -13568,8 +13568,8 @@ class _VkObjectTableVertexBufferEntryNVX : public Napi::ObjectWrap<_VkObjectTabl
     Napi::Value Getflags(const Napi::CallbackInfo &info);
     void Setflags(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference buffer;
-      Napi::Value Getbuffer(const Napi::CallbackInfo &info);
+    Napi::ObjectReference buffer;
+    Napi::Value Getbuffer(const Napi::CallbackInfo &info);
     void Setbuffer(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -13605,12 +13605,12 @@ class _VkObjectTableDescriptorSetEntryNVX : public Napi::ObjectWrap<_VkObjectTab
     Napi::Value Getflags(const Napi::CallbackInfo &info);
     void Setflags(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference pipelineLayout;
-      Napi::Value GetpipelineLayout(const Napi::CallbackInfo &info);
+    Napi::ObjectReference pipelineLayout;
+    Napi::Value GetpipelineLayout(const Napi::CallbackInfo &info);
     void SetpipelineLayout(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference descriptorSet;
-      Napi::Value GetdescriptorSet(const Napi::CallbackInfo &info);
+    Napi::ObjectReference descriptorSet;
+    Napi::Value GetdescriptorSet(const Napi::CallbackInfo &info);
     void SetdescriptorSet(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -13646,8 +13646,8 @@ class _VkObjectTablePipelineEntryNVX : public Napi::ObjectWrap<_VkObjectTablePip
     Napi::Value Getflags(const Napi::CallbackInfo &info);
     void Setflags(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference pipeline;
-      Napi::Value Getpipeline(const Napi::CallbackInfo &info);
+    Napi::ObjectReference pipeline;
+    Napi::Value Getpipeline(const Napi::CallbackInfo &info);
     void Setpipeline(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -13781,12 +13781,12 @@ class _VkCmdReserveSpaceForCommandsInfoNVX : public Napi::ObjectWrap<_VkCmdReser
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference objectTable;
-      Napi::Value GetobjectTable(const Napi::CallbackInfo &info);
+    Napi::ObjectReference objectTable;
+    Napi::Value GetobjectTable(const Napi::CallbackInfo &info);
     void SetobjectTable(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference indirectCommandsLayout;
-      Napi::Value GetindirectCommandsLayout(const Napi::CallbackInfo &info);
+    Napi::ObjectReference indirectCommandsLayout;
+    Napi::Value GetindirectCommandsLayout(const Napi::CallbackInfo &info);
     void SetindirectCommandsLayout(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetmaxSequencesCount(const Napi::CallbackInfo &info);
@@ -13826,12 +13826,12 @@ class _VkCmdProcessCommandsInfoNVX : public Napi::ObjectWrap<_VkCmdProcessComman
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference objectTable;
-      Napi::Value GetobjectTable(const Napi::CallbackInfo &info);
+    Napi::ObjectReference objectTable;
+    Napi::Value GetobjectTable(const Napi::CallbackInfo &info);
     void SetobjectTable(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference indirectCommandsLayout;
-      Napi::Value GetindirectCommandsLayout(const Napi::CallbackInfo &info);
+    Napi::ObjectReference indirectCommandsLayout;
+    Napi::Value GetindirectCommandsLayout(const Napi::CallbackInfo &info);
     void SetindirectCommandsLayout(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetindirectCommandsTokenCount(const Napi::CallbackInfo &info);
@@ -13845,19 +13845,19 @@ class _VkCmdProcessCommandsInfoNVX : public Napi::ObjectWrap<_VkCmdProcessComman
     Napi::Value GetmaxSequencesCount(const Napi::CallbackInfo &info);
     void SetmaxSequencesCount(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference targetCommandBuffer;
-      Napi::Value GettargetCommandBuffer(const Napi::CallbackInfo &info);
+    Napi::ObjectReference targetCommandBuffer;
+    Napi::Value GettargetCommandBuffer(const Napi::CallbackInfo &info);
     void SettargetCommandBuffer(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference sequencesCountBuffer;
-      Napi::Value GetsequencesCountBuffer(const Napi::CallbackInfo &info);
+    Napi::ObjectReference sequencesCountBuffer;
+    Napi::Value GetsequencesCountBuffer(const Napi::CallbackInfo &info);
     void SetsequencesCountBuffer(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetsequencesCountOffset(const Napi::CallbackInfo &info);
     void SetsequencesCountOffset(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference sequencesIndexBuffer;
-      Napi::Value GetsequencesIndexBuffer(const Napi::CallbackInfo &info);
+    Napi::ObjectReference sequencesIndexBuffer;
+    Napi::Value GetsequencesIndexBuffer(const Napi::CallbackInfo &info);
     void SetsequencesIndexBuffer(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetsequencesIndexOffset(const Napi::CallbackInfo &info);
@@ -13980,8 +13980,8 @@ class _VkIndirectCommandsTokenNVX : public Napi::ObjectWrap<_VkIndirectCommandsT
     Napi::Value GettokenType(const Napi::CallbackInfo &info);
     void SettokenType(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference buffer;
-      Napi::Value Getbuffer(const Napi::CallbackInfo &info);
+    Napi::ObjectReference buffer;
+    Napi::Value Getbuffer(const Napi::CallbackInfo &info);
     void Setbuffer(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value Getoffset(const Napi::CallbackInfo &info);
@@ -14307,8 +14307,8 @@ class _VkExternalImageFormatPropertiesNV : public Napi::ObjectWrap<_VkExternalIm
     ~_VkExternalImageFormatPropertiesNV();
 
     // #accessors
-      Napi::ObjectReference imageFormatProperties;
-      Napi::Value GetimageFormatProperties(const Napi::CallbackInfo &info);
+    Napi::ObjectReference imageFormatProperties;
+    Napi::Value GetimageFormatProperties(const Napi::CallbackInfo &info);
     Napi::Value GetexternalMemoryFeatures(const Napi::CallbackInfo &info);
     Napi::Value GetexportFromImportedHandleTypes(const Napi::CallbackInfo &info);
     Napi::Value GetcompatibleHandleTypes(const Napi::CallbackInfo &info);
@@ -14346,12 +14346,12 @@ class _VkDedicatedAllocationMemoryAllocateInfoNV : public Napi::ObjectWrap<_VkDe
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference image;
-      Napi::Value Getimage(const Napi::CallbackInfo &info);
+    Napi::ObjectReference image;
+    Napi::Value Getimage(const Napi::CallbackInfo &info);
     void Setimage(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference buffer;
-      Napi::Value Getbuffer(const Napi::CallbackInfo &info);
+    Napi::ObjectReference buffer;
+    Napi::Value Getbuffer(const Napi::CallbackInfo &info);
     void Setbuffer(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -14827,8 +14827,8 @@ class _VkSwapchainCreateInfoKHR : public Napi::ObjectWrap<_VkSwapchainCreateInfo
     Napi::Value Getflags(const Napi::CallbackInfo &info);
     void Setflags(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference surface;
-      Napi::Value Getsurface(const Napi::CallbackInfo &info);
+    Napi::ObjectReference surface;
+    Napi::Value Getsurface(const Napi::CallbackInfo &info);
     void Setsurface(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetminImageCount(const Napi::CallbackInfo &info);
@@ -14840,8 +14840,8 @@ class _VkSwapchainCreateInfoKHR : public Napi::ObjectWrap<_VkSwapchainCreateInfo
     Napi::Value GetimageColorSpace(const Napi::CallbackInfo &info);
     void SetimageColorSpace(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference imageExtent;
-      Napi::Value GetimageExtent(const Napi::CallbackInfo &info);
+    Napi::ObjectReference imageExtent;
+    Napi::Value GetimageExtent(const Napi::CallbackInfo &info);
     void SetimageExtent(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetimageArrayLayers(const Napi::CallbackInfo &info);
@@ -14872,8 +14872,8 @@ class _VkSwapchainCreateInfoKHR : public Napi::ObjectWrap<_VkSwapchainCreateInfo
     Napi::Value Getclipped(const Napi::CallbackInfo &info);
     void Setclipped(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference oldSwapchain;
-      Napi::Value GetoldSwapchain(const Napi::CallbackInfo &info);
+    Napi::ObjectReference oldSwapchain;
+    Napi::Value GetoldSwapchain(const Napi::CallbackInfo &info);
     void SetoldSwapchain(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -14971,12 +14971,12 @@ class _VkSurfaceCapabilitiesKHR : public Napi::ObjectWrap<_VkSurfaceCapabilities
     // #accessors
     Napi::Value GetminImageCount(const Napi::CallbackInfo &info);
     Napi::Value GetmaxImageCount(const Napi::CallbackInfo &info);
-      Napi::ObjectReference currentExtent;
-      Napi::Value GetcurrentExtent(const Napi::CallbackInfo &info);
-      Napi::ObjectReference minImageExtent;
-      Napi::Value GetminImageExtent(const Napi::CallbackInfo &info);
-      Napi::ObjectReference maxImageExtent;
-      Napi::Value GetmaxImageExtent(const Napi::CallbackInfo &info);
+    Napi::ObjectReference currentExtent;
+    Napi::Value GetcurrentExtent(const Napi::CallbackInfo &info);
+    Napi::ObjectReference minImageExtent;
+    Napi::Value GetminImageExtent(const Napi::CallbackInfo &info);
+    Napi::ObjectReference maxImageExtent;
+    Napi::Value GetmaxImageExtent(const Napi::CallbackInfo &info);
     Napi::Value GetmaxImageArrayLayers(const Napi::CallbackInfo &info);
     Napi::Value GetsupportedTransforms(const Napi::CallbackInfo &info);
     Napi::Value GetcurrentTransform(const Napi::CallbackInfo &info);
@@ -15016,12 +15016,12 @@ class _VkDisplayPresentInfoKHR : public Napi::ObjectWrap<_VkDisplayPresentInfoKH
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference srcRect;
-      Napi::Value GetsrcRect(const Napi::CallbackInfo &info);
+    Napi::ObjectReference srcRect;
+    Napi::Value GetsrcRect(const Napi::CallbackInfo &info);
     void SetsrcRect(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference dstRect;
-      Napi::Value GetdstRect(const Napi::CallbackInfo &info);
+    Napi::ObjectReference dstRect;
+    Napi::Value GetdstRect(const Napi::CallbackInfo &info);
     void SetdstRect(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value Getpersistent(const Napi::CallbackInfo &info);
@@ -15064,8 +15064,8 @@ class _VkDisplaySurfaceCreateInfoKHR : public Napi::ObjectWrap<_VkDisplaySurface
     Napi::Value Getflags(const Napi::CallbackInfo &info);
     void Setflags(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference displayMode;
-      Napi::Value GetdisplayMode(const Napi::CallbackInfo &info);
+    Napi::ObjectReference displayMode;
+    Napi::Value GetdisplayMode(const Napi::CallbackInfo &info);
     void SetdisplayMode(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetplaneIndex(const Napi::CallbackInfo &info);
@@ -15083,8 +15083,8 @@ class _VkDisplaySurfaceCreateInfoKHR : public Napi::ObjectWrap<_VkDisplaySurface
     Napi::Value GetalphaMode(const Napi::CallbackInfo &info);
     void SetalphaMode(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference imageExtent;
-      Napi::Value GetimageExtent(const Napi::CallbackInfo &info);
+    Napi::ObjectReference imageExtent;
+    Napi::Value GetimageExtent(const Napi::CallbackInfo &info);
     void SetimageExtent(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -15115,22 +15115,22 @@ class _VkDisplayPlaneCapabilitiesKHR : public Napi::ObjectWrap<_VkDisplayPlaneCa
 
     // #accessors
     Napi::Value GetsupportedAlpha(const Napi::CallbackInfo &info);
-      Napi::ObjectReference minSrcPosition;
-      Napi::Value GetminSrcPosition(const Napi::CallbackInfo &info);
-      Napi::ObjectReference maxSrcPosition;
-      Napi::Value GetmaxSrcPosition(const Napi::CallbackInfo &info);
-      Napi::ObjectReference minSrcExtent;
-      Napi::Value GetminSrcExtent(const Napi::CallbackInfo &info);
-      Napi::ObjectReference maxSrcExtent;
-      Napi::Value GetmaxSrcExtent(const Napi::CallbackInfo &info);
-      Napi::ObjectReference minDstPosition;
-      Napi::Value GetminDstPosition(const Napi::CallbackInfo &info);
-      Napi::ObjectReference maxDstPosition;
-      Napi::Value GetmaxDstPosition(const Napi::CallbackInfo &info);
-      Napi::ObjectReference minDstExtent;
-      Napi::Value GetminDstExtent(const Napi::CallbackInfo &info);
-      Napi::ObjectReference maxDstExtent;
-      Napi::Value GetmaxDstExtent(const Napi::CallbackInfo &info);
+    Napi::ObjectReference minSrcPosition;
+    Napi::Value GetminSrcPosition(const Napi::CallbackInfo &info);
+    Napi::ObjectReference maxSrcPosition;
+    Napi::Value GetmaxSrcPosition(const Napi::CallbackInfo &info);
+    Napi::ObjectReference minSrcExtent;
+    Napi::Value GetminSrcExtent(const Napi::CallbackInfo &info);
+    Napi::ObjectReference maxSrcExtent;
+    Napi::Value GetmaxSrcExtent(const Napi::CallbackInfo &info);
+    Napi::ObjectReference minDstPosition;
+    Napi::Value GetminDstPosition(const Napi::CallbackInfo &info);
+    Napi::ObjectReference maxDstPosition;
+    Napi::Value GetmaxDstPosition(const Napi::CallbackInfo &info);
+    Napi::ObjectReference minDstExtent;
+    Napi::Value GetminDstExtent(const Napi::CallbackInfo &info);
+    Napi::ObjectReference maxDstExtent;
+    Napi::Value GetmaxDstExtent(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -15168,8 +15168,8 @@ class _VkDisplayModeCreateInfoKHR : public Napi::ObjectWrap<_VkDisplayModeCreate
     Napi::Value Getflags(const Napi::CallbackInfo &info);
     void Setflags(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference parameters;
-      Napi::Value Getparameters(const Napi::CallbackInfo &info);
+    Napi::ObjectReference parameters;
+    Napi::Value Getparameters(const Napi::CallbackInfo &info);
     void Setparameters(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -15199,10 +15199,10 @@ class _VkDisplayModePropertiesKHR : public Napi::ObjectWrap<_VkDisplayModeProper
     ~_VkDisplayModePropertiesKHR();
 
     // #accessors
-      Napi::ObjectReference displayMode;
-      Napi::Value GetdisplayMode(const Napi::CallbackInfo &info);
-      Napi::ObjectReference parameters;
-      Napi::Value Getparameters(const Napi::CallbackInfo &info);
+    Napi::ObjectReference displayMode;
+    Napi::Value GetdisplayMode(const Napi::CallbackInfo &info);
+    Napi::ObjectReference parameters;
+    Napi::Value Getparameters(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -15230,8 +15230,8 @@ class _VkDisplayModeParametersKHR : public Napi::ObjectWrap<_VkDisplayModeParame
     ~_VkDisplayModeParametersKHR();
 
     // #accessors
-      Napi::ObjectReference visibleRegion;
-      Napi::Value GetvisibleRegion(const Napi::CallbackInfo &info);
+    Napi::ObjectReference visibleRegion;
+    Napi::Value GetvisibleRegion(const Napi::CallbackInfo &info);
     void SetvisibleRegion(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetrefreshRate(const Napi::CallbackInfo &info);
@@ -15264,8 +15264,8 @@ class _VkDisplayPlanePropertiesKHR : public Napi::ObjectWrap<_VkDisplayPlaneProp
     ~_VkDisplayPlanePropertiesKHR();
 
     // #accessors
-      Napi::ObjectReference currentDisplay;
-      Napi::Value GetcurrentDisplay(const Napi::CallbackInfo &info);
+    Napi::ObjectReference currentDisplay;
+    Napi::Value GetcurrentDisplay(const Napi::CallbackInfo &info);
     Napi::Value GetcurrentStackIndex(const Napi::CallbackInfo &info);
 
     // #default properties
@@ -15294,14 +15294,14 @@ class _VkDisplayPropertiesKHR : public Napi::ObjectWrap<_VkDisplayPropertiesKHR>
     ~_VkDisplayPropertiesKHR();
 
     // #accessors
-      Napi::ObjectReference display;
-      Napi::Value Getdisplay(const Napi::CallbackInfo &info);
+    Napi::ObjectReference display;
+    Napi::Value Getdisplay(const Napi::CallbackInfo &info);
     Napi::ObjectReference displayName;
     Napi::Value GetdisplayName(const Napi::CallbackInfo &info);
-      Napi::ObjectReference physicalDimensions;
-      Napi::Value GetphysicalDimensions(const Napi::CallbackInfo &info);
-      Napi::ObjectReference physicalResolution;
-      Napi::Value GetphysicalResolution(const Napi::CallbackInfo &info);
+    Napi::ObjectReference physicalDimensions;
+    Napi::Value GetphysicalDimensions(const Napi::CallbackInfo &info);
+    Napi::ObjectReference physicalResolution;
+    Napi::Value GetphysicalResolution(const Napi::CallbackInfo &info);
     Napi::Value GetsupportedTransforms(const Napi::CallbackInfo &info);
     Napi::Value GetplaneReorderPossible(const Napi::CallbackInfo &info);
     Napi::Value GetpersistentContent(const Napi::CallbackInfo &info);
@@ -15521,8 +15521,8 @@ class _VkFramebufferCreateInfo : public Napi::ObjectWrap<_VkFramebufferCreateInf
     Napi::Value Getflags(const Napi::CallbackInfo &info);
     void Setflags(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference renderPass;
-      Napi::Value GetrenderPass(const Napi::CallbackInfo &info);
+    Napi::ObjectReference renderPass;
+    Napi::Value GetrenderPass(const Napi::CallbackInfo &info);
     void SetrenderPass(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetattachmentCount(const Napi::CallbackInfo &info);
@@ -16231,8 +16231,8 @@ class _VkSubpassDescription : public Napi::ObjectWrap<_VkSubpassDescription> {
     Napi::Value GetpResolveAttachments(const Napi::CallbackInfo &info);
     void SetpResolveAttachments(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference pDepthStencilAttachment;
-      Napi::Value GetpDepthStencilAttachment(const Napi::CallbackInfo &info);
+    Napi::ObjectReference pDepthStencilAttachment;
+    Napi::Value GetpDepthStencilAttachment(const Napi::CallbackInfo &info);
     void SetpDepthStencilAttachment(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetpreserveAttachmentCount(const Napi::CallbackInfo &info);
@@ -16362,8 +16362,8 @@ class _VkClearAttachment : public Napi::ObjectWrap<_VkClearAttachment> {
     Napi::Value GetcolorAttachment(const Napi::CallbackInfo &info);
     void SetcolorAttachment(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference clearValue;
-      Napi::Value GetclearValue(const Napi::CallbackInfo &info);
+    Napi::ObjectReference clearValue;
+    Napi::Value GetclearValue(const Napi::CallbackInfo &info);
     void SetclearValue(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -16433,16 +16433,16 @@ class _VkRenderPassBeginInfo : public Napi::ObjectWrap<_VkRenderPassBeginInfo> {
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference renderPass;
-      Napi::Value GetrenderPass(const Napi::CallbackInfo &info);
+    Napi::ObjectReference renderPass;
+    Napi::Value GetrenderPass(const Napi::CallbackInfo &info);
     void SetrenderPass(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference framebuffer;
-      Napi::Value Getframebuffer(const Napi::CallbackInfo &info);
+    Napi::ObjectReference framebuffer;
+    Napi::Value Getframebuffer(const Napi::CallbackInfo &info);
     void Setframebuffer(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference renderArea;
-      Napi::Value GetrenderArea(const Napi::CallbackInfo &info);
+    Napi::ObjectReference renderArea;
+    Napi::Value GetrenderArea(const Napi::CallbackInfo &info);
     void SetrenderArea(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetclearValueCount(const Napi::CallbackInfo &info);
@@ -16490,8 +16490,8 @@ class _VkCommandBufferBeginInfo : public Napi::ObjectWrap<_VkCommandBufferBeginI
     Napi::Value Getflags(const Napi::CallbackInfo &info);
     void Setflags(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference pInheritanceInfo;
-      Napi::Value GetpInheritanceInfo(const Napi::CallbackInfo &info);
+    Napi::ObjectReference pInheritanceInfo;
+    Napi::Value GetpInheritanceInfo(const Napi::CallbackInfo &info);
     void SetpInheritanceInfo(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -16528,15 +16528,15 @@ class _VkCommandBufferInheritanceInfo : public Napi::ObjectWrap<_VkCommandBuffer
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference renderPass;
-      Napi::Value GetrenderPass(const Napi::CallbackInfo &info);
+    Napi::ObjectReference renderPass;
+    Napi::Value GetrenderPass(const Napi::CallbackInfo &info);
     void SetrenderPass(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value Getsubpass(const Napi::CallbackInfo &info);
     void Setsubpass(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference framebuffer;
-      Napi::Value Getframebuffer(const Napi::CallbackInfo &info);
+    Napi::ObjectReference framebuffer;
+    Napi::Value Getframebuffer(const Napi::CallbackInfo &info);
     void Setframebuffer(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetocclusionQueryEnable(const Napi::CallbackInfo &info);
@@ -16582,8 +16582,8 @@ class _VkCommandBufferAllocateInfo : public Napi::ObjectWrap<_VkCommandBufferAll
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference commandPool;
-      Napi::Value GetcommandPool(const Napi::CallbackInfo &info);
+    Napi::ObjectReference commandPool;
+    Napi::Value GetcommandPool(const Napi::CallbackInfo &info);
     void SetcommandPool(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value Getlevel(const Napi::CallbackInfo &info);
@@ -16892,55 +16892,55 @@ class _VkGraphicsPipelineCreateInfo : public Napi::ObjectWrap<_VkGraphicsPipelin
     Napi::Value GetpStages(const Napi::CallbackInfo &info);
     void SetpStages(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference pVertexInputState;
-      Napi::Value GetpVertexInputState(const Napi::CallbackInfo &info);
+    Napi::ObjectReference pVertexInputState;
+    Napi::Value GetpVertexInputState(const Napi::CallbackInfo &info);
     void SetpVertexInputState(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference pInputAssemblyState;
-      Napi::Value GetpInputAssemblyState(const Napi::CallbackInfo &info);
+    Napi::ObjectReference pInputAssemblyState;
+    Napi::Value GetpInputAssemblyState(const Napi::CallbackInfo &info);
     void SetpInputAssemblyState(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference pTessellationState;
-      Napi::Value GetpTessellationState(const Napi::CallbackInfo &info);
+    Napi::ObjectReference pTessellationState;
+    Napi::Value GetpTessellationState(const Napi::CallbackInfo &info);
     void SetpTessellationState(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference pViewportState;
-      Napi::Value GetpViewportState(const Napi::CallbackInfo &info);
+    Napi::ObjectReference pViewportState;
+    Napi::Value GetpViewportState(const Napi::CallbackInfo &info);
     void SetpViewportState(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference pRasterizationState;
-      Napi::Value GetpRasterizationState(const Napi::CallbackInfo &info);
+    Napi::ObjectReference pRasterizationState;
+    Napi::Value GetpRasterizationState(const Napi::CallbackInfo &info);
     void SetpRasterizationState(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference pMultisampleState;
-      Napi::Value GetpMultisampleState(const Napi::CallbackInfo &info);
+    Napi::ObjectReference pMultisampleState;
+    Napi::Value GetpMultisampleState(const Napi::CallbackInfo &info);
     void SetpMultisampleState(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference pDepthStencilState;
-      Napi::Value GetpDepthStencilState(const Napi::CallbackInfo &info);
+    Napi::ObjectReference pDepthStencilState;
+    Napi::Value GetpDepthStencilState(const Napi::CallbackInfo &info);
     void SetpDepthStencilState(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference pColorBlendState;
-      Napi::Value GetpColorBlendState(const Napi::CallbackInfo &info);
+    Napi::ObjectReference pColorBlendState;
+    Napi::Value GetpColorBlendState(const Napi::CallbackInfo &info);
     void SetpColorBlendState(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference pDynamicState;
-      Napi::Value GetpDynamicState(const Napi::CallbackInfo &info);
+    Napi::ObjectReference pDynamicState;
+    Napi::Value GetpDynamicState(const Napi::CallbackInfo &info);
     void SetpDynamicState(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference layout;
-      Napi::Value Getlayout(const Napi::CallbackInfo &info);
+    Napi::ObjectReference layout;
+    Napi::Value Getlayout(const Napi::CallbackInfo &info);
     void Setlayout(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference renderPass;
-      Napi::Value GetrenderPass(const Napi::CallbackInfo &info);
+    Napi::ObjectReference renderPass;
+    Napi::Value GetrenderPass(const Napi::CallbackInfo &info);
     void SetrenderPass(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value Getsubpass(const Napi::CallbackInfo &info);
     void Setsubpass(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference basePipelineHandle;
-      Napi::Value GetbasePipelineHandle(const Napi::CallbackInfo &info);
+    Napi::ObjectReference basePipelineHandle;
+    Napi::Value GetbasePipelineHandle(const Napi::CallbackInfo &info);
     void SetbasePipelineHandle(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetbasePipelineIndex(const Napi::CallbackInfo &info);
@@ -16998,12 +16998,12 @@ class _VkPipelineDepthStencilStateCreateInfo : public Napi::ObjectWrap<_VkPipeli
     Napi::Value GetstencilTestEnable(const Napi::CallbackInfo &info);
     void SetstencilTestEnable(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference front;
-      Napi::Value Getfront(const Napi::CallbackInfo &info);
+    Napi::ObjectReference front;
+    Napi::Value Getfront(const Napi::CallbackInfo &info);
     void Setfront(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference back;
-      Napi::Value Getback(const Napi::CallbackInfo &info);
+    Napi::ObjectReference back;
+    Napi::Value Getback(const Napi::CallbackInfo &info);
     void Setback(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetminDepthBounds(const Napi::CallbackInfo &info);
@@ -17635,16 +17635,16 @@ class _VkComputePipelineCreateInfo : public Napi::ObjectWrap<_VkComputePipelineC
     Napi::Value Getflags(const Napi::CallbackInfo &info);
     void Setflags(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference stage;
-      Napi::Value Getstage(const Napi::CallbackInfo &info);
+    Napi::ObjectReference stage;
+    Napi::Value Getstage(const Napi::CallbackInfo &info);
     void Setstage(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference layout;
-      Napi::Value Getlayout(const Napi::CallbackInfo &info);
+    Napi::ObjectReference layout;
+    Napi::Value Getlayout(const Napi::CallbackInfo &info);
     void Setlayout(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference basePipelineHandle;
-      Napi::Value GetbasePipelineHandle(const Napi::CallbackInfo &info);
+    Napi::ObjectReference basePipelineHandle;
+    Napi::Value GetbasePipelineHandle(const Napi::CallbackInfo &info);
     void SetbasePipelineHandle(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetbasePipelineIndex(const Napi::CallbackInfo &info);
@@ -17690,16 +17690,16 @@ class _VkPipelineShaderStageCreateInfo : public Napi::ObjectWrap<_VkPipelineShad
     Napi::Value Getstage(const Napi::CallbackInfo &info);
     void Setstage(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference module;
-      Napi::Value Getmodule(const Napi::CallbackInfo &info);
+    Napi::ObjectReference module;
+    Napi::Value Getmodule(const Napi::CallbackInfo &info);
     void Setmodule(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::ObjectReference pName;
     Napi::Value GetpName(const Napi::CallbackInfo &info);
     void SetpName(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference pSpecializationInfo;
-      Napi::Value GetpSpecializationInfo(const Napi::CallbackInfo &info);
+    Napi::ObjectReference pSpecializationInfo;
+    Napi::Value GetpSpecializationInfo(const Napi::CallbackInfo &info);
     void SetpSpecializationInfo(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -17814,8 +17814,8 @@ class _VkDescriptorSetAllocateInfo : public Napi::ObjectWrap<_VkDescriptorSetAll
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference descriptorPool;
-      Napi::Value GetdescriptorPool(const Napi::CallbackInfo &info);
+    Napi::ObjectReference descriptorPool;
+    Napi::Value GetdescriptorPool(const Napi::CallbackInfo &info);
     void SetdescriptorPool(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetdescriptorSetCount(const Napi::CallbackInfo &info);
@@ -18067,24 +18067,24 @@ class _VkImageResolve : public Napi::ObjectWrap<_VkImageResolve> {
     ~_VkImageResolve();
 
     // #accessors
-      Napi::ObjectReference srcSubresource;
-      Napi::Value GetsrcSubresource(const Napi::CallbackInfo &info);
+    Napi::ObjectReference srcSubresource;
+    Napi::Value GetsrcSubresource(const Napi::CallbackInfo &info);
     void SetsrcSubresource(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference srcOffset;
-      Napi::Value GetsrcOffset(const Napi::CallbackInfo &info);
+    Napi::ObjectReference srcOffset;
+    Napi::Value GetsrcOffset(const Napi::CallbackInfo &info);
     void SetsrcOffset(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference dstSubresource;
-      Napi::Value GetdstSubresource(const Napi::CallbackInfo &info);
+    Napi::ObjectReference dstSubresource;
+    Napi::Value GetdstSubresource(const Napi::CallbackInfo &info);
     void SetdstSubresource(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference dstOffset;
-      Napi::Value GetdstOffset(const Napi::CallbackInfo &info);
+    Napi::ObjectReference dstOffset;
+    Napi::Value GetdstOffset(const Napi::CallbackInfo &info);
     void SetdstOffset(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference extent;
-      Napi::Value Getextent(const Napi::CallbackInfo &info);
+    Napi::ObjectReference extent;
+    Napi::Value Getextent(const Napi::CallbackInfo &info);
     void Setextent(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -18123,16 +18123,16 @@ class _VkBufferImageCopy : public Napi::ObjectWrap<_VkBufferImageCopy> {
     Napi::Value GetbufferImageHeight(const Napi::CallbackInfo &info);
     void SetbufferImageHeight(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference imageSubresource;
-      Napi::Value GetimageSubresource(const Napi::CallbackInfo &info);
+    Napi::ObjectReference imageSubresource;
+    Napi::Value GetimageSubresource(const Napi::CallbackInfo &info);
     void SetimageSubresource(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference imageOffset;
-      Napi::Value GetimageOffset(const Napi::CallbackInfo &info);
+    Napi::ObjectReference imageOffset;
+    Napi::Value GetimageOffset(const Napi::CallbackInfo &info);
     void SetimageOffset(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference imageExtent;
-      Napi::Value GetimageExtent(const Napi::CallbackInfo &info);
+    Napi::ObjectReference imageExtent;
+    Napi::Value GetimageExtent(const Napi::CallbackInfo &info);
     void SetimageExtent(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -18162,8 +18162,8 @@ class _VkImageBlit : public Napi::ObjectWrap<_VkImageBlit> {
     ~_VkImageBlit();
 
     // #accessors
-      Napi::ObjectReference srcSubresource;
-      Napi::Value GetsrcSubresource(const Napi::CallbackInfo &info);
+    Napi::ObjectReference srcSubresource;
+    Napi::Value GetsrcSubresource(const Napi::CallbackInfo &info);
     void SetsrcSubresource(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     std::vector<VkOffset3D>* vsrcOffsets;
@@ -18171,8 +18171,8 @@ class _VkImageBlit : public Napi::ObjectWrap<_VkImageBlit> {
     Napi::Value GetsrcOffsets(const Napi::CallbackInfo &info);
     void SetsrcOffsets(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference dstSubresource;
-      Napi::Value GetdstSubresource(const Napi::CallbackInfo &info);
+    Napi::ObjectReference dstSubresource;
+    Napi::Value GetdstSubresource(const Napi::CallbackInfo &info);
     void SetdstSubresource(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     std::vector<VkOffset3D>* vdstOffsets;
@@ -18207,24 +18207,24 @@ class _VkImageCopy : public Napi::ObjectWrap<_VkImageCopy> {
     ~_VkImageCopy();
 
     // #accessors
-      Napi::ObjectReference srcSubresource;
-      Napi::Value GetsrcSubresource(const Napi::CallbackInfo &info);
+    Napi::ObjectReference srcSubresource;
+    Napi::Value GetsrcSubresource(const Napi::CallbackInfo &info);
     void SetsrcSubresource(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference srcOffset;
-      Napi::Value GetsrcOffset(const Napi::CallbackInfo &info);
+    Napi::ObjectReference srcOffset;
+    Napi::Value GetsrcOffset(const Napi::CallbackInfo &info);
     void SetsrcOffset(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference dstSubresource;
-      Napi::Value GetdstSubresource(const Napi::CallbackInfo &info);
+    Napi::ObjectReference dstSubresource;
+    Napi::Value GetdstSubresource(const Napi::CallbackInfo &info);
     void SetdstSubresource(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference dstOffset;
-      Napi::Value GetdstOffset(const Napi::CallbackInfo &info);
+    Napi::ObjectReference dstOffset;
+    Napi::Value GetdstOffset(const Napi::CallbackInfo &info);
     void SetdstOffset(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference extent;
-      Napi::Value Getextent(const Napi::CallbackInfo &info);
+    Napi::ObjectReference extent;
+    Napi::Value Getextent(const Napi::CallbackInfo &info);
     void Setextent(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -18328,8 +18328,8 @@ class _VkSparseImageMemoryBindInfo : public Napi::ObjectWrap<_VkSparseImageMemor
     ~_VkSparseImageMemoryBindInfo();
 
     // #accessors
-      Napi::ObjectReference image;
-      Napi::Value Getimage(const Napi::CallbackInfo &info);
+    Napi::ObjectReference image;
+    Napi::Value Getimage(const Napi::CallbackInfo &info);
     void Setimage(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetbindCount(const Napi::CallbackInfo &info);
@@ -18367,8 +18367,8 @@ class _VkSparseImageOpaqueMemoryBindInfo : public Napi::ObjectWrap<_VkSparseImag
     ~_VkSparseImageOpaqueMemoryBindInfo();
 
     // #accessors
-      Napi::ObjectReference image;
-      Napi::Value Getimage(const Napi::CallbackInfo &info);
+    Napi::ObjectReference image;
+    Napi::Value Getimage(const Napi::CallbackInfo &info);
     void Setimage(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetbindCount(const Napi::CallbackInfo &info);
@@ -18406,8 +18406,8 @@ class _VkSparseBufferMemoryBindInfo : public Napi::ObjectWrap<_VkSparseBufferMem
     ~_VkSparseBufferMemoryBindInfo();
 
     // #accessors
-      Napi::ObjectReference buffer;
-      Napi::Value Getbuffer(const Napi::CallbackInfo &info);
+    Napi::ObjectReference buffer;
+    Napi::Value Getbuffer(const Napi::CallbackInfo &info);
     void Setbuffer(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetbindCount(const Napi::CallbackInfo &info);
@@ -18445,20 +18445,20 @@ class _VkSparseImageMemoryBind : public Napi::ObjectWrap<_VkSparseImageMemoryBin
     ~_VkSparseImageMemoryBind();
 
     // #accessors
-      Napi::ObjectReference subresource;
-      Napi::Value Getsubresource(const Napi::CallbackInfo &info);
+    Napi::ObjectReference subresource;
+    Napi::Value Getsubresource(const Napi::CallbackInfo &info);
     void Setsubresource(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference offset;
-      Napi::Value Getoffset(const Napi::CallbackInfo &info);
+    Napi::ObjectReference offset;
+    Napi::Value Getoffset(const Napi::CallbackInfo &info);
     void Setoffset(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference extent;
-      Napi::Value Getextent(const Napi::CallbackInfo &info);
+    Napi::ObjectReference extent;
+    Napi::Value Getextent(const Napi::CallbackInfo &info);
     void Setextent(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference memory;
-      Napi::Value Getmemory(const Napi::CallbackInfo &info);
+    Napi::ObjectReference memory;
+    Napi::Value Getmemory(const Napi::CallbackInfo &info);
     void Setmemory(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetmemoryOffset(const Napi::CallbackInfo &info);
@@ -18500,8 +18500,8 @@ class _VkSparseMemoryBind : public Napi::ObjectWrap<_VkSparseMemoryBind> {
     Napi::Value Getsize(const Napi::CallbackInfo &info);
     void Setsize(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference memory;
-      Napi::Value Getmemory(const Napi::CallbackInfo &info);
+    Napi::ObjectReference memory;
+    Napi::Value Getmemory(const Napi::CallbackInfo &info);
     void Setmemory(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetmemoryOffset(const Napi::CallbackInfo &info);
@@ -18583,8 +18583,8 @@ class _VkImageViewCreateInfo : public Napi::ObjectWrap<_VkImageViewCreateInfo> {
     Napi::Value Getflags(const Napi::CallbackInfo &info);
     void Setflags(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference image;
-      Napi::Value Getimage(const Napi::CallbackInfo &info);
+    Napi::ObjectReference image;
+    Napi::Value Getimage(const Napi::CallbackInfo &info);
     void Setimage(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetviewType(const Napi::CallbackInfo &info);
@@ -18593,12 +18593,12 @@ class _VkImageViewCreateInfo : public Napi::ObjectWrap<_VkImageViewCreateInfo> {
     Napi::Value Getformat(const Napi::CallbackInfo &info);
     void Setformat(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference components;
-      Napi::Value Getcomponents(const Napi::CallbackInfo &info);
+    Napi::ObjectReference components;
+    Napi::Value Getcomponents(const Napi::CallbackInfo &info);
     void Setcomponents(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference subresourceRange;
-      Napi::Value GetsubresourceRange(const Napi::CallbackInfo &info);
+    Napi::ObjectReference subresourceRange;
+    Napi::Value GetsubresourceRange(const Napi::CallbackInfo &info);
     void SetsubresourceRange(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -18676,8 +18676,8 @@ class _VkImageCreateInfo : public Napi::ObjectWrap<_VkImageCreateInfo> {
     Napi::Value Getformat(const Napi::CallbackInfo &info);
     void Setformat(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference extent;
-      Napi::Value Getextent(const Napi::CallbackInfo &info);
+    Napi::ObjectReference extent;
+    Napi::Value Getextent(const Napi::CallbackInfo &info);
     void Setextent(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetmipLevels(const Napi::CallbackInfo &info);
@@ -18760,12 +18760,12 @@ class _VkImageMemoryBarrier : public Napi::ObjectWrap<_VkImageMemoryBarrier> {
     Napi::Value GetdstQueueFamilyIndex(const Napi::CallbackInfo &info);
     void SetdstQueueFamilyIndex(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference image;
-      Napi::Value Getimage(const Napi::CallbackInfo &info);
+    Napi::ObjectReference image;
+    Napi::Value Getimage(const Napi::CallbackInfo &info);
     void Setimage(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference subresourceRange;
-      Napi::Value GetsubresourceRange(const Napi::CallbackInfo &info);
+    Napi::ObjectReference subresourceRange;
+    Napi::Value GetsubresourceRange(const Napi::CallbackInfo &info);
     void SetsubresourceRange(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -18814,8 +18814,8 @@ class _VkBufferMemoryBarrier : public Napi::ObjectWrap<_VkBufferMemoryBarrier> {
     Napi::Value GetdstQueueFamilyIndex(const Napi::CallbackInfo &info);
     void SetdstQueueFamilyIndex(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference buffer;
-      Napi::Value Getbuffer(const Napi::CallbackInfo &info);
+    Napi::ObjectReference buffer;
+    Napi::Value Getbuffer(const Napi::CallbackInfo &info);
     void Setbuffer(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value Getoffset(const Napi::CallbackInfo &info);
@@ -19018,8 +19018,8 @@ class _VkBufferViewCreateInfo : public Napi::ObjectWrap<_VkBufferViewCreateInfo>
     Napi::Value Getflags(const Napi::CallbackInfo &info);
     void Setflags(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference buffer;
-      Napi::Value Getbuffer(const Napi::CallbackInfo &info);
+    Napi::ObjectReference buffer;
+    Napi::Value Getbuffer(const Napi::CallbackInfo &info);
     void Setbuffer(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value Getformat(const Napi::CallbackInfo &info);
@@ -19118,8 +19118,8 @@ class _VkCopyDescriptorSet : public Napi::ObjectWrap<_VkCopyDescriptorSet> {
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference srcSet;
-      Napi::Value GetsrcSet(const Napi::CallbackInfo &info);
+    Napi::ObjectReference srcSet;
+    Napi::Value GetsrcSet(const Napi::CallbackInfo &info);
     void SetsrcSet(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetsrcBinding(const Napi::CallbackInfo &info);
@@ -19128,8 +19128,8 @@ class _VkCopyDescriptorSet : public Napi::ObjectWrap<_VkCopyDescriptorSet> {
     Napi::Value GetsrcArrayElement(const Napi::CallbackInfo &info);
     void SetsrcArrayElement(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference dstSet;
-      Napi::Value GetdstSet(const Napi::CallbackInfo &info);
+    Napi::ObjectReference dstSet;
+    Napi::Value GetdstSet(const Napi::CallbackInfo &info);
     void SetdstSet(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetdstBinding(const Napi::CallbackInfo &info);
@@ -19175,8 +19175,8 @@ class _VkWriteDescriptorSet : public Napi::ObjectWrap<_VkWriteDescriptorSet> {
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference dstSet;
-      Napi::Value GetdstSet(const Napi::CallbackInfo &info);
+    Napi::ObjectReference dstSet;
+    Napi::Value GetdstSet(const Napi::CallbackInfo &info);
     void SetdstSet(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetdstBinding(const Napi::CallbackInfo &info);
@@ -19233,12 +19233,12 @@ class _VkDescriptorImageInfo : public Napi::ObjectWrap<_VkDescriptorImageInfo> {
     ~_VkDescriptorImageInfo();
 
     // #accessors
-      Napi::ObjectReference sampler;
-      Napi::Value Getsampler(const Napi::CallbackInfo &info);
+    Napi::ObjectReference sampler;
+    Napi::Value Getsampler(const Napi::CallbackInfo &info);
     void Setsampler(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference imageView;
-      Napi::Value GetimageView(const Napi::CallbackInfo &info);
+    Napi::ObjectReference imageView;
+    Napi::Value GetimageView(const Napi::CallbackInfo &info);
     void SetimageView(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetimageLayout(const Napi::CallbackInfo &info);
@@ -19271,8 +19271,8 @@ class _VkDescriptorBufferInfo : public Napi::ObjectWrap<_VkDescriptorBufferInfo>
     ~_VkDescriptorBufferInfo();
 
     // #accessors
-      Napi::ObjectReference buffer;
-      Napi::Value Getbuffer(const Napi::CallbackInfo &info);
+    Napi::ObjectReference buffer;
+    Napi::Value Getbuffer(const Napi::CallbackInfo &info);
     void Setbuffer(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value Getoffset(const Napi::CallbackInfo &info);
@@ -19308,8 +19308,8 @@ class _VkImageFormatProperties : public Napi::ObjectWrap<_VkImageFormatPropertie
     ~_VkImageFormatProperties();
 
     // #accessors
-      Napi::ObjectReference maxExtent;
-      Napi::Value GetmaxExtent(const Napi::CallbackInfo &info);
+    Napi::ObjectReference maxExtent;
+    Napi::Value GetmaxExtent(const Napi::CallbackInfo &info);
     Napi::Value GetmaxMipLevels(const Napi::CallbackInfo &info);
     Napi::Value GetmaxArrayLayers(const Napi::CallbackInfo &info);
     Napi::Value GetsampleCounts(const Napi::CallbackInfo &info);
@@ -19378,8 +19378,8 @@ class _VkMappedMemoryRange : public Napi::ObjectWrap<_VkMappedMemoryRange> {
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference memory;
-      Napi::Value Getmemory(const Napi::CallbackInfo &info);
+    Napi::ObjectReference memory;
+    Napi::Value Getmemory(const Napi::CallbackInfo &info);
     void Setmemory(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value Getoffset(const Napi::CallbackInfo &info);
@@ -19473,8 +19473,8 @@ class _VkSparseImageMemoryRequirements : public Napi::ObjectWrap<_VkSparseImageM
     ~_VkSparseImageMemoryRequirements();
 
     // #accessors
-      Napi::ObjectReference formatProperties;
-      Napi::Value GetformatProperties(const Napi::CallbackInfo &info);
+    Napi::ObjectReference formatProperties;
+    Napi::Value GetformatProperties(const Napi::CallbackInfo &info);
     Napi::Value GetimageMipTailFirstLod(const Napi::CallbackInfo &info);
     Napi::Value GetimageMipTailSize(const Napi::CallbackInfo &info);
     Napi::Value GetimageMipTailOffset(const Napi::CallbackInfo &info);
@@ -19507,8 +19507,8 @@ class _VkSparseImageFormatProperties : public Napi::ObjectWrap<_VkSparseImageFor
 
     // #accessors
     Napi::Value GetaspectMask(const Napi::CallbackInfo &info);
-      Napi::ObjectReference imageGranularity;
-      Napi::Value GetimageGranularity(const Napi::CallbackInfo &info);
+    Napi::ObjectReference imageGranularity;
+    Napi::Value GetimageGranularity(const Napi::CallbackInfo &info);
     Napi::Value Getflags(const Napi::CallbackInfo &info);
 
     // #default properties
@@ -19645,8 +19645,8 @@ class _VkQueueFamilyProperties : public Napi::ObjectWrap<_VkQueueFamilyPropertie
     Napi::Value GetqueueFlags(const Napi::CallbackInfo &info);
     Napi::Value GetqueueCount(const Napi::CallbackInfo &info);
     Napi::Value GettimestampValidBits(const Napi::CallbackInfo &info);
-      Napi::ObjectReference minImageTransferGranularity;
-      Napi::Value GetminImageTransferGranularity(const Napi::CallbackInfo &info);
+    Napi::ObjectReference minImageTransferGranularity;
+    Napi::Value GetminImageTransferGranularity(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -19684,8 +19684,8 @@ class _VkInstanceCreateInfo : public Napi::ObjectWrap<_VkInstanceCreateInfo> {
     Napi::Value Getflags(const Napi::CallbackInfo &info);
     void Setflags(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference pApplicationInfo;
-      Napi::Value GetpApplicationInfo(const Napi::CallbackInfo &info);
+    Napi::ObjectReference pApplicationInfo;
+    Napi::Value GetpApplicationInfo(const Napi::CallbackInfo &info);
     void SetpApplicationInfo(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetenabledLayerCount(const Napi::CallbackInfo &info);
@@ -19765,8 +19765,8 @@ class _VkDeviceCreateInfo : public Napi::ObjectWrap<_VkDeviceCreateInfo> {
     Napi::Value GetppEnabledExtensionNames(const Napi::CallbackInfo &info);
     void SetppEnabledExtensionNames(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference pEnabledFeatures;
-      Napi::Value GetpEnabledFeatures(const Napi::CallbackInfo &info);
+    Napi::ObjectReference pEnabledFeatures;
+    Napi::Value GetpEnabledFeatures(const Napi::CallbackInfo &info);
     void SetpEnabledFeatures(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -19998,10 +19998,10 @@ class _VkPhysicalDeviceProperties : public Napi::ObjectWrap<_VkPhysicalDevicePro
     std::vector<uint8_t>* vpipelineCacheUUID;
     Napi::ObjectReference pipelineCacheUUID;
     Napi::Value GetpipelineCacheUUID(const Napi::CallbackInfo &info);
-      Napi::ObjectReference limits;
-      Napi::Value Getlimits(const Napi::CallbackInfo &info);
-      Napi::ObjectReference sparseProperties;
-      Napi::Value GetsparseProperties(const Napi::CallbackInfo &info);
+    Napi::ObjectReference limits;
+    Napi::Value Getlimits(const Napi::CallbackInfo &info);
+    Napi::ObjectReference sparseProperties;
+    Napi::Value GetsparseProperties(const Napi::CallbackInfo &info);
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -20068,8 +20068,8 @@ class _VkClearRect : public Napi::ObjectWrap<_VkClearRect> {
     ~_VkClearRect();
 
     // #accessors
-      Napi::ObjectReference rect;
-      Napi::Value Getrect(const Napi::CallbackInfo &info);
+    Napi::ObjectReference rect;
+    Napi::Value Getrect(const Napi::CallbackInfo &info);
     void Setrect(const Napi::CallbackInfo &info, const Napi::Value& value);
     
     Napi::Value GetbaseArrayLayer(const Napi::CallbackInfo &info);
@@ -20105,12 +20105,12 @@ class _VkRect2D : public Napi::ObjectWrap<_VkRect2D> {
     ~_VkRect2D();
 
     // #accessors
-      Napi::ObjectReference offset;
-      Napi::Value Getoffset(const Napi::CallbackInfo &info);
+    Napi::ObjectReference offset;
+    Napi::Value Getoffset(const Napi::CallbackInfo &info);
     void Setoffset(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference extent;
-      Napi::Value Getextent(const Napi::CallbackInfo &info);
+    Napi::ObjectReference extent;
+    Napi::Value Getextent(const Napi::CallbackInfo &info);
     void Setextent(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -20326,8 +20326,8 @@ class _VkBaseInStructure : public Napi::ObjectWrap<_VkBaseInStructure> {
     Napi::Value GetsType(const Napi::CallbackInfo &info);
     void SetsType(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference pNext;
-      Napi::Value GetpNext(const Napi::CallbackInfo &info);
+    Napi::ObjectReference pNext;
+    Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
@@ -20360,8 +20360,8 @@ class _VkBaseOutStructure : public Napi::ObjectWrap<_VkBaseOutStructure> {
     Napi::Value GetsType(const Napi::CallbackInfo &info);
     void SetsType(const Napi::CallbackInfo &info, const Napi::Value& value);
     
-      Napi::ObjectReference pNext;
-      Napi::Value GetpNext(const Napi::CallbackInfo &info);
+    Napi::ObjectReference pNext;
+    Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
