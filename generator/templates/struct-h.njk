@@ -9,7 +9,6 @@ class _{{ struct_name }} : public Napi::ObjectWrap<_{{ struct_name }}> {
     _{{ struct_name }}(const Napi::CallbackInfo &info);
     ~_{{ struct_name }}();
 
-    // #methods
     // #accessors
     {%- for member in members %}
     {%- if isIgnoreableType(member) != true -%}
@@ -19,6 +18,10 @@ class _{{ struct_name }} : public Napi::ObjectWrap<_{{ struct_name }}> {
     {% endif -%}
     {% endif -%}
     {%- endfor %}
+
+    // #default properties
+    Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
+    static Napi::Value GetmemoryLayout(const Napi::CallbackInfo &info);
 
     bool flush(void);
 

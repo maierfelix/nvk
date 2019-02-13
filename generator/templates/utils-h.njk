@@ -12,6 +12,7 @@ inline std::string getV8ValueDetails(Napi::Value value) {
 };
 
 template<typename T> inline std::vector<T> createArrayOfV8Numbers(Napi::Value value) {
+  Napi::Env env = value.Env();
   Napi::Array array = value.As<Napi::Array>();
   std::vector<T> data(array.Length());
   for (unsigned int ii = 0; ii < array.Length(); ++ii) {
@@ -22,7 +23,7 @@ template<typename T> inline std::vector<T> createArrayOfV8Numbers(Napi::Value va
   return data;
 };
 
-inline char* copyV8String(v8::Handle<v8::Value> val) {
+inline char* copyV8String(Napi::Value value) {
   std::string utf8 = value.ToString().Utf8Value();
   int len = utf8.length() + 1;
   char *str = new char[len];
@@ -45,7 +46,7 @@ template<typename T> inline T* getTypedArrayData(Napi::Value value, int *len = n
   return data;
 };
 
-inline void NanObjectTypeError(
+inline void NapiObjectTypeError(
   Napi::Value value,
   std::string memberName,
   std::string expectedType

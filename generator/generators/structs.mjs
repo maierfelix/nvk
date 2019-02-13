@@ -44,7 +44,7 @@ function invalidMemberTypeError(member) {
     }
   }
   return `
-    NanObjectTypeError(value, "${currentStruct.name}.${member.name}", "${expected}");
+    NapiObjectTypeError(value, "${currentStruct.name}.${member.name}", "${expected}");
   `;
 };
 
@@ -72,7 +72,7 @@ function genPersistentTypedArray(member) {
   return `
     // js
     if (value.IsTypedArray()) {
-      if (value.As<Napi::TypedArray>().TypedArrayType() == ${getNapiTypedArrayName(member.rawType)}) {
+      if (value.As<Napi::TypedArray>().TypedArrayType() == ${getNapiTypedArrayName(member.jsTypedArrayName)}) {
         this->${member.name}.Reset(value.ToObject());
       } else {
         ${invalidMemberTypeError(member)}
@@ -341,7 +341,11 @@ function processSourceSetter(struct, member) {
       } else if (member.isBoolean) { 
         return `
   if (value.IsBoolean() || value.IsNumber()) {
-    this->instance.${member.name} = static_cast<${rawType}>(value.As<Napi::Boolean>().Value()) ? VK_TRUE : VK_FALSE;
+    if (value.IsBoolean()) {
+      this->instance.${member.name} = static_cast<${rawType}>(value.As<Napi::Boolean>().Value()) ? VK_TRUE : VK_FALSE;
+    } else {
+      this->instance.${member.name} = static_cast<${rawType}>(value.As<Napi::Number>().Int32Value()) > 0 ? VK_TRUE : VK_FALSE;
+    }
   } else {
     ${invalidMemberTypeError(member)}
     return;
@@ -360,7 +364,7 @@ function processSourceSetter(struct, member) {
     case "const char *":
       return `
   if (value.IsString()) {
-    this->${member.name}.Reset(value.As<Napi::Object>());
+    this->${member.name}.Reset(value.ToObject());
     // free previous
     if (this->instance.${member.name}) delete[] this->instance.${member.name};
     this->instance.${member.name} = copyV8String(value);
@@ -380,6 +384,7 @@ function processSourceSetter(struct, member) {
     case "uint32_t *":
     case "uint64_t *":
     case "const float *":
+    case "const uint8_t *":
     case "const int32_t *":
     case "const uint32_t *":
     case "const uint64_t *":
@@ -390,7 +395,7 @@ function processSourceSetter(struct, member) {
       let isReference = member.dereferenceCount > 0;
       // initialization
       let initialize = `
-      this->${member.name}.Reset(value.As<Napi::Object>());
+      this->${member.name}.Reset(value.ToObject());
       _${member.type}* inst = Napi::ObjectWrap<_${member.type}>::Unwrap(obj);
       ${member.isStructType ? `inst->flush()` : ``};
       this->instance.${member.name} = ${isReference ? "&" : ""}inst->instance;`;

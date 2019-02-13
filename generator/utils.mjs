@@ -244,35 +244,25 @@ export function getJavaScriptTypedArrayName(type) {
 
 export function getNapiTypedArrayName(type) {
   switch (type) {
-    case "void *":
-    case "const void *":
+    case "ArrayBuffer":
       return `ArrayBuffer`;
-    case "float *":
-    case "const float *":
+    case "Float32Array":
       return "napi_float32_array";
-    case "int8_t *":
-    case "const int8_t *":
+    case "Int8Array":
       return "napi_int8_array";
-    case "int16_t *":
-    case "const int16_t *":
+    case "Int16Array":
       return "napi_int16_array";
-    case "int32_t *":
-    case "const int32_t *":
+    case "Int32Array":
       return "napi_int32_array";
-    case "int64_t *":
-    case "const int64_t *":
+    case "BigInt64Array":
       return "napi_bigint64_array";
-    case "uint8_t *":
-    case "const uint8_t *":
+    case "Uint8Array":
       return "napi_uint8_array";
-    case "uint16_t *":
-    case "const uint16_t *": 
+    case "Uint16Array": 
       return "napi_uint16_array";
-    case "uint32_t *":
-    case "const uint32_t *":
+    case "Uint32Array":
       return "napi_uint32_array";
-    case "uint64_t *":
-    case "const uint64_t *":
+    case "BigUint64Array":
       return "napi_biguint64_array";
   };
   warn(`Cannot resolve equivalent NAPI JS typed array name for ${type}`);

@@ -8,9 +8,6 @@
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
 
-#define GLM_FORCE_RADIANS
-#define GLM_FORCE_DEPTH_ZERO_TO_ONE
-
 #include "source.h"
 #include "calls.h"
 #include "enums.h"
@@ -72,8 +69,8 @@ Napi::Object Init(Napi::Env env, Napi::Object exports) {
   exports["VK_VERSION_MINOR"] = Napi::Function::New(env, _VK_VERSION_MINOR, "VK_VERSION_MINOR");
   exports["VK_VERSION_PATCH"] = Napi::Function::New(env, _VK_VERSION_PATCH, "VK_VERSION_PATCH");
   exports["VK_API_VERSION_1_0"] = Napi::Number::New(env, VK_MAKE_VERSION(1, 0, 0));
-  exports["vkUseDevice"] = Napi::Function::New(env, vkUseDevice, "vkUseDevice");
-  exports["vkUseInstance"] = Napi::Function::New(env, vkUseInstance, "vkUseInstance");
+  exports["vkUseDevice"] = Napi::Function::New(env, _vkUseDevice, "vkUseDevice");
+  exports["vkUseInstance"] = Napi::Function::New(env, _vkUseInstance, "vkUseInstance");
   // structs & handles
   _VkDebugUtilsMessengerEXT::Initialize(env, exports);
   _VkDebugReportCallbackEXT::Initialize(env, exports);

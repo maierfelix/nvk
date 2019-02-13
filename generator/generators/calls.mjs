@@ -149,7 +149,7 @@ function getInputArrayBody(param, index) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
       _${param.type}* result = Napi::ObjectWrap<_${param.type}>::Unwrap(obj);
-      if (!result->flush()) return;
+      if (!result->flush()) return env.Undefined();
     };
   }`;
   }
@@ -183,9 +183,9 @@ function getInputArrayBody(param, index) {
   else if (param.isTypedArray) {
     let type = param.baseType || param.type;
     out += `
-    if (info[${index}].As<Napi::TypedArray>().TypedArrayType() != ${getNapiTypedArrayName(param.rawType)}) {
+    if (info[${index}].As<Napi::TypedArray>().TypedArrayType() != ${getNapiTypedArrayName(param.jsTypedArrayName)}) {
       Napi::TypeError::New(env, "Invalid type for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
-      return;
+      return env.Undefined();
     }
     ${type}* data = getTypedArrayData<${type}>(info[${index}]);
     $p${index} = std::make_shared<${type}*>(data);`;
@@ -210,7 +210,7 @@ function getInputArrayBody(param, index) {
   out += `
   } else if (!info[${index}].IsNull()) {
     Napi::TypeError::New(env, "Invalid type for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
-    return;
+    return env.Undefined();
   }\n`;
   return out;
 };
@@ -226,12 +226,11 @@ function getCallBodyBefore(call) {
     $p${index} = buf.Data();
   } else if (!info[${index}].IsNull()) {
     Napi::TypeError::New(env, "Expected '${param.jsTypedArrayName}' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
-    return;
+    return env.Undefined();
   }`;
     }
     if (isIgnoreableType(param)) return ``;
     let {rawType} = param;
-    if (param.isBaseType && param.type !== "VkBool32") rawType = param.baseType;
     // ignore
     if (param.name === "pAllocator") {
       return ``;
@@ -241,20 +240,37 @@ function getCallBodyBefore(call) {
     std::shared_ptr<std::vector<${param.type}>> $p${index} = nullptr;
     if (info[${index}].IsArray()) {
       // validate length
-      if (info[${index}].As<Napi::Array>.Length() != ${param.length}) {
+      if (info[${index}].As<Napi::Array>().Length() != ${param.length}) {
         Napi::RangeError::New(env, "Invalid array length for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
-        return;
+        return env.Undefined();
       } else {
         std::vector<${param.type}> data = createArrayOfV8Numbers<${param.type}>(info[${index}]);
         $p${index} = std::make_shared<std::vector<${param.type}>>(data);
       }
     } else if (!info[${index}].IsNull()) {
       Napi::TypeError::New(env, "Invalid type for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
-      return;
+      return env.Undefined();
     }`;
     }
     else if (param.isArray && param.enumType) {
       return getInputArrayBody(param, index);
+    }
+    if (param.baseType === "VkBool32" && param.dereferenceCount > 0) {
+      return `
+    Napi::Object obj${index};
+    ${param.type} $p${index};
+    if (info[${index}].IsObject()) {
+      obj${index} = info[${index}].As<Napi::Object>();
+      if (!obj${index}.Has("$")) {
+        Napi::Error::New(env, "Missing Object property '$' for argument ${index + 1}").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+      Napi::Value val = obj${index}.Get("$");
+      $p${index} = static_cast<${param.type}>(val.As<Napi::Boolean>().Value());
+    } else if (!info[${index}].IsNull()) {
+      Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }`;
     }
     switch (rawType) {
       case "int":
@@ -267,22 +283,6 @@ function getCallBodyBefore(call) {
         return `
   ${type} $p${index} = static_cast<${type}>(info[${index}].As<Napi::Number>().Int64Value());`;
       }
-      case "VkBool32 *":
-        return `
-  Napi::Object obj${index};
-  ${param.type} $p${index};
-  if (info[${index}].IsObject()) {
-    obj${index} = info[${index}].As<Napi::Object>();
-    if (!obj${index}.Has("$")) {
-      Napi::ReferenceError::New(env, "Missing Object property '$' for argument ${index + 1}").ThrowAsJavaScriptException();
-      return;
-    }
-    Napi::Value val = obj.Get("$");
-    $p${index} = static_cast<${param.type}>(val.As<Napi::Boolean>().Value());
-  } else if (!info[${index}].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
-    return;
-  }`;
       case "const char *":
         return `
   ${param.type}* $p${index};
@@ -290,7 +290,7 @@ function getCallBodyBefore(call) {
     $p${index} = copyV8String(info[${index}]);
   } else if (!info[${index}].IsNull()) {
     Napi::TypeError::New(env, "Expected 'String' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
-    return;
+    return env.Undefined();
   }`;
         return ``;
       case "int *":
@@ -311,14 +311,14 @@ function getCallBodyBefore(call) {
   if (info[${index}].IsObject()) {
     obj${index} = info[${index}].As<Napi::Object>();
     if (!obj${index}.Has("$")) {
-      Napi::ReferenceError::New(env, "Missing Object property '$' for argument ${index + 1}").ThrowAsJavaScriptException();
-      return;
+      Napi::Error::New(env, "Missing Object property '$' for argument ${index + 1}").ThrowAsJavaScriptException();
+      return env.Undefined();
     }
-    Napi::Value val = obj.Get("$");
-    $p${index} = static_cast<${param.type}>(info[${index}].As<Napi::Number>().Int64Value());
+    Napi::Value val = obj${index}.Get("$");
+    $p${index} = static_cast<${param.type}>(val.As<Napi::Number>().Int64Value());
   } else if (!info[${index}].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
-    return;
+    return env.Undefined();
   }`;
         }
       case "void **":
@@ -332,7 +332,7 @@ function getCallBodyBefore(call) {
     $p${index} = value.As<Napi::TypedArray>().ArrayBuffer().Data();
   } else if (!info[${index}].IsNull()) {
     Napi::TypeError::New(env, "Expected '${param.jsTypedArrayName}' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
-    return;
+    return env.Undefined();
   }`;
       default: {
         // array of structs or handles
@@ -358,11 +358,11 @@ function getCallBodyBefore(call) {
   if (info[${index}].IsObject()) {
     Napi::Object obj = info[${index}].As<Napi::Object>();
     if (!(obj.InstanceOf(_${param.type}::constructor.Value()))) {
-      NanObjectTypeError(info[${index}], "argument ${index + 1}", "[object ${param.type}]");
-      return;
+      NapiObjectTypeError(info[${index}], "argument ${index + 1}", "[object ${param.type}]");
+      return env.Undefined();
     }
     obj${index} = Napi::ObjectWrap<_${param.type}>::Unwrap(obj);
-    ${ param.isStructType ? `if (!obj${index}->flush()) return;` : `` }
+    ${ param.isStructType ? `if (!obj${index}->flush()) return env.Undefined();` : `` }
     $p${index} = &obj${index}->instance;
   } else if (info[${index}].IsNull()) {
     $p${index} = ${deinitialize};
@@ -628,7 +628,7 @@ function getMutableStructReflectInstructions(name, pIndex, basePath, out = []) {
   {
     // back reflect string
     Napi::String str${pIndex} = Napi::String::New(env, (&${basePath}instance)->${member.name});
-    ${basePath}${member.name}.Reset(str${pIndex});
+    ${basePath}${member.name}.Reset(str${pIndex}.ToObject());
   }`);
     }
     // struct
@@ -637,7 +637,7 @@ function getMutableStructReflectInstructions(name, pIndex, basePath, out = []) {
   {
     std::vector<napi_value> args;
     Napi::Object inst = _${member.type}::constructor.New(args);
-    _${member.type}* ${basePath.length} = Napi::ObjectWrap<_${member.type}>::Unwrap(inst);
+    _${member.type}* unwrapped${basePath.length} = Napi::ObjectWrap<_${member.type}>::Unwrap(inst);
     ${basePath}${member.name}.Reset(inst);
     memcpy((&unwrapped${basePath.length}->instance), &${basePath}instance.${member.name}, sizeof(${member.type}));
     ${getMutableStructReflectInstructions(member.type, pIndex, `unwrapped${basePath.length}->`, [])}
@@ -654,7 +654,7 @@ function getMutableStructReflectInstructions(name, pIndex, basePath, out = []) {
     for (unsigned int ii = 0; ii < ${member.length}; ++ii) {
       arr${pIndex}.Set(ii, Napi::Number::New(env, (&${basePath}instance)->${member.name}[ii]));
     };
-    ${basePath}${member.name}.Reset(arr${pIndex});
+    ${basePath}${member.name}.Reset(arr${pIndex}.ToObject());
   }`);
     }
     // array of structs
@@ -667,12 +667,13 @@ function getMutableStructReflectInstructions(name, pIndex, basePath, out = []) {
     Napi::Array arr = Napi::Array::New(env, len);
     // populate array
     for (unsigned int ii = 0; ii < len; ++ii) {
+      std::vector<napi_value> args;
       Napi::Object inst = _${member.type}::constructor.New(args);
       _${member.type}* unwrapped = Napi::ObjectWrap<_${member.type}>::Unwrap(inst);
       memcpy(&unwrapped->instance, &${basePath}instance.${member.name}[ii], sizeof(${member.type}));
       arr.Set(ii, inst);
     };
-    ${basePath}${member.name}.Reset(arr);
+    ${basePath}${member.name}.Reset(arr.ToObject());
   }`);
     }
     else {
