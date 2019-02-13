@@ -84,8 +84,7 @@ function getMemberCopyInstructions(struct) {
     else if (member.isString) {
       out += `
       {
-        std::string stri(copy->${member.name});
-        Napi::String str = Napi::String::New(env, stri);
+        Napi::String str = Napi::String::New(env, copy->${member.name});
         result->${member.name}.Reset(str.ToObject());
         strcpy(const_cast<char *>(instance->${member.name}), copy->${member.name});
       }`;

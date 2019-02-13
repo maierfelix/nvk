@@ -215,20 +215,25 @@ function processSourceGetter(struct, member) {
   return Napi::Boolean::New(env, this->instance.${member.name});`;
     }
   }
+  if (member.isStaticArray && member.isString) {
+    return `
+  if (this->${member.name}.IsEmpty()) return env.Null();
+  return Napi::String::New(env, this->${member.name});`;
+  }
   if (member.isStaticArray) {
     return `
   if (this->${member.name}.IsEmpty()) return env.Null();
-  return this->${member.name}.Value().As<Napi::Array>();`;
+  return Napi::Array::New(env, this->${member.name}.Value());`;
   }
   if (member.isVoidPointer) {
     return `
   if (this->${member.name}.IsEmpty()) return env.Null();
-  return this->${member.name}.Value().As<Napi::Object>();`;
+  return Napi::Object::New(env, this->${member.name}.Value());`;
   }
   if (member.isArray && (member.isStructType || member.isHandleType)) {
     return `
   if (this->${member.name}.IsEmpty()) return env.Null();
-  return this->${member.name}.Value().As<Napi::Array>();`;
+  return Napi::Array::New(env, this->${member.name}.Value());`;
   }
   switch (rawType) {
     case "int":
@@ -244,7 +249,7 @@ function processSourceGetter(struct, member) {
     case "const char *":
       return `
   if (this->${member.name}.IsEmpty()) return env.Null();
-  return this->${member.name}.Value().As<Napi::String>();`;
+  return Napi::String::New(env, this->${member.name}.Value());`;
     case "float *":
     case "int32_t *":
     case "uint8_t *":
@@ -258,12 +263,12 @@ function processSourceGetter(struct, member) {
     case "const uint64_t *":
       return `
   if (this->${member.name}.IsEmpty()) return env.Null();
-  return this->${member.name}.Value().As<Napi::TypedArray>();`;
+  return Napi::TypedArray::New(env, this->${member.name}.Value());`;
     default: {
       if (member.isStructType || member.isHandleType || isPNextMember(member)) {
         return `
   if (this->${member.name}.IsEmpty()) return env.Null();
-  return this->${member.name}.Value().As<Napi::Object>();`;
+  return Napi::Object::New(env, this->${member.name}.Value());`;
       }
       warn(`Cannot handle member ${member.rawType} for ${struct.name} in source-getter!`);
       return retUnknown(member);

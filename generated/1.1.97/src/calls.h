@@ -1208,16 +1208,14 @@ Napi::Value _vkEnumerateInstanceLayerProperties(const Napi::CallbackInfo& info) 
       VkLayerProperties *copy = &$pdata[ii];
       
       {
-        std::string stri(copy->layerName);
-        Napi::String str = Napi::String::New(env, stri);
+        Napi::String str = Napi::String::New(env, copy->layerName);
         result->layerName.Reset(str.ToObject());
         strcpy(const_cast<char *>(instance->layerName), copy->layerName);
       }
       instance->specVersion = copy->specVersion;
       instance->implementationVersion = copy->implementationVersion;
       {
-        std::string stri(copy->description);
-        Napi::String str = Napi::String::New(env, stri);
+        Napi::String str = Napi::String::New(env, copy->description);
         result->description.Reset(str.ToObject());
         strcpy(const_cast<char *>(instance->description), copy->description);
       }
@@ -1299,8 +1297,7 @@ Napi::Value _vkEnumerateInstanceExtensionProperties(const Napi::CallbackInfo& in
       VkExtensionProperties *copy = &$pdata[ii];
       
       {
-        std::string stri(copy->extensionName);
-        Napi::String str = Napi::String::New(env, stri);
+        Napi::String str = Napi::String::New(env, copy->extensionName);
         result->extensionName.Reset(str.ToObject());
         strcpy(const_cast<char *>(instance->extensionName), copy->extensionName);
       }
@@ -1392,16 +1389,14 @@ Napi::Value _vkEnumerateDeviceLayerProperties(const Napi::CallbackInfo& info) {
       VkLayerProperties *copy = &$pdata[ii];
       
       {
-        std::string stri(copy->layerName);
-        Napi::String str = Napi::String::New(env, stri);
+        Napi::String str = Napi::String::New(env, copy->layerName);
         result->layerName.Reset(str.ToObject());
         strcpy(const_cast<char *>(instance->layerName), copy->layerName);
       }
       instance->specVersion = copy->specVersion;
       instance->implementationVersion = copy->implementationVersion;
       {
-        std::string stri(copy->description);
-        Napi::String str = Napi::String::New(env, stri);
+        Napi::String str = Napi::String::New(env, copy->description);
         result->description.Reset(str.ToObject());
         strcpy(const_cast<char *>(instance->description), copy->description);
       }
@@ -1501,8 +1496,7 @@ Napi::Value _vkEnumerateDeviceExtensionProperties(const Napi::CallbackInfo& info
       VkExtensionProperties *copy = &$pdata[ii];
       
       {
-        std::string stri(copy->extensionName);
-        Napi::String str = Napi::String::New(env, stri);
+        Napi::String str = Napi::String::New(env, copy->extensionName);
         result->extensionName.Reset(str.ToObject());
         strcpy(const_cast<char *>(instance->extensionName), copy->extensionName);
       }
@@ -9091,8 +9085,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayPropertiesKHR(const Napi::CallbackInfo& i
       VkDisplayPropertiesKHR *copy = &$pdata[ii];
       
       {
-        std::string stri(copy->displayName);
-        Napi::String str = Napi::String::New(env, stri);
+        Napi::String str = Napi::String::New(env, copy->displayName);
         result->displayName.Reset(str.ToObject());
         strcpy(const_cast<char *>(instance->displayName), copy->displayName);
       }
