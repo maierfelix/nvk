@@ -460,6 +460,11 @@ function getCallBodyAfter(call) {
     if (isIgnoreableType(param)) return;
     let isReference = param.dereferenceCount > 0;
     let isConstant = param.isConstant;
+    if (param.isString) {
+      // no reflection needed
+      out.push(`
+  if ($p${pIndex}) delete[] $p${pIndex};`);
+    }
     if (isConstant) return;
     // array of structs
     if (param.isArray && param.isStructType) {
@@ -507,9 +512,6 @@ function getCallBodyAfter(call) {
       // no reflection needed
     }
     else if (param.isStructType) {
-      // no reflection needed
-    }
-    else if (param.isString) {
       // no reflection needed
     }
     else if (param.isNumber) {

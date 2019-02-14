@@ -38,6 +38,15 @@ let buildReleaseDir = buildDir + "Release/";
 if (!fs.existsSync(buildDir)) fs.mkdirSync(buildDir);
 if (!fs.existsSync(buildReleaseDir)) fs.mkdirSync(buildReleaseDir);
 
+let genPkg = require(`./generated/${vkVersion}/package.json`);
+let {sdkPath} = genPkg;
+let runtimeDir = `${sdkPath}/RunTimeInstaller/${architecture}/`;
+
+if (!fs.existsSync(runtimeDir)) {
+  process.stderr.write(`Cannot find runtime files for ${vkVersion} in ${runtimeDir}\n`);
+  return;
+}
+
 process.stdout.write(`
 Compiling bindings for version ${vkVersion}...
 Platform: ${platform} | ${architecture}
@@ -53,7 +62,8 @@ function copyFiles() {
     let targetDir = `./generated/${vkVersion}/build/Release`;
     let files = [
       [`${baseDir}/GLFW/glfw3.dll`, targetDir],
-      [`./src/`, `./generated/${vkVersion}/src`]
+      [`./src/`, `./generated/${vkVersion}/src`],
+      [runtimeDir, targetDir]
     ];
     let counter = 0;
     files.map(entry => {

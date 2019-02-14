@@ -379,7 +379,7 @@ async function generateBindings({xml, version, docs, incremental} = _) {
   console.log(`Generation stats:`);
   console.log(`Total files: ${totalFiles}/${writtenFiles}`);
   console.log(`Total size: ${writtenBytes * 1e-3}kb`);
-  console.log(`Total lines: ${(writtenLines).toLocaleString().replace(",", ".")} lines`);
+  console.log(`Total lines: ${(writtenLines).toLocaleString().replace(",", ".")}lines`);
 };
 
 let vkVersion = process.env.npm_config_vkversion;

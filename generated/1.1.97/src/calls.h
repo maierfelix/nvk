@@ -512,6 +512,7 @@ Napi::Value _vkGetDeviceProcAddr(const Napi::CallbackInfo& info) {
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  if ($p1) delete[] $p1;
   
   
   return Napi::Number::New(env, 0);
@@ -549,6 +550,7 @@ Napi::Value _vkGetInstanceProcAddr(const Napi::CallbackInfo& info) {
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  if ($p1) delete[] $p1;
   
   
   return Napi::Number::New(env, 0);
@@ -1285,6 +1287,7 @@ Napi::Value _vkEnumerateInstanceExtensionProperties(const Napi::CallbackInfo& in
     &$p1,
     $p2 ? (VkExtensionProperties *) $p2.get()->data() : nullptr
   );
+  if ($p0) delete[] $p0;
     obj1.Set("$", $p1);
   if (info[2].IsArray()) {
     VkExtensionProperties* $pdata = $p2.get()->data();
@@ -1484,6 +1487,7 @@ Napi::Value _vkEnumerateDeviceExtensionProperties(const Napi::CallbackInfo& info
     &$p2,
     $p3 ? (VkExtensionProperties *) $p3.get()->data() : nullptr
   );
+  if ($p1) delete[] $p1;
     obj2.Set("$", $p2);
   if (info[3].IsArray()) {
     VkExtensionProperties* $pdata = $p3.get()->data();
@@ -10786,6 +10790,8 @@ $vkDebugReportMessageEXT(
     $p6,
     $p7
   );
+  if ($p6) delete[] $p6;
+  if ($p7) delete[] $p7;
   
   
   return env.Undefined();
