@@ -2,8 +2,7 @@
   "variables": {
     "root": "../..",
     "platform": "<(OS)",
-    "vkVersion": "1.1.96.0",
-    "vkSDK": "C:/VulkanSDK"
+    "vkSDK": "C:/VulkanSDK/1.1.96.9"
   },
   "conditions": [
     [ "platform == 'win'", { "variables": { "platform": "win" } } ],
@@ -18,16 +17,17 @@
     {
       "target_name": "addon",
       "sources": [
-        "./src/index.cpp"
+        "./src/index.cpp",
+"./src/source.cpp"
       ],
       "include_dirs": [
-        "<!(node -e \"require('nan')\")",
+        "<!@(node -p \"require('node-addon-api').include\")",
         "<(root)/lib/include/",
-        "<(vkSDK)/<(vkVersion)/Include"
+        "<(vkSDK)/Include"
       ],
       "library_dirs": [
         "<(root)/lib/<(platform)/<(target_arch)/GLFW",
-        "<(vkSDK)/<(vkVersion)/Lib"
+        "<(vkSDK)/Lib"
       ],
       "conditions": [
         [

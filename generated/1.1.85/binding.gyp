@@ -17,10 +17,11 @@
     {
       "target_name": "addon",
       "sources": [
-        "./src/index.cpp"
+        "./src/index.cpp",
+"./src/source.cpp"
       ],
       "include_dirs": [
-        "<!(node -e \"require('nan')\")",
+        "<!@(node -p \"require('node-addon-api').include\")",
         "<(root)/lib/include/",
         "<(vkSDK)/Include"
       ],
