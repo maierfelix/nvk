@@ -1,44 +1,35 @@
 #ifndef __DYN_UNWRAP__
 #define __DYN_UNWRAP__
 
-#include <nan.h>
+#define NAPI_EXPERIMENTAL
+#include <napi.h>
 #include "source.h"
 
 #include <map>
 #include <string>
 
-static const std::map<std::string, VkStructureType> constructor2sType = {
-  {% for struct in structs -%}
-  {%- if struct.sType -%}
-  { "{{ struct.name }}", {{ struct.sType }} },
-  {% endif -%}
-  {% endfor %}
-};
-
-inline VkStructureType GetStructureTypeFromObject(v8::Local<v8::Object> obj) {
-  std::string constructorName = std::string(*Nan::Utf8String(obj->GetConstructorName()));
-  auto it = constructor2sType.find(constructorName);
-  if (it == constructor2sType.end()) return (VkStructureType) -1;
-  VkStructureType sType = it->second;
+inline VkStructureType GetStructureTypeFromObject(Napi::Object obj) {
+  if (!obj.Has("sType")) Napi::TypeError::New(obj.Env(), "Failed to resolve structure type, 'sType' property is missing").ThrowAsJavaScriptException();
+  VkStructureType sType = static_cast<VkStructureType>(obj.Get("sType").As<Napi::Number>().Int32Value());
   return sType;
 }
 
-bool IsValidStructureObject(v8::Local<v8::Object> obj) {
+bool IsValidStructureObject(Napi::Object obj) {
   return GetStructureTypeFromObject(obj) > -1;
 }
 
-void * DynamicObjectUnwrapInstance(v8::Local<v8::Object> obj) {
-  std::string constructorName = std::string(*Nan::Utf8String(obj->GetConstructorName()));
+void * DynamicObjectUnwrapInstance(Napi::Object obj) {
   VkStructureType sType = GetStructureTypeFromObject(obj);
   switch (sType) {
     {% for struct in structs -%}
     {%- if struct.sType and not struct.alias -%}
-    case {{ struct.sType }}: return (void *) &Nan::ObjectWrap::Unwrap<_{{ struct.name }}>(obj)->instance;
+    case {{ struct.sType }}: return (void *) &Napi::ObjectWrap<_{{ struct.name }}>::Unwrap(obj)->instance;
     {% endif -%}
     {% endfor %}
   };
+  std::string constructorName = obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value();
   std::string msg = "Dynamic Object Unwrap failed! Invalid constructor: '" + constructorName + "'";
-  Nan::ThrowTypeError(msg.c_str());
+  Napi::TypeError::New(obj.Env(), msg).ThrowAsJavaScriptException();
   return nullptr;
 }
 

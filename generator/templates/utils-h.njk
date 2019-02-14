@@ -1,77 +1,61 @@
 #ifndef __UTILS__
 #define __UTILS__
 
-#include <nan.h>
+#define NAPI_EXPERIMENTAL
+#include <napi.h>
 #include "source.h"
 
 #define VULKAN_ASSERT(func) { VkResult res = func; TRAP(res >= VK_SUCCESS); }
 
-inline void SetPrototypeAccessor(
-  v8::Local<v8::ObjectTemplate> tpl,
-  v8::Local<v8::String> name,
-  Nan::GetterCallback getter,
-  Nan::SetterCallback setter,
-  v8::Local<v8::FunctionTemplate> ctor
-) {
-  Nan::SetAccessor(
-    tpl,
-    name,
-    getter,
-    setter,
-    v8::Local<v8::Value>(),
-    v8::DEFAULT,
-    v8::None,
-    v8::AccessorSignature::New(v8::Isolate::GetCurrent(), ctor)
-  );
+inline std::string getV8ValueDetails(Napi::Value value) {
+  return value.ToString().Utf8Value();
 };
 
-inline std::string getV8ValueDetails(v8::Local<v8::Value> value) {
-  Nan::Utf8String utf8(value->ToDetailString(Nan::GetCurrentContext()).ToLocalChecked());
-  std::string details(*utf8);
-  return details;
-};
-
-template<typename T> inline std::vector<T> createArrayOfV8Numbers(v8::Local<v8::Value> value) {
-  v8::Local<v8::Array> array = v8::Local<v8::Array>::Cast(value);
-  std::vector<T> data(array->Length());
-  for (unsigned int ii = 0; ii < array->Length(); ++ii) {
-    v8::Local<v8::Value> item = Nan::Get(array, ii).ToLocalChecked();
-    T num = static_cast<T>(Nan::To<double>(item).FromMaybe(0));
+template<typename T> inline std::vector<T> createArrayOfV8Numbers(Napi::Value value) {
+  Napi::Env env = value.Env();
+  Napi::Array array = value.As<Napi::Array>();
+  std::vector<T> data(array.Length());
+  for (unsigned int ii = 0; ii < array.Length(); ++ii) {
+    Napi::Value item = array.Get(ii);
+    T num = static_cast<T>(item.As<Napi::Number>().DoubleValue());
     data[ii] = num;
   };
   return data;
 };
 
-inline char* copyV8String(v8::Handle<v8::Value> val) {
-  Nan::Utf8String utf8(Nan::To<v8::String>(val).ToLocalChecked());
+inline char* copyV8String(Napi::Value value) {
+  std::string utf8 = value.ToString().Utf8Value();
   int len = utf8.length() + 1;
   char *str = new char[len];
-  strncpy(str, *utf8, len);
+  strncpy(str, utf8.c_str(), len);
   return str;
 };
 
-template<typename T> inline T* getTypedArrayData(v8::Local<v8::Object> obj, int *len = nullptr) {
+template<typename T> inline T* getTypedArrayData(Napi::Value value, int *len = nullptr) {
   T *data = nullptr;
   if (len) *len = 0;
-  if (!obj->IsArrayBufferView()) {
-    Nan::ThrowError("Argument must be an ArrayBufferView");
+  if (!value.IsTypedArray()) {
+    Napi::Env env = value.Env();
+    Napi::Error::New(env, "Argument must be an ArrayBufferView").ThrowAsJavaScriptException();
     return data;
   }
-  v8::Local<v8::ArrayBufferView> arr = v8::Local<v8::ArrayBufferView>::Cast(obj);
-  if (len) *len = arr->ByteLength() / sizeof(T);
-  data = reinterpret_cast<T*>(arr->Buffer()->GetContents().Data());
+  Napi::TypedArray arr = value.As<Napi::TypedArray>();
+  Napi::ArrayBuffer buffer = arr.ArrayBuffer();
+  if (len) *len = buffer.ByteLength() / sizeof(T);
+  data = reinterpret_cast<T*>(buffer.Data());
   return data;
 };
 
-inline void NanObjectTypeError(
-  v8::Local<v8::Value> value,
+inline void NapiObjectTypeError(
+  Napi::Value value,
   std::string memberName,
   std::string expectedType
 ) {
+  Napi::Env env = value.Env();
   std::string details = getV8ValueDetails(value);
   if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
   std::string msg = "Expected '" + expectedType + "' for '" + memberName + "' but got '" + details + "'";
-  Nan::ThrowTypeError(msg.c_str());
+  Napi::TypeError::New(env, msg.c_str()).ThrowAsJavaScriptException();
 }
 
 #endif

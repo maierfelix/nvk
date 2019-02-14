@@ -223,8 +223,6 @@ async function generateBindings({xml, version, docs, incremental} = _) {
       let result = generateStructs(ast, struct);
       result.includes.map(incl => includes.push(incl));
       if (includes.indexOf(struct.name) <= -1) includes.push({ name: struct.name, include: "" });
-      //writeAddonFile(`${generateSrcPath}/${struct.name}.h`, result.header, "utf-8", true);
-      //writeAddonFile(`${generateSrcPath}/${struct.name}.cpp`, result.source, "utf-8", true);
       files.push({
         name: struct.name,
         header: result.header,
@@ -238,8 +236,6 @@ async function generateBindings({xml, version, docs, incremental} = _) {
     handles.map(handle => {
       let result = generateHandles(ast, handle);
       if (includes.indexOf(handle.name) <= -1) includes.push({ name: handle.name, include: "" });
-      //writeAddonFile(`${generateSrcPath}/${handle.name}.h`, result.header, "utf-8", true);
-      //writeAddonFile(`${generateSrcPath}/${handle.name}.cpp`, result.source, "utf-8", true);
       files.push({
         name: handle.name,
         header: result.header,
@@ -271,10 +267,15 @@ async function generateBindings({xml, version, docs, incremental} = _) {
     source += `
 #ifndef __SOURCE_H__
 #define __SOURCE_H__
-#include <nan.h>
+
+#define NAPI_EXPERIMENTAL
+#include <napi.h>
 
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
+
+#define GLFW_EXPOSE_NATIVE_WIN32
+#include <GLFW/glfw3native.h>
 
 #define VK_USE_PLATFORM_WIN32_KHR
 #include <vulkan/vulkan_win32.h>
@@ -378,7 +379,7 @@ async function generateBindings({xml, version, docs, incremental} = _) {
   console.log(`Generation stats:`);
   console.log(`Total files: ${totalFiles}/${writtenFiles}`);
   console.log(`Total size: ${writtenBytes * 1e-3}kb`);
-  console.log(`Total lines: ${writtenLines}`);
+  console.log(`Total lines: ${(writtenLines).toLocaleString().replace(",", ".")}lines`);
 };
 
 let vkVersion = process.env.npm_config_vkversion;

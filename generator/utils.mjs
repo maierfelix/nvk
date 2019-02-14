@@ -224,7 +224,7 @@ export function getJavaScriptTypedArrayName(type) {
       return "Int32Array";
     case "int64_t *":
     case "const int64_t *":
-      return "Int64Array";
+      return "BigInt64Array";
     case "uint8_t *":
     case "const uint8_t *":
       return "Uint8Array";
@@ -240,4 +240,68 @@ export function getJavaScriptTypedArrayName(type) {
   };
   warn(`Cannot resolve equivalent JS typed array name for ${type}`);
   return null;
+};
+
+export function getNapiTypedArrayName(type) {
+  switch (type) {
+    case "ArrayBuffer":
+      return `ArrayBuffer`;
+    case "Float32Array":
+      return "napi_float32_array";
+    case "Int8Array":
+      return "napi_int8_array";
+    case "Int16Array":
+      return "napi_int16_array";
+    case "Int32Array":
+      return "napi_int32_array";
+    case "BigInt64Array":
+      return "napi_bigint64_array";
+    case "Uint8Array":
+      return "napi_uint8_array";
+    case "Uint16Array": 
+      return "napi_uint16_array";
+    case "Uint32Array":
+      return "napi_uint32_array";
+    case "BigUint64Array":
+      return "napi_biguint64_array";
+  };
+  warn(`Cannot resolve equivalent NAPI JS typed array name for ${type}`);
+  return null;
+};
+
+export function isReferenceableMember(member) {
+  let {rawType} = member;
+  if (member.isStaticArray) return true;
+  if (member.isArray && (member.isStructType || member.isHandleType)) return true;
+  if (member.isStructType || member.isHandleType || member.dereferenceCount > 0) return true;
+  if (isPNextMember(member)) return true;
+  if (member.isVoidPointer) return true;
+  switch (rawType) {
+    case "const char *":
+    case "float *":
+    case "int32_t *":
+    case "uint8_t *":
+    case "uint32_t *":
+    case "uint64_t *":
+    case "const float *":
+    case "const int32_t *":
+    case "const uint8_t *":
+    case "const uint32_t *":
+    case "const uint64_t *":
+    case "const char * const*":
+      return true;
+    case "int":
+    case "float":
+    case "size_t":
+    case "int32_t":
+    case "uint8_t":
+    case "uint16_t":
+    case "uint32_t":
+    case "uint64_t":
+      return false;
+    default: {
+      warn(`Cannot resolve resolvability ${member.rawType} for ${member.name}!`);
+    }
+  };
+  return false;
 };

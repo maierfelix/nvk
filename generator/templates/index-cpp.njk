@@ -1,119 +1,83 @@
-#include <nan.h>
+#define NAPI_EXPERIMENTAL
+#include <napi.h>
 
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
-
-#define GLM_FORCE_RADIANS
-#define GLM_FORCE_DEPTH_ZERO_TO_ONE
-
-std::string dirname;
 
 #include "source.h"
 #include "calls.h"
 #include "enums.h"
 #include "window.h"
 
-static void createV8ArrayBufferFromMemory(const Nan::FunctionCallbackInfo<v8::Value>& info) {
-  if (!(info[0]->IsBigInt())) Nan::ThrowError("First argument must be a BigInt!");
-  if (!(info[1]->IsNumber())) Nan::ThrowError("Second argument must be a number!");
-  v8::Local<v8::BigInt> arg0 = v8::Local<v8::BigInt>::Cast(info[0]);
-  int64_t addr = arg0->Int64Value();
-  uint32_t size = Nan::To<uint32_t>(info[1]).FromMaybe(0);
-  v8::Local<v8::ArrayBuffer> arr = v8::ArrayBuffer::New(
-    v8::Isolate::GetCurrent(),
+static Napi::Value createV8ArrayBufferFromMemory(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  if (!(info[0].IsBigInt())) Napi::TypeError::New(env, "Argument 1 must be of type 'BigInt'").ThrowAsJavaScriptException();
+  if (!(info[1].IsNumber())) Napi::TypeError::New(env, "Argument 2 must be of type 'Number'").ThrowAsJavaScriptException();
+  bool lossless;
+  int64_t addr = info[0].As<Napi::BigInt>().Int64Value(&lossless);
+  uint32_t size = info[1].As<Napi::Number>().Uint32Value();
+  Napi::ArrayBuffer buffer = Napi::ArrayBuffer::New(
+    env,
     reinterpret_cast<void *>(addr),
-    size,
-    v8::ArrayBufferCreationMode::kExternalized
+    size
   );
-  info.GetReturnValue().Set(arr);
+  return buffer;
 };
 
-static void _VK_MAKE_VERSION(const Nan::FunctionCallbackInfo<v8::Value>& info) {
-  uint32_t major = Nan::To<uint32_t>(info[0]).FromMaybe(0);
-  uint32_t minor = Nan::To<uint32_t>(info[1]).FromMaybe(0);
-  uint32_t patch = Nan::To<uint32_t>(info[2]).FromMaybe(0);
-  info.GetReturnValue().Set(VK_MAKE_VERSION(major, minor, patch));
+static Napi::Value _VK_MAKE_VERSION(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  if (!(info[0].IsNumber())) Napi::TypeError::New(env, "Argument 1 must be of type 'Number'").ThrowAsJavaScriptException();
+  if (!(info[1].IsNumber())) Napi::TypeError::New(env, "Argument 2 must be of type 'Number'").ThrowAsJavaScriptException();
+  if (!(info[2].IsNumber())) Napi::TypeError::New(env, "Argument 3 must be of type 'Number'").ThrowAsJavaScriptException();
+  uint32_t major = info[0].As<Napi::Number>().Uint32Value();
+  uint32_t minor = info[1].As<Napi::Number>().Uint32Value();
+  uint32_t patch = info[2].As<Napi::Number>().Uint32Value();
+  return Napi::Number::New(env, VK_MAKE_VERSION(major, minor, patch));
 };
 
-static void _VK_VERSION_MAJOR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
-  uint32_t version = Nan::To<uint32_t>(info[0]).FromMaybe(0);
-  info.GetReturnValue().Set((uint32_t)(version) >> 22);
+static Napi::Value _VK_VERSION_MAJOR(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  if (!(info[0].IsNumber())) Napi::TypeError::New(env, "Argument 1 must be of type 'Number'").ThrowAsJavaScriptException();
+  uint32_t version = info[0].As<Napi::Number>().Uint32Value();
+  return Napi::Number::New(env, (uint32_t)(version) >> 22);
 };
 
-static void _VK_VERSION_MINOR(const Nan::FunctionCallbackInfo<v8::Value>& info) {
-  uint32_t version = Nan::To<uint32_t>(info[0]).FromMaybe(0);;
-  info.GetReturnValue().Set(((uint32_t)(version) >> 12) & 0x3ff);
+static Napi::Value _VK_VERSION_MINOR(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  if (!(info[0].IsNumber())) Napi::TypeError::New(env, "Argument 1 must be of type 'Number'").ThrowAsJavaScriptException();
+  uint32_t version = info[0].As<Napi::Number>().Uint32Value();
+  return Napi::Number::New(env, ((uint32_t)(version) >> 12) & 0x3ff);
 };
 
-static void _VK_VERSION_PATCH(const Nan::FunctionCallbackInfo<v8::Value>& info) {
-  uint32_t version = Nan::To<uint32_t>(info[0]).FromMaybe(0);
-  info.GetReturnValue().Set((uint32_t)(version) & 0xfff);
+static Napi::Value _VK_VERSION_PATCH(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  if (!(info[0].IsNumber())) Napi::TypeError::New(env, "Argument 1 must be of type 'Number'").ThrowAsJavaScriptException();
+  uint32_t version = info[0].As<Napi::Number>().Uint32Value();
+  return Napi::Number::New(env, (uint32_t)(version) & 0xfff);
 };
 
-static std::string resolveModulePath(v8::Handle<v8::Object> module) {
-  std::string addonPath = *v8::String::Utf8Value(
-    v8::Isolate::GetCurrent(),
-    module->Get(Nan::New("filename").ToLocalChecked()).As<v8::String>()
-  );
-  std::string path = addonPath.substr(0, addonPath.find_last_of("/\\"));
-  return path;
-};
-
-static void init(v8::Handle<v8::Object> target, v8::Handle<v8::Object> module) {
-  // path to addon
-  dirname = resolveModulePath(module);
-  // default initializers
-  VulkanWindow::Initialize(target);
-  // manual initializers
-  target->Set(
-    Nan::New("createV8ArrayBufferFromMemory").ToLocalChecked(),
-    Nan::New<v8::FunctionTemplate>(createV8ArrayBufferFromMemory)->GetFunction()
-  );
-  target->Set(
-    Nan::New("getVulkanEnumerations").ToLocalChecked(),
-    Nan::New<v8::FunctionTemplate>(getVulkanEnumerations)->GetFunction()
-  );
-  // vulkan stubs
-  target->Set(
-    Nan::New("VK_MAKE_VERSION").ToLocalChecked(),
-    Nan::New<v8::FunctionTemplate>(_VK_MAKE_VERSION)->GetFunction()
-  );
-  target->Set(
-    Nan::New("VK_VERSION_MAJOR").ToLocalChecked(),
-    Nan::New<v8::FunctionTemplate>(_VK_VERSION_MAJOR)->GetFunction()
-  );
-  target->Set(
-    Nan::New("VK_VERSION_MINOR").ToLocalChecked(),
-    Nan::New<v8::FunctionTemplate>(_VK_VERSION_MINOR)->GetFunction()
-  );
-  target->Set(
-    Nan::New("VK_VERSION_PATCH").ToLocalChecked(),
-    Nan::New<v8::FunctionTemplate>(_VK_VERSION_PATCH)->GetFunction()
-  );
-  target->Set(
-    Nan::New("VK_API_VERSION_1_0").ToLocalChecked(),
-    Nan::New(VK_MAKE_VERSION(1, 0, 0))
-  );
-  target->Set(
-    Nan::New("vkUseDevice").ToLocalChecked(),
-    Nan::New<v8::FunctionTemplate>(_vkUseDevice)->GetFunction()
-  );
-  target->Set(
-    Nan::New("vkUseInstance").ToLocalChecked(),
-    Nan::New<v8::FunctionTemplate>(_vkUseInstance)->GetFunction()
-  );
-  // generated initializers
+Napi::Object Init(Napi::Env env, Napi::Object exports) {
+  VulkanWindow::Initialize(env, exports);
+  exports["createV8ArrayBufferFromMemory"] = Napi::Function::New(env, createV8ArrayBufferFromMemory, "createV8ArrayBufferFromMemory");
+  exports["getVulkanEnumerations"] = Napi::Function::New(env, getVulkanEnumerations, "getVulkanEnumerations");
+  exports["VK_MAKE_VERSION"] = Napi::Function::New(env, _VK_MAKE_VERSION, "VK_MAKE_VERSION");
+  exports["VK_VERSION_MAJOR"] = Napi::Function::New(env, _VK_VERSION_MAJOR, "VK_VERSION_MAJOR");
+  exports["VK_VERSION_MINOR"] = Napi::Function::New(env, _VK_VERSION_MINOR, "VK_VERSION_MINOR");
+  exports["VK_VERSION_PATCH"] = Napi::Function::New(env, _VK_VERSION_PATCH, "VK_VERSION_PATCH");
+  exports["VK_API_VERSION_1_0"] = Napi::Number::New(env, VK_MAKE_VERSION(1, 0, 0));
+  exports["vkUseDevice"] = Napi::Function::New(env, _vkUseDevice, "vkUseDevice");
+  exports["vkUseInstance"] = Napi::Function::New(env, _vkUseInstance, "vkUseInstance");
+  // structs & handles
   {% for incl in includes -%}
   {%- if incl != "" -%}
-  _{{ incl }}::Initialize(target);
+  _{{ incl }}::Initialize(env, exports);
   {% endif -%}
   {% endfor %}
+  // calls
   {% for call in calls -%}
-  target->Set(
-    Nan::New("{{ call.name }}").ToLocalChecked(),
-    Nan::New<v8::FunctionTemplate>(_{{ call.name }})->GetFunction()
-  );
+  exports["{{ call.name }}"] = Napi::Function::New(env, _{{ call.name }}, "{{ call.name }}");
   {% endfor %}
+  return exports;
 }
 
-NODE_MODULE(myModule, init);
+NODE_API_MODULE(addon, Init)

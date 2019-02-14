@@ -1,27 +1,22 @@
 //#include "{{ handle_name }}.h"
 
-Nan::Persistent<v8::FunctionTemplate> _{{ handle_name }}::constructor;
+Napi::FunctionReference _{{ handle_name }}::constructor;
 
-_{{ handle_name }}::_{{ handle_name }}() {}
-_{{ handle_name }}::~_{{ handle_name }}() {}
-
-void _{{ handle_name }}::Initialize(Nan::ADDON_REGISTER_FUNCTION_ARGS_TYPE target) {
-  Nan::HandleScope scope;
-
-  // Constructor
-  v8::Local<v8::FunctionTemplate> ctor = Nan::New<v8::FunctionTemplate>(_{{ handle_name }}::New);
-  constructor.Reset(ctor);
-  ctor->InstanceTemplate()->SetInternalFieldCount(1);
-  ctor->SetClassName(Nan::New("{{ handle_name }}").ToLocalChecked());
-
-  // Prototype
-  v8::Local<v8::ObjectTemplate> proto = ctor->PrototypeTemplate();
-
-  Nan::Set(target, Nan::New("{{ handle_name }}").ToLocalChecked(), ctor->GetFunction());
+_{{ handle_name }}::_{{ handle_name }}(const Napi::CallbackInfo& info) : Napi::ObjectWrap<_{{ handle_name }}>(info) {
+  Napi::Env env = info.Env();
+  if (!info.IsConstructCall()) Napi::Error::New(env, "{{ handle_name }} constructor cannot be invoked without 'new'");
 }
 
-NAN_METHOD(_{{ handle_name }}::New) {
-  _{{ handle_name }}* self = new _{{ handle_name }}();
-  self->Wrap(info.Holder());
-  info.GetReturnValue().Set(info.Holder());
-};
+_{{ handle_name }}::~_{{ handle_name }}() {}
+
+Napi::Object _{{ handle_name }}::Initialize(Napi::Env env, Napi::Object exports) {
+  Napi::HandleScope scope(env);
+
+  Napi::Function func = DefineClass(env, "{{ handle_name }}", {});
+
+  constructor = Napi::Persistent(func);
+
+  constructor.SuppressDestruct();
+  exports.Set("{{ handle_name }}", func);
+  return exports;
+}

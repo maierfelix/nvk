@@ -1,11 +1,14 @@
 
-class _{{ struct_name }}: public Nan::ObjectWrap {
+class _{{ struct_name }} : public Napi::ObjectWrap<_{{ struct_name }}> {
 
   public:
-    // #methods
-    static NAN_METHOD(New);
-    static NAN_GETTER(GetmemoryBuffer);
-    static NAN_GETTER(GetmemoryLayout);
+
+    static Napi::Object Initialize(Napi::Env env, Napi::Object exports);
+    static Napi::FunctionReference constructor;
+
+    _{{ struct_name }}(const Napi::CallbackInfo &info);
+    ~_{{ struct_name }}();
+
     // #accessors
     {%- for member in members %}
     {%- if isIgnoreableType(member) != true -%}
@@ -16,16 +19,13 @@ class _{{ struct_name }}: public Nan::ObjectWrap {
     {% endif -%}
     {%- endfor %}
 
-    // real instance
-    {{ struct_name }} instance = {};
+    // #default properties
+    Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
+    static Napi::Value GetmemoryLayout(const Napi::CallbackInfo &info);
 
-    static Nan::Persistent<v8::FunctionTemplate> constructor;
-    static void Initialize(v8::Local<v8::Object> exports);
     bool flush(void);
 
-  private:
-
-    _{{ struct_name }}();
-    ~_{{ struct_name }}();
+    // real instance
+    {{ struct_name }} instance = {};
 
 };

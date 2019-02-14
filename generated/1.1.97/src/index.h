@@ -5,7 +5,8 @@
 #ifndef __BASE__
 #define __BASE__
 
-#include <nan.h>
+#define NAPI_EXPERIMENTAL
+#include <napi.h>
 
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>

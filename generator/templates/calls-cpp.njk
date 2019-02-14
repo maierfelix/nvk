@@ -1,7 +1,8 @@
 #ifndef __VK_CALLS_H__
 #define __VK_CALLS_H__
 
-#include <nan.h>
+#define NAPI_EXPERIMENTAL
+#include <napi.h>
 
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
@@ -26,33 +27,36 @@ void vkUseInstance(VkInstance pInstance) {
   {{- getCallProcAddrInitializers(calls, "instance") | safe }}
 };
 
-void _vkUseDevice(const Nan::FunctionCallbackInfo<v8::Value>& info) {
-  if (info[0]->IsObject()) {
-    _VkDevice* obj = Nan::ObjectWrap::Unwrap<_VkDevice>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+Napi::Value _vkUseDevice(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  if (info[0].IsObject()) {
+    _VkDevice* obj = Napi::ObjectWrap<_VkDevice>::Unwrap(info[0].As<Napi::Object>());
     vkUseDevice(obj->instance);
-  } else if (info[0]->IsNull()) {
+  } else if (info[0].IsNull()) {
     currentDevice = VK_NULL_HANDLE;
   } else {
-    Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'pDevice'");
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'pDevice'").ThrowAsJavaScriptException();
   }
-  info.GetReturnValue().SetUndefined();
+  return env.Undefined();
 };
 
-void _vkUseInstance(const Nan::FunctionCallbackInfo<v8::Value>& info) {
-  if (info[0]->IsObject()) {
-    _VkInstance* obj = Nan::ObjectWrap::Unwrap<_VkInstance>(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+Napi::Value _vkUseInstance(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  if (info[0].IsObject()) {
+    _VkInstance* obj = Napi::ObjectWrap<_VkInstance>::Unwrap(info[0].As<Napi::Object>());
     vkUseInstance(obj->instance);
-  } else if (info[0]->IsNull()) {
+  } else if (info[0].IsNull()) {
     currentInstance = VK_NULL_HANDLE;
   } else {
-    Nan::ThrowTypeError("Expected 'Object' or 'null' for argument 1 'pInstance'");
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'pInstance'").ThrowAsJavaScriptException();
   }
-  info.GetReturnValue().SetUndefined();
+  return env.Undefined();
 };
 
 {% for call in calls -%}
 
-void _{{ call.name }}(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+Napi::Value _{{ call.name }}(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
   {{ getCallBody(call) | safe }}
   {{ getCallObjectUpdate(call) | safe }}
   {{ getCallReturn(call) | safe }}

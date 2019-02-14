@@ -36,11 +36,12 @@ export default async function(astReference, vkVersion, incremental, vkIncludes) 
   }
   // x.x.x
   let sdkPath = resolveLunarVkSDKPath(vkVersion);
+  let sdkVersionPath = VK_SDK_PATH + `/` + vkVersion;
   if (!fs.existsSync(sdkPath)) {
     warn(`Unable to find Vulkan SDK for ${vkVersion}! Please make sure you installed the corresponding SDK version to build the bindings`);
     warn(`Building the generated bindings might fail`);
   }
-  else if (VK_SDK_PATH + `/` + vkVersion !== sdkPath) {
+  else if (sdkVersionPath !== sdkPath && (sdkVersionPath + `.0` !== sdkPath)) {
     warn(`Using fallback SDK at ${sdkPath}`);
   }
   let vars = {
