@@ -10,8 +10,9 @@ This is a [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for node.js, 
 #
 
   * [Preview](#preview)
-  * [Example](#example)
   * [Installation](#installation)
+  * [Example](#example)
+  * [Build Instructions](#build-instructions)
     + [Requirements](#requirements)
     + [Windows](#windows)
   * [CLI](#cli)
@@ -33,6 +34,13 @@ This is a [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for node.js, 
 <img src="https://i.imgur.com/cRrVc1N.gif" width="380">
 
 You can find more previews and demos in [/examples](https://github.com/maierfelix/nvk-examples)
+
+## Installation:
+
+Run the following command to install *nvk*:
+````
+npm install nvk
+````
 
 ## Example:
 
@@ -82,9 +90,9 @@ instanceInfo.enabledLayerCount = static_cast<uint32_t>(validationLayers.size());
 vkCreateInstance(&instanceInfo, nullptr, &instance);
 ````
 
-## Installation:
+## Build Instructions:
 
-<img src="https://i.imgur.com/CiWjods.png" width="380">
+This section is only of interest if you want to manually generate and build bindings. This is only necessary if you're a developer of *nvk*.
 
 ### Requirements:
  - node.js >= v10.9.0 recommended
@@ -99,12 +107,10 @@ npm install --global --production windows-build-tools
 
 Now install the corresponding Vulkan SDK version from [here](https://vulkan.lunarg.com/sdk/home#windows). The *nvk* installer will ask you to setup bindings for ``1.1.97``, so make sure you have ``Vulkan SDK 1.1.97`` installed.
 
-Next, install *nvk* and follow the setup instructions
+Next, install *nvk*
 ````
 npm install nvk
 ````
-
-Afterwards you can `require` or `import` *nvk* in your project!
 
 ## CLI:
 
