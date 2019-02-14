@@ -1,0 +1,12 @@
+generated/*/build/Release/obj
+generated/*/build/Release/*.iobj
+generated/*/build/Release/*.ipdb
+generated/*/build/Release/*.pdb
+generated/*/build/Release/*.map
+
+examples-dev
+
+docs/*.zip
+docs/doc_tmp
+
+generator/specifications/*.xml

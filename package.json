@@ -1,7 +1,7 @@
 {
   "name": "nvk",
   "main": "index.js",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "engines": {
     "node": ">= 10.9.0"
   },
@@ -15,11 +15,9 @@
   },
   "scripts": {
     "build": "node ./build.js",
-    "generate": "node --experimental-modules ./generator/index.mjs",
-    "postinstall": "node ./post.js"
+    "generate": "node --experimental-modules ./generator/index.mjs"
   },
-  "devDependencies": {},
-  "dependencies": {
+  "devDependencies": {
     "bindings": "^1.4.0",
     "ncp": "^2.0.0",
     "node-addon-api": "^1.6.2",
@@ -28,6 +26,7 @@
     "xml-js": "^1.6.7",
     "yauzl": "^2.10.0"
   },
+  "dependencies": {},
   "description": "Vulkan rendering API for node",
   "repository": {
     "type": "git",
