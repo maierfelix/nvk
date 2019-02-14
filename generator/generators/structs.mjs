@@ -663,7 +663,7 @@ function processHeapVectorAllocator(member) {
 
 function processPersistentDeallocator(member) {
   let out = ``;
-  if (member.dereferenceCount > 0) {
+  if (isReferenceableMember(member)) {
     out += `
   ${member.name}.Reset();`;
   }
