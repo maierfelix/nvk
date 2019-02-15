@@ -1,7 +1,7 @@
 {
   "name": "nvk",
   "main": "index.js",
-  "version": "0.2.6",
+  "version": "0.2.8",
   "engines": {
     "node": ">= 10.9.0"
   },
