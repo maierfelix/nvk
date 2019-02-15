@@ -26651,7 +26651,8 @@
         "name": "hinstance",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isWin32Handle": true,
+        "jsType": "BigInt",
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -26661,7 +26662,8 @@
         "name": "hwnd",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isWin32Handle": true,
+        "jsType": "BigInt",
         "kind": "STRUCT_MEMBER"
       }
     ],
@@ -28056,7 +28058,8 @@
         "name": "handle",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isWin32Handle": true,
+        "jsType": "BigInt",
         "kind": "STRUCT_MEMBER"
       }
     ],
@@ -32004,7 +32007,8 @@
         "name": "handle",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isWin32Handle": true,
+        "jsType": "BigInt",
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -32014,7 +32018,7 @@
         "name": "name",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "jsType": "String",
         "kind": "STRUCT_MEMBER"
       }
     ],
@@ -32081,7 +32085,7 @@
         "name": "name",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "jsType": "String",
         "kind": "STRUCT_MEMBER"
       }
     ],
@@ -32930,7 +32934,8 @@
         "name": "handle",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isWin32Handle": true,
+        "jsType": "BigInt",
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -32940,7 +32945,7 @@
         "name": "name",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "jsType": "String",
         "kind": "STRUCT_MEMBER"
       }
     ],
@@ -33004,7 +33009,7 @@
         "name": "name",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "jsType": "String",
         "kind": "STRUCT_MEMBER"
       }
     ],
@@ -33740,7 +33745,8 @@
         "name": "handle",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isWin32Handle": true,
+        "jsType": "BigInt",
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -33750,7 +33756,7 @@
         "name": "name",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "jsType": "String",
         "kind": "STRUCT_MEMBER"
       }
     ],
@@ -33814,7 +33820,7 @@
         "name": "name",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "jsType": "String",
         "kind": "STRUCT_MEMBER"
       }
     ],
@@ -62517,7 +62523,8 @@
         "name": "pHandle",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "isWin32HandleReference": true,
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       }
     ]
@@ -63739,7 +63746,8 @@
         "name": "pHandle",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "isWin32HandleReference": true,
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       }
     ]
@@ -63792,7 +63800,8 @@
         "name": "handle",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isWin32Handle": true,
+        "jsType": "BigInt",
         "kind": "COMMAND_PARAM"
       },
       {
@@ -64010,7 +64019,8 @@
         "name": "pHandle",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "isWin32HandleReference": true,
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       }
     ]
@@ -64228,7 +64238,8 @@
         "name": "pHandle",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "isWin32HandleReference": true,
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       }
     ]
