@@ -260,6 +260,9 @@ function processSourceGetter(struct, member) {
       return `
   return Napi::Number::New(env, this->instance.${member.name});`;
     case "LPCWSTR":
+      return `
+  if (this->${member.name}.IsEmpty()) return env.Null();
+  return this->${member.name}.Value().ToString();`;
     case "const char *":
       return `
   if (this->${member.name}.IsEmpty()) return env.Null();
@@ -394,7 +397,9 @@ function processSourceSetter(struct, member) {
       return `
   if (value.IsString()) {
     this->${member.name}.Reset(value.ToObject(), 1);
-    this->instance.${member.name} = s2ws(value.ToString().Utf8Value()).c_str();
+    // free previous
+    if (this->instance.${member.name}) delete[] this->instance.${member.name};
+    this->instance.${member.name} = static_cast<${rawType}>(s2wcs(value.ToString().Utf8Value()));
   } else if (value.IsNull()) {
     this->instance.${member.name} = nullptr;
   } else {
