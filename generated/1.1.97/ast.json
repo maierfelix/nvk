@@ -32276,7 +32276,8 @@
         "name": "hinstance",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isWin32Handle": true,
+        "jsType": "BigInt",
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -32286,7 +32287,8 @@
         "name": "hwnd",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isWin32Handle": true,
+        "jsType": "BigInt",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [
@@ -34528,7 +34530,8 @@
         "name": "handle",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isWin32Handle": true,
+        "jsType": "BigInt",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [
@@ -40612,7 +40615,8 @@
         "name": "handle",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isWin32Handle": true,
+        "jsType": "BigInt",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [],
@@ -41959,7 +41963,8 @@
         "name": "handle",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isWin32Handle": true,
+        "jsType": "BigInt",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [],
@@ -43183,7 +43188,8 @@
         "name": "handle",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isWin32Handle": true,
+        "jsType": "BigInt",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [],
@@ -85995,7 +86001,8 @@
         "name": "pHandle",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "isWin32HandleReference": true,
+        "jsType": "Object",
         "kind": "COMMAND_PARAM"
       }
     ],
@@ -87786,7 +87793,8 @@
         "name": "pHandle",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "isWin32HandleReference": true,
+        "jsType": "Object",
         "kind": "COMMAND_PARAM",
         "documentation": {
           "macros": [],
@@ -87848,7 +87856,8 @@
         "name": "handle",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isWin32Handle": true,
+        "jsType": "BigInt",
         "kind": "COMMAND_PARAM",
         "documentation": {
           "macros": [],
@@ -88172,7 +88181,8 @@
         "name": "pHandle",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "isWin32HandleReference": true,
+        "jsType": "Object",
         "kind": "COMMAND_PARAM",
         "documentation": {
           "macros": [],
@@ -88501,7 +88511,8 @@
         "name": "pHandle",
         "isConstant": false,
         "dereferenceCount": 1,
-        "jsType": "undefined",
+        "isWin32HandleReference": true,
+        "jsType": "Object",
         "kind": "COMMAND_PARAM",
         "documentation": {
           "macros": [],

@@ -160,6 +160,10 @@ function processHeaderGetter(struct, member) {
     Napi::ObjectReference ${member.name};
     Napi::Value Get${member.name}(const Napi::CallbackInfo &info);`;
   }
+  if (member.isWin32Handle) {
+    return `
+    Napi::Value Get${member.name}(const Napi::CallbackInfo &info);`;
+  }
   switch (rawType) {
     case "const char *":
       return `
@@ -238,6 +242,10 @@ function processSourceGetter(struct, member) {
     return `
   if (this->${member.name}.IsEmpty()) return env.Null();
   return this->${member.name}.Value().As<Napi::Array>();`;
+  }
+  if (member.isWin32Handle) {
+    return `
+  return Napi::BigInt::New(env, (int64_t)this->instance.${member.name});`;
   }
   switch (rawType) {
     case "int":
@@ -326,6 +334,16 @@ function processSourceSetter(struct, member) {
     this->${member.name}.Reset(value.As<Napi::Object>(), 1);
   } else if (value.IsNull()) {
     this->instance.${member.name} = nullptr;
+  } else {
+    ${invalidMemberTypeError(member)}
+    return;
+  }`;
+  }
+  if (member.isWin32Handle) {
+    return `
+  if (value.IsBigInt()) {
+    bool lossless = false;
+    this->instance.${member.name} = reinterpret_cast<${member.rawType}>(value.As<Napi::BigInt>().Int64Value(&lossless));
   } else {
     ${invalidMemberTypeError(member)}
     return;

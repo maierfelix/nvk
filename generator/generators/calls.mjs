@@ -227,6 +227,29 @@ function getCallBodyBefore(call) {
     return env.Undefined();
   }`;
     }
+    if (param.isWin32Handle) {
+      return `
+  bool lossless${index} = false;
+  ${param.type} $p${index} = reinterpret_cast<${param.type}>(info[${index}].As<Napi::BigInt>().Int64Value(&lossless${index}));`;
+    }
+    if (param.isWin32HandleReference) {
+      return `
+  Napi::Object obj${index};
+  ${param.type}* $p${index};
+  if (info[${index}].IsObject()) {
+    obj${index} = info[${index}].As<Napi::Object>();
+    if (!obj${index}.Has("$")) {
+      Napi::Error::New(env, "Missing Object property '$' for argument ${index + 1}").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
+    Napi::Value val = obj${index}.Get("$");
+    bool lossless = false;
+    $p${index} = reinterpret_cast<${param.type}*>(val.As<Napi::BigInt>().Int64Value(&lossless));
+  } else if (!info[${index}].IsNull()) {
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }`;
+    }
     if (isIgnoreableType(param)) return ``;
     let {rawType} = param;
     // ignore
@@ -386,6 +409,10 @@ function getCallBodyInner(call) {
       out += `    info[${index}].IsNull() ? nullptr : $p${index}${addComma}`;
       return;
     }
+    if (param.isWin32HandleReference) {
+      out += `    info[${index}].IsNull() ? nullptr : $p${index}${addComma}`;
+      return;
+    }
     if (isIgnoreableType(param)) {
       out += `nullptr${addComma}`;
       return;
@@ -523,14 +550,15 @@ function getCallBodyAfter(call) {
     else if (param.isHandleType) {
       // no reflection needed
     }
+    else if (param.isWin32Handle) {
+      // no reflection needed
+    }
+    else if (param.isWin32HandleReference) {
+      out.push(`
+  Napi::BigInt ptr${pIndex} = Napi::BigInt::New(env, (int64_t)$p${pIndex});
+  obj${pIndex}.Set("$", ptr${pIndex});`);
+    }
     else if (param.rawType === "void **") {
-      /*out.push(`
-  v8::Local<v8::ArrayBuffer> arr = v8::ArrayBuffer::New(
-    v8::Isolate::GetCurrent(),
-    $p${pIndex},
-    static_cast<size_t>($p3)
-  );
-  obj${pIndex}->Set(Nan::New("$").ToLocalChecked(), arr);`);*/
       out.push(`
   Napi::BigInt ptr${pIndex} = Napi::BigInt::New(env, (int64_t)$p${pIndex});
   obj${pIndex}.Set("$", ptr${pIndex});`);
@@ -559,7 +587,7 @@ function getCallBodyAfter(call) {
     obj${pIndex}.Set("$", $p${pIndex});`);
           break;
         default:
-          warn(`Cannot handle ${param.type} in call-body-after!`);
+          warn(`Cannot handle ${param.rawType} in call-body-after!`);
       };
     }
   });

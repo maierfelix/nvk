@@ -59,6 +59,7 @@ class JavaScriptType {
   JavaScriptType.STRING = idx++;
   JavaScriptType.NUMBER = idx++;
   JavaScriptType.ENUM = idx++;
+  JavaScriptType.BIGINT = idx++;
   JavaScriptType.BITMASK = idx++;
   JavaScriptType.OBJECT_INOUT = idx++;
   JavaScriptType.TYPED_ARRAY = idx++;
@@ -163,7 +164,7 @@ function getJavaScriptType(member) {
     // future reserved bitmask, or must be 0
     if (!bitmask) return new JavaScriptType({
       type: JavaScriptType.NUMBER,
-      isNullable: true
+      isNullable: false
     });
     return getNumericTypescriptType({ type: member.bitmaskType, isBitmask: true });
   }
@@ -201,6 +202,19 @@ function getJavaScriptType(member) {
       });
     }
   }
+  if (member.isWin32Handle) {
+    return new JavaScriptType({
+      type: JavaScriptType.BIGINT,
+      isNullable: false
+    });
+  }
+  if (member.isWin32HandleReference) {
+    return new JavaScriptType({
+      type: JavaScriptType.OBJECT_INOUT,
+      value: "BigInt",
+      isNullable: true
+    });
+  }
   switch (rawType) {
     case "void *":
     case "const void *":
@@ -229,7 +243,7 @@ function getJavaScriptType(member) {
     case "uint64_t":
       return new JavaScriptType({
         type: JavaScriptType.NUMBER,
-        isNullable: true
+        isNullable: false
       });
     case "void **":
       return new JavaScriptType({
@@ -244,16 +258,19 @@ function getJavaScriptType(member) {
 
 function getType(object) {
   let folder = getObjectFolder(object);
-  let {type} = getJavaScriptType(object);
+  let {type, value} = getJavaScriptType(object);
   switch (type) {
     case JavaScriptType.UNKNOWN: return `N/A`;
     case JavaScriptType.OBJECT: return `<a href="../${folder}/${object.type}.html">${object.type}</a>`;
     case JavaScriptType.NULL: return `null`;
     case JavaScriptType.STRING: return `String`;
     case JavaScriptType.NUMBER: return `Number`;
+    case JavaScriptType.BIGINT: return `BigInt`;
     case JavaScriptType.ENUM: return `Number`;
     case JavaScriptType.BITMASK: return `Number`;
-    case JavaScriptType.OBJECT_INOUT: return `Object`;
+    case JavaScriptType.OBJECT_INOUT: {
+      return `Object.$<vk-property-type type="object">(${value})</vk-property-type>`;
+    }
     case JavaScriptType.ARRAY_OF_STRINGS: {
       return `Array<vk-property-type type="string">[String]</vk-property-type>`;
     }
@@ -279,6 +296,7 @@ function getCSSType(member) {
     case JavaScriptType.NULL: return `null`;
     case JavaScriptType.STRING: return `string`;
     case JavaScriptType.NUMBER: return `number`;
+    case JavaScriptType.BIGINT: return `number`;
     case JavaScriptType.ENUM: return `number`;
     case JavaScriptType.BITMASK: return `number`;
     case JavaScriptType.OBJECT_INOUT: return `object`;

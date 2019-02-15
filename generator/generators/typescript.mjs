@@ -108,6 +108,8 @@ function getTypescriptType(member) {
       return `${member.type} | null`;
     }
   }
+  if (member.isWin32Handle) return `bigint`;
+  if (member.isWin32HandleReference) return `VkInoutAddress`;
   switch (rawType) {
     case "void *":
     case "const void *":

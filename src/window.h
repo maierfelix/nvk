@@ -47,6 +47,7 @@ class VulkanWindow : public Napi::ObjectWrap<VulkanWindow> {
     Napi::Value shouldClose(const Napi::CallbackInfo &info);
     Napi::Value createSurface(const Napi::CallbackInfo &info);
     Napi::Value getRequiredInstanceExtensions(const Napi::CallbackInfo &info);
+    Napi::Value getWindowHandle(const Napi::CallbackInfo &info);
 
     Napi::Value Gettitle(const Napi::CallbackInfo &info);
     void Settitle(const Napi::CallbackInfo &info, const Napi::Value& value);
@@ -86,6 +87,9 @@ class VulkanWindow : public Napi::ObjectWrap<VulkanWindow> {
 
     Napi::Value Getondrop(const Napi::CallbackInfo &info);
     void Setondrop(const Napi::CallbackInfo &info, const Napi::Value& value);
+
+    Napi::Value GetHINSTANCE(const Napi::CallbackInfo &info);
+    Napi::Value GetHWND(const Napi::CallbackInfo &info);
 
     static void onWindowResize(GLFWwindow*, int, int);
     static void onWindowFocus(GLFWwindow*, int);
@@ -214,6 +218,18 @@ Napi::Object VulkanWindow::Initialize(Napi::Env env, Napi::Object exports) {
       "ondrop",
       &VulkanWindow::Getondrop,
       &VulkanWindow::Setondrop,
+      napi_enumerable
+    ),
+    InstanceAccessor(
+      "HINSTANCE",
+      &VulkanWindow::GetHINSTANCE,
+      nullptr,
+      napi_enumerable
+    ),
+    InstanceAccessor(
+      "HWND",
+      &VulkanWindow::GetHWND,
+      nullptr,
       napi_enumerable
     )
   });
@@ -434,7 +450,6 @@ Napi::Value VulkanWindow::createSurface(const Napi::CallbackInfo& info) {
     &surface->instance
   );
   return Napi::Number::New(env, static_cast<int32_t>(out));
-  return Napi::Number::New(env, static_cast<int32_t>(0));
 }
 
 Napi::Value VulkanWindow::getRequiredInstanceExtensions(const Napi::CallbackInfo& info) {
@@ -624,6 +639,22 @@ void VulkanWindow::Setondrop(const Napi::CallbackInfo& info, const Napi::Value& 
   if (value.IsFunction()) this->ondrop.Reset(value.As<Napi::Function>(), 1);
   else if (value.IsNull()) this->ondrop.Reset();
   else Napi::TypeError::New(env, "Argument 1 must be of type 'Function'").ThrowAsJavaScriptException();
+}
+
+Napi::Value VulkanWindow::GetHWND(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  GLFWwindow* window = this->instance;
+  HWND hwnd = glfwGetWin32Window(window);
+  Napi::BigInt out = Napi::BigInt::New(env, (int64_t)hwnd);
+  return out;
+}
+
+Napi::Value VulkanWindow::GetHINSTANCE(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  GLFWwindow* window = this->instance;
+  HINSTANCE hinstance = GetModuleHandle(nullptr);
+  Napi::BigInt out = Napi::BigInt::New(env, (int64_t)hinstance);
+  return out;
 }
 
 #endif

@@ -107,10 +107,10 @@ export function getAutoStructureType(name) {
   let rx = /(?<!(^|[A-Z0-9]))(?=[A-Z0-9])|(?<!(^|[^A-Z]))(?=[0-9])|(?<!(^|[^0-9]))(?=[A-Za-z])|(?<!^)(?=[A-Z][a-z])/gm;
   let values = [];
   let splits = name.split(rx);
-  splits.map(v => {
-    if (v) {
-      if (v === `Vk`) out += `VK_STRUCTURE_TYPE_`;
-      else values.push(v);
+  splits.map(value => {
+    if (value) {
+      if (value === `Vk`) out += `VK_STRUCTURE_TYPE_`;
+      else values.push(value);
     }
   });
   out += values.join(`_`).toUpperCase();
@@ -181,16 +181,11 @@ export function isIgnoreableType(obj) {
     type === "MirConnection *" ||
     type === "struct wl_display *" ||
     type === "struct wl_surface *" ||
-    type === "Window" ||
     type === "xcb_connection_t *" ||
     type === "xcb_window_t" ||
     type === "Display *" ||
-    type === "HWND" ||
-    type === "HANDLE" ||
-    type === "HANDLE *" ||
     type === "DWORD" ||
-    type === "LPCWSTR" ||
-    type === "HINSTANCE"
+    type === "LPCWSTR"
   );
 };
 
@@ -276,6 +271,8 @@ export function isReferenceableMember(member) {
   if (member.isStructType || member.isHandleType || member.dereferenceCount > 0) return true;
   if (isPNextMember(member)) return true;
   if (member.isVoidPointer) return true;
+  if (member.isWin32Handle) return false;
+  if (member.isWin32HandleReference) return true;
   switch (rawType) {
     case "const char *":
     case "float *":

@@ -480,6 +480,17 @@ function parseTypeElement(child) {
       out.jsTypedArrayName = getJavaScriptTypedArrayName(out.rawType);
     }
   }
+  // handle
+  if (
+    out.rawType === `HWND` ||
+    out.rawType === `HANDLE` ||
+    out.rawType === `HINSTANCE`) {
+    out.isWin32Handle = true;
+  }
+  // handle reference
+  if (out.rawType === `HANDLE *`) {
+    out.isWin32HandleReference = true;
+  }
   // figure out js relative type
   {
     let jsType = "undefined";
@@ -490,6 +501,8 @@ function parseTypeElement(child) {
     else if (out.isArray) jsType = "Array";
     else if (out.isStructType || out.isHandleType) jsType = "Object";
     else if (!out.isConstant && isNumericReferenceType(out.rawType)) jsType = "Object";
+    else if (out.isWin32Handle) jsType = "BigInt";
+    else if (out.isWin32HandleReference) jsType = "Object";
     out.jsType = jsType;
   }
   return out;
