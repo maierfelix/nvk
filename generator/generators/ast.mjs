@@ -495,7 +495,7 @@ function parseTypeElement(child) {
   {
     let jsType = "undefined";
     if (out.isNumber) jsType = "Number";
-    else if (out.isString) jsType = "String";
+    else if (out.isString || out.rawType === "LPCWSTR") jsType = "String";
     else if (out.isTypedArray) jsType = "ArrayBufferView";
     else if (out.isVoidPointer) jsType = "ArrayBuffer";
     else if (out.isArray) jsType = "Array";

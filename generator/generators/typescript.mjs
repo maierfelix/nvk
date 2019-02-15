@@ -114,6 +114,7 @@ function getTypescriptType(member) {
     case "void *":
     case "const void *":
       return `null`;
+    case "LPCWSTR":
     case "const char *":
       return `string | null`;
     case "const char * const*":

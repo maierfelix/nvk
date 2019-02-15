@@ -165,6 +165,7 @@ function processHeaderGetter(struct, member) {
     Napi::Value Get${member.name}(const Napi::CallbackInfo &info);`;
   }
   switch (rawType) {
+    case "LPCWSTR":
     case "const char *":
       return `
     Napi::ObjectReference ${member.name};
@@ -258,6 +259,7 @@ function processSourceGetter(struct, member) {
     case "uint64_t":
       return `
   return Napi::Number::New(env, this->instance.${member.name});`;
+    case "LPCWSTR":
     case "const char *":
       return `
   if (this->${member.name}.IsEmpty()) return env.Null();
@@ -388,6 +390,17 @@ function processSourceSetter(struct, member) {
       } else {
         warn(`Cannot handle member ${member.rawType} for ${struct.name} in source-setter`);
       }
+    case "LPCWSTR":
+      return `
+  if (value.IsString()) {
+    this->${member.name}.Reset(value.ToObject(), 1);
+    this->instance.${member.name} = s2ws(value.ToString().Utf8Value()).c_str();
+  } else if (value.IsNull()) {
+    this->instance.${member.name} = nullptr;
+  } else {
+    ${invalidMemberTypeError(member)}
+    return;
+  }`;
     case "const char *":
       return `
   if (value.IsString()) {

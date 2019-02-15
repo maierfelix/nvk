@@ -9626,7 +9626,7 @@ interface VkExportFenceWin32HandleInfoKHRInitializer {
   pNext?: null;
   pAttributes?: null;
   dwAccess?: null;
-  name?: null;
+  name?: string | null;
 }
 
 declare var VkExportFenceWin32HandleInfoKHR: {
@@ -9636,7 +9636,7 @@ declare var VkExportFenceWin32HandleInfoKHR: {
   pNext: null;
   pAttributes: null;
   dwAccess: null;
-  name: null;
+  name: string | null;
 }
 
 export interface VkExportFenceWin32HandleInfoKHR {
@@ -9644,7 +9644,7 @@ export interface VkExportFenceWin32HandleInfoKHR {
   pNext: null;
   pAttributes: null;
   dwAccess: null;
-  name: null;
+  name: string | null;
 }
 
 
@@ -9656,7 +9656,7 @@ interface VkImportFenceWin32HandleInfoKHRInitializer {
   flags?: VkFenceImportFlagBits;
   handleType?: VkExternalFenceHandleTypeFlagBits;
   handle?: bigint;
-  name?: null;
+  name?: string | null;
 }
 
 declare var VkImportFenceWin32HandleInfoKHR: {
@@ -9668,7 +9668,7 @@ declare var VkImportFenceWin32HandleInfoKHR: {
   flags: VkFenceImportFlagBits;
   handleType: VkExternalFenceHandleTypeFlagBits;
   handle: bigint;
-  name: null;
+  name: string | null;
 }
 
 export interface VkImportFenceWin32HandleInfoKHR {
@@ -9678,7 +9678,7 @@ export interface VkImportFenceWin32HandleInfoKHR {
   flags: VkFenceImportFlagBits;
   handleType: VkExternalFenceHandleTypeFlagBits;
   handle: bigint;
-  name: null;
+  name: string | null;
 }
 
 
@@ -9944,7 +9944,7 @@ interface VkExportSemaphoreWin32HandleInfoKHRInitializer {
   pNext?: null;
   pAttributes?: null;
   dwAccess?: null;
-  name?: null;
+  name?: string | null;
 }
 
 declare var VkExportSemaphoreWin32HandleInfoKHR: {
@@ -9954,7 +9954,7 @@ declare var VkExportSemaphoreWin32HandleInfoKHR: {
   pNext: null;
   pAttributes: null;
   dwAccess: null;
-  name: null;
+  name: string | null;
 }
 
 export interface VkExportSemaphoreWin32HandleInfoKHR {
@@ -9962,7 +9962,7 @@ export interface VkExportSemaphoreWin32HandleInfoKHR {
   pNext: null;
   pAttributes: null;
   dwAccess: null;
-  name: null;
+  name: string | null;
 }
 
 
@@ -9974,7 +9974,7 @@ interface VkImportSemaphoreWin32HandleInfoKHRInitializer {
   flags?: VkSemaphoreImportFlagBits;
   handleType?: VkExternalSemaphoreHandleTypeFlagBits;
   handle?: bigint;
-  name?: null;
+  name?: string | null;
 }
 
 declare var VkImportSemaphoreWin32HandleInfoKHR: {
@@ -9986,7 +9986,7 @@ declare var VkImportSemaphoreWin32HandleInfoKHR: {
   flags: VkSemaphoreImportFlagBits;
   handleType: VkExternalSemaphoreHandleTypeFlagBits;
   handle: bigint;
-  name: null;
+  name: string | null;
 }
 
 export interface VkImportSemaphoreWin32HandleInfoKHR {
@@ -9996,7 +9996,7 @@ export interface VkImportSemaphoreWin32HandleInfoKHR {
   flags: VkSemaphoreImportFlagBits;
   handleType: VkExternalSemaphoreHandleTypeFlagBits;
   handle: bigint;
-  name: null;
+  name: string | null;
 }
 
 
@@ -10309,7 +10309,7 @@ interface VkExportMemoryWin32HandleInfoKHRInitializer {
   pNext?: null;
   pAttributes?: null;
   dwAccess?: null;
-  name?: null;
+  name?: string | null;
 }
 
 declare var VkExportMemoryWin32HandleInfoKHR: {
@@ -10319,7 +10319,7 @@ declare var VkExportMemoryWin32HandleInfoKHR: {
   pNext: null;
   pAttributes: null;
   dwAccess: null;
-  name: null;
+  name: string | null;
 }
 
 export interface VkExportMemoryWin32HandleInfoKHR {
@@ -10327,7 +10327,7 @@ export interface VkExportMemoryWin32HandleInfoKHR {
   pNext: null;
   pAttributes: null;
   dwAccess: null;
-  name: null;
+  name: string | null;
 }
 
 
@@ -10337,7 +10337,7 @@ interface VkImportMemoryWin32HandleInfoKHRInitializer {
   pNext?: null;
   handleType?: VkExternalMemoryHandleTypeFlagBits;
   handle?: bigint;
-  name?: null;
+  name?: string | null;
 }
 
 declare var VkImportMemoryWin32HandleInfoKHR: {
@@ -10347,7 +10347,7 @@ declare var VkImportMemoryWin32HandleInfoKHR: {
   pNext: null;
   handleType: VkExternalMemoryHandleTypeFlagBits;
   handle: bigint;
-  name: null;
+  name: string | null;
 }
 
 export interface VkImportMemoryWin32HandleInfoKHR {
@@ -10355,7 +10355,7 @@ export interface VkImportMemoryWin32HandleInfoKHR {
   pNext: null;
   handleType: VkExternalMemoryHandleTypeFlagBits;
   handle: bigint;
-  name: null;
+  name: string | null;
 }
 
 

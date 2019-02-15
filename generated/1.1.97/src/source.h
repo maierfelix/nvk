@@ -10695,6 +10695,10 @@ class _VkExportFenceWin32HandleInfoKHR : public Napi::ObjectWrap<_VkExportFenceW
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
+    Napi::ObjectReference name;
+    Napi::Value Getname(const Napi::CallbackInfo &info);
+    void Setname(const Napi::CallbackInfo &info, const Napi::Value& value);
+    
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -10741,6 +10745,10 @@ class _VkImportFenceWin32HandleInfoKHR : public Napi::ObjectWrap<_VkImportFenceW
     
     Napi::Value Gethandle(const Napi::CallbackInfo &info);
     void Sethandle(const Napi::CallbackInfo &info, const Napi::Value& value);
+    
+    Napi::ObjectReference name;
+    Napi::Value Getname(const Napi::CallbackInfo &info);
+    void Setname(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
     // #default properties
@@ -11175,6 +11183,10 @@ class _VkExportSemaphoreWin32HandleInfoKHR : public Napi::ObjectWrap<_VkExportSe
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
+    Napi::ObjectReference name;
+    Napi::Value Getname(const Napi::CallbackInfo &info);
+    void Setname(const Napi::CallbackInfo &info, const Napi::Value& value);
+    
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -11221,6 +11233,10 @@ class _VkImportSemaphoreWin32HandleInfoKHR : public Napi::ObjectWrap<_VkImportSe
     
     Napi::Value Gethandle(const Napi::CallbackInfo &info);
     void Sethandle(const Napi::CallbackInfo &info, const Napi::Value& value);
+    
+    Napi::ObjectReference name;
+    Napi::Value Getname(const Napi::CallbackInfo &info);
+    void Setname(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
     // #default properties
@@ -11732,6 +11748,10 @@ class _VkExportMemoryWin32HandleInfoKHR : public Napi::ObjectWrap<_VkExportMemor
     Napi::Value GetpNext(const Napi::CallbackInfo &info);
     void SetpNext(const Napi::CallbackInfo &info, const Napi::Value& value);
     
+    Napi::ObjectReference name;
+    Napi::Value Getname(const Napi::CallbackInfo &info);
+    void Setname(const Napi::CallbackInfo &info, const Napi::Value& value);
+    
 
     // #default properties
     Napi::Value GetmemoryBuffer(const Napi::CallbackInfo &info);
@@ -11771,6 +11791,10 @@ class _VkImportMemoryWin32HandleInfoKHR : public Napi::ObjectWrap<_VkImportMemor
     
     Napi::Value Gethandle(const Napi::CallbackInfo &info);
     void Sethandle(const Napi::CallbackInfo &info, const Napi::Value& value);
+    
+    Napi::ObjectReference name;
+    Napi::Value Getname(const Napi::CallbackInfo &info);
+    void Setname(const Napi::CallbackInfo &info, const Napi::Value& value);
     
 
     // #default properties

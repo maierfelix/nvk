@@ -184,8 +184,7 @@ export function isIgnoreableType(obj) {
     type === "xcb_connection_t *" ||
     type === "xcb_window_t" ||
     type === "Display *" ||
-    type === "DWORD" ||
-    type === "LPCWSTR"
+    type === "DWORD"
   );
 };
 
@@ -198,7 +197,7 @@ export function isWin32SupportedExtension(platform) {
     platform === "default" ||
     platform === "win32"
   );
-}
+};
 
 export function getJavaScriptTypedArrayName(type) {
   switch (type) {
@@ -274,7 +273,10 @@ export function isReferenceableMember(member) {
   if (member.isWin32Handle) return false;
   if (member.isWin32HandleReference) return true;
   switch (rawType) {
+    case "LPCWSTR":
     case "const char *":
+    case "const char * const*":
+      return true;
     case "float *":
     case "int32_t *":
     case "uint8_t *":
@@ -285,7 +287,6 @@ export function isReferenceableMember(member) {
     case "const uint8_t *":
     case "const uint32_t *":
     case "const uint64_t *":
-    case "const char * const*":
       return true;
     case "int":
     case "float":

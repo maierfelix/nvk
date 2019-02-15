@@ -40630,7 +40630,7 @@
         "name": "name",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "jsType": "String",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [],
@@ -40732,7 +40732,7 @@
         "name": "name",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "jsType": "String",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [],
@@ -41978,7 +41978,7 @@
         "name": "name",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "jsType": "String",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [],
@@ -42077,7 +42077,7 @@
         "name": "name",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "jsType": "String",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [],
@@ -43203,7 +43203,7 @@
         "name": "name",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "jsType": "String",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [],
@@ -43302,7 +43302,7 @@
         "name": "name",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "jsType": "String",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [],

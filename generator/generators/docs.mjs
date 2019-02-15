@@ -222,6 +222,7 @@ function getJavaScriptType(member) {
         type: JavaScriptType.NULL,
         isNullable: true
       });
+    case "LPCWSTR":
     case "const char *":
       return new JavaScriptType({
         type: JavaScriptType.STRING,
