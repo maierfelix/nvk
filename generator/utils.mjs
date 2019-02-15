@@ -174,7 +174,6 @@ export function isIgnoreableType(obj) {
   if (type.substr(0, 4) === "PFN_") return true;
   if (type.substr(type.length - 4, type.length) === "2KHR") return true;
   return (
-    type === "const SECURITY_ATTRIBUTES *" ||
     type === "struct AHardwareBuffer *" ||
     type === "struct ANativeWindow *" ||
     type === "MirSurface *" ||
@@ -184,6 +183,7 @@ export function isIgnoreableType(obj) {
     type === "xcb_connection_t *" ||
     type === "xcb_window_t" ||
     type === "Display *" ||
+    type === "const SECURITY_ATTRIBUTES *" ||
     type === "DWORD"
   );
 };
