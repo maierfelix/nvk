@@ -218,7 +218,7 @@ function getCallBodyBefore(call) {
   let out = params.map((param, index) => {
     if (param.isVoidPointer) {
       return `
-  ${param.type}* $p${index};
+  ${param.type}* $p${index} = nullptr;
   if (info[${index}].IsArrayBuffer()) {
     Napi::ArrayBuffer buf = info[${index}].As<Napi::ArrayBuffer>();
     $p${index} = buf.Data();
@@ -235,7 +235,7 @@ function getCallBodyBefore(call) {
     if (param.isWin32HandleReference) {
       return `
   Napi::Object obj${index};
-  ${param.type}* $p${index};
+  ${param.type}* $p${index} = nullptr;
   if (info[${index}].IsObject()) {
     obj${index} = info[${index}].As<Napi::Object>();
     if (!obj${index}.Has("$")) {
@@ -279,7 +279,7 @@ function getCallBodyBefore(call) {
     if (param.baseType === "VkBool32" && param.dereferenceCount > 0) {
       return `
     Napi::Object obj${index};
-    ${param.type} $p${index};
+    ${param.type} $p${index} = 0;
     if (info[${index}].IsObject()) {
       obj${index} = info[${index}].As<Napi::Object>();
       if (!obj${index}.Has("$")) {
@@ -306,7 +306,7 @@ function getCallBodyBefore(call) {
       }
       case "const char *":
         return `
-  ${param.type}* $p${index};
+  ${param.type}* $p${index} = nullptr;
   if (info[${index}].IsString()) {
     $p${index} = copyV8String(info[${index}]);
   } else if (!info[${index}].IsNull()) {
@@ -328,7 +328,7 @@ function getCallBodyBefore(call) {
         } else {
           return `
   Napi::Object obj${index};
-  ${param.type} $p${index};
+  ${param.type} $p${index} = 0;
   if (info[${index}].IsObject()) {
     obj${index} = info[${index}].As<Napi::Object>();
     if (!obj${index}.Has("$")) {
@@ -345,7 +345,7 @@ function getCallBodyBefore(call) {
       case "void **":
         return `
   Napi::Object obj${index} = info[${index}].As<Napi::Object>();
-  void *$p${index};`;
+  void *$p${index} = nullptr;`;
       case "const void *":
         return `
   ${param.type}* $p${index};
@@ -375,7 +375,7 @@ function getCallBodyBefore(call) {
           }
           return `
   _${param.type}* obj${index};
-  ${param.type} *$p${index};
+  ${param.type} *$p${index} = nullptr;
   if (info[${index}].IsObject()) {
     Napi::Object obj = info[${index}].As<Napi::Object>();
     if (!(obj.InstanceOf(_${param.type}::constructor.Value()))) {
@@ -772,7 +772,7 @@ function getCallProcAddrDeclarations(calls) {
       let {extension} = ext;
       if (extension.type === "device" || extension.type === "instance") {
         out += `
-PFN_${call.name} $${call.name} = nullptr;`;
+static PFN_${call.name} $${call.name} = nullptr;`;
       }
     }
   });

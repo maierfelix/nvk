@@ -265,7 +265,7 @@ std::map<std::string, std::string> _API_Extensions_Strings = {
   { "VK_NV_EXTENSION_250_EXTENSION_NAME", "VK_NV_extension_250" },
   
 };
-std::map<std::string, __int32> _API_Extensions = {
+std::map<std::string, int32_t> _API_Extensions = {
   { "VK_KHR_SURFACE_SPEC_VERSION", 25 },
   { "VK_KHR_SWAPCHAIN_SPEC_VERSION", 70 },
   { "VK_KHR_DISPLAY_SPEC_VERSION", 21 },
@@ -519,36 +519,36 @@ std::map<std::string, __int32> _API_Extensions = {
   { "VK_NV_EXTENSION_250_SPEC_VERSION", 0 },
   
 };
-std::map<std::string, __int32> _API_Constants = {
+std::map<std::string, int32_t> _API_Constants = {
   { "VK_MAX_PHYSICAL_DEVICE_NAME_SIZE", 256 },
   { "VK_UUID_SIZE", 16 },
   { "VK_LUID_SIZE", 8 },
-  { "VK_LUID_SIZE_KHR", (__int32)VK_LUID_SIZE },
+  { "VK_LUID_SIZE_KHR", (int32_t)VK_LUID_SIZE },
   { "VK_MAX_EXTENSION_NAME_SIZE", 256 },
   { "VK_MAX_DESCRIPTION_SIZE", 256 },
   { "VK_MAX_MEMORY_TYPES", 32 },
   { "VK_MAX_MEMORY_HEAPS", 16 },
-  { "VK_LOD_CLAMP_NONE", (__int32)1000.0f },
-  { "VK_REMAINING_MIP_LEVELS", (__int32)(~0U) },
-  { "VK_REMAINING_ARRAY_LAYERS", (__int32)(~0U) },
-  { "VK_WHOLE_SIZE", (__int32)(~0ULL) },
-  { "VK_ATTACHMENT_UNUSED", (__int32)(~0U) },
+  { "VK_LOD_CLAMP_NONE", (int32_t)1000.0f },
+  { "VK_REMAINING_MIP_LEVELS", (int32_t)(~0U) },
+  { "VK_REMAINING_ARRAY_LAYERS", (int32_t)(~0U) },
+  { "VK_WHOLE_SIZE", (int32_t)(~0ULL) },
+  { "VK_ATTACHMENT_UNUSED", (int32_t)(~0U) },
   { "VK_TRUE", 1 },
   { "VK_FALSE", 0 },
-  { "VK_QUEUE_FAMILY_IGNORED", (__int32)(~0U) },
-  { "VK_QUEUE_FAMILY_EXTERNAL", (__int32)(~0U-1) },
-  { "VK_QUEUE_FAMILY_EXTERNAL_KHR", (__int32)VK_QUEUE_FAMILY_EXTERNAL },
-  { "VK_QUEUE_FAMILY_FOREIGN_EXT", (__int32)(~0U-2) },
-  { "VK_SUBPASS_EXTERNAL", (__int32)(~0U) },
+  { "VK_QUEUE_FAMILY_IGNORED", (int32_t)(~0U) },
+  { "VK_QUEUE_FAMILY_EXTERNAL", (int32_t)(~0U-1) },
+  { "VK_QUEUE_FAMILY_EXTERNAL_KHR", (int32_t)VK_QUEUE_FAMILY_EXTERNAL },
+  { "VK_QUEUE_FAMILY_FOREIGN_EXT", (int32_t)(~0U-2) },
+  { "VK_SUBPASS_EXTERNAL", (int32_t)(~0U) },
   { "VK_MAX_DEVICE_GROUP_SIZE", 32 },
-  { "VK_MAX_DEVICE_GROUP_SIZE_KHR", (__int32)VK_MAX_DEVICE_GROUP_SIZE },
+  { "VK_MAX_DEVICE_GROUP_SIZE_KHR", (int32_t)VK_MAX_DEVICE_GROUP_SIZE },
   { "VK_MAX_DRIVER_NAME_SIZE_KHR", 256 },
   { "VK_MAX_DRIVER_INFO_SIZE_KHR", 256 },
-  { "VK_SHADER_UNUSED_NV", (__int32)(~0U) },
+  { "VK_SHADER_UNUSED_NV", (int32_t)(~0U) },
   { "VK_NULL_HANDLE", 0 },
   
 };
-std::map<std::string, __int32> _VkImageLayout = {
+std::map<std::string, int32_t> _VkImageLayout = {
   { "VK_IMAGE_LAYOUT_UNDEFINED", 0 },
   { "VK_IMAGE_LAYOUT_GENERAL", 1 },
   { "VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL", 2 },
@@ -566,30 +566,30 @@ std::map<std::string, __int32> _VkImageLayout = {
   { "VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT", 1000218000 },
   
 };
-std::map<std::string, __int32> _VkAttachmentLoadOp = {
+std::map<std::string, int32_t> _VkAttachmentLoadOp = {
   { "VK_ATTACHMENT_LOAD_OP_LOAD", 0 },
   { "VK_ATTACHMENT_LOAD_OP_CLEAR", 1 },
   { "VK_ATTACHMENT_LOAD_OP_DONT_CARE", 2 },
   
 };
-std::map<std::string, __int32> _VkAttachmentStoreOp = {
+std::map<std::string, int32_t> _VkAttachmentStoreOp = {
   { "VK_ATTACHMENT_STORE_OP_STORE", 0 },
   { "VK_ATTACHMENT_STORE_OP_DONT_CARE", 1 },
   
 };
-std::map<std::string, __int32> _VkImageType = {
+std::map<std::string, int32_t> _VkImageType = {
   { "VK_IMAGE_TYPE_1D", 0 },
   { "VK_IMAGE_TYPE_2D", 1 },
   { "VK_IMAGE_TYPE_3D", 2 },
   
 };
-std::map<std::string, __int32> _VkImageTiling = {
+std::map<std::string, int32_t> _VkImageTiling = {
   { "VK_IMAGE_TILING_OPTIMAL", 0 },
   { "VK_IMAGE_TILING_LINEAR", 1 },
   { "VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT", 1000158000 },
   
 };
-std::map<std::string, __int32> _VkImageViewType = {
+std::map<std::string, int32_t> _VkImageViewType = {
   { "VK_IMAGE_VIEW_TYPE_1D", 0 },
   { "VK_IMAGE_VIEW_TYPE_2D", 1 },
   { "VK_IMAGE_VIEW_TYPE_3D", 2 },
@@ -599,12 +599,12 @@ std::map<std::string, __int32> _VkImageViewType = {
   { "VK_IMAGE_VIEW_TYPE_CUBE_ARRAY", 6 },
   
 };
-std::map<std::string, __int32> _VkCommandBufferLevel = {
+std::map<std::string, int32_t> _VkCommandBufferLevel = {
   { "VK_COMMAND_BUFFER_LEVEL_PRIMARY", 0 },
   { "VK_COMMAND_BUFFER_LEVEL_SECONDARY", 1 },
   
 };
-std::map<std::string, __int32> _VkComponentSwizzle = {
+std::map<std::string, int32_t> _VkComponentSwizzle = {
   { "VK_COMPONENT_SWIZZLE_IDENTITY", 0 },
   { "VK_COMPONENT_SWIZZLE_ZERO", 1 },
   { "VK_COMPONENT_SWIZZLE_ONE", 2 },
@@ -614,7 +614,7 @@ std::map<std::string, __int32> _VkComponentSwizzle = {
   { "VK_COMPONENT_SWIZZLE_A", 6 },
   
 };
-std::map<std::string, __int32> _VkDescriptorType = {
+std::map<std::string, int32_t> _VkDescriptorType = {
   { "VK_DESCRIPTOR_TYPE_SAMPLER", 0 },
   { "VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER", 1 },
   { "VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE", 2 },
@@ -630,7 +630,7 @@ std::map<std::string, __int32> _VkDescriptorType = {
   { "VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV", 1000165000 },
   
 };
-std::map<std::string, __int32> _VkQueryType = {
+std::map<std::string, int32_t> _VkQueryType = {
   { "VK_QUERY_TYPE_OCCLUSION", 0 },
   { "VK_QUERY_TYPE_PIPELINE_STATISTICS", 1 },
   { "VK_QUERY_TYPE_TIMESTAMP", 2 },
@@ -640,7 +640,7 @@ std::map<std::string, __int32> _VkQueryType = {
   { "VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV", 1000165000 },
   
 };
-std::map<std::string, __int32> _VkBorderColor = {
+std::map<std::string, int32_t> _VkBorderColor = {
   { "VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK", 0 },
   { "VK_BORDER_COLOR_INT_TRANSPARENT_BLACK", 1 },
   { "VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK", 2 },
@@ -649,17 +649,17 @@ std::map<std::string, __int32> _VkBorderColor = {
   { "VK_BORDER_COLOR_INT_OPAQUE_WHITE", 5 },
   
 };
-std::map<std::string, __int32> _VkPipelineBindPoint = {
+std::map<std::string, int32_t> _VkPipelineBindPoint = {
   { "VK_PIPELINE_BIND_POINT_GRAPHICS", 0 },
   { "VK_PIPELINE_BIND_POINT_COMPUTE", 1 },
   { "VK_PIPELINE_BIND_POINT_RAY_TRACING_NV", 1000165000 },
   
 };
-std::map<std::string, __int32> _VkPipelineCacheHeaderVersion = {
+std::map<std::string, int32_t> _VkPipelineCacheHeaderVersion = {
   { "VK_PIPELINE_CACHE_HEADER_VERSION_ONE", 1 },
   
 };
-std::map<std::string, __int32> _VkPrimitiveTopology = {
+std::map<std::string, int32_t> _VkPrimitiveTopology = {
   { "VK_PRIMITIVE_TOPOLOGY_POINT_LIST", 0 },
   { "VK_PRIMITIVE_TOPOLOGY_LINE_LIST", 1 },
   { "VK_PRIMITIVE_TOPOLOGY_LINE_STRIP", 2 },
@@ -673,36 +673,36 @@ std::map<std::string, __int32> _VkPrimitiveTopology = {
   { "VK_PRIMITIVE_TOPOLOGY_PATCH_LIST", 10 },
   
 };
-std::map<std::string, __int32> _VkSharingMode = {
+std::map<std::string, int32_t> _VkSharingMode = {
   { "VK_SHARING_MODE_EXCLUSIVE", 0 },
   { "VK_SHARING_MODE_CONCURRENT", 1 },
   
 };
-std::map<std::string, __int32> _VkIndexType = {
+std::map<std::string, int32_t> _VkIndexType = {
   { "VK_INDEX_TYPE_UINT16", 0 },
   { "VK_INDEX_TYPE_UINT32", 1 },
   { "VK_INDEX_TYPE_NONE_NV", 1000165000 },
   
 };
-std::map<std::string, __int32> _VkFilter = {
+std::map<std::string, int32_t> _VkFilter = {
   { "VK_FILTER_NEAREST", 0 },
   { "VK_FILTER_LINEAR", 1 },
   { "VK_FILTER_CUBIC_IMG", 1000015000 },
   
 };
-std::map<std::string, __int32> _VkSamplerMipmapMode = {
+std::map<std::string, int32_t> _VkSamplerMipmapMode = {
   { "VK_SAMPLER_MIPMAP_MODE_NEAREST", 0 },
   { "VK_SAMPLER_MIPMAP_MODE_LINEAR", 1 },
   
 };
-std::map<std::string, __int32> _VkSamplerAddressMode = {
+std::map<std::string, int32_t> _VkSamplerAddressMode = {
   { "VK_SAMPLER_ADDRESS_MODE_REPEAT", 0 },
   { "VK_SAMPLER_ADDRESS_MODE_MIRRORED_REPEAT", 1 },
   { "VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE", 2 },
   { "VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER", 3 },
   
 };
-std::map<std::string, __int32> _VkCompareOp = {
+std::map<std::string, int32_t> _VkCompareOp = {
   { "VK_COMPARE_OP_NEVER", 0 },
   { "VK_COMPARE_OP_LESS", 1 },
   { "VK_COMPARE_OP_EQUAL", 2 },
@@ -713,19 +713,19 @@ std::map<std::string, __int32> _VkCompareOp = {
   { "VK_COMPARE_OP_ALWAYS", 7 },
   
 };
-std::map<std::string, __int32> _VkPolygonMode = {
+std::map<std::string, int32_t> _VkPolygonMode = {
   { "VK_POLYGON_MODE_FILL", 0 },
   { "VK_POLYGON_MODE_LINE", 1 },
   { "VK_POLYGON_MODE_POINT", 2 },
   { "VK_POLYGON_MODE_FILL_RECTANGLE_NV", 1000153000 },
   
 };
-std::map<std::string, __int32> _VkFrontFace = {
+std::map<std::string, int32_t> _VkFrontFace = {
   { "VK_FRONT_FACE_COUNTER_CLOCKWISE", 0 },
   { "VK_FRONT_FACE_CLOCKWISE", 1 },
   
 };
-std::map<std::string, __int32> _VkBlendFactor = {
+std::map<std::string, int32_t> _VkBlendFactor = {
   { "VK_BLEND_FACTOR_ZERO", 0 },
   { "VK_BLEND_FACTOR_ONE", 1 },
   { "VK_BLEND_FACTOR_SRC_COLOR", 2 },
@@ -747,7 +747,7 @@ std::map<std::string, __int32> _VkBlendFactor = {
   { "VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA", 18 },
   
 };
-std::map<std::string, __int32> _VkBlendOp = {
+std::map<std::string, int32_t> _VkBlendOp = {
   { "VK_BLEND_OP_ADD", 0 },
   { "VK_BLEND_OP_SUBTRACT", 1 },
   { "VK_BLEND_OP_REVERSE_SUBTRACT", 2 },
@@ -801,7 +801,7 @@ std::map<std::string, __int32> _VkBlendOp = {
   { "VK_BLEND_OP_BLUE_EXT", 1000148045 },
   
 };
-std::map<std::string, __int32> _VkStencilOp = {
+std::map<std::string, int32_t> _VkStencilOp = {
   { "VK_STENCIL_OP_KEEP", 0 },
   { "VK_STENCIL_OP_ZERO", 1 },
   { "VK_STENCIL_OP_REPLACE", 2 },
@@ -812,7 +812,7 @@ std::map<std::string, __int32> _VkStencilOp = {
   { "VK_STENCIL_OP_DECREMENT_AND_WRAP", 7 },
   
 };
-std::map<std::string, __int32> _VkLogicOp = {
+std::map<std::string, int32_t> _VkLogicOp = {
   { "VK_LOGIC_OP_CLEAR", 0 },
   { "VK_LOGIC_OP_AND", 1 },
   { "VK_LOGIC_OP_AND_REVERSE", 2 },
@@ -831,11 +831,11 @@ std::map<std::string, __int32> _VkLogicOp = {
   { "VK_LOGIC_OP_SET", 15 },
   
 };
-std::map<std::string, __int32> _VkInternalAllocationType = {
+std::map<std::string, int32_t> _VkInternalAllocationType = {
   { "VK_INTERNAL_ALLOCATION_TYPE_EXECUTABLE", 0 },
   
 };
-std::map<std::string, __int32> _VkSystemAllocationScope = {
+std::map<std::string, int32_t> _VkSystemAllocationScope = {
   { "VK_SYSTEM_ALLOCATION_SCOPE_COMMAND", 0 },
   { "VK_SYSTEM_ALLOCATION_SCOPE_OBJECT", 1 },
   { "VK_SYSTEM_ALLOCATION_SCOPE_CACHE", 2 },
@@ -843,7 +843,7 @@ std::map<std::string, __int32> _VkSystemAllocationScope = {
   { "VK_SYSTEM_ALLOCATION_SCOPE_INSTANCE", 4 },
   
 };
-std::map<std::string, __int32> _VkPhysicalDeviceType = {
+std::map<std::string, int32_t> _VkPhysicalDeviceType = {
   { "VK_PHYSICAL_DEVICE_TYPE_OTHER", 0 },
   { "VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU", 1 },
   { "VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU", 2 },
@@ -851,12 +851,12 @@ std::map<std::string, __int32> _VkPhysicalDeviceType = {
   { "VK_PHYSICAL_DEVICE_TYPE_CPU", 4 },
   
 };
-std::map<std::string, __int32> _VkVertexInputRate = {
+std::map<std::string, int32_t> _VkVertexInputRate = {
   { "VK_VERTEX_INPUT_RATE_VERTEX", 0 },
   { "VK_VERTEX_INPUT_RATE_INSTANCE", 1 },
   
 };
-std::map<std::string, __int32> _VkFormat = {
+std::map<std::string, int32_t> _VkFormat = {
   { "VK_FORMAT_UNDEFINED", 0 },
   { "VK_FORMAT_R4G4_UNORM_PACK8", 1 },
   { "VK_FORMAT_R4G4B4A4_UNORM_PACK16", 2 },
@@ -1086,7 +1086,7 @@ std::map<std::string, __int32> _VkFormat = {
   { "VK_FORMAT_G16_B16_R16_3PLANE_444_UNORM_KHR", VK_FORMAT_G16_B16_R16_3PLANE_444_UNORM },
   
 };
-std::map<std::string, __int32> _VkStructureType = {
+std::map<std::string, int32_t> _VkStructureType = {
   { "VK_STRUCTURE_TYPE_APPLICATION_INFO", 0 },
   { "VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO", 1 },
   { "VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO", 2 },
@@ -1399,12 +1399,12 @@ std::map<std::string, __int32> _VkStructureType = {
   { "VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT", 1000247000 },
   
 };
-std::map<std::string, __int32> _VkSubpassContents = {
+std::map<std::string, int32_t> _VkSubpassContents = {
   { "VK_SUBPASS_CONTENTS_INLINE", 0 },
   { "VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS", 1 },
   
 };
-std::map<std::string, __int32> _VkResult = {
+std::map<std::string, int32_t> _VkResult = {
   { "VK_SUCCESS", 0 },
   { "VK_NOT_READY", 1 },
   { "VK_TIMEOUT", 2 },
@@ -1438,7 +1438,7 @@ std::map<std::string, __int32> _VkResult = {
   { "VK_ERROR_INVALID_DEVICE_ADDRESS_EXT", -1000244000 },
   
 };
-std::map<std::string, __int32> _VkDynamicState = {
+std::map<std::string, int32_t> _VkDynamicState = {
   { "VK_DYNAMIC_STATE_VIEWPORT", 0 },
   { "VK_DYNAMIC_STATE_SCISSOR", 1 },
   { "VK_DYNAMIC_STATE_LINE_WIDTH", 2 },
@@ -1456,12 +1456,12 @@ std::map<std::string, __int32> _VkDynamicState = {
   { "VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV", 1000205001 },
   
 };
-std::map<std::string, __int32> _VkDescriptorUpdateTemplateType = {
+std::map<std::string, int32_t> _VkDescriptorUpdateTemplateType = {
   { "VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET", 0 },
   { "VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET_KHR", VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET },
   
 };
-std::map<std::string, __int32> _VkObjectType = {
+std::map<std::string, int32_t> _VkObjectType = {
   { "VK_OBJECT_TYPE_UNKNOWN", 0 },
   { "VK_OBJECT_TYPE_INSTANCE", 1 },
   { "VK_OBJECT_TYPE_PHYSICAL_DEVICE", 2 },
@@ -1502,7 +1502,7 @@ std::map<std::string, __int32> _VkObjectType = {
   { "VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV", 1000165000 },
   
 };
-std::map<std::string, __int32> _VkPresentModeKHR = {
+std::map<std::string, int32_t> _VkPresentModeKHR = {
   { "VK_PRESENT_MODE_IMMEDIATE_KHR", 0 },
   { "VK_PRESENT_MODE_MAILBOX_KHR", 1 },
   { "VK_PRESENT_MODE_FIFO_KHR", 2 },
@@ -1511,9 +1511,9 @@ std::map<std::string, __int32> _VkPresentModeKHR = {
   { "VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR", 1000111001 },
   
 };
-std::map<std::string, __int32> _VkColorSpaceKHR = {
+std::map<std::string, int32_t> _VkColorSpaceKHR = {
   { "VK_COLOR_SPACE_SRGB_NONLINEAR_KHR", 0 },
-  { "VK_COLORSPACE_SRGB_NONLINEAR_KHR", (__int32)VK_COLOR_SPACE_SRGB_NONLINEAR_KHR },
+  { "VK_COLORSPACE_SRGB_NONLINEAR_KHR", (int32_t)VK_COLOR_SPACE_SRGB_NONLINEAR_KHR },
   { "VK_COLOR_SPACE_DISPLAY_P3_NONLINEAR_EXT", 1000104001 },
   { "VK_COLOR_SPACE_EXTENDED_SRGB_LINEAR_EXT", 1000104002 },
   { "VK_COLOR_SPACE_DCI_P3_LINEAR_EXT", 1000104003 },
@@ -1530,14 +1530,14 @@ std::map<std::string, __int32> _VkColorSpaceKHR = {
   { "VK_COLOR_SPACE_EXTENDED_SRGB_NONLINEAR_EXT", 1000104014 },
   
 };
-std::map<std::string, __int32> _VkTimeDomainEXT = {
+std::map<std::string, int32_t> _VkTimeDomainEXT = {
   { "VK_TIME_DOMAIN_DEVICE_EXT", 0 },
   { "VK_TIME_DOMAIN_CLOCK_MONOTONIC_EXT", 1 },
   { "VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_EXT", 2 },
   { "VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_EXT", 3 },
   
 };
-std::map<std::string, __int32> _VkDebugReportObjectTypeEXT = {
+std::map<std::string, int32_t> _VkDebugReportObjectTypeEXT = {
   { "VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT", 0 },
   { "VK_DEBUG_REPORT_OBJECT_TYPE_INSTANCE_EXT", 1 },
   { "VK_DEBUG_REPORT_OBJECT_TYPE_PHYSICAL_DEVICE_EXT", 2 },
@@ -1567,13 +1567,13 @@ std::map<std::string, __int32> _VkDebugReportObjectTypeEXT = {
   { "VK_DEBUG_REPORT_OBJECT_TYPE_SURFACE_KHR_EXT", 26 },
   { "VK_DEBUG_REPORT_OBJECT_TYPE_SWAPCHAIN_KHR_EXT", 27 },
   { "VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT_EXT", 28 },
-  { "VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_EXT", (__int32)VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT_EXT },
+  { "VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_EXT", (int32_t)VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT_EXT },
   { "VK_DEBUG_REPORT_OBJECT_TYPE_DISPLAY_KHR_EXT", 29 },
   { "VK_DEBUG_REPORT_OBJECT_TYPE_DISPLAY_MODE_KHR_EXT", 30 },
   { "VK_DEBUG_REPORT_OBJECT_TYPE_OBJECT_TABLE_NVX_EXT", 31 },
   { "VK_DEBUG_REPORT_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_NVX_EXT", 32 },
   { "VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT", 33 },
-  { "VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT", (__int32)VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT },
+  { "VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT", (int32_t)VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT },
   { "VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_EXT", 1000156000 },
   { "VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_EXT", 1000085000 },
   { "VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_KHR_EXT", VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_EXT },
@@ -1581,22 +1581,22 @@ std::map<std::string, __int32> _VkDebugReportObjectTypeEXT = {
   { "VK_DEBUG_REPORT_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV_EXT", 1000165000 },
   
 };
-std::map<std::string, __int32> _VkRasterizationOrderAMD = {
+std::map<std::string, int32_t> _VkRasterizationOrderAMD = {
   { "VK_RASTERIZATION_ORDER_STRICT_AMD", 0 },
   { "VK_RASTERIZATION_ORDER_RELAXED_AMD", 1 },
   
 };
-std::map<std::string, __int32> _VkValidationCheckEXT = {
+std::map<std::string, int32_t> _VkValidationCheckEXT = {
   { "VK_VALIDATION_CHECK_ALL_EXT", 0 },
   { "VK_VALIDATION_CHECK_SHADERS_EXT", 1 },
   
 };
-std::map<std::string, __int32> _VkValidationFeatureEnableEXT = {
+std::map<std::string, int32_t> _VkValidationFeatureEnableEXT = {
   { "VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT", 0 },
   { "VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT", 1 },
   
 };
-std::map<std::string, __int32> _VkValidationFeatureDisableEXT = {
+std::map<std::string, int32_t> _VkValidationFeatureDisableEXT = {
   { "VK_VALIDATION_FEATURE_DISABLE_ALL_EXT", 0 },
   { "VK_VALIDATION_FEATURE_DISABLE_SHADERS_EXT", 1 },
   { "VK_VALIDATION_FEATURE_DISABLE_THREAD_SAFETY_EXT", 2 },
@@ -1606,7 +1606,7 @@ std::map<std::string, __int32> _VkValidationFeatureDisableEXT = {
   { "VK_VALIDATION_FEATURE_DISABLE_UNIQUE_HANDLES_EXT", 6 },
   
 };
-std::map<std::string, __int32> _VkIndirectCommandsTokenTypeNVX = {
+std::map<std::string, int32_t> _VkIndirectCommandsTokenTypeNVX = {
   { "VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NVX", 0 },
   { "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DESCRIPTOR_SET_NVX", 1 },
   { "VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_NVX", 2 },
@@ -1617,7 +1617,7 @@ std::map<std::string, __int32> _VkIndirectCommandsTokenTypeNVX = {
   { "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NVX", 7 },
   
 };
-std::map<std::string, __int32> _VkObjectEntryTypeNVX = {
+std::map<std::string, int32_t> _VkObjectEntryTypeNVX = {
   { "VK_OBJECT_ENTRY_TYPE_DESCRIPTOR_SET_NVX", 0 },
   { "VK_OBJECT_ENTRY_TYPE_PIPELINE_NVX", 1 },
   { "VK_OBJECT_ENTRY_TYPE_INDEX_BUFFER_NVX", 2 },
@@ -1625,21 +1625,21 @@ std::map<std::string, __int32> _VkObjectEntryTypeNVX = {
   { "VK_OBJECT_ENTRY_TYPE_PUSH_CONSTANT_NVX", 4 },
   
 };
-std::map<std::string, __int32> _VkDisplayPowerStateEXT = {
+std::map<std::string, int32_t> _VkDisplayPowerStateEXT = {
   { "VK_DISPLAY_POWER_STATE_OFF_EXT", 0 },
   { "VK_DISPLAY_POWER_STATE_SUSPEND_EXT", 1 },
   { "VK_DISPLAY_POWER_STATE_ON_EXT", 2 },
   
 };
-std::map<std::string, __int32> _VkDeviceEventTypeEXT = {
+std::map<std::string, int32_t> _VkDeviceEventTypeEXT = {
   { "VK_DEVICE_EVENT_TYPE_DISPLAY_HOTPLUG_EXT", 0 },
   
 };
-std::map<std::string, __int32> _VkDisplayEventTypeEXT = {
+std::map<std::string, int32_t> _VkDisplayEventTypeEXT = {
   { "VK_DISPLAY_EVENT_TYPE_FIRST_PIXEL_OUT_EXT", 0 },
   
 };
-std::map<std::string, __int32> _VkViewportCoordinateSwizzleNV = {
+std::map<std::string, int32_t> _VkViewportCoordinateSwizzleNV = {
   { "VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_X_NV", 0 },
   { "VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_X_NV", 1 },
   { "VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_Y_NV", 2 },
@@ -1650,32 +1650,32 @@ std::map<std::string, __int32> _VkViewportCoordinateSwizzleNV = {
   { "VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_W_NV", 7 },
   
 };
-std::map<std::string, __int32> _VkDiscardRectangleModeEXT = {
+std::map<std::string, int32_t> _VkDiscardRectangleModeEXT = {
   { "VK_DISCARD_RECTANGLE_MODE_INCLUSIVE_EXT", 0 },
   { "VK_DISCARD_RECTANGLE_MODE_EXCLUSIVE_EXT", 1 },
   
 };
-std::map<std::string, __int32> _VkPointClippingBehavior = {
+std::map<std::string, int32_t> _VkPointClippingBehavior = {
   { "VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES", 0 },
   { "VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY", 1 },
   { "VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES_KHR", VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES },
   { "VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY_KHR", VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY },
   
 };
-std::map<std::string, __int32> _VkSamplerReductionModeEXT = {
+std::map<std::string, int32_t> _VkSamplerReductionModeEXT = {
   { "VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_EXT", 0 },
   { "VK_SAMPLER_REDUCTION_MODE_MIN_EXT", 1 },
   { "VK_SAMPLER_REDUCTION_MODE_MAX_EXT", 2 },
   
 };
-std::map<std::string, __int32> _VkTessellationDomainOrigin = {
+std::map<std::string, int32_t> _VkTessellationDomainOrigin = {
   { "VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT", 0 },
   { "VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT", 1 },
   { "VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT_KHR", VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT },
   { "VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT_KHR", VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT },
   
 };
-std::map<std::string, __int32> _VkSamplerYcbcrModelConversion = {
+std::map<std::string, int32_t> _VkSamplerYcbcrModelConversion = {
   { "VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY", 0 },
   { "VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_IDENTITY", 1 },
   { "VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_709", 2 },
@@ -1688,63 +1688,63 @@ std::map<std::string, __int32> _VkSamplerYcbcrModelConversion = {
   { "VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_2020_KHR", VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_2020 },
   
 };
-std::map<std::string, __int32> _VkSamplerYcbcrRange = {
+std::map<std::string, int32_t> _VkSamplerYcbcrRange = {
   { "VK_SAMPLER_YCBCR_RANGE_ITU_FULL", 0 },
   { "VK_SAMPLER_YCBCR_RANGE_ITU_NARROW", 1 },
   { "VK_SAMPLER_YCBCR_RANGE_ITU_FULL_KHR", VK_SAMPLER_YCBCR_RANGE_ITU_FULL },
   { "VK_SAMPLER_YCBCR_RANGE_ITU_NARROW_KHR", VK_SAMPLER_YCBCR_RANGE_ITU_NARROW },
   
 };
-std::map<std::string, __int32> _VkChromaLocation = {
+std::map<std::string, int32_t> _VkChromaLocation = {
   { "VK_CHROMA_LOCATION_COSITED_EVEN", 0 },
   { "VK_CHROMA_LOCATION_MIDPOINT", 1 },
   { "VK_CHROMA_LOCATION_COSITED_EVEN_KHR", VK_CHROMA_LOCATION_COSITED_EVEN },
   { "VK_CHROMA_LOCATION_MIDPOINT_KHR", VK_CHROMA_LOCATION_MIDPOINT },
   
 };
-std::map<std::string, __int32> _VkBlendOverlapEXT = {
+std::map<std::string, int32_t> _VkBlendOverlapEXT = {
   { "VK_BLEND_OVERLAP_UNCORRELATED_EXT", 0 },
   { "VK_BLEND_OVERLAP_DISJOINT_EXT", 1 },
   { "VK_BLEND_OVERLAP_CONJOINT_EXT", 2 },
   
 };
-std::map<std::string, __int32> _VkCoverageModulationModeNV = {
+std::map<std::string, int32_t> _VkCoverageModulationModeNV = {
   { "VK_COVERAGE_MODULATION_MODE_NONE_NV", 0 },
   { "VK_COVERAGE_MODULATION_MODE_RGB_NV", 1 },
   { "VK_COVERAGE_MODULATION_MODE_ALPHA_NV", 2 },
   { "VK_COVERAGE_MODULATION_MODE_RGBA_NV", 3 },
   
 };
-std::map<std::string, __int32> _VkValidationCacheHeaderVersionEXT = {
+std::map<std::string, int32_t> _VkValidationCacheHeaderVersionEXT = {
   { "VK_VALIDATION_CACHE_HEADER_VERSION_ONE_EXT", 1 },
   
 };
-std::map<std::string, __int32> _VkShaderInfoTypeAMD = {
+std::map<std::string, int32_t> _VkShaderInfoTypeAMD = {
   { "VK_SHADER_INFO_TYPE_STATISTICS_AMD", 0 },
   { "VK_SHADER_INFO_TYPE_BINARY_AMD", 1 },
   { "VK_SHADER_INFO_TYPE_DISASSEMBLY_AMD", 2 },
   
 };
-std::map<std::string, __int32> _VkQueueGlobalPriorityEXT = {
+std::map<std::string, int32_t> _VkQueueGlobalPriorityEXT = {
   { "VK_QUEUE_GLOBAL_PRIORITY_LOW_EXT", 128 },
   { "VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_EXT", 256 },
   { "VK_QUEUE_GLOBAL_PRIORITY_HIGH_EXT", 512 },
   { "VK_QUEUE_GLOBAL_PRIORITY_REALTIME_EXT", 1024 },
   
 };
-std::map<std::string, __int32> _VkConservativeRasterizationModeEXT = {
+std::map<std::string, int32_t> _VkConservativeRasterizationModeEXT = {
   { "VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT", 0 },
   { "VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT", 1 },
   { "VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT", 2 },
   
 };
-std::map<std::string, __int32> _VkVendorId = {
+std::map<std::string, int32_t> _VkVendorId = {
   { "VK_VENDOR_ID_VIV", 0x10001 },
   { "VK_VENDOR_ID_VSI", 0x10002 },
   { "VK_VENDOR_ID_KAZAN", 0x10003 },
   
 };
-std::map<std::string, __int32> _VkDriverIdKHR = {
+std::map<std::string, int32_t> _VkDriverIdKHR = {
   { "VK_DRIVER_ID_AMD_PROPRIETARY_KHR", 1 },
   { "VK_DRIVER_ID_AMD_OPEN_SOURCE_KHR", 2 },
   { "VK_DRIVER_ID_MESA_RADV_KHR", 3 },
@@ -1757,7 +1757,7 @@ std::map<std::string, __int32> _VkDriverIdKHR = {
   { "VK_DRIVER_ID_GOOGLE_PASTEL_KHR", 10 },
   
 };
-std::map<std::string, __int32> _VkShadingRatePaletteEntryNV = {
+std::map<std::string, int32_t> _VkShadingRatePaletteEntryNV = {
   { "VK_SHADING_RATE_PALETTE_ENTRY_NO_INVOCATIONS_NV", 0 },
   { "VK_SHADING_RATE_PALETTE_ENTRY_16_INVOCATIONS_PER_PIXEL_NV", 1 },
   { "VK_SHADING_RATE_PALETTE_ENTRY_8_INVOCATIONS_PER_PIXEL_NV", 2 },
@@ -1772,54 +1772,54 @@ std::map<std::string, __int32> _VkShadingRatePaletteEntryNV = {
   { "VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_4X4_PIXELS_NV", 11 },
   
 };
-std::map<std::string, __int32> _VkCoarseSampleOrderTypeNV = {
+std::map<std::string, int32_t> _VkCoarseSampleOrderTypeNV = {
   { "VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV", 0 },
   { "VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV", 1 },
   { "VK_COARSE_SAMPLE_ORDER_TYPE_PIXEL_MAJOR_NV", 2 },
   { "VK_COARSE_SAMPLE_ORDER_TYPE_SAMPLE_MAJOR_NV", 3 },
   
 };
-std::map<std::string, __int32> _VkCopyAccelerationStructureModeNV = {
+std::map<std::string, int32_t> _VkCopyAccelerationStructureModeNV = {
   { "VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_NV", 0 },
   { "VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_NV", 1 },
   
 };
-std::map<std::string, __int32> _VkAccelerationStructureTypeNV = {
+std::map<std::string, int32_t> _VkAccelerationStructureTypeNV = {
   { "VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_NV", 0 },
   { "VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV", 1 },
   
 };
-std::map<std::string, __int32> _VkGeometryTypeNV = {
+std::map<std::string, int32_t> _VkGeometryTypeNV = {
   { "VK_GEOMETRY_TYPE_TRIANGLES_NV", 0 },
   { "VK_GEOMETRY_TYPE_AABBS_NV", 1 },
   
 };
-std::map<std::string, __int32> _VkAccelerationStructureMemoryRequirementsTypeNV = {
+std::map<std::string, int32_t> _VkAccelerationStructureMemoryRequirementsTypeNV = {
   { "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV", 0 },
   { "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV", 1 },
   { "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV", 2 },
   
 };
-std::map<std::string, __int32> _VkRayTracingShaderGroupTypeNV = {
+std::map<std::string, int32_t> _VkRayTracingShaderGroupTypeNV = {
   { "VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV", 0 },
   { "VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV", 1 },
   { "VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV", 2 },
   
 };
-std::map<std::string, __int32> _VkMemoryOverallocationBehaviorAMD = {
+std::map<std::string, int32_t> _VkMemoryOverallocationBehaviorAMD = {
   { "VK_MEMORY_OVERALLOCATION_BEHAVIOR_DEFAULT_AMD", 0 },
   { "VK_MEMORY_OVERALLOCATION_BEHAVIOR_ALLOWED_AMD", 1 },
   { "VK_MEMORY_OVERALLOCATION_BEHAVIOR_DISALLOWED_AMD", 2 },
   
 };
-std::map<std::string, __int32> _VkCullModeFlagBits = {
+std::map<std::string, int32_t> _VkCullModeFlagBits = {
   { "VK_CULL_MODE_NONE", 0 },
   { "VK_CULL_MODE_FRONT_BIT", 0x1 },
   { "VK_CULL_MODE_BACK_BIT", 0x2 },
   { "VK_CULL_MODE_FRONT_AND_BACK", 0x00000003 },
   
 };
-std::map<std::string, __int32> _VkQueueFlagBits = {
+std::map<std::string, int32_t> _VkQueueFlagBits = {
   { "VK_QUEUE_GRAPHICS_BIT", 0x1 },
   { "VK_QUEUE_COMPUTE_BIT", 0x2 },
   { "VK_QUEUE_TRANSFER_BIT", 0x4 },
@@ -1828,14 +1828,14 @@ std::map<std::string, __int32> _VkQueueFlagBits = {
   { "VK_QUEUE_RESERVED_5_BIT_KHR", 0x20 },
   
 };
-std::map<std::string, __int32> _VkRenderPassCreateFlagBits = {
+std::map<std::string, int32_t> _VkRenderPassCreateFlagBits = {
   { "VK_RENDER_PASS_CREATE_RESERVED_0_BIT_KHR", 0x1 },
   
 };
-std::map<std::string, __int32> _VkDeviceQueueCreateFlagBits = {
+std::map<std::string, int32_t> _VkDeviceQueueCreateFlagBits = {
   
 };
-std::map<std::string, __int32> _VkMemoryPropertyFlagBits = {
+std::map<std::string, int32_t> _VkMemoryPropertyFlagBits = {
   { "VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT", 0x1 },
   { "VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT", 0x2 },
   { "VK_MEMORY_PROPERTY_HOST_COHERENT_BIT", 0x4 },
@@ -1843,12 +1843,12 @@ std::map<std::string, __int32> _VkMemoryPropertyFlagBits = {
   { "VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT", 0x10 },
   
 };
-std::map<std::string, __int32> _VkMemoryHeapFlagBits = {
+std::map<std::string, int32_t> _VkMemoryHeapFlagBits = {
   { "VK_MEMORY_HEAP_DEVICE_LOCAL_BIT", 0x1 },
   { "VK_MEMORY_HEAP_MULTI_INSTANCE_BIT_KHR", VK_MEMORY_HEAP_MULTI_INSTANCE_BIT },
   
 };
-std::map<std::string, __int32> _VkAccessFlagBits = {
+std::map<std::string, int32_t> _VkAccessFlagBits = {
   { "VK_ACCESS_INDIRECT_COMMAND_READ_BIT", 0x1 },
   { "VK_ACCESS_INDEX_READ_BIT", 0x2 },
   { "VK_ACCESS_VERTEX_ATTRIBUTE_READ_BIT", 0x4 },
@@ -1883,7 +1883,7 @@ std::map<std::string, __int32> _VkAccessFlagBits = {
   { "VK_ACCESS_FRAGMENT_DENSITY_MAP_READ_BIT_EXT", 0x1000000 },
   
 };
-std::map<std::string, __int32> _VkBufferUsageFlagBits = {
+std::map<std::string, int32_t> _VkBufferUsageFlagBits = {
   { "VK_BUFFER_USAGE_TRANSFER_SRC_BIT", 0x1 },
   { "VK_BUFFER_USAGE_TRANSFER_DST_BIT", 0x2 },
   { "VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT", 0x4 },
@@ -1904,14 +1904,14 @@ std::map<std::string, __int32> _VkBufferUsageFlagBits = {
   { "VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT_EXT", 0x20000 },
   
 };
-std::map<std::string, __int32> _VkBufferCreateFlagBits = {
+std::map<std::string, int32_t> _VkBufferCreateFlagBits = {
   { "VK_BUFFER_CREATE_SPARSE_BINDING_BIT", 0x1 },
   { "VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT", 0x2 },
   { "VK_BUFFER_CREATE_SPARSE_ALIASED_BIT", 0x4 },
   { "VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT", 0x10 },
   
 };
-std::map<std::string, __int32> _VkShaderStageFlagBits = {
+std::map<std::string, int32_t> _VkShaderStageFlagBits = {
   { "VK_SHADER_STAGE_VERTEX_BIT", 0x1 },
   { "VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT", 0x2 },
   { "VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT", 0x4 },
@@ -1930,7 +1930,7 @@ std::map<std::string, __int32> _VkShaderStageFlagBits = {
   { "VK_SHADER_STAGE_MESH_BIT_NV", 0x80 },
   
 };
-std::map<std::string, __int32> _VkImageUsageFlagBits = {
+std::map<std::string, int32_t> _VkImageUsageFlagBits = {
   { "VK_IMAGE_USAGE_TRANSFER_SRC_BIT", 0x1 },
   { "VK_IMAGE_USAGE_TRANSFER_DST_BIT", 0x2 },
   { "VK_IMAGE_USAGE_SAMPLED_BIT", 0x4 },
@@ -1949,7 +1949,7 @@ std::map<std::string, __int32> _VkImageUsageFlagBits = {
   { "VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT", 0x200 },
   
 };
-std::map<std::string, __int32> _VkImageCreateFlagBits = {
+std::map<std::string, int32_t> _VkImageCreateFlagBits = {
   { "VK_IMAGE_CREATE_SPARSE_BINDING_BIT", 0x1 },
   { "VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT", 0x2 },
   { "VK_IMAGE_CREATE_SPARSE_ALIASED_BIT", 0x4 },
@@ -1966,16 +1966,16 @@ std::map<std::string, __int32> _VkImageCreateFlagBits = {
   { "VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT", 0x4000 },
   
 };
-std::map<std::string, __int32> _VkImageViewCreateFlagBits = {
+std::map<std::string, int32_t> _VkImageViewCreateFlagBits = {
   { "VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT", 0x1 },
   
 };
-std::map<std::string, __int32> _VkSamplerCreateFlagBits = {
+std::map<std::string, int32_t> _VkSamplerCreateFlagBits = {
   { "VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT", 0x1 },
   { "VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT", 0x2 },
   
 };
-std::map<std::string, __int32> _VkPipelineCreateFlagBits = {
+std::map<std::string, int32_t> _VkPipelineCreateFlagBits = {
   { "VK_PIPELINE_CREATE_DISABLE_OPTIMIZATION_BIT", 0x1 },
   { "VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT", 0x2 },
   { "VK_PIPELINE_CREATE_DERIVATIVE_BIT", 0x4 },
@@ -1984,18 +1984,18 @@ std::map<std::string, __int32> _VkPipelineCreateFlagBits = {
   { "VK_PIPELINE_CREATE_DEFER_COMPILE_BIT_NV", 0x20 },
   
 };
-std::map<std::string, __int32> _VkColorComponentFlagBits = {
+std::map<std::string, int32_t> _VkColorComponentFlagBits = {
   { "VK_COLOR_COMPONENT_R_BIT", 0x1 },
   { "VK_COLOR_COMPONENT_G_BIT", 0x2 },
   { "VK_COLOR_COMPONENT_B_BIT", 0x4 },
   { "VK_COLOR_COMPONENT_A_BIT", 0x8 },
   
 };
-std::map<std::string, __int32> _VkFenceCreateFlagBits = {
+std::map<std::string, int32_t> _VkFenceCreateFlagBits = {
   { "VK_FENCE_CREATE_SIGNALED_BIT", 0x1 },
   
 };
-std::map<std::string, __int32> _VkFormatFeatureFlagBits = {
+std::map<std::string, int32_t> _VkFormatFeatureFlagBits = {
   { "VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT", 0x1 },
   { "VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT", 0x2 },
   { "VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT", 0x4 },
@@ -2027,24 +2027,24 @@ std::map<std::string, __int32> _VkFormatFeatureFlagBits = {
   { "VK_FORMAT_FEATURE_FRAGMENT_DENSITY_MAP_BIT_EXT", 0x1000000 },
   
 };
-std::map<std::string, __int32> _VkQueryControlFlagBits = {
+std::map<std::string, int32_t> _VkQueryControlFlagBits = {
   { "VK_QUERY_CONTROL_PRECISE_BIT", 0x1 },
   
 };
-std::map<std::string, __int32> _VkQueryResultFlagBits = {
+std::map<std::string, int32_t> _VkQueryResultFlagBits = {
   { "VK_QUERY_RESULT_64_BIT", 0x1 },
   { "VK_QUERY_RESULT_WAIT_BIT", 0x2 },
   { "VK_QUERY_RESULT_WITH_AVAILABILITY_BIT", 0x4 },
   { "VK_QUERY_RESULT_PARTIAL_BIT", 0x8 },
   
 };
-std::map<std::string, __int32> _VkCommandBufferUsageFlagBits = {
+std::map<std::string, int32_t> _VkCommandBufferUsageFlagBits = {
   { "VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT", 0x1 },
   { "VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT", 0x2 },
   { "VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT", 0x4 },
   
 };
-std::map<std::string, __int32> _VkQueryPipelineStatisticFlagBits = {
+std::map<std::string, int32_t> _VkQueryPipelineStatisticFlagBits = {
   { "VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_VERTICES_BIT", 0x1 },
   { "VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_PRIMITIVES_BIT", 0x2 },
   { "VK_QUERY_PIPELINE_STATISTIC_VERTEX_SHADER_INVOCATIONS_BIT", 0x4 },
@@ -2058,7 +2058,7 @@ std::map<std::string, __int32> _VkQueryPipelineStatisticFlagBits = {
   { "VK_QUERY_PIPELINE_STATISTIC_COMPUTE_SHADER_INVOCATIONS_BIT", 0x400 },
   
 };
-std::map<std::string, __int32> _VkImageAspectFlagBits = {
+std::map<std::string, int32_t> _VkImageAspectFlagBits = {
   { "VK_IMAGE_ASPECT_COLOR_BIT", 0x1 },
   { "VK_IMAGE_ASPECT_DEPTH_BIT", 0x2 },
   { "VK_IMAGE_ASPECT_STENCIL_BIT", 0x4 },
@@ -2072,17 +2072,17 @@ std::map<std::string, __int32> _VkImageAspectFlagBits = {
   { "VK_IMAGE_ASPECT_MEMORY_PLANE_3_BIT_EXT", 0x400 },
   
 };
-std::map<std::string, __int32> _VkSparseImageFormatFlagBits = {
+std::map<std::string, int32_t> _VkSparseImageFormatFlagBits = {
   { "VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT", 0x1 },
   { "VK_SPARSE_IMAGE_FORMAT_ALIGNED_MIP_SIZE_BIT", 0x2 },
   { "VK_SPARSE_IMAGE_FORMAT_NONSTANDARD_BLOCK_SIZE_BIT", 0x4 },
   
 };
-std::map<std::string, __int32> _VkSparseMemoryBindFlagBits = {
+std::map<std::string, int32_t> _VkSparseMemoryBindFlagBits = {
   { "VK_SPARSE_MEMORY_BIND_METADATA_BIT", 0x1 },
   
 };
-std::map<std::string, __int32> _VkPipelineStageFlagBits = {
+std::map<std::string, int32_t> _VkPipelineStageFlagBits = {
   { "VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT", 0x1 },
   { "VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT", 0x2 },
   { "VK_PIPELINE_STAGE_VERTEX_INPUT_BIT", 0x4 },
@@ -2113,20 +2113,20 @@ std::map<std::string, __int32> _VkPipelineStageFlagBits = {
   { "VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT", 0x800000 },
   
 };
-std::map<std::string, __int32> _VkCommandPoolCreateFlagBits = {
+std::map<std::string, int32_t> _VkCommandPoolCreateFlagBits = {
   { "VK_COMMAND_POOL_CREATE_TRANSIENT_BIT", 0x1 },
   { "VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT", 0x2 },
   
 };
-std::map<std::string, __int32> _VkCommandPoolResetFlagBits = {
+std::map<std::string, int32_t> _VkCommandPoolResetFlagBits = {
   { "VK_COMMAND_POOL_RESET_RELEASE_RESOURCES_BIT", 0x1 },
   
 };
-std::map<std::string, __int32> _VkCommandBufferResetFlagBits = {
+std::map<std::string, int32_t> _VkCommandBufferResetFlagBits = {
   { "VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT", 0x1 },
   
 };
-std::map<std::string, __int32> _VkSampleCountFlagBits = {
+std::map<std::string, int32_t> _VkSampleCountFlagBits = {
   { "VK_SAMPLE_COUNT_1_BIT", 0x1 },
   { "VK_SAMPLE_COUNT_2_BIT", 0x2 },
   { "VK_SAMPLE_COUNT_4_BIT", 0x4 },
@@ -2136,42 +2136,42 @@ std::map<std::string, __int32> _VkSampleCountFlagBits = {
   { "VK_SAMPLE_COUNT_64_BIT", 0x40 },
   
 };
-std::map<std::string, __int32> _VkAttachmentDescriptionFlagBits = {
+std::map<std::string, int32_t> _VkAttachmentDescriptionFlagBits = {
   { "VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT", 0x1 },
   
 };
-std::map<std::string, __int32> _VkStencilFaceFlagBits = {
+std::map<std::string, int32_t> _VkStencilFaceFlagBits = {
   { "VK_STENCIL_FACE_FRONT_BIT", 0x1 },
   { "VK_STENCIL_FACE_BACK_BIT", 0x2 },
   { "VK_STENCIL_FRONT_AND_BACK", 0x00000003 },
   
 };
-std::map<std::string, __int32> _VkDescriptorPoolCreateFlagBits = {
+std::map<std::string, int32_t> _VkDescriptorPoolCreateFlagBits = {
   { "VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT", 0x1 },
   { "VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT_EXT", 0x2 },
   
 };
-std::map<std::string, __int32> _VkDependencyFlagBits = {
+std::map<std::string, int32_t> _VkDependencyFlagBits = {
   { "VK_DEPENDENCY_BY_REGION_BIT", 0x1 },
   { "VK_DEPENDENCY_VIEW_LOCAL_BIT_KHR", VK_DEPENDENCY_VIEW_LOCAL_BIT },
   { "VK_DEPENDENCY_DEVICE_GROUP_BIT_KHR", VK_DEPENDENCY_DEVICE_GROUP_BIT },
   
 };
-std::map<std::string, __int32> _VkDisplayPlaneAlphaFlagBitsKHR = {
+std::map<std::string, int32_t> _VkDisplayPlaneAlphaFlagBitsKHR = {
   { "VK_DISPLAY_PLANE_ALPHA_OPAQUE_BIT_KHR", 0x1 },
   { "VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR", 0x2 },
   { "VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_BIT_KHR", 0x4 },
   { "VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_PREMULTIPLIED_BIT_KHR", 0x8 },
   
 };
-std::map<std::string, __int32> _VkCompositeAlphaFlagBitsKHR = {
+std::map<std::string, int32_t> _VkCompositeAlphaFlagBitsKHR = {
   { "VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR", 0x1 },
   { "VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR", 0x2 },
   { "VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR", 0x4 },
   { "VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR", 0x8 },
   
 };
-std::map<std::string, __int32> _VkSurfaceTransformFlagBitsKHR = {
+std::map<std::string, int32_t> _VkSurfaceTransformFlagBitsKHR = {
   { "VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR", 0x1 },
   { "VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR", 0x2 },
   { "VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR", 0x4 },
@@ -2183,7 +2183,7 @@ std::map<std::string, __int32> _VkSurfaceTransformFlagBitsKHR = {
   { "VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR", 0x100 },
   
 };
-std::map<std::string, __int32> _VkDebugReportFlagBitsEXT = {
+std::map<std::string, int32_t> _VkDebugReportFlagBitsEXT = {
   { "VK_DEBUG_REPORT_INFORMATION_BIT_EXT", 0x1 },
   { "VK_DEBUG_REPORT_WARNING_BIT_EXT", 0x2 },
   { "VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT", 0x4 },
@@ -2191,20 +2191,20 @@ std::map<std::string, __int32> _VkDebugReportFlagBitsEXT = {
   { "VK_DEBUG_REPORT_DEBUG_BIT_EXT", 0x10 },
   
 };
-std::map<std::string, __int32> _VkExternalMemoryHandleTypeFlagBitsNV = {
+std::map<std::string, int32_t> _VkExternalMemoryHandleTypeFlagBitsNV = {
   { "VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_NV", 0x1 },
   { "VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_NV", 0x2 },
   { "VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_BIT_NV", 0x4 },
   { "VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_KMT_BIT_NV", 0x8 },
   
 };
-std::map<std::string, __int32> _VkExternalMemoryFeatureFlagBitsNV = {
+std::map<std::string, int32_t> _VkExternalMemoryFeatureFlagBitsNV = {
   { "VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT_NV", 0x1 },
   { "VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT_NV", 0x2 },
   { "VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT_NV", 0x4 },
   
 };
-std::map<std::string, __int32> _VkSubgroupFeatureFlagBits = {
+std::map<std::string, int32_t> _VkSubgroupFeatureFlagBits = {
   { "VK_SUBGROUP_FEATURE_BASIC_BIT", 0x1 },
   { "VK_SUBGROUP_FEATURE_VOTE_BIT", 0x2 },
   { "VK_SUBGROUP_FEATURE_ARITHMETIC_BIT", 0x4 },
@@ -2216,24 +2216,24 @@ std::map<std::string, __int32> _VkSubgroupFeatureFlagBits = {
   { "VK_SUBGROUP_FEATURE_PARTITIONED_BIT_NV", 0x100 },
   
 };
-std::map<std::string, __int32> _VkIndirectCommandsLayoutUsageFlagBitsNVX = {
+std::map<std::string, int32_t> _VkIndirectCommandsLayoutUsageFlagBitsNVX = {
   { "VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_NVX", 0x1 },
   { "VK_INDIRECT_COMMANDS_LAYOUT_USAGE_SPARSE_SEQUENCES_BIT_NVX", 0x2 },
   { "VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EMPTY_EXECUTIONS_BIT_NVX", 0x4 },
   { "VK_INDIRECT_COMMANDS_LAYOUT_USAGE_INDEXED_SEQUENCES_BIT_NVX", 0x8 },
   
 };
-std::map<std::string, __int32> _VkObjectEntryUsageFlagBitsNVX = {
+std::map<std::string, int32_t> _VkObjectEntryUsageFlagBitsNVX = {
   { "VK_OBJECT_ENTRY_USAGE_GRAPHICS_BIT_NVX", 0x1 },
   { "VK_OBJECT_ENTRY_USAGE_COMPUTE_BIT_NVX", 0x2 },
   
 };
-std::map<std::string, __int32> _VkDescriptorSetLayoutCreateFlagBits = {
+std::map<std::string, int32_t> _VkDescriptorSetLayoutCreateFlagBits = {
   { "VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT_KHR", 0x1 },
   { "VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT", 0x2 },
   
 };
-std::map<std::string, __int32> _VkExternalMemoryHandleTypeFlagBits = {
+std::map<std::string, int32_t> _VkExternalMemoryHandleTypeFlagBits = {
   { "VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT", 0x1 },
   { "VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT", 0x2 },
   { "VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT", 0x4 },
@@ -2254,7 +2254,7 @@ std::map<std::string, __int32> _VkExternalMemoryHandleTypeFlagBits = {
   { "VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_MAPPED_FOREIGN_MEMORY_BIT_EXT", 0x100 },
   
 };
-std::map<std::string, __int32> _VkExternalMemoryFeatureFlagBits = {
+std::map<std::string, int32_t> _VkExternalMemoryFeatureFlagBits = {
   { "VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT", 0x1 },
   { "VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT", 0x2 },
   { "VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT", 0x4 },
@@ -2263,7 +2263,7 @@ std::map<std::string, __int32> _VkExternalMemoryFeatureFlagBits = {
   { "VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT_KHR", VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT },
   
 };
-std::map<std::string, __int32> _VkExternalSemaphoreHandleTypeFlagBits = {
+std::map<std::string, int32_t> _VkExternalSemaphoreHandleTypeFlagBits = {
   { "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT", 0x1 },
   { "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT", 0x2 },
   { "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT", 0x4 },
@@ -2276,19 +2276,19 @@ std::map<std::string, __int32> _VkExternalSemaphoreHandleTypeFlagBits = {
   { "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT_KHR", VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT },
   
 };
-std::map<std::string, __int32> _VkExternalSemaphoreFeatureFlagBits = {
+std::map<std::string, int32_t> _VkExternalSemaphoreFeatureFlagBits = {
   { "VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT", 0x1 },
   { "VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT", 0x2 },
   { "VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT_KHR", VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT },
   { "VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT_KHR", VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT },
   
 };
-std::map<std::string, __int32> _VkSemaphoreImportFlagBits = {
+std::map<std::string, int32_t> _VkSemaphoreImportFlagBits = {
   { "VK_SEMAPHORE_IMPORT_TEMPORARY_BIT", 0x1 },
   { "VK_SEMAPHORE_IMPORT_TEMPORARY_BIT_KHR", VK_SEMAPHORE_IMPORT_TEMPORARY_BIT },
   
 };
-std::map<std::string, __int32> _VkExternalFenceHandleTypeFlagBits = {
+std::map<std::string, int32_t> _VkExternalFenceHandleTypeFlagBits = {
   { "VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT", 0x1 },
   { "VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT", 0x2 },
   { "VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT", 0x4 },
@@ -2299,23 +2299,23 @@ std::map<std::string, __int32> _VkExternalFenceHandleTypeFlagBits = {
   { "VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT_KHR", VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT },
   
 };
-std::map<std::string, __int32> _VkExternalFenceFeatureFlagBits = {
+std::map<std::string, int32_t> _VkExternalFenceFeatureFlagBits = {
   { "VK_EXTERNAL_FENCE_FEATURE_EXPORTABLE_BIT", 0x1 },
   { "VK_EXTERNAL_FENCE_FEATURE_IMPORTABLE_BIT", 0x2 },
   { "VK_EXTERNAL_FENCE_FEATURE_EXPORTABLE_BIT_KHR", VK_EXTERNAL_FENCE_FEATURE_EXPORTABLE_BIT },
   { "VK_EXTERNAL_FENCE_FEATURE_IMPORTABLE_BIT_KHR", VK_EXTERNAL_FENCE_FEATURE_IMPORTABLE_BIT },
   
 };
-std::map<std::string, __int32> _VkFenceImportFlagBits = {
+std::map<std::string, int32_t> _VkFenceImportFlagBits = {
   { "VK_FENCE_IMPORT_TEMPORARY_BIT", 0x1 },
   { "VK_FENCE_IMPORT_TEMPORARY_BIT_KHR", VK_FENCE_IMPORT_TEMPORARY_BIT },
   
 };
-std::map<std::string, __int32> _VkSurfaceCounterFlagBitsEXT = {
+std::map<std::string, int32_t> _VkSurfaceCounterFlagBitsEXT = {
   { "VK_SURFACE_COUNTER_VBLANK_EXT", 0x1 },
   
 };
-std::map<std::string, __int32> _VkPeerMemoryFeatureFlagBits = {
+std::map<std::string, int32_t> _VkPeerMemoryFeatureFlagBits = {
   { "VK_PEER_MEMORY_FEATURE_COPY_SRC_BIT", 0x1 },
   { "VK_PEER_MEMORY_FEATURE_COPY_DST_BIT", 0x2 },
   { "VK_PEER_MEMORY_FEATURE_GENERIC_SRC_BIT", 0x4 },
@@ -2326,54 +2326,54 @@ std::map<std::string, __int32> _VkPeerMemoryFeatureFlagBits = {
   { "VK_PEER_MEMORY_FEATURE_GENERIC_DST_BIT_KHR", VK_PEER_MEMORY_FEATURE_GENERIC_DST_BIT },
   
 };
-std::map<std::string, __int32> _VkMemoryAllocateFlagBits = {
+std::map<std::string, int32_t> _VkMemoryAllocateFlagBits = {
   { "VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT", 0x1 },
   { "VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT_KHR", VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT },
   
 };
-std::map<std::string, __int32> _VkDeviceGroupPresentModeFlagBitsKHR = {
+std::map<std::string, int32_t> _VkDeviceGroupPresentModeFlagBitsKHR = {
   { "VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR", 0x1 },
   { "VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHR", 0x2 },
   { "VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHR", 0x4 },
   { "VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR", 0x8 },
   
 };
-std::map<std::string, __int32> _VkSwapchainCreateFlagBitsKHR = {
+std::map<std::string, int32_t> _VkSwapchainCreateFlagBitsKHR = {
   { "VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR", 0x1 },
   { "VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR", 0x2 },
   { "VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR", 0x4 },
   
 };
-std::map<std::string, __int32> _VkSubpassDescriptionFlagBits = {
+std::map<std::string, int32_t> _VkSubpassDescriptionFlagBits = {
   { "VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX", 0x1 },
   { "VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX", 0x2 },
   
 };
-std::map<std::string, __int32> _VkDebugUtilsMessageSeverityFlagBitsEXT = {
+std::map<std::string, int32_t> _VkDebugUtilsMessageSeverityFlagBitsEXT = {
   { "VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT", 0x1 },
   { "VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT", 0x10 },
   { "VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT", 0x100 },
   { "VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT", 0x1000 },
   
 };
-std::map<std::string, __int32> _VkDebugUtilsMessageTypeFlagBitsEXT = {
+std::map<std::string, int32_t> _VkDebugUtilsMessageTypeFlagBitsEXT = {
   { "VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT", 0x1 },
   { "VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT", 0x2 },
   { "VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT", 0x4 },
   
 };
-std::map<std::string, __int32> _VkDescriptorBindingFlagBitsEXT = {
+std::map<std::string, int32_t> _VkDescriptorBindingFlagBitsEXT = {
   { "VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT_EXT", 0x1 },
   { "VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT_EXT", 0x2 },
   { "VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT_EXT", 0x4 },
   { "VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT_EXT", 0x8 },
   
 };
-std::map<std::string, __int32> _VkConditionalRenderingFlagBitsEXT = {
+std::map<std::string, int32_t> _VkConditionalRenderingFlagBitsEXT = {
   { "VK_CONDITIONAL_RENDERING_INVERTED_BIT_EXT", 0x1 },
   
 };
-std::map<std::string, __int32> _VkResolveModeFlagBitsKHR = {
+std::map<std::string, int32_t> _VkResolveModeFlagBitsKHR = {
   { "VK_RESOLVE_MODE_NONE_KHR", 0 },
   { "VK_RESOLVE_MODE_SAMPLE_ZERO_BIT_KHR", 0x1 },
   { "VK_RESOLVE_MODE_AVERAGE_BIT_KHR", 0x2 },
@@ -2381,19 +2381,19 @@ std::map<std::string, __int32> _VkResolveModeFlagBitsKHR = {
   { "VK_RESOLVE_MODE_MAX_BIT_KHR", 0x8 },
   
 };
-std::map<std::string, __int32> _VkGeometryInstanceFlagBitsNV = {
+std::map<std::string, int32_t> _VkGeometryInstanceFlagBitsNV = {
   { "VK_GEOMETRY_INSTANCE_TRIANGLE_CULL_DISABLE_BIT_NV", 0x1 },
   { "VK_GEOMETRY_INSTANCE_TRIANGLE_FRONT_COUNTERCLOCKWISE_BIT_NV", 0x2 },
   { "VK_GEOMETRY_INSTANCE_FORCE_OPAQUE_BIT_NV", 0x4 },
   { "VK_GEOMETRY_INSTANCE_FORCE_NO_OPAQUE_BIT_NV", 0x8 },
   
 };
-std::map<std::string, __int32> _VkGeometryFlagBitsNV = {
+std::map<std::string, int32_t> _VkGeometryFlagBitsNV = {
   { "VK_GEOMETRY_OPAQUE_BIT_NV", 0x1 },
   { "VK_GEOMETRY_NO_DUPLICATE_ANY_HIT_INVOCATION_BIT_NV", 0x2 },
   
 };
-std::map<std::string, __int32> _VkBuildAccelerationStructureFlagBitsNV = {
+std::map<std::string, int32_t> _VkBuildAccelerationStructureFlagBitsNV = {
   { "VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_NV", 0x1 },
   { "VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_NV", 0x2 },
   { "VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_NV", 0x4 },
@@ -2416,1422 +2416,1422 @@ Napi::Value getVulkanEnumerations(const Napi::CallbackInfo& info) {
     out.Set(Napi::String::New(env, "API_Extensions_Strings"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _API_Extensions.begin(); it != _API_Extensions.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "API_Extensions"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _API_Constants.begin(); it != _API_Constants.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "API_Constants"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkImageLayout.begin(); it != _VkImageLayout.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkImageLayout"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkAttachmentLoadOp.begin(); it != _VkAttachmentLoadOp.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkAttachmentLoadOp"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkAttachmentStoreOp.begin(); it != _VkAttachmentStoreOp.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkAttachmentStoreOp"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkImageType.begin(); it != _VkImageType.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkImageType"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkImageTiling.begin(); it != _VkImageTiling.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkImageTiling"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkImageViewType.begin(); it != _VkImageViewType.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkImageViewType"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkCommandBufferLevel.begin(); it != _VkCommandBufferLevel.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkCommandBufferLevel"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkComponentSwizzle.begin(); it != _VkComponentSwizzle.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkComponentSwizzle"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDescriptorType.begin(); it != _VkDescriptorType.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkDescriptorType"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkQueryType.begin(); it != _VkQueryType.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkQueryType"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkBorderColor.begin(); it != _VkBorderColor.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkBorderColor"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkPipelineBindPoint.begin(); it != _VkPipelineBindPoint.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkPipelineBindPoint"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkPipelineCacheHeaderVersion.begin(); it != _VkPipelineCacheHeaderVersion.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkPipelineCacheHeaderVersion"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkPrimitiveTopology.begin(); it != _VkPrimitiveTopology.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkPrimitiveTopology"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSharingMode.begin(); it != _VkSharingMode.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkSharingMode"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkIndexType.begin(); it != _VkIndexType.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkIndexType"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkFilter.begin(); it != _VkFilter.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkFilter"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSamplerMipmapMode.begin(); it != _VkSamplerMipmapMode.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkSamplerMipmapMode"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSamplerAddressMode.begin(); it != _VkSamplerAddressMode.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkSamplerAddressMode"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkCompareOp.begin(); it != _VkCompareOp.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkCompareOp"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkPolygonMode.begin(); it != _VkPolygonMode.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkPolygonMode"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkFrontFace.begin(); it != _VkFrontFace.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkFrontFace"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkBlendFactor.begin(); it != _VkBlendFactor.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkBlendFactor"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkBlendOp.begin(); it != _VkBlendOp.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkBlendOp"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkStencilOp.begin(); it != _VkStencilOp.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkStencilOp"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkLogicOp.begin(); it != _VkLogicOp.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkLogicOp"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkInternalAllocationType.begin(); it != _VkInternalAllocationType.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkInternalAllocationType"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSystemAllocationScope.begin(); it != _VkSystemAllocationScope.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkSystemAllocationScope"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkPhysicalDeviceType.begin(); it != _VkPhysicalDeviceType.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkPhysicalDeviceType"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkVertexInputRate.begin(); it != _VkVertexInputRate.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkVertexInputRate"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkFormat.begin(); it != _VkFormat.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkFormat"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkStructureType.begin(); it != _VkStructureType.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkStructureType"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSubpassContents.begin(); it != _VkSubpassContents.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkSubpassContents"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkResult.begin(); it != _VkResult.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkResult"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDynamicState.begin(); it != _VkDynamicState.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkDynamicState"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDescriptorUpdateTemplateType.begin(); it != _VkDescriptorUpdateTemplateType.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkDescriptorUpdateTemplateType"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkObjectType.begin(); it != _VkObjectType.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkObjectType"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkPresentModeKHR.begin(); it != _VkPresentModeKHR.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkPresentModeKHR"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkColorSpaceKHR.begin(); it != _VkColorSpaceKHR.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkColorSpaceKHR"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkTimeDomainEXT.begin(); it != _VkTimeDomainEXT.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkTimeDomainEXT"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDebugReportObjectTypeEXT.begin(); it != _VkDebugReportObjectTypeEXT.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkDebugReportObjectTypeEXT"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkRasterizationOrderAMD.begin(); it != _VkRasterizationOrderAMD.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkRasterizationOrderAMD"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkValidationCheckEXT.begin(); it != _VkValidationCheckEXT.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkValidationCheckEXT"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkValidationFeatureEnableEXT.begin(); it != _VkValidationFeatureEnableEXT.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkValidationFeatureEnableEXT"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkValidationFeatureDisableEXT.begin(); it != _VkValidationFeatureDisableEXT.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkValidationFeatureDisableEXT"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkIndirectCommandsTokenTypeNVX.begin(); it != _VkIndirectCommandsTokenTypeNVX.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkIndirectCommandsTokenTypeNVX"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkObjectEntryTypeNVX.begin(); it != _VkObjectEntryTypeNVX.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkObjectEntryTypeNVX"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDisplayPowerStateEXT.begin(); it != _VkDisplayPowerStateEXT.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkDisplayPowerStateEXT"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDeviceEventTypeEXT.begin(); it != _VkDeviceEventTypeEXT.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkDeviceEventTypeEXT"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDisplayEventTypeEXT.begin(); it != _VkDisplayEventTypeEXT.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkDisplayEventTypeEXT"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkViewportCoordinateSwizzleNV.begin(); it != _VkViewportCoordinateSwizzleNV.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkViewportCoordinateSwizzleNV"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDiscardRectangleModeEXT.begin(); it != _VkDiscardRectangleModeEXT.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkDiscardRectangleModeEXT"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkPointClippingBehavior.begin(); it != _VkPointClippingBehavior.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkPointClippingBehavior"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSamplerReductionModeEXT.begin(); it != _VkSamplerReductionModeEXT.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkSamplerReductionModeEXT"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkTessellationDomainOrigin.begin(); it != _VkTessellationDomainOrigin.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkTessellationDomainOrigin"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSamplerYcbcrModelConversion.begin(); it != _VkSamplerYcbcrModelConversion.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkSamplerYcbcrModelConversion"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSamplerYcbcrRange.begin(); it != _VkSamplerYcbcrRange.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkSamplerYcbcrRange"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkChromaLocation.begin(); it != _VkChromaLocation.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkChromaLocation"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkBlendOverlapEXT.begin(); it != _VkBlendOverlapEXT.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkBlendOverlapEXT"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkCoverageModulationModeNV.begin(); it != _VkCoverageModulationModeNV.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkCoverageModulationModeNV"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkValidationCacheHeaderVersionEXT.begin(); it != _VkValidationCacheHeaderVersionEXT.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkValidationCacheHeaderVersionEXT"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkShaderInfoTypeAMD.begin(); it != _VkShaderInfoTypeAMD.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkShaderInfoTypeAMD"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkQueueGlobalPriorityEXT.begin(); it != _VkQueueGlobalPriorityEXT.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkQueueGlobalPriorityEXT"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkConservativeRasterizationModeEXT.begin(); it != _VkConservativeRasterizationModeEXT.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkConservativeRasterizationModeEXT"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkVendorId.begin(); it != _VkVendorId.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkVendorId"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDriverIdKHR.begin(); it != _VkDriverIdKHR.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkDriverIdKHR"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkShadingRatePaletteEntryNV.begin(); it != _VkShadingRatePaletteEntryNV.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkShadingRatePaletteEntryNV"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkCoarseSampleOrderTypeNV.begin(); it != _VkCoarseSampleOrderTypeNV.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkCoarseSampleOrderTypeNV"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkCopyAccelerationStructureModeNV.begin(); it != _VkCopyAccelerationStructureModeNV.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkCopyAccelerationStructureModeNV"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkAccelerationStructureTypeNV.begin(); it != _VkAccelerationStructureTypeNV.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkAccelerationStructureTypeNV"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkGeometryTypeNV.begin(); it != _VkGeometryTypeNV.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkGeometryTypeNV"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkAccelerationStructureMemoryRequirementsTypeNV.begin(); it != _VkAccelerationStructureMemoryRequirementsTypeNV.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkAccelerationStructureMemoryRequirementsTypeNV"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkRayTracingShaderGroupTypeNV.begin(); it != _VkRayTracingShaderGroupTypeNV.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkRayTracingShaderGroupTypeNV"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkMemoryOverallocationBehaviorAMD.begin(); it != _VkMemoryOverallocationBehaviorAMD.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkMemoryOverallocationBehaviorAMD"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkCullModeFlagBits.begin(); it != _VkCullModeFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkCullModeFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkQueueFlagBits.begin(); it != _VkQueueFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkQueueFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkRenderPassCreateFlagBits.begin(); it != _VkRenderPassCreateFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkRenderPassCreateFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDeviceQueueCreateFlagBits.begin(); it != _VkDeviceQueueCreateFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkDeviceQueueCreateFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkMemoryPropertyFlagBits.begin(); it != _VkMemoryPropertyFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkMemoryPropertyFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkMemoryHeapFlagBits.begin(); it != _VkMemoryHeapFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkMemoryHeapFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkAccessFlagBits.begin(); it != _VkAccessFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkAccessFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkBufferUsageFlagBits.begin(); it != _VkBufferUsageFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkBufferUsageFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkBufferCreateFlagBits.begin(); it != _VkBufferCreateFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkBufferCreateFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkShaderStageFlagBits.begin(); it != _VkShaderStageFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkShaderStageFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkImageUsageFlagBits.begin(); it != _VkImageUsageFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkImageUsageFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkImageCreateFlagBits.begin(); it != _VkImageCreateFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkImageCreateFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkImageViewCreateFlagBits.begin(); it != _VkImageViewCreateFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkImageViewCreateFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSamplerCreateFlagBits.begin(); it != _VkSamplerCreateFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkSamplerCreateFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkPipelineCreateFlagBits.begin(); it != _VkPipelineCreateFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkPipelineCreateFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkColorComponentFlagBits.begin(); it != _VkColorComponentFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkColorComponentFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkFenceCreateFlagBits.begin(); it != _VkFenceCreateFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkFenceCreateFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkFormatFeatureFlagBits.begin(); it != _VkFormatFeatureFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkFormatFeatureFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkQueryControlFlagBits.begin(); it != _VkQueryControlFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkQueryControlFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkQueryResultFlagBits.begin(); it != _VkQueryResultFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkQueryResultFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkCommandBufferUsageFlagBits.begin(); it != _VkCommandBufferUsageFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkCommandBufferUsageFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkQueryPipelineStatisticFlagBits.begin(); it != _VkQueryPipelineStatisticFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkQueryPipelineStatisticFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkImageAspectFlagBits.begin(); it != _VkImageAspectFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkImageAspectFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSparseImageFormatFlagBits.begin(); it != _VkSparseImageFormatFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkSparseImageFormatFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSparseMemoryBindFlagBits.begin(); it != _VkSparseMemoryBindFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkSparseMemoryBindFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkPipelineStageFlagBits.begin(); it != _VkPipelineStageFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkPipelineStageFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkCommandPoolCreateFlagBits.begin(); it != _VkCommandPoolCreateFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkCommandPoolCreateFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkCommandPoolResetFlagBits.begin(); it != _VkCommandPoolResetFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkCommandPoolResetFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkCommandBufferResetFlagBits.begin(); it != _VkCommandBufferResetFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkCommandBufferResetFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSampleCountFlagBits.begin(); it != _VkSampleCountFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkSampleCountFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkAttachmentDescriptionFlagBits.begin(); it != _VkAttachmentDescriptionFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkAttachmentDescriptionFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkStencilFaceFlagBits.begin(); it != _VkStencilFaceFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkStencilFaceFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDescriptorPoolCreateFlagBits.begin(); it != _VkDescriptorPoolCreateFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkDescriptorPoolCreateFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDependencyFlagBits.begin(); it != _VkDependencyFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkDependencyFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDisplayPlaneAlphaFlagBitsKHR.begin(); it != _VkDisplayPlaneAlphaFlagBitsKHR.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkDisplayPlaneAlphaFlagBitsKHR"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkCompositeAlphaFlagBitsKHR.begin(); it != _VkCompositeAlphaFlagBitsKHR.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkCompositeAlphaFlagBitsKHR"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSurfaceTransformFlagBitsKHR.begin(); it != _VkSurfaceTransformFlagBitsKHR.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkSurfaceTransformFlagBitsKHR"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDebugReportFlagBitsEXT.begin(); it != _VkDebugReportFlagBitsEXT.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkDebugReportFlagBitsEXT"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkExternalMemoryHandleTypeFlagBitsNV.begin(); it != _VkExternalMemoryHandleTypeFlagBitsNV.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkExternalMemoryHandleTypeFlagBitsNV"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkExternalMemoryFeatureFlagBitsNV.begin(); it != _VkExternalMemoryFeatureFlagBitsNV.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkExternalMemoryFeatureFlagBitsNV"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSubgroupFeatureFlagBits.begin(); it != _VkSubgroupFeatureFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkSubgroupFeatureFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkIndirectCommandsLayoutUsageFlagBitsNVX.begin(); it != _VkIndirectCommandsLayoutUsageFlagBitsNVX.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkIndirectCommandsLayoutUsageFlagBitsNVX"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkObjectEntryUsageFlagBitsNVX.begin(); it != _VkObjectEntryUsageFlagBitsNVX.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkObjectEntryUsageFlagBitsNVX"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDescriptorSetLayoutCreateFlagBits.begin(); it != _VkDescriptorSetLayoutCreateFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkDescriptorSetLayoutCreateFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkExternalMemoryHandleTypeFlagBits.begin(); it != _VkExternalMemoryHandleTypeFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkExternalMemoryHandleTypeFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkExternalMemoryFeatureFlagBits.begin(); it != _VkExternalMemoryFeatureFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkExternalMemoryFeatureFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkExternalSemaphoreHandleTypeFlagBits.begin(); it != _VkExternalSemaphoreHandleTypeFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkExternalSemaphoreHandleTypeFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkExternalSemaphoreFeatureFlagBits.begin(); it != _VkExternalSemaphoreFeatureFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkExternalSemaphoreFeatureFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSemaphoreImportFlagBits.begin(); it != _VkSemaphoreImportFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkSemaphoreImportFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkExternalFenceHandleTypeFlagBits.begin(); it != _VkExternalFenceHandleTypeFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkExternalFenceHandleTypeFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkExternalFenceFeatureFlagBits.begin(); it != _VkExternalFenceFeatureFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkExternalFenceFeatureFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkFenceImportFlagBits.begin(); it != _VkFenceImportFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkFenceImportFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSurfaceCounterFlagBitsEXT.begin(); it != _VkSurfaceCounterFlagBitsEXT.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkSurfaceCounterFlagBitsEXT"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkPeerMemoryFeatureFlagBits.begin(); it != _VkPeerMemoryFeatureFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkPeerMemoryFeatureFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkMemoryAllocateFlagBits.begin(); it != _VkMemoryAllocateFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkMemoryAllocateFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDeviceGroupPresentModeFlagBitsKHR.begin(); it != _VkDeviceGroupPresentModeFlagBitsKHR.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkDeviceGroupPresentModeFlagBitsKHR"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSwapchainCreateFlagBitsKHR.begin(); it != _VkSwapchainCreateFlagBitsKHR.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkSwapchainCreateFlagBitsKHR"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkSubpassDescriptionFlagBits.begin(); it != _VkSubpassDescriptionFlagBits.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkSubpassDescriptionFlagBits"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDebugUtilsMessageSeverityFlagBitsEXT.begin(); it != _VkDebugUtilsMessageSeverityFlagBitsEXT.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkDebugUtilsMessageSeverityFlagBitsEXT"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDebugUtilsMessageTypeFlagBitsEXT.begin(); it != _VkDebugUtilsMessageTypeFlagBitsEXT.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkDebugUtilsMessageTypeFlagBitsEXT"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkDescriptorBindingFlagBitsEXT.begin(); it != _VkDescriptorBindingFlagBitsEXT.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkDescriptorBindingFlagBitsEXT"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkConditionalRenderingFlagBitsEXT.begin(); it != _VkConditionalRenderingFlagBitsEXT.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkConditionalRenderingFlagBitsEXT"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkResolveModeFlagBitsKHR.begin(); it != _VkResolveModeFlagBitsKHR.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkResolveModeFlagBitsKHR"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkGeometryInstanceFlagBitsNV.begin(); it != _VkGeometryInstanceFlagBitsNV.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkGeometryInstanceFlagBitsNV"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkGeometryFlagBitsNV.begin(); it != _VkGeometryFlagBitsNV.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkGeometryFlagBitsNV"), entry);
   }
   {
-    std::map<std::string, __int32>::iterator it;
+    std::map<std::string, int32_t>::iterator it;
     Napi::Object entry = Napi::Object::New(env);
     for (it = _VkBuildAccelerationStructureFlagBitsNV.begin(); it != _VkBuildAccelerationStructureFlagBitsNV.end(); it++) {
       Napi::String accessor = Napi::String::New(env, it->first);
-      entry.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
-      out.Set(accessor, Napi::Number::New(env, static_cast<__int32>(it->second)));
+      entry.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
+      out.Set(accessor, Napi::Number::New(env, static_cast<int32_t>(it->second)));
     };
     out.Set(Napi::String::New(env, "VkBuildAccelerationStructureFlagBitsNV"), entry);
   }

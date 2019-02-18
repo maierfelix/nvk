@@ -16,7 +16,6 @@ inline std::string getV8ValueDetails(Napi::Value value) {
 };
 
 template<typename T> inline std::vector<T> createArrayOfV8Numbers(Napi::Value value) {
-  Napi::Env env = value.Env();
   Napi::Array array = value.As<Napi::Array>();
   std::vector<T> data(array.Length());
   for (unsigned int ii = 0; ii < array.Length(); ++ii) {
@@ -35,6 +34,7 @@ inline char* copyV8String(Napi::Value value) {
   return str;
 };
 
+#ifdef _WIN32
 inline wchar_t* s2wcs(const std::string& s) {
   int len;
   int slength = (int)s.length() + 1;
@@ -43,6 +43,7 @@ inline wchar_t* s2wcs(const std::string& s) {
   MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, buf, len);
   return buf;
 };
+#endif
 
 template<typename T> inline T* getTypedArrayData(Napi::Value value, int *len = nullptr) {
   T *data = nullptr;

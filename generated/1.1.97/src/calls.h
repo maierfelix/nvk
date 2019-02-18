@@ -16,146 +16,139 @@
 
 #include <map>
 #include <string>
+#include <memory>
 
 VkDevice currentDevice = VK_NULL_HANDLE;
 VkInstance currentInstance = VK_NULL_HANDLE;
 
-PFN_vkCmdBeginConditionalRenderingEXT $vkCmdBeginConditionalRenderingEXT = nullptr;
-PFN_vkCmdEndConditionalRenderingEXT $vkCmdEndConditionalRenderingEXT = nullptr;
-PFN_vkGetPhysicalDeviceDisplayPropertiesKHR $vkGetPhysicalDeviceDisplayPropertiesKHR = nullptr;
-PFN_vkGetPhysicalDeviceDisplayPlanePropertiesKHR $vkGetPhysicalDeviceDisplayPlanePropertiesKHR = nullptr;
-PFN_vkGetDisplayPlaneSupportedDisplaysKHR $vkGetDisplayPlaneSupportedDisplaysKHR = nullptr;
-PFN_vkGetDisplayModePropertiesKHR $vkGetDisplayModePropertiesKHR = nullptr;
-PFN_vkCreateDisplayModeKHR $vkCreateDisplayModeKHR = nullptr;
-PFN_vkGetDisplayPlaneCapabilitiesKHR $vkGetDisplayPlaneCapabilitiesKHR = nullptr;
-PFN_vkCreateDisplayPlaneSurfaceKHR $vkCreateDisplayPlaneSurfaceKHR = nullptr;
-PFN_vkCreateSharedSwapchainsKHR $vkCreateSharedSwapchainsKHR = nullptr;
-PFN_vkDestroySurfaceKHR $vkDestroySurfaceKHR = nullptr;
-PFN_vkGetPhysicalDeviceSurfaceSupportKHR $vkGetPhysicalDeviceSurfaceSupportKHR = nullptr;
-PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR $vkGetPhysicalDeviceSurfaceCapabilitiesKHR = nullptr;
-PFN_vkGetPhysicalDeviceSurfaceFormatsKHR $vkGetPhysicalDeviceSurfaceFormatsKHR = nullptr;
-PFN_vkGetPhysicalDeviceSurfacePresentModesKHR $vkGetPhysicalDeviceSurfacePresentModesKHR = nullptr;
-PFN_vkCreateSwapchainKHR $vkCreateSwapchainKHR = nullptr;
-PFN_vkDestroySwapchainKHR $vkDestroySwapchainKHR = nullptr;
-PFN_vkGetSwapchainImagesKHR $vkGetSwapchainImagesKHR = nullptr;
-PFN_vkAcquireNextImageKHR $vkAcquireNextImageKHR = nullptr;
-PFN_vkQueuePresentKHR $vkQueuePresentKHR = nullptr;
-PFN_vkCreateWin32SurfaceKHR $vkCreateWin32SurfaceKHR = nullptr;
-PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR $vkGetPhysicalDeviceWin32PresentationSupportKHR = nullptr;
-PFN_vkCreateDebugReportCallbackEXT $vkCreateDebugReportCallbackEXT = nullptr;
-PFN_vkDestroyDebugReportCallbackEXT $vkDestroyDebugReportCallbackEXT = nullptr;
-PFN_vkDebugReportMessageEXT $vkDebugReportMessageEXT = nullptr;
-PFN_vkDebugMarkerSetObjectNameEXT $vkDebugMarkerSetObjectNameEXT = nullptr;
-PFN_vkDebugMarkerSetObjectTagEXT $vkDebugMarkerSetObjectTagEXT = nullptr;
-PFN_vkCmdDebugMarkerBeginEXT $vkCmdDebugMarkerBeginEXT = nullptr;
-PFN_vkCmdDebugMarkerEndEXT $vkCmdDebugMarkerEndEXT = nullptr;
-PFN_vkCmdDebugMarkerInsertEXT $vkCmdDebugMarkerInsertEXT = nullptr;
-PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV $vkGetPhysicalDeviceExternalImageFormatPropertiesNV = nullptr;
-PFN_vkGetMemoryWin32HandleNV $vkGetMemoryWin32HandleNV = nullptr;
-PFN_vkCmdDrawIndirectCountAMD $vkCmdDrawIndirectCountAMD = nullptr;
-PFN_vkCmdDrawIndexedIndirectCountAMD $vkCmdDrawIndexedIndirectCountAMD = nullptr;
-PFN_vkCmdProcessCommandsNVX $vkCmdProcessCommandsNVX = nullptr;
-PFN_vkCmdReserveSpaceForCommandsNVX $vkCmdReserveSpaceForCommandsNVX = nullptr;
-PFN_vkCreateIndirectCommandsLayoutNVX $vkCreateIndirectCommandsLayoutNVX = nullptr;
-PFN_vkDestroyIndirectCommandsLayoutNVX $vkDestroyIndirectCommandsLayoutNVX = nullptr;
-PFN_vkCreateObjectTableNVX $vkCreateObjectTableNVX = nullptr;
-PFN_vkDestroyObjectTableNVX $vkDestroyObjectTableNVX = nullptr;
-PFN_vkRegisterObjectsNVX $vkRegisterObjectsNVX = nullptr;
-PFN_vkUnregisterObjectsNVX $vkUnregisterObjectsNVX = nullptr;
-PFN_vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX $vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX = nullptr;
-PFN_vkCmdPushDescriptorSetKHR $vkCmdPushDescriptorSetKHR = nullptr;
-PFN_vkGetMemoryWin32HandleKHR $vkGetMemoryWin32HandleKHR = nullptr;
-PFN_vkGetMemoryWin32HandlePropertiesKHR $vkGetMemoryWin32HandlePropertiesKHR = nullptr;
-PFN_vkGetMemoryFdKHR $vkGetMemoryFdKHR = nullptr;
-PFN_vkGetMemoryFdPropertiesKHR $vkGetMemoryFdPropertiesKHR = nullptr;
-PFN_vkGetSemaphoreWin32HandleKHR $vkGetSemaphoreWin32HandleKHR = nullptr;
-PFN_vkImportSemaphoreWin32HandleKHR $vkImportSemaphoreWin32HandleKHR = nullptr;
-PFN_vkGetSemaphoreFdKHR $vkGetSemaphoreFdKHR = nullptr;
-PFN_vkImportSemaphoreFdKHR $vkImportSemaphoreFdKHR = nullptr;
-PFN_vkGetFenceWin32HandleKHR $vkGetFenceWin32HandleKHR = nullptr;
-PFN_vkImportFenceWin32HandleKHR $vkImportFenceWin32HandleKHR = nullptr;
-PFN_vkGetFenceFdKHR $vkGetFenceFdKHR = nullptr;
-PFN_vkImportFenceFdKHR $vkImportFenceFdKHR = nullptr;
-PFN_vkReleaseDisplayEXT $vkReleaseDisplayEXT = nullptr;
-PFN_vkDisplayPowerControlEXT $vkDisplayPowerControlEXT = nullptr;
-PFN_vkRegisterDeviceEventEXT $vkRegisterDeviceEventEXT = nullptr;
-PFN_vkRegisterDisplayEventEXT $vkRegisterDisplayEventEXT = nullptr;
-PFN_vkGetSwapchainCounterEXT $vkGetSwapchainCounterEXT = nullptr;
-PFN_vkGetPhysicalDeviceSurfaceCapabilities2EXT $vkGetPhysicalDeviceSurfaceCapabilities2EXT = nullptr;
-PFN_vkGetDeviceGroupPresentCapabilitiesKHR $vkGetDeviceGroupPresentCapabilitiesKHR = nullptr;
-PFN_vkGetDeviceGroupSurfacePresentModesKHR $vkGetDeviceGroupSurfacePresentModesKHR = nullptr;
-PFN_vkAcquireNextImage2KHR $vkAcquireNextImage2KHR = nullptr;
-PFN_vkGetPhysicalDevicePresentRectanglesKHR $vkGetPhysicalDevicePresentRectanglesKHR = nullptr;
-PFN_vkCmdPushDescriptorSetWithTemplateKHR $vkCmdPushDescriptorSetWithTemplateKHR = nullptr;
-PFN_vkSetHdrMetadataEXT $vkSetHdrMetadataEXT = nullptr;
-PFN_vkGetSwapchainStatusKHR $vkGetSwapchainStatusKHR = nullptr;
-PFN_vkGetRefreshCycleDurationGOOGLE $vkGetRefreshCycleDurationGOOGLE = nullptr;
-PFN_vkGetPastPresentationTimingGOOGLE $vkGetPastPresentationTimingGOOGLE = nullptr;
-PFN_vkCmdSetViewportWScalingNV $vkCmdSetViewportWScalingNV = nullptr;
-PFN_vkCmdSetDiscardRectangleEXT $vkCmdSetDiscardRectangleEXT = nullptr;
-PFN_vkCmdSetSampleLocationsEXT $vkCmdSetSampleLocationsEXT = nullptr;
-PFN_vkGetPhysicalDeviceMultisamplePropertiesEXT $vkGetPhysicalDeviceMultisamplePropertiesEXT = nullptr;
-PFN_vkGetPhysicalDeviceSurfaceCapabilities2KHR $vkGetPhysicalDeviceSurfaceCapabilities2KHR = nullptr;
-PFN_vkGetPhysicalDeviceSurfaceFormats2KHR $vkGetPhysicalDeviceSurfaceFormats2KHR = nullptr;
-PFN_vkGetPhysicalDeviceDisplayProperties2KHR $vkGetPhysicalDeviceDisplayProperties2KHR = nullptr;
-PFN_vkGetPhysicalDeviceDisplayPlaneProperties2KHR $vkGetPhysicalDeviceDisplayPlaneProperties2KHR = nullptr;
-PFN_vkGetDisplayModeProperties2KHR $vkGetDisplayModeProperties2KHR = nullptr;
-PFN_vkGetDisplayPlaneCapabilities2KHR $vkGetDisplayPlaneCapabilities2KHR = nullptr;
-PFN_vkCreateValidationCacheEXT $vkCreateValidationCacheEXT = nullptr;
-PFN_vkDestroyValidationCacheEXT $vkDestroyValidationCacheEXT = nullptr;
-PFN_vkGetValidationCacheDataEXT $vkGetValidationCacheDataEXT = nullptr;
-PFN_vkMergeValidationCachesEXT $vkMergeValidationCachesEXT = nullptr;
-PFN_vkGetShaderInfoAMD $vkGetShaderInfoAMD = nullptr;
-PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT $vkGetPhysicalDeviceCalibrateableTimeDomainsEXT = nullptr;
-PFN_vkGetCalibratedTimestampsEXT $vkGetCalibratedTimestampsEXT = nullptr;
-PFN_vkSetDebugUtilsObjectNameEXT $vkSetDebugUtilsObjectNameEXT = nullptr;
-PFN_vkSetDebugUtilsObjectTagEXT $vkSetDebugUtilsObjectTagEXT = nullptr;
-PFN_vkQueueBeginDebugUtilsLabelEXT $vkQueueBeginDebugUtilsLabelEXT = nullptr;
-PFN_vkQueueEndDebugUtilsLabelEXT $vkQueueEndDebugUtilsLabelEXT = nullptr;
-PFN_vkQueueInsertDebugUtilsLabelEXT $vkQueueInsertDebugUtilsLabelEXT = nullptr;
-PFN_vkCmdBeginDebugUtilsLabelEXT $vkCmdBeginDebugUtilsLabelEXT = nullptr;
-PFN_vkCmdEndDebugUtilsLabelEXT $vkCmdEndDebugUtilsLabelEXT = nullptr;
-PFN_vkCmdInsertDebugUtilsLabelEXT $vkCmdInsertDebugUtilsLabelEXT = nullptr;
-PFN_vkCreateDebugUtilsMessengerEXT $vkCreateDebugUtilsMessengerEXT = nullptr;
-PFN_vkDestroyDebugUtilsMessengerEXT $vkDestroyDebugUtilsMessengerEXT = nullptr;
-PFN_vkSubmitDebugUtilsMessageEXT $vkSubmitDebugUtilsMessageEXT = nullptr;
-PFN_vkGetMemoryHostPointerPropertiesEXT $vkGetMemoryHostPointerPropertiesEXT = nullptr;
-PFN_vkCmdWriteBufferMarkerAMD $vkCmdWriteBufferMarkerAMD = nullptr;
-PFN_vkCreateRenderPass2KHR $vkCreateRenderPass2KHR = nullptr;
-PFN_vkCmdBeginRenderPass2KHR $vkCmdBeginRenderPass2KHR = nullptr;
-PFN_vkCmdNextSubpass2KHR $vkCmdNextSubpass2KHR = nullptr;
-PFN_vkCmdEndRenderPass2KHR $vkCmdEndRenderPass2KHR = nullptr;
-PFN_vkCmdDrawIndirectCountKHR $vkCmdDrawIndirectCountKHR = nullptr;
-PFN_vkCmdDrawIndexedIndirectCountKHR $vkCmdDrawIndexedIndirectCountKHR = nullptr;
-PFN_vkCmdSetCheckpointNV $vkCmdSetCheckpointNV = nullptr;
-PFN_vkGetQueueCheckpointDataNV $vkGetQueueCheckpointDataNV = nullptr;
-PFN_vkCmdBindTransformFeedbackBuffersEXT $vkCmdBindTransformFeedbackBuffersEXT = nullptr;
-PFN_vkCmdBeginTransformFeedbackEXT $vkCmdBeginTransformFeedbackEXT = nullptr;
-PFN_vkCmdEndTransformFeedbackEXT $vkCmdEndTransformFeedbackEXT = nullptr;
-PFN_vkCmdBeginQueryIndexedEXT $vkCmdBeginQueryIndexedEXT = nullptr;
-PFN_vkCmdEndQueryIndexedEXT $vkCmdEndQueryIndexedEXT = nullptr;
-PFN_vkCmdDrawIndirectByteCountEXT $vkCmdDrawIndirectByteCountEXT = nullptr;
-PFN_vkCmdSetExclusiveScissorNV $vkCmdSetExclusiveScissorNV = nullptr;
-PFN_vkCmdBindShadingRateImageNV $vkCmdBindShadingRateImageNV = nullptr;
-PFN_vkCmdSetViewportShadingRatePaletteNV $vkCmdSetViewportShadingRatePaletteNV = nullptr;
-PFN_vkCmdSetCoarseSampleOrderNV $vkCmdSetCoarseSampleOrderNV = nullptr;
-PFN_vkCmdDrawMeshTasksNV $vkCmdDrawMeshTasksNV = nullptr;
-PFN_vkCmdDrawMeshTasksIndirectNV $vkCmdDrawMeshTasksIndirectNV = nullptr;
-PFN_vkCmdDrawMeshTasksIndirectCountNV $vkCmdDrawMeshTasksIndirectCountNV = nullptr;
-PFN_vkCompileDeferredNV $vkCompileDeferredNV = nullptr;
-PFN_vkCreateAccelerationStructureNV $vkCreateAccelerationStructureNV = nullptr;
-PFN_vkDestroyAccelerationStructureNV $vkDestroyAccelerationStructureNV = nullptr;
-PFN_vkGetAccelerationStructureMemoryRequirementsNV $vkGetAccelerationStructureMemoryRequirementsNV = nullptr;
-PFN_vkBindAccelerationStructureMemoryNV $vkBindAccelerationStructureMemoryNV = nullptr;
-PFN_vkCmdCopyAccelerationStructureNV $vkCmdCopyAccelerationStructureNV = nullptr;
-PFN_vkCmdWriteAccelerationStructuresPropertiesNV $vkCmdWriteAccelerationStructuresPropertiesNV = nullptr;
-PFN_vkCmdBuildAccelerationStructureNV $vkCmdBuildAccelerationStructureNV = nullptr;
-PFN_vkCmdTraceRaysNV $vkCmdTraceRaysNV = nullptr;
-PFN_vkGetRayTracingShaderGroupHandlesNV $vkGetRayTracingShaderGroupHandlesNV = nullptr;
-PFN_vkGetAccelerationStructureHandleNV $vkGetAccelerationStructureHandleNV = nullptr;
-PFN_vkCreateRayTracingPipelinesNV $vkCreateRayTracingPipelinesNV = nullptr;
-PFN_vkGetImageDrmFormatModifierPropertiesEXT $vkGetImageDrmFormatModifierPropertiesEXT = nullptr;
-PFN_vkGetBufferDeviceAddressEXT $vkGetBufferDeviceAddressEXT = nullptr;
+
+static PFN_vkCmdBeginConditionalRenderingEXT $vkCmdBeginConditionalRenderingEXT = nullptr;
+static PFN_vkCmdEndConditionalRenderingEXT $vkCmdEndConditionalRenderingEXT = nullptr;
+static PFN_vkGetPhysicalDeviceDisplayPropertiesKHR $vkGetPhysicalDeviceDisplayPropertiesKHR = nullptr;
+static PFN_vkGetPhysicalDeviceDisplayPlanePropertiesKHR $vkGetPhysicalDeviceDisplayPlanePropertiesKHR = nullptr;
+static PFN_vkGetDisplayPlaneSupportedDisplaysKHR $vkGetDisplayPlaneSupportedDisplaysKHR = nullptr;
+static PFN_vkGetDisplayModePropertiesKHR $vkGetDisplayModePropertiesKHR = nullptr;
+static PFN_vkCreateDisplayModeKHR $vkCreateDisplayModeKHR = nullptr;
+static PFN_vkGetDisplayPlaneCapabilitiesKHR $vkGetDisplayPlaneCapabilitiesKHR = nullptr;
+static PFN_vkCreateDisplayPlaneSurfaceKHR $vkCreateDisplayPlaneSurfaceKHR = nullptr;
+static PFN_vkCreateSharedSwapchainsKHR $vkCreateSharedSwapchainsKHR = nullptr;
+static PFN_vkDestroySurfaceKHR $vkDestroySurfaceKHR = nullptr;
+static PFN_vkGetPhysicalDeviceSurfaceSupportKHR $vkGetPhysicalDeviceSurfaceSupportKHR = nullptr;
+static PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR $vkGetPhysicalDeviceSurfaceCapabilitiesKHR = nullptr;
+static PFN_vkGetPhysicalDeviceSurfaceFormatsKHR $vkGetPhysicalDeviceSurfaceFormatsKHR = nullptr;
+static PFN_vkGetPhysicalDeviceSurfacePresentModesKHR $vkGetPhysicalDeviceSurfacePresentModesKHR = nullptr;
+static PFN_vkCreateSwapchainKHR $vkCreateSwapchainKHR = nullptr;
+static PFN_vkDestroySwapchainKHR $vkDestroySwapchainKHR = nullptr;
+static PFN_vkGetSwapchainImagesKHR $vkGetSwapchainImagesKHR = nullptr;
+static PFN_vkAcquireNextImageKHR $vkAcquireNextImageKHR = nullptr;
+static PFN_vkQueuePresentKHR $vkQueuePresentKHR = nullptr;
+static PFN_vkCreateDebugReportCallbackEXT $vkCreateDebugReportCallbackEXT = nullptr;
+static PFN_vkDestroyDebugReportCallbackEXT $vkDestroyDebugReportCallbackEXT = nullptr;
+static PFN_vkDebugReportMessageEXT $vkDebugReportMessageEXT = nullptr;
+static PFN_vkDebugMarkerSetObjectNameEXT $vkDebugMarkerSetObjectNameEXT = nullptr;
+static PFN_vkDebugMarkerSetObjectTagEXT $vkDebugMarkerSetObjectTagEXT = nullptr;
+static PFN_vkCmdDebugMarkerBeginEXT $vkCmdDebugMarkerBeginEXT = nullptr;
+static PFN_vkCmdDebugMarkerEndEXT $vkCmdDebugMarkerEndEXT = nullptr;
+static PFN_vkCmdDebugMarkerInsertEXT $vkCmdDebugMarkerInsertEXT = nullptr;
+static PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV $vkGetPhysicalDeviceExternalImageFormatPropertiesNV = nullptr;
+static PFN_vkCmdDrawIndirectCountAMD $vkCmdDrawIndirectCountAMD = nullptr;
+static PFN_vkCmdDrawIndexedIndirectCountAMD $vkCmdDrawIndexedIndirectCountAMD = nullptr;
+static PFN_vkCmdProcessCommandsNVX $vkCmdProcessCommandsNVX = nullptr;
+static PFN_vkCmdReserveSpaceForCommandsNVX $vkCmdReserveSpaceForCommandsNVX = nullptr;
+static PFN_vkCreateIndirectCommandsLayoutNVX $vkCreateIndirectCommandsLayoutNVX = nullptr;
+static PFN_vkDestroyIndirectCommandsLayoutNVX $vkDestroyIndirectCommandsLayoutNVX = nullptr;
+static PFN_vkCreateObjectTableNVX $vkCreateObjectTableNVX = nullptr;
+static PFN_vkDestroyObjectTableNVX $vkDestroyObjectTableNVX = nullptr;
+static PFN_vkRegisterObjectsNVX $vkRegisterObjectsNVX = nullptr;
+static PFN_vkUnregisterObjectsNVX $vkUnregisterObjectsNVX = nullptr;
+static PFN_vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX $vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX = nullptr;
+static PFN_vkCmdPushDescriptorSetKHR $vkCmdPushDescriptorSetKHR = nullptr;
+static PFN_vkGetMemoryFdKHR $vkGetMemoryFdKHR = nullptr;
+static PFN_vkGetMemoryFdPropertiesKHR $vkGetMemoryFdPropertiesKHR = nullptr;
+static PFN_vkGetSemaphoreFdKHR $vkGetSemaphoreFdKHR = nullptr;
+static PFN_vkImportSemaphoreFdKHR $vkImportSemaphoreFdKHR = nullptr;
+static PFN_vkGetFenceFdKHR $vkGetFenceFdKHR = nullptr;
+static PFN_vkImportFenceFdKHR $vkImportFenceFdKHR = nullptr;
+static PFN_vkReleaseDisplayEXT $vkReleaseDisplayEXT = nullptr;
+static PFN_vkDisplayPowerControlEXT $vkDisplayPowerControlEXT = nullptr;
+static PFN_vkRegisterDeviceEventEXT $vkRegisterDeviceEventEXT = nullptr;
+static PFN_vkRegisterDisplayEventEXT $vkRegisterDisplayEventEXT = nullptr;
+static PFN_vkGetSwapchainCounterEXT $vkGetSwapchainCounterEXT = nullptr;
+static PFN_vkGetPhysicalDeviceSurfaceCapabilities2EXT $vkGetPhysicalDeviceSurfaceCapabilities2EXT = nullptr;
+static PFN_vkGetDeviceGroupPresentCapabilitiesKHR $vkGetDeviceGroupPresentCapabilitiesKHR = nullptr;
+static PFN_vkGetDeviceGroupSurfacePresentModesKHR $vkGetDeviceGroupSurfacePresentModesKHR = nullptr;
+static PFN_vkAcquireNextImage2KHR $vkAcquireNextImage2KHR = nullptr;
+static PFN_vkGetPhysicalDevicePresentRectanglesKHR $vkGetPhysicalDevicePresentRectanglesKHR = nullptr;
+static PFN_vkCmdPushDescriptorSetWithTemplateKHR $vkCmdPushDescriptorSetWithTemplateKHR = nullptr;
+static PFN_vkSetHdrMetadataEXT $vkSetHdrMetadataEXT = nullptr;
+static PFN_vkGetSwapchainStatusKHR $vkGetSwapchainStatusKHR = nullptr;
+static PFN_vkGetRefreshCycleDurationGOOGLE $vkGetRefreshCycleDurationGOOGLE = nullptr;
+static PFN_vkGetPastPresentationTimingGOOGLE $vkGetPastPresentationTimingGOOGLE = nullptr;
+static PFN_vkCmdSetViewportWScalingNV $vkCmdSetViewportWScalingNV = nullptr;
+static PFN_vkCmdSetDiscardRectangleEXT $vkCmdSetDiscardRectangleEXT = nullptr;
+static PFN_vkCmdSetSampleLocationsEXT $vkCmdSetSampleLocationsEXT = nullptr;
+static PFN_vkGetPhysicalDeviceMultisamplePropertiesEXT $vkGetPhysicalDeviceMultisamplePropertiesEXT = nullptr;
+static PFN_vkGetPhysicalDeviceSurfaceCapabilities2KHR $vkGetPhysicalDeviceSurfaceCapabilities2KHR = nullptr;
+static PFN_vkGetPhysicalDeviceSurfaceFormats2KHR $vkGetPhysicalDeviceSurfaceFormats2KHR = nullptr;
+static PFN_vkGetPhysicalDeviceDisplayProperties2KHR $vkGetPhysicalDeviceDisplayProperties2KHR = nullptr;
+static PFN_vkGetPhysicalDeviceDisplayPlaneProperties2KHR $vkGetPhysicalDeviceDisplayPlaneProperties2KHR = nullptr;
+static PFN_vkGetDisplayModeProperties2KHR $vkGetDisplayModeProperties2KHR = nullptr;
+static PFN_vkGetDisplayPlaneCapabilities2KHR $vkGetDisplayPlaneCapabilities2KHR = nullptr;
+static PFN_vkCreateValidationCacheEXT $vkCreateValidationCacheEXT = nullptr;
+static PFN_vkDestroyValidationCacheEXT $vkDestroyValidationCacheEXT = nullptr;
+static PFN_vkGetValidationCacheDataEXT $vkGetValidationCacheDataEXT = nullptr;
+static PFN_vkMergeValidationCachesEXT $vkMergeValidationCachesEXT = nullptr;
+static PFN_vkGetShaderInfoAMD $vkGetShaderInfoAMD = nullptr;
+static PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT $vkGetPhysicalDeviceCalibrateableTimeDomainsEXT = nullptr;
+static PFN_vkGetCalibratedTimestampsEXT $vkGetCalibratedTimestampsEXT = nullptr;
+static PFN_vkSetDebugUtilsObjectNameEXT $vkSetDebugUtilsObjectNameEXT = nullptr;
+static PFN_vkSetDebugUtilsObjectTagEXT $vkSetDebugUtilsObjectTagEXT = nullptr;
+static PFN_vkQueueBeginDebugUtilsLabelEXT $vkQueueBeginDebugUtilsLabelEXT = nullptr;
+static PFN_vkQueueEndDebugUtilsLabelEXT $vkQueueEndDebugUtilsLabelEXT = nullptr;
+static PFN_vkQueueInsertDebugUtilsLabelEXT $vkQueueInsertDebugUtilsLabelEXT = nullptr;
+static PFN_vkCmdBeginDebugUtilsLabelEXT $vkCmdBeginDebugUtilsLabelEXT = nullptr;
+static PFN_vkCmdEndDebugUtilsLabelEXT $vkCmdEndDebugUtilsLabelEXT = nullptr;
+static PFN_vkCmdInsertDebugUtilsLabelEXT $vkCmdInsertDebugUtilsLabelEXT = nullptr;
+static PFN_vkCreateDebugUtilsMessengerEXT $vkCreateDebugUtilsMessengerEXT = nullptr;
+static PFN_vkDestroyDebugUtilsMessengerEXT $vkDestroyDebugUtilsMessengerEXT = nullptr;
+static PFN_vkSubmitDebugUtilsMessageEXT $vkSubmitDebugUtilsMessageEXT = nullptr;
+static PFN_vkGetMemoryHostPointerPropertiesEXT $vkGetMemoryHostPointerPropertiesEXT = nullptr;
+static PFN_vkCmdWriteBufferMarkerAMD $vkCmdWriteBufferMarkerAMD = nullptr;
+static PFN_vkCreateRenderPass2KHR $vkCreateRenderPass2KHR = nullptr;
+static PFN_vkCmdBeginRenderPass2KHR $vkCmdBeginRenderPass2KHR = nullptr;
+static PFN_vkCmdNextSubpass2KHR $vkCmdNextSubpass2KHR = nullptr;
+static PFN_vkCmdEndRenderPass2KHR $vkCmdEndRenderPass2KHR = nullptr;
+static PFN_vkCmdDrawIndirectCountKHR $vkCmdDrawIndirectCountKHR = nullptr;
+static PFN_vkCmdDrawIndexedIndirectCountKHR $vkCmdDrawIndexedIndirectCountKHR = nullptr;
+static PFN_vkCmdSetCheckpointNV $vkCmdSetCheckpointNV = nullptr;
+static PFN_vkGetQueueCheckpointDataNV $vkGetQueueCheckpointDataNV = nullptr;
+static PFN_vkCmdBindTransformFeedbackBuffersEXT $vkCmdBindTransformFeedbackBuffersEXT = nullptr;
+static PFN_vkCmdBeginTransformFeedbackEXT $vkCmdBeginTransformFeedbackEXT = nullptr;
+static PFN_vkCmdEndTransformFeedbackEXT $vkCmdEndTransformFeedbackEXT = nullptr;
+static PFN_vkCmdBeginQueryIndexedEXT $vkCmdBeginQueryIndexedEXT = nullptr;
+static PFN_vkCmdEndQueryIndexedEXT $vkCmdEndQueryIndexedEXT = nullptr;
+static PFN_vkCmdDrawIndirectByteCountEXT $vkCmdDrawIndirectByteCountEXT = nullptr;
+static PFN_vkCmdSetExclusiveScissorNV $vkCmdSetExclusiveScissorNV = nullptr;
+static PFN_vkCmdBindShadingRateImageNV $vkCmdBindShadingRateImageNV = nullptr;
+static PFN_vkCmdSetViewportShadingRatePaletteNV $vkCmdSetViewportShadingRatePaletteNV = nullptr;
+static PFN_vkCmdSetCoarseSampleOrderNV $vkCmdSetCoarseSampleOrderNV = nullptr;
+static PFN_vkCmdDrawMeshTasksNV $vkCmdDrawMeshTasksNV = nullptr;
+static PFN_vkCmdDrawMeshTasksIndirectNV $vkCmdDrawMeshTasksIndirectNV = nullptr;
+static PFN_vkCmdDrawMeshTasksIndirectCountNV $vkCmdDrawMeshTasksIndirectCountNV = nullptr;
+static PFN_vkCompileDeferredNV $vkCompileDeferredNV = nullptr;
+static PFN_vkCreateAccelerationStructureNV $vkCreateAccelerationStructureNV = nullptr;
+static PFN_vkDestroyAccelerationStructureNV $vkDestroyAccelerationStructureNV = nullptr;
+static PFN_vkGetAccelerationStructureMemoryRequirementsNV $vkGetAccelerationStructureMemoryRequirementsNV = nullptr;
+static PFN_vkBindAccelerationStructureMemoryNV $vkBindAccelerationStructureMemoryNV = nullptr;
+static PFN_vkCmdCopyAccelerationStructureNV $vkCmdCopyAccelerationStructureNV = nullptr;
+static PFN_vkCmdWriteAccelerationStructuresPropertiesNV $vkCmdWriteAccelerationStructuresPropertiesNV = nullptr;
+static PFN_vkCmdBuildAccelerationStructureNV $vkCmdBuildAccelerationStructureNV = nullptr;
+static PFN_vkCmdTraceRaysNV $vkCmdTraceRaysNV = nullptr;
+static PFN_vkGetRayTracingShaderGroupHandlesNV $vkGetRayTracingShaderGroupHandlesNV = nullptr;
+static PFN_vkGetAccelerationStructureHandleNV $vkGetAccelerationStructureHandleNV = nullptr;
+static PFN_vkCreateRayTracingPipelinesNV $vkCreateRayTracingPipelinesNV = nullptr;
+static PFN_vkGetImageDrmFormatModifierPropertiesEXT $vkGetImageDrmFormatModifierPropertiesEXT = nullptr;
+static PFN_vkGetBufferDeviceAddressEXT $vkGetBufferDeviceAddressEXT = nullptr;
 
 void vkUseDevice(VkDevice pDevice) {
   currentDevice = pDevice;
@@ -172,7 +165,6 @@ void vkUseDevice(VkDevice pDevice) {
   $vkCmdDebugMarkerBeginEXT = (PFN_vkCmdDebugMarkerBeginEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdDebugMarkerBeginEXT");
   $vkCmdDebugMarkerEndEXT = (PFN_vkCmdDebugMarkerEndEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdDebugMarkerEndEXT");
   $vkCmdDebugMarkerInsertEXT = (PFN_vkCmdDebugMarkerInsertEXT) vkGetDeviceProcAddr(currentDevice, "vkCmdDebugMarkerInsertEXT");
-  $vkGetMemoryWin32HandleNV = (PFN_vkGetMemoryWin32HandleNV) vkGetDeviceProcAddr(currentDevice, "vkGetMemoryWin32HandleNV");
   $vkCmdDrawIndirectCountAMD = (PFN_vkCmdDrawIndirectCountAMD) vkGetDeviceProcAddr(currentDevice, "vkCmdDrawIndirectCountAMD");
   $vkCmdDrawIndexedIndirectCountAMD = (PFN_vkCmdDrawIndexedIndirectCountAMD) vkGetDeviceProcAddr(currentDevice, "vkCmdDrawIndexedIndirectCountAMD");
   $vkCmdProcessCommandsNVX = (PFN_vkCmdProcessCommandsNVX) vkGetDeviceProcAddr(currentDevice, "vkCmdProcessCommandsNVX");
@@ -185,16 +177,10 @@ void vkUseDevice(VkDevice pDevice) {
   $vkUnregisterObjectsNVX = (PFN_vkUnregisterObjectsNVX) vkGetDeviceProcAddr(currentDevice, "vkUnregisterObjectsNVX");
   $vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX = (PFN_vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX) vkGetDeviceProcAddr(currentDevice, "vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX");
   $vkCmdPushDescriptorSetKHR = (PFN_vkCmdPushDescriptorSetKHR) vkGetDeviceProcAddr(currentDevice, "vkCmdPushDescriptorSetKHR");
-  $vkGetMemoryWin32HandleKHR = (PFN_vkGetMemoryWin32HandleKHR) vkGetDeviceProcAddr(currentDevice, "vkGetMemoryWin32HandleKHR");
-  $vkGetMemoryWin32HandlePropertiesKHR = (PFN_vkGetMemoryWin32HandlePropertiesKHR) vkGetDeviceProcAddr(currentDevice, "vkGetMemoryWin32HandlePropertiesKHR");
   $vkGetMemoryFdKHR = (PFN_vkGetMemoryFdKHR) vkGetDeviceProcAddr(currentDevice, "vkGetMemoryFdKHR");
   $vkGetMemoryFdPropertiesKHR = (PFN_vkGetMemoryFdPropertiesKHR) vkGetDeviceProcAddr(currentDevice, "vkGetMemoryFdPropertiesKHR");
-  $vkGetSemaphoreWin32HandleKHR = (PFN_vkGetSemaphoreWin32HandleKHR) vkGetDeviceProcAddr(currentDevice, "vkGetSemaphoreWin32HandleKHR");
-  $vkImportSemaphoreWin32HandleKHR = (PFN_vkImportSemaphoreWin32HandleKHR) vkGetDeviceProcAddr(currentDevice, "vkImportSemaphoreWin32HandleKHR");
   $vkGetSemaphoreFdKHR = (PFN_vkGetSemaphoreFdKHR) vkGetDeviceProcAddr(currentDevice, "vkGetSemaphoreFdKHR");
   $vkImportSemaphoreFdKHR = (PFN_vkImportSemaphoreFdKHR) vkGetDeviceProcAddr(currentDevice, "vkImportSemaphoreFdKHR");
-  $vkGetFenceWin32HandleKHR = (PFN_vkGetFenceWin32HandleKHR) vkGetDeviceProcAddr(currentDevice, "vkGetFenceWin32HandleKHR");
-  $vkImportFenceWin32HandleKHR = (PFN_vkImportFenceWin32HandleKHR) vkGetDeviceProcAddr(currentDevice, "vkImportFenceWin32HandleKHR");
   $vkGetFenceFdKHR = (PFN_vkGetFenceFdKHR) vkGetDeviceProcAddr(currentDevice, "vkGetFenceFdKHR");
   $vkImportFenceFdKHR = (PFN_vkImportFenceFdKHR) vkGetDeviceProcAddr(currentDevice, "vkImportFenceFdKHR");
   $vkDisplayPowerControlEXT = (PFN_vkDisplayPowerControlEXT) vkGetDeviceProcAddr(currentDevice, "vkDisplayPowerControlEXT");
@@ -274,8 +260,6 @@ void vkUseInstance(VkInstance pInstance) {
   $vkGetPhysicalDeviceSurfaceCapabilitiesKHR = (PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceSurfaceCapabilitiesKHR");
   $vkGetPhysicalDeviceSurfaceFormatsKHR = (PFN_vkGetPhysicalDeviceSurfaceFormatsKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceSurfaceFormatsKHR");
   $vkGetPhysicalDeviceSurfacePresentModesKHR = (PFN_vkGetPhysicalDeviceSurfacePresentModesKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceSurfacePresentModesKHR");
-  $vkCreateWin32SurfaceKHR = (PFN_vkCreateWin32SurfaceKHR) vkGetInstanceProcAddr(currentInstance, "vkCreateWin32SurfaceKHR");
-  $vkGetPhysicalDeviceWin32PresentationSupportKHR = (PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR) vkGetInstanceProcAddr(currentInstance, "vkGetPhysicalDeviceWin32PresentationSupportKHR");
   $vkCreateDebugReportCallbackEXT = (PFN_vkCreateDebugReportCallbackEXT) vkGetInstanceProcAddr(currentInstance, "vkCreateDebugReportCallbackEXT");
   $vkDestroyDebugReportCallbackEXT = (PFN_vkDestroyDebugReportCallbackEXT) vkGetInstanceProcAddr(currentInstance, "vkDestroyDebugReportCallbackEXT");
   $vkDebugReportMessageEXT = (PFN_vkDebugReportMessageEXT) vkGetInstanceProcAddr(currentInstance, "vkDebugReportMessageEXT");
@@ -331,7 +315,7 @@ Napi::Value _vkCreateInstance(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkInstanceCreateInfo* obj0;
-  VkInstanceCreateInfo *$p0;
+  VkInstanceCreateInfo *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkInstanceCreateInfo::constructor.Value()))) {
@@ -349,7 +333,7 @@ Napi::Value _vkCreateInstance(const Napi::CallbackInfo& info) {
 
 
   _VkInstance* obj2;
-  VkInstance *$p2;
+  VkInstance *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
@@ -380,7 +364,7 @@ Napi::Value _vkDestroyInstance(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkInstance* obj0;
-  VkInstance *$p0;
+  VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
@@ -410,7 +394,7 @@ Napi::Value _vkEnumeratePhysicalDevices(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkInstance* obj0;
-  VkInstance *$p0;
+  VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
@@ -427,7 +411,7 @@ Napi::Value _vkEnumeratePhysicalDevices(const Napi::CallbackInfo& info) {
   }
 
   Napi::Object obj1;
-  uint32_t $p1;
+  uint32_t $p1 = 0;
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
@@ -485,7 +469,7 @@ Napi::Value _vkGetDeviceProcAddr(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -501,7 +485,7 @@ Napi::Value _vkGetDeviceProcAddr(const Napi::CallbackInfo& info) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
   }
 
-  char* $p1;
+  char* $p1 = nullptr;
   if (info[1].IsString()) {
     $p1 = copyV8String(info[1]);
   } else if (!info[1].IsNull()) {
@@ -523,7 +507,7 @@ Napi::Value _vkGetInstanceProcAddr(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkInstance* obj0;
-  VkInstance *$p0;
+  VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
@@ -539,7 +523,7 @@ Napi::Value _vkGetInstanceProcAddr(const Napi::CallbackInfo& info) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
   }
 
-  char* $p1;
+  char* $p1 = nullptr;
   if (info[1].IsString()) {
     $p1 = copyV8String(info[1]);
   } else if (!info[1].IsNull()) {
@@ -561,7 +545,7 @@ Napi::Value _vkGetPhysicalDeviceProperties(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -578,7 +562,7 @@ Napi::Value _vkGetPhysicalDeviceProperties(const Napi::CallbackInfo& info) {
   }
 
   _VkPhysicalDeviceProperties* obj1;
-  VkPhysicalDeviceProperties *$p1;
+  VkPhysicalDeviceProperties *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDeviceProperties::constructor.Value()))) {
@@ -693,7 +677,7 @@ Napi::Value _vkGetPhysicalDeviceQueueFamilyProperties(const Napi::CallbackInfo& 
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -710,7 +694,7 @@ Napi::Value _vkGetPhysicalDeviceQueueFamilyProperties(const Napi::CallbackInfo& 
   }
 
   Napi::Object obj1;
-  uint32_t $p1;
+  uint32_t $p1 = 0;
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
@@ -790,7 +774,7 @@ Napi::Value _vkGetPhysicalDeviceMemoryProperties(const Napi::CallbackInfo& info)
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -807,7 +791,7 @@ Napi::Value _vkGetPhysicalDeviceMemoryProperties(const Napi::CallbackInfo& info)
   }
 
   _VkPhysicalDeviceMemoryProperties* obj1;
-  VkPhysicalDeviceMemoryProperties *$p1;
+  VkPhysicalDeviceMemoryProperties *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDeviceMemoryProperties::constructor.Value()))) {
@@ -864,7 +848,7 @@ Napi::Value _vkGetPhysicalDeviceFeatures(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -881,7 +865,7 @@ Napi::Value _vkGetPhysicalDeviceFeatures(const Napi::CallbackInfo& info) {
   }
 
   _VkPhysicalDeviceFeatures* obj1;
-  VkPhysicalDeviceFeatures *$p1;
+  VkPhysicalDeviceFeatures *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDeviceFeatures::constructor.Value()))) {
@@ -910,7 +894,7 @@ Napi::Value _vkGetPhysicalDeviceFormatProperties(const Napi::CallbackInfo& info)
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -929,7 +913,7 @@ Napi::Value _vkGetPhysicalDeviceFormatProperties(const Napi::CallbackInfo& info)
   VkFormat $p1 = static_cast<VkFormat>(info[1].As<Napi::Number>().Int64Value());
 
   _VkFormatProperties* obj2;
-  VkFormatProperties *$p2;
+  VkFormatProperties *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkFormatProperties::constructor.Value()))) {
@@ -959,7 +943,7 @@ Napi::Value _vkGetPhysicalDeviceImageFormatProperties(const Napi::CallbackInfo& 
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -986,7 +970,7 @@ Napi::Value _vkGetPhysicalDeviceImageFormatProperties(const Napi::CallbackInfo& 
   int32_t $p5 = static_cast<int32_t>(info[5].As<Napi::Number>().Int64Value());
 
   _VkImageFormatProperties* obj6;
-  VkImageFormatProperties *$p6;
+  VkImageFormatProperties *$p6 = nullptr;
   if (info[6].IsObject()) {
     Napi::Object obj = info[6].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImageFormatProperties::constructor.Value()))) {
@@ -1029,7 +1013,7 @@ Napi::Value _vkCreateDevice(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -1046,7 +1030,7 @@ Napi::Value _vkCreateDevice(const Napi::CallbackInfo& info) {
   }
 
   _VkDeviceCreateInfo* obj1;
-  VkDeviceCreateInfo *$p1;
+  VkDeviceCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDeviceCreateInfo::constructor.Value()))) {
@@ -1064,7 +1048,7 @@ Napi::Value _vkCreateDevice(const Napi::CallbackInfo& info) {
 
 
   _VkDevice* obj3;
-  VkDevice *$p3;
+  VkDevice *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -1096,7 +1080,7 @@ Napi::Value _vkDestroyDevice(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -1126,7 +1110,7 @@ Napi::Value _vkEnumerateInstanceVersion(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   Napi::Object obj0;
-  uint32_t $p0;
+  uint32_t $p0 = 0;
   if (info[0].IsObject()) {
     obj0 = info[0].As<Napi::Object>();
     if (!obj0.Has("$")) {
@@ -1153,7 +1137,7 @@ Napi::Value _vkEnumerateInstanceLayerProperties(const Napi::CallbackInfo& info) 
   Napi::Env env = info.Env();
   
   Napi::Object obj0;
-  uint32_t $p0;
+  uint32_t $p0 = 0;
   if (info[0].IsObject()) {
     obj0 = info[0].As<Napi::Object>();
     if (!obj0.Has("$")) {
@@ -1232,7 +1216,7 @@ Napi::Value _vkEnumerateInstanceLayerProperties(const Napi::CallbackInfo& info) 
 Napi::Value _vkEnumerateInstanceExtensionProperties(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  char* $p0;
+  char* $p0 = nullptr;
   if (info[0].IsString()) {
     $p0 = copyV8String(info[0]);
   } else if (!info[0].IsNull()) {
@@ -1241,7 +1225,7 @@ Napi::Value _vkEnumerateInstanceExtensionProperties(const Napi::CallbackInfo& in
   }
 
   Napi::Object obj1;
-  uint32_t $p1;
+  uint32_t $p1 = 0;
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
@@ -1317,7 +1301,7 @@ Napi::Value _vkEnumerateDeviceLayerProperties(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -1334,7 +1318,7 @@ Napi::Value _vkEnumerateDeviceLayerProperties(const Napi::CallbackInfo& info) {
   }
 
   Napi::Object obj1;
-  uint32_t $p1;
+  uint32_t $p1 = 0;
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
@@ -1415,7 +1399,7 @@ Napi::Value _vkEnumerateDeviceExtensionProperties(const Napi::CallbackInfo& info
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -1431,7 +1415,7 @@ Napi::Value _vkEnumerateDeviceExtensionProperties(const Napi::CallbackInfo& info
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
   }
 
-  char* $p1;
+  char* $p1 = nullptr;
   if (info[1].IsString()) {
     $p1 = copyV8String(info[1]);
   } else if (!info[1].IsNull()) {
@@ -1440,7 +1424,7 @@ Napi::Value _vkEnumerateDeviceExtensionProperties(const Napi::CallbackInfo& info
   }
 
   Napi::Object obj2;
-  uint32_t $p2;
+  uint32_t $p2 = 0;
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
@@ -1517,7 +1501,7 @@ Napi::Value _vkGetDeviceQueue(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -1538,7 +1522,7 @@ Napi::Value _vkGetDeviceQueue(const Napi::CallbackInfo& info) {
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   _VkQueue* obj3;
-  VkQueue *$p3;
+  VkQueue *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkQueue::constructor.Value()))) {
@@ -1569,7 +1553,7 @@ Napi::Value _vkQueueSubmit(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkQueue* obj0;
-  VkQueue *$p0;
+  VkQueue *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkQueue::constructor.Value()))) {
@@ -1616,7 +1600,7 @@ Napi::Value _vkQueueSubmit(const Napi::CallbackInfo& info) {
 
 
   _VkFence* obj3;
-  VkFence *$p3;
+  VkFence *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkFence::constructor.Value()))) {
@@ -1647,7 +1631,7 @@ Napi::Value _vkQueueWaitIdle(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkQueue* obj0;
-  VkQueue *$p0;
+  VkQueue *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkQueue::constructor.Value()))) {
@@ -1675,7 +1659,7 @@ Napi::Value _vkDeviceWaitIdle(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -1703,7 +1687,7 @@ Napi::Value _vkAllocateMemory(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -1720,7 +1704,7 @@ Napi::Value _vkAllocateMemory(const Napi::CallbackInfo& info) {
   }
 
   _VkMemoryAllocateInfo* obj1;
-  VkMemoryAllocateInfo *$p1;
+  VkMemoryAllocateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkMemoryAllocateInfo::constructor.Value()))) {
@@ -1738,7 +1722,7 @@ Napi::Value _vkAllocateMemory(const Napi::CallbackInfo& info) {
 
 
   _VkDeviceMemory* obj3;
-  VkDeviceMemory *$p3;
+  VkDeviceMemory *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDeviceMemory::constructor.Value()))) {
@@ -1769,7 +1753,7 @@ Napi::Value _vkFreeMemory(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -1786,7 +1770,7 @@ Napi::Value _vkFreeMemory(const Napi::CallbackInfo& info) {
   }
 
   _VkDeviceMemory* obj1;
-  VkDeviceMemory *$p1;
+  VkDeviceMemory *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDeviceMemory::constructor.Value()))) {
@@ -1817,7 +1801,7 @@ Napi::Value _vkMapMemory(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -1834,7 +1818,7 @@ Napi::Value _vkMapMemory(const Napi::CallbackInfo& info) {
   }
 
   _VkDeviceMemory* obj1;
-  VkDeviceMemory *$p1;
+  VkDeviceMemory *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDeviceMemory::constructor.Value()))) {
@@ -1857,7 +1841,7 @@ Napi::Value _vkMapMemory(const Napi::CallbackInfo& info) {
   int32_t $p4 = static_cast<int32_t>(info[4].As<Napi::Number>().Int64Value());
 
   Napi::Object obj5 = info[5].As<Napi::Object>();
-  void *$p5;
+  void *$p5 = nullptr;
   int32_t out = vkMapMemory(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1].IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -1878,7 +1862,7 @@ Napi::Value _vkUnmapMemory(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -1895,7 +1879,7 @@ Napi::Value _vkUnmapMemory(const Napi::CallbackInfo& info) {
   }
 
   _VkDeviceMemory* obj1;
-  VkDeviceMemory *$p1;
+  VkDeviceMemory *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDeviceMemory::constructor.Value()))) {
@@ -1924,7 +1908,7 @@ Napi::Value _vkFlushMappedMemoryRanges(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -1984,7 +1968,7 @@ Napi::Value _vkInvalidateMappedMemoryRanges(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -2044,7 +2028,7 @@ Napi::Value _vkGetDeviceMemoryCommitment(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -2061,7 +2045,7 @@ Napi::Value _vkGetDeviceMemoryCommitment(const Napi::CallbackInfo& info) {
   }
 
   _VkDeviceMemory* obj1;
-  VkDeviceMemory *$p1;
+  VkDeviceMemory *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDeviceMemory::constructor.Value()))) {
@@ -2078,7 +2062,7 @@ Napi::Value _vkGetDeviceMemoryCommitment(const Napi::CallbackInfo& info) {
   }
 
   Napi::Object obj2;
-  uint64_t $p2;
+  uint64_t $p2 = 0;
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
@@ -2108,7 +2092,7 @@ Napi::Value _vkGetBufferMemoryRequirements(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -2125,7 +2109,7 @@ Napi::Value _vkGetBufferMemoryRequirements(const Napi::CallbackInfo& info) {
   }
 
   _VkBuffer* obj1;
-  VkBuffer *$p1;
+  VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -2142,7 +2126,7 @@ Napi::Value _vkGetBufferMemoryRequirements(const Napi::CallbackInfo& info) {
   }
 
   _VkMemoryRequirements* obj2;
-  VkMemoryRequirements *$p2;
+  VkMemoryRequirements *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkMemoryRequirements::constructor.Value()))) {
@@ -2172,7 +2156,7 @@ Napi::Value _vkBindBufferMemory(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -2189,7 +2173,7 @@ Napi::Value _vkBindBufferMemory(const Napi::CallbackInfo& info) {
   }
 
   _VkBuffer* obj1;
-  VkBuffer *$p1;
+  VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -2206,7 +2190,7 @@ Napi::Value _vkBindBufferMemory(const Napi::CallbackInfo& info) {
   }
 
   _VkDeviceMemory* obj2;
-  VkDeviceMemory *$p2;
+  VkDeviceMemory *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDeviceMemory::constructor.Value()))) {
@@ -2239,7 +2223,7 @@ Napi::Value _vkGetImageMemoryRequirements(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -2256,7 +2240,7 @@ Napi::Value _vkGetImageMemoryRequirements(const Napi::CallbackInfo& info) {
   }
 
   _VkImage* obj1;
-  VkImage *$p1;
+  VkImage *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
@@ -2273,7 +2257,7 @@ Napi::Value _vkGetImageMemoryRequirements(const Napi::CallbackInfo& info) {
   }
 
   _VkMemoryRequirements* obj2;
-  VkMemoryRequirements *$p2;
+  VkMemoryRequirements *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkMemoryRequirements::constructor.Value()))) {
@@ -2303,7 +2287,7 @@ Napi::Value _vkBindImageMemory(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -2320,7 +2304,7 @@ Napi::Value _vkBindImageMemory(const Napi::CallbackInfo& info) {
   }
 
   _VkImage* obj1;
-  VkImage *$p1;
+  VkImage *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
@@ -2337,7 +2321,7 @@ Napi::Value _vkBindImageMemory(const Napi::CallbackInfo& info) {
   }
 
   _VkDeviceMemory* obj2;
-  VkDeviceMemory *$p2;
+  VkDeviceMemory *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDeviceMemory::constructor.Value()))) {
@@ -2370,7 +2354,7 @@ Napi::Value _vkGetImageSparseMemoryRequirements(const Napi::CallbackInfo& info) 
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -2387,7 +2371,7 @@ Napi::Value _vkGetImageSparseMemoryRequirements(const Napi::CallbackInfo& info) 
   }
 
   _VkImage* obj1;
-  VkImage *$p1;
+  VkImage *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
@@ -2404,7 +2388,7 @@ Napi::Value _vkGetImageSparseMemoryRequirements(const Napi::CallbackInfo& info) 
   }
 
   Napi::Object obj2;
-  uint32_t $p2;
+  uint32_t $p2 = 0;
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
@@ -2486,7 +2470,7 @@ Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties(const Napi::Callback
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -2513,7 +2497,7 @@ Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties(const Napi::Callback
   VkImageTiling $p5 = static_cast<VkImageTiling>(info[5].As<Napi::Number>().Int64Value());
 
   Napi::Object obj6;
-  uint32_t $p6;
+  uint32_t $p6 = 0;
   if (info[6].IsObject()) {
     obj6 = info[6].As<Napi::Object>();
     if (!obj6.Has("$")) {
@@ -2597,7 +2581,7 @@ Napi::Value _vkQueueBindSparse(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkQueue* obj0;
-  VkQueue *$p0;
+  VkQueue *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkQueue::constructor.Value()))) {
@@ -2644,7 +2628,7 @@ Napi::Value _vkQueueBindSparse(const Napi::CallbackInfo& info) {
 
 
   _VkFence* obj3;
-  VkFence *$p3;
+  VkFence *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkFence::constructor.Value()))) {
@@ -2675,7 +2659,7 @@ Napi::Value _vkCreateFence(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -2692,7 +2676,7 @@ Napi::Value _vkCreateFence(const Napi::CallbackInfo& info) {
   }
 
   _VkFenceCreateInfo* obj1;
-  VkFenceCreateInfo *$p1;
+  VkFenceCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkFenceCreateInfo::constructor.Value()))) {
@@ -2710,7 +2694,7 @@ Napi::Value _vkCreateFence(const Napi::CallbackInfo& info) {
 
 
   _VkFence* obj3;
-  VkFence *$p3;
+  VkFence *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkFence::constructor.Value()))) {
@@ -2741,7 +2725,7 @@ Napi::Value _vkDestroyFence(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -2758,7 +2742,7 @@ Napi::Value _vkDestroyFence(const Napi::CallbackInfo& info) {
   }
 
   _VkFence* obj1;
-  VkFence *$p1;
+  VkFence *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkFence::constructor.Value()))) {
@@ -2789,7 +2773,7 @@ Napi::Value _vkResetFences(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -2840,7 +2824,7 @@ Napi::Value _vkGetFenceStatus(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -2857,7 +2841,7 @@ Napi::Value _vkGetFenceStatus(const Napi::CallbackInfo& info) {
   }
 
   _VkFence* obj1;
-  VkFence *$p1;
+  VkFence *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkFence::constructor.Value()))) {
@@ -2886,7 +2870,7 @@ Napi::Value _vkWaitForFences(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -2943,7 +2927,7 @@ Napi::Value _vkCreateSemaphore(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -2960,7 +2944,7 @@ Napi::Value _vkCreateSemaphore(const Napi::CallbackInfo& info) {
   }
 
   _VkSemaphoreCreateInfo* obj1;
-  VkSemaphoreCreateInfo *$p1;
+  VkSemaphoreCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSemaphoreCreateInfo::constructor.Value()))) {
@@ -2978,7 +2962,7 @@ Napi::Value _vkCreateSemaphore(const Napi::CallbackInfo& info) {
 
 
   _VkSemaphore* obj3;
-  VkSemaphore *$p3;
+  VkSemaphore *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSemaphore::constructor.Value()))) {
@@ -3009,7 +2993,7 @@ Napi::Value _vkDestroySemaphore(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -3026,7 +3010,7 @@ Napi::Value _vkDestroySemaphore(const Napi::CallbackInfo& info) {
   }
 
   _VkSemaphore* obj1;
-  VkSemaphore *$p1;
+  VkSemaphore *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSemaphore::constructor.Value()))) {
@@ -3057,7 +3041,7 @@ Napi::Value _vkCreateEvent(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -3074,7 +3058,7 @@ Napi::Value _vkCreateEvent(const Napi::CallbackInfo& info) {
   }
 
   _VkEventCreateInfo* obj1;
-  VkEventCreateInfo *$p1;
+  VkEventCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkEventCreateInfo::constructor.Value()))) {
@@ -3092,7 +3076,7 @@ Napi::Value _vkCreateEvent(const Napi::CallbackInfo& info) {
 
 
   _VkEvent* obj3;
-  VkEvent *$p3;
+  VkEvent *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkEvent::constructor.Value()))) {
@@ -3123,7 +3107,7 @@ Napi::Value _vkDestroyEvent(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -3140,7 +3124,7 @@ Napi::Value _vkDestroyEvent(const Napi::CallbackInfo& info) {
   }
 
   _VkEvent* obj1;
-  VkEvent *$p1;
+  VkEvent *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkEvent::constructor.Value()))) {
@@ -3171,7 +3155,7 @@ Napi::Value _vkGetEventStatus(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -3188,7 +3172,7 @@ Napi::Value _vkGetEventStatus(const Napi::CallbackInfo& info) {
   }
 
   _VkEvent* obj1;
-  VkEvent *$p1;
+  VkEvent *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkEvent::constructor.Value()))) {
@@ -3217,7 +3201,7 @@ Napi::Value _vkSetEvent(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -3234,7 +3218,7 @@ Napi::Value _vkSetEvent(const Napi::CallbackInfo& info) {
   }
 
   _VkEvent* obj1;
-  VkEvent *$p1;
+  VkEvent *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkEvent::constructor.Value()))) {
@@ -3263,7 +3247,7 @@ Napi::Value _vkResetEvent(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -3280,7 +3264,7 @@ Napi::Value _vkResetEvent(const Napi::CallbackInfo& info) {
   }
 
   _VkEvent* obj1;
-  VkEvent *$p1;
+  VkEvent *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkEvent::constructor.Value()))) {
@@ -3309,7 +3293,7 @@ Napi::Value _vkCreateQueryPool(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -3326,7 +3310,7 @@ Napi::Value _vkCreateQueryPool(const Napi::CallbackInfo& info) {
   }
 
   _VkQueryPoolCreateInfo* obj1;
-  VkQueryPoolCreateInfo *$p1;
+  VkQueryPoolCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkQueryPoolCreateInfo::constructor.Value()))) {
@@ -3344,7 +3328,7 @@ Napi::Value _vkCreateQueryPool(const Napi::CallbackInfo& info) {
 
 
   _VkQueryPool* obj3;
-  VkQueryPool *$p3;
+  VkQueryPool *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkQueryPool::constructor.Value()))) {
@@ -3375,7 +3359,7 @@ Napi::Value _vkDestroyQueryPool(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -3392,7 +3376,7 @@ Napi::Value _vkDestroyQueryPool(const Napi::CallbackInfo& info) {
   }
 
   _VkQueryPool* obj1;
-  VkQueryPool *$p1;
+  VkQueryPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkQueryPool::constructor.Value()))) {
@@ -3423,7 +3407,7 @@ Napi::Value _vkGetQueryPoolResults(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -3440,7 +3424,7 @@ Napi::Value _vkGetQueryPoolResults(const Napi::CallbackInfo& info) {
   }
 
   _VkQueryPool* obj1;
-  VkQueryPool *$p1;
+  VkQueryPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkQueryPool::constructor.Value()))) {
@@ -3462,7 +3446,7 @@ Napi::Value _vkGetQueryPoolResults(const Napi::CallbackInfo& info) {
 
   size_t $p4 = static_cast<size_t>(info[4].As<Napi::Number>().Int64Value());
 
-  void* $p5;
+  void* $p5 = nullptr;
   if (info[5].IsArrayBuffer()) {
     Napi::ArrayBuffer buf = info[5].As<Napi::ArrayBuffer>();
     $p5 = buf.Data();
@@ -3494,7 +3478,7 @@ Napi::Value _vkCreateBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -3511,7 +3495,7 @@ Napi::Value _vkCreateBuffer(const Napi::CallbackInfo& info) {
   }
 
   _VkBufferCreateInfo* obj1;
-  VkBufferCreateInfo *$p1;
+  VkBufferCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBufferCreateInfo::constructor.Value()))) {
@@ -3529,7 +3513,7 @@ Napi::Value _vkCreateBuffer(const Napi::CallbackInfo& info) {
 
 
   _VkBuffer* obj3;
-  VkBuffer *$p3;
+  VkBuffer *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -3560,7 +3544,7 @@ Napi::Value _vkDestroyBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -3577,7 +3561,7 @@ Napi::Value _vkDestroyBuffer(const Napi::CallbackInfo& info) {
   }
 
   _VkBuffer* obj1;
-  VkBuffer *$p1;
+  VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -3608,7 +3592,7 @@ Napi::Value _vkCreateBufferView(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -3625,7 +3609,7 @@ Napi::Value _vkCreateBufferView(const Napi::CallbackInfo& info) {
   }
 
   _VkBufferViewCreateInfo* obj1;
-  VkBufferViewCreateInfo *$p1;
+  VkBufferViewCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBufferViewCreateInfo::constructor.Value()))) {
@@ -3643,7 +3627,7 @@ Napi::Value _vkCreateBufferView(const Napi::CallbackInfo& info) {
 
 
   _VkBufferView* obj3;
-  VkBufferView *$p3;
+  VkBufferView *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBufferView::constructor.Value()))) {
@@ -3674,7 +3658,7 @@ Napi::Value _vkDestroyBufferView(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -3691,7 +3675,7 @@ Napi::Value _vkDestroyBufferView(const Napi::CallbackInfo& info) {
   }
 
   _VkBufferView* obj1;
-  VkBufferView *$p1;
+  VkBufferView *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBufferView::constructor.Value()))) {
@@ -3722,7 +3706,7 @@ Napi::Value _vkCreateImage(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -3739,7 +3723,7 @@ Napi::Value _vkCreateImage(const Napi::CallbackInfo& info) {
   }
 
   _VkImageCreateInfo* obj1;
-  VkImageCreateInfo *$p1;
+  VkImageCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImageCreateInfo::constructor.Value()))) {
@@ -3757,7 +3741,7 @@ Napi::Value _vkCreateImage(const Napi::CallbackInfo& info) {
 
 
   _VkImage* obj3;
-  VkImage *$p3;
+  VkImage *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
@@ -3788,7 +3772,7 @@ Napi::Value _vkDestroyImage(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -3805,7 +3789,7 @@ Napi::Value _vkDestroyImage(const Napi::CallbackInfo& info) {
   }
 
   _VkImage* obj1;
-  VkImage *$p1;
+  VkImage *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
@@ -3836,7 +3820,7 @@ Napi::Value _vkGetImageSubresourceLayout(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -3853,7 +3837,7 @@ Napi::Value _vkGetImageSubresourceLayout(const Napi::CallbackInfo& info) {
   }
 
   _VkImage* obj1;
-  VkImage *$p1;
+  VkImage *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
@@ -3870,7 +3854,7 @@ Napi::Value _vkGetImageSubresourceLayout(const Napi::CallbackInfo& info) {
   }
 
   _VkImageSubresource* obj2;
-  VkImageSubresource *$p2;
+  VkImageSubresource *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImageSubresource::constructor.Value()))) {
@@ -3887,7 +3871,7 @@ Napi::Value _vkGetImageSubresourceLayout(const Napi::CallbackInfo& info) {
   }
 
   _VkSubresourceLayout* obj3;
-  VkSubresourceLayout *$p3;
+  VkSubresourceLayout *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSubresourceLayout::constructor.Value()))) {
@@ -3918,7 +3902,7 @@ Napi::Value _vkCreateImageView(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -3935,7 +3919,7 @@ Napi::Value _vkCreateImageView(const Napi::CallbackInfo& info) {
   }
 
   _VkImageViewCreateInfo* obj1;
-  VkImageViewCreateInfo *$p1;
+  VkImageViewCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImageViewCreateInfo::constructor.Value()))) {
@@ -3953,7 +3937,7 @@ Napi::Value _vkCreateImageView(const Napi::CallbackInfo& info) {
 
 
   _VkImageView* obj3;
-  VkImageView *$p3;
+  VkImageView *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImageView::constructor.Value()))) {
@@ -3984,7 +3968,7 @@ Napi::Value _vkDestroyImageView(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -4001,7 +3985,7 @@ Napi::Value _vkDestroyImageView(const Napi::CallbackInfo& info) {
   }
 
   _VkImageView* obj1;
-  VkImageView *$p1;
+  VkImageView *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImageView::constructor.Value()))) {
@@ -4032,7 +4016,7 @@ Napi::Value _vkCreateShaderModule(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -4049,7 +4033,7 @@ Napi::Value _vkCreateShaderModule(const Napi::CallbackInfo& info) {
   }
 
   _VkShaderModuleCreateInfo* obj1;
-  VkShaderModuleCreateInfo *$p1;
+  VkShaderModuleCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkShaderModuleCreateInfo::constructor.Value()))) {
@@ -4067,7 +4051,7 @@ Napi::Value _vkCreateShaderModule(const Napi::CallbackInfo& info) {
 
 
   _VkShaderModule* obj3;
-  VkShaderModule *$p3;
+  VkShaderModule *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkShaderModule::constructor.Value()))) {
@@ -4098,7 +4082,7 @@ Napi::Value _vkDestroyShaderModule(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -4115,7 +4099,7 @@ Napi::Value _vkDestroyShaderModule(const Napi::CallbackInfo& info) {
   }
 
   _VkShaderModule* obj1;
-  VkShaderModule *$p1;
+  VkShaderModule *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkShaderModule::constructor.Value()))) {
@@ -4146,7 +4130,7 @@ Napi::Value _vkCreatePipelineCache(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -4163,7 +4147,7 @@ Napi::Value _vkCreatePipelineCache(const Napi::CallbackInfo& info) {
   }
 
   _VkPipelineCacheCreateInfo* obj1;
-  VkPipelineCacheCreateInfo *$p1;
+  VkPipelineCacheCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPipelineCacheCreateInfo::constructor.Value()))) {
@@ -4181,7 +4165,7 @@ Napi::Value _vkCreatePipelineCache(const Napi::CallbackInfo& info) {
 
 
   _VkPipelineCache* obj3;
-  VkPipelineCache *$p3;
+  VkPipelineCache *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPipelineCache::constructor.Value()))) {
@@ -4212,7 +4196,7 @@ Napi::Value _vkDestroyPipelineCache(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -4229,7 +4213,7 @@ Napi::Value _vkDestroyPipelineCache(const Napi::CallbackInfo& info) {
   }
 
   _VkPipelineCache* obj1;
-  VkPipelineCache *$p1;
+  VkPipelineCache *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPipelineCache::constructor.Value()))) {
@@ -4260,7 +4244,7 @@ Napi::Value _vkGetPipelineCacheData(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -4277,7 +4261,7 @@ Napi::Value _vkGetPipelineCacheData(const Napi::CallbackInfo& info) {
   }
 
   _VkPipelineCache* obj1;
-  VkPipelineCache *$p1;
+  VkPipelineCache *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPipelineCache::constructor.Value()))) {
@@ -4294,7 +4278,7 @@ Napi::Value _vkGetPipelineCacheData(const Napi::CallbackInfo& info) {
   }
 
   Napi::Object obj2;
-  size_t $p2;
+  size_t $p2 = 0;
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
@@ -4308,7 +4292,7 @@ Napi::Value _vkGetPipelineCacheData(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  void* $p3;
+  void* $p3 = nullptr;
   if (info[3].IsArrayBuffer()) {
     Napi::ArrayBuffer buf = info[3].As<Napi::ArrayBuffer>();
     $p3 = buf.Data();
@@ -4334,7 +4318,7 @@ Napi::Value _vkMergePipelineCaches(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -4351,7 +4335,7 @@ Napi::Value _vkMergePipelineCaches(const Napi::CallbackInfo& info) {
   }
 
   _VkPipelineCache* obj1;
-  VkPipelineCache *$p1;
+  VkPipelineCache *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPipelineCache::constructor.Value()))) {
@@ -4403,7 +4387,7 @@ Napi::Value _vkCreateGraphicsPipelines(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -4420,7 +4404,7 @@ Napi::Value _vkCreateGraphicsPipelines(const Napi::CallbackInfo& info) {
   }
 
   _VkPipelineCache* obj1;
-  VkPipelineCache *$p1;
+  VkPipelineCache *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPipelineCache::constructor.Value()))) {
@@ -4513,7 +4497,7 @@ Napi::Value _vkCreateComputePipelines(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -4530,7 +4514,7 @@ Napi::Value _vkCreateComputePipelines(const Napi::CallbackInfo& info) {
   }
 
   _VkPipelineCache* obj1;
-  VkPipelineCache *$p1;
+  VkPipelineCache *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPipelineCache::constructor.Value()))) {
@@ -4623,7 +4607,7 @@ Napi::Value _vkDestroyPipeline(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -4640,7 +4624,7 @@ Napi::Value _vkDestroyPipeline(const Napi::CallbackInfo& info) {
   }
 
   _VkPipeline* obj1;
-  VkPipeline *$p1;
+  VkPipeline *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPipeline::constructor.Value()))) {
@@ -4671,7 +4655,7 @@ Napi::Value _vkCreatePipelineLayout(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -4688,7 +4672,7 @@ Napi::Value _vkCreatePipelineLayout(const Napi::CallbackInfo& info) {
   }
 
   _VkPipelineLayoutCreateInfo* obj1;
-  VkPipelineLayoutCreateInfo *$p1;
+  VkPipelineLayoutCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPipelineLayoutCreateInfo::constructor.Value()))) {
@@ -4706,7 +4690,7 @@ Napi::Value _vkCreatePipelineLayout(const Napi::CallbackInfo& info) {
 
 
   _VkPipelineLayout* obj3;
-  VkPipelineLayout *$p3;
+  VkPipelineLayout *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPipelineLayout::constructor.Value()))) {
@@ -4737,7 +4721,7 @@ Napi::Value _vkDestroyPipelineLayout(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -4754,7 +4738,7 @@ Napi::Value _vkDestroyPipelineLayout(const Napi::CallbackInfo& info) {
   }
 
   _VkPipelineLayout* obj1;
-  VkPipelineLayout *$p1;
+  VkPipelineLayout *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPipelineLayout::constructor.Value()))) {
@@ -4785,7 +4769,7 @@ Napi::Value _vkCreateSampler(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -4802,7 +4786,7 @@ Napi::Value _vkCreateSampler(const Napi::CallbackInfo& info) {
   }
 
   _VkSamplerCreateInfo* obj1;
-  VkSamplerCreateInfo *$p1;
+  VkSamplerCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSamplerCreateInfo::constructor.Value()))) {
@@ -4820,7 +4804,7 @@ Napi::Value _vkCreateSampler(const Napi::CallbackInfo& info) {
 
 
   _VkSampler* obj3;
-  VkSampler *$p3;
+  VkSampler *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSampler::constructor.Value()))) {
@@ -4851,7 +4835,7 @@ Napi::Value _vkDestroySampler(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -4868,7 +4852,7 @@ Napi::Value _vkDestroySampler(const Napi::CallbackInfo& info) {
   }
 
   _VkSampler* obj1;
-  VkSampler *$p1;
+  VkSampler *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSampler::constructor.Value()))) {
@@ -4899,7 +4883,7 @@ Napi::Value _vkCreateDescriptorSetLayout(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -4916,7 +4900,7 @@ Napi::Value _vkCreateDescriptorSetLayout(const Napi::CallbackInfo& info) {
   }
 
   _VkDescriptorSetLayoutCreateInfo* obj1;
-  VkDescriptorSetLayoutCreateInfo *$p1;
+  VkDescriptorSetLayoutCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDescriptorSetLayoutCreateInfo::constructor.Value()))) {
@@ -4934,7 +4918,7 @@ Napi::Value _vkCreateDescriptorSetLayout(const Napi::CallbackInfo& info) {
 
 
   _VkDescriptorSetLayout* obj3;
-  VkDescriptorSetLayout *$p3;
+  VkDescriptorSetLayout *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDescriptorSetLayout::constructor.Value()))) {
@@ -4965,7 +4949,7 @@ Napi::Value _vkDestroyDescriptorSetLayout(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -4982,7 +4966,7 @@ Napi::Value _vkDestroyDescriptorSetLayout(const Napi::CallbackInfo& info) {
   }
 
   _VkDescriptorSetLayout* obj1;
-  VkDescriptorSetLayout *$p1;
+  VkDescriptorSetLayout *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDescriptorSetLayout::constructor.Value()))) {
@@ -5013,7 +4997,7 @@ Napi::Value _vkCreateDescriptorPool(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -5030,7 +5014,7 @@ Napi::Value _vkCreateDescriptorPool(const Napi::CallbackInfo& info) {
   }
 
   _VkDescriptorPoolCreateInfo* obj1;
-  VkDescriptorPoolCreateInfo *$p1;
+  VkDescriptorPoolCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDescriptorPoolCreateInfo::constructor.Value()))) {
@@ -5048,7 +5032,7 @@ Napi::Value _vkCreateDescriptorPool(const Napi::CallbackInfo& info) {
 
 
   _VkDescriptorPool* obj3;
-  VkDescriptorPool *$p3;
+  VkDescriptorPool *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDescriptorPool::constructor.Value()))) {
@@ -5079,7 +5063,7 @@ Napi::Value _vkDestroyDescriptorPool(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -5096,7 +5080,7 @@ Napi::Value _vkDestroyDescriptorPool(const Napi::CallbackInfo& info) {
   }
 
   _VkDescriptorPool* obj1;
-  VkDescriptorPool *$p1;
+  VkDescriptorPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDescriptorPool::constructor.Value()))) {
@@ -5127,7 +5111,7 @@ Napi::Value _vkResetDescriptorPool(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -5144,7 +5128,7 @@ Napi::Value _vkResetDescriptorPool(const Napi::CallbackInfo& info) {
   }
 
   _VkDescriptorPool* obj1;
-  VkDescriptorPool *$p1;
+  VkDescriptorPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDescriptorPool::constructor.Value()))) {
@@ -5176,7 +5160,7 @@ Napi::Value _vkAllocateDescriptorSets(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -5193,7 +5177,7 @@ Napi::Value _vkAllocateDescriptorSets(const Napi::CallbackInfo& info) {
   }
 
   _VkDescriptorSetAllocateInfo* obj1;
-  VkDescriptorSetAllocateInfo *$p1;
+  VkDescriptorSetAllocateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDescriptorSetAllocateInfo::constructor.Value()))) {
@@ -5252,7 +5236,7 @@ Napi::Value _vkFreeDescriptorSets(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -5269,7 +5253,7 @@ Napi::Value _vkFreeDescriptorSets(const Napi::CallbackInfo& info) {
   }
 
   _VkDescriptorPool* obj1;
-  VkDescriptorPool *$p1;
+  VkDescriptorPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDescriptorPool::constructor.Value()))) {
@@ -5321,7 +5305,7 @@ Napi::Value _vkUpdateDescriptorSets(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -5413,7 +5397,7 @@ Napi::Value _vkCreateFramebuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -5430,7 +5414,7 @@ Napi::Value _vkCreateFramebuffer(const Napi::CallbackInfo& info) {
   }
 
   _VkFramebufferCreateInfo* obj1;
-  VkFramebufferCreateInfo *$p1;
+  VkFramebufferCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkFramebufferCreateInfo::constructor.Value()))) {
@@ -5448,7 +5432,7 @@ Napi::Value _vkCreateFramebuffer(const Napi::CallbackInfo& info) {
 
 
   _VkFramebuffer* obj3;
-  VkFramebuffer *$p3;
+  VkFramebuffer *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkFramebuffer::constructor.Value()))) {
@@ -5479,7 +5463,7 @@ Napi::Value _vkDestroyFramebuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -5496,7 +5480,7 @@ Napi::Value _vkDestroyFramebuffer(const Napi::CallbackInfo& info) {
   }
 
   _VkFramebuffer* obj1;
-  VkFramebuffer *$p1;
+  VkFramebuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkFramebuffer::constructor.Value()))) {
@@ -5527,7 +5511,7 @@ Napi::Value _vkCreateRenderPass(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -5544,7 +5528,7 @@ Napi::Value _vkCreateRenderPass(const Napi::CallbackInfo& info) {
   }
 
   _VkRenderPassCreateInfo* obj1;
-  VkRenderPassCreateInfo *$p1;
+  VkRenderPassCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkRenderPassCreateInfo::constructor.Value()))) {
@@ -5562,7 +5546,7 @@ Napi::Value _vkCreateRenderPass(const Napi::CallbackInfo& info) {
 
 
   _VkRenderPass* obj3;
-  VkRenderPass *$p3;
+  VkRenderPass *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkRenderPass::constructor.Value()))) {
@@ -5593,7 +5577,7 @@ Napi::Value _vkDestroyRenderPass(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -5610,7 +5594,7 @@ Napi::Value _vkDestroyRenderPass(const Napi::CallbackInfo& info) {
   }
 
   _VkRenderPass* obj1;
-  VkRenderPass *$p1;
+  VkRenderPass *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkRenderPass::constructor.Value()))) {
@@ -5641,7 +5625,7 @@ Napi::Value _vkGetRenderAreaGranularity(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -5658,7 +5642,7 @@ Napi::Value _vkGetRenderAreaGranularity(const Napi::CallbackInfo& info) {
   }
 
   _VkRenderPass* obj1;
-  VkRenderPass *$p1;
+  VkRenderPass *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkRenderPass::constructor.Value()))) {
@@ -5675,7 +5659,7 @@ Napi::Value _vkGetRenderAreaGranularity(const Napi::CallbackInfo& info) {
   }
 
   _VkExtent2D* obj2;
-  VkExtent2D *$p2;
+  VkExtent2D *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkExtent2D::constructor.Value()))) {
@@ -5705,7 +5689,7 @@ Napi::Value _vkCreateCommandPool(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -5722,7 +5706,7 @@ Napi::Value _vkCreateCommandPool(const Napi::CallbackInfo& info) {
   }
 
   _VkCommandPoolCreateInfo* obj1;
-  VkCommandPoolCreateInfo *$p1;
+  VkCommandPoolCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandPoolCreateInfo::constructor.Value()))) {
@@ -5740,7 +5724,7 @@ Napi::Value _vkCreateCommandPool(const Napi::CallbackInfo& info) {
 
 
   _VkCommandPool* obj3;
-  VkCommandPool *$p3;
+  VkCommandPool *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandPool::constructor.Value()))) {
@@ -5771,7 +5755,7 @@ Napi::Value _vkDestroyCommandPool(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -5788,7 +5772,7 @@ Napi::Value _vkDestroyCommandPool(const Napi::CallbackInfo& info) {
   }
 
   _VkCommandPool* obj1;
-  VkCommandPool *$p1;
+  VkCommandPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandPool::constructor.Value()))) {
@@ -5819,7 +5803,7 @@ Napi::Value _vkResetCommandPool(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -5836,7 +5820,7 @@ Napi::Value _vkResetCommandPool(const Napi::CallbackInfo& info) {
   }
 
   _VkCommandPool* obj1;
-  VkCommandPool *$p1;
+  VkCommandPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandPool::constructor.Value()))) {
@@ -5868,7 +5852,7 @@ Napi::Value _vkAllocateCommandBuffers(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -5885,7 +5869,7 @@ Napi::Value _vkAllocateCommandBuffers(const Napi::CallbackInfo& info) {
   }
 
   _VkCommandBufferAllocateInfo* obj1;
-  VkCommandBufferAllocateInfo *$p1;
+  VkCommandBufferAllocateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBufferAllocateInfo::constructor.Value()))) {
@@ -5944,7 +5928,7 @@ Napi::Value _vkFreeCommandBuffers(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -5961,7 +5945,7 @@ Napi::Value _vkFreeCommandBuffers(const Napi::CallbackInfo& info) {
   }
 
   _VkCommandPool* obj1;
-  VkCommandPool *$p1;
+  VkCommandPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandPool::constructor.Value()))) {
@@ -6013,7 +5997,7 @@ Napi::Value _vkBeginCommandBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -6030,7 +6014,7 @@ Napi::Value _vkBeginCommandBuffer(const Napi::CallbackInfo& info) {
   }
 
   _VkCommandBufferBeginInfo* obj1;
-  VkCommandBufferBeginInfo *$p1;
+  VkCommandBufferBeginInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBufferBeginInfo::constructor.Value()))) {
@@ -6059,7 +6043,7 @@ Napi::Value _vkEndCommandBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -6087,7 +6071,7 @@ Napi::Value _vkResetCommandBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -6118,7 +6102,7 @@ Napi::Value _vkCmdBindPipeline(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -6137,7 +6121,7 @@ Napi::Value _vkCmdBindPipeline(const Napi::CallbackInfo& info) {
   VkPipelineBindPoint $p1 = static_cast<VkPipelineBindPoint>(info[1].As<Napi::Number>().Int64Value());
 
   _VkPipeline* obj2;
-  VkPipeline *$p2;
+  VkPipeline *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPipeline::constructor.Value()))) {
@@ -6167,7 +6151,7 @@ Napi::Value _vkCmdSetViewport(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -6230,7 +6214,7 @@ Napi::Value _vkCmdSetScissor(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -6293,7 +6277,7 @@ Napi::Value _vkCmdSetLineWidth(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -6324,7 +6308,7 @@ Napi::Value _vkCmdSetDepthBias(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -6361,7 +6345,7 @@ Napi::Value _vkCmdSetBlendConstants(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -6405,7 +6389,7 @@ Napi::Value _vkCmdSetDepthBounds(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -6439,7 +6423,7 @@ Napi::Value _vkCmdSetStencilCompareMask(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -6473,7 +6457,7 @@ Napi::Value _vkCmdSetStencilWriteMask(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -6507,7 +6491,7 @@ Napi::Value _vkCmdSetStencilReference(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -6541,7 +6525,7 @@ Napi::Value _vkCmdBindDescriptorSets(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -6560,7 +6544,7 @@ Napi::Value _vkCmdBindDescriptorSets(const Napi::CallbackInfo& info) {
   VkPipelineBindPoint $p1 = static_cast<VkPipelineBindPoint>(info[1].As<Napi::Number>().Int64Value());
 
   _VkPipelineLayout* obj2;
-  VkPipelineLayout *$p2;
+  VkPipelineLayout *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPipelineLayout::constructor.Value()))) {
@@ -6636,7 +6620,7 @@ Napi::Value _vkCmdBindIndexBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -6653,7 +6637,7 @@ Napi::Value _vkCmdBindIndexBuffer(const Napi::CallbackInfo& info) {
   }
 
   _VkBuffer* obj1;
-  VkBuffer *$p1;
+  VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -6688,7 +6672,7 @@ Napi::Value _vkCmdBindVertexBuffers(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -6759,7 +6743,7 @@ Napi::Value _vkCmdDraw(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -6799,7 +6783,7 @@ Napi::Value _vkCmdDrawIndexed(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -6842,7 +6826,7 @@ Napi::Value _vkCmdDrawIndirect(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -6859,7 +6843,7 @@ Napi::Value _vkCmdDrawIndirect(const Napi::CallbackInfo& info) {
   }
 
   _VkBuffer* obj1;
-  VkBuffer *$p1;
+  VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -6897,7 +6881,7 @@ Napi::Value _vkCmdDrawIndexedIndirect(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -6914,7 +6898,7 @@ Napi::Value _vkCmdDrawIndexedIndirect(const Napi::CallbackInfo& info) {
   }
 
   _VkBuffer* obj1;
-  VkBuffer *$p1;
+  VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -6952,7 +6936,7 @@ Napi::Value _vkCmdDispatch(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -6989,7 +6973,7 @@ Napi::Value _vkCmdDispatchIndirect(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -7006,7 +6990,7 @@ Napi::Value _vkCmdDispatchIndirect(const Napi::CallbackInfo& info) {
   }
 
   _VkBuffer* obj1;
-  VkBuffer *$p1;
+  VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -7038,7 +7022,7 @@ Napi::Value _vkCmdCopyBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -7055,7 +7039,7 @@ Napi::Value _vkCmdCopyBuffer(const Napi::CallbackInfo& info) {
   }
 
   _VkBuffer* obj1;
-  VkBuffer *$p1;
+  VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -7072,7 +7056,7 @@ Napi::Value _vkCmdCopyBuffer(const Napi::CallbackInfo& info) {
   }
 
   _VkBuffer* obj2;
-  VkBuffer *$p2;
+  VkBuffer *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -7134,7 +7118,7 @@ Napi::Value _vkCmdCopyImage(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -7151,7 +7135,7 @@ Napi::Value _vkCmdCopyImage(const Napi::CallbackInfo& info) {
   }
 
   _VkImage* obj1;
-  VkImage *$p1;
+  VkImage *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
@@ -7170,7 +7154,7 @@ Napi::Value _vkCmdCopyImage(const Napi::CallbackInfo& info) {
   VkImageLayout $p2 = static_cast<VkImageLayout>(info[2].As<Napi::Number>().Int64Value());
 
   _VkImage* obj3;
-  VkImage *$p3;
+  VkImage *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
@@ -7236,7 +7220,7 @@ Napi::Value _vkCmdBlitImage(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -7253,7 +7237,7 @@ Napi::Value _vkCmdBlitImage(const Napi::CallbackInfo& info) {
   }
 
   _VkImage* obj1;
-  VkImage *$p1;
+  VkImage *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
@@ -7272,7 +7256,7 @@ Napi::Value _vkCmdBlitImage(const Napi::CallbackInfo& info) {
   VkImageLayout $p2 = static_cast<VkImageLayout>(info[2].As<Napi::Number>().Int64Value());
 
   _VkImage* obj3;
-  VkImage *$p3;
+  VkImage *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
@@ -7341,7 +7325,7 @@ Napi::Value _vkCmdCopyBufferToImage(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -7358,7 +7342,7 @@ Napi::Value _vkCmdCopyBufferToImage(const Napi::CallbackInfo& info) {
   }
 
   _VkBuffer* obj1;
-  VkBuffer *$p1;
+  VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -7375,7 +7359,7 @@ Napi::Value _vkCmdCopyBufferToImage(const Napi::CallbackInfo& info) {
   }
 
   _VkImage* obj2;
-  VkImage *$p2;
+  VkImage *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
@@ -7440,7 +7424,7 @@ Napi::Value _vkCmdCopyImageToBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -7457,7 +7441,7 @@ Napi::Value _vkCmdCopyImageToBuffer(const Napi::CallbackInfo& info) {
   }
 
   _VkImage* obj1;
-  VkImage *$p1;
+  VkImage *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
@@ -7476,7 +7460,7 @@ Napi::Value _vkCmdCopyImageToBuffer(const Napi::CallbackInfo& info) {
   VkImageLayout $p2 = static_cast<VkImageLayout>(info[2].As<Napi::Number>().Int64Value());
 
   _VkBuffer* obj3;
-  VkBuffer *$p3;
+  VkBuffer *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -7539,7 +7523,7 @@ Napi::Value _vkCmdUpdateBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -7556,7 +7540,7 @@ Napi::Value _vkCmdUpdateBuffer(const Napi::CallbackInfo& info) {
   }
 
   _VkBuffer* obj1;
-  VkBuffer *$p1;
+  VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -7576,7 +7560,7 @@ Napi::Value _vkCmdUpdateBuffer(const Napi::CallbackInfo& info) {
 
   uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::Number>().Int64Value());
 
-  void* $p4;
+  void* $p4 = nullptr;
   if (info[4].IsArrayBuffer()) {
     Napi::ArrayBuffer buf = info[4].As<Napi::ArrayBuffer>();
     $p4 = buf.Data();
@@ -7601,7 +7585,7 @@ Napi::Value _vkCmdFillBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -7618,7 +7602,7 @@ Napi::Value _vkCmdFillBuffer(const Napi::CallbackInfo& info) {
   }
 
   _VkBuffer* obj1;
-  VkBuffer *$p1;
+  VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -7656,7 +7640,7 @@ Napi::Value _vkCmdClearColorImage(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -7673,7 +7657,7 @@ Napi::Value _vkCmdClearColorImage(const Napi::CallbackInfo& info) {
   }
 
   _VkImage* obj1;
-  VkImage *$p1;
+  VkImage *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
@@ -7692,7 +7676,7 @@ Napi::Value _vkCmdClearColorImage(const Napi::CallbackInfo& info) {
   VkImageLayout $p2 = static_cast<VkImageLayout>(info[2].As<Napi::Number>().Int64Value());
 
   _VkClearColorValue* obj3;
-  VkClearColorValue *$p3;
+  VkClearColorValue *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkClearColorValue::constructor.Value()))) {
@@ -7755,7 +7739,7 @@ Napi::Value _vkCmdClearDepthStencilImage(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -7772,7 +7756,7 @@ Napi::Value _vkCmdClearDepthStencilImage(const Napi::CallbackInfo& info) {
   }
 
   _VkImage* obj1;
-  VkImage *$p1;
+  VkImage *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
@@ -7791,7 +7775,7 @@ Napi::Value _vkCmdClearDepthStencilImage(const Napi::CallbackInfo& info) {
   VkImageLayout $p2 = static_cast<VkImageLayout>(info[2].As<Napi::Number>().Int64Value());
 
   _VkClearDepthStencilValue* obj3;
-  VkClearDepthStencilValue *$p3;
+  VkClearDepthStencilValue *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkClearDepthStencilValue::constructor.Value()))) {
@@ -7854,7 +7838,7 @@ Napi::Value _vkCmdClearAttachments(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -7946,7 +7930,7 @@ Napi::Value _vkCmdResolveImage(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -7963,7 +7947,7 @@ Napi::Value _vkCmdResolveImage(const Napi::CallbackInfo& info) {
   }
 
   _VkImage* obj1;
-  VkImage *$p1;
+  VkImage *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
@@ -7982,7 +7966,7 @@ Napi::Value _vkCmdResolveImage(const Napi::CallbackInfo& info) {
   VkImageLayout $p2 = static_cast<VkImageLayout>(info[2].As<Napi::Number>().Int64Value());
 
   _VkImage* obj3;
-  VkImage *$p3;
+  VkImage *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
@@ -8048,7 +8032,7 @@ Napi::Value _vkCmdSetEvent(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -8065,7 +8049,7 @@ Napi::Value _vkCmdSetEvent(const Napi::CallbackInfo& info) {
   }
 
   _VkEvent* obj1;
-  VkEvent *$p1;
+  VkEvent *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkEvent::constructor.Value()))) {
@@ -8097,7 +8081,7 @@ Napi::Value _vkCmdResetEvent(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -8114,7 +8098,7 @@ Napi::Value _vkCmdResetEvent(const Napi::CallbackInfo& info) {
   }
 
   _VkEvent* obj1;
-  VkEvent *$p1;
+  VkEvent *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkEvent::constructor.Value()))) {
@@ -8146,7 +8130,7 @@ Napi::Value _vkCmdWaitEvents(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -8299,7 +8283,7 @@ Napi::Value _vkCmdPipelineBarrier(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -8432,7 +8416,7 @@ Napi::Value _vkCmdBeginQuery(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -8449,7 +8433,7 @@ Napi::Value _vkCmdBeginQuery(const Napi::CallbackInfo& info) {
   }
 
   _VkQueryPool* obj1;
-  VkQueryPool *$p1;
+  VkQueryPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkQueryPool::constructor.Value()))) {
@@ -8484,7 +8468,7 @@ Napi::Value _vkCmdEndQuery(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -8501,7 +8485,7 @@ Napi::Value _vkCmdEndQuery(const Napi::CallbackInfo& info) {
   }
 
   _VkQueryPool* obj1;
-  VkQueryPool *$p1;
+  VkQueryPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkQueryPool::constructor.Value()))) {
@@ -8533,7 +8517,7 @@ Napi::Value _vkCmdBeginConditionalRenderingEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -8550,7 +8534,7 @@ Napi::Value _vkCmdBeginConditionalRenderingEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkConditionalRenderingBeginInfoEXT* obj1;
-  VkConditionalRenderingBeginInfoEXT *$p1;
+  VkConditionalRenderingBeginInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkConditionalRenderingBeginInfoEXT::constructor.Value()))) {
@@ -8579,7 +8563,7 @@ Napi::Value _vkCmdEndConditionalRenderingEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -8607,7 +8591,7 @@ Napi::Value _vkCmdResetQueryPool(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -8624,7 +8608,7 @@ Napi::Value _vkCmdResetQueryPool(const Napi::CallbackInfo& info) {
   }
 
   _VkQueryPool* obj1;
-  VkQueryPool *$p1;
+  VkQueryPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkQueryPool::constructor.Value()))) {
@@ -8659,7 +8643,7 @@ Napi::Value _vkCmdWriteTimestamp(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -8678,7 +8662,7 @@ Napi::Value _vkCmdWriteTimestamp(const Napi::CallbackInfo& info) {
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
 
   _VkQueryPool* obj2;
-  VkQueryPool *$p2;
+  VkQueryPool *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkQueryPool::constructor.Value()))) {
@@ -8711,7 +8695,7 @@ Napi::Value _vkCmdCopyQueryPoolResults(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -8728,7 +8712,7 @@ Napi::Value _vkCmdCopyQueryPoolResults(const Napi::CallbackInfo& info) {
   }
 
   _VkQueryPool* obj1;
-  VkQueryPool *$p1;
+  VkQueryPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkQueryPool::constructor.Value()))) {
@@ -8749,7 +8733,7 @@ Napi::Value _vkCmdCopyQueryPoolResults(const Napi::CallbackInfo& info) {
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
   _VkBuffer* obj4;
-  VkBuffer *$p4;
+  VkBuffer *$p4 = nullptr;
   if (info[4].IsObject()) {
     Napi::Object obj = info[4].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -8790,7 +8774,7 @@ Napi::Value _vkCmdPushConstants(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -8807,7 +8791,7 @@ Napi::Value _vkCmdPushConstants(const Napi::CallbackInfo& info) {
   }
 
   _VkPipelineLayout* obj1;
-  VkPipelineLayout *$p1;
+  VkPipelineLayout *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPipelineLayout::constructor.Value()))) {
@@ -8829,7 +8813,7 @@ Napi::Value _vkCmdPushConstants(const Napi::CallbackInfo& info) {
 
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
 
-  void* $p5;
+  void* $p5 = nullptr;
   if (info[5].IsArrayBuffer()) {
     Napi::ArrayBuffer buf = info[5].As<Napi::ArrayBuffer>();
     $p5 = buf.Data();
@@ -8855,7 +8839,7 @@ Napi::Value _vkCmdBeginRenderPass(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -8872,7 +8856,7 @@ Napi::Value _vkCmdBeginRenderPass(const Napi::CallbackInfo& info) {
   }
 
   _VkRenderPassBeginInfo* obj1;
-  VkRenderPassBeginInfo *$p1;
+  VkRenderPassBeginInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkRenderPassBeginInfo::constructor.Value()))) {
@@ -8904,7 +8888,7 @@ Napi::Value _vkCmdNextSubpass(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -8935,7 +8919,7 @@ Napi::Value _vkCmdEndRenderPass(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -8963,7 +8947,7 @@ Napi::Value _vkCmdExecuteCommands(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -9014,7 +8998,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayPropertiesKHR(const Napi::CallbackInfo& i
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -9031,7 +9015,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayPropertiesKHR(const Napi::CallbackInfo& i
   }
 
   Napi::Object obj1;
-  uint32_t $p1;
+  uint32_t $p1 = 0;
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
@@ -9124,7 +9108,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlanePropertiesKHR(const Napi::CallbackIn
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -9141,7 +9125,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlanePropertiesKHR(const Napi::CallbackIn
   }
 
   Napi::Object obj1;
-  uint32_t $p1;
+  uint32_t $p1 = 0;
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
@@ -9211,7 +9195,7 @@ Napi::Value _vkGetDisplayPlaneSupportedDisplaysKHR(const Napi::CallbackInfo& inf
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -9230,7 +9214,7 @@ Napi::Value _vkGetDisplayPlaneSupportedDisplaysKHR(const Napi::CallbackInfo& inf
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
   Napi::Object obj2;
-  uint32_t $p2;
+  uint32_t $p2 = 0;
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
@@ -9289,7 +9273,7 @@ Napi::Value _vkGetDisplayModePropertiesKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -9306,7 +9290,7 @@ Napi::Value _vkGetDisplayModePropertiesKHR(const Napi::CallbackInfo& info) {
   }
 
   _VkDisplayKHR* obj1;
-  VkDisplayKHR *$p1;
+  VkDisplayKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDisplayKHR::constructor.Value()))) {
@@ -9323,7 +9307,7 @@ Napi::Value _vkGetDisplayModePropertiesKHR(const Napi::CallbackInfo& info) {
   }
 
   Napi::Object obj2;
-  uint32_t $p2;
+  uint32_t $p2 = 0;
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
@@ -9401,7 +9385,7 @@ Napi::Value _vkCreateDisplayModeKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -9418,7 +9402,7 @@ Napi::Value _vkCreateDisplayModeKHR(const Napi::CallbackInfo& info) {
   }
 
   _VkDisplayKHR* obj1;
-  VkDisplayKHR *$p1;
+  VkDisplayKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDisplayKHR::constructor.Value()))) {
@@ -9435,7 +9419,7 @@ Napi::Value _vkCreateDisplayModeKHR(const Napi::CallbackInfo& info) {
   }
 
   _VkDisplayModeCreateInfoKHR* obj2;
-  VkDisplayModeCreateInfoKHR *$p2;
+  VkDisplayModeCreateInfoKHR *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDisplayModeCreateInfoKHR::constructor.Value()))) {
@@ -9453,7 +9437,7 @@ Napi::Value _vkCreateDisplayModeKHR(const Napi::CallbackInfo& info) {
 
 
   _VkDisplayModeKHR* obj4;
-  VkDisplayModeKHR *$p4;
+  VkDisplayModeKHR *$p4 = nullptr;
   if (info[4].IsObject()) {
     Napi::Object obj = info[4].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDisplayModeKHR::constructor.Value()))) {
@@ -9485,7 +9469,7 @@ Napi::Value _vkGetDisplayPlaneCapabilitiesKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -9502,7 +9486,7 @@ Napi::Value _vkGetDisplayPlaneCapabilitiesKHR(const Napi::CallbackInfo& info) {
   }
 
   _VkDisplayModeKHR* obj1;
-  VkDisplayModeKHR *$p1;
+  VkDisplayModeKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDisplayModeKHR::constructor.Value()))) {
@@ -9521,7 +9505,7 @@ Napi::Value _vkGetDisplayPlaneCapabilitiesKHR(const Napi::CallbackInfo& info) {
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   _VkDisplayPlaneCapabilitiesKHR* obj3;
-  VkDisplayPlaneCapabilitiesKHR *$p3;
+  VkDisplayPlaneCapabilitiesKHR *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDisplayPlaneCapabilitiesKHR::constructor.Value()))) {
@@ -9624,7 +9608,7 @@ Napi::Value _vkCreateDisplayPlaneSurfaceKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkInstance* obj0;
-  VkInstance *$p0;
+  VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
@@ -9641,7 +9625,7 @@ Napi::Value _vkCreateDisplayPlaneSurfaceKHR(const Napi::CallbackInfo& info) {
   }
 
   _VkDisplaySurfaceCreateInfoKHR* obj1;
-  VkDisplaySurfaceCreateInfoKHR *$p1;
+  VkDisplaySurfaceCreateInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDisplaySurfaceCreateInfoKHR::constructor.Value()))) {
@@ -9659,7 +9643,7 @@ Napi::Value _vkCreateDisplayPlaneSurfaceKHR(const Napi::CallbackInfo& info) {
 
 
   _VkSurfaceKHR* obj3;
-  VkSurfaceKHR *$p3;
+  VkSurfaceKHR *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSurfaceKHR::constructor.Value()))) {
@@ -9690,7 +9674,7 @@ Napi::Value _vkCreateSharedSwapchainsKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -9782,7 +9766,7 @@ Napi::Value _vkDestroySurfaceKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkInstance* obj0;
-  VkInstance *$p0;
+  VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
@@ -9799,7 +9783,7 @@ Napi::Value _vkDestroySurfaceKHR(const Napi::CallbackInfo& info) {
   }
 
   _VkSurfaceKHR* obj1;
-  VkSurfaceKHR *$p1;
+  VkSurfaceKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSurfaceKHR::constructor.Value()))) {
@@ -9830,7 +9814,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceSupportKHR(const Napi::CallbackInfo& info
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -9849,7 +9833,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceSupportKHR(const Napi::CallbackInfo& info
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
   _VkSurfaceKHR* obj2;
-  VkSurfaceKHR *$p2;
+  VkSurfaceKHR *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSurfaceKHR::constructor.Value()))) {
@@ -9866,7 +9850,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceSupportKHR(const Napi::CallbackInfo& info
   }
 
     Napi::Object obj3;
-    uint32_t $p3;
+    uint32_t $p3 = 0;
     if (info[3].IsObject()) {
       obj3 = info[3].As<Napi::Object>();
       if (!obj3.Has("$")) {
@@ -9896,7 +9880,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Napi::CallbackInfo&
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -9913,7 +9897,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Napi::CallbackInfo&
   }
 
   _VkSurfaceKHR* obj1;
-  VkSurfaceKHR *$p1;
+  VkSurfaceKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSurfaceKHR::constructor.Value()))) {
@@ -9930,7 +9914,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Napi::CallbackInfo&
   }
 
   _VkSurfaceCapabilitiesKHR* obj2;
-  VkSurfaceCapabilitiesKHR *$p2;
+  VkSurfaceCapabilitiesKHR *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSurfaceCapabilitiesKHR::constructor.Value()))) {
@@ -9987,7 +9971,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormatsKHR(const Napi::CallbackInfo& info
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -10004,7 +9988,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormatsKHR(const Napi::CallbackInfo& info
   }
 
   _VkSurfaceKHR* obj1;
-  VkSurfaceKHR *$p1;
+  VkSurfaceKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSurfaceKHR::constructor.Value()))) {
@@ -10021,7 +10005,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormatsKHR(const Napi::CallbackInfo& info
   }
 
   Napi::Object obj2;
-  uint32_t $p2;
+  uint32_t $p2 = 0;
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
@@ -10093,7 +10077,7 @@ Napi::Value _vkGetPhysicalDeviceSurfacePresentModesKHR(const Napi::CallbackInfo&
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -10110,7 +10094,7 @@ Napi::Value _vkGetPhysicalDeviceSurfacePresentModesKHR(const Napi::CallbackInfo&
   }
 
   _VkSurfaceKHR* obj1;
-  VkSurfaceKHR *$p1;
+  VkSurfaceKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSurfaceKHR::constructor.Value()))) {
@@ -10127,7 +10111,7 @@ Napi::Value _vkGetPhysicalDeviceSurfacePresentModesKHR(const Napi::CallbackInfo&
   }
 
   Napi::Object obj2;
-  uint32_t $p2;
+  uint32_t $p2 = 0;
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
@@ -10173,7 +10157,7 @@ Napi::Value _vkCreateSwapchainKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -10190,7 +10174,7 @@ Napi::Value _vkCreateSwapchainKHR(const Napi::CallbackInfo& info) {
   }
 
   _VkSwapchainCreateInfoKHR* obj1;
-  VkSwapchainCreateInfoKHR *$p1;
+  VkSwapchainCreateInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSwapchainCreateInfoKHR::constructor.Value()))) {
@@ -10208,7 +10192,7 @@ Napi::Value _vkCreateSwapchainKHR(const Napi::CallbackInfo& info) {
 
 
   _VkSwapchainKHR* obj3;
-  VkSwapchainKHR *$p3;
+  VkSwapchainKHR *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSwapchainKHR::constructor.Value()))) {
@@ -10239,7 +10223,7 @@ Napi::Value _vkDestroySwapchainKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -10256,7 +10240,7 @@ Napi::Value _vkDestroySwapchainKHR(const Napi::CallbackInfo& info) {
   }
 
   _VkSwapchainKHR* obj1;
-  VkSwapchainKHR *$p1;
+  VkSwapchainKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSwapchainKHR::constructor.Value()))) {
@@ -10287,7 +10271,7 @@ Napi::Value _vkGetSwapchainImagesKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -10304,7 +10288,7 @@ Napi::Value _vkGetSwapchainImagesKHR(const Napi::CallbackInfo& info) {
   }
 
   _VkSwapchainKHR* obj1;
-  VkSwapchainKHR *$p1;
+  VkSwapchainKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSwapchainKHR::constructor.Value()))) {
@@ -10321,7 +10305,7 @@ Napi::Value _vkGetSwapchainImagesKHR(const Napi::CallbackInfo& info) {
   }
 
   Napi::Object obj2;
-  uint32_t $p2;
+  uint32_t $p2 = 0;
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
@@ -10380,7 +10364,7 @@ Napi::Value _vkAcquireNextImageKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -10397,7 +10381,7 @@ Napi::Value _vkAcquireNextImageKHR(const Napi::CallbackInfo& info) {
   }
 
   _VkSwapchainKHR* obj1;
-  VkSwapchainKHR *$p1;
+  VkSwapchainKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSwapchainKHR::constructor.Value()))) {
@@ -10416,7 +10400,7 @@ Napi::Value _vkAcquireNextImageKHR(const Napi::CallbackInfo& info) {
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
 
   _VkSemaphore* obj3;
-  VkSemaphore *$p3;
+  VkSemaphore *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSemaphore::constructor.Value()))) {
@@ -10433,7 +10417,7 @@ Napi::Value _vkAcquireNextImageKHR(const Napi::CallbackInfo& info) {
   }
 
   _VkFence* obj4;
-  VkFence *$p4;
+  VkFence *$p4 = nullptr;
   if (info[4].IsObject()) {
     Napi::Object obj = info[4].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkFence::constructor.Value()))) {
@@ -10450,7 +10434,7 @@ Napi::Value _vkAcquireNextImageKHR(const Napi::CallbackInfo& info) {
   }
 
   Napi::Object obj5;
-  uint32_t $p5;
+  uint32_t $p5 = 0;
   if (info[5].IsObject()) {
     obj5 = info[5].As<Napi::Object>();
     if (!obj5.Has("$")) {
@@ -10482,7 +10466,7 @@ Napi::Value _vkQueuePresentKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkQueue* obj0;
-  VkQueue *$p0;
+  VkQueue *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkQueue::constructor.Value()))) {
@@ -10499,7 +10483,7 @@ Napi::Value _vkQueuePresentKHR(const Napi::CallbackInfo& info) {
   }
 
   _VkPresentInfoKHR* obj1;
-  VkPresentInfoKHR *$p1;
+  VkPresentInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPresentInfoKHR::constructor.Value()))) {
@@ -10524,108 +10508,11 @@ Napi::Value _vkQueuePresentKHR(const Napi::CallbackInfo& info) {
   
 };
 
-Napi::Value _vkCreateWin32SurfaceKHR(const Napi::CallbackInfo& info) {
-  Napi::Env env = info.Env();
-  
-  _VkInstance* obj0;
-  VkInstance *$p0;
-  if (info[0].IsObject()) {
-    Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
-      return env.Undefined();
-    }
-    obj0 = Napi::ObjectWrap<_VkInstance>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
-  } else if (info[0].IsNull()) {
-    $p0 = VK_NULL_HANDLE;
-  } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
-  }
-
-  _VkWin32SurfaceCreateInfoKHR* obj1;
-  VkWin32SurfaceCreateInfoKHR *$p1;
-  if (info[1].IsObject()) {
-    Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkWin32SurfaceCreateInfoKHR::constructor.Value()))) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkWin32SurfaceCreateInfoKHR]");
-      return env.Undefined();
-    }
-    obj1 = Napi::ObjectWrap<_VkWin32SurfaceCreateInfoKHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
-  } else if (info[1].IsNull()) {
-    $p1 = nullptr;
-  } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
-  }
-
-
-  _VkSurfaceKHR* obj3;
-  VkSurfaceKHR *$p3;
-  if (info[3].IsObject()) {
-    Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSurfaceKHR::constructor.Value()))) {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkSurfaceKHR]");
-      return env.Undefined();
-    }
-    obj3 = Napi::ObjectWrap<_VkSurfaceKHR>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
-  } else if (info[3].IsNull()) {
-    $p3 = VK_NULL_HANDLE;
-  } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pSurface'").ThrowAsJavaScriptException();
-  }
-  int32_t out = $vkCreateWin32SurfaceKHR(
-    info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
-    $p1,
-    nullptr,
-    $p3
-  );
-  
-  
-  return Napi::Number::New(env, static_cast<int32_t>(out));
-  
-};
-
-Napi::Value _vkGetPhysicalDeviceWin32PresentationSupportKHR(const Napi::CallbackInfo& info) {
-  Napi::Env env = info.Env();
-  
-  _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
-  if (info[0].IsObject()) {
-    Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
-      return env.Undefined();
-    }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
-  } else if (info[0].IsNull()) {
-    $p0 = VK_NULL_HANDLE;
-  } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
-  }
-
-  uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
-  uint32_t out = $vkGetPhysicalDeviceWin32PresentationSupportKHR(
-    info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
-    $p1
-  );
-  
-  
-  return Napi::Number::New(env, static_cast<int32_t>(out));
-  
-};
-
 Napi::Value _vkCreateDebugReportCallbackEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkInstance* obj0;
-  VkInstance *$p0;
+  VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
@@ -10642,7 +10529,7 @@ Napi::Value _vkCreateDebugReportCallbackEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkDebugReportCallbackCreateInfoEXT* obj1;
-  VkDebugReportCallbackCreateInfoEXT *$p1;
+  VkDebugReportCallbackCreateInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDebugReportCallbackCreateInfoEXT::constructor.Value()))) {
@@ -10660,7 +10547,7 @@ Napi::Value _vkCreateDebugReportCallbackEXT(const Napi::CallbackInfo& info) {
 
 
   _VkDebugReportCallbackEXT* obj3;
-  VkDebugReportCallbackEXT *$p3;
+  VkDebugReportCallbackEXT *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDebugReportCallbackEXT::constructor.Value()))) {
@@ -10691,7 +10578,7 @@ Napi::Value _vkDestroyDebugReportCallbackEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkInstance* obj0;
-  VkInstance *$p0;
+  VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
@@ -10708,7 +10595,7 @@ Napi::Value _vkDestroyDebugReportCallbackEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkDebugReportCallbackEXT* obj1;
-  VkDebugReportCallbackEXT *$p1;
+  VkDebugReportCallbackEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDebugReportCallbackEXT::constructor.Value()))) {
@@ -10739,7 +10626,7 @@ Napi::Value _vkDebugReportMessageEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkInstance* obj0;
-  VkInstance *$p0;
+  VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
@@ -10765,7 +10652,7 @@ Napi::Value _vkDebugReportMessageEXT(const Napi::CallbackInfo& info) {
 
   int32_t $p5 = static_cast<int32_t>(info[5].As<Napi::Number>().Int64Value());
 
-  char* $p6;
+  char* $p6 = nullptr;
   if (info[6].IsString()) {
     $p6 = copyV8String(info[6]);
   } else if (!info[6].IsNull()) {
@@ -10773,7 +10660,7 @@ Napi::Value _vkDebugReportMessageEXT(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  char* $p7;
+  char* $p7 = nullptr;
   if (info[7].IsString()) {
     $p7 = copyV8String(info[7]);
   } else if (!info[7].IsNull()) {
@@ -10802,7 +10689,7 @@ Napi::Value _vkDebugMarkerSetObjectNameEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -10819,7 +10706,7 @@ Napi::Value _vkDebugMarkerSetObjectNameEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkDebugMarkerObjectNameInfoEXT* obj1;
-  VkDebugMarkerObjectNameInfoEXT *$p1;
+  VkDebugMarkerObjectNameInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDebugMarkerObjectNameInfoEXT::constructor.Value()))) {
@@ -10848,7 +10735,7 @@ Napi::Value _vkDebugMarkerSetObjectTagEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -10865,7 +10752,7 @@ Napi::Value _vkDebugMarkerSetObjectTagEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkDebugMarkerObjectTagInfoEXT* obj1;
-  VkDebugMarkerObjectTagInfoEXT *$p1;
+  VkDebugMarkerObjectTagInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDebugMarkerObjectTagInfoEXT::constructor.Value()))) {
@@ -10894,7 +10781,7 @@ Napi::Value _vkCmdDebugMarkerBeginEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -10911,7 +10798,7 @@ Napi::Value _vkCmdDebugMarkerBeginEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkDebugMarkerMarkerInfoEXT* obj1;
-  VkDebugMarkerMarkerInfoEXT *$p1;
+  VkDebugMarkerMarkerInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDebugMarkerMarkerInfoEXT::constructor.Value()))) {
@@ -10940,7 +10827,7 @@ Napi::Value _vkCmdDebugMarkerEndEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -10968,7 +10855,7 @@ Napi::Value _vkCmdDebugMarkerInsertEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -10985,7 +10872,7 @@ Napi::Value _vkCmdDebugMarkerInsertEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkDebugMarkerMarkerInfoEXT* obj1;
-  VkDebugMarkerMarkerInfoEXT *$p1;
+  VkDebugMarkerMarkerInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDebugMarkerMarkerInfoEXT::constructor.Value()))) {
@@ -11014,7 +10901,7 @@ Napi::Value _vkGetPhysicalDeviceExternalImageFormatPropertiesNV(const Napi::Call
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -11043,7 +10930,7 @@ Napi::Value _vkGetPhysicalDeviceExternalImageFormatPropertiesNV(const Napi::Call
   int32_t $p6 = static_cast<int32_t>(info[6].As<Napi::Number>().Int64Value());
 
   _VkExternalImageFormatPropertiesNV* obj7;
-  VkExternalImageFormatPropertiesNV *$p7;
+  VkExternalImageFormatPropertiesNV *$p7 = nullptr;
   if (info[7].IsObject()) {
     Napi::Object obj = info[7].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkExternalImageFormatPropertiesNV::constructor.Value()))) {
@@ -11092,79 +10979,11 @@ Napi::Value _vkGetPhysicalDeviceExternalImageFormatPropertiesNV(const Napi::Call
   
 };
 
-Napi::Value _vkGetMemoryWin32HandleNV(const Napi::CallbackInfo& info) {
-  Napi::Env env = info.Env();
-  
-  _VkDevice* obj0;
-  VkDevice *$p0;
-  if (info[0].IsObject()) {
-    Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
-      return env.Undefined();
-    }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
-  } else if (info[0].IsNull()) {
-    $p0 = VK_NULL_HANDLE;
-  } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
-  }
-
-  _VkDeviceMemory* obj1;
-  VkDeviceMemory *$p1;
-  if (info[1].IsObject()) {
-    Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDeviceMemory::constructor.Value()))) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkDeviceMemory]");
-      return env.Undefined();
-    }
-    obj1 = Napi::ObjectWrap<_VkDeviceMemory>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
-  } else if (info[1].IsNull()) {
-    $p1 = VK_NULL_HANDLE;
-  } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'memory'").ThrowAsJavaScriptException();
-  }
-
-  int32_t $p2 = static_cast<int32_t>(info[2].As<Napi::Number>().Int64Value());
-
-  Napi::Object obj3;
-  HANDLE* $p3;
-  if (info[3].IsObject()) {
-    obj3 = info[3].As<Napi::Object>();
-    if (!obj3.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 4").ThrowAsJavaScriptException();
-      return env.Undefined();
-    }
-    Napi::Value val = obj3.Get("$");
-    bool lossless = false;
-    $p3 = reinterpret_cast<HANDLE*>(val.As<Napi::BigInt>().Int64Value(&lossless));
-  } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pHandle'").ThrowAsJavaScriptException();
-    return env.Undefined();
-  }
-  int32_t out = $vkGetMemoryWin32HandleNV(
-    info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
-    info[1].IsNull() ? VK_NULL_HANDLE : *$p1,
-    static_cast<VkExternalMemoryHandleTypeFlagsNV>($p2),
-    info[3].IsNull() ? nullptr : $p3
-  );
-  Napi::BigInt ptr3 = Napi::BigInt::New(env, (int64_t)$p3);
-  obj3.Set("$", ptr3);
-  
-  
-  return Napi::Number::New(env, static_cast<int32_t>(out));
-  
-};
-
 Napi::Value _vkCmdDrawIndirectCountAMD(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -11181,7 +11000,7 @@ Napi::Value _vkCmdDrawIndirectCountAMD(const Napi::CallbackInfo& info) {
   }
 
   _VkBuffer* obj1;
-  VkBuffer *$p1;
+  VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -11200,7 +11019,7 @@ Napi::Value _vkCmdDrawIndirectCountAMD(const Napi::CallbackInfo& info) {
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
 
   _VkBuffer* obj3;
-  VkBuffer *$p3;
+  VkBuffer *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -11240,7 +11059,7 @@ Napi::Value _vkCmdDrawIndexedIndirectCountAMD(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -11257,7 +11076,7 @@ Napi::Value _vkCmdDrawIndexedIndirectCountAMD(const Napi::CallbackInfo& info) {
   }
 
   _VkBuffer* obj1;
-  VkBuffer *$p1;
+  VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -11276,7 +11095,7 @@ Napi::Value _vkCmdDrawIndexedIndirectCountAMD(const Napi::CallbackInfo& info) {
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
 
   _VkBuffer* obj3;
-  VkBuffer *$p3;
+  VkBuffer *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -11316,7 +11135,7 @@ Napi::Value _vkCmdProcessCommandsNVX(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -11333,7 +11152,7 @@ Napi::Value _vkCmdProcessCommandsNVX(const Napi::CallbackInfo& info) {
   }
 
   _VkCmdProcessCommandsInfoNVX* obj1;
-  VkCmdProcessCommandsInfoNVX *$p1;
+  VkCmdProcessCommandsInfoNVX *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCmdProcessCommandsInfoNVX::constructor.Value()))) {
@@ -11362,7 +11181,7 @@ Napi::Value _vkCmdReserveSpaceForCommandsNVX(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -11379,7 +11198,7 @@ Napi::Value _vkCmdReserveSpaceForCommandsNVX(const Napi::CallbackInfo& info) {
   }
 
   _VkCmdReserveSpaceForCommandsInfoNVX* obj1;
-  VkCmdReserveSpaceForCommandsInfoNVX *$p1;
+  VkCmdReserveSpaceForCommandsInfoNVX *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCmdReserveSpaceForCommandsInfoNVX::constructor.Value()))) {
@@ -11408,7 +11227,7 @@ Napi::Value _vkCreateIndirectCommandsLayoutNVX(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -11425,7 +11244,7 @@ Napi::Value _vkCreateIndirectCommandsLayoutNVX(const Napi::CallbackInfo& info) {
   }
 
   _VkIndirectCommandsLayoutCreateInfoNVX* obj1;
-  VkIndirectCommandsLayoutCreateInfoNVX *$p1;
+  VkIndirectCommandsLayoutCreateInfoNVX *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkIndirectCommandsLayoutCreateInfoNVX::constructor.Value()))) {
@@ -11443,7 +11262,7 @@ Napi::Value _vkCreateIndirectCommandsLayoutNVX(const Napi::CallbackInfo& info) {
 
 
   _VkIndirectCommandsLayoutNVX* obj3;
-  VkIndirectCommandsLayoutNVX *$p3;
+  VkIndirectCommandsLayoutNVX *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkIndirectCommandsLayoutNVX::constructor.Value()))) {
@@ -11474,7 +11293,7 @@ Napi::Value _vkDestroyIndirectCommandsLayoutNVX(const Napi::CallbackInfo& info) 
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -11491,7 +11310,7 @@ Napi::Value _vkDestroyIndirectCommandsLayoutNVX(const Napi::CallbackInfo& info) 
   }
 
   _VkIndirectCommandsLayoutNVX* obj1;
-  VkIndirectCommandsLayoutNVX *$p1;
+  VkIndirectCommandsLayoutNVX *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkIndirectCommandsLayoutNVX::constructor.Value()))) {
@@ -11522,7 +11341,7 @@ Napi::Value _vkCreateObjectTableNVX(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -11539,7 +11358,7 @@ Napi::Value _vkCreateObjectTableNVX(const Napi::CallbackInfo& info) {
   }
 
   _VkObjectTableCreateInfoNVX* obj1;
-  VkObjectTableCreateInfoNVX *$p1;
+  VkObjectTableCreateInfoNVX *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkObjectTableCreateInfoNVX::constructor.Value()))) {
@@ -11557,7 +11376,7 @@ Napi::Value _vkCreateObjectTableNVX(const Napi::CallbackInfo& info) {
 
 
   _VkObjectTableNVX* obj3;
-  VkObjectTableNVX *$p3;
+  VkObjectTableNVX *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkObjectTableNVX::constructor.Value()))) {
@@ -11588,7 +11407,7 @@ Napi::Value _vkDestroyObjectTableNVX(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -11605,7 +11424,7 @@ Napi::Value _vkDestroyObjectTableNVX(const Napi::CallbackInfo& info) {
   }
 
   _VkObjectTableNVX* obj1;
-  VkObjectTableNVX *$p1;
+  VkObjectTableNVX *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkObjectTableNVX::constructor.Value()))) {
@@ -11636,7 +11455,7 @@ Napi::Value _vkRegisterObjectsNVX(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -11653,7 +11472,7 @@ Napi::Value _vkRegisterObjectsNVX(const Napi::CallbackInfo& info) {
   }
 
   _VkObjectTableNVX* obj1;
-  VkObjectTableNVX *$p1;
+  VkObjectTableNVX *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkObjectTableNVX::constructor.Value()))) {
@@ -11731,7 +11550,7 @@ Napi::Value _vkUnregisterObjectsNVX(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -11748,7 +11567,7 @@ Napi::Value _vkUnregisterObjectsNVX(const Napi::CallbackInfo& info) {
   }
 
   _VkObjectTableNVX* obj1;
-  VkObjectTableNVX *$p1;
+  VkObjectTableNVX *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkObjectTableNVX::constructor.Value()))) {
@@ -11814,7 +11633,7 @@ Napi::Value _vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(const Napi::Callb
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -11831,7 +11650,7 @@ Napi::Value _vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(const Napi::Callb
   }
 
   _VkDeviceGeneratedCommandsFeaturesNVX* obj1;
-  VkDeviceGeneratedCommandsFeaturesNVX *$p1;
+  VkDeviceGeneratedCommandsFeaturesNVX *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDeviceGeneratedCommandsFeaturesNVX::constructor.Value()))) {
@@ -11848,7 +11667,7 @@ Napi::Value _vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(const Napi::Callb
   }
 
   _VkDeviceGeneratedCommandsLimitsNVX* obj2;
-  VkDeviceGeneratedCommandsLimitsNVX *$p2;
+  VkDeviceGeneratedCommandsLimitsNVX *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDeviceGeneratedCommandsLimitsNVX::constructor.Value()))) {
@@ -11878,7 +11697,7 @@ Napi::Value _vkGetPhysicalDeviceFeatures2(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -11895,7 +11714,7 @@ Napi::Value _vkGetPhysicalDeviceFeatures2(const Napi::CallbackInfo& info) {
   }
 
   _VkPhysicalDeviceFeatures2* obj1;
-  VkPhysicalDeviceFeatures2 *$p1;
+  VkPhysicalDeviceFeatures2 *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDeviceFeatures2::constructor.Value()))) {
@@ -11933,7 +11752,7 @@ Napi::Value _vkGetPhysicalDeviceProperties2(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -11950,7 +11769,7 @@ Napi::Value _vkGetPhysicalDeviceProperties2(const Napi::CallbackInfo& info) {
   }
 
   _VkPhysicalDeviceProperties2* obj1;
-  VkPhysicalDeviceProperties2 *$p1;
+  VkPhysicalDeviceProperties2 *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDeviceProperties2::constructor.Value()))) {
@@ -12074,7 +11893,7 @@ Napi::Value _vkGetPhysicalDeviceFormatProperties2(const Napi::CallbackInfo& info
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -12093,7 +11912,7 @@ Napi::Value _vkGetPhysicalDeviceFormatProperties2(const Napi::CallbackInfo& info
   VkFormat $p1 = static_cast<VkFormat>(info[1].As<Napi::Number>().Int64Value());
 
   _VkFormatProperties2* obj2;
-  VkFormatProperties2 *$p2;
+  VkFormatProperties2 *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkFormatProperties2::constructor.Value()))) {
@@ -12132,7 +11951,7 @@ Napi::Value _vkGetPhysicalDeviceImageFormatProperties2(const Napi::CallbackInfo&
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -12149,7 +11968,7 @@ Napi::Value _vkGetPhysicalDeviceImageFormatProperties2(const Napi::CallbackInfo&
   }
 
   _VkPhysicalDeviceImageFormatInfo2* obj1;
-  VkPhysicalDeviceImageFormatInfo2 *$p1;
+  VkPhysicalDeviceImageFormatInfo2 *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDeviceImageFormatInfo2::constructor.Value()))) {
@@ -12166,7 +11985,7 @@ Napi::Value _vkGetPhysicalDeviceImageFormatProperties2(const Napi::CallbackInfo&
   }
 
   _VkImageFormatProperties2* obj2;
-  VkImageFormatProperties2 *$p2;
+  VkImageFormatProperties2 *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImageFormatProperties2::constructor.Value()))) {
@@ -12214,7 +12033,7 @@ Napi::Value _vkGetPhysicalDeviceQueueFamilyProperties2(const Napi::CallbackInfo&
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -12231,7 +12050,7 @@ Napi::Value _vkGetPhysicalDeviceQueueFamilyProperties2(const Napi::CallbackInfo&
   }
 
   Napi::Object obj1;
-  uint32_t $p1;
+  uint32_t $p1 = 0;
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
@@ -12309,7 +12128,7 @@ Napi::Value _vkGetPhysicalDeviceMemoryProperties2(const Napi::CallbackInfo& info
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -12326,7 +12145,7 @@ Napi::Value _vkGetPhysicalDeviceMemoryProperties2(const Napi::CallbackInfo& info
   }
 
   _VkPhysicalDeviceMemoryProperties2* obj1;
-  VkPhysicalDeviceMemoryProperties2 *$p1;
+  VkPhysicalDeviceMemoryProperties2 *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDeviceMemoryProperties2::constructor.Value()))) {
@@ -12392,7 +12211,7 @@ Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties2(const Napi::Callbac
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -12409,7 +12228,7 @@ Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties2(const Napi::Callbac
   }
 
   _VkPhysicalDeviceSparseImageFormatInfo2* obj1;
-  VkPhysicalDeviceSparseImageFormatInfo2 *$p1;
+  VkPhysicalDeviceSparseImageFormatInfo2 *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDeviceSparseImageFormatInfo2::constructor.Value()))) {
@@ -12426,7 +12245,7 @@ Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties2(const Napi::Callbac
   }
 
   Napi::Object obj2;
-  uint32_t $p2;
+  uint32_t $p2 = 0;
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
@@ -12505,7 +12324,7 @@ Napi::Value _vkCmdPushDescriptorSetKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -12524,7 +12343,7 @@ Napi::Value _vkCmdPushDescriptorSetKHR(const Napi::CallbackInfo& info) {
   VkPipelineBindPoint $p1 = static_cast<VkPipelineBindPoint>(info[1].As<Napi::Number>().Int64Value());
 
   _VkPipelineLayout* obj2;
-  VkPipelineLayout *$p2;
+  VkPipelineLayout *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPipelineLayout::constructor.Value()))) {
@@ -12589,7 +12408,7 @@ Napi::Value _vkTrimCommandPool(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -12606,7 +12425,7 @@ Napi::Value _vkTrimCommandPool(const Napi::CallbackInfo& info) {
   }
 
   _VkCommandPool* obj1;
-  VkCommandPool *$p1;
+  VkCommandPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandPool::constructor.Value()))) {
@@ -12638,7 +12457,7 @@ Napi::Value _vkGetPhysicalDeviceExternalBufferProperties(const Napi::CallbackInf
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -12655,7 +12474,7 @@ Napi::Value _vkGetPhysicalDeviceExternalBufferProperties(const Napi::CallbackInf
   }
 
   _VkPhysicalDeviceExternalBufferInfo* obj1;
-  VkPhysicalDeviceExternalBufferInfo *$p1;
+  VkPhysicalDeviceExternalBufferInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDeviceExternalBufferInfo::constructor.Value()))) {
@@ -12672,7 +12491,7 @@ Napi::Value _vkGetPhysicalDeviceExternalBufferProperties(const Napi::CallbackInf
   }
 
   _VkExternalBufferProperties* obj2;
-  VkExternalBufferProperties *$p2;
+  VkExternalBufferProperties *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkExternalBufferProperties::constructor.Value()))) {
@@ -12707,129 +12526,11 @@ vkGetPhysicalDeviceExternalBufferProperties(
   
 };
 
-Napi::Value _vkGetMemoryWin32HandleKHR(const Napi::CallbackInfo& info) {
-  Napi::Env env = info.Env();
-  
-  _VkDevice* obj0;
-  VkDevice *$p0;
-  if (info[0].IsObject()) {
-    Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
-      return env.Undefined();
-    }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
-  } else if (info[0].IsNull()) {
-    $p0 = VK_NULL_HANDLE;
-  } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
-  }
-
-  _VkMemoryGetWin32HandleInfoKHR* obj1;
-  VkMemoryGetWin32HandleInfoKHR *$p1;
-  if (info[1].IsObject()) {
-    Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkMemoryGetWin32HandleInfoKHR::constructor.Value()))) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkMemoryGetWin32HandleInfoKHR]");
-      return env.Undefined();
-    }
-    obj1 = Napi::ObjectWrap<_VkMemoryGetWin32HandleInfoKHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
-  } else if (info[1].IsNull()) {
-    $p1 = nullptr;
-  } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pGetWin32HandleInfo'").ThrowAsJavaScriptException();
-  }
-
-  Napi::Object obj2;
-  HANDLE* $p2;
-  if (info[2].IsObject()) {
-    obj2 = info[2].As<Napi::Object>();
-    if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
-      return env.Undefined();
-    }
-    Napi::Value val = obj2.Get("$");
-    bool lossless = false;
-    $p2 = reinterpret_cast<HANDLE*>(val.As<Napi::BigInt>().Int64Value(&lossless));
-  } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pHandle'").ThrowAsJavaScriptException();
-    return env.Undefined();
-  }
-  int32_t out = $vkGetMemoryWin32HandleKHR(
-    info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
-    $p1,
-    info[2].IsNull() ? nullptr : $p2
-  );
-  Napi::BigInt ptr2 = Napi::BigInt::New(env, (int64_t)$p2);
-  obj2.Set("$", ptr2);
-  
-  
-  return Napi::Number::New(env, static_cast<int32_t>(out));
-  
-};
-
-Napi::Value _vkGetMemoryWin32HandlePropertiesKHR(const Napi::CallbackInfo& info) {
-  Napi::Env env = info.Env();
-  
-  _VkDevice* obj0;
-  VkDevice *$p0;
-  if (info[0].IsObject()) {
-    Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
-      return env.Undefined();
-    }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
-  } else if (info[0].IsNull()) {
-    $p0 = VK_NULL_HANDLE;
-  } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
-  }
-
-  int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
-
-  bool lossless2 = false;
-  HANDLE $p2 = reinterpret_cast<HANDLE>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
-
-  _VkMemoryWin32HandlePropertiesKHR* obj3;
-  VkMemoryWin32HandlePropertiesKHR *$p3;
-  if (info[3].IsObject()) {
-    Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkMemoryWin32HandlePropertiesKHR::constructor.Value()))) {
-      NapiObjectTypeError(info[3], "argument 4", "[object VkMemoryWin32HandlePropertiesKHR]");
-      return env.Undefined();
-    }
-    obj3 = Napi::ObjectWrap<_VkMemoryWin32HandlePropertiesKHR>::Unwrap(obj);
-    if (!obj3->flush()) return env.Undefined();
-    $p3 = &obj3->instance;
-  } else if (info[3].IsNull()) {
-    $p3 = nullptr;
-  } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pMemoryWin32HandleProperties'").ThrowAsJavaScriptException();
-  }
-  int32_t out = $vkGetMemoryWin32HandlePropertiesKHR(
-    info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
-    static_cast<VkExternalMemoryHandleTypeFlagBits>($p1),
-    $p2,
-    $p3
-  );
-  
-  
-  return Napi::Number::New(env, static_cast<int32_t>(out));
-  
-};
-
 Napi::Value _vkGetMemoryFdKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -12846,7 +12547,7 @@ Napi::Value _vkGetMemoryFdKHR(const Napi::CallbackInfo& info) {
   }
 
   _VkMemoryGetFdInfoKHR* obj1;
-  VkMemoryGetFdInfoKHR *$p1;
+  VkMemoryGetFdInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkMemoryGetFdInfoKHR::constructor.Value()))) {
@@ -12863,7 +12564,7 @@ Napi::Value _vkGetMemoryFdKHR(const Napi::CallbackInfo& info) {
   }
 
   Napi::Object obj2;
-  int $p2;
+  int $p2 = 0;
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
@@ -12892,7 +12593,7 @@ Napi::Value _vkGetMemoryFdPropertiesKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -12913,7 +12614,7 @@ Napi::Value _vkGetMemoryFdPropertiesKHR(const Napi::CallbackInfo& info) {
   int $p2 = static_cast<int>(info[2].As<Napi::Number>().Int64Value());
 
   _VkMemoryFdPropertiesKHR* obj3;
-  VkMemoryFdPropertiesKHR *$p3;
+  VkMemoryFdPropertiesKHR *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkMemoryFdPropertiesKHR::constructor.Value()))) {
@@ -12944,7 +12645,7 @@ Napi::Value _vkGetPhysicalDeviceExternalSemaphoreProperties(const Napi::Callback
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -12961,7 +12662,7 @@ Napi::Value _vkGetPhysicalDeviceExternalSemaphoreProperties(const Napi::Callback
   }
 
   _VkPhysicalDeviceExternalSemaphoreInfo* obj1;
-  VkPhysicalDeviceExternalSemaphoreInfo *$p1;
+  VkPhysicalDeviceExternalSemaphoreInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDeviceExternalSemaphoreInfo::constructor.Value()))) {
@@ -12978,7 +12679,7 @@ Napi::Value _vkGetPhysicalDeviceExternalSemaphoreProperties(const Napi::Callback
   }
 
   _VkExternalSemaphoreProperties* obj2;
-  VkExternalSemaphoreProperties *$p2;
+  VkExternalSemaphoreProperties *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkExternalSemaphoreProperties::constructor.Value()))) {
@@ -13004,122 +12705,11 @@ vkGetPhysicalDeviceExternalSemaphoreProperties(
   
 };
 
-Napi::Value _vkGetSemaphoreWin32HandleKHR(const Napi::CallbackInfo& info) {
-  Napi::Env env = info.Env();
-  
-  _VkDevice* obj0;
-  VkDevice *$p0;
-  if (info[0].IsObject()) {
-    Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
-      return env.Undefined();
-    }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
-  } else if (info[0].IsNull()) {
-    $p0 = VK_NULL_HANDLE;
-  } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
-  }
-
-  _VkSemaphoreGetWin32HandleInfoKHR* obj1;
-  VkSemaphoreGetWin32HandleInfoKHR *$p1;
-  if (info[1].IsObject()) {
-    Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSemaphoreGetWin32HandleInfoKHR::constructor.Value()))) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkSemaphoreGetWin32HandleInfoKHR]");
-      return env.Undefined();
-    }
-    obj1 = Napi::ObjectWrap<_VkSemaphoreGetWin32HandleInfoKHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
-  } else if (info[1].IsNull()) {
-    $p1 = nullptr;
-  } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pGetWin32HandleInfo'").ThrowAsJavaScriptException();
-  }
-
-  Napi::Object obj2;
-  HANDLE* $p2;
-  if (info[2].IsObject()) {
-    obj2 = info[2].As<Napi::Object>();
-    if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
-      return env.Undefined();
-    }
-    Napi::Value val = obj2.Get("$");
-    bool lossless = false;
-    $p2 = reinterpret_cast<HANDLE*>(val.As<Napi::BigInt>().Int64Value(&lossless));
-  } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pHandle'").ThrowAsJavaScriptException();
-    return env.Undefined();
-  }
-  int32_t out = $vkGetSemaphoreWin32HandleKHR(
-    info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
-    $p1,
-    info[2].IsNull() ? nullptr : $p2
-  );
-  Napi::BigInt ptr2 = Napi::BigInt::New(env, (int64_t)$p2);
-  obj2.Set("$", ptr2);
-  
-  
-  return Napi::Number::New(env, static_cast<int32_t>(out));
-  
-};
-
-Napi::Value _vkImportSemaphoreWin32HandleKHR(const Napi::CallbackInfo& info) {
-  Napi::Env env = info.Env();
-  
-  _VkDevice* obj0;
-  VkDevice *$p0;
-  if (info[0].IsObject()) {
-    Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
-      return env.Undefined();
-    }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
-  } else if (info[0].IsNull()) {
-    $p0 = VK_NULL_HANDLE;
-  } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
-  }
-
-  _VkImportSemaphoreWin32HandleInfoKHR* obj1;
-  VkImportSemaphoreWin32HandleInfoKHR *$p1;
-  if (info[1].IsObject()) {
-    Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImportSemaphoreWin32HandleInfoKHR::constructor.Value()))) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkImportSemaphoreWin32HandleInfoKHR]");
-      return env.Undefined();
-    }
-    obj1 = Napi::ObjectWrap<_VkImportSemaphoreWin32HandleInfoKHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
-  } else if (info[1].IsNull()) {
-    $p1 = nullptr;
-  } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pImportSemaphoreWin32HandleInfo'").ThrowAsJavaScriptException();
-  }
-  int32_t out = $vkImportSemaphoreWin32HandleKHR(
-    info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
-    $p1
-  );
-  
-  
-  return Napi::Number::New(env, static_cast<int32_t>(out));
-  
-};
-
 Napi::Value _vkGetSemaphoreFdKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -13136,7 +12726,7 @@ Napi::Value _vkGetSemaphoreFdKHR(const Napi::CallbackInfo& info) {
   }
 
   _VkSemaphoreGetFdInfoKHR* obj1;
-  VkSemaphoreGetFdInfoKHR *$p1;
+  VkSemaphoreGetFdInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSemaphoreGetFdInfoKHR::constructor.Value()))) {
@@ -13153,7 +12743,7 @@ Napi::Value _vkGetSemaphoreFdKHR(const Napi::CallbackInfo& info) {
   }
 
   Napi::Object obj2;
-  int $p2;
+  int $p2 = 0;
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
@@ -13182,7 +12772,7 @@ Napi::Value _vkImportSemaphoreFdKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -13199,7 +12789,7 @@ Napi::Value _vkImportSemaphoreFdKHR(const Napi::CallbackInfo& info) {
   }
 
   _VkImportSemaphoreFdInfoKHR* obj1;
-  VkImportSemaphoreFdInfoKHR *$p1;
+  VkImportSemaphoreFdInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImportSemaphoreFdInfoKHR::constructor.Value()))) {
@@ -13228,7 +12818,7 @@ Napi::Value _vkGetPhysicalDeviceExternalFenceProperties(const Napi::CallbackInfo
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -13245,7 +12835,7 @@ Napi::Value _vkGetPhysicalDeviceExternalFenceProperties(const Napi::CallbackInfo
   }
 
   _VkPhysicalDeviceExternalFenceInfo* obj1;
-  VkPhysicalDeviceExternalFenceInfo *$p1;
+  VkPhysicalDeviceExternalFenceInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDeviceExternalFenceInfo::constructor.Value()))) {
@@ -13262,7 +12852,7 @@ Napi::Value _vkGetPhysicalDeviceExternalFenceProperties(const Napi::CallbackInfo
   }
 
   _VkExternalFenceProperties* obj2;
-  VkExternalFenceProperties *$p2;
+  VkExternalFenceProperties *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkExternalFenceProperties::constructor.Value()))) {
@@ -13288,122 +12878,11 @@ vkGetPhysicalDeviceExternalFenceProperties(
   
 };
 
-Napi::Value _vkGetFenceWin32HandleKHR(const Napi::CallbackInfo& info) {
-  Napi::Env env = info.Env();
-  
-  _VkDevice* obj0;
-  VkDevice *$p0;
-  if (info[0].IsObject()) {
-    Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
-      return env.Undefined();
-    }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
-  } else if (info[0].IsNull()) {
-    $p0 = VK_NULL_HANDLE;
-  } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
-  }
-
-  _VkFenceGetWin32HandleInfoKHR* obj1;
-  VkFenceGetWin32HandleInfoKHR *$p1;
-  if (info[1].IsObject()) {
-    Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkFenceGetWin32HandleInfoKHR::constructor.Value()))) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkFenceGetWin32HandleInfoKHR]");
-      return env.Undefined();
-    }
-    obj1 = Napi::ObjectWrap<_VkFenceGetWin32HandleInfoKHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
-  } else if (info[1].IsNull()) {
-    $p1 = nullptr;
-  } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pGetWin32HandleInfo'").ThrowAsJavaScriptException();
-  }
-
-  Napi::Object obj2;
-  HANDLE* $p2;
-  if (info[2].IsObject()) {
-    obj2 = info[2].As<Napi::Object>();
-    if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
-      return env.Undefined();
-    }
-    Napi::Value val = obj2.Get("$");
-    bool lossless = false;
-    $p2 = reinterpret_cast<HANDLE*>(val.As<Napi::BigInt>().Int64Value(&lossless));
-  } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pHandle'").ThrowAsJavaScriptException();
-    return env.Undefined();
-  }
-  int32_t out = $vkGetFenceWin32HandleKHR(
-    info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
-    $p1,
-    info[2].IsNull() ? nullptr : $p2
-  );
-  Napi::BigInt ptr2 = Napi::BigInt::New(env, (int64_t)$p2);
-  obj2.Set("$", ptr2);
-  
-  
-  return Napi::Number::New(env, static_cast<int32_t>(out));
-  
-};
-
-Napi::Value _vkImportFenceWin32HandleKHR(const Napi::CallbackInfo& info) {
-  Napi::Env env = info.Env();
-  
-  _VkDevice* obj0;
-  VkDevice *$p0;
-  if (info[0].IsObject()) {
-    Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
-      NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
-      return env.Undefined();
-    }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
-  } else if (info[0].IsNull()) {
-    $p0 = VK_NULL_HANDLE;
-  } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
-  }
-
-  _VkImportFenceWin32HandleInfoKHR* obj1;
-  VkImportFenceWin32HandleInfoKHR *$p1;
-  if (info[1].IsObject()) {
-    Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImportFenceWin32HandleInfoKHR::constructor.Value()))) {
-      NapiObjectTypeError(info[1], "argument 2", "[object VkImportFenceWin32HandleInfoKHR]");
-      return env.Undefined();
-    }
-    obj1 = Napi::ObjectWrap<_VkImportFenceWin32HandleInfoKHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
-  } else if (info[1].IsNull()) {
-    $p1 = nullptr;
-  } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pImportFenceWin32HandleInfo'").ThrowAsJavaScriptException();
-  }
-  int32_t out = $vkImportFenceWin32HandleKHR(
-    info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
-    $p1
-  );
-  
-  
-  return Napi::Number::New(env, static_cast<int32_t>(out));
-  
-};
-
 Napi::Value _vkGetFenceFdKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -13420,7 +12899,7 @@ Napi::Value _vkGetFenceFdKHR(const Napi::CallbackInfo& info) {
   }
 
   _VkFenceGetFdInfoKHR* obj1;
-  VkFenceGetFdInfoKHR *$p1;
+  VkFenceGetFdInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkFenceGetFdInfoKHR::constructor.Value()))) {
@@ -13437,7 +12916,7 @@ Napi::Value _vkGetFenceFdKHR(const Napi::CallbackInfo& info) {
   }
 
   Napi::Object obj2;
-  int $p2;
+  int $p2 = 0;
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
@@ -13466,7 +12945,7 @@ Napi::Value _vkImportFenceFdKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -13483,7 +12962,7 @@ Napi::Value _vkImportFenceFdKHR(const Napi::CallbackInfo& info) {
   }
 
   _VkImportFenceFdInfoKHR* obj1;
-  VkImportFenceFdInfoKHR *$p1;
+  VkImportFenceFdInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImportFenceFdInfoKHR::constructor.Value()))) {
@@ -13512,7 +12991,7 @@ Napi::Value _vkReleaseDisplayEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -13529,7 +13008,7 @@ Napi::Value _vkReleaseDisplayEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkDisplayKHR* obj1;
-  VkDisplayKHR *$p1;
+  VkDisplayKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDisplayKHR::constructor.Value()))) {
@@ -13558,7 +13037,7 @@ Napi::Value _vkDisplayPowerControlEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -13575,7 +13054,7 @@ Napi::Value _vkDisplayPowerControlEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkDisplayKHR* obj1;
-  VkDisplayKHR *$p1;
+  VkDisplayKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDisplayKHR::constructor.Value()))) {
@@ -13592,7 +13071,7 @@ Napi::Value _vkDisplayPowerControlEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkDisplayPowerInfoEXT* obj2;
-  VkDisplayPowerInfoEXT *$p2;
+  VkDisplayPowerInfoEXT *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDisplayPowerInfoEXT::constructor.Value()))) {
@@ -13622,7 +13101,7 @@ Napi::Value _vkRegisterDeviceEventEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -13639,7 +13118,7 @@ Napi::Value _vkRegisterDeviceEventEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkDeviceEventInfoEXT* obj1;
-  VkDeviceEventInfoEXT *$p1;
+  VkDeviceEventInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDeviceEventInfoEXT::constructor.Value()))) {
@@ -13657,7 +13136,7 @@ Napi::Value _vkRegisterDeviceEventEXT(const Napi::CallbackInfo& info) {
 
 
   _VkFence* obj3;
-  VkFence *$p3;
+  VkFence *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkFence::constructor.Value()))) {
@@ -13688,7 +13167,7 @@ Napi::Value _vkRegisterDisplayEventEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -13705,7 +13184,7 @@ Napi::Value _vkRegisterDisplayEventEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkDisplayKHR* obj1;
-  VkDisplayKHR *$p1;
+  VkDisplayKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDisplayKHR::constructor.Value()))) {
@@ -13722,7 +13201,7 @@ Napi::Value _vkRegisterDisplayEventEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkDisplayEventInfoEXT* obj2;
-  VkDisplayEventInfoEXT *$p2;
+  VkDisplayEventInfoEXT *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDisplayEventInfoEXT::constructor.Value()))) {
@@ -13740,7 +13219,7 @@ Napi::Value _vkRegisterDisplayEventEXT(const Napi::CallbackInfo& info) {
 
 
   _VkFence* obj4;
-  VkFence *$p4;
+  VkFence *$p4 = nullptr;
   if (info[4].IsObject()) {
     Napi::Object obj = info[4].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkFence::constructor.Value()))) {
@@ -13772,7 +13251,7 @@ Napi::Value _vkGetSwapchainCounterEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -13789,7 +13268,7 @@ Napi::Value _vkGetSwapchainCounterEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkSwapchainKHR* obj1;
-  VkSwapchainKHR *$p1;
+  VkSwapchainKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSwapchainKHR::constructor.Value()))) {
@@ -13808,7 +13287,7 @@ Napi::Value _vkGetSwapchainCounterEXT(const Napi::CallbackInfo& info) {
   int32_t $p2 = static_cast<int32_t>(info[2].As<Napi::Number>().Int64Value());
 
   Napi::Object obj3;
-  uint64_t $p3;
+  uint64_t $p3 = 0;
   if (info[3].IsObject()) {
     obj3 = info[3].As<Napi::Object>();
     if (!obj3.Has("$")) {
@@ -13839,7 +13318,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2EXT(const Napi::CallbackInfo
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -13856,7 +13335,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2EXT(const Napi::CallbackInfo
   }
 
   _VkSurfaceKHR* obj1;
-  VkSurfaceKHR *$p1;
+  VkSurfaceKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSurfaceKHR::constructor.Value()))) {
@@ -13873,7 +13352,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2EXT(const Napi::CallbackInfo
   }
 
   _VkSurfaceCapabilities2EXT* obj2;
-  VkSurfaceCapabilities2EXT *$p2;
+  VkSurfaceCapabilities2EXT *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSurfaceCapabilities2EXT::constructor.Value()))) {
@@ -13930,7 +13409,7 @@ Napi::Value _vkEnumeratePhysicalDeviceGroups(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkInstance* obj0;
-  VkInstance *$p0;
+  VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
@@ -13947,7 +13426,7 @@ Napi::Value _vkEnumeratePhysicalDeviceGroups(const Napi::CallbackInfo& info) {
   }
 
   Napi::Object obj1;
-  uint32_t $p1;
+  uint32_t $p1 = 0;
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
@@ -14019,7 +13498,7 @@ Napi::Value _vkGetDeviceGroupPeerMemoryFeatures(const Napi::CallbackInfo& info) 
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -14042,7 +13521,7 @@ Napi::Value _vkGetDeviceGroupPeerMemoryFeatures(const Napi::CallbackInfo& info) 
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
   Napi::Object obj4;
-  int32_t $p4;
+  int32_t $p4 = 0;
   if (info[4].IsObject()) {
     obj4 = info[4].As<Napi::Object>();
     if (!obj4.Has("$")) {
@@ -14073,7 +13552,7 @@ Napi::Value _vkBindBufferMemory2(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -14133,7 +13612,7 @@ Napi::Value _vkBindImageMemory2(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -14193,7 +13672,7 @@ Napi::Value _vkCmdSetDeviceMask(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -14224,7 +13703,7 @@ Napi::Value _vkGetDeviceGroupPresentCapabilitiesKHR(const Napi::CallbackInfo& in
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -14241,7 +13720,7 @@ Napi::Value _vkGetDeviceGroupPresentCapabilitiesKHR(const Napi::CallbackInfo& in
   }
 
   _VkDeviceGroupPresentCapabilitiesKHR* obj1;
-  VkDeviceGroupPresentCapabilitiesKHR *$p1;
+  VkDeviceGroupPresentCapabilitiesKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDeviceGroupPresentCapabilitiesKHR::constructor.Value()))) {
@@ -14279,7 +13758,7 @@ Napi::Value _vkGetDeviceGroupSurfacePresentModesKHR(const Napi::CallbackInfo& in
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -14296,7 +13775,7 @@ Napi::Value _vkGetDeviceGroupSurfacePresentModesKHR(const Napi::CallbackInfo& in
   }
 
   _VkSurfaceKHR* obj1;
-  VkSurfaceKHR *$p1;
+  VkSurfaceKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSurfaceKHR::constructor.Value()))) {
@@ -14313,7 +13792,7 @@ Napi::Value _vkGetDeviceGroupSurfacePresentModesKHR(const Napi::CallbackInfo& in
   }
 
   Napi::Object obj2;
-  int32_t $p2;
+  int32_t $p2 = 0;
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
@@ -14342,7 +13821,7 @@ Napi::Value _vkAcquireNextImage2KHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -14359,7 +13838,7 @@ Napi::Value _vkAcquireNextImage2KHR(const Napi::CallbackInfo& info) {
   }
 
   _VkAcquireNextImageInfoKHR* obj1;
-  VkAcquireNextImageInfoKHR *$p1;
+  VkAcquireNextImageInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkAcquireNextImageInfoKHR::constructor.Value()))) {
@@ -14376,7 +13855,7 @@ Napi::Value _vkAcquireNextImage2KHR(const Napi::CallbackInfo& info) {
   }
 
   Napi::Object obj2;
-  uint32_t $p2;
+  uint32_t $p2 = 0;
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
@@ -14405,7 +13884,7 @@ Napi::Value _vkCmdDispatchBase(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -14451,7 +13930,7 @@ Napi::Value _vkGetPhysicalDevicePresentRectanglesKHR(const Napi::CallbackInfo& i
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -14468,7 +13947,7 @@ Napi::Value _vkGetPhysicalDevicePresentRectanglesKHR(const Napi::CallbackInfo& i
   }
 
   _VkSurfaceKHR* obj1;
-  VkSurfaceKHR *$p1;
+  VkSurfaceKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSurfaceKHR::constructor.Value()))) {
@@ -14485,7 +13964,7 @@ Napi::Value _vkGetPhysicalDevicePresentRectanglesKHR(const Napi::CallbackInfo& i
   }
 
   Napi::Object obj2;
-  uint32_t $p2;
+  uint32_t $p2 = 0;
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
@@ -14571,7 +14050,7 @@ Napi::Value _vkCreateDescriptorUpdateTemplate(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -14588,7 +14067,7 @@ Napi::Value _vkCreateDescriptorUpdateTemplate(const Napi::CallbackInfo& info) {
   }
 
   _VkDescriptorUpdateTemplateCreateInfo* obj1;
-  VkDescriptorUpdateTemplateCreateInfo *$p1;
+  VkDescriptorUpdateTemplateCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDescriptorUpdateTemplateCreateInfo::constructor.Value()))) {
@@ -14606,7 +14085,7 @@ Napi::Value _vkCreateDescriptorUpdateTemplate(const Napi::CallbackInfo& info) {
 
 
   _VkDescriptorUpdateTemplate* obj3;
-  VkDescriptorUpdateTemplate *$p3;
+  VkDescriptorUpdateTemplate *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDescriptorUpdateTemplate::constructor.Value()))) {
@@ -14637,7 +14116,7 @@ Napi::Value _vkDestroyDescriptorUpdateTemplate(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -14654,7 +14133,7 @@ Napi::Value _vkDestroyDescriptorUpdateTemplate(const Napi::CallbackInfo& info) {
   }
 
   _VkDescriptorUpdateTemplate* obj1;
-  VkDescriptorUpdateTemplate *$p1;
+  VkDescriptorUpdateTemplate *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDescriptorUpdateTemplate::constructor.Value()))) {
@@ -14685,7 +14164,7 @@ Napi::Value _vkUpdateDescriptorSetWithTemplate(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -14702,7 +14181,7 @@ Napi::Value _vkUpdateDescriptorSetWithTemplate(const Napi::CallbackInfo& info) {
   }
 
   _VkDescriptorSet* obj1;
-  VkDescriptorSet *$p1;
+  VkDescriptorSet *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDescriptorSet::constructor.Value()))) {
@@ -14719,7 +14198,7 @@ Napi::Value _vkUpdateDescriptorSetWithTemplate(const Napi::CallbackInfo& info) {
   }
 
   _VkDescriptorUpdateTemplate* obj2;
-  VkDescriptorUpdateTemplate *$p2;
+  VkDescriptorUpdateTemplate *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDescriptorUpdateTemplate::constructor.Value()))) {
@@ -14735,7 +14214,7 @@ Napi::Value _vkUpdateDescriptorSetWithTemplate(const Napi::CallbackInfo& info) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'descriptorUpdateTemplate'").ThrowAsJavaScriptException();
   }
 
-  void* $p3;
+  void* $p3 = nullptr;
   if (info[3].IsArrayBuffer()) {
     Napi::ArrayBuffer buf = info[3].As<Napi::ArrayBuffer>();
     $p3 = buf.Data();
@@ -14759,7 +14238,7 @@ Napi::Value _vkCmdPushDescriptorSetWithTemplateKHR(const Napi::CallbackInfo& inf
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -14776,7 +14255,7 @@ Napi::Value _vkCmdPushDescriptorSetWithTemplateKHR(const Napi::CallbackInfo& inf
   }
 
   _VkDescriptorUpdateTemplate* obj1;
-  VkDescriptorUpdateTemplate *$p1;
+  VkDescriptorUpdateTemplate *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDescriptorUpdateTemplate::constructor.Value()))) {
@@ -14793,7 +14272,7 @@ Napi::Value _vkCmdPushDescriptorSetWithTemplateKHR(const Napi::CallbackInfo& inf
   }
 
   _VkPipelineLayout* obj2;
-  VkPipelineLayout *$p2;
+  VkPipelineLayout *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPipelineLayout::constructor.Value()))) {
@@ -14811,7 +14290,7 @@ Napi::Value _vkCmdPushDescriptorSetWithTemplateKHR(const Napi::CallbackInfo& inf
 
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
-  void* $p4;
+  void* $p4 = nullptr;
   if (info[4].IsArrayBuffer()) {
     Napi::ArrayBuffer buf = info[4].As<Napi::ArrayBuffer>();
     $p4 = buf.Data();
@@ -14836,7 +14315,7 @@ Napi::Value _vkSetHdrMetadataEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -14916,7 +14395,7 @@ Napi::Value _vkGetSwapchainStatusKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -14933,7 +14412,7 @@ Napi::Value _vkGetSwapchainStatusKHR(const Napi::CallbackInfo& info) {
   }
 
   _VkSwapchainKHR* obj1;
-  VkSwapchainKHR *$p1;
+  VkSwapchainKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSwapchainKHR::constructor.Value()))) {
@@ -14962,7 +14441,7 @@ Napi::Value _vkGetRefreshCycleDurationGOOGLE(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -14979,7 +14458,7 @@ Napi::Value _vkGetRefreshCycleDurationGOOGLE(const Napi::CallbackInfo& info) {
   }
 
   _VkSwapchainKHR* obj1;
-  VkSwapchainKHR *$p1;
+  VkSwapchainKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSwapchainKHR::constructor.Value()))) {
@@ -14996,7 +14475,7 @@ Napi::Value _vkGetRefreshCycleDurationGOOGLE(const Napi::CallbackInfo& info) {
   }
 
   _VkRefreshCycleDurationGOOGLE* obj2;
-  VkRefreshCycleDurationGOOGLE *$p2;
+  VkRefreshCycleDurationGOOGLE *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkRefreshCycleDurationGOOGLE::constructor.Value()))) {
@@ -15026,7 +14505,7 @@ Napi::Value _vkGetPastPresentationTimingGOOGLE(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -15043,7 +14522,7 @@ Napi::Value _vkGetPastPresentationTimingGOOGLE(const Napi::CallbackInfo& info) {
   }
 
   _VkSwapchainKHR* obj1;
-  VkSwapchainKHR *$p1;
+  VkSwapchainKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSwapchainKHR::constructor.Value()))) {
@@ -15060,7 +14539,7 @@ Napi::Value _vkGetPastPresentationTimingGOOGLE(const Napi::CallbackInfo& info) {
   }
 
   Napi::Object obj2;
-  uint32_t $p2;
+  uint32_t $p2 = 0;
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
@@ -15135,7 +14614,7 @@ Napi::Value _vkCmdSetViewportWScalingNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -15198,7 +14677,7 @@ Napi::Value _vkCmdSetDiscardRectangleEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -15261,7 +14740,7 @@ Napi::Value _vkCmdSetSampleLocationsEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -15278,7 +14757,7 @@ Napi::Value _vkCmdSetSampleLocationsEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkSampleLocationsInfoEXT* obj1;
-  VkSampleLocationsInfoEXT *$p1;
+  VkSampleLocationsInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSampleLocationsInfoEXT::constructor.Value()))) {
@@ -15307,7 +14786,7 @@ Napi::Value _vkGetPhysicalDeviceMultisamplePropertiesEXT(const Napi::CallbackInf
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -15326,7 +14805,7 @@ Napi::Value _vkGetPhysicalDeviceMultisamplePropertiesEXT(const Napi::CallbackInf
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
 
   _VkMultisamplePropertiesEXT* obj2;
-  VkMultisamplePropertiesEXT *$p2;
+  VkMultisamplePropertiesEXT *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkMultisamplePropertiesEXT::constructor.Value()))) {
@@ -15365,7 +14844,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2KHR(const Napi::CallbackInfo
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -15382,7 +14861,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2KHR(const Napi::CallbackInfo
   }
 
   _VkPhysicalDeviceSurfaceInfo2KHR* obj1;
-  VkPhysicalDeviceSurfaceInfo2KHR *$p1;
+  VkPhysicalDeviceSurfaceInfo2KHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDeviceSurfaceInfo2KHR::constructor.Value()))) {
@@ -15399,7 +14878,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2KHR(const Napi::CallbackInfo
   }
 
   _VkSurfaceCapabilities2KHR* obj2;
-  VkSurfaceCapabilities2KHR *$p2;
+  VkSurfaceCapabilities2KHR *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSurfaceCapabilities2KHR::constructor.Value()))) {
@@ -15465,7 +14944,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormats2KHR(const Napi::CallbackInfo& inf
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -15482,7 +14961,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormats2KHR(const Napi::CallbackInfo& inf
   }
 
   _VkPhysicalDeviceSurfaceInfo2KHR* obj1;
-  VkPhysicalDeviceSurfaceInfo2KHR *$p1;
+  VkPhysicalDeviceSurfaceInfo2KHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDeviceSurfaceInfo2KHR::constructor.Value()))) {
@@ -15499,7 +14978,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormats2KHR(const Napi::CallbackInfo& inf
   }
 
   Napi::Object obj2;
-  uint32_t $p2;
+  uint32_t $p2 = 0;
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
@@ -15578,7 +15057,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayProperties2KHR(const Napi::CallbackInfo& 
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -15595,7 +15074,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayProperties2KHR(const Napi::CallbackInfo& 
   }
 
   Napi::Object obj1;
-  uint32_t $p1;
+  uint32_t $p1 = 0;
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
@@ -15673,7 +15152,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlaneProperties2KHR(const Napi::CallbackI
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -15690,7 +15169,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlaneProperties2KHR(const Napi::CallbackI
   }
 
   Napi::Object obj1;
-  uint32_t $p1;
+  uint32_t $p1 = 0;
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
@@ -15768,7 +15247,7 @@ Napi::Value _vkGetDisplayModeProperties2KHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -15785,7 +15264,7 @@ Napi::Value _vkGetDisplayModeProperties2KHR(const Napi::CallbackInfo& info) {
   }
 
   _VkDisplayKHR* obj1;
-  VkDisplayKHR *$p1;
+  VkDisplayKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDisplayKHR::constructor.Value()))) {
@@ -15802,7 +15281,7 @@ Napi::Value _vkGetDisplayModeProperties2KHR(const Napi::CallbackInfo& info) {
   }
 
   Napi::Object obj2;
-  uint32_t $p2;
+  uint32_t $p2 = 0;
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
@@ -15881,7 +15360,7 @@ Napi::Value _vkGetDisplayPlaneCapabilities2KHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -15898,7 +15377,7 @@ Napi::Value _vkGetDisplayPlaneCapabilities2KHR(const Napi::CallbackInfo& info) {
   }
 
   _VkDisplayPlaneInfo2KHR* obj1;
-  VkDisplayPlaneInfo2KHR *$p1;
+  VkDisplayPlaneInfo2KHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDisplayPlaneInfo2KHR::constructor.Value()))) {
@@ -15915,7 +15394,7 @@ Napi::Value _vkGetDisplayPlaneCapabilities2KHR(const Napi::CallbackInfo& info) {
   }
 
   _VkDisplayPlaneCapabilities2KHR* obj2;
-  VkDisplayPlaneCapabilities2KHR *$p2;
+  VkDisplayPlaneCapabilities2KHR *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDisplayPlaneCapabilities2KHR::constructor.Value()))) {
@@ -16026,7 +15505,7 @@ Napi::Value _vkGetBufferMemoryRequirements2(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -16043,7 +15522,7 @@ Napi::Value _vkGetBufferMemoryRequirements2(const Napi::CallbackInfo& info) {
   }
 
   _VkBufferMemoryRequirementsInfo2* obj1;
-  VkBufferMemoryRequirementsInfo2 *$p1;
+  VkBufferMemoryRequirementsInfo2 *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBufferMemoryRequirementsInfo2::constructor.Value()))) {
@@ -16060,7 +15539,7 @@ Napi::Value _vkGetBufferMemoryRequirements2(const Napi::CallbackInfo& info) {
   }
 
   _VkMemoryRequirements2* obj2;
-  VkMemoryRequirements2 *$p2;
+  VkMemoryRequirements2 *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkMemoryRequirements2::constructor.Value()))) {
@@ -16099,7 +15578,7 @@ Napi::Value _vkGetImageMemoryRequirements2(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -16116,7 +15595,7 @@ Napi::Value _vkGetImageMemoryRequirements2(const Napi::CallbackInfo& info) {
   }
 
   _VkImageMemoryRequirementsInfo2* obj1;
-  VkImageMemoryRequirementsInfo2 *$p1;
+  VkImageMemoryRequirementsInfo2 *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImageMemoryRequirementsInfo2::constructor.Value()))) {
@@ -16133,7 +15612,7 @@ Napi::Value _vkGetImageMemoryRequirements2(const Napi::CallbackInfo& info) {
   }
 
   _VkMemoryRequirements2* obj2;
-  VkMemoryRequirements2 *$p2;
+  VkMemoryRequirements2 *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkMemoryRequirements2::constructor.Value()))) {
@@ -16172,7 +15651,7 @@ Napi::Value _vkGetImageSparseMemoryRequirements2(const Napi::CallbackInfo& info)
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -16189,7 +15668,7 @@ Napi::Value _vkGetImageSparseMemoryRequirements2(const Napi::CallbackInfo& info)
   }
 
   _VkImageSparseMemoryRequirementsInfo2* obj1;
-  VkImageSparseMemoryRequirementsInfo2 *$p1;
+  VkImageSparseMemoryRequirementsInfo2 *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImageSparseMemoryRequirementsInfo2::constructor.Value()))) {
@@ -16206,7 +15685,7 @@ Napi::Value _vkGetImageSparseMemoryRequirements2(const Napi::CallbackInfo& info)
   }
 
   Napi::Object obj2;
-  uint32_t $p2;
+  uint32_t $p2 = 0;
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
@@ -16285,7 +15764,7 @@ Napi::Value _vkCreateSamplerYcbcrConversion(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -16302,7 +15781,7 @@ Napi::Value _vkCreateSamplerYcbcrConversion(const Napi::CallbackInfo& info) {
   }
 
   _VkSamplerYcbcrConversionCreateInfo* obj1;
-  VkSamplerYcbcrConversionCreateInfo *$p1;
+  VkSamplerYcbcrConversionCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSamplerYcbcrConversionCreateInfo::constructor.Value()))) {
@@ -16320,7 +15799,7 @@ Napi::Value _vkCreateSamplerYcbcrConversion(const Napi::CallbackInfo& info) {
 
 
   _VkSamplerYcbcrConversion* obj3;
-  VkSamplerYcbcrConversion *$p3;
+  VkSamplerYcbcrConversion *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSamplerYcbcrConversion::constructor.Value()))) {
@@ -16351,7 +15830,7 @@ Napi::Value _vkDestroySamplerYcbcrConversion(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -16368,7 +15847,7 @@ Napi::Value _vkDestroySamplerYcbcrConversion(const Napi::CallbackInfo& info) {
   }
 
   _VkSamplerYcbcrConversion* obj1;
-  VkSamplerYcbcrConversion *$p1;
+  VkSamplerYcbcrConversion *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSamplerYcbcrConversion::constructor.Value()))) {
@@ -16399,7 +15878,7 @@ Napi::Value _vkGetDeviceQueue2(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -16416,7 +15895,7 @@ Napi::Value _vkGetDeviceQueue2(const Napi::CallbackInfo& info) {
   }
 
   _VkDeviceQueueInfo2* obj1;
-  VkDeviceQueueInfo2 *$p1;
+  VkDeviceQueueInfo2 *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDeviceQueueInfo2::constructor.Value()))) {
@@ -16433,7 +15912,7 @@ Napi::Value _vkGetDeviceQueue2(const Napi::CallbackInfo& info) {
   }
 
   _VkQueue* obj2;
-  VkQueue *$p2;
+  VkQueue *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkQueue::constructor.Value()))) {
@@ -16463,7 +15942,7 @@ Napi::Value _vkCreateValidationCacheEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -16480,7 +15959,7 @@ Napi::Value _vkCreateValidationCacheEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkValidationCacheCreateInfoEXT* obj1;
-  VkValidationCacheCreateInfoEXT *$p1;
+  VkValidationCacheCreateInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkValidationCacheCreateInfoEXT::constructor.Value()))) {
@@ -16498,7 +15977,7 @@ Napi::Value _vkCreateValidationCacheEXT(const Napi::CallbackInfo& info) {
 
 
   _VkValidationCacheEXT* obj3;
-  VkValidationCacheEXT *$p3;
+  VkValidationCacheEXT *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkValidationCacheEXT::constructor.Value()))) {
@@ -16529,7 +16008,7 @@ Napi::Value _vkDestroyValidationCacheEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -16546,7 +16025,7 @@ Napi::Value _vkDestroyValidationCacheEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkValidationCacheEXT* obj1;
-  VkValidationCacheEXT *$p1;
+  VkValidationCacheEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkValidationCacheEXT::constructor.Value()))) {
@@ -16577,7 +16056,7 @@ Napi::Value _vkGetValidationCacheDataEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -16594,7 +16073,7 @@ Napi::Value _vkGetValidationCacheDataEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkValidationCacheEXT* obj1;
-  VkValidationCacheEXT *$p1;
+  VkValidationCacheEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkValidationCacheEXT::constructor.Value()))) {
@@ -16611,7 +16090,7 @@ Napi::Value _vkGetValidationCacheDataEXT(const Napi::CallbackInfo& info) {
   }
 
   Napi::Object obj2;
-  size_t $p2;
+  size_t $p2 = 0;
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
@@ -16625,7 +16104,7 @@ Napi::Value _vkGetValidationCacheDataEXT(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  void* $p3;
+  void* $p3 = nullptr;
   if (info[3].IsArrayBuffer()) {
     Napi::ArrayBuffer buf = info[3].As<Napi::ArrayBuffer>();
     $p3 = buf.Data();
@@ -16651,7 +16130,7 @@ Napi::Value _vkMergeValidationCachesEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -16668,7 +16147,7 @@ Napi::Value _vkMergeValidationCachesEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkValidationCacheEXT* obj1;
-  VkValidationCacheEXT *$p1;
+  VkValidationCacheEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkValidationCacheEXT::constructor.Value()))) {
@@ -16720,7 +16199,7 @@ Napi::Value _vkGetDescriptorSetLayoutSupport(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -16737,7 +16216,7 @@ Napi::Value _vkGetDescriptorSetLayoutSupport(const Napi::CallbackInfo& info) {
   }
 
   _VkDescriptorSetLayoutCreateInfo* obj1;
-  VkDescriptorSetLayoutCreateInfo *$p1;
+  VkDescriptorSetLayoutCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDescriptorSetLayoutCreateInfo::constructor.Value()))) {
@@ -16754,7 +16233,7 @@ Napi::Value _vkGetDescriptorSetLayoutSupport(const Napi::CallbackInfo& info) {
   }
 
   _VkDescriptorSetLayoutSupport* obj2;
-  VkDescriptorSetLayoutSupport *$p2;
+  VkDescriptorSetLayoutSupport *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDescriptorSetLayoutSupport::constructor.Value()))) {
@@ -16784,7 +16263,7 @@ Napi::Value _vkGetShaderInfoAMD(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -16801,7 +16280,7 @@ Napi::Value _vkGetShaderInfoAMD(const Napi::CallbackInfo& info) {
   }
 
   _VkPipeline* obj1;
-  VkPipeline *$p1;
+  VkPipeline *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPipeline::constructor.Value()))) {
@@ -16822,7 +16301,7 @@ Napi::Value _vkGetShaderInfoAMD(const Napi::CallbackInfo& info) {
   VkShaderInfoTypeAMD $p3 = static_cast<VkShaderInfoTypeAMD>(info[3].As<Napi::Number>().Int64Value());
 
   Napi::Object obj4;
-  size_t $p4;
+  size_t $p4 = 0;
   if (info[4].IsObject()) {
     obj4 = info[4].As<Napi::Object>();
     if (!obj4.Has("$")) {
@@ -16836,7 +16315,7 @@ Napi::Value _vkGetShaderInfoAMD(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  void* $p5;
+  void* $p5 = nullptr;
   if (info[5].IsArrayBuffer()) {
     Napi::ArrayBuffer buf = info[5].As<Napi::ArrayBuffer>();
     $p5 = buf.Data();
@@ -16864,7 +16343,7 @@ Napi::Value _vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(const Napi::Callback
   Napi::Env env = info.Env();
   
   _VkPhysicalDevice* obj0;
-  VkPhysicalDevice *$p0;
+  VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
@@ -16881,7 +16360,7 @@ Napi::Value _vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(const Napi::Callback
   }
 
   Napi::Object obj1;
-  uint32_t $p1;
+  uint32_t $p1 = 0;
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
@@ -16926,7 +16405,7 @@ Napi::Value _vkGetCalibratedTimestampsEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -16989,7 +16468,7 @@ Napi::Value _vkGetCalibratedTimestampsEXT(const Napi::CallbackInfo& info) {
 
 
   Napi::Object obj4;
-  uint64_t $p4;
+  uint64_t $p4 = 0;
   if (info[4].IsObject()) {
     obj4 = info[4].As<Napi::Object>();
     if (!obj4.Has("$")) {
@@ -17021,7 +16500,7 @@ Napi::Value _vkSetDebugUtilsObjectNameEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -17038,7 +16517,7 @@ Napi::Value _vkSetDebugUtilsObjectNameEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkDebugUtilsObjectNameInfoEXT* obj1;
-  VkDebugUtilsObjectNameInfoEXT *$p1;
+  VkDebugUtilsObjectNameInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDebugUtilsObjectNameInfoEXT::constructor.Value()))) {
@@ -17067,7 +16546,7 @@ Napi::Value _vkSetDebugUtilsObjectTagEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -17084,7 +16563,7 @@ Napi::Value _vkSetDebugUtilsObjectTagEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkDebugUtilsObjectTagInfoEXT* obj1;
-  VkDebugUtilsObjectTagInfoEXT *$p1;
+  VkDebugUtilsObjectTagInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDebugUtilsObjectTagInfoEXT::constructor.Value()))) {
@@ -17113,7 +16592,7 @@ Napi::Value _vkQueueBeginDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkQueue* obj0;
-  VkQueue *$p0;
+  VkQueue *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkQueue::constructor.Value()))) {
@@ -17130,7 +16609,7 @@ Napi::Value _vkQueueBeginDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkDebugUtilsLabelEXT* obj1;
-  VkDebugUtilsLabelEXT *$p1;
+  VkDebugUtilsLabelEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDebugUtilsLabelEXT::constructor.Value()))) {
@@ -17159,7 +16638,7 @@ Napi::Value _vkQueueEndDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkQueue* obj0;
-  VkQueue *$p0;
+  VkQueue *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkQueue::constructor.Value()))) {
@@ -17187,7 +16666,7 @@ Napi::Value _vkQueueInsertDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkQueue* obj0;
-  VkQueue *$p0;
+  VkQueue *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkQueue::constructor.Value()))) {
@@ -17204,7 +16683,7 @@ Napi::Value _vkQueueInsertDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkDebugUtilsLabelEXT* obj1;
-  VkDebugUtilsLabelEXT *$p1;
+  VkDebugUtilsLabelEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDebugUtilsLabelEXT::constructor.Value()))) {
@@ -17233,7 +16712,7 @@ Napi::Value _vkCmdBeginDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -17250,7 +16729,7 @@ Napi::Value _vkCmdBeginDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkDebugUtilsLabelEXT* obj1;
-  VkDebugUtilsLabelEXT *$p1;
+  VkDebugUtilsLabelEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDebugUtilsLabelEXT::constructor.Value()))) {
@@ -17279,7 +16758,7 @@ Napi::Value _vkCmdEndDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -17307,7 +16786,7 @@ Napi::Value _vkCmdInsertDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -17324,7 +16803,7 @@ Napi::Value _vkCmdInsertDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkDebugUtilsLabelEXT* obj1;
-  VkDebugUtilsLabelEXT *$p1;
+  VkDebugUtilsLabelEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDebugUtilsLabelEXT::constructor.Value()))) {
@@ -17353,7 +16832,7 @@ Napi::Value _vkCreateDebugUtilsMessengerEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkInstance* obj0;
-  VkInstance *$p0;
+  VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
@@ -17370,7 +16849,7 @@ Napi::Value _vkCreateDebugUtilsMessengerEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkDebugUtilsMessengerCreateInfoEXT* obj1;
-  VkDebugUtilsMessengerCreateInfoEXT *$p1;
+  VkDebugUtilsMessengerCreateInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDebugUtilsMessengerCreateInfoEXT::constructor.Value()))) {
@@ -17388,7 +16867,7 @@ Napi::Value _vkCreateDebugUtilsMessengerEXT(const Napi::CallbackInfo& info) {
 
 
   _VkDebugUtilsMessengerEXT* obj3;
-  VkDebugUtilsMessengerEXT *$p3;
+  VkDebugUtilsMessengerEXT *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDebugUtilsMessengerEXT::constructor.Value()))) {
@@ -17419,7 +16898,7 @@ Napi::Value _vkDestroyDebugUtilsMessengerEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkInstance* obj0;
-  VkInstance *$p0;
+  VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
@@ -17436,7 +16915,7 @@ Napi::Value _vkDestroyDebugUtilsMessengerEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkDebugUtilsMessengerEXT* obj1;
-  VkDebugUtilsMessengerEXT *$p1;
+  VkDebugUtilsMessengerEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDebugUtilsMessengerEXT::constructor.Value()))) {
@@ -17467,7 +16946,7 @@ Napi::Value _vkSubmitDebugUtilsMessageEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkInstance* obj0;
-  VkInstance *$p0;
+  VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
@@ -17488,7 +16967,7 @@ Napi::Value _vkSubmitDebugUtilsMessageEXT(const Napi::CallbackInfo& info) {
   int32_t $p2 = static_cast<int32_t>(info[2].As<Napi::Number>().Int64Value());
 
   _VkDebugUtilsMessengerCallbackDataEXT* obj3;
-  VkDebugUtilsMessengerCallbackDataEXT *$p3;
+  VkDebugUtilsMessengerCallbackDataEXT *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDebugUtilsMessengerCallbackDataEXT::constructor.Value()))) {
@@ -17519,7 +16998,7 @@ Napi::Value _vkGetMemoryHostPointerPropertiesEXT(const Napi::CallbackInfo& info)
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -17537,7 +17016,7 @@ Napi::Value _vkGetMemoryHostPointerPropertiesEXT(const Napi::CallbackInfo& info)
 
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
 
-  void* $p2;
+  void* $p2 = nullptr;
   if (info[2].IsArrayBuffer()) {
     Napi::ArrayBuffer buf = info[2].As<Napi::ArrayBuffer>();
     $p2 = buf.Data();
@@ -17547,7 +17026,7 @@ Napi::Value _vkGetMemoryHostPointerPropertiesEXT(const Napi::CallbackInfo& info)
   }
 
   _VkMemoryHostPointerPropertiesEXT* obj3;
-  VkMemoryHostPointerPropertiesEXT *$p3;
+  VkMemoryHostPointerPropertiesEXT *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkMemoryHostPointerPropertiesEXT::constructor.Value()))) {
@@ -17578,7 +17057,7 @@ Napi::Value _vkCmdWriteBufferMarkerAMD(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -17597,7 +17076,7 @@ Napi::Value _vkCmdWriteBufferMarkerAMD(const Napi::CallbackInfo& info) {
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
 
   _VkBuffer* obj2;
-  VkBuffer *$p2;
+  VkBuffer *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -17633,7 +17112,7 @@ Napi::Value _vkCreateRenderPass2KHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -17650,7 +17129,7 @@ Napi::Value _vkCreateRenderPass2KHR(const Napi::CallbackInfo& info) {
   }
 
   _VkRenderPassCreateInfo2KHR* obj1;
-  VkRenderPassCreateInfo2KHR *$p1;
+  VkRenderPassCreateInfo2KHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkRenderPassCreateInfo2KHR::constructor.Value()))) {
@@ -17668,7 +17147,7 @@ Napi::Value _vkCreateRenderPass2KHR(const Napi::CallbackInfo& info) {
 
 
   _VkRenderPass* obj3;
-  VkRenderPass *$p3;
+  VkRenderPass *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkRenderPass::constructor.Value()))) {
@@ -17699,7 +17178,7 @@ Napi::Value _vkCmdBeginRenderPass2KHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -17716,7 +17195,7 @@ Napi::Value _vkCmdBeginRenderPass2KHR(const Napi::CallbackInfo& info) {
   }
 
   _VkRenderPassBeginInfo* obj1;
-  VkRenderPassBeginInfo *$p1;
+  VkRenderPassBeginInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkRenderPassBeginInfo::constructor.Value()))) {
@@ -17733,7 +17212,7 @@ Napi::Value _vkCmdBeginRenderPass2KHR(const Napi::CallbackInfo& info) {
   }
 
   _VkSubpassBeginInfoKHR* obj2;
-  VkSubpassBeginInfoKHR *$p2;
+  VkSubpassBeginInfoKHR *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSubpassBeginInfoKHR::constructor.Value()))) {
@@ -17763,7 +17242,7 @@ Napi::Value _vkCmdNextSubpass2KHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -17780,7 +17259,7 @@ Napi::Value _vkCmdNextSubpass2KHR(const Napi::CallbackInfo& info) {
   }
 
   _VkSubpassBeginInfoKHR* obj1;
-  VkSubpassBeginInfoKHR *$p1;
+  VkSubpassBeginInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSubpassBeginInfoKHR::constructor.Value()))) {
@@ -17797,7 +17276,7 @@ Napi::Value _vkCmdNextSubpass2KHR(const Napi::CallbackInfo& info) {
   }
 
   _VkSubpassEndInfoKHR* obj2;
-  VkSubpassEndInfoKHR *$p2;
+  VkSubpassEndInfoKHR *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSubpassEndInfoKHR::constructor.Value()))) {
@@ -17827,7 +17306,7 @@ Napi::Value _vkCmdEndRenderPass2KHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -17844,7 +17323,7 @@ Napi::Value _vkCmdEndRenderPass2KHR(const Napi::CallbackInfo& info) {
   }
 
   _VkSubpassEndInfoKHR* obj1;
-  VkSubpassEndInfoKHR *$p1;
+  VkSubpassEndInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkSubpassEndInfoKHR::constructor.Value()))) {
@@ -17873,7 +17352,7 @@ Napi::Value _vkCmdDrawIndirectCountKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -17890,7 +17369,7 @@ Napi::Value _vkCmdDrawIndirectCountKHR(const Napi::CallbackInfo& info) {
   }
 
   _VkBuffer* obj1;
-  VkBuffer *$p1;
+  VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -17909,7 +17388,7 @@ Napi::Value _vkCmdDrawIndirectCountKHR(const Napi::CallbackInfo& info) {
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
 
   _VkBuffer* obj3;
-  VkBuffer *$p3;
+  VkBuffer *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -17949,7 +17428,7 @@ Napi::Value _vkCmdDrawIndexedIndirectCountKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -17966,7 +17445,7 @@ Napi::Value _vkCmdDrawIndexedIndirectCountKHR(const Napi::CallbackInfo& info) {
   }
 
   _VkBuffer* obj1;
-  VkBuffer *$p1;
+  VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -17985,7 +17464,7 @@ Napi::Value _vkCmdDrawIndexedIndirectCountKHR(const Napi::CallbackInfo& info) {
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
 
   _VkBuffer* obj3;
-  VkBuffer *$p3;
+  VkBuffer *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -18025,7 +17504,7 @@ Napi::Value _vkCmdSetCheckpointNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -18041,7 +17520,7 @@ Napi::Value _vkCmdSetCheckpointNV(const Napi::CallbackInfo& info) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
   }
 
-  void* $p1;
+  void* $p1 = nullptr;
   if (info[1].IsArrayBuffer()) {
     Napi::ArrayBuffer buf = info[1].As<Napi::ArrayBuffer>();
     $p1 = buf.Data();
@@ -18063,7 +17542,7 @@ Napi::Value _vkGetQueueCheckpointDataNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkQueue* obj0;
-  VkQueue *$p0;
+  VkQueue *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkQueue::constructor.Value()))) {
@@ -18080,7 +17559,7 @@ Napi::Value _vkGetQueueCheckpointDataNV(const Napi::CallbackInfo& info) {
   }
 
   Napi::Object obj1;
-  uint32_t $p1;
+  uint32_t $p1 = 0;
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
@@ -18151,7 +17630,7 @@ Napi::Value _vkCmdBindTransformFeedbackBuffersEXT(const Napi::CallbackInfo& info
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -18239,7 +17718,7 @@ Napi::Value _vkCmdBeginTransformFeedbackEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -18310,7 +17789,7 @@ Napi::Value _vkCmdEndTransformFeedbackEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -18381,7 +17860,7 @@ Napi::Value _vkCmdBeginQueryIndexedEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -18398,7 +17877,7 @@ Napi::Value _vkCmdBeginQueryIndexedEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkQueryPool* obj1;
-  VkQueryPool *$p1;
+  VkQueryPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkQueryPool::constructor.Value()))) {
@@ -18436,7 +17915,7 @@ Napi::Value _vkCmdEndQueryIndexedEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -18453,7 +17932,7 @@ Napi::Value _vkCmdEndQueryIndexedEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkQueryPool* obj1;
-  VkQueryPool *$p1;
+  VkQueryPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkQueryPool::constructor.Value()))) {
@@ -18488,7 +17967,7 @@ Napi::Value _vkCmdDrawIndirectByteCountEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -18509,7 +17988,7 @@ Napi::Value _vkCmdDrawIndirectByteCountEXT(const Napi::CallbackInfo& info) {
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   _VkBuffer* obj3;
-  VkBuffer *$p3;
+  VkBuffer *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -18549,7 +18028,7 @@ Napi::Value _vkCmdSetExclusiveScissorNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -18612,7 +18091,7 @@ Napi::Value _vkCmdBindShadingRateImageNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -18629,7 +18108,7 @@ Napi::Value _vkCmdBindShadingRateImageNV(const Napi::CallbackInfo& info) {
   }
 
   _VkImageView* obj1;
-  VkImageView *$p1;
+  VkImageView *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImageView::constructor.Value()))) {
@@ -18661,7 +18140,7 @@ Napi::Value _vkCmdSetViewportShadingRatePaletteNV(const Napi::CallbackInfo& info
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -18724,7 +18203,7 @@ Napi::Value _vkCmdSetCoarseSampleOrderNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -18787,7 +18266,7 @@ Napi::Value _vkCmdDrawMeshTasksNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -18821,7 +18300,7 @@ Napi::Value _vkCmdDrawMeshTasksIndirectNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -18838,7 +18317,7 @@ Napi::Value _vkCmdDrawMeshTasksIndirectNV(const Napi::CallbackInfo& info) {
   }
 
   _VkBuffer* obj1;
-  VkBuffer *$p1;
+  VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -18876,7 +18355,7 @@ Napi::Value _vkCmdDrawMeshTasksIndirectCountNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -18893,7 +18372,7 @@ Napi::Value _vkCmdDrawMeshTasksIndirectCountNV(const Napi::CallbackInfo& info) {
   }
 
   _VkBuffer* obj1;
-  VkBuffer *$p1;
+  VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -18912,7 +18391,7 @@ Napi::Value _vkCmdDrawMeshTasksIndirectCountNV(const Napi::CallbackInfo& info) {
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
 
   _VkBuffer* obj3;
-  VkBuffer *$p3;
+  VkBuffer *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -18952,7 +18431,7 @@ Napi::Value _vkCompileDeferredNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -18969,7 +18448,7 @@ Napi::Value _vkCompileDeferredNV(const Napi::CallbackInfo& info) {
   }
 
   _VkPipeline* obj1;
-  VkPipeline *$p1;
+  VkPipeline *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPipeline::constructor.Value()))) {
@@ -19001,7 +18480,7 @@ Napi::Value _vkCreateAccelerationStructureNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -19018,7 +18497,7 @@ Napi::Value _vkCreateAccelerationStructureNV(const Napi::CallbackInfo& info) {
   }
 
   _VkAccelerationStructureCreateInfoNV* obj1;
-  VkAccelerationStructureCreateInfoNV *$p1;
+  VkAccelerationStructureCreateInfoNV *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkAccelerationStructureCreateInfoNV::constructor.Value()))) {
@@ -19036,7 +18515,7 @@ Napi::Value _vkCreateAccelerationStructureNV(const Napi::CallbackInfo& info) {
 
 
   _VkAccelerationStructureNV* obj3;
-  VkAccelerationStructureNV *$p3;
+  VkAccelerationStructureNV *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkAccelerationStructureNV::constructor.Value()))) {
@@ -19067,7 +18546,7 @@ Napi::Value _vkDestroyAccelerationStructureNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -19084,7 +18563,7 @@ Napi::Value _vkDestroyAccelerationStructureNV(const Napi::CallbackInfo& info) {
   }
 
   _VkAccelerationStructureNV* obj1;
-  VkAccelerationStructureNV *$p1;
+  VkAccelerationStructureNV *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkAccelerationStructureNV::constructor.Value()))) {
@@ -19115,7 +18594,7 @@ Napi::Value _vkGetAccelerationStructureMemoryRequirementsNV(const Napi::Callback
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -19132,7 +18611,7 @@ Napi::Value _vkGetAccelerationStructureMemoryRequirementsNV(const Napi::Callback
   }
 
   _VkAccelerationStructureMemoryRequirementsInfoNV* obj1;
-  VkAccelerationStructureMemoryRequirementsInfoNV *$p1;
+  VkAccelerationStructureMemoryRequirementsInfoNV *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkAccelerationStructureMemoryRequirementsInfoNV::constructor.Value()))) {
@@ -19149,7 +18628,7 @@ Napi::Value _vkGetAccelerationStructureMemoryRequirementsNV(const Napi::Callback
   }
 
   _VkMemoryRequirements2KHR* obj2;
-  VkMemoryRequirements2KHR *$p2;
+  VkMemoryRequirements2KHR *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkMemoryRequirements2KHR::constructor.Value()))) {
@@ -19188,7 +18667,7 @@ Napi::Value _vkBindAccelerationStructureMemoryNV(const Napi::CallbackInfo& info)
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -19248,7 +18727,7 @@ Napi::Value _vkCmdCopyAccelerationStructureNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -19265,7 +18744,7 @@ Napi::Value _vkCmdCopyAccelerationStructureNV(const Napi::CallbackInfo& info) {
   }
 
   _VkAccelerationStructureNV* obj1;
-  VkAccelerationStructureNV *$p1;
+  VkAccelerationStructureNV *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkAccelerationStructureNV::constructor.Value()))) {
@@ -19282,7 +18761,7 @@ Napi::Value _vkCmdCopyAccelerationStructureNV(const Napi::CallbackInfo& info) {
   }
 
   _VkAccelerationStructureNV* obj2;
-  VkAccelerationStructureNV *$p2;
+  VkAccelerationStructureNV *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkAccelerationStructureNV::constructor.Value()))) {
@@ -19315,7 +18794,7 @@ Napi::Value _vkCmdWriteAccelerationStructuresPropertiesNV(const Napi::CallbackIn
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -19355,7 +18834,7 @@ Napi::Value _vkCmdWriteAccelerationStructuresPropertiesNV(const Napi::CallbackIn
   VkQueryType $p3 = static_cast<VkQueryType>(info[3].As<Napi::Number>().Int64Value());
 
   _VkQueryPool* obj4;
-  VkQueryPool *$p4;
+  VkQueryPool *$p4 = nullptr;
   if (info[4].IsObject()) {
     Napi::Object obj = info[4].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkQueryPool::constructor.Value()))) {
@@ -19390,7 +18869,7 @@ Napi::Value _vkCmdBuildAccelerationStructureNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -19407,7 +18886,7 @@ Napi::Value _vkCmdBuildAccelerationStructureNV(const Napi::CallbackInfo& info) {
   }
 
   _VkAccelerationStructureInfoNV* obj1;
-  VkAccelerationStructureInfoNV *$p1;
+  VkAccelerationStructureInfoNV *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkAccelerationStructureInfoNV::constructor.Value()))) {
@@ -19424,7 +18903,7 @@ Napi::Value _vkCmdBuildAccelerationStructureNV(const Napi::CallbackInfo& info) {
   }
 
   _VkBuffer* obj2;
-  VkBuffer *$p2;
+  VkBuffer *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -19445,7 +18924,7 @@ Napi::Value _vkCmdBuildAccelerationStructureNV(const Napi::CallbackInfo& info) {
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
 
   _VkAccelerationStructureNV* obj5;
-  VkAccelerationStructureNV *$p5;
+  VkAccelerationStructureNV *$p5 = nullptr;
   if (info[5].IsObject()) {
     Napi::Object obj = info[5].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkAccelerationStructureNV::constructor.Value()))) {
@@ -19462,7 +18941,7 @@ Napi::Value _vkCmdBuildAccelerationStructureNV(const Napi::CallbackInfo& info) {
   }
 
   _VkAccelerationStructureNV* obj6;
-  VkAccelerationStructureNV *$p6;
+  VkAccelerationStructureNV *$p6 = nullptr;
   if (info[6].IsObject()) {
     Napi::Object obj = info[6].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkAccelerationStructureNV::constructor.Value()))) {
@@ -19479,7 +18958,7 @@ Napi::Value _vkCmdBuildAccelerationStructureNV(const Napi::CallbackInfo& info) {
   }
 
   _VkBuffer* obj7;
-  VkBuffer *$p7;
+  VkBuffer *$p7 = nullptr;
   if (info[7].IsObject()) {
     Napi::Object obj = info[7].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -19517,7 +18996,7 @@ Napi::Value _vkCmdTraceRaysNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkCommandBuffer* obj0;
-  VkCommandBuffer *$p0;
+  VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
@@ -19534,7 +19013,7 @@ Napi::Value _vkCmdTraceRaysNV(const Napi::CallbackInfo& info) {
   }
 
   _VkBuffer* obj1;
-  VkBuffer *$p1;
+  VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -19553,7 +19032,7 @@ Napi::Value _vkCmdTraceRaysNV(const Napi::CallbackInfo& info) {
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
 
   _VkBuffer* obj3;
-  VkBuffer *$p3;
+  VkBuffer *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -19574,7 +19053,7 @@ Napi::Value _vkCmdTraceRaysNV(const Napi::CallbackInfo& info) {
   uint64_t $p5 = static_cast<uint64_t>(info[5].As<Napi::Number>().Int64Value());
 
   _VkBuffer* obj6;
-  VkBuffer *$p6;
+  VkBuffer *$p6 = nullptr;
   if (info[6].IsObject()) {
     Napi::Object obj = info[6].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -19595,7 +19074,7 @@ Napi::Value _vkCmdTraceRaysNV(const Napi::CallbackInfo& info) {
   uint64_t $p8 = static_cast<uint64_t>(info[8].As<Napi::Number>().Int64Value());
 
   _VkBuffer* obj9;
-  VkBuffer *$p9;
+  VkBuffer *$p9 = nullptr;
   if (info[9].IsObject()) {
     Napi::Object obj = info[9].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
@@ -19647,7 +19126,7 @@ Napi::Value _vkGetRayTracingShaderGroupHandlesNV(const Napi::CallbackInfo& info)
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -19664,7 +19143,7 @@ Napi::Value _vkGetRayTracingShaderGroupHandlesNV(const Napi::CallbackInfo& info)
   }
 
   _VkPipeline* obj1;
-  VkPipeline *$p1;
+  VkPipeline *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPipeline::constructor.Value()))) {
@@ -19686,7 +19165,7 @@ Napi::Value _vkGetRayTracingShaderGroupHandlesNV(const Napi::CallbackInfo& info)
 
   size_t $p4 = static_cast<size_t>(info[4].As<Napi::Number>().Int64Value());
 
-  void* $p5;
+  void* $p5 = nullptr;
   if (info[5].IsArrayBuffer()) {
     Napi::ArrayBuffer buf = info[5].As<Napi::ArrayBuffer>();
     $p5 = buf.Data();
@@ -19712,7 +19191,7 @@ Napi::Value _vkGetAccelerationStructureHandleNV(const Napi::CallbackInfo& info) 
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -19729,7 +19208,7 @@ Napi::Value _vkGetAccelerationStructureHandleNV(const Napi::CallbackInfo& info) 
   }
 
   _VkAccelerationStructureNV* obj1;
-  VkAccelerationStructureNV *$p1;
+  VkAccelerationStructureNV *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkAccelerationStructureNV::constructor.Value()))) {
@@ -19747,7 +19226,7 @@ Napi::Value _vkGetAccelerationStructureHandleNV(const Napi::CallbackInfo& info) 
 
   size_t $p2 = static_cast<size_t>(info[2].As<Napi::Number>().Int64Value());
 
-  void* $p3;
+  void* $p3 = nullptr;
   if (info[3].IsArrayBuffer()) {
     Napi::ArrayBuffer buf = info[3].As<Napi::ArrayBuffer>();
     $p3 = buf.Data();
@@ -19771,7 +19250,7 @@ Napi::Value _vkCreateRayTracingPipelinesNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -19788,7 +19267,7 @@ Napi::Value _vkCreateRayTracingPipelinesNV(const Napi::CallbackInfo& info) {
   }
 
   _VkPipelineCache* obj1;
-  VkPipelineCache *$p1;
+  VkPipelineCache *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkPipelineCache::constructor.Value()))) {
@@ -19881,7 +19360,7 @@ Napi::Value _vkGetImageDrmFormatModifierPropertiesEXT(const Napi::CallbackInfo& 
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -19898,7 +19377,7 @@ Napi::Value _vkGetImageDrmFormatModifierPropertiesEXT(const Napi::CallbackInfo& 
   }
 
   _VkImage* obj1;
-  VkImage *$p1;
+  VkImage *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
@@ -19915,7 +19394,7 @@ Napi::Value _vkGetImageDrmFormatModifierPropertiesEXT(const Napi::CallbackInfo& 
   }
 
   _VkImageDrmFormatModifierPropertiesEXT* obj2;
-  VkImageDrmFormatModifierPropertiesEXT *$p2;
+  VkImageDrmFormatModifierPropertiesEXT *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkImageDrmFormatModifierPropertiesEXT::constructor.Value()))) {
@@ -19945,7 +19424,7 @@ Napi::Value _vkGetBufferDeviceAddressEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
   _VkDevice* obj0;
-  VkDevice *$p0;
+  VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
@@ -19962,7 +19441,7 @@ Napi::Value _vkGetBufferDeviceAddressEXT(const Napi::CallbackInfo& info) {
   }
 
   _VkBufferDeviceAddressInfoEXT* obj1;
-  VkBufferDeviceAddressInfoEXT *$p1;
+  VkBufferDeviceAddressInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
     if (!(obj.InstanceOf(_VkBufferDeviceAddressInfoEXT::constructor.Value()))) {

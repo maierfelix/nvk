@@ -15,7 +15,7 @@ import {
   getAutoStructureType,
   getNapiTypedArrayName,
   isReferenceableMember,
-  isWin32SupportedExtension
+  isCurrentPlatformSupportedExtension
 } from "../utils";
 
 let ast = null;
@@ -517,16 +517,18 @@ function processFlushSourceSetter(struct, member) {
     let out = `
     Napi::Object obj = value.As<Napi::Object>();
     VkStructureType sType = GetStructureTypeFromObject(obj);`;
-    extensions.map((extensionName, index) => {
+    let index = 0;
+    extensions.map((extensionName) => {
       let structExt = getNodeByName(extensionName, ast);
       if (!structExt || !structExt.sType) warn(`Cannot resolve struct by extension name '${extensionName}'`);
-      if (structExt.extension && !isWin32SupportedExtension(structExt.extension.platform)) return;
+      if (structExt.extension && !isCurrentPlatformSupportedExtension(structExt.extension.platform)) return;
       out += `
     ${index <= 0 ? "if" : "else if"} (sType == ${structExt.sType}) {
       _${structExt.name}* structExt = Napi::ObjectWrap<_${structExt.name}>::Unwrap(obj);
       if (!structExt->flush()) return false;
     }
       `;
+      index++;
     });
     return out;
   }
@@ -711,7 +713,7 @@ function processHeapVectorDeallocator(member) {
   let type = getHeaderHeapVectorType(member);
   if (member.rawType === "const char * const*") {
     out += `
-  for (int ii = 0; ii < v${ member.name }->size(); ++ii) {
+  for (unsigned int ii = 0; ii < v${ member.name }->size(); ++ii) {
     delete ((char*) v${ member.name }->at(ii));
   };`;
   }

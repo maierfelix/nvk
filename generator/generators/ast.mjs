@@ -29,6 +29,7 @@ let TYPES = {
   HANDLE: uidx++,
   ENUM: uidx++,
   ENUM_MEMBER: uidx++,
+  PLATFORM_INCLUDE: uidx++,
   ENUM_STRING: uidx++,
   COMMAND: uidx++,
   COMMAND_MEMBER: uidx++,
@@ -312,7 +313,7 @@ function parseEnumMember(parent, child) {
     value = formatIntToHex(pos);
   }
   if (Number.isNaN(parsed) || isFloat) {
-    value = `(__int32)${value}`;
+    value = `(int32_t)${value}`;
   }
 
   let out = {
@@ -679,6 +680,25 @@ export default function({ xmlInput, version, docs } = _) {
       name: "VK_NULL_HANDLE"
     });
     out.push(ast);
+  }
+  // platform includes
+  {
+    let results = [];
+    let includes = [];
+    findXMLElements(obj, "platforms", results);
+    results[0].elements.map(child => {
+      let {attributes} = child;
+      let {name, protect, comment} = attributes;
+      includes.push({
+        kind: "PLATFORM_INCLUDE",
+        platform: name,
+        include: protect,
+        description: comment
+      });
+    });
+    includes.map(incl => {
+      out.push(incl);
+    });
   }
   // enums
   if (true) {

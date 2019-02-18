@@ -2,10 +2,11 @@
   "variables": {
     "root": "../..",
     "platform": "<(OS)",
-    "vkSDK": "C:/VulkanSDK/1.1.97.0"
+    "vkSDK": "/media/user/Acer/Users/User/Desktop/lxss-shared/vulkan/1.1.97.0/x86_64/../../1.1.97.9/x86_64"
   },
   "conditions": [
     [ "platform == 'win'", { "variables": { "platform": "win" } } ],
+    [ "platform == 'linux'", { "variables": { "platform": "linux" } } ],
     [ "platform == 'mac'", { "variables": { "platform": "darwin" } } ]
   ],
   "targets": [
@@ -15,7 +16,6 @@
       "conditions": []
     },
     {
-      "target_name": "addon",
       "sources": [
         "./src/index.cpp",
 "./src/source.cpp"
@@ -23,16 +23,17 @@
       "include_dirs": [
         "<!@(node -p \"require('node-addon-api').include\")",
         "<(root)/lib/include/",
-        "<(vkSDK)/Include"
+        "<(vkSDK)/include"
       ],
       "library_dirs": [
         "<(root)/lib/<(platform)/<(target_arch)/GLFW",
-        "<(vkSDK)/Lib"
+        "<(vkSDK)/lib"
       ],
       "conditions": [
         [
           "OS=='win'",
           {
+            "target_name": "addon-win32",
             "cflags": [
               "-stdlib=libstdc++"
             ],
@@ -69,6 +70,38 @@
                   "../@PROJECT_SOURCE_DIR@/lib/<(platform)/<(target_arch)",
                 ]
               }
+            }
+          },
+          "OS=='linux'",
+          {
+            "target_name": "addon-linux",
+            "cflags": [
+              "-std=c++11",
+              "-fexceptions",
+              "-Wno-switch",
+              "-Wno-unused",
+              "-Wno-uninitialized",
+            ],
+            "cflags_cc": [
+              "-std=c++11",
+              "-fexceptions",
+              "-Wno-switch",
+              "-Wno-unused",
+              "-Wno-uninitialized"
+            ],
+            "link_settings": {
+              "libraries": [
+                "-lglfw3",
+                "-lvulkan",
+                "-lXrandr",
+                "-lXi",
+                "-lX11",
+                "-lXxf86vm",
+                "-lXinerama",
+                "-lXcursor",
+                "-ldl",
+                "-pthread"
+              ]
             }
           }
         ]

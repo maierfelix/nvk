@@ -15,7 +15,7 @@ nunjucks.configure({ autoescape: true });
 
 function getEnumType(enu) {
   if (enu.type === "ENUM_STRINGS") return `std::string`;
-  return `__int32`;
+  return `int32_t`;
 };
 
 function getEnumMemberValue(member) {
@@ -29,7 +29,7 @@ function getEnumNapiValue(enu) {
     enu.type === "BITMASK" ||
     enu.type === "UNKNOWN"
   ) {
-    return `Napi::Number::New(env, static_cast<__int32>(it->second))`;
+    return `Napi::Number::New(env, static_cast<int32_t>(it->second))`;
   }
   else if (enu.type === "ENUM_STRINGS") {
     return `Napi::String::New(env, it->second.c_str())`;

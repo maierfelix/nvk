@@ -20,9 +20,11 @@ import generateDocs from "./generators/docs";
 
 import {
   warn,
+  isSupportedWSI,
   formatVkVersion,
   getSortedIncludes,
-  isWin32SupportedExtension
+  getPlatformRelevantIncludes,
+  isCurrentPlatformSupportedExtension
 } from "./utils";
 
 const GEN_FILE_NOTICE = `/*
@@ -203,7 +205,7 @@ async function generateBindings({xml, version, docs, incremental} = _) {
   structs = structs.filter(struct => {
     if (struct.extension) {
       let {extension} = struct;
-      if (!isWin32SupportedExtension(extension.platform)) return false;
+      if (!isCurrentPlatformSupportedExtension(extension.platform)) return false;
     }
     return true;
   });
@@ -211,7 +213,7 @@ async function generateBindings({xml, version, docs, incremental} = _) {
   calls = calls.filter(call => {
     if (call.extension) {
       let {extension} = call;
-      if (!isWin32SupportedExtension(extension.platform)) return false;
+      if (!isCurrentPlatformSupportedExtension(extension.platform)) return false;
     }
     return true;
   });
@@ -274,11 +276,7 @@ async function generateBindings({xml, version, docs, incremental} = _) {
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
 
-#define GLFW_EXPOSE_NATIVE_WIN32
-#include <GLFW/glfw3native.h>
-
-#define VK_USE_PLATFORM_WIN32_KHR
-#include <vulkan/vulkan_win32.h>
+${getPlatformRelevantIncludes(ast)}
 
 #include "utils.h"`;
     // header
@@ -290,13 +288,13 @@ async function generateBindings({xml, version, docs, incremental} = _) {
     source += `
 #endif`;
     writeAddonFile(`${generateSrcPath}/source.h`, source, "utf-8", true);
+    // source
     source = ``;
     source += `
 #ifndef __SOURCE_CPP__
 #define __SOURCE_CPP__
 #include "source.h"
 #include "dynamic-unwrap.h"`;
-    // source
     sorted.map(file => {
       source += `\n/** ## BEGIN ${file.name} ## **/\n`;
       source += file.source;
@@ -383,8 +381,13 @@ async function generateBindings({xml, version, docs, incremental} = _) {
 };
 
 let vkVersion = process.env.npm_config_vkversion;
-if (!vkVersion) throw `No specification version -vkversion specified!`;
+if (!vkVersion) throw `No specification version --vkversion specified!`;
 vkVersion = formatVkVersion(vkVersion);
+
+let WSI = process.env.npm_config_wsi;
+if (process.platform === "linux") {
+  if (WSI && !isSupportedWSI(WSI)) throw `Invalid or unsupported WSI: ${WSI}`;
+}
 
 let docs = process.env.npm_config_docs === "true";
 let incremental = process.env.npm_config_incremental === "true";

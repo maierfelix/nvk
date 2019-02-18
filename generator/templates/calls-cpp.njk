@@ -12,9 +12,11 @@
 
 #include <map>
 #include <string>
+#include <memory>
 
 VkDevice currentDevice = VK_NULL_HANDLE;
 VkInstance currentInstance = VK_NULL_HANDLE;
+
 {{ getCallProcAddrDeclarations(calls) | safe }}
 
 void vkUseDevice(VkDevice pDevice) {
