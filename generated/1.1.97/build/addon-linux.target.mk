@@ -54,7 +54,7 @@ INCS_Debug := \
 	-I/home/user/.node-gyp/11.10.0/deps/v8/include \
 	-I/home/user/Documents/GitHub/nvk/node_modules/node-addon-api \
 	-I$(srcdir)/../../lib/include \
-	-I/media/user/Acer/Users/User/Desktop/lxss-shared/vulkan/1.1.97.9/x86_64/include
+	-I/media/user/Acer/Users/User/Desktop/lxss-shared/vulkan/1.1.97.0/include
 
 DEFS_Release := \
 	'-DNODE_GYP_MODULE_NAME=addon-linux' \
@@ -105,7 +105,7 @@ INCS_Release := \
 	-I/home/user/.node-gyp/11.10.0/deps/v8/include \
 	-I/home/user/Documents/GitHub/nvk/node_modules/node-addon-api \
 	-I$(srcdir)/../../lib/include \
-	-I/media/user/Acer/Users/User/Desktop/lxss-shared/vulkan/1.1.97.9/x86_64/include
+	-I/media/user/Acer/Users/User/Desktop/lxss-shared/vulkan/1.1.97.0/include
 
 OBJS := \
 	$(obj).target/$(TARGET)/src/index.o \
@@ -140,14 +140,14 @@ LDFLAGS_Debug := \
 	-rdynamic \
 	-m64 \
 	-L../../lib/linux/x64/GLFW \
-	-L/media/user/Acer/Users/User/Desktop/lxss-shared/vulkan/1.1.97.0/x86_64/../../1.1.97.9/x86_64/lib
+	-L/media/user/Acer/Users/User/Desktop/lxss-shared/vulkan/1.1.97.0/x86_64/../../1.1.97.0/lib
 
 LDFLAGS_Release := \
 	-pthread \
 	-rdynamic \
 	-m64 \
 	-L../../lib/linux/x64/GLFW \
-	-L/media/user/Acer/Users/User/Desktop/lxss-shared/vulkan/1.1.97.0/x86_64/../../1.1.97.9/x86_64/lib
+	-L/media/user/Acer/Users/User/Desktop/lxss-shared/vulkan/1.1.97.0/x86_64/../../1.1.97.0/lib
 
 LIBS := \
 	-lglfw3 \
