@@ -247,7 +247,7 @@
       {
         "kind": "ENUM_MEMBER",
         "type": "ALIAS",
-        "value": "(__int32)VK_LUID_SIZE",
+        "value": "(int32_t)VK_LUID_SIZE",
         "name": "VK_LUID_SIZE_KHR"
       },
       {
@@ -277,31 +277,31 @@
       {
         "kind": "ENUM_MEMBER",
         "type": "VALUE",
-        "value": "(__int32)1000.0f",
+        "value": "(int32_t)1000.0f",
         "name": "VK_LOD_CLAMP_NONE"
       },
       {
         "kind": "ENUM_MEMBER",
         "type": "VALUE",
-        "value": "(__int32)(~0U)",
+        "value": "(int32_t)(~0U)",
         "name": "VK_REMAINING_MIP_LEVELS"
       },
       {
         "kind": "ENUM_MEMBER",
         "type": "VALUE",
-        "value": "(__int32)(~0U)",
+        "value": "(int32_t)(~0U)",
         "name": "VK_REMAINING_ARRAY_LAYERS"
       },
       {
         "kind": "ENUM_MEMBER",
         "type": "VALUE",
-        "value": "(__int32)(~0ULL)",
+        "value": "(int32_t)(~0ULL)",
         "name": "VK_WHOLE_SIZE"
       },
       {
         "kind": "ENUM_MEMBER",
         "type": "VALUE",
-        "value": "(__int32)(~0U)",
+        "value": "(int32_t)(~0U)",
         "name": "VK_ATTACHMENT_UNUSED"
       },
       {
@@ -319,31 +319,31 @@
       {
         "kind": "ENUM_MEMBER",
         "type": "VALUE",
-        "value": "(__int32)(~0U)",
+        "value": "(int32_t)(~0U)",
         "name": "VK_QUEUE_FAMILY_IGNORED"
       },
       {
         "kind": "ENUM_MEMBER",
         "type": "VALUE",
-        "value": "(__int32)(~0U-1)",
+        "value": "(int32_t)(~0U-1)",
         "name": "VK_QUEUE_FAMILY_EXTERNAL"
       },
       {
         "kind": "ENUM_MEMBER",
         "type": "ALIAS",
-        "value": "(__int32)VK_QUEUE_FAMILY_EXTERNAL",
+        "value": "(int32_t)VK_QUEUE_FAMILY_EXTERNAL",
         "name": "VK_QUEUE_FAMILY_EXTERNAL_KHR"
       },
       {
         "kind": "ENUM_MEMBER",
         "type": "VALUE",
-        "value": "(__int32)(~0U-2)",
+        "value": "(int32_t)(~0U-2)",
         "name": "VK_QUEUE_FAMILY_FOREIGN_EXT"
       },
       {
         "kind": "ENUM_MEMBER",
         "type": "VALUE",
-        "value": "(__int32)(~0U)",
+        "value": "(int32_t)(~0U)",
         "name": "VK_SUBPASS_EXTERNAL"
       },
       {
@@ -355,7 +355,7 @@
       {
         "kind": "ENUM_MEMBER",
         "type": "ALIAS",
-        "value": "(__int32)VK_MAX_DEVICE_GROUP_SIZE",
+        "value": "(int32_t)VK_MAX_DEVICE_GROUP_SIZE",
         "name": "VK_MAX_DEVICE_GROUP_SIZE_KHR"
       },
       {
@@ -373,7 +373,7 @@
       {
         "kind": "ENUM_MEMBER",
         "type": "VALUE",
-        "value": "(__int32)(~0U)",
+        "value": "(int32_t)(~0U)",
         "name": "VK_SHADER_UNUSED_NV"
       },
       {
@@ -383,6 +383,66 @@
         "name": "VK_NULL_HANDLE"
       }
     ]
+  },
+  {
+    "kind": "PLATFORM_INCLUDE",
+    "platform": "xlib",
+    "include": "VK_USE_PLATFORM_XLIB_KHR",
+    "description": "X Window System, Xlib client library"
+  },
+  {
+    "kind": "PLATFORM_INCLUDE",
+    "platform": "xlib_xrandr",
+    "include": "VK_USE_PLATFORM_XLIB_XRANDR_EXT",
+    "description": "X Window System, Xlib client library, XRandR extension"
+  },
+  {
+    "kind": "PLATFORM_INCLUDE",
+    "platform": "xcb",
+    "include": "VK_USE_PLATFORM_XCB_KHR",
+    "description": "X Window System, Xcb client library"
+  },
+  {
+    "kind": "PLATFORM_INCLUDE",
+    "platform": "wayland",
+    "include": "VK_USE_PLATFORM_WAYLAND_KHR",
+    "description": "Wayland display server protocol"
+  },
+  {
+    "kind": "PLATFORM_INCLUDE",
+    "platform": "android",
+    "include": "VK_USE_PLATFORM_ANDROID_KHR",
+    "description": "Android OS"
+  },
+  {
+    "kind": "PLATFORM_INCLUDE",
+    "platform": "win32",
+    "include": "VK_USE_PLATFORM_WIN32_KHR",
+    "description": "Microsoft Win32 API (also refers to Win64 apps)"
+  },
+  {
+    "kind": "PLATFORM_INCLUDE",
+    "platform": "vi",
+    "include": "VK_USE_PLATFORM_VI_NN",
+    "description": "Nintendo Vi"
+  },
+  {
+    "kind": "PLATFORM_INCLUDE",
+    "platform": "ios",
+    "include": "VK_USE_PLATFORM_IOS_MVK",
+    "description": "Apple IOS"
+  },
+  {
+    "kind": "PLATFORM_INCLUDE",
+    "platform": "macos",
+    "include": "VK_USE_PLATFORM_MACOS_MVK",
+    "description": "Apple MacOS"
+  },
+  {
+    "kind": "PLATFORM_INCLUDE",
+    "platform": "fuchsia",
+    "include": "VK_USE_PLATFORM_FUCHSIA",
+    "description": "Fuchsia"
   },
   {
     "kind": "ENUM",
@@ -3358,7 +3418,7 @@
       {
         "kind": "ENUM_MEMBER",
         "type": "ALIAS",
-        "value": "(__int32)VK_COLOR_SPACE_SRGB_NONLINEAR_KHR",
+        "value": "(int32_t)VK_COLOR_SPACE_SRGB_NONLINEAR_KHR",
         "name": "VK_COLORSPACE_SRGB_NONLINEAR_KHR"
       }
     ]
@@ -3576,7 +3636,7 @@
       {
         "kind": "ENUM_MEMBER",
         "type": "ALIAS",
-        "value": "(__int32)VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT_EXT",
+        "value": "(int32_t)VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT_EXT",
         "name": "VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_EXT"
       },
       {
@@ -3612,7 +3672,7 @@
       {
         "kind": "ENUM_MEMBER",
         "type": "ALIAS",
-        "value": "(__int32)VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT",
+        "value": "(int32_t)VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT",
         "name": "VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT"
       }
     ]
