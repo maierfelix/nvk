@@ -6,6 +6,7 @@ generated/*/*/build/Release/*.iobj
 generated/*/*/build/Release/*.ipdb
 generated/*/*/build/Release/*.pdb
 generated/*/*/build/Release/*.map
+generated/*/*/build/Release/obj.target/*
 
 lib
 src
