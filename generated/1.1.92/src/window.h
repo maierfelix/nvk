@@ -644,16 +644,22 @@ void VulkanWindow::Setondrop(const Napi::CallbackInfo& info, const Napi::Value& 
 Napi::Value VulkanWindow::GetHWND(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   GLFWwindow* window = this->instance;
-  HWND hwnd = glfwGetWin32Window(window);
-  Napi::BigInt out = Napi::BigInt::New(env, (int64_t)hwnd);
+  Napi::BigInt out = Napi::BigInt::New(env, (int64_t)0);
+  #ifdef _WIN32
+    HWND hwnd = glfwGetWin32Window(window);
+    out = Napi::BigInt::New(env, (int64_t)hwnd);
+  #endif
   return out;
 }
 
 Napi::Value VulkanWindow::GetHINSTANCE(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   GLFWwindow* window = this->instance;
-  HINSTANCE hinstance = GetModuleHandle(nullptr);
-  Napi::BigInt out = Napi::BigInt::New(env, (int64_t)hinstance);
+  Napi::BigInt out = Napi::BigInt::New(env, (int64_t)0);
+  #ifdef _WIN32
+    HINSTANCE hinstance = GetModuleHandle(nullptr);
+    Napi::BigInt out = Napi::BigInt::New(env, (int64_t)hinstance);
+  #endif
   return out;
 }
 

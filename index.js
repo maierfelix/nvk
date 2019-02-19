@@ -39,7 +39,9 @@ if (!vkVersion) {
 
 if (!vkVersion) throw `No vulkan version --vkversion specified!`;
 
-const addonLocalPath = `${pkg.config.GEN_OUT_DIR}/${vkVersion}/build/Release/addon.node`;
+let {platform} = process;
+
+const addonLocalPath = `${pkg.config.GEN_OUT_DIR}/${vkVersion}/${platform}/build/Release/addon-${platform}.node`;
 const addonPath = path.join(__dirname, addonLocalPath);
 const bindingsPath = path.join(__dirname, `${pkg.config.GEN_OUT_DIR}/`);
 
@@ -51,13 +53,13 @@ if (!fs.existsSync(addonPath)) {
   fs.readdirSync(bindingsPath).forEach(dirname => {
     let addon = null;
     try {
-      addon = require(bindingsPath + dirname + `/build/Release/addon.node`);
+      addon = require(bindingsPath + dirname + `/build/Release/addon-${platform}.node`);
     } catch (e) {
 
     }
     if (addon) process.stderr.write(`> ${dirname}\n`);
   });
-  process.stderr.write(`Make sure to generate and compile the bindings for ${vkVersion}\n`);
+  //process.stderr.write(`Make sure to generate and compile the bindings for ${vkVersion}\n`);
   throw `Exiting..`;
 }
 

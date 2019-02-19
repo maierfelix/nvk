@@ -16,35 +16,44 @@ if (!vkVersion) throw `No vulkan version --vkversion specified!`;
 
 const msvsVersion = process.env.npm_config_msvsversion || "";
 
-const baseGeneratePath = pkg.config.GEN_OUT_DIR;
-const generatePath = `${baseGeneratePath}/${vkVersion}`;
+const generatePath = `${pkg.config.GEN_OUT_DIR}/${vkVersion}/${platform}`;
 
 const unitPlatform = (
   platform === "win32" ? "win" :
+  platform === "linux" ? "linux" :
   platform === "darwin" ? "mac" :
   "unknown"
 );
 
+if (unitPlatform === "unknown") {
+  process.stderr.write(`Unsupported platform!\n`);
+  process.stderr.write(`Exiting..\n`);
+  return;
+}
+
 // generated/version/
 if (!fs.existsSync(generatePath)) {
   process.stderr.write(`Cannot find bindings for ${vkVersion} in ${generatePath}\n`);
-  throw `Exiting..`;
+  process.stderr.write(`Exiting..\n`);
+  return;
 }
 
 // build
 // build/release
-let buildDir = `./generated/${vkVersion}/build/`;
+let buildDir = `${generatePath}/build/`;
 let buildReleaseDir = buildDir + "Release/";
 if (!fs.existsSync(buildDir)) fs.mkdirSync(buildDir);
 if (!fs.existsSync(buildReleaseDir)) fs.mkdirSync(buildReleaseDir);
 
-let genPkg = require(`./generated/${vkVersion}/package.json`);
+let genPkg = require(`${generatePath}/package.json`);
 let {sdkPath} = genPkg;
 let runtimeDir = `${sdkPath}/RunTimeInstaller/${architecture}/`;
 
-if (!fs.existsSync(runtimeDir)) {
-  process.stderr.write(`Cannot find runtime files for ${vkVersion} in ${runtimeDir}\n`);
-  return;
+if (platform === "win32") {
+  if (!fs.existsSync(runtimeDir)) {
+    process.stderr.write(`Cannot find runtime files for ${vkVersion} in ${runtimeDir}\n`);
+    return;
+  }
 }
 
 process.stdout.write(`
@@ -59,12 +68,15 @@ function copyFiles() {
   return new Promise(resolve => {
     // copy files into release folder
     let baseDir = `./lib/${unitPlatform}/${architecture}`;
-    let targetDir = `./generated/${vkVersion}/build/Release`;
+    let targetDir = `${generatePath}/build/Release`;
     let files = [
-      [`${baseDir}/GLFW/glfw3.dll`, targetDir],
-      [`./src/`, `./generated/${vkVersion}/src`],
-      [runtimeDir, targetDir]
+      [`./src/`, `${generatePath}/src`]
     ];
+    // add runtime files to windows builds
+    if (platform === "win32") {
+      files.push([runtimeDir, targetDir]);
+      files.push([`${baseDir}/GLFW/glfw3.dll`, targetDir]);
+    }
     let counter = 0;
     files.map(entry => {
       let source = entry[0];
@@ -92,19 +104,17 @@ function copyFiles() {
 function buildFiles() {
   process.stdout.write(`\nCompiling bindings..\n`);
   return new Promise(resolve => {
-    // win32
+    let msargs = "";
+    // add win32 vs version
     if (platform === "win32") {
-      let cmd = `cd ${generatePath} && node-gyp configure --msvs_version ${msvsVersion} && node-gyp build`;
-      let shell = spawn(cmd, { shell: true, stdio: "inherit" }, { stdio: "pipe" });
-      shell.on("exit", error => {
-        if (!error) process.stdout.write("Done!\n");
-        resolve(!error);
-      });
-    // unknown
-    } else {
-      process.stderr.write(`Error: Your platform isn't supported!\n`);
-      resolve(false);
+      msargs += `--msvs_version ${msvsVersion}`;
     }
+    let cmd = `cd ${generatePath} && node-gyp configure ${msargs} && node-gyp build`;
+    let shell = spawn(cmd, { shell: true, stdio: "inherit" }, { stdio: "pipe" });
+    shell.on("exit", error => {
+      if (!error) process.stdout.write("Done!\n");
+      resolve(!error);
+    });
   });
 };
 

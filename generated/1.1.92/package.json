@@ -1,7 +1,7 @@
 {
   "name": "nvk-v1.1.92",
-  "version": "0.2.6",
-  "sdkPath": "C:/VulkanSDK/1.1.92.1",
+  "version": "0.2.8",
+  "sdkPath": "/media/user/Acer/Users/User/Desktop/lxss-shared/vulkan/1.1.97.0/x86_64/../../1.1.92.9/x86_64",
   "gypfile": true,
   "scripts": {},
   "devDependencies": {},
