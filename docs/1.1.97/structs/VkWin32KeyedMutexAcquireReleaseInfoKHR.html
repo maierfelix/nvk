@@ -1,0 +1,154 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>VkWin32KeyedMutexAcquireReleaseInfoKHR | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Struct -->
+  <vk-struct>
+
+    <vk-name>VkWin32KeyedMutexAcquireReleaseInfoKHR</vk-name>
+
+    <vk-description>Use the Windows keyed mutex mechanism to synchronize work</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">win32KeyedMutexAcquireReleaseInfoKHRInfo = new VkWin32KeyedMutexAcquireReleaseInfoKHR();
+win32KeyedMutexAcquireReleaseInfoKHRInfo = new VkWin32KeyedMutexAcquireReleaseInfoKHR(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">let win32KeyedMutexAcquireReleaseInfoKHRInfo = new VkWin32KeyedMutexAcquireReleaseInfoKHR();
+win32KeyedMutexAcquireReleaseInfoKHRInfo.sType = ;
+win32KeyedMutexAcquireReleaseInfoKHRInfo.pNext = ;
+win32KeyedMutexAcquireReleaseInfoKHRInfo.acquireCount = ;
+win32KeyedMutexAcquireReleaseInfoKHRInfo.pAcquireSyncs = ;
+win32KeyedMutexAcquireReleaseInfoKHRInfo.pAcquireKeys = ;
+win32KeyedMutexAcquireReleaseInfoKHRInfo.pAcquireTimeouts = ;
+win32KeyedMutexAcquireReleaseInfoKHRInfo.releaseCount = ;
+win32KeyedMutexAcquireReleaseInfoKHRInfo.pReleaseSyncs = ;
+win32KeyedMutexAcquireReleaseInfoKHRInfo.pReleaseKeys = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.acquireCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.<vk-prototype-name>acquireCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.pAcquireSyncs -->
+      <vk-property-entry>
+        <vk-property-prototype>VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.<vk-prototype-name>pAcquireSyncs</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../handles/VkDeviceMemory.html">VkDeviceMemory]</a></vk-property-type></vk-property-type>
+        <vk-property-description> is an array of <b><a href="../handles/VkDeviceMemory.html">VkDeviceMemory</a></b> objects which were imported from Direct3D 11 resources.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.pAcquireKeys -->
+      <vk-property-entry>
+        <vk-property-prototype>VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.<vk-prototype-name>pAcquireKeys</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigUint64Array">BigUint64Array</a></vk-property-type>
+        <vk-property-description> is an array of mutex key values to wait for prior to beginning the submitted work. Entries refer to the keyed mutex associated with the corresponding entries in <b>pAcquireSyncs</b>.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.pAcquireTimeouts -->
+      <vk-property-entry>
+        <vk-property-prototype>VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.<vk-prototype-name>pAcquireTimeouts</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array">Uint32Array</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.releaseCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.<vk-prototype-name>releaseCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.pReleaseSyncs -->
+      <vk-property-entry>
+        <vk-property-prototype>VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.<vk-prototype-name>pReleaseSyncs</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../handles/VkDeviceMemory.html">VkDeviceMemory]</a></vk-property-type></vk-property-type>
+        <vk-property-description> is an array of <b><a href="../handles/VkDeviceMemory.html">VkDeviceMemory</a></b> objects which were imported from Direct3D 11 resources.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.pReleaseKeys -->
+      <vk-property-entry>
+        <vk-property-prototype>VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.<vk-prototype-name>pReleaseKeys</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigUint64Array">BigUint64Array</a></vk-property-type>
+        <vk-property-description> is an array of mutex key values to set when the submitted work has completed. Entries refer to the keyed mutex associated with the corresponding entries in <b>pReleaseSyncs</b>.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.memoryBuffer -->
+      <vk-property-entry>
+        <vk-property-prototype>VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkWin32KeyedMutexAcquireReleaseInfoKHR.memoryLayout -->
+      <vk-property-entry>
+        <vk-property-prototype>VkWin32KeyedMutexAcquireReleaseInfoKHR.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the memory layout for this structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

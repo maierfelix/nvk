@@ -1,0 +1,77 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>vkGetSemaphoreWin32HandleKHR | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Call -->
+  <vk-struct>
+
+    <vk-name>vkGetSemaphoreWin32HandleKHR</vk-name>
+
+    <vk-description>Get a Windows HANDLE for a semaphore</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">VkResult vkGetSemaphoreWin32HandleKHR();
+</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <!-- device -->
+      <vk-property-entry>
+        <vk-property-parameter>device</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkDevice.html">VkDevice</a></vk-property-type>
+        <vk-property-description> is the logical device that created the semaphore being exported.</vk-property-description>
+      </vk-property-entry>
+      <!-- pGetWin32HandleInfo -->
+      <vk-property-entry>
+        <vk-property-parameter>pGetWin32HandleInfo</vk-property-parameter>
+        <vk-property-type type="object"><a href="../structs/VkSemaphoreGetWin32HandleInfoKHR.html">VkSemaphoreGetWin32HandleInfoKHR</a></vk-property-type>
+        <vk-property-description> is a reference to an instance of the <b><a href="../structs/VkSemaphoreGetWin32HandleInfoKHR.html">VkSemaphoreGetWin32HandleInfoKHR</a></b> structure containing parameters of the export operation.</vk-property-description>
+      </vk-property-entry>
+      <!-- pHandle -->
+      <vk-property-entry>
+        <vk-property-parameter>pHandle</vk-property-parameter>
+        <vk-property-type type="object">Object.$<vk-property-type type="object">(BigInt)</vk-property-type></vk-property-type>
+        <vk-property-description> will return the Windows handle representing the semaphore state.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>
