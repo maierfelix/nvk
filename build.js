@@ -16,8 +16,7 @@ if (!vkVersion) throw `No vulkan version --vkversion specified!`;
 
 const msvsVersion = process.env.npm_config_msvsversion || "";
 
-const baseGeneratePath = pkg.config.GEN_OUT_DIR;
-const generatePath = `${baseGeneratePath}/${vkVersion}`;
+const generatePath = `${pkg.config.GEN_OUT_DIR}/${vkVersion}/${platform}`;
 
 const unitPlatform = (
   platform === "win32" ? "win" :
@@ -41,16 +40,16 @@ if (!fs.existsSync(generatePath)) {
 
 // build
 // build/release
-let buildDir = `./generated/${vkVersion}/build/`;
+let buildDir = `${generatePath}/build/`;
 let buildReleaseDir = buildDir + "Release/";
 if (!fs.existsSync(buildDir)) fs.mkdirSync(buildDir);
 if (!fs.existsSync(buildReleaseDir)) fs.mkdirSync(buildReleaseDir);
 
-let genPkg = require(`./generated/${vkVersion}/package.json`);
+let genPkg = require(`${generatePath}/package.json`);
 let {sdkPath} = genPkg;
 let runtimeDir = `${sdkPath}/RunTimeInstaller/${architecture}/`;
 
-if (unitPlatform === "win32") {
+if (platform === "win32") {
   if (!fs.existsSync(runtimeDir)) {
     process.stderr.write(`Cannot find runtime files for ${vkVersion} in ${runtimeDir}\n`);
     return;
@@ -69,12 +68,12 @@ function copyFiles() {
   return new Promise(resolve => {
     // copy files into release folder
     let baseDir = `./lib/${unitPlatform}/${architecture}`;
-    let targetDir = `./generated/${vkVersion}/build/Release`;
+    let targetDir = `${generatePath}/build/Release`;
     let files = [
-      [`./src/`, `./generated/${vkVersion}/src`]
+      [`./src/`, `${generatePath}/src`]
     ];
     // add runtime files to windows builds
-    if (unitPlatform === "win32") {
+    if (platform === "win32") {
       files.push([runtimeDir, targetDir]);
       files.push([`${baseDir}/GLFW/glfw3.dll`, targetDir]);
     }

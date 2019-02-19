@@ -658,7 +658,7 @@ Napi::Value VulkanWindow::GetHINSTANCE(const Napi::CallbackInfo& info) {
   Napi::BigInt out = Napi::BigInt::New(env, (int64_t)0);
   #ifdef _WIN32
     HINSTANCE hinstance = GetModuleHandle(nullptr);
-    Napi::BigInt out = Napi::BigInt::New(env, (int64_t)hinstance);
+    out = Napi::BigInt::New(env, (int64_t)hinstance);
   #endif
   return out;
 }

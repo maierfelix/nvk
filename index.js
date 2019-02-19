@@ -41,7 +41,7 @@ if (!vkVersion) throw `No vulkan version --vkversion specified!`;
 
 let {platform} = process;
 
-const addonLocalPath = `${pkg.config.GEN_OUT_DIR}/${vkVersion}/build/Release/addon-${platform}.node`;
+const addonLocalPath = `${pkg.config.GEN_OUT_DIR}/${vkVersion}/${platform}/build/Release/addon-${platform}.node`;
 const addonPath = path.join(__dirname, addonLocalPath);
 const bindingsPath = path.join(__dirname, `${pkg.config.GEN_OUT_DIR}/`);
 
