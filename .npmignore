@@ -1,11 +1,11 @@
-generated/*/ast.json
-generated/*/src
+generated/*/*/ast.json
+generated/*/*/src
 
-generated/*/build/Release/obj
-generated/*/build/Release/*.iobj
-generated/*/build/Release/*.ipdb
-generated/*/build/Release/*.pdb
-generated/*/build/Release/*.map
+generated/*/*/build/Release/obj
+generated/*/*/build/Release/*.iobj
+generated/*/*/build/Release/*.ipdb
+generated/*/*/build/Release/*.pdb
+generated/*/*/build/Release/*.map
 
 lib
 src

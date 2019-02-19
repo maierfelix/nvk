@@ -152,15 +152,18 @@ async function generateBindings({xml, version, docs, incremental} = _) {
   let sortedIncludes = [];
   // write paths
   const baseGeneratePath = pkg.config.GEN_OUT_DIR;
-  const generatePath = `${baseGeneratePath}/${version}`;
+  const generateVersionPath = `${baseGeneratePath}/${version}`;
+  const generatePath = `${generateVersionPath}/${process.platform}`;
   const generateSrcPath = `${generatePath}/src`;
   // reserve write dirs
   {
     // generated/
     if (!fs.existsSync(baseGeneratePath)) fs.mkdirSync(baseGeneratePath);
     // generated/version/
+    if (!fs.existsSync(generateVersionPath)) fs.mkdirSync(generateVersionPath);
+    // generated/version/platform/
     if (!fs.existsSync(generatePath)) fs.mkdirSync(generatePath);
-    // generated/version/src/
+    // generated/version/platform/src/
     if (!fs.existsSync(generateSrcPath)) fs.mkdirSync(generateSrcPath);
   }
   // introduce
@@ -365,7 +368,7 @@ ${getPlatformRelevantIncludes(ast)}
   {
     console.log("Generating typescript index..");
     let source = `module.exports = require("${pkg.config.TS_ROOT}");`;
-    writeAddonFile(`${generatePath}/index.js`, source, "utf-8");
+    writeAddonFile(`${generatePath}/../index.js`, source, "utf-8");
   }
   // docs
   if (docs) {
