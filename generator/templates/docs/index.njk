@@ -37,8 +37,37 @@
     This is a <a href="https://en.wikipedia.org/wiki/Vulkan_(API)">Vulkan</a> API for node.js, which allows to interact from JavaScript/<a href="https://github.com/maierfelix/nvk#typescript">TypeScript</a> with the low-level interface of Vulkan. The API style of this project strives to be as close as possible to Vulkan's C99 API.
     </vk-description>
 
+    <vk-section-title>Prerequisites</vk-section-title>
+
+    <ul>
+      <li>
+      <vk-description>
+      Recommended Vulkan version: <vk-property-prototype class="no-float" id="recommendedVersion">...</vk-property-prototype>
+      </vk-description>
+      </li>
+
+      <li>
+      <vk-description>
+      Minimum required node.js version: <vk-property-prototype class="no-float" id="minimumVersion">...</vk-property-prototype>
+      </vk-description>
+      </li>
+
+      <li>
+      <vk-description>
+      If you want to use validation layers, then make sure you have the <a href="https://vulkan.lunarg.com/">SDK</a> installed
+      </vk-description>
+      </li>
+    </ul>
+
+    <vk-section-title>Installation</vk-section-title>
+
     <vk-description>
-    The recommended Vulkan version to use is: <vk-property-prototype class="no-float" id="recommendedVersion">...</vk-property-prototype>
+    To install nvk simply run:
+    <pre><code class="language-js">npm install nvk</code></pre>
+    </vk-description>
+
+    <vk-description>
+    The latest NPM package version is: <vk-property-prototype class="no-float" id="latestVersion">...</vk-property-prototype>
     </vk-description>
 
     <vk-description>
@@ -48,6 +77,15 @@
   </vk-struct>
 
 </vk-centered>
+
+<style>
+vk-struct > ul > li > vk-description {
+  padding: 0.5em;
+}
+vk-property-prototype {
+  padding: 0.2em !important;
+}
+</style>
 
 <script>
 const IS_ROOT = true;
@@ -71,6 +109,8 @@ const IS_ROOT = true;
   loadJSON(url).then(json => {
     let {config} = json;
     recommendedVersion.innerHTML = config.POST_DEFAULT_BINDING_VERSION;
+    latestVersion.innerHTML = json.version;
+    minimumVersion.innerHTML = json.engines.node.substr(3);
   });
 
 </script>
