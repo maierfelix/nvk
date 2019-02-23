@@ -45,7 +45,7 @@
     <vk-stub>
       <pre><code class="language-js">let {{ instantiationName | safe }} = new {{ struct.name }}();
 {% for member in members -%}
-{{ instantiationName | safe }}.{{ member.name }} = ;
+{{ getStructMemberStub(struct, member) | safe }}
 {% endfor -%}
       </code></pre>
     </vk-stub>

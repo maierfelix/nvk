@@ -454,6 +454,14 @@ function getObjectDescription(obj) {
   return description;
 };
 
+function getStructMemberStub(struct, member) {
+  let instantiationName = getObjectInstantiationName(struct);
+  if (member.name === `sType` && struct.sType) {
+    return `${instantiationName}.${member.name} = ${struct.sType};`;
+  }
+  return `${instantiationName}.${member.name} = ;`;
+};
+
 export default function(astReference, data, version) {
   ast = astReference;
   calls = data.calls;
@@ -533,7 +541,8 @@ export default function(astReference, data, version) {
         members: struct.children,
         categories,
         instantiationName: getObjectInstantiationName(struct),
-        ...defaultFunctions
+        ...defaultFunctions,
+        getStructMemberStub
       });
       fs.writeFileSync(`${DOCS_DIR}/${version}/structs/${struct.name}.html`, output, `utf-8`);
     });
