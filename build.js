@@ -72,10 +72,10 @@ function copyFiles() {
     }
     // add darwin runtime files
     else if (platform === "darwin") {
+      files.push([`${sdkPath}/lib/libMoltenVK.dylib`, targetDir]);
       files.push([`${sdkPath}/lib/libvulkan.1.dylib`, targetDir]);
       files.push([`${sdkPath}/lib/libvulkan.1.1.97.dylib`, targetDir]);
-      files.push([`${baseDir}/GLFW/libglfw.dylib`, targetDir]);
-      files.push([`${baseDir}/GLFW/libglfw.3.3.dylib`, targetDir]);
+      files.push([`${baseDir}/GLFW/libglfw3.a`, targetDir]);
     }
     let counter = 0;
     files.map(entry => {

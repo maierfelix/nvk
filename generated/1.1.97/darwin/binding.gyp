@@ -2,6 +2,7 @@
   "variables": {
     "root": "../../..",
     "platform": "<(OS)",
+    "release": "<@(module_root_dir)/build/Release",
     "vkSDK": "/Users/user/Documents/Projects//vulkansdk-macos-1.1.97.0//macOS"
   },
   "conditions": [
@@ -19,9 +20,6 @@
       "sources": [
         "./src/index.cpp",
 "./src/source.cpp"
-      ],
-      "defines": [
-        "NAPI_DISABLE_CPP_EXCEPTIONS"
       ],
       "conditions": [
         [
@@ -118,37 +116,38 @@
           },
           "OS=='mac'",
           {
+            "defines": [
+              "NAPI_DISABLE_CPP_EXCEPTIONS",
+              "_GLFW_COCOA=1"
+            ],
             "target_name": "addon-darwin",
-
-            'library_dirs': [
-              "/Users/user/Documents/GitHub/nvk/lib/darwin/x64/GLFW/",
-              "<(vkSDK)/lib"
-            ],
-            'include_dirs': [
+            "include_dirs": [
               "<!@(node -p \"require('node-addon-api').include\")",
-              '<(root)/lib/include/GLFW',
-              '<(vkSDK)/include'
+              "<(root)/lib/include/GLFW",
+              "<(vkSDK)/include"
             ],
-            'link_settings': {
-              'libraries': [
-                '<@(module_root_dir)/<(root)/lib/<(platform)/<(target_arch)/GLFW/libglfw.dylib'
+            "link_settings": {
+              "libraries": [
+                "<(release)/libvulkan.1.dylib",
+                "<(release)/libglfw3.a"
               ]
             },
-            'xcode_settings': {
-              'OTHER_CPLUSPLUSFLAGS': [
-                '-std=c++11',
-                '-stdlib=libc++',
+            "xcode_settings": {
+              "OTHER_CPLUSPLUSFLAGS": [
+                "-std=c++11",
+                "-stdlib=libc++",
                 "-fexceptions",
                 "-Wno-switch",
                 "-Wno-unused",
                 "-Wno-uninitialized"
               ],
-              'OTHER_LDFLAGS': [
-                "-Wl,-rpath,<@(module_root_dir)/build/Release",
-                '-L<@(module_root_dir)/<(root)/lib/<(platform)/<(target_arch)/GLFW/',
-                '-L<(vkSDK)/lib',
-                '-lglfw',
-                '-lvulkan'
+              "OTHER_LDFLAGS": [
+                "-Wl,-rpath,<(release)",
+                "-lglfw3",
+                "-framework Cocoa",
+                "-framework IOKit",
+                "-framework Metal",
+                "-framework QuartzCore"
               ]
             }
           }

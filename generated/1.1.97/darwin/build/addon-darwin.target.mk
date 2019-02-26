@@ -11,6 +11,7 @@ DEFS_Debug := \
 	'-D_LARGEFILE_SOURCE' \
 	'-D_FILE_OFFSET_BITS=64' \
 	'-DNAPI_DISABLE_CPP_EXCEPTIONS' \
+	'-D_GLFW_COCOA=1' \
 	'-DBUILDING_NODE_EXTENSION' \
 	'-DDEBUG' \
 	'-D_DEBUG' \
@@ -71,6 +72,7 @@ DEFS_Release := \
 	'-D_LARGEFILE_SOURCE' \
 	'-D_FILE_OFFSET_BITS=64' \
 	'-DNAPI_DISABLE_CPP_EXCEPTIONS' \
+	'-D_GLFW_COCOA=1' \
 	'-DBUILDING_NODE_EXTENSION'
 
 # Flags passed to all source files.
@@ -151,58 +153,59 @@ $(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj)/%.cpp FORCE_DO_CMD
 ### Rules for final target.
 LDFLAGS_Debug := \
 	-Wl,-rpath,/Users/user/Documents/GitHub/nvk/generated/1.1.97/darwin/build/Release \
-	-L/Users/user/Documents/GitHub/nvk/lib/darwin/x64/GLFW \
-	-L/Users/user/Documents/Projects/vulkansdk-macos-1.1.97.0/macOS/lib \
-	-lglfw \
-	-lvulkan \
+	-lglfw3 \
+	-framework Cocoa \
+	-framework IOKit \
+	-framework Metal \
+	-framework QuartzCore \
 	-undefined dynamic_lookup \
 	-Wl,-no_pie \
 	-Wl,-search_paths_first \
 	-mmacosx-version-min=10.7 \
 	-arch x86_64 \
 	-L$(builddir) \
-	-stdlib=libc++ \
-	-L/Users/user/Documents/GitHub/nvk/lib/darwin/x64/GLFW/ \
-	-L/Users/user/Documents/Projects//vulkansdk-macos-1.1.97.0//macOS/lib
+	-stdlib=libc++
 
 LIBTOOLFLAGS_Debug := \
 	-Wl,-rpath,/Users/user/Documents/GitHub/nvk/generated/1.1.97/darwin/build/Release \
-	-L/Users/user/Documents/GitHub/nvk/generated/1.1.97/darwin/../../../lib/darwin/x64/GLFW/ \
-	-L/Users/user/Documents/Projects//vulkansdk-macos-1.1.97.0//macOS/lib \
-	-lglfw \
-	-lvulkan \
+	-lglfw3 \
+	-framework Cocoa \
+	-framework IOKit \
+	-framework Metal \
+	-framework QuartzCore \
 	-undefined dynamic_lookup \
 	-Wl,-no_pie \
 	-Wl,-search_paths_first
 
 LDFLAGS_Release := \
 	-Wl,-rpath,/Users/user/Documents/GitHub/nvk/generated/1.1.97/darwin/build/Release \
-	-L/Users/user/Documents/GitHub/nvk/lib/darwin/x64/GLFW \
-	-L/Users/user/Documents/Projects/vulkansdk-macos-1.1.97.0/macOS/lib \
-	-lglfw \
-	-lvulkan \
+	-lglfw3 \
+	-framework Cocoa \
+	-framework IOKit \
+	-framework Metal \
+	-framework QuartzCore \
 	-undefined dynamic_lookup \
 	-Wl,-no_pie \
 	-Wl,-search_paths_first \
 	-mmacosx-version-min=10.7 \
 	-arch x86_64 \
 	-L$(builddir) \
-	-stdlib=libc++ \
-	-L/Users/user/Documents/GitHub/nvk/lib/darwin/x64/GLFW/ \
-	-L/Users/user/Documents/Projects//vulkansdk-macos-1.1.97.0//macOS/lib
+	-stdlib=libc++
 
 LIBTOOLFLAGS_Release := \
 	-Wl,-rpath,/Users/user/Documents/GitHub/nvk/generated/1.1.97/darwin/build/Release \
-	-L/Users/user/Documents/GitHub/nvk/generated/1.1.97/darwin/../../../lib/darwin/x64/GLFW/ \
-	-L/Users/user/Documents/Projects//vulkansdk-macos-1.1.97.0//macOS/lib \
-	-lglfw \
-	-lvulkan \
+	-lglfw3 \
+	-framework Cocoa \
+	-framework IOKit \
+	-framework Metal \
+	-framework QuartzCore \
 	-undefined dynamic_lookup \
 	-Wl,-no_pie \
 	-Wl,-search_paths_first
 
 LIBS := \
-	/Users/user/Documents/GitHub/nvk/generated/1.1.97/darwin/../../../lib/darwin/x64/GLFW/libglfw.dylib
+	/Users/user/Documents/GitHub/nvk/generated/1.1.97/darwin/build/Release/libvulkan.1.dylib \
+	/Users/user/Documents/GitHub/nvk/generated/1.1.97/darwin/build/Release/libglfw3.a
 
 $(builddir)/addon-darwin.node: GYP_LDFLAGS := $(LDFLAGS_$(BUILDTYPE))
 $(builddir)/addon-darwin.node: LIBS := $(LIBS)
