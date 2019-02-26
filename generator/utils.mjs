@@ -69,23 +69,33 @@ export function getLunarVkSDKPath() {
   else if (platform === "linux") {
     return envSDKPath + `/../..`;
   }
+  else if (platform === "darwin") {
+    let path = envSDKPath;
+    path = path.substr(0, path.lastIndexOf(`/`) + 1);
+    return path;
+  }
   return "";
 };
 
 export function resolveLunarVkSDKPath(vkVersion) {
+  let {platform} = process;
   let VK_SDK_PATH = getLunarVkSDKPath();
   let indices = [...Array(10)].map((v, i) => i);
   let sdkPath = VK_SDK_PATH + `/` + vkVersion;
-  if (!fs.existsSync(sdkPath)) {
-    // x.x.x.0-9
-    for (let index of indices) {
-      sdkPath = VK_SDK_PATH + `/` + vkVersion + `.${index}`;
-      if (fs.existsSync(sdkPath)) return sdkPath;
-    };
+  if (platform === "win32") {
+    if (!fs.existsSync(sdkPath)) {
+      // x.x.x.0-9
+      for (let index of indices) {
+        sdkPath = VK_SDK_PATH + `/` + vkVersion + `.${index}`;
+        if (fs.existsSync(sdkPath)) return sdkPath;
+      };
+    }
   }
-  let {platform} = process;
-  if (platform === "linux") {
+  else if (platform === "linux") {
     sdkPath = sdkPath + `/x86_64`;
+  }
+  else if (platform === "darwin") {
+    sdkPath = VK_SDK_PATH + `/macOS`;
   }
   return sdkPath;
 };
@@ -217,7 +227,7 @@ export function isCurrentPlatformSupportedExtension(extPlatform) {
     case "linux":
       return isLinuxSupportedExtension(extPlatform);
     case "darwin":
-      return false;
+      return isDarwinSupportedExtension(extPlatform);
   };
   warn(`Cannot resolve platform extension support for ${extPlatform}. Currently running on: ${process.platform}`);
   return false;
@@ -243,6 +253,13 @@ export function isLinuxSupportedExtension(platform) {
   );
 };
 
+export function isDarwinSupportedExtension(platform) {
+  return (
+    isDefaultPlatformSupportedExtension(platform) ||
+    platform === "macos"
+  );
+};
+
 export function isSupportedWSI(wsi) {
   let {platform} = process;
   // windows
@@ -264,6 +281,13 @@ export function isSupportedWSI(wsi) {
       return true;
     }
   }
+  // darwin
+  if (platform === "darwin") {
+    if (
+      !wsi ||
+      wsi === "macos"
+    ) return true;
+  }
   return false;
 };
 
@@ -280,6 +304,11 @@ export function getRequiredPlatformNativeInclude(ast) {
   else if (platform === "linux") {
     let WSI = process.env.npm_config_wsi;
     let include = includes.filter(incl => incl.platform === WSI)[0] || null;
+    out = include;
+  }
+  // darwin
+  else if (platform === "darwin") {
+    let include = includes.filter(incl => incl.platform === "macos")[0] || null;
     out = include;
   }
   if (!out) {

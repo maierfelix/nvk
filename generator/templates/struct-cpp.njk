@@ -98,7 +98,7 @@ Napi::Value _{{ struct_name }}::GetmemoryLayout(const Napi::CallbackInfo& info) 
     uint32_t byteLength = sizeof((({{ struct.name }} *)0)->{{ member.name }});
     obj.Set(Napi::String::New(env, "byteOffset"), Napi::Number::New(env, byteOffset));
     obj.Set(Napi::String::New(env, "byteLength"), Napi::Number::New(env, byteLength));
-    out.Set(Napi::String::New(env, "sType"), obj);
+    out.Set(Napi::String::New(env, "{{ member.name }}"), obj);
   }
   {%- endif -%}
   {%- endfor %}

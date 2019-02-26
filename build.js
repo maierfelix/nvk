@@ -21,7 +21,7 @@ const generatePath = `${pkg.config.GEN_OUT_DIR}/${vkVersion}/${platform}`;
 const unitPlatform = (
   platform === "win32" ? "win" :
   platform === "linux" ? "linux" :
-  platform === "darwin" ? "mac" :
+  platform === "darwin" ? "darwin" :
   "unknown"
 );
 
@@ -47,14 +47,7 @@ if (!fs.existsSync(buildReleaseDir)) fs.mkdirSync(buildReleaseDir);
 
 let genPkg = require(`${generatePath}/package.json`);
 let {sdkPath} = genPkg;
-let runtimeDir = `${sdkPath}/RunTimeInstaller/${architecture}/`;
-
-if (platform === "win32") {
-  if (!fs.existsSync(runtimeDir)) {
-    process.stderr.write(`Cannot find runtime files for ${vkVersion} in ${runtimeDir}\n`);
-    return;
-  }
-}
+let runtimeDir = ``;
 
 process.stdout.write(`
 Compiling bindings for version ${vkVersion}...
@@ -72,10 +65,17 @@ function copyFiles() {
     let files = [
       [`./src/`, `${generatePath}/src`]
     ];
-    // add runtime files to windows builds
+    // add win32 runtime files
     if (platform === "win32") {
-      files.push([runtimeDir, targetDir]);
+      files.push([`${sdkPath}/RunTimeInstaller/${architecture}/`, targetDir]);
       files.push([`${baseDir}/GLFW/glfw3.dll`, targetDir]);
+    }
+    // add darwin runtime files
+    else if (platform === "darwin") {
+      files.push([`${sdkPath}/lib/libvulkan.1.dylib`, targetDir]);
+      files.push([`${sdkPath}/lib/libvulkan.1.1.97.dylib`, targetDir]);
+      files.push([`${baseDir}/GLFW/libglfw.dylib`, targetDir]);
+      files.push([`${baseDir}/GLFW/libglfw.3.3.dylib`, targetDir]);
     }
     let counter = 0;
     files.map(entry => {

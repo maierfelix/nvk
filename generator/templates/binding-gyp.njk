@@ -19,14 +19,8 @@
       "sources": [
         {{ VK_INCLUDES | safe }}
       ],
-      "include_dirs": [
-        "<!@(node -p \"require('node-addon-api').include\")",
-        "<(root)/lib/include/",
-        "<(vkSDK)/include"
-      ],
-      "library_dirs": [
-        "<(root)/lib/<(platform)/<(target_arch)/GLFW",
-        "<(vkSDK)/lib"
+      "defines": [
+        "NAPI_DISABLE_CPP_EXCEPTIONS"
       ],
       "conditions": [
         [
@@ -35,6 +29,15 @@
             "target_name": "addon-win32",
             "cflags": [
               "-stdlib=libstdc++"
+            ],
+            "include_dirs": [
+              "<!@(node -p \"require('node-addon-api').include\")",
+              "<(root)/lib/include/",
+              "<(vkSDK)/include"
+            ],
+            "library_dirs": [
+              "<(root)/lib/<(platform)/<(target_arch)/GLFW",
+              "<(vkSDK)/lib"
             ],
             "link_settings": {
               "libraries": [
@@ -71,6 +74,15 @@
           "OS=='linux'",
           {
             "target_name": "addon-linux",
+            "include_dirs": [
+              "<!@(node -p \"require('node-addon-api').include\")",
+              "<(root)/lib/include/",
+              "<(vkSDK)/include"
+            ],
+            "library_dirs": [
+              "<(root)/lib/<(platform)/<(target_arch)/GLFW",
+              "<(vkSDK)/lib"
+            ],
             "cflags": [
               "-std=c++11",
               "-fexceptions",
@@ -97,6 +109,42 @@
                 "-lXcursor",
                 "-ldl",
                 "-pthread"
+              ]
+            }
+          },
+          "OS=='mac'",
+          {
+            "target_name": "addon-darwin",
+
+            'library_dirs': [
+              "/Users/user/Documents/GitHub/nvk/lib/darwin/x64/GLFW/",
+              "<(vkSDK)/lib"
+            ],
+            'include_dirs': [
+              "<!@(node -p \"require('node-addon-api').include\")",
+              '<(root)/lib/include/GLFW',
+              '<(vkSDK)/include'
+            ],
+            'link_settings': {
+              'libraries': [
+                '<@(module_root_dir)/<(root)/lib/<(platform)/<(target_arch)/GLFW/libglfw.dylib'
+              ]
+            },
+            'xcode_settings': {
+              'OTHER_CPLUSPLUSFLAGS': [
+                '-std=c++11',
+                '-stdlib=libc++',
+                "-fexceptions",
+                "-Wno-switch",
+                "-Wno-unused",
+                "-Wno-uninitialized"
+              ],
+              'OTHER_LDFLAGS': [
+                "-Wl,-rpath,<@(module_root_dir)/build/Release",
+                '-L<@(module_root_dir)/<(root)/lib/<(platform)/<(target_arch)/GLFW/',
+                '-L<(vkSDK)/lib',
+                '-lglfw',
+                '-lvulkan'
               ]
             }
           }
