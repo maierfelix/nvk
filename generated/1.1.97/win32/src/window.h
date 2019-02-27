@@ -365,7 +365,7 @@ VulkanWindow::VulkanWindow(const Napi::CallbackInfo& info) : Napi::ObjectWrap<Vu
   if (info.IsConstructCall()) {
     if (info[0].IsObject()) {
       // init glfw
-      if (glfwInit() != GLFW_TRUE) Napi::TypeError::New(env, "Failed to initialise GLFW").ThrowAsJavaScriptException();
+      if (!glfwInit()) Napi::TypeError::New(env, "Failed to initialise GLFW").ThrowAsJavaScriptException();
       Napi::Object obj = info[0].As<Napi::Object>();
       if (!obj.Has("width")) Napi::Error::New(env, "'Object' must contain property 'width'").ThrowAsJavaScriptException();
       if (!obj.Has("height")) Napi::Error::New(env, "'Object' must contain property 'height'").ThrowAsJavaScriptException();
@@ -380,7 +380,7 @@ VulkanWindow::VulkanWindow(const Napi::CallbackInfo& info) : Napi::ObjectWrap<Vu
       glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
       GLFWwindow* window = glfwCreateWindow(this->width, this->height, this->title.c_str(), nullptr, nullptr);
       this->instance = window;
-      glfwMakeContextCurrent(window);
+      //glfwMakeContextCurrent(window);
       glfwSetWindowUserPointer(window, this);
       // window events
       glfwSetWindowSizeCallback(window, VulkanWindow::onWindowResize);

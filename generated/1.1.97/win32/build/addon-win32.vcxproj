@@ -74,7 +74,7 @@
     </Lib>
     <Link>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;DelayImp.lib;&quot;C:\Users\User\.node-gyp\11.9.0\x64\node.lib&quot;;glfw3dll.lib;vulkan-1.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>../@PROJECT_SOURCE_DIR@/lib/win/x64;..\..\..\..\lib\win\x64\GLFW;C:\VulkanSDK\1.1.97.0\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../@PROJECT_SOURCE_DIR@/lib/*/x64;..\..\..\..\lib\*\x64\GLFW;C:\VulkanSDK\1.1.97.0\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>/ignore:4199 %(AdditionalOptions)</AdditionalOptions>
       <AllowIsolation>true</AllowIsolation>
       <DataExecutionPrevention>true</DataExecutionPrevention>
@@ -125,7 +125,7 @@
     </Lib>
     <Link>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;DelayImp.lib;&quot;C:\Users\User\.node-gyp\11.9.0\x64\node.lib&quot;;glfw3dll.lib;vulkan-1.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>../@PROJECT_SOURCE_DIR@/lib/win/x64;..\..\..\..\lib\win\x64\GLFW;C:\VulkanSDK\1.1.97.0\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../@PROJECT_SOURCE_DIR@/lib/*/x64;..\..\..\..\lib\*\x64\GLFW;C:\VulkanSDK\1.1.97.0\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>/ignore:4199 /LTCG:INCREMENTAL %(AdditionalOptions)</AdditionalOptions>
       <AllowIsolation>true</AllowIsolation>
       <DataExecutionPrevention>true</DataExecutionPrevention>

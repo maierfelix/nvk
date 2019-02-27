@@ -67,8 +67,10 @@ function copyFiles() {
     ];
     // add win32 runtime files
     if (platform === "win32") {
-      files.push([`${sdkPath}/RunTimeInstaller/${architecture}/`, targetDir]);
       files.push([`${baseDir}/GLFW/glfw3.dll`, targetDir]);
+      files.push([`${baseDir}/GLFW/glfw3.lib`, targetDir + `/../`]);
+      files.push([`${baseDir}/GLFW/glfw3dll.lib`, targetDir + `/../`]);
+      files.push([`${sdkPath}/RunTimeInstaller/${architecture}/`, targetDir]);
     }
     // add darwin runtime files
     else if (platform === "darwin") {
