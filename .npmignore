@@ -17,3 +17,5 @@ docs/*.zip
 docs/doc_tmp
 
 generator/specifications/*.xml
+
+releases
