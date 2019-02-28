@@ -16,7 +16,9 @@
   },
   "scripts": {
     "build": "node ./build.js",
-    "generate": "node --experimental-modules ./generator/index.mjs"
+    "generate": "node --experimental-modules ./generator/index.mjs",
+    "release": "node ./make-release.js",
+    "all": "npm run generate & npm run build & npm run release"
   },
   "devDependencies": {
     "bindings": "^1.4.0",
@@ -25,7 +27,8 @@
     "nunjucks": "^3.1.3",
     "toposort": "^2.0.2",
     "xml-js": "^1.6.7",
-    "yauzl": "^2.10.0"
+    "yauzl": "^2.10.0",
+    "targz": "^1.0.1"
   },
   "dependencies": {},
   "description": "Vulkan rendering API for node",

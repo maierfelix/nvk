@@ -2,6 +2,7 @@
   "variables": {
     "root": "../../..",
     "platform": "<(OS)",
+    "release": "<@(module_root_dir)/build/Release",
     "vkSDK": "C:/VulkanSDK/1.1.97.0"
   },
   "conditions": [
@@ -20,15 +21,6 @@
         "./src/index.cpp",
 "./src/source.cpp"
       ],
-      "include_dirs": [
-        "<!@(node -p \"require('node-addon-api').include\")",
-        "<(root)/lib/include/",
-        "<(vkSDK)/include"
-      ],
-      "library_dirs": [
-        "<(root)/lib/<(platform)/<(target_arch)/GLFW",
-        "<(vkSDK)/lib"
-      ],
       "conditions": [
         [
           "OS=='win'",
@@ -36,6 +28,15 @@
             "target_name": "addon-win32",
             "cflags": [
               "-stdlib=libstdc++"
+            ],
+            "include_dirs": [
+              "<!@(node -p \"require('node-addon-api').include\")",
+              "<(root)/lib/include/",
+              "<(vkSDK)/include"
+            ],
+            "library_dirs": [
+              "<(root)/lib/<(platform)/<(target_arch)/GLFW",
+              "<(vkSDK)/lib"
             ],
             "link_settings": {
               "libraries": [
@@ -75,6 +76,15 @@
           "OS=='linux'",
           {
             "target_name": "addon-linux",
+            "include_dirs": [
+              "<!@(node -p \"require('node-addon-api').include\")",
+              "<(root)/lib/include/",
+              "<(vkSDK)/include"
+            ],
+            "library_dirs": [
+              "<(root)/lib/<(platform)/<(target_arch)/GLFW",
+              "<(vkSDK)/lib"
+            ],
             "cflags": [
               "-std=c++11",
               "-fexceptions",
@@ -101,6 +111,43 @@
                 "-lXcursor",
                 "-ldl",
                 "-pthread"
+              ]
+            }
+          },
+          "OS=='mac'",
+          {
+            "defines": [
+              "NAPI_DISABLE_CPP_EXCEPTIONS",
+              "_GLFW_COCOA=1"
+            ],
+            "target_name": "addon-darwin",
+            "include_dirs": [
+              "<!@(node -p \"require('node-addon-api').include\")",
+              "<(root)/lib/include/GLFW",
+              "<(vkSDK)/include"
+            ],
+            "link_settings": {
+              "libraries": [
+                "<(release)/libvulkan.1.dylib",
+                "<(release)/libglfw3.a"
+              ]
+            },
+            "xcode_settings": {
+              "OTHER_CPLUSPLUSFLAGS": [
+                "-std=c++11",
+                "-stdlib=libc++",
+                "-fexceptions",
+                "-Wno-switch",
+                "-Wno-unused",
+                "-Wno-uninitialized"
+              ],
+              "OTHER_LDFLAGS": [
+                "-Wl,-rpath,<(release)",
+                "-lglfw3",
+                "-framework Cocoa",
+                "-framework IOKit",
+                "-framework Metal",
+                "-framework QuartzCore"
               ]
             }
           }
