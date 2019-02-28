@@ -11,7 +11,6 @@ DEFS_Debug := \
 	'-D_LARGEFILE_SOURCE' \
 	'-D_FILE_OFFSET_BITS=64' \
 	'-DNAPI_DISABLE_CPP_EXCEPTIONS' \
-	'-D_GLFW_COCOA=1' \
 	'-DBUILDING_NODE_EXTENSION' \
 	'-DDEBUG' \
 	'-D_DEBUG' \
@@ -60,7 +59,7 @@ INCS_Debug := \
 	-I/Users/user/.node-gyp/11.10.0/deps/zlib \
 	-I/Users/user/.node-gyp/11.10.0/deps/v8/include \
 	-I/Users/user/Documents/GitHub/nvk/node_modules/node-addon-api \
-	-I$(srcdir)/../../../lib/include/GLFW \
+	-I$(srcdir)/../../../lib/include \
 	-I/Users/user/Documents/Projects/vulkansdk-macos-1.1.97.0/macOS/include
 
 DEFS_Release := \
@@ -72,7 +71,6 @@ DEFS_Release := \
 	'-D_LARGEFILE_SOURCE' \
 	'-D_FILE_OFFSET_BITS=64' \
 	'-DNAPI_DISABLE_CPP_EXCEPTIONS' \
-	'-D_GLFW_COCOA=1' \
 	'-DBUILDING_NODE_EXTENSION'
 
 # Flags passed to all source files.
@@ -118,7 +116,7 @@ INCS_Release := \
 	-I/Users/user/.node-gyp/11.10.0/deps/zlib \
 	-I/Users/user/.node-gyp/11.10.0/deps/v8/include \
 	-I/Users/user/Documents/GitHub/nvk/node_modules/node-addon-api \
-	-I$(srcdir)/../../../lib/include/GLFW \
+	-I$(srcdir)/../../../lib/include \
 	-I/Users/user/Documents/Projects/vulkansdk-macos-1.1.97.0/macOS/include
 
 OBJS := \
@@ -153,7 +151,8 @@ $(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj)/%.cpp FORCE_DO_CMD
 ### Rules for final target.
 LDFLAGS_Debug := \
 	-Wl,-rpath,/Users/user/Documents/GitHub/nvk/generated/1.1.97/darwin/build/Release \
-	-lglfw3 \
+	-lvulkan \
+	-lMoltenVK \
 	-framework Cocoa \
 	-framework IOKit \
 	-framework Metal \
@@ -162,13 +161,15 @@ LDFLAGS_Debug := \
 	-Wl,-no_pie \
 	-Wl,-search_paths_first \
 	-mmacosx-version-min=10.7 \
+	-L/Users/user/Documents/GitHub/nvk/generated/1.1.97/darwin/build/Release \
 	-arch x86_64 \
 	-L$(builddir) \
 	-stdlib=libc++
 
 LIBTOOLFLAGS_Debug := \
 	-Wl,-rpath,/Users/user/Documents/GitHub/nvk/generated/1.1.97/darwin/build/Release \
-	-lglfw3 \
+	-lvulkan \
+	-lMoltenVK \
 	-framework Cocoa \
 	-framework IOKit \
 	-framework Metal \
@@ -179,7 +180,8 @@ LIBTOOLFLAGS_Debug := \
 
 LDFLAGS_Release := \
 	-Wl,-rpath,/Users/user/Documents/GitHub/nvk/generated/1.1.97/darwin/build/Release \
-	-lglfw3 \
+	-lvulkan \
+	-lMoltenVK \
 	-framework Cocoa \
 	-framework IOKit \
 	-framework Metal \
@@ -188,13 +190,15 @@ LDFLAGS_Release := \
 	-Wl,-no_pie \
 	-Wl,-search_paths_first \
 	-mmacosx-version-min=10.7 \
+	-L/Users/user/Documents/GitHub/nvk/generated/1.1.97/darwin/build/Release \
 	-arch x86_64 \
 	-L$(builddir) \
 	-stdlib=libc++
 
 LIBTOOLFLAGS_Release := \
 	-Wl,-rpath,/Users/user/Documents/GitHub/nvk/generated/1.1.97/darwin/build/Release \
-	-lglfw3 \
+	-lvulkan \
+	-lMoltenVK \
 	-framework Cocoa \
 	-framework IOKit \
 	-framework Metal \
@@ -204,8 +208,9 @@ LIBTOOLFLAGS_Release := \
 	-Wl,-search_paths_first
 
 LIBS := \
-	/Users/user/Documents/GitHub/nvk/generated/1.1.97/darwin/build/Release/libvulkan.1.dylib \
-	/Users/user/Documents/GitHub/nvk/generated/1.1.97/darwin/build/Release/libglfw3.a
+	/Users/user/Documents/GitHub/nvk/generated/1.1.97/darwin/build/Release/libvulkan.dylib \
+	/Users/user/Documents/GitHub/nvk/generated/1.1.97/darwin/build/Release/libMoltenVK.dylib \
+	/Users/user/Documents/GitHub/nvk/generated/1.1.97/darwin/build/Release/../../../../../lib/darwin/x64/GLFW/libglfw3.a
 
 $(builddir)/addon-darwin.node: GYP_LDFLAGS := $(LDFLAGS_$(BUILDTYPE))
 $(builddir)/addon-darwin.node: LIBS := $(LIBS)

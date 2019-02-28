@@ -11,7 +11,8 @@
     "TEMPLATE_DIR": "./generator/templates",
     "POST_DEFAULT_BINDING_VERSION": "1.1.97",
     "TS_ROOT": "../../index",
-    "DOCS_DIR": "./docs"
+    "DOCS_DIR": "./docs",
+    "MAC_ICD_PATH": "Contents/Resources/vulkan/icd.d/MoltenVK_icd.json"
   },
   "scripts": {
     "build": "node ./build.js",

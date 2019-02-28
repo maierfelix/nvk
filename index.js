@@ -41,7 +41,8 @@ if (!vkVersion) throw `No vulkan version --vkversion specified!`;
 
 let {platform} = process;
 
-const addonLocalPath = `${pkg.config.GEN_OUT_DIR}/${vkVersion}/${platform}/build/Release/addon-${platform}.node`;
+const releasePath = `${pkg.config.GEN_OUT_DIR}/${vkVersion}/${platform}/build/Release`;
+const addonLocalPath = `${releasePath}/addon-${platform}.node`;
 const addonPath = path.join(__dirname, addonLocalPath);
 const bindingsPath = path.join(__dirname, `${pkg.config.GEN_OUT_DIR}/`);
 
@@ -61,6 +62,10 @@ if (!fs.existsSync(addonPath)) {
   });
   //process.stderr.write(`Make sure to generate and compile the bindings for ${vkVersion}\n`);
   throw `Exiting..`;
+}
+
+if (platform === "darwin") {
+  process.env.VK_ICD_FILENAMES = path.join(__dirname, `${releasePath}/${pkg.config.MAC_ICD_PATH}`);
 }
 
 const addon = require(addonPath);
