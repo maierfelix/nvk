@@ -24,6 +24,8 @@ Platforms:
   * [Build Instructions](#build-instructions)
     + [Requirements](#requirements)
     + [Windows](#windows)
+    + [Linux](#linux)
+    + [MacOS](#macos)
   * [CLI](#cli)
       - [Syntax](#syntax)
       - [Flags](#flags)
@@ -36,7 +38,6 @@ Platforms:
       - [Structure creation shortcut](#structure-creation-shortcut)
   * [Project Structure](#project-structure)
   * [Binding Code Generator](#binding-code-generator)
-  * [HTML, CSS based UIs](#html-css-based-uis)
   * [TODOs](#todos)
 
 ## Preview:<br/>
@@ -114,11 +115,44 @@ If you don't have Visual Studio, then install the following package:
 npm install --global --production windows-build-tools
 ````
 
-Now install the corresponding Vulkan SDK version from [here](https://vulkan.lunarg.com/sdk/home#windows). The *nvk* installer will ask you to setup bindings for ``1.1.97``, so make sure you have ``Vulkan SDK 1.1.97`` installed.
+Now install the corresponding Vulkan SDK version from [here](https://vulkan.lunarg.com/sdk/home#windows).
 
-Next, install *nvk*
+Next, clone this repository.
+
+To generate and compile the bindings, run:
 ````
-npm install nvk
+npm run generate --vkversion=x
+npm run build --vkversion=x
+````
+
+### Linux:
+
+Download and setup the corresponding Vulkan SDK version from [here](https://vulkan.lunarg.com/sdk/home#linux).
+
+Follow the guide on how to correctly setup the SDK.
+Make sure that the environment variables are correctly set, e.g. `echo $VULKAN_SDK`.
+
+Next, clone this repository.
+
+To generate and compile the bindings, run:
+````
+npm run generate --vkversion=x
+npm run build --vkversion=x
+````
+
+### MacOS:
+
+Download and setup the corresponding Vulkan SDK version from [here](https://vulkan.lunarg.com/sdk/home#mac).
+
+Follow the guide on how to correctly setup the SDK.
+Make sure that the environment variables are correctly set, e.g. `echo $VULKAN_SDK`.
+
+Next, clone this repository.
+
+To generate and compile the bindings, run:
+````
+npm run generate --vkversion=x
+npm run build --vkversion=x
 ````
 
 ## CLI:
@@ -152,7 +186,7 @@ The generated bindings can then be found in `generated/{vkversion}/`
 #### Building:
 You can build the generated bindings with:
 ````
-npm run build --vkversion=1.1.97 --msvsversion=2017
+npm run build --vkversion=1.1.97
 ````
 
 The compiled bindings can then be found in `generated/{vkversion}/build`
@@ -231,6 +265,7 @@ let renderArea = new VkRect2D({
 ````
 
 ## Project Structure:
+ - `docs`: generated vulkan documentation files
  - `generator`: code for binding generation
  - `generated`: the generated binding code
  - `examples`: ready-to-run examples
@@ -241,32 +276,13 @@ This tool uses a new JavaScript type called [`BigInt`](https://developers.google
 
 ## Binding Code Generator:
 
-The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.92/ast.json), which is then used by the code generator. Currently a total of `~230.000` lines of code get generated, where `~150.000` lines are C++ code.
-
-## HTML, CSS based UIs
-
-The [chromium-ui](https://github.com/maierfelix/nvk/tree/chromium-ui) branch contains an experiment about letting users create UIs with a complete HTML/CSS browser toolchain. The website (browser frame) can then be rendered inside Vulkan. This is done using [Chromium-Embedded-Framework](https://bitbucket.org/chromiumembedded/cef). The browser texture is shared with vulkan's memory, so you can directly render it on top of your application.
-
-There is one last thing that prevents me from merging it. At the moment, browser redraws trigger a CPU texture copying path, which is horribly slow. At the moment the pipeline is:
-
- - **[** CEF **|->** OpenGL **<->** Vulkan **]**
-
-CEF recently got shared textures added, meaning crazy performance and no CPU wandering anymore! The above pipeline could now be:
- - **[** CEF **<->** D3D11 **<->** Vulkan **]**
-
----
- - **|->** copying
- - **<->** sharing
-
-But CEF's shared textures on Windows require D3D11 which I'm not familiar with. If you're interested in helping and solving this one last step, please make a PR!
+The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.97/ast.json), which is then used by the code generator. Currently more than `~250.000` lines of code get generated, where `~150.000` lines are C++ code.
 
 ## TODOs:
- - [ ] Linux Support (~0%)
  - [ ] Struct generation (~98%)
  - [x] Handle generation (~100%)
  - [x] Enum generation (100%)
  - [ ] Function generation (~95%)
- - [ ] Deallocation (~90%)
- - [ ] Vulkan API fill V8 reflection (~90%)
- - [ ] Documentation generator (85%)
- - [ ] CEF D3D11 high-performance texture sharing (~0%)
+ - [ ] Deallocation (~95%)
+ - [ ] Vulkan API fill V8 reflection (~95%)
+ - [ ] Documentation generator (95%)
