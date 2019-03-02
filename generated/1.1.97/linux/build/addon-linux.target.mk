@@ -45,16 +45,16 @@ CFLAGS_CC_Debug := \
 	-Wno-uninitialized
 
 INCS_Debug := \
-	-I/home/user/.node-gyp/11.10.0/include/node \
-	-I/home/user/.node-gyp/11.10.0/src \
-	-I/home/user/.node-gyp/11.10.0/deps/openssl/config \
-	-I/home/user/.node-gyp/11.10.0/deps/openssl/openssl/include \
-	-I/home/user/.node-gyp/11.10.0/deps/uv/include \
-	-I/home/user/.node-gyp/11.10.0/deps/zlib \
-	-I/home/user/.node-gyp/11.10.0/deps/v8/include \
+	-I/home/user/.node-gyp/11.10.1/include/node \
+	-I/home/user/.node-gyp/11.10.1/src \
+	-I/home/user/.node-gyp/11.10.1/deps/openssl/config \
+	-I/home/user/.node-gyp/11.10.1/deps/openssl/openssl/include \
+	-I/home/user/.node-gyp/11.10.1/deps/uv/include \
+	-I/home/user/.node-gyp/11.10.1/deps/zlib \
+	-I/home/user/.node-gyp/11.10.1/deps/v8/include \
 	-I/home/user/Documents/GitHub/nvk/node_modules/node-addon-api \
 	-I$(srcdir)/../../../lib/include \
-	-I/media/user/Acer/Users/User/Desktop/lxss-shared/vulkan/1.1.97.0/include
+	-I/home/user/vulkan/1.1.97.0/x86_64/include
 
 DEFS_Release := \
 	'-DNODE_GYP_MODULE_NAME=addon-linux' \
@@ -96,16 +96,16 @@ CFLAGS_CC_Release := \
 	-Wno-uninitialized
 
 INCS_Release := \
-	-I/home/user/.node-gyp/11.10.0/include/node \
-	-I/home/user/.node-gyp/11.10.0/src \
-	-I/home/user/.node-gyp/11.10.0/deps/openssl/config \
-	-I/home/user/.node-gyp/11.10.0/deps/openssl/openssl/include \
-	-I/home/user/.node-gyp/11.10.0/deps/uv/include \
-	-I/home/user/.node-gyp/11.10.0/deps/zlib \
-	-I/home/user/.node-gyp/11.10.0/deps/v8/include \
+	-I/home/user/.node-gyp/11.10.1/include/node \
+	-I/home/user/.node-gyp/11.10.1/src \
+	-I/home/user/.node-gyp/11.10.1/deps/openssl/config \
+	-I/home/user/.node-gyp/11.10.1/deps/openssl/openssl/include \
+	-I/home/user/.node-gyp/11.10.1/deps/uv/include \
+	-I/home/user/.node-gyp/11.10.1/deps/zlib \
+	-I/home/user/.node-gyp/11.10.1/deps/v8/include \
 	-I/home/user/Documents/GitHub/nvk/node_modules/node-addon-api \
 	-I$(srcdir)/../../../lib/include \
-	-I/media/user/Acer/Users/User/Desktop/lxss-shared/vulkan/1.1.97.0/include
+	-I/home/user/vulkan/1.1.97.0/x86_64/include
 
 OBJS := \
 	$(obj).target/$(TARGET)/src/index.o \
@@ -138,19 +138,17 @@ $(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj)/%.cpp FORCE_DO_CMD
 LDFLAGS_Debug := \
 	-pthread \
 	-rdynamic \
-	-m64 \
-	-L../../../lib/linux/x64/GLFW \
-	-L/media/user/Acer/Users/User/Desktop/lxss-shared/vulkan/1.1.97.0/x86_64/../../1.1.97.0/lib
+	-m64
 
 LDFLAGS_Release := \
 	-pthread \
 	-rdynamic \
-	-m64 \
-	-L../../../lib/linux/x64/GLFW \
-	-L/media/user/Acer/Users/User/Desktop/lxss-shared/vulkan/1.1.97.0/x86_64/../../1.1.97.0/lib
+	-m64
 
 LIBS := \
-	-lglfw3 \
+	-Wl,-rpath,/home/user/Documents/GitHub/nvk/generated/1.1.97/linux/build/Release \
+	/home/user/Documents/GitHub/nvk/generated/1.1.97/linux/build/Release/libvulkan.so \
+	/home/user/Documents/GitHub/nvk/generated/1.1.97/linux/build/Release/../../../../../lib/linux/x64/GLFW/libglfw3.a \
 	-lvulkan \
 	-lXrandr \
 	-lXi \

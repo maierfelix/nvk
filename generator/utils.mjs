@@ -67,7 +67,7 @@ export function getLunarVkSDKPath() {
     return path.replace(/\\/g, `/`);
   }
   else if (platform === "linux") {
-    return envSDKPath + `/../..`;
+    return envSDKPath;
   }
   else if (platform === "darwin") {
     let path = envSDKPath;
@@ -92,7 +92,7 @@ export function resolveLunarVkSDKPath(vkVersion) {
     }
   }
   else if (platform === "linux") {
-    sdkPath = sdkPath + `/x86_64`;
+    sdkPath = VK_SDK_PATH;
   }
   else if (platform === "darwin") {
     sdkPath = VK_SDK_PATH + `/macOS`;

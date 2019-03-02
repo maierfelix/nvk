@@ -77,10 +77,6 @@
               "<(root)/lib/include/",
               "<(vkSDK)/include"
             ],
-            "library_dirs": [
-              "<(root)/lib/<(platform)/<(target_arch)/GLFW",
-              "<(vkSDK)/lib"
-            ],
             "cflags": [
               "-std=c++11",
               "-fexceptions",
@@ -95,20 +91,20 @@
               "-Wno-unused",
               "-Wno-uninitialized"
             ],
-            "link_settings": {
-              "libraries": [
-                "-lglfw3",
-                "-lvulkan",
-                "-lXrandr",
-                "-lXi",
-                "-lX11",
-                "-lXxf86vm",
-                "-lXinerama",
-                "-lXcursor",
-                "-ldl",
-                "-pthread"
-              ]
-            }
+            "libraries": [
+              "-Wl,-rpath,<(release)",
+              "<(release)/libvulkan.so",
+              "<(release)/../../<(root)/lib/<(platform)/<(target_arch)/GLFW/libglfw3.a",
+              "-lvulkan",
+              "-lXrandr",
+              "-lXi",
+              "-lX11",
+              "-lXxf86vm",
+              "-lXinerama",
+              "-lXcursor",
+              "-ldl",
+              "-pthread"
+            ]
           },
           "OS=='mac'",
           {

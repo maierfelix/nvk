@@ -81,6 +81,12 @@ function copyFiles() {
       files.push([`${baseDir}/ICD/`, targetDir]);
       //files.push([`${baseDir}/GLFW/`, targetDir]);
     }
+    // add linux runtime files
+    else if (platform === "linux") {
+      files.push([`${sdkPath}/lib/libvulkan.so`, targetDir]);
+      files.push([`${sdkPath}/lib/libvulkan.so.1`, targetDir]);
+      files.push([`${sdkPath}/lib/libvulkan.so.1.1.97`, targetDir]);
+    }
     let counter = 0;
     files.map(entry => {
       let source = entry[0];

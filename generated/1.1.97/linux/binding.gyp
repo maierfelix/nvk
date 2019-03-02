@@ -2,7 +2,8 @@
   "variables": {
     "root": "../../..",
     "platform": "<(OS)",
-    "vkSDK": "/media/user/Acer/Users/User/Desktop/lxss-shared/vulkan/1.1.97.0/x86_64/../../1.1.97.0"
+    "release": "<@(module_root_dir)/build/Release",
+    "vkSDK": "/home/user/vulkan/1.1.97.0/x86_64"
   },
   "conditions": [
     [ "platform == 'win'", { "variables": { "platform": "win" } } ],
@@ -20,15 +21,6 @@
         "./src/index.cpp",
 "./src/source.cpp"
       ],
-      "include_dirs": [
-        "<!@(node -p \"require('node-addon-api').include\")",
-        "<(root)/lib/include/",
-        "<(vkSDK)/include"
-      ],
-      "library_dirs": [
-        "<(root)/lib/<(platform)/<(target_arch)/GLFW",
-        "<(vkSDK)/lib"
-      ],
       "conditions": [
         [
           "OS=='win'",
@@ -36,6 +28,15 @@
             "target_name": "addon-win32",
             "cflags": [
               "-stdlib=libstdc++"
+            ],
+            "include_dirs": [
+              "<!@(node -p \"require('node-addon-api').include\")",
+              "<(root)/lib/include/",
+              "<(vkSDK)/include"
+            ],
+            "library_dirs": [
+              "<(root)/lib/<(platform)/<(target_arch)/GLFW",
+              "<(vkSDK)/lib"
             ],
             "link_settings": {
               "libraries": [
@@ -75,6 +76,11 @@
           "OS=='linux'",
           {
             "target_name": "addon-linux",
+            "include_dirs": [
+              "<!@(node -p \"require('node-addon-api').include\")",
+              "<(root)/lib/include/",
+              "<(vkSDK)/include"
+            ],
             "cflags": [
               "-std=c++11",
               "-fexceptions",
@@ -89,18 +95,57 @@
               "-Wno-unused",
               "-Wno-uninitialized"
             ],
-            "link_settings": {
-              "libraries": [
-                "-lglfw3",
+            "libraries": [
+              "-Wl,-rpath,<(release)",
+              "<(release)/libvulkan.so",
+              "<(release)/../../<(root)/lib/<(platform)/<(target_arch)/GLFW/libglfw3.a",
+              "-lvulkan",
+              "-lXrandr",
+              "-lXi",
+              "-lX11",
+              "-lXxf86vm",
+              "-lXinerama",
+              "-lXcursor",
+              "-ldl",
+              "-pthread"
+            ]
+          },
+          "OS=='mac'",
+          {
+            "defines": [
+              "NAPI_DISABLE_CPP_EXCEPTIONS"
+            ],
+            "target_name": "addon-darwin",
+            "include_dirs": [
+              "<!@(node -p \"require('node-addon-api').include\")",
+              "<(root)/lib/include",
+              "<(vkSDK)/include"
+            ],
+            "libraries": [
+              "<(release)/libvulkan.dylib",
+              "<(release)/libMoltenVK.dylib",
+              "<(release)/../../<(root)/lib/<(platform)/<(target_arch)/GLFW/libglfw3.a"
+            ],
+            "xcode_settings": {
+              "OTHER_CPLUSPLUSFLAGS": [
+                "-std=c++11",
+                "-stdlib=libc++",
+                "-fexceptions",
+                "-Wno-switch",
+                "-Wno-unused",
+                "-Wno-uninitialized"
+              ],
+              "OTHER_LDFLAGS": [
+                "-Wl,-rpath,<(release)",
                 "-lvulkan",
-                "-lXrandr",
-                "-lXi",
-                "-lX11",
-                "-lXxf86vm",
-                "-lXinerama",
-                "-lXcursor",
-                "-ldl",
-                "-pthread"
+                "-lMoltenVK",
+                "-framework Cocoa",
+                "-framework IOKit",
+                "-framework Metal",
+                "-framework QuartzCore"
+              ],
+              "LIBRARY_SEARCH_PATHS": [
+                "<(release)"
               ]
             }
           }
