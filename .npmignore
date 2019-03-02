@@ -20,3 +20,7 @@ docs/doc_tmp
 generator/specifications/*.xml
 
 releases
+
+generated/1.1.85
+generated/1.1.92
+generated/1.1.98
