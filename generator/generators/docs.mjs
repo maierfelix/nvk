@@ -170,9 +170,9 @@ function getJavaScriptType(member) {
   }
   if (member.isStaticArray) {
     // string of chars
-    if (member.type === "char") {
+    if (member.type === "char" && member.isStaticArray) {
       return new JavaScriptType({
-        type: JavaScriptType.ARRAY_OF_STRINGS,
+        type: JavaScriptType.STRING,
         isArray: true,
         isNullable: true
       });
