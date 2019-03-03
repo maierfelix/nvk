@@ -81,10 +81,6 @@
               "<(root)/lib/include/",
               "<(vkSDK)/include"
             ],
-            "library_dirs": [
-              "<(root)/lib/<(platform)/<(target_arch)/GLFW",
-              "<(vkSDK)/lib"
-            ],
             "cflags": [
               "-std=c++11",
               "-fexceptions",
@@ -99,39 +95,37 @@
               "-Wno-unused",
               "-Wno-uninitialized"
             ],
-            "link_settings": {
-              "libraries": [
-                "-lglfw3",
-                "-lvulkan",
-                "-lXrandr",
-                "-lXi",
-                "-lX11",
-                "-lXxf86vm",
-                "-lXinerama",
-                "-lXcursor",
-                "-ldl",
-                "-pthread"
-              ]
-            }
+            "libraries": [
+              "-Wl,-rpath,<(release)",
+              "<(release)/libvulkan.so",
+              "<(release)/../../<(root)/lib/<(platform)/<(target_arch)/GLFW/libglfw3.a",
+              "-lvulkan",
+              "-lXrandr",
+              "-lXi",
+              "-lX11",
+              "-lXxf86vm",
+              "-lXinerama",
+              "-lXcursor",
+              "-ldl",
+              "-pthread"
+            ]
           },
           "OS=='mac'",
           {
             "defines": [
-              "NAPI_DISABLE_CPP_EXCEPTIONS",
-              "_GLFW_COCOA=1"
+              "NAPI_DISABLE_CPP_EXCEPTIONS"
             ],
             "target_name": "addon-darwin",
             "include_dirs": [
               "<!@(node -p \"require('node-addon-api').include\")",
-              "<(root)/lib/include/GLFW",
+              "<(root)/lib/include",
               "<(vkSDK)/include"
             ],
-            "link_settings": {
-              "libraries": [
-                "<(release)/libvulkan.1.dylib",
-                "<(release)/libglfw3.a"
-              ]
-            },
+            "libraries": [
+              "<(release)/libvulkan.dylib",
+              "<(release)/libMoltenVK.dylib",
+              "<(release)/../../<(root)/lib/<(platform)/<(target_arch)/GLFW/libglfw3.a"
+            ],
             "xcode_settings": {
               "OTHER_CPLUSPLUSFLAGS": [
                 "-std=c++11",
@@ -143,11 +137,15 @@
               ],
               "OTHER_LDFLAGS": [
                 "-Wl,-rpath,<(release)",
-                "-lglfw3",
+                "-lvulkan",
+                "-lMoltenVK",
                 "-framework Cocoa",
                 "-framework IOKit",
                 "-framework Metal",
                 "-framework QuartzCore"
+              ],
+              "LIBRARY_SEARCH_PATHS": [
+                "<(release)"
               ]
             }
           }
