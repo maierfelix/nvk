@@ -1,6 +1,6 @@
 body {
-  color: black;
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  color: rgb(43, 67, 72);
+  font-family: Roboto,-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI","Oxygen","Ubuntu","Cantarell","Open Sans",sans-serif;
   overflow-x: hidden;
   font-size: 1rem;
 }
@@ -10,7 +10,7 @@ body {
 }
 
 vk-search > input {
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: Roboto,-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI","Oxygen","Ubuntu","Cantarell","Open Sans",sans-serif;
   overflow-x: hidden;
   font-size: 1rem;
   margin-bottom: 0.5em;
@@ -204,24 +204,21 @@ details > ol > li {
 ol > li[label="f"]:before {
   content: "[f] ";
   font-style: italic;
-  font-family: monospace;
-  font-weight: 800;
+  font-weight: 200;
   color: #9a9a9a;
 }
 
 ol > li[label="s"]:before {
   content: "[s] ";
   font-style: italic;
-  font-family: monospace;
-  font-weight: 800;
+  font-weight: 200;
   color: #9a9a9a;
 }
 
 ol > li[label="h"]:before {
   content: "[h] ";
   font-style: italic;
-  font-family: monospace;
-  font-weight: 800;
+  font-weight: 200;
   color: #9a9a9a;
 }
 
