@@ -8,18 +8,13 @@ generated/*/*/build/Release/*.pdb
 generated/*/*/build/Release/*.map
 generated/*/*/build/Release/obj.target
 
-lib
-src
-
+docs
 examples
 examples-dev
-
-docs/*.zip
-docs/doc_tmp
-
-generator/specifications/*.xml
-
+generator
+lib
 releases
+src
 
 generated/1.1.85
 generated/1.1.92
