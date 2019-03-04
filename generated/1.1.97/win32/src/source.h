@@ -31,6 +31,9 @@ class _VkDebugUtilsMessengerEXT : public Napi::ObjectWrap<_VkDebugUtilsMessenger
     ~_VkDebugUtilsMessengerEXT();
     static Napi::FunctionReference constructor;
 
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
+
     // real instance
     VkDebugUtilsMessengerEXT instance;
 
@@ -49,6 +52,9 @@ class _VkDebugReportCallbackEXT : public Napi::ObjectWrap<_VkDebugReportCallback
     _VkDebugReportCallbackEXT(const Napi::CallbackInfo &info);
     ~_VkDebugReportCallbackEXT();
     static Napi::FunctionReference constructor;
+
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
 
     // real instance
     VkDebugReportCallbackEXT instance;
@@ -69,6 +75,9 @@ class _VkSwapchainKHR : public Napi::ObjectWrap<_VkSwapchainKHR> {
     ~_VkSwapchainKHR();
     static Napi::FunctionReference constructor;
 
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
+
     // real instance
     VkSwapchainKHR instance;
 
@@ -87,6 +96,9 @@ class _VkSurfaceKHR : public Napi::ObjectWrap<_VkSurfaceKHR> {
     _VkSurfaceKHR(const Napi::CallbackInfo &info);
     ~_VkSurfaceKHR();
     static Napi::FunctionReference constructor;
+
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
 
     // real instance
     VkSurfaceKHR instance;
@@ -107,6 +119,9 @@ class _VkDisplayModeKHR : public Napi::ObjectWrap<_VkDisplayModeKHR> {
     ~_VkDisplayModeKHR();
     static Napi::FunctionReference constructor;
 
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
+
     // real instance
     VkDisplayModeKHR instance;
 
@@ -125,6 +140,9 @@ class _VkDisplayKHR : public Napi::ObjectWrap<_VkDisplayKHR> {
     _VkDisplayKHR(const Napi::CallbackInfo &info);
     ~_VkDisplayKHR();
     static Napi::FunctionReference constructor;
+
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
 
     // real instance
     VkDisplayKHR instance;
@@ -145,6 +163,9 @@ class _VkAccelerationStructureNV : public Napi::ObjectWrap<_VkAccelerationStruct
     ~_VkAccelerationStructureNV();
     static Napi::FunctionReference constructor;
 
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
+
     // real instance
     VkAccelerationStructureNV instance;
 
@@ -163,6 +184,9 @@ class _VkValidationCacheEXT : public Napi::ObjectWrap<_VkValidationCacheEXT> {
     _VkValidationCacheEXT(const Napi::CallbackInfo &info);
     ~_VkValidationCacheEXT();
     static Napi::FunctionReference constructor;
+
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
 
     // real instance
     VkValidationCacheEXT instance;
@@ -183,6 +207,9 @@ class _VkSamplerYcbcrConversion : public Napi::ObjectWrap<_VkSamplerYcbcrConvers
     ~_VkSamplerYcbcrConversion();
     static Napi::FunctionReference constructor;
 
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
+
     // real instance
     VkSamplerYcbcrConversion instance;
 
@@ -201,6 +228,9 @@ class _VkDescriptorUpdateTemplate : public Napi::ObjectWrap<_VkDescriptorUpdateT
     _VkDescriptorUpdateTemplate(const Napi::CallbackInfo &info);
     ~_VkDescriptorUpdateTemplate();
     static Napi::FunctionReference constructor;
+
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
 
     // real instance
     VkDescriptorUpdateTemplate instance;
@@ -221,6 +251,9 @@ class _VkIndirectCommandsLayoutNVX : public Napi::ObjectWrap<_VkIndirectCommands
     ~_VkIndirectCommandsLayoutNVX();
     static Napi::FunctionReference constructor;
 
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
+
     // real instance
     VkIndirectCommandsLayoutNVX instance;
 
@@ -239,6 +272,9 @@ class _VkObjectTableNVX : public Napi::ObjectWrap<_VkObjectTableNVX> {
     _VkObjectTableNVX(const Napi::CallbackInfo &info);
     ~_VkObjectTableNVX();
     static Napi::FunctionReference constructor;
+
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
 
     // real instance
     VkObjectTableNVX instance;
@@ -259,6 +295,9 @@ class _VkPipelineCache : public Napi::ObjectWrap<_VkPipelineCache> {
     ~_VkPipelineCache();
     static Napi::FunctionReference constructor;
 
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
+
     // real instance
     VkPipelineCache instance;
 
@@ -277,6 +316,9 @@ class _VkRenderPass : public Napi::ObjectWrap<_VkRenderPass> {
     _VkRenderPass(const Napi::CallbackInfo &info);
     ~_VkRenderPass();
     static Napi::FunctionReference constructor;
+
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
 
     // real instance
     VkRenderPass instance;
@@ -297,6 +339,9 @@ class _VkFramebuffer : public Napi::ObjectWrap<_VkFramebuffer> {
     ~_VkFramebuffer();
     static Napi::FunctionReference constructor;
 
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
+
     // real instance
     VkFramebuffer instance;
 
@@ -315,6 +360,9 @@ class _VkQueryPool : public Napi::ObjectWrap<_VkQueryPool> {
     _VkQueryPool(const Napi::CallbackInfo &info);
     ~_VkQueryPool();
     static Napi::FunctionReference constructor;
+
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
 
     // real instance
     VkQueryPool instance;
@@ -335,6 +383,9 @@ class _VkEvent : public Napi::ObjectWrap<_VkEvent> {
     ~_VkEvent();
     static Napi::FunctionReference constructor;
 
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
+
     // real instance
     VkEvent instance;
 
@@ -353,6 +404,9 @@ class _VkSemaphore : public Napi::ObjectWrap<_VkSemaphore> {
     _VkSemaphore(const Napi::CallbackInfo &info);
     ~_VkSemaphore();
     static Napi::FunctionReference constructor;
+
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
 
     // real instance
     VkSemaphore instance;
@@ -373,6 +427,9 @@ class _VkFence : public Napi::ObjectWrap<_VkFence> {
     ~_VkFence();
     static Napi::FunctionReference constructor;
 
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
+
     // real instance
     VkFence instance;
 
@@ -391,6 +448,9 @@ class _VkDescriptorPool : public Napi::ObjectWrap<_VkDescriptorPool> {
     _VkDescriptorPool(const Napi::CallbackInfo &info);
     ~_VkDescriptorPool();
     static Napi::FunctionReference constructor;
+
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
 
     // real instance
     VkDescriptorPool instance;
@@ -411,6 +471,9 @@ class _VkDescriptorSetLayout : public Napi::ObjectWrap<_VkDescriptorSetLayout> {
     ~_VkDescriptorSetLayout();
     static Napi::FunctionReference constructor;
 
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
+
     // real instance
     VkDescriptorSetLayout instance;
 
@@ -429,6 +492,9 @@ class _VkDescriptorSet : public Napi::ObjectWrap<_VkDescriptorSet> {
     _VkDescriptorSet(const Napi::CallbackInfo &info);
     ~_VkDescriptorSet();
     static Napi::FunctionReference constructor;
+
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
 
     // real instance
     VkDescriptorSet instance;
@@ -449,6 +515,9 @@ class _VkSampler : public Napi::ObjectWrap<_VkSampler> {
     ~_VkSampler();
     static Napi::FunctionReference constructor;
 
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
+
     // real instance
     VkSampler instance;
 
@@ -467,6 +536,9 @@ class _VkPipelineLayout : public Napi::ObjectWrap<_VkPipelineLayout> {
     _VkPipelineLayout(const Napi::CallbackInfo &info);
     ~_VkPipelineLayout();
     static Napi::FunctionReference constructor;
+
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
 
     // real instance
     VkPipelineLayout instance;
@@ -487,6 +559,9 @@ class _VkPipeline : public Napi::ObjectWrap<_VkPipeline> {
     ~_VkPipeline();
     static Napi::FunctionReference constructor;
 
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
+
     // real instance
     VkPipeline instance;
 
@@ -505,6 +580,9 @@ class _VkShaderModule : public Napi::ObjectWrap<_VkShaderModule> {
     _VkShaderModule(const Napi::CallbackInfo &info);
     ~_VkShaderModule();
     static Napi::FunctionReference constructor;
+
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
 
     // real instance
     VkShaderModule instance;
@@ -525,6 +603,9 @@ class _VkImageView : public Napi::ObjectWrap<_VkImageView> {
     ~_VkImageView();
     static Napi::FunctionReference constructor;
 
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
+
     // real instance
     VkImageView instance;
 
@@ -543,6 +624,9 @@ class _VkImage : public Napi::ObjectWrap<_VkImage> {
     _VkImage(const Napi::CallbackInfo &info);
     ~_VkImage();
     static Napi::FunctionReference constructor;
+
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
 
     // real instance
     VkImage instance;
@@ -563,6 +647,9 @@ class _VkBufferView : public Napi::ObjectWrap<_VkBufferView> {
     ~_VkBufferView();
     static Napi::FunctionReference constructor;
 
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
+
     // real instance
     VkBufferView instance;
 
@@ -581,6 +668,9 @@ class _VkBuffer : public Napi::ObjectWrap<_VkBuffer> {
     _VkBuffer(const Napi::CallbackInfo &info);
     ~_VkBuffer();
     static Napi::FunctionReference constructor;
+
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
 
     // real instance
     VkBuffer instance;
@@ -601,6 +691,9 @@ class _VkCommandPool : public Napi::ObjectWrap<_VkCommandPool> {
     ~_VkCommandPool();
     static Napi::FunctionReference constructor;
 
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
+
     // real instance
     VkCommandPool instance;
 
@@ -619,6 +712,9 @@ class _VkDeviceMemory : public Napi::ObjectWrap<_VkDeviceMemory> {
     _VkDeviceMemory(const Napi::CallbackInfo &info);
     ~_VkDeviceMemory();
     static Napi::FunctionReference constructor;
+
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
 
     // real instance
     VkDeviceMemory instance;
@@ -639,6 +735,9 @@ class _VkCommandBuffer : public Napi::ObjectWrap<_VkCommandBuffer> {
     ~_VkCommandBuffer();
     static Napi::FunctionReference constructor;
 
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
+
     // real instance
     VkCommandBuffer instance;
 
@@ -657,6 +756,9 @@ class _VkQueue : public Napi::ObjectWrap<_VkQueue> {
     _VkQueue(const Napi::CallbackInfo &info);
     ~_VkQueue();
     static Napi::FunctionReference constructor;
+
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
 
     // real instance
     VkQueue instance;
@@ -677,6 +779,9 @@ class _VkDevice : public Napi::ObjectWrap<_VkDevice> {
     ~_VkDevice();
     static Napi::FunctionReference constructor;
 
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
+
     // real instance
     VkDevice instance;
 
@@ -696,6 +801,9 @@ class _VkPhysicalDevice : public Napi::ObjectWrap<_VkPhysicalDevice> {
     ~_VkPhysicalDevice();
     static Napi::FunctionReference constructor;
 
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
+
     // real instance
     VkPhysicalDevice instance;
 
@@ -714,6 +822,9 @@ class _VkInstance : public Napi::ObjectWrap<_VkInstance> {
     _VkInstance(const Napi::CallbackInfo &info);
     ~_VkInstance();
     static Napi::FunctionReference constructor;
+
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
 
     // real instance
     VkInstance instance;

@@ -77,7 +77,7 @@ Napi::Object _{{ struct_name }}::Initialize(Napi::Env env, Napi::Object exports)
 
 Napi::Value _{{ struct_name }}::GetmemoryBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
-  void * addr = reinterpret_cast<void *>(&this->instance);
+  void* addr = reinterpret_cast<void *>(&this->instance);
   uint32_t size = sizeof(this->instance);
   Napi::ArrayBuffer buffer = Napi::ArrayBuffer::New(
     env,

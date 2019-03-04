@@ -8,6 +8,9 @@ class _{{ handle_name }} : public Napi::ObjectWrap<_{{ handle_name }}> {
     ~_{{ handle_name }}();
     static Napi::FunctionReference constructor;
 
+    // #default properties
+    Napi::Value Getaddress(const Napi::CallbackInfo &info);
+
     // real instance
     {{ handle_name }} instance;
 
