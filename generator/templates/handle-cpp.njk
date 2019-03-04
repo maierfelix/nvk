@@ -30,7 +30,6 @@ Napi::Object _{{ handle_name }}::Initialize(Napi::Env env, Napi::Object exports)
 
 Napi::Value _{{ handle_name }}::Getaddress(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
-  void* addr = reinterpret_cast<void *>(&this->instance);
-  Napi::BigInt out = Napi::BigInt::New(env, (int64_t) addr);
+  Napi::BigInt out = Napi::BigInt::New(env, (int64_t) this->instance);
   return out;
 }
