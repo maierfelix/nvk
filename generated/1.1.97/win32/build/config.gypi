@@ -146,7 +146,6 @@
     "package_lock": "true",
     "package_lock_only": "",
     "parseable": "",
-    "platform": "*",
     "prefer_offline": "",
     "prefer_online": "",
     "prefix": "C:\\Users\\User\\AppData\\Roaming\\npm",

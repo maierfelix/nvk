@@ -53,13 +53,13 @@ Napi::Object _{{ struct_name }}::Initialize(Napi::Env env, Napi::Object exports)
       "memoryBuffer",
       &_{{ struct_name }}::GetmemoryBuffer,
       nullptr,
-      napi_enumerable
+      napi_default
     ),
     StaticAccessor(
       "memoryLayout",
       &_{{ struct_name }}::GetmemoryLayout,
       nullptr,
-      napi_enumerable
+      napi_static
     ),
     {% for member in members -%}
     {%- if isIgnoreableType(member) != true -%}
