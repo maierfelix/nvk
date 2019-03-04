@@ -25,7 +25,7 @@ let includes = null;
 
 let objects = [];
 
-const {DOCS_DIR, TEMPLATE_DIR} = pkg.config;
+const {DOCS_DIR, TEMPLATE_DIR, LINK_MDN_GOBJECTS} = pkg.config;
 
 const INDEX_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/index.njk`, "utf-8");
 const CALLS_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/calls.njk`, "utf-8");
@@ -261,14 +261,26 @@ function getType(object) {
   let folder = getObjectFolder(object);
   let {type, value} = getJavaScriptType(object);
   switch (type) {
-    case JavaScriptType.UNKNOWN: return `N/A`;
-    case JavaScriptType.OBJECT: return `<a href="../${folder}/${object.type}.html">${object.type}</a>`;
-    case JavaScriptType.NULL: return `null`;
-    case JavaScriptType.STRING: return `String`;
-    case JavaScriptType.NUMBER: return `Number`;
-    case JavaScriptType.BIGINT: return `BigInt`;
-    case JavaScriptType.ENUM: return `Number`;
-    case JavaScriptType.BITMASK: return `Number`;
+    case JavaScriptType.UNKNOWN: {
+      return `N/A`;
+    }
+    case JavaScriptType.NULL: {
+      return `null`;
+    }
+    case JavaScriptType.NUMBER:
+    case JavaScriptType.ENUM:
+    case JavaScriptType.BITMASK: {
+      return `Number`;
+    }
+    case JavaScriptType.OBJECT: {
+      return `<a href="../${folder}/${object.type}.html">${object.type}</a>`;
+    }
+    case JavaScriptType.STRING: {
+      return `String`;
+    }
+    case JavaScriptType.BIGINT: {
+      return `<a href="${LINK_MDN_GOBJECTS}/BigInt">BigInt</a>`;
+    }
     case JavaScriptType.OBJECT_INOUT: {
       return `Object.$<vk-property-type type="object">(${value})</vk-property-type>`;
     }
@@ -282,7 +294,7 @@ function getType(object) {
       return `Array<vk-property-type type="object">[<a href="../${folder}/${object.type}.html">${object.type}]</a></vk-property-type>`;
     }
     case JavaScriptType.TYPED_ARRAY: {
-      return `<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/${object.jsTypedArrayName}">${object.jsTypedArrayName}</a>`;
+      return `<a href="${LINK_MDN_GOBJECTS}/${object.jsTypedArrayName}">${object.jsTypedArrayName}</a>`;
     }
   };
   warn(`Cannot resolve doc type ${type} for ${object.name}`);

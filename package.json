@@ -12,7 +12,8 @@
     "POST_DEFAULT_BINDING_VERSION": "1.1.97",
     "TS_ROOT": "../../index",
     "DOCS_DIR": "./docs",
-    "MAC_ICD_PATH": "Contents/Resources/vulkan/icd.d/MoltenVK_icd.json"
+    "MAC_ICD_PATH": "Contents/Resources/vulkan/icd.d/MoltenVK_icd.json",
+    "LINK_MDN_GOBJECTS": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects"
   },
   "scripts": {
     "build": "node ./build.js",
