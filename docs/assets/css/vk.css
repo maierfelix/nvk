@@ -9,6 +9,13 @@ body {
   float: none;
 }
 
+vk-search {
+  position: absolute;
+  width: 99%;
+  background: rgba(255,255,255,0.99);
+  z-index: 99999;
+}
+
 vk-search > input {
   font-family: Roboto,-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI","Oxygen","Ubuntu","Cantarell","Open Sans",sans-serif;
   overflow-x: hidden;
@@ -243,6 +250,8 @@ vk-search-results > ol {
   margin-top: -0.5em;
   display: none;
   padding-left: 1em;
+  max-height: 50vh;
+  overflow: hidden;
 }
 
 vk-search-results > ol > li {
