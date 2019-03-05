@@ -492,10 +492,13 @@ function parseTypeElement(child) {
   if (out.rawType === `HANDLE *`) {
     out.isWin32HandleReference = true;
   }
+  // function
+  if (out.type.substr(0, 4) === `PFN_`) out.isFunction = true;
   // figure out js relative type
   {
     let jsType = "undefined";
     if (out.isNumber) jsType = "Number";
+    if (out.isFunction) jsType = "Function";
     else if (out.isString || out.rawType === "LPCWSTR") jsType = "String";
     else if (out.isTypedArray) jsType = "ArrayBufferView";
     else if (out.isVoidPointer) jsType = "ArrayBuffer";

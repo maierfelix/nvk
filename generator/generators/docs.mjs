@@ -63,6 +63,7 @@ class JavaScriptType {
   JavaScriptType.BITMASK = idx++;
   JavaScriptType.OBJECT_INOUT = idx++;
   JavaScriptType.TYPED_ARRAY = idx++;
+  JavaScriptType.FUNCTION = idx++;
   JavaScriptType.ARRAY_OF_STRINGS = idx++;
   JavaScriptType.ARRAY_OF_NUMBERS = idx++;
   JavaScriptType.ARRAY_OF_OBJECTS = idx++;
@@ -132,6 +133,13 @@ function getJavaScriptType(member) {
       type: JavaScriptType.TYPED_ARRAY,
       value: member.jsTypedArrayName,
       isArray: true,
+      isNullable: true
+    });
+  }
+  if (member.isFunction) {
+    return new JavaScriptType({
+      type: JavaScriptType.FUNCTION,
+      value: member.type,
       isNullable: true
     });
   }
@@ -278,6 +286,9 @@ function getType(object) {
     case JavaScriptType.STRING: {
       return `String`;
     }
+    case JavaScriptType.FUNCTION: {
+      return `Function`;
+    }
     case JavaScriptType.BIGINT: {
       return `<a href="${LINK_MDN_GOBJECTS}/BigInt">BigInt</a>`;
     }
@@ -313,6 +324,7 @@ function getCSSType(member) {
     case JavaScriptType.ENUM: return `number`;
     case JavaScriptType.BITMASK: return `number`;
     case JavaScriptType.OBJECT_INOUT: return `object`;
+    case JavaScriptType.FUNCTION: return `function`;
     case JavaScriptType.ARRAY_OF_STRINGS: return `array`;
     case JavaScriptType.ARRAY_OF_NUMBERS: return `array`;
     case JavaScriptType.ARRAY_OF_OBJECTS: return `array`;

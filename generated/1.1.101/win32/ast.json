@@ -17615,7 +17615,8 @@
         "name": "pfnAllocation",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isFunction": true,
+        "jsType": "Function",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [
@@ -17634,7 +17635,8 @@
         "name": "pfnReallocation",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isFunction": true,
+        "jsType": "Function",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [
@@ -17653,7 +17655,8 @@
         "name": "pfnFree",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isFunction": true,
+        "jsType": "Function",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [
@@ -17672,7 +17675,8 @@
         "name": "pfnInternalAllocation",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isFunction": true,
+        "jsType": "Function",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [
@@ -17691,7 +17695,8 @@
         "name": "pfnInternalFree",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isFunction": true,
+        "jsType": "Function",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [
@@ -33609,7 +33614,8 @@
         "name": "pfnCallback",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isFunction": true,
+        "jsType": "Function",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [],
@@ -58340,7 +58346,8 @@
         "name": "pfnUserCallback",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isFunction": true,
+        "jsType": "Function",
         "kind": "STRUCT_MEMBER",
         "documentation": {
           "macros": [],
@@ -71935,7 +71942,8 @@
     "name": "vkGetDeviceProcAddr",
     "isConstant": false,
     "dereferenceCount": 0,
-    "jsType": "undefined",
+    "isFunction": true,
+    "jsType": "Function",
     "kind": "COMMAND_PROTO",
     "params": [
       {
@@ -71979,7 +71987,8 @@
     "name": "vkGetInstanceProcAddr",
     "isConstant": false,
     "dereferenceCount": 0,
-    "jsType": "undefined",
+    "isFunction": true,
+    "jsType": "Function",
     "kind": "COMMAND_PROTO",
     "params": [
       {
