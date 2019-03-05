@@ -6,7 +6,7 @@
 
 #
 
-This is a [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for node.js, which allows to interact from JavaScript/[TypeScript](#typescript) with the low-level interface of Vulkan. Currently the latest supported Vulkan version is *1.1.97*, which includes support for e.g. NVIDIA's real-time ray tracing pipeline `VK_NVX_raytracing`.
+This is a [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for node.js, which allows to interact from JavaScript/[TypeScript](#typescript) with the low-level interface of Vulkan. Currently the latest supported Vulkan version is *1.1.101*, which includes support for e.g. NVIDIA's real-time ray tracing pipeline `VK_NVX_raytracing`.
 
 ### Platforms:
 
@@ -111,7 +111,7 @@ import {
   VkApplicationInfo,
   VK_MAKE_VERSION,
   VK_API_VERSION_1_0
-} from "nvk/generated/1.1.97/index";
+} from "nvk/generated/1.1.101/index";
 
 let win = new VulkanWindow({ width: 480, height: 320 });
 
@@ -178,7 +178,7 @@ This tool uses a new JavaScript type called [`BigInt`](https://developers.google
 
 ## Binding Code Generator:
 
-The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.97/ast.json), which is then used by the code generator. Currently more than `~250.000` lines of code get generated, where `~150.000` lines are C++ code.
+The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.101/ast.json), which is then used by the code generator. Currently more than `~250.000` lines of code get generated, where `~150.000` lines are C++ code.
 
 ## Build Instructions:
 
@@ -247,7 +247,7 @@ npm run [script] [flag] [value]
 #### Generation:
 You can generate bindings with:
 ````
-npm run generate --vkversion=1.1.97
+npm run generate --vkversion=1.1.101
 ````
 
 The generated bindings can then be found in `generated/{vkversion}/`
@@ -266,7 +266,7 @@ The generated bindings can then be found in `generated/{vkversion}/`
 #### Building:
 You can build the generated bindings with:
 ````
-npm run build --vkversion=1.1.97
+npm run build --vkversion=1.1.101
 ````
 
 The compiled bindings can then be found in `generated/{vkversion}/build`
