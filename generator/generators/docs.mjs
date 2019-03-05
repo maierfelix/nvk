@@ -486,6 +486,39 @@ function getStructMemberStub(struct, member) {
   return `${instantiationName}.${member.name} = ;`;
 };
 
+function getNavigationHTML() {
+  return `
+<vk-navigation>
+  <vk-section-title>Search</vk-section-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+`;
+};
+
+function getHeaderHTML() {
+  return `
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+`;
+};
+
 export default function(astReference, data, version) {
   ast = astReference;
   calls = data.calls;
@@ -504,7 +537,9 @@ export default function(astReference, data, version) {
     getObjectFolder,
     getCallReturnType,
     getObjectsByCategory,
-    getObjectDescription
+    getObjectDescription,
+    getHeaderHTML,
+    getNavigationHTML
   };
   // reserve output dirs
   {
