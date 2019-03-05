@@ -9,7 +9,7 @@
     "GEN_OUT_DIR": "./generated",
     "SPEC_DIR": "./generator/specifications",
     "TEMPLATE_DIR": "./generator/templates",
-    "POST_DEFAULT_BINDING_VERSION": "1.1.97",
+    "POST_DEFAULT_BINDING_VERSION": "1.1.101",
     "TS_ROOT": "../../index",
     "DOCS_DIR": "./docs",
     "MAC_ICD_PATH": "Contents/Resources/vulkan/icd.d/MoltenVK_icd.json",
