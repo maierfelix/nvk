@@ -6,9 +6,9 @@
 
 #
 
-This is a [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for node.js, which allows to interact from JavaScript/[TypeScript](#typescript) with the low-level interface of Vulkan. The API style of this project strives to be as close as possible to Vulkan's C99 API. Currently the latest supported Vulkan version is *1.1.97*, which includes support for e.g. NVIDIA's Ray Tracing extension `VK_NVX_raytracing`.
+This is a [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for node.js, which allows to interact from JavaScript/[TypeScript](#typescript) with the low-level interface of Vulkan. Currently the latest supported Vulkan version is *1.1.97*, which includes support for e.g. NVIDIA's real-time ray tracing pipeline `VK_NVX_raytracing`.
 
-Platforms:
+### Platforms:
 
 |       OS      |     Status    |
 | ------------- | ------------- |
@@ -16,11 +16,21 @@ Platforms:
 | Linux         | ‌‌ ‌‌ ‌‌ ‌‌ ‌‌ ‌‌ ✔ ‌‌ ‌‌ ‌‌ ‌‌ ‌‌ ‌‌|
 | Mac           | ‌‌ ‌‌ ‌‌ ‌‌ ‌‌ ‌‌ ✔ ‌‌ ‌‌ ‌‌ ‌‌ ‌‌ ‌‌|
 
+### Preview:<br/>
+<img src="https://i.imgur.com/cRrVc1N.gif" width="380">
+
+You can find more previews and demos in [/examples](https://github.com/maierfelix/nvk-examples)
+
 #
 
-  * [Preview](#preview)
   * [Installation](#installation)
   * [Example](#example)
+  * [TypeScript](#typescript)
+  * [Syntactic Sugar](#syntactic-sugar)
+      - [sType auto-filling](#stype-auto-filling)
+      - [Structure creation shortcut](#structure-creation-shortcut)
+  * [Project Structure](#project-structure)
+  * [Binding Code Generator](#binding-code-generator)
   * [Build Instructions](#build-instructions)
     + [Requirements](#requirements)
     + [Windows](#windows)
@@ -32,18 +42,7 @@ Platforms:
     + [Usage](#usage)
       - [Generation](#generation)
       - [Building](#building)
-  * [TypeScript](#typescript)
-  * [Syntactic Sugar](#syntactic-sugar)
-      - [sType auto-filling](#stype-auto-filling)
-      - [Structure creation shortcut](#structure-creation-shortcut)
-  * [Project Structure](#project-structure)
-  * [Binding Code Generator](#binding-code-generator)
   * [TODOs](#todos)
-
-## Preview:<br/>
-<img src="https://i.imgur.com/cRrVc1N.gif" width="380">
-
-You can find more previews and demos in [/examples](https://github.com/maierfelix/nvk-examples)
 
 ## Installation:
 
@@ -100,9 +99,90 @@ instanceInfo.enabledLayerCount = static_cast<uint32_t>(validationLayers.size());
 vkCreateInstance(&instanceInfo, nullptr, &instance);
 ````
 
+## TypeScript:
+
+When generating bindings, a TypeScript definition file is auto-generated as well (see e.g. the file [here](https://github.com/maierfelix/nvk/blob/master/generated/1.1.92/index.d.ts)).
+
+To use the definition file, simply follow the installation steps above. Afterwards in your `.ts` file, import and use *nvk* as follows:
+
+````ts
+import {
+  VulkanWindow,
+  VkApplicationInfo,
+  VK_MAKE_VERSION,
+  VK_API_VERSION_1_0
+} from "nvk/generated/1.1.97/index";
+
+let win = new VulkanWindow({ width: 480, height: 320 });
+
+let appInfo = new VkApplicationInfo({
+  pApplicationName: "Hello!",
+  applicationVersion: VK_MAKE_VERSION(1, 0, 0),
+  pEngineName: "No Engine",
+  engineVersion: VK_MAKE_VERSION(1, 0, 0),
+  apiVersion: VK_API_VERSION_1_0
+});
+````
+
+Also note, that it is recommended to enable the `--strict` mode in the compiler options.
+
+## Syntactic Sugar:
+
+The API gives you some sugar to write things quicker, but still gives you the option to write everything explicitly
+
+#### sType auto-filling
+`sType` members get auto-filled, but you can still set them yourself
+
+````js
+let appInfo = new VkApplicationInfo();
+appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
+````
+
+Becomes:
+````js
+let appInfo = new VkApplicationInfo(); // sType auto-filled
+````
+
+#### Structure creation shortcut
+
+Instead of:
+````js
+let offset = new VkOffset2D();
+offset.x = 0;
+offset.y = 0;
+let extent = new VkExtent2D();
+extent.width = 640;
+extent.height = 480;
+let renderArea = new VkRect2D();
+renderArea.offset = offset;
+renderArea.extent = extent;
+````
+
+You can write:
+````js
+let renderArea = new VkRect2D({
+  offset: new VkOffset2D({ x: 0, y: 0 }),
+  extent: new VkExtent2D({ width: 640, height: 480 })
+});
+````
+
+## Project Structure:
+ - `docs`: generated vulkan documentation files
+ - `generator`: code for binding generation
+ - `generated`: the generated binding code
+ - `examples`: ready-to-run examples
+ - `lib`: required third party libs
+ - `src`: classes for e.g. window creation
+
+This tool uses a new JavaScript type called [`BigInt`](https://developers.google.com/web/updates/2018/05/bigint) to represent memory addresses returned by Vulkan. The `BigInt` type was recently added, so make sure you use a recent node.js version.
+
+## Binding Code Generator:
+
+The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.97/ast.json), which is then used by the code generator. Currently more than `~250.000` lines of code get generated, where `~150.000` lines are C++ code.
+
 ## Build Instructions:
 
-This section is only of interest if you want to manually generate and build bindings. This is only necessary if you're a developer of *nvk*.
+**Warning**: You may want to **skip this section**, as *nvk* uses [NAPI](https://nodejs.org/api/n-api.html#n_api_n_api) and ships pre-compiled binaries. This section is only of interest if you want to generate and build the bindings yourself, which again is likely not your intention!
 
 ### Requirements:
  - node.js >= v10.9.0 recommended
@@ -196,87 +276,6 @@ The compiled bindings can then be found in `generated/{vkversion}/build`
 [--vkversion]: The Vulkan version to build bindings for
 [--msvsversion]: The Visual Studio version to build the bindings with
 ````
-
-## TypeScript:
-
-When generating bindings, a TypeScript definition file is auto-generated as well (see e.g. the file [here](https://github.com/maierfelix/nvk/blob/master/generated/1.1.92/index.d.ts)).
-
-To use the definition file, simply follow the installation steps above. Afterwards in your `.ts` file, import and use *nvk* as follows:
-
-````ts
-import {
-  VulkanWindow,
-  VkApplicationInfo,
-  VK_MAKE_VERSION,
-  VK_API_VERSION_1_0
-} from "nvk/generated/1.1.97/index";
-
-let win = new VulkanWindow({ width: 480, height: 320 });
-
-let appInfo = new VkApplicationInfo({
-  pApplicationName: "Hello!",
-  applicationVersion: VK_MAKE_VERSION(1, 0, 0),
-  pEngineName: "No Engine",
-  engineVersion: VK_MAKE_VERSION(1, 0, 0),
-  apiVersion: VK_API_VERSION_1_0
-});
-````
-
-Also note, that it is recommended to enable the `--strict` mode in the compiler options.
-
-## Syntactic Sugar:
-
-The API gives you some sugar to write things quicker, but still gives you the option to write everything explicitly
-
-#### sType auto-filling
-`sType` members get auto-filled, but you can still set them yourself
-
-````js
-let appInfo = new VkApplicationInfo();
-appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
-````
-
-Becomes:
-````js
-let appInfo = new VkApplicationInfo(); // sType auto-filled
-````
-
-#### Structure creation shortcut
-
-Instead of:
-````js
-let offset = new VkOffset2D();
-offset.x = 0;
-offset.y = 0;
-let extent = new VkExtent2D();
-extent.width = 640;
-extent.height = 480;
-let renderArea = new VkRect2D();
-renderArea.offset = offset;
-renderArea.extent = extent;
-````
-
-You can write:
-````js
-let renderArea = new VkRect2D({
-  offset: new VkOffset2D({ x: 0, y: 0 }),
-  extent: new VkExtent2D({ width: 640, height: 480 })
-});
-````
-
-## Project Structure:
- - `docs`: generated vulkan documentation files
- - `generator`: code for binding generation
- - `generated`: the generated binding code
- - `examples`: ready-to-run examples
- - `lib`: required third party libs
- - `src`: classes for e.g. window creation
-
-This tool uses a new JavaScript type called [`BigInt`](https://developers.google.com/web/updates/2018/05/bigint) to represent memory addresses returned by Vulkan. The `BigInt` type was recently added, so make sure you use a recent node.js version.
-
-## Binding Code Generator:
-
-The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.97/ast.json), which is then used by the code generator. Currently more than `~250.000` lines of code get generated, where `~150.000` lines are C++ code.
 
 ## TODOs:
  - [ ] Struct generation (~98%)
