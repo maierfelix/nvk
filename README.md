@@ -6,9 +6,9 @@
 
 #
 
-This is a [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for node.js, which allows to interact from JavaScript/[TypeScript](#typescript) with the low-level interface of Vulkan. The API style of this project strives to be as close as possible to Vulkan's C99 API. Currently the latest supported Vulkan version is *1.1.101*, which includes support for e.g. NVIDIA's Ray Tracing extension `VK_NVX_raytracing`.
+This is a [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for node.js, which allows to interact from JavaScript/[TypeScript](#typescript) with the low-level interface of Vulkan. Currently the latest supported Vulkan version is *1.1.97*, which includes support for e.g. NVIDIA's real-time ray tracing pipeline `VK_NVX_raytracing`.
 
-Platforms:
+### Platforms:
 
 |       OS      |     Status    |
 | ------------- | ------------- |
@@ -16,11 +16,21 @@ Platforms:
 | Linux         | ‌‌ ‌‌ ‌‌ ‌‌ ‌‌ ‌‌ ✔ ‌‌ ‌‌ ‌‌ ‌‌ ‌‌ ‌‌|
 | Mac           | ‌‌ ‌‌ ‌‌ ‌‌ ‌‌ ‌‌ ✔ ‌‌ ‌‌ ‌‌ ‌‌ ‌‌ ‌‌|
 
+### Preview:<br/>
+<img src="https://i.imgur.com/cRrVc1N.gif" width="380">
+
+You can find more previews and demos in [/examples](https://github.com/maierfelix/nvk-examples)
+
 #
 
-  * [Preview](#preview)
   * [Installation](#installation)
   * [Example](#example)
+  * [TypeScript](#typescript)
+  * [Syntactic Sugar](#syntactic-sugar)
+      - [sType auto-filling](#stype-auto-filling)
+      - [Structure creation shortcut](#structure-creation-shortcut)
+  * [Project Structure](#project-structure)
+  * [Binding Code Generator](#binding-code-generator)
   * [Build Instructions](#build-instructions)
     + [Requirements](#requirements)
     + [Windows](#windows)
@@ -32,18 +42,7 @@ Platforms:
     + [Usage](#usage)
       - [Generation](#generation)
       - [Building](#building)
-  * [TypeScript](#typescript)
-  * [Syntactic Sugar](#syntactic-sugar)
-      - [sType auto-filling](#stype-auto-filling)
-      - [Structure creation shortcut](#structure-creation-shortcut)
-  * [Project Structure](#project-structure)
-  * [Binding Code Generator](#binding-code-generator)
   * [TODOs](#todos)
-
-## Preview:<br/>
-<img src="https://i.imgur.com/cRrVc1N.gif" width="380">
-
-You can find more previews and demos in [/examples](https://github.com/maierfelix/nvk-examples)
 
 ## Installation:
 
@@ -100,103 +99,6 @@ instanceInfo.enabledLayerCount = static_cast<uint32_t>(validationLayers.size());
 vkCreateInstance(&instanceInfo, nullptr, &instance);
 ````
 
-## Build Instructions:
-
-This section is only of interest if you want to manually generate and build bindings. This is only necessary if you're a developer of *nvk*.
-
-### Requirements:
- - node.js >= v10.9.0 recommended
-
-### Windows:
-If you already have Visual Studio >= 15 installed, then just make sure to have Python `2.7.x` installed.
-
-If you don't have Visual Studio, then install the following package:
-````
-npm install --global --production windows-build-tools
-````
-
-Now install the corresponding Vulkan SDK version from [here](https://vulkan.lunarg.com/sdk/home#windows).
-
-Next, clone this repository.
-
-To generate and compile the bindings, run:
-````
-npm run generate --vkversion=x
-npm run build --vkversion=x
-````
-
-### Linux:
-
-Download and setup the corresponding Vulkan SDK version from [here](https://vulkan.lunarg.com/sdk/home#linux).
-
-Follow the guide on how to correctly setup the SDK.
-Make sure that the environment variables are correctly set, e.g. `echo $VULKAN_SDK`.
-
-Next, clone this repository.
-
-To generate and compile the bindings, run:
-````
-npm run generate --vkversion=x
-npm run build --vkversion=x
-````
-
-### MacOS:
-
-Download and setup the corresponding Vulkan SDK version from [here](https://vulkan.lunarg.com/sdk/home#mac).
-
-Follow the guide on how to correctly setup the SDK.
-Make sure that the environment variables are correctly set, e.g. `echo $VULKAN_SDK`.
-
-Next, clone this repository.
-
-To generate and compile the bindings, run:
-````
-npm run generate --vkversion=x
-npm run build --vkversion=x
-````
-
-## CLI:
-
-#### Syntax:
-````
-npm run [script] [flag] [value]
-````
-
-### Usage:
-
-#### Generation:
-You can generate bindings with:
-````
-npm run generate --vkversion=1.1.101
-````
-
-The generated bindings can then be found in `generated/{vkversion}/`
-
- - Make sure the specified version to generate bindings for can be found [here](https://github.com/KhronosGroup/Vulkan-Docs/releases)
- - The binding specification file gets auto-downloaded and is stored in `generate/specifications/{vkversion}.xml`<br/>
- - `--incremental` flag should only be used if you're a developer of *nvk*
-
-##### Flags:
-````
-[--vkversion]: The Vulkan version to generate bindings for
-[--incremental]: Enables incremental builds when building the bindings
-[--docs]: Generates HTML-based documentation
-````
-
-#### Building:
-You can build the generated bindings with:
-````
-npm run build --vkversion=1.1.101
-````
-
-The compiled bindings can then be found in `generated/{vkversion}/build`
-
-##### Flags:
-````
-[--vkversion]: The Vulkan version to build bindings for
-[--msvsversion]: The Visual Studio version to build the bindings with
-````
-
 ## TypeScript:
 
 When generating bindings, a TypeScript definition file is auto-generated as well (see e.g. the file [here](https://github.com/maierfelix/nvk/blob/master/generated/1.1.92/index.d.ts)).
@@ -209,7 +111,7 @@ import {
   VkApplicationInfo,
   VK_MAKE_VERSION,
   VK_API_VERSION_1_0
-} from "nvk/generated/1.1.101/index";
+} from "nvk/generated/1.1.97/index";
 
 let win = new VulkanWindow({ width: 480, height: 320 });
 
@@ -276,7 +178,104 @@ This tool uses a new JavaScript type called [`BigInt`](https://developers.google
 
 ## Binding Code Generator:
 
-The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.101/ast.json), which is then used by the code generator. Currently more than `~250.000` lines of code get generated, where `~150.000` lines are C++ code.
+The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.97/ast.json), which is then used by the code generator. Currently more than `~250.000` lines of code get generated, where `~150.000` lines are C++ code.
+
+## Build Instructions:
+
+**Warning**: You may want to **skip this section**, as *nvk* uses [NAPI](https://nodejs.org/api/n-api.html#n_api_n_api) and ships pre-compiled binaries. This section is only of interest if you want to generate and build the bindings yourself, which again is likely not your intention!
+
+### Requirements:
+ - node.js >= v10.9.0 recommended
+
+### Windows:
+If you already have Visual Studio >= 15 installed, then just make sure to have Python `2.7.x` installed.
+
+If you don't have Visual Studio, then install the following package:
+````
+npm install --global --production windows-build-tools
+````
+
+Now install the corresponding Vulkan SDK version from [here](https://vulkan.lunarg.com/sdk/home#windows).
+
+Next, clone this repository.
+
+To generate and compile the bindings, run:
+````
+npm run generate --vkversion=x
+npm run build --vkversion=x
+````
+
+### Linux:
+
+Download and setup the corresponding Vulkan SDK version from [here](https://vulkan.lunarg.com/sdk/home#linux).
+
+Follow the guide on how to correctly setup the SDK.
+Make sure that the environment variables are correctly set, e.g. `echo $VULKAN_SDK`.
+
+Next, clone this repository.
+
+To generate and compile the bindings, run:
+````
+npm run generate --vkversion=x
+npm run build --vkversion=x
+````
+
+### MacOS:
+
+Download and setup the corresponding Vulkan SDK version from [here](https://vulkan.lunarg.com/sdk/home#mac).
+
+Follow the guide on how to correctly setup the SDK.
+Make sure that the environment variables are correctly set, e.g. `echo $VULKAN_SDK`.
+
+Next, clone this repository.
+
+To generate and compile the bindings, run:
+````
+npm run generate --vkversion=x
+npm run build --vkversion=x
+````
+
+## CLI:
+
+#### Syntax:
+````
+npm run [script] [flag] [value]
+````
+
+### Usage:
+
+#### Generation:
+You can generate bindings with:
+````
+npm run generate --vkversion=1.1.97
+````
+
+The generated bindings can then be found in `generated/{vkversion}/`
+
+ - Make sure the specified version to generate bindings for can be found [here](https://github.com/KhronosGroup/Vulkan-Docs/releases)
+ - The binding specification file gets auto-downloaded and is stored in `generate/specifications/{vkversion}.xml`<br/>
+ - `--incremental` flag should only be used if you're a developer of *nvk*
+
+##### Flags:
+````
+[--vkversion]: The Vulkan version to generate bindings for
+[--incremental]: Enables incremental builds when building the bindings
+[--docs]: Generates HTML-based documentation
+````
+
+#### Building:
+You can build the generated bindings with:
+````
+npm run build --vkversion=1.1.97
+````
+
+The compiled bindings can then be found in `generated/{vkversion}/build`
+
+##### Flags:
+````
+[--vkversion]: The Vulkan version to build bindings for
+[--msvsversion]: The Visual Studio version to build the bindings with
+````
 
 ## TODOs:
  - [ ] Struct generation (~98%)
