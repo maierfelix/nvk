@@ -1,0 +1,9 @@
+{
+  "name": "nvk-v1.1.101",
+  "version": "0.3.5",
+  "sdkPath": "C:/VulkanSDK/1.1.101.0",
+  "gypfile": true,
+  "scripts": {},
+  "devDependencies": {},
+  "dependencies": {}
+}

@@ -1,0 +1,147 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>VkRenderPassMultiviewCreateInfoKHR | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Struct -->
+  <vk-struct>
+
+    <vk-name>VkRenderPassMultiviewCreateInfoKHR</vk-name>
+
+    <vk-description>Opaque handle to a render pass object</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">renderPassMultiviewKHRInfo = new VkRenderPassMultiviewCreateInfoKHR();
+renderPassMultiviewKHRInfo = new VkRenderPassMultiviewCreateInfoKHR(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">let renderPassMultiviewKHRInfo = new VkRenderPassMultiviewCreateInfoKHR();
+renderPassMultiviewKHRInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO_KHR;
+renderPassMultiviewKHRInfo.pNext = ;
+renderPassMultiviewKHRInfo.subpassCount = ;
+renderPassMultiviewKHRInfo.pViewMasks = ;
+renderPassMultiviewKHRInfo.dependencyCount = ;
+renderPassMultiviewKHRInfo.pViewOffsets = ;
+renderPassMultiviewKHRInfo.correlationMaskCount = ;
+renderPassMultiviewKHRInfo.pCorrelationMasks = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkRenderPassMultiviewCreateInfoKHR.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkRenderPassMultiviewCreateInfoKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkRenderPassMultiviewCreateInfoKHR.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkRenderPassMultiviewCreateInfoKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkRenderPassMultiviewCreateInfoKHR.prototype.subpassCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkRenderPassMultiviewCreateInfoKHR.prototype.<vk-prototype-name>subpassCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> number of view masks, where each mask is a bitfield of view indices describing which views rendering is broadcast to in each subpass, when multiview is enabled. If <b>subpassCount</b> is zero, each view mask is treated as zero.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkRenderPassMultiviewCreateInfoKHR.prototype.pViewMasks -->
+      <vk-property-entry>
+        <vk-property-prototype>VkRenderPassMultiviewCreateInfoKHR.prototype.<vk-prototype-name>pViewMasks</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array">Uint32Array</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkRenderPassMultiviewCreateInfoKHR.prototype.dependencyCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkRenderPassMultiviewCreateInfoKHR.prototype.<vk-prototype-name>dependencyCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> view offsets, one for each dependency. If <b>dependencyCount</b> is zero, each dependency's view offset is treated as zero. Each view offset controls which views in the source subpass the views in the destination subpass depend on.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkRenderPassMultiviewCreateInfoKHR.prototype.pViewOffsets -->
+      <vk-property-entry>
+        <vk-property-prototype>VkRenderPassMultiviewCreateInfoKHR.prototype.<vk-prototype-name>pViewOffsets</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array">Int32Array</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkRenderPassMultiviewCreateInfoKHR.prototype.correlationMaskCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkRenderPassMultiviewCreateInfoKHR.prototype.<vk-prototype-name>correlationMaskCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is zero or a number of correlation masks.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkRenderPassMultiviewCreateInfoKHR.prototype.pCorrelationMasks -->
+      <vk-property-entry>
+        <vk-property-prototype>VkRenderPassMultiviewCreateInfoKHR.prototype.<vk-prototype-name>pCorrelationMasks</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array">Uint32Array</a></vk-property-type>
+        <vk-property-description> is an array of view masks indicating sets of views that <i>may</i> be more efficient to render concurrently.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkRenderPassMultiviewCreateInfoKHR.prototype.memoryBuffer -->
+      <vk-property-entry>
+        <vk-property-prototype>VkRenderPassMultiviewCreateInfoKHR.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkRenderPassMultiviewCreateInfoKHR.memoryLayout -->
+      <vk-property-entry>
+        <vk-property-prototype>VkRenderPassMultiviewCreateInfoKHR.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the memory layout for this structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

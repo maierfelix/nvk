@@ -1,0 +1,140 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>VkDeviceGeneratedCommandsLimitsNVX | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Struct -->
+  <vk-struct>
+
+    <vk-name>VkDeviceGeneratedCommandsLimitsNVX</vk-name>
+
+    <vk-description>Structure specifying physical device limits</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">deviceGeneratedCommandsLimitsNVXInfo = new VkDeviceGeneratedCommandsLimitsNVX();
+deviceGeneratedCommandsLimitsNVXInfo = new VkDeviceGeneratedCommandsLimitsNVX(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">let deviceGeneratedCommandsLimitsNVXInfo = new VkDeviceGeneratedCommandsLimitsNVX();
+deviceGeneratedCommandsLimitsNVXInfo.sType = VK_STRUCTURE_TYPE_DEVICE_GENERATED_COMMANDS_LIMITS_NVX;
+deviceGeneratedCommandsLimitsNVXInfo.pNext = ;
+deviceGeneratedCommandsLimitsNVXInfo.maxIndirectCommandsLayoutTokenCount = ;
+deviceGeneratedCommandsLimitsNVXInfo.maxObjectEntryCounts = ;
+deviceGeneratedCommandsLimitsNVXInfo.minSequenceCountBufferOffsetAlignment = ;
+deviceGeneratedCommandsLimitsNVXInfo.minSequenceIndexBufferOffsetAlignment = ;
+deviceGeneratedCommandsLimitsNVXInfo.minCommandsTokenBufferOffsetAlignment = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkDeviceGeneratedCommandsLimitsNVX.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceGeneratedCommandsLimitsNVX.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkDeviceGeneratedCommandsLimitsNVX.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceGeneratedCommandsLimitsNVX.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkDeviceGeneratedCommandsLimitsNVX.prototype.maxIndirectCommandsLayoutTokenCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceGeneratedCommandsLimitsNVX.prototype.<vk-prototype-name>maxIndirectCommandsLayoutTokenCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> the maximum number of tokens in <b><a href="../handles/VkIndirectCommandsLayoutNVX.html">VkIndirectCommandsLayoutNVX</a></b>.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkDeviceGeneratedCommandsLimitsNVX.prototype.maxObjectEntryCounts -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceGeneratedCommandsLimitsNVX.prototype.<vk-prototype-name>maxObjectEntryCounts</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> the maximum number of entries per resource type in <b><a href="../handles/VkObjectTableNVX.html">VkObjectTableNVX</a></b>.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkDeviceGeneratedCommandsLimitsNVX.prototype.minSequenceCountBufferOffsetAlignment -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceGeneratedCommandsLimitsNVX.prototype.<vk-prototype-name>minSequenceCountBufferOffsetAlignment</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> the minimum alignment for memory addresses optionally used in <b><a href="../calls/vkCmdProcessCommandsNVX.html">vkCmdProcessCommandsNVX</a></b>.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkDeviceGeneratedCommandsLimitsNVX.prototype.minSequenceIndexBufferOffsetAlignment -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceGeneratedCommandsLimitsNVX.prototype.<vk-prototype-name>minSequenceIndexBufferOffsetAlignment</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> the minimum alignment for memory addresses optionally used in <b><a href="../calls/vkCmdProcessCommandsNVX.html">vkCmdProcessCommandsNVX</a></b>.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkDeviceGeneratedCommandsLimitsNVX.prototype.minCommandsTokenBufferOffsetAlignment -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceGeneratedCommandsLimitsNVX.prototype.<vk-prototype-name>minCommandsTokenBufferOffsetAlignment</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> the minimum alignment for memory addresses optionally used in <b><a href="../calls/vkCmdProcessCommandsNVX.html">vkCmdProcessCommandsNVX</a></b>.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkDeviceGeneratedCommandsLimitsNVX.prototype.memoryBuffer -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceGeneratedCommandsLimitsNVX.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkDeviceGeneratedCommandsLimitsNVX.memoryLayout -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDeviceGeneratedCommandsLimitsNVX.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the memory layout for this structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

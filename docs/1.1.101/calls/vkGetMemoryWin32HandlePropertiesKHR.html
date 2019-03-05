@@ -1,0 +1,83 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>vkGetMemoryWin32HandlePropertiesKHR | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Call -->
+  <vk-struct>
+
+    <vk-name>vkGetMemoryWin32HandlePropertiesKHR</vk-name>
+
+    <vk-description>Get Properties of External Memory Win32 Handles</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">VkResult vkGetMemoryWin32HandlePropertiesKHR();
+</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <!-- device -->
+      <vk-property-entry>
+        <vk-property-parameter>device</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkDevice.html">VkDevice</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- handleType -->
+      <vk-property-entry>
+        <vk-property-parameter>handleType</vk-property-parameter>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- handle -->
+      <vk-property-entry>
+        <vk-property-parameter>handle</vk-property-parameter>
+        <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>
+        <vk-property-description> is the handle which will be imported.</vk-property-description>
+      </vk-property-entry>
+      <!-- pMemoryWin32HandleProperties -->
+      <vk-property-entry>
+        <vk-property-parameter>pMemoryWin32HandleProperties</vk-property-parameter>
+        <vk-property-type type="object"><a href="../structs/VkMemoryWin32HandlePropertiesKHR.html">VkMemoryWin32HandlePropertiesKHR</a></vk-property-type>
+        <vk-property-description> will return properties of <b>handle</b>.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

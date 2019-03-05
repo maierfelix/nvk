@@ -1,0 +1,83 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>vkBindBufferMemory | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Call -->
+  <vk-struct>
+
+    <vk-name>vkBindBufferMemory</vk-name>
+
+    <vk-description>Bind device memory to a buffer object</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">VkResult vkBindBufferMemory();
+</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <!-- device -->
+      <vk-property-entry>
+        <vk-property-parameter>device</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkDevice.html">VkDevice</a></vk-property-type>
+        <vk-property-description> is the logical device that owns the buffer and memory.</vk-property-description>
+      </vk-property-entry>
+      <!-- buffer -->
+      <vk-property-entry>
+        <vk-property-parameter>buffer</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkBuffer.html">VkBuffer</a></vk-property-type>
+        <vk-property-description> is the buffer to be attached to memory.</vk-property-description>
+      </vk-property-entry>
+      <!-- memory -->
+      <vk-property-entry>
+        <vk-property-parameter>memory</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkDeviceMemory.html">VkDeviceMemory</a></vk-property-type>
+        <vk-property-description> which is to be bound to the buffer. The number of bytes returned in the <b><a href="../structs/VkMemoryRequirements.html">VkMemoryRequirements</a></b>::<b>size</b> member in <b>memory</b>, starting from <b>memoryOffset</b> bytes, will be bound to the specified buffer.</vk-property-description>
+      </vk-property-entry>
+      <!-- memoryOffset -->
+      <vk-property-entry>
+        <vk-property-parameter>memoryOffset</vk-property-parameter>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

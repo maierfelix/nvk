@@ -1,0 +1,203 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>VkPhysicalDeviceShaderCorePropertiesAMD | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Struct -->
+  <vk-struct>
+
+    <vk-name>VkPhysicalDeviceShaderCorePropertiesAMD</vk-name>
+
+    <vk-description>Structure describing shader core properties that can be supported by an implementation</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">physicalDeviceShaderCorePropertiesAMDInfo = new VkPhysicalDeviceShaderCorePropertiesAMD();
+physicalDeviceShaderCorePropertiesAMDInfo = new VkPhysicalDeviceShaderCorePropertiesAMD(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">let physicalDeviceShaderCorePropertiesAMDInfo = new VkPhysicalDeviceShaderCorePropertiesAMD();
+physicalDeviceShaderCorePropertiesAMDInfo.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD;
+physicalDeviceShaderCorePropertiesAMDInfo.pNext = ;
+physicalDeviceShaderCorePropertiesAMDInfo.shaderEngineCount = ;
+physicalDeviceShaderCorePropertiesAMDInfo.shaderArraysPerEngineCount = ;
+physicalDeviceShaderCorePropertiesAMDInfo.computeUnitsPerShaderArray = ;
+physicalDeviceShaderCorePropertiesAMDInfo.simdPerComputeUnit = ;
+physicalDeviceShaderCorePropertiesAMDInfo.wavefrontsPerSimd = ;
+physicalDeviceShaderCorePropertiesAMDInfo.wavefrontSize = ;
+physicalDeviceShaderCorePropertiesAMDInfo.sgprsPerSimd = ;
+physicalDeviceShaderCorePropertiesAMDInfo.minSgprAllocation = ;
+physicalDeviceShaderCorePropertiesAMDInfo.maxSgprAllocation = ;
+physicalDeviceShaderCorePropertiesAMDInfo.sgprAllocationGranularity = ;
+physicalDeviceShaderCorePropertiesAMDInfo.vgprsPerSimd = ;
+physicalDeviceShaderCorePropertiesAMDInfo.minVgprAllocation = ;
+physicalDeviceShaderCorePropertiesAMDInfo.maxVgprAllocation = ;
+physicalDeviceShaderCorePropertiesAMDInfo.vgprAllocationGranularity = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.shaderEngineCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>shaderEngineCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a number value indicating the number of shader engines found inside the shader core of the physical device.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.shaderArraysPerEngineCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>shaderArraysPerEngineCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a number value indicating the number of shader arrays inside a shader engine. Each shader array has its own scan converter, set of compute units, and a render back end (color and depth buffers). Shader arrays within a shader engine share shader processor input (wave launcher) and shader export (export buffer) units. Currently, a shader engine can have one or two shader arrays.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.computeUnitsPerShaderArray -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>computeUnitsPerShaderArray</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a number value indicating the number of compute units within a shader array. A compute unit houses a set of SIMDs along with a sequencer module and a local data store.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.simdPerComputeUnit -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>simdPerComputeUnit</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a number value indicating the number of SIMDs inside a compute unit. Each SIMD processes a single instruction at a time.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.wavefrontsPerSimd -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>wavefrontsPerSimd</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.wavefrontSize -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>wavefrontSize</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a number value indicating the number of channels (or threads) in a wavefront.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.sgprsPerSimd -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>sgprsPerSimd</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a number value indicating the number of physical Scalar General Purpose Registers (SGPRs) per SIMD.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.minSgprAllocation -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>minSgprAllocation</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a number value indicating the minimum number of SGPRs allocated for a wave.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.maxSgprAllocation -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>maxSgprAllocation</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a number value indicating the maximum number of SGPRs allocated for a wave.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.sgprAllocationGranularity -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>sgprAllocationGranularity</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a number value indicating the granularity of SGPR allocation for a wave.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.vgprsPerSimd -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>vgprsPerSimd</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a number value indicating the number of physical Vector General Purpose Registers (VGPRs) per SIMD.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.minVgprAllocation -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>minVgprAllocation</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a number value indicating the minimum number of VGPRs allocated for a wave.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.maxVgprAllocation -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>maxVgprAllocation</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a number value indicating the maximum number of VGPRs allocated for a wave.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.vgprAllocationGranularity -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>vgprAllocationGranularity</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a number value indicating the granularity of VGPR allocation for a wave.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkPhysicalDeviceShaderCorePropertiesAMD.prototype.memoryBuffer -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceShaderCorePropertiesAMD.memoryLayout -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceShaderCorePropertiesAMD.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the memory layout for this structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

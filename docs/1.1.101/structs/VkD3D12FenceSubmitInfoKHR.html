@@ -1,0 +1,133 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>VkD3D12FenceSubmitInfoKHR | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Struct -->
+  <vk-struct>
+
+    <vk-name>VkD3D12FenceSubmitInfoKHR</vk-name>
+
+    <vk-description>Structure specifying values for Direct3D 12 fence-backed semaphores</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">d3D12FenceSubmitInfoKHRInfo = new VkD3D12FenceSubmitInfoKHR();
+d3D12FenceSubmitInfoKHRInfo = new VkD3D12FenceSubmitInfoKHR(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">let d3D12FenceSubmitInfoKHRInfo = new VkD3D12FenceSubmitInfoKHR();
+d3D12FenceSubmitInfoKHRInfo.sType = VK_STRUCTURE_TYPE_D3D12_FENCE_SUBMIT_INFO_KHR;
+d3D12FenceSubmitInfoKHRInfo.pNext = ;
+d3D12FenceSubmitInfoKHRInfo.waitSemaphoreValuesCount = ;
+d3D12FenceSubmitInfoKHRInfo.pWaitSemaphoreValues = ;
+d3D12FenceSubmitInfoKHRInfo.signalSemaphoreValuesCount = ;
+d3D12FenceSubmitInfoKHRInfo.pSignalSemaphoreValues = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkD3D12FenceSubmitInfoKHR.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkD3D12FenceSubmitInfoKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkD3D12FenceSubmitInfoKHR.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkD3D12FenceSubmitInfoKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkD3D12FenceSubmitInfoKHR.prototype.waitSemaphoreValuesCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkD3D12FenceSubmitInfoKHR.prototype.<vk-prototype-name>waitSemaphoreValuesCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the number of semaphore wait values specified in <b>pWaitSemaphoreValues</b>.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkD3D12FenceSubmitInfoKHR.prototype.pWaitSemaphoreValues -->
+      <vk-property-entry>
+        <vk-property-prototype>VkD3D12FenceSubmitInfoKHR.prototype.<vk-prototype-name>pWaitSemaphoreValues</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigUint64Array">BigUint64Array</a></vk-property-type>
+        <vk-property-description> is an array of length <b>waitSemaphoreValuesCount</b> containing values for the corresponding semaphores in <b><a href="../structs/VkSubmitInfo.html">VkSubmitInfo</a></b>::<b>pWaitSemaphores</b> to wait for.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkD3D12FenceSubmitInfoKHR.prototype.signalSemaphoreValuesCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkD3D12FenceSubmitInfoKHR.prototype.<vk-prototype-name>signalSemaphoreValuesCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the number of semaphore signal values specified in <b>pSignalSemaphoreValues</b>.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkD3D12FenceSubmitInfoKHR.prototype.pSignalSemaphoreValues -->
+      <vk-property-entry>
+        <vk-property-prototype>VkD3D12FenceSubmitInfoKHR.prototype.<vk-prototype-name>pSignalSemaphoreValues</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigUint64Array">BigUint64Array</a></vk-property-type>
+        <vk-property-description> is an array of length <b>signalSemaphoreValuesCount</b> containing values for the corresponding semaphores in <b><a href="../structs/VkSubmitInfo.html">VkSubmitInfo</a></b>::<b>pSignalSemaphores</b> to set when signaled.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkD3D12FenceSubmitInfoKHR.prototype.memoryBuffer -->
+      <vk-property-entry>
+        <vk-property-prototype>VkD3D12FenceSubmitInfoKHR.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkD3D12FenceSubmitInfoKHR.memoryLayout -->
+      <vk-property-entry>
+        <vk-property-prototype>VkD3D12FenceSubmitInfoKHR.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the memory layout for this structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

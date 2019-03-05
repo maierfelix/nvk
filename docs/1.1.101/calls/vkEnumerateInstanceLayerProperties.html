@@ -1,0 +1,71 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>vkEnumerateInstanceLayerProperties | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Call -->
+  <vk-struct>
+
+    <vk-name>vkEnumerateInstanceLayerProperties</vk-name>
+
+    <vk-description>Returns up to requested number of global layer properties</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">VkResult vkEnumerateInstanceLayerProperties();
+</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <!-- pPropertyCount -->
+      <vk-property-entry>
+        <vk-property-parameter>pPropertyCount</vk-property-parameter>
+        <vk-property-type type="object">Object.$<vk-property-type type="object">(Number)</vk-property-type></vk-property-type>
+        <vk-property-description> is a reference to a number related to the number of layer properties available or queried, as described below.</vk-property-description>
+      </vk-property-entry>
+      <!-- pProperties -->
+      <vk-property-entry>
+        <vk-property-parameter>pProperties</vk-property-parameter>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkLayerProperties.html">VkLayerProperties]</a></vk-property-type></vk-property-type>
+        <vk-property-description> is either <i>null</i> or a reference to an array of <b><a href="../structs/VkLayerProperties.html">VkLayerProperties</a></b> structures.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

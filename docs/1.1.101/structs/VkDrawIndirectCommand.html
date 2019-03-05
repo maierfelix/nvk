@@ -1,0 +1,119 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>VkDrawIndirectCommand | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Struct -->
+  <vk-struct>
+
+    <vk-name>VkDrawIndirectCommand</vk-name>
+
+    <vk-description>Structure specifying a draw indirect command</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">drawIndirectCommandInfo = new VkDrawIndirectCommand();
+drawIndirectCommandInfo = new VkDrawIndirectCommand(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">let drawIndirectCommandInfo = new VkDrawIndirectCommand();
+drawIndirectCommandInfo.vertexCount = ;
+drawIndirectCommandInfo.instanceCount = ;
+drawIndirectCommandInfo.firstVertex = ;
+drawIndirectCommandInfo.firstInstance = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkDrawIndirectCommand.prototype.vertexCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDrawIndirectCommand.prototype.<vk-prototype-name>vertexCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the number of vertices to draw.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkDrawIndirectCommand.prototype.instanceCount -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDrawIndirectCommand.prototype.<vk-prototype-name>instanceCount</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the number of instances to draw.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkDrawIndirectCommand.prototype.firstVertex -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDrawIndirectCommand.prototype.<vk-prototype-name>firstVertex</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the index of the first vertex to draw.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkDrawIndirectCommand.prototype.firstInstance -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDrawIndirectCommand.prototype.<vk-prototype-name>firstInstance</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the instance ID of the first instance to draw.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkDrawIndirectCommand.prototype.memoryBuffer -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDrawIndirectCommand.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkDrawIndirectCommand.memoryLayout -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDrawIndirectCommand.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the memory layout for this structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

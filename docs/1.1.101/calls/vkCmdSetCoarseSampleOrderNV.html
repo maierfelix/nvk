@@ -1,0 +1,83 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>vkCmdSetCoarseSampleOrderNV | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Call -->
+  <vk-struct>
+
+    <vk-name>vkCmdSetCoarseSampleOrderNV</vk-name>
+
+    <vk-description>Set sample order for coarse fragments on a command buffer</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">void vkCmdSetCoarseSampleOrderNV();
+</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <!-- commandBuffer -->
+      <vk-property-entry>
+        <vk-property-parameter>commandBuffer</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></vk-property-type>
+        <vk-property-description> is the command buffer into which the command will be recorded.</vk-property-description>
+      </vk-property-entry>
+      <!-- sampleOrderType -->
+      <vk-property-entry>
+        <vk-property-parameter>sampleOrderType</vk-property-parameter>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> specifies the mechanism used to order coverage samples in fragments larger than one pixel.</vk-property-description>
+      </vk-property-entry>
+      <!-- customSampleOrderCount -->
+      <vk-property-entry>
+        <vk-property-parameter>customSampleOrderCount</vk-property-parameter>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> specifies the number of custom sample orderings to use when ordering coverage samples.</vk-property-description>
+      </vk-property-entry>
+      <!-- pCustomSampleOrders -->
+      <vk-property-entry>
+        <vk-property-parameter>pCustomSampleOrders</vk-property-parameter>
+        <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkCoarseSampleOrderCustomNV.html">VkCoarseSampleOrderCustomNV]</a></vk-property-type></vk-property-type>
+        <vk-property-description> is an array of <b><a href="../structs/VkCoarseSampleOrderCustomNV.html">VkCoarseSampleOrderCustomNV</a></b> structures, each of which specifies the coverage sample order for a single combination of fragment area and coverage sample count.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

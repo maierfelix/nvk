@@ -1,0 +1,116 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../assets/css/vk.css"/>
+<link rel="stylesheet" href="../assets/css/prism.css"/>
+
+<vk-title>NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Content -->
+  <vk-struct>
+
+    <vk-name>NVK</vk-name>
+
+    <vk-description>
+    This is a <a href="https://en.wikipedia.org/wiki/Vulkan_(API)">Vulkan</a> API for node.js, which allows to interact from JavaScript/<a href="https://github.com/maierfelix/nvk#typescript">TypeScript</a> with the low-level interface of Vulkan. The API style of this project strives to be as close as possible to Vulkan's C99 API.
+    </vk-description>
+
+    <vk-section-title>Prerequisites</vk-section-title>
+
+    <ul>
+      <li>
+      <vk-description>
+      Recommended Vulkan version: <vk-property-prototype class="no-float" id="recommendedVersion">...</vk-property-prototype>
+      </vk-description>
+      </li>
+
+      <li>
+      <vk-description>
+      Minimum required node.js version: <vk-property-prototype class="no-float" id="minimumVersion">...</vk-property-prototype>
+      </vk-description>
+      </li>
+
+      <li>
+      <vk-description>
+      If you want to use validation layers, then make sure you have the <a href="https://vulkan.lunarg.com/">SDK</a> installed
+      </vk-description>
+      </li>
+    </ul>
+
+    <vk-section-title>Installation</vk-section-title>
+
+    <vk-description>
+    To install nvk simply run:
+    <pre><code class="language-js">npm install nvk</code></pre>
+    </vk-description>
+
+    <vk-description>
+    The latest <a href="https://www.npmjs.com/package/nvk">NPM package</a> version is: <vk-property-prototype class="no-float" id="latestVersion">...</vk-property-prototype>
+    </vk-description>
+
+    <vk-description>
+    The original specification can be found <a href="https://www.khronos.org/registry/vulkan/specs/">here</a>
+    </vk-description>
+
+  </vk-struct>
+
+</vk-centered>
+
+<style>
+vk-struct > ul > li > vk-description {
+  padding: 0.5em;
+}
+vk-property-prototype {
+  padding: 0.2em !important;
+}
+</style>
+
+<script>
+const IS_ROOT = true;
+</script>
+
+<script type="text/javascript" src="../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../assets/js/index.js"></script>
+
+<script>
+
+  function loadJSON(path) {
+    return new Promise(resolve => {
+      fetch(path)
+      .then(resp => resp.json())
+      .then(json => resolve(json));
+    });
+  };
+
+  let url = `https://raw.githubusercontent.com/maierfelix/nvk/master/package.json`;
+
+  loadJSON(url).then(json => {
+    let {config} = json;
+    recommendedVersion.innerHTML = config.POST_DEFAULT_BINDING_VERSION;
+    latestVersion.innerHTML = json.version;
+    minimumVersion.innerHTML = json.engines.node.substr(3);
+  });
+
+</script>

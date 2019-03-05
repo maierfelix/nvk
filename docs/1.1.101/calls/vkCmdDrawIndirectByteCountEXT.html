@@ -1,0 +1,101 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>vkCmdDrawIndirectByteCountEXT | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Call -->
+  <vk-struct>
+
+    <vk-name>vkCmdDrawIndirectByteCountEXT</vk-name>
+
+    <vk-description>Draw primitives where the vertex count is derived from the counter byte value in the counter buffer</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">void vkCmdDrawIndirectByteCountEXT();
+</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <!-- commandBuffer -->
+      <vk-property-entry>
+        <vk-property-parameter>commandBuffer</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></vk-property-type>
+        <vk-property-description> is the command buffer into which the command is recorded.</vk-property-description>
+      </vk-property-entry>
+      <!-- instanceCount -->
+      <vk-property-entry>
+        <vk-property-parameter>instanceCount</vk-property-parameter>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the number of instances to draw.</vk-property-description>
+      </vk-property-entry>
+      <!-- firstInstance -->
+      <vk-property-entry>
+        <vk-property-parameter>firstInstance</vk-property-parameter>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the instance ID of the first instance to draw.</vk-property-description>
+      </vk-property-entry>
+      <!-- counterBuffer -->
+      <vk-property-entry>
+        <vk-property-parameter>counterBuffer</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkBuffer.html">VkBuffer</a></vk-property-type>
+        <vk-property-description> is the buffer handle from where the byte count is read.</vk-property-description>
+      </vk-property-entry>
+      <!-- counterBufferOffset -->
+      <vk-property-entry>
+        <vk-property-parameter>counterBufferOffset</vk-property-parameter>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the offset into the buffer used to read the byte count, which is used to calculate the vertex count for this draw call.</vk-property-description>
+      </vk-property-entry>
+      <!-- counterOffset -->
+      <vk-property-entry>
+        <vk-property-parameter>counterOffset</vk-property-parameter>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is subtracted from the byte count read from the <b>counterBuffer</b> at the <b>counterBufferOffset</b></vk-property-description>
+      </vk-property-entry>
+      <!-- vertexStride -->
+      <vk-property-entry>
+        <vk-property-parameter>vertexStride</vk-property-parameter>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the stride in bytes between each element of the vertex data that is used to calculate the vertex count from the counter value. This value is typically the same value that was used in the graphics pipeline state when the transform feedback was captured as the <i>XfbStride</i>.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

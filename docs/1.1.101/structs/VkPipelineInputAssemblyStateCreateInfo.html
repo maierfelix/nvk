@@ -1,0 +1,126 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>VkPipelineInputAssemblyStateCreateInfo | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Struct -->
+  <vk-struct>
+
+    <vk-name>VkPipelineInputAssemblyStateCreateInfo</vk-name>
+
+    <vk-description>Structure specifying parameters of a newly created pipeline input assembly state</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">pipelineInputAssemblyStateInfo = new VkPipelineInputAssemblyStateCreateInfo();
+pipelineInputAssemblyStateInfo = new VkPipelineInputAssemblyStateCreateInfo(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">let pipelineInputAssemblyStateInfo = new VkPipelineInputAssemblyStateCreateInfo();
+pipelineInputAssemblyStateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
+pipelineInputAssemblyStateInfo.pNext = ;
+pipelineInputAssemblyStateInfo.flags = ;
+pipelineInputAssemblyStateInfo.topology = ;
+pipelineInputAssemblyStateInfo.primitiveRestartEnable = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkPipelineInputAssemblyStateCreateInfo.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineInputAssemblyStateCreateInfo.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineInputAssemblyStateCreateInfo.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineInputAssemblyStateCreateInfo.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineInputAssemblyStateCreateInfo.prototype.flags -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineInputAssemblyStateCreateInfo.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is reserved for future use.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineInputAssemblyStateCreateInfo.prototype.topology -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineInputAssemblyStateCreateInfo.prototype.<vk-prototype-name>topology</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a <b>VkPrimitiveTopology</b> defining the primitive topology, as described below.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineInputAssemblyStateCreateInfo.prototype.primitiveRestartEnable -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineInputAssemblyStateCreateInfo.prototype.<vk-prototype-name>primitiveRestartEnable</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> controls whether a special vertex index value is treated as restarting the assembly of primitives. This enable only applies to indexed draws (<b><a href="../calls/vkCmdDrawIndexed.html">vkCmdDrawIndexed</a></b> and <b><a href="../calls/vkCmdDrawIndexedIndirect.html">vkCmdDrawIndexedIndirect</a></b>), and the special index value is either 0xFFFFFFFF when the <b>indexType</b> parameter of <b><a href="../calls/vkCmdBindIndexBuffer.html">vkCmdBindIndexBuffer</a></b> is equal to <b>VK_INDEX_TYPE_UINT32</b>, or 0xFFFF when <b>indexType</b> is equal to <b>VK_INDEX_TYPE_UINT16</b>. Primitive restart is not allowed for "`list`" topologies.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkPipelineInputAssemblyStateCreateInfo.prototype.memoryBuffer -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineInputAssemblyStateCreateInfo.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineInputAssemblyStateCreateInfo.memoryLayout -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineInputAssemblyStateCreateInfo.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the memory layout for this structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

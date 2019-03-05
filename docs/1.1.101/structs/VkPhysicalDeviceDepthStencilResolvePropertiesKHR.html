@@ -1,0 +1,133 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>VkPhysicalDeviceDepthStencilResolvePropertiesKHR | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Struct -->
+  <vk-struct>
+
+    <vk-name>VkPhysicalDeviceDepthStencilResolvePropertiesKHR</vk-name>
+
+    <vk-description>Structure describing depth/stencil resolve properties that can be supported by an implementation</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">physicalDeviceDepthStencilResolvePropertiesKHRInfo = new VkPhysicalDeviceDepthStencilResolvePropertiesKHR();
+physicalDeviceDepthStencilResolvePropertiesKHRInfo = new VkPhysicalDeviceDepthStencilResolvePropertiesKHR(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">let physicalDeviceDepthStencilResolvePropertiesKHRInfo = new VkPhysicalDeviceDepthStencilResolvePropertiesKHR();
+physicalDeviceDepthStencilResolvePropertiesKHRInfo.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES_KHR;
+physicalDeviceDepthStencilResolvePropertiesKHRInfo.pNext = ;
+physicalDeviceDepthStencilResolvePropertiesKHRInfo.supportedDepthResolveModes = ;
+physicalDeviceDepthStencilResolvePropertiesKHRInfo.supportedStencilResolveModes = ;
+physicalDeviceDepthStencilResolvePropertiesKHRInfo.independentResolveNone = ;
+physicalDeviceDepthStencilResolvePropertiesKHRInfo.independentResolve = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.supportedDepthResolveModes -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.<vk-prototype-name>supportedDepthResolveModes</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a bitmask of <b>VkResolveModeFlagBitsKHR</b> indicating the set of supported depth resolve modes. <b>VK_RESOLVE_MODE_SAMPLE_ZERO_BIT_KHR</b> <i>must</i> be included in the set but implementations <i>may</i> support additional modes.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.supportedStencilResolveModes -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.<vk-prototype-name>supportedStencilResolveModes</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is a bitmask of <b>VkResolveModeFlagBitsKHR</b> indicating the set of supported stencil resolve modes. <b>VK_RESOLVE_MODE_SAMPLE_ZERO_BIT_KHR</b> <i>must</i> be included in the set but implementations <i>may</i> support additional modes. <b>VK_RESOLVE_MODE_AVERAGE_BIT_KHR</b> <i>must</i> not be included in the set.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.independentResolveNone -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.<vk-prototype-name>independentResolveNone</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.independentResolve -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.<vk-prototype-name>independentResolve</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is <b>VK_TRUE</b> if the implementation supports all combinations of the supported depth and stencil resolve modes.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.memoryBuffer -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPhysicalDeviceDepthStencilResolvePropertiesKHR.memoryLayout -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPhysicalDeviceDepthStencilResolvePropertiesKHR.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the memory layout for this structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

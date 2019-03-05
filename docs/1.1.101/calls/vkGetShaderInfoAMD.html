@@ -1,0 +1,95 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>vkGetShaderInfoAMD | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Call -->
+  <vk-struct>
+
+    <vk-name>vkGetShaderInfoAMD</vk-name>
+
+    <vk-description>Get information about a shader in a pipeline</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">VkResult vkGetShaderInfoAMD();
+</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <!-- device -->
+      <vk-property-entry>
+        <vk-property-parameter>device</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkDevice.html">VkDevice</a></vk-property-type>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <!-- pipeline -->
+      <vk-property-entry>
+        <vk-property-parameter>pipeline</vk-property-parameter>
+        <vk-property-type type="object"><a href="../handles/VkPipeline.html">VkPipeline</a></vk-property-type>
+        <vk-property-description> is the target of the query.</vk-property-description>
+      </vk-property-entry>
+      <!-- shaderStage -->
+      <vk-property-entry>
+        <vk-property-parameter>shaderStage</vk-property-parameter>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> identifies the particular shader within the pipeline about which information is being queried.</vk-property-description>
+      </vk-property-entry>
+      <!-- infoType -->
+      <vk-property-entry>
+        <vk-property-parameter>infoType</vk-property-parameter>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> describes what kind of information is being queried.</vk-property-description>
+      </vk-property-entry>
+      <!-- pInfoSize -->
+      <vk-property-entry>
+        <vk-property-parameter>pInfoSize</vk-property-parameter>
+        <vk-property-type type="object">Object.$<vk-property-type type="object">(Number)</vk-property-type></vk-property-type>
+        <vk-property-description> is a reference to a value related to the amount of data the query returns, as described below.</vk-property-description>
+      </vk-property-entry>
+      <!-- pInfo -->
+      <vk-property-entry>
+        <vk-property-parameter>pInfo</vk-property-parameter>
+        <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description> is either <i>null</i> or a reference to a buffer.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

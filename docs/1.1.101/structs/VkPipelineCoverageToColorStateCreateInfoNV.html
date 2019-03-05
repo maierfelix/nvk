@@ -1,0 +1,126 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>VkPipelineCoverageToColorStateCreateInfoNV | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Struct -->
+  <vk-struct>
+
+    <vk-name>VkPipelineCoverageToColorStateCreateInfoNV</vk-name>
+
+    <vk-description>Structure specifying whether fragment coverage replaces a color</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">pipelineCoverageToColorStateNVInfo = new VkPipelineCoverageToColorStateCreateInfoNV();
+pipelineCoverageToColorStateNVInfo = new VkPipelineCoverageToColorStateCreateInfoNV(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">let pipelineCoverageToColorStateNVInfo = new VkPipelineCoverageToColorStateCreateInfoNV();
+pipelineCoverageToColorStateNVInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV;
+pipelineCoverageToColorStateNVInfo.pNext = ;
+pipelineCoverageToColorStateNVInfo.flags = ;
+pipelineCoverageToColorStateNVInfo.coverageToColorEnable = ;
+pipelineCoverageToColorStateNVInfo.coverageToColorLocation = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkPipelineCoverageToColorStateCreateInfoNV.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineCoverageToColorStateCreateInfoNV.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the type of this structure</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineCoverageToColorStateCreateInfoNV.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineCoverageToColorStateCreateInfoNV.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is <i>null</i> or a reference to an extension-specific structure</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineCoverageToColorStateCreateInfoNV.prototype.flags -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineCoverageToColorStateCreateInfoNV.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is reserved for future use.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineCoverageToColorStateCreateInfoNV.prototype.coverageToColorEnable -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineCoverageToColorStateCreateInfoNV.prototype.<vk-prototype-name>coverageToColorEnable</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> controls whether the fragment coverage value replaces a fragment color output.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineCoverageToColorStateCreateInfoNV.prototype.coverageToColorLocation -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineCoverageToColorStateCreateInfoNV.prototype.<vk-prototype-name>coverageToColorLocation</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> controls which fragment shader color output value is replaced.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkPipelineCoverageToColorStateCreateInfoNV.prototype.memoryBuffer -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineCoverageToColorStateCreateInfoNV.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkPipelineCoverageToColorStateCreateInfoNV.memoryLayout -->
+      <vk-property-entry>
+        <vk-property-prototype>VkPipelineCoverageToColorStateCreateInfoNV.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the memory layout for this structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

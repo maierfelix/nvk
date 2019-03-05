@@ -1,0 +1,112 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>VkQueueFamilyProperties2 | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Struct -->
+  <vk-struct>
+
+    <vk-name>VkQueueFamilyProperties2</vk-name>
+
+    <vk-description>Structure providing information about a queue family</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">queueFamilyProperties2Info = new VkQueueFamilyProperties2();
+queueFamilyProperties2Info = new VkQueueFamilyProperties2(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">let queueFamilyProperties2Info = new VkQueueFamilyProperties2();
+queueFamilyProperties2Info.sType = VK_STRUCTURE_TYPE_QUEUE_FAMILY_PROPERTIES_2;
+queueFamilyProperties2Info.pNext = ;
+queueFamilyProperties2Info.queueFamilyProperties = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkQueueFamilyProperties2.prototype.sType -->
+      <vk-property-entry>
+        <vk-property-prototype>VkQueueFamilyProperties2.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the type of this structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkQueueFamilyProperties2.prototype.pNext -->
+      <vk-property-entry>
+        <vk-property-prototype>VkQueueFamilyProperties2.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="null">null</vk-property-type>
+        <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkQueueFamilyProperties2.prototype.queueFamilyProperties -->
+      <vk-property-entry>
+        <vk-property-prototype>VkQueueFamilyProperties2.prototype.<vk-prototype-name>queueFamilyProperties</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../structs/VkQueueFamilyProperties.html">VkQueueFamilyProperties</a></vk-property-type>
+        <vk-property-description> is a structure of type <b><a href="../structs/VkQueueFamilyProperties.html">VkQueueFamilyProperties</a></b> which is populated with the same values as in <b><a href="../calls/vkGetPhysicalDeviceQueueFamilyProperties.html">vkGetPhysicalDeviceQueueFamilyProperties</a></b>.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkQueueFamilyProperties2.prototype.memoryBuffer -->
+      <vk-property-entry>
+        <vk-property-prototype>VkQueueFamilyProperties2.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkQueueFamilyProperties2.memoryLayout -->
+      <vk-property-entry>
+        <vk-property-prototype>VkQueueFamilyProperties2.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the memory layout for this structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

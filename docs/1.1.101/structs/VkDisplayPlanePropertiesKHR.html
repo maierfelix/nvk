@@ -1,0 +1,105 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+<vk-title>VkDisplayPlanePropertiesKHR | NVK</vk-title>
+
+<vk-centered>
+
+  <!-- Navigation -->
+  <vk-navigation>
+    <vk-section-title>Search</vk-section-title>
+    <vk-search>
+      <input type="text" id="search" autocomplete="off" />
+      <vk-search-results>
+        <ol id="search-list">
+          <li id="no-search-results">No Results</li>
+        </ol>
+      </vk-search-results>
+    </vk-search>
+    <vk-section-title>Categories</vk-section-title>
+    <vk-categories></vk-categories>
+  </vk-navigation>
+
+  <!-- Struct -->
+  <vk-struct>
+
+    <vk-name>VkDisplayPlanePropertiesKHR</vk-name>
+
+    <vk-description>Structure describing display plane properties</vk-description>
+
+    <vk-section-title>Syntax</vk-section-title>
+    <vk-syntax>
+      <pre><code class="language-js">displayPlanePropertiesKHRInfo = new VkDisplayPlanePropertiesKHR();
+displayPlanePropertiesKHRInfo = new VkDisplayPlanePropertiesKHR(object);</code></pre>
+    </vk-syntax>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">let displayPlanePropertiesKHRInfo = new VkDisplayPlanePropertiesKHR();
+displayPlanePropertiesKHRInfo.currentDisplay = ;
+displayPlanePropertiesKHRInfo.currentStackIndex = ;
+</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Parameters</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype class="no-float">object</vk-property-prototype>
+        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkDisplayPlanePropertiesKHR.prototype.currentDisplay -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplayPlanePropertiesKHR.prototype.<vk-prototype-name>currentDisplay</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object"><a href="../handles/VkDisplayKHR.html">VkDisplayKHR</a></vk-property-type>
+        <vk-property-description> is the handle of the display the plane is currently associated with. If the plane is not currently attached to any displays, this will be <b>VK_NULL_HANDLE</b>.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkDisplayPlanePropertiesKHR.prototype.currentStackIndex -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplayPlanePropertiesKHR.prototype.<vk-prototype-name>currentStackIndex</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-description> is the current z-order of the plane. This will be between 0 and the value returned by <b><a href="../calls/vkGetPhysicalDeviceDisplayPlanePropertiesKHR.html">vkGetPhysicalDeviceDisplayPlanePropertiesKHR</a></b> in <b>pPropertyCount</b>.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+    <vk-section-title>Default Properties</vk-section-title>
+
+    <vk-properties>
+      <!-- VkDisplayPlanePropertiesKHR.prototype.memoryBuffer -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplayPlanePropertiesKHR.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
+        <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
+      </vk-property-entry>
+      <!-- VkDisplayPlanePropertiesKHR.memoryLayout -->
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplayPlanePropertiesKHR.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
+        <vk-property-type type="object">Object</vk-property-type>
+        <vk-property-description>Object describing the memory layout for this structure.</vk-property-description>
+      </vk-property-entry>
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>
