@@ -75,6 +75,7 @@ vk-property-type[type="number"]  { color: rgba(28, 0, 207, 1); }
 vk-property-type[type="string"]  { color: rgba(197, 25, 22, 1); }
 vk-property-type[type="array"]   { color: rgba(171, 13, 144, 1); }
 vk-property-type[type="boolean"] { color: rgba(171, 13, 144, 1); }
+vk-property-type[type="function"] { color: rgb(27, 200, 206); }
 vk-property-type[type="object"]  {
   color: rgba(124, 146, 208, 1);
   cursor: pointer;
