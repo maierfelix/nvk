@@ -77,15 +77,14 @@ function copyFiles() {
       files.push([`${sdkPath}/../MoltenVK/macOS/dynamic/libMoltenVK.dylib`, targetDir]);
       files.push([`${sdkPath}/lib/libvulkan.dylib`, targetDir]);
       files.push([`${sdkPath}/lib/libvulkan.1.dylib`, targetDir]);
-      files.push([`${sdkPath}/lib/libvulkan.1.1.97.dylib`, targetDir]);
+      files.push([`${sdkPath}/lib/libvulkan.${vkVersion}.dylib`, targetDir]);
       files.push([`${baseDir}/ICD/`, targetDir]);
-      //files.push([`${baseDir}/GLFW/`, targetDir]);
     }
     // add linux runtime files
     else if (platform === "linux") {
       files.push([`${sdkPath}/lib/libvulkan.so`, targetDir]);
       files.push([`${sdkPath}/lib/libvulkan.so.1`, targetDir]);
-      files.push([`${sdkPath}/lib/libvulkan.so.1.1.97`, targetDir]);
+      files.push([`${sdkPath}/lib/libvulkan.so.${vkVersion}`, targetDir]);
     }
     let counter = 0;
     files.map(entry => {
