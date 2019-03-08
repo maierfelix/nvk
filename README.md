@@ -2,6 +2,14 @@
   <a href="#">
     <img src="https://i.imgur.com/7rnMbVp.png" height="204">
   </a>
+  <br/>
+  <br/>
+  <a href="https://www.npmjs.com/package/nvk">
+    <img src="https://img.shields.io/npm/v/nvk.svg?style=flat-square" alt="NPM Version" />
+  </a>
+  <a href="//www.npmjs.com/package/nvk">
+    <img src="https://img.shields.io/npm/dt/nvk.svg?style=flat-square" alt="NPM Downloads" />
+  </a>
 </p>
 
 #
