@@ -1,0 +1,56 @@
+class {{ struct.name }} {
+  constructor(opts) {
+    {% for member in struct.children %}
+    {%- if isIgnoreableType(member) != true -%}
+    this._{{ member.name }} = {{ getConstructorInitializer(member) | safe }};
+    {% endif -%}
+    {%- endfor -%}
+    this.memoryBuffer = new ArrayBuffer({{ struct.name }}.byteLength);
+    this.memoryView = new DataView(this.memoryBuffer);
+    if (typeof opts === "object") {
+      {% for member in struct.children %}
+      {%- if isIgnoreableType(member) != true -%}
+      {%- if isFillableMember(struct, member) == true -%}
+      if (opts.{{ member.name }} !== void 0) this.{{ member.name }} = opts.{{ member.name }};
+      {% endif -%}
+      {% endif -%}
+      {%- endfor %}
+    }
+  }
+  {% for member in struct.children %}
+  {%- if isIgnoreableType(member) != true -%}
+  get {{ member.name }}() {
+    return this._{{ member.name }};
+  }
+  {% if isFillableMember(struct, member) == true -%}
+  set {{ member.name }}(value) {
+    {{ getSetterProcessor(member) | safe }}
+  }
+  {% endif -%}
+  {% endif -%}
+  {% endfor %}
+};
+
+{{ struct.name }}.prototype.flush = function flush() {
+  {% for member in struct.children -%}
+  {%- if isIgnoreableType(member) != true -%}
+  {%- if isFlushableMember(member) == true %}
+  if (this.{{ member.name }} !== null) { }
+  {% endif -%}
+  {%- endif -%}
+  {%- endfor %}
+};
+
+const ${{ struct.name }} = memoryLayouts.{{ struct.name }};
+{{ struct.name }}.byteLength = ${{ struct.name }}.byteLength;
+
+{{ struct.name }}.memoryLayout = Object.freeze({
+  {%- for member in struct.children -%}
+  {%- if isIgnoreableType(member) != true %}
+  {{ member.name }}: Object.freeze({
+    byteOffset: ${{ struct.name }}.{{ member.name }}.byteOffset,
+    byteLength: ${{ struct.name }}.{{ member.name }}.byteLength
+  }),
+  {%- endif -%}
+  {%- endfor %}
+});

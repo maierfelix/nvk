@@ -15,7 +15,12 @@ import {
   getAutoStructureType,
   getNapiTypedArrayName,
   isReferenceableMember,
-  isCurrentPlatformSupportedExtension
+  isCurrentPlatformSupportedExtension,
+  isFlushableMember,
+  isArrayMember,
+  isArrayOfObjectsMember,
+  isHeaderHeapVector,
+  isFillableMember
 } from "../utils";
 
 let ast = null;
@@ -657,36 +662,6 @@ function processSourceIncludes(struct) {
   return out;
 };
 
-function isFlushableMember(member) {
-  if (isPNextMember(member)) return true;
-  if (member.isStructType && member.dereferenceCount <= 0 && !member.isConstant) return true;
-  return isHeaderHeapVector(member);
-};
-
-function isArrayMember(member) {
-  return (
-    member.isArray ||
-    member.isDynamicArray ||
-    member.isNumericArray ||
-    member.isTypedArray
-  );
-};
-
-function isArrayOfObjectsMember(member) {
-  return (
-    (member.isArray) &&
-    (member.isStructType || member.isHandleType) ||
-    (member.isStaticArray && member.isNumericArray)
-  );
-};
-
-function isHeaderHeapVector(member) {
-  return (
-    isArrayOfObjectsMember(member) ||
-    member.rawType === "const char * const*"
-  );
-};
-
 function getHeaderHeapVectorType(member) {
   if (isArrayOfObjectsMember(member)) return member.type;
   else if (member.rawType === "const char * const*") return `char*`;
@@ -765,12 +740,6 @@ function processMemberAutosType(struct) {
   if (sTypeMember) sType = struct.sType || getAutoStructureType(struct.name);
   if (sType) return `instance.sType = ${sType};`;
   return ``;
-};
-
-function isFillableMember(struct, member) {
-  if (member.name === `sType` || member.name === `pNext`) return true;
-  if (member.isVoidPointer) return true;
-  return !struct.returnedonly;
 };
 
 export default function(astReference, struct) {

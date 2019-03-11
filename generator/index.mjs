@@ -16,6 +16,8 @@ import generateGyp from "./generators/gyp";
 import generatePackage from "./generators/package";
 import generateUtils from "./generators/utils";
 import generateTS from "./generators/typescript";
+import generateMemoryLayouts from "./generators/memoryLayouts";
+import generateJavaScriptInterfaces from "./generators/js-interfaces";
 import generateDocs from "./generators/docs";
 
 import {
@@ -307,6 +309,18 @@ ${getPlatformRelevantIncludes(ast)}
 #endif`;
     writeAddonFile(`${generateSrcPath}/source.cpp`, source, "utf-8", true);
   }
+  // generate js interface
+  {
+    console.log("Generating Vk JavaScript interfaces..");
+    let out = `
+const memoryLayouts = require("memoryLayouts.json");
+`;
+    structs.map(struct => {
+      let result = generateJavaScriptInterfaces(ast, struct);
+      out += result;
+    });
+    writeAddonFile(`${generatePath}/interfaces.js`, out, "utf-8", true);
+  }
   // generate enums
   {
     console.log("Generating Vk enums..");
@@ -363,6 +377,13 @@ ${getPlatformRelevantIncludes(ast)}
     let indexFile = generateIndex(ast, sortedIncludes, calls);
     writeAddonFile(`${generateSrcPath}/index.h`, indexFile.header, "utf-8", true);
     writeAddonFile(`${generateSrcPath}/index.cpp`, indexFile.source, "utf-8", true);
+  }
+  // generate memory layouts
+  {
+    let data = { structs };
+    let result = generateMemoryLayouts(ast, data);
+    console.log("Generating Memory layouts..");
+    writeAddonFile(`${generateSrcPath}/memoryLayouts.h`, result, "utf-8", true);
   }
   // generate typescript index
   {

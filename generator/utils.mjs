@@ -451,3 +451,65 @@ export function isReferenceableMember(member) {
   };
   return false;
 };
+
+export function isFlushableMember(member) {
+  if (isPNextMember(member)) return true;
+  if (member.isStructType && member.dereferenceCount <= 0 && !member.isConstant) return true;
+  return isHeaderHeapVector(member);
+};
+
+export function isArrayMember(member) {
+  return (
+    member.isArray ||
+    member.isDynamicArray ||
+    member.isNumericArray ||
+    member.isTypedArray
+  );
+};
+
+export function isArrayOfObjectsMember(member) {
+  return (
+    (member.isArray) &&
+    (member.isStructType || member.isHandleType) ||
+    (member.isStaticArray && member.isNumericArray)
+  );
+};
+
+export function isHeaderHeapVector(member) {
+  return (
+    isArrayOfObjectsMember(member) ||
+    member.rawType === "const char * const*"
+  );
+};
+
+export function isFillableMember(struct, member) {
+  if (member.name === `sType` || member.name === `pNext`) return true;
+  if (member.isVoidPointer) return true;
+  return !struct.returnedonly;
+};
+
+export function getBitmaskByName(ast, name) {
+  for (let ii = 0; ii < ast.length; ++ii) {
+    let child = ast[ii];
+    if (child.kind === "ENUM" && child.type === "BITMASK") {
+      if (child.name === name) return child;
+    }
+  };
+  return null;
+};
+
+export function getNumericByteLength(type) {
+  // 64-bit system
+  switch (type) {
+    case "int": return 4;
+    case "float": return 4;
+    case "size_t": return 8;
+    case "int32_t": return 4;
+    case "uint8_t": return 1;
+    case "uint16_t": return 2;
+    case "uint32_t": return 4;
+    case "uint64_t": return 8;
+  };
+  warn(`Cannot resolve numeric byte length for type: ${type}`);
+  return -1;
+};

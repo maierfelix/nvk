@@ -127,10 +127,26 @@ function buildFiles() {
   });
 };
 
+/**
+ * This reduces runtime load by "inlining" the C++ based memory layout
+ * into a JSON file, which can then be cheaply required at runtime
+ */
+function inlineMemoryLayouts() {
+  const addon = require(`${buildReleaseDir}/addon-${platform}.node`);
+  console.log(`Inlining memory layouts..`);
+  let memoryLayouts = addon.MemoryLayouts();
+  fs.writeFileSync(`${generatePath}/memoryLayouts.json`, JSON.stringify(memoryLayouts, null, 2));
+};
+
+function actionsAfter() {
+  inlineMemoryLayouts();
+};
+
 (async function run() {
   await copyFiles();
   let buildSuccess = await buildFiles();
   if (buildSuccess) {
+    actionsAfter();
     process.stdout.write(`\nSuccessfully compiled bindings for ${vkVersion}!\n`);
   } else {
     process.stderr.write(`\nFailed to compile bindings for ${vkVersion}!`);
