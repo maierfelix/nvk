@@ -313,7 +313,12 @@ ${getPlatformRelevantIncludes(ast)}
   {
     console.log("Generating Vk JavaScript interfaces..");
     let out = `
-const memoryLayouts = require("memoryLayouts.json");
+const txtEncoder = new TextEncoder();
+const txtDecoder = new TextDecoder();
+
+function encodeString(byteOffset) {
+
+};
 `;
     structs.map(struct => {
       let result = generateJavaScriptInterfaces(ast, struct);
@@ -407,6 +412,7 @@ const memoryLayouts = require("memoryLayouts.json");
 let vkVersion = process.env.npm_config_vkversion;
 if (!vkVersion) throw `No specification version --vkversion specified!`;
 vkVersion = formatVkVersion(vkVersion);
+global.vkVersion = vkVersion;
 
 let WSI = process.env.npm_config_wsi;
 if (process.platform === "linux") {

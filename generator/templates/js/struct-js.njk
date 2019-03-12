@@ -1,12 +1,14 @@
+/** {{ struct.name }} **/
 class {{ struct.name }} {
   constructor(opts) {
     {% for member in struct.children %}
     {%- if isIgnoreableType(member) != true -%}
-    this._{{ member.name }} = {{ getConstructorInitializer(member) | safe }};
+    {{ getConstructorInitializer(member) | safe }}
     {% endif -%}
     {%- endfor -%}
     this.memoryBuffer = new ArrayBuffer({{ struct.name }}.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
+    {{ getStructureAutoSType() | safe }}
     if (typeof opts === "object") {
       {% for member in struct.children %}
       {%- if isIgnoreableType(member) != true -%}
@@ -20,11 +22,11 @@ class {{ struct.name }} {
   {% for member in struct.children %}
   {%- if isIgnoreableType(member) != true -%}
   get {{ member.name }}() {
-    return this._{{ member.name }};
+    {{- getGetterProcessor(member) | safe }}
   }
   {% if isFillableMember(struct, member) == true -%}
   set {{ member.name }}(value) {
-    {{ getSetterProcessor(member) | safe }}
+    {{- getSetterProcessor(member) | safe }}
   }
   {% endif -%}
   {% endif -%}
@@ -41,15 +43,14 @@ class {{ struct.name }} {
   {%- endfor %}
 };
 
-const ${{ struct.name }} = memoryLayouts.{{ struct.name }};
-{{ struct.name }}.byteLength = ${{ struct.name }}.byteLength;
+{{ struct.name }}.byteLength = {{ getStructureByteLength() | safe }};
 
 {{ struct.name }}.memoryLayout = Object.freeze({
   {%- for member in struct.children -%}
   {%- if isIgnoreableType(member) != true %}
   {{ member.name }}: Object.freeze({
-    byteOffset: ${{ struct.name }}.{{ member.name }}.byteOffset,
-    byteLength: ${{ struct.name }}.{{ member.name }}.byteLength
+    byteOffset: {{ getStructureMemberByteOffset(member) | safe }},
+    byteLength: {{ getStructureMemberByteLength(member) | safe }}
   }),
   {%- endif -%}
   {%- endfor %}

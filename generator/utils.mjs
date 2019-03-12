@@ -499,7 +499,7 @@ export function getBitmaskByName(ast, name) {
 };
 
 export function getNumericByteLength(type) {
-  // 64-bit system
+  // 64-bit assumed
   switch (type) {
     case "int": return 4;
     case "float": return 4;
@@ -512,4 +512,21 @@ export function getNumericByteLength(type) {
   };
   warn(`Cannot resolve numeric byte length for type: ${type}`);
   return -1;
+};
+
+export function getDataViewInstruction(member) {
+  let {type} = member;
+  if (member.isWin32Handle) return `BigInt64`;
+  switch (type) {
+    case "int": return `Int32`;
+    case "float": return `Float32`;
+    case "size_t": return `BigInt64`;
+    case "int32_t": return `Int32`;
+    case "uint8_t": return `Uint8`;
+    case "uint32_t": return `Uint32`;
+    case "uint64_t": return `BigUint64`;
+    default:
+      warn(`Cannot resolve DataView instruction for ${member.name} of type ${type}`);
+  };
+  return ``;
 };

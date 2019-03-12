@@ -5,9 +5,6 @@ import {
   getNumericByteLength
 } from "./utils";
 
-// 64-bit system
-const PTR_SIZE = 8;
-
 export class JavaScriptType {
   constructor(opts) {
     this.type = null;
@@ -16,14 +13,12 @@ export class JavaScriptType {
     this.isEnum = false;
     this.isBitmask = false;
     this.isNullable = false;
-    this.byteLength = 0;
     if (opts.type !== void 0) this.type = opts.type;
     if (opts.value !== void 0) this.value = opts.value;
     if (opts.isArray !== void 0) this.isArray = opts.isArray;
     if (opts.isEnum !== void 0) this.isEnum = opts.isEnum;
     if (opts.isBitmask !== void 0) this.isBitmask = opts.isBitmask;
     if (opts.isNullable !== void 0) this.isNullable = opts.isNullable;
-    if (opts.byteLength !== void 0) this.byteLength = opts.byteLength;
     //if (!opts.byteLength) console.log("nooooo");
   }
   get isNumeric() {
@@ -58,23 +53,20 @@ export function getJavaScriptType(ast, object) {
       type: JavaScriptType.TYPED_ARRAY,
       value: object.jsTypedArrayName,
       isArray: true,
-      isNullable: true,
-      byteLength: PTR_SIZE
+      isNullable: true
     });
   }
   if (object.isFunction) {
     return new JavaScriptType({
       type: JavaScriptType.FUNCTION,
       value: object.type,
-      isNullable: true,
-      byteLength: PTR_SIZE
+      isNullable: true
     });
   }
   if (isIgnoreableType(object)) {
     return new JavaScriptType({
       type: JavaScriptType.NULL,
-      isNullable: true,
-      byteLength: PTR_SIZE
+      isNullable: true
     });
   }
   if (object.kind === "COMMAND_PARAM") {
@@ -89,8 +81,7 @@ export function getJavaScriptType(ast, object) {
         return new JavaScriptType({
           type: JavaScriptType.OBJECT_INOUT,
           value: "Number",
-          isNullable: true,
-          byteLength: PTR_SIZE
+          isNullable: true
         });
     };
   }
@@ -100,8 +91,7 @@ export function getJavaScriptType(ast, object) {
       type: JavaScriptType.NUMBER,
       value: object.enumType,
       isNullable: false,
-      isEnum: true,
-      byteLength: getNumericByteLength(object.rawType)
+      isEnum: true
     });
   }
   if (object.isBitmaskType) {
@@ -110,16 +100,14 @@ export function getJavaScriptType(ast, object) {
     if (!bitmask) {
       return new JavaScriptType({
         type: JavaScriptType.NUMBER,
-        isNullable: false,
-        byteLength: getNumericByteLength(object.rawType)
+        isNullable: false
       });
     }
     return new JavaScriptType({
       type: JavaScriptType.NUMBER,
       value: object.bitmaskType,
       isNullable: false,
-      isBitmask: true,
-      byteLength: getNumericByteLength(object.rawType)
+      isBitmask: true
     });
   }
   if (object.isStaticArray) {
@@ -128,16 +116,14 @@ export function getJavaScriptType(ast, object) {
       return new JavaScriptType({
         type: JavaScriptType.STRING,
         isArray: true,
-        isNullable: true,
-        byteLength: parseInt(object.length)
+        isNullable: true
       });
     }
     else {
       return new JavaScriptType({
         type: JavaScriptType.ARRAY_OF_NUMBERS,
         isArray: true,
-        isNullable: true,
-        byteLength: parseInt(object.length)
+        isNullable: true
       });
     }
   }
@@ -146,8 +132,7 @@ export function getJavaScriptType(ast, object) {
       type: JavaScriptType.ARRAY_OF_OBJECTS,
       value: object.type,
       isArray: true,
-      isNullable: true,
-      byteLength: PTR_SIZE
+      isNullable: true
     });
   }
   if (object.isStructType || object.isHandleType || object.isBaseType) {
@@ -155,24 +140,21 @@ export function getJavaScriptType(ast, object) {
       return new JavaScriptType({
         type: JavaScriptType.OBJECT,
         value: object.type,
-        isNullable: true,
-        byteLength: PTR_SIZE
+        isNullable: true
       });
     }
   }
   if (object.isWin32Handle) {
     return new JavaScriptType({
       type: JavaScriptType.BIGINT,
-      isNullable: false,
-      byteLength: PTR_SIZE
+      isNullable: false
     });
   }
   if (object.isWin32HandleReference) {
     return new JavaScriptType({
       type: JavaScriptType.OBJECT_INOUT,
       value: "BigInt",
-      isNullable: true,
-      byteLength: PTR_SIZE
+      isNullable: true
     });
   }
   switch (rawType) {
@@ -180,22 +162,19 @@ export function getJavaScriptType(ast, object) {
     case "const void *":
       return new JavaScriptType({
         type: JavaScriptType.NULL,
-        isNullable: true,
-        byteLength: PTR_SIZE
+        isNullable: true
       });
     case "LPCWSTR":
     case "const char *":
       return new JavaScriptType({
         type: JavaScriptType.STRING,
-        isNullable: true,
-        byteLength: PTR_SIZE
+        isNullable: true
       });
     case "const char * const*":
       return new JavaScriptType({
         type: JavaScriptType.ARRAY_OF_STRINGS,
         isArray: true,
-        isNullable: true,
-        byteLength: PTR_SIZE
+        isNullable: true
       });
     case "int":
     case "float":
@@ -207,15 +186,13 @@ export function getJavaScriptType(ast, object) {
     case "uint64_t":
       return new JavaScriptType({
         type: JavaScriptType.NUMBER,
-        isNullable: false,
-        byteLength: getNumericByteLength(object.rawType)
+        isNullable: false
       });
     case "void **":
       return new JavaScriptType({
         type: JavaScriptType.OBJECT_INOUT,
         value: "BigInt",
-        isNullable: true,
-        byteLength: PTR_SIZE
+        isNullable: true
       });
   };
   warn(`Cannot handle object ${object.rawType} in JavaScript type resolver!`);
