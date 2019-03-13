@@ -1297,6 +1297,9 @@ VkDeviceCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pQueueCreateInfos !== null) {
+    if (this._pQueueCreateInfos.length !== this.queueCreateInfoCount) {
+      throw new RangeError("Invalid array length, expected array length of 'queueCreateInfoCount' for 'VkDeviceCreateInfo.pQueueCreateInfos'");
+    }
     let nativeArray = new NativeObjectArray(this._pQueueCreateInfos);
     this._pQueueCreateInfosNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -1610,6 +1613,9 @@ VkPhysicalDeviceMemoryProperties.prototype.flush = function flush() {
   
   
   if (this._memoryTypes !== null) {
+    if (this._memoryTypes.length !== 32) {
+      throw new RangeError("Invalid array length, expected array length of '32' for 'VkPhysicalDeviceMemoryProperties.memoryTypes'");
+    }
     let nativeArray = new NativeObjectArray(this._memoryTypes);
     this._memoryTypesNative = nativeArray;
     this.memoryView.setBigInt64(0x4, nativeArray.address);
@@ -1617,6 +1623,9 @@ VkPhysicalDeviceMemoryProperties.prototype.flush = function flush() {
   
   
   if (this._memoryHeaps !== null) {
+    if (this._memoryHeaps.length !== 16) {
+      throw new RangeError("Invalid array length, expected array length of '16' for 'VkPhysicalDeviceMemoryProperties.memoryHeaps'");
+    }
     let nativeArray = new NativeObjectArray(this._memoryHeaps);
     this._memoryHeapsNative = nativeArray;
     this.memoryView.setBigInt64(0x108, nativeArray.address);
@@ -2430,6 +2439,9 @@ VkWriteDescriptorSet.prototype.flush = function flush() {
   
   
   if (this._pImageInfo !== null) {
+    if (this._pImageInfo.length !== this.descriptorCount) {
+      throw new RangeError("Invalid array length, expected array length of 'descriptorCount' for 'VkWriteDescriptorSet.pImageInfo'");
+    }
     let nativeArray = new NativeObjectArray(this._pImageInfo);
     this._pImageInfoNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
@@ -2437,6 +2449,9 @@ VkWriteDescriptorSet.prototype.flush = function flush() {
   
   
   if (this._pBufferInfo !== null) {
+    if (this._pBufferInfo.length !== this.descriptorCount) {
+      throw new RangeError("Invalid array length, expected array length of 'descriptorCount' for 'VkWriteDescriptorSet.pBufferInfo'");
+    }
     let nativeArray = new NativeObjectArray(this._pBufferInfo);
     this._pBufferInfoNative = nativeArray;
     this.memoryView.setBigInt64(0x30, nativeArray.address);
@@ -2444,6 +2459,9 @@ VkWriteDescriptorSet.prototype.flush = function flush() {
   
   
   if (this._pTexelBufferView !== null) {
+    if (this._pTexelBufferView.length !== this.descriptorCount) {
+      throw new RangeError("Invalid array length, expected array length of 'descriptorCount' for 'VkWriteDescriptorSet.pTexelBufferView'");
+    }
     let nativeArray = new NativeObjectArray(this._pTexelBufferView);
     this._pTexelBufferViewNative = nativeArray;
     this.memoryView.setBigInt64(0x38, nativeArray.address);
@@ -4246,6 +4264,9 @@ VkSparseBufferMemoryBindInfo.prototype.flush = function flush() {
   
   
   if (this._pBinds !== null) {
+    if (this._pBinds.length !== this.bindCount) {
+      throw new RangeError("Invalid array length, expected array length of 'bindCount' for 'VkSparseBufferMemoryBindInfo.pBinds'");
+    }
     let nativeArray = new NativeObjectArray(this._pBinds);
     this._pBindsNative = nativeArray;
     this.memoryView.setBigInt64(0x10, nativeArray.address);
@@ -4327,6 +4348,9 @@ VkSparseImageOpaqueMemoryBindInfo.prototype.flush = function flush() {
   
   
   if (this._pBinds !== null) {
+    if (this._pBinds.length !== this.bindCount) {
+      throw new RangeError("Invalid array length, expected array length of 'bindCount' for 'VkSparseImageOpaqueMemoryBindInfo.pBinds'");
+    }
     let nativeArray = new NativeObjectArray(this._pBinds);
     this._pBindsNative = nativeArray;
     this.memoryView.setBigInt64(0x10, nativeArray.address);
@@ -4408,6 +4432,9 @@ VkSparseImageMemoryBindInfo.prototype.flush = function flush() {
   
   
   if (this._pBinds !== null) {
+    if (this._pBinds.length !== this.bindCount) {
+      throw new RangeError("Invalid array length, expected array length of 'bindCount' for 'VkSparseImageMemoryBindInfo.pBinds'");
+    }
     let nativeArray = new NativeObjectArray(this._pBinds);
     this._pBindsNative = nativeArray;
     this.memoryView.setBigInt64(0x10, nativeArray.address);
@@ -4582,6 +4609,9 @@ VkBindSparseInfo.prototype.flush = function flush() {
   
   
   if (this._pWaitSemaphores !== null) {
+    if (this._pWaitSemaphores.length !== this.waitSemaphoreCount) {
+      throw new RangeError("Invalid array length, expected array length of 'waitSemaphoreCount' for 'VkBindSparseInfo.pWaitSemaphores'");
+    }
     let nativeArray = new NativeObjectArray(this._pWaitSemaphores);
     this._pWaitSemaphoresNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -4589,6 +4619,9 @@ VkBindSparseInfo.prototype.flush = function flush() {
   
   
   if (this._pBufferBinds !== null) {
+    if (this._pBufferBinds.length !== this.bufferBindCount) {
+      throw new RangeError("Invalid array length, expected array length of 'bufferBindCount' for 'VkBindSparseInfo.pBufferBinds'");
+    }
     let nativeArray = new NativeObjectArray(this._pBufferBinds);
     this._pBufferBindsNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
@@ -4596,6 +4629,9 @@ VkBindSparseInfo.prototype.flush = function flush() {
   
   
   if (this._pImageOpaqueBinds !== null) {
+    if (this._pImageOpaqueBinds.length !== this.imageOpaqueBindCount) {
+      throw new RangeError("Invalid array length, expected array length of 'imageOpaqueBindCount' for 'VkBindSparseInfo.pImageOpaqueBinds'");
+    }
     let nativeArray = new NativeObjectArray(this._pImageOpaqueBinds);
     this._pImageOpaqueBindsNative = nativeArray;
     this.memoryView.setBigInt64(0x38, nativeArray.address);
@@ -4603,6 +4639,9 @@ VkBindSparseInfo.prototype.flush = function flush() {
   
   
   if (this._pImageBinds !== null) {
+    if (this._pImageBinds.length !== this.imageBindCount) {
+      throw new RangeError("Invalid array length, expected array length of 'imageBindCount' for 'VkBindSparseInfo.pImageBinds'");
+    }
     let nativeArray = new NativeObjectArray(this._pImageBinds);
     this._pImageBindsNative = nativeArray;
     this.memoryView.setBigInt64(0x48, nativeArray.address);
@@ -4610,6 +4649,9 @@ VkBindSparseInfo.prototype.flush = function flush() {
   
   
   if (this._pSignalSemaphores !== null) {
+    if (this._pSignalSemaphores.length !== this.signalSemaphoreCount) {
+      throw new RangeError("Invalid array length, expected array length of 'signalSemaphoreCount' for 'VkBindSparseInfo.pSignalSemaphores'");
+    }
     let nativeArray = new NativeObjectArray(this._pSignalSemaphores);
     this._pSignalSemaphoresNative = nativeArray;
     this.memoryView.setBigInt64(0x58, nativeArray.address);
@@ -4883,6 +4925,9 @@ VkImageBlit.prototype.flush = function flush() {
   
   
   if (this._srcOffsets !== null) {
+    if (this._srcOffsets.length !== 2) {
+      throw new RangeError("Invalid array length, expected array length of '2' for 'VkImageBlit.srcOffsets'");
+    }
     let nativeArray = new NativeObjectArray(this._srcOffsets);
     this._srcOffsetsNative = nativeArray;
     this.memoryView.setBigInt64(0x10, nativeArray.address);
@@ -4892,6 +4937,9 @@ VkImageBlit.prototype.flush = function flush() {
   
   
   if (this._dstOffsets !== null) {
+    if (this._dstOffsets.length !== 2) {
+      throw new RangeError("Invalid array length, expected array length of '2' for 'VkImageBlit.dstOffsets'");
+    }
     let nativeArray = new NativeObjectArray(this._dstOffsets);
     this._dstOffsetsNative = nativeArray;
     this.memoryView.setBigInt64(0x38, nativeArray.address);
@@ -5334,6 +5382,9 @@ VkDescriptorSetLayoutBinding.prototype.flush = function flush() {
   
   
   if (this._pImmutableSamplers !== null) {
+    if (this._pImmutableSamplers.length !== this.descriptorCount) {
+      throw new RangeError("Invalid array length, expected array length of 'descriptorCount' for 'VkDescriptorSetLayoutBinding.pImmutableSamplers'");
+    }
     let nativeArray = new NativeObjectArray(this._pImmutableSamplers);
     this._pImmutableSamplersNative = nativeArray;
     this.memoryView.setBigInt64(0x10, nativeArray.address);
@@ -5432,6 +5483,17 @@ VkDescriptorSetLayoutCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pBindings !== null) {
+    if (this._pBindings.length !== this.bindingCount) {
+      throw new RangeError("Invalid array length, expected array length of 'bindingCount' for 'VkDescriptorSetLayoutCreateInfo.pBindings'");
+    }
+    for (let ii = 0; ii < array.length; ++ii) {
+      let entry = array[ii];
+      if (entry.constructor !== VkDescriptorSetLayoutBinding) {
+        throw new TypeError("Invalid type for 'VkDescriptorSetLayoutCreateInfo.pBindings'");
+        return false;
+      }
+      if (!entry.flush()) return false;
+    };
     let nativeArray = new NativeObjectArray(this._pBindings);
     this._pBindingsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -5585,6 +5647,9 @@ VkDescriptorPoolCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pPoolSizes !== null) {
+    if (this._pPoolSizes.length !== this.poolSizeCount) {
+      throw new RangeError("Invalid array length, expected array length of 'poolSizeCount' for 'VkDescriptorPoolCreateInfo.pPoolSizes'");
+    }
     let nativeArray = new NativeObjectArray(this._pPoolSizes);
     this._pPoolSizesNative = nativeArray;
     this.memoryView.setBigInt64(0x20, nativeArray.address);
@@ -5695,6 +5760,9 @@ VkDescriptorSetAllocateInfo.prototype.flush = function flush() {
   
   
   if (this._pSetLayouts !== null) {
+    if (this._pSetLayouts.length !== this.descriptorSetCount) {
+      throw new RangeError("Invalid array length, expected array length of 'descriptorSetCount' for 'VkDescriptorSetAllocateInfo.pSetLayouts'");
+    }
     let nativeArray = new NativeObjectArray(this._pSetLayouts);
     this._pSetLayoutsNative = nativeArray;
     this.memoryView.setBigInt64(0x20, nativeArray.address);
@@ -5850,6 +5918,9 @@ VkSpecializationInfo.prototype.flush = function flush() {
   
   
   if (this._pMapEntries !== null) {
+    if (this._pMapEntries.length !== this.mapEntryCount) {
+      throw new RangeError("Invalid array length, expected array length of 'mapEntryCount' for 'VkSpecializationInfo.pMapEntries'");
+    }
     let nativeArray = new NativeObjectArray(this._pMapEntries);
     this._pMapEntriesNative = nativeArray;
     this.memoryView.setBigInt64(0x8, nativeArray.address);
@@ -6368,6 +6439,9 @@ VkPipelineVertexInputStateCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pVertexBindingDescriptions !== null) {
+    if (this._pVertexBindingDescriptions.length !== this.vertexBindingDescriptionCount) {
+      throw new RangeError("Invalid array length, expected array length of 'vertexBindingDescriptionCount' for 'VkPipelineVertexInputStateCreateInfo.pVertexBindingDescriptions'");
+    }
     let nativeArray = new NativeObjectArray(this._pVertexBindingDescriptions);
     this._pVertexBindingDescriptionsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -6375,6 +6449,9 @@ VkPipelineVertexInputStateCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pVertexAttributeDescriptions !== null) {
+    if (this._pVertexAttributeDescriptions.length !== this.vertexAttributeDescriptionCount) {
+      throw new RangeError("Invalid array length, expected array length of 'vertexAttributeDescriptionCount' for 'VkPipelineVertexInputStateCreateInfo.pVertexAttributeDescriptions'");
+    }
     let nativeArray = new NativeObjectArray(this._pVertexAttributeDescriptions);
     this._pVertexAttributeDescriptionsNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
@@ -6660,6 +6737,9 @@ VkPipelineViewportStateCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pViewports !== null) {
+    if (this._pViewports.length !== this.viewportCount) {
+      throw new RangeError("Invalid array length, expected array length of 'viewportCount' for 'VkPipelineViewportStateCreateInfo.pViewports'");
+    }
     let nativeArray = new NativeObjectArray(this._pViewports);
     this._pViewportsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -6667,6 +6747,9 @@ VkPipelineViewportStateCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pScissors !== null) {
+    if (this._pScissors.length !== this.scissorCount) {
+      throw new RangeError("Invalid array length, expected array length of 'scissorCount' for 'VkPipelineViewportStateCreateInfo.pScissors'");
+    }
     let nativeArray = new NativeObjectArray(this._pScissors);
     this._pScissorsNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
@@ -7241,6 +7324,9 @@ VkPipelineColorBlendStateCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pAttachments !== null) {
+    if (this._pAttachments.length !== this.attachmentCount) {
+      throw new RangeError("Invalid array length, expected array length of 'attachmentCount' for 'VkPipelineColorBlendStateCreateInfo.pAttachments'");
+    }
     let nativeArray = new NativeObjectArray(this._pAttachments);
     this._pAttachmentsNative = nativeArray;
     this.memoryView.setBigInt64(0x20, nativeArray.address);
@@ -7953,6 +8039,9 @@ VkGraphicsPipelineCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pStages !== null) {
+    if (this._pStages.length !== this.stageCount) {
+      throw new RangeError("Invalid array length, expected array length of 'stageCount' for 'VkGraphicsPipelineCreateInfo.pStages'");
+    }
     let nativeArray = new NativeObjectArray(this._pStages);
     this._pStagesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -8280,6 +8369,9 @@ VkPipelineLayoutCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pSetLayouts !== null) {
+    if (this._pSetLayouts.length !== this.setLayoutCount) {
+      throw new RangeError("Invalid array length, expected array length of 'setLayoutCount' for 'VkPipelineLayoutCreateInfo.pSetLayouts'");
+    }
     let nativeArray = new NativeObjectArray(this._pSetLayouts);
     this._pSetLayoutsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -8287,6 +8379,9 @@ VkPipelineLayoutCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pPushConstantRanges !== null) {
+    if (this._pPushConstantRanges.length !== this.pushConstantRangeCount) {
+      throw new RangeError("Invalid array length, expected array length of 'pushConstantRangeCount' for 'VkPipelineLayoutCreateInfo.pPushConstantRanges'");
+    }
     let nativeArray = new NativeObjectArray(this._pPushConstantRanges);
     this._pPushConstantRangesNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
@@ -9055,6 +9150,9 @@ VkRenderPassBeginInfo.prototype.flush = function flush() {
   
   
   if (this._pClearValues !== null) {
+    if (this._pClearValues.length !== this.clearValueCount) {
+      throw new RangeError("Invalid array length, expected array length of 'clearValueCount' for 'VkRenderPassBeginInfo.pClearValues'");
+    }
     let nativeArray = new NativeObjectArray(this._pClearValues);
     this._pClearValuesNative = nativeArray;
     this.memoryView.setBigInt64(0x38, nativeArray.address);
@@ -9523,6 +9621,9 @@ VkSubpassDescription.prototype.flush = function flush() {
   
   
   if (this._pInputAttachments !== null) {
+    if (this._pInputAttachments.length !== this.inputAttachmentCount) {
+      throw new RangeError("Invalid array length, expected array length of 'inputAttachmentCount' for 'VkSubpassDescription.pInputAttachments'");
+    }
     let nativeArray = new NativeObjectArray(this._pInputAttachments);
     this._pInputAttachmentsNative = nativeArray;
     this.memoryView.setBigInt64(0x10, nativeArray.address);
@@ -9530,6 +9631,9 @@ VkSubpassDescription.prototype.flush = function flush() {
   
   
   if (this._pColorAttachments !== null) {
+    if (this._pColorAttachments.length !== this.colorAttachmentCount) {
+      throw new RangeError("Invalid array length, expected array length of 'colorAttachmentCount' for 'VkSubpassDescription.pColorAttachments'");
+    }
     let nativeArray = new NativeObjectArray(this._pColorAttachments);
     this._pColorAttachmentsNative = nativeArray;
     this.memoryView.setBigInt64(0x20, nativeArray.address);
@@ -9537,6 +9641,9 @@ VkSubpassDescription.prototype.flush = function flush() {
   
   
   if (this._pResolveAttachments !== null) {
+    if (this._pResolveAttachments.length !== this.colorAttachmentCount) {
+      throw new RangeError("Invalid array length, expected array length of 'colorAttachmentCount' for 'VkSubpassDescription.pResolveAttachments'");
+    }
     let nativeArray = new NativeObjectArray(this._pResolveAttachments);
     this._pResolveAttachmentsNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
@@ -9808,6 +9915,9 @@ VkRenderPassCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pAttachments !== null) {
+    if (this._pAttachments.length !== this.attachmentCount) {
+      throw new RangeError("Invalid array length, expected array length of 'attachmentCount' for 'VkRenderPassCreateInfo.pAttachments'");
+    }
     let nativeArray = new NativeObjectArray(this._pAttachments);
     this._pAttachmentsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -9815,6 +9925,9 @@ VkRenderPassCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pSubpasses !== null) {
+    if (this._pSubpasses.length !== this.subpassCount) {
+      throw new RangeError("Invalid array length, expected array length of 'subpassCount' for 'VkRenderPassCreateInfo.pSubpasses'");
+    }
     let nativeArray = new NativeObjectArray(this._pSubpasses);
     this._pSubpassesNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
@@ -9822,6 +9935,9 @@ VkRenderPassCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pDependencies !== null) {
+    if (this._pDependencies.length !== this.dependencyCount) {
+      throw new RangeError("Invalid array length, expected array length of 'dependencyCount' for 'VkRenderPassCreateInfo.pDependencies'");
+    }
     let nativeArray = new NativeObjectArray(this._pDependencies);
     this._pDependenciesNative = nativeArray;
     this.memoryView.setBigInt64(0x38, nativeArray.address);
@@ -11917,6 +12033,9 @@ VkFramebufferCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pAttachments !== null) {
+    if (this._pAttachments.length !== this.attachmentCount) {
+      throw new RangeError("Invalid array length, expected array length of 'attachmentCount' for 'VkFramebufferCreateInfo.pAttachments'");
+    }
     let nativeArray = new NativeObjectArray(this._pAttachments);
     this._pAttachmentsNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
@@ -12297,6 +12416,9 @@ VkSubmitInfo.prototype.flush = function flush() {
   
   
   if (this._pWaitSemaphores !== null) {
+    if (this._pWaitSemaphores.length !== this.waitSemaphoreCount) {
+      throw new RangeError("Invalid array length, expected array length of 'waitSemaphoreCount' for 'VkSubmitInfo.pWaitSemaphores'");
+    }
     let nativeArray = new NativeObjectArray(this._pWaitSemaphores);
     this._pWaitSemaphoresNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -12304,6 +12426,9 @@ VkSubmitInfo.prototype.flush = function flush() {
   
   
   if (this._pCommandBuffers !== null) {
+    if (this._pCommandBuffers.length !== this.commandBufferCount) {
+      throw new RangeError("Invalid array length, expected array length of 'commandBufferCount' for 'VkSubmitInfo.pCommandBuffers'");
+    }
     let nativeArray = new NativeObjectArray(this._pCommandBuffers);
     this._pCommandBuffersNative = nativeArray;
     this.memoryView.setBigInt64(0x30, nativeArray.address);
@@ -12311,6 +12436,9 @@ VkSubmitInfo.prototype.flush = function flush() {
   
   
   if (this._pSignalSemaphores !== null) {
+    if (this._pSignalSemaphores.length !== this.signalSemaphoreCount) {
+      throw new RangeError("Invalid array length, expected array length of 'signalSemaphoreCount' for 'VkSubmitInfo.pSignalSemaphores'");
+    }
     let nativeArray = new NativeObjectArray(this._pSignalSemaphores);
     this._pSignalSemaphoresNative = nativeArray;
     this.memoryView.setBigInt64(0x40, nativeArray.address);
@@ -13659,6 +13787,9 @@ VkPresentInfoKHR.prototype.flush = function flush() {
   
   
   if (this._pWaitSemaphores !== null) {
+    if (this._pWaitSemaphores.length !== this.waitSemaphoreCount) {
+      throw new RangeError("Invalid array length, expected array length of 'waitSemaphoreCount' for 'VkPresentInfoKHR.pWaitSemaphores'");
+    }
     let nativeArray = new NativeObjectArray(this._pWaitSemaphores);
     this._pWaitSemaphoresNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -13666,6 +13797,9 @@ VkPresentInfoKHR.prototype.flush = function flush() {
   
   
   if (this._pSwapchains !== null) {
+    if (this._pSwapchains.length !== this.swapchainCount) {
+      throw new RangeError("Invalid array length, expected array length of 'swapchainCount' for 'VkPresentInfoKHR.pSwapchains'");
+    }
     let nativeArray = new NativeObjectArray(this._pSwapchains);
     this._pSwapchainsNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
@@ -14980,6 +15114,9 @@ VkWin32KeyedMutexAcquireReleaseInfoNV.prototype.flush = function flush() {
   
   
   if (this._pAcquireSyncs !== null) {
+    if (this._pAcquireSyncs.length !== this.acquireCount) {
+      throw new RangeError("Invalid array length, expected array length of 'acquireCount' for 'VkWin32KeyedMutexAcquireReleaseInfoNV.pAcquireSyncs'");
+    }
     let nativeArray = new NativeObjectArray(this._pAcquireSyncs);
     this._pAcquireSyncsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -14987,6 +15124,9 @@ VkWin32KeyedMutexAcquireReleaseInfoNV.prototype.flush = function flush() {
   
   
   if (this._pReleaseSyncs !== null) {
+    if (this._pReleaseSyncs.length !== this.releaseCount) {
+      throw new RangeError("Invalid array length, expected array length of 'releaseCount' for 'VkWin32KeyedMutexAcquireReleaseInfoNV.pReleaseSyncs'");
+    }
     let nativeArray = new NativeObjectArray(this._pReleaseSyncs);
     this._pReleaseSyncsNative = nativeArray;
     this.memoryView.setBigInt64(0x38, nativeArray.address);
@@ -15415,6 +15555,9 @@ VkIndirectCommandsLayoutCreateInfoNVX.prototype.flush = function flush() {
   
   
   if (this._pTokens !== null) {
+    if (this._pTokens.length !== this.tokenCount) {
+      throw new RangeError("Invalid array length, expected array length of 'tokenCount' for 'VkIndirectCommandsLayoutCreateInfoNVX.pTokens'");
+    }
     let nativeArray = new NativeObjectArray(this._pTokens);
     this._pTokensNative = nativeArray;
     this.memoryView.setBigInt64(0x20, nativeArray.address);
@@ -15613,6 +15756,9 @@ VkCmdProcessCommandsInfoNVX.prototype.flush = function flush() {
   
   
   if (this._pIndirectCommandsTokens !== null) {
+    if (this._pIndirectCommandsTokens.length !== this.indirectCommandsTokenCount) {
+      throw new RangeError("Invalid array length, expected array length of 'indirectCommandsTokenCount' for 'VkCmdProcessCommandsInfoNVX.pIndirectCommandsTokens'");
+    }
     let nativeArray = new NativeObjectArray(this._pIndirectCommandsTokens);
     this._pIndirectCommandsTokensNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
@@ -17921,6 +18067,9 @@ VkPresentRegionsKHR.prototype.flush = function flush() {
   
   
   if (this._pRegions !== null) {
+    if (this._pRegions.length !== this.swapchainCount) {
+      throw new RangeError("Invalid array length, expected array length of 'swapchainCount' for 'VkPresentRegionsKHR.pRegions'");
+    }
     let nativeArray = new NativeObjectArray(this._pRegions);
     this._pRegionsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -17990,6 +18139,9 @@ VkPresentRegionKHR.prototype.flush = function flush() {
   
   
   if (this._pRectangles !== null) {
+    if (this._pRectangles.length !== this.rectangleCount) {
+      throw new RangeError("Invalid array length, expected array length of 'rectangleCount' for 'VkPresentRegionKHR.pRectangles'");
+    }
     let nativeArray = new NativeObjectArray(this._pRectangles);
     this._pRectanglesNative = nativeArray;
     this.memoryView.setBigInt64(0x8, nativeArray.address);
@@ -20071,6 +20223,9 @@ VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.flush = function flush() {
   
   
   if (this._pAcquireSyncs !== null) {
+    if (this._pAcquireSyncs.length !== this.acquireCount) {
+      throw new RangeError("Invalid array length, expected array length of 'acquireCount' for 'VkWin32KeyedMutexAcquireReleaseInfoKHR.pAcquireSyncs'");
+    }
     let nativeArray = new NativeObjectArray(this._pAcquireSyncs);
     this._pAcquireSyncsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -20078,6 +20233,9 @@ VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.flush = function flush() {
   
   
   if (this._pReleaseSyncs !== null) {
+    if (this._pReleaseSyncs.length !== this.releaseCount) {
+      throw new RangeError("Invalid array length, expected array length of 'releaseCount' for 'VkWin32KeyedMutexAcquireReleaseInfoKHR.pReleaseSyncs'");
+    }
     let nativeArray = new NativeObjectArray(this._pReleaseSyncs);
     this._pReleaseSyncsNative = nativeArray;
     this.memoryView.setBigInt64(0x38, nativeArray.address);
@@ -22943,6 +23101,9 @@ VkPhysicalDeviceGroupProperties.prototype.flush = function flush() {
   
   
   if (this._physicalDevices !== null) {
+    if (this._physicalDevices.length !== 32) {
+      throw new RangeError("Invalid array length, expected array length of '32' for 'VkPhysicalDeviceGroupProperties.physicalDevices'");
+    }
     let nativeArray = new NativeObjectArray(this._physicalDevices);
     this._physicalDevicesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -23022,6 +23183,9 @@ VkPhysicalDeviceGroupPropertiesKHR.prototype.flush = function flush() {
   
   
   if (this._physicalDevices !== null) {
+    if (this._physicalDevices.length !== 32) {
+      throw new RangeError("Invalid array length, expected array length of '32' for 'VkPhysicalDeviceGroupPropertiesKHR.physicalDevices'");
+    }
     let nativeArray = new NativeObjectArray(this._physicalDevices);
     this._physicalDevicesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -23837,6 +24001,9 @@ VkBindImageMemoryDeviceGroupInfo.prototype.flush = function flush() {
   
   
   if (this._pSplitInstanceBindRegions !== null) {
+    if (this._pSplitInstanceBindRegions.length !== this.splitInstanceBindRegionCount) {
+      throw new RangeError("Invalid array length, expected array length of 'splitInstanceBindRegionCount' for 'VkBindImageMemoryDeviceGroupInfo.pSplitInstanceBindRegions'");
+    }
     let nativeArray = new NativeObjectArray(this._pSplitInstanceBindRegions);
     this._pSplitInstanceBindRegionsNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
@@ -23954,6 +24121,9 @@ VkBindImageMemoryDeviceGroupInfoKHR.prototype.flush = function flush() {
   
   
   if (this._pSplitInstanceBindRegions !== null) {
+    if (this._pSplitInstanceBindRegions.length !== this.splitInstanceBindRegionCount) {
+      throw new RangeError("Invalid array length, expected array length of 'splitInstanceBindRegionCount' for 'VkBindImageMemoryDeviceGroupInfoKHR.pSplitInstanceBindRegions'");
+    }
     let nativeArray = new NativeObjectArray(this._pSplitInstanceBindRegions);
     this._pSplitInstanceBindRegionsNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
@@ -24056,6 +24226,9 @@ VkDeviceGroupRenderPassBeginInfo.prototype.flush = function flush() {
   
   
   if (this._pDeviceRenderAreas !== null) {
+    if (this._pDeviceRenderAreas.length !== this.deviceRenderAreaCount) {
+      throw new RangeError("Invalid array length, expected array length of 'deviceRenderAreaCount' for 'VkDeviceGroupRenderPassBeginInfo.pDeviceRenderAreas'");
+    }
     let nativeArray = new NativeObjectArray(this._pDeviceRenderAreas);
     this._pDeviceRenderAreasNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -24154,6 +24327,9 @@ VkDeviceGroupRenderPassBeginInfoKHR.prototype.flush = function flush() {
   
   
   if (this._pDeviceRenderAreas !== null) {
+    if (this._pDeviceRenderAreas.length !== this.deviceRenderAreaCount) {
+      throw new RangeError("Invalid array length, expected array length of 'deviceRenderAreaCount' for 'VkDeviceGroupRenderPassBeginInfoKHR.pDeviceRenderAreas'");
+    }
     let nativeArray = new NativeObjectArray(this._pDeviceRenderAreas);
     this._pDeviceRenderAreasNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -25233,6 +25409,9 @@ VkDeviceGroupDeviceCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pPhysicalDevices !== null) {
+    if (this._pPhysicalDevices.length !== this.physicalDeviceCount) {
+      throw new RangeError("Invalid array length, expected array length of 'physicalDeviceCount' for 'VkDeviceGroupDeviceCreateInfo.pPhysicalDevices'");
+    }
     let nativeArray = new NativeObjectArray(this._pPhysicalDevices);
     this._pPhysicalDevicesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -25319,6 +25498,9 @@ VkDeviceGroupDeviceCreateInfoKHR.prototype.flush = function flush() {
   
   
   if (this._pPhysicalDevices !== null) {
+    if (this._pPhysicalDevices.length !== this.physicalDeviceCount) {
+      throw new RangeError("Invalid array length, expected array length of 'physicalDeviceCount' for 'VkDeviceGroupDeviceCreateInfoKHR.pPhysicalDevices'");
+    }
     let nativeArray = new NativeObjectArray(this._pPhysicalDevices);
     this._pPhysicalDevicesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -25719,6 +25901,9 @@ VkDescriptorUpdateTemplateCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pDescriptorUpdateEntries !== null) {
+    if (this._pDescriptorUpdateEntries.length !== this.descriptorUpdateEntryCount) {
+      throw new RangeError("Invalid array length, expected array length of 'descriptorUpdateEntryCount' for 'VkDescriptorUpdateTemplateCreateInfo.pDescriptorUpdateEntries'");
+    }
     let nativeArray = new NativeObjectArray(this._pDescriptorUpdateEntries);
     this._pDescriptorUpdateEntriesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -25893,6 +26078,9 @@ VkDescriptorUpdateTemplateCreateInfoKHR.prototype.flush = function flush() {
   
   
   if (this._pDescriptorUpdateEntries !== null) {
+    if (this._pDescriptorUpdateEntries.length !== this.descriptorUpdateEntryCount) {
+      throw new RangeError("Invalid array length, expected array length of 'descriptorUpdateEntryCount' for 'VkDescriptorUpdateTemplateCreateInfoKHR.pDescriptorUpdateEntries'");
+    }
     let nativeArray = new NativeObjectArray(this._pDescriptorUpdateEntries);
     this._pDescriptorUpdateEntriesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -26328,6 +26516,9 @@ VkPresentTimesInfoGOOGLE.prototype.flush = function flush() {
   
   
   if (this._pTimes !== null) {
+    if (this._pTimes.length !== this.swapchainCount) {
+      throw new RangeError("Invalid array length, expected array length of 'swapchainCount' for 'VkPresentTimesInfoGOOGLE.pTimes'");
+    }
     let nativeArray = new NativeObjectArray(this._pTimes);
     this._pTimesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -26516,6 +26707,9 @@ VkPipelineViewportWScalingStateCreateInfoNV.prototype.flush = function flush() {
   
   
   if (this._pViewportWScalings !== null) {
+    if (this._pViewportWScalings.length !== this.viewportCount) {
+      throw new RangeError("Invalid array length, expected array length of 'viewportCount' for 'VkPipelineViewportWScalingStateCreateInfoNV.pViewportWScalings'");
+    }
     let nativeArray = new NativeObjectArray(this._pViewportWScalings);
     this._pViewportWScalingsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -26685,6 +26879,9 @@ VkPipelineViewportSwizzleStateCreateInfoNV.prototype.flush = function flush() {
   
   
   if (this._pViewportSwizzles !== null) {
+    if (this._pViewportSwizzles.length !== this.viewportCount) {
+      throw new RangeError("Invalid array length, expected array length of 'viewportCount' for 'VkPipelineViewportSwizzleStateCreateInfoNV.pViewportSwizzles'");
+    }
     let nativeArray = new NativeObjectArray(this._pViewportSwizzles);
     this._pViewportSwizzlesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -26847,6 +27044,9 @@ VkPipelineDiscardRectangleStateCreateInfoEXT.prototype.flush = function flush() 
   
   
   if (this._pDiscardRectangles !== null) {
+    if (this._pDiscardRectangles.length !== this.discardRectangleCount) {
+      throw new RangeError("Invalid array length, expected array length of 'discardRectangleCount' for 'VkPipelineDiscardRectangleStateCreateInfoEXT.pDiscardRectangles'");
+    }
     let nativeArray = new NativeObjectArray(this._pDiscardRectangles);
     this._pDiscardRectanglesNative = nativeArray;
     this.memoryView.setBigInt64(0x20, nativeArray.address);
@@ -27115,6 +27315,9 @@ VkRenderPassInputAttachmentAspectCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pAspectReferences !== null) {
+    if (this._pAspectReferences.length !== this.aspectReferenceCount) {
+      throw new RangeError("Invalid array length, expected array length of 'aspectReferenceCount' for 'VkRenderPassInputAttachmentAspectCreateInfo.pAspectReferences'");
+    }
     let nativeArray = new NativeObjectArray(this._pAspectReferences);
     this._pAspectReferencesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -27201,6 +27404,9 @@ VkRenderPassInputAttachmentAspectCreateInfoKHR.prototype.flush = function flush(
   
   
   if (this._pAspectReferences !== null) {
+    if (this._pAspectReferences.length !== this.aspectReferenceCount) {
+      throw new RangeError("Invalid array length, expected array length of 'aspectReferenceCount' for 'VkRenderPassInputAttachmentAspectCreateInfoKHR.pAspectReferences'");
+    }
     let nativeArray = new NativeObjectArray(this._pAspectReferences);
     this._pAspectReferencesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -30952,6 +31158,9 @@ VkSampleLocationsInfoEXT.prototype.flush = function flush() {
   
   
   if (this._pSampleLocations !== null) {
+    if (this._pSampleLocations.length !== this.sampleLocationsCount) {
+      throw new RangeError("Invalid array length, expected array length of 'sampleLocationsCount' for 'VkSampleLocationsInfoEXT.pSampleLocations'");
+    }
     let nativeArray = new NativeObjectArray(this._pSampleLocations);
     this._pSampleLocationsNative = nativeArray;
     this.memoryView.setBigInt64(0x20, nativeArray.address);
@@ -31183,6 +31392,9 @@ VkRenderPassSampleLocationsBeginInfoEXT.prototype.flush = function flush() {
   
   
   if (this._pAttachmentInitialSampleLocations !== null) {
+    if (this._pAttachmentInitialSampleLocations.length !== this.attachmentInitialSampleLocationsCount) {
+      throw new RangeError("Invalid array length, expected array length of 'attachmentInitialSampleLocationsCount' for 'VkRenderPassSampleLocationsBeginInfoEXT.pAttachmentInitialSampleLocations'");
+    }
     let nativeArray = new NativeObjectArray(this._pAttachmentInitialSampleLocations);
     this._pAttachmentInitialSampleLocationsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -31190,6 +31402,9 @@ VkRenderPassSampleLocationsBeginInfoEXT.prototype.flush = function flush() {
   
   
   if (this._pPostSubpassSampleLocations !== null) {
+    if (this._pPostSubpassSampleLocations.length !== this.postSubpassSampleLocationsCount) {
+      throw new RangeError("Invalid array length, expected array length of 'postSubpassSampleLocationsCount' for 'VkRenderPassSampleLocationsBeginInfoEXT.pPostSubpassSampleLocations'");
+    }
     let nativeArray = new NativeObjectArray(this._pPostSubpassSampleLocations);
     this._pPostSubpassSampleLocationsNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
@@ -33760,6 +33975,9 @@ VkDebugUtilsMessengerCallbackDataEXT.prototype.flush = function flush() {
   
   
   if (this._pQueueLabels !== null) {
+    if (this._pQueueLabels.length !== this.queueLabelCount) {
+      throw new RangeError("Invalid array length, expected array length of 'queueLabelCount' for 'VkDebugUtilsMessengerCallbackDataEXT.pQueueLabels'");
+    }
     let nativeArray = new NativeObjectArray(this._pQueueLabels);
     this._pQueueLabelsNative = nativeArray;
     this.memoryView.setBigInt64(0x38, nativeArray.address);
@@ -33767,6 +33985,9 @@ VkDebugUtilsMessengerCallbackDataEXT.prototype.flush = function flush() {
   
   
   if (this._pCmdBufLabels !== null) {
+    if (this._pCmdBufLabels.length !== this.cmdBufLabelCount) {
+      throw new RangeError("Invalid array length, expected array length of 'cmdBufLabelCount' for 'VkDebugUtilsMessengerCallbackDataEXT.pCmdBufLabels'");
+    }
     let nativeArray = new NativeObjectArray(this._pCmdBufLabels);
     this._pCmdBufLabelsNative = nativeArray;
     this.memoryView.setBigInt64(0x48, nativeArray.address);
@@ -33774,6 +33995,9 @@ VkDebugUtilsMessengerCallbackDataEXT.prototype.flush = function flush() {
   
   
   if (this._pObjects !== null) {
+    if (this._pObjects.length !== this.objectCount) {
+      throw new RangeError("Invalid array length, expected array length of 'objectCount' for 'VkDebugUtilsMessengerCallbackDataEXT.pObjects'");
+    }
     let nativeArray = new NativeObjectArray(this._pObjects);
     this._pObjectsNative = nativeArray;
     this.memoryView.setBigInt64(0x58, nativeArray.address);
@@ -35582,6 +35806,9 @@ VkSubpassDescription2KHR.prototype.flush = function flush() {
   
   
   if (this._pInputAttachments !== null) {
+    if (this._pInputAttachments.length !== this.inputAttachmentCount) {
+      throw new RangeError("Invalid array length, expected array length of 'inputAttachmentCount' for 'VkSubpassDescription2KHR.pInputAttachments'");
+    }
     let nativeArray = new NativeObjectArray(this._pInputAttachments);
     this._pInputAttachmentsNative = nativeArray;
     this.memoryView.setBigInt64(0x20, nativeArray.address);
@@ -35589,6 +35816,9 @@ VkSubpassDescription2KHR.prototype.flush = function flush() {
   
   
   if (this._pColorAttachments !== null) {
+    if (this._pColorAttachments.length !== this.colorAttachmentCount) {
+      throw new RangeError("Invalid array length, expected array length of 'colorAttachmentCount' for 'VkSubpassDescription2KHR.pColorAttachments'");
+    }
     let nativeArray = new NativeObjectArray(this._pColorAttachments);
     this._pColorAttachmentsNative = nativeArray;
     this.memoryView.setBigInt64(0x30, nativeArray.address);
@@ -35596,6 +35826,9 @@ VkSubpassDescription2KHR.prototype.flush = function flush() {
   
   
   if (this._pResolveAttachments !== null) {
+    if (this._pResolveAttachments.length !== this.colorAttachmentCount) {
+      throw new RangeError("Invalid array length, expected array length of 'colorAttachmentCount' for 'VkSubpassDescription2KHR.pResolveAttachments'");
+    }
     let nativeArray = new NativeObjectArray(this._pResolveAttachments);
     this._pResolveAttachmentsNative = nativeArray;
     this.memoryView.setBigInt64(0x38, nativeArray.address);
@@ -35939,6 +36172,9 @@ VkRenderPassCreateInfo2KHR.prototype.flush = function flush() {
   
   
   if (this._pAttachments !== null) {
+    if (this._pAttachments.length !== this.attachmentCount) {
+      throw new RangeError("Invalid array length, expected array length of 'attachmentCount' for 'VkRenderPassCreateInfo2KHR.pAttachments'");
+    }
     let nativeArray = new NativeObjectArray(this._pAttachments);
     this._pAttachmentsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -35946,6 +36182,9 @@ VkRenderPassCreateInfo2KHR.prototype.flush = function flush() {
   
   
   if (this._pSubpasses !== null) {
+    if (this._pSubpasses.length !== this.subpassCount) {
+      throw new RangeError("Invalid array length, expected array length of 'subpassCount' for 'VkRenderPassCreateInfo2KHR.pSubpasses'");
+    }
     let nativeArray = new NativeObjectArray(this._pSubpasses);
     this._pSubpassesNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
@@ -35953,6 +36192,9 @@ VkRenderPassCreateInfo2KHR.prototype.flush = function flush() {
   
   
   if (this._pDependencies !== null) {
+    if (this._pDependencies.length !== this.dependencyCount) {
+      throw new RangeError("Invalid array length, expected array length of 'dependencyCount' for 'VkRenderPassCreateInfo2KHR.pDependencies'");
+    }
     let nativeArray = new NativeObjectArray(this._pDependencies);
     this._pDependenciesNative = nativeArray;
     this.memoryView.setBigInt64(0x38, nativeArray.address);
@@ -36222,6 +36464,9 @@ VkPipelineVertexInputDivisorStateCreateInfoEXT.prototype.flush = function flush(
   
   
   if (this._pVertexBindingDivisors !== null) {
+    if (this._pVertexBindingDivisors.length !== this.vertexBindingDivisorCount) {
+      throw new RangeError("Invalid array length, expected array length of 'vertexBindingDivisorCount' for 'VkPipelineVertexInputDivisorStateCreateInfoEXT.pVertexBindingDivisors'");
+    }
     let nativeArray = new NativeObjectArray(this._pVertexBindingDivisors);
     this._pVertexBindingDivisorsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -37763,6 +38008,9 @@ VkPipelineViewportExclusiveScissorStateCreateInfoNV.prototype.flush = function f
   
   
   if (this._pExclusiveScissors !== null) {
+    if (this._pExclusiveScissors.length !== this.exclusiveScissorCount) {
+      throw new RangeError("Invalid array length, expected array length of 'exclusiveScissorCount' for 'VkPipelineViewportExclusiveScissorStateCreateInfoNV.pExclusiveScissors'");
+    }
     let nativeArray = new NativeObjectArray(this._pExclusiveScissors);
     this._pExclusiveScissorsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -38223,6 +38471,9 @@ VkPipelineViewportShadingRateImageStateCreateInfoNV.prototype.flush = function f
   
   
   if (this._pShadingRatePalettes !== null) {
+    if (this._pShadingRatePalettes.length !== this.viewportCount) {
+      throw new RangeError("Invalid array length, expected array length of 'viewportCount' for 'VkPipelineViewportShadingRateImageStateCreateInfoNV.pShadingRatePalettes'");
+    }
     let nativeArray = new NativeObjectArray(this._pShadingRatePalettes);
     this._pShadingRatePalettesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -38517,6 +38768,9 @@ VkCoarseSampleOrderCustomNV.prototype.flush = function flush() {
   
   
   if (this._pSampleLocations !== null) {
+    if (this._pSampleLocations.length !== this.sampleLocationCount) {
+      throw new RangeError("Invalid array length, expected array length of 'sampleLocationCount' for 'VkCoarseSampleOrderCustomNV.pSampleLocations'");
+    }
     let nativeArray = new NativeObjectArray(this._pSampleLocations);
     this._pSampleLocationsNative = nativeArray;
     this.memoryView.setBigInt64(0x10, nativeArray.address);
@@ -38611,6 +38865,9 @@ VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.prototype.flush = function 
   
   
   if (this._pCustomSampleOrders !== null) {
+    if (this._pCustomSampleOrders.length !== this.customSampleOrderCount) {
+      throw new RangeError("Invalid array length, expected array length of 'customSampleOrderCount' for 'VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.pCustomSampleOrders'");
+    }
     let nativeArray = new NativeObjectArray(this._pCustomSampleOrders);
     this._pCustomSampleOrdersNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -39175,6 +39432,9 @@ VkRayTracingPipelineCreateInfoNV.prototype.flush = function flush() {
   
   
   if (this._pStages !== null) {
+    if (this._pStages.length !== this.stageCount) {
+      throw new RangeError("Invalid array length, expected array length of 'stageCount' for 'VkRayTracingPipelineCreateInfoNV.pStages'");
+    }
     let nativeArray = new NativeObjectArray(this._pStages);
     this._pStagesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -39182,6 +39442,9 @@ VkRayTracingPipelineCreateInfoNV.prototype.flush = function flush() {
   
   
   if (this._pGroups !== null) {
+    if (this._pGroups.length !== this.groupCount) {
+      throw new RangeError("Invalid array length, expected array length of 'groupCount' for 'VkRayTracingPipelineCreateInfoNV.pGroups'");
+    }
     let nativeArray = new NativeObjectArray(this._pGroups);
     this._pGroupsNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
@@ -39789,6 +40052,9 @@ VkAccelerationStructureInfoNV.prototype.flush = function flush() {
   
   
   if (this._pGeometries !== null) {
+    if (this._pGeometries.length !== this.geometryCount) {
+      throw new RangeError("Invalid array length, expected array length of 'geometryCount' for 'VkAccelerationStructureInfoNV.pGeometries'");
+    }
     let nativeArray = new NativeObjectArray(this._pGeometries);
     this._pGeometriesNative = nativeArray;
     this.memoryView.setBigInt64(0x20, nativeArray.address);
@@ -40100,6 +40366,9 @@ VkWriteDescriptorSetAccelerationStructureNV.prototype.flush = function flush() {
   
   
   if (this._pAccelerationStructures !== null) {
+    if (this._pAccelerationStructures.length !== this.accelerationStructureCount) {
+      throw new RangeError("Invalid array length, expected array length of 'accelerationStructureCount' for 'VkWriteDescriptorSetAccelerationStructureNV.pAccelerationStructures'");
+    }
     let nativeArray = new NativeObjectArray(this._pAccelerationStructures);
     this._pAccelerationStructuresNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -40364,6 +40633,9 @@ VkDrmFormatModifierPropertiesListEXT.prototype.flush = function flush() {
   
   
   if (this._pDrmFormatModifierProperties !== null) {
+    if (this._pDrmFormatModifierProperties.length !== this.drmFormatModifierCount) {
+      throw new RangeError("Invalid array length, expected array length of 'drmFormatModifierCount' for 'VkDrmFormatModifierPropertiesListEXT.pDrmFormatModifierProperties'");
+    }
     let nativeArray = new NativeObjectArray(this._pDrmFormatModifierProperties);
     this._pDrmFormatModifierPropertiesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -40687,6 +40959,9 @@ VkImageDrmFormatModifierExplicitCreateInfoEXT.prototype.flush = function flush()
   
   
   if (this._pPlaneLayouts !== null) {
+    if (this._pPlaneLayouts.length !== this.drmFormatModifierPlaneCount) {
+      throw new RangeError("Invalid array length, expected array length of 'drmFormatModifierPlaneCount' for 'VkImageDrmFormatModifierExplicitCreateInfoEXT.pPlaneLayouts'");
+    }
     let nativeArray = new NativeObjectArray(this._pPlaneLayouts);
     this._pPlaneLayoutsNative = nativeArray;
     this.memoryView.setBigInt64(0x20, nativeArray.address);

@@ -43,19 +43,19 @@ function getConstructorInitializer(member) {
 };
 
 function getStructureMemberByteOffset(member) {
-  if (!memoryLayouts) return 0;
+  if (!memoryLayouts) return `0x0`;
   let byteOffset = memoryLayouts[currentStruct.name][member.name].byteOffset;
   return `0x` + byteOffset.toString(16).toUpperCase();
 };
 
 function getStructureMemberByteLength(member) {
-  if (!memoryLayouts) return 0;
+  if (!memoryLayouts) return `0x0`;
   let byteLength = memoryLayouts[currentStruct.name][member.name].byteLength;
   return `0x` + byteLength.toString(16).toUpperCase();
 };
 
 function getStructureByteLength() {
-  if (!memoryLayouts) return 0;
+  if (!memoryLayouts) return `0x0`;
   let byteLength = memoryLayouts[currentStruct.name].byteLength;
   return `0x` + byteLength.toString(16).toUpperCase();
 };
@@ -221,8 +221,14 @@ function getFlusherProcessor(member) {
   }`;
     }
     case JavaScriptType.ARRAY_OF_OBJECTS: {
+      let {length} = member;
+      let isNumber = Number.isInteger(parseInt(length));
       return `
   if (this._${member.name} !== null) {
+    if (this._${member.name}.length !== ${isNumber ? length : `this.${length}`}) {
+      throw new RangeError("Invalid array length, expected array length of '${length}' for '${currentStruct.name}.${member.name}'");
+      return false;
+    }
     let nativeArray = new NativeObjectArray(this._${member.name});
     this._${member.name}Native = nativeArray;
     this.memoryView.setBigInt64(${byteOffset}, nativeArray.address);
@@ -261,11 +267,13 @@ export default function(astReference, struct) {
     `${pkg.config.GEN_OUT_DIR}/${global.vkVersion}/${process.platform}/memoryLayouts.json`
   );
   if (!fs.existsSync(memoryLayoutsPath)) {
-    warn(`
-! Module needs recompilation !
+    if (!global.MEMORY_LAYOUT_RECOMPILATION) {
+      warn(`Module needs recompilation:
 Memory layouts aren't resolved yet, module needs to be re-compiled this time
 The code generater can only inline required memory layout offets after second compilation
-`);
+      `);
+      global.MEMORY_LAYOUT_RECOMPILATION = true;
+    }
   } else {
     memoryLayouts = JSON.parse(fs.readFileSync(memoryLayoutsPath, "utf-8"));
   }
