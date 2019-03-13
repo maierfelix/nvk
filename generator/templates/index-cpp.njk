@@ -25,11 +25,36 @@ static Napi::Value createV8ArrayBufferFromMemory(const Napi::CallbackInfo& info)
   return buffer;
 };
 
-static Napi::Value getStructureByteSize(const Napi::CallbackInfo& info) {
+static Napi::Value getAddressFromArrayBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
-  //int out = GetStructureByteSize(info[0].As<Napi::Object>());
-  int out = 0;
-  return Napi::Number::New(env, out);
+  if (!(info[0].IsArrayBuffer())) {
+    Napi::TypeError::New(env, "Argument 1 must be of type 'ArrayBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
+  Napi::ArrayBuffer buffer = info[0].As<Napi::ArrayBuffer>();
+  int64_t addr = reinterpret_cast<int64_t>(buffer.Data());
+  return Napi::BigInt::New(env, addr);
+};
+
+static Napi::Value getArrayBufferFromAddress(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  if (!(info[0].IsBigInt())) {
+    Napi::TypeError::New(env, "Argument 1 must be of type 'BigInt'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
+  if (!(info[1].IsNumber())) {
+    Napi::TypeError::New(env, "Argument 2 must be of type 'Number'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
+  bool lossless;
+  int64_t addr = info[0].As<Napi::BigInt>().Int64Value(&lossless);
+  uint32_t size = info[1].As<Napi::Number>().Uint32Value();
+  Napi::ArrayBuffer buffer = Napi::ArrayBuffer::New(
+    env,
+    reinterpret_cast<void *>(addr),
+    size
+  );
+  return buffer;
 };
 
 static Napi::Value _VK_MAKE_VERSION(const Napi::CallbackInfo& info) {
@@ -75,8 +100,9 @@ Napi::Object Init(Napi::Env env, Napi::Object exports) {
   exports["VK_API_VERSION_1_0"] = Napi::Number::New(env, VK_MAKE_VERSION(1, 0, 0));
   exports["vkUseDevice"] = Napi::Function::New(env, _vkUseDevice, "vkUseDevice");
   exports["vkUseInstance"] = Napi::Function::New(env, _vkUseInstance, "vkUseInstance");
-  exports["getStructureByteSize"] = Napi::Function::New(env, getStructureByteSize, "getStructureByteSize");
   exports["MemoryLayouts"] = Napi::Function::New(env, MemoryLayouts, "MemoryLayouts");
+  exports["getAddressFromArrayBuffer"] = Napi::Function::New(env, getAddressFromArrayBuffer, "getAddressFromArrayBuffer");
+  exports["getArrayBufferFromAddress"] = Napi::Function::New(env, getArrayBufferFromAddress, "getArrayBufferFromAddress");
   // structs & handles
   {% for incl in includes -%}
   {%- if incl != "" -%}

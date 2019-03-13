@@ -28,9 +28,14 @@ nunjucks.configure({ autoescape: true });
 
 function getConstructorInitializer(member) {
   let jsType = getJavaScriptType(ast, member);
-  if (jsType.isNumeric) {
-    if (jsType.type === JavaScriptType.BIGINT) return `this._${member.name} = 0n;`;
-    return ``; // no reflection needed
+  if (jsType.isNumeric) return ``; // no reflection needed
+  if (jsType.isJavaScriptArray) {
+    if (jsType.isStatic) {
+      return `this._${member.name} = null;`;
+    } else {
+      return `this._${member.name} = null;
+    this._${member.name}Native = null;`;
+    }
   }
   if (jsType.isNullable) return `this._${member.name} = null;`;
   warn(`Cannot resolve constructor initializer for ${member.name}`);
@@ -69,7 +74,13 @@ function getGetterProcessor(member) {
     return this._${member.name};`;
     }
     case JavaScriptType.STRING: {
-      return `String`;
+      return `
+    if (this._${member.name} !== null) {
+      let str = textDecoder.decode(this._${member.name});
+      return str.substr(0, str.length - 1);
+    } else {
+      return null;
+    }`;
     }
     case JavaScriptType.ARRAY_OF_STRINGS: {
       return `
@@ -108,7 +119,9 @@ function getSetterProcessor(member) {
     case JavaScriptType.OBJECT: {
       return `
     if (value !== null && value.constructor === ${member.type}) {
+      value.flush();
       this._${member.name} = value;
+      this.memoryView.setBigInt64(${byteOffset}, value.memoryAddress);
     } else if (value === null) {
       this._${member.name} = null;
     } else {
@@ -116,7 +129,16 @@ function getSetterProcessor(member) {
     }`;
     }
     case JavaScriptType.STRING: {
-      return `String`;
+      return `
+    if (value !== null && value.constructor === String) {
+      this._${member.name} = textEncoder.encode(value + String.fromCharCode(0x0)).buffer;
+      this.memoryView.setBigInt64(${byteOffset}, getAddressFromArrayBuffer(this._${member.name}));
+    } else if (value === null) {
+      this._${member.name} = null;
+      this.memoryView.setBigInt64(${byteOffset}, 0n);
+    } else {
+      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'String' but got '" + value.constructor.name + "'");
+    }`;
     }
     case JavaScriptType.ARRAY_OF_STRINGS: {
       return `
@@ -150,17 +172,70 @@ function getSetterProcessor(member) {
     }
     case JavaScriptType.TYPED_ARRAY: {
       return `
-    if (value !== null && value.constructor === ${member.jsType}) {
+    if (value !== null && value.constructor === ${member.jsTypedArrayName}) {
       this._${member.name} = value;
+      this.memoryView.setBigInt64(${byteOffset}, getAddressFromArrayBuffer(value.buffer));
     } else if (value === null) {
       this._${member.name} = null;
     } else {
-      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected '${member.jsType}' but got '" + value.constructor.name + "'");
+      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected '${member.jsTypedArrayName}' but got '" + value.constructor.name + "'");
     }`;
     }
   };
-  return ``;
+  if (isPNextMember(member)) {
+    return ``;
+  }
   warn(`Cannot resolve setter processor for ${member.name} of type ${type}`);
+  return ``;
+};
+
+function getFlusherProcessor(member) {
+  let {type, value} = getJavaScriptType(ast, member);
+  let byteOffset = getStructureMemberByteOffset(member);
+  switch (type) {
+    case JavaScriptType.NUMBER:
+    case JavaScriptType.BIGINT: {
+      return ``; // not needed
+    }
+    case JavaScriptType.OBJECT: {
+      return ``;
+    }
+    case JavaScriptType.STRING: {
+      return ``; // not needed
+    }
+    case JavaScriptType.ARRAY_OF_STRINGS: {
+      return `
+  if (this._${member.name} !== null) {
+    let nativeArray = new NativeStringArray(this._${member.name});
+    this._${member.name}Native = nativeArray;
+    this.memoryView.setBigInt64(${byteOffset}, nativeArray.address);
+  }`;
+    }
+    case JavaScriptType.ARRAY_OF_NUMBERS: {
+      return `
+  if (this._${member.name} !== null) {
+    let array = this._${member.name};
+    for (let ii = 0; ii < array.length; ++ii) {
+      this.memoryView.set${getDataViewInstruction(member)}(${byteOffset}, array[ii]);
+    };
+  }`;
+    }
+    case JavaScriptType.ARRAY_OF_OBJECTS: {
+      return `
+  if (this._${member.name} !== null) {
+    let nativeArray = new NativeObjectArray(this._${member.name});
+    this._${member.name}Native = nativeArray;
+    this.memoryView.setBigInt64(${byteOffset}, nativeArray.address);
+  }`;
+    }
+    case JavaScriptType.TYPED_ARRAY: {
+      return ``; // not needed
+    }
+  };
+  if (isPNextMember(member)) {
+    return ``;
+  }
+  warn(`Cannot resolve flusher processor for ${member.name} of type ${type}`);
   return ``;
 };
 
@@ -201,6 +276,7 @@ The code generater can only inline required memory layout offets after second co
     isFlushableMember,
     getGetterProcessor,
     getSetterProcessor,
+    getFlusherProcessor,
     getStructureAutoSType,
     getStructureByteLength,
     getConstructorInitializer,

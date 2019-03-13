@@ -8,6 +8,7 @@ class {{ struct.name }} {
     {%- endfor -%}
     this.memoryBuffer = new ArrayBuffer({{ struct.name }}.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
+    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     {{ getStructureAutoSType() | safe }}
     if (typeof opts === "object") {
       {% for member in struct.children %}
@@ -37,10 +38,11 @@ class {{ struct.name }} {
   {% for member in struct.children -%}
   {%- if isIgnoreableType(member) != true -%}
   {%- if isFlushableMember(member) == true %}
-  if (this.{{ member.name }} !== null) { }
+  {{ getFlusherProcessor(member) | safe }}
   {% endif -%}
   {%- endif -%}
   {%- endfor %}
+  return true;
 };
 
 {{ struct.name }}.byteLength = {{ getStructureByteLength() | safe }};

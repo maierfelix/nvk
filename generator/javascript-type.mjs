@@ -7,24 +7,40 @@ import {
 
 export class JavaScriptType {
   constructor(opts) {
-    this.type = null;
+    this.type = -1;
     this.value = null;
-    this.isArray = false;
     this.isEnum = false;
     this.isBitmask = false;
     this.isNullable = false;
+    this.isStatic = false;
     if (opts.type !== void 0) this.type = opts.type;
     if (opts.value !== void 0) this.value = opts.value;
-    if (opts.isArray !== void 0) this.isArray = opts.isArray;
     if (opts.isEnum !== void 0) this.isEnum = opts.isEnum;
     if (opts.isBitmask !== void 0) this.isBitmask = opts.isBitmask;
     if (opts.isNullable !== void 0) this.isNullable = opts.isNullable;
+    if (opts.isStatic !== void 0) this.isStatic = opts.isStatic;
     //if (!opts.byteLength) console.log("nooooo");
   }
   get isNumeric() {
+    let {type} = this;
     return (
-      this.type === JavaScriptType.NUMBER ||
-      this.type === JavaScriptType.BIGINT
+      type === JavaScriptType.NUMBER ||
+      type === JavaScriptType.BIGINT
+    );
+  }
+  get isArray() {
+    let {type} = this;
+    return (
+      this.isJavaScriptArray() ||
+      type === JavaScriptType.TYPED_ARRAY
+    );
+  }
+  get isJavaScriptArray() {
+    let {type} = this;
+    return (
+      type === JavaScriptType.ARRAY_OF_STRINGS ||
+      type === JavaScriptType.ARRAY_OF_NUMBERS ||
+      type === JavaScriptType.ARRAY_OF_OBJECTS
     );
   }
 };
@@ -115,15 +131,15 @@ export function getJavaScriptType(ast, object) {
     if (object.type === "char" && object.isStaticArray) {
       return new JavaScriptType({
         type: JavaScriptType.STRING,
-        isArray: true,
-        isNullable: true
+        isNullable: true,
+        isStatic: true
       });
-    }
-    else {
+    } else if (object.isNumericArray) {
       return new JavaScriptType({
         type: JavaScriptType.ARRAY_OF_NUMBERS,
         isArray: true,
-        isNullable: true
+        isNullable: true,
+        isStatic: true
       });
     }
   }
@@ -132,7 +148,8 @@ export function getJavaScriptType(ast, object) {
       type: JavaScriptType.ARRAY_OF_OBJECTS,
       value: object.type,
       isArray: true,
-      isNullable: true
+      isNullable: true,
+      isStatic: object.isStaticArray
     });
   }
   if (object.isStructType || object.isHandleType || object.isBaseType) {

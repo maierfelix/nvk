@@ -298,27 +298,23 @@ function processSourceGetter(struct, member) {
   };
 };
 
-function processStaticArraySourceSetter(member) {
-  if (!member.hasOwnProperty("length")) {
-    warn(`Cannot process static array length ${member.length} in static-array source-setter!`);
-  }
-  return `
-  // js
-  if (value.IsArray()) {
-    this->${member.name}.Reset(value.ToObject(), 1);
-  } else if (value.IsNull()) {
-    this->${member.name}.Reset();
-  } else {
-    ${invalidMemberTypeError(member)}
-    return;
-  }`;
-};
-
 function processSourceSetter(struct, member) {
   let {rawType} = member;
   if (member.isBaseType) rawType = member.baseType;
   if (member.isStaticArray) {
-    return processStaticArraySourceSetter(member);
+    if (!member.hasOwnProperty("length")) {
+      warn(`Cannot process static array length ${member.length} in static-array source-setter!`);
+    }
+    return `
+    // js
+    if (value.IsArray()) {
+      this->${member.name}.Reset(value.ToObject(), 1);
+    } else if (value.IsNull()) {
+      this->${member.name}.Reset();
+    } else {
+      ${invalidMemberTypeError(member)}
+      return;
+    }`;
   }
   if (member.isArray && (member.isStructType || member.isHandleType)) {
     // if a struct/handle is constant (never changed by the vulkan itself) and

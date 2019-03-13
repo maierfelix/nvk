@@ -313,11 +313,47 @@ ${getPlatformRelevantIncludes(ast)}
   {
     console.log("Generating Vk JavaScript interfaces..");
     let out = `
-const txtEncoder = new TextEncoder();
-const txtDecoder = new TextDecoder();
+const textEncoder = new TextEncoder();
+const textDecoder = new TextDecoder();
 
-function encodeString(byteOffset) {
+class NativeStringArray {
+  constructor(array) {
+    this.array = array;
+    this.address = 0n;
+    let stringBuffers = [];
+    let addressView = new BigInt64Array(array.length);
+    let addressBuffer = addressView.buffer;
+    let addressBufferAddress = getAddressFromArrayBuffer(addressBuffer);
+    for (let ii = 0; ii < array.length; ++ii) {
+      let str = array[ii];
+      let strBuffer = textEncoder.encode(str + String.fromCharCode(0x0)).buffer;
+      let strBufferAddress = getAddressFromArrayBuffer(strBuffer);
+      addressView[ii] = strBufferAddress;
+      stringBuffers.push(strBuffer);
+    };
+    this.address = addressBufferAddress;
+    // keep reference to prevent deallocation
+    this.addressBuffer = addressBuffer;
+    this.stringBuffers = stringBuffers;
+  }
+};
 
+class NativeObjectArray {
+  constructor(array) {
+    this.array = array;
+    this.address = 0n;
+    let addressView = new BigInt64Array(array.length);
+    let addressBuffer = addressView.buffer;
+    let addressBufferAddress = getAddressFromArrayBuffer(addressBuffer);
+    for (let ii = 0; ii < array.length; ++ii) {
+      let object = array[ii];
+      let objectAddress = object.address;
+      addressView[ii] = objectAddress;
+    };
+    this.address = addressBufferAddress;
+    // keep reference to prevent deallocation
+    this.addressBuffer = addressBuffer;
+  }
 };
 `;
     structs.map(struct => {
