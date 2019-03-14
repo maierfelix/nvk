@@ -5,6 +5,7 @@ import pkg from "../../package.json";
 import {
   warn,
   isPNextMember,
+  getNodeByName,
   isFillableMember,
   isIgnoreableType,
   isFlushableMember,
@@ -108,7 +109,8 @@ function getGetterProcessor(member) {
 };
 
 function getSetterProcessor(member) {
-  let {type, value} = getJavaScriptType(ast, member);
+  let jsType = getJavaScriptType(ast, member);
+  let {type, value} = jsType;
   let byteOffset = getStructureMemberByteOffset(member);
   switch (type) {
     case JavaScriptType.NUMBER:
@@ -124,6 +126,7 @@ function getSetterProcessor(member) {
       this.memoryView.setBigInt64(${byteOffset}, value.memoryAddress);
     } else if (value === null) {
       this._${member.name} = null;
+      this.memoryView.setBigInt64(${byteOffset}, 0n);
     } else {
       throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected '${member.type}' but got '" + value.constructor.name + "'");
     }`;
@@ -183,14 +186,42 @@ function getSetterProcessor(member) {
     }
   };
   if (isPNextMember(member)) {
-    return ``;
+    let {extensions} = currentStruct;
+    let conditions = ``;
+    if (!extensions) {
+      return `
+    throw new TypeError("'${currentStruct.name}.${member.name}' isn't allowed to be filled");`;
+    }
+    extensions.map((extensionName, index) => {
+      let structExt = getNodeByName(extensionName, ast);
+      if (!structExt || !structExt.sType) warn(`Cannot resolve struct by extension name '${extensionName}'`);
+      conditions += `
+        case ${structExt.sType}:`;
+    });
+    return `
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}'");
+      switch (value.sType) {
+          ${conditions}
+          break;
+        default:
+          throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}'");
+      };
+      this._${member.name} = value;
+      this.memoryView.setBigInt64(${byteOffset}, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(${byteOffset}, 0n);
+    } else {
+      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}'");
+    }`;
   }
   warn(`Cannot resolve setter processor for ${member.name} of type ${type}`);
   return ``;
 };
 
 function getFlusherProcessor(member) {
-  let {type, value} = getJavaScriptType(ast, member);
+  let jsType = getJavaScriptType(ast, member);
+  let {type, value} = jsType;
   let byteOffset = getStructureMemberByteOffset(member);
   switch (type) {
     case JavaScriptType.NUMBER:
@@ -221,15 +252,20 @@ function getFlusherProcessor(member) {
   }`;
     }
     case JavaScriptType.ARRAY_OF_OBJECTS: {
+      // TODO: static
       let {length} = member;
       let isNumber = Number.isInteger(parseInt(length));
       return `
   if (this._${member.name} !== null) {
-    if (this._${member.name}.length !== ${isNumber ? length : `this.${length}`}) {
-      throw new RangeError("Invalid array length, expected array length of '${length}' for '${currentStruct.name}.${member.name}'");
+    let array = this._${member.name};
+    if (array.length !== ${isNumber ? length : `this.${length}`}) {
+      throw new RangeError("Invalid array length, expected length of '${length}' for '${currentStruct.name}.${member.name}'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._${member.name});
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (!array[ii].flush()) return false;
+    };
+    let nativeArray = new NativeObjectArray(array);
     this._${member.name}Native = nativeArray;
     this.memoryView.setBigInt64(${byteOffset}, nativeArray.address);
   }`;
@@ -239,7 +275,10 @@ function getFlusherProcessor(member) {
     }
   };
   if (isPNextMember(member)) {
-    return ``;
+    return `
+  if (this._${member.name} !== null) {
+    if (!this._${member.name}.flush()) return false;
+  }`;
   }
   warn(`Cannot resolve flusher processor for ${member.name} of type ${type}`);
   return ``;

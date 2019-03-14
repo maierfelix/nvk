@@ -76,6 +76,7 @@ class VkBaseOutStructure {
       this.memoryView.setBigInt64(0x8, value.memoryAddress);
     } else if (value === null) {
       this._pNext = null;
+      this.memoryView.setBigInt64(0x8, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkBaseOutStructure.pNext': Expected 'VkBaseOutStructure' but got '" + value.constructor.name + "'");
     }
@@ -131,6 +132,7 @@ class VkBaseInStructure {
       this.memoryView.setBigInt64(0x8, value.memoryAddress);
     } else if (value === null) {
       this._pNext = null;
+      this.memoryView.setBigInt64(0x8, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkBaseInStructure.pNext': Expected 'VkBaseInStructure' but got '" + value.constructor.name + "'");
     }
@@ -487,6 +489,7 @@ class VkRect2D {
       this.memoryView.setBigInt64(0x0, value.memoryAddress);
     } else if (value === null) {
       this._offset = null;
+      this.memoryView.setBigInt64(0x0, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkRect2D.offset': Expected 'VkOffset2D' but got '" + value.constructor.name + "'");
     }
@@ -501,6 +504,7 @@ class VkRect2D {
       this.memoryView.setBigInt64(0x8, value.memoryAddress);
     } else if (value === null) {
       this._extent = null;
+      this.memoryView.setBigInt64(0x8, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkRect2D.extent': Expected 'VkExtent2D' but got '" + value.constructor.name + "'");
     }
@@ -556,6 +560,7 @@ class VkClearRect {
       this.memoryView.setBigInt64(0x0, value.memoryAddress);
     } else if (value === null) {
       this._rect = null;
+      this.memoryView.setBigInt64(0x0, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkClearRect.rect': Expected 'VkRect2D' but got '" + value.constructor.name + "'");
     }
@@ -686,7 +691,7 @@ class VkPhysicalDeviceProperties {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkPhysicalDeviceProperties' is read-only and can only be filled by vulkan");
     }
   }
   get apiVersion() {
@@ -791,7 +796,7 @@ class VkExtensionProperties {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkExtensionProperties' is read-only and can only be filled by vulkan");
     }
   }
   get extensionName() {
@@ -837,7 +842,7 @@ class VkLayerProperties {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkLayerProperties' is read-only and can only be filled by vulkan");
     }
   }
   get layerName() {
@@ -925,6 +930,7 @@ class VkApplicationInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkApplicationInfo.pNext' isn't allowed to be filled");
   }
   get pApplicationName() {
     if (this._pApplicationName !== null) {
@@ -988,6 +994,9 @@ class VkApplicationInfo {
 VkApplicationInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -1099,6 +1108,22 @@ class VkDeviceQueueCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkDeviceQueueCreateInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkDeviceQueueCreateInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkDeviceQueueCreateInfo.pNext'");
+    }
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -1137,6 +1162,9 @@ class VkDeviceQueueCreateInfo {
 VkDeviceQueueCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -1213,6 +1241,56 @@ class VkDeviceCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkDeviceCreateInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES:
+        case VK_STRUCTURE_TYPE_DEVICE_GROUP_DEVICE_CREATE_INFO:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_YCBCR_CONVERSION_FEATURES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT16_INT8_FEATURES_KHR:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES_KHR:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONDITIONAL_RENDERING_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES_KHR:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES_KHR:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ASTC_DECODE_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_REPRESENTATIVE_FRAGMENT_TEST_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXCLUSIVE_SCISSOR_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CORNER_SAMPLED_IMAGE_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_IMAGE_FOOTPRINT_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEDICATED_ALLOCATION_IMAGE_ALIASING_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_DEVICE_MEMORY_OVERALLOCATION_CREATE_INFO_AMD:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCALAR_BLOCK_LAYOUT_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLIP_ENABLE_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PRIORITY_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_ADDRESS_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_NV:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkDeviceCreateInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkDeviceCreateInfo.pNext'");
+    }
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -1284,6 +1362,7 @@ class VkDeviceCreateInfo {
       this.memoryView.setBigInt64(0x40, value.memoryAddress);
     } else if (value === null) {
       this._pEnabledFeatures = null;
+      this.memoryView.setBigInt64(0x40, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkDeviceCreateInfo.pEnabledFeatures': Expected 'VkPhysicalDeviceFeatures' but got '" + value.constructor.name + "'");
     }
@@ -1294,11 +1373,15 @@ class VkDeviceCreateInfo {
 VkDeviceCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pQueueCreateInfos !== null) {
     if (this._pQueueCreateInfos.length !== this.queueCreateInfoCount) {
       throw new RangeError("Invalid array length, expected array length of 'queueCreateInfoCount' for 'VkDeviceCreateInfo.pQueueCreateInfos'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pQueueCreateInfos);
     this._pQueueCreateInfosNative = nativeArray;
@@ -1405,6 +1488,25 @@ class VkInstanceCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkInstanceCreateInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT:
+        case VK_STRUCTURE_TYPE_VALIDATION_FLAGS_EXT:
+        case VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkInstanceCreateInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkInstanceCreateInfo.pNext'");
+    }
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -1422,6 +1524,7 @@ class VkInstanceCreateInfo {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._pApplicationInfo = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkInstanceCreateInfo.pApplicationInfo': Expected 'VkApplicationInfo' but got '" + value.constructor.name + "'");
     }
@@ -1468,6 +1571,9 @@ class VkInstanceCreateInfo {
 VkInstanceCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._ppEnabledLayerNames !== null) {
@@ -1534,7 +1640,7 @@ class VkQueueFamilyProperties {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkQueueFamilyProperties' is read-only and can only be filled by vulkan");
     }
   }
   get queueFlags() {
@@ -1591,7 +1697,7 @@ class VkPhysicalDeviceMemoryProperties {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkPhysicalDeviceMemoryProperties' is read-only and can only be filled by vulkan");
     }
   }
   get memoryTypeCount() {
@@ -1615,6 +1721,7 @@ VkPhysicalDeviceMemoryProperties.prototype.flush = function flush() {
   if (this._memoryTypes !== null) {
     if (this._memoryTypes.length !== 32) {
       throw new RangeError("Invalid array length, expected array length of '32' for 'VkPhysicalDeviceMemoryProperties.memoryTypes'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._memoryTypes);
     this._memoryTypesNative = nativeArray;
@@ -1625,6 +1732,7 @@ VkPhysicalDeviceMemoryProperties.prototype.flush = function flush() {
   if (this._memoryHeaps !== null) {
     if (this._memoryHeaps.length !== 16) {
       throw new RangeError("Invalid array length, expected array length of '16' for 'VkPhysicalDeviceMemoryProperties.memoryHeaps'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._memoryHeaps);
     this._memoryHeapsNative = nativeArray;
@@ -1683,6 +1791,34 @@ class VkMemoryAllocateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkMemoryAllocateInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV:
+        case VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_NV:
+        case VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_NV:
+        case VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_NV:
+        case VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO:
+        case VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR:
+        case VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_KHR:
+        case VK_STRUCTURE_TYPE_IMPORT_MEMORY_FD_INFO_KHR:
+        case VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO:
+        case VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO:
+        case VK_STRUCTURE_TYPE_IMPORT_MEMORY_HOST_POINTER_INFO_EXT:
+        case VK_STRUCTURE_TYPE_IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID:
+        case VK_STRUCTURE_TYPE_MEMORY_PRIORITY_ALLOCATE_INFO_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkMemoryAllocateInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkMemoryAllocateInfo.pNext'");
+    }
   }
   get allocationSize() {
     return this.memoryView.getBigUint64(0x10);
@@ -1702,6 +1838,9 @@ class VkMemoryAllocateInfo {
 VkMemoryAllocateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -1737,7 +1876,7 @@ class VkMemoryRequirements {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkMemoryRequirements' is read-only and can only be filled by vulkan");
     }
   }
   get size() {
@@ -1784,7 +1923,7 @@ class VkSparseImageFormatProperties {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkSparseImageFormatProperties' is read-only and can only be filled by vulkan");
     }
   }
   get aspectMask() {
@@ -1835,7 +1974,7 @@ class VkSparseImageMemoryRequirements {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkSparseImageMemoryRequirements' is read-only and can only be filled by vulkan");
     }
   }
   get formatProperties() {
@@ -1897,7 +2036,7 @@ class VkMemoryType {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkMemoryType' is read-only and can only be filled by vulkan");
     }
   }
   get propertyFlags() {
@@ -1936,7 +2075,7 @@ class VkMemoryHeap {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkMemoryHeap' is read-only and can only be filled by vulkan");
     }
   }
   get size() {
@@ -1996,6 +2135,7 @@ class VkMappedMemoryRange {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkMappedMemoryRange.pNext' isn't allowed to be filled");
   }
   get memory() {
     return this._memory;
@@ -2007,6 +2147,7 @@ class VkMappedMemoryRange {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._memory = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkMappedMemoryRange.memory': Expected 'VkDeviceMemory' but got '" + value.constructor.name + "'");
     }
@@ -2029,6 +2170,9 @@ class VkMappedMemoryRange {
 VkMappedMemoryRange.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -2068,7 +2212,7 @@ class VkFormatProperties {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkFormatProperties' is read-only and can only be filled by vulkan");
     }
   }
   get linearTilingFeatures() {
@@ -2117,7 +2261,7 @@ class VkImageFormatProperties {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkImageFormatProperties' is read-only and can only be filled by vulkan");
     }
   }
   get maxExtent() {
@@ -2196,6 +2340,7 @@ class VkDescriptorBufferInfo {
       this.memoryView.setBigInt64(0x0, value.memoryAddress);
     } else if (value === null) {
       this._buffer = null;
+      this.memoryView.setBigInt64(0x0, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorBufferInfo.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
@@ -2263,6 +2408,7 @@ class VkDescriptorImageInfo {
       this.memoryView.setBigInt64(0x0, value.memoryAddress);
     } else if (value === null) {
       this._sampler = null;
+      this.memoryView.setBigInt64(0x0, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorImageInfo.sampler': Expected 'VkSampler' but got '" + value.constructor.name + "'");
     }
@@ -2277,6 +2423,7 @@ class VkDescriptorImageInfo {
       this.memoryView.setBigInt64(0x8, value.memoryAddress);
     } else if (value === null) {
       this._imageView = null;
+      this.memoryView.setBigInt64(0x8, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorImageInfo.imageView': Expected 'VkImageView' but got '" + value.constructor.name + "'");
     }
@@ -2355,6 +2502,23 @@ class VkWriteDescriptorSet {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkWriteDescriptorSet.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_INLINE_UNIFORM_BLOCK_EXT:
+        case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_NV:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkWriteDescriptorSet.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkWriteDescriptorSet.pNext'");
+    }
   }
   get dstSet() {
     return this._dstSet;
@@ -2366,6 +2530,7 @@ class VkWriteDescriptorSet {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._dstSet = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkWriteDescriptorSet.dstSet': Expected 'VkDescriptorSet' but got '" + value.constructor.name + "'");
     }
@@ -2436,11 +2601,15 @@ class VkWriteDescriptorSet {
 VkWriteDescriptorSet.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pImageInfo !== null) {
     if (this._pImageInfo.length !== this.descriptorCount) {
       throw new RangeError("Invalid array length, expected array length of 'descriptorCount' for 'VkWriteDescriptorSet.pImageInfo'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pImageInfo);
     this._pImageInfoNative = nativeArray;
@@ -2451,6 +2620,7 @@ VkWriteDescriptorSet.prototype.flush = function flush() {
   if (this._pBufferInfo !== null) {
     if (this._pBufferInfo.length !== this.descriptorCount) {
       throw new RangeError("Invalid array length, expected array length of 'descriptorCount' for 'VkWriteDescriptorSet.pBufferInfo'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pBufferInfo);
     this._pBufferInfoNative = nativeArray;
@@ -2461,6 +2631,7 @@ VkWriteDescriptorSet.prototype.flush = function flush() {
   if (this._pTexelBufferView !== null) {
     if (this._pTexelBufferView.length !== this.descriptorCount) {
       throw new RangeError("Invalid array length, expected array length of 'descriptorCount' for 'VkWriteDescriptorSet.pTexelBufferView'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pTexelBufferView);
     this._pTexelBufferViewNative = nativeArray;
@@ -2553,6 +2724,7 @@ class VkCopyDescriptorSet {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkCopyDescriptorSet.pNext' isn't allowed to be filled");
   }
   get srcSet() {
     return this._srcSet;
@@ -2564,6 +2736,7 @@ class VkCopyDescriptorSet {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._srcSet = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkCopyDescriptorSet.srcSet': Expected 'VkDescriptorSet' but got '" + value.constructor.name + "'");
     }
@@ -2590,6 +2763,7 @@ class VkCopyDescriptorSet {
       this.memoryView.setBigInt64(0x20, value.memoryAddress);
     } else if (value === null) {
       this._dstSet = null;
+      this.memoryView.setBigInt64(0x20, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkCopyDescriptorSet.dstSet': Expected 'VkDescriptorSet' but got '" + value.constructor.name + "'");
     }
@@ -2618,6 +2792,9 @@ class VkCopyDescriptorSet {
 VkCopyDescriptorSet.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -2699,6 +2876,24 @@ class VkBufferCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkBufferCreateInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_BUFFER_CREATE_INFO_NV:
+        case VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_BUFFER_CREATE_INFO:
+        case VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_CREATE_INFO_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkBufferCreateInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkBufferCreateInfo.pNext'");
+    }
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -2749,6 +2944,9 @@ class VkBufferCreateInfo {
 VkBufferCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -2824,6 +3022,7 @@ class VkBufferViewCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkBufferViewCreateInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -2841,6 +3040,7 @@ class VkBufferViewCreateInfo {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._buffer = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkBufferViewCreateInfo.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
@@ -2869,6 +3069,9 @@ class VkBufferViewCreateInfo {
 VkBufferViewCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -3147,6 +3350,7 @@ class VkMemoryBarrier {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkMemoryBarrier.pNext' isn't allowed to be filled");
   }
   get srcAccessMask() {
     return this.memoryView.getInt32(0x10);
@@ -3166,6 +3370,9 @@ class VkMemoryBarrier {
 VkMemoryBarrier.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -3229,6 +3436,7 @@ class VkBufferMemoryBarrier {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkBufferMemoryBarrier.pNext' isn't allowed to be filled");
   }
   get srcAccessMask() {
     return this.memoryView.getInt32(0x10);
@@ -3264,6 +3472,7 @@ class VkBufferMemoryBarrier {
       this.memoryView.setBigInt64(0x20, value.memoryAddress);
     } else if (value === null) {
       this._buffer = null;
+      this.memoryView.setBigInt64(0x20, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkBufferMemoryBarrier.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
@@ -3286,6 +3495,9 @@ class VkBufferMemoryBarrier {
 VkBufferMemoryBarrier.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -3371,6 +3583,22 @@ class VkImageMemoryBarrier {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkImageMemoryBarrier.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_SAMPLE_LOCATIONS_INFO_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkImageMemoryBarrier.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkImageMemoryBarrier.pNext'");
+    }
   }
   get srcAccessMask() {
     return this.memoryView.getInt32(0x10);
@@ -3418,6 +3646,7 @@ class VkImageMemoryBarrier {
       this.memoryView.setBigInt64(0x28, value.memoryAddress);
     } else if (value === null) {
       this._image = null;
+      this.memoryView.setBigInt64(0x28, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImageMemoryBarrier.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
@@ -3432,6 +3661,7 @@ class VkImageMemoryBarrier {
       this.memoryView.setBigInt64(0x30, value.memoryAddress);
     } else if (value === null) {
       this._subresourceRange = null;
+      this.memoryView.setBigInt64(0x30, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImageMemoryBarrier.subresourceRange': Expected 'VkImageSubresourceRange' but got '" + value.constructor.name + "'");
     }
@@ -3442,6 +3672,9 @@ class VkImageMemoryBarrier {
 VkImageMemoryBarrier.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -3543,6 +3776,30 @@ class VkImageCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkImageCreateInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV:
+        case VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_NV:
+        case VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO:
+        case VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR:
+        case VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO_KHR:
+        case VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID:
+        case VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_LIST_CREATE_INFO_EXT:
+        case VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_EXPLICIT_CREATE_INFO_EXT:
+        case VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkImageCreateInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkImageCreateInfo.pNext'");
+    }
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -3572,6 +3829,7 @@ class VkImageCreateInfo {
       this.memoryView.setBigInt64(0x1C, value.memoryAddress);
     } else if (value === null) {
       this._extent = null;
+      this.memoryView.setBigInt64(0x1C, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImageCreateInfo.extent': Expected 'VkExtent3D' but got '" + value.constructor.name + "'");
     }
@@ -3643,6 +3901,9 @@ class VkImageCreateInfo {
 VkImageCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -3726,7 +3987,7 @@ class VkSubresourceLayout {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkSubresourceLayout' is read-only and can only be filled by vulkan");
     }
   }
   get offset() {
@@ -3813,6 +4074,24 @@ class VkImageViewCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkImageViewCreateInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_IMAGE_VIEW_USAGE_CREATE_INFO:
+        case VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO:
+        case VK_STRUCTURE_TYPE_IMAGE_VIEW_ASTC_DECODE_MODE_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkImageViewCreateInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkImageViewCreateInfo.pNext'");
+    }
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -3830,6 +4109,7 @@ class VkImageViewCreateInfo {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._image = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImageViewCreateInfo.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
@@ -3856,6 +4136,7 @@ class VkImageViewCreateInfo {
       this.memoryView.setBigInt64(0x28, value.memoryAddress);
     } else if (value === null) {
       this._components = null;
+      this.memoryView.setBigInt64(0x28, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImageViewCreateInfo.components': Expected 'VkComponentMapping' but got '" + value.constructor.name + "'");
     }
@@ -3870,6 +4151,7 @@ class VkImageViewCreateInfo {
       this.memoryView.setBigInt64(0x38, value.memoryAddress);
     } else if (value === null) {
       this._subresourceRange = null;
+      this.memoryView.setBigInt64(0x38, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImageViewCreateInfo.subresourceRange': Expected 'VkImageSubresourceRange' but got '" + value.constructor.name + "'");
     }
@@ -3880,6 +4162,9 @@ class VkImageViewCreateInfo {
 VkImageViewCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -4026,6 +4311,7 @@ class VkSparseMemoryBind {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._memory = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkSparseMemoryBind.memory': Expected 'VkDeviceMemory' but got '" + value.constructor.name + "'");
     }
@@ -4107,6 +4393,7 @@ class VkSparseImageMemoryBind {
       this.memoryView.setBigInt64(0x0, value.memoryAddress);
     } else if (value === null) {
       this._subresource = null;
+      this.memoryView.setBigInt64(0x0, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkSparseImageMemoryBind.subresource': Expected 'VkImageSubresource' but got '" + value.constructor.name + "'");
     }
@@ -4121,6 +4408,7 @@ class VkSparseImageMemoryBind {
       this.memoryView.setBigInt64(0xC, value.memoryAddress);
     } else if (value === null) {
       this._offset = null;
+      this.memoryView.setBigInt64(0xC, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkSparseImageMemoryBind.offset': Expected 'VkOffset3D' but got '" + value.constructor.name + "'");
     }
@@ -4135,6 +4423,7 @@ class VkSparseImageMemoryBind {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._extent = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkSparseImageMemoryBind.extent': Expected 'VkExtent3D' but got '" + value.constructor.name + "'");
     }
@@ -4149,6 +4438,7 @@ class VkSparseImageMemoryBind {
       this.memoryView.setBigInt64(0x28, value.memoryAddress);
     } else if (value === null) {
       this._memory = null;
+      this.memoryView.setBigInt64(0x28, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkSparseImageMemoryBind.memory': Expected 'VkDeviceMemory' but got '" + value.constructor.name + "'");
     }
@@ -4235,6 +4525,7 @@ class VkSparseBufferMemoryBindInfo {
       this.memoryView.setBigInt64(0x0, value.memoryAddress);
     } else if (value === null) {
       this._buffer = null;
+      this.memoryView.setBigInt64(0x0, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkSparseBufferMemoryBindInfo.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
@@ -4266,6 +4557,7 @@ VkSparseBufferMemoryBindInfo.prototype.flush = function flush() {
   if (this._pBinds !== null) {
     if (this._pBinds.length !== this.bindCount) {
       throw new RangeError("Invalid array length, expected array length of 'bindCount' for 'VkSparseBufferMemoryBindInfo.pBinds'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pBinds);
     this._pBindsNative = nativeArray;
@@ -4319,6 +4611,7 @@ class VkSparseImageOpaqueMemoryBindInfo {
       this.memoryView.setBigInt64(0x0, value.memoryAddress);
     } else if (value === null) {
       this._image = null;
+      this.memoryView.setBigInt64(0x0, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkSparseImageOpaqueMemoryBindInfo.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
@@ -4350,6 +4643,7 @@ VkSparseImageOpaqueMemoryBindInfo.prototype.flush = function flush() {
   if (this._pBinds !== null) {
     if (this._pBinds.length !== this.bindCount) {
       throw new RangeError("Invalid array length, expected array length of 'bindCount' for 'VkSparseImageOpaqueMemoryBindInfo.pBinds'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pBinds);
     this._pBindsNative = nativeArray;
@@ -4403,6 +4697,7 @@ class VkSparseImageMemoryBindInfo {
       this.memoryView.setBigInt64(0x0, value.memoryAddress);
     } else if (value === null) {
       this._image = null;
+      this.memoryView.setBigInt64(0x0, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkSparseImageMemoryBindInfo.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
@@ -4434,6 +4729,7 @@ VkSparseImageMemoryBindInfo.prototype.flush = function flush() {
   if (this._pBinds !== null) {
     if (this._pBinds.length !== this.bindCount) {
       throw new RangeError("Invalid array length, expected array length of 'bindCount' for 'VkSparseImageMemoryBindInfo.pBinds'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pBinds);
     this._pBindsNative = nativeArray;
@@ -4509,6 +4805,22 @@ class VkBindSparseInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkBindSparseInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkBindSparseInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkBindSparseInfo.pNext'");
+    }
   }
   get waitSemaphoreCount() {
     return this.memoryView.getUint32(0x10);
@@ -4606,11 +4918,15 @@ class VkBindSparseInfo {
 VkBindSparseInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pWaitSemaphores !== null) {
     if (this._pWaitSemaphores.length !== this.waitSemaphoreCount) {
       throw new RangeError("Invalid array length, expected array length of 'waitSemaphoreCount' for 'VkBindSparseInfo.pWaitSemaphores'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pWaitSemaphores);
     this._pWaitSemaphoresNative = nativeArray;
@@ -4621,6 +4937,7 @@ VkBindSparseInfo.prototype.flush = function flush() {
   if (this._pBufferBinds !== null) {
     if (this._pBufferBinds.length !== this.bufferBindCount) {
       throw new RangeError("Invalid array length, expected array length of 'bufferBindCount' for 'VkBindSparseInfo.pBufferBinds'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pBufferBinds);
     this._pBufferBindsNative = nativeArray;
@@ -4631,6 +4948,7 @@ VkBindSparseInfo.prototype.flush = function flush() {
   if (this._pImageOpaqueBinds !== null) {
     if (this._pImageOpaqueBinds.length !== this.imageOpaqueBindCount) {
       throw new RangeError("Invalid array length, expected array length of 'imageOpaqueBindCount' for 'VkBindSparseInfo.pImageOpaqueBinds'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pImageOpaqueBinds);
     this._pImageOpaqueBindsNative = nativeArray;
@@ -4641,6 +4959,7 @@ VkBindSparseInfo.prototype.flush = function flush() {
   if (this._pImageBinds !== null) {
     if (this._pImageBinds.length !== this.imageBindCount) {
       throw new RangeError("Invalid array length, expected array length of 'imageBindCount' for 'VkBindSparseInfo.pImageBinds'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pImageBinds);
     this._pImageBindsNative = nativeArray;
@@ -4651,6 +4970,7 @@ VkBindSparseInfo.prototype.flush = function flush() {
   if (this._pSignalSemaphores !== null) {
     if (this._pSignalSemaphores.length !== this.signalSemaphoreCount) {
       throw new RangeError("Invalid array length, expected array length of 'signalSemaphoreCount' for 'VkBindSparseInfo.pSignalSemaphores'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pSignalSemaphores);
     this._pSignalSemaphoresNative = nativeArray;
@@ -4743,6 +5063,7 @@ class VkImageCopy {
       this.memoryView.setBigInt64(0x0, value.memoryAddress);
     } else if (value === null) {
       this._srcSubresource = null;
+      this.memoryView.setBigInt64(0x0, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImageCopy.srcSubresource': Expected 'VkImageSubresourceLayers' but got '" + value.constructor.name + "'");
     }
@@ -4757,6 +5078,7 @@ class VkImageCopy {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._srcOffset = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImageCopy.srcOffset': Expected 'VkOffset3D' but got '" + value.constructor.name + "'");
     }
@@ -4771,6 +5093,7 @@ class VkImageCopy {
       this.memoryView.setBigInt64(0x1C, value.memoryAddress);
     } else if (value === null) {
       this._dstSubresource = null;
+      this.memoryView.setBigInt64(0x1C, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImageCopy.dstSubresource': Expected 'VkImageSubresourceLayers' but got '" + value.constructor.name + "'");
     }
@@ -4785,6 +5108,7 @@ class VkImageCopy {
       this.memoryView.setBigInt64(0x2C, value.memoryAddress);
     } else if (value === null) {
       this._dstOffset = null;
+      this.memoryView.setBigInt64(0x2C, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImageCopy.dstOffset': Expected 'VkOffset3D' but got '" + value.constructor.name + "'");
     }
@@ -4799,6 +5123,7 @@ class VkImageCopy {
       this.memoryView.setBigInt64(0x38, value.memoryAddress);
     } else if (value === null) {
       this._extent = null;
+      this.memoryView.setBigInt64(0x38, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImageCopy.extent': Expected 'VkExtent3D' but got '" + value.constructor.name + "'");
     }
@@ -4874,6 +5199,7 @@ class VkImageBlit {
       this.memoryView.setBigInt64(0x0, value.memoryAddress);
     } else if (value === null) {
       this._srcSubresource = null;
+      this.memoryView.setBigInt64(0x0, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImageBlit.srcSubresource': Expected 'VkImageSubresourceLayers' but got '" + value.constructor.name + "'");
     }
@@ -4900,6 +5226,7 @@ class VkImageBlit {
       this.memoryView.setBigInt64(0x28, value.memoryAddress);
     } else if (value === null) {
       this._dstSubresource = null;
+      this.memoryView.setBigInt64(0x28, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImageBlit.dstSubresource': Expected 'VkImageSubresourceLayers' but got '" + value.constructor.name + "'");
     }
@@ -4927,6 +5254,7 @@ VkImageBlit.prototype.flush = function flush() {
   if (this._srcOffsets !== null) {
     if (this._srcOffsets.length !== 2) {
       throw new RangeError("Invalid array length, expected array length of '2' for 'VkImageBlit.srcOffsets'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._srcOffsets);
     this._srcOffsetsNative = nativeArray;
@@ -4939,6 +5267,7 @@ VkImageBlit.prototype.flush = function flush() {
   if (this._dstOffsets !== null) {
     if (this._dstOffsets.length !== 2) {
       throw new RangeError("Invalid array length, expected array length of '2' for 'VkImageBlit.dstOffsets'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._dstOffsets);
     this._dstOffsetsNative = nativeArray;
@@ -5019,6 +5348,7 @@ class VkBufferImageCopy {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._imageSubresource = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkBufferImageCopy.imageSubresource': Expected 'VkImageSubresourceLayers' but got '" + value.constructor.name + "'");
     }
@@ -5033,6 +5363,7 @@ class VkBufferImageCopy {
       this.memoryView.setBigInt64(0x20, value.memoryAddress);
     } else if (value === null) {
       this._imageOffset = null;
+      this.memoryView.setBigInt64(0x20, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkBufferImageCopy.imageOffset': Expected 'VkOffset3D' but got '" + value.constructor.name + "'");
     }
@@ -5047,6 +5378,7 @@ class VkBufferImageCopy {
       this.memoryView.setBigInt64(0x2C, value.memoryAddress);
     } else if (value === null) {
       this._imageExtent = null;
+      this.memoryView.setBigInt64(0x2C, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkBufferImageCopy.imageExtent': Expected 'VkExtent3D' but got '" + value.constructor.name + "'");
     }
@@ -5124,6 +5456,7 @@ class VkImageResolve {
       this.memoryView.setBigInt64(0x0, value.memoryAddress);
     } else if (value === null) {
       this._srcSubresource = null;
+      this.memoryView.setBigInt64(0x0, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImageResolve.srcSubresource': Expected 'VkImageSubresourceLayers' but got '" + value.constructor.name + "'");
     }
@@ -5138,6 +5471,7 @@ class VkImageResolve {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._srcOffset = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImageResolve.srcOffset': Expected 'VkOffset3D' but got '" + value.constructor.name + "'");
     }
@@ -5152,6 +5486,7 @@ class VkImageResolve {
       this.memoryView.setBigInt64(0x1C, value.memoryAddress);
     } else if (value === null) {
       this._dstSubresource = null;
+      this.memoryView.setBigInt64(0x1C, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImageResolve.dstSubresource': Expected 'VkImageSubresourceLayers' but got '" + value.constructor.name + "'");
     }
@@ -5166,6 +5501,7 @@ class VkImageResolve {
       this.memoryView.setBigInt64(0x2C, value.memoryAddress);
     } else if (value === null) {
       this._dstOffset = null;
+      this.memoryView.setBigInt64(0x2C, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImageResolve.dstOffset': Expected 'VkOffset3D' but got '" + value.constructor.name + "'");
     }
@@ -5180,6 +5516,7 @@ class VkImageResolve {
       this.memoryView.setBigInt64(0x38, value.memoryAddress);
     } else if (value === null) {
       this._extent = null;
+      this.memoryView.setBigInt64(0x38, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImageResolve.extent': Expected 'VkExtent3D' but got '" + value.constructor.name + "'");
     }
@@ -5257,6 +5594,22 @@ class VkShaderModuleCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkShaderModuleCreateInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkShaderModuleCreateInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkShaderModuleCreateInfo.pNext'");
+    }
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -5289,6 +5642,9 @@ class VkShaderModuleCreateInfo {
 VkShaderModuleCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -5384,6 +5740,7 @@ VkDescriptorSetLayoutBinding.prototype.flush = function flush() {
   if (this._pImmutableSamplers !== null) {
     if (this._pImmutableSamplers.length !== this.descriptorCount) {
       throw new RangeError("Invalid array length, expected array length of 'descriptorCount' for 'VkDescriptorSetLayoutBinding.pImmutableSamplers'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pImmutableSamplers);
     this._pImmutableSamplersNative = nativeArray;
@@ -5449,6 +5806,22 @@ class VkDescriptorSetLayoutCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkDescriptorSetLayoutCreateInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkDescriptorSetLayoutCreateInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkDescriptorSetLayoutCreateInfo.pNext'");
+    }
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -5480,20 +5853,16 @@ class VkDescriptorSetLayoutCreateInfo {
 VkDescriptorSetLayoutCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pBindings !== null) {
     if (this._pBindings.length !== this.bindingCount) {
       throw new RangeError("Invalid array length, expected array length of 'bindingCount' for 'VkDescriptorSetLayoutCreateInfo.pBindings'");
+      return false;
     }
-    for (let ii = 0; ii < array.length; ++ii) {
-      let entry = array[ii];
-      if (entry.constructor !== VkDescriptorSetLayoutBinding) {
-        throw new TypeError("Invalid type for 'VkDescriptorSetLayoutCreateInfo.pBindings'");
-        return false;
-      }
-      if (!entry.flush()) return false;
-    };
     let nativeArray = new NativeObjectArray(this._pBindings);
     this._pBindingsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
@@ -5607,6 +5976,22 @@ class VkDescriptorPoolCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkDescriptorPoolCreateInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_INLINE_UNIFORM_BLOCK_CREATE_INFO_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkDescriptorPoolCreateInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkDescriptorPoolCreateInfo.pNext'");
+    }
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -5644,11 +6029,15 @@ class VkDescriptorPoolCreateInfo {
 VkDescriptorPoolCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pPoolSizes !== null) {
     if (this._pPoolSizes.length !== this.poolSizeCount) {
       throw new RangeError("Invalid array length, expected array length of 'poolSizeCount' for 'VkDescriptorPoolCreateInfo.pPoolSizes'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pPoolSizes);
     this._pPoolSizesNative = nativeArray;
@@ -5718,6 +6107,22 @@ class VkDescriptorSetAllocateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkDescriptorSetAllocateInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkDescriptorSetAllocateInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkDescriptorSetAllocateInfo.pNext'");
+    }
   }
   get descriptorPool() {
     return this._descriptorPool;
@@ -5729,6 +6134,7 @@ class VkDescriptorSetAllocateInfo {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._descriptorPool = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorSetAllocateInfo.descriptorPool': Expected 'VkDescriptorPool' but got '" + value.constructor.name + "'");
     }
@@ -5757,11 +6163,15 @@ class VkDescriptorSetAllocateInfo {
 VkDescriptorSetAllocateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pSetLayouts !== null) {
     if (this._pSetLayouts.length !== this.descriptorSetCount) {
       throw new RangeError("Invalid array length, expected array length of 'descriptorSetCount' for 'VkDescriptorSetAllocateInfo.pSetLayouts'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pSetLayouts);
     this._pSetLayoutsNative = nativeArray;
@@ -5920,6 +6330,7 @@ VkSpecializationInfo.prototype.flush = function flush() {
   if (this._pMapEntries !== null) {
     if (this._pMapEntries.length !== this.mapEntryCount) {
       throw new RangeError("Invalid array length, expected array length of 'mapEntryCount' for 'VkSpecializationInfo.pMapEntries'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pMapEntries);
     this._pMapEntriesNative = nativeArray;
@@ -5984,6 +6395,7 @@ class VkPipelineShaderStageCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPipelineShaderStageCreateInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -6007,6 +6419,7 @@ class VkPipelineShaderStageCreateInfo {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._module = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkPipelineShaderStageCreateInfo.module': Expected 'VkShaderModule' but got '" + value.constructor.name + "'");
     }
@@ -6040,6 +6453,7 @@ class VkPipelineShaderStageCreateInfo {
       this.memoryView.setBigInt64(0x28, value.memoryAddress);
     } else if (value === null) {
       this._pSpecializationInfo = null;
+      this.memoryView.setBigInt64(0x28, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkPipelineShaderStageCreateInfo.pSpecializationInfo': Expected 'VkSpecializationInfo' but got '" + value.constructor.name + "'");
     }
@@ -6050,6 +6464,9 @@ class VkPipelineShaderStageCreateInfo {
 VkPipelineShaderStageCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -6121,6 +6538,7 @@ class VkComputePipelineCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkComputePipelineCreateInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -6138,6 +6556,7 @@ class VkComputePipelineCreateInfo {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._stage = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkComputePipelineCreateInfo.stage': Expected 'VkPipelineShaderStageCreateInfo' but got '" + value.constructor.name + "'");
     }
@@ -6152,6 +6571,7 @@ class VkComputePipelineCreateInfo {
       this.memoryView.setBigInt64(0x48, value.memoryAddress);
     } else if (value === null) {
       this._layout = null;
+      this.memoryView.setBigInt64(0x48, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkComputePipelineCreateInfo.layout': Expected 'VkPipelineLayout' but got '" + value.constructor.name + "'");
     }
@@ -6166,6 +6586,7 @@ class VkComputePipelineCreateInfo {
       this.memoryView.setBigInt64(0x50, value.memoryAddress);
     } else if (value === null) {
       this._basePipelineHandle = null;
+      this.memoryView.setBigInt64(0x50, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkComputePipelineCreateInfo.basePipelineHandle': Expected 'VkPipeline' but got '" + value.constructor.name + "'");
     }
@@ -6182,6 +6603,9 @@ class VkComputePipelineCreateInfo {
 VkComputePipelineCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -6387,6 +6811,22 @@ class VkPipelineVertexInputStateCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkPipelineVertexInputStateCreateInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkPipelineVertexInputStateCreateInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkPipelineVertexInputStateCreateInfo.pNext'");
+    }
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -6436,11 +6876,15 @@ class VkPipelineVertexInputStateCreateInfo {
 VkPipelineVertexInputStateCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pVertexBindingDescriptions !== null) {
     if (this._pVertexBindingDescriptions.length !== this.vertexBindingDescriptionCount) {
       throw new RangeError("Invalid array length, expected array length of 'vertexBindingDescriptionCount' for 'VkPipelineVertexInputStateCreateInfo.pVertexBindingDescriptions'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pVertexBindingDescriptions);
     this._pVertexBindingDescriptionsNative = nativeArray;
@@ -6451,6 +6895,7 @@ VkPipelineVertexInputStateCreateInfo.prototype.flush = function flush() {
   if (this._pVertexAttributeDescriptions !== null) {
     if (this._pVertexAttributeDescriptions.length !== this.vertexAttributeDescriptionCount) {
       throw new RangeError("Invalid array length, expected array length of 'vertexAttributeDescriptionCount' for 'VkPipelineVertexInputStateCreateInfo.pVertexAttributeDescriptions'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pVertexAttributeDescriptions);
     this._pVertexAttributeDescriptionsNative = nativeArray;
@@ -6523,6 +6968,7 @@ class VkPipelineInputAssemblyStateCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPipelineInputAssemblyStateCreateInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -6548,6 +6994,9 @@ class VkPipelineInputAssemblyStateCreateInfo {
 VkPipelineInputAssemblyStateCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -6605,6 +7054,22 @@ class VkPipelineTessellationStateCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkPipelineTessellationStateCreateInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkPipelineTessellationStateCreateInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkPipelineTessellationStateCreateInfo.pNext'");
+    }
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -6624,6 +7089,9 @@ class VkPipelineTessellationStateCreateInfo {
 VkPipelineTessellationStateCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -6685,6 +7153,26 @@ class VkPipelineViewportStateCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkPipelineViewportStateCreateInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV:
+        case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV:
+        case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_EXCLUSIVE_SCISSOR_STATE_CREATE_INFO_NV:
+        case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV:
+        case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkPipelineViewportStateCreateInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkPipelineViewportStateCreateInfo.pNext'");
+    }
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -6734,11 +7222,15 @@ class VkPipelineViewportStateCreateInfo {
 VkPipelineViewportStateCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pViewports !== null) {
     if (this._pViewports.length !== this.viewportCount) {
       throw new RangeError("Invalid array length, expected array length of 'viewportCount' for 'VkPipelineViewportStateCreateInfo.pViewports'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pViewports);
     this._pViewportsNative = nativeArray;
@@ -6749,6 +7241,7 @@ VkPipelineViewportStateCreateInfo.prototype.flush = function flush() {
   if (this._pScissors !== null) {
     if (this._pScissors.length !== this.scissorCount) {
       throw new RangeError("Invalid array length, expected array length of 'scissorCount' for 'VkPipelineViewportStateCreateInfo.pScissors'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pScissors);
     this._pScissorsNative = nativeArray;
@@ -6837,6 +7330,25 @@ class VkPipelineRasterizationStateCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkPipelineRasterizationStateCreateInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD:
+        case VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT:
+        case VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT:
+        case VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_DEPTH_CLIP_STATE_CREATE_INFO_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkPipelineRasterizationStateCreateInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkPipelineRasterizationStateCreateInfo.pNext'");
+    }
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -6910,6 +7422,9 @@ class VkPipelineRasterizationStateCreateInfo {
 VkPipelineRasterizationStateCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -7009,6 +7524,24 @@ class VkPipelineMultisampleStateCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkPipelineMultisampleStateCreateInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV:
+        case VK_STRUCTURE_TYPE_PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT:
+        case VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkPipelineMultisampleStateCreateInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkPipelineMultisampleStateCreateInfo.pNext'");
+    }
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -7065,6 +7598,9 @@ class VkPipelineMultisampleStateCreateInfo {
 VkPipelineMultisampleStateCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -7266,6 +7802,22 @@ class VkPipelineColorBlendStateCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkPipelineColorBlendStateCreateInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_ADVANCED_STATE_CREATE_INFO_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkPipelineColorBlendStateCreateInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkPipelineColorBlendStateCreateInfo.pNext'");
+    }
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -7321,11 +7873,15 @@ class VkPipelineColorBlendStateCreateInfo {
 VkPipelineColorBlendStateCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pAttachments !== null) {
     if (this._pAttachments.length !== this.attachmentCount) {
       throw new RangeError("Invalid array length, expected array length of 'attachmentCount' for 'VkPipelineColorBlendStateCreateInfo.pAttachments'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pAttachments);
     this._pAttachmentsNative = nativeArray;
@@ -7410,6 +7966,7 @@ class VkPipelineDynamicStateCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPipelineDynamicStateCreateInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -7442,6 +7999,9 @@ class VkPipelineDynamicStateCreateInfo {
 VkPipelineDynamicStateCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -7622,6 +8182,7 @@ class VkPipelineDepthStencilStateCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPipelineDepthStencilStateCreateInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -7669,6 +8230,7 @@ class VkPipelineDepthStencilStateCreateInfo {
       this.memoryView.setBigInt64(0x28, value.memoryAddress);
     } else if (value === null) {
       this._front = null;
+      this.memoryView.setBigInt64(0x28, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkPipelineDepthStencilStateCreateInfo.front': Expected 'VkStencilOpState' but got '" + value.constructor.name + "'");
     }
@@ -7683,6 +8245,7 @@ class VkPipelineDepthStencilStateCreateInfo {
       this.memoryView.setBigInt64(0x44, value.memoryAddress);
     } else if (value === null) {
       this._back = null;
+      this.memoryView.setBigInt64(0x44, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkPipelineDepthStencilStateCreateInfo.back': Expected 'VkStencilOpState' but got '" + value.constructor.name + "'");
     }
@@ -7705,6 +8268,9 @@ class VkPipelineDepthStencilStateCreateInfo {
 VkPipelineDepthStencilStateCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -7825,6 +8391,23 @@ class VkGraphicsPipelineCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_PIPELINE_DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT:
+        case VK_STRUCTURE_TYPE_PIPELINE_REPRESENTATIVE_FRAGMENT_TEST_STATE_CREATE_INFO_NV:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pNext'");
+    }
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -7860,6 +8443,7 @@ class VkGraphicsPipelineCreateInfo {
       this.memoryView.setBigInt64(0x20, value.memoryAddress);
     } else if (value === null) {
       this._pVertexInputState = null;
+      this.memoryView.setBigInt64(0x20, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pVertexInputState': Expected 'VkPipelineVertexInputStateCreateInfo' but got '" + value.constructor.name + "'");
     }
@@ -7874,6 +8458,7 @@ class VkGraphicsPipelineCreateInfo {
       this.memoryView.setBigInt64(0x28, value.memoryAddress);
     } else if (value === null) {
       this._pInputAssemblyState = null;
+      this.memoryView.setBigInt64(0x28, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pInputAssemblyState': Expected 'VkPipelineInputAssemblyStateCreateInfo' but got '" + value.constructor.name + "'");
     }
@@ -7888,6 +8473,7 @@ class VkGraphicsPipelineCreateInfo {
       this.memoryView.setBigInt64(0x30, value.memoryAddress);
     } else if (value === null) {
       this._pTessellationState = null;
+      this.memoryView.setBigInt64(0x30, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pTessellationState': Expected 'VkPipelineTessellationStateCreateInfo' but got '" + value.constructor.name + "'");
     }
@@ -7902,6 +8488,7 @@ class VkGraphicsPipelineCreateInfo {
       this.memoryView.setBigInt64(0x38, value.memoryAddress);
     } else if (value === null) {
       this._pViewportState = null;
+      this.memoryView.setBigInt64(0x38, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pViewportState': Expected 'VkPipelineViewportStateCreateInfo' but got '" + value.constructor.name + "'");
     }
@@ -7916,6 +8503,7 @@ class VkGraphicsPipelineCreateInfo {
       this.memoryView.setBigInt64(0x40, value.memoryAddress);
     } else if (value === null) {
       this._pRasterizationState = null;
+      this.memoryView.setBigInt64(0x40, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pRasterizationState': Expected 'VkPipelineRasterizationStateCreateInfo' but got '" + value.constructor.name + "'");
     }
@@ -7930,6 +8518,7 @@ class VkGraphicsPipelineCreateInfo {
       this.memoryView.setBigInt64(0x48, value.memoryAddress);
     } else if (value === null) {
       this._pMultisampleState = null;
+      this.memoryView.setBigInt64(0x48, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pMultisampleState': Expected 'VkPipelineMultisampleStateCreateInfo' but got '" + value.constructor.name + "'");
     }
@@ -7944,6 +8533,7 @@ class VkGraphicsPipelineCreateInfo {
       this.memoryView.setBigInt64(0x50, value.memoryAddress);
     } else if (value === null) {
       this._pDepthStencilState = null;
+      this.memoryView.setBigInt64(0x50, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pDepthStencilState': Expected 'VkPipelineDepthStencilStateCreateInfo' but got '" + value.constructor.name + "'");
     }
@@ -7958,6 +8548,7 @@ class VkGraphicsPipelineCreateInfo {
       this.memoryView.setBigInt64(0x58, value.memoryAddress);
     } else if (value === null) {
       this._pColorBlendState = null;
+      this.memoryView.setBigInt64(0x58, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pColorBlendState': Expected 'VkPipelineColorBlendStateCreateInfo' but got '" + value.constructor.name + "'");
     }
@@ -7972,6 +8563,7 @@ class VkGraphicsPipelineCreateInfo {
       this.memoryView.setBigInt64(0x60, value.memoryAddress);
     } else if (value === null) {
       this._pDynamicState = null;
+      this.memoryView.setBigInt64(0x60, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pDynamicState': Expected 'VkPipelineDynamicStateCreateInfo' but got '" + value.constructor.name + "'");
     }
@@ -7986,6 +8578,7 @@ class VkGraphicsPipelineCreateInfo {
       this.memoryView.setBigInt64(0x68, value.memoryAddress);
     } else if (value === null) {
       this._layout = null;
+      this.memoryView.setBigInt64(0x68, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.layout': Expected 'VkPipelineLayout' but got '" + value.constructor.name + "'");
     }
@@ -8000,6 +8593,7 @@ class VkGraphicsPipelineCreateInfo {
       this.memoryView.setBigInt64(0x70, value.memoryAddress);
     } else if (value === null) {
       this._renderPass = null;
+      this.memoryView.setBigInt64(0x70, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.renderPass': Expected 'VkRenderPass' but got '" + value.constructor.name + "'");
     }
@@ -8020,6 +8614,7 @@ class VkGraphicsPipelineCreateInfo {
       this.memoryView.setBigInt64(0x80, value.memoryAddress);
     } else if (value === null) {
       this._basePipelineHandle = null;
+      this.memoryView.setBigInt64(0x80, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.basePipelineHandle': Expected 'VkPipeline' but got '" + value.constructor.name + "'");
     }
@@ -8036,11 +8631,15 @@ class VkGraphicsPipelineCreateInfo {
 VkGraphicsPipelineCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pStages !== null) {
     if (this._pStages.length !== this.stageCount) {
       throw new RangeError("Invalid array length, expected array length of 'stageCount' for 'VkGraphicsPipelineCreateInfo.pStages'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pStages);
     this._pStagesNative = nativeArray;
@@ -8161,6 +8760,7 @@ class VkPipelineCacheCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPipelineCacheCreateInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -8193,6 +8793,9 @@ class VkPipelineCacheCreateInfo {
 VkPipelineCacheCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -8317,6 +8920,7 @@ class VkPipelineLayoutCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPipelineLayoutCreateInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -8366,11 +8970,15 @@ class VkPipelineLayoutCreateInfo {
 VkPipelineLayoutCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pSetLayouts !== null) {
     if (this._pSetLayouts.length !== this.setLayoutCount) {
       throw new RangeError("Invalid array length, expected array length of 'setLayoutCount' for 'VkPipelineLayoutCreateInfo.pSetLayouts'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pSetLayouts);
     this._pSetLayoutsNative = nativeArray;
@@ -8381,6 +8989,7 @@ VkPipelineLayoutCreateInfo.prototype.flush = function flush() {
   if (this._pPushConstantRanges !== null) {
     if (this._pPushConstantRanges.length !== this.pushConstantRangeCount) {
       throw new RangeError("Invalid array length, expected array length of 'pushConstantRangeCount' for 'VkPipelineLayoutCreateInfo.pPushConstantRanges'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pPushConstantRanges);
     this._pPushConstantRangesNative = nativeArray;
@@ -8479,6 +9088,23 @@ class VkSamplerCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkSamplerCreateInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO:
+        case VK_STRUCTURE_TYPE_SAMPLER_REDUCTION_MODE_CREATE_INFO_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkSamplerCreateInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkSamplerCreateInfo.pNext'");
+    }
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -8582,6 +9208,9 @@ class VkSamplerCreateInfo {
 VkSamplerCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -8691,6 +9320,7 @@ class VkCommandPoolCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkCommandPoolCreateInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -8710,6 +9340,9 @@ class VkCommandPoolCreateInfo {
 VkCommandPoolCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -8765,6 +9398,7 @@ class VkCommandBufferAllocateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkCommandBufferAllocateInfo.pNext' isn't allowed to be filled");
   }
   get commandPool() {
     return this._commandPool;
@@ -8776,6 +9410,7 @@ class VkCommandBufferAllocateInfo {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._commandPool = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkCommandBufferAllocateInfo.commandPool': Expected 'VkCommandPool' but got '" + value.constructor.name + "'");
     }
@@ -8798,6 +9433,9 @@ class VkCommandBufferAllocateInfo {
 VkCommandBufferAllocateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -8863,6 +9501,22 @@ class VkCommandBufferInheritanceInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkCommandBufferInheritanceInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_CONDITIONAL_RENDERING_INFO_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkCommandBufferInheritanceInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkCommandBufferInheritanceInfo.pNext'");
+    }
   }
   get renderPass() {
     return this._renderPass;
@@ -8874,6 +9528,7 @@ class VkCommandBufferInheritanceInfo {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._renderPass = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkCommandBufferInheritanceInfo.renderPass': Expected 'VkRenderPass' but got '" + value.constructor.name + "'");
     }
@@ -8894,6 +9549,7 @@ class VkCommandBufferInheritanceInfo {
       this.memoryView.setBigInt64(0x20, value.memoryAddress);
     } else if (value === null) {
       this._framebuffer = null;
+      this.memoryView.setBigInt64(0x20, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkCommandBufferInheritanceInfo.framebuffer': Expected 'VkFramebuffer' but got '" + value.constructor.name + "'");
     }
@@ -8922,6 +9578,9 @@ class VkCommandBufferInheritanceInfo {
 VkCommandBufferInheritanceInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -8991,6 +9650,22 @@ class VkCommandBufferBeginInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkCommandBufferBeginInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_DEVICE_GROUP_COMMAND_BUFFER_BEGIN_INFO:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkCommandBufferBeginInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkCommandBufferBeginInfo.pNext'");
+    }
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -9008,6 +9683,7 @@ class VkCommandBufferBeginInfo {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._pInheritanceInfo = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkCommandBufferBeginInfo.pInheritanceInfo': Expected 'VkCommandBufferInheritanceInfo' but got '" + value.constructor.name + "'");
     }
@@ -9018,6 +9694,9 @@ class VkCommandBufferBeginInfo {
 VkCommandBufferBeginInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -9078,6 +9757,23 @@ class VkRenderPassBeginInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkRenderPassBeginInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_DEVICE_GROUP_RENDER_PASS_BEGIN_INFO:
+        case VK_STRUCTURE_TYPE_RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkRenderPassBeginInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkRenderPassBeginInfo.pNext'");
+    }
   }
   get renderPass() {
     return this._renderPass;
@@ -9089,6 +9785,7 @@ class VkRenderPassBeginInfo {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._renderPass = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassBeginInfo.renderPass': Expected 'VkRenderPass' but got '" + value.constructor.name + "'");
     }
@@ -9103,6 +9800,7 @@ class VkRenderPassBeginInfo {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._framebuffer = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassBeginInfo.framebuffer': Expected 'VkFramebuffer' but got '" + value.constructor.name + "'");
     }
@@ -9117,6 +9815,7 @@ class VkRenderPassBeginInfo {
       this.memoryView.setBigInt64(0x20, value.memoryAddress);
     } else if (value === null) {
       this._renderArea = null;
+      this.memoryView.setBigInt64(0x20, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassBeginInfo.renderArea': Expected 'VkRect2D' but got '" + value.constructor.name + "'");
     }
@@ -9145,6 +9844,9 @@ class VkRenderPassBeginInfo {
 VkRenderPassBeginInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -9152,6 +9854,7 @@ VkRenderPassBeginInfo.prototype.flush = function flush() {
   if (this._pClearValues !== null) {
     if (this._pClearValues.length !== this.clearValueCount) {
       throw new RangeError("Invalid array length, expected array length of 'clearValueCount' for 'VkRenderPassBeginInfo.pClearValues'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pClearValues);
     this._pClearValuesNative = nativeArray;
@@ -9279,6 +9982,7 @@ class VkClearAttachment {
       this.memoryView.setBigInt64(0x8, value.memoryAddress);
     } else if (value === null) {
       this._clearValue = null;
+      this.memoryView.setBigInt64(0x8, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkClearAttachment.clearValue': Expected 'VkClearValue' but got '" + value.constructor.name + "'");
     }
@@ -9591,6 +10295,7 @@ class VkSubpassDescription {
       this.memoryView.setBigInt64(0x30, value.memoryAddress);
     } else if (value === null) {
       this._pDepthStencilAttachment = null;
+      this.memoryView.setBigInt64(0x30, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkSubpassDescription.pDepthStencilAttachment': Expected 'VkAttachmentReference' but got '" + value.constructor.name + "'");
     }
@@ -9623,6 +10328,7 @@ VkSubpassDescription.prototype.flush = function flush() {
   if (this._pInputAttachments !== null) {
     if (this._pInputAttachments.length !== this.inputAttachmentCount) {
       throw new RangeError("Invalid array length, expected array length of 'inputAttachmentCount' for 'VkSubpassDescription.pInputAttachments'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pInputAttachments);
     this._pInputAttachmentsNative = nativeArray;
@@ -9633,6 +10339,7 @@ VkSubpassDescription.prototype.flush = function flush() {
   if (this._pColorAttachments !== null) {
     if (this._pColorAttachments.length !== this.colorAttachmentCount) {
       throw new RangeError("Invalid array length, expected array length of 'colorAttachmentCount' for 'VkSubpassDescription.pColorAttachments'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pColorAttachments);
     this._pColorAttachmentsNative = nativeArray;
@@ -9643,6 +10350,7 @@ VkSubpassDescription.prototype.flush = function flush() {
   if (this._pResolveAttachments !== null) {
     if (this._pResolveAttachments.length !== this.colorAttachmentCount) {
       throw new RangeError("Invalid array length, expected array length of 'colorAttachmentCount' for 'VkSubpassDescription.pResolveAttachments'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pResolveAttachments);
     this._pResolveAttachmentsNative = nativeArray;
@@ -9845,6 +10553,24 @@ class VkRenderPassCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkRenderPassCreateInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO:
+        case VK_STRUCTURE_TYPE_RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO:
+        case VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkRenderPassCreateInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkRenderPassCreateInfo.pNext'");
+    }
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -9912,11 +10638,15 @@ class VkRenderPassCreateInfo {
 VkRenderPassCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pAttachments !== null) {
     if (this._pAttachments.length !== this.attachmentCount) {
       throw new RangeError("Invalid array length, expected array length of 'attachmentCount' for 'VkRenderPassCreateInfo.pAttachments'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pAttachments);
     this._pAttachmentsNative = nativeArray;
@@ -9927,6 +10657,7 @@ VkRenderPassCreateInfo.prototype.flush = function flush() {
   if (this._pSubpasses !== null) {
     if (this._pSubpasses.length !== this.subpassCount) {
       throw new RangeError("Invalid array length, expected array length of 'subpassCount' for 'VkRenderPassCreateInfo.pSubpasses'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pSubpasses);
     this._pSubpassesNative = nativeArray;
@@ -9937,6 +10668,7 @@ VkRenderPassCreateInfo.prototype.flush = function flush() {
   if (this._pDependencies !== null) {
     if (this._pDependencies.length !== this.dependencyCount) {
       throw new RangeError("Invalid array length, expected array length of 'dependencyCount' for 'VkRenderPassCreateInfo.pDependencies'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pDependencies);
     this._pDependenciesNative = nativeArray;
@@ -10013,6 +10745,7 @@ class VkEventCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkEventCreateInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -10026,6 +10759,9 @@ class VkEventCreateInfo {
 VkEventCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -10073,6 +10809,23 @@ class VkFenceCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkFenceCreateInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_EXPORT_FENCE_CREATE_INFO:
+        case VK_STRUCTURE_TYPE_EXPORT_FENCE_WIN32_HANDLE_INFO_KHR:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkFenceCreateInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkFenceCreateInfo.pNext'");
+    }
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -10086,6 +10839,9 @@ class VkFenceCreateInfo {
 VkFenceCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -10802,7 +11558,7 @@ class VkPhysicalDeviceSparseProperties {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkPhysicalDeviceSparseProperties' is read-only and can only be filled by vulkan");
     }
   }
   get residencyStandard2DBlockShape() {
@@ -10966,7 +11722,7 @@ class VkPhysicalDeviceLimits {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkPhysicalDeviceLimits' is read-only and can only be filled by vulkan");
     }
   }
   get maxImageDimension1D() {
@@ -11798,6 +12554,23 @@ class VkSemaphoreCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkSemaphoreCreateInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_CREATE_INFO:
+        case VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkSemaphoreCreateInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkSemaphoreCreateInfo.pNext'");
+    }
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -11811,6 +12584,9 @@ class VkSemaphoreCreateInfo {
 VkSemaphoreCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -11864,6 +12640,7 @@ class VkQueryPoolCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkQueryPoolCreateInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -11895,6 +12672,9 @@ class VkQueryPoolCreateInfo {
 VkQueryPoolCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -11967,6 +12747,7 @@ class VkFramebufferCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkFramebufferCreateInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -11984,6 +12765,7 @@ class VkFramebufferCreateInfo {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._renderPass = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkFramebufferCreateInfo.renderPass': Expected 'VkRenderPass' but got '" + value.constructor.name + "'");
     }
@@ -12030,11 +12812,15 @@ class VkFramebufferCreateInfo {
 VkFramebufferCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pAttachments !== null) {
     if (this._pAttachments.length !== this.attachmentCount) {
       throw new RangeError("Invalid array length, expected array length of 'attachmentCount' for 'VkFramebufferCreateInfo.pAttachments'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pAttachments);
     this._pAttachmentsNative = nativeArray;
@@ -12339,6 +13125,26 @@ class VkSubmitInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkSubmitInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_NV:
+        case VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_KHR:
+        case VK_STRUCTURE_TYPE_D3D12_FENCE_SUBMIT_INFO_KHR:
+        case VK_STRUCTURE_TYPE_DEVICE_GROUP_SUBMIT_INFO:
+        case VK_STRUCTURE_TYPE_PROTECTED_SUBMIT_INFO:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkSubmitInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkSubmitInfo.pNext'");
+    }
   }
   get waitSemaphoreCount() {
     return this.memoryView.getUint32(0x10);
@@ -12413,11 +13219,15 @@ class VkSubmitInfo {
 VkSubmitInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pWaitSemaphores !== null) {
     if (this._pWaitSemaphores.length !== this.waitSemaphoreCount) {
       throw new RangeError("Invalid array length, expected array length of 'waitSemaphoreCount' for 'VkSubmitInfo.pWaitSemaphores'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pWaitSemaphores);
     this._pWaitSemaphoresNative = nativeArray;
@@ -12428,6 +13238,7 @@ VkSubmitInfo.prototype.flush = function flush() {
   if (this._pCommandBuffers !== null) {
     if (this._pCommandBuffers.length !== this.commandBufferCount) {
       throw new RangeError("Invalid array length, expected array length of 'commandBufferCount' for 'VkSubmitInfo.pCommandBuffers'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pCommandBuffers);
     this._pCommandBuffersNative = nativeArray;
@@ -12438,6 +13249,7 @@ VkSubmitInfo.prototype.flush = function flush() {
   if (this._pSignalSemaphores !== null) {
     if (this._pSignalSemaphores.length !== this.signalSemaphoreCount) {
       throw new RangeError("Invalid array length, expected array length of 'signalSemaphoreCount' for 'VkSubmitInfo.pSignalSemaphores'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pSignalSemaphores);
     this._pSignalSemaphoresNative = nativeArray;
@@ -12502,7 +13314,7 @@ class VkDisplayPropertiesKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkDisplayPropertiesKHR' is read-only and can only be filled by vulkan");
     }
   }
   get display() {
@@ -12585,7 +13397,7 @@ class VkDisplayPlanePropertiesKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkDisplayPlanePropertiesKHR' is read-only and can only be filled by vulkan");
     }
   }
   get currentDisplay() {
@@ -12639,6 +13451,7 @@ class VkDisplayModeParametersKHR {
       this.memoryView.setBigInt64(0x0, value.memoryAddress);
     } else if (value === null) {
       this._visibleRegion = null;
+      this.memoryView.setBigInt64(0x0, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkDisplayModeParametersKHR.visibleRegion': Expected 'VkExtent2D' but got '" + value.constructor.name + "'");
     }
@@ -12681,7 +13494,7 @@ class VkDisplayModePropertiesKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkDisplayModePropertiesKHR' is read-only and can only be filled by vulkan");
     }
   }
   get displayMode() {
@@ -12741,6 +13554,7 @@ class VkDisplayModeCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDisplayModeCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -12758,6 +13572,7 @@ class VkDisplayModeCreateInfoKHR {
       this.memoryView.setBigInt64(0x14, value.memoryAddress);
     } else if (value === null) {
       this._parameters = null;
+      this.memoryView.setBigInt64(0x14, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkDisplayModeCreateInfoKHR.parameters': Expected 'VkDisplayModeParametersKHR' but got '" + value.constructor.name + "'");
     }
@@ -12768,6 +13583,9 @@ class VkDisplayModeCreateInfoKHR {
 VkDisplayModeCreateInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -12811,7 +13629,7 @@ class VkDisplayPlaneCapabilitiesKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkDisplayPlaneCapabilitiesKHR' is read-only and can only be filled by vulkan");
     }
   }
   get supportedAlpha() {
@@ -12946,6 +13764,7 @@ class VkDisplaySurfaceCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDisplaySurfaceCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -12963,6 +13782,7 @@ class VkDisplaySurfaceCreateInfoKHR {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._displayMode = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkDisplaySurfaceCreateInfoKHR.displayMode': Expected 'VkDisplayModeKHR' but got '" + value.constructor.name + "'");
     }
@@ -13007,6 +13827,7 @@ class VkDisplaySurfaceCreateInfoKHR {
       this.memoryView.setBigInt64(0x34, value.memoryAddress);
     } else if (value === null) {
       this._imageExtent = null;
+      this.memoryView.setBigInt64(0x34, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkDisplaySurfaceCreateInfoKHR.imageExtent': Expected 'VkExtent2D' but got '" + value.constructor.name + "'");
     }
@@ -13017,6 +13838,9 @@ class VkDisplaySurfaceCreateInfoKHR {
 VkDisplaySurfaceCreateInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -13098,6 +13922,7 @@ class VkDisplayPresentInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDisplayPresentInfoKHR.pNext' isn't allowed to be filled");
   }
   get srcRect() {
     return this._srcRect;
@@ -13109,6 +13934,7 @@ class VkDisplayPresentInfoKHR {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._srcRect = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkDisplayPresentInfoKHR.srcRect': Expected 'VkRect2D' but got '" + value.constructor.name + "'");
     }
@@ -13123,6 +13949,7 @@ class VkDisplayPresentInfoKHR {
       this.memoryView.setBigInt64(0x20, value.memoryAddress);
     } else if (value === null) {
       this._dstRect = null;
+      this.memoryView.setBigInt64(0x20, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkDisplayPresentInfoKHR.dstRect': Expected 'VkRect2D' but got '" + value.constructor.name + "'");
     }
@@ -13139,6 +13966,9 @@ class VkDisplayPresentInfoKHR {
 VkDisplayPresentInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -13189,7 +14019,7 @@ class VkSurfaceCapabilitiesKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkSurfaceCapabilitiesKHR' is read-only and can only be filled by vulkan");
     }
   }
   get minImageCount() {
@@ -13311,6 +14141,7 @@ class VkWin32SurfaceCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkWin32SurfaceCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -13336,6 +14167,9 @@ class VkWin32SurfaceCreateInfoKHR {
 VkWin32SurfaceCreateInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -13374,7 +14208,7 @@ class VkSurfaceFormatKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkSurfaceFormatKHR' is read-only and can only be filled by vulkan");
     }
   }
   get format() {
@@ -13460,6 +14294,24 @@ class VkSwapchainCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT:
+        case VK_STRUCTURE_TYPE_DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR:
+        case VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO_KHR:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.pNext'");
+    }
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -13477,6 +14329,7 @@ class VkSwapchainCreateInfoKHR {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._surface = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.surface': Expected 'VkSurfaceKHR' but got '" + value.constructor.name + "'");
     }
@@ -13509,6 +14362,7 @@ class VkSwapchainCreateInfoKHR {
       this.memoryView.setBigInt64(0x2C, value.memoryAddress);
     } else if (value === null) {
       this._imageExtent = null;
+      this.memoryView.setBigInt64(0x2C, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.imageExtent': Expected 'VkExtent2D' but got '" + value.constructor.name + "'");
     }
@@ -13584,6 +14438,7 @@ class VkSwapchainCreateInfoKHR {
       this.memoryView.setBigInt64(0x60, value.memoryAddress);
     } else if (value === null) {
       this._oldSwapchain = null;
+      this.memoryView.setBigInt64(0x60, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkSwapchainCreateInfoKHR.oldSwapchain': Expected 'VkSwapchainKHR' but got '" + value.constructor.name + "'");
     }
@@ -13594,6 +14449,9 @@ class VkSwapchainCreateInfoKHR {
 VkSwapchainCreateInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -13715,6 +14573,25 @@ class VkPresentInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkPresentInfoKHR.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR:
+        case VK_STRUCTURE_TYPE_PRESENT_REGIONS_KHR:
+        case VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR:
+        case VK_STRUCTURE_TYPE_PRESENT_TIMES_INFO_GOOGLE:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkPresentInfoKHR.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkPresentInfoKHR.pNext'");
+    }
   }
   get waitSemaphoreCount() {
     return this.memoryView.getUint32(0x10);
@@ -13784,11 +14661,15 @@ class VkPresentInfoKHR {
 VkPresentInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pWaitSemaphores !== null) {
     if (this._pWaitSemaphores.length !== this.waitSemaphoreCount) {
       throw new RangeError("Invalid array length, expected array length of 'waitSemaphoreCount' for 'VkPresentInfoKHR.pWaitSemaphores'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pWaitSemaphores);
     this._pWaitSemaphoresNative = nativeArray;
@@ -13799,6 +14680,7 @@ VkPresentInfoKHR.prototype.flush = function flush() {
   if (this._pSwapchains !== null) {
     if (this._pSwapchains.length !== this.swapchainCount) {
       throw new RangeError("Invalid array length, expected array length of 'swapchainCount' for 'VkPresentInfoKHR.pSwapchains'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pSwapchains);
     this._pSwapchainsNative = nativeArray;
@@ -13873,6 +14755,7 @@ class VkDebugReportCallbackCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDebugReportCallbackCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -13899,6 +14782,9 @@ class VkDebugReportCallbackCreateInfoEXT {
 VkDebugReportCallbackCreateInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -13952,6 +14838,7 @@ class VkValidationFlagsEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkValidationFlagsEXT.pNext' isn't allowed to be filled");
   }
   get disabledValidationCheckCount() {
     return this.memoryView.getUint32(0x10);
@@ -13978,6 +14865,9 @@ class VkValidationFlagsEXT {
 VkValidationFlagsEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -14035,6 +14925,7 @@ class VkValidationFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkValidationFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get enabledValidationFeatureCount() {
     return this.memoryView.getUint32(0x10);
@@ -14080,6 +14971,9 @@ class VkValidationFeaturesEXT {
 VkValidationFeaturesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -14139,6 +15033,7 @@ class VkPipelineRasterizationStateRasterizationOrderAMD {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPipelineRasterizationStateRasterizationOrderAMD.pNext' isn't allowed to be filled");
   }
   get rasterizationOrder() {
     return this.memoryView.getInt32(0x10);
@@ -14152,6 +15047,9 @@ class VkPipelineRasterizationStateRasterizationOrderAMD {
 VkPipelineRasterizationStateRasterizationOrderAMD.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -14203,6 +15101,7 @@ class VkDebugMarkerObjectNameInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDebugMarkerObjectNameInfoEXT.pNext' isn't allowed to be filled");
   }
   get objectType() {
     return this.memoryView.getInt32(0x10);
@@ -14241,6 +15140,9 @@ class VkDebugMarkerObjectNameInfoEXT {
 VkDebugMarkerObjectNameInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -14304,6 +15206,7 @@ class VkDebugMarkerObjectTagInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDebugMarkerObjectTagInfoEXT.pNext' isn't allowed to be filled");
   }
   get objectType() {
     return this.memoryView.getInt32(0x10);
@@ -14348,6 +15251,9 @@ class VkDebugMarkerObjectTagInfoEXT {
 VkDebugMarkerObjectTagInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -14413,6 +15319,7 @@ class VkDebugMarkerMarkerInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDebugMarkerMarkerInfoEXT.pNext' isn't allowed to be filled");
   }
   get pMarkerName() {
     if (this._pMarkerName !== null) {
@@ -14451,6 +15358,9 @@ class VkDebugMarkerMarkerInfoEXT {
 VkDebugMarkerMarkerInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._color !== null) {
@@ -14510,6 +15420,7 @@ class VkDedicatedAllocationImageCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDedicatedAllocationImageCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get dedicatedAllocation() {
     return this.memoryView.getUint32(0x10);
@@ -14523,6 +15434,9 @@ class VkDedicatedAllocationImageCreateInfoNV {
 VkDedicatedAllocationImageCreateInfoNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -14570,6 +15484,7 @@ class VkDedicatedAllocationBufferCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDedicatedAllocationBufferCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get dedicatedAllocation() {
     return this.memoryView.getUint32(0x10);
@@ -14583,6 +15498,9 @@ class VkDedicatedAllocationBufferCreateInfoNV {
 VkDedicatedAllocationBufferCreateInfoNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -14632,6 +15550,7 @@ class VkDedicatedAllocationMemoryAllocateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDedicatedAllocationMemoryAllocateInfoNV.pNext' isn't allowed to be filled");
   }
   get image() {
     return this._image;
@@ -14643,6 +15562,7 @@ class VkDedicatedAllocationMemoryAllocateInfoNV {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._image = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkDedicatedAllocationMemoryAllocateInfoNV.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
@@ -14657,6 +15577,7 @@ class VkDedicatedAllocationMemoryAllocateInfoNV {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._buffer = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkDedicatedAllocationMemoryAllocateInfoNV.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
@@ -14667,6 +15588,9 @@ class VkDedicatedAllocationMemoryAllocateInfoNV {
 VkDedicatedAllocationMemoryAllocateInfoNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -14703,7 +15627,7 @@ class VkExternalImageFormatPropertiesNV {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkExternalImageFormatPropertiesNV' is read-only and can only be filled by vulkan");
     }
   }
   get imageFormatProperties() {
@@ -14775,6 +15699,7 @@ class VkExternalMemoryImageCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkExternalMemoryImageCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get handleTypes() {
     return this.memoryView.getInt32(0x10);
@@ -14788,6 +15713,9 @@ class VkExternalMemoryImageCreateInfoNV {
 VkExternalMemoryImageCreateInfoNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -14835,6 +15763,7 @@ class VkExportMemoryAllocateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkExportMemoryAllocateInfoNV.pNext' isn't allowed to be filled");
   }
   get handleTypes() {
     return this.memoryView.getInt32(0x10);
@@ -14848,6 +15777,9 @@ class VkExportMemoryAllocateInfoNV {
 VkExportMemoryAllocateInfoNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -14897,6 +15829,7 @@ class VkImportMemoryWin32HandleInfoNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkImportMemoryWin32HandleInfoNV.pNext' isn't allowed to be filled");
   }
   get handleType() {
     return this.memoryView.getInt32(0x10);
@@ -14916,6 +15849,9 @@ class VkImportMemoryWin32HandleInfoNV {
 VkImportMemoryWin32HandleInfoNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -14965,6 +15901,7 @@ class VkExportMemoryWin32HandleInfoNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkExportMemoryWin32HandleInfoNV.pNext' isn't allowed to be filled");
   }
   
 };
@@ -14972,6 +15909,9 @@ class VkExportMemoryWin32HandleInfoNV {
 VkExportMemoryWin32HandleInfoNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -15029,6 +15969,7 @@ class VkWin32KeyedMutexAcquireReleaseInfoNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkWin32KeyedMutexAcquireReleaseInfoNV.pNext' isn't allowed to be filled");
   }
   get acquireCount() {
     return this.memoryView.getUint32(0x10);
@@ -15111,11 +16052,15 @@ class VkWin32KeyedMutexAcquireReleaseInfoNV {
 VkWin32KeyedMutexAcquireReleaseInfoNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pAcquireSyncs !== null) {
     if (this._pAcquireSyncs.length !== this.acquireCount) {
       throw new RangeError("Invalid array length, expected array length of 'acquireCount' for 'VkWin32KeyedMutexAcquireReleaseInfoNV.pAcquireSyncs'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pAcquireSyncs);
     this._pAcquireSyncsNative = nativeArray;
@@ -15126,6 +16071,7 @@ VkWin32KeyedMutexAcquireReleaseInfoNV.prototype.flush = function flush() {
   if (this._pReleaseSyncs !== null) {
     if (this._pReleaseSyncs.length !== this.releaseCount) {
       throw new RangeError("Invalid array length, expected array length of 'releaseCount' for 'VkWin32KeyedMutexAcquireReleaseInfoNV.pReleaseSyncs'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pReleaseSyncs);
     this._pReleaseSyncsNative = nativeArray;
@@ -15202,6 +16148,7 @@ class VkDeviceGeneratedCommandsFeaturesNVX {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDeviceGeneratedCommandsFeaturesNVX.pNext' isn't allowed to be filled");
   }
   get computeBindingPointSupport() {
     return this.memoryView.getUint32(0x10);
@@ -15215,6 +16162,9 @@ class VkDeviceGeneratedCommandsFeaturesNVX {
 VkDeviceGeneratedCommandsFeaturesNVX.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -15270,6 +16220,7 @@ class VkDeviceGeneratedCommandsLimitsNVX {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDeviceGeneratedCommandsLimitsNVX.pNext' isn't allowed to be filled");
   }
   get maxIndirectCommandsLayoutTokenCount() {
     return this.memoryView.getUint32(0x10);
@@ -15307,6 +16258,9 @@ class VkDeviceGeneratedCommandsLimitsNVX {
 VkDeviceGeneratedCommandsLimitsNVX.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -15376,6 +16330,7 @@ class VkIndirectCommandsTokenNVX {
       this.memoryView.setBigInt64(0x8, value.memoryAddress);
     } else if (value === null) {
       this._buffer = null;
+      this.memoryView.setBigInt64(0x8, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkIndirectCommandsTokenNVX.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
@@ -15515,6 +16470,7 @@ class VkIndirectCommandsLayoutCreateInfoNVX {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkIndirectCommandsLayoutCreateInfoNVX.pNext' isn't allowed to be filled");
   }
   get pipelineBindPoint() {
     return this.memoryView.getInt32(0x10);
@@ -15552,11 +16508,15 @@ class VkIndirectCommandsLayoutCreateInfoNVX {
 VkIndirectCommandsLayoutCreateInfoNVX.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pTokens !== null) {
     if (this._pTokens.length !== this.tokenCount) {
       throw new RangeError("Invalid array length, expected array length of 'tokenCount' for 'VkIndirectCommandsLayoutCreateInfoNVX.pTokens'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pTokens);
     this._pTokensNative = nativeArray;
@@ -15640,6 +16600,7 @@ class VkCmdProcessCommandsInfoNVX {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkCmdProcessCommandsInfoNVX.pNext' isn't allowed to be filled");
   }
   get objectTable() {
     return this._objectTable;
@@ -15651,6 +16612,7 @@ class VkCmdProcessCommandsInfoNVX {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._objectTable = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkCmdProcessCommandsInfoNVX.objectTable': Expected 'VkObjectTableNVX' but got '" + value.constructor.name + "'");
     }
@@ -15665,6 +16627,7 @@ class VkCmdProcessCommandsInfoNVX {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._indirectCommandsLayout = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkCmdProcessCommandsInfoNVX.indirectCommandsLayout': Expected 'VkIndirectCommandsLayoutNVX' but got '" + value.constructor.name + "'");
     }
@@ -15703,6 +16666,7 @@ class VkCmdProcessCommandsInfoNVX {
       this.memoryView.setBigInt64(0x38, value.memoryAddress);
     } else if (value === null) {
       this._targetCommandBuffer = null;
+      this.memoryView.setBigInt64(0x38, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkCmdProcessCommandsInfoNVX.targetCommandBuffer': Expected 'VkCommandBuffer' but got '" + value.constructor.name + "'");
     }
@@ -15717,6 +16681,7 @@ class VkCmdProcessCommandsInfoNVX {
       this.memoryView.setBigInt64(0x40, value.memoryAddress);
     } else if (value === null) {
       this._sequencesCountBuffer = null;
+      this.memoryView.setBigInt64(0x40, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkCmdProcessCommandsInfoNVX.sequencesCountBuffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
@@ -15737,6 +16702,7 @@ class VkCmdProcessCommandsInfoNVX {
       this.memoryView.setBigInt64(0x50, value.memoryAddress);
     } else if (value === null) {
       this._sequencesIndexBuffer = null;
+      this.memoryView.setBigInt64(0x50, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkCmdProcessCommandsInfoNVX.sequencesIndexBuffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
@@ -15753,11 +16719,15 @@ class VkCmdProcessCommandsInfoNVX {
 VkCmdProcessCommandsInfoNVX.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pIndirectCommandsTokens !== null) {
     if (this._pIndirectCommandsTokens.length !== this.indirectCommandsTokenCount) {
       throw new RangeError("Invalid array length, expected array length of 'indirectCommandsTokenCount' for 'VkCmdProcessCommandsInfoNVX.pIndirectCommandsTokens'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pIndirectCommandsTokens);
     this._pIndirectCommandsTokensNative = nativeArray;
@@ -15850,6 +16820,7 @@ class VkCmdReserveSpaceForCommandsInfoNVX {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkCmdReserveSpaceForCommandsInfoNVX.pNext' isn't allowed to be filled");
   }
   get objectTable() {
     return this._objectTable;
@@ -15861,6 +16832,7 @@ class VkCmdReserveSpaceForCommandsInfoNVX {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._objectTable = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkCmdReserveSpaceForCommandsInfoNVX.objectTable': Expected 'VkObjectTableNVX' but got '" + value.constructor.name + "'");
     }
@@ -15875,6 +16847,7 @@ class VkCmdReserveSpaceForCommandsInfoNVX {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._indirectCommandsLayout = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkCmdReserveSpaceForCommandsInfoNVX.indirectCommandsLayout': Expected 'VkIndirectCommandsLayoutNVX' but got '" + value.constructor.name + "'");
     }
@@ -15891,6 +16864,9 @@ class VkCmdReserveSpaceForCommandsInfoNVX {
 VkCmdReserveSpaceForCommandsInfoNVX.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -15962,6 +16938,7 @@ class VkObjectTableCreateInfoNVX {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkObjectTableCreateInfoNVX.pNext' isn't allowed to be filled");
   }
   get objectCount() {
     return this.memoryView.getUint32(0x10);
@@ -16044,6 +17021,9 @@ class VkObjectTableCreateInfoNVX {
 VkObjectTableCreateInfoNVX.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -16182,6 +17162,7 @@ class VkObjectTablePipelineEntryNVX {
       this.memoryView.setBigInt64(0x8, value.memoryAddress);
     } else if (value === null) {
       this._pipeline = null;
+      this.memoryView.setBigInt64(0x8, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkObjectTablePipelineEntryNVX.pipeline': Expected 'VkPipeline' but got '" + value.constructor.name + "'");
     }
@@ -16251,6 +17232,7 @@ class VkObjectTableDescriptorSetEntryNVX {
       this.memoryView.setBigInt64(0x8, value.memoryAddress);
     } else if (value === null) {
       this._pipelineLayout = null;
+      this.memoryView.setBigInt64(0x8, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkObjectTableDescriptorSetEntryNVX.pipelineLayout': Expected 'VkPipelineLayout' but got '" + value.constructor.name + "'");
     }
@@ -16265,6 +17247,7 @@ class VkObjectTableDescriptorSetEntryNVX {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._descriptorSet = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkObjectTableDescriptorSetEntryNVX.descriptorSet': Expected 'VkDescriptorSet' but got '" + value.constructor.name + "'");
     }
@@ -16336,6 +17319,7 @@ class VkObjectTableVertexBufferEntryNVX {
       this.memoryView.setBigInt64(0x8, value.memoryAddress);
     } else if (value === null) {
       this._buffer = null;
+      this.memoryView.setBigInt64(0x8, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkObjectTableVertexBufferEntryNVX.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
@@ -16405,6 +17389,7 @@ class VkObjectTableIndexBufferEntryNVX {
       this.memoryView.setBigInt64(0x8, value.memoryAddress);
     } else if (value === null) {
       this._buffer = null;
+      this.memoryView.setBigInt64(0x8, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkObjectTableIndexBufferEntryNVX.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
@@ -16484,6 +17469,7 @@ class VkObjectTablePushConstantEntryNVX {
       this.memoryView.setBigInt64(0x8, value.memoryAddress);
     } else if (value === null) {
       this._pipelineLayout = null;
+      this.memoryView.setBigInt64(0x8, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkObjectTablePushConstantEntryNVX.pipelineLayout': Expected 'VkPipelineLayout' but got '" + value.constructor.name + "'");
     }
@@ -16549,6 +17535,53 @@ class VkPhysicalDeviceFeatures2 {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkPhysicalDeviceFeatures2.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_YCBCR_CONVERSION_FEATURES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT16_INT8_FEATURES_KHR:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES_KHR:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONDITIONAL_RENDERING_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES_KHR:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES_KHR:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ASTC_DECODE_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_REPRESENTATIVE_FRAGMENT_TEST_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXCLUSIVE_SCISSOR_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CORNER_SAMPLED_IMAGE_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_IMAGE_FOOTPRINT_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEDICATED_ALLOCATION_IMAGE_ALIASING_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCALAR_BLOCK_LAYOUT_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLIP_ENABLE_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PRIORITY_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_ADDRESS_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_NV:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkPhysicalDeviceFeatures2.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkPhysicalDeviceFeatures2.pNext'");
+    }
   }
   get features() {
     return this._features;
@@ -16560,6 +17593,7 @@ class VkPhysicalDeviceFeatures2 {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._features = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkPhysicalDeviceFeatures2.features': Expected 'VkPhysicalDeviceFeatures' but got '" + value.constructor.name + "'");
     }
@@ -16570,6 +17604,9 @@ class VkPhysicalDeviceFeatures2 {
 VkPhysicalDeviceFeatures2.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -16619,6 +17656,53 @@ class VkPhysicalDeviceFeatures2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkPhysicalDeviceFeatures2KHR.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_YCBCR_CONVERSION_FEATURES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT16_INT8_FEATURES_KHR:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES_KHR:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONDITIONAL_RENDERING_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES_KHR:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES_KHR:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ASTC_DECODE_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_REPRESENTATIVE_FRAGMENT_TEST_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXCLUSIVE_SCISSOR_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CORNER_SAMPLED_IMAGE_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_IMAGE_FOOTPRINT_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEDICATED_ALLOCATION_IMAGE_ALIASING_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCALAR_BLOCK_LAYOUT_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLIP_ENABLE_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PRIORITY_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_ADDRESS_FEATURES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_NV:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkPhysicalDeviceFeatures2KHR.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkPhysicalDeviceFeatures2KHR.pNext'");
+    }
   }
   get features() {
     return this._features;
@@ -16630,6 +17714,7 @@ class VkPhysicalDeviceFeatures2KHR {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._features = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkPhysicalDeviceFeatures2KHR.features': Expected 'VkPhysicalDeviceFeatures' but got '" + value.constructor.name + "'");
     }
@@ -16640,6 +17725,9 @@ class VkPhysicalDeviceFeatures2KHR {
 VkPhysicalDeviceFeatures2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -16673,7 +17761,7 @@ class VkPhysicalDeviceProperties2 {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROPERTIES_2;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceProperties2' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -16688,6 +17776,49 @@ class VkPhysicalDeviceProperties2 {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkPhysicalDeviceProperties2.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES_KHR:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES_KHR:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ID_PROPERTIES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISCARD_RECTANGLE_PROPERTIES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_ATTRIBUTES_PROPERTIES_NVX:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_PROPERTIES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_PROPERTIES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES_KHR:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES_KHR:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PROPERTIES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_NV:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkPhysicalDeviceProperties2.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkPhysicalDeviceProperties2.pNext'");
+    }
   }
   get properties() {
     return this._properties;
@@ -16698,6 +17829,9 @@ class VkPhysicalDeviceProperties2 {
 VkPhysicalDeviceProperties2.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -16731,7 +17865,7 @@ class VkPhysicalDeviceProperties2KHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROPERTIES_2_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceProperties2KHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -16746,6 +17880,49 @@ class VkPhysicalDeviceProperties2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkPhysicalDeviceProperties2KHR.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES_KHR:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES_KHR:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ID_PROPERTIES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISCARD_RECTANGLE_PROPERTIES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_ATTRIBUTES_PROPERTIES_NVX:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_PROPERTIES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_PROPERTIES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES_KHR:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES_KHR:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PROPERTIES_NV:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_NV:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkPhysicalDeviceProperties2KHR.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkPhysicalDeviceProperties2KHR.pNext'");
+    }
   }
   get properties() {
     return this._properties;
@@ -16756,6 +17933,9 @@ class VkPhysicalDeviceProperties2KHR {
 VkPhysicalDeviceProperties2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -16789,7 +17969,7 @@ class VkFormatProperties2 {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_2;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkFormatProperties2' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -16804,6 +17984,22 @@ class VkFormatProperties2 {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkFormatProperties2.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_LIST_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkFormatProperties2.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkFormatProperties2.pNext'");
+    }
   }
   get formatProperties() {
     return this._formatProperties;
@@ -16814,6 +18010,9 @@ class VkFormatProperties2 {
 VkFormatProperties2.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -16847,7 +18046,7 @@ class VkFormatProperties2KHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_2_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkFormatProperties2KHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -16862,6 +18061,22 @@ class VkFormatProperties2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkFormatProperties2KHR.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_LIST_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkFormatProperties2KHR.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkFormatProperties2KHR.pNext'");
+    }
   }
   get formatProperties() {
     return this._formatProperties;
@@ -16872,6 +18087,9 @@ class VkFormatProperties2KHR {
 VkFormatProperties2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -16905,7 +18123,7 @@ class VkImageFormatProperties2 {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_IMAGE_FORMAT_PROPERTIES_2;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkImageFormatProperties2' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -16920,6 +18138,26 @@ class VkImageFormatProperties2 {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkImageFormatProperties2.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_EXTERNAL_IMAGE_FORMAT_PROPERTIES:
+        case VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES:
+        case VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD:
+        case VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_USAGE_ANDROID:
+        case VK_STRUCTURE_TYPE_FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkImageFormatProperties2.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkImageFormatProperties2.pNext'");
+    }
   }
   get imageFormatProperties() {
     return this._imageFormatProperties;
@@ -16930,6 +18168,9 @@ class VkImageFormatProperties2 {
 VkImageFormatProperties2.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -16963,7 +18204,7 @@ class VkImageFormatProperties2KHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_IMAGE_FORMAT_PROPERTIES_2_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkImageFormatProperties2KHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -16978,6 +18219,26 @@ class VkImageFormatProperties2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkImageFormatProperties2KHR.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_EXTERNAL_IMAGE_FORMAT_PROPERTIES:
+        case VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES:
+        case VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD:
+        case VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_USAGE_ANDROID:
+        case VK_STRUCTURE_TYPE_FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkImageFormatProperties2KHR.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkImageFormatProperties2KHR.pNext'");
+    }
   }
   get imageFormatProperties() {
     return this._imageFormatProperties;
@@ -16988,6 +18249,9 @@ class VkImageFormatProperties2KHR {
 VkImageFormatProperties2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -17045,6 +18309,26 @@ class VkPhysicalDeviceImageFormatInfo2 {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkPhysicalDeviceImageFormatInfo2.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_IMAGE_FORMAT_INFO:
+        case VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO_KHR:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_DRM_FORMAT_MODIFIER_INFO_EXT:
+        case VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_IMAGE_FORMAT_INFO_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkPhysicalDeviceImageFormatInfo2.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkPhysicalDeviceImageFormatInfo2.pNext'");
+    }
   }
   get format() {
     return this.memoryView.getInt32(0x10);
@@ -17082,6 +18366,9 @@ class VkPhysicalDeviceImageFormatInfo2 {
 VkPhysicalDeviceImageFormatInfo2.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -17153,6 +18440,26 @@ class VkPhysicalDeviceImageFormatInfo2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkPhysicalDeviceImageFormatInfo2KHR.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_IMAGE_FORMAT_INFO:
+        case VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO_KHR:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_DRM_FORMAT_MODIFIER_INFO_EXT:
+        case VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO_EXT:
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_IMAGE_FORMAT_INFO_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkPhysicalDeviceImageFormatInfo2KHR.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkPhysicalDeviceImageFormatInfo2KHR.pNext'");
+    }
   }
   get format() {
     return this.memoryView.getInt32(0x10);
@@ -17190,6 +18497,9 @@ class VkPhysicalDeviceImageFormatInfo2KHR {
 VkPhysicalDeviceImageFormatInfo2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -17237,7 +18547,7 @@ class VkQueueFamilyProperties2 {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_QUEUE_FAMILY_PROPERTIES_2;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkQueueFamilyProperties2' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -17252,6 +18562,22 @@ class VkQueueFamilyProperties2 {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkQueueFamilyProperties2.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkQueueFamilyProperties2.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkQueueFamilyProperties2.pNext'");
+    }
   }
   get queueFamilyProperties() {
     return this._queueFamilyProperties;
@@ -17262,6 +18588,9 @@ class VkQueueFamilyProperties2 {
 VkQueueFamilyProperties2.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -17295,7 +18624,7 @@ class VkQueueFamilyProperties2KHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_QUEUE_FAMILY_PROPERTIES_2_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkQueueFamilyProperties2KHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -17310,6 +18639,22 @@ class VkQueueFamilyProperties2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkQueueFamilyProperties2KHR.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkQueueFamilyProperties2KHR.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkQueueFamilyProperties2KHR.pNext'");
+    }
   }
   get queueFamilyProperties() {
     return this._queueFamilyProperties;
@@ -17320,6 +18665,9 @@ class VkQueueFamilyProperties2KHR {
 VkQueueFamilyProperties2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -17353,7 +18701,7 @@ class VkPhysicalDeviceMemoryProperties2 {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PROPERTIES_2;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceMemoryProperties2' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -17368,6 +18716,22 @@ class VkPhysicalDeviceMemoryProperties2 {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkPhysicalDeviceMemoryProperties2.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkPhysicalDeviceMemoryProperties2.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkPhysicalDeviceMemoryProperties2.pNext'");
+    }
   }
   get memoryProperties() {
     return this._memoryProperties;
@@ -17378,6 +18742,9 @@ class VkPhysicalDeviceMemoryProperties2 {
 VkPhysicalDeviceMemoryProperties2.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -17411,7 +18778,7 @@ class VkPhysicalDeviceMemoryProperties2KHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PROPERTIES_2_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceMemoryProperties2KHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -17426,6 +18793,22 @@ class VkPhysicalDeviceMemoryProperties2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkPhysicalDeviceMemoryProperties2KHR.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkPhysicalDeviceMemoryProperties2KHR.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkPhysicalDeviceMemoryProperties2KHR.pNext'");
+    }
   }
   get memoryProperties() {
     return this._memoryProperties;
@@ -17436,6 +18819,9 @@ class VkPhysicalDeviceMemoryProperties2KHR {
 VkPhysicalDeviceMemoryProperties2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -17469,7 +18855,7 @@ class VkSparseImageFormatProperties2 {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_SPARSE_IMAGE_FORMAT_PROPERTIES_2;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkSparseImageFormatProperties2' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -17484,6 +18870,7 @@ class VkSparseImageFormatProperties2 {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkSparseImageFormatProperties2.pNext' isn't allowed to be filled");
   }
   get properties() {
     return this._properties;
@@ -17494,6 +18881,9 @@ class VkSparseImageFormatProperties2 {
 VkSparseImageFormatProperties2.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -17527,7 +18917,7 @@ class VkSparseImageFormatProperties2KHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_SPARSE_IMAGE_FORMAT_PROPERTIES_2_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkSparseImageFormatProperties2KHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -17542,6 +18932,7 @@ class VkSparseImageFormatProperties2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkSparseImageFormatProperties2KHR.pNext' isn't allowed to be filled");
   }
   get properties() {
     return this._properties;
@@ -17552,6 +18943,9 @@ class VkSparseImageFormatProperties2KHR {
 VkSparseImageFormatProperties2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -17609,6 +19003,7 @@ class VkPhysicalDeviceSparseImageFormatInfo2 {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceSparseImageFormatInfo2.pNext' isn't allowed to be filled");
   }
   get format() {
     return this.memoryView.getInt32(0x10);
@@ -17646,6 +19041,9 @@ class VkPhysicalDeviceSparseImageFormatInfo2 {
 VkPhysicalDeviceSparseImageFormatInfo2.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -17717,6 +19115,7 @@ class VkPhysicalDeviceSparseImageFormatInfo2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceSparseImageFormatInfo2KHR.pNext' isn't allowed to be filled");
   }
   get format() {
     return this.memoryView.getInt32(0x10);
@@ -17754,6 +19153,9 @@ class VkPhysicalDeviceSparseImageFormatInfo2KHR {
 VkPhysicalDeviceSparseImageFormatInfo2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -17801,7 +19203,7 @@ class VkPhysicalDevicePushDescriptorPropertiesKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDevicePushDescriptorPropertiesKHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -17816,6 +19218,7 @@ class VkPhysicalDevicePushDescriptorPropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDevicePushDescriptorPropertiesKHR.pNext' isn't allowed to be filled");
   }
   get maxPushDescriptors() {
     return this.memoryView.getUint32(0x10);
@@ -17826,6 +19229,9 @@ class VkPhysicalDevicePushDescriptorPropertiesKHR {
 VkPhysicalDevicePushDescriptorPropertiesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -17931,7 +19337,7 @@ class VkPhysicalDeviceDriverPropertiesKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceDriverPropertiesKHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -17946,6 +19352,7 @@ class VkPhysicalDeviceDriverPropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceDriverPropertiesKHR.pNext' isn't allowed to be filled");
   }
   get driverID() {
     return this.memoryView.getInt32(0x10);
@@ -17975,6 +19382,9 @@ class VkPhysicalDeviceDriverPropertiesKHR {
 VkPhysicalDeviceDriverPropertiesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -18039,6 +19449,7 @@ class VkPresentRegionsKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPresentRegionsKHR.pNext' isn't allowed to be filled");
   }
   get swapchainCount() {
     return this.memoryView.getUint32(0x10);
@@ -18064,11 +19475,15 @@ class VkPresentRegionsKHR {
 VkPresentRegionsKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pRegions !== null) {
     if (this._pRegions.length !== this.swapchainCount) {
       throw new RangeError("Invalid array length, expected array length of 'swapchainCount' for 'VkPresentRegionsKHR.pRegions'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pRegions);
     this._pRegionsNative = nativeArray;
@@ -18141,6 +19556,7 @@ VkPresentRegionKHR.prototype.flush = function flush() {
   if (this._pRectangles !== null) {
     if (this._pRectangles.length !== this.rectangleCount) {
       throw new RangeError("Invalid array length, expected array length of 'rectangleCount' for 'VkPresentRegionKHR.pRectangles'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pRectangles);
     this._pRectanglesNative = nativeArray;
@@ -18189,6 +19605,7 @@ class VkRectLayerKHR {
       this.memoryView.setBigInt64(0x0, value.memoryAddress);
     } else if (value === null) {
       this._offset = null;
+      this.memoryView.setBigInt64(0x0, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkRectLayerKHR.offset': Expected 'VkOffset2D' but got '" + value.constructor.name + "'");
     }
@@ -18203,6 +19620,7 @@ class VkRectLayerKHR {
       this.memoryView.setBigInt64(0x8, value.memoryAddress);
     } else if (value === null) {
       this._extent = null;
+      this.memoryView.setBigInt64(0x8, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkRectLayerKHR.extent': Expected 'VkExtent2D' but got '" + value.constructor.name + "'");
     }
@@ -18270,6 +19688,7 @@ class VkPhysicalDeviceVariablePointerFeatures {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceVariablePointerFeatures.pNext' isn't allowed to be filled");
   }
   get variablePointersStorageBuffer() {
     return this.memoryView.getUint32(0x10);
@@ -18289,6 +19708,9 @@ class VkPhysicalDeviceVariablePointerFeatures {
 VkPhysicalDeviceVariablePointerFeatures.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -18342,6 +19764,7 @@ class VkPhysicalDeviceVariablePointerFeaturesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceVariablePointerFeaturesKHR.pNext' isn't allowed to be filled");
   }
   get variablePointersStorageBuffer() {
     return this.memoryView.getUint32(0x10);
@@ -18361,6 +19784,9 @@ class VkPhysicalDeviceVariablePointerFeaturesKHR {
 VkPhysicalDeviceVariablePointerFeaturesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -18396,7 +19822,7 @@ class VkExternalMemoryProperties {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkExternalMemoryProperties' is read-only and can only be filled by vulkan");
     }
   }
   get externalMemoryFeatures() {
@@ -18443,7 +19869,7 @@ class VkExternalMemoryPropertiesKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkExternalMemoryPropertiesKHR' is read-only and can only be filled by vulkan");
     }
   }
   get externalMemoryFeatures() {
@@ -18506,6 +19932,7 @@ class VkPhysicalDeviceExternalImageFormatInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceExternalImageFormatInfo.pNext' isn't allowed to be filled");
   }
   get handleType() {
     return this.memoryView.getInt32(0x10);
@@ -18519,6 +19946,9 @@ class VkPhysicalDeviceExternalImageFormatInfo {
 VkPhysicalDeviceExternalImageFormatInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -18566,6 +19996,7 @@ class VkPhysicalDeviceExternalImageFormatInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceExternalImageFormatInfoKHR.pNext' isn't allowed to be filled");
   }
   get handleType() {
     return this.memoryView.getInt32(0x10);
@@ -18579,6 +20010,9 @@ class VkPhysicalDeviceExternalImageFormatInfoKHR {
 VkPhysicalDeviceExternalImageFormatInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -18610,7 +20044,7 @@ class VkExternalImageFormatProperties {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_EXTERNAL_IMAGE_FORMAT_PROPERTIES;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkExternalImageFormatProperties' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -18625,6 +20059,7 @@ class VkExternalImageFormatProperties {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkExternalImageFormatProperties.pNext' isn't allowed to be filled");
   }
   get externalMemoryProperties() {
     return this._externalMemoryProperties;
@@ -18635,6 +20070,9 @@ class VkExternalImageFormatProperties {
 VkExternalImageFormatProperties.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -18668,7 +20106,7 @@ class VkExternalImageFormatPropertiesKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_EXTERNAL_IMAGE_FORMAT_PROPERTIES_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkExternalImageFormatPropertiesKHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -18683,6 +20121,7 @@ class VkExternalImageFormatPropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkExternalImageFormatPropertiesKHR.pNext' isn't allowed to be filled");
   }
   get externalMemoryProperties() {
     return this._externalMemoryProperties;
@@ -18693,6 +20132,9 @@ class VkExternalImageFormatPropertiesKHR {
 VkExternalImageFormatPropertiesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -18746,6 +20188,7 @@ class VkPhysicalDeviceExternalBufferInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceExternalBufferInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -18771,6 +20214,9 @@ class VkPhysicalDeviceExternalBufferInfo {
 VkPhysicalDeviceExternalBufferInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -18830,6 +20276,7 @@ class VkPhysicalDeviceExternalBufferInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceExternalBufferInfoKHR.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -18855,6 +20302,9 @@ class VkPhysicalDeviceExternalBufferInfoKHR {
 VkPhysicalDeviceExternalBufferInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -18894,7 +20344,7 @@ class VkExternalBufferProperties {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_EXTERNAL_BUFFER_PROPERTIES;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkExternalBufferProperties' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -18909,6 +20359,7 @@ class VkExternalBufferProperties {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkExternalBufferProperties.pNext' isn't allowed to be filled");
   }
   get externalMemoryProperties() {
     return this._externalMemoryProperties;
@@ -18919,6 +20370,9 @@ class VkExternalBufferProperties {
 VkExternalBufferProperties.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -18952,7 +20406,7 @@ class VkExternalBufferPropertiesKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_EXTERNAL_BUFFER_PROPERTIES_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkExternalBufferPropertiesKHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -18967,6 +20421,7 @@ class VkExternalBufferPropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkExternalBufferPropertiesKHR.pNext' isn't allowed to be filled");
   }
   get externalMemoryProperties() {
     return this._externalMemoryProperties;
@@ -18977,6 +20432,9 @@ class VkExternalBufferPropertiesKHR {
 VkExternalBufferPropertiesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -19014,7 +20472,7 @@ class VkPhysicalDeviceIDProperties {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ID_PROPERTIES;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceIDProperties' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -19029,6 +20487,7 @@ class VkPhysicalDeviceIDProperties {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceIDProperties.pNext' isn't allowed to be filled");
   }
   get deviceUUID() {
     return this._deviceUUID;
@@ -19051,6 +20510,9 @@ class VkPhysicalDeviceIDProperties {
 VkPhysicalDeviceIDProperties.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._deviceUUID !== null) {
@@ -19126,7 +20588,7 @@ class VkPhysicalDeviceIDPropertiesKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ID_PROPERTIES_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceIDPropertiesKHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -19141,6 +20603,7 @@ class VkPhysicalDeviceIDPropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceIDPropertiesKHR.pNext' isn't allowed to be filled");
   }
   get deviceUUID() {
     return this._deviceUUID;
@@ -19163,6 +20626,9 @@ class VkPhysicalDeviceIDPropertiesKHR {
 VkPhysicalDeviceIDPropertiesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._deviceUUID !== null) {
@@ -19250,6 +20716,7 @@ class VkExternalMemoryImageCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkExternalMemoryImageCreateInfo.pNext' isn't allowed to be filled");
   }
   get handleTypes() {
     return this.memoryView.getInt32(0x10);
@@ -19263,6 +20730,9 @@ class VkExternalMemoryImageCreateInfo {
 VkExternalMemoryImageCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -19310,6 +20780,7 @@ class VkExternalMemoryImageCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkExternalMemoryImageCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get handleTypes() {
     return this.memoryView.getInt32(0x10);
@@ -19323,6 +20794,9 @@ class VkExternalMemoryImageCreateInfoKHR {
 VkExternalMemoryImageCreateInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -19370,6 +20844,7 @@ class VkExternalMemoryBufferCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkExternalMemoryBufferCreateInfo.pNext' isn't allowed to be filled");
   }
   get handleTypes() {
     return this.memoryView.getInt32(0x10);
@@ -19383,6 +20858,9 @@ class VkExternalMemoryBufferCreateInfo {
 VkExternalMemoryBufferCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -19430,6 +20908,7 @@ class VkExternalMemoryBufferCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkExternalMemoryBufferCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get handleTypes() {
     return this.memoryView.getInt32(0x10);
@@ -19443,6 +20922,9 @@ class VkExternalMemoryBufferCreateInfoKHR {
 VkExternalMemoryBufferCreateInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -19490,6 +20972,7 @@ class VkExportMemoryAllocateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkExportMemoryAllocateInfo.pNext' isn't allowed to be filled");
   }
   get handleTypes() {
     return this.memoryView.getInt32(0x10);
@@ -19503,6 +20986,9 @@ class VkExportMemoryAllocateInfo {
 VkExportMemoryAllocateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -19550,6 +21036,7 @@ class VkExportMemoryAllocateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkExportMemoryAllocateInfoKHR.pNext' isn't allowed to be filled");
   }
   get handleTypes() {
     return this.memoryView.getInt32(0x10);
@@ -19563,6 +21050,9 @@ class VkExportMemoryAllocateInfoKHR {
 VkExportMemoryAllocateInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -19614,6 +21104,7 @@ class VkImportMemoryWin32HandleInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkImportMemoryWin32HandleInfoKHR.pNext' isn't allowed to be filled");
   }
   get handleType() {
     return this.memoryView.getInt32(0x10);
@@ -19652,6 +21143,9 @@ class VkImportMemoryWin32HandleInfoKHR {
 VkImportMemoryWin32HandleInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -19707,6 +21201,7 @@ class VkExportMemoryWin32HandleInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkExportMemoryWin32HandleInfoKHR.pNext' isn't allowed to be filled");
   }
   get name() {
     if (this._name !== null) {
@@ -19733,6 +21228,9 @@ class VkExportMemoryWin32HandleInfoKHR {
 VkExportMemoryWin32HandleInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -19764,7 +21262,7 @@ class VkMemoryWin32HandlePropertiesKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_MEMORY_WIN32_HANDLE_PROPERTIES_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkMemoryWin32HandlePropertiesKHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -19779,6 +21277,7 @@ class VkMemoryWin32HandlePropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkMemoryWin32HandlePropertiesKHR.pNext' isn't allowed to be filled");
   }
   get memoryTypeBits() {
     return this.memoryView.getUint32(0x10);
@@ -19789,6 +21288,9 @@ class VkMemoryWin32HandlePropertiesKHR {
 VkMemoryWin32HandlePropertiesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -19838,6 +21340,7 @@ class VkMemoryGetWin32HandleInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkMemoryGetWin32HandleInfoKHR.pNext' isn't allowed to be filled");
   }
   get memory() {
     return this._memory;
@@ -19849,6 +21352,7 @@ class VkMemoryGetWin32HandleInfoKHR {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._memory = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkMemoryGetWin32HandleInfoKHR.memory': Expected 'VkDeviceMemory' but got '" + value.constructor.name + "'");
     }
@@ -19865,6 +21369,9 @@ class VkMemoryGetWin32HandleInfoKHR {
 VkMemoryGetWin32HandleInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -19918,6 +21425,7 @@ class VkImportMemoryFdInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkImportMemoryFdInfoKHR.pNext' isn't allowed to be filled");
   }
   get handleType() {
     return this.memoryView.getInt32(0x10);
@@ -19937,6 +21445,9 @@ class VkImportMemoryFdInfoKHR {
 VkImportMemoryFdInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -19972,7 +21483,7 @@ class VkMemoryFdPropertiesKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_MEMORY_FD_PROPERTIES_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkMemoryFdPropertiesKHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -19987,6 +21498,7 @@ class VkMemoryFdPropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkMemoryFdPropertiesKHR.pNext' isn't allowed to be filled");
   }
   get memoryTypeBits() {
     return this.memoryView.getUint32(0x10);
@@ -19997,6 +21509,9 @@ class VkMemoryFdPropertiesKHR {
 VkMemoryFdPropertiesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -20046,6 +21561,7 @@ class VkMemoryGetFdInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkMemoryGetFdInfoKHR.pNext' isn't allowed to be filled");
   }
   get memory() {
     return this._memory;
@@ -20057,6 +21573,7 @@ class VkMemoryGetFdInfoKHR {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._memory = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkMemoryGetFdInfoKHR.memory': Expected 'VkDeviceMemory' but got '" + value.constructor.name + "'");
     }
@@ -20073,6 +21590,9 @@ class VkMemoryGetFdInfoKHR {
 VkMemoryGetFdInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -20138,6 +21658,7 @@ class VkWin32KeyedMutexAcquireReleaseInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkWin32KeyedMutexAcquireReleaseInfoKHR.pNext' isn't allowed to be filled");
   }
   get acquireCount() {
     return this.memoryView.getUint32(0x10);
@@ -20220,11 +21741,15 @@ class VkWin32KeyedMutexAcquireReleaseInfoKHR {
 VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pAcquireSyncs !== null) {
     if (this._pAcquireSyncs.length !== this.acquireCount) {
       throw new RangeError("Invalid array length, expected array length of 'acquireCount' for 'VkWin32KeyedMutexAcquireReleaseInfoKHR.pAcquireSyncs'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pAcquireSyncs);
     this._pAcquireSyncsNative = nativeArray;
@@ -20235,6 +21760,7 @@ VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.flush = function flush() {
   if (this._pReleaseSyncs !== null) {
     if (this._pReleaseSyncs.length !== this.releaseCount) {
       throw new RangeError("Invalid array length, expected array length of 'releaseCount' for 'VkWin32KeyedMutexAcquireReleaseInfoKHR.pReleaseSyncs'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pReleaseSyncs);
     this._pReleaseSyncsNative = nativeArray;
@@ -20311,6 +21837,7 @@ class VkPhysicalDeviceExternalSemaphoreInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceExternalSemaphoreInfo.pNext' isn't allowed to be filled");
   }
   get handleType() {
     return this.memoryView.getInt32(0x10);
@@ -20324,6 +21851,9 @@ class VkPhysicalDeviceExternalSemaphoreInfo {
 VkPhysicalDeviceExternalSemaphoreInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -20371,6 +21901,7 @@ class VkPhysicalDeviceExternalSemaphoreInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceExternalSemaphoreInfoKHR.pNext' isn't allowed to be filled");
   }
   get handleType() {
     return this.memoryView.getInt32(0x10);
@@ -20384,6 +21915,9 @@ class VkPhysicalDeviceExternalSemaphoreInfoKHR {
 VkPhysicalDeviceExternalSemaphoreInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -20417,7 +21951,7 @@ class VkExternalSemaphoreProperties {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_EXTERNAL_SEMAPHORE_PROPERTIES;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkExternalSemaphoreProperties' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -20432,6 +21966,7 @@ class VkExternalSemaphoreProperties {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkExternalSemaphoreProperties.pNext' isn't allowed to be filled");
   }
   get exportFromImportedHandleTypes() {
     return this.memoryView.getInt32(0x10);
@@ -20448,6 +21983,9 @@ class VkExternalSemaphoreProperties {
 VkExternalSemaphoreProperties.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -20489,7 +22027,7 @@ class VkExternalSemaphorePropertiesKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_EXTERNAL_SEMAPHORE_PROPERTIES_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkExternalSemaphorePropertiesKHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -20504,6 +22042,7 @@ class VkExternalSemaphorePropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkExternalSemaphorePropertiesKHR.pNext' isn't allowed to be filled");
   }
   get exportFromImportedHandleTypes() {
     return this.memoryView.getInt32(0x10);
@@ -20520,6 +22059,9 @@ class VkExternalSemaphorePropertiesKHR {
 VkExternalSemaphorePropertiesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -20575,6 +22117,7 @@ class VkExportSemaphoreCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkExportSemaphoreCreateInfo.pNext' isn't allowed to be filled");
   }
   get handleTypes() {
     return this.memoryView.getInt32(0x10);
@@ -20588,6 +22131,9 @@ class VkExportSemaphoreCreateInfo {
 VkExportSemaphoreCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -20635,6 +22181,7 @@ class VkExportSemaphoreCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkExportSemaphoreCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get handleTypes() {
     return this.memoryView.getInt32(0x10);
@@ -20648,6 +22195,9 @@ class VkExportSemaphoreCreateInfoKHR {
 VkExportSemaphoreCreateInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -20703,6 +22253,7 @@ class VkImportSemaphoreWin32HandleInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkImportSemaphoreWin32HandleInfoKHR.pNext' isn't allowed to be filled");
   }
   get semaphore() {
     return this._semaphore;
@@ -20714,6 +22265,7 @@ class VkImportSemaphoreWin32HandleInfoKHR {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._semaphore = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImportSemaphoreWin32HandleInfoKHR.semaphore': Expected 'VkSemaphore' but got '" + value.constructor.name + "'");
     }
@@ -20761,6 +22313,9 @@ class VkImportSemaphoreWin32HandleInfoKHR {
 VkImportSemaphoreWin32HandleInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -20824,6 +22379,7 @@ class VkExportSemaphoreWin32HandleInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkExportSemaphoreWin32HandleInfoKHR.pNext' isn't allowed to be filled");
   }
   get name() {
     if (this._name !== null) {
@@ -20850,6 +22406,9 @@ class VkExportSemaphoreWin32HandleInfoKHR {
 VkExportSemaphoreWin32HandleInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -20903,6 +22462,7 @@ class VkD3D12FenceSubmitInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkD3D12FenceSubmitInfoKHR.pNext' isn't allowed to be filled");
   }
   get waitSemaphoreValuesCount() {
     return this.memoryView.getUint32(0x10);
@@ -20948,6 +22508,9 @@ class VkD3D12FenceSubmitInfoKHR {
 VkD3D12FenceSubmitInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -21009,6 +22572,7 @@ class VkSemaphoreGetWin32HandleInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkSemaphoreGetWin32HandleInfoKHR.pNext' isn't allowed to be filled");
   }
   get semaphore() {
     return this._semaphore;
@@ -21020,6 +22584,7 @@ class VkSemaphoreGetWin32HandleInfoKHR {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._semaphore = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkSemaphoreGetWin32HandleInfoKHR.semaphore': Expected 'VkSemaphore' but got '" + value.constructor.name + "'");
     }
@@ -21036,6 +22601,9 @@ class VkSemaphoreGetWin32HandleInfoKHR {
 VkSemaphoreGetWin32HandleInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -21093,6 +22661,7 @@ class VkImportSemaphoreFdInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkImportSemaphoreFdInfoKHR.pNext' isn't allowed to be filled");
   }
   get semaphore() {
     return this._semaphore;
@@ -21104,6 +22673,7 @@ class VkImportSemaphoreFdInfoKHR {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._semaphore = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImportSemaphoreFdInfoKHR.semaphore': Expected 'VkSemaphore' but got '" + value.constructor.name + "'");
     }
@@ -21132,6 +22702,9 @@ class VkImportSemaphoreFdInfoKHR {
 VkImportSemaphoreFdInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -21193,6 +22766,7 @@ class VkSemaphoreGetFdInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkSemaphoreGetFdInfoKHR.pNext' isn't allowed to be filled");
   }
   get semaphore() {
     return this._semaphore;
@@ -21204,6 +22778,7 @@ class VkSemaphoreGetFdInfoKHR {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._semaphore = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkSemaphoreGetFdInfoKHR.semaphore': Expected 'VkSemaphore' but got '" + value.constructor.name + "'");
     }
@@ -21220,6 +22795,9 @@ class VkSemaphoreGetFdInfoKHR {
 VkSemaphoreGetFdInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -21271,6 +22849,7 @@ class VkPhysicalDeviceExternalFenceInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceExternalFenceInfo.pNext' isn't allowed to be filled");
   }
   get handleType() {
     return this.memoryView.getInt32(0x10);
@@ -21284,6 +22863,9 @@ class VkPhysicalDeviceExternalFenceInfo {
 VkPhysicalDeviceExternalFenceInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -21331,6 +22913,7 @@ class VkPhysicalDeviceExternalFenceInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceExternalFenceInfoKHR.pNext' isn't allowed to be filled");
   }
   get handleType() {
     return this.memoryView.getInt32(0x10);
@@ -21344,6 +22927,9 @@ class VkPhysicalDeviceExternalFenceInfoKHR {
 VkPhysicalDeviceExternalFenceInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -21377,7 +22963,7 @@ class VkExternalFenceProperties {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_EXTERNAL_FENCE_PROPERTIES;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkExternalFenceProperties' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -21392,6 +22978,7 @@ class VkExternalFenceProperties {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkExternalFenceProperties.pNext' isn't allowed to be filled");
   }
   get exportFromImportedHandleTypes() {
     return this.memoryView.getInt32(0x10);
@@ -21408,6 +22995,9 @@ class VkExternalFenceProperties {
 VkExternalFenceProperties.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -21449,7 +23039,7 @@ class VkExternalFencePropertiesKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_EXTERNAL_FENCE_PROPERTIES_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkExternalFencePropertiesKHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -21464,6 +23054,7 @@ class VkExternalFencePropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkExternalFencePropertiesKHR.pNext' isn't allowed to be filled");
   }
   get exportFromImportedHandleTypes() {
     return this.memoryView.getInt32(0x10);
@@ -21480,6 +23071,9 @@ class VkExternalFencePropertiesKHR {
 VkExternalFencePropertiesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -21535,6 +23129,7 @@ class VkExportFenceCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkExportFenceCreateInfo.pNext' isn't allowed to be filled");
   }
   get handleTypes() {
     return this.memoryView.getInt32(0x10);
@@ -21548,6 +23143,9 @@ class VkExportFenceCreateInfo {
 VkExportFenceCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -21595,6 +23193,7 @@ class VkExportFenceCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkExportFenceCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get handleTypes() {
     return this.memoryView.getInt32(0x10);
@@ -21608,6 +23207,9 @@ class VkExportFenceCreateInfoKHR {
 VkExportFenceCreateInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -21663,6 +23265,7 @@ class VkImportFenceWin32HandleInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkImportFenceWin32HandleInfoKHR.pNext' isn't allowed to be filled");
   }
   get fence() {
     return this._fence;
@@ -21674,6 +23277,7 @@ class VkImportFenceWin32HandleInfoKHR {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._fence = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImportFenceWin32HandleInfoKHR.fence': Expected 'VkFence' but got '" + value.constructor.name + "'");
     }
@@ -21721,6 +23325,9 @@ class VkImportFenceWin32HandleInfoKHR {
 VkImportFenceWin32HandleInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -21784,6 +23391,7 @@ class VkExportFenceWin32HandleInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkExportFenceWin32HandleInfoKHR.pNext' isn't allowed to be filled");
   }
   get name() {
     if (this._name !== null) {
@@ -21810,6 +23418,9 @@ class VkExportFenceWin32HandleInfoKHR {
 VkExportFenceWin32HandleInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -21859,6 +23470,7 @@ class VkFenceGetWin32HandleInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkFenceGetWin32HandleInfoKHR.pNext' isn't allowed to be filled");
   }
   get fence() {
     return this._fence;
@@ -21870,6 +23482,7 @@ class VkFenceGetWin32HandleInfoKHR {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._fence = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkFenceGetWin32HandleInfoKHR.fence': Expected 'VkFence' but got '" + value.constructor.name + "'");
     }
@@ -21886,6 +23499,9 @@ class VkFenceGetWin32HandleInfoKHR {
 VkFenceGetWin32HandleInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -21943,6 +23559,7 @@ class VkImportFenceFdInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkImportFenceFdInfoKHR.pNext' isn't allowed to be filled");
   }
   get fence() {
     return this._fence;
@@ -21954,6 +23571,7 @@ class VkImportFenceFdInfoKHR {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._fence = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImportFenceFdInfoKHR.fence': Expected 'VkFence' but got '" + value.constructor.name + "'");
     }
@@ -21982,6 +23600,9 @@ class VkImportFenceFdInfoKHR {
 VkImportFenceFdInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -22043,6 +23664,7 @@ class VkFenceGetFdInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkFenceGetFdInfoKHR.pNext' isn't allowed to be filled");
   }
   get fence() {
     return this._fence;
@@ -22054,6 +23676,7 @@ class VkFenceGetFdInfoKHR {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._fence = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkFenceGetFdInfoKHR.fence': Expected 'VkFence' but got '" + value.constructor.name + "'");
     }
@@ -22070,6 +23693,9 @@ class VkFenceGetFdInfoKHR {
 VkFenceGetFdInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -22125,6 +23751,7 @@ class VkPhysicalDeviceMultiviewFeatures {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceMultiviewFeatures.pNext' isn't allowed to be filled");
   }
   get multiview() {
     return this.memoryView.getUint32(0x10);
@@ -22150,6 +23777,9 @@ class VkPhysicalDeviceMultiviewFeatures {
 VkPhysicalDeviceMultiviewFeatures.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -22209,6 +23839,7 @@ class VkPhysicalDeviceMultiviewFeaturesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceMultiviewFeaturesKHR.pNext' isn't allowed to be filled");
   }
   get multiview() {
     return this.memoryView.getUint32(0x10);
@@ -22234,6 +23865,9 @@ class VkPhysicalDeviceMultiviewFeaturesKHR {
 VkPhysicalDeviceMultiviewFeaturesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -22274,7 +23908,7 @@ class VkPhysicalDeviceMultiviewProperties {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceMultiviewProperties' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -22289,6 +23923,7 @@ class VkPhysicalDeviceMultiviewProperties {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceMultiviewProperties.pNext' isn't allowed to be filled");
   }
   get maxMultiviewViewCount() {
     return this.memoryView.getUint32(0x10);
@@ -22302,6 +23937,9 @@ class VkPhysicalDeviceMultiviewProperties {
 VkPhysicalDeviceMultiviewProperties.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -22338,7 +23976,7 @@ class VkPhysicalDeviceMultiviewPropertiesKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceMultiviewPropertiesKHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -22353,6 +23991,7 @@ class VkPhysicalDeviceMultiviewPropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceMultiviewPropertiesKHR.pNext' isn't allowed to be filled");
   }
   get maxMultiviewViewCount() {
     return this.memoryView.getUint32(0x10);
@@ -22366,6 +24005,9 @@ class VkPhysicalDeviceMultiviewPropertiesKHR {
 VkPhysicalDeviceMultiviewPropertiesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -22427,6 +24069,7 @@ class VkRenderPassMultiviewCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkRenderPassMultiviewCreateInfo.pNext' isn't allowed to be filled");
   }
   get subpassCount() {
     return this.memoryView.getUint32(0x10);
@@ -22491,6 +24134,9 @@ class VkRenderPassMultiviewCreateInfo {
 VkRenderPassMultiviewCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -22568,6 +24214,7 @@ class VkRenderPassMultiviewCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkRenderPassMultiviewCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get subpassCount() {
     return this.memoryView.getUint32(0x10);
@@ -22632,6 +24279,9 @@ class VkRenderPassMultiviewCreateInfoKHR {
 VkRenderPassMultiviewCreateInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -22693,7 +24343,7 @@ class VkSurfaceCapabilities2EXT {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkSurfaceCapabilities2EXT' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -22708,6 +24358,7 @@ class VkSurfaceCapabilities2EXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkSurfaceCapabilities2EXT.pNext' isn't allowed to be filled");
   }
   get minImageCount() {
     return this.memoryView.getUint32(0x10);
@@ -22748,6 +24399,9 @@ class VkSurfaceCapabilities2EXT {
 VkSurfaceCapabilities2EXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -22841,6 +24495,7 @@ class VkDisplayPowerInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDisplayPowerInfoEXT.pNext' isn't allowed to be filled");
   }
   get powerState() {
     return this.memoryView.getInt32(0x10);
@@ -22854,6 +24509,9 @@ class VkDisplayPowerInfoEXT {
 VkDisplayPowerInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -22901,6 +24559,7 @@ class VkDeviceEventInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDeviceEventInfoEXT.pNext' isn't allowed to be filled");
   }
   get deviceEvent() {
     return this.memoryView.getInt32(0x10);
@@ -22914,6 +24573,9 @@ class VkDeviceEventInfoEXT {
 VkDeviceEventInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -22961,6 +24623,7 @@ class VkDisplayEventInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDisplayEventInfoEXT.pNext' isn't allowed to be filled");
   }
   get displayEvent() {
     return this.memoryView.getInt32(0x10);
@@ -22974,6 +24637,9 @@ class VkDisplayEventInfoEXT {
 VkDisplayEventInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -23021,6 +24687,7 @@ class VkSwapchainCounterCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkSwapchainCounterCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get surfaceCounters() {
     return this.memoryView.getInt32(0x10);
@@ -23034,6 +24701,9 @@ class VkSwapchainCounterCreateInfoEXT {
 VkSwapchainCounterCreateInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -23067,7 +24737,7 @@ class VkPhysicalDeviceGroupProperties {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GROUP_PROPERTIES;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceGroupProperties' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -23082,6 +24752,7 @@ class VkPhysicalDeviceGroupProperties {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceGroupProperties.pNext' isn't allowed to be filled");
   }
   get physicalDeviceCount() {
     return this.memoryView.getUint32(0x10);
@@ -23098,11 +24769,15 @@ class VkPhysicalDeviceGroupProperties {
 VkPhysicalDeviceGroupProperties.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._physicalDevices !== null) {
     if (this._physicalDevices.length !== 32) {
       throw new RangeError("Invalid array length, expected array length of '32' for 'VkPhysicalDeviceGroupProperties.physicalDevices'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._physicalDevices);
     this._physicalDevicesNative = nativeArray;
@@ -23149,7 +24824,7 @@ class VkPhysicalDeviceGroupPropertiesKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GROUP_PROPERTIES_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceGroupPropertiesKHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -23164,6 +24839,7 @@ class VkPhysicalDeviceGroupPropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceGroupPropertiesKHR.pNext' isn't allowed to be filled");
   }
   get physicalDeviceCount() {
     return this.memoryView.getUint32(0x10);
@@ -23180,11 +24856,15 @@ class VkPhysicalDeviceGroupPropertiesKHR {
 VkPhysicalDeviceGroupPropertiesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._physicalDevices !== null) {
     if (this._physicalDevices.length !== 32) {
       throw new RangeError("Invalid array length, expected array length of '32' for 'VkPhysicalDeviceGroupPropertiesKHR.physicalDevices'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._physicalDevices);
     this._physicalDevicesNative = nativeArray;
@@ -23247,6 +24927,7 @@ class VkMemoryAllocateFlagsInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkMemoryAllocateFlagsInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -23266,6 +24947,9 @@ class VkMemoryAllocateFlagsInfo {
 VkMemoryAllocateFlagsInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -23319,6 +25003,7 @@ class VkMemoryAllocateFlagsInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkMemoryAllocateFlagsInfoKHR.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -23338,6 +25023,9 @@ class VkMemoryAllocateFlagsInfoKHR {
 VkMemoryAllocateFlagsInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -23393,6 +25081,22 @@ class VkBindBufferMemoryInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkBindBufferMemoryInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkBindBufferMemoryInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkBindBufferMemoryInfo.pNext'");
+    }
   }
   get buffer() {
     return this._buffer;
@@ -23404,6 +25108,7 @@ class VkBindBufferMemoryInfo {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._buffer = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkBindBufferMemoryInfo.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
@@ -23418,6 +25123,7 @@ class VkBindBufferMemoryInfo {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._memory = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkBindBufferMemoryInfo.memory': Expected 'VkDeviceMemory' but got '" + value.constructor.name + "'");
     }
@@ -23434,6 +25140,9 @@ class VkBindBufferMemoryInfo {
 VkBindBufferMemoryInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -23493,6 +25202,22 @@ class VkBindBufferMemoryInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkBindBufferMemoryInfoKHR.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkBindBufferMemoryInfoKHR.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkBindBufferMemoryInfoKHR.pNext'");
+    }
   }
   get buffer() {
     return this._buffer;
@@ -23504,6 +25229,7 @@ class VkBindBufferMemoryInfoKHR {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._buffer = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkBindBufferMemoryInfoKHR.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
@@ -23518,6 +25244,7 @@ class VkBindBufferMemoryInfoKHR {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._memory = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkBindBufferMemoryInfoKHR.memory': Expected 'VkDeviceMemory' but got '" + value.constructor.name + "'");
     }
@@ -23534,6 +25261,9 @@ class VkBindBufferMemoryInfoKHR {
 VkBindBufferMemoryInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -23591,6 +25321,7 @@ class VkBindBufferMemoryDeviceGroupInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkBindBufferMemoryDeviceGroupInfo.pNext' isn't allowed to be filled");
   }
   get deviceIndexCount() {
     return this.memoryView.getUint32(0x10);
@@ -23617,6 +25348,9 @@ class VkBindBufferMemoryDeviceGroupInfo {
 VkBindBufferMemoryDeviceGroupInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -23670,6 +25404,7 @@ class VkBindBufferMemoryDeviceGroupInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkBindBufferMemoryDeviceGroupInfoKHR.pNext' isn't allowed to be filled");
   }
   get deviceIndexCount() {
     return this.memoryView.getUint32(0x10);
@@ -23696,6 +25431,9 @@ class VkBindBufferMemoryDeviceGroupInfoKHR {
 VkBindBufferMemoryDeviceGroupInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -23751,6 +25489,24 @@ class VkBindImageMemoryInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkBindImageMemoryInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO:
+        case VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR:
+        case VK_STRUCTURE_TYPE_BIND_IMAGE_PLANE_MEMORY_INFO:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkBindImageMemoryInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkBindImageMemoryInfo.pNext'");
+    }
   }
   get image() {
     return this._image;
@@ -23762,6 +25518,7 @@ class VkBindImageMemoryInfo {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._image = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkBindImageMemoryInfo.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
@@ -23776,6 +25533,7 @@ class VkBindImageMemoryInfo {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._memory = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkBindImageMemoryInfo.memory': Expected 'VkDeviceMemory' but got '" + value.constructor.name + "'");
     }
@@ -23792,6 +25550,9 @@ class VkBindImageMemoryInfo {
 VkBindImageMemoryInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -23851,6 +25612,24 @@ class VkBindImageMemoryInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkBindImageMemoryInfoKHR.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO:
+        case VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR:
+        case VK_STRUCTURE_TYPE_BIND_IMAGE_PLANE_MEMORY_INFO:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkBindImageMemoryInfoKHR.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkBindImageMemoryInfoKHR.pNext'");
+    }
   }
   get image() {
     return this._image;
@@ -23862,6 +25641,7 @@ class VkBindImageMemoryInfoKHR {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._image = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkBindImageMemoryInfoKHR.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
@@ -23876,6 +25656,7 @@ class VkBindImageMemoryInfoKHR {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._memory = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkBindImageMemoryInfoKHR.memory': Expected 'VkDeviceMemory' but got '" + value.constructor.name + "'");
     }
@@ -23892,6 +25673,9 @@ class VkBindImageMemoryInfoKHR {
 VkBindImageMemoryInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -23954,6 +25738,7 @@ class VkBindImageMemoryDeviceGroupInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkBindImageMemoryDeviceGroupInfo.pNext' isn't allowed to be filled");
   }
   get deviceIndexCount() {
     return this.memoryView.getUint32(0x10);
@@ -23998,11 +25783,15 @@ class VkBindImageMemoryDeviceGroupInfo {
 VkBindImageMemoryDeviceGroupInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pSplitInstanceBindRegions !== null) {
     if (this._pSplitInstanceBindRegions.length !== this.splitInstanceBindRegionCount) {
       throw new RangeError("Invalid array length, expected array length of 'splitInstanceBindRegionCount' for 'VkBindImageMemoryDeviceGroupInfo.pSplitInstanceBindRegions'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pSplitInstanceBindRegions);
     this._pSplitInstanceBindRegionsNative = nativeArray;
@@ -24074,6 +25863,7 @@ class VkBindImageMemoryDeviceGroupInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkBindImageMemoryDeviceGroupInfoKHR.pNext' isn't allowed to be filled");
   }
   get deviceIndexCount() {
     return this.memoryView.getUint32(0x10);
@@ -24118,11 +25908,15 @@ class VkBindImageMemoryDeviceGroupInfoKHR {
 VkBindImageMemoryDeviceGroupInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pSplitInstanceBindRegions !== null) {
     if (this._pSplitInstanceBindRegions.length !== this.splitInstanceBindRegionCount) {
       throw new RangeError("Invalid array length, expected array length of 'splitInstanceBindRegionCount' for 'VkBindImageMemoryDeviceGroupInfoKHR.pSplitInstanceBindRegions'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pSplitInstanceBindRegions);
     this._pSplitInstanceBindRegionsNative = nativeArray;
@@ -24192,6 +25986,7 @@ class VkDeviceGroupRenderPassBeginInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDeviceGroupRenderPassBeginInfo.pNext' isn't allowed to be filled");
   }
   get deviceMask() {
     return this.memoryView.getUint32(0x10);
@@ -24223,11 +26018,15 @@ class VkDeviceGroupRenderPassBeginInfo {
 VkDeviceGroupRenderPassBeginInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pDeviceRenderAreas !== null) {
     if (this._pDeviceRenderAreas.length !== this.deviceRenderAreaCount) {
       throw new RangeError("Invalid array length, expected array length of 'deviceRenderAreaCount' for 'VkDeviceGroupRenderPassBeginInfo.pDeviceRenderAreas'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pDeviceRenderAreas);
     this._pDeviceRenderAreasNative = nativeArray;
@@ -24293,6 +26092,7 @@ class VkDeviceGroupRenderPassBeginInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDeviceGroupRenderPassBeginInfoKHR.pNext' isn't allowed to be filled");
   }
   get deviceMask() {
     return this.memoryView.getUint32(0x10);
@@ -24324,11 +26124,15 @@ class VkDeviceGroupRenderPassBeginInfoKHR {
 VkDeviceGroupRenderPassBeginInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pDeviceRenderAreas !== null) {
     if (this._pDeviceRenderAreas.length !== this.deviceRenderAreaCount) {
       throw new RangeError("Invalid array length, expected array length of 'deviceRenderAreaCount' for 'VkDeviceGroupRenderPassBeginInfoKHR.pDeviceRenderAreas'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pDeviceRenderAreas);
     this._pDeviceRenderAreasNative = nativeArray;
@@ -24389,6 +26193,7 @@ class VkDeviceGroupCommandBufferBeginInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDeviceGroupCommandBufferBeginInfo.pNext' isn't allowed to be filled");
   }
   get deviceMask() {
     return this.memoryView.getUint32(0x10);
@@ -24402,6 +26207,9 @@ class VkDeviceGroupCommandBufferBeginInfo {
 VkDeviceGroupCommandBufferBeginInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -24449,6 +26257,7 @@ class VkDeviceGroupCommandBufferBeginInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDeviceGroupCommandBufferBeginInfoKHR.pNext' isn't allowed to be filled");
   }
   get deviceMask() {
     return this.memoryView.getUint32(0x10);
@@ -24462,6 +26271,9 @@ class VkDeviceGroupCommandBufferBeginInfoKHR {
 VkDeviceGroupCommandBufferBeginInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -24519,6 +26331,7 @@ class VkDeviceGroupSubmitInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDeviceGroupSubmitInfo.pNext' isn't allowed to be filled");
   }
   get waitSemaphoreCount() {
     return this.memoryView.getUint32(0x10);
@@ -24583,6 +26396,9 @@ class VkDeviceGroupSubmitInfo {
 VkDeviceGroupSubmitInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -24660,6 +26476,7 @@ class VkDeviceGroupSubmitInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDeviceGroupSubmitInfoKHR.pNext' isn't allowed to be filled");
   }
   get waitSemaphoreCount() {
     return this.memoryView.getUint32(0x10);
@@ -24724,6 +26541,9 @@ class VkDeviceGroupSubmitInfoKHR {
 VkDeviceGroupSubmitInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -24793,6 +26613,7 @@ class VkDeviceGroupBindSparseInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDeviceGroupBindSparseInfo.pNext' isn't allowed to be filled");
   }
   get resourceDeviceIndex() {
     return this.memoryView.getUint32(0x10);
@@ -24812,6 +26633,9 @@ class VkDeviceGroupBindSparseInfo {
 VkDeviceGroupBindSparseInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -24865,6 +26689,7 @@ class VkDeviceGroupBindSparseInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDeviceGroupBindSparseInfoKHR.pNext' isn't allowed to be filled");
   }
   get resourceDeviceIndex() {
     return this.memoryView.getUint32(0x10);
@@ -24884,6 +26709,9 @@ class VkDeviceGroupBindSparseInfoKHR {
 VkDeviceGroupBindSparseInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -24920,7 +26748,7 @@ class VkDeviceGroupPresentCapabilitiesKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_CAPABILITIES_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkDeviceGroupPresentCapabilitiesKHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -24935,6 +26763,7 @@ class VkDeviceGroupPresentCapabilitiesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDeviceGroupPresentCapabilitiesKHR.pNext' isn't allowed to be filled");
   }
   get presentMask() {
     return this._presentMask;
@@ -24948,6 +26777,9 @@ class VkDeviceGroupPresentCapabilitiesKHR {
 VkDeviceGroupPresentCapabilitiesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._presentMask !== null) {
@@ -25007,6 +26839,7 @@ class VkImageSwapchainCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkImageSwapchainCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get swapchain() {
     return this._swapchain;
@@ -25018,6 +26851,7 @@ class VkImageSwapchainCreateInfoKHR {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._swapchain = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImageSwapchainCreateInfoKHR.swapchain': Expected 'VkSwapchainKHR' but got '" + value.constructor.name + "'");
     }
@@ -25028,6 +26862,9 @@ class VkImageSwapchainCreateInfoKHR {
 VkImageSwapchainCreateInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -25077,6 +26914,7 @@ class VkBindImageMemorySwapchainInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkBindImageMemorySwapchainInfoKHR.pNext' isn't allowed to be filled");
   }
   get swapchain() {
     return this._swapchain;
@@ -25088,6 +26926,7 @@ class VkBindImageMemorySwapchainInfoKHR {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._swapchain = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkBindImageMemorySwapchainInfoKHR.swapchain': Expected 'VkSwapchainKHR' but got '" + value.constructor.name + "'");
     }
@@ -25104,6 +26943,9 @@ class VkBindImageMemorySwapchainInfoKHR {
 VkBindImageMemorySwapchainInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -25163,6 +27005,7 @@ class VkAcquireNextImageInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkAcquireNextImageInfoKHR.pNext' isn't allowed to be filled");
   }
   get swapchain() {
     return this._swapchain;
@@ -25174,6 +27017,7 @@ class VkAcquireNextImageInfoKHR {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._swapchain = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkAcquireNextImageInfoKHR.swapchain': Expected 'VkSwapchainKHR' but got '" + value.constructor.name + "'");
     }
@@ -25194,6 +27038,7 @@ class VkAcquireNextImageInfoKHR {
       this.memoryView.setBigInt64(0x20, value.memoryAddress);
     } else if (value === null) {
       this._semaphore = null;
+      this.memoryView.setBigInt64(0x20, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkAcquireNextImageInfoKHR.semaphore': Expected 'VkSemaphore' but got '" + value.constructor.name + "'");
     }
@@ -25208,6 +27053,7 @@ class VkAcquireNextImageInfoKHR {
       this.memoryView.setBigInt64(0x28, value.memoryAddress);
     } else if (value === null) {
       this._fence = null;
+      this.memoryView.setBigInt64(0x28, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkAcquireNextImageInfoKHR.fence': Expected 'VkFence' but got '" + value.constructor.name + "'");
     }
@@ -25224,6 +27070,9 @@ class VkAcquireNextImageInfoKHR {
 VkAcquireNextImageInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -25291,6 +27140,7 @@ class VkDeviceGroupPresentInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDeviceGroupPresentInfoKHR.pNext' isn't allowed to be filled");
   }
   get swapchainCount() {
     return this.memoryView.getUint32(0x10);
@@ -25323,6 +27173,9 @@ class VkDeviceGroupPresentInfoKHR {
 VkDeviceGroupPresentInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -25381,6 +27234,7 @@ class VkDeviceGroupDeviceCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDeviceGroupDeviceCreateInfo.pNext' isn't allowed to be filled");
   }
   get physicalDeviceCount() {
     return this.memoryView.getUint32(0x10);
@@ -25406,11 +27260,15 @@ class VkDeviceGroupDeviceCreateInfo {
 VkDeviceGroupDeviceCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pPhysicalDevices !== null) {
     if (this._pPhysicalDevices.length !== this.physicalDeviceCount) {
       throw new RangeError("Invalid array length, expected array length of 'physicalDeviceCount' for 'VkDeviceGroupDeviceCreateInfo.pPhysicalDevices'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pPhysicalDevices);
     this._pPhysicalDevicesNative = nativeArray;
@@ -25470,6 +27328,7 @@ class VkDeviceGroupDeviceCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDeviceGroupDeviceCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get physicalDeviceCount() {
     return this.memoryView.getUint32(0x10);
@@ -25495,11 +27354,15 @@ class VkDeviceGroupDeviceCreateInfoKHR {
 VkDeviceGroupDeviceCreateInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pPhysicalDevices !== null) {
     if (this._pPhysicalDevices.length !== this.physicalDeviceCount) {
       throw new RangeError("Invalid array length, expected array length of 'physicalDeviceCount' for 'VkDeviceGroupDeviceCreateInfoKHR.pPhysicalDevices'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pPhysicalDevices);
     this._pPhysicalDevicesNative = nativeArray;
@@ -25556,6 +27419,7 @@ class VkDeviceGroupSwapchainCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDeviceGroupSwapchainCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get modes() {
     return this.memoryView.getInt32(0x10);
@@ -25569,6 +27433,9 @@ class VkDeviceGroupSwapchainCreateInfoKHR {
 VkDeviceGroupSwapchainCreateInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -25821,6 +27688,7 @@ class VkDescriptorUpdateTemplateCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDescriptorUpdateTemplateCreateInfo.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -25862,6 +27730,7 @@ class VkDescriptorUpdateTemplateCreateInfo {
       this.memoryView.setBigInt64(0x28, value.memoryAddress);
     } else if (value === null) {
       this._descriptorSetLayout = null;
+      this.memoryView.setBigInt64(0x28, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfo.descriptorSetLayout': Expected 'VkDescriptorSetLayout' but got '" + value.constructor.name + "'");
     }
@@ -25882,6 +27751,7 @@ class VkDescriptorUpdateTemplateCreateInfo {
       this.memoryView.setBigInt64(0x38, value.memoryAddress);
     } else if (value === null) {
       this._pipelineLayout = null;
+      this.memoryView.setBigInt64(0x38, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfo.pipelineLayout': Expected 'VkPipelineLayout' but got '" + value.constructor.name + "'");
     }
@@ -25898,11 +27768,15 @@ class VkDescriptorUpdateTemplateCreateInfo {
 VkDescriptorUpdateTemplateCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pDescriptorUpdateEntries !== null) {
     if (this._pDescriptorUpdateEntries.length !== this.descriptorUpdateEntryCount) {
       throw new RangeError("Invalid array length, expected array length of 'descriptorUpdateEntryCount' for 'VkDescriptorUpdateTemplateCreateInfo.pDescriptorUpdateEntries'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pDescriptorUpdateEntries);
     this._pDescriptorUpdateEntriesNative = nativeArray;
@@ -25998,6 +27872,7 @@ class VkDescriptorUpdateTemplateCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDescriptorUpdateTemplateCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -26039,6 +27914,7 @@ class VkDescriptorUpdateTemplateCreateInfoKHR {
       this.memoryView.setBigInt64(0x28, value.memoryAddress);
     } else if (value === null) {
       this._descriptorSetLayout = null;
+      this.memoryView.setBigInt64(0x28, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfoKHR.descriptorSetLayout': Expected 'VkDescriptorSetLayout' but got '" + value.constructor.name + "'");
     }
@@ -26059,6 +27935,7 @@ class VkDescriptorUpdateTemplateCreateInfoKHR {
       this.memoryView.setBigInt64(0x38, value.memoryAddress);
     } else if (value === null) {
       this._pipelineLayout = null;
+      this.memoryView.setBigInt64(0x38, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfoKHR.pipelineLayout': Expected 'VkPipelineLayout' but got '" + value.constructor.name + "'");
     }
@@ -26075,11 +27952,15 @@ class VkDescriptorUpdateTemplateCreateInfoKHR {
 VkDescriptorUpdateTemplateCreateInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pDescriptorUpdateEntries !== null) {
     if (this._pDescriptorUpdateEntries.length !== this.descriptorUpdateEntryCount) {
       throw new RangeError("Invalid array length, expected array length of 'descriptorUpdateEntryCount' for 'VkDescriptorUpdateTemplateCreateInfoKHR.pDescriptorUpdateEntries'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pDescriptorUpdateEntries);
     this._pDescriptorUpdateEntriesNative = nativeArray;
@@ -26221,6 +28102,7 @@ class VkHdrMetadataEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkHdrMetadataEXT.pNext' isn't allowed to be filled");
   }
   get displayPrimaryRed() {
     return this._displayPrimaryRed;
@@ -26232,6 +28114,7 @@ class VkHdrMetadataEXT {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._displayPrimaryRed = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkHdrMetadataEXT.displayPrimaryRed': Expected 'VkXYColorEXT' but got '" + value.constructor.name + "'");
     }
@@ -26246,6 +28129,7 @@ class VkHdrMetadataEXT {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._displayPrimaryGreen = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkHdrMetadataEXT.displayPrimaryGreen': Expected 'VkXYColorEXT' but got '" + value.constructor.name + "'");
     }
@@ -26260,6 +28144,7 @@ class VkHdrMetadataEXT {
       this.memoryView.setBigInt64(0x20, value.memoryAddress);
     } else if (value === null) {
       this._displayPrimaryBlue = null;
+      this.memoryView.setBigInt64(0x20, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkHdrMetadataEXT.displayPrimaryBlue': Expected 'VkXYColorEXT' but got '" + value.constructor.name + "'");
     }
@@ -26274,6 +28159,7 @@ class VkHdrMetadataEXT {
       this.memoryView.setBigInt64(0x28, value.memoryAddress);
     } else if (value === null) {
       this._whitePoint = null;
+      this.memoryView.setBigInt64(0x28, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkHdrMetadataEXT.whitePoint': Expected 'VkXYColorEXT' but got '" + value.constructor.name + "'");
     }
@@ -26308,6 +28194,9 @@ class VkHdrMetadataEXT {
 VkHdrMetadataEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -26373,7 +28262,7 @@ class VkRefreshCycleDurationGOOGLE {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkRefreshCycleDurationGOOGLE' is read-only and can only be filled by vulkan");
     }
   }
   get refreshDuration() {
@@ -26408,7 +28297,7 @@ class VkPastPresentationTimingGOOGLE {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkPastPresentationTimingGOOGLE' is read-only and can only be filled by vulkan");
     }
   }
   get presentID() {
@@ -26488,6 +28377,7 @@ class VkPresentTimesInfoGOOGLE {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPresentTimesInfoGOOGLE.pNext' isn't allowed to be filled");
   }
   get swapchainCount() {
     return this.memoryView.getUint32(0x10);
@@ -26513,11 +28403,15 @@ class VkPresentTimesInfoGOOGLE {
 VkPresentTimesInfoGOOGLE.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pTimes !== null) {
     if (this._pTimes.length !== this.swapchainCount) {
       throw new RangeError("Invalid array length, expected array length of 'swapchainCount' for 'VkPresentTimesInfoGOOGLE.pTimes'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pTimes);
     this._pTimesNative = nativeArray;
@@ -26673,6 +28567,7 @@ class VkPipelineViewportWScalingStateCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPipelineViewportWScalingStateCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get viewportWScalingEnable() {
     return this.memoryView.getUint32(0x10);
@@ -26704,11 +28599,15 @@ class VkPipelineViewportWScalingStateCreateInfoNV {
 VkPipelineViewportWScalingStateCreateInfoNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pViewportWScalings !== null) {
     if (this._pViewportWScalings.length !== this.viewportCount) {
       throw new RangeError("Invalid array length, expected array length of 'viewportCount' for 'VkPipelineViewportWScalingStateCreateInfoNV.pViewportWScalings'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pViewportWScalings);
     this._pViewportWScalingsNative = nativeArray;
@@ -26845,6 +28744,7 @@ class VkPipelineViewportSwizzleStateCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPipelineViewportSwizzleStateCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -26876,11 +28776,15 @@ class VkPipelineViewportSwizzleStateCreateInfoNV {
 VkPipelineViewportSwizzleStateCreateInfoNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pViewportSwizzles !== null) {
     if (this._pViewportSwizzles.length !== this.viewportCount) {
       throw new RangeError("Invalid array length, expected array length of 'viewportCount' for 'VkPipelineViewportSwizzleStateCreateInfoNV.pViewportSwizzles'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pViewportSwizzles);
     this._pViewportSwizzlesNative = nativeArray;
@@ -26925,7 +28829,7 @@ class VkPhysicalDeviceDiscardRectanglePropertiesEXT {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISCARD_RECTANGLE_PROPERTIES_EXT;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceDiscardRectanglePropertiesEXT' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -26940,6 +28844,7 @@ class VkPhysicalDeviceDiscardRectanglePropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceDiscardRectanglePropertiesEXT.pNext' isn't allowed to be filled");
   }
   get maxDiscardRectangles() {
     return this.memoryView.getUint32(0x10);
@@ -26950,6 +28855,9 @@ class VkPhysicalDeviceDiscardRectanglePropertiesEXT {
 VkPhysicalDeviceDiscardRectanglePropertiesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -27004,6 +28912,7 @@ class VkPipelineDiscardRectangleStateCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPipelineDiscardRectangleStateCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -27041,11 +28950,15 @@ class VkPipelineDiscardRectangleStateCreateInfoEXT {
 VkPipelineDiscardRectangleStateCreateInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pDiscardRectangles !== null) {
     if (this._pDiscardRectangles.length !== this.discardRectangleCount) {
       throw new RangeError("Invalid array length, expected array length of 'discardRectangleCount' for 'VkPipelineDiscardRectangleStateCreateInfoEXT.pDiscardRectangles'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pDiscardRectangles);
     this._pDiscardRectanglesNative = nativeArray;
@@ -27094,7 +29007,7 @@ class VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_ATTRIBUTES_PROPERTIES_NVX;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -27109,6 +29022,7 @@ class VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.pNext' isn't allowed to be filled");
   }
   get perViewPositionAllComponents() {
     return this.memoryView.getUint32(0x10);
@@ -27119,6 +29033,9 @@ class VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX {
 VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -27287,6 +29204,7 @@ class VkRenderPassInputAttachmentAspectCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkRenderPassInputAttachmentAspectCreateInfo.pNext' isn't allowed to be filled");
   }
   get aspectReferenceCount() {
     return this.memoryView.getUint32(0x10);
@@ -27312,11 +29230,15 @@ class VkRenderPassInputAttachmentAspectCreateInfo {
 VkRenderPassInputAttachmentAspectCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pAspectReferences !== null) {
     if (this._pAspectReferences.length !== this.aspectReferenceCount) {
       throw new RangeError("Invalid array length, expected array length of 'aspectReferenceCount' for 'VkRenderPassInputAttachmentAspectCreateInfo.pAspectReferences'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pAspectReferences);
     this._pAspectReferencesNative = nativeArray;
@@ -27376,6 +29298,7 @@ class VkRenderPassInputAttachmentAspectCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkRenderPassInputAttachmentAspectCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get aspectReferenceCount() {
     return this.memoryView.getUint32(0x10);
@@ -27401,11 +29324,15 @@ class VkRenderPassInputAttachmentAspectCreateInfoKHR {
 VkRenderPassInputAttachmentAspectCreateInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pAspectReferences !== null) {
     if (this._pAspectReferences.length !== this.aspectReferenceCount) {
       throw new RangeError("Invalid array length, expected array length of 'aspectReferenceCount' for 'VkRenderPassInputAttachmentAspectCreateInfoKHR.pAspectReferences'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pAspectReferences);
     this._pAspectReferencesNative = nativeArray;
@@ -27462,6 +29389,7 @@ class VkPhysicalDeviceSurfaceInfo2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceSurfaceInfo2KHR.pNext' isn't allowed to be filled");
   }
   get surface() {
     return this._surface;
@@ -27473,6 +29401,7 @@ class VkPhysicalDeviceSurfaceInfo2KHR {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._surface = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkPhysicalDeviceSurfaceInfo2KHR.surface': Expected 'VkSurfaceKHR' but got '" + value.constructor.name + "'");
     }
@@ -27483,6 +29412,9 @@ class VkPhysicalDeviceSurfaceInfo2KHR {
 VkPhysicalDeviceSurfaceInfo2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -27514,7 +29446,7 @@ class VkSurfaceCapabilities2KHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkSurfaceCapabilities2KHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -27529,6 +29461,22 @@ class VkSurfaceCapabilities2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkSurfaceCapabilities2KHR.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_KHR:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkSurfaceCapabilities2KHR.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkSurfaceCapabilities2KHR.pNext'");
+    }
   }
   get surfaceCapabilities() {
     return this._surfaceCapabilities;
@@ -27539,6 +29487,9 @@ class VkSurfaceCapabilities2KHR {
 VkSurfaceCapabilities2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -27572,7 +29523,7 @@ class VkSurfaceFormat2KHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_SURFACE_FORMAT_2_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkSurfaceFormat2KHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -27587,6 +29538,7 @@ class VkSurfaceFormat2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkSurfaceFormat2KHR.pNext' isn't allowed to be filled");
   }
   get surfaceFormat() {
     return this._surfaceFormat;
@@ -27597,6 +29549,9 @@ class VkSurfaceFormat2KHR {
 VkSurfaceFormat2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -27630,7 +29585,7 @@ class VkDisplayProperties2KHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_DISPLAY_PROPERTIES_2_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkDisplayProperties2KHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -27645,6 +29600,7 @@ class VkDisplayProperties2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDisplayProperties2KHR.pNext' isn't allowed to be filled");
   }
   get displayProperties() {
     return this._displayProperties;
@@ -27655,6 +29611,9 @@ class VkDisplayProperties2KHR {
 VkDisplayProperties2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -27688,7 +29647,7 @@ class VkDisplayPlaneProperties2KHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_DISPLAY_PLANE_PROPERTIES_2_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkDisplayPlaneProperties2KHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -27703,6 +29662,7 @@ class VkDisplayPlaneProperties2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDisplayPlaneProperties2KHR.pNext' isn't allowed to be filled");
   }
   get displayPlaneProperties() {
     return this._displayPlaneProperties;
@@ -27713,6 +29673,9 @@ class VkDisplayPlaneProperties2KHR {
 VkDisplayPlaneProperties2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -27746,7 +29709,7 @@ class VkDisplayModeProperties2KHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_DISPLAY_MODE_PROPERTIES_2_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkDisplayModeProperties2KHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -27761,6 +29724,7 @@ class VkDisplayModeProperties2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDisplayModeProperties2KHR.pNext' isn't allowed to be filled");
   }
   get displayModeProperties() {
     return this._displayModeProperties;
@@ -27771,6 +29735,9 @@ class VkDisplayModeProperties2KHR {
 VkDisplayModeProperties2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -27822,6 +29789,7 @@ class VkDisplayPlaneInfo2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDisplayPlaneInfo2KHR.pNext' isn't allowed to be filled");
   }
   get mode() {
     return this._mode;
@@ -27833,6 +29801,7 @@ class VkDisplayPlaneInfo2KHR {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._mode = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkDisplayPlaneInfo2KHR.mode': Expected 'VkDisplayModeKHR' but got '" + value.constructor.name + "'");
     }
@@ -27849,6 +29818,9 @@ class VkDisplayPlaneInfo2KHR {
 VkDisplayPlaneInfo2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -27884,7 +29856,7 @@ class VkDisplayPlaneCapabilities2KHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_DISPLAY_PLANE_CAPABILITIES_2_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkDisplayPlaneCapabilities2KHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -27899,6 +29871,7 @@ class VkDisplayPlaneCapabilities2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDisplayPlaneCapabilities2KHR.pNext' isn't allowed to be filled");
   }
   get capabilities() {
     return this._capabilities;
@@ -27909,6 +29882,9 @@ class VkDisplayPlaneCapabilities2KHR {
 VkDisplayPlaneCapabilities2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -27942,7 +29918,7 @@ class VkSharedPresentSurfaceCapabilitiesKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkSharedPresentSurfaceCapabilitiesKHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -27957,6 +29933,7 @@ class VkSharedPresentSurfaceCapabilitiesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkSharedPresentSurfaceCapabilitiesKHR.pNext' isn't allowed to be filled");
   }
   get sharedPresentSupportedUsageFlags() {
     return this.memoryView.getInt32(0x10);
@@ -27967,6 +29944,9 @@ class VkSharedPresentSurfaceCapabilitiesKHR {
 VkSharedPresentSurfaceCapabilitiesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -28020,6 +30000,7 @@ class VkPhysicalDevice16BitStorageFeatures {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDevice16BitStorageFeatures.pNext' isn't allowed to be filled");
   }
   get storageBuffer16BitAccess() {
     return this.memoryView.getUint32(0x10);
@@ -28051,6 +30032,9 @@ class VkPhysicalDevice16BitStorageFeatures {
 VkPhysicalDevice16BitStorageFeatures.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -28116,6 +30100,7 @@ class VkPhysicalDevice16BitStorageFeaturesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDevice16BitStorageFeaturesKHR.pNext' isn't allowed to be filled");
   }
   get storageBuffer16BitAccess() {
     return this.memoryView.getUint32(0x10);
@@ -28147,6 +30132,9 @@ class VkPhysicalDevice16BitStorageFeaturesKHR {
 VkPhysicalDevice16BitStorageFeaturesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -28193,7 +30181,7 @@ class VkPhysicalDeviceSubgroupProperties {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceSubgroupProperties' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -28208,6 +30196,7 @@ class VkPhysicalDeviceSubgroupProperties {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceSubgroupProperties.pNext' isn't allowed to be filled");
   }
   get subgroupSize() {
     return this.memoryView.getUint32(0x10);
@@ -28227,6 +30216,9 @@ class VkPhysicalDeviceSubgroupProperties {
 VkPhysicalDeviceSubgroupProperties.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -28286,6 +30278,7 @@ class VkBufferMemoryRequirementsInfo2 {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkBufferMemoryRequirementsInfo2.pNext' isn't allowed to be filled");
   }
   get buffer() {
     return this._buffer;
@@ -28297,6 +30290,7 @@ class VkBufferMemoryRequirementsInfo2 {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._buffer = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkBufferMemoryRequirementsInfo2.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
@@ -28307,6 +30301,9 @@ class VkBufferMemoryRequirementsInfo2 {
 VkBufferMemoryRequirementsInfo2.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -28354,6 +30351,7 @@ class VkBufferMemoryRequirementsInfo2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkBufferMemoryRequirementsInfo2KHR.pNext' isn't allowed to be filled");
   }
   get buffer() {
     return this._buffer;
@@ -28365,6 +30363,7 @@ class VkBufferMemoryRequirementsInfo2KHR {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._buffer = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkBufferMemoryRequirementsInfo2KHR.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
@@ -28375,6 +30374,9 @@ class VkBufferMemoryRequirementsInfo2KHR {
 VkBufferMemoryRequirementsInfo2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -28422,6 +30424,22 @@ class VkImageMemoryRequirementsInfo2 {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkImageMemoryRequirementsInfo2.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkImageMemoryRequirementsInfo2.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkImageMemoryRequirementsInfo2.pNext'");
+    }
   }
   get image() {
     return this._image;
@@ -28433,6 +30451,7 @@ class VkImageMemoryRequirementsInfo2 {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._image = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImageMemoryRequirementsInfo2.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
@@ -28443,6 +30462,9 @@ class VkImageMemoryRequirementsInfo2 {
 VkImageMemoryRequirementsInfo2.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -28490,6 +30512,22 @@ class VkImageMemoryRequirementsInfo2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkImageMemoryRequirementsInfo2KHR.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkImageMemoryRequirementsInfo2KHR.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkImageMemoryRequirementsInfo2KHR.pNext'");
+    }
   }
   get image() {
     return this._image;
@@ -28501,6 +30539,7 @@ class VkImageMemoryRequirementsInfo2KHR {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._image = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImageMemoryRequirementsInfo2KHR.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
@@ -28511,6 +30550,9 @@ class VkImageMemoryRequirementsInfo2KHR {
 VkImageMemoryRequirementsInfo2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -28558,6 +30600,7 @@ class VkImageSparseMemoryRequirementsInfo2 {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkImageSparseMemoryRequirementsInfo2.pNext' isn't allowed to be filled");
   }
   get image() {
     return this._image;
@@ -28569,6 +30612,7 @@ class VkImageSparseMemoryRequirementsInfo2 {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._image = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImageSparseMemoryRequirementsInfo2.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
@@ -28579,6 +30623,9 @@ class VkImageSparseMemoryRequirementsInfo2 {
 VkImageSparseMemoryRequirementsInfo2.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -28626,6 +30673,7 @@ class VkImageSparseMemoryRequirementsInfo2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkImageSparseMemoryRequirementsInfo2KHR.pNext' isn't allowed to be filled");
   }
   get image() {
     return this._image;
@@ -28637,6 +30685,7 @@ class VkImageSparseMemoryRequirementsInfo2KHR {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._image = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkImageSparseMemoryRequirementsInfo2KHR.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
@@ -28647,6 +30696,9 @@ class VkImageSparseMemoryRequirementsInfo2KHR {
 VkImageSparseMemoryRequirementsInfo2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -28678,7 +30730,7 @@ class VkMemoryRequirements2 {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_MEMORY_REQUIREMENTS_2;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkMemoryRequirements2' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -28693,6 +30745,22 @@ class VkMemoryRequirements2 {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkMemoryRequirements2.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkMemoryRequirements2.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkMemoryRequirements2.pNext'");
+    }
   }
   get memoryRequirements() {
     return this._memoryRequirements;
@@ -28703,6 +30771,9 @@ class VkMemoryRequirements2 {
 VkMemoryRequirements2.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -28736,7 +30807,7 @@ class VkMemoryRequirements2KHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_MEMORY_REQUIREMENTS_2_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkMemoryRequirements2KHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -28751,6 +30822,22 @@ class VkMemoryRequirements2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkMemoryRequirements2KHR.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkMemoryRequirements2KHR.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkMemoryRequirements2KHR.pNext'");
+    }
   }
   get memoryRequirements() {
     return this._memoryRequirements;
@@ -28761,6 +30848,9 @@ class VkMemoryRequirements2KHR {
 VkMemoryRequirements2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -28794,7 +30884,7 @@ class VkSparseImageMemoryRequirements2 {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_SPARSE_IMAGE_MEMORY_REQUIREMENTS_2;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkSparseImageMemoryRequirements2' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -28809,6 +30899,7 @@ class VkSparseImageMemoryRequirements2 {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkSparseImageMemoryRequirements2.pNext' isn't allowed to be filled");
   }
   get memoryRequirements() {
     return this._memoryRequirements;
@@ -28819,6 +30910,9 @@ class VkSparseImageMemoryRequirements2 {
 VkSparseImageMemoryRequirements2.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -28852,7 +30946,7 @@ class VkSparseImageMemoryRequirements2KHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_SPARSE_IMAGE_MEMORY_REQUIREMENTS_2_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkSparseImageMemoryRequirements2KHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -28867,6 +30961,7 @@ class VkSparseImageMemoryRequirements2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkSparseImageMemoryRequirements2KHR.pNext' isn't allowed to be filled");
   }
   get memoryRequirements() {
     return this._memoryRequirements;
@@ -28877,6 +30972,9 @@ class VkSparseImageMemoryRequirements2KHR {
 VkSparseImageMemoryRequirements2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -28910,7 +31008,7 @@ class VkPhysicalDevicePointClippingProperties {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDevicePointClippingProperties' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -28925,6 +31023,7 @@ class VkPhysicalDevicePointClippingProperties {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDevicePointClippingProperties.pNext' isn't allowed to be filled");
   }
   get pointClippingBehavior() {
     return this.memoryView.getInt32(0x10);
@@ -28935,6 +31034,9 @@ class VkPhysicalDevicePointClippingProperties {
 VkPhysicalDevicePointClippingProperties.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -28966,7 +31068,7 @@ class VkPhysicalDevicePointClippingPropertiesKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDevicePointClippingPropertiesKHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -28981,6 +31083,7 @@ class VkPhysicalDevicePointClippingPropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDevicePointClippingPropertiesKHR.pNext' isn't allowed to be filled");
   }
   get pointClippingBehavior() {
     return this.memoryView.getInt32(0x10);
@@ -28991,6 +31094,9 @@ class VkPhysicalDevicePointClippingPropertiesKHR {
 VkPhysicalDevicePointClippingPropertiesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -29023,7 +31129,7 @@ class VkMemoryDedicatedRequirements {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkMemoryDedicatedRequirements' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -29038,6 +31144,7 @@ class VkMemoryDedicatedRequirements {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkMemoryDedicatedRequirements.pNext' isn't allowed to be filled");
   }
   get prefersDedicatedAllocation() {
     return this.memoryView.getUint32(0x10);
@@ -29051,6 +31158,9 @@ class VkMemoryDedicatedRequirements {
 VkMemoryDedicatedRequirements.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -29087,7 +31197,7 @@ class VkMemoryDedicatedRequirementsKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkMemoryDedicatedRequirementsKHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -29102,6 +31212,7 @@ class VkMemoryDedicatedRequirementsKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkMemoryDedicatedRequirementsKHR.pNext' isn't allowed to be filled");
   }
   get prefersDedicatedAllocation() {
     return this.memoryView.getUint32(0x10);
@@ -29115,6 +31226,9 @@ class VkMemoryDedicatedRequirementsKHR {
 VkMemoryDedicatedRequirementsKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -29168,6 +31282,7 @@ class VkMemoryDedicatedAllocateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkMemoryDedicatedAllocateInfo.pNext' isn't allowed to be filled");
   }
   get image() {
     return this._image;
@@ -29179,6 +31294,7 @@ class VkMemoryDedicatedAllocateInfo {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._image = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkMemoryDedicatedAllocateInfo.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
@@ -29193,6 +31309,7 @@ class VkMemoryDedicatedAllocateInfo {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._buffer = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkMemoryDedicatedAllocateInfo.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
@@ -29203,6 +31320,9 @@ class VkMemoryDedicatedAllocateInfo {
 VkMemoryDedicatedAllocateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -29256,6 +31376,7 @@ class VkMemoryDedicatedAllocateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkMemoryDedicatedAllocateInfoKHR.pNext' isn't allowed to be filled");
   }
   get image() {
     return this._image;
@@ -29267,6 +31388,7 @@ class VkMemoryDedicatedAllocateInfoKHR {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._image = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkMemoryDedicatedAllocateInfoKHR.image': Expected 'VkImage' but got '" + value.constructor.name + "'");
     }
@@ -29281,6 +31403,7 @@ class VkMemoryDedicatedAllocateInfoKHR {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._buffer = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkMemoryDedicatedAllocateInfoKHR.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
@@ -29291,6 +31414,9 @@ class VkMemoryDedicatedAllocateInfoKHR {
 VkMemoryDedicatedAllocateInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -29342,6 +31468,7 @@ class VkImageViewUsageCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkImageViewUsageCreateInfo.pNext' isn't allowed to be filled");
   }
   get usage() {
     return this.memoryView.getInt32(0x10);
@@ -29355,6 +31482,9 @@ class VkImageViewUsageCreateInfo {
 VkImageViewUsageCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -29402,6 +31532,7 @@ class VkImageViewUsageCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkImageViewUsageCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get usage() {
     return this.memoryView.getInt32(0x10);
@@ -29415,6 +31546,9 @@ class VkImageViewUsageCreateInfoKHR {
 VkImageViewUsageCreateInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -29462,6 +31596,7 @@ class VkPipelineTessellationDomainOriginStateCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPipelineTessellationDomainOriginStateCreateInfo.pNext' isn't allowed to be filled");
   }
   get domainOrigin() {
     return this.memoryView.getInt32(0x10);
@@ -29475,6 +31610,9 @@ class VkPipelineTessellationDomainOriginStateCreateInfo {
 VkPipelineTessellationDomainOriginStateCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -29522,6 +31660,7 @@ class VkPipelineTessellationDomainOriginStateCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPipelineTessellationDomainOriginStateCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get domainOrigin() {
     return this.memoryView.getInt32(0x10);
@@ -29535,6 +31674,9 @@ class VkPipelineTessellationDomainOriginStateCreateInfoKHR {
 VkPipelineTessellationDomainOriginStateCreateInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -29582,6 +31724,7 @@ class VkSamplerYcbcrConversionInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkSamplerYcbcrConversionInfo.pNext' isn't allowed to be filled");
   }
   get conversion() {
     return this._conversion;
@@ -29593,6 +31736,7 @@ class VkSamplerYcbcrConversionInfo {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._conversion = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionInfo.conversion': Expected 'VkSamplerYcbcrConversion' but got '" + value.constructor.name + "'");
     }
@@ -29603,6 +31747,9 @@ class VkSamplerYcbcrConversionInfo {
 VkSamplerYcbcrConversionInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -29650,6 +31797,7 @@ class VkSamplerYcbcrConversionInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkSamplerYcbcrConversionInfoKHR.pNext' isn't allowed to be filled");
   }
   get conversion() {
     return this._conversion;
@@ -29661,6 +31809,7 @@ class VkSamplerYcbcrConversionInfoKHR {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._conversion = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionInfoKHR.conversion': Expected 'VkSamplerYcbcrConversion' but got '" + value.constructor.name + "'");
     }
@@ -29671,6 +31820,9 @@ class VkSamplerYcbcrConversionInfoKHR {
 VkSamplerYcbcrConversionInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -29732,6 +31884,22 @@ class VkSamplerYcbcrConversionCreateInfo {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfo.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfo.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfo.pNext'");
+    }
   }
   get format() {
     return this.memoryView.getInt32(0x10);
@@ -29761,6 +31929,7 @@ class VkSamplerYcbcrConversionCreateInfo {
       this.memoryView.setBigInt64(0x1C, value.memoryAddress);
     } else if (value === null) {
       this._components = null;
+      this.memoryView.setBigInt64(0x1C, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfo.components': Expected 'VkComponentMapping' but got '" + value.constructor.name + "'");
     }
@@ -29795,6 +31964,9 @@ class VkSamplerYcbcrConversionCreateInfo {
 VkSamplerYcbcrConversionCreateInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -29886,6 +32058,22 @@ class VkSamplerYcbcrConversionCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfoKHR.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfoKHR.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfoKHR.pNext'");
+    }
   }
   get format() {
     return this.memoryView.getInt32(0x10);
@@ -29915,6 +32103,7 @@ class VkSamplerYcbcrConversionCreateInfoKHR {
       this.memoryView.setBigInt64(0x1C, value.memoryAddress);
     } else if (value === null) {
       this._components = null;
+      this.memoryView.setBigInt64(0x1C, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkSamplerYcbcrConversionCreateInfoKHR.components': Expected 'VkComponentMapping' but got '" + value.constructor.name + "'");
     }
@@ -29949,6 +32138,9 @@ class VkSamplerYcbcrConversionCreateInfoKHR {
 VkSamplerYcbcrConversionCreateInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -30026,6 +32218,7 @@ class VkBindImagePlaneMemoryInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkBindImagePlaneMemoryInfo.pNext' isn't allowed to be filled");
   }
   get planeAspect() {
     return this.memoryView.getInt32(0x10);
@@ -30039,6 +32232,9 @@ class VkBindImagePlaneMemoryInfo {
 VkBindImagePlaneMemoryInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -30086,6 +32282,7 @@ class VkBindImagePlaneMemoryInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkBindImagePlaneMemoryInfoKHR.pNext' isn't allowed to be filled");
   }
   get planeAspect() {
     return this.memoryView.getInt32(0x10);
@@ -30099,6 +32296,9 @@ class VkBindImagePlaneMemoryInfoKHR {
 VkBindImagePlaneMemoryInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -30146,6 +32346,7 @@ class VkImagePlaneMemoryRequirementsInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkImagePlaneMemoryRequirementsInfo.pNext' isn't allowed to be filled");
   }
   get planeAspect() {
     return this.memoryView.getInt32(0x10);
@@ -30159,6 +32360,9 @@ class VkImagePlaneMemoryRequirementsInfo {
 VkImagePlaneMemoryRequirementsInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -30206,6 +32410,7 @@ class VkImagePlaneMemoryRequirementsInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkImagePlaneMemoryRequirementsInfoKHR.pNext' isn't allowed to be filled");
   }
   get planeAspect() {
     return this.memoryView.getInt32(0x10);
@@ -30219,6 +32424,9 @@ class VkImagePlaneMemoryRequirementsInfoKHR {
 VkImagePlaneMemoryRequirementsInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -30266,6 +32474,7 @@ class VkPhysicalDeviceSamplerYcbcrConversionFeatures {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceSamplerYcbcrConversionFeatures.pNext' isn't allowed to be filled");
   }
   get samplerYcbcrConversion() {
     return this.memoryView.getUint32(0x10);
@@ -30279,6 +32488,9 @@ class VkPhysicalDeviceSamplerYcbcrConversionFeatures {
 VkPhysicalDeviceSamplerYcbcrConversionFeatures.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -30326,6 +32538,7 @@ class VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR.pNext' isn't allowed to be filled");
   }
   get samplerYcbcrConversion() {
     return this.memoryView.getUint32(0x10);
@@ -30339,6 +32552,9 @@ class VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR {
 VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -30370,7 +32586,7 @@ class VkSamplerYcbcrConversionImageFormatProperties {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkSamplerYcbcrConversionImageFormatProperties' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -30385,6 +32601,7 @@ class VkSamplerYcbcrConversionImageFormatProperties {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkSamplerYcbcrConversionImageFormatProperties.pNext' isn't allowed to be filled");
   }
   get combinedImageSamplerDescriptorCount() {
     return this.memoryView.getUint32(0x10);
@@ -30395,6 +32612,9 @@ class VkSamplerYcbcrConversionImageFormatProperties {
 VkSamplerYcbcrConversionImageFormatProperties.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -30426,7 +32646,7 @@ class VkSamplerYcbcrConversionImageFormatPropertiesKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkSamplerYcbcrConversionImageFormatPropertiesKHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -30441,6 +32661,7 @@ class VkSamplerYcbcrConversionImageFormatPropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkSamplerYcbcrConversionImageFormatPropertiesKHR.pNext' isn't allowed to be filled");
   }
   get combinedImageSamplerDescriptorCount() {
     return this.memoryView.getUint32(0x10);
@@ -30451,6 +32672,9 @@ class VkSamplerYcbcrConversionImageFormatPropertiesKHR {
 VkSamplerYcbcrConversionImageFormatPropertiesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -30482,7 +32706,7 @@ class VkTextureLODGatherFormatPropertiesAMD {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkTextureLODGatherFormatPropertiesAMD' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -30497,6 +32721,7 @@ class VkTextureLODGatherFormatPropertiesAMD {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkTextureLODGatherFormatPropertiesAMD.pNext' isn't allowed to be filled");
   }
   get supportsTextureGatherLODBiasAMD() {
     return this.memoryView.getUint32(0x10);
@@ -30507,6 +32732,9 @@ class VkTextureLODGatherFormatPropertiesAMD {
 VkTextureLODGatherFormatPropertiesAMD.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -30558,6 +32786,7 @@ class VkConditionalRenderingBeginInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkConditionalRenderingBeginInfoEXT.pNext' isn't allowed to be filled");
   }
   get buffer() {
     return this._buffer;
@@ -30569,6 +32798,7 @@ class VkConditionalRenderingBeginInfoEXT {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._buffer = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkConditionalRenderingBeginInfoEXT.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
@@ -30591,6 +32821,9 @@ class VkConditionalRenderingBeginInfoEXT {
 VkConditionalRenderingBeginInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -30646,6 +32879,7 @@ class VkProtectedSubmitInfo {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkProtectedSubmitInfo.pNext' isn't allowed to be filled");
   }
   get protectedSubmit() {
     return this.memoryView.getUint32(0x10);
@@ -30659,6 +32893,9 @@ class VkProtectedSubmitInfo {
 VkProtectedSubmitInfo.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -30706,6 +32943,7 @@ class VkPhysicalDeviceProtectedMemoryFeatures {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceProtectedMemoryFeatures.pNext' isn't allowed to be filled");
   }
   get protectedMemory() {
     return this.memoryView.getUint32(0x10);
@@ -30719,6 +32957,9 @@ class VkPhysicalDeviceProtectedMemoryFeatures {
 VkPhysicalDeviceProtectedMemoryFeatures.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -30750,7 +32991,7 @@ class VkPhysicalDeviceProtectedMemoryProperties {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_PROPERTIES;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceProtectedMemoryProperties' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -30765,6 +33006,7 @@ class VkPhysicalDeviceProtectedMemoryProperties {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceProtectedMemoryProperties.pNext' isn't allowed to be filled");
   }
   get protectedNoFault() {
     return this.memoryView.getUint32(0x10);
@@ -30775,6 +33017,9 @@ class VkPhysicalDeviceProtectedMemoryProperties {
 VkPhysicalDeviceProtectedMemoryProperties.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -30826,6 +33071,7 @@ class VkDeviceQueueInfo2 {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDeviceQueueInfo2.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -30851,6 +33097,9 @@ class VkDeviceQueueInfo2 {
 VkDeviceQueueInfo2.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -30910,6 +33159,7 @@ class VkPipelineCoverageToColorStateCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPipelineCoverageToColorStateCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -30935,6 +33185,9 @@ class VkPipelineCoverageToColorStateCreateInfoNV {
 VkPipelineCoverageToColorStateCreateInfoNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -30975,7 +33228,7 @@ class VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES_EXT;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -30990,6 +33243,7 @@ class VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get filterMinmaxSingleComponentFormats() {
     return this.memoryView.getUint32(0x10);
@@ -31003,6 +33257,9 @@ class VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT {
 VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -31108,6 +33365,7 @@ class VkSampleLocationsInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkSampleLocationsInfoEXT.pNext' isn't allowed to be filled");
   }
   get sampleLocationsPerPixel() {
     return this.memoryView.getInt32(0x10);
@@ -31125,6 +33383,7 @@ class VkSampleLocationsInfoEXT {
       this.memoryView.setBigInt64(0x14, value.memoryAddress);
     } else if (value === null) {
       this._sampleLocationGridSize = null;
+      this.memoryView.setBigInt64(0x14, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkSampleLocationsInfoEXT.sampleLocationGridSize': Expected 'VkExtent2D' but got '" + value.constructor.name + "'");
     }
@@ -31153,6 +33412,9 @@ class VkSampleLocationsInfoEXT {
 VkSampleLocationsInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -31160,6 +33422,7 @@ VkSampleLocationsInfoEXT.prototype.flush = function flush() {
   if (this._pSampleLocations !== null) {
     if (this._pSampleLocations.length !== this.sampleLocationsCount) {
       throw new RangeError("Invalid array length, expected array length of 'sampleLocationsCount' for 'VkSampleLocationsInfoEXT.pSampleLocations'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pSampleLocations);
     this._pSampleLocationsNative = nativeArray;
@@ -31228,6 +33491,7 @@ class VkAttachmentSampleLocationsEXT {
       this.memoryView.setBigInt64(0x8, value.memoryAddress);
     } else if (value === null) {
       this._sampleLocationsInfo = null;
+      this.memoryView.setBigInt64(0x8, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkAttachmentSampleLocationsEXT.sampleLocationsInfo': Expected 'VkSampleLocationsInfoEXT' but got '" + value.constructor.name + "'");
     }
@@ -31285,6 +33549,7 @@ class VkSubpassSampleLocationsEXT {
       this.memoryView.setBigInt64(0x8, value.memoryAddress);
     } else if (value === null) {
       this._sampleLocationsInfo = null;
+      this.memoryView.setBigInt64(0x8, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkSubpassSampleLocationsEXT.sampleLocationsInfo': Expected 'VkSampleLocationsInfoEXT' but got '" + value.constructor.name + "'");
     }
@@ -31346,6 +33611,7 @@ class VkRenderPassSampleLocationsBeginInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkRenderPassSampleLocationsBeginInfoEXT.pNext' isn't allowed to be filled");
   }
   get attachmentInitialSampleLocationsCount() {
     return this.memoryView.getUint32(0x10);
@@ -31389,11 +33655,15 @@ class VkRenderPassSampleLocationsBeginInfoEXT {
 VkRenderPassSampleLocationsBeginInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pAttachmentInitialSampleLocations !== null) {
     if (this._pAttachmentInitialSampleLocations.length !== this.attachmentInitialSampleLocationsCount) {
       throw new RangeError("Invalid array length, expected array length of 'attachmentInitialSampleLocationsCount' for 'VkRenderPassSampleLocationsBeginInfoEXT.pAttachmentInitialSampleLocations'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pAttachmentInitialSampleLocations);
     this._pAttachmentInitialSampleLocationsNative = nativeArray;
@@ -31404,6 +33674,7 @@ VkRenderPassSampleLocationsBeginInfoEXT.prototype.flush = function flush() {
   if (this._pPostSubpassSampleLocations !== null) {
     if (this._pPostSubpassSampleLocations.length !== this.postSubpassSampleLocationsCount) {
       throw new RangeError("Invalid array length, expected array length of 'postSubpassSampleLocationsCount' for 'VkRenderPassSampleLocationsBeginInfoEXT.pPostSubpassSampleLocations'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pPostSubpassSampleLocations);
     this._pPostSubpassSampleLocationsNative = nativeArray;
@@ -31470,6 +33741,7 @@ class VkPipelineSampleLocationsStateCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPipelineSampleLocationsStateCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get sampleLocationsEnable() {
     return this.memoryView.getUint32(0x10);
@@ -31487,6 +33759,7 @@ class VkPipelineSampleLocationsStateCreateInfoEXT {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._sampleLocationsInfo = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkPipelineSampleLocationsStateCreateInfoEXT.sampleLocationsInfo': Expected 'VkSampleLocationsInfoEXT' but got '" + value.constructor.name + "'");
     }
@@ -31497,6 +33770,9 @@ class VkPipelineSampleLocationsStateCreateInfoEXT {
 VkPipelineSampleLocationsStateCreateInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -31538,7 +33814,7 @@ class VkPhysicalDeviceSampleLocationsPropertiesEXT {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceSampleLocationsPropertiesEXT' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -31553,6 +33829,7 @@ class VkPhysicalDeviceSampleLocationsPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceSampleLocationsPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get sampleLocationSampleCounts() {
     return this.memoryView.getInt32(0x10);
@@ -31575,6 +33852,9 @@ class VkPhysicalDeviceSampleLocationsPropertiesEXT {
 VkPhysicalDeviceSampleLocationsPropertiesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -31632,7 +33912,7 @@ class VkMultisamplePropertiesEXT {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_MULTISAMPLE_PROPERTIES_EXT;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkMultisamplePropertiesEXT' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -31647,6 +33927,7 @@ class VkMultisamplePropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkMultisamplePropertiesEXT.pNext' isn't allowed to be filled");
   }
   get maxSampleLocationGridSize() {
     return this._maxSampleLocationGridSize;
@@ -31657,6 +33938,9 @@ class VkMultisamplePropertiesEXT {
 VkMultisamplePropertiesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -31706,6 +33990,7 @@ class VkSamplerReductionModeCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkSamplerReductionModeCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get reductionMode() {
     return this.memoryView.getInt32(0x10);
@@ -31719,6 +34004,9 @@ class VkSamplerReductionModeCreateInfoEXT {
 VkSamplerReductionModeCreateInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -31766,6 +34054,7 @@ class VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get advancedBlendCoherentOperations() {
     return this.memoryView.getUint32(0x10);
@@ -31779,6 +34068,9 @@ class VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT {
 VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -31815,7 +34107,7 @@ class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -31830,6 +34122,7 @@ class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get advancedBlendMaxColorAttachments() {
     return this.memoryView.getUint32(0x10);
@@ -31855,6 +34148,9 @@ class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT {
 VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -31926,6 +34222,7 @@ class VkPipelineColorBlendAdvancedStateCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPipelineColorBlendAdvancedStateCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get srcPremultiplied() {
     return this.memoryView.getUint32(0x10);
@@ -31951,6 +34248,9 @@ class VkPipelineColorBlendAdvancedStateCreateInfoEXT {
 VkPipelineColorBlendAdvancedStateCreateInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -32008,6 +34308,7 @@ class VkPhysicalDeviceInlineUniformBlockFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceInlineUniformBlockFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get inlineUniformBlock() {
     return this.memoryView.getUint32(0x10);
@@ -32027,6 +34328,9 @@ class VkPhysicalDeviceInlineUniformBlockFeaturesEXT {
 VkPhysicalDeviceInlineUniformBlockFeaturesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -32066,7 +34370,7 @@ class VkPhysicalDeviceInlineUniformBlockPropertiesEXT {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_PROPERTIES_EXT;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceInlineUniformBlockPropertiesEXT' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -32081,6 +34385,7 @@ class VkPhysicalDeviceInlineUniformBlockPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceInlineUniformBlockPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get maxInlineUniformBlockSize() {
     return this.memoryView.getUint32(0x10);
@@ -32103,6 +34408,9 @@ class VkPhysicalDeviceInlineUniformBlockPropertiesEXT {
 VkPhysicalDeviceInlineUniformBlockPropertiesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -32168,6 +34476,7 @@ class VkWriteDescriptorSetInlineUniformBlockEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkWriteDescriptorSetInlineUniformBlockEXT.pNext' isn't allowed to be filled");
   }
   get dataSize() {
     return this.memoryView.getUint32(0x10);
@@ -32194,6 +34503,9 @@ class VkWriteDescriptorSetInlineUniformBlockEXT {
 VkWriteDescriptorSetInlineUniformBlockEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -32245,6 +34557,7 @@ class VkDescriptorPoolInlineUniformBlockCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDescriptorPoolInlineUniformBlockCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get maxInlineUniformBlockBindings() {
     return this.memoryView.getUint32(0x10);
@@ -32258,6 +34571,9 @@ class VkDescriptorPoolInlineUniformBlockCreateInfoEXT {
 VkDescriptorPoolInlineUniformBlockCreateInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -32313,6 +34629,7 @@ class VkPipelineCoverageModulationStateCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPipelineCoverageModulationStateCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -32357,6 +34674,9 @@ class VkPipelineCoverageModulationStateCreateInfoNV {
 VkPipelineCoverageModulationStateCreateInfoNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -32422,6 +34742,7 @@ class VkImageFormatListCreateInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkImageFormatListCreateInfoKHR.pNext' isn't allowed to be filled");
   }
   get viewFormatCount() {
     return this.memoryView.getUint32(0x10);
@@ -32448,6 +34769,9 @@ class VkImageFormatListCreateInfoKHR {
 VkImageFormatListCreateInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -32503,6 +34827,7 @@ class VkValidationCacheCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkValidationCacheCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -32535,6 +34860,9 @@ class VkValidationCacheCreateInfoEXT {
 VkValidationCacheCreateInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -32590,6 +34918,7 @@ class VkShaderModuleValidationCacheCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkShaderModuleValidationCacheCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get validationCache() {
     return this._validationCache;
@@ -32601,6 +34930,7 @@ class VkShaderModuleValidationCacheCreateInfoEXT {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._validationCache = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkShaderModuleValidationCacheCreateInfoEXT.validationCache': Expected 'VkValidationCacheEXT' but got '" + value.constructor.name + "'");
     }
@@ -32611,6 +34941,9 @@ class VkShaderModuleValidationCacheCreateInfoEXT {
 VkShaderModuleValidationCacheCreateInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -32643,7 +34976,7 @@ class VkPhysicalDeviceMaintenance3Properties {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceMaintenance3Properties' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -32658,6 +34991,7 @@ class VkPhysicalDeviceMaintenance3Properties {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceMaintenance3Properties.pNext' isn't allowed to be filled");
   }
   get maxPerSetDescriptors() {
     return this.memoryView.getUint32(0x10);
@@ -32671,6 +35005,9 @@ class VkPhysicalDeviceMaintenance3Properties {
 VkPhysicalDeviceMaintenance3Properties.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -32707,7 +35044,7 @@ class VkPhysicalDeviceMaintenance3PropertiesKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceMaintenance3PropertiesKHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -32722,6 +35059,7 @@ class VkPhysicalDeviceMaintenance3PropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceMaintenance3PropertiesKHR.pNext' isn't allowed to be filled");
   }
   get maxPerSetDescriptors() {
     return this.memoryView.getUint32(0x10);
@@ -32735,6 +35073,9 @@ class VkPhysicalDeviceMaintenance3PropertiesKHR {
 VkPhysicalDeviceMaintenance3PropertiesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -32770,7 +35111,7 @@ class VkDescriptorSetLayoutSupport {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_SUPPORT;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkDescriptorSetLayoutSupport' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -32785,6 +35126,22 @@ class VkDescriptorSetLayoutSupport {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkDescriptorSetLayoutSupport.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkDescriptorSetLayoutSupport.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkDescriptorSetLayoutSupport.pNext'");
+    }
   }
   get supported() {
     return this.memoryView.getUint32(0x10);
@@ -32795,6 +35152,9 @@ class VkDescriptorSetLayoutSupport {
 VkDescriptorSetLayoutSupport.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -32826,7 +35186,7 @@ class VkDescriptorSetLayoutSupportKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_SUPPORT_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkDescriptorSetLayoutSupportKHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -32841,6 +35201,22 @@ class VkDescriptorSetLayoutSupportKHR {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkDescriptorSetLayoutSupportKHR.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT_EXT:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkDescriptorSetLayoutSupportKHR.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkDescriptorSetLayoutSupportKHR.pNext'");
+    }
   }
   get supported() {
     return this.memoryView.getUint32(0x10);
@@ -32851,6 +35227,9 @@ class VkDescriptorSetLayoutSupportKHR {
 VkDescriptorSetLayoutSupportKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -32898,6 +35277,7 @@ class VkPhysicalDeviceShaderDrawParameterFeatures {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceShaderDrawParameterFeatures.pNext' isn't allowed to be filled");
   }
   get shaderDrawParameters() {
     return this.memoryView.getUint32(0x10);
@@ -32911,6 +35291,9 @@ class VkPhysicalDeviceShaderDrawParameterFeatures {
 VkPhysicalDeviceShaderDrawParameterFeatures.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -32960,6 +35343,7 @@ class VkPhysicalDeviceFloat16Int8FeaturesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceFloat16Int8FeaturesKHR.pNext' isn't allowed to be filled");
   }
   get shaderFloat16() {
     return this.memoryView.getUint32(0x10);
@@ -32979,6 +35363,9 @@ class VkPhysicalDeviceFloat16Int8FeaturesKHR {
 VkPhysicalDeviceFloat16Int8FeaturesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -33030,7 +35417,7 @@ class VkPhysicalDeviceFloatControlsPropertiesKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceFloatControlsPropertiesKHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -33045,6 +35432,7 @@ class VkPhysicalDeviceFloatControlsPropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceFloatControlsPropertiesKHR.pNext' isn't allowed to be filled");
   }
   get separateDenormSettings() {
     return this.memoryView.getUint32(0x10);
@@ -33103,6 +35491,9 @@ class VkPhysicalDeviceFloatControlsPropertiesKHR {
 VkPhysicalDeviceFloatControlsPropertiesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -33200,7 +35591,7 @@ class VkShaderResourceUsageAMD {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkShaderResourceUsageAMD' is read-only and can only be filled by vulkan");
     }
   }
   get numUsedVgprs() {
@@ -33265,7 +35656,7 @@ class VkShaderStatisticsInfoAMD {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkShaderStatisticsInfoAMD' is read-only and can only be filled by vulkan");
     }
   }
   get shaderStageMask() {
@@ -33366,6 +35757,7 @@ class VkDeviceQueueGlobalPriorityCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDeviceQueueGlobalPriorityCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get globalPriority() {
     return this.memoryView.getInt32(0x10);
@@ -33379,6 +35771,9 @@ class VkDeviceQueueGlobalPriorityCreateInfoEXT {
 VkDeviceQueueGlobalPriorityCreateInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -33430,6 +35825,7 @@ class VkDebugUtilsObjectNameInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDebugUtilsObjectNameInfoEXT.pNext' isn't allowed to be filled");
   }
   get objectType() {
     return this.memoryView.getInt32(0x10);
@@ -33468,6 +35864,9 @@ class VkDebugUtilsObjectNameInfoEXT {
 VkDebugUtilsObjectNameInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -33531,6 +35930,7 @@ class VkDebugUtilsObjectTagInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDebugUtilsObjectTagInfoEXT.pNext' isn't allowed to be filled");
   }
   get objectType() {
     return this.memoryView.getInt32(0x10);
@@ -33575,6 +35975,9 @@ class VkDebugUtilsObjectTagInfoEXT {
 VkDebugUtilsObjectTagInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -33640,6 +36043,7 @@ class VkDebugUtilsLabelEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDebugUtilsLabelEXT.pNext' isn't allowed to be filled");
   }
   get pLabelName() {
     if (this._pLabelName !== null) {
@@ -33678,6 +36082,9 @@ class VkDebugUtilsLabelEXT {
 VkDebugUtilsLabelEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._color !== null) {
@@ -33743,6 +36150,7 @@ class VkDebugUtilsMessengerCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDebugUtilsMessengerCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -33781,6 +36189,9 @@ class VkDebugUtilsMessengerCreateInfoEXT {
 VkDebugUtilsMessengerCreateInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -33861,6 +36272,7 @@ class VkDebugUtilsMessengerCallbackDataEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDebugUtilsMessengerCallbackDataEXT.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -33972,11 +36384,15 @@ class VkDebugUtilsMessengerCallbackDataEXT {
 VkDebugUtilsMessengerCallbackDataEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pQueueLabels !== null) {
     if (this._pQueueLabels.length !== this.queueLabelCount) {
       throw new RangeError("Invalid array length, expected array length of 'queueLabelCount' for 'VkDebugUtilsMessengerCallbackDataEXT.pQueueLabels'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pQueueLabels);
     this._pQueueLabelsNative = nativeArray;
@@ -33987,6 +36403,7 @@ VkDebugUtilsMessengerCallbackDataEXT.prototype.flush = function flush() {
   if (this._pCmdBufLabels !== null) {
     if (this._pCmdBufLabels.length !== this.cmdBufLabelCount) {
       throw new RangeError("Invalid array length, expected array length of 'cmdBufLabelCount' for 'VkDebugUtilsMessengerCallbackDataEXT.pCmdBufLabels'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pCmdBufLabels);
     this._pCmdBufLabelsNative = nativeArray;
@@ -33997,6 +36414,7 @@ VkDebugUtilsMessengerCallbackDataEXT.prototype.flush = function flush() {
   if (this._pObjects !== null) {
     if (this._pObjects.length !== this.objectCount) {
       throw new RangeError("Invalid array length, expected array length of 'objectCount' for 'VkDebugUtilsMessengerCallbackDataEXT.pObjects'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pObjects);
     this._pObjectsNative = nativeArray;
@@ -34087,6 +36505,7 @@ class VkImportMemoryHostPointerInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkImportMemoryHostPointerInfoEXT.pNext' isn't allowed to be filled");
   }
   get handleType() {
     return this.memoryView.getInt32(0x10);
@@ -34113,6 +36532,9 @@ class VkImportMemoryHostPointerInfoEXT {
 VkImportMemoryHostPointerInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -34148,7 +36570,7 @@ class VkMemoryHostPointerPropertiesEXT {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_MEMORY_HOST_POINTER_PROPERTIES_EXT;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkMemoryHostPointerPropertiesEXT' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -34163,6 +36585,7 @@ class VkMemoryHostPointerPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkMemoryHostPointerPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get memoryTypeBits() {
     return this.memoryView.getUint32(0x10);
@@ -34173,6 +36596,9 @@ class VkMemoryHostPointerPropertiesEXT {
 VkMemoryHostPointerPropertiesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -34204,7 +36630,7 @@ class VkPhysicalDeviceExternalMemoryHostPropertiesEXT {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceExternalMemoryHostPropertiesEXT' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -34219,6 +36645,7 @@ class VkPhysicalDeviceExternalMemoryHostPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceExternalMemoryHostPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get minImportedHostPointerAlignment() {
     return this.memoryView.getBigUint64(0x10);
@@ -34229,6 +36656,9 @@ class VkPhysicalDeviceExternalMemoryHostPropertiesEXT {
 VkPhysicalDeviceExternalMemoryHostPropertiesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -34268,7 +36698,7 @@ class VkPhysicalDeviceConservativeRasterizationPropertiesEXT {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceConservativeRasterizationPropertiesEXT' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -34283,6 +36713,7 @@ class VkPhysicalDeviceConservativeRasterizationPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceConservativeRasterizationPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get primitiveOverestimationSize() {
     return this.memoryView.getFloat32(0x10);
@@ -34317,6 +36748,9 @@ class VkPhysicalDeviceConservativeRasterizationPropertiesEXT {
 VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -34396,6 +36830,7 @@ class VkCalibratedTimestampInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkCalibratedTimestampInfoEXT.pNext' isn't allowed to be filled");
   }
   get timeDomain() {
     return this.memoryView.getInt32(0x10);
@@ -34409,6 +36844,9 @@ class VkCalibratedTimestampInfoEXT {
 VkCalibratedTimestampInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -34453,7 +36891,7 @@ class VkPhysicalDeviceShaderCorePropertiesAMD {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceShaderCorePropertiesAMD' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -34468,6 +36906,7 @@ class VkPhysicalDeviceShaderCorePropertiesAMD {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceShaderCorePropertiesAMD.pNext' isn't allowed to be filled");
   }
   get shaderEngineCount() {
     return this.memoryView.getUint32(0x10);
@@ -34517,6 +36956,9 @@ class VkPhysicalDeviceShaderCorePropertiesAMD {
 VkPhysicalDeviceShaderCorePropertiesAMD.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -34620,6 +37062,7 @@ class VkPipelineRasterizationConservativeStateCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPipelineRasterizationConservativeStateCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -34645,6 +37088,9 @@ class VkPipelineRasterizationConservativeStateCreateInfoEXT {
 VkPipelineRasterizationConservativeStateCreateInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -34738,6 +37184,7 @@ class VkPhysicalDeviceDescriptorIndexingFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceDescriptorIndexingFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get shaderInputAttachmentArrayDynamicIndexing() {
     return this.memoryView.getUint32(0x10);
@@ -34865,6 +37312,9 @@ class VkPhysicalDeviceDescriptorIndexingFeaturesEXT {
 VkPhysicalDeviceDescriptorIndexingFeaturesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -34994,7 +37444,7 @@ class VkPhysicalDeviceDescriptorIndexingPropertiesEXT {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES_EXT;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceDescriptorIndexingPropertiesEXT' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -35009,6 +37459,7 @@ class VkPhysicalDeviceDescriptorIndexingPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceDescriptorIndexingPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get maxUpdateAfterBindDescriptorsInAllPools() {
     return this.memoryView.getUint32(0x10);
@@ -35085,6 +37536,9 @@ class VkPhysicalDeviceDescriptorIndexingPropertiesEXT {
 VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -35222,6 +37676,7 @@ class VkDescriptorSetLayoutBindingFlagsCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDescriptorSetLayoutBindingFlagsCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get bindingCount() {
     return this.memoryView.getUint32(0x10);
@@ -35248,6 +37703,9 @@ class VkDescriptorSetLayoutBindingFlagsCreateInfoEXT {
 VkDescriptorSetLayoutBindingFlagsCreateInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -35301,6 +37759,7 @@ class VkDescriptorSetVariableDescriptorCountAllocateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDescriptorSetVariableDescriptorCountAllocateInfoEXT.pNext' isn't allowed to be filled");
   }
   get descriptorSetCount() {
     return this.memoryView.getUint32(0x10);
@@ -35327,6 +37786,9 @@ class VkDescriptorSetVariableDescriptorCountAllocateInfoEXT {
 VkDescriptorSetVariableDescriptorCountAllocateInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -35362,7 +37824,7 @@ class VkDescriptorSetVariableDescriptorCountLayoutSupportEXT {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT_EXT;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkDescriptorSetVariableDescriptorCountLayoutSupportEXT' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -35377,6 +37839,7 @@ class VkDescriptorSetVariableDescriptorCountLayoutSupportEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDescriptorSetVariableDescriptorCountLayoutSupportEXT.pNext' isn't allowed to be filled");
   }
   get maxVariableDescriptorCount() {
     return this.memoryView.getUint32(0x10);
@@ -35387,6 +37850,9 @@ class VkDescriptorSetVariableDescriptorCountLayoutSupportEXT {
 VkDescriptorSetVariableDescriptorCountLayoutSupportEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -35450,6 +37916,7 @@ class VkAttachmentDescription2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkAttachmentDescription2KHR.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -35511,6 +37978,9 @@ class VkAttachmentDescription2KHR {
 VkAttachmentDescription2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -35594,6 +38064,7 @@ class VkAttachmentReference2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkAttachmentReference2KHR.pNext' isn't allowed to be filled");
   }
   get attachment() {
     return this.memoryView.getUint32(0x10);
@@ -35619,6 +38090,9 @@ class VkAttachmentReference2KHR {
 VkAttachmentReference2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -35697,6 +38171,22 @@ class VkSubpassDescription2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    if (value !== null) {
+      if (value.sType <= -1) throw new TypeError("Invalid type for 'VkSubpassDescription2KHR.pNext'");
+      switch (value.sType) {
+          
+        case VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE_KHR:
+          break;
+        default:
+          throw new TypeError("Invalid type for 'VkSubpassDescription2KHR.pNext'");
+      };
+      this._pNext = value;
+      this.memoryView.setBigInt64(0x8, value.memoryAddress);
+    } else if (value === null) {
+      this.memoryView.setBigInt64(0x8, 0n);
+    } else {
+      throw new TypeError("Invalid type for 'VkSubpassDescription2KHR.pNext'");
+    }
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -35774,6 +38264,7 @@ class VkSubpassDescription2KHR {
       this.memoryView.setBigInt64(0x40, value.memoryAddress);
     } else if (value === null) {
       this._pDepthStencilAttachment = null;
+      this.memoryView.setBigInt64(0x40, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkSubpassDescription2KHR.pDepthStencilAttachment': Expected 'VkAttachmentReference2KHR' but got '" + value.constructor.name + "'");
     }
@@ -35803,11 +38294,15 @@ class VkSubpassDescription2KHR {
 VkSubpassDescription2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pInputAttachments !== null) {
     if (this._pInputAttachments.length !== this.inputAttachmentCount) {
       throw new RangeError("Invalid array length, expected array length of 'inputAttachmentCount' for 'VkSubpassDescription2KHR.pInputAttachments'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pInputAttachments);
     this._pInputAttachmentsNative = nativeArray;
@@ -35818,6 +38313,7 @@ VkSubpassDescription2KHR.prototype.flush = function flush() {
   if (this._pColorAttachments !== null) {
     if (this._pColorAttachments.length !== this.colorAttachmentCount) {
       throw new RangeError("Invalid array length, expected array length of 'colorAttachmentCount' for 'VkSubpassDescription2KHR.pColorAttachments'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pColorAttachments);
     this._pColorAttachmentsNative = nativeArray;
@@ -35828,6 +38324,7 @@ VkSubpassDescription2KHR.prototype.flush = function flush() {
   if (this._pResolveAttachments !== null) {
     if (this._pResolveAttachments.length !== this.colorAttachmentCount) {
       throw new RangeError("Invalid array length, expected array length of 'colorAttachmentCount' for 'VkSubpassDescription2KHR.pResolveAttachments'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pResolveAttachments);
     this._pResolveAttachmentsNative = nativeArray;
@@ -35934,6 +38431,7 @@ class VkSubpassDependency2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkSubpassDependency2KHR.pNext' isn't allowed to be filled");
   }
   get srcSubpass() {
     return this.memoryView.getUint32(0x10);
@@ -35989,6 +38487,9 @@ class VkSubpassDependency2KHR {
 VkSubpassDependency2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -36083,6 +38584,7 @@ class VkRenderPassCreateInfo2KHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkRenderPassCreateInfo2KHR.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -36169,11 +38671,15 @@ class VkRenderPassCreateInfo2KHR {
 VkRenderPassCreateInfo2KHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pAttachments !== null) {
     if (this._pAttachments.length !== this.attachmentCount) {
       throw new RangeError("Invalid array length, expected array length of 'attachmentCount' for 'VkRenderPassCreateInfo2KHR.pAttachments'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pAttachments);
     this._pAttachmentsNative = nativeArray;
@@ -36184,6 +38690,7 @@ VkRenderPassCreateInfo2KHR.prototype.flush = function flush() {
   if (this._pSubpasses !== null) {
     if (this._pSubpasses.length !== this.subpassCount) {
       throw new RangeError("Invalid array length, expected array length of 'subpassCount' for 'VkRenderPassCreateInfo2KHR.pSubpasses'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pSubpasses);
     this._pSubpassesNative = nativeArray;
@@ -36194,6 +38701,7 @@ VkRenderPassCreateInfo2KHR.prototype.flush = function flush() {
   if (this._pDependencies !== null) {
     if (this._pDependencies.length !== this.dependencyCount) {
       throw new RangeError("Invalid array length, expected array length of 'dependencyCount' for 'VkRenderPassCreateInfo2KHR.pDependencies'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pDependencies);
     this._pDependenciesNative = nativeArray;
@@ -36278,6 +38786,7 @@ class VkSubpassBeginInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkSubpassBeginInfoKHR.pNext' isn't allowed to be filled");
   }
   get contents() {
     return this.memoryView.getInt32(0x10);
@@ -36291,6 +38800,9 @@ class VkSubpassBeginInfoKHR {
 VkSubpassBeginInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -36336,6 +38848,7 @@ class VkSubpassEndInfoKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkSubpassEndInfoKHR.pNext' isn't allowed to be filled");
   }
   
 };
@@ -36343,6 +38856,9 @@ class VkSubpassEndInfoKHR {
 VkSubpassEndInfoKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -36436,6 +38952,7 @@ class VkPipelineVertexInputDivisorStateCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPipelineVertexInputDivisorStateCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get vertexBindingDivisorCount() {
     return this.memoryView.getUint32(0x10);
@@ -36461,11 +38978,15 @@ class VkPipelineVertexInputDivisorStateCreateInfoEXT {
 VkPipelineVertexInputDivisorStateCreateInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pVertexBindingDivisors !== null) {
     if (this._pVertexBindingDivisors.length !== this.vertexBindingDivisorCount) {
       throw new RangeError("Invalid array length, expected array length of 'vertexBindingDivisorCount' for 'VkPipelineVertexInputDivisorStateCreateInfoEXT.pVertexBindingDivisors'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pVertexBindingDivisors);
     this._pVertexBindingDivisorsNative = nativeArray;
@@ -36506,7 +39027,7 @@ class VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -36521,6 +39042,7 @@ class VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get maxVertexAttribDivisor() {
     return this.memoryView.getUint32(0x10);
@@ -36531,6 +39053,9 @@ class VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT {
 VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -36565,7 +39090,7 @@ class VkPhysicalDevicePCIBusInfoPropertiesEXT {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDevicePCIBusInfoPropertiesEXT' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -36580,6 +39105,7 @@ class VkPhysicalDevicePCIBusInfoPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDevicePCIBusInfoPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get pciDomain() {
     return this.memoryView.getUint32(0x10);
@@ -36599,6 +39125,9 @@ class VkPhysicalDevicePCIBusInfoPropertiesEXT {
 VkPhysicalDevicePCIBusInfoPropertiesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -36658,6 +39187,7 @@ class VkCommandBufferInheritanceConditionalRenderingInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkCommandBufferInheritanceConditionalRenderingInfoEXT.pNext' isn't allowed to be filled");
   }
   get conditionalRenderingEnable() {
     return this.memoryView.getUint32(0x10);
@@ -36671,6 +39201,9 @@ class VkCommandBufferInheritanceConditionalRenderingInfoEXT {
 VkCommandBufferInheritanceConditionalRenderingInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -36722,6 +39255,7 @@ class VkPhysicalDevice8BitStorageFeaturesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDevice8BitStorageFeaturesKHR.pNext' isn't allowed to be filled");
   }
   get storageBuffer8BitAccess() {
     return this.memoryView.getUint32(0x10);
@@ -36747,6 +39281,9 @@ class VkPhysicalDevice8BitStorageFeaturesKHR {
 VkPhysicalDevice8BitStorageFeaturesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -36804,6 +39341,7 @@ class VkPhysicalDeviceConditionalRenderingFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceConditionalRenderingFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get conditionalRendering() {
     return this.memoryView.getUint32(0x10);
@@ -36823,6 +39361,9 @@ class VkPhysicalDeviceConditionalRenderingFeaturesEXT {
 VkPhysicalDeviceConditionalRenderingFeaturesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -36878,6 +39419,7 @@ class VkPhysicalDeviceVulkanMemoryModelFeaturesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.pNext' isn't allowed to be filled");
   }
   get vulkanMemoryModel() {
     return this.memoryView.getUint32(0x10);
@@ -36903,6 +39445,9 @@ class VkPhysicalDeviceVulkanMemoryModelFeaturesKHR {
 VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -36960,6 +39505,7 @@ class VkPhysicalDeviceShaderAtomicInt64FeaturesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceShaderAtomicInt64FeaturesKHR.pNext' isn't allowed to be filled");
   }
   get shaderBufferInt64Atomics() {
     return this.memoryView.getUint32(0x10);
@@ -36979,6 +39525,9 @@ class VkPhysicalDeviceShaderAtomicInt64FeaturesKHR {
 VkPhysicalDeviceShaderAtomicInt64FeaturesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -37032,6 +39581,7 @@ class VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get vertexAttributeInstanceRateDivisor() {
     return this.memoryView.getUint32(0x10);
@@ -37051,6 +39601,9 @@ class VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT {
 VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -37086,7 +39639,7 @@ class VkQueueFamilyCheckpointPropertiesNV {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkQueueFamilyCheckpointPropertiesNV' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -37101,6 +39654,7 @@ class VkQueueFamilyCheckpointPropertiesNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkQueueFamilyCheckpointPropertiesNV.pNext' isn't allowed to be filled");
   }
   get checkpointExecutionStageMask() {
     return this.memoryView.getInt32(0x10);
@@ -37111,6 +39665,9 @@ class VkQueueFamilyCheckpointPropertiesNV {
 VkQueueFamilyCheckpointPropertiesNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -37143,7 +39700,7 @@ class VkCheckpointDataNV {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_CHECKPOINT_DATA_NV;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkCheckpointDataNV' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       if (opts.pCheckpointMarker !== void 0) this.pCheckpointMarker = opts.pCheckpointMarker;
       
@@ -37159,6 +39716,7 @@ class VkCheckpointDataNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkCheckpointDataNV.pNext' isn't allowed to be filled");
   }
   get stage() {
     return this.memoryView.getInt32(0x10);
@@ -37182,6 +39740,9 @@ class VkCheckpointDataNV {
 VkCheckpointDataNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -37220,7 +39781,7 @@ class VkPhysicalDeviceDepthStencilResolvePropertiesKHR {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES_KHR;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceDepthStencilResolvePropertiesKHR' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -37235,6 +39796,7 @@ class VkPhysicalDeviceDepthStencilResolvePropertiesKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceDepthStencilResolvePropertiesKHR.pNext' isn't allowed to be filled");
   }
   get supportedDepthResolveModes() {
     return this.memoryView.getInt32(0x10);
@@ -37254,6 +39816,9 @@ class VkPhysicalDeviceDepthStencilResolvePropertiesKHR {
 VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -37317,6 +39882,7 @@ class VkSubpassDescriptionDepthStencilResolveKHR {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkSubpassDescriptionDepthStencilResolveKHR.pNext' isn't allowed to be filled");
   }
   get depthResolveMode() {
     return this.memoryView.getInt32(0x10);
@@ -37340,6 +39906,7 @@ class VkSubpassDescriptionDepthStencilResolveKHR {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._pDepthStencilResolveAttachment = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkSubpassDescriptionDepthStencilResolveKHR.pDepthStencilResolveAttachment': Expected 'VkAttachmentReference2KHR' but got '" + value.constructor.name + "'");
     }
@@ -37350,6 +39917,9 @@ class VkSubpassDescriptionDepthStencilResolveKHR {
 VkSubpassDescriptionDepthStencilResolveKHR.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -37405,6 +39975,7 @@ class VkImageViewASTCDecodeModeEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkImageViewASTCDecodeModeEXT.pNext' isn't allowed to be filled");
   }
   get decodeMode() {
     return this.memoryView.getInt32(0x10);
@@ -37418,6 +39989,9 @@ class VkImageViewASTCDecodeModeEXT {
 VkImageViewASTCDecodeModeEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -37465,6 +40039,7 @@ class VkPhysicalDeviceASTCDecodeFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceASTCDecodeFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get decodeModeSharedExponent() {
     return this.memoryView.getUint32(0x10);
@@ -37478,6 +40053,9 @@ class VkPhysicalDeviceASTCDecodeFeaturesEXT {
 VkPhysicalDeviceASTCDecodeFeaturesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -37527,6 +40105,7 @@ class VkPhysicalDeviceTransformFeedbackFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceTransformFeedbackFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get transformFeedback() {
     return this.memoryView.getUint32(0x10);
@@ -37546,6 +40125,9 @@ class VkPhysicalDeviceTransformFeedbackFeaturesEXT {
 VkPhysicalDeviceTransformFeedbackFeaturesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -37590,7 +40172,7 @@ class VkPhysicalDeviceTransformFeedbackPropertiesEXT {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceTransformFeedbackPropertiesEXT' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -37605,6 +40187,7 @@ class VkPhysicalDeviceTransformFeedbackPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceTransformFeedbackPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get maxTransformFeedbackStreams() {
     return this.memoryView.getUint32(0x10);
@@ -37642,6 +40225,9 @@ class VkPhysicalDeviceTransformFeedbackPropertiesEXT {
 VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -37727,6 +40313,7 @@ class VkPipelineRasterizationStateStreamCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPipelineRasterizationStateStreamCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -37746,6 +40333,9 @@ class VkPipelineRasterizationStateStreamCreateInfoEXT {
 VkPipelineRasterizationStateStreamCreateInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -37797,6 +40387,7 @@ class VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.pNext' isn't allowed to be filled");
   }
   get representativeFragmentTest() {
     return this.memoryView.getUint32(0x10);
@@ -37810,6 +40401,9 @@ class VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV {
 VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -37857,6 +40451,7 @@ class VkPipelineRepresentativeFragmentTestStateCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPipelineRepresentativeFragmentTestStateCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get representativeFragmentTestEnable() {
     return this.memoryView.getUint32(0x10);
@@ -37870,6 +40465,9 @@ class VkPipelineRepresentativeFragmentTestStateCreateInfoNV {
 VkPipelineRepresentativeFragmentTestStateCreateInfoNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -37917,6 +40515,7 @@ class VkPhysicalDeviceExclusiveScissorFeaturesNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceExclusiveScissorFeaturesNV.pNext' isn't allowed to be filled");
   }
   get exclusiveScissor() {
     return this.memoryView.getUint32(0x10);
@@ -37930,6 +40529,9 @@ class VkPhysicalDeviceExclusiveScissorFeaturesNV {
 VkPhysicalDeviceExclusiveScissorFeaturesNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -37980,6 +40582,7 @@ class VkPipelineViewportExclusiveScissorStateCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPipelineViewportExclusiveScissorStateCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get exclusiveScissorCount() {
     return this.memoryView.getUint32(0x10);
@@ -38005,11 +40608,15 @@ class VkPipelineViewportExclusiveScissorStateCreateInfoNV {
 VkPipelineViewportExclusiveScissorStateCreateInfoNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pExclusiveScissors !== null) {
     if (this._pExclusiveScissors.length !== this.exclusiveScissorCount) {
       throw new RangeError("Invalid array length, expected array length of 'exclusiveScissorCount' for 'VkPipelineViewportExclusiveScissorStateCreateInfoNV.pExclusiveScissors'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pExclusiveScissors);
     this._pExclusiveScissorsNative = nativeArray;
@@ -38066,6 +40673,7 @@ class VkPhysicalDeviceCornerSampledImageFeaturesNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceCornerSampledImageFeaturesNV.pNext' isn't allowed to be filled");
   }
   get cornerSampledImage() {
     return this.memoryView.getUint32(0x10);
@@ -38079,6 +40687,9 @@ class VkPhysicalDeviceCornerSampledImageFeaturesNV {
 VkPhysicalDeviceCornerSampledImageFeaturesNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -38128,6 +40739,7 @@ class VkPhysicalDeviceComputeShaderDerivativesFeaturesNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceComputeShaderDerivativesFeaturesNV.pNext' isn't allowed to be filled");
   }
   get computeDerivativeGroupQuads() {
     return this.memoryView.getUint32(0x10);
@@ -38147,6 +40759,9 @@ class VkPhysicalDeviceComputeShaderDerivativesFeaturesNV {
 VkPhysicalDeviceComputeShaderDerivativesFeaturesNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -38198,6 +40813,7 @@ class VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV.pNext' isn't allowed to be filled");
   }
   get fragmentShaderBarycentric() {
     return this.memoryView.getUint32(0x10);
@@ -38211,6 +40827,9 @@ class VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV {
 VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -38258,6 +40877,7 @@ class VkPhysicalDeviceShaderImageFootprintFeaturesNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceShaderImageFootprintFeaturesNV.pNext' isn't allowed to be filled");
   }
   get imageFootprint() {
     return this.memoryView.getUint32(0x10);
@@ -38271,6 +40891,9 @@ class VkPhysicalDeviceShaderImageFootprintFeaturesNV {
 VkPhysicalDeviceShaderImageFootprintFeaturesNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -38318,6 +40941,7 @@ class VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.pNext' isn't allowed to be filled");
   }
   get dedicatedAllocationImageAliasing() {
     return this.memoryView.getUint32(0x10);
@@ -38331,6 +40955,9 @@ class VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV {
 VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -38437,6 +41064,7 @@ class VkPipelineViewportShadingRateImageStateCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPipelineViewportShadingRateImageStateCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get shadingRateImageEnable() {
     return this.memoryView.getUint32(0x10);
@@ -38468,11 +41096,15 @@ class VkPipelineViewportShadingRateImageStateCreateInfoNV {
 VkPipelineViewportShadingRateImageStateCreateInfoNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pShadingRatePalettes !== null) {
     if (this._pShadingRatePalettes.length !== this.viewportCount) {
       throw new RangeError("Invalid array length, expected array length of 'viewportCount' for 'VkPipelineViewportShadingRateImageStateCreateInfoNV.pShadingRatePalettes'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pShadingRatePalettes);
     this._pShadingRatePalettesNative = nativeArray;
@@ -38535,6 +41167,7 @@ class VkPhysicalDeviceShadingRateImageFeaturesNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceShadingRateImageFeaturesNV.pNext' isn't allowed to be filled");
   }
   get shadingRateImage() {
     return this.memoryView.getUint32(0x10);
@@ -38554,6 +41187,9 @@ class VkPhysicalDeviceShadingRateImageFeaturesNV {
 VkPhysicalDeviceShadingRateImageFeaturesNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -38591,7 +41227,7 @@ class VkPhysicalDeviceShadingRateImagePropertiesNV {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceShadingRateImagePropertiesNV' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -38606,6 +41242,7 @@ class VkPhysicalDeviceShadingRateImagePropertiesNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceShadingRateImagePropertiesNV.pNext' isn't allowed to be filled");
   }
   get shadingRateTexelSize() {
     return this._shadingRateTexelSize;
@@ -38622,6 +41259,9 @@ class VkPhysicalDeviceShadingRateImagePropertiesNV {
 VkPhysicalDeviceShadingRateImagePropertiesNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -38770,6 +41410,7 @@ VkCoarseSampleOrderCustomNV.prototype.flush = function flush() {
   if (this._pSampleLocations !== null) {
     if (this._pSampleLocations.length !== this.sampleLocationCount) {
       throw new RangeError("Invalid array length, expected array length of 'sampleLocationCount' for 'VkCoarseSampleOrderCustomNV.pSampleLocations'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pSampleLocations);
     this._pSampleLocationsNative = nativeArray;
@@ -38831,6 +41472,7 @@ class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get sampleOrderType() {
     return this.memoryView.getInt32(0x10);
@@ -38862,11 +41504,15 @@ class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV {
 VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pCustomSampleOrders !== null) {
     if (this._pCustomSampleOrders.length !== this.customSampleOrderCount) {
       throw new RangeError("Invalid array length, expected array length of 'customSampleOrderCount' for 'VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.pCustomSampleOrders'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pCustomSampleOrders);
     this._pCustomSampleOrdersNative = nativeArray;
@@ -38929,6 +41575,7 @@ class VkPhysicalDeviceMeshShaderFeaturesNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceMeshShaderFeaturesNV.pNext' isn't allowed to be filled");
   }
   get taskShader() {
     return this.memoryView.getUint32(0x10);
@@ -38948,6 +41595,9 @@ class VkPhysicalDeviceMeshShaderFeaturesNV {
 VkPhysicalDeviceMeshShaderFeaturesNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -38995,7 +41645,7 @@ class VkPhysicalDeviceMeshShaderPropertiesNV {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceMeshShaderPropertiesNV' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -39010,6 +41660,7 @@ class VkPhysicalDeviceMeshShaderPropertiesNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceMeshShaderPropertiesNV.pNext' isn't allowed to be filled");
   }
   get maxDrawMeshTasksCount() {
     return this.memoryView.getUint32(0x10);
@@ -39056,6 +41707,9 @@ class VkPhysicalDeviceMeshShaderPropertiesNV {
 VkPhysicalDeviceMeshShaderPropertiesNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._maxTaskWorkGroupSize !== null) {
@@ -39222,6 +41876,7 @@ class VkRayTracingShaderGroupCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkRayTracingShaderGroupCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get type() {
     return this.memoryView.getInt32(0x10);
@@ -39259,6 +41914,9 @@ class VkRayTracingShaderGroupCreateInfoNV {
 VkRayTracingShaderGroupCreateInfoNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -39340,6 +41998,7 @@ class VkRayTracingPipelineCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkRayTracingPipelineCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -39399,6 +42058,7 @@ class VkRayTracingPipelineCreateInfoNV {
       this.memoryView.setBigInt64(0x38, value.memoryAddress);
     } else if (value === null) {
       this._layout = null;
+      this.memoryView.setBigInt64(0x38, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkRayTracingPipelineCreateInfoNV.layout': Expected 'VkPipelineLayout' but got '" + value.constructor.name + "'");
     }
@@ -39413,6 +42073,7 @@ class VkRayTracingPipelineCreateInfoNV {
       this.memoryView.setBigInt64(0x40, value.memoryAddress);
     } else if (value === null) {
       this._basePipelineHandle = null;
+      this.memoryView.setBigInt64(0x40, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkRayTracingPipelineCreateInfoNV.basePipelineHandle': Expected 'VkPipeline' but got '" + value.constructor.name + "'");
     }
@@ -39429,11 +42090,15 @@ class VkRayTracingPipelineCreateInfoNV {
 VkRayTracingPipelineCreateInfoNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pStages !== null) {
     if (this._pStages.length !== this.stageCount) {
       throw new RangeError("Invalid array length, expected array length of 'stageCount' for 'VkRayTracingPipelineCreateInfoNV.pStages'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pStages);
     this._pStagesNative = nativeArray;
@@ -39444,6 +42109,7 @@ VkRayTracingPipelineCreateInfoNV.prototype.flush = function flush() {
   if (this._pGroups !== null) {
     if (this._pGroups.length !== this.groupCount) {
       throw new RangeError("Invalid array length, expected array length of 'groupCount' for 'VkRayTracingPipelineCreateInfoNV.pGroups'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pGroups);
     this._pGroupsNative = nativeArray;
@@ -39548,6 +42214,7 @@ class VkGeometryTrianglesNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkGeometryTrianglesNV.pNext' isn't allowed to be filled");
   }
   get vertexData() {
     return this._vertexData;
@@ -39559,6 +42226,7 @@ class VkGeometryTrianglesNV {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._vertexData = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkGeometryTrianglesNV.vertexData': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
@@ -39597,6 +42265,7 @@ class VkGeometryTrianglesNV {
       this.memoryView.setBigInt64(0x38, value.memoryAddress);
     } else if (value === null) {
       this._indexData = null;
+      this.memoryView.setBigInt64(0x38, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkGeometryTrianglesNV.indexData': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
@@ -39629,6 +42298,7 @@ class VkGeometryTrianglesNV {
       this.memoryView.setBigInt64(0x50, value.memoryAddress);
     } else if (value === null) {
       this._transformData = null;
+      this.memoryView.setBigInt64(0x50, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkGeometryTrianglesNV.transformData': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
@@ -39645,6 +42315,9 @@ class VkGeometryTrianglesNV {
 VkGeometryTrianglesNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -39738,6 +42411,7 @@ class VkGeometryAABBNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkGeometryAABBNV.pNext' isn't allowed to be filled");
   }
   get aabbData() {
     return this._aabbData;
@@ -39749,6 +42423,7 @@ class VkGeometryAABBNV {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._aabbData = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkGeometryAABBNV.aabbData': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
@@ -39777,6 +42452,9 @@ class VkGeometryAABBNV {
 VkGeometryAABBNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -39834,6 +42512,7 @@ class VkGeometryDataNV {
       this.memoryView.setBigInt64(0x0, value.memoryAddress);
     } else if (value === null) {
       this._triangles = null;
+      this.memoryView.setBigInt64(0x0, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkGeometryDataNV.triangles': Expected 'VkGeometryTrianglesNV' but got '" + value.constructor.name + "'");
     }
@@ -39848,6 +42527,7 @@ class VkGeometryDataNV {
       this.memoryView.setBigInt64(0x60, value.memoryAddress);
     } else if (value === null) {
       this._aabbs = null;
+      this.memoryView.setBigInt64(0x60, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkGeometryDataNV.aabbs': Expected 'VkGeometryAABBNV' but got '" + value.constructor.name + "'");
     }
@@ -39907,6 +42587,7 @@ class VkGeometryNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkGeometryNV.pNext' isn't allowed to be filled");
   }
   get geometryType() {
     return this.memoryView.getInt32(0x10);
@@ -39924,6 +42605,7 @@ class VkGeometryNV {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._geometry = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkGeometryNV.geometry': Expected 'VkGeometryDataNV' but got '" + value.constructor.name + "'");
     }
@@ -39940,6 +42622,9 @@ class VkGeometryNV {
 VkGeometryNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -40006,6 +42691,7 @@ class VkAccelerationStructureInfoNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkAccelerationStructureInfoNV.pNext' isn't allowed to be filled");
   }
   get type() {
     return this.memoryView.getInt32(0x10);
@@ -40049,11 +42735,15 @@ class VkAccelerationStructureInfoNV {
 VkAccelerationStructureInfoNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pGeometries !== null) {
     if (this._pGeometries.length !== this.geometryCount) {
       throw new RangeError("Invalid array length, expected array length of 'geometryCount' for 'VkAccelerationStructureInfoNV.pGeometries'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pGeometries);
     this._pGeometriesNative = nativeArray;
@@ -40124,6 +42814,7 @@ class VkAccelerationStructureCreateInfoNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkAccelerationStructureCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get compactedSize() {
     return this.memoryView.getBigUint64(0x10);
@@ -40141,6 +42832,7 @@ class VkAccelerationStructureCreateInfoNV {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._info = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkAccelerationStructureCreateInfoNV.info': Expected 'VkAccelerationStructureInfoNV' but got '" + value.constructor.name + "'");
     }
@@ -40151,6 +42843,9 @@ class VkAccelerationStructureCreateInfoNV {
 VkAccelerationStructureCreateInfoNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -40212,6 +42907,7 @@ class VkBindAccelerationStructureMemoryInfoNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkBindAccelerationStructureMemoryInfoNV.pNext' isn't allowed to be filled");
   }
   get accelerationStructure() {
     return this._accelerationStructure;
@@ -40223,6 +42919,7 @@ class VkBindAccelerationStructureMemoryInfoNV {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._accelerationStructure = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkBindAccelerationStructureMemoryInfoNV.accelerationStructure': Expected 'VkAccelerationStructureNV' but got '" + value.constructor.name + "'");
     }
@@ -40237,6 +42934,7 @@ class VkBindAccelerationStructureMemoryInfoNV {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._memory = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkBindAccelerationStructureMemoryInfoNV.memory': Expected 'VkDeviceMemory' but got '" + value.constructor.name + "'");
     }
@@ -40272,6 +42970,9 @@ class VkBindAccelerationStructureMemoryInfoNV {
 VkBindAccelerationStructureMemoryInfoNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -40338,6 +43039,7 @@ class VkWriteDescriptorSetAccelerationStructureNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkWriteDescriptorSetAccelerationStructureNV.pNext' isn't allowed to be filled");
   }
   get accelerationStructureCount() {
     return this.memoryView.getUint32(0x10);
@@ -40363,11 +43065,15 @@ class VkWriteDescriptorSetAccelerationStructureNV {
 VkWriteDescriptorSetAccelerationStructureNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pAccelerationStructures !== null) {
     if (this._pAccelerationStructures.length !== this.accelerationStructureCount) {
       throw new RangeError("Invalid array length, expected array length of 'accelerationStructureCount' for 'VkWriteDescriptorSetAccelerationStructureNV.pAccelerationStructures'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pAccelerationStructures);
     this._pAccelerationStructuresNative = nativeArray;
@@ -40426,6 +43132,7 @@ class VkAccelerationStructureMemoryRequirementsInfoNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkAccelerationStructureMemoryRequirementsInfoNV.pNext' isn't allowed to be filled");
   }
   get type() {
     return this.memoryView.getInt32(0x10);
@@ -40443,6 +43150,7 @@ class VkAccelerationStructureMemoryRequirementsInfoNV {
       this.memoryView.setBigInt64(0x18, value.memoryAddress);
     } else if (value === null) {
       this._accelerationStructure = null;
+      this.memoryView.setBigInt64(0x18, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkAccelerationStructureMemoryRequirementsInfoNV.accelerationStructure': Expected 'VkAccelerationStructureNV' but got '" + value.constructor.name + "'");
     }
@@ -40453,6 +43161,9 @@ class VkAccelerationStructureMemoryRequirementsInfoNV {
 VkAccelerationStructureMemoryRequirementsInfoNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -40495,7 +43206,7 @@ class VkPhysicalDeviceRayTracingPropertiesNV {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PROPERTIES_NV;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceRayTracingPropertiesNV' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -40510,6 +43221,7 @@ class VkPhysicalDeviceRayTracingPropertiesNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceRayTracingPropertiesNV.pNext' isn't allowed to be filled");
   }
   get shaderGroupHandleSize() {
     return this.memoryView.getUint32(0x10);
@@ -40541,6 +43253,9 @@ class VkPhysicalDeviceRayTracingPropertiesNV {
 VkPhysicalDeviceRayTracingPropertiesNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -40602,7 +43317,7 @@ class VkDrmFormatModifierPropertiesListEXT {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_LIST_EXT;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkDrmFormatModifierPropertiesListEXT' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -40617,6 +43332,7 @@ class VkDrmFormatModifierPropertiesListEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDrmFormatModifierPropertiesListEXT.pNext' isn't allowed to be filled");
   }
   get drmFormatModifierCount() {
     return this.memoryView.getUint32(0x10);
@@ -40630,11 +43346,15 @@ class VkDrmFormatModifierPropertiesListEXT {
 VkDrmFormatModifierPropertiesListEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pDrmFormatModifierProperties !== null) {
     if (this._pDrmFormatModifierProperties.length !== this.drmFormatModifierCount) {
       throw new RangeError("Invalid array length, expected array length of 'drmFormatModifierCount' for 'VkDrmFormatModifierPropertiesListEXT.pDrmFormatModifierProperties'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pDrmFormatModifierProperties);
     this._pDrmFormatModifierPropertiesNative = nativeArray;
@@ -40675,7 +43395,7 @@ class VkDrmFormatModifierPropertiesEXT {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     
     if (typeof opts === "object") {
-      
+      throw new Error("'VkDrmFormatModifierPropertiesEXT' is read-only and can only be filled by vulkan");
     }
   }
   get drmFormatModifier() {
@@ -40744,6 +43464,7 @@ class VkPhysicalDeviceImageDrmFormatModifierInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceImageDrmFormatModifierInfoEXT.pNext' isn't allowed to be filled");
   }
   get drmFormatModifier() {
     return this.memoryView.getBigUint64(0x10);
@@ -40782,6 +43503,9 @@ class VkPhysicalDeviceImageDrmFormatModifierInfoEXT {
 VkPhysicalDeviceImageDrmFormatModifierInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -40843,6 +43567,7 @@ class VkImageDrmFormatModifierListCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkImageDrmFormatModifierListCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get drmFormatModifierCount() {
     return this.memoryView.getUint32(0x10);
@@ -40869,6 +43594,9 @@ class VkImageDrmFormatModifierListCreateInfoEXT {
 VkImageDrmFormatModifierListCreateInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -40925,6 +43653,7 @@ class VkImageDrmFormatModifierExplicitCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkImageDrmFormatModifierExplicitCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get drmFormatModifier() {
     return this.memoryView.getBigUint64(0x10);
@@ -40956,11 +43685,15 @@ class VkImageDrmFormatModifierExplicitCreateInfoEXT {
 VkImageDrmFormatModifierExplicitCreateInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._pPlaneLayouts !== null) {
     if (this._pPlaneLayouts.length !== this.drmFormatModifierPlaneCount) {
       throw new RangeError("Invalid array length, expected array length of 'drmFormatModifierPlaneCount' for 'VkImageDrmFormatModifierExplicitCreateInfoEXT.pPlaneLayouts'");
+      return false;
     }
     let nativeArray = new NativeObjectArray(this._pPlaneLayouts);
     this._pPlaneLayoutsNative = nativeArray;
@@ -41005,7 +43738,7 @@ class VkImageDrmFormatModifierPropertiesEXT {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_PROPERTIES_EXT;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkImageDrmFormatModifierPropertiesEXT' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -41020,6 +43753,7 @@ class VkImageDrmFormatModifierPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkImageDrmFormatModifierPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get drmFormatModifier() {
     return this.memoryView.getBigUint64(0x10);
@@ -41030,6 +43764,9 @@ class VkImageDrmFormatModifierPropertiesEXT {
 VkImageDrmFormatModifierPropertiesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -41077,6 +43814,7 @@ class VkImageStencilUsageCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkImageStencilUsageCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get stencilUsage() {
     return this.memoryView.getInt32(0x10);
@@ -41090,6 +43828,9 @@ class VkImageStencilUsageCreateInfoEXT {
 VkImageStencilUsageCreateInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -41137,6 +43878,7 @@ class VkDeviceMemoryOverallocationCreateInfoAMD {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkDeviceMemoryOverallocationCreateInfoAMD.pNext' isn't allowed to be filled");
   }
   get overallocationBehavior() {
     return this.memoryView.getInt32(0x10);
@@ -41150,6 +43892,9 @@ class VkDeviceMemoryOverallocationCreateInfoAMD {
 VkDeviceMemoryOverallocationCreateInfoAMD.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -41183,7 +43928,7 @@ class VkPhysicalDeviceFragmentDensityMapFeaturesEXT {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceFragmentDensityMapFeaturesEXT' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -41198,6 +43943,7 @@ class VkPhysicalDeviceFragmentDensityMapFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceFragmentDensityMapFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get fragmentDensityMap() {
     return this.memoryView.getUint32(0x10);
@@ -41214,6 +43960,9 @@ class VkPhysicalDeviceFragmentDensityMapFeaturesEXT {
 VkPhysicalDeviceFragmentDensityMapFeaturesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -41255,7 +44004,7 @@ class VkPhysicalDeviceFragmentDensityMapPropertiesEXT {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceFragmentDensityMapPropertiesEXT' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -41270,6 +44019,7 @@ class VkPhysicalDeviceFragmentDensityMapPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceFragmentDensityMapPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get minFragmentDensityTexelSize() {
     return this._minFragmentDensityTexelSize;
@@ -41286,6 +44036,9 @@ class VkPhysicalDeviceFragmentDensityMapPropertiesEXT {
 VkPhysicalDeviceFragmentDensityMapPropertiesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -41345,6 +44098,7 @@ class VkRenderPassFragmentDensityMapCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkRenderPassFragmentDensityMapCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get fragmentDensityMapAttachment() {
     return this._fragmentDensityMapAttachment;
@@ -41356,6 +44110,7 @@ class VkRenderPassFragmentDensityMapCreateInfoEXT {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._fragmentDensityMapAttachment = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkRenderPassFragmentDensityMapCreateInfoEXT.fragmentDensityMapAttachment': Expected 'VkAttachmentReference' but got '" + value.constructor.name + "'");
     }
@@ -41366,6 +44121,9 @@ class VkRenderPassFragmentDensityMapCreateInfoEXT {
 VkRenderPassFragmentDensityMapCreateInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   
@@ -41415,6 +44173,7 @@ class VkPhysicalDeviceScalarBlockLayoutFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get scalarBlockLayout() {
     return this.memoryView.getUint32(0x10);
@@ -41428,6 +44187,9 @@ class VkPhysicalDeviceScalarBlockLayoutFeaturesEXT {
 VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -41475,6 +44237,7 @@ class VkPhysicalDeviceDepthClipEnableFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceDepthClipEnableFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get depthClipEnable() {
     return this.memoryView.getUint32(0x10);
@@ -41488,6 +44251,9 @@ class VkPhysicalDeviceDepthClipEnableFeaturesEXT {
 VkPhysicalDeviceDepthClipEnableFeaturesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -41537,6 +44303,7 @@ class VkPipelineRasterizationDepthClipStateCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPipelineRasterizationDepthClipStateCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get flags() {
     return this.memoryView.getInt32(0x10);
@@ -41556,6 +44323,9 @@ class VkPipelineRasterizationDepthClipStateCreateInfoEXT {
 VkPipelineRasterizationDepthClipStateCreateInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -41592,7 +44362,7 @@ class VkPhysicalDeviceMemoryBudgetPropertiesEXT {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceMemoryBudgetPropertiesEXT' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -41607,6 +44377,7 @@ class VkPhysicalDeviceMemoryBudgetPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceMemoryBudgetPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get heapBudget() {
     return this._heapBudget;
@@ -41620,6 +44391,9 @@ class VkPhysicalDeviceMemoryBudgetPropertiesEXT {
 VkPhysicalDeviceMemoryBudgetPropertiesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   
   if (this._heapBudget !== null) {
@@ -41687,6 +44461,7 @@ class VkPhysicalDeviceMemoryPriorityFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceMemoryPriorityFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get memoryPriority() {
     return this.memoryView.getUint32(0x10);
@@ -41700,6 +44475,9 @@ class VkPhysicalDeviceMemoryPriorityFeaturesEXT {
 VkPhysicalDeviceMemoryPriorityFeaturesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -41747,6 +44525,7 @@ class VkMemoryPriorityAllocateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkMemoryPriorityAllocateInfoEXT.pNext' isn't allowed to be filled");
   }
   get priority() {
     return this.memoryView.getFloat32(0x10);
@@ -41760,6 +44539,9 @@ class VkMemoryPriorityAllocateInfoEXT {
 VkMemoryPriorityAllocateInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -41811,6 +44593,7 @@ class VkPhysicalDeviceBufferAddressFeaturesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceBufferAddressFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get bufferDeviceAddress() {
     return this.memoryView.getUint32(0x10);
@@ -41836,6 +44619,9 @@ class VkPhysicalDeviceBufferAddressFeaturesEXT {
 VkPhysicalDeviceBufferAddressFeaturesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -41891,6 +44677,7 @@ class VkBufferDeviceAddressInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkBufferDeviceAddressInfoEXT.pNext' isn't allowed to be filled");
   }
   get buffer() {
     return this._buffer;
@@ -41902,6 +44689,7 @@ class VkBufferDeviceAddressInfoEXT {
       this.memoryView.setBigInt64(0x10, value.memoryAddress);
     } else if (value === null) {
       this._buffer = null;
+      this.memoryView.setBigInt64(0x10, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkBufferDeviceAddressInfoEXT.buffer': Expected 'VkBuffer' but got '" + value.constructor.name + "'");
     }
@@ -41912,6 +44700,9 @@ class VkBufferDeviceAddressInfoEXT {
 VkBufferDeviceAddressInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -41959,6 +44750,7 @@ class VkBufferDeviceAddressCreateInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkBufferDeviceAddressCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get deviceAddress() {
     return this.memoryView.getBigUint64(0x10);
@@ -41972,6 +44764,9 @@ class VkBufferDeviceAddressCreateInfoEXT {
 VkBufferDeviceAddressCreateInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -42019,6 +44814,7 @@ class VkPhysicalDeviceImageViewImageFormatInfoEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceImageViewImageFormatInfoEXT.pNext' isn't allowed to be filled");
   }
   get imageViewType() {
     return this.memoryView.getInt32(0x10);
@@ -42032,6 +44828,9 @@ class VkPhysicalDeviceImageViewImageFormatInfoEXT {
 VkPhysicalDeviceImageViewImageFormatInfoEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -42064,7 +44863,7 @@ class VkFilterCubicImageViewImageFormatPropertiesEXT {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkFilterCubicImageViewImageFormatPropertiesEXT' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -42079,6 +44878,7 @@ class VkFilterCubicImageViewImageFormatPropertiesEXT {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkFilterCubicImageViewImageFormatPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get filterCubic() {
     return this.memoryView.getUint32(0x10);
@@ -42092,6 +44892,9 @@ class VkFilterCubicImageViewImageFormatPropertiesEXT {
 VkFilterCubicImageViewImageFormatPropertiesEXT.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -42145,6 +44948,7 @@ class VkPhysicalDeviceCooperativeMatrixFeaturesNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceCooperativeMatrixFeaturesNV.pNext' isn't allowed to be filled");
   }
   get cooperativeMatrix() {
     return this.memoryView.getUint32(0x10);
@@ -42164,6 +44968,9 @@ class VkPhysicalDeviceCooperativeMatrixFeaturesNV {
 VkPhysicalDeviceCooperativeMatrixFeaturesNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -42199,7 +45006,7 @@ class VkPhysicalDeviceCooperativeMatrixPropertiesNV {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     this.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_NV;
     if (typeof opts === "object") {
-      if (opts.sType !== void 0) this.sType = opts.sType;
+      throw new Error("'VkPhysicalDeviceCooperativeMatrixPropertiesNV' is read-only and can only be filled by vulkan");if (opts.sType !== void 0) this.sType = opts.sType;
       if (opts.pNext !== void 0) this.pNext = opts.pNext;
       
     }
@@ -42214,6 +45021,7 @@ class VkPhysicalDeviceCooperativeMatrixPropertiesNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkPhysicalDeviceCooperativeMatrixPropertiesNV.pNext' isn't allowed to be filled");
   }
   get cooperativeMatrixSupportedStages() {
     return this.memoryView.getInt32(0x10);
@@ -42224,6 +45032,9 @@ class VkPhysicalDeviceCooperativeMatrixPropertiesNV {
 VkPhysicalDeviceCooperativeMatrixPropertiesNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -42285,6 +45096,7 @@ class VkCooperativeMatrixPropertiesNV {
     return this._pNext;
   }
   set pNext(value) {
+    throw new TypeError("'VkCooperativeMatrixPropertiesNV.pNext' isn't allowed to be filled");
   }
   get MSize() {
     return this.memoryView.getUint32(0x10);
@@ -42340,6 +45152,9 @@ class VkCooperativeMatrixPropertiesNV {
 VkCooperativeMatrixPropertiesNV.prototype.flush = function flush() {
   
   
+  if (this._pNext !== null) {
+    if (!this._pNext.flush()) return false;
+  }
   
   return true;
 };
@@ -42514,6 +45329,7 @@ class VkClearValue {
       this.memoryView.setBigInt64(0x0, value.memoryAddress);
     } else if (value === null) {
       this._color = null;
+      this.memoryView.setBigInt64(0x0, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkClearValue.color': Expected 'VkClearColorValue' but got '" + value.constructor.name + "'");
     }
@@ -42528,6 +45344,7 @@ class VkClearValue {
       this.memoryView.setBigInt64(0x0, value.memoryAddress);
     } else if (value === null) {
       this._depthStencil = null;
+      this.memoryView.setBigInt64(0x0, 0n);
     } else {
       throw new TypeError("Invalid type for 'VkClearValue.depthStencil': Expected 'VkClearDepthStencilValue' but got '" + value.constructor.name + "'");
     }

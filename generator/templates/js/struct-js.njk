@@ -11,6 +11,9 @@ class {{ struct.name }} {
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     {{ getStructureAutoSType() | safe }}
     if (typeof opts === "object") {
+      {% if struct.returnedonly == true -%}
+      throw new Error("'{{ struct.name }}' is read-only and can only be filled by vulkan");
+      {%- endif -%}
       {% for member in struct.children %}
       {%- if isIgnoreableType(member) != true -%}
       {%- if isFillableMember(struct, member) == true -%}
