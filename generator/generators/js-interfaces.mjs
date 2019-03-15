@@ -252,9 +252,28 @@ function getFlusherProcessor(member) {
   }`;
     }
     case JavaScriptType.ARRAY_OF_OBJECTS: {
-      // TODO: static
+      // TODO: returnedonly
       let {length} = member;
       let isNumber = Number.isInteger(parseInt(length));
+      let byteOffset = getStructureMemberByteOffset(member);
+      let byteLength = getStructureMemberByteLength(member);
+      let write = ``;
+      if (!jsType.isStatic) {
+        write = `
+    let nativeArray = new NativeObjectArray(array);
+    this._${member.name}Native = nativeArray;
+    this.memoryView.setBigInt64(${byteOffset}, nativeArray.address);`;
+      // do a memcpy for static objects
+      } else {
+        write = `
+    let dstView = new Uint8Array(this.memoryBuffer);
+    let byteOffset = ${byteOffset};
+    for (let ii = 0; ii < array.length; ++ii) {
+      let srcView = new Uint8Array(array[ii].memoryBuffer);
+      dstView.set(srcView, byteOffset);
+      byteOffset += ${member.type}.byteLength;
+    };`;
+      }
       return `
   if (this._${member.name} !== null) {
     let array = this._${member.name};
@@ -263,11 +282,13 @@ function getFlusherProcessor(member) {
       return false;
     }
     for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== ${member.type}) {
+        throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}[" + ii + "]': Expected '${member.type}' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
       if (!array[ii].flush()) return false;
     };
-    let nativeArray = new NativeObjectArray(array);
-    this._${member.name}Native = nativeArray;
-    this.memoryView.setBigInt64(${byteOffset}, nativeArray.address);
+    ${write}
   }`;
     }
     case JavaScriptType.TYPED_ARRAY: {

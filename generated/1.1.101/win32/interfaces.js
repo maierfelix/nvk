@@ -1379,11 +1379,20 @@ VkDeviceCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pQueueCreateInfos !== null) {
-    if (this._pQueueCreateInfos.length !== this.queueCreateInfoCount) {
-      throw new RangeError("Invalid array length, expected array length of 'queueCreateInfoCount' for 'VkDeviceCreateInfo.pQueueCreateInfos'");
+    let array = this._pQueueCreateInfos;
+    if (array.length !== this.queueCreateInfoCount) {
+      throw new RangeError("Invalid array length, expected length of 'queueCreateInfoCount' for 'VkDeviceCreateInfo.pQueueCreateInfos'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pQueueCreateInfos);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkDeviceQueueCreateInfo) {
+        throw new TypeError("Invalid type for 'VkDeviceCreateInfo.pQueueCreateInfos[" + ii + "]': Expected 'VkDeviceQueueCreateInfo' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pQueueCreateInfosNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
@@ -1719,24 +1728,50 @@ VkPhysicalDeviceMemoryProperties.prototype.flush = function flush() {
   
   
   if (this._memoryTypes !== null) {
-    if (this._memoryTypes.length !== 32) {
-      throw new RangeError("Invalid array length, expected array length of '32' for 'VkPhysicalDeviceMemoryProperties.memoryTypes'");
+    let array = this._memoryTypes;
+    if (array.length !== 32) {
+      throw new RangeError("Invalid array length, expected length of '32' for 'VkPhysicalDeviceMemoryProperties.memoryTypes'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._memoryTypes);
-    this._memoryTypesNative = nativeArray;
-    this.memoryView.setBigInt64(0x4, nativeArray.address);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkMemoryType) {
+        throw new TypeError("Invalid type for 'VkPhysicalDeviceMemoryProperties.memoryTypes[" + ii + "]': Expected 'VkMemoryType' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let dstView = new Uint8Array(this.memoryBuffer);
+    let byteOffset = 0x4;
+    for (let ii = 0; ii < array.length; ++ii) {
+      let srcView = new Uint8Array(array[ii].memoryBuffer);
+      dstView.set(srcView, byteOffset);
+      byteOffset += VkMemoryType.byteLength;
+    };
   }
   
   
   if (this._memoryHeaps !== null) {
-    if (this._memoryHeaps.length !== 16) {
-      throw new RangeError("Invalid array length, expected array length of '16' for 'VkPhysicalDeviceMemoryProperties.memoryHeaps'");
+    let array = this._memoryHeaps;
+    if (array.length !== 16) {
+      throw new RangeError("Invalid array length, expected length of '16' for 'VkPhysicalDeviceMemoryProperties.memoryHeaps'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._memoryHeaps);
-    this._memoryHeapsNative = nativeArray;
-    this.memoryView.setBigInt64(0x108, nativeArray.address);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkMemoryHeap) {
+        throw new TypeError("Invalid type for 'VkPhysicalDeviceMemoryProperties.memoryHeaps[" + ii + "]': Expected 'VkMemoryHeap' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let dstView = new Uint8Array(this.memoryBuffer);
+    let byteOffset = 0x108;
+    for (let ii = 0; ii < array.length; ++ii) {
+      let srcView = new Uint8Array(array[ii].memoryBuffer);
+      dstView.set(srcView, byteOffset);
+      byteOffset += VkMemoryHeap.byteLength;
+    };
   }
   
   return true;
@@ -2607,33 +2642,60 @@ VkWriteDescriptorSet.prototype.flush = function flush() {
   
   
   if (this._pImageInfo !== null) {
-    if (this._pImageInfo.length !== this.descriptorCount) {
-      throw new RangeError("Invalid array length, expected array length of 'descriptorCount' for 'VkWriteDescriptorSet.pImageInfo'");
+    let array = this._pImageInfo;
+    if (array.length !== this.descriptorCount) {
+      throw new RangeError("Invalid array length, expected length of 'descriptorCount' for 'VkWriteDescriptorSet.pImageInfo'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pImageInfo);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkDescriptorImageInfo) {
+        throw new TypeError("Invalid type for 'VkWriteDescriptorSet.pImageInfo[" + ii + "]': Expected 'VkDescriptorImageInfo' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pImageInfoNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
   }
   
   
   if (this._pBufferInfo !== null) {
-    if (this._pBufferInfo.length !== this.descriptorCount) {
-      throw new RangeError("Invalid array length, expected array length of 'descriptorCount' for 'VkWriteDescriptorSet.pBufferInfo'");
+    let array = this._pBufferInfo;
+    if (array.length !== this.descriptorCount) {
+      throw new RangeError("Invalid array length, expected length of 'descriptorCount' for 'VkWriteDescriptorSet.pBufferInfo'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pBufferInfo);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkDescriptorBufferInfo) {
+        throw new TypeError("Invalid type for 'VkWriteDescriptorSet.pBufferInfo[" + ii + "]': Expected 'VkDescriptorBufferInfo' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pBufferInfoNative = nativeArray;
     this.memoryView.setBigInt64(0x30, nativeArray.address);
   }
   
   
   if (this._pTexelBufferView !== null) {
-    if (this._pTexelBufferView.length !== this.descriptorCount) {
-      throw new RangeError("Invalid array length, expected array length of 'descriptorCount' for 'VkWriteDescriptorSet.pTexelBufferView'");
+    let array = this._pTexelBufferView;
+    if (array.length !== this.descriptorCount) {
+      throw new RangeError("Invalid array length, expected length of 'descriptorCount' for 'VkWriteDescriptorSet.pTexelBufferView'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pTexelBufferView);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkBufferView) {
+        throw new TypeError("Invalid type for 'VkWriteDescriptorSet.pTexelBufferView[" + ii + "]': Expected 'VkBufferView' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pTexelBufferViewNative = nativeArray;
     this.memoryView.setBigInt64(0x38, nativeArray.address);
   }
@@ -4555,11 +4617,20 @@ VkSparseBufferMemoryBindInfo.prototype.flush = function flush() {
   
   
   if (this._pBinds !== null) {
-    if (this._pBinds.length !== this.bindCount) {
-      throw new RangeError("Invalid array length, expected array length of 'bindCount' for 'VkSparseBufferMemoryBindInfo.pBinds'");
+    let array = this._pBinds;
+    if (array.length !== this.bindCount) {
+      throw new RangeError("Invalid array length, expected length of 'bindCount' for 'VkSparseBufferMemoryBindInfo.pBinds'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pBinds);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkSparseMemoryBind) {
+        throw new TypeError("Invalid type for 'VkSparseBufferMemoryBindInfo.pBinds[" + ii + "]': Expected 'VkSparseMemoryBind' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pBindsNative = nativeArray;
     this.memoryView.setBigInt64(0x10, nativeArray.address);
   }
@@ -4641,11 +4712,20 @@ VkSparseImageOpaqueMemoryBindInfo.prototype.flush = function flush() {
   
   
   if (this._pBinds !== null) {
-    if (this._pBinds.length !== this.bindCount) {
-      throw new RangeError("Invalid array length, expected array length of 'bindCount' for 'VkSparseImageOpaqueMemoryBindInfo.pBinds'");
+    let array = this._pBinds;
+    if (array.length !== this.bindCount) {
+      throw new RangeError("Invalid array length, expected length of 'bindCount' for 'VkSparseImageOpaqueMemoryBindInfo.pBinds'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pBinds);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkSparseMemoryBind) {
+        throw new TypeError("Invalid type for 'VkSparseImageOpaqueMemoryBindInfo.pBinds[" + ii + "]': Expected 'VkSparseMemoryBind' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pBindsNative = nativeArray;
     this.memoryView.setBigInt64(0x10, nativeArray.address);
   }
@@ -4727,11 +4807,20 @@ VkSparseImageMemoryBindInfo.prototype.flush = function flush() {
   
   
   if (this._pBinds !== null) {
-    if (this._pBinds.length !== this.bindCount) {
-      throw new RangeError("Invalid array length, expected array length of 'bindCount' for 'VkSparseImageMemoryBindInfo.pBinds'");
+    let array = this._pBinds;
+    if (array.length !== this.bindCount) {
+      throw new RangeError("Invalid array length, expected length of 'bindCount' for 'VkSparseImageMemoryBindInfo.pBinds'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pBinds);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkSparseImageMemoryBind) {
+        throw new TypeError("Invalid type for 'VkSparseImageMemoryBindInfo.pBinds[" + ii + "]': Expected 'VkSparseImageMemoryBind' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pBindsNative = nativeArray;
     this.memoryView.setBigInt64(0x10, nativeArray.address);
   }
@@ -4924,55 +5013,100 @@ VkBindSparseInfo.prototype.flush = function flush() {
   
   
   if (this._pWaitSemaphores !== null) {
-    if (this._pWaitSemaphores.length !== this.waitSemaphoreCount) {
-      throw new RangeError("Invalid array length, expected array length of 'waitSemaphoreCount' for 'VkBindSparseInfo.pWaitSemaphores'");
+    let array = this._pWaitSemaphores;
+    if (array.length !== this.waitSemaphoreCount) {
+      throw new RangeError("Invalid array length, expected length of 'waitSemaphoreCount' for 'VkBindSparseInfo.pWaitSemaphores'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pWaitSemaphores);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkSemaphore) {
+        throw new TypeError("Invalid type for 'VkBindSparseInfo.pWaitSemaphores[" + ii + "]': Expected 'VkSemaphore' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pWaitSemaphoresNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
   
   
   if (this._pBufferBinds !== null) {
-    if (this._pBufferBinds.length !== this.bufferBindCount) {
-      throw new RangeError("Invalid array length, expected array length of 'bufferBindCount' for 'VkBindSparseInfo.pBufferBinds'");
+    let array = this._pBufferBinds;
+    if (array.length !== this.bufferBindCount) {
+      throw new RangeError("Invalid array length, expected length of 'bufferBindCount' for 'VkBindSparseInfo.pBufferBinds'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pBufferBinds);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkSparseBufferMemoryBindInfo) {
+        throw new TypeError("Invalid type for 'VkBindSparseInfo.pBufferBinds[" + ii + "]': Expected 'VkSparseBufferMemoryBindInfo' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pBufferBindsNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
   }
   
   
   if (this._pImageOpaqueBinds !== null) {
-    if (this._pImageOpaqueBinds.length !== this.imageOpaqueBindCount) {
-      throw new RangeError("Invalid array length, expected array length of 'imageOpaqueBindCount' for 'VkBindSparseInfo.pImageOpaqueBinds'");
+    let array = this._pImageOpaqueBinds;
+    if (array.length !== this.imageOpaqueBindCount) {
+      throw new RangeError("Invalid array length, expected length of 'imageOpaqueBindCount' for 'VkBindSparseInfo.pImageOpaqueBinds'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pImageOpaqueBinds);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkSparseImageOpaqueMemoryBindInfo) {
+        throw new TypeError("Invalid type for 'VkBindSparseInfo.pImageOpaqueBinds[" + ii + "]': Expected 'VkSparseImageOpaqueMemoryBindInfo' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pImageOpaqueBindsNative = nativeArray;
     this.memoryView.setBigInt64(0x38, nativeArray.address);
   }
   
   
   if (this._pImageBinds !== null) {
-    if (this._pImageBinds.length !== this.imageBindCount) {
-      throw new RangeError("Invalid array length, expected array length of 'imageBindCount' for 'VkBindSparseInfo.pImageBinds'");
+    let array = this._pImageBinds;
+    if (array.length !== this.imageBindCount) {
+      throw new RangeError("Invalid array length, expected length of 'imageBindCount' for 'VkBindSparseInfo.pImageBinds'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pImageBinds);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkSparseImageMemoryBindInfo) {
+        throw new TypeError("Invalid type for 'VkBindSparseInfo.pImageBinds[" + ii + "]': Expected 'VkSparseImageMemoryBindInfo' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pImageBindsNative = nativeArray;
     this.memoryView.setBigInt64(0x48, nativeArray.address);
   }
   
   
   if (this._pSignalSemaphores !== null) {
-    if (this._pSignalSemaphores.length !== this.signalSemaphoreCount) {
-      throw new RangeError("Invalid array length, expected array length of 'signalSemaphoreCount' for 'VkBindSparseInfo.pSignalSemaphores'");
+    let array = this._pSignalSemaphores;
+    if (array.length !== this.signalSemaphoreCount) {
+      throw new RangeError("Invalid array length, expected length of 'signalSemaphoreCount' for 'VkBindSparseInfo.pSignalSemaphores'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pSignalSemaphores);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkSemaphore) {
+        throw new TypeError("Invalid type for 'VkBindSparseInfo.pSignalSemaphores[" + ii + "]': Expected 'VkSemaphore' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pSignalSemaphoresNative = nativeArray;
     this.memoryView.setBigInt64(0x58, nativeArray.address);
   }
@@ -5252,26 +5386,52 @@ VkImageBlit.prototype.flush = function flush() {
   
   
   if (this._srcOffsets !== null) {
-    if (this._srcOffsets.length !== 2) {
-      throw new RangeError("Invalid array length, expected array length of '2' for 'VkImageBlit.srcOffsets'");
+    let array = this._srcOffsets;
+    if (array.length !== 2) {
+      throw new RangeError("Invalid array length, expected length of '2' for 'VkImageBlit.srcOffsets'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._srcOffsets);
-    this._srcOffsetsNative = nativeArray;
-    this.memoryView.setBigInt64(0x10, nativeArray.address);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkOffset3D) {
+        throw new TypeError("Invalid type for 'VkImageBlit.srcOffsets[" + ii + "]': Expected 'VkOffset3D' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let dstView = new Uint8Array(this.memoryBuffer);
+    let byteOffset = 0x10;
+    for (let ii = 0; ii < array.length; ++ii) {
+      let srcView = new Uint8Array(array[ii].memoryBuffer);
+      dstView.set(srcView, byteOffset);
+      byteOffset += VkOffset3D.byteLength;
+    };
   }
   
   
   
   
   if (this._dstOffsets !== null) {
-    if (this._dstOffsets.length !== 2) {
-      throw new RangeError("Invalid array length, expected array length of '2' for 'VkImageBlit.dstOffsets'");
+    let array = this._dstOffsets;
+    if (array.length !== 2) {
+      throw new RangeError("Invalid array length, expected length of '2' for 'VkImageBlit.dstOffsets'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._dstOffsets);
-    this._dstOffsetsNative = nativeArray;
-    this.memoryView.setBigInt64(0x38, nativeArray.address);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkOffset3D) {
+        throw new TypeError("Invalid type for 'VkImageBlit.dstOffsets[" + ii + "]': Expected 'VkOffset3D' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let dstView = new Uint8Array(this.memoryBuffer);
+    let byteOffset = 0x38;
+    for (let ii = 0; ii < array.length; ++ii) {
+      let srcView = new Uint8Array(array[ii].memoryBuffer);
+      dstView.set(srcView, byteOffset);
+      byteOffset += VkOffset3D.byteLength;
+    };
   }
   
   return true;
@@ -5738,11 +5898,20 @@ VkDescriptorSetLayoutBinding.prototype.flush = function flush() {
   
   
   if (this._pImmutableSamplers !== null) {
-    if (this._pImmutableSamplers.length !== this.descriptorCount) {
-      throw new RangeError("Invalid array length, expected array length of 'descriptorCount' for 'VkDescriptorSetLayoutBinding.pImmutableSamplers'");
+    let array = this._pImmutableSamplers;
+    if (array.length !== this.descriptorCount) {
+      throw new RangeError("Invalid array length, expected length of 'descriptorCount' for 'VkDescriptorSetLayoutBinding.pImmutableSamplers'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pImmutableSamplers);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkSampler) {
+        throw new TypeError("Invalid type for 'VkDescriptorSetLayoutBinding.pImmutableSamplers[" + ii + "]': Expected 'VkSampler' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pImmutableSamplersNative = nativeArray;
     this.memoryView.setBigInt64(0x10, nativeArray.address);
   }
@@ -5859,11 +6028,20 @@ VkDescriptorSetLayoutCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pBindings !== null) {
-    if (this._pBindings.length !== this.bindingCount) {
-      throw new RangeError("Invalid array length, expected array length of 'bindingCount' for 'VkDescriptorSetLayoutCreateInfo.pBindings'");
+    let array = this._pBindings;
+    if (array.length !== this.bindingCount) {
+      throw new RangeError("Invalid array length, expected length of 'bindingCount' for 'VkDescriptorSetLayoutCreateInfo.pBindings'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pBindings);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkDescriptorSetLayoutBinding) {
+        throw new TypeError("Invalid type for 'VkDescriptorSetLayoutCreateInfo.pBindings[" + ii + "]': Expected 'VkDescriptorSetLayoutBinding' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pBindingsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
@@ -6035,11 +6213,20 @@ VkDescriptorPoolCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pPoolSizes !== null) {
-    if (this._pPoolSizes.length !== this.poolSizeCount) {
-      throw new RangeError("Invalid array length, expected array length of 'poolSizeCount' for 'VkDescriptorPoolCreateInfo.pPoolSizes'");
+    let array = this._pPoolSizes;
+    if (array.length !== this.poolSizeCount) {
+      throw new RangeError("Invalid array length, expected length of 'poolSizeCount' for 'VkDescriptorPoolCreateInfo.pPoolSizes'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pPoolSizes);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkDescriptorPoolSize) {
+        throw new TypeError("Invalid type for 'VkDescriptorPoolCreateInfo.pPoolSizes[" + ii + "]': Expected 'VkDescriptorPoolSize' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pPoolSizesNative = nativeArray;
     this.memoryView.setBigInt64(0x20, nativeArray.address);
   }
@@ -6169,11 +6356,20 @@ VkDescriptorSetAllocateInfo.prototype.flush = function flush() {
   
   
   if (this._pSetLayouts !== null) {
-    if (this._pSetLayouts.length !== this.descriptorSetCount) {
-      throw new RangeError("Invalid array length, expected array length of 'descriptorSetCount' for 'VkDescriptorSetAllocateInfo.pSetLayouts'");
+    let array = this._pSetLayouts;
+    if (array.length !== this.descriptorSetCount) {
+      throw new RangeError("Invalid array length, expected length of 'descriptorSetCount' for 'VkDescriptorSetAllocateInfo.pSetLayouts'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pSetLayouts);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkDescriptorSetLayout) {
+        throw new TypeError("Invalid type for 'VkDescriptorSetAllocateInfo.pSetLayouts[" + ii + "]': Expected 'VkDescriptorSetLayout' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pSetLayoutsNative = nativeArray;
     this.memoryView.setBigInt64(0x20, nativeArray.address);
   }
@@ -6328,11 +6524,20 @@ VkSpecializationInfo.prototype.flush = function flush() {
   
   
   if (this._pMapEntries !== null) {
-    if (this._pMapEntries.length !== this.mapEntryCount) {
-      throw new RangeError("Invalid array length, expected array length of 'mapEntryCount' for 'VkSpecializationInfo.pMapEntries'");
+    let array = this._pMapEntries;
+    if (array.length !== this.mapEntryCount) {
+      throw new RangeError("Invalid array length, expected length of 'mapEntryCount' for 'VkSpecializationInfo.pMapEntries'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pMapEntries);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkSpecializationMapEntry) {
+        throw new TypeError("Invalid type for 'VkSpecializationInfo.pMapEntries[" + ii + "]': Expected 'VkSpecializationMapEntry' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pMapEntriesNative = nativeArray;
     this.memoryView.setBigInt64(0x8, nativeArray.address);
   }
@@ -6882,22 +7087,40 @@ VkPipelineVertexInputStateCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pVertexBindingDescriptions !== null) {
-    if (this._pVertexBindingDescriptions.length !== this.vertexBindingDescriptionCount) {
-      throw new RangeError("Invalid array length, expected array length of 'vertexBindingDescriptionCount' for 'VkPipelineVertexInputStateCreateInfo.pVertexBindingDescriptions'");
+    let array = this._pVertexBindingDescriptions;
+    if (array.length !== this.vertexBindingDescriptionCount) {
+      throw new RangeError("Invalid array length, expected length of 'vertexBindingDescriptionCount' for 'VkPipelineVertexInputStateCreateInfo.pVertexBindingDescriptions'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pVertexBindingDescriptions);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkVertexInputBindingDescription) {
+        throw new TypeError("Invalid type for 'VkPipelineVertexInputStateCreateInfo.pVertexBindingDescriptions[" + ii + "]': Expected 'VkVertexInputBindingDescription' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pVertexBindingDescriptionsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
   
   
   if (this._pVertexAttributeDescriptions !== null) {
-    if (this._pVertexAttributeDescriptions.length !== this.vertexAttributeDescriptionCount) {
-      throw new RangeError("Invalid array length, expected array length of 'vertexAttributeDescriptionCount' for 'VkPipelineVertexInputStateCreateInfo.pVertexAttributeDescriptions'");
+    let array = this._pVertexAttributeDescriptions;
+    if (array.length !== this.vertexAttributeDescriptionCount) {
+      throw new RangeError("Invalid array length, expected length of 'vertexAttributeDescriptionCount' for 'VkPipelineVertexInputStateCreateInfo.pVertexAttributeDescriptions'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pVertexAttributeDescriptions);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkVertexInputAttributeDescription) {
+        throw new TypeError("Invalid type for 'VkPipelineVertexInputStateCreateInfo.pVertexAttributeDescriptions[" + ii + "]': Expected 'VkVertexInputAttributeDescription' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pVertexAttributeDescriptionsNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
   }
@@ -7228,22 +7451,40 @@ VkPipelineViewportStateCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pViewports !== null) {
-    if (this._pViewports.length !== this.viewportCount) {
-      throw new RangeError("Invalid array length, expected array length of 'viewportCount' for 'VkPipelineViewportStateCreateInfo.pViewports'");
+    let array = this._pViewports;
+    if (array.length !== this.viewportCount) {
+      throw new RangeError("Invalid array length, expected length of 'viewportCount' for 'VkPipelineViewportStateCreateInfo.pViewports'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pViewports);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkViewport) {
+        throw new TypeError("Invalid type for 'VkPipelineViewportStateCreateInfo.pViewports[" + ii + "]': Expected 'VkViewport' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pViewportsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
   
   
   if (this._pScissors !== null) {
-    if (this._pScissors.length !== this.scissorCount) {
-      throw new RangeError("Invalid array length, expected array length of 'scissorCount' for 'VkPipelineViewportStateCreateInfo.pScissors'");
+    let array = this._pScissors;
+    if (array.length !== this.scissorCount) {
+      throw new RangeError("Invalid array length, expected length of 'scissorCount' for 'VkPipelineViewportStateCreateInfo.pScissors'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pScissors);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkRect2D) {
+        throw new TypeError("Invalid type for 'VkPipelineViewportStateCreateInfo.pScissors[" + ii + "]': Expected 'VkRect2D' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pScissorsNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
   }
@@ -7879,11 +8120,20 @@ VkPipelineColorBlendStateCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pAttachments !== null) {
-    if (this._pAttachments.length !== this.attachmentCount) {
-      throw new RangeError("Invalid array length, expected array length of 'attachmentCount' for 'VkPipelineColorBlendStateCreateInfo.pAttachments'");
+    let array = this._pAttachments;
+    if (array.length !== this.attachmentCount) {
+      throw new RangeError("Invalid array length, expected length of 'attachmentCount' for 'VkPipelineColorBlendStateCreateInfo.pAttachments'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pAttachments);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkPipelineColorBlendAttachmentState) {
+        throw new TypeError("Invalid type for 'VkPipelineColorBlendStateCreateInfo.pAttachments[" + ii + "]': Expected 'VkPipelineColorBlendAttachmentState' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pAttachmentsNative = nativeArray;
     this.memoryView.setBigInt64(0x20, nativeArray.address);
   }
@@ -8637,11 +8887,20 @@ VkGraphicsPipelineCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pStages !== null) {
-    if (this._pStages.length !== this.stageCount) {
-      throw new RangeError("Invalid array length, expected array length of 'stageCount' for 'VkGraphicsPipelineCreateInfo.pStages'");
+    let array = this._pStages;
+    if (array.length !== this.stageCount) {
+      throw new RangeError("Invalid array length, expected length of 'stageCount' for 'VkGraphicsPipelineCreateInfo.pStages'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pStages);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkPipelineShaderStageCreateInfo) {
+        throw new TypeError("Invalid type for 'VkGraphicsPipelineCreateInfo.pStages[" + ii + "]': Expected 'VkPipelineShaderStageCreateInfo' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pStagesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
@@ -8976,22 +9235,40 @@ VkPipelineLayoutCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pSetLayouts !== null) {
-    if (this._pSetLayouts.length !== this.setLayoutCount) {
-      throw new RangeError("Invalid array length, expected array length of 'setLayoutCount' for 'VkPipelineLayoutCreateInfo.pSetLayouts'");
+    let array = this._pSetLayouts;
+    if (array.length !== this.setLayoutCount) {
+      throw new RangeError("Invalid array length, expected length of 'setLayoutCount' for 'VkPipelineLayoutCreateInfo.pSetLayouts'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pSetLayouts);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkDescriptorSetLayout) {
+        throw new TypeError("Invalid type for 'VkPipelineLayoutCreateInfo.pSetLayouts[" + ii + "]': Expected 'VkDescriptorSetLayout' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pSetLayoutsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
   
   
   if (this._pPushConstantRanges !== null) {
-    if (this._pPushConstantRanges.length !== this.pushConstantRangeCount) {
-      throw new RangeError("Invalid array length, expected array length of 'pushConstantRangeCount' for 'VkPipelineLayoutCreateInfo.pPushConstantRanges'");
+    let array = this._pPushConstantRanges;
+    if (array.length !== this.pushConstantRangeCount) {
+      throw new RangeError("Invalid array length, expected length of 'pushConstantRangeCount' for 'VkPipelineLayoutCreateInfo.pPushConstantRanges'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pPushConstantRanges);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkPushConstantRange) {
+        throw new TypeError("Invalid type for 'VkPipelineLayoutCreateInfo.pPushConstantRanges[" + ii + "]': Expected 'VkPushConstantRange' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pPushConstantRangesNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
   }
@@ -9852,11 +10129,20 @@ VkRenderPassBeginInfo.prototype.flush = function flush() {
   
   
   if (this._pClearValues !== null) {
-    if (this._pClearValues.length !== this.clearValueCount) {
-      throw new RangeError("Invalid array length, expected array length of 'clearValueCount' for 'VkRenderPassBeginInfo.pClearValues'");
+    let array = this._pClearValues;
+    if (array.length !== this.clearValueCount) {
+      throw new RangeError("Invalid array length, expected length of 'clearValueCount' for 'VkRenderPassBeginInfo.pClearValues'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pClearValues);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkClearValue) {
+        throw new TypeError("Invalid type for 'VkRenderPassBeginInfo.pClearValues[" + ii + "]': Expected 'VkClearValue' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pClearValuesNative = nativeArray;
     this.memoryView.setBigInt64(0x38, nativeArray.address);
   }
@@ -10326,33 +10612,60 @@ VkSubpassDescription.prototype.flush = function flush() {
   
   
   if (this._pInputAttachments !== null) {
-    if (this._pInputAttachments.length !== this.inputAttachmentCount) {
-      throw new RangeError("Invalid array length, expected array length of 'inputAttachmentCount' for 'VkSubpassDescription.pInputAttachments'");
+    let array = this._pInputAttachments;
+    if (array.length !== this.inputAttachmentCount) {
+      throw new RangeError("Invalid array length, expected length of 'inputAttachmentCount' for 'VkSubpassDescription.pInputAttachments'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pInputAttachments);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkAttachmentReference) {
+        throw new TypeError("Invalid type for 'VkSubpassDescription.pInputAttachments[" + ii + "]': Expected 'VkAttachmentReference' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pInputAttachmentsNative = nativeArray;
     this.memoryView.setBigInt64(0x10, nativeArray.address);
   }
   
   
   if (this._pColorAttachments !== null) {
-    if (this._pColorAttachments.length !== this.colorAttachmentCount) {
-      throw new RangeError("Invalid array length, expected array length of 'colorAttachmentCount' for 'VkSubpassDescription.pColorAttachments'");
+    let array = this._pColorAttachments;
+    if (array.length !== this.colorAttachmentCount) {
+      throw new RangeError("Invalid array length, expected length of 'colorAttachmentCount' for 'VkSubpassDescription.pColorAttachments'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pColorAttachments);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkAttachmentReference) {
+        throw new TypeError("Invalid type for 'VkSubpassDescription.pColorAttachments[" + ii + "]': Expected 'VkAttachmentReference' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pColorAttachmentsNative = nativeArray;
     this.memoryView.setBigInt64(0x20, nativeArray.address);
   }
   
   
   if (this._pResolveAttachments !== null) {
-    if (this._pResolveAttachments.length !== this.colorAttachmentCount) {
-      throw new RangeError("Invalid array length, expected array length of 'colorAttachmentCount' for 'VkSubpassDescription.pResolveAttachments'");
+    let array = this._pResolveAttachments;
+    if (array.length !== this.colorAttachmentCount) {
+      throw new RangeError("Invalid array length, expected length of 'colorAttachmentCount' for 'VkSubpassDescription.pResolveAttachments'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pResolveAttachments);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkAttachmentReference) {
+        throw new TypeError("Invalid type for 'VkSubpassDescription.pResolveAttachments[" + ii + "]': Expected 'VkAttachmentReference' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pResolveAttachmentsNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
   }
@@ -10644,33 +10957,60 @@ VkRenderPassCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pAttachments !== null) {
-    if (this._pAttachments.length !== this.attachmentCount) {
-      throw new RangeError("Invalid array length, expected array length of 'attachmentCount' for 'VkRenderPassCreateInfo.pAttachments'");
+    let array = this._pAttachments;
+    if (array.length !== this.attachmentCount) {
+      throw new RangeError("Invalid array length, expected length of 'attachmentCount' for 'VkRenderPassCreateInfo.pAttachments'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pAttachments);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkAttachmentDescription) {
+        throw new TypeError("Invalid type for 'VkRenderPassCreateInfo.pAttachments[" + ii + "]': Expected 'VkAttachmentDescription' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pAttachmentsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
   
   
   if (this._pSubpasses !== null) {
-    if (this._pSubpasses.length !== this.subpassCount) {
-      throw new RangeError("Invalid array length, expected array length of 'subpassCount' for 'VkRenderPassCreateInfo.pSubpasses'");
+    let array = this._pSubpasses;
+    if (array.length !== this.subpassCount) {
+      throw new RangeError("Invalid array length, expected length of 'subpassCount' for 'VkRenderPassCreateInfo.pSubpasses'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pSubpasses);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkSubpassDescription) {
+        throw new TypeError("Invalid type for 'VkRenderPassCreateInfo.pSubpasses[" + ii + "]': Expected 'VkSubpassDescription' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pSubpassesNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
   }
   
   
   if (this._pDependencies !== null) {
-    if (this._pDependencies.length !== this.dependencyCount) {
-      throw new RangeError("Invalid array length, expected array length of 'dependencyCount' for 'VkRenderPassCreateInfo.pDependencies'");
+    let array = this._pDependencies;
+    if (array.length !== this.dependencyCount) {
+      throw new RangeError("Invalid array length, expected length of 'dependencyCount' for 'VkRenderPassCreateInfo.pDependencies'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pDependencies);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkSubpassDependency) {
+        throw new TypeError("Invalid type for 'VkRenderPassCreateInfo.pDependencies[" + ii + "]': Expected 'VkSubpassDependency' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pDependenciesNative = nativeArray;
     this.memoryView.setBigInt64(0x38, nativeArray.address);
   }
@@ -12818,11 +13158,20 @@ VkFramebufferCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pAttachments !== null) {
-    if (this._pAttachments.length !== this.attachmentCount) {
-      throw new RangeError("Invalid array length, expected array length of 'attachmentCount' for 'VkFramebufferCreateInfo.pAttachments'");
+    let array = this._pAttachments;
+    if (array.length !== this.attachmentCount) {
+      throw new RangeError("Invalid array length, expected length of 'attachmentCount' for 'VkFramebufferCreateInfo.pAttachments'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pAttachments);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkImageView) {
+        throw new TypeError("Invalid type for 'VkFramebufferCreateInfo.pAttachments[" + ii + "]': Expected 'VkImageView' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pAttachmentsNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
   }
@@ -13225,33 +13574,60 @@ VkSubmitInfo.prototype.flush = function flush() {
   
   
   if (this._pWaitSemaphores !== null) {
-    if (this._pWaitSemaphores.length !== this.waitSemaphoreCount) {
-      throw new RangeError("Invalid array length, expected array length of 'waitSemaphoreCount' for 'VkSubmitInfo.pWaitSemaphores'");
+    let array = this._pWaitSemaphores;
+    if (array.length !== this.waitSemaphoreCount) {
+      throw new RangeError("Invalid array length, expected length of 'waitSemaphoreCount' for 'VkSubmitInfo.pWaitSemaphores'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pWaitSemaphores);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkSemaphore) {
+        throw new TypeError("Invalid type for 'VkSubmitInfo.pWaitSemaphores[" + ii + "]': Expected 'VkSemaphore' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pWaitSemaphoresNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
   
   
   if (this._pCommandBuffers !== null) {
-    if (this._pCommandBuffers.length !== this.commandBufferCount) {
-      throw new RangeError("Invalid array length, expected array length of 'commandBufferCount' for 'VkSubmitInfo.pCommandBuffers'");
+    let array = this._pCommandBuffers;
+    if (array.length !== this.commandBufferCount) {
+      throw new RangeError("Invalid array length, expected length of 'commandBufferCount' for 'VkSubmitInfo.pCommandBuffers'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pCommandBuffers);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkCommandBuffer) {
+        throw new TypeError("Invalid type for 'VkSubmitInfo.pCommandBuffers[" + ii + "]': Expected 'VkCommandBuffer' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pCommandBuffersNative = nativeArray;
     this.memoryView.setBigInt64(0x30, nativeArray.address);
   }
   
   
   if (this._pSignalSemaphores !== null) {
-    if (this._pSignalSemaphores.length !== this.signalSemaphoreCount) {
-      throw new RangeError("Invalid array length, expected array length of 'signalSemaphoreCount' for 'VkSubmitInfo.pSignalSemaphores'");
+    let array = this._pSignalSemaphores;
+    if (array.length !== this.signalSemaphoreCount) {
+      throw new RangeError("Invalid array length, expected length of 'signalSemaphoreCount' for 'VkSubmitInfo.pSignalSemaphores'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pSignalSemaphores);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkSemaphore) {
+        throw new TypeError("Invalid type for 'VkSubmitInfo.pSignalSemaphores[" + ii + "]': Expected 'VkSemaphore' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pSignalSemaphoresNative = nativeArray;
     this.memoryView.setBigInt64(0x40, nativeArray.address);
   }
@@ -14667,22 +15043,40 @@ VkPresentInfoKHR.prototype.flush = function flush() {
   
   
   if (this._pWaitSemaphores !== null) {
-    if (this._pWaitSemaphores.length !== this.waitSemaphoreCount) {
-      throw new RangeError("Invalid array length, expected array length of 'waitSemaphoreCount' for 'VkPresentInfoKHR.pWaitSemaphores'");
+    let array = this._pWaitSemaphores;
+    if (array.length !== this.waitSemaphoreCount) {
+      throw new RangeError("Invalid array length, expected length of 'waitSemaphoreCount' for 'VkPresentInfoKHR.pWaitSemaphores'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pWaitSemaphores);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkSemaphore) {
+        throw new TypeError("Invalid type for 'VkPresentInfoKHR.pWaitSemaphores[" + ii + "]': Expected 'VkSemaphore' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pWaitSemaphoresNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
   
   
   if (this._pSwapchains !== null) {
-    if (this._pSwapchains.length !== this.swapchainCount) {
-      throw new RangeError("Invalid array length, expected array length of 'swapchainCount' for 'VkPresentInfoKHR.pSwapchains'");
+    let array = this._pSwapchains;
+    if (array.length !== this.swapchainCount) {
+      throw new RangeError("Invalid array length, expected length of 'swapchainCount' for 'VkPresentInfoKHR.pSwapchains'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pSwapchains);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkSwapchainKHR) {
+        throw new TypeError("Invalid type for 'VkPresentInfoKHR.pSwapchains[" + ii + "]': Expected 'VkSwapchainKHR' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pSwapchainsNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
   }
@@ -16058,22 +16452,40 @@ VkWin32KeyedMutexAcquireReleaseInfoNV.prototype.flush = function flush() {
   
   
   if (this._pAcquireSyncs !== null) {
-    if (this._pAcquireSyncs.length !== this.acquireCount) {
-      throw new RangeError("Invalid array length, expected array length of 'acquireCount' for 'VkWin32KeyedMutexAcquireReleaseInfoNV.pAcquireSyncs'");
+    let array = this._pAcquireSyncs;
+    if (array.length !== this.acquireCount) {
+      throw new RangeError("Invalid array length, expected length of 'acquireCount' for 'VkWin32KeyedMutexAcquireReleaseInfoNV.pAcquireSyncs'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pAcquireSyncs);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkDeviceMemory) {
+        throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoNV.pAcquireSyncs[" + ii + "]': Expected 'VkDeviceMemory' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pAcquireSyncsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
   
   
   if (this._pReleaseSyncs !== null) {
-    if (this._pReleaseSyncs.length !== this.releaseCount) {
-      throw new RangeError("Invalid array length, expected array length of 'releaseCount' for 'VkWin32KeyedMutexAcquireReleaseInfoNV.pReleaseSyncs'");
+    let array = this._pReleaseSyncs;
+    if (array.length !== this.releaseCount) {
+      throw new RangeError("Invalid array length, expected length of 'releaseCount' for 'VkWin32KeyedMutexAcquireReleaseInfoNV.pReleaseSyncs'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pReleaseSyncs);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkDeviceMemory) {
+        throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoNV.pReleaseSyncs[" + ii + "]': Expected 'VkDeviceMemory' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pReleaseSyncsNative = nativeArray;
     this.memoryView.setBigInt64(0x38, nativeArray.address);
   }
@@ -16514,11 +16926,20 @@ VkIndirectCommandsLayoutCreateInfoNVX.prototype.flush = function flush() {
   
   
   if (this._pTokens !== null) {
-    if (this._pTokens.length !== this.tokenCount) {
-      throw new RangeError("Invalid array length, expected array length of 'tokenCount' for 'VkIndirectCommandsLayoutCreateInfoNVX.pTokens'");
+    let array = this._pTokens;
+    if (array.length !== this.tokenCount) {
+      throw new RangeError("Invalid array length, expected length of 'tokenCount' for 'VkIndirectCommandsLayoutCreateInfoNVX.pTokens'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pTokens);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkIndirectCommandsLayoutTokenNVX) {
+        throw new TypeError("Invalid type for 'VkIndirectCommandsLayoutCreateInfoNVX.pTokens[" + ii + "]': Expected 'VkIndirectCommandsLayoutTokenNVX' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pTokensNative = nativeArray;
     this.memoryView.setBigInt64(0x20, nativeArray.address);
   }
@@ -16725,11 +17146,20 @@ VkCmdProcessCommandsInfoNVX.prototype.flush = function flush() {
   
   
   if (this._pIndirectCommandsTokens !== null) {
-    if (this._pIndirectCommandsTokens.length !== this.indirectCommandsTokenCount) {
-      throw new RangeError("Invalid array length, expected array length of 'indirectCommandsTokenCount' for 'VkCmdProcessCommandsInfoNVX.pIndirectCommandsTokens'");
+    let array = this._pIndirectCommandsTokens;
+    if (array.length !== this.indirectCommandsTokenCount) {
+      throw new RangeError("Invalid array length, expected length of 'indirectCommandsTokenCount' for 'VkCmdProcessCommandsInfoNVX.pIndirectCommandsTokens'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pIndirectCommandsTokens);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkIndirectCommandsTokenNVX) {
+        throw new TypeError("Invalid type for 'VkCmdProcessCommandsInfoNVX.pIndirectCommandsTokens[" + ii + "]': Expected 'VkIndirectCommandsTokenNVX' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pIndirectCommandsTokensNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
   }
@@ -19481,11 +19911,20 @@ VkPresentRegionsKHR.prototype.flush = function flush() {
   
   
   if (this._pRegions !== null) {
-    if (this._pRegions.length !== this.swapchainCount) {
-      throw new RangeError("Invalid array length, expected array length of 'swapchainCount' for 'VkPresentRegionsKHR.pRegions'");
+    let array = this._pRegions;
+    if (array.length !== this.swapchainCount) {
+      throw new RangeError("Invalid array length, expected length of 'swapchainCount' for 'VkPresentRegionsKHR.pRegions'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pRegions);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkPresentRegionKHR) {
+        throw new TypeError("Invalid type for 'VkPresentRegionsKHR.pRegions[" + ii + "]': Expected 'VkPresentRegionKHR' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pRegionsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
@@ -19554,11 +19993,20 @@ VkPresentRegionKHR.prototype.flush = function flush() {
   
   
   if (this._pRectangles !== null) {
-    if (this._pRectangles.length !== this.rectangleCount) {
-      throw new RangeError("Invalid array length, expected array length of 'rectangleCount' for 'VkPresentRegionKHR.pRectangles'");
+    let array = this._pRectangles;
+    if (array.length !== this.rectangleCount) {
+      throw new RangeError("Invalid array length, expected length of 'rectangleCount' for 'VkPresentRegionKHR.pRectangles'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pRectangles);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkRectLayerKHR) {
+        throw new TypeError("Invalid type for 'VkPresentRegionKHR.pRectangles[" + ii + "]': Expected 'VkRectLayerKHR' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pRectanglesNative = nativeArray;
     this.memoryView.setBigInt64(0x8, nativeArray.address);
   }
@@ -21747,22 +22195,40 @@ VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.flush = function flush() {
   
   
   if (this._pAcquireSyncs !== null) {
-    if (this._pAcquireSyncs.length !== this.acquireCount) {
-      throw new RangeError("Invalid array length, expected array length of 'acquireCount' for 'VkWin32KeyedMutexAcquireReleaseInfoKHR.pAcquireSyncs'");
+    let array = this._pAcquireSyncs;
+    if (array.length !== this.acquireCount) {
+      throw new RangeError("Invalid array length, expected length of 'acquireCount' for 'VkWin32KeyedMutexAcquireReleaseInfoKHR.pAcquireSyncs'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pAcquireSyncs);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkDeviceMemory) {
+        throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoKHR.pAcquireSyncs[" + ii + "]': Expected 'VkDeviceMemory' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pAcquireSyncsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
   
   
   if (this._pReleaseSyncs !== null) {
-    if (this._pReleaseSyncs.length !== this.releaseCount) {
-      throw new RangeError("Invalid array length, expected array length of 'releaseCount' for 'VkWin32KeyedMutexAcquireReleaseInfoKHR.pReleaseSyncs'");
+    let array = this._pReleaseSyncs;
+    if (array.length !== this.releaseCount) {
+      throw new RangeError("Invalid array length, expected length of 'releaseCount' for 'VkWin32KeyedMutexAcquireReleaseInfoKHR.pReleaseSyncs'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pReleaseSyncs);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkDeviceMemory) {
+        throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoKHR.pReleaseSyncs[" + ii + "]': Expected 'VkDeviceMemory' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pReleaseSyncsNative = nativeArray;
     this.memoryView.setBigInt64(0x38, nativeArray.address);
   }
@@ -24775,13 +25241,26 @@ VkPhysicalDeviceGroupProperties.prototype.flush = function flush() {
   
   
   if (this._physicalDevices !== null) {
-    if (this._physicalDevices.length !== 32) {
-      throw new RangeError("Invalid array length, expected array length of '32' for 'VkPhysicalDeviceGroupProperties.physicalDevices'");
+    let array = this._physicalDevices;
+    if (array.length !== 32) {
+      throw new RangeError("Invalid array length, expected length of '32' for 'VkPhysicalDeviceGroupProperties.physicalDevices'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._physicalDevices);
-    this._physicalDevicesNative = nativeArray;
-    this.memoryView.setBigInt64(0x18, nativeArray.address);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkPhysicalDevice) {
+        throw new TypeError("Invalid type for 'VkPhysicalDeviceGroupProperties.physicalDevices[" + ii + "]': Expected 'VkPhysicalDevice' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let dstView = new Uint8Array(this.memoryBuffer);
+    let byteOffset = 0x18;
+    for (let ii = 0; ii < array.length; ++ii) {
+      let srcView = new Uint8Array(array[ii].memoryBuffer);
+      dstView.set(srcView, byteOffset);
+      byteOffset += VkPhysicalDevice.byteLength;
+    };
   }
   
   return true;
@@ -24862,13 +25341,26 @@ VkPhysicalDeviceGroupPropertiesKHR.prototype.flush = function flush() {
   
   
   if (this._physicalDevices !== null) {
-    if (this._physicalDevices.length !== 32) {
-      throw new RangeError("Invalid array length, expected array length of '32' for 'VkPhysicalDeviceGroupPropertiesKHR.physicalDevices'");
+    let array = this._physicalDevices;
+    if (array.length !== 32) {
+      throw new RangeError("Invalid array length, expected length of '32' for 'VkPhysicalDeviceGroupPropertiesKHR.physicalDevices'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._physicalDevices);
-    this._physicalDevicesNative = nativeArray;
-    this.memoryView.setBigInt64(0x18, nativeArray.address);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkPhysicalDevice) {
+        throw new TypeError("Invalid type for 'VkPhysicalDeviceGroupPropertiesKHR.physicalDevices[" + ii + "]': Expected 'VkPhysicalDevice' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let dstView = new Uint8Array(this.memoryBuffer);
+    let byteOffset = 0x18;
+    for (let ii = 0; ii < array.length; ++ii) {
+      let srcView = new Uint8Array(array[ii].memoryBuffer);
+      dstView.set(srcView, byteOffset);
+      byteOffset += VkPhysicalDevice.byteLength;
+    };
   }
   
   return true;
@@ -25789,11 +26281,20 @@ VkBindImageMemoryDeviceGroupInfo.prototype.flush = function flush() {
   
   
   if (this._pSplitInstanceBindRegions !== null) {
-    if (this._pSplitInstanceBindRegions.length !== this.splitInstanceBindRegionCount) {
-      throw new RangeError("Invalid array length, expected array length of 'splitInstanceBindRegionCount' for 'VkBindImageMemoryDeviceGroupInfo.pSplitInstanceBindRegions'");
+    let array = this._pSplitInstanceBindRegions;
+    if (array.length !== this.splitInstanceBindRegionCount) {
+      throw new RangeError("Invalid array length, expected length of 'splitInstanceBindRegionCount' for 'VkBindImageMemoryDeviceGroupInfo.pSplitInstanceBindRegions'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pSplitInstanceBindRegions);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkRect2D) {
+        throw new TypeError("Invalid type for 'VkBindImageMemoryDeviceGroupInfo.pSplitInstanceBindRegions[" + ii + "]': Expected 'VkRect2D' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pSplitInstanceBindRegionsNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
   }
@@ -25914,11 +26415,20 @@ VkBindImageMemoryDeviceGroupInfoKHR.prototype.flush = function flush() {
   
   
   if (this._pSplitInstanceBindRegions !== null) {
-    if (this._pSplitInstanceBindRegions.length !== this.splitInstanceBindRegionCount) {
-      throw new RangeError("Invalid array length, expected array length of 'splitInstanceBindRegionCount' for 'VkBindImageMemoryDeviceGroupInfoKHR.pSplitInstanceBindRegions'");
+    let array = this._pSplitInstanceBindRegions;
+    if (array.length !== this.splitInstanceBindRegionCount) {
+      throw new RangeError("Invalid array length, expected length of 'splitInstanceBindRegionCount' for 'VkBindImageMemoryDeviceGroupInfoKHR.pSplitInstanceBindRegions'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pSplitInstanceBindRegions);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkRect2D) {
+        throw new TypeError("Invalid type for 'VkBindImageMemoryDeviceGroupInfoKHR.pSplitInstanceBindRegions[" + ii + "]': Expected 'VkRect2D' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pSplitInstanceBindRegionsNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
   }
@@ -26024,11 +26534,20 @@ VkDeviceGroupRenderPassBeginInfo.prototype.flush = function flush() {
   
   
   if (this._pDeviceRenderAreas !== null) {
-    if (this._pDeviceRenderAreas.length !== this.deviceRenderAreaCount) {
-      throw new RangeError("Invalid array length, expected array length of 'deviceRenderAreaCount' for 'VkDeviceGroupRenderPassBeginInfo.pDeviceRenderAreas'");
+    let array = this._pDeviceRenderAreas;
+    if (array.length !== this.deviceRenderAreaCount) {
+      throw new RangeError("Invalid array length, expected length of 'deviceRenderAreaCount' for 'VkDeviceGroupRenderPassBeginInfo.pDeviceRenderAreas'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pDeviceRenderAreas);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkRect2D) {
+        throw new TypeError("Invalid type for 'VkDeviceGroupRenderPassBeginInfo.pDeviceRenderAreas[" + ii + "]': Expected 'VkRect2D' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pDeviceRenderAreasNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
@@ -26130,11 +26649,20 @@ VkDeviceGroupRenderPassBeginInfoKHR.prototype.flush = function flush() {
   
   
   if (this._pDeviceRenderAreas !== null) {
-    if (this._pDeviceRenderAreas.length !== this.deviceRenderAreaCount) {
-      throw new RangeError("Invalid array length, expected array length of 'deviceRenderAreaCount' for 'VkDeviceGroupRenderPassBeginInfoKHR.pDeviceRenderAreas'");
+    let array = this._pDeviceRenderAreas;
+    if (array.length !== this.deviceRenderAreaCount) {
+      throw new RangeError("Invalid array length, expected length of 'deviceRenderAreaCount' for 'VkDeviceGroupRenderPassBeginInfoKHR.pDeviceRenderAreas'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pDeviceRenderAreas);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkRect2D) {
+        throw new TypeError("Invalid type for 'VkDeviceGroupRenderPassBeginInfoKHR.pDeviceRenderAreas[" + ii + "]': Expected 'VkRect2D' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pDeviceRenderAreasNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
@@ -27266,11 +27794,20 @@ VkDeviceGroupDeviceCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pPhysicalDevices !== null) {
-    if (this._pPhysicalDevices.length !== this.physicalDeviceCount) {
-      throw new RangeError("Invalid array length, expected array length of 'physicalDeviceCount' for 'VkDeviceGroupDeviceCreateInfo.pPhysicalDevices'");
+    let array = this._pPhysicalDevices;
+    if (array.length !== this.physicalDeviceCount) {
+      throw new RangeError("Invalid array length, expected length of 'physicalDeviceCount' for 'VkDeviceGroupDeviceCreateInfo.pPhysicalDevices'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pPhysicalDevices);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkPhysicalDevice) {
+        throw new TypeError("Invalid type for 'VkDeviceGroupDeviceCreateInfo.pPhysicalDevices[" + ii + "]': Expected 'VkPhysicalDevice' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pPhysicalDevicesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
@@ -27360,11 +27897,20 @@ VkDeviceGroupDeviceCreateInfoKHR.prototype.flush = function flush() {
   
   
   if (this._pPhysicalDevices !== null) {
-    if (this._pPhysicalDevices.length !== this.physicalDeviceCount) {
-      throw new RangeError("Invalid array length, expected array length of 'physicalDeviceCount' for 'VkDeviceGroupDeviceCreateInfoKHR.pPhysicalDevices'");
+    let array = this._pPhysicalDevices;
+    if (array.length !== this.physicalDeviceCount) {
+      throw new RangeError("Invalid array length, expected length of 'physicalDeviceCount' for 'VkDeviceGroupDeviceCreateInfoKHR.pPhysicalDevices'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pPhysicalDevices);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkPhysicalDevice) {
+        throw new TypeError("Invalid type for 'VkDeviceGroupDeviceCreateInfoKHR.pPhysicalDevices[" + ii + "]': Expected 'VkPhysicalDevice' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pPhysicalDevicesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
@@ -27774,11 +28320,20 @@ VkDescriptorUpdateTemplateCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pDescriptorUpdateEntries !== null) {
-    if (this._pDescriptorUpdateEntries.length !== this.descriptorUpdateEntryCount) {
-      throw new RangeError("Invalid array length, expected array length of 'descriptorUpdateEntryCount' for 'VkDescriptorUpdateTemplateCreateInfo.pDescriptorUpdateEntries'");
+    let array = this._pDescriptorUpdateEntries;
+    if (array.length !== this.descriptorUpdateEntryCount) {
+      throw new RangeError("Invalid array length, expected length of 'descriptorUpdateEntryCount' for 'VkDescriptorUpdateTemplateCreateInfo.pDescriptorUpdateEntries'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pDescriptorUpdateEntries);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkDescriptorUpdateTemplateEntry) {
+        throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfo.pDescriptorUpdateEntries[" + ii + "]': Expected 'VkDescriptorUpdateTemplateEntry' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pDescriptorUpdateEntriesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
@@ -27958,11 +28513,20 @@ VkDescriptorUpdateTemplateCreateInfoKHR.prototype.flush = function flush() {
   
   
   if (this._pDescriptorUpdateEntries !== null) {
-    if (this._pDescriptorUpdateEntries.length !== this.descriptorUpdateEntryCount) {
-      throw new RangeError("Invalid array length, expected array length of 'descriptorUpdateEntryCount' for 'VkDescriptorUpdateTemplateCreateInfoKHR.pDescriptorUpdateEntries'");
+    let array = this._pDescriptorUpdateEntries;
+    if (array.length !== this.descriptorUpdateEntryCount) {
+      throw new RangeError("Invalid array length, expected length of 'descriptorUpdateEntryCount' for 'VkDescriptorUpdateTemplateCreateInfoKHR.pDescriptorUpdateEntries'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pDescriptorUpdateEntries);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkDescriptorUpdateTemplateEntry) {
+        throw new TypeError("Invalid type for 'VkDescriptorUpdateTemplateCreateInfoKHR.pDescriptorUpdateEntries[" + ii + "]': Expected 'VkDescriptorUpdateTemplateEntry' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pDescriptorUpdateEntriesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
@@ -28409,11 +28973,20 @@ VkPresentTimesInfoGOOGLE.prototype.flush = function flush() {
   
   
   if (this._pTimes !== null) {
-    if (this._pTimes.length !== this.swapchainCount) {
-      throw new RangeError("Invalid array length, expected array length of 'swapchainCount' for 'VkPresentTimesInfoGOOGLE.pTimes'");
+    let array = this._pTimes;
+    if (array.length !== this.swapchainCount) {
+      throw new RangeError("Invalid array length, expected length of 'swapchainCount' for 'VkPresentTimesInfoGOOGLE.pTimes'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pTimes);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkPresentTimeGOOGLE) {
+        throw new TypeError("Invalid type for 'VkPresentTimesInfoGOOGLE.pTimes[" + ii + "]': Expected 'VkPresentTimeGOOGLE' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pTimesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
@@ -28605,11 +29178,20 @@ VkPipelineViewportWScalingStateCreateInfoNV.prototype.flush = function flush() {
   
   
   if (this._pViewportWScalings !== null) {
-    if (this._pViewportWScalings.length !== this.viewportCount) {
-      throw new RangeError("Invalid array length, expected array length of 'viewportCount' for 'VkPipelineViewportWScalingStateCreateInfoNV.pViewportWScalings'");
+    let array = this._pViewportWScalings;
+    if (array.length !== this.viewportCount) {
+      throw new RangeError("Invalid array length, expected length of 'viewportCount' for 'VkPipelineViewportWScalingStateCreateInfoNV.pViewportWScalings'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pViewportWScalings);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkViewportWScalingNV) {
+        throw new TypeError("Invalid type for 'VkPipelineViewportWScalingStateCreateInfoNV.pViewportWScalings[" + ii + "]': Expected 'VkViewportWScalingNV' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pViewportWScalingsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
@@ -28782,11 +29364,20 @@ VkPipelineViewportSwizzleStateCreateInfoNV.prototype.flush = function flush() {
   
   
   if (this._pViewportSwizzles !== null) {
-    if (this._pViewportSwizzles.length !== this.viewportCount) {
-      throw new RangeError("Invalid array length, expected array length of 'viewportCount' for 'VkPipelineViewportSwizzleStateCreateInfoNV.pViewportSwizzles'");
+    let array = this._pViewportSwizzles;
+    if (array.length !== this.viewportCount) {
+      throw new RangeError("Invalid array length, expected length of 'viewportCount' for 'VkPipelineViewportSwizzleStateCreateInfoNV.pViewportSwizzles'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pViewportSwizzles);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkViewportSwizzleNV) {
+        throw new TypeError("Invalid type for 'VkPipelineViewportSwizzleStateCreateInfoNV.pViewportSwizzles[" + ii + "]': Expected 'VkViewportSwizzleNV' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pViewportSwizzlesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
@@ -28956,11 +29547,20 @@ VkPipelineDiscardRectangleStateCreateInfoEXT.prototype.flush = function flush() 
   
   
   if (this._pDiscardRectangles !== null) {
-    if (this._pDiscardRectangles.length !== this.discardRectangleCount) {
-      throw new RangeError("Invalid array length, expected array length of 'discardRectangleCount' for 'VkPipelineDiscardRectangleStateCreateInfoEXT.pDiscardRectangles'");
+    let array = this._pDiscardRectangles;
+    if (array.length !== this.discardRectangleCount) {
+      throw new RangeError("Invalid array length, expected length of 'discardRectangleCount' for 'VkPipelineDiscardRectangleStateCreateInfoEXT.pDiscardRectangles'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pDiscardRectangles);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkRect2D) {
+        throw new TypeError("Invalid type for 'VkPipelineDiscardRectangleStateCreateInfoEXT.pDiscardRectangles[" + ii + "]': Expected 'VkRect2D' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pDiscardRectanglesNative = nativeArray;
     this.memoryView.setBigInt64(0x20, nativeArray.address);
   }
@@ -29236,11 +29836,20 @@ VkRenderPassInputAttachmentAspectCreateInfo.prototype.flush = function flush() {
   
   
   if (this._pAspectReferences !== null) {
-    if (this._pAspectReferences.length !== this.aspectReferenceCount) {
-      throw new RangeError("Invalid array length, expected array length of 'aspectReferenceCount' for 'VkRenderPassInputAttachmentAspectCreateInfo.pAspectReferences'");
+    let array = this._pAspectReferences;
+    if (array.length !== this.aspectReferenceCount) {
+      throw new RangeError("Invalid array length, expected length of 'aspectReferenceCount' for 'VkRenderPassInputAttachmentAspectCreateInfo.pAspectReferences'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pAspectReferences);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkInputAttachmentAspectReference) {
+        throw new TypeError("Invalid type for 'VkRenderPassInputAttachmentAspectCreateInfo.pAspectReferences[" + ii + "]': Expected 'VkInputAttachmentAspectReference' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pAspectReferencesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
@@ -29330,11 +29939,20 @@ VkRenderPassInputAttachmentAspectCreateInfoKHR.prototype.flush = function flush(
   
   
   if (this._pAspectReferences !== null) {
-    if (this._pAspectReferences.length !== this.aspectReferenceCount) {
-      throw new RangeError("Invalid array length, expected array length of 'aspectReferenceCount' for 'VkRenderPassInputAttachmentAspectCreateInfoKHR.pAspectReferences'");
+    let array = this._pAspectReferences;
+    if (array.length !== this.aspectReferenceCount) {
+      throw new RangeError("Invalid array length, expected length of 'aspectReferenceCount' for 'VkRenderPassInputAttachmentAspectCreateInfoKHR.pAspectReferences'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pAspectReferences);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkInputAttachmentAspectReference) {
+        throw new TypeError("Invalid type for 'VkRenderPassInputAttachmentAspectCreateInfoKHR.pAspectReferences[" + ii + "]': Expected 'VkInputAttachmentAspectReference' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pAspectReferencesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
@@ -33420,11 +34038,20 @@ VkSampleLocationsInfoEXT.prototype.flush = function flush() {
   
   
   if (this._pSampleLocations !== null) {
-    if (this._pSampleLocations.length !== this.sampleLocationsCount) {
-      throw new RangeError("Invalid array length, expected array length of 'sampleLocationsCount' for 'VkSampleLocationsInfoEXT.pSampleLocations'");
+    let array = this._pSampleLocations;
+    if (array.length !== this.sampleLocationsCount) {
+      throw new RangeError("Invalid array length, expected length of 'sampleLocationsCount' for 'VkSampleLocationsInfoEXT.pSampleLocations'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pSampleLocations);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkSampleLocationEXT) {
+        throw new TypeError("Invalid type for 'VkSampleLocationsInfoEXT.pSampleLocations[" + ii + "]': Expected 'VkSampleLocationEXT' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pSampleLocationsNative = nativeArray;
     this.memoryView.setBigInt64(0x20, nativeArray.address);
   }
@@ -33661,22 +34288,40 @@ VkRenderPassSampleLocationsBeginInfoEXT.prototype.flush = function flush() {
   
   
   if (this._pAttachmentInitialSampleLocations !== null) {
-    if (this._pAttachmentInitialSampleLocations.length !== this.attachmentInitialSampleLocationsCount) {
-      throw new RangeError("Invalid array length, expected array length of 'attachmentInitialSampleLocationsCount' for 'VkRenderPassSampleLocationsBeginInfoEXT.pAttachmentInitialSampleLocations'");
+    let array = this._pAttachmentInitialSampleLocations;
+    if (array.length !== this.attachmentInitialSampleLocationsCount) {
+      throw new RangeError("Invalid array length, expected length of 'attachmentInitialSampleLocationsCount' for 'VkRenderPassSampleLocationsBeginInfoEXT.pAttachmentInitialSampleLocations'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pAttachmentInitialSampleLocations);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkAttachmentSampleLocationsEXT) {
+        throw new TypeError("Invalid type for 'VkRenderPassSampleLocationsBeginInfoEXT.pAttachmentInitialSampleLocations[" + ii + "]': Expected 'VkAttachmentSampleLocationsEXT' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pAttachmentInitialSampleLocationsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
   
   
   if (this._pPostSubpassSampleLocations !== null) {
-    if (this._pPostSubpassSampleLocations.length !== this.postSubpassSampleLocationsCount) {
-      throw new RangeError("Invalid array length, expected array length of 'postSubpassSampleLocationsCount' for 'VkRenderPassSampleLocationsBeginInfoEXT.pPostSubpassSampleLocations'");
+    let array = this._pPostSubpassSampleLocations;
+    if (array.length !== this.postSubpassSampleLocationsCount) {
+      throw new RangeError("Invalid array length, expected length of 'postSubpassSampleLocationsCount' for 'VkRenderPassSampleLocationsBeginInfoEXT.pPostSubpassSampleLocations'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pPostSubpassSampleLocations);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkSubpassSampleLocationsEXT) {
+        throw new TypeError("Invalid type for 'VkRenderPassSampleLocationsBeginInfoEXT.pPostSubpassSampleLocations[" + ii + "]': Expected 'VkSubpassSampleLocationsEXT' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pPostSubpassSampleLocationsNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
   }
@@ -36390,33 +37035,60 @@ VkDebugUtilsMessengerCallbackDataEXT.prototype.flush = function flush() {
   
   
   if (this._pQueueLabels !== null) {
-    if (this._pQueueLabels.length !== this.queueLabelCount) {
-      throw new RangeError("Invalid array length, expected array length of 'queueLabelCount' for 'VkDebugUtilsMessengerCallbackDataEXT.pQueueLabels'");
+    let array = this._pQueueLabels;
+    if (array.length !== this.queueLabelCount) {
+      throw new RangeError("Invalid array length, expected length of 'queueLabelCount' for 'VkDebugUtilsMessengerCallbackDataEXT.pQueueLabels'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pQueueLabels);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkDebugUtilsLabelEXT) {
+        throw new TypeError("Invalid type for 'VkDebugUtilsMessengerCallbackDataEXT.pQueueLabels[" + ii + "]': Expected 'VkDebugUtilsLabelEXT' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pQueueLabelsNative = nativeArray;
     this.memoryView.setBigInt64(0x38, nativeArray.address);
   }
   
   
   if (this._pCmdBufLabels !== null) {
-    if (this._pCmdBufLabels.length !== this.cmdBufLabelCount) {
-      throw new RangeError("Invalid array length, expected array length of 'cmdBufLabelCount' for 'VkDebugUtilsMessengerCallbackDataEXT.pCmdBufLabels'");
+    let array = this._pCmdBufLabels;
+    if (array.length !== this.cmdBufLabelCount) {
+      throw new RangeError("Invalid array length, expected length of 'cmdBufLabelCount' for 'VkDebugUtilsMessengerCallbackDataEXT.pCmdBufLabels'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pCmdBufLabels);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkDebugUtilsLabelEXT) {
+        throw new TypeError("Invalid type for 'VkDebugUtilsMessengerCallbackDataEXT.pCmdBufLabels[" + ii + "]': Expected 'VkDebugUtilsLabelEXT' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pCmdBufLabelsNative = nativeArray;
     this.memoryView.setBigInt64(0x48, nativeArray.address);
   }
   
   
   if (this._pObjects !== null) {
-    if (this._pObjects.length !== this.objectCount) {
-      throw new RangeError("Invalid array length, expected array length of 'objectCount' for 'VkDebugUtilsMessengerCallbackDataEXT.pObjects'");
+    let array = this._pObjects;
+    if (array.length !== this.objectCount) {
+      throw new RangeError("Invalid array length, expected length of 'objectCount' for 'VkDebugUtilsMessengerCallbackDataEXT.pObjects'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pObjects);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkDebugUtilsObjectNameInfoEXT) {
+        throw new TypeError("Invalid type for 'VkDebugUtilsMessengerCallbackDataEXT.pObjects[" + ii + "]': Expected 'VkDebugUtilsObjectNameInfoEXT' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pObjectsNative = nativeArray;
     this.memoryView.setBigInt64(0x58, nativeArray.address);
   }
@@ -38300,33 +38972,60 @@ VkSubpassDescription2KHR.prototype.flush = function flush() {
   
   
   if (this._pInputAttachments !== null) {
-    if (this._pInputAttachments.length !== this.inputAttachmentCount) {
-      throw new RangeError("Invalid array length, expected array length of 'inputAttachmentCount' for 'VkSubpassDescription2KHR.pInputAttachments'");
+    let array = this._pInputAttachments;
+    if (array.length !== this.inputAttachmentCount) {
+      throw new RangeError("Invalid array length, expected length of 'inputAttachmentCount' for 'VkSubpassDescription2KHR.pInputAttachments'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pInputAttachments);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkAttachmentReference2KHR) {
+        throw new TypeError("Invalid type for 'VkSubpassDescription2KHR.pInputAttachments[" + ii + "]': Expected 'VkAttachmentReference2KHR' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pInputAttachmentsNative = nativeArray;
     this.memoryView.setBigInt64(0x20, nativeArray.address);
   }
   
   
   if (this._pColorAttachments !== null) {
-    if (this._pColorAttachments.length !== this.colorAttachmentCount) {
-      throw new RangeError("Invalid array length, expected array length of 'colorAttachmentCount' for 'VkSubpassDescription2KHR.pColorAttachments'");
+    let array = this._pColorAttachments;
+    if (array.length !== this.colorAttachmentCount) {
+      throw new RangeError("Invalid array length, expected length of 'colorAttachmentCount' for 'VkSubpassDescription2KHR.pColorAttachments'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pColorAttachments);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkAttachmentReference2KHR) {
+        throw new TypeError("Invalid type for 'VkSubpassDescription2KHR.pColorAttachments[" + ii + "]': Expected 'VkAttachmentReference2KHR' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pColorAttachmentsNative = nativeArray;
     this.memoryView.setBigInt64(0x30, nativeArray.address);
   }
   
   
   if (this._pResolveAttachments !== null) {
-    if (this._pResolveAttachments.length !== this.colorAttachmentCount) {
-      throw new RangeError("Invalid array length, expected array length of 'colorAttachmentCount' for 'VkSubpassDescription2KHR.pResolveAttachments'");
+    let array = this._pResolveAttachments;
+    if (array.length !== this.colorAttachmentCount) {
+      throw new RangeError("Invalid array length, expected length of 'colorAttachmentCount' for 'VkSubpassDescription2KHR.pResolveAttachments'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pResolveAttachments);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkAttachmentReference2KHR) {
+        throw new TypeError("Invalid type for 'VkSubpassDescription2KHR.pResolveAttachments[" + ii + "]': Expected 'VkAttachmentReference2KHR' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pResolveAttachmentsNative = nativeArray;
     this.memoryView.setBigInt64(0x38, nativeArray.address);
   }
@@ -38677,33 +39376,60 @@ VkRenderPassCreateInfo2KHR.prototype.flush = function flush() {
   
   
   if (this._pAttachments !== null) {
-    if (this._pAttachments.length !== this.attachmentCount) {
-      throw new RangeError("Invalid array length, expected array length of 'attachmentCount' for 'VkRenderPassCreateInfo2KHR.pAttachments'");
+    let array = this._pAttachments;
+    if (array.length !== this.attachmentCount) {
+      throw new RangeError("Invalid array length, expected length of 'attachmentCount' for 'VkRenderPassCreateInfo2KHR.pAttachments'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pAttachments);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkAttachmentDescription2KHR) {
+        throw new TypeError("Invalid type for 'VkRenderPassCreateInfo2KHR.pAttachments[" + ii + "]': Expected 'VkAttachmentDescription2KHR' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pAttachmentsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
   
   
   if (this._pSubpasses !== null) {
-    if (this._pSubpasses.length !== this.subpassCount) {
-      throw new RangeError("Invalid array length, expected array length of 'subpassCount' for 'VkRenderPassCreateInfo2KHR.pSubpasses'");
+    let array = this._pSubpasses;
+    if (array.length !== this.subpassCount) {
+      throw new RangeError("Invalid array length, expected length of 'subpassCount' for 'VkRenderPassCreateInfo2KHR.pSubpasses'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pSubpasses);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkSubpassDescription2KHR) {
+        throw new TypeError("Invalid type for 'VkRenderPassCreateInfo2KHR.pSubpasses[" + ii + "]': Expected 'VkSubpassDescription2KHR' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pSubpassesNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
   }
   
   
   if (this._pDependencies !== null) {
-    if (this._pDependencies.length !== this.dependencyCount) {
-      throw new RangeError("Invalid array length, expected array length of 'dependencyCount' for 'VkRenderPassCreateInfo2KHR.pDependencies'");
+    let array = this._pDependencies;
+    if (array.length !== this.dependencyCount) {
+      throw new RangeError("Invalid array length, expected length of 'dependencyCount' for 'VkRenderPassCreateInfo2KHR.pDependencies'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pDependencies);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkSubpassDependency2KHR) {
+        throw new TypeError("Invalid type for 'VkRenderPassCreateInfo2KHR.pDependencies[" + ii + "]': Expected 'VkSubpassDependency2KHR' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pDependenciesNative = nativeArray;
     this.memoryView.setBigInt64(0x38, nativeArray.address);
   }
@@ -38984,11 +39710,20 @@ VkPipelineVertexInputDivisorStateCreateInfoEXT.prototype.flush = function flush(
   
   
   if (this._pVertexBindingDivisors !== null) {
-    if (this._pVertexBindingDivisors.length !== this.vertexBindingDivisorCount) {
-      throw new RangeError("Invalid array length, expected array length of 'vertexBindingDivisorCount' for 'VkPipelineVertexInputDivisorStateCreateInfoEXT.pVertexBindingDivisors'");
+    let array = this._pVertexBindingDivisors;
+    if (array.length !== this.vertexBindingDivisorCount) {
+      throw new RangeError("Invalid array length, expected length of 'vertexBindingDivisorCount' for 'VkPipelineVertexInputDivisorStateCreateInfoEXT.pVertexBindingDivisors'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pVertexBindingDivisors);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkVertexInputBindingDivisorDescriptionEXT) {
+        throw new TypeError("Invalid type for 'VkPipelineVertexInputDivisorStateCreateInfoEXT.pVertexBindingDivisors[" + ii + "]': Expected 'VkVertexInputBindingDivisorDescriptionEXT' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pVertexBindingDivisorsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
@@ -40614,11 +41349,20 @@ VkPipelineViewportExclusiveScissorStateCreateInfoNV.prototype.flush = function f
   
   
   if (this._pExclusiveScissors !== null) {
-    if (this._pExclusiveScissors.length !== this.exclusiveScissorCount) {
-      throw new RangeError("Invalid array length, expected array length of 'exclusiveScissorCount' for 'VkPipelineViewportExclusiveScissorStateCreateInfoNV.pExclusiveScissors'");
+    let array = this._pExclusiveScissors;
+    if (array.length !== this.exclusiveScissorCount) {
+      throw new RangeError("Invalid array length, expected length of 'exclusiveScissorCount' for 'VkPipelineViewportExclusiveScissorStateCreateInfoNV.pExclusiveScissors'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pExclusiveScissors);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkRect2D) {
+        throw new TypeError("Invalid type for 'VkPipelineViewportExclusiveScissorStateCreateInfoNV.pExclusiveScissors[" + ii + "]': Expected 'VkRect2D' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pExclusiveScissorsNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
@@ -41102,11 +41846,20 @@ VkPipelineViewportShadingRateImageStateCreateInfoNV.prototype.flush = function f
   
   
   if (this._pShadingRatePalettes !== null) {
-    if (this._pShadingRatePalettes.length !== this.viewportCount) {
-      throw new RangeError("Invalid array length, expected array length of 'viewportCount' for 'VkPipelineViewportShadingRateImageStateCreateInfoNV.pShadingRatePalettes'");
+    let array = this._pShadingRatePalettes;
+    if (array.length !== this.viewportCount) {
+      throw new RangeError("Invalid array length, expected length of 'viewportCount' for 'VkPipelineViewportShadingRateImageStateCreateInfoNV.pShadingRatePalettes'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pShadingRatePalettes);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkShadingRatePaletteNV) {
+        throw new TypeError("Invalid type for 'VkPipelineViewportShadingRateImageStateCreateInfoNV.pShadingRatePalettes[" + ii + "]': Expected 'VkShadingRatePaletteNV' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pShadingRatePalettesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
@@ -41408,11 +42161,20 @@ VkCoarseSampleOrderCustomNV.prototype.flush = function flush() {
   
   
   if (this._pSampleLocations !== null) {
-    if (this._pSampleLocations.length !== this.sampleLocationCount) {
-      throw new RangeError("Invalid array length, expected array length of 'sampleLocationCount' for 'VkCoarseSampleOrderCustomNV.pSampleLocations'");
+    let array = this._pSampleLocations;
+    if (array.length !== this.sampleLocationCount) {
+      throw new RangeError("Invalid array length, expected length of 'sampleLocationCount' for 'VkCoarseSampleOrderCustomNV.pSampleLocations'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pSampleLocations);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkCoarseSampleLocationNV) {
+        throw new TypeError("Invalid type for 'VkCoarseSampleOrderCustomNV.pSampleLocations[" + ii + "]': Expected 'VkCoarseSampleLocationNV' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pSampleLocationsNative = nativeArray;
     this.memoryView.setBigInt64(0x10, nativeArray.address);
   }
@@ -41510,11 +42272,20 @@ VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.prototype.flush = function 
   
   
   if (this._pCustomSampleOrders !== null) {
-    if (this._pCustomSampleOrders.length !== this.customSampleOrderCount) {
-      throw new RangeError("Invalid array length, expected array length of 'customSampleOrderCount' for 'VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.pCustomSampleOrders'");
+    let array = this._pCustomSampleOrders;
+    if (array.length !== this.customSampleOrderCount) {
+      throw new RangeError("Invalid array length, expected length of 'customSampleOrderCount' for 'VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.pCustomSampleOrders'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pCustomSampleOrders);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkCoarseSampleOrderCustomNV) {
+        throw new TypeError("Invalid type for 'VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.pCustomSampleOrders[" + ii + "]': Expected 'VkCoarseSampleOrderCustomNV' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pCustomSampleOrdersNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
@@ -42096,22 +42867,40 @@ VkRayTracingPipelineCreateInfoNV.prototype.flush = function flush() {
   
   
   if (this._pStages !== null) {
-    if (this._pStages.length !== this.stageCount) {
-      throw new RangeError("Invalid array length, expected array length of 'stageCount' for 'VkRayTracingPipelineCreateInfoNV.pStages'");
+    let array = this._pStages;
+    if (array.length !== this.stageCount) {
+      throw new RangeError("Invalid array length, expected length of 'stageCount' for 'VkRayTracingPipelineCreateInfoNV.pStages'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pStages);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkPipelineShaderStageCreateInfo) {
+        throw new TypeError("Invalid type for 'VkRayTracingPipelineCreateInfoNV.pStages[" + ii + "]': Expected 'VkPipelineShaderStageCreateInfo' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pStagesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
   
   
   if (this._pGroups !== null) {
-    if (this._pGroups.length !== this.groupCount) {
-      throw new RangeError("Invalid array length, expected array length of 'groupCount' for 'VkRayTracingPipelineCreateInfoNV.pGroups'");
+    let array = this._pGroups;
+    if (array.length !== this.groupCount) {
+      throw new RangeError("Invalid array length, expected length of 'groupCount' for 'VkRayTracingPipelineCreateInfoNV.pGroups'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pGroups);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkRayTracingShaderGroupCreateInfoNV) {
+        throw new TypeError("Invalid type for 'VkRayTracingPipelineCreateInfoNV.pGroups[" + ii + "]': Expected 'VkRayTracingShaderGroupCreateInfoNV' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pGroupsNative = nativeArray;
     this.memoryView.setBigInt64(0x28, nativeArray.address);
   }
@@ -42741,11 +43530,20 @@ VkAccelerationStructureInfoNV.prototype.flush = function flush() {
   
   
   if (this._pGeometries !== null) {
-    if (this._pGeometries.length !== this.geometryCount) {
-      throw new RangeError("Invalid array length, expected array length of 'geometryCount' for 'VkAccelerationStructureInfoNV.pGeometries'");
+    let array = this._pGeometries;
+    if (array.length !== this.geometryCount) {
+      throw new RangeError("Invalid array length, expected length of 'geometryCount' for 'VkAccelerationStructureInfoNV.pGeometries'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pGeometries);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkGeometryNV) {
+        throw new TypeError("Invalid type for 'VkAccelerationStructureInfoNV.pGeometries[" + ii + "]': Expected 'VkGeometryNV' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pGeometriesNative = nativeArray;
     this.memoryView.setBigInt64(0x20, nativeArray.address);
   }
@@ -43071,11 +43869,20 @@ VkWriteDescriptorSetAccelerationStructureNV.prototype.flush = function flush() {
   
   
   if (this._pAccelerationStructures !== null) {
-    if (this._pAccelerationStructures.length !== this.accelerationStructureCount) {
-      throw new RangeError("Invalid array length, expected array length of 'accelerationStructureCount' for 'VkWriteDescriptorSetAccelerationStructureNV.pAccelerationStructures'");
+    let array = this._pAccelerationStructures;
+    if (array.length !== this.accelerationStructureCount) {
+      throw new RangeError("Invalid array length, expected length of 'accelerationStructureCount' for 'VkWriteDescriptorSetAccelerationStructureNV.pAccelerationStructures'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pAccelerationStructures);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkAccelerationStructureNV) {
+        throw new TypeError("Invalid type for 'VkWriteDescriptorSetAccelerationStructureNV.pAccelerationStructures[" + ii + "]': Expected 'VkAccelerationStructureNV' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pAccelerationStructuresNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
@@ -43352,11 +44159,20 @@ VkDrmFormatModifierPropertiesListEXT.prototype.flush = function flush() {
   
   
   if (this._pDrmFormatModifierProperties !== null) {
-    if (this._pDrmFormatModifierProperties.length !== this.drmFormatModifierCount) {
-      throw new RangeError("Invalid array length, expected array length of 'drmFormatModifierCount' for 'VkDrmFormatModifierPropertiesListEXT.pDrmFormatModifierProperties'");
+    let array = this._pDrmFormatModifierProperties;
+    if (array.length !== this.drmFormatModifierCount) {
+      throw new RangeError("Invalid array length, expected length of 'drmFormatModifierCount' for 'VkDrmFormatModifierPropertiesListEXT.pDrmFormatModifierProperties'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pDrmFormatModifierProperties);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkDrmFormatModifierPropertiesEXT) {
+        throw new TypeError("Invalid type for 'VkDrmFormatModifierPropertiesListEXT.pDrmFormatModifierProperties[" + ii + "]': Expected 'VkDrmFormatModifierPropertiesEXT' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pDrmFormatModifierPropertiesNative = nativeArray;
     this.memoryView.setBigInt64(0x18, nativeArray.address);
   }
@@ -43691,11 +44507,20 @@ VkImageDrmFormatModifierExplicitCreateInfoEXT.prototype.flush = function flush()
   
   
   if (this._pPlaneLayouts !== null) {
-    if (this._pPlaneLayouts.length !== this.drmFormatModifierPlaneCount) {
-      throw new RangeError("Invalid array length, expected array length of 'drmFormatModifierPlaneCount' for 'VkImageDrmFormatModifierExplicitCreateInfoEXT.pPlaneLayouts'");
+    let array = this._pPlaneLayouts;
+    if (array.length !== this.drmFormatModifierPlaneCount) {
+      throw new RangeError("Invalid array length, expected length of 'drmFormatModifierPlaneCount' for 'VkImageDrmFormatModifierExplicitCreateInfoEXT.pPlaneLayouts'");
       return false;
     }
-    let nativeArray = new NativeObjectArray(this._pPlaneLayouts);
+    for (let ii = 0; ii < array.length; ++ii) {
+      if (array[ii].constructor !== VkSubresourceLayout) {
+        throw new TypeError("Invalid type for 'VkImageDrmFormatModifierExplicitCreateInfoEXT.pPlaneLayouts[" + ii + "]': Expected 'VkSubresourceLayout' but got '" + array[ii].constructor.name + "'");
+        return false;
+      }
+      if (!array[ii].flush()) return false;
+    };
+    
+    let nativeArray = new NativeObjectArray(array);
     this._pPlaneLayoutsNative = nativeArray;
     this.memoryView.setBigInt64(0x20, nativeArray.address);
   }
