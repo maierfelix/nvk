@@ -12,6 +12,26 @@
   </a>
 </p>
 
+The ongoing efforts in this branch are about to change the following things:
+
+ - Reducing code complexity
+ - Reducing code size
+ - Drastically improving performance (JS<->C++ has a lot overhead)
+ - Better type checking/validation
+
+The binding generation process is split into two phases. Instead of generating just C++ code, JavaScript interface code is now generated for the entire Structure and Handle chain. This drastically removes the large overhead of JS->C++ calls, since everything (expect vulkan function calls) is now done in JavaScript.
+
+The JavaScript interface is generated with the following goals in mind:
+
+Make C++ calls only when absolutely necessary (e.g. taking the address of an ArrayBuffer)
+Getter/Setter methods should be small enough to be inlined by the JavaScript compiler
+Any JavaScript operation's performance in the interface is validated and benchmarked
+Memory addresses are entirely inlined by a pseudo-bootstrapping phase in the code generator
+C++ memory layouts (e.g. structures, arrays) are emulated and filled within JavaScript
+Primitives such as Strings and Numbers are no longer reflected, but get directly read from the given memory buffer
+
+### First benchmarks show that the javascript interface is slower than the C++ version. Needs further testing, but this seems to be not 
+
 #
 
 This is a [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for node.js, which allows to interact from JavaScript/[TypeScript](#typescript) with the low-level interface of Vulkan. Currently the latest supported Vulkan version is *1.1.101*, which includes support for e.g. NVIDIA's real-time ray tracing pipeline `VK_NVX_raytracing`.

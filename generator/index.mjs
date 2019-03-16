@@ -360,7 +360,13 @@ class NativeObjectArray {
       let result = generateJavaScriptInterfaces(ast, struct);
       out += result;
     });
-    writeAddonFile(`${generatePath}/interfaces.js`, out, "utf-8", true);
+    out += `\nexport default {\n`;
+    structs.map((struct, index) => {
+      let comma = index < structs.length - 1 ? `,\n` : ``;
+      out += `  ` + struct.name + `${comma}`;
+    });
+    out += `\n};\n`;
+    writeAddonFile(`${generatePath}/interfaces.mjs`, out, "utf-8", true);
   }
   // generate enums
   {

@@ -43,6 +43,12 @@ export class JavaScriptType {
       type === JavaScriptType.ARRAY_OF_OBJECTS
     );
   }
+  get isBoolean() {
+    let {type} = this;
+    return (
+      type === JavaScriptType.BOOLEAN
+    );
+  }
 };
 
 // static types
@@ -53,6 +59,7 @@ export class JavaScriptType {
   JavaScriptType.NULL = idx++;
   JavaScriptType.STRING = idx++;
   JavaScriptType.NUMBER = idx++;
+  JavaScriptType.BOOLEAN = idx++;
   JavaScriptType.BIGINT = idx++;
   JavaScriptType.OBJECT_INOUT = idx++;
   JavaScriptType.TYPED_ARRAY = idx++;
@@ -102,11 +109,15 @@ export function getJavaScriptType(ast, object) {
     };
   }
   if (object.isBaseType) rawType = object.baseType;
+  if (object.isBoolean) {
+    return new JavaScriptType({
+      type: JavaScriptType.BOOLEAN
+    });
+  }
   if (object.enumType) {
     return new JavaScriptType({
       type: JavaScriptType.NUMBER,
       value: object.enumType,
-      isNullable: false,
       isEnum: true
     });
   }
@@ -115,14 +126,12 @@ export function getJavaScriptType(ast, object) {
     // future reserved bitmask, or must be 0
     if (!bitmask) {
       return new JavaScriptType({
-        type: JavaScriptType.NUMBER,
-        isNullable: false
+        type: JavaScriptType.NUMBER
       });
     }
     return new JavaScriptType({
       type: JavaScriptType.NUMBER,
       value: object.bitmaskType,
-      isNullable: false,
       isBitmask: true
     });
   }
@@ -202,8 +211,7 @@ export function getJavaScriptType(ast, object) {
     case "uint32_t":
     case "uint64_t":
       return new JavaScriptType({
-        type: JavaScriptType.NUMBER,
-        isNullable: false
+        type: JavaScriptType.NUMBER
       });
     case "void **":
       return new JavaScriptType({

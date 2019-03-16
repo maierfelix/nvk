@@ -39,6 +39,7 @@ function getConstructorInitializer(member) {
     }
   }
   if (jsType.isNullable) return `this._${member.name} = null;`;
+  if (jsType.isBoolean) return `this._${member.name} = false;`;
   warn(`Cannot resolve constructor initializer for ${member.name}`);
   return ``;
 };
@@ -69,6 +70,10 @@ function getGetterProcessor(member) {
     case JavaScriptType.BIGINT: {
       return `
     return this.memoryView.get${getDataViewInstruction(member)}(${byteOffset});`;
+    }
+    case JavaScriptType.BOOLEAN: {
+      return `
+    return this.memoryView.get${getDataViewInstruction(member)}(${byteOffset}) !== 0;`;
     }
     case JavaScriptType.OBJECT: {
       return `
@@ -117,6 +122,10 @@ function getSetterProcessor(member) {
     case JavaScriptType.BIGINT: {
       return `
     this.memoryView.set${getDataViewInstruction(member)}(${byteOffset}, value);`;
+    }
+    case JavaScriptType.BOOLEAN: {
+      return `
+    this.memoryView.set${getDataViewInstruction(member)}(${byteOffset}, value | 0);`;
     }
     case JavaScriptType.OBJECT: {
       return `
@@ -226,6 +235,9 @@ function getFlusherProcessor(member) {
   switch (type) {
     case JavaScriptType.NUMBER:
     case JavaScriptType.BIGINT: {
+      return ``; // not needed
+    }
+    case JavaScriptType.BOOLEAN: {
       return ``; // not needed
     }
     case JavaScriptType.OBJECT: {

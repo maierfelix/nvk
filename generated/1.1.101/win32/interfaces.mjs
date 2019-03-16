@@ -7167,7 +7167,7 @@ class VkPipelineInputAssemblyStateCreateInfo {
     this._pNext = null;
     
     
-    
+    this._primitiveRestartEnable = false;
     this.memoryBuffer = new ArrayBuffer(VkPipelineInputAssemblyStateCreateInfo.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -7206,10 +7206,10 @@ class VkPipelineInputAssemblyStateCreateInfo {
     this.memoryView.setInt32(0x14, value);
   }
   get primitiveRestartEnable() {
-    return this.memoryView.getUint32(0x18);
+    return this.memoryView.getUint32(0x18) !== 0;
   }
   set primitiveRestartEnable(value) {
-    this.memoryView.setUint32(0x18, value);
+    this.memoryView.setUint32(0x18, value | 0);
   }
   
 };
@@ -7530,12 +7530,12 @@ class VkPipelineRasterizationStateCreateInfo {
     
     this._pNext = null;
     
+    this._depthClampEnable = false;
+    this._rasterizerDiscardEnable = false;
     
     
     
-    
-    
-    
+    this._depthBiasEnable = false;
     
     
     
@@ -7598,16 +7598,16 @@ class VkPipelineRasterizationStateCreateInfo {
     this.memoryView.setInt32(0x10, value);
   }
   get depthClampEnable() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set depthClampEnable(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   get rasterizerDiscardEnable() {
-    return this.memoryView.getUint32(0x18);
+    return this.memoryView.getUint32(0x18) !== 0;
   }
   set rasterizerDiscardEnable(value) {
-    this.memoryView.setUint32(0x18, value);
+    this.memoryView.setUint32(0x18, value | 0);
   }
   get polygonMode() {
     return this.memoryView.getInt32(0x1C);
@@ -7628,10 +7628,10 @@ class VkPipelineRasterizationStateCreateInfo {
     this.memoryView.setInt32(0x24, value);
   }
   get depthBiasEnable() {
-    return this.memoryView.getUint32(0x28);
+    return this.memoryView.getUint32(0x28) !== 0;
   }
   set depthBiasEnable(value) {
-    this.memoryView.setUint32(0x28, value);
+    this.memoryView.setUint32(0x28, value | 0);
   }
   get depthBiasConstantFactor() {
     return this.memoryView.getFloat32(0x2C);
@@ -7733,11 +7733,11 @@ class VkPipelineMultisampleStateCreateInfo {
     this._pNext = null;
     
     
-    
+    this._sampleShadingEnable = false;
     
     this._pSampleMask = null;
-    
-    
+    this._alphaToCoverageEnable = false;
+    this._alphaToOneEnable = false;
     this.memoryBuffer = new ArrayBuffer(VkPipelineMultisampleStateCreateInfo.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -7797,10 +7797,10 @@ class VkPipelineMultisampleStateCreateInfo {
     this.memoryView.setInt32(0x14, value);
   }
   get sampleShadingEnable() {
-    return this.memoryView.getUint32(0x18);
+    return this.memoryView.getUint32(0x18) !== 0;
   }
   set sampleShadingEnable(value) {
-    this.memoryView.setUint32(0x18, value);
+    this.memoryView.setUint32(0x18, value | 0);
   }
   get minSampleShading() {
     return this.memoryView.getFloat32(0x1C);
@@ -7822,16 +7822,16 @@ class VkPipelineMultisampleStateCreateInfo {
     }
   }
   get alphaToCoverageEnable() {
-    return this.memoryView.getUint32(0x28);
+    return this.memoryView.getUint32(0x28) !== 0;
   }
   set alphaToCoverageEnable(value) {
-    this.memoryView.setUint32(0x28, value);
+    this.memoryView.setUint32(0x28, value | 0);
   }
   get alphaToOneEnable() {
-    return this.memoryView.getUint32(0x2C);
+    return this.memoryView.getUint32(0x2C) !== 0;
   }
   set alphaToOneEnable(value) {
-    this.memoryView.setUint32(0x2C, value);
+    this.memoryView.setUint32(0x2C, value | 0);
   }
   
 };
@@ -7889,7 +7889,7 @@ VkPipelineMultisampleStateCreateInfo.memoryLayout = Object.freeze({
 /** VkPipelineColorBlendAttachmentState **/
 class VkPipelineColorBlendAttachmentState {
   constructor(opts) {
-    
+    this._blendEnable = false;
     
     
     
@@ -7914,10 +7914,10 @@ class VkPipelineColorBlendAttachmentState {
     }
   }
   get blendEnable() {
-    return this.memoryView.getUint32(0x0);
+    return this.memoryView.getUint32(0x0) !== 0;
   }
   set blendEnable(value) {
-    this.memoryView.setUint32(0x0, value);
+    this.memoryView.setUint32(0x0, value | 0);
   }
   get srcColorBlendFactor() {
     return this.memoryView.getInt32(0x4);
@@ -8011,7 +8011,7 @@ class VkPipelineColorBlendStateCreateInfo {
     
     this._pNext = null;
     
-    
+    this._logicOpEnable = false;
     
     
     this._pAttachments = null;
@@ -8067,10 +8067,10 @@ class VkPipelineColorBlendStateCreateInfo {
     this.memoryView.setInt32(0x10, value);
   }
   get logicOpEnable() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set logicOpEnable(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   get logicOp() {
     return this.memoryView.getInt32(0x18);
@@ -8393,11 +8393,11 @@ class VkPipelineDepthStencilStateCreateInfo {
     
     this._pNext = null;
     
+    this._depthTestEnable = false;
+    this._depthWriteEnable = false;
     
-    
-    
-    
-    
+    this._depthBoundsTestEnable = false;
+    this._stencilTestEnable = false;
     this._front = null;
     this._back = null;
     
@@ -8441,16 +8441,16 @@ class VkPipelineDepthStencilStateCreateInfo {
     this.memoryView.setInt32(0x10, value);
   }
   get depthTestEnable() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set depthTestEnable(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   get depthWriteEnable() {
-    return this.memoryView.getUint32(0x18);
+    return this.memoryView.getUint32(0x18) !== 0;
   }
   set depthWriteEnable(value) {
-    this.memoryView.setUint32(0x18, value);
+    this.memoryView.setUint32(0x18, value | 0);
   }
   get depthCompareOp() {
     return this.memoryView.getInt32(0x1C);
@@ -8459,16 +8459,16 @@ class VkPipelineDepthStencilStateCreateInfo {
     this.memoryView.setInt32(0x1C, value);
   }
   get depthBoundsTestEnable() {
-    return this.memoryView.getUint32(0x20);
+    return this.memoryView.getUint32(0x20) !== 0;
   }
   set depthBoundsTestEnable(value) {
-    this.memoryView.setUint32(0x20, value);
+    this.memoryView.setUint32(0x20, value | 0);
   }
   get stencilTestEnable() {
-    return this.memoryView.getUint32(0x24);
+    return this.memoryView.getUint32(0x24) !== 0;
   }
   set stencilTestEnable(value) {
-    this.memoryView.setUint32(0x24, value);
+    this.memoryView.setUint32(0x24, value | 0);
   }
   get front() {
     return this._front;
@@ -9321,14 +9321,14 @@ class VkSamplerCreateInfo {
     
     
     
+    this._anisotropyEnable = false;
+    
+    this._compareEnable = false;
     
     
     
     
-    
-    
-    
-    
+    this._unnormalizedCoordinates = false;
     this.memoryBuffer = new ArrayBuffer(VkSamplerCreateInfo.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -9432,10 +9432,10 @@ class VkSamplerCreateInfo {
     this.memoryView.setFloat32(0x2C, value);
   }
   get anisotropyEnable() {
-    return this.memoryView.getUint32(0x30);
+    return this.memoryView.getUint32(0x30) !== 0;
   }
   set anisotropyEnable(value) {
-    this.memoryView.setUint32(0x30, value);
+    this.memoryView.setUint32(0x30, value | 0);
   }
   get maxAnisotropy() {
     return this.memoryView.getFloat32(0x34);
@@ -9444,10 +9444,10 @@ class VkSamplerCreateInfo {
     this.memoryView.setFloat32(0x34, value);
   }
   get compareEnable() {
-    return this.memoryView.getUint32(0x38);
+    return this.memoryView.getUint32(0x38) !== 0;
   }
   set compareEnable(value) {
-    this.memoryView.setUint32(0x38, value);
+    this.memoryView.setUint32(0x38, value | 0);
   }
   get compareOp() {
     return this.memoryView.getInt32(0x3C);
@@ -9474,10 +9474,10 @@ class VkSamplerCreateInfo {
     this.memoryView.setInt32(0x48, value);
   }
   get unnormalizedCoordinates() {
-    return this.memoryView.getUint32(0x4C);
+    return this.memoryView.getUint32(0x4C) !== 0;
   }
   set unnormalizedCoordinates(value) {
-    this.memoryView.setUint32(0x4C, value);
+    this.memoryView.setUint32(0x4C, value | 0);
   }
   
 };
@@ -9749,7 +9749,7 @@ class VkCommandBufferInheritanceInfo {
     this._renderPass = null;
     
     this._framebuffer = null;
-    
+    this._occlusionQueryEnable = false;
     
     
     this.memoryBuffer = new ArrayBuffer(VkCommandBufferInheritanceInfo.byteLength);
@@ -9832,10 +9832,10 @@ class VkCommandBufferInheritanceInfo {
     }
   }
   get occlusionQueryEnable() {
-    return this.memoryView.getUint32(0x28);
+    return this.memoryView.getUint32(0x28) !== 0;
   }
   set occlusionQueryEnable(value) {
-    this.memoryView.setUint32(0x28, value);
+    this.memoryView.setUint32(0x28, value | 0);
   }
   get queryFlags() {
     return this.memoryView.getInt32(0x2C);
@@ -11205,61 +11205,61 @@ VkFenceCreateInfo.memoryLayout = Object.freeze({
 /** VkPhysicalDeviceFeatures **/
 class VkPhysicalDeviceFeatures {
   constructor(opts) {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    this._robustBufferAccess = false;
+    this._fullDrawIndexUint32 = false;
+    this._imageCubeArray = false;
+    this._independentBlend = false;
+    this._geometryShader = false;
+    this._tessellationShader = false;
+    this._sampleRateShading = false;
+    this._dualSrcBlend = false;
+    this._logicOp = false;
+    this._multiDrawIndirect = false;
+    this._drawIndirectFirstInstance = false;
+    this._depthClamp = false;
+    this._depthBiasClamp = false;
+    this._fillModeNonSolid = false;
+    this._depthBounds = false;
+    this._wideLines = false;
+    this._largePoints = false;
+    this._alphaToOne = false;
+    this._multiViewport = false;
+    this._samplerAnisotropy = false;
+    this._textureCompressionETC2 = false;
+    this._textureCompressionASTC_LDR = false;
+    this._textureCompressionBC = false;
+    this._occlusionQueryPrecise = false;
+    this._pipelineStatisticsQuery = false;
+    this._vertexPipelineStoresAndAtomics = false;
+    this._fragmentStoresAndAtomics = false;
+    this._shaderTessellationAndGeometryPointSize = false;
+    this._shaderImageGatherExtended = false;
+    this._shaderStorageImageExtendedFormats = false;
+    this._shaderStorageImageMultisample = false;
+    this._shaderStorageImageReadWithoutFormat = false;
+    this._shaderStorageImageWriteWithoutFormat = false;
+    this._shaderUniformBufferArrayDynamicIndexing = false;
+    this._shaderSampledImageArrayDynamicIndexing = false;
+    this._shaderStorageBufferArrayDynamicIndexing = false;
+    this._shaderStorageImageArrayDynamicIndexing = false;
+    this._shaderClipDistance = false;
+    this._shaderCullDistance = false;
+    this._shaderFloat64 = false;
+    this._shaderInt64 = false;
+    this._shaderInt16 = false;
+    this._shaderResourceResidency = false;
+    this._shaderResourceMinLod = false;
+    this._sparseBinding = false;
+    this._sparseResidencyBuffer = false;
+    this._sparseResidencyImage2D = false;
+    this._sparseResidencyImage3D = false;
+    this._sparseResidency2Samples = false;
+    this._sparseResidency4Samples = false;
+    this._sparseResidency8Samples = false;
+    this._sparseResidency16Samples = false;
+    this._sparseResidencyAliased = false;
+    this._variableMultisampleRate = false;
+    this._inheritedQueries = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceFeatures.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -11324,334 +11324,334 @@ class VkPhysicalDeviceFeatures {
     }
   }
   get robustBufferAccess() {
-    return this.memoryView.getUint32(0x0);
+    return this.memoryView.getUint32(0x0) !== 0;
   }
   set robustBufferAccess(value) {
-    this.memoryView.setUint32(0x0, value);
+    this.memoryView.setUint32(0x0, value | 0);
   }
   get fullDrawIndexUint32() {
-    return this.memoryView.getUint32(0x4);
+    return this.memoryView.getUint32(0x4) !== 0;
   }
   set fullDrawIndexUint32(value) {
-    this.memoryView.setUint32(0x4, value);
+    this.memoryView.setUint32(0x4, value | 0);
   }
   get imageCubeArray() {
-    return this.memoryView.getUint32(0x8);
+    return this.memoryView.getUint32(0x8) !== 0;
   }
   set imageCubeArray(value) {
-    this.memoryView.setUint32(0x8, value);
+    this.memoryView.setUint32(0x8, value | 0);
   }
   get independentBlend() {
-    return this.memoryView.getUint32(0xC);
+    return this.memoryView.getUint32(0xC) !== 0;
   }
   set independentBlend(value) {
-    this.memoryView.setUint32(0xC, value);
+    this.memoryView.setUint32(0xC, value | 0);
   }
   get geometryShader() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set geometryShader(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get tessellationShader() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set tessellationShader(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   get sampleRateShading() {
-    return this.memoryView.getUint32(0x18);
+    return this.memoryView.getUint32(0x18) !== 0;
   }
   set sampleRateShading(value) {
-    this.memoryView.setUint32(0x18, value);
+    this.memoryView.setUint32(0x18, value | 0);
   }
   get dualSrcBlend() {
-    return this.memoryView.getUint32(0x1C);
+    return this.memoryView.getUint32(0x1C) !== 0;
   }
   set dualSrcBlend(value) {
-    this.memoryView.setUint32(0x1C, value);
+    this.memoryView.setUint32(0x1C, value | 0);
   }
   get logicOp() {
-    return this.memoryView.getUint32(0x20);
+    return this.memoryView.getUint32(0x20) !== 0;
   }
   set logicOp(value) {
-    this.memoryView.setUint32(0x20, value);
+    this.memoryView.setUint32(0x20, value | 0);
   }
   get multiDrawIndirect() {
-    return this.memoryView.getUint32(0x24);
+    return this.memoryView.getUint32(0x24) !== 0;
   }
   set multiDrawIndirect(value) {
-    this.memoryView.setUint32(0x24, value);
+    this.memoryView.setUint32(0x24, value | 0);
   }
   get drawIndirectFirstInstance() {
-    return this.memoryView.getUint32(0x28);
+    return this.memoryView.getUint32(0x28) !== 0;
   }
   set drawIndirectFirstInstance(value) {
-    this.memoryView.setUint32(0x28, value);
+    this.memoryView.setUint32(0x28, value | 0);
   }
   get depthClamp() {
-    return this.memoryView.getUint32(0x2C);
+    return this.memoryView.getUint32(0x2C) !== 0;
   }
   set depthClamp(value) {
-    this.memoryView.setUint32(0x2C, value);
+    this.memoryView.setUint32(0x2C, value | 0);
   }
   get depthBiasClamp() {
-    return this.memoryView.getUint32(0x30);
+    return this.memoryView.getUint32(0x30) !== 0;
   }
   set depthBiasClamp(value) {
-    this.memoryView.setUint32(0x30, value);
+    this.memoryView.setUint32(0x30, value | 0);
   }
   get fillModeNonSolid() {
-    return this.memoryView.getUint32(0x34);
+    return this.memoryView.getUint32(0x34) !== 0;
   }
   set fillModeNonSolid(value) {
-    this.memoryView.setUint32(0x34, value);
+    this.memoryView.setUint32(0x34, value | 0);
   }
   get depthBounds() {
-    return this.memoryView.getUint32(0x38);
+    return this.memoryView.getUint32(0x38) !== 0;
   }
   set depthBounds(value) {
-    this.memoryView.setUint32(0x38, value);
+    this.memoryView.setUint32(0x38, value | 0);
   }
   get wideLines() {
-    return this.memoryView.getUint32(0x3C);
+    return this.memoryView.getUint32(0x3C) !== 0;
   }
   set wideLines(value) {
-    this.memoryView.setUint32(0x3C, value);
+    this.memoryView.setUint32(0x3C, value | 0);
   }
   get largePoints() {
-    return this.memoryView.getUint32(0x40);
+    return this.memoryView.getUint32(0x40) !== 0;
   }
   set largePoints(value) {
-    this.memoryView.setUint32(0x40, value);
+    this.memoryView.setUint32(0x40, value | 0);
   }
   get alphaToOne() {
-    return this.memoryView.getUint32(0x44);
+    return this.memoryView.getUint32(0x44) !== 0;
   }
   set alphaToOne(value) {
-    this.memoryView.setUint32(0x44, value);
+    this.memoryView.setUint32(0x44, value | 0);
   }
   get multiViewport() {
-    return this.memoryView.getUint32(0x48);
+    return this.memoryView.getUint32(0x48) !== 0;
   }
   set multiViewport(value) {
-    this.memoryView.setUint32(0x48, value);
+    this.memoryView.setUint32(0x48, value | 0);
   }
   get samplerAnisotropy() {
-    return this.memoryView.getUint32(0x4C);
+    return this.memoryView.getUint32(0x4C) !== 0;
   }
   set samplerAnisotropy(value) {
-    this.memoryView.setUint32(0x4C, value);
+    this.memoryView.setUint32(0x4C, value | 0);
   }
   get textureCompressionETC2() {
-    return this.memoryView.getUint32(0x50);
+    return this.memoryView.getUint32(0x50) !== 0;
   }
   set textureCompressionETC2(value) {
-    this.memoryView.setUint32(0x50, value);
+    this.memoryView.setUint32(0x50, value | 0);
   }
   get textureCompressionASTC_LDR() {
-    return this.memoryView.getUint32(0x54);
+    return this.memoryView.getUint32(0x54) !== 0;
   }
   set textureCompressionASTC_LDR(value) {
-    this.memoryView.setUint32(0x54, value);
+    this.memoryView.setUint32(0x54, value | 0);
   }
   get textureCompressionBC() {
-    return this.memoryView.getUint32(0x58);
+    return this.memoryView.getUint32(0x58) !== 0;
   }
   set textureCompressionBC(value) {
-    this.memoryView.setUint32(0x58, value);
+    this.memoryView.setUint32(0x58, value | 0);
   }
   get occlusionQueryPrecise() {
-    return this.memoryView.getUint32(0x5C);
+    return this.memoryView.getUint32(0x5C) !== 0;
   }
   set occlusionQueryPrecise(value) {
-    this.memoryView.setUint32(0x5C, value);
+    this.memoryView.setUint32(0x5C, value | 0);
   }
   get pipelineStatisticsQuery() {
-    return this.memoryView.getUint32(0x60);
+    return this.memoryView.getUint32(0x60) !== 0;
   }
   set pipelineStatisticsQuery(value) {
-    this.memoryView.setUint32(0x60, value);
+    this.memoryView.setUint32(0x60, value | 0);
   }
   get vertexPipelineStoresAndAtomics() {
-    return this.memoryView.getUint32(0x64);
+    return this.memoryView.getUint32(0x64) !== 0;
   }
   set vertexPipelineStoresAndAtomics(value) {
-    this.memoryView.setUint32(0x64, value);
+    this.memoryView.setUint32(0x64, value | 0);
   }
   get fragmentStoresAndAtomics() {
-    return this.memoryView.getUint32(0x68);
+    return this.memoryView.getUint32(0x68) !== 0;
   }
   set fragmentStoresAndAtomics(value) {
-    this.memoryView.setUint32(0x68, value);
+    this.memoryView.setUint32(0x68, value | 0);
   }
   get shaderTessellationAndGeometryPointSize() {
-    return this.memoryView.getUint32(0x6C);
+    return this.memoryView.getUint32(0x6C) !== 0;
   }
   set shaderTessellationAndGeometryPointSize(value) {
-    this.memoryView.setUint32(0x6C, value);
+    this.memoryView.setUint32(0x6C, value | 0);
   }
   get shaderImageGatherExtended() {
-    return this.memoryView.getUint32(0x70);
+    return this.memoryView.getUint32(0x70) !== 0;
   }
   set shaderImageGatherExtended(value) {
-    this.memoryView.setUint32(0x70, value);
+    this.memoryView.setUint32(0x70, value | 0);
   }
   get shaderStorageImageExtendedFormats() {
-    return this.memoryView.getUint32(0x74);
+    return this.memoryView.getUint32(0x74) !== 0;
   }
   set shaderStorageImageExtendedFormats(value) {
-    this.memoryView.setUint32(0x74, value);
+    this.memoryView.setUint32(0x74, value | 0);
   }
   get shaderStorageImageMultisample() {
-    return this.memoryView.getUint32(0x78);
+    return this.memoryView.getUint32(0x78) !== 0;
   }
   set shaderStorageImageMultisample(value) {
-    this.memoryView.setUint32(0x78, value);
+    this.memoryView.setUint32(0x78, value | 0);
   }
   get shaderStorageImageReadWithoutFormat() {
-    return this.memoryView.getUint32(0x7C);
+    return this.memoryView.getUint32(0x7C) !== 0;
   }
   set shaderStorageImageReadWithoutFormat(value) {
-    this.memoryView.setUint32(0x7C, value);
+    this.memoryView.setUint32(0x7C, value | 0);
   }
   get shaderStorageImageWriteWithoutFormat() {
-    return this.memoryView.getUint32(0x80);
+    return this.memoryView.getUint32(0x80) !== 0;
   }
   set shaderStorageImageWriteWithoutFormat(value) {
-    this.memoryView.setUint32(0x80, value);
+    this.memoryView.setUint32(0x80, value | 0);
   }
   get shaderUniformBufferArrayDynamicIndexing() {
-    return this.memoryView.getUint32(0x84);
+    return this.memoryView.getUint32(0x84) !== 0;
   }
   set shaderUniformBufferArrayDynamicIndexing(value) {
-    this.memoryView.setUint32(0x84, value);
+    this.memoryView.setUint32(0x84, value | 0);
   }
   get shaderSampledImageArrayDynamicIndexing() {
-    return this.memoryView.getUint32(0x88);
+    return this.memoryView.getUint32(0x88) !== 0;
   }
   set shaderSampledImageArrayDynamicIndexing(value) {
-    this.memoryView.setUint32(0x88, value);
+    this.memoryView.setUint32(0x88, value | 0);
   }
   get shaderStorageBufferArrayDynamicIndexing() {
-    return this.memoryView.getUint32(0x8C);
+    return this.memoryView.getUint32(0x8C) !== 0;
   }
   set shaderStorageBufferArrayDynamicIndexing(value) {
-    this.memoryView.setUint32(0x8C, value);
+    this.memoryView.setUint32(0x8C, value | 0);
   }
   get shaderStorageImageArrayDynamicIndexing() {
-    return this.memoryView.getUint32(0x90);
+    return this.memoryView.getUint32(0x90) !== 0;
   }
   set shaderStorageImageArrayDynamicIndexing(value) {
-    this.memoryView.setUint32(0x90, value);
+    this.memoryView.setUint32(0x90, value | 0);
   }
   get shaderClipDistance() {
-    return this.memoryView.getUint32(0x94);
+    return this.memoryView.getUint32(0x94) !== 0;
   }
   set shaderClipDistance(value) {
-    this.memoryView.setUint32(0x94, value);
+    this.memoryView.setUint32(0x94, value | 0);
   }
   get shaderCullDistance() {
-    return this.memoryView.getUint32(0x98);
+    return this.memoryView.getUint32(0x98) !== 0;
   }
   set shaderCullDistance(value) {
-    this.memoryView.setUint32(0x98, value);
+    this.memoryView.setUint32(0x98, value | 0);
   }
   get shaderFloat64() {
-    return this.memoryView.getUint32(0x9C);
+    return this.memoryView.getUint32(0x9C) !== 0;
   }
   set shaderFloat64(value) {
-    this.memoryView.setUint32(0x9C, value);
+    this.memoryView.setUint32(0x9C, value | 0);
   }
   get shaderInt64() {
-    return this.memoryView.getUint32(0xA0);
+    return this.memoryView.getUint32(0xA0) !== 0;
   }
   set shaderInt64(value) {
-    this.memoryView.setUint32(0xA0, value);
+    this.memoryView.setUint32(0xA0, value | 0);
   }
   get shaderInt16() {
-    return this.memoryView.getUint32(0xA4);
+    return this.memoryView.getUint32(0xA4) !== 0;
   }
   set shaderInt16(value) {
-    this.memoryView.setUint32(0xA4, value);
+    this.memoryView.setUint32(0xA4, value | 0);
   }
   get shaderResourceResidency() {
-    return this.memoryView.getUint32(0xA8);
+    return this.memoryView.getUint32(0xA8) !== 0;
   }
   set shaderResourceResidency(value) {
-    this.memoryView.setUint32(0xA8, value);
+    this.memoryView.setUint32(0xA8, value | 0);
   }
   get shaderResourceMinLod() {
-    return this.memoryView.getUint32(0xAC);
+    return this.memoryView.getUint32(0xAC) !== 0;
   }
   set shaderResourceMinLod(value) {
-    this.memoryView.setUint32(0xAC, value);
+    this.memoryView.setUint32(0xAC, value | 0);
   }
   get sparseBinding() {
-    return this.memoryView.getUint32(0xB0);
+    return this.memoryView.getUint32(0xB0) !== 0;
   }
   set sparseBinding(value) {
-    this.memoryView.setUint32(0xB0, value);
+    this.memoryView.setUint32(0xB0, value | 0);
   }
   get sparseResidencyBuffer() {
-    return this.memoryView.getUint32(0xB4);
+    return this.memoryView.getUint32(0xB4) !== 0;
   }
   set sparseResidencyBuffer(value) {
-    this.memoryView.setUint32(0xB4, value);
+    this.memoryView.setUint32(0xB4, value | 0);
   }
   get sparseResidencyImage2D() {
-    return this.memoryView.getUint32(0xB8);
+    return this.memoryView.getUint32(0xB8) !== 0;
   }
   set sparseResidencyImage2D(value) {
-    this.memoryView.setUint32(0xB8, value);
+    this.memoryView.setUint32(0xB8, value | 0);
   }
   get sparseResidencyImage3D() {
-    return this.memoryView.getUint32(0xBC);
+    return this.memoryView.getUint32(0xBC) !== 0;
   }
   set sparseResidencyImage3D(value) {
-    this.memoryView.setUint32(0xBC, value);
+    this.memoryView.setUint32(0xBC, value | 0);
   }
   get sparseResidency2Samples() {
-    return this.memoryView.getUint32(0xC0);
+    return this.memoryView.getUint32(0xC0) !== 0;
   }
   set sparseResidency2Samples(value) {
-    this.memoryView.setUint32(0xC0, value);
+    this.memoryView.setUint32(0xC0, value | 0);
   }
   get sparseResidency4Samples() {
-    return this.memoryView.getUint32(0xC4);
+    return this.memoryView.getUint32(0xC4) !== 0;
   }
   set sparseResidency4Samples(value) {
-    this.memoryView.setUint32(0xC4, value);
+    this.memoryView.setUint32(0xC4, value | 0);
   }
   get sparseResidency8Samples() {
-    return this.memoryView.getUint32(0xC8);
+    return this.memoryView.getUint32(0xC8) !== 0;
   }
   set sparseResidency8Samples(value) {
-    this.memoryView.setUint32(0xC8, value);
+    this.memoryView.setUint32(0xC8, value | 0);
   }
   get sparseResidency16Samples() {
-    return this.memoryView.getUint32(0xCC);
+    return this.memoryView.getUint32(0xCC) !== 0;
   }
   set sparseResidency16Samples(value) {
-    this.memoryView.setUint32(0xCC, value);
+    this.memoryView.setUint32(0xCC, value | 0);
   }
   get sparseResidencyAliased() {
-    return this.memoryView.getUint32(0xD0);
+    return this.memoryView.getUint32(0xD0) !== 0;
   }
   set sparseResidencyAliased(value) {
-    this.memoryView.setUint32(0xD0, value);
+    this.memoryView.setUint32(0xD0, value | 0);
   }
   get variableMultisampleRate() {
-    return this.memoryView.getUint32(0xD4);
+    return this.memoryView.getUint32(0xD4) !== 0;
   }
   set variableMultisampleRate(value) {
-    this.memoryView.setUint32(0xD4, value);
+    this.memoryView.setUint32(0xD4, value | 0);
   }
   get inheritedQueries() {
-    return this.memoryView.getUint32(0xD8);
+    return this.memoryView.getUint32(0xD8) !== 0;
   }
   set inheritedQueries(value) {
-    this.memoryView.setUint32(0xD8, value);
+    this.memoryView.setUint32(0xD8, value | 0);
   }
   
 };
@@ -11888,11 +11888,11 @@ VkPhysicalDeviceFeatures.memoryLayout = Object.freeze({
 /** VkPhysicalDeviceSparseProperties **/
 class VkPhysicalDeviceSparseProperties {
   constructor(opts) {
-    
-    
-    
-    
-    
+    this._residencyStandard2DBlockShape = false;
+    this._residencyStandard2DMultisampleBlockShape = false;
+    this._residencyStandard3DBlockShape = false;
+    this._residencyAlignedMipSize = false;
+    this._residencyNonResidentStrict = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceSparseProperties.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -11902,19 +11902,19 @@ class VkPhysicalDeviceSparseProperties {
     }
   }
   get residencyStandard2DBlockShape() {
-    return this.memoryView.getUint32(0x0);
+    return this.memoryView.getUint32(0x0) !== 0;
   }
   get residencyStandard2DMultisampleBlockShape() {
-    return this.memoryView.getUint32(0x4);
+    return this.memoryView.getUint32(0x4) !== 0;
   }
   get residencyStandard3DBlockShape() {
-    return this.memoryView.getUint32(0x8);
+    return this.memoryView.getUint32(0x8) !== 0;
   }
   get residencyAlignedMipSize() {
-    return this.memoryView.getUint32(0xC);
+    return this.memoryView.getUint32(0xC) !== 0;
   }
   get residencyNonResidentStrict() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   
 };
@@ -12042,7 +12042,7 @@ class VkPhysicalDeviceLimits {
     
     
     
-    
+    this._timestampComputeAndGraphics = false;
     
     
     
@@ -12052,8 +12052,8 @@ class VkPhysicalDeviceLimits {
     this._lineWidthRange = null;
     
     
-    
-    
+    this._strictLines = false;
+    this._standardSampleLocations = false;
     
     
     
@@ -12339,7 +12339,7 @@ class VkPhysicalDeviceLimits {
     return this.memoryView.getUint32(0x1A0);
   }
   get timestampComputeAndGraphics() {
-    return this.memoryView.getUint32(0x1A4);
+    return this.memoryView.getUint32(0x1A4) !== 0;
   }
   get timestampPeriod() {
     return this.memoryView.getFloat32(0x1A8);
@@ -12369,10 +12369,10 @@ class VkPhysicalDeviceLimits {
     return this.memoryView.getFloat32(0x1D0);
   }
   get strictLines() {
-    return this.memoryView.getUint32(0x1D4);
+    return this.memoryView.getUint32(0x1D4) !== 0;
   }
   get standardSampleLocations() {
-    return this.memoryView.getUint32(0x1D8);
+    return this.memoryView.getUint32(0x1D8) !== 0;
   }
   get optimalBufferCopyOffsetAlignment() {
     return this.memoryView.getBigUint64(0x1E0);
@@ -13683,8 +13683,8 @@ class VkDisplayPropertiesKHR {
     this._physicalDimensions = null;
     this._physicalResolution = null;
     
-    
-    
+    this._planeReorderPossible = false;
+    this._persistentContent = false;
     this.memoryBuffer = new ArrayBuffer(VkDisplayPropertiesKHR.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -13714,10 +13714,10 @@ class VkDisplayPropertiesKHR {
     return this.memoryView.getInt32(0x20);
   }
   get planeReorderPossible() {
-    return this.memoryView.getUint32(0x24);
+    return this.memoryView.getUint32(0x24) !== 0;
   }
   get persistentContent() {
-    return this.memoryView.getUint32(0x28);
+    return this.memoryView.getUint32(0x28) !== 0;
   }
   
 };
@@ -14274,7 +14274,7 @@ class VkDisplayPresentInfoKHR {
     this._pNext = null;
     this._srcRect = null;
     this._dstRect = null;
-    
+    this._persistent = false;
     this.memoryBuffer = new ArrayBuffer(VkDisplayPresentInfoKHR.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -14331,10 +14331,10 @@ class VkDisplayPresentInfoKHR {
     }
   }
   get persistent() {
-    return this.memoryView.getUint32(0x30);
+    return this.memoryView.getUint32(0x30) !== 0;
   }
   set persistent(value) {
-    this.memoryView.setUint32(0x30, value);
+    this.memoryView.setUint32(0x30, value | 0);
   }
   
 };
@@ -14632,7 +14632,7 @@ class VkSwapchainCreateInfoKHR {
     
     
     
-    
+    this._clipped = false;
     this._oldSwapchain = null;
     this.memoryBuffer = new ArrayBuffer(VkSwapchainCreateInfoKHR.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
@@ -14799,10 +14799,10 @@ class VkSwapchainCreateInfoKHR {
     this.memoryView.setInt32(0x58, value);
   }
   get clipped() {
-    return this.memoryView.getUint32(0x5C);
+    return this.memoryView.getUint32(0x5C) !== 0;
   }
   set clipped(value) {
-    this.memoryView.setUint32(0x5C, value);
+    this.memoryView.setUint32(0x5C, value | 0);
   }
   get oldSwapchain() {
     return this._oldSwapchain;
@@ -15792,7 +15792,7 @@ class VkDedicatedAllocationImageCreateInfoNV {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._dedicatedAllocation = false;
     this.memoryBuffer = new ArrayBuffer(VkDedicatedAllocationImageCreateInfoNV.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -15817,10 +15817,10 @@ class VkDedicatedAllocationImageCreateInfoNV {
     throw new TypeError("'VkDedicatedAllocationImageCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get dedicatedAllocation() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set dedicatedAllocation(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   
 };
@@ -15856,7 +15856,7 @@ class VkDedicatedAllocationBufferCreateInfoNV {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._dedicatedAllocation = false;
     this.memoryBuffer = new ArrayBuffer(VkDedicatedAllocationBufferCreateInfoNV.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -15881,10 +15881,10 @@ class VkDedicatedAllocationBufferCreateInfoNV {
     throw new TypeError("'VkDedicatedAllocationBufferCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get dedicatedAllocation() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set dedicatedAllocation(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   
 };
@@ -16538,7 +16538,7 @@ class VkDeviceGeneratedCommandsFeaturesNVX {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._computeBindingPointSupport = false;
     this.memoryBuffer = new ArrayBuffer(VkDeviceGeneratedCommandsFeaturesNVX.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -16563,10 +16563,10 @@ class VkDeviceGeneratedCommandsFeaturesNVX {
     throw new TypeError("'VkDeviceGeneratedCommandsFeaturesNVX.pNext' isn't allowed to be filled");
   }
   get computeBindingPointSupport() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set computeBindingPointSupport(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   
 };
@@ -20112,8 +20112,8 @@ class VkPhysicalDeviceVariablePointerFeatures {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
+    this._variablePointersStorageBuffer = false;
+    this._variablePointers = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceVariablePointerFeatures.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -20139,16 +20139,16 @@ class VkPhysicalDeviceVariablePointerFeatures {
     throw new TypeError("'VkPhysicalDeviceVariablePointerFeatures.pNext' isn't allowed to be filled");
   }
   get variablePointersStorageBuffer() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set variablePointersStorageBuffer(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get variablePointers() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set variablePointers(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   
 };
@@ -20188,8 +20188,8 @@ class VkPhysicalDeviceVariablePointerFeaturesKHR {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
+    this._variablePointersStorageBuffer = false;
+    this._variablePointers = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceVariablePointerFeaturesKHR.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -20215,16 +20215,16 @@ class VkPhysicalDeviceVariablePointerFeaturesKHR {
     throw new TypeError("'VkPhysicalDeviceVariablePointerFeaturesKHR.pNext' isn't allowed to be filled");
   }
   get variablePointersStorageBuffer() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set variablePointersStorageBuffer(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get variablePointers() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set variablePointers(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   
 };
@@ -20914,7 +20914,7 @@ class VkPhysicalDeviceIDProperties {
     this._driverUUID = null;
     this._deviceLUID = null;
     
-    
+    this._deviceLUIDValid = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceIDProperties.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -20950,7 +20950,7 @@ class VkPhysicalDeviceIDProperties {
     return this.memoryView.getUint32(0x38);
   }
   get deviceLUIDValid() {
-    return this.memoryView.getUint32(0x3C);
+    return this.memoryView.getUint32(0x3C) !== 0;
   }
   
 };
@@ -21030,7 +21030,7 @@ class VkPhysicalDeviceIDPropertiesKHR {
     this._driverUUID = null;
     this._deviceLUID = null;
     
-    
+    this._deviceLUIDValid = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceIDPropertiesKHR.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -21066,7 +21066,7 @@ class VkPhysicalDeviceIDPropertiesKHR {
     return this.memoryView.getUint32(0x38);
   }
   get deviceLUIDValid() {
-    return this.memoryView.getUint32(0x3C);
+    return this.memoryView.getUint32(0x3C) !== 0;
   }
   
 };
@@ -24191,9 +24191,9 @@ class VkPhysicalDeviceMultiviewFeatures {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
-    
+    this._multiview = false;
+    this._multiviewGeometryShader = false;
+    this._multiviewTessellationShader = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceMultiviewFeatures.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -24220,22 +24220,22 @@ class VkPhysicalDeviceMultiviewFeatures {
     throw new TypeError("'VkPhysicalDeviceMultiviewFeatures.pNext' isn't allowed to be filled");
   }
   get multiview() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set multiview(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get multiviewGeometryShader() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set multiviewGeometryShader(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   get multiviewTessellationShader() {
-    return this.memoryView.getUint32(0x18);
+    return this.memoryView.getUint32(0x18) !== 0;
   }
   set multiviewTessellationShader(value) {
-    this.memoryView.setUint32(0x18, value);
+    this.memoryView.setUint32(0x18, value | 0);
   }
   
 };
@@ -24279,9 +24279,9 @@ class VkPhysicalDeviceMultiviewFeaturesKHR {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
-    
+    this._multiview = false;
+    this._multiviewGeometryShader = false;
+    this._multiviewTessellationShader = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceMultiviewFeaturesKHR.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -24308,22 +24308,22 @@ class VkPhysicalDeviceMultiviewFeaturesKHR {
     throw new TypeError("'VkPhysicalDeviceMultiviewFeaturesKHR.pNext' isn't allowed to be filled");
   }
   get multiview() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set multiview(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get multiviewGeometryShader() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set multiviewGeometryShader(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   get multiviewTessellationShader() {
-    return this.memoryView.getUint32(0x18);
+    return this.memoryView.getUint32(0x18) !== 0;
   }
   set multiviewTessellationShader(value) {
-    this.memoryView.setUint32(0x18, value);
+    this.memoryView.setUint32(0x18, value | 0);
   }
   
 };
@@ -25197,7 +25197,7 @@ class VkPhysicalDeviceGroupProperties {
     this._pNext = null;
     
     this._physicalDevices = null;
-    
+    this._subsetAllocation = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceGroupProperties.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -25227,7 +25227,7 @@ class VkPhysicalDeviceGroupProperties {
     return this._physicalDevices;
   }
   get subsetAllocation() {
-    return this.memoryView.getUint32(0x118);
+    return this.memoryView.getUint32(0x118) !== 0;
   }
   
 };
@@ -25297,7 +25297,7 @@ class VkPhysicalDeviceGroupPropertiesKHR {
     this._pNext = null;
     
     this._physicalDevices = null;
-    
+    this._subsetAllocation = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceGroupPropertiesKHR.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -25327,7 +25327,7 @@ class VkPhysicalDeviceGroupPropertiesKHR {
     return this._physicalDevices;
   }
   get subsetAllocation() {
-    return this.memoryView.getUint32(0x118);
+    return this.memoryView.getUint32(0x118) !== 0;
   }
   
 };
@@ -29113,7 +29113,7 @@ class VkPipelineViewportWScalingStateCreateInfoNV {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._viewportWScalingEnable = false;
     
     this._pViewportWScalings = null;
     this._pViewportWScalingsNative = null;
@@ -29143,10 +29143,10 @@ class VkPipelineViewportWScalingStateCreateInfoNV {
     throw new TypeError("'VkPipelineViewportWScalingStateCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get viewportWScalingEnable() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set viewportWScalingEnable(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get viewportCount() {
     return this.memoryView.getUint32(0x14);
@@ -29601,7 +29601,7 @@ class VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._perViewPositionAllComponents = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -29625,7 +29625,7 @@ class VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX {
     throw new TypeError("'VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.pNext' isn't allowed to be filled");
   }
   get perViewPositionAllComponents() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   
 };
@@ -30590,10 +30590,10 @@ class VkPhysicalDevice16BitStorageFeatures {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
-    
-    
+    this._storageBuffer16BitAccess = false;
+    this._uniformAndStorageBuffer16BitAccess = false;
+    this._storagePushConstant16 = false;
+    this._storageInputOutput16 = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDevice16BitStorageFeatures.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -30621,28 +30621,28 @@ class VkPhysicalDevice16BitStorageFeatures {
     throw new TypeError("'VkPhysicalDevice16BitStorageFeatures.pNext' isn't allowed to be filled");
   }
   get storageBuffer16BitAccess() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set storageBuffer16BitAccess(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get uniformAndStorageBuffer16BitAccess() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set uniformAndStorageBuffer16BitAccess(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   get storagePushConstant16() {
-    return this.memoryView.getUint32(0x18);
+    return this.memoryView.getUint32(0x18) !== 0;
   }
   set storagePushConstant16(value) {
-    this.memoryView.setUint32(0x18, value);
+    this.memoryView.setUint32(0x18, value | 0);
   }
   get storageInputOutput16() {
-    return this.memoryView.getUint32(0x1C);
+    return this.memoryView.getUint32(0x1C) !== 0;
   }
   set storageInputOutput16(value) {
-    this.memoryView.setUint32(0x1C, value);
+    this.memoryView.setUint32(0x1C, value | 0);
   }
   
 };
@@ -30690,10 +30690,10 @@ class VkPhysicalDevice16BitStorageFeaturesKHR {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
-    
-    
+    this._storageBuffer16BitAccess = false;
+    this._uniformAndStorageBuffer16BitAccess = false;
+    this._storagePushConstant16 = false;
+    this._storageInputOutput16 = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDevice16BitStorageFeaturesKHR.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -30721,28 +30721,28 @@ class VkPhysicalDevice16BitStorageFeaturesKHR {
     throw new TypeError("'VkPhysicalDevice16BitStorageFeaturesKHR.pNext' isn't allowed to be filled");
   }
   get storageBuffer16BitAccess() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set storageBuffer16BitAccess(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get uniformAndStorageBuffer16BitAccess() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set uniformAndStorageBuffer16BitAccess(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   get storagePushConstant16() {
-    return this.memoryView.getUint32(0x18);
+    return this.memoryView.getUint32(0x18) !== 0;
   }
   set storagePushConstant16(value) {
-    this.memoryView.setUint32(0x18, value);
+    this.memoryView.setUint32(0x18, value | 0);
   }
   get storageInputOutput16() {
-    return this.memoryView.getUint32(0x1C);
+    return this.memoryView.getUint32(0x1C) !== 0;
   }
   set storageInputOutput16(value) {
-    this.memoryView.setUint32(0x1C, value);
+    this.memoryView.setUint32(0x1C, value | 0);
   }
   
 };
@@ -30793,7 +30793,7 @@ class VkPhysicalDeviceSubgroupProperties {
     
     
     
-    
+    this._quadOperationsInAllStages = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceSubgroupProperties.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -30826,7 +30826,7 @@ class VkPhysicalDeviceSubgroupProperties {
     return this.memoryView.getInt32(0x18);
   }
   get quadOperationsInAllStages() {
-    return this.memoryView.getUint32(0x1C);
+    return this.memoryView.getUint32(0x1C) !== 0;
   }
   
 };
@@ -31740,8 +31740,8 @@ class VkMemoryDedicatedRequirements {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
+    this._prefersDedicatedAllocation = false;
+    this._requiresDedicatedAllocation = false;
     this.memoryBuffer = new ArrayBuffer(VkMemoryDedicatedRequirements.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -31765,10 +31765,10 @@ class VkMemoryDedicatedRequirements {
     throw new TypeError("'VkMemoryDedicatedRequirements.pNext' isn't allowed to be filled");
   }
   get prefersDedicatedAllocation() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   get requiresDedicatedAllocation() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   
 };
@@ -31808,8 +31808,8 @@ class VkMemoryDedicatedRequirementsKHR {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
+    this._prefersDedicatedAllocation = false;
+    this._requiresDedicatedAllocation = false;
     this.memoryBuffer = new ArrayBuffer(VkMemoryDedicatedRequirementsKHR.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -31833,10 +31833,10 @@ class VkMemoryDedicatedRequirementsKHR {
     throw new TypeError("'VkMemoryDedicatedRequirementsKHR.pNext' isn't allowed to be filled");
   }
   get prefersDedicatedAllocation() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   get requiresDedicatedAllocation() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   
 };
@@ -32473,7 +32473,7 @@ class VkSamplerYcbcrConversionCreateInfo {
     
     
     
-    
+    this._forceExplicitReconstruction = false;
     this.memoryBuffer = new ArrayBuffer(VkSamplerYcbcrConversionCreateInfo.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -32571,10 +32571,10 @@ class VkSamplerYcbcrConversionCreateInfo {
     this.memoryView.setInt32(0x34, value);
   }
   get forceExplicitReconstruction() {
-    return this.memoryView.getUint32(0x38);
+    return this.memoryView.getUint32(0x38) !== 0;
   }
   set forceExplicitReconstruction(value) {
-    this.memoryView.setUint32(0x38, value);
+    this.memoryView.setUint32(0x38, value | 0);
   }
   
 };
@@ -32647,7 +32647,7 @@ class VkSamplerYcbcrConversionCreateInfoKHR {
     
     
     
-    
+    this._forceExplicitReconstruction = false;
     this.memoryBuffer = new ArrayBuffer(VkSamplerYcbcrConversionCreateInfoKHR.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -32745,10 +32745,10 @@ class VkSamplerYcbcrConversionCreateInfoKHR {
     this.memoryView.setInt32(0x34, value);
   }
   get forceExplicitReconstruction() {
-    return this.memoryView.getUint32(0x38);
+    return this.memoryView.getUint32(0x38) !== 0;
   }
   set forceExplicitReconstruction(value) {
-    this.memoryView.setUint32(0x38, value);
+    this.memoryView.setUint32(0x38, value | 0);
   }
   
 };
@@ -33070,7 +33070,7 @@ class VkPhysicalDeviceSamplerYcbcrConversionFeatures {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._samplerYcbcrConversion = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceSamplerYcbcrConversionFeatures.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -33095,10 +33095,10 @@ class VkPhysicalDeviceSamplerYcbcrConversionFeatures {
     throw new TypeError("'VkPhysicalDeviceSamplerYcbcrConversionFeatures.pNext' isn't allowed to be filled");
   }
   get samplerYcbcrConversion() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set samplerYcbcrConversion(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   
 };
@@ -33134,7 +33134,7 @@ class VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._samplerYcbcrConversion = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -33159,10 +33159,10 @@ class VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR {
     throw new TypeError("'VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR.pNext' isn't allowed to be filled");
   }
   get samplerYcbcrConversion() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set samplerYcbcrConversion(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   
 };
@@ -33318,7 +33318,7 @@ class VkTextureLODGatherFormatPropertiesAMD {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._supportsTextureGatherLODBiasAMD = false;
     this.memoryBuffer = new ArrayBuffer(VkTextureLODGatherFormatPropertiesAMD.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -33342,7 +33342,7 @@ class VkTextureLODGatherFormatPropertiesAMD {
     throw new TypeError("'VkTextureLODGatherFormatPropertiesAMD.pNext' isn't allowed to be filled");
   }
   get supportsTextureGatherLODBiasAMD() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   
 };
@@ -33475,7 +33475,7 @@ class VkProtectedSubmitInfo {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._protectedSubmit = false;
     this.memoryBuffer = new ArrayBuffer(VkProtectedSubmitInfo.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -33500,10 +33500,10 @@ class VkProtectedSubmitInfo {
     throw new TypeError("'VkProtectedSubmitInfo.pNext' isn't allowed to be filled");
   }
   get protectedSubmit() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set protectedSubmit(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   
 };
@@ -33539,7 +33539,7 @@ class VkPhysicalDeviceProtectedMemoryFeatures {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._protectedMemory = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceProtectedMemoryFeatures.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -33564,10 +33564,10 @@ class VkPhysicalDeviceProtectedMemoryFeatures {
     throw new TypeError("'VkPhysicalDeviceProtectedMemoryFeatures.pNext' isn't allowed to be filled");
   }
   get protectedMemory() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set protectedMemory(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   
 };
@@ -33603,7 +33603,7 @@ class VkPhysicalDeviceProtectedMemoryProperties {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._protectedNoFault = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceProtectedMemoryProperties.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -33627,7 +33627,7 @@ class VkPhysicalDeviceProtectedMemoryProperties {
     throw new TypeError("'VkPhysicalDeviceProtectedMemoryProperties.pNext' isn't allowed to be filled");
   }
   get protectedNoFault() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   
 };
@@ -33752,7 +33752,7 @@ class VkPipelineCoverageToColorStateCreateInfoNV {
     
     this._pNext = null;
     
-    
+    this._coverageToColorEnable = false;
     
     this.memoryBuffer = new ArrayBuffer(VkPipelineCoverageToColorStateCreateInfoNV.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
@@ -33786,10 +33786,10 @@ class VkPipelineCoverageToColorStateCreateInfoNV {
     this.memoryView.setInt32(0x10, value);
   }
   get coverageToColorEnable() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set coverageToColorEnable(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   get coverageToColorLocation() {
     return this.memoryView.getUint32(0x18);
@@ -33839,8 +33839,8 @@ class VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
+    this._filterMinmaxSingleComponentFormats = false;
+    this._filterMinmaxImageComponentMapping = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -33864,10 +33864,10 @@ class VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT {
     throw new TypeError("'VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get filterMinmaxSingleComponentFormats() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   get filterMinmaxImageComponentMapping() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   
 };
@@ -34362,7 +34362,7 @@ class VkPipelineSampleLocationsStateCreateInfoEXT {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._sampleLocationsEnable = false;
     this._sampleLocationsInfo = null;
     this.memoryBuffer = new ArrayBuffer(VkPipelineSampleLocationsStateCreateInfoEXT.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
@@ -34389,10 +34389,10 @@ class VkPipelineSampleLocationsStateCreateInfoEXT {
     throw new TypeError("'VkPipelineSampleLocationsStateCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get sampleLocationsEnable() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set sampleLocationsEnable(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get sampleLocationsInfo() {
     return this._sampleLocationsInfo;
@@ -34453,7 +34453,7 @@ class VkPhysicalDeviceSampleLocationsPropertiesEXT {
     this._maxSampleLocationGridSize = null;
     this._sampleLocationCoordinateRange = null;
     
-    
+    this._variableSampleLocations = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceSampleLocationsPropertiesEXT.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -34489,7 +34489,7 @@ class VkPhysicalDeviceSampleLocationsPropertiesEXT {
     return this.memoryView.getUint32(0x24);
   }
   get variableSampleLocations() {
-    return this.memoryView.getUint32(0x28);
+    return this.memoryView.getUint32(0x28) !== 0;
   }
   
 };
@@ -34677,7 +34677,7 @@ class VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._advancedBlendCoherentOperations = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -34702,10 +34702,10 @@ class VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT {
     throw new TypeError("'VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get advancedBlendCoherentOperations() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set advancedBlendCoherentOperations(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   
 };
@@ -34742,11 +34742,11 @@ class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT {
     
     this._pNext = null;
     
-    
-    
-    
-    
-    
+    this._advancedBlendIndependentBlend = false;
+    this._advancedBlendNonPremultipliedSrcColor = false;
+    this._advancedBlendNonPremultipliedDstColor = false;
+    this._advancedBlendCorrelatedOverlap = false;
+    this._advancedBlendAllOperations = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -34773,19 +34773,19 @@ class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT {
     return this.memoryView.getUint32(0x10);
   }
   get advancedBlendIndependentBlend() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   get advancedBlendNonPremultipliedSrcColor() {
-    return this.memoryView.getUint32(0x18);
+    return this.memoryView.getUint32(0x18) !== 0;
   }
   get advancedBlendNonPremultipliedDstColor() {
-    return this.memoryView.getUint32(0x1C);
+    return this.memoryView.getUint32(0x1C) !== 0;
   }
   get advancedBlendCorrelatedOverlap() {
-    return this.memoryView.getUint32(0x20);
+    return this.memoryView.getUint32(0x20) !== 0;
   }
   get advancedBlendAllOperations() {
-    return this.memoryView.getUint32(0x24);
+    return this.memoryView.getUint32(0x24) !== 0;
   }
   
 };
@@ -34841,8 +34841,8 @@ class VkPipelineColorBlendAdvancedStateCreateInfoEXT {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
+    this._srcPremultiplied = false;
+    this._dstPremultiplied = false;
     
     this.memoryBuffer = new ArrayBuffer(VkPipelineColorBlendAdvancedStateCreateInfoEXT.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
@@ -34870,16 +34870,16 @@ class VkPipelineColorBlendAdvancedStateCreateInfoEXT {
     throw new TypeError("'VkPipelineColorBlendAdvancedStateCreateInfoEXT.pNext' isn't allowed to be filled");
   }
   get srcPremultiplied() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set srcPremultiplied(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get dstPremultiplied() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set dstPremultiplied(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   get blendOverlap() {
     return this.memoryView.getInt32(0x18);
@@ -34929,8 +34929,8 @@ class VkPhysicalDeviceInlineUniformBlockFeaturesEXT {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
+    this._inlineUniformBlock = false;
+    this._descriptorBindingInlineUniformBlockUpdateAfterBind = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceInlineUniformBlockFeaturesEXT.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -34956,16 +34956,16 @@ class VkPhysicalDeviceInlineUniformBlockFeaturesEXT {
     throw new TypeError("'VkPhysicalDeviceInlineUniformBlockFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get inlineUniformBlock() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set inlineUniformBlock(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get descriptorBindingInlineUniformBlockUpdateAfterBind() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set descriptorBindingInlineUniformBlockUpdateAfterBind(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   
 };
@@ -35246,7 +35246,7 @@ class VkPipelineCoverageModulationStateCreateInfoNV {
     this._pNext = null;
     
     
-    
+    this._coverageModulationTableEnable = false;
     
     this._pCoverageModulationTable = null;
     this.memoryBuffer = new ArrayBuffer(VkPipelineCoverageModulationStateCreateInfoNV.byteLength);
@@ -35289,10 +35289,10 @@ class VkPipelineCoverageModulationStateCreateInfoNV {
     this.memoryView.setInt32(0x14, value);
   }
   get coverageModulationTableEnable() {
-    return this.memoryView.getUint32(0x18);
+    return this.memoryView.getUint32(0x18) !== 0;
   }
   set coverageModulationTableEnable(value) {
-    this.memoryView.setUint32(0x18, value);
+    this.memoryView.setUint32(0x18, value | 0);
   }
   get coverageModulationTableCount() {
     return this.memoryView.getUint32(0x1C);
@@ -35750,7 +35750,7 @@ class VkDescriptorSetLayoutSupport {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._supported = false;
     this.memoryBuffer = new ArrayBuffer(VkDescriptorSetLayoutSupport.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -35789,7 +35789,7 @@ class VkDescriptorSetLayoutSupport {
     }
   }
   get supported() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   
 };
@@ -35825,7 +35825,7 @@ class VkDescriptorSetLayoutSupportKHR {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._supported = false;
     this.memoryBuffer = new ArrayBuffer(VkDescriptorSetLayoutSupportKHR.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -35864,7 +35864,7 @@ class VkDescriptorSetLayoutSupportKHR {
     }
   }
   get supported() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   
 };
@@ -35900,7 +35900,7 @@ class VkPhysicalDeviceShaderDrawParameterFeatures {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._shaderDrawParameters = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceShaderDrawParameterFeatures.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -35925,10 +35925,10 @@ class VkPhysicalDeviceShaderDrawParameterFeatures {
     throw new TypeError("'VkPhysicalDeviceShaderDrawParameterFeatures.pNext' isn't allowed to be filled");
   }
   get shaderDrawParameters() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set shaderDrawParameters(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   
 };
@@ -35964,8 +35964,8 @@ class VkPhysicalDeviceFloat16Int8FeaturesKHR {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
+    this._shaderFloat16 = false;
+    this._shaderInt8 = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceFloat16Int8FeaturesKHR.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -35991,16 +35991,16 @@ class VkPhysicalDeviceFloat16Int8FeaturesKHR {
     throw new TypeError("'VkPhysicalDeviceFloat16Int8FeaturesKHR.pNext' isn't allowed to be filled");
   }
   get shaderFloat16() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set shaderFloat16(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get shaderInt8() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set shaderInt8(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   
 };
@@ -36040,23 +36040,23 @@ class VkPhysicalDeviceFloatControlsPropertiesKHR {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    this._separateDenormSettings = false;
+    this._separateRoundingModeSettings = false;
+    this._shaderSignedZeroInfNanPreserveFloat16 = false;
+    this._shaderSignedZeroInfNanPreserveFloat32 = false;
+    this._shaderSignedZeroInfNanPreserveFloat64 = false;
+    this._shaderDenormPreserveFloat16 = false;
+    this._shaderDenormPreserveFloat32 = false;
+    this._shaderDenormPreserveFloat64 = false;
+    this._shaderDenormFlushToZeroFloat16 = false;
+    this._shaderDenormFlushToZeroFloat32 = false;
+    this._shaderDenormFlushToZeroFloat64 = false;
+    this._shaderRoundingModeRTEFloat16 = false;
+    this._shaderRoundingModeRTEFloat32 = false;
+    this._shaderRoundingModeRTEFloat64 = false;
+    this._shaderRoundingModeRTZFloat16 = false;
+    this._shaderRoundingModeRTZFloat32 = false;
+    this._shaderRoundingModeRTZFloat64 = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceFloatControlsPropertiesKHR.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -36080,55 +36080,55 @@ class VkPhysicalDeviceFloatControlsPropertiesKHR {
     throw new TypeError("'VkPhysicalDeviceFloatControlsPropertiesKHR.pNext' isn't allowed to be filled");
   }
   get separateDenormSettings() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   get separateRoundingModeSettings() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   get shaderSignedZeroInfNanPreserveFloat16() {
-    return this.memoryView.getUint32(0x18);
+    return this.memoryView.getUint32(0x18) !== 0;
   }
   get shaderSignedZeroInfNanPreserveFloat32() {
-    return this.memoryView.getUint32(0x1C);
+    return this.memoryView.getUint32(0x1C) !== 0;
   }
   get shaderSignedZeroInfNanPreserveFloat64() {
-    return this.memoryView.getUint32(0x20);
+    return this.memoryView.getUint32(0x20) !== 0;
   }
   get shaderDenormPreserveFloat16() {
-    return this.memoryView.getUint32(0x24);
+    return this.memoryView.getUint32(0x24) !== 0;
   }
   get shaderDenormPreserveFloat32() {
-    return this.memoryView.getUint32(0x28);
+    return this.memoryView.getUint32(0x28) !== 0;
   }
   get shaderDenormPreserveFloat64() {
-    return this.memoryView.getUint32(0x2C);
+    return this.memoryView.getUint32(0x2C) !== 0;
   }
   get shaderDenormFlushToZeroFloat16() {
-    return this.memoryView.getUint32(0x30);
+    return this.memoryView.getUint32(0x30) !== 0;
   }
   get shaderDenormFlushToZeroFloat32() {
-    return this.memoryView.getUint32(0x34);
+    return this.memoryView.getUint32(0x34) !== 0;
   }
   get shaderDenormFlushToZeroFloat64() {
-    return this.memoryView.getUint32(0x38);
+    return this.memoryView.getUint32(0x38) !== 0;
   }
   get shaderRoundingModeRTEFloat16() {
-    return this.memoryView.getUint32(0x3C);
+    return this.memoryView.getUint32(0x3C) !== 0;
   }
   get shaderRoundingModeRTEFloat32() {
-    return this.memoryView.getUint32(0x40);
+    return this.memoryView.getUint32(0x40) !== 0;
   }
   get shaderRoundingModeRTEFloat64() {
-    return this.memoryView.getUint32(0x44);
+    return this.memoryView.getUint32(0x44) !== 0;
   }
   get shaderRoundingModeRTZFloat16() {
-    return this.memoryView.getUint32(0x48);
+    return this.memoryView.getUint32(0x48) !== 0;
   }
   get shaderRoundingModeRTZFloat32() {
-    return this.memoryView.getUint32(0x4C);
+    return this.memoryView.getUint32(0x4C) !== 0;
   }
   get shaderRoundingModeRTZFloat64() {
-    return this.memoryView.getUint32(0x50);
+    return this.memoryView.getUint32(0x50) !== 0;
   }
   
 };
@@ -37359,12 +37359,12 @@ class VkPhysicalDeviceConservativeRasterizationPropertiesEXT {
     
     
     
-    
-    
-    
-    
-    
-    
+    this._primitiveUnderestimation = false;
+    this._conservativePointAndLineRasterization = false;
+    this._degenerateTrianglesRasterized = false;
+    this._degenerateLinesRasterized = false;
+    this._fullyCoveredFragmentShaderInputVariable = false;
+    this._conservativeRasterizationPostDepthCoverage = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceConservativeRasterizationPropertiesEXT.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -37397,22 +37397,22 @@ class VkPhysicalDeviceConservativeRasterizationPropertiesEXT {
     return this.memoryView.getFloat32(0x18);
   }
   get primitiveUnderestimation() {
-    return this.memoryView.getUint32(0x1C);
+    return this.memoryView.getUint32(0x1C) !== 0;
   }
   get conservativePointAndLineRasterization() {
-    return this.memoryView.getUint32(0x20);
+    return this.memoryView.getUint32(0x20) !== 0;
   }
   get degenerateTrianglesRasterized() {
-    return this.memoryView.getUint32(0x24);
+    return this.memoryView.getUint32(0x24) !== 0;
   }
   get degenerateLinesRasterized() {
-    return this.memoryView.getUint32(0x28);
+    return this.memoryView.getUint32(0x28) !== 0;
   }
   get fullyCoveredFragmentShaderInputVariable() {
-    return this.memoryView.getUint32(0x2C);
+    return this.memoryView.getUint32(0x2C) !== 0;
   }
   get conservativeRasterizationPostDepthCoverage() {
-    return this.memoryView.getUint32(0x30);
+    return this.memoryView.getUint32(0x30) !== 0;
   }
   
 };
@@ -37796,26 +37796,26 @@ class VkPhysicalDeviceDescriptorIndexingFeaturesEXT {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    this._shaderInputAttachmentArrayDynamicIndexing = false;
+    this._shaderUniformTexelBufferArrayDynamicIndexing = false;
+    this._shaderStorageTexelBufferArrayDynamicIndexing = false;
+    this._shaderUniformBufferArrayNonUniformIndexing = false;
+    this._shaderSampledImageArrayNonUniformIndexing = false;
+    this._shaderStorageBufferArrayNonUniformIndexing = false;
+    this._shaderStorageImageArrayNonUniformIndexing = false;
+    this._shaderInputAttachmentArrayNonUniformIndexing = false;
+    this._shaderUniformTexelBufferArrayNonUniformIndexing = false;
+    this._shaderStorageTexelBufferArrayNonUniformIndexing = false;
+    this._descriptorBindingUniformBufferUpdateAfterBind = false;
+    this._descriptorBindingSampledImageUpdateAfterBind = false;
+    this._descriptorBindingStorageImageUpdateAfterBind = false;
+    this._descriptorBindingStorageBufferUpdateAfterBind = false;
+    this._descriptorBindingUniformTexelBufferUpdateAfterBind = false;
+    this._descriptorBindingStorageTexelBufferUpdateAfterBind = false;
+    this._descriptorBindingUpdateUnusedWhilePending = false;
+    this._descriptorBindingPartiallyBound = false;
+    this._descriptorBindingVariableDescriptorCount = false;
+    this._runtimeDescriptorArray = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceDescriptorIndexingFeaturesEXT.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -37859,124 +37859,124 @@ class VkPhysicalDeviceDescriptorIndexingFeaturesEXT {
     throw new TypeError("'VkPhysicalDeviceDescriptorIndexingFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get shaderInputAttachmentArrayDynamicIndexing() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set shaderInputAttachmentArrayDynamicIndexing(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get shaderUniformTexelBufferArrayDynamicIndexing() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set shaderUniformTexelBufferArrayDynamicIndexing(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   get shaderStorageTexelBufferArrayDynamicIndexing() {
-    return this.memoryView.getUint32(0x18);
+    return this.memoryView.getUint32(0x18) !== 0;
   }
   set shaderStorageTexelBufferArrayDynamicIndexing(value) {
-    this.memoryView.setUint32(0x18, value);
+    this.memoryView.setUint32(0x18, value | 0);
   }
   get shaderUniformBufferArrayNonUniformIndexing() {
-    return this.memoryView.getUint32(0x1C);
+    return this.memoryView.getUint32(0x1C) !== 0;
   }
   set shaderUniformBufferArrayNonUniformIndexing(value) {
-    this.memoryView.setUint32(0x1C, value);
+    this.memoryView.setUint32(0x1C, value | 0);
   }
   get shaderSampledImageArrayNonUniformIndexing() {
-    return this.memoryView.getUint32(0x20);
+    return this.memoryView.getUint32(0x20) !== 0;
   }
   set shaderSampledImageArrayNonUniformIndexing(value) {
-    this.memoryView.setUint32(0x20, value);
+    this.memoryView.setUint32(0x20, value | 0);
   }
   get shaderStorageBufferArrayNonUniformIndexing() {
-    return this.memoryView.getUint32(0x24);
+    return this.memoryView.getUint32(0x24) !== 0;
   }
   set shaderStorageBufferArrayNonUniformIndexing(value) {
-    this.memoryView.setUint32(0x24, value);
+    this.memoryView.setUint32(0x24, value | 0);
   }
   get shaderStorageImageArrayNonUniformIndexing() {
-    return this.memoryView.getUint32(0x28);
+    return this.memoryView.getUint32(0x28) !== 0;
   }
   set shaderStorageImageArrayNonUniformIndexing(value) {
-    this.memoryView.setUint32(0x28, value);
+    this.memoryView.setUint32(0x28, value | 0);
   }
   get shaderInputAttachmentArrayNonUniformIndexing() {
-    return this.memoryView.getUint32(0x2C);
+    return this.memoryView.getUint32(0x2C) !== 0;
   }
   set shaderInputAttachmentArrayNonUniformIndexing(value) {
-    this.memoryView.setUint32(0x2C, value);
+    this.memoryView.setUint32(0x2C, value | 0);
   }
   get shaderUniformTexelBufferArrayNonUniformIndexing() {
-    return this.memoryView.getUint32(0x30);
+    return this.memoryView.getUint32(0x30) !== 0;
   }
   set shaderUniformTexelBufferArrayNonUniformIndexing(value) {
-    this.memoryView.setUint32(0x30, value);
+    this.memoryView.setUint32(0x30, value | 0);
   }
   get shaderStorageTexelBufferArrayNonUniformIndexing() {
-    return this.memoryView.getUint32(0x34);
+    return this.memoryView.getUint32(0x34) !== 0;
   }
   set shaderStorageTexelBufferArrayNonUniformIndexing(value) {
-    this.memoryView.setUint32(0x34, value);
+    this.memoryView.setUint32(0x34, value | 0);
   }
   get descriptorBindingUniformBufferUpdateAfterBind() {
-    return this.memoryView.getUint32(0x38);
+    return this.memoryView.getUint32(0x38) !== 0;
   }
   set descriptorBindingUniformBufferUpdateAfterBind(value) {
-    this.memoryView.setUint32(0x38, value);
+    this.memoryView.setUint32(0x38, value | 0);
   }
   get descriptorBindingSampledImageUpdateAfterBind() {
-    return this.memoryView.getUint32(0x3C);
+    return this.memoryView.getUint32(0x3C) !== 0;
   }
   set descriptorBindingSampledImageUpdateAfterBind(value) {
-    this.memoryView.setUint32(0x3C, value);
+    this.memoryView.setUint32(0x3C, value | 0);
   }
   get descriptorBindingStorageImageUpdateAfterBind() {
-    return this.memoryView.getUint32(0x40);
+    return this.memoryView.getUint32(0x40) !== 0;
   }
   set descriptorBindingStorageImageUpdateAfterBind(value) {
-    this.memoryView.setUint32(0x40, value);
+    this.memoryView.setUint32(0x40, value | 0);
   }
   get descriptorBindingStorageBufferUpdateAfterBind() {
-    return this.memoryView.getUint32(0x44);
+    return this.memoryView.getUint32(0x44) !== 0;
   }
   set descriptorBindingStorageBufferUpdateAfterBind(value) {
-    this.memoryView.setUint32(0x44, value);
+    this.memoryView.setUint32(0x44, value | 0);
   }
   get descriptorBindingUniformTexelBufferUpdateAfterBind() {
-    return this.memoryView.getUint32(0x48);
+    return this.memoryView.getUint32(0x48) !== 0;
   }
   set descriptorBindingUniformTexelBufferUpdateAfterBind(value) {
-    this.memoryView.setUint32(0x48, value);
+    this.memoryView.setUint32(0x48, value | 0);
   }
   get descriptorBindingStorageTexelBufferUpdateAfterBind() {
-    return this.memoryView.getUint32(0x4C);
+    return this.memoryView.getUint32(0x4C) !== 0;
   }
   set descriptorBindingStorageTexelBufferUpdateAfterBind(value) {
-    this.memoryView.setUint32(0x4C, value);
+    this.memoryView.setUint32(0x4C, value | 0);
   }
   get descriptorBindingUpdateUnusedWhilePending() {
-    return this.memoryView.getUint32(0x50);
+    return this.memoryView.getUint32(0x50) !== 0;
   }
   set descriptorBindingUpdateUnusedWhilePending(value) {
-    this.memoryView.setUint32(0x50, value);
+    this.memoryView.setUint32(0x50, value | 0);
   }
   get descriptorBindingPartiallyBound() {
-    return this.memoryView.getUint32(0x54);
+    return this.memoryView.getUint32(0x54) !== 0;
   }
   set descriptorBindingPartiallyBound(value) {
-    this.memoryView.setUint32(0x54, value);
+    this.memoryView.setUint32(0x54, value | 0);
   }
   get descriptorBindingVariableDescriptorCount() {
-    return this.memoryView.getUint32(0x58);
+    return this.memoryView.getUint32(0x58) !== 0;
   }
   set descriptorBindingVariableDescriptorCount(value) {
-    this.memoryView.setUint32(0x58, value);
+    this.memoryView.setUint32(0x58, value | 0);
   }
   get runtimeDescriptorArray() {
-    return this.memoryView.getUint32(0x5C);
+    return this.memoryView.getUint32(0x5C) !== 0;
   }
   set runtimeDescriptorArray(value) {
-    this.memoryView.setUint32(0x5C, value);
+    this.memoryView.setUint32(0x5C, value | 0);
   }
   
 };
@@ -38089,13 +38089,13 @@ class VkPhysicalDeviceDescriptorIndexingPropertiesEXT {
     
     this._pNext = null;
     
-    
-    
-    
-    
-    
-    
-    
+    this._shaderUniformBufferArrayNonUniformIndexingNative = false;
+    this._shaderSampledImageArrayNonUniformIndexingNative = false;
+    this._shaderStorageBufferArrayNonUniformIndexingNative = false;
+    this._shaderStorageImageArrayNonUniformIndexingNative = false;
+    this._shaderInputAttachmentArrayNonUniformIndexingNative = false;
+    this._robustBufferAccessUpdateAfterBind = false;
+    this._quadDivergentImplicitLod = false;
     
     
     
@@ -38137,25 +38137,25 @@ class VkPhysicalDeviceDescriptorIndexingPropertiesEXT {
     return this.memoryView.getUint32(0x10);
   }
   get shaderUniformBufferArrayNonUniformIndexingNative() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   get shaderSampledImageArrayNonUniformIndexingNative() {
-    return this.memoryView.getUint32(0x18);
+    return this.memoryView.getUint32(0x18) !== 0;
   }
   get shaderStorageBufferArrayNonUniformIndexingNative() {
-    return this.memoryView.getUint32(0x1C);
+    return this.memoryView.getUint32(0x1C) !== 0;
   }
   get shaderStorageImageArrayNonUniformIndexingNative() {
-    return this.memoryView.getUint32(0x20);
+    return this.memoryView.getUint32(0x20) !== 0;
   }
   get shaderInputAttachmentArrayNonUniformIndexingNative() {
-    return this.memoryView.getUint32(0x24);
+    return this.memoryView.getUint32(0x24) !== 0;
   }
   get robustBufferAccessUpdateAfterBind() {
-    return this.memoryView.getUint32(0x28);
+    return this.memoryView.getUint32(0x28) !== 0;
   }
   get quadDivergentImplicitLod() {
-    return this.memoryView.getUint32(0x2C);
+    return this.memoryView.getUint32(0x2C) !== 0;
   }
   get maxPerStageDescriptorUpdateAfterBindSamplers() {
     return this.memoryView.getUint32(0x30);
@@ -39900,7 +39900,7 @@ class VkCommandBufferInheritanceConditionalRenderingInfoEXT {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._conditionalRenderingEnable = false;
     this.memoryBuffer = new ArrayBuffer(VkCommandBufferInheritanceConditionalRenderingInfoEXT.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -39925,10 +39925,10 @@ class VkCommandBufferInheritanceConditionalRenderingInfoEXT {
     throw new TypeError("'VkCommandBufferInheritanceConditionalRenderingInfoEXT.pNext' isn't allowed to be filled");
   }
   get conditionalRenderingEnable() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set conditionalRenderingEnable(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   
 };
@@ -39964,9 +39964,9 @@ class VkPhysicalDevice8BitStorageFeaturesKHR {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
-    
+    this._storageBuffer8BitAccess = false;
+    this._uniformAndStorageBuffer8BitAccess = false;
+    this._storagePushConstant8 = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDevice8BitStorageFeaturesKHR.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -39993,22 +39993,22 @@ class VkPhysicalDevice8BitStorageFeaturesKHR {
     throw new TypeError("'VkPhysicalDevice8BitStorageFeaturesKHR.pNext' isn't allowed to be filled");
   }
   get storageBuffer8BitAccess() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set storageBuffer8BitAccess(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get uniformAndStorageBuffer8BitAccess() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set uniformAndStorageBuffer8BitAccess(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   get storagePushConstant8() {
-    return this.memoryView.getUint32(0x18);
+    return this.memoryView.getUint32(0x18) !== 0;
   }
   set storagePushConstant8(value) {
-    this.memoryView.setUint32(0x18, value);
+    this.memoryView.setUint32(0x18, value | 0);
   }
   
 };
@@ -40052,8 +40052,8 @@ class VkPhysicalDeviceConditionalRenderingFeaturesEXT {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
+    this._conditionalRendering = false;
+    this._inheritedConditionalRendering = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceConditionalRenderingFeaturesEXT.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -40079,16 +40079,16 @@ class VkPhysicalDeviceConditionalRenderingFeaturesEXT {
     throw new TypeError("'VkPhysicalDeviceConditionalRenderingFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get conditionalRendering() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set conditionalRendering(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get inheritedConditionalRendering() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set inheritedConditionalRendering(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   
 };
@@ -40128,9 +40128,9 @@ class VkPhysicalDeviceVulkanMemoryModelFeaturesKHR {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
-    
+    this._vulkanMemoryModel = false;
+    this._vulkanMemoryModelDeviceScope = false;
+    this._vulkanMemoryModelAvailabilityVisibilityChains = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -40157,22 +40157,22 @@ class VkPhysicalDeviceVulkanMemoryModelFeaturesKHR {
     throw new TypeError("'VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.pNext' isn't allowed to be filled");
   }
   get vulkanMemoryModel() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set vulkanMemoryModel(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get vulkanMemoryModelDeviceScope() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set vulkanMemoryModelDeviceScope(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   get vulkanMemoryModelAvailabilityVisibilityChains() {
-    return this.memoryView.getUint32(0x18);
+    return this.memoryView.getUint32(0x18) !== 0;
   }
   set vulkanMemoryModelAvailabilityVisibilityChains(value) {
-    this.memoryView.setUint32(0x18, value);
+    this.memoryView.setUint32(0x18, value | 0);
   }
   
 };
@@ -40216,8 +40216,8 @@ class VkPhysicalDeviceShaderAtomicInt64FeaturesKHR {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
+    this._shaderBufferInt64Atomics = false;
+    this._shaderSharedInt64Atomics = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceShaderAtomicInt64FeaturesKHR.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -40243,16 +40243,16 @@ class VkPhysicalDeviceShaderAtomicInt64FeaturesKHR {
     throw new TypeError("'VkPhysicalDeviceShaderAtomicInt64FeaturesKHR.pNext' isn't allowed to be filled");
   }
   get shaderBufferInt64Atomics() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set shaderBufferInt64Atomics(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get shaderSharedInt64Atomics() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set shaderSharedInt64Atomics(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   
 };
@@ -40292,8 +40292,8 @@ class VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
+    this._vertexAttributeInstanceRateDivisor = false;
+    this._vertexAttributeInstanceRateZeroDivisor = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -40319,16 +40319,16 @@ class VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT {
     throw new TypeError("'VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get vertexAttributeInstanceRateDivisor() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set vertexAttributeInstanceRateDivisor(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get vertexAttributeInstanceRateZeroDivisor() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set vertexAttributeInstanceRateZeroDivisor(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   
 };
@@ -40509,8 +40509,8 @@ class VkPhysicalDeviceDepthStencilResolvePropertiesKHR {
     this._pNext = null;
     
     
-    
-    
+    this._independentResolveNone = false;
+    this._independentResolve = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceDepthStencilResolvePropertiesKHR.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -40540,10 +40540,10 @@ class VkPhysicalDeviceDepthStencilResolvePropertiesKHR {
     return this.memoryView.getInt32(0x14);
   }
   get independentResolveNone() {
-    return this.memoryView.getUint32(0x18);
+    return this.memoryView.getUint32(0x18) !== 0;
   }
   get independentResolve() {
-    return this.memoryView.getUint32(0x1C);
+    return this.memoryView.getUint32(0x1C) !== 0;
   }
   
 };
@@ -40752,7 +40752,7 @@ class VkPhysicalDeviceASTCDecodeFeaturesEXT {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._decodeModeSharedExponent = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceASTCDecodeFeaturesEXT.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -40777,10 +40777,10 @@ class VkPhysicalDeviceASTCDecodeFeaturesEXT {
     throw new TypeError("'VkPhysicalDeviceASTCDecodeFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get decodeModeSharedExponent() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set decodeModeSharedExponent(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   
 };
@@ -40816,8 +40816,8 @@ class VkPhysicalDeviceTransformFeedbackFeaturesEXT {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
+    this._transformFeedback = false;
+    this._geometryStreams = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceTransformFeedbackFeaturesEXT.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -40843,16 +40843,16 @@ class VkPhysicalDeviceTransformFeedbackFeaturesEXT {
     throw new TypeError("'VkPhysicalDeviceTransformFeedbackFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get transformFeedback() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set transformFeedback(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get geometryStreams() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set geometryStreams(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   
 };
@@ -40898,10 +40898,10 @@ class VkPhysicalDeviceTransformFeedbackPropertiesEXT {
     
     
     
-    
-    
-    
-    
+    this._transformFeedbackQueries = false;
+    this._transformFeedbackStreamsLinesTriangles = false;
+    this._transformFeedbackRasterizationStreamSelect = false;
+    this._transformFeedbackDraw = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceTransformFeedbackPropertiesEXT.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -40943,16 +40943,16 @@ class VkPhysicalDeviceTransformFeedbackPropertiesEXT {
     return this.memoryView.getUint32(0x28);
   }
   get transformFeedbackQueries() {
-    return this.memoryView.getUint32(0x2C);
+    return this.memoryView.getUint32(0x2C) !== 0;
   }
   get transformFeedbackStreamsLinesTriangles() {
-    return this.memoryView.getUint32(0x30);
+    return this.memoryView.getUint32(0x30) !== 0;
   }
   get transformFeedbackRasterizationStreamSelect() {
-    return this.memoryView.getUint32(0x34);
+    return this.memoryView.getUint32(0x34) !== 0;
   }
   get transformFeedbackDraw() {
-    return this.memoryView.getUint32(0x38);
+    return this.memoryView.getUint32(0x38) !== 0;
   }
   
 };
@@ -41100,7 +41100,7 @@ class VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._representativeFragmentTest = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -41125,10 +41125,10 @@ class VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV {
     throw new TypeError("'VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.pNext' isn't allowed to be filled");
   }
   get representativeFragmentTest() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set representativeFragmentTest(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   
 };
@@ -41164,7 +41164,7 @@ class VkPipelineRepresentativeFragmentTestStateCreateInfoNV {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._representativeFragmentTestEnable = false;
     this.memoryBuffer = new ArrayBuffer(VkPipelineRepresentativeFragmentTestStateCreateInfoNV.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -41189,10 +41189,10 @@ class VkPipelineRepresentativeFragmentTestStateCreateInfoNV {
     throw new TypeError("'VkPipelineRepresentativeFragmentTestStateCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get representativeFragmentTestEnable() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set representativeFragmentTestEnable(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   
 };
@@ -41228,7 +41228,7 @@ class VkPhysicalDeviceExclusiveScissorFeaturesNV {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._exclusiveScissor = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceExclusiveScissorFeaturesNV.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -41253,10 +41253,10 @@ class VkPhysicalDeviceExclusiveScissorFeaturesNV {
     throw new TypeError("'VkPhysicalDeviceExclusiveScissorFeaturesNV.pNext' isn't allowed to be filled");
   }
   get exclusiveScissor() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set exclusiveScissor(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   
 };
@@ -41395,7 +41395,7 @@ class VkPhysicalDeviceCornerSampledImageFeaturesNV {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._cornerSampledImage = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceCornerSampledImageFeaturesNV.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -41420,10 +41420,10 @@ class VkPhysicalDeviceCornerSampledImageFeaturesNV {
     throw new TypeError("'VkPhysicalDeviceCornerSampledImageFeaturesNV.pNext' isn't allowed to be filled");
   }
   get cornerSampledImage() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set cornerSampledImage(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   
 };
@@ -41459,8 +41459,8 @@ class VkPhysicalDeviceComputeShaderDerivativesFeaturesNV {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
+    this._computeDerivativeGroupQuads = false;
+    this._computeDerivativeGroupLinear = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceComputeShaderDerivativesFeaturesNV.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -41486,16 +41486,16 @@ class VkPhysicalDeviceComputeShaderDerivativesFeaturesNV {
     throw new TypeError("'VkPhysicalDeviceComputeShaderDerivativesFeaturesNV.pNext' isn't allowed to be filled");
   }
   get computeDerivativeGroupQuads() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set computeDerivativeGroupQuads(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get computeDerivativeGroupLinear() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set computeDerivativeGroupLinear(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   
 };
@@ -41535,7 +41535,7 @@ class VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._fragmentShaderBarycentric = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -41560,10 +41560,10 @@ class VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV {
     throw new TypeError("'VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV.pNext' isn't allowed to be filled");
   }
   get fragmentShaderBarycentric() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set fragmentShaderBarycentric(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   
 };
@@ -41599,7 +41599,7 @@ class VkPhysicalDeviceShaderImageFootprintFeaturesNV {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._imageFootprint = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceShaderImageFootprintFeaturesNV.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -41624,10 +41624,10 @@ class VkPhysicalDeviceShaderImageFootprintFeaturesNV {
     throw new TypeError("'VkPhysicalDeviceShaderImageFootprintFeaturesNV.pNext' isn't allowed to be filled");
   }
   get imageFootprint() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set imageFootprint(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   
 };
@@ -41663,7 +41663,7 @@ class VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._dedicatedAllocationImageAliasing = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -41688,10 +41688,10 @@ class VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV {
     throw new TypeError("'VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.pNext' isn't allowed to be filled");
   }
   get dedicatedAllocationImageAliasing() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set dedicatedAllocationImageAliasing(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   
 };
@@ -41781,7 +41781,7 @@ class VkPipelineViewportShadingRateImageStateCreateInfoNV {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._shadingRateImageEnable = false;
     
     this._pShadingRatePalettes = null;
     this._pShadingRatePalettesNative = null;
@@ -41811,10 +41811,10 @@ class VkPipelineViewportShadingRateImageStateCreateInfoNV {
     throw new TypeError("'VkPipelineViewportShadingRateImageStateCreateInfoNV.pNext' isn't allowed to be filled");
   }
   get shadingRateImageEnable() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set shadingRateImageEnable(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get viewportCount() {
     return this.memoryView.getUint32(0x14);
@@ -41896,8 +41896,8 @@ class VkPhysicalDeviceShadingRateImageFeaturesNV {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
+    this._shadingRateImage = false;
+    this._shadingRateCoarseSampleOrder = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceShadingRateImageFeaturesNV.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -41923,16 +41923,16 @@ class VkPhysicalDeviceShadingRateImageFeaturesNV {
     throw new TypeError("'VkPhysicalDeviceShadingRateImageFeaturesNV.pNext' isn't allowed to be filled");
   }
   get shadingRateImage() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set shadingRateImage(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get shadingRateCoarseSampleOrder() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set shadingRateCoarseSampleOrder(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   
 };
@@ -42322,8 +42322,8 @@ class VkPhysicalDeviceMeshShaderFeaturesNV {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
+    this._taskShader = false;
+    this._meshShader = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceMeshShaderFeaturesNV.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -42349,16 +42349,16 @@ class VkPhysicalDeviceMeshShaderFeaturesNV {
     throw new TypeError("'VkPhysicalDeviceMeshShaderFeaturesNV.pNext' isn't allowed to be filled");
   }
   get taskShader() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set taskShader(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get meshShader() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set meshShader(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   
 };
@@ -44745,9 +44745,9 @@ class VkPhysicalDeviceFragmentDensityMapFeaturesEXT {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
-    
+    this._fragmentDensityMap = false;
+    this._fragmentDensityMapDynamic = false;
+    this._fragmentDensityMapNonSubsampledImages = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceFragmentDensityMapFeaturesEXT.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -44771,13 +44771,13 @@ class VkPhysicalDeviceFragmentDensityMapFeaturesEXT {
     throw new TypeError("'VkPhysicalDeviceFragmentDensityMapFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get fragmentDensityMap() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   get fragmentDensityMapDynamic() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   get fragmentDensityMapNonSubsampledImages() {
-    return this.memoryView.getUint32(0x18);
+    return this.memoryView.getUint32(0x18) !== 0;
   }
   
 };
@@ -44823,7 +44823,7 @@ class VkPhysicalDeviceFragmentDensityMapPropertiesEXT {
     this._pNext = null;
     this._minFragmentDensityTexelSize = null;
     this._maxFragmentDensityTexelSize = null;
-    
+    this._fragmentDensityInvocations = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceFragmentDensityMapPropertiesEXT.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -44853,7 +44853,7 @@ class VkPhysicalDeviceFragmentDensityMapPropertiesEXT {
     return this._maxFragmentDensityTexelSize;
   }
   get fragmentDensityInvocations() {
-    return this.memoryView.getUint32(0x20);
+    return this.memoryView.getUint32(0x20) !== 0;
   }
   
 };
@@ -44976,7 +44976,7 @@ class VkPhysicalDeviceScalarBlockLayoutFeaturesEXT {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._scalarBlockLayout = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -45001,10 +45001,10 @@ class VkPhysicalDeviceScalarBlockLayoutFeaturesEXT {
     throw new TypeError("'VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get scalarBlockLayout() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set scalarBlockLayout(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   
 };
@@ -45040,7 +45040,7 @@ class VkPhysicalDeviceDepthClipEnableFeaturesEXT {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._depthClipEnable = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceDepthClipEnableFeaturesEXT.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -45065,10 +45065,10 @@ class VkPhysicalDeviceDepthClipEnableFeaturesEXT {
     throw new TypeError("'VkPhysicalDeviceDepthClipEnableFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get depthClipEnable() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set depthClipEnable(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   
 };
@@ -45105,7 +45105,7 @@ class VkPipelineRasterizationDepthClipStateCreateInfoEXT {
     
     this._pNext = null;
     
-    
+    this._depthClipEnable = false;
     this.memoryBuffer = new ArrayBuffer(VkPipelineRasterizationDepthClipStateCreateInfoEXT.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -45137,10 +45137,10 @@ class VkPipelineRasterizationDepthClipStateCreateInfoEXT {
     this.memoryView.setInt32(0x10, value);
   }
   get depthClipEnable() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set depthClipEnable(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   
 };
@@ -45264,7 +45264,7 @@ class VkPhysicalDeviceMemoryPriorityFeaturesEXT {
   constructor(opts) {
     
     this._pNext = null;
-    
+    this._memoryPriority = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceMemoryPriorityFeaturesEXT.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -45289,10 +45289,10 @@ class VkPhysicalDeviceMemoryPriorityFeaturesEXT {
     throw new TypeError("'VkPhysicalDeviceMemoryPriorityFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get memoryPriority() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set memoryPriority(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   
 };
@@ -45392,9 +45392,9 @@ class VkPhysicalDeviceBufferAddressFeaturesEXT {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
-    
+    this._bufferDeviceAddress = false;
+    this._bufferDeviceAddressCaptureReplay = false;
+    this._bufferDeviceAddressMultiDevice = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceBufferAddressFeaturesEXT.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -45421,22 +45421,22 @@ class VkPhysicalDeviceBufferAddressFeaturesEXT {
     throw new TypeError("'VkPhysicalDeviceBufferAddressFeaturesEXT.pNext' isn't allowed to be filled");
   }
   get bufferDeviceAddress() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set bufferDeviceAddress(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get bufferDeviceAddressCaptureReplay() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set bufferDeviceAddressCaptureReplay(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   get bufferDeviceAddressMultiDevice() {
-    return this.memoryView.getUint32(0x18);
+    return this.memoryView.getUint32(0x18) !== 0;
   }
   set bufferDeviceAddressMultiDevice(value) {
-    this.memoryView.setUint32(0x18, value);
+    this.memoryView.setUint32(0x18, value | 0);
   }
   
 };
@@ -45681,8 +45681,8 @@ class VkFilterCubicImageViewImageFormatPropertiesEXT {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
+    this._filterCubic = false;
+    this._filterCubicMinmax = false;
     this.memoryBuffer = new ArrayBuffer(VkFilterCubicImageViewImageFormatPropertiesEXT.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -45706,10 +45706,10 @@ class VkFilterCubicImageViewImageFormatPropertiesEXT {
     throw new TypeError("'VkFilterCubicImageViewImageFormatPropertiesEXT.pNext' isn't allowed to be filled");
   }
   get filterCubic() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   get filterCubicMinmax() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   
 };
@@ -45749,8 +45749,8 @@ class VkPhysicalDeviceCooperativeMatrixFeaturesNV {
   constructor(opts) {
     
     this._pNext = null;
-    
-    
+    this._cooperativeMatrix = false;
+    this._cooperativeMatrixRobustBufferAccess = false;
     this.memoryBuffer = new ArrayBuffer(VkPhysicalDeviceCooperativeMatrixFeaturesNV.byteLength);
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
@@ -45776,16 +45776,16 @@ class VkPhysicalDeviceCooperativeMatrixFeaturesNV {
     throw new TypeError("'VkPhysicalDeviceCooperativeMatrixFeaturesNV.pNext' isn't allowed to be filled");
   }
   get cooperativeMatrix() {
-    return this.memoryView.getUint32(0x10);
+    return this.memoryView.getUint32(0x10) !== 0;
   }
   set cooperativeMatrix(value) {
-    this.memoryView.setUint32(0x10, value);
+    this.memoryView.setUint32(0x10, value | 0);
   }
   get cooperativeMatrixRobustBufferAccess() {
-    return this.memoryView.getUint32(0x14);
+    return this.memoryView.getUint32(0x14) !== 0;
   }
   set cooperativeMatrixRobustBufferAccess(value) {
-    this.memoryView.setUint32(0x14, value);
+    this.memoryView.setUint32(0x14, value | 0);
   }
   
 };
@@ -46198,3 +46198,474 @@ VkClearValue.memoryLayout = Object.freeze({
     byteLength: 0x8
   }),
 });
+
+export default {
+  VkBaseOutStructure,
+  VkBaseInStructure,
+  VkOffset2D,
+  VkOffset3D,
+  VkExtent2D,
+  VkExtent3D,
+  VkViewport,
+  VkRect2D,
+  VkClearRect,
+  VkComponentMapping,
+  VkPhysicalDeviceProperties,
+  VkExtensionProperties,
+  VkLayerProperties,
+  VkApplicationInfo,
+  VkAllocationCallbacks,
+  VkDeviceQueueCreateInfo,
+  VkDeviceCreateInfo,
+  VkInstanceCreateInfo,
+  VkQueueFamilyProperties,
+  VkPhysicalDeviceMemoryProperties,
+  VkMemoryAllocateInfo,
+  VkMemoryRequirements,
+  VkSparseImageFormatProperties,
+  VkSparseImageMemoryRequirements,
+  VkMemoryType,
+  VkMemoryHeap,
+  VkMappedMemoryRange,
+  VkFormatProperties,
+  VkImageFormatProperties,
+  VkDescriptorBufferInfo,
+  VkDescriptorImageInfo,
+  VkWriteDescriptorSet,
+  VkCopyDescriptorSet,
+  VkBufferCreateInfo,
+  VkBufferViewCreateInfo,
+  VkImageSubresource,
+  VkImageSubresourceLayers,
+  VkImageSubresourceRange,
+  VkMemoryBarrier,
+  VkBufferMemoryBarrier,
+  VkImageMemoryBarrier,
+  VkImageCreateInfo,
+  VkSubresourceLayout,
+  VkImageViewCreateInfo,
+  VkBufferCopy,
+  VkSparseMemoryBind,
+  VkSparseImageMemoryBind,
+  VkSparseBufferMemoryBindInfo,
+  VkSparseImageOpaqueMemoryBindInfo,
+  VkSparseImageMemoryBindInfo,
+  VkBindSparseInfo,
+  VkImageCopy,
+  VkImageBlit,
+  VkBufferImageCopy,
+  VkImageResolve,
+  VkShaderModuleCreateInfo,
+  VkDescriptorSetLayoutBinding,
+  VkDescriptorSetLayoutCreateInfo,
+  VkDescriptorPoolSize,
+  VkDescriptorPoolCreateInfo,
+  VkDescriptorSetAllocateInfo,
+  VkSpecializationMapEntry,
+  VkSpecializationInfo,
+  VkPipelineShaderStageCreateInfo,
+  VkComputePipelineCreateInfo,
+  VkVertexInputBindingDescription,
+  VkVertexInputAttributeDescription,
+  VkPipelineVertexInputStateCreateInfo,
+  VkPipelineInputAssemblyStateCreateInfo,
+  VkPipelineTessellationStateCreateInfo,
+  VkPipelineViewportStateCreateInfo,
+  VkPipelineRasterizationStateCreateInfo,
+  VkPipelineMultisampleStateCreateInfo,
+  VkPipelineColorBlendAttachmentState,
+  VkPipelineColorBlendStateCreateInfo,
+  VkPipelineDynamicStateCreateInfo,
+  VkStencilOpState,
+  VkPipelineDepthStencilStateCreateInfo,
+  VkGraphicsPipelineCreateInfo,
+  VkPipelineCacheCreateInfo,
+  VkPushConstantRange,
+  VkPipelineLayoutCreateInfo,
+  VkSamplerCreateInfo,
+  VkCommandPoolCreateInfo,
+  VkCommandBufferAllocateInfo,
+  VkCommandBufferInheritanceInfo,
+  VkCommandBufferBeginInfo,
+  VkRenderPassBeginInfo,
+  VkClearDepthStencilValue,
+  VkClearAttachment,
+  VkAttachmentDescription,
+  VkAttachmentReference,
+  VkSubpassDescription,
+  VkSubpassDependency,
+  VkRenderPassCreateInfo,
+  VkEventCreateInfo,
+  VkFenceCreateInfo,
+  VkPhysicalDeviceFeatures,
+  VkPhysicalDeviceSparseProperties,
+  VkPhysicalDeviceLimits,
+  VkSemaphoreCreateInfo,
+  VkQueryPoolCreateInfo,
+  VkFramebufferCreateInfo,
+  VkDrawIndirectCommand,
+  VkDrawIndexedIndirectCommand,
+  VkDispatchIndirectCommand,
+  VkSubmitInfo,
+  VkDisplayPropertiesKHR,
+  VkDisplayPlanePropertiesKHR,
+  VkDisplayModeParametersKHR,
+  VkDisplayModePropertiesKHR,
+  VkDisplayModeCreateInfoKHR,
+  VkDisplayPlaneCapabilitiesKHR,
+  VkDisplaySurfaceCreateInfoKHR,
+  VkDisplayPresentInfoKHR,
+  VkSurfaceCapabilitiesKHR,
+  VkWin32SurfaceCreateInfoKHR,
+  VkSurfaceFormatKHR,
+  VkSwapchainCreateInfoKHR,
+  VkPresentInfoKHR,
+  VkDebugReportCallbackCreateInfoEXT,
+  VkValidationFlagsEXT,
+  VkValidationFeaturesEXT,
+  VkPipelineRasterizationStateRasterizationOrderAMD,
+  VkDebugMarkerObjectNameInfoEXT,
+  VkDebugMarkerObjectTagInfoEXT,
+  VkDebugMarkerMarkerInfoEXT,
+  VkDedicatedAllocationImageCreateInfoNV,
+  VkDedicatedAllocationBufferCreateInfoNV,
+  VkDedicatedAllocationMemoryAllocateInfoNV,
+  VkExternalImageFormatPropertiesNV,
+  VkExternalMemoryImageCreateInfoNV,
+  VkExportMemoryAllocateInfoNV,
+  VkImportMemoryWin32HandleInfoNV,
+  VkExportMemoryWin32HandleInfoNV,
+  VkWin32KeyedMutexAcquireReleaseInfoNV,
+  VkDeviceGeneratedCommandsFeaturesNVX,
+  VkDeviceGeneratedCommandsLimitsNVX,
+  VkIndirectCommandsTokenNVX,
+  VkIndirectCommandsLayoutTokenNVX,
+  VkIndirectCommandsLayoutCreateInfoNVX,
+  VkCmdProcessCommandsInfoNVX,
+  VkCmdReserveSpaceForCommandsInfoNVX,
+  VkObjectTableCreateInfoNVX,
+  VkObjectTableEntryNVX,
+  VkObjectTablePipelineEntryNVX,
+  VkObjectTableDescriptorSetEntryNVX,
+  VkObjectTableVertexBufferEntryNVX,
+  VkObjectTableIndexBufferEntryNVX,
+  VkObjectTablePushConstantEntryNVX,
+  VkPhysicalDeviceFeatures2,
+  VkPhysicalDeviceFeatures2KHR,
+  VkPhysicalDeviceProperties2,
+  VkPhysicalDeviceProperties2KHR,
+  VkFormatProperties2,
+  VkFormatProperties2KHR,
+  VkImageFormatProperties2,
+  VkImageFormatProperties2KHR,
+  VkPhysicalDeviceImageFormatInfo2,
+  VkPhysicalDeviceImageFormatInfo2KHR,
+  VkQueueFamilyProperties2,
+  VkQueueFamilyProperties2KHR,
+  VkPhysicalDeviceMemoryProperties2,
+  VkPhysicalDeviceMemoryProperties2KHR,
+  VkSparseImageFormatProperties2,
+  VkSparseImageFormatProperties2KHR,
+  VkPhysicalDeviceSparseImageFormatInfo2,
+  VkPhysicalDeviceSparseImageFormatInfo2KHR,
+  VkPhysicalDevicePushDescriptorPropertiesKHR,
+  VkConformanceVersionKHR,
+  VkPhysicalDeviceDriverPropertiesKHR,
+  VkPresentRegionsKHR,
+  VkPresentRegionKHR,
+  VkRectLayerKHR,
+  VkPhysicalDeviceVariablePointerFeatures,
+  VkPhysicalDeviceVariablePointerFeaturesKHR,
+  VkExternalMemoryProperties,
+  VkExternalMemoryPropertiesKHR,
+  VkPhysicalDeviceExternalImageFormatInfo,
+  VkPhysicalDeviceExternalImageFormatInfoKHR,
+  VkExternalImageFormatProperties,
+  VkExternalImageFormatPropertiesKHR,
+  VkPhysicalDeviceExternalBufferInfo,
+  VkPhysicalDeviceExternalBufferInfoKHR,
+  VkExternalBufferProperties,
+  VkExternalBufferPropertiesKHR,
+  VkPhysicalDeviceIDProperties,
+  VkPhysicalDeviceIDPropertiesKHR,
+  VkExternalMemoryImageCreateInfo,
+  VkExternalMemoryImageCreateInfoKHR,
+  VkExternalMemoryBufferCreateInfo,
+  VkExternalMemoryBufferCreateInfoKHR,
+  VkExportMemoryAllocateInfo,
+  VkExportMemoryAllocateInfoKHR,
+  VkImportMemoryWin32HandleInfoKHR,
+  VkExportMemoryWin32HandleInfoKHR,
+  VkMemoryWin32HandlePropertiesKHR,
+  VkMemoryGetWin32HandleInfoKHR,
+  VkImportMemoryFdInfoKHR,
+  VkMemoryFdPropertiesKHR,
+  VkMemoryGetFdInfoKHR,
+  VkWin32KeyedMutexAcquireReleaseInfoKHR,
+  VkPhysicalDeviceExternalSemaphoreInfo,
+  VkPhysicalDeviceExternalSemaphoreInfoKHR,
+  VkExternalSemaphoreProperties,
+  VkExternalSemaphorePropertiesKHR,
+  VkExportSemaphoreCreateInfo,
+  VkExportSemaphoreCreateInfoKHR,
+  VkImportSemaphoreWin32HandleInfoKHR,
+  VkExportSemaphoreWin32HandleInfoKHR,
+  VkD3D12FenceSubmitInfoKHR,
+  VkSemaphoreGetWin32HandleInfoKHR,
+  VkImportSemaphoreFdInfoKHR,
+  VkSemaphoreGetFdInfoKHR,
+  VkPhysicalDeviceExternalFenceInfo,
+  VkPhysicalDeviceExternalFenceInfoKHR,
+  VkExternalFenceProperties,
+  VkExternalFencePropertiesKHR,
+  VkExportFenceCreateInfo,
+  VkExportFenceCreateInfoKHR,
+  VkImportFenceWin32HandleInfoKHR,
+  VkExportFenceWin32HandleInfoKHR,
+  VkFenceGetWin32HandleInfoKHR,
+  VkImportFenceFdInfoKHR,
+  VkFenceGetFdInfoKHR,
+  VkPhysicalDeviceMultiviewFeatures,
+  VkPhysicalDeviceMultiviewFeaturesKHR,
+  VkPhysicalDeviceMultiviewProperties,
+  VkPhysicalDeviceMultiviewPropertiesKHR,
+  VkRenderPassMultiviewCreateInfo,
+  VkRenderPassMultiviewCreateInfoKHR,
+  VkSurfaceCapabilities2EXT,
+  VkDisplayPowerInfoEXT,
+  VkDeviceEventInfoEXT,
+  VkDisplayEventInfoEXT,
+  VkSwapchainCounterCreateInfoEXT,
+  VkPhysicalDeviceGroupProperties,
+  VkPhysicalDeviceGroupPropertiesKHR,
+  VkMemoryAllocateFlagsInfo,
+  VkMemoryAllocateFlagsInfoKHR,
+  VkBindBufferMemoryInfo,
+  VkBindBufferMemoryInfoKHR,
+  VkBindBufferMemoryDeviceGroupInfo,
+  VkBindBufferMemoryDeviceGroupInfoKHR,
+  VkBindImageMemoryInfo,
+  VkBindImageMemoryInfoKHR,
+  VkBindImageMemoryDeviceGroupInfo,
+  VkBindImageMemoryDeviceGroupInfoKHR,
+  VkDeviceGroupRenderPassBeginInfo,
+  VkDeviceGroupRenderPassBeginInfoKHR,
+  VkDeviceGroupCommandBufferBeginInfo,
+  VkDeviceGroupCommandBufferBeginInfoKHR,
+  VkDeviceGroupSubmitInfo,
+  VkDeviceGroupSubmitInfoKHR,
+  VkDeviceGroupBindSparseInfo,
+  VkDeviceGroupBindSparseInfoKHR,
+  VkDeviceGroupPresentCapabilitiesKHR,
+  VkImageSwapchainCreateInfoKHR,
+  VkBindImageMemorySwapchainInfoKHR,
+  VkAcquireNextImageInfoKHR,
+  VkDeviceGroupPresentInfoKHR,
+  VkDeviceGroupDeviceCreateInfo,
+  VkDeviceGroupDeviceCreateInfoKHR,
+  VkDeviceGroupSwapchainCreateInfoKHR,
+  VkDescriptorUpdateTemplateEntry,
+  VkDescriptorUpdateTemplateEntryKHR,
+  VkDescriptorUpdateTemplateCreateInfo,
+  VkDescriptorUpdateTemplateCreateInfoKHR,
+  VkXYColorEXT,
+  VkHdrMetadataEXT,
+  VkRefreshCycleDurationGOOGLE,
+  VkPastPresentationTimingGOOGLE,
+  VkPresentTimesInfoGOOGLE,
+  VkPresentTimeGOOGLE,
+  VkViewportWScalingNV,
+  VkPipelineViewportWScalingStateCreateInfoNV,
+  VkViewportSwizzleNV,
+  VkPipelineViewportSwizzleStateCreateInfoNV,
+  VkPhysicalDeviceDiscardRectanglePropertiesEXT,
+  VkPipelineDiscardRectangleStateCreateInfoEXT,
+  VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX,
+  VkInputAttachmentAspectReference,
+  VkInputAttachmentAspectReferenceKHR,
+  VkRenderPassInputAttachmentAspectCreateInfo,
+  VkRenderPassInputAttachmentAspectCreateInfoKHR,
+  VkPhysicalDeviceSurfaceInfo2KHR,
+  VkSurfaceCapabilities2KHR,
+  VkSurfaceFormat2KHR,
+  VkDisplayProperties2KHR,
+  VkDisplayPlaneProperties2KHR,
+  VkDisplayModeProperties2KHR,
+  VkDisplayPlaneInfo2KHR,
+  VkDisplayPlaneCapabilities2KHR,
+  VkSharedPresentSurfaceCapabilitiesKHR,
+  VkPhysicalDevice16BitStorageFeatures,
+  VkPhysicalDevice16BitStorageFeaturesKHR,
+  VkPhysicalDeviceSubgroupProperties,
+  VkBufferMemoryRequirementsInfo2,
+  VkBufferMemoryRequirementsInfo2KHR,
+  VkImageMemoryRequirementsInfo2,
+  VkImageMemoryRequirementsInfo2KHR,
+  VkImageSparseMemoryRequirementsInfo2,
+  VkImageSparseMemoryRequirementsInfo2KHR,
+  VkMemoryRequirements2,
+  VkMemoryRequirements2KHR,
+  VkSparseImageMemoryRequirements2,
+  VkSparseImageMemoryRequirements2KHR,
+  VkPhysicalDevicePointClippingProperties,
+  VkPhysicalDevicePointClippingPropertiesKHR,
+  VkMemoryDedicatedRequirements,
+  VkMemoryDedicatedRequirementsKHR,
+  VkMemoryDedicatedAllocateInfo,
+  VkMemoryDedicatedAllocateInfoKHR,
+  VkImageViewUsageCreateInfo,
+  VkImageViewUsageCreateInfoKHR,
+  VkPipelineTessellationDomainOriginStateCreateInfo,
+  VkPipelineTessellationDomainOriginStateCreateInfoKHR,
+  VkSamplerYcbcrConversionInfo,
+  VkSamplerYcbcrConversionInfoKHR,
+  VkSamplerYcbcrConversionCreateInfo,
+  VkSamplerYcbcrConversionCreateInfoKHR,
+  VkBindImagePlaneMemoryInfo,
+  VkBindImagePlaneMemoryInfoKHR,
+  VkImagePlaneMemoryRequirementsInfo,
+  VkImagePlaneMemoryRequirementsInfoKHR,
+  VkPhysicalDeviceSamplerYcbcrConversionFeatures,
+  VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR,
+  VkSamplerYcbcrConversionImageFormatProperties,
+  VkSamplerYcbcrConversionImageFormatPropertiesKHR,
+  VkTextureLODGatherFormatPropertiesAMD,
+  VkConditionalRenderingBeginInfoEXT,
+  VkProtectedSubmitInfo,
+  VkPhysicalDeviceProtectedMemoryFeatures,
+  VkPhysicalDeviceProtectedMemoryProperties,
+  VkDeviceQueueInfo2,
+  VkPipelineCoverageToColorStateCreateInfoNV,
+  VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT,
+  VkSampleLocationEXT,
+  VkSampleLocationsInfoEXT,
+  VkAttachmentSampleLocationsEXT,
+  VkSubpassSampleLocationsEXT,
+  VkRenderPassSampleLocationsBeginInfoEXT,
+  VkPipelineSampleLocationsStateCreateInfoEXT,
+  VkPhysicalDeviceSampleLocationsPropertiesEXT,
+  VkMultisamplePropertiesEXT,
+  VkSamplerReductionModeCreateInfoEXT,
+  VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT,
+  VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT,
+  VkPipelineColorBlendAdvancedStateCreateInfoEXT,
+  VkPhysicalDeviceInlineUniformBlockFeaturesEXT,
+  VkPhysicalDeviceInlineUniformBlockPropertiesEXT,
+  VkWriteDescriptorSetInlineUniformBlockEXT,
+  VkDescriptorPoolInlineUniformBlockCreateInfoEXT,
+  VkPipelineCoverageModulationStateCreateInfoNV,
+  VkImageFormatListCreateInfoKHR,
+  VkValidationCacheCreateInfoEXT,
+  VkShaderModuleValidationCacheCreateInfoEXT,
+  VkPhysicalDeviceMaintenance3Properties,
+  VkPhysicalDeviceMaintenance3PropertiesKHR,
+  VkDescriptorSetLayoutSupport,
+  VkDescriptorSetLayoutSupportKHR,
+  VkPhysicalDeviceShaderDrawParameterFeatures,
+  VkPhysicalDeviceFloat16Int8FeaturesKHR,
+  VkPhysicalDeviceFloatControlsPropertiesKHR,
+  VkShaderResourceUsageAMD,
+  VkShaderStatisticsInfoAMD,
+  VkDeviceQueueGlobalPriorityCreateInfoEXT,
+  VkDebugUtilsObjectNameInfoEXT,
+  VkDebugUtilsObjectTagInfoEXT,
+  VkDebugUtilsLabelEXT,
+  VkDebugUtilsMessengerCreateInfoEXT,
+  VkDebugUtilsMessengerCallbackDataEXT,
+  VkImportMemoryHostPointerInfoEXT,
+  VkMemoryHostPointerPropertiesEXT,
+  VkPhysicalDeviceExternalMemoryHostPropertiesEXT,
+  VkPhysicalDeviceConservativeRasterizationPropertiesEXT,
+  VkCalibratedTimestampInfoEXT,
+  VkPhysicalDeviceShaderCorePropertiesAMD,
+  VkPipelineRasterizationConservativeStateCreateInfoEXT,
+  VkPhysicalDeviceDescriptorIndexingFeaturesEXT,
+  VkPhysicalDeviceDescriptorIndexingPropertiesEXT,
+  VkDescriptorSetLayoutBindingFlagsCreateInfoEXT,
+  VkDescriptorSetVariableDescriptorCountAllocateInfoEXT,
+  VkDescriptorSetVariableDescriptorCountLayoutSupportEXT,
+  VkAttachmentDescription2KHR,
+  VkAttachmentReference2KHR,
+  VkSubpassDescription2KHR,
+  VkSubpassDependency2KHR,
+  VkRenderPassCreateInfo2KHR,
+  VkSubpassBeginInfoKHR,
+  VkSubpassEndInfoKHR,
+  VkVertexInputBindingDivisorDescriptionEXT,
+  VkPipelineVertexInputDivisorStateCreateInfoEXT,
+  VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT,
+  VkPhysicalDevicePCIBusInfoPropertiesEXT,
+  VkCommandBufferInheritanceConditionalRenderingInfoEXT,
+  VkPhysicalDevice8BitStorageFeaturesKHR,
+  VkPhysicalDeviceConditionalRenderingFeaturesEXT,
+  VkPhysicalDeviceVulkanMemoryModelFeaturesKHR,
+  VkPhysicalDeviceShaderAtomicInt64FeaturesKHR,
+  VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT,
+  VkQueueFamilyCheckpointPropertiesNV,
+  VkCheckpointDataNV,
+  VkPhysicalDeviceDepthStencilResolvePropertiesKHR,
+  VkSubpassDescriptionDepthStencilResolveKHR,
+  VkImageViewASTCDecodeModeEXT,
+  VkPhysicalDeviceASTCDecodeFeaturesEXT,
+  VkPhysicalDeviceTransformFeedbackFeaturesEXT,
+  VkPhysicalDeviceTransformFeedbackPropertiesEXT,
+  VkPipelineRasterizationStateStreamCreateInfoEXT,
+  VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV,
+  VkPipelineRepresentativeFragmentTestStateCreateInfoNV,
+  VkPhysicalDeviceExclusiveScissorFeaturesNV,
+  VkPipelineViewportExclusiveScissorStateCreateInfoNV,
+  VkPhysicalDeviceCornerSampledImageFeaturesNV,
+  VkPhysicalDeviceComputeShaderDerivativesFeaturesNV,
+  VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV,
+  VkPhysicalDeviceShaderImageFootprintFeaturesNV,
+  VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV,
+  VkShadingRatePaletteNV,
+  VkPipelineViewportShadingRateImageStateCreateInfoNV,
+  VkPhysicalDeviceShadingRateImageFeaturesNV,
+  VkPhysicalDeviceShadingRateImagePropertiesNV,
+  VkCoarseSampleLocationNV,
+  VkCoarseSampleOrderCustomNV,
+  VkPipelineViewportCoarseSampleOrderStateCreateInfoNV,
+  VkPhysicalDeviceMeshShaderFeaturesNV,
+  VkPhysicalDeviceMeshShaderPropertiesNV,
+  VkDrawMeshTasksIndirectCommandNV,
+  VkRayTracingShaderGroupCreateInfoNV,
+  VkRayTracingPipelineCreateInfoNV,
+  VkGeometryTrianglesNV,
+  VkGeometryAABBNV,
+  VkGeometryDataNV,
+  VkGeometryNV,
+  VkAccelerationStructureInfoNV,
+  VkAccelerationStructureCreateInfoNV,
+  VkBindAccelerationStructureMemoryInfoNV,
+  VkWriteDescriptorSetAccelerationStructureNV,
+  VkAccelerationStructureMemoryRequirementsInfoNV,
+  VkPhysicalDeviceRayTracingPropertiesNV,
+  VkDrmFormatModifierPropertiesListEXT,
+  VkDrmFormatModifierPropertiesEXT,
+  VkPhysicalDeviceImageDrmFormatModifierInfoEXT,
+  VkImageDrmFormatModifierListCreateInfoEXT,
+  VkImageDrmFormatModifierExplicitCreateInfoEXT,
+  VkImageDrmFormatModifierPropertiesEXT,
+  VkImageStencilUsageCreateInfoEXT,
+  VkDeviceMemoryOverallocationCreateInfoAMD,
+  VkPhysicalDeviceFragmentDensityMapFeaturesEXT,
+  VkPhysicalDeviceFragmentDensityMapPropertiesEXT,
+  VkRenderPassFragmentDensityMapCreateInfoEXT,
+  VkPhysicalDeviceScalarBlockLayoutFeaturesEXT,
+  VkPhysicalDeviceDepthClipEnableFeaturesEXT,
+  VkPipelineRasterizationDepthClipStateCreateInfoEXT,
+  VkPhysicalDeviceMemoryBudgetPropertiesEXT,
+  VkPhysicalDeviceMemoryPriorityFeaturesEXT,
+  VkMemoryPriorityAllocateInfoEXT,
+  VkPhysicalDeviceBufferAddressFeaturesEXT,
+  VkBufferDeviceAddressInfoEXT,
+  VkBufferDeviceAddressCreateInfoEXT,
+  VkPhysicalDeviceImageViewImageFormatInfoEXT,
+  VkFilterCubicImageViewImageFormatPropertiesEXT,
+  VkPhysicalDeviceCooperativeMatrixFeaturesNV,
+  VkPhysicalDeviceCooperativeMatrixPropertiesNV,
+  VkCooperativeMatrixPropertiesNV,
+  VkClearColorValue,
+  VkClearValue
+};
