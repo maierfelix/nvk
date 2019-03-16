@@ -83,19 +83,19 @@ physicalDeviceMultiviewFeaturesInfo.multiviewTessellationShader = ;
       <!-- VkPhysicalDeviceMultiviewFeatures.prototype.multiview -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMultiviewFeatures.prototype.<vk-prototype-name>multiview</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description> specifies whether the implementation supports multiview rendering within a render pass. If this feature is not enabled, the view mask of each subpass <i>must</i> always be zero.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceMultiviewFeatures.prototype.multiviewGeometryShader -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMultiviewFeatures.prototype.<vk-prototype-name>multiviewGeometryShader</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description> specifies whether the implementation supports multiview rendering within a render pass, with <<geometry,geometry shaders>>. If this feature is not enabled, then a pipeline compiled against a subpass with a non-zero view mask <i>must</i> not include a geometry shader.</vk-property-description>
       </vk-property-entry>
       <!-- VkPhysicalDeviceMultiviewFeatures.prototype.multiviewTessellationShader -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMultiviewFeatures.prototype.<vk-prototype-name>multiviewTessellationShader</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description> specifies whether the implementation supports multiview rendering within a render pass, with <<tessellation,tessellation shaders>>. If this feature is not enabled, then a pipeline compiled against a subpass with a non-zero view mask <i>must</i> not include any tessellation shaders.</vk-property-description>
       </vk-property-entry>
       

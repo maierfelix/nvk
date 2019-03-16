@@ -37,16 +37,46 @@ nunjucks.configure({ autoescape: true });
 
 class JavaScriptType {
   constructor(opts) {
-    this.type = null;
+    this.type = -1;
     this.value = null;
-    this.isArray = false;
     this.isEnum = false;
     this.isBitmask = false;
+    this.isNullable = false;
+    this.isStatic = false;
     if (opts.type !== void 0) this.type = opts.type;
     if (opts.value !== void 0) this.value = opts.value;
-    if (opts.isArray !== void 0) this.isArray = opts.isArray;
     if (opts.isEnum !== void 0) this.isEnum = opts.isEnum;
     if (opts.isBitmask !== void 0) this.isBitmask = opts.isBitmask;
+    if (opts.isNullable !== void 0) this.isNullable = opts.isNullable;
+    if (opts.isStatic !== void 0) this.isStatic = opts.isStatic;
+  }
+  get isNumeric() {
+    let {type} = this;
+    return (
+      type === JavaScriptType.NUMBER ||
+      type === JavaScriptType.BIGINT
+    );
+  }
+  get isArray() {
+    let {type} = this;
+    return (
+      this.isJavaScriptArray() ||
+      type === JavaScriptType.TYPED_ARRAY
+    );
+  }
+  get isJavaScriptArray() {
+    let {type} = this;
+    return (
+      type === JavaScriptType.ARRAY_OF_STRINGS ||
+      type === JavaScriptType.ARRAY_OF_NUMBERS ||
+      type === JavaScriptType.ARRAY_OF_OBJECTS
+    );
+  }
+  get isBoolean() {
+    let {type} = this;
+    return (
+      type === JavaScriptType.BOOLEAN
+    );
   }
 };
 
@@ -58,9 +88,8 @@ class JavaScriptType {
   JavaScriptType.NULL = idx++;
   JavaScriptType.STRING = idx++;
   JavaScriptType.NUMBER = idx++;
-  JavaScriptType.ENUM = idx++;
+  JavaScriptType.BOOLEAN = idx++;
   JavaScriptType.BIGINT = idx++;
-  JavaScriptType.BITMASK = idx++;
   JavaScriptType.OBJECT_INOUT = idx++;
   JavaScriptType.TYPED_ARRAY = idx++;
   JavaScriptType.FUNCTION = idx++;
@@ -126,32 +155,32 @@ function getNumericTypescriptType({type, isEnum, isBitmask} = _) {
   });
 };
 
-function getJavaScriptType(member) {
-  let {rawType} = member;
-  if (member.isTypedArray) {
+function getJavaScriptType(object) {
+  let {rawType} = object;
+  if (object.isTypedArray) {
     return new JavaScriptType({
       type: JavaScriptType.TYPED_ARRAY,
-      value: member.jsTypedArrayName,
+      value: object.jsTypedArrayName,
       isArray: true,
       isNullable: true
     });
   }
-  if (member.isFunction) {
+  if (object.isFunction) {
     return new JavaScriptType({
       type: JavaScriptType.FUNCTION,
-      value: member.type,
+      value: object.type,
       isNullable: true
     });
   }
-  if (isIgnoreableType(member)) {
+  if (isIgnoreableType(object)) {
     return new JavaScriptType({
       type: JavaScriptType.NULL,
       isNullable: true
     });
   }
-  if (member.kind === "COMMAND_PARAM") {
+  if (object.kind === "COMMAND_PARAM") {
     // handle inout parameters
-    switch (member.rawType) {
+    switch (object.rawType) {
       case "size_t *":
       case "int *":
       case "int32_t *":
@@ -165,58 +194,75 @@ function getJavaScriptType(member) {
         });
     };
   }
-  if (member.isBaseType) rawType = member.baseType;
-  if (member.enumType) return getNumericTypescriptType({ type: member.enumType, isEnum: true });
-  if (member.isBitmaskType) {
-    let bitmask = getBitmaskByName(member.bitmaskType);
-    // future reserved bitmask, or must be 0
-    if (!bitmask) return new JavaScriptType({
-      type: JavaScriptType.NUMBER,
-      isNullable: false
+  if (object.isBaseType) rawType = object.baseType;
+  if (object.isBoolean) {
+    return new JavaScriptType({
+      type: JavaScriptType.BOOLEAN
     });
-    return getNumericTypescriptType({ type: member.bitmaskType, isBitmask: true });
   }
-  if (member.isStaticArray) {
-    // string of chars
-    if (member.type === "char" && member.isStaticArray) {
+  if (object.enumType) {
+    return new JavaScriptType({
+      type: JavaScriptType.NUMBER,
+      value: object.enumType,
+      isEnum: true
+    });
+  }
+  if (object.isBitmaskType) {
+    let bitmask = getBitmaskByName(ast, object.bitmaskType);
+    // future reserved bitmask, or must be 0
+    if (!bitmask) {
       return new JavaScriptType({
-        type: JavaScriptType.STRING,
-        isArray: true,
-        isNullable: true
+        type: JavaScriptType.NUMBER
       });
     }
-    else {
+    return new JavaScriptType({
+      type: JavaScriptType.NUMBER,
+      value: object.bitmaskType,
+      isBitmask: true
+    });
+  }
+  if (object.isStaticArray) {
+    // string of chars
+    if (object.type === "char" && object.isStaticArray) {
+      return new JavaScriptType({
+        type: JavaScriptType.STRING,
+        isNullable: true,
+        isStatic: true
+      });
+    } else if (object.isNumericArray) {
       return new JavaScriptType({
         type: JavaScriptType.ARRAY_OF_NUMBERS,
         isArray: true,
-        isNullable: true
+        isNullable: true,
+        isStatic: true
       });
     }
   }
-  if (member.isArray && (member.isStructType || member.isHandleType)) {
+  if (object.isArray && (object.isStructType || object.isHandleType)) {
     return new JavaScriptType({
       type: JavaScriptType.ARRAY_OF_OBJECTS,
-      value: member.type,
+      value: object.type,
       isArray: true,
-      isNullable: true
+      isNullable: true,
+      isStatic: object.isStaticArray
     });
   }
-  if (member.isStructType || member.isHandleType || member.isBaseType) {
-    if (member.isStructType || member.isHandleType || member.dereferenceCount > 0) {
+  if (object.isStructType || object.isHandleType || object.isBaseType) {
+    if (object.isStructType || object.isHandleType || object.dereferenceCount > 0) {
       return new JavaScriptType({
         type: JavaScriptType.OBJECT,
-        value: member.type,
+        value: object.type,
         isNullable: true
       });
     }
   }
-  if (member.isWin32Handle) {
+  if (object.isWin32Handle) {
     return new JavaScriptType({
       type: JavaScriptType.BIGINT,
       isNullable: false
     });
   }
-  if (member.isWin32HandleReference) {
+  if (object.isWin32HandleReference) {
     return new JavaScriptType({
       type: JavaScriptType.OBJECT_INOUT,
       value: "BigInt",
@@ -251,8 +297,7 @@ function getJavaScriptType(member) {
     case "uint32_t":
     case "uint64_t":
       return new JavaScriptType({
-        type: JavaScriptType.NUMBER,
-        isNullable: false
+        type: JavaScriptType.NUMBER
       });
     case "void **":
       return new JavaScriptType({
@@ -261,7 +306,7 @@ function getJavaScriptType(member) {
         isNullable: true
       });
   };
-  warn(`Cannot handle member ${member.rawType} in doc generator!`);
+  warn(`Cannot handle object ${object.rawType} in JavaScript type resolver!`);
   return null;
 };
 
@@ -274,6 +319,9 @@ function getType(object) {
     }
     case JavaScriptType.NULL: {
       return `null`;
+    }
+    case JavaScriptType.BOOLEAN: {
+      return `Boolean`;
     }
     case JavaScriptType.NUMBER:
     case JavaScriptType.ENUM:
@@ -319,6 +367,7 @@ function getCSSType(member) {
     case JavaScriptType.OBJECT: return `object`;
     case JavaScriptType.NULL: return `null`;
     case JavaScriptType.STRING: return `string`;
+    case JavaScriptType.BOOLEAN: return `boolean`;
     case JavaScriptType.NUMBER: return `number`;
     case JavaScriptType.BIGINT: return `number`;
     case JavaScriptType.ENUM: return `number`;
