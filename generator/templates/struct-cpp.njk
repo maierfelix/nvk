@@ -93,12 +93,10 @@ Napi::Value _{{ struct_name }}::GetmemoryLayout(const Napi::CallbackInfo& info) 
   {% for member in members -%}
   {%- if isIgnoreableType(member) != true %}
   {
-    Napi::Object obj = Napi::Object::New(env);
-    uint32_t byteOffset = ((size_t)&((({{ struct.name }} *)0)->{{ member.name }}));
-    uint32_t byteLength = sizeof((({{ struct.name }} *)0)->{{ member.name }});
-    obj.Set(Napi::String::New(env, "byteOffset"), Napi::Number::New(env, byteOffset));
-    obj.Set(Napi::String::New(env, "byteLength"), Napi::Number::New(env, byteLength));
-    out.Set(Napi::String::New(env, "{{ member.name }}"), obj);
+    Napi::Object o = Napi::Object::New(env);
+    o.Set("byteOffset", (double) offsetof({{ struct.name }}, {{ member.name }}));
+    o.Set("byteLength", (double) sizeof({{ struct.name }}::{{ member.name }}));
+    out.Set("{{ member.name }}", o);
   }
   {%- endif -%}
   {%- endfor %}
