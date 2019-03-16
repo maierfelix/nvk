@@ -451,3 +451,13 @@ export function isReferenceableMember(member) {
   };
   return false;
 };
+
+export function getBitmaskByName(ast, name) {
+  for (let ii = 0; ii < ast.length; ++ii) {
+    let child = ast[ii];
+    if (child.kind === "ENUM" && child.type === "BITMASK") {
+      if (child.name === name) return child;
+    }
+  };
+  return null;
+};
