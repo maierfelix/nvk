@@ -116,6 +116,13 @@ vk-property-type[type="object"]  {
   cursor: pointer;
 }
 
+vk-property-type[type="read-only"] {
+  vertical-align: middle;
+  padding: 0.25em;
+  font-size: 0.5em;
+  font-weight: 500;
+}
+
 vk-property-type[type="typedarray"] > a:link,
 vk-property-type[type="arraybuffer"] > a:link {
   color: rgba(228, 0, 211, 1);
