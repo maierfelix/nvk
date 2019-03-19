@@ -268,7 +268,7 @@ function getStructMemberStub(struct, member) {
 function getNavigationHTML() {
   return `
 <vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>

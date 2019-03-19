@@ -6,7 +6,12 @@
     "node": ">= 10.9.0"
   },
   "config": {
-    "OUTDATED": ["1.1.82", "1.1.85", "1.1.92", "1.1.97"],
+    "OUTDATED": [
+      "1.1.82",
+      "1.1.85",
+      "1.1.92",
+      "1.1.97"
+    ],
     "GEN_OUT_DIR": "./generated",
     "SPEC_DIR": "./generator/specifications",
     "TEMPLATE_DIR": "./generator/templates",
