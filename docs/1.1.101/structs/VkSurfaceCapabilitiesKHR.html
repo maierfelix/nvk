@@ -89,22 +89,22 @@ surfaceCapabilitiesKHRInfo.supportedUsageFlags;
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkSurfaceCapabilitiesKHR.prototype.<vk-prototype-name>supportedTransforms</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkSurfaceTransformFlagBitsKHR.html">VkSurfaceTransformFlagBitsKHR</a></vk-property-type>
         <vk-property-description> is a bitmask of <b>VkSurfaceTransformFlagBitsKHR</b> indicating the presentation transforms supported for the surface on the specified device. At least one bit will be set.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkSurfaceCapabilitiesKHR.prototype.<vk-prototype-name>currentTransform</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkSurfaceTransformFlagBitsKHR.html">VkSurfaceTransformFlagBitsKHR</a></vk-property-type>
         <vk-property-description> is <b>VkSurfaceTransformFlagBitsKHR</b> value indicating the surface's current transform relative to the presentation engine's natural orientation.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkSurfaceCapabilitiesKHR.prototype.<vk-prototype-name>supportedCompositeAlpha</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkCompositeAlphaFlagBitsKHR.html">VkCompositeAlphaFlagBitsKHR</a></vk-property-type>
         <vk-property-description> is a bitmask of <b>VkCompositeAlphaFlagBitsKHR</b>, representing the alpha compositing modes supported by the presentation engine for the surface on the specified device, and at least one bit will be set. Opaque composition <i>can</i> be achieved in any alpha compositing mode by either using an image format that has no alpha component, or by ensuring that all pixels in the presentable images have an alpha value of 1.0.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkSurfaceCapabilitiesKHR.prototype.<vk-prototype-name>supportedUsageFlags</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkImageUsageFlagBits.html">VkImageUsageFlagBits</a></vk-property-type>
         <vk-property-description> is a bitmask of <b>VkImageUsageFlagBits</b> representing the ways the application <i>can</i> use the presentable images of a swapchain created with <b>VkPresentModeKHR</b> set to <b>VK_PRESENT_MODE_IMMEDIATE_KHR</b>, <b>VK_PRESENT_MODE_MAILBOX_KHR</b>, <b>VK_PRESENT_MODE_FIFO_KHR</b> or <b>VK_PRESENT_MODE_FIFO_RELAXED_KHR</b></vk-property-description>
       </vk-property-entry>
       

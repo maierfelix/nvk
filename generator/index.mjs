@@ -114,13 +114,23 @@ function mergeExtensionsIntoEnums(enums, extensions) {
     kind: "ENUM",
     type: "ENUM",
     name: "API_Extensions",
-    children: []
+    children: [],
+    documentation: {
+      macros: [],
+      category: "General",
+      description: ""
+    }
   };
   let strExt = {
     kind: "ENUM",
     type: "ENUM_STRINGS",
     name: "API_Extensions_Strings",
-    children: []
+    children: [],
+    documentation: {
+      macros: [],
+      category: "General",
+      description: ""
+    }
   };
   enums.unshift(enuExt);
   enums.unshift(strExt);

@@ -812,10 +812,12 @@ export default function({ xmlInput, version, docs } = _) {
     // put documentation information into generated AST
     if (docs) {
       parseDocumentation(version).then(ast => {
+        let enums = out.filter(node => node.kind === "ENUM");
         let structs = out.filter(node => node.kind === "STRUCT");
         let handles = out.filter(node => node.kind === "HANDLE");
         let calls = out.filter(node => node.kind === "COMMAND_PROTO");
         // insert documentation
+        fillDocumentation(enums, ast);
         fillDocumentation(structs, ast);
         fillDocumentation(handles, ast);
         fillDocumentation(calls, ast);

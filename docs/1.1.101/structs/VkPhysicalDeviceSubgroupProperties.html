@@ -55,7 +55,7 @@ physicalDeviceSubgroupPropertiesInfo.quadOperationsInAllStages;
     <vk-properties>
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceSubgroupProperties.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
@@ -70,12 +70,12 @@ physicalDeviceSubgroupPropertiesInfo.quadOperationsInAllStages;
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceSubgroupProperties.prototype.<vk-prototype-name>supportedStages</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkShaderStageFlagBits.html">VkShaderStageFlagBits</a></vk-property-type>
         <vk-property-description> is a bitfield of <b>VkShaderStageFlagBits</b> describing the shader stages that subgroup operations are supported in. <b>supportedStages</b> will have the <b>VK_SHADER_STAGE_COMPUTE_BIT</b> bit set if any of the physical device's queues support <b>VK_QUEUE_COMPUTE_BIT</b>.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceSubgroupProperties.prototype.<vk-prototype-name>supportedOperations</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkSubgroupFeatureFlagBits.html">VkSubgroupFeatureFlagBits</a></vk-property-type>
         <vk-property-description> is a bitmask of <b>VkSubgroupFeatureFlagBits</b> specifying the sets of subgroup operations supported on this device. <b>supportedOperations</b> will have the <b>VK_SUBGROUP_FEATURE_BASIC_BIT</b> bit set if any of the physical device's queues support <b>VK_QUEUE_GRAPHICS_BIT</b> or <b>VK_QUEUE_COMPUTE_BIT</b>.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>

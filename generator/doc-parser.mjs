@@ -303,6 +303,8 @@ function transformDescriptions(entries) {
     desc.description = result.description;
     desc.macros = result.macros;
     switch (type) {
+      case "flags":
+      case "enums":
       case "protos":
       case "structs": {
         entry.children.map(c => {
@@ -316,7 +318,6 @@ function transformDescriptions(entries) {
       case "handles": {
         // no members
       } break;
-      case "enums": break;
       case "flags": break;
     };
   });
@@ -428,8 +429,9 @@ export default function(version) {
   return new Promise(resolve => {
     downloadDocs(version).then(result => {
       if (result.error) throw result.error;
-      let ast = parse(version);
-      resolve(ast);
+      parse(version).then(ast => {
+        resolve(ast);
+      });
     });
   });
 };

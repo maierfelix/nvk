@@ -65,7 +65,7 @@ commandBufferInheritanceInfo.pipelineStatistics = ;
     <vk-properties>
       <vk-property-entry>
         <vk-property-prototype>VkCommandBufferInheritanceInfo.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
@@ -95,12 +95,12 @@ commandBufferInheritanceInfo.pipelineStatistics = ;
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkCommandBufferInheritanceInfo.prototype.<vk-prototype-name>queryFlags</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkQueryControlFlagBits.html">VkQueryControlFlagBits</a></vk-property-type>
         <vk-property-description> specifies the query flags that <i>can</i> be used by an active occlusion query in the primary command buffer when this secondary command buffer is executed. If this value includes the <b>VK_QUERY_CONTROL_PRECISE_BIT</b> bit, then the active query <i>can</i> return boolean results or actual sample counts. If this bit is not set, then the active query <i>must</i> not use the <b>VK_QUERY_CONTROL_PRECISE_BIT</b> bit.</vk-property-description>
       </vk-property-entry>
       <vk-property-entry>
         <vk-property-prototype>VkCommandBufferInheritanceInfo.prototype.<vk-prototype-name>pipelineStatistics</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkQueryPipelineStatisticFlagBits.html">VkQueryPipelineStatisticFlagBits</a></vk-property-type>
         <vk-property-description> is a bitmask of <b>VkQueryPipelineStatisticFlagBits</b> specifying the set of pipeline statistics that <i>can</i> be counted by an active query in the primary command buffer when this secondary command buffer is executed. If this value includes a given bit, then this command buffer <i>can</i> be executed whether the primary command buffer has a pipeline statistics query active that includes this bit or not. If this value excludes a given bit, then the active pipeline statistics query <i>must</i> not be from a query pool that counts that statistic.</vk-property-description>
       </vk-property-entry>
       

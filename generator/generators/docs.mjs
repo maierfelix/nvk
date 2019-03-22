@@ -44,7 +44,8 @@ nunjucks.configure({ autoescape: true });
 
 function getType(object) {
   let folder = getObjectFolder(object);
-  let {type, value} = getJavaScriptType(ast, object);
+  let jsType = getJavaScriptType(ast, object);
+  let {type, value} = jsType;
   switch (type) {
     case JavaScriptType.UNKNOWN: {
       return `N/A`;
@@ -55,9 +56,10 @@ function getType(object) {
     case JavaScriptType.BOOLEAN: {
       return `Boolean`;
     }
-    case JavaScriptType.NUMBER:
-    case JavaScriptType.ENUM:
-    case JavaScriptType.BITMASK: {
+    case JavaScriptType.NUMBER: {
+      if (jsType.isEnum || jsType.isBitmask) {
+        return `<a href="../enums/${jsType.value}.html">${jsType.value}</a>`;
+      }
       return `Number`;
     }
     case JavaScriptType.OBJECT: {
@@ -115,8 +117,9 @@ function getCSSType(member) {
   return ``;
 };
 
-function getCategories({ calls, structs, handles } = _) {
+function getCategories({ enums, calls, structs, handles } = _) {
   let out = [];
+  enums.map(enu => { if (out.indexOf(enu.documentation.category) <= -1) out.push(enu.documentation.category); });
   calls.map(call => { if (out.indexOf(call.documentation.category) <= -1) out.push(call.documentation.category); });
   structs.map(struct => { if (out.indexOf(struct.documentation.category) <= -1) out.push(struct.documentation.category); });
   handles.map(handle => { if (out.indexOf(handle.documentation.category) <= -1) out.push(handle.documentation.category); });
@@ -127,6 +130,7 @@ function getObjectsByCategory(category) {
   let out = [];
   // collect objects matching category
   {
+    enums.map(enu => { if (enu.documentation.category === category) out.push(enu); });
     calls.map(call => { if (call.documentation.category === category) out.push(call); });
     structs.map(struct => { if (struct.documentation.category === category) out.push(struct); });
     handles.map(handle => { if (handle.documentation.category === category) out.push(handle); });
@@ -144,6 +148,8 @@ function getObjectFolder(obj) {
   if (obj.isHandleType) return "handles";
   if (obj.isStructType) return "structs";
   switch (obj.kind) {
+    case "ENUM":
+      return "enums";
     case "STRUCT":
       return "structs";
     case "COMMAND_PROTO":
@@ -156,6 +162,8 @@ function getObjectFolder(obj) {
 
 function getObjectLabel(obj) {
   switch (obj.kind) {
+    case "ENUM":
+      return "e";
     case "STRUCT":
       return "s";
     case "COMMAND_PROTO":
@@ -199,7 +207,12 @@ function expandMacro(macro, macroIndex, text) {
     case "flink":
     case "fname": {
       let obj = getNodeByName(value, ast);
-      replacement = `<b><a href="../${getObjectFolder(obj)}/${value}.html">${value}</a></b>`;
+      if (obj) {
+        replacement = `<b><a href="../${getObjectFolder(obj)}/${value}.html">${value}</a></b>`;
+      } else {
+        replacement = `<b><a href="#">${value}</a></b>`;
+        warn(`Cannot resolve node ${value} of kind ${kind}`);
+      }
     } break;
     case "pname":
     case "ename":
@@ -278,17 +291,28 @@ function getHeaderHTML() {
   return nunjucks.renderString(HEADER_TEMPLATE, {});
 };
 
+function getEnumMemberValue(enu, member) {
+  let value = member.value || member.alias;
+  if (member.isEnum) {
+    return value;
+  } else if (member.isBitmask) {
+    return `0x` + value.toString(16).toUpperCase();
+  }
+  return value;
+};
+
 export default function(astReference, data, version) {
   ast = astReference;
-  calls = data.calls;
   enums = data.enums;
+  calls = data.calls;
   structs = data.structs;
   handles = data.handles;
   includes = data.includes;
+  enums.map(enu => { objects.push(enu); });
   calls.map(call => { objects.push(call); });
   structs.map(struct => { objects.push(struct); });
   handles.map(handle => { objects.push(handle); });
-  let categories = getCategories({ calls, structs, handles });
+  let categories = getCategories({ enums, calls, structs, handles });
   let defaultFunctions = {
     getType,
     getCSSType,
@@ -304,6 +328,8 @@ export default function(astReference, data, version) {
   {
     // docs/x/
     if (!fs.existsSync(`${DOCS_DIR}/${version}`)) fs.mkdirSync(`${DOCS_DIR}/${version}`);
+    // docs/x/enums/
+    if (!fs.existsSync(`${DOCS_DIR}/${version}/enums`)) fs.mkdirSync(`${DOCS_DIR}/${version}/enums`);
     // docs/x/calls/
     if (!fs.existsSync(`${DOCS_DIR}/${version}/calls`)) fs.mkdirSync(`${DOCS_DIR}/${version}/calls`);
     // docs/x/handles
@@ -346,6 +372,12 @@ export default function(astReference, data, version) {
         ]);
       });
       out.push(category);
+    });
+    // sort alphabetically
+    out = out.sort((a, b) => {
+      if (a.category < b.category) return -1;
+      if (a.category > b.category) return 1;
+      return 0;
     });
     fs.writeFileSync(`${DOCS_DIR}/${version}/categories.json`, JSON.stringify(out), `utf-8`);
   }
@@ -392,6 +424,21 @@ export default function(astReference, data, version) {
         ...defaultFunctions
       });
       fs.writeFileSync(`${DOCS_DIR}/${version}/calls/${call.name}.html`, output, `utf-8`);
+    });
+  }
+  // enums
+  {
+    enums.map(enu => {
+      let output = nunjucks.renderString(ENUMS_TEMPLATE, {
+        enum: enu,
+        enums,
+        objects,
+        members: enu.children,
+        categories,
+        getEnumMemberValue,
+        ...defaultFunctions
+      });
+      fs.writeFileSync(`${DOCS_DIR}/${version}/enums/${enu.name}.html`, output, `utf-8`);
     });
   }
   return null;

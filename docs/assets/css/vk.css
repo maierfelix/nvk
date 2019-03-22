@@ -248,6 +248,13 @@ details > ol > li {
   word-break: break-all;
 }
 
+ol > li[label="e"]:before {
+  content: "[e] ";
+  font-style: italic;
+  font-weight: 200;
+  color: #9a9a9a;
+}
+
 ol > li[label="f"]:before {
   content: "[f] ";
   font-style: italic;
