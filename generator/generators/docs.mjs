@@ -37,6 +37,8 @@ const CALLS_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/calls.njk`, "utf-8"
 const ENUMS_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/enums.njk`, "utf-8");
 const HANDLES_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/handles.njk`, "utf-8");
 const STRUCTS_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/structs.njk`, "utf-8");
+const HEADER_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/header.njk`, "utf-8");
+const NAVIGATION_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/navigation.njk`, "utf-8");
 
 nunjucks.configure({ autoescape: true });
 
@@ -269,36 +271,11 @@ function getStructMemberStub(struct, member) {
 };
 
 function getNavigationHTML() {
-  return `
-<vk-navigation>
-  <vk-search-title>Search</vk-search-title>
-  <vk-search>
-    <input type="text" id="search" autocomplete="off" />
-    <vk-search-results>
-      <ol id="search-list">
-        <li id="no-search-results">No Results</li>
-      </ol>
-    </vk-search-results>
-  </vk-search>
-  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
-  <vk-categories></vk-categories>
-</vk-navigation>
-`;
+  return nunjucks.renderString(NAVIGATION_TEMPLATE, {});
 };
 
 function getHeaderHTML() {
-  return `
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
-<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
-<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
-
-<link rel="stylesheet" href="../../assets/css/vk.css"/>
-<link rel="stylesheet" href="../../assets/css/prism.css"/>
-`;
+  return nunjucks.renderString(HEADER_TEMPLATE, {});
 };
 
 export default function(astReference, data, version) {
