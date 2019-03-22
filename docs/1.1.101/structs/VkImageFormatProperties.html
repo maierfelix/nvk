@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkImageFormatProperties</vk-name>
@@ -54,31 +52,26 @@ imageFormatPropertiesInfo.maxResourceSize;
     </vk-stub><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkImageFormatProperties.prototype.maxExtent -->
       <vk-property-entry>
         <vk-property-prototype>VkImageFormatProperties.prototype.<vk-prototype-name>maxExtent</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkExtent3D.html">VkExtent3D</a></vk-property-type>
         <vk-property-description> are the maximum image dimensions. See the <<features-extentperimagetype,Allowed Extent Values>> section below for how these values are constrained by <b>type</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageFormatProperties.prototype.maxMipLevels -->
       <vk-property-entry>
         <vk-property-prototype>VkImageFormatProperties.prototype.<vk-prototype-name>maxMipLevels</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the maximum number of mipmap levels. <b>maxMipLevels</b> <i>must</i> be equal to the number of levels in the complete mipmap chain based on the [eq]#<b>maxExtent.width</b>#, [eq]#<b>maxExtent.height</b>#, and [eq]#<b>maxExtent.depth</b>#, except when one of the following conditions is true, in which case it <i>may</i> instead be `1`:</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageFormatProperties.prototype.maxArrayLayers -->
       <vk-property-entry>
         <vk-property-prototype>VkImageFormatProperties.prototype.<vk-prototype-name>maxArrayLayers</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkImageFormatProperties.prototype.sampleCounts -->
       <vk-property-entry>
         <vk-property-prototype>VkImageFormatProperties.prototype.<vk-prototype-name>sampleCounts</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkImageFormatProperties.prototype.maxResourceSize -->
       <vk-property-entry>
         <vk-property-prototype>VkImageFormatProperties.prototype.<vk-prototype-name>maxResourceSize</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
@@ -90,13 +83,11 @@ imageFormatPropertiesInfo.maxResourceSize;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkImageFormatProperties.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkImageFormatProperties.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageFormatProperties.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkImageFormatProperties.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

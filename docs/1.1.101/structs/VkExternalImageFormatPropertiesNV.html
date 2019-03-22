@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkExternalImageFormatPropertiesNV</vk-name>
@@ -53,25 +51,21 @@ externalImageFormatPropertiesNVInfo.compatibleHandleTypes;
     </vk-stub><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkExternalImageFormatPropertiesNV.prototype.imageFormatProperties -->
       <vk-property-entry>
         <vk-property-prototype>VkExternalImageFormatPropertiesNV.prototype.<vk-prototype-name>imageFormatProperties</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkImageFormatProperties.html">VkImageFormatProperties</a></vk-property-type>
         <vk-property-description> will be filled in as when calling <b><a href="../calls/vkGetPhysicalDeviceImageFormatProperties.html">vkGetPhysicalDeviceImageFormatProperties</a></b>, but the values returned <i>may</i> vary depending on the external handle type requested.</vk-property-description>
       </vk-property-entry>
-      <!-- VkExternalImageFormatPropertiesNV.prototype.externalMemoryFeatures -->
       <vk-property-entry>
         <vk-property-prototype>VkExternalImageFormatPropertiesNV.prototype.<vk-prototype-name>externalMemoryFeatures</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a bitmask of <b>VkExternalMemoryFeatureFlagBitsNV</b>, indicating properties of the external memory handle type (<b><a href="../calls/vkGetPhysicalDeviceExternalImageFormatPropertiesNV.html">vkGetPhysicalDeviceExternalImageFormatPropertiesNV</a></b>::<b>externalHandleType</b>) being queried, or 0 if the external memory handle type is 0.</vk-property-description>
       </vk-property-entry>
-      <!-- VkExternalImageFormatPropertiesNV.prototype.exportFromImportedHandleTypes -->
       <vk-property-entry>
         <vk-property-prototype>VkExternalImageFormatPropertiesNV.prototype.<vk-prototype-name>exportFromImportedHandleTypes</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a bitmask of <b>VkExternalMemoryHandleTypeFlagBitsNV</b> containing a bit set for every external handle type that <i>may</i> be used to create memory from which the handles of the type specified in <b><a href="../calls/vkGetPhysicalDeviceExternalImageFormatPropertiesNV.html">vkGetPhysicalDeviceExternalImageFormatPropertiesNV</a></b>::<b>externalHandleType</b> <i>can</i> be exported, or 0 if the external memory handle type is 0.</vk-property-description>
       </vk-property-entry>
-      <!-- VkExternalImageFormatPropertiesNV.prototype.compatibleHandleTypes -->
       <vk-property-entry>
         <vk-property-prototype>VkExternalImageFormatPropertiesNV.prototype.<vk-prototype-name>compatibleHandleTypes</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
@@ -83,13 +77,11 @@ externalImageFormatPropertiesNVInfo.compatibleHandleTypes;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkExternalImageFormatPropertiesNV.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkExternalImageFormatPropertiesNV.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkExternalImageFormatPropertiesNV.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkExternalImageFormatPropertiesNV.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkCmdSetCoarseSampleOrderNV</vk-name>
@@ -46,25 +44,21 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- commandBuffer -->
       <vk-property-entry>
         <vk-property-parameter>commandBuffer</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></vk-property-type>
         <vk-property-description> is the command buffer into which the command will be recorded.</vk-property-description>
       </vk-property-entry>
-      <!-- sampleOrderType -->
       <vk-property-entry>
         <vk-property-parameter>sampleOrderType</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> specifies the mechanism used to order coverage samples in fragments larger than one pixel.</vk-property-description>
       </vk-property-entry>
-      <!-- customSampleOrderCount -->
       <vk-property-entry>
         <vk-property-parameter>customSampleOrderCount</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> specifies the number of custom sample orderings to use when ordering coverage samples.</vk-property-description>
       </vk-property-entry>
-      <!-- pCustomSampleOrders -->
       <vk-property-entry>
         <vk-property-parameter>pCustomSampleOrders</vk-property-parameter>
         <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkCoarseSampleOrderCustomNV.html">VkCoarseSampleOrderCustomNV]</a></vk-property-type></vk-property-type>

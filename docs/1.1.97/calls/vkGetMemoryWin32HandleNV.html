@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkGetMemoryWin32HandleNV</vk-name>
@@ -46,25 +44,21 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- device -->
       <vk-property-entry>
         <vk-property-parameter>device</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkDevice.html">VkDevice</a></vk-property-type>
         <vk-property-description> is the logical device that owns the memory.</vk-property-description>
       </vk-property-entry>
-      <!-- memory -->
       <vk-property-entry>
         <vk-property-parameter>memory</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkDeviceMemory.html">VkDeviceMemory</a></vk-property-type>
         <vk-property-description> is the <b><a href="../handles/VkDeviceMemory.html">VkDeviceMemory</a></b> object.</vk-property-description>
       </vk-property-entry>
-      <!-- handleType -->
       <vk-property-entry>
         <vk-property-parameter>handleType</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a bitmask of <b>VkExternalMemoryHandleTypeFlagBitsNV</b> containing a single bit specifying the type of handle requested.</vk-property-description>
       </vk-property-entry>
-      <!-- pHandle -->
       <vk-property-entry>
         <vk-property-parameter>pHandle</vk-property-parameter>
         <vk-property-type type="object">Object.$<vk-property-type type="object">(BigInt)</vk-property-type></vk-property-type>

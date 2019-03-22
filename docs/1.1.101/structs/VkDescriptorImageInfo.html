@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkDescriptorImageInfo</vk-name>
@@ -60,19 +58,16 @@ descriptorImageInfo.imageLayout = ;
     </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkDescriptorImageInfo.prototype.sampler -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorImageInfo.prototype.<vk-prototype-name>sampler</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../handles/VkSampler.html">VkSampler</a></vk-property-type>
         <vk-property-description> is a sampler handle, and is used in descriptor updates for types <b>VK_DESCRIPTOR_TYPE_SAMPLER</b> and <b>VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER</b> if the binding being updated does not use immutable samplers.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDescriptorImageInfo.prototype.imageView -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorImageInfo.prototype.<vk-prototype-name>imageView</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../handles/VkImageView.html">VkImageView</a></vk-property-type>
         <vk-property-description> is an image view handle, and is used in descriptor updates for types <b>VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE</b>, <b>VK_DESCRIPTOR_TYPE_STORAGE_IMAGE</b>, <b>VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER</b>, and <b>VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDescriptorImageInfo.prototype.imageLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorImageInfo.prototype.<vk-prototype-name>imageLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
@@ -84,13 +79,11 @@ descriptorImageInfo.imageLayout = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkDescriptorImageInfo.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorImageInfo.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDescriptorImageInfo.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorImageInfo.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

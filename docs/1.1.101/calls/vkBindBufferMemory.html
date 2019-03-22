@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkBindBufferMemory</vk-name>
@@ -46,25 +44,21 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- device -->
       <vk-property-entry>
         <vk-property-parameter>device</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkDevice.html">VkDevice</a></vk-property-type>
         <vk-property-description> is the logical device that owns the buffer and memory.</vk-property-description>
       </vk-property-entry>
-      <!-- buffer -->
       <vk-property-entry>
         <vk-property-parameter>buffer</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkBuffer.html">VkBuffer</a></vk-property-type>
         <vk-property-description> is the buffer to be attached to memory.</vk-property-description>
       </vk-property-entry>
-      <!-- memory -->
       <vk-property-entry>
         <vk-property-parameter>memory</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkDeviceMemory.html">VkDeviceMemory</a></vk-property-type>
         <vk-property-description> which is to be bound to the buffer. The number of bytes returned in the <b><a href="../structs/VkMemoryRequirements.html">VkMemoryRequirements</a></b>::<b>size</b> member in <b>memory</b>, starting from <b>memoryOffset</b> bytes, will be bound to the specified buffer.</vk-property-description>
       </vk-property-entry>
-      <!-- memoryOffset -->
       <vk-property-entry>
         <vk-property-parameter>memoryOffset</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>

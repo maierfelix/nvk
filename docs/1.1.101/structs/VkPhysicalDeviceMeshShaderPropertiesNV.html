@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkPhysicalDeviceMeshShaderPropertiesNV</vk-name>
@@ -64,91 +62,76 @@ physicalDeviceMeshShaderPropertiesNVInfo.meshOutputPerPrimitiveGranularity;
     </vk-stub><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPhysicalDeviceMeshShaderPropertiesNV.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMeshShaderPropertiesNV.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMeshShaderPropertiesNV.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMeshShaderPropertiesNV.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMeshShaderPropertiesNV.prototype.maxDrawMeshTasksCount -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMeshShaderPropertiesNV.prototype.<vk-prototype-name>maxDrawMeshTasksCount</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the maximum number of local workgroups that <i>can</i> be launched by a single draw mesh tasks command. See <<drawing-mesh-shading>>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMeshShaderPropertiesNV.prototype.maxTaskWorkGroupInvocations -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMeshShaderPropertiesNV.prototype.<vk-prototype-name>maxTaskWorkGroupInvocations</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the maximum total number of task shader invocations in a single local workgroup. The product of the X, Y, and Z sizes as specified by the <i>LocalSize</i> execution mode in shader modules and by the object decorated by the <i>WorkgroupSize</i> decoration <i>must</i> be less than or equal to this limit.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMeshShaderPropertiesNV.prototype.maxTaskWorkGroupSize -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMeshShaderPropertiesNV.prototype.<vk-prototype-name>maxTaskWorkGroupSize</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="number">[Number]</vk-property-type></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMeshShaderPropertiesNV.prototype.maxTaskTotalMemorySize -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMeshShaderPropertiesNV.prototype.<vk-prototype-name>maxTaskTotalMemorySize</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the maximum number of bytes that the task shader can use in total for shared and output memory combined.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMeshShaderPropertiesNV.prototype.maxTaskOutputCount -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMeshShaderPropertiesNV.prototype.<vk-prototype-name>maxTaskOutputCount</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the maximum number of output tasks a single task shader workgroup can emit.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMeshShaderPropertiesNV.prototype.maxMeshWorkGroupInvocations -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMeshShaderPropertiesNV.prototype.<vk-prototype-name>maxMeshWorkGroupInvocations</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the maximum total number of mesh shader invocations in a single local workgroup. The product of the X, Y, and Z sizes as specified by the <i>LocalSize</i> execution mode in shader modules and by the object decorated by the <i>WorkgroupSize</i> decoration <i>must</i> be less than or equal to this limit.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMeshShaderPropertiesNV.prototype.maxMeshWorkGroupSize -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMeshShaderPropertiesNV.prototype.<vk-prototype-name>maxMeshWorkGroupSize</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="number">[Number]</vk-property-type></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMeshShaderPropertiesNV.prototype.maxMeshTotalMemorySize -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMeshShaderPropertiesNV.prototype.<vk-prototype-name>maxMeshTotalMemorySize</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the maximum number of bytes that the mesh shader can use in total for shared and output memory combined.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMeshShaderPropertiesNV.prototype.maxMeshOutputVertices -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMeshShaderPropertiesNV.prototype.<vk-prototype-name>maxMeshOutputVertices</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the maximum number of vertices a mesh shader output can store.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMeshShaderPropertiesNV.prototype.maxMeshOutputPrimitives -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMeshShaderPropertiesNV.prototype.<vk-prototype-name>maxMeshOutputPrimitives</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the maximum number of primitives a mesh shader output can store.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMeshShaderPropertiesNV.prototype.maxMeshMultiviewViewCount -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMeshShaderPropertiesNV.prototype.<vk-prototype-name>maxMeshMultiviewViewCount</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the maximum number of multi-view views a mesh shader can use.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMeshShaderPropertiesNV.prototype.meshOutputPerVertexGranularity -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMeshShaderPropertiesNV.prototype.<vk-prototype-name>meshOutputPerVertexGranularity</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the granularity with which mesh vertex outputs are allocated. The value can be used to compute the memory size used by the mesh shader, which must be less than or equal to <b>maxMeshTotalMemorySize</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMeshShaderPropertiesNV.prototype.meshOutputPerPrimitiveGranularity -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMeshShaderPropertiesNV.prototype.<vk-prototype-name>meshOutputPerPrimitiveGranularity</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
@@ -160,13 +143,11 @@ physicalDeviceMeshShaderPropertiesNVInfo.meshOutputPerPrimitiveGranularity;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPhysicalDeviceMeshShaderPropertiesNV.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMeshShaderPropertiesNV.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMeshShaderPropertiesNV.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMeshShaderPropertiesNV.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

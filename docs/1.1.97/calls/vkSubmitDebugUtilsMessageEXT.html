@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkSubmitDebugUtilsMessageEXT</vk-name>
@@ -46,25 +44,21 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- instance -->
       <vk-property-entry>
         <vk-property-parameter>instance</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkInstance.html">VkInstance</a></vk-property-type>
         <vk-property-description> is the debug stream's <b><a href="../handles/VkInstance.html">VkInstance</a></b>.</vk-property-description>
       </vk-property-entry>
-      <!-- messageSeverity -->
       <vk-property-entry>
         <vk-property-parameter>messageSeverity</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the <b>VkDebugUtilsMessageSeverityFlagBitsEXT</b> severity of this event/message.</vk-property-description>
       </vk-property-entry>
-      <!-- messageTypes -->
       <vk-property-entry>
         <vk-property-parameter>messageTypes</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a bitmask of <b>VkDebugUtilsMessageTypeFlagBitsEXT</b> specifying which type of event(s) to identify with this message.</vk-property-description>
       </vk-property-entry>
-      <!-- pCallbackData -->
       <vk-property-entry>
         <vk-property-parameter>pCallbackData</vk-property-parameter>
         <vk-property-type type="object"><a href="../structs/VkDebugUtilsMessengerCallbackDataEXT.html">VkDebugUtilsMessengerCallbackDataEXT</a></vk-property-type>

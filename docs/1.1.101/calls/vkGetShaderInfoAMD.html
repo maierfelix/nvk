@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkGetShaderInfoAMD</vk-name>
@@ -46,37 +44,31 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- device -->
       <vk-property-entry>
         <vk-property-parameter>device</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkDevice.html">VkDevice</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- pipeline -->
       <vk-property-entry>
         <vk-property-parameter>pipeline</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkPipeline.html">VkPipeline</a></vk-property-type>
         <vk-property-description> is the target of the query.</vk-property-description>
       </vk-property-entry>
-      <!-- shaderStage -->
       <vk-property-entry>
         <vk-property-parameter>shaderStage</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> identifies the particular shader within the pipeline about which information is being queried.</vk-property-description>
       </vk-property-entry>
-      <!-- infoType -->
       <vk-property-entry>
         <vk-property-parameter>infoType</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> describes what kind of information is being queried.</vk-property-description>
       </vk-property-entry>
-      <!-- pInfoSize -->
       <vk-property-entry>
         <vk-property-parameter>pInfoSize</vk-property-parameter>
         <vk-property-type type="object">Object.$<vk-property-type type="object">(Number)</vk-property-type></vk-property-type>
         <vk-property-description> is a reference to a value related to the amount of data the query returns, as described below.</vk-property-description>
       </vk-property-entry>
-      <!-- pInfo -->
       <vk-property-entry>
         <vk-property-parameter>pInfo</vk-property-parameter>
         <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>

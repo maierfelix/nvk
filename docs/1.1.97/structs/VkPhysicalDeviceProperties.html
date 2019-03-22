@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkPhysicalDeviceProperties</vk-name>
@@ -58,55 +56,46 @@ physicalDevicePropertiesInfo.sparseProperties;
     </vk-stub><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPhysicalDeviceProperties.prototype.apiVersion -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceProperties.prototype.<vk-prototype-name>apiVersion</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the version of Vulkan supported by the device, encoded as described in the <<fundamentals-versionnum,API Version Numbers and Semantics>> section.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceProperties.prototype.driverVersion -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceProperties.prototype.<vk-prototype-name>driverVersion</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the vendor-specified version of the driver.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceProperties.prototype.vendorID -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceProperties.prototype.<vk-prototype-name>vendorID</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a unique identifier for the _vendor_ (see below) of the physical device.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceProperties.prototype.deviceID -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceProperties.prototype.<vk-prototype-name>deviceID</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a unique identifier for the physical device among devices available from the vendor.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceProperties.prototype.deviceType -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceProperties.prototype.<vk-prototype-name>deviceType</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a <b>VkPhysicalDeviceType</b> specifying the type of device.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceProperties.prototype.deviceName -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceProperties.prototype.<vk-prototype-name>deviceName</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="string">String</vk-property-type>
         <vk-property-description> is a string containing the name of the device.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceProperties.prototype.pipelineCacheUUID -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceProperties.prototype.<vk-prototype-name>pipelineCacheUUID</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="number">[Number]</vk-property-type></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceProperties.prototype.limits -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceProperties.prototype.<vk-prototype-name>limits</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkPhysicalDeviceLimits.html">VkPhysicalDeviceLimits</a></vk-property-type>
         <vk-property-description> is the <b><a href="../structs/VkPhysicalDeviceLimits.html">VkPhysicalDeviceLimits</a></b> structure which specifies device-specific limits of the physical device. See <<features-limits,Limits>> for details.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceProperties.prototype.sparseProperties -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceProperties.prototype.<vk-prototype-name>sparseProperties</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkPhysicalDeviceSparseProperties.html">VkPhysicalDeviceSparseProperties</a></vk-property-type>
@@ -118,13 +107,11 @@ physicalDevicePropertiesInfo.sparseProperties;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPhysicalDeviceProperties.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceProperties.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceProperties.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceProperties.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

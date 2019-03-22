@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkImageCreateInfo</vk-name>
@@ -72,91 +70,76 @@ imageInfo.initialLayout = ;
     </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkImageCreateInfo.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkImageCreateInfo.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageCreateInfo.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkImageCreateInfo.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageCreateInfo.prototype.flags -->
       <vk-property-entry>
         <vk-property-prototype>VkImageCreateInfo.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a bitmask of <b>VkImageCreateFlagBits</b> describing additional parameters of the image.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageCreateInfo.prototype.imageType -->
       <vk-property-entry>
         <vk-property-prototype>VkImageCreateInfo.prototype.<vk-prototype-name>imageType</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a <b>VkImageType</b> value specifying the basic dimensionality of the image. Layers in array textures do not count as a dimension for the purposes of the image type.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageCreateInfo.prototype.format -->
       <vk-property-entry>
         <vk-property-prototype>VkImageCreateInfo.prototype.<vk-prototype-name>format</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a <b>VkFormat</b> describing the format and type of the texel blocks that will be contained in the image.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageCreateInfo.prototype.extent -->
       <vk-property-entry>
         <vk-property-prototype>VkImageCreateInfo.prototype.<vk-prototype-name>extent</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkExtent3D.html">VkExtent3D</a></vk-property-type>
         <vk-property-description> is a <b><a href="../structs/VkExtent3D.html">VkExtent3D</a></b> describing the number of data elements in each dimension of the base level.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageCreateInfo.prototype.mipLevels -->
       <vk-property-entry>
         <vk-property-prototype>VkImageCreateInfo.prototype.<vk-prototype-name>mipLevels</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> describes the number of levels of detail available for minified sampling of the image.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageCreateInfo.prototype.arrayLayers -->
       <vk-property-entry>
         <vk-property-prototype>VkImageCreateInfo.prototype.<vk-prototype-name>arrayLayers</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the number of layers in the image.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageCreateInfo.prototype.samples -->
       <vk-property-entry>
         <vk-property-prototype>VkImageCreateInfo.prototype.<vk-prototype-name>samples</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a <b>VkSampleCountFlagBits</b> specifying the number of <<primsrast-multisampling,samples per texel>>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageCreateInfo.prototype.tiling -->
       <vk-property-entry>
         <vk-property-prototype>VkImageCreateInfo.prototype.<vk-prototype-name>tiling</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a <b>VkImageTiling</b> value specifying the tiling arrangement of the texel blocks in memory.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageCreateInfo.prototype.usage -->
       <vk-property-entry>
         <vk-property-prototype>VkImageCreateInfo.prototype.<vk-prototype-name>usage</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a bitmask of <b>VkImageUsageFlagBits</b> describing the intended usage of the image.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageCreateInfo.prototype.sharingMode -->
       <vk-property-entry>
         <vk-property-prototype>VkImageCreateInfo.prototype.<vk-prototype-name>sharingMode</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a <b>VkSharingMode</b> value specifying the sharing mode of the image when it will be accessed by multiple queue families.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageCreateInfo.prototype.queueFamilyIndexCount -->
       <vk-property-entry>
         <vk-property-prototype>VkImageCreateInfo.prototype.<vk-prototype-name>queueFamilyIndexCount</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the number of entries in the <b>pQueueFamilyIndices</b> array.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageCreateInfo.prototype.pQueueFamilyIndices -->
       <vk-property-entry>
         <vk-property-prototype>VkImageCreateInfo.prototype.<vk-prototype-name>pQueueFamilyIndices</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array">Uint32Array</a></vk-property-type>
         <vk-property-description> is a list of queue families that will access this image (ignored if <b>sharingMode</b> is not <b>VK_SHARING_MODE_CONCURRENT</b>).</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageCreateInfo.prototype.initialLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkImageCreateInfo.prototype.<vk-prototype-name>initialLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
@@ -168,13 +151,11 @@ imageInfo.initialLayout = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkImageCreateInfo.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkImageCreateInfo.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageCreateInfo.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkImageCreateInfo.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

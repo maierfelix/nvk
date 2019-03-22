@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkSparseImageMemoryRequirements</vk-name>
@@ -54,31 +52,26 @@ sparseImageMemoryRequirementsInfo.imageMipTailStride;
     </vk-stub><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkSparseImageMemoryRequirements.prototype.formatProperties -->
       <vk-property-entry>
         <vk-property-prototype>VkSparseImageMemoryRequirements.prototype.<vk-prototype-name>formatProperties</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkSparseImageFormatProperties.html">VkSparseImageFormatProperties</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkSparseImageMemoryRequirements.prototype.imageMipTailFirstLod -->
       <vk-property-entry>
         <vk-property-prototype>VkSparseImageMemoryRequirements.prototype.<vk-prototype-name>imageMipTailFirstLod</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the first mip level at which image subresources are included in the mip tail region.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSparseImageMemoryRequirements.prototype.imageMipTailSize -->
       <vk-property-entry>
         <vk-property-prototype>VkSparseImageMemoryRequirements.prototype.<vk-prototype-name>imageMipTailSize</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the memory size (in bytes) of the mip tail region. If <b>formatProperties.flags</b> contains <b>VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT</b>, this is the size of the whole mip tail, otherwise this is the size of the mip tail of a single array layer. This value is guaranteed to be a multiple of the sparse block size in bytes.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSparseImageMemoryRequirements.prototype.imageMipTailOffset -->
       <vk-property-entry>
         <vk-property-prototype>VkSparseImageMemoryRequirements.prototype.<vk-prototype-name>imageMipTailOffset</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the opaque memory offset used with <b><a href="../structs/VkSparseImageOpaqueMemoryBindInfo.html">VkSparseImageOpaqueMemoryBindInfo</a></b> to bind the mip tail region(s).</vk-property-description>
       </vk-property-entry>
-      <!-- VkSparseImageMemoryRequirements.prototype.imageMipTailStride -->
       <vk-property-entry>
         <vk-property-prototype>VkSparseImageMemoryRequirements.prototype.<vk-prototype-name>imageMipTailStride</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
@@ -90,13 +83,11 @@ sparseImageMemoryRequirementsInfo.imageMipTailStride;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkSparseImageMemoryRequirements.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkSparseImageMemoryRequirements.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSparseImageMemoryRequirements.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkSparseImageMemoryRequirements.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

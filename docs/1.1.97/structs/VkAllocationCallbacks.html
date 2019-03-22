@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkAllocationCallbacks</vk-name>
@@ -63,37 +61,31 @@ allocationCallbacksInfo.pfnInternalFree = ;
     </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkAllocationCallbacks.prototype.pUserData -->
       <vk-property-entry>
         <vk-property-prototype>VkAllocationCallbacks.prototype.<vk-prototype-name>pUserData</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description> is a value to be interpreted by the implementation of the callbacks. When any of the callbacks in <b><a href="../structs/VkAllocationCallbacks.html">VkAllocationCallbacks</a></b> are called, the Vulkan implementation will pass this value as the first parameter to the callback. This value <i>can</i> vary each time an allocator is passed into a command, even when the same object takes an allocator in multiple commands.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAllocationCallbacks.prototype.pfnAllocation -->
       <vk-property-entry>
         <vk-property-prototype>VkAllocationCallbacks.prototype.<vk-prototype-name>pfnAllocation</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="function">Function</vk-property-type>
         <vk-property-description> is a reference to an application-defined memory allocation function of type <b>PFN_vkAllocationFunction</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAllocationCallbacks.prototype.pfnReallocation -->
       <vk-property-entry>
         <vk-property-prototype>VkAllocationCallbacks.prototype.<vk-prototype-name>pfnReallocation</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="function">Function</vk-property-type>
         <vk-property-description> is a reference to an application-defined memory reallocation function of type <b>PFN_vkReallocationFunction</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAllocationCallbacks.prototype.pfnFree -->
       <vk-property-entry>
         <vk-property-prototype>VkAllocationCallbacks.prototype.<vk-prototype-name>pfnFree</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="function">Function</vk-property-type>
         <vk-property-description> is a reference to an application-defined memory free function of type <b>PFN_vkFreeFunction</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAllocationCallbacks.prototype.pfnInternalAllocation -->
       <vk-property-entry>
         <vk-property-prototype>VkAllocationCallbacks.prototype.<vk-prototype-name>pfnInternalAllocation</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="function">Function</vk-property-type>
         <vk-property-description> is a reference to an application-defined function that is called by the implementation when the implementation makes internal allocations, and it is of type <b>PFN_vkInternalAllocationNotification</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAllocationCallbacks.prototype.pfnInternalFree -->
       <vk-property-entry>
         <vk-property-prototype>VkAllocationCallbacks.prototype.<vk-prototype-name>pfnInternalFree</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="function">Function</vk-property-type>
@@ -105,13 +97,11 @@ allocationCallbacksInfo.pfnInternalFree = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkAllocationCallbacks.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkAllocationCallbacks.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAllocationCallbacks.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkAllocationCallbacks.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

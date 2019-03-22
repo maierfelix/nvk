@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkGraphicsPipelineCreateInfo</vk-name>
@@ -76,115 +74,96 @@ graphicsPipelineInfo.basePipelineIndex = ;
     </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkGraphicsPipelineCreateInfo.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkGraphicsPipelineCreateInfo.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkGraphicsPipelineCreateInfo.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkGraphicsPipelineCreateInfo.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkGraphicsPipelineCreateInfo.prototype.flags -->
       <vk-property-entry>
         <vk-property-prototype>VkGraphicsPipelineCreateInfo.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a bitmask of <b>VkPipelineCreateFlagBits</b> specifying how the pipeline will be generated.</vk-property-description>
       </vk-property-entry>
-      <!-- VkGraphicsPipelineCreateInfo.prototype.stageCount -->
       <vk-property-entry>
         <vk-property-prototype>VkGraphicsPipelineCreateInfo.prototype.<vk-prototype-name>stageCount</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> structures of type <b><a href="../structs/VkPipelineShaderStageCreateInfo.html">VkPipelineShaderStageCreateInfo</a></b> describing the set of the shader stages to be included in the graphics pipeline.</vk-property-description>
       </vk-property-entry>
-      <!-- VkGraphicsPipelineCreateInfo.prototype.pStages -->
       <vk-property-entry>
         <vk-property-prototype>VkGraphicsPipelineCreateInfo.prototype.<vk-prototype-name>pStages</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkPipelineShaderStageCreateInfo.html">VkPipelineShaderStageCreateInfo]</a></vk-property-type></vk-property-type>
         <vk-property-description> array.</vk-property-description>
       </vk-property-entry>
-      <!-- VkGraphicsPipelineCreateInfo.prototype.pVertexInputState -->
       <vk-property-entry>
         <vk-property-prototype>VkGraphicsPipelineCreateInfo.prototype.<vk-prototype-name>pVertexInputState</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkPipelineVertexInputStateCreateInfo.html">VkPipelineVertexInputStateCreateInfo</a></vk-property-type>
         <vk-property-description> is a reference to an instance of the <b><a href="../structs/VkPipelineVertexInputStateCreateInfo.html">VkPipelineVertexInputStateCreateInfo</a></b> structure. It is ignored if the pipeline includes a mesh shader stage.</vk-property-description>
       </vk-property-entry>
-      <!-- VkGraphicsPipelineCreateInfo.prototype.pInputAssemblyState -->
       <vk-property-entry>
         <vk-property-prototype>VkGraphicsPipelineCreateInfo.prototype.<vk-prototype-name>pInputAssemblyState</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkPipelineInputAssemblyStateCreateInfo.html">VkPipelineInputAssemblyStateCreateInfo</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkGraphicsPipelineCreateInfo.prototype.pTessellationState -->
       <vk-property-entry>
         <vk-property-prototype>VkGraphicsPipelineCreateInfo.prototype.<vk-prototype-name>pTessellationState</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkPipelineTessellationStateCreateInfo.html">VkPipelineTessellationStateCreateInfo</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkGraphicsPipelineCreateInfo.prototype.pViewportState -->
       <vk-property-entry>
         <vk-property-prototype>VkGraphicsPipelineCreateInfo.prototype.<vk-prototype-name>pViewportState</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkPipelineViewportStateCreateInfo.html">VkPipelineViewportStateCreateInfo</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkGraphicsPipelineCreateInfo.prototype.pRasterizationState -->
       <vk-property-entry>
         <vk-property-prototype>VkGraphicsPipelineCreateInfo.prototype.<vk-prototype-name>pRasterizationState</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkPipelineRasterizationStateCreateInfo.html">VkPipelineRasterizationStateCreateInfo</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkGraphicsPipelineCreateInfo.prototype.pMultisampleState -->
       <vk-property-entry>
         <vk-property-prototype>VkGraphicsPipelineCreateInfo.prototype.<vk-prototype-name>pMultisampleState</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkPipelineMultisampleStateCreateInfo.html">VkPipelineMultisampleStateCreateInfo</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkGraphicsPipelineCreateInfo.prototype.pDepthStencilState -->
       <vk-property-entry>
         <vk-property-prototype>VkGraphicsPipelineCreateInfo.prototype.<vk-prototype-name>pDepthStencilState</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkPipelineDepthStencilStateCreateInfo.html">VkPipelineDepthStencilStateCreateInfo</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkGraphicsPipelineCreateInfo.prototype.pColorBlendState -->
       <vk-property-entry>
         <vk-property-prototype>VkGraphicsPipelineCreateInfo.prototype.<vk-prototype-name>pColorBlendState</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkPipelineColorBlendStateCreateInfo.html">VkPipelineColorBlendStateCreateInfo</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkGraphicsPipelineCreateInfo.prototype.pDynamicState -->
       <vk-property-entry>
         <vk-property-prototype>VkGraphicsPipelineCreateInfo.prototype.<vk-prototype-name>pDynamicState</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkPipelineDynamicStateCreateInfo.html">VkPipelineDynamicStateCreateInfo</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkGraphicsPipelineCreateInfo.prototype.layout -->
       <vk-property-entry>
         <vk-property-prototype>VkGraphicsPipelineCreateInfo.prototype.<vk-prototype-name>layout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../handles/VkPipelineLayout.html">VkPipelineLayout</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkGraphicsPipelineCreateInfo.prototype.renderPass -->
       <vk-property-entry>
         <vk-property-prototype>VkGraphicsPipelineCreateInfo.prototype.<vk-prototype-name>renderPass</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../handles/VkRenderPass.html">VkRenderPass</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkGraphicsPipelineCreateInfo.prototype.subpass -->
       <vk-property-entry>
         <vk-property-prototype>VkGraphicsPipelineCreateInfo.prototype.<vk-prototype-name>subpass</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkGraphicsPipelineCreateInfo.prototype.basePipelineHandle -->
       <vk-property-entry>
         <vk-property-prototype>VkGraphicsPipelineCreateInfo.prototype.<vk-prototype-name>basePipelineHandle</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../handles/VkPipeline.html">VkPipeline</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkGraphicsPipelineCreateInfo.prototype.basePipelineIndex -->
       <vk-property-entry>
         <vk-property-prototype>VkGraphicsPipelineCreateInfo.prototype.<vk-prototype-name>basePipelineIndex</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
@@ -196,13 +175,11 @@ graphicsPipelineInfo.basePipelineIndex = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkGraphicsPipelineCreateInfo.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkGraphicsPipelineCreateInfo.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkGraphicsPipelineCreateInfo.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkGraphicsPipelineCreateInfo.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

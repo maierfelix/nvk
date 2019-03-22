@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkApplicationInfo</vk-name>
@@ -64,43 +62,36 @@ applicationInfo.apiVersion = ;
     </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkApplicationInfo.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkApplicationInfo.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkApplicationInfo.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkApplicationInfo.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkApplicationInfo.prototype.pApplicationName -->
       <vk-property-entry>
         <vk-property-prototype>VkApplicationInfo.prototype.<vk-prototype-name>pApplicationName</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="string">String</vk-property-type>
         <vk-property-description> is <i>null</i> or is a reference to a string containing the name of the application.</vk-property-description>
       </vk-property-entry>
-      <!-- VkApplicationInfo.prototype.applicationVersion -->
       <vk-property-entry>
         <vk-property-prototype>VkApplicationInfo.prototype.<vk-prototype-name>applicationVersion</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a number variable containing the developer-supplied version number of the application.</vk-property-description>
       </vk-property-entry>
-      <!-- VkApplicationInfo.prototype.pEngineName -->
       <vk-property-entry>
         <vk-property-prototype>VkApplicationInfo.prototype.<vk-prototype-name>pEngineName</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="string">String</vk-property-type>
         <vk-property-description> is <i>null</i> or is a reference to a string containing the name of the engine (if any) used to create the application.</vk-property-description>
       </vk-property-entry>
-      <!-- VkApplicationInfo.prototype.engineVersion -->
       <vk-property-entry>
         <vk-property-prototype>VkApplicationInfo.prototype.<vk-prototype-name>engineVersion</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a number variable containing the developer-supplied version number of the engine used to create the application.ifndef::VK_VERSION_1_1[]</vk-property-description>
       </vk-property-entry>
-      <!-- VkApplicationInfo.prototype.apiVersion -->
       <vk-property-entry>
         <vk-property-prototype>VkApplicationInfo.prototype.<vk-prototype-name>apiVersion</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
@@ -112,13 +103,11 @@ applicationInfo.apiVersion = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkApplicationInfo.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkApplicationInfo.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkApplicationInfo.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkApplicationInfo.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

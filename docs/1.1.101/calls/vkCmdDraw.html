@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkCmdDraw</vk-name>
@@ -46,31 +44,26 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- commandBuffer -->
       <vk-property-entry>
         <vk-property-parameter>commandBuffer</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></vk-property-type>
         <vk-property-description> is the command buffer into which the command is recorded.</vk-property-description>
       </vk-property-entry>
-      <!-- vertexCount -->
       <vk-property-entry>
         <vk-property-parameter>vertexCount</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the number of vertices to draw.</vk-property-description>
       </vk-property-entry>
-      <!-- instanceCount -->
       <vk-property-entry>
         <vk-property-parameter>instanceCount</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the number of instances to draw.</vk-property-description>
       </vk-property-entry>
-      <!-- firstVertex -->
       <vk-property-entry>
         <vk-property-parameter>firstVertex</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the index of the first vertex to draw.</vk-property-description>
       </vk-property-entry>
-      <!-- firstInstance -->
       <vk-property-entry>
         <vk-property-parameter>firstInstance</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>

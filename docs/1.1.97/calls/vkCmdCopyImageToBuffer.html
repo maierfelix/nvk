@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkCmdCopyImageToBuffer</vk-name>
@@ -46,37 +44,31 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- commandBuffer -->
       <vk-property-entry>
         <vk-property-parameter>commandBuffer</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></vk-property-type>
         <vk-property-description> is the command buffer into which the command will be recorded.</vk-property-description>
       </vk-property-entry>
-      <!-- srcImage -->
       <vk-property-entry>
         <vk-property-parameter>srcImage</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkImage.html">VkImage</a></vk-property-type>
         <vk-property-description> is the source image.</vk-property-description>
       </vk-property-entry>
-      <!-- srcImageLayout -->
       <vk-property-entry>
         <vk-property-parameter>srcImageLayout</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the layout of the source image subresources for the copy.</vk-property-description>
       </vk-property-entry>
-      <!-- dstBuffer -->
       <vk-property-entry>
         <vk-property-parameter>dstBuffer</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkBuffer.html">VkBuffer</a></vk-property-type>
         <vk-property-description> is the destination buffer.</vk-property-description>
       </vk-property-entry>
-      <!-- regionCount -->
       <vk-property-entry>
         <vk-property-parameter>regionCount</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the number of regions to copy.</vk-property-description>
       </vk-property-entry>
-      <!-- pRegions -->
       <vk-property-entry>
         <vk-property-parameter>pRegions</vk-property-parameter>
         <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkBufferImageCopy.html">VkBufferImageCopy]</a></vk-property-type></vk-property-type>

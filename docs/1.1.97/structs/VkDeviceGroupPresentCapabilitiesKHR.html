@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkDeviceGroupPresentCapabilitiesKHR</vk-name>
@@ -53,25 +51,21 @@ deviceGroupPresentCapabilitiesKHRInfo.modes;
     </vk-stub><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkDeviceGroupPresentCapabilitiesKHR.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkDeviceGroupPresentCapabilitiesKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDeviceGroupPresentCapabilitiesKHR.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkDeviceGroupPresentCapabilitiesKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDeviceGroupPresentCapabilitiesKHR.prototype.presentMask -->
       <vk-property-entry>
         <vk-property-prototype>VkDeviceGroupPresentCapabilitiesKHR.prototype.<vk-prototype-name>presentMask</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="number">[Number]</vk-property-type></vk-property-type>
         <vk-property-description> is an array of masks, where the mask at element [eq]#i# is non-zero if physical device [eq]#i# has a presentation engine, and where bit [eq]#j# is set in element [eq]#i# if physical device [eq]#i# <i>can</i> present swapchain images from physical device [eq]#j#. If element [eq]#i# is non-zero, then bit [eq]#i# <i>must</i> be set.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDeviceGroupPresentCapabilitiesKHR.prototype.modes -->
       <vk-property-entry>
         <vk-property-prototype>VkDeviceGroupPresentCapabilitiesKHR.prototype.<vk-prototype-name>modes</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
@@ -83,13 +77,11 @@ deviceGroupPresentCapabilitiesKHRInfo.modes;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkDeviceGroupPresentCapabilitiesKHR.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkDeviceGroupPresentCapabilitiesKHR.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDeviceGroupPresentCapabilitiesKHR.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkDeviceGroupPresentCapabilitiesKHR.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

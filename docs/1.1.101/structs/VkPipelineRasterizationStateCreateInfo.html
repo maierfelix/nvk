@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkPipelineRasterizationStateCreateInfo</vk-name>
@@ -70,79 +68,66 @@ pipelineRasterizationStateInfo.lineWidth = ;
     </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPipelineRasterizationStateCreateInfo.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineRasterizationStateCreateInfo.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPipelineRasterizationStateCreateInfo.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineRasterizationStateCreateInfo.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPipelineRasterizationStateCreateInfo.prototype.flags -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineRasterizationStateCreateInfo.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is reserved for future use.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPipelineRasterizationStateCreateInfo.prototype.depthClampEnable -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineRasterizationStateCreateInfo.prototype.<vk-prototype-name>depthClampEnable</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description> controls whether to clamp the fragment's depth values as described in <<fragops-depth,Depth Test>>. If the pipeline is not created with <b><a href="../structs/VkPipelineRasterizationDepthClipStateCreateInfoEXT.html">VkPipelineRasterizationDepthClipStateCreateInfoEXT</a></b> present then enabling depth clamp will also disable clipping primitives to the z planes of the frustrum as described in <<vertexpostproc-clipping, Primitive Clipping>>. Otherwise depth clipping is controlled by the state set in <b><a href="../structs/VkPipelineRasterizationDepthClipStateCreateInfoEXT.html">VkPipelineRasterizationDepthClipStateCreateInfoEXT</a></b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPipelineRasterizationStateCreateInfo.prototype.rasterizerDiscardEnable -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineRasterizationStateCreateInfo.prototype.<vk-prototype-name>rasterizerDiscardEnable</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPipelineRasterizationStateCreateInfo.prototype.polygonMode -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineRasterizationStateCreateInfo.prototype.<vk-prototype-name>polygonMode</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPipelineRasterizationStateCreateInfo.prototype.cullMode -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineRasterizationStateCreateInfo.prototype.<vk-prototype-name>cullMode</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPipelineRasterizationStateCreateInfo.prototype.frontFace -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineRasterizationStateCreateInfo.prototype.<vk-prototype-name>frontFace</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPipelineRasterizationStateCreateInfo.prototype.depthBiasEnable -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineRasterizationStateCreateInfo.prototype.<vk-prototype-name>depthBiasEnable</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPipelineRasterizationStateCreateInfo.prototype.depthBiasConstantFactor -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineRasterizationStateCreateInfo.prototype.<vk-prototype-name>depthBiasConstantFactor</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPipelineRasterizationStateCreateInfo.prototype.depthBiasClamp -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineRasterizationStateCreateInfo.prototype.<vk-prototype-name>depthBiasClamp</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPipelineRasterizationStateCreateInfo.prototype.depthBiasSlopeFactor -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineRasterizationStateCreateInfo.prototype.<vk-prototype-name>depthBiasSlopeFactor</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPipelineRasterizationStateCreateInfo.prototype.lineWidth -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineRasterizationStateCreateInfo.prototype.<vk-prototype-name>lineWidth</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
@@ -154,13 +139,11 @@ pipelineRasterizationStateInfo.lineWidth = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPipelineRasterizationStateCreateInfo.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineRasterizationStateCreateInfo.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPipelineRasterizationStateCreateInfo.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineRasterizationStateCreateInfo.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

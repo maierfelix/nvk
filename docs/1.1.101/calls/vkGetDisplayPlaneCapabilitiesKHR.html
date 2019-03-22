@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkGetDisplayPlaneCapabilitiesKHR</vk-name>
@@ -46,25 +44,21 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- physicalDevice -->
       <vk-property-entry>
         <vk-property-parameter>physicalDevice</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkPhysicalDevice.html">VkPhysicalDevice</a></vk-property-type>
         <vk-property-description> is the physical device associated with <b>display</b></vk-property-description>
       </vk-property-entry>
-      <!-- mode -->
       <vk-property-entry>
         <vk-property-parameter>mode</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkDisplayModeKHR.html">VkDisplayModeKHR</a></vk-property-type>
         <vk-property-description> is the display mode the application intends to program when using the specified plane. Note this parameter also implicitly specifies a display.</vk-property-description>
       </vk-property-entry>
-      <!-- planeIndex -->
       <vk-property-entry>
         <vk-property-parameter>planeIndex</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the plane which the application intends to use with the display, and is less than the number of display planes supported by the device.</vk-property-description>
       </vk-property-entry>
-      <!-- pCapabilities -->
       <vk-property-entry>
         <vk-property-parameter>pCapabilities</vk-property-parameter>
         <vk-property-type type="object"><a href="../structs/VkDisplayPlaneCapabilitiesKHR.html">VkDisplayPlaneCapabilitiesKHR</a></vk-property-type>

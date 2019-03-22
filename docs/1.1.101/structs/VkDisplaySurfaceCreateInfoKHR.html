@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkDisplaySurfaceCreateInfoKHR</vk-name>
@@ -67,61 +65,51 @@ displaySurfaceKHRInfo.imageExtent = ;
     </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkDisplaySurfaceCreateInfoKHR.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDisplaySurfaceCreateInfoKHR.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDisplaySurfaceCreateInfoKHR.prototype.flags -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is reserved for future use, and <i>must</i> be zero.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDisplaySurfaceCreateInfoKHR.prototype.displayMode -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.prototype.<vk-prototype-name>displayMode</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../handles/VkDisplayModeKHR.html">VkDisplayModeKHR</a></vk-property-type>
         <vk-property-description> is a <b><a href="../handles/VkDisplayModeKHR.html">VkDisplayModeKHR</a></b> handle specifying the mode to use when displaying this surface.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDisplaySurfaceCreateInfoKHR.prototype.planeIndex -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.prototype.<vk-prototype-name>planeIndex</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the plane on which this surface appears.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDisplaySurfaceCreateInfoKHR.prototype.planeStackIndex -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.prototype.<vk-prototype-name>planeStackIndex</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the z-order of the plane.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDisplaySurfaceCreateInfoKHR.prototype.transform -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.prototype.<vk-prototype-name>transform</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a <b>VkSurfaceTransformFlagBitsKHR</b> value specifying the transformation to apply to images as part of the scanout operation.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDisplaySurfaceCreateInfoKHR.prototype.globalAlpha -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.prototype.<vk-prototype-name>globalAlpha</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the global alpha value. This value is ignored if <b>alphaMode</b> is not <b>VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDisplaySurfaceCreateInfoKHR.prototype.alphaMode -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.prototype.<vk-prototype-name>alphaMode</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a <b>VkDisplayPlaneAlphaFlagBitsKHR</b> value specifying the type of alpha blending to use.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDisplaySurfaceCreateInfoKHR.prototype.imageExtent -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.prototype.<vk-prototype-name>imageExtent</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkExtent2D.html">VkExtent2D</a></vk-property-type>
@@ -133,13 +121,11 @@ displaySurfaceKHRInfo.imageExtent = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkDisplaySurfaceCreateInfoKHR.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDisplaySurfaceCreateInfoKHR.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplaySurfaceCreateInfoKHR.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkInstanceCreateInfo</vk-name>
@@ -65,49 +63,41 @@ instanceInfo.ppEnabledExtensionNames = ;
     </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkInstanceCreateInfo.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkInstanceCreateInfo.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkInstanceCreateInfo.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkInstanceCreateInfo.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkInstanceCreateInfo.prototype.flags -->
       <vk-property-entry>
         <vk-property-prototype>VkInstanceCreateInfo.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is reserved for future use.</vk-property-description>
       </vk-property-entry>
-      <!-- VkInstanceCreateInfo.prototype.pApplicationInfo -->
       <vk-property-entry>
         <vk-property-prototype>VkInstanceCreateInfo.prototype.<vk-prototype-name>pApplicationInfo</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkApplicationInfo.html">VkApplicationInfo</a></vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an instance of <b><a href="../structs/VkApplicationInfo.html">VkApplicationInfo</a></b>. If not <i>null</i>, this information helps implementations recognize behavior inherent to classes of applications. <b><a href="../structs/VkApplicationInfo.html">VkApplicationInfo</a></b> is defined in detail below.</vk-property-description>
       </vk-property-entry>
-      <!-- VkInstanceCreateInfo.prototype.enabledLayerCount -->
       <vk-property-entry>
         <vk-property-prototype>VkInstanceCreateInfo.prototype.<vk-prototype-name>enabledLayerCount</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the number of global layers to enable.</vk-property-description>
       </vk-property-entry>
-      <!-- VkInstanceCreateInfo.prototype.ppEnabledLayerNames -->
       <vk-property-entry>
         <vk-property-prototype>VkInstanceCreateInfo.prototype.<vk-prototype-name>ppEnabledLayerNames</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="string">[String]</vk-property-type></vk-property-type>
         <vk-property-description> is an array of <b>enabledLayerCount</b> strings containing the names of layers to enable for the created instance. See the <<extendingvulkan-layers>> section for further details.</vk-property-description>
       </vk-property-entry>
-      <!-- VkInstanceCreateInfo.prototype.enabledExtensionCount -->
       <vk-property-entry>
         <vk-property-prototype>VkInstanceCreateInfo.prototype.<vk-prototype-name>enabledExtensionCount</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the number of global extensions to enable.</vk-property-description>
       </vk-property-entry>
-      <!-- VkInstanceCreateInfo.prototype.ppEnabledExtensionNames -->
       <vk-property-entry>
         <vk-property-prototype>VkInstanceCreateInfo.prototype.<vk-prototype-name>ppEnabledExtensionNames</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="string">[String]</vk-property-type></vk-property-type>
@@ -119,13 +109,11 @@ instanceInfo.ppEnabledExtensionNames = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkInstanceCreateInfo.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkInstanceCreateInfo.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkInstanceCreateInfo.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkInstanceCreateInfo.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

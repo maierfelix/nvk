@@ -4,10 +4,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   {{ getNavigationHTML() | safe }}
 
-  <!-- Handle -->
   <vk-struct>
 
     <vk-name>{{ handle.name }}</vk-name>
@@ -28,7 +26,6 @@
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- {{ handle.name }}.prototype.address -->
       <vk-property-entry>
         <vk-property-prototype>{{ handle.name }}.prototype.<vk-prototype-name>address</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a></vk-property-type>

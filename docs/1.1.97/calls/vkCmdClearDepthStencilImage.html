@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkCmdClearDepthStencilImage</vk-name>
@@ -46,37 +44,31 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- commandBuffer -->
       <vk-property-entry>
         <vk-property-parameter>commandBuffer</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></vk-property-type>
         <vk-property-description> is the command buffer into which the command will be recorded.</vk-property-description>
       </vk-property-entry>
-      <!-- image -->
       <vk-property-entry>
         <vk-property-parameter>image</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkImage.html">VkImage</a></vk-property-type>
         <vk-property-description> is the image to be cleared.</vk-property-description>
       </vk-property-entry>
-      <!-- imageLayout -->
       <vk-property-entry>
         <vk-property-parameter>imageLayout</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> specifies the current layout of the image subresource ranges to be cleared, and <i>must</i> be <b>VK_IMAGE_LAYOUT_GENERAL</b> or <b>VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- pDepthStencil -->
       <vk-property-entry>
         <vk-property-parameter>pDepthStencil</vk-property-parameter>
         <vk-property-type type="object"><a href="../structs/VkClearDepthStencilValue.html">VkClearDepthStencilValue</a></vk-property-type>
         <vk-property-description> is a reference to a <b><a href="../structs/VkClearDepthStencilValue.html">VkClearDepthStencilValue</a></b> structure that contains the values the depth and stencil image subresource ranges will be cleared to (see <<clears-values>> below).</vk-property-description>
       </vk-property-entry>
-      <!-- rangeCount -->
       <vk-property-entry>
         <vk-property-parameter>rangeCount</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the number of image subresource range structures in <b>pRanges</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- pRanges -->
       <vk-property-entry>
         <vk-property-parameter>pRanges</vk-property-parameter>
         <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkImageSubresourceRange.html">VkImageSubresourceRange]</a></vk-property-type></vk-property-type>

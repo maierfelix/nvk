@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkClearAttachment</vk-name>
@@ -60,19 +58,16 @@ clearAttachmentInfo.clearValue = ;
     </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkClearAttachment.prototype.aspectMask -->
       <vk-property-entry>
         <vk-property-prototype>VkClearAttachment.prototype.<vk-prototype-name>aspectMask</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a mask selecting the color, depth and/or stencil aspects of the attachment to be cleared.</vk-property-description>
       </vk-property-entry>
-      <!-- VkClearAttachment.prototype.colorAttachment -->
       <vk-property-entry>
         <vk-property-prototype>VkClearAttachment.prototype.<vk-prototype-name>colorAttachment</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is only meaningful if <b>VK_IMAGE_ASPECT_COLOR_BIT</b> is set in <b>aspectMask</b>, in which case it is an index to the <b>pColorAttachments</b> array in the <b><a href="../structs/VkSubpassDescription.html">VkSubpassDescription</a></b> structure of the current subpass which selects the color attachment to clear.</vk-property-description>
       </vk-property-entry>
-      <!-- VkClearAttachment.prototype.clearValue -->
       <vk-property-entry>
         <vk-property-prototype>VkClearAttachment.prototype.<vk-prototype-name>clearValue</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkClearValue.html">VkClearValue</a></vk-property-type>
@@ -84,13 +79,11 @@ clearAttachmentInfo.clearValue = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkClearAttachment.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkClearAttachment.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkClearAttachment.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkClearAttachment.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

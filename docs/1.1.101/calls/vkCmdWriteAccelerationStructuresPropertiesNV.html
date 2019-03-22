@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkCmdWriteAccelerationStructuresPropertiesNV</vk-name>
@@ -46,37 +44,31 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- commandBuffer -->
       <vk-property-entry>
         <vk-property-parameter>commandBuffer</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></vk-property-type>
         <vk-property-description> is the command buffer into which the command will be recorded.</vk-property-description>
       </vk-property-entry>
-      <!-- accelerationStructureCount -->
       <vk-property-entry>
         <vk-property-parameter>accelerationStructureCount</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the count of acceleration structures for which to query the property.</vk-property-description>
       </vk-property-entry>
-      <!-- pAccelerationStructures -->
       <vk-property-entry>
         <vk-property-parameter>pAccelerationStructures</vk-property-parameter>
         <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../handles/VkAccelerationStructureNV.html">VkAccelerationStructureNV]</a></vk-property-type></vk-property-type>
         <vk-property-description> reference to an array of existing previously built acceleration structures.</vk-property-description>
       </vk-property-entry>
-      <!-- queryType -->
       <vk-property-entry>
         <vk-property-parameter>queryType</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a <b>VkQueryType</b> value specifying the type of queries managed by the pool.</vk-property-description>
       </vk-property-entry>
-      <!-- queryPool -->
       <vk-property-entry>
         <vk-property-parameter>queryPool</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkQueryPool.html">VkQueryPool</a></vk-property-type>
         <vk-property-description> is the query pool that will manage the results of the query.</vk-property-description>
       </vk-property-entry>
-      <!-- firstQuery -->
       <vk-property-entry>
         <vk-property-parameter>firstQuery</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>

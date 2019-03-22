@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkGetMemoryHostPointerPropertiesEXT</vk-name>
@@ -46,25 +44,21 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- device -->
       <vk-property-entry>
         <vk-property-parameter>device</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkDevice.html">VkDevice</a></vk-property-type>
         <vk-property-description> is the logical device that will be importing <b>pHostPointer</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- handleType -->
       <vk-property-entry>
         <vk-property-parameter>handleType</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- pHostPointer -->
       <vk-property-entry>
         <vk-property-parameter>pHostPointer</vk-property-parameter>
         <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description> is the host reference to import from.</vk-property-description>
       </vk-property-entry>
-      <!-- pMemoryHostPointerProperties -->
       <vk-property-entry>
         <vk-property-parameter>pMemoryHostPointerProperties</vk-property-parameter>
         <vk-property-type type="object"><a href="../structs/VkMemoryHostPointerPropertiesEXT.html">VkMemoryHostPointerPropertiesEXT</a></vk-property-type>

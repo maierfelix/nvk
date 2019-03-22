@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkImageBlit</vk-name>
@@ -61,25 +59,21 @@ imageBlitInfo.dstOffsets = ;
     </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkImageBlit.prototype.srcSubresource -->
       <vk-property-entry>
         <vk-property-prototype>VkImageBlit.prototype.<vk-prototype-name>srcSubresource</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkImageSubresourceLayers.html">VkImageSubresourceLayers</a></vk-property-type>
         <vk-property-description> is the subresource to blit from.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageBlit.prototype.srcOffsets -->
       <vk-property-entry>
         <vk-property-prototype>VkImageBlit.prototype.<vk-prototype-name>srcOffsets</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkOffset3D.html">VkOffset3D]</a></vk-property-type></vk-property-type>
         <vk-property-description> is an array of two <b><a href="../structs/VkOffset3D.html">VkOffset3D</a></b> structures specifying the bounds of the source region within <b>srcSubresource</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageBlit.prototype.dstSubresource -->
       <vk-property-entry>
         <vk-property-prototype>VkImageBlit.prototype.<vk-prototype-name>dstSubresource</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkImageSubresourceLayers.html">VkImageSubresourceLayers</a></vk-property-type>
         <vk-property-description> is the subresource to blit into.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageBlit.prototype.dstOffsets -->
       <vk-property-entry>
         <vk-property-prototype>VkImageBlit.prototype.<vk-prototype-name>dstOffsets</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkOffset3D.html">VkOffset3D]</a></vk-property-type></vk-property-type>
@@ -91,13 +85,11 @@ imageBlitInfo.dstOffsets = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkImageBlit.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkImageBlit.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageBlit.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkImageBlit.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

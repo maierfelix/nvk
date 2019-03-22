@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkPhysicalDeviceSubgroupProperties</vk-name>
@@ -55,37 +53,31 @@ physicalDeviceSubgroupPropertiesInfo.quadOperationsInAllStages;
     </vk-stub><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPhysicalDeviceSubgroupProperties.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceSubgroupProperties.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceSubgroupProperties.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceSubgroupProperties.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceSubgroupProperties.prototype.subgroupSize -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceSubgroupProperties.prototype.<vk-prototype-name>subgroupSize</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the number of invocations in each subgroup. This will match any <<interfaces-builtin-variables-sgs, <i>SubgroupSize</i>>> decorated variable used in any shader module created on this device. <b>subgroupSize</b> is at least 1 if any of the physical device's queues support <b>VK_QUEUE_GRAPHICS_BIT</b> or <b>VK_QUEUE_COMPUTE_BIT</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceSubgroupProperties.prototype.supportedStages -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceSubgroupProperties.prototype.<vk-prototype-name>supportedStages</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a bitfield of <b>VkShaderStageFlagBits</b> describing the shader stages that subgroup operations are supported in. <b>supportedStages</b> will have the <b>VK_SHADER_STAGE_COMPUTE_BIT</b> bit set if any of the physical device's queues support <b>VK_QUEUE_COMPUTE_BIT</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceSubgroupProperties.prototype.supportedOperations -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceSubgroupProperties.prototype.<vk-prototype-name>supportedOperations</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a bitmask of <b>VkSubgroupFeatureFlagBits</b> specifying the sets of subgroup operations supported on this device. <b>supportedOperations</b> will have the <b>VK_SUBGROUP_FEATURE_BASIC_BIT</b> bit set if any of the physical device's queues support <b>VK_QUEUE_GRAPHICS_BIT</b> or <b>VK_QUEUE_COMPUTE_BIT</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceSubgroupProperties.prototype.quadOperationsInAllStages -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceSubgroupProperties.prototype.<vk-prototype-name>quadOperationsInAllStages</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="boolean">Boolean</vk-property-type>
@@ -97,13 +89,11 @@ physicalDeviceSubgroupPropertiesInfo.quadOperationsInAllStages;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPhysicalDeviceSubgroupProperties.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceSubgroupProperties.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceSubgroupProperties.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceSubgroupProperties.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

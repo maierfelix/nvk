@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkCmdDrawIndirectByteCountEXT</vk-name>
@@ -46,43 +44,36 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- commandBuffer -->
       <vk-property-entry>
         <vk-property-parameter>commandBuffer</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></vk-property-type>
         <vk-property-description> is the command buffer into which the command is recorded.</vk-property-description>
       </vk-property-entry>
-      <!-- instanceCount -->
       <vk-property-entry>
         <vk-property-parameter>instanceCount</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the number of instances to draw.</vk-property-description>
       </vk-property-entry>
-      <!-- firstInstance -->
       <vk-property-entry>
         <vk-property-parameter>firstInstance</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the instance ID of the first instance to draw.</vk-property-description>
       </vk-property-entry>
-      <!-- counterBuffer -->
       <vk-property-entry>
         <vk-property-parameter>counterBuffer</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkBuffer.html">VkBuffer</a></vk-property-type>
         <vk-property-description> is the buffer handle from where the byte count is read.</vk-property-description>
       </vk-property-entry>
-      <!-- counterBufferOffset -->
       <vk-property-entry>
         <vk-property-parameter>counterBufferOffset</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the offset into the buffer used to read the byte count, which is used to calculate the vertex count for this draw call.</vk-property-description>
       </vk-property-entry>
-      <!-- counterOffset -->
       <vk-property-entry>
         <vk-property-parameter>counterOffset</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is subtracted from the byte count read from the <b>counterBuffer</b> at the <b>counterBufferOffset</b></vk-property-description>
       </vk-property-entry>
-      <!-- vertexStride -->
       <vk-property-entry>
         <vk-property-parameter>vertexStride</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>

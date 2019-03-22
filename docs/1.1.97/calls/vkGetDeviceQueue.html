@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkGetDeviceQueue</vk-name>
@@ -46,25 +44,21 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- device -->
       <vk-property-entry>
         <vk-property-parameter>device</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkDevice.html">VkDevice</a></vk-property-type>
         <vk-property-description> is the logical device that owns the queue.</vk-property-description>
       </vk-property-entry>
-      <!-- queueFamilyIndex -->
       <vk-property-entry>
         <vk-property-parameter>queueFamilyIndex</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the index of the queue family to which the queue belongs.</vk-property-description>
       </vk-property-entry>
-      <!-- queueIndex -->
       <vk-property-entry>
         <vk-property-parameter>queueIndex</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the index within this queue family of the queue to retrieve.</vk-property-description>
       </vk-property-entry>
-      <!-- pQueue -->
       <vk-property-entry>
         <vk-property-parameter>pQueue</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkQueue.html">VkQueue</a></vk-property-type>

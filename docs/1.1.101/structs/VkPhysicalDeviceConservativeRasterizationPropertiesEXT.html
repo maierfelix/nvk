@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkPhysicalDeviceConservativeRasterizationPropertiesEXT</vk-name>
@@ -60,67 +58,56 @@ physicalDeviceConservativeRasterizationPropertiesEXTInfo.conservativeRasterizati
     </vk-stub><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.primitiveOverestimationSize -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.<vk-prototype-name>primitiveOverestimationSize</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the size in pixels the generating primitive is increased at each of its edges during conservative rasterization overestimation mode. Even with a size of 0.0, conservative rasterization overestimation rules still apply and if any part of the pixel rectangle is covered by the generating primitive, fragments are generated for the entire pixel. However implementations <i>may</i> make the pixel coverage area even more conservative by increasing the size of the generating primitive.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.maxExtraPrimitiveOverestimationSize -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.<vk-prototype-name>maxExtraPrimitiveOverestimationSize</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.extraPrimitiveOverestimationSizeGranularity -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.<vk-prototype-name>extraPrimitiveOverestimationSizeGranularity</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.primitiveUnderestimation -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.<vk-prototype-name>primitiveUnderestimation</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.conservativePointAndLineRasterization -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.<vk-prototype-name>conservativePointAndLineRasterization</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.degenerateTrianglesRasterized -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.<vk-prototype-name>degenerateTrianglesRasterized</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.degenerateLinesRasterized -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.<vk-prototype-name>degenerateLinesRasterized</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.fullyCoveredFragmentShaderInputVariable -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.<vk-prototype-name>fullyCoveredFragmentShaderInputVariable</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.conservativeRasterizationPostDepthCoverage -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.<vk-prototype-name>conservativeRasterizationPostDepthCoverage</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="boolean">Boolean</vk-property-type>
@@ -132,13 +119,11 @@ physicalDeviceConservativeRasterizationPropertiesEXTInfo.conservativeRasterizati
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceConservativeRasterizationPropertiesEXT.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceConservativeRasterizationPropertiesEXT.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

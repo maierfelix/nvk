@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkLayerProperties</vk-name>
@@ -53,25 +51,21 @@ layerPropertiesInfo.description;
     </vk-stub><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkLayerProperties.prototype.layerName -->
       <vk-property-entry>
         <vk-property-prototype>VkLayerProperties.prototype.<vk-prototype-name>layerName</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="string">String</vk-property-type>
         <vk-property-description> is a string specifying the name of the layer. Use this name in the <b>ppEnabledLayerNames</b> array passed in the <b><a href="../structs/VkInstanceCreateInfo.html">VkInstanceCreateInfo</a></b> structure to enable this layer for an instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkLayerProperties.prototype.specVersion -->
       <vk-property-entry>
         <vk-property-prototype>VkLayerProperties.prototype.<vk-prototype-name>specVersion</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the Vulkan version the layer was written to, encoded as described in <<extendingvulkan-coreversions-versionnumbers>>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkLayerProperties.prototype.implementationVersion -->
       <vk-property-entry>
         <vk-property-prototype>VkLayerProperties.prototype.<vk-prototype-name>implementationVersion</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the version of this layer. It is a number, increasing with backward compatible changes.</vk-property-description>
       </vk-property-entry>
-      <!-- VkLayerProperties.prototype.description -->
       <vk-property-entry>
         <vk-property-prototype>VkLayerProperties.prototype.<vk-prototype-name>description</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="string">String</vk-property-type>
@@ -83,13 +77,11 @@ layerPropertiesInfo.description;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkLayerProperties.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkLayerProperties.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkLayerProperties.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkLayerProperties.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

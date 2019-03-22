@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkCmdBlitImage</vk-name>
@@ -46,49 +44,41 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- commandBuffer -->
       <vk-property-entry>
         <vk-property-parameter>commandBuffer</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></vk-property-type>
         <vk-property-description> is the command buffer into which the command will be recorded.</vk-property-description>
       </vk-property-entry>
-      <!-- srcImage -->
       <vk-property-entry>
         <vk-property-parameter>srcImage</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkImage.html">VkImage</a></vk-property-type>
         <vk-property-description> is the source image.</vk-property-description>
       </vk-property-entry>
-      <!-- srcImageLayout -->
       <vk-property-entry>
         <vk-property-parameter>srcImageLayout</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the layout of the source image subresources for the blit.</vk-property-description>
       </vk-property-entry>
-      <!-- dstImage -->
       <vk-property-entry>
         <vk-property-parameter>dstImage</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkImage.html">VkImage</a></vk-property-type>
         <vk-property-description> is the destination image.</vk-property-description>
       </vk-property-entry>
-      <!-- dstImageLayout -->
       <vk-property-entry>
         <vk-property-parameter>dstImageLayout</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the layout of the destination image subresources for the blit.</vk-property-description>
       </vk-property-entry>
-      <!-- regionCount -->
       <vk-property-entry>
         <vk-property-parameter>regionCount</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the number of regions to blit.</vk-property-description>
       </vk-property-entry>
-      <!-- pRegions -->
       <vk-property-entry>
         <vk-property-parameter>pRegions</vk-property-parameter>
         <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkImageBlit.html">VkImageBlit]</a></vk-property-type></vk-property-type>
         <vk-property-description> is an array of <b><a href="../structs/VkImageBlit.html">VkImageBlit</a></b> structures specifying the regions to blit.</vk-property-description>
       </vk-property-entry>
-      <!-- filter -->
       <vk-property-entry>
         <vk-property-parameter>filter</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>

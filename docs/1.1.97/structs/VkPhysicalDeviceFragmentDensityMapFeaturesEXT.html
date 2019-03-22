@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkPhysicalDeviceFragmentDensityMapFeaturesEXT</vk-name>
@@ -54,31 +52,26 @@ physicalDeviceFragmentDensityMapFeaturesEXTInfo.fragmentDensityMapNonSubsampledI
     </vk-stub><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPhysicalDeviceFragmentDensityMapFeaturesEXT.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceFragmentDensityMapFeaturesEXT.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceFragmentDensityMapFeaturesEXT.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceFragmentDensityMapFeaturesEXT.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceFragmentDensityMapFeaturesEXT.prototype.fragmentDensityMap -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceFragmentDensityMapFeaturesEXT.prototype.<vk-prototype-name>fragmentDensityMap</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description> specifies whether the implementation supports render passes with a fragment density map attachment. If this feature is not enabled and the <b>pNext</b> chain of <b><a href="../structs/VkRenderPassCreateInfo.html">VkRenderPassCreateInfo</a></b> contains <b><a href="../structs/VkRenderPassFragmentDensityMapCreateInfoEXT.html">VkRenderPassFragmentDensityMapCreateInfoEXT</a></b>, <b>fragmentDensityMapAttachment</b> <i>must</i> be <b>VK_ATTACHMENT_UNUSED</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceFragmentDensityMapFeaturesEXT.prototype.fragmentDensityMapDynamic -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceFragmentDensityMapFeaturesEXT.prototype.<vk-prototype-name>fragmentDensityMapDynamic</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description> specifies whether the implementation supports dynamic fragment density map image views. If this feature is not enabled, <b>VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT</b> <i>must</i> not be included in <b><a href="../structs/VkImageViewCreateInfo.html">VkImageViewCreateInfo</a></b>::<b>flags</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceFragmentDensityMapFeaturesEXT.prototype.fragmentDensityMapNonSubsampledImages -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceFragmentDensityMapFeaturesEXT.prototype.<vk-prototype-name>fragmentDensityMapNonSubsampledImages</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="boolean">Boolean</vk-property-type>
@@ -90,13 +83,11 @@ physicalDeviceFragmentDensityMapFeaturesEXTInfo.fragmentDensityMapNonSubsampledI
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPhysicalDeviceFragmentDensityMapFeaturesEXT.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceFragmentDensityMapFeaturesEXT.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceFragmentDensityMapFeaturesEXT.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceFragmentDensityMapFeaturesEXT.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

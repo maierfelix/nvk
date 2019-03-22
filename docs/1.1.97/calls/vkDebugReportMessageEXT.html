@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkDebugReportMessageEXT</vk-name>
@@ -46,49 +44,41 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- instance -->
       <vk-property-entry>
         <vk-property-parameter>instance</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkInstance.html">VkInstance</a></vk-property-type>
         <vk-property-description> is the debug stream's <b><a href="../handles/VkInstance.html">VkInstance</a></b>.</vk-property-description>
       </vk-property-entry>
-      <!-- flags -->
       <vk-property-entry>
         <vk-property-parameter>flags</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> specifies the <b>VkDebugReportFlagBitsEXT</b> classification of this event/message.</vk-property-description>
       </vk-property-entry>
-      <!-- objectType -->
       <vk-property-entry>
         <vk-property-parameter>objectType</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a <b>VkDebugReportObjectTypeEXT</b> specifying the type of object being used or created at the time the event was triggered.</vk-property-description>
       </vk-property-entry>
-      <!-- object -->
       <vk-property-entry>
         <vk-property-parameter>object</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> this is the object where the issue was detected. <b>object</b> <i>can</i> be <b>VK_NULL_HANDLE</b> if there is no object associated with the event.</vk-property-description>
       </vk-property-entry>
-      <!-- location -->
       <vk-property-entry>
         <vk-property-parameter>location</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is an application defined value.</vk-property-description>
       </vk-property-entry>
-      <!-- messageCode -->
       <vk-property-entry>
         <vk-property-parameter>messageCode</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is an application defined value.</vk-property-description>
       </vk-property-entry>
-      <!-- pLayerPrefix -->
       <vk-property-entry>
         <vk-property-parameter>pLayerPrefix</vk-property-parameter>
         <vk-property-type type="string">String</vk-property-type>
         <vk-property-description> is the abbreviation of the component making this event/message.</vk-property-description>
       </vk-property-entry>
-      <!-- pMessage -->
       <vk-property-entry>
         <vk-property-parameter>pMessage</vk-property-parameter>
         <vk-property-type type="string">String</vk-property-type>

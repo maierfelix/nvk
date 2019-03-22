@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkUnregisterObjectsNVX</vk-name>
@@ -46,31 +44,26 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- device -->
       <vk-property-entry>
         <vk-property-parameter>device</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkDevice.html">VkDevice</a></vk-property-type>
         <vk-property-description> is the logical device that creates the object table.</vk-property-description>
       </vk-property-entry>
-      <!-- objectTable -->
       <vk-property-entry>
         <vk-property-parameter>objectTable</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkObjectTableNVX.html">VkObjectTableNVX</a></vk-property-type>
         <vk-property-description> is the table from which the resources are unregistered.</vk-property-description>
       </vk-property-entry>
-      <!-- objectCount -->
       <vk-property-entry>
         <vk-property-parameter>objectCount</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the number of resources being removed from the object table.</vk-property-description>
       </vk-property-entry>
-      <!-- pObjectEntryTypes -->
       <vk-property-entry>
         <vk-property-parameter>pObjectEntryTypes</vk-property-parameter>
         <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array">Int32Array</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- pObjectIndices -->
       <vk-property-entry>
         <vk-property-parameter>pObjectIndices</vk-property-parameter>
         <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array">Uint32Array</a></vk-property-type>

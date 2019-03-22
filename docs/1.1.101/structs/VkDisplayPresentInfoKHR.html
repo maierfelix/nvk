@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkDisplayPresentInfoKHR</vk-name>
@@ -62,31 +60,26 @@ displayPresentInfoKHRInfo.persistent = ;
     </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkDisplayPresentInfoKHR.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplayPresentInfoKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDisplayPresentInfoKHR.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplayPresentInfoKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDisplayPresentInfoKHR.prototype.srcRect -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplayPresentInfoKHR.prototype.<vk-prototype-name>srcRect</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkRect2D.html">VkRect2D</a></vk-property-type>
         <vk-property-description> is a rectangular region of pixels to present. It <i>must</i> be a subset of the image being presented. If <b><a href="../structs/VkDisplayPresentInfoKHR.html">VkDisplayPresentInfoKHR</a></b> is not specified, this region will be assumed to be the entire presentable image.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDisplayPresentInfoKHR.prototype.dstRect -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplayPresentInfoKHR.prototype.<vk-prototype-name>dstRect</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkRect2D.html">VkRect2D</a></vk-property-type>
         <vk-property-description> is a rectangular region within the visible region of the swapchain's display mode. If <b><a href="../structs/VkDisplayPresentInfoKHR.html">VkDisplayPresentInfoKHR</a></b> is not specified, this region will be assumed to be the entire visible region of the visible region of the swapchain's mode. If the specified rectangle is a subset of the display mode's visible region, content from display planes below the swapchain's plane will be visible outside the rectangle. If there are no planes below the swapchain's, the area outside the specified rectangle will be black. If portions of the specified rectangle are outside of the display's visible region, pixels mapping only to those portions of the rectangle will be discarded.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDisplayPresentInfoKHR.prototype.persistent -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplayPresentInfoKHR.prototype.<vk-prototype-name>persistent</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="boolean">Boolean</vk-property-type>
@@ -98,13 +91,11 @@ displayPresentInfoKHRInfo.persistent = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkDisplayPresentInfoKHR.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplayPresentInfoKHR.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDisplayPresentInfoKHR.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplayPresentInfoKHR.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

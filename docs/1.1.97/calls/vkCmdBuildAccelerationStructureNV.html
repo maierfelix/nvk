@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkCmdBuildAccelerationStructureNV</vk-name>
@@ -46,55 +44,46 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- commandBuffer -->
       <vk-property-entry>
         <vk-property-parameter>commandBuffer</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></vk-property-type>
         <vk-property-description> is the command buffer into which the command will be recorded.</vk-property-description>
       </vk-property-entry>
-      <!-- pInfo -->
       <vk-property-entry>
         <vk-property-parameter>pInfo</vk-property-parameter>
         <vk-property-type type="object"><a href="../structs/VkAccelerationStructureInfoNV.html">VkAccelerationStructureInfoNV</a></vk-property-type>
         <vk-property-description> contains the shared information for the acceleration structure's structure.</vk-property-description>
       </vk-property-entry>
-      <!-- instanceData -->
       <vk-property-entry>
         <vk-property-parameter>instanceData</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkBuffer.html">VkBuffer</a></vk-property-type>
         <vk-property-description> is the buffer containing instance data that will be used to build the acceleration structure as described in <<acceleration-structure-instance, Accelerator structure instances.>> This parameter <i>must</i> be <i>null</i> for bottom level acceleration structures.</vk-property-description>
       </vk-property-entry>
-      <!-- instanceOffset -->
       <vk-property-entry>
         <vk-property-parameter>instanceOffset</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the offset in bytes (relative to the start of <b>instanceData</b>) at which the instance data is located.</vk-property-description>
       </vk-property-entry>
-      <!-- update -->
       <vk-property-entry>
         <vk-property-parameter>update</vk-property-parameter>
         <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- dst -->
       <vk-property-entry>
         <vk-property-parameter>dst</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkAccelerationStructureNV.html">VkAccelerationStructureNV</a></vk-property-type>
         <vk-property-description> reference to the target acceleration structure for the build.</vk-property-description>
       </vk-property-entry>
-      <!-- src -->
       <vk-property-entry>
         <vk-property-parameter>src</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkAccelerationStructureNV.html">VkAccelerationStructureNV</a></vk-property-type>
         <vk-property-description> reference to an existing acceleration structure that is to be used to update the <b>dst</b> acceleration structure.</vk-property-description>
       </vk-property-entry>
-      <!-- scratch -->
       <vk-property-entry>
         <vk-property-parameter>scratch</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkBuffer.html">VkBuffer</a></vk-property-type>
         <vk-property-description> is the <b><a href="../handles/VkBuffer.html">VkBuffer</a></b> that will be used as scratch memory for the build.</vk-property-description>
       </vk-property-entry>
-      <!-- scratchOffset -->
       <vk-property-entry>
         <vk-property-parameter>scratchOffset</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>

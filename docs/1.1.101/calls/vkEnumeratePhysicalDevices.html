@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkEnumeratePhysicalDevices</vk-name>
@@ -46,19 +44,16 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- instance -->
       <vk-property-entry>
         <vk-property-parameter>instance</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkInstance.html">VkInstance</a></vk-property-type>
         <vk-property-description> is a handle to a Vulkan instance previously created with <b><a href="../calls/vkCreateInstance.html">vkCreateInstance</a></b>.</vk-property-description>
       </vk-property-entry>
-      <!-- pPhysicalDeviceCount -->
       <vk-property-entry>
         <vk-property-parameter>pPhysicalDeviceCount</vk-property-parameter>
         <vk-property-type type="object">Object.$<vk-property-type type="object">(Number)</vk-property-type></vk-property-type>
         <vk-property-description> is a reference to a number related to the number of physical devices available or queried, as described below.</vk-property-description>
       </vk-property-entry>
-      <!-- pPhysicalDevices -->
       <vk-property-entry>
         <vk-property-parameter>pPhysicalDevices</vk-property-parameter>
         <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../handles/VkPhysicalDevice.html">VkPhysicalDevice]</a></vk-property-type></vk-property-type>

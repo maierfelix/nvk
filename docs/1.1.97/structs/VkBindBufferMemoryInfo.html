@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkBindBufferMemoryInfo</vk-name>
@@ -62,31 +60,26 @@ bindBufferMemoryInfo.memoryOffset = ;
     </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkBindBufferMemoryInfo.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkBindBufferMemoryInfo.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkBindBufferMemoryInfo.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkBindBufferMemoryInfo.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkBindBufferMemoryInfo.prototype.buffer -->
       <vk-property-entry>
         <vk-property-prototype>VkBindBufferMemoryInfo.prototype.<vk-prototype-name>buffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../handles/VkBuffer.html">VkBuffer</a></vk-property-type>
         <vk-property-description> is the buffer to be attached to memory.</vk-property-description>
       </vk-property-entry>
-      <!-- VkBindBufferMemoryInfo.prototype.memory -->
       <vk-property-entry>
         <vk-property-prototype>VkBindBufferMemoryInfo.prototype.<vk-prototype-name>memory</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../handles/VkDeviceMemory.html">VkDeviceMemory</a></vk-property-type>
         <vk-property-description> which is to be bound to the buffer. The number of bytes returned in the <b><a href="../structs/VkMemoryRequirements.html">VkMemoryRequirements</a></b>::<b>size</b> member in <b>memory</b>, starting from <b>memoryOffset</b> bytes, will be bound to the specified buffer.</vk-property-description>
       </vk-property-entry>
-      <!-- VkBindBufferMemoryInfo.prototype.memoryOffset -->
       <vk-property-entry>
         <vk-property-prototype>VkBindBufferMemoryInfo.prototype.<vk-prototype-name>memoryOffset</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
@@ -98,13 +91,11 @@ bindBufferMemoryInfo.memoryOffset = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkBindBufferMemoryInfo.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkBindBufferMemoryInfo.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkBindBufferMemoryInfo.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkBindBufferMemoryInfo.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

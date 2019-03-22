@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkAttachmentDescription</vk-name>
@@ -66,55 +64,46 @@ attachmentDescriptionInfo.finalLayout = ;
     </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkAttachmentDescription.prototype.flags -->
       <vk-property-entry>
         <vk-property-prototype>VkAttachmentDescription.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a bitmask of <b>VkAttachmentDescriptionFlagBits</b> specifying additional properties of the attachment.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAttachmentDescription.prototype.format -->
       <vk-property-entry>
         <vk-property-prototype>VkAttachmentDescription.prototype.<vk-prototype-name>format</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a <b>VkFormat</b> value specifying the format of the image view that will be used for the attachment.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAttachmentDescription.prototype.samples -->
       <vk-property-entry>
         <vk-property-prototype>VkAttachmentDescription.prototype.<vk-prototype-name>samples</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the number of samples of the image as defined in <b>VkSampleCountFlagBits</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAttachmentDescription.prototype.loadOp -->
       <vk-property-entry>
         <vk-property-prototype>VkAttachmentDescription.prototype.<vk-prototype-name>loadOp</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a <b>VkAttachmentLoadOp</b> value specifying how the contents of color and depth components of the attachment are treated at the beginning of the subpass where it is first used.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAttachmentDescription.prototype.storeOp -->
       <vk-property-entry>
         <vk-property-prototype>VkAttachmentDescription.prototype.<vk-prototype-name>storeOp</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a <b>VkAttachmentStoreOp</b> value specifying how the contents of color and depth components of the attachment are treated at the end of the subpass where it is last used.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAttachmentDescription.prototype.stencilLoadOp -->
       <vk-property-entry>
         <vk-property-prototype>VkAttachmentDescription.prototype.<vk-prototype-name>stencilLoadOp</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a <b>VkAttachmentLoadOp</b> value specifying how the contents of stencil components of the attachment are treated at the beginning of the subpass where it is first used.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAttachmentDescription.prototype.stencilStoreOp -->
       <vk-property-entry>
         <vk-property-prototype>VkAttachmentDescription.prototype.<vk-prototype-name>stencilStoreOp</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a <b>VkAttachmentStoreOp</b> value specifying how the contents of stencil components of the attachment are treated at the end of the last subpass where it is used.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAttachmentDescription.prototype.initialLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkAttachmentDescription.prototype.<vk-prototype-name>initialLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the layout the attachment image subresource will be in when a render pass instance begins.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAttachmentDescription.prototype.finalLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkAttachmentDescription.prototype.<vk-prototype-name>finalLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
@@ -126,13 +115,11 @@ attachmentDescriptionInfo.finalLayout = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkAttachmentDescription.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkAttachmentDescription.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAttachmentDescription.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkAttachmentDescription.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

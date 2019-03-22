@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkCmdPushConstants</vk-name>
@@ -46,37 +44,31 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- commandBuffer -->
       <vk-property-entry>
         <vk-property-parameter>commandBuffer</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></vk-property-type>
         <vk-property-description> is the command buffer in which the push constant update will be recorded.</vk-property-description>
       </vk-property-entry>
-      <!-- layout -->
       <vk-property-entry>
         <vk-property-parameter>layout</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkPipelineLayout.html">VkPipelineLayout</a></vk-property-type>
         <vk-property-description> is the pipeline layout used to program the push constant updates.</vk-property-description>
       </vk-property-entry>
-      <!-- stageFlags -->
       <vk-property-entry>
         <vk-property-parameter>stageFlags</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a bitmask of <b>VkShaderStageFlagBits</b> specifying the shader stages that will use the push constants in the updated range.</vk-property-description>
       </vk-property-entry>
-      <!-- offset -->
       <vk-property-entry>
         <vk-property-parameter>offset</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the start offset of the push constant range to update, in units of bytes.</vk-property-description>
       </vk-property-entry>
-      <!-- size -->
       <vk-property-entry>
         <vk-property-parameter>size</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> bytes containing the new push constant values.</vk-property-description>
       </vk-property-entry>
-      <!-- pValues -->
       <vk-property-entry>
         <vk-property-parameter>pValues</vk-property-parameter>
         <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>

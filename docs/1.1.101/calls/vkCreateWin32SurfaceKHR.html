@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkCreateWin32SurfaceKHR</vk-name>
@@ -46,25 +44,21 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- instance -->
       <vk-property-entry>
         <vk-property-parameter>instance</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkInstance.html">VkInstance</a></vk-property-type>
         <vk-property-description> is the instance to associate the surface with.</vk-property-description>
       </vk-property-entry>
-      <!-- pCreateInfo -->
       <vk-property-entry>
         <vk-property-parameter>pCreateInfo</vk-property-parameter>
         <vk-property-type type="object"><a href="../structs/VkWin32SurfaceCreateInfoKHR.html">VkWin32SurfaceCreateInfoKHR</a></vk-property-type>
         <vk-property-description> is a reference to an instance of the <b><a href="../structs/VkWin32SurfaceCreateInfoKHR.html">VkWin32SurfaceCreateInfoKHR</a></b> structure containing parameters affecting the creation of the surface object.</vk-property-description>
       </vk-property-entry>
-      <!-- pAllocator -->
       <vk-property-entry>
         <vk-property-parameter>pAllocator</vk-property-parameter>
         <vk-property-type type="object"><a href="../structs/VkAllocationCallbacks.html">VkAllocationCallbacks</a></vk-property-type>
         <vk-property-description> is the allocator used for host memory allocated for the surface object when there is no more specific allocator available (see <<memory-allocation,Memory Allocation>>).</vk-property-description>
       </vk-property-entry>
-      <!-- pSurface -->
       <vk-property-entry>
         <vk-property-parameter>pSurface</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkSurfaceKHR.html">VkSurfaceKHR</a></vk-property-type>

@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkCmdSetStencilWriteMask</vk-name>
@@ -46,19 +44,16 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- commandBuffer -->
       <vk-property-entry>
         <vk-property-parameter>commandBuffer</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></vk-property-type>
         <vk-property-description> is the command buffer into which the command will be recorded.</vk-property-description>
       </vk-property-entry>
-      <!-- faceMask -->
       <vk-property-entry>
         <vk-property-parameter>faceMask</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a bitmask of <b>VkStencilFaceFlagBits</b> specifying the set of stencil state for which to update the write mask, as described above for <b><a href="../calls/vkCmdSetStencilCompareMask.html">vkCmdSetStencilCompareMask</a></b>.</vk-property-description>
       </vk-property-entry>
-      <!-- writeMask -->
       <vk-property-entry>
         <vk-property-parameter>writeMask</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>

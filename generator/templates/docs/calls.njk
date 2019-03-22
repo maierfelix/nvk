@@ -4,10 +4,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   {{ getNavigationHTML() | safe }}
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>{{ call.name }}</vk-name>
@@ -24,7 +22,6 @@
 
     <vk-properties>
       {% for param in params -%}
-      <!-- {{ param.name }} -->
       <vk-property-entry>
         <vk-property-parameter>{{ param.name }}</vk-property-parameter>
         <vk-property-type type="{{ getCSSType(param) | safe }}">{{ getType(param) | safe }}</vk-property-type>

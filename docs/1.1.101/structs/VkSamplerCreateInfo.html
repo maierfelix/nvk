@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkSamplerCreateInfo</vk-name>
@@ -75,109 +73,91 @@ samplerInfo.unnormalizedCoordinates = ;
     </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkSamplerCreateInfo.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerCreateInfo.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerCreateInfo.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerCreateInfo.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerCreateInfo.prototype.flags -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerCreateInfo.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a bitmask of <b>VkSamplerCreateFlagBits</b> describing additional parameters of the sampler.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerCreateInfo.prototype.magFilter -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerCreateInfo.prototype.<vk-prototype-name>magFilter</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> <i>must</i> be equal.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerCreateInfo.prototype.minFilter -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerCreateInfo.prototype.<vk-prototype-name>minFilter</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a <b>VkFilter</b> value specifying the minification filter to apply to lookups.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerCreateInfo.prototype.mipmapMode -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerCreateInfo.prototype.<vk-prototype-name>mipmapMode</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a <b>VkSamplerMipmapMode</b> value specifying the mipmap filter to apply to lookups.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerCreateInfo.prototype.addressModeU -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerCreateInfo.prototype.<vk-prototype-name>addressModeU</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a <b>VkSamplerAddressMode</b> value specifying the addressing mode for outside [0..1] range for U coordinate.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerCreateInfo.prototype.addressModeV -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerCreateInfo.prototype.<vk-prototype-name>addressModeV</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> <i>must</i> each be either <b>VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE</b> or <b>VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerCreateInfo.prototype.addressModeW -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerCreateInfo.prototype.<vk-prototype-name>addressModeW</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a <b>VkSamplerAddressMode</b> value specifying the addressing mode for outside [0..1] range for W coordinate.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerCreateInfo.prototype.mipLodBias -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerCreateInfo.prototype.<vk-prototype-name>mipLodBias</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the bias to be added to mipmap LOD (level-of-detail) calculation and bias provided by image sampling functions in SPIR-V, as described in the <<textures-level-of-detail-operation, Level-of-Detail Operation>> section.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerCreateInfo.prototype.anisotropyEnable -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerCreateInfo.prototype.<vk-prototype-name>anisotropyEnable</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerCreateInfo.prototype.maxAnisotropy -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerCreateInfo.prototype.<vk-prototype-name>maxAnisotropy</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the anisotropy value clamp used by the sampler when <b>anisotropyEnable</b> is <b>VK_TRUE</b>. If <b>anisotropyEnable</b> is <b>VK_FALSE</b>, <b>maxAnisotropy</b> is ignored.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerCreateInfo.prototype.compareEnable -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerCreateInfo.prototype.<vk-prototype-name>compareEnable</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerCreateInfo.prototype.compareOp -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerCreateInfo.prototype.<vk-prototype-name>compareOp</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a <b>VkCompareOp</b> value specifying the comparison function to apply to fetched data before filtering as described in the <<textures-depth-compare-operation, Depth Compare Operation>> section.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerCreateInfo.prototype.minLod -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerCreateInfo.prototype.<vk-prototype-name>minLod</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerCreateInfo.prototype.maxLod -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerCreateInfo.prototype.<vk-prototype-name>maxLod</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> <i>must</i> be zero.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerCreateInfo.prototype.borderColor -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerCreateInfo.prototype.<vk-prototype-name>borderColor</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a <b>VkBorderColor</b> value specifying the predefined border color to use.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerCreateInfo.prototype.unnormalizedCoordinates -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerCreateInfo.prototype.<vk-prototype-name>unnormalizedCoordinates</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="boolean">Boolean</vk-property-type>
@@ -189,13 +169,11 @@ samplerInfo.unnormalizedCoordinates = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkSamplerCreateInfo.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerCreateInfo.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerCreateInfo.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerCreateInfo.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

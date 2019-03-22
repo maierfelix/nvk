@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkDescriptorSetLayoutBinding</vk-name>
@@ -62,31 +60,26 @@ descriptorSetLayoutBindingInfo.pImmutableSamplers = ;
     </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkDescriptorSetLayoutBinding.prototype.binding -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorSetLayoutBinding.prototype.<vk-prototype-name>binding</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the binding number of this entry and corresponds to a resource of the same binding number in the shader stages.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDescriptorSetLayoutBinding.prototype.descriptorType -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorSetLayoutBinding.prototype.<vk-prototype-name>descriptorType</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a <b>VkDescriptorType</b> specifying which type of resource descriptors are used for this binding.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDescriptorSetLayoutBinding.prototype.descriptorCount -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorSetLayoutBinding.prototype.<vk-prototype-name>descriptorCount</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the number of descriptors contained in the binding, accessed in a shader as an array , except if <b>descriptorType</b> is <b>VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK_EXT</b> in which case <b>descriptorCount</b> is the size in bytes of the inline uniform block</vk-property-description>
       </vk-property-entry>
-      <!-- VkDescriptorSetLayoutBinding.prototype.stageFlags -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorSetLayoutBinding.prototype.<vk-prototype-name>stageFlags</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkDescriptorSetLayoutBinding.prototype.pImmutableSamplers -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorSetLayoutBinding.prototype.<vk-prototype-name>pImmutableSamplers</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../handles/VkSampler.html">VkSampler]</a></vk-property-type></vk-property-type>
@@ -98,13 +91,11 @@ descriptorSetLayoutBindingInfo.pImmutableSamplers = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkDescriptorSetLayoutBinding.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorSetLayoutBinding.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDescriptorSetLayoutBinding.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorSetLayoutBinding.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

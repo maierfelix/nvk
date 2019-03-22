@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkPhysicalDeviceMemoryProperties</vk-name>
@@ -53,25 +51,21 @@ physicalDeviceMemoryPropertiesInfo.memoryHeaps;
     </vk-stub><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPhysicalDeviceMemoryProperties.prototype.memoryTypeCount -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMemoryProperties.prototype.<vk-prototype-name>memoryTypeCount</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the number of valid elements in the <b>memoryTypes</b> array.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMemoryProperties.prototype.memoryTypes -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMemoryProperties.prototype.<vk-prototype-name>memoryTypes</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkMemoryType.html">VkMemoryType]</a></vk-property-type></vk-property-type>
         <vk-property-description> is an array of <b><a href="../structs/VkMemoryType.html">VkMemoryType</a></b> structures describing the _memory types_ that <i>can</i> be used to access memory allocated from the heaps specified by <b>memoryHeaps</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMemoryProperties.prototype.memoryHeapCount -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMemoryProperties.prototype.<vk-prototype-name>memoryHeapCount</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the number of valid elements in the <b>memoryHeaps</b> array.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMemoryProperties.prototype.memoryHeaps -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMemoryProperties.prototype.<vk-prototype-name>memoryHeaps</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkMemoryHeap.html">VkMemoryHeap]</a></vk-property-type></vk-property-type>
@@ -83,13 +77,11 @@ physicalDeviceMemoryPropertiesInfo.memoryHeaps;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPhysicalDeviceMemoryProperties.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMemoryProperties.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMemoryProperties.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMemoryProperties.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

@@ -14,7 +14,6 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
   <vk-search-title>Search</vk-search-title>
   <vk-search>
@@ -30,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkImageMemoryBarrier</vk-name>
@@ -67,61 +65,51 @@ imageMemoryBarrierInfo.subresourceRange = ;
     </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkImageMemoryBarrier.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkImageMemoryBarrier.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageMemoryBarrier.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkImageMemoryBarrier.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageMemoryBarrier.prototype.srcAccessMask -->
       <vk-property-entry>
         <vk-property-prototype>VkImageMemoryBarrier.prototype.<vk-prototype-name>srcAccessMask</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a bitmask of <b>VkAccessFlagBits</b> specifying a <<synchronization-access-masks, source access mask>>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageMemoryBarrier.prototype.dstAccessMask -->
       <vk-property-entry>
         <vk-property-prototype>VkImageMemoryBarrier.prototype.<vk-prototype-name>dstAccessMask</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a bitmask of <b>VkAccessFlagBits</b> specifying a <<synchronization-access-masks, destination access mask>>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageMemoryBarrier.prototype.oldLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkImageMemoryBarrier.prototype.<vk-prototype-name>oldLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the old layout in an <<synchronization-image-layout-transitions, image layout transition>>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageMemoryBarrier.prototype.newLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkImageMemoryBarrier.prototype.<vk-prototype-name>newLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the new layout in an <<synchronization-image-layout-transitions, image layout transition>>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageMemoryBarrier.prototype.srcQueueFamilyIndex -->
       <vk-property-entry>
         <vk-property-prototype>VkImageMemoryBarrier.prototype.<vk-prototype-name>srcQueueFamilyIndex</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the source queue family for a <<synchronization-queue-transfers, queue family ownership transfer>>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageMemoryBarrier.prototype.dstQueueFamilyIndex -->
       <vk-property-entry>
         <vk-property-prototype>VkImageMemoryBarrier.prototype.<vk-prototype-name>dstQueueFamilyIndex</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the destination queue family for a <<synchronization-queue-transfers, queue family ownership transfer>>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageMemoryBarrier.prototype.image -->
       <vk-property-entry>
         <vk-property-prototype>VkImageMemoryBarrier.prototype.<vk-prototype-name>image</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../handles/VkImage.html">VkImage</a></vk-property-type>
         <vk-property-description> is a handle to the image affected by this barrier.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageMemoryBarrier.prototype.subresourceRange -->
       <vk-property-entry>
         <vk-property-prototype>VkImageMemoryBarrier.prototype.<vk-prototype-name>subresourceRange</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkImageSubresourceRange.html">VkImageSubresourceRange</a></vk-property-type>
@@ -133,13 +121,11 @@ imageMemoryBarrierInfo.subresourceRange = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkImageMemoryBarrier.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkImageMemoryBarrier.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageMemoryBarrier.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkImageMemoryBarrier.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>
