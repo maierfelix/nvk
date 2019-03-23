@@ -14,7 +14,7 @@
 
 #
 
-This is a [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for node.js, which allows to interact from JavaScript/[TypeScript](#typescript) with the low-level interface of Vulkan. Currently the latest supported Vulkan version is *1.1.101*, which includes support for e.g. NVIDIA's real-time ray tracing pipeline `VK_NVX_raytracing`.
+This is a low-abstraction [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for [Node.js](https://en.wikipedia.org/wiki/Node.js) and comes with interfaces for JavaScript and [TypeScript](#typescript). Currently the latest supported Vulkan version is *1.1.101*, which includes support for e.g. NVIDIA's real-time ray tracing pipeline `VK_NVX_raytracing`.
 
 ### Platforms:
 
@@ -54,14 +54,17 @@ You can find more previews and demos in [/examples](https://github.com/maierfeli
 
 ## Installation:
 
-Run the following command to install *nvk*:
+This project comes with pre-built binaries, so to install *nvk* simply run:
+
 ````
 npm install nvk
 ````
 
 ## Example:
 
-In most cases the bindings match the native style of Vulkan. This allows you to follow existing C/C++ tutorials, but write the implementation itself with *nvk*. Note that both interfaces end up with a similar amount of code. Optionally you can use some [syntactic sugar](#syntactic-sugar) to write things quicker.
+In most cases the bindings match the C99 style of Vulkan. This allows you to follow existing C/C++ tutorials, but write the implementation itself with *nvk*. Note that both interfaces end up with a similar amount of code. Optionally you can use some [syntactic sugar](#syntactic-sugar) to write things quicker.
+
+Also note that *nvk* performs type validation and bounding checks to help you catching bugs early.
 
 JavaScript/TypeScript:
 ````js
