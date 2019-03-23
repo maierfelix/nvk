@@ -117,12 +117,16 @@ function getCSSType(member) {
   return ``;
 };
 
+function normalizeCategory(c) {
+  return c || `Uncategorized`;
+};
+
 function getCategories({ enums, calls, structs, handles } = _) {
   let out = [];
-  enums.map(enu => { if (out.indexOf(enu.documentation.category) <= -1) out.push(enu.documentation.category); });
-  calls.map(call => { if (out.indexOf(call.documentation.category) <= -1) out.push(call.documentation.category); });
-  structs.map(struct => { if (out.indexOf(struct.documentation.category) <= -1) out.push(struct.documentation.category); });
-  handles.map(handle => { if (out.indexOf(handle.documentation.category) <= -1) out.push(handle.documentation.category); });
+  enums.map(enu      => { let c = normalizeCategory(enu.documentation.category);    if (out.indexOf(c) <= -1) out.push(c); });
+  calls.map(call     => { let c = normalizeCategory(call.documentation.category);   if (out.indexOf(c) <= -1) out.push(c); });
+  structs.map(struct => { let c = normalizeCategory(struct.documentation.category); if (out.indexOf(c) <= -1) out.push(c); });
+  handles.map(handle => { let c = normalizeCategory(handle.documentation.category); if (out.indexOf(c) <= -1) out.push(c); });
   return out;
 };
 
@@ -130,10 +134,10 @@ function getObjectsByCategory(category) {
   let out = [];
   // collect objects matching category
   {
-    enums.map(enu => { if (enu.documentation.category === category) out.push(enu); });
-    calls.map(call => { if (call.documentation.category === category) out.push(call); });
-    structs.map(struct => { if (struct.documentation.category === category) out.push(struct); });
-    handles.map(handle => { if (handle.documentation.category === category) out.push(handle); });
+    enums.map(enu      => { let c = normalizeCategory(enu.documentation.category);    if (c === category) out.push(enu); });
+    calls.map(call     => { let c = normalizeCategory(call.documentation.category);   if (c === category) out.push(call); });
+    structs.map(struct => { let c = normalizeCategory(struct.documentation.category); if (c === category) out.push(struct); });
+    handles.map(handle => { let c = normalizeCategory(handle.documentation.category); if (c === category) out.push(handle); });
   }
   // sort alphabetically
   out = out.sort((a, b) => {

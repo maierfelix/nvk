@@ -117,7 +117,7 @@ function mergeExtensionsIntoEnums(enums, extensions) {
     children: [],
     documentation: {
       macros: [],
-      category: "General",
+      category: "Uncategorized",
       description: ""
     }
   };
@@ -128,7 +128,7 @@ function mergeExtensionsIntoEnums(enums, extensions) {
     children: [],
     documentation: {
       macros: [],
-      category: "General",
+      category: "Uncategorized",
       description: ""
     }
   };

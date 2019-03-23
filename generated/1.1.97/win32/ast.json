@@ -281,7 +281,7 @@
     "isNonDispatchable": true,
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Opaque handle to an object table"
     }
   },
@@ -292,7 +292,7 @@
     "isNonDispatchable": true,
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Opaque handle to an indirect commands layout object"
     }
   },
@@ -336,7 +336,7 @@
     "isNonDispatchable": true,
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Opaque handle to an acceleration structure object"
     }
   },
@@ -347,7 +347,7 @@
     "isNonDispatchable": true,
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Opaque handle to a display object"
     }
   },
@@ -358,7 +358,7 @@
     "isNonDispatchable": true,
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Opaque handle to a display mode object"
     }
   },
@@ -369,7 +369,7 @@
     "isNonDispatchable": true,
     "documentation": {
       "macros": [],
-      "category": "Window System Integration (WSI)",
+      "category": "VK_KHR_surface",
       "description": "Opaque handle to a surface object"
     }
   },
@@ -380,7 +380,7 @@
     "isNonDispatchable": true,
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_swapchain",
       "description": "Opaque handle to a swapchain object"
     }
   },
@@ -391,7 +391,7 @@
     "isNonDispatchable": true,
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_report",
       "description": "Opaque handle to a debug report callback object"
     }
   },
@@ -402,7 +402,7 @@
     "isNonDispatchable": true,
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_utils",
       "description": "Opaque handle to a debug messenger object"
     }
   },
@@ -4607,7 +4607,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "Debugging",
       "description": "Specify an enumeration to track object handle types"
     }
   },
@@ -4687,7 +4687,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Window System Integration (WSI)",
+      "category": "VK_KHR_surface",
       "description": "presentation mode supported for a surface"
     }
   },
@@ -4715,7 +4715,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Window System Integration (WSI)",
+      "category": "VK_KHR_surface",
       "description": "supported color space of the presentation engine"
     }
   },
@@ -4979,7 +4979,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_report",
       "description": "Specify the type of an object handle"
     }
   },
@@ -5053,7 +5053,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_validation_flags",
       "description": "Specify validation checks to disable"
     }
   },
@@ -5094,7 +5094,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_validation_features",
       "description": "Specify validation features to enable"
     }
   },
@@ -5176,7 +5176,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_validation_features",
       "description": "Specify validation features to disable"
     }
   },
@@ -5236,7 +5236,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Enum specifying"
     }
   },
@@ -5339,7 +5339,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Enum specifying object table entry type"
     }
   },
@@ -5402,7 +5402,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_display_control",
       "description": "Possible power states for a display"
     }
   },
@@ -5429,7 +5429,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_display_control",
       "description": "Events that can occur on a device object"
     }
   },
@@ -5451,7 +5451,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_display_control",
       "description": "Events that can occur on a display object"
     }
   },
@@ -5805,7 +5805,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_blend_operation_advanced",
       "description": "Enumerant specifying the blend overlap parameter"
     }
   },
@@ -5889,7 +5889,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_AMD_shader_info",
       "description": "Enum specifying which type of shader info to query"
     }
   },
@@ -6304,7 +6304,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Ray Tracing",
+      "category": "VK_NV_ray_tracing",
       "description": "Acceleration structure copy mode"
     }
   },
@@ -6336,7 +6336,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Type of acceleration structure"
     }
   },
@@ -6360,7 +6360,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Enum specifying which type of geometry is provided"
     }
   },
@@ -6407,7 +6407,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Acceleration structure memory requirement type"
     }
   },
@@ -6476,7 +6476,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Shader group types"
     }
   },
@@ -32661,7 +32661,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Structure describing an available display device"
     }
   },
@@ -32718,7 +32718,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Structure describing display plane properties"
     }
   },
@@ -32765,7 +32765,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Structure describing display parameters associated with a display mode"
     }
   },
@@ -32817,7 +32817,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Structure describing display mode properties"
     }
   },
@@ -32915,7 +32915,7 @@
     "sType": "VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Structure specifying parameters of a newly created display mode object"
     }
   },
@@ -33083,7 +33083,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Structure describing capabilities of a mode and plane combination"
     }
   },
@@ -33289,7 +33289,7 @@
     "sType": "VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Structure specifying parameters of a newly created display plane surface object"
     }
   },
@@ -33396,7 +33396,7 @@
     "sType": "VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display_swapchain",
       "description": "Structure describing parameters of a queue presentation to a swapchain"
     }
   },
@@ -33702,7 +33702,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Window System Integration (WSI)",
+      "category": "VK_KHR_surface",
       "description": "Structure describing capabilities of a surface"
     }
   },
@@ -33786,7 +33786,7 @@
     "sType": "VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_android_surface",
       "description": "Structure specifying parameters of a newly created Android surface object"
     }
   },
@@ -33895,7 +33895,7 @@
     "sType": "VK_STRUCTURE_TYPE_VI_SURFACE_CREATE_INFO_NN",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NN_vi_surface",
       "description": "Structure specifying parameters of a newly created VI surface object"
     }
   },
@@ -33993,7 +33993,7 @@
     "sType": "VK_STRUCTURE_TYPE_WAYLAND_SURFACE_CREATE_INFO_KHR",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_wayland_surface",
       "description": "Structure specifying parameters of a newly created Wayland surface object"
     }
   },
@@ -34093,7 +34093,7 @@
     "sType": "VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_win32_surface",
       "description": "Structure specifying parameters of a newly created Win32 surface object"
     }
   },
@@ -34196,7 +34196,7 @@
     "sType": "VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_xlib_surface",
       "description": "Structure specifying parameters of a newly created Xlib surface object"
     }
   },
@@ -34299,7 +34299,7 @@
     "sType": "VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_xcb_surface",
       "description": "Structure specifying parameters of a newly created Xcb surface object"
     }
   },
@@ -34383,7 +34383,7 @@
     "sType": "VK_STRUCTURE_TYPE_IMAGEPIPE_SURFACE_CREATE_INFO_FUCHSIA",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_FUCHSIA_imagepipe_surface",
       "description": "Structure specifying parameters of a newly created ImagePipe surface object"
     }
   },
@@ -34439,7 +34439,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Window System Integration (WSI)",
+      "category": "VK_KHR_surface",
       "description": "Structure describing a supported swapchain format-color space pair"
     }
   },
@@ -34749,7 +34749,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_swapchain",
       "description": "Structure specifying parameters of a newly created swapchain object"
     }
   },
@@ -34964,7 +34964,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_swapchain",
       "description": "Structure describing parameters of a queue presentation"
     }
   },
@@ -35071,7 +35071,7 @@
     "sType": "VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_report",
       "description": "Structure specifying parameters of a newly created debug report callback"
     }
   },
@@ -35163,7 +35163,7 @@
     "sType": "VK_STRUCTURE_TYPE_VALIDATION_FLAGS_EXT",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_validation_flags",
       "description": "Specify validation checks to disable for a Vulkan instance"
     }
   },
@@ -35297,7 +35297,7 @@
     "sType": "VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_validation_features",
       "description": "Specify validation features to enable or disable for a Vulkan instance"
     }
   },
@@ -35473,7 +35473,7 @@
     "sType": "VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_NAME_INFO_EXT",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_marker",
       "description": "Specify parameters of a name to give to an object"
     }
   },
@@ -35605,7 +35605,7 @@
     "sType": "VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_TAG_INFO_EXT",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_marker",
       "description": "Specify parameters of a tag to attach to an object"
     }
   },
@@ -35698,7 +35698,7 @@
     "sType": "VK_STRUCTURE_TYPE_DEBUG_MARKER_MARKER_INFO_EXT",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_marker",
       "description": "Specify parameters of a command buffer marker region"
     }
   },
@@ -36081,7 +36081,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_external_memory_capabilities",
       "description": "Structure specifying external image format properties"
     }
   },
@@ -36239,7 +36239,7 @@
     "sType": "VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_NV",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_external_memory",
       "description": "Specify memory handle types that may be exported"
     }
   },
@@ -36336,7 +36336,7 @@
     "sType": "VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_NV",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_external_memory_win32",
       "description": "import Win32 memory created on the same physical device"
     }
   },
@@ -36424,7 +36424,7 @@
     "sType": "VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_NV",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_external_memory_win32",
       "description": "specify security attributes and access rights for Win32 memory handles"
     }
   },
@@ -36611,7 +36611,7 @@
     "sType": "VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_NV",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_win32_keyed_mutex",
       "description": "use Windows keyex mutex mechanism to synchronize work"
     }
   },
@@ -36692,7 +36692,7 @@
     "sType": "VK_STRUCTURE_TYPE_DEVICE_GENERATED_COMMANDS_FEATURES_NVX",
     "documentation": {
       "macros": [],
-      "category": "Device-Generated Commands",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Structure specifying physical device support"
     }
   },
@@ -36839,7 +36839,7 @@
     "sType": "VK_STRUCTURE_TYPE_DEVICE_GENERATED_COMMANDS_LIMITS_NVX",
     "documentation": {
       "macros": [],
-      "category": "Device-Generated Commands",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Structure specifying physical device limits"
     }
   },
@@ -36896,7 +36896,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Structure specifying parameters for the reservation of command buffer space"
     }
   },
@@ -36966,7 +36966,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Struct specifying the details of an indirect command layout token"
     }
   },
@@ -37100,7 +37100,7 @@
     "sType": "VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NVX",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Structure specifying the parameters of a newly created indirect commands layout object"
     }
   },
@@ -37400,7 +37400,7 @@
     "sType": "VK_STRUCTURE_TYPE_CMD_PROCESS_COMMANDS_INFO_NVX",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Structure specifying parameters for the generation of commands"
     }
   },
@@ -37512,7 +37512,7 @@
     "sType": "VK_STRUCTURE_TYPE_CMD_RESERVE_SPACE_FOR_COMMANDS_INFO_NVX",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Structure specifying parameters for the reservation of command buffer space"
     }
   },
@@ -37797,7 +37797,7 @@
     "sType": "VK_STRUCTURE_TYPE_OBJECT_TABLE_CREATE_INFO_NVX",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Structure specifying the parameters of a newly created object table"
     }
   },
@@ -37849,7 +37849,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Common parameters of an object table resource entry"
     }
   },
@@ -37909,7 +37909,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Parameters of an object table pipeline entry"
     }
   },
@@ -37994,7 +37994,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Parameters of an object table descriptor set entry"
     }
   },
@@ -38054,7 +38054,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Parameters of an object table vertex buffer entry"
     }
   },
@@ -38136,7 +38136,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Parameters of an object table index buffer entry"
     }
   },
@@ -38219,7 +38219,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Parameters of an object table push constant entry"
     }
   },
@@ -40467,7 +40467,7 @@
     "sType": "VK_STRUCTURE_TYPE_PRESENT_REGIONS_KHR",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_incremental_present",
       "description": "Structure hint of rectangular regions changed by vkQueuePresentKHR"
     }
   },
@@ -40525,7 +40525,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_incremental_present",
       "description": "Structure containing rectangular region changed by vkQueuePresentKHR for a given VkImage"
     }
   },
@@ -40591,7 +40591,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_incremental_present",
       "description": "Structure containing a rectangle, including layer, changed by vkQueuePresentKHR for a given VkImage"
     }
   },
@@ -46276,7 +46276,7 @@
     "sType": "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_display_surface_counter",
       "description": "Structure describing capabilities of a surface"
     }
   },
@@ -46345,7 +46345,7 @@
     "sType": "VK_STRUCTURE_TYPE_DISPLAY_POWER_INFO_EXT",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_display_control",
       "description": "Describe the power state of a display"
     }
   },
@@ -46405,7 +46405,7 @@
     "sType": "VK_STRUCTURE_TYPE_DEVICE_EVENT_INFO_EXT",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_display_control",
       "description": "Describe a device event to create"
     }
   },
@@ -46474,7 +46474,7 @@
     "sType": "VK_STRUCTURE_TYPE_DISPLAY_EVENT_INFO_EXT",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_display_control",
       "description": "Describe a display event to create"
     }
   },
@@ -46547,7 +46547,7 @@
     "sType": "VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_display_control",
       "description": "Specify the surface counters desired"
     }
   },
@@ -48904,7 +48904,7 @@
     "sType": "VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_CAPABILITIES_KHR",
     "documentation": {
       "macros": [],
-      "category": "Window System Integration (WSI)",
+      "category": "VK_KHR_surface",
       "description": "Present capabilities from other physical devices"
     }
   },
@@ -49192,7 +49192,7 @@
     "sType": "VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_swapchain",
       "description": "Structure specifying parameters of the acquire"
     }
   },
@@ -49305,7 +49305,7 @@
     "sType": "VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_swapchain",
       "description": "Mode and mask controlling which physical devices\\"
     }
   },
@@ -49557,7 +49557,7 @@
     "sType": "VK_STRUCTURE_TYPE_DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_swapchain",
       "description": "Structure specifying parameters of a newly created swapchain object"
     }
   },
@@ -50215,7 +50215,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_hdr_metadata",
       "description": "structure to specify X,Y chromaticity coordinates"
     }
   },
@@ -50382,7 +50382,7 @@
     "sType": "VK_STRUCTURE_TYPE_HDR_METADATA_EXT",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_hdr_metadata",
       "description": "structure to specify Hdr metadata"
     }
   },
@@ -50409,7 +50409,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_GOOGLE_display_timing",
       "description": "Structure containing the RC duration of a display"
     }
   },
@@ -50569,7 +50569,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_GOOGLE_display_timing",
       "description": "Structure containing timing information about a previously-presented image"
     }
   },
@@ -50673,7 +50673,7 @@
     "sType": "VK_STRUCTURE_TYPE_PRESENT_TIMES_INFO_GOOGLE",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_GOOGLE_display_timing",
       "description": "The earliest time each image should be presented"
     }
   },
@@ -50749,7 +50749,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_GOOGLE_display_timing",
       "description": "The earliest time image should be presented"
     }
   },
@@ -50854,7 +50854,7 @@
     "sType": "VK_STRUCTURE_TYPE_IOS_SURFACE_CREATE_INFO_MVK",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_MVK_ios_surface",
       "description": "Structure specifying parameters of a newly created iOS surface object"
     }
   },
@@ -50959,7 +50959,7 @@
     "sType": "VK_STRUCTURE_TYPE_MACOS_SURFACE_CREATE_INFO_MVK",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_MVK_macos_surface",
       "description": "Structure specifying parameters of a newly created macOS surface object"
     }
   },
@@ -50997,7 +50997,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_clip_space_w_scaling",
       "description": "Structure specifying a viewport"
     }
   },
@@ -51102,7 +51102,7 @@
     "sType": "VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_clip_space_w_scaling",
       "description": "Structure specifying parameters of a newly created pipeline viewport W scaling state"
     }
   },
@@ -51919,7 +51919,7 @@
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SURFACE_INFO_2_KHR",
     "documentation": {
       "macros": [],
-      "category": "Window System Integration (WSI)",
+      "category": "VK_KHR_surface",
       "description": "Structure specifying a surface and related swapchain creation parameters"
     }
   },
@@ -51989,7 +51989,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Window System Integration (WSI)",
+      "category": "VK_KHR_surface",
       "description": "Structure describing capabilities of a surface"
     }
   },
@@ -52056,7 +52056,7 @@
     "sType": "VK_STRUCTURE_TYPE_SURFACE_FORMAT_2_KHR",
     "documentation": {
       "macros": [],
-      "category": "Window System Integration (WSI)",
+      "category": "VK_KHR_surface",
       "description": "Structure describing a supported swapchain format tuple"
     }
   },
@@ -52123,7 +52123,7 @@
     "sType": "VK_STRUCTURE_TYPE_DISPLAY_PROPERTIES_2_KHR",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Structure describing an available display device"
     }
   },
@@ -52190,7 +52190,7 @@
     "sType": "VK_STRUCTURE_TYPE_DISPLAY_PLANE_PROPERTIES_2_KHR",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Structure describing an available display plane"
     }
   },
@@ -52257,7 +52257,7 @@
     "sType": "VK_STRUCTURE_TYPE_DISPLAY_MODE_PROPERTIES_2_KHR",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Structure describing an available display mode"
     }
   },
@@ -52331,7 +52331,7 @@
     "sType": "VK_STRUCTURE_TYPE_DISPLAY_PLANE_INFO_2_KHR",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Structure defining the intended configuration of a display plane"
     }
   },
@@ -52398,7 +52398,7 @@
     "sType": "VK_STRUCTURE_TYPE_DISPLAY_PLANE_CAPABILITIES_2_KHR",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Structure describing the capabilities of a mode and plane combination"
     }
   },
@@ -52499,7 +52499,7 @@
     "sType": "VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_KHR",
     "documentation": {
       "macros": [],
-      "category": "Window System Integration (WSI)",
+      "category": "VK_KHR_surface",
       "description": "structure describing capabilities of a surface for shared presentation"
     }
   },
@@ -57413,7 +57413,7 @@
     "sType": "VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_ADVANCED_STATE_CREATE_INFO_EXT",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_blend_operation_advanced",
       "description": "Structure specifying parameters that affect advanced blend operations"
     }
   },
@@ -58181,7 +58181,7 @@
     "sType": "VK_STRUCTURE_TYPE_SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_validation_cache",
       "description": "Specify validation cache to use during shader module creation"
     }
   },
@@ -59149,7 +59149,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_AMD_shader_info",
       "description": "Resource usage information about a particular shader within a pipeline"
     }
   },
@@ -59244,7 +59244,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_AMD_shader_info",
       "description": "Statistical information about a particular shader within a pipeline"
     }
   },
@@ -59420,7 +59420,7 @@
     "sType": "VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_NAME_INFO_EXT",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_utils",
       "description": "Specify parameters of a name to give to an object"
     }
   },
@@ -59552,7 +59552,7 @@
     "sType": "VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_TAG_INFO_EXT",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_utils",
       "description": "Specify parameters of a tag to attach to an object"
     }
   },
@@ -59641,7 +59641,7 @@
     "sType": "VK_STRUCTURE_TYPE_DEBUG_UTILS_LABEL_EXT",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_utils",
       "description": "Specify parameters of a label region"
     }
   },
@@ -59789,7 +59789,7 @@
     "sType": "VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_utils",
       "description": "Structure specifying parameters of a newly created debug messenger"
     }
   },
@@ -60027,7 +60027,7 @@
     "sType": "VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_utils",
       "description": "Structure specifying parameters returned to the callback"
     }
   },
@@ -64781,7 +64781,7 @@
     "sType": "VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_device_diagnostic_checkpoints",
       "description": "return structure for queue family checkpoint info query"
     }
   },
@@ -64870,7 +64870,7 @@
     "sType": "VK_STRUCTURE_TYPE_CHECKPOINT_DATA_NV",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_device_diagnostic_checkpoints",
       "description": "return structure for command buffer checkpoint data"
     }
   },
@@ -67141,7 +67141,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_mesh_shader",
       "description": "Structure specifying a mesh tasks draw indirect command"
     }
   },
@@ -67357,7 +67357,7 @@
     "sType": "VK_STRUCTURE_TYPE_RAY_TRACING_SHADER_GROUP_CREATE_INFO_NV",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Structure specifying shaders in a shader group"
     }
   },
@@ -67561,7 +67561,7 @@
     "sType": "VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CREATE_INFO_NV",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Structure specifying parameters of a newly created ray tracing pipeline"
     }
   },
@@ -67772,7 +67772,7 @@
     "sType": "VK_STRUCTURE_TYPE_GEOMETRY_TRIANGLES_NV",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Structure specifying a triangle geometry in a bottom-level acceleration structure"
     }
   },
@@ -67873,7 +67873,7 @@
     "sType": "VK_STRUCTURE_TYPE_GEOMETRY_AABB_NV",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Structure specifying axis-aligned bounding box geometry in a bottom-level acceleration structure"
     }
   },
@@ -67941,7 +67941,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Structure specifying geometry in a bottom-level acceleration structure"
     }
   },
@@ -68048,7 +68048,7 @@
     "sType": "VK_STRUCTURE_TYPE_GEOMETRY_NV",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Structure specifying a geometry in a bottom-level acceleration structure"
     }
   },
@@ -68193,7 +68193,7 @@
     "sType": "VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_INFO_NV",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Structure specifying the parameters of acceleration structure object"
     }
   },
@@ -68281,7 +68281,7 @@
     "sType": "VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_NV",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Structure specifying the parameters of a newly created acceleration structure object"
     }
   },
@@ -68438,7 +68438,7 @@
     "sType": "VK_STRUCTURE_TYPE_BIND_ACCELERATION_STRUCTURE_MEMORY_INFO_NV",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Structure specifying acceleration structure memory binding"
     }
   },
@@ -68527,7 +68527,7 @@
     "sType": "VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_NV",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Structure specifying acceleration to query for memory requirements"
     }
   },
@@ -68620,7 +68620,7 @@
     "sType": "VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_INFO_NV",
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Structure specifying acceleration to query for memory requirements"
     }
   },
@@ -72826,7 +72826,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Alpha blending type"
     }
   },
@@ -72862,7 +72862,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Window System Integration (WSI)",
+      "category": "VK_KHR_surface",
       "description": "alpha compositing modes supported on a device"
     }
   },
@@ -72964,7 +72964,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Window System Integration (WSI)",
+      "category": "VK_KHR_surface",
       "description": "presentation transforms supported on a device"
     }
   },
@@ -73057,7 +73057,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_report",
       "description": "Bitmask specifying events which cause a debug report callback"
     }
   },
@@ -73124,7 +73124,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_external_memory_win32",
       "description": "Bitmask specifying external memory handle types"
     }
   },
@@ -73171,7 +73171,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_external_memory_capabilities",
       "description": "Bitmask specifying external memory features"
     }
   },
@@ -73365,7 +73365,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Bitmask specifying allowed usage of an indirect commands layout"
     }
   },
@@ -73407,7 +73407,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Bitmask specifying allowed usage of an object entry"
     }
   },
@@ -74038,7 +74038,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_display_surface_counter",
       "description": "Surface-relative counter types"
     }
   },
@@ -74253,7 +74253,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Window System Integration (WSI)",
+      "category": "VK_KHR_surface",
       "description": "Bitmask specifying supported device group present modes"
     }
   },
@@ -74264,7 +74264,7 @@
     "children": [],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_swapchain",
       "description": "Bitmask controlling swapchain creation"
     }
   },
@@ -74341,7 +74341,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_utils",
       "description": "Bitmask specifying which severities of events cause a debug messenger callback"
     }
   },
@@ -74400,7 +74400,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_utils",
       "description": "Bitmask specifying which types of events cause a debug messenger callback"
     }
   },
@@ -74596,7 +74596,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Ray Tracing",
+      "category": "VK_NV_ray_tracing",
       "description": "Instance flag bits"
     }
   },
@@ -74637,7 +74637,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Bitmask specifying additional parameters for a geometry"
     }
   },
@@ -74748,7 +74748,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Bitmask specifying additional parameters for acceleration structure builds"
     }
   },
@@ -86791,7 +86791,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_android_surface",
       "description": "Create a {#0#} object for an Android native window"
     }
   },
@@ -86864,7 +86864,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Query information about the available displays"
     }
   },
@@ -86937,7 +86937,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Query the plane properties"
     }
   },
@@ -87031,7 +87031,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Query the list of displays a plane supports"
     }
   },
@@ -87125,7 +87125,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Query the set of mode properties supported by the display"
     }
   },
@@ -87233,7 +87233,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Create a display mode"
     }
   },
@@ -87325,7 +87325,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Query capabilities of a mode and plane combination"
     }
   },
@@ -87417,7 +87417,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Create a {#0#} structure representing a display plane and mode"
     }
   },
@@ -87530,7 +87530,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display_swapchain",
       "description": "Create multiple swapchains that share presentable images"
     }
   },
@@ -87594,7 +87594,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Window System Integration (WSI)",
+      "category": "VK_KHR_surface",
       "description": "Destroy a VkSurfaceKHR object"
     }
   },
@@ -87689,7 +87689,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Window System Integration (WSI)",
+      "category": "VK_KHR_surface",
       "description": "Query if presentation is supported"
     }
   },
@@ -87766,7 +87766,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Window System Integration (WSI)",
+      "category": "VK_KHR_surface",
       "description": "Query surface capabilities"
     }
   },
@@ -87860,7 +87860,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Window System Integration (WSI)",
+      "category": "VK_KHR_surface",
       "description": "Query color formats supported by surface"
     }
   },
@@ -87958,7 +87958,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Window System Integration (WSI)",
+      "category": "VK_KHR_surface",
       "description": "Query supported presentation modes"
     }
   },
@@ -88050,7 +88050,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_swapchain",
       "description": "Create a swapchain"
     }
   },
@@ -88110,7 +88110,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_swapchain",
       "description": "Destroy a swapchain object"
     }
   },
@@ -88196,7 +88196,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_swapchain",
       "description": "Obtain the array of presentable images associated with a swapchain"
     }
   },
@@ -88324,7 +88324,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_swapchain",
       "description": "Retrieve the index of the next available presentable image"
     }
   },
@@ -88380,7 +88380,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_swapchain",
       "description": "Queue an image for presentation"
     }
   },
@@ -88472,7 +88472,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NN_vi_surface",
       "description": "Create a {#0#} object for a VI layer"
     }
   },
@@ -88564,7 +88564,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_wayland_surface",
       "description": "Create a {#0#} object for a Wayland window"
     }
   },
@@ -88634,7 +88634,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_wayland_surface",
       "description": "Query physical device for presentation to Wayland"
     }
   },
@@ -88726,7 +88726,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_win32_surface",
       "description": "Create a {#0#} object for an Win32 native window"
     }
   },
@@ -88777,7 +88777,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_win32_surface",
       "description": "query queue family support for presentation on a Win32 display"
     }
   },
@@ -88869,7 +88869,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_xlib_surface",
       "description": "Create a {#0#} object for an X11 window, using the Xlib client-side library"
     }
   },
@@ -88949,7 +88949,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_xlib_surface",
       "description": "Query physical device for presentation to X11 server using Xlib"
     }
   },
@@ -89041,7 +89041,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_xcb_surface",
       "description": "Create a {#0#} object for a X11 window, using the XCB client-side library"
     }
   },
@@ -89129,7 +89129,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_xcb_surface",
       "description": "Query physical device for presentation to X11 server using XCB"
     }
   },
@@ -89221,7 +89221,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_FUCHSIA_imagepipe_surface",
       "description": "Create a {#0#} object for a Fuchsia ImagePipe"
     }
   },
@@ -89313,7 +89313,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_report",
       "description": "Create a debug report callback object"
     }
   },
@@ -89398,7 +89398,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_report",
       "description": "Destroy a debug report callback object"
     }
   },
@@ -89569,7 +89569,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_report",
       "description": "Inject a message into a debug stream"
     }
   },
@@ -89625,7 +89625,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_marker",
       "description": "Give a user-friendly name to an object"
     }
   },
@@ -89681,7 +89681,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_marker",
       "description": "Attach arbitrary data to an object"
     }
   },
@@ -89734,7 +89734,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_marker",
       "description": "Open a command buffer marker region"
     }
   },
@@ -89767,7 +89767,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_marker",
       "description": "Close a command buffer marker region"
     }
   },
@@ -89820,7 +89820,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_marker",
       "description": "Insert a marker label into a command buffer"
     }
   },
@@ -90031,7 +90031,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_external_memory_capabilities",
       "description": "determine image capabilities compatible with external memory handle types"
     }
   },
@@ -90122,7 +90122,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_external_memory_win32",
       "description": "retrieve Win32 handle to a device memory object"
     }
   },
@@ -90431,7 +90431,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Performs the generation of commands on the device"
     }
   },
@@ -90475,7 +90475,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Perform a reservation of command buffer space"
     }
   },
@@ -90567,7 +90567,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Create an indirect command layout object"
     }
   },
@@ -90631,7 +90631,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Destroy an object table"
     }
   },
@@ -90723,7 +90723,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Create an object table"
     }
   },
@@ -90787,7 +90787,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Destroy an object table"
     }
   },
@@ -90913,7 +90913,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Register resource bindings in an object table"
     }
   },
@@ -91018,7 +91018,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Unregister resource bindings in an object table"
     }
   },
@@ -91091,7 +91091,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Device-Generated Commands",
+      "category": "VK_NVX_device_generated_commands",
       "description": "Returns device-generated commands related properties of a physical device"
     }
   },
@@ -92870,7 +92870,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_direct_mode_display",
       "description": "Release access to an acquired VkDisplayKHR"
     }
   },
@@ -92941,7 +92941,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_acquire_xlib_display",
       "description": "Acquire access to a VkDisplayKHR using Xlib"
     }
   },
@@ -93022,7 +93022,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_acquire_xlib_display",
       "description": "Query the VkDisplayKHR corresponding to an X11 RandR Output"
     }
   },
@@ -93094,7 +93094,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_display_control",
       "description": "Set the power state of a display"
     }
   },
@@ -93186,7 +93186,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_display_control",
       "description": "Signal a fence when a device event occurs"
     }
   },
@@ -93290,7 +93290,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_display_control",
       "description": "Signal a fence when a display event occurs"
     }
   },
@@ -93372,7 +93372,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_display_control",
       "description": "Query the current value of a surface counter"
     }
   },
@@ -93449,7 +93449,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_display_surface_counter",
       "description": "Query surface capabilities"
     }
   },
@@ -93871,7 +93871,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Window System Integration (WSI)",
+      "category": "VK_KHR_surface",
       "description": "Query present capabilities from other physical devices"
     }
   },
@@ -93945,7 +93945,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Window System Integration (WSI)",
+      "category": "VK_KHR_surface",
       "description": "Query present capabilities for a surface"
     }
   },
@@ -94016,7 +94016,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_swapchain",
       "description": "Retrieve the index of the next available presentable image"
     }
   },
@@ -94243,7 +94243,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Window System Integration (WSI)",
+      "category": "VK_KHR_surface",
       "description": "Query present rectangles for a surface on a physical device"
     }
   },
@@ -94699,7 +94699,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_hdr_metadata",
       "description": "function to set Hdr metadata"
     }
   },
@@ -94747,7 +94747,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_shared_presentable_image",
       "description": "Get a swapchain\\"
     }
   },
@@ -94815,7 +94815,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_GOOGLE_display_timing",
       "description": "Obtain the RC duration of the PE\\"
     }
   },
@@ -94905,7 +94905,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_GOOGLE_display_timing",
       "description": "Obtain timing of a previously-presented image"
     }
   },
@@ -94997,7 +94997,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_MVK_ios_surface",
       "description": "Create a VkSurfaceKHR object for an iOS UIView"
     }
   },
@@ -95089,7 +95089,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_MVK_macos_surface",
       "description": "Create a VkSurfaceKHR object for a macOS NSView"
     }
   },
@@ -95175,7 +95175,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_clip_space_w_scaling",
       "description": "Set the viewport W scaling on a command buffer"
     }
   },
@@ -95467,7 +95467,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Window System Integration (WSI)",
+      "category": "VK_KHR_surface",
       "description": "Reports capabilities of a surface on a physical device"
     }
   },
@@ -95569,7 +95569,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Window System Integration (WSI)",
+      "category": "VK_KHR_surface",
       "description": "Query color formats supported by surface"
     }
   },
@@ -95642,7 +95642,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Query information about the available displays"
     }
   },
@@ -95715,7 +95715,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Query information about the available display planes."
     }
   },
@@ -95809,7 +95809,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Query information about the available display modes."
     }
   },
@@ -95890,7 +95890,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_KHR_display",
       "description": "Query capabilities of a mode and plane combination"
     }
   },
@@ -97166,7 +97166,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_AMD_shader_info",
       "description": "Get information about a shader in a pipeline"
     }
   },
@@ -97394,7 +97394,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_utils",
       "description": "Give a user-friendly name to an object"
     }
   },
@@ -97450,7 +97450,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_utils",
       "description": "Attach arbitrary data to an object"
     }
   },
@@ -97503,7 +97503,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_utils",
       "description": "Open a queue debug label region"
     }
   },
@@ -97536,7 +97536,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_utils",
       "description": "Close a queue debug label region"
     }
   },
@@ -97589,7 +97589,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_utils",
       "description": "Insert a label into a queue"
     }
   },
@@ -97642,7 +97642,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_utils",
       "description": "Open a command buffer debug label region"
     }
   },
@@ -97675,7 +97675,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_utils",
       "description": "Close a command buffer label region"
     }
   },
@@ -97719,7 +97719,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_utils",
       "description": "Insert a label into a command buffer"
     }
   },
@@ -97811,7 +97811,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_utils",
       "description": "Create a debug messenger object"
     }
   },
@@ -97896,7 +97896,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_utils",
       "description": "Destroy a debug messenger object"
     }
   },
@@ -98002,7 +98002,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_EXT_debug_utils",
       "description": "Inject a message into a debug stream"
     }
   },
@@ -98194,7 +98194,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_AMD_buffer_marker",
       "description": "Execute a pipelined write of a marker value into a buffer"
     }
   },
@@ -98933,7 +98933,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_device_diagnostic_checkpoints",
       "description": "insert diagnostic checkpoint in command stream"
     }
   },
@@ -99008,7 +99008,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_device_diagnostic_checkpoints",
       "description": "retrieve diagnostic checkpoint data"
     }
   },
@@ -100153,7 +100153,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_mesh_shader",
       "description": "Draw mesh task work items"
     }
   },
@@ -100249,7 +100249,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_mesh_shader",
       "description": "Issue an indirect mesh tasks draw into a command buffer"
     }
   },
@@ -100377,7 +100377,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_mesh_shader",
       "description": "Perform an indirect mesh tasks draw with the draw count sourced from a buffer"
     }
   },
@@ -100444,7 +100444,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Deferred compilation of shaders"
     }
   },
@@ -100536,7 +100536,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Create a new acceleration structure object"
     }
   },
@@ -100600,7 +100600,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Destroy an acceleration structure object"
     }
   },
@@ -100663,7 +100663,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Get acceleration structure memory requirements"
     }
   },
@@ -100733,7 +100733,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Bind acceleration structure memory"
     }
   },
@@ -100820,7 +100820,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Ray Tracing",
+      "category": "VK_NV_ray_tracing",
       "description": "Copy an acceleration structure"
     }
   },
@@ -100945,7 +100945,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Ray Tracing",
+      "category": "VK_NV_ray_tracing",
       "description": "Write acceleration structure result parameters to query results."
     }
   },
@@ -101127,7 +101127,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Ray Tracing",
+      "category": "VK_NV_ray_tracing",
       "description": "Build an acceleration structure"
     }
   },
@@ -101416,7 +101416,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "Ray Tracing",
+      "category": "VK_NV_ray_tracing",
       "description": "Initialize a ray tracing dispatch"
     }
   },
@@ -101549,7 +101549,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Query ray tracing pipeline shader group handles"
     }
   },
@@ -101643,7 +101643,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Get opaque acceleration structure handle"
     }
   },
@@ -101768,7 +101768,7 @@
     ],
     "documentation": {
       "macros": [],
-      "category": "",
+      "category": "VK_NV_ray_tracing",
       "description": "Creates a new ray tracing pipeline object"
     }
   },
