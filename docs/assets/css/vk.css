@@ -298,6 +298,7 @@ vk-search-results > ol {
   padding-left: 1em;
   max-height: 50vh;
   overflow: hidden;
+  overflow-y: scroll;
 }
 
 vk-search-results > ol > li {
