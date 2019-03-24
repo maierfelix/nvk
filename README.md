@@ -14,7 +14,7 @@
 
 #
 
-This is a low-abstraction [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for [Node.js](https://en.wikipedia.org/wiki/Node.js) and comes with interfaces for JavaScript and [TypeScript](#typescript). Currently the latest supported Vulkan version is *1.1.101*, which includes support for e.g. NVIDIA's real-time ray tracing pipeline `VK_NVX_raytracing`.
+This is a low-abstraction [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for [Node.js](https://en.wikipedia.org/wiki/Node.js) with interfaces for JavaScript and [TypeScript](#typescript). Currently the latest supported Vulkan version is *1.1.101*, which includes support for e.g. NVIDIA's real-time ray tracing pipeline `VK_NVX_raytracing`.
 
 ### Platforms:
 
