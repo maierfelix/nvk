@@ -39,6 +39,7 @@ const HANDLES_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/handles.njk`, "ut
 const STRUCTS_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/structs.njk`, "utf-8");
 const HEADER_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/header.njk`, "utf-8");
 const NAVIGATION_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/navigation.njk`, "utf-8");
+const WINDOW_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/window.njk`, "utf-8");
 
 nunjucks.configure({ autoescape: true });
 
@@ -305,6 +306,21 @@ function getEnumMemberValue(enu, member) {
   return value;
 };
 
+function addSearchQuery(out, name, folder, label) {
+  out.push([name, label, folder]);
+  return out;
+};
+
+function addCategoryQuery(out, title, category, folder, label) {
+  out.push({
+    category,
+    objects: [
+      ...addSearchQuery([], title, folder, label)
+    ]
+  });
+  return out;
+};
+
 export default function(astReference, data, version) {
   ast = astReference;
   enums = data.enums;
@@ -340,6 +356,8 @@ export default function(astReference, data, version) {
     if (!fs.existsSync(`${DOCS_DIR}/${version}/handles`)) fs.mkdirSync(`${DOCS_DIR}/${version}/handles`);
     // docs/x/structs
     if (!fs.existsSync(`${DOCS_DIR}/${version}/structs`)) fs.mkdirSync(`${DOCS_DIR}/${version}/structs`);
+    // docs/additional
+    if (!fs.existsSync(`${DOCS_DIR}/${version}/additional`)) fs.mkdirSync(`${DOCS_DIR}/${version}/additional`);
   }
   // index
   {
@@ -353,6 +371,7 @@ export default function(astReference, data, version) {
   // search json
   {
     let out = [];
+    addSearchQuery(out, `VulkanWindow`, `additional`, ``);
     objects.map(obj => {
       out.push([
         obj.name,
@@ -365,6 +384,7 @@ export default function(astReference, data, version) {
   // categories json
   {
     let out = [];
+    addCategoryQuery(out, `VulkanWindow`, `Additional`, `additional`, ``);
     categories.map(name => {
       let category = { category: name, objects: [] };
       let objects = getObjectsByCategory(name);
@@ -444,6 +464,16 @@ export default function(astReference, data, version) {
       });
       fs.writeFileSync(`${DOCS_DIR}/${version}/enums/${enu.name}.html`, output, `utf-8`);
     });
+  }
+
+  // window
+  {
+    let output = nunjucks.renderString(WINDOW_TEMPLATE, {
+      objects,
+      categories,
+      ...defaultFunctions
+    });
+    fs.writeFileSync(`${DOCS_DIR}/${version}/additional/VulkanWindow.html`, output, `utf-8`);
   }
   return null;
 };
