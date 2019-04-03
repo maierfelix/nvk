@@ -154,6 +154,7 @@ export function getObjectInstantiationName(object) {
   }
   let out = name.substr(2, name.length);
   if (object.kind === `STRUCT`) {
+    let isInfo = out.match(`Info`);
     // remove 'CreateInfo' from name
     out = out.replace(`CreateInfo`, ``);
     // remove name'Info' from end
@@ -161,7 +162,7 @@ export function getObjectInstantiationName(object) {
       out = out.substr(0, out.length - 4);
     }
     out = out[0].toLowerCase() + out.slice(1);
-    out = out + `Info`;
+    if (isInfo) out = out + `Info`;
   }
   else if (object.kind === `HANDLE`) {
     out = out[0].toLowerCase() + out.slice(1);
