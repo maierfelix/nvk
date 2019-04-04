@@ -52,6 +52,13 @@ function getStructByName(name) {
   return null;
 };
 
+function getEnumByName(name) {
+  for (let ii = 0; ii < enums.length; ++ii) {
+    if (enums[ii].name === name) return enums[ii];
+  };
+  return null;
+};
+
 function isHandleInclude(name) {
   return getHandleByName(name) !== null;
 };
@@ -193,6 +200,10 @@ ${paramDescrs.join("\n")}
   return out;
 };
 
+function processEnumMemberDescriptions(enu, member) {
+  return `* @member ${member.name}${getObjectDescription(member)}`;
+};
+
 function expandMacro(macro, macroIndex, text) {
   let {kind, value} = macro;
   let match = text.match(`{#${macroIndex}#}`);
@@ -263,9 +274,10 @@ function getObjectDescription(obj) {
 };
 
 function getObjectDocumentation(name) {
+  let enu = getEnumByName(name);
   let struct = getStructByName(name);
   let handle = getHandleByName(name);
-  let object = struct || handle;
+  let object = enu || struct || handle;
   return `
   /**
    * ${getObjectDescription(object)}
@@ -286,11 +298,14 @@ export default function(astReference, data) {
     handles,
     includes,
     processCall,
+    getEnumByName,
     getStructByName,
     isHandleInclude,
     isStructInclude,
     processStructMembers,
-    getObjectDocumentation
+    getObjectDescription,
+    getObjectDocumentation,
+    processEnumMemberDescriptions
   };
   let out = {
     source: null

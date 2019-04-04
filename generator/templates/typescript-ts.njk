@@ -21,6 +21,12 @@ declare global {
   interface VkInoutAddress { $: bigint; }
 
   {% for enu in enums %}
+  /**
+   * {{ getObjectDescription(enu) | safe }}
+   {% for child in enu.children -%}
+   {{ processEnumMemberDescriptions(enu, child) | safe }}
+   {% endfor -%}
+   */
   enum {{ enu.name }} {
     {% for child in enu.children -%}
     {{ child.name }},
