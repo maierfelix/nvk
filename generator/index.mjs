@@ -378,7 +378,7 @@ ${getPlatformRelevantIncludes(ast)}
   {
     console.log("Generating typescript index..");
     let source = `module.exports = require("${pkg.config.TS_ROOT}");`;
-    writeAddonFile(`${generatePath}/../index.js`, source, "utf-8");
+    writeAddonFile(`${generatePath}/index.js`, source, "utf-8");
   }
   // docs
   if (docs) {
