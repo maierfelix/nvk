@@ -14,9 +14,11 @@
 
 #
 
-This is a low-abstraction [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for [Node.js](https://en.wikipedia.org/wiki/Node.js) with interfaces for JavaScript and [TypeScript](#typescript). Currently the latest supported Vulkan version is *1.1.101*, which includes support for e.g. NVIDIA's real-time ray tracing pipeline `VK_NVX_raytracing`.
+This is a low-abstraction [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for [Node.js](https://en.wikipedia.org/wiki/Node.js) with interfaces for JavaScript and [TypeScript](#typescript). Currently the latest supported Vulkan version is *1.1.101*, which includes support for e.g. Compute Shaders and NVIDIA's Real-Time Ray Tracing Pipeline `VK_NV_raytracing`.
 
 ### Platforms:
+
+*nvk* comes with pre-built binaries for the following platforms:
 
 |       OS      |     Status    |
 | ------------- | ------------- |
@@ -190,7 +192,7 @@ This tool uses a new JavaScript type called [`BigInt`](https://developers.google
 
 ## Binding Code Generator:
 
-The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.101/ast.json), which is then used by the code generator. Currently more than `~250.000` lines of code get generated, where `~150.000` lines are C++ code.
+The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.101/ast.json), which is then used by the code generator. Currently more than `~300.000` lines of code get generated, where `~150.000` lines are C++ and `~40.000` lines are TypeScript code.
 
 ## Build Instructions:
 
@@ -272,7 +274,7 @@ The generated bindings can then be found in `generated/{vkversion}/`
 ````
 [--vkversion]: The Vulkan version to generate bindings for
 [--incremental]: Enables incremental builds when building the bindings
-[--docs]: Generates HTML-based documentation
+[--docs]: Generates HTML-based documentation, also used for TypeScript type annotations
 ````
 
 #### Building:
