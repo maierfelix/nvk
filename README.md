@@ -112,19 +112,20 @@ vkCreateInstance(&instanceInfo, nullptr, &instance);
 
 ## TypeScript:
 
-When generating bindings, a TypeScript definition file is auto-generated as well (see e.g. the file [here](https://github.com/maierfelix/nvk/blob/master/generated/1.1.92/index.d.ts)).
+When generating bindings, a TypeScript definition file is auto-generated as well (see e.g. the file [here](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.101/win32/index.d.ts)).
 
 To use the definition file, simply follow the installation steps above. Afterwards in your `.ts` file, import and use *nvk* as follows:
 
 ````ts
-import {
-  VulkanWindow,
-  VkApplicationInfo,
-  VK_MAKE_VERSION,
-  VK_API_VERSION_1_0
-} from "nvk/generated/1.1.101/index";
+import * as nvk from "nvk/generated/1.1.101/index";
 
-let win = new VulkanWindow({ width: 480, height: 320 });
+Object.assign(global, nvk);
+
+let win = new VulkanWindow({
+  width: 480,
+  height: 320,
+  title: "typescript-example"
+});
 
 let appInfo = new VkApplicationInfo({
   pApplicationName: "Hello!",
