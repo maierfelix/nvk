@@ -128,6 +128,17 @@ function buildFiles() {
 };
 
 /**
+ * This reduces runtime load by "inlining" the C++ based enums
+ * into a JSON file, which can then be cheaply required at runtime
+ */
+function inlineEnumLayouts() {
+  const addon = require(`${buildReleaseDir}/addon-${platform}.node`);
+  console.log(`Inlining enum layouts..`);
+  let enumLayouts = addon.getVulkanEnumerations();
+  fs.writeFileSync(`${generatePath}/enumLayouts.json`, JSON.stringify(enumLayouts, null, 2));
+};
+
+/**
  * This reduces runtime load by "inlining" the C++ based memory layout
  * into a JSON file, which can then be cheaply required at runtime
  */
@@ -139,6 +150,7 @@ function inlineMemoryLayouts() {
 };
 
 function actionsAfter() {
+  inlineEnumLayouts();
   inlineMemoryLayouts();
 };
 

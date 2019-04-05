@@ -133,7 +133,7 @@
     <None Include="..\binding.gyp"/>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\src\win_delay_load_hook.cc"/>
+    <ClCompile Include="C:\Users\User\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\src\win_delay_load_hook.cc"/>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
   <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets"/>

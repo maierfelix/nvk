@@ -244,13 +244,18 @@ async function generateBindings({xml, version, docs, incremental} = _) {
   {
     console.log("Generating Vk JavaScript interfaces..");
     let out = `
+import nvk from "${pkg.config.INTERFACE_ROOT}";
+
+const BI0 = BigInt(0);
+const EDI = nvk.isLittleEndianPlatform();
+
 const textEncoder = new TextEncoder();
 const textDecoder = new TextDecoder();
 
 class NativeStringArray {
   constructor(array) {
     this.array = array;
-    this.address = 0n;
+    this.address = BI0;
     let stringBuffers = [];
     let addressView = new BigInt64Array(array.length);
     let addressBuffer = addressView.buffer;
@@ -272,7 +277,7 @@ class NativeStringArray {
 class NativeObjectArray {
   constructor(array) {
     this.array = array;
-    this.address = 0n;
+    this.address = BI0;
     let addressView = new BigInt64Array(array.length);
     let addressBuffer = addressView.buffer;
     let addressBufferAddress = getAddressFromArrayBuffer(addressBuffer);
@@ -289,10 +294,19 @@ class NativeObjectArray {
 `;
     out += generateJavaScriptInterfaces(ast, handles, structs);
     out += `\nexport default {\n`;
-    structs.map((struct, index) => {
-      let comma = index < structs.length - 1 ? `,\n` : ``;
-      out += `  ` + struct.name + `${comma}`;
-    });
+    // add exports
+    {
+      enums.map(enu => {
+        out += `  ` + enu.name + `,\n`;
+      });
+      handles.map(handle => {
+        out += `  ` + handle.name + `,\n`;
+      });
+      structs.map((struct, index) => {
+        let comma = index < structs.length - 1 ? `,\n` : ``;
+        out += `  ` + struct.name + `${comma}`;
+      });
+    }
     out += `\n};\n`;
     writeAddonFile(`${generatePath}/interfaces.mjs`, out, "utf-8", true);
   }
@@ -352,6 +366,13 @@ class NativeObjectArray {
     let indexFile = generateIndex(ast, sortedIncludes, calls);
     writeAddonFile(`${generateSrcPath}/index.h`, indexFile.header, "utf-8", true);
     writeAddonFile(`${generateSrcPath}/index.cpp`, indexFile.source, "utf-8", true);
+  }
+  // generate enum layouts
+  {
+    let data = { structs };
+    let result = generateMemoryLayouts(ast, data);
+    console.log("Generating Memory layouts..");
+    writeAddonFile(`${generateSrcPath}/memoryLayouts.h`, result, "utf-8", true);
   }
   // generate memory layouts
   {

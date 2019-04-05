@@ -1,7 +1,7 @@
 /** {{ handle.name }} **/
 class {{ handle.name }} {
   constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer({{ handle.name }}.byteLength);
+    this.memoryBuffer = new ArrayBuffer({{ getHandleByteLength() | safe }});
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     if (typeof opts === "object") {

@@ -334,17 +334,18 @@ Napi::Value _vkUseInstance(const Napi::CallbackInfo& info) {
 Napi::Value _vkCreateInstance(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkInstanceCreateInfo* obj0;
+  Napi::Object obj0;
   VkInstanceCreateInfo *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkInstanceCreateInfo::constructor.Value()))) {
+    if (!obj.Has("sType") || obj.Get("sType").As<Napi::Number>().Int32Value() != VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO) {
       NapiObjectTypeError(info[0], "argument 1", "[object VkInstanceCreateInfo]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkInstanceCreateInfo>::Unwrap(obj);
-    if (!obj0->flush()) return env.Undefined();
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    Napi::Value call0 = obj0.Get("flush").As<Napi::Function>().Call(obj0, {  });
+    if (!(call0.As<Napi::Boolean>().Value())) return env.Undefined();
+    $p0 = reinterpret_cast<VkInstanceCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
   } else if (info[0].IsNull()) {
     $p0 = nullptr;
   } else {
@@ -352,29 +353,30 @@ Napi::Value _vkCreateInstance(const Napi::CallbackInfo& info) {
   }
 
 
-  _VkInstance* obj2;
+  Napi::Object obj2;
   VkInstance *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
+    if (!obj.Has("memoryBuffer")) {
       NapiObjectTypeError(info[2], "argument 3", "[object VkInstance]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkInstance>::Unwrap(obj);
-    
-    $p2 = &obj2->instance;
+    obj2 = obj;
+
+    $p2 = reinterpret_cast<VkInstance*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pInstance'").ThrowAsJavaScriptException();
   }
+
   int32_t out = vkCreateInstance(
     $p0,
     nullptr,
     $p2
   );
   
-  vkUseInstance(obj2->instance);
+  vkUseInstance(*$p2);
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
   

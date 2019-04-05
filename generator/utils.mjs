@@ -515,3 +515,13 @@ export function getDataViewInstruction(member) {
   };
   return ``;
 };
+
+export function getHexadecimalFromNumber(num) {
+  return `0x` + num.toString(16).toUpperCase();
+};
+
+export function stringifyJSONQuoteless(obj) {
+  let json = JSON.stringify(obj, null, 2);
+  json = json.replace(/\"([^(\")"]+)\":/g, "$1:");
+  return json;
+};

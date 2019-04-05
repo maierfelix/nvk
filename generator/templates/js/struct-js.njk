@@ -6,7 +6,7 @@ class {{ struct.name }} {
     {{ getConstructorInitializer(member) | safe }}
     {% endif -%}
     {%- endfor -%}
-    this.memoryBuffer = new ArrayBuffer({{ struct.name }}.byteLength);
+    this.memoryBuffer = new ArrayBuffer({{ getStructureByteLength() | safe }});
     this.memoryView = new DataView(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     {{ getStructureAutoSType() | safe }}

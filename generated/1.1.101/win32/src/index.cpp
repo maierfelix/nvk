@@ -61,6 +61,13 @@ static Napi::Value getArrayBufferFromAddress(const Napi::CallbackInfo& info) {
   return buffer;
 };
 
+static Napi::Value isLittleEndianPlatform(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  union { uint8_t c[4]; uint32_t i; } data;
+  data.i = 0x12345678;
+  return Napi::Boolean::New(env, (data.c[0] == 0x78));
+};
+
 static Napi::Value _VK_MAKE_VERSION(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   if (!(info[0].IsNumber())) Napi::TypeError::New(env, "Argument 1 must be of type 'Number'").ThrowAsJavaScriptException();
@@ -107,6 +114,7 @@ Napi::Object Init(Napi::Env env, Napi::Object exports) {
   exports["MemoryLayouts"] = Napi::Function::New(env, MemoryLayouts, "MemoryLayouts");
   exports["getAddressFromArrayBuffer"] = Napi::Function::New(env, getAddressFromArrayBuffer, "getAddressFromArrayBuffer");
   exports["getArrayBufferFromAddress"] = Napi::Function::New(env, getArrayBufferFromAddress, "getArrayBufferFromAddress");
+  exports["isLittleEndianPlatform"] = Napi::Function::New(env, isLittleEndianPlatform, "isLittleEndianPlatform");
   // structs & handles
   _VkDebugUtilsMessengerEXT::Initialize(env, exports);
   _VkDebugReportCallbackEXT::Initialize(env, exports);

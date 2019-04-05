@@ -1,0 +1,27 @@
+{% for enu in enums -%}
+
+std::map<std::string, {{ getEnumType(enu) | safe }}> _{{ enu.name }} = {
+  {% for child in enu.children -%}
+  { "{{ child.name }}", {{ getEnumMemberValue(child) | safe }} },
+  {% endfor %}
+};
+
+{% endfor %}
+
+Napi::Value getVulkanEnumerations(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  Napi::Object out = Napi::Object::New(env);
+  {% for enu in enums -%}
+  {
+    std::map<std::string, {{ getEnumType(enu) | safe }}>::iterator it;
+    Napi::Object entry = Napi::Object::New(env);
+    for (it = _{{ enu.name }}.begin(); it != _{{ enu.name }}.end(); it++) {
+      Napi::String accessor = Napi::String::New(env, it->first);
+      entry.Set(accessor, {{ getEnumNapiValue(enu) | safe }});
+      out.Set(accessor, {{ getEnumNapiValue(enu) | safe }});
+    };
+    out.Set(Napi::String::New(env, "{{ enu.name }}"), entry);
+  }
+  {% endfor %}
+  return out;
+};

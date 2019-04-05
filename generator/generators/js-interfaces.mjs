@@ -10,7 +10,9 @@ import {
   isIgnoreableType,
   isFlushableMember,
   getAutoStructureType,
-  getDataViewInstruction
+  getDataViewInstruction,
+  stringifyJSONQuoteless,
+  getHexadecimalFromNumber
 } from "../utils";
 
 import {
@@ -25,7 +27,10 @@ let currentStruct = null;
 const JS_HANDLE_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/js/handle-js.njk`, "utf-8");
 const JS_STRUCT_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/js/struct-js.njk`, "utf-8");
 
+let enumLayouts = null;
 let memoryLayouts = null;
+
+let enumLayoutTable = null;
 
 nunjucks.configure({ autoescape: true });
 
@@ -49,23 +54,35 @@ function getConstructorInitializer(member) {
 function getStructureMemberByteOffset(member) {
   if (!memoryLayouts) return `0x0`;
   let byteOffset = memoryLayouts[currentStruct.name][member.name].byteOffset;
-  return `0x` + byteOffset.toString(16).toUpperCase();
+  return getHexadecimalFromNumber(byteOffset);
 };
 
 function getStructureMemberByteLength(member) {
   if (!memoryLayouts) return `0x0`;
   let byteLength = memoryLayouts[currentStruct.name][member.name].byteLength;
-  return `0x` + byteLength.toString(16).toUpperCase();
+  return getHexadecimalFromNumber(byteLength);
 };
 
 function getStructureByteLength() {
   if (!memoryLayouts) return `0x0`;
   let byteLength = memoryLayouts[currentStruct.name].byteLength;
-  return `0x` + byteLength.toString(16).toUpperCase();
+  return getHexadecimalFromNumber(byteLength);
 };
 
 function getHandleByteLength() {
-  return `0x8`;
+  return getHexadecimalFromNumber(8);
+};
+
+function getEnumInlineValue(name) {
+  let value = enumLayouts[name];
+  if (value === void 0) {
+    let value_KHR = enumLayouts[name + "_KHR"];
+    // try different extension names
+    if (value_KHR !== void 0) return getHexadecimalFromNumber(value_KHR);
+    warn(`Cannot inline enum value of '${name}'`);
+    return name;
+  }
+  return getHexadecimalFromNumber(value);
 };
 
 function getGetterProcessor(member) {
@@ -75,11 +92,11 @@ function getGetterProcessor(member) {
     case JavaScriptType.NUMBER:
     case JavaScriptType.BIGINT: {
       return `
-    return this.memoryView.get${getDataViewInstruction(member)}(${byteOffset});`;
+    return this.memoryView.get${getDataViewInstruction(member)}(${byteOffset}, EDI);`;
     }
     case JavaScriptType.BOOLEAN: {
       return `
-    return this.memoryView.get${getDataViewInstruction(member)}(${byteOffset}) !== 0;`;
+    return this.memoryView.get${getDataViewInstruction(member)}(${byteOffset}, EDI) !== 0;`;
     }
     case JavaScriptType.OBJECT: {
       return `
@@ -127,21 +144,21 @@ function getSetterProcessor(member) {
     case JavaScriptType.NUMBER:
     case JavaScriptType.BIGINT: {
       return `
-    this.memoryView.set${getDataViewInstruction(member)}(${byteOffset}, value);`;
+    this.memoryView.set${getDataViewInstruction(member)}(${byteOffset}, value, EDI);`;
     }
     case JavaScriptType.BOOLEAN: {
       return `
-    this.memoryView.set${getDataViewInstruction(member)}(${byteOffset}, value | 0);`;
+    this.memoryView.set${getDataViewInstruction(member)}(${byteOffset}, value | 0, EDI);`;
     }
     case JavaScriptType.OBJECT: {
       return `
     if (value !== null && value.constructor === ${member.type}) {
       value.flush();
       this._${member.name} = value;
-      this.memoryView.setBigInt64(${byteOffset}, value.memoryAddress);
+      this.memoryView.setBigInt64(${byteOffset}, value.memoryAddress, EDI);
     } else if (value === null) {
       this._${member.name} = null;
-      this.memoryView.setBigInt64(${byteOffset}, 0n);
+      this.memoryView.setBigInt64(${byteOffset}, BI0, EDI);
     } else {
       throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected '${member.type}' but got '" + value.constructor.name + "'");
     }`;
@@ -150,10 +167,10 @@ function getSetterProcessor(member) {
       return `
     if (value !== null && value.constructor === String) {
       this._${member.name} = textEncoder.encode(value + String.fromCharCode(0x0)).buffer;
-      this.memoryView.setBigInt64(${byteOffset}, getAddressFromArrayBuffer(this._${member.name}));
+      this.memoryView.setBigInt64(${byteOffset}, getAddressFromArrayBuffer(this._${member.name}), EDI);
     } else if (value === null) {
       this._${member.name} = null;
-      this.memoryView.setBigInt64(${byteOffset}, 0n);
+      this.memoryView.setBigInt64(${byteOffset}, BI0, EDI);
     } else {
       throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'String' but got '" + value.constructor.name + "'");
     }`;
@@ -192,7 +209,7 @@ function getSetterProcessor(member) {
       return `
     if (value !== null && value.constructor === ${member.jsTypedArrayName}) {
       this._${member.name} = value;
-      this.memoryView.setBigInt64(${byteOffset}, getAddressFromArrayBuffer(value.buffer));
+      this.memoryView.setBigInt64(${byteOffset}, getAddressFromArrayBuffer(value.buffer), EDI);
     } else if (value === null) {
       this._${member.name} = null;
     } else {
@@ -211,21 +228,22 @@ function getSetterProcessor(member) {
       let structExt = getNodeByName(extensionName, ast);
       if (!structExt || !structExt.sType) warn(`Cannot resolve struct by extension name '${extensionName}'`);
       conditions += `
-        case ${structExt.sType}:`;
+        case ${getEnumInlineValue(structExt.sType)}:`;
     });
     return `
     if (value !== null) {
-      if (value.sType <= -1) throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}'");
-      switch (value.sType) {
+      let sType = value.sType | 0;
+      if (sType <= -1) throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}'");
+      switch (sType) {
           ${conditions}
           break;
         default:
           throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}'");
       };
       this._${member.name} = value;
-      this.memoryView.setBigInt64(${byteOffset}, value.memoryAddress);
+      this.memoryView.setBigInt64(${byteOffset}, value.memoryAddress, EDI);
     } else if (value === null) {
-      this.memoryView.setBigInt64(${byteOffset}, 0n);
+      this.memoryView.setBigInt64(${byteOffset}, BI0, EDI);
     } else {
       throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}'");
     }`;
@@ -257,7 +275,7 @@ function getFlusherProcessor(member) {
   if (this._${member.name} !== null) {
     let nativeArray = new NativeStringArray(this._${member.name});
     this._${member.name}Native = nativeArray;
-    this.memoryView.setBigInt64(${byteOffset}, nativeArray.address);
+    this.memoryView.setBigInt64(${byteOffset}, nativeArray.address, EDI);
   }`;
     }
     case JavaScriptType.ARRAY_OF_NUMBERS: {
@@ -265,7 +283,7 @@ function getFlusherProcessor(member) {
   if (this._${member.name} !== null) {
     let array = this._${member.name};
     for (let ii = 0; ii < array.length; ++ii) {
-      this.memoryView.set${getDataViewInstruction(member)}(${byteOffset}, array[ii]);
+      this.memoryView.set${getDataViewInstruction(member)}(${byteOffset}, array[ii], EDI);
     };
   }`;
     }
@@ -280,7 +298,7 @@ function getFlusherProcessor(member) {
         write = `
     let nativeArray = new NativeObjectArray(array);
     this._${member.name}Native = nativeArray;
-    this.memoryView.setBigInt64(${byteOffset}, nativeArray.address);`;
+    this.memoryView.setBigInt64(${byteOffset}, nativeArray.address, EDI);`;
       // do a memcpy for static objects
       } else {
         write = `
@@ -334,25 +352,73 @@ function getStructureAutoSType() {
   let sTypeMember = null;
   if (filtered.length) sTypeMember = filtered[0];
   if (sTypeMember) sType = struct.sType || getAutoStructureType(struct.name);
-  if (sType) return `this.sType = ${sType};`;
+  if (sType) return `this.sType = ${getEnumInlineValue(sType)};`;
   return ``;
 };
 
-export default function(astReference, handles, structs) {
-  ast = astReference;
+function getEnumLayoutTable() {
+  let json = enumLayouts;
+  if (!json) return null;
+  let out = {};
+  for (let key in json) {
+    if (typeof json[key] === "object") {
+      out[key] = json[key];
+    }
+  };
+  return out;
+};
+
+function getEnumLayouts() {
+  let enumLayoutsPath = `${pkg.config.GEN_OUT_DIR}/${global.vkVersion}/${process.platform}/enumLayouts.json`;
+  if (!fs.existsSync(enumLayoutsPath)) {
+    if (!global.ENUM_LAYOUT_NEEDS_RECOMPILATION) {
+      warn(`Module needs recompilation:
+Enum layouts aren't resolved yet, module needs to be re-compiled this time
+The code generater can only inline required enum layouts after second compilation
+      `);
+      global.ENUM_LAYOUT_NEEDS_RECOMPILATION = true;
+    }
+  } else {
+    return JSON.parse(fs.readFileSync(enumLayoutsPath, "utf-8"));
+  }
+  return null;
+};
+
+function getMemoryLayouts() {
   let memoryLayoutsPath = `${pkg.config.GEN_OUT_DIR}/${global.vkVersion}/${process.platform}/memoryLayouts.json`;
   if (!fs.existsSync(memoryLayoutsPath)) {
-    if (!global.MEMORY_LAYOUT_RECOMPILATION) {
+    if (!global.MEMORY_LAYOUT_NEEDS_RECOMPILATION) {
       warn(`Module needs recompilation:
 Memory layouts aren't resolved yet, module needs to be re-compiled this time
 The code generater can only inline required memory layout offets after second compilation
       `);
-      global.MEMORY_LAYOUT_RECOMPILATION = true;
+      global.MEMORY_LAYOUT_NEEDS_RECOMPILATION = true;
     }
   } else {
-    memoryLayouts = JSON.parse(fs.readFileSync(memoryLayoutsPath, "utf-8"));
+    return JSON.parse(fs.readFileSync(memoryLayoutsPath, "utf-8"));
   }
+  return null;
+};
+
+export default function(astReference, handles, structs) {
+  ast = astReference;
+  enumLayouts = getEnumLayouts();
+  enumLayoutTable = getEnumLayoutTable();
+  memoryLayouts = getMemoryLayouts();
   let output = ``;
+  if (enumLayoutTable) {
+    for (let key in enumLayoutTable) {
+      let json = stringifyJSONQuoteless(enumLayoutTable[key]);
+      output += `\nconst ${key} = ${json};\n`;
+    };
+  }
+  handles.map(handle => {
+    currentHandle = handle;
+    output += nunjucks.renderString(JS_HANDLE_TEMPLATE, {
+      handle,
+      getHandleByteLength
+    });
+  });
   structs.map(struct => {
     currentStruct = struct;
     output += nunjucks.renderString(JS_STRUCT_TEMPLATE, {
@@ -370,14 +436,5 @@ The code generater can only inline required memory layout offets after second co
       getStructureMemberByteLength
     });
   });
-  {
-    handles.map(handle => {
-      currentHandle = handle;
-      output += nunjucks.renderString(JS_HANDLE_TEMPLATE, {
-        handle,
-        getHandleByteLength
-      });
-    });
-  }
   return output;
 };
