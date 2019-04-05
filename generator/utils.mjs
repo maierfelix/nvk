@@ -462,3 +462,56 @@ export function getBitmaskByName(ast, name) {
   };
   return null;
 };
+
+export function isFillableMember(struct, member) {
+  if (member.name === `sType` || member.name === `pNext`) return true;
+  if (member.isVoidPointer) return true;
+  return !struct.returnedonly;
+};
+
+export function isFlushableMember(member) {
+  if (isPNextMember(member)) return true;
+  if (member.isStructType && member.dereferenceCount <= 0 && !member.isConstant) return true;
+  return isHeaderHeapVector(member);
+};
+
+export function isArrayMember(member) {
+  return (
+    member.isArray ||
+    member.isDynamicArray ||
+    member.isNumericArray ||
+    member.isTypedArray
+  );
+};
+
+export function isArrayOfObjectsMember(member) {
+  return (
+    (member.isArray) &&
+    (member.isStructType || member.isHandleType) ||
+    (member.isStaticArray && member.isNumericArray)
+  );
+};
+
+export function isHeaderHeapVector(member) {
+  return (
+    isArrayOfObjectsMember(member) ||
+    member.rawType === "const char * const*"
+  );
+};
+
+export function getDataViewInstruction(member) {
+  let {type} = member;
+  if (member.isWin32Handle) return `BigInt64`;
+  switch (type) {
+    case "int": return `Int32`;
+    case "float": return `Float32`;
+    case "size_t": return `BigInt64`;
+    case "int32_t": return `Int32`;
+    case "uint8_t": return `Uint8`;
+    case "uint32_t": return `Uint32`;
+    case "uint64_t": return `BigUint64`;
+    default:
+      warn(`Cannot resolve DataView instruction for ${member.name} of type ${type}`);
+  };
+  return ``;
+};

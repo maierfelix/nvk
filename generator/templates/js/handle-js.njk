@@ -1,48 +1,13 @@
-class _{{ handle_name }} : public Napi::ObjectWrap<_{{ handle_name }}> {
-  public:
-    static Napi::Object Initialize(Napi::Env env, Napi::Object exports);
-    _{{ handle_name }}(const Napi::CallbackInfo &info);
-    ~_{{ handle_name }}();
-    static Napi::FunctionReference constructor;
-
-    // #default properties
-    Napi::Value Getaddress(const Napi::CallbackInfo &info);
-
-    // real instance
-    {{ handle_name }} instance;
-
+/** {{ handle.name }} **/
+class {{ handle.name }} {
+  constructor(opts) {
+    this.memoryBuffer = new ArrayBuffer({{ handle.name }}.byteLength);
+    this.memoryView = new DataView(this.memoryBuffer);
+    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+    if (typeof opts === "object") {
+      throw new Error("'{{ handle.name }}' doesn't take any arguments");
+    }
+  }
 };
 
-Napi::FunctionReference _{{ handle_name }}::constructor;
-
-_{{ handle_name }}::_{{ handle_name }}(const Napi::CallbackInfo& info) : Napi::ObjectWrap<_{{ handle_name }}>(info) {
-  Napi::Env env = info.Env();
-  if (!info.IsConstructCall()) Napi::Error::New(env, "{{ handle_name }} constructor cannot be invoked without 'new'");
-}
-
-_{{ handle_name }}::~_{{ handle_name }}() {}
-
-Napi::Object _{{ handle_name }}::Initialize(Napi::Env env, Napi::Object exports) {
-  Napi::HandleScope scope(env);
-
-  Napi::Function func = DefineClass(env, "{{ handle_name }}", {
-    InstanceAccessor(
-      "address",
-      &_{{ handle_name }}::Getaddress,
-      nullptr,
-      napi_default
-    ),
-  });
-
-  constructor = Napi::Persistent(func);
-
-  constructor.SuppressDestruct();
-  exports.Set("{{ handle_name }}", func);
-  return exports;
-}
-
-Napi::Value _{{ handle_name }}::Getaddress(const Napi::CallbackInfo& info) {
-  Napi::Env env = info.Env();
-  Napi::BigInt out = Napi::BigInt::New(env, (int64_t) this->instance);
-  return out;
-}
+{{ handle.name }}.byteLength = {{ getHandleByteLength() | safe }};

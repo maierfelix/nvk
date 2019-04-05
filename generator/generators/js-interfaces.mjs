@@ -19,9 +19,11 @@ import {
 } from "../javascript-type";
 
 let ast = null;
+let currentHandle = null;
 let currentStruct = null;
 
-const JS_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/js/struct-js.njk`, "utf-8");
+const JS_HANDLE_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/js/handle-js.njk`, "utf-8");
+const JS_STRUCT_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/js/struct-js.njk`, "utf-8");
 
 let memoryLayouts = null;
 
@@ -60,6 +62,10 @@ function getStructureByteLength() {
   if (!memoryLayouts) return `0x0`;
   let byteLength = memoryLayouts[currentStruct.name].byteLength;
   return `0x` + byteLength.toString(16).toUpperCase();
+};
+
+function getHandleByteLength() {
+  return `0x8`;
 };
 
 function getGetterProcessor(member) {
@@ -332,12 +338,9 @@ function getStructureAutoSType() {
   return ``;
 };
 
-export default function(astReference, struct) {
+export default function(astReference, handles, structs) {
   ast = astReference;
-  currentStruct = struct;
-  let memoryLayoutsPath = (
-    `${pkg.config.GEN_OUT_DIR}/${global.vkVersion}/${process.platform}/memoryLayouts.json`
-  );
+  let memoryLayoutsPath = `${pkg.config.GEN_OUT_DIR}/${global.vkVersion}/${process.platform}/memoryLayouts.json`;
   if (!fs.existsSync(memoryLayoutsPath)) {
     if (!global.MEMORY_LAYOUT_RECOMPILATION) {
       warn(`Module needs recompilation:
@@ -349,21 +352,32 @@ The code generater can only inline required memory layout offets after second co
   } else {
     memoryLayouts = JSON.parse(fs.readFileSync(memoryLayoutsPath, "utf-8"));
   }
-  let vars = {
-    struct,
-    isFillableMember,
-    isIgnoreableType,
-    isFlushableMember,
-    getGetterProcessor,
-    getSetterProcessor,
-    getFlusherProcessor,
-    getStructureAutoSType,
-    getStructureByteLength,
-    getConstructorInitializer,
-    getStructureMemberByteOffset,
-    getStructureMemberByteLength
-  };
-  let template = JS_TEMPLATE;
-  let output = nunjucks.renderString(template, vars);
+  let output = ``;
+  structs.map(struct => {
+    currentStruct = struct;
+    output += nunjucks.renderString(JS_STRUCT_TEMPLATE, {
+      struct,
+      isFillableMember,
+      isIgnoreableType,
+      isFlushableMember,
+      getGetterProcessor,
+      getSetterProcessor,
+      getFlusherProcessor,
+      getStructureAutoSType,
+      getStructureByteLength,
+      getConstructorInitializer,
+      getStructureMemberByteOffset,
+      getStructureMemberByteLength
+    });
+  });
+  {
+    handles.map(handle => {
+      currentHandle = handle;
+      output += nunjucks.renderString(JS_HANDLE_TEMPLATE, {
+        handle,
+        getHandleByteLength
+      });
+    });
+  }
   return output;
 };

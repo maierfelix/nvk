@@ -10,8 +10,6 @@ import generateAST from "./generators/ast";
 import generateCalls from "./generators/calls";
 import generateEnums from "./generators/enums";
 import generateIndex from "./generators/index";
-import generateStructs from "./generators/structs";
-import generateHandles from "./generators/handles";
 import generateGyp from "./generators/gyp";
 import generatePackage from "./generators/package";
 import generateUtils from "./generators/utils";
@@ -232,92 +230,15 @@ async function generateBindings({xml, version, docs, incremental} = _) {
     }
     return true;
   });
-  let files = [];
-  // generate structs
-  {
-    console.log("Generating Vk structs..");
-    structs.map(struct => {
-      let result = generateStructs(ast, struct);
-      result.includes.map(incl => includes.push(incl));
-      if (includes.indexOf(struct.name) <= -1) includes.push({ name: struct.name, include: "" });
-      files.push({
-        name: struct.name,
-        header: result.header,
-        source: result.source
-      });
-    });
-  }
-  // generate handles
-  {
-    console.log("Generating Vk handles..");
-    handles.map(handle => {
-      let result = generateHandles(ast, handle);
-      if (includes.indexOf(handle.name) <= -1) includes.push({ name: handle.name, include: "" });
-      files.push({
-        name: handle.name,
-        header: result.header,
-        source: result.source
-      });
-    });
-  }
   // create sorted includes
   {
+    structs.map(struct => {
+      if (includes.indexOf(struct.name) <= -1) includes.push({ name: struct.name, include: "" });
+    });
+    handles.map(handle => {
+      if (includes.indexOf(handle.name) <= -1) includes.push({ name: handle.name, include: "" });
+    });
     sortedIncludes = getSortedIncludes(includes);
-  }
-  // dynamic unwrap
-  {
-    const DYN_UNWRAP_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/dynamic-unwrap.njk`, "utf-8");
-    let source = nunjucks.renderString(DYN_UNWRAP_TEMPLATE, { structs });
-    writeAddonFile(`${generateSrcPath}/dynamic-unwrap.h`, source, "utf-8", true);
-  }
-  // merge structs and handles into one source file
-  {
-    let source = ``;
-    let sorted = [];
-    // sort
-    for (let ii = 0; ii < files.length; ++ii) {
-      let file = files[ii];
-      let sortedIndex = sortedIncludes.indexOf(file.name);
-      sorted[sortedIndex] = file;
-    };
-    source += ``;
-    source += `
-#ifndef __SOURCE_H__
-#define __SOURCE_H__
-
-#define NAPI_EXPERIMENTAL
-#include <napi.h>
-
-#define GLFW_INCLUDE_VULKAN
-#include <GLFW/glfw3.h>
-
-${getPlatformRelevantIncludes(ast)}
-
-#include "utils.h"`;
-    // header
-    sorted.map(file => {
-      source += `\n/** ## BEGIN ${file.name} ## **/\n`;
-      source += file.header;
-      source += `\n/** ## END ${file.name} ## **/\n`;
-    });
-    source += `
-#endif`;
-    writeAddonFile(`${generateSrcPath}/source.h`, source, "utf-8", true);
-    // source
-    source = ``;
-    source += `
-#ifndef __SOURCE_CPP__
-#define __SOURCE_CPP__
-#include "source.h"
-#include "dynamic-unwrap.h"`;
-    sorted.map(file => {
-      source += `\n/** ## BEGIN ${file.name} ## **/\n`;
-      source += file.source;
-      source += `\n/** ## END ${file.name} ## **/\n`;
-    });
-    source += `
-#endif`;
-    writeAddonFile(`${generateSrcPath}/source.cpp`, source, "utf-8", true);
   }
   // generate js interface
   {
@@ -366,10 +287,7 @@ class NativeObjectArray {
   }
 };
 `;
-    structs.map(struct => {
-      let result = generateJavaScriptInterfaces(ast, struct);
-      out += result;
-    });
+    out += generateJavaScriptInterfaces(ast, handles, structs);
     out += `\nexport default {\n`;
     structs.map((struct, index) => {
       let comma = index < structs.length - 1 ? `,\n` : ``;
