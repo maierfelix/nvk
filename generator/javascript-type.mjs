@@ -1,8 +1,7 @@
 import {
   warn,
   isIgnoreableType,
-  getBitmaskByName,
-  getNumericByteLength
+  getBitmaskByName
 } from "./utils";
 
 export class JavaScriptType {
@@ -114,7 +113,7 @@ export function getJavaScriptType(ast, object) {
       type: JavaScriptType.BOOLEAN
     });
   }
-  if (object.enumType) {
+  if (object.enumType && !object.isBitmaskType) {
     return new JavaScriptType({
       type: JavaScriptType.NUMBER,
       value: object.enumType,

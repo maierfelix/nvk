@@ -1,0 +1,84 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkMemoryPropertyFlagBits | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkMemoryPropertyFlagBits</vk-name>
+
+    <vk-description>Bitmask specifying properties for a memory type</vk-description>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">VkMemoryPropertyFlagBits = {
+  VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT: 0x1,
+  VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT: 0x2,
+  VK_MEMORY_PROPERTY_HOST_COHERENT_BIT: 0x4,
+  VK_MEMORY_PROPERTY_HOST_CACHED_BIT: 0x8,
+  VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT: 0x10
+};</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkMemoryPropertyFlagBits.<vk-prototype-name>VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> bit specifies that memory allocated with this type is the most efficient for device access. This property will be set if and only if the memory type belongs to a heap with the <b>VK_MEMORY_HEAP_DEVICE_LOCAL_BIT</b> set.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkMemoryPropertyFlagBits.<vk-prototype-name>VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> bit specifies that memory allocated with this type <i>can</i> be mapped for host access using <b><a href="../calls/vkMapMemory.html">vkMapMemory</a></b>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkMemoryPropertyFlagBits.<vk-prototype-name>VK_MEMORY_PROPERTY_HOST_COHERENT_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> bit specifies that the host cache management commands <b><a href="../calls/vkFlushMappedMemoryRanges.html">vkFlushMappedMemoryRanges</a></b> and <b><a href="../calls/vkInvalidateMappedMemoryRanges.html">vkInvalidateMappedMemoryRanges</a></b> are not needed to flush host writes to the device or make device writes visible to the host, respectively.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkMemoryPropertyFlagBits.<vk-prototype-name>VK_MEMORY_PROPERTY_HOST_CACHED_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> bit specifies that memory allocated with this type is cached on the host. Host memory accesses to uncached memory are slower than to cached memory, however uncached memory is always host coherent.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkMemoryPropertyFlagBits.<vk-prototype-name>VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> bit specifies that the memory type only allows device access to the memory. Memory types <i>must</i> not have both <b>VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT</b> and <b>VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT</b> set. Additionally, the object's backing memory <i>may</i> be provided by the implementation lazily as specified in <<memory-device-lazy_allocation, Lazily Allocated Memory>>.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

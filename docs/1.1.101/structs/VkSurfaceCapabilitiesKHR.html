@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkSurfaceCapabilitiesKHR</vk-name>
@@ -41,96 +37,74 @@
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
-      <pre><code class="language-js">surfaceCapabilitiesKHRInfo = new VkSurfaceCapabilitiesKHR();
-surfaceCapabilitiesKHRInfo = new VkSurfaceCapabilitiesKHR(object);</code></pre>
+      <pre><code class="language-js">surfaceCapabilitiesKHR = new VkSurfaceCapabilitiesKHR();</code></pre>
     </vk-syntax>
 
-    <vk-section-title>Stub</vk-section-title>
+    <vk-section-title>Stub <vk-property-type type="read-only">read-only</vk-property-type></vk-section-title>
     <vk-stub>
-      <pre><code class="language-js">let surfaceCapabilitiesKHRInfo = new VkSurfaceCapabilitiesKHR();
-surfaceCapabilitiesKHRInfo.minImageCount = ;
-surfaceCapabilitiesKHRInfo.maxImageCount = ;
-surfaceCapabilitiesKHRInfo.currentExtent = ;
-surfaceCapabilitiesKHRInfo.minImageExtent = ;
-surfaceCapabilitiesKHRInfo.maxImageExtent = ;
-surfaceCapabilitiesKHRInfo.maxImageArrayLayers = ;
-surfaceCapabilitiesKHRInfo.supportedTransforms = ;
-surfaceCapabilitiesKHRInfo.currentTransform = ;
-surfaceCapabilitiesKHRInfo.supportedCompositeAlpha = ;
-surfaceCapabilitiesKHRInfo.supportedUsageFlags = ;
+      <pre><code class="language-js">let surfaceCapabilitiesKHR = new VkSurfaceCapabilitiesKHR();
+surfaceCapabilitiesKHR.minImageCount;
+surfaceCapabilitiesKHR.maxImageCount;
+surfaceCapabilitiesKHR.currentExtent;
+surfaceCapabilitiesKHR.minImageExtent;
+surfaceCapabilitiesKHR.maxImageExtent;
+surfaceCapabilitiesKHR.maxImageArrayLayers;
+surfaceCapabilitiesKHR.supportedTransforms;
+surfaceCapabilitiesKHR.currentTransform;
+surfaceCapabilitiesKHR.supportedCompositeAlpha;
+surfaceCapabilitiesKHR.supportedUsageFlags;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <vk-property-entry>
-        <vk-property-prototype class="no-float">object</vk-property-prototype>
-        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
-      </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
-
-    <vk-properties>
-      <!-- VkSurfaceCapabilitiesKHR.prototype.minImageCount -->
       <vk-property-entry>
         <vk-property-prototype>VkSurfaceCapabilitiesKHR.prototype.<vk-prototype-name>minImageCount</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the minimum number of images the specified device supports for a swapchain created for the surface, and will be at least one.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSurfaceCapabilitiesKHR.prototype.maxImageCount -->
       <vk-property-entry>
         <vk-property-prototype>VkSurfaceCapabilitiesKHR.prototype.<vk-prototype-name>maxImageCount</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the maximum number of images the specified device supports for a swapchain created for the surface, and will be either 0, or greater than or equal to <b>minImageCount</b>. A value of 0 means that there is no limit on the number of images, though there <i>may</i> be limits related to the total amount of memory used by presentable images.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSurfaceCapabilitiesKHR.prototype.currentExtent -->
       <vk-property-entry>
         <vk-property-prototype>VkSurfaceCapabilitiesKHR.prototype.<vk-prototype-name>currentExtent</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkExtent2D.html">VkExtent2D</a></vk-property-type>
         <vk-property-description> is the current width and height of the surface, or the special value [eq]#(0xFFFFFFFF, 0xFFFFFFFF)# indicating that the surface size will be determined by the extent of a swapchain targeting the surface.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSurfaceCapabilitiesKHR.prototype.minImageExtent -->
       <vk-property-entry>
         <vk-property-prototype>VkSurfaceCapabilitiesKHR.prototype.<vk-prototype-name>minImageExtent</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkExtent2D.html">VkExtent2D</a></vk-property-type>
         <vk-property-description> contains the smallest valid swapchain extent for the surface on the specified device. The <b>width</b> and <b>height</b> of the extent will each be less than or equal to the corresponding <b>width</b> and <b>height</b> of <b>currentExtent</b>, unless <b>currentExtent</b> has the special value described above.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSurfaceCapabilitiesKHR.prototype.maxImageExtent -->
       <vk-property-entry>
         <vk-property-prototype>VkSurfaceCapabilitiesKHR.prototype.<vk-prototype-name>maxImageExtent</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkExtent2D.html">VkExtent2D</a></vk-property-type>
         <vk-property-description> contains the largest valid swapchain extent for the surface on the specified device. The <b>width</b> and <b>height</b> of the extent will each be greater than or equal to the corresponding <b>width</b> and <b>height</b> of <b>minImageExtent</b>. The <b>width</b> and <b>height</b> of the extent will each be greater than or equal to the corresponding <b>width</b> and <b>height</b> of <b>currentExtent</b>, unless <b>currentExtent</b> has the special value described above.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSurfaceCapabilitiesKHR.prototype.maxImageArrayLayers -->
       <vk-property-entry>
         <vk-property-prototype>VkSurfaceCapabilitiesKHR.prototype.<vk-prototype-name>maxImageArrayLayers</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the maximum number of layers presentable images <i>can</i> have for a swapchain created for this device and surface, and will be at least one.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSurfaceCapabilitiesKHR.prototype.supportedTransforms -->
       <vk-property-entry>
         <vk-property-prototype>VkSurfaceCapabilitiesKHR.prototype.<vk-prototype-name>supportedTransforms</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkSurfaceTransformFlagBitsKHR.html">VkSurfaceTransformFlagBitsKHR</a></vk-property-type>
         <vk-property-description> is a bitmask of <b>VkSurfaceTransformFlagBitsKHR</b> indicating the presentation transforms supported for the surface on the specified device. At least one bit will be set.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSurfaceCapabilitiesKHR.prototype.currentTransform -->
       <vk-property-entry>
         <vk-property-prototype>VkSurfaceCapabilitiesKHR.prototype.<vk-prototype-name>currentTransform</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkSurfaceTransformFlagBitsKHR.html">VkSurfaceTransformFlagBitsKHR</a></vk-property-type>
         <vk-property-description> is <b>VkSurfaceTransformFlagBitsKHR</b> value indicating the surface's current transform relative to the presentation engine's natural orientation.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSurfaceCapabilitiesKHR.prototype.supportedCompositeAlpha -->
       <vk-property-entry>
         <vk-property-prototype>VkSurfaceCapabilitiesKHR.prototype.<vk-prototype-name>supportedCompositeAlpha</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkCompositeAlphaFlagBitsKHR.html">VkCompositeAlphaFlagBitsKHR</a></vk-property-type>
         <vk-property-description> is a bitmask of <b>VkCompositeAlphaFlagBitsKHR</b>, representing the alpha compositing modes supported by the presentation engine for the surface on the specified device, and at least one bit will be set. Opaque composition <i>can</i> be achieved in any alpha compositing mode by either using an image format that has no alpha component, or by ensuring that all pixels in the presentable images have an alpha value of 1.0.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSurfaceCapabilitiesKHR.prototype.supportedUsageFlags -->
       <vk-property-entry>
         <vk-property-prototype>VkSurfaceCapabilitiesKHR.prototype.<vk-prototype-name>supportedUsageFlags</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkImageUsageFlagBits.html">VkImageUsageFlagBits</a></vk-property-type>
         <vk-property-description> is a bitmask of <b>VkImageUsageFlagBits</b> representing the ways the application <i>can</i> use the presentable images of a swapchain created with <b>VkPresentModeKHR</b> set to <b>VK_PRESENT_MODE_IMMEDIATE_KHR</b>, <b>VK_PRESENT_MODE_MAILBOX_KHR</b>, <b>VK_PRESENT_MODE_FIFO_KHR</b> or <b>VK_PRESENT_MODE_FIFO_RELAXED_KHR</b></vk-property-description>
       </vk-property-entry>
       
@@ -139,13 +113,11 @@ surfaceCapabilitiesKHRInfo.supportedUsageFlags = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkSurfaceCapabilitiesKHR.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkSurfaceCapabilitiesKHR.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSurfaceCapabilitiesKHR.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkSurfaceCapabilitiesKHR.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkPhysicalDeviceMaintenance3Properties</vk-name>
@@ -41,51 +37,35 @@
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
-      <pre><code class="language-js">physicalDeviceMaintenance3PropertiesInfo = new VkPhysicalDeviceMaintenance3Properties();
-physicalDeviceMaintenance3PropertiesInfo = new VkPhysicalDeviceMaintenance3Properties(object);</code></pre>
+      <pre><code class="language-js">physicalDeviceMaintenance3Properties = new VkPhysicalDeviceMaintenance3Properties();</code></pre>
     </vk-syntax>
 
-    <vk-section-title>Stub</vk-section-title>
+    <vk-section-title>Stub <vk-property-type type="read-only">read-only</vk-property-type></vk-section-title>
     <vk-stub>
-      <pre><code class="language-js">let physicalDeviceMaintenance3PropertiesInfo = new VkPhysicalDeviceMaintenance3Properties();
-physicalDeviceMaintenance3PropertiesInfo.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES;
-physicalDeviceMaintenance3PropertiesInfo.pNext = ;
-physicalDeviceMaintenance3PropertiesInfo.maxPerSetDescriptors = ;
-physicalDeviceMaintenance3PropertiesInfo.maxMemoryAllocationSize = ;
+      <pre><code class="language-js">let physicalDeviceMaintenance3Properties = new VkPhysicalDeviceMaintenance3Properties();
+physicalDeviceMaintenance3Properties.sType;
+physicalDeviceMaintenance3Properties.pNext;
+physicalDeviceMaintenance3Properties.maxPerSetDescriptors;
+physicalDeviceMaintenance3Properties.maxMemoryAllocationSize;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <vk-property-entry>
-        <vk-property-prototype class="no-float">object</vk-property-prototype>
-        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
-      </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
-
-    <vk-properties>
-      <!-- VkPhysicalDeviceMaintenance3Properties.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMaintenance3Properties.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMaintenance3Properties.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMaintenance3Properties.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMaintenance3Properties.prototype.maxPerSetDescriptors -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMaintenance3Properties.prototype.<vk-prototype-name>maxPerSetDescriptors</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a maximum number of descriptors (summed over all descriptor types) in a single descriptor set that is guaranteed to satisfy any implementation-dependent constraints on the size of a descriptor set itself. Applications <i>can</i> query whether a descriptor set that goes beyond this limit is supported using <b><a href="../calls/vkGetDescriptorSetLayoutSupport.html">vkGetDescriptorSetLayoutSupport</a></b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMaintenance3Properties.prototype.maxMemoryAllocationSize -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMaintenance3Properties.prototype.<vk-prototype-name>maxMemoryAllocationSize</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
@@ -97,13 +77,11 @@ physicalDeviceMaintenance3PropertiesInfo.maxMemoryAllocationSize = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPhysicalDeviceMaintenance3Properties.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMaintenance3Properties.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMaintenance3Properties.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMaintenance3Properties.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

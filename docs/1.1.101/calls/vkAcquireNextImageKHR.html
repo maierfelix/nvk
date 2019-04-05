@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkAcquireNextImageKHR</vk-name>
@@ -48,37 +44,31 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- device -->
       <vk-property-entry>
         <vk-property-parameter>device</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkDevice.html">VkDevice</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- swapchain -->
       <vk-property-entry>
         <vk-property-parameter>swapchain</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkSwapchainKHR.html">VkSwapchainKHR</a></vk-property-type>
         <vk-property-description> is the non-retired swapchain from which an image is being acquired.</vk-property-description>
       </vk-property-entry>
-      <!-- timeout -->
       <vk-property-entry>
         <vk-property-parameter>timeout</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> specifies how long the function waits, in nanoseconds, if no image is available.</vk-property-description>
       </vk-property-entry>
-      <!-- semaphore -->
       <vk-property-entry>
         <vk-property-parameter>semaphore</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkSemaphore.html">VkSemaphore</a></vk-property-type>
         <vk-property-description> is <b>VK_NULL_HANDLE</b> or a semaphore to signal.</vk-property-description>
       </vk-property-entry>
-      <!-- fence -->
       <vk-property-entry>
         <vk-property-parameter>fence</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkFence.html">VkFence</a></vk-property-type>
         <vk-property-description> is <b>VK_NULL_HANDLE</b> or a fence to signal.</vk-property-description>
       </vk-property-entry>
-      <!-- pImageIndex -->
       <vk-property-entry>
         <vk-property-parameter>pImageIndex</vk-property-parameter>
         <vk-property-type type="object">Object.$<vk-property-type type="object">(Number)</vk-property-type></vk-property-type>

@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkGetImageSparseMemoryRequirements</vk-name>
@@ -48,25 +44,21 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- device -->
       <vk-property-entry>
         <vk-property-parameter>device</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkDevice.html">VkDevice</a></vk-property-type>
         <vk-property-description> is the logical device that owns the image.</vk-property-description>
       </vk-property-entry>
-      <!-- image -->
       <vk-property-entry>
         <vk-property-parameter>image</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkImage.html">VkImage</a></vk-property-type>
         <vk-property-description> is the <b><a href="../handles/VkImage.html">VkImage</a></b> object to get the memory requirements for.</vk-property-description>
       </vk-property-entry>
-      <!-- pSparseMemoryRequirementCount -->
       <vk-property-entry>
         <vk-property-parameter>pSparseMemoryRequirementCount</vk-property-parameter>
         <vk-property-type type="object">Object.$<vk-property-type type="object">(Number)</vk-property-type></vk-property-type>
         <vk-property-description> is a reference to a number related to the number of sparse memory requirements available or queried, as described below.</vk-property-description>
       </vk-property-entry>
-      <!-- pSparseMemoryRequirements -->
       <vk-property-entry>
         <vk-property-parameter>pSparseMemoryRequirements</vk-property-parameter>
         <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkSparseImageMemoryRequirements.html">VkSparseImageMemoryRequirements]</a></vk-property-type></vk-property-type>

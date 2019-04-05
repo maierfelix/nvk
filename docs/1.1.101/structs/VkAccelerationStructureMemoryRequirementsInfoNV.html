@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkAccelerationStructureMemoryRequirementsInfoNV</vk-name>
@@ -53,39 +49,31 @@ accelerationStructureMemoryRequirementsInfoNVInfo.pNext = ;
 accelerationStructureMemoryRequirementsInfoNVInfo.type = ;
 accelerationStructureMemoryRequirementsInfoNVInfo.accelerationStructure = ;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
       <vk-property-entry>
         <vk-property-prototype class="no-float">object</vk-property-prototype>
         <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
       </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkAccelerationStructureMemoryRequirementsInfoNV.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkAccelerationStructureMemoryRequirementsInfoNV.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAccelerationStructureMemoryRequirementsInfoNV.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkAccelerationStructureMemoryRequirementsInfoNV.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAccelerationStructureMemoryRequirementsInfoNV.prototype.type -->
       <vk-property-entry>
         <vk-property-prototype>VkAccelerationStructureMemoryRequirementsInfoNV.prototype.<vk-prototype-name>type</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkAccelerationStructureMemoryRequirementsTypeNV.html">VkAccelerationStructureMemoryRequirementsTypeNV</a></vk-property-type>
         <vk-property-description> selects the type of memory requirement being queried. <b>VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV</b> returns the memory requirements for the object itself. <b>VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV</b> returns the memory requirements for the scratch memory when doing a build. <b>VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV</b> returns the memory requirements for the scratch memory when doing an update.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAccelerationStructureMemoryRequirementsInfoNV.prototype.accelerationStructure -->
       <vk-property-entry>
         <vk-property-prototype>VkAccelerationStructureMemoryRequirementsInfoNV.prototype.<vk-prototype-name>accelerationStructure</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../handles/VkAccelerationStructureNV.html">VkAccelerationStructureNV</a></vk-property-type>
@@ -97,13 +85,11 @@ accelerationStructureMemoryRequirementsInfoNVInfo.accelerationStructure = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkAccelerationStructureMemoryRequirementsInfoNV.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkAccelerationStructureMemoryRequirementsInfoNV.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAccelerationStructureMemoryRequirementsInfoNV.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkAccelerationStructureMemoryRequirementsInfoNV.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

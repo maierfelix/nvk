@@ -1,9 +1,44 @@
-{% for enu in enums %}
+{{ getHeaderHTML() | safe }}
 
-export enum {{ enu.name }} {
-  {% for child in enu.children -%}
-  {{ child.name }},
-  {% endfor %}
-}
+<vk-title>{{ enum.name }} | NVK</vk-title>
 
-{% endfor %}
+<vk-centered>
+
+  {{ getNavigationHTML() | safe }}
+
+  <vk-struct>
+
+    <vk-name>{{ enum.name }}</vk-name>
+
+    <vk-description>{{ getObjectDescription(enum) | safe }}</vk-description>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">{{ enum.name }} = {
+  {% for member in members -%}
+  {{ member.name }}: {{ getEnumMemberValue(enum, member) | safe }}{%- if loop.index < members.length -%},
+  {% endif %}{% endfor %}
+};</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      {% for member in members -%}
+      <vk-property-entry>
+        <vk-property-prototype>{{ enum.name }}.<vk-prototype-name>{{ member.name }}</vk-prototype-name></vk-property-prototype>
+        <vk-property-description>{{ getObjectDescription(member) | safe }}</vk-property-description>
+      </vk-property-entry>
+      {% endfor %}
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

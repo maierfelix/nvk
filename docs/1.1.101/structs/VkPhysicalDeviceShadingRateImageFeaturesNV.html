@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkPhysicalDeviceShadingRateImageFeaturesNV</vk-name>
@@ -41,54 +37,46 @@
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
-      <pre><code class="language-js">physicalDeviceShadingRateImageFeaturesNVInfo = new VkPhysicalDeviceShadingRateImageFeaturesNV();
-physicalDeviceShadingRateImageFeaturesNVInfo = new VkPhysicalDeviceShadingRateImageFeaturesNV(object);</code></pre>
+      <pre><code class="language-js">physicalDeviceShadingRateImageFeaturesNV = new VkPhysicalDeviceShadingRateImageFeaturesNV();
+physicalDeviceShadingRateImageFeaturesNV = new VkPhysicalDeviceShadingRateImageFeaturesNV(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
-      <pre><code class="language-js">let physicalDeviceShadingRateImageFeaturesNVInfo = new VkPhysicalDeviceShadingRateImageFeaturesNV();
-physicalDeviceShadingRateImageFeaturesNVInfo.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_FEATURES_NV;
-physicalDeviceShadingRateImageFeaturesNVInfo.pNext = ;
-physicalDeviceShadingRateImageFeaturesNVInfo.shadingRateImage = ;
-physicalDeviceShadingRateImageFeaturesNVInfo.shadingRateCoarseSampleOrder = ;
+      <pre><code class="language-js">let physicalDeviceShadingRateImageFeaturesNV = new VkPhysicalDeviceShadingRateImageFeaturesNV();
+physicalDeviceShadingRateImageFeaturesNV.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_FEATURES_NV;
+physicalDeviceShadingRateImageFeaturesNV.pNext = ;
+physicalDeviceShadingRateImageFeaturesNV.shadingRateImage = ;
+physicalDeviceShadingRateImageFeaturesNV.shadingRateCoarseSampleOrder = ;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
       <vk-property-entry>
         <vk-property-prototype class="no-float">object</vk-property-prototype>
         <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
       </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPhysicalDeviceShadingRateImageFeaturesNV.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceShadingRateImageFeaturesNV.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceShadingRateImageFeaturesNV.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceShadingRateImageFeaturesNV.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceShadingRateImageFeaturesNV.prototype.shadingRateImage -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceShadingRateImageFeaturesNV.prototype.<vk-prototype-name>shadingRateImage</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description> indicates that the implementation supports the use of a shading rate image to derive an effective shading rate for fragment processing. It also indicates that the implementation supports the <i>ShadingRateNV</i> SPIR-V execution mode.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceShadingRateImageFeaturesNV.prototype.shadingRateCoarseSampleOrder -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceShadingRateImageFeaturesNV.prototype.<vk-prototype-name>shadingRateCoarseSampleOrder</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description> indicates that the implementation supports a user-configurable ordering of coverage samples in fragments larger than one pixel.</vk-property-description>
       </vk-property-entry>
       
@@ -97,13 +85,11 @@ physicalDeviceShadingRateImageFeaturesNVInfo.shadingRateCoarseSampleOrder = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPhysicalDeviceShadingRateImageFeaturesNV.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceShadingRateImageFeaturesNV.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceShadingRateImageFeaturesNV.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceShadingRateImageFeaturesNV.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

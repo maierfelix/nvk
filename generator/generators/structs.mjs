@@ -54,8 +54,8 @@ function invalidMemberTypeError(member) {
   `;
 };
 
-function invalidMemberArrayLengthError(member) {
-  return `Napi::RangeError::New(value.Env(), "Invalid array length, expected array length of '${member.length}' for '${currentStruct.name}.${member.name}'").ThrowAsJavaScriptException();`;
+function invalidMemberArrayLengthError(member, length) {
+  return `Napi::RangeError::New(value.Env(), "Invalid array length, expected array length of '${length}' for '${currentStruct.name}.${member.name}'").ThrowAsJavaScriptException();`;
 };
 
 function genPersistentArray(member) {
@@ -538,7 +538,7 @@ function processFlushSourceSetter(struct, member) {
     if (value.IsArray()) {
       // validate length
       if (value.As<Napi::Array>().Length() != ${member.length}) {
-        ${invalidMemberArrayLengthError(member)}
+        ${invalidMemberArrayLengthError(member, member.length)}
         return false;
       }
       std::vector<${member.type}> array = createArrayOfV8Numbers<${member.type}>(value);
@@ -556,7 +556,7 @@ function processFlushSourceSetter(struct, member) {
       Napi::Array array = value.As<Napi::Array>();
       // validate length
       if (array.Length() != ${member.length}) {
-        ${invalidMemberArrayLengthError(member)}
+        ${invalidMemberArrayLengthError(member, member.length)}
         return false;
       }
       std::vector<${member.type}>* data = this->v${member.name};
@@ -586,7 +586,7 @@ function processFlushSourceSetter(struct, member) {
     Napi::Array array = value.As<Napi::Array>();
     // validate length
     if (array.Length() != this->instance.${member.length}) {
-      ${invalidMemberArrayLengthError(member)}
+      ${invalidMemberArrayLengthError(member, member.length)}
       return false;
     }
     std::vector<${member.type}>* data = this->v${member.name};
@@ -610,10 +610,19 @@ function processFlushSourceSetter(struct, member) {
     self->instance.${member.name} = result->instance;`;
   }
   if (member.rawType === "const char * const*") {
+    let length = member.length.split(",")[0];
+    if (member.length.split(",")[1] !== "null-terminated") {
+      warn(`Cannot parse array length for ${struct.name}.${member.name} in flush source-setter!`);
+    }
     return `
     std::vector<char*>* data = self->v${member.name};
     data->clear();
     Napi::Array array = value.As<Napi::Array>();
+    // validate length
+    if (array.Length() != this->instance.${length}) {
+      ${invalidMemberArrayLengthError(member, length)}
+      return false;
+    }
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       if (!item.IsString()) return false;

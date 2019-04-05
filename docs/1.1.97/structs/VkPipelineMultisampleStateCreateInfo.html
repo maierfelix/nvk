@@ -9,26 +9,26 @@
 <link rel="stylesheet" href="../../assets/css/vk.css"/>
 <link rel="stylesheet" href="../../assets/css/prism.css"/>
 
+
 <vk-title>VkPipelineMultisampleStateCreateInfo | NVK</vk-title>
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
-    <vk-section-title>Search</vk-section-title>
-    <vk-search>
-      <input type="text" id="search" autocomplete="off" />
-      <vk-search-results>
-        <ol id="search-list">
-          <li id="no-search-results">No Results</li>
-        </ol>
-      </vk-search-results>
-    </vk-search>
-    <vk-section-title>Categories</vk-section-title>
-    <vk-categories></vk-categories>
-  </vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
 
-  <!-- Struct -->
+
   <vk-struct>
 
     <vk-name>VkPipelineMultisampleStateCreateInfo</vk-name>
@@ -54,72 +54,59 @@ pipelineMultisampleStateInfo.pSampleMask = ;
 pipelineMultisampleStateInfo.alphaToCoverageEnable = ;
 pipelineMultisampleStateInfo.alphaToOneEnable = ;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
       <vk-property-entry>
         <vk-property-prototype class="no-float">object</vk-property-prototype>
         <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
       </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPipelineMultisampleStateCreateInfo.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineMultisampleStateCreateInfo.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPipelineMultisampleStateCreateInfo.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineMultisampleStateCreateInfo.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPipelineMultisampleStateCreateInfo.prototype.flags -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineMultisampleStateCreateInfo.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is reserved for future use.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPipelineMultisampleStateCreateInfo.prototype.rasterizationSamples -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineMultisampleStateCreateInfo.prototype.<vk-prototype-name>rasterizationSamples</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkSampleCountFlagBits.html">VkSampleCountFlagBits</a></vk-property-type>
         <vk-property-description> is a <b>VkSampleCountFlagBits</b> specifying the number of samples used in rasterization.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPipelineMultisampleStateCreateInfo.prototype.sampleShadingEnable -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineMultisampleStateCreateInfo.prototype.<vk-prototype-name>sampleShadingEnable</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description> <i>can</i> be used to enable <<primsrast-sampleshading,Sample Shading>>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPipelineMultisampleStateCreateInfo.prototype.minSampleShading -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineMultisampleStateCreateInfo.prototype.<vk-prototype-name>minSampleShading</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> specifies a minimum fraction of sample shading if <b>sampleShadingEnable</b> is set to <b>VK_TRUE</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPipelineMultisampleStateCreateInfo.prototype.pSampleMask -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineMultisampleStateCreateInfo.prototype.<vk-prototype-name>pSampleMask</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array">Uint32Array</a></vk-property-type>
         <vk-property-description> is a bitmask of static coverage information that is ANDed with the coverage information generated during rasterization, as described in <<fragops-samplemask,Sample Mask>>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPipelineMultisampleStateCreateInfo.prototype.alphaToCoverageEnable -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineMultisampleStateCreateInfo.prototype.<vk-prototype-name>alphaToCoverageEnable</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description> controls whether a temporary coverage value is generated based on the alpha component of the fragment's first color output as specified in the <<fragops-covg,Multisample Coverage>> section.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPipelineMultisampleStateCreateInfo.prototype.alphaToOneEnable -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineMultisampleStateCreateInfo.prototype.<vk-prototype-name>alphaToOneEnable</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description> controls whether the alpha component of the fragment's first color output is replaced with one as described in <<fragops-covg,Multisample Coverage>>.</vk-property-description>
       </vk-property-entry>
       
@@ -128,13 +115,11 @@ pipelineMultisampleStateInfo.alphaToOneEnable = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPipelineMultisampleStateCreateInfo.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineMultisampleStateCreateInfo.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPipelineMultisampleStateCreateInfo.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkPipelineMultisampleStateCreateInfo.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

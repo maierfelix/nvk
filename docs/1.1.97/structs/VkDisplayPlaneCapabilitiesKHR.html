@@ -9,26 +9,26 @@
 <link rel="stylesheet" href="../../assets/css/vk.css"/>
 <link rel="stylesheet" href="../../assets/css/prism.css"/>
 
+
 <vk-title>VkDisplayPlaneCapabilitiesKHR | NVK</vk-title>
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
-    <vk-section-title>Search</vk-section-title>
-    <vk-search>
-      <input type="text" id="search" autocomplete="off" />
-      <vk-search-results>
-        <ol id="search-list">
-          <li id="no-search-results">No Results</li>
-        </ol>
-      </vk-search-results>
-    </vk-search>
-    <vk-section-title>Categories</vk-section-title>
-    <vk-categories></vk-categories>
-  </vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
 
-  <!-- Struct -->
+
   <vk-struct>
 
     <vk-name>VkDisplayPlaneCapabilitiesKHR</vk-name>
@@ -37,86 +37,65 @@
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
-      <pre><code class="language-js">displayPlaneCapabilitiesKHRInfo = new VkDisplayPlaneCapabilitiesKHR();
-displayPlaneCapabilitiesKHRInfo = new VkDisplayPlaneCapabilitiesKHR(object);</code></pre>
+      <pre><code class="language-js">displayPlaneCapabilitiesKHR = new VkDisplayPlaneCapabilitiesKHR();</code></pre>
     </vk-syntax>
 
-    <vk-section-title>Stub</vk-section-title>
+    <vk-section-title>Stub <vk-property-type type="read-only">read-only</vk-property-type></vk-section-title>
     <vk-stub>
-      <pre><code class="language-js">let displayPlaneCapabilitiesKHRInfo = new VkDisplayPlaneCapabilitiesKHR();
-displayPlaneCapabilitiesKHRInfo.supportedAlpha = ;
-displayPlaneCapabilitiesKHRInfo.minSrcPosition = ;
-displayPlaneCapabilitiesKHRInfo.maxSrcPosition = ;
-displayPlaneCapabilitiesKHRInfo.minSrcExtent = ;
-displayPlaneCapabilitiesKHRInfo.maxSrcExtent = ;
-displayPlaneCapabilitiesKHRInfo.minDstPosition = ;
-displayPlaneCapabilitiesKHRInfo.maxDstPosition = ;
-displayPlaneCapabilitiesKHRInfo.minDstExtent = ;
-displayPlaneCapabilitiesKHRInfo.maxDstExtent = ;
+      <pre><code class="language-js">let displayPlaneCapabilitiesKHR = new VkDisplayPlaneCapabilitiesKHR();
+displayPlaneCapabilitiesKHR.supportedAlpha;
+displayPlaneCapabilitiesKHR.minSrcPosition;
+displayPlaneCapabilitiesKHR.maxSrcPosition;
+displayPlaneCapabilitiesKHR.minSrcExtent;
+displayPlaneCapabilitiesKHR.maxSrcExtent;
+displayPlaneCapabilitiesKHR.minDstPosition;
+displayPlaneCapabilitiesKHR.maxDstPosition;
+displayPlaneCapabilitiesKHR.minDstExtent;
+displayPlaneCapabilitiesKHR.maxDstExtent;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <vk-property-entry>
-        <vk-property-prototype class="no-float">object</vk-property-prototype>
-        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
-      </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
-
-    <vk-properties>
-      <!-- VkDisplayPlaneCapabilitiesKHR.prototype.supportedAlpha -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplayPlaneCapabilitiesKHR.prototype.<vk-prototype-name>supportedAlpha</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkDisplayPlaneAlphaFlagBitsKHR.html">VkDisplayPlaneAlphaFlagBitsKHR</a></vk-property-type>
         <vk-property-description> is a bitmask of <b>VkDisplayPlaneAlphaFlagBitsKHR</b> describing the supported alpha blending modes.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDisplayPlaneCapabilitiesKHR.prototype.minSrcPosition -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplayPlaneCapabilitiesKHR.prototype.<vk-prototype-name>minSrcPosition</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkOffset2D.html">VkOffset2D</a></vk-property-type>
         <vk-property-description> is the minimum source rectangle offset supported by this plane using the specified mode.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDisplayPlaneCapabilitiesKHR.prototype.maxSrcPosition -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplayPlaneCapabilitiesKHR.prototype.<vk-prototype-name>maxSrcPosition</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkOffset2D.html">VkOffset2D</a></vk-property-type>
         <vk-property-description> is the maximum source rectangle offset supported by this plane using the specified mode. The <b>x</b> and <b>y</b> components of <b>maxSrcPosition</b> <i>must</i> each be greater than or equal to the <b>x</b> and <b>y</b> components of <b>minSrcPosition</b>, respectively.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDisplayPlaneCapabilitiesKHR.prototype.minSrcExtent -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplayPlaneCapabilitiesKHR.prototype.<vk-prototype-name>minSrcExtent</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkExtent2D.html">VkExtent2D</a></vk-property-type>
         <vk-property-description> is the minimum source rectangle size supported by this plane using the specified mode.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDisplayPlaneCapabilitiesKHR.prototype.maxSrcExtent -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplayPlaneCapabilitiesKHR.prototype.<vk-prototype-name>maxSrcExtent</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkExtent2D.html">VkExtent2D</a></vk-property-type>
         <vk-property-description> is the maximum source rectangle size supported by this plane using the specified mode.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDisplayPlaneCapabilitiesKHR.prototype.minDstPosition -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplayPlaneCapabilitiesKHR.prototype.<vk-prototype-name>minDstPosition</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkOffset2D.html">VkOffset2D</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkDisplayPlaneCapabilitiesKHR.prototype.maxDstPosition -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplayPlaneCapabilitiesKHR.prototype.<vk-prototype-name>maxDstPosition</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkOffset2D.html">VkOffset2D</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkDisplayPlaneCapabilitiesKHR.prototype.minDstExtent -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplayPlaneCapabilitiesKHR.prototype.<vk-prototype-name>minDstExtent</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkExtent2D.html">VkExtent2D</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkDisplayPlaneCapabilitiesKHR.prototype.maxDstExtent -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplayPlaneCapabilitiesKHR.prototype.<vk-prototype-name>maxDstExtent</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkExtent2D.html">VkExtent2D</a></vk-property-type>
@@ -128,13 +107,11 @@ displayPlaneCapabilitiesKHRInfo.maxDstExtent = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkDisplayPlaneCapabilitiesKHR.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplayPlaneCapabilitiesKHR.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDisplayPlaneCapabilitiesKHR.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkDisplayPlaneCapabilitiesKHR.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

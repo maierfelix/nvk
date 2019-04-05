@@ -9,26 +9,26 @@
 <link rel="stylesheet" href="../../assets/css/vk.css"/>
 <link rel="stylesheet" href="../../assets/css/prism.css"/>
 
+
 <vk-title>VkDescriptorUpdateTemplateCreateInfoKHR | NVK</vk-title>
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
-    <vk-section-title>Search</vk-section-title>
-    <vk-search>
-      <input type="text" id="search" autocomplete="off" />
-      <vk-search-results>
-        <ol id="search-list">
-          <li id="no-search-results">No Results</li>
-        </ol>
-      </vk-search-results>
-    </vk-search>
-    <vk-section-title>Categories</vk-section-title>
-    <vk-categories></vk-categories>
-  </vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
 
-  <!-- Struct -->
+
   <vk-struct>
 
     <vk-name>VkDescriptorUpdateTemplateCreateInfoKHR</vk-name>
@@ -55,75 +55,61 @@ descriptorUpdateTemplateKHRInfo.pipelineBindPoint = ;
 descriptorUpdateTemplateKHRInfo.pipelineLayout = ;
 descriptorUpdateTemplateKHRInfo.set = ;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
       <vk-property-entry>
         <vk-property-prototype class="no-float">object</vk-property-prototype>
         <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
       </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkDescriptorUpdateTemplateCreateInfoKHR.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorUpdateTemplateCreateInfoKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDescriptorUpdateTemplateCreateInfoKHR.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorUpdateTemplateCreateInfoKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDescriptorUpdateTemplateCreateInfoKHR.prototype.flags -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorUpdateTemplateCreateInfoKHR.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is reserved for future use.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDescriptorUpdateTemplateCreateInfoKHR.prototype.descriptorUpdateEntryCount -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorUpdateTemplateCreateInfoKHR.prototype.<vk-prototype-name>descriptorUpdateEntryCount</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the number of elements in the <b>pDescriptorUpdateEntries</b> array.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDescriptorUpdateTemplateCreateInfoKHR.prototype.pDescriptorUpdateEntries -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorUpdateTemplateCreateInfoKHR.prototype.<vk-prototype-name>pDescriptorUpdateEntries</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkDescriptorUpdateTemplateEntry.html">VkDescriptorUpdateTemplateEntry]</a></vk-property-type></vk-property-type>
         <vk-property-description> is an array of <b><a href="../structs/VkDescriptorUpdateTemplateEntry.html">VkDescriptorUpdateTemplateEntry</a></b> structures describing the descriptors to be updated by the descriptor update template.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDescriptorUpdateTemplateCreateInfoKHR.prototype.templateType -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorUpdateTemplateCreateInfoKHR.prototype.<vk-prototype-name>templateType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkDescriptorUpdateTemplateType.html">VkDescriptorUpdateTemplateType</a></vk-property-type>
         <vk-property-description> Specifies the type of the descriptor update template. If set to <b>VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET</b> it <i>can</i> only be used to update descriptor sets with a fixed <b>descriptorSetLayout</b>. If set to <b>VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS_KHR</b> it <i>can</i> only be used to push descriptor sets using the provided <b>pipelineBindPoint</b>, <b>pipelineLayout</b>, and <b>set</b> number.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDescriptorUpdateTemplateCreateInfoKHR.prototype.descriptorSetLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorUpdateTemplateCreateInfoKHR.prototype.<vk-prototype-name>descriptorSetLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../handles/VkDescriptorSetLayout.html">VkDescriptorSetLayout</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkDescriptorUpdateTemplateCreateInfoKHR.prototype.pipelineBindPoint -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorUpdateTemplateCreateInfoKHR.prototype.<vk-prototype-name>pipelineBindPoint</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkPipelineBindPoint.html">VkPipelineBindPoint</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkDescriptorUpdateTemplateCreateInfoKHR.prototype.pipelineLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorUpdateTemplateCreateInfoKHR.prototype.<vk-prototype-name>pipelineLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../handles/VkPipelineLayout.html">VkPipelineLayout</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkDescriptorUpdateTemplateCreateInfoKHR.prototype.set -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorUpdateTemplateCreateInfoKHR.prototype.<vk-prototype-name>set</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
@@ -135,13 +121,11 @@ descriptorUpdateTemplateKHRInfo.set = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkDescriptorUpdateTemplateCreateInfoKHR.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorUpdateTemplateCreateInfoKHR.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDescriptorUpdateTemplateCreateInfoKHR.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkDescriptorUpdateTemplateCreateInfoKHR.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

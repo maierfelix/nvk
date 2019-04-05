@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkCmdDrawIndexedIndirectCountAMD</vk-name>
@@ -48,43 +44,36 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- commandBuffer -->
       <vk-property-entry>
         <vk-property-parameter>commandBuffer</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></vk-property-type>
         <vk-property-description> is the command buffer into which the command is recorded.</vk-property-description>
       </vk-property-entry>
-      <!-- buffer -->
       <vk-property-entry>
         <vk-property-parameter>buffer</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkBuffer.html">VkBuffer</a></vk-property-type>
         <vk-property-description> where parameters begin.</vk-property-description>
       </vk-property-entry>
-      <!-- offset -->
       <vk-property-entry>
         <vk-property-parameter>offset</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- countBuffer -->
       <vk-property-entry>
         <vk-property-parameter>countBuffer</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkBuffer.html">VkBuffer</a></vk-property-type>
         <vk-property-description> where the draw count begins.</vk-property-description>
       </vk-property-entry>
-      <!-- countBufferOffset -->
       <vk-property-entry>
         <vk-property-parameter>countBufferOffset</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- maxDrawCount -->
       <vk-property-entry>
         <vk-property-parameter>maxDrawCount</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> specifies the maximum number of draws that will be executed. The actual number of executed draw calls is the minimum of the count specified in <b>countBuffer</b> and <b>maxDrawCount</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- stride -->
       <vk-property-entry>
         <vk-property-parameter>stride</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>

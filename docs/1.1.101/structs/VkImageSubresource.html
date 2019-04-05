@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkImageSubresource</vk-name>
@@ -41,44 +37,37 @@
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
-      <pre><code class="language-js">imageSubresourceInfo = new VkImageSubresource();
-imageSubresourceInfo = new VkImageSubresource(object);</code></pre>
+      <pre><code class="language-js">imageSubresource = new VkImageSubresource();
+imageSubresource = new VkImageSubresource(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
-      <pre><code class="language-js">let imageSubresourceInfo = new VkImageSubresource();
-imageSubresourceInfo.aspectMask = ;
-imageSubresourceInfo.mipLevel = ;
-imageSubresourceInfo.arrayLayer = ;
+      <pre><code class="language-js">let imageSubresource = new VkImageSubresource();
+imageSubresource.aspectMask = ;
+imageSubresource.mipLevel = ;
+imageSubresource.arrayLayer = ;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
       <vk-property-entry>
         <vk-property-prototype class="no-float">object</vk-property-prototype>
         <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
       </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkImageSubresource.prototype.aspectMask -->
       <vk-property-entry>
         <vk-property-prototype>VkImageSubresource.prototype.<vk-prototype-name>aspectMask</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkImageAspectFlagBits.html">VkImageAspectFlagBits</a></vk-property-type>
         <vk-property-description> is a <b>VkImageAspectFlags</b> selecting the image _aspect_.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageSubresource.prototype.mipLevel -->
       <vk-property-entry>
         <vk-property-prototype>VkImageSubresource.prototype.<vk-prototype-name>mipLevel</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> selects the mipmap level.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageSubresource.prototype.arrayLayer -->
       <vk-property-entry>
         <vk-property-prototype>VkImageSubresource.prototype.<vk-prototype-name>arrayLayer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
@@ -90,13 +79,11 @@ imageSubresourceInfo.arrayLayer = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkImageSubresource.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkImageSubresource.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkImageSubresource.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkImageSubresource.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkQueuePresentKHR</vk-name>
@@ -48,13 +44,11 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- queue -->
       <vk-property-entry>
         <vk-property-parameter>queue</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkQueue.html">VkQueue</a></vk-property-type>
         <vk-property-description> is a queue that is capable of presentation to the target surface's platform on the same device as the image's swapchain.</vk-property-description>
       </vk-property-entry>
-      <!-- pPresentInfo -->
       <vk-property-entry>
         <vk-property-parameter>pPresentInfo</vk-property-parameter>
         <vk-property-type type="object"><a href="../structs/VkPresentInfoKHR.html">VkPresentInfoKHR</a></vk-property-type>

@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkCmdCopyAccelerationStructureNV</vk-name>
@@ -48,28 +44,24 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- commandBuffer -->
       <vk-property-entry>
         <vk-property-parameter>commandBuffer</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkCommandBuffer.html">VkCommandBuffer</a></vk-property-type>
         <vk-property-description> is the command buffer into which the command will be recorded.</vk-property-description>
       </vk-property-entry>
-      <!-- dst -->
       <vk-property-entry>
         <vk-property-parameter>dst</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkAccelerationStructureNV.html">VkAccelerationStructureNV</a></vk-property-type>
         <vk-property-description> reference to the target acceleration structure for the copy.</vk-property-description>
       </vk-property-entry>
-      <!-- src -->
       <vk-property-entry>
         <vk-property-parameter>src</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkAccelerationStructureNV.html">VkAccelerationStructureNV</a></vk-property-type>
         <vk-property-description> reference to the source acceleration structure for the copy.</vk-property-description>
       </vk-property-entry>
-      <!-- mode -->
       <vk-property-entry>
         <vk-property-parameter>mode</vk-property-parameter>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkCopyAccelerationStructureModeNV.html">VkCopyAccelerationStructureModeNV</a></vk-property-type>
         <vk-property-description> is a <b>VkCopyAccelerationStructureModeNV</b> value that specifies additional operations to perform during the copy.</vk-property-description>
       </vk-property-entry>
       

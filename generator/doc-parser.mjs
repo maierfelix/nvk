@@ -6,6 +6,7 @@
 
 **/
 import fs from "fs";
+import path from "path";
 import https from "https";
 import yauzl from "yauzl";
 import readline from "readline";
@@ -191,14 +192,29 @@ function parseChapterCategory(source) {
   return out;
 };
 
-function parseChapter(source) {
+function parseChapter(source, fileName) {
   let rx = /\[open,refpage([^}]+?)\]\n\--[^]*?\--/gm;
   let out = [];
   let children = [];
   let descriptions = [];
   let equivalents = [];
   let match = null;
-  let category = parseChapterCategory(source);
+  let category = ``;
+  {
+    let dir = path.dirname(fileName);
+    let fn = path.basename(fileName, `.txt`);
+    if (dir.lastIndexOf(`chapters/`) > 0) {
+      category = dir.substr(dir.lastIndexOf(`chapters/`) + 9);
+    } else {
+      if (fn) {
+        fn = parseChapterCategory(source) || fn;
+        if (fn[0] !== fn[0].toUpperCase()) {
+          fn = fn[0].toUpperCase() + fn.substr(1);
+        }
+      }
+      category = fn || `Uncategorized`;
+    }
+  }
   while (match = rx.exec(source)) {
     let text = match[0];
     let param = parseSectionParameters(text);
@@ -231,9 +247,9 @@ function clearIfDef(source) {
   return source;
 };
 
-function parseChapterEntry(source) {
+function parseChapterEntry(source, fileName) {
   source = clearIfDef(source);
-  let chapter = parseChapter(source);
+  let chapter = parseChapter(source, fileName);
   return chapter;
 };
 
@@ -295,7 +311,7 @@ function transformDescription(description) {
   };
 };
 
-function transformDescriptions(entries) {
+function transformDescriptions() {
   entries.map(entry => {
     let desc = entry.description;
     let {name, description, type} = desc;
@@ -303,6 +319,8 @@ function transformDescriptions(entries) {
     desc.description = result.description;
     desc.macros = result.macros;
     switch (type) {
+      case "flags":
+      case "enums":
       case "protos":
       case "structs": {
         entry.children.map(c => {
@@ -316,13 +334,25 @@ function transformDescriptions(entries) {
       case "handles": {
         // no members
       } break;
-      case "enums": break;
       case "flags": break;
     };
   });
 };
 
+function parseChapters(files) {
+  files.map(file => {
+    let {source, directory, fileName} = file;
+    let chapter = parseChapterEntry(source, fileName);
+    chapter.fileName = getFileNameFromPath(fileName);
+    chapter.directory = directory;
+    chapter.map(entry => {
+      entries.push(entry);
+    });
+  });
+};
+
 function parse(version) {
+  let files = [];
   return new Promise(resolve => {
     yauzl.open(`${DOCS_DIR}/${version}.zip`, { lazyEntries: true }, (err, zip) => {
       if (err) throw err;
@@ -339,13 +369,10 @@ function parse(version) {
               if (err) throw err;
               let writeStream = fs.createWriteStream(`${DOCS_DIR}/doc_tmp`);
               writeStream.on("finish", () => {
-                let str = fs.readFileSync(`${DOCS_DIR}/doc_tmp`, "utf-8");
-                //console.log(entry.fileName+":");
-                let chapter = parseChapterEntry(str);
-                chapter.fileName = getFileNameFromPath(entry.fileName);
-                chapter.directory = (currentDirectory);
-                chapter.map(entry => {
-                  entries.push(entry);
+                files.push({
+                  source: fs.readFileSync(`${DOCS_DIR}/doc_tmp`, "utf-8"),
+                  fileName: entry.fileName,
+                  directory: currentDirectory
                 });
                 zip.readEntry();
               });
@@ -357,7 +384,8 @@ function parse(version) {
         }
       });
       zip.on("end", () => {
-        transformDescriptions(entries);
+        parseChapters(files);
+        transformDescriptions();
         if (fs.existsSync(`${DOCS_DIR}/doc_tmp`)) fs.unlinkSync(`${DOCS_DIR}/doc_tmp`);
         resolve(entries);
       });
@@ -428,8 +456,9 @@ export default function(version) {
   return new Promise(resolve => {
     downloadDocs(version).then(result => {
       if (result.error) throw result.error;
-      let ast = parse(version);
-      resolve(ast);
+      parse(version).then(ast => {
+        resolve(ast);
+      });
     });
   });
 };

@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkRayTracingShaderGroupCreateInfoNV</vk-name>
@@ -56,57 +52,46 @@ rayTracingShaderGroupNVInfo.closestHitShader = ;
 rayTracingShaderGroupNVInfo.anyHitShader = ;
 rayTracingShaderGroupNVInfo.intersectionShader = ;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
       <vk-property-entry>
         <vk-property-prototype class="no-float">object</vk-property-prototype>
         <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
       </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkRayTracingShaderGroupCreateInfoNV.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkRayTracingShaderGroupCreateInfoNV.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkRayTracingShaderGroupCreateInfoNV.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkRayTracingShaderGroupCreateInfoNV.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkRayTracingShaderGroupCreateInfoNV.prototype.type -->
       <vk-property-entry>
         <vk-property-prototype>VkRayTracingShaderGroupCreateInfoNV.prototype.<vk-prototype-name>type</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkRayTracingShaderGroupTypeNV.html">VkRayTracingShaderGroupTypeNV</a></vk-property-type>
         <vk-property-description> is the type of hit group specified in this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkRayTracingShaderGroupCreateInfoNV.prototype.generalShader -->
       <vk-property-entry>
         <vk-property-prototype>VkRayTracingShaderGroupCreateInfoNV.prototype.<vk-prototype-name>generalShader</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the index of the ray generation, miss, or callable shader from <b><a href="../structs/VkRayTracingPipelineCreateInfoNV.html">VkRayTracingPipelineCreateInfoNV</a></b>::<b>pStages</b> in the group if the shader group has <b>type</b> of <b>VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV</b> and <b>VK_SHADER_UNUSED_NV</b> otherwise.</vk-property-description>
       </vk-property-entry>
-      <!-- VkRayTracingShaderGroupCreateInfoNV.prototype.closestHitShader -->
       <vk-property-entry>
         <vk-property-prototype>VkRayTracingShaderGroupCreateInfoNV.prototype.<vk-prototype-name>closestHitShader</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the optional index of the closest hit shader from <b><a href="../structs/VkRayTracingPipelineCreateInfoNV.html">VkRayTracingPipelineCreateInfoNV</a></b>::<b>pStages</b> in the group if the shader group has <b>type</b> of <b>VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV</b> or <b>VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV</b> and <b>VK_SHADER_UNUSED_NV</b> otherwise.</vk-property-description>
       </vk-property-entry>
-      <!-- VkRayTracingShaderGroupCreateInfoNV.prototype.anyHitShader -->
       <vk-property-entry>
         <vk-property-prototype>VkRayTracingShaderGroupCreateInfoNV.prototype.<vk-prototype-name>anyHitShader</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the optional index of the any-hit shader from <b><a href="../structs/VkRayTracingPipelineCreateInfoNV.html">VkRayTracingPipelineCreateInfoNV</a></b>::<b>pStages</b> in the group if the shader group has <b>type</b> of <b>VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV</b> or <b>VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV</b> and <b>VK_SHADER_UNUSED_NV</b> otherwise.</vk-property-description>
       </vk-property-entry>
-      <!-- VkRayTracingShaderGroupCreateInfoNV.prototype.intersectionShader -->
       <vk-property-entry>
         <vk-property-prototype>VkRayTracingShaderGroupCreateInfoNV.prototype.<vk-prototype-name>intersectionShader</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
@@ -118,13 +103,11 @@ rayTracingShaderGroupNVInfo.intersectionShader = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkRayTracingShaderGroupCreateInfoNV.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkRayTracingShaderGroupCreateInfoNV.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkRayTracingShaderGroupCreateInfoNV.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkRayTracingShaderGroupCreateInfoNV.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

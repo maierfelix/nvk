@@ -34,9 +34,11 @@ Primitives such as Strings and Numbers are no longer reflected, but get directly
 
 #
 
-This is a [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for node.js, which allows to interact from JavaScript/[TypeScript](#typescript) with the low-level interface of Vulkan. Currently the latest supported Vulkan version is *1.1.101*, which includes support for e.g. NVIDIA's real-time ray tracing pipeline `VK_NVX_raytracing`.
+This is a low-abstraction [Vulkan](https://en.wikipedia.org/wiki/Vulkan_(API)) API for [Node.js](https://en.wikipedia.org/wiki/Node.js) with interfaces for JavaScript and [TypeScript](#typescript). Currently the latest supported Vulkan version is *1.1.101*, which includes support for e.g. Compute Shaders and NVIDIA's Real-Time Ray Tracing Pipeline `VK_NV_raytracing`.
 
 ### Platforms:
+
+*nvk* comes with pre-built binaries for the following platforms:
 
 |       OS      |     Status    |
 | ------------- | ------------- |
@@ -74,14 +76,17 @@ You can find more previews and demos in [/examples](https://github.com/maierfeli
 
 ## Installation:
 
-Run the following command to install *nvk*:
+This project comes with pre-built binaries, so to install *nvk* simply run:
+
 ````
 npm install nvk
 ````
 
 ## Example:
 
-In most cases the bindings match the native style of Vulkan. This allows you to follow existing C/C++ tutorials, but write the implementation itself with *nvk*. Note that both interfaces end up with a similar amount of code. Optionally you can use some [syntactic sugar](#syntactic-sugar) to write things quicker.
+In most cases the bindings match the C99 style of Vulkan. This allows you to follow existing C/C++ tutorials, but write the implementation itself with *nvk*. Note that both interfaces end up with a similar amount of code. Optionally you can use some [syntactic sugar](#syntactic-sugar) to write things quicker.
+
+Also note that *nvk* performs type validation and bounding checks to help you catching bugs early.
 
 JavaScript/TypeScript:
 ````js
@@ -129,19 +134,20 @@ vkCreateInstance(&instanceInfo, nullptr, &instance);
 
 ## TypeScript:
 
-When generating bindings, a TypeScript definition file is auto-generated as well (see e.g. the file [here](https://github.com/maierfelix/nvk/blob/master/generated/1.1.92/index.d.ts)).
+When generating bindings, a TypeScript definition file is auto-generated as well (see e.g. the file [here](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.101/win32/index.d.ts)).
 
 To use the definition file, simply follow the installation steps above. Afterwards in your `.ts` file, import and use *nvk* as follows:
 
 ````ts
-import {
-  VulkanWindow,
-  VkApplicationInfo,
-  VK_MAKE_VERSION,
-  VK_API_VERSION_1_0
-} from "nvk/generated/1.1.101/index";
+import * as nvk from "nvk/generated/1.1.101/index";
 
-let win = new VulkanWindow({ width: 480, height: 320 });
+Object.assign(global, nvk);
+
+let win = new VulkanWindow({
+  width: 480,
+  height: 320,
+  title: "typescript-example"
+});
 
 let appInfo = new VkApplicationInfo({
   pApplicationName: "Hello!",
@@ -206,7 +212,7 @@ This tool uses a new JavaScript type called [`BigInt`](https://developers.google
 
 ## Binding Code Generator:
 
-The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.101/ast.json), which is then used by the code generator. Currently more than `~250.000` lines of code get generated, where `~150.000` lines are C++ code.
+The Generator generates C++ code from a `vk.xml` specification file. It first converts the XML file into an [AST](https://raw.githubusercontent.com/maierfelix/nvk/master/generated/1.1.101/ast.json), which is then used by the code generator. Currently more than `~300.000` lines of code get generated, where `~150.000` lines are C++ and `~40.000` lines are TypeScript code.
 
 ## Build Instructions:
 
@@ -288,7 +294,7 @@ The generated bindings can then be found in `generated/{vkversion}/`
 ````
 [--vkversion]: The Vulkan version to generate bindings for
 [--incremental]: Enables incremental builds when building the bindings
-[--docs]: Generates HTML-based documentation
+[--docs]: Generates HTML-based documentation, also used for TypeScript type annotations
 ````
 
 #### Building:

@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkPhysicalDeviceMultiviewFeaturesKHR</vk-name>
@@ -41,61 +37,52 @@
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
-      <pre><code class="language-js">physicalDeviceMultiviewFeaturesKHRInfo = new VkPhysicalDeviceMultiviewFeaturesKHR();
-physicalDeviceMultiviewFeaturesKHRInfo = new VkPhysicalDeviceMultiviewFeaturesKHR(object);</code></pre>
+      <pre><code class="language-js">physicalDeviceMultiviewFeaturesKHR = new VkPhysicalDeviceMultiviewFeaturesKHR();
+physicalDeviceMultiviewFeaturesKHR = new VkPhysicalDeviceMultiviewFeaturesKHR(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
-      <pre><code class="language-js">let physicalDeviceMultiviewFeaturesKHRInfo = new VkPhysicalDeviceMultiviewFeaturesKHR();
-physicalDeviceMultiviewFeaturesKHRInfo.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES_KHR;
-physicalDeviceMultiviewFeaturesKHRInfo.pNext = ;
-physicalDeviceMultiviewFeaturesKHRInfo.multiview = ;
-physicalDeviceMultiviewFeaturesKHRInfo.multiviewGeometryShader = ;
-physicalDeviceMultiviewFeaturesKHRInfo.multiviewTessellationShader = ;
+      <pre><code class="language-js">let physicalDeviceMultiviewFeaturesKHR = new VkPhysicalDeviceMultiviewFeaturesKHR();
+physicalDeviceMultiviewFeaturesKHR.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES_KHR;
+physicalDeviceMultiviewFeaturesKHR.pNext = ;
+physicalDeviceMultiviewFeaturesKHR.multiview = ;
+physicalDeviceMultiviewFeaturesKHR.multiviewGeometryShader = ;
+physicalDeviceMultiviewFeaturesKHR.multiviewTessellationShader = ;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
       <vk-property-entry>
         <vk-property-prototype class="no-float">object</vk-property-prototype>
         <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
       </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPhysicalDeviceMultiviewFeaturesKHR.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMultiviewFeaturesKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMultiviewFeaturesKHR.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMultiviewFeaturesKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMultiviewFeaturesKHR.prototype.multiview -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMultiviewFeaturesKHR.prototype.<vk-prototype-name>multiview</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description> specifies whether the implementation supports multiview rendering within a render pass. If this feature is not enabled, the view mask of each subpass <i>must</i> always be zero.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMultiviewFeaturesKHR.prototype.multiviewGeometryShader -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMultiviewFeaturesKHR.prototype.<vk-prototype-name>multiviewGeometryShader</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description> specifies whether the implementation supports multiview rendering within a render pass, with <<geometry,geometry shaders>>. If this feature is not enabled, then a pipeline compiled against a subpass with a non-zero view mask <i>must</i> not include a geometry shader.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMultiviewFeaturesKHR.prototype.multiviewTessellationShader -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMultiviewFeaturesKHR.prototype.<vk-prototype-name>multiviewTessellationShader</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description> specifies whether the implementation supports multiview rendering within a render pass, with <<tessellation,tessellation shaders>>. If this feature is not enabled, then a pipeline compiled against a subpass with a non-zero view mask <i>must</i> not include any tessellation shaders.</vk-property-description>
       </vk-property-entry>
       
@@ -104,13 +91,11 @@ physicalDeviceMultiviewFeaturesKHRInfo.multiviewTessellationShader = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPhysicalDeviceMultiviewFeaturesKHR.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMultiviewFeaturesKHR.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceMultiviewFeaturesKHR.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceMultiviewFeaturesKHR.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

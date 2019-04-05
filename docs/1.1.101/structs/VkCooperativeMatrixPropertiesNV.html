@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkCooperativeMatrixPropertiesNV</vk-name>
@@ -41,96 +37,82 @@
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
-      <pre><code class="language-js">cooperativeMatrixPropertiesNVInfo = new VkCooperativeMatrixPropertiesNV();
-cooperativeMatrixPropertiesNVInfo = new VkCooperativeMatrixPropertiesNV(object);</code></pre>
+      <pre><code class="language-js">cooperativeMatrixPropertiesNV = new VkCooperativeMatrixPropertiesNV();
+cooperativeMatrixPropertiesNV = new VkCooperativeMatrixPropertiesNV(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
-      <pre><code class="language-js">let cooperativeMatrixPropertiesNVInfo = new VkCooperativeMatrixPropertiesNV();
-cooperativeMatrixPropertiesNVInfo.sType = VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_NV;
-cooperativeMatrixPropertiesNVInfo.pNext = ;
-cooperativeMatrixPropertiesNVInfo.MSize = ;
-cooperativeMatrixPropertiesNVInfo.NSize = ;
-cooperativeMatrixPropertiesNVInfo.KSize = ;
-cooperativeMatrixPropertiesNVInfo.AType = ;
-cooperativeMatrixPropertiesNVInfo.BType = ;
-cooperativeMatrixPropertiesNVInfo.CType = ;
-cooperativeMatrixPropertiesNVInfo.DType = ;
-cooperativeMatrixPropertiesNVInfo.scope = ;
+      <pre><code class="language-js">let cooperativeMatrixPropertiesNV = new VkCooperativeMatrixPropertiesNV();
+cooperativeMatrixPropertiesNV.sType = VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_NV;
+cooperativeMatrixPropertiesNV.pNext = ;
+cooperativeMatrixPropertiesNV.MSize = ;
+cooperativeMatrixPropertiesNV.NSize = ;
+cooperativeMatrixPropertiesNV.KSize = ;
+cooperativeMatrixPropertiesNV.AType = ;
+cooperativeMatrixPropertiesNV.BType = ;
+cooperativeMatrixPropertiesNV.CType = ;
+cooperativeMatrixPropertiesNV.DType = ;
+cooperativeMatrixPropertiesNV.scope = ;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
       <vk-property-entry>
         <vk-property-prototype class="no-float">object</vk-property-prototype>
         <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
       </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkCooperativeMatrixPropertiesNV.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkCooperativeMatrixPropertiesNV.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkCooperativeMatrixPropertiesNV.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkCooperativeMatrixPropertiesNV.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkCooperativeMatrixPropertiesNV.prototype.MSize -->
       <vk-property-entry>
         <vk-property-prototype>VkCooperativeMatrixPropertiesNV.prototype.<vk-prototype-name>MSize</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkCooperativeMatrixPropertiesNV.prototype.NSize -->
       <vk-property-entry>
         <vk-property-prototype>VkCooperativeMatrixPropertiesNV.prototype.<vk-prototype-name>NSize</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkCooperativeMatrixPropertiesNV.prototype.KSize -->
       <vk-property-entry>
         <vk-property-prototype>VkCooperativeMatrixPropertiesNV.prototype.<vk-prototype-name>KSize</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkCooperativeMatrixPropertiesNV.prototype.AType -->
       <vk-property-entry>
         <vk-property-prototype>VkCooperativeMatrixPropertiesNV.prototype.<vk-prototype-name>AType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkComponentTypeNV.html">VkComponentTypeNV</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkCooperativeMatrixPropertiesNV.prototype.BType -->
       <vk-property-entry>
         <vk-property-prototype>VkCooperativeMatrixPropertiesNV.prototype.<vk-prototype-name>BType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkComponentTypeNV.html">VkComponentTypeNV</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkCooperativeMatrixPropertiesNV.prototype.CType -->
       <vk-property-entry>
         <vk-property-prototype>VkCooperativeMatrixPropertiesNV.prototype.<vk-prototype-name>CType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkComponentTypeNV.html">VkComponentTypeNV</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkCooperativeMatrixPropertiesNV.prototype.DType -->
       <vk-property-entry>
         <vk-property-prototype>VkCooperativeMatrixPropertiesNV.prototype.<vk-prototype-name>DType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkComponentTypeNV.html">VkComponentTypeNV</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkCooperativeMatrixPropertiesNV.prototype.scope -->
       <vk-property-entry>
         <vk-property-prototype>VkCooperativeMatrixPropertiesNV.prototype.<vk-prototype-name>scope</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkScopeNV.html">VkScopeNV</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
       
@@ -139,13 +121,11 @@ cooperativeMatrixPropertiesNVInfo.scope = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkCooperativeMatrixPropertiesNV.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkCooperativeMatrixPropertiesNV.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkCooperativeMatrixPropertiesNV.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkCooperativeMatrixPropertiesNV.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

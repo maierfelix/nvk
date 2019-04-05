@@ -9,26 +9,26 @@
 <link rel="stylesheet" href="../../assets/css/vk.css"/>
 <link rel="stylesheet" href="../../assets/css/prism.css"/>
 
+
 <vk-title>VkPhysicalDeviceProperties | NVK</vk-title>
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
-    <vk-section-title>Search</vk-section-title>
-    <vk-search>
-      <input type="text" id="search" autocomplete="off" />
-      <vk-search-results>
-        <ol id="search-list">
-          <li id="no-search-results">No Results</li>
-        </ol>
-      </vk-search-results>
-    </vk-search>
-    <vk-section-title>Categories</vk-section-title>
-    <vk-categories></vk-categories>
-  </vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
 
-  <!-- Struct -->
+
   <vk-struct>
 
     <vk-name>VkPhysicalDeviceProperties</vk-name>
@@ -37,86 +37,65 @@
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
-      <pre><code class="language-js">physicalDevicePropertiesInfo = new VkPhysicalDeviceProperties();
-physicalDevicePropertiesInfo = new VkPhysicalDeviceProperties(object);</code></pre>
+      <pre><code class="language-js">physicalDeviceProperties = new VkPhysicalDeviceProperties();</code></pre>
     </vk-syntax>
 
-    <vk-section-title>Stub</vk-section-title>
+    <vk-section-title>Stub <vk-property-type type="read-only">read-only</vk-property-type></vk-section-title>
     <vk-stub>
-      <pre><code class="language-js">let physicalDevicePropertiesInfo = new VkPhysicalDeviceProperties();
-physicalDevicePropertiesInfo.apiVersion = ;
-physicalDevicePropertiesInfo.driverVersion = ;
-physicalDevicePropertiesInfo.vendorID = ;
-physicalDevicePropertiesInfo.deviceID = ;
-physicalDevicePropertiesInfo.deviceType = ;
-physicalDevicePropertiesInfo.deviceName = ;
-physicalDevicePropertiesInfo.pipelineCacheUUID = ;
-physicalDevicePropertiesInfo.limits = ;
-physicalDevicePropertiesInfo.sparseProperties = ;
+      <pre><code class="language-js">let physicalDeviceProperties = new VkPhysicalDeviceProperties();
+physicalDeviceProperties.apiVersion;
+physicalDeviceProperties.driverVersion;
+physicalDeviceProperties.vendorID;
+physicalDeviceProperties.deviceID;
+physicalDeviceProperties.deviceType;
+physicalDeviceProperties.deviceName;
+physicalDeviceProperties.pipelineCacheUUID;
+physicalDeviceProperties.limits;
+physicalDeviceProperties.sparseProperties;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <vk-property-entry>
-        <vk-property-prototype class="no-float">object</vk-property-prototype>
-        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
-      </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
-
-    <vk-properties>
-      <!-- VkPhysicalDeviceProperties.prototype.apiVersion -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceProperties.prototype.<vk-prototype-name>apiVersion</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the version of Vulkan supported by the device, encoded as described in the <<fundamentals-versionnum,API Version Numbers and Semantics>> section.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceProperties.prototype.driverVersion -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceProperties.prototype.<vk-prototype-name>driverVersion</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the vendor-specified version of the driver.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceProperties.prototype.vendorID -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceProperties.prototype.<vk-prototype-name>vendorID</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a unique identifier for the _vendor_ (see below) of the physical device.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceProperties.prototype.deviceID -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceProperties.prototype.<vk-prototype-name>deviceID</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is a unique identifier for the physical device among devices available from the vendor.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceProperties.prototype.deviceType -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceProperties.prototype.<vk-prototype-name>deviceType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkPhysicalDeviceType.html">VkPhysicalDeviceType</a></vk-property-type>
         <vk-property-description> is a <b>VkPhysicalDeviceType</b> specifying the type of device.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceProperties.prototype.deviceName -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceProperties.prototype.<vk-prototype-name>deviceName</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="string">String</vk-property-type>
         <vk-property-description> is a string containing the name of the device.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceProperties.prototype.pipelineCacheUUID -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceProperties.prototype.<vk-prototype-name>pipelineCacheUUID</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="array">Array<vk-property-type type="number">[Number]</vk-property-type></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceProperties.prototype.limits -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceProperties.prototype.<vk-prototype-name>limits</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkPhysicalDeviceLimits.html">VkPhysicalDeviceLimits</a></vk-property-type>
         <vk-property-description> is the <b><a href="../structs/VkPhysicalDeviceLimits.html">VkPhysicalDeviceLimits</a></b> structure which specifies device-specific limits of the physical device. See <<features-limits,Limits>> for details.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceProperties.prototype.sparseProperties -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceProperties.prototype.<vk-prototype-name>sparseProperties</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkPhysicalDeviceSparseProperties.html">VkPhysicalDeviceSparseProperties</a></vk-property-type>
@@ -128,13 +107,11 @@ physicalDevicePropertiesInfo.sparseProperties = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPhysicalDeviceProperties.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceProperties.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceProperties.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceProperties.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

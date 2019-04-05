@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkTextureLODGatherFormatPropertiesAMD</vk-name>
@@ -41,47 +37,32 @@
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
-      <pre><code class="language-js">textureLODGatherFormatPropertiesAMDInfo = new VkTextureLODGatherFormatPropertiesAMD();
-textureLODGatherFormatPropertiesAMDInfo = new VkTextureLODGatherFormatPropertiesAMD(object);</code></pre>
+      <pre><code class="language-js">textureLODGatherFormatPropertiesAMD = new VkTextureLODGatherFormatPropertiesAMD();</code></pre>
     </vk-syntax>
 
-    <vk-section-title>Stub</vk-section-title>
+    <vk-section-title>Stub <vk-property-type type="read-only">read-only</vk-property-type></vk-section-title>
     <vk-stub>
-      <pre><code class="language-js">let textureLODGatherFormatPropertiesAMDInfo = new VkTextureLODGatherFormatPropertiesAMD();
-textureLODGatherFormatPropertiesAMDInfo.sType = VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD;
-textureLODGatherFormatPropertiesAMDInfo.pNext = ;
-textureLODGatherFormatPropertiesAMDInfo.supportsTextureGatherLODBiasAMD = ;
+      <pre><code class="language-js">let textureLODGatherFormatPropertiesAMD = new VkTextureLODGatherFormatPropertiesAMD();
+textureLODGatherFormatPropertiesAMD.sType;
+textureLODGatherFormatPropertiesAMD.pNext;
+textureLODGatherFormatPropertiesAMD.supportsTextureGatherLODBiasAMD;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <vk-property-entry>
-        <vk-property-prototype class="no-float">object</vk-property-prototype>
-        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
-      </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
-
-    <vk-properties>
-      <!-- VkTextureLODGatherFormatPropertiesAMD.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkTextureLODGatherFormatPropertiesAMD.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkTextureLODGatherFormatPropertiesAMD.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkTextureLODGatherFormatPropertiesAMD.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkTextureLODGatherFormatPropertiesAMD.prototype.supportsTextureGatherLODBiasAMD -->
       <vk-property-entry>
         <vk-property-prototype>VkTextureLODGatherFormatPropertiesAMD.prototype.<vk-prototype-name>supportsTextureGatherLODBiasAMD</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description> tells if the image format can be used with texture gather bias/LOD functions, as introduced by the `<<VK_AMD_texture_gather_bias_lod>>` extension. This field is set by the implementation. User-specified value is ignored.</vk-property-description>
       </vk-property-entry>
       
@@ -90,13 +71,11 @@ textureLODGatherFormatPropertiesAMDInfo.supportsTextureGatherLODBiasAMD = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkTextureLODGatherFormatPropertiesAMD.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkTextureLODGatherFormatPropertiesAMD.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkTextureLODGatherFormatPropertiesAMD.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkTextureLODGatherFormatPropertiesAMD.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

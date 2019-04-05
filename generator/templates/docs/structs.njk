@@ -4,10 +4,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
   {{ getNavigationHTML() | safe }}
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>{{ struct.name }}</vk-name>
@@ -16,11 +14,11 @@
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
-      <pre><code class="language-js">{{ instantiationName | safe }} = new {{ struct.name }}();
-{{ instantiationName | safe }} = new {{ struct.name }}(object);</code></pre>
+      <pre><code class="language-js">{{ instantiationName | safe }} = new {{ struct.name }}();{%- if struct.returnedonly != true %}
+{{ instantiationName | safe }} = new {{ struct.name }}(object);{%- endif -%}</code></pre>
     </vk-syntax>
 
-    <vk-section-title>Stub</vk-section-title>
+    <vk-section-title>Stub{%- if struct.returnedonly %} <vk-property-type type="read-only">read-only</vk-property-type>{%- endif -%}</vk-section-title>
     <vk-stub>
       <pre><code class="language-js">let {{ instantiationName | safe }} = new {{ struct.name }}();
 {% for member in members -%}
@@ -29,6 +27,7 @@
       </code></pre>
     </vk-stub>
 
+{%- if struct.returnedonly != true -%}
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
@@ -37,12 +36,11 @@
         <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
       </vk-property-entry>
     </vk-properties>
-
+{%- endif -%}
     <vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
       {% for member in members -%}
-      <!-- {{ struct.name }}.prototype.{{ member.name }} -->
       <vk-property-entry>
         <vk-property-prototype>{{ struct.name }}.prototype.<vk-prototype-name>{{ member.name }}</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="{{ getCSSType(member) | safe }}">{{ getType(member) | safe }}</vk-property-type>
@@ -54,13 +52,11 @@
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- {{ struct.name }}.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>{{ struct.name }}.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- {{ struct.name }}.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>{{ struct.name }}.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

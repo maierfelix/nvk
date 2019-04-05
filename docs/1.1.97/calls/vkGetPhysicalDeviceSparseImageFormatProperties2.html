@@ -9,26 +9,26 @@
 <link rel="stylesheet" href="../../assets/css/vk.css"/>
 <link rel="stylesheet" href="../../assets/css/prism.css"/>
 
+
 <vk-title>vkGetPhysicalDeviceSparseImageFormatProperties2 | NVK</vk-title>
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
-    <vk-section-title>Search</vk-section-title>
-    <vk-search>
-      <input type="text" id="search" autocomplete="off" />
-      <vk-search-results>
-        <ol id="search-list">
-          <li id="no-search-results">No Results</li>
-        </ol>
-      </vk-search-results>
-    </vk-search>
-    <vk-section-title>Categories</vk-section-title>
-    <vk-categories></vk-categories>
-  </vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
 
-  <!-- Call -->
+
   <vk-struct>
 
     <vk-name>vkGetPhysicalDeviceSparseImageFormatProperties2</vk-name>
@@ -44,25 +44,21 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- physicalDevice -->
       <vk-property-entry>
         <vk-property-parameter>physicalDevice</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkPhysicalDevice.html">VkPhysicalDevice</a></vk-property-type>
         <vk-property-description> is the physical device from which to query the sparse image capabilities.</vk-property-description>
       </vk-property-entry>
-      <!-- pFormatInfo -->
       <vk-property-entry>
         <vk-property-parameter>pFormatInfo</vk-property-parameter>
         <vk-property-type type="object"><a href="../structs/VkPhysicalDeviceSparseImageFormatInfo2.html">VkPhysicalDeviceSparseImageFormatInfo2</a></vk-property-type>
         <vk-property-description> is a reference to a structure of type <b><a href="../structs/VkPhysicalDeviceSparseImageFormatInfo2.html">VkPhysicalDeviceSparseImageFormatInfo2</a></b> containing input parameters to the command.</vk-property-description>
       </vk-property-entry>
-      <!-- pPropertyCount -->
       <vk-property-entry>
         <vk-property-parameter>pPropertyCount</vk-property-parameter>
         <vk-property-type type="object">Object.$<vk-property-type type="object">(Number)</vk-property-type></vk-property-type>
         <vk-property-description> is a reference to a number related to the number of sparse format properties available or queried, as described below.</vk-property-description>
       </vk-property-entry>
-      <!-- pProperties -->
       <vk-property-entry>
         <vk-property-parameter>pProperties</vk-property-parameter>
         <vk-property-type type="array">Array<vk-property-type type="object">[<a href="../structs/VkSparseImageFormatProperties2.html">VkSparseImageFormatProperties2]</a></vk-property-type></vk-property-type>

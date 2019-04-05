@@ -154,6 +154,7 @@ export function getObjectInstantiationName(object) {
   }
   let out = name.substr(2, name.length);
   if (object.kind === `STRUCT`) {
+    let isInfo = out.match(`Info`);
     // remove 'CreateInfo' from name
     out = out.replace(`CreateInfo`, ``);
     // remove name'Info' from end
@@ -161,7 +162,7 @@ export function getObjectInstantiationName(object) {
       out = out.substr(0, out.length - 4);
     }
     out = out[0].toLowerCase() + out.slice(1);
-    out = out + `Info`;
+    if (isInfo) out = out + `Info`;
   }
   else if (object.kind === `HANDLE`) {
     out = out[0].toLowerCase() + out.slice(1);
@@ -452,42 +453,6 @@ export function isReferenceableMember(member) {
   return false;
 };
 
-export function isFlushableMember(member) {
-  if (isPNextMember(member)) return true;
-  if (member.isStructType && member.dereferenceCount <= 0 && !member.isConstant) return true;
-  return isHeaderHeapVector(member);
-};
-
-export function isArrayMember(member) {
-  return (
-    member.isArray ||
-    member.isDynamicArray ||
-    member.isNumericArray ||
-    member.isTypedArray
-  );
-};
-
-export function isArrayOfObjectsMember(member) {
-  return (
-    (member.isArray) &&
-    (member.isStructType || member.isHandleType) ||
-    (member.isStaticArray && member.isNumericArray)
-  );
-};
-
-export function isHeaderHeapVector(member) {
-  return (
-    isArrayOfObjectsMember(member) ||
-    member.rawType === "const char * const*"
-  );
-};
-
-export function isFillableMember(struct, member) {
-  if (member.name === `sType` || member.name === `pNext`) return true;
-  if (member.isVoidPointer) return true;
-  return !struct.returnedonly;
-};
-
 export function getBitmaskByName(ast, name) {
   for (let ii = 0; ii < ast.length; ++ii) {
     let child = ast[ii];
@@ -496,37 +461,4 @@ export function getBitmaskByName(ast, name) {
     }
   };
   return null;
-};
-
-export function getNumericByteLength(type) {
-  // 64-bit assumed
-  switch (type) {
-    case "int": return 4;
-    case "float": return 4;
-    case "size_t": return 8;
-    case "int32_t": return 4;
-    case "uint8_t": return 1;
-    case "uint16_t": return 2;
-    case "uint32_t": return 4;
-    case "uint64_t": return 8;
-  };
-  warn(`Cannot resolve numeric byte length for type: ${type}`);
-  return -1;
-};
-
-export function getDataViewInstruction(member) {
-  let {type} = member;
-  if (member.isWin32Handle) return `BigInt64`;
-  switch (type) {
-    case "int": return `Int32`;
-    case "float": return `Float32`;
-    case "size_t": return `BigInt64`;
-    case "int32_t": return `Int32`;
-    case "uint8_t": return `Uint8`;
-    case "uint32_t": return `Uint32`;
-    case "uint64_t": return `BigUint64`;
-    default:
-      warn(`Cannot resolve DataView instruction for ${member.name} of type ${type}`);
-  };
-  return ``;
 };

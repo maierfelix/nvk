@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkBindImageMemory</vk-name>
@@ -48,25 +44,21 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- device -->
       <vk-property-entry>
         <vk-property-parameter>device</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkDevice.html">VkDevice</a></vk-property-type>
         <vk-property-description> is the logical device that owns the image and memory.</vk-property-description>
       </vk-property-entry>
-      <!-- image -->
       <vk-property-entry>
         <vk-property-parameter>image</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkImage.html">VkImage</a></vk-property-type>
         <vk-property-description> is the image.</vk-property-description>
       </vk-property-entry>
-      <!-- memory -->
       <vk-property-entry>
         <vk-property-parameter>memory</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkDeviceMemory.html">VkDeviceMemory</a></vk-property-type>
         <vk-property-description> which is to be bound to the image. The number of bytes returned in the <b><a href="../structs/VkMemoryRequirements.html">VkMemoryRequirements</a></b>::<b>size</b> member in <b>memory</b>, starting from <b>memoryOffset</b> bytes, will be bound to the specified image.</vk-property-description>
       </vk-property-entry>
-      <!-- memoryOffset -->
       <vk-property-entry>
         <vk-property-parameter>memoryOffset</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>

@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV</vk-name>
@@ -41,47 +37,40 @@
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
-      <pre><code class="language-js">physicalDeviceDedicatedAllocationImageAliasingFeaturesNVInfo = new VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV();
-physicalDeviceDedicatedAllocationImageAliasingFeaturesNVInfo = new VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(object);</code></pre>
+      <pre><code class="language-js">physicalDeviceDedicatedAllocationImageAliasingFeaturesNV = new VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV();
+physicalDeviceDedicatedAllocationImageAliasingFeaturesNV = new VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
-      <pre><code class="language-js">let physicalDeviceDedicatedAllocationImageAliasingFeaturesNVInfo = new VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV();
-physicalDeviceDedicatedAllocationImageAliasingFeaturesNVInfo.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEDICATED_ALLOCATION_IMAGE_ALIASING_FEATURES_NV;
-physicalDeviceDedicatedAllocationImageAliasingFeaturesNVInfo.pNext = ;
-physicalDeviceDedicatedAllocationImageAliasingFeaturesNVInfo.dedicatedAllocationImageAliasing = ;
+      <pre><code class="language-js">let physicalDeviceDedicatedAllocationImageAliasingFeaturesNV = new VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV();
+physicalDeviceDedicatedAllocationImageAliasingFeaturesNV.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEDICATED_ALLOCATION_IMAGE_ALIASING_FEATURES_NV;
+physicalDeviceDedicatedAllocationImageAliasingFeaturesNV.pNext = ;
+physicalDeviceDedicatedAllocationImageAliasingFeaturesNV.dedicatedAllocationImageAliasing = ;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
       <vk-property-entry>
         <vk-property-prototype class="no-float">object</vk-property-prototype>
         <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
       </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.prototype.dedicatedAllocationImageAliasing -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.prototype.<vk-prototype-name>dedicatedAllocationImageAliasing</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
       
@@ -90,13 +79,11 @@ physicalDeviceDedicatedAllocationImageAliasingFeaturesNVInfo.dedicatedAllocation
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

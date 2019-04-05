@@ -17086,7 +17086,8 @@
         "name": "pfnAllocation",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isFunction": true,
+        "jsType": "Function",
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -17096,7 +17097,8 @@
         "name": "pfnReallocation",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isFunction": true,
+        "jsType": "Function",
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -17106,7 +17108,8 @@
         "name": "pfnFree",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isFunction": true,
+        "jsType": "Function",
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -17116,7 +17119,8 @@
         "name": "pfnInternalAllocation",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isFunction": true,
+        "jsType": "Function",
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -17126,7 +17130,8 @@
         "name": "pfnInternalFree",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isFunction": true,
+        "jsType": "Function",
         "kind": "STRUCT_MEMBER"
       }
     ]
@@ -28219,7 +28224,8 @@
         "name": "pfnCallback",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isFunction": true,
+        "jsType": "Function",
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -44947,7 +44953,8 @@
         "name": "pfnUserCallback",
         "isConstant": false,
         "dereferenceCount": 0,
-        "jsType": "undefined",
+        "isFunction": true,
+        "jsType": "Function",
         "kind": "STRUCT_MEMBER"
       },
       {
@@ -54950,7 +54957,8 @@
     "name": "vkGetDeviceProcAddr",
     "isConstant": false,
     "dereferenceCount": 0,
-    "jsType": "undefined",
+    "isFunction": true,
+    "jsType": "Function",
     "kind": "COMMAND_PROTO",
     "params": [
       {
@@ -54985,7 +54993,8 @@
     "name": "vkGetInstanceProcAddr",
     "isConstant": false,
     "dereferenceCount": 0,
-    "jsType": "undefined",
+    "isFunction": true,
+    "jsType": "Function",
     "kind": "COMMAND_PROTO",
     "params": [
       {

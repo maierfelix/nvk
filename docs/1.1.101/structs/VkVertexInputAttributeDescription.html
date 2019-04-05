@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkVertexInputAttributeDescription</vk-name>
@@ -41,51 +37,43 @@
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
-      <pre><code class="language-js">vertexInputAttributeDescriptionInfo = new VkVertexInputAttributeDescription();
-vertexInputAttributeDescriptionInfo = new VkVertexInputAttributeDescription(object);</code></pre>
+      <pre><code class="language-js">vertexInputAttributeDescription = new VkVertexInputAttributeDescription();
+vertexInputAttributeDescription = new VkVertexInputAttributeDescription(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
-      <pre><code class="language-js">let vertexInputAttributeDescriptionInfo = new VkVertexInputAttributeDescription();
-vertexInputAttributeDescriptionInfo.location = ;
-vertexInputAttributeDescriptionInfo.binding = ;
-vertexInputAttributeDescriptionInfo.format = ;
-vertexInputAttributeDescriptionInfo.offset = ;
+      <pre><code class="language-js">let vertexInputAttributeDescription = new VkVertexInputAttributeDescription();
+vertexInputAttributeDescription.location = ;
+vertexInputAttributeDescription.binding = ;
+vertexInputAttributeDescription.format = ;
+vertexInputAttributeDescription.offset = ;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
       <vk-property-entry>
         <vk-property-prototype class="no-float">object</vk-property-prototype>
         <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
       </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkVertexInputAttributeDescription.prototype.location -->
       <vk-property-entry>
         <vk-property-prototype>VkVertexInputAttributeDescription.prototype.<vk-prototype-name>location</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the shader binding location number for this attribute.</vk-property-description>
       </vk-property-entry>
-      <!-- VkVertexInputAttributeDescription.prototype.binding -->
       <vk-property-entry>
         <vk-property-prototype>VkVertexInputAttributeDescription.prototype.<vk-prototype-name>binding</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the binding number which this attribute takes its data from.</vk-property-description>
       </vk-property-entry>
-      <!-- VkVertexInputAttributeDescription.prototype.format -->
       <vk-property-entry>
         <vk-property-prototype>VkVertexInputAttributeDescription.prototype.<vk-prototype-name>format</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkFormat.html">VkFormat</a></vk-property-type>
         <vk-property-description> is the size and type of the vertex attribute data.</vk-property-description>
       </vk-property-entry>
-      <!-- VkVertexInputAttributeDescription.prototype.offset -->
       <vk-property-entry>
         <vk-property-prototype>VkVertexInputAttributeDescription.prototype.<vk-prototype-name>offset</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
@@ -97,13 +85,11 @@ vertexInputAttributeDescriptionInfo.offset = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkVertexInputAttributeDescription.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkVertexInputAttributeDescription.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkVertexInputAttributeDescription.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkVertexInputAttributeDescription.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

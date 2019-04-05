@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkAttachmentDescription2KHR</vk-name>
@@ -41,103 +37,88 @@
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
-      <pre><code class="language-js">attachmentDescription2KHRInfo = new VkAttachmentDescription2KHR();
-attachmentDescription2KHRInfo = new VkAttachmentDescription2KHR(object);</code></pre>
+      <pre><code class="language-js">attachmentDescription2KHR = new VkAttachmentDescription2KHR();
+attachmentDescription2KHR = new VkAttachmentDescription2KHR(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
-      <pre><code class="language-js">let attachmentDescription2KHRInfo = new VkAttachmentDescription2KHR();
-attachmentDescription2KHRInfo.sType = VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_2_KHR;
-attachmentDescription2KHRInfo.pNext = ;
-attachmentDescription2KHRInfo.flags = ;
-attachmentDescription2KHRInfo.format = ;
-attachmentDescription2KHRInfo.samples = ;
-attachmentDescription2KHRInfo.loadOp = ;
-attachmentDescription2KHRInfo.storeOp = ;
-attachmentDescription2KHRInfo.stencilLoadOp = ;
-attachmentDescription2KHRInfo.stencilStoreOp = ;
-attachmentDescription2KHRInfo.initialLayout = ;
-attachmentDescription2KHRInfo.finalLayout = ;
+      <pre><code class="language-js">let attachmentDescription2KHR = new VkAttachmentDescription2KHR();
+attachmentDescription2KHR.sType = VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_2_KHR;
+attachmentDescription2KHR.pNext = ;
+attachmentDescription2KHR.flags = ;
+attachmentDescription2KHR.format = ;
+attachmentDescription2KHR.samples = ;
+attachmentDescription2KHR.loadOp = ;
+attachmentDescription2KHR.storeOp = ;
+attachmentDescription2KHR.stencilLoadOp = ;
+attachmentDescription2KHR.stencilStoreOp = ;
+attachmentDescription2KHR.initialLayout = ;
+attachmentDescription2KHR.finalLayout = ;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
       <vk-property-entry>
         <vk-property-prototype class="no-float">object</vk-property-prototype>
         <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
       </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkAttachmentDescription2KHR.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkAttachmentDescription2KHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAttachmentDescription2KHR.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkAttachmentDescription2KHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAttachmentDescription2KHR.prototype.flags -->
       <vk-property-entry>
         <vk-property-prototype>VkAttachmentDescription2KHR.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkAttachmentDescriptionFlagBits.html">VkAttachmentDescriptionFlagBits</a></vk-property-type>
         <vk-property-description> is a bitmask of <b>VkAttachmentDescriptionFlagBits</b> specifying additional properties of the attachment.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAttachmentDescription2KHR.prototype.format -->
       <vk-property-entry>
         <vk-property-prototype>VkAttachmentDescription2KHR.prototype.<vk-prototype-name>format</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkFormat.html">VkFormat</a></vk-property-type>
         <vk-property-description> is a <b>VkFormat</b> value specifying the format of the image that will be used for the attachment.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAttachmentDescription2KHR.prototype.samples -->
       <vk-property-entry>
         <vk-property-prototype>VkAttachmentDescription2KHR.prototype.<vk-prototype-name>samples</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkSampleCountFlagBits.html">VkSampleCountFlagBits</a></vk-property-type>
         <vk-property-description> is the number of samples of the image as defined in <b>VkSampleCountFlagBits</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAttachmentDescription2KHR.prototype.loadOp -->
       <vk-property-entry>
         <vk-property-prototype>VkAttachmentDescription2KHR.prototype.<vk-prototype-name>loadOp</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkAttachmentLoadOp.html">VkAttachmentLoadOp</a></vk-property-type>
         <vk-property-description> is a <b>VkAttachmentLoadOp</b> value specifying how the contents of color and depth components of the attachment are treated at the beginning of the subpass where it is first used.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAttachmentDescription2KHR.prototype.storeOp -->
       <vk-property-entry>
         <vk-property-prototype>VkAttachmentDescription2KHR.prototype.<vk-prototype-name>storeOp</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkAttachmentStoreOp.html">VkAttachmentStoreOp</a></vk-property-type>
         <vk-property-description> is a <b>VkAttachmentStoreOp</b> value specifying how the contents of color and depth components of the attachment are treated at the end of the subpass where it is last used.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAttachmentDescription2KHR.prototype.stencilLoadOp -->
       <vk-property-entry>
         <vk-property-prototype>VkAttachmentDescription2KHR.prototype.<vk-prototype-name>stencilLoadOp</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkAttachmentLoadOp.html">VkAttachmentLoadOp</a></vk-property-type>
         <vk-property-description> is a <b>VkAttachmentLoadOp</b> value specifying how the contents of stencil components of the attachment are treated at the beginning of the subpass where it is first used.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAttachmentDescription2KHR.prototype.stencilStoreOp -->
       <vk-property-entry>
         <vk-property-prototype>VkAttachmentDescription2KHR.prototype.<vk-prototype-name>stencilStoreOp</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkAttachmentStoreOp.html">VkAttachmentStoreOp</a></vk-property-type>
         <vk-property-description> is a <b>VkAttachmentStoreOp</b> value specifying how the contents of stencil components of the attachment are treated at the end of the last subpass where it is used.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAttachmentDescription2KHR.prototype.initialLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkAttachmentDescription2KHR.prototype.<vk-prototype-name>initialLayout</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkImageLayout.html">VkImageLayout</a></vk-property-type>
         <vk-property-description> is the layout the attachment image subresource will be in when a render pass instance begins.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAttachmentDescription2KHR.prototype.finalLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkAttachmentDescription2KHR.prototype.<vk-prototype-name>finalLayout</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkImageLayout.html">VkImageLayout</a></vk-property-type>
         <vk-property-description> is the layout the attachment image subresource will be transitioned to when a render pass instance ends.</vk-property-description>
       </vk-property-entry>
       
@@ -146,13 +127,11 @@ attachmentDescription2KHRInfo.finalLayout = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkAttachmentDescription2KHR.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkAttachmentDescription2KHR.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkAttachmentDescription2KHR.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkAttachmentDescription2KHR.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

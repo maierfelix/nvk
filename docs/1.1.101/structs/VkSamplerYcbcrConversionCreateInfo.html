@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkSamplerYcbcrConversionCreateInfo</vk-name>
@@ -59,78 +55,64 @@ samplerYcbcrConversionInfo.yChromaOffset = ;
 samplerYcbcrConversionInfo.chromaFilter = ;
 samplerYcbcrConversionInfo.forceExplicitReconstruction = ;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
       <vk-property-entry>
         <vk-property-prototype class="no-float">object</vk-property-prototype>
         <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
       </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkSamplerYcbcrConversionCreateInfo.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerYcbcrConversionCreateInfo.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerYcbcrConversionCreateInfo.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerYcbcrConversionCreateInfo.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerYcbcrConversionCreateInfo.prototype.format -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerYcbcrConversionCreateInfo.prototype.<vk-prototype-name>format</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkFormat.html">VkFormat</a></vk-property-type>
         <vk-property-description> is the format of the image from which color information will be retrieved.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerYcbcrConversionCreateInfo.prototype.ycbcrModel -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerYcbcrConversionCreateInfo.prototype.<vk-prototype-name>ycbcrModel</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkSamplerYcbcrModelConversion.html">VkSamplerYcbcrModelConversion</a></vk-property-type>
         <vk-property-description> describes the color matrix for conversion between color models.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerYcbcrConversionCreateInfo.prototype.ycbcrRange -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerYcbcrConversionCreateInfo.prototype.<vk-prototype-name>ycbcrRange</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkSamplerYcbcrRange.html">VkSamplerYcbcrRange</a></vk-property-type>
         <vk-property-description> describes whether the encoded values have headroom and foot room, or whether the encoding uses the full numerical range.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerYcbcrConversionCreateInfo.prototype.components -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerYcbcrConversionCreateInfo.prototype.<vk-prototype-name>components</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkComponentMapping.html">VkComponentMapping</a></vk-property-type>
         <vk-property-description> applies a _swizzle_ based on <b>VkComponentSwizzle</b> enums prior to range expansion and color model conversion.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerYcbcrConversionCreateInfo.prototype.xChromaOffset -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerYcbcrConversionCreateInfo.prototype.<vk-prototype-name>xChromaOffset</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkChromaLocation.html">VkChromaLocation</a></vk-property-type>
         <vk-property-description> describes the <<textures-chroma-reconstruction,sample location>> associated with downsampled chroma channels in the x dimension. <b>xChromaOffset</b> has no effect for formats in which chroma channels are the same resolution as the luma channel.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerYcbcrConversionCreateInfo.prototype.yChromaOffset -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerYcbcrConversionCreateInfo.prototype.<vk-prototype-name>yChromaOffset</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkChromaLocation.html">VkChromaLocation</a></vk-property-type>
         <vk-property-description> describes the <<textures-chroma-reconstruction,sample location>> associated with downsampled chroma channels in the y dimension. <b>yChromaOffset</b> has no effect for formats in which the chroma channels are not downsampled vertically.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerYcbcrConversionCreateInfo.prototype.chromaFilter -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerYcbcrConversionCreateInfo.prototype.<vk-prototype-name>chromaFilter</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkFilter.html">VkFilter</a></vk-property-type>
         <vk-property-description> is the filter for chroma reconstruction.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerYcbcrConversionCreateInfo.prototype.forceExplicitReconstruction -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerYcbcrConversionCreateInfo.prototype.<vk-prototype-name>forceExplicitReconstruction</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description> <i>can</i> be used to ensure that reconstruction is done explicitly, if supported.</vk-property-description>
       </vk-property-entry>
       
@@ -139,13 +121,11 @@ samplerYcbcrConversionInfo.forceExplicitReconstruction = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkSamplerYcbcrConversionCreateInfo.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerYcbcrConversionCreateInfo.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSamplerYcbcrConversionCreateInfo.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkSamplerYcbcrConversionCreateInfo.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

@@ -37,44 +37,16 @@ const CALLS_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/calls.njk`, "utf-8"
 const ENUMS_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/enums.njk`, "utf-8");
 const HANDLES_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/handles.njk`, "utf-8");
 const STRUCTS_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/structs.njk`, "utf-8");
+const HEADER_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/header.njk`, "utf-8");
+const NAVIGATION_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/navigation.njk`, "utf-8");
+const WINDOW_TEMPLATE = fs.readFileSync(`${TEMPLATE_DIR}/docs/window.njk`, "utf-8");
 
 nunjucks.configure({ autoescape: true });
 
-function getBitmaskByName(name) {
-  for (let ii = 0; ii < ast.length; ++ii) {
-    let child = ast[ii];
-    if (child.kind === "ENUM" && child.type === "BITMASK") {
-      if (child.name === name) return child;
-    }
-  };
-  return null;
-};
-
-function getHandleByName(name) {
-  for (let ii = 0; ii < handles.length; ++ii) {
-    if (handles[ii].name === name) return handles[ii];
-  };
-  return null;
-};
-
-function getStructByName(name) {
-  for (let ii = 0; ii < structs.length; ++ii) {
-    if (structs[ii].name === name) return structs[ii];
-  };
-  return null;
-};
-
-function isHandleInclude(name) {
-  return getHandleByName(name) !== null;
-};
-
-function isStructInclude(name) {
-  return getStructByName(name) !== null;
-};
-
 function getType(object) {
   let folder = getObjectFolder(object);
-  let {type, value} = getJavaScriptType(ast, object);
+  let jsType = getJavaScriptType(ast, object);
+  let {type, value} = jsType;
   switch (type) {
     case JavaScriptType.UNKNOWN: {
       return `N/A`;
@@ -82,7 +54,13 @@ function getType(object) {
     case JavaScriptType.NULL: {
       return `null`;
     }
+    case JavaScriptType.BOOLEAN: {
+      return `Boolean`;
+    }
     case JavaScriptType.NUMBER: {
+      if (jsType.isEnum || jsType.isBitmask) {
+        return `<a href="../enums/${jsType.value}.html">${jsType.value}</a>`;
+      }
       return `Number`;
     }
     case JavaScriptType.OBJECT: {
@@ -124,8 +102,11 @@ function getCSSType(member) {
     case JavaScriptType.OBJECT: return `object`;
     case JavaScriptType.NULL: return `null`;
     case JavaScriptType.STRING: return `string`;
+    case JavaScriptType.BOOLEAN: return `boolean`;
     case JavaScriptType.NUMBER: return `number`;
     case JavaScriptType.BIGINT: return `number`;
+    case JavaScriptType.ENUM: return `number`;
+    case JavaScriptType.BITMASK: return `number`;
     case JavaScriptType.OBJECT_INOUT: return `object`;
     case JavaScriptType.FUNCTION: return `function`;
     case JavaScriptType.ARRAY_OF_STRINGS: return `array`;
@@ -137,11 +118,16 @@ function getCSSType(member) {
   return ``;
 };
 
-function getCategories({ calls, structs, handles } = _) {
+function normalizeCategory(c) {
+  return c || `Uncategorized`;
+};
+
+function getCategories({ enums, calls, structs, handles } = _) {
   let out = [];
-  calls.map(call => { if (out.indexOf(call.documentation.category) <= -1) out.push(call.documentation.category); });
-  structs.map(struct => { if (out.indexOf(struct.documentation.category) <= -1) out.push(struct.documentation.category); });
-  handles.map(handle => { if (out.indexOf(handle.documentation.category) <= -1) out.push(handle.documentation.category); });
+  enums.map(enu      => { let c = normalizeCategory(enu.documentation.category);    if (out.indexOf(c) <= -1) out.push(c); });
+  calls.map(call     => { let c = normalizeCategory(call.documentation.category);   if (out.indexOf(c) <= -1) out.push(c); });
+  structs.map(struct => { let c = normalizeCategory(struct.documentation.category); if (out.indexOf(c) <= -1) out.push(c); });
+  handles.map(handle => { let c = normalizeCategory(handle.documentation.category); if (out.indexOf(c) <= -1) out.push(c); });
   return out;
 };
 
@@ -149,9 +135,10 @@ function getObjectsByCategory(category) {
   let out = [];
   // collect objects matching category
   {
-    calls.map(call => { if (call.documentation.category === category) out.push(call); });
-    structs.map(struct => { if (struct.documentation.category === category) out.push(struct); });
-    handles.map(handle => { if (handle.documentation.category === category) out.push(handle); });
+    enums.map(enu      => { let c = normalizeCategory(enu.documentation.category);    if (c === category) out.push(enu); });
+    calls.map(call     => { let c = normalizeCategory(call.documentation.category);   if (c === category) out.push(call); });
+    structs.map(struct => { let c = normalizeCategory(struct.documentation.category); if (c === category) out.push(struct); });
+    handles.map(handle => { let c = normalizeCategory(handle.documentation.category); if (c === category) out.push(handle); });
   }
   // sort alphabetically
   out = out.sort((a, b) => {
@@ -166,6 +153,8 @@ function getObjectFolder(obj) {
   if (obj.isHandleType) return "handles";
   if (obj.isStructType) return "structs";
   switch (obj.kind) {
+    case "ENUM":
+      return "enums";
     case "STRUCT":
       return "structs";
     case "COMMAND_PROTO":
@@ -178,6 +167,8 @@ function getObjectFolder(obj) {
 
 function getObjectLabel(obj) {
   switch (obj.kind) {
+    case "ENUM":
+      return "e";
     case "STRUCT":
       return "s";
     case "COMMAND_PROTO":
@@ -221,7 +212,12 @@ function expandMacro(macro, macroIndex, text) {
     case "flink":
     case "fname": {
       let obj = getNodeByName(value, ast);
-      replacement = `<b><a href="../${getObjectFolder(obj)}/${value}.html">${value}</a></b>`;
+      if (obj) {
+        replacement = `<b><a href="../${getObjectFolder(obj)}/${value}.html">${value}</a></b>`;
+      } else {
+        replacement = `<b><a href="#">${value}</a></b>`;
+        warn(`Cannot resolve node ${value} of kind ${kind}`);
+      }
     } break;
     case "pname":
     case "ename":
@@ -283,6 +279,9 @@ function getObjectDescription(obj) {
 
 function getStructMemberStub(struct, member) {
   let instantiationName = getObjectInstantiationName(struct);
+  if (struct.returnedonly) {
+    return `${instantiationName}.${member.name};`;
+  }
   if (member.name === `sType` && struct.sType) {
     return `${instantiationName}.${member.name} = ${struct.sType};`;
   }
@@ -290,49 +289,50 @@ function getStructMemberStub(struct, member) {
 };
 
 function getNavigationHTML() {
-  return `
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
-  <vk-search>
-    <input type="text" id="search" autocomplete="off" />
-    <vk-search-results>
-      <ol id="search-list">
-        <li id="no-search-results">No Results</li>
-      </ol>
-    </vk-search-results>
-  </vk-search>
-  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
-  <vk-categories></vk-categories>
-</vk-navigation>
-`;
+  return nunjucks.renderString(NAVIGATION_TEMPLATE, {});
 };
 
 function getHeaderHTML() {
-  return `
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  return nunjucks.renderString(HEADER_TEMPLATE, {});
+};
 
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
-<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
-<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+function getEnumMemberValue(enu, member) {
+  let value = member.value || member.alias;
+  if (member.isEnum) {
+    return value;
+  } else if (member.isBitmask) {
+    return `0x` + value.toString(16).toUpperCase();
+  }
+  return value;
+};
 
-<link rel="stylesheet" href="../../assets/css/vk.css"/>
-<link rel="stylesheet" href="../../assets/css/prism.css"/>
-`;
+function addSearchQuery(out, name, folder, label) {
+  out.push([name, label, folder]);
+  return out;
+};
+
+function addCategoryQuery(out, title, category, folder, label) {
+  out.push({
+    category,
+    objects: [
+      ...addSearchQuery([], title, folder, label)
+    ]
+  });
+  return out;
 };
 
 export default function(astReference, data, version) {
   ast = astReference;
-  calls = data.calls;
   enums = data.enums;
+  calls = data.calls;
   structs = data.structs;
   handles = data.handles;
   includes = data.includes;
+  enums.map(enu => { objects.push(enu); });
   calls.map(call => { objects.push(call); });
   structs.map(struct => { objects.push(struct); });
   handles.map(handle => { objects.push(handle); });
-  let categories = getCategories({ calls, structs, handles });
+  let categories = getCategories({ enums, calls, structs, handles });
   let defaultFunctions = {
     getType,
     getCSSType,
@@ -348,12 +348,16 @@ export default function(astReference, data, version) {
   {
     // docs/x/
     if (!fs.existsSync(`${DOCS_DIR}/${version}`)) fs.mkdirSync(`${DOCS_DIR}/${version}`);
+    // docs/x/enums/
+    if (!fs.existsSync(`${DOCS_DIR}/${version}/enums`)) fs.mkdirSync(`${DOCS_DIR}/${version}/enums`);
     // docs/x/calls/
     if (!fs.existsSync(`${DOCS_DIR}/${version}/calls`)) fs.mkdirSync(`${DOCS_DIR}/${version}/calls`);
     // docs/x/handles
     if (!fs.existsSync(`${DOCS_DIR}/${version}/handles`)) fs.mkdirSync(`${DOCS_DIR}/${version}/handles`);
     // docs/x/structs
     if (!fs.existsSync(`${DOCS_DIR}/${version}/structs`)) fs.mkdirSync(`${DOCS_DIR}/${version}/structs`);
+    // docs/additional
+    if (!fs.existsSync(`${DOCS_DIR}/${version}/additional`)) fs.mkdirSync(`${DOCS_DIR}/${version}/additional`);
   }
   // index
   {
@@ -367,6 +371,7 @@ export default function(astReference, data, version) {
   // search json
   {
     let out = [];
+    addSearchQuery(out, `VulkanWindow`, `additional`, ``);
     objects.map(obj => {
       out.push([
         obj.name,
@@ -379,6 +384,7 @@ export default function(astReference, data, version) {
   // categories json
   {
     let out = [];
+    addCategoryQuery(out, `VulkanWindow`, `Additional`, `additional`, ``);
     categories.map(name => {
       let category = { category: name, objects: [] };
       let objects = getObjectsByCategory(name);
@@ -390,6 +396,12 @@ export default function(astReference, data, version) {
         ]);
       });
       out.push(category);
+    });
+    // sort alphabetically
+    out = out.sort((a, b) => {
+      if (a.category < b.category) return -1;
+      if (a.category > b.category) return 1;
+      return 0;
     });
     fs.writeFileSync(`${DOCS_DIR}/${version}/categories.json`, JSON.stringify(out), `utf-8`);
   }
@@ -437,6 +449,31 @@ export default function(astReference, data, version) {
       });
       fs.writeFileSync(`${DOCS_DIR}/${version}/calls/${call.name}.html`, output, `utf-8`);
     });
+  }
+  // enums
+  {
+    enums.map(enu => {
+      let output = nunjucks.renderString(ENUMS_TEMPLATE, {
+        enum: enu,
+        enums,
+        objects,
+        members: enu.children,
+        categories,
+        getEnumMemberValue,
+        ...defaultFunctions
+      });
+      fs.writeFileSync(`${DOCS_DIR}/${version}/enums/${enu.name}.html`, output, `utf-8`);
+    });
+  }
+
+  // window
+  {
+    let output = nunjucks.renderString(WINDOW_TEMPLATE, {
+      objects,
+      categories,
+      ...defaultFunctions
+    });
+    fs.writeFileSync(`${DOCS_DIR}/${version}/additional/VulkanWindow.html`, output, `utf-8`);
   }
   return null;
 };

@@ -116,13 +116,23 @@ function mergeExtensionsIntoEnums(enums, extensions) {
     kind: "ENUM",
     type: "ENUM",
     name: "API_Extensions",
-    children: []
+    children: [],
+    documentation: {
+      macros: [],
+      category: "Uncategorized",
+      description: ""
+    }
   };
   let strExt = {
     kind: "ENUM",
     type: "ENUM_STRINGS",
     name: "API_Extensions_Strings",
-    children: []
+    children: [],
+    documentation: {
+      macros: [],
+      category: "Uncategorized",
+      description: ""
+    }
   };
   enums.unshift(enuExt);
   enums.unshift(strExt);
@@ -436,7 +446,7 @@ class NativeObjectArray {
   {
     console.log("Generating typescript index..");
     let source = `module.exports = require("${pkg.config.TS_ROOT}");`;
-    writeAddonFile(`${generatePath}/../index.js`, source, "utf-8");
+    writeAddonFile(`${generatePath}/index.js`, source, "utf-8");
   }
   // docs
   if (docs) {

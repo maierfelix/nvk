@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkStencilOpState</vk-name>
@@ -41,72 +37,61 @@
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
-      <pre><code class="language-js">stencilOpStateInfo = new VkStencilOpState();
-stencilOpStateInfo = new VkStencilOpState(object);</code></pre>
+      <pre><code class="language-js">stencilOpState = new VkStencilOpState();
+stencilOpState = new VkStencilOpState(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
-      <pre><code class="language-js">let stencilOpStateInfo = new VkStencilOpState();
-stencilOpStateInfo.failOp = ;
-stencilOpStateInfo.passOp = ;
-stencilOpStateInfo.depthFailOp = ;
-stencilOpStateInfo.compareOp = ;
-stencilOpStateInfo.compareMask = ;
-stencilOpStateInfo.writeMask = ;
-stencilOpStateInfo.reference = ;
+      <pre><code class="language-js">let stencilOpState = new VkStencilOpState();
+stencilOpState.failOp = ;
+stencilOpState.passOp = ;
+stencilOpState.depthFailOp = ;
+stencilOpState.compareOp = ;
+stencilOpState.compareMask = ;
+stencilOpState.writeMask = ;
+stencilOpState.reference = ;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
       <vk-property-entry>
         <vk-property-prototype class="no-float">object</vk-property-prototype>
         <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
       </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkStencilOpState.prototype.failOp -->
       <vk-property-entry>
         <vk-property-prototype>VkStencilOpState.prototype.<vk-prototype-name>failOp</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkStencilOp.html">VkStencilOp</a></vk-property-type>
         <vk-property-description> is a <b>VkStencilOp</b> value specifying the action performed on samples that fail the stencil test.</vk-property-description>
       </vk-property-entry>
-      <!-- VkStencilOpState.prototype.passOp -->
       <vk-property-entry>
         <vk-property-prototype>VkStencilOpState.prototype.<vk-prototype-name>passOp</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkStencilOp.html">VkStencilOp</a></vk-property-type>
         <vk-property-description> is a <b>VkStencilOp</b> value specifying the action performed on samples that pass both the depth and stencil tests.</vk-property-description>
       </vk-property-entry>
-      <!-- VkStencilOpState.prototype.depthFailOp -->
       <vk-property-entry>
         <vk-property-prototype>VkStencilOpState.prototype.<vk-prototype-name>depthFailOp</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkStencilOp.html">VkStencilOp</a></vk-property-type>
         <vk-property-description> is a <b>VkStencilOp</b> value specifying the action performed on samples that pass the stencil test and fail the depth test.</vk-property-description>
       </vk-property-entry>
-      <!-- VkStencilOpState.prototype.compareOp -->
       <vk-property-entry>
         <vk-property-prototype>VkStencilOpState.prototype.<vk-prototype-name>compareOp</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkCompareOp.html">VkCompareOp</a></vk-property-type>
         <vk-property-description> is a <b>VkCompareOp</b> value specifying the comparison operator used in the stencil test.</vk-property-description>
       </vk-property-entry>
-      <!-- VkStencilOpState.prototype.compareMask -->
       <vk-property-entry>
         <vk-property-prototype>VkStencilOpState.prototype.<vk-prototype-name>compareMask</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> selects the bits of the unsigned integer stencil values participating in the stencil test.</vk-property-description>
       </vk-property-entry>
-      <!-- VkStencilOpState.prototype.writeMask -->
       <vk-property-entry>
         <vk-property-prototype>VkStencilOpState.prototype.<vk-prototype-name>writeMask</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> selects the bits of the unsigned integer stencil values updated by the stencil test in the stencil framebuffer attachment.</vk-property-description>
       </vk-property-entry>
-      <!-- VkStencilOpState.prototype.reference -->
       <vk-property-entry>
         <vk-property-prototype>VkStencilOpState.prototype.<vk-prototype-name>reference</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
@@ -118,13 +103,11 @@ stencilOpStateInfo.reference = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkStencilOpState.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkStencilOpState.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkStencilOpState.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkStencilOpState.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

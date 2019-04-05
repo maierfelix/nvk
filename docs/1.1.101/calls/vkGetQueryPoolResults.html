@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkGetQueryPoolResults</vk-name>
@@ -48,52 +44,44 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- device -->
       <vk-property-entry>
         <vk-property-parameter>device</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkDevice.html">VkDevice</a></vk-property-type>
         <vk-property-description> is the logical device that owns the query pool.</vk-property-description>
       </vk-property-entry>
-      <!-- queryPool -->
       <vk-property-entry>
         <vk-property-parameter>queryPool</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkQueryPool.html">VkQueryPool</a></vk-property-type>
         <vk-property-description> is the query pool managing the queries containing the desired results.</vk-property-description>
       </vk-property-entry>
-      <!-- firstQuery -->
       <vk-property-entry>
         <vk-property-parameter>firstQuery</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the initial query index.</vk-property-description>
       </vk-property-entry>
-      <!-- queryCount -->
       <vk-property-entry>
         <vk-property-parameter>queryCount</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the number of queries. <b>firstQuery</b> and <b>queryCount</b> together define a range of queries. For pipeline statistics queries, each query index in the pool contains one integer value for each bit that is enabled in <b><a href="../structs/VkQueryPoolCreateInfo.html">VkQueryPoolCreateInfo</a></b>::<b>pipelineStatistics</b> when the pool is created.</vk-property-description>
       </vk-property-entry>
-      <!-- dataSize -->
       <vk-property-entry>
         <vk-property-parameter>dataSize</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the size in bytes of the buffer pointed to by <b>pData</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- pData -->
       <vk-property-entry>
         <vk-property-parameter>pData</vk-property-parameter>
         <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description> is a reference to a user-allocated buffer where the results will be written</vk-property-description>
       </vk-property-entry>
-      <!-- stride -->
       <vk-property-entry>
         <vk-property-parameter>stride</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the stride in bytes between results for individual queries within <b>pData</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- flags -->
       <vk-property-entry>
         <vk-property-parameter>flags</vk-property-parameter>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkQueryResultFlagBits.html">VkQueryResultFlagBits</a></vk-property-type>
         <vk-property-description> is a bitmask of <b>VkQueryResultFlagBits</b> specifying how and when results are returned.</vk-property-description>
       </vk-property-entry>
       

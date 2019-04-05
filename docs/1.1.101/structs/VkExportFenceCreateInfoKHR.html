@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkExportFenceCreateInfoKHR</vk-name>
@@ -52,36 +48,29 @@ exportFenceKHRInfo.sType = VK_STRUCTURE_TYPE_EXPORT_FENCE_CREATE_INFO_KHR;
 exportFenceKHRInfo.pNext = ;
 exportFenceKHRInfo.handleTypes = ;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
       <vk-property-entry>
         <vk-property-prototype class="no-float">object</vk-property-prototype>
         <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
       </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkExportFenceCreateInfoKHR.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkExportFenceCreateInfoKHR.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkExportFenceCreateInfoKHR.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkExportFenceCreateInfoKHR.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkExportFenceCreateInfoKHR.prototype.handleTypes -->
       <vk-property-entry>
         <vk-property-prototype>VkExportFenceCreateInfoKHR.prototype.<vk-prototype-name>handleTypes</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkExternalFenceHandleTypeFlagBits.html">VkExternalFenceHandleTypeFlagBits</a></vk-property-type>
         <vk-property-description> is a bitmask of <b>VkExternalFenceHandleTypeFlagBits</b> specifying one or more fence handle types the application <i>can</i> export from the resulting fence. The application <i>can</i> request multiple handle types for the same fence.</vk-property-description>
       </vk-property-entry>
       
@@ -90,13 +79,11 @@ exportFenceKHRInfo.handleTypes = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkExportFenceCreateInfoKHR.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkExportFenceCreateInfoKHR.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkExportFenceCreateInfoKHR.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkExportFenceCreateInfoKHR.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

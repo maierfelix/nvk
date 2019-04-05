@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkExtensionProperties</vk-name>
@@ -41,37 +37,23 @@
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
-      <pre><code class="language-js">extensionPropertiesInfo = new VkExtensionProperties();
-extensionPropertiesInfo = new VkExtensionProperties(object);</code></pre>
+      <pre><code class="language-js">extensionProperties = new VkExtensionProperties();</code></pre>
     </vk-syntax>
 
-    <vk-section-title>Stub</vk-section-title>
+    <vk-section-title>Stub <vk-property-type type="read-only">read-only</vk-property-type></vk-section-title>
     <vk-stub>
-      <pre><code class="language-js">let extensionPropertiesInfo = new VkExtensionProperties();
-extensionPropertiesInfo.extensionName = ;
-extensionPropertiesInfo.specVersion = ;
+      <pre><code class="language-js">let extensionProperties = new VkExtensionProperties();
+extensionProperties.extensionName;
+extensionProperties.specVersion;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <vk-property-entry>
-        <vk-property-prototype class="no-float">object</vk-property-prototype>
-        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
-      </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
-
-    <vk-properties>
-      <!-- VkExtensionProperties.prototype.extensionName -->
       <vk-property-entry>
         <vk-property-prototype>VkExtensionProperties.prototype.<vk-prototype-name>extensionName</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="string">String</vk-property-type>
         <vk-property-description> is a string specifying the name of the extension.</vk-property-description>
       </vk-property-entry>
-      <!-- VkExtensionProperties.prototype.specVersion -->
       <vk-property-entry>
         <vk-property-prototype>VkExtensionProperties.prototype.<vk-prototype-name>specVersion</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
@@ -83,13 +65,11 @@ extensionPropertiesInfo.specVersion = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkExtensionProperties.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkExtensionProperties.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkExtensionProperties.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkExtensionProperties.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

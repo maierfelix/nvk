@@ -9,26 +9,26 @@
 <link rel="stylesheet" href="../../assets/css/vk.css"/>
 <link rel="stylesheet" href="../../assets/css/prism.css"/>
 
+
 <vk-title>VkSparseMemoryBind | NVK</vk-title>
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
-    <vk-section-title>Search</vk-section-title>
-    <vk-search>
-      <input type="text" id="search" autocomplete="off" />
-      <vk-search-results>
-        <ol id="search-list">
-          <li id="no-search-results">No Results</li>
-        </ol>
-      </vk-search-results>
-    </vk-search>
-    <vk-section-title>Categories</vk-section-title>
-    <vk-categories></vk-categories>
-  </vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
 
-  <!-- Struct -->
+
   <vk-struct>
 
     <vk-name>VkSparseMemoryBind</vk-name>
@@ -37,61 +37,52 @@
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
-      <pre><code class="language-js">sparseMemoryBindInfo = new VkSparseMemoryBind();
-sparseMemoryBindInfo = new VkSparseMemoryBind(object);</code></pre>
+      <pre><code class="language-js">sparseMemoryBind = new VkSparseMemoryBind();
+sparseMemoryBind = new VkSparseMemoryBind(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
-      <pre><code class="language-js">let sparseMemoryBindInfo = new VkSparseMemoryBind();
-sparseMemoryBindInfo.resourceOffset = ;
-sparseMemoryBindInfo.size = ;
-sparseMemoryBindInfo.memory = ;
-sparseMemoryBindInfo.memoryOffset = ;
-sparseMemoryBindInfo.flags = ;
+      <pre><code class="language-js">let sparseMemoryBind = new VkSparseMemoryBind();
+sparseMemoryBind.resourceOffset = ;
+sparseMemoryBind.size = ;
+sparseMemoryBind.memory = ;
+sparseMemoryBind.memoryOffset = ;
+sparseMemoryBind.flags = ;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
       <vk-property-entry>
         <vk-property-prototype class="no-float">object</vk-property-prototype>
         <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
       </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkSparseMemoryBind.prototype.resourceOffset -->
       <vk-property-entry>
         <vk-property-prototype>VkSparseMemoryBind.prototype.<vk-prototype-name>resourceOffset</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the offset into the resource.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSparseMemoryBind.prototype.size -->
       <vk-property-entry>
         <vk-property-prototype>VkSparseMemoryBind.prototype.<vk-prototype-name>size</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the size of the memory region to be bound.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSparseMemoryBind.prototype.memory -->
       <vk-property-entry>
         <vk-property-prototype>VkSparseMemoryBind.prototype.<vk-prototype-name>memory</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../handles/VkDeviceMemory.html">VkDeviceMemory</a></vk-property-type>
         <vk-property-description> is the <b><a href="../handles/VkDeviceMemory.html">VkDeviceMemory</a></b> object that the range of the resource is bound to. If <b>memory</b> is <b>VK_NULL_HANDLE</b>, the range is unbound.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSparseMemoryBind.prototype.memoryOffset -->
       <vk-property-entry>
         <vk-property-prototype>VkSparseMemoryBind.prototype.<vk-prototype-name>memoryOffset</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the offset into the <b><a href="../handles/VkDeviceMemory.html">VkDeviceMemory</a></b> object to bind the resource range to. If <b>memory</b> is <b>VK_NULL_HANDLE</b>, this value is ignored.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSparseMemoryBind.prototype.flags -->
       <vk-property-entry>
         <vk-property-prototype>VkSparseMemoryBind.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkSparseMemoryBindFlagBits.html">VkSparseMemoryBindFlagBits</a></vk-property-type>
         <vk-property-description> is a bitmask of <b>VkSparseMemoryBindFlagBits</b> specifying usage of the binding operation.</vk-property-description>
       </vk-property-entry>
       
@@ -100,13 +91,11 @@ sparseMemoryBindInfo.flags = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkSparseMemoryBind.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkSparseMemoryBind.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkSparseMemoryBind.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkSparseMemoryBind.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

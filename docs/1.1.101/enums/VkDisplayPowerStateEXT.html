@@ -1,0 +1,74 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkDisplayPowerStateEXT | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkDisplayPowerStateEXT</vk-name>
+
+    <vk-description>Possible power states for a display</vk-description>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">VkDisplayPowerStateEXT = {
+  VK_DISPLAY_POWER_STATE_OFF_EXT: 0,
+  VK_DISPLAY_POWER_STATE_SUSPEND_EXT: 1,
+  VK_DISPLAY_POWER_STATE_ON_EXT: 2
+};</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplayPowerStateEXT.<vk-prototype-name>VK_DISPLAY_POWER_STATE_OFF_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the display is powered down.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplayPowerStateEXT.<vk-prototype-name>VK_DISPLAY_POWER_STATE_SUSPEND_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the display is put into a low power mode, from which it <i>may</i> be able to transition back to <b>VK_DISPLAY_POWER_STATE_ON_EXT</b> more quickly than if it were in <b>VK_DISPLAY_POWER_STATE_OFF_EXT</b>. This state <i>may</i> be the same as <b>VK_DISPLAY_POWER_STATE_OFF_EXT</b>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkDisplayPowerStateEXT.<vk-prototype-name>VK_DISPLAY_POWER_STATE_ON_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the display is powered on.</vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

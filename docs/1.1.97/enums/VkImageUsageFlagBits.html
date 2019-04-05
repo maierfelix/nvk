@@ -1,0 +1,139 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/img/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/img/favicon-72.png">
+<link rel="apple-touch-icon-precomposed" href="../../assets/img/favicon-32.png">
+<link rel="shortcut icon" href="../../assets/img/favicon-32.png">
+
+<link rel="stylesheet" href="../../assets/css/vk.css"/>
+<link rel="stylesheet" href="../../assets/css/prism.css"/>
+
+
+<vk-title>VkImageUsageFlagBits | NVK</vk-title>
+
+<vk-centered>
+
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
+
+
+  <vk-struct>
+
+    <vk-name>VkImageUsageFlagBits</vk-name>
+
+    <vk-description>Bitmask specifying intended usage of an image</vk-description>
+
+    <vk-section-title>Stub</vk-section-title>
+    <vk-stub>
+      <pre><code class="language-js">VkImageUsageFlagBits = {
+  VK_IMAGE_USAGE_TRANSFER_SRC_BIT: 0x1,
+  VK_IMAGE_USAGE_TRANSFER_DST_BIT: 0x2,
+  VK_IMAGE_USAGE_SAMPLED_BIT: 0x4,
+  VK_IMAGE_USAGE_STORAGE_BIT: 0x8,
+  VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT: 0x10,
+  VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT: 0x20,
+  VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT: 0x40,
+  VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT: 0x80,
+  VK_IMAGE_USAGE_RESERVED_13_BIT_KHR: 0x2000,
+  VK_IMAGE_USAGE_RESERVED_14_BIT_KHR: 0x4000,
+  VK_IMAGE_USAGE_RESERVED_15_BIT_KHR: 0x8000,
+  VK_IMAGE_USAGE_RESERVED_10_BIT_KHR: 0x400,
+  VK_IMAGE_USAGE_RESERVED_11_BIT_KHR: 0x800,
+  VK_IMAGE_USAGE_RESERVED_12_BIT_KHR: 0x1000,
+  VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV: 0x100,
+  VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT: 0x200
+};</code></pre>
+    </vk-stub>
+
+    <vk-section-title>Properties</vk-section-title>
+
+    <vk-properties>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageUsageFlagBits.<vk-prototype-name>VK_IMAGE_USAGE_TRANSFER_SRC_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the image <i>can</i> be used as the source of a transfer command.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageUsageFlagBits.<vk-prototype-name>VK_IMAGE_USAGE_TRANSFER_DST_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the image <i>can</i> be used as the destination of a transfer command.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageUsageFlagBits.<vk-prototype-name>VK_IMAGE_USAGE_SAMPLED_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the image <i>can</i> be used to create a <b><a href="../handles/VkImageView.html">VkImageView</a></b> suitable for occupying a <b><a href="../handles/VkDescriptorSet.html">VkDescriptorSet</a></b> slot either of type <b>VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE</b> or <b>VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER</b>, and be sampled by a shader.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageUsageFlagBits.<vk-prototype-name>VK_IMAGE_USAGE_STORAGE_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the image <i>can</i> be used to create a <b><a href="../handles/VkImageView.html">VkImageView</a></b> suitable for occupying a <b><a href="../handles/VkDescriptorSet.html">VkDescriptorSet</a></b> slot of type <b>VK_DESCRIPTOR_TYPE_STORAGE_IMAGE</b>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageUsageFlagBits.<vk-prototype-name>VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the image <i>can</i> be used to create a <b><a href="../handles/VkImageView.html">VkImageView</a></b> suitable for use as a color or resolve attachment in a <b><a href="../handles/VkFramebuffer.html">VkFramebuffer</a></b>.</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageUsageFlagBits.<vk-prototype-name>VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description> specifies that the image <i>can</i> be used to create a <b><a href="../handles/VkImageView.html">VkImageView</a></b> suitable for use as a depth/stencil or depth/stencil resolve</vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageUsageFlagBits.<vk-prototype-name>VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageUsageFlagBits.<vk-prototype-name>VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageUsageFlagBits.<vk-prototype-name>VK_IMAGE_USAGE_RESERVED_13_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageUsageFlagBits.<vk-prototype-name>VK_IMAGE_USAGE_RESERVED_14_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageUsageFlagBits.<vk-prototype-name>VK_IMAGE_USAGE_RESERVED_15_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageUsageFlagBits.<vk-prototype-name>VK_IMAGE_USAGE_RESERVED_10_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageUsageFlagBits.<vk-prototype-name>VK_IMAGE_USAGE_RESERVED_11_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageUsageFlagBits.<vk-prototype-name>VK_IMAGE_USAGE_RESERVED_12_BIT_KHR</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageUsageFlagBits.<vk-prototype-name>VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      <vk-property-entry>
+        <vk-property-prototype>VkImageUsageFlagBits.<vk-prototype-name>VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT</vk-prototype-name></vk-property-prototype>
+        <vk-property-description></vk-property-description>
+      </vk-property-entry>
+      
+    </vk-properties>
+
+  </vk-struct>
+
+</vk-centered>
+
+<script>
+const IS_ROOT = false;
+</script>
+
+<script type="text/javascript" src="../../assets/js/prism.min.js"></script>
+<script type="text/javascript" src="../../assets/js/index.js"></script>

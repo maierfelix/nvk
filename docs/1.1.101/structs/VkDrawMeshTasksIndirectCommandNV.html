@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkDrawMeshTasksIndirectCommandNV</vk-name>
@@ -41,37 +37,31 @@
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
-      <pre><code class="language-js">drawMeshTasksIndirectCommandNVInfo = new VkDrawMeshTasksIndirectCommandNV();
-drawMeshTasksIndirectCommandNVInfo = new VkDrawMeshTasksIndirectCommandNV(object);</code></pre>
+      <pre><code class="language-js">drawMeshTasksIndirectCommandNV = new VkDrawMeshTasksIndirectCommandNV();
+drawMeshTasksIndirectCommandNV = new VkDrawMeshTasksIndirectCommandNV(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
-      <pre><code class="language-js">let drawMeshTasksIndirectCommandNVInfo = new VkDrawMeshTasksIndirectCommandNV();
-drawMeshTasksIndirectCommandNVInfo.taskCount = ;
-drawMeshTasksIndirectCommandNVInfo.firstTask = ;
+      <pre><code class="language-js">let drawMeshTasksIndirectCommandNV = new VkDrawMeshTasksIndirectCommandNV();
+drawMeshTasksIndirectCommandNV.taskCount = ;
+drawMeshTasksIndirectCommandNV.firstTask = ;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
       <vk-property-entry>
         <vk-property-prototype class="no-float">object</vk-property-prototype>
         <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
       </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkDrawMeshTasksIndirectCommandNV.prototype.taskCount -->
       <vk-property-entry>
         <vk-property-prototype>VkDrawMeshTasksIndirectCommandNV.prototype.<vk-prototype-name>taskCount</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the number of local workgroups to dispatch in the X dimension. Y and Z dimension are implicitly set to one.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDrawMeshTasksIndirectCommandNV.prototype.firstTask -->
       <vk-property-entry>
         <vk-property-prototype>VkDrawMeshTasksIndirectCommandNV.prototype.<vk-prototype-name>firstTask</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
@@ -83,13 +73,11 @@ drawMeshTasksIndirectCommandNVInfo.firstTask = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkDrawMeshTasksIndirectCommandNV.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkDrawMeshTasksIndirectCommandNV.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkDrawMeshTasksIndirectCommandNV.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkDrawMeshTasksIndirectCommandNV.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

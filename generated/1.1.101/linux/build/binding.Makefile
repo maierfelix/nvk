@@ -3,4 +3,4 @@
 export builddir_name ?= ./build/.
 .PHONY: all
 all:
-	$(MAKE) action_after_build addon-linux
+	$(MAKE) addon-linux action_after_build

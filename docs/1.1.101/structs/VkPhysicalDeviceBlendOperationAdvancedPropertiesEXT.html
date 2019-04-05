@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT</vk-name>
@@ -41,82 +37,62 @@
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
-      <pre><code class="language-js">physicalDeviceBlendOperationAdvancedPropertiesEXTInfo = new VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT();
-physicalDeviceBlendOperationAdvancedPropertiesEXTInfo = new VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(object);</code></pre>
+      <pre><code class="language-js">physicalDeviceBlendOperationAdvancedPropertiesEXT = new VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT();</code></pre>
     </vk-syntax>
 
-    <vk-section-title>Stub</vk-section-title>
+    <vk-section-title>Stub <vk-property-type type="read-only">read-only</vk-property-type></vk-section-title>
     <vk-stub>
-      <pre><code class="language-js">let physicalDeviceBlendOperationAdvancedPropertiesEXTInfo = new VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT();
-physicalDeviceBlendOperationAdvancedPropertiesEXTInfo.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT;
-physicalDeviceBlendOperationAdvancedPropertiesEXTInfo.pNext = ;
-physicalDeviceBlendOperationAdvancedPropertiesEXTInfo.advancedBlendMaxColorAttachments = ;
-physicalDeviceBlendOperationAdvancedPropertiesEXTInfo.advancedBlendIndependentBlend = ;
-physicalDeviceBlendOperationAdvancedPropertiesEXTInfo.advancedBlendNonPremultipliedSrcColor = ;
-physicalDeviceBlendOperationAdvancedPropertiesEXTInfo.advancedBlendNonPremultipliedDstColor = ;
-physicalDeviceBlendOperationAdvancedPropertiesEXTInfo.advancedBlendCorrelatedOverlap = ;
-physicalDeviceBlendOperationAdvancedPropertiesEXTInfo.advancedBlendAllOperations = ;
+      <pre><code class="language-js">let physicalDeviceBlendOperationAdvancedPropertiesEXT = new VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT();
+physicalDeviceBlendOperationAdvancedPropertiesEXT.sType;
+physicalDeviceBlendOperationAdvancedPropertiesEXT.pNext;
+physicalDeviceBlendOperationAdvancedPropertiesEXT.advancedBlendMaxColorAttachments;
+physicalDeviceBlendOperationAdvancedPropertiesEXT.advancedBlendIndependentBlend;
+physicalDeviceBlendOperationAdvancedPropertiesEXT.advancedBlendNonPremultipliedSrcColor;
+physicalDeviceBlendOperationAdvancedPropertiesEXT.advancedBlendNonPremultipliedDstColor;
+physicalDeviceBlendOperationAdvancedPropertiesEXT.advancedBlendCorrelatedOverlap;
+physicalDeviceBlendOperationAdvancedPropertiesEXT.advancedBlendAllOperations;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <vk-property-entry>
-        <vk-property-prototype class="no-float">object</vk-property-prototype>
-        <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
-      </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
-
-    <vk-properties>
-      <!-- VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.advancedBlendMaxColorAttachments -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.<vk-prototype-name>advancedBlendMaxColorAttachments</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is one greater than the highest color attachment index that <i>can</i> be used in a subpass, for a pipeline that uses an <<framebuffer-blend-advanced,advanced blend operation>>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.advancedBlendIndependentBlend -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.<vk-prototype-name>advancedBlendIndependentBlend</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description> specifies whether advanced blend operations <i>can</i> vary per-attachment.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.advancedBlendNonPremultipliedSrcColor -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.<vk-prototype-name>advancedBlendNonPremultipliedSrcColor</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description> specifies whether the source color <i>can</i> be treated as non-premultiplied. If this is <b>VK_FALSE</b>, then <b><a href="../structs/VkPipelineColorBlendAdvancedStateCreateInfoEXT.html">VkPipelineColorBlendAdvancedStateCreateInfoEXT</a></b>::<b>srcPremultiplied</b> <i>must</i> be <b>VK_TRUE</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.advancedBlendNonPremultipliedDstColor -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.<vk-prototype-name>advancedBlendNonPremultipliedDstColor</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description> specifies whether the destination color <i>can</i> be treated as non-premultiplied. If this is <b>VK_FALSE</b>, then <b><a href="../structs/VkPipelineColorBlendAdvancedStateCreateInfoEXT.html">VkPipelineColorBlendAdvancedStateCreateInfoEXT</a></b>::<b>dstPremultiplied</b> <i>must</i> be <b>VK_TRUE</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.advancedBlendCorrelatedOverlap -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.<vk-prototype-name>advancedBlendCorrelatedOverlap</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description> specifies whether the overlap mode <i>can</i> be treated as correlated. If this is <b>VK_FALSE</b>, then <b><a href="../structs/VkPipelineColorBlendAdvancedStateCreateInfoEXT.html">VkPipelineColorBlendAdvancedStateCreateInfoEXT</a></b>::<b>blendOverlap</b> <i>must</i> be <b>VK_BLEND_OVERLAP_UNCORRELATED_EXT</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.advancedBlendAllOperations -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.<vk-prototype-name>advancedBlendAllOperations</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description> specifies whether all advanced blend operation enums are supported. See the valid usage of <b><a href="../structs/VkPipelineColorBlendAttachmentState.html">VkPipelineColorBlendAttachmentState</a></b>.</vk-property-description>
       </vk-property-entry>
       
@@ -125,13 +101,11 @@ physicalDeviceBlendOperationAdvancedPropertiesEXTInfo.advancedBlendAllOperations
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

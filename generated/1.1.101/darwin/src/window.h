@@ -58,6 +58,11 @@ class VulkanWindow : public Napi::ObjectWrap<VulkanWindow> {
     Napi::Value Getheight(const Napi::CallbackInfo &info);
     void Setheight(const Napi::CallbackInfo &info, const Napi::Value& value);
 
+    Napi::Value GetframeBufferWidth(const Napi::CallbackInfo &info);
+    Napi::Value GetframeBufferHeight(const Napi::CallbackInfo &info);
+
+    Napi::Value GetdevicePixelRatio(const Napi::CallbackInfo &info);
+
     Napi::Value Getonresize(const Napi::CallbackInfo &info);
     void Setonresize(const Napi::CallbackInfo &info, const Napi::Value& value);
 
@@ -158,6 +163,24 @@ Napi::Object VulkanWindow::Initialize(Napi::Env env, Napi::Object exports) {
       "height",
       &VulkanWindow::Getheight,
       &VulkanWindow::Setheight,
+      napi_enumerable
+    ),
+    InstanceAccessor(
+      "frameBufferWidth",
+      &VulkanWindow::GetframeBufferWidth,
+      nullptr,
+      napi_enumerable
+    ),
+    InstanceAccessor(
+      "frameBufferHeight",
+      &VulkanWindow::GetframeBufferHeight,
+      nullptr,
+      napi_enumerable
+    ),
+    InstanceAccessor(
+      "devicePixelRatio",
+      &VulkanWindow::GetdevicePixelRatio,
+      nullptr,
       napi_enumerable
     ),
     InstanceAccessor(
@@ -378,6 +401,9 @@ VulkanWindow::VulkanWindow(const Napi::CallbackInfo& info) : Napi::ObjectWrap<Vu
       if (argTitle.IsString()) this->title = argTitle.As<Napi::String>().Utf8Value();
       glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
       glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
+      #ifdef __APPLE__
+      glfwWindowHint(GLFW_COCOA_RETINA_FRAMEBUFFER, GLFW_TRUE);
+      #endif
       GLFWwindow* window = glfwCreateWindow(this->width, this->height, this->title.c_str(), nullptr, nullptr);
       this->instance = window;
       //glfwMakeContextCurrent(window);
@@ -509,6 +535,33 @@ void VulkanWindow::Setheight(const Napi::CallbackInfo& info, const Napi::Value& 
   this->height = value.As<Napi::Number>().Int32Value();
   glfwSetWindowSize(window, this->width, this->height);
   VulkanWindow::onWindowResize(window, this->width, this->height);
+}
+
+// frameBufferWidth
+Napi::Value VulkanWindow::GetframeBufferWidth(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  GLFWwindow* window = this->instance;
+  int width = 0, height = 0;
+  glfwGetFramebufferSize(window, &width, &height);
+  return Napi::Number::New(env, static_cast<int32_t>(width));
+}
+
+// frameBufferHeight
+Napi::Value VulkanWindow::GetframeBufferHeight(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  GLFWwindow* window = this->instance;
+  int width = 0, height = 0;
+  glfwGetFramebufferSize(window, &width, &height);
+  return Napi::Number::New(env, static_cast<int32_t>(height));
+}
+
+// devicePixelRatio
+Napi::Value VulkanWindow::GetdevicePixelRatio(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  GLFWwindow* window = this->instance;
+  int width = 0, height = 0;
+  glfwGetFramebufferSize(window, &width, &height);
+  return Napi::Number::New(env, static_cast<int32_t>(width / this->width));
 }
 
 // onresize

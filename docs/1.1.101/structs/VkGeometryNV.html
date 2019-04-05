@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkGeometryNV</vk-name>
@@ -41,61 +37,52 @@
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
-      <pre><code class="language-js">geometryNVInfo = new VkGeometryNV();
-geometryNVInfo = new VkGeometryNV(object);</code></pre>
+      <pre><code class="language-js">geometryNV = new VkGeometryNV();
+geometryNV = new VkGeometryNV(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
-      <pre><code class="language-js">let geometryNVInfo = new VkGeometryNV();
-geometryNVInfo.sType = VK_STRUCTURE_TYPE_GEOMETRY_NV;
-geometryNVInfo.pNext = ;
-geometryNVInfo.geometryType = ;
-geometryNVInfo.geometry = ;
-geometryNVInfo.flags = ;
+      <pre><code class="language-js">let geometryNV = new VkGeometryNV();
+geometryNV.sType = VK_STRUCTURE_TYPE_GEOMETRY_NV;
+geometryNV.pNext = ;
+geometryNV.geometryType = ;
+geometryNV.geometry = ;
+geometryNV.flags = ;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
       <vk-property-entry>
         <vk-property-prototype class="no-float">object</vk-property-prototype>
         <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
       </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkGeometryNV.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkGeometryNV.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkGeometryNV.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkGeometryNV.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkGeometryNV.prototype.geometryType -->
       <vk-property-entry>
         <vk-property-prototype>VkGeometryNV.prototype.<vk-prototype-name>geometryType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkGeometryTypeNV.html">VkGeometryTypeNV</a></vk-property-type>
         <vk-property-description> describes which type of geometry this <b><a href="../structs/VkGeometryNV.html">VkGeometryNV</a></b> refers to.</vk-property-description>
       </vk-property-entry>
-      <!-- VkGeometryNV.prototype.geometry -->
       <vk-property-entry>
         <vk-property-prototype>VkGeometryNV.prototype.<vk-prototype-name>geometry</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkGeometryDataNV.html">VkGeometryDataNV</a></vk-property-type>
         <vk-property-description> contains the geometry data as described in <b><a href="../structs/VkGeometryDataNV.html">VkGeometryDataNV</a></b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkGeometryNV.prototype.flags -->
       <vk-property-entry>
         <vk-property-prototype>VkGeometryNV.prototype.<vk-prototype-name>flags</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkGeometryFlagBitsNV.html">VkGeometryFlagBitsNV</a></vk-property-type>
         <vk-property-description> has flags describing options for this geometry.</vk-property-description>
       </vk-property-entry>
       
@@ -104,13 +91,11 @@ geometryNVInfo.flags = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkGeometryNV.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkGeometryNV.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkGeometryNV.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkGeometryNV.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

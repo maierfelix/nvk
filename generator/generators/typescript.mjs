@@ -12,6 +12,11 @@ import {
   isIgnoreableType
 } from "../utils";
 
+import {
+  JavaScriptType,
+  getJavaScriptType
+} from "../javascript-type";
+
 let ast = null;
 let calls = null;
 let enums = null;
@@ -47,6 +52,13 @@ function getStructByName(name) {
   return null;
 };
 
+function getEnumByName(name) {
+  for (let ii = 0; ii < enums.length; ++ii) {
+    if (enums[ii].name === name) return enums[ii];
+  };
+  return null;
+};
+
 function isHandleInclude(name) {
   return getHandleByName(name) !== null;
 };
@@ -69,72 +81,55 @@ function getNumericTypescriptType(type) {
   return type;
 };
 
-function getTypescriptType(member) {
-  let {rawType} = member;
-  if (isIgnoreableType(member)) return `null`;
-  if (member.kind === "COMMAND_PARAM") {
-    // handle inout parameters
-    switch (member.rawType) {
-      case "size_t *":
-      case "int *":
-      case "int32_t *":
-      case "uint32_t *":
-      case "uint64_t *":
-      case "const int32_t *":
-      case "const uint32_t *":
-      case "const uint64_t *":
-      case "const float *":
-      case "VkBool32 *":
-        return `VkInout`;
-    };
-  }
-  if (member.isBaseType) rawType = member.baseType;
-  if (member.isTypedArray) return `${member.jsTypedArrayName} | null`;
-  if (member.enumType) return getNumericTypescriptType(member.enumType);
-  if (member.isBitmaskType) {
-    let bitmask = getBitmaskByName(member.bitmaskType);
-    // future reserved bitmask, or must be 0
-    if (!bitmask) return `null`;
-    return getNumericTypescriptType(member.bitmaskType);
-  }
-  if (member.isStaticArray) {
-    // string of chars
-    if (member.type === "char") return `string | null`;
-    else return `number[] | null`;
-  }
-  if (member.isArray && (member.isStructType || member.isHandleType)) return `${member.type}[] | null`;
-  if (member.isStructType || member.isHandleType || member.isBaseType) {
-    if (member.isStructType || member.isHandleType || member.dereferenceCount > 0) {
-      return `${member.type} | null`;
-    }
-  }
-  if (member.isWin32Handle) return `bigint`;
-  if (member.isWin32HandleReference) return `VkInoutAddress`;
-  switch (rawType) {
-    case "void *":
-    case "const void *":
-      return `null`;
-    case "LPCWSTR":
-    case "const char *":
-      return `string | null`;
-    case "const char * const*":
-      return `string[] | null`;
-    case "int":
-    case "float":
-    case "size_t":
-    case "int32_t":
-    case "uint8_t":
-    case "uint16_t":
-    case "uint32_t":
-    case "uint64_t":
-      return `number`;
-    case "void **":
-      return `VkInoutAddress`;
-    default: {
-      warn(`Cannot handle member ${member.rawType} in member-ts-type!`);
+function getTypescriptType(object) {
+  let jsType = getJavaScriptType(ast, object);
+  let {type} = jsType;
+  switch (type) {
+    case JavaScriptType.UNKNOWN: {
       return ``;
     }
+    case JavaScriptType.NULL: {
+      return `null`;
+    }
+    case JavaScriptType.BOOLEAN: {
+      return `boolean`;
+    }
+    case JavaScriptType.NUMBER: {
+      if (jsType.isEnum || jsType.isBitmask) {
+        return `${jsType.value}`;
+      }
+      return `number`;
+    }
+    case JavaScriptType.OBJECT: {
+      return `${object.type} | null`;
+    }
+    case JavaScriptType.STRING: {
+      return `string | null`;
+    }
+    case JavaScriptType.FUNCTION: {
+      return `null`;
+    }
+    case JavaScriptType.BIGINT: {
+      return `bigint`;
+    }
+    case JavaScriptType.OBJECT_INOUT: {
+      return `VkInout | null`;
+    }
+    case JavaScriptType.ARRAY_OF_STRINGS: {
+      return `string[] | null`;
+    }
+    case JavaScriptType.ARRAY_OF_NUMBERS: {
+      return `number[] | null`;
+    }
+    case JavaScriptType.ARRAY_OF_OBJECTS: {
+      return `${object.type}[] | null`;
+    }
+    case JavaScriptType.TYPED_ARRAY: {
+      return `${object.jsTypedArrayName} | null`;
+    }
   };
+  warn(`Cannot resolve doc type ${type} for ${object.name}`);
+  return ``;
 };
 
 function processStructMembers(name, optional) {
@@ -144,7 +139,13 @@ function processStructMembers(name, optional) {
     let type = getTypescriptType(member);
     let newLine = (index <= struct.children.length - 2) ? "\n" : "";
     let readonly = struct.returnedonly ? "readonly " : "";
-    out.push(`  ${readonly}${member.name}${optional ? "?" : ""}: ${type};${newLine}`);
+    let txt = `
+    /**
+     *${getObjectDescription(member)}
+     */
+`;
+    txt += `    ${readonly}${member.name}${optional ? "?" : ""}: ${type};${newLine}`;
+    out.push(txt);
   });
   return out.join("");
 };
@@ -152,10 +153,10 @@ function processStructMembers(name, optional) {
 function processCallParameters(call) {
   let out = [];
   call.params.map(param => {
-    let name = param.name;
+    let {name} = param;
     let type = getTypescriptType(param);
     // ignore
-    if (param.name === "pAllocator") type = `null`;
+    if (name === "pAllocator") type = `null`;
     out.push(`${name}: ${type}`);
   });
   return out.join(", ");
@@ -163,13 +164,19 @@ function processCallParameters(call) {
 
 function processCallReturn(call) {
   let type = call.rawType;
+  if (call.enumType) return call.enumType;
   switch (type) {
     case "void":
       return `void`;
+    case "int8_t":
+    case "int16_t":
     case "int32_t":
+    case "uint8_t":
+    case "uint16_t":
     case "uint32_t":
+      return "number";
     case "uint64_t":
-      return `number`;
+      return "bigint";
     default:
       warn(`Cannot handle call param return type ${type} in ts-call-return!`);
   };
@@ -180,7 +187,101 @@ function processCall(call) {
   if (isIgnoreableType(call)) return ``;
   let params = processCallParameters(call);
   let ret = processCallReturn(call);
-  return `declare function ${call.name}(${params}): ${ret};`;
+  let paramDescrs = [];
+  call.params.map(param => {
+     paramDescrs.push(`   * @param ${param.name}${getObjectDescription(param)}`); 
+  });
+  let out = `
+  /**
+   * ${getObjectDescription(call)}
+${paramDescrs.join("\n")}
+   */
+  function ${call.name}(${params}): ${ret};`;
+  return out;
+};
+
+function processEnumMemberDescriptions(enu, member) {
+  return `* @member ${member.name}${getObjectDescription(member)}`;
+};
+
+function expandMacro(macro, macroIndex, text) {
+  let {kind, value} = macro;
+  let match = text.match(`{#${macroIndex}#}`);
+  if (!match) {
+    warn(`Failed to expand '${kind}' macro for: ${text}`);
+    return text;
+  }
+  let replacement = null;
+  switch (kind) {
+    case "slink":
+    case "sname":
+    case "flink":
+    case "fname": {
+      replacement = `'${value}'`;
+    } break;
+    case "pname":
+    case "ename":
+    case "elink":
+    case "dlink":
+    case "tlink":
+      replacement = `'${value}'`;
+    break;
+    case "etext":
+      switch (value) {
+        case "SINT":
+        case "UINT":
+          replacement = `'${value}'`;
+        break;
+      };
+    break;
+    case "code":
+    case "basetype":
+      replacement = `'${value}'`;
+    break;
+    case "can":
+    case "cannot":
+    case "may":
+    case "must":
+    case "should":
+    case "optional":
+    case "required":
+    case "undefined":
+      replacement = `'${kind}'`;
+    break;
+  };
+  if (replacement !== null) {
+    text = text.replace(match[0], replacement);
+  } else {
+    warn(`Failed to expand macro ${kind}:${value}`);
+  }
+  return text;
+};
+
+function getMacroExpandedDescription(doc) {
+  if (!doc) return ``;
+  let {macros, description} = doc;
+  let out = doc.description;
+  macros.map((macro, index) => {
+    out = expandMacro(macro, index, out);
+  });
+  return out;
+};
+
+function getObjectDescription(obj) {
+  let {documentation} = obj;
+  let description = getMacroExpandedDescription(documentation);
+  return description;
+};
+
+function getObjectDocumentation(name) {
+  let enu = getEnumByName(name);
+  let struct = getStructByName(name);
+  let handle = getHandleByName(name);
+  let object = enu || struct || handle;
+  return `
+  /**
+   * ${getObjectDescription(object)}
+   */`;
 };
 
 export default function(astReference, data) {
@@ -197,10 +298,14 @@ export default function(astReference, data) {
     handles,
     includes,
     processCall,
+    getEnumByName,
     getStructByName,
     isHandleInclude,
     isStructInclude,
-    processStructMembers
+    processStructMembers,
+    getObjectDescription,
+    getObjectDocumentation,
+    processEnumMemberDescriptions
   };
   let out = {
     source: null

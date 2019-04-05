@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkBindImagePlaneMemoryInfo</vk-name>
@@ -52,36 +48,29 @@ bindImagePlaneMemoryInfo.sType = VK_STRUCTURE_TYPE_BIND_IMAGE_PLANE_MEMORY_INFO;
 bindImagePlaneMemoryInfo.pNext = ;
 bindImagePlaneMemoryInfo.planeAspect = ;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
       <vk-property-entry>
         <vk-property-prototype class="no-float">object</vk-property-prototype>
         <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
       </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkBindImagePlaneMemoryInfo.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkBindImagePlaneMemoryInfo.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkBindImagePlaneMemoryInfo.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkBindImagePlaneMemoryInfo.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkBindImagePlaneMemoryInfo.prototype.planeAspect -->
       <vk-property-entry>
         <vk-property-prototype>VkBindImagePlaneMemoryInfo.prototype.<vk-prototype-name>planeAspect</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkImageAspectFlagBits.html">VkImageAspectFlagBits</a></vk-property-type>
         <vk-property-description> is the aspect of the disjoint image plane to bind.</vk-property-description>
       </vk-property-entry>
       
@@ -90,13 +79,11 @@ bindImagePlaneMemoryInfo.planeAspect = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkBindImagePlaneMemoryInfo.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkBindImagePlaneMemoryInfo.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkBindImagePlaneMemoryInfo.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkBindImagePlaneMemoryInfo.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

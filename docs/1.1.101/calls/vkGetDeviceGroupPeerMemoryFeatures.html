@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkGetDeviceGroupPeerMemoryFeatures</vk-name>
@@ -48,31 +44,26 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- device -->
       <vk-property-entry>
         <vk-property-parameter>device</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkDevice.html">VkDevice</a></vk-property-type>
         <vk-property-description> is the logical device that owns the memory.</vk-property-description>
       </vk-property-entry>
-      <!-- heapIndex -->
       <vk-property-entry>
         <vk-property-parameter>heapIndex</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the index of the memory heap from which the memory is allocated.</vk-property-description>
       </vk-property-entry>
-      <!-- localDeviceIndex -->
       <vk-property-entry>
         <vk-property-parameter>localDeviceIndex</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the device index of the physical device that performs the memory access.</vk-property-description>
       </vk-property-entry>
-      <!-- remoteDeviceIndex -->
       <vk-property-entry>
         <vk-property-parameter>remoteDeviceIndex</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the device index of the physical device that the memory is allocated for.</vk-property-description>
       </vk-property-entry>
-      <!-- pPeerMemoryFeatures -->
       <vk-property-entry>
         <vk-property-parameter>pPeerMemoryFeatures</vk-property-parameter>
         <vk-property-type type="object">Object.$<vk-property-type type="object">(Number)</vk-property-type></vk-property-type>

@@ -1,17 +1,22 @@
 {
   "name": "nvk",
   "main": "index.js",
-  "version": "0.3.6",
+  "version": "0.3.8",
   "engines": {
     "node": ">= 10.9.0"
   },
   "config": {
-    "OUTDATED": ["1.1.82", "1.1.85", "1.1.92", "1.1.97"],
+    "OUTDATED": [
+      "1.1.82",
+      "1.1.85",
+      "1.1.92",
+      "1.1.97"
+    ],
     "GEN_OUT_DIR": "./generated",
     "SPEC_DIR": "./generator/specifications",
     "TEMPLATE_DIR": "./generator/templates",
     "POST_DEFAULT_BINDING_VERSION": "1.1.101",
-    "TS_ROOT": "../../index",
+    "TS_ROOT": "../../../index",
     "DOCS_DIR": "./docs",
     "MAC_ICD_PATH": "Contents/Resources/vulkan/icd.d/MoltenVK_icd.json",
     "LINK_MDN_GOBJECTS": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects"

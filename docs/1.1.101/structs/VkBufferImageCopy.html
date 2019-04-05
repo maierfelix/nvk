@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkBufferImageCopy</vk-name>
@@ -41,65 +37,55 @@
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
-      <pre><code class="language-js">bufferImageCopyInfo = new VkBufferImageCopy();
-bufferImageCopyInfo = new VkBufferImageCopy(object);</code></pre>
+      <pre><code class="language-js">bufferImageCopy = new VkBufferImageCopy();
+bufferImageCopy = new VkBufferImageCopy(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
-      <pre><code class="language-js">let bufferImageCopyInfo = new VkBufferImageCopy();
-bufferImageCopyInfo.bufferOffset = ;
-bufferImageCopyInfo.bufferRowLength = ;
-bufferImageCopyInfo.bufferImageHeight = ;
-bufferImageCopyInfo.imageSubresource = ;
-bufferImageCopyInfo.imageOffset = ;
-bufferImageCopyInfo.imageExtent = ;
+      <pre><code class="language-js">let bufferImageCopy = new VkBufferImageCopy();
+bufferImageCopy.bufferOffset = ;
+bufferImageCopy.bufferRowLength = ;
+bufferImageCopy.bufferImageHeight = ;
+bufferImageCopy.imageSubresource = ;
+bufferImageCopy.imageOffset = ;
+bufferImageCopy.imageExtent = ;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
       <vk-property-entry>
         <vk-property-prototype class="no-float">object</vk-property-prototype>
         <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
       </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkBufferImageCopy.prototype.bufferOffset -->
       <vk-property-entry>
         <vk-property-prototype>VkBufferImageCopy.prototype.<vk-prototype-name>bufferOffset</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the offset in bytes from the start of the buffer object where the image data is copied from or to.</vk-property-description>
       </vk-property-entry>
-      <!-- VkBufferImageCopy.prototype.bufferRowLength -->
       <vk-property-entry>
         <vk-property-prototype>VkBufferImageCopy.prototype.<vk-prototype-name>bufferRowLength</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkBufferImageCopy.prototype.bufferImageHeight -->
       <vk-property-entry>
         <vk-property-prototype>VkBufferImageCopy.prototype.<vk-prototype-name>bufferImageHeight</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> specify in texels a subregion of a larger two- or three-dimensional image in buffer memory, and control the addressing calculations. If either of these values is zero, that aspect of the buffer memory is considered to be tightly packed according to the <b>imageExtent</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- VkBufferImageCopy.prototype.imageSubresource -->
       <vk-property-entry>
         <vk-property-prototype>VkBufferImageCopy.prototype.<vk-prototype-name>imageSubresource</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkImageSubresourceLayers.html">VkImageSubresourceLayers</a></vk-property-type>
         <vk-property-description> is a <b><a href="../structs/VkImageSubresourceLayers.html">VkImageSubresourceLayers</a></b> used to specify the specific image subresources of the image used for the source or destination image data.</vk-property-description>
       </vk-property-entry>
-      <!-- VkBufferImageCopy.prototype.imageOffset -->
       <vk-property-entry>
         <vk-property-prototype>VkBufferImageCopy.prototype.<vk-prototype-name>imageOffset</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkOffset3D.html">VkOffset3D</a></vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkBufferImageCopy.prototype.imageExtent -->
       <vk-property-entry>
         <vk-property-prototype>VkBufferImageCopy.prototype.<vk-prototype-name>imageExtent</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object"><a href="../structs/VkExtent3D.html">VkExtent3D</a></vk-property-type>
@@ -111,13 +97,11 @@ bufferImageCopyInfo.imageExtent = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkBufferImageCopy.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkBufferImageCopy.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkBufferImageCopy.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkBufferImageCopy.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

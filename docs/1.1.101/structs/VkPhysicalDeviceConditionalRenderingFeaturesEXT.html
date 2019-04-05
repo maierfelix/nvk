@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Struct -->
   <vk-struct>
 
     <vk-name>VkPhysicalDeviceConditionalRenderingFeaturesEXT</vk-name>
@@ -41,54 +37,46 @@
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
-      <pre><code class="language-js">physicalDeviceConditionalRenderingFeaturesEXTInfo = new VkPhysicalDeviceConditionalRenderingFeaturesEXT();
-physicalDeviceConditionalRenderingFeaturesEXTInfo = new VkPhysicalDeviceConditionalRenderingFeaturesEXT(object);</code></pre>
+      <pre><code class="language-js">physicalDeviceConditionalRenderingFeaturesEXT = new VkPhysicalDeviceConditionalRenderingFeaturesEXT();
+physicalDeviceConditionalRenderingFeaturesEXT = new VkPhysicalDeviceConditionalRenderingFeaturesEXT(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
-      <pre><code class="language-js">let physicalDeviceConditionalRenderingFeaturesEXTInfo = new VkPhysicalDeviceConditionalRenderingFeaturesEXT();
-physicalDeviceConditionalRenderingFeaturesEXTInfo.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONDITIONAL_RENDERING_FEATURES_EXT;
-physicalDeviceConditionalRenderingFeaturesEXTInfo.pNext = ;
-physicalDeviceConditionalRenderingFeaturesEXTInfo.conditionalRendering = ;
-physicalDeviceConditionalRenderingFeaturesEXTInfo.inheritedConditionalRendering = ;
+      <pre><code class="language-js">let physicalDeviceConditionalRenderingFeaturesEXT = new VkPhysicalDeviceConditionalRenderingFeaturesEXT();
+physicalDeviceConditionalRenderingFeaturesEXT.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONDITIONAL_RENDERING_FEATURES_EXT;
+physicalDeviceConditionalRenderingFeaturesEXT.pNext = ;
+physicalDeviceConditionalRenderingFeaturesEXT.conditionalRendering = ;
+physicalDeviceConditionalRenderingFeaturesEXT.inheritedConditionalRendering = ;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
       <vk-property-entry>
         <vk-property-prototype class="no-float">object</vk-property-prototype>
         <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
       </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPhysicalDeviceConditionalRenderingFeaturesEXT.prototype.sType -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceConditionalRenderingFeaturesEXT.prototype.<vk-prototype-name>sType</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="number"><a href="../enums/VkStructureType.html">VkStructureType</a></vk-property-type>
         <vk-property-description> is the type of this structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceConditionalRenderingFeaturesEXT.prototype.pNext -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceConditionalRenderingFeaturesEXT.prototype.<vk-prototype-name>pNext</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="null">null</vk-property-type>
         <vk-property-description> is <i>null</i> or a reference to an extension-specific structure.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceConditionalRenderingFeaturesEXT.prototype.conditionalRendering -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceConditionalRenderingFeaturesEXT.prototype.<vk-prototype-name>conditionalRendering</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description> specifies whether conditional rendering is supported.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceConditionalRenderingFeaturesEXT.prototype.inheritedConditionalRendering -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceConditionalRenderingFeaturesEXT.prototype.<vk-prototype-name>inheritedConditionalRendering</vk-prototype-name></vk-property-prototype>
-        <vk-property-type type="number">Number</vk-property-type>
+        <vk-property-type type="boolean">Boolean</vk-property-type>
         <vk-property-description> specifies whether a secondary command buffer <i>can</i> be executed while conditional rendering is active in the primary command buffer.</vk-property-description>
       </vk-property-entry>
       
@@ -97,13 +85,11 @@ physicalDeviceConditionalRenderingFeaturesEXTInfo.inheritedConditionalRendering 
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkPhysicalDeviceConditionalRenderingFeaturesEXT.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceConditionalRenderingFeaturesEXT.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkPhysicalDeviceConditionalRenderingFeaturesEXT.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkPhysicalDeviceConditionalRenderingFeaturesEXT.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

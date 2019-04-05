@@ -9,26 +9,26 @@
 <link rel="stylesheet" href="../../assets/css/vk.css"/>
 <link rel="stylesheet" href="../../assets/css/prism.css"/>
 
+
 <vk-title>VkViewport | NVK</vk-title>
 
 <vk-centered>
 
-  <!-- Navigation -->
   <vk-navigation>
-    <vk-section-title>Search</vk-section-title>
-    <vk-search>
-      <input type="text" id="search" autocomplete="off" />
-      <vk-search-results>
-        <ol id="search-list">
-          <li id="no-search-results">No Results</li>
-        </ol>
-      </vk-search-results>
-    </vk-search>
-    <vk-section-title>Categories</vk-section-title>
-    <vk-categories></vk-categories>
-  </vk-navigation>
+  <vk-search-title>Search</vk-search-title>
+  <vk-search>
+    <input type="text" id="search" autocomplete="off" />
+    <vk-search-results>
+      <ol id="search-list">
+        <li id="no-search-results">No Results</li>
+      </ol>
+    </vk-search-results>
+  </vk-search>
+  <vk-section-title style="margin-top: 1em;">Categories</vk-section-title>
+  <vk-categories></vk-categories>
+</vk-navigation>
 
-  <!-- Struct -->
+
   <vk-struct>
 
     <vk-name>VkViewport</vk-name>
@@ -37,65 +37,55 @@
 
     <vk-section-title>Syntax</vk-section-title>
     <vk-syntax>
-      <pre><code class="language-js">viewportInfo = new VkViewport();
-viewportInfo = new VkViewport(object);</code></pre>
+      <pre><code class="language-js">viewport = new VkViewport();
+viewport = new VkViewport(object);</code></pre>
     </vk-syntax>
 
     <vk-section-title>Stub</vk-section-title>
     <vk-stub>
-      <pre><code class="language-js">let viewportInfo = new VkViewport();
-viewportInfo.x = ;
-viewportInfo.y = ;
-viewportInfo.width = ;
-viewportInfo.height = ;
-viewportInfo.minDepth = ;
-viewportInfo.maxDepth = ;
+      <pre><code class="language-js">let viewport = new VkViewport();
+viewport.x = ;
+viewport.y = ;
+viewport.width = ;
+viewport.height = ;
+viewport.minDepth = ;
+viewport.maxDepth = ;
 </code></pre>
-    </vk-stub>
-
-    <vk-section-title>Parameters</vk-section-title>
+    </vk-stub><vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
       <vk-property-entry>
         <vk-property-prototype class="no-float">object</vk-property-prototype>
         <vk-property-description>When instantiated with an object, members can be filled directly.</vk-property-description>
       </vk-property-entry>
-    </vk-properties>
-
-    <vk-section-title>Properties</vk-section-title>
+    </vk-properties><vk-section-title>Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkViewport.prototype.x -->
       <vk-property-entry>
         <vk-property-prototype>VkViewport.prototype.<vk-prototype-name>x</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkViewport.prototype.y -->
       <vk-property-entry>
         <vk-property-prototype>VkViewport.prototype.<vk-prototype-name>y</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> are the viewport's upper left corner [eq]#(x,y)#.</vk-property-description>
       </vk-property-entry>
-      <!-- VkViewport.prototype.width -->
       <vk-property-entry>
         <vk-property-prototype>VkViewport.prototype.<vk-prototype-name>width</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkViewport.prototype.height -->
       <vk-property-entry>
         <vk-property-prototype>VkViewport.prototype.<vk-prototype-name>height</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> are the viewport's width and height, respectively.</vk-property-description>
       </vk-property-entry>
-      <!-- VkViewport.prototype.minDepth -->
       <vk-property-entry>
         <vk-property-prototype>VkViewport.prototype.<vk-prototype-name>minDepth</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description></vk-property-description>
       </vk-property-entry>
-      <!-- VkViewport.prototype.maxDepth -->
       <vk-property-entry>
         <vk-property-prototype>VkViewport.prototype.<vk-prototype-name>maxDepth</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="number">Number</vk-property-type>
@@ -107,13 +97,11 @@ viewportInfo.maxDepth = ;
     <vk-section-title>Default Properties</vk-section-title>
 
     <vk-properties>
-      <!-- VkViewport.prototype.memoryBuffer -->
       <vk-property-entry>
         <vk-property-prototype>VkViewport.prototype.<vk-prototype-name>memoryBuffer</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="arraybuffer"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
         <vk-property-description>Memory representation of the original vulkan structure instance.</vk-property-description>
       </vk-property-entry>
-      <!-- VkViewport.memoryLayout -->
       <vk-property-entry>
         <vk-property-prototype>VkViewport.<vk-prototype-name>memoryLayout</vk-prototype-name></vk-property-prototype>
         <vk-property-type type="object">Object</vk-property-type>

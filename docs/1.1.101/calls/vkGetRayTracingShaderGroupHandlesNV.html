@@ -1,4 +1,3 @@
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/img/favicon-144.png">
@@ -15,10 +14,8 @@
 
 <vk-centered>
 
-  <!-- Navigation -->
-  
-<vk-navigation>
-  <vk-section-title>Search</vk-section-title>
+  <vk-navigation>
+  <vk-search-title>Search</vk-search-title>
   <vk-search>
     <input type="text" id="search" autocomplete="off" />
     <vk-search-results>
@@ -32,7 +29,6 @@
 </vk-navigation>
 
 
-  <!-- Call -->
   <vk-struct>
 
     <vk-name>vkGetRayTracingShaderGroupHandlesNV</vk-name>
@@ -48,37 +44,31 @@
     <vk-section-title>Parameters</vk-section-title>
 
     <vk-properties>
-      <!-- device -->
       <vk-property-entry>
         <vk-property-parameter>device</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkDevice.html">VkDevice</a></vk-property-type>
         <vk-property-description> is the logical device that contains the ray tracing pipeline.</vk-property-description>
       </vk-property-entry>
-      <!-- pipeline -->
       <vk-property-entry>
         <vk-property-parameter>pipeline</vk-property-parameter>
         <vk-property-type type="object"><a href="../handles/VkPipeline.html">VkPipeline</a></vk-property-type>
         <vk-property-description> is the ray tracing pipeline object that contains the shaders.</vk-property-description>
       </vk-property-entry>
-      <!-- firstGroup -->
       <vk-property-entry>
         <vk-property-parameter>firstGroup</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the index of the first group to retrieve a handle for from the <b><a href="../structs/VkPipelineShaderStageCreateInfo.html">VkPipelineShaderStageCreateInfo</a></b>::<b>pGroups</b> array.</vk-property-description>
       </vk-property-entry>
-      <!-- groupCount -->
       <vk-property-entry>
         <vk-property-parameter>groupCount</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the number of shader handles to retrieve.</vk-property-description>
       </vk-property-entry>
-      <!-- dataSize -->
       <vk-property-entry>
         <vk-property-parameter>dataSize</vk-property-parameter>
         <vk-property-type type="number">Number</vk-property-type>
         <vk-property-description> is the size in bytes of the buffer pointed to by <b>pData</b>.</vk-property-description>
       </vk-property-entry>
-      <!-- pData -->
       <vk-property-entry>
         <vk-property-parameter>pData</vk-property-parameter>
         <vk-property-type type="typedarray"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a></vk-property-type>
