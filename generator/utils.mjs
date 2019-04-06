@@ -516,8 +516,26 @@ export function getDataViewInstruction(member) {
   return ``;
 };
 
+export function getDataViewInstructionStride(instr) {
+  switch (instr) {
+    case "Int32": return Int32Array.BYTES_PER_ELEMENT;
+    case "Float32": return Float32Array.BYTES_PER_ELEMENT;
+    case "BigInt64": return BigInt64Array.BYTES_PER_ELEMENT;
+    case "Uint8": return Uint8Array.BYTES_PER_ELEMENT;
+    case "Uint32": return Uint32Array.BYTES_PER_ELEMENT;
+    case "BigUint64": return BigUint64Array.BYTES_PER_ELEMENT;
+    default:
+      warn(`Cannot resolve DataView stride for ${member.name} of type ${type}`);
+  };
+  return ``;
+};
+
 export function getHexadecimalFromNumber(num) {
-  return `0x` + num.toString(16).toUpperCase();
+  return `0x` + (num.toString(16).toUpperCase());
+};
+
+export function getHexadecimalByteOffsetFromNumber(num) {
+  return `0x` + (Math.ceil(num).toString(16).toUpperCase());
 };
 
 export function stringifyJSONQuoteless(obj) {

@@ -244,10 +244,10 @@ async function generateBindings({xml, version, docs, incremental} = _) {
   {
     console.log("Generating Vk JavaScript interfaces..");
     let out = `
-import nvk from "${pkg.config.INTERFACE_ROOT}";
+import os from "os";
 
 const BI0 = BigInt(0);
-const EDI = nvk.isLittleEndianPlatform();
+const EDI = os.endianness() === "LE";
 
 const textEncoder = new TextEncoder();
 const textDecoder = new TextDecoder();

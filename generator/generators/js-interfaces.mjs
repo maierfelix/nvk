@@ -11,8 +11,10 @@ import {
   isFlushableMember,
   getAutoStructureType,
   getDataViewInstruction,
+  getDataViewInstructionStride,
   stringifyJSONQuoteless,
-  getHexadecimalFromNumber
+  getHexadecimalFromNumber,
+  getHexadecimalByteOffsetFromNumber
 } from "../utils";
 
 import {
@@ -54,23 +56,23 @@ function getConstructorInitializer(member) {
 function getStructureMemberByteOffset(member) {
   if (!memoryLayouts) return `0x0`;
   let byteOffset = memoryLayouts[currentStruct.name][member.name].byteOffset;
-  return getHexadecimalFromNumber(byteOffset);
+  return getHexadecimalByteOffsetFromNumber(byteOffset);
 };
 
 function getStructureMemberByteLength(member) {
   if (!memoryLayouts) return `0x0`;
   let byteLength = memoryLayouts[currentStruct.name][member.name].byteLength;
-  return getHexadecimalFromNumber(byteLength);
+  return getHexadecimalByteOffsetFromNumber(byteLength);
 };
 
 function getStructureByteLength() {
   if (!memoryLayouts) return `0x0`;
   let byteLength = memoryLayouts[currentStruct.name].byteLength;
-  return getHexadecimalFromNumber(byteLength);
+  return getHexadecimalByteOffsetFromNumber(byteLength);
 };
 
 function getHandleByteLength() {
-  return getHexadecimalFromNumber(8);
+  return getHexadecimalByteOffsetFromNumber(8);
 };
 
 function getEnumInlineValue(name) {
@@ -78,11 +80,45 @@ function getEnumInlineValue(name) {
   if (value === void 0) {
     let value_KHR = enumLayouts[name + "_KHR"];
     // try different extension names
-    if (value_KHR !== void 0) return getHexadecimalFromNumber(value_KHR);
+    if (value_KHR !== void 0) return getHexadecimalByteOffsetFromNumber(value_KHR);
     warn(`Cannot inline enum value of '${name}'`);
     return name;
   }
-  return getHexadecimalFromNumber(value);
+  return getHexadecimalByteOffsetFromNumber(value);
+};
+
+function getStructureMemoryViews() {
+  let out = ``;
+  let struct = currentStruct;
+  let viewTypes = [];
+  struct.children.map(member => {
+    let jsType = getJavaScriptType(ast, member);
+    let {type} = jsType;
+    if (
+      type === JavaScriptType.NUMBER ||
+      type === JavaScriptType.BIGINT ||
+      type === JavaScriptType.BOOLEAN
+    ) {
+      let viewInstr = getDataViewInstruction(member);
+      if (viewTypes.indexOf(viewInstr) <= -1) viewTypes.push(viewInstr);
+    }
+    else if (
+      type === JavaScriptType.OBJECT ||
+      type === JavaScriptType.STRING ||
+      type === JavaScriptType.TYPED_ARRAY
+    ) {
+      if (viewTypes.indexOf("BigInt64") <= -1) viewTypes.push("BigInt64");
+    }
+    else if (
+      isPNextMember(member)
+    ) {
+      if (viewTypes.indexOf("BigInt64") <= -1) viewTypes.push("BigInt64");
+    }
+  });
+  viewTypes.map(type => {
+    out += `    this.memoryView${type} = new ${type}Array(this.memoryBuffer);\n`;
+  });
+  return out;
 };
 
 function getGetterProcessor(member) {
@@ -91,12 +127,18 @@ function getGetterProcessor(member) {
   switch (type) {
     case JavaScriptType.NUMBER:
     case JavaScriptType.BIGINT: {
+      let instr = getDataViewInstruction(member);
+      let byteStride = getDataViewInstructionStride(instr);
+      let offset = getHexadecimalByteOffsetFromNumber(byteOffset / byteStride);
       return `
-    return this.memoryView.get${getDataViewInstruction(member)}(${byteOffset}, EDI);`;
+    return this.memoryView${instr}[${offset}];`;
     }
     case JavaScriptType.BOOLEAN: {
+      let instr = getDataViewInstruction(member);
+      let byteStride = getDataViewInstructionStride(instr);
+      let offset = getHexadecimalByteOffsetFromNumber(byteOffset / byteStride);
       return `
-    return this.memoryView.get${getDataViewInstruction(member)}(${byteOffset}, EDI) !== 0;`;
+    return this.memoryView${instr}[${offset}] !== 0;`;
     }
     case JavaScriptType.OBJECT: {
       return `
@@ -143,34 +185,46 @@ function getSetterProcessor(member) {
   switch (type) {
     case JavaScriptType.NUMBER:
     case JavaScriptType.BIGINT: {
+      let instr = getDataViewInstruction(member);
+      let byteStride = getDataViewInstructionStride(instr);
+      let offset = getHexadecimalByteOffsetFromNumber(byteOffset / byteStride);
       return `
-    this.memoryView.set${getDataViewInstruction(member)}(${byteOffset}, value, EDI);`;
+    this.memoryView${instr}[${offset}] = value;`;
     }
     case JavaScriptType.BOOLEAN: {
+      let instr = getDataViewInstruction(member);
+      let byteStride = getDataViewInstructionStride(instr);
+      let offset = getHexadecimalByteOffsetFromNumber(byteOffset / byteStride);
       return `
-    this.memoryView.set${getDataViewInstruction(member)}(${byteOffset}, value | 0, EDI);`;
+    this.memoryView${instr}[${offset}] = value | 0;`;
     }
     case JavaScriptType.OBJECT: {
+      let instr = "BigInt64";
+      let byteStride = getDataViewInstructionStride(instr);
+      let offset = getHexadecimalByteOffsetFromNumber(byteOffset / byteStride);
       return `
     if (value !== null && value.constructor === ${member.type}) {
       value.flush();
       this._${member.name} = value;
-      this.memoryView.setBigInt64(${byteOffset}, value.memoryAddress, EDI);
+      this.memoryView${instr}[${offset}] = value.memoryAddress;
     } else if (value === null) {
       this._${member.name} = null;
-      this.memoryView.setBigInt64(${byteOffset}, BI0, EDI);
+      this.memoryView${instr}[${offset}] = BI0;
     } else {
       throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected '${member.type}' but got '" + value.constructor.name + "'");
     }`;
     }
     case JavaScriptType.STRING: {
+      let instr = "BigInt64";
+      let byteStride = getDataViewInstructionStride(instr);
+      let offset = getHexadecimalByteOffsetFromNumber(byteOffset / byteStride);
       return `
     if (value !== null && value.constructor === String) {
       this._${member.name} = textEncoder.encode(value + String.fromCharCode(0x0)).buffer;
-      this.memoryView.setBigInt64(${byteOffset}, getAddressFromArrayBuffer(this._${member.name}), EDI);
+      this.memoryView${instr}[${offset}] = getAddressFromArrayBuffer(this._${member.name});
     } else if (value === null) {
       this._${member.name} = null;
-      this.memoryView.setBigInt64(${byteOffset}, BI0, EDI);
+      this.memoryView${instr}[${offset}] = BI0;
     } else {
       throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'String' but got '" + value.constructor.name + "'");
     }`;
@@ -206,12 +260,16 @@ function getSetterProcessor(member) {
     }`;
     }
     case JavaScriptType.TYPED_ARRAY: {
+      let instr = "BigInt64";
+      let byteStride = getDataViewInstructionStride(instr);
+      let offset = getHexadecimalByteOffsetFromNumber(byteOffset / byteStride);
       return `
     if (value !== null && value.constructor === ${member.jsTypedArrayName}) {
       this._${member.name} = value;
-      this.memoryView.setBigInt64(${byteOffset}, getAddressFromArrayBuffer(value.buffer), EDI);
+      this.memoryView${instr}[${offset}] = getAddressFromArrayBuffer(value.buffer);
     } else if (value === null) {
       this._${member.name} = null;
+      this.memoryView${instr}[${offset}] = BI0;
     } else {
       throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected '${member.jsTypedArrayName}' but got '" + value.constructor.name + "'");
     }`;
@@ -230,6 +288,9 @@ function getSetterProcessor(member) {
       conditions += `
         case ${getEnumInlineValue(structExt.sType)}:`;
     });
+    let instr = "BigInt64";
+    let byteStride = getDataViewInstructionStride(instr);
+    let offset = getHexadecimalByteOffsetFromNumber(byteOffset / byteStride);
     return `
     if (value !== null) {
       let sType = value.sType | 0;
@@ -241,9 +302,10 @@ function getSetterProcessor(member) {
           throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}'");
       };
       this._${member.name} = value;
-      this.memoryView.setBigInt64(${byteOffset}, value.memoryAddress, EDI);
+      this.memoryView${instr}[${offset}] = value.memoryAddress;
     } else if (value === null) {
-      this.memoryView.setBigInt64(${byteOffset}, BI0, EDI);
+      this._${member.name} = null;
+      this.memoryView${instr}[${offset}] = BI0;
     } else {
       throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}'");
     }`;
@@ -271,20 +333,30 @@ function getFlusherProcessor(member) {
       return ``; // not needed
     }
     case JavaScriptType.ARRAY_OF_STRINGS: {
+      let instr = "BigInt64";
+      let byteStride = getDataViewInstructionStride(instr);
+      let offset = getHexadecimalByteOffsetFromNumber(byteOffset / byteStride);
       return `
   if (this._${member.name} !== null) {
     let nativeArray = new NativeStringArray(this._${member.name});
     this._${member.name}Native = nativeArray;
-    this.memoryView.setBigInt64(${byteOffset}, nativeArray.address, EDI);
+    this.memoryView${instr}[${offset}] = nativeArray.address;
+  } else {
+    this.memoryView${instr}[${offset}] = BI0;
   }`;
     }
     case JavaScriptType.ARRAY_OF_NUMBERS: {
+      let instr = getDataViewInstruction(member);
+      let byteStride = getDataViewInstructionStride(instr);
+      let offset = getHexadecimalByteOffsetFromNumber(byteOffset / byteStride);
       return `
   if (this._${member.name} !== null) {
     let array = this._${member.name};
     for (let ii = 0; ii < array.length; ++ii) {
-      this.memoryView.set${getDataViewInstruction(member)}(${byteOffset}, array[ii], EDI);
+      this.memoryView${instr}[${offset}] = array[ii];
     };
+  } else {
+    this.memoryView${instr}[${offset}] = 0x0;
   }`;
     }
     case JavaScriptType.ARRAY_OF_OBJECTS: {
@@ -295,10 +367,13 @@ function getFlusherProcessor(member) {
       let byteLength = getStructureMemberByteLength(member);
       let write = ``;
       if (!jsType.isStatic) {
+        let instr = "BigInt64";
+        let byteStride = getDataViewInstructionStride(instr);
+        let offset = getHexadecimalByteOffsetFromNumber(byteOffset / byteStride);
         write = `
     let nativeArray = new NativeObjectArray(array);
     this._${member.name}Native = nativeArray;
-    this.memoryView.setBigInt64(${byteOffset}, nativeArray.address, EDI);`;
+    this.memoryView${instr}[${offset}] = nativeArray.address;`;
       // do a memcpy for static objects
       } else {
         write = `
@@ -431,6 +506,7 @@ export default function(astReference, handles, structs) {
       getFlusherProcessor,
       getStructureAutoSType,
       getStructureByteLength,
+      getStructureMemoryViews,
       getConstructorInitializer,
       getStructureMemberByteOffset,
       getStructureMemberByteLength

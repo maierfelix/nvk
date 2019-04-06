@@ -7,7 +7,7 @@ class {{ struct.name }} {
     {% endif -%}
     {%- endfor -%}
     this.memoryBuffer = new ArrayBuffer({{ getStructureByteLength() | safe }});
-    this.memoryView = new DataView(this.memoryBuffer);
+{{ getStructureMemoryViews() | safe }}
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     {{ getStructureAutoSType() | safe }}
     if (typeof opts === "object") {
