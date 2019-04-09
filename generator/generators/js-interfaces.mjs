@@ -466,6 +466,7 @@ function getFlusherProcessor(member) {
 };
 
 function getReflectorProcesssor(member) {
+  if (!currentStruct.needsReflection) return ``;
   let jsType = getJavaScriptType(ast, member);
   let {type, value} = jsType;
   let byteOffset = getStructureMemberByteOffset(member) | 0;
@@ -481,6 +482,7 @@ function getReflectorProcesssor(member) {
       return ``;
     }
     case JavaScriptType.OBJECT: {
+      console.log(currentStruct.name);
       return ``;
     }
     case JavaScriptType.STRING: {

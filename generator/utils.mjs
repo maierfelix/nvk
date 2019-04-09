@@ -127,6 +127,36 @@ export function getNodeByName(name, nodes) {
   return null;
 };
 
+export function getBitmaskByName(ast, name) {
+  for (let ii = 0; ii < ast.length; ++ii) {
+    let child = ast[ii];
+    if (child.kind === "ENUM" && child.type === "BITMASK") {
+      if (child.name === name) return child;
+    }
+  };
+  return null;
+};
+
+export function getStructByStructName(ast, name) {
+  let structs = ast.filter(node => node.kind === "STRUCT");
+  for (let ii = 0; ii < structs.length; ++ii) {
+    let struct = structs[ii];
+    if (struct.name === name) return struct;
+  };
+  error(`Cannot resolve struct by name "${name}"`);
+  return null;
+};
+
+export function getHandleByHandleName(ast, name) {
+  let handles = ast.filter(node => node.kind === "HANDLE");
+  for (let ii = 0; ii < handles.length; ++ii) {
+    let handle = handles[ii];
+    if (handle.name === name) return handle;
+  };
+  error(`Cannot resolve handle by name "${name}"`);
+  return null;
+};
+
 // auto-generates the sType name by a struct's name
 export function getAutoStructureType(name) {
   let out = ``;
@@ -452,16 +482,6 @@ export function isReferenceableMember(member) {
     }
   };
   return false;
-};
-
-export function getBitmaskByName(ast, name) {
-  for (let ii = 0; ii < ast.length; ++ii) {
-    let child = ast[ii];
-    if (child.kind === "ENUM" && child.type === "BITMASK") {
-      if (child.name === name) return child;
-    }
-  };
-  return null;
 };
 
 export function isFillableMember(struct, member) {

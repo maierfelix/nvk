@@ -12,7 +12,9 @@ import {
   isPNextMember,
   isIgnoreableType,
   getAutoStructureType,
-  getNapiTypedArrayName
+  getNapiTypedArrayName,
+  getStructByStructName,
+  getHandleByHandleName
 } from "../utils";
 
 let ast = null;
@@ -32,26 +34,6 @@ function getCallExtension(call) {
       }
     };
   };
-  return null;
-};
-
-function getStructByStructName(name) {
-  let structs = ast.filter(node => node.kind === "STRUCT");
-  for (let ii = 0; ii < structs.length; ++ii) {
-    let struct = structs[ii];
-    if (struct.name === name) return struct;
-  };
-  error(`Cannot resolve struct by name "${name}"`);
-  return null;
-};
-
-function getHandleByHandleName(name) {
-  let handles = ast.filter(node => node.kind === "HANDLE");
-  for (let ii = 0; ii < handles.length; ++ii) {
-    let handle = handles[ii];
-    if (handle.name === name) return handle;
-  };
-  error(`Cannot resolve handle by name "${name}"`);
   return null;
 };
 
@@ -376,7 +358,7 @@ function getCallBodyBefore(call) {
           }
           if (param.isStructType) {
             let isInvalidStype = "";
-            if (!getStructByStructName(param.type).sType) {
+            if (!getStructByStructName(ast, param.type).sType) {
               isInvalidStype = `(obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "${param.type}"`;
             } else {
               isInvalidStype = `GetStructureTypeFromObject(obj) != ${getAutoStructureType(param.type)}`;
@@ -527,23 +509,34 @@ function getCallBodyAfter(call) {
     if (isConstant) return;
     // array of structs
     if (param.isArray && param.isStructType) {
-      let struct = getStructByStructName(param.type);
-      out.push(`
+      let struct = getStructByStructName(ast, param.type);
+      if (struct.needsReflection) {
+        out.push(`
   if (info[${pIndex}].IsArray()) {
     ${param.type}* $pdata = $p${pIndex}.get()->data();
     Napi::Array array = info[${pIndex}].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-
       // reflect call
       Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
       obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }`);
+      }
     // passed in parameter is a struct which gets filled by vulkan
     // and which we need to back-reflect to v8 manually
     } else if (param.isStructType && isReference) {
+      let struct = getStructByStructName(ast, param.type);
+      if (struct.needsReflection) {
+        out.push(`
+  if (info[${pIndex}].IsObject()) {
+     Napi::Object obj = info[${pIndex}].As<Napi::Object>();
+    // reflect call
+    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+    obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
+  }`);
+      }
       //let instr = getMutableStructReflectInstructions(param.type, pIndex, `obj${pIndex}->`);
       //out.push(instr);
     }
@@ -663,7 +656,7 @@ function getCallBody(call) {
  * It recursively back-reflects a struct and all its members
  */
 function getMutableStructReflectInstructions(name, pIndex, basePath, out = []) {
-  let struct = getStructByStructName(name);
+  let struct = getStructByStructName(ast, name);
   // go through each struct member and manually back-reflect it
   struct.children.map((member, mIndex) => {
     // these can be ignored

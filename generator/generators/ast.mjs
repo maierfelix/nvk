@@ -12,7 +12,9 @@ import {
   isPNextMember,
   getNodeByName,
   formatIntToHex,
+  isIgnoreableType,
   getAutoStructureType,
+  getStructByStructName,
   isNumericReferenceType,
   getJavaScriptTypedArrayName
 } from "../utils";
@@ -810,6 +812,66 @@ export default function({ xmlInput, version, docs } = _) {
           }
         };
       }
+    });
+  }
+
+  function deepReflectionTrace(name) {
+    let struct = getStructByStructName(out, name);
+    struct.children.map(member => {
+      // these can be ignored
+      if (
+        member.isNumber ||
+        member.isBoolean ||
+        member.bitmaskType ||
+        member.enumType ||
+        isIgnoreableType(member)
+      ) return;
+      // pnext structs
+      if (isPNextMember(member)) {
+        let {extensions} = struct;
+        if (extensions) {
+          struct.needsReflection = true;
+          extensions.map(extensionName => {
+            deepReflectionTrace(extensionName);
+          });
+        }
+      }
+      // string
+      else if (member.isString && member.isStaticArray) {
+        struct.needsReflection = true;
+      }
+      // struct
+      else if (member.isStructType && !member.isArray) {
+        deepReflectionTrace(member.type);
+        struct.needsReflection = true;
+      }
+      // array of numbers
+      else if (member.isNumericArray) {
+        struct.needsReflection = true;
+      }
+      // array of structs
+      else if (member.isStructType && member.isArray) {
+        deepReflectionTrace(member.type);
+        struct.needsReflection = true;
+      }
+      else {
+        console.log(`Error: Cannot handle member ${member.name} of type ${member.type} in mutable-struct-reflection!`);
+      }
+    });
+  };
+
+  // trace deep reflection structures
+  {
+    let calls = out.filter(node => node.kind === "COMMAND_PROTO");
+    calls.map(call => {
+      let {params} = call;
+      params.map(param => {
+        if (isIgnoreableType(param)) return;
+        if (param.isConstant) return;
+        if (param.isStructType && param.dereferenceCount > 0 && !param.isArray) {
+          deepReflectionTrace(param.type);
+        }
+      });
     });
   }
   return new Promise(resolve => {

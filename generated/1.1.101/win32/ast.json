@@ -19071,6 +19071,7 @@
         }
       }
     ],
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Devices and Queues",
@@ -20186,6 +20187,7 @@
         "dynamicLength": "memoryHeapCount"
       }
     ],
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Memory Allocation",
@@ -20959,6 +20961,7 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Features, Limits, and Formats",
@@ -32116,6 +32119,7 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Features, Limits, and Formats",
@@ -33424,6 +33428,7 @@
         "kind": "STRUCT_MEMBER"
       }
     ],
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "VK_KHR_display",
@@ -34043,6 +34048,7 @@
         }
       }
     ],
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "VK_KHR_surface",
@@ -36422,6 +36428,7 @@
         }
       }
     ],
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "VK_NV_external_memory_capabilities",
@@ -38664,6 +38671,7 @@
       "VkPhysicalDeviceBufferAddressFeaturesEXT",
       "VkPhysicalDeviceCooperativeMatrixFeaturesNV"
     ],
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Features, Limits, and Formats",
@@ -38870,6 +38878,7 @@
       "VkPhysicalDeviceFragmentDensityMapPropertiesEXT",
       "VkPhysicalDeviceCooperativeMatrixPropertiesNV"
     ],
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Devices and Queues",
@@ -39042,6 +39051,7 @@
     "extensions": [
       "VkDrmFormatModifierPropertiesListEXT"
     ],
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Features, Limits, and Formats",
@@ -39200,6 +39210,7 @@
       "VkAndroidHardwareBufferUsageANDROID",
       "VkFilterCubicImageViewImageFormatPropertiesEXT"
     ],
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Features, Limits, and Formats",
@@ -39950,6 +39961,7 @@
     "extensions": [
       "VkPhysicalDeviceMemoryBudgetPropertiesEXT"
     ],
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Memory Allocation",
@@ -40716,6 +40728,7 @@
       "VkPhysicalDeviceProperties2"
     ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES_KHR",
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Devices and Queues",
@@ -41521,6 +41534,7 @@
       "VkImageFormatProperties2"
     ],
     "sType": "VK_STRUCTURE_TYPE_EXTERNAL_IMAGE_FORMAT_PROPERTIES",
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Features, Limits, and Formats",
@@ -41924,6 +41938,7 @@
       }
     ],
     "sType": "VK_STRUCTURE_TYPE_EXTERNAL_BUFFER_PROPERTIES",
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Features, Limits, and Formats",
@@ -42112,6 +42127,7 @@
       "VkPhysicalDeviceProperties2"
     ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ID_PROPERTIES",
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Devices and Queues",
@@ -46639,6 +46655,7 @@
       }
     ],
     "sType": "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT",
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "VK_EXT_display_surface_counter",
@@ -49267,6 +49284,7 @@
       }
     ],
     "sType": "VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_CAPABILITIES_KHR",
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "VK_KHR_surface",
@@ -52352,6 +52370,7 @@
     "extensions": [
       "VkSharedPresentSurfaceCapabilitiesKHR"
     ],
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "VK_KHR_surface",
@@ -52761,6 +52780,7 @@
       }
     ],
     "sType": "VK_STRUCTURE_TYPE_DISPLAY_PLANE_CAPABILITIES_2_KHR",
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "VK_KHR_display",
@@ -53725,6 +53745,7 @@
     "extensions": [
       "VkMemoryDedicatedRequirements"
     ],
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Resource Creation",
@@ -53796,6 +53817,7 @@
     "extensions": [
       "VkMemoryDedicatedRequirements"
     ],
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Resource Creation",
@@ -57235,6 +57257,7 @@
       "VkPhysicalDeviceProperties2"
     ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT",
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Features, Limits, and Formats",
@@ -57302,6 +57325,7 @@
       }
     ],
     "sType": "VK_STRUCTURE_TYPE_MULTISAMPLE_PROPERTIES_EXT",
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Features, Limits, and Formats",
@@ -58807,6 +58831,7 @@
     "extensions": [
       "VkDescriptorSetVariableDescriptorCountLayoutSupportEXT"
     ],
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Resource Descriptors",
@@ -64131,6 +64156,7 @@
     "extensions": [
       "VkAndroidHardwareBufferFormatPropertiesANDROID"
     ],
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Memory Allocation",
@@ -64425,6 +64451,7 @@
       "VkAndroidHardwareBufferPropertiesANDROID"
     ],
     "sType": "VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_ANDROID",
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Memory Allocation",
@@ -66913,6 +66940,7 @@
       "VkPhysicalDeviceProperties2"
     ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV",
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Features, Limits, and Formats",
@@ -67527,6 +67555,7 @@
       "VkPhysicalDeviceProperties2"
     ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV",
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Features, Limits, and Formats",
@@ -69311,6 +69340,7 @@
       "VkFormatProperties2"
     ],
     "sType": "VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_LIST_EXT",
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Features, Limits, and Formats",
@@ -70164,6 +70194,7 @@
       "VkPhysicalDeviceProperties2"
     ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT",
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Features, Limits, and Formats",
@@ -70548,6 +70579,7 @@
       "VkPhysicalDeviceMemoryProperties2"
     ],
     "sType": "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT",
+    "needsReflection": true,
     "documentation": {
       "macros": [],
       "category": "Memory Allocation",

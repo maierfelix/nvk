@@ -623,6 +623,12 @@ vkGetPhysicalDeviceProperties(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  if (info[1].IsObject()) {
+     Napi::Object obj = info[1].As<Napi::Object>();
+    // reflect call
+    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+    obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
+  }
   
   
   return env.Undefined();
@@ -698,18 +704,6 @@ vkGetPhysicalDeviceQueueFamilyProperties(
     $p2 ? (VkQueueFamilyProperties *) $p2.get()->data() : nullptr
   );
     if (info[1].IsObject()) obj1.Set("$", $p1);
-  if (info[2].IsArray()) {
-    VkQueueFamilyProperties* $pdata = $p2.get()->data();
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-
-      // reflect call
-      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
-      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
-    };
-  }
   
   
   return env.Undefined();
@@ -760,6 +754,12 @@ vkGetPhysicalDeviceMemoryProperties(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  if (info[1].IsObject()) {
+     Napi::Object obj = info[1].As<Napi::Object>();
+    // reflect call
+    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+    obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
+  }
   
   
   return env.Undefined();
@@ -928,6 +928,12 @@ Napi::Value _vkGetPhysicalDeviceImageFormatProperties(const Napi::CallbackInfo& 
     static_cast<VkImageCreateFlags>($p5),
     $p6
   );
+  if (info[6].IsObject()) {
+     Napi::Object obj = info[6].As<Napi::Object>();
+    // reflect call
+    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+    obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
+  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -1114,18 +1120,6 @@ Napi::Value _vkEnumerateInstanceLayerProperties(const Napi::CallbackInfo& info) 
     $p1 ? (VkLayerProperties *) $p1.get()->data() : nullptr
   );
     if (info[0].IsObject()) obj0.Set("$", $p0);
-  if (info[1].IsArray()) {
-    VkLayerProperties* $pdata = $p1.get()->data();
-    Napi::Array array = info[1].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-
-      // reflect call
-      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
-      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
-    };
-  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -1192,18 +1186,6 @@ Napi::Value _vkEnumerateInstanceExtensionProperties(const Napi::CallbackInfo& in
   );
   if ($p0) delete[] $p0;
     if (info[1].IsObject()) obj1.Set("$", $p1);
-  if (info[2].IsArray()) {
-    VkExtensionProperties* $pdata = $p2.get()->data();
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-
-      // reflect call
-      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
-      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
-    };
-  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -1279,18 +1261,6 @@ Napi::Value _vkEnumerateDeviceLayerProperties(const Napi::CallbackInfo& info) {
     $p2 ? (VkLayerProperties *) $p2.get()->data() : nullptr
   );
     if (info[1].IsObject()) obj1.Set("$", $p1);
-  if (info[2].IsArray()) {
-    VkLayerProperties* $pdata = $p2.get()->data();
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-
-      // reflect call
-      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
-      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
-    };
-  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -1376,18 +1346,6 @@ Napi::Value _vkEnumerateDeviceExtensionProperties(const Napi::CallbackInfo& info
   );
   if ($p1) delete[] $p1;
     if (info[2].IsObject()) obj2.Set("$", $p2);
-  if (info[3].IsArray()) {
-    VkExtensionProperties* $pdata = $p3.get()->data();
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-
-      // reflect call
-      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
-      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
-    };
-  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -2372,18 +2330,6 @@ vkGetImageSparseMemoryRequirements(
     $p3 ? (VkSparseImageMemoryRequirements *) $p3.get()->data() : nullptr
   );
     if (info[2].IsObject()) obj2.Set("$", $p2);
-  if (info[3].IsArray()) {
-    VkSparseImageMemoryRequirements* $pdata = $p3.get()->data();
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-
-      // reflect call
-      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
-      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
-    };
-  }
   
   
   return env.Undefined();
@@ -2474,18 +2420,6 @@ vkGetPhysicalDeviceSparseImageFormatProperties(
     $p7 ? (VkSparseImageFormatProperties *) $p7.get()->data() : nullptr
   );
     if (info[6].IsObject()) obj6.Set("$", $p6);
-  if (info[7].IsArray()) {
-    VkSparseImageFormatProperties* $pdata = $p7.get()->data();
-    Napi::Array array = info[7].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-
-      // reflect call
-      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
-      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
-    };
-  }
   
   
   return env.Undefined();
@@ -9254,18 +9188,6 @@ Napi::Value _vkGetPhysicalDeviceDisplayPropertiesKHR(const Napi::CallbackInfo& i
     $p2 ? (VkDisplayPropertiesKHR *) $p2.get()->data() : nullptr
   );
     if (info[1].IsObject()) obj1.Set("$", $p1);
-  if (info[2].IsArray()) {
-    VkDisplayPropertiesKHR* $pdata = $p2.get()->data();
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-
-      // reflect call
-      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
-      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
-    };
-  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -9341,18 +9263,6 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlanePropertiesKHR(const Napi::CallbackIn
     $p2 ? (VkDisplayPlanePropertiesKHR *) $p2.get()->data() : nullptr
   );
     if (info[1].IsObject()) obj1.Set("$", $p1);
-  if (info[2].IsArray()) {
-    VkDisplayPlanePropertiesKHR* $pdata = $p2.get()->data();
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-
-      // reflect call
-      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
-      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
-    };
-  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -9528,18 +9438,6 @@ Napi::Value _vkGetDisplayModePropertiesKHR(const Napi::CallbackInfo& info) {
     $p3 ? (VkDisplayModePropertiesKHR *) $p3.get()->data() : nullptr
   );
     if (info[2].IsObject()) obj2.Set("$", $p2);
-  if (info[3].IsArray()) {
-    VkDisplayModePropertiesKHR* $pdata = $p3.get()->data();
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-
-      // reflect call
-      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
-      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
-    };
-  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -9702,6 +9600,12 @@ Napi::Value _vkGetDisplayPlaneCapabilitiesKHR(const Napi::CallbackInfo& info) {
     $p2,
     $p3
   );
+  if (info[3].IsObject()) {
+     Napi::Object obj = info[3].As<Napi::Object>();
+    // reflect call
+    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+    obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
+  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -10055,6 +9959,12 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Napi::CallbackInfo&
     info[1].IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2
   );
+  if (info[2].IsObject()) {
+     Napi::Object obj = info[2].As<Napi::Object>();
+    // reflect call
+    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+    obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
+  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -10149,18 +10059,6 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormatsKHR(const Napi::CallbackInfo& info
     $p3 ? (VkSurfaceFormatKHR *) $p3.get()->data() : nullptr
   );
     if (info[2].IsObject()) obj2.Set("$", $p2);
-  if (info[3].IsArray()) {
-    VkSurfaceFormatKHR* $pdata = $p3.get()->data();
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-
-      // reflect call
-      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
-      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
-    };
-  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -11202,6 +11100,12 @@ Napi::Value _vkGetPhysicalDeviceExternalImageFormatPropertiesNV(const Napi::Call
     static_cast<VkExternalMemoryHandleTypeFlagsNV>($p6),
     $p7
   );
+  if (info[7].IsObject()) {
+     Napi::Object obj = info[7].As<Napi::Object>();
+    // reflect call
+    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+    obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
+  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -12075,6 +11979,12 @@ vkGetPhysicalDeviceFeatures2(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  if (info[1].IsObject()) {
+     Napi::Object obj = info[1].As<Napi::Object>();
+    // reflect call
+    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+    obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
+  }
   
   
   return env.Undefined();
@@ -12125,6 +12035,12 @@ vkGetPhysicalDeviceProperties2(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  if (info[1].IsObject()) {
+     Napi::Object obj = info[1].As<Napi::Object>();
+    // reflect call
+    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+    obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
+  }
   
   
   return env.Undefined();
@@ -12178,6 +12094,12 @@ vkGetPhysicalDeviceFormatProperties2(
     $p1,
     $p2
   );
+  if (info[2].IsObject()) {
+     Napi::Object obj = info[2].As<Napi::Object>();
+    // reflect call
+    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+    obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
+  }
   
   
   return env.Undefined();
@@ -12249,6 +12171,12 @@ Napi::Value _vkGetPhysicalDeviceImageFormatProperties2(const Napi::CallbackInfo&
     $p1,
     $p2
   );
+  if (info[2].IsObject()) {
+     Napi::Object obj = info[2].As<Napi::Object>();
+    // reflect call
+    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+    obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
+  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -12324,18 +12252,6 @@ vkGetPhysicalDeviceQueueFamilyProperties2(
     $p2 ? (VkQueueFamilyProperties2 *) $p2.get()->data() : nullptr
   );
     if (info[1].IsObject()) obj1.Set("$", $p1);
-  if (info[2].IsArray()) {
-    VkQueueFamilyProperties2* $pdata = $p2.get()->data();
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-
-      // reflect call
-      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
-      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
-    };
-  }
   
   
   return env.Undefined();
@@ -12386,6 +12302,12 @@ vkGetPhysicalDeviceMemoryProperties2(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  if (info[1].IsObject()) {
+     Napi::Object obj = info[1].As<Napi::Object>();
+    // reflect call
+    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+    obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
+  }
   
   
   return env.Undefined();
@@ -12482,18 +12404,6 @@ vkGetPhysicalDeviceSparseImageFormatProperties2(
     $p3 ? (VkSparseImageFormatProperties2 *) $p3.get()->data() : nullptr
   );
     if (info[2].IsObject()) obj2.Set("$", $p2);
-  if (info[3].IsArray()) {
-    VkSparseImageFormatProperties2* $pdata = $p3.get()->data();
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-
-      // reflect call
-      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
-      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
-    };
-  }
   
   
   return env.Undefined();
@@ -12702,6 +12612,12 @@ vkGetPhysicalDeviceExternalBufferProperties(
     $p1,
     $p2
   );
+  if (info[2].IsObject()) {
+     Napi::Object obj = info[2].As<Napi::Object>();
+    // reflect call
+    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+    obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
+  }
   
   
   return env.Undefined();
@@ -13981,6 +13897,12 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2EXT(const Napi::CallbackInfo
     info[1].IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2
   );
+  if (info[2].IsObject()) {
+     Napi::Object obj = info[2].As<Napi::Object>();
+    // reflect call
+    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+    obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
+  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -14056,18 +13978,6 @@ Napi::Value _vkEnumeratePhysicalDeviceGroups(const Napi::CallbackInfo& info) {
     $p2 ? (VkPhysicalDeviceGroupProperties *) $p2.get()->data() : nullptr
   );
     if (info[1].IsObject()) obj1.Set("$", $p1);
-  if (info[2].IsArray()) {
-    VkPhysicalDeviceGroupProperties* $pdata = $p2.get()->data();
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-
-      // reflect call
-      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
-      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
-    };
-  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -14327,6 +14237,12 @@ Napi::Value _vkGetDeviceGroupPresentCapabilitiesKHR(const Napi::CallbackInfo& in
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
+  if (info[1].IsObject()) {
+     Napi::Object obj = info[1].As<Napi::Object>();
+    // reflect call
+    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+    obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
+  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -14600,18 +14516,6 @@ Napi::Value _vkGetPhysicalDevicePresentRectanglesKHR(const Napi::CallbackInfo& i
     $p3 ? (VkRect2D *) $p3.get()->data() : nullptr
   );
     if (info[2].IsObject()) obj2.Set("$", $p2);
-  if (info[3].IsArray()) {
-    VkRect2D* $pdata = $p3.get()->data();
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-
-      // reflect call
-      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
-      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
-    };
-  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -15182,18 +15086,6 @@ Napi::Value _vkGetPastPresentationTimingGOOGLE(const Napi::CallbackInfo& info) {
     $p3 ? (VkPastPresentationTimingGOOGLE *) $p3.get()->data() : nullptr
   );
     if (info[2].IsObject()) obj2.Set("$", $p2);
-  if (info[3].IsArray()) {
-    VkPastPresentationTimingGOOGLE* $pdata = $p3.get()->data();
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-
-      // reflect call
-      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
-      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
-    };
-  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -15425,6 +15317,12 @@ $vkGetPhysicalDeviceMultisamplePropertiesEXT(
     static_cast<VkSampleCountFlagBits>($p1),
     $p2
   );
+  if (info[2].IsObject()) {
+     Napi::Object obj = info[2].As<Napi::Object>();
+    // reflect call
+    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+    obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
+  }
   
   
   return env.Undefined();
@@ -15496,6 +15394,12 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2KHR(const Napi::CallbackInfo
     $p1,
     $p2
   );
+  if (info[2].IsObject()) {
+     Napi::Object obj = info[2].As<Napi::Object>();
+    // reflect call
+    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+    obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
+  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -15592,18 +15496,6 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormats2KHR(const Napi::CallbackInfo& inf
     $p3 ? (VkSurfaceFormat2KHR *) $p3.get()->data() : nullptr
   );
     if (info[2].IsObject()) obj2.Set("$", $p2);
-  if (info[3].IsArray()) {
-    VkSurfaceFormat2KHR* $pdata = $p3.get()->data();
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-
-      // reflect call
-      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
-      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
-    };
-  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -15679,18 +15571,6 @@ Napi::Value _vkGetPhysicalDeviceDisplayProperties2KHR(const Napi::CallbackInfo& 
     $p2 ? (VkDisplayProperties2KHR *) $p2.get()->data() : nullptr
   );
     if (info[1].IsObject()) obj1.Set("$", $p1);
-  if (info[2].IsArray()) {
-    VkDisplayProperties2KHR* $pdata = $p2.get()->data();
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-
-      // reflect call
-      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
-      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
-    };
-  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -15766,18 +15646,6 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlaneProperties2KHR(const Napi::CallbackI
     $p2 ? (VkDisplayPlaneProperties2KHR *) $p2.get()->data() : nullptr
   );
     if (info[1].IsObject()) obj1.Set("$", $p1);
-  if (info[2].IsArray()) {
-    VkDisplayPlaneProperties2KHR* $pdata = $p2.get()->data();
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-
-      // reflect call
-      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
-      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
-    };
-  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -15872,18 +15740,6 @@ Napi::Value _vkGetDisplayModeProperties2KHR(const Napi::CallbackInfo& info) {
     $p3 ? (VkDisplayModeProperties2KHR *) $p3.get()->data() : nullptr
   );
     if (info[2].IsObject()) obj2.Set("$", $p2);
-  if (info[3].IsArray()) {
-    VkDisplayModeProperties2KHR* $pdata = $p3.get()->data();
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-
-      // reflect call
-      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
-      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
-    };
-  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -15955,6 +15811,12 @@ Napi::Value _vkGetDisplayPlaneCapabilities2KHR(const Napi::CallbackInfo& info) {
     $p1,
     $p2
   );
+  if (info[2].IsObject()) {
+     Napi::Object obj = info[2].As<Napi::Object>();
+    // reflect call
+    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+    obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
+  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -16026,6 +15888,12 @@ vkGetBufferMemoryRequirements2(
     $p1,
     $p2
   );
+  if (info[2].IsObject()) {
+     Napi::Object obj = info[2].As<Napi::Object>();
+    // reflect call
+    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+    obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
+  }
   
   
   return env.Undefined();
@@ -16097,6 +15965,12 @@ vkGetImageMemoryRequirements2(
     $p1,
     $p2
   );
+  if (info[2].IsObject()) {
+     Napi::Object obj = info[2].As<Napi::Object>();
+    // reflect call
+    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+    obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
+  }
   
   
   return env.Undefined();
@@ -16193,18 +16067,6 @@ vkGetImageSparseMemoryRequirements2(
     $p3 ? (VkSparseImageMemoryRequirements2 *) $p3.get()->data() : nullptr
   );
     if (info[2].IsObject()) obj2.Set("$", $p2);
-  if (info[3].IsArray()) {
-    VkSparseImageMemoryRequirements2* $pdata = $p3.get()->data();
-    Napi::Array array = info[3].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-
-      // reflect call
-      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
-      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
-    };
-  }
   
   
   return env.Undefined();
@@ -16734,6 +16596,12 @@ vkGetDescriptorSetLayoutSupport(
     $p1,
     $p2
   );
+  if (info[2].IsObject()) {
+     Napi::Object obj = info[2].As<Napi::Object>();
+    // reflect call
+    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+    obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
+  }
   
   
   return env.Undefined();
@@ -18165,18 +18033,6 @@ $vkGetQueueCheckpointDataNV(
     $p2 ? (VkCheckpointDataNV *) $p2.get()->data() : nullptr
   );
     if (info[1].IsObject()) obj1.Set("$", $p1);
-  if (info[2].IsArray()) {
-    VkCheckpointDataNV* $pdata = $p2.get()->data();
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-
-      // reflect call
-      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
-      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
-    };
-  }
   
   
   return env.Undefined();
@@ -19241,6 +19097,12 @@ $vkGetAccelerationStructureMemoryRequirementsNV(
     $p1,
     $p2
   );
+  if (info[2].IsObject()) {
+     Napi::Object obj = info[2].As<Napi::Object>();
+    // reflect call
+    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+    obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
+  }
   
   
   return env.Undefined();
@@ -20155,18 +20017,6 @@ Napi::Value _vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(const Napi::Callba
     $p2 ? (VkCooperativeMatrixPropertiesNV *) $p2.get()->data() : nullptr
   );
     if (info[1].IsObject()) obj1.Set("$", $p1);
-  if (info[2].IsArray()) {
-    VkCooperativeMatrixPropertiesNV* $pdata = $p2.get()->data();
-    Napi::Array array = info[2].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-
-      // reflect call
-      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
-      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
-    };
-  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
