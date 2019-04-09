@@ -11,6 +11,7 @@ import {
   warn, error,
   isPNextMember,
   isIgnoreableType,
+  getAutoStructureType,
   getNapiTypedArrayName
 } from "../utils";
 
@@ -146,8 +147,8 @@ function getInputArrayBody(param, index) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _${param.type}* result = Napi::ObjectWrap<_${param.type}>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }`;
   }
@@ -159,8 +160,8 @@ function getInputArrayBody(param, index) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _${param.type}* result = Napi::ObjectWrap<_${param.type}>::Unwrap(obj);
-      data[ii] = result->instance;
+      ${param.type}* instance = reinterpret_cast<${param.type}*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p${index} = std::make_shared<std::vector<${param.type}>>(data);`;
   }
@@ -172,8 +173,8 @@ function getInputArrayBody(param, index) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _${param.type}* result = Napi::ObjectWrap<_${param.type}>::Unwrap(obj);
-      data[ii] = result->instance;
+      ${param.type}* instance = reinterpret_cast<${param.type}*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p${index} = std::make_shared<std::vector<${param.type}>>(data);`;
   }
@@ -373,23 +374,54 @@ function getCallBodyBefore(call) {
             if (param.isHandleType) deinitialize = `VK_NULL_HANDLE`;
             else warn(`Cannot handle param deinitializer!`);
           }
-          return `
-  _${param.type}* obj${index};
+          if (param.isStructType) {
+            let isInvalidStype = "";
+            if (!getStructByStructName(param.type).sType) {
+              isInvalidStype = `(obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "${param.type}"`;
+            } else {
+              isInvalidStype = `GetStructureTypeFromObject(obj) != ${getAutoStructureType(param.type)}`;
+            }
+            return `
+  Napi::Object obj${index};
   ${param.type} *$p${index} = nullptr;
   if (info[${index}].IsObject()) {
     Napi::Object obj = info[${index}].As<Napi::Object>();
-    if (!(obj.InstanceOf(_${param.type}::constructor.Value()))) {
+    if (${isInvalidStype}) {
       NapiObjectTypeError(info[${index}], "argument ${index + 1}", "[object ${param.type}]");
       return env.Undefined();
     }
-    obj${index} = Napi::ObjectWrap<_${param.type}>::Unwrap(obj);
-    ${ param.isStructType ? `if (!obj${index}->flush()) return env.Undefined();` : `` }
-    $p${index} = &obj${index}->instance;
+    obj${index} = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    ${param.type}* instance = reinterpret_cast<${param.type}*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p${index} = instance;
   } else if (info[${index}].IsNull()) {
     $p${index} = ${deinitialize};
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected '${param.type}' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }`;
+          }
+          else if (param.isHandleType) {
+            return `
+  Napi::Object obj${index};
+  ${param.type} *$p${index} = nullptr;
+  if (info[${index}].IsObject()) {
+    Napi::Object obj = info[${index}].As<Napi::Object>();
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "${param.type}") {
+      NapiObjectTypeError(info[${index}], "argument ${index + 1}", "[object ${param.type}]");
+      return env.Undefined();
+    }
+    obj${index} = obj;
+    ${param.type}* instance = reinterpret_cast<${param.type}*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p${index} = instance;
+  } else if (info[${index}].IsNull()) {
+    $p${index} = ${deinitialize};
+  } else {
+    Napi::TypeError::New(env, "Expected '${param.type}' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }`;
+          }
         }
         warn(`Cannot handle param ${rawType} in call-body-before!`);
         return ``;
@@ -486,7 +518,7 @@ function getCallBodyAfter(call) {
   params.map((param, pIndex) => {
     if (isIgnoreableType(param)) return;
     let isReference = param.dereferenceCount > 0;
-    let isConstant = param.isConstant;
+    let {isConstant} = param;
     if (param.isString) {
       // no reflection needed
       out.push(`
@@ -496,7 +528,6 @@ function getCallBodyAfter(call) {
     // array of structs
     if (param.isArray && param.isStructType) {
       let struct = getStructByStructName(param.type);
-      let memberCopyInstructions = getMemberCopyInstructions(struct);
       out.push(`
   if (info[${pIndex}].IsArray()) {
     ${param.type}* $pdata = $p${pIndex}.get()->data();
@@ -504,17 +535,17 @@ function getCallBodyAfter(call) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _${param.type}* result = Napi::ObjectWrap<_${param.type}>::Unwrap(obj);
-      ${param.type} *instance = &result->instance;
-      ${param.type} *copy = &$pdata[ii];
-      ${memberCopyInstructions}
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }`);
     // passed in parameter is a struct which gets filled by vulkan
     // and which we need to back-reflect to v8 manually
     } else if (param.isStructType && isReference) {
-      let instr = getMutableStructReflectInstructions(param.type, pIndex, `obj${pIndex}->`);
-      out.push(instr);
+      //let instr = getMutableStructReflectInstructions(param.type, pIndex, `obj${pIndex}->`);
+      //out.push(instr);
     }
     // array of enums
     else if (param.isTypedArray && param.enumType) {
@@ -529,8 +560,10 @@ function getCallBodyAfter(call) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _${param.type}* target = Napi::ObjectWrap<_${param.type}>::Unwrap(obj);
-      target->instance = $pdata[ii];
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }`);
     }
@@ -556,12 +589,12 @@ function getCallBodyAfter(call) {
     else if (param.isWin32HandleReference) {
       out.push(`
   Napi::BigInt ptr${pIndex} = Napi::BigInt::New(env, (int64_t)$p${pIndex});
-  obj${pIndex}.Set("$", ptr${pIndex});`);
+  if (info[${pIndex}].IsObject()) obj${pIndex}.Set("$", ptr${pIndex});`);
     }
     else if (param.rawType === "void **") {
       out.push(`
   Napi::BigInt ptr${pIndex} = Napi::BigInt::New(env, (int64_t)$p${pIndex});
-  obj${pIndex}.Set("$", ptr${pIndex});`);
+  if (info[${pIndex}].IsObject()) obj${pIndex}.Set("$", ptr${pIndex});`);
     }
     else {
       // array of numbers or bools
@@ -571,7 +604,7 @@ function getCallBodyAfter(call) {
         case "const uint64_t *":
           out.push(`
     Napi::BigInt pnum${pIndex} = Napi::BigInt::New(env, (uint64_t)$p${pIndex});
-    obj${pIndex}.Set("$", pnum${pIndex});`);
+    if (info[${pIndex}].IsObject()) obj${pIndex}.Set("$", pnum${pIndex});`);
           break;
         case "int *":
         case "int32_t *":
@@ -580,11 +613,11 @@ function getCallBodyAfter(call) {
         case "const uint32_t *":
         case "const float *":
           out.push(`
-    obj${pIndex}.Set("$", $p${pIndex});`);
+    if (info[${pIndex}].IsObject()) obj${pIndex}.Set("$", $p${pIndex});`);
           break;
         case "VkBool32 *":
           out.push(`
-    obj${pIndex}.Set("$", $p${pIndex});`);
+    if (info[${pIndex}].IsObject()) obj${pIndex}.Set("$", $p${pIndex});`);
           break;
         default:
           warn(`Cannot handle ${param.rawType} in call-body-after!`);
@@ -753,12 +786,12 @@ function getCallObjectUpdate(call) {
     case "vkCreateDevice": {
       let index = getParamIndexByParamName(call, "pDevice");
       return `
-  vkUseDevice(obj${index}->instance);`;
+  vkUseDevice(*$p${index});`;
     }
     case "vkCreateInstance": {
       let index = getParamIndexByParamName(call, "pInstance");
       return `
-  vkUseInstance(obj${index}->instance);`;
+  vkUseInstance(*$p${index});`;
     }
   };
   return ``;

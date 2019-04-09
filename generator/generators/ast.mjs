@@ -446,6 +446,10 @@ function parseTypeElement(child) {
       out.isArray = true;
       out.length = len;
       out.isDynamicArray = true;
+      // fix array of strings length property
+      if (!!out.length.match("null-terminated")) {
+        out.length = out.length.replace(",null-terminated", "");
+      }
     }
   }
   else if (staticArrayMatch) {

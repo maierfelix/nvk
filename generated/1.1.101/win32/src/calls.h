@@ -18,6 +18,12 @@
 #include <string>
 #include <memory>
 
+inline VkStructureType GetStructureTypeFromObject(Napi::Object obj) {
+  if (!obj.Has("sType")) Napi::TypeError::New(obj.Env(), "Failed to resolve structure type, 'sType' property is missing").ThrowAsJavaScriptException();
+  VkStructureType sType = static_cast<VkStructureType>(obj.Get("sType").As<Napi::Number>().Int32Value());
+  return sType;
+};
+
 VkDevice currentDevice = VK_NULL_HANDLE;
 VkInstance currentInstance = VK_NULL_HANDLE;
 
@@ -308,8 +314,9 @@ void vkUseInstance(VkInstance pInstance) {
 Napi::Value _vkUseDevice(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   if (info[0].IsObject()) {
-    _VkDevice* obj = Napi::ObjectWrap<_VkDevice>::Unwrap(info[0].As<Napi::Object>());
-    vkUseDevice(obj->instance);
+    Napi::Object obj = info[0].As<Napi::Object>();
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    vkUseDevice(*instance);
   } else if (info[0].IsNull()) {
     currentDevice = VK_NULL_HANDLE;
   } else {
@@ -321,8 +328,9 @@ Napi::Value _vkUseDevice(const Napi::CallbackInfo& info) {
 Napi::Value _vkUseInstance(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   if (info[0].IsObject()) {
-    _VkInstance* obj = Napi::ObjectWrap<_VkInstance>::Unwrap(info[0].As<Napi::Object>());
-    vkUseInstance(obj->instance);
+    Napi::Object obj = info[0].As<Napi::Object>();
+    VkInstance* instance = reinterpret_cast<VkInstance*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    vkUseInstance(*instance);
   } else if (info[0].IsNull()) {
     currentInstance = VK_NULL_HANDLE;
   } else {
@@ -338,18 +346,20 @@ Napi::Value _vkCreateInstance(const Napi::CallbackInfo& info) {
   VkInstanceCreateInfo *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!obj.Has("sType") || obj.Get("sType").As<Napi::Number>().Int32Value() != VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO) {
       NapiObjectTypeError(info[0], "argument 1", "[object VkInstanceCreateInfo]");
       return env.Undefined();
     }
     obj0 = obj;
-    Napi::Value call0 = obj0.Get("flush").As<Napi::Function>().Call(obj0, {  });
-    if (!(call0.As<Napi::Boolean>().Value())) return env.Undefined();
-    $p0 = reinterpret_cast<VkInstanceCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkInstanceCreateInfo* instance = reinterpret_cast<VkInstanceCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstanceCreateInfo' or 'null' for argument 1 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
@@ -357,19 +367,19 @@ Napi::Value _vkCreateInstance(const Napi::CallbackInfo& info) {
   VkInstance *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!obj.Has("memoryBuffer")) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
       NapiObjectTypeError(info[2], "argument 3", "[object VkInstance]");
       return env.Undefined();
     }
     obj2 = obj;
-
-    $p2 = reinterpret_cast<VkInstance*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    VkInstance* instance = reinterpret_cast<VkInstance*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pInstance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 3 'pInstance'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
-
   int32_t out = vkCreateInstance(
     $p0,
     nullptr,
@@ -385,21 +395,22 @@ Napi::Value _vkCreateInstance(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyInstance(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkInstance* obj0;
+  Napi::Object obj0;
   VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkInstance>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkInstance* instance = reinterpret_cast<VkInstance*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 vkDestroyInstance(
@@ -415,21 +426,22 @@ vkDestroyInstance(
 Napi::Value _vkEnumeratePhysicalDevices(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkInstance* obj0;
+  Napi::Object obj0;
   VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkInstance>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkInstance* instance = reinterpret_cast<VkInstance*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj1;
@@ -456,8 +468,8 @@ Napi::Value _vkEnumeratePhysicalDevices(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkPhysicalDevice* result = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkPhysicalDevice>>(data);
   } else if (!info[2].IsNull()) {
@@ -470,15 +482,17 @@ Napi::Value _vkEnumeratePhysicalDevices(const Napi::CallbackInfo& info) {
     &$p1,
     $p2 ? (VkPhysicalDevice *) $p2.get()->data() : nullptr
   );
-    obj1.Set("$", $p1);
+    if (info[1].IsObject()) obj1.Set("$", $p1);
   if (info[2].IsArray()) {
     VkPhysicalDevice* $pdata = $p2.get()->data();
     Napi::Array array = info[2].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkPhysicalDevice* target = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-      target->instance = $pdata[ii];
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -490,21 +504,22 @@ Napi::Value _vkEnumeratePhysicalDevices(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetDeviceProcAddr(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   char* $p1 = nullptr;
@@ -528,21 +543,22 @@ Napi::Value _vkGetDeviceProcAddr(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetInstanceProcAddr(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkInstance* obj0;
+  Napi::Object obj0;
   VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkInstance>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkInstance* instance = reinterpret_cast<VkInstance*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   char* $p1 = nullptr;
@@ -566,129 +582,47 @@ Napi::Value _vkGetInstanceProcAddr(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetPhysicalDeviceProperties(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPhysicalDeviceProperties* obj1;
+  Napi::Object obj1;
   VkPhysicalDeviceProperties *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDeviceProperties::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDeviceProperties") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceProperties]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPhysicalDeviceProperties>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkPhysicalDeviceProperties* instance = reinterpret_cast<VkPhysicalDeviceProperties*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceProperties' or 'null' for argument 2 'pProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 vkGetPhysicalDeviceProperties(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
-  {
-    // back reflect string
-    Napi::String str1 = Napi::String::New(env, (&obj1->instance)->deviceName);
-    obj1->deviceName.Reset(str1.ToObject(), 1);
-  }
-  {
-    // back reflect array
-    Napi::Array arr1 = Napi::Array::New(env, 16);
-    // populate array
-    for (unsigned int ii = 0; ii < 16; ++ii) {
-      arr1.Set(ii, Napi::Number::New(env, (&obj1->instance)->pipelineCacheUUID[ii]));
-    };
-    obj1->pipelineCacheUUID.Reset(arr1.ToObject(), 1);
-  }
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkPhysicalDeviceLimits::constructor.New(args);
-    _VkPhysicalDeviceLimits* unwrapped6 = Napi::ObjectWrap<_VkPhysicalDeviceLimits>::Unwrap(inst);
-    obj1->limits.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj1->instance.limits, sizeof(VkPhysicalDeviceLimits));
-    
-  {
-    // back reflect array
-    Napi::Array arr1 = Napi::Array::New(env, 3);
-    // populate array
-    for (unsigned int ii = 0; ii < 3; ++ii) {
-      arr1.Set(ii, Napi::Number::New(env, (&unwrapped6->instance)->maxComputeWorkGroupCount[ii]));
-    };
-    unwrapped6->maxComputeWorkGroupCount.Reset(arr1.ToObject(), 1);
-  }
-  {
-    // back reflect array
-    Napi::Array arr1 = Napi::Array::New(env, 3);
-    // populate array
-    for (unsigned int ii = 0; ii < 3; ++ii) {
-      arr1.Set(ii, Napi::Number::New(env, (&unwrapped6->instance)->maxComputeWorkGroupSize[ii]));
-    };
-    unwrapped6->maxComputeWorkGroupSize.Reset(arr1.ToObject(), 1);
-  }
-  {
-    // back reflect array
-    Napi::Array arr1 = Napi::Array::New(env, 2);
-    // populate array
-    for (unsigned int ii = 0; ii < 2; ++ii) {
-      arr1.Set(ii, Napi::Number::New(env, (&unwrapped6->instance)->maxViewportDimensions[ii]));
-    };
-    unwrapped6->maxViewportDimensions.Reset(arr1.ToObject(), 1);
-  }
-  {
-    // back reflect array
-    Napi::Array arr1 = Napi::Array::New(env, 2);
-    // populate array
-    for (unsigned int ii = 0; ii < 2; ++ii) {
-      arr1.Set(ii, Napi::Number::New(env, (&unwrapped6->instance)->viewportBoundsRange[ii]));
-    };
-    unwrapped6->viewportBoundsRange.Reset(arr1.ToObject(), 1);
-  }
-  {
-    // back reflect array
-    Napi::Array arr1 = Napi::Array::New(env, 2);
-    // populate array
-    for (unsigned int ii = 0; ii < 2; ++ii) {
-      arr1.Set(ii, Napi::Number::New(env, (&unwrapped6->instance)->pointSizeRange[ii]));
-    };
-    unwrapped6->pointSizeRange.Reset(arr1.ToObject(), 1);
-  }
-  {
-    // back reflect array
-    Napi::Array arr1 = Napi::Array::New(env, 2);
-    // populate array
-    for (unsigned int ii = 0; ii < 2; ++ii) {
-      arr1.Set(ii, Napi::Number::New(env, (&unwrapped6->instance)->lineWidthRange[ii]));
-    };
-    unwrapped6->lineWidthRange.Reset(arr1.ToObject(), 1);
-  }
-  }
-      
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkPhysicalDeviceSparseProperties::constructor.New(args);
-    _VkPhysicalDeviceSparseProperties* unwrapped6 = Napi::ObjectWrap<_VkPhysicalDeviceSparseProperties>::Unwrap(inst);
-    obj1->sparseProperties.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj1->instance.sparseProperties, sizeof(VkPhysicalDeviceSparseProperties));
-    
-  }
-      
   
   
   return env.Undefined();
@@ -698,21 +632,22 @@ vkGetPhysicalDeviceProperties(
 Napi::Value _vkGetPhysicalDeviceQueueFamilyProperties(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj1;
@@ -739,8 +674,8 @@ Napi::Value _vkGetPhysicalDeviceQueueFamilyProperties(const Napi::CallbackInfo& 
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkQueueFamilyProperties* result = Napi::ObjectWrap<_VkQueueFamilyProperties>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[2].As<Napi::Array>();
@@ -748,8 +683,8 @@ Napi::Value _vkGetPhysicalDeviceQueueFamilyProperties(const Napi::CallbackInfo& 
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkQueueFamilyProperties* result = Napi::ObjectWrap<_VkQueueFamilyProperties>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkQueueFamilyProperties* instance = reinterpret_cast<VkQueueFamilyProperties*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkQueueFamilyProperties>>(data);
   } else if (!info[2].IsNull()) {
@@ -762,28 +697,17 @@ vkGetPhysicalDeviceQueueFamilyProperties(
     &$p1,
     $p2 ? (VkQueueFamilyProperties *) $p2.get()->data() : nullptr
   );
-    obj1.Set("$", $p1);
+    if (info[1].IsObject()) obj1.Set("$", $p1);
   if (info[2].IsArray()) {
     VkQueueFamilyProperties* $pdata = $p2.get()->data();
     Napi::Array array = info[2].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkQueueFamilyProperties* result = Napi::ObjectWrap<_VkQueueFamilyProperties>::Unwrap(obj);
-      VkQueueFamilyProperties *instance = &result->instance;
-      VkQueueFamilyProperties *copy = &$pdata[ii];
-      
-      instance->queueFlags = copy->queueFlags;
-      instance->queueCount = copy->queueCount;
-      instance->timestampValidBits = copy->timestampValidBits;
-      instance->minImageTransferGranularity = copy->minImageTransferGranularity;
-      if (&copy->minImageTransferGranularity != nullptr) {
-        std::vector<napi_value> args;
-        Napi::Object inst = _VkExtent3D::constructor.New(args);
-        _VkExtent3D* unwrapped = Napi::ObjectWrap<_VkExtent3D>::Unwrap(inst);
-        result->minImageTransferGranularity.Reset(inst, 1);
-        unwrapped->instance = copy->minImageTransferGranularity;
-      }
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -795,71 +719,47 @@ vkGetPhysicalDeviceQueueFamilyProperties(
 Napi::Value _vkGetPhysicalDeviceMemoryProperties(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPhysicalDeviceMemoryProperties* obj1;
+  Napi::Object obj1;
   VkPhysicalDeviceMemoryProperties *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDeviceMemoryProperties::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDeviceMemoryProperties") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceMemoryProperties]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPhysicalDeviceMemoryProperties>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkPhysicalDeviceMemoryProperties* instance = reinterpret_cast<VkPhysicalDeviceMemoryProperties*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pMemoryProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceMemoryProperties' or 'null' for argument 2 'pMemoryProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 vkGetPhysicalDeviceMemoryProperties(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
-  {
-    // back reflect array
-    unsigned int len = obj1->instance.memoryTypeCount;
-    Napi::Array arr = Napi::Array::New(env, len);
-    // populate array
-    for (unsigned int ii = 0; ii < len; ++ii) {
-      std::vector<napi_value> args;
-      Napi::Object inst = _VkMemoryType::constructor.New(args);
-      _VkMemoryType* unwrapped = Napi::ObjectWrap<_VkMemoryType>::Unwrap(inst);
-      memcpy(&unwrapped->instance, &obj1->instance.memoryTypes[ii], sizeof(VkMemoryType));
-      arr.Set(ii, inst);
-    };
-    obj1->memoryTypes.Reset(arr.ToObject(), 1);
-  }
-  {
-    // back reflect array
-    unsigned int len = obj1->instance.memoryHeapCount;
-    Napi::Array arr = Napi::Array::New(env, len);
-    // populate array
-    for (unsigned int ii = 0; ii < len; ++ii) {
-      std::vector<napi_value> args;
-      Napi::Object inst = _VkMemoryHeap::constructor.New(args);
-      _VkMemoryHeap* unwrapped = Napi::ObjectWrap<_VkMemoryHeap>::Unwrap(inst);
-      memcpy(&unwrapped->instance, &obj1->instance.memoryHeaps[ii], sizeof(VkMemoryHeap));
-      arr.Set(ii, inst);
-    };
-    obj1->memoryHeaps.Reset(arr.ToObject(), 1);
-  }
   
   
   return env.Undefined();
@@ -869,38 +769,42 @@ vkGetPhysicalDeviceMemoryProperties(
 Napi::Value _vkGetPhysicalDeviceFeatures(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPhysicalDeviceFeatures* obj1;
+  Napi::Object obj1;
   VkPhysicalDeviceFeatures *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDeviceFeatures::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDeviceFeatures") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceFeatures]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPhysicalDeviceFeatures>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkPhysicalDeviceFeatures* instance = reinterpret_cast<VkPhysicalDeviceFeatures*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pFeatures'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceFeatures' or 'null' for argument 2 'pFeatures'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 vkGetPhysicalDeviceFeatures(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -915,40 +819,44 @@ vkGetPhysicalDeviceFeatures(
 Napi::Value _vkGetPhysicalDeviceFormatProperties(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   VkFormat $p1 = static_cast<VkFormat>(info[1].As<Napi::Number>().Int64Value());
 
-  _VkFormatProperties* obj2;
+  Napi::Object obj2;
   VkFormatProperties *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkFormatProperties::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkFormatProperties") {
       NapiObjectTypeError(info[2], "argument 3", "[object VkFormatProperties]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkFormatProperties>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkFormatProperties* instance = reinterpret_cast<VkFormatProperties*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pFormatProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFormatProperties' or 'null' for argument 3 'pFormatProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 vkGetPhysicalDeviceFormatProperties(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -964,21 +872,22 @@ vkGetPhysicalDeviceFormatProperties(
 Napi::Value _vkGetPhysicalDeviceImageFormatProperties(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   VkFormat $p1 = static_cast<VkFormat>(info[1].As<Napi::Number>().Int64Value());
@@ -991,21 +900,24 @@ Napi::Value _vkGetPhysicalDeviceImageFormatProperties(const Napi::CallbackInfo& 
 
   int32_t $p5 = static_cast<int32_t>(info[5].As<Napi::Number>().Int64Value());
 
-  _VkImageFormatProperties* obj6;
+  Napi::Object obj6;
   VkImageFormatProperties *$p6 = nullptr;
   if (info[6].IsObject()) {
     Napi::Object obj = info[6].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImageFormatProperties::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImageFormatProperties") {
       NapiObjectTypeError(info[6], "argument 7", "[object VkImageFormatProperties]");
       return env.Undefined();
     }
-    obj6 = Napi::ObjectWrap<_VkImageFormatProperties>::Unwrap(obj);
-    if (!obj6->flush()) return env.Undefined();
-    $p6 = &obj6->instance;
+    obj6 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkImageFormatProperties* instance = reinterpret_cast<VkImageFormatProperties*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p6 = instance;
   } else if (info[6].IsNull()) {
     $p6 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 7 'pImageFormatProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImageFormatProperties' or 'null' for argument 7 'pImageFormatProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkGetPhysicalDeviceImageFormatProperties(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -1016,15 +928,6 @@ Napi::Value _vkGetPhysicalDeviceImageFormatProperties(const Napi::CallbackInfo& 
     static_cast<VkImageCreateFlags>($p5),
     $p6
   );
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkExtent3D::constructor.New(args);
-    _VkExtent3D* unwrapped6 = Napi::ObjectWrap<_VkExtent3D>::Unwrap(inst);
-    obj6->maxExtent.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj6->instance.maxExtent, sizeof(VkExtent3D));
-    
-  }
-      
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -1034,56 +937,61 @@ Napi::Value _vkGetPhysicalDeviceImageFormatProperties(const Napi::CallbackInfo& 
 Napi::Value _vkCreateDevice(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDeviceCreateInfo* obj1;
+  Napi::Object obj1;
   VkDeviceCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDeviceCreateInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDeviceCreateInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDeviceCreateInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDeviceCreateInfo* instance = reinterpret_cast<VkDeviceCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkDevice* obj3;
+  Napi::Object obj3;
   VkDevice *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkDevice]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 4 'pDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkCreateDevice(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -1092,7 +1000,7 @@ Napi::Value _vkCreateDevice(const Napi::CallbackInfo& info) {
     $p3
   );
   
-  vkUseDevice(obj3->instance);
+  vkUseDevice(*$p3);
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
   
@@ -1101,21 +1009,22 @@ Napi::Value _vkCreateDevice(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyDevice(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 vkDestroyDevice(
@@ -1148,7 +1057,7 @@ Napi::Value _vkEnumerateInstanceVersion(const Napi::CallbackInfo& info) {
   int32_t out = vkEnumerateInstanceVersion(
     &$p0
   );
-    obj0.Set("$", $p0);
+    if (info[0].IsObject()) obj0.Set("$", $p0);
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -1182,8 +1091,8 @@ Napi::Value _vkEnumerateInstanceLayerProperties(const Napi::CallbackInfo& info) 
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkLayerProperties* result = Napi::ObjectWrap<_VkLayerProperties>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[1].As<Napi::Array>();
@@ -1191,8 +1100,8 @@ Napi::Value _vkEnumerateInstanceLayerProperties(const Napi::CallbackInfo& info) 
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkLayerProperties* result = Napi::ObjectWrap<_VkLayerProperties>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkLayerProperties* instance = reinterpret_cast<VkLayerProperties*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p1 = std::make_shared<std::vector<VkLayerProperties>>(data);
   } else if (!info[1].IsNull()) {
@@ -1204,29 +1113,17 @@ Napi::Value _vkEnumerateInstanceLayerProperties(const Napi::CallbackInfo& info) 
     &$p0,
     $p1 ? (VkLayerProperties *) $p1.get()->data() : nullptr
   );
-    obj0.Set("$", $p0);
+    if (info[0].IsObject()) obj0.Set("$", $p0);
   if (info[1].IsArray()) {
     VkLayerProperties* $pdata = $p1.get()->data();
     Napi::Array array = info[1].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkLayerProperties* result = Napi::ObjectWrap<_VkLayerProperties>::Unwrap(obj);
-      VkLayerProperties *instance = &result->instance;
-      VkLayerProperties *copy = &$pdata[ii];
-      
-      {
-        Napi::String str = Napi::String::New(env, copy->layerName);
-        result->layerName.Reset(str.ToObject(), 1);
-        strcpy(const_cast<char *>(instance->layerName), copy->layerName);
-      }
-      instance->specVersion = copy->specVersion;
-      instance->implementationVersion = copy->implementationVersion;
-      {
-        Napi::String str = Napi::String::New(env, copy->description);
-        result->description.Reset(str.ToObject(), 1);
-        strcpy(const_cast<char *>(instance->description), copy->description);
-      }
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -1270,8 +1167,8 @@ Napi::Value _vkEnumerateInstanceExtensionProperties(const Napi::CallbackInfo& in
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkExtensionProperties* result = Napi::ObjectWrap<_VkExtensionProperties>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[2].As<Napi::Array>();
@@ -1279,8 +1176,8 @@ Napi::Value _vkEnumerateInstanceExtensionProperties(const Napi::CallbackInfo& in
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkExtensionProperties* result = Napi::ObjectWrap<_VkExtensionProperties>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkExtensionProperties* instance = reinterpret_cast<VkExtensionProperties*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkExtensionProperties>>(data);
   } else if (!info[2].IsNull()) {
@@ -1294,23 +1191,17 @@ Napi::Value _vkEnumerateInstanceExtensionProperties(const Napi::CallbackInfo& in
     $p2 ? (VkExtensionProperties *) $p2.get()->data() : nullptr
   );
   if ($p0) delete[] $p0;
-    obj1.Set("$", $p1);
+    if (info[1].IsObject()) obj1.Set("$", $p1);
   if (info[2].IsArray()) {
     VkExtensionProperties* $pdata = $p2.get()->data();
     Napi::Array array = info[2].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkExtensionProperties* result = Napi::ObjectWrap<_VkExtensionProperties>::Unwrap(obj);
-      VkExtensionProperties *instance = &result->instance;
-      VkExtensionProperties *copy = &$pdata[ii];
-      
-      {
-        Napi::String str = Napi::String::New(env, copy->extensionName);
-        result->extensionName.Reset(str.ToObject(), 1);
-        strcpy(const_cast<char *>(instance->extensionName), copy->extensionName);
-      }
-      instance->specVersion = copy->specVersion;
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -1322,21 +1213,22 @@ Napi::Value _vkEnumerateInstanceExtensionProperties(const Napi::CallbackInfo& in
 Napi::Value _vkEnumerateDeviceLayerProperties(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj1;
@@ -1363,8 +1255,8 @@ Napi::Value _vkEnumerateDeviceLayerProperties(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkLayerProperties* result = Napi::ObjectWrap<_VkLayerProperties>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[2].As<Napi::Array>();
@@ -1372,8 +1264,8 @@ Napi::Value _vkEnumerateDeviceLayerProperties(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkLayerProperties* result = Napi::ObjectWrap<_VkLayerProperties>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkLayerProperties* instance = reinterpret_cast<VkLayerProperties*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkLayerProperties>>(data);
   } else if (!info[2].IsNull()) {
@@ -1386,29 +1278,17 @@ Napi::Value _vkEnumerateDeviceLayerProperties(const Napi::CallbackInfo& info) {
     &$p1,
     $p2 ? (VkLayerProperties *) $p2.get()->data() : nullptr
   );
-    obj1.Set("$", $p1);
+    if (info[1].IsObject()) obj1.Set("$", $p1);
   if (info[2].IsArray()) {
     VkLayerProperties* $pdata = $p2.get()->data();
     Napi::Array array = info[2].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkLayerProperties* result = Napi::ObjectWrap<_VkLayerProperties>::Unwrap(obj);
-      VkLayerProperties *instance = &result->instance;
-      VkLayerProperties *copy = &$pdata[ii];
-      
-      {
-        Napi::String str = Napi::String::New(env, copy->layerName);
-        result->layerName.Reset(str.ToObject(), 1);
-        strcpy(const_cast<char *>(instance->layerName), copy->layerName);
-      }
-      instance->specVersion = copy->specVersion;
-      instance->implementationVersion = copy->implementationVersion;
-      {
-        Napi::String str = Napi::String::New(env, copy->description);
-        result->description.Reset(str.ToObject(), 1);
-        strcpy(const_cast<char *>(instance->description), copy->description);
-      }
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -1420,21 +1300,22 @@ Napi::Value _vkEnumerateDeviceLayerProperties(const Napi::CallbackInfo& info) {
 Napi::Value _vkEnumerateDeviceExtensionProperties(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   char* $p1 = nullptr;
@@ -1469,8 +1350,8 @@ Napi::Value _vkEnumerateDeviceExtensionProperties(const Napi::CallbackInfo& info
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkExtensionProperties* result = Napi::ObjectWrap<_VkExtensionProperties>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[3].As<Napi::Array>();
@@ -1478,8 +1359,8 @@ Napi::Value _vkEnumerateDeviceExtensionProperties(const Napi::CallbackInfo& info
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkExtensionProperties* result = Napi::ObjectWrap<_VkExtensionProperties>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkExtensionProperties* instance = reinterpret_cast<VkExtensionProperties*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkExtensionProperties>>(data);
   } else if (!info[3].IsNull()) {
@@ -1494,23 +1375,17 @@ Napi::Value _vkEnumerateDeviceExtensionProperties(const Napi::CallbackInfo& info
     $p3 ? (VkExtensionProperties *) $p3.get()->data() : nullptr
   );
   if ($p1) delete[] $p1;
-    obj2.Set("$", $p2);
+    if (info[2].IsObject()) obj2.Set("$", $p2);
   if (info[3].IsArray()) {
     VkExtensionProperties* $pdata = $p3.get()->data();
     Napi::Array array = info[3].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkExtensionProperties* result = Napi::ObjectWrap<_VkExtensionProperties>::Unwrap(obj);
-      VkExtensionProperties *instance = &result->instance;
-      VkExtensionProperties *copy = &$pdata[ii];
-      
-      {
-        Napi::String str = Napi::String::New(env, copy->extensionName);
-        result->extensionName.Reset(str.ToObject(), 1);
-        strcpy(const_cast<char *>(instance->extensionName), copy->extensionName);
-      }
-      instance->specVersion = copy->specVersion;
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -1522,42 +1397,44 @@ Napi::Value _vkEnumerateDeviceExtensionProperties(const Napi::CallbackInfo& info
 Napi::Value _vkGetDeviceQueue(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
-  _VkQueue* obj3;
+  Napi::Object obj3;
   VkQueue *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkQueue::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueue") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkQueue]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkQueue>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkQueue* instance = reinterpret_cast<VkQueue*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pQueue'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 4 'pQueue'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 vkGetDeviceQueue(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -1574,21 +1451,22 @@ vkGetDeviceQueue(
 Napi::Value _vkQueueSubmit(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkQueue* obj0;
+  Napi::Object obj0;
   VkQueue *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkQueue::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueue") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkQueue]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkQueue>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkQueue* instance = reinterpret_cast<VkQueue*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'queue'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 1 'queue'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -1602,8 +1480,8 @@ Napi::Value _vkQueueSubmit(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSubmitInfo* result = Napi::ObjectWrap<_VkSubmitInfo>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[2].As<Napi::Array>();
@@ -1611,8 +1489,8 @@ Napi::Value _vkQueueSubmit(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSubmitInfo* result = Napi::ObjectWrap<_VkSubmitInfo>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkSubmitInfo* instance = reinterpret_cast<VkSubmitInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkSubmitInfo>>(data);
   } else if (!info[2].IsNull()) {
@@ -1621,21 +1499,22 @@ Napi::Value _vkQueueSubmit(const Napi::CallbackInfo& info) {
   }
 
 
-  _VkFence* obj3;
+  Napi::Object obj3;
   VkFence *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkFence::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkFence") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkFence]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkFence>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkFence* instance = reinterpret_cast<VkFence*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'fence'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFence' or 'null' for argument 4 'fence'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkQueueSubmit(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -1652,21 +1531,22 @@ Napi::Value _vkQueueSubmit(const Napi::CallbackInfo& info) {
 Napi::Value _vkQueueWaitIdle(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkQueue* obj0;
+  Napi::Object obj0;
   VkQueue *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkQueue::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueue") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkQueue]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkQueue>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkQueue* instance = reinterpret_cast<VkQueue*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'queue'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 1 'queue'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkQueueWaitIdle(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0
@@ -1680,21 +1560,22 @@ Napi::Value _vkQueueWaitIdle(const Napi::CallbackInfo& info) {
 Napi::Value _vkDeviceWaitIdle(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkDeviceWaitIdle(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0
@@ -1708,56 +1589,61 @@ Napi::Value _vkDeviceWaitIdle(const Napi::CallbackInfo& info) {
 Napi::Value _vkAllocateMemory(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkMemoryAllocateInfo* obj1;
+  Napi::Object obj1;
   VkMemoryAllocateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkMemoryAllocateInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkMemoryAllocateInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkMemoryAllocateInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkMemoryAllocateInfo* instance = reinterpret_cast<VkMemoryAllocateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pAllocateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkMemoryAllocateInfo' or 'null' for argument 2 'pAllocateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkDeviceMemory* obj3;
+  Napi::Object obj3;
   VkDeviceMemory *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDeviceMemory::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDeviceMemory") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkDeviceMemory]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkDeviceMemory>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkDeviceMemory* instance = reinterpret_cast<VkDeviceMemory*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pMemory'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceMemory' or 'null' for argument 4 'pMemory'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkAllocateMemory(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -1774,38 +1660,40 @@ Napi::Value _vkAllocateMemory(const Napi::CallbackInfo& info) {
 Napi::Value _vkFreeMemory(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDeviceMemory* obj1;
+  Napi::Object obj1;
   VkDeviceMemory *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDeviceMemory::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDeviceMemory") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDeviceMemory]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDeviceMemory>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkDeviceMemory* instance = reinterpret_cast<VkDeviceMemory*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'memory'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceMemory' or 'null' for argument 2 'memory'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 vkFreeMemory(
@@ -1822,38 +1710,40 @@ vkFreeMemory(
 Napi::Value _vkMapMemory(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDeviceMemory* obj1;
+  Napi::Object obj1;
   VkDeviceMemory *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDeviceMemory::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDeviceMemory") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDeviceMemory]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDeviceMemory>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkDeviceMemory* instance = reinterpret_cast<VkDeviceMemory*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'memory'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceMemory' or 'null' for argument 2 'memory'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
@@ -1873,7 +1763,7 @@ Napi::Value _vkMapMemory(const Napi::CallbackInfo& info) {
     &$p5
   );
   Napi::BigInt ptr5 = Napi::BigInt::New(env, (int64_t)$p5);
-  obj5.Set("$", ptr5);
+  if (info[5].IsObject()) obj5.Set("$", ptr5);
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -1883,38 +1773,40 @@ Napi::Value _vkMapMemory(const Napi::CallbackInfo& info) {
 Napi::Value _vkUnmapMemory(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDeviceMemory* obj1;
+  Napi::Object obj1;
   VkDeviceMemory *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDeviceMemory::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDeviceMemory") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDeviceMemory]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDeviceMemory>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkDeviceMemory* instance = reinterpret_cast<VkDeviceMemory*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'memory'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceMemory' or 'null' for argument 2 'memory'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 vkUnmapMemory(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -1929,21 +1821,22 @@ vkUnmapMemory(
 Napi::Value _vkFlushMappedMemoryRanges(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -1957,8 +1850,8 @@ Napi::Value _vkFlushMappedMemoryRanges(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkMappedMemoryRange* result = Napi::ObjectWrap<_VkMappedMemoryRange>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[2].As<Napi::Array>();
@@ -1966,8 +1859,8 @@ Napi::Value _vkFlushMappedMemoryRanges(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkMappedMemoryRange* result = Napi::ObjectWrap<_VkMappedMemoryRange>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkMappedMemoryRange* instance = reinterpret_cast<VkMappedMemoryRange*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkMappedMemoryRange>>(data);
   } else if (!info[2].IsNull()) {
@@ -1989,21 +1882,22 @@ Napi::Value _vkFlushMappedMemoryRanges(const Napi::CallbackInfo& info) {
 Napi::Value _vkInvalidateMappedMemoryRanges(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -2017,8 +1911,8 @@ Napi::Value _vkInvalidateMappedMemoryRanges(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkMappedMemoryRange* result = Napi::ObjectWrap<_VkMappedMemoryRange>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[2].As<Napi::Array>();
@@ -2026,8 +1920,8 @@ Napi::Value _vkInvalidateMappedMemoryRanges(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkMappedMemoryRange* result = Napi::ObjectWrap<_VkMappedMemoryRange>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkMappedMemoryRange* instance = reinterpret_cast<VkMappedMemoryRange*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkMappedMemoryRange>>(data);
   } else if (!info[2].IsNull()) {
@@ -2049,38 +1943,40 @@ Napi::Value _vkInvalidateMappedMemoryRanges(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetDeviceMemoryCommitment(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDeviceMemory* obj1;
+  Napi::Object obj1;
   VkDeviceMemory *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDeviceMemory::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDeviceMemory") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDeviceMemory]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDeviceMemory>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkDeviceMemory* instance = reinterpret_cast<VkDeviceMemory*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'memory'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceMemory' or 'null' for argument 2 'memory'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj2;
@@ -2103,7 +1999,7 @@ vkGetDeviceMemoryCommitment(
     &$p2
   );
     Napi::BigInt pnum2 = Napi::BigInt::New(env, (uint64_t)$p2);
-    obj2.Set("$", pnum2);
+    if (info[2].IsObject()) obj2.Set("$", pnum2);
   
   
   return env.Undefined();
@@ -2113,55 +2009,60 @@ vkGetDeviceMemoryCommitment(
 Napi::Value _vkGetBufferMemoryRequirements(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBuffer* obj1;
+  Napi::Object obj1;
   VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkMemoryRequirements* obj2;
+  Napi::Object obj2;
   VkMemoryRequirements *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkMemoryRequirements::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkMemoryRequirements") {
       NapiObjectTypeError(info[2], "argument 3", "[object VkMemoryRequirements]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkMemoryRequirements>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkMemoryRequirements* instance = reinterpret_cast<VkMemoryRequirements*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pMemoryRequirements'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkMemoryRequirements' or 'null' for argument 3 'pMemoryRequirements'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 vkGetBufferMemoryRequirements(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -2177,55 +2078,58 @@ vkGetBufferMemoryRequirements(
 Napi::Value _vkBindBufferMemory(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBuffer* obj1;
+  Napi::Object obj1;
   VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDeviceMemory* obj2;
+  Napi::Object obj2;
   VkDeviceMemory *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDeviceMemory::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDeviceMemory") {
       NapiObjectTypeError(info[2], "argument 3", "[object VkDeviceMemory]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkDeviceMemory>::Unwrap(obj);
-    
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    VkDeviceMemory* instance = reinterpret_cast<VkDeviceMemory*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'memory'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceMemory' or 'null' for argument 3 'memory'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::Number>().Int64Value());
@@ -2244,55 +2148,60 @@ Napi::Value _vkBindBufferMemory(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetImageMemoryRequirements(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImage* obj1;
+  Napi::Object obj1;
   VkImage *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkImage]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkImage>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkImage* instance = reinterpret_cast<VkImage*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'image'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'image'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkMemoryRequirements* obj2;
+  Napi::Object obj2;
   VkMemoryRequirements *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkMemoryRequirements::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkMemoryRequirements") {
       NapiObjectTypeError(info[2], "argument 3", "[object VkMemoryRequirements]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkMemoryRequirements>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkMemoryRequirements* instance = reinterpret_cast<VkMemoryRequirements*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pMemoryRequirements'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkMemoryRequirements' or 'null' for argument 3 'pMemoryRequirements'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 vkGetImageMemoryRequirements(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -2308,55 +2217,58 @@ vkGetImageMemoryRequirements(
 Napi::Value _vkBindImageMemory(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImage* obj1;
+  Napi::Object obj1;
   VkImage *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkImage]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkImage>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkImage* instance = reinterpret_cast<VkImage*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'image'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'image'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDeviceMemory* obj2;
+  Napi::Object obj2;
   VkDeviceMemory *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDeviceMemory::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDeviceMemory") {
       NapiObjectTypeError(info[2], "argument 3", "[object VkDeviceMemory]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkDeviceMemory>::Unwrap(obj);
-    
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    VkDeviceMemory* instance = reinterpret_cast<VkDeviceMemory*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'memory'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceMemory' or 'null' for argument 3 'memory'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::Number>().Int64Value());
@@ -2375,38 +2287,40 @@ Napi::Value _vkBindImageMemory(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetImageSparseMemoryRequirements(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImage* obj1;
+  Napi::Object obj1;
   VkImage *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkImage]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkImage>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkImage* instance = reinterpret_cast<VkImage*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'image'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'image'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj2;
@@ -2433,8 +2347,8 @@ Napi::Value _vkGetImageSparseMemoryRequirements(const Napi::CallbackInfo& info) 
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSparseImageMemoryRequirements* result = Napi::ObjectWrap<_VkSparseImageMemoryRequirements>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[3].As<Napi::Array>();
@@ -2442,8 +2356,8 @@ Napi::Value _vkGetImageSparseMemoryRequirements(const Napi::CallbackInfo& info) 
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSparseImageMemoryRequirements* result = Napi::ObjectWrap<_VkSparseImageMemoryRequirements>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkSparseImageMemoryRequirements* instance = reinterpret_cast<VkSparseImageMemoryRequirements*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkSparseImageMemoryRequirements>>(data);
   } else if (!info[3].IsNull()) {
@@ -2457,29 +2371,17 @@ vkGetImageSparseMemoryRequirements(
     &$p2,
     $p3 ? (VkSparseImageMemoryRequirements *) $p3.get()->data() : nullptr
   );
-    obj2.Set("$", $p2);
+    if (info[2].IsObject()) obj2.Set("$", $p2);
   if (info[3].IsArray()) {
     VkSparseImageMemoryRequirements* $pdata = $p3.get()->data();
     Napi::Array array = info[3].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSparseImageMemoryRequirements* result = Napi::ObjectWrap<_VkSparseImageMemoryRequirements>::Unwrap(obj);
-      VkSparseImageMemoryRequirements *instance = &result->instance;
-      VkSparseImageMemoryRequirements *copy = &$pdata[ii];
-      
-      instance->formatProperties = copy->formatProperties;
-      if (&copy->formatProperties != nullptr) {
-        std::vector<napi_value> args;
-        Napi::Object inst = _VkSparseImageFormatProperties::constructor.New(args);
-        _VkSparseImageFormatProperties* unwrapped = Napi::ObjectWrap<_VkSparseImageFormatProperties>::Unwrap(inst);
-        result->formatProperties.Reset(inst, 1);
-        unwrapped->instance = copy->formatProperties;
-      }
-      instance->imageMipTailFirstLod = copy->imageMipTailFirstLod;
-      instance->imageMipTailSize = copy->imageMipTailSize;
-      instance->imageMipTailOffset = copy->imageMipTailOffset;
-      instance->imageMipTailStride = copy->imageMipTailStride;
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -2491,21 +2393,22 @@ vkGetImageSparseMemoryRequirements(
 Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   VkFormat $p1 = static_cast<VkFormat>(info[1].As<Napi::Number>().Int64Value());
@@ -2542,8 +2445,8 @@ Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties(const Napi::Callback
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSparseImageFormatProperties* result = Napi::ObjectWrap<_VkSparseImageFormatProperties>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[7].As<Napi::Array>();
@@ -2551,8 +2454,8 @@ Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties(const Napi::Callback
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSparseImageFormatProperties* result = Napi::ObjectWrap<_VkSparseImageFormatProperties>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkSparseImageFormatProperties* instance = reinterpret_cast<VkSparseImageFormatProperties*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p7 = std::make_shared<std::vector<VkSparseImageFormatProperties>>(data);
   } else if (!info[7].IsNull()) {
@@ -2570,27 +2473,17 @@ vkGetPhysicalDeviceSparseImageFormatProperties(
     &$p6,
     $p7 ? (VkSparseImageFormatProperties *) $p7.get()->data() : nullptr
   );
-    obj6.Set("$", $p6);
+    if (info[6].IsObject()) obj6.Set("$", $p6);
   if (info[7].IsArray()) {
     VkSparseImageFormatProperties* $pdata = $p7.get()->data();
     Napi::Array array = info[7].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSparseImageFormatProperties* result = Napi::ObjectWrap<_VkSparseImageFormatProperties>::Unwrap(obj);
-      VkSparseImageFormatProperties *instance = &result->instance;
-      VkSparseImageFormatProperties *copy = &$pdata[ii];
-      
-      instance->aspectMask = copy->aspectMask;
-      instance->imageGranularity = copy->imageGranularity;
-      if (&copy->imageGranularity != nullptr) {
-        std::vector<napi_value> args;
-        Napi::Object inst = _VkExtent3D::constructor.New(args);
-        _VkExtent3D* unwrapped = Napi::ObjectWrap<_VkExtent3D>::Unwrap(inst);
-        result->imageGranularity.Reset(inst, 1);
-        unwrapped->instance = copy->imageGranularity;
-      }
-      instance->flags = copy->flags;
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -2602,21 +2495,22 @@ vkGetPhysicalDeviceSparseImageFormatProperties(
 Napi::Value _vkQueueBindSparse(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkQueue* obj0;
+  Napi::Object obj0;
   VkQueue *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkQueue::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueue") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkQueue]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkQueue>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkQueue* instance = reinterpret_cast<VkQueue*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'queue'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 1 'queue'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -2630,8 +2524,8 @@ Napi::Value _vkQueueBindSparse(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkBindSparseInfo* result = Napi::ObjectWrap<_VkBindSparseInfo>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[2].As<Napi::Array>();
@@ -2639,8 +2533,8 @@ Napi::Value _vkQueueBindSparse(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkBindSparseInfo* result = Napi::ObjectWrap<_VkBindSparseInfo>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkBindSparseInfo* instance = reinterpret_cast<VkBindSparseInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkBindSparseInfo>>(data);
   } else if (!info[2].IsNull()) {
@@ -2649,21 +2543,22 @@ Napi::Value _vkQueueBindSparse(const Napi::CallbackInfo& info) {
   }
 
 
-  _VkFence* obj3;
+  Napi::Object obj3;
   VkFence *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkFence::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkFence") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkFence]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkFence>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkFence* instance = reinterpret_cast<VkFence*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'fence'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFence' or 'null' for argument 4 'fence'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkQueueBindSparse(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -2680,56 +2575,61 @@ Napi::Value _vkQueueBindSparse(const Napi::CallbackInfo& info) {
 Napi::Value _vkCreateFence(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkFenceCreateInfo* obj1;
+  Napi::Object obj1;
   VkFenceCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkFenceCreateInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_FENCE_CREATE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkFenceCreateInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkFenceCreateInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkFenceCreateInfo* instance = reinterpret_cast<VkFenceCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFenceCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkFence* obj3;
+  Napi::Object obj3;
   VkFence *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkFence::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkFence") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkFence]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkFence>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkFence* instance = reinterpret_cast<VkFence*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pFence'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFence' or 'null' for argument 4 'pFence'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkCreateFence(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -2746,38 +2646,40 @@ Napi::Value _vkCreateFence(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyFence(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkFence* obj1;
+  Napi::Object obj1;
   VkFence *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkFence::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkFence") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkFence]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkFence>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkFence* instance = reinterpret_cast<VkFence*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'fence'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFence' or 'null' for argument 2 'fence'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 vkDestroyFence(
@@ -2794,21 +2696,22 @@ vkDestroyFence(
 Napi::Value _vkResetFences(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -2822,8 +2725,8 @@ Napi::Value _vkResetFences(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkFence* result = Napi::ObjectWrap<_VkFence>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkFence* instance = reinterpret_cast<VkFence*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkFence>>(data);
   } else if (!info[2].IsNull()) {
@@ -2845,38 +2748,40 @@ Napi::Value _vkResetFences(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetFenceStatus(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkFence* obj1;
+  Napi::Object obj1;
   VkFence *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkFence::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkFence") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkFence]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkFence>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkFence* instance = reinterpret_cast<VkFence*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'fence'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFence' or 'null' for argument 2 'fence'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkGetFenceStatus(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -2891,21 +2796,22 @@ Napi::Value _vkGetFenceStatus(const Napi::CallbackInfo& info) {
 Napi::Value _vkWaitForFences(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -2919,8 +2825,8 @@ Napi::Value _vkWaitForFences(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkFence* result = Napi::ObjectWrap<_VkFence>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkFence* instance = reinterpret_cast<VkFence*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkFence>>(data);
   } else if (!info[2].IsNull()) {
@@ -2948,56 +2854,61 @@ Napi::Value _vkWaitForFences(const Napi::CallbackInfo& info) {
 Napi::Value _vkCreateSemaphore(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSemaphoreCreateInfo* obj1;
+  Napi::Object obj1;
   VkSemaphoreCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSemaphoreCreateInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSemaphoreCreateInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSemaphoreCreateInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkSemaphoreCreateInfo* instance = reinterpret_cast<VkSemaphoreCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSemaphoreCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkSemaphore* obj3;
+  Napi::Object obj3;
   VkSemaphore *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSemaphore::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSemaphore") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkSemaphore]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkSemaphore>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkSemaphore* instance = reinterpret_cast<VkSemaphore*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pSemaphore'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSemaphore' or 'null' for argument 4 'pSemaphore'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkCreateSemaphore(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -3014,38 +2925,40 @@ Napi::Value _vkCreateSemaphore(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroySemaphore(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSemaphore* obj1;
+  Napi::Object obj1;
   VkSemaphore *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSemaphore::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSemaphore") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSemaphore]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSemaphore>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkSemaphore* instance = reinterpret_cast<VkSemaphore*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'semaphore'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSemaphore' or 'null' for argument 2 'semaphore'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 vkDestroySemaphore(
@@ -3062,56 +2975,61 @@ vkDestroySemaphore(
 Napi::Value _vkCreateEvent(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkEventCreateInfo* obj1;
+  Napi::Object obj1;
   VkEventCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkEventCreateInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_EVENT_CREATE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkEventCreateInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkEventCreateInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkEventCreateInfo* instance = reinterpret_cast<VkEventCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkEventCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkEvent* obj3;
+  Napi::Object obj3;
   VkEvent *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkEvent::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkEvent") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkEvent]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkEvent>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkEvent* instance = reinterpret_cast<VkEvent*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pEvent'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkEvent' or 'null' for argument 4 'pEvent'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkCreateEvent(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -3128,38 +3046,40 @@ Napi::Value _vkCreateEvent(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyEvent(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkEvent* obj1;
+  Napi::Object obj1;
   VkEvent *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkEvent::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkEvent") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkEvent]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkEvent>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkEvent* instance = reinterpret_cast<VkEvent*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'event'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkEvent' or 'null' for argument 2 'event'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 vkDestroyEvent(
@@ -3176,38 +3096,40 @@ vkDestroyEvent(
 Napi::Value _vkGetEventStatus(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkEvent* obj1;
+  Napi::Object obj1;
   VkEvent *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkEvent::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkEvent") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkEvent]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkEvent>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkEvent* instance = reinterpret_cast<VkEvent*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'event'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkEvent' or 'null' for argument 2 'event'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkGetEventStatus(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -3222,38 +3144,40 @@ Napi::Value _vkGetEventStatus(const Napi::CallbackInfo& info) {
 Napi::Value _vkSetEvent(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkEvent* obj1;
+  Napi::Object obj1;
   VkEvent *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkEvent::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkEvent") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkEvent]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkEvent>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkEvent* instance = reinterpret_cast<VkEvent*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'event'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkEvent' or 'null' for argument 2 'event'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkSetEvent(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -3268,38 +3192,40 @@ Napi::Value _vkSetEvent(const Napi::CallbackInfo& info) {
 Napi::Value _vkResetEvent(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkEvent* obj1;
+  Napi::Object obj1;
   VkEvent *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkEvent::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkEvent") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkEvent]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkEvent>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkEvent* instance = reinterpret_cast<VkEvent*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'event'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkEvent' or 'null' for argument 2 'event'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkResetEvent(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -3314,56 +3240,61 @@ Napi::Value _vkResetEvent(const Napi::CallbackInfo& info) {
 Napi::Value _vkCreateQueryPool(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkQueryPoolCreateInfo* obj1;
+  Napi::Object obj1;
   VkQueryPoolCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkQueryPoolCreateInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkQueryPoolCreateInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkQueryPoolCreateInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkQueryPoolCreateInfo* instance = reinterpret_cast<VkQueryPoolCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueryPoolCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkQueryPool* obj3;
+  Napi::Object obj3;
   VkQueryPool *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkQueryPool::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueryPool") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkQueryPool]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkQueryPool>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkQueryPool* instance = reinterpret_cast<VkQueryPool*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pQueryPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 4 'pQueryPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkCreateQueryPool(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -3380,38 +3311,40 @@ Napi::Value _vkCreateQueryPool(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyQueryPool(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkQueryPool* obj1;
+  Napi::Object obj1;
   VkQueryPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkQueryPool::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueryPool") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkQueryPool]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkQueryPool>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkQueryPool* instance = reinterpret_cast<VkQueryPool*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'queryPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 vkDestroyQueryPool(
@@ -3428,38 +3361,40 @@ vkDestroyQueryPool(
 Napi::Value _vkGetQueryPoolResults(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkQueryPool* obj1;
+  Napi::Object obj1;
   VkQueryPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkQueryPool::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueryPool") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkQueryPool]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkQueryPool>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkQueryPool* instance = reinterpret_cast<VkQueryPool*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'queryPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -3499,56 +3434,61 @@ Napi::Value _vkGetQueryPoolResults(const Napi::CallbackInfo& info) {
 Napi::Value _vkCreateBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBufferCreateInfo* obj1;
+  Napi::Object obj1;
   VkBufferCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBufferCreateInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkBufferCreateInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkBufferCreateInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkBufferCreateInfo* instance = reinterpret_cast<VkBufferCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBufferCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkBuffer* obj3;
+  Napi::Object obj3;
   VkBuffer *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'pBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkCreateBuffer(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -3565,38 +3505,40 @@ Napi::Value _vkCreateBuffer(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBuffer* obj1;
+  Napi::Object obj1;
   VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 vkDestroyBuffer(
@@ -3613,56 +3555,61 @@ vkDestroyBuffer(
 Napi::Value _vkCreateBufferView(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBufferViewCreateInfo* obj1;
+  Napi::Object obj1;
   VkBufferViewCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBufferViewCreateInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_BUFFER_VIEW_CREATE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkBufferViewCreateInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkBufferViewCreateInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkBufferViewCreateInfo* instance = reinterpret_cast<VkBufferViewCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBufferViewCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkBufferView* obj3;
+  Napi::Object obj3;
   VkBufferView *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBufferView::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBufferView") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkBufferView]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkBufferView>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkBufferView* instance = reinterpret_cast<VkBufferView*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pView'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBufferView' or 'null' for argument 4 'pView'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkCreateBufferView(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -3679,38 +3626,40 @@ Napi::Value _vkCreateBufferView(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyBufferView(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBufferView* obj1;
+  Napi::Object obj1;
   VkBufferView *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBufferView::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBufferView") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkBufferView]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkBufferView>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkBufferView* instance = reinterpret_cast<VkBufferView*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'bufferView'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBufferView' or 'null' for argument 2 'bufferView'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 vkDestroyBufferView(
@@ -3727,56 +3676,61 @@ vkDestroyBufferView(
 Napi::Value _vkCreateImage(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImageCreateInfo* obj1;
+  Napi::Object obj1;
   VkImageCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImageCreateInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkImageCreateInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkImageCreateInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkImageCreateInfo* instance = reinterpret_cast<VkImageCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImageCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkImage* obj3;
+  Napi::Object obj3;
   VkImage *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkImage]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkImage>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkImage* instance = reinterpret_cast<VkImage*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pImage'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 4 'pImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkCreateImage(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -3793,38 +3747,40 @@ Napi::Value _vkCreateImage(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyImage(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImage* obj1;
+  Napi::Object obj1;
   VkImage *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkImage]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkImage>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkImage* instance = reinterpret_cast<VkImage*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'image'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'image'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 vkDestroyImage(
@@ -3841,72 +3797,80 @@ vkDestroyImage(
 Napi::Value _vkGetImageSubresourceLayout(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImage* obj1;
+  Napi::Object obj1;
   VkImage *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkImage]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkImage>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkImage* instance = reinterpret_cast<VkImage*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'image'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'image'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImageSubresource* obj2;
+  Napi::Object obj2;
   VkImageSubresource *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImageSubresource::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImageSubresource") {
       NapiObjectTypeError(info[2], "argument 3", "[object VkImageSubresource]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkImageSubresource>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkImageSubresource* instance = reinterpret_cast<VkImageSubresource*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pSubresource'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImageSubresource' or 'null' for argument 3 'pSubresource'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSubresourceLayout* obj3;
+  Napi::Object obj3;
   VkSubresourceLayout *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSubresourceLayout::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSubresourceLayout") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkSubresourceLayout]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkSubresourceLayout>::Unwrap(obj);
-    if (!obj3->flush()) return env.Undefined();
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkSubresourceLayout* instance = reinterpret_cast<VkSubresourceLayout*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pLayout'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSubresourceLayout' or 'null' for argument 4 'pLayout'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 vkGetImageSubresourceLayout(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -3923,56 +3887,61 @@ vkGetImageSubresourceLayout(
 Napi::Value _vkCreateImageView(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImageViewCreateInfo* obj1;
+  Napi::Object obj1;
   VkImageViewCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImageViewCreateInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkImageViewCreateInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkImageViewCreateInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkImageViewCreateInfo* instance = reinterpret_cast<VkImageViewCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImageViewCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkImageView* obj3;
+  Napi::Object obj3;
   VkImageView *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImageView::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImageView") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkImageView]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkImageView>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkImageView* instance = reinterpret_cast<VkImageView*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pView'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImageView' or 'null' for argument 4 'pView'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkCreateImageView(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -3989,38 +3958,40 @@ Napi::Value _vkCreateImageView(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyImageView(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImageView* obj1;
+  Napi::Object obj1;
   VkImageView *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImageView::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImageView") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkImageView]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkImageView>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkImageView* instance = reinterpret_cast<VkImageView*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'imageView'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImageView' or 'null' for argument 2 'imageView'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 vkDestroyImageView(
@@ -4037,56 +4008,61 @@ vkDestroyImageView(
 Napi::Value _vkCreateShaderModule(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkShaderModuleCreateInfo* obj1;
+  Napi::Object obj1;
   VkShaderModuleCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkShaderModuleCreateInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkShaderModuleCreateInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkShaderModuleCreateInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkShaderModuleCreateInfo* instance = reinterpret_cast<VkShaderModuleCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkShaderModuleCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkShaderModule* obj3;
+  Napi::Object obj3;
   VkShaderModule *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkShaderModule::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkShaderModule") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkShaderModule]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkShaderModule>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkShaderModule* instance = reinterpret_cast<VkShaderModule*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pShaderModule'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkShaderModule' or 'null' for argument 4 'pShaderModule'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkCreateShaderModule(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -4103,38 +4079,40 @@ Napi::Value _vkCreateShaderModule(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyShaderModule(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkShaderModule* obj1;
+  Napi::Object obj1;
   VkShaderModule *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkShaderModule::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkShaderModule") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkShaderModule]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkShaderModule>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkShaderModule* instance = reinterpret_cast<VkShaderModule*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'shaderModule'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkShaderModule' or 'null' for argument 2 'shaderModule'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 vkDestroyShaderModule(
@@ -4151,56 +4129,61 @@ vkDestroyShaderModule(
 Napi::Value _vkCreatePipelineCache(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPipelineCacheCreateInfo* obj1;
+  Napi::Object obj1;
   VkPipelineCacheCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPipelineCacheCreateInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPipelineCacheCreateInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPipelineCacheCreateInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkPipelineCacheCreateInfo* instance = reinterpret_cast<VkPipelineCacheCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineCacheCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkPipelineCache* obj3;
+  Napi::Object obj3;
   VkPipelineCache *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPipelineCache::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineCache") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkPipelineCache]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkPipelineCache>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkPipelineCache* instance = reinterpret_cast<VkPipelineCache*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pPipelineCache'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineCache' or 'null' for argument 4 'pPipelineCache'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkCreatePipelineCache(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -4217,38 +4200,40 @@ Napi::Value _vkCreatePipelineCache(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyPipelineCache(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPipelineCache* obj1;
+  Napi::Object obj1;
   VkPipelineCache *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPipelineCache::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineCache") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPipelineCache]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPipelineCache>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkPipelineCache* instance = reinterpret_cast<VkPipelineCache*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pipelineCache'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineCache' or 'null' for argument 2 'pipelineCache'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 vkDestroyPipelineCache(
@@ -4265,38 +4250,40 @@ vkDestroyPipelineCache(
 Napi::Value _vkGetPipelineCacheData(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPipelineCache* obj1;
+  Napi::Object obj1;
   VkPipelineCache *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPipelineCache::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineCache") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPipelineCache]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPipelineCache>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkPipelineCache* instance = reinterpret_cast<VkPipelineCache*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pipelineCache'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineCache' or 'null' for argument 2 'pipelineCache'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj2;
@@ -4329,7 +4316,7 @@ Napi::Value _vkGetPipelineCacheData(const Napi::CallbackInfo& info) {
     info[3].IsNull() ? nullptr : $p3
   );
     Napi::BigInt pnum2 = Napi::BigInt::New(env, (uint64_t)$p2);
-    obj2.Set("$", pnum2);
+    if (info[2].IsObject()) obj2.Set("$", pnum2);
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -4339,38 +4326,40 @@ Napi::Value _vkGetPipelineCacheData(const Napi::CallbackInfo& info) {
 Napi::Value _vkMergePipelineCaches(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPipelineCache* obj1;
+  Napi::Object obj1;
   VkPipelineCache *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPipelineCache::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineCache") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPipelineCache]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPipelineCache>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkPipelineCache* instance = reinterpret_cast<VkPipelineCache*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'dstCache'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineCache' or 'null' for argument 2 'dstCache'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -4384,8 +4373,8 @@ Napi::Value _vkMergePipelineCaches(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkPipelineCache* result = Napi::ObjectWrap<_VkPipelineCache>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkPipelineCache* instance = reinterpret_cast<VkPipelineCache*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkPipelineCache>>(data);
   } else if (!info[3].IsNull()) {
@@ -4408,38 +4397,40 @@ Napi::Value _vkMergePipelineCaches(const Napi::CallbackInfo& info) {
 Napi::Value _vkCreateGraphicsPipelines(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPipelineCache* obj1;
+  Napi::Object obj1;
   VkPipelineCache *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPipelineCache::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineCache") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPipelineCache]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPipelineCache>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkPipelineCache* instance = reinterpret_cast<VkPipelineCache*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pipelineCache'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineCache' or 'null' for argument 2 'pipelineCache'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -4453,8 +4444,8 @@ Napi::Value _vkCreateGraphicsPipelines(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkGraphicsPipelineCreateInfo* result = Napi::ObjectWrap<_VkGraphicsPipelineCreateInfo>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[3].As<Napi::Array>();
@@ -4462,8 +4453,8 @@ Napi::Value _vkCreateGraphicsPipelines(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkGraphicsPipelineCreateInfo* result = Napi::ObjectWrap<_VkGraphicsPipelineCreateInfo>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkGraphicsPipelineCreateInfo* instance = reinterpret_cast<VkGraphicsPipelineCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkGraphicsPipelineCreateInfo>>(data);
   } else if (!info[3].IsNull()) {
@@ -4482,8 +4473,8 @@ Napi::Value _vkCreateGraphicsPipelines(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkPipeline* result = Napi::ObjectWrap<_VkPipeline>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkPipeline* instance = reinterpret_cast<VkPipeline*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p5 = std::make_shared<std::vector<VkPipeline>>(data);
   } else if (!info[5].IsNull()) {
@@ -4505,8 +4496,10 @@ Napi::Value _vkCreateGraphicsPipelines(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkPipeline* target = Napi::ObjectWrap<_VkPipeline>::Unwrap(obj);
-      target->instance = $pdata[ii];
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -4518,38 +4511,40 @@ Napi::Value _vkCreateGraphicsPipelines(const Napi::CallbackInfo& info) {
 Napi::Value _vkCreateComputePipelines(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPipelineCache* obj1;
+  Napi::Object obj1;
   VkPipelineCache *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPipelineCache::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineCache") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPipelineCache]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPipelineCache>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkPipelineCache* instance = reinterpret_cast<VkPipelineCache*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pipelineCache'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineCache' or 'null' for argument 2 'pipelineCache'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -4563,8 +4558,8 @@ Napi::Value _vkCreateComputePipelines(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkComputePipelineCreateInfo* result = Napi::ObjectWrap<_VkComputePipelineCreateInfo>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[3].As<Napi::Array>();
@@ -4572,8 +4567,8 @@ Napi::Value _vkCreateComputePipelines(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkComputePipelineCreateInfo* result = Napi::ObjectWrap<_VkComputePipelineCreateInfo>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkComputePipelineCreateInfo* instance = reinterpret_cast<VkComputePipelineCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkComputePipelineCreateInfo>>(data);
   } else if (!info[3].IsNull()) {
@@ -4592,8 +4587,8 @@ Napi::Value _vkCreateComputePipelines(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkPipeline* result = Napi::ObjectWrap<_VkPipeline>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkPipeline* instance = reinterpret_cast<VkPipeline*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p5 = std::make_shared<std::vector<VkPipeline>>(data);
   } else if (!info[5].IsNull()) {
@@ -4615,8 +4610,10 @@ Napi::Value _vkCreateComputePipelines(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkPipeline* target = Napi::ObjectWrap<_VkPipeline>::Unwrap(obj);
-      target->instance = $pdata[ii];
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -4628,38 +4625,40 @@ Napi::Value _vkCreateComputePipelines(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyPipeline(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPipeline* obj1;
+  Napi::Object obj1;
   VkPipeline *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPipeline::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipeline") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPipeline]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPipeline>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkPipeline* instance = reinterpret_cast<VkPipeline*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pipeline'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipeline' or 'null' for argument 2 'pipeline'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 vkDestroyPipeline(
@@ -4676,56 +4675,61 @@ vkDestroyPipeline(
 Napi::Value _vkCreatePipelineLayout(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPipelineLayoutCreateInfo* obj1;
+  Napi::Object obj1;
   VkPipelineLayoutCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPipelineLayoutCreateInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPipelineLayoutCreateInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPipelineLayoutCreateInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkPipelineLayoutCreateInfo* instance = reinterpret_cast<VkPipelineLayoutCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineLayoutCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkPipelineLayout* obj3;
+  Napi::Object obj3;
   VkPipelineLayout *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPipelineLayout::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineLayout") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkPipelineLayout]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkPipelineLayout>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkPipelineLayout* instance = reinterpret_cast<VkPipelineLayout*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pPipelineLayout'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineLayout' or 'null' for argument 4 'pPipelineLayout'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkCreatePipelineLayout(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -4742,38 +4746,40 @@ Napi::Value _vkCreatePipelineLayout(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyPipelineLayout(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPipelineLayout* obj1;
+  Napi::Object obj1;
   VkPipelineLayout *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPipelineLayout::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineLayout") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPipelineLayout]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPipelineLayout>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkPipelineLayout* instance = reinterpret_cast<VkPipelineLayout*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pipelineLayout'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineLayout' or 'null' for argument 2 'pipelineLayout'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 vkDestroyPipelineLayout(
@@ -4790,56 +4796,61 @@ vkDestroyPipelineLayout(
 Napi::Value _vkCreateSampler(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSamplerCreateInfo* obj1;
+  Napi::Object obj1;
   VkSamplerCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSamplerCreateInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSamplerCreateInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSamplerCreateInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkSamplerCreateInfo* instance = reinterpret_cast<VkSamplerCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSamplerCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkSampler* obj3;
+  Napi::Object obj3;
   VkSampler *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSampler::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSampler") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkSampler]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkSampler>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkSampler* instance = reinterpret_cast<VkSampler*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pSampler'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSampler' or 'null' for argument 4 'pSampler'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkCreateSampler(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -4856,38 +4867,40 @@ Napi::Value _vkCreateSampler(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroySampler(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSampler* obj1;
+  Napi::Object obj1;
   VkSampler *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSampler::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSampler") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSampler]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSampler>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkSampler* instance = reinterpret_cast<VkSampler*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'sampler'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSampler' or 'null' for argument 2 'sampler'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 vkDestroySampler(
@@ -4904,56 +4917,61 @@ vkDestroySampler(
 Napi::Value _vkCreateDescriptorSetLayout(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDescriptorSetLayoutCreateInfo* obj1;
+  Napi::Object obj1;
   VkDescriptorSetLayoutCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDescriptorSetLayoutCreateInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDescriptorSetLayoutCreateInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDescriptorSetLayoutCreateInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDescriptorSetLayoutCreateInfo* instance = reinterpret_cast<VkDescriptorSetLayoutCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorSetLayoutCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkDescriptorSetLayout* obj3;
+  Napi::Object obj3;
   VkDescriptorSetLayout *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDescriptorSetLayout::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorSetLayout") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkDescriptorSetLayout]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkDescriptorSetLayout>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkDescriptorSetLayout* instance = reinterpret_cast<VkDescriptorSetLayout*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pSetLayout'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorSetLayout' or 'null' for argument 4 'pSetLayout'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkCreateDescriptorSetLayout(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -4970,38 +4988,40 @@ Napi::Value _vkCreateDescriptorSetLayout(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyDescriptorSetLayout(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDescriptorSetLayout* obj1;
+  Napi::Object obj1;
   VkDescriptorSetLayout *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDescriptorSetLayout::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorSetLayout") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDescriptorSetLayout]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDescriptorSetLayout>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkDescriptorSetLayout* instance = reinterpret_cast<VkDescriptorSetLayout*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'descriptorSetLayout'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorSetLayout' or 'null' for argument 2 'descriptorSetLayout'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 vkDestroyDescriptorSetLayout(
@@ -5018,56 +5038,61 @@ vkDestroyDescriptorSetLayout(
 Napi::Value _vkCreateDescriptorPool(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDescriptorPoolCreateInfo* obj1;
+  Napi::Object obj1;
   VkDescriptorPoolCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDescriptorPoolCreateInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDescriptorPoolCreateInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDescriptorPoolCreateInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDescriptorPoolCreateInfo* instance = reinterpret_cast<VkDescriptorPoolCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorPoolCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkDescriptorPool* obj3;
+  Napi::Object obj3;
   VkDescriptorPool *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDescriptorPool::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorPool") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkDescriptorPool]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkDescriptorPool>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkDescriptorPool* instance = reinterpret_cast<VkDescriptorPool*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pDescriptorPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorPool' or 'null' for argument 4 'pDescriptorPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkCreateDescriptorPool(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -5084,38 +5109,40 @@ Napi::Value _vkCreateDescriptorPool(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyDescriptorPool(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDescriptorPool* obj1;
+  Napi::Object obj1;
   VkDescriptorPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDescriptorPool::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorPool") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDescriptorPool]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDescriptorPool>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkDescriptorPool* instance = reinterpret_cast<VkDescriptorPool*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'descriptorPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorPool' or 'null' for argument 2 'descriptorPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 vkDestroyDescriptorPool(
@@ -5132,38 +5159,40 @@ vkDestroyDescriptorPool(
 Napi::Value _vkResetDescriptorPool(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDescriptorPool* obj1;
+  Napi::Object obj1;
   VkDescriptorPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDescriptorPool::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorPool") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDescriptorPool]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDescriptorPool>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkDescriptorPool* instance = reinterpret_cast<VkDescriptorPool*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'descriptorPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorPool' or 'null' for argument 2 'descriptorPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   int32_t $p2 = static_cast<int32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -5181,38 +5210,42 @@ Napi::Value _vkResetDescriptorPool(const Napi::CallbackInfo& info) {
 Napi::Value _vkAllocateDescriptorSets(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDescriptorSetAllocateInfo* obj1;
+  Napi::Object obj1;
   VkDescriptorSetAllocateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDescriptorSetAllocateInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDescriptorSetAllocateInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDescriptorSetAllocateInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDescriptorSetAllocateInfo* instance = reinterpret_cast<VkDescriptorSetAllocateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pAllocateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorSetAllocateInfo' or 'null' for argument 2 'pAllocateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   std::shared_ptr<std::vector<VkDescriptorSet>> $p2 = nullptr;
@@ -5224,8 +5257,8 @@ Napi::Value _vkAllocateDescriptorSets(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkDescriptorSet* result = Napi::ObjectWrap<_VkDescriptorSet>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkDescriptorSet* instance = reinterpret_cast<VkDescriptorSet*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkDescriptorSet>>(data);
   } else if (!info[2].IsNull()) {
@@ -5244,8 +5277,10 @@ Napi::Value _vkAllocateDescriptorSets(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkDescriptorSet* target = Napi::ObjectWrap<_VkDescriptorSet>::Unwrap(obj);
-      target->instance = $pdata[ii];
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -5257,38 +5292,40 @@ Napi::Value _vkAllocateDescriptorSets(const Napi::CallbackInfo& info) {
 Napi::Value _vkFreeDescriptorSets(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDescriptorPool* obj1;
+  Napi::Object obj1;
   VkDescriptorPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDescriptorPool::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorPool") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDescriptorPool]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDescriptorPool>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkDescriptorPool* instance = reinterpret_cast<VkDescriptorPool*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'descriptorPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorPool' or 'null' for argument 2 'descriptorPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -5302,8 +5339,8 @@ Napi::Value _vkFreeDescriptorSets(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkDescriptorSet* result = Napi::ObjectWrap<_VkDescriptorSet>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkDescriptorSet* instance = reinterpret_cast<VkDescriptorSet*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkDescriptorSet>>(data);
   } else if (!info[3].IsNull()) {
@@ -5326,21 +5363,22 @@ Napi::Value _vkFreeDescriptorSets(const Napi::CallbackInfo& info) {
 Napi::Value _vkUpdateDescriptorSets(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -5354,8 +5392,8 @@ Napi::Value _vkUpdateDescriptorSets(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkWriteDescriptorSet* result = Napi::ObjectWrap<_VkWriteDescriptorSet>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[2].As<Napi::Array>();
@@ -5363,8 +5401,8 @@ Napi::Value _vkUpdateDescriptorSets(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkWriteDescriptorSet* result = Napi::ObjectWrap<_VkWriteDescriptorSet>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkWriteDescriptorSet* instance = reinterpret_cast<VkWriteDescriptorSet*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkWriteDescriptorSet>>(data);
   } else if (!info[2].IsNull()) {
@@ -5384,8 +5422,8 @@ Napi::Value _vkUpdateDescriptorSets(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkCopyDescriptorSet* result = Napi::ObjectWrap<_VkCopyDescriptorSet>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[4].As<Napi::Array>();
@@ -5393,8 +5431,8 @@ Napi::Value _vkUpdateDescriptorSets(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkCopyDescriptorSet* result = Napi::ObjectWrap<_VkCopyDescriptorSet>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkCopyDescriptorSet* instance = reinterpret_cast<VkCopyDescriptorSet*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p4 = std::make_shared<std::vector<VkCopyDescriptorSet>>(data);
   } else if (!info[4].IsNull()) {
@@ -5418,56 +5456,61 @@ vkUpdateDescriptorSets(
 Napi::Value _vkCreateFramebuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkFramebufferCreateInfo* obj1;
+  Napi::Object obj1;
   VkFramebufferCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkFramebufferCreateInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkFramebufferCreateInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkFramebufferCreateInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkFramebufferCreateInfo* instance = reinterpret_cast<VkFramebufferCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFramebufferCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkFramebuffer* obj3;
+  Napi::Object obj3;
   VkFramebuffer *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkFramebuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkFramebuffer") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkFramebuffer]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkFramebuffer>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkFramebuffer* instance = reinterpret_cast<VkFramebuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pFramebuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFramebuffer' or 'null' for argument 4 'pFramebuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkCreateFramebuffer(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -5484,38 +5527,40 @@ Napi::Value _vkCreateFramebuffer(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyFramebuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkFramebuffer* obj1;
+  Napi::Object obj1;
   VkFramebuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkFramebuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkFramebuffer") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkFramebuffer]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkFramebuffer>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkFramebuffer* instance = reinterpret_cast<VkFramebuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'framebuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFramebuffer' or 'null' for argument 2 'framebuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 vkDestroyFramebuffer(
@@ -5532,56 +5577,61 @@ vkDestroyFramebuffer(
 Napi::Value _vkCreateRenderPass(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkRenderPassCreateInfo* obj1;
+  Napi::Object obj1;
   VkRenderPassCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkRenderPassCreateInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkRenderPassCreateInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkRenderPassCreateInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkRenderPassCreateInfo* instance = reinterpret_cast<VkRenderPassCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkRenderPassCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkRenderPass* obj3;
+  Napi::Object obj3;
   VkRenderPass *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkRenderPass::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkRenderPass") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkRenderPass]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkRenderPass>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkRenderPass* instance = reinterpret_cast<VkRenderPass*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pRenderPass'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkRenderPass' or 'null' for argument 4 'pRenderPass'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkCreateRenderPass(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -5598,38 +5648,40 @@ Napi::Value _vkCreateRenderPass(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyRenderPass(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkRenderPass* obj1;
+  Napi::Object obj1;
   VkRenderPass *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkRenderPass::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkRenderPass") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkRenderPass]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkRenderPass>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkRenderPass* instance = reinterpret_cast<VkRenderPass*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'renderPass'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkRenderPass' or 'null' for argument 2 'renderPass'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 vkDestroyRenderPass(
@@ -5646,55 +5698,60 @@ vkDestroyRenderPass(
 Napi::Value _vkGetRenderAreaGranularity(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkRenderPass* obj1;
+  Napi::Object obj1;
   VkRenderPass *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkRenderPass::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkRenderPass") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkRenderPass]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkRenderPass>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkRenderPass* instance = reinterpret_cast<VkRenderPass*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'renderPass'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkRenderPass' or 'null' for argument 2 'renderPass'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkExtent2D* obj2;
+  Napi::Object obj2;
   VkExtent2D *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkExtent2D::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkExtent2D") {
       NapiObjectTypeError(info[2], "argument 3", "[object VkExtent2D]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkExtent2D* instance = reinterpret_cast<VkExtent2D*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pGranularity'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkExtent2D' or 'null' for argument 3 'pGranularity'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 vkGetRenderAreaGranularity(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -5710,56 +5767,61 @@ vkGetRenderAreaGranularity(
 Napi::Value _vkCreateCommandPool(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkCommandPoolCreateInfo* obj1;
+  Napi::Object obj1;
   VkCommandPoolCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandPoolCreateInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkCommandPoolCreateInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkCommandPoolCreateInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkCommandPoolCreateInfo* instance = reinterpret_cast<VkCommandPoolCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandPoolCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkCommandPool* obj3;
+  Napi::Object obj3;
   VkCommandPool *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandPool::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandPool") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkCommandPool]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkCommandPool>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkCommandPool* instance = reinterpret_cast<VkCommandPool*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pCommandPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandPool' or 'null' for argument 4 'pCommandPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkCreateCommandPool(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -5776,38 +5838,40 @@ Napi::Value _vkCreateCommandPool(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyCommandPool(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkCommandPool* obj1;
+  Napi::Object obj1;
   VkCommandPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandPool::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandPool") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkCommandPool]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkCommandPool>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkCommandPool* instance = reinterpret_cast<VkCommandPool*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'commandPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandPool' or 'null' for argument 2 'commandPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 vkDestroyCommandPool(
@@ -5824,38 +5888,40 @@ vkDestroyCommandPool(
 Napi::Value _vkResetCommandPool(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkCommandPool* obj1;
+  Napi::Object obj1;
   VkCommandPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandPool::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandPool") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkCommandPool]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkCommandPool>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkCommandPool* instance = reinterpret_cast<VkCommandPool*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'commandPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandPool' or 'null' for argument 2 'commandPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   int32_t $p2 = static_cast<int32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -5873,38 +5939,42 @@ Napi::Value _vkResetCommandPool(const Napi::CallbackInfo& info) {
 Napi::Value _vkAllocateCommandBuffers(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkCommandBufferAllocateInfo* obj1;
+  Napi::Object obj1;
   VkCommandBufferAllocateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBufferAllocateInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkCommandBufferAllocateInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkCommandBufferAllocateInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkCommandBufferAllocateInfo* instance = reinterpret_cast<VkCommandBufferAllocateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pAllocateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBufferAllocateInfo' or 'null' for argument 2 'pAllocateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   std::shared_ptr<std::vector<VkCommandBuffer>> $p2 = nullptr;
@@ -5916,8 +5986,8 @@ Napi::Value _vkAllocateCommandBuffers(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkCommandBuffer* result = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkCommandBuffer>>(data);
   } else if (!info[2].IsNull()) {
@@ -5936,8 +6006,10 @@ Napi::Value _vkAllocateCommandBuffers(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkCommandBuffer* target = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-      target->instance = $pdata[ii];
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -5949,38 +6021,40 @@ Napi::Value _vkAllocateCommandBuffers(const Napi::CallbackInfo& info) {
 Napi::Value _vkFreeCommandBuffers(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkCommandPool* obj1;
+  Napi::Object obj1;
   VkCommandPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandPool::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandPool") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkCommandPool]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkCommandPool>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkCommandPool* instance = reinterpret_cast<VkCommandPool*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'commandPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandPool' or 'null' for argument 2 'commandPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -5994,8 +6068,8 @@ Napi::Value _vkFreeCommandBuffers(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkCommandBuffer* result = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkCommandBuffer>>(data);
   } else if (!info[3].IsNull()) {
@@ -6018,38 +6092,42 @@ vkFreeCommandBuffers(
 Napi::Value _vkBeginCommandBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkCommandBufferBeginInfo* obj1;
+  Napi::Object obj1;
   VkCommandBufferBeginInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBufferBeginInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkCommandBufferBeginInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkCommandBufferBeginInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkCommandBufferBeginInfo* instance = reinterpret_cast<VkCommandBufferBeginInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pBeginInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBufferBeginInfo' or 'null' for argument 2 'pBeginInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkBeginCommandBuffer(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -6064,21 +6142,22 @@ Napi::Value _vkBeginCommandBuffer(const Napi::CallbackInfo& info) {
 Napi::Value _vkEndCommandBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkEndCommandBuffer(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0
@@ -6092,21 +6171,22 @@ Napi::Value _vkEndCommandBuffer(const Napi::CallbackInfo& info) {
 Napi::Value _vkResetCommandBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -6123,40 +6203,42 @@ Napi::Value _vkResetCommandBuffer(const Napi::CallbackInfo& info) {
 Napi::Value _vkCmdBindPipeline(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   VkPipelineBindPoint $p1 = static_cast<VkPipelineBindPoint>(info[1].As<Napi::Number>().Int64Value());
 
-  _VkPipeline* obj2;
+  Napi::Object obj2;
   VkPipeline *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPipeline::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipeline") {
       NapiObjectTypeError(info[2], "argument 3", "[object VkPipeline]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkPipeline>::Unwrap(obj);
-    
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    VkPipeline* instance = reinterpret_cast<VkPipeline*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pipeline'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipeline' or 'null' for argument 3 'pipeline'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 vkCmdBindPipeline(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -6172,21 +6254,22 @@ vkCmdBindPipeline(
 Napi::Value _vkCmdSetViewport(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -6202,8 +6285,8 @@ Napi::Value _vkCmdSetViewport(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkViewport* result = Napi::ObjectWrap<_VkViewport>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[3].As<Napi::Array>();
@@ -6211,8 +6294,8 @@ Napi::Value _vkCmdSetViewport(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkViewport* result = Napi::ObjectWrap<_VkViewport>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkViewport* instance = reinterpret_cast<VkViewport*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkViewport>>(data);
   } else if (!info[3].IsNull()) {
@@ -6235,21 +6318,22 @@ vkCmdSetViewport(
 Napi::Value _vkCmdSetScissor(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -6265,8 +6349,8 @@ Napi::Value _vkCmdSetScissor(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkRect2D* result = Napi::ObjectWrap<_VkRect2D>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[3].As<Napi::Array>();
@@ -6274,8 +6358,8 @@ Napi::Value _vkCmdSetScissor(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkRect2D* result = Napi::ObjectWrap<_VkRect2D>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkRect2D* instance = reinterpret_cast<VkRect2D*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkRect2D>>(data);
   } else if (!info[3].IsNull()) {
@@ -6298,21 +6382,22 @@ vkCmdSetScissor(
 Napi::Value _vkCmdSetLineWidth(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   float $p1 = static_cast<float>(info[1].As<Napi::Number>().Int64Value());
@@ -6329,21 +6414,22 @@ vkCmdSetLineWidth(
 Napi::Value _vkCmdSetDepthBias(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   float $p1 = static_cast<float>(info[1].As<Napi::Number>().Int64Value());
@@ -6366,21 +6452,22 @@ vkCmdSetDepthBias(
 Napi::Value _vkCmdSetBlendConstants(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
     std::shared_ptr<std::vector<float>> $p1 = nullptr;
@@ -6410,21 +6497,22 @@ vkCmdSetBlendConstants(
 Napi::Value _vkCmdSetDepthBounds(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   float $p1 = static_cast<float>(info[1].As<Napi::Number>().Int64Value());
@@ -6444,21 +6532,22 @@ vkCmdSetDepthBounds(
 Napi::Value _vkCmdSetStencilCompareMask(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -6478,21 +6567,22 @@ vkCmdSetStencilCompareMask(
 Napi::Value _vkCmdSetStencilWriteMask(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -6512,21 +6602,22 @@ vkCmdSetStencilWriteMask(
 Napi::Value _vkCmdSetStencilReference(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -6546,40 +6637,42 @@ vkCmdSetStencilReference(
 Napi::Value _vkCmdBindDescriptorSets(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   VkPipelineBindPoint $p1 = static_cast<VkPipelineBindPoint>(info[1].As<Napi::Number>().Int64Value());
 
-  _VkPipelineLayout* obj2;
+  Napi::Object obj2;
   VkPipelineLayout *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPipelineLayout::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineLayout") {
       NapiObjectTypeError(info[2], "argument 3", "[object VkPipelineLayout]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkPipelineLayout>::Unwrap(obj);
-    
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    VkPipelineLayout* instance = reinterpret_cast<VkPipelineLayout*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'layout'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineLayout' or 'null' for argument 3 'layout'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
@@ -6595,8 +6688,8 @@ Napi::Value _vkCmdBindDescriptorSets(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkDescriptorSet* result = Napi::ObjectWrap<_VkDescriptorSet>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkDescriptorSet* instance = reinterpret_cast<VkDescriptorSet*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p5 = std::make_shared<std::vector<VkDescriptorSet>>(data);
   } else if (!info[5].IsNull()) {
@@ -6641,38 +6734,40 @@ vkCmdBindDescriptorSets(
 Napi::Value _vkCmdBindIndexBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBuffer* obj1;
+  Napi::Object obj1;
   VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
@@ -6693,21 +6788,22 @@ vkCmdBindIndexBuffer(
 Napi::Value _vkCmdBindVertexBuffers(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -6723,8 +6819,8 @@ Napi::Value _vkCmdBindVertexBuffers(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkBuffer* result = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkBuffer>>(data);
   } else if (!info[3].IsNull()) {
@@ -6764,21 +6860,22 @@ vkCmdBindVertexBuffers(
 Napi::Value _vkCmdDraw(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -6804,21 +6901,22 @@ vkCmdDraw(
 Napi::Value _vkCmdDrawIndexed(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -6847,38 +6945,40 @@ vkCmdDrawIndexed(
 Napi::Value _vkCmdDrawIndirect(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBuffer* obj1;
+  Napi::Object obj1;
   VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
@@ -6902,38 +7002,40 @@ vkCmdDrawIndirect(
 Napi::Value _vkCmdDrawIndexedIndirect(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBuffer* obj1;
+  Napi::Object obj1;
   VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
@@ -6957,21 +7059,22 @@ vkCmdDrawIndexedIndirect(
 Napi::Value _vkCmdDispatch(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -6994,38 +7097,40 @@ vkCmdDispatch(
 Napi::Value _vkCmdDispatchIndirect(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBuffer* obj1;
+  Napi::Object obj1;
   VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
@@ -7043,55 +7148,58 @@ vkCmdDispatchIndirect(
 Napi::Value _vkCmdCopyBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBuffer* obj1;
+  Napi::Object obj1;
   VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'srcBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'srcBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBuffer* obj2;
+  Napi::Object obj2;
   VkBuffer *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[2], "argument 3", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'dstBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 3 'dstBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
@@ -7105,8 +7213,8 @@ Napi::Value _vkCmdCopyBuffer(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkBufferCopy* result = Napi::ObjectWrap<_VkBufferCopy>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[4].As<Napi::Array>();
@@ -7114,8 +7222,8 @@ Napi::Value _vkCmdCopyBuffer(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkBufferCopy* result = Napi::ObjectWrap<_VkBufferCopy>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkBufferCopy* instance = reinterpret_cast<VkBufferCopy*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p4 = std::make_shared<std::vector<VkBufferCopy>>(data);
   } else if (!info[4].IsNull()) {
@@ -7139,57 +7247,60 @@ vkCmdCopyBuffer(
 Napi::Value _vkCmdCopyImage(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImage* obj1;
+  Napi::Object obj1;
   VkImage *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkImage]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkImage>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkImage* instance = reinterpret_cast<VkImage*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'srcImage'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'srcImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   VkImageLayout $p2 = static_cast<VkImageLayout>(info[2].As<Napi::Number>().Int64Value());
 
-  _VkImage* obj3;
+  Napi::Object obj3;
   VkImage *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkImage]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkImage>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkImage* instance = reinterpret_cast<VkImage*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'dstImage'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 4 'dstImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   VkImageLayout $p4 = static_cast<VkImageLayout>(info[4].As<Napi::Number>().Int64Value());
@@ -7205,8 +7316,8 @@ Napi::Value _vkCmdCopyImage(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkImageCopy* result = Napi::ObjectWrap<_VkImageCopy>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[6].As<Napi::Array>();
@@ -7214,8 +7325,8 @@ Napi::Value _vkCmdCopyImage(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkImageCopy* result = Napi::ObjectWrap<_VkImageCopy>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkImageCopy* instance = reinterpret_cast<VkImageCopy*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p6 = std::make_shared<std::vector<VkImageCopy>>(data);
   } else if (!info[6].IsNull()) {
@@ -7241,57 +7352,60 @@ vkCmdCopyImage(
 Napi::Value _vkCmdBlitImage(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImage* obj1;
+  Napi::Object obj1;
   VkImage *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkImage]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkImage>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkImage* instance = reinterpret_cast<VkImage*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'srcImage'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'srcImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   VkImageLayout $p2 = static_cast<VkImageLayout>(info[2].As<Napi::Number>().Int64Value());
 
-  _VkImage* obj3;
+  Napi::Object obj3;
   VkImage *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkImage]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkImage>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkImage* instance = reinterpret_cast<VkImage*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'dstImage'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 4 'dstImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   VkImageLayout $p4 = static_cast<VkImageLayout>(info[4].As<Napi::Number>().Int64Value());
@@ -7307,8 +7421,8 @@ Napi::Value _vkCmdBlitImage(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkImageBlit* result = Napi::ObjectWrap<_VkImageBlit>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[6].As<Napi::Array>();
@@ -7316,8 +7430,8 @@ Napi::Value _vkCmdBlitImage(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkImageBlit* result = Napi::ObjectWrap<_VkImageBlit>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkImageBlit* instance = reinterpret_cast<VkImageBlit*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p6 = std::make_shared<std::vector<VkImageBlit>>(data);
   } else if (!info[6].IsNull()) {
@@ -7346,55 +7460,58 @@ vkCmdBlitImage(
 Napi::Value _vkCmdCopyBufferToImage(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBuffer* obj1;
+  Napi::Object obj1;
   VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'srcBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'srcBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImage* obj2;
+  Napi::Object obj2;
   VkImage *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
       NapiObjectTypeError(info[2], "argument 3", "[object VkImage]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkImage>::Unwrap(obj);
-    
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    VkImage* instance = reinterpret_cast<VkImage*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'dstImage'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 3 'dstImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   VkImageLayout $p3 = static_cast<VkImageLayout>(info[3].As<Napi::Number>().Int64Value());
@@ -7410,8 +7527,8 @@ Napi::Value _vkCmdCopyBufferToImage(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkBufferImageCopy* result = Napi::ObjectWrap<_VkBufferImageCopy>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[5].As<Napi::Array>();
@@ -7419,8 +7536,8 @@ Napi::Value _vkCmdCopyBufferToImage(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkBufferImageCopy* result = Napi::ObjectWrap<_VkBufferImageCopy>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkBufferImageCopy* instance = reinterpret_cast<VkBufferImageCopy*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p5 = std::make_shared<std::vector<VkBufferImageCopy>>(data);
   } else if (!info[5].IsNull()) {
@@ -7445,57 +7562,60 @@ vkCmdCopyBufferToImage(
 Napi::Value _vkCmdCopyImageToBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImage* obj1;
+  Napi::Object obj1;
   VkImage *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkImage]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkImage>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkImage* instance = reinterpret_cast<VkImage*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'srcImage'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'srcImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   VkImageLayout $p2 = static_cast<VkImageLayout>(info[2].As<Napi::Number>().Int64Value());
 
-  _VkBuffer* obj3;
+  Napi::Object obj3;
   VkBuffer *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'dstBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'dstBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
@@ -7509,8 +7629,8 @@ Napi::Value _vkCmdCopyImageToBuffer(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkBufferImageCopy* result = Napi::ObjectWrap<_VkBufferImageCopy>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[5].As<Napi::Array>();
@@ -7518,8 +7638,8 @@ Napi::Value _vkCmdCopyImageToBuffer(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkBufferImageCopy* result = Napi::ObjectWrap<_VkBufferImageCopy>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkBufferImageCopy* instance = reinterpret_cast<VkBufferImageCopy*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p5 = std::make_shared<std::vector<VkBufferImageCopy>>(data);
   } else if (!info[5].IsNull()) {
@@ -7544,38 +7664,40 @@ vkCmdCopyImageToBuffer(
 Napi::Value _vkCmdUpdateBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBuffer* obj1;
+  Napi::Object obj1;
   VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'dstBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'dstBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
@@ -7606,38 +7728,40 @@ vkCmdUpdateBuffer(
 Napi::Value _vkCmdFillBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBuffer* obj1;
+  Napi::Object obj1;
   VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'dstBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'dstBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
@@ -7661,57 +7785,62 @@ vkCmdFillBuffer(
 Napi::Value _vkCmdClearColorImage(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImage* obj1;
+  Napi::Object obj1;
   VkImage *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkImage]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkImage>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkImage* instance = reinterpret_cast<VkImage*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'image'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'image'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   VkImageLayout $p2 = static_cast<VkImageLayout>(info[2].As<Napi::Number>().Int64Value());
 
-  _VkClearColorValue* obj3;
+  Napi::Object obj3;
   VkClearColorValue *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkClearColorValue::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkClearColorValue") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkClearColorValue]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkClearColorValue>::Unwrap(obj);
-    if (!obj3->flush()) return env.Undefined();
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkClearColorValue* instance = reinterpret_cast<VkClearColorValue*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pColor'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkClearColorValue' or 'null' for argument 4 'pColor'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
@@ -7725,8 +7854,8 @@ Napi::Value _vkCmdClearColorImage(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkImageSubresourceRange* result = Napi::ObjectWrap<_VkImageSubresourceRange>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[5].As<Napi::Array>();
@@ -7734,8 +7863,8 @@ Napi::Value _vkCmdClearColorImage(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkImageSubresourceRange* result = Napi::ObjectWrap<_VkImageSubresourceRange>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkImageSubresourceRange* instance = reinterpret_cast<VkImageSubresourceRange*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p5 = std::make_shared<std::vector<VkImageSubresourceRange>>(data);
   } else if (!info[5].IsNull()) {
@@ -7760,57 +7889,62 @@ vkCmdClearColorImage(
 Napi::Value _vkCmdClearDepthStencilImage(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImage* obj1;
+  Napi::Object obj1;
   VkImage *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkImage]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkImage>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkImage* instance = reinterpret_cast<VkImage*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'image'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'image'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   VkImageLayout $p2 = static_cast<VkImageLayout>(info[2].As<Napi::Number>().Int64Value());
 
-  _VkClearDepthStencilValue* obj3;
+  Napi::Object obj3;
   VkClearDepthStencilValue *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkClearDepthStencilValue::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkClearDepthStencilValue") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkClearDepthStencilValue]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkClearDepthStencilValue>::Unwrap(obj);
-    if (!obj3->flush()) return env.Undefined();
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkClearDepthStencilValue* instance = reinterpret_cast<VkClearDepthStencilValue*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pDepthStencil'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkClearDepthStencilValue' or 'null' for argument 4 'pDepthStencil'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
@@ -7824,8 +7958,8 @@ Napi::Value _vkCmdClearDepthStencilImage(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkImageSubresourceRange* result = Napi::ObjectWrap<_VkImageSubresourceRange>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[5].As<Napi::Array>();
@@ -7833,8 +7967,8 @@ Napi::Value _vkCmdClearDepthStencilImage(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkImageSubresourceRange* result = Napi::ObjectWrap<_VkImageSubresourceRange>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkImageSubresourceRange* instance = reinterpret_cast<VkImageSubresourceRange*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p5 = std::make_shared<std::vector<VkImageSubresourceRange>>(data);
   } else if (!info[5].IsNull()) {
@@ -7859,21 +7993,22 @@ vkCmdClearDepthStencilImage(
 Napi::Value _vkCmdClearAttachments(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -7887,8 +8022,8 @@ Napi::Value _vkCmdClearAttachments(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkClearAttachment* result = Napi::ObjectWrap<_VkClearAttachment>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[2].As<Napi::Array>();
@@ -7896,8 +8031,8 @@ Napi::Value _vkCmdClearAttachments(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkClearAttachment* result = Napi::ObjectWrap<_VkClearAttachment>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkClearAttachment* instance = reinterpret_cast<VkClearAttachment*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkClearAttachment>>(data);
   } else if (!info[2].IsNull()) {
@@ -7917,8 +8052,8 @@ Napi::Value _vkCmdClearAttachments(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkClearRect* result = Napi::ObjectWrap<_VkClearRect>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[4].As<Napi::Array>();
@@ -7926,8 +8061,8 @@ Napi::Value _vkCmdClearAttachments(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkClearRect* result = Napi::ObjectWrap<_VkClearRect>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkClearRect* instance = reinterpret_cast<VkClearRect*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p4 = std::make_shared<std::vector<VkClearRect>>(data);
   } else if (!info[4].IsNull()) {
@@ -7951,57 +8086,60 @@ vkCmdClearAttachments(
 Napi::Value _vkCmdResolveImage(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImage* obj1;
+  Napi::Object obj1;
   VkImage *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkImage]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkImage>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkImage* instance = reinterpret_cast<VkImage*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'srcImage'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'srcImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   VkImageLayout $p2 = static_cast<VkImageLayout>(info[2].As<Napi::Number>().Int64Value());
 
-  _VkImage* obj3;
+  Napi::Object obj3;
   VkImage *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkImage]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkImage>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkImage* instance = reinterpret_cast<VkImage*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'dstImage'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 4 'dstImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   VkImageLayout $p4 = static_cast<VkImageLayout>(info[4].As<Napi::Number>().Int64Value());
@@ -8017,8 +8155,8 @@ Napi::Value _vkCmdResolveImage(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkImageResolve* result = Napi::ObjectWrap<_VkImageResolve>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[6].As<Napi::Array>();
@@ -8026,8 +8164,8 @@ Napi::Value _vkCmdResolveImage(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkImageResolve* result = Napi::ObjectWrap<_VkImageResolve>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkImageResolve* instance = reinterpret_cast<VkImageResolve*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p6 = std::make_shared<std::vector<VkImageResolve>>(data);
   } else if (!info[6].IsNull()) {
@@ -8053,38 +8191,40 @@ vkCmdResolveImage(
 Napi::Value _vkCmdSetEvent(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkEvent* obj1;
+  Napi::Object obj1;
   VkEvent *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkEvent::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkEvent") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkEvent]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkEvent>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkEvent* instance = reinterpret_cast<VkEvent*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'event'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkEvent' or 'null' for argument 2 'event'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   int32_t $p2 = static_cast<int32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -8102,38 +8242,40 @@ vkCmdSetEvent(
 Napi::Value _vkCmdResetEvent(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkEvent* obj1;
+  Napi::Object obj1;
   VkEvent *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkEvent::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkEvent") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkEvent]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkEvent>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkEvent* instance = reinterpret_cast<VkEvent*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'event'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkEvent' or 'null' for argument 2 'event'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   int32_t $p2 = static_cast<int32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -8151,21 +8293,22 @@ vkCmdResetEvent(
 Napi::Value _vkCmdWaitEvents(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -8179,8 +8322,8 @@ Napi::Value _vkCmdWaitEvents(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkEvent* result = Napi::ObjectWrap<_VkEvent>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkEvent* instance = reinterpret_cast<VkEvent*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkEvent>>(data);
   } else if (!info[2].IsNull()) {
@@ -8204,8 +8347,8 @@ Napi::Value _vkCmdWaitEvents(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkMemoryBarrier* result = Napi::ObjectWrap<_VkMemoryBarrier>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[6].As<Napi::Array>();
@@ -8213,8 +8356,8 @@ Napi::Value _vkCmdWaitEvents(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkMemoryBarrier* result = Napi::ObjectWrap<_VkMemoryBarrier>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkMemoryBarrier* instance = reinterpret_cast<VkMemoryBarrier*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p6 = std::make_shared<std::vector<VkMemoryBarrier>>(data);
   } else if (!info[6].IsNull()) {
@@ -8234,8 +8377,8 @@ Napi::Value _vkCmdWaitEvents(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkBufferMemoryBarrier* result = Napi::ObjectWrap<_VkBufferMemoryBarrier>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[8].As<Napi::Array>();
@@ -8243,8 +8386,8 @@ Napi::Value _vkCmdWaitEvents(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkBufferMemoryBarrier* result = Napi::ObjectWrap<_VkBufferMemoryBarrier>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkBufferMemoryBarrier* instance = reinterpret_cast<VkBufferMemoryBarrier*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p8 = std::make_shared<std::vector<VkBufferMemoryBarrier>>(data);
   } else if (!info[8].IsNull()) {
@@ -8264,8 +8407,8 @@ Napi::Value _vkCmdWaitEvents(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkImageMemoryBarrier* result = Napi::ObjectWrap<_VkImageMemoryBarrier>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[10].As<Napi::Array>();
@@ -8273,8 +8416,8 @@ Napi::Value _vkCmdWaitEvents(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkImageMemoryBarrier* result = Napi::ObjectWrap<_VkImageMemoryBarrier>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkImageMemoryBarrier* instance = reinterpret_cast<VkImageMemoryBarrier*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p10 = std::make_shared<std::vector<VkImageMemoryBarrier>>(data);
   } else if (!info[10].IsNull()) {
@@ -8304,21 +8447,22 @@ vkCmdWaitEvents(
 Napi::Value _vkCmdPipelineBarrier(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -8338,8 +8482,8 @@ Napi::Value _vkCmdPipelineBarrier(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkMemoryBarrier* result = Napi::ObjectWrap<_VkMemoryBarrier>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[5].As<Napi::Array>();
@@ -8347,8 +8491,8 @@ Napi::Value _vkCmdPipelineBarrier(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkMemoryBarrier* result = Napi::ObjectWrap<_VkMemoryBarrier>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkMemoryBarrier* instance = reinterpret_cast<VkMemoryBarrier*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p5 = std::make_shared<std::vector<VkMemoryBarrier>>(data);
   } else if (!info[5].IsNull()) {
@@ -8368,8 +8512,8 @@ Napi::Value _vkCmdPipelineBarrier(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkBufferMemoryBarrier* result = Napi::ObjectWrap<_VkBufferMemoryBarrier>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[7].As<Napi::Array>();
@@ -8377,8 +8521,8 @@ Napi::Value _vkCmdPipelineBarrier(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkBufferMemoryBarrier* result = Napi::ObjectWrap<_VkBufferMemoryBarrier>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkBufferMemoryBarrier* instance = reinterpret_cast<VkBufferMemoryBarrier*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p7 = std::make_shared<std::vector<VkBufferMemoryBarrier>>(data);
   } else if (!info[7].IsNull()) {
@@ -8398,8 +8542,8 @@ Napi::Value _vkCmdPipelineBarrier(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkImageMemoryBarrier* result = Napi::ObjectWrap<_VkImageMemoryBarrier>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[9].As<Napi::Array>();
@@ -8407,8 +8551,8 @@ Napi::Value _vkCmdPipelineBarrier(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkImageMemoryBarrier* result = Napi::ObjectWrap<_VkImageMemoryBarrier>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkImageMemoryBarrier* instance = reinterpret_cast<VkImageMemoryBarrier*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p9 = std::make_shared<std::vector<VkImageMemoryBarrier>>(data);
   } else if (!info[9].IsNull()) {
@@ -8437,38 +8581,40 @@ vkCmdPipelineBarrier(
 Napi::Value _vkCmdBeginQuery(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkQueryPool* obj1;
+  Napi::Object obj1;
   VkQueryPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkQueryPool::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueryPool") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkQueryPool]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkQueryPool>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkQueryPool* instance = reinterpret_cast<VkQueryPool*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'queryPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -8489,38 +8635,40 @@ vkCmdBeginQuery(
 Napi::Value _vkCmdEndQuery(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkQueryPool* obj1;
+  Napi::Object obj1;
   VkQueryPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkQueryPool::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueryPool") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkQueryPool]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkQueryPool>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkQueryPool* instance = reinterpret_cast<VkQueryPool*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'queryPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -8538,38 +8686,42 @@ vkCmdEndQuery(
 Napi::Value _vkCmdBeginConditionalRenderingEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkConditionalRenderingBeginInfoEXT* obj1;
+  Napi::Object obj1;
   VkConditionalRenderingBeginInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkConditionalRenderingBeginInfoEXT::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_CONDITIONAL_RENDERING_BEGIN_INFO_EXT) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkConditionalRenderingBeginInfoEXT]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkConditionalRenderingBeginInfoEXT>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkConditionalRenderingBeginInfoEXT* instance = reinterpret_cast<VkConditionalRenderingBeginInfoEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pConditionalRenderingBegin'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkConditionalRenderingBeginInfoEXT' or 'null' for argument 2 'pConditionalRenderingBegin'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 $vkCmdBeginConditionalRenderingEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -8584,21 +8736,22 @@ $vkCmdBeginConditionalRenderingEXT(
 Napi::Value _vkCmdEndConditionalRenderingEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 $vkCmdEndConditionalRenderingEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0
@@ -8612,38 +8765,40 @@ $vkCmdEndConditionalRenderingEXT(
 Napi::Value _vkCmdResetQueryPool(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkQueryPool* obj1;
+  Napi::Object obj1;
   VkQueryPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkQueryPool::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueryPool") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkQueryPool]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkQueryPool>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkQueryPool* instance = reinterpret_cast<VkQueryPool*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'queryPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -8664,40 +8819,42 @@ vkCmdResetQueryPool(
 Napi::Value _vkCmdWriteTimestamp(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
 
-  _VkQueryPool* obj2;
+  Napi::Object obj2;
   VkQueryPool *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkQueryPool::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueryPool") {
       NapiObjectTypeError(info[2], "argument 3", "[object VkQueryPool]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkQueryPool>::Unwrap(obj);
-    
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    VkQueryPool* instance = reinterpret_cast<VkQueryPool*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'queryPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 3 'queryPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
@@ -8716,59 +8873,62 @@ vkCmdWriteTimestamp(
 Napi::Value _vkCmdCopyQueryPoolResults(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkQueryPool* obj1;
+  Napi::Object obj1;
   VkQueryPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkQueryPool::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueryPool") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkQueryPool]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkQueryPool>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkQueryPool* instance = reinterpret_cast<VkQueryPool*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'queryPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
-  _VkBuffer* obj4;
+  Napi::Object obj4;
   VkBuffer *$p4 = nullptr;
   if (info[4].IsObject()) {
     Napi::Object obj = info[4].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[4], "argument 5", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj4 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p4 = &obj4->instance;
+    obj4 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p4 = instance;
   } else if (info[4].IsNull()) {
     $p4 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 5 'dstBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 5 'dstBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p5 = static_cast<uint64_t>(info[5].As<Napi::Number>().Int64Value());
@@ -8795,38 +8955,40 @@ vkCmdCopyQueryPoolResults(
 Napi::Value _vkCmdPushConstants(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPipelineLayout* obj1;
+  Napi::Object obj1;
   VkPipelineLayout *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPipelineLayout::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineLayout") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPipelineLayout]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPipelineLayout>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkPipelineLayout* instance = reinterpret_cast<VkPipelineLayout*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'layout'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineLayout' or 'null' for argument 2 'layout'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   int32_t $p2 = static_cast<int32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -8860,38 +9022,42 @@ vkCmdPushConstants(
 Napi::Value _vkCmdBeginRenderPass(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkRenderPassBeginInfo* obj1;
+  Napi::Object obj1;
   VkRenderPassBeginInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkRenderPassBeginInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkRenderPassBeginInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkRenderPassBeginInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkRenderPassBeginInfo* instance = reinterpret_cast<VkRenderPassBeginInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pRenderPassBegin'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkRenderPassBeginInfo' or 'null' for argument 2 'pRenderPassBegin'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   VkSubpassContents $p2 = static_cast<VkSubpassContents>(info[2].As<Napi::Number>().Int64Value());
@@ -8909,21 +9075,22 @@ vkCmdBeginRenderPass(
 Napi::Value _vkCmdNextSubpass(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   VkSubpassContents $p1 = static_cast<VkSubpassContents>(info[1].As<Napi::Number>().Int64Value());
@@ -8940,21 +9107,22 @@ vkCmdNextSubpass(
 Napi::Value _vkCmdEndRenderPass(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 vkCmdEndRenderPass(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0
@@ -8968,21 +9136,22 @@ vkCmdEndRenderPass(
 Napi::Value _vkCmdExecuteCommands(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -8996,8 +9165,8 @@ Napi::Value _vkCmdExecuteCommands(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkCommandBuffer* result = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkCommandBuffer>>(data);
   } else if (!info[2].IsNull()) {
@@ -9019,21 +9188,22 @@ vkCmdExecuteCommands(
 Napi::Value _vkGetPhysicalDeviceDisplayPropertiesKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj1;
@@ -9060,8 +9230,8 @@ Napi::Value _vkGetPhysicalDeviceDisplayPropertiesKHR(const Napi::CallbackInfo& i
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkDisplayPropertiesKHR* result = Napi::ObjectWrap<_VkDisplayPropertiesKHR>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[2].As<Napi::Array>();
@@ -9069,8 +9239,8 @@ Napi::Value _vkGetPhysicalDeviceDisplayPropertiesKHR(const Napi::CallbackInfo& i
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkDisplayPropertiesKHR* result = Napi::ObjectWrap<_VkDisplayPropertiesKHR>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkDisplayPropertiesKHR* instance = reinterpret_cast<VkDisplayPropertiesKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkDisplayPropertiesKHR>>(data);
   } else if (!info[2].IsNull()) {
@@ -9083,41 +9253,17 @@ Napi::Value _vkGetPhysicalDeviceDisplayPropertiesKHR(const Napi::CallbackInfo& i
     &$p1,
     $p2 ? (VkDisplayPropertiesKHR *) $p2.get()->data() : nullptr
   );
-    obj1.Set("$", $p1);
+    if (info[1].IsObject()) obj1.Set("$", $p1);
   if (info[2].IsArray()) {
     VkDisplayPropertiesKHR* $pdata = $p2.get()->data();
     Napi::Array array = info[2].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkDisplayPropertiesKHR* result = Napi::ObjectWrap<_VkDisplayPropertiesKHR>::Unwrap(obj);
-      VkDisplayPropertiesKHR *instance = &result->instance;
-      VkDisplayPropertiesKHR *copy = &$pdata[ii];
-      
-      {
-        Napi::String str = Napi::String::New(env, copy->displayName);
-        result->displayName.Reset(str.ToObject(), 1);
-        strcpy(const_cast<char *>(instance->displayName), copy->displayName);
-      }
-      instance->physicalDimensions = copy->physicalDimensions;
-      if (&copy->physicalDimensions != nullptr) {
-        std::vector<napi_value> args;
-        Napi::Object inst = _VkExtent2D::constructor.New(args);
-        _VkExtent2D* unwrapped = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-        result->physicalDimensions.Reset(inst, 1);
-        unwrapped->instance = copy->physicalDimensions;
-      }
-      instance->physicalResolution = copy->physicalResolution;
-      if (&copy->physicalResolution != nullptr) {
-        std::vector<napi_value> args;
-        Napi::Object inst = _VkExtent2D::constructor.New(args);
-        _VkExtent2D* unwrapped = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-        result->physicalResolution.Reset(inst, 1);
-        unwrapped->instance = copy->physicalResolution;
-      }
-      instance->supportedTransforms = copy->supportedTransforms;
-      instance->planeReorderPossible = copy->planeReorderPossible;
-      instance->persistentContent = copy->persistentContent;
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -9129,21 +9275,22 @@ Napi::Value _vkGetPhysicalDeviceDisplayPropertiesKHR(const Napi::CallbackInfo& i
 Napi::Value _vkGetPhysicalDeviceDisplayPlanePropertiesKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj1;
@@ -9170,8 +9317,8 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlanePropertiesKHR(const Napi::CallbackIn
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkDisplayPlanePropertiesKHR* result = Napi::ObjectWrap<_VkDisplayPlanePropertiesKHR>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[2].As<Napi::Array>();
@@ -9179,8 +9326,8 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlanePropertiesKHR(const Napi::CallbackIn
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkDisplayPlanePropertiesKHR* result = Napi::ObjectWrap<_VkDisplayPlanePropertiesKHR>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkDisplayPlanePropertiesKHR* instance = reinterpret_cast<VkDisplayPlanePropertiesKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkDisplayPlanePropertiesKHR>>(data);
   } else if (!info[2].IsNull()) {
@@ -9193,18 +9340,17 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlanePropertiesKHR(const Napi::CallbackIn
     &$p1,
     $p2 ? (VkDisplayPlanePropertiesKHR *) $p2.get()->data() : nullptr
   );
-    obj1.Set("$", $p1);
+    if (info[1].IsObject()) obj1.Set("$", $p1);
   if (info[2].IsArray()) {
     VkDisplayPlanePropertiesKHR* $pdata = $p2.get()->data();
     Napi::Array array = info[2].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkDisplayPlanePropertiesKHR* result = Napi::ObjectWrap<_VkDisplayPlanePropertiesKHR>::Unwrap(obj);
-      VkDisplayPlanePropertiesKHR *instance = &result->instance;
-      VkDisplayPlanePropertiesKHR *copy = &$pdata[ii];
-      
-      instance->currentStackIndex = copy->currentStackIndex;
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -9216,21 +9362,22 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlanePropertiesKHR(const Napi::CallbackIn
 Napi::Value _vkGetDisplayPlaneSupportedDisplaysKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -9259,8 +9406,8 @@ Napi::Value _vkGetDisplayPlaneSupportedDisplaysKHR(const Napi::CallbackInfo& inf
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkDisplayKHR* result = Napi::ObjectWrap<_VkDisplayKHR>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkDisplayKHR* instance = reinterpret_cast<VkDisplayKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkDisplayKHR>>(data);
   } else if (!info[3].IsNull()) {
@@ -9274,15 +9421,17 @@ Napi::Value _vkGetDisplayPlaneSupportedDisplaysKHR(const Napi::CallbackInfo& inf
     &$p2,
     $p3 ? (VkDisplayKHR *) $p3.get()->data() : nullptr
   );
-    obj2.Set("$", $p2);
+    if (info[2].IsObject()) obj2.Set("$", $p2);
   if (info[3].IsArray()) {
     VkDisplayKHR* $pdata = $p3.get()->data();
     Napi::Array array = info[3].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkDisplayKHR* target = Napi::ObjectWrap<_VkDisplayKHR>::Unwrap(obj);
-      target->instance = $pdata[ii];
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -9294,38 +9443,40 @@ Napi::Value _vkGetDisplayPlaneSupportedDisplaysKHR(const Napi::CallbackInfo& inf
 Napi::Value _vkGetDisplayModePropertiesKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDisplayKHR* obj1;
+  Napi::Object obj1;
   VkDisplayKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDisplayKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayKHR") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDisplayKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDisplayKHR>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkDisplayKHR* instance = reinterpret_cast<VkDisplayKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'display'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayKHR' or 'null' for argument 2 'display'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj2;
@@ -9352,8 +9503,8 @@ Napi::Value _vkGetDisplayModePropertiesKHR(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkDisplayModePropertiesKHR* result = Napi::ObjectWrap<_VkDisplayModePropertiesKHR>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[3].As<Napi::Array>();
@@ -9361,8 +9512,8 @@ Napi::Value _vkGetDisplayModePropertiesKHR(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkDisplayModePropertiesKHR* result = Napi::ObjectWrap<_VkDisplayModePropertiesKHR>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkDisplayModePropertiesKHR* instance = reinterpret_cast<VkDisplayModePropertiesKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkDisplayModePropertiesKHR>>(data);
   } else if (!info[3].IsNull()) {
@@ -9376,25 +9527,17 @@ Napi::Value _vkGetDisplayModePropertiesKHR(const Napi::CallbackInfo& info) {
     &$p2,
     $p3 ? (VkDisplayModePropertiesKHR *) $p3.get()->data() : nullptr
   );
-    obj2.Set("$", $p2);
+    if (info[2].IsObject()) obj2.Set("$", $p2);
   if (info[3].IsArray()) {
     VkDisplayModePropertiesKHR* $pdata = $p3.get()->data();
     Napi::Array array = info[3].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkDisplayModePropertiesKHR* result = Napi::ObjectWrap<_VkDisplayModePropertiesKHR>::Unwrap(obj);
-      VkDisplayModePropertiesKHR *instance = &result->instance;
-      VkDisplayModePropertiesKHR *copy = &$pdata[ii];
-      
-      instance->parameters = copy->parameters;
-      if (&copy->parameters != nullptr) {
-        std::vector<napi_value> args;
-        Napi::Object inst = _VkDisplayModeParametersKHR::constructor.New(args);
-        _VkDisplayModeParametersKHR* unwrapped = Napi::ObjectWrap<_VkDisplayModeParametersKHR>::Unwrap(inst);
-        result->parameters.Reset(inst, 1);
-        unwrapped->instance = copy->parameters;
-      }
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -9406,73 +9549,79 @@ Napi::Value _vkGetDisplayModePropertiesKHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkCreateDisplayModeKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDisplayKHR* obj1;
+  Napi::Object obj1;
   VkDisplayKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDisplayKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayKHR") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDisplayKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDisplayKHR>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkDisplayKHR* instance = reinterpret_cast<VkDisplayKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'display'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayKHR' or 'null' for argument 2 'display'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDisplayModeCreateInfoKHR* obj2;
+  Napi::Object obj2;
   VkDisplayModeCreateInfoKHR *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDisplayModeCreateInfoKHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR) {
       NapiObjectTypeError(info[2], "argument 3", "[object VkDisplayModeCreateInfoKHR]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkDisplayModeCreateInfoKHR>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDisplayModeCreateInfoKHR* instance = reinterpret_cast<VkDisplayModeCreateInfoKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayModeCreateInfoKHR' or 'null' for argument 3 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkDisplayModeKHR* obj4;
+  Napi::Object obj4;
   VkDisplayModeKHR *$p4 = nullptr;
   if (info[4].IsObject()) {
     Napi::Object obj = info[4].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDisplayModeKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayModeKHR") {
       NapiObjectTypeError(info[4], "argument 5", "[object VkDisplayModeKHR]");
       return env.Undefined();
     }
-    obj4 = Napi::ObjectWrap<_VkDisplayModeKHR>::Unwrap(obj);
-    
-    $p4 = &obj4->instance;
+    obj4 = obj;
+    VkDisplayModeKHR* instance = reinterpret_cast<VkDisplayModeKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p4 = instance;
   } else if (info[4].IsNull()) {
     $p4 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 5 'pMode'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayModeKHR' or 'null' for argument 5 'pMode'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkCreateDisplayModeKHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -9490,57 +9639,62 @@ Napi::Value _vkCreateDisplayModeKHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetDisplayPlaneCapabilitiesKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDisplayModeKHR* obj1;
+  Napi::Object obj1;
   VkDisplayModeKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDisplayModeKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayModeKHR") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDisplayModeKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDisplayModeKHR>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkDisplayModeKHR* instance = reinterpret_cast<VkDisplayModeKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'mode'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayModeKHR' or 'null' for argument 2 'mode'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
-  _VkDisplayPlaneCapabilitiesKHR* obj3;
+  Napi::Object obj3;
   VkDisplayPlaneCapabilitiesKHR *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDisplayPlaneCapabilitiesKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayPlaneCapabilitiesKHR") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkDisplayPlaneCapabilitiesKHR]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkDisplayPlaneCapabilitiesKHR>::Unwrap(obj);
-    if (!obj3->flush()) return env.Undefined();
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDisplayPlaneCapabilitiesKHR* instance = reinterpret_cast<VkDisplayPlaneCapabilitiesKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pCapabilities'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayPlaneCapabilitiesKHR' or 'null' for argument 4 'pCapabilities'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkGetDisplayPlaneCapabilitiesKHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -9548,78 +9702,6 @@ Napi::Value _vkGetDisplayPlaneCapabilitiesKHR(const Napi::CallbackInfo& info) {
     $p2,
     $p3
   );
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkOffset2D::constructor.New(args);
-    _VkOffset2D* unwrapped6 = Napi::ObjectWrap<_VkOffset2D>::Unwrap(inst);
-    obj3->minSrcPosition.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj3->instance.minSrcPosition, sizeof(VkOffset2D));
-    
-  }
-      
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkOffset2D::constructor.New(args);
-    _VkOffset2D* unwrapped6 = Napi::ObjectWrap<_VkOffset2D>::Unwrap(inst);
-    obj3->maxSrcPosition.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj3->instance.maxSrcPosition, sizeof(VkOffset2D));
-    
-  }
-      
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkExtent2D::constructor.New(args);
-    _VkExtent2D* unwrapped6 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    obj3->minSrcExtent.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj3->instance.minSrcExtent, sizeof(VkExtent2D));
-    
-  }
-      
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkExtent2D::constructor.New(args);
-    _VkExtent2D* unwrapped6 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    obj3->maxSrcExtent.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj3->instance.maxSrcExtent, sizeof(VkExtent2D));
-    
-  }
-      
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkOffset2D::constructor.New(args);
-    _VkOffset2D* unwrapped6 = Napi::ObjectWrap<_VkOffset2D>::Unwrap(inst);
-    obj3->minDstPosition.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj3->instance.minDstPosition, sizeof(VkOffset2D));
-    
-  }
-      
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkOffset2D::constructor.New(args);
-    _VkOffset2D* unwrapped6 = Napi::ObjectWrap<_VkOffset2D>::Unwrap(inst);
-    obj3->maxDstPosition.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj3->instance.maxDstPosition, sizeof(VkOffset2D));
-    
-  }
-      
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkExtent2D::constructor.New(args);
-    _VkExtent2D* unwrapped6 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    obj3->minDstExtent.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj3->instance.minDstExtent, sizeof(VkExtent2D));
-    
-  }
-      
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkExtent2D::constructor.New(args);
-    _VkExtent2D* unwrapped6 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    obj3->maxDstExtent.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj3->instance.maxDstExtent, sizeof(VkExtent2D));
-    
-  }
-      
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -9629,56 +9711,61 @@ Napi::Value _vkGetDisplayPlaneCapabilitiesKHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkCreateDisplayPlaneSurfaceKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkInstance* obj0;
+  Napi::Object obj0;
   VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkInstance>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkInstance* instance = reinterpret_cast<VkInstance*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDisplaySurfaceCreateInfoKHR* obj1;
+  Napi::Object obj1;
   VkDisplaySurfaceCreateInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDisplaySurfaceCreateInfoKHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDisplaySurfaceCreateInfoKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDisplaySurfaceCreateInfoKHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDisplaySurfaceCreateInfoKHR* instance = reinterpret_cast<VkDisplaySurfaceCreateInfoKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplaySurfaceCreateInfoKHR' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkSurfaceKHR* obj3;
+  Napi::Object obj3;
   VkSurfaceKHR *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSurfaceKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceKHR") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkSurfaceKHR]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkSurfaceKHR>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkSurfaceKHR* instance = reinterpret_cast<VkSurfaceKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pSurface'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 4 'pSurface'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkCreateDisplayPlaneSurfaceKHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -9695,21 +9782,22 @@ Napi::Value _vkCreateDisplayPlaneSurfaceKHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkCreateSharedSwapchainsKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -9723,8 +9811,8 @@ Napi::Value _vkCreateSharedSwapchainsKHR(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSwapchainCreateInfoKHR* result = Napi::ObjectWrap<_VkSwapchainCreateInfoKHR>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[2].As<Napi::Array>();
@@ -9732,8 +9820,8 @@ Napi::Value _vkCreateSharedSwapchainsKHR(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSwapchainCreateInfoKHR* result = Napi::ObjectWrap<_VkSwapchainCreateInfoKHR>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkSwapchainCreateInfoKHR* instance = reinterpret_cast<VkSwapchainCreateInfoKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkSwapchainCreateInfoKHR>>(data);
   } else if (!info[2].IsNull()) {
@@ -9752,8 +9840,8 @@ Napi::Value _vkCreateSharedSwapchainsKHR(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSwapchainKHR* result = Napi::ObjectWrap<_VkSwapchainKHR>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkSwapchainKHR* instance = reinterpret_cast<VkSwapchainKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p4 = std::make_shared<std::vector<VkSwapchainKHR>>(data);
   } else if (!info[4].IsNull()) {
@@ -9774,8 +9862,10 @@ Napi::Value _vkCreateSharedSwapchainsKHR(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSwapchainKHR* target = Napi::ObjectWrap<_VkSwapchainKHR>::Unwrap(obj);
-      target->instance = $pdata[ii];
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -9787,38 +9877,40 @@ Napi::Value _vkCreateSharedSwapchainsKHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroySurfaceKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkInstance* obj0;
+  Napi::Object obj0;
   VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkInstance>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkInstance* instance = reinterpret_cast<VkInstance*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSurfaceKHR* obj1;
+  Napi::Object obj1;
   VkSurfaceKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSurfaceKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceKHR") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSurfaceKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSurfaceKHR>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkSurfaceKHR* instance = reinterpret_cast<VkSurfaceKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'surface'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 2 'surface'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 $vkDestroySurfaceKHR(
@@ -9835,40 +9927,42 @@ $vkDestroySurfaceKHR(
 Napi::Value _vkGetPhysicalDeviceSurfaceSupportKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
-  _VkSurfaceKHR* obj2;
+  Napi::Object obj2;
   VkSurfaceKHR *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSurfaceKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceKHR") {
       NapiObjectTypeError(info[2], "argument 3", "[object VkSurfaceKHR]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkSurfaceKHR>::Unwrap(obj);
-    
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    VkSurfaceKHR* instance = reinterpret_cast<VkSurfaceKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'surface'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 3 'surface'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
     Napi::Object obj3;
@@ -9891,7 +9985,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceSupportKHR(const Napi::CallbackInfo& info
     info[2].IsNull() ? VK_NULL_HANDLE : *$p2,
     &$p3
   );
-    obj3.Set("$", $p3);
+    if (info[3].IsObject()) obj3.Set("$", $p3);
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -9901,88 +9995,66 @@ Napi::Value _vkGetPhysicalDeviceSurfaceSupportKHR(const Napi::CallbackInfo& info
 Napi::Value _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSurfaceKHR* obj1;
+  Napi::Object obj1;
   VkSurfaceKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSurfaceKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceKHR") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSurfaceKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSurfaceKHR>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkSurfaceKHR* instance = reinterpret_cast<VkSurfaceKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'surface'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 2 'surface'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSurfaceCapabilitiesKHR* obj2;
+  Napi::Object obj2;
   VkSurfaceCapabilitiesKHR *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSurfaceCapabilitiesKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceCapabilitiesKHR") {
       NapiObjectTypeError(info[2], "argument 3", "[object VkSurfaceCapabilitiesKHR]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkSurfaceCapabilitiesKHR>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkSurfaceCapabilitiesKHR* instance = reinterpret_cast<VkSurfaceCapabilitiesKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pSurfaceCapabilities'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceCapabilitiesKHR' or 'null' for argument 3 'pSurfaceCapabilities'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1].IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2
   );
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkExtent2D::constructor.New(args);
-    _VkExtent2D* unwrapped6 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    obj2->currentExtent.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj2->instance.currentExtent, sizeof(VkExtent2D));
-    
-  }
-      
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkExtent2D::constructor.New(args);
-    _VkExtent2D* unwrapped6 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    obj2->minImageExtent.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj2->instance.minImageExtent, sizeof(VkExtent2D));
-    
-  }
-      
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkExtent2D::constructor.New(args);
-    _VkExtent2D* unwrapped6 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    obj2->maxImageExtent.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj2->instance.maxImageExtent, sizeof(VkExtent2D));
-    
-  }
-      
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -9992,38 +10064,40 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Napi::CallbackInfo&
 Napi::Value _vkGetPhysicalDeviceSurfaceFormatsKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSurfaceKHR* obj1;
+  Napi::Object obj1;
   VkSurfaceKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSurfaceKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceKHR") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSurfaceKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSurfaceKHR>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkSurfaceKHR* instance = reinterpret_cast<VkSurfaceKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'surface'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 2 'surface'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj2;
@@ -10050,8 +10124,8 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormatsKHR(const Napi::CallbackInfo& info
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSurfaceFormatKHR* result = Napi::ObjectWrap<_VkSurfaceFormatKHR>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[3].As<Napi::Array>();
@@ -10059,8 +10133,8 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormatsKHR(const Napi::CallbackInfo& info
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSurfaceFormatKHR* result = Napi::ObjectWrap<_VkSurfaceFormatKHR>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkSurfaceFormatKHR* instance = reinterpret_cast<VkSurfaceFormatKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkSurfaceFormatKHR>>(data);
   } else if (!info[3].IsNull()) {
@@ -10074,19 +10148,17 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormatsKHR(const Napi::CallbackInfo& info
     &$p2,
     $p3 ? (VkSurfaceFormatKHR *) $p3.get()->data() : nullptr
   );
-    obj2.Set("$", $p2);
+    if (info[2].IsObject()) obj2.Set("$", $p2);
   if (info[3].IsArray()) {
     VkSurfaceFormatKHR* $pdata = $p3.get()->data();
     Napi::Array array = info[3].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSurfaceFormatKHR* result = Napi::ObjectWrap<_VkSurfaceFormatKHR>::Unwrap(obj);
-      VkSurfaceFormatKHR *instance = &result->instance;
-      VkSurfaceFormatKHR *copy = &$pdata[ii];
-      
-      instance->format = copy->format;
-      instance->colorSpace = copy->colorSpace;
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -10098,38 +10170,40 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormatsKHR(const Napi::CallbackInfo& info
 Napi::Value _vkGetPhysicalDeviceSurfacePresentModesKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSurfaceKHR* obj1;
+  Napi::Object obj1;
   VkSurfaceKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSurfaceKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceKHR") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSurfaceKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSurfaceKHR>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkSurfaceKHR* instance = reinterpret_cast<VkSurfaceKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'surface'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 2 'surface'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj2;
@@ -10168,7 +10242,7 @@ Napi::Value _vkGetPhysicalDeviceSurfacePresentModesKHR(const Napi::CallbackInfo&
     &$p2,
     $p3 ? (VkPresentModeKHR *) *$p3.get() : nullptr
   );
-    obj2.Set("$", $p2);
+    if (info[2].IsObject()) obj2.Set("$", $p2);
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -10178,56 +10252,61 @@ Napi::Value _vkGetPhysicalDeviceSurfacePresentModesKHR(const Napi::CallbackInfo&
 Napi::Value _vkCreateSwapchainKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSwapchainCreateInfoKHR* obj1;
+  Napi::Object obj1;
   VkSwapchainCreateInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSwapchainCreateInfoKHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSwapchainCreateInfoKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSwapchainCreateInfoKHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkSwapchainCreateInfoKHR* instance = reinterpret_cast<VkSwapchainCreateInfoKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSwapchainCreateInfoKHR' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkSwapchainKHR* obj3;
+  Napi::Object obj3;
   VkSwapchainKHR *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSwapchainKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSwapchainKHR") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkSwapchainKHR]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkSwapchainKHR>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkSwapchainKHR* instance = reinterpret_cast<VkSwapchainKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pSwapchain'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 4 'pSwapchain'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkCreateSwapchainKHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -10244,38 +10323,40 @@ Napi::Value _vkCreateSwapchainKHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroySwapchainKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSwapchainKHR* obj1;
+  Napi::Object obj1;
   VkSwapchainKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSwapchainKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSwapchainKHR") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSwapchainKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSwapchainKHR>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkSwapchainKHR* instance = reinterpret_cast<VkSwapchainKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'swapchain'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 2 'swapchain'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 $vkDestroySwapchainKHR(
@@ -10292,38 +10373,40 @@ $vkDestroySwapchainKHR(
 Napi::Value _vkGetSwapchainImagesKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSwapchainKHR* obj1;
+  Napi::Object obj1;
   VkSwapchainKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSwapchainKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSwapchainKHR") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSwapchainKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSwapchainKHR>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkSwapchainKHR* instance = reinterpret_cast<VkSwapchainKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'swapchain'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 2 'swapchain'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj2;
@@ -10350,8 +10433,8 @@ Napi::Value _vkGetSwapchainImagesKHR(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkImage* result = Napi::ObjectWrap<_VkImage>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkImage* instance = reinterpret_cast<VkImage*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkImage>>(data);
   } else if (!info[3].IsNull()) {
@@ -10365,15 +10448,17 @@ Napi::Value _vkGetSwapchainImagesKHR(const Napi::CallbackInfo& info) {
     &$p2,
     $p3 ? (VkImage *) $p3.get()->data() : nullptr
   );
-    obj2.Set("$", $p2);
+    if (info[2].IsObject()) obj2.Set("$", $p2);
   if (info[3].IsArray()) {
     VkImage* $pdata = $p3.get()->data();
     Napi::Array array = info[3].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkImage* target = Napi::ObjectWrap<_VkImage>::Unwrap(obj);
-      target->instance = $pdata[ii];
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -10385,74 +10470,78 @@ Napi::Value _vkGetSwapchainImagesKHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkAcquireNextImageKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSwapchainKHR* obj1;
+  Napi::Object obj1;
   VkSwapchainKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSwapchainKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSwapchainKHR") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSwapchainKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSwapchainKHR>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkSwapchainKHR* instance = reinterpret_cast<VkSwapchainKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'swapchain'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 2 'swapchain'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
 
-  _VkSemaphore* obj3;
+  Napi::Object obj3;
   VkSemaphore *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSemaphore::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSemaphore") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkSemaphore]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkSemaphore>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkSemaphore* instance = reinterpret_cast<VkSemaphore*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'semaphore'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSemaphore' or 'null' for argument 4 'semaphore'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkFence* obj4;
+  Napi::Object obj4;
   VkFence *$p4 = nullptr;
   if (info[4].IsObject()) {
     Napi::Object obj = info[4].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkFence::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkFence") {
       NapiObjectTypeError(info[4], "argument 5", "[object VkFence]");
       return env.Undefined();
     }
-    obj4 = Napi::ObjectWrap<_VkFence>::Unwrap(obj);
-    
-    $p4 = &obj4->instance;
+    obj4 = obj;
+    VkFence* instance = reinterpret_cast<VkFence*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p4 = instance;
   } else if (info[4].IsNull()) {
     $p4 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 5 'fence'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFence' or 'null' for argument 5 'fence'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj5;
@@ -10477,7 +10566,7 @@ Napi::Value _vkAcquireNextImageKHR(const Napi::CallbackInfo& info) {
     info[4].IsNull() ? VK_NULL_HANDLE : *$p4,
     &$p5
   );
-    obj5.Set("$", $p5);
+    if (info[5].IsObject()) obj5.Set("$", $p5);
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -10487,38 +10576,42 @@ Napi::Value _vkAcquireNextImageKHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkQueuePresentKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkQueue* obj0;
+  Napi::Object obj0;
   VkQueue *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkQueue::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueue") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkQueue]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkQueue>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkQueue* instance = reinterpret_cast<VkQueue*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'queue'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 1 'queue'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPresentInfoKHR* obj1;
+  Napi::Object obj1;
   VkPresentInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPresentInfoKHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PRESENT_INFO_KHR) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPresentInfoKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPresentInfoKHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkPresentInfoKHR* instance = reinterpret_cast<VkPresentInfoKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPresentInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPresentInfoKHR' or 'null' for argument 2 'pPresentInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkQueuePresentKHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -10533,56 +10626,61 @@ Napi::Value _vkQueuePresentKHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkCreateWin32SurfaceKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkInstance* obj0;
+  Napi::Object obj0;
   VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkInstance>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkInstance* instance = reinterpret_cast<VkInstance*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkWin32SurfaceCreateInfoKHR* obj1;
+  Napi::Object obj1;
   VkWin32SurfaceCreateInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkWin32SurfaceCreateInfoKHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkWin32SurfaceCreateInfoKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkWin32SurfaceCreateInfoKHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkWin32SurfaceCreateInfoKHR* instance = reinterpret_cast<VkWin32SurfaceCreateInfoKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkWin32SurfaceCreateInfoKHR' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkSurfaceKHR* obj3;
+  Napi::Object obj3;
   VkSurfaceKHR *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSurfaceKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceKHR") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkSurfaceKHR]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkSurfaceKHR>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkSurfaceKHR* instance = reinterpret_cast<VkSurfaceKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pSurface'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 4 'pSurface'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkCreateWin32SurfaceKHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -10599,21 +10697,22 @@ Napi::Value _vkCreateWin32SurfaceKHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetPhysicalDeviceWin32PresentationSupportKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -10630,56 +10729,61 @@ Napi::Value _vkGetPhysicalDeviceWin32PresentationSupportKHR(const Napi::Callback
 Napi::Value _vkCreateDebugReportCallbackEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkInstance* obj0;
+  Napi::Object obj0;
   VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkInstance>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkInstance* instance = reinterpret_cast<VkInstance*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDebugReportCallbackCreateInfoEXT* obj1;
+  Napi::Object obj1;
   VkDebugReportCallbackCreateInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDebugReportCallbackCreateInfoEXT::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDebugReportCallbackCreateInfoEXT]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDebugReportCallbackCreateInfoEXT>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDebugReportCallbackCreateInfoEXT* instance = reinterpret_cast<VkDebugReportCallbackCreateInfoEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugReportCallbackCreateInfoEXT' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkDebugReportCallbackEXT* obj3;
+  Napi::Object obj3;
   VkDebugReportCallbackEXT *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDebugReportCallbackEXT::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDebugReportCallbackEXT") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkDebugReportCallbackEXT]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkDebugReportCallbackEXT>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkDebugReportCallbackEXT* instance = reinterpret_cast<VkDebugReportCallbackEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pCallback'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugReportCallbackEXT' or 'null' for argument 4 'pCallback'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkCreateDebugReportCallbackEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -10696,38 +10800,40 @@ Napi::Value _vkCreateDebugReportCallbackEXT(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyDebugReportCallbackEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkInstance* obj0;
+  Napi::Object obj0;
   VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkInstance>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkInstance* instance = reinterpret_cast<VkInstance*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDebugReportCallbackEXT* obj1;
+  Napi::Object obj1;
   VkDebugReportCallbackEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDebugReportCallbackEXT::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDebugReportCallbackEXT") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDebugReportCallbackEXT]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDebugReportCallbackEXT>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkDebugReportCallbackEXT* instance = reinterpret_cast<VkDebugReportCallbackEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'callback'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugReportCallbackEXT' or 'null' for argument 2 'callback'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 $vkDestroyDebugReportCallbackEXT(
@@ -10744,21 +10850,22 @@ $vkDestroyDebugReportCallbackEXT(
 Napi::Value _vkDebugReportMessageEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkInstance* obj0;
+  Napi::Object obj0;
   VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkInstance>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkInstance* instance = reinterpret_cast<VkInstance*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -10807,38 +10914,42 @@ $vkDebugReportMessageEXT(
 Napi::Value _vkDebugMarkerSetObjectNameEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDebugMarkerObjectNameInfoEXT* obj1;
+  Napi::Object obj1;
   VkDebugMarkerObjectNameInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDebugMarkerObjectNameInfoEXT::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_NAME_INFO_EXT) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDebugMarkerObjectNameInfoEXT]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDebugMarkerObjectNameInfoEXT>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDebugMarkerObjectNameInfoEXT* instance = reinterpret_cast<VkDebugMarkerObjectNameInfoEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pNameInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugMarkerObjectNameInfoEXT' or 'null' for argument 2 'pNameInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkDebugMarkerSetObjectNameEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -10853,38 +10964,42 @@ Napi::Value _vkDebugMarkerSetObjectNameEXT(const Napi::CallbackInfo& info) {
 Napi::Value _vkDebugMarkerSetObjectTagEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDebugMarkerObjectTagInfoEXT* obj1;
+  Napi::Object obj1;
   VkDebugMarkerObjectTagInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDebugMarkerObjectTagInfoEXT::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_TAG_INFO_EXT) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDebugMarkerObjectTagInfoEXT]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDebugMarkerObjectTagInfoEXT>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDebugMarkerObjectTagInfoEXT* instance = reinterpret_cast<VkDebugMarkerObjectTagInfoEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pTagInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugMarkerObjectTagInfoEXT' or 'null' for argument 2 'pTagInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkDebugMarkerSetObjectTagEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -10899,38 +11014,42 @@ Napi::Value _vkDebugMarkerSetObjectTagEXT(const Napi::CallbackInfo& info) {
 Napi::Value _vkCmdDebugMarkerBeginEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDebugMarkerMarkerInfoEXT* obj1;
+  Napi::Object obj1;
   VkDebugMarkerMarkerInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDebugMarkerMarkerInfoEXT::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_MARKER_MARKER_INFO_EXT) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDebugMarkerMarkerInfoEXT]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDebugMarkerMarkerInfoEXT>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDebugMarkerMarkerInfoEXT* instance = reinterpret_cast<VkDebugMarkerMarkerInfoEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pMarkerInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugMarkerMarkerInfoEXT' or 'null' for argument 2 'pMarkerInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 $vkCmdDebugMarkerBeginEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -10945,21 +11064,22 @@ $vkCmdDebugMarkerBeginEXT(
 Napi::Value _vkCmdDebugMarkerEndEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 $vkCmdDebugMarkerEndEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0
@@ -10973,38 +11093,42 @@ $vkCmdDebugMarkerEndEXT(
 Napi::Value _vkCmdDebugMarkerInsertEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDebugMarkerMarkerInfoEXT* obj1;
+  Napi::Object obj1;
   VkDebugMarkerMarkerInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDebugMarkerMarkerInfoEXT::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_MARKER_MARKER_INFO_EXT) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDebugMarkerMarkerInfoEXT]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDebugMarkerMarkerInfoEXT>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDebugMarkerMarkerInfoEXT* instance = reinterpret_cast<VkDebugMarkerMarkerInfoEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pMarkerInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugMarkerMarkerInfoEXT' or 'null' for argument 2 'pMarkerInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 $vkCmdDebugMarkerInsertEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -11019,21 +11143,22 @@ $vkCmdDebugMarkerInsertEXT(
 Napi::Value _vkGetPhysicalDeviceExternalImageFormatPropertiesNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   VkFormat $p1 = static_cast<VkFormat>(info[1].As<Napi::Number>().Int64Value());
@@ -11048,21 +11173,24 @@ Napi::Value _vkGetPhysicalDeviceExternalImageFormatPropertiesNV(const Napi::Call
 
   int32_t $p6 = static_cast<int32_t>(info[6].As<Napi::Number>().Int64Value());
 
-  _VkExternalImageFormatPropertiesNV* obj7;
+  Napi::Object obj7;
   VkExternalImageFormatPropertiesNV *$p7 = nullptr;
   if (info[7].IsObject()) {
     Napi::Object obj = info[7].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkExternalImageFormatPropertiesNV::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkExternalImageFormatPropertiesNV") {
       NapiObjectTypeError(info[7], "argument 8", "[object VkExternalImageFormatPropertiesNV]");
       return env.Undefined();
     }
-    obj7 = Napi::ObjectWrap<_VkExternalImageFormatPropertiesNV>::Unwrap(obj);
-    if (!obj7->flush()) return env.Undefined();
-    $p7 = &obj7->instance;
+    obj7 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkExternalImageFormatPropertiesNV* instance = reinterpret_cast<VkExternalImageFormatPropertiesNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p7 = instance;
   } else if (info[7].IsNull()) {
     $p7 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 8 'pExternalImageFormatProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkExternalImageFormatPropertiesNV' or 'null' for argument 8 'pExternalImageFormatProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkGetPhysicalDeviceExternalImageFormatPropertiesNV(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -11074,24 +11202,6 @@ Napi::Value _vkGetPhysicalDeviceExternalImageFormatPropertiesNV(const Napi::Call
     static_cast<VkExternalMemoryHandleTypeFlagsNV>($p6),
     $p7
   );
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkImageFormatProperties::constructor.New(args);
-    _VkImageFormatProperties* unwrapped6 = Napi::ObjectWrap<_VkImageFormatProperties>::Unwrap(inst);
-    obj7->imageFormatProperties.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj7->instance.imageFormatProperties, sizeof(VkImageFormatProperties));
-    
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkExtent3D::constructor.New(args);
-    _VkExtent3D* unwrapped12 = Napi::ObjectWrap<_VkExtent3D>::Unwrap(inst);
-    unwrapped6->maxExtent.Reset(inst, 1);
-    memcpy((&unwrapped12->instance), &unwrapped6->instance.maxExtent, sizeof(VkExtent3D));
-    
-  }
-      
-  }
-      
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -11101,38 +11211,40 @@ Napi::Value _vkGetPhysicalDeviceExternalImageFormatPropertiesNV(const Napi::Call
 Napi::Value _vkGetMemoryWin32HandleNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDeviceMemory* obj1;
+  Napi::Object obj1;
   VkDeviceMemory *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDeviceMemory::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDeviceMemory") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDeviceMemory]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDeviceMemory>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkDeviceMemory* instance = reinterpret_cast<VkDeviceMemory*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'memory'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceMemory' or 'null' for argument 2 'memory'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   int32_t $p2 = static_cast<int32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -11159,7 +11271,7 @@ Napi::Value _vkGetMemoryWin32HandleNV(const Napi::CallbackInfo& info) {
     info[3].IsNull() ? nullptr : $p3
   );
   Napi::BigInt ptr3 = Napi::BigInt::New(env, (int64_t)$p3);
-  obj3.Set("$", ptr3);
+  if (info[3].IsObject()) obj3.Set("$", ptr3);
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -11169,57 +11281,60 @@ Napi::Value _vkGetMemoryWin32HandleNV(const Napi::CallbackInfo& info) {
 Napi::Value _vkCmdDrawIndirectCountAMD(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBuffer* obj1;
+  Napi::Object obj1;
   VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
 
-  _VkBuffer* obj3;
+  Napi::Object obj3;
   VkBuffer *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'countBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'countBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::Number>().Int64Value());
@@ -11245,57 +11360,60 @@ $vkCmdDrawIndirectCountAMD(
 Napi::Value _vkCmdDrawIndexedIndirectCountAMD(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBuffer* obj1;
+  Napi::Object obj1;
   VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
 
-  _VkBuffer* obj3;
+  Napi::Object obj3;
   VkBuffer *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'countBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'countBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::Number>().Int64Value());
@@ -11321,38 +11439,42 @@ $vkCmdDrawIndexedIndirectCountAMD(
 Napi::Value _vkCmdProcessCommandsNVX(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkCmdProcessCommandsInfoNVX* obj1;
+  Napi::Object obj1;
   VkCmdProcessCommandsInfoNVX *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCmdProcessCommandsInfoNVX::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_CMD_PROCESS_COMMANDS_INFO_NVX) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkCmdProcessCommandsInfoNVX]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkCmdProcessCommandsInfoNVX>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkCmdProcessCommandsInfoNVX* instance = reinterpret_cast<VkCmdProcessCommandsInfoNVX*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pProcessCommandsInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCmdProcessCommandsInfoNVX' or 'null' for argument 2 'pProcessCommandsInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 $vkCmdProcessCommandsNVX(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -11367,38 +11489,42 @@ $vkCmdProcessCommandsNVX(
 Napi::Value _vkCmdReserveSpaceForCommandsNVX(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkCmdReserveSpaceForCommandsInfoNVX* obj1;
+  Napi::Object obj1;
   VkCmdReserveSpaceForCommandsInfoNVX *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCmdReserveSpaceForCommandsInfoNVX::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_CMD_RESERVE_SPACE_FOR_COMMANDS_INFO_NVX) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkCmdReserveSpaceForCommandsInfoNVX]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkCmdReserveSpaceForCommandsInfoNVX>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkCmdReserveSpaceForCommandsInfoNVX* instance = reinterpret_cast<VkCmdReserveSpaceForCommandsInfoNVX*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pReserveSpaceInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCmdReserveSpaceForCommandsInfoNVX' or 'null' for argument 2 'pReserveSpaceInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 $vkCmdReserveSpaceForCommandsNVX(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -11413,56 +11539,61 @@ $vkCmdReserveSpaceForCommandsNVX(
 Napi::Value _vkCreateIndirectCommandsLayoutNVX(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkIndirectCommandsLayoutCreateInfoNVX* obj1;
+  Napi::Object obj1;
   VkIndirectCommandsLayoutCreateInfoNVX *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkIndirectCommandsLayoutCreateInfoNVX::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NVX) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkIndirectCommandsLayoutCreateInfoNVX]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkIndirectCommandsLayoutCreateInfoNVX>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkIndirectCommandsLayoutCreateInfoNVX* instance = reinterpret_cast<VkIndirectCommandsLayoutCreateInfoNVX*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkIndirectCommandsLayoutCreateInfoNVX' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkIndirectCommandsLayoutNVX* obj3;
+  Napi::Object obj3;
   VkIndirectCommandsLayoutNVX *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkIndirectCommandsLayoutNVX::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkIndirectCommandsLayoutNVX") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkIndirectCommandsLayoutNVX]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkIndirectCommandsLayoutNVX>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkIndirectCommandsLayoutNVX* instance = reinterpret_cast<VkIndirectCommandsLayoutNVX*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pIndirectCommandsLayout'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkIndirectCommandsLayoutNVX' or 'null' for argument 4 'pIndirectCommandsLayout'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkCreateIndirectCommandsLayoutNVX(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -11479,38 +11610,40 @@ Napi::Value _vkCreateIndirectCommandsLayoutNVX(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyIndirectCommandsLayoutNVX(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkIndirectCommandsLayoutNVX* obj1;
+  Napi::Object obj1;
   VkIndirectCommandsLayoutNVX *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkIndirectCommandsLayoutNVX::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkIndirectCommandsLayoutNVX") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkIndirectCommandsLayoutNVX]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkIndirectCommandsLayoutNVX>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkIndirectCommandsLayoutNVX* instance = reinterpret_cast<VkIndirectCommandsLayoutNVX*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'indirectCommandsLayout'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkIndirectCommandsLayoutNVX' or 'null' for argument 2 'indirectCommandsLayout'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 $vkDestroyIndirectCommandsLayoutNVX(
@@ -11527,56 +11660,61 @@ $vkDestroyIndirectCommandsLayoutNVX(
 Napi::Value _vkCreateObjectTableNVX(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkObjectTableCreateInfoNVX* obj1;
+  Napi::Object obj1;
   VkObjectTableCreateInfoNVX *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkObjectTableCreateInfoNVX::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_OBJECT_TABLE_CREATE_INFO_NVX) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkObjectTableCreateInfoNVX]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkObjectTableCreateInfoNVX>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkObjectTableCreateInfoNVX* instance = reinterpret_cast<VkObjectTableCreateInfoNVX*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkObjectTableCreateInfoNVX' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkObjectTableNVX* obj3;
+  Napi::Object obj3;
   VkObjectTableNVX *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkObjectTableNVX::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkObjectTableNVX") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkObjectTableNVX]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkObjectTableNVX>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkObjectTableNVX* instance = reinterpret_cast<VkObjectTableNVX*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pObjectTable'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkObjectTableNVX' or 'null' for argument 4 'pObjectTable'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkCreateObjectTableNVX(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -11593,38 +11731,40 @@ Napi::Value _vkCreateObjectTableNVX(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyObjectTableNVX(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkObjectTableNVX* obj1;
+  Napi::Object obj1;
   VkObjectTableNVX *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkObjectTableNVX::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkObjectTableNVX") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkObjectTableNVX]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkObjectTableNVX>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkObjectTableNVX* instance = reinterpret_cast<VkObjectTableNVX*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'objectTable'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkObjectTableNVX' or 'null' for argument 2 'objectTable'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 $vkDestroyObjectTableNVX(
@@ -11641,38 +11781,40 @@ $vkDestroyObjectTableNVX(
 Napi::Value _vkRegisterObjectsNVX(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkObjectTableNVX* obj1;
+  Napi::Object obj1;
   VkObjectTableNVX *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkObjectTableNVX::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkObjectTableNVX") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkObjectTableNVX]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkObjectTableNVX>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkObjectTableNVX* instance = reinterpret_cast<VkObjectTableNVX*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'objectTable'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkObjectTableNVX' or 'null' for argument 2 'objectTable'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -11686,8 +11828,8 @@ Napi::Value _vkRegisterObjectsNVX(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkObjectTableEntryNVX* result = Napi::ObjectWrap<_VkObjectTableEntryNVX>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[3].As<Napi::Array>();
@@ -11695,8 +11837,8 @@ Napi::Value _vkRegisterObjectsNVX(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkObjectTableEntryNVX* result = Napi::ObjectWrap<_VkObjectTableEntryNVX>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkObjectTableEntryNVX* instance = reinterpret_cast<VkObjectTableEntryNVX*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkObjectTableEntryNVX>>(data);
   } else if (!info[3].IsNull()) {
@@ -11736,38 +11878,40 @@ Napi::Value _vkRegisterObjectsNVX(const Napi::CallbackInfo& info) {
 Napi::Value _vkUnregisterObjectsNVX(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkObjectTableNVX* obj1;
+  Napi::Object obj1;
   VkObjectTableNVX *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkObjectTableNVX::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkObjectTableNVX") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkObjectTableNVX]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkObjectTableNVX>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkObjectTableNVX* instance = reinterpret_cast<VkObjectTableNVX*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'objectTable'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkObjectTableNVX' or 'null' for argument 2 'objectTable'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -11819,55 +11963,62 @@ Napi::Value _vkUnregisterObjectsNVX(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDeviceGeneratedCommandsFeaturesNVX* obj1;
+  Napi::Object obj1;
   VkDeviceGeneratedCommandsFeaturesNVX *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDeviceGeneratedCommandsFeaturesNVX::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEVICE_GENERATED_COMMANDS_FEATURES_NVX) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDeviceGeneratedCommandsFeaturesNVX]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDeviceGeneratedCommandsFeaturesNVX>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDeviceGeneratedCommandsFeaturesNVX* instance = reinterpret_cast<VkDeviceGeneratedCommandsFeaturesNVX*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pFeatures'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceGeneratedCommandsFeaturesNVX' or 'null' for argument 2 'pFeatures'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDeviceGeneratedCommandsLimitsNVX* obj2;
+  Napi::Object obj2;
   VkDeviceGeneratedCommandsLimitsNVX *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDeviceGeneratedCommandsLimitsNVX::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEVICE_GENERATED_COMMANDS_LIMITS_NVX) {
       NapiObjectTypeError(info[2], "argument 3", "[object VkDeviceGeneratedCommandsLimitsNVX]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkDeviceGeneratedCommandsLimitsNVX>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDeviceGeneratedCommandsLimitsNVX* instance = reinterpret_cast<VkDeviceGeneratedCommandsLimitsNVX*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pLimits'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceGeneratedCommandsLimitsNVX' or 'null' for argument 3 'pLimits'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 $vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -11883,52 +12034,47 @@ $vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(
 Napi::Value _vkGetPhysicalDeviceFeatures2(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPhysicalDeviceFeatures2* obj1;
+  Napi::Object obj1;
   VkPhysicalDeviceFeatures2 *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDeviceFeatures2::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceFeatures2]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPhysicalDeviceFeatures2>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkPhysicalDeviceFeatures2* instance = reinterpret_cast<VkPhysicalDeviceFeatures2*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pFeatures'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceFeatures2' or 'null' for argument 2 'pFeatures'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 vkGetPhysicalDeviceFeatures2(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkPhysicalDeviceFeatures::constructor.New(args);
-    _VkPhysicalDeviceFeatures* unwrapped6 = Napi::ObjectWrap<_VkPhysicalDeviceFeatures>::Unwrap(inst);
-    obj1->features.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj1->instance.features, sizeof(VkPhysicalDeviceFeatures));
-    
-  }
-      
   
   
   return env.Undefined();
@@ -11938,138 +12084,47 @@ vkGetPhysicalDeviceFeatures2(
 Napi::Value _vkGetPhysicalDeviceProperties2(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPhysicalDeviceProperties2* obj1;
+  Napi::Object obj1;
   VkPhysicalDeviceProperties2 *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDeviceProperties2::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROPERTIES_2) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceProperties2]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPhysicalDeviceProperties2>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkPhysicalDeviceProperties2* instance = reinterpret_cast<VkPhysicalDeviceProperties2*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceProperties2' or 'null' for argument 2 'pProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 vkGetPhysicalDeviceProperties2(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkPhysicalDeviceProperties::constructor.New(args);
-    _VkPhysicalDeviceProperties* unwrapped6 = Napi::ObjectWrap<_VkPhysicalDeviceProperties>::Unwrap(inst);
-    obj1->properties.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj1->instance.properties, sizeof(VkPhysicalDeviceProperties));
-    
-  {
-    // back reflect string
-    Napi::String str1 = Napi::String::New(env, (&unwrapped6->instance)->deviceName);
-    unwrapped6->deviceName.Reset(str1.ToObject(), 1);
-  }
-  {
-    // back reflect array
-    Napi::Array arr1 = Napi::Array::New(env, 16);
-    // populate array
-    for (unsigned int ii = 0; ii < 16; ++ii) {
-      arr1.Set(ii, Napi::Number::New(env, (&unwrapped6->instance)->pipelineCacheUUID[ii]));
-    };
-    unwrapped6->pipelineCacheUUID.Reset(arr1.ToObject(), 1);
-  }
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkPhysicalDeviceLimits::constructor.New(args);
-    _VkPhysicalDeviceLimits* unwrapped12 = Napi::ObjectWrap<_VkPhysicalDeviceLimits>::Unwrap(inst);
-    unwrapped6->limits.Reset(inst, 1);
-    memcpy((&unwrapped12->instance), &unwrapped6->instance.limits, sizeof(VkPhysicalDeviceLimits));
-    
-  {
-    // back reflect array
-    Napi::Array arr1 = Napi::Array::New(env, 3);
-    // populate array
-    for (unsigned int ii = 0; ii < 3; ++ii) {
-      arr1.Set(ii, Napi::Number::New(env, (&unwrapped12->instance)->maxComputeWorkGroupCount[ii]));
-    };
-    unwrapped12->maxComputeWorkGroupCount.Reset(arr1.ToObject(), 1);
-  }
-  {
-    // back reflect array
-    Napi::Array arr1 = Napi::Array::New(env, 3);
-    // populate array
-    for (unsigned int ii = 0; ii < 3; ++ii) {
-      arr1.Set(ii, Napi::Number::New(env, (&unwrapped12->instance)->maxComputeWorkGroupSize[ii]));
-    };
-    unwrapped12->maxComputeWorkGroupSize.Reset(arr1.ToObject(), 1);
-  }
-  {
-    // back reflect array
-    Napi::Array arr1 = Napi::Array::New(env, 2);
-    // populate array
-    for (unsigned int ii = 0; ii < 2; ++ii) {
-      arr1.Set(ii, Napi::Number::New(env, (&unwrapped12->instance)->maxViewportDimensions[ii]));
-    };
-    unwrapped12->maxViewportDimensions.Reset(arr1.ToObject(), 1);
-  }
-  {
-    // back reflect array
-    Napi::Array arr1 = Napi::Array::New(env, 2);
-    // populate array
-    for (unsigned int ii = 0; ii < 2; ++ii) {
-      arr1.Set(ii, Napi::Number::New(env, (&unwrapped12->instance)->viewportBoundsRange[ii]));
-    };
-    unwrapped12->viewportBoundsRange.Reset(arr1.ToObject(), 1);
-  }
-  {
-    // back reflect array
-    Napi::Array arr1 = Napi::Array::New(env, 2);
-    // populate array
-    for (unsigned int ii = 0; ii < 2; ++ii) {
-      arr1.Set(ii, Napi::Number::New(env, (&unwrapped12->instance)->pointSizeRange[ii]));
-    };
-    unwrapped12->pointSizeRange.Reset(arr1.ToObject(), 1);
-  }
-  {
-    // back reflect array
-    Napi::Array arr1 = Napi::Array::New(env, 2);
-    // populate array
-    for (unsigned int ii = 0; ii < 2; ++ii) {
-      arr1.Set(ii, Napi::Number::New(env, (&unwrapped12->instance)->lineWidthRange[ii]));
-    };
-    unwrapped12->lineWidthRange.Reset(arr1.ToObject(), 1);
-  }
-  }
-      
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkPhysicalDeviceSparseProperties::constructor.New(args);
-    _VkPhysicalDeviceSparseProperties* unwrapped12 = Napi::ObjectWrap<_VkPhysicalDeviceSparseProperties>::Unwrap(inst);
-    unwrapped6->sparseProperties.Reset(inst, 1);
-    memcpy((&unwrapped12->instance), &unwrapped6->instance.sparseProperties, sizeof(VkPhysicalDeviceSparseProperties));
-    
-  }
-      
-  }
-      
   
   
   return env.Undefined();
@@ -12079,55 +12134,50 @@ vkGetPhysicalDeviceProperties2(
 Napi::Value _vkGetPhysicalDeviceFormatProperties2(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   VkFormat $p1 = static_cast<VkFormat>(info[1].As<Napi::Number>().Int64Value());
 
-  _VkFormatProperties2* obj2;
+  Napi::Object obj2;
   VkFormatProperties2 *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkFormatProperties2::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_2) {
       NapiObjectTypeError(info[2], "argument 3", "[object VkFormatProperties2]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkFormatProperties2>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkFormatProperties2* instance = reinterpret_cast<VkFormatProperties2*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pFormatProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFormatProperties2' or 'null' for argument 3 'pFormatProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 vkGetPhysicalDeviceFormatProperties2(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2
   );
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkFormatProperties::constructor.New(args);
-    _VkFormatProperties* unwrapped6 = Napi::ObjectWrap<_VkFormatProperties>::Unwrap(inst);
-    obj2->formatProperties.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj2->instance.formatProperties, sizeof(VkFormatProperties));
-    
-  }
-      
   
   
   return env.Undefined();
@@ -12137,79 +12187,68 @@ vkGetPhysicalDeviceFormatProperties2(
 Napi::Value _vkGetPhysicalDeviceImageFormatProperties2(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPhysicalDeviceImageFormatInfo2* obj1;
+  Napi::Object obj1;
   VkPhysicalDeviceImageFormatInfo2 *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDeviceImageFormatInfo2::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceImageFormatInfo2]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPhysicalDeviceImageFormatInfo2>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkPhysicalDeviceImageFormatInfo2* instance = reinterpret_cast<VkPhysicalDeviceImageFormatInfo2*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pImageFormatInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceImageFormatInfo2' or 'null' for argument 2 'pImageFormatInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImageFormatProperties2* obj2;
+  Napi::Object obj2;
   VkImageFormatProperties2 *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImageFormatProperties2::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_IMAGE_FORMAT_PROPERTIES_2) {
       NapiObjectTypeError(info[2], "argument 3", "[object VkImageFormatProperties2]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkImageFormatProperties2>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkImageFormatProperties2* instance = reinterpret_cast<VkImageFormatProperties2*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pImageFormatProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImageFormatProperties2' or 'null' for argument 3 'pImageFormatProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkGetPhysicalDeviceImageFormatProperties2(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2
   );
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkImageFormatProperties::constructor.New(args);
-    _VkImageFormatProperties* unwrapped6 = Napi::ObjectWrap<_VkImageFormatProperties>::Unwrap(inst);
-    obj2->imageFormatProperties.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj2->instance.imageFormatProperties, sizeof(VkImageFormatProperties));
-    
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkExtent3D::constructor.New(args);
-    _VkExtent3D* unwrapped12 = Napi::ObjectWrap<_VkExtent3D>::Unwrap(inst);
-    unwrapped6->maxExtent.Reset(inst, 1);
-    memcpy((&unwrapped12->instance), &unwrapped6->instance.maxExtent, sizeof(VkExtent3D));
-    
-  }
-      
-  }
-      
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -12219,21 +12258,22 @@ Napi::Value _vkGetPhysicalDeviceImageFormatProperties2(const Napi::CallbackInfo&
 Napi::Value _vkGetPhysicalDeviceQueueFamilyProperties2(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj1;
@@ -12260,8 +12300,8 @@ Napi::Value _vkGetPhysicalDeviceQueueFamilyProperties2(const Napi::CallbackInfo&
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkQueueFamilyProperties2* result = Napi::ObjectWrap<_VkQueueFamilyProperties2>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[2].As<Napi::Array>();
@@ -12269,8 +12309,8 @@ Napi::Value _vkGetPhysicalDeviceQueueFamilyProperties2(const Napi::CallbackInfo&
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkQueueFamilyProperties2* result = Napi::ObjectWrap<_VkQueueFamilyProperties2>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkQueueFamilyProperties2* instance = reinterpret_cast<VkQueueFamilyProperties2*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkQueueFamilyProperties2>>(data);
   } else if (!info[2].IsNull()) {
@@ -12283,26 +12323,17 @@ vkGetPhysicalDeviceQueueFamilyProperties2(
     &$p1,
     $p2 ? (VkQueueFamilyProperties2 *) $p2.get()->data() : nullptr
   );
-    obj1.Set("$", $p1);
+    if (info[1].IsObject()) obj1.Set("$", $p1);
   if (info[2].IsArray()) {
     VkQueueFamilyProperties2* $pdata = $p2.get()->data();
     Napi::Array array = info[2].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkQueueFamilyProperties2* result = Napi::ObjectWrap<_VkQueueFamilyProperties2>::Unwrap(obj);
-      VkQueueFamilyProperties2 *instance = &result->instance;
-      VkQueueFamilyProperties2 *copy = &$pdata[ii];
-      
-      instance->sType = copy->sType;
-      instance->queueFamilyProperties = copy->queueFamilyProperties;
-      if (&copy->queueFamilyProperties != nullptr) {
-        std::vector<napi_value> args;
-        Napi::Object inst = _VkQueueFamilyProperties::constructor.New(args);
-        _VkQueueFamilyProperties* unwrapped = Napi::ObjectWrap<_VkQueueFamilyProperties>::Unwrap(inst);
-        result->queueFamilyProperties.Reset(inst, 1);
-        unwrapped->instance = copy->queueFamilyProperties;
-      }
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -12314,80 +12345,47 @@ vkGetPhysicalDeviceQueueFamilyProperties2(
 Napi::Value _vkGetPhysicalDeviceMemoryProperties2(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPhysicalDeviceMemoryProperties2* obj1;
+  Napi::Object obj1;
   VkPhysicalDeviceMemoryProperties2 *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDeviceMemoryProperties2::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PROPERTIES_2) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceMemoryProperties2]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPhysicalDeviceMemoryProperties2>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkPhysicalDeviceMemoryProperties2* instance = reinterpret_cast<VkPhysicalDeviceMemoryProperties2*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pMemoryProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceMemoryProperties2' or 'null' for argument 2 'pMemoryProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 vkGetPhysicalDeviceMemoryProperties2(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkPhysicalDeviceMemoryProperties::constructor.New(args);
-    _VkPhysicalDeviceMemoryProperties* unwrapped6 = Napi::ObjectWrap<_VkPhysicalDeviceMemoryProperties>::Unwrap(inst);
-    obj1->memoryProperties.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj1->instance.memoryProperties, sizeof(VkPhysicalDeviceMemoryProperties));
-    
-  {
-    // back reflect array
-    unsigned int len = unwrapped6->instance.memoryTypeCount;
-    Napi::Array arr = Napi::Array::New(env, len);
-    // populate array
-    for (unsigned int ii = 0; ii < len; ++ii) {
-      std::vector<napi_value> args;
-      Napi::Object inst = _VkMemoryType::constructor.New(args);
-      _VkMemoryType* unwrapped = Napi::ObjectWrap<_VkMemoryType>::Unwrap(inst);
-      memcpy(&unwrapped->instance, &unwrapped6->instance.memoryTypes[ii], sizeof(VkMemoryType));
-      arr.Set(ii, inst);
-    };
-    unwrapped6->memoryTypes.Reset(arr.ToObject(), 1);
-  }
-  {
-    // back reflect array
-    unsigned int len = unwrapped6->instance.memoryHeapCount;
-    Napi::Array arr = Napi::Array::New(env, len);
-    // populate array
-    for (unsigned int ii = 0; ii < len; ++ii) {
-      std::vector<napi_value> args;
-      Napi::Object inst = _VkMemoryHeap::constructor.New(args);
-      _VkMemoryHeap* unwrapped = Napi::ObjectWrap<_VkMemoryHeap>::Unwrap(inst);
-      memcpy(&unwrapped->instance, &unwrapped6->instance.memoryHeaps[ii], sizeof(VkMemoryHeap));
-      arr.Set(ii, inst);
-    };
-    unwrapped6->memoryHeaps.Reset(arr.ToObject(), 1);
-  }
-  }
-      
   
   
   return env.Undefined();
@@ -12397,38 +12395,42 @@ vkGetPhysicalDeviceMemoryProperties2(
 Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties2(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPhysicalDeviceSparseImageFormatInfo2* obj1;
+  Napi::Object obj1;
   VkPhysicalDeviceSparseImageFormatInfo2 *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDeviceSparseImageFormatInfo2::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SPARSE_IMAGE_FORMAT_INFO_2) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceSparseImageFormatInfo2]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPhysicalDeviceSparseImageFormatInfo2>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkPhysicalDeviceSparseImageFormatInfo2* instance = reinterpret_cast<VkPhysicalDeviceSparseImageFormatInfo2*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pFormatInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceSparseImageFormatInfo2' or 'null' for argument 2 'pFormatInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj2;
@@ -12455,8 +12457,8 @@ Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties2(const Napi::Callbac
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSparseImageFormatProperties2* result = Napi::ObjectWrap<_VkSparseImageFormatProperties2>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[3].As<Napi::Array>();
@@ -12464,8 +12466,8 @@ Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties2(const Napi::Callbac
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSparseImageFormatProperties2* result = Napi::ObjectWrap<_VkSparseImageFormatProperties2>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkSparseImageFormatProperties2* instance = reinterpret_cast<VkSparseImageFormatProperties2*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkSparseImageFormatProperties2>>(data);
   } else if (!info[3].IsNull()) {
@@ -12479,26 +12481,17 @@ vkGetPhysicalDeviceSparseImageFormatProperties2(
     &$p2,
     $p3 ? (VkSparseImageFormatProperties2 *) $p3.get()->data() : nullptr
   );
-    obj2.Set("$", $p2);
+    if (info[2].IsObject()) obj2.Set("$", $p2);
   if (info[3].IsArray()) {
     VkSparseImageFormatProperties2* $pdata = $p3.get()->data();
     Napi::Array array = info[3].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSparseImageFormatProperties2* result = Napi::ObjectWrap<_VkSparseImageFormatProperties2>::Unwrap(obj);
-      VkSparseImageFormatProperties2 *instance = &result->instance;
-      VkSparseImageFormatProperties2 *copy = &$pdata[ii];
-      
-      instance->sType = copy->sType;
-      instance->properties = copy->properties;
-      if (&copy->properties != nullptr) {
-        std::vector<napi_value> args;
-        Napi::Object inst = _VkSparseImageFormatProperties::constructor.New(args);
-        _VkSparseImageFormatProperties* unwrapped = Napi::ObjectWrap<_VkSparseImageFormatProperties>::Unwrap(inst);
-        result->properties.Reset(inst, 1);
-        unwrapped->instance = copy->properties;
-      }
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -12510,40 +12503,42 @@ vkGetPhysicalDeviceSparseImageFormatProperties2(
 Napi::Value _vkCmdPushDescriptorSetKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   VkPipelineBindPoint $p1 = static_cast<VkPipelineBindPoint>(info[1].As<Napi::Number>().Int64Value());
 
-  _VkPipelineLayout* obj2;
+  Napi::Object obj2;
   VkPipelineLayout *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPipelineLayout::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineLayout") {
       NapiObjectTypeError(info[2], "argument 3", "[object VkPipelineLayout]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkPipelineLayout>::Unwrap(obj);
-    
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    VkPipelineLayout* instance = reinterpret_cast<VkPipelineLayout*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'layout'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineLayout' or 'null' for argument 3 'layout'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
@@ -12559,8 +12554,8 @@ Napi::Value _vkCmdPushDescriptorSetKHR(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkWriteDescriptorSet* result = Napi::ObjectWrap<_VkWriteDescriptorSet>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[5].As<Napi::Array>();
@@ -12568,8 +12563,8 @@ Napi::Value _vkCmdPushDescriptorSetKHR(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkWriteDescriptorSet* result = Napi::ObjectWrap<_VkWriteDescriptorSet>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkWriteDescriptorSet* instance = reinterpret_cast<VkWriteDescriptorSet*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p5 = std::make_shared<std::vector<VkWriteDescriptorSet>>(data);
   } else if (!info[5].IsNull()) {
@@ -12594,38 +12589,40 @@ $vkCmdPushDescriptorSetKHR(
 Napi::Value _vkTrimCommandPool(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkCommandPool* obj1;
+  Napi::Object obj1;
   VkCommandPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandPool::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandPool") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkCommandPool]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkCommandPool>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkCommandPool* instance = reinterpret_cast<VkCommandPool*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'commandPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandPool' or 'null' for argument 2 'commandPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   int32_t $p2 = static_cast<int32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -12643,70 +12640,68 @@ vkTrimCommandPool(
 Napi::Value _vkGetPhysicalDeviceExternalBufferProperties(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPhysicalDeviceExternalBufferInfo* obj1;
+  Napi::Object obj1;
   VkPhysicalDeviceExternalBufferInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDeviceExternalBufferInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_BUFFER_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceExternalBufferInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPhysicalDeviceExternalBufferInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkPhysicalDeviceExternalBufferInfo* instance = reinterpret_cast<VkPhysicalDeviceExternalBufferInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pExternalBufferInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceExternalBufferInfo' or 'null' for argument 2 'pExternalBufferInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkExternalBufferProperties* obj2;
+  Napi::Object obj2;
   VkExternalBufferProperties *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkExternalBufferProperties::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_EXTERNAL_BUFFER_PROPERTIES) {
       NapiObjectTypeError(info[2], "argument 3", "[object VkExternalBufferProperties]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkExternalBufferProperties>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkExternalBufferProperties* instance = reinterpret_cast<VkExternalBufferProperties*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pExternalBufferProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkExternalBufferProperties' or 'null' for argument 3 'pExternalBufferProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 vkGetPhysicalDeviceExternalBufferProperties(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2
   );
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkExternalMemoryProperties::constructor.New(args);
-    _VkExternalMemoryProperties* unwrapped6 = Napi::ObjectWrap<_VkExternalMemoryProperties>::Unwrap(inst);
-    obj2->externalMemoryProperties.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj2->instance.externalMemoryProperties, sizeof(VkExternalMemoryProperties));
-    
-  }
-      
   
   
   return env.Undefined();
@@ -12716,38 +12711,42 @@ vkGetPhysicalDeviceExternalBufferProperties(
 Napi::Value _vkGetMemoryWin32HandleKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkMemoryGetWin32HandleInfoKHR* obj1;
+  Napi::Object obj1;
   VkMemoryGetWin32HandleInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkMemoryGetWin32HandleInfoKHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_MEMORY_GET_WIN32_HANDLE_INFO_KHR) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkMemoryGetWin32HandleInfoKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkMemoryGetWin32HandleInfoKHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkMemoryGetWin32HandleInfoKHR* instance = reinterpret_cast<VkMemoryGetWin32HandleInfoKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pGetWin32HandleInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkMemoryGetWin32HandleInfoKHR' or 'null' for argument 2 'pGetWin32HandleInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj2;
@@ -12771,7 +12770,7 @@ Napi::Value _vkGetMemoryWin32HandleKHR(const Napi::CallbackInfo& info) {
     info[2].IsNull() ? nullptr : $p2
   );
   Napi::BigInt ptr2 = Napi::BigInt::New(env, (int64_t)$p2);
-  obj2.Set("$", ptr2);
+  if (info[2].IsObject()) obj2.Set("$", ptr2);
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -12781,21 +12780,22 @@ Napi::Value _vkGetMemoryWin32HandleKHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetMemoryWin32HandlePropertiesKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -12803,21 +12803,24 @@ Napi::Value _vkGetMemoryWin32HandlePropertiesKHR(const Napi::CallbackInfo& info)
   bool lossless2 = false;
   HANDLE $p2 = reinterpret_cast<HANDLE>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
-  _VkMemoryWin32HandlePropertiesKHR* obj3;
+  Napi::Object obj3;
   VkMemoryWin32HandlePropertiesKHR *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkMemoryWin32HandlePropertiesKHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_MEMORY_WIN32_HANDLE_PROPERTIES_KHR) {
       NapiObjectTypeError(info[3], "argument 4", "[object VkMemoryWin32HandlePropertiesKHR]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkMemoryWin32HandlePropertiesKHR>::Unwrap(obj);
-    if (!obj3->flush()) return env.Undefined();
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkMemoryWin32HandlePropertiesKHR* instance = reinterpret_cast<VkMemoryWin32HandlePropertiesKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pMemoryWin32HandleProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkMemoryWin32HandlePropertiesKHR' or 'null' for argument 4 'pMemoryWin32HandleProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkGetMemoryWin32HandlePropertiesKHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -12834,38 +12837,42 @@ Napi::Value _vkGetMemoryWin32HandlePropertiesKHR(const Napi::CallbackInfo& info)
 Napi::Value _vkGetMemoryFdKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkMemoryGetFdInfoKHR* obj1;
+  Napi::Object obj1;
   VkMemoryGetFdInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkMemoryGetFdInfoKHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_MEMORY_GET_FD_INFO_KHR) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkMemoryGetFdInfoKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkMemoryGetFdInfoKHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkMemoryGetFdInfoKHR* instance = reinterpret_cast<VkMemoryGetFdInfoKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pGetFdInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkMemoryGetFdInfoKHR' or 'null' for argument 2 'pGetFdInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj2;
@@ -12887,7 +12894,7 @@ Napi::Value _vkGetMemoryFdKHR(const Napi::CallbackInfo& info) {
     $p1,
     &$p2
   );
-    obj2.Set("$", $p2);
+    if (info[2].IsObject()) obj2.Set("$", $p2);
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -12897,42 +12904,46 @@ Napi::Value _vkGetMemoryFdKHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetMemoryFdPropertiesKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
 
   int $p2 = static_cast<int>(info[2].As<Napi::Number>().Int64Value());
 
-  _VkMemoryFdPropertiesKHR* obj3;
+  Napi::Object obj3;
   VkMemoryFdPropertiesKHR *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkMemoryFdPropertiesKHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_MEMORY_FD_PROPERTIES_KHR) {
       NapiObjectTypeError(info[3], "argument 4", "[object VkMemoryFdPropertiesKHR]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkMemoryFdPropertiesKHR>::Unwrap(obj);
-    if (!obj3->flush()) return env.Undefined();
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkMemoryFdPropertiesKHR* instance = reinterpret_cast<VkMemoryFdPropertiesKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pMemoryFdProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkMemoryFdPropertiesKHR' or 'null' for argument 4 'pMemoryFdProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkGetMemoryFdPropertiesKHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -12949,55 +12960,62 @@ Napi::Value _vkGetMemoryFdPropertiesKHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetPhysicalDeviceExternalSemaphoreProperties(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPhysicalDeviceExternalSemaphoreInfo* obj1;
+  Napi::Object obj1;
   VkPhysicalDeviceExternalSemaphoreInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDeviceExternalSemaphoreInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_SEMAPHORE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceExternalSemaphoreInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPhysicalDeviceExternalSemaphoreInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkPhysicalDeviceExternalSemaphoreInfo* instance = reinterpret_cast<VkPhysicalDeviceExternalSemaphoreInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pExternalSemaphoreInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceExternalSemaphoreInfo' or 'null' for argument 2 'pExternalSemaphoreInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkExternalSemaphoreProperties* obj2;
+  Napi::Object obj2;
   VkExternalSemaphoreProperties *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkExternalSemaphoreProperties::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_EXTERNAL_SEMAPHORE_PROPERTIES) {
       NapiObjectTypeError(info[2], "argument 3", "[object VkExternalSemaphoreProperties]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkExternalSemaphoreProperties>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkExternalSemaphoreProperties* instance = reinterpret_cast<VkExternalSemaphoreProperties*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pExternalSemaphoreProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkExternalSemaphoreProperties' or 'null' for argument 3 'pExternalSemaphoreProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 vkGetPhysicalDeviceExternalSemaphoreProperties(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -13013,38 +13031,42 @@ vkGetPhysicalDeviceExternalSemaphoreProperties(
 Napi::Value _vkGetSemaphoreWin32HandleKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSemaphoreGetWin32HandleInfoKHR* obj1;
+  Napi::Object obj1;
   VkSemaphoreGetWin32HandleInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSemaphoreGetWin32HandleInfoKHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SEMAPHORE_GET_WIN32_HANDLE_INFO_KHR) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSemaphoreGetWin32HandleInfoKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSemaphoreGetWin32HandleInfoKHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkSemaphoreGetWin32HandleInfoKHR* instance = reinterpret_cast<VkSemaphoreGetWin32HandleInfoKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pGetWin32HandleInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSemaphoreGetWin32HandleInfoKHR' or 'null' for argument 2 'pGetWin32HandleInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj2;
@@ -13068,7 +13090,7 @@ Napi::Value _vkGetSemaphoreWin32HandleKHR(const Napi::CallbackInfo& info) {
     info[2].IsNull() ? nullptr : $p2
   );
   Napi::BigInt ptr2 = Napi::BigInt::New(env, (int64_t)$p2);
-  obj2.Set("$", ptr2);
+  if (info[2].IsObject()) obj2.Set("$", ptr2);
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -13078,38 +13100,42 @@ Napi::Value _vkGetSemaphoreWin32HandleKHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkImportSemaphoreWin32HandleKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImportSemaphoreWin32HandleInfoKHR* obj1;
+  Napi::Object obj1;
   VkImportSemaphoreWin32HandleInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImportSemaphoreWin32HandleInfoKHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkImportSemaphoreWin32HandleInfoKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkImportSemaphoreWin32HandleInfoKHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkImportSemaphoreWin32HandleInfoKHR* instance = reinterpret_cast<VkImportSemaphoreWin32HandleInfoKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pImportSemaphoreWin32HandleInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImportSemaphoreWin32HandleInfoKHR' or 'null' for argument 2 'pImportSemaphoreWin32HandleInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkImportSemaphoreWin32HandleKHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -13124,38 +13150,42 @@ Napi::Value _vkImportSemaphoreWin32HandleKHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetSemaphoreFdKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSemaphoreGetFdInfoKHR* obj1;
+  Napi::Object obj1;
   VkSemaphoreGetFdInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSemaphoreGetFdInfoKHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SEMAPHORE_GET_FD_INFO_KHR) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSemaphoreGetFdInfoKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSemaphoreGetFdInfoKHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkSemaphoreGetFdInfoKHR* instance = reinterpret_cast<VkSemaphoreGetFdInfoKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pGetFdInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSemaphoreGetFdInfoKHR' or 'null' for argument 2 'pGetFdInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj2;
@@ -13177,7 +13207,7 @@ Napi::Value _vkGetSemaphoreFdKHR(const Napi::CallbackInfo& info) {
     $p1,
     &$p2
   );
-    obj2.Set("$", $p2);
+    if (info[2].IsObject()) obj2.Set("$", $p2);
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -13187,38 +13217,42 @@ Napi::Value _vkGetSemaphoreFdKHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkImportSemaphoreFdKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImportSemaphoreFdInfoKHR* obj1;
+  Napi::Object obj1;
   VkImportSemaphoreFdInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImportSemaphoreFdInfoKHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_FD_INFO_KHR) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkImportSemaphoreFdInfoKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkImportSemaphoreFdInfoKHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkImportSemaphoreFdInfoKHR* instance = reinterpret_cast<VkImportSemaphoreFdInfoKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pImportSemaphoreFdInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImportSemaphoreFdInfoKHR' or 'null' for argument 2 'pImportSemaphoreFdInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkImportSemaphoreFdKHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -13233,55 +13267,62 @@ Napi::Value _vkImportSemaphoreFdKHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetPhysicalDeviceExternalFenceProperties(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPhysicalDeviceExternalFenceInfo* obj1;
+  Napi::Object obj1;
   VkPhysicalDeviceExternalFenceInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDeviceExternalFenceInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FENCE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceExternalFenceInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPhysicalDeviceExternalFenceInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkPhysicalDeviceExternalFenceInfo* instance = reinterpret_cast<VkPhysicalDeviceExternalFenceInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pExternalFenceInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceExternalFenceInfo' or 'null' for argument 2 'pExternalFenceInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkExternalFenceProperties* obj2;
+  Napi::Object obj2;
   VkExternalFenceProperties *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkExternalFenceProperties::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_EXTERNAL_FENCE_PROPERTIES) {
       NapiObjectTypeError(info[2], "argument 3", "[object VkExternalFenceProperties]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkExternalFenceProperties>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkExternalFenceProperties* instance = reinterpret_cast<VkExternalFenceProperties*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pExternalFenceProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkExternalFenceProperties' or 'null' for argument 3 'pExternalFenceProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 vkGetPhysicalDeviceExternalFenceProperties(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -13297,38 +13338,42 @@ vkGetPhysicalDeviceExternalFenceProperties(
 Napi::Value _vkGetFenceWin32HandleKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkFenceGetWin32HandleInfoKHR* obj1;
+  Napi::Object obj1;
   VkFenceGetWin32HandleInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkFenceGetWin32HandleInfoKHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_FENCE_GET_WIN32_HANDLE_INFO_KHR) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkFenceGetWin32HandleInfoKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkFenceGetWin32HandleInfoKHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkFenceGetWin32HandleInfoKHR* instance = reinterpret_cast<VkFenceGetWin32HandleInfoKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pGetWin32HandleInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFenceGetWin32HandleInfoKHR' or 'null' for argument 2 'pGetWin32HandleInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj2;
@@ -13352,7 +13397,7 @@ Napi::Value _vkGetFenceWin32HandleKHR(const Napi::CallbackInfo& info) {
     info[2].IsNull() ? nullptr : $p2
   );
   Napi::BigInt ptr2 = Napi::BigInt::New(env, (int64_t)$p2);
-  obj2.Set("$", ptr2);
+  if (info[2].IsObject()) obj2.Set("$", ptr2);
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -13362,38 +13407,42 @@ Napi::Value _vkGetFenceWin32HandleKHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkImportFenceWin32HandleKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImportFenceWin32HandleInfoKHR* obj1;
+  Napi::Object obj1;
   VkImportFenceWin32HandleInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImportFenceWin32HandleInfoKHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_IMPORT_FENCE_WIN32_HANDLE_INFO_KHR) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkImportFenceWin32HandleInfoKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkImportFenceWin32HandleInfoKHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkImportFenceWin32HandleInfoKHR* instance = reinterpret_cast<VkImportFenceWin32HandleInfoKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pImportFenceWin32HandleInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImportFenceWin32HandleInfoKHR' or 'null' for argument 2 'pImportFenceWin32HandleInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkImportFenceWin32HandleKHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -13408,38 +13457,42 @@ Napi::Value _vkImportFenceWin32HandleKHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetFenceFdKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkFenceGetFdInfoKHR* obj1;
+  Napi::Object obj1;
   VkFenceGetFdInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkFenceGetFdInfoKHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_FENCE_GET_FD_INFO_KHR) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkFenceGetFdInfoKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkFenceGetFdInfoKHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkFenceGetFdInfoKHR* instance = reinterpret_cast<VkFenceGetFdInfoKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pGetFdInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFenceGetFdInfoKHR' or 'null' for argument 2 'pGetFdInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj2;
@@ -13461,7 +13514,7 @@ Napi::Value _vkGetFenceFdKHR(const Napi::CallbackInfo& info) {
     $p1,
     &$p2
   );
-    obj2.Set("$", $p2);
+    if (info[2].IsObject()) obj2.Set("$", $p2);
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -13471,38 +13524,42 @@ Napi::Value _vkGetFenceFdKHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkImportFenceFdKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImportFenceFdInfoKHR* obj1;
+  Napi::Object obj1;
   VkImportFenceFdInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImportFenceFdInfoKHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_IMPORT_FENCE_FD_INFO_KHR) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkImportFenceFdInfoKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkImportFenceFdInfoKHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkImportFenceFdInfoKHR* instance = reinterpret_cast<VkImportFenceFdInfoKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pImportFenceFdInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImportFenceFdInfoKHR' or 'null' for argument 2 'pImportFenceFdInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkImportFenceFdKHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -13517,38 +13574,40 @@ Napi::Value _vkImportFenceFdKHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkReleaseDisplayEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDisplayKHR* obj1;
+  Napi::Object obj1;
   VkDisplayKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDisplayKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayKHR") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDisplayKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDisplayKHR>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkDisplayKHR* instance = reinterpret_cast<VkDisplayKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'display'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayKHR' or 'null' for argument 2 'display'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkReleaseDisplayEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -13563,55 +13622,60 @@ Napi::Value _vkReleaseDisplayEXT(const Napi::CallbackInfo& info) {
 Napi::Value _vkDisplayPowerControlEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDisplayKHR* obj1;
+  Napi::Object obj1;
   VkDisplayKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDisplayKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayKHR") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDisplayKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDisplayKHR>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkDisplayKHR* instance = reinterpret_cast<VkDisplayKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'display'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayKHR' or 'null' for argument 2 'display'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDisplayPowerInfoEXT* obj2;
+  Napi::Object obj2;
   VkDisplayPowerInfoEXT *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDisplayPowerInfoEXT::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DISPLAY_POWER_INFO_EXT) {
       NapiObjectTypeError(info[2], "argument 3", "[object VkDisplayPowerInfoEXT]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkDisplayPowerInfoEXT>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDisplayPowerInfoEXT* instance = reinterpret_cast<VkDisplayPowerInfoEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pDisplayPowerInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayPowerInfoEXT' or 'null' for argument 3 'pDisplayPowerInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkDisplayPowerControlEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -13627,56 +13691,61 @@ Napi::Value _vkDisplayPowerControlEXT(const Napi::CallbackInfo& info) {
 Napi::Value _vkRegisterDeviceEventEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDeviceEventInfoEXT* obj1;
+  Napi::Object obj1;
   VkDeviceEventInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDeviceEventInfoEXT::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEVICE_EVENT_INFO_EXT) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDeviceEventInfoEXT]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDeviceEventInfoEXT>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDeviceEventInfoEXT* instance = reinterpret_cast<VkDeviceEventInfoEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pDeviceEventInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceEventInfoEXT' or 'null' for argument 2 'pDeviceEventInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkFence* obj3;
+  Napi::Object obj3;
   VkFence *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkFence::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkFence") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkFence]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkFence>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkFence* instance = reinterpret_cast<VkFence*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pFence'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFence' or 'null' for argument 4 'pFence'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkRegisterDeviceEventEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -13693,73 +13762,79 @@ Napi::Value _vkRegisterDeviceEventEXT(const Napi::CallbackInfo& info) {
 Napi::Value _vkRegisterDisplayEventEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDisplayKHR* obj1;
+  Napi::Object obj1;
   VkDisplayKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDisplayKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayKHR") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDisplayKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDisplayKHR>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkDisplayKHR* instance = reinterpret_cast<VkDisplayKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'display'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayKHR' or 'null' for argument 2 'display'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDisplayEventInfoEXT* obj2;
+  Napi::Object obj2;
   VkDisplayEventInfoEXT *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDisplayEventInfoEXT::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DISPLAY_EVENT_INFO_EXT) {
       NapiObjectTypeError(info[2], "argument 3", "[object VkDisplayEventInfoEXT]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkDisplayEventInfoEXT>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDisplayEventInfoEXT* instance = reinterpret_cast<VkDisplayEventInfoEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pDisplayEventInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayEventInfoEXT' or 'null' for argument 3 'pDisplayEventInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkFence* obj4;
+  Napi::Object obj4;
   VkFence *$p4 = nullptr;
   if (info[4].IsObject()) {
     Napi::Object obj = info[4].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkFence::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkFence") {
       NapiObjectTypeError(info[4], "argument 5", "[object VkFence]");
       return env.Undefined();
     }
-    obj4 = Napi::ObjectWrap<_VkFence>::Unwrap(obj);
-    
-    $p4 = &obj4->instance;
+    obj4 = obj;
+    VkFence* instance = reinterpret_cast<VkFence*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p4 = instance;
   } else if (info[4].IsNull()) {
     $p4 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 5 'pFence'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFence' or 'null' for argument 5 'pFence'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkRegisterDisplayEventEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -13777,38 +13852,40 @@ Napi::Value _vkRegisterDisplayEventEXT(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetSwapchainCounterEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSwapchainKHR* obj1;
+  Napi::Object obj1;
   VkSwapchainKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSwapchainKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSwapchainKHR") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSwapchainKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSwapchainKHR>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkSwapchainKHR* instance = reinterpret_cast<VkSwapchainKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'swapchain'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 2 'swapchain'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   int32_t $p2 = static_cast<int32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -13834,7 +13911,7 @@ Napi::Value _vkGetSwapchainCounterEXT(const Napi::CallbackInfo& info) {
     &$p3
   );
     Napi::BigInt pnum3 = Napi::BigInt::New(env, (uint64_t)$p3);
-    obj3.Set("$", pnum3);
+    if (info[3].IsObject()) obj3.Set("$", pnum3);
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -13844,88 +13921,66 @@ Napi::Value _vkGetSwapchainCounterEXT(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2EXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSurfaceKHR* obj1;
+  Napi::Object obj1;
   VkSurfaceKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSurfaceKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceKHR") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSurfaceKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSurfaceKHR>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkSurfaceKHR* instance = reinterpret_cast<VkSurfaceKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'surface'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 2 'surface'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSurfaceCapabilities2EXT* obj2;
+  Napi::Object obj2;
   VkSurfaceCapabilities2EXT *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSurfaceCapabilities2EXT::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT) {
       NapiObjectTypeError(info[2], "argument 3", "[object VkSurfaceCapabilities2EXT]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkSurfaceCapabilities2EXT>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkSurfaceCapabilities2EXT* instance = reinterpret_cast<VkSurfaceCapabilities2EXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pSurfaceCapabilities'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceCapabilities2EXT' or 'null' for argument 3 'pSurfaceCapabilities'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1].IsNull() ? VK_NULL_HANDLE : *$p1,
     $p2
   );
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkExtent2D::constructor.New(args);
-    _VkExtent2D* unwrapped6 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    obj2->currentExtent.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj2->instance.currentExtent, sizeof(VkExtent2D));
-    
-  }
-      
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkExtent2D::constructor.New(args);
-    _VkExtent2D* unwrapped6 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    obj2->minImageExtent.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj2->instance.minImageExtent, sizeof(VkExtent2D));
-    
-  }
-      
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkExtent2D::constructor.New(args);
-    _VkExtent2D* unwrapped6 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    obj2->maxImageExtent.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj2->instance.maxImageExtent, sizeof(VkExtent2D));
-    
-  }
-      
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -13935,21 +13990,22 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2EXT(const Napi::CallbackInfo
 Napi::Value _vkEnumeratePhysicalDeviceGroups(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkInstance* obj0;
+  Napi::Object obj0;
   VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkInstance>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkInstance* instance = reinterpret_cast<VkInstance*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj1;
@@ -13976,8 +14032,8 @@ Napi::Value _vkEnumeratePhysicalDeviceGroups(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkPhysicalDeviceGroupProperties* result = Napi::ObjectWrap<_VkPhysicalDeviceGroupProperties>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[2].As<Napi::Array>();
@@ -13985,8 +14041,8 @@ Napi::Value _vkEnumeratePhysicalDeviceGroups(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkPhysicalDeviceGroupProperties* result = Napi::ObjectWrap<_VkPhysicalDeviceGroupProperties>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkPhysicalDeviceGroupProperties* instance = reinterpret_cast<VkPhysicalDeviceGroupProperties*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkPhysicalDeviceGroupProperties>>(data);
   } else if (!info[2].IsNull()) {
@@ -13999,20 +14055,17 @@ Napi::Value _vkEnumeratePhysicalDeviceGroups(const Napi::CallbackInfo& info) {
     &$p1,
     $p2 ? (VkPhysicalDeviceGroupProperties *) $p2.get()->data() : nullptr
   );
-    obj1.Set("$", $p1);
+    if (info[1].IsObject()) obj1.Set("$", $p1);
   if (info[2].IsArray()) {
     VkPhysicalDeviceGroupProperties* $pdata = $p2.get()->data();
     Napi::Array array = info[2].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkPhysicalDeviceGroupProperties* result = Napi::ObjectWrap<_VkPhysicalDeviceGroupProperties>::Unwrap(obj);
-      VkPhysicalDeviceGroupProperties *instance = &result->instance;
-      VkPhysicalDeviceGroupProperties *copy = &$pdata[ii];
-      
-      instance->sType = copy->sType;
-      instance->physicalDeviceCount = copy->physicalDeviceCount;
-      instance->subsetAllocation = copy->subsetAllocation;
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -14024,21 +14077,22 @@ Napi::Value _vkEnumeratePhysicalDeviceGroups(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetDeviceGroupPeerMemoryFeatures(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -14068,7 +14122,7 @@ vkGetDeviceGroupPeerMemoryFeatures(
     $p3,
     reinterpret_cast<VkPeerMemoryFeatureFlags *>(&$p4)
   );
-    obj4.Set("$", $p4);
+    if (info[4].IsObject()) obj4.Set("$", $p4);
   
   
   return env.Undefined();
@@ -14078,21 +14132,22 @@ vkGetDeviceGroupPeerMemoryFeatures(
 Napi::Value _vkBindBufferMemory2(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -14106,8 +14161,8 @@ Napi::Value _vkBindBufferMemory2(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkBindBufferMemoryInfo* result = Napi::ObjectWrap<_VkBindBufferMemoryInfo>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[2].As<Napi::Array>();
@@ -14115,8 +14170,8 @@ Napi::Value _vkBindBufferMemory2(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkBindBufferMemoryInfo* result = Napi::ObjectWrap<_VkBindBufferMemoryInfo>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkBindBufferMemoryInfo* instance = reinterpret_cast<VkBindBufferMemoryInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkBindBufferMemoryInfo>>(data);
   } else if (!info[2].IsNull()) {
@@ -14138,21 +14193,22 @@ Napi::Value _vkBindBufferMemory2(const Napi::CallbackInfo& info) {
 Napi::Value _vkBindImageMemory2(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -14166,8 +14222,8 @@ Napi::Value _vkBindImageMemory2(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkBindImageMemoryInfo* result = Napi::ObjectWrap<_VkBindImageMemoryInfo>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[2].As<Napi::Array>();
@@ -14175,8 +14231,8 @@ Napi::Value _vkBindImageMemory2(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkBindImageMemoryInfo* result = Napi::ObjectWrap<_VkBindImageMemoryInfo>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkBindImageMemoryInfo* instance = reinterpret_cast<VkBindImageMemoryInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkBindImageMemoryInfo>>(data);
   } else if (!info[2].IsNull()) {
@@ -14198,21 +14254,22 @@ Napi::Value _vkBindImageMemory2(const Napi::CallbackInfo& info) {
 Napi::Value _vkCmdSetDeviceMask(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -14229,52 +14286,47 @@ vkCmdSetDeviceMask(
 Napi::Value _vkGetDeviceGroupPresentCapabilitiesKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDeviceGroupPresentCapabilitiesKHR* obj1;
+  Napi::Object obj1;
   VkDeviceGroupPresentCapabilitiesKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDeviceGroupPresentCapabilitiesKHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_CAPABILITIES_KHR) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDeviceGroupPresentCapabilitiesKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDeviceGroupPresentCapabilitiesKHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDeviceGroupPresentCapabilitiesKHR* instance = reinterpret_cast<VkDeviceGroupPresentCapabilitiesKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pDeviceGroupPresentCapabilities'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceGroupPresentCapabilitiesKHR' or 'null' for argument 2 'pDeviceGroupPresentCapabilities'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkGetDeviceGroupPresentCapabilitiesKHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1
   );
-  {
-    // back reflect array
-    Napi::Array arr1 = Napi::Array::New(env, 32);
-    // populate array
-    for (unsigned int ii = 0; ii < 32; ++ii) {
-      arr1.Set(ii, Napi::Number::New(env, (&obj1->instance)->presentMask[ii]));
-    };
-    obj1->presentMask.Reset(arr1.ToObject(), 1);
-  }
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -14284,38 +14336,40 @@ Napi::Value _vkGetDeviceGroupPresentCapabilitiesKHR(const Napi::CallbackInfo& in
 Napi::Value _vkGetDeviceGroupSurfacePresentModesKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSurfaceKHR* obj1;
+  Napi::Object obj1;
   VkSurfaceKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSurfaceKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceKHR") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSurfaceKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSurfaceKHR>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkSurfaceKHR* instance = reinterpret_cast<VkSurfaceKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'surface'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 2 'surface'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj2;
@@ -14337,7 +14391,7 @@ Napi::Value _vkGetDeviceGroupSurfacePresentModesKHR(const Napi::CallbackInfo& in
     info[1].IsNull() ? VK_NULL_HANDLE : *$p1,
     reinterpret_cast<VkDeviceGroupPresentModeFlagsKHR *>(&$p2)
   );
-    obj2.Set("$", $p2);
+    if (info[2].IsObject()) obj2.Set("$", $p2);
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -14347,38 +14401,42 @@ Napi::Value _vkGetDeviceGroupSurfacePresentModesKHR(const Napi::CallbackInfo& in
 Napi::Value _vkAcquireNextImage2KHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkAcquireNextImageInfoKHR* obj1;
+  Napi::Object obj1;
   VkAcquireNextImageInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkAcquireNextImageInfoKHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkAcquireNextImageInfoKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkAcquireNextImageInfoKHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkAcquireNextImageInfoKHR* instance = reinterpret_cast<VkAcquireNextImageInfoKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pAcquireInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkAcquireNextImageInfoKHR' or 'null' for argument 2 'pAcquireInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj2;
@@ -14400,7 +14458,7 @@ Napi::Value _vkAcquireNextImage2KHR(const Napi::CallbackInfo& info) {
     $p1,
     &$p2
   );
-    obj2.Set("$", $p2);
+    if (info[2].IsObject()) obj2.Set("$", $p2);
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -14410,21 +14468,22 @@ Napi::Value _vkAcquireNextImage2KHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkCmdDispatchBase(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -14456,38 +14515,40 @@ vkCmdDispatchBase(
 Napi::Value _vkGetPhysicalDevicePresentRectanglesKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSurfaceKHR* obj1;
+  Napi::Object obj1;
   VkSurfaceKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSurfaceKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSurfaceKHR") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSurfaceKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSurfaceKHR>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkSurfaceKHR* instance = reinterpret_cast<VkSurfaceKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'surface'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 2 'surface'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj2;
@@ -14514,8 +14575,8 @@ Napi::Value _vkGetPhysicalDevicePresentRectanglesKHR(const Napi::CallbackInfo& i
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkRect2D* result = Napi::ObjectWrap<_VkRect2D>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[3].As<Napi::Array>();
@@ -14523,8 +14584,8 @@ Napi::Value _vkGetPhysicalDevicePresentRectanglesKHR(const Napi::CallbackInfo& i
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkRect2D* result = Napi::ObjectWrap<_VkRect2D>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkRect2D* instance = reinterpret_cast<VkRect2D*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkRect2D>>(data);
   } else if (!info[3].IsNull()) {
@@ -14538,33 +14599,17 @@ Napi::Value _vkGetPhysicalDevicePresentRectanglesKHR(const Napi::CallbackInfo& i
     &$p2,
     $p3 ? (VkRect2D *) $p3.get()->data() : nullptr
   );
-    obj2.Set("$", $p2);
+    if (info[2].IsObject()) obj2.Set("$", $p2);
   if (info[3].IsArray()) {
     VkRect2D* $pdata = $p3.get()->data();
     Napi::Array array = info[3].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkRect2D* result = Napi::ObjectWrap<_VkRect2D>::Unwrap(obj);
-      VkRect2D *instance = &result->instance;
-      VkRect2D *copy = &$pdata[ii];
-      
-      instance->offset = copy->offset;
-      if (&copy->offset != nullptr) {
-        std::vector<napi_value> args;
-        Napi::Object inst = _VkOffset2D::constructor.New(args);
-        _VkOffset2D* unwrapped = Napi::ObjectWrap<_VkOffset2D>::Unwrap(inst);
-        result->offset.Reset(inst, 1);
-        unwrapped->instance = copy->offset;
-      }
-      instance->extent = copy->extent;
-      if (&copy->extent != nullptr) {
-        std::vector<napi_value> args;
-        Napi::Object inst = _VkExtent2D::constructor.New(args);
-        _VkExtent2D* unwrapped = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-        result->extent.Reset(inst, 1);
-        unwrapped->instance = copy->extent;
-      }
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -14576,56 +14621,61 @@ Napi::Value _vkGetPhysicalDevicePresentRectanglesKHR(const Napi::CallbackInfo& i
 Napi::Value _vkCreateDescriptorUpdateTemplate(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDescriptorUpdateTemplateCreateInfo* obj1;
+  Napi::Object obj1;
   VkDescriptorUpdateTemplateCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDescriptorUpdateTemplateCreateInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDescriptorUpdateTemplateCreateInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDescriptorUpdateTemplateCreateInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDescriptorUpdateTemplateCreateInfo* instance = reinterpret_cast<VkDescriptorUpdateTemplateCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorUpdateTemplateCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkDescriptorUpdateTemplate* obj3;
+  Napi::Object obj3;
   VkDescriptorUpdateTemplate *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDescriptorUpdateTemplate::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorUpdateTemplate") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkDescriptorUpdateTemplate]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkDescriptorUpdateTemplate>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkDescriptorUpdateTemplate* instance = reinterpret_cast<VkDescriptorUpdateTemplate*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pDescriptorUpdateTemplate'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorUpdateTemplate' or 'null' for argument 4 'pDescriptorUpdateTemplate'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkCreateDescriptorUpdateTemplate(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -14642,38 +14692,40 @@ Napi::Value _vkCreateDescriptorUpdateTemplate(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyDescriptorUpdateTemplate(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDescriptorUpdateTemplate* obj1;
+  Napi::Object obj1;
   VkDescriptorUpdateTemplate *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDescriptorUpdateTemplate::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorUpdateTemplate") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDescriptorUpdateTemplate]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDescriptorUpdateTemplate>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkDescriptorUpdateTemplate* instance = reinterpret_cast<VkDescriptorUpdateTemplate*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'descriptorUpdateTemplate'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorUpdateTemplate' or 'null' for argument 2 'descriptorUpdateTemplate'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 vkDestroyDescriptorUpdateTemplate(
@@ -14690,55 +14742,58 @@ vkDestroyDescriptorUpdateTemplate(
 Napi::Value _vkUpdateDescriptorSetWithTemplate(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDescriptorSet* obj1;
+  Napi::Object obj1;
   VkDescriptorSet *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDescriptorSet::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorSet") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDescriptorSet]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDescriptorSet>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkDescriptorSet* instance = reinterpret_cast<VkDescriptorSet*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'descriptorSet'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorSet' or 'null' for argument 2 'descriptorSet'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDescriptorUpdateTemplate* obj2;
+  Napi::Object obj2;
   VkDescriptorUpdateTemplate *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDescriptorUpdateTemplate::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorUpdateTemplate") {
       NapiObjectTypeError(info[2], "argument 3", "[object VkDescriptorUpdateTemplate]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkDescriptorUpdateTemplate>::Unwrap(obj);
-    
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    VkDescriptorUpdateTemplate* instance = reinterpret_cast<VkDescriptorUpdateTemplate*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'descriptorUpdateTemplate'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorUpdateTemplate' or 'null' for argument 3 'descriptorUpdateTemplate'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   void* $p3 = nullptr;
@@ -14764,55 +14819,58 @@ vkUpdateDescriptorSetWithTemplate(
 Napi::Value _vkCmdPushDescriptorSetWithTemplateKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDescriptorUpdateTemplate* obj1;
+  Napi::Object obj1;
   VkDescriptorUpdateTemplate *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDescriptorUpdateTemplate::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDescriptorUpdateTemplate") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDescriptorUpdateTemplate]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDescriptorUpdateTemplate>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkDescriptorUpdateTemplate* instance = reinterpret_cast<VkDescriptorUpdateTemplate*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'descriptorUpdateTemplate'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorUpdateTemplate' or 'null' for argument 2 'descriptorUpdateTemplate'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPipelineLayout* obj2;
+  Napi::Object obj2;
   VkPipelineLayout *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPipelineLayout::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineLayout") {
       NapiObjectTypeError(info[2], "argument 3", "[object VkPipelineLayout]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkPipelineLayout>::Unwrap(obj);
-    
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    VkPipelineLayout* instance = reinterpret_cast<VkPipelineLayout*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'layout'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineLayout' or 'null' for argument 3 'layout'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
@@ -14841,21 +14899,22 @@ $vkCmdPushDescriptorSetWithTemplateKHR(
 Napi::Value _vkSetHdrMetadataEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -14869,8 +14928,8 @@ Napi::Value _vkSetHdrMetadataEXT(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSwapchainKHR* result = Napi::ObjectWrap<_VkSwapchainKHR>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkSwapchainKHR* instance = reinterpret_cast<VkSwapchainKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkSwapchainKHR>>(data);
   } else if (!info[2].IsNull()) {
@@ -14888,8 +14947,8 @@ Napi::Value _vkSetHdrMetadataEXT(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkHdrMetadataEXT* result = Napi::ObjectWrap<_VkHdrMetadataEXT>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[3].As<Napi::Array>();
@@ -14897,8 +14956,8 @@ Napi::Value _vkSetHdrMetadataEXT(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkHdrMetadataEXT* result = Napi::ObjectWrap<_VkHdrMetadataEXT>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkHdrMetadataEXT* instance = reinterpret_cast<VkHdrMetadataEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkHdrMetadataEXT>>(data);
   } else if (!info[3].IsNull()) {
@@ -14921,38 +14980,40 @@ $vkSetHdrMetadataEXT(
 Napi::Value _vkGetSwapchainStatusKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSwapchainKHR* obj1;
+  Napi::Object obj1;
   VkSwapchainKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSwapchainKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSwapchainKHR") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSwapchainKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSwapchainKHR>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkSwapchainKHR* instance = reinterpret_cast<VkSwapchainKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'swapchain'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 2 'swapchain'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkGetSwapchainStatusKHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -14967,55 +15028,60 @@ Napi::Value _vkGetSwapchainStatusKHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetRefreshCycleDurationGOOGLE(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSwapchainKHR* obj1;
+  Napi::Object obj1;
   VkSwapchainKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSwapchainKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSwapchainKHR") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSwapchainKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSwapchainKHR>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkSwapchainKHR* instance = reinterpret_cast<VkSwapchainKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'swapchain'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 2 'swapchain'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkRefreshCycleDurationGOOGLE* obj2;
+  Napi::Object obj2;
   VkRefreshCycleDurationGOOGLE *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkRefreshCycleDurationGOOGLE::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkRefreshCycleDurationGOOGLE") {
       NapiObjectTypeError(info[2], "argument 3", "[object VkRefreshCycleDurationGOOGLE]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkRefreshCycleDurationGOOGLE>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkRefreshCycleDurationGOOGLE* instance = reinterpret_cast<VkRefreshCycleDurationGOOGLE*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pDisplayTimingProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkRefreshCycleDurationGOOGLE' or 'null' for argument 3 'pDisplayTimingProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkGetRefreshCycleDurationGOOGLE(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -15031,38 +15097,40 @@ Napi::Value _vkGetRefreshCycleDurationGOOGLE(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetPastPresentationTimingGOOGLE(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSwapchainKHR* obj1;
+  Napi::Object obj1;
   VkSwapchainKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSwapchainKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSwapchainKHR") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSwapchainKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSwapchainKHR>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkSwapchainKHR* instance = reinterpret_cast<VkSwapchainKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'swapchain'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 2 'swapchain'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj2;
@@ -15089,8 +15157,8 @@ Napi::Value _vkGetPastPresentationTimingGOOGLE(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkPastPresentationTimingGOOGLE* result = Napi::ObjectWrap<_VkPastPresentationTimingGOOGLE>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[3].As<Napi::Array>();
@@ -15098,8 +15166,8 @@ Napi::Value _vkGetPastPresentationTimingGOOGLE(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkPastPresentationTimingGOOGLE* result = Napi::ObjectWrap<_VkPastPresentationTimingGOOGLE>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkPastPresentationTimingGOOGLE* instance = reinterpret_cast<VkPastPresentationTimingGOOGLE*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkPastPresentationTimingGOOGLE>>(data);
   } else if (!info[3].IsNull()) {
@@ -15113,22 +15181,17 @@ Napi::Value _vkGetPastPresentationTimingGOOGLE(const Napi::CallbackInfo& info) {
     &$p2,
     $p3 ? (VkPastPresentationTimingGOOGLE *) $p3.get()->data() : nullptr
   );
-    obj2.Set("$", $p2);
+    if (info[2].IsObject()) obj2.Set("$", $p2);
   if (info[3].IsArray()) {
     VkPastPresentationTimingGOOGLE* $pdata = $p3.get()->data();
     Napi::Array array = info[3].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkPastPresentationTimingGOOGLE* result = Napi::ObjectWrap<_VkPastPresentationTimingGOOGLE>::Unwrap(obj);
-      VkPastPresentationTimingGOOGLE *instance = &result->instance;
-      VkPastPresentationTimingGOOGLE *copy = &$pdata[ii];
-      
-      instance->presentID = copy->presentID;
-      instance->desiredPresentTime = copy->desiredPresentTime;
-      instance->actualPresentTime = copy->actualPresentTime;
-      instance->earliestPresentTime = copy->earliestPresentTime;
-      instance->presentMargin = copy->presentMargin;
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -15140,21 +15203,22 @@ Napi::Value _vkGetPastPresentationTimingGOOGLE(const Napi::CallbackInfo& info) {
 Napi::Value _vkCmdSetViewportWScalingNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -15170,8 +15234,8 @@ Napi::Value _vkCmdSetViewportWScalingNV(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkViewportWScalingNV* result = Napi::ObjectWrap<_VkViewportWScalingNV>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[3].As<Napi::Array>();
@@ -15179,8 +15243,8 @@ Napi::Value _vkCmdSetViewportWScalingNV(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkViewportWScalingNV* result = Napi::ObjectWrap<_VkViewportWScalingNV>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkViewportWScalingNV* instance = reinterpret_cast<VkViewportWScalingNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkViewportWScalingNV>>(data);
   } else if (!info[3].IsNull()) {
@@ -15203,21 +15267,22 @@ $vkCmdSetViewportWScalingNV(
 Napi::Value _vkCmdSetDiscardRectangleEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -15233,8 +15298,8 @@ Napi::Value _vkCmdSetDiscardRectangleEXT(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkRect2D* result = Napi::ObjectWrap<_VkRect2D>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[3].As<Napi::Array>();
@@ -15242,8 +15307,8 @@ Napi::Value _vkCmdSetDiscardRectangleEXT(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkRect2D* result = Napi::ObjectWrap<_VkRect2D>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkRect2D* instance = reinterpret_cast<VkRect2D*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkRect2D>>(data);
   } else if (!info[3].IsNull()) {
@@ -15266,38 +15331,42 @@ $vkCmdSetDiscardRectangleEXT(
 Napi::Value _vkCmdSetSampleLocationsEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSampleLocationsInfoEXT* obj1;
+  Napi::Object obj1;
   VkSampleLocationsInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSampleLocationsInfoEXT::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SAMPLE_LOCATIONS_INFO_EXT) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSampleLocationsInfoEXT]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSampleLocationsInfoEXT>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkSampleLocationsInfoEXT* instance = reinterpret_cast<VkSampleLocationsInfoEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pSampleLocationsInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSampleLocationsInfoEXT' or 'null' for argument 2 'pSampleLocationsInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 $vkCmdSetSampleLocationsEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -15312,55 +15381,50 @@ $vkCmdSetSampleLocationsEXT(
 Napi::Value _vkGetPhysicalDeviceMultisamplePropertiesEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
 
-  _VkMultisamplePropertiesEXT* obj2;
+  Napi::Object obj2;
   VkMultisamplePropertiesEXT *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkMultisamplePropertiesEXT::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_MULTISAMPLE_PROPERTIES_EXT) {
       NapiObjectTypeError(info[2], "argument 3", "[object VkMultisamplePropertiesEXT]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkMultisamplePropertiesEXT>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkMultisamplePropertiesEXT* instance = reinterpret_cast<VkMultisamplePropertiesEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pMultisampleProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkMultisamplePropertiesEXT' or 'null' for argument 3 'pMultisampleProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 $vkGetPhysicalDeviceMultisamplePropertiesEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     static_cast<VkSampleCountFlagBits>($p1),
     $p2
   );
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkExtent2D::constructor.New(args);
-    _VkExtent2D* unwrapped6 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    obj2->maxSampleLocationGridSize.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj2->instance.maxSampleLocationGridSize, sizeof(VkExtent2D));
-    
-  }
-      
   
   
   return env.Undefined();
@@ -15370,97 +15434,68 @@ $vkGetPhysicalDeviceMultisamplePropertiesEXT(
 Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2KHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPhysicalDeviceSurfaceInfo2KHR* obj1;
+  Napi::Object obj1;
   VkPhysicalDeviceSurfaceInfo2KHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDeviceSurfaceInfo2KHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SURFACE_INFO_2_KHR) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceSurfaceInfo2KHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPhysicalDeviceSurfaceInfo2KHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkPhysicalDeviceSurfaceInfo2KHR* instance = reinterpret_cast<VkPhysicalDeviceSurfaceInfo2KHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pSurfaceInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceSurfaceInfo2KHR' or 'null' for argument 2 'pSurfaceInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSurfaceCapabilities2KHR* obj2;
+  Napi::Object obj2;
   VkSurfaceCapabilities2KHR *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSurfaceCapabilities2KHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_KHR) {
       NapiObjectTypeError(info[2], "argument 3", "[object VkSurfaceCapabilities2KHR]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkSurfaceCapabilities2KHR>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkSurfaceCapabilities2KHR* instance = reinterpret_cast<VkSurfaceCapabilities2KHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pSurfaceCapabilities'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceCapabilities2KHR' or 'null' for argument 3 'pSurfaceCapabilities'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2
   );
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkSurfaceCapabilitiesKHR::constructor.New(args);
-    _VkSurfaceCapabilitiesKHR* unwrapped6 = Napi::ObjectWrap<_VkSurfaceCapabilitiesKHR>::Unwrap(inst);
-    obj2->surfaceCapabilities.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj2->instance.surfaceCapabilities, sizeof(VkSurfaceCapabilitiesKHR));
-    
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkExtent2D::constructor.New(args);
-    _VkExtent2D* unwrapped12 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    unwrapped6->currentExtent.Reset(inst, 1);
-    memcpy((&unwrapped12->instance), &unwrapped6->instance.currentExtent, sizeof(VkExtent2D));
-    
-  }
-      
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkExtent2D::constructor.New(args);
-    _VkExtent2D* unwrapped12 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    unwrapped6->minImageExtent.Reset(inst, 1);
-    memcpy((&unwrapped12->instance), &unwrapped6->instance.minImageExtent, sizeof(VkExtent2D));
-    
-  }
-      
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkExtent2D::constructor.New(args);
-    _VkExtent2D* unwrapped12 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    unwrapped6->maxImageExtent.Reset(inst, 1);
-    memcpy((&unwrapped12->instance), &unwrapped6->instance.maxImageExtent, sizeof(VkExtent2D));
-    
-  }
-      
-  }
-      
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -15470,38 +15505,42 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2KHR(const Napi::CallbackInfo
 Napi::Value _vkGetPhysicalDeviceSurfaceFormats2KHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPhysicalDeviceSurfaceInfo2KHR* obj1;
+  Napi::Object obj1;
   VkPhysicalDeviceSurfaceInfo2KHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDeviceSurfaceInfo2KHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SURFACE_INFO_2_KHR) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPhysicalDeviceSurfaceInfo2KHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPhysicalDeviceSurfaceInfo2KHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkPhysicalDeviceSurfaceInfo2KHR* instance = reinterpret_cast<VkPhysicalDeviceSurfaceInfo2KHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pSurfaceInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceSurfaceInfo2KHR' or 'null' for argument 2 'pSurfaceInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj2;
@@ -15528,8 +15567,8 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormats2KHR(const Napi::CallbackInfo& inf
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSurfaceFormat2KHR* result = Napi::ObjectWrap<_VkSurfaceFormat2KHR>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[3].As<Napi::Array>();
@@ -15537,8 +15576,8 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormats2KHR(const Napi::CallbackInfo& inf
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSurfaceFormat2KHR* result = Napi::ObjectWrap<_VkSurfaceFormat2KHR>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkSurfaceFormat2KHR* instance = reinterpret_cast<VkSurfaceFormat2KHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkSurfaceFormat2KHR>>(data);
   } else if (!info[3].IsNull()) {
@@ -15552,26 +15591,17 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormats2KHR(const Napi::CallbackInfo& inf
     &$p2,
     $p3 ? (VkSurfaceFormat2KHR *) $p3.get()->data() : nullptr
   );
-    obj2.Set("$", $p2);
+    if (info[2].IsObject()) obj2.Set("$", $p2);
   if (info[3].IsArray()) {
     VkSurfaceFormat2KHR* $pdata = $p3.get()->data();
     Napi::Array array = info[3].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSurfaceFormat2KHR* result = Napi::ObjectWrap<_VkSurfaceFormat2KHR>::Unwrap(obj);
-      VkSurfaceFormat2KHR *instance = &result->instance;
-      VkSurfaceFormat2KHR *copy = &$pdata[ii];
-      
-      instance->sType = copy->sType;
-      instance->surfaceFormat = copy->surfaceFormat;
-      if (&copy->surfaceFormat != nullptr) {
-        std::vector<napi_value> args;
-        Napi::Object inst = _VkSurfaceFormatKHR::constructor.New(args);
-        _VkSurfaceFormatKHR* unwrapped = Napi::ObjectWrap<_VkSurfaceFormatKHR>::Unwrap(inst);
-        result->surfaceFormat.Reset(inst, 1);
-        unwrapped->instance = copy->surfaceFormat;
-      }
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -15583,21 +15613,22 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormats2KHR(const Napi::CallbackInfo& inf
 Napi::Value _vkGetPhysicalDeviceDisplayProperties2KHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj1;
@@ -15624,8 +15655,8 @@ Napi::Value _vkGetPhysicalDeviceDisplayProperties2KHR(const Napi::CallbackInfo& 
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkDisplayProperties2KHR* result = Napi::ObjectWrap<_VkDisplayProperties2KHR>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[2].As<Napi::Array>();
@@ -15633,8 +15664,8 @@ Napi::Value _vkGetPhysicalDeviceDisplayProperties2KHR(const Napi::CallbackInfo& 
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkDisplayProperties2KHR* result = Napi::ObjectWrap<_VkDisplayProperties2KHR>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkDisplayProperties2KHR* instance = reinterpret_cast<VkDisplayProperties2KHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkDisplayProperties2KHR>>(data);
   } else if (!info[2].IsNull()) {
@@ -15647,26 +15678,17 @@ Napi::Value _vkGetPhysicalDeviceDisplayProperties2KHR(const Napi::CallbackInfo& 
     &$p1,
     $p2 ? (VkDisplayProperties2KHR *) $p2.get()->data() : nullptr
   );
-    obj1.Set("$", $p1);
+    if (info[1].IsObject()) obj1.Set("$", $p1);
   if (info[2].IsArray()) {
     VkDisplayProperties2KHR* $pdata = $p2.get()->data();
     Napi::Array array = info[2].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkDisplayProperties2KHR* result = Napi::ObjectWrap<_VkDisplayProperties2KHR>::Unwrap(obj);
-      VkDisplayProperties2KHR *instance = &result->instance;
-      VkDisplayProperties2KHR *copy = &$pdata[ii];
-      
-      instance->sType = copy->sType;
-      instance->displayProperties = copy->displayProperties;
-      if (&copy->displayProperties != nullptr) {
-        std::vector<napi_value> args;
-        Napi::Object inst = _VkDisplayPropertiesKHR::constructor.New(args);
-        _VkDisplayPropertiesKHR* unwrapped = Napi::ObjectWrap<_VkDisplayPropertiesKHR>::Unwrap(inst);
-        result->displayProperties.Reset(inst, 1);
-        unwrapped->instance = copy->displayProperties;
-      }
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -15678,21 +15700,22 @@ Napi::Value _vkGetPhysicalDeviceDisplayProperties2KHR(const Napi::CallbackInfo& 
 Napi::Value _vkGetPhysicalDeviceDisplayPlaneProperties2KHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj1;
@@ -15719,8 +15742,8 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlaneProperties2KHR(const Napi::CallbackI
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkDisplayPlaneProperties2KHR* result = Napi::ObjectWrap<_VkDisplayPlaneProperties2KHR>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[2].As<Napi::Array>();
@@ -15728,8 +15751,8 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlaneProperties2KHR(const Napi::CallbackI
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkDisplayPlaneProperties2KHR* result = Napi::ObjectWrap<_VkDisplayPlaneProperties2KHR>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkDisplayPlaneProperties2KHR* instance = reinterpret_cast<VkDisplayPlaneProperties2KHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkDisplayPlaneProperties2KHR>>(data);
   } else if (!info[2].IsNull()) {
@@ -15742,26 +15765,17 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlaneProperties2KHR(const Napi::CallbackI
     &$p1,
     $p2 ? (VkDisplayPlaneProperties2KHR *) $p2.get()->data() : nullptr
   );
-    obj1.Set("$", $p1);
+    if (info[1].IsObject()) obj1.Set("$", $p1);
   if (info[2].IsArray()) {
     VkDisplayPlaneProperties2KHR* $pdata = $p2.get()->data();
     Napi::Array array = info[2].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkDisplayPlaneProperties2KHR* result = Napi::ObjectWrap<_VkDisplayPlaneProperties2KHR>::Unwrap(obj);
-      VkDisplayPlaneProperties2KHR *instance = &result->instance;
-      VkDisplayPlaneProperties2KHR *copy = &$pdata[ii];
-      
-      instance->sType = copy->sType;
-      instance->displayPlaneProperties = copy->displayPlaneProperties;
-      if (&copy->displayPlaneProperties != nullptr) {
-        std::vector<napi_value> args;
-        Napi::Object inst = _VkDisplayPlanePropertiesKHR::constructor.New(args);
-        _VkDisplayPlanePropertiesKHR* unwrapped = Napi::ObjectWrap<_VkDisplayPlanePropertiesKHR>::Unwrap(inst);
-        result->displayPlaneProperties.Reset(inst, 1);
-        unwrapped->instance = copy->displayPlaneProperties;
-      }
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -15773,38 +15787,40 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlaneProperties2KHR(const Napi::CallbackI
 Napi::Value _vkGetDisplayModeProperties2KHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDisplayKHR* obj1;
+  Napi::Object obj1;
   VkDisplayKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDisplayKHR::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDisplayKHR") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDisplayKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDisplayKHR>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkDisplayKHR* instance = reinterpret_cast<VkDisplayKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'display'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayKHR' or 'null' for argument 2 'display'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj2;
@@ -15831,8 +15847,8 @@ Napi::Value _vkGetDisplayModeProperties2KHR(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkDisplayModeProperties2KHR* result = Napi::ObjectWrap<_VkDisplayModeProperties2KHR>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[3].As<Napi::Array>();
@@ -15840,8 +15856,8 @@ Napi::Value _vkGetDisplayModeProperties2KHR(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkDisplayModeProperties2KHR* result = Napi::ObjectWrap<_VkDisplayModeProperties2KHR>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkDisplayModeProperties2KHR* instance = reinterpret_cast<VkDisplayModeProperties2KHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkDisplayModeProperties2KHR>>(data);
   } else if (!info[3].IsNull()) {
@@ -15855,26 +15871,17 @@ Napi::Value _vkGetDisplayModeProperties2KHR(const Napi::CallbackInfo& info) {
     &$p2,
     $p3 ? (VkDisplayModeProperties2KHR *) $p3.get()->data() : nullptr
   );
-    obj2.Set("$", $p2);
+    if (info[2].IsObject()) obj2.Set("$", $p2);
   if (info[3].IsArray()) {
     VkDisplayModeProperties2KHR* $pdata = $p3.get()->data();
     Napi::Array array = info[3].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkDisplayModeProperties2KHR* result = Napi::ObjectWrap<_VkDisplayModeProperties2KHR>::Unwrap(obj);
-      VkDisplayModeProperties2KHR *instance = &result->instance;
-      VkDisplayModeProperties2KHR *copy = &$pdata[ii];
-      
-      instance->sType = copy->sType;
-      instance->displayModeProperties = copy->displayModeProperties;
-      if (&copy->displayModeProperties != nullptr) {
-        std::vector<napi_value> args;
-        Napi::Object inst = _VkDisplayModePropertiesKHR::constructor.New(args);
-        _VkDisplayModePropertiesKHR* unwrapped = Napi::ObjectWrap<_VkDisplayModePropertiesKHR>::Unwrap(inst);
-        result->displayModeProperties.Reset(inst, 1);
-        unwrapped->instance = copy->displayModeProperties;
-      }
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -15886,142 +15893,68 @@ Napi::Value _vkGetDisplayModeProperties2KHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetDisplayPlaneCapabilities2KHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDisplayPlaneInfo2KHR* obj1;
+  Napi::Object obj1;
   VkDisplayPlaneInfo2KHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDisplayPlaneInfo2KHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DISPLAY_PLANE_INFO_2_KHR) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDisplayPlaneInfo2KHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDisplayPlaneInfo2KHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDisplayPlaneInfo2KHR* instance = reinterpret_cast<VkDisplayPlaneInfo2KHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pDisplayPlaneInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayPlaneInfo2KHR' or 'null' for argument 2 'pDisplayPlaneInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDisplayPlaneCapabilities2KHR* obj2;
+  Napi::Object obj2;
   VkDisplayPlaneCapabilities2KHR *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDisplayPlaneCapabilities2KHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DISPLAY_PLANE_CAPABILITIES_2_KHR) {
       NapiObjectTypeError(info[2], "argument 3", "[object VkDisplayPlaneCapabilities2KHR]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkDisplayPlaneCapabilities2KHR>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDisplayPlaneCapabilities2KHR* instance = reinterpret_cast<VkDisplayPlaneCapabilities2KHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pCapabilities'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayPlaneCapabilities2KHR' or 'null' for argument 3 'pCapabilities'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkGetDisplayPlaneCapabilities2KHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2
   );
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkDisplayPlaneCapabilitiesKHR::constructor.New(args);
-    _VkDisplayPlaneCapabilitiesKHR* unwrapped6 = Napi::ObjectWrap<_VkDisplayPlaneCapabilitiesKHR>::Unwrap(inst);
-    obj2->capabilities.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj2->instance.capabilities, sizeof(VkDisplayPlaneCapabilitiesKHR));
-    
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkOffset2D::constructor.New(args);
-    _VkOffset2D* unwrapped12 = Napi::ObjectWrap<_VkOffset2D>::Unwrap(inst);
-    unwrapped6->minSrcPosition.Reset(inst, 1);
-    memcpy((&unwrapped12->instance), &unwrapped6->instance.minSrcPosition, sizeof(VkOffset2D));
-    
-  }
-      
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkOffset2D::constructor.New(args);
-    _VkOffset2D* unwrapped12 = Napi::ObjectWrap<_VkOffset2D>::Unwrap(inst);
-    unwrapped6->maxSrcPosition.Reset(inst, 1);
-    memcpy((&unwrapped12->instance), &unwrapped6->instance.maxSrcPosition, sizeof(VkOffset2D));
-    
-  }
-      
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkExtent2D::constructor.New(args);
-    _VkExtent2D* unwrapped12 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    unwrapped6->minSrcExtent.Reset(inst, 1);
-    memcpy((&unwrapped12->instance), &unwrapped6->instance.minSrcExtent, sizeof(VkExtent2D));
-    
-  }
-      
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkExtent2D::constructor.New(args);
-    _VkExtent2D* unwrapped12 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    unwrapped6->maxSrcExtent.Reset(inst, 1);
-    memcpy((&unwrapped12->instance), &unwrapped6->instance.maxSrcExtent, sizeof(VkExtent2D));
-    
-  }
-      
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkOffset2D::constructor.New(args);
-    _VkOffset2D* unwrapped12 = Napi::ObjectWrap<_VkOffset2D>::Unwrap(inst);
-    unwrapped6->minDstPosition.Reset(inst, 1);
-    memcpy((&unwrapped12->instance), &unwrapped6->instance.minDstPosition, sizeof(VkOffset2D));
-    
-  }
-      
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkOffset2D::constructor.New(args);
-    _VkOffset2D* unwrapped12 = Napi::ObjectWrap<_VkOffset2D>::Unwrap(inst);
-    unwrapped6->maxDstPosition.Reset(inst, 1);
-    memcpy((&unwrapped12->instance), &unwrapped6->instance.maxDstPosition, sizeof(VkOffset2D));
-    
-  }
-      
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkExtent2D::constructor.New(args);
-    _VkExtent2D* unwrapped12 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    unwrapped6->minDstExtent.Reset(inst, 1);
-    memcpy((&unwrapped12->instance), &unwrapped6->instance.minDstExtent, sizeof(VkExtent2D));
-    
-  }
-      
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkExtent2D::constructor.New(args);
-    _VkExtent2D* unwrapped12 = Napi::ObjectWrap<_VkExtent2D>::Unwrap(inst);
-    unwrapped6->maxDstExtent.Reset(inst, 1);
-    memcpy((&unwrapped12->instance), &unwrapped6->instance.maxDstExtent, sizeof(VkExtent2D));
-    
-  }
-      
-  }
-      
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -16031,70 +15964,68 @@ Napi::Value _vkGetDisplayPlaneCapabilities2KHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetBufferMemoryRequirements2(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBufferMemoryRequirementsInfo2* obj1;
+  Napi::Object obj1;
   VkBufferMemoryRequirementsInfo2 *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBufferMemoryRequirementsInfo2::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_BUFFER_MEMORY_REQUIREMENTS_INFO_2) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkBufferMemoryRequirementsInfo2]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkBufferMemoryRequirementsInfo2>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkBufferMemoryRequirementsInfo2* instance = reinterpret_cast<VkBufferMemoryRequirementsInfo2*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBufferMemoryRequirementsInfo2' or 'null' for argument 2 'pInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkMemoryRequirements2* obj2;
+  Napi::Object obj2;
   VkMemoryRequirements2 *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkMemoryRequirements2::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_MEMORY_REQUIREMENTS_2) {
       NapiObjectTypeError(info[2], "argument 3", "[object VkMemoryRequirements2]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkMemoryRequirements2>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkMemoryRequirements2* instance = reinterpret_cast<VkMemoryRequirements2*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pMemoryRequirements'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkMemoryRequirements2' or 'null' for argument 3 'pMemoryRequirements'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 vkGetBufferMemoryRequirements2(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2
   );
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkMemoryRequirements::constructor.New(args);
-    _VkMemoryRequirements* unwrapped6 = Napi::ObjectWrap<_VkMemoryRequirements>::Unwrap(inst);
-    obj2->memoryRequirements.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj2->instance.memoryRequirements, sizeof(VkMemoryRequirements));
-    
-  }
-      
   
   
   return env.Undefined();
@@ -16104,70 +16035,68 @@ vkGetBufferMemoryRequirements2(
 Napi::Value _vkGetImageMemoryRequirements2(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImageMemoryRequirementsInfo2* obj1;
+  Napi::Object obj1;
   VkImageMemoryRequirementsInfo2 *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImageMemoryRequirementsInfo2::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_IMAGE_MEMORY_REQUIREMENTS_INFO_2) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkImageMemoryRequirementsInfo2]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkImageMemoryRequirementsInfo2>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkImageMemoryRequirementsInfo2* instance = reinterpret_cast<VkImageMemoryRequirementsInfo2*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImageMemoryRequirementsInfo2' or 'null' for argument 2 'pInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkMemoryRequirements2* obj2;
+  Napi::Object obj2;
   VkMemoryRequirements2 *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkMemoryRequirements2::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_MEMORY_REQUIREMENTS_2) {
       NapiObjectTypeError(info[2], "argument 3", "[object VkMemoryRequirements2]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkMemoryRequirements2>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkMemoryRequirements2* instance = reinterpret_cast<VkMemoryRequirements2*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pMemoryRequirements'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkMemoryRequirements2' or 'null' for argument 3 'pMemoryRequirements'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 vkGetImageMemoryRequirements2(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2
   );
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkMemoryRequirements::constructor.New(args);
-    _VkMemoryRequirements* unwrapped6 = Napi::ObjectWrap<_VkMemoryRequirements>::Unwrap(inst);
-    obj2->memoryRequirements.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj2->instance.memoryRequirements, sizeof(VkMemoryRequirements));
-    
-  }
-      
   
   
   return env.Undefined();
@@ -16177,38 +16106,42 @@ vkGetImageMemoryRequirements2(
 Napi::Value _vkGetImageSparseMemoryRequirements2(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImageSparseMemoryRequirementsInfo2* obj1;
+  Napi::Object obj1;
   VkImageSparseMemoryRequirementsInfo2 *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImageSparseMemoryRequirementsInfo2::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_IMAGE_SPARSE_MEMORY_REQUIREMENTS_INFO_2) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkImageSparseMemoryRequirementsInfo2]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkImageSparseMemoryRequirementsInfo2>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkImageSparseMemoryRequirementsInfo2* instance = reinterpret_cast<VkImageSparseMemoryRequirementsInfo2*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImageSparseMemoryRequirementsInfo2' or 'null' for argument 2 'pInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj2;
@@ -16235,8 +16168,8 @@ Napi::Value _vkGetImageSparseMemoryRequirements2(const Napi::CallbackInfo& info)
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSparseImageMemoryRequirements2* result = Napi::ObjectWrap<_VkSparseImageMemoryRequirements2>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[3].As<Napi::Array>();
@@ -16244,8 +16177,8 @@ Napi::Value _vkGetImageSparseMemoryRequirements2(const Napi::CallbackInfo& info)
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSparseImageMemoryRequirements2* result = Napi::ObjectWrap<_VkSparseImageMemoryRequirements2>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkSparseImageMemoryRequirements2* instance = reinterpret_cast<VkSparseImageMemoryRequirements2*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkSparseImageMemoryRequirements2>>(data);
   } else if (!info[3].IsNull()) {
@@ -16259,26 +16192,17 @@ vkGetImageSparseMemoryRequirements2(
     &$p2,
     $p3 ? (VkSparseImageMemoryRequirements2 *) $p3.get()->data() : nullptr
   );
-    obj2.Set("$", $p2);
+    if (info[2].IsObject()) obj2.Set("$", $p2);
   if (info[3].IsArray()) {
     VkSparseImageMemoryRequirements2* $pdata = $p3.get()->data();
     Napi::Array array = info[3].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkSparseImageMemoryRequirements2* result = Napi::ObjectWrap<_VkSparseImageMemoryRequirements2>::Unwrap(obj);
-      VkSparseImageMemoryRequirements2 *instance = &result->instance;
-      VkSparseImageMemoryRequirements2 *copy = &$pdata[ii];
-      
-      instance->sType = copy->sType;
-      instance->memoryRequirements = copy->memoryRequirements;
-      if (&copy->memoryRequirements != nullptr) {
-        std::vector<napi_value> args;
-        Napi::Object inst = _VkSparseImageMemoryRequirements::constructor.New(args);
-        _VkSparseImageMemoryRequirements* unwrapped = Napi::ObjectWrap<_VkSparseImageMemoryRequirements>::Unwrap(inst);
-        result->memoryRequirements.Reset(inst, 1);
-        unwrapped->instance = copy->memoryRequirements;
-      }
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -16290,56 +16214,61 @@ vkGetImageSparseMemoryRequirements2(
 Napi::Value _vkCreateSamplerYcbcrConversion(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSamplerYcbcrConversionCreateInfo* obj1;
+  Napi::Object obj1;
   VkSamplerYcbcrConversionCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSamplerYcbcrConversionCreateInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_CREATE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSamplerYcbcrConversionCreateInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSamplerYcbcrConversionCreateInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkSamplerYcbcrConversionCreateInfo* instance = reinterpret_cast<VkSamplerYcbcrConversionCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSamplerYcbcrConversionCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkSamplerYcbcrConversion* obj3;
+  Napi::Object obj3;
   VkSamplerYcbcrConversion *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSamplerYcbcrConversion::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSamplerYcbcrConversion") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkSamplerYcbcrConversion]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkSamplerYcbcrConversion>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkSamplerYcbcrConversion* instance = reinterpret_cast<VkSamplerYcbcrConversion*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pYcbcrConversion'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSamplerYcbcrConversion' or 'null' for argument 4 'pYcbcrConversion'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = vkCreateSamplerYcbcrConversion(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -16356,38 +16285,40 @@ Napi::Value _vkCreateSamplerYcbcrConversion(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroySamplerYcbcrConversion(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSamplerYcbcrConversion* obj1;
+  Napi::Object obj1;
   VkSamplerYcbcrConversion *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSamplerYcbcrConversion::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkSamplerYcbcrConversion") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSamplerYcbcrConversion]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSamplerYcbcrConversion>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkSamplerYcbcrConversion* instance = reinterpret_cast<VkSamplerYcbcrConversion*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'ycbcrConversion'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSamplerYcbcrConversion' or 'null' for argument 2 'ycbcrConversion'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 vkDestroySamplerYcbcrConversion(
@@ -16404,55 +16335,60 @@ vkDestroySamplerYcbcrConversion(
 Napi::Value _vkGetDeviceQueue2(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDeviceQueueInfo2* obj1;
+  Napi::Object obj1;
   VkDeviceQueueInfo2 *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDeviceQueueInfo2::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEVICE_QUEUE_INFO_2) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDeviceQueueInfo2]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDeviceQueueInfo2>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDeviceQueueInfo2* instance = reinterpret_cast<VkDeviceQueueInfo2*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pQueueInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceQueueInfo2' or 'null' for argument 2 'pQueueInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkQueue* obj2;
+  Napi::Object obj2;
   VkQueue *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkQueue::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueue") {
       NapiObjectTypeError(info[2], "argument 3", "[object VkQueue]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkQueue>::Unwrap(obj);
-    
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    VkQueue* instance = reinterpret_cast<VkQueue*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pQueue'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 3 'pQueue'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 vkGetDeviceQueue2(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -16468,56 +16404,61 @@ vkGetDeviceQueue2(
 Napi::Value _vkCreateValidationCacheEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkValidationCacheCreateInfoEXT* obj1;
+  Napi::Object obj1;
   VkValidationCacheCreateInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkValidationCacheCreateInfoEXT::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_VALIDATION_CACHE_CREATE_INFO_EXT) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkValidationCacheCreateInfoEXT]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkValidationCacheCreateInfoEXT>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkValidationCacheCreateInfoEXT* instance = reinterpret_cast<VkValidationCacheCreateInfoEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkValidationCacheCreateInfoEXT' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkValidationCacheEXT* obj3;
+  Napi::Object obj3;
   VkValidationCacheEXT *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkValidationCacheEXT::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkValidationCacheEXT") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkValidationCacheEXT]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkValidationCacheEXT>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkValidationCacheEXT* instance = reinterpret_cast<VkValidationCacheEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pValidationCache'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkValidationCacheEXT' or 'null' for argument 4 'pValidationCache'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkCreateValidationCacheEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -16534,38 +16475,40 @@ Napi::Value _vkCreateValidationCacheEXT(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyValidationCacheEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkValidationCacheEXT* obj1;
+  Napi::Object obj1;
   VkValidationCacheEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkValidationCacheEXT::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkValidationCacheEXT") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkValidationCacheEXT]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkValidationCacheEXT>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkValidationCacheEXT* instance = reinterpret_cast<VkValidationCacheEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'validationCache'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkValidationCacheEXT' or 'null' for argument 2 'validationCache'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 $vkDestroyValidationCacheEXT(
@@ -16582,38 +16525,40 @@ $vkDestroyValidationCacheEXT(
 Napi::Value _vkGetValidationCacheDataEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkValidationCacheEXT* obj1;
+  Napi::Object obj1;
   VkValidationCacheEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkValidationCacheEXT::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkValidationCacheEXT") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkValidationCacheEXT]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkValidationCacheEXT>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkValidationCacheEXT* instance = reinterpret_cast<VkValidationCacheEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'validationCache'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkValidationCacheEXT' or 'null' for argument 2 'validationCache'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj2;
@@ -16646,7 +16591,7 @@ Napi::Value _vkGetValidationCacheDataEXT(const Napi::CallbackInfo& info) {
     info[3].IsNull() ? nullptr : $p3
   );
     Napi::BigInt pnum2 = Napi::BigInt::New(env, (uint64_t)$p2);
-    obj2.Set("$", pnum2);
+    if (info[2].IsObject()) obj2.Set("$", pnum2);
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -16656,38 +16601,40 @@ Napi::Value _vkGetValidationCacheDataEXT(const Napi::CallbackInfo& info) {
 Napi::Value _vkMergeValidationCachesEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkValidationCacheEXT* obj1;
+  Napi::Object obj1;
   VkValidationCacheEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkValidationCacheEXT::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkValidationCacheEXT") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkValidationCacheEXT]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkValidationCacheEXT>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkValidationCacheEXT* instance = reinterpret_cast<VkValidationCacheEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'dstCache'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkValidationCacheEXT' or 'null' for argument 2 'dstCache'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -16701,8 +16648,8 @@ Napi::Value _vkMergeValidationCachesEXT(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkValidationCacheEXT* result = Napi::ObjectWrap<_VkValidationCacheEXT>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkValidationCacheEXT* instance = reinterpret_cast<VkValidationCacheEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkValidationCacheEXT>>(data);
   } else if (!info[3].IsNull()) {
@@ -16725,55 +16672,62 @@ Napi::Value _vkMergeValidationCachesEXT(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetDescriptorSetLayoutSupport(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDescriptorSetLayoutCreateInfo* obj1;
+  Napi::Object obj1;
   VkDescriptorSetLayoutCreateInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDescriptorSetLayoutCreateInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDescriptorSetLayoutCreateInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDescriptorSetLayoutCreateInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDescriptorSetLayoutCreateInfo* instance = reinterpret_cast<VkDescriptorSetLayoutCreateInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorSetLayoutCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDescriptorSetLayoutSupport* obj2;
+  Napi::Object obj2;
   VkDescriptorSetLayoutSupport *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDescriptorSetLayoutSupport::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_SUPPORT) {
       NapiObjectTypeError(info[2], "argument 3", "[object VkDescriptorSetLayoutSupport]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkDescriptorSetLayoutSupport>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDescriptorSetLayoutSupport* instance = reinterpret_cast<VkDescriptorSetLayoutSupport*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pSupport'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorSetLayoutSupport' or 'null' for argument 3 'pSupport'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 vkGetDescriptorSetLayoutSupport(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -16789,38 +16743,40 @@ vkGetDescriptorSetLayoutSupport(
 Napi::Value _vkGetShaderInfoAMD(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPipeline* obj1;
+  Napi::Object obj1;
   VkPipeline *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPipeline::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipeline") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPipeline]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPipeline>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkPipeline* instance = reinterpret_cast<VkPipeline*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pipeline'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipeline' or 'null' for argument 2 'pipeline'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   int32_t $p2 = static_cast<int32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -16859,7 +16815,7 @@ Napi::Value _vkGetShaderInfoAMD(const Napi::CallbackInfo& info) {
     info[5].IsNull() ? nullptr : $p5
   );
     Napi::BigInt pnum4 = Napi::BigInt::New(env, (uint64_t)$p4);
-    obj4.Set("$", pnum4);
+    if (info[4].IsObject()) obj4.Set("$", pnum4);
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -16869,21 +16825,22 @@ Napi::Value _vkGetShaderInfoAMD(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj1;
@@ -16921,7 +16878,7 @@ Napi::Value _vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(const Napi::Callback
     &$p1,
     $p2 ? (VkTimeDomainEXT *) *$p2.get() : nullptr
   );
-    obj1.Set("$", $p1);
+    if (info[1].IsObject()) obj1.Set("$", $p1);
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -16931,21 +16888,22 @@ Napi::Value _vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(const Napi::Callback
 Napi::Value _vkGetCalibratedTimestampsEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -16959,8 +16917,8 @@ Napi::Value _vkGetCalibratedTimestampsEXT(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkCalibratedTimestampInfoEXT* result = Napi::ObjectWrap<_VkCalibratedTimestampInfoEXT>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[2].As<Napi::Array>();
@@ -16968,8 +16926,8 @@ Napi::Value _vkGetCalibratedTimestampsEXT(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkCalibratedTimestampInfoEXT* result = Napi::ObjectWrap<_VkCalibratedTimestampInfoEXT>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkCalibratedTimestampInfoEXT* instance = reinterpret_cast<VkCalibratedTimestampInfoEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkCalibratedTimestampInfoEXT>>(data);
   } else if (!info[2].IsNull()) {
@@ -17016,7 +16974,7 @@ Napi::Value _vkGetCalibratedTimestampsEXT(const Napi::CallbackInfo& info) {
     &$p4
   );
     Napi::BigInt pnum4 = Napi::BigInt::New(env, (uint64_t)$p4);
-    obj4.Set("$", pnum4);
+    if (info[4].IsObject()) obj4.Set("$", pnum4);
   
   
   return Napi::Number::New(env, static_cast<int32_t>(out));
@@ -17026,38 +16984,42 @@ Napi::Value _vkGetCalibratedTimestampsEXT(const Napi::CallbackInfo& info) {
 Napi::Value _vkSetDebugUtilsObjectNameEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDebugUtilsObjectNameInfoEXT* obj1;
+  Napi::Object obj1;
   VkDebugUtilsObjectNameInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDebugUtilsObjectNameInfoEXT::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_NAME_INFO_EXT) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDebugUtilsObjectNameInfoEXT]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDebugUtilsObjectNameInfoEXT>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDebugUtilsObjectNameInfoEXT* instance = reinterpret_cast<VkDebugUtilsObjectNameInfoEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pNameInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugUtilsObjectNameInfoEXT' or 'null' for argument 2 'pNameInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkSetDebugUtilsObjectNameEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -17072,38 +17034,42 @@ Napi::Value _vkSetDebugUtilsObjectNameEXT(const Napi::CallbackInfo& info) {
 Napi::Value _vkSetDebugUtilsObjectTagEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDebugUtilsObjectTagInfoEXT* obj1;
+  Napi::Object obj1;
   VkDebugUtilsObjectTagInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDebugUtilsObjectTagInfoEXT::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_TAG_INFO_EXT) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDebugUtilsObjectTagInfoEXT]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDebugUtilsObjectTagInfoEXT>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDebugUtilsObjectTagInfoEXT* instance = reinterpret_cast<VkDebugUtilsObjectTagInfoEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pTagInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugUtilsObjectTagInfoEXT' or 'null' for argument 2 'pTagInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkSetDebugUtilsObjectTagEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -17118,38 +17084,42 @@ Napi::Value _vkSetDebugUtilsObjectTagEXT(const Napi::CallbackInfo& info) {
 Napi::Value _vkQueueBeginDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkQueue* obj0;
+  Napi::Object obj0;
   VkQueue *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkQueue::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueue") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkQueue]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkQueue>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkQueue* instance = reinterpret_cast<VkQueue*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'queue'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 1 'queue'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDebugUtilsLabelEXT* obj1;
+  Napi::Object obj1;
   VkDebugUtilsLabelEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDebugUtilsLabelEXT::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_UTILS_LABEL_EXT) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDebugUtilsLabelEXT]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDebugUtilsLabelEXT>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDebugUtilsLabelEXT* instance = reinterpret_cast<VkDebugUtilsLabelEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pLabelInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugUtilsLabelEXT' or 'null' for argument 2 'pLabelInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 $vkQueueBeginDebugUtilsLabelEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -17164,21 +17134,22 @@ $vkQueueBeginDebugUtilsLabelEXT(
 Napi::Value _vkQueueEndDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkQueue* obj0;
+  Napi::Object obj0;
   VkQueue *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkQueue::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueue") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkQueue]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkQueue>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkQueue* instance = reinterpret_cast<VkQueue*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'queue'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 1 'queue'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 $vkQueueEndDebugUtilsLabelEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0
@@ -17192,38 +17163,42 @@ $vkQueueEndDebugUtilsLabelEXT(
 Napi::Value _vkQueueInsertDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkQueue* obj0;
+  Napi::Object obj0;
   VkQueue *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkQueue::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueue") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkQueue]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkQueue>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkQueue* instance = reinterpret_cast<VkQueue*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'queue'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 1 'queue'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDebugUtilsLabelEXT* obj1;
+  Napi::Object obj1;
   VkDebugUtilsLabelEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDebugUtilsLabelEXT::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_UTILS_LABEL_EXT) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDebugUtilsLabelEXT]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDebugUtilsLabelEXT>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDebugUtilsLabelEXT* instance = reinterpret_cast<VkDebugUtilsLabelEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pLabelInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugUtilsLabelEXT' or 'null' for argument 2 'pLabelInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 $vkQueueInsertDebugUtilsLabelEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -17238,38 +17213,42 @@ $vkQueueInsertDebugUtilsLabelEXT(
 Napi::Value _vkCmdBeginDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDebugUtilsLabelEXT* obj1;
+  Napi::Object obj1;
   VkDebugUtilsLabelEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDebugUtilsLabelEXT::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_UTILS_LABEL_EXT) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDebugUtilsLabelEXT]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDebugUtilsLabelEXT>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDebugUtilsLabelEXT* instance = reinterpret_cast<VkDebugUtilsLabelEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pLabelInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugUtilsLabelEXT' or 'null' for argument 2 'pLabelInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 $vkCmdBeginDebugUtilsLabelEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -17284,21 +17263,22 @@ $vkCmdBeginDebugUtilsLabelEXT(
 Napi::Value _vkCmdEndDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 $vkCmdEndDebugUtilsLabelEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0
@@ -17312,38 +17292,42 @@ $vkCmdEndDebugUtilsLabelEXT(
 Napi::Value _vkCmdInsertDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDebugUtilsLabelEXT* obj1;
+  Napi::Object obj1;
   VkDebugUtilsLabelEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDebugUtilsLabelEXT::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_UTILS_LABEL_EXT) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDebugUtilsLabelEXT]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDebugUtilsLabelEXT>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDebugUtilsLabelEXT* instance = reinterpret_cast<VkDebugUtilsLabelEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pLabelInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugUtilsLabelEXT' or 'null' for argument 2 'pLabelInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 $vkCmdInsertDebugUtilsLabelEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -17358,56 +17342,61 @@ $vkCmdInsertDebugUtilsLabelEXT(
 Napi::Value _vkCreateDebugUtilsMessengerEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkInstance* obj0;
+  Napi::Object obj0;
   VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkInstance>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkInstance* instance = reinterpret_cast<VkInstance*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDebugUtilsMessengerCreateInfoEXT* obj1;
+  Napi::Object obj1;
   VkDebugUtilsMessengerCreateInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDebugUtilsMessengerCreateInfoEXT::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDebugUtilsMessengerCreateInfoEXT]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDebugUtilsMessengerCreateInfoEXT>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDebugUtilsMessengerCreateInfoEXT* instance = reinterpret_cast<VkDebugUtilsMessengerCreateInfoEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugUtilsMessengerCreateInfoEXT' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkDebugUtilsMessengerEXT* obj3;
+  Napi::Object obj3;
   VkDebugUtilsMessengerEXT *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDebugUtilsMessengerEXT::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDebugUtilsMessengerEXT") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkDebugUtilsMessengerEXT]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkDebugUtilsMessengerEXT>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkDebugUtilsMessengerEXT* instance = reinterpret_cast<VkDebugUtilsMessengerEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pMessenger'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugUtilsMessengerEXT' or 'null' for argument 4 'pMessenger'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkCreateDebugUtilsMessengerEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -17424,38 +17413,40 @@ Napi::Value _vkCreateDebugUtilsMessengerEXT(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyDebugUtilsMessengerEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkInstance* obj0;
+  Napi::Object obj0;
   VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkInstance>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkInstance* instance = reinterpret_cast<VkInstance*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkDebugUtilsMessengerEXT* obj1;
+  Napi::Object obj1;
   VkDebugUtilsMessengerEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDebugUtilsMessengerEXT::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDebugUtilsMessengerEXT") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkDebugUtilsMessengerEXT]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkDebugUtilsMessengerEXT>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkDebugUtilsMessengerEXT* instance = reinterpret_cast<VkDebugUtilsMessengerEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'messenger'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugUtilsMessengerEXT' or 'null' for argument 2 'messenger'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 $vkDestroyDebugUtilsMessengerEXT(
@@ -17472,42 +17463,46 @@ $vkDestroyDebugUtilsMessengerEXT(
 Napi::Value _vkSubmitDebugUtilsMessageEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkInstance* obj0;
+  Napi::Object obj0;
   VkInstance *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkInstance::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkInstance") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkInstance]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkInstance>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkInstance* instance = reinterpret_cast<VkInstance*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
 
   int32_t $p2 = static_cast<int32_t>(info[2].As<Napi::Number>().Int64Value());
 
-  _VkDebugUtilsMessengerCallbackDataEXT* obj3;
+  Napi::Object obj3;
   VkDebugUtilsMessengerCallbackDataEXT *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDebugUtilsMessengerCallbackDataEXT::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT) {
       NapiObjectTypeError(info[3], "argument 4", "[object VkDebugUtilsMessengerCallbackDataEXT]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkDebugUtilsMessengerCallbackDataEXT>::Unwrap(obj);
-    if (!obj3->flush()) return env.Undefined();
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkDebugUtilsMessengerCallbackDataEXT* instance = reinterpret_cast<VkDebugUtilsMessengerCallbackDataEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pCallbackData'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugUtilsMessengerCallbackDataEXT' or 'null' for argument 4 'pCallbackData'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 $vkSubmitDebugUtilsMessageEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -17524,21 +17519,22 @@ $vkSubmitDebugUtilsMessageEXT(
 Napi::Value _vkGetMemoryHostPointerPropertiesEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -17552,21 +17548,24 @@ Napi::Value _vkGetMemoryHostPointerPropertiesEXT(const Napi::CallbackInfo& info)
     return env.Undefined();
   }
 
-  _VkMemoryHostPointerPropertiesEXT* obj3;
+  Napi::Object obj3;
   VkMemoryHostPointerPropertiesEXT *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkMemoryHostPointerPropertiesEXT::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_MEMORY_HOST_POINTER_PROPERTIES_EXT) {
       NapiObjectTypeError(info[3], "argument 4", "[object VkMemoryHostPointerPropertiesEXT]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkMemoryHostPointerPropertiesEXT>::Unwrap(obj);
-    if (!obj3->flush()) return env.Undefined();
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkMemoryHostPointerPropertiesEXT* instance = reinterpret_cast<VkMemoryHostPointerPropertiesEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pMemoryHostPointerProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkMemoryHostPointerPropertiesEXT' or 'null' for argument 4 'pMemoryHostPointerProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkGetMemoryHostPointerPropertiesEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -17583,40 +17582,42 @@ Napi::Value _vkGetMemoryHostPointerPropertiesEXT(const Napi::CallbackInfo& info)
 Napi::Value _vkCmdWriteBufferMarkerAMD(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
 
-  _VkBuffer* obj2;
+  Napi::Object obj2;
   VkBuffer *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[2], "argument 3", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'dstBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 3 'dstBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::Number>().Int64Value());
@@ -17638,56 +17639,61 @@ $vkCmdWriteBufferMarkerAMD(
 Napi::Value _vkCreateRenderPass2KHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkRenderPassCreateInfo2KHR* obj1;
+  Napi::Object obj1;
   VkRenderPassCreateInfo2KHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkRenderPassCreateInfo2KHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO_2_KHR) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkRenderPassCreateInfo2KHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkRenderPassCreateInfo2KHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkRenderPassCreateInfo2KHR* instance = reinterpret_cast<VkRenderPassCreateInfo2KHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkRenderPassCreateInfo2KHR' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkRenderPass* obj3;
+  Napi::Object obj3;
   VkRenderPass *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkRenderPass::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkRenderPass") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkRenderPass]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkRenderPass>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkRenderPass* instance = reinterpret_cast<VkRenderPass*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pRenderPass'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkRenderPass' or 'null' for argument 4 'pRenderPass'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkCreateRenderPass2KHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -17704,55 +17710,62 @@ Napi::Value _vkCreateRenderPass2KHR(const Napi::CallbackInfo& info) {
 Napi::Value _vkCmdBeginRenderPass2KHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkRenderPassBeginInfo* obj1;
+  Napi::Object obj1;
   VkRenderPassBeginInfo *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkRenderPassBeginInfo::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkRenderPassBeginInfo]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkRenderPassBeginInfo>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkRenderPassBeginInfo* instance = reinterpret_cast<VkRenderPassBeginInfo*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pRenderPassBegin'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkRenderPassBeginInfo' or 'null' for argument 2 'pRenderPassBegin'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSubpassBeginInfoKHR* obj2;
+  Napi::Object obj2;
   VkSubpassBeginInfoKHR *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSubpassBeginInfoKHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SUBPASS_BEGIN_INFO_KHR) {
       NapiObjectTypeError(info[2], "argument 3", "[object VkSubpassBeginInfoKHR]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkSubpassBeginInfoKHR>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkSubpassBeginInfoKHR* instance = reinterpret_cast<VkSubpassBeginInfoKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pSubpassBeginInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSubpassBeginInfoKHR' or 'null' for argument 3 'pSubpassBeginInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 $vkCmdBeginRenderPass2KHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -17768,55 +17781,62 @@ $vkCmdBeginRenderPass2KHR(
 Napi::Value _vkCmdNextSubpass2KHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSubpassBeginInfoKHR* obj1;
+  Napi::Object obj1;
   VkSubpassBeginInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSubpassBeginInfoKHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SUBPASS_BEGIN_INFO_KHR) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSubpassBeginInfoKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSubpassBeginInfoKHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkSubpassBeginInfoKHR* instance = reinterpret_cast<VkSubpassBeginInfoKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pSubpassBeginInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSubpassBeginInfoKHR' or 'null' for argument 2 'pSubpassBeginInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSubpassEndInfoKHR* obj2;
+  Napi::Object obj2;
   VkSubpassEndInfoKHR *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSubpassEndInfoKHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SUBPASS_END_INFO_KHR) {
       NapiObjectTypeError(info[2], "argument 3", "[object VkSubpassEndInfoKHR]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkSubpassEndInfoKHR>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkSubpassEndInfoKHR* instance = reinterpret_cast<VkSubpassEndInfoKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pSubpassEndInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSubpassEndInfoKHR' or 'null' for argument 3 'pSubpassEndInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 $vkCmdNextSubpass2KHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -17832,38 +17852,42 @@ $vkCmdNextSubpass2KHR(
 Napi::Value _vkCmdEndRenderPass2KHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkSubpassEndInfoKHR* obj1;
+  Napi::Object obj1;
   VkSubpassEndInfoKHR *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkSubpassEndInfoKHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_SUBPASS_END_INFO_KHR) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkSubpassEndInfoKHR]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkSubpassEndInfoKHR>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkSubpassEndInfoKHR* instance = reinterpret_cast<VkSubpassEndInfoKHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pSubpassEndInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSubpassEndInfoKHR' or 'null' for argument 2 'pSubpassEndInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 $vkCmdEndRenderPass2KHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -17878,57 +17902,60 @@ $vkCmdEndRenderPass2KHR(
 Napi::Value _vkCmdDrawIndirectCountKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBuffer* obj1;
+  Napi::Object obj1;
   VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
 
-  _VkBuffer* obj3;
+  Napi::Object obj3;
   VkBuffer *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'countBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'countBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::Number>().Int64Value());
@@ -17954,57 +17981,60 @@ $vkCmdDrawIndirectCountKHR(
 Napi::Value _vkCmdDrawIndexedIndirectCountKHR(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBuffer* obj1;
+  Napi::Object obj1;
   VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
 
-  _VkBuffer* obj3;
+  Napi::Object obj3;
   VkBuffer *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'countBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'countBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::Number>().Int64Value());
@@ -18030,21 +18060,22 @@ $vkCmdDrawIndexedIndirectCountKHR(
 Napi::Value _vkCmdSetCheckpointNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   void* $p1 = nullptr;
@@ -18068,21 +18099,22 @@ $vkCmdSetCheckpointNV(
 Napi::Value _vkGetQueueCheckpointDataNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkQueue* obj0;
+  Napi::Object obj0;
   VkQueue *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkQueue::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueue") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkQueue]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkQueue>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkQueue* instance = reinterpret_cast<VkQueue*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'queue'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 1 'queue'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj1;
@@ -18109,8 +18141,8 @@ Napi::Value _vkGetQueueCheckpointDataNV(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkCheckpointDataNV* result = Napi::ObjectWrap<_VkCheckpointDataNV>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[2].As<Napi::Array>();
@@ -18118,8 +18150,8 @@ Napi::Value _vkGetQueueCheckpointDataNV(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkCheckpointDataNV* result = Napi::ObjectWrap<_VkCheckpointDataNV>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkCheckpointDataNV* instance = reinterpret_cast<VkCheckpointDataNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkCheckpointDataNV>>(data);
   } else if (!info[2].IsNull()) {
@@ -18132,19 +18164,17 @@ $vkGetQueueCheckpointDataNV(
     &$p1,
     $p2 ? (VkCheckpointDataNV *) $p2.get()->data() : nullptr
   );
-    obj1.Set("$", $p1);
+    if (info[1].IsObject()) obj1.Set("$", $p1);
   if (info[2].IsArray()) {
     VkCheckpointDataNV* $pdata = $p2.get()->data();
     Napi::Array array = info[2].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkCheckpointDataNV* result = Napi::ObjectWrap<_VkCheckpointDataNV>::Unwrap(obj);
-      VkCheckpointDataNV *instance = &result->instance;
-      VkCheckpointDataNV *copy = &$pdata[ii];
-      
-      instance->sType = copy->sType;
-      instance->stage = copy->stage;
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -18156,21 +18186,22 @@ $vkGetQueueCheckpointDataNV(
 Napi::Value _vkCmdBindTransformFeedbackBuffersEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -18186,8 +18217,8 @@ Napi::Value _vkCmdBindTransformFeedbackBuffersEXT(const Napi::CallbackInfo& info
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkBuffer* result = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkBuffer>>(data);
   } else if (!info[3].IsNull()) {
@@ -18244,21 +18275,22 @@ $vkCmdBindTransformFeedbackBuffersEXT(
 Napi::Value _vkCmdBeginTransformFeedbackEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -18274,8 +18306,8 @@ Napi::Value _vkCmdBeginTransformFeedbackEXT(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkBuffer* result = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkBuffer>>(data);
   } else if (!info[3].IsNull()) {
@@ -18315,21 +18347,22 @@ $vkCmdBeginTransformFeedbackEXT(
 Napi::Value _vkCmdEndTransformFeedbackEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -18345,8 +18378,8 @@ Napi::Value _vkCmdEndTransformFeedbackEXT(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkBuffer* result = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkBuffer>>(data);
   } else if (!info[3].IsNull()) {
@@ -18386,38 +18419,40 @@ $vkCmdEndTransformFeedbackEXT(
 Napi::Value _vkCmdBeginQueryIndexedEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkQueryPool* obj1;
+  Napi::Object obj1;
   VkQueryPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkQueryPool::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueryPool") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkQueryPool]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkQueryPool>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkQueryPool* instance = reinterpret_cast<VkQueryPool*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'queryPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -18441,38 +18476,40 @@ $vkCmdBeginQueryIndexedEXT(
 Napi::Value _vkCmdEndQueryIndexedEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkQueryPool* obj1;
+  Napi::Object obj1;
   VkQueryPool *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkQueryPool::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueryPool") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkQueryPool]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkQueryPool>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkQueryPool* instance = reinterpret_cast<VkQueryPool*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'queryPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -18493,42 +18530,44 @@ $vkCmdEndQueryIndexedEXT(
 Napi::Value _vkCmdDrawIndirectByteCountEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
-  _VkBuffer* obj3;
+  Napi::Object obj3;
   VkBuffer *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'counterBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'counterBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::Number>().Int64Value());
@@ -18554,21 +18593,22 @@ $vkCmdDrawIndirectByteCountEXT(
 Napi::Value _vkCmdSetExclusiveScissorNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -18584,8 +18624,8 @@ Napi::Value _vkCmdSetExclusiveScissorNV(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkRect2D* result = Napi::ObjectWrap<_VkRect2D>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[3].As<Napi::Array>();
@@ -18593,8 +18633,8 @@ Napi::Value _vkCmdSetExclusiveScissorNV(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkRect2D* result = Napi::ObjectWrap<_VkRect2D>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkRect2D* instance = reinterpret_cast<VkRect2D*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkRect2D>>(data);
   } else if (!info[3].IsNull()) {
@@ -18617,38 +18657,40 @@ $vkCmdSetExclusiveScissorNV(
 Napi::Value _vkCmdBindShadingRateImageNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImageView* obj1;
+  Napi::Object obj1;
   VkImageView *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImageView::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImageView") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkImageView]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkImageView>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkImageView* instance = reinterpret_cast<VkImageView*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'imageView'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImageView' or 'null' for argument 2 'imageView'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   VkImageLayout $p2 = static_cast<VkImageLayout>(info[2].As<Napi::Number>().Int64Value());
@@ -18666,21 +18708,22 @@ $vkCmdBindShadingRateImageNV(
 Napi::Value _vkCmdSetViewportShadingRatePaletteNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -18696,8 +18739,8 @@ Napi::Value _vkCmdSetViewportShadingRatePaletteNV(const Napi::CallbackInfo& info
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkShadingRatePaletteNV* result = Napi::ObjectWrap<_VkShadingRatePaletteNV>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[3].As<Napi::Array>();
@@ -18705,8 +18748,8 @@ Napi::Value _vkCmdSetViewportShadingRatePaletteNV(const Napi::CallbackInfo& info
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkShadingRatePaletteNV* result = Napi::ObjectWrap<_VkShadingRatePaletteNV>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkShadingRatePaletteNV* instance = reinterpret_cast<VkShadingRatePaletteNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkShadingRatePaletteNV>>(data);
   } else if (!info[3].IsNull()) {
@@ -18729,21 +18772,22 @@ $vkCmdSetViewportShadingRatePaletteNV(
 Napi::Value _vkCmdSetCoarseSampleOrderNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   VkCoarseSampleOrderTypeNV $p1 = static_cast<VkCoarseSampleOrderTypeNV>(info[1].As<Napi::Number>().Int64Value());
@@ -18759,8 +18803,8 @@ Napi::Value _vkCmdSetCoarseSampleOrderNV(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkCoarseSampleOrderCustomNV* result = Napi::ObjectWrap<_VkCoarseSampleOrderCustomNV>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[3].As<Napi::Array>();
@@ -18768,8 +18812,8 @@ Napi::Value _vkCmdSetCoarseSampleOrderNV(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkCoarseSampleOrderCustomNV* result = Napi::ObjectWrap<_VkCoarseSampleOrderCustomNV>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkCoarseSampleOrderCustomNV* instance = reinterpret_cast<VkCoarseSampleOrderCustomNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkCoarseSampleOrderCustomNV>>(data);
   } else if (!info[3].IsNull()) {
@@ -18792,21 +18836,22 @@ $vkCmdSetCoarseSampleOrderNV(
 Napi::Value _vkCmdDrawMeshTasksNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -18826,38 +18871,40 @@ $vkCmdDrawMeshTasksNV(
 Napi::Value _vkCmdDrawMeshTasksIndirectNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBuffer* obj1;
+  Napi::Object obj1;
   VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
@@ -18881,57 +18928,60 @@ $vkCmdDrawMeshTasksIndirectNV(
 Napi::Value _vkCmdDrawMeshTasksIndirectCountNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBuffer* obj1;
+  Napi::Object obj1;
   VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
 
-  _VkBuffer* obj3;
+  Napi::Object obj3;
   VkBuffer *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'countBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'countBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::Number>().Int64Value());
@@ -18957,38 +19007,40 @@ $vkCmdDrawMeshTasksIndirectCountNV(
 Napi::Value _vkCompileDeferredNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPipeline* obj1;
+  Napi::Object obj1;
   VkPipeline *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPipeline::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipeline") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPipeline]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPipeline>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkPipeline* instance = reinterpret_cast<VkPipeline*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pipeline'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipeline' or 'null' for argument 2 'pipeline'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -19006,56 +19058,61 @@ Napi::Value _vkCompileDeferredNV(const Napi::CallbackInfo& info) {
 Napi::Value _vkCreateAccelerationStructureNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkAccelerationStructureCreateInfoNV* obj1;
+  Napi::Object obj1;
   VkAccelerationStructureCreateInfoNV *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkAccelerationStructureCreateInfoNV::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_NV) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkAccelerationStructureCreateInfoNV]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkAccelerationStructureCreateInfoNV>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkAccelerationStructureCreateInfoNV* instance = reinterpret_cast<VkAccelerationStructureCreateInfoNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureCreateInfoNV' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 
-  _VkAccelerationStructureNV* obj3;
+  Napi::Object obj3;
   VkAccelerationStructureNV *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkAccelerationStructureNV::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkAccelerationStructureNV") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkAccelerationStructureNV]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkAccelerationStructureNV>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkAccelerationStructureNV* instance = reinterpret_cast<VkAccelerationStructureNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pAccelerationStructure'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureNV' or 'null' for argument 4 'pAccelerationStructure'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkCreateAccelerationStructureNV(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -19072,38 +19129,40 @@ Napi::Value _vkCreateAccelerationStructureNV(const Napi::CallbackInfo& info) {
 Napi::Value _vkDestroyAccelerationStructureNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkAccelerationStructureNV* obj1;
+  Napi::Object obj1;
   VkAccelerationStructureNV *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkAccelerationStructureNV::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkAccelerationStructureNV") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkAccelerationStructureNV]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkAccelerationStructureNV>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkAccelerationStructureNV* instance = reinterpret_cast<VkAccelerationStructureNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'accelerationStructure'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureNV' or 'null' for argument 2 'accelerationStructure'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
 $vkDestroyAccelerationStructureNV(
@@ -19120,70 +19179,68 @@ $vkDestroyAccelerationStructureNV(
 Napi::Value _vkGetAccelerationStructureMemoryRequirementsNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkAccelerationStructureMemoryRequirementsInfoNV* obj1;
+  Napi::Object obj1;
   VkAccelerationStructureMemoryRequirementsInfoNV *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkAccelerationStructureMemoryRequirementsInfoNV::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_INFO_NV) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkAccelerationStructureMemoryRequirementsInfoNV]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkAccelerationStructureMemoryRequirementsInfoNV>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkAccelerationStructureMemoryRequirementsInfoNV* instance = reinterpret_cast<VkAccelerationStructureMemoryRequirementsInfoNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureMemoryRequirementsInfoNV' or 'null' for argument 2 'pInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkMemoryRequirements2KHR* obj2;
+  Napi::Object obj2;
   VkMemoryRequirements2KHR *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkMemoryRequirements2KHR::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_MEMORY_REQUIREMENTS_2_KHR) {
       NapiObjectTypeError(info[2], "argument 3", "[object VkMemoryRequirements2KHR]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkMemoryRequirements2KHR>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkMemoryRequirements2KHR* instance = reinterpret_cast<VkMemoryRequirements2KHR*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pMemoryRequirements'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkMemoryRequirements2KHR' or 'null' for argument 3 'pMemoryRequirements'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 $vkGetAccelerationStructureMemoryRequirementsNV(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
     $p2
   );
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _VkMemoryRequirements::constructor.New(args);
-    _VkMemoryRequirements* unwrapped6 = Napi::ObjectWrap<_VkMemoryRequirements>::Unwrap(inst);
-    obj2->memoryRequirements.Reset(inst, 1);
-    memcpy((&unwrapped6->instance), &obj2->instance.memoryRequirements, sizeof(VkMemoryRequirements));
-    
-  }
-      
   
   
   return env.Undefined();
@@ -19193,21 +19250,22 @@ $vkGetAccelerationStructureMemoryRequirementsNV(
 Napi::Value _vkBindAccelerationStructureMemoryNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -19221,8 +19279,8 @@ Napi::Value _vkBindAccelerationStructureMemoryNV(const Napi::CallbackInfo& info)
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkBindAccelerationStructureMemoryInfoNV* result = Napi::ObjectWrap<_VkBindAccelerationStructureMemoryInfoNV>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[2].As<Napi::Array>();
@@ -19230,8 +19288,8 @@ Napi::Value _vkBindAccelerationStructureMemoryNV(const Napi::CallbackInfo& info)
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkBindAccelerationStructureMemoryInfoNV* result = Napi::ObjectWrap<_VkBindAccelerationStructureMemoryInfoNV>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkBindAccelerationStructureMemoryInfoNV* instance = reinterpret_cast<VkBindAccelerationStructureMemoryInfoNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkBindAccelerationStructureMemoryInfoNV>>(data);
   } else if (!info[2].IsNull()) {
@@ -19253,55 +19311,58 @@ Napi::Value _vkBindAccelerationStructureMemoryNV(const Napi::CallbackInfo& info)
 Napi::Value _vkCmdCopyAccelerationStructureNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkAccelerationStructureNV* obj1;
+  Napi::Object obj1;
   VkAccelerationStructureNV *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkAccelerationStructureNV::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkAccelerationStructureNV") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkAccelerationStructureNV]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkAccelerationStructureNV>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkAccelerationStructureNV* instance = reinterpret_cast<VkAccelerationStructureNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'dst'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureNV' or 'null' for argument 2 'dst'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkAccelerationStructureNV* obj2;
+  Napi::Object obj2;
   VkAccelerationStructureNV *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkAccelerationStructureNV::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkAccelerationStructureNV") {
       NapiObjectTypeError(info[2], "argument 3", "[object VkAccelerationStructureNV]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkAccelerationStructureNV>::Unwrap(obj);
-    
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    VkAccelerationStructureNV* instance = reinterpret_cast<VkAccelerationStructureNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'src'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureNV' or 'null' for argument 3 'src'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   VkCopyAccelerationStructureModeNV $p3 = static_cast<VkCopyAccelerationStructureModeNV>(info[3].As<Napi::Number>().Int64Value());
@@ -19320,21 +19381,22 @@ $vkCmdCopyAccelerationStructureNV(
 Napi::Value _vkCmdWriteAccelerationStructuresPropertiesNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
@@ -19348,8 +19410,8 @@ Napi::Value _vkCmdWriteAccelerationStructuresPropertiesNV(const Napi::CallbackIn
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkAccelerationStructureNV* result = Napi::ObjectWrap<_VkAccelerationStructureNV>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkAccelerationStructureNV* instance = reinterpret_cast<VkAccelerationStructureNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkAccelerationStructureNV>>(data);
   } else if (!info[2].IsNull()) {
@@ -19360,21 +19422,22 @@ Napi::Value _vkCmdWriteAccelerationStructuresPropertiesNV(const Napi::CallbackIn
 
   VkQueryType $p3 = static_cast<VkQueryType>(info[3].As<Napi::Number>().Int64Value());
 
-  _VkQueryPool* obj4;
+  Napi::Object obj4;
   VkQueryPool *$p4 = nullptr;
   if (info[4].IsObject()) {
     Napi::Object obj = info[4].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkQueryPool::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkQueryPool") {
       NapiObjectTypeError(info[4], "argument 5", "[object VkQueryPool]");
       return env.Undefined();
     }
-    obj4 = Napi::ObjectWrap<_VkQueryPool>::Unwrap(obj);
-    
-    $p4 = &obj4->instance;
+    obj4 = obj;
+    VkQueryPool* instance = reinterpret_cast<VkQueryPool*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p4 = instance;
   } else if (info[4].IsNull()) {
     $p4 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 5 'queryPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 5 'queryPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p5 = static_cast<uint32_t>(info[5].As<Napi::Number>().Int64Value());
@@ -19395,110 +19458,118 @@ $vkCmdWriteAccelerationStructuresPropertiesNV(
 Napi::Value _vkCmdBuildAccelerationStructureNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkAccelerationStructureInfoNV* obj1;
+  Napi::Object obj1;
   VkAccelerationStructureInfoNV *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkAccelerationStructureInfoNV::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_INFO_NV) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkAccelerationStructureInfoNV]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkAccelerationStructureInfoNV>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkAccelerationStructureInfoNV* instance = reinterpret_cast<VkAccelerationStructureInfoNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureInfoNV' or 'null' for argument 2 'pInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBuffer* obj2;
+  Napi::Object obj2;
   VkBuffer *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[2], "argument 3", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'instanceData'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 3 'instanceData'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::Number>().Int64Value());
 
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
 
-  _VkAccelerationStructureNV* obj5;
+  Napi::Object obj5;
   VkAccelerationStructureNV *$p5 = nullptr;
   if (info[5].IsObject()) {
     Napi::Object obj = info[5].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkAccelerationStructureNV::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkAccelerationStructureNV") {
       NapiObjectTypeError(info[5], "argument 6", "[object VkAccelerationStructureNV]");
       return env.Undefined();
     }
-    obj5 = Napi::ObjectWrap<_VkAccelerationStructureNV>::Unwrap(obj);
-    
-    $p5 = &obj5->instance;
+    obj5 = obj;
+    VkAccelerationStructureNV* instance = reinterpret_cast<VkAccelerationStructureNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p5 = instance;
   } else if (info[5].IsNull()) {
     $p5 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 6 'dst'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureNV' or 'null' for argument 6 'dst'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkAccelerationStructureNV* obj6;
+  Napi::Object obj6;
   VkAccelerationStructureNV *$p6 = nullptr;
   if (info[6].IsObject()) {
     Napi::Object obj = info[6].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkAccelerationStructureNV::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkAccelerationStructureNV") {
       NapiObjectTypeError(info[6], "argument 7", "[object VkAccelerationStructureNV]");
       return env.Undefined();
     }
-    obj6 = Napi::ObjectWrap<_VkAccelerationStructureNV>::Unwrap(obj);
-    
-    $p6 = &obj6->instance;
+    obj6 = obj;
+    VkAccelerationStructureNV* instance = reinterpret_cast<VkAccelerationStructureNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p6 = instance;
   } else if (info[6].IsNull()) {
     $p6 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 7 'src'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureNV' or 'null' for argument 7 'src'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBuffer* obj7;
+  Napi::Object obj7;
   VkBuffer *$p7 = nullptr;
   if (info[7].IsObject()) {
     Napi::Object obj = info[7].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[7], "argument 8", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj7 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p7 = &obj7->instance;
+    obj7 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p7 = instance;
   } else if (info[7].IsNull()) {
     $p7 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 8 'scratch'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 8 'scratch'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p8 = static_cast<uint64_t>(info[8].As<Napi::Number>().Int64Value());
@@ -19522,99 +19593,104 @@ $vkCmdBuildAccelerationStructureNV(
 Napi::Value _vkCmdTraceRaysNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkCommandBuffer* obj0;
+  Napi::Object obj0;
   VkCommandBuffer *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkCommandBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkCommandBuffer") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkCommandBuffer]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkCommandBuffer>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkCommandBuffer* instance = reinterpret_cast<VkCommandBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBuffer* obj1;
+  Napi::Object obj1;
   VkBuffer *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'raygenShaderBindingTableBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'raygenShaderBindingTableBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
 
-  _VkBuffer* obj3;
+  Napi::Object obj3;
   VkBuffer *$p3 = nullptr;
   if (info[3].IsObject()) {
     Napi::Object obj = info[3].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[3], "argument 4", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj3 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p3 = &obj3->instance;
+    obj3 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p3 = instance;
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'missShaderBindingTableBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'missShaderBindingTableBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::Number>().Int64Value());
 
   uint64_t $p5 = static_cast<uint64_t>(info[5].As<Napi::Number>().Int64Value());
 
-  _VkBuffer* obj6;
+  Napi::Object obj6;
   VkBuffer *$p6 = nullptr;
   if (info[6].IsObject()) {
     Napi::Object obj = info[6].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[6], "argument 7", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj6 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p6 = &obj6->instance;
+    obj6 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p6 = instance;
   } else if (info[6].IsNull()) {
     $p6 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 7 'hitShaderBindingTableBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 7 'hitShaderBindingTableBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p7 = static_cast<uint64_t>(info[7].As<Napi::Number>().Int64Value());
 
   uint64_t $p8 = static_cast<uint64_t>(info[8].As<Napi::Number>().Int64Value());
 
-  _VkBuffer* obj9;
+  Napi::Object obj9;
   VkBuffer *$p9 = nullptr;
   if (info[9].IsObject()) {
     Napi::Object obj = info[9].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBuffer::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkBuffer") {
       NapiObjectTypeError(info[9], "argument 10", "[object VkBuffer]");
       return env.Undefined();
     }
-    obj9 = Napi::ObjectWrap<_VkBuffer>::Unwrap(obj);
-    
-    $p9 = &obj9->instance;
+    obj9 = obj;
+    VkBuffer* instance = reinterpret_cast<VkBuffer*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p9 = instance;
   } else if (info[9].IsNull()) {
     $p9 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 10 'callableShaderBindingTableBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 10 'callableShaderBindingTableBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint64_t $p10 = static_cast<uint64_t>(info[10].As<Napi::Number>().Int64Value());
@@ -19652,38 +19728,40 @@ $vkCmdTraceRaysNV(
 Napi::Value _vkGetRayTracingShaderGroupHandlesNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPipeline* obj1;
+  Napi::Object obj1;
   VkPipeline *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPipeline::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipeline") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPipeline]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPipeline>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkPipeline* instance = reinterpret_cast<VkPipeline*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pipeline'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipeline' or 'null' for argument 2 'pipeline'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -19717,38 +19795,40 @@ Napi::Value _vkGetRayTracingShaderGroupHandlesNV(const Napi::CallbackInfo& info)
 Napi::Value _vkGetAccelerationStructureHandleNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkAccelerationStructureNV* obj1;
+  Napi::Object obj1;
   VkAccelerationStructureNV *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkAccelerationStructureNV::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkAccelerationStructureNV") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkAccelerationStructureNV]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkAccelerationStructureNV>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkAccelerationStructureNV* instance = reinterpret_cast<VkAccelerationStructureNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'accelerationStructure'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureNV' or 'null' for argument 2 'accelerationStructure'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   size_t $p2 = static_cast<size_t>(info[2].As<Napi::Number>().Int64Value());
@@ -19776,38 +19856,40 @@ Napi::Value _vkGetAccelerationStructureHandleNV(const Napi::CallbackInfo& info) 
 Napi::Value _vkCreateRayTracingPipelinesNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkPipelineCache* obj1;
+  Napi::Object obj1;
   VkPipelineCache *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPipelineCache::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPipelineCache") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkPipelineCache]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkPipelineCache>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkPipelineCache* instance = reinterpret_cast<VkPipelineCache*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pipelineCache'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineCache' or 'null' for argument 2 'pipelineCache'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
@@ -19821,8 +19903,8 @@ Napi::Value _vkCreateRayTracingPipelinesNV(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkRayTracingPipelineCreateInfoNV* result = Napi::ObjectWrap<_VkRayTracingPipelineCreateInfoNV>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[3].As<Napi::Array>();
@@ -19830,8 +19912,8 @@ Napi::Value _vkCreateRayTracingPipelinesNV(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkRayTracingPipelineCreateInfoNV* result = Napi::ObjectWrap<_VkRayTracingPipelineCreateInfoNV>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkRayTracingPipelineCreateInfoNV* instance = reinterpret_cast<VkRayTracingPipelineCreateInfoNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p3 = std::make_shared<std::vector<VkRayTracingPipelineCreateInfoNV>>(data);
   } else if (!info[3].IsNull()) {
@@ -19850,8 +19932,8 @@ Napi::Value _vkCreateRayTracingPipelinesNV(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkPipeline* result = Napi::ObjectWrap<_VkPipeline>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkPipeline* instance = reinterpret_cast<VkPipeline*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p5 = std::make_shared<std::vector<VkPipeline>>(data);
   } else if (!info[5].IsNull()) {
@@ -19873,8 +19955,10 @@ Napi::Value _vkCreateRayTracingPipelinesNV(const Napi::CallbackInfo& info) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkPipeline* target = Napi::ObjectWrap<_VkPipeline>::Unwrap(obj);
-      target->instance = $pdata[ii];
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   
@@ -19886,55 +19970,60 @@ Napi::Value _vkCreateRayTracingPipelinesNV(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetImageDrmFormatModifierPropertiesEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImage* obj1;
+  Napi::Object obj1;
   VkImage *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImage::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkImage") {
       NapiObjectTypeError(info[1], "argument 2", "[object VkImage]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkImage>::Unwrap(obj);
-    
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    VkImage* instance = reinterpret_cast<VkImage*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'image'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'image'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkImageDrmFormatModifierPropertiesEXT* obj2;
+  Napi::Object obj2;
   VkImageDrmFormatModifierPropertiesEXT *$p2 = nullptr;
   if (info[2].IsObject()) {
     Napi::Object obj = info[2].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkImageDrmFormatModifierPropertiesEXT::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_PROPERTIES_EXT) {
       NapiObjectTypeError(info[2], "argument 3", "[object VkImageDrmFormatModifierPropertiesEXT]");
       return env.Undefined();
     }
-    obj2 = Napi::ObjectWrap<_VkImageDrmFormatModifierPropertiesEXT>::Unwrap(obj);
-    if (!obj2->flush()) return env.Undefined();
-    $p2 = &obj2->instance;
+    obj2 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkImageDrmFormatModifierPropertiesEXT* instance = reinterpret_cast<VkImageDrmFormatModifierPropertiesEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p2 = instance;
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImageDrmFormatModifierPropertiesEXT' or 'null' for argument 3 'pProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   int32_t out = $vkGetImageDrmFormatModifierPropertiesEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -19950,38 +20039,42 @@ Napi::Value _vkGetImageDrmFormatModifierPropertiesEXT(const Napi::CallbackInfo& 
 Napi::Value _vkGetBufferDeviceAddressEXT(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkDevice* obj0;
+  Napi::Object obj0;
   VkDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
-  _VkBufferDeviceAddressInfoEXT* obj1;
+  Napi::Object obj1;
   VkBufferDeviceAddressInfoEXT *$p1 = nullptr;
   if (info[1].IsObject()) {
     Napi::Object obj = info[1].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkBufferDeviceAddressInfoEXT::constructor.Value()))) {
+    if (GetStructureTypeFromObject(obj) != VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_INFO_EXT) {
       NapiObjectTypeError(info[1], "argument 2", "[object VkBufferDeviceAddressInfoEXT]");
       return env.Undefined();
     }
-    obj1 = Napi::ObjectWrap<_VkBufferDeviceAddressInfoEXT>::Unwrap(obj);
-    if (!obj1->flush()) return env.Undefined();
-    $p1 = &obj1->instance;
+    obj1 = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    VkBufferDeviceAddressInfoEXT* instance = reinterpret_cast<VkBufferDeviceAddressInfoEXT*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p1 = instance;
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBufferDeviceAddressInfoEXT' or 'null' for argument 2 'pInfo'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
   uint64_t out = $vkGetBufferDeviceAddressEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -19996,21 +20089,22 @@ Napi::Value _vkGetBufferDeviceAddressEXT(const Napi::CallbackInfo& info) {
 Napi::Value _vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   
-  _VkPhysicalDevice* obj0;
+  Napi::Object obj0;
   VkPhysicalDevice *$p0 = nullptr;
   if (info[0].IsObject()) {
     Napi::Object obj = info[0].As<Napi::Object>();
-    if (!(obj.InstanceOf(_VkPhysicalDevice::constructor.Value()))) {
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "VkPhysicalDevice") {
       NapiObjectTypeError(info[0], "argument 1", "[object VkPhysicalDevice]");
       return env.Undefined();
     }
-    obj0 = Napi::ObjectWrap<_VkPhysicalDevice>::Unwrap(obj);
-    
-    $p0 = &obj0->instance;
+    obj0 = obj;
+    VkPhysicalDevice* instance = reinterpret_cast<VkPhysicalDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p0 = instance;
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }
 
   Napi::Object obj1;
@@ -20037,8 +20131,8 @@ Napi::Value _vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(const Napi::Callba
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkCooperativeMatrixPropertiesNV* result = Napi::ObjectWrap<_VkCooperativeMatrixPropertiesNV>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
     };
   }
     Napi::Array array = info[2].As<Napi::Array>();
@@ -20046,8 +20140,8 @@ Napi::Value _vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(const Napi::Callba
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkCooperativeMatrixPropertiesNV* result = Napi::ObjectWrap<_VkCooperativeMatrixPropertiesNV>::Unwrap(obj);
-      data[ii] = result->instance;
+      VkCooperativeMatrixPropertiesNV* instance = reinterpret_cast<VkCooperativeMatrixPropertiesNV*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p2 = std::make_shared<std::vector<VkCooperativeMatrixPropertiesNV>>(data);
   } else if (!info[2].IsNull()) {
@@ -20060,26 +20154,17 @@ Napi::Value _vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(const Napi::Callba
     &$p1,
     $p2 ? (VkCooperativeMatrixPropertiesNV *) $p2.get()->data() : nullptr
   );
-    obj1.Set("$", $p1);
+    if (info[1].IsObject()) obj1.Set("$", $p1);
   if (info[2].IsArray()) {
     VkCooperativeMatrixPropertiesNV* $pdata = $p2.get()->data();
     Napi::Array array = info[2].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _VkCooperativeMatrixPropertiesNV* result = Napi::ObjectWrap<_VkCooperativeMatrixPropertiesNV>::Unwrap(obj);
-      VkCooperativeMatrixPropertiesNV *instance = &result->instance;
-      VkCooperativeMatrixPropertiesNV *copy = &$pdata[ii];
-      
-      instance->sType = copy->sType;
-      instance->MSize = copy->MSize;
-      instance->NSize = copy->NSize;
-      instance->KSize = copy->KSize;
-      instance->AType = copy->AType;
-      instance->BType = copy->BType;
-      instance->CType = copy->CType;
-      instance->DType = copy->DType;
-      instance->scope = copy->scope;
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }
   

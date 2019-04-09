@@ -27,6 +27,12 @@ export class JavaScriptType {
       type === JavaScriptType.BIGINT
     );
   }
+  get isString() {
+    let {type} = this;
+    return (
+      type === JavaScriptType.STRING
+    );
+  }
   get isArray() {
     let {type} = this;
     return (

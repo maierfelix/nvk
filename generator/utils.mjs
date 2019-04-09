@@ -143,6 +143,7 @@ export function getAutoStructureType(name) {
   out += values.join(`_`).toUpperCase();
   // merge e.g. 8_BIT => 8BIT
   out = out.replace(/(_BIT)/gm, `BIT`);
+  out = out.replace(/(WIN_32)/gm, `WIN32`);
   return out;
 };
 
@@ -530,12 +531,12 @@ export function getDataViewInstructionStride(instr) {
   return ``;
 };
 
-export function getHexadecimalFromNumber(num) {
+export function getHexa(num) {
   return `0x` + (num.toString(16).toUpperCase());
 };
 
-export function getHexadecimalByteOffsetFromNumber(num) {
-  return `0x` + (Math.ceil(num).toString(16).toUpperCase());
+export function getHexaByteOffset(num) {
+  return `0x` + (Math.round(num).toString(16).toUpperCase());
 };
 
 export function stringifyJSONQuoteless(obj) {

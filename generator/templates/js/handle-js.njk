@@ -2,12 +2,21 @@
 class {{ handle.name }} {
   constructor(opts) {
     this.memoryBuffer = new ArrayBuffer({{ getHandleByteLength() | safe }});
-    this.memoryView = new DataView(this.memoryBuffer);
+    this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     if (typeof opts === "object") {
       throw new Error("'{{ handle.name }}' doesn't take any arguments");
     }
   }
+};
+
+{{ handle.name }}.prototype.reflect = function reflect(memoryAddress) {
+  let srcBuffer = getArrayBufferFromAddress(memoryAddress, {{ getHandleByteLength() | safe }});
+  let dstBuffer = this.memoryBuffer;
+  let srcView = new Uint8Array(srcBuffer);
+  let dstView = new Uint8Array(dstBuffer);
+  //console.log(`Reflect: "{{ handle.name }}"`, this.memoryAddress, memoryAddress);
+  dstView.set(srcView, 0x0);
 };
 
 {{ handle.name }}.byteLength = {{ getHandleByteLength() | safe }};

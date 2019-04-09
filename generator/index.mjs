@@ -244,10 +244,19 @@ async function generateBindings({xml, version, docs, incremental} = _) {
   {
     console.log("Generating Vk JavaScript interfaces..");
     let out = `
+"use strict";
+
 const BI0 = BigInt(0);
+const NULLT = String.fromCharCode(0x0);
 
 const textEncoder = new TextEncoder();
 const textDecoder = new TextDecoder();
+
+function decodeNullTerminatedUTF8String(view) {
+  let terminator = view.indexOf(0x0);
+  let subview = view.subarray(0, terminator > -1 ? terminator : view.length);
+  return textDecoder.decode(subview);
+};
 
 class NativeStringArray {
   constructor(array) {
@@ -258,20 +267,38 @@ class NativeStringArray {
     let addressBuffer = addressView.buffer;
     let addressBufferAddress = getAddressFromArrayBuffer(addressBuffer);
     for (let ii = 0; ii < array.length; ++ii) {
-      let str = array[ii];
-      let strBuffer = textEncoder.encode(str + String.fromCharCode(0x0)).buffer;
-      let strBufferAddress = getAddressFromArrayBuffer(strBuffer);
-      addressView[ii] = strBufferAddress;
+      let strBuffer = textEncoder.encode(array[ii] + NULLT).buffer;
+      addressView[ii] = getAddressFromArrayBuffer(strBuffer);
       stringBuffers.push(strBuffer);
     };
     this.address = addressBufferAddress;
-    // keep reference to prevent deallocation
+    // keep references to prevent deallocation
     this.addressBuffer = addressBuffer;
     this.stringBuffers = stringBuffers;
   }
 };
 
 class NativeObjectArray {
+  constructor(array) {
+    this.array = array;
+    this.address = BI0;
+    let byteStride = array[0].memoryBuffer.byteLength;
+    let objectBuffer = new ArrayBuffer(array.length * byteStride);
+    let objectBufferView = new Uint8Array(objectBuffer);
+    let objectBufferAddress = getAddressFromArrayBuffer(objectBuffer);
+    for (let ii = 0; ii < array.length; ++ii) {
+      let byteOffset = ii * byteStride;
+      let srcView = new Uint8Array(array[ii].memoryBuffer);
+      let dstView = objectBufferView.subarray(byteOffset, byteOffset + byteStride);
+      dstView.set(srcView, byteOffset);
+    };
+    this.address = objectBufferAddress;
+    // keep reference to prevent deallocation
+    this.objectBuffer = objectBuffer;
+  }
+};
+
+class NativeObjectReferenceArray {
   constructor(array) {
     this.array = array;
     this.address = BI0;
@@ -290,7 +317,7 @@ class NativeObjectArray {
 };
 `;
     out += generateJavaScriptInterfaces(ast, handles, structs);
-    out += `\nexport default {\n`;
+    out += `\nmodule.exports = {\n`;
     // add exports
     {
       enums.map(enu => {
@@ -305,7 +332,7 @@ class NativeObjectArray {
       });
     }
     out += `\n};\n`;
-    writeAddonFile(`${generatePath}/interfaces.mjs`, out, "utf-8", true);
+    writeAddonFile(`${generatePath}/interfaces.js`, out, "utf-8", true);
   }
   // generate enums
   {
