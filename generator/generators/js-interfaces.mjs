@@ -482,7 +482,6 @@ function getReflectorProcesssor(member) {
       return ``;
     }
     case JavaScriptType.OBJECT: {
-      console.log(currentStruct.name);
       return ``;
     }
     case JavaScriptType.STRING: {
