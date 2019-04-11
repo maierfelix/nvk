@@ -1,10 +1,17 @@
 /** {{ struct.name }} **/
 class {{ struct.name }} {
   constructor(opts) {
-    this.memoryBuffer = (typeof opts === "object" ? opts.$memoryBuffer : null) || new ArrayBuffer({{ getStructureByteLength() | safe }});
-{{ getStructureMemoryViews() | safe }}
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    if (typeof opts === "object") this.memoryAddress += BigInt(opts.$memoryOffset);
+    this.memoryBuffer = null;
+    this.memoryAddress = BI0;
+    if (typeof opts === "object" && opts.$memoryOffset !== void 0) {
+      this.memoryBuffer = opts.$memoryBuffer;
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer) + BigInt(opts.$memoryOffset);
+{{ getStructureMemoryViews(false) | safe }}
+    } else {
+      this.memoryBuffer = new ArrayBuffer({{ getStructureByteLength() | safe }});
+      this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+{{ getStructureMemoryViews(true) | safe }}
+    }
     {% for member in struct.children %}
     {%- if isIgnoreableType(member) != true -%}
     {{ getConstructorInitializer(member) | safe }}

@@ -125,7 +125,7 @@ function getEnumInlineStypeValue(name) {
   return value;
 };
 
-function getStructureMemoryViews() {
+function getStructureMemoryViews(passedByReference) {
   let out = ``;
   let struct = currentStruct;
   let viewTypes = [];
@@ -160,18 +160,18 @@ function getStructureMemoryViews() {
       if (viewTypes.indexOf(viewInstr) <= -1) viewTypes.push(viewInstr);
     }
   });
-  viewTypes.map(type => {
-    out += `    this.memoryView${type} = new ${type}Array(this.memoryBuffer);\n`;
-  });
-  out += `
-  if (typeof opts === "object") {\n`;
-  viewTypes.map(type => {
-    let byteStride = getHexaByteOffset(global[type + "Array"].BYTES_PER_ELEMENT);
-    let byteLength = getStructureByteLength();
-    out += `      this.memoryView${type} = new ${type}Array(this.memoryBuffer).subarray(opts.$memoryOffset / ${byteStride}, (opts.$memoryOffset + ${byteLength}) / ${byteStride});\n`;
-  });
-  out += `
-  }\n`;
+  if (passedByReference) {
+    viewTypes.map(type => {
+      out += `      this.memoryView${type} = new ${type}Array(this.memoryBuffer);\n`;
+    });
+  // passed by-value, share memoryBuffer of top-structure
+  } else {
+    viewTypes.map(type => {
+      let byteStride = getHexaByteOffset(global[type + "Array"].BYTES_PER_ELEMENT);
+      let byteLength = getStructureByteLength();
+      out += `      this.memoryView${type} = new ${type}Array(this.memoryBuffer).subarray(opts.$memoryOffset / ${byteStride}, (opts.$memoryOffset + ${byteLength}) / ${byteStride});\n`;
+    });
+  }
   return out;
 };
 
@@ -287,9 +287,6 @@ function getSetterProcessor(member) {
       let instr = "BigInt64";
       let byteStride = getDataViewInstructionStride(instr);
       let offset = getHexaByteOffset(byteOffset / byteStride);
-      if (member.isStructType) {
-        console.log(currentStruct.name + "." + member.name, isReference);
-      }
       return `
     if (value !== null && value.constructor === ${member.type}) {
       ${member.isStructType ? `value.flush();` : ``}
@@ -417,7 +414,15 @@ function getFlusherProcessor(member) {
     }
     case JavaScriptType.OBJECT: {
       if (member.isStructType && !isReference) {
-        return `if (this._${member.name} !== null) this._${member.name}.flush();`;
+        return `
+  if (this._${member.name} !== null) {
+    this._${member.name}.flush();
+    if (this.memoryBuffer !== this._${member.name}.memoryBuffer) {
+      let srcView = new Uint8Array(this._${member.name}.memoryBuffer);
+      let dstView = new Uint8Array(this.memoryBuffer);
+      dstView.set(srcView, ${byteOffset});
+    }
+  }`;
       }
       return ``;
     }
