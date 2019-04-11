@@ -35,8 +35,29 @@ let enumLayoutTable = null;
 
 nunjucks.configure({ autoescape: true });
 
+function getConstructorMemberInitializer(member) {
+  let jsType = getJavaScriptType(ast, member);
+  let {type, value} = jsType;
+  switch (type) {
+    case JavaScriptType.OBJECT: {
+      let byteOffset = getStructureMemberByteOffset(member);
+      let memoryOffset = getHexaByteOffset(byteOffset);
+      return `this._${member.name} = new ${member.type}({ $memoryBuffer: this.memoryBuffer, $memoryOffset: ${memoryOffset} });`;
+    }
+    case JavaScriptType.ARRAY_OF_OBJECTS:
+      return ``;
+    case JavaScriptType.ARRAY_OF_NUMBERS:
+      return `this._${member.name} = [...Array(${parseInt(member.length)})].fill(0x0);`;
+  };
+  warn(`Cannot handle instantiation initializer for ${currentStruct.name}.${member.name}, ${jsType.type}`);
+  return ``;
+};
+
 function getConstructorInitializer(member) {
   let jsType = getJavaScriptType(ast, member);
+  if (member.needsInitializationAtInstantiation) {
+    return getConstructorMemberInitializer(member);
+  }
   if (jsType.isNumeric) return ``; // no reflection needed
   if (jsType.isBoolean) return ``; // no reflection needed
   if (jsType.isString && jsType.isStatic) return ``; // no reference needed
@@ -121,10 +142,27 @@ function getStructureMemoryViews() {
     ) {
       if (viewTypes.indexOf("BigInt64") <= -1) viewTypes.push("BigInt64");
     }
+    else if (
+      type === JavaScriptType.ARRAY_OF_NUMBERS
+    ) {
+      let viewInstr = getDataViewInstruction(member);
+      if (viewTypes.indexOf(viewInstr) <= -1) viewTypes.push(viewInstr);
+    }
   });
   viewTypes.map(type => {
     out += `    this.memoryView${type} = new ${type}Array(this.memoryBuffer);\n`;
   });
+  if (struct.returnedonly) {
+    out += `
+    if (typeof opts === "object") {\n`;
+    viewTypes.map(type => {
+      let byteStride = getHexaByteOffset(global[type + "Array"].BYTES_PER_ELEMENT);
+      let byteLength = getStructureByteLength();
+      out += `      this.memoryView${type} = new ${type}Array(this.memoryBuffer).subarray(opts.$memoryOffset / ${byteStride}, (opts.$memoryOffset + ${byteLength}) / ${byteStride});\n`;
+    });
+    out += `
+    }\n`;
+  }
   return out;
 };
 
@@ -176,6 +214,25 @@ function getGetterProcessor(member) {
     return this._${member.name};`;
     }
     case JavaScriptType.ARRAY_OF_NUMBERS: {
+      if (currentStruct.returnedonly) {
+        if (!jsType.isStatic) {
+          warn(`Cannot process non-static array of numbers for ${currentStruct.name}.${member.name}`);
+        }
+        if (!member.length) {
+          warn(`Cannot resolve length for static array of numbers for ${currentStruct.name}.${member.name}`);
+        }
+        let length = parseInt(member.length);
+        let out = `\n    return [\n`;
+        for (let ii = 0; ii < length; ++ii) {
+          let instr = getDataViewInstruction(member);
+          let byteStride = getDataViewInstructionStride(instr);
+          let offset = getHexaByteOffset((byteOffset / byteStride) + ii);
+          let comma = ii < length - 1 ? `,\n` : ``;
+          out += `      this.memoryView${instr}[${offset}]${comma}`;
+        };
+        out += `\n    ];`;
+        return out;
+      }
       return `
     return this._${member.name};`;
     }
@@ -472,44 +529,19 @@ function getReflectorProcesssor(member) {
   let byteOffset = getStructureMemberByteOffset(member) | 0;
   let byteLength = getStructureMemberByteLength(member) | 0;
   switch (type) {
-    case JavaScriptType.NUMBER: {
-      return ``;
-    }
-    case JavaScriptType.BOOLEAN: {
-      return ``;
-    }
-    case JavaScriptType.BIGINT: {
-      return ``;
-    }
     case JavaScriptType.OBJECT: {
-      return ``;
-    }
-    case JavaScriptType.STRING: {
-      let byteOffsetBegin = getHexaByteOffset(byteOffset);
-      let byteOffsetEnd = getHexaByteOffset(byteOffset + byteLength);
-      if (jsType.isStatic) {
-        return `
-  dstView.set(srcView.subarray(${byteOffsetBegin}, ${byteOffsetEnd}), ${byteOffsetBegin});`;
-      } else {
-
-      }
-      return ``;
-    }
-    case JavaScriptType.ARRAY_OF_STRINGS: {
       return ``;
     }
     case JavaScriptType.ARRAY_OF_NUMBERS: {
       return ``;
     }
     case JavaScriptType.ARRAY_OF_OBJECTS: {
-      if (!jsType.isStatic) {
+      let struct = getNodeByName(member.type, ast).returnedonly;
+      if (jsType.isStatic) {
         
       } else {
         
       }
-      return ``;
-    }
-    case JavaScriptType.TYPED_ARRAY: {
       return ``;
     }
   };

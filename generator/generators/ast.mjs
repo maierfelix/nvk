@@ -335,6 +335,7 @@ function parseStructElement(parent) {
   let out = {
     kind: TYPES.STRUCT,
     name: attr.name,
+    needsReflection: false,
     returnedonly: !!attr.returnedonly,
     children
   };
@@ -855,11 +856,10 @@ export default function({ xmlInput, version, docs } = _) {
         struct.needsReflection = true;
       }
       else {
-        console.log(`Error: Cannot handle member ${member.name} of type ${member.type} in mutable-struct-reflection!`);
+        warn(`Cannot handle member ${member.name} of type ${member.type} in deep struct reflection tracer`);
       }
     });
   };
-
   // trace deep reflection structures
   {
     let calls = out.filter(node => node.kind === "COMMAND_PROTO");
@@ -871,6 +871,26 @@ export default function({ xmlInput, version, docs } = _) {
         if (param.isStructType && param.dereferenceCount > 0 && !param.isArray) {
           deepReflectionTrace(param.type);
         }
+      });
+    });
+  }
+  // trace members which need to be initialized at instantiation
+  // e.g. struct.struct, struct.numericarray
+  {
+    let structs = out.filter(node => node.kind === "STRUCT");
+    structs.map(struct => {
+      struct.children.map(member => {
+        // struct member
+        if (
+          !member.isConstant &&
+          member.isStructType &&
+          member.dereferenceCount <= 0
+        ) member.needsInitializationAtInstantiation = true;
+        // numeric array member
+        if (
+          member.isNumericArray &&
+          member.isStaticArray
+        ) member.needsInitializationAtInstantiation = true;
       });
     });
   }

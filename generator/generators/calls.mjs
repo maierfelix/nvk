@@ -510,7 +510,6 @@ function getCallBodyAfter(call) {
     // array of structs
     if (param.isArray && param.isStructType) {
       let struct = getStructByStructName(ast, param.type);
-      if (struct.needsReflection) {
         out.push(`
   if (info[${pIndex}].IsArray()) {
     ${param.type}* $pdata = $p${pIndex}.get()->data();
@@ -523,20 +522,17 @@ function getCallBodyAfter(call) {
       obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }`);
-      }
     // passed in parameter is a struct which gets filled by vulkan
     // and which we need to back-reflect to v8 manually
     } else if (param.isStructType && isReference) {
       let struct = getStructByStructName(ast, param.type);
-      if (struct.needsReflection) {
         out.push(`
   if (info[${pIndex}].IsObject()) {
      Napi::Object obj = info[${pIndex}].As<Napi::Object>();
     // reflect call
-    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>($p${pIndex}));
     obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
   }`);
-      }
       //let instr = getMutableStructReflectInstructions(param.type, pIndex, `obj${pIndex}->`);
       //out.push(instr);
     }

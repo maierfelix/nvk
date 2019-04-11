@@ -1,19 +1,19 @@
 /** {{ struct.name }} **/
 class {{ struct.name }} {
   constructor(opts) {
+    this.memoryBuffer = {% if struct.returnedonly == true -%} (typeof opts === "object" ? opts.$memoryBuffer : null) || {% endif -%} new ArrayBuffer({{ getStructureByteLength() | safe }});
+{{ getStructureMemoryViews() | safe }}
+    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
+    {% if struct.returnedonly == true -%}
+    if (typeof opts === "object") this.memoryAddress += BigInt(opts.$memoryOffset);
+    {%- endif -%}
     {% for member in struct.children %}
     {%- if isIgnoreableType(member) != true -%}
     {{ getConstructorInitializer(member) | safe }}
     {% endif -%}
     {%- endfor -%}
-    this.memoryBuffer = new ArrayBuffer({{ getStructureByteLength() | safe }});
-{{ getStructureMemoryViews() | safe }}
-    this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
     {{ getStructureAutoSType() | safe }}
     if (typeof opts === "object") {
-      {% if struct.returnedonly == true -%}
-      throw new Error("'{{ struct.name }}' is read-only and can only be filled by vulkan");
-      {%- endif -%}
       {% for member in struct.children %}
       {%- if isIgnoreableType(member) != true -%}
       {%- if isFillableMember(struct, member) == true -%}
