@@ -816,8 +816,8 @@ export default function({ xmlInput, version, docs } = _) {
     });
   }
 
-  function deepReflectionTrace(name) {
-    let struct = getStructByStructName(out, name);
+  function deepReflectionTrace(struct) {
+    struct.needsReflection = true;
     struct.children.map(member => {
       // these can be ignored
       if (
@@ -831,47 +831,31 @@ export default function({ xmlInput, version, docs } = _) {
       if (isPNextMember(member)) {
         let {extensions} = struct;
         if (extensions) {
-          struct.needsReflection = true;
           extensions.map(extensionName => {
-            deepReflectionTrace(extensionName);
+            let struct = getStructByStructName(out, extensionName);
+            deepReflectionTrace(struct);
           });
         }
       }
-      // string
-      else if (member.isString && member.isStaticArray) {
-        struct.needsReflection = true;
-      }
       // struct
       else if (member.isStructType && !member.isArray) {
-        deepReflectionTrace(member.type);
-        struct.needsReflection = true;
-      }
-      // array of numbers
-      else if (member.isNumericArray) {
-        struct.needsReflection = true;
+        let struct = getStructByStructName(out, member.type);
+        deepReflectionTrace(struct);
       }
       // array of structs
       else if (member.isStructType && member.isArray) {
-        deepReflectionTrace(member.type);
-        struct.needsReflection = true;
-      }
-      else {
-        warn(`Cannot handle member ${member.name} of type ${member.type} in deep struct reflection tracer`);
+        let struct = getStructByStructName(out, member.type);
+        deepReflectionTrace(struct);
       }
     });
   };
   // trace deep reflection structures
   {
-    let calls = out.filter(node => node.kind === "COMMAND_PROTO");
-    calls.map(call => {
-      let {params} = call;
-      params.map(param => {
-        if (isIgnoreableType(param)) return;
-        if (param.isConstant) return;
-        if (param.isStructType && param.dereferenceCount > 0 && !param.isArray) {
-          deepReflectionTrace(param.type);
-        }
-      });
+    let structs = out.filter(node => node.kind === "STRUCT");
+    structs.map(struct => {
+      if (struct.returnedonly) {
+        deepReflectionTrace(struct);
+      }
     });
   }
   // trace members which need to be initialized at instantiation

@@ -1,10 +1,10 @@
 /** {{ struct.name }} **/
 class {{ struct.name }} {
   constructor(opts) {
-    this.memoryBuffer = {% if struct.returnedonly == true -%} (typeof opts === "object" ? opts.$memoryBuffer : null) || {% endif -%} new ArrayBuffer({{ getStructureByteLength() | safe }});
+    this.memoryBuffer = {% if struct.needsReflection == true -%} (typeof opts === "object" ? opts.$memoryBuffer : null) || {% endif -%} new ArrayBuffer({{ getStructureByteLength() | safe }});
 {{ getStructureMemoryViews() | safe }}
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    {% if struct.returnedonly == true -%}
+    {% if struct.needsReflection == true -%}
     if (typeof opts === "object") this.memoryAddress += BigInt(opts.$memoryOffset);
     {%- endif -%}
     {% for member in struct.children %}

@@ -523,7 +523,6 @@ function getFlusherProcessor(member) {
 };
 
 function getReflectorProcesssor(member) {
-  if (!currentStruct.needsReflection) return ``;
   let jsType = getJavaScriptType(ast, member);
   let {type, value} = jsType;
   let byteOffset = getStructureMemberByteOffset(member) | 0;

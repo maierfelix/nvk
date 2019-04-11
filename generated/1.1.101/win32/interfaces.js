@@ -3458,11 +3458,11 @@ VkBaseInStructure.memoryLayout = Object.freeze({
 /** VkOffset2D **/
 class VkOffset2D {
   constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
+    this.memoryBuffer = (typeof opts === "object" ? opts.$memoryBuffer : null) || new ArrayBuffer(0x8);
     this.memoryViewInt32 = new Int32Array(this.memoryBuffer);
 
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    
+    if (typeof opts === "object") this.memoryAddress += BigInt(opts.$memoryOffset);
     
     
     if (typeof opts === "object") {
@@ -3586,11 +3586,11 @@ VkOffset3D.memoryLayout = Object.freeze({
 /** VkExtent2D **/
 class VkExtent2D {
   constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x8);
+    this.memoryBuffer = (typeof opts === "object" ? opts.$memoryBuffer : null) || new ArrayBuffer(0x8);
     this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
 
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    
+    if (typeof opts === "object") this.memoryAddress += BigInt(opts.$memoryOffset);
     
     
     if (typeof opts === "object") {
@@ -3644,11 +3644,11 @@ VkExtent2D.memoryLayout = Object.freeze({
 /** VkExtent3D **/
 class VkExtent3D {
   constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0xC);
+    this.memoryBuffer = (typeof opts === "object" ? opts.$memoryBuffer : null) || new ArrayBuffer(0xC);
     this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
 
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    
+    if (typeof opts === "object") this.memoryAddress += BigInt(opts.$memoryOffset);
     
     
     
@@ -3991,11 +3991,11 @@ VkClearRect.memoryLayout = Object.freeze({
 /** VkComponentMapping **/
 class VkComponentMapping {
   constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x10);
+    this.memoryBuffer = (typeof opts === "object" ? opts.$memoryBuffer : null) || new ArrayBuffer(0x10);
     this.memoryViewInt32 = new Int32Array(this.memoryBuffer);
 
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    
+    if (typeof opts === "object") this.memoryAddress += BigInt(opts.$memoryOffset);
     
     
     
@@ -18912,12 +18912,12 @@ VkDisplayPlanePropertiesKHR.memoryLayout = Object.freeze({
 /** VkDisplayModeParametersKHR **/
 class VkDisplayModeParametersKHR {
   constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0xC);
+    this.memoryBuffer = (typeof opts === "object" ? opts.$memoryBuffer : null) || new ArrayBuffer(0xC);
     this.memoryViewBigInt64 = new BigInt64Array(this.memoryBuffer);
     this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
 
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    this._visibleRegion = new VkExtent2D({ $memoryBuffer: this.memoryBuffer, $memoryOffset: 0x0 });
+    if (typeof opts === "object") this.memoryAddress += BigInt(opts.$memoryOffset);this._visibleRegion = new VkExtent2D({ $memoryBuffer: this.memoryBuffer, $memoryOffset: 0x0 });
     
     
     if (typeof opts === "object") {
@@ -25841,11 +25841,11 @@ VkPhysicalDevicePushDescriptorPropertiesKHR.memoryLayout = Object.freeze({
 /** VkConformanceVersionKHR **/
 class VkConformanceVersionKHR {
   constructor(opts) {
-    this.memoryBuffer = new ArrayBuffer(0x4);
+    this.memoryBuffer = (typeof opts === "object" ? opts.$memoryBuffer : null) || new ArrayBuffer(0x4);
     this.memoryViewUint8 = new Uint8Array(this.memoryBuffer);
 
     this.memoryAddress = getAddressFromArrayBuffer(this.memoryBuffer);
-    
+    if (typeof opts === "object") this.memoryAddress += BigInt(opts.$memoryOffset);
     
     
     

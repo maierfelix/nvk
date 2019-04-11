@@ -18410,7 +18410,7 @@
   {
     "kind": "STRUCT",
     "name": "VkOffset2D",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": false,
     "children": [
       {
@@ -18511,7 +18511,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExtent2D",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": false,
     "children": [
       {
@@ -18554,7 +18554,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExtent3D",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": false,
     "children": [
       {
@@ -18826,7 +18826,7 @@
   {
     "kind": "STRUCT",
     "name": "VkComponentMapping",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": false,
     "children": [
       {
@@ -19097,7 +19097,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExtensionProperties",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -19143,7 +19143,7 @@
   {
     "kind": "STRUCT",
     "name": "VkLayerProperties",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -20017,7 +20017,7 @@
   {
     "kind": "STRUCT",
     "name": "VkQueueFamilyProperties",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -20327,7 +20327,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryRequirements",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -20402,7 +20402,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSparseImageFormatProperties",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -20477,7 +20477,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSparseImageMemoryRequirements",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -20592,7 +20592,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryType",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -20656,7 +20656,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryHeap",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -20800,7 +20800,7 @@
   {
     "kind": "STRUCT",
     "name": "VkFormatProperties",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -22943,7 +22943,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSubresourceLayout",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -30879,7 +30879,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceSparseProperties",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -33040,7 +33040,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDisplayPropertiesKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -33169,7 +33169,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDisplayPlanePropertiesKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -33227,7 +33227,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDisplayModeParametersKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": false,
     "children": [
       {
@@ -33276,7 +33276,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDisplayModePropertiesKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -34923,7 +34923,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSurfaceFormatKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -38795,7 +38795,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceFeatures2",
-    "needsReflection": true,
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -39111,7 +39111,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceProperties2KHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -39287,7 +39287,7 @@
   {
     "kind": "STRUCT",
     "name": "VkFormatProperties2KHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -39449,7 +39449,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageFormatProperties2KHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -39980,7 +39980,7 @@
   {
     "kind": "STRUCT",
     "name": "VkQueueFamilyProperties2",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -40056,7 +40056,7 @@
   {
     "kind": "STRUCT",
     "name": "VkQueueFamilyProperties2KHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -40209,7 +40209,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceMemoryProperties2KHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -40286,7 +40286,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSparseImageFormatProperties2",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -40359,7 +40359,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSparseImageFormatProperties2KHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -40714,7 +40714,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDevicePushDescriptorPropertiesKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -40789,7 +40789,7 @@
   {
     "kind": "STRUCT",
     "name": "VkConformanceVersionKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": false,
     "children": [
       {
@@ -41379,7 +41379,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalMemoryProperties",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -41481,7 +41481,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalMemoryPropertiesKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -41805,7 +41805,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalImageFormatPropertiesKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -42214,7 +42214,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalBufferPropertiesKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -42408,7 +42408,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceIDPropertiesKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -43193,7 +43193,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryWin32HandlePropertiesKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -43423,7 +43423,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryFdPropertiesKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -43895,7 +43895,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalSemaphoreProperties",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -44024,7 +44024,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalSemaphorePropertiesKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -45132,7 +45132,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalFenceProperties",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -45261,7 +45261,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalFencePropertiesKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -46290,7 +46290,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceMultiviewProperties",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -46376,7 +46376,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceMultiviewPropertiesKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -47261,7 +47261,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceGroupProperties",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -47394,7 +47394,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceGroupPropertiesKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -51135,7 +51135,7 @@
   {
     "kind": "STRUCT",
     "name": "VkRefreshCycleDurationGOOGLE",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -51163,7 +51163,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPastPresentationTimingGOOGLE",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -52071,7 +52071,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceDiscardRectanglePropertiesEXT",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -52266,7 +52266,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -52762,7 +52762,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSurfaceFormat2KHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -52831,7 +52831,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDisplayProperties2KHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -52900,7 +52900,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDisplayPlaneProperties2KHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -52969,7 +52969,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDisplayModeProperties2KHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -53182,7 +53182,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSharedPresentSurfaceCapabilitiesKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -53519,7 +53519,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceSubgroupProperties",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -54231,7 +54231,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSparseImageMemoryRequirements2",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -54300,7 +54300,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSparseImageMemoryRequirements2KHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -54370,7 +54370,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDevicePointClippingProperties",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -54443,7 +54443,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDevicePointClippingPropertiesKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -54517,7 +54517,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryDedicatedRequirements",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -54607,7 +54607,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryDedicatedRequirementsKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -56142,7 +56142,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSamplerYcbcrConversionImageFormatProperties",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -56208,7 +56208,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSamplerYcbcrConversionImageFormatPropertiesKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -56275,7 +56275,7 @@
   {
     "kind": "STRUCT",
     "name": "VkTextureLODGatherFormatPropertiesAMD",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -56588,7 +56588,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceProtectedMemoryProperties",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -56908,7 +56908,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -57918,7 +57918,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -58358,7 +58358,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceInlineUniformBlockPropertiesEXT",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -59042,7 +59042,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceMaintenance3Properties",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -59138,7 +59138,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceMaintenance3PropertiesKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -59308,7 +59308,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDescriptorSetLayoutSupportKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -59547,7 +59547,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceFloatControlsPropertiesKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -59923,7 +59923,7 @@
   {
     "kind": "STRUCT",
     "name": "VkShaderResourceUsageAMD",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -60011,7 +60011,7 @@
   {
     "kind": "STRUCT",
     "name": "VkShaderStatisticsInfoAMD",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -60987,7 +60987,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryHostPointerPropertiesEXT",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -61055,7 +61055,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceExternalMemoryHostPropertiesEXT",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -61131,7 +61131,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceConservativeRasterizationPropertiesEXT",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -61372,7 +61372,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceShaderCorePropertiesAMD",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -62043,7 +62043,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceDescriptorIndexingPropertiesEXT",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -62877,7 +62877,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDescriptorSetVariableDescriptorCountLayoutSupportEXT",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -64279,7 +64279,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -64345,7 +64345,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDevicePCIBusInfoPropertiesEXT",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -64521,7 +64521,7 @@
   {
     "kind": "STRUCT",
     "name": "VkAndroidHardwareBufferUsageANDROID",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -65638,7 +65638,7 @@
   {
     "kind": "STRUCT",
     "name": "VkQueueFamilyCheckpointPropertiesNV",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -65707,7 +65707,7 @@
   {
     "kind": "STRUCT",
     "name": "VkCheckpointDataNV",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -65797,7 +65797,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceDepthStencilResolvePropertiesKHR",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -66278,7 +66278,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceTransformFeedbackPropertiesEXT",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -69647,7 +69647,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceRayTracingPropertiesNV",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -69912,7 +69912,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDrmFormatModifierPropertiesEXT",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -70348,7 +70348,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageDrmFormatModifierPropertiesEXT",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -70554,7 +70554,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceFragmentDensityMapFeaturesEXT",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -71613,7 +71613,7 @@
   {
     "kind": "STRUCT",
     "name": "VkFilterCubicImageViewImageFormatPropertiesEXT",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -71800,7 +71800,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceCooperativeMatrixPropertiesNV",
-    "needsReflection": false,
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
