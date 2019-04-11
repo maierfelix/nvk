@@ -37,17 +37,28 @@ nunjucks.configure({ autoescape: true });
 
 function getConstructorMemberInitializer(member) {
   let jsType = getJavaScriptType(ast, member);
-  let {type, value} = jsType;
+  let {type, value, isReference} = jsType;
   switch (type) {
     case JavaScriptType.OBJECT: {
+      if (isReference) {
+        return `this._${member.name} = null;`;
+      } else {
+        let byteOffset = getStructureMemberByteOffset(member);
+        let memoryOffset = getHexaByteOffset(byteOffset);
+        return `this._${member.name} = new ${member.type}({ $memoryBuffer: this.memoryBuffer, $memoryOffset: ${memoryOffset} });`;
+      }
+    }
+    case JavaScriptType.ARRAY_OF_OBJECTS: {
+      let length = parseInt(member.length);
       let byteOffset = getStructureMemberByteOffset(member);
       let memoryOffset = getHexaByteOffset(byteOffset);
-      return `this._${member.name} = new ${member.type}({ $memoryBuffer: this.memoryBuffer, $memoryOffset: ${memoryOffset} });`;
+      let byteLength = getHexaByteOffset(parseInt(getStructureMemberByteLength(member)) / length);
+      return `this._${member.name} = [...Array(${length})].map((v, i) => new ${member.type}({ $memoryBuffer: this.memoryBuffer, $memoryOffset: ${memoryOffset} + (i * ${byteLength}) }));`;
     }
-    case JavaScriptType.ARRAY_OF_OBJECTS:
-      return ``;
-    case JavaScriptType.ARRAY_OF_NUMBERS:
-      return `this._${member.name} = [...Array(${parseInt(member.length)})].fill(0x0);`;
+    case JavaScriptType.ARRAY_OF_NUMBERS: {
+      let length = parseInt(member.length);
+      return `this._${member.name} = [...Array(${length})].fill(0x0);`;
+    }
   };
   warn(`Cannot handle instantiation initializer for ${currentStruct.name}.${member.name}, ${jsType.type}`);
   return ``;
@@ -152,17 +163,15 @@ function getStructureMemoryViews() {
   viewTypes.map(type => {
     out += `    this.memoryView${type} = new ${type}Array(this.memoryBuffer);\n`;
   });
-  if (struct.returnedonly) {
-    out += `
-    if (typeof opts === "object") {\n`;
-    viewTypes.map(type => {
-      let byteStride = getHexaByteOffset(global[type + "Array"].BYTES_PER_ELEMENT);
-      let byteLength = getStructureByteLength();
-      out += `      this.memoryView${type} = new ${type}Array(this.memoryBuffer).subarray(opts.$memoryOffset / ${byteStride}, (opts.$memoryOffset + ${byteLength}) / ${byteStride});\n`;
-    });
-    out += `
-    }\n`;
-  }
+  out += `
+  if (typeof opts === "object") {\n`;
+  viewTypes.map(type => {
+    let byteStride = getHexaByteOffset(global[type + "Array"].BYTES_PER_ELEMENT);
+    let byteLength = getStructureByteLength();
+    out += `      this.memoryView${type} = new ${type}Array(this.memoryBuffer).subarray(opts.$memoryOffset / ${byteStride}, (opts.$memoryOffset + ${byteLength}) / ${byteStride});\n`;
+  });
+  out += `
+  }\n`;
   return out;
 };
 
@@ -255,7 +264,7 @@ function getGetterProcessor(member) {
 
 function getSetterProcessor(member) {
   let jsType = getJavaScriptType(ast, member);
-  let {type, value} = jsType;
+  let {type, value, isReference} = jsType;
   let byteOffset = getStructureMemberByteOffset(member);
   let byteLength = getStructureMemberByteLength(member);
   switch (type) {
@@ -278,15 +287,18 @@ function getSetterProcessor(member) {
       let instr = "BigInt64";
       let byteStride = getDataViewInstructionStride(instr);
       let offset = getHexaByteOffset(byteOffset / byteStride);
+      if (member.isStructType) {
+        console.log(currentStruct.name + "." + member.name, isReference);
+      }
       return `
     if (value !== null && value.constructor === ${member.type}) {
       ${member.isStructType ? `value.flush();` : ``}
       this._${member.name} = value;
-      ${member.isStructType ? `this.memoryView${instr}[${offset}] = value.memoryAddress;` : ``}
+      ${member.isStructType && isReference ? `this.memoryView${instr}[${offset}] = value.memoryAddress;` : ``}
       ${member.isHandleType ? `this.memoryView${instr}[${offset}] = value.memoryViewBigInt64[0];` : ``}
     } else if (value === null) {
       this._${member.name} = null;
-      this.memoryView${instr}[${offset}] = BI0;
+      ${((member.isStructType && isReference) || member.isHandleType) ? `this.memoryView${instr}[${offset}] = BI0;` : ``}
     } else {
       throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected '${member.type}' but got '" + value.constructor.name + "'");
     }`;
@@ -393,7 +405,7 @@ function getSetterProcessor(member) {
 
 function getFlusherProcessor(member) {
   let jsType = getJavaScriptType(ast, member);
-  let {type, value} = jsType;
+  let {type, value, isReference} = jsType;
   let byteOffset = getStructureMemberByteOffset(member);
   switch (type) {
     case JavaScriptType.NUMBER:
@@ -404,6 +416,9 @@ function getFlusherProcessor(member) {
       return ``; // not needed
     }
     case JavaScriptType.OBJECT: {
+      if (member.isStructType && !isReference) {
+        return `if (this._${member.name} !== null) this._${member.name}.flush();`;
+      }
       return ``;
     }
     case JavaScriptType.STRING: {
@@ -543,6 +558,9 @@ function getReflectorProcesssor(member) {
       }
       return ``;
     }
+    case JavaScriptType.ARRAY_OF_STRINGS: {
+      return ``;
+    }
   };
   if (isPNextMember(member)) {
     return ``;
@@ -616,12 +634,23 @@ export default function(astReference, handles, structs) {
   enumLayoutTable = getEnumLayoutTable();
   memoryLayouts = getMemoryLayouts();
   let output = ``;
+  let globalEnums = {};
   if (enumLayoutTable) {
     for (let key in enumLayoutTable) {
       let json = stringifyJSONQuoteless(enumLayoutTable[key]);
+      for (let key2 in enumLayoutTable[key]) {
+        if (globalEnums[key2] !== void 0) {
+          warn(`Enum ${key}.${key2} already exists`);
+        }
+        globalEnums[key2] = enumLayoutTable[key][key2];
+      };
       output += `\nconst ${key} = ${json};\n`;
     };
+    // create function which returns all enums globally
   }
+  output += `\nfunction getGlobalEnumerations() {
+    return (${stringifyJSONQuoteless(globalEnums)});
+  };\n`;
   handles.map(handle => {
     currentHandle = handle;
     output += nunjucks.renderString(JS_HANDLE_TEMPLATE, {

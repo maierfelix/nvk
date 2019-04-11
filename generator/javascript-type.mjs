@@ -12,12 +12,14 @@ export class JavaScriptType {
     this.isBitmask = false;
     this.isNullable = false;
     this.isStatic = false;
+    this.isReference = false;
     if (opts.type !== void 0) this.type = opts.type;
     if (opts.value !== void 0) this.value = opts.value;
     if (opts.isEnum !== void 0) this.isEnum = opts.isEnum;
     if (opts.isBitmask !== void 0) this.isBitmask = opts.isBitmask;
     if (opts.isNullable !== void 0) this.isNullable = opts.isNullable;
     if (opts.isStatic !== void 0) this.isStatic = opts.isStatic;
+    if (opts.isReference !== void 0) this.isReference = opts.isReference;
     //if (!opts.byteLength) console.log("nooooo");
   }
   get isNumeric() {
@@ -171,7 +173,8 @@ export function getJavaScriptType(ast, object) {
       return new JavaScriptType({
         type: JavaScriptType.OBJECT,
         value: object.type,
-        isNullable: true
+        isNullable: true,
+        isReference: object.dereferenceCount > 0
       });
     }
   }

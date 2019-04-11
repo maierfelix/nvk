@@ -77,9 +77,7 @@ if (platform === "darwin") {
 }
 
 const addon = require(addonPath);
-const enums = addon.getVulkanEnumerations();
 
 Object.assign(out, addon);
-Object.assign(out, enums);
 
 module.exports = out;

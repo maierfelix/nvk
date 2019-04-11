@@ -246,6 +246,11 @@ async function generateBindings({xml, version, docs, incremental} = _) {
     let out = `
 "use strict";
 
+const nvk = require("${pkg.config.INTERFACE_ROOT}");
+
+const getAddressFromArrayBuffer = nvk.getAddressFromArrayBuffer;
+const getArrayBufferFromAddress = nvk.getArrayBufferFromAddress;
+
 const BI0 = BigInt(0);
 const NULLT = String.fromCharCode(0x0);
 
@@ -323,6 +328,8 @@ class NativeObjectReferenceArray {
       enums.map(enu => {
         out += `  ` + enu.name + `,\n`;
       });
+      // add global enums
+      out += `  ...(getGlobalEnumerations()),\n`;
       handles.map(handle => {
         out += `  ` + handle.name + `,\n`;
       });
@@ -350,13 +357,7 @@ class NativeObjectReferenceArray {
   // generate includes
   {
     console.log("Generating Vk includes..");
-    structs.map(struct => {
-      includeNames.push(`"./src/${struct.name}.cpp"`);
-    });
-    handles.map(handle => {
-      includeNames.push(`"./src/${handle.name}.cpp"`);
-    });
-    // also add the index.cpp
+    // add the index.cpp
     includeNames.push(`"./src/index.cpp"`);
   }
   // generate typescript definition
