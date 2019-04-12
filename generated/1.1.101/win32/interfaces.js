@@ -5378,17 +5378,11 @@ class VkBaseOutStructure {
 };
 
 VkBaseOutStructure.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkBaseOutStructure"`);
   
   return true;
 };
 
 VkBaseOutStructure.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x10));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkBaseOutStructure"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -5460,17 +5454,11 @@ class VkBaseInStructure {
 };
 
 VkBaseInStructure.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkBaseInStructure"`);
   
   return true;
 };
 
 VkBaseInStructure.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x10));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkBaseInStructure"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -5533,17 +5521,11 @@ class VkOffset2D {
 };
 
 VkOffset2D.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkOffset2D"`);
   
   return true;
 };
 
 VkOffset2D.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x8));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkOffset2D"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -5617,17 +5599,11 @@ class VkOffset3D {
 };
 
 VkOffset3D.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkOffset3D"`);
   
   return true;
 };
 
 VkOffset3D.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0xC));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkOffset3D"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -5694,17 +5670,11 @@ class VkExtent2D {
 };
 
 VkExtent2D.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExtent2D"`);
   
   return true;
 };
 
 VkExtent2D.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x8));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExtent2D"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -5778,17 +5748,11 @@ class VkExtent3D {
 };
 
 VkExtent3D.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExtent3D"`);
   
   return true;
 };
 
 VkExtent3D.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0xC));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExtent3D"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -5899,17 +5863,11 @@ class VkViewport {
 };
 
 VkViewport.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkViewport"`);
   
   return true;
 };
 
 VkViewport.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkViewport"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -6002,7 +5960,6 @@ class VkRect2D {
 };
 
 VkRect2D.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkRect2D"`);
   
   
   if (this._offset !== null) {
@@ -6028,11 +5985,6 @@ VkRect2D.prototype.flush = function flush() {
 };
 
 VkRect2D.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x10));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkRect2D"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -6119,7 +6071,6 @@ class VkClearRect {
 };
 
 VkClearRect.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkClearRect"`);
   
   
   if (this._rect !== null) {
@@ -6135,11 +6086,6 @@ VkClearRect.prototype.flush = function flush() {
 };
 
 VkClearRect.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkClearRect"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -6230,17 +6176,11 @@ class VkComponentMapping {
 };
 
 VkComponentMapping.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkComponentMapping"`);
   
   return true;
 };
 
 VkComponentMapping.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x10));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkComponentMapping"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -6348,7 +6288,6 @@ class VkPhysicalDeviceProperties {
 };
 
 VkPhysicalDeviceProperties.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceProperties"`);
   
   return true;
 };
@@ -6358,7 +6297,6 @@ VkPhysicalDeviceProperties.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceProperties"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x338), 0x0);
   
   
@@ -6443,7 +6381,6 @@ class VkExtensionProperties {
 };
 
 VkExtensionProperties.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExtensionProperties"`);
   
   return true;
 };
@@ -6453,7 +6390,6 @@ VkExtensionProperties.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExtensionProperties"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x104), 0x0);
 };
 
@@ -6514,7 +6450,6 @@ class VkLayerProperties {
 };
 
 VkLayerProperties.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkLayerProperties"`);
   
   return true;
 };
@@ -6524,7 +6459,6 @@ VkLayerProperties.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkLayerProperties"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x208), 0x0);
 };
 
@@ -6671,7 +6605,6 @@ class VkApplicationInfo {
 };
 
 VkApplicationInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkApplicationInfo"`);
   
   
   if (this._pNext !== null) {
@@ -6682,11 +6615,6 @@ VkApplicationInfo.prototype.flush = function flush() {
 };
 
 VkApplicationInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x30));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkApplicationInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -6765,17 +6693,11 @@ class VkAllocationCallbacks {
 };
 
 VkAllocationCallbacks.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkAllocationCallbacks"`);
   
   return true;
 };
 
 VkAllocationCallbacks.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x30));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkAllocationCallbacks"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -6901,7 +6823,6 @@ class VkDeviceQueueCreateInfo {
 };
 
 VkDeviceQueueCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDeviceQueueCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -6912,11 +6833,6 @@ VkDeviceQueueCreateInfo.prototype.flush = function flush() {
 };
 
 VkDeviceQueueCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDeviceQueueCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -7156,7 +7072,6 @@ class VkDeviceCreateInfo {
 };
 
 VkDeviceCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDeviceCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -7231,11 +7146,6 @@ VkDeviceCreateInfo.prototype.flush = function flush() {
 };
 
 VkDeviceCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x48));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDeviceCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -7440,7 +7350,6 @@ class VkInstanceCreateInfo {
 };
 
 VkInstanceCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkInstanceCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -7495,11 +7404,6 @@ VkInstanceCreateInfo.prototype.flush = function flush() {
 };
 
 VkInstanceCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x40));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkInstanceCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -7588,7 +7492,6 @@ class VkQueueFamilyProperties {
 };
 
 VkQueueFamilyProperties.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkQueueFamilyProperties"`);
   
   return true;
 };
@@ -7598,7 +7501,6 @@ VkQueueFamilyProperties.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkQueueFamilyProperties"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -7665,7 +7567,6 @@ class VkPhysicalDeviceMemoryProperties {
 };
 
 VkPhysicalDeviceMemoryProperties.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceMemoryProperties"`);
   
   return true;
 };
@@ -7675,7 +7576,6 @@ VkPhysicalDeviceMemoryProperties.prototype.reflect = function reflect(memoryAddr
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceMemoryProperties"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x208), 0x0);
   
   
@@ -7804,7 +7704,6 @@ class VkMemoryAllocateInfo {
 };
 
 VkMemoryAllocateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkMemoryAllocateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -7815,11 +7714,6 @@ VkMemoryAllocateInfo.prototype.flush = function flush() {
 };
 
 VkMemoryAllocateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkMemoryAllocateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -7884,7 +7778,6 @@ class VkMemoryRequirements {
 };
 
 VkMemoryRequirements.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkMemoryRequirements"`);
   
   return true;
 };
@@ -7894,7 +7787,6 @@ VkMemoryRequirements.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkMemoryRequirements"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
 };
 
@@ -7951,7 +7843,6 @@ class VkSparseImageFormatProperties {
 };
 
 VkSparseImageFormatProperties.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSparseImageFormatProperties"`);
   
   return true;
 };
@@ -7961,7 +7852,6 @@ VkSparseImageFormatProperties.prototype.reflect = function reflect(memoryAddress
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSparseImageFormatProperties"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x14), 0x0);
   
   
@@ -8030,7 +7920,6 @@ class VkSparseImageMemoryRequirements {
 };
 
 VkSparseImageMemoryRequirements.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSparseImageMemoryRequirements"`);
   
   return true;
 };
@@ -8040,7 +7929,6 @@ VkSparseImageMemoryRequirements.prototype.reflect = function reflect(memoryAddre
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSparseImageMemoryRequirements"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x30), 0x0);
   
   
@@ -8105,7 +7993,6 @@ class VkMemoryType {
 };
 
 VkMemoryType.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkMemoryType"`);
   
   return true;
 };
@@ -8115,7 +8002,6 @@ VkMemoryType.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkMemoryType"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x8), 0x0);
 };
 
@@ -8166,7 +8052,6 @@ class VkMemoryHeap {
 };
 
 VkMemoryHeap.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkMemoryHeap"`);
   
   return true;
 };
@@ -8176,7 +8061,6 @@ VkMemoryHeap.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkMemoryHeap"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x10), 0x0);
 };
 
@@ -8280,7 +8164,6 @@ class VkMappedMemoryRange {
 };
 
 VkMappedMemoryRange.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkMappedMemoryRange"`);
   
   
   if (this._pNext !== null) {
@@ -8291,11 +8174,6 @@ VkMappedMemoryRange.prototype.flush = function flush() {
 };
 
 VkMappedMemoryRange.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkMappedMemoryRange"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -8362,7 +8240,6 @@ class VkFormatProperties {
 };
 
 VkFormatProperties.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkFormatProperties"`);
   
   return true;
 };
@@ -8372,7 +8249,6 @@ VkFormatProperties.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkFormatProperties"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0xC), 0x0);
 };
 
@@ -8441,7 +8317,6 @@ class VkImageFormatProperties {
 };
 
 VkImageFormatProperties.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageFormatProperties"`);
   
   return true;
 };
@@ -8451,7 +8326,6 @@ VkImageFormatProperties.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageFormatProperties"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x20), 0x0);
   
   
@@ -8548,17 +8422,11 @@ class VkDescriptorBufferInfo {
 };
 
 VkDescriptorBufferInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDescriptorBufferInfo"`);
   
   return true;
 };
 
 VkDescriptorBufferInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDescriptorBufferInfo"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -8652,17 +8520,11 @@ class VkDescriptorImageInfo {
 };
 
 VkDescriptorImageInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDescriptorImageInfo"`);
   
   return true;
 };
 
 VkDescriptorImageInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDescriptorImageInfo"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -8855,7 +8717,6 @@ class VkWriteDescriptorSet {
 };
 
 VkWriteDescriptorSet.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkWriteDescriptorSet"`);
   
   
   if (this._pNext !== null) {
@@ -8926,11 +8787,6 @@ VkWriteDescriptorSet.prototype.flush = function flush() {
 };
 
 VkWriteDescriptorSet.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x40));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkWriteDescriptorSet"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -9125,7 +8981,6 @@ class VkCopyDescriptorSet {
 };
 
 VkCopyDescriptorSet.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkCopyDescriptorSet"`);
   
   
   if (this._pNext !== null) {
@@ -9136,11 +8991,6 @@ VkCopyDescriptorSet.prototype.flush = function flush() {
 };
 
 VkCopyDescriptorSet.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x38));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkCopyDescriptorSet"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -9326,7 +9176,6 @@ class VkBufferCreateInfo {
 };
 
 VkBufferCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkBufferCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -9337,11 +9186,6 @@ VkBufferCreateInfo.prototype.flush = function flush() {
 };
 
 VkBufferCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x38));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkBufferCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -9493,7 +9337,6 @@ class VkBufferViewCreateInfo {
 };
 
 VkBufferViewCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkBufferViewCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -9504,11 +9347,6 @@ VkBufferViewCreateInfo.prototype.flush = function flush() {
 };
 
 VkBufferViewCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x38));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkBufferViewCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -9606,17 +9444,11 @@ class VkImageSubresource {
 };
 
 VkImageSubresource.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageSubresource"`);
   
   return true;
 };
 
 VkImageSubresource.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0xC));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageSubresource"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -9707,17 +9539,11 @@ class VkImageSubresourceLayers {
 };
 
 VkImageSubresourceLayers.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageSubresourceLayers"`);
   
   return true;
 };
 
 VkImageSubresourceLayers.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x10));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageSubresourceLayers"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -9823,17 +9649,11 @@ class VkImageSubresourceRange {
 };
 
 VkImageSubresourceRange.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageSubresourceRange"`);
   
   return true;
 };
 
 VkImageSubresourceRange.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x14));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageSubresourceRange"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -9929,7 +9749,6 @@ class VkMemoryBarrier {
 };
 
 VkMemoryBarrier.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkMemoryBarrier"`);
   
   
   if (this._pNext !== null) {
@@ -9940,11 +9759,6 @@ VkMemoryBarrier.prototype.flush = function flush() {
 };
 
 VkMemoryBarrier.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkMemoryBarrier"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -10104,7 +9918,6 @@ class VkBufferMemoryBarrier {
 };
 
 VkBufferMemoryBarrier.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkBufferMemoryBarrier"`);
   
   
   if (this._pNext !== null) {
@@ -10115,11 +9928,6 @@ VkBufferMemoryBarrier.prototype.flush = function flush() {
 };
 
 VkBufferMemoryBarrier.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x38));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkBufferMemoryBarrier"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -10332,7 +10140,6 @@ class VkImageMemoryBarrier {
 };
 
 VkImageMemoryBarrier.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageMemoryBarrier"`);
   
   
   if (this._pNext !== null) {
@@ -10353,11 +10160,6 @@ VkImageMemoryBarrier.prototype.flush = function flush() {
 };
 
 VkImageMemoryBarrier.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x48));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageMemoryBarrier"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -10637,7 +10439,6 @@ class VkImageCreateInfo {
 };
 
 VkImageCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -10658,11 +10459,6 @@ VkImageCreateInfo.prototype.flush = function flush() {
 };
 
 VkImageCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x58));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -10779,7 +10575,6 @@ class VkSubresourceLayout {
 };
 
 VkSubresourceLayout.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSubresourceLayout"`);
   
   return true;
 };
@@ -10789,7 +10584,6 @@ VkSubresourceLayout.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSubresourceLayout"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x28), 0x0);
 };
 
@@ -10969,7 +10763,6 @@ class VkImageViewCreateInfo {
 };
 
 VkImageViewCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageViewCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -11000,11 +10793,6 @@ VkImageViewCreateInfo.prototype.flush = function flush() {
 };
 
 VkImageViewCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x50));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageViewCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -11108,17 +10896,11 @@ class VkBufferCopy {
 };
 
 VkBufferCopy.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkBufferCopy"`);
   
   return true;
 };
 
 VkBufferCopy.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkBufferCopy"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -11229,17 +11011,11 @@ class VkSparseMemoryBind {
 };
 
 VkSparseMemoryBind.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSparseMemoryBind"`);
   
   return true;
 };
 
 VkSparseMemoryBind.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSparseMemoryBind"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -11390,7 +11166,6 @@ class VkSparseImageMemoryBind {
 };
 
 VkSparseImageMemoryBind.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSparseImageMemoryBind"`);
   
   
   if (this._subresource !== null) {
@@ -11426,11 +11201,6 @@ VkSparseImageMemoryBind.prototype.flush = function flush() {
 };
 
 VkSparseImageMemoryBind.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x40));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSparseImageMemoryBind"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -11539,7 +11309,6 @@ class VkSparseBufferMemoryBindInfo {
 };
 
 VkSparseBufferMemoryBindInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSparseBufferMemoryBindInfo"`);
   
   
   if (this._pBinds !== null) {
@@ -11565,11 +11334,6 @@ VkSparseBufferMemoryBindInfo.prototype.flush = function flush() {
 };
 
 VkSparseBufferMemoryBindInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSparseBufferMemoryBindInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -11662,7 +11426,6 @@ class VkSparseImageOpaqueMemoryBindInfo {
 };
 
 VkSparseImageOpaqueMemoryBindInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSparseImageOpaqueMemoryBindInfo"`);
   
   
   if (this._pBinds !== null) {
@@ -11688,11 +11451,6 @@ VkSparseImageOpaqueMemoryBindInfo.prototype.flush = function flush() {
 };
 
 VkSparseImageOpaqueMemoryBindInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSparseImageOpaqueMemoryBindInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -11785,7 +11543,6 @@ class VkSparseImageMemoryBindInfo {
 };
 
 VkSparseImageMemoryBindInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSparseImageMemoryBindInfo"`);
   
   
   if (this._pBinds !== null) {
@@ -11811,11 +11568,6 @@ VkSparseImageMemoryBindInfo.prototype.flush = function flush() {
 };
 
 VkSparseImageMemoryBindInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSparseImageMemoryBindInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -12032,7 +11784,6 @@ class VkBindSparseInfo {
 };
 
 VkBindSparseInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkBindSparseInfo"`);
   
   
   if (this._pNext !== null) {
@@ -12143,11 +11894,6 @@ VkBindSparseInfo.prototype.flush = function flush() {
 };
 
 VkBindSparseInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x60));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkBindSparseInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -12330,7 +12076,6 @@ class VkImageCopy {
 };
 
 VkImageCopy.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageCopy"`);
   
   
   if (this._srcSubresource !== null) {
@@ -12386,11 +12131,6 @@ VkImageCopy.prototype.flush = function flush() {
 };
 
 VkImageCopy.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x44));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageCopy"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -12517,7 +12257,6 @@ class VkImageBlit {
 };
 
 VkImageBlit.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageBlit"`);
   
   
   if (this._srcSubresource !== null) {
@@ -12591,11 +12330,6 @@ VkImageBlit.prototype.flush = function flush() {
 };
 
 VkImageBlit.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x50));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageBlit"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -12743,7 +12477,6 @@ class VkBufferImageCopy {
 };
 
 VkBufferImageCopy.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkBufferImageCopy"`);
   
   
   if (this._imageSubresource !== null) {
@@ -12779,11 +12512,6 @@ VkBufferImageCopy.prototype.flush = function flush() {
 };
 
 VkBufferImageCopy.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x38));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkBufferImageCopy"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -12936,7 +12664,6 @@ class VkImageResolve {
 };
 
 VkImageResolve.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageResolve"`);
   
   
   if (this._srcSubresource !== null) {
@@ -12992,11 +12719,6 @@ VkImageResolve.prototype.flush = function flush() {
 };
 
 VkImageResolve.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x44));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageResolve"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -13135,7 +12857,6 @@ class VkShaderModuleCreateInfo {
 };
 
 VkShaderModuleCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkShaderModuleCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -13146,11 +12867,6 @@ VkShaderModuleCreateInfo.prototype.flush = function flush() {
 };
 
 VkShaderModuleCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkShaderModuleCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -13266,7 +12982,6 @@ class VkDescriptorSetLayoutBinding {
 };
 
 VkDescriptorSetLayoutBinding.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDescriptorSetLayoutBinding"`);
   
   
   if (this._pImmutableSamplers !== null) {
@@ -13292,11 +13007,6 @@ VkDescriptorSetLayoutBinding.prototype.flush = function flush() {
 };
 
 VkDescriptorSetLayoutBinding.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDescriptorSetLayoutBinding"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -13428,7 +13138,6 @@ class VkDescriptorSetLayoutCreateInfo {
 };
 
 VkDescriptorSetLayoutCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDescriptorSetLayoutCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -13459,11 +13168,6 @@ VkDescriptorSetLayoutCreateInfo.prototype.flush = function flush() {
 };
 
 VkDescriptorSetLayoutCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDescriptorSetLayoutCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -13544,17 +13248,11 @@ class VkDescriptorPoolSize {
 };
 
 VkDescriptorPoolSize.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDescriptorPoolSize"`);
   
   return true;
 };
 
 VkDescriptorPoolSize.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x8));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDescriptorPoolSize"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -13683,7 +13381,6 @@ class VkDescriptorPoolCreateInfo {
 };
 
 VkDescriptorPoolCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDescriptorPoolCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -13714,11 +13411,6 @@ VkDescriptorPoolCreateInfo.prototype.flush = function flush() {
 };
 
 VkDescriptorPoolCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDescriptorPoolCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -13863,7 +13555,6 @@ class VkDescriptorSetAllocateInfo {
 };
 
 VkDescriptorSetAllocateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDescriptorSetAllocateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -13894,11 +13585,6 @@ VkDescriptorSetAllocateInfo.prototype.flush = function flush() {
 };
 
 VkDescriptorSetAllocateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDescriptorSetAllocateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -13990,17 +13676,11 @@ class VkSpecializationMapEntry {
 };
 
 VkSpecializationMapEntry.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSpecializationMapEntry"`);
   
   return true;
 };
 
 VkSpecializationMapEntry.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x10));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSpecializationMapEntry"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -14100,7 +13780,6 @@ class VkSpecializationInfo {
 };
 
 VkSpecializationInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSpecializationInfo"`);
   
   
   if (this._pMapEntries !== null) {
@@ -14126,11 +13805,6 @@ VkSpecializationInfo.prototype.flush = function flush() {
 };
 
 VkSpecializationInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSpecializationInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -14281,7 +13955,6 @@ class VkPipelineShaderStageCreateInfo {
 };
 
 VkPipelineShaderStageCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineShaderStageCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -14292,11 +13965,6 @@ VkPipelineShaderStageCreateInfo.prototype.flush = function flush() {
 };
 
 VkPipelineShaderStageCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x30));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineShaderStageCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -14456,7 +14124,6 @@ class VkComputePipelineCreateInfo {
 };
 
 VkComputePipelineCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkComputePipelineCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -14477,11 +14144,6 @@ VkComputePipelineCreateInfo.prototype.flush = function flush() {
 };
 
 VkComputePipelineCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x60));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkComputePipelineCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -14581,17 +14243,11 @@ class VkVertexInputBindingDescription {
 };
 
 VkVertexInputBindingDescription.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkVertexInputBindingDescription"`);
   
   return true;
 };
 
 VkVertexInputBindingDescription.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0xC));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkVertexInputBindingDescription"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -14682,17 +14338,11 @@ class VkVertexInputAttributeDescription {
 };
 
 VkVertexInputAttributeDescription.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkVertexInputAttributeDescription"`);
   
   return true;
 };
 
 VkVertexInputAttributeDescription.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x10));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkVertexInputAttributeDescription"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -14844,7 +14494,6 @@ class VkPipelineVertexInputStateCreateInfo {
 };
 
 VkPipelineVertexInputStateCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineVertexInputStateCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -14895,11 +14544,6 @@ VkPipelineVertexInputStateCreateInfo.prototype.flush = function flush() {
 };
 
 VkPipelineVertexInputStateCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x30));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineVertexInputStateCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -15019,7 +14663,6 @@ class VkPipelineInputAssemblyStateCreateInfo {
 };
 
 VkPipelineInputAssemblyStateCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineInputAssemblyStateCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -15030,11 +14673,6 @@ VkPipelineInputAssemblyStateCreateInfo.prototype.flush = function flush() {
 };
 
 VkPipelineInputAssemblyStateCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineInputAssemblyStateCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -15151,7 +14789,6 @@ class VkPipelineTessellationStateCreateInfo {
 };
 
 VkPipelineTessellationStateCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineTessellationStateCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -15162,11 +14799,6 @@ VkPipelineTessellationStateCreateInfo.prototype.flush = function flush() {
 };
 
 VkPipelineTessellationStateCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineTessellationStateCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -15324,7 +14956,6 @@ class VkPipelineViewportStateCreateInfo {
 };
 
 VkPipelineViewportStateCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineViewportStateCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -15375,11 +15006,6 @@ VkPipelineViewportStateCreateInfo.prototype.flush = function flush() {
 };
 
 VkPipelineViewportStateCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x30));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineViewportStateCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -15603,7 +15229,6 @@ class VkPipelineRasterizationStateCreateInfo {
 };
 
 VkPipelineRasterizationStateCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineRasterizationStateCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -15614,11 +15239,6 @@ VkPipelineRasterizationStateCreateInfo.prototype.flush = function flush() {
 };
 
 VkPipelineRasterizationStateCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x40));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineRasterizationStateCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -15822,7 +15442,6 @@ class VkPipelineMultisampleStateCreateInfo {
 };
 
 VkPipelineMultisampleStateCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineMultisampleStateCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -15833,11 +15452,6 @@ VkPipelineMultisampleStateCreateInfo.prototype.flush = function flush() {
 };
 
 VkPipelineMultisampleStateCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x30));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineMultisampleStateCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -15995,17 +15609,11 @@ class VkPipelineColorBlendAttachmentState {
 };
 
 VkPipelineColorBlendAttachmentState.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineColorBlendAttachmentState"`);
   
   return true;
 };
 
 VkPipelineColorBlendAttachmentState.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineColorBlendAttachmentState"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -16182,7 +15790,6 @@ class VkPipelineColorBlendStateCreateInfo {
 };
 
 VkPipelineColorBlendStateCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineColorBlendStateCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -16235,11 +15842,6 @@ VkPipelineColorBlendStateCreateInfo.prototype.flush = function flush() {
 };
 
 VkPipelineColorBlendStateCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x38));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineColorBlendStateCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -16371,7 +15973,6 @@ class VkPipelineDynamicStateCreateInfo {
 };
 
 VkPipelineDynamicStateCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineDynamicStateCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -16382,11 +15983,6 @@ VkPipelineDynamicStateCreateInfo.prototype.flush = function flush() {
 };
 
 VkPipelineDynamicStateCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineDynamicStateCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -16520,17 +16116,11 @@ class VkStencilOpState {
 };
 
 VkStencilOpState.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkStencilOpState"`);
   
   return true;
 };
 
 VkStencilOpState.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x1C));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkStencilOpState"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -16728,7 +16318,6 @@ class VkPipelineDepthStencilStateCreateInfo {
 };
 
 VkPipelineDepthStencilStateCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineDepthStencilStateCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -16759,11 +16348,6 @@ VkPipelineDepthStencilStateCreateInfo.prototype.flush = function flush() {
 };
 
 VkPipelineDepthStencilStateCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x68));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineDepthStencilStateCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -17166,7 +16750,6 @@ class VkGraphicsPipelineCreateInfo {
 };
 
 VkGraphicsPipelineCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkGraphicsPipelineCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -17197,11 +16780,6 @@ VkGraphicsPipelineCreateInfo.prototype.flush = function flush() {
 };
 
 VkGraphicsPipelineCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x90));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkGraphicsPipelineCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -17373,7 +16951,6 @@ class VkPipelineCacheCreateInfo {
 };
 
 VkPipelineCacheCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineCacheCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -17384,11 +16961,6 @@ VkPipelineCacheCreateInfo.prototype.flush = function flush() {
 };
 
 VkPipelineCacheCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineCacheCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -17478,17 +17050,11 @@ class VkPushConstantRange {
 };
 
 VkPushConstantRange.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPushConstantRange"`);
   
   return true;
 };
 
 VkPushConstantRange.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0xC));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPushConstantRange"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -17619,7 +17185,6 @@ class VkPipelineLayoutCreateInfo {
 };
 
 VkPipelineLayoutCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineLayoutCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -17670,11 +17235,6 @@ VkPipelineLayoutCreateInfo.prototype.flush = function flush() {
 };
 
 VkPipelineLayoutCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x30));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineLayoutCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -17951,7 +17511,6 @@ class VkSamplerCreateInfo {
 };
 
 VkSamplerCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSamplerCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -17962,11 +17521,6 @@ VkSamplerCreateInfo.prototype.flush = function flush() {
 };
 
 VkSamplerCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x50));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSamplerCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -18118,7 +17672,6 @@ class VkCommandPoolCreateInfo {
 };
 
 VkCommandPoolCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkCommandPoolCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -18129,11 +17682,6 @@ VkCommandPoolCreateInfo.prototype.flush = function flush() {
 };
 
 VkCommandPoolCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkCommandPoolCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -18247,7 +17795,6 @@ class VkCommandBufferAllocateInfo {
 };
 
 VkCommandBufferAllocateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkCommandBufferAllocateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -18258,11 +17805,6 @@ VkCommandBufferAllocateInfo.prototype.flush = function flush() {
 };
 
 VkCommandBufferAllocateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkCommandBufferAllocateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -18434,7 +17976,6 @@ class VkCommandBufferInheritanceInfo {
 };
 
 VkCommandBufferInheritanceInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkCommandBufferInheritanceInfo"`);
   
   
   if (this._pNext !== null) {
@@ -18445,11 +17986,6 @@ VkCommandBufferInheritanceInfo.prototype.flush = function flush() {
 };
 
 VkCommandBufferInheritanceInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x38));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkCommandBufferInheritanceInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -18583,7 +18119,6 @@ class VkCommandBufferBeginInfo {
 };
 
 VkCommandBufferBeginInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkCommandBufferBeginInfo"`);
   
   
   if (this._pNext !== null) {
@@ -18594,11 +18129,6 @@ VkCommandBufferBeginInfo.prototype.flush = function flush() {
 };
 
 VkCommandBufferBeginInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkCommandBufferBeginInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -18770,7 +18300,6 @@ class VkRenderPassBeginInfo {
 };
 
 VkRenderPassBeginInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkRenderPassBeginInfo"`);
   
   
   if (this._pNext !== null) {
@@ -18811,11 +18340,6 @@ VkRenderPassBeginInfo.prototype.flush = function flush() {
 };
 
 VkRenderPassBeginInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x40));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkRenderPassBeginInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -18906,17 +18430,11 @@ class VkClearDepthStencilValue {
 };
 
 VkClearDepthStencilValue.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkClearDepthStencilValue"`);
   
   return true;
 };
 
 VkClearDepthStencilValue.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x8));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkClearDepthStencilValue"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -19001,7 +18519,6 @@ class VkClearAttachment {
 };
 
 VkClearAttachment.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkClearAttachment"`);
   
   
   if (this._clearValue !== null) {
@@ -19017,11 +18534,6 @@ VkClearAttachment.prototype.flush = function flush() {
 };
 
 VkClearAttachment.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkClearAttachment"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -19167,17 +18679,11 @@ class VkAttachmentDescription {
 };
 
 VkAttachmentDescription.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkAttachmentDescription"`);
   
   return true;
 };
 
 VkAttachmentDescription.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x24));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkAttachmentDescription"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -19270,17 +18776,11 @@ class VkAttachmentReference {
 };
 
 VkAttachmentReference.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkAttachmentReference"`);
   
   return true;
 };
 
 VkAttachmentReference.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x8));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkAttachmentReference"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -19459,7 +18959,6 @@ class VkSubpassDescription {
 };
 
 VkSubpassDescription.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSubpassDescription"`);
   
   
   if (this._pInputAttachments !== null) {
@@ -19525,11 +19024,6 @@ VkSubpassDescription.prototype.flush = function flush() {
 };
 
 VkSubpassDescription.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x48));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSubpassDescription"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -19687,17 +19181,11 @@ class VkSubpassDependency {
 };
 
 VkSubpassDependency.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSubpassDependency"`);
   
   return true;
 };
 
 VkSubpassDependency.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x1C));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSubpassDependency"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -19889,7 +19377,6 @@ class VkRenderPassCreateInfo {
 };
 
 VkRenderPassCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkRenderPassCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -19960,11 +19447,6 @@ VkRenderPassCreateInfo.prototype.flush = function flush() {
 };
 
 VkRenderPassCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x40));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkRenderPassCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -20073,7 +19555,6 @@ class VkEventCreateInfo {
 };
 
 VkEventCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkEventCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -20084,11 +19565,6 @@ VkEventCreateInfo.prototype.flush = function flush() {
 };
 
 VkEventCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkEventCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -20185,7 +19661,6 @@ class VkFenceCreateInfo {
 };
 
 VkFenceCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkFenceCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -20196,11 +19671,6 @@ VkFenceCreateInfo.prototype.flush = function flush() {
 };
 
 VkFenceCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkFenceCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -20687,17 +20157,11 @@ class VkPhysicalDeviceFeatures {
 };
 
 VkPhysicalDeviceFeatures.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceFeatures"`);
   
   return true;
 };
 
 VkPhysicalDeviceFeatures.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0xDC));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceFeatures"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -20970,7 +20434,6 @@ class VkPhysicalDeviceSparseProperties {
 };
 
 VkPhysicalDeviceSparseProperties.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceSparseProperties"`);
   
   return true;
 };
@@ -20980,7 +20443,6 @@ VkPhysicalDeviceSparseProperties.prototype.reflect = function reflect(memoryAddr
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceSparseProperties"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x14), 0x0);
 };
 
@@ -21485,7 +20947,6 @@ class VkPhysicalDeviceLimits {
 };
 
 VkPhysicalDeviceLimits.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceLimits"`);
   
   return true;
 };
@@ -21495,7 +20956,6 @@ VkPhysicalDeviceLimits.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceLimits"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x1F8), 0x0);
   
   
@@ -22014,7 +21474,6 @@ class VkSemaphoreCreateInfo {
 };
 
 VkSemaphoreCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSemaphoreCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -22025,11 +21484,6 @@ VkSemaphoreCreateInfo.prototype.flush = function flush() {
 };
 
 VkSemaphoreCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSemaphoreCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -22143,7 +21597,6 @@ class VkQueryPoolCreateInfo {
 };
 
 VkQueryPoolCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkQueryPoolCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -22154,11 +21607,6 @@ VkQueryPoolCreateInfo.prototype.flush = function flush() {
 };
 
 VkQueryPoolCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkQueryPoolCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -22328,7 +21776,6 @@ class VkFramebufferCreateInfo {
 };
 
 VkFramebufferCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkFramebufferCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -22359,11 +21806,6 @@ VkFramebufferCreateInfo.prototype.flush = function flush() {
 };
 
 VkFramebufferCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x40));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkFramebufferCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -22480,17 +21922,11 @@ class VkDrawIndirectCommand {
 };
 
 VkDrawIndirectCommand.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDrawIndirectCommand"`);
   
   return true;
 };
 
 VkDrawIndirectCommand.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x10));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDrawIndirectCommand"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -22596,17 +22032,11 @@ class VkDrawIndexedIndirectCommand {
 };
 
 VkDrawIndexedIndirectCommand.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDrawIndexedIndirectCommand"`);
   
   return true;
 };
 
 VkDrawIndexedIndirectCommand.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x14));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDrawIndexedIndirectCommand"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -22692,17 +22122,11 @@ class VkDispatchIndirectCommand {
 };
 
 VkDispatchIndirectCommand.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDispatchIndirectCommand"`);
   
   return true;
 };
 
 VkDispatchIndirectCommand.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0xC));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDispatchIndirectCommand"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -22885,7 +22309,6 @@ class VkSubmitInfo {
 };
 
 VkSubmitInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSubmitInfo"`);
   
   
   if (this._pNext !== null) {
@@ -22956,11 +22379,6 @@ VkSubmitInfo.prototype.flush = function flush() {
 };
 
 VkSubmitInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x48));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSubmitInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -23072,7 +22490,6 @@ class VkDisplayPropertiesKHR {
 };
 
 VkDisplayPropertiesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDisplayPropertiesKHR"`);
   
   return true;
 };
@@ -23082,7 +22499,6 @@ VkDisplayPropertiesKHR.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDisplayPropertiesKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x30), 0x0);
   
   
@@ -23155,7 +22571,6 @@ class VkDisplayPlanePropertiesKHR {
 };
 
 VkDisplayPlanePropertiesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDisplayPlanePropertiesKHR"`);
   
   return true;
 };
@@ -23165,7 +22580,6 @@ VkDisplayPlanePropertiesKHR.prototype.reflect = function reflect(memoryAddress) 
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDisplayPlanePropertiesKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x10), 0x0);
 };
 
@@ -23237,7 +22651,6 @@ class VkDisplayModeParametersKHR {
 };
 
 VkDisplayModeParametersKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDisplayModeParametersKHR"`);
   
   
   if (this._visibleRegion !== null) {
@@ -23253,11 +22666,6 @@ VkDisplayModeParametersKHR.prototype.flush = function flush() {
 };
 
 VkDisplayModeParametersKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0xC));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDisplayModeParametersKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -23306,7 +22714,6 @@ class VkDisplayModePropertiesKHR {
 };
 
 VkDisplayModePropertiesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDisplayModePropertiesKHR"`);
   
   return true;
 };
@@ -23316,7 +22723,6 @@ VkDisplayModePropertiesKHR.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDisplayModePropertiesKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -23409,7 +22815,6 @@ class VkDisplayModeCreateInfoKHR {
 };
 
 VkDisplayModeCreateInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDisplayModeCreateInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -23430,11 +22835,6 @@ VkDisplayModeCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkDisplayModeCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDisplayModeCreateInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -23523,7 +22923,6 @@ class VkDisplayPlaneCapabilitiesKHR {
 };
 
 VkDisplayPlaneCapabilitiesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDisplayPlaneCapabilitiesKHR"`);
   
   return true;
 };
@@ -23533,7 +22932,6 @@ VkDisplayPlaneCapabilitiesKHR.prototype.reflect = function reflect(memoryAddress
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDisplayPlaneCapabilitiesKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x44), 0x0);
   
   
@@ -23745,7 +23143,6 @@ class VkDisplaySurfaceCreateInfoKHR {
 };
 
 VkDisplaySurfaceCreateInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDisplaySurfaceCreateInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -23766,11 +23163,6 @@ VkDisplaySurfaceCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkDisplaySurfaceCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x40));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDisplaySurfaceCreateInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -23914,7 +23306,6 @@ class VkDisplayPresentInfoKHR {
 };
 
 VkDisplayPresentInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDisplayPresentInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -23945,11 +23336,6 @@ VkDisplayPresentInfoKHR.prototype.flush = function flush() {
 };
 
 VkDisplayPresentInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x38));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDisplayPresentInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -24050,7 +23436,6 @@ class VkSurfaceCapabilitiesKHR {
 };
 
 VkSurfaceCapabilitiesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSurfaceCapabilitiesKHR"`);
   
   return true;
 };
@@ -24060,7 +23445,6 @@ VkSurfaceCapabilitiesKHR.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSurfaceCapabilitiesKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x34), 0x0);
   
   
@@ -24193,7 +23577,6 @@ class VkWin32SurfaceCreateInfoKHR {
 };
 
 VkWin32SurfaceCreateInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkWin32SurfaceCreateInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -24204,11 +23587,6 @@ VkWin32SurfaceCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkWin32SurfaceCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkWin32SurfaceCreateInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -24271,7 +23649,6 @@ class VkSurfaceFormatKHR {
 };
 
 VkSurfaceFormatKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSurfaceFormatKHR"`);
   
   return true;
 };
@@ -24281,7 +23658,6 @@ VkSurfaceFormatKHR.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSurfaceFormatKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x8), 0x0);
 };
 
@@ -24563,7 +23939,6 @@ class VkSwapchainCreateInfoKHR {
 };
 
 VkSwapchainCreateInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSwapchainCreateInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -24584,11 +23959,6 @@ VkSwapchainCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkSwapchainCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x68));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSwapchainCreateInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -24824,7 +24194,6 @@ class VkPresentInfoKHR {
 };
 
 VkPresentInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPresentInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -24875,11 +24244,6 @@ VkPresentInfoKHR.prototype.flush = function flush() {
 };
 
 VkPresentInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x40));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPresentInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -24998,7 +24362,6 @@ class VkDebugReportCallbackCreateInfoEXT {
 };
 
 VkDebugReportCallbackCreateInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDebugReportCallbackCreateInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -25009,11 +24372,6 @@ VkDebugReportCallbackCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkDebugReportCallbackCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDebugReportCallbackCreateInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -25114,7 +24472,6 @@ class VkValidationFlagsEXT {
 };
 
 VkValidationFlagsEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkValidationFlagsEXT"`);
   
   
   if (this._pNext !== null) {
@@ -25125,11 +24482,6 @@ VkValidationFlagsEXT.prototype.flush = function flush() {
 };
 
 VkValidationFlagsEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkValidationFlagsEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -25257,7 +24609,6 @@ class VkValidationFeaturesEXT {
 };
 
 VkValidationFeaturesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkValidationFeaturesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -25268,11 +24619,6 @@ VkValidationFeaturesEXT.prototype.flush = function flush() {
 };
 
 VkValidationFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x30));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkValidationFeaturesEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -25363,7 +24709,6 @@ class VkPipelineRasterizationStateRasterizationOrderAMD {
 };
 
 VkPipelineRasterizationStateRasterizationOrderAMD.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineRasterizationStateRasterizationOrderAMD"`);
   
   
   if (this._pNext !== null) {
@@ -25374,11 +24719,6 @@ VkPipelineRasterizationStateRasterizationOrderAMD.prototype.flush = function flu
 };
 
 VkPipelineRasterizationStateRasterizationOrderAMD.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineRasterizationStateRasterizationOrderAMD"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -25491,7 +24831,6 @@ class VkDebugMarkerObjectNameInfoEXT {
 };
 
 VkDebugMarkerObjectNameInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDebugMarkerObjectNameInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -25502,11 +24841,6 @@ VkDebugMarkerObjectNameInfoEXT.prototype.flush = function flush() {
 };
 
 VkDebugMarkerObjectNameInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDebugMarkerObjectNameInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -25644,7 +24978,6 @@ class VkDebugMarkerObjectTagInfoEXT {
 };
 
 VkDebugMarkerObjectTagInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDebugMarkerObjectTagInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -25655,11 +24988,6 @@ VkDebugMarkerObjectTagInfoEXT.prototype.flush = function flush() {
 };
 
 VkDebugMarkerObjectTagInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x38));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDebugMarkerObjectTagInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -25780,7 +25108,6 @@ class VkDebugMarkerMarkerInfoEXT {
 };
 
 VkDebugMarkerMarkerInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDebugMarkerMarkerInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -25813,11 +25140,6 @@ VkDebugMarkerMarkerInfoEXT.prototype.flush = function flush() {
 };
 
 VkDebugMarkerMarkerInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDebugMarkerMarkerInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -25901,7 +25223,6 @@ class VkDedicatedAllocationImageCreateInfoNV {
 };
 
 VkDedicatedAllocationImageCreateInfoNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDedicatedAllocationImageCreateInfoNV"`);
   
   
   if (this._pNext !== null) {
@@ -25912,11 +25233,6 @@ VkDedicatedAllocationImageCreateInfoNV.prototype.flush = function flush() {
 };
 
 VkDedicatedAllocationImageCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDedicatedAllocationImageCreateInfoNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -25994,7 +25310,6 @@ class VkDedicatedAllocationBufferCreateInfoNV {
 };
 
 VkDedicatedAllocationBufferCreateInfoNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDedicatedAllocationBufferCreateInfoNV"`);
   
   
   if (this._pNext !== null) {
@@ -26005,11 +25320,6 @@ VkDedicatedAllocationBufferCreateInfoNV.prototype.flush = function flush() {
 };
 
 VkDedicatedAllocationBufferCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDedicatedAllocationBufferCreateInfoNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -26113,7 +25423,6 @@ class VkDedicatedAllocationMemoryAllocateInfoNV {
 };
 
 VkDedicatedAllocationMemoryAllocateInfoNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDedicatedAllocationMemoryAllocateInfoNV"`);
   
   
   if (this._pNext !== null) {
@@ -26124,11 +25433,6 @@ VkDedicatedAllocationMemoryAllocateInfoNV.prototype.flush = function flush() {
 };
 
 VkDedicatedAllocationMemoryAllocateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDedicatedAllocationMemoryAllocateInfoNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -26195,7 +25499,6 @@ class VkExternalImageFormatPropertiesNV {
 };
 
 VkExternalImageFormatPropertiesNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExternalImageFormatPropertiesNV"`);
   
   return true;
 };
@@ -26205,7 +25508,6 @@ VkExternalImageFormatPropertiesNV.prototype.reflect = function reflect(memoryAdd
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExternalImageFormatPropertiesNV"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x30), 0x0);
   
   
@@ -26288,7 +25590,6 @@ class VkExternalMemoryImageCreateInfoNV {
 };
 
 VkExternalMemoryImageCreateInfoNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExternalMemoryImageCreateInfoNV"`);
   
   
   if (this._pNext !== null) {
@@ -26299,11 +25600,6 @@ VkExternalMemoryImageCreateInfoNV.prototype.flush = function flush() {
 };
 
 VkExternalMemoryImageCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExternalMemoryImageCreateInfoNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -26382,7 +25678,6 @@ class VkExportMemoryAllocateInfoNV {
 };
 
 VkExportMemoryAllocateInfoNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExportMemoryAllocateInfoNV"`);
   
   
   if (this._pNext !== null) {
@@ -26393,11 +25688,6 @@ VkExportMemoryAllocateInfoNV.prototype.flush = function flush() {
 };
 
 VkExportMemoryAllocateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExportMemoryAllocateInfoNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -26487,7 +25777,6 @@ class VkImportMemoryWin32HandleInfoNV {
 };
 
 VkImportMemoryWin32HandleInfoNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImportMemoryWin32HandleInfoNV"`);
   
   
   if (this._pNext !== null) {
@@ -26498,11 +25787,6 @@ VkImportMemoryWin32HandleInfoNV.prototype.flush = function flush() {
 };
 
 VkImportMemoryWin32HandleInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImportMemoryWin32HandleInfoNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -26574,7 +25858,6 @@ class VkExportMemoryWin32HandleInfoNV {
 };
 
 VkExportMemoryWin32HandleInfoNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExportMemoryWin32HandleInfoNV"`);
   
   
   if (this._pNext !== null) {
@@ -26585,11 +25868,6 @@ VkExportMemoryWin32HandleInfoNV.prototype.flush = function flush() {
 };
 
 VkExportMemoryWin32HandleInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExportMemoryWin32HandleInfoNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -26755,7 +26033,6 @@ class VkWin32KeyedMutexAcquireReleaseInfoNV {
 };
 
 VkWin32KeyedMutexAcquireReleaseInfoNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkWin32KeyedMutexAcquireReleaseInfoNV"`);
   
   
   if (this._pNext !== null) {
@@ -26806,11 +26083,6 @@ VkWin32KeyedMutexAcquireReleaseInfoNV.prototype.flush = function flush() {
 };
 
 VkWin32KeyedMutexAcquireReleaseInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x48));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkWin32KeyedMutexAcquireReleaseInfoNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -26916,7 +26188,6 @@ class VkDeviceGeneratedCommandsFeaturesNVX {
 };
 
 VkDeviceGeneratedCommandsFeaturesNVX.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDeviceGeneratedCommandsFeaturesNVX"`);
   
   
   if (this._pNext !== null) {
@@ -26927,11 +26198,6 @@ VkDeviceGeneratedCommandsFeaturesNVX.prototype.flush = function flush() {
 };
 
 VkDeviceGeneratedCommandsFeaturesNVX.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDeviceGeneratedCommandsFeaturesNVX"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -27056,7 +26322,6 @@ class VkDeviceGeneratedCommandsLimitsNVX {
 };
 
 VkDeviceGeneratedCommandsLimitsNVX.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDeviceGeneratedCommandsLimitsNVX"`);
   
   
   if (this._pNext !== null) {
@@ -27067,11 +26332,6 @@ VkDeviceGeneratedCommandsLimitsNVX.prototype.flush = function flush() {
 };
 
 VkDeviceGeneratedCommandsLimitsNVX.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDeviceGeneratedCommandsLimitsNVX"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -27178,17 +26438,11 @@ class VkIndirectCommandsTokenNVX {
 };
 
 VkIndirectCommandsTokenNVX.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkIndirectCommandsTokenNVX"`);
   
   return true;
 };
 
 VkIndirectCommandsTokenNVX.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkIndirectCommandsTokenNVX"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -27279,17 +26533,11 @@ class VkIndirectCommandsLayoutTokenNVX {
 };
 
 VkIndirectCommandsLayoutTokenNVX.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkIndirectCommandsLayoutTokenNVX"`);
   
   return true;
 };
 
 VkIndirectCommandsLayoutTokenNVX.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x10));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkIndirectCommandsLayoutTokenNVX"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -27409,7 +26657,6 @@ class VkIndirectCommandsLayoutCreateInfoNVX {
 };
 
 VkIndirectCommandsLayoutCreateInfoNVX.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkIndirectCommandsLayoutCreateInfoNVX"`);
   
   
   if (this._pNext !== null) {
@@ -27440,11 +26687,6 @@ VkIndirectCommandsLayoutCreateInfoNVX.prototype.flush = function flush() {
 };
 
 VkIndirectCommandsLayoutCreateInfoNVX.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkIndirectCommandsLayoutCreateInfoNVX"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -27679,7 +26921,6 @@ class VkCmdProcessCommandsInfoNVX {
 };
 
 VkCmdProcessCommandsInfoNVX.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkCmdProcessCommandsInfoNVX"`);
   
   
   if (this._pNext !== null) {
@@ -27710,11 +26951,6 @@ VkCmdProcessCommandsInfoNVX.prototype.flush = function flush() {
 };
 
 VkCmdProcessCommandsInfoNVX.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x60));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkCmdProcessCommandsInfoNVX"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -27869,7 +27105,6 @@ class VkCmdReserveSpaceForCommandsInfoNVX {
 };
 
 VkCmdReserveSpaceForCommandsInfoNVX.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkCmdReserveSpaceForCommandsInfoNVX"`);
   
   
   if (this._pNext !== null) {
@@ -27880,11 +27115,6 @@ VkCmdReserveSpaceForCommandsInfoNVX.prototype.flush = function flush() {
 };
 
 VkCmdReserveSpaceForCommandsInfoNVX.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkCmdReserveSpaceForCommandsInfoNVX"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -28076,7 +27306,6 @@ class VkObjectTableCreateInfoNVX {
 };
 
 VkObjectTableCreateInfoNVX.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkObjectTableCreateInfoNVX"`);
   
   
   if (this._pNext !== null) {
@@ -28087,11 +27316,6 @@ VkObjectTableCreateInfoNVX.prototype.flush = function flush() {
 };
 
 VkObjectTableCreateInfoNVX.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x48));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkObjectTableCreateInfoNVX"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -28192,17 +27416,11 @@ class VkObjectTableEntryNVX {
 };
 
 VkObjectTableEntryNVX.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkObjectTableEntryNVX"`);
   
   return true;
 };
 
 VkObjectTableEntryNVX.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x8));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkObjectTableEntryNVX"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -28285,17 +27503,11 @@ class VkObjectTablePipelineEntryNVX {
 };
 
 VkObjectTablePipelineEntryNVX.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkObjectTablePipelineEntryNVX"`);
   
   return true;
 };
 
 VkObjectTablePipelineEntryNVX.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x10));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkObjectTablePipelineEntryNVX"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -28400,17 +27612,11 @@ class VkObjectTableDescriptorSetEntryNVX {
 };
 
 VkObjectTableDescriptorSetEntryNVX.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkObjectTableDescriptorSetEntryNVX"`);
   
   return true;
 };
 
 VkObjectTableDescriptorSetEntryNVX.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkObjectTableDescriptorSetEntryNVX"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -28501,17 +27707,11 @@ class VkObjectTableVertexBufferEntryNVX {
 };
 
 VkObjectTableVertexBufferEntryNVX.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkObjectTableVertexBufferEntryNVX"`);
   
   return true;
 };
 
 VkObjectTableVertexBufferEntryNVX.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x10));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkObjectTableVertexBufferEntryNVX"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -28609,17 +27809,11 @@ class VkObjectTableIndexBufferEntryNVX {
 };
 
 VkObjectTableIndexBufferEntryNVX.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkObjectTableIndexBufferEntryNVX"`);
   
   return true;
 };
 
 VkObjectTableIndexBufferEntryNVX.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkObjectTableIndexBufferEntryNVX"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -28721,17 +27915,11 @@ class VkObjectTablePushConstantEntryNVX {
 };
 
 VkObjectTablePushConstantEntryNVX.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkObjectTablePushConstantEntryNVX"`);
   
   return true;
 };
 
 VkObjectTablePushConstantEntryNVX.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkObjectTablePushConstantEntryNVX"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -28867,7 +28055,6 @@ class VkPhysicalDeviceFeatures2 {
 };
 
 VkPhysicalDeviceFeatures2.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceFeatures2"`);
   
   
   if (this._pNext !== null) {
@@ -28888,11 +28075,6 @@ VkPhysicalDeviceFeatures2.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceFeatures2.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0xF0));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceFeatures2"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -29028,7 +28210,6 @@ class VkPhysicalDeviceFeatures2KHR {
 };
 
 VkPhysicalDeviceFeatures2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceFeatures2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -29049,11 +28230,6 @@ VkPhysicalDeviceFeatures2KHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceFeatures2KHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0xF0));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceFeatures2KHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -29171,7 +28347,6 @@ class VkPhysicalDeviceProperties2 {
 };
 
 VkPhysicalDeviceProperties2.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceProperties2"`);
   
   
   if (this._pNext !== null) {
@@ -29186,7 +28361,6 @@ VkPhysicalDeviceProperties2.prototype.reflect = function reflect(memoryAddress) 
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceProperties2"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x348), 0x0);
   
   
@@ -29304,7 +28478,6 @@ class VkPhysicalDeviceProperties2KHR {
 };
 
 VkPhysicalDeviceProperties2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceProperties2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -29319,7 +28492,6 @@ VkPhysicalDeviceProperties2KHR.prototype.reflect = function reflect(memoryAddres
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceProperties2KHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x348), 0x0);
   
   
@@ -29410,7 +28582,6 @@ class VkFormatProperties2 {
 };
 
 VkFormatProperties2.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkFormatProperties2"`);
   
   
   if (this._pNext !== null) {
@@ -29425,7 +28596,6 @@ VkFormatProperties2.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkFormatProperties2"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x20), 0x0);
   
   
@@ -29516,7 +28686,6 @@ class VkFormatProperties2KHR {
 };
 
 VkFormatProperties2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkFormatProperties2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -29531,7 +28700,6 @@ VkFormatProperties2KHR.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkFormatProperties2KHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x20), 0x0);
   
   
@@ -29626,7 +28794,6 @@ class VkImageFormatProperties2 {
 };
 
 VkImageFormatProperties2.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageFormatProperties2"`);
   
   
   if (this._pNext !== null) {
@@ -29641,7 +28808,6 @@ VkImageFormatProperties2.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageFormatProperties2"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x30), 0x0);
   
   
@@ -29736,7 +28902,6 @@ class VkImageFormatProperties2KHR {
 };
 
 VkImageFormatProperties2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageFormatProperties2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -29751,7 +28916,6 @@ VkImageFormatProperties2KHR.prototype.reflect = function reflect(memoryAddress) 
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageFormatProperties2KHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x30), 0x0);
   
   
@@ -29897,7 +29061,6 @@ class VkPhysicalDeviceImageFormatInfo2 {
 };
 
 VkPhysicalDeviceImageFormatInfo2.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceImageFormatInfo2"`);
   
   
   if (this._pNext !== null) {
@@ -29908,11 +29071,6 @@ VkPhysicalDeviceImageFormatInfo2.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceImageFormatInfo2.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceImageFormatInfo2"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -30072,7 +29230,6 @@ class VkPhysicalDeviceImageFormatInfo2KHR {
 };
 
 VkPhysicalDeviceImageFormatInfo2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceImageFormatInfo2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -30083,11 +29240,6 @@ VkPhysicalDeviceImageFormatInfo2KHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceImageFormatInfo2KHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceImageFormatInfo2KHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -30192,7 +29344,6 @@ class VkQueueFamilyProperties2 {
 };
 
 VkQueueFamilyProperties2.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkQueueFamilyProperties2"`);
   
   
   if (this._pNext !== null) {
@@ -30207,7 +29358,6 @@ VkQueueFamilyProperties2.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkQueueFamilyProperties2"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x28), 0x0);
   
   
@@ -30298,7 +29448,6 @@ class VkQueueFamilyProperties2KHR {
 };
 
 VkQueueFamilyProperties2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkQueueFamilyProperties2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -30313,7 +29462,6 @@ VkQueueFamilyProperties2KHR.prototype.reflect = function reflect(memoryAddress) 
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkQueueFamilyProperties2KHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x28), 0x0);
   
   
@@ -30404,7 +29552,6 @@ class VkPhysicalDeviceMemoryProperties2 {
 };
 
 VkPhysicalDeviceMemoryProperties2.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceMemoryProperties2"`);
   
   
   if (this._pNext !== null) {
@@ -30419,7 +29566,6 @@ VkPhysicalDeviceMemoryProperties2.prototype.reflect = function reflect(memoryAdd
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceMemoryProperties2"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x218), 0x0);
   
   
@@ -30510,7 +29656,6 @@ class VkPhysicalDeviceMemoryProperties2KHR {
 };
 
 VkPhysicalDeviceMemoryProperties2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceMemoryProperties2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -30525,7 +29670,6 @@ VkPhysicalDeviceMemoryProperties2KHR.prototype.reflect = function reflect(memory
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceMemoryProperties2KHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x218), 0x0);
   
   
@@ -30599,7 +29743,6 @@ class VkSparseImageFormatProperties2 {
 };
 
 VkSparseImageFormatProperties2.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSparseImageFormatProperties2"`);
   
   
   if (this._pNext !== null) {
@@ -30614,7 +29757,6 @@ VkSparseImageFormatProperties2.prototype.reflect = function reflect(memoryAddres
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSparseImageFormatProperties2"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x28), 0x0);
   
   
@@ -30688,7 +29830,6 @@ class VkSparseImageFormatProperties2KHR {
 };
 
 VkSparseImageFormatProperties2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSparseImageFormatProperties2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -30703,7 +29844,6 @@ VkSparseImageFormatProperties2KHR.prototype.reflect = function reflect(memoryAdd
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSparseImageFormatProperties2KHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x28), 0x0);
   
   
@@ -30828,7 +29968,6 @@ class VkPhysicalDeviceSparseImageFormatInfo2 {
 };
 
 VkPhysicalDeviceSparseImageFormatInfo2.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceSparseImageFormatInfo2"`);
   
   
   if (this._pNext !== null) {
@@ -30839,11 +29978,6 @@ VkPhysicalDeviceSparseImageFormatInfo2.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceSparseImageFormatInfo2.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceSparseImageFormatInfo2"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -30982,7 +30116,6 @@ class VkPhysicalDeviceSparseImageFormatInfo2KHR {
 };
 
 VkPhysicalDeviceSparseImageFormatInfo2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceSparseImageFormatInfo2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -30993,11 +30126,6 @@ VkPhysicalDeviceSparseImageFormatInfo2KHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceSparseImageFormatInfo2KHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceSparseImageFormatInfo2KHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -31087,7 +30215,6 @@ class VkPhysicalDevicePushDescriptorPropertiesKHR {
 };
 
 VkPhysicalDevicePushDescriptorPropertiesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDevicePushDescriptorPropertiesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -31102,7 +30229,6 @@ VkPhysicalDevicePushDescriptorPropertiesKHR.prototype.reflect = function reflect
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDevicePushDescriptorPropertiesKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -31193,17 +30319,11 @@ class VkConformanceVersionKHR {
 };
 
 VkConformanceVersionKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkConformanceVersionKHR"`);
   
   return true;
 };
 
 VkConformanceVersionKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x4));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkConformanceVersionKHR"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -31293,7 +30413,6 @@ class VkPhysicalDeviceDriverPropertiesKHR {
 };
 
 VkPhysicalDeviceDriverPropertiesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceDriverPropertiesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -31308,7 +30427,6 @@ VkPhysicalDeviceDriverPropertiesKHR.prototype.reflect = function reflect(memoryA
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceDriverPropertiesKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x218), 0x0);
   
   
@@ -31418,7 +30536,6 @@ class VkPresentRegionsKHR {
 };
 
 VkPresentRegionsKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPresentRegionsKHR"`);
   
   
   if (this._pNext !== null) {
@@ -31449,11 +30566,6 @@ VkPresentRegionsKHR.prototype.flush = function flush() {
 };
 
 VkPresentRegionsKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPresentRegionsKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -31532,7 +30644,6 @@ class VkPresentRegionKHR {
 };
 
 VkPresentRegionKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPresentRegionKHR"`);
   
   
   if (this._pRectangles !== null) {
@@ -31558,11 +30669,6 @@ VkPresentRegionKHR.prototype.flush = function flush() {
 };
 
 VkPresentRegionKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x10));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPresentRegionKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -31654,7 +30760,6 @@ class VkRectLayerKHR {
 };
 
 VkRectLayerKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkRectLayerKHR"`);
   
   
   if (this._offset !== null) {
@@ -31680,11 +30785,6 @@ VkRectLayerKHR.prototype.flush = function flush() {
 };
 
 VkRectLayerKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x14));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkRectLayerKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -31772,7 +30872,6 @@ class VkPhysicalDeviceVariablePointerFeatures {
 };
 
 VkPhysicalDeviceVariablePointerFeatures.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceVariablePointerFeatures"`);
   
   
   if (this._pNext !== null) {
@@ -31783,11 +30882,6 @@ VkPhysicalDeviceVariablePointerFeatures.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceVariablePointerFeatures.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceVariablePointerFeatures"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -31877,7 +30971,6 @@ class VkPhysicalDeviceVariablePointerFeaturesKHR {
 };
 
 VkPhysicalDeviceVariablePointerFeaturesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceVariablePointerFeaturesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -31888,11 +30981,6 @@ VkPhysicalDeviceVariablePointerFeaturesKHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceVariablePointerFeaturesKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceVariablePointerFeaturesKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -31955,7 +31043,6 @@ class VkExternalMemoryProperties {
 };
 
 VkExternalMemoryProperties.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExternalMemoryProperties"`);
   
   return true;
 };
@@ -31965,7 +31052,6 @@ VkExternalMemoryProperties.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExternalMemoryProperties"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0xC), 0x0);
 };
 
@@ -32022,7 +31108,6 @@ class VkExternalMemoryPropertiesKHR {
 };
 
 VkExternalMemoryPropertiesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExternalMemoryPropertiesKHR"`);
   
   return true;
 };
@@ -32032,7 +31117,6 @@ VkExternalMemoryPropertiesKHR.prototype.reflect = function reflect(memoryAddress
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExternalMemoryPropertiesKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0xC), 0x0);
 };
 
@@ -32109,7 +31193,6 @@ class VkPhysicalDeviceExternalImageFormatInfo {
 };
 
 VkPhysicalDeviceExternalImageFormatInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceExternalImageFormatInfo"`);
   
   
   if (this._pNext !== null) {
@@ -32120,11 +31203,6 @@ VkPhysicalDeviceExternalImageFormatInfo.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceExternalImageFormatInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceExternalImageFormatInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -32203,7 +31281,6 @@ class VkPhysicalDeviceExternalImageFormatInfoKHR {
 };
 
 VkPhysicalDeviceExternalImageFormatInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceExternalImageFormatInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -32214,11 +31291,6 @@ VkPhysicalDeviceExternalImageFormatInfoKHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceExternalImageFormatInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceExternalImageFormatInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -32290,7 +31362,6 @@ class VkExternalImageFormatProperties {
 };
 
 VkExternalImageFormatProperties.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExternalImageFormatProperties"`);
   
   
   if (this._pNext !== null) {
@@ -32305,7 +31376,6 @@ VkExternalImageFormatProperties.prototype.reflect = function reflect(memoryAddre
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExternalImageFormatProperties"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x20), 0x0);
   
   
@@ -32379,7 +31449,6 @@ class VkExternalImageFormatPropertiesKHR {
 };
 
 VkExternalImageFormatPropertiesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExternalImageFormatPropertiesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -32394,7 +31463,6 @@ VkExternalImageFormatPropertiesKHR.prototype.reflect = function reflect(memoryAd
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExternalImageFormatPropertiesKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x20), 0x0);
   
   
@@ -32497,7 +31565,6 @@ class VkPhysicalDeviceExternalBufferInfo {
 };
 
 VkPhysicalDeviceExternalBufferInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceExternalBufferInfo"`);
   
   
   if (this._pNext !== null) {
@@ -32508,11 +31575,6 @@ VkPhysicalDeviceExternalBufferInfo.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceExternalBufferInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceExternalBufferInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -32621,7 +31683,6 @@ class VkPhysicalDeviceExternalBufferInfoKHR {
 };
 
 VkPhysicalDeviceExternalBufferInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceExternalBufferInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -32632,11 +31693,6 @@ VkPhysicalDeviceExternalBufferInfoKHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceExternalBufferInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceExternalBufferInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -32716,7 +31772,6 @@ class VkExternalBufferProperties {
 };
 
 VkExternalBufferProperties.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExternalBufferProperties"`);
   
   
   if (this._pNext !== null) {
@@ -32731,7 +31786,6 @@ VkExternalBufferProperties.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExternalBufferProperties"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x20), 0x0);
   
   
@@ -32805,7 +31859,6 @@ class VkExternalBufferPropertiesKHR {
 };
 
 VkExternalBufferPropertiesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExternalBufferPropertiesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -32820,7 +31873,6 @@ VkExternalBufferPropertiesKHR.prototype.reflect = function reflect(memoryAddress
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExternalBufferPropertiesKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x20), 0x0);
   
   
@@ -32957,7 +32009,6 @@ class VkPhysicalDeviceIDProperties {
 };
 
 VkPhysicalDeviceIDProperties.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceIDProperties"`);
   
   
   if (this._pNext !== null) {
@@ -32972,7 +32023,6 @@ VkPhysicalDeviceIDProperties.prototype.reflect = function reflect(memoryAddress)
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceIDProperties"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x40), 0x0);
   
   
@@ -33129,7 +32179,6 @@ class VkPhysicalDeviceIDPropertiesKHR {
 };
 
 VkPhysicalDeviceIDPropertiesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceIDPropertiesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -33144,7 +32193,6 @@ VkPhysicalDeviceIDPropertiesKHR.prototype.reflect = function reflect(memoryAddre
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceIDPropertiesKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x40), 0x0);
   
   
@@ -33245,7 +32293,6 @@ class VkExternalMemoryImageCreateInfo {
 };
 
 VkExternalMemoryImageCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExternalMemoryImageCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -33256,11 +32303,6 @@ VkExternalMemoryImageCreateInfo.prototype.flush = function flush() {
 };
 
 VkExternalMemoryImageCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExternalMemoryImageCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -33339,7 +32381,6 @@ class VkExternalMemoryImageCreateInfoKHR {
 };
 
 VkExternalMemoryImageCreateInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExternalMemoryImageCreateInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -33350,11 +32391,6 @@ VkExternalMemoryImageCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkExternalMemoryImageCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExternalMemoryImageCreateInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -33433,7 +32469,6 @@ class VkExternalMemoryBufferCreateInfo {
 };
 
 VkExternalMemoryBufferCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExternalMemoryBufferCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -33444,11 +32479,6 @@ VkExternalMemoryBufferCreateInfo.prototype.flush = function flush() {
 };
 
 VkExternalMemoryBufferCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExternalMemoryBufferCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -33527,7 +32557,6 @@ class VkExternalMemoryBufferCreateInfoKHR {
 };
 
 VkExternalMemoryBufferCreateInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExternalMemoryBufferCreateInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -33538,11 +32567,6 @@ VkExternalMemoryBufferCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkExternalMemoryBufferCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExternalMemoryBufferCreateInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -33621,7 +32645,6 @@ class VkExportMemoryAllocateInfo {
 };
 
 VkExportMemoryAllocateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExportMemoryAllocateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -33632,11 +32655,6 @@ VkExportMemoryAllocateInfo.prototype.flush = function flush() {
 };
 
 VkExportMemoryAllocateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExportMemoryAllocateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -33715,7 +32733,6 @@ class VkExportMemoryAllocateInfoKHR {
 };
 
 VkExportMemoryAllocateInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExportMemoryAllocateInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -33726,11 +32743,6 @@ VkExportMemoryAllocateInfoKHR.prototype.flush = function flush() {
 };
 
 VkExportMemoryAllocateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExportMemoryAllocateInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -33841,7 +32853,6 @@ class VkImportMemoryWin32HandleInfoKHR {
 };
 
 VkImportMemoryWin32HandleInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImportMemoryWin32HandleInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -33852,11 +32863,6 @@ VkImportMemoryWin32HandleInfoKHR.prototype.flush = function flush() {
 };
 
 VkImportMemoryWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImportMemoryWin32HandleInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -33953,7 +32959,6 @@ class VkExportMemoryWin32HandleInfoKHR {
 };
 
 VkExportMemoryWin32HandleInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExportMemoryWin32HandleInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -33964,11 +32969,6 @@ VkExportMemoryWin32HandleInfoKHR.prototype.flush = function flush() {
 };
 
 VkExportMemoryWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExportMemoryWin32HandleInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -34042,7 +33042,6 @@ class VkMemoryWin32HandlePropertiesKHR {
 };
 
 VkMemoryWin32HandlePropertiesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkMemoryWin32HandlePropertiesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -34057,7 +33056,6 @@ VkMemoryWin32HandlePropertiesKHR.prototype.reflect = function reflect(memoryAddr
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkMemoryWin32HandlePropertiesKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -34154,7 +33152,6 @@ class VkMemoryGetWin32HandleInfoKHR {
 };
 
 VkMemoryGetWin32HandleInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkMemoryGetWin32HandleInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -34165,11 +33162,6 @@ VkMemoryGetWin32HandleInfoKHR.prototype.flush = function flush() {
 };
 
 VkMemoryGetWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkMemoryGetWin32HandleInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -34263,7 +33255,6 @@ class VkImportMemoryFdInfoKHR {
 };
 
 VkImportMemoryFdInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImportMemoryFdInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -34274,11 +33265,6 @@ VkImportMemoryFdInfoKHR.prototype.flush = function flush() {
 };
 
 VkImportMemoryFdInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImportMemoryFdInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -34356,7 +33342,6 @@ class VkMemoryFdPropertiesKHR {
 };
 
 VkMemoryFdPropertiesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkMemoryFdPropertiesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -34371,7 +33356,6 @@ VkMemoryFdPropertiesKHR.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkMemoryFdPropertiesKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -34468,7 +33452,6 @@ class VkMemoryGetFdInfoKHR {
 };
 
 VkMemoryGetFdInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkMemoryGetFdInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -34479,11 +33462,6 @@ VkMemoryGetFdInfoKHR.prototype.flush = function flush() {
 };
 
 VkMemoryGetFdInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkMemoryGetFdInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -34657,7 +33635,6 @@ class VkWin32KeyedMutexAcquireReleaseInfoKHR {
 };
 
 VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkWin32KeyedMutexAcquireReleaseInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -34708,11 +33685,6 @@ VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.flush = function flush() {
 };
 
 VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x48));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkWin32KeyedMutexAcquireReleaseInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -34819,7 +33791,6 @@ class VkPhysicalDeviceExternalSemaphoreInfo {
 };
 
 VkPhysicalDeviceExternalSemaphoreInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceExternalSemaphoreInfo"`);
   
   
   if (this._pNext !== null) {
@@ -34830,11 +33801,6 @@ VkPhysicalDeviceExternalSemaphoreInfo.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceExternalSemaphoreInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceExternalSemaphoreInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -34913,7 +33879,6 @@ class VkPhysicalDeviceExternalSemaphoreInfoKHR {
 };
 
 VkPhysicalDeviceExternalSemaphoreInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceExternalSemaphoreInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -34924,11 +33889,6 @@ VkPhysicalDeviceExternalSemaphoreInfoKHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceExternalSemaphoreInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceExternalSemaphoreInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -35008,7 +33968,6 @@ class VkExternalSemaphoreProperties {
 };
 
 VkExternalSemaphoreProperties.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExternalSemaphoreProperties"`);
   
   
   if (this._pNext !== null) {
@@ -35023,7 +33982,6 @@ VkExternalSemaphoreProperties.prototype.reflect = function reflect(memoryAddress
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExternalSemaphoreProperties"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x20), 0x0);
   
   
@@ -35111,7 +34069,6 @@ class VkExternalSemaphorePropertiesKHR {
 };
 
 VkExternalSemaphorePropertiesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExternalSemaphorePropertiesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -35126,7 +34083,6 @@ VkExternalSemaphorePropertiesKHR.prototype.reflect = function reflect(memoryAddr
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExternalSemaphorePropertiesKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x20), 0x0);
   
   
@@ -35213,7 +34169,6 @@ class VkExportSemaphoreCreateInfo {
 };
 
 VkExportSemaphoreCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExportSemaphoreCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -35224,11 +34179,6 @@ VkExportSemaphoreCreateInfo.prototype.flush = function flush() {
 };
 
 VkExportSemaphoreCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExportSemaphoreCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -35307,7 +34257,6 @@ class VkExportSemaphoreCreateInfoKHR {
 };
 
 VkExportSemaphoreCreateInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExportSemaphoreCreateInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -35318,11 +34267,6 @@ VkExportSemaphoreCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkExportSemaphoreCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExportSemaphoreCreateInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -35462,7 +34406,6 @@ class VkImportSemaphoreWin32HandleInfoKHR {
 };
 
 VkImportSemaphoreWin32HandleInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImportSemaphoreWin32HandleInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -35473,11 +34416,6 @@ VkImportSemaphoreWin32HandleInfoKHR.prototype.flush = function flush() {
 };
 
 VkImportSemaphoreWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x30));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImportSemaphoreWin32HandleInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -35582,7 +34520,6 @@ class VkExportSemaphoreWin32HandleInfoKHR {
 };
 
 VkExportSemaphoreWin32HandleInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExportSemaphoreWin32HandleInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -35593,11 +34530,6 @@ VkExportSemaphoreWin32HandleInfoKHR.prototype.flush = function flush() {
 };
 
 VkExportSemaphoreWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExportSemaphoreWin32HandleInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -35721,7 +34653,6 @@ class VkD3D12FenceSubmitInfoKHR {
 };
 
 VkD3D12FenceSubmitInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkD3D12FenceSubmitInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -35732,11 +34663,6 @@ VkD3D12FenceSubmitInfoKHR.prototype.flush = function flush() {
 };
 
 VkD3D12FenceSubmitInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x30));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkD3D12FenceSubmitInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -35845,7 +34771,6 @@ class VkSemaphoreGetWin32HandleInfoKHR {
 };
 
 VkSemaphoreGetWin32HandleInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSemaphoreGetWin32HandleInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -35856,11 +34781,6 @@ VkSemaphoreGetWin32HandleInfoKHR.prototype.flush = function flush() {
 };
 
 VkSemaphoreGetWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSemaphoreGetWin32HandleInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -35983,7 +34903,6 @@ class VkImportSemaphoreFdInfoKHR {
 };
 
 VkImportSemaphoreFdInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImportSemaphoreFdInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -35994,11 +34913,6 @@ VkImportSemaphoreFdInfoKHR.prototype.flush = function flush() {
 };
 
 VkImportSemaphoreFdInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImportSemaphoreFdInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -36107,7 +35021,6 @@ class VkSemaphoreGetFdInfoKHR {
 };
 
 VkSemaphoreGetFdInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSemaphoreGetFdInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -36118,11 +35031,6 @@ VkSemaphoreGetFdInfoKHR.prototype.flush = function flush() {
 };
 
 VkSemaphoreGetFdInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSemaphoreGetFdInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -36205,7 +35113,6 @@ class VkPhysicalDeviceExternalFenceInfo {
 };
 
 VkPhysicalDeviceExternalFenceInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceExternalFenceInfo"`);
   
   
   if (this._pNext !== null) {
@@ -36216,11 +35123,6 @@ VkPhysicalDeviceExternalFenceInfo.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceExternalFenceInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceExternalFenceInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -36299,7 +35201,6 @@ class VkPhysicalDeviceExternalFenceInfoKHR {
 };
 
 VkPhysicalDeviceExternalFenceInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceExternalFenceInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -36310,11 +35211,6 @@ VkPhysicalDeviceExternalFenceInfoKHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceExternalFenceInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceExternalFenceInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -36394,7 +35290,6 @@ class VkExternalFenceProperties {
 };
 
 VkExternalFenceProperties.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExternalFenceProperties"`);
   
   
   if (this._pNext !== null) {
@@ -36409,7 +35304,6 @@ VkExternalFenceProperties.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExternalFenceProperties"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x20), 0x0);
   
   
@@ -36497,7 +35391,6 @@ class VkExternalFencePropertiesKHR {
 };
 
 VkExternalFencePropertiesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExternalFencePropertiesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -36512,7 +35405,6 @@ VkExternalFencePropertiesKHR.prototype.reflect = function reflect(memoryAddress)
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExternalFencePropertiesKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x20), 0x0);
   
   
@@ -36599,7 +35491,6 @@ class VkExportFenceCreateInfo {
 };
 
 VkExportFenceCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExportFenceCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -36610,11 +35501,6 @@ VkExportFenceCreateInfo.prototype.flush = function flush() {
 };
 
 VkExportFenceCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExportFenceCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -36693,7 +35579,6 @@ class VkExportFenceCreateInfoKHR {
 };
 
 VkExportFenceCreateInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExportFenceCreateInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -36704,11 +35589,6 @@ VkExportFenceCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkExportFenceCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExportFenceCreateInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -36848,7 +35728,6 @@ class VkImportFenceWin32HandleInfoKHR {
 };
 
 VkImportFenceWin32HandleInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImportFenceWin32HandleInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -36859,11 +35738,6 @@ VkImportFenceWin32HandleInfoKHR.prototype.flush = function flush() {
 };
 
 VkImportFenceWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x30));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImportFenceWin32HandleInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -36968,7 +35842,6 @@ class VkExportFenceWin32HandleInfoKHR {
 };
 
 VkExportFenceWin32HandleInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkExportFenceWin32HandleInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -36979,11 +35852,6 @@ VkExportFenceWin32HandleInfoKHR.prototype.flush = function flush() {
 };
 
 VkExportFenceWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkExportFenceWin32HandleInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -37080,7 +35948,6 @@ class VkFenceGetWin32HandleInfoKHR {
 };
 
 VkFenceGetWin32HandleInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkFenceGetWin32HandleInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -37091,11 +35958,6 @@ VkFenceGetWin32HandleInfoKHR.prototype.flush = function flush() {
 };
 
 VkFenceGetWin32HandleInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkFenceGetWin32HandleInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -37218,7 +36080,6 @@ class VkImportFenceFdInfoKHR {
 };
 
 VkImportFenceFdInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImportFenceFdInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -37229,11 +36090,6 @@ VkImportFenceFdInfoKHR.prototype.flush = function flush() {
 };
 
 VkImportFenceFdInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImportFenceFdInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -37342,7 +36198,6 @@ class VkFenceGetFdInfoKHR {
 };
 
 VkFenceGetFdInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkFenceGetFdInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -37353,11 +36208,6 @@ VkFenceGetFdInfoKHR.prototype.flush = function flush() {
 };
 
 VkFenceGetFdInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkFenceGetFdInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -37455,7 +36305,6 @@ class VkPhysicalDeviceMultiviewFeatures {
 };
 
 VkPhysicalDeviceMultiviewFeatures.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceMultiviewFeatures"`);
   
   
   if (this._pNext !== null) {
@@ -37466,11 +36315,6 @@ VkPhysicalDeviceMultiviewFeatures.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceMultiviewFeatures.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceMultiviewFeatures"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -37572,7 +36416,6 @@ class VkPhysicalDeviceMultiviewFeaturesKHR {
 };
 
 VkPhysicalDeviceMultiviewFeaturesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceMultiviewFeaturesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -37583,11 +36426,6 @@ VkPhysicalDeviceMultiviewFeaturesKHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceMultiviewFeaturesKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceMultiviewFeaturesKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -37673,7 +36511,6 @@ class VkPhysicalDeviceMultiviewProperties {
 };
 
 VkPhysicalDeviceMultiviewProperties.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceMultiviewProperties"`);
   
   
   if (this._pNext !== null) {
@@ -37688,7 +36525,6 @@ VkPhysicalDeviceMultiviewProperties.prototype.reflect = function reflect(memoryA
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceMultiviewProperties"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -37770,7 +36606,6 @@ class VkPhysicalDeviceMultiviewPropertiesKHR {
 };
 
 VkPhysicalDeviceMultiviewPropertiesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceMultiviewPropertiesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -37785,7 +36620,6 @@ VkPhysicalDeviceMultiviewPropertiesKHR.prototype.reflect = function reflect(memo
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceMultiviewPropertiesKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -37940,7 +36774,6 @@ class VkRenderPassMultiviewCreateInfo {
 };
 
 VkRenderPassMultiviewCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkRenderPassMultiviewCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -37951,11 +36784,6 @@ VkRenderPassMultiviewCreateInfo.prototype.flush = function flush() {
 };
 
 VkRenderPassMultiviewCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x40));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkRenderPassMultiviewCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -38126,7 +36954,6 @@ class VkRenderPassMultiviewCreateInfoKHR {
 };
 
 VkRenderPassMultiviewCreateInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkRenderPassMultiviewCreateInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -38137,11 +36964,6 @@ VkRenderPassMultiviewCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkRenderPassMultiviewCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x40));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkRenderPassMultiviewCreateInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -38275,7 +37097,6 @@ class VkSurfaceCapabilities2EXT {
 };
 
 VkSurfaceCapabilities2EXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSurfaceCapabilities2EXT"`);
   
   
   if (this._pNext !== null) {
@@ -38290,7 +37111,6 @@ VkSurfaceCapabilities2EXT.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSurfaceCapabilities2EXT"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x48), 0x0);
   
   
@@ -38415,7 +37235,6 @@ class VkDisplayPowerInfoEXT {
 };
 
 VkDisplayPowerInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDisplayPowerInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -38426,11 +37245,6 @@ VkDisplayPowerInfoEXT.prototype.flush = function flush() {
 };
 
 VkDisplayPowerInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDisplayPowerInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -38509,7 +37323,6 @@ class VkDeviceEventInfoEXT {
 };
 
 VkDeviceEventInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDeviceEventInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -38520,11 +37333,6 @@ VkDeviceEventInfoEXT.prototype.flush = function flush() {
 };
 
 VkDeviceEventInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDeviceEventInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -38603,7 +37411,6 @@ class VkDisplayEventInfoEXT {
 };
 
 VkDisplayEventInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDisplayEventInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -38614,11 +37421,6 @@ VkDisplayEventInfoEXT.prototype.flush = function flush() {
 };
 
 VkDisplayEventInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDisplayEventInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -38697,7 +37499,6 @@ class VkSwapchainCounterCreateInfoEXT {
 };
 
 VkSwapchainCounterCreateInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSwapchainCounterCreateInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -38708,11 +37509,6 @@ VkSwapchainCounterCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkSwapchainCounterCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSwapchainCounterCreateInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -38794,7 +37590,6 @@ class VkPhysicalDeviceGroupProperties {
 };
 
 VkPhysicalDeviceGroupProperties.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceGroupProperties"`);
   
   
   if (this._pNext !== null) {
@@ -38809,7 +37604,6 @@ VkPhysicalDeviceGroupProperties.prototype.reflect = function reflect(memoryAddre
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceGroupProperties"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x120), 0x0);
   
   
@@ -38901,7 +37695,6 @@ class VkPhysicalDeviceGroupPropertiesKHR {
 };
 
 VkPhysicalDeviceGroupPropertiesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceGroupPropertiesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -38916,7 +37709,6 @@ VkPhysicalDeviceGroupPropertiesKHR.prototype.reflect = function reflect(memoryAd
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceGroupPropertiesKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x120), 0x0);
   
   
@@ -39018,7 +37810,6 @@ class VkMemoryAllocateFlagsInfo {
 };
 
 VkMemoryAllocateFlagsInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkMemoryAllocateFlagsInfo"`);
   
   
   if (this._pNext !== null) {
@@ -39029,11 +37820,6 @@ VkMemoryAllocateFlagsInfo.prototype.flush = function flush() {
 };
 
 VkMemoryAllocateFlagsInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkMemoryAllocateFlagsInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -39129,7 +37915,6 @@ class VkMemoryAllocateFlagsInfoKHR {
 };
 
 VkMemoryAllocateFlagsInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkMemoryAllocateFlagsInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -39140,11 +37925,6 @@ VkMemoryAllocateFlagsInfoKHR.prototype.flush = function flush() {
 };
 
 VkMemoryAllocateFlagsInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkMemoryAllocateFlagsInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -39282,7 +38062,6 @@ class VkBindBufferMemoryInfo {
 };
 
 VkBindBufferMemoryInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkBindBufferMemoryInfo"`);
   
   
   if (this._pNext !== null) {
@@ -39293,11 +38072,6 @@ VkBindBufferMemoryInfo.prototype.flush = function flush() {
 };
 
 VkBindBufferMemoryInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkBindBufferMemoryInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -39439,7 +38213,6 @@ class VkBindBufferMemoryInfoKHR {
 };
 
 VkBindBufferMemoryInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkBindBufferMemoryInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -39450,11 +38223,6 @@ VkBindBufferMemoryInfoKHR.prototype.flush = function flush() {
 };
 
 VkBindBufferMemoryInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkBindBufferMemoryInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -39559,7 +38327,6 @@ class VkBindBufferMemoryDeviceGroupInfo {
 };
 
 VkBindBufferMemoryDeviceGroupInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkBindBufferMemoryDeviceGroupInfo"`);
   
   
   if (this._pNext !== null) {
@@ -39570,11 +38337,6 @@ VkBindBufferMemoryDeviceGroupInfo.prototype.flush = function flush() {
 };
 
 VkBindBufferMemoryDeviceGroupInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkBindBufferMemoryDeviceGroupInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -39675,7 +38437,6 @@ class VkBindBufferMemoryDeviceGroupInfoKHR {
 };
 
 VkBindBufferMemoryDeviceGroupInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkBindBufferMemoryDeviceGroupInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -39686,11 +38447,6 @@ VkBindBufferMemoryDeviceGroupInfoKHR.prototype.flush = function flush() {
 };
 
 VkBindBufferMemoryDeviceGroupInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkBindBufferMemoryDeviceGroupInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -39830,7 +38586,6 @@ class VkBindImageMemoryInfo {
 };
 
 VkBindImageMemoryInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkBindImageMemoryInfo"`);
   
   
   if (this._pNext !== null) {
@@ -39841,11 +38596,6 @@ VkBindImageMemoryInfo.prototype.flush = function flush() {
 };
 
 VkBindImageMemoryInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkBindImageMemoryInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -39989,7 +38739,6 @@ class VkBindImageMemoryInfoKHR {
 };
 
 VkBindImageMemoryInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkBindImageMemoryInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -40000,11 +38749,6 @@ VkBindImageMemoryInfoKHR.prototype.flush = function flush() {
 };
 
 VkBindImageMemoryInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkBindImageMemoryInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -40135,7 +38879,6 @@ class VkBindImageMemoryDeviceGroupInfo {
 };
 
 VkBindImageMemoryDeviceGroupInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkBindImageMemoryDeviceGroupInfo"`);
   
   
   if (this._pNext !== null) {
@@ -40166,11 +38909,6 @@ VkBindImageMemoryDeviceGroupInfo.prototype.flush = function flush() {
 };
 
 VkBindImageMemoryDeviceGroupInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x30));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkBindImageMemoryDeviceGroupInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -40307,7 +39045,6 @@ class VkBindImageMemoryDeviceGroupInfoKHR {
 };
 
 VkBindImageMemoryDeviceGroupInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkBindImageMemoryDeviceGroupInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -40338,11 +39075,6 @@ VkBindImageMemoryDeviceGroupInfoKHR.prototype.flush = function flush() {
 };
 
 VkBindImageMemoryDeviceGroupInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x30));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkBindImageMemoryDeviceGroupInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -40463,7 +39195,6 @@ class VkDeviceGroupRenderPassBeginInfo {
 };
 
 VkDeviceGroupRenderPassBeginInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDeviceGroupRenderPassBeginInfo"`);
   
   
   if (this._pNext !== null) {
@@ -40494,11 +39225,6 @@ VkDeviceGroupRenderPassBeginInfo.prototype.flush = function flush() {
 };
 
 VkDeviceGroupRenderPassBeginInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDeviceGroupRenderPassBeginInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -40615,7 +39341,6 @@ class VkDeviceGroupRenderPassBeginInfoKHR {
 };
 
 VkDeviceGroupRenderPassBeginInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDeviceGroupRenderPassBeginInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -40646,11 +39371,6 @@ VkDeviceGroupRenderPassBeginInfoKHR.prototype.flush = function flush() {
 };
 
 VkDeviceGroupRenderPassBeginInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDeviceGroupRenderPassBeginInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -40741,7 +39461,6 @@ class VkDeviceGroupCommandBufferBeginInfo {
 };
 
 VkDeviceGroupCommandBufferBeginInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDeviceGroupCommandBufferBeginInfo"`);
   
   
   if (this._pNext !== null) {
@@ -40752,11 +39471,6 @@ VkDeviceGroupCommandBufferBeginInfo.prototype.flush = function flush() {
 };
 
 VkDeviceGroupCommandBufferBeginInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDeviceGroupCommandBufferBeginInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -40837,7 +39551,6 @@ class VkDeviceGroupCommandBufferBeginInfoKHR {
 };
 
 VkDeviceGroupCommandBufferBeginInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDeviceGroupCommandBufferBeginInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -40848,11 +39561,6 @@ VkDeviceGroupCommandBufferBeginInfoKHR.prototype.flush = function flush() {
 };
 
 VkDeviceGroupCommandBufferBeginInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDeviceGroupCommandBufferBeginInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -41003,7 +39711,6 @@ class VkDeviceGroupSubmitInfo {
 };
 
 VkDeviceGroupSubmitInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDeviceGroupSubmitInfo"`);
   
   
   if (this._pNext !== null) {
@@ -41014,11 +39721,6 @@ VkDeviceGroupSubmitInfo.prototype.flush = function flush() {
 };
 
 VkDeviceGroupSubmitInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x40));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDeviceGroupSubmitInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -41189,7 +39891,6 @@ class VkDeviceGroupSubmitInfoKHR {
 };
 
 VkDeviceGroupSubmitInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDeviceGroupSubmitInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -41200,11 +39901,6 @@ VkDeviceGroupSubmitInfoKHR.prototype.flush = function flush() {
 };
 
 VkDeviceGroupSubmitInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x40));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDeviceGroupSubmitInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -41316,7 +40012,6 @@ class VkDeviceGroupBindSparseInfo {
 };
 
 VkDeviceGroupBindSparseInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDeviceGroupBindSparseInfo"`);
   
   
   if (this._pNext !== null) {
@@ -41327,11 +40022,6 @@ VkDeviceGroupBindSparseInfo.prototype.flush = function flush() {
 };
 
 VkDeviceGroupBindSparseInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDeviceGroupBindSparseInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -41427,7 +40117,6 @@ class VkDeviceGroupBindSparseInfoKHR {
 };
 
 VkDeviceGroupBindSparseInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDeviceGroupBindSparseInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -41438,11 +40127,6 @@ VkDeviceGroupBindSparseInfoKHR.prototype.flush = function flush() {
 };
 
 VkDeviceGroupBindSparseInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDeviceGroupBindSparseInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -41557,7 +40241,6 @@ class VkDeviceGroupPresentCapabilitiesKHR {
 };
 
 VkDeviceGroupPresentCapabilitiesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDeviceGroupPresentCapabilitiesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -41572,7 +40255,6 @@ VkDeviceGroupPresentCapabilitiesKHR.prototype.reflect = function reflect(memoryA
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDeviceGroupPresentCapabilitiesKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x98), 0x0);
   
   
@@ -41664,7 +40346,6 @@ class VkImageSwapchainCreateInfoKHR {
 };
 
 VkImageSwapchainCreateInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageSwapchainCreateInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -41675,11 +40356,6 @@ VkImageSwapchainCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkImageSwapchainCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageSwapchainCreateInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -41778,7 +40454,6 @@ class VkBindImageMemorySwapchainInfoKHR {
 };
 
 VkBindImageMemorySwapchainInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkBindImageMemorySwapchainInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -41789,11 +40464,6 @@ VkBindImageMemorySwapchainInfoKHR.prototype.flush = function flush() {
 };
 
 VkBindImageMemorySwapchainInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkBindImageMemorySwapchainInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -41945,7 +40615,6 @@ class VkAcquireNextImageInfoKHR {
 };
 
 VkAcquireNextImageInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkAcquireNextImageInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -41956,11 +40625,6 @@ VkAcquireNextImageInfoKHR.prototype.flush = function flush() {
 };
 
 VkAcquireNextImageInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x38));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkAcquireNextImageInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -42084,7 +40748,6 @@ class VkDeviceGroupPresentInfoKHR {
 };
 
 VkDeviceGroupPresentInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDeviceGroupPresentInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -42095,11 +40758,6 @@ VkDeviceGroupPresentInfoKHR.prototype.flush = function flush() {
 };
 
 VkDeviceGroupPresentInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDeviceGroupPresentInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -42203,7 +40861,6 @@ class VkDeviceGroupDeviceCreateInfo {
 };
 
 VkDeviceGroupDeviceCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDeviceGroupDeviceCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -42234,11 +40891,6 @@ VkDeviceGroupDeviceCreateInfo.prototype.flush = function flush() {
 };
 
 VkDeviceGroupDeviceCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDeviceGroupDeviceCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -42340,7 +40992,6 @@ class VkDeviceGroupDeviceCreateInfoKHR {
 };
 
 VkDeviceGroupDeviceCreateInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDeviceGroupDeviceCreateInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -42371,11 +41022,6 @@ VkDeviceGroupDeviceCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkDeviceGroupDeviceCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDeviceGroupDeviceCreateInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -42460,7 +41106,6 @@ class VkDeviceGroupSwapchainCreateInfoKHR {
 };
 
 VkDeviceGroupSwapchainCreateInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDeviceGroupSwapchainCreateInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -42471,11 +41116,6 @@ VkDeviceGroupSwapchainCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkDeviceGroupSwapchainCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDeviceGroupSwapchainCreateInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -42592,17 +41232,11 @@ class VkDescriptorUpdateTemplateEntry {
 };
 
 VkDescriptorUpdateTemplateEntry.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDescriptorUpdateTemplateEntry"`);
   
   return true;
 };
 
 VkDescriptorUpdateTemplateEntry.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDescriptorUpdateTemplateEntry"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -42729,17 +41363,11 @@ class VkDescriptorUpdateTemplateEntryKHR {
 };
 
 VkDescriptorUpdateTemplateEntryKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDescriptorUpdateTemplateEntryKHR"`);
   
   return true;
 };
 
 VkDescriptorUpdateTemplateEntryKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDescriptorUpdateTemplateEntryKHR"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -42925,7 +41553,6 @@ class VkDescriptorUpdateTemplateCreateInfo {
 };
 
 VkDescriptorUpdateTemplateCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDescriptorUpdateTemplateCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -42956,11 +41583,6 @@ VkDescriptorUpdateTemplateCreateInfo.prototype.flush = function flush() {
 };
 
 VkDescriptorUpdateTemplateCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x48));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDescriptorUpdateTemplateCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -43166,7 +41788,6 @@ class VkDescriptorUpdateTemplateCreateInfoKHR {
 };
 
 VkDescriptorUpdateTemplateCreateInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDescriptorUpdateTemplateCreateInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -43197,11 +41818,6 @@ VkDescriptorUpdateTemplateCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkDescriptorUpdateTemplateCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x48));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDescriptorUpdateTemplateCreateInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -43300,17 +41916,11 @@ class VkXYColorEXT {
 };
 
 VkXYColorEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkXYColorEXT"`);
   
   return true;
 };
 
 VkXYColorEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x8));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkXYColorEXT"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -43490,7 +42100,6 @@ class VkHdrMetadataEXT {
 };
 
 VkHdrMetadataEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkHdrMetadataEXT"`);
   
   
   if (this._pNext !== null) {
@@ -43541,11 +42150,6 @@ VkHdrMetadataEXT.prototype.flush = function flush() {
 };
 
 VkHdrMetadataEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x40));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkHdrMetadataEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -43632,7 +42236,6 @@ class VkRefreshCycleDurationGOOGLE {
 };
 
 VkRefreshCycleDurationGOOGLE.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkRefreshCycleDurationGOOGLE"`);
   
   return true;
 };
@@ -43642,7 +42245,6 @@ VkRefreshCycleDurationGOOGLE.prototype.reflect = function reflect(memoryAddress)
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkRefreshCycleDurationGOOGLE"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x8), 0x0);
 };
 
@@ -43701,7 +42303,6 @@ class VkPastPresentationTimingGOOGLE {
 };
 
 VkPastPresentationTimingGOOGLE.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPastPresentationTimingGOOGLE"`);
   
   return true;
 };
@@ -43711,7 +42312,6 @@ VkPastPresentationTimingGOOGLE.prototype.reflect = function reflect(memoryAddres
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPastPresentationTimingGOOGLE"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x28), 0x0);
 };
 
@@ -43813,7 +42413,6 @@ class VkPresentTimesInfoGOOGLE {
 };
 
 VkPresentTimesInfoGOOGLE.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPresentTimesInfoGOOGLE"`);
   
   
   if (this._pNext !== null) {
@@ -43844,11 +42443,6 @@ VkPresentTimesInfoGOOGLE.prototype.flush = function flush() {
 };
 
 VkPresentTimesInfoGOOGLE.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPresentTimesInfoGOOGLE"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -43925,17 +42519,11 @@ class VkPresentTimeGOOGLE {
 };
 
 VkPresentTimeGOOGLE.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPresentTimeGOOGLE"`);
   
   return true;
 };
 
 VkPresentTimeGOOGLE.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x10));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPresentTimeGOOGLE"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -43998,17 +42586,11 @@ class VkViewportWScalingNV {
 };
 
 VkViewportWScalingNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkViewportWScalingNV"`);
   
   return true;
 };
 
 VkViewportWScalingNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x8));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkViewportWScalingNV"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -44106,7 +42688,6 @@ class VkPipelineViewportWScalingStateCreateInfoNV {
 };
 
 VkPipelineViewportWScalingStateCreateInfoNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineViewportWScalingStateCreateInfoNV"`);
   
   
   if (this._pNext !== null) {
@@ -44137,11 +42718,6 @@ VkPipelineViewportWScalingStateCreateInfoNV.prototype.flush = function flush() {
 };
 
 VkPipelineViewportWScalingStateCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineViewportWScalingStateCreateInfoNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -44242,17 +42818,11 @@ class VkViewportSwizzleNV {
 };
 
 VkViewportSwizzleNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkViewportSwizzleNV"`);
   
   return true;
 };
 
 VkViewportSwizzleNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x10));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkViewportSwizzleNV"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -44361,7 +42931,6 @@ class VkPipelineViewportSwizzleStateCreateInfoNV {
 };
 
 VkPipelineViewportSwizzleStateCreateInfoNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineViewportSwizzleStateCreateInfoNV"`);
   
   
   if (this._pNext !== null) {
@@ -44392,11 +42961,6 @@ VkPipelineViewportSwizzleStateCreateInfoNV.prototype.flush = function flush() {
 };
 
 VkPipelineViewportSwizzleStateCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineViewportSwizzleStateCreateInfoNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -44480,7 +43044,6 @@ class VkPhysicalDeviceDiscardRectanglePropertiesEXT {
 };
 
 VkPhysicalDeviceDiscardRectanglePropertiesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceDiscardRectanglePropertiesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -44495,7 +43058,6 @@ VkPhysicalDeviceDiscardRectanglePropertiesEXT.prototype.reflect = function refle
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceDiscardRectanglePropertiesEXT"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -44613,7 +43175,6 @@ class VkPipelineDiscardRectangleStateCreateInfoEXT {
 };
 
 VkPipelineDiscardRectangleStateCreateInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineDiscardRectangleStateCreateInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -44644,11 +43205,6 @@ VkPipelineDiscardRectangleStateCreateInfoEXT.prototype.flush = function flush() 
 };
 
 VkPipelineDiscardRectangleStateCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineDiscardRectangleStateCreateInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -44736,7 +43292,6 @@ class VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX {
 };
 
 VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX"`);
   
   
   if (this._pNext !== null) {
@@ -44751,7 +43306,6 @@ VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX.prototype.reflect = func
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -44833,17 +43387,11 @@ class VkInputAttachmentAspectReference {
 };
 
 VkInputAttachmentAspectReference.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkInputAttachmentAspectReference"`);
   
   return true;
 };
 
 VkInputAttachmentAspectReference.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0xC));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkInputAttachmentAspectReference"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -44923,17 +43471,11 @@ class VkInputAttachmentAspectReferenceKHR {
 };
 
 VkInputAttachmentAspectReferenceKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkInputAttachmentAspectReferenceKHR"`);
   
   return true;
 };
 
 VkInputAttachmentAspectReferenceKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0xC));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkInputAttachmentAspectReferenceKHR"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -45027,7 +43569,6 @@ class VkRenderPassInputAttachmentAspectCreateInfo {
 };
 
 VkRenderPassInputAttachmentAspectCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkRenderPassInputAttachmentAspectCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -45058,11 +43599,6 @@ VkRenderPassInputAttachmentAspectCreateInfo.prototype.flush = function flush() {
 };
 
 VkRenderPassInputAttachmentAspectCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkRenderPassInputAttachmentAspectCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -45164,7 +43700,6 @@ class VkRenderPassInputAttachmentAspectCreateInfoKHR {
 };
 
 VkRenderPassInputAttachmentAspectCreateInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkRenderPassInputAttachmentAspectCreateInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -45195,11 +43730,6 @@ VkRenderPassInputAttachmentAspectCreateInfoKHR.prototype.flush = function flush(
 };
 
 VkRenderPassInputAttachmentAspectCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkRenderPassInputAttachmentAspectCreateInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -45291,7 +43821,6 @@ class VkPhysicalDeviceSurfaceInfo2KHR {
 };
 
 VkPhysicalDeviceSurfaceInfo2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceSurfaceInfo2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -45302,11 +43831,6 @@ VkPhysicalDeviceSurfaceInfo2KHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceSurfaceInfo2KHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceSurfaceInfo2KHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -45395,7 +43919,6 @@ class VkSurfaceCapabilities2KHR {
 };
 
 VkSurfaceCapabilities2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSurfaceCapabilities2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -45410,7 +43933,6 @@ VkSurfaceCapabilities2KHR.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSurfaceCapabilities2KHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x48), 0x0);
   
   
@@ -45484,7 +44006,6 @@ class VkSurfaceFormat2KHR {
 };
 
 VkSurfaceFormat2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSurfaceFormat2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -45499,7 +44020,6 @@ VkSurfaceFormat2KHR.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSurfaceFormat2KHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -45573,7 +44093,6 @@ class VkDisplayProperties2KHR {
 };
 
 VkDisplayProperties2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDisplayProperties2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -45588,7 +44107,6 @@ VkDisplayProperties2KHR.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDisplayProperties2KHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x40), 0x0);
   
   
@@ -45662,7 +44180,6 @@ class VkDisplayPlaneProperties2KHR {
 };
 
 VkDisplayPlaneProperties2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDisplayPlaneProperties2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -45677,7 +44194,6 @@ VkDisplayPlaneProperties2KHR.prototype.reflect = function reflect(memoryAddress)
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDisplayPlaneProperties2KHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x20), 0x0);
   
   
@@ -45751,7 +44267,6 @@ class VkDisplayModeProperties2KHR {
 };
 
 VkDisplayModeProperties2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDisplayModeProperties2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -45766,7 +44281,6 @@ VkDisplayModeProperties2KHR.prototype.reflect = function reflect(memoryAddress) 
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDisplayModeProperties2KHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x28), 0x0);
   
   
@@ -45867,7 +44381,6 @@ class VkDisplayPlaneInfo2KHR {
 };
 
 VkDisplayPlaneInfo2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDisplayPlaneInfo2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -45878,11 +44391,6 @@ VkDisplayPlaneInfo2KHR.prototype.flush = function flush() {
 };
 
 VkDisplayPlaneInfo2KHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDisplayPlaneInfo2KHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -45958,7 +44466,6 @@ class VkDisplayPlaneCapabilities2KHR {
 };
 
 VkDisplayPlaneCapabilities2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDisplayPlaneCapabilities2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -45973,7 +44480,6 @@ VkDisplayPlaneCapabilities2KHR.prototype.reflect = function reflect(memoryAddres
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDisplayPlaneCapabilities2KHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x58), 0x0);
   
   
@@ -46047,7 +44553,6 @@ class VkSharedPresentSurfaceCapabilitiesKHR {
 };
 
 VkSharedPresentSurfaceCapabilitiesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSharedPresentSurfaceCapabilitiesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -46062,7 +44567,6 @@ VkSharedPresentSurfaceCapabilitiesKHR.prototype.reflect = function reflect(memor
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSharedPresentSurfaceCapabilitiesKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -46164,7 +44668,6 @@ class VkPhysicalDevice16BitStorageFeatures {
 };
 
 VkPhysicalDevice16BitStorageFeatures.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDevice16BitStorageFeatures"`);
   
   
   if (this._pNext !== null) {
@@ -46175,11 +44678,6 @@ VkPhysicalDevice16BitStorageFeatures.prototype.flush = function flush() {
 };
 
 VkPhysicalDevice16BitStorageFeatures.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDevice16BitStorageFeatures"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -46293,7 +44791,6 @@ class VkPhysicalDevice16BitStorageFeaturesKHR {
 };
 
 VkPhysicalDevice16BitStorageFeaturesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDevice16BitStorageFeaturesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -46304,11 +44801,6 @@ VkPhysicalDevice16BitStorageFeaturesKHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDevice16BitStorageFeaturesKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDevice16BitStorageFeaturesKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -46406,7 +44898,6 @@ class VkPhysicalDeviceSubgroupProperties {
 };
 
 VkPhysicalDeviceSubgroupProperties.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceSubgroupProperties"`);
   
   
   if (this._pNext !== null) {
@@ -46421,7 +44912,6 @@ VkPhysicalDeviceSubgroupProperties.prototype.reflect = function reflect(memoryAd
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceSubgroupProperties"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x20), 0x0);
   
   
@@ -46519,7 +45009,6 @@ class VkBufferMemoryRequirementsInfo2 {
 };
 
 VkBufferMemoryRequirementsInfo2.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkBufferMemoryRequirementsInfo2"`);
   
   
   if (this._pNext !== null) {
@@ -46530,11 +45019,6 @@ VkBufferMemoryRequirementsInfo2.prototype.flush = function flush() {
 };
 
 VkBufferMemoryRequirementsInfo2.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkBufferMemoryRequirementsInfo2"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -46620,7 +45104,6 @@ class VkBufferMemoryRequirementsInfo2KHR {
 };
 
 VkBufferMemoryRequirementsInfo2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkBufferMemoryRequirementsInfo2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -46631,11 +45114,6 @@ VkBufferMemoryRequirementsInfo2KHR.prototype.flush = function flush() {
 };
 
 VkBufferMemoryRequirementsInfo2KHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkBufferMemoryRequirementsInfo2KHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -46738,7 +45216,6 @@ class VkImageMemoryRequirementsInfo2 {
 };
 
 VkImageMemoryRequirementsInfo2.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageMemoryRequirementsInfo2"`);
   
   
   if (this._pNext !== null) {
@@ -46749,11 +45226,6 @@ VkImageMemoryRequirementsInfo2.prototype.flush = function flush() {
 };
 
 VkImageMemoryRequirementsInfo2.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageMemoryRequirementsInfo2"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -46856,7 +45328,6 @@ class VkImageMemoryRequirementsInfo2KHR {
 };
 
 VkImageMemoryRequirementsInfo2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageMemoryRequirementsInfo2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -46867,11 +45338,6 @@ VkImageMemoryRequirementsInfo2KHR.prototype.flush = function flush() {
 };
 
 VkImageMemoryRequirementsInfo2KHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageMemoryRequirementsInfo2KHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -46957,7 +45423,6 @@ class VkImageSparseMemoryRequirementsInfo2 {
 };
 
 VkImageSparseMemoryRequirementsInfo2.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageSparseMemoryRequirementsInfo2"`);
   
   
   if (this._pNext !== null) {
@@ -46968,11 +45433,6 @@ VkImageSparseMemoryRequirementsInfo2.prototype.flush = function flush() {
 };
 
 VkImageSparseMemoryRequirementsInfo2.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageSparseMemoryRequirementsInfo2"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -47058,7 +45518,6 @@ class VkImageSparseMemoryRequirementsInfo2KHR {
 };
 
 VkImageSparseMemoryRequirementsInfo2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageSparseMemoryRequirementsInfo2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -47069,11 +45528,6 @@ VkImageSparseMemoryRequirementsInfo2KHR.prototype.flush = function flush() {
 };
 
 VkImageSparseMemoryRequirementsInfo2KHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageSparseMemoryRequirementsInfo2KHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -47162,7 +45616,6 @@ class VkMemoryRequirements2 {
 };
 
 VkMemoryRequirements2.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkMemoryRequirements2"`);
   
   
   if (this._pNext !== null) {
@@ -47177,7 +45630,6 @@ VkMemoryRequirements2.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkMemoryRequirements2"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x28), 0x0);
   
   
@@ -47268,7 +45720,6 @@ class VkMemoryRequirements2KHR {
 };
 
 VkMemoryRequirements2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkMemoryRequirements2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -47283,7 +45734,6 @@ VkMemoryRequirements2KHR.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkMemoryRequirements2KHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x28), 0x0);
   
   
@@ -47357,7 +45807,6 @@ class VkSparseImageMemoryRequirements2 {
 };
 
 VkSparseImageMemoryRequirements2.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSparseImageMemoryRequirements2"`);
   
   
   if (this._pNext !== null) {
@@ -47372,7 +45821,6 @@ VkSparseImageMemoryRequirements2.prototype.reflect = function reflect(memoryAddr
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSparseImageMemoryRequirements2"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x40), 0x0);
   
   
@@ -47446,7 +45894,6 @@ class VkSparseImageMemoryRequirements2KHR {
 };
 
 VkSparseImageMemoryRequirements2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSparseImageMemoryRequirements2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -47461,7 +45908,6 @@ VkSparseImageMemoryRequirements2KHR.prototype.reflect = function reflect(memoryA
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSparseImageMemoryRequirements2KHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x40), 0x0);
   
   
@@ -47535,7 +45981,6 @@ class VkPhysicalDevicePointClippingProperties {
 };
 
 VkPhysicalDevicePointClippingProperties.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDevicePointClippingProperties"`);
   
   
   if (this._pNext !== null) {
@@ -47550,7 +45995,6 @@ VkPhysicalDevicePointClippingProperties.prototype.reflect = function reflect(mem
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDevicePointClippingProperties"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -47622,7 +46066,6 @@ class VkPhysicalDevicePointClippingPropertiesKHR {
 };
 
 VkPhysicalDevicePointClippingPropertiesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDevicePointClippingPropertiesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -47637,7 +46080,6 @@ VkPhysicalDevicePointClippingPropertiesKHR.prototype.reflect = function reflect(
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDevicePointClippingPropertiesKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -47715,7 +46157,6 @@ class VkMemoryDedicatedRequirements {
 };
 
 VkMemoryDedicatedRequirements.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkMemoryDedicatedRequirements"`);
   
   
   if (this._pNext !== null) {
@@ -47730,7 +46171,6 @@ VkMemoryDedicatedRequirements.prototype.reflect = function reflect(memoryAddress
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkMemoryDedicatedRequirements"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -47812,7 +46252,6 @@ class VkMemoryDedicatedRequirementsKHR {
 };
 
 VkMemoryDedicatedRequirementsKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkMemoryDedicatedRequirementsKHR"`);
   
   
   if (this._pNext !== null) {
@@ -47827,7 +46266,6 @@ VkMemoryDedicatedRequirementsKHR.prototype.reflect = function reflect(memoryAddr
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkMemoryDedicatedRequirementsKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -47935,7 +46373,6 @@ class VkMemoryDedicatedAllocateInfo {
 };
 
 VkMemoryDedicatedAllocateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkMemoryDedicatedAllocateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -47946,11 +46383,6 @@ VkMemoryDedicatedAllocateInfo.prototype.flush = function flush() {
 };
 
 VkMemoryDedicatedAllocateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkMemoryDedicatedAllocateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -48058,7 +46490,6 @@ class VkMemoryDedicatedAllocateInfoKHR {
 };
 
 VkMemoryDedicatedAllocateInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkMemoryDedicatedAllocateInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -48069,11 +46500,6 @@ VkMemoryDedicatedAllocateInfoKHR.prototype.flush = function flush() {
 };
 
 VkMemoryDedicatedAllocateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkMemoryDedicatedAllocateInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -48156,7 +46582,6 @@ class VkImageViewUsageCreateInfo {
 };
 
 VkImageViewUsageCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageViewUsageCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -48167,11 +46592,6 @@ VkImageViewUsageCreateInfo.prototype.flush = function flush() {
 };
 
 VkImageViewUsageCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageViewUsageCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -48250,7 +46670,6 @@ class VkImageViewUsageCreateInfoKHR {
 };
 
 VkImageViewUsageCreateInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageViewUsageCreateInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -48261,11 +46680,6 @@ VkImageViewUsageCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkImageViewUsageCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageViewUsageCreateInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -48344,7 +46758,6 @@ class VkPipelineTessellationDomainOriginStateCreateInfo {
 };
 
 VkPipelineTessellationDomainOriginStateCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineTessellationDomainOriginStateCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -48355,11 +46768,6 @@ VkPipelineTessellationDomainOriginStateCreateInfo.prototype.flush = function flu
 };
 
 VkPipelineTessellationDomainOriginStateCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineTessellationDomainOriginStateCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -48438,7 +46846,6 @@ class VkPipelineTessellationDomainOriginStateCreateInfoKHR {
 };
 
 VkPipelineTessellationDomainOriginStateCreateInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineTessellationDomainOriginStateCreateInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -48449,11 +46856,6 @@ VkPipelineTessellationDomainOriginStateCreateInfoKHR.prototype.flush = function 
 };
 
 VkPipelineTessellationDomainOriginStateCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineTessellationDomainOriginStateCreateInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -48539,7 +46941,6 @@ class VkSamplerYcbcrConversionInfo {
 };
 
 VkSamplerYcbcrConversionInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSamplerYcbcrConversionInfo"`);
   
   
   if (this._pNext !== null) {
@@ -48550,11 +46951,6 @@ VkSamplerYcbcrConversionInfo.prototype.flush = function flush() {
 };
 
 VkSamplerYcbcrConversionInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSamplerYcbcrConversionInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -48640,7 +47036,6 @@ class VkSamplerYcbcrConversionInfoKHR {
 };
 
 VkSamplerYcbcrConversionInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSamplerYcbcrConversionInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -48651,11 +47046,6 @@ VkSamplerYcbcrConversionInfoKHR.prototype.flush = function flush() {
 };
 
 VkSamplerYcbcrConversionInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSamplerYcbcrConversionInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -48834,7 +47224,6 @@ class VkSamplerYcbcrConversionCreateInfo {
 };
 
 VkSamplerYcbcrConversionCreateInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSamplerYcbcrConversionCreateInfo"`);
   
   
   if (this._pNext !== null) {
@@ -48855,11 +47244,6 @@ VkSamplerYcbcrConversionCreateInfo.prototype.flush = function flush() {
 };
 
 VkSamplerYcbcrConversionCreateInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x40));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSamplerYcbcrConversionCreateInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -49068,7 +47452,6 @@ class VkSamplerYcbcrConversionCreateInfoKHR {
 };
 
 VkSamplerYcbcrConversionCreateInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSamplerYcbcrConversionCreateInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -49089,11 +47472,6 @@ VkSamplerYcbcrConversionCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkSamplerYcbcrConversionCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x40));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSamplerYcbcrConversionCreateInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -49202,7 +47580,6 @@ class VkBindImagePlaneMemoryInfo {
 };
 
 VkBindImagePlaneMemoryInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkBindImagePlaneMemoryInfo"`);
   
   
   if (this._pNext !== null) {
@@ -49213,11 +47590,6 @@ VkBindImagePlaneMemoryInfo.prototype.flush = function flush() {
 };
 
 VkBindImagePlaneMemoryInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkBindImagePlaneMemoryInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -49296,7 +47668,6 @@ class VkBindImagePlaneMemoryInfoKHR {
 };
 
 VkBindImagePlaneMemoryInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkBindImagePlaneMemoryInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -49307,11 +47678,6 @@ VkBindImagePlaneMemoryInfoKHR.prototype.flush = function flush() {
 };
 
 VkBindImagePlaneMemoryInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkBindImagePlaneMemoryInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -49390,7 +47756,6 @@ class VkImagePlaneMemoryRequirementsInfo {
 };
 
 VkImagePlaneMemoryRequirementsInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImagePlaneMemoryRequirementsInfo"`);
   
   
   if (this._pNext !== null) {
@@ -49401,11 +47766,6 @@ VkImagePlaneMemoryRequirementsInfo.prototype.flush = function flush() {
 };
 
 VkImagePlaneMemoryRequirementsInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImagePlaneMemoryRequirementsInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -49484,7 +47844,6 @@ class VkImagePlaneMemoryRequirementsInfoKHR {
 };
 
 VkImagePlaneMemoryRequirementsInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImagePlaneMemoryRequirementsInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -49495,11 +47854,6 @@ VkImagePlaneMemoryRequirementsInfoKHR.prototype.flush = function flush() {
 };
 
 VkImagePlaneMemoryRequirementsInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImagePlaneMemoryRequirementsInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -49577,7 +47931,6 @@ class VkPhysicalDeviceSamplerYcbcrConversionFeatures {
 };
 
 VkPhysicalDeviceSamplerYcbcrConversionFeatures.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceSamplerYcbcrConversionFeatures"`);
   
   
   if (this._pNext !== null) {
@@ -49588,11 +47941,6 @@ VkPhysicalDeviceSamplerYcbcrConversionFeatures.prototype.flush = function flush(
 };
 
 VkPhysicalDeviceSamplerYcbcrConversionFeatures.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceSamplerYcbcrConversionFeatures"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -49670,7 +48018,6 @@ class VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR {
 };
 
 VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -49681,11 +48028,6 @@ VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR.prototype.flush = function flu
 };
 
 VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -49759,7 +48101,6 @@ class VkSamplerYcbcrConversionImageFormatProperties {
 };
 
 VkSamplerYcbcrConversionImageFormatProperties.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSamplerYcbcrConversionImageFormatProperties"`);
   
   
   if (this._pNext !== null) {
@@ -49774,7 +48115,6 @@ VkSamplerYcbcrConversionImageFormatProperties.prototype.reflect = function refle
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSamplerYcbcrConversionImageFormatProperties"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -49848,7 +48188,6 @@ class VkSamplerYcbcrConversionImageFormatPropertiesKHR {
 };
 
 VkSamplerYcbcrConversionImageFormatPropertiesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSamplerYcbcrConversionImageFormatPropertiesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -49863,7 +48202,6 @@ VkSamplerYcbcrConversionImageFormatPropertiesKHR.prototype.reflect = function re
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSamplerYcbcrConversionImageFormatPropertiesKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -49937,7 +48275,6 @@ class VkTextureLODGatherFormatPropertiesAMD {
 };
 
 VkTextureLODGatherFormatPropertiesAMD.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkTextureLODGatherFormatPropertiesAMD"`);
   
   
   if (this._pNext !== null) {
@@ -49952,7 +48289,6 @@ VkTextureLODGatherFormatPropertiesAMD.prototype.reflect = function reflect(memor
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkTextureLODGatherFormatPropertiesAMD"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -50062,7 +48398,6 @@ class VkConditionalRenderingBeginInfoEXT {
 };
 
 VkConditionalRenderingBeginInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkConditionalRenderingBeginInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -50073,11 +48408,6 @@ VkConditionalRenderingBeginInfoEXT.prototype.flush = function flush() {
 };
 
 VkConditionalRenderingBeginInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkConditionalRenderingBeginInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -50163,7 +48493,6 @@ class VkProtectedSubmitInfo {
 };
 
 VkProtectedSubmitInfo.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkProtectedSubmitInfo"`);
   
   
   if (this._pNext !== null) {
@@ -50174,11 +48503,6 @@ VkProtectedSubmitInfo.prototype.flush = function flush() {
 };
 
 VkProtectedSubmitInfo.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkProtectedSubmitInfo"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -50256,7 +48580,6 @@ class VkPhysicalDeviceProtectedMemoryFeatures {
 };
 
 VkPhysicalDeviceProtectedMemoryFeatures.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceProtectedMemoryFeatures"`);
   
   
   if (this._pNext !== null) {
@@ -50267,11 +48590,6 @@ VkPhysicalDeviceProtectedMemoryFeatures.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceProtectedMemoryFeatures.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceProtectedMemoryFeatures"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -50345,7 +48663,6 @@ class VkPhysicalDeviceProtectedMemoryProperties {
 };
 
 VkPhysicalDeviceProtectedMemoryProperties.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceProtectedMemoryProperties"`);
   
   
   if (this._pNext !== null) {
@@ -50360,7 +48677,6 @@ VkPhysicalDeviceProtectedMemoryProperties.prototype.reflect = function reflect(m
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceProtectedMemoryProperties"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -50463,7 +48779,6 @@ class VkDeviceQueueInfo2 {
 };
 
 VkDeviceQueueInfo2.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDeviceQueueInfo2"`);
   
   
   if (this._pNext !== null) {
@@ -50474,11 +48789,6 @@ VkDeviceQueueInfo2.prototype.flush = function flush() {
 };
 
 VkDeviceQueueInfo2.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDeviceQueueInfo2"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -50586,7 +48896,6 @@ class VkPipelineCoverageToColorStateCreateInfoNV {
 };
 
 VkPipelineCoverageToColorStateCreateInfoNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineCoverageToColorStateCreateInfoNV"`);
   
   
   if (this._pNext !== null) {
@@ -50597,11 +48906,6 @@ VkPipelineCoverageToColorStateCreateInfoNV.prototype.flush = function flush() {
 };
 
 VkPipelineCoverageToColorStateCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineCoverageToColorStateCreateInfoNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -50687,7 +48991,6 @@ class VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT {
 };
 
 VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -50702,7 +49005,6 @@ VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT.prototype.reflect = function re
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -50775,17 +49077,11 @@ class VkSampleLocationEXT {
 };
 
 VkSampleLocationEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSampleLocationEXT"`);
   
   return true;
 };
 
 VkSampleLocationEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x8));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSampleLocationEXT"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -50904,7 +49200,6 @@ class VkSampleLocationsInfoEXT {
 };
 
 VkSampleLocationsInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSampleLocationsInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -50945,11 +49240,6 @@ VkSampleLocationsInfoEXT.prototype.flush = function flush() {
 };
 
 VkSampleLocationsInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSampleLocationsInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -51043,7 +49333,6 @@ class VkAttachmentSampleLocationsEXT {
 };
 
 VkAttachmentSampleLocationsEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkAttachmentSampleLocationsEXT"`);
   
   
   if (this._sampleLocationsInfo !== null) {
@@ -51059,11 +49348,6 @@ VkAttachmentSampleLocationsEXT.prototype.flush = function flush() {
 };
 
 VkAttachmentSampleLocationsEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x30));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkAttachmentSampleLocationsEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -51137,7 +49421,6 @@ class VkSubpassSampleLocationsEXT {
 };
 
 VkSubpassSampleLocationsEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSubpassSampleLocationsEXT"`);
   
   
   if (this._sampleLocationsInfo !== null) {
@@ -51153,11 +49436,6 @@ VkSubpassSampleLocationsEXT.prototype.flush = function flush() {
 };
 
 VkSubpassSampleLocationsEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x30));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSubpassSampleLocationsEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -51275,7 +49553,6 @@ class VkRenderPassSampleLocationsBeginInfoEXT {
 };
 
 VkRenderPassSampleLocationsBeginInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkRenderPassSampleLocationsBeginInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -51326,11 +49603,6 @@ VkRenderPassSampleLocationsBeginInfoEXT.prototype.flush = function flush() {
 };
 
 VkRenderPassSampleLocationsBeginInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x30));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkRenderPassSampleLocationsBeginInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -51442,7 +49714,6 @@ class VkPipelineSampleLocationsStateCreateInfoEXT {
 };
 
 VkPipelineSampleLocationsStateCreateInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineSampleLocationsStateCreateInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -51463,11 +49734,6 @@ VkPipelineSampleLocationsStateCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkPipelineSampleLocationsStateCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x40));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineSampleLocationsStateCreateInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -51568,7 +49834,6 @@ class VkPhysicalDeviceSampleLocationsPropertiesEXT {
 };
 
 VkPhysicalDeviceSampleLocationsPropertiesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceSampleLocationsPropertiesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -51583,7 +49848,6 @@ VkPhysicalDeviceSampleLocationsPropertiesEXT.prototype.reflect = function reflec
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceSampleLocationsPropertiesEXT"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x30), 0x0);
   
   
@@ -51675,7 +49939,6 @@ class VkMultisamplePropertiesEXT {
 };
 
 VkMultisamplePropertiesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkMultisamplePropertiesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -51690,7 +49953,6 @@ VkMultisamplePropertiesEXT.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkMultisamplePropertiesEXT"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -51771,7 +50033,6 @@ class VkSamplerReductionModeCreateInfoEXT {
 };
 
 VkSamplerReductionModeCreateInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSamplerReductionModeCreateInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -51782,11 +50043,6 @@ VkSamplerReductionModeCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkSamplerReductionModeCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSamplerReductionModeCreateInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -51864,7 +50120,6 @@ class VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT {
 };
 
 VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -51875,11 +50130,6 @@ VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.prototype.flush = function flu
 };
 
 VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -51973,7 +50223,6 @@ class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT {
 };
 
 VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -51988,7 +50237,6 @@ VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.prototype.reflect = function
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x28), 0x0);
   
   
@@ -52105,7 +50353,6 @@ class VkPipelineColorBlendAdvancedStateCreateInfoEXT {
 };
 
 VkPipelineColorBlendAdvancedStateCreateInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineColorBlendAdvancedStateCreateInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -52116,11 +50363,6 @@ VkPipelineColorBlendAdvancedStateCreateInfoEXT.prototype.flush = function flush(
 };
 
 VkPipelineColorBlendAdvancedStateCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineColorBlendAdvancedStateCreateInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -52214,7 +50456,6 @@ class VkPhysicalDeviceInlineUniformBlockFeaturesEXT {
 };
 
 VkPhysicalDeviceInlineUniformBlockFeaturesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceInlineUniformBlockFeaturesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -52225,11 +50466,6 @@ VkPhysicalDeviceInlineUniformBlockFeaturesEXT.prototype.flush = function flush()
 };
 
 VkPhysicalDeviceInlineUniformBlockFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceInlineUniformBlockFeaturesEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -52323,7 +50559,6 @@ class VkPhysicalDeviceInlineUniformBlockPropertiesEXT {
 };
 
 VkPhysicalDeviceInlineUniformBlockPropertiesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceInlineUniformBlockPropertiesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -52338,7 +50573,6 @@ VkPhysicalDeviceInlineUniformBlockPropertiesEXT.prototype.reflect = function ref
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceInlineUniformBlockPropertiesEXT"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x28), 0x0);
   
   
@@ -52451,7 +50685,6 @@ class VkWriteDescriptorSetInlineUniformBlockEXT {
 };
 
 VkWriteDescriptorSetInlineUniformBlockEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkWriteDescriptorSetInlineUniformBlockEXT"`);
   
   
   if (this._pNext !== null) {
@@ -52462,11 +50695,6 @@ VkWriteDescriptorSetInlineUniformBlockEXT.prototype.flush = function flush() {
 };
 
 VkWriteDescriptorSetInlineUniformBlockEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkWriteDescriptorSetInlineUniformBlockEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -52551,7 +50779,6 @@ class VkDescriptorPoolInlineUniformBlockCreateInfoEXT {
 };
 
 VkDescriptorPoolInlineUniformBlockCreateInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDescriptorPoolInlineUniformBlockCreateInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -52562,11 +50789,6 @@ VkDescriptorPoolInlineUniformBlockCreateInfoEXT.prototype.flush = function flush
 };
 
 VkDescriptorPoolInlineUniformBlockCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDescriptorPoolInlineUniformBlockCreateInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -52693,7 +50915,6 @@ class VkPipelineCoverageModulationStateCreateInfoNV {
 };
 
 VkPipelineCoverageModulationStateCreateInfoNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineCoverageModulationStateCreateInfoNV"`);
   
   
   if (this._pNext !== null) {
@@ -52704,11 +50925,6 @@ VkPipelineCoverageModulationStateCreateInfoNV.prototype.flush = function flush()
 };
 
 VkPipelineCoverageModulationStateCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineCoverageModulationStateCreateInfoNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -52821,7 +51037,6 @@ class VkImageFormatListCreateInfoKHR {
 };
 
 VkImageFormatListCreateInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageFormatListCreateInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -52832,11 +51047,6 @@ VkImageFormatListCreateInfoKHR.prototype.flush = function flush() {
 };
 
 VkImageFormatListCreateInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageFormatListCreateInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -52946,7 +51156,6 @@ class VkValidationCacheCreateInfoEXT {
 };
 
 VkValidationCacheCreateInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkValidationCacheCreateInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -52957,11 +51166,6 @@ VkValidationCacheCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkValidationCacheCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkValidationCacheCreateInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -53055,7 +51259,6 @@ class VkShaderModuleValidationCacheCreateInfoEXT {
 };
 
 VkShaderModuleValidationCacheCreateInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkShaderModuleValidationCacheCreateInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -53066,11 +51269,6 @@ VkShaderModuleValidationCacheCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkShaderModuleValidationCacheCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkShaderModuleValidationCacheCreateInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -53150,7 +51348,6 @@ class VkPhysicalDeviceMaintenance3Properties {
 };
 
 VkPhysicalDeviceMaintenance3Properties.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceMaintenance3Properties"`);
   
   
   if (this._pNext !== null) {
@@ -53165,7 +51362,6 @@ VkPhysicalDeviceMaintenance3Properties.prototype.reflect = function reflect(memo
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceMaintenance3Properties"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x20), 0x0);
   
   
@@ -53249,7 +51445,6 @@ class VkPhysicalDeviceMaintenance3PropertiesKHR {
 };
 
 VkPhysicalDeviceMaintenance3PropertiesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceMaintenance3PropertiesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -53264,7 +51459,6 @@ VkPhysicalDeviceMaintenance3PropertiesKHR.prototype.reflect = function reflect(m
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceMaintenance3PropertiesKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x20), 0x0);
   
   
@@ -53359,7 +51553,6 @@ class VkDescriptorSetLayoutSupport {
 };
 
 VkDescriptorSetLayoutSupport.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDescriptorSetLayoutSupport"`);
   
   
   if (this._pNext !== null) {
@@ -53374,7 +51567,6 @@ VkDescriptorSetLayoutSupport.prototype.reflect = function reflect(memoryAddress)
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDescriptorSetLayoutSupport"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -53465,7 +51657,6 @@ class VkDescriptorSetLayoutSupportKHR {
 };
 
 VkDescriptorSetLayoutSupportKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDescriptorSetLayoutSupportKHR"`);
   
   
   if (this._pNext !== null) {
@@ -53480,7 +51671,6 @@ VkDescriptorSetLayoutSupportKHR.prototype.reflect = function reflect(memoryAddre
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDescriptorSetLayoutSupportKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -53558,7 +51748,6 @@ class VkPhysicalDeviceShaderDrawParameterFeatures {
 };
 
 VkPhysicalDeviceShaderDrawParameterFeatures.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceShaderDrawParameterFeatures"`);
   
   
   if (this._pNext !== null) {
@@ -53569,11 +51758,6 @@ VkPhysicalDeviceShaderDrawParameterFeatures.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceShaderDrawParameterFeatures.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceShaderDrawParameterFeatures"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -53659,7 +51843,6 @@ class VkPhysicalDeviceFloat16Int8FeaturesKHR {
 };
 
 VkPhysicalDeviceFloat16Int8FeaturesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceFloat16Int8FeaturesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -53670,11 +51853,6 @@ VkPhysicalDeviceFloat16Int8FeaturesKHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceFloat16Int8FeaturesKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceFloat16Int8FeaturesKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -53816,7 +51994,6 @@ class VkPhysicalDeviceFloatControlsPropertiesKHR {
 };
 
 VkPhysicalDeviceFloatControlsPropertiesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceFloatControlsPropertiesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -53831,7 +52008,6 @@ VkPhysicalDeviceFloatControlsPropertiesKHR.prototype.reflect = function reflect(
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceFloatControlsPropertiesKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x58), 0x0);
   
   
@@ -53964,7 +52140,6 @@ class VkShaderResourceUsageAMD {
 };
 
 VkShaderResourceUsageAMD.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkShaderResourceUsageAMD"`);
   
   return true;
 };
@@ -53974,7 +52149,6 @@ VkShaderResourceUsageAMD.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkShaderResourceUsageAMD"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x20), 0x0);
 };
 
@@ -54061,7 +52235,6 @@ class VkShaderStatisticsInfoAMD {
 };
 
 VkShaderStatisticsInfoAMD.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkShaderStatisticsInfoAMD"`);
   
   return true;
 };
@@ -54071,7 +52244,6 @@ VkShaderStatisticsInfoAMD.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkShaderStatisticsInfoAMD"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x48), 0x0);
   
   
@@ -54168,7 +52340,6 @@ class VkDeviceQueueGlobalPriorityCreateInfoEXT {
 };
 
 VkDeviceQueueGlobalPriorityCreateInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDeviceQueueGlobalPriorityCreateInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -54179,11 +52350,6 @@ VkDeviceQueueGlobalPriorityCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkDeviceQueueGlobalPriorityCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDeviceQueueGlobalPriorityCreateInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -54296,7 +52462,6 @@ class VkDebugUtilsObjectNameInfoEXT {
 };
 
 VkDebugUtilsObjectNameInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDebugUtilsObjectNameInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -54307,11 +52472,6 @@ VkDebugUtilsObjectNameInfoEXT.prototype.flush = function flush() {
 };
 
 VkDebugUtilsObjectNameInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDebugUtilsObjectNameInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -54449,7 +52609,6 @@ class VkDebugUtilsObjectTagInfoEXT {
 };
 
 VkDebugUtilsObjectTagInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDebugUtilsObjectTagInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -54460,11 +52619,6 @@ VkDebugUtilsObjectTagInfoEXT.prototype.flush = function flush() {
 };
 
 VkDebugUtilsObjectTagInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x38));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDebugUtilsObjectTagInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -54585,7 +52739,6 @@ class VkDebugUtilsLabelEXT {
 };
 
 VkDebugUtilsLabelEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDebugUtilsLabelEXT"`);
   
   
   if (this._pNext !== null) {
@@ -54618,11 +52771,6 @@ VkDebugUtilsLabelEXT.prototype.flush = function flush() {
 };
 
 VkDebugUtilsLabelEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDebugUtilsLabelEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -54745,7 +52893,6 @@ class VkDebugUtilsMessengerCreateInfoEXT {
 };
 
 VkDebugUtilsMessengerCreateInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDebugUtilsMessengerCreateInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -54756,11 +52903,6 @@ VkDebugUtilsMessengerCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkDebugUtilsMessengerCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x30));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDebugUtilsMessengerCreateInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -54984,7 +53126,6 @@ class VkDebugUtilsMessengerCallbackDataEXT {
 };
 
 VkDebugUtilsMessengerCallbackDataEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDebugUtilsMessengerCallbackDataEXT"`);
   
   
   if (this._pNext !== null) {
@@ -55055,11 +53196,6 @@ VkDebugUtilsMessengerCallbackDataEXT.prototype.flush = function flush() {
 };
 
 VkDebugUtilsMessengerCallbackDataEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x60));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDebugUtilsMessengerCallbackDataEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -55196,7 +53332,6 @@ class VkImportMemoryHostPointerInfoEXT {
 };
 
 VkImportMemoryHostPointerInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImportMemoryHostPointerInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -55207,11 +53342,6 @@ VkImportMemoryHostPointerInfoEXT.prototype.flush = function flush() {
 };
 
 VkImportMemoryHostPointerInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImportMemoryHostPointerInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -55289,7 +53419,6 @@ class VkMemoryHostPointerPropertiesEXT {
 };
 
 VkMemoryHostPointerPropertiesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkMemoryHostPointerPropertiesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -55304,7 +53433,6 @@ VkMemoryHostPointerPropertiesEXT.prototype.reflect = function reflect(memoryAddr
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkMemoryHostPointerPropertiesEXT"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -55378,7 +53506,6 @@ class VkPhysicalDeviceExternalMemoryHostPropertiesEXT {
 };
 
 VkPhysicalDeviceExternalMemoryHostPropertiesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceExternalMemoryHostPropertiesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -55393,7 +53520,6 @@ VkPhysicalDeviceExternalMemoryHostPropertiesEXT.prototype.reflect = function ref
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceExternalMemoryHostPropertiesEXT"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -55501,7 +53627,6 @@ class VkPhysicalDeviceConservativeRasterizationPropertiesEXT {
 };
 
 VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceConservativeRasterizationPropertiesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -55516,7 +53641,6 @@ VkPhysicalDeviceConservativeRasterizationPropertiesEXT.prototype.reflect = funct
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceConservativeRasterizationPropertiesEXT"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x38), 0x0);
   
   
@@ -55627,7 +53751,6 @@ class VkCalibratedTimestampInfoEXT {
 };
 
 VkCalibratedTimestampInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkCalibratedTimestampInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -55638,11 +53761,6 @@ VkCalibratedTimestampInfoEXT.prototype.flush = function flush() {
 };
 
 VkCalibratedTimestampInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkCalibratedTimestampInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -55768,7 +53886,6 @@ class VkPhysicalDeviceShaderCorePropertiesAMD {
 };
 
 VkPhysicalDeviceShaderCorePropertiesAMD.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceShaderCorePropertiesAMD"`);
   
   
   if (this._pNext !== null) {
@@ -55783,7 +53900,6 @@ VkPhysicalDeviceShaderCorePropertiesAMD.prototype.reflect = function reflect(mem
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceShaderCorePropertiesAMD"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x48), 0x0);
   
   
@@ -55938,7 +54054,6 @@ class VkPipelineRasterizationConservativeStateCreateInfoEXT {
 };
 
 VkPipelineRasterizationConservativeStateCreateInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineRasterizationConservativeStateCreateInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -55949,11 +54064,6 @@ VkPipelineRasterizationConservativeStateCreateInfoEXT.prototype.flush = function
 };
 
 VkPipelineRasterizationConservativeStateCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineRasterizationConservativeStateCreateInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -56191,7 +54301,6 @@ class VkPhysicalDeviceDescriptorIndexingFeaturesEXT {
 };
 
 VkPhysicalDeviceDescriptorIndexingFeaturesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceDescriptorIndexingFeaturesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -56202,11 +54311,6 @@ VkPhysicalDeviceDescriptorIndexingFeaturesEXT.prototype.flush = function flush()
 };
 
 VkPhysicalDeviceDescriptorIndexingFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x60));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceDescriptorIndexingFeaturesEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -56444,7 +54548,6 @@ class VkPhysicalDeviceDescriptorIndexingPropertiesEXT {
 };
 
 VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceDescriptorIndexingPropertiesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -56459,7 +54562,6 @@ VkPhysicalDeviceDescriptorIndexingPropertiesEXT.prototype.reflect = function ref
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceDescriptorIndexingPropertiesEXT"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x70), 0x0);
   
   
@@ -56644,7 +54746,6 @@ class VkDescriptorSetLayoutBindingFlagsCreateInfoEXT {
 };
 
 VkDescriptorSetLayoutBindingFlagsCreateInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDescriptorSetLayoutBindingFlagsCreateInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -56655,11 +54756,6 @@ VkDescriptorSetLayoutBindingFlagsCreateInfoEXT.prototype.flush = function flush(
 };
 
 VkDescriptorSetLayoutBindingFlagsCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDescriptorSetLayoutBindingFlagsCreateInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -56760,7 +54856,6 @@ class VkDescriptorSetVariableDescriptorCountAllocateInfoEXT {
 };
 
 VkDescriptorSetVariableDescriptorCountAllocateInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDescriptorSetVariableDescriptorCountAllocateInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -56771,11 +54866,6 @@ VkDescriptorSetVariableDescriptorCountAllocateInfoEXT.prototype.flush = function
 };
 
 VkDescriptorSetVariableDescriptorCountAllocateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDescriptorSetVariableDescriptorCountAllocateInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -56853,7 +54943,6 @@ class VkDescriptorSetVariableDescriptorCountLayoutSupportEXT {
 };
 
 VkDescriptorSetVariableDescriptorCountLayoutSupportEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDescriptorSetVariableDescriptorCountLayoutSupportEXT"`);
   
   
   if (this._pNext !== null) {
@@ -56868,7 +54957,6 @@ VkDescriptorSetVariableDescriptorCountLayoutSupportEXT.prototype.reflect = funct
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDescriptorSetVariableDescriptorCountLayoutSupportEXT"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -57035,7 +55123,6 @@ class VkAttachmentDescription2KHR {
 };
 
 VkAttachmentDescription2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkAttachmentDescription2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -57046,11 +55133,6 @@ VkAttachmentDescription2KHR.prototype.flush = function flush() {
 };
 
 VkAttachmentDescription2KHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x38));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkAttachmentDescription2KHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -57185,7 +55267,6 @@ class VkAttachmentReference2KHR {
 };
 
 VkAttachmentReference2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkAttachmentReference2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -57196,11 +55277,6 @@ VkAttachmentReference2KHR.prototype.flush = function flush() {
 };
 
 VkAttachmentReference2KHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkAttachmentReference2KHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -57440,7 +55516,6 @@ class VkSubpassDescription2KHR {
 };
 
 VkSubpassDescription2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSubpassDescription2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -57511,11 +55586,6 @@ VkSubpassDescription2KHR.prototype.flush = function flush() {
 };
 
 VkSubpassDescription2KHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x58));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSubpassDescription2KHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -57719,7 +55789,6 @@ class VkSubpassDependency2KHR {
 };
 
 VkSubpassDependency2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSubpassDependency2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -57730,11 +55799,6 @@ VkSubpassDependency2KHR.prototype.flush = function flush() {
 };
 
 VkSubpassDependency2KHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x30));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSubpassDependency2KHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -57948,7 +56012,6 @@ class VkRenderPassCreateInfo2KHR {
 };
 
 VkRenderPassCreateInfo2KHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkRenderPassCreateInfo2KHR"`);
   
   
   if (this._pNext !== null) {
@@ -58019,11 +56082,6 @@ VkRenderPassCreateInfo2KHR.prototype.flush = function flush() {
 };
 
 VkRenderPassCreateInfo2KHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x50));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkRenderPassCreateInfo2KHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -58140,7 +56198,6 @@ class VkSubpassBeginInfoKHR {
 };
 
 VkSubpassBeginInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSubpassBeginInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -58151,11 +56208,6 @@ VkSubpassBeginInfoKHR.prototype.flush = function flush() {
 };
 
 VkSubpassBeginInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSubpassBeginInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -58223,7 +56275,6 @@ class VkSubpassEndInfoKHR {
 };
 
 VkSubpassEndInfoKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSubpassEndInfoKHR"`);
   
   
   if (this._pNext !== null) {
@@ -58234,11 +56285,6 @@ VkSubpassEndInfoKHR.prototype.flush = function flush() {
 };
 
 VkSubpassEndInfoKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x10));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSubpassEndInfoKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -58303,17 +56349,11 @@ class VkVertexInputBindingDivisorDescriptionEXT {
 };
 
 VkVertexInputBindingDivisorDescriptionEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkVertexInputBindingDivisorDescriptionEXT"`);
   
   return true;
 };
 
 VkVertexInputBindingDivisorDescriptionEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x8));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkVertexInputBindingDivisorDescriptionEXT"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -58403,7 +56443,6 @@ class VkPipelineVertexInputDivisorStateCreateInfoEXT {
 };
 
 VkPipelineVertexInputDivisorStateCreateInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineVertexInputDivisorStateCreateInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -58434,11 +56473,6 @@ VkPipelineVertexInputDivisorStateCreateInfoEXT.prototype.flush = function flush(
 };
 
 VkPipelineVertexInputDivisorStateCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineVertexInputDivisorStateCreateInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -58518,7 +56552,6 @@ class VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT {
 };
 
 VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -58533,7 +56566,6 @@ VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT.prototype.reflect = function
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -58619,7 +56651,6 @@ class VkPhysicalDevicePCIBusInfoPropertiesEXT {
 };
 
 VkPhysicalDevicePCIBusInfoPropertiesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDevicePCIBusInfoPropertiesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -58634,7 +56665,6 @@ VkPhysicalDevicePCIBusInfoPropertiesEXT.prototype.reflect = function reflect(mem
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDevicePCIBusInfoPropertiesEXT"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x20), 0x0);
   
   
@@ -58724,7 +56754,6 @@ class VkCommandBufferInheritanceConditionalRenderingInfoEXT {
 };
 
 VkCommandBufferInheritanceConditionalRenderingInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkCommandBufferInheritanceConditionalRenderingInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -58735,11 +56764,6 @@ VkCommandBufferInheritanceConditionalRenderingInfoEXT.prototype.flush = function
 };
 
 VkCommandBufferInheritanceConditionalRenderingInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkCommandBufferInheritanceConditionalRenderingInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -58833,7 +56857,6 @@ class VkPhysicalDevice8BitStorageFeaturesKHR {
 };
 
 VkPhysicalDevice8BitStorageFeaturesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDevice8BitStorageFeaturesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -58844,11 +56867,6 @@ VkPhysicalDevice8BitStorageFeaturesKHR.prototype.flush = function flush() {
 };
 
 VkPhysicalDevice8BitStorageFeaturesKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDevice8BitStorageFeaturesKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -58942,7 +56960,6 @@ class VkPhysicalDeviceConditionalRenderingFeaturesEXT {
 };
 
 VkPhysicalDeviceConditionalRenderingFeaturesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceConditionalRenderingFeaturesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -58953,11 +56970,6 @@ VkPhysicalDeviceConditionalRenderingFeaturesEXT.prototype.flush = function flush
 };
 
 VkPhysicalDeviceConditionalRenderingFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceConditionalRenderingFeaturesEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -59055,7 +57067,6 @@ class VkPhysicalDeviceVulkanMemoryModelFeaturesKHR {
 };
 
 VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceVulkanMemoryModelFeaturesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -59066,11 +57077,6 @@ VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.prototype.flush = function flush() 
 };
 
 VkPhysicalDeviceVulkanMemoryModelFeaturesKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceVulkanMemoryModelFeaturesKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -59164,7 +57170,6 @@ class VkPhysicalDeviceShaderAtomicInt64FeaturesKHR {
 };
 
 VkPhysicalDeviceShaderAtomicInt64FeaturesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceShaderAtomicInt64FeaturesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -59175,11 +57180,6 @@ VkPhysicalDeviceShaderAtomicInt64FeaturesKHR.prototype.flush = function flush() 
 };
 
 VkPhysicalDeviceShaderAtomicInt64FeaturesKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceShaderAtomicInt64FeaturesKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -59269,7 +57269,6 @@ class VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT {
 };
 
 VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -59280,11 +57279,6 @@ VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.prototype.flush = function flu
 };
 
 VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -59360,7 +57354,6 @@ class VkQueueFamilyCheckpointPropertiesNV {
 };
 
 VkQueueFamilyCheckpointPropertiesNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkQueueFamilyCheckpointPropertiesNV"`);
   
   
   if (this._pNext !== null) {
@@ -59375,7 +57368,6 @@ VkQueueFamilyCheckpointPropertiesNV.prototype.reflect = function reflect(memoryA
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkQueueFamilyCheckpointPropertiesNV"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -59463,7 +57455,6 @@ class VkCheckpointDataNV {
 };
 
 VkCheckpointDataNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkCheckpointDataNV"`);
   
   
   if (this._pNext !== null) {
@@ -59478,7 +57469,6 @@ VkCheckpointDataNV.prototype.reflect = function reflect(memoryAddress) {
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkCheckpointDataNV"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x20), 0x0);
   
   
@@ -59568,7 +57558,6 @@ class VkPhysicalDeviceDepthStencilResolvePropertiesKHR {
 };
 
 VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceDepthStencilResolvePropertiesKHR"`);
   
   
   if (this._pNext !== null) {
@@ -59583,7 +57572,6 @@ VkPhysicalDeviceDepthStencilResolvePropertiesKHR.prototype.reflect = function re
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceDepthStencilResolvePropertiesKHR"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x20), 0x0);
   
   
@@ -59703,7 +57691,6 @@ class VkSubpassDescriptionDepthStencilResolveKHR {
 };
 
 VkSubpassDescriptionDepthStencilResolveKHR.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkSubpassDescriptionDepthStencilResolveKHR"`);
   
   
   if (this._pNext !== null) {
@@ -59714,11 +57701,6 @@ VkSubpassDescriptionDepthStencilResolveKHR.prototype.flush = function flush() {
 };
 
 VkSubpassDescriptionDepthStencilResolveKHR.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkSubpassDescriptionDepthStencilResolveKHR"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -59805,7 +57787,6 @@ class VkImageViewASTCDecodeModeEXT {
 };
 
 VkImageViewASTCDecodeModeEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageViewASTCDecodeModeEXT"`);
   
   
   if (this._pNext !== null) {
@@ -59816,11 +57797,6 @@ VkImageViewASTCDecodeModeEXT.prototype.flush = function flush() {
 };
 
 VkImageViewASTCDecodeModeEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageViewASTCDecodeModeEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -59898,7 +57874,6 @@ class VkPhysicalDeviceASTCDecodeFeaturesEXT {
 };
 
 VkPhysicalDeviceASTCDecodeFeaturesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceASTCDecodeFeaturesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -59909,11 +57884,6 @@ VkPhysicalDeviceASTCDecodeFeaturesEXT.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceASTCDecodeFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceASTCDecodeFeaturesEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -59999,7 +57969,6 @@ class VkPhysicalDeviceTransformFeedbackFeaturesEXT {
 };
 
 VkPhysicalDeviceTransformFeedbackFeaturesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceTransformFeedbackFeaturesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -60010,11 +57979,6 @@ VkPhysicalDeviceTransformFeedbackFeaturesEXT.prototype.flush = function flush() 
 };
 
 VkPhysicalDeviceTransformFeedbackFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceTransformFeedbackFeaturesEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -60130,7 +58094,6 @@ class VkPhysicalDeviceTransformFeedbackPropertiesEXT {
 };
 
 VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceTransformFeedbackPropertiesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -60145,7 +58108,6 @@ VkPhysicalDeviceTransformFeedbackPropertiesEXT.prototype.reflect = function refl
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceTransformFeedbackPropertiesEXT"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x40), 0x0);
   
   
@@ -60273,7 +58235,6 @@ class VkPipelineRasterizationStateStreamCreateInfoEXT {
 };
 
 VkPipelineRasterizationStateStreamCreateInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineRasterizationStateStreamCreateInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -60284,11 +58245,6 @@ VkPipelineRasterizationStateStreamCreateInfoEXT.prototype.flush = function flush
 };
 
 VkPipelineRasterizationStateStreamCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineRasterizationStateStreamCreateInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -60370,7 +58326,6 @@ class VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV {
 };
 
 VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV"`);
   
   
   if (this._pNext !== null) {
@@ -60381,11 +58336,6 @@ VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.prototype.flush = function 
 };
 
 VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -60463,7 +58413,6 @@ class VkPipelineRepresentativeFragmentTestStateCreateInfoNV {
 };
 
 VkPipelineRepresentativeFragmentTestStateCreateInfoNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineRepresentativeFragmentTestStateCreateInfoNV"`);
   
   
   if (this._pNext !== null) {
@@ -60474,11 +58423,6 @@ VkPipelineRepresentativeFragmentTestStateCreateInfoNV.prototype.flush = function
 };
 
 VkPipelineRepresentativeFragmentTestStateCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineRepresentativeFragmentTestStateCreateInfoNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -60556,7 +58500,6 @@ class VkPhysicalDeviceExclusiveScissorFeaturesNV {
 };
 
 VkPhysicalDeviceExclusiveScissorFeaturesNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceExclusiveScissorFeaturesNV"`);
   
   
   if (this._pNext !== null) {
@@ -60567,11 +58510,6 @@ VkPhysicalDeviceExclusiveScissorFeaturesNV.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceExclusiveScissorFeaturesNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceExclusiveScissorFeaturesNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -60667,7 +58605,6 @@ class VkPipelineViewportExclusiveScissorStateCreateInfoNV {
 };
 
 VkPipelineViewportExclusiveScissorStateCreateInfoNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineViewportExclusiveScissorStateCreateInfoNV"`);
   
   
   if (this._pNext !== null) {
@@ -60698,11 +58635,6 @@ VkPipelineViewportExclusiveScissorStateCreateInfoNV.prototype.flush = function f
 };
 
 VkPipelineViewportExclusiveScissorStateCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineViewportExclusiveScissorStateCreateInfoNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -60786,7 +58718,6 @@ class VkPhysicalDeviceCornerSampledImageFeaturesNV {
 };
 
 VkPhysicalDeviceCornerSampledImageFeaturesNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceCornerSampledImageFeaturesNV"`);
   
   
   if (this._pNext !== null) {
@@ -60797,11 +58728,6 @@ VkPhysicalDeviceCornerSampledImageFeaturesNV.prototype.flush = function flush() 
 };
 
 VkPhysicalDeviceCornerSampledImageFeaturesNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceCornerSampledImageFeaturesNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -60887,7 +58813,6 @@ class VkPhysicalDeviceComputeShaderDerivativesFeaturesNV {
 };
 
 VkPhysicalDeviceComputeShaderDerivativesFeaturesNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceComputeShaderDerivativesFeaturesNV"`);
   
   
   if (this._pNext !== null) {
@@ -60898,11 +58823,6 @@ VkPhysicalDeviceComputeShaderDerivativesFeaturesNV.prototype.flush = function fl
 };
 
 VkPhysicalDeviceComputeShaderDerivativesFeaturesNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceComputeShaderDerivativesFeaturesNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -60984,7 +58904,6 @@ class VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV {
 };
 
 VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV"`);
   
   
   if (this._pNext !== null) {
@@ -60995,11 +58914,6 @@ VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV.prototype.flush = function f
 };
 
 VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -61077,7 +58991,6 @@ class VkPhysicalDeviceShaderImageFootprintFeaturesNV {
 };
 
 VkPhysicalDeviceShaderImageFootprintFeaturesNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceShaderImageFootprintFeaturesNV"`);
   
   
   if (this._pNext !== null) {
@@ -61088,11 +59001,6 @@ VkPhysicalDeviceShaderImageFootprintFeaturesNV.prototype.flush = function flush(
 };
 
 VkPhysicalDeviceShaderImageFootprintFeaturesNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceShaderImageFootprintFeaturesNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -61170,7 +59078,6 @@ class VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV {
 };
 
 VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV"`);
   
   
   if (this._pNext !== null) {
@@ -61181,11 +59088,6 @@ VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.prototype.flush = fun
 };
 
 VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -61261,17 +59163,11 @@ class VkShadingRatePaletteNV {
 };
 
 VkShadingRatePaletteNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkShadingRatePaletteNV"`);
   
   return true;
 };
 
 VkShadingRatePaletteNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x10));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkShadingRatePaletteNV"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -61369,7 +59265,6 @@ class VkPipelineViewportShadingRateImageStateCreateInfoNV {
 };
 
 VkPipelineViewportShadingRateImageStateCreateInfoNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineViewportShadingRateImageStateCreateInfoNV"`);
   
   
   if (this._pNext !== null) {
@@ -61400,11 +59295,6 @@ VkPipelineViewportShadingRateImageStateCreateInfoNV.prototype.flush = function f
 };
 
 VkPipelineViewportShadingRateImageStateCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineViewportShadingRateImageStateCreateInfoNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -61500,7 +59390,6 @@ class VkPhysicalDeviceShadingRateImageFeaturesNV {
 };
 
 VkPhysicalDeviceShadingRateImageFeaturesNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceShadingRateImageFeaturesNV"`);
   
   
   if (this._pNext !== null) {
@@ -61511,11 +59400,6 @@ VkPhysicalDeviceShadingRateImageFeaturesNV.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceShadingRateImageFeaturesNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceShadingRateImageFeaturesNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -61601,7 +59485,6 @@ class VkPhysicalDeviceShadingRateImagePropertiesNV {
 };
 
 VkPhysicalDeviceShadingRateImagePropertiesNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceShadingRateImagePropertiesNV"`);
   
   
   if (this._pNext !== null) {
@@ -61616,7 +59499,6 @@ VkPhysicalDeviceShadingRateImagePropertiesNV.prototype.reflect = function reflec
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceShadingRateImagePropertiesNV"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x20), 0x0);
   
   
@@ -61706,17 +59588,11 @@ class VkCoarseSampleLocationNV {
 };
 
 VkCoarseSampleLocationNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkCoarseSampleLocationNV"`);
   
   return true;
 };
 
 VkCoarseSampleLocationNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0xC));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkCoarseSampleLocationNV"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -61811,7 +59687,6 @@ class VkCoarseSampleOrderCustomNV {
 };
 
 VkCoarseSampleOrderCustomNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkCoarseSampleOrderCustomNV"`);
   
   
   if (this._pSampleLocations !== null) {
@@ -61837,11 +59712,6 @@ VkCoarseSampleOrderCustomNV.prototype.flush = function flush() {
 };
 
 VkCoarseSampleOrderCustomNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkCoarseSampleOrderCustomNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -61952,7 +59822,6 @@ class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV {
 };
 
 VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineViewportCoarseSampleOrderStateCreateInfoNV"`);
   
   
   if (this._pNext !== null) {
@@ -61983,11 +59852,6 @@ VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.prototype.flush = function 
 };
 
 VkPipelineViewportCoarseSampleOrderStateCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineViewportCoarseSampleOrderStateCreateInfoNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -62083,7 +59947,6 @@ class VkPhysicalDeviceMeshShaderFeaturesNV {
 };
 
 VkPhysicalDeviceMeshShaderFeaturesNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceMeshShaderFeaturesNV"`);
   
   
   if (this._pNext !== null) {
@@ -62094,11 +59957,6 @@ VkPhysicalDeviceMeshShaderFeaturesNV.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceMeshShaderFeaturesNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceMeshShaderFeaturesNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -62232,7 +60090,6 @@ class VkPhysicalDeviceMeshShaderPropertiesNV {
 };
 
 VkPhysicalDeviceMeshShaderPropertiesNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceMeshShaderPropertiesNV"`);
   
   
   if (this._pNext !== null) {
@@ -62247,7 +60104,6 @@ VkPhysicalDeviceMeshShaderPropertiesNV.prototype.reflect = function reflect(memo
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceMeshShaderPropertiesNV"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x58), 0x0);
   
   
@@ -62368,17 +60224,11 @@ class VkDrawMeshTasksIndirectCommandNV {
 };
 
 VkDrawMeshTasksIndirectCommandNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDrawMeshTasksIndirectCommandNV"`);
   
   return true;
 };
 
 VkDrawMeshTasksIndirectCommandNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x8));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDrawMeshTasksIndirectCommandNV"`, this.memoryAddress, memoryAddress);
   
 };
 
@@ -62497,7 +60347,6 @@ class VkRayTracingShaderGroupCreateInfoNV {
 };
 
 VkRayTracingShaderGroupCreateInfoNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkRayTracingShaderGroupCreateInfoNV"`);
   
   
   if (this._pNext !== null) {
@@ -62508,11 +60357,6 @@ VkRayTracingShaderGroupCreateInfoNV.prototype.flush = function flush() {
 };
 
 VkRayTracingShaderGroupCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkRayTracingShaderGroupCreateInfoNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -62719,7 +60563,6 @@ class VkRayTracingPipelineCreateInfoNV {
 };
 
 VkRayTracingPipelineCreateInfoNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkRayTracingPipelineCreateInfoNV"`);
   
   
   if (this._pNext !== null) {
@@ -62770,11 +60613,6 @@ VkRayTracingPipelineCreateInfoNV.prototype.flush = function flush() {
 };
 
 VkRayTracingPipelineCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x50));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkRayTracingPipelineCreateInfoNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -63024,7 +60862,6 @@ class VkGeometryTrianglesNV {
 };
 
 VkGeometryTrianglesNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkGeometryTrianglesNV"`);
   
   
   if (this._pNext !== null) {
@@ -63035,11 +60872,6 @@ VkGeometryTrianglesNV.prototype.flush = function flush() {
 };
 
 VkGeometryTrianglesNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x60));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkGeometryTrianglesNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -63202,7 +61034,6 @@ class VkGeometryAABBNV {
 };
 
 VkGeometryAABBNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkGeometryAABBNV"`);
   
   
   if (this._pNext !== null) {
@@ -63213,11 +61044,6 @@ VkGeometryAABBNV.prototype.flush = function flush() {
 };
 
 VkGeometryAABBNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkGeometryAABBNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -63312,7 +61138,6 @@ class VkGeometryDataNV {
 };
 
 VkGeometryDataNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkGeometryDataNV"`);
   
   
   if (this._triangles !== null) {
@@ -63338,11 +61163,6 @@ VkGeometryDataNV.prototype.flush = function flush() {
 };
 
 VkGeometryDataNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x88));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkGeometryDataNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -63448,7 +61268,6 @@ class VkGeometryNV {
 };
 
 VkGeometryNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkGeometryNV"`);
   
   
   if (this._pNext !== null) {
@@ -63469,11 +61288,6 @@ VkGeometryNV.prototype.flush = function flush() {
 };
 
 VkGeometryNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0xA8));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkGeometryNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -63612,7 +61426,6 @@ class VkAccelerationStructureInfoNV {
 };
 
 VkAccelerationStructureInfoNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkAccelerationStructureInfoNV"`);
   
   
   if (this._pNext !== null) {
@@ -63643,11 +61456,6 @@ VkAccelerationStructureInfoNV.prototype.flush = function flush() {
 };
 
 VkAccelerationStructureInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkAccelerationStructureInfoNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -63764,7 +61572,6 @@ class VkAccelerationStructureCreateInfoNV {
 };
 
 VkAccelerationStructureCreateInfoNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkAccelerationStructureCreateInfoNV"`);
   
   
   if (this._pNext !== null) {
@@ -63785,11 +61592,6 @@ VkAccelerationStructureCreateInfoNV.prototype.flush = function flush() {
 };
 
 VkAccelerationStructureCreateInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x40));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkAccelerationStructureCreateInfoNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -63941,7 +61743,6 @@ class VkBindAccelerationStructureMemoryInfoNV {
 };
 
 VkBindAccelerationStructureMemoryInfoNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkBindAccelerationStructureMemoryInfoNV"`);
   
   
   if (this._pNext !== null) {
@@ -63952,11 +61753,6 @@ VkBindAccelerationStructureMemoryInfoNV.prototype.flush = function flush() {
 };
 
 VkBindAccelerationStructureMemoryInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x38));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkBindAccelerationStructureMemoryInfoNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -64068,7 +61864,6 @@ class VkWriteDescriptorSetAccelerationStructureNV {
 };
 
 VkWriteDescriptorSetAccelerationStructureNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkWriteDescriptorSetAccelerationStructureNV"`);
   
   
   if (this._pNext !== null) {
@@ -64099,11 +61894,6 @@ VkWriteDescriptorSetAccelerationStructureNV.prototype.flush = function flush() {
 };
 
 VkWriteDescriptorSetAccelerationStructureNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkWriteDescriptorSetAccelerationStructureNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -64206,7 +61996,6 @@ class VkAccelerationStructureMemoryRequirementsInfoNV {
 };
 
 VkAccelerationStructureMemoryRequirementsInfoNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkAccelerationStructureMemoryRequirementsInfoNV"`);
   
   
   if (this._pNext !== null) {
@@ -64217,11 +62006,6 @@ VkAccelerationStructureMemoryRequirementsInfoNV.prototype.flush = function flush
 };
 
 VkAccelerationStructureMemoryRequirementsInfoNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkAccelerationStructureMemoryRequirementsInfoNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -64329,7 +62113,6 @@ class VkPhysicalDeviceRayTracingPropertiesNV {
 };
 
 VkPhysicalDeviceRayTracingPropertiesNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceRayTracingPropertiesNV"`);
   
   
   if (this._pNext !== null) {
@@ -64344,7 +62127,6 @@ VkPhysicalDeviceRayTracingPropertiesNV.prototype.reflect = function reflect(memo
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceRayTracingPropertiesNV"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x40), 0x0);
   
   
@@ -64451,7 +62233,6 @@ class VkDrmFormatModifierPropertiesListEXT {
 };
 
 VkDrmFormatModifierPropertiesListEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDrmFormatModifierPropertiesListEXT"`);
   
   
   if (this._pNext !== null) {
@@ -64466,7 +62247,6 @@ VkDrmFormatModifierPropertiesListEXT.prototype.reflect = function reflect(memory
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDrmFormatModifierPropertiesListEXT"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x20), 0x0);
   
   
@@ -64535,7 +62315,6 @@ class VkDrmFormatModifierPropertiesEXT {
 };
 
 VkDrmFormatModifierPropertiesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDrmFormatModifierPropertiesEXT"`);
   
   return true;
 };
@@ -64545,7 +62324,6 @@ VkDrmFormatModifierPropertiesEXT.prototype.reflect = function reflect(memoryAddr
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDrmFormatModifierPropertiesEXT"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x10), 0x0);
 };
 
@@ -64664,7 +62442,6 @@ class VkPhysicalDeviceImageDrmFormatModifierInfoEXT {
 };
 
 VkPhysicalDeviceImageDrmFormatModifierInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceImageDrmFormatModifierInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -64675,11 +62452,6 @@ VkPhysicalDeviceImageDrmFormatModifierInfoEXT.prototype.flush = function flush()
 };
 
 VkPhysicalDeviceImageDrmFormatModifierInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceImageDrmFormatModifierInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -64788,7 +62560,6 @@ class VkImageDrmFormatModifierListCreateInfoEXT {
 };
 
 VkImageDrmFormatModifierListCreateInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageDrmFormatModifierListCreateInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -64799,11 +62570,6 @@ VkImageDrmFormatModifierListCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkImageDrmFormatModifierListCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageDrmFormatModifierListCreateInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -64916,7 +62682,6 @@ class VkImageDrmFormatModifierExplicitCreateInfoEXT {
 };
 
 VkImageDrmFormatModifierExplicitCreateInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageDrmFormatModifierExplicitCreateInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -64947,11 +62712,6 @@ VkImageDrmFormatModifierExplicitCreateInfoEXT.prototype.flush = function flush()
 };
 
 VkImageDrmFormatModifierExplicitCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x28));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageDrmFormatModifierExplicitCreateInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -65035,7 +62795,6 @@ class VkImageDrmFormatModifierPropertiesEXT {
 };
 
 VkImageDrmFormatModifierPropertiesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageDrmFormatModifierPropertiesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -65050,7 +62809,6 @@ VkImageDrmFormatModifierPropertiesEXT.prototype.reflect = function reflect(memor
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageDrmFormatModifierPropertiesEXT"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -65129,7 +62887,6 @@ class VkImageStencilUsageCreateInfoEXT {
 };
 
 VkImageStencilUsageCreateInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkImageStencilUsageCreateInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -65140,11 +62897,6 @@ VkImageStencilUsageCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkImageStencilUsageCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkImageStencilUsageCreateInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -65223,7 +62975,6 @@ class VkDeviceMemoryOverallocationCreateInfoAMD {
 };
 
 VkDeviceMemoryOverallocationCreateInfoAMD.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkDeviceMemoryOverallocationCreateInfoAMD"`);
   
   
   if (this._pNext !== null) {
@@ -65234,11 +62985,6 @@ VkDeviceMemoryOverallocationCreateInfoAMD.prototype.flush = function flush() {
 };
 
 VkDeviceMemoryOverallocationCreateInfoAMD.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkDeviceMemoryOverallocationCreateInfoAMD"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -65320,7 +63066,6 @@ class VkPhysicalDeviceFragmentDensityMapFeaturesEXT {
 };
 
 VkPhysicalDeviceFragmentDensityMapFeaturesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceFragmentDensityMapFeaturesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -65335,7 +63080,6 @@ VkPhysicalDeviceFragmentDensityMapFeaturesEXT.prototype.reflect = function refle
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceFragmentDensityMapFeaturesEXT"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x20), 0x0);
   
   
@@ -65425,7 +63169,6 @@ class VkPhysicalDeviceFragmentDensityMapPropertiesEXT {
 };
 
 VkPhysicalDeviceFragmentDensityMapPropertiesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceFragmentDensityMapPropertiesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -65440,7 +63183,6 @@ VkPhysicalDeviceFragmentDensityMapPropertiesEXT.prototype.reflect = function ref
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceFragmentDensityMapPropertiesEXT"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x28), 0x0);
   
   
@@ -65538,7 +63280,6 @@ class VkRenderPassFragmentDensityMapCreateInfoEXT {
 };
 
 VkRenderPassFragmentDensityMapCreateInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkRenderPassFragmentDensityMapCreateInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -65559,11 +63300,6 @@ VkRenderPassFragmentDensityMapCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkRenderPassFragmentDensityMapCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkRenderPassFragmentDensityMapCreateInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -65643,7 +63379,6 @@ class VkPhysicalDeviceScalarBlockLayoutFeaturesEXT {
 };
 
 VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceScalarBlockLayoutFeaturesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -65654,11 +63389,6 @@ VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.prototype.flush = function flush() 
 };
 
 VkPhysicalDeviceScalarBlockLayoutFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceScalarBlockLayoutFeaturesEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -65736,7 +63466,6 @@ class VkPhysicalDeviceDepthClipEnableFeaturesEXT {
 };
 
 VkPhysicalDeviceDepthClipEnableFeaturesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceDepthClipEnableFeaturesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -65747,11 +63476,6 @@ VkPhysicalDeviceDepthClipEnableFeaturesEXT.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceDepthClipEnableFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceDepthClipEnableFeaturesEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -65840,7 +63564,6 @@ class VkPipelineRasterizationDepthClipStateCreateInfoEXT {
 };
 
 VkPipelineRasterizationDepthClipStateCreateInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPipelineRasterizationDepthClipStateCreateInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -65851,11 +63574,6 @@ VkPipelineRasterizationDepthClipStateCreateInfoEXT.prototype.flush = function fl
 };
 
 VkPipelineRasterizationDepthClipStateCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPipelineRasterizationDepthClipStateCreateInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -65971,7 +63689,6 @@ class VkPhysicalDeviceMemoryBudgetPropertiesEXT {
 };
 
 VkPhysicalDeviceMemoryBudgetPropertiesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceMemoryBudgetPropertiesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -65986,7 +63703,6 @@ VkPhysicalDeviceMemoryBudgetPropertiesEXT.prototype.reflect = function reflect(m
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceMemoryBudgetPropertiesEXT"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x110), 0x0);
   
   
@@ -66072,7 +63788,6 @@ class VkPhysicalDeviceMemoryPriorityFeaturesEXT {
 };
 
 VkPhysicalDeviceMemoryPriorityFeaturesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceMemoryPriorityFeaturesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -66083,11 +63798,6 @@ VkPhysicalDeviceMemoryPriorityFeaturesEXT.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceMemoryPriorityFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceMemoryPriorityFeaturesEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -66168,7 +63878,6 @@ class VkMemoryPriorityAllocateInfoEXT {
 };
 
 VkMemoryPriorityAllocateInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkMemoryPriorityAllocateInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -66179,11 +63888,6 @@ VkMemoryPriorityAllocateInfoEXT.prototype.flush = function flush() {
 };
 
 VkMemoryPriorityAllocateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkMemoryPriorityAllocateInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -66277,7 +63981,6 @@ class VkPhysicalDeviceBufferAddressFeaturesEXT {
 };
 
 VkPhysicalDeviceBufferAddressFeaturesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceBufferAddressFeaturesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -66288,11 +63991,6 @@ VkPhysicalDeviceBufferAddressFeaturesEXT.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceBufferAddressFeaturesEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x20));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceBufferAddressFeaturesEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -66386,7 +64084,6 @@ class VkBufferDeviceAddressInfoEXT {
 };
 
 VkBufferDeviceAddressInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkBufferDeviceAddressInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -66397,11 +64094,6 @@ VkBufferDeviceAddressInfoEXT.prototype.flush = function flush() {
 };
 
 VkBufferDeviceAddressInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkBufferDeviceAddressInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -66482,7 +64174,6 @@ class VkBufferDeviceAddressCreateInfoEXT {
 };
 
 VkBufferDeviceAddressCreateInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkBufferDeviceAddressCreateInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -66493,11 +64184,6 @@ VkBufferDeviceAddressCreateInfoEXT.prototype.flush = function flush() {
 };
 
 VkBufferDeviceAddressCreateInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkBufferDeviceAddressCreateInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -66576,7 +64262,6 @@ class VkPhysicalDeviceImageViewImageFormatInfoEXT {
 };
 
 VkPhysicalDeviceImageViewImageFormatInfoEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceImageViewImageFormatInfoEXT"`);
   
   
   if (this._pNext !== null) {
@@ -66587,11 +64272,6 @@ VkPhysicalDeviceImageViewImageFormatInfoEXT.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceImageViewImageFormatInfoEXT.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceImageViewImageFormatInfoEXT"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -66669,7 +64349,6 @@ class VkFilterCubicImageViewImageFormatPropertiesEXT {
 };
 
 VkFilterCubicImageViewImageFormatPropertiesEXT.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkFilterCubicImageViewImageFormatPropertiesEXT"`);
   
   
   if (this._pNext !== null) {
@@ -66684,7 +64363,6 @@ VkFilterCubicImageViewImageFormatPropertiesEXT.prototype.reflect = function refl
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkFilterCubicImageViewImageFormatPropertiesEXT"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -66774,7 +64452,6 @@ class VkPhysicalDeviceCooperativeMatrixFeaturesNV {
 };
 
 VkPhysicalDeviceCooperativeMatrixFeaturesNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceCooperativeMatrixFeaturesNV"`);
   
   
   if (this._pNext !== null) {
@@ -66785,11 +64462,6 @@ VkPhysicalDeviceCooperativeMatrixFeaturesNV.prototype.flush = function flush() {
 };
 
 VkPhysicalDeviceCooperativeMatrixFeaturesNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x18));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceCooperativeMatrixFeaturesNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -66865,7 +64537,6 @@ class VkPhysicalDeviceCooperativeMatrixPropertiesNV {
 };
 
 VkPhysicalDeviceCooperativeMatrixPropertiesNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkPhysicalDeviceCooperativeMatrixPropertiesNV"`);
   
   
   if (this._pNext !== null) {
@@ -66880,7 +64551,6 @@ VkPhysicalDeviceCooperativeMatrixPropertiesNV.prototype.reflect = function refle
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkPhysicalDeviceCooperativeMatrixPropertiesNV"`, this.memoryAddress, memoryAddress);
   dstView.set(srcView.subarray(0x0, 0x18), 0x0);
   
   
@@ -67038,7 +64708,6 @@ class VkCooperativeMatrixPropertiesNV {
 };
 
 VkCooperativeMatrixPropertiesNV.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkCooperativeMatrixPropertiesNV"`);
   
   
   if (this._pNext !== null) {
@@ -67049,11 +64718,6 @@ VkCooperativeMatrixPropertiesNV.prototype.flush = function flush() {
 };
 
 VkCooperativeMatrixPropertiesNV.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x30));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkCooperativeMatrixPropertiesNV"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -67174,7 +64838,6 @@ class VkClearColorValue {
 };
 
 VkClearColorValue.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkClearColorValue"`);
   
   
   if (this._float32 !== null) {
@@ -67246,11 +64909,6 @@ VkClearColorValue.prototype.flush = function flush() {
 };
 
 VkClearColorValue.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x10));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkClearColorValue"`, this.memoryAddress, memoryAddress);
   
   
   
@@ -67337,7 +64995,6 @@ class VkClearValue {
 };
 
 VkClearValue.prototype.flush = function flush() {
-  //console.log(`Flushing: "VkClearValue"`);
   
   
   if (this._color !== null) {
@@ -67363,11 +65020,6 @@ VkClearValue.prototype.flush = function flush() {
 };
 
 VkClearValue.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt(0x10));
-  let dstBuffer = this.memoryBuffer;
-  let srcView = new Uint8Array(srcBuffer);
-  let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "VkClearValue"`, this.memoryAddress, memoryAddress);
   
   
   

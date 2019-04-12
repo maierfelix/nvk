@@ -43,7 +43,6 @@ class {{ struct.name }} {
 };
 
 {{ struct.name }}.prototype.flush = function flush() {
-  //console.log(`Flushing: "{{ struct.name }}"`);
   {% for member in struct.children -%}
   {%- if isIgnoreableType(member) != true -%}
   {%- if isFlushableMember(member) == true %}
@@ -57,12 +56,11 @@ class {{ struct.name }} {
 };
 
 {{ struct.name }}.prototype.reflect = function reflect(memoryAddress) {
+  {% if struct.returnedonly == true -%}
   let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt({{ getStructureByteLength() | safe }}));
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);
-  //console.log(`Reflect: "{{ struct.name }}"`, this.memoryAddress, memoryAddress);
-  {% if struct.returnedonly == true -%}
   dstView.set(srcView.subarray(0x0, {{ getStructureByteLength() | safe }}), 0x0);
   {%- endif -%}
   {% for member in struct.children -%}
