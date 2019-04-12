@@ -6616,7 +6616,7 @@ declare global {
     /**
      * is a floating-point value between `0` and `1`, indicating the priority of the allocation relative to other memory allocations. Larger values are higher priority. The granularity of the priorities is implementation-dependent.
      */
-    priority: number;
+    priority: bigint;
 
   }
 
@@ -6635,7 +6635,7 @@ declare global {
     /**
      * is a floating-point value between `0` and `1`, indicating the priority of the allocation relative to other memory allocations. Larger values are higher priority. The granularity of the priorities is implementation-dependent.
      */
-    priority?: number;
+    priority?: bigint;
   }
 
   interface VkMemoryPriorityAllocateInfoEXTConstructor {
@@ -13502,7 +13502,7 @@ declare global {
     /**
      * is the extra size in pixels to increase the generating primitive during conservative rasterization at each of its edges in `X` and `Y` equally in screen space beyond the base overestimation specified in 'VkPhysicalDeviceConservativeRasterizationPropertiesEXT'::'primitiveOverestimationSize'.
      */
-    extraPrimitiveOverestimationSize: number;
+    extraPrimitiveOverestimationSize: bigint;
 
   }
 
@@ -13531,7 +13531,7 @@ declare global {
     /**
      * is the extra size in pixels to increase the generating primitive during conservative rasterization at each of its edges in `X` and `Y` equally in screen space beyond the base overestimation specified in 'VkPhysicalDeviceConservativeRasterizationPropertiesEXT'::'primitiveOverestimationSize'.
      */
-    extraPrimitiveOverestimationSize?: number;
+    extraPrimitiveOverestimationSize?: bigint;
   }
 
   interface VkPipelineRasterizationConservativeStateCreateInfoEXTConstructor {
@@ -13834,17 +13834,17 @@ declare global {
     /**
      * is the size in pixels the generating primitive is increased at each of its edges during conservative rasterization overestimation mode. Even with a size of 0.0, conservative rasterization overestimation rules still apply and if any part of the pixel rectangle is covered by the generating primitive, fragments are generated for the entire pixel. However implementations 'may' make the pixel coverage area even more conservative by increasing the size of the generating primitive.
      */
-    readonly primitiveOverestimationSize: number;
+    readonly primitiveOverestimationSize: bigint;
 
     /**
      *
      */
-    readonly maxExtraPrimitiveOverestimationSize: number;
+    readonly maxExtraPrimitiveOverestimationSize: bigint;
 
     /**
      *
      */
-    readonly extraPrimitiveOverestimationSizeGranularity: number;
+    readonly extraPrimitiveOverestimationSizeGranularity: bigint;
 
     /**
      *
@@ -13893,17 +13893,17 @@ declare global {
     /**
      * is the size in pixels the generating primitive is increased at each of its edges during conservative rasterization overestimation mode. Even with a size of 0.0, conservative rasterization overestimation rules still apply and if any part of the pixel rectangle is covered by the generating primitive, fragments are generated for the entire pixel. However implementations 'may' make the pixel coverage area even more conservative by increasing the size of the generating primitive.
      */
-    readonly primitiveOverestimationSize?: number;
+    readonly primitiveOverestimationSize?: bigint;
 
     /**
      *
      */
-    readonly maxExtraPrimitiveOverestimationSize?: number;
+    readonly maxExtraPrimitiveOverestimationSize?: bigint;
 
     /**
      *
      */
-    readonly extraPrimitiveOverestimationSizeGranularity?: number;
+    readonly extraPrimitiveOverestimationSizeGranularity?: bigint;
 
     /**
      *
@@ -14527,7 +14527,7 @@ declare global {
     /**
      * bytes containing the data to be associated with the object.
      */
-    tagSize: number;
+    tagSize: bigint;
 
     /**
      *
@@ -14566,7 +14566,7 @@ declare global {
     /**
      * bytes containing the data to be associated with the object.
      */
-    tagSize?: number;
+    tagSize?: bigint;
 
     /**
      *
@@ -14873,12 +14873,12 @@ declare global {
     /**
      * is the LDS usage size in bytes per work group by this shader.
      */
-    readonly ldsUsageSizeInBytes: number;
+    readonly ldsUsageSizeInBytes: bigint;
 
     /**
      * is the scratch memory usage in bytes by this shader.
      */
-    readonly scratchMemUsageInBytes: number;
+    readonly scratchMemUsageInBytes: bigint;
 
   }
 
@@ -14902,12 +14902,12 @@ declare global {
     /**
      * is the LDS usage size in bytes per work group by this shader.
      */
-    readonly ldsUsageSizeInBytes?: number;
+    readonly ldsUsageSizeInBytes?: bigint;
 
     /**
      * is the scratch memory usage in bytes by this shader.
      */
-    readonly scratchMemUsageInBytes?: number;
+    readonly scratchMemUsageInBytes?: bigint;
   }
 
   interface VkShaderResourceUsageAMDConstructor {
@@ -15659,7 +15659,7 @@ declare global {
     /**
      *
      */
-    initialDataSize: number;
+    initialDataSize: bigint;
 
     /**
      * is a reference to previously retrieved validation cache data. If the validation cache data is incompatible (as defined below) with the device, the validation cache will be initially empty. If 'initialDataSize' is zero, 'pInitialData' is ignored.
@@ -15688,7 +15688,7 @@ declare global {
     /**
      *
      */
-    initialDataSize?: number;
+    initialDataSize?: bigint;
 
     /**
      * is a reference to previously retrieved validation cache data. If the validation cache data is incompatible (as defined below) with the device, the validation cache will be initially empty. If 'initialDataSize' is zero, 'pInitialData' is ignored.
@@ -17086,12 +17086,12 @@ declare global {
     /**
      * is the horizontal coordinate of the sample's location.
      */
-    x: number;
+    x: bigint;
 
     /**
      * is the vertical coordinate of the sample's location.
      */
-    y: number;
+    y: bigint;
 
   }
 
@@ -17100,12 +17100,12 @@ declare global {
     /**
      * is the horizontal coordinate of the sample's location.
      */
-    x?: number;
+    x?: bigint;
 
     /**
      * is the vertical coordinate of the sample's location.
      */
-    y?: number;
+    y?: bigint;
   }
 
   interface VkSampleLocationEXTConstructor {
@@ -21558,12 +21558,12 @@ declare global {
     /**
      *
      */
-    xcoeff: number;
+    xcoeff: bigint;
 
     /**
      * are the viewport's W scaling factor for x and y respectively.
      */
-    ycoeff: number;
+    ycoeff: bigint;
 
   }
 
@@ -21572,12 +21572,12 @@ declare global {
     /**
      *
      */
-    xcoeff?: number;
+    xcoeff?: bigint;
 
     /**
      * are the viewport's W scaling factor for x and y respectively.
      */
-    ycoeff?: number;
+    ycoeff?: bigint;
   }
 
   interface VkViewportWScalingNVConstructor {
@@ -21898,22 +21898,22 @@ declare global {
     /**
      * is the maximum luminance of the mastering display in nits
      */
-    maxLuminance: number;
+    maxLuminance: bigint;
 
     /**
      * is the minimum luminance of the mastering display in nits
      */
-    minLuminance: number;
+    minLuminance: bigint;
 
     /**
      * is content's maximum luminance in nits
      */
-    maxContentLightLevel: number;
+    maxContentLightLevel: bigint;
 
     /**
      * is the maximum frame average light level in nits
      */
-    maxFrameAverageLightLevel: number;
+    maxFrameAverageLightLevel: bigint;
 
   }
 
@@ -21952,22 +21952,22 @@ declare global {
     /**
      * is the maximum luminance of the mastering display in nits
      */
-    maxLuminance?: number;
+    maxLuminance?: bigint;
 
     /**
      * is the minimum luminance of the mastering display in nits
      */
-    minLuminance?: number;
+    minLuminance?: bigint;
 
     /**
      * is content's maximum luminance in nits
      */
-    maxContentLightLevel?: number;
+    maxContentLightLevel?: bigint;
 
     /**
      * is the maximum frame average light level in nits
      */
-    maxFrameAverageLightLevel?: number;
+    maxFrameAverageLightLevel?: bigint;
   }
 
   interface VkHdrMetadataEXTConstructor {
@@ -22002,12 +22002,12 @@ declare global {
     /**
      *
      */
-    x: number;
+    x: bigint;
 
     /**
      *
      */
-    y: number;
+    y: bigint;
 
   }
 
@@ -22016,12 +22016,12 @@ declare global {
     /**
      *
      */
-    x?: number;
+    x?: bigint;
 
     /**
      *
      */
-    y?: number;
+    y?: bigint;
   }
 
   interface VkXYColorEXTConstructor {
@@ -22344,12 +22344,12 @@ declare global {
     /**
      *
      */
-    offset: number;
+    offset: bigint;
 
     /**
      *
      */
-    stride: number;
+    stride: bigint;
 
   }
 
@@ -22378,12 +22378,12 @@ declare global {
     /**
      *
      */
-    offset?: number;
+    offset?: bigint;
 
     /**
      *
      */
-    stride?: number;
+    stride?: bigint;
   }
 
   interface VkDescriptorUpdateTemplateEntryKHRConstructor {
@@ -22438,12 +22438,12 @@ declare global {
     /**
      *
      */
-    offset: number;
+    offset: bigint;
 
     /**
      *
      */
-    stride: number;
+    stride: bigint;
 
   }
 
@@ -22472,12 +22472,12 @@ declare global {
     /**
      *
      */
-    offset?: number;
+    offset?: bigint;
 
     /**
      *
      */
-    stride?: number;
+    stride?: bigint;
   }
 
   interface VkDescriptorUpdateTemplateEntryConstructor {
@@ -25847,7 +25847,7 @@ declare global {
     /**
      * is the external handle to import.
      */
-    fd: number;
+    fd: bigint;
 
   }
 
@@ -25881,7 +25881,7 @@ declare global {
     /**
      * is the external handle to import.
      */
-    fd?: number;
+    fd?: bigint;
   }
 
   interface VkImportFenceFdInfoKHRConstructor {
@@ -26701,7 +26701,7 @@ declare global {
     /**
      * is the external handle to import.
      */
-    fd: number;
+    fd: bigint;
 
   }
 
@@ -26735,7 +26735,7 @@ declare global {
     /**
      * is the external handle to import.
      */
-    fd?: number;
+    fd?: bigint;
   }
 
   interface VkImportSemaphoreFdInfoKHRConstructor {
@@ -27827,7 +27827,7 @@ declare global {
     /**
      * is the external handle to import.
      */
-    fd: number;
+    fd: bigint;
 
   }
 
@@ -27851,7 +27851,7 @@ declare global {
     /**
      * is the external handle to import.
      */
-    fd?: number;
+    fd?: bigint;
   }
 
   interface VkImportMemoryFdInfoKHRConstructor {
@@ -33309,7 +33309,7 @@ declare global {
     /**
      * bytes containing the data to be associated with the object.
      */
-    tagSize: number;
+    tagSize: bigint;
 
     /**
      *
@@ -33348,7 +33348,7 @@ declare global {
     /**
      * bytes containing the data to be associated with the object.
      */
-    tagSize?: number;
+    tagSize?: bigint;
 
     /**
      *
@@ -34507,7 +34507,7 @@ declare global {
     /**
      * is the global alpha value. This value is ignored if 'alphaMode' is not 'VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR'.
      */
-    globalAlpha: number;
+    globalAlpha: bigint;
 
     /**
      * is a 'VkDisplayPlaneAlphaFlagBitsKHR' value specifying the type of alpha blending to use.
@@ -34561,7 +34561,7 @@ declare global {
     /**
      * is the global alpha value. This value is ignored if 'alphaMode' is not 'VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR'.
      */
-    globalAlpha?: number;
+    globalAlpha?: bigint;
 
     /**
      * is a 'VkDisplayPlaneAlphaFlagBitsKHR' value specifying the type of alpha blending to use.
@@ -35998,12 +35998,12 @@ declare global {
     /**
      *
      */
-    readonly maxSamplerLodBias: number;
+    readonly maxSamplerLodBias: bigint;
 
     /**
      *
      */
-    readonly maxSamplerAnisotropy: number;
+    readonly maxSamplerAnisotropy: bigint;
 
     /**
      *
@@ -36028,7 +36028,7 @@ declare global {
     /**
      *
      */
-    readonly minMemoryMapAlignment: number;
+    readonly minMemoryMapAlignment: bigint;
 
     /**
      *
@@ -36068,12 +36068,12 @@ declare global {
     /**
      *
      */
-    readonly minInterpolationOffset: number;
+    readonly minInterpolationOffset: bigint;
 
     /**
      *
      */
-    readonly maxInterpolationOffset: number;
+    readonly maxInterpolationOffset: bigint;
 
     /**
      *
@@ -36158,7 +36158,7 @@ declare global {
     /**
      *
      */
-    readonly timestampPeriod: number;
+    readonly timestampPeriod: bigint;
 
     /**
      *
@@ -36193,12 +36193,12 @@ declare global {
     /**
      *
      */
-    readonly pointSizeGranularity: number;
+    readonly pointSizeGranularity: bigint;
 
     /**
      *
      */
-    readonly lineWidthGranularity: number;
+    readonly lineWidthGranularity: bigint;
 
     /**
      *
@@ -36532,12 +36532,12 @@ declare global {
     /**
      *
      */
-    readonly maxSamplerLodBias?: number;
+    readonly maxSamplerLodBias?: bigint;
 
     /**
      *
      */
-    readonly maxSamplerAnisotropy?: number;
+    readonly maxSamplerAnisotropy?: bigint;
 
     /**
      *
@@ -36562,7 +36562,7 @@ declare global {
     /**
      *
      */
-    readonly minMemoryMapAlignment?: number;
+    readonly minMemoryMapAlignment?: bigint;
 
     /**
      *
@@ -36602,12 +36602,12 @@ declare global {
     /**
      *
      */
-    readonly minInterpolationOffset?: number;
+    readonly minInterpolationOffset?: bigint;
 
     /**
      *
      */
-    readonly maxInterpolationOffset?: number;
+    readonly maxInterpolationOffset?: bigint;
 
     /**
      *
@@ -36692,7 +36692,7 @@ declare global {
     /**
      *
      */
-    readonly timestampPeriod?: number;
+    readonly timestampPeriod?: bigint;
 
     /**
      *
@@ -36727,12 +36727,12 @@ declare global {
     /**
      *
      */
-    readonly pointSizeGranularity?: number;
+    readonly pointSizeGranularity?: bigint;
 
     /**
      *
      */
-    readonly lineWidthGranularity?: number;
+    readonly lineWidthGranularity?: bigint;
 
     /**
      *
@@ -38192,7 +38192,7 @@ declare global {
     /**
      * is the clear value for the depth aspect of the depth/stencil attachment. It is a floating-point value which is automatically converted to the attachment's format.
      */
-    depth: number;
+    depth: bigint;
 
     /**
      * is the clear value for the stencil aspect of the depth/stencil attachment. It is a 32-bit integer value which is converted to the attachment's format by taking the appropriate number of LSBs.
@@ -38206,7 +38206,7 @@ declare global {
     /**
      * is the clear value for the depth aspect of the depth/stencil attachment. It is a floating-point value which is automatically converted to the attachment's format.
      */
-    depth?: number;
+    depth?: bigint;
 
     /**
      * is the clear value for the stencil aspect of the depth/stencil attachment. It is a 32-bit integer value which is converted to the attachment's format by taking the appropriate number of LSBs.
@@ -38741,7 +38741,7 @@ declare global {
     /**
      * is the bias to be added to mipmap LOD (level-of-detail) calculation and bias provided by image sampling functions in SPIR-V, as described in the <<textures-level-of-detail-operation, Level-of-Detail Operation>> section.
      */
-    mipLodBias: number;
+    mipLodBias: bigint;
 
     /**
      *
@@ -38751,7 +38751,7 @@ declare global {
     /**
      * is the anisotropy value clamp used by the sampler when 'anisotropyEnable' is 'VK_TRUE'. If 'anisotropyEnable' is 'VK_FALSE', 'maxAnisotropy' is ignored.
      */
-    maxAnisotropy: number;
+    maxAnisotropy: bigint;
 
     /**
      *
@@ -38766,12 +38766,12 @@ declare global {
     /**
      *
      */
-    minLod: number;
+    minLod: bigint;
 
     /**
      * 'must' be zero.
      */
-    maxLod: number;
+    maxLod: bigint;
 
     /**
      * is a 'VkBorderColor' value specifying the predefined border color to use.
@@ -38835,7 +38835,7 @@ declare global {
     /**
      * is the bias to be added to mipmap LOD (level-of-detail) calculation and bias provided by image sampling functions in SPIR-V, as described in the <<textures-level-of-detail-operation, Level-of-Detail Operation>> section.
      */
-    mipLodBias?: number;
+    mipLodBias?: bigint;
 
     /**
      *
@@ -38845,7 +38845,7 @@ declare global {
     /**
      * is the anisotropy value clamp used by the sampler when 'anisotropyEnable' is 'VK_TRUE'. If 'anisotropyEnable' is 'VK_FALSE', 'maxAnisotropy' is ignored.
      */
-    maxAnisotropy?: number;
+    maxAnisotropy?: bigint;
 
     /**
      *
@@ -38860,12 +38860,12 @@ declare global {
     /**
      *
      */
-    minLod?: number;
+    minLod?: bigint;
 
     /**
      * 'must' be zero.
      */
-    maxLod?: number;
+    maxLod?: bigint;
 
     /**
      * is a 'VkBorderColor' value specifying the predefined border color to use.
@@ -39093,7 +39093,7 @@ declare global {
     /**
      *
      */
-    initialDataSize: number;
+    initialDataSize: bigint;
 
     /**
      * is a reference to previously retrieved pipeline cache data. If the pipeline cache data is incompatible (as defined below) with the device, the pipeline cache will be initially empty. If 'initialDataSize' is zero, 'pInitialData' is ignored.
@@ -39122,7 +39122,7 @@ declare global {
     /**
      *
      */
-    initialDataSize?: number;
+    initialDataSize?: bigint;
 
     /**
      * is a reference to previously retrieved pipeline cache data. If the pipeline cache data is incompatible (as defined below) with the device, the pipeline cache will be initially empty. If 'initialDataSize' is zero, 'pInitialData' is ignored.
@@ -39436,12 +39436,12 @@ declare global {
     /**
      *
      */
-    minDepthBounds: number;
+    minDepthBounds: bigint;
 
     /**
      * define the range of values used in the <<fragops-dbt,depth bounds test>>.
      */
-    maxDepthBounds: number;
+    maxDepthBounds: bigint;
 
   }
 
@@ -39500,12 +39500,12 @@ declare global {
     /**
      *
      */
-    minDepthBounds?: number;
+    minDepthBounds?: bigint;
 
     /**
      * define the range of values used in the <<fragops-dbt,depth bounds test>>.
      */
-    maxDepthBounds?: number;
+    maxDepthBounds?: bigint;
   }
 
   interface VkPipelineDepthStencilStateCreateInfoConstructor {
@@ -39981,7 +39981,7 @@ declare global {
     /**
      * specifies a minimum fraction of sample shading if 'sampleShadingEnable' is set to 'VK_TRUE'.
      */
-    minSampleShading: number;
+    minSampleShading: bigint;
 
     /**
      * is a bitmask of static coverage information that is ANDed with the coverage information generated during rasterization, as described in <<fragops-samplemask,Sample Mask>>.
@@ -40030,7 +40030,7 @@ declare global {
     /**
      * specifies a minimum fraction of sample shading if 'sampleShadingEnable' is set to 'VK_TRUE'.
      */
-    minSampleShading?: number;
+    minSampleShading?: bigint;
 
     /**
      * is a bitmask of static coverage information that is ANDed with the coverage information generated during rasterization, as described in <<fragops-samplemask,Sample Mask>>.
@@ -40125,22 +40125,22 @@ declare global {
     /**
      *
      */
-    depthBiasConstantFactor: number;
+    depthBiasConstantFactor: bigint;
 
     /**
      *
      */
-    depthBiasClamp: number;
+    depthBiasClamp: bigint;
 
     /**
      *
      */
-    depthBiasSlopeFactor: number;
+    depthBiasSlopeFactor: bigint;
 
     /**
      *
      */
-    lineWidth: number;
+    lineWidth: bigint;
 
   }
 
@@ -40194,22 +40194,22 @@ declare global {
     /**
      *
      */
-    depthBiasConstantFactor?: number;
+    depthBiasConstantFactor?: bigint;
 
     /**
      *
      */
-    depthBiasClamp?: number;
+    depthBiasClamp?: bigint;
 
     /**
      *
      */
-    depthBiasSlopeFactor?: number;
+    depthBiasSlopeFactor?: bigint;
 
     /**
      *
      */
-    lineWidth?: number;
+    lineWidth?: bigint;
   }
 
   interface VkPipelineRasterizationStateCreateInfoConstructor {
@@ -40966,7 +40966,7 @@ declare global {
     /**
      *
      */
-    dataSize: number;
+    dataSize: bigint;
 
     /**
      * contains the actual constant values to specialize with.
@@ -40990,7 +40990,7 @@ declare global {
     /**
      *
      */
-    dataSize?: number;
+    dataSize?: bigint;
 
     /**
      * contains the actual constant values to specialize with.
@@ -41040,7 +41040,7 @@ declare global {
     /**
      * is the byte size of the specialization constant value within the supplied data buffer.
      */
-    size: number;
+    size: bigint;
 
   }
 
@@ -41059,7 +41059,7 @@ declare global {
     /**
      * is the byte size of the specialization constant value within the supplied data buffer.
      */
-    size?: number;
+    size?: bigint;
   }
 
   interface VkSpecializationMapEntryConstructor {
@@ -41509,7 +41509,7 @@ declare global {
     /**
      * is the size, in bytes, of the code pointed to by 'pCode'.
      */
-    codeSize: number;
+    codeSize: bigint;
 
     /**
      * reference to code that is used to create the shader module. The type and format of the code is determined from the content of the memory addressed by 'pCode'.
@@ -41538,7 +41538,7 @@ declare global {
     /**
      * is the size, in bytes, of the code pointed to by 'pCode'.
      */
-    codeSize?: number;
+    codeSize?: bigint;
 
     /**
      * reference to code that is used to create the shader module. The type and format of the code is determined from the content of the memory addressed by 'pCode'.
@@ -45800,32 +45800,32 @@ declare global {
     /**
      *
      */
-    x: number;
+    x: bigint;
 
     /**
      * are the viewport's upper left corner [eq]#(x,y)#.
      */
-    y: number;
+    y: bigint;
 
     /**
      *
      */
-    width: number;
+    width: bigint;
 
     /**
      * are the viewport's width and height, respectively.
      */
-    height: number;
+    height: bigint;
 
     /**
      *
      */
-    minDepth: number;
+    minDepth: bigint;
 
     /**
      * are the depth range for the viewport. It is valid for 'minDepth' to be greater than or equal to 'maxDepth'.
      */
-    maxDepth: number;
+    maxDepth: bigint;
 
   }
 
@@ -45834,32 +45834,32 @@ declare global {
     /**
      *
      */
-    x?: number;
+    x?: bigint;
 
     /**
      * are the viewport's upper left corner [eq]#(x,y)#.
      */
-    y?: number;
+    y?: bigint;
 
     /**
      *
      */
-    width?: number;
+    width?: bigint;
 
     /**
      * are the viewport's width and height, respectively.
      */
-    height?: number;
+    height?: bigint;
 
     /**
      *
      */
-    minDepth?: number;
+    minDepth?: bigint;
 
     /**
      * are the depth range for the viewport. It is valid for 'minDepth' to be greater than or equal to 'maxDepth'.
      */
-    maxDepth?: number;
+    maxDepth?: bigint;
   }
 
   interface VkViewportConstructor {
@@ -46630,7 +46630,7 @@ declare global {
    * @param stride is the stride in bytes between results for individual queries within 'pData'.
    * @param flags is a bitmask of 'VkQueryResultFlagBits' specifying how and when results are returned.
    */
-  function vkGetQueryPoolResults(device: VkDevice | null, queryPool: VkQueryPool | null, firstQuery: number, queryCount: number, dataSize: number, pData: ArrayBuffer | null, stride: number, flags: VkQueryResultFlagBits): VkResult;
+  function vkGetQueryPoolResults(device: VkDevice | null, queryPool: VkQueryPool | null, firstQuery: number, queryCount: number, dataSize: bigint, pData: ArrayBuffer | null, stride: number, flags: VkQueryResultFlagBits): VkResult;
   
   /**
    * Create a new buffer object
@@ -47029,7 +47029,7 @@ declare global {
    * @param commandBuffer is the command buffer into which the command will be recorded.
    * @param lineWidth is the width of rasterized line segments.
    */
-  function vkCmdSetLineWidth(commandBuffer: VkCommandBuffer | null, lineWidth: number): void;
+  function vkCmdSetLineWidth(commandBuffer: VkCommandBuffer | null, lineWidth: bigint): void;
   
   /**
    * Set the depth bias dynamic state
@@ -47038,7 +47038,7 @@ declare global {
    * @param depthBiasClamp is the maximum (or minimum) depth bias of a fragment.
    * @param depthBiasSlopeFactor is a scalar factor applied to a fragment's slope in depth bias calculations.
    */
-  function vkCmdSetDepthBias(commandBuffer: VkCommandBuffer | null, depthBiasConstantFactor: number, depthBiasClamp: number, depthBiasSlopeFactor: number): void;
+  function vkCmdSetDepthBias(commandBuffer: VkCommandBuffer | null, depthBiasConstantFactor: bigint, depthBiasClamp: bigint, depthBiasSlopeFactor: bigint): void;
   
   /**
    * Set the values of blend constants
@@ -47053,7 +47053,7 @@ declare global {
    * @param minDepthBounds is the lower bound of the range of depth values used in the depth bounds test.
    * @param maxDepthBounds is the upper bound of the range.
    */
-  function vkCmdSetDepthBounds(commandBuffer: VkCommandBuffer | null, minDepthBounds: number, maxDepthBounds: number): void;
+  function vkCmdSetDepthBounds(commandBuffer: VkCommandBuffer | null, minDepthBounds: bigint, maxDepthBounds: bigint): void;
   
   /**
    * Set the stencil compare mask dynamic state
@@ -47641,7 +47641,7 @@ declare global {
    * @param pLayerPrefix is the abbreviation of the component making this event/message.
    * @param pMessage is a string detailing the trigger conditions.
    */
-  function vkDebugReportMessageEXT(instance: VkInstance | null, flags: VkDebugReportFlagBitsEXT, objectType: VkDebugReportObjectTypeEXT, object: number, location: number, messageCode: number, pLayerPrefix: string | null, pMessage: string | null): void;
+  function vkDebugReportMessageEXT(instance: VkInstance | null, flags: VkDebugReportFlagBitsEXT, objectType: VkDebugReportObjectTypeEXT, object: number, location: bigint, messageCode: number, pLayerPrefix: string | null, pMessage: string | null): void;
   
   /**
    * Give a user-friendly name to an object
@@ -47912,7 +47912,7 @@ declare global {
    * @param fd is the handle which will be imported.
    * @param pMemoryFdProperties is a reference to a 'VkMemoryFdPropertiesKHR' structure in which the properties of the handle 'fd' are returned.
    */
-  function vkGetMemoryFdPropertiesKHR(device: VkDevice | null, handleType: VkExternalMemoryHandleTypeFlagBits, fd: number, pMemoryFdProperties: VkMemoryFdPropertiesKHR | null): VkResult;
+  function vkGetMemoryFdPropertiesKHR(device: VkDevice | null, handleType: VkExternalMemoryHandleTypeFlagBits, fd: bigint, pMemoryFdProperties: VkMemoryFdPropertiesKHR | null): VkResult;
   
   /**
    * Function for querying external semaphore handle capabilities.
@@ -48801,7 +48801,7 @@ declare global {
    * @param dataSize is the size in bytes of the buffer pointed to by 'pData'.
    * @param pData is a reference to a user-allocated buffer where the results will be written.
    */
-  function vkGetRayTracingShaderGroupHandlesNV(device: VkDevice | null, pipeline: VkPipeline | null, firstGroup: number, groupCount: number, dataSize: number, pData: ArrayBuffer | null): VkResult;
+  function vkGetRayTracingShaderGroupHandlesNV(device: VkDevice | null, pipeline: VkPipeline | null, firstGroup: number, groupCount: number, dataSize: bigint, pData: ArrayBuffer | null): VkResult;
   
   /**
    * Get opaque acceleration structure handle
@@ -48810,7 +48810,7 @@ declare global {
    * @param dataSize is the size in bytes of the buffer pointed to by 'pData'.
    * @param pData is a reference to a user-allocated buffer where the results will be written.
    */
-  function vkGetAccelerationStructureHandleNV(device: VkDevice | null, accelerationStructure: VkAccelerationStructureNV | null, dataSize: number, pData: ArrayBuffer | null): VkResult;
+  function vkGetAccelerationStructureHandleNV(device: VkDevice | null, accelerationStructure: VkAccelerationStructureNV | null, dataSize: bigint, pData: ArrayBuffer | null): VkResult;
   
   /**
    * Creates a new ray tracing pipeline object

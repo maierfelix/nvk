@@ -103,6 +103,11 @@ export function getJavaScriptType(ast, object) {
     // handle inout parameters
     switch (object.rawType) {
       case "size_t *":
+        return new JavaScriptType({
+          type: JavaScriptType.OBJECT_INOUT,
+          value: "BigInt",
+          isNullable: true
+        });
       case "int *":
       case "int32_t *":
       case "uint32_t *":
@@ -213,6 +218,9 @@ export function getJavaScriptType(ast, object) {
     case "int":
     case "float":
     case "size_t":
+      return new JavaScriptType({
+        type: JavaScriptType.BIGINT
+      });
     case "int32_t":
     case "uint8_t":
     case "uint16_t":
