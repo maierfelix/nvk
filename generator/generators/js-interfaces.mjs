@@ -268,12 +268,24 @@ function getSetterProcessor(member) {
   let byteOffset = getStructureMemberByteOffset(member);
   let byteLength = getStructureMemberByteLength(member);
   switch (type) {
-    case JavaScriptType.NUMBER:
+    case JavaScriptType.NUMBER: {
+      let instr = getDataViewInstruction(member);
+      let byteStride = getDataViewInstructionStride(instr);
+      let offset = getHexaByteOffset(byteOffset / byteStride);
+      return `
+    if (typeof value !== "number") {
+      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'Number' but got '" + value.constructor.name + "'");
+    }
+    this.memoryView${instr}[${offset}] = value;`;
+    }
     case JavaScriptType.BIGINT: {
       let instr = getDataViewInstruction(member);
       let byteStride = getDataViewInstructionStride(instr);
       let offset = getHexaByteOffset(byteOffset / byteStride);
       return `
+    if (typeof value !== "bigint") {
+      throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}': Expected 'BigInt' but got '" + value.constructor.name + "'");
+    }
     this.memoryView${instr}[${offset}] = value;`;
     }
     case JavaScriptType.BOOLEAN: {
