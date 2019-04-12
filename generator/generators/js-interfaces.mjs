@@ -523,7 +523,7 @@ function getFlusherProcessor(member) {
         throw new TypeError("Invalid type for '${currentStruct.name}.${member.name}[" + ii + "]': Expected '${member.type}' but got '" + array[ii].constructor.name + "'");
         return false;
       }
-      if (!array[ii].flush()) return false;
+      ${member.isStructType ? `if (!array[ii].flush()) return false;` : ``}
     };
     ${write}
   }`;

@@ -295,7 +295,7 @@ class NativeObjectArray {
       let byteOffset = ii * byteStride;
       let srcView = new Uint8Array(array[ii].memoryBuffer);
       let dstView = objectBufferView.subarray(byteOffset, byteOffset + byteStride);
-      dstView.set(srcView, byteOffset);
+      dstView.set(srcView, 0x0);
     };
     this.address = objectBufferAddress;
     // keep reference to prevent deallocation

@@ -54,7 +54,7 @@ class NativeObjectArray {
       let byteOffset = ii * byteStride;
       let srcView = new Uint8Array(array[ii].memoryBuffer);
       let dstView = objectBufferView.subarray(byteOffset, byteOffset + byteStride);
-      dstView.set(srcView, byteOffset);
+      dstView.set(srcView, 0x0);
     };
     this.address = objectBufferAddress;
     // keep reference to prevent deallocation
@@ -8749,7 +8749,7 @@ VkWriteDescriptorSet.prototype.flush = function flush() {
         throw new TypeError("Invalid type for 'VkWriteDescriptorSet.pTexelBufferView[" + ii + "]': Expected 'VkBufferView' but got '" + array[ii].constructor.name + "'");
         return false;
       }
-      if (!array[ii].flush()) return false;
+      
     };
     
     let nativeArray = new NativeObjectArray(array);
@@ -11646,7 +11646,7 @@ VkBindSparseInfo.prototype.flush = function flush() {
         throw new TypeError("Invalid type for 'VkBindSparseInfo.pWaitSemaphores[" + ii + "]': Expected 'VkSemaphore' but got '" + array[ii].constructor.name + "'");
         return false;
       }
-      if (!array[ii].flush()) return false;
+      
     };
     
     let nativeArray = new NativeObjectArray(array);
@@ -11726,7 +11726,7 @@ VkBindSparseInfo.prototype.flush = function flush() {
         throw new TypeError("Invalid type for 'VkBindSparseInfo.pSignalSemaphores[" + ii + "]': Expected 'VkSemaphore' but got '" + array[ii].constructor.name + "'");
         return false;
       }
-      if (!array[ii].flush()) return false;
+      
     };
     
     let nativeArray = new NativeObjectArray(array);
@@ -12845,7 +12845,7 @@ VkDescriptorSetLayoutBinding.prototype.flush = function flush() {
         throw new TypeError("Invalid type for 'VkDescriptorSetLayoutBinding.pImmutableSamplers[" + ii + "]': Expected 'VkSampler' but got '" + array[ii].constructor.name + "'");
         return false;
       }
-      if (!array[ii].flush()) return false;
+      
     };
     
     let nativeArray = new NativeObjectArray(array);
@@ -13414,7 +13414,7 @@ VkDescriptorSetAllocateInfo.prototype.flush = function flush() {
         throw new TypeError("Invalid type for 'VkDescriptorSetAllocateInfo.pSetLayouts[" + ii + "]': Expected 'VkDescriptorSetLayout' but got '" + array[ii].constructor.name + "'");
         return false;
       }
-      if (!array[ii].flush()) return false;
+      
     };
     
     let nativeArray = new NativeObjectArray(array);
@@ -16912,7 +16912,7 @@ VkPipelineLayoutCreateInfo.prototype.flush = function flush() {
         throw new TypeError("Invalid type for 'VkPipelineLayoutCreateInfo.pSetLayouts[" + ii + "]': Expected 'VkDescriptorSetLayout' but got '" + array[ii].constructor.name + "'");
         return false;
       }
-      if (!array[ii].flush()) return false;
+      
     };
     
     let nativeArray = new NativeObjectArray(array);
@@ -21390,7 +21390,7 @@ VkFramebufferCreateInfo.prototype.flush = function flush() {
         throw new TypeError("Invalid type for 'VkFramebufferCreateInfo.pAttachments[" + ii + "]': Expected 'VkImageView' but got '" + array[ii].constructor.name + "'");
         return false;
       }
-      if (!array[ii].flush()) return false;
+      
     };
     
     let nativeArray = new NativeObjectArray(array);
@@ -21899,7 +21899,7 @@ VkSubmitInfo.prototype.flush = function flush() {
         throw new TypeError("Invalid type for 'VkSubmitInfo.pWaitSemaphores[" + ii + "]': Expected 'VkSemaphore' but got '" + array[ii].constructor.name + "'");
         return false;
       }
-      if (!array[ii].flush()) return false;
+      
     };
     
     let nativeArray = new NativeObjectArray(array);
@@ -21919,7 +21919,7 @@ VkSubmitInfo.prototype.flush = function flush() {
         throw new TypeError("Invalid type for 'VkSubmitInfo.pCommandBuffers[" + ii + "]': Expected 'VkCommandBuffer' but got '" + array[ii].constructor.name + "'");
         return false;
       }
-      if (!array[ii].flush()) return false;
+      
     };
     
     let nativeArray = new NativeObjectArray(array);
@@ -21939,7 +21939,7 @@ VkSubmitInfo.prototype.flush = function flush() {
         throw new TypeError("Invalid type for 'VkSubmitInfo.pSignalSemaphores[" + ii + "]': Expected 'VkSemaphore' but got '" + array[ii].constructor.name + "'");
         return false;
       }
-      if (!array[ii].flush()) return false;
+      
     };
     
     let nativeArray = new NativeObjectArray(array);
@@ -23748,7 +23748,7 @@ VkPresentInfoKHR.prototype.flush = function flush() {
         throw new TypeError("Invalid type for 'VkPresentInfoKHR.pWaitSemaphores[" + ii + "]': Expected 'VkSemaphore' but got '" + array[ii].constructor.name + "'");
         return false;
       }
-      if (!array[ii].flush()) return false;
+      
     };
     
     let nativeArray = new NativeObjectArray(array);
@@ -23768,7 +23768,7 @@ VkPresentInfoKHR.prototype.flush = function flush() {
         throw new TypeError("Invalid type for 'VkPresentInfoKHR.pSwapchains[" + ii + "]': Expected 'VkSwapchainKHR' but got '" + array[ii].constructor.name + "'");
         return false;
       }
-      if (!array[ii].flush()) return false;
+      
     };
     
     let nativeArray = new NativeObjectArray(array);
@@ -25583,7 +25583,7 @@ VkWin32KeyedMutexAcquireReleaseInfoNV.prototype.flush = function flush() {
         throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoNV.pAcquireSyncs[" + ii + "]': Expected 'VkDeviceMemory' but got '" + array[ii].constructor.name + "'");
         return false;
       }
-      if (!array[ii].flush()) return false;
+      
     };
     
     let nativeArray = new NativeObjectArray(array);
@@ -25603,7 +25603,7 @@ VkWin32KeyedMutexAcquireReleaseInfoNV.prototype.flush = function flush() {
         throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoNV.pReleaseSyncs[" + ii + "]': Expected 'VkDeviceMemory' but got '" + array[ii].constructor.name + "'");
         return false;
       }
-      if (!array[ii].flush()) return false;
+      
     };
     
     let nativeArray = new NativeObjectArray(array);
@@ -33062,7 +33062,7 @@ VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.flush = function flush() {
         throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoKHR.pAcquireSyncs[" + ii + "]': Expected 'VkDeviceMemory' but got '" + array[ii].constructor.name + "'");
         return false;
       }
-      if (!array[ii].flush()) return false;
+      
     };
     
     let nativeArray = new NativeObjectArray(array);
@@ -33082,7 +33082,7 @@ VkWin32KeyedMutexAcquireReleaseInfoKHR.prototype.flush = function flush() {
         throw new TypeError("Invalid type for 'VkWin32KeyedMutexAcquireReleaseInfoKHR.pReleaseSyncs[" + ii + "]': Expected 'VkDeviceMemory' but got '" + array[ii].constructor.name + "'");
         return false;
       }
-      if (!array[ii].flush()) return false;
+      
     };
     
     let nativeArray = new NativeObjectArray(array);
@@ -40212,7 +40212,7 @@ VkDeviceGroupDeviceCreateInfo.prototype.flush = function flush() {
         throw new TypeError("Invalid type for 'VkDeviceGroupDeviceCreateInfo.pPhysicalDevices[" + ii + "]': Expected 'VkPhysicalDevice' but got '" + array[ii].constructor.name + "'");
         return false;
       }
-      if (!array[ii].flush()) return false;
+      
     };
     
     let nativeArray = new NativeObjectArray(array);
@@ -40343,7 +40343,7 @@ VkDeviceGroupDeviceCreateInfoKHR.prototype.flush = function flush() {
         throw new TypeError("Invalid type for 'VkDeviceGroupDeviceCreateInfoKHR.pPhysicalDevices[" + ii + "]': Expected 'VkPhysicalDevice' but got '" + array[ii].constructor.name + "'");
         return false;
       }
-      if (!array[ii].flush()) return false;
+      
     };
     
     let nativeArray = new NativeObjectArray(array);
@@ -60994,7 +60994,7 @@ VkWriteDescriptorSetAccelerationStructureNV.prototype.flush = function flush() {
         throw new TypeError("Invalid type for 'VkWriteDescriptorSetAccelerationStructureNV.pAccelerationStructures[" + ii + "]': Expected 'VkAccelerationStructureNV' but got '" + array[ii].constructor.name + "'");
         return false;
       }
-      if (!array[ii].flush()) return false;
+      
     };
     
     let nativeArray = new NativeObjectArray(array);

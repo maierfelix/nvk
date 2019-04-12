@@ -46,50 +46,6 @@ function getParamIndexByParamName(call, name) {
   return null;
 };
 
-function getMemberCopyInstructions(struct) {
-  let out = ``;
-  struct.children.map(member => {
-    if (member.isStructType) {
-      out += `
-      instance->${member.name} = copy->${member.name};`;
-      out += `
-      if (&copy->${member.name} != nullptr) {
-        std::vector<napi_value> args;
-        Napi::Object inst = _${member.type}::constructor.New(args);
-        _${member.type}* unwrapped = Napi::ObjectWrap<_${member.type}>::Unwrap(inst);
-        result->${member.name}.Reset(inst, 1);
-        unwrapped->instance = copy->${member.name};
-      }`;
-    }
-    else if (member.isHandleType) {
-      // can be ignored
-    }
-    else if (member.isString) {
-      out += `
-      {
-        Napi::String str = Napi::String::New(env, copy->${member.name});
-        result->${member.name}.Reset(str.ToObject(), 1);
-        strcpy(const_cast<char *>(instance->${member.name}), copy->${member.name});
-      }`;
-    }
-    else if (member.isArray) {
-      // TODO
-      console.log(`Error: Member copy instruction for arrays not handled yet!`);
-    }
-    else if (member.isNumber || member.bitmaskType || member.enumType) {
-      out += `
-      instance->${member.name} = copy->${member.name};`;
-    }
-    else if (member.type === "void") {
-      // ???
-    }
-    else {
-      warn(`Cannot handle ${member.type} in get-member-copy-instruction!`);
-    }
-  });
-  return out;
-};
-
 function getInputArrayBody(param, index) {
   let {rawType} = param;
   let out = ``;
@@ -533,8 +489,6 @@ function getCallBodyAfter(call) {
     Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>($p${pIndex}));
     obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
   }`);
-      //let instr = getMutableStructReflectInstructions(param.type, pIndex, `obj${pIndex}->`);
-      //out.push(instr);
     }
     // array of enums
     else if (param.isTypedArray && param.enumType) {
@@ -645,91 +599,6 @@ function getCallBody(call) {
   out += getCallProcedure(call);
   out += outer;
   return out;
-};
-
-/**
- * This is a fairly complex function
- * It recursively back-reflects a struct and all its members
- */
-function getMutableStructReflectInstructions(name, pIndex, basePath, out = []) {
-  let struct = getStructByStructName(ast, name);
-  // go through each struct member and manually back-reflect it
-  struct.children.map((member, mIndex) => {
-    // these can be ignored
-    if (
-      member.isNumber ||
-      member.isBoolean ||
-      member.bitmaskType ||
-      member.enumType ||
-      isIgnoreableType(member)
-    ) return;
-    // TODO: validate that this works
-    // pNext structure could have needs for deep reflection
-    if (isPNextMember(member)) {
-      // idea:
-      // read sType using: ((int*)(self->instance.pNext))[0]);
-      // and recursively reflect based on AST node.extensions[sType]
-      return;
-    }
-    // string
-    if (member.isString && member.isStaticArray) {
-      out.push(`
-  {
-    // back reflect string
-    Napi::String str${pIndex} = Napi::String::New(env, (&${basePath}instance)->${member.name});
-    ${basePath}${member.name}.Reset(str${pIndex}.ToObject(), 1);
-  }`);
-    }
-    // struct
-    else if (member.isStructType && !member.isArray) {
-      out.push(`
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _${member.type}::constructor.New(args);
-    _${member.type}* unwrapped${basePath.length} = Napi::ObjectWrap<_${member.type}>::Unwrap(inst);
-    ${basePath}${member.name}.Reset(inst, 1);
-    memcpy((&unwrapped${basePath.length}->instance), &${basePath}instance.${member.name}, sizeof(${member.type}));
-    ${getMutableStructReflectInstructions(member.type, pIndex, `unwrapped${basePath.length}->`, [])}
-  }
-      `);
-    }
-    // array of numbers
-    else if (member.isNumericArray) {
-      out.push(`
-  {
-    // back reflect array
-    Napi::Array arr${pIndex} = Napi::Array::New(env, ${member.length});
-    // populate array
-    for (unsigned int ii = 0; ii < ${member.length}; ++ii) {
-      arr${pIndex}.Set(ii, Napi::Number::New(env, (&${basePath}instance)->${member.name}[ii]));
-    };
-    ${basePath}${member.name}.Reset(arr${pIndex}.ToObject(), 1);
-  }`);
-    }
-    // array of structs
-    else if (member.isStructType && member.isArray) {
-      // TODO: this only works for primitive-type members
-      out.push(`
-  {
-    // back reflect array
-    unsigned int len = ${basePath}instance.${member.dynamicLength};
-    Napi::Array arr = Napi::Array::New(env, len);
-    // populate array
-    for (unsigned int ii = 0; ii < len; ++ii) {
-      std::vector<napi_value> args;
-      Napi::Object inst = _${member.type}::constructor.New(args);
-      _${member.type}* unwrapped = Napi::ObjectWrap<_${member.type}>::Unwrap(inst);
-      memcpy(&unwrapped->instance, &${basePath}instance.${member.name}[ii], sizeof(${member.type}));
-      arr.Set(ii, inst);
-    };
-    ${basePath}${member.name}.Reset(arr.ToObject(), 1);
-  }`);
-    }
-    else {
-      console.log(`Error: Cannot handle member ${member.name} of type ${member.type} in mutable-struct-reflection!`);
-    }
-  });
-  return out.join("");
 };
 
 function getCallReturn(call) {
