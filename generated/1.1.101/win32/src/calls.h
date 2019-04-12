@@ -453,6 +453,7 @@ Napi::Value _vkEnumeratePhysicalDevices(const Napi::CallbackInfo& info) {
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
+    
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPhysicalDeviceCount'").ThrowAsJavaScriptException();
@@ -665,6 +666,7 @@ Napi::Value _vkGetPhysicalDeviceQueueFamilyProperties(const Napi::CallbackInfo& 
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
+    
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pQueueFamilyPropertyCount'").ThrowAsJavaScriptException();
@@ -1078,6 +1080,7 @@ Napi::Value _vkEnumerateInstanceVersion(const Napi::CallbackInfo& info) {
       return env.Undefined();
     }
     Napi::Value val = obj0.Get("$");
+    
     $p0 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[0].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'pApiVersion'").ThrowAsJavaScriptException();
@@ -1105,6 +1108,7 @@ Napi::Value _vkEnumerateInstanceLayerProperties(const Napi::CallbackInfo& info) 
       return env.Undefined();
     }
     Napi::Value val = obj0.Get("$");
+    
     $p0 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[0].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'pPropertyCount'").ThrowAsJavaScriptException();
@@ -1180,6 +1184,7 @@ Napi::Value _vkEnumerateInstanceExtensionProperties(const Napi::CallbackInfo& in
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
+    
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPropertyCount'").ThrowAsJavaScriptException();
@@ -1267,6 +1272,7 @@ Napi::Value _vkEnumerateDeviceLayerProperties(const Napi::CallbackInfo& info) {
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
+    
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPropertyCount'").ThrowAsJavaScriptException();
@@ -1361,6 +1367,7 @@ Napi::Value _vkEnumerateDeviceExtensionProperties(const Napi::CallbackInfo& info
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
+    
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pPropertyCount'").ThrowAsJavaScriptException();
@@ -1771,9 +1778,11 @@ Napi::Value _vkMapMemory(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  bool lossless2;
+  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
-  uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::Number>().Int64Value());
+  bool lossless3;
+  uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
 
   int32_t $p4 = static_cast<int32_t>(info[4].As<Napi::Number>().Int64Value());
 
@@ -2013,6 +2022,7 @@ Napi::Value _vkGetDeviceMemoryCommitment(const Napi::CallbackInfo& info) {
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
+    
     $p2 = static_cast<uint64_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pCommittedMemoryInBytes'").ThrowAsJavaScriptException();
@@ -2163,7 +2173,8 @@ Napi::Value _vkBindBufferMemory(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::Number>().Int64Value());
+  bool lossless3;
+  uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
   int32_t out = vkBindBufferMemory(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1].IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -2308,7 +2319,8 @@ Napi::Value _vkBindImageMemory(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::Number>().Int64Value());
+  bool lossless3;
+  uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
   int32_t out = vkBindImageMemory(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1].IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -2369,6 +2381,7 @@ Napi::Value _vkGetImageSparseMemoryRequirements(const Napi::CallbackInfo& info) 
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
+    
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pSparseMemoryRequirementCount'").ThrowAsJavaScriptException();
@@ -2466,6 +2479,7 @@ Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties(const Napi::Callback
       return env.Undefined();
     }
     Napi::Value val = obj6.Get("$");
+    
     $p6 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[6].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 7 'pPropertyCount'").ThrowAsJavaScriptException();
@@ -2872,7 +2886,8 @@ Napi::Value _vkWaitForFences(const Napi::CallbackInfo& info) {
 
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
-  uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::Number>().Int64Value());
+  bool lossless4;
+  uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
   int32_t out = vkWaitForFences(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
@@ -3436,7 +3451,8 @@ Napi::Value _vkGetQueryPoolResults(const Napi::CallbackInfo& info) {
 
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
-  size_t $p4 = static_cast<size_t>(info[4].As<Napi::Number>().Int64Value());
+  bool lossless4;
+  size_t $p4 = static_cast<size_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
 
   void* $p5 = nullptr;
   if (info[5].IsArrayBuffer()) {
@@ -3447,7 +3463,8 @@ Napi::Value _vkGetQueryPoolResults(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p6 = static_cast<uint64_t>(info[6].As<Napi::Number>().Int64Value());
+  bool lossless6;
+  uint64_t $p6 = static_cast<uint64_t>(info[6].As<Napi::BigInt>().Int64Value(&lossless6));
 
   int32_t $p7 = static_cast<int32_t>(info[7].As<Napi::Number>().Int64Value());
   int32_t out = vkGetQueryPoolResults(
@@ -4336,6 +4353,7 @@ Napi::Value _vkGetPipelineCacheData(const Napi::CallbackInfo& info) {
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
+    
     $p2 = static_cast<size_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pDataSize'").ThrowAsJavaScriptException();
@@ -6817,7 +6835,8 @@ Napi::Value _vkCmdBindIndexBuffer(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  bool lossless2;
+  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
   VkIndexType $p3 = static_cast<VkIndexType>(info[3].As<Napi::Number>().Int64Value());
 vkCmdBindIndexBuffer(
@@ -7028,7 +7047,8 @@ Napi::Value _vkCmdDrawIndirect(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  bool lossless2;
+  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
@@ -7085,7 +7105,8 @@ Napi::Value _vkCmdDrawIndexedIndirect(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  bool lossless2;
+  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
@@ -7180,7 +7201,8 @@ Napi::Value _vkCmdDispatchIndirect(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  bool lossless2;
+  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 vkCmdDispatchIndirect(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     info[1].IsNull() ? VK_NULL_HANDLE : *$p1,
@@ -7747,9 +7769,11 @@ Napi::Value _vkCmdUpdateBuffer(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  bool lossless2;
+  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
-  uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::Number>().Int64Value());
+  bool lossless3;
+  uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
 
   void* $p4 = nullptr;
   if (info[4].IsArrayBuffer()) {
@@ -7811,9 +7835,11 @@ Napi::Value _vkCmdFillBuffer(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  bool lossless2;
+  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
-  uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::Number>().Int64Value());
+  bool lossless3;
+  uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
 
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
 vkCmdFillBuffer(
@@ -8978,9 +9004,11 @@ Napi::Value _vkCmdCopyQueryPoolResults(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p5 = static_cast<uint64_t>(info[5].As<Napi::Number>().Int64Value());
+  bool lossless5;
+  uint64_t $p5 = static_cast<uint64_t>(info[5].As<Napi::BigInt>().Int64Value(&lossless5));
 
-  uint64_t $p6 = static_cast<uint64_t>(info[6].As<Napi::Number>().Int64Value());
+  bool lossless6;
+  uint64_t $p6 = static_cast<uint64_t>(info[6].As<Napi::BigInt>().Int64Value(&lossless6));
 
   int32_t $p7 = static_cast<int32_t>(info[7].As<Napi::Number>().Int64Value());
 vkCmdCopyQueryPoolResults(
@@ -9262,6 +9290,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayPropertiesKHR(const Napi::CallbackInfo& i
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
+    
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPropertyCount'").ThrowAsJavaScriptException();
@@ -9348,6 +9377,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlanePropertiesKHR(const Napi::CallbackIn
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
+    
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPropertyCount'").ThrowAsJavaScriptException();
@@ -9436,6 +9466,7 @@ Napi::Value _vkGetDisplayPlaneSupportedDisplaysKHR(const Napi::CallbackInfo& inf
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
+    
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pDisplayCount'").ThrowAsJavaScriptException();
@@ -9533,6 +9564,7 @@ Napi::Value _vkGetDisplayModePropertiesKHR(const Napi::CallbackInfo& info) {
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
+    
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pPropertyCount'").ThrowAsJavaScriptException();
@@ -10165,6 +10197,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormatsKHR(const Napi::CallbackInfo& info
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
+    
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pSurfaceFormatCount'").ThrowAsJavaScriptException();
@@ -10270,6 +10303,7 @@ Napi::Value _vkGetPhysicalDeviceSurfacePresentModesKHR(const Napi::CallbackInfo&
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
+    
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pPresentModeCount'").ThrowAsJavaScriptException();
@@ -10473,6 +10507,7 @@ Napi::Value _vkGetSwapchainImagesKHR(const Napi::CallbackInfo& info) {
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
+    
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pSwapchainImageCount'").ThrowAsJavaScriptException();
@@ -10561,7 +10596,8 @@ Napi::Value _vkAcquireNextImageKHR(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  bool lossless2;
+  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
   Napi::Object obj3;
   VkSemaphore *$p3 = nullptr;
@@ -10608,6 +10644,7 @@ Napi::Value _vkAcquireNextImageKHR(const Napi::CallbackInfo& info) {
       return env.Undefined();
     }
     Napi::Value val = obj5.Get("$");
+    
     $p5 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[5].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 6 'pImageIndex'").ThrowAsJavaScriptException();
@@ -10927,9 +10964,11 @@ Napi::Value _vkDebugReportMessageEXT(const Napi::CallbackInfo& info) {
 
   VkDebugReportObjectTypeEXT $p2 = static_cast<VkDebugReportObjectTypeEXT>(info[2].As<Napi::Number>().Int64Value());
 
-  uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::Number>().Int64Value());
+  bool lossless3;
+  uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
 
-  size_t $p4 = static_cast<size_t>(info[4].As<Napi::Number>().Int64Value());
+  bool lossless4;
+  size_t $p4 = static_cast<size_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
 
   int32_t $p5 = static_cast<int32_t>(info[5].As<Napi::Number>().Int64Value());
 
@@ -11378,7 +11417,8 @@ Napi::Value _vkCmdDrawIndirectCountAMD(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  bool lossless2;
+  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
   Napi::Object obj3;
   VkBuffer *$p3 = nullptr;
@@ -11398,7 +11438,8 @@ Napi::Value _vkCmdDrawIndirectCountAMD(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::Number>().Int64Value());
+  bool lossless4;
+  uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
 
   uint32_t $p5 = static_cast<uint32_t>(info[5].As<Napi::Number>().Int64Value());
 
@@ -11457,7 +11498,8 @@ Napi::Value _vkCmdDrawIndexedIndirectCountAMD(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  bool lossless2;
+  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
   Napi::Object obj3;
   VkBuffer *$p3 = nullptr;
@@ -11477,7 +11519,8 @@ Napi::Value _vkCmdDrawIndexedIndirectCountAMD(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::Number>().Int64Value());
+  bool lossless4;
+  uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
 
   uint32_t $p5 = static_cast<uint32_t>(info[5].As<Napi::Number>().Int64Value());
 
@@ -12382,6 +12425,7 @@ Napi::Value _vkGetPhysicalDeviceQueueFamilyProperties2(const Napi::CallbackInfo&
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
+    
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pQueueFamilyPropertyCount'").ThrowAsJavaScriptException();
@@ -12544,6 +12588,7 @@ Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties2(const Napi::Callbac
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
+    
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pPropertyCount'").ThrowAsJavaScriptException();
@@ -12997,6 +13042,7 @@ Napi::Value _vkGetMemoryFdKHR(const Napi::CallbackInfo& info) {
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
+    
     $p2 = static_cast<int>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pFd'").ThrowAsJavaScriptException();
@@ -13322,6 +13368,7 @@ Napi::Value _vkGetSemaphoreFdKHR(const Napi::CallbackInfo& info) {
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
+    
     $p2 = static_cast<int>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pFd'").ThrowAsJavaScriptException();
@@ -13635,6 +13682,7 @@ Napi::Value _vkGetFenceFdKHR(const Napi::CallbackInfo& info) {
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
+    
     $p2 = static_cast<int>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pFd'").ThrowAsJavaScriptException();
@@ -14030,6 +14078,7 @@ Napi::Value _vkGetSwapchainCounterEXT(const Napi::CallbackInfo& info) {
       return env.Undefined();
     }
     Napi::Value val = obj3.Get("$");
+    
     $p3 = static_cast<uint64_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[3].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pCounterValue'").ThrowAsJavaScriptException();
@@ -14154,6 +14203,7 @@ Napi::Value _vkEnumeratePhysicalDeviceGroups(const Napi::CallbackInfo& info) {
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
+    
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPhysicalDeviceGroupCount'").ThrowAsJavaScriptException();
@@ -14246,6 +14296,7 @@ Napi::Value _vkGetDeviceGroupPeerMemoryFeatures(const Napi::CallbackInfo& info) 
       return env.Undefined();
     }
     Napi::Value val = obj4.Get("$");
+    
     $p4 = static_cast<int32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[4].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 5 'pPeerMemoryFeatures'").ThrowAsJavaScriptException();
@@ -14523,6 +14574,7 @@ Napi::Value _vkGetDeviceGroupSurfacePresentModesKHR(const Napi::CallbackInfo& in
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
+    
     $p2 = static_cast<int32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pModes'").ThrowAsJavaScriptException();
@@ -14590,6 +14642,7 @@ Napi::Value _vkAcquireNextImage2KHR(const Napi::CallbackInfo& info) {
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
+    
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pImageIndex'").ThrowAsJavaScriptException();
@@ -14702,6 +14755,7 @@ Napi::Value _vkGetPhysicalDevicePresentRectanglesKHR(const Napi::CallbackInfo& i
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
+    
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pRectCount'").ThrowAsJavaScriptException();
@@ -15289,6 +15343,7 @@ Napi::Value _vkGetPastPresentationTimingGOOGLE(const Napi::CallbackInfo& info) {
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
+    
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pPresentationTimingCount'").ThrowAsJavaScriptException();
@@ -15710,6 +15765,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormats2KHR(const Napi::CallbackInfo& inf
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
+    
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pSurfaceFormatCount'").ThrowAsJavaScriptException();
@@ -15797,6 +15853,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayProperties2KHR(const Napi::CallbackInfo& 
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
+    
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPropertyCount'").ThrowAsJavaScriptException();
@@ -15883,6 +15940,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlaneProperties2KHR(const Napi::CallbackI
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
+    
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPropertyCount'").ThrowAsJavaScriptException();
@@ -15987,6 +16045,7 @@ Napi::Value _vkGetDisplayModeProperties2KHR(const Napi::CallbackInfo& info) {
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
+    
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pPropertyCount'").ThrowAsJavaScriptException();
@@ -16325,6 +16384,7 @@ Napi::Value _vkGetImageSparseMemoryRequirements2(const Napi::CallbackInfo& info)
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
+    
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pSparseMemoryRequirementCount'").ThrowAsJavaScriptException();
@@ -16741,6 +16801,7 @@ Napi::Value _vkGetValidationCacheDataEXT(const Napi::CallbackInfo& info) {
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
+    
     $p2 = static_cast<size_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pDataSize'").ThrowAsJavaScriptException();
@@ -16969,6 +17030,7 @@ Napi::Value _vkGetShaderInfoAMD(const Napi::CallbackInfo& info) {
       return env.Undefined();
     }
     Napi::Value val = obj4.Get("$");
+    
     $p4 = static_cast<size_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[4].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 5 'pInfoSize'").ThrowAsJavaScriptException();
@@ -17029,6 +17091,7 @@ Napi::Value _vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(const Napi::Callback
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
+    
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pTimeDomainCount'").ThrowAsJavaScriptException();
@@ -17138,6 +17201,7 @@ Napi::Value _vkGetCalibratedTimestampsEXT(const Napi::CallbackInfo& info) {
       return env.Undefined();
     }
     Napi::Value val = obj4.Get("$");
+    
     $p4 = static_cast<uint64_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[4].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 5 'pMaxDeviation'").ThrowAsJavaScriptException();
@@ -17803,7 +17867,8 @@ Napi::Value _vkCmdWriteBufferMarkerAMD(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::Number>().Int64Value());
+  bool lossless3;
+  uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
 
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
 $vkCmdWriteBufferMarkerAMD(
@@ -18121,7 +18186,8 @@ Napi::Value _vkCmdDrawIndirectCountKHR(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  bool lossless2;
+  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
   Napi::Object obj3;
   VkBuffer *$p3 = nullptr;
@@ -18141,7 +18207,8 @@ Napi::Value _vkCmdDrawIndirectCountKHR(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::Number>().Int64Value());
+  bool lossless4;
+  uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
 
   uint32_t $p5 = static_cast<uint32_t>(info[5].As<Napi::Number>().Int64Value());
 
@@ -18200,7 +18267,8 @@ Napi::Value _vkCmdDrawIndexedIndirectCountKHR(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  bool lossless2;
+  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
   Napi::Object obj3;
   VkBuffer *$p3 = nullptr;
@@ -18220,7 +18288,8 @@ Napi::Value _vkCmdDrawIndexedIndirectCountKHR(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::Number>().Int64Value());
+  bool lossless4;
+  uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
 
   uint32_t $p5 = static_cast<uint32_t>(info[5].As<Napi::Number>().Int64Value());
 
@@ -18309,6 +18378,7 @@ Napi::Value _vkGetQueueCheckpointDataNV(const Napi::CallbackInfo& info) {
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
+    
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCheckpointDataCount'").ThrowAsJavaScriptException();
@@ -18752,7 +18822,8 @@ Napi::Value _vkCmdDrawIndirectByteCountEXT(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::Number>().Int64Value());
+  bool lossless4;
+  uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
 
   uint32_t $p5 = static_cast<uint32_t>(info[5].As<Napi::Number>().Int64Value());
 
@@ -19089,7 +19160,8 @@ Napi::Value _vkCmdDrawMeshTasksIndirectNV(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  bool lossless2;
+  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
@@ -19146,7 +19218,8 @@ Napi::Value _vkCmdDrawMeshTasksIndirectCountNV(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  bool lossless2;
+  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
   Napi::Object obj3;
   VkBuffer *$p3 = nullptr;
@@ -19166,7 +19239,8 @@ Napi::Value _vkCmdDrawMeshTasksIndirectCountNV(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::Number>().Int64Value());
+  bool lossless4;
+  uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
 
   uint32_t $p5 = static_cast<uint32_t>(info[5].As<Napi::Number>().Int64Value());
 
@@ -19702,7 +19776,8 @@ Napi::Value _vkCmdBuildAccelerationStructureNV(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::Number>().Int64Value());
+  bool lossless3;
+  uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
 
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
 
@@ -19760,7 +19835,8 @@ Napi::Value _vkCmdBuildAccelerationStructureNV(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p8 = static_cast<uint64_t>(info[8].As<Napi::Number>().Int64Value());
+  bool lossless8;
+  uint64_t $p8 = static_cast<uint64_t>(info[8].As<Napi::BigInt>().Int64Value(&lossless8));
 $vkCmdBuildAccelerationStructureNV(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
     $p1,
@@ -19817,7 +19893,8 @@ Napi::Value _vkCmdTraceRaysNV(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::Number>().Int64Value());
+  bool lossless2;
+  uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
   Napi::Object obj3;
   VkBuffer *$p3 = nullptr;
@@ -19837,9 +19914,11 @@ Napi::Value _vkCmdTraceRaysNV(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::Number>().Int64Value());
+  bool lossless4;
+  uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
 
-  uint64_t $p5 = static_cast<uint64_t>(info[5].As<Napi::Number>().Int64Value());
+  bool lossless5;
+  uint64_t $p5 = static_cast<uint64_t>(info[5].As<Napi::BigInt>().Int64Value(&lossless5));
 
   Napi::Object obj6;
   VkBuffer *$p6 = nullptr;
@@ -19859,9 +19938,11 @@ Napi::Value _vkCmdTraceRaysNV(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p7 = static_cast<uint64_t>(info[7].As<Napi::Number>().Int64Value());
+  bool lossless7;
+  uint64_t $p7 = static_cast<uint64_t>(info[7].As<Napi::BigInt>().Int64Value(&lossless7));
 
-  uint64_t $p8 = static_cast<uint64_t>(info[8].As<Napi::Number>().Int64Value());
+  bool lossless8;
+  uint64_t $p8 = static_cast<uint64_t>(info[8].As<Napi::BigInt>().Int64Value(&lossless8));
 
   Napi::Object obj9;
   VkBuffer *$p9 = nullptr;
@@ -19881,9 +19962,11 @@ Napi::Value _vkCmdTraceRaysNV(const Napi::CallbackInfo& info) {
     return env.Undefined();
   }
 
-  uint64_t $p10 = static_cast<uint64_t>(info[10].As<Napi::Number>().Int64Value());
+  bool lossless10;
+  uint64_t $p10 = static_cast<uint64_t>(info[10].As<Napi::BigInt>().Int64Value(&lossless10));
 
-  uint64_t $p11 = static_cast<uint64_t>(info[11].As<Napi::Number>().Int64Value());
+  bool lossless11;
+  uint64_t $p11 = static_cast<uint64_t>(info[11].As<Napi::BigInt>().Int64Value(&lossless11));
 
   uint32_t $p12 = static_cast<uint32_t>(info[12].As<Napi::Number>().Int64Value());
 
@@ -19956,7 +20039,8 @@ Napi::Value _vkGetRayTracingShaderGroupHandlesNV(const Napi::CallbackInfo& info)
 
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
-  size_t $p4 = static_cast<size_t>(info[4].As<Napi::Number>().Int64Value());
+  bool lossless4;
+  size_t $p4 = static_cast<size_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
 
   void* $p5 = nullptr;
   if (info[5].IsArrayBuffer()) {
@@ -20019,7 +20103,8 @@ Napi::Value _vkGetAccelerationStructureHandleNV(const Napi::CallbackInfo& info) 
     return env.Undefined();
   }
 
-  size_t $p2 = static_cast<size_t>(info[2].As<Napi::Number>().Int64Value());
+  bool lossless2;
+  size_t $p2 = static_cast<size_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
   void* $p3 = nullptr;
   if (info[3].IsArrayBuffer()) {
@@ -20310,6 +20395,7 @@ Napi::Value _vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(const Napi::Callba
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
+    
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPropertyCount'").ThrowAsJavaScriptException();

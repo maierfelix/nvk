@@ -11,7 +11,7 @@ class {{ handle.name }} {
 };
 
 {{ handle.name }}.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, {{ getHandleByteLength() | safe }});
+  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt({{ getHandleByteLength() | safe }}));
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);

@@ -57,7 +57,7 @@ class {{ struct.name }} {
 };
 
 {{ struct.name }}.prototype.reflect = function reflect(memoryAddress) {
-  let srcBuffer = getArrayBufferFromAddress(memoryAddress, {{ getStructureByteLength() | safe }});
+  let srcBuffer = getArrayBufferFromAddress(memoryAddress, BigInt({{ getStructureByteLength() | safe }}));
   let dstBuffer = this.memoryBuffer;
   let srcView = new Uint8Array(srcBuffer);
   let dstView = new Uint8Array(dstBuffer);

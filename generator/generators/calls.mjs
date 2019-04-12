@@ -233,9 +233,15 @@ function getCallBodyBefore(call) {
     }`;
     }
     switch (rawType) {
+      case "size_t":
+      case "uint64_t": {
+        let type = param.enumType || param.type;
+        return `
+  bool lossless${index};
+  ${type} $p${index} = static_cast<${type}>(info[${index}].As<Napi::BigInt>().Int64Value(&lossless${index}));`;
+      }
       case "int":
       case "float":
-      case "size_t":
       case "int32_t":
       case "uint32_t":
       case "uint64_t": {
@@ -275,7 +281,12 @@ function getCallBodyBefore(call) {
       return env.Undefined();
     }
     Napi::Value val = obj${index}.Get("$");
-    $p${index} = static_cast<${param.type}>(val.As<Napi::Number>().Int64Value());
+    ${
+      param.type === "size_t *" ? `bool lossless; $p${index} = static_cast<${param.type}>(val.As<Napi::BigInt}>().Int64Value(&lossless));` : ``
+    }
+    ${
+      param.type !== "size_t *" ? `$p${index} = static_cast<${param.type}>(val.As<Napi::Number>().Int64Value());` : ``
+    }
   } else if (!info[${index}].IsNull()) {
     Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
     return env.Undefined();
