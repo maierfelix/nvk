@@ -651,23 +651,6 @@ export default function(astReference, handles, structs) {
   enumLayoutTable = getEnumLayoutTable();
   memoryLayouts = getMemoryLayouts();
   let output = ``;
-  let globalEnums = {};
-  if (enumLayoutTable) {
-    for (let key in enumLayoutTable) {
-      let json = stringifyJSONQuoteless(enumLayoutTable[key]);
-      for (let key2 in enumLayoutTable[key]) {
-        if (globalEnums[key2] !== void 0) {
-          warn(`Enum ${key}.${key2} already exists`);
-        }
-        globalEnums[key2] = enumLayoutTable[key][key2];
-      };
-      output += `\nconst ${key} = ${json};\n`;
-    };
-    // create function which returns all enums globally
-  }
-  output += `\nfunction getGlobalEnumerations() {
-    return (${stringifyJSONQuoteless(globalEnums)});
-  };\n`;
   handles.map(handle => {
     currentHandle = handle;
     output += nunjucks.renderString(JS_HANDLE_TEMPLATE, {

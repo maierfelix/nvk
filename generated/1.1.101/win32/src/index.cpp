@@ -86,11 +86,13 @@ Napi::Object Init(Napi::Env env, Napi::Object exports) {
   exports["VK_VERSION_MINOR"] = Napi::Function::New(env, _VK_VERSION_MINOR, "VK_VERSION_MINOR");
   exports["VK_VERSION_PATCH"] = Napi::Function::New(env, _VK_VERSION_PATCH, "VK_VERSION_PATCH");
   exports["VK_API_VERSION_1_0"] = Napi::Number::New(env, VK_MAKE_VERSION(1, 0, 0));
+  exports["VK_API_VERSION_1_1"] = Napi::Number::New(env, VK_MAKE_VERSION(1, 1, 0));
   exports["vkUseDevice"] = Napi::Function::New(env, _vkUseDevice, "vkUseDevice");
   exports["vkUseInstance"] = Napi::Function::New(env, _vkUseInstance, "vkUseInstance");
-  exports["MemoryLayouts"] = Napi::Function::New(env, MemoryLayouts, "MemoryLayouts");
   exports["getAddressFromArrayBuffer"] = Napi::Function::New(env, getAddressFromArrayBuffer, "getAddressFromArrayBuffer");
   exports["getArrayBufferFromAddress"] = Napi::Function::New(env, getArrayBufferFromAddress, "getArrayBufferFromAddress");
+  exports["$getMemoryLayouts"] = Napi::Function::New(env, MemoryLayouts, "MemoryLayouts");
+  exports["$getVulkanEnumerations"] = Napi::Function::New(env, getVulkanEnumerations, "getVulkanEnumerations");
   // calls
   exports["vkCreateInstance"] = Napi::Function::New(env, _vkCreateInstance, "vkCreateInstance");
   exports["vkDestroyInstance"] = Napi::Function::New(env, _vkDestroyInstance, "vkDestroyInstance");

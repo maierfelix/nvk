@@ -358,7 +358,7 @@ Napi::Value _vkCreateInstance(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkInstanceCreateInfo' or 'null' for argument 1 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstanceCreateInfo' or 'null' for argument 1 'pCreateInfo' in 'vkCreateInstance'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -377,7 +377,7 @@ Napi::Value _vkCreateInstance(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 3 'pInstance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 3 'pInstance' in 'vkCreateInstance'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkCreateInstance(
@@ -409,7 +409,7 @@ Napi::Value _vkDestroyInstance(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance' in 'vkDestroyInstance'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -440,7 +440,7 @@ Napi::Value _vkEnumeratePhysicalDevices(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance' in 'vkEnumeratePhysicalDevices'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -449,14 +449,14 @@ Napi::Value _vkEnumeratePhysicalDevices(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 2").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 2 'pPhysicalDeviceCount' in 'vkEnumeratePhysicalDevices'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
     
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPhysicalDeviceCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPhysicalDeviceCount' in 'vkEnumeratePhysicalDevices'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -474,7 +474,7 @@ Napi::Value _vkEnumeratePhysicalDevices(const Napi::CallbackInfo& info) {
     };
     $p2 = std::make_shared<std::vector<VkPhysicalDevice>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pPhysicalDevices'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pPhysicalDevices' in 'vkEnumeratePhysicalDevices'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -519,7 +519,7 @@ Napi::Value _vkGetDeviceProcAddr(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetDeviceProcAddr'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -527,7 +527,7 @@ Napi::Value _vkGetDeviceProcAddr(const Napi::CallbackInfo& info) {
   if (info[1].IsString()) {
     $p1 = copyV8String(info[1]);
   } else if (!info[1].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'String' or 'null' for argument 2 'pName'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'String' or 'null' for argument 2 'pName' in 'vkGetDeviceProcAddr'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   PFN_vkVoidFunction out = vkGetDeviceProcAddr(
@@ -558,7 +558,7 @@ Napi::Value _vkGetInstanceProcAddr(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance' in 'vkGetInstanceProcAddr'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -566,7 +566,7 @@ Napi::Value _vkGetInstanceProcAddr(const Napi::CallbackInfo& info) {
   if (info[1].IsString()) {
     $p1 = copyV8String(info[1]);
   } else if (!info[1].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'String' or 'null' for argument 2 'pName'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'String' or 'null' for argument 2 'pName' in 'vkGetInstanceProcAddr'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   PFN_vkVoidFunction out = vkGetInstanceProcAddr(
@@ -597,7 +597,7 @@ Napi::Value _vkGetPhysicalDeviceProperties(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -617,7 +617,7 @@ Napi::Value _vkGetPhysicalDeviceProperties(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceProperties' or 'null' for argument 2 'pProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceProperties' or 'null' for argument 2 'pProperties' in 'vkGetPhysicalDeviceProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkGetPhysicalDeviceProperties(
@@ -653,7 +653,7 @@ Napi::Value _vkGetPhysicalDeviceQueueFamilyProperties(const Napi::CallbackInfo& 
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceQueueFamilyProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -662,14 +662,14 @@ Napi::Value _vkGetPhysicalDeviceQueueFamilyProperties(const Napi::CallbackInfo& 
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 2").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 2 'pQueueFamilyPropertyCount' in 'vkGetPhysicalDeviceQueueFamilyProperties'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
     
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pQueueFamilyPropertyCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pQueueFamilyPropertyCount' in 'vkGetPhysicalDeviceQueueFamilyProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -696,7 +696,7 @@ Napi::Value _vkGetPhysicalDeviceQueueFamilyProperties(const Napi::CallbackInfo& 
     };
     $p2 = std::make_shared<std::vector<VkQueueFamilyProperties>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pQueueFamilyProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pQueueFamilyProperties' in 'vkGetPhysicalDeviceQueueFamilyProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -740,7 +740,7 @@ Napi::Value _vkGetPhysicalDeviceMemoryProperties(const Napi::CallbackInfo& info)
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceMemoryProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -760,7 +760,7 @@ Napi::Value _vkGetPhysicalDeviceMemoryProperties(const Napi::CallbackInfo& info)
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceMemoryProperties' or 'null' for argument 2 'pMemoryProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceMemoryProperties' or 'null' for argument 2 'pMemoryProperties' in 'vkGetPhysicalDeviceMemoryProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkGetPhysicalDeviceMemoryProperties(
@@ -796,7 +796,7 @@ Napi::Value _vkGetPhysicalDeviceFeatures(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceFeatures'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -816,7 +816,7 @@ Napi::Value _vkGetPhysicalDeviceFeatures(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceFeatures' or 'null' for argument 2 'pFeatures'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceFeatures' or 'null' for argument 2 'pFeatures' in 'vkGetPhysicalDeviceFeatures'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkGetPhysicalDeviceFeatures(
@@ -852,10 +852,14 @@ Napi::Value _vkGetPhysicalDeviceFormatProperties(const Napi::CallbackInfo& info)
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceFormatProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'format' in 'vkGetPhysicalDeviceFormatProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkFormat $p1 = static_cast<VkFormat>(info[1].As<Napi::Number>().Int64Value());
 
   Napi::Object obj2;
@@ -874,7 +878,7 @@ Napi::Value _vkGetPhysicalDeviceFormatProperties(const Napi::CallbackInfo& info)
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkFormatProperties' or 'null' for argument 3 'pFormatProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFormatProperties' or 'null' for argument 3 'pFormatProperties' in 'vkGetPhysicalDeviceFormatProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkGetPhysicalDeviceFormatProperties(
@@ -911,18 +915,38 @@ Napi::Value _vkGetPhysicalDeviceImageFormatProperties(const Napi::CallbackInfo& 
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceImageFormatProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'format' in 'vkGetPhysicalDeviceImageFormatProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkFormat $p1 = static_cast<VkFormat>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'type' in 'vkGetPhysicalDeviceImageFormatProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkImageType $p2 = static_cast<VkImageType>(info[2].As<Napi::Number>().Int64Value());
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'tiling' in 'vkGetPhysicalDeviceImageFormatProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkImageTiling $p3 = static_cast<VkImageTiling>(info[3].As<Napi::Number>().Int64Value());
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'usage' in 'vkGetPhysicalDeviceImageFormatProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p4 = static_cast<int32_t>(info[4].As<Napi::Number>().Int64Value());
 
+  if (!info[5].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 6 'flags' in 'vkGetPhysicalDeviceImageFormatProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p5 = static_cast<int32_t>(info[5].As<Napi::Number>().Int64Value());
 
   Napi::Object obj6;
@@ -941,7 +965,7 @@ Napi::Value _vkGetPhysicalDeviceImageFormatProperties(const Napi::CallbackInfo& 
   } else if (info[6].IsNull()) {
     $p6 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImageFormatProperties' or 'null' for argument 7 'pImageFormatProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImageFormatProperties' or 'null' for argument 7 'pImageFormatProperties' in 'vkGetPhysicalDeviceImageFormatProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkGetPhysicalDeviceImageFormatProperties(
@@ -982,7 +1006,7 @@ Napi::Value _vkCreateDevice(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkCreateDevice'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -1002,7 +1026,7 @@ Napi::Value _vkCreateDevice(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDeviceCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceCreateInfo' or 'null' for argument 2 'pCreateInfo' in 'vkCreateDevice'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -1021,7 +1045,7 @@ Napi::Value _vkCreateDevice(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 4 'pDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 4 'pDevice' in 'vkCreateDevice'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkCreateDevice(
@@ -1054,7 +1078,7 @@ Napi::Value _vkDestroyDevice(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroyDevice'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -1076,14 +1100,14 @@ Napi::Value _vkEnumerateInstanceVersion(const Napi::CallbackInfo& info) {
   if (info[0].IsObject()) {
     obj0 = info[0].As<Napi::Object>();
     if (!obj0.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 1").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 1 'pApiVersion' in 'vkEnumerateInstanceVersion'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj0.Get("$");
     
     $p0 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[0].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'pApiVersion'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'pApiVersion' in 'vkEnumerateInstanceVersion'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkEnumerateInstanceVersion(
@@ -1104,14 +1128,14 @@ Napi::Value _vkEnumerateInstanceLayerProperties(const Napi::CallbackInfo& info) 
   if (info[0].IsObject()) {
     obj0 = info[0].As<Napi::Object>();
     if (!obj0.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 1").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 1 'pPropertyCount' in 'vkEnumerateInstanceLayerProperties'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj0.Get("$");
     
     $p0 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[0].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'pPropertyCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 1 'pPropertyCount' in 'vkEnumerateInstanceLayerProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -1138,7 +1162,7 @@ Napi::Value _vkEnumerateInstanceLayerProperties(const Napi::CallbackInfo& info) 
     };
     $p1 = std::make_shared<std::vector<VkLayerProperties>>(data);
   } else if (!info[1].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 2 'pProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 2 'pProperties' in 'vkEnumerateInstanceLayerProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -1171,7 +1195,7 @@ Napi::Value _vkEnumerateInstanceExtensionProperties(const Napi::CallbackInfo& in
   if (info[0].IsString()) {
     $p0 = copyV8String(info[0]);
   } else if (!info[0].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'String' or 'null' for argument 1 'pLayerName'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'String' or 'null' for argument 1 'pLayerName' in 'vkEnumerateInstanceExtensionProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -1180,14 +1204,14 @@ Napi::Value _vkEnumerateInstanceExtensionProperties(const Napi::CallbackInfo& in
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 2").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 2 'pPropertyCount' in 'vkEnumerateInstanceExtensionProperties'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
     
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPropertyCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPropertyCount' in 'vkEnumerateInstanceExtensionProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -1214,7 +1238,7 @@ Napi::Value _vkEnumerateInstanceExtensionProperties(const Napi::CallbackInfo& in
     };
     $p2 = std::make_shared<std::vector<VkExtensionProperties>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pProperties' in 'vkEnumerateInstanceExtensionProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -1259,7 +1283,7 @@ Napi::Value _vkEnumerateDeviceLayerProperties(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkEnumerateDeviceLayerProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -1268,14 +1292,14 @@ Napi::Value _vkEnumerateDeviceLayerProperties(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 2").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 2 'pPropertyCount' in 'vkEnumerateDeviceLayerProperties'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
     
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPropertyCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPropertyCount' in 'vkEnumerateDeviceLayerProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -1302,7 +1326,7 @@ Napi::Value _vkEnumerateDeviceLayerProperties(const Napi::CallbackInfo& info) {
     };
     $p2 = std::make_shared<std::vector<VkLayerProperties>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pProperties' in 'vkEnumerateDeviceLayerProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -1346,7 +1370,7 @@ Napi::Value _vkEnumerateDeviceExtensionProperties(const Napi::CallbackInfo& info
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkEnumerateDeviceExtensionProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -1354,7 +1378,7 @@ Napi::Value _vkEnumerateDeviceExtensionProperties(const Napi::CallbackInfo& info
   if (info[1].IsString()) {
     $p1 = copyV8String(info[1]);
   } else if (!info[1].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'String' or 'null' for argument 2 'pLayerName'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'String' or 'null' for argument 2 'pLayerName' in 'vkEnumerateDeviceExtensionProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -1363,14 +1387,14 @@ Napi::Value _vkEnumerateDeviceExtensionProperties(const Napi::CallbackInfo& info
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 3 'pPropertyCount' in 'vkEnumerateDeviceExtensionProperties'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
     
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pPropertyCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pPropertyCount' in 'vkEnumerateDeviceExtensionProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -1397,7 +1421,7 @@ Napi::Value _vkEnumerateDeviceExtensionProperties(const Napi::CallbackInfo& info
     };
     $p3 = std::make_shared<std::vector<VkExtensionProperties>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pProperties' in 'vkEnumerateDeviceExtensionProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -1443,12 +1467,20 @@ Napi::Value _vkGetDeviceQueue(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetDeviceQueue'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'queueFamilyIndex' in 'vkGetDeviceQueue'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'queueIndex' in 'vkGetDeviceQueue'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   Napi::Object obj3;
@@ -1465,7 +1497,7 @@ Napi::Value _vkGetDeviceQueue(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 4 'pQueue'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 4 'pQueue' in 'vkGetDeviceQueue'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkGetDeviceQueue(
@@ -1497,10 +1529,14 @@ Napi::Value _vkQueueSubmit(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 1 'queue'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 1 'queue' in 'vkQueueSubmit'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'submitCount' in 'vkQueueSubmit'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkSubmitInfo>> $p2 = nullptr;
@@ -1526,7 +1562,7 @@ Napi::Value _vkQueueSubmit(const Napi::CallbackInfo& info) {
     };
     $p2 = std::make_shared<std::vector<VkSubmitInfo>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pSubmits'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pSubmits' in 'vkQueueSubmit'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -1545,7 +1581,7 @@ Napi::Value _vkQueueSubmit(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkFence' or 'null' for argument 4 'fence'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFence' or 'null' for argument 4 'fence' in 'vkQueueSubmit'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkQueueSubmit(
@@ -1577,7 +1613,7 @@ Napi::Value _vkQueueWaitIdle(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 1 'queue'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 1 'queue' in 'vkQueueWaitIdle'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkQueueWaitIdle(
@@ -1606,7 +1642,7 @@ Napi::Value _vkDeviceWaitIdle(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDeviceWaitIdle'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkDeviceWaitIdle(
@@ -1635,7 +1671,7 @@ Napi::Value _vkAllocateMemory(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkAllocateMemory'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -1655,7 +1691,7 @@ Napi::Value _vkAllocateMemory(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkMemoryAllocateInfo' or 'null' for argument 2 'pAllocateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkMemoryAllocateInfo' or 'null' for argument 2 'pAllocateInfo' in 'vkAllocateMemory'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -1674,7 +1710,7 @@ Napi::Value _vkAllocateMemory(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDeviceMemory' or 'null' for argument 4 'pMemory'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceMemory' or 'null' for argument 4 'pMemory' in 'vkAllocateMemory'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkAllocateMemory(
@@ -1706,7 +1742,7 @@ Napi::Value _vkFreeMemory(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkFreeMemory'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -1724,7 +1760,7 @@ Napi::Value _vkFreeMemory(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDeviceMemory' or 'null' for argument 2 'memory'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceMemory' or 'null' for argument 2 'memory' in 'vkFreeMemory'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -1756,7 +1792,7 @@ Napi::Value _vkMapMemory(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkMapMemory'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -1774,16 +1810,28 @@ Napi::Value _vkMapMemory(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDeviceMemory' or 'null' for argument 2 'memory'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceMemory' or 'null' for argument 2 'memory' in 'vkMapMemory'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless2;
+  if (!info[2].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'offset' in 'vkMapMemory'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
   bool lossless3;
+  if (!info[3].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 4 'size' in 'vkMapMemory'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'flags' in 'vkMapMemory'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p4 = static_cast<int32_t>(info[4].As<Napi::Number>().Int64Value());
 
   Napi::Object obj5 = info[5].As<Napi::Object>();
@@ -1821,7 +1869,7 @@ Napi::Value _vkUnmapMemory(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkUnmapMemory'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -1839,7 +1887,7 @@ Napi::Value _vkUnmapMemory(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDeviceMemory' or 'null' for argument 2 'memory'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceMemory' or 'null' for argument 2 'memory' in 'vkUnmapMemory'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkUnmapMemory(
@@ -1869,10 +1917,14 @@ Napi::Value _vkFlushMappedMemoryRanges(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkFlushMappedMemoryRanges'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'memoryRangeCount' in 'vkFlushMappedMemoryRanges'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkMappedMemoryRange>> $p2 = nullptr;
@@ -1898,7 +1950,7 @@ Napi::Value _vkFlushMappedMemoryRanges(const Napi::CallbackInfo& info) {
     };
     $p2 = std::make_shared<std::vector<VkMappedMemoryRange>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pMemoryRanges'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pMemoryRanges' in 'vkFlushMappedMemoryRanges'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -1930,10 +1982,14 @@ Napi::Value _vkInvalidateMappedMemoryRanges(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkInvalidateMappedMemoryRanges'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'memoryRangeCount' in 'vkInvalidateMappedMemoryRanges'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkMappedMemoryRange>> $p2 = nullptr;
@@ -1959,7 +2015,7 @@ Napi::Value _vkInvalidateMappedMemoryRanges(const Napi::CallbackInfo& info) {
     };
     $p2 = std::make_shared<std::vector<VkMappedMemoryRange>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pMemoryRanges'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pMemoryRanges' in 'vkInvalidateMappedMemoryRanges'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -1991,7 +2047,7 @@ Napi::Value _vkGetDeviceMemoryCommitment(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetDeviceMemoryCommitment'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2009,7 +2065,7 @@ Napi::Value _vkGetDeviceMemoryCommitment(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDeviceMemory' or 'null' for argument 2 'memory'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceMemory' or 'null' for argument 2 'memory' in 'vkGetDeviceMemoryCommitment'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2018,14 +2074,14 @@ Napi::Value _vkGetDeviceMemoryCommitment(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 3 'pCommittedMemoryInBytes' in 'vkGetDeviceMemoryCommitment'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
     
     $p2 = static_cast<uint64_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pCommittedMemoryInBytes'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pCommittedMemoryInBytes' in 'vkGetDeviceMemoryCommitment'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkGetDeviceMemoryCommitment(
@@ -2058,7 +2114,7 @@ Napi::Value _vkGetBufferMemoryRequirements(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetBufferMemoryRequirements'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2076,7 +2132,7 @@ Napi::Value _vkGetBufferMemoryRequirements(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer' in 'vkGetBufferMemoryRequirements'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2096,7 +2152,7 @@ Napi::Value _vkGetBufferMemoryRequirements(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkMemoryRequirements' or 'null' for argument 3 'pMemoryRequirements'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkMemoryRequirements' or 'null' for argument 3 'pMemoryRequirements' in 'vkGetBufferMemoryRequirements'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkGetBufferMemoryRequirements(
@@ -2133,7 +2189,7 @@ Napi::Value _vkBindBufferMemory(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkBindBufferMemory'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2151,7 +2207,7 @@ Napi::Value _vkBindBufferMemory(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer' in 'vkBindBufferMemory'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2169,11 +2225,15 @@ Napi::Value _vkBindBufferMemory(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDeviceMemory' or 'null' for argument 3 'memory'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceMemory' or 'null' for argument 3 'memory' in 'vkBindBufferMemory'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless3;
+  if (!info[3].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 4 'memoryOffset' in 'vkBindBufferMemory'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
   int32_t out = vkBindBufferMemory(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -2204,7 +2264,7 @@ Napi::Value _vkGetImageMemoryRequirements(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetImageMemoryRequirements'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2222,7 +2282,7 @@ Napi::Value _vkGetImageMemoryRequirements(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'image'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'image' in 'vkGetImageMemoryRequirements'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2242,7 +2302,7 @@ Napi::Value _vkGetImageMemoryRequirements(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkMemoryRequirements' or 'null' for argument 3 'pMemoryRequirements'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkMemoryRequirements' or 'null' for argument 3 'pMemoryRequirements' in 'vkGetImageMemoryRequirements'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkGetImageMemoryRequirements(
@@ -2279,7 +2339,7 @@ Napi::Value _vkBindImageMemory(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkBindImageMemory'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2297,7 +2357,7 @@ Napi::Value _vkBindImageMemory(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'image'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'image' in 'vkBindImageMemory'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2315,11 +2375,15 @@ Napi::Value _vkBindImageMemory(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDeviceMemory' or 'null' for argument 3 'memory'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceMemory' or 'null' for argument 3 'memory' in 'vkBindImageMemory'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless3;
+  if (!info[3].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 4 'memoryOffset' in 'vkBindImageMemory'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
   int32_t out = vkBindImageMemory(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -2350,7 +2414,7 @@ Napi::Value _vkGetImageSparseMemoryRequirements(const Napi::CallbackInfo& info) 
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetImageSparseMemoryRequirements'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2368,7 +2432,7 @@ Napi::Value _vkGetImageSparseMemoryRequirements(const Napi::CallbackInfo& info) 
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'image'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'image' in 'vkGetImageSparseMemoryRequirements'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2377,14 +2441,14 @@ Napi::Value _vkGetImageSparseMemoryRequirements(const Napi::CallbackInfo& info) 
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 3 'pSparseMemoryRequirementCount' in 'vkGetImageSparseMemoryRequirements'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
     
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pSparseMemoryRequirementCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pSparseMemoryRequirementCount' in 'vkGetImageSparseMemoryRequirements'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2411,7 +2475,7 @@ Napi::Value _vkGetImageSparseMemoryRequirements(const Napi::CallbackInfo& info) 
     };
     $p3 = std::make_shared<std::vector<VkSparseImageMemoryRequirements>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pSparseMemoryRequirements'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pSparseMemoryRequirements' in 'vkGetImageSparseMemoryRequirements'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2456,18 +2520,38 @@ Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties(const Napi::Callback
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceSparseImageFormatProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'format' in 'vkGetPhysicalDeviceSparseImageFormatProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkFormat $p1 = static_cast<VkFormat>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'type' in 'vkGetPhysicalDeviceSparseImageFormatProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkImageType $p2 = static_cast<VkImageType>(info[2].As<Napi::Number>().Int64Value());
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'samples' in 'vkGetPhysicalDeviceSparseImageFormatProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p3 = static_cast<int32_t>(info[3].As<Napi::Number>().Int64Value());
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'usage' in 'vkGetPhysicalDeviceSparseImageFormatProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p4 = static_cast<int32_t>(info[4].As<Napi::Number>().Int64Value());
 
+  if (!info[5].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 6 'tiling' in 'vkGetPhysicalDeviceSparseImageFormatProperties'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkImageTiling $p5 = static_cast<VkImageTiling>(info[5].As<Napi::Number>().Int64Value());
 
   Napi::Object obj6;
@@ -2475,14 +2559,14 @@ Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties(const Napi::Callback
   if (info[6].IsObject()) {
     obj6 = info[6].As<Napi::Object>();
     if (!obj6.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 7").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 7 'pPropertyCount' in 'vkGetPhysicalDeviceSparseImageFormatProperties'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj6.Get("$");
     
     $p6 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[6].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 7 'pPropertyCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 7 'pPropertyCount' in 'vkGetPhysicalDeviceSparseImageFormatProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2509,7 +2593,7 @@ Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties(const Napi::Callback
     };
     $p7 = std::make_shared<std::vector<VkSparseImageFormatProperties>>(data);
   } else if (!info[7].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 8 'pProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 8 'pProperties' in 'vkGetPhysicalDeviceSparseImageFormatProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2558,10 +2642,14 @@ Napi::Value _vkQueueBindSparse(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 1 'queue'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 1 'queue' in 'vkQueueBindSparse'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'bindInfoCount' in 'vkQueueBindSparse'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkBindSparseInfo>> $p2 = nullptr;
@@ -2587,7 +2675,7 @@ Napi::Value _vkQueueBindSparse(const Napi::CallbackInfo& info) {
     };
     $p2 = std::make_shared<std::vector<VkBindSparseInfo>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pBindInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pBindInfo' in 'vkQueueBindSparse'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2606,7 +2694,7 @@ Napi::Value _vkQueueBindSparse(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkFence' or 'null' for argument 4 'fence'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFence' or 'null' for argument 4 'fence' in 'vkQueueBindSparse'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkQueueBindSparse(
@@ -2638,7 +2726,7 @@ Napi::Value _vkCreateFence(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateFence'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2658,7 +2746,7 @@ Napi::Value _vkCreateFence(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkFenceCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFenceCreateInfo' or 'null' for argument 2 'pCreateInfo' in 'vkCreateFence'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2677,7 +2765,7 @@ Napi::Value _vkCreateFence(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkFence' or 'null' for argument 4 'pFence'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFence' or 'null' for argument 4 'pFence' in 'vkCreateFence'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkCreateFence(
@@ -2709,7 +2797,7 @@ Napi::Value _vkDestroyFence(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroyFence'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2727,7 +2815,7 @@ Napi::Value _vkDestroyFence(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkFence' or 'null' for argument 2 'fence'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFence' or 'null' for argument 2 'fence' in 'vkDestroyFence'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2759,10 +2847,14 @@ Napi::Value _vkResetFences(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkResetFences'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'fenceCount' in 'vkResetFences'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkFence>> $p2 = nullptr;
@@ -2779,7 +2871,7 @@ Napi::Value _vkResetFences(const Napi::CallbackInfo& info) {
     };
     $p2 = std::make_shared<std::vector<VkFence>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pFences'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pFences' in 'vkResetFences'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2811,7 +2903,7 @@ Napi::Value _vkGetFenceStatus(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetFenceStatus'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2829,7 +2921,7 @@ Napi::Value _vkGetFenceStatus(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkFence' or 'null' for argument 2 'fence'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFence' or 'null' for argument 2 'fence' in 'vkGetFenceStatus'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkGetFenceStatus(
@@ -2859,10 +2951,14 @@ Napi::Value _vkWaitForFences(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkWaitForFences'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'fenceCount' in 'vkWaitForFences'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkFence>> $p2 = nullptr;
@@ -2879,14 +2975,22 @@ Napi::Value _vkWaitForFences(const Napi::CallbackInfo& info) {
     };
     $p2 = std::make_shared<std::vector<VkFence>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pFences'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pFences' in 'vkWaitForFences'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'waitAll' in 'vkWaitForFences'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
   bool lossless4;
+  if (!info[4].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 5 'timeout' in 'vkWaitForFences'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
   int32_t out = vkWaitForFences(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -2918,7 +3022,7 @@ Napi::Value _vkCreateSemaphore(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateSemaphore'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2938,7 +3042,7 @@ Napi::Value _vkCreateSemaphore(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSemaphoreCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSemaphoreCreateInfo' or 'null' for argument 2 'pCreateInfo' in 'vkCreateSemaphore'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -2957,7 +3061,7 @@ Napi::Value _vkCreateSemaphore(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSemaphore' or 'null' for argument 4 'pSemaphore'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSemaphore' or 'null' for argument 4 'pSemaphore' in 'vkCreateSemaphore'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkCreateSemaphore(
@@ -2989,7 +3093,7 @@ Napi::Value _vkDestroySemaphore(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroySemaphore'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3007,7 +3111,7 @@ Napi::Value _vkDestroySemaphore(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSemaphore' or 'null' for argument 2 'semaphore'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSemaphore' or 'null' for argument 2 'semaphore' in 'vkDestroySemaphore'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3039,7 +3143,7 @@ Napi::Value _vkCreateEvent(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateEvent'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3059,7 +3163,7 @@ Napi::Value _vkCreateEvent(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkEventCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkEventCreateInfo' or 'null' for argument 2 'pCreateInfo' in 'vkCreateEvent'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3078,7 +3182,7 @@ Napi::Value _vkCreateEvent(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkEvent' or 'null' for argument 4 'pEvent'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkEvent' or 'null' for argument 4 'pEvent' in 'vkCreateEvent'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkCreateEvent(
@@ -3110,7 +3214,7 @@ Napi::Value _vkDestroyEvent(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroyEvent'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3128,7 +3232,7 @@ Napi::Value _vkDestroyEvent(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkEvent' or 'null' for argument 2 'event'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkEvent' or 'null' for argument 2 'event' in 'vkDestroyEvent'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3160,7 +3264,7 @@ Napi::Value _vkGetEventStatus(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetEventStatus'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3178,7 +3282,7 @@ Napi::Value _vkGetEventStatus(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkEvent' or 'null' for argument 2 'event'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkEvent' or 'null' for argument 2 'event' in 'vkGetEventStatus'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkGetEventStatus(
@@ -3208,7 +3312,7 @@ Napi::Value _vkSetEvent(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkSetEvent'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3226,7 +3330,7 @@ Napi::Value _vkSetEvent(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkEvent' or 'null' for argument 2 'event'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkEvent' or 'null' for argument 2 'event' in 'vkSetEvent'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkSetEvent(
@@ -3256,7 +3360,7 @@ Napi::Value _vkResetEvent(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkResetEvent'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3274,7 +3378,7 @@ Napi::Value _vkResetEvent(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkEvent' or 'null' for argument 2 'event'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkEvent' or 'null' for argument 2 'event' in 'vkResetEvent'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkResetEvent(
@@ -3304,7 +3408,7 @@ Napi::Value _vkCreateQueryPool(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateQueryPool'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3324,7 +3428,7 @@ Napi::Value _vkCreateQueryPool(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkQueryPoolCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueryPoolCreateInfo' or 'null' for argument 2 'pCreateInfo' in 'vkCreateQueryPool'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3343,7 +3447,7 @@ Napi::Value _vkCreateQueryPool(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 4 'pQueryPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 4 'pQueryPool' in 'vkCreateQueryPool'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkCreateQueryPool(
@@ -3375,7 +3479,7 @@ Napi::Value _vkDestroyQueryPool(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroyQueryPool'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3393,7 +3497,7 @@ Napi::Value _vkDestroyQueryPool(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool' in 'vkDestroyQueryPool'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3425,7 +3529,7 @@ Napi::Value _vkGetQueryPoolResults(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetQueryPoolResults'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3443,15 +3547,27 @@ Napi::Value _vkGetQueryPoolResults(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool' in 'vkGetQueryPoolResults'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'firstQuery' in 'vkGetQueryPoolResults'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'queryCount' in 'vkGetQueryPoolResults'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
   bool lossless4;
+  if (!info[4].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 5 'dataSize' in 'vkGetQueryPoolResults'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   size_t $p4 = static_cast<size_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
 
   void* $p5 = nullptr;
@@ -3459,13 +3575,21 @@ Napi::Value _vkGetQueryPoolResults(const Napi::CallbackInfo& info) {
     Napi::ArrayBuffer buf = info[5].As<Napi::ArrayBuffer>();
     $p5 = buf.Data();
   } else if (!info[5].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'ArrayBuffer' or 'null' for argument 6 'pData'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'ArrayBuffer' or 'null' for argument 6 'pData' in 'vkGetQueryPoolResults'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless6;
+  if (!info[6].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 7 'stride' in 'vkGetQueryPoolResults'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p6 = static_cast<uint64_t>(info[6].As<Napi::BigInt>().Int64Value(&lossless6));
 
+  if (!info[7].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 8 'flags' in 'vkGetQueryPoolResults'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p7 = static_cast<int32_t>(info[7].As<Napi::Number>().Int64Value());
   int32_t out = vkGetQueryPoolResults(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -3500,7 +3624,7 @@ Napi::Value _vkCreateBuffer(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3520,7 +3644,7 @@ Napi::Value _vkCreateBuffer(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBufferCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBufferCreateInfo' or 'null' for argument 2 'pCreateInfo' in 'vkCreateBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3539,7 +3663,7 @@ Napi::Value _vkCreateBuffer(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'pBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'pBuffer' in 'vkCreateBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkCreateBuffer(
@@ -3571,7 +3695,7 @@ Napi::Value _vkDestroyBuffer(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroyBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3589,7 +3713,7 @@ Napi::Value _vkDestroyBuffer(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer' in 'vkDestroyBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3621,7 +3745,7 @@ Napi::Value _vkCreateBufferView(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateBufferView'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3641,7 +3765,7 @@ Napi::Value _vkCreateBufferView(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBufferViewCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBufferViewCreateInfo' or 'null' for argument 2 'pCreateInfo' in 'vkCreateBufferView'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3660,7 +3784,7 @@ Napi::Value _vkCreateBufferView(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBufferView' or 'null' for argument 4 'pView'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBufferView' or 'null' for argument 4 'pView' in 'vkCreateBufferView'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkCreateBufferView(
@@ -3692,7 +3816,7 @@ Napi::Value _vkDestroyBufferView(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroyBufferView'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3710,7 +3834,7 @@ Napi::Value _vkDestroyBufferView(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBufferView' or 'null' for argument 2 'bufferView'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBufferView' or 'null' for argument 2 'bufferView' in 'vkDestroyBufferView'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3742,7 +3866,7 @@ Napi::Value _vkCreateImage(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3762,7 +3886,7 @@ Napi::Value _vkCreateImage(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImageCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImageCreateInfo' or 'null' for argument 2 'pCreateInfo' in 'vkCreateImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3781,7 +3905,7 @@ Napi::Value _vkCreateImage(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 4 'pImage'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 4 'pImage' in 'vkCreateImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkCreateImage(
@@ -3813,7 +3937,7 @@ Napi::Value _vkDestroyImage(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroyImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3831,7 +3955,7 @@ Napi::Value _vkDestroyImage(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'image'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'image' in 'vkDestroyImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3863,7 +3987,7 @@ Napi::Value _vkGetImageSubresourceLayout(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetImageSubresourceLayout'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3881,7 +4005,7 @@ Napi::Value _vkGetImageSubresourceLayout(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'image'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'image' in 'vkGetImageSubresourceLayout'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3901,7 +4025,7 @@ Napi::Value _vkGetImageSubresourceLayout(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImageSubresource' or 'null' for argument 3 'pSubresource'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImageSubresource' or 'null' for argument 3 'pSubresource' in 'vkGetImageSubresourceLayout'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3921,7 +4045,7 @@ Napi::Value _vkGetImageSubresourceLayout(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSubresourceLayout' or 'null' for argument 4 'pLayout'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSubresourceLayout' or 'null' for argument 4 'pLayout' in 'vkGetImageSubresourceLayout'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkGetImageSubresourceLayout(
@@ -3959,7 +4083,7 @@ Napi::Value _vkCreateImageView(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateImageView'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3979,7 +4103,7 @@ Napi::Value _vkCreateImageView(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImageViewCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImageViewCreateInfo' or 'null' for argument 2 'pCreateInfo' in 'vkCreateImageView'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -3998,7 +4122,7 @@ Napi::Value _vkCreateImageView(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImageView' or 'null' for argument 4 'pView'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImageView' or 'null' for argument 4 'pView' in 'vkCreateImageView'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkCreateImageView(
@@ -4030,7 +4154,7 @@ Napi::Value _vkDestroyImageView(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroyImageView'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4048,7 +4172,7 @@ Napi::Value _vkDestroyImageView(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImageView' or 'null' for argument 2 'imageView'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImageView' or 'null' for argument 2 'imageView' in 'vkDestroyImageView'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4080,7 +4204,7 @@ Napi::Value _vkCreateShaderModule(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateShaderModule'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4100,7 +4224,7 @@ Napi::Value _vkCreateShaderModule(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkShaderModuleCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkShaderModuleCreateInfo' or 'null' for argument 2 'pCreateInfo' in 'vkCreateShaderModule'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4119,7 +4243,7 @@ Napi::Value _vkCreateShaderModule(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkShaderModule' or 'null' for argument 4 'pShaderModule'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkShaderModule' or 'null' for argument 4 'pShaderModule' in 'vkCreateShaderModule'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkCreateShaderModule(
@@ -4151,7 +4275,7 @@ Napi::Value _vkDestroyShaderModule(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroyShaderModule'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4169,7 +4293,7 @@ Napi::Value _vkDestroyShaderModule(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkShaderModule' or 'null' for argument 2 'shaderModule'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkShaderModule' or 'null' for argument 2 'shaderModule' in 'vkDestroyShaderModule'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4201,7 +4325,7 @@ Napi::Value _vkCreatePipelineCache(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreatePipelineCache'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4221,7 +4345,7 @@ Napi::Value _vkCreatePipelineCache(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPipelineCacheCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineCacheCreateInfo' or 'null' for argument 2 'pCreateInfo' in 'vkCreatePipelineCache'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4240,7 +4364,7 @@ Napi::Value _vkCreatePipelineCache(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPipelineCache' or 'null' for argument 4 'pPipelineCache'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineCache' or 'null' for argument 4 'pPipelineCache' in 'vkCreatePipelineCache'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkCreatePipelineCache(
@@ -4272,7 +4396,7 @@ Napi::Value _vkDestroyPipelineCache(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroyPipelineCache'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4290,7 +4414,7 @@ Napi::Value _vkDestroyPipelineCache(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPipelineCache' or 'null' for argument 2 'pipelineCache'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineCache' or 'null' for argument 2 'pipelineCache' in 'vkDestroyPipelineCache'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4322,7 +4446,7 @@ Napi::Value _vkGetPipelineCacheData(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetPipelineCacheData'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4340,7 +4464,7 @@ Napi::Value _vkGetPipelineCacheData(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPipelineCache' or 'null' for argument 2 'pipelineCache'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineCache' or 'null' for argument 2 'pipelineCache' in 'vkGetPipelineCacheData'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4349,14 +4473,14 @@ Napi::Value _vkGetPipelineCacheData(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 3 'pDataSize' in 'vkGetPipelineCacheData'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
     
     $p2 = static_cast<size_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pDataSize'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pDataSize' in 'vkGetPipelineCacheData'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4365,7 +4489,7 @@ Napi::Value _vkGetPipelineCacheData(const Napi::CallbackInfo& info) {
     Napi::ArrayBuffer buf = info[3].As<Napi::ArrayBuffer>();
     $p3 = buf.Data();
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'ArrayBuffer' or 'null' for argument 4 'pData'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'ArrayBuffer' or 'null' for argument 4 'pData' in 'vkGetPipelineCacheData'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkGetPipelineCacheData(
@@ -4399,7 +4523,7 @@ Napi::Value _vkMergePipelineCaches(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkMergePipelineCaches'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4417,10 +4541,14 @@ Napi::Value _vkMergePipelineCaches(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPipelineCache' or 'null' for argument 2 'dstCache'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineCache' or 'null' for argument 2 'dstCache' in 'vkMergePipelineCaches'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'srcCacheCount' in 'vkMergePipelineCaches'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkPipelineCache>> $p3 = nullptr;
@@ -4437,7 +4565,7 @@ Napi::Value _vkMergePipelineCaches(const Napi::CallbackInfo& info) {
     };
     $p3 = std::make_shared<std::vector<VkPipelineCache>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pSrcCaches'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pSrcCaches' in 'vkMergePipelineCaches'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4470,7 +4598,7 @@ Napi::Value _vkCreateGraphicsPipelines(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateGraphicsPipelines'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4488,10 +4616,14 @@ Napi::Value _vkCreateGraphicsPipelines(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPipelineCache' or 'null' for argument 2 'pipelineCache'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineCache' or 'null' for argument 2 'pipelineCache' in 'vkCreateGraphicsPipelines'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'createInfoCount' in 'vkCreateGraphicsPipelines'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkGraphicsPipelineCreateInfo>> $p3 = nullptr;
@@ -4517,7 +4649,7 @@ Napi::Value _vkCreateGraphicsPipelines(const Napi::CallbackInfo& info) {
     };
     $p3 = std::make_shared<std::vector<VkGraphicsPipelineCreateInfo>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pCreateInfos'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pCreateInfos' in 'vkCreateGraphicsPipelines'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4537,7 +4669,7 @@ Napi::Value _vkCreateGraphicsPipelines(const Napi::CallbackInfo& info) {
     };
     $p5 = std::make_shared<std::vector<VkPipeline>>(data);
   } else if (!info[5].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 6 'pPipelines'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 6 'pPipelines' in 'vkCreateGraphicsPipelines'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4584,7 +4716,7 @@ Napi::Value _vkCreateComputePipelines(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateComputePipelines'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4602,10 +4734,14 @@ Napi::Value _vkCreateComputePipelines(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPipelineCache' or 'null' for argument 2 'pipelineCache'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineCache' or 'null' for argument 2 'pipelineCache' in 'vkCreateComputePipelines'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'createInfoCount' in 'vkCreateComputePipelines'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkComputePipelineCreateInfo>> $p3 = nullptr;
@@ -4631,7 +4767,7 @@ Napi::Value _vkCreateComputePipelines(const Napi::CallbackInfo& info) {
     };
     $p3 = std::make_shared<std::vector<VkComputePipelineCreateInfo>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pCreateInfos'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pCreateInfos' in 'vkCreateComputePipelines'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4651,7 +4787,7 @@ Napi::Value _vkCreateComputePipelines(const Napi::CallbackInfo& info) {
     };
     $p5 = std::make_shared<std::vector<VkPipeline>>(data);
   } else if (!info[5].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 6 'pPipelines'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 6 'pPipelines' in 'vkCreateComputePipelines'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4698,7 +4834,7 @@ Napi::Value _vkDestroyPipeline(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroyPipeline'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4716,7 +4852,7 @@ Napi::Value _vkDestroyPipeline(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPipeline' or 'null' for argument 2 'pipeline'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipeline' or 'null' for argument 2 'pipeline' in 'vkDestroyPipeline'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4748,7 +4884,7 @@ Napi::Value _vkCreatePipelineLayout(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreatePipelineLayout'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4768,7 +4904,7 @@ Napi::Value _vkCreatePipelineLayout(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPipelineLayoutCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineLayoutCreateInfo' or 'null' for argument 2 'pCreateInfo' in 'vkCreatePipelineLayout'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4787,7 +4923,7 @@ Napi::Value _vkCreatePipelineLayout(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPipelineLayout' or 'null' for argument 4 'pPipelineLayout'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineLayout' or 'null' for argument 4 'pPipelineLayout' in 'vkCreatePipelineLayout'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkCreatePipelineLayout(
@@ -4819,7 +4955,7 @@ Napi::Value _vkDestroyPipelineLayout(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroyPipelineLayout'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4837,7 +4973,7 @@ Napi::Value _vkDestroyPipelineLayout(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPipelineLayout' or 'null' for argument 2 'pipelineLayout'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineLayout' or 'null' for argument 2 'pipelineLayout' in 'vkDestroyPipelineLayout'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4869,7 +5005,7 @@ Napi::Value _vkCreateSampler(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateSampler'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4889,7 +5025,7 @@ Napi::Value _vkCreateSampler(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSamplerCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSamplerCreateInfo' or 'null' for argument 2 'pCreateInfo' in 'vkCreateSampler'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4908,7 +5044,7 @@ Napi::Value _vkCreateSampler(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSampler' or 'null' for argument 4 'pSampler'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSampler' or 'null' for argument 4 'pSampler' in 'vkCreateSampler'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkCreateSampler(
@@ -4940,7 +5076,7 @@ Napi::Value _vkDestroySampler(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroySampler'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4958,7 +5094,7 @@ Napi::Value _vkDestroySampler(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSampler' or 'null' for argument 2 'sampler'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSampler' or 'null' for argument 2 'sampler' in 'vkDestroySampler'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -4990,7 +5126,7 @@ Napi::Value _vkCreateDescriptorSetLayout(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateDescriptorSetLayout'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5010,7 +5146,7 @@ Napi::Value _vkCreateDescriptorSetLayout(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDescriptorSetLayoutCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorSetLayoutCreateInfo' or 'null' for argument 2 'pCreateInfo' in 'vkCreateDescriptorSetLayout'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5029,7 +5165,7 @@ Napi::Value _vkCreateDescriptorSetLayout(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDescriptorSetLayout' or 'null' for argument 4 'pSetLayout'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorSetLayout' or 'null' for argument 4 'pSetLayout' in 'vkCreateDescriptorSetLayout'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkCreateDescriptorSetLayout(
@@ -5061,7 +5197,7 @@ Napi::Value _vkDestroyDescriptorSetLayout(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroyDescriptorSetLayout'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5079,7 +5215,7 @@ Napi::Value _vkDestroyDescriptorSetLayout(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDescriptorSetLayout' or 'null' for argument 2 'descriptorSetLayout'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorSetLayout' or 'null' for argument 2 'descriptorSetLayout' in 'vkDestroyDescriptorSetLayout'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5111,7 +5247,7 @@ Napi::Value _vkCreateDescriptorPool(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateDescriptorPool'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5131,7 +5267,7 @@ Napi::Value _vkCreateDescriptorPool(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDescriptorPoolCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorPoolCreateInfo' or 'null' for argument 2 'pCreateInfo' in 'vkCreateDescriptorPool'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5150,7 +5286,7 @@ Napi::Value _vkCreateDescriptorPool(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDescriptorPool' or 'null' for argument 4 'pDescriptorPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorPool' or 'null' for argument 4 'pDescriptorPool' in 'vkCreateDescriptorPool'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkCreateDescriptorPool(
@@ -5182,7 +5318,7 @@ Napi::Value _vkDestroyDescriptorPool(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroyDescriptorPool'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5200,7 +5336,7 @@ Napi::Value _vkDestroyDescriptorPool(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDescriptorPool' or 'null' for argument 2 'descriptorPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorPool' or 'null' for argument 2 'descriptorPool' in 'vkDestroyDescriptorPool'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5232,7 +5368,7 @@ Napi::Value _vkResetDescriptorPool(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkResetDescriptorPool'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5250,10 +5386,14 @@ Napi::Value _vkResetDescriptorPool(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDescriptorPool' or 'null' for argument 2 'descriptorPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorPool' or 'null' for argument 2 'descriptorPool' in 'vkResetDescriptorPool'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'flags' in 'vkResetDescriptorPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p2 = static_cast<int32_t>(info[2].As<Napi::Number>().Int64Value());
   int32_t out = vkResetDescriptorPool(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -5283,7 +5423,7 @@ Napi::Value _vkAllocateDescriptorSets(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkAllocateDescriptorSets'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5303,7 +5443,7 @@ Napi::Value _vkAllocateDescriptorSets(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDescriptorSetAllocateInfo' or 'null' for argument 2 'pAllocateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorSetAllocateInfo' or 'null' for argument 2 'pAllocateInfo' in 'vkAllocateDescriptorSets'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5321,7 +5461,7 @@ Napi::Value _vkAllocateDescriptorSets(const Napi::CallbackInfo& info) {
     };
     $p2 = std::make_shared<std::vector<VkDescriptorSet>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pDescriptorSets'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pDescriptorSets' in 'vkAllocateDescriptorSets'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5365,7 +5505,7 @@ Napi::Value _vkFreeDescriptorSets(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkFreeDescriptorSets'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5383,10 +5523,14 @@ Napi::Value _vkFreeDescriptorSets(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDescriptorPool' or 'null' for argument 2 'descriptorPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorPool' or 'null' for argument 2 'descriptorPool' in 'vkFreeDescriptorSets'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'descriptorSetCount' in 'vkFreeDescriptorSets'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkDescriptorSet>> $p3 = nullptr;
@@ -5403,7 +5547,7 @@ Napi::Value _vkFreeDescriptorSets(const Napi::CallbackInfo& info) {
     };
     $p3 = std::make_shared<std::vector<VkDescriptorSet>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pDescriptorSets'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pDescriptorSets' in 'vkFreeDescriptorSets'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5436,10 +5580,14 @@ Napi::Value _vkUpdateDescriptorSets(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkUpdateDescriptorSets'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'descriptorWriteCount' in 'vkUpdateDescriptorSets'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkWriteDescriptorSet>> $p2 = nullptr;
@@ -5465,11 +5613,15 @@ Napi::Value _vkUpdateDescriptorSets(const Napi::CallbackInfo& info) {
     };
     $p2 = std::make_shared<std::vector<VkWriteDescriptorSet>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pDescriptorWrites'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pDescriptorWrites' in 'vkUpdateDescriptorSets'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'descriptorCopyCount' in 'vkUpdateDescriptorSets'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkCopyDescriptorSet>> $p4 = nullptr;
@@ -5495,7 +5647,7 @@ Napi::Value _vkUpdateDescriptorSets(const Napi::CallbackInfo& info) {
     };
     $p4 = std::make_shared<std::vector<VkCopyDescriptorSet>>(data);
   } else if (!info[4].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 5 'pDescriptorCopies'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 5 'pDescriptorCopies' in 'vkUpdateDescriptorSets'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5529,7 +5681,7 @@ Napi::Value _vkCreateFramebuffer(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateFramebuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5549,7 +5701,7 @@ Napi::Value _vkCreateFramebuffer(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkFramebufferCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFramebufferCreateInfo' or 'null' for argument 2 'pCreateInfo' in 'vkCreateFramebuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5568,7 +5720,7 @@ Napi::Value _vkCreateFramebuffer(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkFramebuffer' or 'null' for argument 4 'pFramebuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFramebuffer' or 'null' for argument 4 'pFramebuffer' in 'vkCreateFramebuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkCreateFramebuffer(
@@ -5600,7 +5752,7 @@ Napi::Value _vkDestroyFramebuffer(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroyFramebuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5618,7 +5770,7 @@ Napi::Value _vkDestroyFramebuffer(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkFramebuffer' or 'null' for argument 2 'framebuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFramebuffer' or 'null' for argument 2 'framebuffer' in 'vkDestroyFramebuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5650,7 +5802,7 @@ Napi::Value _vkCreateRenderPass(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateRenderPass'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5670,7 +5822,7 @@ Napi::Value _vkCreateRenderPass(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkRenderPassCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkRenderPassCreateInfo' or 'null' for argument 2 'pCreateInfo' in 'vkCreateRenderPass'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5689,7 +5841,7 @@ Napi::Value _vkCreateRenderPass(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkRenderPass' or 'null' for argument 4 'pRenderPass'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkRenderPass' or 'null' for argument 4 'pRenderPass' in 'vkCreateRenderPass'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkCreateRenderPass(
@@ -5721,7 +5873,7 @@ Napi::Value _vkDestroyRenderPass(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroyRenderPass'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5739,7 +5891,7 @@ Napi::Value _vkDestroyRenderPass(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkRenderPass' or 'null' for argument 2 'renderPass'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkRenderPass' or 'null' for argument 2 'renderPass' in 'vkDestroyRenderPass'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5771,7 +5923,7 @@ Napi::Value _vkGetRenderAreaGranularity(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetRenderAreaGranularity'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5789,7 +5941,7 @@ Napi::Value _vkGetRenderAreaGranularity(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkRenderPass' or 'null' for argument 2 'renderPass'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkRenderPass' or 'null' for argument 2 'renderPass' in 'vkGetRenderAreaGranularity'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5809,7 +5961,7 @@ Napi::Value _vkGetRenderAreaGranularity(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkExtent2D' or 'null' for argument 3 'pGranularity'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkExtent2D' or 'null' for argument 3 'pGranularity' in 'vkGetRenderAreaGranularity'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkGetRenderAreaGranularity(
@@ -5846,7 +5998,7 @@ Napi::Value _vkCreateCommandPool(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateCommandPool'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5866,7 +6018,7 @@ Napi::Value _vkCreateCommandPool(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandPoolCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandPoolCreateInfo' or 'null' for argument 2 'pCreateInfo' in 'vkCreateCommandPool'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5885,7 +6037,7 @@ Napi::Value _vkCreateCommandPool(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandPool' or 'null' for argument 4 'pCommandPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandPool' or 'null' for argument 4 'pCommandPool' in 'vkCreateCommandPool'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkCreateCommandPool(
@@ -5917,7 +6069,7 @@ Napi::Value _vkDestroyCommandPool(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroyCommandPool'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5935,7 +6087,7 @@ Napi::Value _vkDestroyCommandPool(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandPool' or 'null' for argument 2 'commandPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandPool' or 'null' for argument 2 'commandPool' in 'vkDestroyCommandPool'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5967,7 +6119,7 @@ Napi::Value _vkResetCommandPool(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkResetCommandPool'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -5985,10 +6137,14 @@ Napi::Value _vkResetCommandPool(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandPool' or 'null' for argument 2 'commandPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandPool' or 'null' for argument 2 'commandPool' in 'vkResetCommandPool'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'flags' in 'vkResetCommandPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p2 = static_cast<int32_t>(info[2].As<Napi::Number>().Int64Value());
   int32_t out = vkResetCommandPool(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -6018,7 +6174,7 @@ Napi::Value _vkAllocateCommandBuffers(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkAllocateCommandBuffers'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -6038,7 +6194,7 @@ Napi::Value _vkAllocateCommandBuffers(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBufferAllocateInfo' or 'null' for argument 2 'pAllocateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBufferAllocateInfo' or 'null' for argument 2 'pAllocateInfo' in 'vkAllocateCommandBuffers'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -6056,7 +6212,7 @@ Napi::Value _vkAllocateCommandBuffers(const Napi::CallbackInfo& info) {
     };
     $p2 = std::make_shared<std::vector<VkCommandBuffer>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pCommandBuffers'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pCommandBuffers' in 'vkAllocateCommandBuffers'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -6100,7 +6256,7 @@ Napi::Value _vkFreeCommandBuffers(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkFreeCommandBuffers'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -6118,10 +6274,14 @@ Napi::Value _vkFreeCommandBuffers(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandPool' or 'null' for argument 2 'commandPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandPool' or 'null' for argument 2 'commandPool' in 'vkFreeCommandBuffers'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'commandBufferCount' in 'vkFreeCommandBuffers'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkCommandBuffer>> $p3 = nullptr;
@@ -6138,7 +6298,7 @@ Napi::Value _vkFreeCommandBuffers(const Napi::CallbackInfo& info) {
     };
     $p3 = std::make_shared<std::vector<VkCommandBuffer>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pCommandBuffers'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pCommandBuffers' in 'vkFreeCommandBuffers'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -6171,7 +6331,7 @@ Napi::Value _vkBeginCommandBuffer(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkBeginCommandBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -6191,7 +6351,7 @@ Napi::Value _vkBeginCommandBuffer(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBufferBeginInfo' or 'null' for argument 2 'pBeginInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBufferBeginInfo' or 'null' for argument 2 'pBeginInfo' in 'vkBeginCommandBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkBeginCommandBuffer(
@@ -6221,7 +6381,7 @@ Napi::Value _vkEndCommandBuffer(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkEndCommandBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkEndCommandBuffer(
@@ -6250,10 +6410,14 @@ Napi::Value _vkResetCommandBuffer(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkResetCommandBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'flags' in 'vkResetCommandBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
   int32_t out = vkResetCommandBuffer(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -6282,10 +6446,14 @@ Napi::Value _vkCmdBindPipeline(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdBindPipeline'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'pipelineBindPoint' in 'vkCmdBindPipeline'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkPipelineBindPoint $p1 = static_cast<VkPipelineBindPoint>(info[1].As<Napi::Number>().Int64Value());
 
   Napi::Object obj2;
@@ -6302,7 +6470,7 @@ Napi::Value _vkCmdBindPipeline(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPipeline' or 'null' for argument 3 'pipeline'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipeline' or 'null' for argument 3 'pipeline' in 'vkCmdBindPipeline'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkCmdBindPipeline(
@@ -6333,12 +6501,20 @@ Napi::Value _vkCmdSetViewport(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdSetViewport'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'firstViewport' in 'vkCmdSetViewport'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'viewportCount' in 'vkCmdSetViewport'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkViewport>> $p3 = nullptr;
@@ -6364,7 +6540,7 @@ Napi::Value _vkCmdSetViewport(const Napi::CallbackInfo& info) {
     };
     $p3 = std::make_shared<std::vector<VkViewport>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pViewports'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pViewports' in 'vkCmdSetViewport'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -6397,12 +6573,20 @@ Napi::Value _vkCmdSetScissor(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdSetScissor'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'firstScissor' in 'vkCmdSetScissor'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'scissorCount' in 'vkCmdSetScissor'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkRect2D>> $p3 = nullptr;
@@ -6428,7 +6612,7 @@ Napi::Value _vkCmdSetScissor(const Napi::CallbackInfo& info) {
     };
     $p3 = std::make_shared<std::vector<VkRect2D>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pScissors'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pScissors' in 'vkCmdSetScissor'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -6461,10 +6645,14 @@ Napi::Value _vkCmdSetLineWidth(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdSetLineWidth'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'lineWidth' in 'vkCmdSetLineWidth'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   float $p1 = static_cast<float>(info[1].As<Napi::Number>().Int64Value());
 vkCmdSetLineWidth(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -6493,14 +6681,26 @@ Napi::Value _vkCmdSetDepthBias(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdSetDepthBias'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'depthBiasConstantFactor' in 'vkCmdSetDepthBias'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   float $p1 = static_cast<float>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'depthBiasClamp' in 'vkCmdSetDepthBias'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   float $p2 = static_cast<float>(info[2].As<Napi::Number>().Int64Value());
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'depthBiasSlopeFactor' in 'vkCmdSetDepthBias'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   float $p3 = static_cast<float>(info[3].As<Napi::Number>().Int64Value());
 vkCmdSetDepthBias(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -6531,7 +6731,7 @@ Napi::Value _vkCmdSetBlendConstants(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdSetBlendConstants'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -6539,14 +6739,14 @@ Napi::Value _vkCmdSetBlendConstants(const Napi::CallbackInfo& info) {
     if (info[1].IsArray()) {
       // validate length
       if (info[1].As<Napi::Array>().Length() != 4) {
-        Napi::RangeError::New(env, "Invalid array length for argument 2 'blendConstants'").ThrowAsJavaScriptException();
+        Napi::RangeError::New(env, "Invalid array length for argument 2 'blendConstants' in 'vkCmdSetBlendConstants'").ThrowAsJavaScriptException();
         return env.Undefined();
       } else {
         std::vector<float> data = createArrayOfV8Numbers<float>(info[1]);
         $p1 = std::make_shared<std::vector<float>>(data);
       }
     } else if (!info[1].IsNull()) {
-      Napi::TypeError::New(env, "Invalid type for argument 2 'blendConstants'").ThrowAsJavaScriptException();
+      Napi::TypeError::New(env, "Invalid type for argument 2 'blendConstants' in 'vkCmdSetBlendConstants'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
 vkCmdSetBlendConstants(
@@ -6576,12 +6776,20 @@ Napi::Value _vkCmdSetDepthBounds(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdSetDepthBounds'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'minDepthBounds' in 'vkCmdSetDepthBounds'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   float $p1 = static_cast<float>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'maxDepthBounds' in 'vkCmdSetDepthBounds'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   float $p2 = static_cast<float>(info[2].As<Napi::Number>().Int64Value());
 vkCmdSetDepthBounds(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -6611,12 +6819,20 @@ Napi::Value _vkCmdSetStencilCompareMask(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdSetStencilCompareMask'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'faceMask' in 'vkCmdSetStencilCompareMask'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'compareMask' in 'vkCmdSetStencilCompareMask'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 vkCmdSetStencilCompareMask(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -6646,12 +6862,20 @@ Napi::Value _vkCmdSetStencilWriteMask(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdSetStencilWriteMask'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'faceMask' in 'vkCmdSetStencilWriteMask'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'writeMask' in 'vkCmdSetStencilWriteMask'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 vkCmdSetStencilWriteMask(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -6681,12 +6905,20 @@ Napi::Value _vkCmdSetStencilReference(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdSetStencilReference'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'faceMask' in 'vkCmdSetStencilReference'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'reference' in 'vkCmdSetStencilReference'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 vkCmdSetStencilReference(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -6716,10 +6948,14 @@ Napi::Value _vkCmdBindDescriptorSets(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdBindDescriptorSets'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'pipelineBindPoint' in 'vkCmdBindDescriptorSets'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkPipelineBindPoint $p1 = static_cast<VkPipelineBindPoint>(info[1].As<Napi::Number>().Int64Value());
 
   Napi::Object obj2;
@@ -6736,12 +6972,20 @@ Napi::Value _vkCmdBindDescriptorSets(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPipelineLayout' or 'null' for argument 3 'layout'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineLayout' or 'null' for argument 3 'layout' in 'vkCmdBindDescriptorSets'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'firstSet' in 'vkCmdBindDescriptorSets'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'descriptorSetCount' in 'vkCmdBindDescriptorSets'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkDescriptorSet>> $p5 = nullptr;
@@ -6758,11 +7002,15 @@ Napi::Value _vkCmdBindDescriptorSets(const Napi::CallbackInfo& info) {
     };
     $p5 = std::make_shared<std::vector<VkDescriptorSet>>(data);
   } else if (!info[5].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 6 'pDescriptorSets'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 6 'pDescriptorSets' in 'vkCmdBindDescriptorSets'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
 
+  if (!info[6].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 7 'dynamicOffsetCount' in 'vkCmdBindDescriptorSets'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p6 = static_cast<uint32_t>(info[6].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<uint32_t*> $p7 = nullptr;
@@ -6770,13 +7018,13 @@ Napi::Value _vkCmdBindDescriptorSets(const Napi::CallbackInfo& info) {
   if (info[7].IsTypedArray()) {
 
     if (info[7].As<Napi::TypedArray>().TypedArrayType() != napi_uint32_array) {
-      Napi::TypeError::New(env, "Invalid type for argument 8 'pDynamicOffsets'").ThrowAsJavaScriptException();
+      Napi::TypeError::New(env, "Invalid type for argument 8 'pDynamicOffsets' in 'vkCmdBindDescriptorSets'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     uint32_t* data = getTypedArrayData<uint32_t>(info[7]);
     $p7 = std::make_shared<uint32_t*>(data);
   } else if (!info[7].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 8 'pDynamicOffsets'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 8 'pDynamicOffsets' in 'vkCmdBindDescriptorSets'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -6813,7 +7061,7 @@ Napi::Value _vkCmdBindIndexBuffer(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdBindIndexBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -6831,13 +7079,21 @@ Napi::Value _vkCmdBindIndexBuffer(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer' in 'vkCmdBindIndexBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless2;
+  if (!info[2].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'offset' in 'vkCmdBindIndexBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'indexType' in 'vkCmdBindIndexBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkIndexType $p3 = static_cast<VkIndexType>(info[3].As<Napi::Number>().Int64Value());
 vkCmdBindIndexBuffer(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -6868,12 +7124,20 @@ Napi::Value _vkCmdBindVertexBuffers(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdBindVertexBuffers'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'firstBinding' in 'vkCmdBindVertexBuffers'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'bindingCount' in 'vkCmdBindVertexBuffers'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkBuffer>> $p3 = nullptr;
@@ -6890,7 +7154,7 @@ Napi::Value _vkCmdBindVertexBuffers(const Napi::CallbackInfo& info) {
     };
     $p3 = std::make_shared<std::vector<VkBuffer>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pBuffers'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pBuffers' in 'vkCmdBindVertexBuffers'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -6900,13 +7164,13 @@ Napi::Value _vkCmdBindVertexBuffers(const Napi::CallbackInfo& info) {
   if (info[4].IsTypedArray()) {
 
     if (info[4].As<Napi::TypedArray>().TypedArrayType() != napi_biguint64_array) {
-      Napi::TypeError::New(env, "Invalid type for argument 5 'pOffsets'").ThrowAsJavaScriptException();
+      Napi::TypeError::New(env, "Invalid type for argument 5 'pOffsets' in 'vkCmdBindVertexBuffers'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     VkDeviceSize* data = getTypedArrayData<VkDeviceSize>(info[4]);
     $p4 = std::make_shared<VkDeviceSize*>(data);
   } else if (!info[4].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 5 'pOffsets'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 5 'pOffsets' in 'vkCmdBindVertexBuffers'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -6940,16 +7204,32 @@ Napi::Value _vkCmdDraw(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdDraw'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'vertexCount' in 'vkCmdDraw'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'instanceCount' in 'vkCmdDraw'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'firstVertex' in 'vkCmdDraw'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'firstInstance' in 'vkCmdDraw'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
 vkCmdDraw(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -6981,18 +7261,38 @@ Napi::Value _vkCmdDrawIndexed(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdDrawIndexed'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'indexCount' in 'vkCmdDrawIndexed'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'instanceCount' in 'vkCmdDrawIndexed'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'firstIndex' in 'vkCmdDrawIndexed'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'vertexOffset' in 'vkCmdDrawIndexed'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p4 = static_cast<int32_t>(info[4].As<Napi::Number>().Int64Value());
 
+  if (!info[5].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 6 'firstInstance' in 'vkCmdDrawIndexed'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p5 = static_cast<uint32_t>(info[5].As<Napi::Number>().Int64Value());
 vkCmdDrawIndexed(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -7025,7 +7325,7 @@ Napi::Value _vkCmdDrawIndirect(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdDrawIndirect'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -7043,15 +7343,27 @@ Napi::Value _vkCmdDrawIndirect(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer' in 'vkCmdDrawIndirect'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless2;
+  if (!info[2].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'offset' in 'vkCmdDrawIndirect'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'drawCount' in 'vkCmdDrawIndirect'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'stride' in 'vkCmdDrawIndirect'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
 vkCmdDrawIndirect(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -7083,7 +7395,7 @@ Napi::Value _vkCmdDrawIndexedIndirect(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdDrawIndexedIndirect'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -7101,15 +7413,27 @@ Napi::Value _vkCmdDrawIndexedIndirect(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer' in 'vkCmdDrawIndexedIndirect'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless2;
+  if (!info[2].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'offset' in 'vkCmdDrawIndexedIndirect'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'drawCount' in 'vkCmdDrawIndexedIndirect'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'stride' in 'vkCmdDrawIndexedIndirect'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
 vkCmdDrawIndexedIndirect(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -7141,14 +7465,26 @@ Napi::Value _vkCmdDispatch(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdDispatch'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'groupCountX' in 'vkCmdDispatch'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'groupCountY' in 'vkCmdDispatch'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'groupCountZ' in 'vkCmdDispatch'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 vkCmdDispatch(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -7179,7 +7515,7 @@ Napi::Value _vkCmdDispatchIndirect(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdDispatchIndirect'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -7197,11 +7533,15 @@ Napi::Value _vkCmdDispatchIndirect(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer' in 'vkCmdDispatchIndirect'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless2;
+  if (!info[2].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'offset' in 'vkCmdDispatchIndirect'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 vkCmdDispatchIndirect(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -7231,7 +7571,7 @@ Napi::Value _vkCmdCopyBuffer(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdCopyBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -7249,7 +7589,7 @@ Napi::Value _vkCmdCopyBuffer(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'srcBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'srcBuffer' in 'vkCmdCopyBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -7267,10 +7607,14 @@ Napi::Value _vkCmdCopyBuffer(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 3 'dstBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 3 'dstBuffer' in 'vkCmdCopyBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'regionCount' in 'vkCmdCopyBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkBufferCopy>> $p4 = nullptr;
@@ -7296,7 +7640,7 @@ Napi::Value _vkCmdCopyBuffer(const Napi::CallbackInfo& info) {
     };
     $p4 = std::make_shared<std::vector<VkBufferCopy>>(data);
   } else if (!info[4].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 5 'pRegions'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 5 'pRegions' in 'vkCmdCopyBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -7330,7 +7674,7 @@ Napi::Value _vkCmdCopyImage(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdCopyImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -7348,10 +7692,14 @@ Napi::Value _vkCmdCopyImage(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'srcImage'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'srcImage' in 'vkCmdCopyImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'srcImageLayout' in 'vkCmdCopyImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkImageLayout $p2 = static_cast<VkImageLayout>(info[2].As<Napi::Number>().Int64Value());
 
   Napi::Object obj3;
@@ -7368,12 +7716,20 @@ Napi::Value _vkCmdCopyImage(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 4 'dstImage'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 4 'dstImage' in 'vkCmdCopyImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'dstImageLayout' in 'vkCmdCopyImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkImageLayout $p4 = static_cast<VkImageLayout>(info[4].As<Napi::Number>().Int64Value());
 
+  if (!info[5].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 6 'regionCount' in 'vkCmdCopyImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p5 = static_cast<uint32_t>(info[5].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkImageCopy>> $p6 = nullptr;
@@ -7399,7 +7755,7 @@ Napi::Value _vkCmdCopyImage(const Napi::CallbackInfo& info) {
     };
     $p6 = std::make_shared<std::vector<VkImageCopy>>(data);
   } else if (!info[6].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 7 'pRegions'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 7 'pRegions' in 'vkCmdCopyImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -7435,7 +7791,7 @@ Napi::Value _vkCmdBlitImage(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdBlitImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -7453,10 +7809,14 @@ Napi::Value _vkCmdBlitImage(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'srcImage'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'srcImage' in 'vkCmdBlitImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'srcImageLayout' in 'vkCmdBlitImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkImageLayout $p2 = static_cast<VkImageLayout>(info[2].As<Napi::Number>().Int64Value());
 
   Napi::Object obj3;
@@ -7473,12 +7833,20 @@ Napi::Value _vkCmdBlitImage(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 4 'dstImage'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 4 'dstImage' in 'vkCmdBlitImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'dstImageLayout' in 'vkCmdBlitImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkImageLayout $p4 = static_cast<VkImageLayout>(info[4].As<Napi::Number>().Int64Value());
 
+  if (!info[5].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 6 'regionCount' in 'vkCmdBlitImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p5 = static_cast<uint32_t>(info[5].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkImageBlit>> $p6 = nullptr;
@@ -7504,11 +7872,15 @@ Napi::Value _vkCmdBlitImage(const Napi::CallbackInfo& info) {
     };
     $p6 = std::make_shared<std::vector<VkImageBlit>>(data);
   } else if (!info[6].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 7 'pRegions'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 7 'pRegions' in 'vkCmdBlitImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
 
+  if (!info[7].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 8 'filter' in 'vkCmdBlitImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkFilter $p7 = static_cast<VkFilter>(info[7].As<Napi::Number>().Int64Value());
 vkCmdBlitImage(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -7543,7 +7915,7 @@ Napi::Value _vkCmdCopyBufferToImage(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdCopyBufferToImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -7561,7 +7933,7 @@ Napi::Value _vkCmdCopyBufferToImage(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'srcBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'srcBuffer' in 'vkCmdCopyBufferToImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -7579,12 +7951,20 @@ Napi::Value _vkCmdCopyBufferToImage(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 3 'dstImage'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 3 'dstImage' in 'vkCmdCopyBufferToImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'dstImageLayout' in 'vkCmdCopyBufferToImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkImageLayout $p3 = static_cast<VkImageLayout>(info[3].As<Napi::Number>().Int64Value());
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'regionCount' in 'vkCmdCopyBufferToImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkBufferImageCopy>> $p5 = nullptr;
@@ -7610,7 +7990,7 @@ Napi::Value _vkCmdCopyBufferToImage(const Napi::CallbackInfo& info) {
     };
     $p5 = std::make_shared<std::vector<VkBufferImageCopy>>(data);
   } else if (!info[5].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 6 'pRegions'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 6 'pRegions' in 'vkCmdCopyBufferToImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -7645,7 +8025,7 @@ Napi::Value _vkCmdCopyImageToBuffer(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdCopyImageToBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -7663,10 +8043,14 @@ Napi::Value _vkCmdCopyImageToBuffer(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'srcImage'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'srcImage' in 'vkCmdCopyImageToBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'srcImageLayout' in 'vkCmdCopyImageToBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkImageLayout $p2 = static_cast<VkImageLayout>(info[2].As<Napi::Number>().Int64Value());
 
   Napi::Object obj3;
@@ -7683,10 +8067,14 @@ Napi::Value _vkCmdCopyImageToBuffer(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'dstBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'dstBuffer' in 'vkCmdCopyImageToBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'regionCount' in 'vkCmdCopyImageToBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkBufferImageCopy>> $p5 = nullptr;
@@ -7712,7 +8100,7 @@ Napi::Value _vkCmdCopyImageToBuffer(const Napi::CallbackInfo& info) {
     };
     $p5 = std::make_shared<std::vector<VkBufferImageCopy>>(data);
   } else if (!info[5].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 6 'pRegions'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 6 'pRegions' in 'vkCmdCopyImageToBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -7747,7 +8135,7 @@ Napi::Value _vkCmdUpdateBuffer(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdUpdateBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -7765,14 +8153,22 @@ Napi::Value _vkCmdUpdateBuffer(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'dstBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'dstBuffer' in 'vkCmdUpdateBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless2;
+  if (!info[2].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'dstOffset' in 'vkCmdUpdateBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
   bool lossless3;
+  if (!info[3].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 4 'dataSize' in 'vkCmdUpdateBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
 
   void* $p4 = nullptr;
@@ -7780,7 +8176,7 @@ Napi::Value _vkCmdUpdateBuffer(const Napi::CallbackInfo& info) {
     Napi::ArrayBuffer buf = info[4].As<Napi::ArrayBuffer>();
     $p4 = buf.Data();
   } else if (!info[4].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'ArrayBuffer' or 'null' for argument 5 'pData'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'ArrayBuffer' or 'null' for argument 5 'pData' in 'vkCmdUpdateBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkCmdUpdateBuffer(
@@ -7813,7 +8209,7 @@ Napi::Value _vkCmdFillBuffer(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdFillBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -7831,16 +8227,28 @@ Napi::Value _vkCmdFillBuffer(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'dstBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'dstBuffer' in 'vkCmdFillBuffer'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless2;
+  if (!info[2].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'dstOffset' in 'vkCmdFillBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
   bool lossless3;
+  if (!info[3].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 4 'size' in 'vkCmdFillBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'data' in 'vkCmdFillBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
 vkCmdFillBuffer(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -7872,7 +8280,7 @@ Napi::Value _vkCmdClearColorImage(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdClearColorImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -7890,10 +8298,14 @@ Napi::Value _vkCmdClearColorImage(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'image'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'image' in 'vkCmdClearColorImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'imageLayout' in 'vkCmdClearColorImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkImageLayout $p2 = static_cast<VkImageLayout>(info[2].As<Napi::Number>().Int64Value());
 
   Napi::Object obj3;
@@ -7912,10 +8324,14 @@ Napi::Value _vkCmdClearColorImage(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkClearColorValue' or 'null' for argument 4 'pColor'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkClearColorValue' or 'null' for argument 4 'pColor' in 'vkCmdClearColorImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'rangeCount' in 'vkCmdClearColorImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkImageSubresourceRange>> $p5 = nullptr;
@@ -7941,7 +8357,7 @@ Napi::Value _vkCmdClearColorImage(const Napi::CallbackInfo& info) {
     };
     $p5 = std::make_shared<std::vector<VkImageSubresourceRange>>(data);
   } else if (!info[5].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 6 'pRanges'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 6 'pRanges' in 'vkCmdClearColorImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -7976,7 +8392,7 @@ Napi::Value _vkCmdClearDepthStencilImage(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdClearDepthStencilImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -7994,10 +8410,14 @@ Napi::Value _vkCmdClearDepthStencilImage(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'image'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'image' in 'vkCmdClearDepthStencilImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'imageLayout' in 'vkCmdClearDepthStencilImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkImageLayout $p2 = static_cast<VkImageLayout>(info[2].As<Napi::Number>().Int64Value());
 
   Napi::Object obj3;
@@ -8016,10 +8436,14 @@ Napi::Value _vkCmdClearDepthStencilImage(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkClearDepthStencilValue' or 'null' for argument 4 'pDepthStencil'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkClearDepthStencilValue' or 'null' for argument 4 'pDepthStencil' in 'vkCmdClearDepthStencilImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'rangeCount' in 'vkCmdClearDepthStencilImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkImageSubresourceRange>> $p5 = nullptr;
@@ -8045,7 +8469,7 @@ Napi::Value _vkCmdClearDepthStencilImage(const Napi::CallbackInfo& info) {
     };
     $p5 = std::make_shared<std::vector<VkImageSubresourceRange>>(data);
   } else if (!info[5].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 6 'pRanges'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 6 'pRanges' in 'vkCmdClearDepthStencilImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -8080,10 +8504,14 @@ Napi::Value _vkCmdClearAttachments(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdClearAttachments'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'attachmentCount' in 'vkCmdClearAttachments'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkClearAttachment>> $p2 = nullptr;
@@ -8109,11 +8537,15 @@ Napi::Value _vkCmdClearAttachments(const Napi::CallbackInfo& info) {
     };
     $p2 = std::make_shared<std::vector<VkClearAttachment>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pAttachments'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pAttachments' in 'vkCmdClearAttachments'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'rectCount' in 'vkCmdClearAttachments'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkClearRect>> $p4 = nullptr;
@@ -8139,7 +8571,7 @@ Napi::Value _vkCmdClearAttachments(const Napi::CallbackInfo& info) {
     };
     $p4 = std::make_shared<std::vector<VkClearRect>>(data);
   } else if (!info[4].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 5 'pRects'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 5 'pRects' in 'vkCmdClearAttachments'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -8173,7 +8605,7 @@ Napi::Value _vkCmdResolveImage(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdResolveImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -8191,10 +8623,14 @@ Napi::Value _vkCmdResolveImage(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'srcImage'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'srcImage' in 'vkCmdResolveImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'srcImageLayout' in 'vkCmdResolveImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkImageLayout $p2 = static_cast<VkImageLayout>(info[2].As<Napi::Number>().Int64Value());
 
   Napi::Object obj3;
@@ -8211,12 +8647,20 @@ Napi::Value _vkCmdResolveImage(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 4 'dstImage'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 4 'dstImage' in 'vkCmdResolveImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'dstImageLayout' in 'vkCmdResolveImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkImageLayout $p4 = static_cast<VkImageLayout>(info[4].As<Napi::Number>().Int64Value());
 
+  if (!info[5].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 6 'regionCount' in 'vkCmdResolveImage'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p5 = static_cast<uint32_t>(info[5].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkImageResolve>> $p6 = nullptr;
@@ -8242,7 +8686,7 @@ Napi::Value _vkCmdResolveImage(const Napi::CallbackInfo& info) {
     };
     $p6 = std::make_shared<std::vector<VkImageResolve>>(data);
   } else if (!info[6].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 7 'pRegions'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 7 'pRegions' in 'vkCmdResolveImage'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -8278,7 +8722,7 @@ Napi::Value _vkCmdSetEvent(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdSetEvent'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -8296,10 +8740,14 @@ Napi::Value _vkCmdSetEvent(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkEvent' or 'null' for argument 2 'event'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkEvent' or 'null' for argument 2 'event' in 'vkCmdSetEvent'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'stageMask' in 'vkCmdSetEvent'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p2 = static_cast<int32_t>(info[2].As<Napi::Number>().Int64Value());
 vkCmdSetEvent(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -8329,7 +8777,7 @@ Napi::Value _vkCmdResetEvent(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdResetEvent'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -8347,10 +8795,14 @@ Napi::Value _vkCmdResetEvent(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkEvent' or 'null' for argument 2 'event'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkEvent' or 'null' for argument 2 'event' in 'vkCmdResetEvent'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'stageMask' in 'vkCmdResetEvent'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p2 = static_cast<int32_t>(info[2].As<Napi::Number>().Int64Value());
 vkCmdResetEvent(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -8380,10 +8832,14 @@ Napi::Value _vkCmdWaitEvents(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdWaitEvents'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'eventCount' in 'vkCmdWaitEvents'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkEvent>> $p2 = nullptr;
@@ -8400,15 +8856,27 @@ Napi::Value _vkCmdWaitEvents(const Napi::CallbackInfo& info) {
     };
     $p2 = std::make_shared<std::vector<VkEvent>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pEvents'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pEvents' in 'vkCmdWaitEvents'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'srcStageMask' in 'vkCmdWaitEvents'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p3 = static_cast<int32_t>(info[3].As<Napi::Number>().Int64Value());
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'dstStageMask' in 'vkCmdWaitEvents'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p4 = static_cast<int32_t>(info[4].As<Napi::Number>().Int64Value());
 
+  if (!info[5].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 6 'memoryBarrierCount' in 'vkCmdWaitEvents'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p5 = static_cast<uint32_t>(info[5].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkMemoryBarrier>> $p6 = nullptr;
@@ -8434,11 +8902,15 @@ Napi::Value _vkCmdWaitEvents(const Napi::CallbackInfo& info) {
     };
     $p6 = std::make_shared<std::vector<VkMemoryBarrier>>(data);
   } else if (!info[6].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 7 'pMemoryBarriers'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 7 'pMemoryBarriers' in 'vkCmdWaitEvents'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
 
+  if (!info[7].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 8 'bufferMemoryBarrierCount' in 'vkCmdWaitEvents'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p7 = static_cast<uint32_t>(info[7].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkBufferMemoryBarrier>> $p8 = nullptr;
@@ -8464,11 +8936,15 @@ Napi::Value _vkCmdWaitEvents(const Napi::CallbackInfo& info) {
     };
     $p8 = std::make_shared<std::vector<VkBufferMemoryBarrier>>(data);
   } else if (!info[8].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 9 'pBufferMemoryBarriers'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 9 'pBufferMemoryBarriers' in 'vkCmdWaitEvents'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
 
+  if (!info[9].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 10 'imageMemoryBarrierCount' in 'vkCmdWaitEvents'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p9 = static_cast<uint32_t>(info[9].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkImageMemoryBarrier>> $p10 = nullptr;
@@ -8494,7 +8970,7 @@ Napi::Value _vkCmdWaitEvents(const Napi::CallbackInfo& info) {
     };
     $p10 = std::make_shared<std::vector<VkImageMemoryBarrier>>(data);
   } else if (!info[10].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 11 'pImageMemoryBarriers'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 11 'pImageMemoryBarriers' in 'vkCmdWaitEvents'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -8534,16 +9010,32 @@ Napi::Value _vkCmdPipelineBarrier(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdPipelineBarrier'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'srcStageMask' in 'vkCmdPipelineBarrier'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'dstStageMask' in 'vkCmdPipelineBarrier'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p2 = static_cast<int32_t>(info[2].As<Napi::Number>().Int64Value());
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'dependencyFlags' in 'vkCmdPipelineBarrier'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p3 = static_cast<int32_t>(info[3].As<Napi::Number>().Int64Value());
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'memoryBarrierCount' in 'vkCmdPipelineBarrier'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkMemoryBarrier>> $p5 = nullptr;
@@ -8569,11 +9061,15 @@ Napi::Value _vkCmdPipelineBarrier(const Napi::CallbackInfo& info) {
     };
     $p5 = std::make_shared<std::vector<VkMemoryBarrier>>(data);
   } else if (!info[5].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 6 'pMemoryBarriers'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 6 'pMemoryBarriers' in 'vkCmdPipelineBarrier'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
 
+  if (!info[6].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 7 'bufferMemoryBarrierCount' in 'vkCmdPipelineBarrier'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p6 = static_cast<uint32_t>(info[6].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkBufferMemoryBarrier>> $p7 = nullptr;
@@ -8599,11 +9095,15 @@ Napi::Value _vkCmdPipelineBarrier(const Napi::CallbackInfo& info) {
     };
     $p7 = std::make_shared<std::vector<VkBufferMemoryBarrier>>(data);
   } else if (!info[7].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 8 'pBufferMemoryBarriers'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 8 'pBufferMemoryBarriers' in 'vkCmdPipelineBarrier'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
 
+  if (!info[8].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 9 'imageMemoryBarrierCount' in 'vkCmdPipelineBarrier'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p8 = static_cast<uint32_t>(info[8].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkImageMemoryBarrier>> $p9 = nullptr;
@@ -8629,7 +9129,7 @@ Napi::Value _vkCmdPipelineBarrier(const Napi::CallbackInfo& info) {
     };
     $p9 = std::make_shared<std::vector<VkImageMemoryBarrier>>(data);
   } else if (!info[9].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 10 'pImageMemoryBarriers'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 10 'pImageMemoryBarriers' in 'vkCmdPipelineBarrier'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -8668,7 +9168,7 @@ Napi::Value _vkCmdBeginQuery(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdBeginQuery'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -8686,12 +9186,20 @@ Napi::Value _vkCmdBeginQuery(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool' in 'vkCmdBeginQuery'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'query' in 'vkCmdBeginQuery'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'flags' in 'vkCmdBeginQuery'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p3 = static_cast<int32_t>(info[3].As<Napi::Number>().Int64Value());
 vkCmdBeginQuery(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -8722,7 +9230,7 @@ Napi::Value _vkCmdEndQuery(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdEndQuery'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -8740,10 +9248,14 @@ Napi::Value _vkCmdEndQuery(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool' in 'vkCmdEndQuery'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'query' in 'vkCmdEndQuery'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 vkCmdEndQuery(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -8773,7 +9285,7 @@ Napi::Value _vkCmdBeginConditionalRenderingEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdBeginConditionalRenderingEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -8793,7 +9305,7 @@ Napi::Value _vkCmdBeginConditionalRenderingEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkConditionalRenderingBeginInfoEXT' or 'null' for argument 2 'pConditionalRenderingBegin'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkConditionalRenderingBeginInfoEXT' or 'null' for argument 2 'pConditionalRenderingBegin' in 'vkCmdBeginConditionalRenderingEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 $vkCmdBeginConditionalRenderingEXT(
@@ -8823,7 +9335,7 @@ Napi::Value _vkCmdEndConditionalRenderingEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdEndConditionalRenderingEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 $vkCmdEndConditionalRenderingEXT(
@@ -8852,7 +9364,7 @@ Napi::Value _vkCmdResetQueryPool(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdResetQueryPool'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -8870,12 +9382,20 @@ Napi::Value _vkCmdResetQueryPool(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool' in 'vkCmdResetQueryPool'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'firstQuery' in 'vkCmdResetQueryPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'queryCount' in 'vkCmdResetQueryPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 vkCmdResetQueryPool(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -8906,10 +9426,14 @@ Napi::Value _vkCmdWriteTimestamp(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdWriteTimestamp'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'pipelineStage' in 'vkCmdWriteTimestamp'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
 
   Napi::Object obj2;
@@ -8926,10 +9450,14 @@ Napi::Value _vkCmdWriteTimestamp(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 3 'queryPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 3 'queryPool' in 'vkCmdWriteTimestamp'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'query' in 'vkCmdWriteTimestamp'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 vkCmdWriteTimestamp(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -8960,7 +9488,7 @@ Napi::Value _vkCmdCopyQueryPoolResults(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdCopyQueryPoolResults'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -8978,12 +9506,20 @@ Napi::Value _vkCmdCopyQueryPoolResults(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool' in 'vkCmdCopyQueryPoolResults'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'firstQuery' in 'vkCmdCopyQueryPoolResults'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'queryCount' in 'vkCmdCopyQueryPoolResults'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
   Napi::Object obj4;
@@ -9000,16 +9536,28 @@ Napi::Value _vkCmdCopyQueryPoolResults(const Napi::CallbackInfo& info) {
   } else if (info[4].IsNull()) {
     $p4 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 5 'dstBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 5 'dstBuffer' in 'vkCmdCopyQueryPoolResults'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless5;
+  if (!info[5].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 6 'dstOffset' in 'vkCmdCopyQueryPoolResults'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p5 = static_cast<uint64_t>(info[5].As<Napi::BigInt>().Int64Value(&lossless5));
 
   bool lossless6;
+  if (!info[6].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 7 'stride' in 'vkCmdCopyQueryPoolResults'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p6 = static_cast<uint64_t>(info[6].As<Napi::BigInt>().Int64Value(&lossless6));
 
+  if (!info[7].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 8 'flags' in 'vkCmdCopyQueryPoolResults'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p7 = static_cast<int32_t>(info[7].As<Napi::Number>().Int64Value());
 vkCmdCopyQueryPoolResults(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -9044,7 +9592,7 @@ Napi::Value _vkCmdPushConstants(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdPushConstants'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -9062,14 +9610,26 @@ Napi::Value _vkCmdPushConstants(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPipelineLayout' or 'null' for argument 2 'layout'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineLayout' or 'null' for argument 2 'layout' in 'vkCmdPushConstants'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'stageFlags' in 'vkCmdPushConstants'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p2 = static_cast<int32_t>(info[2].As<Napi::Number>().Int64Value());
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'offset' in 'vkCmdPushConstants'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'size' in 'vkCmdPushConstants'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
 
   void* $p5 = nullptr;
@@ -9077,7 +9637,7 @@ Napi::Value _vkCmdPushConstants(const Napi::CallbackInfo& info) {
     Napi::ArrayBuffer buf = info[5].As<Napi::ArrayBuffer>();
     $p5 = buf.Data();
   } else if (!info[5].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'ArrayBuffer' or 'null' for argument 6 'pValues'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'ArrayBuffer' or 'null' for argument 6 'pValues' in 'vkCmdPushConstants'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkCmdPushConstants(
@@ -9111,7 +9671,7 @@ Napi::Value _vkCmdBeginRenderPass(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdBeginRenderPass'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -9131,10 +9691,14 @@ Napi::Value _vkCmdBeginRenderPass(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkRenderPassBeginInfo' or 'null' for argument 2 'pRenderPassBegin'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkRenderPassBeginInfo' or 'null' for argument 2 'pRenderPassBegin' in 'vkCmdBeginRenderPass'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'contents' in 'vkCmdBeginRenderPass'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkSubpassContents $p2 = static_cast<VkSubpassContents>(info[2].As<Napi::Number>().Int64Value());
 vkCmdBeginRenderPass(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -9164,10 +9728,14 @@ Napi::Value _vkCmdNextSubpass(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdNextSubpass'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'contents' in 'vkCmdNextSubpass'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkSubpassContents $p1 = static_cast<VkSubpassContents>(info[1].As<Napi::Number>().Int64Value());
 vkCmdNextSubpass(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -9196,7 +9764,7 @@ Napi::Value _vkCmdEndRenderPass(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdEndRenderPass'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkCmdEndRenderPass(
@@ -9225,10 +9793,14 @@ Napi::Value _vkCmdExecuteCommands(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdExecuteCommands'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'commandBufferCount' in 'vkCmdExecuteCommands'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkCommandBuffer>> $p2 = nullptr;
@@ -9245,7 +9817,7 @@ Napi::Value _vkCmdExecuteCommands(const Napi::CallbackInfo& info) {
     };
     $p2 = std::make_shared<std::vector<VkCommandBuffer>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pCommandBuffers'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pCommandBuffers' in 'vkCmdExecuteCommands'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -9277,7 +9849,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayPropertiesKHR(const Napi::CallbackInfo& i
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceDisplayPropertiesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -9286,14 +9858,14 @@ Napi::Value _vkGetPhysicalDeviceDisplayPropertiesKHR(const Napi::CallbackInfo& i
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 2").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 2 'pPropertyCount' in 'vkGetPhysicalDeviceDisplayPropertiesKHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
     
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPropertyCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPropertyCount' in 'vkGetPhysicalDeviceDisplayPropertiesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -9320,7 +9892,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayPropertiesKHR(const Napi::CallbackInfo& i
     };
     $p2 = std::make_shared<std::vector<VkDisplayPropertiesKHR>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pProperties' in 'vkGetPhysicalDeviceDisplayPropertiesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -9364,7 +9936,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlanePropertiesKHR(const Napi::CallbackIn
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceDisplayPlanePropertiesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -9373,14 +9945,14 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlanePropertiesKHR(const Napi::CallbackIn
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 2").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 2 'pPropertyCount' in 'vkGetPhysicalDeviceDisplayPlanePropertiesKHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
     
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPropertyCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPropertyCount' in 'vkGetPhysicalDeviceDisplayPlanePropertiesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -9407,7 +9979,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlanePropertiesKHR(const Napi::CallbackIn
     };
     $p2 = std::make_shared<std::vector<VkDisplayPlanePropertiesKHR>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pProperties' in 'vkGetPhysicalDeviceDisplayPlanePropertiesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -9451,10 +10023,14 @@ Napi::Value _vkGetDisplayPlaneSupportedDisplaysKHR(const Napi::CallbackInfo& inf
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetDisplayPlaneSupportedDisplaysKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'planeIndex' in 'vkGetDisplayPlaneSupportedDisplaysKHR'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
   Napi::Object obj2;
@@ -9462,14 +10038,14 @@ Napi::Value _vkGetDisplayPlaneSupportedDisplaysKHR(const Napi::CallbackInfo& inf
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 3 'pDisplayCount' in 'vkGetDisplayPlaneSupportedDisplaysKHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
     
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pDisplayCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pDisplayCount' in 'vkGetDisplayPlaneSupportedDisplaysKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -9487,7 +10063,7 @@ Napi::Value _vkGetDisplayPlaneSupportedDisplaysKHR(const Napi::CallbackInfo& inf
     };
     $p3 = std::make_shared<std::vector<VkDisplayKHR>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pDisplays'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pDisplays' in 'vkGetDisplayPlaneSupportedDisplaysKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -9533,7 +10109,7 @@ Napi::Value _vkGetDisplayModePropertiesKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetDisplayModePropertiesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -9551,7 +10127,7 @@ Napi::Value _vkGetDisplayModePropertiesKHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDisplayKHR' or 'null' for argument 2 'display'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayKHR' or 'null' for argument 2 'display' in 'vkGetDisplayModePropertiesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -9560,14 +10136,14 @@ Napi::Value _vkGetDisplayModePropertiesKHR(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 3 'pPropertyCount' in 'vkGetDisplayModePropertiesKHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
     
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pPropertyCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pPropertyCount' in 'vkGetDisplayModePropertiesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -9594,7 +10170,7 @@ Napi::Value _vkGetDisplayModePropertiesKHR(const Napi::CallbackInfo& info) {
     };
     $p3 = std::make_shared<std::vector<VkDisplayModePropertiesKHR>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pProperties' in 'vkGetDisplayModePropertiesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -9639,7 +10215,7 @@ Napi::Value _vkCreateDisplayModeKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkCreateDisplayModeKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -9657,7 +10233,7 @@ Napi::Value _vkCreateDisplayModeKHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDisplayKHR' or 'null' for argument 2 'display'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayKHR' or 'null' for argument 2 'display' in 'vkCreateDisplayModeKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -9677,7 +10253,7 @@ Napi::Value _vkCreateDisplayModeKHR(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDisplayModeCreateInfoKHR' or 'null' for argument 3 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayModeCreateInfoKHR' or 'null' for argument 3 'pCreateInfo' in 'vkCreateDisplayModeKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -9696,7 +10272,7 @@ Napi::Value _vkCreateDisplayModeKHR(const Napi::CallbackInfo& info) {
   } else if (info[4].IsNull()) {
     $p4 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDisplayModeKHR' or 'null' for argument 5 'pMode'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayModeKHR' or 'null' for argument 5 'pMode' in 'vkCreateDisplayModeKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkCreateDisplayModeKHR(
@@ -9729,7 +10305,7 @@ Napi::Value _vkGetDisplayPlaneCapabilitiesKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetDisplayPlaneCapabilitiesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -9747,10 +10323,14 @@ Napi::Value _vkGetDisplayPlaneCapabilitiesKHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDisplayModeKHR' or 'null' for argument 2 'mode'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayModeKHR' or 'null' for argument 2 'mode' in 'vkGetDisplayPlaneCapabilitiesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'planeIndex' in 'vkGetDisplayPlaneCapabilitiesKHR'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   Napi::Object obj3;
@@ -9769,7 +10349,7 @@ Napi::Value _vkGetDisplayPlaneCapabilitiesKHR(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDisplayPlaneCapabilitiesKHR' or 'null' for argument 4 'pCapabilities'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayPlaneCapabilitiesKHR' or 'null' for argument 4 'pCapabilities' in 'vkGetDisplayPlaneCapabilitiesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetDisplayPlaneCapabilitiesKHR(
@@ -9807,7 +10387,7 @@ Napi::Value _vkCreateDisplayPlaneSurfaceKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance' in 'vkCreateDisplayPlaneSurfaceKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -9827,7 +10407,7 @@ Napi::Value _vkCreateDisplayPlaneSurfaceKHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDisplaySurfaceCreateInfoKHR' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplaySurfaceCreateInfoKHR' or 'null' for argument 2 'pCreateInfo' in 'vkCreateDisplayPlaneSurfaceKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -9846,7 +10426,7 @@ Napi::Value _vkCreateDisplayPlaneSurfaceKHR(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 4 'pSurface'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 4 'pSurface' in 'vkCreateDisplayPlaneSurfaceKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkCreateDisplayPlaneSurfaceKHR(
@@ -9878,10 +10458,14 @@ Napi::Value _vkCreateSharedSwapchainsKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateSharedSwapchainsKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'swapchainCount' in 'vkCreateSharedSwapchainsKHR'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkSwapchainCreateInfoKHR>> $p2 = nullptr;
@@ -9907,7 +10491,7 @@ Napi::Value _vkCreateSharedSwapchainsKHR(const Napi::CallbackInfo& info) {
     };
     $p2 = std::make_shared<std::vector<VkSwapchainCreateInfoKHR>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pCreateInfos'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pCreateInfos' in 'vkCreateSharedSwapchainsKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -9927,7 +10511,7 @@ Napi::Value _vkCreateSharedSwapchainsKHR(const Napi::CallbackInfo& info) {
     };
     $p4 = std::make_shared<std::vector<VkSwapchainKHR>>(data);
   } else if (!info[4].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 5 'pSwapchains'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 5 'pSwapchains' in 'vkCreateSharedSwapchainsKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -9973,7 +10557,7 @@ Napi::Value _vkDestroySurfaceKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance' in 'vkDestroySurfaceKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -9991,7 +10575,7 @@ Napi::Value _vkDestroySurfaceKHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 2 'surface'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 2 'surface' in 'vkDestroySurfaceKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10023,10 +10607,14 @@ Napi::Value _vkGetPhysicalDeviceSurfaceSupportKHR(const Napi::CallbackInfo& info
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceSurfaceSupportKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'queueFamilyIndex' in 'vkGetPhysicalDeviceSurfaceSupportKHR'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
   Napi::Object obj2;
@@ -10043,7 +10631,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceSupportKHR(const Napi::CallbackInfo& info
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 3 'surface'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 3 'surface' in 'vkGetPhysicalDeviceSurfaceSupportKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10052,13 +10640,17 @@ Napi::Value _vkGetPhysicalDeviceSurfaceSupportKHR(const Napi::CallbackInfo& info
     if (info[3].IsObject()) {
       obj3 = info[3].As<Napi::Object>();
       if (!obj3.Has("$")) {
-        Napi::Error::New(env, "Missing Object property '$' for argument 4").ThrowAsJavaScriptException();
+        Napi::Error::New(env, "Missing Object property '$' for argument 4 'pSupported' in 'vkGetPhysicalDeviceSurfaceSupportKHR'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+      if (!(obj3.Get("$").IsBoolean())) {
+        Napi::TypeError::New(env, "Expected 'Boolean' for Object property '$' 4 'pSupported' in 'vkGetPhysicalDeviceSurfaceSupportKHR'").ThrowAsJavaScriptException();
         return env.Undefined();
       }
       Napi::Value val = obj3.Get("$");
       $p3 = static_cast<uint32_t>(val.As<Napi::Boolean>().Value());
     } else if (!info[3].IsNull()) {
-      Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pSupported'").ThrowAsJavaScriptException();
+      Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pSupported' in 'vkGetPhysicalDeviceSurfaceSupportKHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
   int32_t out = $vkGetPhysicalDeviceSurfaceSupportKHR(
@@ -10091,7 +10683,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Napi::CallbackInfo&
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceSurfaceCapabilitiesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10109,7 +10701,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Napi::CallbackInfo&
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 2 'surface'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 2 'surface' in 'vkGetPhysicalDeviceSurfaceCapabilitiesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10129,7 +10721,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilitiesKHR(const Napi::CallbackInfo&
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSurfaceCapabilitiesKHR' or 'null' for argument 3 'pSurfaceCapabilities'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceCapabilitiesKHR' or 'null' for argument 3 'pSurfaceCapabilities' in 'vkGetPhysicalDeviceSurfaceCapabilitiesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
@@ -10166,7 +10758,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormatsKHR(const Napi::CallbackInfo& info
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceSurfaceFormatsKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10184,7 +10776,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormatsKHR(const Napi::CallbackInfo& info
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 2 'surface'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 2 'surface' in 'vkGetPhysicalDeviceSurfaceFormatsKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10193,14 +10785,14 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormatsKHR(const Napi::CallbackInfo& info
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 3 'pSurfaceFormatCount' in 'vkGetPhysicalDeviceSurfaceFormatsKHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
     
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pSurfaceFormatCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pSurfaceFormatCount' in 'vkGetPhysicalDeviceSurfaceFormatsKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10227,7 +10819,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormatsKHR(const Napi::CallbackInfo& info
     };
     $p3 = std::make_shared<std::vector<VkSurfaceFormatKHR>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pSurfaceFormats'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pSurfaceFormats' in 'vkGetPhysicalDeviceSurfaceFormatsKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10272,7 +10864,7 @@ Napi::Value _vkGetPhysicalDeviceSurfacePresentModesKHR(const Napi::CallbackInfo&
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceSurfacePresentModesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10290,7 +10882,7 @@ Napi::Value _vkGetPhysicalDeviceSurfacePresentModesKHR(const Napi::CallbackInfo&
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 2 'surface'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 2 'surface' in 'vkGetPhysicalDeviceSurfacePresentModesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10299,14 +10891,14 @@ Napi::Value _vkGetPhysicalDeviceSurfacePresentModesKHR(const Napi::CallbackInfo&
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 3 'pPresentModeCount' in 'vkGetPhysicalDeviceSurfacePresentModesKHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
     
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pPresentModeCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pPresentModeCount' in 'vkGetPhysicalDeviceSurfacePresentModesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10315,13 +10907,13 @@ Napi::Value _vkGetPhysicalDeviceSurfacePresentModesKHR(const Napi::CallbackInfo&
   if (info[3].IsTypedArray()) {
 
     if (info[3].As<Napi::TypedArray>().TypedArrayType() != napi_int32_array) {
-      Napi::TypeError::New(env, "Invalid type for argument 4 'pPresentModes'").ThrowAsJavaScriptException();
+      Napi::TypeError::New(env, "Invalid type for argument 4 'pPresentModes' in 'vkGetPhysicalDeviceSurfacePresentModesKHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     int32_t* data = getTypedArrayData<int32_t>(info[3]);
     $p3 = std::make_shared<int32_t*>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pPresentModes'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pPresentModes' in 'vkGetPhysicalDeviceSurfacePresentModesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10355,7 +10947,7 @@ Napi::Value _vkCreateSwapchainKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateSwapchainKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10375,7 +10967,7 @@ Napi::Value _vkCreateSwapchainKHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSwapchainCreateInfoKHR' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSwapchainCreateInfoKHR' or 'null' for argument 2 'pCreateInfo' in 'vkCreateSwapchainKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10394,7 +10986,7 @@ Napi::Value _vkCreateSwapchainKHR(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 4 'pSwapchain'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 4 'pSwapchain' in 'vkCreateSwapchainKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkCreateSwapchainKHR(
@@ -10426,7 +11018,7 @@ Napi::Value _vkDestroySwapchainKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroySwapchainKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10444,7 +11036,7 @@ Napi::Value _vkDestroySwapchainKHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 2 'swapchain'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 2 'swapchain' in 'vkDestroySwapchainKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10476,7 +11068,7 @@ Napi::Value _vkGetSwapchainImagesKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetSwapchainImagesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10494,7 +11086,7 @@ Napi::Value _vkGetSwapchainImagesKHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 2 'swapchain'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 2 'swapchain' in 'vkGetSwapchainImagesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10503,14 +11095,14 @@ Napi::Value _vkGetSwapchainImagesKHR(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 3 'pSwapchainImageCount' in 'vkGetSwapchainImagesKHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
     
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pSwapchainImageCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pSwapchainImageCount' in 'vkGetSwapchainImagesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10528,7 +11120,7 @@ Napi::Value _vkGetSwapchainImagesKHR(const Napi::CallbackInfo& info) {
     };
     $p3 = std::make_shared<std::vector<VkImage>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pSwapchainImages'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pSwapchainImages' in 'vkGetSwapchainImagesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10574,7 +11166,7 @@ Napi::Value _vkAcquireNextImageKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkAcquireNextImageKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10592,11 +11184,15 @@ Napi::Value _vkAcquireNextImageKHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 2 'swapchain'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 2 'swapchain' in 'vkAcquireNextImageKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless2;
+  if (!info[2].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'timeout' in 'vkAcquireNextImageKHR'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
   Napi::Object obj3;
@@ -10613,7 +11209,7 @@ Napi::Value _vkAcquireNextImageKHR(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSemaphore' or 'null' for argument 4 'semaphore'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSemaphore' or 'null' for argument 4 'semaphore' in 'vkAcquireNextImageKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10631,7 +11227,7 @@ Napi::Value _vkAcquireNextImageKHR(const Napi::CallbackInfo& info) {
   } else if (info[4].IsNull()) {
     $p4 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkFence' or 'null' for argument 5 'fence'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFence' or 'null' for argument 5 'fence' in 'vkAcquireNextImageKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10640,14 +11236,14 @@ Napi::Value _vkAcquireNextImageKHR(const Napi::CallbackInfo& info) {
   if (info[5].IsObject()) {
     obj5 = info[5].As<Napi::Object>();
     if (!obj5.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 6").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 6 'pImageIndex' in 'vkAcquireNextImageKHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj5.Get("$");
     
     $p5 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[5].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 6 'pImageIndex'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 6 'pImageIndex' in 'vkAcquireNextImageKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkAcquireNextImageKHR(
@@ -10682,7 +11278,7 @@ Napi::Value _vkQueuePresentKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 1 'queue'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 1 'queue' in 'vkQueuePresentKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10702,7 +11298,7 @@ Napi::Value _vkQueuePresentKHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPresentInfoKHR' or 'null' for argument 2 'pPresentInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPresentInfoKHR' or 'null' for argument 2 'pPresentInfo' in 'vkQueuePresentKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkQueuePresentKHR(
@@ -10732,7 +11328,7 @@ Napi::Value _vkCreateWin32SurfaceKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance' in 'vkCreateWin32SurfaceKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10752,7 +11348,7 @@ Napi::Value _vkCreateWin32SurfaceKHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkWin32SurfaceCreateInfoKHR' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkWin32SurfaceCreateInfoKHR' or 'null' for argument 2 'pCreateInfo' in 'vkCreateWin32SurfaceKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10771,7 +11367,7 @@ Napi::Value _vkCreateWin32SurfaceKHR(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 4 'pSurface'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 4 'pSurface' in 'vkCreateWin32SurfaceKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkCreateWin32SurfaceKHR(
@@ -10803,10 +11399,14 @@ Napi::Value _vkGetPhysicalDeviceWin32PresentationSupportKHR(const Napi::Callback
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceWin32PresentationSupportKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'queueFamilyIndex' in 'vkGetPhysicalDeviceWin32PresentationSupportKHR'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
   uint32_t out = $vkGetPhysicalDeviceWin32PresentationSupportKHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -10835,7 +11435,7 @@ Napi::Value _vkCreateDebugReportCallbackEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance' in 'vkCreateDebugReportCallbackEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10855,7 +11455,7 @@ Napi::Value _vkCreateDebugReportCallbackEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDebugReportCallbackCreateInfoEXT' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugReportCallbackCreateInfoEXT' or 'null' for argument 2 'pCreateInfo' in 'vkCreateDebugReportCallbackEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10874,7 +11474,7 @@ Napi::Value _vkCreateDebugReportCallbackEXT(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDebugReportCallbackEXT' or 'null' for argument 4 'pCallback'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugReportCallbackEXT' or 'null' for argument 4 'pCallback' in 'vkCreateDebugReportCallbackEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkCreateDebugReportCallbackEXT(
@@ -10906,7 +11506,7 @@ Napi::Value _vkDestroyDebugReportCallbackEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance' in 'vkDestroyDebugReportCallbackEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10924,7 +11524,7 @@ Napi::Value _vkDestroyDebugReportCallbackEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDebugReportCallbackEXT' or 'null' for argument 2 'callback'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugReportCallbackEXT' or 'null' for argument 2 'callback' in 'vkDestroyDebugReportCallbackEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10956,27 +11556,47 @@ Napi::Value _vkDebugReportMessageEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance' in 'vkDebugReportMessageEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'flags' in 'vkDebugReportMessageEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'objectType' in 'vkDebugReportMessageEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkDebugReportObjectTypeEXT $p2 = static_cast<VkDebugReportObjectTypeEXT>(info[2].As<Napi::Number>().Int64Value());
 
   bool lossless3;
+  if (!info[3].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 4 'object' in 'vkDebugReportMessageEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
 
   bool lossless4;
+  if (!info[4].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 5 'location' in 'vkDebugReportMessageEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   size_t $p4 = static_cast<size_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
 
+  if (!info[5].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 6 'messageCode' in 'vkDebugReportMessageEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p5 = static_cast<int32_t>(info[5].As<Napi::Number>().Int64Value());
 
   char* $p6 = nullptr;
   if (info[6].IsString()) {
     $p6 = copyV8String(info[6]);
   } else if (!info[6].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'String' or 'null' for argument 7 'pLayerPrefix'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'String' or 'null' for argument 7 'pLayerPrefix' in 'vkDebugReportMessageEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -10984,7 +11604,7 @@ Napi::Value _vkDebugReportMessageEXT(const Napi::CallbackInfo& info) {
   if (info[7].IsString()) {
     $p7 = copyV8String(info[7]);
   } else if (!info[7].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'String' or 'null' for argument 8 'pMessage'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'String' or 'null' for argument 8 'pMessage' in 'vkDebugReportMessageEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 $vkDebugReportMessageEXT(
@@ -11022,7 +11642,7 @@ Napi::Value _vkDebugMarkerSetObjectNameEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDebugMarkerSetObjectNameEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -11042,7 +11662,7 @@ Napi::Value _vkDebugMarkerSetObjectNameEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDebugMarkerObjectNameInfoEXT' or 'null' for argument 2 'pNameInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugMarkerObjectNameInfoEXT' or 'null' for argument 2 'pNameInfo' in 'vkDebugMarkerSetObjectNameEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkDebugMarkerSetObjectNameEXT(
@@ -11072,7 +11692,7 @@ Napi::Value _vkDebugMarkerSetObjectTagEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDebugMarkerSetObjectTagEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -11092,7 +11712,7 @@ Napi::Value _vkDebugMarkerSetObjectTagEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDebugMarkerObjectTagInfoEXT' or 'null' for argument 2 'pTagInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugMarkerObjectTagInfoEXT' or 'null' for argument 2 'pTagInfo' in 'vkDebugMarkerSetObjectTagEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkDebugMarkerSetObjectTagEXT(
@@ -11122,7 +11742,7 @@ Napi::Value _vkCmdDebugMarkerBeginEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdDebugMarkerBeginEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -11142,7 +11762,7 @@ Napi::Value _vkCmdDebugMarkerBeginEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDebugMarkerMarkerInfoEXT' or 'null' for argument 2 'pMarkerInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugMarkerMarkerInfoEXT' or 'null' for argument 2 'pMarkerInfo' in 'vkCmdDebugMarkerBeginEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 $vkCmdDebugMarkerBeginEXT(
@@ -11172,7 +11792,7 @@ Napi::Value _vkCmdDebugMarkerEndEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdDebugMarkerEndEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 $vkCmdDebugMarkerEndEXT(
@@ -11201,7 +11821,7 @@ Napi::Value _vkCmdDebugMarkerInsertEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdDebugMarkerInsertEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -11221,7 +11841,7 @@ Napi::Value _vkCmdDebugMarkerInsertEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDebugMarkerMarkerInfoEXT' or 'null' for argument 2 'pMarkerInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugMarkerMarkerInfoEXT' or 'null' for argument 2 'pMarkerInfo' in 'vkCmdDebugMarkerInsertEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 $vkCmdDebugMarkerInsertEXT(
@@ -11251,20 +11871,44 @@ Napi::Value _vkGetPhysicalDeviceExternalImageFormatPropertiesNV(const Napi::Call
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceExternalImageFormatPropertiesNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'format' in 'vkGetPhysicalDeviceExternalImageFormatPropertiesNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkFormat $p1 = static_cast<VkFormat>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'type' in 'vkGetPhysicalDeviceExternalImageFormatPropertiesNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkImageType $p2 = static_cast<VkImageType>(info[2].As<Napi::Number>().Int64Value());
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'tiling' in 'vkGetPhysicalDeviceExternalImageFormatPropertiesNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkImageTiling $p3 = static_cast<VkImageTiling>(info[3].As<Napi::Number>().Int64Value());
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'usage' in 'vkGetPhysicalDeviceExternalImageFormatPropertiesNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p4 = static_cast<int32_t>(info[4].As<Napi::Number>().Int64Value());
 
+  if (!info[5].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 6 'flags' in 'vkGetPhysicalDeviceExternalImageFormatPropertiesNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p5 = static_cast<int32_t>(info[5].As<Napi::Number>().Int64Value());
 
+  if (!info[6].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 7 'externalHandleType' in 'vkGetPhysicalDeviceExternalImageFormatPropertiesNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p6 = static_cast<int32_t>(info[6].As<Napi::Number>().Int64Value());
 
   Napi::Object obj7;
@@ -11283,7 +11927,7 @@ Napi::Value _vkGetPhysicalDeviceExternalImageFormatPropertiesNV(const Napi::Call
   } else if (info[7].IsNull()) {
     $p7 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkExternalImageFormatPropertiesNV' or 'null' for argument 8 'pExternalImageFormatProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkExternalImageFormatPropertiesNV' or 'null' for argument 8 'pExternalImageFormatProperties' in 'vkGetPhysicalDeviceExternalImageFormatPropertiesNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetPhysicalDeviceExternalImageFormatPropertiesNV(
@@ -11325,7 +11969,7 @@ Napi::Value _vkGetMemoryWin32HandleNV(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetMemoryWin32HandleNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -11343,10 +11987,14 @@ Napi::Value _vkGetMemoryWin32HandleNV(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDeviceMemory' or 'null' for argument 2 'memory'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceMemory' or 'null' for argument 2 'memory' in 'vkGetMemoryWin32HandleNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'handleType' in 'vkGetMemoryWin32HandleNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p2 = static_cast<int32_t>(info[2].As<Napi::Number>().Int64Value());
 
   Napi::Object obj3;
@@ -11354,14 +12002,18 @@ Napi::Value _vkGetMemoryWin32HandleNV(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     obj3 = info[3].As<Napi::Object>();
     if (!obj3.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 4").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 4 'pHandle' in 'vkGetMemoryWin32HandleNV'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
+    if (!(obj3.Get("$").IsBigInt())) {
+      Napi::TypeError::New(env, "Expected 'BigInt' for Object property '$' 4 'pHandle' in 'vkGetMemoryWin32HandleNV'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj3.Get("$");
     bool lossless = false;
     $p3 = reinterpret_cast<HANDLE*>(val.As<Napi::BigInt>().Int64Value(&lossless));
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pHandle'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pHandle' in 'vkGetMemoryWin32HandleNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetMemoryWin32HandleNV(
@@ -11395,7 +12047,7 @@ Napi::Value _vkCmdDrawIndirectCountAMD(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdDrawIndirectCountAMD'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -11413,11 +12065,15 @@ Napi::Value _vkCmdDrawIndirectCountAMD(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer' in 'vkCmdDrawIndirectCountAMD'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless2;
+  if (!info[2].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'offset' in 'vkCmdDrawIndirectCountAMD'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
   Napi::Object obj3;
@@ -11434,15 +12090,27 @@ Napi::Value _vkCmdDrawIndirectCountAMD(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'countBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'countBuffer' in 'vkCmdDrawIndirectCountAMD'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless4;
+  if (!info[4].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 5 'countBufferOffset' in 'vkCmdDrawIndirectCountAMD'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
 
+  if (!info[5].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 6 'maxDrawCount' in 'vkCmdDrawIndirectCountAMD'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p5 = static_cast<uint32_t>(info[5].As<Napi::Number>().Int64Value());
 
+  if (!info[6].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 7 'stride' in 'vkCmdDrawIndirectCountAMD'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p6 = static_cast<uint32_t>(info[6].As<Napi::Number>().Int64Value());
 $vkCmdDrawIndirectCountAMD(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -11476,7 +12144,7 @@ Napi::Value _vkCmdDrawIndexedIndirectCountAMD(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdDrawIndexedIndirectCountAMD'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -11494,11 +12162,15 @@ Napi::Value _vkCmdDrawIndexedIndirectCountAMD(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer' in 'vkCmdDrawIndexedIndirectCountAMD'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless2;
+  if (!info[2].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'offset' in 'vkCmdDrawIndexedIndirectCountAMD'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
   Napi::Object obj3;
@@ -11515,15 +12187,27 @@ Napi::Value _vkCmdDrawIndexedIndirectCountAMD(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'countBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'countBuffer' in 'vkCmdDrawIndexedIndirectCountAMD'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless4;
+  if (!info[4].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 5 'countBufferOffset' in 'vkCmdDrawIndexedIndirectCountAMD'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
 
+  if (!info[5].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 6 'maxDrawCount' in 'vkCmdDrawIndexedIndirectCountAMD'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p5 = static_cast<uint32_t>(info[5].As<Napi::Number>().Int64Value());
 
+  if (!info[6].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 7 'stride' in 'vkCmdDrawIndexedIndirectCountAMD'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p6 = static_cast<uint32_t>(info[6].As<Napi::Number>().Int64Value());
 $vkCmdDrawIndexedIndirectCountAMD(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -11557,7 +12241,7 @@ Napi::Value _vkCmdProcessCommandsNVX(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdProcessCommandsNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -11577,7 +12261,7 @@ Napi::Value _vkCmdProcessCommandsNVX(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCmdProcessCommandsInfoNVX' or 'null' for argument 2 'pProcessCommandsInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCmdProcessCommandsInfoNVX' or 'null' for argument 2 'pProcessCommandsInfo' in 'vkCmdProcessCommandsNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 $vkCmdProcessCommandsNVX(
@@ -11607,7 +12291,7 @@ Napi::Value _vkCmdReserveSpaceForCommandsNVX(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdReserveSpaceForCommandsNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -11627,7 +12311,7 @@ Napi::Value _vkCmdReserveSpaceForCommandsNVX(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCmdReserveSpaceForCommandsInfoNVX' or 'null' for argument 2 'pReserveSpaceInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCmdReserveSpaceForCommandsInfoNVX' or 'null' for argument 2 'pReserveSpaceInfo' in 'vkCmdReserveSpaceForCommandsNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 $vkCmdReserveSpaceForCommandsNVX(
@@ -11657,7 +12341,7 @@ Napi::Value _vkCreateIndirectCommandsLayoutNVX(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateIndirectCommandsLayoutNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -11677,7 +12361,7 @@ Napi::Value _vkCreateIndirectCommandsLayoutNVX(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkIndirectCommandsLayoutCreateInfoNVX' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkIndirectCommandsLayoutCreateInfoNVX' or 'null' for argument 2 'pCreateInfo' in 'vkCreateIndirectCommandsLayoutNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -11696,7 +12380,7 @@ Napi::Value _vkCreateIndirectCommandsLayoutNVX(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkIndirectCommandsLayoutNVX' or 'null' for argument 4 'pIndirectCommandsLayout'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkIndirectCommandsLayoutNVX' or 'null' for argument 4 'pIndirectCommandsLayout' in 'vkCreateIndirectCommandsLayoutNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkCreateIndirectCommandsLayoutNVX(
@@ -11728,7 +12412,7 @@ Napi::Value _vkDestroyIndirectCommandsLayoutNVX(const Napi::CallbackInfo& info) 
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroyIndirectCommandsLayoutNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -11746,7 +12430,7 @@ Napi::Value _vkDestroyIndirectCommandsLayoutNVX(const Napi::CallbackInfo& info) 
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkIndirectCommandsLayoutNVX' or 'null' for argument 2 'indirectCommandsLayout'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkIndirectCommandsLayoutNVX' or 'null' for argument 2 'indirectCommandsLayout' in 'vkDestroyIndirectCommandsLayoutNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -11778,7 +12462,7 @@ Napi::Value _vkCreateObjectTableNVX(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateObjectTableNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -11798,7 +12482,7 @@ Napi::Value _vkCreateObjectTableNVX(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkObjectTableCreateInfoNVX' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkObjectTableCreateInfoNVX' or 'null' for argument 2 'pCreateInfo' in 'vkCreateObjectTableNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -11817,7 +12501,7 @@ Napi::Value _vkCreateObjectTableNVX(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkObjectTableNVX' or 'null' for argument 4 'pObjectTable'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkObjectTableNVX' or 'null' for argument 4 'pObjectTable' in 'vkCreateObjectTableNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkCreateObjectTableNVX(
@@ -11849,7 +12533,7 @@ Napi::Value _vkDestroyObjectTableNVX(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroyObjectTableNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -11867,7 +12551,7 @@ Napi::Value _vkDestroyObjectTableNVX(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkObjectTableNVX' or 'null' for argument 2 'objectTable'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkObjectTableNVX' or 'null' for argument 2 'objectTable' in 'vkDestroyObjectTableNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -11899,7 +12583,7 @@ Napi::Value _vkRegisterObjectsNVX(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkRegisterObjectsNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -11917,10 +12601,14 @@ Napi::Value _vkRegisterObjectsNVX(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkObjectTableNVX' or 'null' for argument 2 'objectTable'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkObjectTableNVX' or 'null' for argument 2 'objectTable' in 'vkRegisterObjectsNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'objectCount' in 'vkRegisterObjectsNVX'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkObjectTableEntryNVX>> $p3 = nullptr;
@@ -11946,7 +12634,7 @@ Napi::Value _vkRegisterObjectsNVX(const Napi::CallbackInfo& info) {
     };
     $p3 = std::make_shared<std::vector<VkObjectTableEntryNVX>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'ppObjectTableEntries'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'ppObjectTableEntries' in 'vkRegisterObjectsNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -11956,13 +12644,13 @@ Napi::Value _vkRegisterObjectsNVX(const Napi::CallbackInfo& info) {
   if (info[4].IsTypedArray()) {
 
     if (info[4].As<Napi::TypedArray>().TypedArrayType() != napi_uint32_array) {
-      Napi::TypeError::New(env, "Invalid type for argument 5 'pObjectIndices'").ThrowAsJavaScriptException();
+      Napi::TypeError::New(env, "Invalid type for argument 5 'pObjectIndices' in 'vkRegisterObjectsNVX'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     uint32_t* data = getTypedArrayData<uint32_t>(info[4]);
     $p4 = std::make_shared<uint32_t*>(data);
   } else if (!info[4].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 5 'pObjectIndices'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 5 'pObjectIndices' in 'vkRegisterObjectsNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -11996,7 +12684,7 @@ Napi::Value _vkUnregisterObjectsNVX(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkUnregisterObjectsNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -12014,10 +12702,14 @@ Napi::Value _vkUnregisterObjectsNVX(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkObjectTableNVX' or 'null' for argument 2 'objectTable'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkObjectTableNVX' or 'null' for argument 2 'objectTable' in 'vkUnregisterObjectsNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'objectCount' in 'vkUnregisterObjectsNVX'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<int32_t*> $p3 = nullptr;
@@ -12025,13 +12717,13 @@ Napi::Value _vkUnregisterObjectsNVX(const Napi::CallbackInfo& info) {
   if (info[3].IsTypedArray()) {
 
     if (info[3].As<Napi::TypedArray>().TypedArrayType() != napi_int32_array) {
-      Napi::TypeError::New(env, "Invalid type for argument 4 'pObjectEntryTypes'").ThrowAsJavaScriptException();
+      Napi::TypeError::New(env, "Invalid type for argument 4 'pObjectEntryTypes' in 'vkUnregisterObjectsNVX'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     int32_t* data = getTypedArrayData<int32_t>(info[3]);
     $p3 = std::make_shared<int32_t*>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pObjectEntryTypes'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pObjectEntryTypes' in 'vkUnregisterObjectsNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -12041,13 +12733,13 @@ Napi::Value _vkUnregisterObjectsNVX(const Napi::CallbackInfo& info) {
   if (info[4].IsTypedArray()) {
 
     if (info[4].As<Napi::TypedArray>().TypedArrayType() != napi_uint32_array) {
-      Napi::TypeError::New(env, "Invalid type for argument 5 'pObjectIndices'").ThrowAsJavaScriptException();
+      Napi::TypeError::New(env, "Invalid type for argument 5 'pObjectIndices' in 'vkUnregisterObjectsNVX'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     uint32_t* data = getTypedArrayData<uint32_t>(info[4]);
     $p4 = std::make_shared<uint32_t*>(data);
   } else if (!info[4].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 5 'pObjectIndices'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 5 'pObjectIndices' in 'vkUnregisterObjectsNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -12081,7 +12773,7 @@ Napi::Value _vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(const Napi::Callb
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -12101,7 +12793,7 @@ Napi::Value _vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(const Napi::Callb
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDeviceGeneratedCommandsFeaturesNVX' or 'null' for argument 2 'pFeatures'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceGeneratedCommandsFeaturesNVX' or 'null' for argument 2 'pFeatures' in 'vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -12121,7 +12813,7 @@ Napi::Value _vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(const Napi::Callb
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDeviceGeneratedCommandsLimitsNVX' or 'null' for argument 3 'pLimits'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceGeneratedCommandsLimitsNVX' or 'null' for argument 3 'pLimits' in 'vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 $vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(
@@ -12164,7 +12856,7 @@ Napi::Value _vkGetPhysicalDeviceFeatures2(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceFeatures2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -12184,7 +12876,7 @@ Napi::Value _vkGetPhysicalDeviceFeatures2(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceFeatures2' or 'null' for argument 2 'pFeatures'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceFeatures2' or 'null' for argument 2 'pFeatures' in 'vkGetPhysicalDeviceFeatures2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkGetPhysicalDeviceFeatures2(
@@ -12220,7 +12912,7 @@ Napi::Value _vkGetPhysicalDeviceProperties2(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceProperties2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -12240,7 +12932,7 @@ Napi::Value _vkGetPhysicalDeviceProperties2(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceProperties2' or 'null' for argument 2 'pProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceProperties2' or 'null' for argument 2 'pProperties' in 'vkGetPhysicalDeviceProperties2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkGetPhysicalDeviceProperties2(
@@ -12276,10 +12968,14 @@ Napi::Value _vkGetPhysicalDeviceFormatProperties2(const Napi::CallbackInfo& info
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceFormatProperties2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'format' in 'vkGetPhysicalDeviceFormatProperties2'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkFormat $p1 = static_cast<VkFormat>(info[1].As<Napi::Number>().Int64Value());
 
   Napi::Object obj2;
@@ -12298,7 +12994,7 @@ Napi::Value _vkGetPhysicalDeviceFormatProperties2(const Napi::CallbackInfo& info
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkFormatProperties2' or 'null' for argument 3 'pFormatProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFormatProperties2' or 'null' for argument 3 'pFormatProperties' in 'vkGetPhysicalDeviceFormatProperties2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkGetPhysicalDeviceFormatProperties2(
@@ -12335,7 +13031,7 @@ Napi::Value _vkGetPhysicalDeviceImageFormatProperties2(const Napi::CallbackInfo&
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceImageFormatProperties2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -12355,7 +13051,7 @@ Napi::Value _vkGetPhysicalDeviceImageFormatProperties2(const Napi::CallbackInfo&
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceImageFormatInfo2' or 'null' for argument 2 'pImageFormatInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceImageFormatInfo2' or 'null' for argument 2 'pImageFormatInfo' in 'vkGetPhysicalDeviceImageFormatProperties2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -12375,7 +13071,7 @@ Napi::Value _vkGetPhysicalDeviceImageFormatProperties2(const Napi::CallbackInfo&
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImageFormatProperties2' or 'null' for argument 3 'pImageFormatProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImageFormatProperties2' or 'null' for argument 3 'pImageFormatProperties' in 'vkGetPhysicalDeviceImageFormatProperties2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkGetPhysicalDeviceImageFormatProperties2(
@@ -12412,7 +13108,7 @@ Napi::Value _vkGetPhysicalDeviceQueueFamilyProperties2(const Napi::CallbackInfo&
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceQueueFamilyProperties2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -12421,14 +13117,14 @@ Napi::Value _vkGetPhysicalDeviceQueueFamilyProperties2(const Napi::CallbackInfo&
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 2").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 2 'pQueueFamilyPropertyCount' in 'vkGetPhysicalDeviceQueueFamilyProperties2'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
     
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pQueueFamilyPropertyCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pQueueFamilyPropertyCount' in 'vkGetPhysicalDeviceQueueFamilyProperties2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -12455,7 +13151,7 @@ Napi::Value _vkGetPhysicalDeviceQueueFamilyProperties2(const Napi::CallbackInfo&
     };
     $p2 = std::make_shared<std::vector<VkQueueFamilyProperties2>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pQueueFamilyProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pQueueFamilyProperties' in 'vkGetPhysicalDeviceQueueFamilyProperties2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -12499,7 +13195,7 @@ Napi::Value _vkGetPhysicalDeviceMemoryProperties2(const Napi::CallbackInfo& info
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceMemoryProperties2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -12519,7 +13215,7 @@ Napi::Value _vkGetPhysicalDeviceMemoryProperties2(const Napi::CallbackInfo& info
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceMemoryProperties2' or 'null' for argument 2 'pMemoryProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceMemoryProperties2' or 'null' for argument 2 'pMemoryProperties' in 'vkGetPhysicalDeviceMemoryProperties2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkGetPhysicalDeviceMemoryProperties2(
@@ -12555,7 +13251,7 @@ Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties2(const Napi::Callbac
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceSparseImageFormatProperties2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -12575,7 +13271,7 @@ Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties2(const Napi::Callbac
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceSparseImageFormatInfo2' or 'null' for argument 2 'pFormatInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceSparseImageFormatInfo2' or 'null' for argument 2 'pFormatInfo' in 'vkGetPhysicalDeviceSparseImageFormatProperties2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -12584,14 +13280,14 @@ Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties2(const Napi::Callbac
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 3 'pPropertyCount' in 'vkGetPhysicalDeviceSparseImageFormatProperties2'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
     
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pPropertyCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pPropertyCount' in 'vkGetPhysicalDeviceSparseImageFormatProperties2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -12618,7 +13314,7 @@ Napi::Value _vkGetPhysicalDeviceSparseImageFormatProperties2(const Napi::Callbac
     };
     $p3 = std::make_shared<std::vector<VkSparseImageFormatProperties2>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pProperties' in 'vkGetPhysicalDeviceSparseImageFormatProperties2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -12663,10 +13359,14 @@ Napi::Value _vkCmdPushDescriptorSetKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdPushDescriptorSetKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'pipelineBindPoint' in 'vkCmdPushDescriptorSetKHR'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkPipelineBindPoint $p1 = static_cast<VkPipelineBindPoint>(info[1].As<Napi::Number>().Int64Value());
 
   Napi::Object obj2;
@@ -12683,12 +13383,20 @@ Napi::Value _vkCmdPushDescriptorSetKHR(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPipelineLayout' or 'null' for argument 3 'layout'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineLayout' or 'null' for argument 3 'layout' in 'vkCmdPushDescriptorSetKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'set' in 'vkCmdPushDescriptorSetKHR'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'descriptorWriteCount' in 'vkCmdPushDescriptorSetKHR'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkWriteDescriptorSet>> $p5 = nullptr;
@@ -12714,7 +13422,7 @@ Napi::Value _vkCmdPushDescriptorSetKHR(const Napi::CallbackInfo& info) {
     };
     $p5 = std::make_shared<std::vector<VkWriteDescriptorSet>>(data);
   } else if (!info[5].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 6 'pDescriptorWrites'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 6 'pDescriptorWrites' in 'vkCmdPushDescriptorSetKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -12749,7 +13457,7 @@ Napi::Value _vkTrimCommandPool(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkTrimCommandPool'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -12767,10 +13475,14 @@ Napi::Value _vkTrimCommandPool(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandPool' or 'null' for argument 2 'commandPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandPool' or 'null' for argument 2 'commandPool' in 'vkTrimCommandPool'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'flags' in 'vkTrimCommandPool'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p2 = static_cast<int32_t>(info[2].As<Napi::Number>().Int64Value());
 vkTrimCommandPool(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -12800,7 +13512,7 @@ Napi::Value _vkGetPhysicalDeviceExternalBufferProperties(const Napi::CallbackInf
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceExternalBufferProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -12820,7 +13532,7 @@ Napi::Value _vkGetPhysicalDeviceExternalBufferProperties(const Napi::CallbackInf
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceExternalBufferInfo' or 'null' for argument 2 'pExternalBufferInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceExternalBufferInfo' or 'null' for argument 2 'pExternalBufferInfo' in 'vkGetPhysicalDeviceExternalBufferProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -12840,7 +13552,7 @@ Napi::Value _vkGetPhysicalDeviceExternalBufferProperties(const Napi::CallbackInf
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkExternalBufferProperties' or 'null' for argument 3 'pExternalBufferProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkExternalBufferProperties' or 'null' for argument 3 'pExternalBufferProperties' in 'vkGetPhysicalDeviceExternalBufferProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkGetPhysicalDeviceExternalBufferProperties(
@@ -12877,7 +13589,7 @@ Napi::Value _vkGetMemoryWin32HandleKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetMemoryWin32HandleKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -12897,7 +13609,7 @@ Napi::Value _vkGetMemoryWin32HandleKHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkMemoryGetWin32HandleInfoKHR' or 'null' for argument 2 'pGetWin32HandleInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkMemoryGetWin32HandleInfoKHR' or 'null' for argument 2 'pGetWin32HandleInfo' in 'vkGetMemoryWin32HandleKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -12906,14 +13618,18 @@ Napi::Value _vkGetMemoryWin32HandleKHR(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 3 'pHandle' in 'vkGetMemoryWin32HandleKHR'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
+    if (!(obj2.Get("$").IsBigInt())) {
+      Napi::TypeError::New(env, "Expected 'BigInt' for Object property '$' 3 'pHandle' in 'vkGetMemoryWin32HandleKHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
     bool lossless = false;
     $p2 = reinterpret_cast<HANDLE*>(val.As<Napi::BigInt>().Int64Value(&lossless));
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pHandle'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pHandle' in 'vkGetMemoryWin32HandleKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetMemoryWin32HandleKHR(
@@ -12946,13 +13662,21 @@ Napi::Value _vkGetMemoryWin32HandlePropertiesKHR(const Napi::CallbackInfo& info)
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetMemoryWin32HandlePropertiesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'handleType' in 'vkGetMemoryWin32HandlePropertiesKHR'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
 
   bool lossless2 = false;
+  if (!info[2].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'handle' in 'vkGetMemoryWin32HandlePropertiesKHR'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   HANDLE $p2 = reinterpret_cast<HANDLE>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
   Napi::Object obj3;
@@ -12971,7 +13695,7 @@ Napi::Value _vkGetMemoryWin32HandlePropertiesKHR(const Napi::CallbackInfo& info)
   } else if (info[3].IsNull()) {
     $p3 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkMemoryWin32HandlePropertiesKHR' or 'null' for argument 4 'pMemoryWin32HandleProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkMemoryWin32HandlePropertiesKHR' or 'null' for argument 4 'pMemoryWin32HandleProperties' in 'vkGetMemoryWin32HandlePropertiesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetMemoryWin32HandlePropertiesKHR(
@@ -13009,7 +13733,7 @@ Napi::Value _vkGetMemoryFdKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetMemoryFdKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13029,7 +13753,7 @@ Napi::Value _vkGetMemoryFdKHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkMemoryGetFdInfoKHR' or 'null' for argument 2 'pGetFdInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkMemoryGetFdInfoKHR' or 'null' for argument 2 'pGetFdInfo' in 'vkGetMemoryFdKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13038,14 +13762,14 @@ Napi::Value _vkGetMemoryFdKHR(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 3 'pFd' in 'vkGetMemoryFdKHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
     
     $p2 = static_cast<int>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pFd'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pFd' in 'vkGetMemoryFdKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetMemoryFdKHR(
@@ -13077,12 +13801,20 @@ Napi::Value _vkGetMemoryFdPropertiesKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetMemoryFdPropertiesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'handleType' in 'vkGetMemoryFdPropertiesKHR'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'fd' in 'vkGetMemoryFdPropertiesKHR'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int $p2 = static_cast<int>(info[2].As<Napi::Number>().Int64Value());
 
   Napi::Object obj3;
@@ -13101,7 +13833,7 @@ Napi::Value _vkGetMemoryFdPropertiesKHR(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkMemoryFdPropertiesKHR' or 'null' for argument 4 'pMemoryFdProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkMemoryFdPropertiesKHR' or 'null' for argument 4 'pMemoryFdProperties' in 'vkGetMemoryFdPropertiesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetMemoryFdPropertiesKHR(
@@ -13139,7 +13871,7 @@ Napi::Value _vkGetPhysicalDeviceExternalSemaphoreProperties(const Napi::Callback
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceExternalSemaphoreProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13159,7 +13891,7 @@ Napi::Value _vkGetPhysicalDeviceExternalSemaphoreProperties(const Napi::Callback
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceExternalSemaphoreInfo' or 'null' for argument 2 'pExternalSemaphoreInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceExternalSemaphoreInfo' or 'null' for argument 2 'pExternalSemaphoreInfo' in 'vkGetPhysicalDeviceExternalSemaphoreProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13179,7 +13911,7 @@ Napi::Value _vkGetPhysicalDeviceExternalSemaphoreProperties(const Napi::Callback
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkExternalSemaphoreProperties' or 'null' for argument 3 'pExternalSemaphoreProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkExternalSemaphoreProperties' or 'null' for argument 3 'pExternalSemaphoreProperties' in 'vkGetPhysicalDeviceExternalSemaphoreProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkGetPhysicalDeviceExternalSemaphoreProperties(
@@ -13216,7 +13948,7 @@ Napi::Value _vkGetSemaphoreWin32HandleKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetSemaphoreWin32HandleKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13236,7 +13968,7 @@ Napi::Value _vkGetSemaphoreWin32HandleKHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSemaphoreGetWin32HandleInfoKHR' or 'null' for argument 2 'pGetWin32HandleInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSemaphoreGetWin32HandleInfoKHR' or 'null' for argument 2 'pGetWin32HandleInfo' in 'vkGetSemaphoreWin32HandleKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13245,14 +13977,18 @@ Napi::Value _vkGetSemaphoreWin32HandleKHR(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 3 'pHandle' in 'vkGetSemaphoreWin32HandleKHR'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
+    if (!(obj2.Get("$").IsBigInt())) {
+      Napi::TypeError::New(env, "Expected 'BigInt' for Object property '$' 3 'pHandle' in 'vkGetSemaphoreWin32HandleKHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
     bool lossless = false;
     $p2 = reinterpret_cast<HANDLE*>(val.As<Napi::BigInt>().Int64Value(&lossless));
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pHandle'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pHandle' in 'vkGetSemaphoreWin32HandleKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetSemaphoreWin32HandleKHR(
@@ -13285,7 +14021,7 @@ Napi::Value _vkImportSemaphoreWin32HandleKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkImportSemaphoreWin32HandleKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13305,7 +14041,7 @@ Napi::Value _vkImportSemaphoreWin32HandleKHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImportSemaphoreWin32HandleInfoKHR' or 'null' for argument 2 'pImportSemaphoreWin32HandleInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImportSemaphoreWin32HandleInfoKHR' or 'null' for argument 2 'pImportSemaphoreWin32HandleInfo' in 'vkImportSemaphoreWin32HandleKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkImportSemaphoreWin32HandleKHR(
@@ -13335,7 +14071,7 @@ Napi::Value _vkGetSemaphoreFdKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetSemaphoreFdKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13355,7 +14091,7 @@ Napi::Value _vkGetSemaphoreFdKHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSemaphoreGetFdInfoKHR' or 'null' for argument 2 'pGetFdInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSemaphoreGetFdInfoKHR' or 'null' for argument 2 'pGetFdInfo' in 'vkGetSemaphoreFdKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13364,14 +14100,14 @@ Napi::Value _vkGetSemaphoreFdKHR(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 3 'pFd' in 'vkGetSemaphoreFdKHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
     
     $p2 = static_cast<int>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pFd'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pFd' in 'vkGetSemaphoreFdKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetSemaphoreFdKHR(
@@ -13403,7 +14139,7 @@ Napi::Value _vkImportSemaphoreFdKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkImportSemaphoreFdKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13423,7 +14159,7 @@ Napi::Value _vkImportSemaphoreFdKHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImportSemaphoreFdInfoKHR' or 'null' for argument 2 'pImportSemaphoreFdInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImportSemaphoreFdInfoKHR' or 'null' for argument 2 'pImportSemaphoreFdInfo' in 'vkImportSemaphoreFdKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkImportSemaphoreFdKHR(
@@ -13453,7 +14189,7 @@ Napi::Value _vkGetPhysicalDeviceExternalFenceProperties(const Napi::CallbackInfo
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceExternalFenceProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13473,7 +14209,7 @@ Napi::Value _vkGetPhysicalDeviceExternalFenceProperties(const Napi::CallbackInfo
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceExternalFenceInfo' or 'null' for argument 2 'pExternalFenceInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceExternalFenceInfo' or 'null' for argument 2 'pExternalFenceInfo' in 'vkGetPhysicalDeviceExternalFenceProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13493,7 +14229,7 @@ Napi::Value _vkGetPhysicalDeviceExternalFenceProperties(const Napi::CallbackInfo
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkExternalFenceProperties' or 'null' for argument 3 'pExternalFenceProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkExternalFenceProperties' or 'null' for argument 3 'pExternalFenceProperties' in 'vkGetPhysicalDeviceExternalFenceProperties'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkGetPhysicalDeviceExternalFenceProperties(
@@ -13530,7 +14266,7 @@ Napi::Value _vkGetFenceWin32HandleKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetFenceWin32HandleKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13550,7 +14286,7 @@ Napi::Value _vkGetFenceWin32HandleKHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkFenceGetWin32HandleInfoKHR' or 'null' for argument 2 'pGetWin32HandleInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFenceGetWin32HandleInfoKHR' or 'null' for argument 2 'pGetWin32HandleInfo' in 'vkGetFenceWin32HandleKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13559,14 +14295,18 @@ Napi::Value _vkGetFenceWin32HandleKHR(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 3 'pHandle' in 'vkGetFenceWin32HandleKHR'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
+    if (!(obj2.Get("$").IsBigInt())) {
+      Napi::TypeError::New(env, "Expected 'BigInt' for Object property '$' 3 'pHandle' in 'vkGetFenceWin32HandleKHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
     bool lossless = false;
     $p2 = reinterpret_cast<HANDLE*>(val.As<Napi::BigInt>().Int64Value(&lossless));
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pHandle'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pHandle' in 'vkGetFenceWin32HandleKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetFenceWin32HandleKHR(
@@ -13599,7 +14339,7 @@ Napi::Value _vkImportFenceWin32HandleKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkImportFenceWin32HandleKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13619,7 +14359,7 @@ Napi::Value _vkImportFenceWin32HandleKHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImportFenceWin32HandleInfoKHR' or 'null' for argument 2 'pImportFenceWin32HandleInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImportFenceWin32HandleInfoKHR' or 'null' for argument 2 'pImportFenceWin32HandleInfo' in 'vkImportFenceWin32HandleKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkImportFenceWin32HandleKHR(
@@ -13649,7 +14389,7 @@ Napi::Value _vkGetFenceFdKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetFenceFdKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13669,7 +14409,7 @@ Napi::Value _vkGetFenceFdKHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkFenceGetFdInfoKHR' or 'null' for argument 2 'pGetFdInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFenceGetFdInfoKHR' or 'null' for argument 2 'pGetFdInfo' in 'vkGetFenceFdKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13678,14 +14418,14 @@ Napi::Value _vkGetFenceFdKHR(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 3 'pFd' in 'vkGetFenceFdKHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
     
     $p2 = static_cast<int>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pFd'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pFd' in 'vkGetFenceFdKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetFenceFdKHR(
@@ -13717,7 +14457,7 @@ Napi::Value _vkImportFenceFdKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkImportFenceFdKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13737,7 +14477,7 @@ Napi::Value _vkImportFenceFdKHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImportFenceFdInfoKHR' or 'null' for argument 2 'pImportFenceFdInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImportFenceFdInfoKHR' or 'null' for argument 2 'pImportFenceFdInfo' in 'vkImportFenceFdKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkImportFenceFdKHR(
@@ -13767,7 +14507,7 @@ Napi::Value _vkReleaseDisplayEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkReleaseDisplayEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13785,7 +14525,7 @@ Napi::Value _vkReleaseDisplayEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDisplayKHR' or 'null' for argument 2 'display'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayKHR' or 'null' for argument 2 'display' in 'vkReleaseDisplayEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkReleaseDisplayEXT(
@@ -13815,7 +14555,7 @@ Napi::Value _vkDisplayPowerControlEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDisplayPowerControlEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13833,7 +14573,7 @@ Napi::Value _vkDisplayPowerControlEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDisplayKHR' or 'null' for argument 2 'display'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayKHR' or 'null' for argument 2 'display' in 'vkDisplayPowerControlEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13853,7 +14593,7 @@ Napi::Value _vkDisplayPowerControlEXT(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDisplayPowerInfoEXT' or 'null' for argument 3 'pDisplayPowerInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayPowerInfoEXT' or 'null' for argument 3 'pDisplayPowerInfo' in 'vkDisplayPowerControlEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkDisplayPowerControlEXT(
@@ -13884,7 +14624,7 @@ Napi::Value _vkRegisterDeviceEventEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkRegisterDeviceEventEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13904,7 +14644,7 @@ Napi::Value _vkRegisterDeviceEventEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDeviceEventInfoEXT' or 'null' for argument 2 'pDeviceEventInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceEventInfoEXT' or 'null' for argument 2 'pDeviceEventInfo' in 'vkRegisterDeviceEventEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13923,7 +14663,7 @@ Napi::Value _vkRegisterDeviceEventEXT(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkFence' or 'null' for argument 4 'pFence'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFence' or 'null' for argument 4 'pFence' in 'vkRegisterDeviceEventEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkRegisterDeviceEventEXT(
@@ -13955,7 +14695,7 @@ Napi::Value _vkRegisterDisplayEventEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkRegisterDisplayEventEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13973,7 +14713,7 @@ Napi::Value _vkRegisterDisplayEventEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDisplayKHR' or 'null' for argument 2 'display'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayKHR' or 'null' for argument 2 'display' in 'vkRegisterDisplayEventEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -13993,7 +14733,7 @@ Napi::Value _vkRegisterDisplayEventEXT(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDisplayEventInfoEXT' or 'null' for argument 3 'pDisplayEventInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayEventInfoEXT' or 'null' for argument 3 'pDisplayEventInfo' in 'vkRegisterDisplayEventEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14012,7 +14752,7 @@ Napi::Value _vkRegisterDisplayEventEXT(const Napi::CallbackInfo& info) {
   } else if (info[4].IsNull()) {
     $p4 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkFence' or 'null' for argument 5 'pFence'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkFence' or 'null' for argument 5 'pFence' in 'vkRegisterDisplayEventEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkRegisterDisplayEventEXT(
@@ -14045,7 +14785,7 @@ Napi::Value _vkGetSwapchainCounterEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetSwapchainCounterEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14063,10 +14803,14 @@ Napi::Value _vkGetSwapchainCounterEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 2 'swapchain'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 2 'swapchain' in 'vkGetSwapchainCounterEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'counter' in 'vkGetSwapchainCounterEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p2 = static_cast<int32_t>(info[2].As<Napi::Number>().Int64Value());
 
   Napi::Object obj3;
@@ -14074,14 +14818,14 @@ Napi::Value _vkGetSwapchainCounterEXT(const Napi::CallbackInfo& info) {
   if (info[3].IsObject()) {
     obj3 = info[3].As<Napi::Object>();
     if (!obj3.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 4").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 4 'pCounterValue' in 'vkGetSwapchainCounterEXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj3.Get("$");
     
     $p3 = static_cast<uint64_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pCounterValue'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 4 'pCounterValue' in 'vkGetSwapchainCounterEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetSwapchainCounterEXT(
@@ -14115,7 +14859,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2EXT(const Napi::CallbackInfo
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceSurfaceCapabilities2EXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14133,7 +14877,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2EXT(const Napi::CallbackInfo
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 2 'surface'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 2 'surface' in 'vkGetPhysicalDeviceSurfaceCapabilities2EXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14153,7 +14897,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2EXT(const Napi::CallbackInfo
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSurfaceCapabilities2EXT' or 'null' for argument 3 'pSurfaceCapabilities'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceCapabilities2EXT' or 'null' for argument 3 'pSurfaceCapabilities' in 'vkGetPhysicalDeviceSurfaceCapabilities2EXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetPhysicalDeviceSurfaceCapabilities2EXT(
@@ -14190,7 +14934,7 @@ Napi::Value _vkEnumeratePhysicalDeviceGroups(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance' in 'vkEnumeratePhysicalDeviceGroups'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14199,14 +14943,14 @@ Napi::Value _vkEnumeratePhysicalDeviceGroups(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 2").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 2 'pPhysicalDeviceGroupCount' in 'vkEnumeratePhysicalDeviceGroups'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
     
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPhysicalDeviceGroupCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPhysicalDeviceGroupCount' in 'vkEnumeratePhysicalDeviceGroups'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14233,7 +14977,7 @@ Napi::Value _vkEnumeratePhysicalDeviceGroups(const Napi::CallbackInfo& info) {
     };
     $p2 = std::make_shared<std::vector<VkPhysicalDeviceGroupProperties>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pPhysicalDeviceGroupProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pPhysicalDeviceGroupProperties' in 'vkEnumeratePhysicalDeviceGroups'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14277,14 +15021,26 @@ Napi::Value _vkGetDeviceGroupPeerMemoryFeatures(const Napi::CallbackInfo& info) 
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetDeviceGroupPeerMemoryFeatures'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'heapIndex' in 'vkGetDeviceGroupPeerMemoryFeatures'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'localDeviceIndex' in 'vkGetDeviceGroupPeerMemoryFeatures'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'remoteDeviceIndex' in 'vkGetDeviceGroupPeerMemoryFeatures'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
   Napi::Object obj4;
@@ -14292,14 +15048,14 @@ Napi::Value _vkGetDeviceGroupPeerMemoryFeatures(const Napi::CallbackInfo& info) 
   if (info[4].IsObject()) {
     obj4 = info[4].As<Napi::Object>();
     if (!obj4.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 5").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 5 'pPeerMemoryFeatures' in 'vkGetDeviceGroupPeerMemoryFeatures'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj4.Get("$");
     
     $p4 = static_cast<int32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[4].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 5 'pPeerMemoryFeatures'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 5 'pPeerMemoryFeatures' in 'vkGetDeviceGroupPeerMemoryFeatures'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkGetDeviceGroupPeerMemoryFeatures(
@@ -14333,10 +15089,14 @@ Napi::Value _vkBindBufferMemory2(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkBindBufferMemory2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'bindInfoCount' in 'vkBindBufferMemory2'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkBindBufferMemoryInfo>> $p2 = nullptr;
@@ -14362,7 +15122,7 @@ Napi::Value _vkBindBufferMemory2(const Napi::CallbackInfo& info) {
     };
     $p2 = std::make_shared<std::vector<VkBindBufferMemoryInfo>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pBindInfos'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pBindInfos' in 'vkBindBufferMemory2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14394,10 +15154,14 @@ Napi::Value _vkBindImageMemory2(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkBindImageMemory2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'bindInfoCount' in 'vkBindImageMemory2'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkBindImageMemoryInfo>> $p2 = nullptr;
@@ -14423,7 +15187,7 @@ Napi::Value _vkBindImageMemory2(const Napi::CallbackInfo& info) {
     };
     $p2 = std::make_shared<std::vector<VkBindImageMemoryInfo>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pBindInfos'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pBindInfos' in 'vkBindImageMemory2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14455,10 +15219,14 @@ Napi::Value _vkCmdSetDeviceMask(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdSetDeviceMask'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'deviceMask' in 'vkCmdSetDeviceMask'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 vkCmdSetDeviceMask(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -14487,7 +15255,7 @@ Napi::Value _vkGetDeviceGroupPresentCapabilitiesKHR(const Napi::CallbackInfo& in
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetDeviceGroupPresentCapabilitiesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14507,7 +15275,7 @@ Napi::Value _vkGetDeviceGroupPresentCapabilitiesKHR(const Napi::CallbackInfo& in
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDeviceGroupPresentCapabilitiesKHR' or 'null' for argument 2 'pDeviceGroupPresentCapabilities'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceGroupPresentCapabilitiesKHR' or 'null' for argument 2 'pDeviceGroupPresentCapabilities' in 'vkGetDeviceGroupPresentCapabilitiesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetDeviceGroupPresentCapabilitiesKHR(
@@ -14543,7 +15311,7 @@ Napi::Value _vkGetDeviceGroupSurfacePresentModesKHR(const Napi::CallbackInfo& in
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetDeviceGroupSurfacePresentModesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14561,7 +15329,7 @@ Napi::Value _vkGetDeviceGroupSurfacePresentModesKHR(const Napi::CallbackInfo& in
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 2 'surface'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 2 'surface' in 'vkGetDeviceGroupSurfacePresentModesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14570,14 +15338,14 @@ Napi::Value _vkGetDeviceGroupSurfacePresentModesKHR(const Napi::CallbackInfo& in
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 3 'pModes' in 'vkGetDeviceGroupSurfacePresentModesKHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
     
     $p2 = static_cast<int32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pModes'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pModes' in 'vkGetDeviceGroupSurfacePresentModesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetDeviceGroupSurfacePresentModesKHR(
@@ -14609,7 +15377,7 @@ Napi::Value _vkAcquireNextImage2KHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkAcquireNextImage2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14629,7 +15397,7 @@ Napi::Value _vkAcquireNextImage2KHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkAcquireNextImageInfoKHR' or 'null' for argument 2 'pAcquireInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkAcquireNextImageInfoKHR' or 'null' for argument 2 'pAcquireInfo' in 'vkAcquireNextImage2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14638,14 +15406,14 @@ Napi::Value _vkAcquireNextImage2KHR(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 3 'pImageIndex' in 'vkAcquireNextImage2KHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
     
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pImageIndex'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pImageIndex' in 'vkAcquireNextImage2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkAcquireNextImage2KHR(
@@ -14677,20 +15445,44 @@ Napi::Value _vkCmdDispatchBase(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdDispatchBase'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'baseGroupX' in 'vkCmdDispatchBase'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'baseGroupY' in 'vkCmdDispatchBase'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'baseGroupZ' in 'vkCmdDispatchBase'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'groupCountX' in 'vkCmdDispatchBase'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
 
+  if (!info[5].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 6 'groupCountY' in 'vkCmdDispatchBase'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p5 = static_cast<uint32_t>(info[5].As<Napi::Number>().Int64Value());
 
+  if (!info[6].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 7 'groupCountZ' in 'vkCmdDispatchBase'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p6 = static_cast<uint32_t>(info[6].As<Napi::Number>().Int64Value());
 vkCmdDispatchBase(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -14724,7 +15516,7 @@ Napi::Value _vkGetPhysicalDevicePresentRectanglesKHR(const Napi::CallbackInfo& i
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDevicePresentRectanglesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14742,7 +15534,7 @@ Napi::Value _vkGetPhysicalDevicePresentRectanglesKHR(const Napi::CallbackInfo& i
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 2 'surface'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceKHR' or 'null' for argument 2 'surface' in 'vkGetPhysicalDevicePresentRectanglesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14751,14 +15543,14 @@ Napi::Value _vkGetPhysicalDevicePresentRectanglesKHR(const Napi::CallbackInfo& i
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 3 'pRectCount' in 'vkGetPhysicalDevicePresentRectanglesKHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
     
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pRectCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pRectCount' in 'vkGetPhysicalDevicePresentRectanglesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14785,7 +15577,7 @@ Napi::Value _vkGetPhysicalDevicePresentRectanglesKHR(const Napi::CallbackInfo& i
     };
     $p3 = std::make_shared<std::vector<VkRect2D>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pRects'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pRects' in 'vkGetPhysicalDevicePresentRectanglesKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14830,7 +15622,7 @@ Napi::Value _vkCreateDescriptorUpdateTemplate(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateDescriptorUpdateTemplate'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14850,7 +15642,7 @@ Napi::Value _vkCreateDescriptorUpdateTemplate(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDescriptorUpdateTemplateCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorUpdateTemplateCreateInfo' or 'null' for argument 2 'pCreateInfo' in 'vkCreateDescriptorUpdateTemplate'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14869,7 +15661,7 @@ Napi::Value _vkCreateDescriptorUpdateTemplate(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDescriptorUpdateTemplate' or 'null' for argument 4 'pDescriptorUpdateTemplate'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorUpdateTemplate' or 'null' for argument 4 'pDescriptorUpdateTemplate' in 'vkCreateDescriptorUpdateTemplate'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkCreateDescriptorUpdateTemplate(
@@ -14901,7 +15693,7 @@ Napi::Value _vkDestroyDescriptorUpdateTemplate(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroyDescriptorUpdateTemplate'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14919,7 +15711,7 @@ Napi::Value _vkDestroyDescriptorUpdateTemplate(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDescriptorUpdateTemplate' or 'null' for argument 2 'descriptorUpdateTemplate'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorUpdateTemplate' or 'null' for argument 2 'descriptorUpdateTemplate' in 'vkDestroyDescriptorUpdateTemplate'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14951,7 +15743,7 @@ Napi::Value _vkUpdateDescriptorSetWithTemplate(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkUpdateDescriptorSetWithTemplate'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14969,7 +15761,7 @@ Napi::Value _vkUpdateDescriptorSetWithTemplate(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDescriptorSet' or 'null' for argument 2 'descriptorSet'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorSet' or 'null' for argument 2 'descriptorSet' in 'vkUpdateDescriptorSetWithTemplate'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14987,7 +15779,7 @@ Napi::Value _vkUpdateDescriptorSetWithTemplate(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDescriptorUpdateTemplate' or 'null' for argument 3 'descriptorUpdateTemplate'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorUpdateTemplate' or 'null' for argument 3 'descriptorUpdateTemplate' in 'vkUpdateDescriptorSetWithTemplate'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -14996,7 +15788,7 @@ Napi::Value _vkUpdateDescriptorSetWithTemplate(const Napi::CallbackInfo& info) {
     Napi::ArrayBuffer buf = info[3].As<Napi::ArrayBuffer>();
     $p3 = buf.Data();
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'ArrayBuffer' or 'null' for argument 4 'pData'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'ArrayBuffer' or 'null' for argument 4 'pData' in 'vkUpdateDescriptorSetWithTemplate'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkUpdateDescriptorSetWithTemplate(
@@ -15028,7 +15820,7 @@ Napi::Value _vkCmdPushDescriptorSetWithTemplateKHR(const Napi::CallbackInfo& inf
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdPushDescriptorSetWithTemplateKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15046,7 +15838,7 @@ Napi::Value _vkCmdPushDescriptorSetWithTemplateKHR(const Napi::CallbackInfo& inf
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDescriptorUpdateTemplate' or 'null' for argument 2 'descriptorUpdateTemplate'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorUpdateTemplate' or 'null' for argument 2 'descriptorUpdateTemplate' in 'vkCmdPushDescriptorSetWithTemplateKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15064,10 +15856,14 @@ Napi::Value _vkCmdPushDescriptorSetWithTemplateKHR(const Napi::CallbackInfo& inf
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPipelineLayout' or 'null' for argument 3 'layout'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineLayout' or 'null' for argument 3 'layout' in 'vkCmdPushDescriptorSetWithTemplateKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'set' in 'vkCmdPushDescriptorSetWithTemplateKHR'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
   void* $p4 = nullptr;
@@ -15075,7 +15871,7 @@ Napi::Value _vkCmdPushDescriptorSetWithTemplateKHR(const Napi::CallbackInfo& inf
     Napi::ArrayBuffer buf = info[4].As<Napi::ArrayBuffer>();
     $p4 = buf.Data();
   } else if (!info[4].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'ArrayBuffer' or 'null' for argument 5 'pData'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'ArrayBuffer' or 'null' for argument 5 'pData' in 'vkCmdPushDescriptorSetWithTemplateKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 $vkCmdPushDescriptorSetWithTemplateKHR(
@@ -15108,10 +15904,14 @@ Napi::Value _vkSetHdrMetadataEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkSetHdrMetadataEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'swapchainCount' in 'vkSetHdrMetadataEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkSwapchainKHR>> $p2 = nullptr;
@@ -15128,7 +15928,7 @@ Napi::Value _vkSetHdrMetadataEXT(const Napi::CallbackInfo& info) {
     };
     $p2 = std::make_shared<std::vector<VkSwapchainKHR>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pSwapchains'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pSwapchains' in 'vkSetHdrMetadataEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15156,7 +15956,7 @@ Napi::Value _vkSetHdrMetadataEXT(const Napi::CallbackInfo& info) {
     };
     $p3 = std::make_shared<std::vector<VkHdrMetadataEXT>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pMetadata'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pMetadata' in 'vkSetHdrMetadataEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15189,7 +15989,7 @@ Napi::Value _vkGetSwapchainStatusKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetSwapchainStatusKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15207,7 +16007,7 @@ Napi::Value _vkGetSwapchainStatusKHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 2 'swapchain'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 2 'swapchain' in 'vkGetSwapchainStatusKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetSwapchainStatusKHR(
@@ -15237,7 +16037,7 @@ Napi::Value _vkGetRefreshCycleDurationGOOGLE(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetRefreshCycleDurationGOOGLE'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15255,7 +16055,7 @@ Napi::Value _vkGetRefreshCycleDurationGOOGLE(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 2 'swapchain'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 2 'swapchain' in 'vkGetRefreshCycleDurationGOOGLE'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15275,7 +16075,7 @@ Napi::Value _vkGetRefreshCycleDurationGOOGLE(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkRefreshCycleDurationGOOGLE' or 'null' for argument 3 'pDisplayTimingProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkRefreshCycleDurationGOOGLE' or 'null' for argument 3 'pDisplayTimingProperties' in 'vkGetRefreshCycleDurationGOOGLE'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetRefreshCycleDurationGOOGLE(
@@ -15312,7 +16112,7 @@ Napi::Value _vkGetPastPresentationTimingGOOGLE(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetPastPresentationTimingGOOGLE'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15330,7 +16130,7 @@ Napi::Value _vkGetPastPresentationTimingGOOGLE(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 2 'swapchain'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSwapchainKHR' or 'null' for argument 2 'swapchain' in 'vkGetPastPresentationTimingGOOGLE'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15339,14 +16139,14 @@ Napi::Value _vkGetPastPresentationTimingGOOGLE(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 3 'pPresentationTimingCount' in 'vkGetPastPresentationTimingGOOGLE'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
     
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pPresentationTimingCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pPresentationTimingCount' in 'vkGetPastPresentationTimingGOOGLE'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15373,7 +16173,7 @@ Napi::Value _vkGetPastPresentationTimingGOOGLE(const Napi::CallbackInfo& info) {
     };
     $p3 = std::make_shared<std::vector<VkPastPresentationTimingGOOGLE>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pPresentationTimings'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pPresentationTimings' in 'vkGetPastPresentationTimingGOOGLE'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15418,12 +16218,20 @@ Napi::Value _vkCmdSetViewportWScalingNV(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdSetViewportWScalingNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'firstViewport' in 'vkCmdSetViewportWScalingNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'viewportCount' in 'vkCmdSetViewportWScalingNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkViewportWScalingNV>> $p3 = nullptr;
@@ -15449,7 +16257,7 @@ Napi::Value _vkCmdSetViewportWScalingNV(const Napi::CallbackInfo& info) {
     };
     $p3 = std::make_shared<std::vector<VkViewportWScalingNV>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pViewportWScalings'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pViewportWScalings' in 'vkCmdSetViewportWScalingNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15482,12 +16290,20 @@ Napi::Value _vkCmdSetDiscardRectangleEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdSetDiscardRectangleEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'firstDiscardRectangle' in 'vkCmdSetDiscardRectangleEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'discardRectangleCount' in 'vkCmdSetDiscardRectangleEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkRect2D>> $p3 = nullptr;
@@ -15513,7 +16329,7 @@ Napi::Value _vkCmdSetDiscardRectangleEXT(const Napi::CallbackInfo& info) {
     };
     $p3 = std::make_shared<std::vector<VkRect2D>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pDiscardRectangles'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pDiscardRectangles' in 'vkCmdSetDiscardRectangleEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15546,7 +16362,7 @@ Napi::Value _vkCmdSetSampleLocationsEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdSetSampleLocationsEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15566,7 +16382,7 @@ Napi::Value _vkCmdSetSampleLocationsEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSampleLocationsInfoEXT' or 'null' for argument 2 'pSampleLocationsInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSampleLocationsInfoEXT' or 'null' for argument 2 'pSampleLocationsInfo' in 'vkCmdSetSampleLocationsEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 $vkCmdSetSampleLocationsEXT(
@@ -15596,10 +16412,14 @@ Napi::Value _vkGetPhysicalDeviceMultisamplePropertiesEXT(const Napi::CallbackInf
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceMultisamplePropertiesEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'samples' in 'vkGetPhysicalDeviceMultisamplePropertiesEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
 
   Napi::Object obj2;
@@ -15618,7 +16438,7 @@ Napi::Value _vkGetPhysicalDeviceMultisamplePropertiesEXT(const Napi::CallbackInf
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkMultisamplePropertiesEXT' or 'null' for argument 3 'pMultisampleProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkMultisamplePropertiesEXT' or 'null' for argument 3 'pMultisampleProperties' in 'vkGetPhysicalDeviceMultisamplePropertiesEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 $vkGetPhysicalDeviceMultisamplePropertiesEXT(
@@ -15655,7 +16475,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2KHR(const Napi::CallbackInfo
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceSurfaceCapabilities2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15675,7 +16495,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2KHR(const Napi::CallbackInfo
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceSurfaceInfo2KHR' or 'null' for argument 2 'pSurfaceInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceSurfaceInfo2KHR' or 'null' for argument 2 'pSurfaceInfo' in 'vkGetPhysicalDeviceSurfaceCapabilities2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15695,7 +16515,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceCapabilities2KHR(const Napi::CallbackInfo
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSurfaceCapabilities2KHR' or 'null' for argument 3 'pSurfaceCapabilities'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSurfaceCapabilities2KHR' or 'null' for argument 3 'pSurfaceCapabilities' in 'vkGetPhysicalDeviceSurfaceCapabilities2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetPhysicalDeviceSurfaceCapabilities2KHR(
@@ -15732,7 +16552,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormats2KHR(const Napi::CallbackInfo& inf
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceSurfaceFormats2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15752,7 +16572,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormats2KHR(const Napi::CallbackInfo& inf
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceSurfaceInfo2KHR' or 'null' for argument 2 'pSurfaceInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDeviceSurfaceInfo2KHR' or 'null' for argument 2 'pSurfaceInfo' in 'vkGetPhysicalDeviceSurfaceFormats2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15761,14 +16581,14 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormats2KHR(const Napi::CallbackInfo& inf
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 3 'pSurfaceFormatCount' in 'vkGetPhysicalDeviceSurfaceFormats2KHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
     
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pSurfaceFormatCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pSurfaceFormatCount' in 'vkGetPhysicalDeviceSurfaceFormats2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15795,7 +16615,7 @@ Napi::Value _vkGetPhysicalDeviceSurfaceFormats2KHR(const Napi::CallbackInfo& inf
     };
     $p3 = std::make_shared<std::vector<VkSurfaceFormat2KHR>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pSurfaceFormats'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pSurfaceFormats' in 'vkGetPhysicalDeviceSurfaceFormats2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15840,7 +16660,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayProperties2KHR(const Napi::CallbackInfo& 
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceDisplayProperties2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15849,14 +16669,14 @@ Napi::Value _vkGetPhysicalDeviceDisplayProperties2KHR(const Napi::CallbackInfo& 
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 2").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 2 'pPropertyCount' in 'vkGetPhysicalDeviceDisplayProperties2KHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
     
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPropertyCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPropertyCount' in 'vkGetPhysicalDeviceDisplayProperties2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15883,7 +16703,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayProperties2KHR(const Napi::CallbackInfo& 
     };
     $p2 = std::make_shared<std::vector<VkDisplayProperties2KHR>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pProperties' in 'vkGetPhysicalDeviceDisplayProperties2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15927,7 +16747,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlaneProperties2KHR(const Napi::CallbackI
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceDisplayPlaneProperties2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15936,14 +16756,14 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlaneProperties2KHR(const Napi::CallbackI
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 2").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 2 'pPropertyCount' in 'vkGetPhysicalDeviceDisplayPlaneProperties2KHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
     
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPropertyCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPropertyCount' in 'vkGetPhysicalDeviceDisplayPlaneProperties2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -15970,7 +16790,7 @@ Napi::Value _vkGetPhysicalDeviceDisplayPlaneProperties2KHR(const Napi::CallbackI
     };
     $p2 = std::make_shared<std::vector<VkDisplayPlaneProperties2KHR>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pProperties' in 'vkGetPhysicalDeviceDisplayPlaneProperties2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16014,7 +16834,7 @@ Napi::Value _vkGetDisplayModeProperties2KHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetDisplayModeProperties2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16032,7 +16852,7 @@ Napi::Value _vkGetDisplayModeProperties2KHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDisplayKHR' or 'null' for argument 2 'display'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayKHR' or 'null' for argument 2 'display' in 'vkGetDisplayModeProperties2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16041,14 +16861,14 @@ Napi::Value _vkGetDisplayModeProperties2KHR(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 3 'pPropertyCount' in 'vkGetDisplayModeProperties2KHR'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
     
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pPropertyCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pPropertyCount' in 'vkGetDisplayModeProperties2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16075,7 +16895,7 @@ Napi::Value _vkGetDisplayModeProperties2KHR(const Napi::CallbackInfo& info) {
     };
     $p3 = std::make_shared<std::vector<VkDisplayModeProperties2KHR>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pProperties' in 'vkGetDisplayModeProperties2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16120,7 +16940,7 @@ Napi::Value _vkGetDisplayPlaneCapabilities2KHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetDisplayPlaneCapabilities2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16140,7 +16960,7 @@ Napi::Value _vkGetDisplayPlaneCapabilities2KHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDisplayPlaneInfo2KHR' or 'null' for argument 2 'pDisplayPlaneInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayPlaneInfo2KHR' or 'null' for argument 2 'pDisplayPlaneInfo' in 'vkGetDisplayPlaneCapabilities2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16160,7 +16980,7 @@ Napi::Value _vkGetDisplayPlaneCapabilities2KHR(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDisplayPlaneCapabilities2KHR' or 'null' for argument 3 'pCapabilities'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDisplayPlaneCapabilities2KHR' or 'null' for argument 3 'pCapabilities' in 'vkGetDisplayPlaneCapabilities2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetDisplayPlaneCapabilities2KHR(
@@ -16197,7 +17017,7 @@ Napi::Value _vkGetBufferMemoryRequirements2(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetBufferMemoryRequirements2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16217,7 +17037,7 @@ Napi::Value _vkGetBufferMemoryRequirements2(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBufferMemoryRequirementsInfo2' or 'null' for argument 2 'pInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBufferMemoryRequirementsInfo2' or 'null' for argument 2 'pInfo' in 'vkGetBufferMemoryRequirements2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16237,7 +17057,7 @@ Napi::Value _vkGetBufferMemoryRequirements2(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkMemoryRequirements2' or 'null' for argument 3 'pMemoryRequirements'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkMemoryRequirements2' or 'null' for argument 3 'pMemoryRequirements' in 'vkGetBufferMemoryRequirements2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkGetBufferMemoryRequirements2(
@@ -16274,7 +17094,7 @@ Napi::Value _vkGetImageMemoryRequirements2(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetImageMemoryRequirements2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16294,7 +17114,7 @@ Napi::Value _vkGetImageMemoryRequirements2(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImageMemoryRequirementsInfo2' or 'null' for argument 2 'pInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImageMemoryRequirementsInfo2' or 'null' for argument 2 'pInfo' in 'vkGetImageMemoryRequirements2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16314,7 +17134,7 @@ Napi::Value _vkGetImageMemoryRequirements2(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkMemoryRequirements2' or 'null' for argument 3 'pMemoryRequirements'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkMemoryRequirements2' or 'null' for argument 3 'pMemoryRequirements' in 'vkGetImageMemoryRequirements2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkGetImageMemoryRequirements2(
@@ -16351,7 +17171,7 @@ Napi::Value _vkGetImageSparseMemoryRequirements2(const Napi::CallbackInfo& info)
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetImageSparseMemoryRequirements2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16371,7 +17191,7 @@ Napi::Value _vkGetImageSparseMemoryRequirements2(const Napi::CallbackInfo& info)
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImageSparseMemoryRequirementsInfo2' or 'null' for argument 2 'pInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImageSparseMemoryRequirementsInfo2' or 'null' for argument 2 'pInfo' in 'vkGetImageSparseMemoryRequirements2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16380,14 +17200,14 @@ Napi::Value _vkGetImageSparseMemoryRequirements2(const Napi::CallbackInfo& info)
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 3 'pSparseMemoryRequirementCount' in 'vkGetImageSparseMemoryRequirements2'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
     
     $p2 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pSparseMemoryRequirementCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pSparseMemoryRequirementCount' in 'vkGetImageSparseMemoryRequirements2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16414,7 +17234,7 @@ Napi::Value _vkGetImageSparseMemoryRequirements2(const Napi::CallbackInfo& info)
     };
     $p3 = std::make_shared<std::vector<VkSparseImageMemoryRequirements2>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pSparseMemoryRequirements'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pSparseMemoryRequirements' in 'vkGetImageSparseMemoryRequirements2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16459,7 +17279,7 @@ Napi::Value _vkCreateSamplerYcbcrConversion(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateSamplerYcbcrConversion'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16479,7 +17299,7 @@ Napi::Value _vkCreateSamplerYcbcrConversion(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSamplerYcbcrConversionCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSamplerYcbcrConversionCreateInfo' or 'null' for argument 2 'pCreateInfo' in 'vkCreateSamplerYcbcrConversion'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16498,7 +17318,7 @@ Napi::Value _vkCreateSamplerYcbcrConversion(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSamplerYcbcrConversion' or 'null' for argument 4 'pYcbcrConversion'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSamplerYcbcrConversion' or 'null' for argument 4 'pYcbcrConversion' in 'vkCreateSamplerYcbcrConversion'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = vkCreateSamplerYcbcrConversion(
@@ -16530,7 +17350,7 @@ Napi::Value _vkDestroySamplerYcbcrConversion(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroySamplerYcbcrConversion'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16548,7 +17368,7 @@ Napi::Value _vkDestroySamplerYcbcrConversion(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSamplerYcbcrConversion' or 'null' for argument 2 'ycbcrConversion'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSamplerYcbcrConversion' or 'null' for argument 2 'ycbcrConversion' in 'vkDestroySamplerYcbcrConversion'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16580,7 +17400,7 @@ Napi::Value _vkGetDeviceQueue2(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetDeviceQueue2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16600,7 +17420,7 @@ Napi::Value _vkGetDeviceQueue2(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDeviceQueueInfo2' or 'null' for argument 2 'pQueueInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDeviceQueueInfo2' or 'null' for argument 2 'pQueueInfo' in 'vkGetDeviceQueue2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16618,7 +17438,7 @@ Napi::Value _vkGetDeviceQueue2(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 3 'pQueue'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 3 'pQueue' in 'vkGetDeviceQueue2'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkGetDeviceQueue2(
@@ -16649,7 +17469,7 @@ Napi::Value _vkCreateValidationCacheEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateValidationCacheEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16669,7 +17489,7 @@ Napi::Value _vkCreateValidationCacheEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkValidationCacheCreateInfoEXT' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkValidationCacheCreateInfoEXT' or 'null' for argument 2 'pCreateInfo' in 'vkCreateValidationCacheEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16688,7 +17508,7 @@ Napi::Value _vkCreateValidationCacheEXT(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkValidationCacheEXT' or 'null' for argument 4 'pValidationCache'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkValidationCacheEXT' or 'null' for argument 4 'pValidationCache' in 'vkCreateValidationCacheEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkCreateValidationCacheEXT(
@@ -16720,7 +17540,7 @@ Napi::Value _vkDestroyValidationCacheEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroyValidationCacheEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16738,7 +17558,7 @@ Napi::Value _vkDestroyValidationCacheEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkValidationCacheEXT' or 'null' for argument 2 'validationCache'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkValidationCacheEXT' or 'null' for argument 2 'validationCache' in 'vkDestroyValidationCacheEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16770,7 +17590,7 @@ Napi::Value _vkGetValidationCacheDataEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetValidationCacheDataEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16788,7 +17608,7 @@ Napi::Value _vkGetValidationCacheDataEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkValidationCacheEXT' or 'null' for argument 2 'validationCache'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkValidationCacheEXT' or 'null' for argument 2 'validationCache' in 'vkGetValidationCacheDataEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16797,14 +17617,14 @@ Napi::Value _vkGetValidationCacheDataEXT(const Napi::CallbackInfo& info) {
   if (info[2].IsObject()) {
     obj2 = info[2].As<Napi::Object>();
     if (!obj2.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 3").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 3 'pDataSize' in 'vkGetValidationCacheDataEXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj2.Get("$");
     
     $p2 = static_cast<size_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pDataSize'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 3 'pDataSize' in 'vkGetValidationCacheDataEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16813,7 +17633,7 @@ Napi::Value _vkGetValidationCacheDataEXT(const Napi::CallbackInfo& info) {
     Napi::ArrayBuffer buf = info[3].As<Napi::ArrayBuffer>();
     $p3 = buf.Data();
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'ArrayBuffer' or 'null' for argument 4 'pData'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'ArrayBuffer' or 'null' for argument 4 'pData' in 'vkGetValidationCacheDataEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetValidationCacheDataEXT(
@@ -16847,7 +17667,7 @@ Napi::Value _vkMergeValidationCachesEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkMergeValidationCachesEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16865,10 +17685,14 @@ Napi::Value _vkMergeValidationCachesEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkValidationCacheEXT' or 'null' for argument 2 'dstCache'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkValidationCacheEXT' or 'null' for argument 2 'dstCache' in 'vkMergeValidationCachesEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'srcCacheCount' in 'vkMergeValidationCachesEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkValidationCacheEXT>> $p3 = nullptr;
@@ -16885,7 +17709,7 @@ Napi::Value _vkMergeValidationCachesEXT(const Napi::CallbackInfo& info) {
     };
     $p3 = std::make_shared<std::vector<VkValidationCacheEXT>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pSrcCaches'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pSrcCaches' in 'vkMergeValidationCachesEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16918,7 +17742,7 @@ Napi::Value _vkGetDescriptorSetLayoutSupport(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetDescriptorSetLayoutSupport'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16938,7 +17762,7 @@ Napi::Value _vkGetDescriptorSetLayoutSupport(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDescriptorSetLayoutCreateInfo' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorSetLayoutCreateInfo' or 'null' for argument 2 'pCreateInfo' in 'vkGetDescriptorSetLayoutSupport'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -16958,7 +17782,7 @@ Napi::Value _vkGetDescriptorSetLayoutSupport(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDescriptorSetLayoutSupport' or 'null' for argument 3 'pSupport'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDescriptorSetLayoutSupport' or 'null' for argument 3 'pSupport' in 'vkGetDescriptorSetLayoutSupport'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 vkGetDescriptorSetLayoutSupport(
@@ -16995,7 +17819,7 @@ Napi::Value _vkGetShaderInfoAMD(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetShaderInfoAMD'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -17013,12 +17837,20 @@ Napi::Value _vkGetShaderInfoAMD(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPipeline' or 'null' for argument 2 'pipeline'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipeline' or 'null' for argument 2 'pipeline' in 'vkGetShaderInfoAMD'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'shaderStage' in 'vkGetShaderInfoAMD'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p2 = static_cast<int32_t>(info[2].As<Napi::Number>().Int64Value());
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'infoType' in 'vkGetShaderInfoAMD'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkShaderInfoTypeAMD $p3 = static_cast<VkShaderInfoTypeAMD>(info[3].As<Napi::Number>().Int64Value());
 
   Napi::Object obj4;
@@ -17026,14 +17858,14 @@ Napi::Value _vkGetShaderInfoAMD(const Napi::CallbackInfo& info) {
   if (info[4].IsObject()) {
     obj4 = info[4].As<Napi::Object>();
     if (!obj4.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 5").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 5 'pInfoSize' in 'vkGetShaderInfoAMD'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj4.Get("$");
     
     $p4 = static_cast<size_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[4].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 5 'pInfoSize'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 5 'pInfoSize' in 'vkGetShaderInfoAMD'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -17042,7 +17874,7 @@ Napi::Value _vkGetShaderInfoAMD(const Napi::CallbackInfo& info) {
     Napi::ArrayBuffer buf = info[5].As<Napi::ArrayBuffer>();
     $p5 = buf.Data();
   } else if (!info[5].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'ArrayBuffer' or 'null' for argument 6 'pInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'ArrayBuffer' or 'null' for argument 6 'pInfo' in 'vkGetShaderInfoAMD'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetShaderInfoAMD(
@@ -17078,7 +17910,7 @@ Napi::Value _vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(const Napi::Callback
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceCalibrateableTimeDomainsEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -17087,14 +17919,14 @@ Napi::Value _vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(const Napi::Callback
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 2").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 2 'pTimeDomainCount' in 'vkGetPhysicalDeviceCalibrateableTimeDomainsEXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
     
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pTimeDomainCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pTimeDomainCount' in 'vkGetPhysicalDeviceCalibrateableTimeDomainsEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -17103,13 +17935,13 @@ Napi::Value _vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(const Napi::Callback
   if (info[2].IsTypedArray()) {
 
     if (info[2].As<Napi::TypedArray>().TypedArrayType() != napi_int32_array) {
-      Napi::TypeError::New(env, "Invalid type for argument 3 'pTimeDomains'").ThrowAsJavaScriptException();
+      Napi::TypeError::New(env, "Invalid type for argument 3 'pTimeDomains' in 'vkGetPhysicalDeviceCalibrateableTimeDomainsEXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     int32_t* data = getTypedArrayData<int32_t>(info[2]);
     $p2 = std::make_shared<int32_t*>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pTimeDomains'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pTimeDomains' in 'vkGetPhysicalDeviceCalibrateableTimeDomainsEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -17142,10 +17974,14 @@ Napi::Value _vkGetCalibratedTimestampsEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetCalibratedTimestampsEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'timestampCount' in 'vkGetCalibratedTimestampsEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkCalibratedTimestampInfoEXT>> $p2 = nullptr;
@@ -17171,7 +18007,7 @@ Napi::Value _vkGetCalibratedTimestampsEXT(const Napi::CallbackInfo& info) {
     };
     $p2 = std::make_shared<std::vector<VkCalibratedTimestampInfoEXT>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pTimestampInfos'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pTimestampInfos' in 'vkGetCalibratedTimestampsEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -17181,13 +18017,13 @@ Napi::Value _vkGetCalibratedTimestampsEXT(const Napi::CallbackInfo& info) {
   if (info[3].IsTypedArray()) {
 
     if (info[3].As<Napi::TypedArray>().TypedArrayType() != napi_biguint64_array) {
-      Napi::TypeError::New(env, "Invalid type for argument 4 'pTimestamps'").ThrowAsJavaScriptException();
+      Napi::TypeError::New(env, "Invalid type for argument 4 'pTimestamps' in 'vkGetCalibratedTimestampsEXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     uint64_t* data = getTypedArrayData<uint64_t>(info[3]);
     $p3 = std::make_shared<uint64_t*>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pTimestamps'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pTimestamps' in 'vkGetCalibratedTimestampsEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -17197,14 +18033,14 @@ Napi::Value _vkGetCalibratedTimestampsEXT(const Napi::CallbackInfo& info) {
   if (info[4].IsObject()) {
     obj4 = info[4].As<Napi::Object>();
     if (!obj4.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 5").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 5 'pMaxDeviation' in 'vkGetCalibratedTimestampsEXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj4.Get("$");
     
     $p4 = static_cast<uint64_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[4].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 5 'pMaxDeviation'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 5 'pMaxDeviation' in 'vkGetCalibratedTimestampsEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetCalibratedTimestampsEXT(
@@ -17239,7 +18075,7 @@ Napi::Value _vkSetDebugUtilsObjectNameEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkSetDebugUtilsObjectNameEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -17259,7 +18095,7 @@ Napi::Value _vkSetDebugUtilsObjectNameEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDebugUtilsObjectNameInfoEXT' or 'null' for argument 2 'pNameInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugUtilsObjectNameInfoEXT' or 'null' for argument 2 'pNameInfo' in 'vkSetDebugUtilsObjectNameEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkSetDebugUtilsObjectNameEXT(
@@ -17289,7 +18125,7 @@ Napi::Value _vkSetDebugUtilsObjectTagEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkSetDebugUtilsObjectTagEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -17309,7 +18145,7 @@ Napi::Value _vkSetDebugUtilsObjectTagEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDebugUtilsObjectTagInfoEXT' or 'null' for argument 2 'pTagInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugUtilsObjectTagInfoEXT' or 'null' for argument 2 'pTagInfo' in 'vkSetDebugUtilsObjectTagEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkSetDebugUtilsObjectTagEXT(
@@ -17339,7 +18175,7 @@ Napi::Value _vkQueueBeginDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 1 'queue'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 1 'queue' in 'vkQueueBeginDebugUtilsLabelEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -17359,7 +18195,7 @@ Napi::Value _vkQueueBeginDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDebugUtilsLabelEXT' or 'null' for argument 2 'pLabelInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugUtilsLabelEXT' or 'null' for argument 2 'pLabelInfo' in 'vkQueueBeginDebugUtilsLabelEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 $vkQueueBeginDebugUtilsLabelEXT(
@@ -17389,7 +18225,7 @@ Napi::Value _vkQueueEndDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 1 'queue'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 1 'queue' in 'vkQueueEndDebugUtilsLabelEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 $vkQueueEndDebugUtilsLabelEXT(
@@ -17418,7 +18254,7 @@ Napi::Value _vkQueueInsertDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 1 'queue'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 1 'queue' in 'vkQueueInsertDebugUtilsLabelEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -17438,7 +18274,7 @@ Napi::Value _vkQueueInsertDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDebugUtilsLabelEXT' or 'null' for argument 2 'pLabelInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugUtilsLabelEXT' or 'null' for argument 2 'pLabelInfo' in 'vkQueueInsertDebugUtilsLabelEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 $vkQueueInsertDebugUtilsLabelEXT(
@@ -17468,7 +18304,7 @@ Napi::Value _vkCmdBeginDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdBeginDebugUtilsLabelEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -17488,7 +18324,7 @@ Napi::Value _vkCmdBeginDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDebugUtilsLabelEXT' or 'null' for argument 2 'pLabelInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugUtilsLabelEXT' or 'null' for argument 2 'pLabelInfo' in 'vkCmdBeginDebugUtilsLabelEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 $vkCmdBeginDebugUtilsLabelEXT(
@@ -17518,7 +18354,7 @@ Napi::Value _vkCmdEndDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdEndDebugUtilsLabelEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 $vkCmdEndDebugUtilsLabelEXT(
@@ -17547,7 +18383,7 @@ Napi::Value _vkCmdInsertDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdInsertDebugUtilsLabelEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -17567,7 +18403,7 @@ Napi::Value _vkCmdInsertDebugUtilsLabelEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDebugUtilsLabelEXT' or 'null' for argument 2 'pLabelInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugUtilsLabelEXT' or 'null' for argument 2 'pLabelInfo' in 'vkCmdInsertDebugUtilsLabelEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 $vkCmdInsertDebugUtilsLabelEXT(
@@ -17597,7 +18433,7 @@ Napi::Value _vkCreateDebugUtilsMessengerEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance' in 'vkCreateDebugUtilsMessengerEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -17617,7 +18453,7 @@ Napi::Value _vkCreateDebugUtilsMessengerEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDebugUtilsMessengerCreateInfoEXT' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugUtilsMessengerCreateInfoEXT' or 'null' for argument 2 'pCreateInfo' in 'vkCreateDebugUtilsMessengerEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -17636,7 +18472,7 @@ Napi::Value _vkCreateDebugUtilsMessengerEXT(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDebugUtilsMessengerEXT' or 'null' for argument 4 'pMessenger'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugUtilsMessengerEXT' or 'null' for argument 4 'pMessenger' in 'vkCreateDebugUtilsMessengerEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkCreateDebugUtilsMessengerEXT(
@@ -17668,7 +18504,7 @@ Napi::Value _vkDestroyDebugUtilsMessengerEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance' in 'vkDestroyDebugUtilsMessengerEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -17686,7 +18522,7 @@ Napi::Value _vkDestroyDebugUtilsMessengerEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDebugUtilsMessengerEXT' or 'null' for argument 2 'messenger'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugUtilsMessengerEXT' or 'null' for argument 2 'messenger' in 'vkDestroyDebugUtilsMessengerEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -17718,12 +18554,20 @@ Napi::Value _vkSubmitDebugUtilsMessageEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkInstance' or 'null' for argument 1 'instance' in 'vkSubmitDebugUtilsMessageEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'messageSeverity' in 'vkSubmitDebugUtilsMessageEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'messageTypes' in 'vkSubmitDebugUtilsMessageEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p2 = static_cast<int32_t>(info[2].As<Napi::Number>().Int64Value());
 
   Napi::Object obj3;
@@ -17742,7 +18586,7 @@ Napi::Value _vkSubmitDebugUtilsMessageEXT(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDebugUtilsMessengerCallbackDataEXT' or 'null' for argument 4 'pCallbackData'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDebugUtilsMessengerCallbackDataEXT' or 'null' for argument 4 'pCallbackData' in 'vkSubmitDebugUtilsMessageEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 $vkSubmitDebugUtilsMessageEXT(
@@ -17774,10 +18618,14 @@ Napi::Value _vkGetMemoryHostPointerPropertiesEXT(const Napi::CallbackInfo& info)
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetMemoryHostPointerPropertiesEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'handleType' in 'vkGetMemoryHostPointerPropertiesEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
 
   void* $p2 = nullptr;
@@ -17785,7 +18633,7 @@ Napi::Value _vkGetMemoryHostPointerPropertiesEXT(const Napi::CallbackInfo& info)
     Napi::ArrayBuffer buf = info[2].As<Napi::ArrayBuffer>();
     $p2 = buf.Data();
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'ArrayBuffer' or 'null' for argument 3 'pHostPointer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'ArrayBuffer' or 'null' for argument 3 'pHostPointer' in 'vkGetMemoryHostPointerPropertiesEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -17805,7 +18653,7 @@ Napi::Value _vkGetMemoryHostPointerPropertiesEXT(const Napi::CallbackInfo& info)
   } else if (info[3].IsNull()) {
     $p3 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkMemoryHostPointerPropertiesEXT' or 'null' for argument 4 'pMemoryHostPointerProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkMemoryHostPointerPropertiesEXT' or 'null' for argument 4 'pMemoryHostPointerProperties' in 'vkGetMemoryHostPointerPropertiesEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetMemoryHostPointerPropertiesEXT(
@@ -17843,10 +18691,14 @@ Napi::Value _vkCmdWriteBufferMarkerAMD(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdWriteBufferMarkerAMD'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'pipelineStage' in 'vkCmdWriteBufferMarkerAMD'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p1 = static_cast<int32_t>(info[1].As<Napi::Number>().Int64Value());
 
   Napi::Object obj2;
@@ -17863,13 +18715,21 @@ Napi::Value _vkCmdWriteBufferMarkerAMD(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 3 'dstBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 3 'dstBuffer' in 'vkCmdWriteBufferMarkerAMD'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless3;
+  if (!info[3].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 4 'dstOffset' in 'vkCmdWriteBufferMarkerAMD'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'marker' in 'vkCmdWriteBufferMarkerAMD'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
 $vkCmdWriteBufferMarkerAMD(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -17901,7 +18761,7 @@ Napi::Value _vkCreateRenderPass2KHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateRenderPass2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -17921,7 +18781,7 @@ Napi::Value _vkCreateRenderPass2KHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkRenderPassCreateInfo2KHR' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkRenderPassCreateInfo2KHR' or 'null' for argument 2 'pCreateInfo' in 'vkCreateRenderPass2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -17940,7 +18800,7 @@ Napi::Value _vkCreateRenderPass2KHR(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkRenderPass' or 'null' for argument 4 'pRenderPass'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkRenderPass' or 'null' for argument 4 'pRenderPass' in 'vkCreateRenderPass2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkCreateRenderPass2KHR(
@@ -17972,7 +18832,7 @@ Napi::Value _vkCmdBeginRenderPass2KHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdBeginRenderPass2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -17992,7 +18852,7 @@ Napi::Value _vkCmdBeginRenderPass2KHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkRenderPassBeginInfo' or 'null' for argument 2 'pRenderPassBegin'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkRenderPassBeginInfo' or 'null' for argument 2 'pRenderPassBegin' in 'vkCmdBeginRenderPass2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -18012,7 +18872,7 @@ Napi::Value _vkCmdBeginRenderPass2KHR(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSubpassBeginInfoKHR' or 'null' for argument 3 'pSubpassBeginInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSubpassBeginInfoKHR' or 'null' for argument 3 'pSubpassBeginInfo' in 'vkCmdBeginRenderPass2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 $vkCmdBeginRenderPass2KHR(
@@ -18043,7 +18903,7 @@ Napi::Value _vkCmdNextSubpass2KHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdNextSubpass2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -18063,7 +18923,7 @@ Napi::Value _vkCmdNextSubpass2KHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSubpassBeginInfoKHR' or 'null' for argument 2 'pSubpassBeginInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSubpassBeginInfoKHR' or 'null' for argument 2 'pSubpassBeginInfo' in 'vkCmdNextSubpass2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -18083,7 +18943,7 @@ Napi::Value _vkCmdNextSubpass2KHR(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSubpassEndInfoKHR' or 'null' for argument 3 'pSubpassEndInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSubpassEndInfoKHR' or 'null' for argument 3 'pSubpassEndInfo' in 'vkCmdNextSubpass2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 $vkCmdNextSubpass2KHR(
@@ -18114,7 +18974,7 @@ Napi::Value _vkCmdEndRenderPass2KHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdEndRenderPass2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -18134,7 +18994,7 @@ Napi::Value _vkCmdEndRenderPass2KHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkSubpassEndInfoKHR' or 'null' for argument 2 'pSubpassEndInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkSubpassEndInfoKHR' or 'null' for argument 2 'pSubpassEndInfo' in 'vkCmdEndRenderPass2KHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 $vkCmdEndRenderPass2KHR(
@@ -18164,7 +19024,7 @@ Napi::Value _vkCmdDrawIndirectCountKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdDrawIndirectCountKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -18182,11 +19042,15 @@ Napi::Value _vkCmdDrawIndirectCountKHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer' in 'vkCmdDrawIndirectCountKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless2;
+  if (!info[2].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'offset' in 'vkCmdDrawIndirectCountKHR'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
   Napi::Object obj3;
@@ -18203,15 +19067,27 @@ Napi::Value _vkCmdDrawIndirectCountKHR(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'countBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'countBuffer' in 'vkCmdDrawIndirectCountKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless4;
+  if (!info[4].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 5 'countBufferOffset' in 'vkCmdDrawIndirectCountKHR'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
 
+  if (!info[5].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 6 'maxDrawCount' in 'vkCmdDrawIndirectCountKHR'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p5 = static_cast<uint32_t>(info[5].As<Napi::Number>().Int64Value());
 
+  if (!info[6].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 7 'stride' in 'vkCmdDrawIndirectCountKHR'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p6 = static_cast<uint32_t>(info[6].As<Napi::Number>().Int64Value());
 $vkCmdDrawIndirectCountKHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -18245,7 +19121,7 @@ Napi::Value _vkCmdDrawIndexedIndirectCountKHR(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdDrawIndexedIndirectCountKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -18263,11 +19139,15 @@ Napi::Value _vkCmdDrawIndexedIndirectCountKHR(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer' in 'vkCmdDrawIndexedIndirectCountKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless2;
+  if (!info[2].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'offset' in 'vkCmdDrawIndexedIndirectCountKHR'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
   Napi::Object obj3;
@@ -18284,15 +19164,27 @@ Napi::Value _vkCmdDrawIndexedIndirectCountKHR(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'countBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'countBuffer' in 'vkCmdDrawIndexedIndirectCountKHR'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless4;
+  if (!info[4].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 5 'countBufferOffset' in 'vkCmdDrawIndexedIndirectCountKHR'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
 
+  if (!info[5].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 6 'maxDrawCount' in 'vkCmdDrawIndexedIndirectCountKHR'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p5 = static_cast<uint32_t>(info[5].As<Napi::Number>().Int64Value());
 
+  if (!info[6].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 7 'stride' in 'vkCmdDrawIndexedIndirectCountKHR'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p6 = static_cast<uint32_t>(info[6].As<Napi::Number>().Int64Value());
 $vkCmdDrawIndexedIndirectCountKHR(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -18326,7 +19218,7 @@ Napi::Value _vkCmdSetCheckpointNV(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdSetCheckpointNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -18335,7 +19227,7 @@ Napi::Value _vkCmdSetCheckpointNV(const Napi::CallbackInfo& info) {
     Napi::ArrayBuffer buf = info[1].As<Napi::ArrayBuffer>();
     $p1 = buf.Data();
   } else if (!info[1].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'ArrayBuffer' or 'null' for argument 2 'pCheckpointMarker'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'ArrayBuffer' or 'null' for argument 2 'pCheckpointMarker' in 'vkCmdSetCheckpointNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 $vkCmdSetCheckpointNV(
@@ -18365,7 +19257,7 @@ Napi::Value _vkGetQueueCheckpointDataNV(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 1 'queue'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueue' or 'null' for argument 1 'queue' in 'vkGetQueueCheckpointDataNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -18374,14 +19266,14 @@ Napi::Value _vkGetQueueCheckpointDataNV(const Napi::CallbackInfo& info) {
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 2").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 2 'pCheckpointDataCount' in 'vkGetQueueCheckpointDataNV'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
     
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCheckpointDataCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pCheckpointDataCount' in 'vkGetQueueCheckpointDataNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -18408,7 +19300,7 @@ Napi::Value _vkGetQueueCheckpointDataNV(const Napi::CallbackInfo& info) {
     };
     $p2 = std::make_shared<std::vector<VkCheckpointDataNV>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pCheckpointData'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pCheckpointData' in 'vkGetQueueCheckpointDataNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -18452,12 +19344,20 @@ Napi::Value _vkCmdBindTransformFeedbackBuffersEXT(const Napi::CallbackInfo& info
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdBindTransformFeedbackBuffersEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'firstBinding' in 'vkCmdBindTransformFeedbackBuffersEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'bindingCount' in 'vkCmdBindTransformFeedbackBuffersEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkBuffer>> $p3 = nullptr;
@@ -18474,7 +19374,7 @@ Napi::Value _vkCmdBindTransformFeedbackBuffersEXT(const Napi::CallbackInfo& info
     };
     $p3 = std::make_shared<std::vector<VkBuffer>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pBuffers'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pBuffers' in 'vkCmdBindTransformFeedbackBuffersEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -18484,13 +19384,13 @@ Napi::Value _vkCmdBindTransformFeedbackBuffersEXT(const Napi::CallbackInfo& info
   if (info[4].IsTypedArray()) {
 
     if (info[4].As<Napi::TypedArray>().TypedArrayType() != napi_biguint64_array) {
-      Napi::TypeError::New(env, "Invalid type for argument 5 'pOffsets'").ThrowAsJavaScriptException();
+      Napi::TypeError::New(env, "Invalid type for argument 5 'pOffsets' in 'vkCmdBindTransformFeedbackBuffersEXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     VkDeviceSize* data = getTypedArrayData<VkDeviceSize>(info[4]);
     $p4 = std::make_shared<VkDeviceSize*>(data);
   } else if (!info[4].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 5 'pOffsets'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 5 'pOffsets' in 'vkCmdBindTransformFeedbackBuffersEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -18500,13 +19400,13 @@ Napi::Value _vkCmdBindTransformFeedbackBuffersEXT(const Napi::CallbackInfo& info
   if (info[5].IsTypedArray()) {
 
     if (info[5].As<Napi::TypedArray>().TypedArrayType() != napi_biguint64_array) {
-      Napi::TypeError::New(env, "Invalid type for argument 6 'pSizes'").ThrowAsJavaScriptException();
+      Napi::TypeError::New(env, "Invalid type for argument 6 'pSizes' in 'vkCmdBindTransformFeedbackBuffersEXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     VkDeviceSize* data = getTypedArrayData<VkDeviceSize>(info[5]);
     $p5 = std::make_shared<VkDeviceSize*>(data);
   } else if (!info[5].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 6 'pSizes'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 6 'pSizes' in 'vkCmdBindTransformFeedbackBuffersEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -18541,12 +19441,20 @@ Napi::Value _vkCmdBeginTransformFeedbackEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdBeginTransformFeedbackEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'firstCounterBuffer' in 'vkCmdBeginTransformFeedbackEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'counterBufferCount' in 'vkCmdBeginTransformFeedbackEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkBuffer>> $p3 = nullptr;
@@ -18563,7 +19471,7 @@ Napi::Value _vkCmdBeginTransformFeedbackEXT(const Napi::CallbackInfo& info) {
     };
     $p3 = std::make_shared<std::vector<VkBuffer>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pCounterBuffers'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pCounterBuffers' in 'vkCmdBeginTransformFeedbackEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -18573,13 +19481,13 @@ Napi::Value _vkCmdBeginTransformFeedbackEXT(const Napi::CallbackInfo& info) {
   if (info[4].IsTypedArray()) {
 
     if (info[4].As<Napi::TypedArray>().TypedArrayType() != napi_biguint64_array) {
-      Napi::TypeError::New(env, "Invalid type for argument 5 'pCounterBufferOffsets'").ThrowAsJavaScriptException();
+      Napi::TypeError::New(env, "Invalid type for argument 5 'pCounterBufferOffsets' in 'vkCmdBeginTransformFeedbackEXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     VkDeviceSize* data = getTypedArrayData<VkDeviceSize>(info[4]);
     $p4 = std::make_shared<VkDeviceSize*>(data);
   } else if (!info[4].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 5 'pCounterBufferOffsets'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 5 'pCounterBufferOffsets' in 'vkCmdBeginTransformFeedbackEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -18613,12 +19521,20 @@ Napi::Value _vkCmdEndTransformFeedbackEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdEndTransformFeedbackEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'firstCounterBuffer' in 'vkCmdEndTransformFeedbackEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'counterBufferCount' in 'vkCmdEndTransformFeedbackEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkBuffer>> $p3 = nullptr;
@@ -18635,7 +19551,7 @@ Napi::Value _vkCmdEndTransformFeedbackEXT(const Napi::CallbackInfo& info) {
     };
     $p3 = std::make_shared<std::vector<VkBuffer>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pCounterBuffers'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pCounterBuffers' in 'vkCmdEndTransformFeedbackEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -18645,13 +19561,13 @@ Napi::Value _vkCmdEndTransformFeedbackEXT(const Napi::CallbackInfo& info) {
   if (info[4].IsTypedArray()) {
 
     if (info[4].As<Napi::TypedArray>().TypedArrayType() != napi_biguint64_array) {
-      Napi::TypeError::New(env, "Invalid type for argument 5 'pCounterBufferOffsets'").ThrowAsJavaScriptException();
+      Napi::TypeError::New(env, "Invalid type for argument 5 'pCounterBufferOffsets' in 'vkCmdEndTransformFeedbackEXT'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     VkDeviceSize* data = getTypedArrayData<VkDeviceSize>(info[4]);
     $p4 = std::make_shared<VkDeviceSize*>(data);
   } else if (!info[4].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 5 'pCounterBufferOffsets'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 5 'pCounterBufferOffsets' in 'vkCmdEndTransformFeedbackEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -18685,7 +19601,7 @@ Napi::Value _vkCmdBeginQueryIndexedEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdBeginQueryIndexedEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -18703,14 +19619,26 @@ Napi::Value _vkCmdBeginQueryIndexedEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool' in 'vkCmdBeginQueryIndexedEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'query' in 'vkCmdBeginQueryIndexedEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'flags' in 'vkCmdBeginQueryIndexedEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   int32_t $p3 = static_cast<int32_t>(info[3].As<Napi::Number>().Int64Value());
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'index' in 'vkCmdBeginQueryIndexedEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
 $vkCmdBeginQueryIndexedEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -18742,7 +19670,7 @@ Napi::Value _vkCmdEndQueryIndexedEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdEndQueryIndexedEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -18760,12 +19688,20 @@ Napi::Value _vkCmdEndQueryIndexedEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 2 'queryPool' in 'vkCmdEndQueryIndexedEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'query' in 'vkCmdEndQueryIndexedEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'index' in 'vkCmdEndQueryIndexedEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 $vkCmdEndQueryIndexedEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -18796,12 +19732,20 @@ Napi::Value _vkCmdDrawIndirectByteCountEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdDrawIndirectByteCountEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'instanceCount' in 'vkCmdDrawIndirectByteCountEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'firstInstance' in 'vkCmdDrawIndirectByteCountEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   Napi::Object obj3;
@@ -18818,15 +19762,27 @@ Napi::Value _vkCmdDrawIndirectByteCountEXT(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'counterBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'counterBuffer' in 'vkCmdDrawIndirectByteCountEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless4;
+  if (!info[4].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 5 'counterBufferOffset' in 'vkCmdDrawIndirectByteCountEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
 
+  if (!info[5].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 6 'counterOffset' in 'vkCmdDrawIndirectByteCountEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p5 = static_cast<uint32_t>(info[5].As<Napi::Number>().Int64Value());
 
+  if (!info[6].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 7 'vertexStride' in 'vkCmdDrawIndirectByteCountEXT'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p6 = static_cast<uint32_t>(info[6].As<Napi::Number>().Int64Value());
 $vkCmdDrawIndirectByteCountEXT(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -18860,12 +19816,20 @@ Napi::Value _vkCmdSetExclusiveScissorNV(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdSetExclusiveScissorNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'firstExclusiveScissor' in 'vkCmdSetExclusiveScissorNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'exclusiveScissorCount' in 'vkCmdSetExclusiveScissorNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkRect2D>> $p3 = nullptr;
@@ -18891,7 +19855,7 @@ Napi::Value _vkCmdSetExclusiveScissorNV(const Napi::CallbackInfo& info) {
     };
     $p3 = std::make_shared<std::vector<VkRect2D>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pExclusiveScissors'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pExclusiveScissors' in 'vkCmdSetExclusiveScissorNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -18924,7 +19888,7 @@ Napi::Value _vkCmdBindShadingRateImageNV(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdBindShadingRateImageNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -18942,10 +19906,14 @@ Napi::Value _vkCmdBindShadingRateImageNV(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImageView' or 'null' for argument 2 'imageView'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImageView' or 'null' for argument 2 'imageView' in 'vkCmdBindShadingRateImageNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'imageLayout' in 'vkCmdBindShadingRateImageNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkImageLayout $p2 = static_cast<VkImageLayout>(info[2].As<Napi::Number>().Int64Value());
 $vkCmdBindShadingRateImageNV(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -18975,12 +19943,20 @@ Napi::Value _vkCmdSetViewportShadingRatePaletteNV(const Napi::CallbackInfo& info
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdSetViewportShadingRatePaletteNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'firstViewport' in 'vkCmdSetViewportShadingRatePaletteNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'viewportCount' in 'vkCmdSetViewportShadingRatePaletteNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkShadingRatePaletteNV>> $p3 = nullptr;
@@ -19006,7 +19982,7 @@ Napi::Value _vkCmdSetViewportShadingRatePaletteNV(const Napi::CallbackInfo& info
     };
     $p3 = std::make_shared<std::vector<VkShadingRatePaletteNV>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pShadingRatePalettes'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pShadingRatePalettes' in 'vkCmdSetViewportShadingRatePaletteNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -19039,12 +20015,20 @@ Napi::Value _vkCmdSetCoarseSampleOrderNV(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdSetCoarseSampleOrderNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'sampleOrderType' in 'vkCmdSetCoarseSampleOrderNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkCoarseSampleOrderTypeNV $p1 = static_cast<VkCoarseSampleOrderTypeNV>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'customSampleOrderCount' in 'vkCmdSetCoarseSampleOrderNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkCoarseSampleOrderCustomNV>> $p3 = nullptr;
@@ -19070,7 +20054,7 @@ Napi::Value _vkCmdSetCoarseSampleOrderNV(const Napi::CallbackInfo& info) {
     };
     $p3 = std::make_shared<std::vector<VkCoarseSampleOrderCustomNV>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pCustomSampleOrders'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pCustomSampleOrders' in 'vkCmdSetCoarseSampleOrderNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -19103,12 +20087,20 @@ Napi::Value _vkCmdDrawMeshTasksNV(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdDrawMeshTasksNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'taskCount' in 'vkCmdDrawMeshTasksNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'firstTask' in 'vkCmdDrawMeshTasksNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 $vkCmdDrawMeshTasksNV(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -19138,7 +20130,7 @@ Napi::Value _vkCmdDrawMeshTasksIndirectNV(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdDrawMeshTasksIndirectNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -19156,15 +20148,27 @@ Napi::Value _vkCmdDrawMeshTasksIndirectNV(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer' in 'vkCmdDrawMeshTasksIndirectNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless2;
+  if (!info[2].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'offset' in 'vkCmdDrawMeshTasksIndirectNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'drawCount' in 'vkCmdDrawMeshTasksIndirectNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'stride' in 'vkCmdDrawMeshTasksIndirectNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
 $vkCmdDrawMeshTasksIndirectNV(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -19196,7 +20200,7 @@ Napi::Value _vkCmdDrawMeshTasksIndirectCountNV(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdDrawMeshTasksIndirectCountNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -19214,11 +20218,15 @@ Napi::Value _vkCmdDrawMeshTasksIndirectCountNV(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'buffer' in 'vkCmdDrawMeshTasksIndirectCountNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless2;
+  if (!info[2].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'offset' in 'vkCmdDrawMeshTasksIndirectCountNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
   Napi::Object obj3;
@@ -19235,15 +20243,27 @@ Napi::Value _vkCmdDrawMeshTasksIndirectCountNV(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'countBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'countBuffer' in 'vkCmdDrawMeshTasksIndirectCountNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless4;
+  if (!info[4].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 5 'countBufferOffset' in 'vkCmdDrawMeshTasksIndirectCountNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
 
+  if (!info[5].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 6 'maxDrawCount' in 'vkCmdDrawMeshTasksIndirectCountNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p5 = static_cast<uint32_t>(info[5].As<Napi::Number>().Int64Value());
 
+  if (!info[6].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 7 'stride' in 'vkCmdDrawMeshTasksIndirectCountNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p6 = static_cast<uint32_t>(info[6].As<Napi::Number>().Int64Value());
 $vkCmdDrawMeshTasksIndirectCountNV(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -19277,7 +20297,7 @@ Napi::Value _vkCompileDeferredNV(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCompileDeferredNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -19295,10 +20315,14 @@ Napi::Value _vkCompileDeferredNV(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPipeline' or 'null' for argument 2 'pipeline'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipeline' or 'null' for argument 2 'pipeline' in 'vkCompileDeferredNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'shader' in 'vkCompileDeferredNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
   int32_t out = $vkCompileDeferredNV(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -19328,7 +20352,7 @@ Napi::Value _vkCreateAccelerationStructureNV(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateAccelerationStructureNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -19348,7 +20372,7 @@ Napi::Value _vkCreateAccelerationStructureNV(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureCreateInfoNV' or 'null' for argument 2 'pCreateInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureCreateInfoNV' or 'null' for argument 2 'pCreateInfo' in 'vkCreateAccelerationStructureNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -19367,7 +20391,7 @@ Napi::Value _vkCreateAccelerationStructureNV(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureNV' or 'null' for argument 4 'pAccelerationStructure'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureNV' or 'null' for argument 4 'pAccelerationStructure' in 'vkCreateAccelerationStructureNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkCreateAccelerationStructureNV(
@@ -19399,7 +20423,7 @@ Napi::Value _vkDestroyAccelerationStructureNV(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkDestroyAccelerationStructureNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -19417,7 +20441,7 @@ Napi::Value _vkDestroyAccelerationStructureNV(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureNV' or 'null' for argument 2 'accelerationStructure'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureNV' or 'null' for argument 2 'accelerationStructure' in 'vkDestroyAccelerationStructureNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -19449,7 +20473,7 @@ Napi::Value _vkGetAccelerationStructureMemoryRequirementsNV(const Napi::Callback
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetAccelerationStructureMemoryRequirementsNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -19469,7 +20493,7 @@ Napi::Value _vkGetAccelerationStructureMemoryRequirementsNV(const Napi::Callback
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureMemoryRequirementsInfoNV' or 'null' for argument 2 'pInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureMemoryRequirementsInfoNV' or 'null' for argument 2 'pInfo' in 'vkGetAccelerationStructureMemoryRequirementsNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -19489,7 +20513,7 @@ Napi::Value _vkGetAccelerationStructureMemoryRequirementsNV(const Napi::Callback
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkMemoryRequirements2KHR' or 'null' for argument 3 'pMemoryRequirements'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkMemoryRequirements2KHR' or 'null' for argument 3 'pMemoryRequirements' in 'vkGetAccelerationStructureMemoryRequirementsNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 $vkGetAccelerationStructureMemoryRequirementsNV(
@@ -19526,10 +20550,14 @@ Napi::Value _vkBindAccelerationStructureMemoryNV(const Napi::CallbackInfo& info)
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkBindAccelerationStructureMemoryNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'bindInfoCount' in 'vkBindAccelerationStructureMemoryNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkBindAccelerationStructureMemoryInfoNV>> $p2 = nullptr;
@@ -19555,7 +20583,7 @@ Napi::Value _vkBindAccelerationStructureMemoryNV(const Napi::CallbackInfo& info)
     };
     $p2 = std::make_shared<std::vector<VkBindAccelerationStructureMemoryInfoNV>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pBindInfos'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pBindInfos' in 'vkBindAccelerationStructureMemoryNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -19587,7 +20615,7 @@ Napi::Value _vkCmdCopyAccelerationStructureNV(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdCopyAccelerationStructureNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -19605,7 +20633,7 @@ Napi::Value _vkCmdCopyAccelerationStructureNV(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureNV' or 'null' for argument 2 'dst'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureNV' or 'null' for argument 2 'dst' in 'vkCmdCopyAccelerationStructureNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -19623,10 +20651,14 @@ Napi::Value _vkCmdCopyAccelerationStructureNV(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureNV' or 'null' for argument 3 'src'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureNV' or 'null' for argument 3 'src' in 'vkCmdCopyAccelerationStructureNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'mode' in 'vkCmdCopyAccelerationStructureNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkCopyAccelerationStructureModeNV $p3 = static_cast<VkCopyAccelerationStructureModeNV>(info[3].As<Napi::Number>().Int64Value());
 $vkCmdCopyAccelerationStructureNV(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -19657,10 +20689,14 @@ Napi::Value _vkCmdWriteAccelerationStructuresPropertiesNV(const Napi::CallbackIn
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdWriteAccelerationStructuresPropertiesNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 2 'accelerationStructureCount' in 'vkCmdWriteAccelerationStructuresPropertiesNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p1 = static_cast<uint32_t>(info[1].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkAccelerationStructureNV>> $p2 = nullptr;
@@ -19677,11 +20713,15 @@ Napi::Value _vkCmdWriteAccelerationStructuresPropertiesNV(const Napi::CallbackIn
     };
     $p2 = std::make_shared<std::vector<VkAccelerationStructureNV>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pAccelerationStructures'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pAccelerationStructures' in 'vkCmdWriteAccelerationStructuresPropertiesNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'queryType' in 'vkCmdWriteAccelerationStructuresPropertiesNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   VkQueryType $p3 = static_cast<VkQueryType>(info[3].As<Napi::Number>().Int64Value());
 
   Napi::Object obj4;
@@ -19698,10 +20738,14 @@ Napi::Value _vkCmdWriteAccelerationStructuresPropertiesNV(const Napi::CallbackIn
   } else if (info[4].IsNull()) {
     $p4 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 5 'queryPool'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkQueryPool' or 'null' for argument 5 'queryPool' in 'vkCmdWriteAccelerationStructuresPropertiesNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[5].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 6 'firstQuery' in 'vkCmdWriteAccelerationStructuresPropertiesNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p5 = static_cast<uint32_t>(info[5].As<Napi::Number>().Int64Value());
 $vkCmdWriteAccelerationStructuresPropertiesNV(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -19734,7 +20778,7 @@ Napi::Value _vkCmdBuildAccelerationStructureNV(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdBuildAccelerationStructureNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -19754,7 +20798,7 @@ Napi::Value _vkCmdBuildAccelerationStructureNV(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureInfoNV' or 'null' for argument 2 'pInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureInfoNV' or 'null' for argument 2 'pInfo' in 'vkCmdBuildAccelerationStructureNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -19772,13 +20816,21 @@ Napi::Value _vkCmdBuildAccelerationStructureNV(const Napi::CallbackInfo& info) {
   } else if (info[2].IsNull()) {
     $p2 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 3 'instanceData'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 3 'instanceData' in 'vkCmdBuildAccelerationStructureNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless3;
+  if (!info[3].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 4 'instanceOffset' in 'vkCmdBuildAccelerationStructureNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p3 = static_cast<uint64_t>(info[3].As<Napi::BigInt>().Int64Value(&lossless3));
 
+  if (!info[4].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 5 'update' in 'vkCmdBuildAccelerationStructureNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p4 = static_cast<uint32_t>(info[4].As<Napi::Number>().Int64Value());
 
   Napi::Object obj5;
@@ -19795,7 +20847,7 @@ Napi::Value _vkCmdBuildAccelerationStructureNV(const Napi::CallbackInfo& info) {
   } else if (info[5].IsNull()) {
     $p5 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureNV' or 'null' for argument 6 'dst'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureNV' or 'null' for argument 6 'dst' in 'vkCmdBuildAccelerationStructureNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -19813,7 +20865,7 @@ Napi::Value _vkCmdBuildAccelerationStructureNV(const Napi::CallbackInfo& info) {
   } else if (info[6].IsNull()) {
     $p6 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureNV' or 'null' for argument 7 'src'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureNV' or 'null' for argument 7 'src' in 'vkCmdBuildAccelerationStructureNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -19831,11 +20883,15 @@ Napi::Value _vkCmdBuildAccelerationStructureNV(const Napi::CallbackInfo& info) {
   } else if (info[7].IsNull()) {
     $p7 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 8 'scratch'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 8 'scratch' in 'vkCmdBuildAccelerationStructureNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless8;
+  if (!info[8].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 9 'scratchOffset' in 'vkCmdBuildAccelerationStructureNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p8 = static_cast<uint64_t>(info[8].As<Napi::BigInt>().Int64Value(&lossless8));
 $vkCmdBuildAccelerationStructureNV(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -19871,7 +20927,7 @@ Napi::Value _vkCmdTraceRaysNV(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkCommandBuffer' or 'null' for argument 1 'commandBuffer' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -19889,11 +20945,15 @@ Napi::Value _vkCmdTraceRaysNV(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'raygenShaderBindingTableBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 2 'raygenShaderBindingTableBuffer' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless2;
+  if (!info[2].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'raygenShaderBindingOffset' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p2 = static_cast<uint64_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
   Napi::Object obj3;
@@ -19910,14 +20970,22 @@ Napi::Value _vkCmdTraceRaysNV(const Napi::CallbackInfo& info) {
   } else if (info[3].IsNull()) {
     $p3 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'missShaderBindingTableBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 4 'missShaderBindingTableBuffer' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless4;
+  if (!info[4].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 5 'missShaderBindingOffset' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p4 = static_cast<uint64_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
 
   bool lossless5;
+  if (!info[5].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 6 'missShaderBindingStride' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p5 = static_cast<uint64_t>(info[5].As<Napi::BigInt>().Int64Value(&lossless5));
 
   Napi::Object obj6;
@@ -19934,14 +21002,22 @@ Napi::Value _vkCmdTraceRaysNV(const Napi::CallbackInfo& info) {
   } else if (info[6].IsNull()) {
     $p6 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 7 'hitShaderBindingTableBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 7 'hitShaderBindingTableBuffer' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless7;
+  if (!info[7].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 8 'hitShaderBindingOffset' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p7 = static_cast<uint64_t>(info[7].As<Napi::BigInt>().Int64Value(&lossless7));
 
   bool lossless8;
+  if (!info[8].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 9 'hitShaderBindingStride' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p8 = static_cast<uint64_t>(info[8].As<Napi::BigInt>().Int64Value(&lossless8));
 
   Napi::Object obj9;
@@ -19958,20 +21034,40 @@ Napi::Value _vkCmdTraceRaysNV(const Napi::CallbackInfo& info) {
   } else if (info[9].IsNull()) {
     $p9 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 10 'callableShaderBindingTableBuffer'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBuffer' or 'null' for argument 10 'callableShaderBindingTableBuffer' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless10;
+  if (!info[10].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 11 'callableShaderBindingOffset' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p10 = static_cast<uint64_t>(info[10].As<Napi::BigInt>().Int64Value(&lossless10));
 
   bool lossless11;
+  if (!info[11].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 12 'callableShaderBindingStride' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint64_t $p11 = static_cast<uint64_t>(info[11].As<Napi::BigInt>().Int64Value(&lossless11));
 
+  if (!info[12].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 13 'width' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p12 = static_cast<uint32_t>(info[12].As<Napi::Number>().Int64Value());
 
+  if (!info[13].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 14 'height' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p13 = static_cast<uint32_t>(info[13].As<Napi::Number>().Int64Value());
 
+  if (!info[14].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 15 'depth' in 'vkCmdTraceRaysNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p14 = static_cast<uint32_t>(info[14].As<Napi::Number>().Int64Value());
 $vkCmdTraceRaysNV(
     info[0].IsNull() ? VK_NULL_HANDLE : *$p0,
@@ -20013,7 +21109,7 @@ Napi::Value _vkGetRayTracingShaderGroupHandlesNV(const Napi::CallbackInfo& info)
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetRayTracingShaderGroupHandlesNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -20031,15 +21127,27 @@ Napi::Value _vkGetRayTracingShaderGroupHandlesNV(const Napi::CallbackInfo& info)
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPipeline' or 'null' for argument 2 'pipeline'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipeline' or 'null' for argument 2 'pipeline' in 'vkGetRayTracingShaderGroupHandlesNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'firstGroup' in 'vkGetRayTracingShaderGroupHandlesNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
+  if (!info[3].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 4 'groupCount' in 'vkGetRayTracingShaderGroupHandlesNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p3 = static_cast<uint32_t>(info[3].As<Napi::Number>().Int64Value());
 
   bool lossless4;
+  if (!info[4].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 5 'dataSize' in 'vkGetRayTracingShaderGroupHandlesNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   size_t $p4 = static_cast<size_t>(info[4].As<Napi::BigInt>().Int64Value(&lossless4));
 
   void* $p5 = nullptr;
@@ -20047,7 +21155,7 @@ Napi::Value _vkGetRayTracingShaderGroupHandlesNV(const Napi::CallbackInfo& info)
     Napi::ArrayBuffer buf = info[5].As<Napi::ArrayBuffer>();
     $p5 = buf.Data();
   } else if (!info[5].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'ArrayBuffer' or 'null' for argument 6 'pData'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'ArrayBuffer' or 'null' for argument 6 'pData' in 'vkGetRayTracingShaderGroupHandlesNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetRayTracingShaderGroupHandlesNV(
@@ -20081,7 +21189,7 @@ Napi::Value _vkGetAccelerationStructureHandleNV(const Napi::CallbackInfo& info) 
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetAccelerationStructureHandleNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -20099,11 +21207,15 @@ Napi::Value _vkGetAccelerationStructureHandleNV(const Napi::CallbackInfo& info) 
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureNV' or 'null' for argument 2 'accelerationStructure'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkAccelerationStructureNV' or 'null' for argument 2 'accelerationStructure' in 'vkGetAccelerationStructureHandleNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
   bool lossless2;
+  if (!info[2].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument 3 'dataSize' in 'vkGetAccelerationStructureHandleNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   size_t $p2 = static_cast<size_t>(info[2].As<Napi::BigInt>().Int64Value(&lossless2));
 
   void* $p3 = nullptr;
@@ -20111,7 +21223,7 @@ Napi::Value _vkGetAccelerationStructureHandleNV(const Napi::CallbackInfo& info) 
     Napi::ArrayBuffer buf = info[3].As<Napi::ArrayBuffer>();
     $p3 = buf.Data();
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'ArrayBuffer' or 'null' for argument 4 'pData'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'ArrayBuffer' or 'null' for argument 4 'pData' in 'vkGetAccelerationStructureHandleNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetAccelerationStructureHandleNV(
@@ -20143,7 +21255,7 @@ Napi::Value _vkCreateRayTracingPipelinesNV(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkCreateRayTracingPipelinesNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -20161,10 +21273,14 @@ Napi::Value _vkCreateRayTracingPipelinesNV(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPipelineCache' or 'null' for argument 2 'pipelineCache'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPipelineCache' or 'null' for argument 2 'pipelineCache' in 'vkCreateRayTracingPipelinesNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
+  if (!info[2].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument 3 'createInfoCount' in 'vkCreateRayTracingPipelinesNV'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   uint32_t $p2 = static_cast<uint32_t>(info[2].As<Napi::Number>().Int64Value());
 
   std::shared_ptr<std::vector<VkRayTracingPipelineCreateInfoNV>> $p3 = nullptr;
@@ -20190,7 +21306,7 @@ Napi::Value _vkCreateRayTracingPipelinesNV(const Napi::CallbackInfo& info) {
     };
     $p3 = std::make_shared<std::vector<VkRayTracingPipelineCreateInfoNV>>(data);
   } else if (!info[3].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 4 'pCreateInfos'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 4 'pCreateInfos' in 'vkCreateRayTracingPipelinesNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -20210,7 +21326,7 @@ Napi::Value _vkCreateRayTracingPipelinesNV(const Napi::CallbackInfo& info) {
     };
     $p5 = std::make_shared<std::vector<VkPipeline>>(data);
   } else if (!info[5].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 6 'pPipelines'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 6 'pPipelines' in 'vkCreateRayTracingPipelinesNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -20257,7 +21373,7 @@ Napi::Value _vkGetImageDrmFormatModifierPropertiesEXT(const Napi::CallbackInfo& 
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetImageDrmFormatModifierPropertiesEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -20275,7 +21391,7 @@ Napi::Value _vkGetImageDrmFormatModifierPropertiesEXT(const Napi::CallbackInfo& 
   } else if (info[1].IsNull()) {
     $p1 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'image'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImage' or 'null' for argument 2 'image' in 'vkGetImageDrmFormatModifierPropertiesEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -20295,7 +21411,7 @@ Napi::Value _vkGetImageDrmFormatModifierPropertiesEXT(const Napi::CallbackInfo& 
   } else if (info[2].IsNull()) {
     $p2 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkImageDrmFormatModifierPropertiesEXT' or 'null' for argument 3 'pProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkImageDrmFormatModifierPropertiesEXT' or 'null' for argument 3 'pProperties' in 'vkGetImageDrmFormatModifierPropertiesEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   int32_t out = $vkGetImageDrmFormatModifierPropertiesEXT(
@@ -20332,7 +21448,7 @@ Napi::Value _vkGetBufferDeviceAddressEXT(const Napi::CallbackInfo& info) {
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkDevice' or 'null' for argument 1 'device' in 'vkGetBufferDeviceAddressEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -20352,7 +21468,7 @@ Napi::Value _vkGetBufferDeviceAddressEXT(const Napi::CallbackInfo& info) {
   } else if (info[1].IsNull()) {
     $p1 = nullptr;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkBufferDeviceAddressInfoEXT' or 'null' for argument 2 'pInfo'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkBufferDeviceAddressInfoEXT' or 'null' for argument 2 'pInfo' in 'vkGetBufferDeviceAddressEXT'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
   uint64_t out = $vkGetBufferDeviceAddressEXT(
@@ -20382,7 +21498,7 @@ Napi::Value _vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(const Napi::Callba
   } else if (info[0].IsNull()) {
     $p0 = VK_NULL_HANDLE;
   } else {
-    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'VkPhysicalDevice' or 'null' for argument 1 'physicalDevice' in 'vkGetPhysicalDeviceCooperativeMatrixPropertiesNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -20391,14 +21507,14 @@ Napi::Value _vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(const Napi::Callba
   if (info[1].IsObject()) {
     obj1 = info[1].As<Napi::Object>();
     if (!obj1.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument 2").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument 2 'pPropertyCount' in 'vkGetPhysicalDeviceCooperativeMatrixPropertiesNV'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj1.Get("$");
     
     $p1 = static_cast<uint32_t>(val.As<Napi::Number>().Int64Value());
   } else if (!info[1].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPropertyCount'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument 2 'pPropertyCount' in 'vkGetPhysicalDeviceCooperativeMatrixPropertiesNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 
@@ -20425,7 +21541,7 @@ Napi::Value _vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(const Napi::Callba
     };
     $p2 = std::make_shared<std::vector<VkCooperativeMatrixPropertiesNV>>(data);
   } else if (!info[2].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument 3 'pProperties'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument 3 'pProperties' in 'vkGetPhysicalDeviceCooperativeMatrixPropertiesNV'").ThrowAsJavaScriptException();
     return env.Undefined();
   }
 

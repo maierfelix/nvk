@@ -46,7 +46,7 @@ function getParamIndexByParamName(call, name) {
   return null;
 };
 
-function getInputArrayBody(param, index) {
+function getInputArrayBody(call, param, index) {
   let {rawType} = param;
   let out = ``;
   let {isConstant} = param;
@@ -121,7 +121,7 @@ function getInputArrayBody(param, index) {
     let type = param.baseType || param.type;
     out += `
     if (info[${index}].As<Napi::TypedArray>().TypedArrayType() != ${getNapiTypedArrayName(param.jsTypedArrayName)}) {
-      Napi::TypeError::New(env, "Invalid type for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+      Napi::TypeError::New(env, "Invalid type for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     ${type}* data = getTypedArrayData<${type}>(info[${index}]);
@@ -146,7 +146,7 @@ function getInputArrayBody(param, index) {
   }
   out += `
   } else if (!info[${index}].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
     return env.Undefined();
   }\n`;
   return out;
@@ -162,13 +162,17 @@ function getCallBodyBefore(call) {
     Napi::ArrayBuffer buf = info[${index}].As<Napi::ArrayBuffer>();
     $p${index} = buf.Data();
   } else if (!info[${index}].IsNull()) {
-    Napi::TypeError::New(env, "Expected '${param.jsTypedArrayName}' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected '${param.jsTypedArrayName}' or 'null' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
     return env.Undefined();
   }`;
     }
     if (param.isWin32Handle) {
       return `
   bool lossless${index} = false;
+  if (!info[${index}].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   ${param.type} $p${index} = reinterpret_cast<${param.type}>(info[${index}].As<Napi::BigInt>().Int64Value(&lossless${index}));`;
     }
     if (param.isWin32HandleReference) {
@@ -178,14 +182,18 @@ function getCallBodyBefore(call) {
   if (info[${index}].IsObject()) {
     obj${index} = info[${index}].As<Napi::Object>();
     if (!obj${index}.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument ${index + 1}").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
+    if (!(obj${index}.Get("$").IsBigInt())) {
+      Napi::TypeError::New(env, "Expected 'BigInt' for Object property '$' ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj${index}.Get("$");
     bool lossless = false;
     $p${index} = reinterpret_cast<${param.type}*>(val.As<Napi::BigInt>().Int64Value(&lossless));
   } else if (!info[${index}].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
     return env.Undefined();
   }`;
     }
@@ -201,19 +209,19 @@ function getCallBodyBefore(call) {
     if (info[${index}].IsArray()) {
       // validate length
       if (info[${index}].As<Napi::Array>().Length() != ${param.length}) {
-        Napi::RangeError::New(env, "Invalid array length for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+        Napi::RangeError::New(env, "Invalid array length for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
         return env.Undefined();
       } else {
         std::vector<${param.type}> data = createArrayOfV8Numbers<${param.type}>(info[${index}]);
         $p${index} = std::make_shared<std::vector<${param.type}>>(data);
       }
     } else if (!info[${index}].IsNull()) {
-      Napi::TypeError::New(env, "Invalid type for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+      Napi::TypeError::New(env, "Invalid type for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
       return env.Undefined();
     }`;
     }
     else if (param.isArray && param.enumType) {
-      return getInputArrayBody(param, index);
+      return getInputArrayBody(call, param, index);
     }
     if (param.baseType === "VkBool32" && param.dereferenceCount > 0) {
       return `
@@ -222,13 +230,17 @@ function getCallBodyBefore(call) {
     if (info[${index}].IsObject()) {
       obj${index} = info[${index}].As<Napi::Object>();
       if (!obj${index}.Has("$")) {
-        Napi::Error::New(env, "Missing Object property '$' for argument ${index + 1}").ThrowAsJavaScriptException();
+        Napi::Error::New(env, "Missing Object property '$' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+      if (!(obj${index}.Get("$").IsBoolean())) {
+        Napi::TypeError::New(env, "Expected 'Boolean' for Object property '$' ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
         return env.Undefined();
       }
       Napi::Value val = obj${index}.Get("$");
       $p${index} = static_cast<${param.type}>(val.As<Napi::Boolean>().Value());
     } else if (!info[${index}].IsNull()) {
-      Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+      Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
       return env.Undefined();
     }`;
     }
@@ -238,6 +250,10 @@ function getCallBodyBefore(call) {
         let type = param.enumType || param.type;
         return `
   bool lossless${index};
+  if (!info[${index}].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   ${type} $p${index} = static_cast<${type}>(info[${index}].As<Napi::BigInt>().Int64Value(&lossless${index}));`;
       }
       case "int":
@@ -247,6 +263,10 @@ function getCallBodyBefore(call) {
       case "uint64_t": {
         let type = param.enumType || param.type;
         return `
+  if (!info[${index}].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   ${type} $p${index} = static_cast<${type}>(info[${index}].As<Napi::Number>().Int64Value());`;
       }
       case "const char *":
@@ -255,7 +275,7 @@ function getCallBodyBefore(call) {
   if (info[${index}].IsString()) {
     $p${index} = copyV8String(info[${index}]);
   } else if (!info[${index}].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'String' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'String' or 'null' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
     return env.Undefined();
   }`;
         return ``;
@@ -269,7 +289,7 @@ function getCallBodyBefore(call) {
       case "const uint32_t *":
       case "const uint64_t *":
         if (param.isArray) {
-          return getInputArrayBody(param, index);
+          return getInputArrayBody(call, param, index);
         } else {
           return `
   Napi::Object obj${index};
@@ -277,7 +297,7 @@ function getCallBodyBefore(call) {
   if (info[${index}].IsObject()) {
     obj${index} = info[${index}].As<Napi::Object>();
     if (!obj${index}.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument ${index + 1}").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj${index}.Get("$");
@@ -288,7 +308,7 @@ function getCallBodyBefore(call) {
       param.type !== "size_t *" ? `$p${index} = static_cast<${param.type}>(val.As<Napi::Number>().Int64Value());` : ``
     }
   } else if (!info[${index}].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
     return env.Undefined();
   }`;
         }
@@ -302,13 +322,13 @@ function getCallBodyBefore(call) {
   if (info[${index}].IsTypedArray()) {
     $p${index} = value.As<Napi::TypedArray>().ArrayBuffer().Data();
   } else if (!info[${index}].IsNull()) {
-    Napi::TypeError::New(env, "Expected '${param.jsTypedArrayName}' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected '${param.jsTypedArrayName}' or 'null' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
     return env.Undefined();
   }`;
       default: {
         // array of structs or handles
         if (param.isArray && (param.isStructType || param.isHandleType)) {
-          return getInputArrayBody(param, index);
+          return getInputArrayBody(call, param, index);
         }
         // struct or handle
         else if (param.isStructType || param.isHandleType) {
@@ -347,7 +367,7 @@ function getCallBodyBefore(call) {
   } else if (info[${index}].IsNull()) {
     $p${index} = ${deinitialize};
   } else {
-    Napi::TypeError::New(env, "Expected '${param.type}' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected '${param.type}' or 'null' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
     return env.Undefined();
   }`;
           }
@@ -367,7 +387,7 @@ function getCallBodyBefore(call) {
   } else if (info[${index}].IsNull()) {
     $p${index} = ${deinitialize};
   } else {
-    Napi::TypeError::New(env, "Expected '${param.type}' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected '${param.type}' or 'null' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
     return env.Undefined();
   }`;
           }

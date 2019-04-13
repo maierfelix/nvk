@@ -121,7 +121,10 @@ function buildFiles() {
     let cmd = `cd ${generatePath} && node-gyp configure ${msargs} && node-gyp build`;
     let shell = spawn(cmd, { shell: true, stdio: "inherit" }, { stdio: "pipe" });
     shell.on("exit", error => {
-      if (!error) process.stdout.write("Done!\n");
+      if (!error) {
+        actionsAfter();
+        process.stdout.write("Done!\n");
+      }
       resolve(!error);
     });
   });
@@ -133,8 +136,8 @@ function buildFiles() {
  */
 function inlineEnumLayouts() {
   const addon = require(`${buildReleaseDir}/addon-${platform}.node`);
-  console.log(`Inlining enum layouts..`);
-  let enumLayouts = addon.getVulkanEnumerations();
+  process.stdout.write(`Inlining enum layouts..\n`);
+  let enumLayouts = addon.$getVulkanEnumerations();
   fs.writeFileSync(`${generatePath}/enumLayouts.json`, JSON.stringify(enumLayouts, null, 2));
 };
 
@@ -144,8 +147,8 @@ function inlineEnumLayouts() {
  */
 function inlineMemoryLayouts() {
   const addon = require(`${buildReleaseDir}/addon-${platform}.node`);
-  console.log(`Inlining memory layouts..`);
-  let memoryLayouts = addon.MemoryLayouts();
+  process.stdout.write(`Inlining memory layouts..\n`);
+  let memoryLayouts = addon.$getMemoryLayouts();
   fs.writeFileSync(`${generatePath}/memoryLayouts.json`, JSON.stringify(memoryLayouts, null, 2));
 };
 
@@ -158,7 +161,6 @@ function actionsAfter() {
   await copyFiles();
   let buildSuccess = await buildFiles();
   if (buildSuccess) {
-    actionsAfter();
     process.stdout.write(`\nSuccessfully compiled bindings for ${vkVersion}!\n`);
   } else {
     process.stderr.write(`\nFailed to compile bindings for ${vkVersion}!`);

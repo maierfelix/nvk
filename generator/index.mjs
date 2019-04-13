@@ -246,10 +246,19 @@ async function generateBindings({xml, version, docs, incremental} = _) {
     let out = `
 "use strict";
 
-const nvk = require("${pkg.config.INTERFACE_ROOT}");
+const {platform} = process;
+const nvk = require("./build/Release/addon-" + platform + ".node");
 
 const getAddressFromArrayBuffer = nvk.getAddressFromArrayBuffer;
 const getArrayBufferFromAddress = nvk.getArrayBufferFromAddress;
+
+global.ArrayBuffer.prototype.getAddress = function() {
+  return getAddressFromArrayBuffer(this);
+};
+
+global.ArrayBuffer.fromAddress = function(address, byteLength) {
+  return getArrayBufferFromAddress(address, byteLength);
+};
 
 const BI0 = BigInt(0);
 const NULLT = String.fromCharCode(0x0);
@@ -325,17 +334,27 @@ class NativeObjectReferenceArray {
     out += `\nmodule.exports = {\n`;
     // add exports
     {
-      enums.map(enu => {
-        out += `  ` + enu.name + `,\n`;
+      // add additional c++ content
+      out += `  ...(nvk.$getVulkanEnumerations()),\n`;
+      out += `  VK_MAKE_VERSION: nvk.VK_MAKE_VERSION,\n`;
+      out += `  VK_VERSION_MAJOR: nvk.VK_VERSION_MAJOR,\n`;
+      out += `  VK_VERSION_MINOR: nvk.VK_VERSION_MINOR,\n`;
+      out += `  VK_VERSION_PATCH: nvk.VK_VERSION_PATCH,\n`;
+      out += `  VK_API_VERSION_1_0: nvk.VK_API_VERSION_1_0,\n`;
+      out += `  VK_API_VERSION_1_1: nvk.VK_API_VERSION_1_1,\n`;
+      out += `  vkUseDevice: nvk.vkUseDevice,\n`;
+      out += `  vkUseInstance: nvk.vkUseInstance,\n`;
+      // add VulkanWindow
+      out += `  VulkanWindow: nvk.VulkanWindow,\n`;
+      calls.map(call => {
+        out += `  ${call.name}: nvk.${call.name},\n`;
       });
-      // add global enums
-      out += `  ...(getGlobalEnumerations()),\n`;
       handles.map(handle => {
-        out += `  ` + handle.name + `,\n`;
+        out += `  ${handle.name},\n`;
       });
       structs.map((struct, index) => {
         let comma = index < structs.length - 1 ? `,\n` : ``;
-        out += `  ` + struct.name + `${comma}`;
+        out += `  ${struct.name}${comma}`;
       });
     }
     out += `\n};\n`;
