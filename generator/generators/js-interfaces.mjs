@@ -56,6 +56,7 @@ function getConstructorMemberInitializer(member) {
       return `this._${member.name} = [...Array(${length})].map((v, i) => new ${member.type}({ $memoryBuffer: this.memoryBuffer, $memoryOffset: ${memoryOffset} + (i * ${byteLength}) }));`;
     }
     case JavaScriptType.ARRAY_OF_NUMBERS: {
+      if (currentStruct.isUnionType) return `this._${member.name} = null;`;
       let length = parseInt(member.length);
       return `this._${member.name} = [...Array(${length})].fill(0x0);`;
     }
@@ -494,7 +495,7 @@ function getFlusherProcessor(member) {
       this.memoryView${instr}[${offset} + ii] = array[ii];
     };
   } else {
-    this.memoryView${instr}[${offset}] = 0x0;
+    ${!currentStruct.isUnionType ? `this.memoryView${instr}[${offset}] = 0x0;` : ``}
   }`;
     }
     case JavaScriptType.ARRAY_OF_OBJECTS: {

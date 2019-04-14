@@ -60367,9 +60367,9 @@ class VkClearColorValue {
       this.memoryViewUint32 = new Uint32Array(this.memoryBuffer);
 
     }
-    this._float32 = [...Array(4)].fill(0x0);
-    this._int32 = [...Array(4)].fill(0x0);
-    this._uint32 = [...Array(4)].fill(0x0);
+    this._float32 = null;
+    this._int32 = null;
+    this._uint32 = null;
     
     if (typeof opts === "object") {
       if (opts.float32 !== void 0) this.float32 = opts.float32;
@@ -60438,7 +60438,7 @@ VkClearColorValue.prototype.flush = function flush() {
       this.memoryViewFloat32[0x0 + ii] = array[ii];
     };
   } else {
-    this.memoryViewFloat32[0x0] = 0x0;
+    
   }
   
   
@@ -60460,7 +60460,7 @@ VkClearColorValue.prototype.flush = function flush() {
       this.memoryViewInt32[0x0 + ii] = array[ii];
     };
   } else {
-    this.memoryViewInt32[0x0] = 0x0;
+    
   }
   
   
@@ -60482,7 +60482,7 @@ VkClearColorValue.prototype.flush = function flush() {
       this.memoryViewUint32[0x0 + ii] = array[ii];
     };
   } else {
-    this.memoryViewUint32[0x0] = 0x0;
+    
   }
   
   return true;
