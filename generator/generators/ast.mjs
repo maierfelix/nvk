@@ -758,6 +758,7 @@ export default function({ xmlInput, version, docs } = _) {
     findXMLElements(obj, { category: "union" }, results);
     results.map(res => {
       let ast = parseElement(res);
+      ast.isUnionType = true;
       out.push(ast);
     });
   }

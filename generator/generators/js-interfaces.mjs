@@ -491,7 +491,7 @@ function getFlusherProcessor(member) {
       }
     };
     for (let ii = 0; ii < array.length; ++ii) {
-      this.memoryView${instr}[${offset}] = array[ii];
+      this.memoryView${instr}[${offset} + ii] = array[ii];
     };
   } else {
     this.memoryView${instr}[${offset}] = 0x0;

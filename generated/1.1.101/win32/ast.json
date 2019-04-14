@@ -72108,6 +72108,7 @@
         }
       }
     ],
+    "isUnionType": true,
     "documentation": {
       "macros": [],
       "category": "Clear Commands",
@@ -72153,6 +72154,7 @@
         }
       }
     ],
+    "isUnionType": true,
     "documentation": {
       "macros": [],
       "category": "Clear Commands",
