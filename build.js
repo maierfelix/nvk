@@ -138,6 +138,9 @@ function inlineEnumLayouts() {
   const addon = require(`${buildReleaseDir}/addon-${platform}.node`);
   process.stdout.write(`Inlining enum layouts..\n`);
   let enumLayouts = addon.$getVulkanEnumerations();
+  if (!fs.existsSync(`${generatePath}/enumLayouts.json`)) {
+    process.stdout.write(`Pending bootstrapping, module should be re-generated!\n`);
+  }
   fs.writeFileSync(`${generatePath}/enumLayouts.json`, JSON.stringify(enumLayouts, null, 2));
 };
 
@@ -149,6 +152,9 @@ function inlineMemoryLayouts() {
   const addon = require(`${buildReleaseDir}/addon-${platform}.node`);
   process.stdout.write(`Inlining memory layouts..\n`);
   let memoryLayouts = addon.$getMemoryLayouts();
+  if (!fs.existsSync(`${generatePath}/memoryLayouts.json`)) {
+    process.stdout.write(`Pending bootstrapping, module should be re-generated!\n`);
+  }
   fs.writeFileSync(`${generatePath}/memoryLayouts.json`, JSON.stringify(memoryLayouts, null, 2));
 };
 

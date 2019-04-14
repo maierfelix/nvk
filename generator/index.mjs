@@ -376,8 +376,6 @@ class NativeObjectReferenceArray {
   // generate includes
   {
     console.log("Generating Vk includes..");
-    // add the index.cpp
-    includeNames.push(`"./src/index.cpp"`);
   }
   // generate typescript definition
   {
@@ -389,7 +387,7 @@ class NativeObjectReferenceArray {
   // generate binding.gyp
   {
     console.log("Generating binding.gyp..");
-    let result = await generateGyp(ast, version, incremental, [`"./src/index.cpp"`, `"./src/source.cpp"`]);
+    let result = await generateGyp(ast, version, incremental, [`"./src/index.cpp"`]);
     writeAddonFile(`${generatePath}/binding.gyp`, result.gyp, "utf-8");
   }
   // generate package.json

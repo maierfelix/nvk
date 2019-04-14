@@ -12,6 +12,7 @@
 #include <GLFW/glfw3.h>
 
 #include "utils.h"
+#include "source.h"
 
 #include <map>
 #include <string>
