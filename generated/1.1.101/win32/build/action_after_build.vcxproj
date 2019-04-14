@@ -42,7 +42,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\User\.node-gyp\11.9.0\include\node;C:\Users\User\.node-gyp\11.9.0\src;C:\Users\User\.node-gyp\11.9.0\deps\openssl\config;C:\Users\User\.node-gyp\11.9.0\deps\openssl\openssl\include;C:\Users\User\.node-gyp\11.9.0\deps\uv\include;C:\Users\User\.node-gyp\11.9.0\deps\zlib;C:\Users\User\.node-gyp\11.9.0\deps\v8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\User\.node-gyp\11.13.0\include\node;C:\Users\User\.node-gyp\11.13.0\src;C:\Users\User\.node-gyp\11.13.0\deps\openssl\config;C:\Users\User\.node-gyp\11.13.0\deps\openssl\openssl\include;C:\Users\User\.node-gyp\11.13.0\deps\uv\include;C:\Users\User\.node-gyp\11.13.0\deps\zlib;C:\Users\User\.node-gyp\11.13.0\deps\v8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <BufferSecurityCheck>true</BufferSecurityCheck>
@@ -63,7 +63,7 @@
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;DelayImp.lib;&quot;C:\Users\User\.node-gyp\11.9.0\x64\node.lib&quot;</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;DelayImp.lib;&quot;C:\Users\User\.node-gyp\11.13.0\x64\node.lib&quot;</AdditionalDependencies>
       <AdditionalOptions>/ignore:4199 %(AdditionalOptions)</AdditionalOptions>
       <AllowIsolation>true</AllowIsolation>
       <DataExecutionPrevention>true</DataExecutionPrevention>
@@ -76,13 +76,13 @@
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>C:\Users\User\.node-gyp\11.9.0\include\node;C:\Users\User\.node-gyp\11.9.0\src;C:\Users\User\.node-gyp\11.9.0\deps\openssl\config;C:\Users\User\.node-gyp\11.9.0\deps\openssl\openssl\include;C:\Users\User\.node-gyp\11.9.0\deps\uv\include;C:\Users\User\.node-gyp\11.9.0\deps\zlib;C:\Users\User\.node-gyp\11.9.0\deps\v8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\User\.node-gyp\11.13.0\include\node;C:\Users\User\.node-gyp\11.13.0\src;C:\Users\User\.node-gyp\11.13.0\deps\openssl\config;C:\Users\User\.node-gyp\11.13.0\deps\openssl\openssl\include;C:\Users\User\.node-gyp\11.13.0\deps\uv\include;C:\Users\User\.node-gyp\11.13.0\deps\zlib;C:\Users\User\.node-gyp\11.13.0\deps\v8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NODE_GYP_MODULE_NAME=action_after_build;USING_UV_SHARED=1;USING_V8_SHARED=1;V8_DEPRECATION_WARNINGS=1;WIN32;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_HAS_EXCEPTIONS=0;DEBUG;_DEBUG;V8_ENABLE_CHECKS;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\User\.node-gyp\11.9.0\include\node;C:\Users\User\.node-gyp\11.9.0\src;C:\Users\User\.node-gyp\11.9.0\deps\openssl\config;C:\Users\User\.node-gyp\11.9.0\deps\openssl\openssl\include;C:\Users\User\.node-gyp\11.9.0\deps\uv\include;C:\Users\User\.node-gyp\11.9.0\deps\zlib;C:\Users\User\.node-gyp\11.9.0\deps\v8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\User\.node-gyp\11.13.0\include\node;C:\Users\User\.node-gyp\11.13.0\src;C:\Users\User\.node-gyp\11.13.0\deps\openssl\config;C:\Users\User\.node-gyp\11.13.0\deps\openssl\openssl\include;C:\Users\User\.node-gyp\11.13.0\deps\uv\include;C:\Users\User\.node-gyp\11.13.0\deps\zlib;C:\Users\User\.node-gyp\11.13.0\deps\v8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <CompileAsWinRT>false</CompileAsWinRT>
@@ -110,7 +110,7 @@
       <AdditionalOptions>/LTCG:INCREMENTAL %(AdditionalOptions)</AdditionalOptions>
     </Lib>
     <Link>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;DelayImp.lib;&quot;C:\Users\User\.node-gyp\11.9.0\x64\node.lib&quot;</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;DelayImp.lib;&quot;C:\Users\User\.node-gyp\11.13.0\x64\node.lib&quot;</AdditionalDependencies>
       <AdditionalOptions>/ignore:4199 /LTCG:INCREMENTAL %(AdditionalOptions)</AdditionalOptions>
       <AllowIsolation>true</AllowIsolation>
       <DataExecutionPrevention>true</DataExecutionPrevention>
@@ -125,7 +125,7 @@
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>C:\Users\User\.node-gyp\11.9.0\include\node;C:\Users\User\.node-gyp\11.9.0\src;C:\Users\User\.node-gyp\11.9.0\deps\openssl\config;C:\Users\User\.node-gyp\11.9.0\deps\openssl\openssl\include;C:\Users\User\.node-gyp\11.9.0\deps\uv\include;C:\Users\User\.node-gyp\11.9.0\deps\zlib;C:\Users\User\.node-gyp\11.9.0\deps\v8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\User\.node-gyp\11.13.0\include\node;C:\Users\User\.node-gyp\11.13.0\src;C:\Users\User\.node-gyp\11.13.0\deps\openssl\config;C:\Users\User\.node-gyp\11.13.0\deps\openssl\openssl\include;C:\Users\User\.node-gyp\11.13.0\deps\uv\include;C:\Users\User\.node-gyp\11.13.0\deps\zlib;C:\Users\User\.node-gyp\11.13.0\deps\v8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NODE_GYP_MODULE_NAME=action_after_build;USING_UV_SHARED=1;USING_V8_SHARED=1;V8_DEPRECATION_WARNINGS=1;WIN32;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_HAS_EXCEPTIONS=0;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
   </ItemDefinitionGroup>
@@ -133,7 +133,7 @@
     <None Include="..\binding.gyp"/>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\src\win_delay_load_hook.cc"/>
+    <ClCompile Include="C:\Users\User\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\src\win_delay_load_hook.cc"/>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
   <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets"/>

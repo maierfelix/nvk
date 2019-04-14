@@ -127,6 +127,36 @@ export function getNodeByName(name, nodes) {
   return null;
 };
 
+export function getBitmaskByName(ast, name) {
+  for (let ii = 0; ii < ast.length; ++ii) {
+    let child = ast[ii];
+    if (child.kind === "ENUM" && child.type === "BITMASK") {
+      if (child.name === name) return child;
+    }
+  };
+  return null;
+};
+
+export function getStructByStructName(ast, name) {
+  let structs = ast.filter(node => node.kind === "STRUCT");
+  for (let ii = 0; ii < structs.length; ++ii) {
+    let struct = structs[ii];
+    if (struct.name === name) return struct;
+  };
+  error(`Cannot resolve struct by name "${name}"`);
+  return null;
+};
+
+export function getHandleByHandleName(ast, name) {
+  let handles = ast.filter(node => node.kind === "HANDLE");
+  for (let ii = 0; ii < handles.length; ++ii) {
+    let handle = handles[ii];
+    if (handle.name === name) return handle;
+  };
+  error(`Cannot resolve handle by name "${name}"`);
+  return null;
+};
+
 // auto-generates the sType name by a struct's name
 export function getAutoStructureType(name) {
   let out = ``;
@@ -143,6 +173,7 @@ export function getAutoStructureType(name) {
   out += values.join(`_`).toUpperCase();
   // merge e.g. 8_BIT => 8BIT
   out = out.replace(/(_BIT)/gm, `BIT`);
+  out = out.replace(/(WIN_32)/gm, `WIN32`);
   return out;
 };
 
@@ -453,12 +484,83 @@ export function isReferenceableMember(member) {
   return false;
 };
 
-export function getBitmaskByName(ast, name) {
-  for (let ii = 0; ii < ast.length; ++ii) {
-    let child = ast[ii];
-    if (child.kind === "ENUM" && child.type === "BITMASK") {
-      if (child.name === name) return child;
-    }
+export function isFillableMember(struct, member) {
+  if (member.name === `sType` || member.name === `pNext`) return true;
+  if (member.isVoidPointer) return true;
+  return !struct.returnedonly;
+};
+
+export function isFlushableMember(member) {
+  if (isPNextMember(member)) return true;
+  if (member.isStructType && member.dereferenceCount <= 0 && !member.isConstant) return true;
+  return isHeaderHeapVector(member);
+};
+
+export function isArrayMember(member) {
+  return (
+    member.isArray ||
+    member.isDynamicArray ||
+    member.isNumericArray ||
+    member.isTypedArray
+  );
+};
+
+export function isArrayOfObjectsMember(member) {
+  return (
+    (member.isArray) &&
+    (member.isStructType || member.isHandleType) ||
+    (member.isStaticArray && member.isNumericArray)
+  );
+};
+
+export function isHeaderHeapVector(member) {
+  return (
+    isArrayOfObjectsMember(member) ||
+    member.rawType === "const char * const*"
+  );
+};
+
+export function getDataViewInstruction(member) {
+  let {type} = member;
+  if (member.isWin32Handle) return `BigInt64`;
+  switch (type) {
+    case "int": return `Int32`;
+    case "float": return `Float32`;
+    case "size_t": return `BigInt64`;
+    case "int32_t": return `Int32`;
+    case "uint8_t": return `Uint8`;
+    case "uint32_t": return `Uint32`;
+    case "uint64_t": return `BigUint64`;
+    default:
+      warn(`Cannot resolve DataView instruction for ${member.name} of type ${type}`);
   };
-  return null;
+  return ``;
+};
+
+export function getDataViewInstructionStride(instr) {
+  switch (instr) {
+    case "Int32": return Int32Array.BYTES_PER_ELEMENT;
+    case "Float32": return Float32Array.BYTES_PER_ELEMENT;
+    case "BigInt64": return BigInt64Array.BYTES_PER_ELEMENT;
+    case "Uint8": return Uint8Array.BYTES_PER_ELEMENT;
+    case "Uint32": return Uint32Array.BYTES_PER_ELEMENT;
+    case "BigUint64": return BigUint64Array.BYTES_PER_ELEMENT;
+    default:
+      warn(`Cannot resolve DataView stride for ${member.name} of type ${type}`);
+  };
+  return ``;
+};
+
+export function getHexa(num) {
+  return `0x` + (num.toString(16).toUpperCase());
+};
+
+export function getHexaByteOffset(num) {
+  return `0x` + (Math.round(num).toString(16).toUpperCase());
+};
+
+export function stringifyJSONQuoteless(obj) {
+  let json = JSON.stringify(obj, null, 2);
+  json = json.replace(/\"([^(\")"]+)\":/g, "$1:");
+  return json;
 };

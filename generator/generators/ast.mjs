@@ -12,7 +12,9 @@ import {
   isPNextMember,
   getNodeByName,
   formatIntToHex,
+  isIgnoreableType,
   getAutoStructureType,
+  getStructByStructName,
   isNumericReferenceType,
   getJavaScriptTypedArrayName
 } from "../utils";
@@ -333,6 +335,7 @@ function parseStructElement(parent) {
   let out = {
     kind: TYPES.STRUCT,
     name: attr.name,
+    needsReflection: false,
     returnedonly: !!attr.returnedonly,
     children
   };
@@ -446,6 +449,10 @@ function parseTypeElement(child) {
       out.isArray = true;
       out.length = len;
       out.isDynamicArray = true;
+      // fix array of strings length property
+      if (!!out.length.match("null-terminated")) {
+        out.length = out.length.replace(",null-terminated", "");
+      }
     }
   }
   else if (staticArrayMatch) {
@@ -751,6 +758,7 @@ export default function({ xmlInput, version, docs } = _) {
     findXMLElements(obj, { category: "union" }, results);
     results.map(res => {
       let ast = parseElement(res);
+      ast.isUnionType = true;
       out.push(ast);
     });
   }
@@ -806,6 +814,69 @@ export default function({ xmlInput, version, docs } = _) {
           }
         };
       }
+    });
+  }
+
+  function deepReflectionTrace(struct) {
+    struct.needsReflection = true;
+    struct.children.map(member => {
+      // these can be ignored
+      if (
+        member.isNumber ||
+        member.isBoolean ||
+        member.bitmaskType ||
+        member.enumType ||
+        isIgnoreableType(member)
+      ) return;
+      // pnext structs
+      if (isPNextMember(member)) {
+        let {extensions} = struct;
+        if (extensions) {
+          extensions.map(extensionName => {
+            let struct = getStructByStructName(out, extensionName);
+            deepReflectionTrace(struct);
+          });
+        }
+      }
+      // struct
+      else if (member.isStructType && !member.isArray) {
+        let struct = getStructByStructName(out, member.type);
+        deepReflectionTrace(struct);
+      }
+      // array of structs
+      else if (member.isStructType && member.isArray) {
+        let struct = getStructByStructName(out, member.type);
+        deepReflectionTrace(struct);
+      }
+    });
+  };
+  // trace deep reflection structures
+  {
+    let structs = out.filter(node => node.kind === "STRUCT");
+    structs.map(struct => {
+      if (struct.returnedonly) {
+        deepReflectionTrace(struct);
+      }
+    });
+  }
+  // trace members which need to be initialized at instantiation
+  // e.g. struct.struct, struct.numericarray
+  {
+    let structs = out.filter(node => node.kind === "STRUCT");
+    structs.map(struct => {
+      struct.children.map(member => {
+        // struct member
+        if (
+          !member.isConstant &&
+          member.isStructType &&
+          member.dereferenceCount <= 0
+        ) member.needsInitializationAtInstantiation = true;
+        // numeric array member
+        if (
+          member.isNumericArray &&
+          member.isStaticArray
+        ) member.needsInitializationAtInstantiation = true;
+      });
     });
   }
   return new Promise(resolve => {

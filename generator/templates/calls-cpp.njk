@@ -14,6 +14,12 @@
 #include <string>
 #include <memory>
 
+inline VkStructureType GetStructureTypeFromObject(Napi::Object obj) {
+  if (!obj.Has("sType")) Napi::TypeError::New(obj.Env(), "Failed to resolve structure type, 'sType' property is missing").ThrowAsJavaScriptException();
+  VkStructureType sType = static_cast<VkStructureType>(obj.Get("sType").As<Napi::Number>().Int32Value());
+  return sType;
+};
+
 VkDevice currentDevice = VK_NULL_HANDLE;
 VkInstance currentInstance = VK_NULL_HANDLE;
 
@@ -32,8 +38,9 @@ void vkUseInstance(VkInstance pInstance) {
 Napi::Value _vkUseDevice(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   if (info[0].IsObject()) {
-    _VkDevice* obj = Napi::ObjectWrap<_VkDevice>::Unwrap(info[0].As<Napi::Object>());
-    vkUseDevice(obj->instance);
+    Napi::Object obj = info[0].As<Napi::Object>();
+    VkDevice* instance = reinterpret_cast<VkDevice*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    vkUseDevice(*instance);
   } else if (info[0].IsNull()) {
     currentDevice = VK_NULL_HANDLE;
   } else {
@@ -45,8 +52,9 @@ Napi::Value _vkUseDevice(const Napi::CallbackInfo& info) {
 Napi::Value _vkUseInstance(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   if (info[0].IsObject()) {
-    _VkInstance* obj = Napi::ObjectWrap<_VkInstance>::Unwrap(info[0].As<Napi::Object>());
-    vkUseInstance(obj->instance);
+    Napi::Object obj = info[0].As<Napi::Object>();
+    VkInstance* instance = reinterpret_cast<VkInstance*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    vkUseInstance(*instance);
   } else if (info[0].IsNull()) {
     currentInstance = VK_NULL_HANDLE;
   } else {

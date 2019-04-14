@@ -6404,7 +6404,7 @@ declare global {
     /**
      * is the device address requested for the buffer.
      */
-    deviceAddress: number;
+    deviceAddress: bigint;
 
   }
 
@@ -6423,7 +6423,7 @@ declare global {
     /**
      * is the device address requested for the buffer.
      */
-    deviceAddress?: number;
+    deviceAddress?: bigint;
   }
 
   interface VkBufferDeviceAddressCreateInfoEXTConstructor {
@@ -7380,7 +7380,7 @@ declare global {
     /**
      * returns the image's <<glossary-drm-format-modifier,Linux DRM format modifier>>.
      */
-    readonly drmFormatModifier: number;
+    readonly drmFormatModifier: bigint;
 
   }
 
@@ -7399,7 +7399,7 @@ declare global {
     /**
      * returns the image's <<glossary-drm-format-modifier,Linux DRM format modifier>>.
      */
-    readonly drmFormatModifier?: number;
+    readonly drmFormatModifier?: bigint;
   }
 
   interface VkImageDrmFormatModifierPropertiesEXTConstructor {
@@ -7444,7 +7444,7 @@ declare global {
     /**
      * is the _Linux DRM format modifier_ with which the image will be created.
      */
-    drmFormatModifier: number;
+    drmFormatModifier: bigint;
 
     /**
      * is the number of _memory planes_ in the image (as reported by 'VkDrmFormatModifierPropertiesEXT') as well as the length of the 'pPlaneLayouts' array.
@@ -7473,7 +7473,7 @@ declare global {
     /**
      * is the _Linux DRM format modifier_ with which the image will be created.
      */
-    drmFormatModifier?: number;
+    drmFormatModifier?: bigint;
 
     /**
      * is the number of _memory planes_ in the image (as reported by 'VkDrmFormatModifierPropertiesEXT') as well as the length of the 'pPlaneLayouts' array.
@@ -7602,7 +7602,7 @@ declare global {
     /**
      * is the image's _Linux DRM format modifier_, corresponding to 'VkImageDrmFormatModifierExplicitCreateInfoEXT'::'modifier' or to 'VkImageDrmFormatModifierListCreateInfoEXT'::'pModifiers'.
      */
-    drmFormatModifier: number;
+    drmFormatModifier: bigint;
 
     /**
      * specifies how the image will be accessed by multiple queue families.
@@ -7636,7 +7636,7 @@ declare global {
     /**
      * is the image's _Linux DRM format modifier_, corresponding to 'VkImageDrmFormatModifierExplicitCreateInfoEXT'::'modifier' or to 'VkImageDrmFormatModifierListCreateInfoEXT'::'pModifiers'.
      */
-    drmFormatModifier?: number;
+    drmFormatModifier?: bigint;
 
     /**
      * specifies how the image will be accessed by multiple queue families.
@@ -7686,7 +7686,7 @@ declare global {
     /**
      * is a _Linux DRM format modifier_.
      */
-    readonly drmFormatModifier: number;
+    readonly drmFormatModifier: bigint;
 
     /**
      * is the number of _memory planes_ in any image created with 'format' and 'drmFormatModifier'. An image's _memory planecount_ is distinct from its _format planecount_, as explained below.
@@ -7705,7 +7705,7 @@ declare global {
     /**
      * is a _Linux DRM format modifier_.
      */
-    readonly drmFormatModifier?: number;
+    readonly drmFormatModifier?: bigint;
 
     /**
      * is the number of _memory planes_ in any image created with 'format' and 'drmFormatModifier'. An image's _memory planecount_ is distinct from its _format planecount_, as explained below.
@@ -7854,17 +7854,17 @@ declare global {
     /**
      * is the maximum number of geometries in the bottom level acceleration structure.
      */
-    readonly maxGeometryCount: number;
+    readonly maxGeometryCount: bigint;
 
     /**
      * is the maximum number of instances in the top level acceleration structure.
      */
-    readonly maxInstanceCount: number;
+    readonly maxInstanceCount: bigint;
 
     /**
      * is the maximum number of triangles in all geometries in the bottom level acceleration structure.
      */
-    readonly maxTriangleCount: number;
+    readonly maxTriangleCount: bigint;
 
     /**
      * is the maximum number of acceleration structure descriptors that are allowed in a descriptor set.
@@ -7908,17 +7908,17 @@ declare global {
     /**
      * is the maximum number of geometries in the bottom level acceleration structure.
      */
-    readonly maxGeometryCount?: number;
+    readonly maxGeometryCount?: bigint;
 
     /**
      * is the maximum number of instances in the top level acceleration structure.
      */
-    readonly maxInstanceCount?: number;
+    readonly maxInstanceCount?: bigint;
 
     /**
      * is the maximum number of triangles in all geometries in the bottom level acceleration structure.
      */
-    readonly maxTriangleCount?: number;
+    readonly maxTriangleCount?: bigint;
 
     /**
      * is the maximum number of acceleration structure descriptors that are allowed in a descriptor set.
@@ -8126,7 +8126,7 @@ declare global {
     /**
      * is the start offset of the region of memory that is to be bound to the acceleration structure. The number of bytes returned in the 'VkMemoryRequirements'::'size' member in 'memory', starting from 'memoryOffset' bytes, will be bound to the specified acceleration structure.
      */
-    memoryOffset: number;
+    memoryOffset: bigint;
 
     /**
      * is the number of elements in 'pDeviceIndices'.
@@ -8165,7 +8165,7 @@ declare global {
     /**
      * is the start offset of the region of memory that is to be bound to the acceleration structure. The number of bytes returned in the 'VkMemoryRequirements'::'size' member in 'memory', starting from 'memoryOffset' bytes, will be bound to the specified acceleration structure.
      */
-    memoryOffset?: number;
+    memoryOffset?: bigint;
 
     /**
      * is the number of elements in 'pDeviceIndices'.
@@ -8220,7 +8220,7 @@ declare global {
     /**
      * is the size from the result of 'vkCmdWriteAccelerationStructuresPropertiesNV' if this acceleration structure is going to be the target of a compacting copy.
      */
-    compactedSize: number;
+    compactedSize: bigint;
 
     /**
      * is the 'VkAccelerationStructureInfoNV' structure that specifies further parameters of the created acceleration structure.
@@ -8244,7 +8244,7 @@ declare global {
     /**
      * is the size from the result of 'vkCmdWriteAccelerationStructuresPropertiesNV' if this acceleration structure is going to be the target of a compacting copy.
      */
-    compactedSize?: number;
+    compactedSize?: bigint;
 
     /**
      * is the 'VkAccelerationStructureInfoNV' structure that specifies further parameters of the created acceleration structure.
@@ -8551,7 +8551,7 @@ declare global {
     /**
      *
      */
-    offset: number;
+    offset: bigint;
 
   }
 
@@ -8585,7 +8585,7 @@ declare global {
     /**
      *
      */
-    offset?: number;
+    offset?: bigint;
   }
 
   interface VkGeometryAABBNVConstructor {
@@ -8635,7 +8635,7 @@ declare global {
     /**
      *
      */
-    vertexOffset: number;
+    vertexOffset: bigint;
 
     /**
      * is the number of valid vertices.
@@ -8645,7 +8645,7 @@ declare global {
     /**
      * is the stride in bytes between each vertex.
      */
-    vertexStride: number;
+    vertexStride: bigint;
 
     /**
      * is the format of each vertex element.
@@ -8660,7 +8660,7 @@ declare global {
     /**
      *
      */
-    indexOffset: number;
+    indexOffset: bigint;
 
     /**
      * is the number of indices to include in this geometry.
@@ -8680,7 +8680,7 @@ declare global {
     /**
      *
      */
-    transformOffset: number;
+    transformOffset: bigint;
 
   }
 
@@ -8704,7 +8704,7 @@ declare global {
     /**
      *
      */
-    vertexOffset?: number;
+    vertexOffset?: bigint;
 
     /**
      * is the number of valid vertices.
@@ -8714,7 +8714,7 @@ declare global {
     /**
      * is the stride in bytes between each vertex.
      */
-    vertexStride?: number;
+    vertexStride?: bigint;
 
     /**
      * is the format of each vertex element.
@@ -8729,7 +8729,7 @@ declare global {
     /**
      *
      */
-    indexOffset?: number;
+    indexOffset?: bigint;
 
     /**
      * is the number of indices to include in this geometry.
@@ -8749,7 +8749,7 @@ declare global {
     /**
      *
      */
-    transformOffset?: number;
+    transformOffset?: bigint;
   }
 
   interface VkGeometryTrianglesNVConstructor {
@@ -10552,7 +10552,7 @@ declare global {
     /**
      *
      */
-    readonly maxTransformFeedbackBufferSize: number;
+    readonly maxTransformFeedbackBufferSize: bigint;
 
     /**
      *
@@ -10616,7 +10616,7 @@ declare global {
     /**
      *
      */
-    readonly maxTransformFeedbackBufferSize?: number;
+    readonly maxTransformFeedbackBufferSize?: bigint;
 
     /**
      *
@@ -13978,7 +13978,7 @@ declare global {
     /**
      * is the minimum 'required' alignment, in bytes, for the base address and size of host references that 'can' be imported to a Vulkan memory object.
      */
-    readonly minImportedHostPointerAlignment: number;
+    readonly minImportedHostPointerAlignment: bigint;
 
   }
 
@@ -13997,7 +13997,7 @@ declare global {
     /**
      * is the minimum 'required' alignment, in bytes, for the base address and size of host references that 'can' be imported to a Vulkan memory object.
      */
-    readonly minImportedHostPointerAlignment?: number;
+    readonly minImportedHostPointerAlignment?: bigint;
   }
 
   interface VkPhysicalDeviceExternalMemoryHostPropertiesEXTConstructor {
@@ -14517,17 +14517,17 @@ declare global {
     /**
      * is the object to be tagged.
      */
-    objectHandle: number;
+    objectHandle: bigint;
 
     /**
      * is a numerical identifier of the tag.
      */
-    tagName: number;
+    tagName: bigint;
 
     /**
      * bytes containing the data to be associated with the object.
      */
-    tagSize: number;
+    tagSize: bigint;
 
     /**
      *
@@ -14556,17 +14556,17 @@ declare global {
     /**
      * is the object to be tagged.
      */
-    objectHandle?: number;
+    objectHandle?: bigint;
 
     /**
      * is a numerical identifier of the tag.
      */
-    tagName?: number;
+    tagName?: bigint;
 
     /**
      * bytes containing the data to be associated with the object.
      */
-    tagSize?: number;
+    tagSize?: bigint;
 
     /**
      *
@@ -14621,7 +14621,7 @@ declare global {
     /**
      * is the object to be named.
      */
-    objectHandle: number;
+    objectHandle: bigint;
 
     /**
      * is a string specifying the name to apply to 'objectHandle'.
@@ -14650,7 +14650,7 @@ declare global {
     /**
      * is the object to be named.
      */
-    objectHandle?: number;
+    objectHandle?: bigint;
 
     /**
      * is a string specifying the name to apply to 'objectHandle'.
@@ -14873,12 +14873,12 @@ declare global {
     /**
      * is the LDS usage size in bytes per work group by this shader.
      */
-    readonly ldsUsageSizeInBytes: number;
+    readonly ldsUsageSizeInBytes: bigint;
 
     /**
      * is the scratch memory usage in bytes by this shader.
      */
-    readonly scratchMemUsageInBytes: number;
+    readonly scratchMemUsageInBytes: bigint;
 
   }
 
@@ -14902,12 +14902,12 @@ declare global {
     /**
      * is the LDS usage size in bytes per work group by this shader.
      */
-    readonly ldsUsageSizeInBytes?: number;
+    readonly ldsUsageSizeInBytes?: bigint;
 
     /**
      * is the scratch memory usage in bytes by this shader.
      */
-    readonly scratchMemUsageInBytes?: number;
+    readonly scratchMemUsageInBytes?: bigint;
   }
 
   interface VkShaderResourceUsageAMDConstructor {
@@ -15447,7 +15447,7 @@ declare global {
     /**
      * is the maximum size of a memory allocation that 'can' be created, even if there is more space available in the heap.
      */
-    readonly maxMemoryAllocationSize: number;
+    readonly maxMemoryAllocationSize: bigint;
 
   }
 
@@ -15471,7 +15471,7 @@ declare global {
     /**
      * is the maximum size of a memory allocation that 'can' be created, even if there is more space available in the heap.
      */
-    readonly maxMemoryAllocationSize?: number;
+    readonly maxMemoryAllocationSize?: bigint;
   }
 
   interface VkPhysicalDeviceMaintenance3PropertiesKHRConstructor {
@@ -15521,7 +15521,7 @@ declare global {
     /**
      * is the maximum size of a memory allocation that 'can' be created, even if there is more space available in the heap.
      */
-    readonly maxMemoryAllocationSize: number;
+    readonly maxMemoryAllocationSize: bigint;
 
   }
 
@@ -15545,7 +15545,7 @@ declare global {
     /**
      * is the maximum size of a memory allocation that 'can' be created, even if there is more space available in the heap.
      */
-    readonly maxMemoryAllocationSize?: number;
+    readonly maxMemoryAllocationSize?: bigint;
   }
 
   interface VkPhysicalDeviceMaintenance3PropertiesConstructor {
@@ -15659,7 +15659,7 @@ declare global {
     /**
      *
      */
-    initialDataSize: number;
+    initialDataSize: bigint;
 
     /**
      * is a reference to previously retrieved validation cache data. If the validation cache data is incompatible (as defined below) with the device, the validation cache will be initially empty. If 'initialDataSize' is zero, 'pInitialData' is ignored.
@@ -15688,7 +15688,7 @@ declare global {
     /**
      *
      */
-    initialDataSize?: number;
+    initialDataSize?: bigint;
 
     /**
      * is a reference to previously retrieved validation cache data. If the validation cache data is incompatible (as defined below) with the device, the validation cache will be initially empty. If 'initialDataSize' is zero, 'pInitialData' is ignored.
@@ -17589,7 +17589,7 @@ declare global {
     /**
      *
      */
-    offset: number;
+    offset: bigint;
 
     /**
      * is a bitmask of 'VkConditionalRenderingFlagsEXT' specifying the behavior of conditional rendering.
@@ -17618,7 +17618,7 @@ declare global {
     /**
      *
      */
-    offset?: number;
+    offset?: bigint;
 
     /**
      * is a bitmask of 'VkConditionalRenderingFlagsEXT' specifying the behavior of conditional rendering.
@@ -21617,7 +21617,7 @@ declare global {
     /**
      * specifies that the image given 'should' not be displayed to the user any earlier than this time. 'desiredPresentTime' is a time in nanoseconds, relative to a monotonically-increasing clock (e.g. `CLOCK_MONOTONIC` (see clock_gettime(2)) on Android and Linux). A value of zero specifies that the presentation engine 'may' display the image at any time. This is useful when the application desires to provide 'presentID', but doesn't need a specific 'desiredPresentTime'.
      */
-    desiredPresentTime: number;
+    desiredPresentTime: bigint;
 
   }
 
@@ -21631,7 +21631,7 @@ declare global {
     /**
      * specifies that the image given 'should' not be displayed to the user any earlier than this time. 'desiredPresentTime' is a time in nanoseconds, relative to a monotonically-increasing clock (e.g. `CLOCK_MONOTONIC` (see clock_gettime(2)) on Android and Linux). A value of zero specifies that the presentation engine 'may' display the image at any time. This is useful when the application desires to provide 'presentID', but doesn't need a specific 'desiredPresentTime'.
      */
-    desiredPresentTime?: number;
+    desiredPresentTime?: bigint;
   }
 
   interface VkPresentTimeGOOGLEConstructor {
@@ -21745,22 +21745,22 @@ declare global {
     /**
      * is an application-provided value that was given to a previous 'vkQueuePresentKHR' command via 'VkPresentTimeGOOGLE'::'desiredPresentTime'. If non-zero, it was used by the application to indicate that an image not be presented any sooner than 'desiredPresentTime'.
      */
-    readonly desiredPresentTime: number;
+    readonly desiredPresentTime: bigint;
 
     /**
      * is the time when the image of the 'swapchain' was actually displayed.
      */
-    readonly actualPresentTime: number;
+    readonly actualPresentTime: bigint;
 
     /**
      * is the time when the image of the 'swapchain' could have been displayed. This 'may' differ from 'actualPresentTime' if the application requested that the image be presented no sooner than 'VkPresentTimeGOOGLE'::'desiredPresentTime'.
      */
-    readonly earliestPresentTime: number;
+    readonly earliestPresentTime: bigint;
 
     /**
      * is an indication of how early the 'vkQueuePresentKHR' command was processed compared to how soon it needed to be processed, and still be presented at 'earliestPresentTime'.
      */
-    readonly presentMargin: number;
+    readonly presentMargin: bigint;
 
   }
 
@@ -21774,22 +21774,22 @@ declare global {
     /**
      * is an application-provided value that was given to a previous 'vkQueuePresentKHR' command via 'VkPresentTimeGOOGLE'::'desiredPresentTime'. If non-zero, it was used by the application to indicate that an image not be presented any sooner than 'desiredPresentTime'.
      */
-    readonly desiredPresentTime?: number;
+    readonly desiredPresentTime?: bigint;
 
     /**
      * is the time when the image of the 'swapchain' was actually displayed.
      */
-    readonly actualPresentTime?: number;
+    readonly actualPresentTime?: bigint;
 
     /**
      * is the time when the image of the 'swapchain' could have been displayed. This 'may' differ from 'actualPresentTime' if the application requested that the image be presented no sooner than 'VkPresentTimeGOOGLE'::'desiredPresentTime'.
      */
-    readonly earliestPresentTime?: number;
+    readonly earliestPresentTime?: bigint;
 
     /**
      * is an indication of how early the 'vkQueuePresentKHR' command was processed compared to how soon it needed to be processed, and still be presented at 'earliestPresentTime'.
      */
-    readonly presentMargin?: number;
+    readonly presentMargin?: bigint;
   }
 
   interface VkPastPresentationTimingGOOGLEConstructor {
@@ -21824,7 +21824,7 @@ declare global {
     /**
      * is the number of nanoseconds from the start of one refresh cycle to the next.
      */
-    readonly refreshDuration: number;
+    readonly refreshDuration: bigint;
 
   }
 
@@ -21833,7 +21833,7 @@ declare global {
     /**
      * is the number of nanoseconds from the start of one refresh cycle to the next.
      */
-    readonly refreshDuration?: number;
+    readonly refreshDuration?: bigint;
   }
 
   interface VkRefreshCycleDurationGOOGLEConstructor {
@@ -22344,12 +22344,12 @@ declare global {
     /**
      *
      */
-    offset: number;
+    offset: bigint;
 
     /**
      *
      */
-    stride: number;
+    stride: bigint;
 
   }
 
@@ -22378,12 +22378,12 @@ declare global {
     /**
      *
      */
-    offset?: number;
+    offset?: bigint;
 
     /**
      *
      */
-    stride?: number;
+    stride?: bigint;
   }
 
   interface VkDescriptorUpdateTemplateEntryKHRConstructor {
@@ -22438,12 +22438,12 @@ declare global {
     /**
      *
      */
-    offset: number;
+    offset: bigint;
 
     /**
      *
      */
-    stride: number;
+    stride: bigint;
 
   }
 
@@ -22472,12 +22472,12 @@ declare global {
     /**
      *
      */
-    offset?: number;
+    offset?: bigint;
 
     /**
      *
      */
-    stride?: number;
+    stride?: bigint;
   }
 
   interface VkDescriptorUpdateTemplateEntryConstructor {
@@ -22823,7 +22823,7 @@ declare global {
     /**
      * specifies how long the function waits, in nanoseconds, if no image is available.
      */
-    timeout: number;
+    timeout: bigint;
 
     /**
      * is 'VK_NULL_HANDLE' or a semaphore to signal.
@@ -22862,7 +22862,7 @@ declare global {
     /**
      * specifies how long the function waits, in nanoseconds, if no image is available.
      */
-    timeout?: number;
+    timeout?: bigint;
 
     /**
      * is 'VK_NULL_HANDLE' or a semaphore to signal.
@@ -24004,7 +24004,7 @@ declare global {
     /**
      *
      */
-    memoryOffset: number;
+    memoryOffset: bigint;
 
   }
 
@@ -24033,7 +24033,7 @@ declare global {
     /**
      *
      */
-    memoryOffset?: number;
+    memoryOffset?: bigint;
   }
 
   interface VkBindImageMemoryInfoKHRConstructor {
@@ -24088,7 +24088,7 @@ declare global {
     /**
      *
      */
-    memoryOffset: number;
+    memoryOffset: bigint;
 
   }
 
@@ -24117,7 +24117,7 @@ declare global {
     /**
      *
      */
-    memoryOffset?: number;
+    memoryOffset?: bigint;
   }
 
   interface VkBindImageMemoryInfoConstructor {
@@ -24320,7 +24320,7 @@ declare global {
     /**
      *
      */
-    memoryOffset: number;
+    memoryOffset: bigint;
 
   }
 
@@ -24349,7 +24349,7 @@ declare global {
     /**
      *
      */
-    memoryOffset?: number;
+    memoryOffset?: bigint;
   }
 
   interface VkBindBufferMemoryInfoKHRConstructor {
@@ -24404,7 +24404,7 @@ declare global {
     /**
      *
      */
-    memoryOffset: number;
+    memoryOffset: bigint;
 
   }
 
@@ -24433,7 +24433,7 @@ declare global {
     /**
      *
      */
-    memoryOffset?: number;
+    memoryOffset?: bigint;
   }
 
   interface VkBindBufferMemoryInfoConstructor {
@@ -32025,7 +32025,7 @@ declare global {
     /**
      * is the byte offset into 'sequencesCountBuffer' where the count value is stored.
      */
-    sequencesCountOffset: number;
+    sequencesCountOffset: bigint;
 
     /**
      * 'must' be set if 'indirectCommandsLayout''s 'VK_INDIRECT_COMMANDS_LAYOUT_USAGE_INDEXED_SEQUENCES_BIT_NVX' is set and provides the used sequence indices as 'uint32_t' array. Otherwise it 'must' be 'VK_NULL_HANDLE'.
@@ -32035,7 +32035,7 @@ declare global {
     /**
      * is the byte offset into 'sequencesIndexBuffer' where the index values start.
      */
-    sequencesIndexOffset: number;
+    sequencesIndexOffset: bigint;
 
   }
 
@@ -32089,7 +32089,7 @@ declare global {
     /**
      * is the byte offset into 'sequencesCountBuffer' where the count value is stored.
      */
-    sequencesCountOffset?: number;
+    sequencesCountOffset?: bigint;
 
     /**
      * 'must' be set if 'indirectCommandsLayout''s 'VK_INDIRECT_COMMANDS_LAYOUT_USAGE_INDEXED_SEQUENCES_BIT_NVX' is set and provides the used sequence indices as 'uint32_t' array. Otherwise it 'must' be 'VK_NULL_HANDLE'.
@@ -32099,7 +32099,7 @@ declare global {
     /**
      * is the byte offset into 'sequencesIndexBuffer' where the index values start.
      */
-    sequencesIndexOffset?: number;
+    sequencesIndexOffset?: bigint;
   }
 
   interface VkCmdProcessCommandsInfoNVXConstructor {
@@ -32312,7 +32312,7 @@ declare global {
     /**
      *
      */
-    offset: number;
+    offset: bigint;
 
   }
 
@@ -32331,7 +32331,7 @@ declare global {
     /**
      *
      */
-    offset?: number;
+    offset?: bigint;
   }
 
   interface VkIndirectCommandsTokenNVXConstructor {
@@ -33299,17 +33299,17 @@ declare global {
     /**
      * is the object to be tagged.
      */
-    object: number;
+    object: bigint;
 
     /**
      * is a numerical identifier of the tag.
      */
-    tagName: number;
+    tagName: bigint;
 
     /**
      * bytes containing the data to be associated with the object.
      */
-    tagSize: number;
+    tagSize: bigint;
 
     /**
      *
@@ -33338,17 +33338,17 @@ declare global {
     /**
      * is the object to be tagged.
      */
-    object?: number;
+    object?: bigint;
 
     /**
      * is a numerical identifier of the tag.
      */
-    tagName?: number;
+    tagName?: bigint;
 
     /**
      * bytes containing the data to be associated with the object.
      */
-    tagSize?: number;
+    tagSize?: bigint;
 
     /**
      *
@@ -33403,7 +33403,7 @@ declare global {
     /**
      * is the object to be named.
      */
-    object: number;
+    object: bigint;
 
     /**
      * is a string specifying the name to apply to 'object'.
@@ -33432,7 +33432,7 @@ declare global {
     /**
      * is the object to be named.
      */
-    object?: number;
+    object?: bigint;
 
     /**
      * is a string specifying the name to apply to 'object'.
@@ -35753,12 +35753,12 @@ declare global {
     /**
      * is the granularity, in bytes, at which buffer or linear image resources, and optimal image resources 'can' be bound to adjacent offsets in the same 'VkDeviceMemory' object without aliasing. See <<resources-bufferimagegranularity,Buffer-Image Granularity>> for more details.
      */
-    readonly bufferImageGranularity: number;
+    readonly bufferImageGranularity: bigint;
 
     /**
      * is the total amount of address space available, in bytes, for sparse memory resources. This is an upper bound on the sum of the size of all sparse resources, regardless of whether any memory is bound to them.
      */
-    readonly sparseAddressSpaceSize: number;
+    readonly sparseAddressSpaceSize: bigint;
 
     /**
      * is the maximum number of descriptor sets that 'can' be simultaneously used by a pipeline. All 'DescriptorSet' decorations in shader modules 'must' have a value less than 'maxBoundDescriptorSets'. See <<descriptorsets-sets>>.
@@ -36028,22 +36028,22 @@ declare global {
     /**
      *
      */
-    readonly minMemoryMapAlignment: number;
+    readonly minMemoryMapAlignment: bigint;
 
     /**
      *
      */
-    readonly minTexelBufferOffsetAlignment: number;
+    readonly minTexelBufferOffsetAlignment: bigint;
 
     /**
      *
      */
-    readonly minUniformBufferOffsetAlignment: number;
+    readonly minUniformBufferOffsetAlignment: bigint;
 
     /**
      *
      */
-    readonly minStorageBufferOffsetAlignment: number;
+    readonly minStorageBufferOffsetAlignment: bigint;
 
     /**
      *
@@ -36213,17 +36213,17 @@ declare global {
     /**
      *
      */
-    readonly optimalBufferCopyOffsetAlignment: number;
+    readonly optimalBufferCopyOffsetAlignment: bigint;
 
     /**
      *
      */
-    readonly optimalBufferCopyRowPitchAlignment: number;
+    readonly optimalBufferCopyRowPitchAlignment: bigint;
 
     /**
      *
      */
-    readonly nonCoherentAtomSize: number;
+    readonly nonCoherentAtomSize: bigint;
 
   }
 
@@ -36287,12 +36287,12 @@ declare global {
     /**
      * is the granularity, in bytes, at which buffer or linear image resources, and optimal image resources 'can' be bound to adjacent offsets in the same 'VkDeviceMemory' object without aliasing. See <<resources-bufferimagegranularity,Buffer-Image Granularity>> for more details.
      */
-    readonly bufferImageGranularity?: number;
+    readonly bufferImageGranularity?: bigint;
 
     /**
      * is the total amount of address space available, in bytes, for sparse memory resources. This is an upper bound on the sum of the size of all sparse resources, regardless of whether any memory is bound to them.
      */
-    readonly sparseAddressSpaceSize?: number;
+    readonly sparseAddressSpaceSize?: bigint;
 
     /**
      * is the maximum number of descriptor sets that 'can' be simultaneously used by a pipeline. All 'DescriptorSet' decorations in shader modules 'must' have a value less than 'maxBoundDescriptorSets'. See <<descriptorsets-sets>>.
@@ -36562,22 +36562,22 @@ declare global {
     /**
      *
      */
-    readonly minMemoryMapAlignment?: number;
+    readonly minMemoryMapAlignment?: bigint;
 
     /**
      *
      */
-    readonly minTexelBufferOffsetAlignment?: number;
+    readonly minTexelBufferOffsetAlignment?: bigint;
 
     /**
      *
      */
-    readonly minUniformBufferOffsetAlignment?: number;
+    readonly minUniformBufferOffsetAlignment?: bigint;
 
     /**
      *
      */
-    readonly minStorageBufferOffsetAlignment?: number;
+    readonly minStorageBufferOffsetAlignment?: bigint;
 
     /**
      *
@@ -36747,17 +36747,17 @@ declare global {
     /**
      *
      */
-    readonly optimalBufferCopyOffsetAlignment?: number;
+    readonly optimalBufferCopyOffsetAlignment?: bigint;
 
     /**
      *
      */
-    readonly optimalBufferCopyRowPitchAlignment?: number;
+    readonly optimalBufferCopyRowPitchAlignment?: bigint;
 
     /**
      *
      */
-    readonly nonCoherentAtomSize?: number;
+    readonly nonCoherentAtomSize?: bigint;
   }
 
   interface VkPhysicalDeviceLimitsConstructor {
@@ -39093,7 +39093,7 @@ declare global {
     /**
      *
      */
-    initialDataSize: number;
+    initialDataSize: bigint;
 
     /**
      * is a reference to previously retrieved pipeline cache data. If the pipeline cache data is incompatible (as defined below) with the device, the pipeline cache will be initially empty. If 'initialDataSize' is zero, 'pInitialData' is ignored.
@@ -39122,7 +39122,7 @@ declare global {
     /**
      *
      */
-    initialDataSize?: number;
+    initialDataSize?: bigint;
 
     /**
      * is a reference to previously retrieved pipeline cache data. If the pipeline cache data is incompatible (as defined below) with the device, the pipeline cache will be initially empty. If 'initialDataSize' is zero, 'pInitialData' is ignored.
@@ -40966,7 +40966,7 @@ declare global {
     /**
      *
      */
-    dataSize: number;
+    dataSize: bigint;
 
     /**
      * contains the actual constant values to specialize with.
@@ -40990,7 +40990,7 @@ declare global {
     /**
      *
      */
-    dataSize?: number;
+    dataSize?: bigint;
 
     /**
      * contains the actual constant values to specialize with.
@@ -41040,7 +41040,7 @@ declare global {
     /**
      * is the byte size of the specialization constant value within the supplied data buffer.
      */
-    size: number;
+    size: bigint;
 
   }
 
@@ -41059,7 +41059,7 @@ declare global {
     /**
      * is the byte size of the specialization constant value within the supplied data buffer.
      */
-    size?: number;
+    size?: bigint;
   }
 
   interface VkSpecializationMapEntryConstructor {
@@ -41509,7 +41509,7 @@ declare global {
     /**
      * is the size, in bytes, of the code pointed to by 'pCode'.
      */
-    codeSize: number;
+    codeSize: bigint;
 
     /**
      * reference to code that is used to create the shader module. The type and format of the code is determined from the content of the memory addressed by 'pCode'.
@@ -41538,7 +41538,7 @@ declare global {
     /**
      * is the size, in bytes, of the code pointed to by 'pCode'.
      */
-    codeSize?: number;
+    codeSize?: bigint;
 
     /**
      * reference to code that is used to create the shader module. The type and format of the code is determined from the content of the memory addressed by 'pCode'.
@@ -41662,7 +41662,7 @@ declare global {
     /**
      * is the offset in bytes from the start of the buffer object where the image data is copied from or to.
      */
-    bufferOffset: number;
+    bufferOffset: bigint;
 
     /**
      *
@@ -41696,7 +41696,7 @@ declare global {
     /**
      * is the offset in bytes from the start of the buffer object where the image data is copied from or to.
      */
-    bufferOffset?: number;
+    bufferOffset?: bigint;
 
     /**
      *
@@ -42280,7 +42280,7 @@ declare global {
     /**
      * is an offset into 'VkDeviceMemory' object. If 'memory' is 'VK_NULL_HANDLE', this value is ignored.
      */
-    memoryOffset: number;
+    memoryOffset: bigint;
 
     /**
      * are sparse memory binding flags.
@@ -42314,7 +42314,7 @@ declare global {
     /**
      * is an offset into 'VkDeviceMemory' object. If 'memory' is 'VK_NULL_HANDLE', this value is ignored.
      */
-    memoryOffset?: number;
+    memoryOffset?: bigint;
 
     /**
      * are sparse memory binding flags.
@@ -42354,12 +42354,12 @@ declare global {
     /**
      * is the offset into the resource.
      */
-    resourceOffset: number;
+    resourceOffset: bigint;
 
     /**
      * is the size of the memory region to be bound.
      */
-    size: number;
+    size: bigint;
 
     /**
      * is the 'VkDeviceMemory' object that the range of the resource is bound to. If 'memory' is 'VK_NULL_HANDLE', the range is unbound.
@@ -42369,7 +42369,7 @@ declare global {
     /**
      * is the offset into the 'VkDeviceMemory' object to bind the resource range to. If 'memory' is 'VK_NULL_HANDLE', this value is ignored.
      */
-    memoryOffset: number;
+    memoryOffset: bigint;
 
     /**
      * is a bitmask of 'VkSparseMemoryBindFlagBits' specifying usage of the binding operation.
@@ -42383,12 +42383,12 @@ declare global {
     /**
      * is the offset into the resource.
      */
-    resourceOffset?: number;
+    resourceOffset?: bigint;
 
     /**
      * is the size of the memory region to be bound.
      */
-    size?: number;
+    size?: bigint;
 
     /**
      * is the 'VkDeviceMemory' object that the range of the resource is bound to. If 'memory' is 'VK_NULL_HANDLE', the range is unbound.
@@ -42398,7 +42398,7 @@ declare global {
     /**
      * is the offset into the 'VkDeviceMemory' object to bind the resource range to. If 'memory' is 'VK_NULL_HANDLE', this value is ignored.
      */
-    memoryOffset?: number;
+    memoryOffset?: bigint;
 
     /**
      * is a bitmask of 'VkSparseMemoryBindFlagBits' specifying usage of the binding operation.
@@ -42438,17 +42438,17 @@ declare global {
     /**
      * is the starting offset in bytes from the start of 'srcBuffer'.
      */
-    srcOffset: number;
+    srcOffset: bigint;
 
     /**
      * is the starting offset in bytes from the start of 'dstBuffer'.
      */
-    dstOffset: number;
+    dstOffset: bigint;
 
     /**
      * is the number of bytes to copy.
      */
-    size: number;
+    size: bigint;
 
   }
 
@@ -42457,17 +42457,17 @@ declare global {
     /**
      * is the starting offset in bytes from the start of 'srcBuffer'.
      */
-    srcOffset?: number;
+    srcOffset?: bigint;
 
     /**
      * is the starting offset in bytes from the start of 'dstBuffer'.
      */
-    dstOffset?: number;
+    dstOffset?: bigint;
 
     /**
      * is the number of bytes to copy.
      */
-    size?: number;
+    size?: bigint;
   }
 
   interface VkBufferCopyConstructor {
@@ -42616,27 +42616,27 @@ declare global {
     /**
      * is the byte offset from the start of the image or the plane
      */
-    readonly offset: number;
+    readonly offset: bigint;
 
     /**
      *
      */
-    readonly size: number;
+    readonly size: bigint;
 
     /**
      *
      */
-    readonly rowPitch: number;
+    readonly rowPitch: bigint;
 
     /**
      *
      */
-    readonly arrayPitch: number;
+    readonly arrayPitch: bigint;
 
     /**
      *
      */
-    readonly depthPitch: number;
+    readonly depthPitch: bigint;
 
   }
 
@@ -42645,27 +42645,27 @@ declare global {
     /**
      * is the byte offset from the start of the image or the plane
      */
-    readonly offset?: number;
+    readonly offset?: bigint;
 
     /**
      *
      */
-    readonly size?: number;
+    readonly size?: bigint;
 
     /**
      *
      */
-    readonly rowPitch?: number;
+    readonly rowPitch?: bigint;
 
     /**
      *
      */
-    readonly arrayPitch?: number;
+    readonly arrayPitch?: bigint;
 
     /**
      *
      */
-    readonly depthPitch?: number;
+    readonly depthPitch?: bigint;
   }
 
   interface VkSubresourceLayoutConstructor {
@@ -43053,12 +43053,12 @@ declare global {
     /**
      * is an offset in bytes into the backing memory for 'buffer'; this is relative to the base offset as bound to the buffer (see 'vkBindBufferMemory').
      */
-    offset: number;
+    offset: bigint;
 
     /**
      * is a size in bytes of the affected area of backing memory for 'buffer', or 'VK_WHOLE_SIZE' to use the range from 'offset' to the end of the buffer.
      */
-    size: number;
+    size: bigint;
 
   }
 
@@ -43102,12 +43102,12 @@ declare global {
     /**
      * is an offset in bytes into the backing memory for 'buffer'; this is relative to the base offset as bound to the buffer (see 'vkBindBufferMemory').
      */
-    offset?: number;
+    offset?: bigint;
 
     /**
      * is a size in bytes of the affected area of backing memory for 'buffer', or 'VK_WHOLE_SIZE' to use the range from 'offset' to the end of the buffer.
      */
-    size?: number;
+    size?: bigint;
   }
 
   interface VkBufferMemoryBarrierConstructor {
@@ -43463,12 +43463,12 @@ declare global {
     /**
      * is an offset in bytes from the base address of the buffer. Accesses to the buffer view from shaders use addressing that is relative to this starting offset.
      */
-    offset: number;
+    offset: bigint;
 
     /**
      * is a size in bytes of the buffer view. If 'range' is equal to 'VK_WHOLE_SIZE', the range from 'offset' to the end of the buffer is used. If 'VK_WHOLE_SIZE' is used and the remaining size of the buffer is not a multiple of the <<texel-block-size, texel block size>> of 'format', the nearest smaller multiple is used.
      */
-    range: number;
+    range: bigint;
 
   }
 
@@ -43502,12 +43502,12 @@ declare global {
     /**
      * is an offset in bytes from the base address of the buffer. Accesses to the buffer view from shaders use addressing that is relative to this starting offset.
      */
-    offset?: number;
+    offset?: bigint;
 
     /**
      * is a size in bytes of the buffer view. If 'range' is equal to 'VK_WHOLE_SIZE', the range from 'offset' to the end of the buffer is used. If 'VK_WHOLE_SIZE' is used and the remaining size of the buffer is not a multiple of the <<texel-block-size, texel block size>> of 'format', the nearest smaller multiple is used.
      */
-    range?: number;
+    range?: bigint;
   }
 
   interface VkBufferViewCreateInfoConstructor {
@@ -43557,7 +43557,7 @@ declare global {
     /**
      * is the size in bytes of the buffer to be created.
      */
-    size: number;
+    size: bigint;
 
     /**
      * is a bitmask of 'VkBufferUsageFlagBits' specifying allowed usages of the buffer.
@@ -43601,7 +43601,7 @@ declare global {
     /**
      * is the size in bytes of the buffer to be created.
      */
-    size?: number;
+    size?: bigint;
 
     /**
      * is a bitmask of 'VkBufferUsageFlagBits' specifying allowed usages of the buffer.
@@ -43983,12 +43983,12 @@ declare global {
     /**
      *
      */
-    offset: number;
+    offset: bigint;
 
     /**
      * is the size in bytes that is used for this descriptor update, or 'VK_WHOLE_SIZE' to use the range from 'offset' to the end of the buffer.
      */
-    range: number;
+    range: bigint;
 
   }
 
@@ -44002,12 +44002,12 @@ declare global {
     /**
      *
      */
-    offset?: number;
+    offset?: bigint;
 
     /**
      * is the size in bytes that is used for this descriptor update, or 'VK_WHOLE_SIZE' to use the range from 'offset' to the end of the buffer.
      */
-    range?: number;
+    range?: bigint;
   }
 
   interface VkDescriptorBufferInfoConstructor {
@@ -44062,7 +44062,7 @@ declare global {
     /**
      *
      */
-    readonly maxResourceSize: number;
+    readonly maxResourceSize: bigint;
 
   }
 
@@ -44091,7 +44091,7 @@ declare global {
     /**
      *
      */
-    readonly maxResourceSize?: number;
+    readonly maxResourceSize?: bigint;
   }
 
   interface VkImageFormatPropertiesConstructor {
@@ -44205,12 +44205,12 @@ declare global {
     /**
      * is the zero-based byte offset from the beginning of the memory object.
      */
-    offset: number;
+    offset: bigint;
 
     /**
      *
      */
-    size: number;
+    size: bigint;
 
   }
 
@@ -44234,12 +44234,12 @@ declare global {
     /**
      * is the zero-based byte offset from the beginning of the memory object.
      */
-    offset?: number;
+    offset?: bigint;
 
     /**
      *
      */
-    size?: number;
+    size?: bigint;
   }
 
   interface VkMappedMemoryRangeConstructor {
@@ -44274,7 +44274,7 @@ declare global {
     /**
      * is the total memory size in bytes in the heap.
      */
-    readonly size: number;
+    readonly size: bigint;
 
     /**
      * is a bitmask of 'VkMemoryHeapFlagBits' specifying attribute flags for the heap.
@@ -44288,7 +44288,7 @@ declare global {
     /**
      * is the total memory size in bytes in the heap.
      */
-    readonly size?: number;
+    readonly size?: bigint;
 
     /**
      * is a bitmask of 'VkMemoryHeapFlagBits' specifying attribute flags for the heap.
@@ -44392,17 +44392,17 @@ declare global {
     /**
      * is the memory size (in bytes) of the mip tail region. If 'formatProperties.flags' contains 'VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT', this is the size of the whole mip tail, otherwise this is the size of the mip tail of a single array layer. This value is guaranteed to be a multiple of the sparse block size in bytes.
      */
-    readonly imageMipTailSize: number;
+    readonly imageMipTailSize: bigint;
 
     /**
      * is the opaque memory offset used with 'VkSparseImageOpaqueMemoryBindInfo' to bind the mip tail region(s).
      */
-    readonly imageMipTailOffset: number;
+    readonly imageMipTailOffset: bigint;
 
     /**
      * is the offset stride between each array-layer's mip tail, if 'formatProperties.flags' does not contain 'VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT' (otherwise the value is 'undefined').
      */
-    readonly imageMipTailStride: number;
+    readonly imageMipTailStride: bigint;
 
   }
 
@@ -44421,17 +44421,17 @@ declare global {
     /**
      * is the memory size (in bytes) of the mip tail region. If 'formatProperties.flags' contains 'VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT', this is the size of the whole mip tail, otherwise this is the size of the mip tail of a single array layer. This value is guaranteed to be a multiple of the sparse block size in bytes.
      */
-    readonly imageMipTailSize?: number;
+    readonly imageMipTailSize?: bigint;
 
     /**
      * is the opaque memory offset used with 'VkSparseImageOpaqueMemoryBindInfo' to bind the mip tail region(s).
      */
-    readonly imageMipTailOffset?: number;
+    readonly imageMipTailOffset?: bigint;
 
     /**
      * is the offset stride between each array-layer's mip tail, if 'formatProperties.flags' does not contain 'VK_SPARSE_IMAGE_FORMAT_SINGLE_MIPTAIL_BIT' (otherwise the value is 'undefined').
      */
-    readonly imageMipTailStride?: number;
+    readonly imageMipTailStride?: bigint;
   }
 
   interface VkSparseImageMemoryRequirementsConstructor {
@@ -44530,12 +44530,12 @@ declare global {
     /**
      * is the size, in bytes, of the memory allocation 'required' for the resource.
      */
-    readonly size: number;
+    readonly size: bigint;
 
     /**
      * is the alignment, in bytes, of the offset within the allocation 'required' for the resource.
      */
-    readonly alignment: number;
+    readonly alignment: bigint;
 
     /**
      * is a bitmask and contains one bit set for every supported memory type for the resource. Bit `i` is set if and only if the memory type `i` in the 'VkPhysicalDeviceMemoryProperties' structure for the physical device is supported for the resource.
@@ -44549,12 +44549,12 @@ declare global {
     /**
      * is the size, in bytes, of the memory allocation 'required' for the resource.
      */
-    readonly size?: number;
+    readonly size?: bigint;
 
     /**
      * is the alignment, in bytes, of the offset within the allocation 'required' for the resource.
      */
-    readonly alignment?: number;
+    readonly alignment?: bigint;
 
     /**
      * is a bitmask and contains one bit set for every supported memory type for the resource. Bit `i` is set if and only if the memory type `i` in the 'VkPhysicalDeviceMemoryProperties' structure for the physical device is supported for the resource.
@@ -44604,7 +44604,7 @@ declare global {
     /**
      * is the size of the allocation in bytes
      */
-    allocationSize: number;
+    allocationSize: bigint;
 
     /**
      * is an index identifying a memory type from the 'memoryTypes' array of the 'VkPhysicalDeviceMemoryProperties' structure
@@ -44628,7 +44628,7 @@ declare global {
     /**
      * is the size of the allocation in bytes
      */
-    allocationSize?: number;
+    allocationSize?: bigint;
 
     /**
      * is an index identifying a memory type from the 'memoryTypes' array of the 'VkPhysicalDeviceMemoryProperties' structure
@@ -46407,7 +46407,7 @@ declare global {
    * @param flags is reserved for future use.
    * @param ppData is a reference in which is returned a host-accessible reference to the beginning of the mapped range. This reference minus 'offset' 'must' be aligned to at least 'VkPhysicalDeviceLimits'::'minMemoryMapAlignment'.
    */
-  function vkMapMemory(device: VkDevice | null, memory: VkDeviceMemory | null, offset: number, size: number, flags: number, ppData: VkInout | null): VkResult;
+  function vkMapMemory(device: VkDevice | null, memory: VkDeviceMemory | null, offset: bigint, size: bigint, flags: number, ppData: VkInout | null): VkResult;
   
   /**
    * Unmap a previously mapped memory object
@@ -46455,7 +46455,7 @@ declare global {
    * @param memory which is to be bound to the buffer. The number of bytes returned in the 'VkMemoryRequirements'::'size' member in 'memory', starting from 'memoryOffset' bytes, will be bound to the specified buffer.
    * @param memoryOffset
    */
-  function vkBindBufferMemory(device: VkDevice | null, buffer: VkBuffer | null, memory: VkDeviceMemory | null, memoryOffset: number): VkResult;
+  function vkBindBufferMemory(device: VkDevice | null, buffer: VkBuffer | null, memory: VkDeviceMemory | null, memoryOffset: bigint): VkResult;
   
   /**
    * Returns the memory requirements for specified Vulkan object
@@ -46472,7 +46472,7 @@ declare global {
    * @param memory which is to be bound to the image. The number of bytes returned in the 'VkMemoryRequirements'::'size' member in 'memory', starting from 'memoryOffset' bytes, will be bound to the specified image.
    * @param memoryOffset
    */
-  function vkBindImageMemory(device: VkDevice | null, image: VkImage | null, memory: VkDeviceMemory | null, memoryOffset: number): VkResult;
+  function vkBindImageMemory(device: VkDevice | null, image: VkImage | null, memory: VkDeviceMemory | null, memoryOffset: bigint): VkResult;
   
   /**
    * Query the memory requirements for a sparse image
@@ -46545,7 +46545,7 @@ declare global {
    * @param waitAll is the condition that 'must' be satisfied to successfully unblock the wait. If 'waitAll' is 'VK_TRUE', then the condition is that all fences in 'pFences' are signaled. Otherwise, the condition is that at least one fence in 'pFences' is signaled.
    * @param timeout is the timeout period in units of nanoseconds. 'timeout' is adjusted to the closest value allowed by the implementation-dependent timeout accuracy, which 'may' be substantially longer than one nanosecond, and 'may' be longer than the requested period.
    */
-  function vkWaitForFences(device: VkDevice | null, fenceCount: number, pFences: VkFence[] | null, waitAll: boolean, timeout: number): VkResult;
+  function vkWaitForFences(device: VkDevice | null, fenceCount: number, pFences: VkFence[] | null, waitAll: boolean, timeout: bigint): VkResult;
   
   /**
    * Create a new queue semaphore object
@@ -46630,7 +46630,7 @@ declare global {
    * @param stride is the stride in bytes between results for individual queries within 'pData'.
    * @param flags is a bitmask of 'VkQueryResultFlagBits' specifying how and when results are returned.
    */
-  function vkGetQueryPoolResults(device: VkDevice | null, queryPool: VkQueryPool | null, firstQuery: number, queryCount: number, dataSize: number, pData: ArrayBuffer | null, stride: number, flags: VkQueryResultFlagBits): VkResult;
+  function vkGetQueryPoolResults(device: VkDevice | null, queryPool: VkQueryPool | null, firstQuery: number, queryCount: number, dataSize: bigint, pData: ArrayBuffer | null, stride: bigint, flags: VkQueryResultFlagBits): VkResult;
   
   /**
    * Create a new buffer object
@@ -47099,7 +47099,7 @@ declare global {
    * @param offset
    * @param indexType is a 'VkIndexType' value specifying whether indices are treated as 16 bits or 32 bits.
    */
-  function vkCmdBindIndexBuffer(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: number, indexType: VkIndexType): void;
+  function vkCmdBindIndexBuffer(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: bigint, indexType: VkIndexType): void;
   
   /**
    * Bind vertex buffers to a command buffer
@@ -47140,7 +47140,7 @@ declare global {
    * @param drawCount is the number of draws to execute, and 'can' be zero.
    * @param stride is the byte stride between successive sets of draw parameters.
    */
-  function vkCmdDrawIndirect(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: number, drawCount: number, stride: number): void;
+  function vkCmdDrawIndirect(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: bigint, drawCount: number, stride: number): void;
   
   /**
    * Perform an indexed indirect draw
@@ -47150,7 +47150,7 @@ declare global {
    * @param drawCount is the number of draws to execute, and 'can' be zero.
    * @param stride is the byte stride between successive sets of draw parameters.
    */
-  function vkCmdDrawIndexedIndirect(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: number, drawCount: number, stride: number): void;
+  function vkCmdDrawIndexedIndirect(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: bigint, drawCount: number, stride: number): void;
   
   /**
    * Dispatch compute work items
@@ -47167,7 +47167,7 @@ declare global {
    * @param buffer where parameters begin.
    * @param offset
    */
-  function vkCmdDispatchIndirect(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: number): void;
+  function vkCmdDispatchIndirect(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: bigint): void;
   
   /**
    * Copy data between buffer regions
@@ -47234,7 +47234,7 @@ declare global {
    * @param dataSize is the number of bytes to update, and 'must' be a multiple of 4.
    * @param pData is a reference to the source data for the buffer update, and 'must' be at least 'dataSize' bytes in size.
    */
-  function vkCmdUpdateBuffer(commandBuffer: VkCommandBuffer | null, dstBuffer: VkBuffer | null, dstOffset: number, dataSize: number, pData: ArrayBuffer | null): void;
+  function vkCmdUpdateBuffer(commandBuffer: VkCommandBuffer | null, dstBuffer: VkBuffer | null, dstOffset: bigint, dataSize: bigint, pData: ArrayBuffer | null): void;
   
   /**
    * Fill a region of a buffer with a fixed value
@@ -47244,7 +47244,7 @@ declare global {
    * @param size is the number of bytes to fill, and 'must' be either a multiple of 4, or 'VK_WHOLE_SIZE' to fill the range from 'offset' to the end of the buffer. If 'VK_WHOLE_SIZE' is used and the remaining size of the buffer is not a multiple of 4, then the nearest smaller multiple is used.
    * @param data is the 4-byte word written repeatedly to the buffer to fill 'size' bytes of data. The data word is written to memory according to the host endianness.
    */
-  function vkCmdFillBuffer(commandBuffer: VkCommandBuffer | null, dstBuffer: VkBuffer | null, dstOffset: number, size: number, data: number): void;
+  function vkCmdFillBuffer(commandBuffer: VkCommandBuffer | null, dstBuffer: VkBuffer | null, dstOffset: bigint, size: bigint, data: number): void;
   
   /**
    * Clear regions of a color image
@@ -47396,7 +47396,7 @@ declare global {
    * @param stride is the stride in bytes between results for individual queries within 'dstBuffer'. The required size of the backing memory for 'dstBuffer' is determined as described above for 'vkGetQueryPoolResults'.
    * @param flags is a bitmask of 'VkQueryResultFlagBits' specifying how and when results are returned.
    */
-  function vkCmdCopyQueryPoolResults(commandBuffer: VkCommandBuffer | null, queryPool: VkQueryPool | null, firstQuery: number, queryCount: number, dstBuffer: VkBuffer | null, dstOffset: number, stride: number, flags: VkQueryResultFlagBits): void;
+  function vkCmdCopyQueryPoolResults(commandBuffer: VkCommandBuffer | null, queryPool: VkQueryPool | null, firstQuery: number, queryCount: number, dstBuffer: VkBuffer | null, dstOffset: bigint, stride: bigint, flags: VkQueryResultFlagBits): void;
   
   /**
    * Update the values of push constants
@@ -47588,7 +47588,7 @@ declare global {
    * @param fence is 'VK_NULL_HANDLE' or a fence to signal.
    * @param pImageIndex is a reference to a 'uint32_t' that is set to the index of the next image to use (i.e. an index into the array of images returned by 'vkGetSwapchainImagesKHR').
    */
-  function vkAcquireNextImageKHR(device: VkDevice | null, swapchain: VkSwapchainKHR | null, timeout: number, semaphore: VkSemaphore | null, fence: VkFence | null, pImageIndex: VkInout | null): VkResult;
+  function vkAcquireNextImageKHR(device: VkDevice | null, swapchain: VkSwapchainKHR | null, timeout: bigint, semaphore: VkSemaphore | null, fence: VkFence | null, pImageIndex: VkInout | null): VkResult;
   
   /**
    * Queue an image for presentation
@@ -47641,7 +47641,7 @@ declare global {
    * @param pLayerPrefix is the abbreviation of the component making this event/message.
    * @param pMessage is a string detailing the trigger conditions.
    */
-  function vkDebugReportMessageEXT(instance: VkInstance | null, flags: VkDebugReportFlagBitsEXT, objectType: VkDebugReportObjectTypeEXT, object: number, location: number, messageCode: number, pLayerPrefix: string | null, pMessage: string | null): void;
+  function vkDebugReportMessageEXT(instance: VkInstance | null, flags: VkDebugReportFlagBitsEXT, objectType: VkDebugReportObjectTypeEXT, object: bigint, location: bigint, messageCode: number, pLayerPrefix: string | null, pMessage: string | null): void;
   
   /**
    * Give a user-friendly name to an object
@@ -47709,7 +47709,7 @@ declare global {
    * @param maxDrawCount specifies the maximum number of draws that will be executed. The actual number of executed draw calls is the minimum of the count specified in 'countBuffer' and 'maxDrawCount'.
    * @param stride is the byte stride between successive sets of draw parameters.
    */
-  function vkCmdDrawIndirectCountAMD(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: number, countBuffer: VkBuffer | null, countBufferOffset: number, maxDrawCount: number, stride: number): void;
+  function vkCmdDrawIndirectCountAMD(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: bigint, countBuffer: VkBuffer | null, countBufferOffset: bigint, maxDrawCount: number, stride: number): void;
   
   /**
    * Perform an indexed indirect draw with the draw count sourced from a buffer
@@ -47721,7 +47721,7 @@ declare global {
    * @param maxDrawCount specifies the maximum number of draws that will be executed. The actual number of executed draw calls is the minimum of the count specified in 'countBuffer' and 'maxDrawCount'.
    * @param stride is the byte stride between successive sets of draw parameters.
    */
-  function vkCmdDrawIndexedIndirectCountAMD(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: number, countBuffer: VkBuffer | null, countBufferOffset: number, maxDrawCount: number, stride: number): void;
+  function vkCmdDrawIndexedIndirectCountAMD(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: bigint, countBuffer: VkBuffer | null, countBufferOffset: bigint, maxDrawCount: number, stride: number): void;
   
   /**
    * Performs the generation of commands on the device
@@ -48497,7 +48497,7 @@ declare global {
    * @param dstOffset is the byte offset into the buffer where the marker will be written to.
    * @param marker is the 32-bit value of the marker.
    */
-  function vkCmdWriteBufferMarkerAMD(commandBuffer: VkCommandBuffer | null, pipelineStage: VkPipelineStageFlagBits, dstBuffer: VkBuffer | null, dstOffset: number, marker: number): void;
+  function vkCmdWriteBufferMarkerAMD(commandBuffer: VkCommandBuffer | null, pipelineStage: VkPipelineStageFlagBits, dstBuffer: VkBuffer | null, dstOffset: bigint, marker: number): void;
   
   /**
    * Create a new render pass object
@@ -48541,7 +48541,7 @@ declare global {
    * @param maxDrawCount specifies the maximum number of draws that will be executed. The actual number of executed draw calls is the minimum of the count specified in 'countBuffer' and 'maxDrawCount'.
    * @param stride is the byte stride between successive sets of draw parameters.
    */
-  function vkCmdDrawIndirectCountKHR(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: number, countBuffer: VkBuffer | null, countBufferOffset: number, maxDrawCount: number, stride: number): void;
+  function vkCmdDrawIndirectCountKHR(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: bigint, countBuffer: VkBuffer | null, countBufferOffset: bigint, maxDrawCount: number, stride: number): void;
   
   /**
    * Perform an indexed indirect draw with the draw count sourced from a buffer
@@ -48553,7 +48553,7 @@ declare global {
    * @param maxDrawCount specifies the maximum number of draws that will be executed. The actual number of executed draw calls is the minimum of the count specified in 'countBuffer' and 'maxDrawCount'.
    * @param stride is the byte stride between successive sets of draw parameters.
    */
-  function vkCmdDrawIndexedIndirectCountKHR(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: number, countBuffer: VkBuffer | null, countBufferOffset: number, maxDrawCount: number, stride: number): void;
+  function vkCmdDrawIndexedIndirectCountKHR(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: bigint, countBuffer: VkBuffer | null, countBufferOffset: bigint, maxDrawCount: number, stride: number): void;
   
   /**
    * insert diagnostic checkpoint in command stream
@@ -48630,7 +48630,7 @@ declare global {
    * @param counterOffset is subtracted from the byte count read from the 'counterBuffer' at the 'counterBufferOffset'
    * @param vertexStride is the stride in bytes between each element of the vertex data that is used to calculate the vertex count from the counter value. This value is typically the same value that was used in the graphics pipeline state when the transform feedback was captured as the 'XfbStride'.
    */
-  function vkCmdDrawIndirectByteCountEXT(commandBuffer: VkCommandBuffer | null, instanceCount: number, firstInstance: number, counterBuffer: VkBuffer | null, counterBufferOffset: number, counterOffset: number, vertexStride: number): void;
+  function vkCmdDrawIndirectByteCountEXT(commandBuffer: VkCommandBuffer | null, instanceCount: number, firstInstance: number, counterBuffer: VkBuffer | null, counterBufferOffset: bigint, counterOffset: number, vertexStride: number): void;
   
   /**
    * Set the dynamic exclusive scissor rectangles on a command buffer
@@ -48683,7 +48683,7 @@ declare global {
    * @param drawCount is the number of draws to execute, and 'can' be zero.
    * @param stride is the byte stride between successive sets of draw parameters.
    */
-  function vkCmdDrawMeshTasksIndirectNV(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: number, drawCount: number, stride: number): void;
+  function vkCmdDrawMeshTasksIndirectNV(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: bigint, drawCount: number, stride: number): void;
   
   /**
    * Perform an indirect mesh tasks draw with the draw count sourced from a buffer
@@ -48695,7 +48695,7 @@ declare global {
    * @param maxDrawCount specifies the maximum number of draws that will be executed. The actual number of executed draw calls is the minimum of the count specified in 'countBuffer' and 'maxDrawCount'.
    * @param stride is the byte stride between successive sets of draw parameters.
    */
-  function vkCmdDrawMeshTasksIndirectCountNV(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: number, countBuffer: VkBuffer | null, countBufferOffset: number, maxDrawCount: number, stride: number): void;
+  function vkCmdDrawMeshTasksIndirectCountNV(commandBuffer: VkCommandBuffer | null, buffer: VkBuffer | null, offset: bigint, countBuffer: VkBuffer | null, countBufferOffset: bigint, maxDrawCount: number, stride: number): void;
   
   /**
    * Deferred compilation of shaders
@@ -48770,7 +48770,7 @@ declare global {
    * @param scratch is the 'VkBuffer' that will be used as scratch memory for the build.
    * @param scratchOffset is the offset in bytes relative to the start of 'scratch' that will be used as a scratch memory.
    */
-  function vkCmdBuildAccelerationStructureNV(commandBuffer: VkCommandBuffer | null, pInfo: VkAccelerationStructureInfoNV | null, instanceData: VkBuffer | null, instanceOffset: number, update: boolean, dst: VkAccelerationStructureNV | null, src: VkAccelerationStructureNV | null, scratch: VkBuffer | null, scratchOffset: number): void;
+  function vkCmdBuildAccelerationStructureNV(commandBuffer: VkCommandBuffer | null, pInfo: VkAccelerationStructureInfoNV | null, instanceData: VkBuffer | null, instanceOffset: bigint, update: boolean, dst: VkAccelerationStructureNV | null, src: VkAccelerationStructureNV | null, scratch: VkBuffer | null, scratchOffset: bigint): void;
   
   /**
    * Initialize a ray tracing dispatch
@@ -48790,7 +48790,7 @@ declare global {
    * @param height is height of the ray trace query dimensions.
    * @param depth is depth of the ray trace query dimensions.
    */
-  function vkCmdTraceRaysNV(commandBuffer: VkCommandBuffer | null, raygenShaderBindingTableBuffer: VkBuffer | null, raygenShaderBindingOffset: number, missShaderBindingTableBuffer: VkBuffer | null, missShaderBindingOffset: number, missShaderBindingStride: number, hitShaderBindingTableBuffer: VkBuffer | null, hitShaderBindingOffset: number, hitShaderBindingStride: number, callableShaderBindingTableBuffer: VkBuffer | null, callableShaderBindingOffset: number, callableShaderBindingStride: number, width: number, height: number, depth: number): void;
+  function vkCmdTraceRaysNV(commandBuffer: VkCommandBuffer | null, raygenShaderBindingTableBuffer: VkBuffer | null, raygenShaderBindingOffset: bigint, missShaderBindingTableBuffer: VkBuffer | null, missShaderBindingOffset: bigint, missShaderBindingStride: bigint, hitShaderBindingTableBuffer: VkBuffer | null, hitShaderBindingOffset: bigint, hitShaderBindingStride: bigint, callableShaderBindingTableBuffer: VkBuffer | null, callableShaderBindingOffset: bigint, callableShaderBindingStride: bigint, width: number, height: number, depth: number): void;
   
   /**
    * Query ray tracing pipeline shader group handles
@@ -48801,7 +48801,7 @@ declare global {
    * @param dataSize is the size in bytes of the buffer pointed to by 'pData'.
    * @param pData is a reference to a user-allocated buffer where the results will be written.
    */
-  function vkGetRayTracingShaderGroupHandlesNV(device: VkDevice | null, pipeline: VkPipeline | null, firstGroup: number, groupCount: number, dataSize: number, pData: ArrayBuffer | null): VkResult;
+  function vkGetRayTracingShaderGroupHandlesNV(device: VkDevice | null, pipeline: VkPipeline | null, firstGroup: number, groupCount: number, dataSize: bigint, pData: ArrayBuffer | null): VkResult;
   
   /**
    * Get opaque acceleration structure handle
@@ -48810,7 +48810,7 @@ declare global {
    * @param dataSize is the size in bytes of the buffer pointed to by 'pData'.
    * @param pData is a reference to a user-allocated buffer where the results will be written.
    */
-  function vkGetAccelerationStructureHandleNV(device: VkDevice | null, accelerationStructure: VkAccelerationStructureNV | null, dataSize: number, pData: ArrayBuffer | null): VkResult;
+  function vkGetAccelerationStructureHandleNV(device: VkDevice | null, accelerationStructure: VkAccelerationStructureNV | null, dataSize: bigint, pData: ArrayBuffer | null): VkResult;
   
   /**
    * Creates a new ray tracing pipeline object

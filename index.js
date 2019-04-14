@@ -21,9 +21,6 @@ function getVkVersionFromArg(arg) {
   }
 };
 
-// we attach all vulkan enums, structs etc. to this object
-let out = {};
-
 // gather vk version
 let vkVersion = process.env.npm_config_vkversion;
 // attempt npm version
@@ -38,6 +35,19 @@ if (!vkVersion) {
 }
 
 if (!vkVersion) throw `No vulkan version --vkversion specified!`;
+
+// gather type-validation disable flag
+let disableTypeValidations = process.env.npm_config_disable_type_validations;
+// attempt npm version
+disableTypeValidations = disableTypeValidations || null;
+// attempt node argv
+if (!disableTypeValidations) {
+  process.argv.map(arg => {
+    if (arg.match("disable-type-validations")) {
+      disableTypeValidations = true;
+    }
+  });
+}
 
 let {platform} = process;
 
@@ -60,7 +70,7 @@ if (!fs.existsSync(addonPath)) {
   process.stderr.write(`You may instead use one of the following bindings:\n`);
   fs.readdirSync(bindingsPath).forEach(dirname => {
     let addon = null;
-    let addonNodePath = bindingsPath + dirname + `/${platform}/build/Release/addon-${platform}.node`;
+    let addonNodePath = bindingsPath + dirname + `/${platform}/interfaces.js`;
     try {
       addon = require(addonNodePath);
     } catch (e) {
@@ -76,10 +86,6 @@ if (platform === "darwin") {
   process.env.VK_ICD_FILENAMES = path.join(__dirname, `${releasePath}/${pkg.config.MAC_ICD_PATH}`);
 }
 
-const addon = require(addonPath);
-const enums = addon.getVulkanEnumerations();
-
-Object.assign(out, addon);
-Object.assign(out, enums);
+const out = require(bindingsPath + `${vkVersion}/${platform}/interfaces.js`);
 
 module.exports = out;

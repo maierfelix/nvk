@@ -18320,6 +18320,7 @@
   {
     "kind": "STRUCT",
     "name": "VkBaseOutStructure",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -18364,6 +18365,7 @@
   {
     "kind": "STRUCT",
     "name": "VkBaseInStructure",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -18408,6 +18410,7 @@
   {
     "kind": "STRUCT",
     "name": "VkOffset2D",
+    "needsReflection": true,
     "returnedonly": false,
     "children": [
       {
@@ -18450,6 +18453,7 @@
   {
     "kind": "STRUCT",
     "name": "VkOffset3D",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -18507,6 +18511,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExtent2D",
+    "needsReflection": true,
     "returnedonly": false,
     "children": [
       {
@@ -18549,6 +18554,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExtent3D",
+    "needsReflection": true,
     "returnedonly": false,
     "children": [
       {
@@ -18606,6 +18612,7 @@
   {
     "kind": "STRUCT",
     "name": "VkViewport",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -18705,6 +18712,7 @@
   {
     "kind": "STRUCT",
     "name": "VkRect2D",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -18717,6 +18725,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -18737,6 +18746,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -18757,6 +18767,7 @@
   {
     "kind": "STRUCT",
     "name": "VkClearRect",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -18769,6 +18780,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " is the two-dimensional region to be cleared."
@@ -18814,6 +18826,7 @@
   {
     "kind": "STRUCT",
     "name": "VkComponentMapping",
+    "needsReflection": true,
     "returnedonly": false,
     "children": [
       {
@@ -18914,6 +18927,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceProperties",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -19028,7 +19042,8 @@
         "isStaticArray": true,
         "isNumericArray": true,
         "jsType": "Array",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkPhysicalDeviceLimits limits",
@@ -19040,6 +19055,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -19060,6 +19076,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -19080,6 +19097,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExtensionProperties",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -19125,6 +19143,7 @@
   {
     "kind": "STRUCT",
     "name": "VkLayerProperties",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -19217,6 +19236,7 @@
   {
     "kind": "STRUCT",
     "name": "VkApplicationInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -19344,6 +19364,7 @@
   {
     "kind": "STRUCT",
     "name": "VkAllocationCallbacks",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -19484,6 +19505,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDeviceQueueCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -19590,6 +19612,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDeviceCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -19710,7 +19733,7 @@
         "isConstant": true,
         "dereferenceCount": 2,
         "isArray": true,
-        "length": "enabledLayerCount,null-terminated",
+        "length": "enabledLayerCount",
         "isDynamicArray": true,
         "jsType": "Array",
         "kind": "STRUCT_MEMBER",
@@ -19742,7 +19765,7 @@
         "isConstant": true,
         "dereferenceCount": 2,
         "isArray": true,
-        "length": "enabledExtensionCount,null-terminated",
+        "length": "enabledExtensionCount",
         "isDynamicArray": true,
         "jsType": "Array",
         "kind": "STRUCT_MEMBER",
@@ -19824,6 +19847,7 @@
   {
     "kind": "STRUCT",
     "name": "VkInstanceCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -19925,7 +19949,7 @@
         "isConstant": true,
         "dereferenceCount": 2,
         "isArray": true,
-        "length": "enabledLayerCount,null-terminated",
+        "length": "enabledLayerCount",
         "isDynamicArray": true,
         "jsType": "Array",
         "kind": "STRUCT_MEMBER",
@@ -19962,7 +19986,7 @@
         "isConstant": true,
         "dereferenceCount": 2,
         "isArray": true,
-        "length": "enabledExtensionCount,null-terminated",
+        "length": "enabledExtensionCount",
         "isDynamicArray": true,
         "jsType": "Array",
         "kind": "STRUCT_MEMBER",
@@ -19993,6 +20017,7 @@
   {
     "kind": "STRUCT",
     "name": "VkQueueFamilyProperties",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -20068,6 +20093,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " is the minimum granularity supported for image transfer operations on the queues in this queue family."
@@ -20083,6 +20109,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceMemoryProperties",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -20118,6 +20145,7 @@
         "isStaticArray": true,
         "jsType": "Array",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -20170,6 +20198,7 @@
         "isStaticArray": true,
         "jsType": "Array",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -20195,6 +20224,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryAllocateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -20297,6 +20327,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryRequirements",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -20371,6 +20402,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSparseImageFormatProperties",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -20406,6 +20438,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " is the width, height, and depth of the sparse image block in texels or compressed texel blocks."
@@ -20444,6 +20477,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSparseImageMemoryRequirements",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -20455,7 +20489,8 @@
         "dereferenceCount": 0,
         "isStructType": true,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t imageMipTailFirstLod",
@@ -20557,6 +20592,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryType",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -20620,6 +20656,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryHeap",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -20671,6 +20708,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMappedMemoryRange",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -20762,6 +20800,7 @@
   {
     "kind": "STRUCT",
     "name": "VkFormatProperties",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -20859,6 +20898,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageFormatProperties",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -20871,6 +20911,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -20968,6 +21009,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDescriptorBufferInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -21033,6 +21075,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDescriptorImageInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -21145,6 +21188,7 @@
   {
     "kind": "STRUCT",
     "name": "VkWriteDescriptorSet",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -21326,6 +21370,7 @@
   {
     "kind": "STRUCT",
     "name": "VkCopyDescriptorSet",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -21473,6 +21518,7 @@
   {
     "kind": "STRUCT",
     "name": "VkBufferCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -21658,6 +21704,7 @@
   {
     "kind": "STRUCT",
     "name": "VkBufferViewCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -21819,6 +21866,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageSubresource",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -21884,6 +21932,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageSubresourceLayers",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -21960,6 +22009,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageSubresourceRange",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -22065,6 +22115,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryBarrier",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -22158,6 +22209,7 @@
   {
     "kind": "STRUCT",
     "name": "VkBufferMemoryBarrier",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -22351,6 +22403,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageMemoryBarrier",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -22523,6 +22576,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -22547,6 +22601,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -22660,6 +22715,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -22887,6 +22943,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSubresourceLayout",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -22963,6 +23020,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageViewCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -23097,6 +23155,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -23117,6 +23176,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -23143,6 +23203,7 @@
   {
     "kind": "STRUCT",
     "name": "VkBufferCopy",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -23213,6 +23274,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSparseMemoryBind",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -23338,6 +23400,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSparseImageMemoryBind",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -23349,7 +23412,8 @@
         "dereferenceCount": 0,
         "isStructType": true,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkOffset3D offset",
@@ -23360,7 +23424,8 @@
         "dereferenceCount": 0,
         "isStructType": true,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkExtent3D extent",
@@ -23371,7 +23436,8 @@
         "dereferenceCount": 0,
         "isStructType": true,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkDeviceMemory memory",
@@ -23459,6 +23525,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSparseBufferMemoryBindInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -23539,6 +23606,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSparseImageOpaqueMemoryBindInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -23619,6 +23687,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSparseImageMemoryBindInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -23699,6 +23768,7 @@
   {
     "kind": "STRUCT",
     "name": "VkBindSparseInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -23931,6 +24001,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageCopy",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -23942,7 +24013,8 @@
         "dereferenceCount": 0,
         "isStructType": true,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkOffset3D srcOffset",
@@ -23953,7 +24025,8 @@
         "dereferenceCount": 0,
         "isStructType": true,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkImageSubresourceLayers dstSubresource",
@@ -23965,6 +24038,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -23984,7 +24058,8 @@
         "dereferenceCount": 0,
         "isStructType": true,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkExtent3D extent",
@@ -23995,7 +24070,8 @@
         "dereferenceCount": 0,
         "isStructType": true,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ],
     "documentation": {
@@ -24007,6 +24083,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageBlit",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -24019,6 +24096,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " is the subresource to blit from."
@@ -24037,6 +24115,7 @@
         "isStaticArray": true,
         "jsType": "Array",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -24061,6 +24140,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " is the subresource to blit into."
@@ -24079,6 +24159,7 @@
         "isStaticArray": true,
         "jsType": "Array",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -24103,6 +24184,7 @@
   {
     "kind": "STRUCT",
     "name": "VkBufferImageCopy",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -24162,6 +24244,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -24181,7 +24264,8 @@
         "dereferenceCount": 0,
         "isStructType": true,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkExtent3D imageExtent",
@@ -24193,6 +24277,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -24221,6 +24306,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageResolve",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -24232,7 +24318,8 @@
         "dereferenceCount": 0,
         "isStructType": true,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkOffset3D srcOffset",
@@ -24243,7 +24330,8 @@
         "dereferenceCount": 0,
         "isStructType": true,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkImageSubresourceLayers dstSubresource",
@@ -24255,6 +24343,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -24274,7 +24363,8 @@
         "dereferenceCount": 0,
         "isStructType": true,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkExtent3D extent",
@@ -24286,6 +24376,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -24314,6 +24405,7 @@
   {
     "kind": "STRUCT",
     "name": "VkShaderModuleCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -24427,6 +24519,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDescriptorSetLayoutBinding",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -24533,6 +24626,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDescriptorSetLayoutCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -24631,6 +24725,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDescriptorPoolSize",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -24688,6 +24783,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDescriptorPoolCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -24815,6 +24911,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDescriptorSetAllocateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -24915,6 +25012,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSpecializationMapEntry",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -24972,6 +25070,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSpecializationInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -25055,6 +25154,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineShaderStageCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -25203,6 +25303,7 @@
   {
     "kind": "STRUCT",
     "name": "VkComputePipelineCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -25272,6 +25373,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -25336,6 +25438,7 @@
   {
     "kind": "STRUCT",
     "name": "VkVertexInputBindingDescription",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -25400,6 +25503,7 @@
   {
     "kind": "STRUCT",
     "name": "VkVertexInputAttributeDescription",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -25474,6 +25578,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineVertexInputStateCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -25628,6 +25733,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineInputAssemblyStateCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -25761,6 +25867,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineTessellationStateCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -25844,6 +25951,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineViewportStateCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -25997,6 +26105,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineRasterizationStateCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -26204,6 +26313,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineMultisampleStateCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -26398,6 +26508,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineColorBlendAttachmentState",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -26552,6 +26663,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineColorBlendStateCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -26699,6 +26811,7 @@
         "isNumericArray": true,
         "jsType": "Array",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " is an array of four values used as the R, G, B, and A components of the blend constant that are used in blending, depending on the <<framebuffer-blendfactors,blend factor>>."
@@ -26718,6 +26831,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineDynamicStateCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -26830,6 +26944,7 @@
   {
     "kind": "STRUCT",
     "name": "VkStencilOpState",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -26975,6 +27090,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineDepthStencilStateCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -27140,7 +27256,8 @@
         "dereferenceCount": 0,
         "isStructType": true,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkStencilOpState back",
@@ -27152,6 +27269,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " control the parameters of the <<fragops-stencil,stencil test>>."
@@ -27194,6 +27312,7 @@
   {
     "kind": "STRUCT",
     "name": "VkGraphicsPipelineCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -27472,6 +27591,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineCacheCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -27579,6 +27699,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPushConstantRange",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -27653,6 +27774,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineLayoutCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -27799,6 +27921,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSamplerCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -28199,6 +28322,7 @@
   {
     "kind": "STRUCT",
     "name": "VkCommandPoolCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -28289,6 +28413,7 @@
   {
     "kind": "STRUCT",
     "name": "VkCommandBufferAllocateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -28389,6 +28514,7 @@
   {
     "kind": "STRUCT",
     "name": "VkCommandBufferInheritanceInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -28657,6 +28783,7 @@
   {
     "kind": "STRUCT",
     "name": "VkCommandBufferBeginInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -28754,6 +28881,7 @@
   {
     "kind": "STRUCT",
     "name": "VkRenderPassBeginInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -28832,6 +28960,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " is the render area that is affected by the render pass instance, and is described in more detail below."
@@ -28906,6 +29035,7 @@
   {
     "kind": "STRUCT",
     "name": "VkClearDepthStencilValue",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -28948,6 +29078,7 @@
   {
     "kind": "STRUCT",
     "name": "VkClearAttachment",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -29010,6 +29141,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " is the color or depth/stencil value to clear the attachment to, as described in <<clears-values,Clear Values>> below."
@@ -29025,6 +29157,7 @@
   {
     "kind": "STRUCT",
     "name": "VkAttachmentDescription",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -29227,6 +29360,7 @@
   {
     "kind": "STRUCT",
     "name": "VkAttachmentReference",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -29289,6 +29423,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSubpassDescription",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -29505,6 +29640,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSubpassDependency",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -29672,6 +29808,7 @@
   {
     "kind": "STRUCT",
     "name": "VkRenderPassCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -29844,6 +29981,7 @@
   {
     "kind": "STRUCT",
     "name": "VkEventCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -29909,6 +30047,7 @@
   {
     "kind": "STRUCT",
     "name": "VkFenceCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -29983,6 +30122,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceFeatures",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -30739,6 +30879,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceSparseProperties",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -30829,6 +30970,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceLimits",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -31476,7 +31618,8 @@
         "isStaticArray": true,
         "isNumericArray": true,
         "jsType": "Array",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t maxComputeWorkGroupInvocations",
@@ -31501,7 +31644,8 @@
         "isStaticArray": true,
         "isNumericArray": true,
         "jsType": "Array",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t subPixelPrecisionBits",
@@ -31603,7 +31747,8 @@
         "isStaticArray": true,
         "isNumericArray": true,
         "jsType": "Array",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "float viewportBoundsRange [2]",
@@ -31617,7 +31762,8 @@
         "isStaticArray": true,
         "isNumericArray": true,
         "jsType": "Array",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t viewportSubPixelBits",
@@ -32015,7 +32161,8 @@
         "isStaticArray": true,
         "isNumericArray": true,
         "jsType": "Array",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "float lineWidthRange [2]",
@@ -32029,7 +32176,8 @@
         "isStaticArray": true,
         "isNumericArray": true,
         "jsType": "Array",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "float pointSizeGranularity",
@@ -32125,6 +32273,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSemaphoreCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -32194,6 +32343,7 @@
   {
     "kind": "STRUCT",
     "name": "VkQueryPoolCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -32319,6 +32469,7 @@
   {
     "kind": "STRUCT",
     "name": "VkFramebufferCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -32485,6 +32636,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDrawIndirectCommand",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -32557,6 +32709,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDrawIndexedIndirectCommand",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -32644,6 +32797,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDispatchIndirectCommand",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -32701,6 +32855,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSubmitInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -32885,6 +33040,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDisplayPropertiesKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -32941,6 +33097,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " describes the physical width and height of the visible portion of the display, in millimeters."
@@ -32956,6 +33113,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " describes the physical, native, or preferred resolution of the display."
@@ -33011,6 +33169,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDisplayPlanePropertiesKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -33068,6 +33227,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDisplayModeParametersKHR",
+    "needsReflection": true,
     "returnedonly": false,
     "children": [
       {
@@ -33080,6 +33240,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " is the 2D extents of the visible region."
@@ -33115,6 +33276,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDisplayModePropertiesKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -33143,6 +33305,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -33167,6 +33330,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDisplayModeCreateInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -33236,6 +33400,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -33265,6 +33430,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDisplayPlaneCapabilitiesKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -33300,6 +33466,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " is the minimum source rectangle offset supported by this plane using the specified mode."
@@ -33315,6 +33482,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -33359,6 +33527,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " is the minimum source rectangle size supported by this plane using the specified mode."
@@ -33374,6 +33543,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " is the maximum source rectangle size supported by this plane using the specified mode."
@@ -33388,7 +33558,8 @@
         "dereferenceCount": 0,
         "isStructType": true,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkOffset2D maxDstPosition",
@@ -33399,7 +33570,8 @@
         "dereferenceCount": 0,
         "isStructType": true,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkExtent2D minDstExtent",
@@ -33410,7 +33582,8 @@
         "dereferenceCount": 0,
         "isStructType": true,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkExtent2D maxDstExtent",
@@ -33421,7 +33594,8 @@
         "dereferenceCount": 0,
         "isStructType": true,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ],
     "documentation": {
@@ -33433,6 +33607,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDisplaySurfaceCreateInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -33623,6 +33798,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " The size of the presentable images to use with the surface."
@@ -33639,6 +33815,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDisplayPresentInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -33685,6 +33862,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -33709,6 +33887,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -33746,6 +33925,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSurfaceCapabilitiesKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -33797,6 +33977,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " is the current width and height of the surface, or the special value [eq]#(0xFFFFFFFF, 0xFFFFFFFF)# indicating that the surface size will be determined by the extent of a swapchain targeting the surface."
@@ -33812,6 +33993,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -33852,6 +34034,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -34052,6 +34235,7 @@
   {
     "kind": "STRUCT",
     "name": "VkAndroidSurfaceCreateInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -34136,6 +34320,7 @@
   {
     "kind": "STRUCT",
     "name": "VkViSurfaceCreateInfoNN",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -34245,6 +34430,7 @@
   {
     "kind": "STRUCT",
     "name": "VkWaylandSurfaceCreateInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -34343,6 +34529,7 @@
   {
     "kind": "STRUCT",
     "name": "VkWin32SurfaceCreateInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -34443,6 +34630,7 @@
   {
     "kind": "STRUCT",
     "name": "VkXlibSurfaceCreateInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -34546,6 +34734,7 @@
   {
     "kind": "STRUCT",
     "name": "VkXcbSurfaceCreateInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -34649,6 +34838,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImagePipeSurfaceCreateInfoFUCHSIA",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -34733,6 +34923,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSurfaceFormatKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -34789,6 +34980,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSwapchainCreateInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -34938,6 +35130,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -35099,6 +35292,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPresentInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -35314,6 +35508,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDebugReportCallbackCreateInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -35421,6 +35616,7 @@
   {
     "kind": "STRUCT",
     "name": "VkValidationFlagsEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -35513,6 +35709,7 @@
   {
     "kind": "STRUCT",
     "name": "VkValidationFeaturesEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -35647,6 +35844,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineRasterizationStateRasterizationOrderAMD",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -35719,6 +35917,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDebugMarkerObjectNameInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -35823,6 +36022,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDebugMarkerObjectTagInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -35955,6 +36155,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDebugMarkerMarkerInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -36019,6 +36220,7 @@
         "isNumericArray": true,
         "jsType": "Array",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -36048,6 +36250,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDedicatedAllocationImageCreateInfoNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -36115,6 +36318,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDedicatedAllocationBufferCreateInfoNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -36182,6 +36386,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDedicatedAllocationMemoryAllocateInfoNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -36274,6 +36479,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalImageFormatPropertiesNV",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -36286,6 +36492,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -36431,6 +36638,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalMemoryImageCreateInfoNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -36504,6 +36712,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExportMemoryAllocateInfoNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -36589,6 +36798,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImportMemoryWin32HandleInfoNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -36686,6 +36896,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExportMemoryWin32HandleInfoNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -36774,6 +36985,7 @@
   {
     "kind": "STRUCT",
     "name": "VkWin32KeyedMutexAcquireReleaseInfoNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -36961,6 +37173,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDeviceGeneratedCommandsFeaturesNVX",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -37042,6 +37255,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDeviceGeneratedCommandsLimitsNVX",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -37189,6 +37403,7 @@
   {
     "kind": "STRUCT",
     "name": "VkIndirectCommandsTokenNVX",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -37246,6 +37461,7 @@
   {
     "kind": "STRUCT",
     "name": "VkIndirectCommandsLayoutTokenNVX",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -37316,6 +37532,7 @@
   {
     "kind": "STRUCT",
     "name": "VkIndirectCommandsLayoutCreateInfoNVX",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -37450,6 +37667,7 @@
   {
     "kind": "STRUCT",
     "name": "VkCmdProcessCommandsInfoNVX",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -37750,6 +37968,7 @@
   {
     "kind": "STRUCT",
     "name": "VkCmdReserveSpaceForCommandsInfoNVX",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -37862,6 +38081,7 @@
   {
     "kind": "STRUCT",
     "name": "VkObjectTableCreateInfoNVX",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -38147,6 +38367,7 @@
   {
     "kind": "STRUCT",
     "name": "VkObjectTableEntryNVX",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -38199,6 +38420,7 @@
   {
     "kind": "STRUCT",
     "name": "VkObjectTablePipelineEntryNVX",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -38259,6 +38481,7 @@
   {
     "kind": "STRUCT",
     "name": "VkObjectTableDescriptorSetEntryNVX",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -38344,6 +38567,7 @@
   {
     "kind": "STRUCT",
     "name": "VkObjectTableVertexBufferEntryNVX",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -38404,6 +38628,7 @@
   {
     "kind": "STRUCT",
     "name": "VkObjectTableIndexBufferEntryNVX",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -38486,6 +38711,7 @@
   {
     "kind": "STRUCT",
     "name": "VkObjectTablePushConstantEntryNVX",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -38569,6 +38795,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceFeatures2",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -38615,6 +38842,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -38673,6 +38901,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceFeatures2KHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -38719,6 +38948,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -38778,6 +39008,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceProperties2",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -38824,6 +39055,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -38879,6 +39111,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceProperties2KHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -38925,6 +39158,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -38981,6 +39215,7 @@
   {
     "kind": "STRUCT",
     "name": "VkFormatProperties2",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -39027,6 +39262,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -39051,6 +39287,7 @@
   {
     "kind": "STRUCT",
     "name": "VkFormatProperties2KHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -39097,6 +39334,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -39122,6 +39360,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageFormatProperties2",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -39181,6 +39420,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -39209,6 +39449,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageFormatProperties2KHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -39268,6 +39509,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -39297,6 +39539,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceImageFormatInfo2",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -39516,6 +39759,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceImageFormatInfo2KHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -39736,6 +39980,7 @@
   {
     "kind": "STRUCT",
     "name": "VkQueueFamilyProperties2",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -39782,6 +40027,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -39810,6 +40056,7 @@
   {
     "kind": "STRUCT",
     "name": "VkQueueFamilyProperties2KHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -39856,6 +40103,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -39885,6 +40133,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceMemoryProperties2",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -39931,6 +40180,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -39959,6 +40209,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceMemoryProperties2KHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -40005,6 +40256,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -40034,6 +40286,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSparseImageFormatProperties2",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -40080,6 +40333,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -40105,6 +40359,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSparseImageFormatProperties2KHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -40151,6 +40406,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -40177,6 +40433,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceSparseImageFormatInfo2",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -40316,6 +40573,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceSparseImageFormatInfo2KHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -40456,6 +40714,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDevicePushDescriptorPropertiesKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -40530,6 +40789,7 @@
   {
     "kind": "STRUCT",
     "name": "VkConformanceVersionKHR",
+    "needsReflection": true,
     "returnedonly": false,
     "children": [
       {
@@ -40602,6 +40862,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceDriverPropertiesKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -40701,6 +40962,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -40725,6 +40987,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPresentRegionsKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -40829,6 +41092,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPresentRegionKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -40887,6 +41151,7 @@
   {
     "kind": "STRUCT",
     "name": "VkRectLayerKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -40899,6 +41164,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " is the origin of the rectangle, in pixels."
@@ -40914,6 +41180,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " is the size of the rectangle, in pixels."
@@ -40953,6 +41220,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceVariablePointerFeatures",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -41031,6 +41299,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceVariablePointerFeaturesKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -41110,6 +41379,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalMemoryProperties",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -41211,6 +41481,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalMemoryPropertiesKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -41313,6 +41584,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceExternalImageFormatInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -41386,6 +41658,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceExternalImageFormatInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -41460,6 +41733,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalImageFormatProperties",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -41506,6 +41780,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -41530,6 +41805,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalImageFormatPropertiesKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -41576,6 +41852,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -41601,6 +41878,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceExternalBufferInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -41733,6 +42011,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceExternalBufferInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -41866,6 +42145,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalBufferProperties",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -41912,6 +42192,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -41933,6 +42214,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalBufferPropertiesKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -41979,6 +42261,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -42001,6 +42284,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceIDProperties",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -42049,7 +42333,8 @@
         "isStaticArray": true,
         "isNumericArray": true,
         "jsType": "Array",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint8_t driverUUID [ VK_UUID_SIZE ]",
@@ -42063,7 +42348,8 @@
         "isStaticArray": true,
         "isNumericArray": true,
         "jsType": "Array",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint8_t deviceLUID [ VK_LUID_SIZE ]",
@@ -42077,7 +42363,8 @@
         "isStaticArray": true,
         "isNumericArray": true,
         "jsType": "Array",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t deviceNodeMask",
@@ -42121,6 +42408,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceIDPropertiesKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -42169,7 +42457,8 @@
         "isStaticArray": true,
         "isNumericArray": true,
         "jsType": "Array",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint8_t driverUUID [ VK_UUID_SIZE ]",
@@ -42183,7 +42472,8 @@
         "isStaticArray": true,
         "isNumericArray": true,
         "jsType": "Array",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint8_t deviceLUID [ VK_LUID_SIZE ]",
@@ -42197,7 +42487,8 @@
         "isStaticArray": true,
         "isNumericArray": true,
         "jsType": "Array",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t deviceNodeMask",
@@ -42242,6 +42533,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalMemoryImageCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -42315,6 +42607,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalMemoryImageCreateInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -42389,6 +42682,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalMemoryBufferCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -42462,6 +42756,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalMemoryBufferCreateInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -42536,6 +42831,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExportMemoryAllocateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -42617,6 +42913,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExportMemoryAllocateInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -42699,6 +42996,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImportMemoryWin32HandleInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -42792,6 +43090,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExportMemoryWin32HandleInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -42894,6 +43193,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryWin32HandlePropertiesKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -42961,6 +43261,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryGetWin32HandleInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -43042,6 +43343,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImportMemoryFdInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -43121,6 +43423,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryFdPropertiesKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -43188,6 +43491,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryGetFdInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -43269,6 +43573,7 @@
   {
     "kind": "STRUCT",
     "name": "VkWin32KeyedMutexAcquireReleaseInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -43447,6 +43752,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceExternalSemaphoreInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -43517,6 +43823,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceExternalSemaphoreInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -43588,6 +43895,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalSemaphoreProperties",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -43716,6 +44024,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalSemaphorePropertiesKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -43845,6 +44154,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExportSemaphoreCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -43926,6 +44236,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExportSemaphoreCreateInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -44008,6 +44319,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImportSemaphoreWin32HandleInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -44137,6 +44449,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExportSemaphoreWin32HandleInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -44239,6 +44552,7 @@
   {
     "kind": "STRUCT",
     "name": "VkD3D12FenceSubmitInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -44395,6 +44709,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSemaphoreGetWin32HandleInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -44476,6 +44791,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImportSemaphoreFdInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -44591,6 +44907,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSemaphoreGetFdInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -44672,6 +44989,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceExternalFenceInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -44742,6 +45060,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceExternalFenceInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -44813,6 +45132,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalFenceProperties",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -44941,6 +45261,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalFencePropertiesKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -45070,6 +45391,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExportFenceCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -45151,6 +45473,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExportFenceCreateInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -45233,6 +45556,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImportFenceWin32HandleInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -45362,6 +45686,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExportFenceWin32HandleInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -45464,6 +45789,7 @@
   {
     "kind": "STRUCT",
     "name": "VkFenceGetWin32HandleInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -45545,6 +45871,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImportFenceFdInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -45660,6 +45987,7 @@
   {
     "kind": "STRUCT",
     "name": "VkFenceGetFdInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -45741,6 +46069,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceMultiviewFeatures",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -45850,6 +46179,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceMultiviewFeaturesKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -45960,6 +46290,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceMultiviewProperties",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -46045,6 +46376,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceMultiviewPropertiesKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -46131,6 +46463,7 @@
   {
     "kind": "STRUCT",
     "name": "VkRenderPassMultiviewCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -46293,6 +46626,7 @@
   {
     "kind": "STRUCT",
     "name": "VkRenderPassMultiviewCreateInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -46456,6 +46790,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSurfaceCapabilities2EXT",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -46523,7 +46858,8 @@
         "dereferenceCount": 0,
         "isStructType": true,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkExtent2D minImageExtent",
@@ -46534,7 +46870,8 @@
         "dereferenceCount": 0,
         "isStructType": true,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkExtent2D maxImageExtent",
@@ -46545,7 +46882,8 @@
         "dereferenceCount": 0,
         "isStructType": true,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t maxImageArrayLayers",
@@ -46648,6 +46986,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDisplayPowerInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -46717,6 +47056,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDeviceEventInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -46777,6 +47117,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDisplayEventInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -46846,6 +47187,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSwapchainCounterCreateInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -46919,6 +47261,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceGroupProperties",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -47051,6 +47394,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceGroupPropertiesKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -47184,6 +47528,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryAllocateFlagsInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -47285,6 +47630,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryAllocateFlagsInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -47387,6 +47733,7 @@
   {
     "kind": "STRUCT",
     "name": "VkBindBufferMemoryInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -47498,6 +47845,7 @@
   {
     "kind": "STRUCT",
     "name": "VkBindBufferMemoryInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -47610,6 +47958,7 @@
   {
     "kind": "STRUCT",
     "name": "VkBindBufferMemoryDeviceGroupInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -47700,6 +48049,7 @@
   {
     "kind": "STRUCT",
     "name": "VkBindBufferMemoryDeviceGroupInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -47791,6 +48141,7 @@
   {
     "kind": "STRUCT",
     "name": "VkBindImageMemoryInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -47904,6 +48255,7 @@
   {
     "kind": "STRUCT",
     "name": "VkBindImageMemoryInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -48018,6 +48370,7 @@
   {
     "kind": "STRUCT",
     "name": "VkBindImageMemoryDeviceGroupInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -48146,6 +48499,7 @@
   {
     "kind": "STRUCT",
     "name": "VkBindImageMemoryDeviceGroupInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -48275,6 +48629,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDeviceGroupRenderPassBeginInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -48383,6 +48738,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDeviceGroupRenderPassBeginInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -48492,6 +48848,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDeviceGroupCommandBufferBeginInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -48557,6 +48914,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDeviceGroupCommandBufferBeginInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -48623,6 +48981,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDeviceGroupSubmitInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -48820,6 +49179,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDeviceGroupSubmitInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -49018,6 +49378,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDeviceGroupBindSparseInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -49098,6 +49459,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDeviceGroupBindSparseInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -49179,6 +49541,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDeviceGroupPresentCapabilitiesKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -49228,6 +49591,7 @@
         "isNumericArray": true,
         "jsType": "Array",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -49276,6 +49640,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageSwapchainCreateInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -49347,6 +49712,7 @@
   {
     "kind": "STRUCT",
     "name": "VkBindImageMemorySwapchainInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -49429,6 +49795,7 @@
   {
     "kind": "STRUCT",
     "name": "VkAcquireNextImageInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -49564,6 +49931,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDeviceGroupPresentInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -49677,6 +50045,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDeviceGroupDeviceCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -49766,6 +50135,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDeviceGroupDeviceCreateInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -49856,6 +50226,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDeviceGroupSwapchainCreateInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -49929,6 +50300,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDescriptorUpdateTemplateEntry",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -50034,6 +50406,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDescriptorUpdateTemplateEntryKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -50140,6 +50513,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDescriptorUpdateTemplateCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -50346,6 +50720,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDescriptorUpdateTemplateCreateInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -50553,6 +50928,7 @@
   {
     "kind": "STRUCT",
     "name": "VkXYColorEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -50587,6 +50963,7 @@
   {
     "kind": "STRUCT",
     "name": "VkHdrMetadataEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -50633,6 +51010,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " is the mastering display's red primary in chromaticity coordinates"
@@ -50648,6 +51026,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " is the mastering display's green primary in chromaticity coordinates"
@@ -50663,6 +51042,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " is the mastering display's blue primary in chromaticity coordinates"
@@ -50678,6 +51058,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " is the mastering display's white-point in chromaticity coordinates"
@@ -50754,6 +51135,7 @@
   {
     "kind": "STRUCT",
     "name": "VkRefreshCycleDurationGOOGLE",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -50781,6 +51163,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPastPresentationTimingGOOGLE",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -50941,6 +51324,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPresentTimesInfoGOOGLE",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -51045,6 +51429,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPresentTimeGOOGLE",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -51121,6 +51506,7 @@
   {
     "kind": "STRUCT",
     "name": "VkIOSSurfaceCreateInfoMVK",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -51226,6 +51612,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMacOSSurfaceCreateInfoMVK",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -51331,6 +51718,7 @@
   {
     "kind": "STRUCT",
     "name": "VkViewportWScalingNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -51369,6 +51757,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineViewportWScalingStateCreateInfoNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -51474,6 +51863,7 @@
   {
     "kind": "STRUCT",
     "name": "VkViewportSwizzleNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -51574,6 +51964,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineViewportSwizzleStateCreateInfoNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -51680,6 +52071,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceDiscardRectanglePropertiesEXT",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -51750,6 +52142,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineDiscardRectangleStateCreateInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -51873,6 +52266,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -51936,6 +52330,7 @@
   {
     "kind": "STRUCT",
     "name": "VkInputAttachmentAspectReference",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -51993,6 +52388,7 @@
   {
     "kind": "STRUCT",
     "name": "VkInputAttachmentAspectReferenceKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -52051,6 +52447,7 @@
   {
     "kind": "STRUCT",
     "name": "VkRenderPassInputAttachmentAspectCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -52139,6 +52536,7 @@
   {
     "kind": "STRUCT",
     "name": "VkRenderPassInputAttachmentAspectCreateInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -52228,6 +52626,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceSurfaceInfo2KHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -52291,6 +52690,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSurfaceCapabilities2KHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -52337,6 +52737,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -52361,6 +52762,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSurfaceFormat2KHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -52407,6 +52809,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -52428,6 +52831,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDisplayProperties2KHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -52474,6 +52878,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -52495,6 +52900,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDisplayPlaneProperties2KHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -52541,6 +52947,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -52562,6 +52969,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDisplayModeProperties2KHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -52608,6 +53016,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -52629,6 +53038,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDisplayPlaneInfo2KHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -52703,6 +53113,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDisplayPlaneCapabilities2KHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -52749,6 +53160,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -52770,6 +53182,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSharedPresentSurfaceCapabilitiesKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -52871,6 +53284,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDevice16BitStorageFeatures",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -52987,6 +53401,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDevice16BitStorageFeaturesKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -53104,6 +53519,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceSubgroupProperties",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -53277,6 +53693,7 @@
   {
     "kind": "STRUCT",
     "name": "VkBufferMemoryRequirementsInfo2",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -53340,6 +53757,7 @@
   {
     "kind": "STRUCT",
     "name": "VkBufferMemoryRequirementsInfo2KHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -53404,6 +53822,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageMemoryRequirementsInfo2",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -53470,6 +53889,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageMemoryRequirementsInfo2KHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -53537,6 +53957,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageSparseMemoryRequirementsInfo2",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -53600,6 +54021,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageSparseMemoryRequirementsInfo2KHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -53664,6 +54086,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryRequirements2",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -53710,6 +54133,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -53734,6 +54158,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryRequirements2KHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -53780,6 +54205,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -53805,6 +54231,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSparseImageMemoryRequirements2",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -53851,6 +54278,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -53872,6 +54300,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSparseImageMemoryRequirements2KHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -53918,6 +54347,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -53940,6 +54370,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDevicePointClippingProperties",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -54012,6 +54443,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDevicePointClippingPropertiesKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -54085,6 +54517,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryDedicatedRequirements",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -54174,6 +54607,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryDedicatedRequirementsKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -54264,6 +54698,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryDedicatedAllocateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -54356,6 +54791,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryDedicatedAllocateInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -54449,6 +54885,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageViewUsageCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -54522,6 +54959,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageViewUsageCreateInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -54596,6 +55034,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineTessellationDomainOriginStateCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -54668,6 +55107,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineTessellationDomainOriginStateCreateInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -54741,6 +55181,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSamplerYcbcrConversionInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -54817,6 +55258,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSamplerYcbcrConversionInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -54894,6 +55336,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSamplerYcbcrConversionCreateInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -54991,6 +55434,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -55098,6 +55542,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSamplerYcbcrConversionCreateInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -55195,6 +55640,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -55303,6 +55749,7 @@
   {
     "kind": "STRUCT",
     "name": "VkBindImagePlaneMemoryInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -55371,6 +55818,7 @@
   {
     "kind": "STRUCT",
     "name": "VkBindImagePlaneMemoryInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -55440,6 +55888,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImagePlaneMemoryRequirementsInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -55508,6 +55957,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImagePlaneMemoryRequirementsInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -55577,6 +56027,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceSamplerYcbcrConversionFeatures",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -55633,6 +56084,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceSamplerYcbcrConversionFeaturesKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -55690,6 +56142,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSamplerYcbcrConversionImageFormatProperties",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -55755,6 +56208,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSamplerYcbcrConversionImageFormatPropertiesKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -55821,6 +56275,7 @@
   {
     "kind": "STRUCT",
     "name": "VkTextureLODGatherFormatPropertiesAMD",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -55888,6 +56343,7 @@
   {
     "kind": "STRUCT",
     "name": "VkConditionalRenderingBeginInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -55986,6 +56442,7 @@
   {
     "kind": "STRUCT",
     "name": "VkProtectedSubmitInfo",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -56070,6 +56527,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceProtectedMemoryFeatures",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -56130,6 +56588,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceProtectedMemoryProperties",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -56234,6 +56693,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDeviceQueueInfo2",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -56347,6 +56807,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineCoverageToColorStateCreateInfoNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -56447,6 +56908,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -56531,6 +56993,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSampleLocationEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -56573,6 +57036,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSampleLocationsInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -56642,6 +57106,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " is the size of the sample location grid to select custom sample locations for."
@@ -56695,6 +57160,7 @@
   {
     "kind": "STRUCT",
     "name": "VkAttachmentSampleLocationsEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -56722,6 +57188,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " is the sample locations state to use for the layout transition of the given attachment from the initial layout of the attachment to the image layout specified for the attachment in the first subpass using it."
@@ -56737,6 +57204,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSubpassSampleLocationsEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -56764,6 +57232,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -56784,6 +57253,7 @@
   {
     "kind": "STRUCT",
     "name": "VkRenderPassSampleLocationsBeginInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -56976,6 +57446,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineSampleLocationsStateCreateInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -57052,6 +57523,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -57084,6 +57556,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceSampleLocationsPropertiesEXT",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -57153,6 +57626,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -57179,7 +57653,8 @@
         "isStaticArray": true,
         "isNumericArray": true,
         "jsType": "Array",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t sampleLocationSubPixelBits",
@@ -57244,6 +57719,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMultisamplePropertiesEXT",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -57290,6 +57766,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -57311,6 +57788,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSamplerReductionModeCreateInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -57383,6 +57861,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -57439,6 +57918,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -57679,6 +58159,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineColorBlendAdvancedStateCreateInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -57785,6 +58266,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceInlineUniformBlockFeaturesEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -57876,6 +58358,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceInlineUniformBlockPropertiesEXT",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -57985,6 +58468,7 @@
   {
     "kind": "STRUCT",
     "name": "VkWriteDescriptorSetInlineUniformBlockEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -58068,6 +58552,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDescriptorPoolInlineUniformBlockCreateInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -58133,6 +58618,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineCoverageModulationStateCreateInfoNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -58285,6 +58771,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageFormatListCreateInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -58375,6 +58862,7 @@
   {
     "kind": "STRUCT",
     "name": "VkValidationCacheCreateInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -58482,6 +58970,7 @@
   {
     "kind": "STRUCT",
     "name": "VkShaderModuleValidationCacheCreateInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -58553,6 +59042,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceMaintenance3Properties",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -58648,6 +59138,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceMaintenance3PropertiesKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -58744,6 +59235,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDescriptorSetLayoutSupport",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -58816,6 +59308,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDescriptorSetLayoutSupportKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -58889,6 +59382,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceShaderDrawParameterFeatures",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -58949,6 +59443,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceFloat16Int8FeaturesKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -59052,6 +59547,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceFloatControlsPropertiesKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -59315,6 +59811,7 @@
   {
     "kind": "STRUCT",
     "name": "VkNativeBufferANDROID",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -59426,6 +59923,7 @@
   {
     "kind": "STRUCT",
     "name": "VkShaderResourceUsageAMD",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -59513,6 +60011,7 @@
   {
     "kind": "STRUCT",
     "name": "VkShaderStatisticsInfoAMD",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -59538,7 +60037,8 @@
         "dereferenceCount": 0,
         "isStructType": true,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t numPhysicalVgprs",
@@ -59596,7 +60096,8 @@
         "isStaticArray": true,
         "isNumericArray": true,
         "jsType": "Array",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       }
     ],
     "documentation": {
@@ -59608,6 +60109,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDeviceQueueGlobalPriorityCreateInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -59680,6 +60182,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDebugUtilsObjectNameInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -59784,6 +60287,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDebugUtilsObjectTagInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -59916,6 +60420,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDebugUtilsLabelEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -59980,6 +60485,7 @@
         "isNumericArray": true,
         "jsType": "Array",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -60005,6 +60511,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDebugUtilsMessengerCreateInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -60153,6 +60660,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDebugUtilsMessengerCallbackDataEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -60391,6 +60899,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImportMemoryHostPointerInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -60478,6 +60987,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryHostPointerPropertiesEXT",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -60545,6 +61055,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceExternalMemoryHostPropertiesEXT",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -60620,6 +61131,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceConservativeRasterizationPropertiesEXT",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -60790,6 +61302,7 @@
   {
     "kind": "STRUCT",
     "name": "VkCalibratedTimestampInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -60859,6 +61372,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceShaderCorePropertiesAMD",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -61115,6 +61629,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineRasterizationConservativeStateCreateInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -61224,6 +61739,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceDescriptorIndexingFeaturesEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -61527,6 +62043,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceDescriptorIndexingPropertiesEXT",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -62170,6 +62687,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDescriptorSetLayoutBindingFlagsCreateInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -62268,6 +62786,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDescriptorSetVariableDescriptorCountAllocateInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -62358,6 +62877,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDescriptorSetVariableDescriptorCountLayoutSupportEXT",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -62432,6 +62952,7 @@
   {
     "kind": "STRUCT",
     "name": "VkAttachmentDescription2KHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -62669,6 +63190,7 @@
   {
     "kind": "STRUCT",
     "name": "VkAttachmentReference2KHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -62789,6 +63311,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSubpassDescription2KHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -63058,6 +63581,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSubpassDependency2KHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -63275,6 +63799,7 @@
   {
     "kind": "STRUCT",
     "name": "VkRenderPassCreateInfo2KHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -63482,6 +64007,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSubpassBeginInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -63551,6 +64077,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSubpassEndInfoKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -63598,6 +64125,7 @@
   {
     "kind": "STRUCT",
     "name": "VkVertexInputBindingDivisorDescriptionEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -63657,6 +64185,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineVertexInputDivisorStateCreateInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -63750,6 +64279,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -63815,6 +64345,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDevicePCIBusInfoPropertiesEXT",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -63925,6 +64456,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImportAndroidHardwareBufferInfoANDROID",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -63989,6 +64521,7 @@
   {
     "kind": "STRUCT",
     "name": "VkAndroidHardwareBufferUsageANDROID",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -64054,6 +64587,7 @@
   {
     "kind": "STRUCT",
     "name": "VkAndroidHardwareBufferPropertiesANDROID",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -64140,6 +64674,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryGetAndroidHardwareBufferInfoANDROID",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -64203,6 +64738,7 @@
   {
     "kind": "STRUCT",
     "name": "VkAndroidHardwareBufferFormatPropertiesANDROID",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -64318,6 +64854,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -64434,6 +64971,7 @@
   {
     "kind": "STRUCT",
     "name": "VkCommandBufferInheritanceConditionalRenderingInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -64522,6 +65060,7 @@
   {
     "kind": "STRUCT",
     "name": "VkExternalFormatANDROID",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -64588,6 +65127,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDevice8BitStorageFeaturesKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -64691,6 +65231,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceConditionalRenderingFeaturesEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -64781,6 +65322,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceVulkanMemoryModelFeaturesKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -64905,6 +65447,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceShaderAtomicInt64FeaturesKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -65000,6 +65543,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -65094,6 +65638,7 @@
   {
     "kind": "STRUCT",
     "name": "VkQueueFamilyCheckpointPropertiesNV",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -65162,6 +65707,7 @@
   {
     "kind": "STRUCT",
     "name": "VkCheckpointDataNV",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -65251,6 +65797,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceDepthStencilResolvePropertiesKHR",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -65406,6 +65953,7 @@
   {
     "kind": "STRUCT",
     "name": "VkSubpassDescriptionDepthStencilResolveKHR",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -65522,6 +66070,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageViewASTCDecodeModeEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -65589,6 +66138,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceASTCDecodeFeaturesEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -65645,6 +66195,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceTransformFeedbackFeaturesEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -65727,6 +66278,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceTransformFeedbackPropertiesEXT",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -65921,6 +66473,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineRasterizationStateStreamCreateInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -66004,6 +66557,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -66060,6 +66614,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineRepresentativeFragmentTestStateCreateInfoNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -66127,6 +66682,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceExclusiveScissorFeaturesNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -66187,6 +66743,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineViewportExclusiveScissorStateCreateInfoNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -66275,6 +66832,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceCornerSampledImageFeaturesNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -66348,6 +66906,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceComputeShaderDerivativesFeaturesNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -66417,6 +66976,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -66473,6 +67033,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceShaderImageFootprintFeaturesNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -66538,6 +67099,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -66594,6 +67156,7 @@
   {
     "kind": "STRUCT",
     "name": "VkShadingRatePaletteNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -66648,6 +67211,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineViewportShadingRateImageStateCreateInfoNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -66753,6 +67317,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceShadingRateImageFeaturesNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -66835,6 +67400,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceShadingRateImagePropertiesNV",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -66881,6 +67447,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " indicates the width and height of the portion of the framebuffer corresponding to each texel in the shading rate image."
@@ -66922,6 +67489,7 @@
   {
     "kind": "STRUCT",
     "name": "VkCoarseSampleLocationNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -66988,6 +67556,7 @@
   {
     "kind": "STRUCT",
     "name": "VkCoarseSampleOrderCustomNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -67070,6 +67639,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineViewportCoarseSampleOrderStateCreateInfoNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -67175,6 +67745,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceMeshShaderFeaturesNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -67252,6 +67823,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceMeshShaderPropertiesNV",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -67348,7 +67920,8 @@
         "isStaticArray": true,
         "isNumericArray": true,
         "jsType": "Array",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t maxTaskTotalMemorySize",
@@ -67420,7 +67993,8 @@
         "isStaticArray": true,
         "isNumericArray": true,
         "jsType": "Array",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "uint32_t maxMeshTotalMemorySize",
@@ -67536,6 +68110,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDrawMeshTasksIndirectCommandNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -67578,6 +68153,7 @@
   {
     "kind": "STRUCT",
     "name": "VkRayTracingShaderGroupCreateInfoNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -67794,6 +68370,7 @@
   {
     "kind": "STRUCT",
     "name": "VkRayTracingPipelineCreateInfoNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -67998,6 +68575,7 @@
   {
     "kind": "STRUCT",
     "name": "VkGeometryTrianglesNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -68209,6 +68787,7 @@
   {
     "kind": "STRUCT",
     "name": "VkGeometryAABBNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -68310,6 +68889,7 @@
   {
     "kind": "STRUCT",
     "name": "VkGeometryDataNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -68322,6 +68902,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -68350,6 +68931,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -68378,6 +68960,7 @@
   {
     "kind": "STRUCT",
     "name": "VkGeometryNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -68446,6 +69029,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -68485,6 +69069,7 @@
   {
     "kind": "STRUCT",
     "name": "VkAccelerationStructureInfoNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -68630,6 +69215,7 @@
   {
     "kind": "STRUCT",
     "name": "VkAccelerationStructureCreateInfoNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -68697,6 +69283,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -68718,6 +69305,7 @@
   {
     "kind": "STRUCT",
     "name": "VkBindAccelerationStructureMemoryInfoNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -68875,6 +69463,7 @@
   {
     "kind": "STRUCT",
     "name": "VkWriteDescriptorSetAccelerationStructureNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -68964,6 +69553,7 @@
   {
     "kind": "STRUCT",
     "name": "VkAccelerationStructureMemoryRequirementsInfoNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -69057,6 +69647,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceRayTracingPropertiesNV",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -69227,6 +69818,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDrmFormatModifierPropertiesListEXT",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -69320,6 +69912,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDrmFormatModifierPropertiesEXT",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -69402,6 +69995,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceImageDrmFormatModifierInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -69550,6 +70144,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageDrmFormatModifierListCreateInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -69640,6 +70235,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageDrmFormatModifierExplicitCreateInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -69752,6 +70348,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageDrmFormatModifierPropertiesEXT",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -69814,6 +70411,7 @@
   {
     "kind": "STRUCT",
     "name": "VkImageStencilUsageCreateInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -69888,6 +70486,7 @@
   {
     "kind": "STRUCT",
     "name": "VkDeviceMemoryOverallocationCreateInfoAMD",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -69955,6 +70554,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceFragmentDensityMapFeaturesEXT",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -70096,6 +70696,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceFragmentDensityMapPropertiesEXT",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -70133,7 +70734,8 @@
         "dereferenceCount": 0,
         "isStructType": true,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkExtent2D maxFragmentDensityTexelSize",
@@ -70144,7 +70746,8 @@
         "dereferenceCount": 0,
         "isStructType": true,
         "jsType": "Object",
-        "kind": "STRUCT_MEMBER"
+        "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true
       },
       {
         "text": "VkBool32 fragmentDensityInvocations",
@@ -70173,6 +70776,7 @@
   {
     "kind": "STRUCT",
     "name": "VkRenderPassFragmentDensityMapCreateInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -70219,6 +70823,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " is the fragment density map to use for the render pass."
@@ -70238,6 +70843,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceScalarBlockLayoutFeaturesEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -70298,6 +70904,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceDepthClipEnableFeaturesEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -70375,6 +70982,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPipelineRasterizationDepthClipStateCreateInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -70460,6 +71068,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceMemoryBudgetPropertiesEXT",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -70510,6 +71119,7 @@
         "isNumericArray": true,
         "jsType": "Array",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -70538,6 +71148,7 @@
         "isNumericArray": true,
         "jsType": "Array",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " is an array of memory usage, with one element for each memory heap. A heap's usage is an estimate of how much memory the process is currently using in that heap."
@@ -70557,6 +71168,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceMemoryPriorityFeaturesEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -70622,6 +71234,7 @@
   {
     "kind": "STRUCT",
     "name": "VkMemoryPriorityAllocateInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -70687,6 +71300,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceBufferAddressFeaturesEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -70795,6 +71409,7 @@
   {
     "kind": "STRUCT",
     "name": "VkBufferDeviceAddressInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -70858,6 +71473,7 @@
   {
     "kind": "STRUCT",
     "name": "VkBufferDeviceAddressCreateInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -70924,6 +71540,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceImageViewImageFormatInfoEXT",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -70996,6 +71613,7 @@
   {
     "kind": "STRUCT",
     "name": "VkFilterCubicImageViewImageFormatPropertiesEXT",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -71090,6 +71708,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceCooperativeMatrixFeaturesNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -71181,6 +71800,7 @@
   {
     "kind": "STRUCT",
     "name": "VkPhysicalDeviceCooperativeMatrixPropertiesNV",
+    "needsReflection": true,
     "returnedonly": true,
     "children": [
       {
@@ -71266,6 +71886,7 @@
   {
     "kind": "STRUCT",
     "name": "VkCooperativeMatrixPropertiesNV",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -71403,6 +72024,7 @@
   {
     "kind": "STRUCT",
     "name": "VkClearColorValue",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -71418,6 +72040,7 @@
         "isNumericArray": true,
         "jsType": "Array",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -71445,6 +72068,7 @@
         "isNumericArray": true,
         "jsType": "Array",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -71472,6 +72096,7 @@
         "isNumericArray": true,
         "jsType": "Array",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [
             {
@@ -71483,6 +72108,7 @@
         }
       }
     ],
+    "isUnionType": true,
     "documentation": {
       "macros": [],
       "category": "Clear Commands",
@@ -71492,6 +72118,7 @@
   {
     "kind": "STRUCT",
     "name": "VkClearValue",
+    "needsReflection": false,
     "returnedonly": false,
     "children": [
       {
@@ -71504,6 +72131,7 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " specifies the color image clear values to use when clearing a color image or attachment."
@@ -71519,12 +72147,14 @@
         "isStructType": true,
         "jsType": "Object",
         "kind": "STRUCT_MEMBER",
+        "needsInitializationAtInstantiation": true,
         "documentation": {
           "macros": [],
           "description": " specifies the depth and stencil clear values to use when clearing a depth/stencil image or attachment."
         }
       }
     ],
+    "isUnionType": true,
     "documentation": {
       "macros": [],
       "category": "Clear Commands",

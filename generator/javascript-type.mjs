@@ -12,12 +12,14 @@ export class JavaScriptType {
     this.isBitmask = false;
     this.isNullable = false;
     this.isStatic = false;
+    this.isReference = false;
     if (opts.type !== void 0) this.type = opts.type;
     if (opts.value !== void 0) this.value = opts.value;
     if (opts.isEnum !== void 0) this.isEnum = opts.isEnum;
     if (opts.isBitmask !== void 0) this.isBitmask = opts.isBitmask;
     if (opts.isNullable !== void 0) this.isNullable = opts.isNullable;
     if (opts.isStatic !== void 0) this.isStatic = opts.isStatic;
+    if (opts.isReference !== void 0) this.isReference = opts.isReference;
     //if (!opts.byteLength) console.log("nooooo");
   }
   get isNumeric() {
@@ -25,6 +27,12 @@ export class JavaScriptType {
     return (
       type === JavaScriptType.NUMBER ||
       type === JavaScriptType.BIGINT
+    );
+  }
+  get isString() {
+    let {type} = this;
+    return (
+      type === JavaScriptType.STRING
     );
   }
   get isArray() {
@@ -95,10 +103,15 @@ export function getJavaScriptType(ast, object) {
     // handle inout parameters
     switch (object.rawType) {
       case "size_t *":
+      case "uint64_t *":
+        return new JavaScriptType({
+          type: JavaScriptType.OBJECT_INOUT,
+          value: "BigInt",
+          isNullable: true
+        });
       case "int *":
       case "int32_t *":
       case "uint32_t *":
-      case "uint64_t *":
       case "VkBool32 *":
         return new JavaScriptType({
           type: JavaScriptType.OBJECT_INOUT,
@@ -165,7 +178,8 @@ export function getJavaScriptType(ast, object) {
       return new JavaScriptType({
         type: JavaScriptType.OBJECT,
         value: object.type,
-        isNullable: true
+        isNullable: true,
+        isReference: object.dereferenceCount > 0
       });
     }
   }
@@ -201,14 +215,17 @@ export function getJavaScriptType(ast, object) {
         isArray: true,
         isNullable: true
       });
+    case "size_t":
+    case "uint64_t":
+      return new JavaScriptType({
+        type: JavaScriptType.BIGINT
+      });
     case "int":
     case "float":
-    case "size_t":
     case "int32_t":
     case "uint8_t":
     case "uint16_t":
     case "uint32_t":
-    case "uint64_t":
       return new JavaScriptType({
         type: JavaScriptType.NUMBER
       });

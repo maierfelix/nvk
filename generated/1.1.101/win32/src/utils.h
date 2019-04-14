@@ -66,8 +66,35 @@ inline void NapiObjectTypeError(
   std::string expectedType
 ) {
   Napi::Env env = value.Env();
-  std::string details = getV8ValueDetails(value);
-  if (details[0] == '#') details = "[object " + (details.substr(2, details.length() - 2 - 1)) + "]";
+  std::string details = "";
+  std::string ctor = "";
+
+  if (!value.IsUndefined() && !value.IsNull()) {
+    ctor = value.As<Napi::Object>().Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value();
+  }
+
+  if (value.IsUndefined()) { details = "undefined"; }
+  else if (value.IsNull()) { details = "null"; }
+
+  if (value.IsBoolean()) { details = "Boolean"; }
+  else if (value.IsNumber()) { details = "Number"; }
+  else if (value.IsBigInt()) { details = "BigInt"; }
+  else if (value.IsString()) { details = "String"; }
+  else if (value.IsArray()) {
+    Napi::Array array = value.As<Napi::Array>();
+    if (array.Length() > 0) {
+      Napi::Value item = array.Get((uint32_t)0);
+      std::string ctor = item.As<Napi::Object>().Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value();
+      details = "Array [" + ctor + "]";
+    } else {
+      details = "Array";
+    }
+  }
+  else if (value.IsArrayBuffer()) { details = "ArrayBuffer"; }
+  else if (value.IsTypedArray()) { details = "TypedArray"; }
+  else if (value.IsObject()) { details = value.As<Napi::Object>().Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value(); }
+  else if (value.IsFunction()) { details = "Function"; }
+
   std::string msg = "Expected '" + expectedType + "' for '" + memberName + "' but got '" + details + "'";
   Napi::TypeError::New(env, msg.c_str()).ThrowAsJavaScriptException();
 }

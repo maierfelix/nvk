@@ -1,4 +1,6 @@
 generated/*/*/ast.json
+generated/*/*/enumLayouts.json
+generated/*/*/memoryLayouts.json
 generated/*/*/src
 
 generated/*/*/build/Release/obj

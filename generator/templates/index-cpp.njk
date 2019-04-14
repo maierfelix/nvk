@@ -8,14 +8,33 @@
 #include "calls.h"
 #include "enums.h"
 #include "window.h"
+#include "memoryLayouts.h"
 
-static Napi::Value createV8ArrayBufferFromMemory(const Napi::CallbackInfo& info) {
+static Napi::Value getAddressFromArrayBuffer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
-  if (!(info[0].IsBigInt())) Napi::TypeError::New(env, "Argument 1 must be of type 'BigInt'").ThrowAsJavaScriptException();
-  if (!(info[1].IsNumber())) Napi::TypeError::New(env, "Argument 2 must be of type 'Number'").ThrowAsJavaScriptException();
-  bool lossless;
-  int64_t addr = info[0].As<Napi::BigInt>().Int64Value(&lossless);
-  uint32_t size = info[1].As<Napi::Number>().Uint32Value();
+  if (!(info[0].IsArrayBuffer())) {
+    Napi::TypeError::New(env, "Argument 1 must be of type 'ArrayBuffer'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
+  Napi::ArrayBuffer buffer = info[0].As<Napi::ArrayBuffer>();
+  int64_t addr = reinterpret_cast<int64_t>(buffer.Data());
+  return Napi::BigInt::New(env, addr);
+};
+
+static Napi::Value getArrayBufferFromAddress(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  if (!(info[0].IsBigInt())) {
+    Napi::TypeError::New(env, "Argument 1 must be of type 'BigInt'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
+  if (!(info[1].IsBigInt())) {
+    Napi::TypeError::New(env, "Argument 2 must be of type 'BigInt'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
+  bool lossless0;
+  int64_t addr = info[0].As<Napi::BigInt>().Int64Value(&lossless0);
+  bool lossless1;
+  int64_t size = info[1].As<Napi::BigInt>().Int64Value(&lossless1);
   Napi::ArrayBuffer buffer = Napi::ArrayBuffer::New(
     env,
     reinterpret_cast<void *>(addr),
@@ -58,21 +77,18 @@ static Napi::Value _VK_VERSION_PATCH(const Napi::CallbackInfo& info) {
 
 Napi::Object Init(Napi::Env env, Napi::Object exports) {
   VulkanWindow::Initialize(env, exports);
-  exports["createV8ArrayBufferFromMemory"] = Napi::Function::New(env, createV8ArrayBufferFromMemory, "createV8ArrayBufferFromMemory");
-  exports["getVulkanEnumerations"] = Napi::Function::New(env, getVulkanEnumerations, "getVulkanEnumerations");
   exports["VK_MAKE_VERSION"] = Napi::Function::New(env, _VK_MAKE_VERSION, "VK_MAKE_VERSION");
   exports["VK_VERSION_MAJOR"] = Napi::Function::New(env, _VK_VERSION_MAJOR, "VK_VERSION_MAJOR");
   exports["VK_VERSION_MINOR"] = Napi::Function::New(env, _VK_VERSION_MINOR, "VK_VERSION_MINOR");
   exports["VK_VERSION_PATCH"] = Napi::Function::New(env, _VK_VERSION_PATCH, "VK_VERSION_PATCH");
   exports["VK_API_VERSION_1_0"] = Napi::Number::New(env, VK_MAKE_VERSION(1, 0, 0));
+  exports["VK_API_VERSION_1_1"] = Napi::Number::New(env, VK_MAKE_VERSION(1, 1, 0));
   exports["vkUseDevice"] = Napi::Function::New(env, _vkUseDevice, "vkUseDevice");
   exports["vkUseInstance"] = Napi::Function::New(env, _vkUseInstance, "vkUseInstance");
-  // structs & handles
-  {% for incl in includes -%}
-  {%- if incl != "" -%}
-  _{{ incl }}::Initialize(env, exports);
-  {% endif -%}
-  {% endfor %}
+  exports["getAddressFromArrayBuffer"] = Napi::Function::New(env, getAddressFromArrayBuffer, "getAddressFromArrayBuffer");
+  exports["getArrayBufferFromAddress"] = Napi::Function::New(env, getArrayBufferFromAddress, "getArrayBufferFromAddress");
+  exports["$getMemoryLayouts"] = Napi::Function::New(env, MemoryLayouts, "MemoryLayouts");
+  exports["$getVulkanEnumerations"] = Napi::Function::New(env, getVulkanEnumerations, "getVulkanEnumerations");
   // calls
   {% for call in calls -%}
   exports["{{ call.name }}"] = Napi::Function::New(env, _{{ call.name }}, "{{ call.name }}");

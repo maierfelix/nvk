@@ -15,7 +15,12 @@ import {
   getAutoStructureType,
   getNapiTypedArrayName,
   isReferenceableMember,
-  isCurrentPlatformSupportedExtension
+  isCurrentPlatformSupportedExtension,
+  isFlushableMember,
+  isArrayMember,
+  isArrayOfObjectsMember,
+  isHeaderHeapVector,
+  isFillableMember
 } from "../utils";
 
 let ast = null;
@@ -293,27 +298,23 @@ function processSourceGetter(struct, member) {
   };
 };
 
-function processStaticArraySourceSetter(member) {
-  if (!member.hasOwnProperty("length")) {
-    warn(`Cannot process static array length ${member.length} in static-array source-setter!`);
-  }
-  return `
-  // js
-  if (value.IsArray()) {
-    this->${member.name}.Reset(value.ToObject(), 1);
-  } else if (value.IsNull()) {
-    this->${member.name}.Reset();
-  } else {
-    ${invalidMemberTypeError(member)}
-    return;
-  }`;
-};
-
 function processSourceSetter(struct, member) {
   let {rawType} = member;
   if (member.isBaseType) rawType = member.baseType;
   if (member.isStaticArray) {
-    return processStaticArraySourceSetter(member);
+    if (!member.hasOwnProperty("length")) {
+      warn(`Cannot process static array length ${member.length} in static-array source-setter!`);
+    }
+    return `
+    // js
+    if (value.IsArray()) {
+      this->${member.name}.Reset(value.ToObject(), 1);
+    } else if (value.IsNull()) {
+      this->${member.name}.Reset();
+    } else {
+      ${invalidMemberTypeError(member)}
+      return;
+    }`;
   }
   if (member.isArray && (member.isStructType || member.isHandleType)) {
     // if a struct/handle is constant (never changed by the vulkan itself) and
@@ -666,36 +667,6 @@ function processSourceIncludes(struct) {
   return out;
 };
 
-function isFlushableMember(member) {
-  if (isPNextMember(member)) return true;
-  if (member.isStructType && member.dereferenceCount <= 0 && !member.isConstant) return true;
-  return isHeaderHeapVector(member);
-};
-
-function isArrayMember(member) {
-  return (
-    member.isArray ||
-    member.isDynamicArray ||
-    member.isNumericArray ||
-    member.isTypedArray
-  );
-};
-
-function isArrayOfObjectsMember(member) {
-  return (
-    (member.isArray) &&
-    (member.isStructType || member.isHandleType) ||
-    (member.isStaticArray && member.isNumericArray)
-  );
-};
-
-function isHeaderHeapVector(member) {
-  return (
-    isArrayOfObjectsMember(member) ||
-    member.rawType === "const char * const*"
-  );
-};
-
 function getHeaderHeapVectorType(member) {
   if (isArrayOfObjectsMember(member)) return member.type;
   else if (member.rawType === "const char * const*") return `char*`;
@@ -774,12 +745,6 @@ function processMemberAutosType(struct) {
   if (sTypeMember) sType = struct.sType || getAutoStructureType(struct.name);
   if (sType) return `instance.sType = ${sType};`;
   return ``;
-};
-
-function isFillableMember(struct, member) {
-  if (member.name === `sType` || member.name === `pNext`) return true;
-  if (member.isVoidPointer) return true;
-  return !struct.returnedonly;
 };
 
 export default function(astReference, struct) {

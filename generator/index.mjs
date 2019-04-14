@@ -10,12 +10,12 @@ import generateAST from "./generators/ast";
 import generateCalls from "./generators/calls";
 import generateEnums from "./generators/enums";
 import generateIndex from "./generators/index";
-import generateStructs from "./generators/structs";
-import generateHandles from "./generators/handles";
 import generateGyp from "./generators/gyp";
 import generatePackage from "./generators/package";
 import generateUtils from "./generators/utils";
 import generateTS from "./generators/typescript";
+import generateMemoryLayouts from "./generators/memoryLayouts";
+import generateJavaScriptInterfaces from "./generators/js-interfaces";
 import generateDocs from "./generators/docs";
 
 import {
@@ -230,92 +230,135 @@ async function generateBindings({xml, version, docs, incremental} = _) {
     }
     return true;
   });
-  let files = [];
-  // generate structs
-  {
-    console.log("Generating Vk structs..");
-    structs.map(struct => {
-      let result = generateStructs(ast, struct);
-      result.includes.map(incl => includes.push(incl));
-      if (includes.indexOf(struct.name) <= -1) includes.push({ name: struct.name, include: "" });
-      files.push({
-        name: struct.name,
-        header: result.header,
-        source: result.source
-      });
-    });
-  }
-  // generate handles
-  {
-    console.log("Generating Vk handles..");
-    handles.map(handle => {
-      let result = generateHandles(ast, handle);
-      if (includes.indexOf(handle.name) <= -1) includes.push({ name: handle.name, include: "" });
-      files.push({
-        name: handle.name,
-        header: result.header,
-        source: result.source
-      });
-    });
-  }
   // create sorted includes
   {
+    structs.map(struct => {
+      if (includes.indexOf(struct.name) <= -1) includes.push({ name: struct.name, include: "" });
+    });
+    handles.map(handle => {
+      if (includes.indexOf(handle.name) <= -1) includes.push({ name: handle.name, include: "" });
+    });
     sortedIncludes = getSortedIncludes(includes);
   }
-  // dynamic unwrap
+  // generate js interface
   {
-    const DYN_UNWRAP_TEMPLATE = fs.readFileSync(`${pkg.config.TEMPLATE_DIR}/dynamic-unwrap.njk`, "utf-8");
-    let source = nunjucks.renderString(DYN_UNWRAP_TEMPLATE, { structs });
-    writeAddonFile(`${generateSrcPath}/dynamic-unwrap.h`, source, "utf-8", true);
-  }
-  // merge structs and handles into one source file
-  {
-    let source = ``;
-    let sorted = [];
-    // sort
-    for (let ii = 0; ii < files.length; ++ii) {
-      let file = files[ii];
-      let sortedIndex = sortedIncludes.indexOf(file.name);
-      sorted[sortedIndex] = file;
+    console.log("Generating Vk JavaScript interfaces..");
+    let out = `
+"use strict";
+
+const {platform} = process;
+const nvk = require("./build/Release/addon-" + platform + ".node");
+
+const getAddressFromArrayBuffer = nvk.getAddressFromArrayBuffer;
+const getArrayBufferFromAddress = nvk.getArrayBufferFromAddress;
+
+global.ArrayBuffer.prototype.getAddress = function() {
+  return getAddressFromArrayBuffer(this);
+};
+
+global.ArrayBuffer.fromAddress = function(address, byteLength) {
+  return getArrayBufferFromAddress(address, byteLength);
+};
+
+const BI0 = BigInt(0);
+const NULLT = String.fromCharCode(0x0);
+
+const textEncoder = new TextEncoder();
+const textDecoder = new TextDecoder();
+
+function decodeNullTerminatedUTF8String(view) {
+  let terminator = view.indexOf(0x0);
+  let subview = view.subarray(0, terminator > -1 ? terminator : view.length);
+  return textDecoder.decode(subview);
+};
+
+class NativeStringArray {
+  constructor(array) {
+    this.array = array;
+    this.address = BI0;
+    let stringBuffers = [];
+    let addressView = new BigInt64Array(array.length);
+    let addressBuffer = addressView.buffer;
+    let addressBufferAddress = getAddressFromArrayBuffer(addressBuffer);
+    for (let ii = 0; ii < array.length; ++ii) {
+      let strBuffer = textEncoder.encode(array[ii] + NULLT).buffer;
+      addressView[ii] = getAddressFromArrayBuffer(strBuffer);
+      stringBuffers.push(strBuffer);
     };
-    source += ``;
-    source += `
-#ifndef __SOURCE_H__
-#define __SOURCE_H__
+    this.address = addressBufferAddress;
+    // keep references to prevent deallocation
+    this.addressBuffer = addressBuffer;
+    this.stringBuffers = stringBuffers;
+  }
+};
 
-#define NAPI_EXPERIMENTAL
-#include <napi.h>
+class NativeObjectArray {
+  constructor(array) {
+    this.array = array;
+    this.address = BI0;
+    let byteStride = array[0].memoryBuffer.byteLength;
+    let objectBuffer = new ArrayBuffer(array.length * byteStride);
+    let objectBufferView = new Uint8Array(objectBuffer);
+    let objectBufferAddress = getAddressFromArrayBuffer(objectBuffer);
+    for (let ii = 0; ii < array.length; ++ii) {
+      let byteOffset = ii * byteStride;
+      let srcView = new Uint8Array(array[ii].memoryBuffer);
+      let dstView = objectBufferView.subarray(byteOffset, byteOffset + byteStride);
+      dstView.set(srcView, 0x0);
+    };
+    this.address = objectBufferAddress;
+    // keep reference to prevent deallocation
+    this.objectBuffer = objectBuffer;
+  }
+};
 
-#define GLFW_INCLUDE_VULKAN
-#include <GLFW/glfw3.h>
-
-${getPlatformRelevantIncludes(ast)}
-
-#include "utils.h"`;
-    // header
-    sorted.map(file => {
-      source += `\n/** ## BEGIN ${file.name} ## **/\n`;
-      source += file.header;
-      source += `\n/** ## END ${file.name} ## **/\n`;
-    });
-    source += `
-#endif`;
-    writeAddonFile(`${generateSrcPath}/source.h`, source, "utf-8", true);
-    // source
-    source = ``;
-    source += `
-#ifndef __SOURCE_CPP__
-#define __SOURCE_CPP__
-#include "source.h"
-#include "dynamic-unwrap.h"`;
-    sorted.map(file => {
-      source += `\n/** ## BEGIN ${file.name} ## **/\n`;
-      source += file.source;
-      source += `\n/** ## END ${file.name} ## **/\n`;
-    });
-    source += `
-#endif`;
-    writeAddonFile(`${generateSrcPath}/source.cpp`, source, "utf-8", true);
+class NativeObjectReferenceArray {
+  constructor(array) {
+    this.array = array;
+    this.address = BI0;
+    let addressView = new BigInt64Array(array.length);
+    let addressBuffer = addressView.buffer;
+    let addressBufferAddress = getAddressFromArrayBuffer(addressBuffer);
+    for (let ii = 0; ii < array.length; ++ii) {
+      let object = array[ii];
+      let objectAddress = object.address;
+      addressView[ii] = objectAddress;
+    };
+    this.address = addressBufferAddress;
+    // keep reference to prevent deallocation
+    this.addressBuffer = addressBuffer;
+  }
+};
+`;
+    out += generateJavaScriptInterfaces(ast, handles, structs);
+    out += `\nmodule.exports = {\n`;
+    // add exports
+    {
+      // add additional c++ content
+      out += `  ...(nvk.$getVulkanEnumerations()),\n`;
+      out += `  VK_MAKE_VERSION: nvk.VK_MAKE_VERSION,\n`;
+      out += `  VK_VERSION_MAJOR: nvk.VK_VERSION_MAJOR,\n`;
+      out += `  VK_VERSION_MINOR: nvk.VK_VERSION_MINOR,\n`;
+      out += `  VK_VERSION_PATCH: nvk.VK_VERSION_PATCH,\n`;
+      out += `  VK_API_VERSION_1_0: nvk.VK_API_VERSION_1_0,\n`;
+      out += `  VK_API_VERSION_1_1: nvk.VK_API_VERSION_1_1,\n`;
+      out += `  vkUseDevice: nvk.vkUseDevice,\n`;
+      out += `  vkUseInstance: nvk.vkUseInstance,\n`;
+      // add VulkanWindow
+      out += `  VulkanWindow: nvk.VulkanWindow,\n`;
+      calls.map(call => {
+        out += `  ${call.name}: nvk.${call.name},\n`;
+      });
+      handles.map(handle => {
+        out += `  ${handle.name},\n`;
+      });
+      structs.map((struct, index) => {
+        let comma = index < structs.length - 1 ? `,\n` : ``;
+        out += `  ${struct.name}${comma}`;
+      });
+    }
+    out += `\n};\n`;
+    writeAddonFile(`${generatePath}/interfaces.js`, out, "utf-8", true);
   }
   // generate enums
   {
@@ -333,13 +376,7 @@ ${getPlatformRelevantIncludes(ast)}
   // generate includes
   {
     console.log("Generating Vk includes..");
-    structs.map(struct => {
-      includeNames.push(`"./src/${struct.name}.cpp"`);
-    });
-    handles.map(handle => {
-      includeNames.push(`"./src/${handle.name}.cpp"`);
-    });
-    // also add the index.cpp
+    // add the index.cpp
     includeNames.push(`"./src/index.cpp"`);
   }
   // generate typescript definition
@@ -374,6 +411,20 @@ ${getPlatformRelevantIncludes(ast)}
     writeAddonFile(`${generateSrcPath}/index.h`, indexFile.header, "utf-8", true);
     writeAddonFile(`${generateSrcPath}/index.cpp`, indexFile.source, "utf-8", true);
   }
+  // generate enum layouts
+  {
+    let data = { structs };
+    let result = generateMemoryLayouts(ast, data);
+    console.log("Generating Memory layouts..");
+    writeAddonFile(`${generateSrcPath}/memoryLayouts.h`, result, "utf-8", true);
+  }
+  // generate memory layouts
+  {
+    let data = { structs };
+    let result = generateMemoryLayouts(ast, data);
+    console.log("Generating Memory layouts..");
+    writeAddonFile(`${generateSrcPath}/memoryLayouts.h`, result, "utf-8", true);
+  }
   // generate typescript index
   {
     console.log("Generating typescript index..");
@@ -396,6 +447,7 @@ ${getPlatformRelevantIncludes(ast)}
 let vkVersion = process.env.npm_config_vkversion;
 if (!vkVersion) throw `No specification version --vkversion specified!`;
 vkVersion = formatVkVersion(vkVersion);
+global.vkVersion = vkVersion;
 
 let WSI = process.env.npm_config_wsi;
 if (process.platform === "linux") {

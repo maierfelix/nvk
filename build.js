@@ -121,10 +121,40 @@ function buildFiles() {
     let cmd = `cd ${generatePath} && node-gyp configure ${msargs} && node-gyp build`;
     let shell = spawn(cmd, { shell: true, stdio: "inherit" }, { stdio: "pipe" });
     shell.on("exit", error => {
-      if (!error) process.stdout.write("Done!\n");
+      if (!error) {
+        actionsAfter();
+        process.stdout.write("Done!\n");
+      }
       resolve(!error);
     });
   });
+};
+
+/**
+ * This reduces runtime load by "inlining" the C++ based enums
+ * into a JSON file, which can then be cheaply required at runtime
+ */
+function inlineEnumLayouts() {
+  const addon = require(`${buildReleaseDir}/addon-${platform}.node`);
+  process.stdout.write(`Inlining enum layouts..\n`);
+  let enumLayouts = addon.$getVulkanEnumerations();
+  fs.writeFileSync(`${generatePath}/enumLayouts.json`, JSON.stringify(enumLayouts, null, 2));
+};
+
+/**
+ * This reduces runtime load by "inlining" the C++ based memory layout
+ * into a JSON file, which can then be cheaply required at runtime
+ */
+function inlineMemoryLayouts() {
+  const addon = require(`${buildReleaseDir}/addon-${platform}.node`);
+  process.stdout.write(`Inlining memory layouts..\n`);
+  let memoryLayouts = addon.$getMemoryLayouts();
+  fs.writeFileSync(`${generatePath}/memoryLayouts.json`, JSON.stringify(memoryLayouts, null, 2));
+};
+
+function actionsAfter() {
+  inlineEnumLayouts();
+  inlineMemoryLayouts();
 };
 
 (async function run() {

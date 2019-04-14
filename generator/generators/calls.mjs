@@ -11,7 +11,10 @@ import {
   warn, error,
   isPNextMember,
   isIgnoreableType,
-  getNapiTypedArrayName
+  getAutoStructureType,
+  getNapiTypedArrayName,
+  getStructByStructName,
+  getHandleByHandleName
 } from "../utils";
 
 let ast = null;
@@ -34,23 +37,12 @@ function getCallExtension(call) {
   return null;
 };
 
-function getStructByStructName(name) {
-  let structs = ast.filter(node => node.kind === "STRUCT");
-  for (let ii = 0; ii < structs.length; ++ii) {
-    let struct = structs[ii];
-    if (struct.name === name) return struct;
+function getParamByParamName(call, name) {
+  for (let ii = 0; ii < call.params.length; ++ii) {
+    let param = call.params[ii];
+    if (param.name === name) return param;
   };
-  error(`Cannot resolve struct by name "${name}"`);
-  return null;
-};
-
-function getHandleByHandleName(name) {
-  let handles = ast.filter(node => node.kind === "HANDLE");
-  for (let ii = 0; ii < handles.length; ++ii) {
-    let handle = handles[ii];
-    if (handle.name === name) return handle;
-  };
-  error(`Cannot resolve handle by name "${name}"`);
+  warn(`Cannot resolve param by name "${name}"`);
   return null;
 };
 
@@ -59,55 +51,10 @@ function getParamIndexByParamName(call, name) {
     let param = call.params[ii];
     if (param.name === name) return ii;
   };
-  error(`Cannot resolve param index by name "${name}"`);
-  return null;
+  return -1;
 };
 
-function getMemberCopyInstructions(struct) {
-  let out = ``;
-  struct.children.map(member => {
-    if (member.isStructType) {
-      out += `
-      instance->${member.name} = copy->${member.name};`;
-      out += `
-      if (&copy->${member.name} != nullptr) {
-        std::vector<napi_value> args;
-        Napi::Object inst = _${member.type}::constructor.New(args);
-        _${member.type}* unwrapped = Napi::ObjectWrap<_${member.type}>::Unwrap(inst);
-        result->${member.name}.Reset(inst, 1);
-        unwrapped->instance = copy->${member.name};
-      }`;
-    }
-    else if (member.isHandleType) {
-      // can be ignored
-    }
-    else if (member.isString) {
-      out += `
-      {
-        Napi::String str = Napi::String::New(env, copy->${member.name});
-        result->${member.name}.Reset(str.ToObject(), 1);
-        strcpy(const_cast<char *>(instance->${member.name}), copy->${member.name});
-      }`;
-    }
-    else if (member.isArray) {
-      // TODO
-      console.log(`Error: Member copy instruction for arrays not handled yet!`);
-    }
-    else if (member.isNumber || member.bitmaskType || member.enumType) {
-      out += `
-      instance->${member.name} = copy->${member.name};`;
-    }
-    else if (member.type === "void") {
-      // ???
-    }
-    else {
-      warn(`Cannot handle ${member.type} in get-member-copy-instruction!`);
-    }
-  });
-  return out;
-};
-
-function getInputArrayBody(param, index) {
+function getInputArrayBody(call, param, index) {
   let {rawType} = param;
   let out = ``;
   let {isConstant} = param;
@@ -138,18 +85,46 @@ function getInputArrayBody(param, index) {
   // fill variable
   out += `
   if (info[${index}].${condition}) {\n`;
-  // auto flush structs
-  if (param.isStructType) {
-    out += `
-  {
-    Napi::Array array = info[${index}].As<Napi::Array>();
-    for (unsigned int ii = 0; ii < array.Length(); ++ii) {
-      Napi::Value item = array.Get(ii);
-      Napi::Object obj = item.As<Napi::Object>();
-      _${param.type}* result = Napi::ObjectWrap<_${param.type}>::Unwrap(obj);
-      if (!result->flush()) return env.Undefined();
-    };
-  }`;
+  if (param.length) {
+    if (param.isHandleType || param.isStructType) {
+      let lengthIndex = getParamIndexByParamName(call, param.length);
+      if (lengthIndex > -1) {
+        let lengthParam = getParamByParamName(call, param.length);
+        if (lengthParam.dereferenceCount > 0) {
+          out += `
+    // validate length
+    {
+      uint32_t expectedLength = info[${lengthIndex}].As<Napi::Object>().Get("$").As<Napi::Number>().Uint32Value();
+      if (info[${index}].As<Napi::Array>().Length() != expectedLength) {
+        Napi::RangeError::New(env, "Invalid array length for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+    }`;
+        } else if (lengthParam.isNumber && lengthParam.type === "uint32_t") {
+          out += `
+    // validate length
+    if (info[${index}].As<Napi::Array>().Length() != info[${lengthIndex}].As<Napi::Number>().Uint32Value()) {
+      Napi::RangeError::New(env, "Invalid array length for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }`;
+        } else {
+          warn(`Cannot handle param length validation for ${call.name}.${param.name} (${param.length})`);
+        }
+      // length gets read from structure
+      } else if (param.length.match("::")) {
+        let normalizedName = param.length.split("::")[0];
+        let structureMemberName = param.length.split("::")[1];
+        let lengthIndex = getParamIndexByParamName(call, normalizedName);
+        out += `
+    // validate length
+    if ($p${lengthIndex} != nullptr && info[${index}].As<Napi::Array>().Length() != $p${lengthIndex}->${structureMemberName}) {
+      Napi::RangeError::New(env, "Invalid array length for argument ${lengthIndex + 1} '${param.length.replace("::", ".")}' in '${call.name}'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }`;
+      } else {
+        warn(`Cannot handle param length validation for ${call.name}.${param.name} (${param.length})`);
+      }
+    }
   }
   // handle
   if (param.isHandleType) {
@@ -159,8 +134,12 @@ function getInputArrayBody(param, index) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _${param.type}* result = Napi::ObjectWrap<_${param.type}>::Unwrap(obj);
-      data[ii] = result->instance;
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "${param.type}") {
+        NapiObjectTypeError(info[0], "argument ${index + 1}", "${param.type}");
+        return env.Undefined();
+      }
+      ${param.type}* instance = reinterpret_cast<${param.type}*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p${index} = std::make_shared<std::vector<${param.type}>>(data);`;
   }
@@ -172,42 +151,42 @@ function getInputArrayBody(param, index) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _${param.type}* result = Napi::ObjectWrap<_${param.type}>::Unwrap(obj);
-      data[ii] = result->instance;
+      if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "${param.type}") {
+        NapiObjectTypeError(info[${index}], "argument ${index + 1}", "${param.type}");
+        return env.Undefined();
+      }
+      Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+      if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+      ${param.type}* instance = reinterpret_cast<${param.type}*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+      data[ii] = *instance;
     };
     $p${index} = std::make_shared<std::vector<${param.type}>>(data);`;
   }
   // typed array
   else if (param.isTypedArray) {
     let type = param.baseType || param.type;
+    let lengthIndex = getParamIndexByParamName(call, param.length);
+    let lengthParam = getParamByParamName(call, param.length);
     out += `
     if (info[${index}].As<Napi::TypedArray>().TypedArrayType() != ${getNapiTypedArrayName(param.jsTypedArrayName)}) {
-      Napi::TypeError::New(env, "Invalid type for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+      Napi::TypeError::New(env, "Invalid type for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
       return env.Undefined();
-    }
+    }`;
+    out += `
+    if (info[${index}].As<Napi::TypedArray>().ElementLength() != $p${lengthIndex}) {
+      Napi::RangeError::New(env, "Invalid array length for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }`;
+    out += `
     ${type}* data = getTypedArrayData<${type}>(info[${index}]);
     $p${index} = std::make_shared<${type}*>(data);`;
-  }
-  // enum
-  else if (param.enumType) {
-    out += `
-    Napi::Array array = info[${index}].As<Napi::Array>();
-    ${param.enumType}* arr${index} = new ${param.enumType}[array.Length()];
-    $p${index} = arr${index};`;
-  }
-  // numbers
-  else if (param.isNumericArray && isConstant) {
-    let type = param.baseType || param.type;
-    out += `
-    std::vector<${type}> data = createArrayOfV8Numbers<${type}>(info[${index}]);
-    $p${index} = std::make_shared<std::vector<${type}>>(data);`;
   }
   else {
     warn(`Cannot handle param ${rawType} in input-array-body!`);
   }
   out += `
   } else if (!info[${index}].IsNull()) {
-    Napi::TypeError::New(env, "Invalid type for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Invalid type for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
     return env.Undefined();
   }\n`;
   return out;
@@ -223,13 +202,17 @@ function getCallBodyBefore(call) {
     Napi::ArrayBuffer buf = info[${index}].As<Napi::ArrayBuffer>();
     $p${index} = buf.Data();
   } else if (!info[${index}].IsNull()) {
-    Napi::TypeError::New(env, "Expected '${param.jsTypedArrayName}' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected '${param.jsTypedArrayName}' or 'null' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
     return env.Undefined();
   }`;
     }
     if (param.isWin32Handle) {
       return `
   bool lossless${index} = false;
+  if (!info[${index}].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   ${param.type} $p${index} = reinterpret_cast<${param.type}>(info[${index}].As<Napi::BigInt>().Int64Value(&lossless${index}));`;
     }
     if (param.isWin32HandleReference) {
@@ -239,14 +222,18 @@ function getCallBodyBefore(call) {
   if (info[${index}].IsObject()) {
     obj${index} = info[${index}].As<Napi::Object>();
     if (!obj${index}.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument ${index + 1}").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
+      return env.Undefined();
+    }
+    if (!(obj${index}.Get("$").IsBigInt())) {
+      Napi::TypeError::New(env, "Expected 'BigInt' for Object property '$' ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj${index}.Get("$");
     bool lossless = false;
     $p${index} = reinterpret_cast<${param.type}*>(val.As<Napi::BigInt>().Int64Value(&lossless));
   } else if (!info[${index}].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
     return env.Undefined();
   }`;
     }
@@ -262,19 +249,18 @@ function getCallBodyBefore(call) {
     if (info[${index}].IsArray()) {
       // validate length
       if (info[${index}].As<Napi::Array>().Length() != ${param.length}) {
-        Napi::RangeError::New(env, "Invalid array length for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+        Napi::RangeError::New(env, "Invalid array length for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
         return env.Undefined();
-      } else {
-        std::vector<${param.type}> data = createArrayOfV8Numbers<${param.type}>(info[${index}]);
-        $p${index} = std::make_shared<std::vector<${param.type}>>(data);
       }
+      std::vector<${param.type}> data = createArrayOfV8Numbers<${param.type}>(info[${index}]);
+      $p${index} = std::make_shared<std::vector<${param.type}>>(data);
     } else if (!info[${index}].IsNull()) {
-      Napi::TypeError::New(env, "Invalid type for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+      Napi::TypeError::New(env, "Invalid type for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
       return env.Undefined();
     }`;
     }
     else if (param.isArray && param.enumType) {
-      return getInputArrayBody(param, index);
+      return getInputArrayBody(call, param, index);
     }
     if (param.baseType === "VkBool32" && param.dereferenceCount > 0) {
       return `
@@ -283,25 +269,43 @@ function getCallBodyBefore(call) {
     if (info[${index}].IsObject()) {
       obj${index} = info[${index}].As<Napi::Object>();
       if (!obj${index}.Has("$")) {
-        Napi::Error::New(env, "Missing Object property '$' for argument ${index + 1}").ThrowAsJavaScriptException();
+        Napi::Error::New(env, "Missing Object property '$' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
+        return env.Undefined();
+      }
+      if (!(obj${index}.Get("$").IsBoolean())) {
+        Napi::TypeError::New(env, "Expected 'Boolean' for Object property '$' ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
         return env.Undefined();
       }
       Napi::Value val = obj${index}.Get("$");
       $p${index} = static_cast<${param.type}>(val.As<Napi::Boolean>().Value());
     } else if (!info[${index}].IsNull()) {
-      Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+      Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
       return env.Undefined();
     }`;
     }
     switch (rawType) {
+      case "size_t":
+      case "uint64_t": {
+        let type = param.enumType || param.type;
+        return `
+  bool lossless${index};
+  if (!info[${index}].IsBigInt()) {
+    Napi::TypeError::New(env, "Expected 'BigInt' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
+  ${type} $p${index} = static_cast<${type}>(info[${index}].As<Napi::BigInt>().Int64Value(&lossless${index}));`;
+      }
       case "int":
       case "float":
-      case "size_t":
       case "int32_t":
       case "uint32_t":
       case "uint64_t": {
         let type = param.enumType || param.type;
         return `
+  if (!info[${index}].IsNumber()) {
+    Napi::TypeError::New(env, "Expected 'Number' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
   ${type} $p${index} = static_cast<${type}>(info[${index}].As<Napi::Number>().Int64Value());`;
       }
       case "const char *":
@@ -310,7 +314,7 @@ function getCallBodyBefore(call) {
   if (info[${index}].IsString()) {
     $p${index} = copyV8String(info[${index}]);
   } else if (!info[${index}].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'String' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'String' or 'null' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
     return env.Undefined();
   }`;
         return ``;
@@ -324,7 +328,7 @@ function getCallBodyBefore(call) {
       case "const uint32_t *":
       case "const uint64_t *":
         if (param.isArray) {
-          return getInputArrayBody(param, index);
+          return getInputArrayBody(call, param, index);
         } else {
           return `
   Napi::Object obj${index};
@@ -332,13 +336,18 @@ function getCallBodyBefore(call) {
   if (info[${index}].IsObject()) {
     obj${index} = info[${index}].As<Napi::Object>();
     if (!obj${index}.Has("$")) {
-      Napi::Error::New(env, "Missing Object property '$' for argument ${index + 1}").ThrowAsJavaScriptException();
+      Napi::Error::New(env, "Missing Object property '$' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
       return env.Undefined();
     }
     Napi::Value val = obj${index}.Get("$");
-    $p${index} = static_cast<${param.type}>(val.As<Napi::Number>().Int64Value());
+    ${
+      param.type === "size_t *" ? `bool lossless; $p${index} = static_cast<${param.type}>(val.As<Napi::BigInt}>().Int64Value(&lossless));` : ``
+    }
+    ${
+      param.type !== "size_t *" ? `$p${index} = static_cast<${param.type}>(val.As<Napi::Number>().Int64Value());` : ``
+    }
   } else if (!info[${index}].IsNull()) {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
     return env.Undefined();
   }`;
         }
@@ -346,19 +355,10 @@ function getCallBodyBefore(call) {
         return `
   Napi::Object obj${index} = info[${index}].As<Napi::Object>();
   void *$p${index} = nullptr;`;
-      case "const void *":
-        return `
-  ${param.type}* $p${index};
-  if (info[${index}].IsTypedArray()) {
-    $p${index} = value.As<Napi::TypedArray>().ArrayBuffer().Data();
-  } else if (!info[${index}].IsNull()) {
-    Napi::TypeError::New(env, "Expected '${param.jsTypedArrayName}' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
-    return env.Undefined();
-  }`;
       default: {
         // array of structs or handles
         if (param.isArray && (param.isStructType || param.isHandleType)) {
-          return getInputArrayBody(param, index);
+          return getInputArrayBody(call, param, index);
         }
         // struct or handle
         else if (param.isStructType || param.isHandleType) {
@@ -373,23 +373,54 @@ function getCallBodyBefore(call) {
             if (param.isHandleType) deinitialize = `VK_NULL_HANDLE`;
             else warn(`Cannot handle param deinitializer!`);
           }
-          return `
-  _${param.type}* obj${index};
+          if (param.isStructType) {
+            let isInvalidStype = "";
+            if (!getStructByStructName(ast, param.type).sType) {
+              isInvalidStype = `(obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "${param.type}"`;
+            } else {
+              isInvalidStype = `GetStructureTypeFromObject(obj) != ${getAutoStructureType(param.type)}`;
+            }
+            return `
+  Napi::Object obj${index};
   ${param.type} *$p${index} = nullptr;
   if (info[${index}].IsObject()) {
     Napi::Object obj = info[${index}].As<Napi::Object>();
-    if (!(obj.InstanceOf(_${param.type}::constructor.Value()))) {
-      NapiObjectTypeError(info[${index}], "argument ${index + 1}", "[object ${param.type}]");
+    if (${isInvalidStype}) {
+      NapiObjectTypeError(info[${index}], "argument ${index + 1}", "${param.type}");
       return env.Undefined();
     }
-    obj${index} = Napi::ObjectWrap<_${param.type}>::Unwrap(obj);
-    ${ param.isStructType ? `if (!obj${index}->flush()) return env.Undefined();` : `` }
-    $p${index} = &obj${index}->instance;
+    obj${index} = obj;
+    Napi::Value flushCall = obj.Get("flush").As<Napi::Function>().Call(obj, {  });
+    if (!(flushCall.As<Napi::Boolean>().Value())) return env.Undefined();
+    ${param.type}* instance = reinterpret_cast<${param.type}*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p${index} = instance;
   } else if (info[${index}].IsNull()) {
     $p${index} = ${deinitialize};
   } else {
-    Napi::TypeError::New(env, "Expected 'Object' or 'null' for argument ${index + 1} '${param.name}'").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Expected '${param.type}' or 'null' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
+    return env.Undefined();
   }`;
+          }
+          else if (param.isHandleType) {
+            return `
+  Napi::Object obj${index};
+  ${param.type} *$p${index} = nullptr;
+  if (info[${index}].IsObject()) {
+    Napi::Object obj = info[${index}].As<Napi::Object>();
+    if ((obj.Get("constructor").As<Napi::Object>().Get("name").As<Napi::String>().Utf8Value()) != "${param.type}") {
+      NapiObjectTypeError(info[${index}], "argument ${index + 1}", "${param.type}");
+      return env.Undefined();
+    }
+    obj${index} = obj;
+    ${param.type}* instance = reinterpret_cast<${param.type}*>(obj.Get("memoryBuffer").As<Napi::ArrayBuffer>().Data());
+    $p${index} = instance;
+  } else if (info[${index}].IsNull()) {
+    $p${index} = ${deinitialize};
+  } else {
+    Napi::TypeError::New(env, "Expected '${param.type}' or 'null' for argument ${index + 1} '${param.name}' in '${call.name}'").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }`;
+          }
         }
         warn(`Cannot handle param ${rawType} in call-body-before!`);
         return ``;
@@ -486,7 +517,7 @@ function getCallBodyAfter(call) {
   params.map((param, pIndex) => {
     if (isIgnoreableType(param)) return;
     let isReference = param.dereferenceCount > 0;
-    let isConstant = param.isConstant;
+    let {isConstant} = param;
     if (param.isString) {
       // no reflection needed
       out.push(`
@@ -495,26 +526,30 @@ function getCallBodyAfter(call) {
     if (isConstant) return;
     // array of structs
     if (param.isArray && param.isStructType) {
-      let struct = getStructByStructName(param.type);
-      let memberCopyInstructions = getMemberCopyInstructions(struct);
-      out.push(`
+      let struct = getStructByStructName(ast, param.type);
+        out.push(`
   if (info[${pIndex}].IsArray()) {
     ${param.type}* $pdata = $p${pIndex}.get()->data();
     Napi::Array array = info[${pIndex}].As<Napi::Array>();
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _${param.type}* result = Napi::ObjectWrap<_${param.type}>::Unwrap(obj);
-      ${param.type} *instance = &result->instance;
-      ${param.type} *copy = &$pdata[ii];
-      ${memberCopyInstructions}
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }`);
     // passed in parameter is a struct which gets filled by vulkan
     // and which we need to back-reflect to v8 manually
     } else if (param.isStructType && isReference) {
-      let instr = getMutableStructReflectInstructions(param.type, pIndex, `obj${pIndex}->`);
-      out.push(instr);
+      let struct = getStructByStructName(ast, param.type);
+        out.push(`
+  if (info[${pIndex}].IsObject()) {
+     Napi::Object obj = info[${pIndex}].As<Napi::Object>();
+    // reflect call
+    Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>($p${pIndex}));
+    obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
+  }`);
     }
     // array of enums
     else if (param.isTypedArray && param.enumType) {
@@ -529,8 +564,10 @@ function getCallBodyAfter(call) {
     for (unsigned int ii = 0; ii < array.Length(); ++ii) {
       Napi::Value item = array.Get(ii);
       Napi::Object obj = item.As<Napi::Object>();
-      _${param.type}* target = Napi::ObjectWrap<_${param.type}>::Unwrap(obj);
-      target->instance = $pdata[ii];
+
+      // reflect call
+      Napi::BigInt memoryAddress = Napi::BigInt::New(env, reinterpret_cast<int64_t>(&$pdata[ii]));
+      obj.Get("reflect").As<Napi::Function>().Call(obj, { memoryAddress });
     };
   }`);
     }
@@ -556,12 +593,12 @@ function getCallBodyAfter(call) {
     else if (param.isWin32HandleReference) {
       out.push(`
   Napi::BigInt ptr${pIndex} = Napi::BigInt::New(env, (int64_t)$p${pIndex});
-  obj${pIndex}.Set("$", ptr${pIndex});`);
+  if (info[${pIndex}].IsObject()) obj${pIndex}.Set("$", ptr${pIndex});`);
     }
     else if (param.rawType === "void **") {
       out.push(`
   Napi::BigInt ptr${pIndex} = Napi::BigInt::New(env, (int64_t)$p${pIndex});
-  obj${pIndex}.Set("$", ptr${pIndex});`);
+  if (info[${pIndex}].IsObject()) obj${pIndex}.Set("$", ptr${pIndex});`);
     }
     else {
       // array of numbers or bools
@@ -571,7 +608,7 @@ function getCallBodyAfter(call) {
         case "const uint64_t *":
           out.push(`
     Napi::BigInt pnum${pIndex} = Napi::BigInt::New(env, (uint64_t)$p${pIndex});
-    obj${pIndex}.Set("$", pnum${pIndex});`);
+    if (info[${pIndex}].IsObject()) obj${pIndex}.Set("$", pnum${pIndex});`);
           break;
         case "int *":
         case "int32_t *":
@@ -580,11 +617,11 @@ function getCallBodyAfter(call) {
         case "const uint32_t *":
         case "const float *":
           out.push(`
-    obj${pIndex}.Set("$", $p${pIndex});`);
+    if (info[${pIndex}].IsObject()) obj${pIndex}.Set("$", $p${pIndex});`);
           break;
         case "VkBool32 *":
           out.push(`
-    obj${pIndex}.Set("$", $p${pIndex});`);
+    if (info[${pIndex}].IsObject()) obj${pIndex}.Set("$", $p${pIndex});`);
           break;
         default:
           warn(`Cannot handle ${param.rawType} in call-body-after!`);
@@ -623,91 +660,6 @@ function getCallBody(call) {
   out += getCallProcedure(call);
   out += outer;
   return out;
-};
-
-/**
- * This is a fairly complex function
- * It recursively back-reflects a struct and all its members
- */
-function getMutableStructReflectInstructions(name, pIndex, basePath, out = []) {
-  let struct = getStructByStructName(name);
-  // go through each struct member and manually back-reflect it
-  struct.children.map((member, mIndex) => {
-    // these can be ignored
-    if (
-      member.isNumber ||
-      member.isBoolean ||
-      member.bitmaskType ||
-      member.enumType ||
-      isIgnoreableType(member)
-    ) return;
-    // TODO: validate that this works
-    // pNext structure could have needs for deep reflection
-    if (isPNextMember(member)) {
-      // idea:
-      // read sType using: ((int*)(self->instance.pNext))[0]);
-      // and recursively reflect based on AST node.extensions[sType]
-      return;
-    }
-    // string
-    if (member.isString && member.isStaticArray) {
-      out.push(`
-  {
-    // back reflect string
-    Napi::String str${pIndex} = Napi::String::New(env, (&${basePath}instance)->${member.name});
-    ${basePath}${member.name}.Reset(str${pIndex}.ToObject(), 1);
-  }`);
-    }
-    // struct
-    else if (member.isStructType && !member.isArray) {
-      out.push(`
-  {
-    std::vector<napi_value> args;
-    Napi::Object inst = _${member.type}::constructor.New(args);
-    _${member.type}* unwrapped${basePath.length} = Napi::ObjectWrap<_${member.type}>::Unwrap(inst);
-    ${basePath}${member.name}.Reset(inst, 1);
-    memcpy((&unwrapped${basePath.length}->instance), &${basePath}instance.${member.name}, sizeof(${member.type}));
-    ${getMutableStructReflectInstructions(member.type, pIndex, `unwrapped${basePath.length}->`, [])}
-  }
-      `);
-    }
-    // array of numbers
-    else if (member.isNumericArray) {
-      out.push(`
-  {
-    // back reflect array
-    Napi::Array arr${pIndex} = Napi::Array::New(env, ${member.length});
-    // populate array
-    for (unsigned int ii = 0; ii < ${member.length}; ++ii) {
-      arr${pIndex}.Set(ii, Napi::Number::New(env, (&${basePath}instance)->${member.name}[ii]));
-    };
-    ${basePath}${member.name}.Reset(arr${pIndex}.ToObject(), 1);
-  }`);
-    }
-    // array of structs
-    else if (member.isStructType && member.isArray) {
-      // TODO: this only works for primitive-type members
-      out.push(`
-  {
-    // back reflect array
-    unsigned int len = ${basePath}instance.${member.dynamicLength};
-    Napi::Array arr = Napi::Array::New(env, len);
-    // populate array
-    for (unsigned int ii = 0; ii < len; ++ii) {
-      std::vector<napi_value> args;
-      Napi::Object inst = _${member.type}::constructor.New(args);
-      _${member.type}* unwrapped = Napi::ObjectWrap<_${member.type}>::Unwrap(inst);
-      memcpy(&unwrapped->instance, &${basePath}instance.${member.name}[ii], sizeof(${member.type}));
-      arr.Set(ii, inst);
-    };
-    ${basePath}${member.name}.Reset(arr.ToObject(), 1);
-  }`);
-    }
-    else {
-      console.log(`Error: Cannot handle member ${member.name} of type ${member.type} in mutable-struct-reflection!`);
-    }
-  });
-  return out.join("");
 };
 
 function getCallReturn(call) {
@@ -752,13 +704,15 @@ function getCallObjectUpdate(call) {
   switch (call.name) {
     case "vkCreateDevice": {
       let index = getParamIndexByParamName(call, "pDevice");
+      if (index <= -1) warn(`Cannot resolve param index by name "${name}"`);
       return `
-  vkUseDevice(obj${index}->instance);`;
+  vkUseDevice(*$p${index});`;
     }
     case "vkCreateInstance": {
       let index = getParamIndexByParamName(call, "pInstance");
+      if (index <= -1) warn(`Cannot resolve param index by name "${name}"`);
       return `
-  vkUseInstance(obj${index}->instance);`;
+  vkUseInstance(*$p${index});`;
     }
   };
   return ``;
